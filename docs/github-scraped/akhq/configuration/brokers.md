@@ -1,6 +1,7 @@
 # Source: https://github.com/tchiotludo/akhq/blob/master/docs/docs/configuration/brokers.md
 
 # Cluster configuration
+
 * `akhq.connections` is a key value configuration with :
   * `key`: must be an url friendly (letter, number, _, -, ... dot are not allowed here)  string to identify your cluster (`my-cluster-1` and `my-cluster-2` is the example above)
   * `properties`: all the configurations found on [Kafka consumer documentation](https://kafka.apache.org/documentation/#consumerconfigs). Most important is `bootstrap.servers` that is a list of host:port of your Kafka brokers.
@@ -42,6 +43,7 @@ akhq:
         - name: "ksqldb"
           url: "http://connect:8088"
 ```
+
 ## Example for Confluent Cloud
 
 ```yaml
@@ -61,9 +63,11 @@ akhq:
 ```
 
 ## SSL Kafka Cluster
+
 Configuration example for kafka cluster secured by ssl for saas provider like aiven (full https & basic auth):
 
 You need to generate a jks & p12 file from pem, cert files give by saas provider.
+
 ```bash
 openssl pkcs12 -export -inkey service.key -in service.cert -out client.keystore.p12 -name service_key
 keytool -import -file ca.pem -alias CA -keystore client.truststore.jks
@@ -99,7 +103,6 @@ akhq:
           basic-auth-password: {{password}}
 ```
 
-
 ## OAuth2 authentification for brokers
 
 Requirement Library Strimzi:
@@ -125,8 +128,5 @@ akhq:
         security.protocol: SASL_PLAINTEXT
         sasl.mechanism: OAUTHBEARER
 ```
+
 I put oauth.ssl.endpoint_identification_algorithm = "" for testing or my certificates did not match the FQDN. In a production, you have to remove it.
-
-
-
-

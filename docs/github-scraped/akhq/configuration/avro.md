@@ -1,7 +1,5 @@
 # Source: https://github.com/tchiotludo/akhq/blob/master/docs/docs/configuration/avro.md
 
-
-
 # Avro deserialization
 
 Avro messages using Schema registry are automatically decoded if the registry is configured (see [Kafka cluster](../configuration/brokers.md)).
@@ -12,7 +10,7 @@ specified either for message keys with `key-schema-file` and/or for values with 
 
 Here is an example of configuration:
 
-```
+```yaml
 akhq:
   connections:
     kafka:

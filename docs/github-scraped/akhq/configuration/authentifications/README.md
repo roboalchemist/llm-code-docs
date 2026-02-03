@@ -9,6 +9,7 @@ By default, security & roles is disabled and anonymous user have full access, i.
 To enable security & roles set `micronaut.security.enabled: true` and configure desired type of authentication (basic auth, LDAP, etc.).
 
 If you need a read-only application, simply add this to your configuration files :
+
 ```yaml
 akhq:
   security:

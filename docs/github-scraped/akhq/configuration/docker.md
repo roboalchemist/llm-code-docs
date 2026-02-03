@@ -2,7 +2,6 @@
 
 # Docker
 
-
 ## Pass custom Java opts
 
 By default, the docker container will allow a custom JVM options setting the environments vars `JAVA_OPTS`.
@@ -41,6 +40,7 @@ services:
 If you do not override the `JVM_OPTS_FILE`, the docker container will take the defaults one instead.
 
 The AKHQ docker image supports 4 environment variables to handle configuration :
+
 * `AKHQ_CONFIGURATION`: a string that contains the full configuration in yml that will be written on
   /app/configuration.yml on the container.
 * `MICRONAUT_APPLICATION_JSON`: a string that contains the full configuration in JSON format

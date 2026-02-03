@@ -1,4 +1,4 @@
-# Source: https://github.com/tchiotludo/akhq/blob/master/docs/docs/configuration/authentifications/jwt.md
+# Source: <https://github.com/tchiotludo/akhq/blob/master/docs/docs/configuration/authentifications/jwt.md>
 
 # JWT
 

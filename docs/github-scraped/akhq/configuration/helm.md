@@ -5,8 +5,7 @@
 Basically to create your helm values, you can take a look to the default values and you can see how your values could be defined:
 https://github.com/tchiotludo/akhq/blob/dev/helm/akhq/values.yaml
 
-Nextone we will present some helm chart value example used in an AWS MSK that maybe could show how to use and define stuff in the helm chart and understand better how to define that. 
-
+Nextone we will present some helm chart value example used in an AWS MSK that maybe could show how to use and define stuff in the helm chart and understand better how to define that.
 
 ## Examples
 

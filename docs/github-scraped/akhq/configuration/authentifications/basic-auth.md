@@ -1,6 +1,7 @@
 # Source: https://github.com/tchiotludo/akhq/blob/master/docs/docs/configuration/authentifications/basic-auth.md
 
 # Basic Auth
+
 * `akhq.security.basic-auth`: List user & password with affected roles
   * `- username: actual-username`: Login of the current user as (maybe anything email, login, ...)
     * `password`: Password in sha256 (default) or bcrypt. The password can be converted

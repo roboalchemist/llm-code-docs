@@ -1,12 +1,12 @@
 # Source: https://github.com/tchiotludo/akhq/blob/master/docs/docs/configuration/authentifications/external.md
 
-
 # External roles and attributes mapping
 
 If you manage topics (or any other resource) permissions in an external system, you have access to 2 more implementation mechanisms to map your authenticated user (from either Local, Header, LDAP or OIDC) into AKHQ roles and attributes. If you use this approach, keep in mind it will take the local user's groups for local Auth, and the external groups for Header/LDAP/OIDC (ie. this will NOT do the mapping between Header/LDAP/OIDC and local groups).
 
 **Default configuration-based**
 This is the current implementation and the default one (doesn't break compatibility)
+
 ````yaml
 akhq:
   security:
@@ -21,7 +21,8 @@ akhq:
     header-auth: # header authentication users/groups to AKHQ groups mapping
 ````
 
-**REST API**
+## REST API
+
 ````yaml
 akhq:
   security:
@@ -36,7 +37,7 @@ micronaut:
       expire-after-write: 600s # Default. May be overridden.
 ````
 
-In this mode, AKHQ will send to the ``akhq.security.rest.url`` endpoint a POST request with the following JSON :
+In this mode, AKHQ will send to the ``akhq.security.rest.url`` endpoint a POST request with the following JSON:
 
 ````json
 {
@@ -46,7 +47,9 @@ In this mode, AKHQ will send to the ``akhq.security.rest.url`` endpoint a POST r
   "groups": ["LDAP-GROUP-1", "LDAP-GROUP-2", "LDAP-GROUP-3"]
 }
 ````
-and expect the following JSON as response :
+
+and expect the following JSON as response:
+
 ````json
 {
   "groups": {
@@ -81,6 +84,7 @@ and expect the following JSON as response :
 The response will be cached according to settings under `micronaut.caches.rest-api-claim-provider`, as may be seen in the example above.
 
 If you want to send a static authentication token to the external service where it might be public, you can extend the configuration for the rest interface as follows:
+
 ````yaml
 akhq:
   security:
@@ -96,7 +100,8 @@ akhq:
 The response must contain the `Content-Type: application/json` header to prevent any issue when reading the response.
 :::
 
-**Groovy API**
+## Groovy API
+
 ````yaml
 akhq:
   security:
@@ -121,7 +126,9 @@ akhq:
         }
     groups: # anything set here will not be used
 ````
-``akhq.security.groovy.file`` must be a groovy class that implements the interface ClaimProvider :
+
+``akhq.security.groovy.file`` must be a groovy class that implements the interface ClaimProvider:
+
 ````java
 package org.akhq.models.securitys;
 public interface ClaimProvider {

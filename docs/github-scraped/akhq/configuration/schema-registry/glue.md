@@ -1,8 +1,10 @@
 # Source: https://github.com/tchiotludo/akhq/blob/master/docs/docs/configuration/schema-registry/glue.md
 
 # Glue schema registry
+
 Currently ,glue schema registry support is limited to only de-serialisation of avro/protobuf/json serialized messages.
 It can be configured as below.
+
 ```yaml
   akhq:
     environment:
@@ -26,6 +28,7 @@ It can be configured as below.
       - kafka
       - repo
 ```
+
 Please note that authentication is done using aws default credentials provider.
 
 Url key is required to not break the flow.

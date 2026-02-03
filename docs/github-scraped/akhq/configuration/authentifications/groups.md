@@ -9,8 +9,8 @@ With PR #1472 AKHQ introduced a new, better group management system in 0.25.0. I
 :::
 
 Define groups with specific roles for your users
-* `akhq.security.default-group`: Default group for all the user even unlogged user
 
+* `akhq.security.default-group`: Default group for all the user even unlogged user
 * `akhq.security.groups`: Groups map definition
   * `key:` a uniq key used as name if not specified
     * A list of role/patterns/clusters association
@@ -24,11 +24,13 @@ If the secret is not set, the API will not enforce the group role, and the restr
 :::
 
 3 defaults group are available :
-- `admin` with all rights and no patterns/clusters restrictions
-- `reader` with read access only on all AKHQ and no patterns/clusters restrictions
-- `no-roles` without any roles, forces user to login
+
+* `admin` with all rights and no patterns/clusters restrictions
+* `reader` with read access only on all AKHQ and no patterns/clusters restrictions
+* `no-roles` without any roles, forces user to login
 
 Here is an example of a `reader` group definition based on the default reader role with access on all the resources prefixed with `pub` and located the on `public` cluster
+
 ```yaml
     groups:
       reader:
@@ -63,17 +65,18 @@ You can still associate a resource with a non-supported action from the table ho
 
 A default roles list is predefined in `akhq.security.roles` but you can override it.
 A role contains:
+
 * `key:` a uniq key used as name
   * A list of resources/actions associations
-    * `resources:` List of resources (ex: ```[ "TOPIC", "TOPIC_DATA"]```)
-    * `actions:` Actions allowed on the previous resources (ex: ```[ "READ", "CREATE"]```)
+    * `resources:` List of resources (ex: `[ "TOPIC", "TOPIC_DATA"]`)
+    * `actions:` Actions allowed on the previous resources (ex: `[ "READ", "CREATE"]`)
 
 The default configuration provides a topic-admin role defined as follows:
+
 ```yaml
 topic-admin:
   - resources: [ "TOPIC", "TOPIC_DATA" ]
     actions: [ "READ", "CREATE", "DELETE" ]
   - resources: [ "TOPIC" ]
     actions: [ "UPDATE", "READ_CONFIG", "ALTER_CONFIG" ]
-
 ```

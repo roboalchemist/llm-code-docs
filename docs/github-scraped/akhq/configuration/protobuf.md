@@ -1,6 +1,5 @@
 # Source: https://github.com/tchiotludo/akhq/blob/master/docs/docs/configuration/protobuf.md
 
-
 # Protobuf deserialization
 
 To deserialize topics containing data in Protobuf format, you can set topics mapping:

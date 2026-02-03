@@ -19,7 +19,7 @@
 
 When using HTTPS for communication, Micronaut will need to get the certificate within Netty. This uses classes of the java.base package which are no longer activated inside the JDK we use. The configuration at the bottom needs to be extended by this environment variable:
 
-```
+```bash
 JDK_JAVA_OPTIONS: --add-exports\=java.base/sun.security.x509\=ALL-UNNAMED
 ```
 
@@ -32,8 +32,10 @@ micronaut:
 ```
 
 ## JSON Logging
+
 In order to configure AKHQ to output log in JSON format, a logback configuration needs to be provided, e.g. `logback.xml`
-```
+
+```xml
 <configuration>
   <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
     <encoder class="ch.qos.logback.classic.encoder.JsonEncoder">
@@ -45,4 +47,5 @@ In order to configure AKHQ to output log in JSON format, a logback configuration
   </root>
 </configuration>
 ```
+
 This file then needs to be mounted to `/app/logback.xml` and referenced in `JAVA_OPTS` via `-Dlogback.configurationFile=/app/logback.xml` (see [docker](docker.md) for more information).

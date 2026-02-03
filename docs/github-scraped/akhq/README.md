@@ -10,6 +10,6 @@
 It will start a Kafka node, a Zookeeper node, a Schema Registry, a Kafka Connect, fill with some sample data, start a consumer
 group and a kafka stream & start AKHQ.
 
-
 ## Installation
+
 More standard installation can be found [here](./installation.md)

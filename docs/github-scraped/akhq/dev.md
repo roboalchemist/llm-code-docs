@@ -1,11 +1,11 @@
 # Source: https://github.com/tchiotludo/akhq/blob/master/docs/docs/dev.md
 
-
 # Development Environment
 
 ## Early dev image
 
 You can have access to last feature / bug fix with docker dev image automatically build on tag `dev`
+
 ```bash
 docker pull tchiotludo/akhq:dev
 ```
@@ -13,13 +13,14 @@ docker pull tchiotludo/akhq:dev
 The dev jar is not publish on GitHub, you have 2 solutions to have the `dev` jar :
 
 Get it from docker image
+
 ```bash
 docker pull tchiotludo/akhq:dev
 docker run --rm --name=akhq -v /tmp/akhq/application-dev.yml:/app/application.yml -it tchiotludo/akhq:dev
 docker cp akhq:/app/akhq.jar .
 ```
-Or build it with a `./gradlew shadowJar`, the jar will be located here `build/libs/akhq-*.jar`
 
+Or build it with a `./gradlew shadowJar`, the jar will be located here `build/libs/akhq-*.jar`
 
 ## Development Server
 
@@ -44,18 +45,22 @@ brief guide. For the following steps, please, make sure you meet these requireme
   * [Lombok](https://plugins.jetbrains.com/plugin/6317-lombok)
 
 First run a Kafka server locally. Therefore, you need to start Zookeeper first by opening a CMD and doing:
+
 ```bash
 $KAFKA_HOME\bin\windows\zookeeper-server-start.bat config\zookeper.properties
 $KAFKA_HOME\bin\windows\kafka-server-start.bat config\server.properties
 ```
+
 A zero-config Kafka server should be up and running locally on your machine now. For further details or troubleshooting
 see [Kafka Getting started guide](https://kafka.apache.org/quickstart). In the next step we're going to checkout AKHQ from GitHub:
+
 ```bash
 git clone https://github.com/tchiotludo/akhq.git
 ```
 
 Open the checked out directory in IntelliJ IDEA. The current version of AKHQ is built with Java 17. If you
 don't have OpenJDK 17 installed already, do the following in IntelliJ IDEA:
+
 * _File > Project Structure... > Platform Settings >
 SDKs > + > Download JDK... >_ select a vendor of your choice (but make sure it's version 17)
 * download + install. Make sure that JDK 17 is set under _Project Settings > Project SDK_
@@ -64,6 +69,7 @@ SDKs > + > Download JDK... >_ select a vendor of your choice (but make sure it's
 as well: _File > Settings > Plugins > Build, Execution, Deployment > Build Tools > Gradle > Gradle JVM_: any JDK 17.
 
 To configure AKHQ for using the Kafka server you set up before, edit `application.yml` by adding the following under `akhq`:
+
 ```yaml
 akhq:
   connections:
@@ -71,6 +77,7 @@ akhq:
       properties:
         bootstrap.servers: "localhost:9092"
 ```
+
 ::: warning
 Do not commit this part of `application.yml`. A more secure way to configure your local development Kafka server is
 described in the Micronaut doc, chapter ["Application Configuration"](https://docs.micronaut.io/2.5.13/guide/index.html#config).

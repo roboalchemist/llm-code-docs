@@ -1,6 +1,5 @@
 # Source: https://github.com/tchiotludo/akhq/blob/master/docs/docs/configuration/authentifications/header.md
 
-
 # Header configuration (reverse proxy)
 
 To enable Header authentication in the application, you'll have to configure the header that will resolve users & groups:

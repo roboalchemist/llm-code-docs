@@ -1,7 +1,7 @@
 # Source: https://github.com/tchiotludo/akhq/blob/master/docs/docs/configuration/authentifications/oidc.md
 
-
 # OIDC
+
 To enable OIDC in the application, you'll first have to enable OIDC in micronaut:
 
 ```yaml
@@ -82,6 +82,7 @@ The username field can be any string field, the roles field has to be a JSON arr
 ## Direct OIDC mapping
 
 If you want to manage AKHQ roles an attributes directly with the OIDC provider, you can use the following configuration:
+
 ```yaml
 akhq:
   security:
@@ -92,10 +93,11 @@ akhq:
           label: "Login with Google"
           username-field: preferred_username
           use-oidc-claim: true
-````
+```
 
 In this scenario, you need to make the OIDC provider return a JWT which have the following fields:
-````json
+
+```json
 {
   // Standard claims
   "exp": 1635868816,
@@ -131,4 +133,4 @@ In this scenario, you need to make the OIDC provider return a JWT which have the
     ]
   }
 }
-````
+```

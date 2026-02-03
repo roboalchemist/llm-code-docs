@@ -1,16 +1,18 @@
 # Source: https://github.com/tchiotludo/akhq/blob/master/docs/docs/configuration/akhq.md
 
-
 # AKHQ configuration
 
 ## Pagination
+
 * `akhq.pagination.page-size` number of topics per page (default : 25)
 
 ## Avro Serializer
+
 * `akhq.avro-serializer.json.serialization.inclusions` is list of ObjectMapper serialization inclusions that is used for converting Avro message to more
   readable Json format in the UI. Supports Enums of JsonInclude.Include from Jackson library
 
 ## Topic List
+
 * `akhq.topic.internal-regexps` is list of regexp to be considered as internal (internal topic can't be deleted or updated)
 * `akhq.topic.stream-regexps` is list of regexp to be considered as internal stream topic
 
@@ -22,26 +24,32 @@ These parameters are the default values used in the topic creation page.
 * `akhq.topic.partition` Default number of partition
 
 ## Topic Data
+
 * `akhq.topic-data.size`: max record per page (default: 50)
 * `akhq.topic-data.poll-timeout`: The time, in milliseconds, spent waiting in poll if data is not available in the buffer (default: 1000).
 * `akhq.topic-data.kafka-max-message-length`: Max message length allowed to send to UI when retrieving a list of records (dafault: 1000000 bytes).
 
 ## Ui Settings
+
 ### Topics
+
 * `akhq.ui-options.topic.default-view` is default list view (ALL, HIDE_INTERNAL, HIDE_INTERNAL_STREAM, HIDE_STREAM) (default: HIDE_INTERNAL)
 * `akhq.ui-options.topic.skip-consumer-groups` hide consumer groups columns on topic list
 * `akhq.ui-options.topic.skip-last-record` hide the last records on topic list
 * `akhq.ui-options.topic.show-all-consumer-groups` expand lists of consumer groups on topic list
 * `akhq.ui-options.topic.groups-default-view` is the default consumer groups list view on topic screen/consumer groups tab (ALL, HIDE_EMPTY) (default: ALL). HIDE_EMPTY increases performance, especially on cluster with a lot of consumer groups
 
-### Topic Data
+### Topic Data Display
+
 * `akhq.ui-options.topic-data.sort`: default sort order (OLDEST, NEWEST) (default: OLDEST)
 
 ### Inject some css or javascript
+
 * `akhq.html-head`: Append some head tags on the webserver application
 Mostly useful in order to inject some css or javascript to customize the web application.
 
 Examples, add a environment information on the left menu:
+
 ```yaml
 akhq:
   html-head: |
@@ -59,7 +67,9 @@ akhq:
 ```
 
 ## Custom HTTP response headers
+
 To add headers to every response please add the headers like in following example:
+
 ```yaml
 akhq:
   server:
@@ -71,9 +81,11 @@ akhq:
 ```
 
 ## Data Masking
+
 If you want to hide some data in your records, there are two approaches.
 
 ### Regex Masking
+
 You can use regex masking - configure this with the following filters.
 These will be applied to all record values and keys.
 
@@ -92,22 +104,24 @@ akhq:
 ```
 
 ### JSON Masking
+
 This is useful for records which are interpreted as JSON on deserialization to strings - for example,
 Avro records, or normal JSON payloads.
 These can be configured per-topic, and you can select distinct fields to mask/unmask.
 There are two JSON masking modes: `json_show_by_default` and `json_mask_by_default`.
 
 #### Show by default config
+
 This means, by default, nothing is masked. If you wish to mask data this way, you can:
-- Set a value in `akhq.security.data-masking.jsonMaskReplacement` (this defaults to `xxxx`)
-- Set `akhq.security.data-masking.mode` to `json_show_by_default`
-- Add as many filters as desired under `akhq.security.data-masking.json-filters` (see below for an example) to select fields you want to *mask*
+
+* Set a value in `akhq.security.data-masking.jsonMaskReplacement` (this defaults to `xxxx`)
+* Set `akhq.security.data-masking.mode` to `json_show_by_default`
+* Add as many filters as desired under `akhq.security.data-masking.json-filters` (see below for an example) to select fields you want to *mask*
 
 NOTES: Only one filter per topic is currently supported. If you are using `RecordNameStrategy` on a topic with multiple record types,
 there is (currently) no way to distinguish between different records, so any records which have the JSON field at the
 selected path(s) will be masked. If you have a misconfiguration and have defined multiple filters per topic, only the first will
 actually be selected.
-
 
 ```yaml
 akhq:
@@ -184,6 +198,7 @@ With the above configuration, it will appear as:
 
 Note how arrays are automatically understood where relevant.
 In other words, `address.firstLine` will apply to both of the following:
+
 ```json
 {
   "address": {
@@ -208,6 +223,7 @@ and
 ```
 
 ### Mask by default config
+
 This means, by default, everything is masked.
 This is useful in production scenarios where data must be carefully selected and made available to
 users of AKHQ - usually this is for regulatory compliance of personal/sensitive information.
@@ -216,14 +232,16 @@ PLEASE NOTE: This has the side effect of being unable to show unstructured data 
 is down, the binary data would otherwise be unfilterable. Instead, a placeholder message is shown.
 
 If you wish to mask data this way, you can:
-- Set a value in `akhq.security.data-masking.jsonMaskReplacement` (this defaults to `xxxx`)
-- Set `akhq.security.data-masking.mode` to `json_mask_by_default`
-- Add as many filters as desired under `akhq.security.data-masking.json-filters` (see below for an example) to select fields you want to *show*
+
+* Set a value in `akhq.security.data-masking.jsonMaskReplacement` (this defaults to `xxxx`)
+* Set `akhq.security.data-masking.mode` to `json_mask_by_default`
+* Add as many filters as desired under `akhq.security.data-masking.json-filters` (see below for an example) to select fields you want to *show*
 
 NOTES: Only one filter per topic is currently supported. If you are using `RecordNameStrategy` on a topic with multiple record types,
 there is (currently) no way to distinguish between different records, so any records which have the JSON field at the
 selected path(s) will be shown. If you have a misconfiguration and have defined multiple filters per topic, only the first will
 actually be selected.
+
 ```yaml
 akhq:
   security:
@@ -299,6 +317,7 @@ With the above configuration, it will appear as:
 
 Note how arrays are automatically understood where relevant.
 In other words, `address.firstLine` will apply to both of the following:
+
 ```json
 {
   "address": {
@@ -323,9 +342,11 @@ and
 ```
 
 ### No masking required
+
 You can set `akhq.security.data-masking.mode` to `none` to disable masking altogether.
 
 ## Audit
+
 If you want to audit user action that modified topics or consumer group state, you can configure akhq to send
 audit events to a pre-configured cluster:
 
