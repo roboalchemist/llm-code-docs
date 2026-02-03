@@ -1,6 +1,6 @@
 # Source: https://rsbuild.dev/config/html/tags.md
 
-# html.tags
+## html.tags
 
 - **Type:**
   

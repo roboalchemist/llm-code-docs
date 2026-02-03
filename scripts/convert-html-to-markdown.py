@@ -49,7 +49,7 @@ def check_vllm_server() -> bool:
         return False
 
 
-def convert_html_to_markdown_vllm(html: str) -> str:
+def convert_html_to_markdown_vllm(html: str, max_tokens: int = 8192) -> str:
     """Convert HTML to markdown using vLLM server."""
     instruction = "Extract the main content from the given HTML and transform it to Markdown format."
     prompt_content = f"{instruction}\n```html\n{html}\n```"
@@ -59,10 +59,10 @@ def convert_html_to_markdown_vllm(html: str) -> str:
         json={
             "model": "jinaai/ReaderLM-v2",
             "messages": [{"role": "user", "content": prompt_content}],
-            "max_tokens": 8192,
+            "max_tokens": max_tokens,
             "temperature": 0.0,
         },
-        timeout=300,
+        timeout=600,  # Longer timeout for large files
     )
     response.raise_for_status()
     result = response.json()["choices"][0]["message"]["content"].strip()
@@ -140,6 +140,8 @@ def main():
                         help='Number of concurrent workers for vLLM (default: 8, optimal for dual 3090s)')
     parser.add_argument('--max-size', type=int, default=100,
                         help='Skip files larger than this size in KB (default: 100KB)')
+    parser.add_argument('--no-size-limit', action='store_true',
+                        help='Process all files regardless of size')
     parser.add_argument('--model-path', default='roboalchemist/ReaderLM-v2-mlx-fp16',
                         help='HuggingFace model path for MLX fallback')
     args = parser.parse_args()
@@ -155,13 +157,16 @@ def main():
         print("No HTML files found.")
         return
 
-    # Filter by size
-    max_bytes = args.max_size * 1024
-    original_count = len(html_files)
-    html_files = [f for f in html_files if f.stat().st_size <= max_bytes]
-    skipped = original_count - len(html_files)
-    if skipped > 0:
-        print(f"Skipping {skipped} files larger than {args.max_size}KB", file=sys.stderr)
+    # Filter by size (unless --no-size-limit)
+    if not args.no_size_limit:
+        max_bytes = args.max_size * 1024
+        original_count = len(html_files)
+        html_files = [f for f in html_files if f.stat().st_size <= max_bytes]
+        skipped = original_count - len(html_files)
+        if skipped > 0:
+            print(f"Skipping {skipped} files larger than {args.max_size}KB", file=sys.stderr)
+    else:
+        print(f"Processing all {len(html_files)} files (no size limit)", file=sys.stderr)
 
     # Group by site
     by_site = {}
@@ -204,8 +209,12 @@ def main():
         try:
             html_content = html_file.read_text(encoding='utf-8', errors='replace')
 
+            # Scale max_tokens based on file size (estimate: ~4 chars per token, 50% compression)
+            file_size = len(html_content)
+            max_tokens = min(16384, max(8192, file_size // 8))
+
             if use_vllm:
-                markdown = convert_html_to_markdown_vllm(html_content)
+                markdown = convert_html_to_markdown_vllm(html_content, max_tokens=max_tokens)
             else:
                 markdown = convert_html_to_markdown_mlx(html_content, model, tokenizer)
 

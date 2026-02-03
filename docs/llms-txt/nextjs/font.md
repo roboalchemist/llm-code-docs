@@ -670,8 +670,8 @@ module.exports = {
 You can now use the `font-sans` and `font-mono` utility classes to apply the font to your elements.
 
 ```html
-<p class="font-sans ...">The quick brown fox ...</p>
-<p class="font-mono ...">The quick brown fox ...</p>
+<p class="font-sans">The quick brown fox ...</p>
+<p class="font-mono">The quick brown fox ...</p>
 ```
 
 ### Applying Styles

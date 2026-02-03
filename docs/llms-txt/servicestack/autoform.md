@@ -26,7 +26,7 @@ const onSuccess = response => results.value = response.results
 
 These Auto Form components are customizable with the [declarative C# UI Attributes](/locode/declarative#ui-metadata-attributes) where you can override the form's **heading** with `[Description]` and include a **subHeading** with `[Notes]` which supports rich HTML markup.
 
-### AutoForm Properties
+## AutoForm Properties
 
 Alternatively they can be specified in the component's properties:
 
@@ -62,7 +62,7 @@ defineEmits<{
 }>()
 ```
 
-### Model Binding
+## Model Binding
 
 Forms can be bound to a Request DTO model where it can be used to pre-populate the Form's default values and Request DTO where specifying a **type** is no longer necessary:
 
@@ -78,7 +78,7 @@ const request = ref(new QueryBookings({ skip: 1, take: 2, orderBy: 'Name' }))
 <auto-form class="mx-auto max-w-3xl not-prose" v-model="request" type="QueryBookings"></auto-form>
 ```
 
-### Create Form
+## Create Form
 
 `AutoCreateForm` can be used to create an automated form based on a [AutoQuery CRUD](/autoquery/crud) Create Request DTO definition which can be rendered in a traditional inline Form with **card** formStyle option, e.g:
 
@@ -95,7 +95,7 @@ const request = ref(new QueryBookings({ skip: 1, take: 2, orderBy: 'Name' }))
 
 These Auto Forms are powered by the rich [App Metadata](/vue/use-metadata) surrounding your APIs, which contain all the necessary metadata to invoke the API and bind any contextual validation errors adjacent to the invalid field inputs.
 
-### Edit Form
+## Edit Form
 
 `AutoEditForm` can be used to render an automated form based on Update and Delete [AutoQuery CRUD](/autoquery/crud) APIs which also makes use of **heading** and **sub-heading** customization options:
 
@@ -144,7 +144,7 @@ The same form rendered in a traditional inline form with a **card** formStyle wi
 <auto-edit-form class="mx-auto max-w-3xl" v-model="booking" form-style="card" type="UpdateBooking" delete-type="DeleteBooking"></auto-edit-form>
 ```
 
-### Form Fields
+## Form Fields
 
 For more advanced customization of a Form's appearance and behavior, `AutoFormFields` can be used to just render the Form's fields (with validation binding) inside a custom Form which can submit the data-bound populated Request DTO to invoke the API, e.g:
 

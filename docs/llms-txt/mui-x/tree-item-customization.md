@@ -769,7 +769,7 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import { TreeItem, TreeItemProps } from '@mui/x-tree-view/TreeItem';
-import { useTreeItem } from '@mui/x-tree-view/useTreeItem';
+import { useTreeItem, UseTreeItemStatus } from '@mui/x-tree-view/useTreeItem';
 import { MUI_X_PRODUCTS } from './products';
 
 interface CustomLabelProps {
@@ -820,23 +820,44 @@ const CustomTreeItem = React.forwardRef(function CustomTreeItem(
           publicAPI.setItemSelection({
             event,
             itemId: children[0],
-          shouldBeSelected: true,
+         shouldBeSelected: true,
           });
         }
       }
     : undefined;
 
   return (
-    <TreeItem
-      {...props}
-      ref={ref}
-      slots={{
-        label: CustomLabel,
-      }}
-      slotProps={{
-        label: { selectFirstChildren } as CustomLabelProps,
-      }}
-    />
+    <TreeItemProvider {...getContextProviderProps()}>
+      <TreeItemRoot {...getRootProps()}>
+        <TreeItemContent {...getContentProps()}>
+          <TreeItemIconContainer {...getIconContainerProps()}>
+            <TreeItemIcon status={status} />
+          </TreeItemIconContainer>
+
+          {status.editing ? (
+            <TreeItemLabelInput {...getLabelInputProps()} />
+          ) : (
+            <TreeItemLabel {...getLabelProps()} />
+          )}
+
+          <Stack direction="row">
+            {(Object.keys(STATUS_ICONS) as [keyof UseTreeItemStatus]).map(
+              (iconKey, index) => {
+                if (status[iconKey]) {
+                  return (
+                    <Box key={index} sx={{ display: 'flex' }}>
+                      {STATUS_ICONS[iconKey]}
+                    </Box>
+                  );
+                }
+                return null;
+              },
+            )}
+          </Stack>
+        </TreeItemContent>
+        {children && <TreeItemGroupTransition {...getGroupTransitionProps()} />}
+      </TreeItemRoot>
+    </TreeItemProvider>
   );
 });
 
@@ -950,12 +971,10 @@ const CustomTreeItem = React.forwardRef(function CustomTreeItem(
       slots={{
         label: CustomLabel,
       }}
-      slotProps={
-        {
-          label: { onClick: handleIconButtonClick, status },
-          content: { onClick: handleContentClick },
-        } as TreeItemSlotProps
-      }
+      slotProps={{
+        label: { onClick: handleIconButtonClick, status },
+        content: { onClick: handleContentClick },
+      }}
     />
   );
 });
@@ -1171,25 +1190,4 @@ const {
     handleSaveItemLabel,
   },
 } = useTreeItemUtils({
-  itemId: props.itemId,
-  children: props.children,
-});
-```
-
-See [Editing—enable editing using only icons](/x/react-tree-view/rich-tree-view/editing/#enable-editing-using-only-icons) for more details on customizing this behavior.
-
-### `useTreeItemModel`
-
-The `useTreeItemModel()` hook lets you access the item model (the object passed to `props.items`):
-
-```jsx
-const item = useTreeItemModel(itemId);
-```
-
-```tsx
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
-import { TreeItem, TreeItemProps } from '@mui/x-tree-view/TreeItem';
-import { TreeViewBaseItem } from '@mui/x-tree
+  itemId:

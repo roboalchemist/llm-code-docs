@@ -14,6 +14,7 @@ The `useRealtime` hook connects your React components to real-time events with f
 
 Wrap your app in the `RealtimeProvider`:
 
+#### providers.tsx
 ```tsx
 providers.tsx
 theme={"system"}
@@ -27,6 +28,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 }
 ```
 
+#### layout.tsx
 ```tsx
 layout.tsx
 theme={"system"}
@@ -48,6 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 Create a typed `useRealtime` hook using `createRealtime`:
 
+#### lib/realtime-client.ts
 ```typescript
 lib/realtime-client.ts
 theme={"system"}

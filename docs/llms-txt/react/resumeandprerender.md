@@ -20,7 +20,7 @@ This API depends on [Web Streams.](https://developer.mozilla.org/en-US/docs/Web/
 
 ## Reference
 
-### `resumeAndPrerender(reactNode, postponedState, options?`
+### `resumeAndPrerender(reactNode, postponedState, options?)`
 
 Call `resumeAndPrerender` to continue a prerendered React tree to a static HTML string.
 

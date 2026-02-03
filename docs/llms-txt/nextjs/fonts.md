@@ -26,203 +26,938 @@
 
 # Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-# Font Optimization
-@doc-version: 16.0.4
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-The [`next/font`](/docs/app/api-reference/components/font.md) module automatically optimizes your fonts and removes external network requests for improved privacy and performance.
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-It includes **built-in self-hosting** for any font file. This means you can optimally load web fonts with no layout shift.
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-To start using `next/font`, import it from [`next/font/local`](#local-fonts) or [`next/font/google`](#google-fonts), call it as a function with the appropriate options, and set the `className` of the element you want to apply the font to. For example:
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-```tsx filename="app/layout.tsx" highlight={1,3-5,9} switcher
-import { Geist } from 'next/font/google'
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-const geist = Geist({
-  subsets: ['latin'],
-})
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en" className={geist.className}>
-      <body>{children}</body>
-    </html>
-  )
-}
-```
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-```jsx filename="app/layout.js" highlight={1,3-5,9} switcher
-import { Geist } from 'next/font/google'
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-const geist = Geist({
-  subsets: ['latin'],
-})
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-export default function Layout({ children }) {
-  return (
-    <html className={geist.className}>
-      <body>{children}</body>
-    </html>
-  )
-}
-```
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-Fonts are scoped to the component they're used in. To apply a font to your entire application, add it to the [Root Layout](/docs/app/api-reference/file-conventions/layout.md#root-layout).
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-## Google fonts
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-You can automatically self-host any Google Font. Fonts are included stored as static assets and served from the same domain as your deployment, meaning no requests are sent to Google by the browser when the user visits your site.
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-To start using a Google Font, import your chosen font from `next/font/google`:
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-```tsx filename="app/layout.tsx" switcher
-import { Geist } from 'next/font/google'
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-const geist = Geist({
-  subsets: ['latin'],
-})
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return (
-    <html lang="en" className={geist.className}>
-      <body>{children}</body>
-    </html>
-  )
-}
-```
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-```jsx filename="app/layout.js" switcher
-import { Geist } from 'next/font/google'
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-const geist = Geist({
-  subsets: ['latin'],
-})
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en" className={geist.className}>
-      <body>{children}</body>
-    </html>
-  )
-}
-```
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-We recommend using [variable fonts](https://fonts.google.com/variablefonts) for the best performance and flexibility. But if you can't use a variable font, you will need to specify a weight:
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-```tsx filename="app/layout.tsx" highlight={4} switcher
-import { Roboto } from 'next/font/google'
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-const roboto = Roboto({
-  weight: '400',
-  subsets: ['latin'],
-})
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return (
-    <html lang="en" className={roboto.className}>
-      <body>{children}</body>
-    </html>
-  )
-}
-```
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-```jsx filename="app/layout.js" highlight={4} switcher
-import { Roboto } from 'next/font/google'
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-const roboto = Roboto({
-  weight: '400',
-  subsets: ['latin'],
-})
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en" className={roboto.className}>
-      <body>{children}</body>
-    </html>
-  )
-}
-```
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-## Local fonts
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-To use a local font, import your font from `next/font/local` and specify the [`src`](/docs/app/api-reference/components/font.md#src) of your local font file. Fonts can be stored in the [`public`](/docs/app/api-reference/file-conventions/public-folder.md) folder or co-located inside the `app` folder. For example:
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-```tsx filename="app/layout.tsx" switcher
-import localFont from 'next/font/local'
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-const myFont = localFont({
-  src: './my-font.woff2',
-})
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return (
-    <html lang="en" className={myFont.className}>
-      <body>{children}</body>
-    </html>
-  )
-}
-```
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-```jsx filename="app/layout.js" switcher
-import localFont from 'next/font/local'
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-const myFont = localFont({
-  src: './my-font.woff2',
-})
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en" className={myFont.className}>
-      <body>{children}</body>
-    </html>
-  )
-}
-```
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-If you want to use multiple files for a single font family, `src` can be an array:
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-```js
-const roboto = localFont({
-  src: [
-    {
-      path: './Roboto-Regular.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: './Roboto-Italic.woff2',
-      weight: '400',
-      style: 'italic',
-    },
-    {
-      path: './Roboto-Bold.woff2',
-      weight: '700',
-      style: 'normal',
-    },
-    {
-      path: './Roboto-BoldItalic.woff2',
-      weight: '700',
-      style: 'italic',
-    },
-  ],
-})
-```
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-## API Reference
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-See the API Reference for the full feature set of Next.js Font
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-- [Font](/docs/app/api-reference/components/font.md)
-  - Optimizing loading web fonts with the built-in `next/font` loaders.
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting

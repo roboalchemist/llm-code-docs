@@ -1,6 +1,6 @@
 # Source: https://preactjs.com/guide/v10/no-build-workflows#recipes-and-common-patterns
 
-# No-Build Workflows
+## No-Build Workflows
 
 Whilst build tools like Webpack, Rollup, and Vite are incredibly powerful and useful, Preact fully supports building applications without them.
 

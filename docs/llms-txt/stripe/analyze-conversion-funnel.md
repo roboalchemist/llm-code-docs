@@ -210,7 +210,7 @@ In the following example, we assume your customer has:
            window.dataLayer.push(arguments);
          }
          gtag("js", new Date());
-         gtag("config", "<GOOGLE_ANALYTICS_CLIENT_ID>");
+         gtag("config", "<GOOGLE_ANALYTICS CLIENT_ID>");
        </script>
        <!-- END GOOGLE ANALYTICS -->
        <title>Thanks for your order!</title>

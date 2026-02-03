@@ -12,7 +12,7 @@ This API depends on [Web Streams.](https://developer.mozilla.org/en-US/docs/Web/
 
 ## Reference
 
-### `resume(node, postponedState, options?`
+### `resume(node, postponedState, options?)`
 
 Call `resume` to resume rendering a pre-rendered React tree as HTML into a [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
 
@@ -61,9 +61,8 @@ The returned stream has an additional property:
 ### Resuming a prerender
 
 ```js
-src/App.js hidden 
+// src/App.js hidden 
 
-```
 public/index.html
 <!DOCTYPE html>
 <html lang="en">
@@ -79,7 +78,7 @@ public/index.html
 ```
 
 ```js
-src/index.js
+// src/index.js
 import {
   flushReadableStreamToFrame,
   getUser,

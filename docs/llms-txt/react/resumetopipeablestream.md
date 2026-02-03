@@ -10,7 +10,7 @@ This API is specific to Node.js. Environments with [Web Streams,](https://develo
 
 ## Reference
 
-### `resumeToPipeableStream(node, postponed, options?`
+### `resumeToPipeableStream(node, postponed, options?)`
 
 Call `resume` to resume rendering a pre-rendered React tree as HTML into a [Node.js Stream.](https://nodejs.org/api/stream.html#writable-streams)
 
