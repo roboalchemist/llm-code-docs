@@ -208,6 +208,8 @@ const feedbackMachine = setup({
 You can also provide action implementations to override existing actions in the `machine.provide(...)` method, which creates a new machine with the same config but with the provided implementations:
 
 ```ts
+import { createActor } from 'xstate';
+
 const feedbackActor = createActor(
   // [!code highlight:9]
   feedbackMachine.provide({
@@ -230,6 +232,8 @@ XState provides a number of useful built-in actions that are a core part of the 
   Built-in actions, such as `assign(…)`, `sendTo(…)`, and `raise(…)`, are **not imperative**; they return a special [action object](#action-objects) (e.g. `{ type: 'xstate.assign', … }`) that are interpreted by the state machine. Do not call built-in action in custom action functions.
 
   ```ts
+  import { createMachine, assign, enqueueActions } from 'xstate';
+
   // ❌ This will have no effect
   const machine = createMachine({
     context: { count: 0 },
@@ -393,6 +397,8 @@ const machine = createMachine({
 The `sendTo(...)` action is a special action that sends an event to a specific actor.
 
 ```ts
+import { createMachine, sendTo } from 'xstate';
+
 const machine = createMachine({
   on: {
     transmit: {
@@ -406,6 +412,8 @@ const machine = createMachine({
 The event can be dynamic:
 
 ```ts
+import { createMachine, sendTo } from 'xstate';
+
 const machine = createMachine({
   on: {
     transmit: {
@@ -421,6 +429,8 @@ const machine = createMachine({
 The destination actor can be the actor ID or the actor reference itself:
 
 ```ts
+import { createMachine, sendTo, fromPromise } from 'xstate';
+
 const machine = createMachine({
   context: ({ spawn }) => ({
     someActorRef: spawn(fromPromise(/* ... */)),
@@ -439,6 +449,8 @@ const machine = createMachine({
 Other options, such as `delay` and `id`, can be passed as the 3rd argument:
 
 ```ts
+import { createMachine, sendTo } from 'xstate';
+
 const machine = createMachine({
   on: {
     transmit: {
@@ -610,6 +622,8 @@ The `enqueueActions(...)` action creator is a higher-level action that enqueues 
 Enqueued actions can be called conditionally, but they cannot be enqueued asynchronously.
 
 ```ts
+import { createMachine, enqueueActions } from 'xstate';
+
 const machine = createMachine({
   // ...
   entry: enqueueActions(({ context, event, enqueue, check }) => {
@@ -829,6 +843,8 @@ const machine = setup({
 If you are not using `setup({ ... })` (strongly recommended), you can strongly type the `actions` of your machine in the `types.actions` property of the machine config.
 
 ```ts
+import { createMachine } from 'xstate';
+
 const machine = createMachine({
   types: {} as {
     // [!code highlight:8]
@@ -960,7 +976,7 @@ const modifiedMachine = machine.provide({
 #### With property assigners
 
 ```ts
-import { createMachine } from 'xstate';
+import { createMachine, assign } from 'xstate';
 
 const countMachine = createMachine({
   context: {
@@ -982,7 +998,7 @@ const countMachine = createMachine({
 #### With function assigners
 
 ```ts
-import { createMachine } from 'xstate';
+import { createMachine, assign } from 'xstate';
 
 const countMachine = createMachine({
   context: {
@@ -1019,6 +1035,8 @@ const machine = createMachine({
 ### Cheatsheet: send-to action
 
 ```ts
+import { createMachine, sendTo } from 'xstate';
+
 const machine = createMachine({
   on: {
     transmit: {
@@ -3200,6 +3218,8 @@ Use our XState context cheatsheet below to get started quickly.
 ### Cheatsheet: initial context
 
 ```ts
+import { createMachine } from 'xstate';
+
 const machine = createMachine({
   context: {
     feedback: '',
@@ -3210,6 +3230,8 @@ const machine = createMachine({
 ### Cheatsheet: lazy initial context
 
 ```ts
+import { createMachine } from 'xstate';
+
 const machine = createMachine({
   context: () => ({
     feedback: '',
@@ -3221,6 +3243,8 @@ const machine = createMachine({
 ### Cheatsheet: updating context with `assign(...)`
 
 ```ts
+import { createMachine, assign } from 'xstate';
+
 const machine = createMachine({
   context: {
     feedback: '',
@@ -3321,6 +3345,8 @@ You can define delays in a few ways: [inlined](#inlined-delays), [referenced](#r
 You can define an inlined delay by specifying the delay time (in milliseconds) directly:
 
 ```ts
+import { createMachine } from 'xstate';
+
 const machine = createMachine({
   initial: 'idle',
   states: {
@@ -3369,7 +3395,7 @@ const machine = setup({
 Delays can also be dynamically defined as a function that returns the delay time in milliseconds:
 
 ```ts
-import { setup } from 'xstate';
+import { setup, assign } from 'xstate';
 
 const machine = setup({
   types: {
@@ -3442,6 +3468,8 @@ const machine = setup({
 Use our XState delayed transitions cheatsheet below to get started quickly.
 
 ```ts
+import { createMachine } from 'xstate';
+
 createMachine({
   after: {
     DELAY: {
@@ -4300,6 +4328,8 @@ const machine = createMachine({
 Eventless transitions can potentially be enabled by any event, so the `event` type is the union of all possible events.
 
 ```ts
+import { createMachine } from 'xstate';
+
 const machine = createMachine({
   types: {} as {
     events: { type: 'greet'; message: string } | { type: 'submit' };
@@ -4336,6 +4366,8 @@ const machine = createMachine({
 ### Cheatsheet: state eventless (always) transition
 
 ```ts
+import { createMachine } from 'xstate';
+
 const machine = createMachine({
   initial: 'start',
   states: {
@@ -4744,7 +4776,7 @@ import { Plus, Paperclip, Star, Info, Settings } from 'lucide-react';
 
 You can embed Figma frames in your states to keep your design and code in sync. Embedded Figma frames will stay up to date with the latest changes in your Figma files. Figma frames are a special type of [asset](assets).
 
-[In Nick’s blog post, read about how you can improve your team workflows with Stately and Figma](../../docs/assets/blog/2024-01-24-embed-figma/).
+[In Nick’s blog post, read about how you can improve your team workflows with Stately and Figma](../../blog/2024-01-24-embed-figma/).
 
 <Callout>
   Embedding Figma frames is a premium feature of Stately Studio. You can try Stately Studio’s premium plans with a free trial. [Check out the features on our Pro plan](studio-pro-plan), [Team plan](studio-team-plan), [Enterprise plan](studio-enterprise-plan) or [upgrade your existing plan](https://stately.ai/registry/billing).
@@ -5080,6 +5112,8 @@ State machines always start at an [initial state](initial-states), and may end a
 </Callout>
 
 ```ts
+import { createMachine } from 'xstate';
+
 const feedbackMachine = createMachine({
   id: 'feedback',
 
@@ -5107,6 +5141,8 @@ const feedbackMachine = createMachine({
 You can combine finite states with [context](context), which make up the overall state of a machine:
 
 ```ts
+import { createMachine, createActor } from 'xstate';
+
 const feedbackMachine = createMachine({
   id: 'feedback',
   context: {
@@ -5139,6 +5175,8 @@ console.log(feedbackActor.getSnapshot().context);
 The initial state is the state that the machine starts in. It is defined by the `initial` property on the machine config:
 
 ```ts
+import { createMachine } from 'xstate';
+
 const feedbackMachine = createMachine({
   id: 'feedback',
 
@@ -5164,6 +5202,8 @@ const feedbackMachine = createMachine({
 In XState, a **state node** is a finite state "nodes" that comprise the entire statechart tree. State nodes are defined on the `states` property of other state nodes, including the root machine config (which itself is a state node):
 
 ```ts
+import { createMachine } from 'xstate';
+
 // The machine is the root state node
 const feedbackMachine = createMachine({
   id: 'feedback',
@@ -5196,6 +5236,8 @@ const feedbackMachine = createMachine({
 State nodes can have **tags**, which are string terms that help group or categorize the state node. For example, you can signify which state nodes represent states in which data is being loaded by using a "loading" tag, and determine if a state contains those tagged state nodes with `state.hasTag(tag)`:
 
 ```ts
+import { createMachine, createActor } from 'xstate';
+
 const feedbackMachine = createMachine({
   id: 'feedback',
   initial: 'prompt',
@@ -5233,6 +5275,8 @@ Meta data is static data that describes relevant properties of a state node. You
 The `state.meta` property collects the `.meta` data from all active state nodes and places them in an object with the state node's ID as the key and the `.meta` data as the value:
 
 ```ts
+import { createMachine, createActor } from 'xstate';
+
 const feedbackMachine = createMachine({
   id: 'feedback',
   initial: 'prompt',
@@ -5505,6 +5549,8 @@ When designing finite states for your state machine, follow these guidelines to 
 * **Be consistent**: Use consistent naming conventions across your state machines.
 
 ```ts
+import { createMachine } from 'xstate';
+
 // ❌ Poor naming
 const machine = createMachine({
   initial: 'state1',
@@ -5534,6 +5580,8 @@ const authMachine = createMachine({
 * **Account for loading states**: Async operations often need intermediate states.
 
 ```ts
+import { createMachine } from 'xstate';
+
 const checkoutMachine = createMachine({
   initial: 'cart',
   states: {
@@ -5585,6 +5633,8 @@ const checkoutMachine = createMachine({
 * **Separate concerns**: Keep different domains or features in separate states.
 
 ```ts
+import { createMachine } from 'xstate';
+
 const appMachine = createMachine({
   initial: 'loading',
   states: {
@@ -5637,6 +5687,8 @@ const appMachine = createMachine({
 * **Comment complex logic**: Explain why certain states exist and what they accomplish.
 
 ```ts
+import { createMachine } from 'xstate';
+
 const feedbackMachine = createMachine({
   initial: 'prompt',
   states: {
@@ -5774,6 +5826,8 @@ const machine = createMachine({
 ### Cheatsheet: read current state
 
 ```ts
+import { createActor } from 'xstate';
+
 const actor = createActor(machine).start();
 const state = actor.getSnapshot();
 
@@ -5790,6 +5844,8 @@ const isFormOrThanks = state.matches('form') || state.matches('thanks');
 ### Cheatsheet: states with tags
 
 ```ts
+import { createMachine } from 'xstate';
+
 const machine = createMachine({
   initial: 'prompt',
   states: {
@@ -5817,6 +5873,8 @@ const isInteractive = state.hasTag('interactive');
 ### Cheatsheet: states with meta data
 
 ```ts
+import { createMachine } from 'xstate';
+
 const machine = createMachine({
   initial: 'prompt',
   states: {
@@ -5843,6 +5901,8 @@ console.log(state.getMeta());
 ### Cheatsheet: target states by ID
 
 ```ts
+import { createMachine } from 'xstate';
+
 const machine = createMachine({
   initial: 'start',
   states: {
@@ -6099,6 +6159,590 @@ A [state machine](state-machines-and-statecharts) is a model that describes how 
 A machine moves from state to state through [transitions](transitions). Transitions are caused by events; when an event happens, the machine transitions to the next state. Transitions are “deterministic”; each combination of state and event always points to the same next state.
 
 
+# Graph & Paths (/docs/graph)
+
+<Callout>
+  The graph utilities are now included in the main `xstate` package. Import from `xstate/graph` instead of the deprecated `@xstate/graph` package.
+</Callout>
+
+State machines can be represented as directed graphs, where states are nodes and transitions are edges. XState provides utilities to traverse these graphs and generate **paths**: sequences of events that transition a machine from one state to another.
+
+## Why use path generation?
+
+Path generation is useful for:
+
+* **Model-based testing** - automatically generate test cases that cover all reachable states and transitions
+* **Visualization** - understand the structure and flow of complex machines
+* **Validation** - verify all states are reachable and all transitions are exercised
+* **Documentation** - generate human-readable sequences of user flows
+
+## Quick start
+
+```ts
+import { createMachine } from 'xstate';
+import { getShortestPaths, getSimplePaths } from 'xstate/graph';
+
+const machine = createMachine({
+  initial: 'a',
+  states: {
+    a: {
+      on: { NEXT: 'b', SKIP: 'c' }
+    },
+    b: {
+      on: { NEXT: 'c' }
+    },
+    c: { type: 'final' }
+  }
+});
+
+const shortestPaths = getShortestPaths(machine);
+// - a
+// - a -> b
+// - a -> c (via SKIP, not through b)
+
+const simplePaths = getSimplePaths(machine);
+// - a
+// - a -> b
+// - a -> b -> c
+// - a -> c (via SKIP)
+```
+
+## Core concepts
+
+### Paths and steps
+
+A **path** represents a sequence of transitions from one state to another. Each path contains:
+
+* `state` - the final state reached by this path
+* `steps` - array of steps taken to reach that state
+
+A **step** represents a single transition:
+
+* `state` - the state before this transition
+* `event` - the event that triggered the transition
+
+```ts
+// Example path structure
+{
+  // The final state reached by this path
+  state: { value: 'thanks', context: {} },
+  // The steps taken to reach this state
+  steps: [
+    { state: { value: 'question' }, event: { type: 'CLICK_BAD' } },
+    { state: { value: 'form' }, event: { type: 'SUBMIT' } }
+  ]
+}
+```
+
+### Shortest vs simple paths
+
+**Shortest paths** use Dijkstra's algorithm to find the minimum number of transitions to reach each state. Use shortest paths when you want:
+
+* One efficient path to each state
+* Minimal test cases for state coverage
+* Quick traversal verification
+
+**Simple paths** use depth-first search to find all possible non-cyclic paths. Use simple paths when you want:
+
+* Complete transition coverage
+* All possible user flows
+* Exhaustive testing
+
+## `getShortestPaths(logic, options?)`
+
+Returns the shortest path from the initial state to every reachable state.
+
+```ts
+import { createMachine } from 'xstate';
+import { getShortestPaths } from 'xstate/graph';
+
+const feedbackMachine = createMachine({
+  id: 'feedback',
+  initial: 'question',
+  states: {
+    question: {
+      on: {
+        CLICK_GOOD: { target: 'thanks' },
+        CLICK_BAD: { target: 'form' },
+        CLOSE: { target: 'closed' }
+      }
+    },
+    form: {
+      on: {
+        SUBMIT: { target: 'thanks' },
+        CLOSE: { target: 'closed' }
+      }
+    },
+    thanks: {
+      on: {
+        CLOSE: { target: 'closed' }
+      }
+    },
+    closed: {
+      type: 'final'
+    }
+  }
+});
+
+const paths = getShortestPaths(feedbackMachine);
+
+// Returns array of paths:
+// [
+//   { state: 'question', steps: [] },
+//   { state: 'thanks', steps: [{ state: 'question', event: { type: 'CLICK_GOOD' } }] },
+//   { state: 'form', steps: [{ state: 'question', event: { type: 'CLICK_BAD' } }] },
+//   { state: 'closed', steps: [{ state: 'question', event: { type: 'CLOSE' } }] }
+// ]
+```
+
+Notice that reaching `closed` from `thanks` (2 steps) is not included because there's a shorter path directly from `question` (1 step).
+
+## `getSimplePaths(logic, options?)`
+
+Returns all simple (non-cyclic) paths from the initial state to every reachable state.
+
+```ts
+import { getSimplePaths } from 'xstate/graph';
+
+const paths = getSimplePaths(feedbackMachine);
+
+// Returns many more paths, including:
+// - question → thanks (via CLICK_GOOD)
+// - question → form → thanks (via CLICK_BAD, SUBMIT)
+// - question → thanks → closed (via CLICK_GOOD, CLOSE)
+// - question → form → thanks → closed (via CLICK_BAD, SUBMIT, CLOSE)
+// - question → form → closed (via CLICK_BAD, CLOSE)
+// - question → closed (via CLOSE)
+// ... and more
+```
+
+Simple paths provide complete transition coverage - every valid sequence through the machine.
+
+## `getPathsFromEvents(logic, events, options?)`
+
+Traces a specific sequence of events and returns the resulting path. Useful for validating that a specific user flow works as expected.
+
+```ts
+import { getPathsFromEvents } from 'xstate/graph';
+
+const path = getPathsFromEvents(feedbackMachine, [
+  { type: 'CLICK_BAD' },
+  { type: 'SUBMIT' },
+  { type: 'CLOSE' }
+]);
+
+// Returns:
+// {
+//   state: { value: 'closed' },
+// ,
+//   steps: [
+//     { state: { value: 'question' }, event: { type: 'CLICK_BAD' } },
+//     { state: { value: 'form' }, event: { type: 'SUBMIT' } },
+//     { state: { value: 'thanks' }, event: { type: 'CLOSE' } }
+//   ]
+// }
+```
+
+## Traversal options
+
+All path functions accept an options object to customize traversal:
+
+### `events`
+
+Specify event payloads for events that require data. By default, events are traversed with just their type.
+
+```ts
+import { setup, assign } from 'xstate';
+import { getShortestPaths } from 'xstate/graph';
+
+const counterMachine = setup({
+  types: {
+    events: {} as { type: 'INC'; value: number }
+  }
+}).createMachine({
+  id: 'counter',
+  initial: 'active',
+  context: { count: 0 },
+  states: {
+    active: {
+      on: {
+        INC: {
+          actions: assign({
+            count: ({ context, event }) => context.count + event.value
+          })
+        }
+      }
+    }
+  }
+});
+
+const paths = getShortestPaths(counterMachine, {
+  events: [
+    { type: 'INC', value: 1 },
+    { type: 'INC', value: 5 },
+    { type: 'INC', value: 10 }
+  ]
+});
+```
+
+You can also provide a function that returns events based on the current state:
+
+```ts
+const paths = getShortestPaths(counterMachine, {
+  events: (state) => {
+    // Generate different events based on context
+    if (state.context.count < 10) {
+      return [{ type: 'INC', value: 1 }];
+    }
+    return [{ type: 'INC', value: 10 }];
+  }
+});
+```
+
+### `toState`
+
+Filter paths to only those reaching states matching a condition:
+
+```ts
+const paths = getShortestPaths(feedbackMachine, {
+  toState: (state) => state.value === 'closed'
+});
+
+// Only returns paths ending in 'closed' state
+```
+
+### `fromState`
+
+Start traversal from a specific state instead of the initial state:
+
+```ts
+import { createActor } from 'xstate';
+
+const actor = createActor(feedbackMachine).start();
+actor.send({ type: 'CLICK_BAD' });
+
+const paths = getShortestPaths(feedbackMachine, {
+  fromState: actor.getSnapshot()
+});
+
+// Paths starting from 'form' state
+```
+
+### `stopWhen`
+
+Stop traversing when a condition is met:
+
+```ts
+const paths = getShortestPaths(counterMachine, {
+  events: [{ type: 'INC', value: 1 }],
+  stopWhen: (state) => state.context.count >= 5
+});
+
+// Stops exploring paths once count reaches 5
+```
+
+### `limit`
+
+Maximum number of states to traverse (prevents infinite loops with context):
+
+```ts
+const paths = getShortestPaths(counterMachine, {
+  events: [{ type: 'INC', value: 1 }],
+  limit: 100 // Stop after 100 unique states
+});
+```
+
+### `serializeState` and `serializeEvent`
+
+Customize how states and events are serialized for comparison. By default, states are serialized as JSON strings of their value and context.
+
+```ts
+const paths = getShortestPaths(machine, {
+  serializeState: (state) => {
+    // Only consider state value, ignore context
+    return JSON.stringify(state.value);
+  },
+  serializeEvent: (event) => {
+    // Custom event serialization
+    return event.type;
+  }
+});
+```
+
+## Working with context
+
+When machines have dynamic context, the state space can become infinite. Use `stopWhen` or `limit` to bound the traversal:
+
+```ts
+import { setup, assign } from 'xstate';
+import { getShortestPaths } from 'xstate/graph';
+
+const counterMachine = setup({
+  types: {
+    events: {} as { type: 'INC'; value: number } | { type: 'DEC'; value: number }
+  }
+}).createMachine({
+  id: 'counter',
+  initial: 'counting',
+  context: { count: 0 },
+  states: {
+    counting: {
+      always: {
+        target: 'done',
+        guard: ({ context }) => context.count >= 10
+      },
+      on: {
+        INC: {
+          actions: assign({
+            count: ({ context, event }) => context.count + event.value
+          })
+        },
+        DEC: {
+          actions: assign({
+            count: ({ context, event }) => context.count - event.value
+          })
+        }
+      }
+    },
+    done: {
+      type: 'final'
+    }
+  }
+});
+
+const paths = getShortestPaths(counterMachine, {
+  events: [
+    { type: 'INC', value: 1 },
+    { type: 'INC', value: 5 },
+    { type: 'DEC', value: 1 }
+  ],
+  // Bound the state space
+  stopWhen: (state) => state.context.count > 15 || state.context.count < -5
+});
+```
+
+## `getAdjacencyMap(logic, options?)`
+
+Returns a map representing the state machine as a graph, with states as keys and their transitions as values.
+
+```ts
+import { getAdjacencyMap } from 'xstate/graph';
+
+const adjacencyMap = getAdjacencyMap(feedbackMachine);
+
+// Structure:
+// {
+//   '"question"': {
+//     state: { value: 'question', ... },
+//     transitions: {
+//       '{"type":"CLICK_GOOD"}': { event: {...}, state: {...} },
+//       '{"type":"CLICK_BAD"}': { event: {...}, state: {...} },
+//       '{"type":"CLOSE"}': { event: {...}, state: {...} }
+//     }
+//   },
+//   '"form"': { ... },
+//   ...
+// }
+```
+
+## `toDirectedGraph(machine)`
+
+Converts a machine to a directed graph structure for visualization:
+
+```ts
+import { toDirectedGraph } from 'xstate/graph';
+
+const digraph = toDirectedGraph(feedbackMachine);
+
+// Structure:
+// {
+//   id: 'feedback',
+//   stateNode: StateNode,
+//   children: [
+//     { id: 'feedback.question', children: [], edges: [...] },
+//     { id: 'feedback.form', children: [], edges: [...] },
+//     ...
+//   ],
+//   edges: [
+//     { source: StateNode, target: StateNode, transition: {...} },
+//     ...
+//   ]
+// }
+```
+
+## Model-based testing
+
+Path generation enables model-based testing - generating test cases directly from your state machine. Use `createTestModel` to wrap your machine with testing utilities:
+
+```ts
+import { createMachine } from 'xstate';
+import { createTestModel } from 'xstate/graph';
+
+const toggleMachine = createMachine({
+  id: 'toggle',
+  initial: 'inactive',
+  states: {
+    inactive: {
+      on: { TOGGLE: 'active' }
+    },
+    active: {
+      on: { TOGGLE: 'inactive' }
+    }
+  }
+});
+
+const model = createTestModel(toggleMachine);
+
+// Get paths for testing
+const paths = model.getShortestPaths();
+
+// Use with your test framework
+describe('toggle', () => {
+  for (const path of paths) {
+    it(`reaches ${JSON.stringify(path.state.value)}`, async () => {
+      await path.test({
+        events: {
+          TOGGLE: async () => {
+            // Execute the toggle action in your app
+            await page.click('#toggle-button');
+          }
+        },
+        states: {
+          inactive: async (state) => {
+            // Assert the app is in inactive state
+            await expect(page.locator('#status')).toHaveText('Inactive');
+          },
+          active: async (state) => {
+            await expect(page.locator('#status')).toHaveText('Active');
+          }
+        }
+      });
+    });
+  }
+});
+```
+
+### TestModel methods
+
+* `model.getShortestPaths(options?)` - get shortest paths
+* `model.getSimplePaths(options?)` - get all simple paths
+* `model.getPaths(pathGenerator)` - use custom path generator
+
+### Path testing
+
+Each path returned by `TestModel` has a `test` method that:
+
+1. Starts from the initial state
+2. Executes each event in the path using your event handlers
+3. Verifies each state using your state assertions
+
+```ts
+path.test({
+  events: {
+    // Map event types to async functions that execute the event
+    CLICK_GOOD: async () => await page.click('.good-button'),
+    SUBMIT: async () => await page.click('button[type="submit"]')
+  },
+  states: {
+    // Map state values to async assertions
+    question: async () => await expect(page.locator('.question')).toBeVisible(),
+    form: async () => await expect(page.locator('form')).toBeVisible(),
+    thanks: async () => await expect(page.locator('.thanks')).toBeVisible()
+  }
+});
+```
+
+<Callout>
+  You can [generate test paths from your state machines in Stately Studio](generate-test-paths.mdx), with support for Playwright, Vitest, and custom formats.
+</Callout>
+
+## Path deduplication
+
+When using simple paths, you may get many paths where shorter paths are prefixes of longer ones. The `deduplicatePaths` utility removes redundant paths:
+
+```ts
+import { getSimplePaths, deduplicatePaths } from 'xstate/graph';
+
+const allPaths = getSimplePaths(machine);
+const uniquePaths = deduplicatePaths(allPaths);
+
+// Removes paths that are prefixes of longer paths
+// e.g., [A→B] is removed if [A→B→C] exists
+```
+
+## Example: Complete test generation
+
+```ts
+import { createMachine } from 'xstate';
+import { createTestModel } from 'xstate/graph';
+import { test, expect } from 'vitest';
+
+const authMachine = createMachine({
+  id: 'auth',
+  initial: 'loggedOut',
+  states: {
+    loggedOut: {
+      on: {
+        LOGIN: 'loggingIn'
+      }
+    },
+    loggingIn: {
+      on: {
+        SUCCESS: 'loggedIn',
+        FAILURE: 'loggedOut'
+      }
+    },
+    loggedIn: {
+      on: {
+        LOGOUT: 'loggedOut'
+      }
+    }
+  }
+});
+
+const model = createTestModel(authMachine);
+
+describe('auth flows', () => {
+  const paths = model.getShortestPaths({
+    toState: (state) => state.matches('loggedIn')
+  });
+
+  for (const path of paths) {
+    test(path.description, async () => {
+      // Setup
+      const app = await setupApp();
+
+      await path.test({
+        events: {
+          LOGIN: async () => {
+            await app.fillLoginForm('user', 'pass');
+            await app.submit();
+          },
+          SUCCESS: async () => {
+            await app.mockAuthSuccess();
+          },
+          LOGOUT: async () => {
+            await app.clickLogout();
+          }
+        },
+        states: {
+          loggedOut: async () => {
+            expect(app.isLoggedIn()).toBe(false);
+          },
+          loggingIn: async () => {
+            expect(app.isLoading()).toBe(true);
+          },
+          loggedIn: async () => {
+            expect(app.isLoggedIn()).toBe(true);
+          }
+        }
+      });
+    });
+  }
+});
+```
+
+
 # Guards (/docs/guards)
 
 A **guard** is a condition function that the machine checks when it goes through an event. If the condition is `true`, the machine follows the transition to the next state. If the condition is `false`, the machine follows the rest of the conditions to the next state.
@@ -6112,6 +6756,8 @@ A **guarded transition** is a transition that is enabled only if its `guard` eva
 Guards should be pure, synchronous functions that return either `true` or `false`.
 
 ```ts
+import { createMachine } from 'xstate';
+
 const feedbackMachine = createMachine(
   {
     // ...
@@ -6150,6 +6796,8 @@ If you want to have a single event transition to different states in certain sit
 You can specify a default transition to be taken as the last transition in the array. If none of the guards evaluate to `true`, the default transition will be taken.
 
 ```ts
+import { createMachine } from 'xstate';
+
 const feedbackMachine = createMachine({
   // ...
   prompt: {
@@ -6193,6 +6841,8 @@ on: {
 A guard can be defined as an object with a `type`, which is the type of guard that references the provided guard implementation, and optional `params`, which can be read by the implemented guard:
 
 ```ts
+import { createMachine } from 'xstate';
+
 const feedbackMachine = createMachine(
   {
     // ...
@@ -6227,6 +6877,8 @@ const feedbackMachine = createMachine(
 Guards can later be provided or overridden by providing custom guard implementations in the `.provide()` method:
 
 ```ts
+import { createActor } from 'xstate';
+
 const feedbackActor = createActor(
   // [!code highlight:11]
   feedbackMachine.provide({
@@ -6252,6 +6904,10 @@ XState provides higher-level guards, which are guards that compose other guards.
 * `not(...)` - evaluates to `true` if the guard in `not(guard)` evaluates to `false`
 
 ```ts
+import { and } from 'xstate';
+
+// ...
+
 on: {
   event: {
     guard: and(['isValid', 'isAuthorized']);
@@ -6262,6 +6918,10 @@ on: {
 Higher-level guards can be combined:
 
 ```ts
+import { and, or } from 'xstate';
+
+// ...
+
 on: {
   event: {
     guard: and(['isValid', or(['isAuthorized', 'isGuest'])]);
@@ -6274,6 +6934,10 @@ on: {
 You can use the `stateIn(stateValue)` guard to check if the current state matches the provided `stateValue`. This is most useful for [parallel states](parallel-states).
 
 ```ts
+import { stateIn } from 'xstate';
+
+// ...
+
 on: {
   event: {
     guard: stateIn('#state1');
@@ -6449,6 +7113,8 @@ The history state can be deep or shallow:
 * A deep history state remembers the deepest active state or states inside its child states.
 
 ```ts
+import { createMachine } from 'xstate';
+
 const checkoutMachine = createMachine({
   // ...
   states: {
@@ -6488,6 +7154,8 @@ const checkoutMachine = createMachine({
 ### Cheatsheet: create a history state (shallow by default)
 
 ```ts
+import { createMachine } from 'xstate';
+
 const machine = createMachine({
   // ...
   states: {
@@ -6502,6 +7170,8 @@ const machine = createMachine({
 ### Cheatsheet: create a deep history state
 
 ```ts
+import { createMachine } from 'xstate';
+
 const machine = createMachine({
   // ...
   states: {
@@ -6519,6 +7189,8 @@ const machine = createMachine({
 ### Cheatsheet: create a history state with a target
 
 ```ts
+import { createMachine } from 'xstate';
+
 const machine = createMachine({
   // ...
   initialState: 'firstState',
@@ -6541,20 +7213,9 @@ import { LinkIcon, MoreHorizontal } from 'lucide-react';
 
 You can share an image of your machine anywhere that supports images. You can use the image URL for live-updating images where the machine is always updated with your latest changes. Machine images can be helpful in documentation, including GitHub pull requests.
 
-The image below is embedded using the copy image URL. Try switching between light and dark mode in the docs top bar; the image will change color mode too.
+The machine below demonstrates the copy image URL flow.
 
-{/* <p>
-  <ThemedImage
-    alt="State machine for the Copy image URL flow. An initial state of Viewing machine which transitions to Left drawer open via an event of Open left drawer. The use … icon event transitions from left drawer open to Machine options menu open."
-    sources={{
-      light:
-        'https://stately.ai/registry/machines/1b050e43-c8a5-4e28-b881-71eadcc5b8a1.light.png',
-      dark: 'https://stately.ai/registry/machines/1b050e43-c8a5-4e28-b881-71eadcc5b8a1.dark.png',
-    }}
-  />
-  </p> */}
-
-![State machine for the copy image URL flow in light mode.](https://stately.ai/registry/machines/1b050e43-c8a5-4e28-b881-71eadcc5b8a1.light.png)
+<EmbedMachine name="Copy image URL flow" embedURL="https://stately.ai/registry/editor/embed/1b050e43-c8a5-4e28-b881-71eadcc5b8a1" />
 
 Your machine image will only be available if:
 
@@ -6789,7 +7450,7 @@ You can connect a GitHub repo to a new project in Stately Studio, keeping update
   While this feature is in beta, it works best when connecting less than 100
   files. For larger repos, we recommend creating single-file PRs. Read about
   that feature
-  [here](../../docs/assets/blog/2024-02-16-changelog#make-github-pull-requests-for-single-files-from-inside-stately-studio).
+  [here](../../blog/2024-02-16-changelog#make-github-pull-requests-for-single-files-from-inside-stately-studio).
 </Callout>
 
 ## Connect GitHub repo
@@ -6923,6 +7584,40 @@ import { Cards, Card } from 'fumadocs-ui/components/card';
     orchestrating and managing complex application logic in JavaScript and TypeScript apps.
   </div>
 </div>
+
+## Quick start
+
+Install XState:
+
+```bash
+npm install xstate
+```
+
+Create a state machine:
+
+```ts
+import { createMachine, createActor } from 'xstate';
+
+const toggleMachine = createMachine({
+  id: 'toggle',
+  initial: 'inactive',
+  states: {
+    inactive: { on: { toggle: 'active' } },
+    active: { on: { toggle: 'inactive' } },
+  },
+});
+
+const toggleActor = createActor(toggleMachine);
+toggleActor.start();
+
+toggleActor.send({ type: 'toggle' });
+console.log(toggleActor.getSnapshot().value); // 'active'
+
+toggleActor.send({ type: 'toggle' });
+console.log(toggleActor.getSnapshot().value); // 'inactive'
+```
+
+[Read the full quick start guide](/docs/quick-start) to learn more.
 
 <Cards>
   <Card href="/docs/states" title={<><RocketIcon size="20" className="mr-2" /> Get started</>}>
@@ -7489,7 +8184,7 @@ The Inspect API is a way to inspect the state transitions of your state machines
 * State transition microsteps
 
 <Callout>
-  [We’ve recently released Stately Inspector](../../docs/assets/blog/2024-01-15-stately-inspector/), a universal tool that enables you to visually inspect the state of any application, frontend or backend, with the visualization of Stately’s editor.
+  [We’ve recently released Stately Inspector](../../blog/2024-01-15-stately-inspector/), a universal tool that enables you to visually inspect the state of any application, frontend or backend, with the visualization of Stately’s editor.
 
   [Learn more about Stately Inspector](inspector)
 </Callout>
@@ -7702,7 +8397,7 @@ Example of a microstep inspection event:
 Stately Inspector is a tool that allows you to inspect your application’s state visually. It primarily works with frontend applications using XState but can also work with backend code and code that uses any state management solution.
 
 <Callout>
-  [Read about our recent release of Stately Inspector on our blog](../../docs/assets/blog/2024-01-15-stately-inspector/).
+  [Read about our recent release of Stately Inspector on our blog](../blog/2024-01-15-introducing-stately-inspector/).
 </Callout>
 
 ## Install Stately Inspector
@@ -9426,6 +10121,63 @@ console.log(initialSnapshot.value);
 // logs 'question'
 ```
 
+## Next transitions
+
+*Since XState version 5.26.0*
+
+You can get all potential next transitions from a given state using the `getNextTransitions(state)` function. This is useful for introspecting what events a state machine actor can respond to in its current state.
+
+```ts
+import { createMachine, createActor, getNextTransitions } from 'xstate';
+
+const machine = createMachine({
+  initial: 'idle',
+  states: {
+    idle: {
+      on: {
+        start: { target: 'running' },
+        reset: { target: 'idle' },
+      },
+    },
+    running: {
+      on: {
+        stop: { target: 'idle' },
+        pause: { target: 'paused' },
+      },
+    },
+    paused: {
+      on: {
+        resume: { target: 'running' },
+        stop: { target: 'idle' },
+      },
+    },
+  },
+});
+
+const actor = createActor(machine).start();
+
+const transitions = getNextTransitions(actor.getSnapshot());
+
+console.log(transitions.map((t) => t.eventType));
+// logs ['start', 'reset']
+```
+
+The function returns an array of transition definitions, each of which is an object with the following properties:
+
+* `eventType` - The event type of the transition
+* `target` - The state node that the transition targets
+* `source` - The state node where the transition originates from
+* `actions` - The actions that will be executed during the transition
+* `reenter` - Whether the transition is reentrant
+* `guard` - The guard that will be evaluated to determine if the transition is enabled
+
+This is particularly useful for:
+
+* Building UIs that show available actions
+* Debugging which transitions are possible
+* Testing state machine behavior
+* Generating documentation
+
 ## Specifying types
 
 You can specify TypeScript types inside the machine setup using the `.types` property:
@@ -9678,7 +10430,7 @@ const machineWithImpls = someMachine.provide({
 The guide below explains how to migrate from XState version 4 to version 5. Migrating from XState v4 to v5 should be a straightforward process. If you get stuck or have any questions, please reach out to the Stately team on [our Discord](https://discord.gg/xstate).
 
 <Callout>
-  Read [David’s blog post on the launch of XState v5](../../docs/assets/blog/2023-12-01-xstate-v5).
+  Read [David’s blog post on the launch of XState v5](../../blog/2023-12-01-xstate-v5).
 </Callout>
 
 This guide is for developers who want to update their codebase from v4 to v5 and should also be valuable for any developers wanting to know the differences between v4 and v5.
@@ -12275,7 +13027,7 @@ It's normal to have a state machine that has no other states. This is useful for
 Here is an example of a simple counting machine with `increment`, `decrement`, and `reset` events, and no states, other than the implicit top-level root state:
 
 ```ts
-import { createMachine } from 'xstate';
+import { createMachine, assign } from 'xstate';
 
 const countingMachine = createMachine({
   id: 'counting',
@@ -12411,6 +13163,8 @@ When designing state machines with parent states, follow these best practices:
 ### Example: Form Validation
 
 ```ts
+import { createMachine } from 'xstate';
+
 const formMachine = createMachine({
   initial: 'idle',
   states: {
@@ -12453,6 +13207,8 @@ In this example, the `validating` parent state groups related states that handle
 ### Cheatsheet: creating parent states
 
 ```ts
+import { createMachine } from 'xstate';
+
 // The machine is the root-level parent state
 const machine = createMachine({
   // Initial child state of the machine
@@ -12695,7 +13451,7 @@ const restoredActor = createActor(actorMachine, {
 
 ## Resources
 
-* [Blog: Persisting state in XState](../../docs/assets/blog/2023-10-02-persisting-state)
+* [Blog: Persisting state in XState](../../blog/2023-10-02-persisting-state)
 
 
 # Projects (/docs/projects)
@@ -14069,22 +14825,7 @@ When you make a state machine in [Stately Studio](https://stately.ai/editor), it
 
 A state describes the machine’s status or mode, which could be as simple as *Asleep* and *Awake*. A state machine can only be in one state at a time.
 
-{/* no alt because the image is already described in the surrounding text */}
-
-{/* <p>
-  <ThemedImage
-    alt="Dog state machine with asleep and awake states. There’s a warning on the awake state because there’s no transitions which means the awake state cannot be reached."
-    sources={{
-      light:
-        'https://stately.ai/registry/machines/469f2d59-551f-43cb-bfc0-e6f3ea0f9d87.light.png',
-      dark: 'https://stately.ai/registry/machines/469f2d59-551f-43cb-bfc0-e6f3ea0f9d87.dark.png',
-    }}
-  />
-  </p> */}
-
-![Dog state machine with asleep and awake states. There’s a warning on the awake state because there’s no transitions which means the awake state cannot be reached.](https://stately.ai/registry/machines/469f2d59-551f-43cb-bfc0-e6f3ea0f9d87.light.png)
-
-[View the dog states machine in Stately Studio](https://stately.ai/registry/editor/1f84ff0d-fe41-4a92-ad5c-fadfa8b37ffb?machineId=469f2d59-551f-43cb-bfc0-e6f3ea0f9d87).
+<EmbedMachine name="Dog states" embedURL="https://stately.ai/registry/editor/embed/1f84ff0d-fe41-4a92-ad5c-fadfa8b37ffb?machineId=469f2d59-551f-43cb-bfc0-e6f3ea0f9d87" />
 
 A dog is always **asleep** or **awake**. The dog can’t be asleep and awake at the same time, and it’s impossible for the dog to be neither asleep nor awake. There are only these two states, a precisely limited, *finite* number of states.
 
@@ -14131,22 +14872,7 @@ How the dog goes between **asleep** and **awake** is through **transitions**. E
 
 Transitions are “deterministic”; each combination of state and event always points to the same next state. Dogs never **wake up** to become **asleep** or **fall asleep** to become **awake**.
 
-{/* no alt because the image is already described in the surrounding text */}
-
-{/* <p>
-  <ThemedImage
-    alt=""
-    sources={{
-      light:
-        'https://stately.ai/registry/machines/e48e774e-c31f-4e51-a934-6b795c12b2b9.light.png',
-      dark: 'https://stately.ai/registry/machines/e48e774e-c31f-4e51-a934-6b795c12b2b9.dark.png',
-    }}
-  />
-  </p> */}
-
-![Dog states machine with events and transitions.](https://stately.ai/registry/machines/e48e774e-c31f-4e51-a934-6b795c12b2b9.light.png)
-
-[View the dog states machine with events and transitions in Stately Studio](https://stately.ai/registry/editor/1f84ff0d-fe41-4a92-ad5c-fadfa8b37ffb?machineId=e48e774e-c31f-4e51-a934-6b795c12b2b9).
+<EmbedMachine name="Dog states with transitions" embedURL="https://stately.ai/registry/editor/embed/1f84ff0d-fe41-4a92-ad5c-fadfa8b37ffb?machineId=e48e774e-c31f-4e51-a934-6b795c12b2b9" />
 
 With its two finite states and transitions, this tiny dog process is a *Finite State Machine.* A state machine is used to describe the behavior of something. The machine describes the thing’s states and the transitions between those states. It’s a Finite State Machine because it has a finite number of states. (Sometimes abbreviated to FSM by folks who love jargon).
 
@@ -14192,20 +14918,7 @@ Most processes with states will have a *final state*, the last state when the pr
 
 In the dog walking statechart, the final state would be **walk complete**.
 
-{/* <p>
-  <ThemedImage
-    alt="Dog walking statechart showing waiting state transitioning through the leave home event to the on a walk state, then transitioning through the arrive home event to the final state of walk complete."
-    sources={{
-      light:
-        'https://stately.ai/registry/machines/988d8d05-86ba-422a-8a28-d13cbf54d481.light.png',
-      dark: 'https://stately.ai/registry/machines/988d8d05-86ba-422a-8a28-d13cbf54d481.dark.png',
-    }}
-  />
-  </p> */}
-
-![Dog walking statechart showing waiting state transitioning through the leave home event to the on a walk state, then transitioning through the arrive home event to the final state of walk complete.](https://stately.ai/registry/machines/988d8d05-86ba-422a-8a28-d13cbf54d481.light.png)
-
-[View the dog walk machine in Stately Studio](https://stately.ai/registry/editor/1f84ff0d-fe41-4a92-ad5c-fadfa8b37ffb?machineId=988d8d05-86ba-422a-8a28-d13cbf54d481).
+<EmbedMachine name="Dog walking" embedURL="https://stately.ai/registry/editor/embed/1f84ff0d-fe41-4a92-ad5c-fadfa8b37ffb?machineId=988d8d05-86ba-422a-8a28-d13cbf54d481" />
 
 [Read more about final states](final-states)
 
@@ -14215,22 +14928,7 @@ A parent state is a state that can contain more states, also known as child stat
 
 A parent state is symbolised by a labelled rectangle box that acts as a container for its child states. Parent states are sometimes known as *compound states*.
 
-{/* no alt because the image is already described in the surrounding text */}
-
-{/* <p>
-  <ThemedImage
-    alt=""
-    sources={{
-      light:
-        'https://stately.ai/registry/machines/aa8a9c5d-8fd9-4e47-b71a-bda219cda066.light.png',
-      dark: 'https://stately.ai/registry/machines/aa8a9c5d-8fd9-4e47-b71a-bda219cda066.dark.png',
-    }}
-  />
-  </p> */}
-
-![Dog walk machine with parent state.](https://stately.ai/registry/machines/aa8a9c5d-8fd9-4e47-b71a-bda219cda066.light.png)
-
-[View the dog walk machine in Stately Studio](https://stately.ai/registry/editor/1f84ff0d-fe41-4a92-ad5c-fadfa8b37ffb?machineId=aa8a9c5d-8fd9-4e47-b71a-bda219cda066).
+<EmbedMachine name="Dog walk with parent state" embedURL="https://stately.ai/registry/editor/embed/1f84ff0d-fe41-4a92-ad5c-fadfa8b37ffb?machineId=aa8a9c5d-8fd9-4e47-b71a-bda219cda066" />
 
 A parent state should also specify which child state is the initial state. In the **on a walk** parent state, the initial state is **walking**.
 
@@ -14248,22 +14946,7 @@ A parallel state is a state where all of its child states, also known as regions
 
 Inside the **on a walk** parallel state, there could be two regions. One region contains the dog’s activity child states of **walking** and **running**, and the other region containing the dog’s tail states of **wagging** and **not wagging**. The dog can walk and wag its tail or run and wag its tail, it can also do both of these activities without wagging its tail.
 
-{/* no alt because the image is already described in the surrounding text */}
-
-{/* <p>
-  <ThemedImage
-    alt=""
-    sources={{
-      light:
-        'https://stately.ai/registry/machines/1f43dcd3-255c-40bf-b6b0-eba9a2bccb23.light.png',
-      dark: 'https://stately.ai/registry/machines/1f43dcd3-255c-40bf-b6b0-eba9a2bccb23.dark.png',
-    }}
-  />
-  </p> */}
-
-![Dog walk machine with parallel state.](https://stately.ai/registry/machines/1f43dcd3-255c-40bf-b6b0-eba9a2bccb23.light.png)
-
-[View the dog walk machine in Stately Studio](https://stately.ai/registry/editor/1f84ff0d-fe41-4a92-ad5c-fadfa8b37ffb?machineId=1f43dcd3-255c-40bf-b6b0-eba9a2bccb23).
+<EmbedMachine name="Dog walk with parallel state" embedURL="https://stately.ai/registry/editor/embed/1f84ff0d-fe41-4a92-ad5c-fadfa8b37ffb?machineId=1f43dcd3-255c-40bf-b6b0-eba9a2bccb23" />
 
 Both regions should also specify which child state is the initial state. In our **tail** region, the initial state is **not wagging**.
 
@@ -14277,22 +14960,7 @@ A helpful way to describe a self-transition is “doing something, not going som
 
 In a **dog begging** process, there would be a **begging** state with a **gets treat** event. And for the dogs who love their food, no matter how many times you go through the **gets treat** event, the dog returns to its **begging** state.
 
-{/* no alt because the image is already described in the surrounding text */}
-
-{/* <p style={{ 'max-width': '500px' }}>
-  <ThemedImage
-    alt=""
-    sources={{
-      light:
-        'https://stately.ai/registry/machines/933419cb-dd94-453c-a2b1-de2290c0a5a5.light.png',
-      dark: 'https://stately.ai/registry/machines/933419cb-dd94-453c-a2b1-de2290c0a5a5.dark.png',
-    }}
-  />
-  </p> */}
-
-![Dog begging machine.](https://stately.ai/registry/machines/933419cb-dd94-453c-a2b1-de2290c0a5a5.light.png)
-
-[View the dog begging machine in Stately Studio](https://stately.ai/registry/editor/17986605-400c-4c00-8b33-47e3ecca478b?machineId=933419cb-dd94-453c-a2b1-de2290c0a5a5).
+<EmbedMachine name="Dog begging" embedURL="https://stately.ai/registry/editor/embed/17986605-400c-4c00-8b33-47e3ecca478b?machineId=933419cb-dd94-453c-a2b1-de2290c0a5a5" />
 
 [Read more about self transitions](/docs/transitions/#self-transitions)
 
@@ -14464,6 +15132,8 @@ The state object represents the current state of a running machine ([actor](acto
 * **`meta`**: an object containing state node meta data.
 
 ```ts
+import { createMachine, createActor } from 'xstate';
+
 const feedbackMachine = createMachine({
   id: 'feedback',
   initial: 'question',
@@ -14502,6 +15172,10 @@ console.log(actor.getSnapshot());
 You can access an actor’s emitted state (or *snapshot*) by subscribing to or reading from the actor’s `.getSnapshot()` method.
 
 ```ts
+import { createActor } from 'xstate';
+
+// ...
+
 const actor = createActor(feedbackMachine);
 
 actor.subscribe((snapshot) => {
@@ -14574,6 +15248,8 @@ The `state.children` property represents all currently spawned/invoked actors in
 The `state.can(event)` method determines whether an `event` object will cause a state change if sent to the machine actor. The method will return `true` if the state will change due to the `event` being sent; otherwise the method will return `false`:
 
 ```js
+import { createMachine, createActor } from 'xstate';
+
 const feedbackMachine = createMachine({
   // ...
   states: {
@@ -14601,7 +15277,7 @@ console.log(currentState.can({ type: 'feedback.submit' }));
 // - the 'isValid' guard evaluates to `true`
 ```
 
-A state is considered “changed” if a transition is enabled for the given `state` and `event` object.
+A state is considered "changed" if a transition is enabled for the given `state` and `event` object.
 
 <Callout>
   The `state.can(...)` method will also check transition guards by executing them. Transition guards should be pure functions.
@@ -14612,6 +15288,8 @@ A state is considered “changed” if a transition is enabled for the given `st
 The `state.hasTag(tag)` method determines whether any state nodes in the current state value have the given `tag`. This is useful for determining whether a state is a particular state, or whether a state is a member of a particular state group.
 
 ```js
+import { createMachine, createActor } from 'xstate';
+
 const feedbackMachine = createMachine({
   // ...
   states: {
@@ -14669,6 +15347,8 @@ if (state.status === 'done') {
 The `state.getMeta()` method represents the metadata of all the state nodes in the `state`. It is an object with keys that represent the state node IDs, and values that are the metadata of that state node.
 
 ```ts
+import { createMachine, createActor } from 'xstate';
+
 const feedbackMachine = createMachine({
   id: 'feedback',
   // ...
@@ -16136,6 +16816,8 @@ const machine = createMachine({
 Usually, transitions are between two sibling states. These transitions are defined by setting the `target` as the sibling state key.
 
 ```ts
+import { createMachine } from 'xstate';
+
 const feedbackMachine = createMachine({
   // ...
   states: {
@@ -16206,7 +16888,7 @@ This can be changed with the transition `reenter` property: if you want the pare
 **Self-transitions with `reenter: true`:**
 
 ```ts
-import { createMachine } from 'xstate';
+import { createMachine, createActor } from 'xstate';
 
 const machine = createMachine({
   initial: 'someState',
@@ -16242,6 +16924,8 @@ actor.send({ type: 'event.thatReenters' });
 **Parent-child (or descendent) transitions with `reenter: true`:**
 
 ```ts
+import { createMachine, createActor } from 'xstate';
+
 const machine = createMachine({
   initial: 'parentState',
   states: {
@@ -16561,6 +17245,8 @@ feedbackActor.send({
 ### Cheatsheet: transition targets
 
 ```ts
+import { createMachine } from 'xstate';
+
 const machine = createMachine({
   initial: 'a',
   states: {
@@ -18821,12 +19507,29 @@ const Component = () => {
 
 # @xstate/store (/docs/xstate-store)
 
-**Version 3.x** ([Version 2.x docs](./xstate-store-v2))
-
 XState Store is a small library for simple state management in JavaScript/TypeScript applications. It is meant for updating store data using **events** for vanilla JavaScript/TypeScript apps, React apps, and more. It is comparable to libraries like Zustand, Redux, and Pinia. For more complex state management, you should use [XState](./xstate) instead, or you can [use XState Store with XState](#using-xstate-store-with-xstate).
 
 <Callout>
+  These are the docs for the latest version 3.x of XState Store. For version 2.x, see [Version 2.x docs](./xstate-store-v2).
+</Callout>
+
+<Callout>
   The `@xstate/store` library requires TypeScript version 5.4 or above.
+</Callout>
+
+## Framework integrations
+
+For framework-specific usage, install the appropriate package:
+
+* **React**: [`@xstate/store-react`](/docs/xstate-store/react)
+* **Vue**: [`@xstate/store-vue`](/docs/xstate-store/vue)
+* **Svelte**: [`@xstate/store-svelte`](/docs/xstate-store/svelte)
+* **Solid**: [`@xstate/store-solid`](/docs/xstate-store/solid)
+* **Angular**: [`@xstate/store-angular`](/docs/xstate-store/angular)
+* **Preact**: [`@xstate/store-preact`](/docs/xstate-store/preact)
+
+<Callout type="warning">
+  **Deprecation notice:** Importing from `@xstate/store/react`, `@xstate/store/solid`, etc. is deprecated. Use the dedicated packages above instead (e.g., `@xstate/store-react`).
 </Callout>
 
 ## Installation
@@ -19563,249 +20266,42 @@ const store = createStore({
 
 ## Usage with React
 
-If you are using React, you can use the `useSelector(store, selector)` hook to subscribe to the store and get the current state.
+Use the `useSelector(store, selector)` hook from [`@xstate/store-react`](/docs/xstate-store/react) to subscribe to the store and get the current state.
 
 ```tsx
-import { createStore } from '@xstate/store';
-import { useSelector } from '@xstate/store/react';
+import { createStore, useSelector } from '@xstate/store-react';
 
-// Create a store
 const store = createStore({
-  context: { count: 0, name: 'David' },
-  on: {
-    inc: (context) => ({
-      ...context,
-      count: context.count + 1,
-    }),
-  },
-});
-
-// Use the `useSelector` hook to subscribe to the store
-function Component(props) {
-  const count = useSelector(store, (state) => state.context.count);
-
-  // This component displays the count and has a button to increment it
-  return (
-    <div>
-      <button onClick={() => store.trigger.inc()}>Increment</button>
-    </div>
-  );
-}
-```
-
-A store can be shared with multiple components, which will all receive the same snapshot from the store instance. Stores are useful for global state management.
-
-### Custom store hooks with `createStoreHook()`
-
-*Since v3.9.0*
-
-The `createStoreHook()` function creates a custom React hook that combines the functionality of `useStore()` and `useSelector()` into a single, convenient hook. This is useful when you want to create reusable store logic that can be easily shared across components.
-
-```tsx
-import { createStoreHook } from '@xstate/store/react';
-
-const useCountStore = createStoreHook({
   context: { count: 0 },
   on: {
-    inc: (ctx, event: { by: number }) => ({
-      ...ctx,
-      count: ctx.count + event.by,
+    inc: (context, event: { by?: number }) => ({
+      count: context.count + (event.by ?? 1),
     }),
   },
 });
 
-// Usage with selector
 function Counter() {
-  const [count, store] = useCountStore((s) => s.context.count);
-
-  return (
-    <div>
-      <div>Count: {count}</div>
-      <button onClick={() => store.trigger.inc({ by: 1 })}>
-        Increment by 1
-      </button>
-      <button onClick={() => store.trigger.inc({ by: 3 })}>
-        Increment by 3
-      </button>
-    </div>
-  );
-}
-
-// Usage without selector (get entire snapshot)
-function CounterWithFullState() {
-  const [snapshot, store] = useCountStore();
-
-  return (
-    <div>
-      <div>Count: {snapshot.context.count}</div>
-      <button onClick={() => store.trigger.inc({ by: 1 })}>Increment</button>
-    </div>
-  );
-}
-```
-
-The resulting hook from `createStoreHook()` returns a `[state, store]` tuple:
-
-* `state`: The selected state (when using a selector) or the entire snapshot (when no selector is provided)
-* `store`: The store instance with all its methods, including `store.trigger` for sending events
-
-You can also provide a custom comparator function as the third argument to optimize re-renders:
-
-```tsx
-function OptimizedCounter() {
-  const [count, store] = useCountStore(
-    (s) => s.context.count,
-    // [!code highlight:2]
-    // Custom comparator function
-    (prev, next) => prev === next, // Only re-render when count actually changes
-  );
-
-  return (
-    <div>
-      <div>Count: {count}</div>
-      <button onClick={() => store.trigger.inc({ by: 1 })}>Increment</button>
-    </div>
-  );
-}
-```
-
-### Local Stores with `useStore()`
-
-The `useStore()` hook allows you to create local stores within React components, similar to `useReducer()`. This is useful when you want to manage component-specific state that doesn't need to be shared globally:
-
-```tsx
-import { useStore, useSelector } from '@xstate/store/react';
-
-function Counter({ initialCount = 0 }) {
-  const store = useStore({
-    context: {
-      count: initialCount,
-    },
-    emits: {
-      increased: (payload: { by: number }) => {},
-    },
-    on: {
-      increment: (context, event: { by: number }, enqueue) => {
-        enqueue.emit.increased({ by: event.by });
-        return { ...context, count: context.count + event.by };
-      },
-    },
-  });
-
   const count = useSelector(store, (state) => state.context.count);
 
   return (
     <div>
-      <div>Count: {count}</div>
-      <button onClick={() => store.trigger.increment({ by: 1 })}>
-        Increment by 1
-      </button>
-      <button onClick={() => store.trigger.increment({ by: 5 })}>
-        Increment by 5
-      </button>
+      <p>Count: {count}</p>
+      <button onClick={() => store.trigger.inc()}>+1</button>
+      <button onClick={() => store.trigger.inc({ by: 5 })}>+5</button>
     </div>
   );
 }
 ```
 
-The store created by `useStore()` has all the same capabilities as a global store:
+For the full React API including `useStore`, `useAtom`, and `createStoreHook`, see the [React documentation](/docs/xstate-store/react).
 
-* Send events using `store.trigger` or `store.send()`
-* Select state using `useSelector()`
-* Listen to emitted events
-* Use effects and side effects
-* Use selectors
+## Usage with other frameworks
 
-### Listening to Emitted Events
-
-You can listen to events emitted by the local store via `useEffect(…)`:
-
-```tsx
-function Counter({
-  initialCount = 0,
-  onIncreased,
-}: {
-  initialCount?: number;
-  onIncreased?: (by: number) => void;
-}) {
-  const store = useStore({
-    // ... store config
-  });
-
-  // Listen to emitted events
-  useEffect(() => {
-    const subscription = store.on('increased', ({ by }) => {
-      onIncreased?.(by);
-    });
-
-    return subscription.unsubscribe;
-  }, [store, onIncreased]);
-
-  // ... rest of component
-}
-```
-
-### Initializing with Props
-
-Local stores can be initialized using component props, making them more reusable:
-
-```tsx
-function Counter({ initialCount = 0, step = 1 }) {
-  const store = useStore({
-    context: {
-      count: initialCount,
-      step,
-    },
-    on: {
-      increment: (context) => ({
-        ...context,
-        count: context.count + context.step,
-      }),
-    },
-  });
-
-  // ... rest of component
-}
-```
-
-### Props and Store State
-
-Similar to `useState` and `useReducer`, changes to props after the initial render will not automatically update the store's state. The store's state can only be updated by sending events:
-
-```tsx
-function Counter({ currentCount = 0 }) {
-  const store = useStore({
-    context: {
-      // currentCount is only used once during initialization
-      count: currentCount,
-    },
-    on: {
-      countUpdated: (context, event: { value: number }) => ({
-        ...context,
-        count: event.value,
-      }),
-    },
-  });
-
-  // If you need to update the store when props change,
-  // you'll need to send an event explicitly:
-  useEffect(() => {
-    store.trigger.countUpdated({ value: currentCount });
-  }, [store, currentCount]);
-
-  // ... rest of component
-}
-```
-
-This behavior ensures that state updates are always explicit and traceable through events, maintaining a predictable data flow in your application.
-
-<Callout>
-  If you need to synchronize store state with prop changes, consider whether the value should be stored in the store at all. Sometimes it's simpler to use the prop directly in your component and compute derived values outside of the store.
-</Callout>
-
-## Usage with Solid
-
-*Documentation coming soon!*
+* **Vue**: See [`@xstate/store-vue`](/docs/xstate-store/vue)
+* **Svelte**: See [`@xstate/store-svelte`](/docs/xstate-store/svelte)
+* **Solid**: See [`@xstate/store-solid`](/docs/xstate-store/solid)
+* **Angular**: See [`@xstate/store-angular`](/docs/xstate-store/angular)
+* **Preact**: See [`@xstate/store-preact`](/docs/xstate-store/preact)
 
 ## Undo/Redo
 
@@ -21406,12 +21902,13 @@ textActor.send({ type: 'text.cancel' });
 
 ## Packages
 
-* 🤖 [xstate](https://github.com/statelyai/xstate/): Core finite state machine and statecharts library + actors
-* 📉 [@xstate/graph](https://github.com/statelyai/xstate/tree/main/packages/xstate-graph): Graph traversal utilities for XState
+* 🤖 [xstate](https://github.com/statelyai/xstate/): Core finite state machine and statecharts library + interpreter, including graph traversal and model-based testing utilities
 * ⚛️ [@xstate/react](https://github.com/statelyai/xstate/tree/main/packages/xstate-react): React hooks and utilities for using XState in React applications
 * 💚 [@xstate/vue](https://github.com/statelyai/xstate/tree/main/packages/xstate-vue): Vue composition functions and utilities for using XState in Vue applications
 * 🎷 [@xstate/svelte](https://github.com/statelyai/xstate/tree/main/packages/xstate-svelte): Svelte utilities for using XState in Svelte applications
-* ✅ [@xstate/test](https://github.com/statelyai/xstate/tree/main/packages/xstate-test): Model-Based-Testing utilities (using XState) for testing any software
+* 🥏 [@xstate/solid](https://github.com/statelyai/xstate/tree/main/packages/xstate-solid)	Solid hooks and utilities for using XState in Solid applications
+* 🔍 [@statelyai/inspect](https://github.com/statelyai/inspect)	Inspection utilities for XState
+* 🏪 [@xstate/store](https://github.com/statelyai/xstate/tree/main/packages/xstate-store)	Small library for simple state management
 
 
 # AI Agents (/docs/agents/agents)
@@ -21861,3 +22358,693 @@ Agent logic is most powerful when used with a state-machine-powered agent, but y
 ## Examples
 
 See the current examples in the [examples directory](https://github.com/statelyai/agent/tree/main/examples).
+
+
+# @xstate/store-angular (/docs/xstate-store/angular)
+
+The `@xstate/store-angular` package provides Angular bindings for [XState Store](/docs/xstate-store). It includes utilities for subscribing to store state as Angular signals.
+
+<Callout>
+  This package re-exports all of `@xstate/store`, so you only need to install `@xstate/store-angular`.
+</Callout>
+
+## Installation
+
+<Tabs items={['npm', 'pnpm', 'yarn']}>
+  <Tab value="npm" label="npm">
+    ```bash
+    npm install @xstate/store-angular
+    ```
+  </Tab>
+
+  <Tab value="pnpm" label="pnpm">
+    ```bash
+    pnpm install @xstate/store-angular
+    ```
+  </Tab>
+
+  <Tab value="yarn" label="yarn">
+    ```bash
+    yarn add @xstate/store-angular
+    ```
+  </Tab>
+</Tabs>
+
+## Quick start
+
+```ts
+import { Component } from '@angular/core';
+import { createStore, injectStore } from '@xstate/store-angular';
+
+const store = createStore({
+  context: { count: 0 },
+  on: {
+    inc: (context, event: { by?: number }) => ({
+      count: context.count + (event.by ?? 1),
+    }),
+  },
+});
+
+@Component({
+  selector: 'app-counter',
+  standalone: true,
+  template: `
+    <div>
+      <p>Count: {{ count() }}</p>
+      <button (click)="store.trigger.inc()">+1</button>
+      <button (click)="store.trigger.inc({ by: 5 })">+5</button>
+    </div>
+  `,
+})
+export class CounterComponent {
+  store = store;
+  count = injectStore(store, (state) => state.context.count);
+}
+```
+
+## API
+
+### `injectStore(store, selector?, compare?)`
+
+Creates an Angular signal that subscribes to a store and returns a selected value.
+
+```ts
+import { Component } from '@angular/core';
+import { injectStore } from '@xstate/store-angular';
+
+@Component({
+  selector: 'app-counter',
+  template: `<div>Count: {{ count() }}</div>`,
+})
+export class CounterComponent {
+  // Select specific value
+  count = injectStore(store, (state) => state.context.count);
+
+  // With custom comparison function
+  user = injectStore(
+    store,
+    (state) => state.context.user,
+    (prev, next) => prev.id === next.id
+  );
+
+  // Without selector (returns full snapshot)
+  snapshot = injectStore(store);
+}
+```
+
+**Parameters:**
+
+* `store` - The store to subscribe to
+* `selector` - Optional function to select a value from the store snapshot. If not provided, returns the full snapshot.
+* `compare` - Optional comparison function (defaults to strict equality `===`)
+
+**Returns:** A readonly Angular signal containing the selected value
+
+<Callout>
+  Remember to call the signal as a function (e.g., `count()`) in your template to access its value. This is how Angular's signal-based reactivity works.
+</Callout>
+
+## Full documentation
+
+For complete XState Store documentation including context, transitions, effects, atoms, and more, see the [XState Store docs](/docs/xstate-store).
+
+
+# @xstate/store-preact (/docs/xstate-store/preact)
+
+The `@xstate/store-preact` package provides Preact bindings for [XState Store](/docs/xstate-store). It includes hooks for subscribing to store state, similar to the React bindings.
+
+<Callout>
+  This package re-exports all of `@xstate/store`, so you only need to install `@xstate/store-preact`.
+</Callout>
+
+## Installation
+
+<Tabs items={['npm', 'pnpm', 'yarn']}>
+  <Tab value="npm" label="npm">
+    ```bash
+    npm install @xstate/store-preact
+    ```
+  </Tab>
+
+  <Tab value="pnpm" label="pnpm">
+    ```bash
+    pnpm install @xstate/store-preact
+    ```
+  </Tab>
+
+  <Tab value="yarn" label="yarn">
+    ```bash
+    yarn add @xstate/store-preact
+    ```
+  </Tab>
+</Tabs>
+
+## Quick start
+
+```tsx
+import { createStore, useSelector } from '@xstate/store-preact';
+
+const store = createStore({
+  context: { count: 0 },
+  on: {
+    inc: (context, event: { by?: number }) => ({
+      count: context.count + (event.by ?? 1),
+    }),
+  },
+});
+
+function Counter() {
+  const count = useSelector(store, (state) => state.context.count);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => store.trigger.inc()}>+1</button>
+      <button onClick={() => store.trigger.inc({ by: 5 })}>+5</button>
+    </div>
+  );
+}
+```
+
+## API
+
+### `useSelector(store, selector?, compare?)`
+
+Subscribes to a store and returns a selected value. The component re-renders when the selected value changes.
+
+```tsx
+import { useSelector } from '@xstate/store-preact';
+
+function Counter() {
+  // Select specific value
+  const count = useSelector(store, (state) => state.context.count);
+
+  // With custom comparison function
+  const user = useSelector(
+    store,
+    (state) => state.context.user,
+    (prev, next) => prev.id === next.id
+  );
+
+  return <div>Count: {count}</div>;
+}
+```
+
+**Parameters:**
+
+* `store` - The store to subscribe to
+* `selector` - Optional function to select a value from the store snapshot
+* `compare` - Optional comparison function (defaults to strict equality `===`)
+
+**Returns:** The selected value
+
+## Full documentation
+
+For complete XState Store documentation including context, transitions, effects, atoms, and more, see the [XState Store docs](/docs/xstate-store).
+
+
+# @xstate/store-react (/docs/xstate-store/react)
+
+The `@xstate/store-react` package provides React bindings for [XState Store](/docs/xstate-store). It includes hooks for subscribing to store state and creating local component stores.
+
+<Callout>
+  This package re-exports all of `@xstate/store`, so you only need to install `@xstate/store-react`.
+</Callout>
+
+## Installation
+
+<Tabs items={['npm', 'pnpm', 'yarn']}>
+  <Tab value="npm" label="npm">
+    ```bash
+    npm install @xstate/store-react
+    ```
+  </Tab>
+
+  <Tab value="pnpm" label="pnpm">
+    ```bash
+    pnpm install @xstate/store-react
+    ```
+  </Tab>
+
+  <Tab value="yarn" label="yarn">
+    ```bash
+    yarn add @xstate/store-react
+    ```
+  </Tab>
+</Tabs>
+
+## Quick start
+
+```tsx
+import { createStore, useSelector } from '@xstate/store-react';
+
+const store = createStore({
+  context: { count: 0 },
+  on: {
+    inc: (context, event: { by?: number }) => ({
+      count: context.count + (event.by ?? 1),
+    }),
+  },
+});
+
+function Counter() {
+  const count = useSelector(store, (state) => state.context.count);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => store.trigger.inc()}>+1</button>
+      <button onClick={() => store.trigger.inc({ by: 5 })}>+5</button>
+    </div>
+  );
+}
+```
+
+## API
+
+### `useSelector(store, selector?, compare?)`
+
+Subscribes to a store and returns a selected value. The component re-renders when the selected value changes.
+
+```tsx
+import { useSelector } from '@xstate/store-react';
+
+function Counter() {
+  // Select specific value
+  const count = useSelector(store, (state) => state.context.count);
+
+  // With custom comparison function
+  const user = useSelector(
+    store,
+    (state) => state.context.user,
+    (prev, next) => prev.id === next.id
+  );
+
+  return <div>Count: {count}</div>;
+}
+```
+
+**Parameters:**
+
+* `store` - The store to subscribe to
+* `selector` - Optional function to select a value from the store snapshot
+* `compare` - Optional comparison function (defaults to strict equality `===`)
+
+**Returns:** The selected value
+
+### `useStore(config)`
+
+Creates a component-scoped store instance. Useful for local state management similar to `useReducer`.
+
+```tsx
+import { useStore, useSelector } from '@xstate/store-react';
+
+function Counter({ initialCount = 0 }) {
+  const store = useStore({
+    context: { count: initialCount },
+    on: {
+      inc: (context) => ({ count: context.count + 1 }),
+      dec: (context) => ({ count: context.count - 1 }),
+    },
+  });
+
+  const count = useSelector(store, (state) => state.context.count);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => store.trigger.inc()}>+</button>
+      <button onClick={() => store.trigger.dec()}>-</button>
+    </div>
+  );
+}
+```
+
+**Parameters:**
+
+* `config` - Store configuration object (same as `createStore`)
+
+**Returns:** A store instance (stable across re-renders)
+
+### `useAtom(atom, selector?, compare?)`
+
+Subscribes to an atom and returns its value. Since v3.7.0.
+
+```tsx
+import { createAtom } from '@xstate/store-react';
+import { useAtom } from '@xstate/store-react';
+
+const countAtom = createAtom(0);
+
+function Counter() {
+  const count = useAtom(countAtom);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => countAtom.set((prev) => prev + 1)}>+</button>
+    </div>
+  );
+}
+```
+
+**Parameters:**
+
+* `atom` - The atom to subscribe to
+* `selector` - Optional function to select a value from the atom
+* `compare` - Optional comparison function
+
+**Returns:** The (selected) atom value
+
+### `createStoreHook(config)`
+
+Creates a custom React hook that combines `useStore()` and `useSelector()`. Since v3.9.0.
+
+```tsx
+import { createStoreHook } from '@xstate/store-react';
+
+const useCountStore = createStoreHook({
+  context: { count: 0 },
+  on: {
+    inc: (ctx, event: { by: number }) => ({
+      count: ctx.count + event.by,
+    }),
+  },
+});
+
+function Counter() {
+  const [count, store] = useCountStore((s) => s.context.count);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => store.trigger.inc({ by: 1 })}>+1</button>
+      <button onClick={() => store.trigger.inc({ by: 5 })}>+5</button>
+    </div>
+  );
+}
+```
+
+**Parameters:**
+
+* `config` - Store configuration object
+
+**Returns:** A custom hook that returns `[selectedValue, store]`
+
+## Full documentation
+
+For complete XState Store documentation including context, transitions, effects, atoms, and more, see the [XState Store docs](/docs/xstate-store).
+
+
+# @xstate/store-solid (/docs/xstate-store/solid)
+
+The `@xstate/store-solid` package provides Solid bindings for [XState Store](/docs/xstate-store). It includes utilities for subscribing to store state as Solid signals.
+
+<Callout>
+  This package re-exports all of `@xstate/store`, so you only need to install `@xstate/store-solid`.
+</Callout>
+
+## Installation
+
+<Tabs items={['npm', 'pnpm', 'yarn']}>
+  <Tab value="npm" label="npm">
+    ```bash
+    npm install @xstate/store-solid
+    ```
+  </Tab>
+
+  <Tab value="pnpm" label="pnpm">
+    ```bash
+    pnpm install @xstate/store-solid
+    ```
+  </Tab>
+
+  <Tab value="yarn" label="yarn">
+    ```bash
+    yarn add @xstate/store-solid
+    ```
+  </Tab>
+</Tabs>
+
+## Quick start
+
+```tsx
+import { createStore, useSelector } from '@xstate/store-solid';
+
+const store = createStore({
+  context: { count: 0 },
+  on: {
+    inc: (context, event: { by?: number }) => ({
+      count: context.count + (event.by ?? 1),
+    }),
+  },
+});
+
+function Counter() {
+  const count = useSelector(store, (state) => state.context.count);
+
+  return (
+    <div>
+      <p>Count: {count()}</p>
+      <button onClick={() => store.trigger.inc()}>+1</button>
+      <button onClick={() => store.trigger.inc({ by: 5 })}>+5</button>
+    </div>
+  );
+}
+```
+
+## API
+
+### `useSelector(store, selector?, compare?)`
+
+Creates a Solid signal that subscribes to a store and returns a selected value.
+
+```tsx
+import { useSelector } from '@xstate/store-solid';
+
+function Counter() {
+  // Select specific value
+  const count = useSelector(store, (state) => state.context.count);
+
+  // With custom comparison function
+  const user = useSelector(
+    store,
+    (state) => state.context.user,
+    (prev, next) => prev.id === next.id
+  );
+
+  // Call the signal to get the value (Solid's reactivity model)
+  return <div>Count: {count()}</div>;
+}
+```
+
+**Parameters:**
+
+* `store` - The store to subscribe to
+* `selector` - Optional function to select a value from the store snapshot
+* `compare` - Optional comparison function (defaults to strict equality `===`)
+
+**Returns:** A read-only Solid signal containing the selected value
+
+<Callout>
+  Remember to call the signal as a function (e.g., `count()`) to access its value. This is how Solid's reactivity system tracks dependencies.
+</Callout>
+
+## Full documentation
+
+For complete XState Store documentation including context, transitions, effects, atoms, and more, see the [XState Store docs](/docs/xstate-store).
+
+
+# @xstate/store-svelte (/docs/xstate-store/svelte)
+
+The `@xstate/store-svelte` package provides Svelte bindings for [XState Store](/docs/xstate-store). It includes utilities for subscribing to store state as Svelte readable stores.
+
+<Callout>
+  This package re-exports all of `@xstate/store`, so you only need to install `@xstate/store-svelte`.
+</Callout>
+
+## Installation
+
+<Tabs items={['npm', 'pnpm', 'yarn']}>
+  <Tab value="npm" label="npm">
+    ```bash
+    npm install @xstate/store-svelte
+    ```
+  </Tab>
+
+  <Tab value="pnpm" label="pnpm">
+    ```bash
+    pnpm install @xstate/store-svelte
+    ```
+  </Tab>
+
+  <Tab value="yarn" label="yarn">
+    ```bash
+    yarn add @xstate/store-svelte
+    ```
+  </Tab>
+</Tabs>
+
+## Quick start
+
+```svelte
+<script lang="ts">
+  import { createStore, useSelector } from '@xstate/store-svelte';
+
+  const store = createStore({
+    context: { count: 0 },
+    on: {
+      inc: (context, event: { by?: number }) => ({
+        count: context.count + (event.by ?? 1),
+      }),
+    },
+  });
+
+  const count = useSelector(store, (state) => state.context.count);
+</script>
+
+<div>
+  <p>Count: {$count}</p>
+  <button on:click={() => store.trigger.inc()}>+1</button>
+  <button on:click={() => store.trigger.inc({ by: 5 })}>+5</button>
+</div>
+```
+
+## API
+
+### `useSelector(store, selector?, compare?)`
+
+Creates a Svelte readable store that subscribes to an XState store and returns a selected value.
+
+```svelte
+<script>
+  import { useSelector } from '@xstate/store-svelte';
+
+  // Select specific value
+  const count = useSelector(store, (state) => state.context.count);
+
+  // With custom comparison function
+  const user = useSelector(
+    store,
+    (state) => state.context.user,
+    (prev, next) => prev.id === next.id
+  );
+
+  // Without selector (returns full snapshot)
+  const snapshot = useSelector(store);
+</script>
+
+<!-- Use the $ prefix to access store value -->
+<div>Count: {$count}</div>
+```
+
+**Parameters:**
+
+* `store` - The store to subscribe to
+* `selector` - Optional function to select a value from the store snapshot. If not provided, returns the full snapshot.
+* `compare` - Optional comparison function (defaults to strict equality `===`)
+
+**Returns:** A Svelte readable store containing the selected value
+
+## Full documentation
+
+For complete XState Store documentation including context, transitions, effects, atoms, and more, see the [XState Store docs](/docs/xstate-store).
+
+
+# @xstate/store-vue (/docs/xstate-store/vue)
+
+The `@xstate/store-vue` package provides Vue bindings for [XState Store](/docs/xstate-store). It includes composables for subscribing to store state as reactive refs.
+
+<Callout>
+  This package re-exports all of `@xstate/store`, so you only need to install `@xstate/store-vue`.
+</Callout>
+
+## Installation
+
+<Tabs items={['npm', 'pnpm', 'yarn']}>
+  <Tab value="npm" label="npm">
+    ```bash
+    npm install @xstate/store-vue
+    ```
+  </Tab>
+
+  <Tab value="pnpm" label="pnpm">
+    ```bash
+    pnpm install @xstate/store-vue
+    ```
+  </Tab>
+
+  <Tab value="yarn" label="yarn">
+    ```bash
+    yarn add @xstate/store-vue
+    ```
+  </Tab>
+</Tabs>
+
+## Quick start
+
+```vue
+<script setup>
+import { createStore, useSelector } from '@xstate/store-vue';
+
+const store = createStore({
+  context: { count: 0 },
+  on: {
+    inc: (context, event: { by?: number }) => ({
+      count: context.count + (event.by ?? 1),
+    }),
+  },
+});
+
+const count = useSelector(store, (state) => state.context.count);
+</script>
+
+<template>
+  <div>
+    <p>Count: {{ count }}</p>
+    <button @click="store.trigger.inc()">+1</button>
+    <button @click="store.trigger.inc({ by: 5 })">+5</button>
+  </div>
+</template>
+```
+
+## API
+
+### `useSelector(store, selector?, compare?)`
+
+Creates a reactive ref that subscribes to a store and returns a selected value.
+
+```vue
+<script setup>
+import { useSelector } from '@xstate/store-vue';
+
+// Select specific value
+const count = useSelector(store, (state) => state.context.count);
+
+// With custom comparison function
+const user = useSelector(
+  store,
+  (state) => state.context.user,
+  (prev, next) => prev.id === next.id
+);
+
+// Without selector (returns full snapshot)
+const snapshot = useSelector(store);
+</script>
+
+<template>
+  <div>Count: {{ count }}</div>
+</template>
+```
+
+**Parameters:**
+
+* `store` - The store to subscribe to
+* `selector` - Optional function to select a value from the store snapshot. If not provided, returns the full snapshot.
+* `compare` - Optional comparison function (defaults to strict equality `===`)
+
+**Returns:** A read-only ref containing the selected value
+
+## Full documentation
+
+For complete XState Store documentation including context, transitions, effects, atoms, and more, see the [XState Store docs](/docs/xstate-store).

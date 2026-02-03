@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/settings/managing-api-keys.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Managing API Keys
 
 > Generate and manage API keys for sending traces and accessing Traceloop features
@@ -256,8 +260,3 @@ This is a security feature - API keys are never stored in retrievable form.
     Configure API keys in self-hosted deployments
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

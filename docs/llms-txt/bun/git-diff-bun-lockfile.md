@@ -1,10 +1,15 @@
 # Source: https://bun.com/docs/guides/install/git-diff-bun-lockfile.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Configure git to diff Bun's lockb lockfile
 
 <Note>
   Bun v1.1.39 introduced `bun.lock`, a JSONC formatted lockfile. `bun.lock` is human-readable and git-diffable without
-  configuration, at no cost to performance. [**Learn more.**](https://bun.com/docs/install/lockfile#text-based-lockfile)
+  configuration, at no cost to performance. In 1.2.0+ it is the default format used for new projects. [**Learn
+  more.**](/pm/lockfile#text-based-lockfile)
 </Note>
 
 ***

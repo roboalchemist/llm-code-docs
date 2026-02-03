@@ -4,7 +4,6 @@
 title: Agents
 description: Build custom AI agents that can access the Action Catalog.
 breadcrumbs: Docs > Agents
-source_url: https://docs.datadoghq.com/agents/index.html
 ---
 
 # Agents

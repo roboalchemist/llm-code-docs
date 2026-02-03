@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/production/connect-to-aws-privatelink.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Configure Private Endpoints for AWS PrivateLink
 
 > Secure Pinecone with private VPC endpoints.
@@ -156,7 +160,7 @@ You can get the private endpoint URL for an index from the Pinecone console or A
 
       curl -i -X GET "https://api.pinecone.io/indexes/docs-example" \
           -H "Api-Key: YOUR_API_KEY" \
-          -H "X-Pinecone-API-Version: 2025-04"
+          -H "X-Pinecone-Api-Version: 2025-10"
       ```
     </CodeGroup>
 

@@ -1,10 +1,14 @@
 # Source: https://trigger.dev/docs/troubleshooting-debugging-in-vscode.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Debugging in VS Code
 
 Debugging your task code in `dev` is supported via VS Code, without having to pass in any additional flags. Create a launch configuration in `.vscode/launch.json`:
 
-```json launch.json theme={null}
+```json launch.json theme={"theme":"css-variables"}
 {
   "version": "0.2.0",
   "configurations": [

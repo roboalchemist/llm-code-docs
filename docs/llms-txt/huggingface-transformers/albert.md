@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/albert.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/albert.md
 
 # ALBERT
 
@@ -16,7 +16,7 @@ You can find all the original ALBERT checkpoints under the [ALBERT community](ht
 > [!TIP]
 > Click on the ALBERT models in the right sidebar for more examples of how to apply ALBERT to different language tasks.
 
-The example below demonstrates how to predict the `[MASK]` token with [Pipeline](/docs/transformers/v5.0.0rc1/en/main_classes/pipelines#transformers.Pipeline), [AutoModel](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModel), and from the command line.
+The example below demonstrates how to predict the `[MASK]` token with [Pipeline](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.Pipeline), [AutoModel](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModel), and from the command line.
 
 ```py
 import torch
@@ -84,22 +84,22 @@ echo -e "Plants create [MASK] through a process known as photosynthesis." | tran
 
 **Multiple choice**
 
-- [AlbertForMultipleChoice](/docs/transformers/v5.0.0rc1/en/model_doc/albert#transformers.AlbertForMultipleChoice) is supported by this [example script](https://github.com/huggingface/transformers/tree/main/examples/pytorch/multiple-choice) and [notebook](https://colab.research.google.com/github/huggingface/notebooks/blob/main/examples/multiple_choice.ipynb).
+- [AlbertForMultipleChoice](/docs/transformers/v5.0.0/en/model_doc/albert#transformers.AlbertForMultipleChoice) is supported by this [example script](https://github.com/huggingface/transformers/tree/main/examples/pytorch/multiple-choice) and [notebook](https://colab.research.google.com/github/huggingface/notebooks/blob/main/examples/multiple_choice.ipynb).
 - Check the [Multiple choice task guide](../tasks/multiple_choice) on how to use the model.
 
 ## AlbertConfig[[transformers.AlbertConfig]]
 
 #### transformers.AlbertConfig[[transformers.AlbertConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/albert/configuration_albert.py#L21)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/albert/configuration_albert.py#L20)
 
 This is the configuration class to store the configuration of a `AlbertModel`. It is used
 to instantiate an ALBERT model according to the specified arguments, defining the model architecture. Instantiating
 a configuration with the defaults will yield a similar configuration to that of the ALBERT
 [albert/albert-xxlarge-v2](https://huggingface.co/albert/albert-xxlarge-v2) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Examples:
 
@@ -163,6 +163,8 @@ bos_token_id (`int`, *optional*, defaults to 2) : Beginning of stream token id.
 
 eos_token_id (`int`, *optional*, defaults to 3) : End of stream token id.
 
+tie_word_embeddings (`bool`, *optional*, defaults to `True`) : Whether to tie weight embeddings
+
 ## AlbertTokenizer
 
 [[autodoc]] AlbertTokenizer - build_inputs_with_special_tokens - get_special_tokens_mask - create_token_type_ids_from_sequences - save_vocabulary
@@ -171,11 +173,11 @@ eos_token_id (`int`, *optional*, defaults to 3) : End of stream token id.
 
 #### transformers.AlbertTokenizer[[transformers.AlbertTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/albert/tokenization_albert.py#L31)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/albert/tokenization_albert.py#L28)
 
 Construct a "fast" ALBERT tokenizer (backed by HuggingFace's *tokenizers* library). Based on
 [Unigram](https://huggingface.co/docs/tokenizers/python/latest/components.html?highlight=unigram#models). This
-tokenizer inherits from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should refer to
+tokenizer inherits from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should refer to
 this superclass for more information regarding those methods
 
 **Parameters:**
@@ -210,7 +212,7 @@ vocab_file (`str`, *optional*) : [SentencePiece](https://github.com/google/sente
 
 #### transformers.models.albert.modeling_albert.AlbertForPreTrainingOutput[[transformers.models.albert.modeling_albert.AlbertForPreTrainingOutput]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/albert/modeling_albert.py#L331)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/albert/modeling_albert.py#L332)
 
 Output type of `AlbertForPreTraining`.
 
@@ -222,9 +224,9 @@ prediction_logits (`torch.FloatTensor` of shape `(batch_size, sequence_length, c
 
 sop_logits (`torch.FloatTensor` of shape `(batch_size, 2)`) : Prediction scores of the next sequence prediction (classification) head (scores of True/False continuation before SoftMax).
 
-hidden_states (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+hidden_states (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
 
-attentions (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention heads.
+attentions (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention heads.
 
 ## AlbertModel
 
@@ -246,12 +248,12 @@ attentions (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attent
 
 #### transformers.AlbertForMultipleChoice[[transformers.AlbertForMultipleChoice]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/albert/modeling_albert.py#L872)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/albert/modeling_albert.py#L873)
 
 The Albert Model with a multiple choice classification head on top (a linear layer on top of the pooled output and a
 softmax) e.g. for RocStories/SWAG tasks.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -259,11 +261,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.AlbertForMultipleChoice.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/albert/modeling_albert.py#L883[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, num_choices, sequence_length)`) --
+forwardtransformers.AlbertForMultipleChoice.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/albert/modeling_albert.py#L884[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "token_type_ids", "val": ": torch.LongTensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, num_choices, sequence_length)`) --
   Indices of input sequence tokens in the vocabulary.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) and
-  [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) and
+  [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -293,25 +295,25 @@ forwardtransformers.AlbertForMultipleChoice.forwardhttps://github.com/huggingfac
 - **labels** (`torch.LongTensor` of shape `(batch_size,)`, *optional*) --
   Labels for computing the multiple choice classification loss. Indices should be in `[0, ...,
   num_choices-1]` where *num_choices* is the size of the second dimension of the input tensors. (see
-  *input_ids* above)0[transformers.models.albert.modeling_albert.AlbertForPreTrainingOutput](/docs/transformers/v5.0.0rc1/en/model_doc/albert#transformers.models.albert.modeling_albert.AlbertForPreTrainingOutput) or `tuple(torch.FloatTensor)`A [transformers.models.albert.modeling_albert.AlbertForPreTrainingOutput](/docs/transformers/v5.0.0rc1/en/model_doc/albert#transformers.models.albert.modeling_albert.AlbertForPreTrainingOutput) or a tuple of
+  *input_ids* above)0[transformers.models.albert.modeling_albert.AlbertForPreTrainingOutput](/docs/transformers/v5.0.0/en/model_doc/albert#transformers.models.albert.modeling_albert.AlbertForPreTrainingOutput) or `tuple(torch.FloatTensor)`A [transformers.models.albert.modeling_albert.AlbertForPreTrainingOutput](/docs/transformers/v5.0.0/en/model_doc/albert#transformers.models.albert.modeling_albert.AlbertForPreTrainingOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([AlbertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/albert#transformers.AlbertConfig)) and inputs.
+elements depending on the configuration ([AlbertConfig](/docs/transformers/v5.0.0/en/model_doc/albert#transformers.AlbertConfig)) and inputs.
 
 - **loss** (`*optional*`, returned when `labels` is provided, `torch.FloatTensor` of shape `(1,)`) -- Total loss as the sum of the masked language modeling loss and the next sequence prediction
   (classification) loss.
 - **prediction_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
 - **sop_logits** (`torch.FloatTensor` of shape `(batch_size, 2)`) -- Prediction scores of the next sequence prediction (classification) head (scores of True/False continuation
   before SoftMax).
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [AlbertForMultipleChoice](/docs/transformers/v5.0.0rc1/en/model_doc/albert#transformers.AlbertForMultipleChoice) forward method, overrides the `__call__` special method.
+The [AlbertForMultipleChoice](/docs/transformers/v5.0.0/en/model_doc/albert#transformers.AlbertForMultipleChoice) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -341,26 +343,26 @@ Example:
 
 **Parameters:**
 
-config ([AlbertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/albert#transformers.AlbertConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([AlbertConfig](/docs/transformers/v5.0.0/en/model_doc/albert#transformers.AlbertConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.models.albert.modeling_albert.AlbertForPreTrainingOutput](/docs/transformers/v5.0.0rc1/en/model_doc/albert#transformers.models.albert.modeling_albert.AlbertForPreTrainingOutput) or `tuple(torch.FloatTensor)``
+`[transformers.models.albert.modeling_albert.AlbertForPreTrainingOutput](/docs/transformers/v5.0.0/en/model_doc/albert#transformers.models.albert.modeling_albert.AlbertForPreTrainingOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.models.albert.modeling_albert.AlbertForPreTrainingOutput](/docs/transformers/v5.0.0rc1/en/model_doc/albert#transformers.models.albert.modeling_albert.AlbertForPreTrainingOutput) or a tuple of
+A [transformers.models.albert.modeling_albert.AlbertForPreTrainingOutput](/docs/transformers/v5.0.0/en/model_doc/albert#transformers.models.albert.modeling_albert.AlbertForPreTrainingOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([AlbertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/albert#transformers.AlbertConfig)) and inputs.
+elements depending on the configuration ([AlbertConfig](/docs/transformers/v5.0.0/en/model_doc/albert#transformers.AlbertConfig)) and inputs.
 
 - **loss** (`*optional*`, returned when `labels` is provided, `torch.FloatTensor` of shape `(1,)`) -- Total loss as the sum of the masked language modeling loss and the next sequence prediction
   (classification) loss.
 - **prediction_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
 - **sop_logits** (`torch.FloatTensor` of shape `(batch_size, 2)`) -- Prediction scores of the next sequence prediction (classification) head (scores of True/False continuation
   before SoftMax).
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention

@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/pki/concepts/certificate-lifecycle.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Certificate Lifecycle
 
 > Learn what is the certificate lifecycle and how it works.
@@ -27,6 +31,21 @@ Common approaches to certificate enrollment include:
 * CSR-less enrollment: The client requests a certificate directly from a CA which may handle key generation internally and return the key pair in the response.
 
 Enrollment can be manually completed via API or fully automated using protocols like EST or ACME. The choice of enrollment method depends on security requirements, operational constraints, and integration context.
+
+## Approval
+
+Certificate approval is an optional workflow that adds a human review step before certificates are issued. When an [approval policy](/documentation/platform/pki/approvals) is configured for a [certificate profile](/documentation/platform/pki/certificates/profiles), certificate requests are placed in a pending state until the required approvers review and approve them.
+
+Approval workflows help organizations:
+
+* Enforce separation of duties between certificate requesters and approvers
+* Add oversight for certificates issued to sensitive domains or systems
+* Meet compliance requirements that mandate review before certificate issuance
+* Prevent unauthorized certificate issuance
+
+Approval policies can be configured with multiple sequential steps, each requiring a specified number of approvals from designated users or groups. [Machine identities](/documentation/platform/identities/machine-identities) can optionally bypass approval when automated certificate issuance is required for workloads.
+
+Once all approval steps are completed, the certificate is automatically issued and made available to the requester. If rejected, the request is closed and no certificate is issued.
 
 ## Deployment
 

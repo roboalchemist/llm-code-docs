@@ -1,31 +1,31 @@
 # Source: https://gofastmcp.com/servers/server.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # The FastMCP Server
 
-> The core FastMCP server class for building MCP applications with tools, resources, and prompts.
+> The core FastMCP server class for building MCP applications
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
-The central piece of a FastMCP application is the `FastMCP` server class. This class acts as the main container for your application's tools, resources, and prompts, and manages communication with MCP clients.
+The `FastMCP` class is the central piece of every FastMCP application. It acts as the container for your tools, resources, and prompts, managing communication with MCP clients and orchestrating the entire server lifecycle.
 
 ## Creating a Server
 
-Instantiating a server is straightforward. You typically provide a name for your server, which helps identify it in client applications or logs.
+Instantiate a server by providing a name that identifies it in client applications and logs. You can also provide instructions that help clients understand the server's purpose.
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 from fastmcp import FastMCP
 
-# Create a basic server instance
 mcp = FastMCP(name="MyAssistantServer")
 
-# You can also add instructions for how to interact with the server
+# Instructions help clients understand how to interact with the server
 mcp_with_instructions = FastMCP(
     name="HelpfulAssistant",
     instructions="""
@@ -35,7 +35,7 @@ mcp_with_instructions = FastMCP(
 )
 ```
 
-The `FastMCP` constructor accepts several arguments:
+The `FastMCP` constructor accepts several configuration options. The most commonly used parameters control server identity, authentication, and component behavior.
 
 <Card icon="code" title="FastMCP Constructor Parameters">
   <ParamField body="name" type="str" default="FastMCP">
@@ -51,13 +51,13 @@ The `FastMCP` constructor accepts several arguments:
   </ParamField>
 
   <ParamField body="website_url" type="str | None">
-    <VersionBadge version="2.14.0" />
+    <VersionBadge version="2.13.0" />
 
     URL to a website with more information about your server. Displayed in client applications
   </ParamField>
 
   <ParamField body="icons" type="list[Icon] | None">
-    <VersionBadge version="2.14.0" />
+    <VersionBadge version="2.13.0" />
 
     List of icon representations for your server. Icons help users visually identify your server in client applications. See [Icons](/servers/icons) for detailed examples
   </ParamField>
@@ -66,8 +66,8 @@ The `FastMCP` constructor accepts several arguments:
     Authentication provider for securing HTTP-based transports. See [Authentication](/servers/auth/authentication) for configuration options
   </ParamField>
 
-  <ParamField body="lifespan" type="AsyncContextManager | None">
-    An async context manager function for server startup and shutdown logic
+  <ParamField body="lifespan" type="Lifespan | AsyncContextManager | None">
+    Server-level setup and teardown logic. See [Lifespans](/servers/lifespan) for composable lifespans
   </ParamField>
 
   <ParamField body="tools" type="list[Tool | Callable] | None">
@@ -97,23 +97,23 @@ The `FastMCP` constructor accepts several arguments:
   <ParamField body="strict_input_validation" type="bool" default="False">
     <VersionBadge version="2.13.0" />
 
-    Controls how tool input parameters are validated. When `False` (default), FastMCP uses Pydantic's flexible validation that coerces compatible inputs (e.g., `"10"` → `10` for int parameters). When `True`, uses the MCP SDK's JSON Schema validation to validate inputs against the exact schema before passing them to your function, rejecting any type mismatches. The default mode improves compatibility with LLM clients while maintaining type safety. See [Input Validation Modes](/servers/tools#input-validation-modes) for details
+    Controls how tool input parameters are validated. When `False` (default), FastMCP uses Pydantic's flexible validation that coerces compatible inputs (e.g., `"10"` to `10` for int parameters). When `True`, uses the MCP SDK's JSON Schema validation to validate inputs against the exact schema before passing them to your function, rejecting any type mismatches. The default mode improves compatibility with LLM clients while maintaining type safety. See [Input Validation Modes](/servers/tools#input-validation-modes) for details
   </ParamField>
 
-  <ParamField body="include_fastmcp_meta" type="bool" default="True">
-    <VersionBadge version="2.11.0" />
+  <ParamField body="list_page_size" type="int | None" default="None">
+    <VersionBadge version="3.0.0" />
 
-    Whether to include FastMCP metadata in component responses. When `True`, component tags and other FastMCP-specific metadata are included in the `_fastmcp` namespace within each component's `meta` field. When `False`, this metadata is omitted, resulting in cleaner integration with external systems. Can be overridden globally via `FASTMCP_INCLUDE_FASTMCP_META` environment variable
+    Maximum number of items per page for list operations (`tools/list`, `resources/list`, etc.). When `None` (default), all results are returned in a single response. When set, responses are paginated and include a `nextCursor` for fetching additional pages. See [Pagination](/servers/pagination) for details
   </ParamField>
 </Card>
 
 ## Components
 
-FastMCP servers expose several types of components to the client:
+FastMCP servers expose three types of components to clients. Each type serves a distinct purpose in the MCP protocol.
 
 ### Tools
 
-Tools are functions that the client can call to perform actions or access external systems.
+Tools are functions that clients can invoke to perform actions or access external systems. They're the primary way clients interact with your server's capabilities.
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 @mcp.tool
@@ -126,7 +126,7 @@ See [Tools](/servers/tools) for detailed documentation.
 
 ### Resources
 
-Resources expose data sources that the client can read.
+Resources expose data that clients can read. Unlike tools, resources are passive data sources that clients pull from rather than invoke.
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 @mcp.resource("data://config")
@@ -135,25 +135,24 @@ def get_config() -> dict:
     return {"theme": "dark", "version": "1.0"}
 ```
 
-See [Resources & Templates](/servers/resources) for detailed documentation.
+See [Resources](/servers/resources) for detailed documentation.
 
 ### Resource Templates
 
-Resource templates are parameterized resources that allow the client to request specific data.
+Resource templates are parameterized resources. The client provides values for template parameters in the URI, and the server returns data specific to those parameters.
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 @mcp.resource("users://{user_id}/profile")
 def get_user_profile(user_id: int) -> dict:
     """Retrieves a user's profile by ID."""
-    # The {user_id} in the URI is extracted and passed to this function
     return {"id": user_id, "name": f"User {user_id}", "status": "active"}
 ```
 
-See [Resources & Templates](/servers/resources) for detailed documentation.
+See [Resource Templates](/servers/resources#resource-templates) for detailed documentation.
 
 ### Prompts
 
-Prompts are reusable message templates for guiding the LLM.
+Prompts are reusable message templates that guide LLM interactions. They help establish consistent patterns for how clients should frame requests.
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 @mcp.prompt
@@ -169,9 +168,9 @@ See [Prompts](/servers/prompts) for detailed documentation.
 
 <VersionBadge version="2.8.0" />
 
-FastMCP supports tag-based filtering to selectively expose components based on configurable include/exclude tag sets. This is useful for creating different views of your server for different environments or users.
+Tags let you categorize components and selectively expose them based on configurable include/exclude sets. This is useful for creating different views of your server for different environments or user types.
 
-Components can be tagged when defined using the `tags` parameter:
+Components can be tagged when defined using the `tags` parameter. A component can have multiple tags, and filtering operates on tag membership.
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 @mcp.tool(tags={"public", "utility"})
@@ -190,16 +189,16 @@ The filtering logic works as follows:
 * **Precedence**: Exclude tags always take priority over include tags
 
 <Tip>
-  To ensure a component is never exposed, you can set `enabled=False` on the component itself. To learn more, see the component-specific documentation.
+  To ensure a component is never exposed, you can set `enabled=False` on the component itself. See the component-specific documentation for details.
 </Tip>
 
-You configure tag-based filtering when creating your server:
+Configure tag-based filtering when creating your server.
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 # Only expose components tagged with "public"
 mcp = FastMCP(include_tags={"public"})
 
-# Hide components tagged as "internal" or "deprecated"  
+# Hide components tagged as "internal" or "deprecated"
 mcp = FastMCP(exclude_tags={"internal", "deprecated"})
 
 # Combine both: show admin tools but hide deprecated ones
@@ -210,10 +209,9 @@ This filtering applies to all component types (tools, resources, resource templa
 
 ## Running the Server
 
-FastMCP servers need a transport mechanism to communicate with clients. You typically start your server by calling the `mcp.run()` method on your `FastMCP` instance, often within an `if __name__ == "__main__":` block in your main server script. This pattern ensures compatibility with various MCP clients.
+FastMCP servers communicate with clients through transport mechanisms. Start your server by calling `mcp.run()`, typically within an `if __name__ == "__main__":` block. This pattern ensures compatibility with various MCP clients.
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-# my_server.py
 from fastmcp import FastMCP
 
 mcp = FastMCP(name="MyServer")
@@ -224,26 +222,24 @@ def greet(name: str) -> str:
     return f"Hello, {name}!"
 
 if __name__ == "__main__":
-    # This runs the server, defaulting to STDIO transport
+    # Defaults to STDIO transport
     mcp.run()
-    
-    # To use a different transport, e.g., HTTP:
+
+    # Or use HTTP transport
     # mcp.run(transport="http", host="127.0.0.1", port=9000)
 ```
 
-FastMCP supports several transport options:
+FastMCP supports several transports:
 
-* STDIO (default, for local tools)
-* HTTP (recommended for web services, uses Streamable HTTP protocol)
-* SSE (legacy web transport, deprecated)
+* **STDIO** (default): For local integrations and CLI tools
+* **HTTP**: For web services using the Streamable HTTP protocol
+* **SSE**: Legacy web transport (deprecated)
 
-The server can also be run using the FastMCP CLI.
-
-For detailed information on each transport, how to configure them (host, port, paths), and when to use which, please refer to the [**Running Your FastMCP Server**](/deployment/running-server) guide.
+The server can also be run using the FastMCP CLI. For detailed information on transports and configuration, see the [Running Your Server](/deployment/running-server) guide.
 
 ## Custom Routes
 
-When running your server with HTTP transport, you can add custom web routes alongside your MCP endpoint using the `@custom_route` decorator. This is useful for simple endpoints like health checks that need to be served alongside your MCP server:
+When running with HTTP transport, you can add custom web routes alongside your MCP endpoint using the `@custom_route` decorator. This is useful for auxiliary endpoints like health checks.
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 from fastmcp import FastMCP
@@ -267,183 +263,3 @@ Custom routes are served alongside your MCP endpoint and are useful for:
 * Basic webhooks or callbacks
 
 For more complex web applications, consider [mounting your MCP server into a FastAPI or Starlette app](/deployment/http#integration-with-web-frameworks).
-
-## Composing Servers
-
-<VersionBadge version="2.2.0" />
-
-FastMCP supports composing multiple servers together using `import_server` (static copy) and `mount` (live link). This allows you to organize large applications into modular components or reuse existing servers.
-
-See the [Server Composition](/servers/composition) guide for full details, best practices, and examples.
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-# Example: Importing a subserver
-from fastmcp import FastMCP
-import asyncio
-
-main = FastMCP(name="Main")
-sub = FastMCP(name="Sub")
-
-@sub.tool
-def hello(): 
-    return "hi"
-
-# Mount directly
-main.mount(sub, prefix="sub")
-```
-
-## Proxying Servers
-
-<VersionBadge version="2.0.0" />
-
-FastMCP can act as a proxy for any MCP server (local or remote) using `FastMCP.as_proxy`, letting you bridge transports or add a frontend to existing servers. For example, you can expose a remote SSE server locally via stdio, or vice versa.
-
-Proxies automatically handle concurrent operations safely by creating fresh sessions for each request when using disconnected clients.
-
-See the [Proxying Servers](/servers/proxy) guide for details and advanced usage.
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-from fastmcp import FastMCP, Client
-
-backend = Client("http://example.com/mcp/sse")
-proxy = FastMCP.as_proxy(backend, name="ProxyServer")
-# Now use the proxy like any FastMCP server
-```
-
-## OpenAPI Integration
-
-<VersionBadge version="2.0.0" />
-
-FastMCP can automatically generate servers from OpenAPI specifications or existing FastAPI applications using `FastMCP.from_openapi()` and `FastMCP.from_fastapi()`. This allows you to instantly convert existing APIs into MCP servers without manual tool creation.
-
-See the [FastAPI Integration](/integrations/fastapi) and [OpenAPI Integration](/integrations/openapi) guides for detailed examples and configuration options.
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-import httpx
-from fastmcp import FastMCP
-
-# From OpenAPI spec
-spec = httpx.get("https://api.example.com/openapi.json").json()
-mcp = FastMCP.from_openapi(openapi_spec=spec, client=httpx.AsyncClient())
-
-# From FastAPI app
-from fastapi import FastAPI
-app = FastAPI()
-mcp = FastMCP.from_fastapi(app=app)
-```
-
-## Server Configuration
-
-Servers can be configured using a combination of initialization arguments, global settings, and transport-specific settings.
-
-### Server-Specific Configuration
-
-Server-specific settings are passed when creating the `FastMCP` instance and control server behavior:
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-from fastmcp import FastMCP
-
-# Configure server-specific settings
-mcp = FastMCP(
-    name="ConfiguredServer",
-    include_tags={"public", "api"},              # Only expose these tagged components
-    exclude_tags={"internal", "deprecated"},     # Hide these tagged components
-    on_duplicate_tools="error",                  # Handle duplicate registrations
-    on_duplicate_resources="warn",
-    on_duplicate_prompts="replace",
-    include_fastmcp_meta=False,                  # Disable FastMCP metadata for cleaner integration
-)
-```
-
-### Global Settings
-
-Global settings affect all FastMCP servers and can be configured via environment variables (prefixed with `FASTMCP_`) or in a `.env` file:
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-import fastmcp
-
-# Access global settings
-print(fastmcp.settings.log_level)        # Default: "INFO"
-print(fastmcp.settings.mask_error_details)  # Default: False
-print(fastmcp.settings.resource_prefix_format)  # Default: "path"
-print(fastmcp.settings.strict_input_validation)  # Default: False
-print(fastmcp.settings.include_fastmcp_meta)   # Default: True
-```
-
-Common global settings include:
-
-* **`log_level`**: Logging level ("DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"), set with `FASTMCP_LOG_LEVEL`
-* **`mask_error_details`**: Whether to hide detailed error information from clients, set with `FASTMCP_MASK_ERROR_DETAILS`
-* **`resource_prefix_format`**: How to format resource prefixes ("path" or "protocol"), set with `FASTMCP_RESOURCE_PREFIX_FORMAT`
-* **`strict_input_validation`**: Controls tool input validation mode (default: False for flexible coercion), set with `FASTMCP_STRICT_INPUT_VALIDATION`. See [Input Validation Modes](/servers/tools#input-validation-modes)
-* **`include_fastmcp_meta`**: Whether to include FastMCP metadata in component responses (default: True), set with `FASTMCP_INCLUDE_FASTMCP_META`
-* **`env_file`**: Path to the environment file to load settings from (default: ".env"), set with `FASTMCP_ENV_FILE`. Useful when your project uses a `.env` file with syntax incompatible with python-dotenv
-
-### Transport-Specific Configuration
-
-Transport settings are provided when running the server and control network behavior:
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-# Configure transport when running
-mcp.run(
-    transport="http",
-    host="0.0.0.0",           # Bind to all interfaces
-    port=9000,                # Custom port
-    log_level="DEBUG",        # Override global log level
-)
-
-# Or for async usage
-await mcp.run_async(
-    transport="http", 
-    host="127.0.0.1",
-    port=8080,
-)
-```
-
-### Setting Global Configuration
-
-Global FastMCP settings can be configured via environment variables (prefixed with `FASTMCP_`):
-
-```bash  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-# Configure global FastMCP behavior
-export FASTMCP_LOG_LEVEL=DEBUG
-export FASTMCP_MASK_ERROR_DETAILS=True
-export FASTMCP_RESOURCE_PREFIX_FORMAT=protocol
-export FASTMCP_STRICT_INPUT_VALIDATION=False
-export FASTMCP_INCLUDE_FASTMCP_META=False
-```
-
-### Custom Tool Serialization
-
-<VersionBadge version="2.2.7" />
-
-By default, FastMCP serializes tool return values to JSON when they need to be converted to text. You can customize this behavior by providing a `tool_serializer` function when creating your server:
-
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-import yaml
-from fastmcp import FastMCP
-
-# Define a custom serializer that formats dictionaries as YAML
-def yaml_serializer(data):
-    return yaml.dump(data, sort_keys=False)
-
-# Create a server with the custom serializer
-mcp = FastMCP(name="MyServer", tool_serializer=yaml_serializer)
-
-@mcp.tool
-def get_config():
-    """Returns configuration in YAML format."""
-    return {"api_key": "abc123", "debug": True, "rate_limit": 100}
-```
-
-The serializer function takes any data object and returns a string representation. This is applied to **all non-string return values** from your tools. Tools that already return strings bypass the serializer.
-
-This customization is useful when you want to:
-
-* Format data in a specific way (like YAML or custom formats)
-* Control specific serialization options (like indentation or sorting)
-* Add metadata or transform data before sending it to clients
-
-<Tip>
-  If the serializer function raises an exception, the tool will fall back to the default JSON serialization to avoid breaking the server.
-</Tip>

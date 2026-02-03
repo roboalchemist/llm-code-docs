@@ -6,7 +6,6 @@ description: >-
   Correlate spans across traces and operations using OpenTelemetry span links
   for complex distributed system workflows.
 breadcrumbs: Docs > APM > Application Instrumentation > Span Links
-source_url: https://docs.datadoghq.com/trace_collection/span_links/index.html
 ---
 
 # Span Links

@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-q-and-a-designer/configure-q-and-a-skill/add-languages.md
 
-# Source: https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/add-languages.md
-
-# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-q-and-a-designer/configure-q-and-a-skill/add-languages.md
-
 # Add language translations
 
 All the languages configured in the agent are displayed in the **Configuration -> Language** page. Here, you can add language translations that are used in the agent response based on the detected language of the user.

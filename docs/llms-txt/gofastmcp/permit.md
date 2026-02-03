@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/integrations/permit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Permit.io Authorization 🤝 FastMCP
 
 > Add fine-grained authorization to your FastMCP servers with Permit.io

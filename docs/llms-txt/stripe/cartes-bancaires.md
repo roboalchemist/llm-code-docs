@@ -114,7 +114,7 @@ Stripe accounts in the following countries can accept Cartes Bancaires payments 
 
 ## Availability
 
-If your business isn’t based in France, Cartes Bancaires won’t be fully enabled until your account has processed 50 EUR from Cartes Bancaires eligible cards. French Stripe accounts with the “type of business” set as “Particulier / Micro-entrepreneur / Auto-entrepreneur” are eligible for Cartes Bancaires after providing their business tax ID in the Dashboard settings.
+If your business isn’t based in France, you must first process one payment from a Cartes Bancaires eligible card to fully enable this payment method.
 
 ## Disputes
 

@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/faq-new/deployment-infrastructure/how-does-billing-work-for-on-demand-deployments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How does billing work for on-demand deployments?
 
 On-demand deployments come with automatic cost optimization features:

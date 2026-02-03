@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/servicenow.md
 
-# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/servicenow.md
-
-# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/servicenow.md
-
 # ServiceNow
 
 - [Pre-requisites](/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/servicenow/pre-requisites.md)

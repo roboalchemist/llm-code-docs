@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/integration/bedrockinvokeagenttool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Bedrock Invoke Agent Tool
 
 > Enables CrewAI agents to invoke Amazon Bedrock Agents and leverage their capabilities within your workflows

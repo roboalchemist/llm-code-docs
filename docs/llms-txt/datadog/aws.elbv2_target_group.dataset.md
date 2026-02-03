@@ -4,8 +4,6 @@
 title: Elastic Load Balancing Target Group
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Elastic Load Balancing Target Group
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.elbv2_target_group.dataset/index.html
 ---
 
 # Elastic Load Balancing Target Group
@@ -35,7 +33,7 @@ aws.elbv2_target_group
 | port                          | core | int64         | The port on which the targets are listening. This parameter is not used if the target is a Lambda function.                                                                                                                                                                                                                  |
 | protocol                      | core | string        | The protocol to use for routing traffic to the targets.                                                                                                                                                                                                                                                                      |
 | protocol_version              | core | string        | [HTTP/HTTPS protocol] The protocol version. The possible values are GRPC, HTTP1, and HTTP2.                                                                                                                                                                                                                                  |
-| tags                          | core | hstore        |
+| tags                          | core | hstore_csv    |
 | target_group_arn              | core | string        | The Amazon Resource Name (ARN) of the target group.                                                                                                                                                                                                                                                                          |
 | target_group_name             | core | string        | The name of the target group.                                                                                                                                                                                                                                                                                                |
 | target_health_descriptions    | core | json          | Information about the health of the targets.                                                                                                                                                                                                                                                                                 |

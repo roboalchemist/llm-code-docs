@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/integrations/open-source/playwright/business-applications/crowdstrike.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CrowdStrike
 
 > Automate CrowdStrike security workflows with Playwright when APIs aren't available.

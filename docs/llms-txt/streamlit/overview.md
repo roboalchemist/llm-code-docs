@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/multipage-apps/overview
+
 # Overview of multipage apps
 
 Streamlit provides two built-in mechanisms for creating multipage apps. The simplest method is to use a `pages/` directory. However, the preferred and more customizable method is to use `st.navigation`.

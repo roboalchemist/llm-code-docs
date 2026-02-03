@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Continuous Profiler > Continuous Profiler Guides > Solve Memory Leaks
   with Profiling
-source_url: https://docs.datadoghq.com/guide/solve-memory-leaks/index.html
 ---
 
 # Solve Memory Leaks with Profiling

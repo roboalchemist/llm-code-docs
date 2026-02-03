@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/azure/
+
 # Azure OpenAI Provider | Promptfoo
 
 ## Main Content

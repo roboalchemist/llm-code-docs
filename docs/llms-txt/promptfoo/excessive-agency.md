@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/excessive-agency/
+
 # Excessive Agency Plugin
 
 The Excessive Agency red teaming plugin tests whether an AI is aware of its own capabilities and limitations by prompting it with requests that a text-based LLM cannot possibly fulfill.

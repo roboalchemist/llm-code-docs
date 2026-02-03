@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/tracing/js-force-instrumentations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Issues with Auto-instrumentation (Typescript / Javascript)
 
 > How to overcome issues with automatic instrumentations on Next.js and some Webpack environments.
@@ -41,8 +45,3 @@ traceloop.initialize({
 ```
 
 You only need to do it once, on app initialization.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

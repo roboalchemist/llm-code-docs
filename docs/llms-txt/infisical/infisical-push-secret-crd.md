@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/integrations/platforms/kubernetes/infisical-push-secret-crd.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using the InfisicalPushSecret CRD
 
 > Learn how to use the InfisicalPushSecret CRD to push and manage secrets in Infisical.

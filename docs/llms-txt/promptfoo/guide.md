@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/guide/
+
 # Configuration Guide - Getting Started with Promptfoo
 
 The YAML configuration format runs each prompt through a series of example inputs (aka "test case") and checks if they meet requirements (aka "assertions").

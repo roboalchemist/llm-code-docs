@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Agent > Agent Guides > Connect to Datadog over Google Cloud Private
   Service Connect
-source_url: https://docs.datadoghq.com/guide/gcp-private-service-connect/index.html
 ---
 
 # Connect to Datadog over Google Cloud Private Service Connect

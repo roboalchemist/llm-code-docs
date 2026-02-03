@@ -1,5 +1,9 @@
 # Source: https://docs.oxla.com/sql-reference/sql-functions/string-functions/regex/posix-regular-expressions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.oxla.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # POSIX Regular Expressions
 
 **POSIX** (Portable Operating System Interface) defines a set of standard operating system interfaces based on the UNIX OS. In POSIX Basic Regex Expression (BRE) syntax, most characters are treated as literals (e.g. they match only themselves). However, some characters called **metacharacters** have special meaning.

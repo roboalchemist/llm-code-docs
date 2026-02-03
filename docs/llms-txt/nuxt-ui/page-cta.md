@@ -8,13 +8,12 @@
 
 The PageCTA component provides a flexible way to display a call to action in your pages with an illustration in the default slot.
 
-<code-preview>
-<u-page-c-t-a :links="[{"label":"Get started","color":"neutral"},{"label":"Learn more","color":"neutral","variant":"subtle","trailingIcon":"i-lucide-arrow-right"}]" description="Preview the latest Tailwind CSS v4 and get started with Nuxt UI." orientation="horizontal" title="Trusted and supported by our amazing community">
-
-![Illustration](https://picsum.photos/640/616)
-
-</u-page-c-t-a>
-</code-preview>
+```vue
+<template>
+  <u-page-c-t-a :links=[{"label":"Get started","color":"neutral"},{"label":"Learn more","color":"neutral","variant":"subtle","trailingIcon":"i-lucide-arrow-right"}] description=Preview the latest Tailwind CSS and get started with Nuxt UI. orientation=horizontal title=Trusted and supported by our amazing community>
+  <img alt=Illustration src=https://picsum.photos/640/616 /></u-page-c-t-a>
+</template>
+```
 
 Use it inside a [PageSection](/docs/components/page-section) component or directly in your page:
 
@@ -34,11 +33,8 @@ Use it inside a [PageSection](/docs/components/page-section) component or direct
 </template>
 ```
 
-<tip>
-
-Use `px-0` and `rounded-none` classes to make the CTA fill the edge of the page on mobile.
-
-</tip>
+> [!TIP]
+> Use `px-0` and `rounded-none` classes to make the CTA fill the edge of the page on mobile.
 
 ### Title
 
@@ -65,6 +61,10 @@ Use the `description` prop to set the description of the CTA.
 Use the `links` prop to display a list of [Button](/docs/components/button) under the description.
 
 ```vue
+<script setup lang="ts">
+import type { ButtonProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UPageCTA title="Trusted and supported by our amazing community" description="We've built a strong, lasting partnership. Their trust is our driving force, propelling us towards shared success." />
 </template>
@@ -75,22 +75,27 @@ Use the `links` prop to display a list of [Button](/docs/components/button) unde
 Use the `variant` prop to change the style of the CTA.
 
 ```vue
+<script setup lang="ts">
+import type { ButtonProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UPageCTA title="Trusted and supported by our amazing community" description="We've built a strong, lasting partnership. Their trust is our driving force, propelling us towards shared success." variant="soft" />
 </template>
 ```
 
-<tip>
-
-You can apply the `light` or `dark` class to the `links` slot when using the `solid` variant to reverse the colors.
-
-</tip>
+> [!TIP]
+> You can apply the `light` or `dark` class to the `links` slot when using the `solid` variant to reverse the colors.
 
 ### Orientation
 
 Use the `orientation` prop to change the orientation with the default slot. Defaults to `vertical`.
 
 ```vue
+<script setup lang="ts">
+import type { ButtonProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UPageCTA title="Trusted and supported by our amazing community" description="We've built a strong, lasting partnership. Their trust is our driving force, propelling us towards shared success." orientation="horizontal">
     <img src="https://picsum.photos/640/728" width="320" height="364" alt="Illustration" class="w-full rounded-lg" />
@@ -103,6 +108,10 @@ Use the `orientation` prop to change the orientation with the default slot. Defa
 Use the `reverse` prop to reverse the orientation of the default slot.
 
 ```vue
+<script setup lang="ts">
+import type { ButtonProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UPageCTA title="Trusted and supported by our amazing community" description="We've built a strong, lasting partnership. Their trust is our driving force, propelling us towards shared success." orientation="horizontal" reverse>
     <img src="https://picsum.photos/640/728" width="320" height="364" alt="Illustration" class="w-full rounded-lg" />
@@ -196,7 +205,7 @@ export default defineAppConfig({
         },
         reverse: {
           true: {
-            wrapper: 'lg:order-last'
+            wrapper: 'order-last'
           }
         },
         variant: {
@@ -237,8 +246,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

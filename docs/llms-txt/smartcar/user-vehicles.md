@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/user-vehicles.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # User Vehicles
 
 > Returns a paged list of all vehicles connected to the application for the current authorized `user`.

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-account/sign-in-sign-out
+
 # Sign in & sign out
 
 After you've created your account, you can sign in to [share.streamlit.io](https://share.streamlit.io/) as described by the following options.

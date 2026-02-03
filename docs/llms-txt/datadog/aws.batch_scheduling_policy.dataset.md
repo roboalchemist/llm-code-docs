@@ -4,8 +4,6 @@
 title: Batch Scheduling Policy
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Batch Scheduling Policy
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.batch_scheduling_policy.dataset/index.html
 ---
 
 # Batch Scheduling Policy
@@ -18,11 +16,11 @@ aws.batch_scheduling_policy
 
 ## Fields
 
-| Title            | ID   | Type   | Data Type                                                                                                                                    | Description |
-| ---------------- | ---- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| _key             | core | string |
-| account_id       | core | string |
-| arn              | core | string | The Amazon Resource Name (ARN) of the scheduling policy. An example is arn:aws:batch:us-east-1:123456789012:scheduling-policy/HighPriority . |
-| fairshare_policy | core | json   | The fair-share scheduling policy details.                                                                                                    |
-| name             | core | string | The name of the fair-share scheduling policy.                                                                                                |
-| tags             | core | hstore |
+| Title            | ID   | Type       | Data Type                                                                                                                                    | Description |
+| ---------------- | ---- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key             | core | string     |
+| account_id       | core | string     |
+| arn              | core | string     | The Amazon Resource Name (ARN) of the scheduling policy. An example is arn:aws:batch:us-east-1:123456789012:scheduling-policy/HighPriority . |
+| fairshare_policy | core | json       | The fair-share scheduling policy details.                                                                                                    |
+| name             | core | string     | The name of the fair-share scheduling policy.                                                                                                |
+| tags             | core | hstore_csv |

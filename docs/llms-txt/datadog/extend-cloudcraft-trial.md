@@ -4,7 +4,6 @@
 title: Can you extend my Cloudcraft Pro trial?
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > FAQ > Can you extend my Cloudcraft Pro trial?
-source_url: https://docs.datadoghq.com/faq/extend-cloudcraft-trial/index.html
 ---
 
 # Can you extend my Cloudcraft Pro trial?

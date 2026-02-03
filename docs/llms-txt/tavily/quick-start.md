@@ -2,13 +2,9 @@
 
 # Source: https://docs.tavily.com/sdk/javascript/quick-start.md
 
-# Source: https://docs.tavily.com/sdk/python/quick-start.md
-
-# Source: https://docs.tavily.com/sdk/javascript/quick-start.md
-
-# Source: https://docs.tavily.com/sdk/python/quick-start.md
-
-# Source: https://docs.tavily.com/sdk/javascript/quick-start.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Quickstart
 
@@ -84,7 +80,7 @@ console.log(response);
 Tavily also allows you to perform a smart crawl starting at a given URL.
 
 <Tip>
-  Our agent-first crawl endpoint is currently in **open beta**. Please repost any issues you encounter on our [community page](https://community.tavily.com).
+  Our agent-first crawl endpoint is currently in. Please repost any issues you encounter on our [community page](https://community.tavily.com).
 </Tip>
 
 ```javascript  theme={null}
@@ -103,8 +99,3 @@ Our JavaScript SDK supports the full feature range of our [REST API](/documentat
 * The `search` function lets you harness the full power of Tavily Search.
 * The `extract` function allows you to easily retrieve web content with Tavily Extract.
 * The `crawl` and `map`functions allow you to intelligently traverse websites and extract content.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

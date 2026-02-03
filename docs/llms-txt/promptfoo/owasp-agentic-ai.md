@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/owasp-agentic-ai/
+
 # OWASP Top 10 for Agentic Applications
 
 The [OWASP Top 10 for Agentic Applications](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications/) was announced during Black Hat Europe 2025 and the OWASP Agentic Security Summit. It represents the most critical security risks for AI agent applications.

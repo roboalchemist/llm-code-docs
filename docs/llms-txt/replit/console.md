@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replit-workspace/workspace-features/console.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Console
 
 > Console shows the output of running your Replit App code, informing you of activity and errors.
@@ -59,8 +63,8 @@ The following screenshot shows the `npm run dev` command used to start the app a
 ### AI-powered debugging
 
 When you encounter errors or other information in the logs that you want to understand, select the
-**Ask Assistant** button at the top of the entry. This automatically opens the **Assistant** tab and
-submits the log content to Assistant for analysis.
+**Ask AI** button at the top of the entry. This automatically opens the **Agent** tab and
+submits the log content for analysis.
 
 ### Log entry commands
 
@@ -102,5 +106,5 @@ To restart your app, use the workflow **Run** button at the top of your workspac
 To learn more about related Workspace tools see the following resources:
 
 * [Preview](/replit-workspace/workspace-features/preview/): Explore the Preview tool for testing your application and viewing console output
-* [Assistant](/replitai/assistant/): Learn about Assistant for code help and error resolution
+* [Agent](/replitai/agent/): Learn about Agent for code help and error resolution
 * [Shell](/replit-workspace/workspace-features/shell/): Learn how to use the command-line interface in your workspace.

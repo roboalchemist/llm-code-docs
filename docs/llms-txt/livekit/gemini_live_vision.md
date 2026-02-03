@@ -20,7 +20,7 @@ GOOGLE_API_KEY=your_google_api_key
 
 ```
 - Install dependencies:```bash
-pip install "livekit-agents[silero,google]" python-dotenv
+pip install "livekit-agents[silero,google,images]" python-dotenv
 
 ```
 
@@ -31,7 +31,7 @@ Start by importing the required modules and setting up logging. The `AgentServer
 ```python
 import logging
 from dotenv import load_dotenv
-from livekit.agents import JobContext, JobProcess, Agent, AgentSession, AgentServer, cli, RoomInputOptions
+from livekit.agents import JobContext, JobProcess, Agent, AgentSession, AgentServer, cli, room_io
 from livekit.plugins import silero, google
 
 load_dotenv()
@@ -57,12 +57,12 @@ server.setup_fnc = prewarm
 
 ## Create a simple vision-capable agent
 
-Keep the agent minimal—just add instructions that acknowledge its vision capabilities. The actual video processing comes from the session configuration with `RoomInputOptions`.
+Keep the agent minimal—just add instructions that acknowledge its vision capabilities. The actual video processing comes from the session configuration with `RoomOptions`.
 
 ```python
 import logging
 from dotenv import load_dotenv
-from livekit.agents import JobContext, JobProcess, Agent, AgentSession, AgentServer, cli, RoomInputOptions
+from livekit.agents import JobContext, JobProcess, Agent, AgentSession, AgentServer, cli
 from livekit.plugins import silero, google
 
 load_dotenv()
@@ -83,12 +83,12 @@ class Assistant(Agent):
 
 ## Define the RTC session entrypoint
 
-Configure the Gemini Realtime model with proactivity and affective dialog enabled. Proactivity lets the model speak when it has something relevant to say. Enable video in `RoomInputOptions` so the agent receives video frames from the room. After starting and connecting, call `generate_reply()` to have the agent greet the caller.
+Configure the Gemini Realtime model with proactivity and affective dialog enabled. Proactivity lets the model speak when it has something relevant to say. Enable video in `RoomOptions` so the agent receives video frames from the room. After starting and connecting, call `generate_reply()` to have the agent greet the caller.
 
 ```python
 import logging
 from dotenv import load_dotenv
-from livekit.agents import JobContext, JobProcess, Agent, AgentSession, AgentServer, cli, RoomInputOptions
+from livekit.agents import JobContext, JobProcess, Agent, AgentSession, AgentServer, cli, room_io
 from livekit.plugins import silero, google
 
 load_dotenv()
@@ -119,7 +119,7 @@ async def entrypoint(ctx: JobContext):
 
     session = AgentSession(
         llm=google.beta.realtime.RealtimeModel(
-            model="gemini-2.5-flash-native-audio-preview-09-2025",
+            model="gemini-2.5-flash-native-audio-preview-12-2025",
             proactivity=True,
             enable_affective_dialog=True
         ),
@@ -129,7 +129,9 @@ async def entrypoint(ctx: JobContext):
     await session.start(
         room=ctx.room,
         agent=Assistant(),
-        room_input_options=RoomInputOptions(video_enabled=True),
+        room_options=room_io.RoomOptions(
+            video_input=True,
+        )
     )
     await ctx.connect()
 
@@ -144,7 +146,7 @@ The `cli.run_app()` function starts the agent server and manages connections to 
 ```python
 import logging
 from dotenv import load_dotenv
-from livekit.agents import JobContext, JobProcess, Agent, AgentSession, AgentServer, cli, RoomInputOptions
+from livekit.agents import JobContext, JobProcess, Agent, AgentSession, AgentServer, cli, room_io
 from livekit.plugins import silero, google
 
 load_dotenv()
@@ -173,7 +175,7 @@ async def entrypoint(ctx: JobContext):
 
     session = AgentSession(
         llm=google.beta.realtime.RealtimeModel(
-            model="gemini-2.5-flash-native-audio-preview-09-2025",
+            model="gemini-2.5-flash-native-audio-preview-12-2025",
             proactivity=True,
             enable_affective_dialog=True
         ),
@@ -183,7 +185,9 @@ async def entrypoint(ctx: JobContext):
     await session.start(
         room=ctx.room,
         agent=Assistant(),
-        room_input_options=RoomInputOptions(video_enabled=True),
+        room_options=room_io.RoomOptions(
+            video_input=True,
+        )
     )
     await ctx.connect()
 
@@ -207,7 +211,7 @@ python gemini_live_vision.py console
 ## How it works
 
 1. The session uses Gemini Realtime as the LLM with proactivity turned on.
-2. `RoomInputOptions(video_enabled=True)` lets the agent receive video frames.
+2. `RoomOptions(video_input=True)` lets the agent receive video frames.
 3. Silero VAD manages turn-taking for audio.
 4. An initial `generate_reply()` greets the caller; the model can incorporate vision context in responses.
 
@@ -216,7 +220,7 @@ python gemini_live_vision.py console
 ```python
 import logging
 from dotenv import load_dotenv
-from livekit.agents import JobContext, JobProcess, Agent, AgentSession, AgentServer, cli, RoomInputOptions
+from livekit.agents import JobContext, JobProcess, Agent, AgentSession, AgentServer, cli, room_io
 from livekit.plugins import silero, google
 
 load_dotenv()
@@ -246,7 +250,7 @@ async def entrypoint(ctx: JobContext):
 
     session = AgentSession(
         llm=google.beta.realtime.RealtimeModel(
-            model="gemini-2.5-flash-native-audio-preview-09-2025",
+            model="gemini-2.5-flash-native-audio-preview-12-2025",
             proactivity=True,
             enable_affective_dialog=True
         ),
@@ -256,7 +260,9 @@ async def entrypoint(ctx: JobContext):
     await session.start(
         room=ctx.room,
         agent=Assistant(),
-        room_input_options=RoomInputOptions(video_enabled=True),
+        room_options=room_io.RoomOptions(
+            video_input=True,
+        )
     )
     await ctx.connect()
 
@@ -270,7 +276,7 @@ if __name__ == "__main__":
 
 ---
 
-This document was rendered at 2025-12-31T18:29:43.948Z.
+This document was rendered at 2026-02-03T03:25:30.584Z.
 For the latest version of this document, see [https://docs.livekit.io/recipes/gemini_live_vision.md](https://docs.livekit.io/recipes/gemini_live_vision.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

@@ -1,5 +1,9 @@
 # Source: https://docs.oxla.com/sql-reference/sql-statements/insert-into.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.oxla.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # INSERT INTO
 
 ## Overview

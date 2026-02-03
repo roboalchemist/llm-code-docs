@@ -2,14 +2,11 @@
 
 # List Organizations
 
-```
-GET 
-/v1/organizations
-```
+Copy page
 
 This endpoint returns the list of the Organizations that belongs to the user.
 
-## Responses[â€‹](#responses "Direct link to Responses")
+## Responses[​](#responses "Direct link to Responses")
 
 * 200
 * 429

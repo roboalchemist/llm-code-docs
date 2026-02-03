@@ -1,3 +1,21 @@
+# Source: https://docs.datadoghq.com/feature_flags/server/nodejs.md
+
+# Source: https://docs.datadoghq.com/security/code_security/software_composition_analysis/setup_runtime/compatibility/nodejs.md
+
+# Source: https://docs.datadoghq.com/security/code_security/iast/setup/compatibility/nodejs.md
+
+# Source: https://docs.datadoghq.com/security/code_security/iast/setup/nodejs.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/gcp/cloud-run/nodejs.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/aws/lambda/nodejs.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/compatibility/nodejs.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/nodejs.md
+
+# Source: https://docs.datadoghq.com/data_streams/setup/language/nodejs.md
+
 # Source: https://docs.datadoghq.com/profiler/profiler_troubleshooting/nodejs.md
 
 # Source: https://docs.datadoghq.com/profiler/enabling/nodejs.md
@@ -12,6 +30,8 @@
 
 # Source: https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/opentracing/nodejs.md
 
+# Source: https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/nodejs.md
+
 # Source: https://docs.datadoghq.com/tracing/trace_collection/dd_libraries/nodejs.md
 
 ---
@@ -20,7 +40,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Add the Datadog Tracing Library >
   Tracing Node.js Applications
-source_url: https://docs.datadoghq.com/trace_collection/dd_libraries/nodejs/index.html
 ---
 
 # Tracing Node.js Applications

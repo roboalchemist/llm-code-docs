@@ -1,12 +1,16 @@
 # Source: https://docs.embedchain.ai/components/data-sources/xml.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🧾 XML file
 
 ### XML file
 
 To add any xml file, use the data\_type as `xml`. Eg:
 
-```python
+```python  theme={null}
 from embedchain import App
 
 app = App()

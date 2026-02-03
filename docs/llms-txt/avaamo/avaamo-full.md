@@ -12,8 +12,8 @@ One-stop information source to build enterprise agents in Avaamo Conversational 
 
 New to Avaamo Conversational AI Platform? Get an understanding of the platform and a quick overview of important concepts.&#x20;
 
-* [About Avaamo Conversational AI Platform](https://docs.avaamo.com/user-guide/overview-and-concepts/about-avaamo-platform)
-* [Key Concepts ](https://docs.avaamo.com/user-guide/overview-and-concepts/quick-summary)
+* [About Avaamo Conversational AI Platform](https://docs.avaamo.com/user-guide/user-guide/overview-and-concepts/about-avaamo-platform)
+* [Key Concepts ](https://docs.avaamo.com/user-guide/user-guide/overview-and-concepts/quick-summary)
 
 ### Quick Start Steps
 
@@ -45,8 +45,8 @@ Key information within the release notes includes:
 
 ### Useful links
 
-* [All releases](https://docs.avaamo.com/user-guide/release-notes/all-releases)
-* [Release life cycle](https://docs.avaamo.com/user-guide/about-releases/release-life-cycle)
+* [All releases](https://docs.avaamo.com/user-guide/user-guide/release-notes/all-releases)
+* [Release life cycle](https://docs.avaamo.com/user-guide/user-guide/about-releases/release-life-cycle)
 
 
 # Release life cycle
@@ -81,7 +81,7 @@ Features slated for removal in a future release undergo a deprecation phase, fir
 
 ### Removed
 
-Removed features are no longer present in the product. Upon upgrading to a newer release, any use cases dependent on a removed feature will no longer work. There is no further support for any bug fixes or enhancements offered for a removed feature.
+Removed features are no longer present in the product. Upon upgrading to a newer release, any use cases dependent on a removed feature will no longer work. No further support is offered for bug fixes or enhancements to a removed feature.
 
 The removal of deprecated capabilities occurs in the subsequent major or minor release at the earliest. The specific date for removal will be communicated later. This systematic approach provides customers with at least one release cycle to adjust their implementation to a new version of a deprecated capability before the actual removal occurs.
 
@@ -100,13 +100,13 @@ The Avaamo Conversational AI Platform 9.0.0 release includes two new features an
 
 In this release, DataSync AI is updated to version 2.0, introducing several enhancements designed to make the feature more effective and easier to use.
 
-Refer [DataSync AI,](https://docs.avaamo.com/user-guide/recent-releases/release-notes-v9.1.0/introducing-the-datasync-2.0) for more information.
+Refer [DataSync AI,](https://docs.avaamo.com/user-guide/user-guide/recent-releases/release-notes-v9.1.0/introducing-the-datasync-2.0) for more information.
 
 ### Knowledge skill 2.0
 
 In this release, Knowledge Skill integrates with DataSync 2.0 to align seamlessly with AI agents. This enables direct ingestion of knowledge articles into the skill without creating an LLaMB skill or document group.
 
-Refer [Knowledge skill](https://docs.avaamo.com/user-guide/recent-releases/release-notes-v9.1.0/introducing-knowledge-skill-2.0), for more information.
+Refer [Knowledge skill](https://docs.avaamo.com/user-guide/user-guide/recent-releases/release-notes-v9.1.0/introducing-knowledge-skill-2.0), for more information.
 
 ## Enhancements <a href="#enhancements" id="enhancements"></a>
 
@@ -117,7 +117,7 @@ This release includes enhancements related to the following existing features:
 <table><thead><tr><th width="145.8671875">Module</th><th>Enhancements</th></tr></thead><tbody><tr><td>AI Agents</td><td><p></p><ul><li><a href="#outreach-support-for-ai-agents">Outreach support for AI agents</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5G4dZl6W7WdeTEQQ8SS6%2FDevelooper%20(2).png?alt=media&#x26;token=ea7bca24-5434-4214-a811-d956d8b3b000" alt="" data-size="line"></li><li><a href="#microsoft-teams-outreach-support-for-ai-agents">Microsoft Teams outreach support for AI agents</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5G4dZl6W7WdeTEQQ8SS6%2FDevelooper%20(2).png?alt=media&#x26;token=ea7bca24-5434-4214-a811-d956d8b3b000" alt="" data-size="line"></li><li><a href="#enhanced-chat-experience-with-file-uploads">Enhanced chat experience with file uploads</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FXenTTa48f7IueKXbyuzg%2FDevelooper%20(3).png?alt=media&#x26;token=74d895d6-211d-48d4-8cb6-2e518090b9a4" alt="" data-size="line"></li><li><a href="#flexible-configuration-for-text-to-speech-providers">Flexible configuration for text-to-speech providers</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5G4dZl6W7WdeTEQQ8SS6%2FDevelooper%20(2).png?alt=media&#x26;token=ea7bca24-5434-4214-a811-d956d8b3b000" alt="" data-size="line"></li><li><a href="#personalized-onboarding-with-welcome-messages">Personalized onboarding with welcome messages</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FXenTTa48f7IueKXbyuzg%2FDevelooper%20(3).png?alt=media&#x26;token=74d895d6-211d-48d4-8cb6-2e518090b9a4" alt="" data-size="line"></li><li><a href="#guided-follow-up-experience-in-conversations">Guided follow-up experience in conversations</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FXenTTa48f7IueKXbyuzg%2FDevelooper%20(3).png?alt=media&#x26;token=74d895d6-211d-48d4-8cb6-2e518090b9a4" alt="" data-size="line"></li><li><a href="#enhanced-fallback-management-with-auto-call-forwarding">Enhanced fallback management with auto call forwarding</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FXenTTa48f7IueKXbyuzg%2FDevelooper%20(3).png?alt=media&#x26;token=74d895d6-211d-48d4-8cb6-2e518090b9a4" alt="" data-size="line"></li><li><a href="#webex-channel-for-ai-powered-interactions">Webex channel for AI-powered interactions</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5G4dZl6W7WdeTEQQ8SS6%2FDevelooper%20(2).png?alt=media&#x26;token=ea7bca24-5434-4214-a811-d956d8b3b000" alt="" data-size="line"></li><li><a href="#selective-knowledge-skill-updates-between-stages">Selective knowledge skill updates between stages</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5G4dZl6W7WdeTEQQ8SS6%2FDevelooper%20(2).png?alt=media&#x26;token=ea7bca24-5434-4214-a811-d956d8b3b000" alt="" data-size="line"></li><li><a href="#multi-language-support-for-civr-campaigns">Multi-language support for CIVR campaigns</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FXenTTa48f7IueKXbyuzg%2FDevelooper%20(3).png?alt=media&#x26;token=74d895d6-211d-48d4-8cb6-2e518090b9a4" alt="" data-size="line"></li><li><a href="#collect-user-feedback-on-agent-responses">Collect user feedback on agent responses</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FXenTTa48f7IueKXbyuzg%2FDevelooper%20(3).png?alt=media&#x26;token=74d895d6-211d-48d4-8cb6-2e518090b9a4" alt="" data-size="line"></li><li><a href="#enhanced-troubleshooting-with-debug-logs">Enhanced troubleshooting with debug logs</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5G4dZl6W7WdeTEQQ8SS6%2FDevelooper%20(2).png?alt=media&#x26;token=ea7bca24-5434-4214-a811-d956d8b3b000" alt="" data-size="line"></li><li><a href="#improved-live-agent-session-termination">Improved live agent session termination</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5G4dZl6W7WdeTEQQ8SS6%2FDevelooper%20(2).png?alt=media&#x26;token=ea7bca24-5434-4214-a811-d956d8b3b000" alt="" data-size="line"></li><li><a href="#configuration-control-for-hybrid-sdk">Configuration control for Hybrid SDK</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5G4dZl6W7WdeTEQQ8SS6%2FDevelooper%20(2).png?alt=media&#x26;token=ea7bca24-5434-4214-a811-d956d8b3b000" alt="" data-size="line"></li><li><a href="#additional-enhancements-for-the-ai-agent-experience">Additional enhancements for AI Agent experience</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5G4dZl6W7WdeTEQQ8SS6%2FDevelooper%20(2).png?alt=media&#x26;token=ea7bca24-5434-4214-a811-d956d8b3b000" alt="" data-size="line"></li></ul></td></tr><tr><td>LLaMB</td><td><p></p><ul><li><a href="#disclaimer-note-support-for-long-responses">Disclaimer note support for long responses</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FXenTTa48f7IueKXbyuzg%2FDevelooper%20(3).png?alt=media&#x26;token=74d895d6-211d-48d4-8cb6-2e518090b9a4" alt="" data-size="line"></li><li><a href="#improved-content-extraction-in-document-uploads">Improved content extraction in document uploads</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5G4dZl6W7WdeTEQQ8SS6%2FDevelooper%20(2).png?alt=media&#x26;token=ea7bca24-5434-4214-a811-d956d8b3b000" alt="" data-size="line"></li><li><a href="#multilingual-support-for-soft-unhandled-messages">Multilingual support for soft unhandled messages</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FXenTTa48f7IueKXbyuzg%2FDevelooper%20(3).png?alt=media&#x26;token=74d895d6-211d-48d4-8cb6-2e518090b9a4" alt="" data-size="line"></li><li><a href="#smart-intent-disambiguation-for-multiple-skill-matches">Smart intent disambiguation for multiple skill matches</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5G4dZl6W7WdeTEQQ8SS6%2FDevelooper%20(2).png?alt=media&#x26;token=ea7bca24-5434-4214-a811-d956d8b3b000" alt="" data-size="line"></li><li><a href="#markdown-rendering-enabled-by-default-for-new-channels">Markdown rendering enabled by default for new channels</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5G4dZl6W7WdeTEQQ8SS6%2FDevelooper%20(2).png?alt=media&#x26;token=ea7bca24-5434-4214-a811-d956d8b3b000" alt="" data-size="line"></li></ul></td></tr><tr><td>MS Teams</td><td><p></p><ul><li><a href="#formatting-flexibility-for-teams-channel-responses">Formatting flexibility for Teams channel responses</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5G4dZl6W7WdeTEQQ8SS6%2FDevelooper%20(2).png?alt=media&#x26;token=ea7bca24-5434-4214-a811-d956d8b3b000" alt="" data-size="line"></li><li><a href="#support-for-single-tenant-bots-in-microsoft-teams">Support for single-tenant bots in Microsoft Teams</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5G4dZl6W7WdeTEQQ8SS6%2FDevelooper%20(2).png?alt=media&#x26;token=ea7bca24-5434-4214-a811-d956d8b3b000" alt="" data-size="line"></li></ul></td></tr><tr><td>Agent configuration</td><td><a href="#js-errors-page-improved-error-classification">JS errors page: Improved error classification</a><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5G4dZl6W7WdeTEQQ8SS6%2FDevelooper%20(2).png?alt=media&#x26;token=ea7bca24-5434-4214-a811-d956d8b3b000" alt="" data-size="line"></td></tr></tbody></table>
 
 {% hint style="danger" %}
-**Deprecation and removal notice**: See [Deprecated and removed features,](https://docs.avaamo.com/user-guide/deprecated-and-removed-features/v9.1.0-deprecated-features) for a complete list&#x20;
+**Deprecation and removal notice**: See [Deprecated and removed features,](https://docs.avaamo.com/user-guide/user-guide/deprecated-and-removed-features/v9.1.0-deprecated-features) for a complete list&#x20;
 
 of all the deprecated and removed features in the `v9.1.0` release.
 {% endhint %}
@@ -134,13 +134,13 @@ In this release, Outreach has been enhanced to support AI Agents in voice campai
 
 This enhancement expands the use of Outreach for scenarios such as appointment scheduling, service reminders, and other interactive engagements.
 
-Refer [Outreach](https://docs.avaamo.com/user-guide/outreach/quick-start/campaign-in-c-ivr-channel), for more information.
+Refer [Outreach](https://docs.avaamo.com/user-guide/user-guide/outreach/quick-start/campaign-in-c-ivr-channel), for more information.
 
 ### Microsoft Teams outreach support for AI agents
 
 In this release, AI Agents can now be integrated with Outreach in Microsoft Teams, enabling agents to send proactive messages and engage users directly in Microsoft Teams channels for more seamless, interactive communication.
 
-Refer [Outreach](https://docs.avaamo.com/user-guide/outreach/quick-start/campaign-in-ms-teams-channel), for more information.
+Refer [Outreach](https://docs.avaamo.com/user-guide/user-guide/outreach/quick-start/campaign-in-ms-teams-channel), for more information.
 
 ### Enhanced chat experience with file uploads
 
@@ -156,7 +156,7 @@ This enhancement enhances the user experience by enabling a more seamless, inter
 <div align="left"><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FrYkeJrjzhUMLwu0oGSRh%2FScreenshot%202025-10-14%20at%2011.31.40%E2%80%AFAM.png?alt=media&#x26;token=b6a29564-5402-485e-9268-3ccf80a3e2e4" alt="" width="375"><figcaption></figcaption></figure></div>
 
 * When a user submits the card, the LLM receives **`#avm-card-submitted`**. Ensure the prompt includes a section to handle this event and invoke a function to access the uploaded file via **`context.last_message`**.
-* Uploaded files can be viewed later. Refer to the [File upload](https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/file-upload), for detailed instructions on viewing uploaded documents.
+* Uploaded files can be viewed later. Refer to the [File upload](https://docs.avaamo.com/user-guide/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/file-upload), for detailed instructions on viewing uploaded documents.
 
 #### **Microsoft Teams:**
 
@@ -174,7 +174,7 @@ To configure, go to the **Skill** page, select the desired prompt skill, open **
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FU1Zh3QcmkybIMcEqqzMe%2FScreenshot%202025-10-14%20at%2011.49.37%E2%80%AFAM.png?alt=media&#x26;token=07090da7-1a25-4e0a-8ab6-b9002cecc2a9" alt=""><figcaption></figcaption></figure>
 
-Refer [Advanced Settings,](https://docs.avaamo.com/user-guide/skills/prompt-skill/advanced-settings) for more information.
+Refer [Advanced Settings,](https://docs.avaamo.com/user-guide/user-guide/skills/prompt-skill/advanced-settings) for more information.
 
 ### Personalized onboarding with welcome messages
 
@@ -186,7 +186,7 @@ Go to the **Skills** page and locate the **Welcome message** skill.
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F6ATTDikajfQ9oAOhueet%2FScreenshot%202025-10-14%20at%2012.02.30%E2%80%AFPM.png?alt=media&#x26;token=4f449356-3e5a-45f7-a3ba-6293c911b4a2" alt=""><figcaption></figcaption></figure>
 
-Refer [Welcome message](https://docs.avaamo.com/user-guide/skills/built-in-skills#welcome-skill), for more information.
+Refer [Welcome message](https://docs.avaamo.com/user-guide/user-guide/skills/built-in-skills#welcome-skill), for more information.
 
 ### Guided follow-up experience in conversations
 
@@ -203,11 +203,11 @@ Go to the **Skills** page and locate the **Outro message** skill.
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F6ATTDikajfQ9oAOhueet%2FScreenshot%202025-10-14%20at%2012.02.30%E2%80%AFPM.png?alt=media&#x26;token=4f449356-3e5a-45f7-a3ba-6293c911b4a2" alt=""><figcaption></figcaption></figure>
 
-Refer [Outro message](https://docs.avaamo.com/user-guide/skills/built-in-skills#outro-message), for more information.
+Refer [Outro message](https://docs.avaamo.com/user-guide/user-guide/skills/built-in-skills#outro-message), for more information.
 
 ### Enhanced fallback management with auto call forwarding
 
-In this release, we have enhanced AI Agents with the **Auto call forward** feature to improve error handling and fallback management. This feature allows developers to define a [custom error handler](https://docs.avaamo.com/user-guide/configuration/settings#error-handler) that dynamically forwards calls or messages when a system error occurs.
+In this release, we have enhanced AI Agents with the **Auto call forward** feature to improve error handling and fallback management. This feature allows developers to define a [custom error handler](https://docs.avaamo.com/user-guide/user-guide/configuration/settings#error-handler) that dynamically forwards calls or messages when a system error occurs.
 
 The feature has been enhanced to support dynamic values in Forward Headers, allowing the use of storage variables or JavaScript blocks for scenarios such as passing the caller's phone number.
 
@@ -275,7 +275,7 @@ The Webex channel enables AI Agents to deliver a smooth, interactive experience 
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FG8IT9VuyAsWWPp8NUtVD%2Fimage.png?alt=media&#x26;token=58453ff9-acb9-4658-8e64-47a8ad4b5324" alt=""><figcaption></figcaption></figure>
 
-Refer [Webex](https://docs.avaamo.com/user-guide/configuration/channels/webex), for more information.
+Refer [Webex](https://docs.avaamo.com/user-guide/user-guide/configuration/channels/webex), for more information.
 
 ### Selective knowledge skill updates between stages
 
@@ -292,7 +292,7 @@ This selective update mechanism ensures precision and flexibility in managing kn
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FQzcZtR9pOtuhPKiFtkkK%2Fimage.png?alt=media&#x26;token=132af64b-0c3e-44b8-bed5-48b21100d1b8" alt=""><figcaption></figcaption></figure>
 
-Refer [Promote and pull updates](https://docs.avaamo.com/user-guide/how-to/build-agents/manage-agents/promote-and-pull-updates), for more information.
+Refer [Promote and pull updates](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/manage-agents/promote-and-pull-updates), for more information.
 
 ### Multi-language support for CIVR campaigns
 
@@ -308,7 +308,7 @@ This feature helps you gather insights into user satisfaction and understand how
 
 <div align="left"><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FjVGUuSowJZ7rOYVtSVu1%2Fimage.png?alt=media&#x26;token=dc0dc1c6-ca28-465e-b344-15d3ca1ba0b6" alt="" width="375"><figcaption></figcaption></figure></div>
 
-Refer [Enable feedback](https://docs.avaamo.com/user-guide/configuration/settings#enable-feedback), for more information.
+Refer [Enable feedback](https://docs.avaamo.com/user-guide/user-guide/configuration/settings#enable-feedback), for more information.
 
 ### Enhanced troubleshooting with debug logs
 
@@ -318,7 +318,7 @@ This enhancement provides greater control over troubleshooting and makes it easi
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FJKpR8WYWHmA5FlwR4zwf%2FScreenshot%202025-10-29%20at%204.46.39%E2%80%AFPM.png?alt=media&#x26;token=2842a7d0-40d1-4765-8ab2-ea6cab6cc335" alt=""><figcaption></figcaption></figure>
 
-Refer [Enable debug logs](https://docs.avaamo.com/user-guide/configuration/settings#enable-debug-logs), for more information.
+Refer [Enable debug logs](https://docs.avaamo.com/user-guide/user-guide/configuration/settings#enable-debug-logs), for more information.
 
 ### Improved live agent session termination
 
@@ -334,7 +334,7 @@ This enhancement simplifies configuration management by removing the need for ma
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FJKpR8WYWHmA5FlwR4zwf%2FScreenshot%202025-10-29%20at%204.46.39%E2%80%AFPM.png?alt=media&#x26;token=2842a7d0-40d1-4765-8ab2-ea6cab6cc335" alt=""><figcaption></figcaption></figure>
 
-Refer [Enable hybrid SDK](https://docs.avaamo.com/user-guide/configuration/settings#enable-hybrid-sdk), for more information.
+Refer [Enable hybrid SDK](https://docs.avaamo.com/user-guide/user-guide/configuration/settings#enable-hybrid-sdk), for more information.
 
 ### Additional enhancements for the AI agent experience
 
@@ -384,7 +384,7 @@ AI Agents now support dynamic enablement or disablement of barge-in to optimize 
 
 ### Disclaimer note support for long responses
 
-In this release, we have enhanced the response handling mechanism to include a **disclaimer message** at the end of very long responses. This disclaimer appears only when the [Markdown format](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced#enable-markdown-format) is enabled in the channel.&#x20;
+In this release, we have enhanced the response handling mechanism to include a **disclaimer message** at the end of very long responses. This disclaimer appears only when the [Markdown format](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced#enable-markdown-format) is enabled in the channel.&#x20;
 
 This enhancement ensures that source citation links remain visible even in lengthy responses.
 
@@ -401,7 +401,7 @@ A disclaimer note is automatically displayed at the end of a long response to in
 
 ### Improved content extraction in document uploads
 
-In this release, we have introduced a new parsing mechanism that significantly enhances content extraction across multiple file types when uploading via API. These improvements apply to newly uploaded content or files processed through the [Upload document API](https://docs.avaamo.com/user-guide/llamb/llamb-rest-apis/content-ingestion-apis#upload-document-html-url-to-llamb).
+In this release, we have introduced a new parsing mechanism that significantly enhances content extraction across multiple file types when uploading via API. These improvements apply to newly uploaded content or files processed through the [Upload document API](https://docs.avaamo.com/user-guide/user-guide/llamb/llamb-rest-apis/content-ingestion-apis#upload-document-html-url-to-llamb).
 
 These enhancements ensure more accurate, structured content extraction, improving the quality of ingested data and making it easier to search, reference, and use in downstream AI interactions or content-retrieval workflows.
 
@@ -410,9 +410,9 @@ These enhancements ensure more accurate, structured content extraction, improvin
 * **Markdown parsing for HTML content:**\
   The platform now automatically extracts additional formatting elements, such as italics, bullet points, and list tags, and converts them into Markdown format. This improvement is enabled **by default** and does not require any additional parameters when using the Upload document API.
 * **Section header and hierarchy detection in PDF files:**\
-  The system can now detect and extract `section headers, hierarchical structures, and tables` from PDF files for better content organization and readability. To enable this capability, include the parameter `"parsing_lib": "markdown"` in the [Upload file API](https://docs.avaamo.com/user-guide/llamb/llamb-rest-apis/content-ingestion-apis#upload-different-types-of-files-pdf-docx-pptx-xlsx-csv-html-to-llamb).
+  The system can now detect and extract `section headers, hierarchical structures, and tables` from PDF files for better content organization and readability. To enable this capability, include the parameter `"parsing_lib": "markdown"` in the [Upload file API](https://docs.avaamo.com/user-guide/user-guide/llamb/llamb-rest-apis/content-ingestion-apis#upload-different-types-of-files-pdf-docx-pptx-xlsx-csv-html-to-llamb).
 
-Refer [Content ingestion API](https://docs.avaamo.com/user-guide/llamb/llamb-rest-apis/content-ingestion-apis), for more information.
+Refer [Content ingestion API](https://docs.avaamo.com/user-guide/user-guide/llamb/llamb-rest-apis/content-ingestion-apis), for more information.
 
 ### Multilingual support for soft unhandled messages
 
@@ -424,7 +424,7 @@ The image below illustrates a soft unhandled message displayed in Hindi.
 
 <div align="left"><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FgBYxmrPfkchTsONBowmB%2Fimage.png?alt=media&#x26;token=77b527fb-0b8d-4417-b0e8-c6fbcbfda86c" alt="" width="375"><figcaption></figcaption></figure></div>
 
-Refe [Soft unhandled (Active redirect),](https://docs.avaamo.com/user-guide/llamb/soft-unhandled-active-redirect) for more information.
+Refe [Soft unhandled (Active redirect),](https://docs.avaamo.com/user-guide/user-guide/llamb/soft-unhandled-active-redirect) for more information.
 
 ### Smart intent disambiguation for multiple skill matches
 
@@ -441,7 +441,7 @@ This enhancement improves response accuracy and user experience by reducing manu
 
 In this release, we have enabled Markdown rendering by default for all newly created channels to enhance the presentation of LLaMB responses. This ensures that formatted text elements, such as bold, italics, bullet points, and hyperlinks, are displayed as intended without requiring any additional configuration.
 
-Channels created before this update retain their existing Markdown settings, which can be manually adjusted at any time from the [channel configuration](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced#enable-markdown-format) page if needed.
+Channels created before this update retain their existing Markdown settings, which can be manually adjusted at any time from the [channel configuration](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced#enable-markdown-format) page if needed.
 
 This enhancement improves readability and consistency in response formatting across channels, providing users with an engaging conversational experience.
 
@@ -457,7 +457,7 @@ You can configure this option directly from the Microsoft Teams configuration pa
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FKrApQRjNBFyUxhaQfKdK%2Fimage.png?alt=media&#x26;token=bc562771-8d75-4720-a904-b1280c285117" alt=""><figcaption></figcaption></figure>
 
-Refer [Microsoft Teams (MS Teams),](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/microsoft-teams-ms-teams) for more information.
+Refer [Microsoft Teams (MS Teams),](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/microsoft-teams-ms-teams) for more information.
 
 ### Support for single-tenant bots in Microsoft Team**s**
 
@@ -479,7 +479,7 @@ This improvement allows developers to quickly assess the severity and nature of 
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FdlmugZkIJcXuwEQwzqjb%2Fimage.png?alt=media&#x26;token=3d083605-942e-4ddf-9841-7b28b80f496e" alt=""><figcaption></figcaption></figure>
 
-Refer [JS errors,](https://docs.avaamo.com/user-guide/how-to/build-agents/debug-agents/js-errors) for more information.
+Refer [JS errors,](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/debug-agents/js-errors) for more information.
 
 
 # Fix patch releases (v9.1.1)
@@ -510,7 +510,7 @@ After writing the message, click `Save`.
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FvRE71GOeTEN1Yt532ah0%2FScreenshot%202025-11-18%20at%203.10.42%E2%80%AFPM.png?alt=media&#x26;token=8ed18489-3217-450e-82ed-61df45be344e" alt=""><figcaption></figcaption></figure>
 
-Refer [Advanced Settings](https://docs.avaamo.com/user-guide/llamb/get-started/step-2-ingest-enterprise-content), for more information.
+Refer [Advanced Settings](https://docs.avaamo.com/user-guide/user-guide/llamb/get-started/step-2-ingest-enterprise-content), for more information.
 
 ### Enhanced multilingual document ingestion support for LLaMB
 
@@ -522,7 +522,7 @@ In this release, multilingual document ingestion is expanded to support document
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fxu90WPKxeUmO65l1qhJu%2FScreenshot%202025-11-19%20at%205.40.47%E2%80%AFPM.png?alt=media&#x26;token=90d68333-bb7b-465f-a541-5d5ec0301ac0" alt=""><figcaption></figcaption></figure>
 
-**Language selection when auto-detection is off:** If you turn off auto-detection, you can manually select the document’s language from a dropdown. The dropdown displays all [languages configured](https://docs.avaamo.com/user-guide/configuration/language) for the agent, allowing accurate classification of the uploaded document.
+**Language selection when auto-detection is off:** If you turn off auto-detection, you can manually select the document’s language from a dropdown. The dropdown displays all [languages configured](https://docs.avaamo.com/user-guide/user-guide/configuration/language) for the agent, allowing accurate classification of the uploaded document.
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FRaoNjm5g8iqCYgrNjVZP%2FScreenshot%202025-11-19%20at%205.40.17%E2%80%AFPM.png?alt=media&#x26;token=e9259298-23b7-4ecf-a784-e047264f3f4b" alt=""><figcaption></figcaption></figure>
 
@@ -592,11 +592,251 @@ Additionally, file exports now include **only the log results that match the cur
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F94LSCKwVpVFYAFzE2dsj%2FScreenshot%202025-11-18%20at%2012.51.30%E2%80%AFPM.png?alt=media&#x26;token=13f424d6-5521-485a-b782-22c3707a5f61" alt=""><figcaption></figcaption></figure>
 
-Refer [JS errors](https://docs.avaamo.com/user-guide/how-to/build-agents/debug-agents/js-errors), for more information.
+Refer [JS errors](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/debug-agents/js-errors), for more information.
 
 ### **File transfer capture support for custom live agent integrations**
 
 In this release, support for capturing file transfers in custom live agent integrations has been introduced. Previously, file transfer events were not recorded. With this enhancement, all file transfers are now fully tracked to provide complete visibility into conversation activity.
+
+
+# Fix patch releases (v9.1.2)
+
+This article summarizes a list of fix patch releases made in the Avaamo Conversational AI Platform version 9.1.2. The following are some of the key fixes included in this release:
+
+1. [Introducing Salesforce as a content source for DataSync (Beta)](#introducing-salesforce-as-a-content-source-for-datasync-beta)
+2. [Pull specific LLaMB skill changes](#pull-specific-llamb-skill-changes)
+
+### Introducing Salesforce as a content source for DataSync (Beta)
+
+In this release, DataSync AI now supports `Salesforce` as a content source, allowing you to bring Salesforce records directly into your agent knowledge.&#x20;
+
+{% hint style="info" %}
+This feature is currently in beta and intended for testing; feedback is appreciated.
+{% endhint %}
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FtUEA2gXCWtPQFGwrh4GM%2FScreenshot%202025-12-04%20at%2012.22.10%E2%80%AFPM.png?alt=media&#x26;token=129044f6-7ca0-4f8e-8f28-d33156e05433" alt=""><figcaption></figcaption></figure>
+
+With this enhancement, DataSync seamlessly processes information from Salesforce, including cases, knowledge articles, and custom objects, alongside other supported content sources. This helps agents provide accurate, context-aware responses based on the latest data available in your Salesforce environment.
+
+This feature extends DataSync's reach, making it easier to unify enterprise knowledge and keep your agents consistently up to date.
+
+### Pull specific LLaMB skill changes
+
+In this release, the LLaMB skill now supports pulling updates for **specific LLaMB skill changes** between stages. This improvement gives users greater control over stage deployments and helps prevent accidental updates to unrelated LLaMB skills.
+
+When you add or modify an LLaMB skill during development and then initiate an update to production, the system will now display all detected changes under `Advanced Options`. You can review the list and selectively choose which updates to apply, ensuring only the intended LLaMB skill changes move to the production agent.
+
+The changes are categorized as follows:
+
+* **To be created**: Newly added LLaMB skills
+* **To be updated**: Existing LLaMB skills that have been modified
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FuYpeiwpING6VNejAaFBa%2FScreenshot%202025-12-04%20at%2011.27.55%E2%80%AFAM.png?alt=media&#x26;token=66dac582-7c67-4299-8b4b-9d2f7ebd765d" alt=""><figcaption></figcaption></figure>
+
+This enhancement ensures safer, more predictable deployments and improved version management across stages.
+
+Refer [Promote and pull updates](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/manage-agents/promote-and-pull-updates), for more information.
+
+
+# Fix patch releases (v9.1.3)
+
+This article summarizes a list of fix patch releases made in the Avaamo Conversational AI Platform version 9.1.3. The following are some of the key fixes included in this release:
+
+1. [Language selection for file ingestion in DataSync](#language-selection-for-file-ingestion-in-datasync)
+2. [Control masking with safelist patterns](#control-masking-with-safelist-patterns)
+3. [Export agents with optional LLaMB skill data](#export-agents-with-optional-llamb-skill-data)
+4. [Email notifications for failed jobs](#email-notifications-for-failed-jobs)
+
+### Language selection for file ingestion in DataSync
+
+In this release, we are introducing a new **Language selection** option for file-based content ingestion in DataSync. You can view this option during file ingestion. This enhancement improves content-processing accuracy, ensures better handling of non-English documents, and helps the system generate more reliable responses from ingested data.
+
+You can select the language in the [Upload Files](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/content-sources/files/step-2-configure-content-source-and-ingest-content/upload-files) step. Click the dropdown to display the languages configured for the agent.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FQbO3aeyx3LBgiYijYl8u%2FScreenshot%202025-12-12%20at%202.04.04%E2%80%AFPM.png?alt=media&#x26;token=7f2c92db-625c-4740-aba5-ae6610055767" alt=""><figcaption></figcaption></figure>
+
+{% hint style="info" %}
+**Notes:** The language selection option is disabled when the Auto-detect toggle is enabled
+{% endhint %}
+
+You can verify the configured language after the file or document is ingested. Navigate to the individual document’s **Actions** section, click the **three-dot menu**, and select **Edit** to view the language of the ingested document content.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FzxWlQVgAP4hJBY9ywUtb%2FScreenshot%2017-12-2025%20at%2012.48.png?alt=media&#x26;token=ad53fb20-4456-4cc6-9b0a-e6c1cfdc019a" alt=""><figcaption></figcaption></figure>
+
+Refer [Files](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/content-sources/files), for more information.
+
+### Control masking with safelist patterns
+
+In this release, we introduce `Safelist masking patterns`, which let you prevent specific words or word groups from being masked.&#x20;
+
+For example, if you configure the system to mask all numbers in queries, responses, or both, specific terms such as RoBE-19 that contain numerals can be excluded from masking.
+
+This enhancement provides greater control and flexibility in data masking, ensuring that essential terms remain readable while sensitive information remains protected.
+
+To add safelist masking patterns, contact `Avaamo Support` with the list of words or patterns you want to exempt from masking.
+
+### Export agents with optional LLaMB skill data
+
+In this release, we introduce a new checkbox in the agent export flow that lets users include or exclude LLaMB skills in the export. By default, all applicable skills are included. Users can clear the checkbox to exclude LLaMB skills from the exported agent.
+
+{% hint style="info" %}
+**Note:** This feature is enabled by default; the checkbox is selected.
+{% endhint %}
+
+This enhancement includes two scenarios:
+
+* **Fresh export:** See the screenshot below, where LLaMB skills are excluded by clearing the checkbox.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FsKtU1ROu8J57n1KxwVQq%2FScreenshot%202025-12-16%20at%202.04.05%E2%80%AFPM.png?alt=media&#x26;token=b995c828-979c-46ea-8894-546399ad59bb" alt=""><figcaption></figcaption></figure>
+
+* **Repeated export:** See the screenshot below, where LLaMB skills are excluded by clearing the checkbox.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FCmEumrHWyg4eY7prlPuH%2FScreenshot%202025-12-16%20at%202.11.16%E2%80%AFPM.png?alt=media&#x26;token=bd4c4ac2-f180-4434-b381-7cf1be61bf67" alt=""><figcaption></figcaption></figure>
+
+This improvement provides greater control and improves export performance, especially for agents with large skill datasets.
+
+Refer to [Export and import agents](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/manage-agents/export-and-import-agents), for more information.
+
+### Email notifications for failed jobs
+
+In this release, we introduce the **Email Notifiers** to configure email notifications for failed jobs. You can now add email addresses to receive alerts whenever a job fails for any reason.
+
+For example, if an auto-sync is scheduled to run at a specific time and the job fails, the configured email recipients are immediately notified. This alert helps teams detect failures early, respond quickly, and minimize data sync disruptions.
+
+**To configure email notifications:**
+
+1. Navigate to the required job.
+2. Click the three-dot menu next to the job name and select **Email Notifiers**.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F2kDrqglgtcmbhHI8DcLR%2FScreenshot%202025-12-16%20at%203.39.20%E2%80%AFPM.png?alt=media&#x26;token=28997ca7-ad81-4ef9-9ce3-7f7f52c8f341" alt=""><figcaption></figcaption></figure>
+
+3. Add up to **five email addresses**, using **+ Add** to include them one by one. Click **Save** to apply the configuration.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FjxsWs3oIBf8vpY9enx4i%2FScreenshot%202025-12-16%20at%203.41.08%E2%80%AFPM.png?alt=media&#x26;token=cb46fb32-5d8f-425a-afbc-e739673cbcdb" alt=""><figcaption></figcaption></figure>
+
+Refer [Email Notifiers](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/content-sources/common-actions/email-notifiers), for more information.
+
+
+# Fix patch releases (v9.1.4)
+
+This article summarizes a list of fix patch releases made in the Avaamo Conversational AI Platform version 9.1.4. The following are some of the key fixes included in this release:
+
+1. [Introducing Conversational Intelligence (CI)](#introducing-conversational-intelligence-ci)
+2. [Introducing Confluence as a content source for DataSync](#introducing-confluence-as-a-content-source-for-datasync)
+3. [Citation links in regression test files](#citation-links-in-regression-test-files)
+4. [Citation links in query insights](#citation-links-in-query-insights)
+
+### **Introducing Conversational Intelligence (CI)**
+
+In this release, we introduce `Conversational Intelligence (CI),` a powerful, AI-driven analytics layer that provides deep insights across digital and voice interactions. CI works seamlessly across `classic agents, AI agents, and Agent Copilot,` providing a unified, centralized way to analyze conversations at scale.
+
+**Key points:**
+
+* **AI-driven conversation analysis:** CI analyzes the entire conversatio&#x6E;*,* including transcripts and call metadata, to understand context, intent, and sentiment, rather than relying on rigid conversation trees.
+* **Built for modern AI conversations:** Unlike legacy tag-based systems, CI adapts naturally to fluid, non-linear AI agent conversations, making it the most effective way to analyze AI-driven interactions.
+* **Centralized analytics platform:** Eliminates the need for custom tagging logic or external dashboards by providing a single analytics layer for all bots and channels.
+* **Chat with your data:** Users can interact with insights using a conversational interface to ask questions and explore trends.
+* **Rich insights and reporting:** Includes charts, date-based filtering, and automated weekly summary emails.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fo4dqeKIPNTPvZgmBmDGL%2FScreenshot%202026-01-16%20at%202.51.07%E2%80%AFPM.png?alt=media&#x26;token=b4db9103-37e4-4fd8-b771-52f095fc2f80" alt=""><figcaption></figcaption></figure>
+
+Conversational Intelligence replaces legacy tagging approaches with a smarter, scalable, AI-first analytics solution, helping teams gain accurate, actionable insights from every customer interaction.
+
+### **Introducing Confluence as a content source for DataSync**
+
+In this release, DataSync adds support for `Confluence` as a content source, enabling you to ingest Confluence pages and spaces directly into your knowledge base. This integration keeps agent knowledge aligned with the latest documentation, runbooks, and team updates maintained in Confluence.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F3x6v1ETqljWz2QyOAuvl%2FScreenshot%202026-01-12%20at%2011.48.53%E2%80%AFAM.png?alt=media&#x26;token=c45411d1-116d-4d73-a93c-0607d54da033" alt=""><figcaption></figcaption></figure>
+
+By automatically syncing Confluence content, agents can deliver more accurate, up-to-date responses without manual uploads, reducing maintenance effort and improving response quality.
+
+Refer [Confluence](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/content-sources/confluence), for more information.
+
+### **Citation links in regression test files**
+
+In this release, we introduce **citation links in regression result files**, making it easier to trace and verify the sources used during regression testing. Each test result can now include direct citation links, allowing reviewers to quickly validate responses against their original knowledge sources.
+
+This enhancement improves transparency, simplifies result verification, and helps teams confidently assess response accuracy during regression testing.
+
+{% hint style="info" %}
+**Note:** To enable citation links in the regression test result file, please reach out to **Avaamo Support**.
+{% endhint %}
+
+### **Citation links in query insights**
+
+In this release, citation links are now displayed in query insights across both the `Web channel` and the `Conversation History` pages. This enhancement makes it easier to trace responses back to their original knowledge sources directly from insights, improving transparency and simplifying verification during analysis and troubleshooting.
+
+* This is especially useful for **voice channels**, where responses are not visually inspectable during live interactions.
+* Citation links help **bot developers debug and validate responses** by clearly identifying which knowledge sources were used.
+* You can use citation visibility during testing and analysis, and disable it later if required for production environments.
+
+Citation link in Web Channel:
+
+<div align="left"><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FtI01AZQJVjJ6TG6km1mG%2FScreenshot%202026-01-16%20at%2012.07.58%E2%80%AFPM.png?alt=media&#x26;token=339bb303-1161-4f7f-b622-a701e6250d2c" alt="" width="375"><figcaption></figcaption></figure></div>
+
+Citation link in Conversation history:
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fb7yAhqY6bKe51WEAHbP6%2FScreenshot%202026-01-16%20at%202.24.56%E2%80%AFPM.png?alt=media&#x26;token=c9324ccf-9fe5-403d-8225-be3662976d82" alt=""><figcaption></figcaption></figure>
+
+
+# Fix patch releases (v9.1.5)
+
+This article summarizes a list of fix patch releases made in the Avaamo Conversational AI Platform version 9.1.5. The following are some of the key fixes included in this release:
+
+1. [Attribute handler support in datasync](#attribute-handler-support-in-datasync)
+2. [Default prompt template for new prompt skills](#default-prompt-template-for-new-prompt-skills)
+3. [Selective restore options for version comparison](#selective-restore-options-for-version-comparison)
+
+### Attribute handler support in datasync
+
+In this release, we are introducing `Configure Advanced Attribute Handler` support in `DataSync`, a powerful new capability that lets you dynamically assign custom attributes to documents using JavaScript.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F8B2AFNsKL5SHCj2CcR7M%2FScreenshot%202026-01-29%20at%205.06.27%E2%80%AFPM.png?alt=media&#x26;token=2dd9ae7a-524c-49a0-b132-357bcf080dba" alt=""><figcaption></figcaption></figure>
+
+With this enhancement, developers can write JavaScript logic that returns specific attributes during ingestion, allowing metadata such as location, category, or other fields to be calculated and applied automatically. These attributes become part of the document’s metadata and can be used for filtering, authorization, search relevance, and downstream logic in your agents.
+
+This enhancement enhances document ingestion flexibility and provides richer control over how document metadata is created and managed during the DataSync process.
+
+**Key highlights:**
+
+* **Enable attribute handler:** Turn on the attribute handler in the DataSync configuration to use custom JavaScript for attribute assignment.
+* **Post-ingestion attribute updates:** If attributes were not configured during ingestion, or if you need to update attributes for already ingested documents or articles, you can use the Advanced Attribute Handler. This feature allows you to apply or modify document attributes using custom JavaScript logic during a sync run.
+* **Test attribute logic:** Validate the JavaScript logic and verify the updated attributes before applying them across documents during a sync operation.
+* **View and export attributes:** Easily review the attributes applied to documents using the View document attributes option and export them as a `CSV file` to audit changes, troubleshoot issues, and support further analysis.
+* **Custom JS for dynamic attributes:** Use JavaScript to evaluate document metadata and return attributes based on your logic (e.g., setting a location based on document number).
+* **Debug and logs:** Logs from your JavaScript are visible in debug logs to help with development and troubleshooting.
+* **Controlled application:** Attribute logic is executed during sync runs (Sync Now or Auto Sync), and changes take effect only after a sync. This ensures safe, predictable application of attribute logic.
+* **Error handling:** If incorrect JavaScript causes an error during execution, documents with missing or invalid critical attributes will be marked in error status to prevent unintended exposure. Detailed error information is available in the JavaScript extension error logs.
+
+### Default prompt template for new prompt skills
+
+When you create a new Prompt Skill, a simple `default prompt` is now automatically available in the prompt editor. The default prompt includes a `sample function` to help you get started faster. The sample function connects the Knowledge Handler with the agentic agent to handle Knowledge Skill–related queries.
+
+This enhancement reduces initial setup effort and provides clear guidance on structuring prompts and defining functions when building or configuring prompt skills.&#x20;
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FmaiHAED3kou5w46DZ05d%2FScreenshot%202026-01-28%20at%2012.00.05%E2%80%AFPM.png?alt=media&#x26;token=5a2898d3-ad1e-4dc8-855b-c730526bd353" alt=""><figcaption></figcaption></figure>
+
+This enhancement also creates a sample function, as shown below:
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FsXbR4AzTsTEjKS1odIlM%2FScreenshot%202026-01-30%20at%2010.57.26%E2%80%AFAM.png?alt=media&#x26;token=37896f01-eb99-4cb8-a4ef-12452089d9c9" alt=""><figcaption></figcaption></figure>
+
+Refer [Prompt skill](https://docs.avaamo.com/user-guide/user-guide/skills/prompt-skill/create-prompt-skill), for more information.
+
+### Selective restore options for version comparison
+
+In this release, the `Version Comparison` page has been enhanced to support `selective restoration` of changes. You can now choose which sections of a version you want to restore instead of restoring all changes.
+
+Checkboxes are now available for the following sections if the changes are made:
+
+* Prompt
+* Function Calls
+* Advanced Settings
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F4LYZlnxVyAjqGQQtkEqN%2FScreenshot%202026-01-30%20at%2010.32.09%E2%80%AFAM.png?alt=media&#x26;token=a061cb96-8e4f-4189-9cc6-f0e1287416b4" alt=""><figcaption></figcaption></figure>
+
+You can select one or more sections, and the restore action applies only to those sections. This enhancement provides better control over version restoration and improves the overall version management experience.
+
+Refer [Restore selected](https://docs.avaamo.com/user-guide/user-guide/skills/prompt-skill/prompt-versions#restore-selected), for more information.
 
 
 # Introducing the DataSync 2.0
@@ -622,19 +862,19 @@ This end-to-end life-cycle support streamlines content management, reduces manua
 
 The scheduler option allows you to set up automatic, recurring synchronization for supported content sources. By defining a preferred schedule, you can ensure that your content is updated regularly without manual intervention. This feature helps maintain data consistency and ensures that all ingested information remains current across the platform.
 
-Refer [Auto Sync](https://docs.avaamo.com/user-guide/datasync-ai/content-sources/common-actions/auto-sync), for more information.
+Refer [Auto Sync](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/content-sources/common-actions/auto-sync), for more information.
 
 ### Manual synchronization with one click
 
 The manual sync option enables users to initiate synchronization for any content source with a single click. This provides an easy and efficient way to refresh content on demand without waiting for scheduled syncs. It ensures that the latest updates from your connected sources are immediately reflected, keeping your data current and consistent across the platform.
 
-Refer [Sync Now](https://docs.avaamo.com/user-guide/datasync-ai/content-sources/common-actions/sync-now), for more information.
+Refer [Sync Now](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/content-sources/common-actions/sync-now), for more information.
 
 ### Access detailed logs of previous sync executions
 
 DataSync now keeps a detailed record of all synchronization executions, allowing users to view and analyze previous runs. This helps track sync activity, review results, and diagnose issues quickly. Maintaining an execution history provides better visibility, greater accountability, and easier troubleshooting across all supported content sources.
 
-Refer [View job version history](https://docs.avaamo.com/user-guide/datasync-ai/content-sources/common-actions/view-job-version-history), for more information.
+Refer [View job version history](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/content-sources/common-actions/view-job-version-history), for more information.
 
 ### Efficient navigation for large document collections
 
@@ -652,7 +892,7 @@ The filter-by-status feature enables users to list documents or articles by inge
 
 Users can now delete any outdated or unused content source directly from the DataSync interface. This feature helps maintain a clean and organized workspace by allowing you to remove unnecessary or redundant data sources easily.
 
-Refer [Delete job](https://docs.avaamo.com/user-guide/datasync-ai/content-sources/common-actions/delete-job), for more information.
+Refer [Delete job](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/content-sources/common-actions/delete-job), for more information.
 
 ### **Enhanced performance for large-scale operations**
 
@@ -668,7 +908,7 @@ This release strengthens the system’s ability to manage large ingestion and sy
 
 **Ability to re-ingest a single document:** Specific documents can be re-synced independently to refresh content without running a complete synchronization job.
 
-Refer [Actions](https://docs.avaamo.com/user-guide/datasync-ai/content-sources/common-actions/actions), for more information.
+Refer [Actions](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/content-sources/common-actions/actions), for more information.
 
 ### **Easily upload multiple documents at once**
 
@@ -689,8 +929,8 @@ DataSync 2.0 provides a **production-ready foundation** for creating intelligent
 
 ## Next steps
 
-1. Understand what is required in the [Before you begin](https://docs.avaamo.com/user-guide/datasync-ai/before-you-begin) section.
-2. Refer [DataSync AI](https://docs.avaamo.com/user-guide/datasync-ai), for more information.
+1. Understand what is required in the [Before you begin](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/before-you-begin) section.
+2. Refer [DataSync AI](https://docs.avaamo.com/user-guide/user-guide/datasync-ai), for more information.
 
 
 # Introducing Knowledge skill 2.0
@@ -739,7 +979,7 @@ Unlike LLaMB, which relied on separate document groups, Knowledge Skill ingests 
 
 The new Knowledge tab provides a unified location within each skill to manage all content-related operations. It consolidates content sources, ingestion history, and synchronization details, providing users with a clear, organized view of the knowledge associated with that specific skill. This improves accessibility, simplifies monitoring, and enhances overall management efficiency.
 
-Refer [View and edit knowledge](https://docs.avaamo.com/user-guide/skills/knowledge-skill/view-and-edit-knowledge), for more information.
+Refer [View and edit knowledge](https://docs.avaamo.com/user-guide/user-guide/skills/knowledge-skill/view-and-edit-knowledge), for more information.
 
 #### **3. Monitor synchronization progress instantly**
 
@@ -764,11 +1004,11 @@ Users can preview or inspect individual records within the Knowledge Skill 2.0 i
 
 ### Next steps
 
-* Understand what is required in the [Before you begin](https://docs.avaamo.com/user-guide/ai-agent/before-you-begin) section.
-* Start by creating a new [AI agent](https://docs.avaamo.com/user-guide/ai-agent/create-an-ai-agent).
-* You are now ready to [get started](https://docs.avaamo.com/user-guide/get-started) by exploring AI agents in the Avaamo Conversational AI Platform.
+* Understand what is required in the [Before you begin](https://docs.avaamo.com/user-guide/user-guide/ai-agent/before-you-begin) section.
+* Start by creating a new [AI agent](https://docs.avaamo.com/user-guide/user-guide/ai-agent/create-an-ai-agent).
+* You are now ready to [get started](https://docs.avaamo.com/user-guide/user-guide/get-started) by exploring AI agents in the Avaamo Conversational AI Platform.
 
-Refer [Knowledge skill](https://docs.avaamo.com/user-guide/skills/knowledge-skill), for more information.
+Refer [Knowledge skill](https://docs.avaamo.com/user-guide/user-guide/skills/knowledge-skill), for more information.
 
 
 # Release notes v9.0.0
@@ -785,15 +1025,15 @@ The `AI agent` is a next-generation agent built to power highly intelligent and 
 **Note**: The AI agent is enabled on demand. Contact your dedicated Customer Success Manager for further assistance.
 {% endhint %}
 
-See [AI Agents](https://docs.avaamo.com/user-guide/recent-releases/release-notes-v9.0.0/introducing-ai-agents), for more information.
+See [AI Agents](https://docs.avaamo.com/user-guide/user-guide/recent-releases/release-notes-v9.0.0/introducing-ai-agents), for more information.
 
 ## New features
 
 This release includes the introduction of the 3 new features:
 
-1. [LLaMB Content Regression Testing](https://docs.avaamo.com/user-guide/recent-releases/release-notes-v9.0.0/introducing-llamb-content-regression-testing)
-2. [Voice Usage](https://docs.avaamo.com/user-guide/recent-releases/release-notes-v9.0.0/introducing-voice-usage)
-3. [Aura – your smart support agent](https://docs.avaamo.com/user-guide/recent-releases/release-notes-v9.0.0/meet-aura-your-smart-support-agent)
+1. [LLaMB Content Regression Testing](https://docs.avaamo.com/user-guide/user-guide/recent-releases/release-notes-v9.0.0/introducing-llamb-content-regression-testing)
+2. [Voice Usage](https://docs.avaamo.com/user-guide/user-guide/recent-releases/release-notes-v9.0.0/introducing-voice-usage)
+3. [Aura – your smart support agent](https://docs.avaamo.com/user-guide/user-guide/recent-releases/release-notes-v9.0.0/meet-aura-your-smart-support-agent)
 
 ## Enhancements
 
@@ -819,19 +1059,19 @@ In this release, the content ingestion in LLaMB has been enhanced to support dir
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F0JoSKvGL6I4oUPsRsqzK%2FScreenshot%2009-04-2025%20at%2015.00.png?alt=media&#x26;token=a0e22c40-a35b-48bb-b4a0-b8f62f23bf7e" alt=""><figcaption></figcaption></figure>
 
-Previously, only HTML URLs could be ingested through the UI, while HTML file uploads required using [Content ingestion API](https://docs.avaamo.com/user-guide/llamb/llamb-rest-apis/content-ingestion-apis).
+Previously, only HTML URLs could be ingested through the UI, while HTML file uploads required using [Content ingestion API](https://docs.avaamo.com/user-guide/user-guide/llamb/llamb-rest-apis/content-ingestion-apis).
 
-See [Upload Documents](https://docs.avaamo.com/user-guide/llamb/get-started/step-2-ingest-enterprise-content/upload-content#upload-documents), for more information.
+See [Upload Documents](https://docs.avaamo.com/user-guide/user-guide/llamb/get-started/step-2-ingest-enterprise-content/upload-content#upload-documents), for more information.
 
 ### Rate limits in content ingestion APIs
 
-In this release, the [upload-web](https://docs.avaamo.com/user-guide/llamb/llamb-rest-apis/content-ingestion-apis#upload-document-html-url-to-llamb) and [upload-file](https://docs.avaamo.com/user-guide/llamb/llamb-rest-apis/content-ingestion-apis#upload-different-types-of-files-pdf-docx-pptx-xlsx-csv-html-to-llamb) Content Ingestion APIs now include a `rate limit` parameter, capped at **50 uploads per minute**. This improvement enhances system performance and promotes efficient use of resources.
+In this release, the [upload-web](https://docs.avaamo.com/user-guide/user-guide/llamb/llamb-rest-apis/content-ingestion-apis#upload-document-html-url-to-llamb) and [upload-file](https://docs.avaamo.com/user-guide/user-guide/llamb/llamb-rest-apis/content-ingestion-apis#upload-different-types-of-files-pdf-docx-pptx-xlsx-csv-html-to-llamb) Content Ingestion APIs now include a `rate limit` parameter, capped at **50 uploads per minute**. This improvement enhances system performance and promotes efficient use of resources.
 
-See [Content Ingestion API](https://docs.avaamo.com/user-guide/llamb/llamb-rest-apis/content-ingestion-apis), for more information.
+See [Content Ingestion API](https://docs.avaamo.com/user-guide/user-guide/llamb/llamb-rest-apis/content-ingestion-apis), for more information.
 
 ### LLaMB goes multilingual
 
-This release enhances multi-language support for LLaMB, enabling real-time streaming translation across all [supported languages](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-supported-languages) in the Avaamo Conversational AI Platform.
+This release enhances multi-language support for LLaMB, enabling real-time streaming translation across all [supported languages](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-supported-languages) in the Avaamo Conversational AI Platform.
 
 Users can now interact with the agent in any of the supported languages and the agent responds in the same language—even if the original content is in English. This provides a smooth, multilingual experience without needing content in multiple languages and a wider reach for LLaMB across the globe.
 
@@ -840,24 +1080,24 @@ Users can now interact with the agent in any of the supported languages and the 
 {% hint style="info" %}
 **Notes**:
 
-* To use this feature, ensure your agent is enabled for **Markdown format**. See [Enable MarkDown format](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced#enable-markdown-format), for more information.
+* To use this feature, ensure your agent is enabled for **Markdown format**. See [Enable MarkDown format](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced#enable-markdown-format), for more information.
 * Languages can be added via configuration, allowing flexibility based on your user base.
 * While conversations can be multilingual, documents must be ingested in English (en-US).
   {% endhint %}
 
-Refer [Multi-language support](https://docs.avaamo.com/user-guide/llamb/multi-language-support), for more information.
+Refer [Multi-language support](https://docs.avaamo.com/user-guide/user-guide/llamb/multi-language-support), for more information.
 
 ### Configurable response rendering in LLaMB
 
 In this release, the configuration options for rendering responses in LLaMB have been enhanced with the following options in the agent's channel configuration settings:
 
-* **Enable concise response**: For shorter, natural replies that retain key info—ideal for quick summaries, with full details available via citation links. See [Enable concise response](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced#enable-concise-response), for more information.
+* **Enable concise response**: For shorter, natural replies that retain key info—ideal for quick summaries, with full details available via citation links. See [Enable concise response](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced#enable-concise-response), for more information.
 
 | Before enabling                                                                                                                                                                                                                                                                           | After enabling - Responses are short with key info                                                                                                                                                                                                                                        |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F81F6LCk0U2g6Pu1oy1Fl%2FScreenshot%2024-02-2025%20at%2019.24.png?alt=media&#x26;token=883b6c07-430c-43a8-a078-1c63fa342754" alt="" data-size="original"> | <img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F4EXpiF6gzyIGiCSqnVy6%2FScreenshot%2024-02-2025%20at%2019.25.png?alt=media&#x26;token=67ecb000-cd86-4a94-b842-f4a9c54c1b2b" alt="" data-size="original"> |
 
-* **Disable citation links**: To remove [citation links](https://docs.avaamo.com/user-guide/llamb/citation-links) in LLaMB agent responses. See [Disable citation links](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced#disable-citation-links), for more information.
+* **Disable citation links**: To remove [citation links](https://docs.avaamo.com/user-guide/user-guide/llamb/citation-links) in LLaMB agent responses. See [Disable citation links](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced#disable-citation-links), for more information.
 
 | Before enabling                                                                                                                                                                                                                                                                           | After enabling - Citation links are not displayed                                                                                                                                                                                                                                         |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -866,7 +1106,7 @@ In this release, the configuration options for rendering responses in LLaMB have
 {% hint style="info" %}
 **Notes**:&#x20;
 
-* Ensure that the [Enable Markdown Format](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced#enable-markdown-format) option is enabled to view this setting.
+* Ensure that the [Enable Markdown Format](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced#enable-markdown-format) option is enabled to view this setting.
 * When using Agent Assist or AI Agent, where precise responses are required and source links are not needed, you can disable them using these options.
   {% endhint %}
 
@@ -891,7 +1131,7 @@ Click `Query context` to see all the chunks used in forming the answer. Chunks m
 
 Click any `chunk` to explore detailed info such as - Document name, Source URL, Intent used, Custom properties, and Additional descriptions to know exactly how user attributes and document properties are aligned to generate the response.&#x20;
 
-See [Query context](https://docs.avaamo.com/user-guide/llamb/get-started/step-3-test-your-agent#query-context), for more information.
+See [Query context](https://docs.avaamo.com/user-guide/user-guide/llamb/get-started/step-3-test-your-agent#query-context), for more information.
 
 ### Export LLaMB usage reports
 
@@ -907,7 +1147,7 @@ In this release, you can now easily export your LLaMB usage data for better trac
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FDzzF8SGqaZnSF5NdBRoi%2Fu%20copy.png?alt=media&#x26;token=477e592f-683b-4a92-a1df-59e91b748296" alt=""><figcaption></figcaption></figure>
 
-See [LLaMB Usage](https://docs.avaamo.com/user-guide/how-to/manage-platform-settings/usage-reports/llamb-usage), for more information.
+See [LLaMB Usage](https://docs.avaamo.com/user-guide/user-guide/how-to/manage-platform-settings/usage-reports/llamb-usage), for more information.
 
 ### Disable citation link security in LLaMB responses
 
@@ -915,7 +1155,7 @@ In this release, you now have the option to disable citation link expiration in 
 
 **Key highlights**:
 
-* By default, citation links expire 24 hours after generation. See [Citation links](https://docs.avaamo.com/user-guide/llamb/citation-links), for more information.
+* By default, citation links expire 24 hours after generation. See [Citation links](https://docs.avaamo.com/user-guide/user-guide/llamb/citation-links), for more information.
 * When disabled, links remain accessible at any time without any expiry restrictions. It is recommended to keep citation link security enabled at all times to maintain secure and controlled access.
 * Useful for debugging, troubleshooting, or sharing persistent references with users
 
@@ -923,7 +1163,7 @@ In this release, you now have the option to disable citation link expiration in 
 
 This gives you more flexibility in how you manage and share LLaMB-generated links.
 
-See [Advanced features](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/define-settings#advanced-features), for more information.
+See [Advanced features](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/define-settings#advanced-features), for more information.
 
 ## Masking enhancements
 
@@ -955,7 +1195,7 @@ By default, the following personal information is automatically masked in real-t
 * ip\_address
 * Any user-uploaded files
 
-See [Information masking](https://docs.avaamo.com/user-guide/overview-and-concepts/advanced-concepts/information-masking), for more information.
+See [Information masking](https://docs.avaamo.com/user-guide/user-guide/overview-and-concepts/advanced-concepts/information-masking), for more information.
 
 ### Retention period
 
@@ -975,16 +1215,16 @@ You can set the `Retention period` when `Information masking` is enabled from th
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FhsBXv2zgpmxkzbJdjfqM%2FRetension.png?alt=media&#x26;token=fd6d8d85-33b3-48e2-a6cc-b949c4cfd4e8" alt=""><figcaption></figcaption></figure>
 
-See [Retention period](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/define-settings#retention-period), for more information.
+See [Retention period](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/define-settings#retention-period), for more information.
 
 ### Improved response masking: Now only PII data is masked&#x20;
 
-In this release, enhanced the response node masking functionality. Previously, the entire response was masked if [skill level](https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-dialog-skill) and [node level](https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/build-skill-responses/advanced-settings#mask-response) masking were enabled. With this improvement, only the PII data within agent responses is masked, while the rest of the response remains visible.
+In this release, enhanced the response node masking functionality. Previously, the entire response was masked if [skill level](https://docs.avaamo.com/user-guide/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-dialog-skill) and [node level](https://docs.avaamo.com/user-guide/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/build-skill-responses/advanced-settings#mask-response) masking were enabled. With this improvement, only the PII data within agent responses is masked, while the rest of the response remains visible.
 
 This enhancement provides greater clarity by allowing you to see the non-sensitive parts of the response, making it easier to understand the conversation flow. It also significantly improves debugging and troubleshooting, as you can now review the visible parts of the response without compromising sensitive data.
 
 {% hint style="info" %}
-**Key point:** This behavior is `enabled by default` for all agents created after the feature rollout. For agents created prior, you can manually enable masking from the [Agent Settings page](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/define-settings#enable-information-masking), or contact Avaamo Support for assistance.
+**Key point:** This behavior is `enabled by default` for all agents created after the feature rollout. For agents created prior, you can manually enable masking from the [Agent Settings page](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/define-settings#enable-information-masking), or contact Avaamo Support for assistance.
 {% endhint %}
 
 | Before 9.0                                                                                                                                                                                                                                                                                                                             | After 9.0                                                                                                                                                                                                                                                                                                                              |
@@ -1006,7 +1246,7 @@ In this release, the `Agent details API` has been updated to include the followi
 | response\_masking\_pattern        | An array of regular expression patterns that must be masked in the agent's response. |
 | user\_properties                  | An Array of custom and system user attributes that are masked.                       |
 
-See [Agent details API](https://docs.avaamo.com/user-guide/ref/avaamo-platform-api-documentation/agent-api/agent-details), for more information.
+See [Agent details API](https://docs.avaamo.com/user-guide/user-guide/ref/avaamo-platform-api-documentation/agent-api/agent-details), for more information.
 
 ## Usage reports - Track your product usage in one place
 
@@ -1017,11 +1257,11 @@ You can now access all your billing and usage statistics for LLaMB, Voice, and S
 **What you can track:**
 
 * **LLaMB Usage**\
-  See how many queries are generated and gain real-time insights to optimize usage. In the previous release, `LLaMB usage`  page was accessible from the top menu, now it is centralized and moved under `Usage reports` section. See [LLaMB Usage](https://docs.avaamo.com/user-guide/how-to/manage-platform-settings/usage-reports/llamb-usage), for more information.
+  See how many queries are generated and gain real-time insights to optimize usage. In the previous release, `LLaMB usage`  page was accessible from the top menu, now it is centralized and moved under `Usage reports` section. See [LLaMB Usage](https://docs.avaamo.com/user-guide/user-guide/how-to/manage-platform-settings/usage-reports/llamb-usage), for more information.
 * **SMS Usage**\
-  Monitor how many SMS messages were sent and get an understanding of your expected billing for each month. In the previous release, `SMS usage`  was a separate page in the `Settings` section, now it is centralized and moved under `Usage reports` section. See [SMS usage,](https://docs.avaamo.com/user-guide/how-to/manage-platform-settings/usage-reports/sms-usage) for more information.
+  Monitor how many SMS messages were sent and get an understanding of your expected billing for each month. In the previous release, `SMS usage`  was a separate page in the `Settings` section, now it is centralized and moved under `Usage reports` section. See [SMS usage,](https://docs.avaamo.com/user-guide/user-guide/how-to/manage-platform-settings/usage-reports/sms-usage) for more information.
 * **Voice Usage**\
-  Provides insights into voice usage associated with the company’s license configuration. It allows you to track the number of incoming and outgoing calls made on your account. See [Voice Usage](https://docs.avaamo.com/user-guide/how-to/manage-platform-settings/usage-reports/voice-usage), for more information.
+  Provides insights into voice usage associated with the company’s license configuration. It allows you to track the number of incoming and outgoing calls made on your account. See [Voice Usage](https://docs.avaamo.com/user-guide/user-guide/how-to/manage-platform-settings/usage-reports/voice-usage), for more information.
 
 Everything you need to understand and manage your usage for LLaMB, Voice, and SMS—is now in one easy-to-access place.&#x20;
 
@@ -1038,7 +1278,7 @@ In this release, the `Security` section in the `Web channel` configuration page 
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FfL7JXsODxokBjCFqgmtI%2FScreenshot%2006-05-2025%20at%2014.52.png?alt=media&#x26;token=c9b6ca51-c4a0-4f82-8eab-fb5a52593300" alt=""><figcaption></figcaption></figure>
 
-See [Security](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/security), for more information.
+See [Security](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/security), for more information.
 
 ## Disable co-reference for agents without context
 
@@ -1048,7 +1288,7 @@ Navigate to `Configuration>Settings` in the left navigation menu, and locate the
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FhrXpsi9cdXDgsY7MXQK1%2FScreenshot%202025-04-10%20at%209.20.10%E2%80%AFPM.png?alt=media&#x26;token=6eb7f8ae-c6da-4a09-a417-7dbb0f517136" alt=""><figcaption></figcaption></figure>
 
-See [Disable Co-reference query generation](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/define-settings#disable-co-reference-query-generation), for more information.
+See [Disable Co-reference query generation](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/define-settings#disable-co-reference-query-generation), for more information.
 
 ## Enable debug logs for easier troubleshooting
 
@@ -1070,11 +1310,11 @@ In this release, the `Settings` section on the configuration page has been enhan
 2. `Enable debug logs` setting is preserved during pull and promotion.
    {% endhint %}
 
-See [Enable debug logs](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/define-settings#enable-debug-logs), for more information.
+See [Enable debug logs](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/define-settings#enable-debug-logs), for more information.
 
 ## Disable incoming request authorization in MS Teams channel
 
-In this release, the [Microsoft Teams (MS Teams)](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/microsoft-teams-ms-teams) channel configuration has been enhanced with the `Disable Incoming Request Authorization` checkbox option under the `Security Options` tab.&#x20;
+In this release, the [Microsoft Teams (MS Teams)](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/microsoft-teams-ms-teams) channel configuration has been enhanced with the `Disable Incoming Request Authorization` checkbox option under the `Security Options` tab.&#x20;
 
 **Key highlights**:
 
@@ -1085,7 +1325,7 @@ In this release, the [Microsoft Teams (MS Teams)](https://docs.avaamo.com/user-g
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F40H6spHu95cECIl6gAvb%2Fdisable%20incoming%20request%20auth.png?alt=media&#x26;token=ace75e75-1435-4319-acaf-744a75422abc" alt=""><figcaption></figcaption></figure>
 
-See [Microsoft Teams (MS Teams)](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/microsoft-teams-ms-teams), for more information.
+See [Microsoft Teams (MS Teams)](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/microsoft-teams-ms-teams), for more information.
 
 ## Customize wait-time audio
 
@@ -1100,7 +1340,7 @@ In this release, the Conversational IVR (C-IVR)  channel configuration now inclu
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Faw29T0GI2wntkos6QJmU%2Fimage.png?alt=media&#x26;token=f85d09c7-809d-4476-a771-3a5bdc3c540b" alt=""><figcaption></figcaption></figure>
 
-See [Conversational IVR (C-IVR) or Phone](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/conversational-ivr-c-ivr-phone), for more information.
+See [Conversational IVR (C-IVR) or Phone](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/conversational-ivr-c-ivr-phone), for more information.
 
 ## Changes
 
@@ -1110,25 +1350,25 @@ In this release, the location of  `Enable Markdown Format` option has been chang
 
 #### Web, Android, iOS
 
-| Before 9.0                                                                                                                                                                                                          | After 9.0                                                                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Widget Configuration -> Use MD format                                                                                                                                                                               | Advanced settings -> LLaMB Settings. See [Enable Markdown format](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced#enable-markdown-format), for more information. |
-| ![](https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FdzujI2aCQbwmjgC4jfhR%2Fimage.png?alt=media\&token=af331022-1a06-4194-b30c-d60f29e6c637) | ![](https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FA72CiYz6cYs1KS7rAUAq%2Fimage.png?alt=media\&token=3904ef12-e1fe-41cf-b02b-00af6bdec6cb)  |
+| Before 9.0                                                                                                                                                                                                          | After 9.0                                                                                                                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Widget Configuration -> Use MD format                                                                                                                                                                               | Advanced settings -> LLaMB Settings. See [Enable Markdown format](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced#enable-markdown-format), for more information. |
+| ![](https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FdzujI2aCQbwmjgC4jfhR%2Fimage.png?alt=media\&token=af331022-1a06-4194-b30c-d60f29e6c637) | ![](https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FA72CiYz6cYs1KS7rAUAq%2Fimage.png?alt=media\&token=3904ef12-e1fe-41cf-b02b-00af6bdec6cb)             |
 
 #### Custom channel
 
 | Before 9.0                                                                                                                                                                                                          | After 9.0                                                                                                                                                                                                                                                                                  |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Appears on the first custom channel configuration page where you specify the initial custom channel settings                                                                                                        | Appears after saving the initial custom channel configuration in the LLaMB settings section. See [Custom channel](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/custom-channel#configure-custom-channel), for more information.                           |
+| Appears on the first custom channel configuration page where you specify the initial custom channel settings                                                                                                        | Appears after saving the initial custom channel configuration in the LLaMB settings section. See [Custom channel](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/custom-channel#configure-custom-channel), for more information.                |
 | ![](https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FNN9ANlzFNVnYbkdRoh6s%2Fimage.png?alt=media\&token=282e0298-929e-4212-b8fb-7bf0f981d1bd) | <div><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F7aKHvKGLiw7khhqCjO4l%2Fimage.png?alt=media&#x26;token=41006276-decc-455f-8abd-085ce7d6e14b" alt=""><figcaption></figcaption></figure></div> |
 
 ### **Mask user IP on the Privacy page**
 
-In this release, the `Mask user IP` toggle at the company level on the [Privacy](https://docs.avaamo.com/user-guide/how-to/manage-platform-settings/privacy) page has been removed.&#x20;
+In this release, the `Mask user IP` toggle at the company level on the [Privacy](https://docs.avaamo.com/user-guide/user-guide/how-to/manage-platform-settings/privacy) page has been removed.&#x20;
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FQxNTwfo7ZAE7mOQHAGsV%2Fimage.png?alt=media&#x26;token=a22077f6-3873-4a3c-bd0d-b17cb928f545" alt=""><figcaption></figcaption></figure>
 
-Since all the masking configurations are at the agent level, to maintain consistency, the `Mask user IP` option is now available at the agent level masking and is enabled by default for all new agents. See [Information masking](https://docs.avaamo.com/user-guide/overview-and-concepts/advanced-concepts/information-masking), for more information. To configure IP address masking specific to your agent, contact `Avaamo Support`.
+Since all the masking configurations are at the agent level, to maintain consistency, the `Mask user IP` option is now available at the agent level masking and is enabled by default for all new agents. See [Information masking](https://docs.avaamo.com/user-guide/user-guide/overview-and-concepts/advanced-concepts/information-masking), for more information. To configure IP address masking specific to your agent, contact `Avaamo Support`.
 
 {% hint style="info" %}
 **Notes**:&#x20;
@@ -1163,13 +1403,13 @@ You can view this change on the agent creation page, where you can now select `C
 
 ### Domain configuration now centralized under Web Channel settings
 
-In this release, the option `Mention the domain to which the web channel resources are allowed to be loaded` has been removed from the [Security Policy](https://docs.avaamo.com/user-guide/how-to/manage-platform-settings/security-policy) page.
+In this release, the option `Mention the domain to which the web channel resources are allowed to be loaded` has been removed from the [Security Policy](https://docs.avaamo.com/user-guide/user-guide/how-to/manage-platform-settings/security-policy) page.
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FRYm7jJ4CGvwFbtzdN7ti%2FScreenshot%202025-04-21%20at%206.19.51%E2%80%AFPM.png?alt=media&#x26;token=0d419e5b-6829-4cee-86fb-a66e778b6d1b" alt=""><figcaption></figcaption></figure>
 
 The configuration has been moved to the `Web Channel > Security > Allowed Domains` section for more effective management. Ensure that all allowed domains are specified here.
 
-&#x20;Refer [Security](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/security), for more information.
+&#x20;Refer [Security](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/security), for more information.
 
 
 # Fix patch releases (v9.0.1)
@@ -1199,12 +1439,12 @@ This article summarizes a list of fix patch releases made in the Avaamo Conversa
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FVlPZxMg0XNAu5K411pHx%2FScreenshot%202025-08-25%20at%201.21.55%E2%80%AFPM.png?alt=media&#x26;token=897b71e7-1e64-487c-8b49-5f04733cfa65" alt=""><figcaption></figcaption></figure>
 
-Refer [JS errors](https://docs.avaamo.com/user-guide/how-to/build-agents/debug-agents/js-errors), for more information.
+Refer [JS errors](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/debug-agents/js-errors), for more information.
 
 ### Response handling: Long responses with a disclaimer note <img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FXenTTa48f7IueKXbyuzg%2FDevelooper%20(3).png?alt=media&#x26;token=74d895d6-211d-48d4-8cb6-2e518090b9a4" alt="" data-size="line">
 
 * For very long responses, the agent now displays a **disclaimer message** at the end.
-* This disclaimer appears only when the **Markdown format** is enabled in the channel. Refer [Enable Markdown Format](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced#enable-markdown-format), for more information.
+* This disclaimer appears only when the **Markdown format** is enabled in the channel. Refer [Enable Markdown Format](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced#enable-markdown-format), for more information.
 * This update ensures source citation links are retained even in lengthy responses, addressing the earlier issue of them being hidden.
 
 {% hint style="info" %}
@@ -1222,7 +1462,7 @@ Example of how the disclaimer note is displayed at the end of a long response:
 * The `Tag.append` method is now **deprecated**. This method must be called within an `async` block, which limits its usage.
 * Developers should use **`Tag.asyncAppend`**, that can be applied universally without requiring an `async` block. This method provides greater flexibility and simplifies implementation.
 
-Refer [Add tags (JS)](https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/add-tags-js), for more information.
+Refer [Add tags (JS)](https://docs.avaamo.com/user-guide/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/add-tags-js), for more information.
 
 
 # Fix patch releases (v9.0.3)
@@ -1244,8 +1484,8 @@ With Microsoft deprecating multi-tenant bot creation, the Avaamo platform now su
 
 Introducing a new parsing mechanism that enhances content extraction across multiple file types via API. This improvement applies to newly uploaded content or files via API.
 
-* **Markdown parsing for HTML content:** Automatically extracts additional formatting elements, such as italics and list tags, and converts them into markdown. This enhancement is applied by default from this release onward, requiring no additional parameters when you upload using the [Upload document ](https://docs.avaamo.com/user-guide/llamb/llamb-rest-apis/content-ingestion-apis#upload-document-html-url-to-llamb)API.
-* **Section header and hierarchy detection in PDF files:** Allows extraction of section headers, section hierarchies, and tables for better content organization. To use this, pass the parameter `"parsing_lib": "markdown"` in the [Upload file](https://docs.avaamo.com/user-guide/llamb/llamb-rest-apis/content-ingestion-apis#upload-different-types-of-files-pdf-docx-pptx-xlsx-csv-html-to-llamb) API.
+* **Markdown parsing for HTML content:** Automatically extracts additional formatting elements, such as italics and list tags, and converts them into markdown. This enhancement is applied by default from this release onward, requiring no additional parameters when you upload using the [Upload document ](https://docs.avaamo.com/user-guide/user-guide/llamb/llamb-rest-apis/content-ingestion-apis#upload-document-html-url-to-llamb)API.
+* **Section header and hierarchy detection in PDF files:** Allows extraction of section headers, section hierarchies, and tables for better content organization. To use this, pass the parameter `"parsing_lib": "markdown"` in the [Upload file](https://docs.avaamo.com/user-guide/user-guide/llamb/llamb-rest-apis/content-ingestion-apis#upload-different-types-of-files-pdf-docx-pptx-xlsx-csv-html-to-llamb) API.
 
 ### **MS Teams – Control over Markdown format**<img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FLomqnXOQWCApNMXraXIY%2FDeveloper.png?alt=media&#x26;token=cc2a370f-d7e4-43ee-93b2-3106fdddaa46" alt="" data-size="line">
 
@@ -1253,7 +1493,7 @@ An option is now available to enable or disable Markdown formatting for LLaMB re
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FynixR35G4NEeX9mdS7ku%2FScreenshot%202025-09-10%20at%2010.21.48%E2%80%AFAM.png?alt=media&#x26;token=4d860e25-f4f6-4ebb-8493-61064b8f6c2a" alt=""><figcaption></figcaption></figure>
 
-Refer [Microsoft Teams (MS Teams)](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/microsoft-teams-ms-teams#deploy-your-agent-to-microsoft-teams-channel), for more information.
+Refer [Microsoft Teams (MS Teams)](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/microsoft-teams-ms-teams#deploy-your-agent-to-microsoft-teams-channel), for more information.
 
 
 # Fix patch releases (v9.0.4)
@@ -1345,7 +1585,7 @@ The `AI Agent` is a next-generation agent built to power highly intelligent and 
 
 With AI agents a new type of skill - `Prompt skills` is also introduced in this release. Powered by prompt skills, these agents are designed to understand, reason, and act – independently and effectively. &#x20;
 
-There is no need for extensive training, as required with Classic agents. Instead, you can define all instructions using the [Prompt Skill](https://docs.avaamo.com/user-guide/skills/prompt-skill), significantly reducing the time needed to build a skill. Along with prompts, you can build complex scenarios using built-in functions, and customized functions.
+There is no need for extensive training, as required with Classic agents. Instead, you can define all instructions using the [Prompt Skill](https://docs.avaamo.com/user-guide/user-guide/skills/prompt-skill), significantly reducing the time needed to build a skill. Along with prompts, you can build complex scenarios using built-in functions, and customized functions.
 
 You can create multiple prompt skills, and the agent can seamlessly redirect interactions from one skill to another based on user queries, ensuring a smooth and dynamic conversation flow.
 
@@ -1507,11 +1747,11 @@ By picking up signals like repeated inputs, negative language, or abrupt changes
 
 ## Next steps
 
-* Understand what is required in the [Before you begin](https://docs.avaamo.com/user-guide/ai-agent/before-you-begin) section.
-* Start by creating a new [AI agent](https://docs.avaamo.com/user-guide/ai-agent/create-an-ai-agent).
-* You are now ready to [get started](https://docs.avaamo.com/user-guide/get-started) by exploring AI agents in the Avaamo Conversational AI Platform.
+* Understand what is required in the [Before you begin](https://docs.avaamo.com/user-guide/user-guide/ai-agent/before-you-begin) section.
+* Start by creating a new [AI agent](https://docs.avaamo.com/user-guide/user-guide/ai-agent/create-an-ai-agent).
+* You are now ready to [get started](https://docs.avaamo.com/user-guide/user-guide/get-started) by exploring AI agents in the Avaamo Conversational AI Platform.
 
-Refer [AI Agent](https://docs.avaamo.com/user-guide/ai-agent), for more information.
+Refer [AI Agent](https://docs.avaamo.com/user-guide/user-guide/ai-agent), for more information.
 
 
 # Introducing "LLaMB Content Regression Testing"
@@ -1532,7 +1772,7 @@ To access LLaMB regression testing, go to the `Agent` page and click `Test > LLa
 
 ## How to use it?
 
-The steps to set up regression, execute it, and download the results remain similar to those of classic agents; however, the regression test file format for preparing the input file and analyzing the results differs in LLaMB. See [LLaMB regression testing](https://docs.avaamo.com/user-guide/llamb/regression-testing), for more information.
+The steps to set up regression, execute it, and download the results remain similar to those of classic agents; however, the regression test file format for preparing the input file and analyzing the results differs in LLaMB. See [LLaMB regression testing](https://docs.avaamo.com/user-guide/user-guide/llamb/regression-testing), for more information.
 
 ### Step 1: Prepare regression test input file
 
@@ -1542,23 +1782,23 @@ A regression test file contains a set of questions, the actual answer to each qu
 **Key point:** Collaborate with Subject Matter Experts to build a regression test file in the Discovery phase itself.
 {% endhint %}
 
-The following is a sample regression test input file. See [Regression test file format](https://docs.avaamo.com/user-guide/llamb/regression-testing/regression-test-file-format), for more information.
+The following is a sample regression test input file. See [Regression test file format](https://docs.avaamo.com/user-guide/user-guide/llamb/regression-testing/regression-test-file-format), for more information.
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FNRvsxQqNntTrmIFCVTxn%2FScreenshot%202025-04-15%20at%2011.13.40%E2%80%AFAM.png?alt=media&#x26;token=72085f99-9bde-4439-ab64-6ab93d05aefc" alt=""><figcaption></figcaption></figure>
 
 ### Step 2: Run the regression test
 
-Running LLaMB remains the same as running regression for classic agents. See [Run regression test](https://docs.avaamo.com/user-guide/llamb/regression-testing/run-regression-test), for more information.
+Running LLaMB remains the same as running regression for classic agents. See [Run regression test](https://docs.avaamo.com/user-guide/user-guide/llamb/regression-testing/run-regression-test), for more information.
 
 ### Step 3: Analyze the results and improvise
 
 You can analyse the results after the run by downloading the file, which includes details of the pass/fail statistics for each query.
 
-The following is a sample regression test input file. See [Understanding results](https://docs.avaamo.com/user-guide/llamb/regression-testing/understanding-results), for more information.
+The following is a sample regression test input file. See [Understanding results](https://docs.avaamo.com/user-guide/user-guide/llamb/regression-testing/understanding-results), for more information.
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FVJeoBmq8mmzu0cRTChdq%2FScreenshot%202025-04-24%20at%2010.30.02%E2%80%AFAM.png?alt=media&#x26;token=a217017f-d15d-4896-9541-00cde69ff513" alt=""><figcaption></figcaption></figure>
 
-&#x20;Next step is to improve your accuracy. See [How to improve accuracy?](https://docs.avaamo.com/user-guide/llamb/regression-testing/how-to-improve-accuracy) for more information.
+&#x20;Next step is to improve your accuracy. See [How to improve accuracy?](https://docs.avaamo.com/user-guide/user-guide/llamb/regression-testing/how-to-improve-accuracy) for more information.
 
 
 # Introducing "Voice Usage"
@@ -1572,10 +1812,10 @@ Click your `Profile` icon at the top-right corner, navigate to `Settings -> Usag
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FvwzXPLx7MqzY6IyVZ6JR%2FScreenshot%202025-02-21%20at%202.08.00%E2%80%AFPM.png?alt=media&#x26;token=b26ca036-6054-4f74-ab8e-3980bd43b43f" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-**Note:** This page is available only for users with the `Settings` role. See [Roles and Permissions](https://docs.avaamo.com/user-guide/overview-and-concepts/advanced-concepts/understand-roles-and-permissions), for more information.
+**Note:** This page is available only for users with the `Settings` role. See [Roles and Permissions](https://docs.avaamo.com/user-guide/user-guide/overview-and-concepts/advanced-concepts/understand-roles-and-permissions), for more information.
 {% endhint %}
 
-See [Voice Usage](https://docs.avaamo.com/user-guide/how-to/manage-platform-settings/usage-reports/voice-usage), for more information.
+See [Voice Usage](https://docs.avaamo.com/user-guide/user-guide/how-to/manage-platform-settings/usage-reports/voice-usage), for more information.
 
 
 # Meet "Aura" - your smart support agent
@@ -1584,7 +1824,7 @@ The `Aura` is an AI-powered assistant designed to deliver immediate, accurate, a
 
 It empowers agent developers and business teams by providing instant resolutions to common queries, significantly reducing dependency on other teams.
 
-Powered by [LLaMB](https://docs.avaamo.com/user-guide/llamb/get-started), Aura taps into Avaamo’s documentation and internal knowledge base to bring you the right information quickly. By leveraging the latest advancements in natural language processing and contextual AI, the Aura ensures 24/7 availability and high accuracy across a wide range of support scenarios.
+Powered by [LLaMB](https://docs.avaamo.com/user-guide/user-guide/llamb/get-started), Aura taps into Avaamo’s documentation and internal knowledge base to bring you the right information quickly. By leveraging the latest advancements in natural language processing and contextual AI, the Aura ensures 24/7 availability and high accuracy across a wide range of support scenarios.
 
 Here's a quick sneak peek at the Aura:
 
@@ -1643,13 +1883,13 @@ The Avaamo Conversational AI Platform v8.2.0 release includes **one new feature*
 
 This release introduces a new feature referred to as `DataSync AI`**.**&#x20;
 
-The `DataSync AI` is a powerful feature within [LLaMB](https://docs.avaamo.com/user-guide/llamb) designed to facilitate seamless content access across repositories such as `SharePoint` and `ServiceNow`. It acts as an interface, enabling users to leverage resources stored in these repositories to enhance the capabilities of their LLaMB agents in responding to user queries effectively from the enterprise content.&#x20;
+The `DataSync AI` is a powerful feature within [LLaMB](https://docs.avaamo.com/user-guide/user-guide/llamb) designed to facilitate seamless content access across repositories such as `SharePoint` and `ServiceNow`. It acts as an interface, enabling users to leverage resources stored in these repositories to enhance the capabilities of their LLaMB agents in responding to user queries effectively from the enterprise content.&#x20;
 
 The following flow diagram illustrates the workflow of the DataSync AI.
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F4kJcP19lVTpGmM6sLhxM%2FContent%20connector.png?alt=media&#x26;token=f1754dc6-0f0e-4630-a9e4-12f4d0bab0f7" alt=""><figcaption></figcaption></figure>
 
-See [Introducing DataSyncAI](https://docs.avaamo.com/user-guide/recent-releases/release-notes-v8.2.0/whats-new-v8.2.0-introducing-datasync-ai), for more information.
+See [Introducing DataSyncAI](https://docs.avaamo.com/user-guide/user-guide/recent-releases/release-notes-v8.2.0/whats-new-v8.2.0-introducing-datasync-ai), for more information.
 
 ## Enhancements
 
@@ -1660,14 +1900,14 @@ This release includes enhancements related to the following existing features:
 <table><thead><tr><th width="225">Module</th><th>Enhancements</th></tr></thead><tbody><tr><td>Built-in Skills</td><td><a href="#enhanced-personalization-outro-message-support">Enhanced personalization: Outro message support</a></td></tr><tr><td>Live agent Console</td><td><a href="#enhanced-personalization-live-agent-translation-for-avaamo-live-agent">Enhanced personalization: Live agent translation for Avaamo Live Agent</a></td></tr><tr><td>MS Teams </td><td><a href="#improved-user-experience-show-more-toggle-to-render-long-responses-in-ms-teams-channel">Improved user experience: Show more toggle to render long responses in MS Teams channel</a><br><a href="#improved-user-experience-table-rendering-for-llamb-responses-in-microsoft-teams">Improved user experience: Table Rendering for LLaMB Responses in Microsoft Teams</a></td></tr><tr><td>Outreach</td><td><a href="#outreach-insight-api-filter-campaigns-using-multiple-campaign-ids-and-user-properties">Outreach insight API: Filter campaigns using multiple campaign IDs and user properties </a></td></tr><tr><td>C-IVR improvements</td><td><a href="#improved-asr">Improved ASR</a></td></tr><tr><td>Accessibility enhancements</td><td><a href="#improved-voice-over-narration-for-card-elements">Improved voice-over narration for card elements</a></td></tr></tbody></table>
 
 {% hint style="danger" %}
-**Deprecation notice**: See [Deprecated features,](https://docs.avaamo.com/user-guide/deprecated-and-removed-features/v8.2.0-deprecated-features) for all the deprecated features in the `v8.2.0` release.
+**Deprecation notice**: See [Deprecated features,](https://docs.avaamo.com/user-guide/user-guide/deprecated-and-removed-features/v8.2.0-deprecated-features) for all the deprecated features in the `v8.2.0` release.
 {% endhint %}
 
 ### Enhanced personalization: Outro message support
 
 In this release, the personalization experience with the user has been enhanced with a new  `Outro` feature.
 
-This enhancement allows you to create and post a customized message to the user after an agent’s response. It is beneficial for skills that provide one-off replies, such as [Dynamic Q\&A ](https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/dynamic-q-and-a)and [LLaMB](https://docs.avaamo.com/user-guide/llamb) skills as it improves the user experience by providing a clear, standardized message after the agent responds as per your business requirement. It helps to streamline and provide consistent communication across all interactions.&#x20;
+This enhancement allows you to create and post a customized message to the user after an agent’s response. It is beneficial for skills that provide one-off replies, such as [Dynamic Q\&A ](https://docs.avaamo.com/user-guide/user-guide/how-to/build-skills/create-skill/dynamic-q-and-a)and [LLaMB](https://docs.avaamo.com/user-guide/user-guide/llamb) skills as it improves the user experience by providing a clear, standardized message after the agent responds as per your business requirement. It helps to streamline and provide consistent communication across all interactions.&#x20;
 
 A common use case is to post disclaimers or system-generated messages, such as `This is a system-generated message, please do not reply` after the agent's response say in a Q\&A skill.&#x20;
 
@@ -1679,7 +1919,7 @@ In the agent response, the message configured in the outro skill is displayed af
 
 <div align="left"><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FQXMGPtdAl02wb4KbG5pz%2Frelease1%20copy.png?alt=media&#x26;token=175d29e6-62d0-4828-b9e3-f2ba7d19dac4" alt="" width="375"><figcaption></figcaption></figure></div>
 
-See [Outro skill](https://docs.avaamo.com/user-guide/how-to/build-agents/add-skills-to-agent#outro-skill), for more information.
+See [Outro skill](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/add-skills-to-agent#outro-skill), for more information.
 
 ### Enhanced personalization: Live agent translation for Avaamo Live Agent
 
@@ -1703,7 +1943,7 @@ Here's an example that demonstrates live agent translation where the user's loca
 
 <div align="left"><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FLrPfDUZvNb2hQQmOYfPt%2Frelease4.png?alt=media&#x26;token=d94d86c7-f931-4c95-a83b-abbba7290fb6" alt="" width="375"><figcaption></figcaption></figure></div>
 
-See [Live Agent Translation](https://docs.avaamo.com/user-guide/live-agent-console/live-agent/live-agent-translation)[,](https://docs.avaamo.com/user-guide/how-to/build-agents/add-skills-to-agent) for more information.
+See [Live Agent Translation](https://docs.avaamo.com/user-guide/user-guide/live-agent-console/live-agent/live-agent-translation)[,](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/add-skills-to-agent) for more information.
 
 ### Improved user experience: Show more toggle to render long responses in MS Teams channel
 
@@ -1719,7 +1959,7 @@ This enhances the user experience by quickly displaying partial messages, reduci
 **Note**: `Show more` option is displayed only when responses are rendered from the LLaMB skill.
 {% endhint %}
 
-See [MS Teams](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/microsoft-teams-ms-teams), for more information.
+See [MS Teams](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/microsoft-teams-ms-teams), for more information.
 
 ### Improved user experience: Table Rendering for LLaMB Responses in Microsoft Teams
 
@@ -1733,17 +1973,17 @@ Now, instead of displaying the **View Table** button, tables are directly render
 
 This enhancement streamlines the user experience by eliminating the need for popups and allowing users to view table data in line with their conversation. This update simplifies the workflow, reduces interruptions, and enhances the overall user interaction with table data.
 
-See [MS Teams](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/microsoft-teams-ms-teams), for more information.
+See [MS Teams](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/microsoft-teams-ms-teams), for more information.
 
 ### Outreach insight API: Filter campaigns using multiple campaign IDs and user properties&#x20;
 
 In this release, we have enhanced the outreach insights API with the following:
 
 1. **Multiple Campaign ID Filtering**: You can now filter campaigns using multiple campaign IDs. Previously, this feature was limited to a single campaign ID, restricting the scope of your analysis. With this enhancement, you can gain insights across various campaigns simultaneously, providing a broader understanding of your outreach performance.
-2. **Filter the messages using user properties:** This allows users to filter campaigns using predefined, fixed [user properties](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/add-user-properties). This enhancement helps quickly locate and manage messages based on standard user attributes. \
+2. **Filter the messages using user properties:** This allows users to filter campaigns using predefined, fixed [user properties](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/add-user-properties). This enhancement helps quickly locate and manage messages based on standard user attributes. \
    Example: `first_name` , `last_name`
 
-See [Outreach Insights API](https://docs.avaamo.com/user-guide/outreach/outreach-rest-apis/outreach-insights-api), for more information.
+See [Outreach Insights API](https://docs.avaamo.com/user-guide/user-guide/outreach/outreach-rest-apis/outreach-insights-api), for more information.
 
 ### Improved ASR
 
@@ -1788,7 +2028,7 @@ This fix patch release contains critical bug fixes, performance fixes, and minor
 **Important**: All existing citation links in the Conversation history, Query insights, and agent conversations will expire 24 hours after patch release 8.2.1. Contact Avaamo support to regain access.
 {% endhint %}
 
-See [Citation link](https://docs.avaamo.com/user-guide/llamb/citation-links), for more information.
+See [Citation link](https://docs.avaamo.com/user-guide/user-guide/llamb/citation-links), for more information.
 
 ## LLaMB: Response formatting fixes
 
@@ -1798,11 +2038,11 @@ See [Citation link](https://docs.avaamo.com/user-guide/llamb/citation-links), fo
 {% hint style="danger" %}
 **Important:**
 
-1. The [`Use MD Format`](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/widget-configuration#use-md-format) option is available for [Web](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel), [Custom](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/custom-channel#configure-custom-channel), and, Mobile ([Android](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/android-apps) and [iOS](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/ios-apps)) channels.&#x20;
+1. The [`Use MD Format`](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/widget-configuration#use-md-format) option is available for [Web](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel), [Custom](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/custom-channel#configure-custom-channel), and, Mobile ([Android](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/android-apps) and [iOS](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/ios-apps)) channels.&#x20;
 2. To utilize this option, ensure you re-ingest the document before enabling it.
    {% endhint %}
 
-See [Use MD Format](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/widget-configuration#use-md-format),  for more information.
+See [Use MD Format](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/widget-configuration#use-md-format),  for more information.
 
 
 # Fix patch releases (v8.2.2)
@@ -1813,14 +2053,14 @@ This fix patch release contains critical bug fixes, performance fixes, and minor
 
 **Authorization Expiry** for citation links now applies exclusively to non-web channels and is no longer applicable to web channels.
 
-Refer [Citation links](https://docs.avaamo.com/user-guide/llamb/citation-links), for more information.
+Refer [Citation links](https://docs.avaamo.com/user-guide/user-guide/llamb/citation-links), for more information.
 
 
 # What's new v8.2.0 - Introducing DataSync AI
 
 The **`DataSync AI`** is a powerful feature within **LLaMB** designed to facilitate seamless content access across repositories such as **SharePoint** and **ServiceNow**. It acts as an interface, enabling users to leverage resources stored in these repositories to enhance the capabilities of their LLaMB agents in responding to user queries effectively from the enterprise content.
 
-Previously, integrating URLs or documents into LLaMB content involved adding them individually to the Document group (refer to Document [Upload content](https://docs.avaamo.com/user-guide/llamb/get-started/step-2-ingest-enterprise-content/upload-content)). With the introduction of DataSync AI, users can now integrate a wide variety of vast content directly from their repositories into the skill, streamlining the content integration and management process.
+Previously, integrating URLs or documents into LLaMB content involved adding them individually to the Document group (refer to Document [Upload content](https://docs.avaamo.com/user-guide/user-guide/llamb/get-started/step-2-ingest-enterprise-content/upload-content)). With the introduction of DataSync AI, users can now integrate a wide variety of vast content directly from their repositories into the skill, streamlining the content integration and management process.
 
 The following flow diagram illustrates the workflow of the DataSync AI.
 
@@ -1834,7 +2074,7 @@ The **DataSync AI** provides flexibility by offering content ingestion from a se
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FovisJsbQJOzLHmSHF60E%2FScreenshot%202024-08-22%20at%206.39.34%E2%80%AFPM.png?alt=media&#x26;token=06905af6-e334-422c-9f37-0dfdc3f3725e" alt=""><figcaption></figcaption></figure>
 
-See [SharePoint Connector](https://docs.avaamo.com/user-guide/datasync-ai/content-sources/sharepoint) and [ServiceNow Connector](https://docs.avaamo.com/user-guide/datasync-ai/content-sources/servicenow), for more information
+See [SharePoint Connector](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/content-sources/sharepoint) and [ServiceNow Connector](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/content-sources/servicenow), for more information
 
 ### Seamless connection configuration
 
@@ -1864,13 +2104,13 @@ Also, our system automatically synchronizes any updates made to ingested documen
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fx3Pqhxi0ish2nEKeh5go%2FScreenshot%202024-08-22%20at%206.43.37%E2%80%AFPM.png?alt=media&#x26;token=204bd609-7349-4f54-a744-57147d101d3b" alt=""><figcaption></figcaption></figure>
 
-See [Setup content sync](https://docs.avaamo.com/user-guide/recent-releases/release-notes-v8.2.0/broken-reference) for  SharePoint Connector and [Setup content sync](https://docs.avaamo.com/user-guide/recent-releases/release-notes-v8.2.0/broken-reference) for ServiceNow connector, for more information.
+See [Setup content sync](https://docs.avaamo.com/user-guide/user-guide/recent-releases/release-notes-v8.2.0/broken-reference) for  SharePoint Connector and [Setup content sync](https://docs.avaamo.com/user-guide/user-guide/recent-releases/release-notes-v8.2.0/broken-reference) for ServiceNow connector, for more information.
 
-See [DataSync AI](https://docs.avaamo.com/user-guide/datasync-ai)[,](https://app.gitbook.com/o/-LpXFbuTM3h40PfxYgao/s/-LpXFTiTgns4Ml77XGi3/~/changes/4192/datasync-ai) for detailed information.
+See [DataSync AI](https://docs.avaamo.com/user-guide/user-guide/datasync-ai)[,](https://app.gitbook.com/o/-LpXFbuTM3h40PfxYgao/s/-LpXFTiTgns4Ml77XGi3/~/changes/4192/datasync-ai) for detailed information.
 
 ## Next steps
 
-1. Understand what is required in the [Before you begin](https://docs.avaamo.com/user-guide/datasync-ai/before-you-begin) section.
+1. Understand what is required in the [Before you begin](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/before-you-begin) section.
 
 
 # Watch the webinar on v8.2.0
@@ -1896,7 +2136,7 @@ Custom channel support has been a fundamental feature for all agents within the 
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FwNQXwT0tuuipxFpTrIeR%2Fimage.png?alt=media&#x26;token=c74e7f2b-2de6-4e9b-b841-2620542cbd7c" alt=""><figcaption></figcaption></figure>
 
-The user interacting with the agent sends/receives messages to/from a custom channel. The custom channel integrates with the Avaamo platform via Avaamo API and Webhook calls to send and receive messages. See [Custom channel](https://docs.avaamo.com/user-guide/llamb/custom-channel), for more information,&#x20;
+The user interacting with the agent sends/receives messages to/from a custom channel. The custom channel integrates with the Avaamo platform via Avaamo API and Webhook calls to send and receive messages. See [Custom channel](https://docs.avaamo.com/user-guide/user-guide/llamb/custom-channel), for more information,&#x20;
 
 In the previous release, you could deploy LLaMB only on the Web, MS Teams, Android, and iOS channels, limiting its reachability.
 
@@ -1926,7 +2166,7 @@ For example: When a policy document is specific to a certain region, specifying 
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FXSIQfKuIYXowbBTQgGaR%2Fimage.png?alt=media&#x26;token=4f563ad2-7a48-426a-bf16-49d69b159d52" alt=""><figcaption></figcaption></figure>
 
-See [Document attributes](https://docs.avaamo.com/user-guide/llamb/get-started/step-2-ingest-enterprise-content/document-attributes), for more information.
+See [Document attributes](https://docs.avaamo.com/user-guide/user-guide/llamb/get-started/step-2-ingest-enterprise-content/document-attributes), for more information.
 
 ### Enhance the conversational experience by enabling/disabling co-reference&#x20;
 
@@ -1943,7 +2183,7 @@ An `Advanced agent` can remember and maintain context throughout a conversation.
 * `Disable Co-reference query generation` option is available only for Advanced agents. &#x20;
   {% endhint %}
 
-See [Disable Co-reference query generation](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/define-settings#disable-co-reference-query-generation), for more information.
+See [Disable Co-reference query generation](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/define-settings#disable-co-reference-query-generation), for more information.
 
 ### Improved personalization: Assign multiple values to single user property
 
@@ -1966,7 +2206,7 @@ This improvement is a significant advancement in personalized response creation,
 Example: User.setProperty("country",["India","Australia"])
 </code></pre>
 
-See [User.setProperty](https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/user.setproperty), for more information.
+See [User.setProperty](https://docs.avaamo.com/user-guide/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/user.setproperty), for more information.
 {% endtab %}
 
 {% tab title="User.setProperties" %}
@@ -1982,7 +2222,7 @@ Example: User.setProperties({"student_name": ["david","sally","james" ],"guardia
 
 {% endcode %}
 
-See [User.setProperties](https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/user.setproperties), for more information.
+See [User.setProperties](https://docs.avaamo.com/user-guide/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/user.setproperties), for more information.
 {% endtab %}
 
 {% tab title="Authorize using JWT" %}
@@ -2003,7 +2243,7 @@ The following is a sample user payload with some basic user details such as emai
 }
 ```
 
-See [Authorization using JWT](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/authentication-using-jwt), for more information.
+See [Authorization using JWT](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/authentication-using-jwt), for more information.
 {% endtab %}
 
 {% tab title="User properties in custom channel " %}
@@ -2038,7 +2278,7 @@ Cache-Control: no-cache
 
 {% endcode %}
 
-See [Custom channel](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/custom-channel), for more information.
+See [Custom channel](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/custom-channel), for more information.
 {% endtab %}
 {% endtabs %}
 
@@ -2048,7 +2288,7 @@ In this release, the C-IVR channel configuration page has been enhanced with a n
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FtJzEq3YZIVxtqfauWvVg%2Fimage.png?alt=media&#x26;token=8b08f9f2-d40c-463e-86d1-af74743b23b7" alt=""><figcaption></figcaption></figure>
 
-The ability to enable a wait time or idle tone has been available since the Atlas 8 release, where it proves particularly useful when an agent needs additional time to respond, keeping the user engaged and informed that a response is forthcoming. See [Voice idle tone in Atlas 8 release notes](https://docs.avaamo.com/user-guide/release-notes-v8.0#voice-idle-tone), for more information.
+The ability to enable a wait time or idle tone has been available since the Atlas 8 release, where it proves particularly useful when an agent needs additional time to respond, keeping the user engaged and informed that a response is forthcoming. See [Voice idle tone in Atlas 8 release notes](https://docs.avaamo.com/user-guide/user-guide/release-notes-v8.0#voice-idle-tone), for more information.
 
 Previously, in the Atlas 8 release, developers had to contact Avaamo Support to activate this feature. Now, they can enable it directly from the channel configuration page, and hence,
 
@@ -2056,7 +2296,7 @@ Previously, in the Atlas 8 release, developers had to contact Avaamo Support to 
 * Provides developers complete control over when to enable and disable as per the requirements.
 * Faster development cycle, since developers need not reach Avaamo Support to enable or disable this feature.
 
-See [C-IVR channel configuration](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/conversational-ivr-c-ivr-phone), for more information.
+See [C-IVR channel configuration](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/conversational-ivr-c-ivr-phone), for more information.
 
 ### Enhance the accuracy by enabling/disabling entity value translation
 
@@ -2070,7 +2310,7 @@ By default, the entity values in different languages are always translated to en
 **Note:** By default, `Do not translate entity values` is disabled, which implies that entity values are always translated to en-US before intent matching.
 {% endhint %}
 
-See [Do not translate entity values](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/define-settings#do-not-translate-entity-values), for more information.
+See [Do not translate entity values](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/define-settings#do-not-translate-entity-values), for more information.
 
 ### User property API (Create, Get, Update, and Delete)&#x20;
 
@@ -2200,7 +2440,7 @@ curl --location --request DELETE 'https://cx.avaamo.com/api/v1/agents/94xxx/user
 {% endtab %}
 {% endtabs %}
 
-See [User property API](https://docs.avaamo.com/user-guide/ref/avaamo-platform-api-documentation/user-property-api), for more information.
+See [User property API](https://docs.avaamo.com/user-guide/user-guide/ref/avaamo-platform-api-documentation/user-property-api), for more information.
 
 ### Get message insights
 
@@ -2259,14 +2499,14 @@ https://cx.avaamo.com/api/v1/agents/56xxx/query_insights/0606e1df-9e9b-4b42.json
 
 {% endcode %}
 
-See [Message insights](https://docs.avaamo.com/user-guide/ref/avaamo-platform-api-documentation/agent-api/message-insights), for more information.
+See [Message insights](https://docs.avaamo.com/user-guide/user-guide/ref/avaamo-platform-api-documentation/agent-api/message-insights), for more information.
 
 ### Standardization of Analytics Message API
 
 In this release, the `Analytics Message API` has been standardized with the following changes:
 
 * A new response attribute `layer_id` has been added to the user object. `layer_id`serves as a unique identifier for each user.&#x20;
-* **first\_name**: If the user information is collected, then `first_name` indicates the first name of the user corresponding to the message, or else it is displayed as "You". See [Collect user information](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/widget-configuration#collect-user-information), for more details.
+* **first\_name**: If the user information is collected, then `first_name` indicates the first name of the user corresponding to the message, or else it is displayed as "You". See [Collect user information](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/widget-configuration#collect-user-information), for more details.
 
 The following is a sample response returned by the Analytics Message API:
 
@@ -2295,20 +2535,20 @@ The following is a sample response returned by the Analytics Message API:
 }
 ```
 
-See [Message API](https://docs.avaamo.com/user-guide/ref/avaamo-platform-api-documentation/analytics-api/messages), for more information.&#x20;
+See [Message API](https://docs.avaamo.com/user-guide/user-guide/ref/avaamo-platform-api-documentation/analytics-api/messages), for more information.&#x20;
 
 
 # Release notes v8.0
 
 The Avaamo Conversational AI Platform `Atlas 8` release includes 1 new product,  3 new features, and 13  enhancements.
 
-**New product:** The Avaamo Conversational AI Platform introduces a new product `LLaMB - Large Language Model for Business` in this release. See [Introducing LLaMB](https://docs.avaamo.com/user-guide/recent-releases/release-notes-v8.0/introducing-llamb), for more information.
+**New product:** The Avaamo Conversational AI Platform introduces a new product `LLaMB - Large Language Model for Business` in this release. See [Introducing LLaMB](https://docs.avaamo.com/user-guide/user-guide/recent-releases/release-notes-v8.0/introducing-llamb), for more information.
 
 **New features**: This release includes the introduction of the 3 new features:
 
-1. [Mercury theme](https://docs.avaamo.com/user-guide/recent-releases/release-notes-v8.0/introducing-mercury-theme)
-2. [User Acceptance Testing (UAT) in the Web channel ](https://docs.avaamo.com/user-guide/recent-releases/release-notes-v8.0/introducing-uat-in-web-channel)
-3. [Advanced agent](https://docs.avaamo.com/user-guide/recent-releases/release-notes-v8.0/introducing-advanced-agent)
+1. [Mercury theme](https://docs.avaamo.com/user-guide/user-guide/recent-releases/release-notes-v8.0/introducing-mercury-theme)
+2. [User Acceptance Testing (UAT) in the Web channel ](https://docs.avaamo.com/user-guide/user-guide/recent-releases/release-notes-v8.0/introducing-uat-in-web-channel)
+3. [Advanced agent](https://docs.avaamo.com/user-guide/user-guide/recent-releases/release-notes-v8.0/introducing-advanced-agent)
 
 **Enhancements**: This release includes enhancements related to the following existing features:
 
@@ -2321,7 +2561,7 @@ The Avaamo Conversational AI Platform `Atlas 8` release includes 1 new product, 
 * [Label change: Create new agent](#label-change-create-new-agent)
 
 {% hint style="danger" %}
-**Deprecation and removal notice**: See [Deprecated and removed features](https://docs.avaamo.com/user-guide/deprecated-and-removed-features/atlas-8-deprecated-and-removed-features), for a complete list&#x20;
+**Deprecation and removal notice**: See [Deprecated and removed features](https://docs.avaamo.com/user-guide/user-guide/deprecated-and-removed-features/atlas-8-deprecated-and-removed-features), for a complete list&#x20;
 
 of all the deprecated and removed features in the `Atlas 8` release.
 {% endhint %}
@@ -2334,7 +2574,7 @@ In this release, significant enhancements have been made to the performance of c
 
 This performance improvement extends to the download functionality of the campaign execution report from the `Campaign statistics` page. Given the optimized campaign execution time capable of managing larger loads, the campaign download report option has also been refined to handle similar demands. The `Download` option now initiates an asynchronous job, facilitating the seamless download of larger campaign reports.
 
-See [Campaign statistics](https://docs.avaamo.com/user-guide/outreach/campaign-statistics), for more information.
+See [Campaign statistics](https://docs.avaamo.com/user-guide/user-guide/outreach/campaign-statistics), for more information.
 
 ### Campaign configuration improvements
 
@@ -2346,17 +2586,17 @@ Given the mandatory requirement for recipient phone numbers to be in the E.164 f
 
 Previously, in the absence of a country code, the campaign would encounter failure with an invalid phone number error message, or users had to execute a pre-processing job to append the campaign recipients with a country code before initiating the campaign, thereby introducing delays to the campaign execution time.
 
-See [Country code](https://docs.avaamo.com/user-guide/outreach/campaigns/create-new-campaign#country-code-optional), for more information.
+See [Country code](https://docs.avaamo.com/user-guide/user-guide/outreach/campaigns/create-new-campaign#country-code-optional), for more information.
 
 ### Improved error handling with Recipient CSV &#x20;
 
 In this release, enhancements have been made to the error handling process during Recipient CSV parsing to facilitate more effective troubleshooting of campaign failures.
 
-Upon encountering any recipient CSV parsing error during campaign execution, the system now displays a detailed error message in the `Campaign statistics` UI page, specifying the line or row where the error occurred. Furthermore, if users have configured campaign failure notifications, an email containing the error details is notified to all the users. See [Campaign failures](https://docs.avaamo.com/user-guide/outreach/campaigns/create-new-campaign#campaign-failures), for more information.
+Upon encountering any recipient CSV parsing error during campaign execution, the system now displays a detailed error message in the `Campaign statistics` UI page, specifying the line or row where the error occurred. Furthermore, if users have configured campaign failure notifications, an email containing the error details is notified to all the users. See [Campaign failures](https://docs.avaamo.com/user-guide/user-guide/outreach/campaigns/create-new-campaign#campaign-failures), for more information.
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FWxKCNDS9jHo6wGbAfcRY%2Fimage.png?alt=media&#x26;token=71a66716-4fec-4b22-8b2b-4fe1dadb31ec" alt=""><figcaption></figcaption></figure>
 
-See [Campaign statistics](https://docs.avaamo.com/user-guide/outreach/campaign-statistics), for more information.
+See [Campaign statistics](https://docs.avaamo.com/user-guide/user-guide/outreach/campaign-statistics), for more information.
 
 ## Live agent console enhancements&#x20;
 
@@ -2368,7 +2608,7 @@ The conversation duration timer is a valuable indicator for managing customer su
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F39z2Q4i2fZkc6Qlq3ADr%2Fimage.png?alt=media&#x26;token=f45f510f-92c7-4039-a0a6-9d8a3114f965" alt=""><figcaption></figcaption></figure>
 
-See [View real-time conversation duration](https://docs.avaamo.com/user-guide/live-agent-console/live-agent/view-real-time-conversation-duration), for more information.
+See [View real-time conversation duration](https://docs.avaamo.com/user-guide/user-guide/live-agent-console/live-agent/view-real-time-conversation-duration), for more information.
 
 ### Changelog API
 
@@ -2389,7 +2629,7 @@ curl --location --request GET 'https://cx.avaamo.com/api/v1/cap/change_logs.json
 
 ```
 
-See [Live Agent Changelog API](https://docs.avaamo.com/user-guide/live-agent-console/live-agent-console-rest-apis/live-agent-changelog-api), for more information.
+See [Live Agent Changelog API](https://docs.avaamo.com/user-guide/user-guide/live-agent-console/live-agent-console-rest-apis/live-agent-changelog-api), for more information.
 
 ### Live Sessions to monitor real-time information&#x20;
 
@@ -2399,7 +2639,7 @@ In this release, the `Live agent console` for Supervisors has been enhanced with
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F621YgOB3lLXE13M66718%2Fimage.png?alt=media&#x26;token=d676ccbb-78fa-4dab-9f34-ca29ba94d92b" alt=""><figcaption></figcaption></figure>
 
-See [Live sessions](https://docs.avaamo.com/user-guide/live-agent-console/supervisor/live-sessions), for more information.
+See [Live sessions](https://docs.avaamo.com/user-guide/user-guide/live-agent-console/supervisor/live-sessions), for more information.
 
 ### Send attachments to live agents
 
@@ -2407,7 +2647,7 @@ In this release, the `Web channel` configuration has been enhanced with a Send a
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F84uU2YxsElFrUApHUKsZ%2Fimage.png?alt=media&#x26;token=9565f886-474b-483c-bb6a-1a59fa2f7a63" alt=""><figcaption></figcaption></figure>
 
-In the agent, the attach icon is enabled allowing the users to send file attachments. See [Send attachment](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/widget-configuration#send-file-attachment), for more information.
+In the agent, the attach icon is enabled allowing the users to send file attachments. See [Send attachment](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/widget-configuration#send-file-attachment), for more information.
 
 ## Enable streaming messages via typing animation&#x20;
 
@@ -2417,27 +2657,27 @@ In this release, the Web channel configuration option has been enhanced with a n
 
 Enabling this option renders streaming responses through the typing animation to the user instead of displaying the response at once, eliminating idle waiting time. Streaming is intuitive, especially when there is a delay in agent response. It creates an impression to the user that the agent is responding and helps actively engage the user in the conversation flow.
 
-See [Widget configuration -> Stream message](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/widget-configuration#stream-message), for more information.
+See [Widget configuration -> Stream message](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/widget-configuration#stream-message), for more information.
 
 ## MS Teams channel configuration improvements
 
-In this release, the MS Teams channel has been enhanced with a new option `Enable hero card` in the channel configuration page. Hero card support has been available since the [v6.3.0 release](https://docs.avaamo.com/user-guide/release-notes/v6.0-to-v6.4.x-releases/v6.3.x/release-notes-v6.3.0#hero-card-support).
+In this release, the MS Teams channel has been enhanced with a new option `Enable hero card` in the channel configuration page. Hero card support has been available since the [v6.3.0 release](https://docs.avaamo.com/user-guide/user-guide/release-notes/v6.0-to-v6.4.x-releases/v6.3.x/release-notes-v6.3.0#hero-card-support).
 
 In the `Atlas 8` release,  when you enable the option `Enable hero card` in the MS Teams Channel configuration, it renders the responses by default in Hero cards instead of Adaptive cards in the MS Teams channel. This functionality proves beneficial when dealing with numerous responses containing embedded HTML code within the card's title or description. As this is not supported in the Adaptive Card format, toggling `Enable hero card` option allows HTML tags to be rendered as-is in the MS Teams channel using Hero cards.&#x20;
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5r3k9BwESgw4ccHpxWiD%2Fimage.png?alt=media&#x26;token=410bd365-3ed1-469c-bfae-9b8ff944a872" alt=""><figcaption></figcaption></figure>
 
-See [Enable hero card](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/microsoft-teams-ms-teams#enable-hero-card), for more information.
+See [Enable hero card](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/microsoft-teams-ms-teams#enable-hero-card), for more information.
 
-See [MS Teams Compliance](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/microsoft-teams-ms-teams#microsoft-teams-compliance), to understand the elements that are not compliant with the MS Teams channel for Hero cards. &#x20;
+See [MS Teams Compliance](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/microsoft-teams-ms-teams#microsoft-teams-compliance), to understand the elements that are not compliant with the MS Teams channel for Hero cards. &#x20;
 
 ## Accessibility enhancements
 
 In this release, the Accessibility inclusivity in the agents built using the Avaamo Conversation AI Platform has been improved. The following are a few key areas where **`accessibility has been  incorporated`** in this release based on WCAG 2.0 (Web Content Accessibility Guidelines):
 
-* **Mercury theme:** In this release, a new theme - `Mercury` has been introduced and all elements within the `Mercury theme` are accessible in a manner consistent with the other existing themes. For instance, the streaming of responses which is exclusively a part of the `Mercury theme` is now accessible. See [Mercury theme](https://docs.avaamo.com/user-guide/recent-releases/release-notes-v8.0/introducing-mercury-theme), for more information on the newly introduced theme.
-* **Auto-complete combo box**: When the [auto-complete combo box](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced#query-autocomplete-url) is open, the user can press the `Escape` button once to minimize or hide the combo box, and press the `Escape` button again to clear the text in the search input or the message text box in the agent widget according to the W3C ARIA Authoring Patterns combo box.
-* **Welcome screen - Get started screen**:  The user interface (UI) elements on the [Get Started screen ](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/introduce-agent-get-started)are now equipped with accessibility features, mirroring those found in the agent widget. The accessibility capabilities applied to the UI elements within the agent widget are also applicable to the elements on the [Get Started screen](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/introduce-agent-get-started). For example, the ability to use keyboard navigation to access the welcome text in the `Get Started screen` or the ability to read out the entire welcome message text when the screen reader is enabled.
+* **Mercury theme:** In this release, a new theme - `Mercury` has been introduced and all elements within the `Mercury theme` are accessible in a manner consistent with the other existing themes. For instance, the streaming of responses which is exclusively a part of the `Mercury theme` is now accessible. See [Mercury theme](https://docs.avaamo.com/user-guide/user-guide/recent-releases/release-notes-v8.0/introducing-mercury-theme), for more information on the newly introduced theme.
+* **Auto-complete combo box**: When the [auto-complete combo box](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced#query-autocomplete-url) is open, the user can press the `Escape` button once to minimize or hide the combo box, and press the `Escape` button again to clear the text in the search input or the message text box in the agent widget according to the W3C ARIA Authoring Patterns combo box.
+* **Welcome screen - Get started screen**:  The user interface (UI) elements on the [Get Started screen ](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/introduce-agent-get-started)are now equipped with accessibility features, mirroring those found in the agent widget. The accessibility capabilities applied to the UI elements within the agent widget are also applicable to the elements on the [Get Started screen](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/introduce-agent-get-started). For example, the ability to use keyboard navigation to access the welcome text in the `Get Started screen` or the ability to read out the entire welcome message text when the screen reader is enabled.
 * **Error messages**: When the screen reader is activated, it now audibly conveys any error messages present in the agent widget. For instance, if a form response requires a mandatory text entry, and the user submits the form without providing the required text, an error message is displayed in the agent widget. These error messages are now audibly communicated, enhancing accessibility for users relying on screen readers.
 
 ## Track SMS billing using SMS Usage report
@@ -2448,7 +2688,7 @@ You can also export the usage report from this page to analyze further. The page
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FCkgnwPQEfxpOf4B63bvQ%2Fimage.png?alt=media&#x26;token=29738fc4-c758-42a0-8056-73f39bb85f0b" alt=""><figcaption></figcaption></figure>
 
-See [SMS usage](https://docs.avaamo.com/user-guide/how-to/manage-platform-settings/usage-reports/sms-usage), for more information.
+See [SMS usage](https://docs.avaamo.com/user-guide/user-guide/how-to/manage-platform-settings/usage-reports/sms-usage), for more information.
 
 {% hint style="info" %}
 **Note**: The `SMS Usage` page is available only for users with the Settings role.
@@ -2490,7 +2730,7 @@ User.removeProperty("<<key>>")
 
 {% endcode %}
 
-See [User.removeProperty](https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/user.removeproperty), for more information.
+See [User.removeProperty](https://docs.avaamo.com/user-guide/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/user.removeproperty), for more information.
 
 ## Changes&#x20;
 
@@ -2503,17 +2743,17 @@ In this release, the following are the changes incorporated in the `Campaign sta
 * The `Date Range` label in the `Campaign Statistics UI` has been refined to `Execution`provide a more precise indication of the date in the drop-down. The date in the drop-down refers to the campaign run or execution date.
 * In alignment with the `Analytics UI` and to maintain a consistent user experience across the platform, the `Execution Date` drop-down now allows users to select up to 6 months of campaign runs.
 
-See [Campaign statistics](https://docs.avaamo.com/user-guide/outreach/campaign-statistics), for more information.
+See [Campaign statistics](https://docs.avaamo.com/user-guide/user-guide/outreach/campaign-statistics), for more information.
 
 ### Outreach insights API
 
 To ensure optimal performance and consistency, the date range in the Outreach Insights API has been modified to enable retrieval of a maximum of 6 months of data in a single fetch.
 
-See [Outreach insights API](https://docs.avaamo.com/user-guide/outreach/outreach-rest-apis/outreach-insights-api), for more information.
+See [Outreach insights API](https://docs.avaamo.com/user-guide/user-guide/outreach/outreach-rest-apis/outreach-insights-api), for more information.
 
 ### Label change: Create new agent
 
-In this release, a new agent called the [Advanced Agent](https://docs.avaamo.com/user-guide/recent-releases/release-notes-v8.0/introducing-advanced-agent) has been introduced. To differentiate creating an advanced agent vs the normal one, the normal agent is referred to as a "Standard agent". This is only a label change, all the functionalities of this agent remain as before the `Atlas 8` release.&#x20;
+In this release, a new agent called the [Advanced Agent](https://docs.avaamo.com/user-guide/user-guide/recent-releases/release-notes-v8.0/introducing-advanced-agent) has been introduced. To differentiate creating an advanced agent vs the normal one, the normal agent is referred to as a "Standard agent". This is only a label change, all the functionalities of this agent remain as before the `Atlas 8` release.&#x20;
 
 A new **Create** dropdown in the `Dashboard -> Development` tab with options to create **Standard agent** and **Advanced agent** has been included.&#x20;
 
@@ -2521,7 +2761,7 @@ A new **Create** dropdown in the `Dashboard -> Development` tab with options to 
 
 Note that when an `Advanced agent` is enabled for the account, the `Create new agent` label remains as-is without any change.&#x20;
 
-See [Create Standard agent](https://docs.avaamo.com/user-guide/how-to/build-agents/add-skills) and [Create Advanced agent](https://docs.avaamo.com/user-guide/how-to/build-agents/create-advanced-agent) for more information.
+See [Create Standard agent](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/add-skills) and [Create Advanced agent](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/create-advanced-agent) for more information.
 
 
 # Introducing LLaMB
@@ -2607,7 +2847,7 @@ The following is an illustration to depict how LLaMB can generate nuanced city/r
 * LLaMB can parse complex tables without the need for any pre-processing utility&#x20;
 * **Multiple source attribution**:  All responses from LLaMB are provided with a source reference, indicating precisely the source from which the answers are derived. If multiple sources of content are used for inferring answers, then multiple source attribution is provided. This means that only verified content references fed to LLaMB are used for providing responses, resulting in accurate, trustworthy, and secure inferred answers.
 
-See [Parsing templates](https://docs.avaamo.com/user-guide/llamb/get-started/step-2-ingest-enterprise-content/parsing-templates), for more information.
+See [Parsing templates](https://docs.avaamo.com/user-guide/user-guide/llamb/get-started/step-2-ingest-enterprise-content/parsing-templates), for more information.
 
 ### Soft unhandled (Active redirect)
 
@@ -2623,13 +2863,13 @@ In instances where the agent fails to comprehend a user query, it defaults to an
 | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | ![](https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F7LvpKk9x6XAxq7EMzKta%2Fimage.png?alt=media\&token=2ed81bd5-b35f-4ebe-8911-921c0b7ef2a0) | ![](https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FgVsuWrJHNvwsBcwhTkmH%2Fimage.png?alt=media\&token=e72b5db7-6f28-4d7f-a166-11c687a469c9) |
 
-See [Soft unhandled](https://docs.avaamo.com/user-guide/llamb/soft-unhandled-active-redirect), for more information.
+See [Soft unhandled](https://docs.avaamo.com/user-guide/user-guide/llamb/soft-unhandled-active-redirect), for more information.
 
 ## Next steps
 
-1. Start by understanding [key terms](https://docs.avaamo.com/user-guide/llamb/key-terms) in the LLaMB product.
-2. Understand what is required in the [Before you begin](https://docs.avaamo.com/user-guide/llamb/before-you-begin) section.
-3. You are now ready to [get started](https://docs.avaamo.com/user-guide/llamb/get-started) by exploring LLaMB in the Avaamo Conversational AI Platform.
+1. Start by understanding [key terms](https://docs.avaamo.com/user-guide/user-guide/llamb/key-terms) in the LLaMB product.
+2. Understand what is required in the [Before you begin](https://docs.avaamo.com/user-guide/user-guide/llamb/before-you-begin) section.
+3. You are now ready to [get started](https://docs.avaamo.com/user-guide/user-guide/llamb/get-started) by exploring LLaMB in the Avaamo Conversational AI Platform.
 
 
 # Introducing "UAT" in Web channel
@@ -2656,7 +2896,7 @@ The following are some of the key benefits of performing UAT on agents:
 
 UAT feature is exclusively built for user acceptance testers who are subject matter experts and are aware of the agent functionality. Testers can use the UAT feature to set up the required test queries, perform UAT on the agent, and provide required feedback.
 
-Developers can then view the feedback provided during UAT testing from the [Monitor -> Analytics](https://docs.avaamo.com/user-guide/how-to/build-agents/monitor-and-analyze/analytics#user-feedback) page and also under the [Learning -> User Feedback](https://docs.avaamo.com/user-guide/how-to/build-agents/learning-continuous-improvement/feedback) section. Alternatively, developers can also use the [User Feedback API](https://docs.avaamo.com/user-guide/ref/avaamo-platform-api-documentation/feedback-api) to collect feedback periodically to learn and analyze the experience of the user when they are interacting with your agent.
+Developers can then view the feedback provided during UAT testing from the [Monitor -> Analytics](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/monitor-and-analyze/analytics#user-feedback) page and also under the [Learning -> User Feedback](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/learning-continuous-improvement/feedback) section. Alternatively, developers can also use the [User Feedback API](https://docs.avaamo.com/user-guide/user-guide/ref/avaamo-platform-api-documentation/feedback-api) to collect feedback periodically to learn and analyze the experience of the user when they are interacting with your agent.
 
 ### Before UAT
 
@@ -2675,7 +2915,7 @@ In the UAT testing page, the instructions and categories are displayed on the le
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FosG3aOk1SUb3IArXAOn1%2Fimage.png?alt=media&#x26;token=d05dc4c2-cf1f-4346-afc4-83bcd245a8d9" alt=""><figcaption></figcaption></figure>
 
-See [UAT](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/uat), for more information.
+See [UAT](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/uat), for more information.
 
 
 # Introducing "Mercury" theme
@@ -2709,11 +2949,11 @@ In the `Mercury` theme, the feedback collected at the UAT stage aims towards col
 
 `Mercury` is the default theme for all newly created agents and newly created web channels in the Avaamo Conversational AI Platform. &#x20;
 
-If not enabled for your agent, you can navigate to the `Agent -> Channels` page and click `View` on the Web Channel. In the `Channels -> Theme` section, click the `Agent theme` dropdown to choose the `Mercury` theme based on your styling requirements. For [LLaMB](https://docs.avaamo.com/user-guide/recent-releases/release-notes-v8.0/introducing-llamb), `Mercury` is the recommended theme.&#x20;
+If not enabled for your agent, you can navigate to the `Agent -> Channels` page and click `View` on the Web Channel. In the `Channels -> Theme` section, click the `Agent theme` dropdown to choose the `Mercury` theme based on your styling requirements. For [LLaMB](https://docs.avaamo.com/user-guide/user-guide/recent-releases/release-notes-v8.0/introducing-llamb), `Mercury` is the recommended theme.&#x20;
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FD1CZe8kMgkYDDl0SfTng%2FScreenshot%202024-02-20%20at%207.28.44%E2%80%AFAM.png?alt=media&#x26;token=05ee9c50-75d4-4082-9dc8-818d74019d76" alt=""><figcaption></figcaption></figure>
 
-See [Theme](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/theme), for more information.
+See [Theme](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/theme), for more information.
 
 
 # Introducing "Advanced agent"
@@ -2775,7 +3015,7 @@ Creating an `Advanced agent` is similar to creating a `Standard agent` and most 
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FxcbQHXfX3R0vKCAFPqFz%2Fimage.png?alt=media&#x26;token=a3975be0-2469-4cf2-ae2d-7818fca3551e" alt=""><figcaption></figcaption></figure>
 
-See [Advanced agent](https://docs.avaamo.com/user-guide/how-to/build-agents/create-advanced-agent), for more information.
+See [Advanced agent](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/create-advanced-agent), for more information.
 
 ## Migrating to Advanced agent
 
@@ -2789,7 +3029,7 @@ The `AI Agent` is a next-generation agent built to power highly intelligent and 
 
 With AI agents a new type of skill - `Prompt skills` is also introduced in this release. Powered by prompt skills, these agents are designed to understand, reason, and act – independently and effectively. &#x20;
 
-There is no need for extensive training, as required with Classic agents. Instead, you can define all instructions using the [Prompt Skill](https://docs.avaamo.com/user-guide/skills/prompt-skill), significantly reducing the time needed to build a skill. Along with prompts, you can build complex scenarios using built-in functions, and customized functions.
+There is no need for extensive training, as required with Classic agents. Instead, you can define all instructions using the [Prompt Skill](https://docs.avaamo.com/user-guide/user-guide/skills/prompt-skill), significantly reducing the time needed to build a skill. Along with prompts, you can build complex scenarios using built-in functions, and customized functions.
 
 You can create multiple prompt skills, and the agent can seamlessly redirect interactions from one skill to another based on user queries, ensuring a smooth and dynamic conversation flow.
 
@@ -2817,9 +3057,9 @@ Unlike traditional structured flows, an AI agent enables real-time, human-like i
 
 The examples below demonstrate how the AI agent embodies these qualities, offering a more dynamic experience compared to the Classic agent (formerly known as the Standard agent).
 
-| AI agent flow                                                                                                                                                                                                                                                                                                                           | Classic agent                                                                                                                                                                                                                                                                                                                           |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <div><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FXzd5ZfA3AovpOWoSqrtX%2FScreenshot%202025-04-08%20at%2011.28.13%E2%80%AFAM.png?alt=media&#x26;token=c8a1af3a-9f57-4241-97e1-bda98ba8e3a2" alt=""><figcaption></figcaption></figure></div> | <div><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FO3jMK8biP4krtTSMuMvM%2FScreenshot%202025-04-08%20at%2011.26.18%E2%80%AFAM.png?alt=media&#x26;token=0ef48519-bdc5-4223-89a9-94870eb2c35c" alt=""><figcaption></figcaption></figure></div> |
+| AI agent flow                                                                                                                                                                                                                                                                                           | Classic agent                                                                                                                                                                                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FXzd5ZfA3AovpOWoSqrtX%2FScreenshot%202025-04-08%20at%2011.28.13%E2%80%AFAM.png?alt=media&#x26;token=c8a1af3a-9f57-4241-97e1-bda98ba8e3a2" alt="" data-size="original"> | <img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FO3jMK8biP4krtTSMuMvM%2FScreenshot%202025-04-08%20at%2011.26.18%E2%80%AFAM.png?alt=media&#x26;token=0ef48519-bdc5-4223-89a9-94870eb2c35c" alt="" data-size="original"> |
 
 ### Autonomous decision-making
 
@@ -2827,9 +3067,9 @@ The AI Agent can make decisions based on predefined goals and contextual data wi
 
 The examples below illustrate how the AI agent adapts its actions based on real-time inputs and makes intelligent decisions aligned with predefined goals.
 
-| Example 1                                                                                                                                                                                                                                                                                                                               | Example 2                                                                                                                                                                                                                                                                                                                               |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <div><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FCMmeMLvP5WJd4l75oAMd%2FScreenshot%202025-04-08%20at%2011.36.02%E2%80%AFAM.png?alt=media&#x26;token=0e722129-0018-4a18-9b05-51bc1ce7185b" alt=""><figcaption></figcaption></figure></div> | <div><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FJuvO69d5xSFdrvYTGvJK%2FScreenshot%202025-04-08%20at%2011.34.07%E2%80%AFAM.png?alt=media&#x26;token=111e044b-0c61-4986-a2fe-e369f44f7196" alt=""><figcaption></figcaption></figure></div> |
+| Example 1                                                                                                                                                                                                                                                                                               | Example 2                                                                                                                                                                                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FCMmeMLvP5WJd4l75oAMd%2FScreenshot%202025-04-08%20at%2011.36.02%E2%80%AFAM.png?alt=media&#x26;token=0e722129-0018-4a18-9b05-51bc1ce7185b" alt="" data-size="original"> | <img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FJuvO69d5xSFdrvYTGvJK%2FScreenshot%202025-04-08%20at%2011.34.07%E2%80%AFAM.png?alt=media&#x26;token=111e044b-0c61-4986-a2fe-e369f44f7196" alt="" data-size="original"> |
 
 ### Seamless Skill Transfer
 
@@ -2935,59 +3175,13 @@ By picking up signals like repeated inputs, negative language, or abrupt changes
 
 <div align="left"><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FFL13OQnMqA22J8a1L5U5%2FScreenshot%202025-04-28%20at%2012.16.38%E2%80%AFPM.png?alt=media&#x26;token=84df0944-4ba1-4115-bb69-7425e862407c" alt="" width="250"><figcaption></figcaption></figure></div>
 
-### **Fluid Conversation**
-
-AI agents maintain natural, flowing conversations without sounding robotic. They understand context across turns, enabling users to speak freely without rigid commands.
-
-<div align="left"><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F9VnyHwAwEgOoSoQojiC2%2FScreenshot%202025-04-28%20at%2011.47.51%E2%80%AFAM.png?alt=media&#x26;token=28fdf84e-e395-4c51-8057-3a2ef387b7f7" alt="" width="258"><figcaption></figcaption></figure></div>
-
-### **Follow-On**
-
-Agents can ask for and remember key follow-up information—like your location or preferred provider—right after initial intent is captured, helping personalize and complete the task.
-
-<div align="left"><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FJuyzep7q8DPdUVkaGsjD%2FScreenshot%202025-04-28%20at%2012.07.34%E2%80%AFPM.png?alt=media&#x26;token=c84f3eef-070f-4821-9774-3f584dbd703b" alt="" width="253"><figcaption></figcaption></figure></div>
-
-### **Switch Topic Mid-Conversation**
-
-Users can change topics on the conversation—for example, asking about a service or trying a demo before booking an appointment. The agent can seamlessly switch focus without losing the overall context.
-
-<div align="left"><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FbXG989ttzi6PgtPa346f%2FScreenshot%202025-04-28%20at%2012.10.22%E2%80%AFPM.png?alt=media&#x26;token=045b6ba2-31f1-46f2-8b4e-e089bb258e99" alt="" width="256"><figcaption></figcaption></figure></div>
-
-### **Agent Callback**
-
-When the AI agent can not resolve an issue, it can collect necessary details and schedule a callback from a human agent, ensuring continuity and a smooth handoff.
-
-<div align="left"><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FNOCmHlhhpWw5qG3boqxn%2FScreenshot%202025-04-28%20at%2011.09.26%E2%80%AFAM.png?alt=media&#x26;token=e75716d3-2d35-4084-bb6b-f735bb107630" alt="" width="258"><figcaption></figcaption></figure></div>
-
-### **Interruption**
-
-Users can interrupt the AI agent mid-response (e.g., “Actually, never mind”) and the agent stops and adjusts based on the new input, instead of continuing its scripted response.
-
-<div align="left"><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fm5w4TP17pHPBoQvjeVEG%2FScreenshot%202025-04-28%20at%2012.12.35%E2%80%AFPM.png?alt=media&#x26;token=73d77322-ff50-4ff8-b07f-e96cd364ae5e" alt="" width="253"><figcaption></figcaption></figure></div>
-
-### **Silence**
-
-AI agents can handle user silence smartly, either pausing to wait for input or gently prompting the user to resume the interaction after a certain time.
-
-### **Try to break it**&#x20;
-
-Even if users try to confuse or “break” the agent with odd inputs or edge cases, the agent follows enterprise guardrails to stay on task, stay secure, and avoid hallucinations or inappropriate responses.
-
-<div align="left"><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FoiuTin6MuQas8pvrpsXE%2FScreenshot%202025-04-28%20at%2012.15.28%E2%80%AFPM.png?alt=media&#x26;token=13b5527f-adbb-4c51-b199-f1ba56e23a70" alt="" width="254"><figcaption></figcaption></figure></div>
-
-### **Detect Frustration**
-
-By picking up signals like repeated inputs, negative language, or abrupt changes in tone, the AI can detect user frustration and adapt by simplifying, escalating, or offering human support.
-
-<div align="left"><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F92GlKq0R5gNnjzq5L1q4%2FScreenshot%202025-04-28%20at%2012.16.38%E2%80%AFPM.png?alt=media&#x26;token=fe88a9e2-19f8-418d-bfe3-237865d2af9c" alt="" width="250"><figcaption></figcaption></figure></div>
-
 ## Next steps
 
-* Understand what is required in the [Before you begin](https://docs.avaamo.com/user-guide/ai-agent/before-you-begin) section.
-* Start by creating a new [AI agent](https://docs.avaamo.com/user-guide/ai-agent/create-an-ai-agent).
-* You are now ready to [get started](https://docs.avaamo.com/user-guide/get-started) by exploring AI agents in the Avaamo Conversational AI Platform.
+* Understand what is required in the [Before you begin](https://docs.avaamo.com/user-guide/user-guide/ai-agent/before-you-begin) section.
+* Start by creating a new [AI agent](https://docs.avaamo.com/user-guide/user-guide/ai-agent/create-an-ai-agent).
+* You are now ready to [get started](https://docs.avaamo.com/user-guide/user-guide/get-started) by exploring AI agents in the Avaamo Conversational AI Platform.
 
-Refer [AI Agent](https://docs.avaamo.com/user-guide/ai-agent), for more information.
+Refer [AI Agent](https://docs.avaamo.com/user-guide/user-guide/ai-agent), for more information.
 
 
 # Before you begin
@@ -3007,19 +3201,19 @@ AI agent is enabled on demand. Contact your dedicated Customer Success Manager f
 
 AI agents can be deployed in the following channels:
 
-* [Web](https://docs.avaamo.com/user-guide/configuration/channels/web-enabled-by-default)
-* [IVR](https://docs.avaamo.com/user-guide/configuration/channels/conversational-ivr-c-ivr-or-phone)
-* [SIP](https://docs.avaamo.com/user-guide/configuration/channels/sip)
+* [Web](https://docs.avaamo.com/user-guide/user-guide/configuration/channels/web-enabled-by-default)
+* [IVR](https://docs.avaamo.com/user-guide/user-guide/configuration/channels/conversational-ivr-c-ivr-or-phone)
+* [SIP](https://docs.avaamo.com/user-guide/user-guide/configuration/channels/sip)
 
 ### 3. Supported language
 
-AI agent supports all [platform-supported](https://docs.avaamo.com/user-guide/overview-and-concepts/advanced-concepts/language-pack#supported-languages) languages.&#x20;
+AI agent supports all [platform-supported](https://docs.avaamo.com/user-guide/user-guide/overview-and-concepts/advanced-concepts/language-pack#supported-languages) languages.&#x20;
 
 
 # Create an AI agent
 
 {% hint style="info" %}
-**Note**: Ensure you have met the [pre-requisites](https://docs.avaamo.com/user-guide/quick-start-tutorials/pre-requisites).
+**Note**: Ensure you have met the [pre-requisites](https://docs.avaamo.com/user-guide/user-guide/quick-start-tutorials/pre-requisites).
 {% endhint %}
 
 Consider that you need to build a **ticket booking agent** for **Galaxy Cinemas**, a movie theater where customers can book tickets and select their seats online.
@@ -3043,22 +3237,22 @@ On the home page, an `AI Agent` can be easily identified and distinguished from 
 
 Once you have created an **AI Agent**, follow these steps to configure and build it effectively.
 
-### [**Add Skills**](https://docs.avaamo.com/user-guide/skills)
+### [**Add Skills**](https://docs.avaamo.com/user-guide/user-guide/skills)
 
 In this step, you define the **actions** your agent should perform by adding skills. You can choose from two types of skills:
 
-* [Prompt skill](https://docs.avaamo.com/user-guide/skills/prompt-skill) – Uses predefined prompts to generate responses.
-* [Knowledge skill](https://docs.avaamo.com/user-guide/skills/knowledge-skill) – Leverages LLaMB capabilities for advanced AI-driven interactions.
+* [Prompt skill](https://docs.avaamo.com/user-guide/user-guide/skills/prompt-skill) – Uses predefined prompts to generate responses.
+* [Knowledge skill](https://docs.avaamo.com/user-guide/user-guide/skills/knowledge-skill) – Leverages LLaMB capabilities for advanced AI-driven interactions.
 
-### [**Configuration**](https://docs.avaamo.com/user-guide/configuration)
+### [**Configuration**](https://docs.avaamo.com/user-guide/user-guide/configuration)
 
 This step allows you to set up additional configurations to **enhance the functionality** of your AI agents. Advanced settings help fine-tune the agent's behavior and responses for a more optimized experience.
 
-### [**Debug**](https://docs.avaamo.com/user-guide/debug)
+### [**Debug**](https://docs.avaamo.com/user-guide/user-guide/debug)
 
 In the **Debug** step, you review the data stored by the skill and analyze logs generated from your JavaScript code. This helps in identifying and fixing any issues in the agent's functionality.
 
-### [**Test**](https://docs.avaamo.com/user-guide/test)
+### [**Test**](https://docs.avaamo.com/user-guide/user-guide/test)
 
 Finally, you use the **Simulator** to test your skill with different `sample queries`. This ensures that your agent behaves as expected and provides accurate responses before deployment.&#x20;
 
@@ -3067,7 +3261,7 @@ In the `AI Agent` testing mode, a mobile screen-style widget is displayed, allow
 
 In the `Classic Agent` testing mode, the traditional agent widget is shown. You can click on it to start the conversation.
 
-Refer [Test channel settings](https://docs.avaamo.com/user-guide/configuration/channels/web-enabled-by-default#test-channel-settings), for detailed information.
+Refer [Test channel settings](https://docs.avaamo.com/user-guide/user-guide/configuration/channels/web-enabled-by-default#test-channel-settings), for detailed information.
 
 
 # Skills
@@ -3083,19 +3277,20 @@ AI Agents display customized welcome messages across multiple channels — inclu
 
 You can configure different types of welcome messages using the Welcome skill:
 
-* **Text message:** A simple text-based greeting or introduction.
-* **Card message:** A structured message containing visuals or buttons.
-* **Quick-reply message:** A message with suggested replies for quick user actions.
+* **Text:** A simple text-based greeting or introduction.
+* **Card:** A structured message containing visuals or buttons.
+* **Quick-reply:** A message with suggested replies for quick user actions.
+* **JavaScript:** You can leverage a set of objects and functions to customize and create enterprise skill responses using JavaScript.
 
 **To add a welcome message to the agent**:
 
-* In the `Agent > Skills` page, click `Welcome` skill.
+* In the `Agent > Skills` page, click `Welcome Message` skill.
 
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F6ATTDikajfQ9oAOhueet%2FScreenshot%202025-10-14%20at%2012.02.30%E2%80%AFPM.png?alt=media&#x26;token=4f449356-3e5a-45f7-a3ba-6293c911b4a2" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FyjIrR7PxGT3cGxthbTLJ%2FScreenshot%202025-12-04%20at%201.19.26%E2%80%AFPM.png?alt=media&#x26;token=dd49d410-d2d2-4667-98b4-5c2e2d7754e1" alt=""><figcaption></figcaption></figure>
 
-* In the `Welcome message` pop-up, customize the message as required, and click `OK`. You can add different types of responses in the message. You can apply the [response filter](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/add-response-filters) to the welcome message.
+* In the `Welcome message` pop-up, customize the message as required, and click `OK`. You can add different types of responses in the message. You can apply the [response filter](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/add-response-filters) to the welcome message.
 
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F3NNCmsDm19ghsflKajNe%2FScreenshot%202025-10-27%20at%2012.07.35%E2%80%AFPM.png?alt=media&#x26;token=94737334-3498-4124-a756-ac0be1922b95" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FrzdmBpXUwCLCrQaALxWu%2FScreenshot%202025-12-03%20at%202.58.24%E2%80%AFPM.png?alt=media&#x26;token=4a15579b-7904-48ab-bf1b-af7bb6c4f7a7" alt=""><figcaption></figcaption></figure>
 
 * Once configured, users can see the welcome message when they start a conversation with the AI Agent, ensuring a smoother, more guided chat experience.
 
@@ -3128,9 +3323,13 @@ You can configure different types of welcome messages using the Welcome skill:
 
 * In the `Agent > Skills` page, click `Outro` skill.
 
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F6ATTDikajfQ9oAOhueet%2FScreenshot%202025-10-14%20at%2012.02.30%E2%80%AFPM.png?alt=media&#x26;token=4f449356-3e5a-45f7-a3ba-6293c911b4a2" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FyjIrR7PxGT3cGxthbTLJ%2FScreenshot%202025-12-04%20at%201.19.26%E2%80%AFPM.png?alt=media&#x26;token=dd49d410-d2d2-4667-98b4-5c2e2d7754e1" alt=""><figcaption></figcaption></figure>
 
-* In the `Outro message` pop-up, customize the message as required, and click `OK`. You can add different types of responses in the message.  You can apply the [response filter](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/add-response-filters) to the outro message.
+* In the `Outro message` pop-up, customize the message as required, and click `OK`. You can add different types of responses in the message.  You can apply the [response filter](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/add-response-filters) to the outro message.
+
+{% hint style="info" %}
+**Note:** Predefined response filters (`Dialog` and `LLaMB Skill`) are available for the `Outro Message Skill.`
+{% endhint %}
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FX8gVwgc2VM66xkpRDmzS%2FScreenshot%202025-10-27%20at%2012.07.35%E2%80%AFPM.png?alt=media&#x26;token=a196cdfb-dd49-4a3b-a557-151c3b71c8cd" alt=""><figcaption></figcaption></figure>
 
@@ -3166,7 +3365,7 @@ The **Knowledge skill** is designed to empower AI agents by seamlessly integrati
 
 Using `Knowledge skill`, users can now integrate a wide variety of content directly from their repositories into the skill, streamlining the content integration and management process.
 
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FnFjWnksgr3BfNkOMrWOf%2FScreenshot%202025-09-19%20at%202.53.27%E2%80%AFPM.png?alt=media&#x26;token=dad9dbd3-c982-45bb-baf8-fde0349c3979" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fi8zlKV3QytZlOfnSrBaf%2FScreenshot%202025-12-09%20at%202.19.00%E2%80%AFPM.png?alt=media&#x26;token=d41895e2-e37e-4293-975e-ff8d5b60379f" alt=""><figcaption></figcaption></figure>
 
 #### Key highlights
 
@@ -3183,17 +3382,17 @@ Based on your requirements, you can create a new Knowledge skill.
 {% hint style="info" %}
 **Notes**:
 
-* Ensure you have met all the [pre-requisites](https://docs.avaamo.com/user-guide/quick-start-tutorials/pre-requisites).
-* You can add skills immediately after creating an agent. See [Create agent](https://docs.avaamo.com/user-guide/ai-agent/create-an-ai-agent), for more information.
-* To edit an agent, navigate to the Agents tab in the top menu, search for the agent, and then open it. See [Search agents](https://docs.avaamo.com/user-guide/how-to/build-agents/manage-agents/other-common-actions#search-agents), for more information.
+* Ensure you have met all the [pre-requisites](https://docs.avaamo.com/user-guide/user-guide/quick-start-tutorials/pre-requisites).
+* You can add skills immediately after creating an agent. See [Create agent](https://docs.avaamo.com/user-guide/user-guide/ai-agent/create-an-ai-agent), for more information.
+* To edit an agent, navigate to the Agents tab in the top menu, search for the agent, and then open it. See [Search agents](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/manage-agents/other-common-actions#search-agents), for more information.
 * Click Edit to unlock the agent before editing.
   {% endhint %}
 
 **To create Knowledge skills:**
 
 * In the Agent page, navigate to the `Skills` option in the left navigation menu and click `Add Skill`.
-* In the `Skill Builder` page, select `Knowledge Skill` and click `Create`.
-* Specify the following details and click `Create`:
+* In the `Skill Builder` page, select `LLaMB Content Skill.`
+* Specify the following details and click `Create skill`:
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F3oQYuDuPalZEhtWyTraL%2FScreenshot%202025-09-22%20at%203.20.19%E2%80%AFPM.png?alt=media&#x26;token=ef6af79f-cb03-4767-8c60-ab04ad8988ac" alt=""><figcaption></figcaption></figure>
 
@@ -3213,14 +3412,14 @@ Ensure that the following prerequisites are met before using Knowledge skill:
 ### Content readiness <a href="#id-3.-content-readiness" id="id-3.-content-readiness"></a>
 
 * Before incorporating articles and documents into your content source, ensure all the information is fully prepared and comprehensive.
-* Verify that the chosen documents are completely finalized and suitable for use. It is recommended to avoid ingesting documents that are empty.
+* Verify that the chosen documents are completely finalized and suitable for use. It is recommended to avoid ingesting empty documents.
 * If the documents or articles contain attachments, ensure that these attachments are in PDF format. The maximum size should not exceed 5 MB.
 
 ### Supported content source <a href="#id-5.-supported-content-source" id="id-5.-supported-content-source"></a>
 
-The Content Source is your database containing all articles or documents intended for ingestion into the Knowledge skill. It provides a platform to configure and utilize available data efficiently. Below are the different types of content sources available for configuration:
+The Content Source is your database containing all articles or documents intended for ingestion into the Knowledge skill. It provides a platform for configuring and efficiently using available data. Below are the different types of content sources available for configuration:
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td></td><td><strong>SharePoint:</strong> </td><td>A platform for collaborative document management and storage.</td><td data-object-fit="contain"><a href="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fx2OCmEU43JygYNOuDQYf%2FCards%20image%20(3).png?alt=media&#x26;token=33892b3c-b8af-47dd-9444-7aeb1e8ad7bc">Cards image (3).png</a></td><td><a href="sharepoint">sharepoint</a></td></tr><tr><td></td><td><strong>ServiceNow:</strong> </td><td>A cloud platform that provides service management software.</td><td><a href="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F2y6g1Qeyvw5iXywQK8SA%2Fdownload%20(1).png?alt=media&#x26;token=b77062b0-57ae-46ff-937e-15d287124ece">download (1).png</a></td><td><a href="servicenow">servicenow</a></td></tr><tr><td></td><td><strong>Website:</strong></td><td>The site from which you want to ingest articles into your agent.</td><td data-object-fit="contain"><a href="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FdGNB2oXZHbPP04Yh3J2C%2FCards%20image%20(1).png?alt=media&#x26;token=5e78d7e2-66fa-47d8-99b1-bb166338b228">Cards image (1).png</a></td><td><a href="website">website</a></td></tr><tr><td></td><td><strong>Files:</strong></td><td>Different types of files you want to ingest into your agent</td><td data-object-fit="contain"><a href="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Ffzq9kHhrSC1IFTvgK3Et%2FCards%20image.png?alt=media&#x26;token=d7f63c9f-c8e5-4c30-951e-91ad9fe01a52">Cards image.png</a></td><td><a href="files">files</a></td></tr></tbody></table>
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td></td><td><strong>SharePoint:</strong> </td><td>A platform for collaborative document management and storage.</td><td data-object-fit="contain"><a href="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fx2OCmEU43JygYNOuDQYf%2FCards%20image%20(3).png?alt=media&#x26;token=33892b3c-b8af-47dd-9444-7aeb1e8ad7bc">Cards image (3).png</a></td><td><a href="sharepoint">sharepoint</a></td></tr><tr><td></td><td><strong>ServiceNow:</strong> </td><td>A cloud platform that provides service management software.</td><td><a href="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F2y6g1Qeyvw5iXywQK8SA%2Fdownload%20(1).png?alt=media&#x26;token=b77062b0-57ae-46ff-937e-15d287124ece">download (1).png</a></td><td><a href="servicenow">servicenow</a></td></tr><tr><td></td><td><strong>Website:</strong></td><td>The site from which you want to ingest articles into your agent.</td><td data-object-fit="contain"><a href="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FdGNB2oXZHbPP04Yh3J2C%2FCards%20image%20(1).png?alt=media&#x26;token=5e78d7e2-66fa-47d8-99b1-bb166338b228">Cards image (1).png</a></td><td><a href="website">website</a></td></tr><tr><td></td><td><strong>Files:</strong></td><td>Different types of files you want to ingest into your agent</td><td data-object-fit="contain"><a href="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Ffzq9kHhrSC1IFTvgK3Et%2FCards%20image.png?alt=media&#x26;token=d7f63c9f-c8e5-4c30-951e-91ad9fe01a52">Cards image.png</a></td><td><a href="files">files</a></td></tr><tr><td></td><td><strong>Confluence:</strong></td><td>A professional collaborative workspace and documentation platform.</td><td><a href="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FWMpCatshEg8Q3G55NPCs%2FConfluence-Symbol.png?alt=media&#x26;token=bd204a63-74be-4961-9715-1683fc45aabc">Confluence-Symbol.png</a></td><td><a href="confluence">confluence</a></td></tr></tbody></table>
 
 
 # SharePoint
@@ -3232,7 +3431,7 @@ You can ingest SharePoint content into your Knowledge skill seamlessly using the
 
 Ensure that the following pre-requisites are met before creating a `SharePoint` connecto&#x72;**:**
 
-1. Ensure that you complete all the necessary actions outlined in the [Before you begin](https://docs.avaamo.com/user-guide/datasync-ai/before-you-begin) section.
+1. Ensure that you complete all the necessary actions outlined in the [Before you begin](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/before-you-begin) section.
 2. **Content source authorization details:** Ensure you have all necessary authorization details prepared for your content sources. Your SharePoint admin must provide you with the following information for each source:
    * SharePoint Tenant Name
    * SharePoint Tenant ID
@@ -3247,7 +3446,7 @@ The first step in using DataSync AI is to choose the type of content source from
 {% hint style="info" %}
 **Notes**:
 
-* Ensure you have met all the [pre-requisites](https://docs.avaamo.com/user-guide/quick-start-tutorials/pre-requisites).
+* Ensure you have met all the [pre-requisites](https://docs.avaamo.com/user-guide/user-guide/quick-start-tutorials/pre-requisites).
 * Click `Edit` to unlock the agent before making any changes.
   {% endhint %}
 
@@ -3263,7 +3462,7 @@ The first step in using DataSync AI is to choose the type of content source from
 
 After selecting the content source from which you wish to import articles or documents, you can configure and ingest it by entering the necessary connection details. This ensures a smooth setup for your chosen content source.
 
-Refer to [Step 2: Configure content source and ingest content](https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/sharepoint/step-2-configure-content-source-and-ingest-content), for more information.
+Refer to [Step 2: Configure content source and ingest content](https://docs.avaamo.com/user-guide/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/sharepoint/step-2-configure-content-source-and-ingest-content), for more information.
 
 
 # Step 2: Configure content source and ingest content
@@ -3320,26 +3519,53 @@ Select the documents, pages, and lists by clicking the checkbox next to the file
 
 # Set document attributes
 
-In this step, you can create new attributes and assign them to the documents you selected in the previous step.
+In this step, you can assign attributes to the documents you selected in the previous step.
 
 1. You can assign the attributes to all selected documents.
-2. &#x20;Click the dropdown menu and choose `+ Additional property` to create a new attribute and assign a corresponding value.
+2. Click the dropdown menu and choose `+ Additional property` to create a new attribute and assign a corresponding value.
 
 {% hint style="info" %}
 **Note:** You can assign multiple values to the same attribute by passing a comma-separated value, such as `value1, value2.`
 {% endhint %}
 
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Ff2gxvum0B2VivfbJIl1m%2FScreenshot%202025-10-22%20at%204.49.58%E2%80%AFPM.png?alt=media&#x26;token=41377808-d72b-4d55-b475-d41b047bfe27" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F32dY7nuDMgWoofgnEgPV%2FScreenshot%202026-02-02%20at%202.07.07%E2%80%AFPM.png?alt=media&#x26;token=e24220ef-58eb-4e23-a0b4-ed26eb05c778" alt=""><figcaption></figcaption></figure>
 
-3. Click `Submit`.&#x20;
+### Configure Advanced Attribute Handler
 
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F0F9Lb4l9kmaKv8MaZ5mM%2FScreenshot%202025-10-22%20at%204.51.18%E2%80%AFPM.png?alt=media&#x26;token=7831f5af-b7c9-449c-b3bc-a408ea8614a8" alt=""><figcaption></figcaption></figure>
+1. Click  `Configure Advanced Attribute Handler`.
 
-4. You can view all the ingested documents for the created job. Enter keywords in the search bar to search for specific ingested articles.
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F2rjhYadTJQXkSYwrRPks%2FScreenshot%202026-02-02%20at%202.33.32%E2%80%AFPM.png?alt=media&#x26;token=ac78ecc1-7108-480a-a168-145cf3c30e36" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FHlUrwHZOHw7cgdiOb2zJ%2FScreenshot%202025-10-22%20at%204.53.25%E2%80%AFPM.png?alt=media&#x26;token=263e3c50-f71d-493a-8f48-c8fb1cb9168a" alt=""><figcaption></figcaption></figure>
+3. A side panel opens with the configuration options. Toggle the `Enabled` switch to enable the attribute handler.
 
-<table><thead><tr><th width="247">Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Total Documents</td><td>It is the sum of the number of  <code>Processing</code>, <code>Ingested</code>, and <code>Failed</code> Documents</td></tr><tr><td>Processing</td><td>Number of Documents ingestion is under process</td></tr><tr><td>Ingested</td><td>Number of Documents ingested</td></tr><tr><td>Failed</td><td>Number of Documents failed to ingest</td></tr><tr><td>Column name: TITLE</td><td>Name of the documents </td></tr><tr><td>Column name: SITE</td><td>URL or folder name from where the document is selected.</td></tr><tr><td>Column name: TYPE</td><td>Type of articles ingested like Documents, Lists, or Pages</td></tr><tr><td>Column name: STATUS</td><td><p>Status of the articles. You can also filter with these statuses.<br><br><code>Queued</code><strong>:</strong> Initial status of the articles while processing the ingestion</p><p><code>Extracting</code>: Processing the information in the documents as Knowledge</p><p><code>In Progress</code><strong>:</strong> Ingestion process in progress<br><code>Ingested</code><strong>:</strong> Articles successfully ingested<br><code>Error</code><strong>:</strong> Ingestion was unsuccessful</p></td></tr><tr><td>Column name: ACTION</td><td>Click the three dots to  <code>View, Delete, Edit and Reingest</code> the ingested document.</td></tr></tbody></table>
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FtXUZctxZEvZmjf7oeY6M%2FScreenshot%202026-02-02%20at%202.28.28%E2%80%AFPM.png?alt=media&#x26;token=3a68d6a1-7849-4015-a48e-a14ad7ceb3d9" alt=""><figcaption></figcaption></figure>
+
+4. Under `Configure attribute handler`, provide the JavaScript code that returns the updated attributes you want to apply to the documents.
+5. In the `Test` option in the attribute handler panel. Update the test JavaScript input with actual sample data.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FKNUaV2XRiQ26lETYcFYG%2FScreenshot%202026-02-02%20at%202.31.04%E2%80%AFPM.png?alt=media&#x26;token=8ad84f2f-7962-4656-bcc9-2bf720fe57f8" alt=""><figcaption></figcaption></figure>
+
+6. Click `Run Test` to validate the script execution. Review the output to confirm that the attributes are updated correctly for the selected document or article.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FU8R5015Ji6ATMD5Xz2NQ%2FScreenshot%202026-02-02%20at%202.29.43%E2%80%AFPM.png?alt=media&#x26;token=f58d40c6-a21e-4701-bfed-1f69f7ba3c6f" alt=""><figcaption></figcaption></figure>
+
+7. Once you have configured and tested the attribute handler, choose one of the following actions:
+
+* **Cancel** – Discard the changes if you do not want to apply the attribute configuration.
+* **Save** – Save the configuration.&#x20;
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FO3ns7haghtf7ovjGjvvS%2FScreenshot%202026-02-02%20at%202.40.10%E2%80%AFPM.png?alt=media&#x26;token=7eef02f4-67c3-4a2f-a278-71c20d5e6113" alt=""><figcaption></figcaption></figure>
+
+8. Click `Submit`.&#x20;
+9. You can view the configured attributes using the `View document attributes` option. When you click this option, a pop-up opens that displays the document's attribute details. You can also download the attributes as a CSV file for further analysis or use.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FNrP753Ud4qH5lW65V9Bh%2FScreenshot%2002-02-2026%20at%2014.42.png?alt=media&#x26;token=5ac3e8c6-d226-416b-9ca6-5fcece7c8437" alt=""><figcaption></figcaption></figure>
+
+10. You can view all ingested documents for the job you created here. Enter keywords in the search bar to search for specific ingested articles.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fh9QwVa11MqP7vVBcwQeM%2FScreenshot%2002-02-2026%20at%2014.45.png?alt=media&#x26;token=7056c634-3478-46c0-9710-3c07914ef27d" alt=""><figcaption></figcaption></figure>
+
+<table><thead><tr><th width="247">Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Total Documents</td><td>It is the sum of the number of  <code>Processing</code>, <code>Ingested</code>, and <code>Failed</code> Documents</td></tr><tr><td>Processing</td><td>Number of Documents ingestion is under process</td></tr><tr><td>Ingested</td><td>Number of Documents ingested</td></tr><tr><td>Failed</td><td>Number of Documents failed to ingest</td></tr><tr><td>Others</td><td>It is the combined total of all <code>Skipped</code> and <code>Warning</code> statuses.</td></tr><tr><td>Column name: TITLE</td><td>Name of the documents </td></tr><tr><td>Column name: SITE</td><td>URL or folder name from where the document is selected.</td></tr><tr><td>Column name: TYPE</td><td>Type of articles ingested like Documents, Lists, or Pages</td></tr><tr><td>Column name: STATUS</td><td><p>Status of the articles. You can also filter with these statuses.<br><br><code>Queued</code><strong>:</strong> Initial status of the articles while processing the ingestion</p><p><code>Extracting</code>: Processing the information in the documents as Knowledge</p><p><code>In Progress</code><strong>:</strong> Ingestion process in progress<br><code>Ingested</code><strong>:</strong> Articles successfully ingested<br><code>Error</code><strong>:</strong> Ingestion was unsuccessful</p></td></tr><tr><td>Column name: ACTION</td><td>Click the three dots to  <code>View, Delete, Edit and Reingest</code> the ingested document.</td></tr></tbody></table>
 
 {% hint style="info" %}
 **Note:** If a document shows the status of `Error`, then the following tips can help:
@@ -3361,7 +3587,7 @@ You can use ServiceNow as your content source to add the documents and articles.
 
 Below are the Prerequisites for creating a `ServiceNow`:
 
-1. Ensure that you complete all the necessary actions outlined in the [Before you begin](https://docs.avaamo.com/user-guide/datasync-ai/before-you-begin) section.
+1. Ensure that you complete all the necessary actions outlined in the [Before you begin](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/before-you-begin) section.
 2. **Content source authorization details**: Ensure you have all necessary authorization details prepared for your content sources. Your ServiceNow admin should provide you with the following information for each source:
    * Source Url
    * User Name
@@ -3375,7 +3601,7 @@ The first step is to choose the type of content source from which information mu
 {% hint style="info" %}
 **Notes**:
 
-* Ensure you have met all the [pre-requisites](https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/servicenow/pre-requisites).
+* Ensure you have met all the [pre-requisites](https://docs.avaamo.com/user-guide/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/servicenow/pre-requisites).
 * Click `Edit` to unlock the agent before making any changes.
   {% endhint %}
 
@@ -3391,7 +3617,7 @@ The first step is to choose the type of content source from which information mu
 
 After selecting the content source from which you wish to import articles or documents, you can configure and ingest it by entering the necessary connection details. This ensures a smooth setup for your chosen content source.
 
-Refer to [Step 2: Configure content source and ingest content](https://docs.avaamo.com/user-guide/datasync-ai/content-sources/servicenow/step-2-configure-content-source-and-ingest-content), for more information.<br>
+Refer to [Step 2: Configure content source and ingest content](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/content-sources/servicenow/step-2-configure-content-source-and-ingest-content), for more information.<br>
 
 
 # Step 2: Configure content source and ingest content
@@ -3440,9 +3666,7 @@ In this step, you can create new attributes and assign them to the documents you
 **Note:** You can assign multiple values to the same attribute by passing a comma-separated value, such as `value1, value2.`
 {% endhint %}
 
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fmt6h0qW7qWg1qJocCSTV%2FScreenshot%202025-09-29%20at%202.24.56%E2%80%AFPM.png?alt=media&#x26;token=f1f359fd-a873-46a0-b0fa-d456223dafd9" alt=""><figcaption></figcaption></figure>
-
-2. Click `Submit`.&#x20;
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fdb0Y5atdO49mowpn3sFR%2FScreenshot%202026-02-02%20at%205.24.53%E2%80%AFPM.png?alt=media&#x26;token=67911b7b-20c9-455a-b93c-7cb548d28d35" alt=""><figcaption></figcaption></figure>
 
 ### **Set dynamic attributes**
 
@@ -3450,17 +3674,48 @@ Here, you can set a predefined set of dynamic attributes.&#x20;
 
 Click the toggle to enable this option, then use the dropdown menu to select values to assign to the documents chosen in the previous step.
 
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FuOxULWFkxbCJCuldGUVx%2FScreenshot%202025-09-29%20at%202.34.15%E2%80%AFPM.png?alt=media&#x26;token=a9ea0e1a-adef-44c3-8185-65af60d45f70" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F38VWsslMoRQPjmxKVEKr%2FScreenshot%202026-02-02%20at%205.24.59%E2%80%AFPM.png?alt=media&#x26;token=5bed279d-96c4-4e4c-8211-34303f46cbd8" alt=""><figcaption></figcaption></figure>
 
-You can view all the ingested documents for the created job here. Enter keywords in the search bar to search for specific ingested articles.
+### Configure Advanced Attribute Handler
+
+1. Click  `Configure Advanced Attribute Handler`.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FK8VuFqv8Wwm4FB4BirZa%2FScreenshot%202026-02-02%20at%205.25.06%E2%80%AFPM.png?alt=media&#x26;token=e592af5f-69fd-4a47-a2b0-6299070d3848" alt=""><figcaption></figcaption></figure>
+
+3. A side panel opens with the configuration options. Toggle the `Enabled` switch to enable the attribute handler.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FMZvvW1QLqb2YPWxz6nAi%2FScreenshot%202026-02-02%20at%205.25.12%E2%80%AFPM.png?alt=media&#x26;token=4563b7c8-69db-4496-938b-3590b17dc0ae" alt=""><figcaption></figcaption></figure>
+
+4. Under `Configure attribute handler`, provide the JavaScript code that returns the updated attributes you want to apply to the documents.
+5. In the `Test` option in the attribute handler panel. Update the test JavaScript input with actual sample data.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FAi3CZyxaC4sc7qcuLB8B%2FScreenshot%202026-02-02%20at%205.25.18%E2%80%AFPM.png?alt=media&#x26;token=8282a3e0-858e-4ae6-afa2-9787ee86c37b" alt=""><figcaption></figcaption></figure>
+
+6. Click `Run Test` to validate the script execution. Review the output to confirm that the attributes are updated correctly for the selected document or article.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fvv1pajhEY9GBCp46peYP%2FScreenshot%202026-02-02%20at%205.25.25%E2%80%AFPM.png?alt=media&#x26;token=4d073637-4fd6-4849-a1c8-5111caff6081" alt=""><figcaption></figcaption></figure>
+
+7. Once you have configured and tested the attribute handler, choose one of the following actions:
+
+* **Cancel** – Discard the changes if you do not want to apply the attribute configuration.
+* **Save** – Save the configuration.&#x20;
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FN7BN5Qsyb84dzQrV8kyT%2FScreenshot%202026-02-02%20at%205.25.35%E2%80%AFPM.png?alt=media&#x26;token=92e9456a-b317-4d9e-bb9c-13f9acaf250b" alt=""><figcaption></figcaption></figure>
+
+8. Click `Submit`.&#x20;
+9. You can view the configured attributes using the `View document attributes` option. When you click this option, a pop-up opens that displays the document's attribute details. You can also download the attributes as a CSV file for further analysis or use.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FZUvgZviBluhjTagNa4fU%2FScreenshot%202026-02-02%20at%205.33.02%E2%80%AFPM.png?alt=media&#x26;token=1442d1d9-1d17-44f0-962c-a867004a7753" alt=""><figcaption></figcaption></figure>
+
+10. You can view all ingested documents for the job you created here. Enter keywords in the search bar to search for specific ingested articles.
 
 {% hint style="info" %}
 **Note:** Attachments within the documents are not accessible for viewing.
 {% endhint %}
 
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FthovN1nyRGSNEzKFvjWy%2FScreenshot%202025-10-23%20at%2011.01.51%E2%80%AFAM.png?alt=media&#x26;token=69a6c595-e19a-43b0-9720-c9270b2a6e74" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FhEoQkAwAZh1jXMlVu24e%2FScreenshot%202026-02-02%20at%205.32.21%E2%80%AFPM.png?alt=media&#x26;token=9b3447c5-5029-49e4-a6eb-d730a727fd6f" alt=""><figcaption></figcaption></figure>
 
-<table><thead><tr><th width="242">Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Total Documents</td><td>It is the sum of the number of  <code>Processing</code>, <code>Ingested</code>, and <code>Failed</code> URLs</td></tr><tr><td>Processing</td><td>Number of articles ingestion is under process </td></tr><tr><td>Ingested</td><td>Number of the ingested articles </td></tr><tr><td>Failed</td><td>Number of articles with ingested status as Error</td></tr><tr><td>Column name: TITLE</td><td>Name of the articles</td></tr><tr><td>Column name: NUMBER</td><td>Identification number of the document </td></tr><tr><td>Column name: DOCUMENT TYPE</td><td>Type of document ingested such as articles or attachments</td></tr><tr><td>Column name: STATUS</td><td><p>Status of the articles. You can also filter with these statuses.<br><br><code>Queued</code><strong>:</strong> Initial status of the articles while processing the ingestion</p><p><code>In Progress</code><strong>:</strong> Ingestion process in progress<br><code>Ingested</code><strong>:</strong> Articles successfully ingested<br><code>Error</code><strong>:</strong> Ingestion was unsuccessful</p></td></tr><tr><td>Column name: ACTION</td><td>Click the three dots to  <code>View, Delete, Edit and Reingest</code> the ingested document.</td></tr></tbody></table>
+<table><thead><tr><th width="242">Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Total Documents</td><td>It is the sum of the number of <code>Processing</code>, <code>Ingested</code>, <code>Failed</code> and <code>others</code> articles.</td></tr><tr><td>Processing</td><td>Number of articles ingestion is under process</td></tr><tr><td>Ingested </td><td>Number of articles ingested</td></tr><tr><td>Failed</td><td>Number of articles with ingested status as Error</td></tr><tr><td>Others</td><td>It is the combined total of all <code>Skipped</code> and <code>Warning</code> statuses.</td></tr><tr><td>Column name: TITLE</td><td>Name of the document</td></tr><tr><td>Column name: NUMBER</td><td>Number of the document </td></tr><tr><td>Column name: DOCUMENT TYPE</td><td>Type of document ingested such as articles or attachments</td></tr><tr><td>Column name: STATUS</td><td><p>Status of the articles. You can also filter with these statuses.<br></p><ul><li><strong>Queued:</strong> Initial status of the content while waiting to be processed for ingestion</li><li><strong>Uploaded:</strong> Content successfully uploaded and ready for processing</li><li><strong>Extracting:</strong> Content is being extracted and prepared for ingestion</li><li><strong>Learning:</strong> The Ingestion process is in progress, and the content is being trained</li><li><strong>Ingested:</strong> Content successfully ingested and available for use</li><li><strong>Warning:</strong> Content ingested with minor issues or partial data</li><li><strong>Skipped:</strong> Content intentionally not ingested due to duplication or unsupported criteria</li><li><strong>Error:</strong> Ingestion was unsuccessful due to a processing issue</li></ul></td></tr><tr><td>Column name: ACTION</td><td>You can <code>Reingest, Edit, and Delete</code> the ingested document. Refer <a href="../../../../../datasync-ai/content-sources/common-actions/actions">Actions</a>, for more information.</td></tr></tbody></table>
 
 {% hint style="info" %}
 **Note:** If a document shows the status of `Error`, then the following tips can help:
@@ -3482,7 +3737,7 @@ You can ingest website content into your LLaMB skill seamlessly using the **Webs
 
 Ensure that the following prerequisites are met before ingesting website content:
 
-1. Ensure that you complete all the necessary actions outlined in the [Before you begin](https://docs.avaamo.com/user-guide/datasync-ai/before-you-begin) section.
+1. Ensure that you complete all the necessary actions outlined in the [Before you begin](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/before-you-begin) section.
 2. **Website access and configuration details:** Verify that the following requirements are met before creating a website connector:
    * **Valid website URL:** Ensure that the website URL is accessible and publicly available or that you have the required access credentials if it is a restricted site.
    * **Content accessibility:** The webpages should allow web scraping or data extraction ( site policies should permit access).
@@ -3497,7 +3752,7 @@ The first step in using DataSync AI is to choose the type of content source from
 {% hint style="info" %}
 **Notes**:
 
-* Ensure you have met all the [pre-requisites](https://docs.avaamo.com/user-guide/quick-start-tutorials/pre-requisites).
+* Ensure you have met all the [pre-requisites](https://docs.avaamo.com/user-guide/user-guide/quick-start-tutorials/pre-requisites).
 * Click `Edit` to unlock the agent before making any changes.
   {% endhint %}
 
@@ -3513,7 +3768,7 @@ The first step in using DataSync AI is to choose the type of content source from
 
 After selecting the content source from which you wish to import articles or documents, you can configure and ingest it by entering the necessary connection details. This ensures a smooth setup for your chosen content source.
 
-Refer to [Step 2: Configure content source and ingest content](https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/website/step-2-configure-content-source-and-ingest-content), for more information.
+Refer to [Step 2: Configure content source and ingest content](https://docs.avaamo.com/user-guide/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/website/step-2-configure-content-source-and-ingest-content), for more information.
 
 
 # Step 2: Configure content source and ingest content
@@ -3558,17 +3813,44 @@ In this step, you can create new attributes and assign them to the documents you
 **Note:** You can assign multiple values to the same attribute by passing a comma-separated value, such as `value1, value2.`
 {% endhint %}
 
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FQytGYpK4JL09qo9YxCeS%2FScreenshot%202025-10-23%20at%2011.12.45%E2%80%AFAM.png?alt=media&#x26;token=a1654d3a-2036-43c2-8ff0-f71992d8a213" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FneIcI1NGyFVegfQVaAjq%2FScreenshot%202026-02-02%20at%2011.45.18%E2%80%AFAM.png?alt=media&#x26;token=6fe654b1-9005-4ad4-a8ff-a4621ff3a07a" alt=""><figcaption></figcaption></figure>
 
-3. Click `Submit`.&#x20;
+### Configure Advanced Attribute Handler
 
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FS2tanCho2fGsXP71H2bM%2FScreenshot%202025-10-23%20at%2011.14.05%E2%80%AFAM.png?alt=media&#x26;token=7a10a48e-7143-4879-8b06-2f323c26bbf8" alt=""><figcaption></figcaption></figure>
+1. Click  `Configure Advanced Attribute Handler`.
 
-4. You can view all the ingested documents for the created job here. Enter keywords in the search bar to search for specific ingested articles.
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FiYMRX6cV0BqW6Sgls09c%2FScreenshot%202026-01-29%20at%205.06.27%E2%80%AFPM.png?alt=media&#x26;token=03222f60-fcc0-4a2d-a4b1-512327e38876" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FH23bkihfkIT33EwMAPJf%2FScreenshot%202025-10-23%20at%2011.32.21%E2%80%AFAM.png?alt=media&#x26;token=94770091-b0f0-43e0-9e47-1f7068faba19" alt=""><figcaption></figcaption></figure>
+3. A side panel opens with the configuration options. Toggle the `Enabled` switch to enable the attribute handler.
 
-<table><thead><tr><th width="247">Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Total Documents</td><td>It is the sum of the number of  <code>Processing</code>, <code>Ingested</code>, and <code>Failed</code> URLs</td></tr><tr><td>Processing </td><td>Number of URLs ingestion is under process</td></tr><tr><td>Ingested</td><td>Number of URLs ingested</td></tr><tr><td>Failed</td><td>Number of URLs failed to ingest</td></tr><tr><td>Column name: URL</td><td>Path of the URL. You can use any part it in the search bar to find it out.</td></tr><tr><td>Column name: STATUS</td><td><p>Status of the URLs. You can also filter with these statuses.<br><br><code>Queued</code><strong>:</strong> Initial status of the URLs while processing the ingestion</p><p><code>In Progress</code><strong>:</strong> Ingestion process in progress<br><code>Ingested</code><strong>:</strong> URLs successfully ingested<br><code>Error</code><strong>:</strong> Ingestion was unsuccessful<br><code>warning</code>: Ingestion process is unsuccessful with a warning.</p></td></tr><tr><td>Column name: ACTION</td><td>You can <code>View, Edit, and delete</code> the ingested document.</td></tr></tbody></table>
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FujjcOTdEQOHbWeio62Fg%2FScreenshot%202026-01-29%20at%205.07.23%E2%80%AFPM.png?alt=media&#x26;token=c3749c17-2f15-4e80-a426-2cfc98450e91" alt=""><figcaption></figcaption></figure>
+
+4. Under `Configure attribute handler`, provide the JavaScript code that returns the updated attributes you want to apply to the documents.
+5. In the `Test` option in the attribute handler panel. Update the test JavaScript input with actual sample data.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FLhosaVstGMRGuLOLllut%2FScreenshot%202026-01-29%20at%205.07.33%E2%80%AFPM.png?alt=media&#x26;token=0912bdc3-01af-46ad-a48d-db4d0528ada5" alt=""><figcaption></figcaption></figure>
+
+6. Click `Run Test` to validate the script execution. Review the output to confirm that the attributes are updated correctly for the selected document or article.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FIeC4iyV3I7LAox7nfLrW%2FScreenshot%202026-01-29%20at%205.09.50%E2%80%AFPM.png?alt=media&#x26;token=07226a32-7d43-41b7-ae87-ab98a9967a39" alt=""><figcaption></figcaption></figure>
+
+7. Once you have configured and tested the attribute handler, choose one of the following actions:
+
+* **Cancel** – Discard the changes if you do not want to apply the attribute configuration.
+* **Save** – Save the configuration.&#x20;
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F2r1vwyjpSar1Ne54ZDFB%2FScreenshot%202026-01-29%20at%205.42.47%E2%80%AFPM.png?alt=media&#x26;token=53041fba-6df0-4199-8a1f-2a68dcce743f" alt=""><figcaption></figcaption></figure>
+
+8. Click `Submit`.&#x20;
+9. You can view the configured attributes using the `View document attributes` option. When you click this option, a pop-up opens that displays the document's attribute details. You can also download the attributes as a CSV file for further analysis or use.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F7Gkt5tdOiqeiuG9reiaZ%2FScreenshot%2002-02-2026%20at%2012.49%20(1).png?alt=media&#x26;token=23f33e51-4b84-4e48-82f2-7b32cf3368c3" alt=""><figcaption></figcaption></figure>
+
+10. You can view all ingested documents for the job you created here. Enter keywords in the search bar to search for specific ingested articles.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FXmGWua2C7yQzraNtOLPD%2FScreenshot%202026-02-02%20at%2012.50.39%E2%80%AFPM.png?alt=media&#x26;token=3956fb72-1de7-492e-9316-26354e2b9589" alt=""><figcaption></figcaption></figure>
+
+<table><thead><tr><th width="247">Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Total Documents</td><td>It is the sum of the number of  <code>Processing</code>, <code>Ingested</code>, and <code>Failed</code> URLs</td></tr><tr><td>Processing </td><td>Number of URLs ingestion is under process</td></tr><tr><td>Ingested</td><td>Number of URLs ingested</td></tr><tr><td>Failed</td><td>Number of URLs failed to ingest</td></tr><tr><td>Others</td><td>It is the combined total of all <code>Skipped</code> and <code>Warning</code> statuses.</td></tr><tr><td>Column name: URL</td><td>Path of the URL. You can use any part it in the search bar to find it out.</td></tr><tr><td>Column name: STATUS</td><td><p></p><p>Status of the articles. You can also filter with these statuses.</p><ul><li><strong>Queued:</strong> Initial status of the content while waiting to be processed for ingestion</li><li><strong>Uploaded:</strong> Content successfully uploaded and ready for processing</li><li><strong>Extracting:</strong> Content is being extracted and prepared for ingestion</li><li><strong>Learning:</strong> The Ingestion process is in progress, and the content is being trained</li><li><strong>Ingested:</strong> Content successfully ingested and available for use</li><li><strong>Warning:</strong> Content ingested with minor issues or partial data</li><li><strong>Skipped:</strong> Content intentionally not ingested due to duplication or unsupported criteria</li><li><strong>Error:</strong> Ingestion was unsuccessful due to a processing issue</li></ul></td></tr><tr><td>Column name: ACTION</td><td>You can <code>View, Edit, reingest, and delete</code> the ingested document.</td></tr></tbody></table>
 
 {% hint style="info" %}
 **Note:** If a document shows the status of `Error`, then the following tips can help:
@@ -3590,7 +3872,7 @@ You can ingest file-based content into your LLaMB skill seamlessly by uploading 
 
 Ensure that the following prerequisites are met before ingesting files:
 
-1. Ensure that you complete all the necessary actions outlined in the [Before you begin](https://docs.avaamo.com/user-guide/datasync-ai/before-you-begin) section.
+1. Ensure that you complete all the necessary actions outlined in the [Before you begin](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/before-you-begin) section.
 2. **File readiness and access details:** Verify that the files meet the following requirements:
    * **Supported formats:** Files must be in one of the supported formats — PDF, DOCX, TXT, HTML, or CSV.
    * **Access permissions:** You must have read access to the files you plan to ingest.
@@ -3605,7 +3887,7 @@ The first step in using DataSync AI is to choose the type of content source from
 {% hint style="info" %}
 **Notes**:
 
-* Ensure you have met all the [pre-requisites](https://docs.avaamo.com/user-guide/quick-start-tutorials/pre-requisites).
+* Ensure you have met all the [pre-requisites](https://docs.avaamo.com/user-guide/user-guide/quick-start-tutorials/pre-requisites).
 * Click `Edit` to unlock the agent before making any changes.
   {% endhint %}
 
@@ -3621,7 +3903,7 @@ The first step in using DataSync AI is to choose the type of content source from
 
 After selecting the content source from which you wish to import articles or documents, you can configure and ingest it by entering the necessary connection details. This ensures a smooth setup for your chosen content source.
 
-Refer to [Step 2: Configure content source and ingest content](https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/files/step-2-configure-content-source-and-ingest-content), for more information.
+Refer to [Step 2: Configure content source and ingest content](https://docs.avaamo.com/user-guide/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/files/step-2-configure-content-source-and-ingest-content), for more information.
 
 
 # Step 2: Configure content source and ingest content
@@ -3680,6 +3962,134 @@ In this step, you can create new attributes and assign them to the documents you
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fj9TEFtDGUJNf318Ybr8e%2FScreenshot%202025-09-30%20at%203.14.12%E2%80%AFPM.png?alt=media&#x26;token=685841ca-7896-43e3-a323-566d10c35dbb" alt=""><figcaption></figcaption></figure>
 
 <table><thead><tr><th width="247">Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Total Documents</td><td>It is the sum of the number of  <code>Processing</code>, <code>Ingested</code>, and <code>Failed</code> documents</td></tr><tr><td>Processing </td><td>Number of documents ingestion is under process</td></tr><tr><td>Ingested</td><td>Number of documents ingested</td></tr><tr><td>Failed</td><td>Number of articles failed to ingest</td></tr><tr><td>Column name: NAME</td><td>Name of the files </td></tr><tr><td>Column name: FORMAT</td><td>Type of the files</td></tr><tr><td>Column name: DATE ADDED</td><td>Date and time stamp of the file ingested</td></tr><tr><td>Column name: STATUS</td><td><p>Status of the articles. You can also filter with these statuses.<br><br><code>Queued</code><strong>:</strong> Initial status of the articles while processing the ingestion</p><p><code>In Progress</code><strong>:</strong> Ingestion process in progress<br><code>Ingested</code><strong>:</strong> Articles successfully ingested<br><code>Error</code><strong>:</strong> Ingestion was unsuccessful<br><code>warning</code>: Ingestion process is unsuccessful with a warning.</p></td></tr><tr><td>Column name: ACTION</td><td>You can <code>View, Edit, and delete</code> the ingested document.</td></tr></tbody></table>
+
+{% hint style="info" %}
+**Note:** If a document shows the status of `Error`, then the following tips can help:
+
+* Empty article: Check to ensure the document is not empty
+* API issues: Verify that the API connections are functioning as expected
+* Insufficient permissions: Ensure that you have the necessary permissions to access and ingest the document
+
+In such situations, create a new ingestion job and attempt to reingest the document. This often resolves the problem.
+{% endhint %}
+
+
+# Confluence
+
+
+# Pre-requisites
+
+You can use Confluence as your content source to add the documents and articles. This integration enables you to use the selected resources to train your bot effectively.
+
+Below are the Prerequisites for creating a `Confluence connector`:
+
+1. Make sure to complete all the necessary actions outlined in the [Before you begin](https://docs.avaamo.com/user-guide/user-guide/ai-agent/before-you-begin) section.
+2. **Content source authorization details**: Ensure you have all necessary authorization details prepared for your content sources. Your Confluence admin should provide you with the following information for each source:
+   * Source Url
+   * User Email
+   * API Token
+
+
+# Step 1: Select the content source type
+
+The first step is to choose the type of content source from which information must be gathered or accessed.
+
+{% hint style="info" %}
+**Notes**:
+
+* Ensure you have met all the [pre-requisites](https://docs.avaamo.com/user-guide/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/servicenow/pre-requisites).
+* Click `Edit` to unlock the agent before making any changes.
+  {% endhint %}
+
+1. After creating the Knowledge skill, click `Add Content Source` under Content Sources.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FeCib8VZoErbz1JVYXwEs%2FScreenshot%202025-09-22%20at%203.31.54%E2%80%AFPM.png?alt=media&#x26;token=f673121d-d94e-418b-8764-749abf863545" alt=""><figcaption></figcaption></figure>
+
+3. Select the content source type as `Confluence`.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FUk3zOAkUj7v6JGic5wz3%2FScreenshot%202026-01-12%20at%204.17.44%E2%80%AFPM.png?alt=media&#x26;token=4275ed32-11fb-417a-944f-a97a822eb84b" alt=""><figcaption></figcaption></figure>
+
+### Next Steps
+
+After selecting the content source from which you wish to import articles or documents, you can configure and ingest it by entering the necessary connection details. This ensures a smooth setup for your chosen content source.
+
+Refer to [Step 2: Configure content source and ingest content](https://docs.avaamo.com/user-guide/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/confluence/step-2-configure-content-source-and-ingest-content), for more information.<br>
+
+
+# Step 2: Configure content source and ingest content
+
+
+# Configure connection
+
+In the second step, after selecting the content source type, configure the source-specific details.
+
+* Specify the following details and click `Next`.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fe3aRAmNSgfoHJHlRDMty%2FScreenshot%2012-01-2026%20at%2016.21.png?alt=media&#x26;token=9d395ff1-e028-4dcd-a6ce-80f86ec9b652" alt=""><figcaption></figcaption></figure>
+
+<table><thead><tr><th width="159">Parameter</th><th width="465">Description</th><th>Mandatory</th></tr></thead><tbody><tr><td>Name</td><td><p>Name of the Configuration</p><p></p><p>Maximum length: <code>255 characters</code></p></td><td>Yes</td></tr><tr><td>Source Url</td><td><p>It is the URL of the Confluence instance.</p><p></p><p><code>For example: https://&#x3C;tenant_name>.confluence.com</code></p><p></p><p>Maximum length: <code>255 characters</code></p><p><br>To be provided by the Confluence admin</p></td><td>Yes</td></tr><tr><td>User Email</td><td>To be provided by the Confluence admin</td><td>Yes</td></tr><tr><td>API Token</td><td>To be provided by the Confluence admin</td><td>Yes</td></tr></tbody></table>
+
+
+# Filter articles
+
+It displays all the folders containing articles or documents in your `Confluence` knowledge base, enabling you to select multiple items by checking the boxes next to them in the `Select Content` section. Click `Next`.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FLrmPfgRyRq1ZXud8CPlE%2FScreenshot%202026-01-13%20at%209.15.42%E2%80%AFAM.png?alt=media&#x26;token=3a4c3730-0c83-4928-83dd-d20a69dcccda" alt=""><figcaption></figcaption></figure>
+
+
+# Set Document Attributes
+
+In this step, you can assign attributes to the documents you selected in the previous step.
+
+1. You can assign the attributes to all selected documents.
+2. Click the dropdown menu and choose `+ Additional property` to create a new attribute and assign a corresponding value.
+
+{% hint style="info" %}
+**Note:** You can assign multiple values to the same attribute by passing a comma-separated value, such as `value1, value2.`
+{% endhint %}
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FqYZKZX5WoHuzU3bTltJm%2FScreenshot%202026-02-02%20at%203.07.02%E2%80%AFPM.png?alt=media&#x26;token=e8bdef24-0e92-4dbb-9cc0-5ea03467aad5" alt=""><figcaption></figcaption></figure>
+
+### Configure Advanced Attribute Handler
+
+1. Click  `Configure Advanced Attribute Handler`.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FAilq4Lijl9expqAepELO%2FScreenshot%202026-02-02%20at%203.07.10%E2%80%AFPM.png?alt=media&#x26;token=5a8e95e0-1bbc-4fe4-947a-9a0235c2c9e5" alt=""><figcaption></figcaption></figure>
+
+3. A side panel opens with the configuration options. Toggle the `Enabled` switch to enable the attribute handler.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FlbyZWbreb77ZpJjIRfk2%2FScreenshot%202026-02-02%20at%203.07.45%E2%80%AFPM.png?alt=media&#x26;token=5fa40061-be2e-474d-b6a7-16df81ebde77" alt=""><figcaption></figcaption></figure>
+
+4. Under `Configure attribute handler`, provide the JavaScript code that returns the updated attributes you want to apply to the documents.
+5. In the `Test` option in the attribute handler panel. Update the test JavaScript input with actual sample data.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FlruTr9OMjhEwSGUFtyIX%2FScreenshot%202026-02-02%20at%203.08.10%E2%80%AFPM.png?alt=media&#x26;token=536f380a-216d-4717-9ad9-0cf891d9f3ce" alt=""><figcaption></figcaption></figure>
+
+6. Click `Run Test` to validate the script execution. Review the output to confirm that the attributes are updated correctly for the selected document or article.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FE0sFA6QmCck0QBkQu0Ds%2FScreenshot%202026-02-02%20at%203.08.40%E2%80%AFPM.png?alt=media&#x26;token=4e7d5cca-f3d1-441f-9a6d-219e2c865a87" alt=""><figcaption></figcaption></figure>
+
+7. Once you have configured and tested the attribute handler, choose one of the following actions:
+
+* **Cancel** – Discard the changes if you do not want to apply the attribute configuration.
+* **Save** – Save the configuration.&#x20;
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FU2M9AppntZGsfrQOuxMx%2FScreenshot%202026-02-02%20at%203.09.11%E2%80%AFPM.png?alt=media&#x26;token=a3c44c60-77c1-4336-bea6-9dac2ac51841" alt=""><figcaption></figcaption></figure>
+
+8. Click `Submit`.&#x20;
+9. You can view the configured attributes using the `View document attributes` option. When you click this option, a pop-up opens that displays the document's attribute details. You can also download the attributes as a CSV file for further analysis or use.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FvvnIyBFIpIhJtEQ0lcBT%2FScreenshot%202026-02-02%20at%203.14.17%E2%80%AFPM.png?alt=media&#x26;token=18a4872d-e5c9-4ec5-8e2b-019c40054d29" alt=""><figcaption></figcaption></figure>
+
+10. You can view all ingested documents for the job you created here. Enter keywords in the search bar to search for specific ingested articles.
+
+{% hint style="info" %}
+**Note:** Attachments within the documents are not accessible for viewing.
+{% endhint %}
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FunGCwZ6mhhmILqm7Q7CS%2FScreenshot%202026-01-13%20at%209.22.00%E2%80%AFAM.png?alt=media&#x26;token=0bda4375-e301-477f-9934-bbcd3537fc51" alt=""><figcaption></figcaption></figure>
+
+<table><thead><tr><th width="242">Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Total Documents</td><td>It is the sum of the number of  <code>Processing</code>, <code>Ingested</code>,  <code>Failed</code> and <code>others</code> articles.</td></tr><tr><td>Processing</td><td>Number of articles ingestion is under process </td></tr><tr><td>Ingested</td><td>Number of the ingested articles </td></tr><tr><td>Failed</td><td>Number of articles with ingested status as Error</td></tr><tr><td>Others</td><td>It is the combined total of all <code>Skipped</code> and <code>Warning</code> statuses.</td></tr><tr><td>Column name: TITLE</td><td>Name of the articles</td></tr><tr><td>Column name: NUMBER</td><td>Identification number of the document </td></tr><tr><td>Column name: DOCUMENT TYPE</td><td>Type of document ingested such as articles or attachments</td></tr><tr><td>Column name: STATUS</td><td><p></p><p>Status of the articles. You can also filter with these statuses.<br></p><ul><li><strong>Queued:</strong> Initial status of the content while waiting to be processed for ingestion</li><li><strong>Uploaded:</strong> Content successfully uploaded and ready for processing</li><li><strong>Extracting:</strong> Content is being extracted and prepared for ingestion</li><li><strong>Learning:</strong> The Ingestion process is in progress, and the content is being trained</li><li><strong>Ingested:</strong> Content successfully ingested and available for use</li><li><strong>Warning:</strong> Content ingested with minor issues or partial data</li><li><strong>Skipped:</strong> Content intentionally not ingested due to duplication or unsupported criteria</li><li><strong>Error:</strong> Ingestion was unsuccessful due to a processing issue</li></ul></td></tr><tr><td>Column name: ACTION</td><td>Click the three dots to  <code>View, Delete, Edit and Reingest</code> the ingested document. Refer <a href="../../../../../datasync-ai/content-sources/common-actions/actions">Actions</a>, for more information.</td></tr></tbody></table>
 
 {% hint style="info" %}
 **Note:** If a document shows the status of `Error`, then the following tips can help:
@@ -3776,7 +4186,7 @@ Access the extended menu by clicking the three dots next to the job name. Select
 
 ## Delete job
 
-You can delete the job after it is created. If you wish, the job is no longer needed, or it is duplicated with some other job, you can delete the job, which removes all the articles ingested under this job ID.
+You can delete the job after it is created. If you no longer need the job, or it is duplicated by another job, you can delete it, which removes all articles ingested under this job ID.
 
 Access the extended menu by clicking the three dots next to the job name. Select the `Delete job` option.&#x20;
 
@@ -3784,30 +4194,85 @@ Click `Delete` in the confirmation window to proceed and remove the job.
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F10X0BreuUW49yjbqLSWh%2FScreenshot%202025-10-03%20at%205.48.46%E2%80%AFPM.png?alt=media&#x26;token=d2fd1a64-67a9-4d77-adcd-4b7baff3c472" alt=""><figcaption></figcaption></figure>
 
+## Email Notifiers
+
+You can configure email notifications to alert stakeholders whenever a job fails. This helps teams monitor job health, quickly identify failures, and take timely corrective action.
+
+When email notifiers are configured, the system sends a notification to the specified email addresses if a job fails. For example, if an [auto-sync](#auto-sync) job scheduled to run at a specific time fails, the configured recipients receive an immediate alert.
+
+**To configure email notifications:**
+
+1. Navigate to the required job.
+2. Click the three-dot menu next to the job name and select `Email Notifiers`.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F2kDrqglgtcmbhHI8DcLR%2FScreenshot%202025-12-16%20at%203.39.20%E2%80%AFPM.png?alt=media&#x26;token=28997ca7-ad81-4ef9-9ce3-7f7f52c8f341" alt=""><figcaption></figcaption></figure>
+
+3. Add up to five email addresses, using `+ Add` to include them one by one. Click `Save` to apply the configuration.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FjxsWs3oIBf8vpY9enx4i%2FScreenshot%202025-12-16%20at%203.41.08%E2%80%AFPM.png?alt=media&#x26;token=cb46fb32-5d8f-425a-afbc-e739673cbcdb" alt=""><figcaption></figcaption></figure>
+
 ## View the version of the job
 
 You can view different versions of a job by clicking the dropdown option located at the top-right corner of the job.
 
-{% hint style="info" %}
+{% hint style="warning" %}
 **Note:** This option is available only for `SharePoint`, `ServiceNow`, and `Website` connectors.
 {% endhint %}
 
-This feature is handy if you have used **Auto sync** or **Sync Now**. It allows you to access the history of article synchronizations for the job. By comparing different versions, you can identify what content has been updated, added, or changed over time. This helps ensure that you always have a clear record of changes and can track updates efficiently.
+This feature is handy if you have used `Auto sync` or `Sync Now`. It lets you view the history of article synchronizations for the job. By comparing different versions, you can identify what content has been updated, added, or changed over time. This helps ensure that you always have a clear record of changes and can track updates efficiently.
 
 To view different versions of a job:
 
-1. Navigate to the **Jobs** list and select the job you want to review.
-2. Locate the dropdown menu at the top-right corner of the page. Click the dropdown and choose a version from the list of available options.\
-   The selected version of the job, along with its ingested articles or documents, is displayed.
+1. Navigate to the `Jobs` list and select the job you want to review.
+2. Locate the dropdown menu at the top-right corner of the page. Click the dropdown and select a version from the list. The selected job version, along with its ingested articles or documents, is displayed.
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fgq47ckL3FwVCQOiJcVSq%2FScreenshot%202025-10-23%20at%2011.37.42%E2%80%AFAM.png?alt=media&#x26;token=744dc8b9-8f31-4667-883d-4794da33e665" alt=""><figcaption></figcaption></figure>
+
+## Advanced Attributes Handler
+
+If you missed configuring attributes during ingestion, or if you want to update attributes for already ingested documents or articles, you can use the `Advanced Attribute Handler`. This feature allows you to apply or modify document attributes using custom JavaScript logic during a sync run.
+
+This approach allows you to safely validate attribute logic before applying it across documents during a sync operation.
+
+**To configure the advanced attribute handler**
+
+1. Navigate to the required DataSync job.
+2. Click the three-dot menu next to the job name and select `Advanced Attribute Handler`.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FMiQJ5vNgK6hDQYS7ucNO%2FScreenshot%202026-01-29%20at%205.10.53%E2%80%AFPM.png?alt=media&#x26;token=0f70520f-085d-44b1-8652-3f655cdaaca8" alt=""><figcaption></figcaption></figure>
+
+3. A side panel opens with the configuration options. Toggle the `Enabled` switch to enable the attribute handler.
+
+{% hint style="info" %}
+**Note**:&#x20;
+
+1. The configured JavaScript is saved as part of the post-processing configuration and is applied **only when a Sync Now or Auto Sync operation is triggered**.&#x20;
+2. Disabling the attribute handler prevents the script from running during subsequent syncs.
+   {% endhint %}
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FprEToJbyD8H3grVAHf4O%2FScreenshot%202026-01-29%20at%205.11.01%E2%80%AFPM.png?alt=media&#x26;token=14cb23a3-a405-4a43-b831-2e4fc2701a44" alt=""><figcaption></figcaption></figure>
+
+4. Under `Configure attribute handler`, provide the JavaScript code that returns the updated attributes you want to apply to the documents.
+5. In the `Test` option in the attribute handler panel. Update the test JavaScript input with actual sample data.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fi6uvg6vdGq5QDJMA5dL4%2FScreenshot%202026-01-29%20at%205.11.16%E2%80%AFPM.png?alt=media&#x26;token=b5be0b22-f953-47b0-ba97-0e44a3467b71" alt=""><figcaption></figcaption></figure>
+
+6. Click **Test** to validate the script execution. Review the output to confirm that the attributes are updated correctly for the selected document or article.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FOWZZOLqYuQtbT7xhqcPx%2FScreenshot%202026-01-29%20at%205.11.24%E2%80%AFPM.png?alt=media&#x26;token=765643f1-0475-4fd9-9a63-51bd05d33c39" alt=""><figcaption></figcaption></figure>
+
+7. Once you have configured and tested the attribute handler, choose one of the following actions:
+
+* **Cancel** – Discard the changes if you do not want to apply the attribute configuration.
+* **Save** – Save the configuration. The attribute handler will be applied the next time [AutoSync](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/content-sources/common-actions/auto-sync) or [SyncNow](https://docs.avaamo.com/user-guide/user-guide/datasync-ai/content-sources/common-actions/sync-now) is triggered.
+* **Save & Apply** – Save the configuration and immediately run a `manual sync` to apply the attribute handler to the selected documents.
 
 
 # View and edit knowledge
 
 Once the upload of documents or URLs to the knowledge base is successful, you can view the extracted content to fine-tune and edit the knowledge base, if required.
 
-Refer [View and edit knowledge](https://docs.avaamo.com/user-guide/llamb/get-started/step-2-ingest-enterprise-content/view-and-edit-knowledge), for more information.
+Refer [View and edit knowledge](https://docs.avaamo.com/user-guide/user-guide/llamb/get-started/step-2-ingest-enterprise-content/view-and-edit-knowledge), for more information.
 
 
 # Prompt skill
@@ -3821,8 +4286,8 @@ It is ideal for handling open-ended queries where a structured multi-step dialog
 
 Examples: The Prompt skill can be used in scenarios such as:
 
-* To book a flight ticket or doctor's appointment
-* Providing an informational response like FAQs or knowledge base answers.
+* To book a flight ticket or a doctor's appointment
+* Providing an informational response, like FAQs or knowledge base answers.
 * Retrieving and displaying dynamic information based on a single input.
 
 In the Avaamo Platform, you can easily create and customize Prompt skills using a simple interface, allowing you to configure specific responses to be triggered by a user’s input. The platform enables seamless integration of the Prompt skill into various workflows with minimal technical effort.
@@ -3832,9 +4297,9 @@ Based on your requirements, you can create a new Prompt skill.
 {% hint style="info" %}
 **Notes**:
 
-* Ensure you have met all the [pre-requisites](https://docs.avaamo.com/user-guide/quick-start-tutorials/pre-requisites).
-* You can add skills immediately after creating an agent. See [Create agent](https://docs.avaamo.com/user-guide/ai-agent/create-an-ai-agent), for more information.
-* If you wish to edit an agent, then navigate to the Agents tab in the top menu, search, and open the required agent. See [Search agents](https://docs.avaamo.com/user-guide/how-to/build-agents/manage-agents/other-common-actions#search-agents), for more information.
+* Ensure you have met all the [pre-requisites](https://docs.avaamo.com/user-guide/user-guide/quick-start-tutorials/pre-requisites).
+* You can add skills immediately after creating an agent. See [Create agent](https://docs.avaamo.com/user-guide/user-guide/ai-agent/create-an-ai-agent), for more information.
+* If you wish to edit an agent, then navigate to the Agents tab in the top menu, search, and open the required agent. See [Search agents](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/manage-agents/other-common-actions#search-agents), for more information.
 * Click Edit to unlock the agent before editing.
   {% endhint %}
 
@@ -3851,13 +4316,13 @@ Based on your requirements, you can create a new Prompt skill.
 
 # Add prompt
 
-The `Prompt Input` field allows you to configure the agent’s behavior by defining custom instructions or responses. This section is used to specify how the agent should handle interactions, including responses to user queries, system messages, or specific actions. You can enter a structured prompt incorporating variables to dynamically personalize the agent's responses.
+The `Prompt Input` field allows you to configure the agent’s behavior by defining custom instructions or responses. This section specifies how the agent should handle interactions, including responses to user queries, system messages, and specific actions. You can enter a structured prompt incorporating variables to dynamically personalize the agent's responses.
 
 Additionally, `built-in prompts` can be utilized for common scenarios, ensuring consistency and ease of setup.&#x20;
 
-You can also use the [Functions](https://docs.avaamo.com/user-guide/skills/prompt-skill/functions) in the prompt that enable the agent to interact with external systems, process data, or execute predefined tasks.
+You can also use the [Functions](https://docs.avaamo.com/user-guide/user-guide/skills/prompt-skill/functions) in the prompt that enable the agent to interact with external systems, process data, or execute predefined tasks.
 
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FfkluNNT2CTuyC7llFyMq%2FScreenshot%202025-03-29%20at%204.05.02%E2%80%AFPM.png?alt=media&#x26;token=386f2f28-3424-41f4-b96d-5416b716deb6" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FmaiHAED3kou5w46DZ05d%2FScreenshot%202026-01-28%20at%2012.00.05%E2%80%AFPM.png?alt=media&#x26;token=5a2898d3-ad1e-4dc8-855b-c730526bd353" alt=""><figcaption></figcaption></figure>
 
 When designing a Prompt Skill for an AI agent, it is essential to structure the prompt thoughtfully to guide the Agent's behavior effectively. A well-structured prompt ensures that the Agent understands its role, communicates in the desired tone, handles user interactions appropriately, and respects all operational guardrails.
 
@@ -4195,7 +4660,7 @@ This section outlines known failure modes and specifies strict fallback behavior
 
 ```
 
-## Build-in Prompts
+## Built-in Prompts
 
 The platform provides a set of built-in prompts that are pre-configured to work with commonly used enterprise systems, making it easy to get started without writing custom code. These are `plug-and-play` integrations designed to accelerate your workflow.
 
@@ -4231,40 +4696,211 @@ You can browse the available built-in prompts from the prompt editor. Just selec
 3. Select the appropriate tab to browse services relevant to your domain.
 4. For each service, a list of available functions is shown along with short descriptions.
 5. Click `Insert` to add the selected function to your prompt.
-6. After insertion, you can view and customize the added functions under the [Functions](https://docs.avaamo.com/user-guide/skills/prompt-skill/functions) section in the configuration panel.
+6. After insertion, you can view and customize the added functions under the [Functions](https://docs.avaamo.com/user-guide/user-guide/skills/prompt-skill/functions) section in the configuration panel.
 
 These built-in prompts simplify integration with commonly used services like Zendesk, ServiceNow, SAP, and others, enabling you to deliver solutions faster with minimal manual setup.
 
 
+# Prompt Versions
+
+Prompt versioning helps you track, compare, and restore changes made to a prompt skill over time. Each update to a prompt skill is automatically saved as a new version, allowing you to safely iterate and roll back when needed.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FUEK6L95rZ7ziaHdGU5FV%2FScreenshot%2015-01-2026%20at%2012.47.png?alt=media&#x26;token=b46b7867-d05f-4f76-b853-20ebbbc9af4c" alt=""><figcaption></figcaption></figure>
+
+### Version history overview
+
+The first time a prompt skill is added and saved, `version 1` is created. A new version is created whenever you `save changes` to any of the following sections in a prompt skill:
+
+* Prompt content
+* Functions
+* Advanced settings
+
+&#x20;[Version comparison](#version-comparison) becomes available once a second version exists.
+
+**To create a new version:**
+
+1. Open the agent and navigate to the `Prompt skill`.
+2. Make changes to one or more sections:
+   * Prompt
+   * Functions
+   * Advanced settings
+3. Click **Save**.
+
+A new version is created and added to the version history.
+
+### Version details and history
+
+When a version is created, you can view the following details at a glance:
+
+* The `latest version` always appears at the top of the version list.
+* Each version includes these details:
+  * `Clone of`: Indicates the version from which the current version was generated.
+  * `Created by:`: Displays the name of the user who created the version.
+  * `Last modified`**:** Shows the date and time when the version was created.
+  * `Restored from`**:** Indicates the version from which the current version was restored.
+* You can click [View](#version-comparison) to see the details of a specific version.
+* Click [Restore](#restoring-a-previous-version) to apply the changes from the selected version to the latest version.
+* Versions are displayed with pagination:
+  * Up to 10 versions per page
+  * Up to 100 most recent versions are retained
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5KiLFMztiUiFgoynm0Qw%2FScreenshot%2015-01-2026%20at%2012.49.png?alt=media&#x26;token=c38f81ab-e784-4ab8-b16b-b86b42e8f5c3" alt=""><figcaption></figcaption></figure>
+
+### Version comparison
+
+You can compare changes between any two versions to understand what was updated. This helps identify updates across prompt text, functions, and advanced settings.
+
+**To compare versions:**
+
+1. Open the `Prompt Versions` section of the prompt skill.
+2. Click on `View` to open the selected prompt skill version.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5KiLFMztiUiFgoynm0Qw%2FScreenshot%2015-01-2026%20at%2012.49.png?alt=media&#x26;token=c38f81ab-e784-4ab8-b16b-b86b42e8f5c3" alt=""><figcaption></figcaption></figure>
+
+2. Select any two versions from the comparison dropdown.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F9GqrrBwhYVVL0xqXGad0%2FScreenshot%202026-01-30%20at%2010.50.34%E2%80%AFAM.png?alt=media&#x26;token=b7a0d830-78a8-45d3-8cd0-5082b703a208" alt=""><figcaption></figcaption></figure>
+
+3. View the changes side by side.
+
+Change in the prompt:
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fa1oFSkXWz1nr2UrrfX6u%2FScreenshot%202026-01-30%20at%206.19.37%E2%80%AFPM.png?alt=media&#x26;token=0fd226ee-ee75-4c9f-a6ad-eb71bdc7c83d" alt=""><figcaption></figcaption></figure>
+
+Change in the function calls:
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F8XKRW35gazG5xY1MPyVZ%2FScreenshot%202026-01-30%20at%206.07.43%E2%80%AFPM.png?alt=media&#x26;token=77d869f0-8e71-4c3d-84b6-5046adc8757a" alt=""><figcaption></figcaption></figure>
+
+Change in the Advanced settings:
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FPTqezLzqTpuRNnCNYV46%2FScreenshot%202026-01-30%20at%2010.48.04%E2%80%AFAM.png?alt=media&#x26;token=29c1b921-49ff-42a3-a6f0-3db7cd4d9076" alt=""><figcaption></figcaption></figure>
+
+4. You can use `Expand all` or `Collapse all` to view or hide all change details at once.
+5. You can view the changes on the right side of each section with clear labels indicating whether a section is `Unchanged` or `Modified`.
+6. If you expand a section marked as Modified, you can see exactly what changed between the two versions, whether content was `added` or `removed`. For changes in the Prompt section, the comparison also highlights the exact locations where the updates occurred.
+
+### Restore selected
+
+You can now selectively restore specific sections instead of restoring all changes at once.
+
+Each section includes a checkbox to control what is restored. On the Version Comparison page, the following sections include selectable checkboxes:
+
+* Prompt
+* Function Calls
+* Advanced Settings
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F9mi6C26vz25hBzs2BKqS%2FScreenshot%202026-01-30%20at%2010.41.15%E2%80%AFAM.png?alt=media&#x26;token=5a240f36-b943-4b1d-b5bf-33b7cb56f879" alt=""><figcaption></figcaption></figure>
+
+Select one or more sections using the corresponding `checkboxes`. Click `Restore Selected`.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FjVfBvlZHLfvpSK11DK6k%2FScreenshot%202026-01-30%20at%2010.44.34%E2%80%AFAM.png?alt=media&#x26;token=2d122886-4f51-4b47-a25f-e3e94ad0c47a" alt=""><figcaption></figcaption></figure>
+
+In the confirmation window, click `Yes, restore` to continue. The selected version is restored and saved as the latest version. Click `Cancel` to exit without restoring the version.
+
+### Restoring a previous version
+
+You can restore a prompt skill to an earlier version using the **Restore** option. This allows you to safely roll back changes while keeping a clear version history.
+
+**How restoration works**
+
+* Restoring a version reverts the prompt skill to the selected version, including the `prompt`, `functions`, and `advanced settings`.
+* When a restore is performed, a new version is automatically created. This version includes a note indicating the previous version from which it was restored.
+* Restoring a version brings back all changes captured in that version at once.
+* If a version contains changes in only one section (for example, advanced settings), restoring that version updates only that section, as the other sections were unchanged.
+* The latest version, including restored versions, always appears at the top of the version list.
+
+**To restore a version:**
+
+1. Open the `Prompt Versions` section of the prompt skill.
+2. Select the version you want to restore. Click `Restore`.
+3. In the confirmation window, click `Yes, restore` to continue. The selected version is restored and saved as the latest version. Click `Cancel` to exit without restoring the version.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fkmg8WYC4WXye3pOBu5Bd%2FScreenshot%202026-01-15%20at%2012.51.04%E2%80%AFPM.png?alt=media&#x26;token=5968377c-5245-4435-9e17-08274bb936f9" alt=""><figcaption></figcaption></figure>
+
+### Pull and Promote behavior
+
+* Prompt versioning is supported in all stages: Development, Testing, Staging, and Production.
+* When an agent is `promoted` from one stage to another, the version history is not carried over. The promoted agent starts with a fresh version history, beginning from the copied state.
+* When you `pull` updates from one stage to another, a `new version` is created in the target stage that reflects the pulled changes.
+
+### Export and import behavior
+
+* Version history is `not included` when exporting an agent.
+* Only the latest prompt version is exported.
+* When an agent is imported, versioning starts fresh from the imported state.
+
+
 # Functions
 
-The `Functions` section allows you to define and configure the functions your agent can execute during customer interactions. This feature enables the agent to perform specific tasks dynamically based on user inputs or system triggers.
+The `Functions` section allows you to define and configure the functions your agent can execute during customer interactions. This feature enables the agent to perform specific tasks dynamically in response to user inputs or system triggers.
 
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FH2EtpRwEsi70V2eaZECw%2FScreenshot%202025-03-29%20at%204.07.07%E2%80%AFPM.png?alt=media&#x26;token=d027eaa8-31e1-4ac2-869d-a638292797e1" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FnaR6cFsMQxYUMhFN5CLV%2FScreenshot%202025-12-09%20at%202.40.54%E2%80%AFPM.png?alt=media&#x26;token=fcb03aef-0c4c-44c6-b682-cea3ec862558" alt=""><figcaption></figcaption></figure>
 
 ### **Key Components**
 
-1. **Function List:**
-   * Displays the list of existing functions configured for the agent.
-   * Click `Add New` to create a new function.
-   * Functions can be deleted using the trash icon.
-2. **Name:**
-   * Enter a unique name for the function to identify it within the system.
-3. **Declaration:**
-   * Define the function structure here.
-   * This typically includes the function’s name, parameters, and expected behavior.
-4. **Pre-Execution Instruction:**
-   * Provide instructions that the model should consider before executing the function.
-   * Helps set up the correct context and ensures accurate execution.
-5. **Definition:**
-   * Specifies how the function operates and what output it should generate.
-   * Can include logic or conditions for execution.
-   * You can also make use of built-in definitions.&#x20;
+**Function List:**
+
+* Displays the list of existing functions configured for the agent.
+* Click `Add New` to create a new function.
+* Functions can be deleted using the trash icon.
+
+**Name:**
+
+Enter a unique name for the function to identify it within the system.
+
+**Declaration:**
+
+The Declaration defines the function contract. It tells the agent what the function is, when it should be called, and what inputs it requires.
+
+Example declaration
+
+```js
+{
+  "name": "confirm_appointment",
+  "description": "Function to confirm that a user will be able to make it to an appointment.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "appointment_dat_id": {
+        "type": "string",
+        "description": "Appointment DAT ID"
+      }
+    },
+    "required": ["appointment_dat_id"]
+  }
+}
+```
+
+**Definition:**
+
+The Definition contains the function's execution logic. This logic runs only after the function is invoked based on the declaration.
+
+Example definition (corresponding to the above declaration)
+
+```javascript
+if (context.variables.authentication_status !== true) {
+  return {
+    success: false,
+    msg: "User not authenticated."
+  };
+}
+
+let MRN = await Storage.user.get("mrn_id");
+
+if (!context.variables.appointments) {
+  console.log("\n fetch future appointments has not been called yet");
+  return {
+    success: false,
+    avm_instruction:
+      "Call fetch_future_appointments function first, get the list of appointments and then confirm appointment."
+  };
+}
+```
 
 ### **Usage**
 
 * Functions enable the agent to interact with external systems, process data, or execute predefined tasks.
-* Well-defined functions enhance automation and improve customer interaction efficiency.
+* Well-defined functions enhance automation and improve the efficiency of customer interactions.
 * Ensure the function names and instructions are clear to avoid misinterpretation by the model.
 
 After configuring a function, click **Save** to apply changes.
@@ -4300,10 +4936,6 @@ The function allows the assistant to process user requests and interact with the
 }
 </code></pre>
 
-**Pre-Execution Instruction:**
-
-*"Before executing this function, ensure the user has provided all required details: doctor’s name, date, time, and patient’s name. If any information is missing, prompt the user to complete it before calling the function."*
-
 **How the Function is Used in a Prompt:**
 
 When a user interacts with the assistant and says:\
@@ -4336,7 +4968,7 @@ By using functions in prompts, the assistant enhances customer interactions whil
 
 # Advanced Settings
 
-The **Advanced Settings** section allows you to configure and fine-tune the behavior of your agent, ensuring optimal performance during customer interactions. This includes selecting the AI model, defining a voice persona, and adding custom parameters.
+The **Advanced Settings** section lets you configure and fine-tune your agent's behavior, ensuring optimal performance during customer interactions. This includes selecting the AI model, defining a voice persona, adding custom parameters, and adding ASR Entities.
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FNsTJWoTpVmUyZpZReYAp%2FScreenshot%202025-10-14%20at%2011.49.37%E2%80%AFAM.png?alt=media&#x26;token=02ca1b9a-91a2-43c9-83b0-650dada87690" alt=""><figcaption></figcaption></figure>
 
@@ -4344,13 +4976,111 @@ The **Advanced Settings** section allows you to configure and fine-tune the beha
 
 Users can choose from available AI models to power their assistants. The model determines the assistant's processing capability, response accuracy, and efficiency.
 
+You can choose a voice from the dropdown list.
+
 ### Voice Persona
 
-The **Voice Persona** setting allows users to define the assistant's voice characteristics. Different voice personas cater to various user experiences, ensuring a more engaging and natural interaction.
+The **Voice Persona** setting allows users to define the assistant's voice characteristics. Different voice personas cater to different user experiences, ensuring a more engaging, natural interaction.&#x20;
+
+You can choose a voice from the dropdown list.
 
 ### Advanced Customization Parameters
 
-Users can add **custom parameters** to enhance or modify the assistant’s behavior.
+You can include custom parameters to fine-tune or modify the assistant’s behavior.&#x20;
+
+You can assign values by entering the parameter key and its parameter value in the available fields, and then click `Add`.
+
+Below are some examples of Parameter key and Parameter Value.
+
+| Parameter key         | Parameter Value                                                                              |
+| --------------------- | -------------------------------------------------------------------------------------------- |
+| tts\_props            | {"voice": "Heart"}                                                                           |
+| tts\_props            | {"instructions": "Speak in a calm and friendly tone with clear pauses.","speed": <0.25–4.0>} |
+| disable\_idle\_prompt | true                                                                                         |
+| enable\_barge\_in     | true                                                                                         |
+
+For example, enter `tts_props` in the Parameter Key field and `{"instructions": "Speak in a calm and friendly tone with clear pauses.","speed": <0.25–4.0>}` in the Parameter Value field. Then click **Add** to include the advanced custom parameters.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F1ul9YEhuKIBfYayoJ9rB%2FScreenshot%202025-12-03%20at%2012.27.39%E2%80%AFPM.png?alt=media&#x26;token=cd26aa35-1762-4a0b-a571-d88c613486eb" alt=""><figcaption></figcaption></figure>
+
+The list below contains the commonly used TTS configuration options and their supported values.
+
+1. **OpenAI Custom Configuration:** If you select an OpenAI voice persona such as Alloy, Ash, or Onyx, you can enter the parameter key and value using the format and examples shown below.
+
+Format:
+
+```json
+tts_props: {
+  "instructions": "<tts prompt>",
+  "speed": <0.25–4.0>
+}
+```
+
+Example:
+
+```json
+tts_props: {
+  "instructions": "Speak in a calm and friendly tone with clear pauses.",
+  "speed": 1.2
+}
+```
+
+Additional examples for OpenAI voice instructions:
+
+* **Affect / Personality:** Warm, professional medical concierge — attentive and reassuring.
+* **Tone:** Even, sincere, conversational. Avoid sounding singsong, overly cheerful, or robotic. Maintain a neutral warmth that makes the listener feel cared for.
+* **Pronunciation:** Clear and precise, as if confirming essential details over the phone.
+* **Emotion:** Calm and reassuring, especially during authentication or while reading appointment details.
+* **Pacing:** Natural, steady pace with slight upward inflection for questions and micro-pauses between phrases.
+* **Pauses:** Insert a short pause before/after apologies and after the compliance notice.
+* **Accent:** Soft **Southern American** accent — gentle drawl, slightly elongated vowels, warm and hospitable, but always clear.
+* **Rhythm:** Slightly vary the sentence melody to avoid monotony. Add soft warmth in transitions (e.g., “Alright,” “Let’s see”).
+* **Acknowledgment Rule:** Before asking the next question, briefly acknowledge the patient’s last response with a short, neutral sentence.
+  * Examples: *“Thank you for sharing that.”*, *“Alright, I understand.”*, *“Got it, thanks.”*, *“I appreciate that.”*
+
+2. **Eleven Labs Custom Configs:** If you select an ElevenLabs voice persona, you can enter the parameter key and value using the format and examples shown below.
+
+Format:
+
+```json
+tts_props: {
+  "speed": <0.7–1.2>,
+  "style": <0.0–1.0>,
+  "stability": <0.0–1.0>,
+  "similarity_boost": <0.0–1.0>,
+  "use_speaker_boost": <true/false>
+}
+```
+
+Example:
+
+```json
+tts_props: {
+  "speed": 1.0,
+  "style": 0.8,
+  "stability": 0.6,
+  "similarity_boost": 0.9,
+  "use_speaker_boost": true
+}
+```
+
+3. **Avaamo one-shot voices:** If you select a one-shot voice persona, you can enter the parameter key and value using the format and examples shown below.
+
+Format:
+
+```json
+tts_props: {
+  "voice": "<VOICE_NAME>"
+}
+```
+
+Example:
+
+```json
+tts_props: {
+  "voice": "Heart"
+}
+```
 
 ### ASR Entities
 
@@ -4369,16 +5099,179 @@ Use console.log to log messages at specific steps in the script. This helps to v
 
 ### Using Conversation history <a href="#using-conversation-history" id="using-conversation-history"></a>
 
-You can check the user query from the [Conversation history](https://docs.avaamo.com/user-guide/debug/conversation-history) to view the complete flow that caused an error or unexpected response.
+You can check the user query from the [Conversation history](https://docs.avaamo.com/user-guide/user-guide/debug/conversation-history) to view the complete flow that caused an error or unexpected response.
 
 <br>
+
+
+# Dialog skill
+
+
+# Quick overview
+
+The Dialog skill in AI agents enables you to build agents that behave `deterministically` while still retaining `agentic flexibility`. It combines the structured reliability of dialog flows with the intelligence and spontaneity of AI-driven prompts, making it suitable for complex, real-world conversational scenarios.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FxSyiYf35sgCcaKednsfY%2FScreenshot%202026-01-14%20at%202.32.49%E2%80%AFPM.png?alt=media&#x26;token=389d0042-6ed8-40a6-89ef-6d0129589f45" alt=""><figcaption></figcaption></figure>
+
+### How does dialog skill works
+
+A dialog skill is built using two key components:
+
+1. **Prompt skill (orchestrator)**\
+   Acts as the entry point for every conversation. It decides `which dialog flow to invoke` based on user input.
+2. **Dialog skills (flows)**\
+   Handle structured conversations such as ordering, tracking, or support flows. These follow deterministic dialog logic similar to classic dialog skills.
+
+**Conversation flow**
+
+1. User message is first handled by the **prompt skill**.
+2. The prompt (orchestrator) identifies the intent using instructions.
+3. A function call transfers control to the relevant **dialog skill**.
+4. Subsequent messages are handled by that dialog flow.
+5. If the dialog skill cannot handle a message, control returns to the orchestrator.
+
+### Key concepts in dialog skill
+
+#### Instructions (replacing training data)
+
+Flow skill replaces rigid training data with **instructions**.
+
+* Instructions define *when* a dialog flow should be invoked.
+* They are flexible and expressive (for example, “invoke this flow if the user chooses any non-veg item”).
+* This removes the need to maintain long lists of sample utterances.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FF7GqwWbMOXwLM8Qu4D0d%2FScreenshot%202026-01-15%20at%2010.58.48%E2%80%AFAM.png?alt=media&#x26;token=1e5e0f50-c89d-47bf-b201-d44ab7429d57" alt=""><figcaption></figcaption></figure>
+
+Refer [Instructions](https://docs.avaamo.com/user-guide/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/add-user-intent/instructions), for more information.
+
+#### Agentic text&#x20;
+
+Flow skill contains a new response type called **Agentic Text**.
+
+* Instead of static responses, the agent uses instructions to generate responses dynamically.
+* Example:\
+  \&#xNAN;*“Ask the user what size of pizza they want.”*
+
+This enables more natural, less repetitive conversations.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FZCOdcxR1maCaGKmEvG3t%2FScreenshot%202026-01-15%20at%2010.46.44%E2%80%AFAM.png?alt=media&#x26;token=ea7cf07d-a4ca-45c6-af6a-5d12133893aa" alt=""><figcaption></figcaption></figure>
+
+Refer [Agentic text](https://docs.avaamo.com/user-guide/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/build-skill-responses/add-skill-messages-responses#agentic-text), for more information.
+
+#### Entity definition
+
+Entity handling in the dialog skill is simplified and more flexible.
+
+Entities can be defined in one of the following ways:
+
+**Entity**
+
+* Define an entity with a name and a description.
+* The description is passed to the LLM to extract the entity value from user input.
+
+Example:
+
+Name: *pizza\_type*
+
+Description: *This is the size of the pizza, which can be small, medium, or large*
+
+**Entity extraction script**
+
+* Use a **JavaScript (JS) block** to extract entities.
+
+{% hint style="info" %}
+**Note:** If provided, the extraction script takes precedence over name and description.
+{% endhint %}
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FSpP2F52kPnpetIbeiUYO%2FScreenshot%202026-01-15%20at%2010.52.10%E2%80%AFAM.png?alt=media&#x26;token=bdc0f013-015c-432a-98ca-8e8a96438f42" alt=""><figcaption></figcaption></figure>
+
+Refer [Invocation](https://docs.avaamo.com/user-guide/user-guide/skills/dialog-skill/add-invocation), for more information.
+
+
+# Create dialog skill
+
+{% hint style="info" %}
+**Notes**:
+
+* Ensure you have met all the [pre-requisites](https://docs.avaamo.com/user-guide/user-guide/quick-start-tutorials/pre-requisites).
+* You can add skills immediately after creating an agent. See [Create agent](https://docs.avaamo.com/user-guide/user-guide/ai-agent/create-an-ai-agent), for more information.
+* If you wish to edit an agent, navigate to the Agents tab in the top menu, search for the agent, and open it. See [Search agents](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/manage-agents/other-common-actions#search-agents), for more information.
+* Click Edit to unlock the agent before editing.
+  {% endhint %}
+
+**To create Dialog skills:**
+
+* In the **Agent** page, navigate to the **Skills** option in the left navigation menu and click **Add Skill**.
+* In the **Skill Builder** page, select **Dialog Skill** and click **Create**.
+* Specify the following details and click **Create**:
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FMfvEciUJ4D4StFbBNuNi%2FScreenshot%202026-01-14%20at%202.43.23%E2%80%AFPM.png?alt=media&#x26;token=a8243196-e12d-4b98-8b85-49371a93acd7" alt=""><figcaption></figcaption></figure>
+
+<table><thead><tr><th width="147.953125">Parameters</th><th width="395.69140625">Description</th><th>Maximum length</th></tr></thead><tbody><tr><td>Skill name</td><td>Indicates the name of the dialog skill.</td><td>50 characters</td></tr><tr><td>Skill description</td><td>Indicates the description of the dialog skill. Use this to specify the purpose of the skill.</td><td>200 characters</td></tr><tr><td>Skill key</td><td><p>Indicates the internal primary key used in the Avaamo Platform for uniquely identifying the skill. By default, a key is provided when you create a skill. You can change it to any user-friendly identifier.​<br></p><p>Supported characters: Alphanumeric and underscore​.</p><p></p><p>It is recommended that the key be at least 3 characters. As you type, the key is automatically converted to Snake Case. See <a href="https://en.wikipedia.org/wiki/Snake_case">Snake Case</a>, for more information.​</p><p></p><p>Note that the skill key must be unique in the agent. You can specify the same identifier in the <a href="https://app.gitbook.com/o/-LpXFbuTM3h40PfxYgao/s/-LpXFTiTgns4Ml77XGi3/how-to/build-skills/create-skill/customize-your-skill/reference-library/flow-control">flow control statements</a>, such as the Goto node, and in <a href="https://app.gitbook.com/o/-LpXFbuTM3h40PfxYgao/s/-LpXFTiTgns4Ml77XGi3/how-to/build-agents/test-agents/regression-testing">regression testing</a>. It helps in easy identification and readability.</p></td><td>20 characters</td></tr></tbody></table>
+
+
+# Add invocation
+
+Invocation defines when a dialog skill is triggered by user input. In dialog skills, invocation is instruction-based, enabling flexible, intelligent matching rather than rigid training sentences.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FSpP2F52kPnpetIbeiUYO%2FScreenshot%202026-01-15%20at%2010.52.10%E2%80%AFAM.png?alt=media&#x26;token=bdc0f013-015c-432a-98ca-8e8a96438f42" alt=""><figcaption></figcaption></figure>
+
+Invocation intent can be defined using entities as follows.
+
+### **Entities**
+
+Invocation intent using entity name and description. This approach is suitable for simple and flexible intent matching.
+
+You can define invocation intent by specifying an entity with a **name** and a **description**.
+
+* The entity name specifies the information required to invoke it.
+* The description is passed to the LLM, which infers the entity value from the user’s input.
+* The extracted entity helps determine whether to invoke the dialogue flow or a node.
+
+**Example**
+
+* **Entity name:** `pizza_type`
+* **Description:** Indicates the pizza type, such as vegetarian or non-vegetarian.
+
+**How to add an Entity**
+
+1. Click `Add entity`, enter the name and description. Click `Save`.
+
+### Entity Extraction Script
+
+For advanced invocation scenarios, you can use an `Entity Extraction Script`. This method is recommended when invocation depends on complex conditions or strict validation rules.
+
+* The script is written in **JavaScript (JS)**.
+* It enables precise control over how entities are extracted.
+* You can implement custom logic such as keyword matching, rule-based checks, or NLP-based extraction.
+
+{% hint style="info" %}
+**Note:** If both the entity name and description and an entity extraction script are configured, the extraction script takes precedence and overrides the name-and-description–based entity extraction.
+{% endhint %}
+
+
+# Flow designer - Overview
+
+The **Flow designer** is an intuitive conversational modeling tool that enables you to quickly build multi-turn conversational flows using user intents and responses. The Designer provides a comprehensive set of content templates, including surveys, forms, carousels, and rich media cards, to create beautiful, engaging conversational interfaces.
+
+Refer [Flow designer,](https://docs.avaamo.com/user-guide/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/dialog-designer-overview) for more information.
+
+
+# Add user intent
+
+You can build a conversational dialog flow by adding nodes with user intents and skill responses in the Dialog skill page.
+
+Refer [Add user intent](https://docs.avaamo.com/user-guide/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/add-user-intent), for more information.
+
+
+# Build skill responses
+
+Refer [Build skill responses](https://docs.avaamo.com/user-guide/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/build-skill-responses), for more information.
 
 
 # Configuration
 
 Add getting started message, persistent menu, define environment variables, switch to live agent, and configure to deploy in different channels.
-
-[<br>](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy)
 
 
 # Channels
@@ -4393,12 +5286,12 @@ Web channel comes with many configuration options that make configuring and depl
 {% hint style="info" %}
 **Notes**:
 
-* Ensure you have met all the [pre-requisites](https://docs.avaamo.com/user-guide/quick-start-tutorials/pre-requisites).
+* Ensure you have met all the [pre-requisites](https://docs.avaamo.com/user-guide/user-guide/quick-start-tutorials/pre-requisites).
 
-* You can deploy the agent to a channel after creating and building an agent. See [Create agent](https://docs.avaamo.com/user-guide/how-to/build-agents/add-skills), for more information.
+* You can deploy the agent to a channel after creating and building an agent. See [Create agent](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/add-skills), for more information.
 
 * If you wish to edit an agent, then:
-  * In the **Avaamo Platform UI**, navigate to the **Agents** tab in the top menu. Search and open the required agent. See [Search agents](https://docs.avaamo.com/user-guide/how-to/build-agents/manage-agents/other-common-actions#search-agents), for more information.&#x20;
+  * In the **Avaamo Platform UI**, navigate to the **Agents** tab in the top menu. Search and open the required agent. See [Search agents](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/manage-agents/other-common-actions#search-agents), for more information.&#x20;
   * Click **Edit** to unlock the agent before editing the agent.
     {% endhint %}
 
@@ -4409,25 +5302,25 @@ Web channel comes with many configuration options that make configuring and depl
 ![](https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LpXFTiTgns4Ml77XGi3%2F-MbdfT4eZ3bdLPvo6dS-%2F-MbdgJ8_Z9q71gexIdTI%2F5.7-default-web-channel.png?alt=media\&token=cb07ac61-cc6e-401c-8500-3aed170524bb)
 
 * Specify the Channel name, Channel description, and other required details in each section of the Web channel configuration based on your business requirements:
-  * [Channel details](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/channel-details): Provide channel name, and description, and enable or disable channel as required.&#x20;
-  * [Theme](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/theme): Customize the look and feel of the agent widget.
-  * [Agent widget configuration](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/widget-configuration): Configure various customizable parameters such as default locale, user name, and scroll behavior (to name a few) for your agent widget.
-  * [Voice](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/voice): Enable a voice assistant to your web channel that can engage the users in intelligent conversations by understanding and interpreting the dialects and accents of the users.
-  * [Deployment](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/deployment): Provides you a script to embed in the website source code for rendering the agent.&#x20;
-  * [AI Agent](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/ai-agent): Provides you a script to embed in the website source code for rendering the agent.&#x20;
-  * [Security](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/security): Configure authentication mechanisms for your agent.
-  * [Advanced](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced): Provide any other additional customizable parameters and configure auto-complete URL.&#x20;
-  * [UAT](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/uat): For UAT users, add UAT queries and perform testing on the agent before deploying the agent to production. The UAT option is available in the Web channel only when LLaMB is enabled for your account. See [LLaMB](https://docs.avaamo.com/user-guide/llamb/overview-key-features), for more information.&#x20;
+  * [Channel details](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/channel-details): Provide channel name, and description, and enable or disable channel as required.&#x20;
+  * [Theme](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/theme): Customize the look and feel of the agent widget.
+  * [Agent widget configuration](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/widget-configuration): Configure various customizable parameters such as default locale, user name, and scroll behavior (to name a few) for your agent widget.
+  * [Voice](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/voice): Enable a voice assistant to your web channel that can engage the users in intelligent conversations by understanding and interpreting the dialects and accents of the users.
+  * [Deployment](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/deployment): Provides you a script to embed in the website source code for rendering the agent.&#x20;
+  * [AI Agent](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/ai-agent): Provides you a script to embed in the website source code for rendering the agent.&#x20;
+  * [Security](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/security): Configure authentication mechanisms for your agent.
+  * [Advanced](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/advanced): Provide any other additional customizable parameters and configure auto-complete URL.&#x20;
+  * [UAT](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/uat): For UAT users, add UAT queries and perform testing on the agent before deploying the agent to production. The UAT option is available in the Web channel only when LLaMB is enabled for your account. See [LLaMB](https://docs.avaamo.com/user-guide/user-guide/llamb/overview-key-features), for more information.&#x20;
 * Click **Save** and click **Test** to test the web channel.&#x20;
-* A test link is displayed in the new window. Click the agent icon to test. See [Test channel settings](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/configure-web-channel#test-channel-settings), for more information on how to test the web channel.
-* After you configure web channel settings, you can also view, edit, disconnect, and delete web channel settings as per your requirements. See [Manage web channel](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/manage-web-channel), for more information.
-* You can also deploy your agent through multiple instances of web channels simultaneously. See [Deploy in multiple web channel instances](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/deploy-and-test-web-channel), for more information.
+* A test link is displayed in the new window. Click the agent icon to test. See [Test channel settings](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/configure-web-channel#test-channel-settings), for more information on how to test the web channel.
+* After you configure web channel settings, you can also view, edit, disconnect, and delete web channel settings as per your requirements. See [Manage web channel](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/manage-web-channel), for more information.
+* You can also deploy your agent through multiple instances of web channels simultaneously. See [Deploy in multiple web channel instances](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/deploy-and-test-web-channel), for more information.
 
 {% hint style="success" %}
 **Key Points:**&#x20;
 
 * Each section also includes "Learn more" links that point to relevant topics in the documentation for further reading and understanding.
-* You can set many of these parameters from the UI or using [customization parameters](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/configure-web-channel#customization-parameters). However, setting a parameter in the customization parameters section always takes precedence over the value set in the UI.
+* You can set many of these parameters from the UI or using [customization parameters](https://docs.avaamo.com/user-guide/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/configure-web-channel#customization-parameters). However, setting a parameter in the customization parameters section always takes precedence over the value set in the UI.
   {% endhint %}
 
 ## Test channel settings
@@ -4439,7 +5332,7 @@ Web channel comes with many configuration options that make configuring and depl
 There are two types of testing for AI agents as it supports `Voice` and `Text` types of conversation.
 
 1. After you save your web channel configuration settings, click `Test` and select `AI Agent`**.**&#x20;
-   * A new tab will open, displaying the agent name, details, and instructions you provided during the agent creation process. Refer [Create an AI agent](https://docs.avaamo.com/user-guide/ai-agent/create-an-ai-agent), for more information.
+   * A new tab will open, displaying the agent name, details, and instructions you provided during the agent creation process. Refer [Create an AI agent](https://docs.avaamo.com/user-guide/user-guide/ai-agent/create-an-ai-agent), for more information.
    * You can view a demo view of the agent, presented in a mobile-like interface, featuring your agent's avatar.
    * Ensure that you have made the agent publically accessible in the Channel configuration.
    * To test the interactions:
@@ -4481,630 +5374,6 @@ After you save your web channel configuration settings, click **Test.**&#x20;
         </body>
       </html>
 ```
-
-
-# Microsoft Teams (MS Teams)
-
-**Microsoft Teams** is a proprietary business communication platform developed by [Microsoft](https://en.wikipedia.org/wiki/Microsoft), as part of the [Microsoft 365](https://en.wikipedia.org/wiki/Microsoft_365) family of products. Microsoft Teams is a chat-based collaboration platform that includes document sharing, online meetings, and numerous other valuable features for business communications.
-
-The agents developed on the Avaamo platform can be deployed on the Microsoft Teams channel.
-
-Refer [Microsoft Teams (MS Teams)](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/microsoft-teams-ms-teams), for more information.
-
-
-# SIP
-
-Session Initiation Protocol (SIP) is a means of initiating and sending voice and other unified communications services through the Internet. It is a protocol used for initiating, maintaining, and terminating real-time sessions that include voice, video, and messaging applications. See [SIP](https://datatracker.ietf.org/doc/html/rfc3261), for more information.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F7GCGkNVYE5P4tQKZpPjQ%2FScreenshot%202025-04-14%20at%209.36.29%E2%80%AFPM.png?alt=media&#x26;token=07f38d9c-d724-4c1c-9c12-ef1c2af281ce" alt=""><figcaption></figcaption></figure>
-
-Refer [SIP](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/sip), for more information.
-
-
-# Conversational IVR (C-IVR) or Phone
-
-You can deploy the agents built on the Avaamo Platform into your phone channel. This allows callers to converse naturally with agents via interactive voice responses (IVR) to achieve the desired results without having to navigate lengthy audio menus. This feature can help to reduce live-agent calls, improve call routing, and provide a good user experience.
-
-**To configure a C-IVR channel:**
-
-After a successful configuration, a phone number is generated in the **Activated phone number** area, and this is the number that can be used to connect to your agent via the C-IVR channel.
-
-* In the **Agent** page, navigate to the **Configure -> Channels** option in the left navigation menu.
-* On the Channels page, click **Connect** in the C-IVR Channel.
-* Specify the following channel setting details:
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FhRKNkZ0vsbeLCCXRXaWP%2FScreenshot%202025-09-02%20at%202.00.17%E2%80%AFPM.png?alt=media&#x26;token=e3860229-2a9d-4c05-a705-57c9597fb984" alt=""><figcaption></figcaption></figure>
-
-<table><thead><tr><th width="167">Parameter</th><th>Descriptions</th></tr></thead><tbody><tr><td>Name</td><td>Indicates the <strong>Name</strong> used to identify the C-IVR channel. Note that you can have upto 150 characters in the channel name.</td></tr><tr><td><p>Languages and </p><p>Playback Voice for</p></td><td><p>Select the language and configure the voice or the persona to be used by your agent in the interactive phone conversations with the user. Each language has a different set of voice personas that you can choose from. Select the persona from the options provided in the "Playback voice for &#x3C;&#x3C;language>>" section:</p><p></p><ul><li>As with any enterprise voice, audio, or video application, each region or country has its phone number to dial. Similarly, in the C-IVR channel, you choose the language of the region or country where you wish to share the configured number. If you wish to share the number in multiple regions, then set up the C-IVR channel specific to each language. Note that one C-IVR channel is specific to only one language.</li><li>To hear the voice preview, type any text in the text area and click the play button. You can also download the voice preview if required.</li><li>You can select only those languages for which the agent is configured and those that are supported in the C-IVR channel. If you have switched to a language that is not supported in the C-IVR channel, then the agent responds in the default language.</li></ul><p>See <a href="../../how-to/build-agents/configure-agents/add-languages">Add languages</a> and <a href="../../how-to/build-agents/configure-agents/deploy/voice-supported-languages">Supported languages</a>, for more information. </p></td></tr><tr><td>Live agent transfer mode</td><td>Defines how a live agent is invited into the conversation when escalation is required. Supports <strong>Invite</strong> (conference style where the bot stays in the call) or <strong>Refer</strong> (the call is handed over to the agent directly).</td></tr><tr><td>ASR Configuration</td><td>Allows selection of the Automatic Speech Recognition (ASR) provider version for speech-to-text processing. Available options are <strong>V1, V2, V3, V4, V5, V6</strong>. Choose the version based on performance and compatibility.</td></tr><tr><td>Enable Noise Filter</td><td>When enabled, background noise is filtered out during user input. This improves recognition accuracy by reducing interference from non-speech sounds.</td></tr><tr><td>Fallback Forward Configuration</td><td>Defines the backup handling flow when the AI agent cannot process the user’s request. The request is forwarded to the specified destination along with the required headers.</td></tr><tr><td>Forward Destination</td><td>Specifies the phone number to which incoming calls will be forwarded.</td></tr><tr><td>Forward Headers</td><td>Custom headers to be included while forwarding the request. Headers should be specified in JSON object format. </td></tr><tr><td>Speech timeout</td><td><p>Indicates a maximum wait time of the agent within which a user response is expected. If the user response is not received within the time-out period, then an automated message is rendered back to the user indicating that the agent is awaiting the user response. Currently, this is a standard message and cannot be customized.</p><ul><li>The default value is 1 second.</li><li>Use the up and down arrows to increase or decrease time as required.</li></ul></td></tr><tr><td>SMS message options</td><td>Enable this option and specify a message, if you wish to send an SMS message to the caller when the call gets disconnected and/or when the call is completed. Specify the SMS text message in the respective options as required. Note that a single SMS can have upto 150 characters.</td></tr><tr><td>Send an SMS after completion of call</td><td>Enable this option and specify a message, if you wish to send an SMS message to the caller when the call is completed. Note that a single SMS can have upto 150 characters. If a call is hung up after a successful dialogue between the user and the agent, that is a user asks a query and the agent responds back to the query, then it is considered as complete.</td></tr><tr><td>Send an SMS if call disconnects</td><td>Enable this option and specify a message if you wish to send an SMS message to the caller when the call gets disconnected. Note that a single SMS can have up to 150 characters. A call is considered disconnected when the user asks a query and, before the agent's response is received, the call is hung up. This is the case when the user is between conversation flows.</td></tr><tr><td>Enable custom user authentication</td><td>Use this if you wish to enable custom authentication for your agents deployed on the phone channels using JavaScript code. See <a href="../../../how-to/build-agents/configure-agents/define-settings#user-authentication-handler">User authentication handler</a>, for more information.</td></tr><tr><td>Enable wait time tone</td><td><p>Use this option if you wish to play an idle tone to the user in case the agent is taking a little longer to respond. </p><p></p><p>Rather than experiencing silence or a lack of input, the introduction of a tone serves to engage the user actively and assures that the agent will respond shortly. For example, the system generates a typing tone when processing DTMF/keypad input.</p></td></tr><tr><td>Select file</td><td><p>Once you enable the wait time tone, the option to upload a file becomes available. You can customize the wait time tone by uploading an audio file that plays an idle tone for the user. The file must not exceed 10 seconds and should be within 5 MB in size.<br></p><p>Click <strong>Select File</strong>, then choose and upload the desired file for the wait time tone.</p></td></tr></tbody></table>
-
-* Click **Save** to save the C-IVR channel configuration details. A phone number is generated in the **Activated phone number** area and this is the number that can be used to connect to your agent.
-
-![](https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LpXFTiTgns4Ml77XGi3%2F-MObDJReaiTqqzn81xT6%2F-MObDyyKrmG8GjgSpKrn%2Fc-ivr-channel-settings-save.png?alt=media\&token=cba0dad3-39e7-40e5-95fc-479939d40e06)
-
-{% hint style="success" %}
-**Key Points**:&#x20;
-
-* After successfully saving the C-IVR configuration, you have the option to add "Agent voice", "Voice menu", and "Voice hints" to the agent responses. See [Build skill responses](https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/build-skill-responses) and [Advanced settings](https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/build-skill-responses/advanced-settings), for more information.
-* If you have deployed your agent in the C-IVR or Phone channel and masking is enabled, then the audio files from the user responses are not available in the conversation history, since it can contain PII data. See [Information masking](https://docs.avaamo.com/user-guide/overview-and-concepts/advanced-concepts/information-masking), for information.
-* You can also enable custom voice for your C-IVR agents in the Avaamo Platform. Contact Avaamo Support for more information.
-  {% endhint %}
-
-Refer [Conversational IVR (C-IVR) or Phone](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/conversational-ivr-c-ivr-phone), for more information.
-
-
-# Webex
-
-## Webex channel integration
-
-The Avaamo Conversational AI Platform now supports `Webex` as a communication channel, enabling AI agents to interact seamlessly with users directly within the Webex collaboration environment. This integration allows organizations to leverage existing workflows while providing AI-powered assistance, making conversations more interactive and context-aware.
-
-{% hint style="info" %}
-Note: This channel only supports AI agents.
-{% endhint %}
-
-### What is Webex channel integration?
-
-The Webex channel integration allows AI agents to engage users within Webex teams and spaces, eliminating the need to switch platforms for information or support. Users can interact with AI agents via `text messages` and `adaptive cards`, enabling a smooth conversational experience within the enterprise collaboration environment.
-
-This integration is handy for:
-
-* Internal employee support and queries
-* Customer engagement through Webex collaboration spaces
-* Automating routine tasks, such as approvals, reminders, and notifications
-
-### Before you begin
-
-Before connecting your Webex channel to Avaamo, you must **create a Webex bot** and obtain the following details:
-
-* **Bot Username**
-* **Access Token**
-* **Bot ID**
-
-These details are necessary to connect your Webex bot to the Avaamo platform. Refer to [Create Webex Bot](https://developer.webex.com/messaging/docs/bots) for detailed instructions.
-
-### Benefits of Webex channel integration
-
-* **Enhanced user experience:** Users can interact with AI agents without switching platforms.
-* **Faster task completion:** Interactive cards and contextual AI responses streamline workflows.
-* **Enterprise-ready:** Securely integrates with corporate Webex accounts while maintaining compliance and auditability.
-* **Scalable deployment:** Supports multiple AI agents and Webex spaces, enabling broad adoption across teams or departments.
-
-### Deploy your agent to Webex channel
-
-{% hint style="info" %}
-**Notes**:
-
-* Ensure you have met all the [pre-requisites](https://docs.avaamo.com/user-guide/quick-start-tutorials/pre-requisites).
-* You can deploy the agent to a channel after creating and building an agent. See [Create agent](https://docs.avaamo.com/user-guide/how-to/build-agents/add-skills), for more information.
-* If you wish to edit an agent, then:
-  * In the **Avaamo Platform UI**, navigate to the **Agents** tab in the top menu. Search and open the required agent. See [Search agents](https://docs.avaamo.com/user-guide/how-to/build-agents/manage-agents/other-common-actions#search-agents), for more information.&#x20;
-  * Click **Edit** to unlock the agent before editing the agent.
-    {% endhint %}
-
-1. Navigate to the **Agent** page and go to **Configuration > Channels** in the left navigation menu.
-2. On the **Channels** page, click **Connect** under the Webex channel.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FG8IT9VuyAsWWPp8NUtVD%2Fimage.png?alt=media&#x26;token=58453ff9-acb9-4658-8e64-47a8ad4b5324" alt=""><figcaption></figcaption></figure>
-
-3. Specify the following details and click Save.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FvM2tEy3LtI117YQhZ76t%2FScreenshot%202025-10-24%20at%202.00.14%E2%80%AFPM.png?alt=media&#x26;token=ff47d372-b3e1-44ec-859e-ab8b0355b407" alt=""><figcaption></figcaption></figure>
-
-<table><thead><tr><th width="140.25">Parameter </th><th>Description</th><th>Mandatory</th></tr></thead><tbody><tr><td>Name</td><td>Indicates the <strong>Name</strong> used to identify the Webex channel.</td><td>Yes</td></tr><tr><td>Bot Username</td><td>Name of your Webex bot as it will appear in Webex and Webex App Hub.</td><td>Yes</td></tr><tr><td>Access Token</td><td>Access token for your Webex bot.</td><td>Yes</td></tr><tr><td>Bot ID</td><td>Unique system-generated ID for your Webex bot.</td><td>Yes</td></tr></tbody></table>
-
-Now you can view the AI agent in your [Webex messaging](https://web.webex.com/sign-in) space. Start sending and receiving messages with AI agents directly in Webex.
-
-
-# Environment variables
-
-You can define environment variables from the `Configuration -> Environment variables` option. These are constants that can be accessed anywhere in the agent and are global to all users of the agent.&#x20;
-
-**Examples**: External service access credentials like web service login credentials, webservice\_username, webservice\_password.&#x20;
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FpuSDZXgFdaq9jgCTiwIV%2FScreenshot%202025-04-14%20at%209.17.52%E2%80%AFPM.png?alt=media&#x26;token=8040f0f7-9c7d-4d80-a653-3fdc1ac4137e" alt=""><figcaption></figcaption></figure>
-
-Refer [Environment variables](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/define-environment-variables), for more information.
-
-
-# JS files
-
-You can create and add JavaScript files to the agent from the `Configuration -> Add JS files` option. This feature is used to enhance the functionality of the agent.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FruphSg0AeV0pzWGJ7tmj%2FScreenshot%2014-04-2025%20at%2021.15%20(1).png?alt=media&#x26;token=900ca656-9f6a-4421-aa5c-e2f16e18559c" alt=""><figcaption></figcaption></figure>
-
-Refer [JS files](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/add-js-files), for more information.
-
-
-# Language
-
-You can add multiple languages to the agent so that the agent can respond in different languages. The translated text of the language is used in the agent response based on the detected language of the agent.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FQgkFluXzonfHl2sfHgAT%2FScreenshot%202025-04-14%20at%209.13.20%E2%80%AFPM.png?alt=media&#x26;token=d3903372-2587-44f7-ba35-cb72f3db5c03" alt=""><figcaption></figcaption></figure>
-
-Refer [Language](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/add-languages), for more information.
-
-
-# Permissions
-
-By default, when you create an agent, you are the **owner** of the agent. Additionally, when a user promotes an agent that the user is automatically the owner of the agent in the promoted stage. As an owner of the agent, you can assign permissions to different people within your company for your agent as required. This allows different users to participate and collaborate in each stage of the agent life-cycle.
-
-There are four types of permissions available for an agent:
-
-* **View**: Users can only view the agent but cannot edit the agent. Note that anyone with at-least view permission on the agent can submit the Unhandled query analyzer job.
-* **Edit**: Users can view and edit the agent.
-* **Publish**: Users can view agents, edit agents, and publish skills from the agent to the skills store.&#x20;
-* **Owner**: Full access to the agent. Users can view agents, edit agents, publish skills from the agent to the Skill store, and edit agent permissions.
-
-![](https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LpXFTiTgns4Ml77XGi3%2F-M1U9Fr-KQ5sqIV4idNX%2F-M1UDiifF0-EPoTqAM1m%2FPermission.gif?alt=media\&token=8d5738e0-d29c-4e47-94a5-eb98139df2f4)
-
-Refer [Permissions](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/permissions), for more information.
-
-
-# Settings
-
-You can specify the general settings from the `Configuration > Settings` option. Also, note the agent authentication keys generated by the platform, which can help you access specific details about your agent.&#x20;
-
-{% hint style="info" %}
-**Notes**:
-
-* Ensure you have met all the [pre-requisites](https://docs.avaamo.com/user-guide/quick-start-tutorials/pre-requisites).
-* You can configure the agent immediately after creating an agent. See [Create AI agent,](https://docs.avaamo.com/user-guide/ai-agent/create-an-ai-agent) for more information.
-* If you wish to edit an agent, then:
-  * In the **Avaamo Platform UI**, navigate to the **Agents** tab in the top menu. Search and open the required agent. See [Search agents](https://docs.avaamo.com/user-guide/how-to/build-agents/manage-agents/other-common-actions#search-agents), for more information.
-  * Click **Edit** to unlock the agent before editing.
-    {% endhint %}
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FpMhaoU0tNQ803u3FEsoZ%2FScreenshot%202025-10-29%20at%205.10.48%E2%80%AFPM.png?alt=media&#x26;token=b67e5adb-4cb7-47fd-967e-aa64b958166a" alt=""><figcaption></figcaption></figure>
-
-### User authentication handler
-
-You can authenticate users via the agent across web, phone, and SMS channels using this block. Here, you can write any custom JS code based on your requirements, and it gets executed to authenticate the user before the agent loads. This helps secure all communication through the agent by authenticating the user before using the channel.
-
-Refer [User authentication handler](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/define-settings#user-authentication-handler), for more information.
-
-### Error handler
-
-This feature enhances error handling and fallback management within the AI agent. It allows developers to define a custom error handler that dynamically forwards requests when a system error occurs.
-
-Enhanced to support dynamic values in Forward Headers, allowing the use of storage variables or JavaScript blocks for scenarios such as passing the called phone number.
-
-You can add custom JavaScript code in the Error Handler to handle the following situations:
-
-1\. **Call forwarding:** When the system fails, forward the call to a specific number defined in the Error Handler.
-
-Use the function `return SmartCall.forward(<from>, <to>)` to forward a call to a specific number if the system fails to continue the call.
-
-```javascript
-console.log("con", context);
-if (context.conversationMode == 'voice') {
-    return SmartCall.forward("", "+18304453477");
-} else {
-     {avm_instruction: "Inform user about being unable to forward the call"};  
-}
-```
-
-2\. **Call hang-up:** When the system fails, gracefully disconnect the call by specifying a return message.
-
-Use the function `return SmartCall.hangup()` to disconnect the call if the system fails to continue.
-
-```javascript
-console.log("con", context);
-if (context.conversationMode == 'voice') {
-    return SmartCall.hangup();
-} else {
-    return { message: "Something went wrong, please try again" };
-}
-```
-
-3\. **Return message:** If the bot is text-based, you can also discontinue the session with a custom message.
-
-Use the function `return { message: {} }` to display a message if the system fails to continue the chat.
-
-```javascript
-console.log("con", context);
-if (context.conversationMode == 'text') {
-    return { message: { text: "Hello! How can I help you today?" } };
-} else {
-    return { message: { text: "Something went wrong, please try again." } };
-}
-```
-
-### Advanced features
-
-The following options are available in Advanced features:
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FRTrQsRY6Bg6x6p0m2CSG%2FScreenshot%202025-11-11%20at%2012.22.52%E2%80%AFPM.png?alt=media&#x26;token=8270af23-bfa2-485e-9c4b-cc0935ddcdf6" alt=""><figcaption></figcaption></figure>
-
-#### **Enable debug logs**&#x20;
-
-The `Enable Debug Logs` option allows users to enable or disable debug logs at the `agent level`. This feature provides better control over log visibility for troubleshooting and debugging. This is especially useful when masking is enabled, as logs are otherwise suppressed.
-
-See [Enable debug logs](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/define-settings#enable-debug-logs), for more information.
-
-#### **Enable hybrid SDK**&#x20;
-
-If you wish to integrate the Avaamo Platform using the Hybrid SDK, then you must enable the Hybrid SDK in the `Agent > Settings page`. The Platform then opens the channel to listen for requests in the Hybrid SDK integration. By default, this communication is not available unless the **Enable Hybrid SDK** option is enabled.&#x20;
-
-See [Hybrid SDK](https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/integrate-with-api-1/hybrid-sdk), for more information.
-
-#### **Enable feedback**
-
-The **Enable Feedback** option allows users to collect feedback from end users at the agent level. When enabled, this feature displays a feedback option after each response, allowing users to rate the accuracy or usefulness of the bot’s answers.
-
-This helps administrators and developers assess response quality, identify areas for improvement, and fine-tune the agent’s performance. Disabling this option hides the feedback prompt from users, ensuring a cleaner interface when feedback collection is not required.
-
-<div align="left"><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FiLpndOfcg46ZBaRsq3sI%2Fimage.png?alt=media&#x26;token=3fa51a7b-9951-4403-92c7-2785ad2bb97e" alt="" width="375"><figcaption></figcaption></figure></div>
-
-Refer [Collect feedback,](https://docs.avaamo.com/user-guide/overview-and-concepts/advanced-concepts/collect-feedback) for more information.
-
-#### Enable previous context
-
-The **context persistence** capability allows the agent to retain the conversation context even after a period of user inactivity.
-
-When a user resumes a conversation after being idle for an extended duration (for example, an hour or a day), the system preserves the previous session context. This enables the agent to understand and respond based on the earlier conversation history, eliminating the need for the user to repeat previous information.
-
-**To enable this feature:**
-
-1. Go to **Configuration > Settings > Advanced Settings**.
-2. Select the checkbox **Enable Previous Context**.
-
-This feature ensures a more seamless and natural conversational experience by maintaining context across sessions and minimizing repetitive interactions.
-
-### Information Masking
-
-Masking allows you to protect PII/PHI/GDPR compliance data within the Avaamo Conversational AI system. There are ways to configure information masking in the Avaamo Platform based on your business requirements.&#x20;
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FQh25C6ZlJoR71fMRlU22%2FScreenshot%202025-10-29%20at%204.50.30%E2%80%AFPM.png?alt=media&#x26;token=559505e3-6c76-4837-8c37-b6d490b0e4a9" alt=""><figcaption></figcaption></figure>
-
-Refer [Enable information masking](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/define-settings#enable-information-masking), for more information.
-
-### Notifications
-
-You can use notifications to send daily usage and error notification reports to the users, as required.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F2ZQeJDOBvwtyHDw4yWAa%2FScreenshot%2029-10-2025%20at%2016.42.png?alt=media&#x26;token=67c18629-1e91-4839-bc22-7a6b63f0745a" alt=""><figcaption></figcaption></figure>
-
-**Daily usage report:** In this field, specify the email IDs of the users who need to get a daily report on agent usage. The first daily usage report is generated at 1:00 AM in the time zone specified in the Time Zone field, and the next consolidated report is generated after 24 hours, and so on.
-
-**Error notification**: In this field, specify the email IDs of the users who need to receive error notifications if JS errors are encountered during agent interaction. Error notifications are sent with a 15-minute gap between each email.
-
-**Time zone:** Select the time zone to generate the daily usage report. If no timezone is selected in this field, then the UTC timezone is considered.
-
-**Add email IDs for daily usage reports and error notifications**
-
-* Specify the email IDs of the users in the `Daily usage report` and `Error notification` field.
-* Click the + icon to add the email ID.
-* Click `Save` to save the changes made to the page.
-
-**Error notification emails**
-
-Each error notification email has the following information:
-
-<figure><img src="https://docs.avaamo.com/user-guide/~gitbook/image?url=https%3A%2F%2F2934665269-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F-LpXFTiTgns4Ml77XGi3%252Fuploads%252FIgDzfu10GI4xGe7lE06A%252F6.1-js-errors-email.png%3Falt%3Dmedia%26token%3D4c5dcf51-92b9-458d-ad5e-83169410bc5c&#x26;width=768&#x26;dpr=4&#x26;quality=100&#x26;sign=1a1fed5f&#x26;sv=2" alt=""><figcaption></figcaption></figure>
-
-* The stage in the application in which the errors occurred. Stage refers to development, testing, staging, or production. If errors occurred in more than one stage, separate notification emails are sent for each stage.
-* A link to the JS errors page.
-* The errors and the corresponding details of each error. The email lists up to 25 errors. If there are more than 25 errors, a link is provided to view all the errors.
-* A link to send an email to all the agent owners.
-
-### Agent authentication keys
-
-The following are the authentication keys generated by the Platform for an agent. Typically, these keys are used in an API when you are required to authenticate an agent:
-
-* **Agent UUID**: A unique agent identifier generated by the platform.
-* **Agent AccessToken**: This access token is used only for Conversation API and Message API operations.
-* **API Token**: This access token is used for all the Dashboard operations except for Conversation API and Message API operations.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FtlqbwerzUaWumz25sZEG%2FScreenshot%2029-10-2025%20at%2016.42%20(1).png?alt=media&#x26;token=1ec76c5e-690a-4662-a754-444f28b455ef" alt=""><figcaption></figcaption></figure>
-
-[<br>](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/add-response-filters)
-
-
-# Tags
-
-Tags help you to understand the usage of agents by categorizing the user intents distributed across different skill responses. It helps you to analyze the top-used intent categories and the way users interact with the agent. It gives a different perspective on viewing and understanding user-agent interactions. See View analytics of [top tags](https://docs.avaamo.com/user-guide/monitor/analytics#top-tags), for more information on the "Top Tags" Analytics board.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F2hse9zyyhtJPOC241gk6%2FScreenshot%202025-04-14%20at%209.08.12%E2%80%AFPM.png?alt=media&#x26;token=bb7afd6d-0400-42b6-a242-a347a120f40d" alt=""><figcaption></figcaption></figure>
-
-Refer [Tags](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/add-tags), for more information.
-
-
-# Debug
-
-
-# Error Log
-
-You can view all the error details that occurred during the execution of responses from the agent. This section helps developers to monitor, filter, and analyze error logs effectively.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FT4NbN6IFYwzP07Vv2VBB%2FScreenshot%202025-04-03%20at%201.14.57%E2%80%AFPM.png?alt=media&#x26;token=82887425-f48f-47fc-a240-315b46a71b27" alt=""><figcaption></figcaption></figure>
-
-**Histogram**
-
-* This graph provides a **visual representation of errors over time**, allowing you to quickly spot patterns or spikes.
-* **X-axis:** Displays the dates within the selected range.
-* **Y-axis:** Shows the count of errors recorded on each date.
-
-**Log Table**
-
-This table lists the individual error entries in detail. The main columns include:
-
-* **Type:** Specifies the type of error.
-* **Skill:** Identifies the skill associated with the error.
-* **Timestamp:** Indicates the exact date and time when the error occurred.
-* **Actions:** Provides options to interact with each log entry.
-
-### Key features
-
-The error logging system provides a streamlined way to detect, analyze, and resolve issues across your application. Here's how each feature helps improve visibility and troubleshooting:
-
-**Unified Error Log**\
-Instead of checking multiple sources, you get a single view that consolidates all API and JavaScript errors. This makes it easier to track down problems without switching between tools or logs.
-
-**Proactive Alerts**\
-You don’t have to wait for users to report problems. The system can alert you in real time when something goes wrong, like a sudden increase in latency or a runtime error, so you can respond quickly.
-
-**Deep Insights**\
-Each error entry includes detailed metadata, such as the type of error, the skill or component involved, and the exact time it occurred. This helps you understand what went wrong and when. You can also export logs to review them later or share them with your team.
-
-**Integrated Debugger**\
-Troubleshooting is faster when everything you need is in one place. The built-in debugger lets you dig into errors directly from the log view, helping you trace the cause and test solutions without switching environments.
-
-
-# Debug log
-
-You can use the **console.log** statement in the Javascript node to log messages at specific steps in the script. This helps to verify if the script is executing as expected and to identify points of failure.
-
-Refer [Debug logs](https://docs.avaamo.com/user-guide/how-to/build-agents/debug-agents/debug-logs), for more information.
-
-
-# Storage
-
-You can view all the data stored either for a global session (applicable for all the users interacting with agents) or for a specific user session in your agent.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F3NtPw2iWsMaqclRI75oe%2FScreenshot%202025-04-03%20at%201.04.08%E2%80%AFPM.png?alt=media&#x26;token=b0a6cf6d-1263-43c9-a9b9-bd5e15f4b9f2" alt=""><figcaption></figcaption></figure>
-
-Refer [Storage](https://docs.avaamo.com/user-guide/how-to/build-agents/debug-agents/storage), for more information.
-
-
-# Conversation history
-
-The **Conversation history** page displays the records of the agent and all of its user interactions for the selected agent.
-
-* Click any conversation to see the details. In the URL, you can also see a unique identifier for the conversation. This is referred to as conversation\_uuid. You can use this in APIs. See [Conversation API](https://docs.avaamo.com/user-guide/ref/avaamo-platform-api-documentation/conversation-message-api), for an example.
-* You can search through history to find specific conversations, messages, and users.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5ERfZEo234eNu92ReetN%2FScreenshot%202025-04-14%20at%208.31.32%E2%80%AFPM.png?alt=media&#x26;token=ab9ab10a-7bcf-4238-8967-a9d4d6ad50af" alt=""><figcaption></figcaption></figure>
-
-{% hint style="info" %}
-**Notes**:&#x20;
-
-* Currently, list view responses are not displayed in the conversation history.
-* Conversation history is not real-time, and it may take up to 2 minutes for the Conversation history to be updated.
-  {% endhint %}
-
-The **Conversation history** page includes a search bar, agent profile icon, and user profile icon.
-
-### Search bar
-
-You can use the **Search** bar to search through conversation titles and message content. This helps you narrow down user queries and the agent’s response to the query.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FHcpfnvbcnfVNcdQCHi3P%2FScreenshot%202025-04-14%20at%208.34.49%E2%80%AFPM.png?alt=media&#x26;token=840791d0-e577-4312-90c7-7ad53f02fdae" alt=""><figcaption></figcaption></figure>
-
-#### Conversations
-
-Each conversation in the **Conversation history** page is grouped by user name. You can search for conversations related to a specific user by entering the user name in the search bar. All the conversation for the user or message containing the user name is displayed in the result.
-
-#### Messages
-
-You can search the conversation history with messages. These messages can be user queries or the agent's response. To search with a message, type the message content in the search bar.
-
-All the messages with the searched message content are displayed. Click the message to view the details and the conversations.
-
-Note that if you have deployed your agent in C-IVR or Phone channel, then the user responses are available as audio files in the **Conversation history**.&#x20;
-
-#### **Conversation Transcript and Audio Playback**
-
-The transcript feature provides a comprehensive view of the conversation between the user and the agent, available at the bottom of the conversation history. It covers both text and voice interactions, helping you clearly understand the flow and context of each conversation.
-
-For voice conversations, an audio recording is also available alongside the written transcript. You can play the audio directly within the interface to gain deeper insights into the interaction, which is especially useful when tone or pronunciation needs to be reviewed.
-
-This feature is valuable not only for understanding conversations but also for debugging and troubleshooting purposes. By reviewing both the transcript and the audio, you can easily identify any discrepancies, misinterpretations, or technical issues that may have occurred during the conversation, leading to faster resolution and improved user experiences.
-
-Additionally, the session end reason is displayed at the bottom of the transcript, offering further context for analyzing why the conversation concluded.
-
-### Agent profile icon
-
-The agent profile icon button allows you to edit the profile and change the view of the conversation history page. You can perform the following actions:
-
-![](https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FigXlahE5ejdQmkCHvE7N%2FScreenshot%202025-04-14%20at%208.47.26%E2%80%AFPM.png?alt=media\&token=87e551cd-c9db-44a0-b9ed-e06d46c4666a)
-
-* View the agent avatar by clicking the profile option.
-* Change the outlook of the **Conversation history** page by clicking the **Compact view** option.
-* Logs you out from the Avaamo platform dashboard.
-
-### User icon
-
-You can view the details of a user in the conversation by clicking the user profile icon:
-
-![](https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FbCZfIixfCso3Q8nUPRhd%2FScreenshot%2014-04-2025%20at%2020.50.png?alt=media\&token=2df3fda1-58c2-4bfe-aff1-010f4c53f6a0)
-
-* The email address and other custom user authentication details are provided in the **Custom user authentication handler** and **Returning user message handler**. See [Define settings](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/define-settings), for more information.
-* The channel through which the user interacted with the agent.
-* The link for the agent.
-* The location of the user's IP.
-
-
-# Test
-
-You can iteratively test the agent while writing the prompt to ensure it provides appropriate responses to user queries using the `Simulator` option.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FG3hGAewQPks2CSrovcXo%2FUntitled%20design%20(12).gif?alt=media&#x26;token=7e8d65f6-7719-4260-ba62-3ae6f12f73e5" alt=""><figcaption></figcaption></figure>
-
-
-# Simulator
-
-You can test the agent once you complete the prompt to ensure it provides appropriate responses to user queries using the `Simulator` option.
-
-{% hint style="info" %}
-**Notes**:
-
-* Ensure you have met all the [pre-requisites](https://docs.avaamo.com/user-guide/quick-start-tutorials/pre-requisites).
-* You can add skills immediately after creating an agent. See [Create agent](https://docs.avaamo.com/user-guide/ai-agent/create-an-ai-agent), for more information.
-* If you wish to edit an agent, then navigate to the Agents tab in the top menu, search, and open the required agent. See [Search agents](https://docs.avaamo.com/user-guide/how-to/build-agents/manage-agents/other-common-actions#search-agents), for more information.
-* Click `Edit` to unlock the agent before editing.
-  {% endhint %}
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FG3hGAewQPks2CSrovcXo%2FUntitled%20design%20(12).gif?alt=media&#x26;token=7e8d65f6-7719-4260-ba62-3ae6f12f73e5" alt=""><figcaption></figcaption></figure>
-
-You can test your agent using the Agent Simulator from any page in the agent’s left navigation pane without returning to the main agent page. This feature allows for rapid development and testing without leaving your current workspace. It enables end-to-end testing of the agent’s conversational flow from any page, enhancing the development experience by making it more seamless and efficient.
-
-
-# Monitor
-
-
-# Analytics
-
-The Avaamo platform includes a built-in Analytics tool that visually represents agent and user interactions. This tool provides valuable insights into user engagement, helping you understand how users interact with your assistant. By leveraging these statistics, you can identify areas for improvement and optimize your agent to better align with your business requirements.
-
-You can view the insights on the Analytics page as shown below:
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FoSSKwhTnIQPPBTlVilXQ%2FScreenshot%202025-04-01%20at%2010.28.10%E2%80%AFAM.png?alt=media&#x26;token=d5196ae9-2e61-48e3-aa95-b5e75ceeb00c" alt=""><figcaption></figcaption></figure>
-
-## Select filter criteria
-
-You can filter analytics results using the `Date range` and other `additional filter criteria` such as channel, tags, language, intent type, and Prompt Skill using the `Filter` option.
-
-### Date Range
-
-By default, the date range is a week (7 days) from the current date.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FHsN0W4vj49KcaOhdU0gT%2FScreenshot%202025-04-01%20at%2010.32.03%E2%80%AFAM.png?alt=media&#x26;token=735683d3-3f73-4697-a213-584e0955390c" alt=""><figcaption></figcaption></figure>
-
-* Click the date range to choose from various preset options based on your requirements.
-* You can view the Analytics board for the following periods:
-  * Yesterday
-  * Today
-  * Last 7 Days
-  * Last 14 Days
-  * Last 28 Days
-  * Last 90 Days
-  * Last 180 Days
-* To define a custom period, click `Custom Range` and select the start and end dates. The Analytics board allows you to view up to six months of data.
-
-### Additional filter criteria
-
-Click the filter icon next to the **Engagement** option to select additional filter criteria based on your requirements.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5xeQxgyfp83NDHJxpQbM%2FScreenshot%202025-04-01%20at%2010.32.13%E2%80%AFAM.png?alt=media&#x26;token=956a0fcc-4e9b-44f0-8603-a46973427227" alt=""><figcaption></figcaption></figure>
-
-For each filter criteria, you can `select multiple values` as per your requirement.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FcwUPO9Btz9pbmSPJcUvj%2FScreenshot%202025-04-01%20at%2010.40.49%E2%80%AFAM.png?alt=media&#x26;token=1712863c-d27c-46ca-8db2-fe86323bd4d2" alt=""><figcaption></figcaption></figure>
-
-{% hint style="success" %}
-**Key points**:
-
-* If you add multiple values within "a" filter criteria, then each value is an "OR" condition. **Example**: If you select the "Web" channel, "French" and "English" language, then the results displayed are for the selected date range in the "Web" channel" AND the "French" OR "English" language.
-* Only active intents are displayed in all the filter criteria.
-  {% endhint %}
-
-You can select the following filters:
-
-* **Channel**: A list of the channels which has user queries in the selected date range is displayed.
-* **Language**: A list of all the languages which has user queries in the selected date range
-
-  is displayed.
-* **Intent type**: A list of types of skills available.
-* **Prompt skill**: List of prompt skills available in the agent.
-* **Tag:** A list of all the custom tags available in your agent is displayed.
-
-Click **Apply** to apply the filters and to view the results. Click **Clear** to clear all the selected filters.
-
-## View results (Analytics board)
-
-Based on the selected date range and filter criteria, the results are filtered and the data in the corresponding analytics boards are displayed. You can click any one of the blocks for a more detailed view. Note that the same filters selected in the "Analytics" are applied in the detailed view too.
-
-### **Query**
-
-The `Query` analytics board displays the total number of queries received by the agent for the selected filter criteria. See [Select filter criteria](#select-filter-criteria), for more information on the available filter criteria. You can view a chart displaying the day-wise breakdown of queries received by the agent.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FRNiTl4iZZ6lLwWHjMI1b%2FScreenshot%202025-04-01%20at%2011.15.28%E2%80%AFAM.png?alt=media&#x26;token=df9da692-9535-467e-b4c6-bbbea5324433" alt=""><figcaption></figcaption></figure>
-
-When you click the `chart` in the analytics board `Queries`, a table with a list of user queries in the selected date range is displayed.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FAQhKGtHGkuZUDuZWkJl2%2FScreenshot%202025-04-01%20at%2011.19.48%E2%80%AFAM.png?alt=media&#x26;token=0f697a51-0251-4e9f-bba4-ac6df391a929" alt=""><figcaption></figcaption></figure>
-
-1. Each row in the table displays the following details:
-
-**User query**: The user query that matches the search criteria.
-
-**User**: The user with the date and time when the query was posted.
-
-**Skill**: The name of the skill to which the user query belongs.
-
-**Skill type**: Type of skill corresponding to the user query.
-
-**Channel (Channel type)**: Name and the type of channel from which the user query was posted.
-
-**Action**: Click `View Messages` in the `Action` column to view the conversation history corresponding to the user query. See Conversation history, for more information.
-
-2. You can further filter this page by skill type and view data monthly or yearly. Additionally, you can select a custom date range as needed.
-3. Click `ellipsis (three dots) -> Advance insights` at the right side of the table to view details in the `Query insights` page. See Query Insights, for more information.
-4. You can view the query analytics based on skill type for a specific day by hovering over the day in the chart.
-
-### **Call Sessions**
-
-The `Call Sessions` analytics board displays the total number of call sessions that occurred in the agent for the selected filter criteria. See [Select filter criteria](#select-filter-criteria), for more information on the available filter criteria.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F5kRGcHReIu10cTXKdcRk%2FScreenshot%202025-04-02%20at%206.43.18%E2%80%AFPM%20copy.png?alt=media&#x26;token=671f2334-5a4a-48e0-b2fd-c864ec4c78b5" alt=""><figcaption></figcaption></figure>
-
-### **Text Sessions**
-
-The `Text Sessions` analytics board displays the total number of text sessions that occurred in the agent for the selected filter criteria. See [Select filter criteria](#select-filter-criteria), for more information on the available filter criteria.&#x20;
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fz4o4RMYjV3ORfcs35BcT%2FScreenshot%202025-04-02%20at%206.43.18%E2%80%AFPM.png?alt=media&#x26;token=73b7031e-26d5-49f2-89dc-3b226fb01069" alt=""><figcaption></figcaption></figure>
-
-### **Active Users**
-
-The `Active users` analytics board displays the number of users interacting with the agent for the selected filter criteria. See [Select filter criteria](#select-filter-criteria), for more information on the available filter criteria.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FWZ3Nnmmq5ocayhCYhMt5%2FScreenshot%202025-04-02%20at%206.43.26%E2%80%AFPM.png?alt=media&#x26;token=7d229490-4172-4bf3-a091-ecc34044fa1a" alt=""><figcaption></figcaption></figure>
-
-### **Agent intervention**
-
-The `Live Agent Transfers` analytics board displays the number of conversations transferred to Live Agent in the agent for the selected filter criteria. See [Select filter criteria](#select-filter-criteria), for more information on the available filter criteria.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FdGPXMy4HgaMv0HwJpVfa%2FScreenshot%202025-04-02%20at%206.43.33%E2%80%AFPM.png?alt=media&#x26;token=fced0182-538d-4f78-84be-c76183fc4cae" alt=""><figcaption></figcaption></figure>
-
-### **Channels**
-
-The `Channels` analytics board displays the percentage of agent-user interaction in different channels the agent is deployed on, for the selected filter criteria. See [Select filter criteria](#select-filter-criteria), for more information on the available filter criteria.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fivv1GiHHMUYlXCIJvJmT%2FScreenshot%202025-04-02%20at%206.43.39%E2%80%AFPM.png?alt=media&#x26;token=040e1c74-623d-4fa4-a436-d18c4f2e6ef0" alt=""><figcaption></figcaption></figure>
-
-### **Languages**
-
-The `Languages` analytics board displays the percentage of agent-user interaction in different languages the agent is deployed on, for the selected filter criteria.  See [Select filter criteria](#select-filter-criteria), for more information on the available filter criteria.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FY2NtlkNx0oHW619fl616%2FScreenshot%202025-04-02%20at%206.43.45%E2%80%AFPM.png?alt=media&#x26;token=79b1e4e8-ee27-4864-98ed-13f60b81cef2" alt=""><figcaption></figcaption></figure>
-
-### **Top Tags**
-
-The `Top tags` page displays the report of the frequently triggered intent-tagged categories across different skill responses for the selected filter criteria. See [Select filter criteria](#select-filter-criteria), for more information on the available filter criteria.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FKC6HpkItKTn7I6Z4bVgx%2FScreenshot%202025-04-02%20at%206.43.57%E2%80%AFPM.png?alt=media&#x26;token=e02f4be2-0464-4b8f-a0ab-ee3ca9cc7afa" alt=""><figcaption></figcaption></figure>
-
-### **Top Prompt Skills**
-
-The `Top Prompt Skills` analytics board displays the report of the frequently triggered Prompt skill intents in the agent for the selected filter criteria. See [Select filter criteria](#select-filter-criteria), for more information on the available filter criteria.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FL0HIVjotrDxMEYd9qb3e%2FScreenshot%202025-04-02%20at%206.44.03%E2%80%AFPM.png?alt=media&#x26;token=ab4bbc40-db06-4dc8-b7ab-eaa8a220b4d1" alt=""><figcaption></figcaption></figure>
-
-### **Top Document Searched**
-
-The `Top Documents Searched` widget displays a report of the most frequently searched documents across various skill responses based on the selected filter criteria. See [Select filter criteria](#select-filter-criteria), for more information on the available filter criteria.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FiSPrdo90QCp8iCI0GHkN%2FScreenshot%202025-04-02%20at%206.44.13%E2%80%AFPM.png?alt=media&#x26;token=27096ff2-703c-4861-8fdd-9499b2e58bc0" alt=""><figcaption></figcaption></figure>
 
 
 

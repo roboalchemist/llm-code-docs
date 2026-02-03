@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/chatbot/builder/blocks/action/set-variable.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Set Variable
 
 > Learn about the Set Variable block and how to set it up in the Builder.

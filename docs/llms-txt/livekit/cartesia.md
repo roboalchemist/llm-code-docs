@@ -6,31 +6,7 @@
 
 # Source: https://docs.livekit.io/agents/models/stt/inference/cartesia.md
 
-# Source: https://docs.livekit.io/agents/models/tts/plugins/cartesia.md
-
-# Source: https://docs.livekit.io/agents/models/tts/inference/cartesia.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/cartesia.md
-
-# Source: https://docs.livekit.io/agents/models/stt/inference/cartesia.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/cartesia.md
-
-# Source: https://docs.livekit.io/agents/models/tts/inference/cartesia.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/cartesia.md
-
-# Source: https://docs.livekit.io/agents/models/stt/inference/cartesia.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/cartesia.md
-
-# Source: https://docs.livekit.io/agents/models/tts/inference/cartesia.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/cartesia.md
-
-# Source: https://docs.livekit.io/agents/models/stt/inference/cartesia.md
-
-LiveKit docs › Models › Speech-to-text (STT) › LiveKit Inference › Cartesia
+LiveKit docs › Models › STT › Inference › Cartesia
 
 ---
 
@@ -44,7 +20,7 @@ LiveKit Inference offers transcription powered by Cartesia. Pricing information 
 
 | Model name | Model ID | Languages |
 | -------- | -------- | --------- |
-| Ink Whisper | `cartesia/ink-whisper` | `en`, `zh`, `de`, `es`, `ru`, `ko`, `fr`, `ja`, `pt`, `tr`, `pl`, `ca`, `nl`, `ar`, `sv`, `it`, `id`, `vi`, `he`, `uk`, `el`, `ms`, `cs`, `ro`, `da`, `hu`, `ta`, `no`, `th`, `ur`, `hr`, `bg`, `lt`, `la`, `mi`, `ml`, `cy`, `sk`, `te`, `fa`, `lv`, `bn`, `sr`, `az`, `sl`, `kn`, `et`, `mk`, `br`, `eu`, `is`, `hy`, `ne`, `mn`, `bs`, `kk`, `sq`, `sw`, `gl`, `mr`, `pa`, `si`, `km`, `sn`, `yo`, `so`, `af`, `oc`, `ka`, `be`, `tg`, `sd`, `gu`, `am`, `yi`, `lo`, `uz`, `fo`, `ht`, `ps`, `tk`, `nn`, `mt`, `sa`, `lb`, `my`, `bo`, `tl`, `mg`, `as`, `tt`, `haw`, `ln`, `ha`, `ba`, `jw`, `su`, `yue` |
+| Ink Whisper | `cartesia/ink-whisper` | `en`, `zh`, `de`, `es`, `ru`, `ko`, `fr`, `ja`, `pt`, `tr`, `pl`, `ca`, `nl`, `ar`, `sv`, `it`, `id`, `vi`, `he`, `hi`, `uk`, `el`, `ms`, `cs`, `ro`, `da`, `hu`, `ta`, `no`, `th`, `ur`, `hr`, `bg`, `lt`, `la`, `mi`, `ml`, `cy`, `sk`, `te`, `fa`, `fi`, `lv`, `bn`, `sr`, `az`, `sl`, `kn`, `et`, `mk`, `br`, `eu`, `is`, `hy`, `ne`, `mn`, `bs`, `kk`, `sq`, `sw`, `gl`, `mr`, `pa`, `si`, `km`, `sn`, `yo`, `so`, `af`, `oc`, `ka`, `be`, `tg`, `sd`, `gu`, `am`, `yi`, `lo`, `uz`, `fo`, `ht`, `ps`, `tk`, `nn`, `mt`, `sa`, `lb`, `my`, `bo`, `tl`, `mg`, `as`, `tt`, `haw`, `ln`, `ha`, `ba`, `jw`, `su`, `yue` |
 
 ## Usage
 
@@ -132,7 +108,7 @@ The following links provide more information about Cartesia in LiveKit Inference
 
 ---
 
-This document was rendered at 2025-11-18T23:55:06.438Z.
+This document was rendered at 2026-02-03T03:25:02.466Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/stt/inference/cartesia.md](https://docs.livekit.io/agents/models/stt/inference/cartesia.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

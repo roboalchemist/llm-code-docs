@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/llamb/get-started/step-2-ingest-enterprise-content/create-document-groups.md
 
-# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/manage-avaamo-answers-1/create-document-groups.md
-
-# Source: https://docs.avaamo.com/user-guide/llamb/get-started/step-2-ingest-enterprise-content/create-document-groups.md
-
 # Create document groups
 
 `Document Groups` are used for categorizing and managing content uploaded in your agent. For example, you can upload information that belongs to different products in different document groups.

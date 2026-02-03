@@ -1,10 +1,14 @@
-# Source: https://mintlify.com/docs/api/introduction.md
+# Source: https://www.mintlify.com/docs/api/introduction.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Introduction
 
-> Trigger updates, embed AI assistant, and more
+> Trigger updates, embed AI assistant, export analytics, and more
 
-The Mintlify REST API enables you to programmatically interact with your documentation, trigger updates, and embed AI-powered chat experiences.
+The Mintlify REST API enables you to programmatically interact with your documentation, trigger updates, embed AI-powered chat experiences, and export analytics data.
 
 ## Endpoints
 
@@ -15,27 +19,39 @@ The Mintlify REST API enables you to programmatically interact with your documen
 * [Get all agent jobs](/api-reference/agent/get-all-jobs): Retrieve all agent jobs for a domain.
 * [Generate assistant message](/api-reference/assistant/create-assistant-message): Embed the assistant, trained on your docs, into any application of your choosing.
 * [Search documentation](/api-reference/assistant/search): Search through your documentation.
+* [Get user feedback](/api-reference/analytics/feedback): Export user feedback from your documentation.
+* [Get assistant conversations](/api-reference/analytics/assistant-conversations): Export AI assistant conversation history.
+
+### Common use cases
+
+* **Automated deployments**: Trigger site updates at set intervals or when events occur with [Trigger update](/api-reference/update/trigger) and [Get update status](/api-reference/update/status).
+* **CI/CD integration**: Update documentation as part of your deployment pipeline when code changes with [Trigger update](/api-reference/update/trigger).
+* **Custom integrations**: Embed the AI assistant into your product, support portal, or internal tools with [Generate assistant message](/api-reference/assistant/create-assistant-message) and [Search documentation](/api-reference/assistant/search).
+* **Automated editing**: Use agent jobs to programmatically update documentation at scale with [Create agent job](/api-reference/agent/create-agent-job), [Get agent job](/api-reference/agent/get-agent-job), and [Get all agent jobs](/api-reference/agent/get-all-jobs).
+* **Analytics export**: Export feedback and assistant conversations for external analysis with [Get user feedback](/api-reference/analytics/feedback) and [Get assistant conversations](/api-reference/analytics/assistant-conversations).
 
 ## Authentication
 
-You can generate an API key through [the dashboard](https://dashboard.mintlify.com/settings/organization/api-keys). API keys are associated with an entire organization and can be used across multiple deployments.
+Generate API keys on the [API keys page](https://dashboard.mintlify.com/settings/organization/api-keys) in your dashboard. Each API key belongs to an organization--you can use keys across multiple deployments within the same organization.
+
+You can create up to 10 API keys per hour per organization.
 
 ### Admin API key
 
-The admin API key is used for the [Trigger update](/api-reference/update/trigger), [Get update status](/api-reference/update/status), and all agent endpoints.
+Use the admin API key to authenticate requests to [Trigger update](/api-reference/update/trigger), [Get update status](/api-reference/update/status), [Create agent job](/api-reference/agent/create-agent-job), [Get agent job](/api-reference/agent/get-agent-job), [Get all agent jobs](/api-reference/agent/get-all-jobs), [Get user feedback](/api-reference/analytics/feedback), and [Get assistant conversations](/api-reference/analytics/assistant-conversations).
 
-Admin API keys begin with the `mint_` prefix. Keep your admin API keys secret.
+Admin API keys begin with the `mint_` prefix.
+
+The admin API key is a server-side secret. Do not expose it in client-side code.
 
 ### Assistant API key
 
-The assistant API key is used for the [Generate assistant message](/api-reference/assistant/create-assistant-message) and [Search documentation](/api-reference/assistant/search) endpoints.
+Use the assistant API key to authenticate requests to [Generate assistant message](/api-reference/assistant/create-assistant-message) and [Search documentation](/api-reference/assistant/search) endpoints.
 
 Assistant API keys begin with the `mint_dsc_` prefix.
 
-The assistant API **key** is a server-side token that should be kept secret.
-
-The assistant API **token** is a public token that can be referenced in your frontend code.
+The assistant API key is a public token that you can reference in frontend code.
 
 <Note>
-  Calls using the assistant API token can incur costs: either using your AI assistant credits or incurring overages.
+  Calls using the assistant API token can incur costs: either using your assistant credits or incurring overages.
 </Note>

@@ -1,4 +1,4 @@
-# Source: https://docs.stripe.com/baas/start-integration/onboarding-overview.md
+# Source: https://docs.stripe.com/issuing/onboarding-overview.md
 
 # Onboarding overview
 
@@ -8,19 +8,17 @@ Use this guide to develop and launch an integration using Stripe [Issuing](https
 
 Before you go live, you must:
 
-1. **Get your use case approved:** Submit information pertaining to your use case, familiarize yourself with the compliance requirements, and explore testing environments.
-1. **Obtain live mode access:** Build in the production environment, manage the necessary operational responsibilities, and complete the required compliance tasks.
-1. **Get ready to launch your BaaS offering:** Test the program out with your employees using real funds.
+1. **Get your use case approved**: Submit information pertaining to your use case, familiarize yourself with the compliance requirements, and explore testing environments.
+1. **Obtain live mode access**: Build in the production environment, manage the necessary operational responsibilities, and complete the required compliance tasks.
+1. **Get ready to launch your offering**: Test the program out with your employees using real funds.
 
 # Embedded Finance
 
-> This is a Embedded Finance for when onboarding-overview-variant is embedded-finance. View the full page at https://docs.stripe.com/baas/start-integration/onboarding-overview?onboarding-overview-variant=embedded-finance.
+> This is a Embedded Finance for when onboarding-overview-variant is embedded-finance. View the full page at https://docs.stripe.com/issuing/onboarding-overview?onboarding-overview-variant=embedded-finance.
 
 Create cards and financial accounts for your customers (US only).
 
-**Complexity:** ●●●○○
-
-**Example segments:** SaaS platforms, e-commerce businesses, and corporate benefits providers.
+**Example segments**: SaaS platforms, e-commerce businesses, and corporate benefits providers.
 
 ## Milestone 1: Get your use case approved 
 
@@ -36,7 +34,7 @@ To obtain live mode access, you must complete the required compliance tasks. In 
 
 ### Build your integration
 
-At any time, you can explore an integration in a *sandbox* (A sandbox is an isolated test environment that allows you to test Stripe functionality in your account without affecting your live integration. Use sandboxes to safely experiment with new features and changes) environment using our [sample app](https://docs.stripe.com/baas/start-integration/sample-app.md). After you sign the legal agreement, Stripe configures your program to the capabilities required for your business model. After you receive approval, you can begin submitting live transactions.
+At any time, you can explore an integration in a *sandbox* (A sandbox is an isolated test environment that allows you to test Stripe functionality in your account without affecting your live integration. Use sandboxes to safely experiment with new features and changes) environment using our [sample app](https://docs.stripe.com/issuing/sample-app.md). After you sign the legal agreement, Stripe configures your program to the capabilities required for your business model. After you receive approval, you can begin submitting live transactions.
 
 |                  | Sandbox                                                                                                                                                                                                                                                                         | Live                                                              |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
@@ -49,7 +47,7 @@ At any time, you can explore an integration in a *sandbox* (A sandbox is an isol
 Prior to go-live, you need to take care of various operational responsibilities:
 
 - **Customer support:** Understand what types of customer inquiries you need to handle and [equip your support team](https://docs.stripe.com/issuing/customer-support.md) with the appropriate information and tools.
-- **Compliance management:** Set up the necessary compliance processes outlined in the [compliance section](https://docs.stripe.com/baas/start-integration/onboarding-overview.md#complete-compliance-tasks).
+- **Compliance management:** Set up the necessary compliance processes outlined in the [compliance section](https://docs.stripe.com/issuing/onboarding-overview.md#complete-compliance-tasks).
 - **Physical cards:** If your use case requires [physical cards](https://docs.stripe.com/issuing/cards/physical.md), you can order [standard cards](https://docs.stripe.com/issuing/cards/physical.md) if you want to go to market quickly. Or you can [fully customize](https://docs.stripe.com/issuing/cards/physical/order-custom-bundle.md) your cards with unique artwork and materials, if physical cards are a core part of your business.
 - **Mobile wallets:** If your use case necessitates Apple Pay, [review the steps](https://docs.stripe.com/issuing/cards/digital-wallets.md) required for approval.
 
@@ -79,7 +77,7 @@ You need to complete a set of compliance tasks before you can launch your integr
 
    After you submit your screenshots, Stripe reviews and approves within two weeks or requests additional revisions. If there are any adjustments that need to be made to your submissions, we let you know, so that you can resubmit with the needed adjustments.
 
-## Milestone 3: Get ready to launch your BaaS offering 
+## Milestone 3: Get ready to launch your offering 
 
 Now you’re ready to request your first virtual or physical card. Using real funds, test the program out by having designated employees complete initial transactions.
 
@@ -96,13 +94,11 @@ Once live, you need to dedicate resources to ongoing operational requirements:
 
 # B2B Payments
 
-> This is a B2B Payments for when onboarding-overview-variant is b2b-payments. View the full page at https://docs.stripe.com/baas/start-integration/onboarding-overview?onboarding-overview-variant=b2b-payments.
+> This is a B2B Payments for when onboarding-overview-variant is b2b-payments. View the full page at https://docs.stripe.com/issuing/onboarding-overview?onboarding-overview-variant=b2b-payments.
 
 Create cards for your own business, employees or contractors.
 
-**Complexity**: ●●○○○
-
-**Example segments:** Online travel agencies (OTA), Buy Now, Pay Later (BNPL) businesses, and marketplaces.
+**Example segments**: Online travel agencies (OTA), Buy Now, Pay Later (BNPL) businesses, and marketplaces.
 
 ## Milestone 1: Get your use case approved 
 
@@ -131,7 +127,7 @@ At any time, you can explore an Issuing integration in a *sandbox* (A sandbox is
 Prior to go-live, you need to take care of various operational responsibilities:
 
 - **Cardholder experience:** Understand what types of employee inquiries you need to handle and [equip the relevant team](https://docs.stripe.com/issuing/customer-support.md) with the appropriate information and tools.
-- **Compliance management:** Set up the necessary compliance processes outlined in the [compliance section](https://docs.stripe.com/baas/start-integration/onboarding-overview.md#complete-compliance-tasks).
+- **Compliance management:** Set up the necessary compliance processes outlined in the [compliance section](https://docs.stripe.com/issuing/onboarding-overview.md#complete-compliance-tasks).
 - **Physical cards:** If your use case necessitates [physical cards](https://docs.stripe.com/issuing/cards/physical.md), we recommend using [standard cards](https://docs.stripe.com/issuing/cards/physical.md).
 - **Mobile wallets:** If your use case necessitates Apple Pay, [review the steps](https://docs.stripe.com/issuing/cards/digital-wallets.md) required for approval.
 
@@ -151,7 +147,7 @@ Prior to go-live, you need to take care of various operational responsibilities:
 
    After you submit your screenshots, Stripe reviews and approves within two weeks or requests additional revisions. If there are any adjustments that need to be made to your submissions, we let you know, so that you can resubmit with the needed adjustments.
 
-## Milestone 3: Get ready to launch your BaaS offering 
+## Milestone 3: Get ready to launch your offering 
 
 Now you’re ready to request your first virtual or physical card. Using real funds, test the program out by having designated employees complete initial transactions.
 
@@ -166,13 +162,11 @@ Once live, you need to dedicate resources to ongoing operational requirements:
 
 # Expense Management
 
-> This is a Expense Management for when onboarding-overview-variant is expense-management. View the full page at https://docs.stripe.com/baas/start-integration/onboarding-overview?onboarding-overview-variant=expense-management.
+> This is a Expense Management for when onboarding-overview-variant is expense-management. View the full page at https://docs.stripe.com/issuing/onboarding-overview?onboarding-overview-variant=expense-management.
 
 Enable your customers to fund and manage business expenses using your issued cards.
 
-**Complexity**: ●●●○○
-
-**Example segments:** SaaS platforms, e-commerce businesses, and corporate benefits providers.
+**Example segments**: SaaS platforms, e-commerce businesses, and corporate benefits providers.
 
 ## Milestone 1: Get your use case approved 
 
@@ -188,7 +182,7 @@ To obtain live mode access, you must complete the required compliance tasks. In 
 
 ### Build your integration
 
-At any time, you can explore an integration in a *sandbox* (A sandbox is an isolated test environment that allows you to test Stripe functionality in your account without affecting your live integration. Use sandboxes to safely experiment with new features and changes) environment using our [sample app](https://docs.stripe.com/baas/start-integration/sample-app.md). After you sign the legal agreement, Stripe configures your program to the capabilities required for your business model. After you receive approval, you can begin submitting live transactions.
+At any time, you can explore an integration in a *sandbox* (A sandbox is an isolated test environment that allows you to test Stripe functionality in your account without affecting your live integration. Use sandboxes to safely experiment with new features and changes) environment using our [sample app](https://docs.stripe.com/issuing/sample-app.md). After you sign the legal agreement, Stripe configures your program to the capabilities required for your business model. After you receive approval, you can begin submitting live transactions.
 
 |                  | Sandbox                                                                                                                                                              | Live                                                         |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
@@ -205,7 +199,7 @@ Prior to go-live, you need to take care of various operational responsibilities:
 - **Physical cards:** If your use case requires [physical cards](https://docs.stripe.com/issuing/cards/physical.md), you can order [standard cards](https://docs.stripe.com/issuing/cards/physical.md) if you want to go to market quickly. Or you can [fully customize](https://docs.stripe.com/issuing/cards/physical/order-custom-bundle.md) your cards with unique artwork and materials, if physical cards are a core part of your business.
 - **Mobile wallets:** If your use case necessitates Apple Pay, [review the steps](https://docs.stripe.com/issuing/cards/digital-wallets.md) required for approval.
 
-## Milestone 3: Get ready to launch your BaaS offering 
+## Milestone 3: Get ready to launch your offering 
 
 Now you’re ready to request your first virtual or physical card. Using real funds, test the program out by having designated employees complete initial transactions.
 

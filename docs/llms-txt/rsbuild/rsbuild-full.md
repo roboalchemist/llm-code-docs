@@ -200,15 +200,16 @@ When creating an application, you can choose from the following templates provid
 
 ### Optional tools
 
-`create-rsbuild` can help you set up commonly used tools, including [Biome](https://github.com/biomejs/biome), [ESLint](https://github.com/eslint/eslint), [Prettier](https://github.com/prettier/prettier), and [Storybook](https://storybook.js.org/). Use the arrow keys to navigate and the space bar to select. Press Enter without selecting anything to skip these tools.
+`create-rsbuild` can help you set up commonly used tools, including [Rstest](https://rstest.rs), [Biome](https://github.com/biomejs/biome), [ESLint](https://github.com/eslint/eslint), [Prettier](https://github.com/prettier/prettier), [Tailwind CSS](https://tailwindcss.com) and [Storybook](https://storybook.js.org/). Use the arrow keys to navigate and the space bar to select. Press Enter without selecting anything to skip these tools.
 
 ```
 ◆  Select additional tools (Use <space> to select, <enter> to continue)
-│  ◻ Add Biome for code linting and formatting
-│  ◻ Add ESLint for code linting
-│  ◻ Add Prettier for code formatting
-│  ◻ Add Storybook for component development
-│  ◻ Add Rstest for unit testing
+│  ◻ Rstest - testing
+│  ◻ Biome - linting & formatting
+│  ◻ ESLint - linting
+│  ◻ Prettier - formatting
+│  ◻ Tailwind CSS - styling
+│  ◻ Storybook - component development
 └
 ```
 
@@ -256,7 +257,7 @@ Options:
   -h, --help            display help for command
   -d, --dir <dir>       create project in specified directory
   -t, --template <tpl>  specify the template to use
-  --tools <tool>        select additional tools (biome, eslint, prettier, storybook, rstest)
+  --tools <tool>        add additional tools, comma separated
   --override            override files in target directory
   --packageName <name>  specify the package name
 
@@ -264,6 +265,9 @@ Templates:
 
   react-js, react-ts, vue3-js, vue3-ts, vue2-js, vue2-ts, svelte-js, svelte-ts,
   solid-js, solid-ts, vanilla-js, vanilla-ts
+
+Optional tools:
+  rstest, biome, eslint, prettier, tailwindcss, storybook
 ```
 
 ## Migrate from existing projects
@@ -3275,77 +3279,6 @@ Follow the steps in [zephyr-rsbuild-plugin](https://www.npmjs.com/package/zephyr
 During the build process, your application will be automatically deployed and you'll receive a deployment URL. Zephyr Cloud handles asset optimization, global CDN distribution, module federation setup, and provides automatic rollback capabilities.
 
 Start for free today at [zephyr-cloud.io](https://zephyr-cloud.io).
-
-
-
----
-url: /guide/basic/upgrade-rsbuild.md
----
-
-# Upgrade Rsbuild
-
-This section explains how to upgrade your project's Rsbuild dependencies to the latest version.
-
-:::tip
-
-- See [Releases](/community/releases/index) to learn about Rsbuild's release strategy.
-- See [npm - @rsbuild/core](https://npmjs.com/package/@rsbuild/core) to view the latest version.
-
-:::
-
-## Using taze
-
-We recommend using [Taze](https://github.com/antfu-collective/taze) to upgrade the Rsbuild version. Taze is a CLI tool for updating npm dependencies.
-
-### Usage
-
-Run the following command to upgrade all dependencies that include `rsbuild` in their names:
-
-```bash
-npx taze --include /rsbuild/ -w
-```
-
-The result will look similar to:
-
-```bash
-rsbuild - 3 patch
-
-  @rsbuild/core               dev  ~1mo  ^1.0.0  →  ^1.2.0
-  @rsbuild/plugin-react       dev  ~1mo  ^1.0.0  →  ^1.2.0
-  @rsbuild/plugin-type-check  dev  ~1mo  ^1.0.0  →  ^1.2.0
-
-ℹ changes written to package.json, run npm i to install updates.
-```
-
-You can also adjust the `include` pattern to match specific packages. For example, to upgrade only packages under the `@rsbuild` scope:
-
-```bash
-npx taze --include /@rsbuild/ -w
-```
-
-### Options
-
-Here are some examples of using Taze options:
-
-- In a monorepo, you can add the `-r` option to upgrade recursively:
-
-```bash
-npx taze --include /rsbuild/ -w -r
-```
-
-- Add `-l` to upgrade locked versions:
-
-```bash
-npx taze --include /rsbuild/ -w -l
-```
-
-- To upgrade to a major version:
-
-```bash
-npx taze major --include /rsbuild/ -w
-```
-
-> For more options, please refer to the [taze documentation](https://github.com/antfu-collective/taze).
 
 
 
@@ -7653,7 +7586,7 @@ These general optimization methods speed up both development and production buil
 
 ### Upgrade Rsbuild
 
-Upgrading to the latest version of Rsbuild gives you access to the latest performance optimizations. See [Upgrade Rsbuild](/guide/basic/upgrade-rsbuild) for more details.
+Upgrading to the latest version of Rsbuild gives you access to the latest performance optimizations. See [Upgrade Rsbuild](/guide/upgrade/upgrade-rsbuild) for more details.
 
 ### Enable persistent cache
 
@@ -7929,10 +7862,81 @@ declare module '*?inline' {
 
 
 ---
-url: /guide/migration/rsbuild-0-x.md
+url: /guide/upgrade/upgrade-rsbuild.md
 ---
 
-# Migrating from Rsbuild 0.x
+# Upgrading Rsbuild
+
+This section explains how to upgrade your project's Rsbuild dependencies to the latest version.
+
+:::tip
+
+- See [Releases](/community/releases/index) to learn about Rsbuild's release strategy.
+- See [npm - @rsbuild/core](https://npmjs.com/package/@rsbuild/core) to view the latest version.
+
+:::
+
+## Using taze
+
+We recommend using [Taze](https://github.com/antfu-collective/taze) to upgrade the Rsbuild version. Taze is a CLI tool for updating npm dependencies.
+
+### Usage
+
+Run the following command to upgrade all dependencies that include `rsbuild` in their names:
+
+```bash
+npx taze --include /rsbuild/ -w
+```
+
+The result will look similar to:
+
+```bash
+rsbuild - 3 patch
+
+  @rsbuild/core               dev  ~1mo  ^1.0.0  →  ^1.2.0
+  @rsbuild/plugin-react       dev  ~1mo  ^1.0.0  →  ^1.2.0
+  @rsbuild/plugin-type-check  dev  ~1mo  ^1.0.0  →  ^1.2.0
+
+ℹ changes written to package.json, run npm i to install updates.
+```
+
+You can also adjust the `include` pattern to match specific packages. For example, to upgrade only packages under the `@rsbuild` scope:
+
+```bash
+npx taze --include /@rsbuild/ -w
+```
+
+### Options
+
+Here are some examples of using Taze options:
+
+- In a monorepo, you can add the `-r` option to upgrade recursively:
+
+```bash
+npx taze --include /rsbuild/ -w -r
+```
+
+- Add `-l` to upgrade locked versions:
+
+```bash
+npx taze --include /rsbuild/ -w -l
+```
+
+- To upgrade to a major version:
+
+```bash
+npx taze major --include /rsbuild/ -w
+```
+
+> For more options, please refer to the [taze documentation](https://github.com/antfu-collective/taze).
+
+
+
+---
+url: /guide/upgrade/v0-to-v1.md
+---
+
+# Upgrading from 0.x to v1
 
 This document lists all breaking changes from Rsbuild 0.7 to 1.0. Use it as a migration reference.
 
@@ -21420,6 +21424,15 @@ export default {
 The object returned by the `tools.swc` function will be used directly as the final `builtin:swc-loader` option, and will not be merged with the built-in `builtin:swc-loader` option anymore.
 :::
 
+## Configuration conflicts
+
+In the SWC configuration, `jsc.target` (which specifies the ECMAScript version, such as `es2015`) and `env` cannot coexist.
+
+To avoid conflicts, Rsbuild adopts the following handling strategies:
+
+- If Rsbuild detects that you have manually set `jsc.target` in `tools.swc`, it will automatically remove the built-in `env.targets`.
+- If [output.polyfill](/config/output/polyfill) is configured, Rsbuild will force set `env.mode`. In this case, you cannot use `jsc.target`.
+
 
 
 ---
@@ -29955,7 +29968,7 @@ As shown, the API style of the Rsbuild plugin is similar to esbuild, it can be d
 ## How to use 1.0
 
 - If you haven't used Rsbuild before, you can experience it through the [CodeSandbox example](https://codesandbox.io/p/github/rstackjs/rsbuild-codesandbox-example) or refer to the [Quick start](/guide/start/quick-start) to use Rsbuild.
-- If you are using Rsbuild 0.7 or earlier, please note that 1.0 includes some breaking changes. You can refer to the [Migrating from 0.x](/guide/migration/rsbuild-0-x) document to upgrade.
+- If you are using Rsbuild 0.7 or earlier, please note that 1.0 includes some breaking changes. You can refer to the [Migrating from 0.x](/guide/upgrade/v0-to-v1) document to upgrade.
 - Rsbuild also provides migration guides for projects that use webpack, CRA, Vue CLI, etc. See [Migrate from Existing Projects](/guide/start/quick-start#migrate-from-existing-projects).
 
 > Give a star 🌟 to the [Rsbuild GitHub repository](https://github.com/web-infra-dev/rsbuild).

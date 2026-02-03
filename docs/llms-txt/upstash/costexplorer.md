@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/common/account/costexplorer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cost Explorer
 
 The Cost Explorer pages allow you to view your current and previous months’ costs. To access the Cost Explorer, navigate to the left menu and select Account > Cost Explorer. Below is an example report:

@@ -24,7 +24,7 @@ This storage client is designed to work specifically in `Actor` context and prov
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_smart_apify/_storage_client.py#L35)\_\_init\_\_
+### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_smart_apify/_storage_client.py#L35)\_\_init\_\_
 
 * ****\_\_init\_\_**(\*, cloud\_storage\_client, local\_storage\_client): None
 
@@ -44,13 +44,13 @@ This storage client is designed to work specifically in `Actor` context and prov
 
   #### Returns None
 
-### [**](#__str__)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_smart_apify/_storage_client.py#L52)\_\_str\_\_
+### [**](#__str__)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_smart_apify/_storage_client.py#L52)\_\_str\_\_
 
 * ****\_\_str\_\_**(): str
 
 - #### Returns str
 
-### [**](#create_dataset_client)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_smart_apify/_storage_client.py#L68)create\_dataset\_client
+### [**](#create_dataset_client)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_smart_apify/_storage_client.py#L68)create\_dataset\_client
 
 * **async **create\_dataset\_client**(\*, id, name, alias, configuration): DatasetClient
 
@@ -63,7 +63,7 @@ This storage client is designed to work specifically in `Actor` context and prov
 
   #### Returns DatasetClient
 
-### [**](#create_kvs_client)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_smart_apify/_storage_client.py#L81)create\_kvs\_client
+### [**](#create_kvs_client)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_smart_apify/_storage_client.py#L81)create\_kvs\_client
 
 * **async **create\_kvs\_client**(\*, id, name, alias, configuration): KeyValueStoreClient
 
@@ -76,7 +76,7 @@ This storage client is designed to work specifically in `Actor` context and prov
 
   #### Returns KeyValueStoreClient
 
-### [**](#create_rq_client)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_smart_apify/_storage_client.py#L94)create\_rq\_client
+### [**](#create_rq_client)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_smart_apify/_storage_client.py#L94)create\_rq\_client
 
 * **async **create\_rq\_client**(\*, id, name, alias, configuration): RequestQueueClient
 
@@ -89,7 +89,7 @@ This storage client is designed to work specifically in `Actor` context and prov
 
   #### Returns RequestQueueClient
 
-### [**](#get_storage_client_cache_key)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_smart_apify/_storage_client.py#L59)get\_storage\_client\_cache\_key
+### [**](#get_storage_client_cache_key)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_smart_apify/_storage_client.py#L59)get\_storage\_client\_cache\_key
 
 * ****get\_storage\_client\_cache\_key**(configuration): Hashable
 
@@ -99,7 +99,7 @@ This storage client is designed to work specifically in `Actor` context and prov
 
   #### Returns Hashable
 
-### [**](#get_suitable_storage_client)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_smart_apify/_storage_client.py#L106)get\_suitable\_storage\_client
+### [**](#get_suitable_storage_client)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_smart_apify/_storage_client.py#L106)get\_suitable\_storage\_client
 
 * ****get\_suitable\_storage\_client**(\*, force\_cloud): StorageClient
 

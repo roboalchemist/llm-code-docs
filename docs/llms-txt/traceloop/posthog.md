@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/integrations/posthog.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Posthog
 
 > Connect Traceloop to Posthog to combine LLM insights with your product analytics
@@ -44,8 +48,3 @@ You can then create a new dashboard from the "LLM Metrics - Traceloop" template 
 <Frame>
   <img src="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-result.png?fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=a7ac3ec7d419d08964c981d15789798c" data-og-width="1619" width="1619" data-og-height="1062" height="1062" data-path="img/traceloop-integrations/posthog-result.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-result.png?w=280&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=92dada6eaa3fd060cbc86aecd6e965a6 280w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-result.png?w=560&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=87d2c7b2c184818f67a3101db7dcaae9 560w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-result.png?w=840&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=e89cd13fc2abc56e8cee7f0467d7e429 840w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-result.png?w=1100&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=2b11d75fb13d0f8b97e522087e02915e 1100w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-result.png?w=1650&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=637e2c22dac14bf939a82002801390cd 1650w, https://mintcdn.com/enrolla/GspX1ocwd1gETLy0/img/traceloop-integrations/posthog-result.png?w=2500&fit=max&auto=format&n=GspX1ocwd1gETLy0&q=85&s=2809ac33a86e1683caaeeb85c3bbe654 2500w" />
 </Frame>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

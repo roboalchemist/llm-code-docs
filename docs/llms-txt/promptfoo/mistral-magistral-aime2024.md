@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/mistral-magistral-aime2024/
+
 # Recreating Mistral Magistral AIME2024 Benchmarks
 
 Mistral's [Magistral models](https://mistral.ai/news/magistral/) achieved **73.6% on AIME2024** (Medium) and **70.7%** (Small) on mathematical reasoning problems. This guide shows you how to reproduce these benchmark results using promptfoo.

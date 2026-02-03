@@ -64,7 +64,7 @@ In Stock
 [Adafruit 0.56" 4-Digit 7-Segment Display with I2C Backpack - Red](https://www.adafruit.com/product/878)
 What's better than a single LED? Lots of LEDs! A fun way to make a small display is to use an [8x8 matrix](https://www.adafruit.com/category/37_88) or a [4-digit 7-segment display](https://www.adafruit.com/category/37_103). Matrices like these are...
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/878)
 [Related Guides to the Product](https://learn.adafruit.com/products/878/guides)
 ### Adafruit 0.56" 4-Digit 7-Segment Display w/I2C Backpack - Yellow
@@ -96,7 +96,7 @@ In Stock
 [Adafruit Bicolor LED Square Pixel Matrix with I2C Backpack](https://www.adafruit.com/product/902)
 What's better than a single LED? Lots of LEDs! A fun way to make a small colorful display is to use a [1.2" Bi-color 8x8 LED Matrix](http://www.adafruit.com/products/458). Matrices like these are 'multiplexed' - so to control all the 128 LEDs you need 24 pins....
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/902)
 [Related Guides to the Product](https://learn.adafruit.com/products/902/guides)
 ### Adafruit Mini 8x8 LED Matrix w/I2C Backpack - Blue
@@ -176,7 +176,7 @@ In Stock
 [Adafruit 1.2" 4-Digit 7-Segment Display w/I2C Backpack - Red](https://www.adafruit.com/product/1270)
 What's better than a single LED? Lots of LEDs! A fun way to make a numeric display is to use a [4-digit 7-segment display](https://www.adafruit.com/category/37_103). LED matrices like these are 'multiplexed' - so to control all the seven-segment LEDs you need 14 pins....
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/1270)
 [Related Guides to the Product](https://learn.adafruit.com/products/1270/guides)
 ### Small 1.2" 8x8 Ultra Bright White LED Matrix + Backpack
@@ -208,7 +208,7 @@ In Stock
 [Bi-Color (Red/Green) 24-Bar Bargraph w/I2C Backpack Kit](https://www.adafruit.com/product/1721)
 What's better than a single LED? Lots of LEDs! A fun way to make a small linear display is to use two 12-bar Bi-color bar-graphs. However, this LED bargraph is 'multiplexed' - so to control all the 48 LEDs you need a lot of pins. <a...></a...>
 
-In Stock
+Out of Stock
 [Buy Now](https://www.adafruit.com/product/1721)
 [Related Guides to the Product](https://learn.adafruit.com/products/1721/guides)
 ### Small 1.2" 8x8 Ultra Bright Square Amber LED Matrix + Backpack
@@ -256,7 +256,7 @@ In Stock
 [Quad Alphanumeric Display - Red 0.54" Digits w/ I2C Backpack](https://www.adafruit.com/product/1911)
 Display, elegantly, 012345678 or 9! Gaze, hypnotized, at ABCDEFGHIJKLM - well it can display the whole alphabet. You get the point. This is a nice, bright alphanumeric display that shows letters and numbers in a beautiful red hue. It's super bright and designed for viewing from distances...
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/1911)
 [Related Guides to the Product](https://learn.adafruit.com/products/1911/guides)
 ### Quad Alphanumeric Display - Blue 0.54" Digits w/ I2C Backpack
@@ -264,7 +264,7 @@ Out of Stock
 [Quad Alphanumeric Display - Blue 0.54" Digits w/ I2C Backpack](https://www.adafruit.com/product/1912)
 Display, elegantly, 012345678 or 9! Gaze, hypnotized, at ABCDEFGHIJKLM - well it can display the whole alphabet. You get the point. This is a nice, bright alphanumeric display that shows letters and numbers in a beautiful blue hue. It's super bright and designed for viewing from distances...
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/1912)
 [Related Guides to the Product](https://learn.adafruit.com/products/1912/guides)
 ### 16x8 1.2" LED Matrix + Backpack - Ultra Bright Round Green LEDs
@@ -392,7 +392,7 @@ Out of Stock
 [Adafruit 8x16 LED Matrix FeatherWing w/o Matrices](https://www.adafruit.com/product/3090)
 You will chirp with delight when you see how easy it is to make your very own 8x16 LED matrix display for any Feather. At 0.8" square, the little [8x8 matrices](https://www.adafruit.com/new/?q=8x8%20miniature%20LED%20matrix&) have everything a big LED matrix has,...
 
-In Stock
+Out of Stock
 [Buy Now](https://www.adafruit.com/product/3090)
 [Related Guides to the Product](https://learn.adafruit.com/products/3090/guides)
 ### Adafruit 14-segment LED Alphanumeric backpack (same as P1910)
@@ -425,18 +425,18 @@ In Stock
 
 ## Related Guides
 
-- [DIY Pocket LED Gamer - Tiny Tetris!](https://learn.adafruit.com/diy-3d-printed-handheld-pocket-game-tiny-tetris-snake.md)
+- [LED Backpack Displays on Raspberry Pi and BeagleBone Black](https://learn.adafruit.com/led-backpack-displays-on-raspberry-pi-and-beaglebone-black.md)
 - [Animating Multiple LED Backpacks](https://learn.adafruit.com/animating-multiple-led-backpacks.md)
+- [Arduino GPS Clock](https://learn.adafruit.com/arduino-clock.md)
 - [Raspberry Pi Physical Dashboard](https://learn.adafruit.com/raspberry-pi-physical-dashboard.md)
 - [CircuitPython Hardware: LED Backpacks & FeatherWings](https://learn.adafruit.com/micropython-hardware-led-backpacks-and-featherwings.md)
-- [Fidget Spinner Tachometer](https://learn.adafruit.com/fidget-spinner-tachometer.md)
-- [Trinket / Gemma Space Invader Pendant](https://learn.adafruit.com/trinket-slash-gemma-space-invader-pendant.md)
-- [Tap Tempo Trinket](https://learn.adafruit.com/tap-tempo-trinket.md)
-- [LED Backpack Displays on Raspberry Pi and BeagleBone Black](https://learn.adafruit.com/led-backpack-displays-on-raspberry-pi-and-beaglebone-black.md)
-- [Sino:bit with Arduino](https://learn.adafruit.com/sino-bit-with-arduino.md)
-- [Adafruit NeoTrellis](https://learn.adafruit.com/adafruit-neotrellis.md)
-- [Sparkle Motion Skirt with 2D Mapping](https://learn.adafruit.com/sparkle-motion-skirt-with-2d-mapping.md)
-- [Matrix Portal Money-Sensing Tip Jar](https://learn.adafruit.com/matrix-portal-money-sensing-tip-jar.md)
-- [Tombstone Prop-Maker RP2040](https://learn.adafruit.com/tombstone-prop-maker-rp2040.md)
-- [SmartMatrix Remote Controlled LED Art Display](https://learn.adafruit.com/smartmatrix-remote-controlled-led-art-display.md)
-- [3D Printed Frame for Adafruit IS31FL3741 LED Glasses](https://learn.adafruit.com/3d-printed-frame-for-led-glasses-is31fl3741.md)
+- [Matrix and 7-Segment LED Backpack with the Raspberry Pi](https://learn.adafruit.com/matrix-7-segment-led-backpack-with-the-raspberry-pi.md)
+- [DIY Pocket LED Gamer - Tiny Tetris!](https://learn.adafruit.com/diy-3d-printed-handheld-pocket-game-tiny-tetris-snake.md)
+- [RGB LED Matrix Cube with 25,000 LEDs](https://learn.adafruit.com/rgb-led-matrix-cube-for-pi.md)
+- [Creating GIFs for SmartMatrix](https://learn.adafruit.com/creating-gifs-for-smartmatrix.md)
+- [Adafruit CharliePlex LED Matrix Bonnet](https://learn.adafruit.com/adafruit-charlieplex-bonnet.md)
+- [Connecting a 16x32 RGB LED Matrix Panel to a Raspberry Pi](https://learn.adafruit.com/connecting-a-16x32-rgb-led-matrix-panel-to-a-raspberry-pi.md)
+- [MicroPython Displays: Drawing Text](https://learn.adafruit.com/micropython-displays-drawing-text.md)
+- [Heart Rate Badge](https://learn.adafruit.com/heart-rate-badge.md)
+- [16x24 LED Matrix](https://learn.adafruit.com/16x24-led-matrix.md)
+- [Adafruit IS31FL3741](https://learn.adafruit.com/adafruit-is31fl3741.md)

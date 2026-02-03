@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/test/dates-times.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Dates and times
 
 > Learn how to manipulate time and dates in your Bun tests using setSystemTime and Jest compatibility functions

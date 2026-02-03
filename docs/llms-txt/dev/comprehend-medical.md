@@ -2,17 +2,9 @@
 
 # Source: https://dev.writer.com/api-reference/migration-guides/comprehend-medical.md
 
-# Source: https://dev.writer.com/api-reference/tool-api/comprehend-medical.md
-
-# Source: https://dev.writer.com/api-reference/migration-guides/comprehend-medical.md
-
-# Source: https://dev.writer.com/api-reference/tool-api/comprehend-medical.md
-
-# Source: https://dev.writer.com/api-reference/migration-guides/comprehend-medical.md
-
-# Source: https://dev.writer.com/api-reference/tool-api/comprehend-medical.md
-
-# Source: https://dev.writer.com/api-reference/migration-guides/comprehend-medical.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Migrate from medical comprehend API to LLM tool
 

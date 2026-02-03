@@ -4,7 +4,6 @@
 title: EKS Add-on
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EKS Add-on
-source_url: https://docs.datadoghq.com/data_directory/aws/aws.eks_addon.dataset/index.html
 ---
 
 # EKS Add-on
@@ -35,4 +34,4 @@ aws.eks_addon
 | publisher                 | core | string        | The publisher of the add-on.                                                                                                                                                                                                                                              |
 | service_account_role_arn  | core | string        | The Amazon Resource Name (ARN) of the IAM role that's bound to the Kubernetes ServiceAccount object that the add-on uses.                                                                                                                                                 |
 | status                    | core | string        | The status of the add-on.                                                                                                                                                                                                                                                 |
-| tags                      | core | hstore        |
+| tags                      | core | hstore_csv    |

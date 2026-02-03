@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/stt/assemblyai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AssemblyAI
 
 > Speech-to-text service implementation using AssemblyAI's real-time transcription API
@@ -47,8 +51,3 @@ Before using AssemblyAI STT services, you need:
 ### Required Environment Variables
 
 * `ASSEMBLYAI_API_KEY`: Your AssemblyAI API key for authentication
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

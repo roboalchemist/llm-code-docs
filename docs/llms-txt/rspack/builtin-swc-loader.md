@@ -1,7 +1,5 @@
 # Source: https://rspack.dev/guide/features/builtin-swc-loader.md
 
-import { ApiMeta, Stability } from '@components/ApiMeta';
-
 # Builtin swc-loader
 
 [SWC](https://github.com/swc-project/swc) (Speedy Web Compiler) is a transformer and minimizer for JavaScript and TypeScript based on Rust. SWC provides similar functionality to Babel and Terser, and it is 20x faster than Babel on a single thread and 70x faster on four cores.
@@ -77,6 +75,12 @@ export default {
 ### Syntax lowering
 
 SWC provides [jsc.target](https://swc.rs/docs/configuration/compilation#jsctarget) and [env.targets](https://swc.rs/docs/configuration/compilation#envtargets) to specify the target of JavaScript syntax lowering.
+
+:::tip Default target from Rspack
+If neither `env.targets` nor `jsc.target` is configured, `builtin:swc-loader` will automatically derive a default target from Rspack's [`target`](/config/target.md) configuration.
+
+This means you can rely on your Rspack `target` configuration without manually specifying the same targets in the loader options.
+:::
 
 #### jsc.target
 
@@ -175,8 +179,8 @@ export default {
 
 Note:
 
-* Make sure to [exclude](/config/module-rules.md#rulesexclude) the `core-js` package, as `core-js` will not work properly if compiled by SWC.
-* When importing non-ES modules, add [isModule: 'unknown'](https://swc.rs/docs/configuration/compilation#ismodule) to allow SWC to correctly identify the module type.
+- Make sure to [exclude](/config/module-rules.md#rulesexclude) the `core-js` package, as `core-js` will not work properly if compiled by SWC.
+- When importing non-ES modules, add [isModule: 'unknown'](https://swc.rs/docs/configuration/compilation#ismodule) to allow SWC to correctly identify the module type.
 
 ## Type declaration
 
@@ -201,7 +205,7 @@ export default {
 };
 ```
 
-* `rspack.config.ts`:
+- `rspack.config.ts`:
 
 ```ts
 import type { SwcLoaderOptions } from '@rspack/core';
@@ -229,8 +233,7 @@ The following is an introduction to some SWC configurations and Rspack specific 
 
 ### jsc.experimental.plugins
 
-<ApiMeta stability={Stability.Experimental} />
-
+Stability: Experimental
 :::warning
 The Wasm plugin is deeply coupled with the version of SWC, you need to choose a Wasm plugin that is compatible with the corresponding version of SWC in order to function normally.
 
@@ -307,8 +310,7 @@ Experimental features provided by rspack.
 
 ### rspackExperiments.import
 
-<ApiMeta stability={Stability.Experimental} />
-
+Stability: Experimental
 Ported from [babel-plugin-import](https://github.com/umijs/babel-plugin-import), configurations are basically the same.
 
 Function can't be used in configurations, such as `customName`, `customStyleName`, they will cause some performance overhead as these functions must be called from `Rust` , inspired by [modularize\_imports](https://crates.io/crates/modularize_imports), some simple function can be replaced by template string instead. Therefore, the function type configuration such as `customName`, `customStyleName` can be passed in strings as templates to replace functions and improve performance.
@@ -453,22 +455,16 @@ import 'antd/es/button/style';
 
 ### collectTypeScriptInfo
 
-<ApiMeta addedVersion="1.7.0" />
-
+[Added in v1.7.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.7.0)
 Collects information from TypeScript's AST for consumption by subsequent Rspack processes, providing better TypeScript development experience and smaller output bundle size.
 
 To ensure the accuracy of the collected information, users must ensure that subsequent Normal Loaders after `builtin:swc-loader` do not modify the Abstract Syntax Tree (AST) corresponding to the collected information. This precaution is necessary to prevent discrepancies between the collected information and the actual code.
 
-:::tip
-Before Rspack 1.7, the [rspackExperiments.collectTypeScriptInfo](/config/deprecated-options.md#experimentscollecttypescriptinfo) option could be used.
-:::
-
 #### collectTypeScriptInfo.typeExports
 
-<ApiMeta addedVersion="1.7.0" />
-
-* **Type:** `boolean`
-* **Default:** `false`
+[Added in v1.7.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.7.0)
+- **Type:** `boolean`
+- **Default:** `false`
 
 Whether to collect type exports information for [`typeReexportsPresence`](/config/module.md#moduleparserjavascripttypereexportspresence). This is used to check type exports of submodules when running in `'tolerant'` mode.
 
@@ -476,24 +472,20 @@ Please refer to [type reexports presence example](https://github.com/rstackjs/rs
 
 #### collectTypeScriptInfo.exportedEnum
 
-<ApiMeta addedVersion="1.7.0" />
-
-* **Type:** `boolean | 'const-only'`
-* **Default:** `false`
+[Added in v1.7.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.7.0)
+- **Type:** `boolean | 'const-only'`
+- **Default:** `false`
 
 Whether to collect information about exported `enum`s, so Rspack can perform cross-module inline optimization for enums.
 
-* `true` will collect all `enum` information, including `const enum`s and regular `enum`s.
-* `false` will not collect any `enum` information.
-* `'const-only'` will gather only `const enum`s, then only perform cross-module inline optimization for `const enum`.
+- `true` will collect all `enum` information, including `const enum`s and regular `enum`s.
+- `false` will not collect any `enum` information.
+- `'const-only'` will gather only `const enum`s, then only perform cross-module inline optimization for `const enum`.
 
 ```js title="rspack.config.mjs"
 const isProduction = process.env.NODE_ENV === 'production';
 
 export default {
-  experiments: {
-    inlineEnum: true, // This is currently an experimental feature and requires explicit enabling
-  },
   module: {
     rules: [
       {

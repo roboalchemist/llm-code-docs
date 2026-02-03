@@ -66,6 +66,3 @@ Re-exports
 ### [**](#Query)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/migrations/src/Migration.ts#L4)Query
 
 **Query: string | Knex.QueryBuilder | Knex.Raw
-y
-
-**Query: string | Knex.QueryBuilder | Knex.Raw

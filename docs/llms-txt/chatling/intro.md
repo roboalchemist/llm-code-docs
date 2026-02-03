@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/api-reference/v2/intro.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # API Introduction
 
 > The Chatling API allows you to manage your chatbots programmatically.

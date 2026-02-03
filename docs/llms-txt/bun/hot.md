@@ -1,8 +1,12 @@
 # Source: https://bun.com/docs/guides/http/hot.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hot reload an HTTP server
 
-Bun supports the [`--hot`](https://bun.com/docs/runtime/hot#hot-mode) flag to run a file with hot reloading enabled. When any module or file changes, Bun re-runs the file.
+Bun supports the [`--hot`](/runtime/watch-mode#hot-mode) flag to run a file with hot reloading enabled. When any module or file changes, Bun re-runs the file.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun --hot run index.ts

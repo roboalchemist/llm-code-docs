@@ -2,7 +2,7 @@
 
 # Sitemaps vs search
 
-The core crawling problem comes to down to ensuring that we reliably find all detail pages on the target website or inside its categories. This is trivial for small sites. We just open the home page or category pages and paginate to the end as we did in the https://docs.apify.com/academy/web-scraping-for-beginners.md course.
+The core crawling problem comes to down to ensuring that we reliably find all detail pages on the target website or inside its categories. This is trivial for small sites. We just open the home page or category pages and paginate to the end.
 
 Unfortunately, *most modern websites restrict pagination* only to somewhere between 1 and 10,000 products. Solving this problem might seem relatively straightforward at first but there are multiple hurdles that we will explore in this lesson.
 
@@ -28,7 +28,7 @@ Sitemap is usually a simple XML file that contains a list of all pages on the we
 * *Does not directly reflect the website* - There is no way you can ensure that all pages on the website are in the sitemap. The sitemap also can contain pages that were already removed and will return 404s. This is a major downside of sitemaps which prevents us from using them as the only source of URLs.
 * *Updated in intervals* - Sitemaps are usually not updated in real-time. This means that you might miss some pages if you scrape them too soon after they were added to the website. Common update intervals are 1 day or 1 week.
 * *Hard to find or unavailable* - Sitemaps are not always trivial to locate. They can be deployed on a CDN with unpredictable URLs. Sometimes they are not available at all.
-* *Streamed, compressed, and archived* - Sitemaps are often streamed and archived with .tgz extensions and compressed with gzip. This means that you cannot use default HTTP client settings and must handle these cases with extra code or use a scraping framework.
+* *Streamed, compressed, and archived* - Sitemaps are often streamed and archived with .tgz extensions and compressed with Gzip. This means that you cannot use default HTTP client settings and must handle these cases with extra code or use a scraping framework.
 
 ## Pros and cons of categories, search, and filters
 
@@ -56,4 +56,4 @@ Some sites, like Amazon, do not provide exact numbers. In this case, we have to 
 
 ## Next up
 
-Next, we will look into https://docs.apify.com/academy/advanced-web-scraping/crawling/crawling-sitemaps.md. After that we will go through all the intricacies of the category, search and filter crawling, and build up tools implementing a generic approach that we can use on any website. At last, we will combine the results of both and set up monitoring and persistence to ensure we can run this regularly without any manual controls.
+Next, we will look into [sitemap crawling](https://docs.apify.com/academy/advanced-web-scraping/crawling/crawling-sitemaps.md). After that we will go through all the intricacies of the category, search and filter crawling, and build up tools implementing a generic approach that we can use on any website. At last, we will combine the results of both and set up monitoring and persistence to ensure we can run this regularly without any manual controls.

@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zremrangebyrank.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zremrangebyrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zremrangebyrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zremrangebyrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zremrangebyrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zremrangebyrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zremrangebyrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zremrangebyrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zremrangebyrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zremrangebyrank.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # ZREMRANGEBYRANK
 
@@ -26,26 +12,26 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the sorted set
 </ParamField>
 
-<ParamField body="min" type="number" required>
+<ParamField body="min" type="str | float" required>
   The minimum rank to remove.
 </ParamField>
 
-<ParamField body="max" type="number" required>
+<ParamField body="min" type="str | float" required>
   The maximum rank to remove.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The number of elements removed from the sorted set.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.zremrangebyrank("key", 4, 20)
+  ```py Example theme={"system"}
+  redis.zremrangebyrank("key", 4, 20)
   ```
 </RequestExample>

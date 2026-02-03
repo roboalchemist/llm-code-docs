@@ -15,6 +15,7 @@
 | connection | A link used for communication between a client and a server |
 | context switch | A context switch |
 | deployment | A deployment on hosted Vespa |
+| distance | A number describing the distance of two tensors |
 | document | Vespa document, a collection of fields defined in a schema file |
 | documentid | A unique document identifier |
 | dollar | US dollar |
@@ -24,6 +25,7 @@
 | fraction | A value in the range [0..1]. Higher values can occur for some metrics, but would indicate the value is outside the allowed range. |
 | generation | Typically, generation of configuration or application package |
 | gigabyte | One billion bytes |
+| graph node | A node in a graph |
 | hit | Document that meets the filtering/restriction criteria specified by a given query |
 | hit/query | Number of hits per query over a period of time |
 | host | Bare metal computer that contain nodes |
@@ -54,5 +56,5 @@
 | version | Software or config version |
 | wakeup | Computer thread wake-ups for doing some work |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

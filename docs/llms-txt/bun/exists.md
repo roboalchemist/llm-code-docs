@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/read-file/exists.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Check if a file exists
 
 The `Bun.file()` function accepts a path and returns a `BunFile` instance. Use the `.exists()` method to check if a file exists at the given path.
@@ -13,4 +17,4 @@ await file.exists(); // boolean;
 
 ***
 
-Refer to [API > File I/O](https://bun.com/docs/api/file-io) for more information on working with `BunFile`.
+Refer to [API > File I/O](/runtime/file-io) for more information on working with `BunFile`.

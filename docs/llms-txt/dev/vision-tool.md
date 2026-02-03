@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/vision-tool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Analyze images in a chat
 
 The Vision tool for chat completions allows you to analyze images during a chat completion. You can perform actions such as extracting text, interpreting charts and graphs, performing image-based compliance checks, and more.
@@ -384,4 +388,4 @@ By following this guide, you can use the Vision tool to have the `palmyra-vision
 
 ## Next steps
 
-Learn about additional capabilities of the Writer API, such as [analyzing unstructured medical documents](/home/medical-comprehend) and [web search](/home/web-search).
+Learn about additional capabilities of the Writer API, such as [web search](/home/web-search) and [analyzing images](/home/analyze-images).

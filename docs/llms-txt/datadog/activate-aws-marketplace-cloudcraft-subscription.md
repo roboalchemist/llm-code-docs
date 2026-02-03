@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Getting started > Activate your AWS
   Marketplace Cloudcraft subscription
-source_url: >-
-  https://docs.datadoghq.com/getting-started/activate-aws-marketplace-cloudcraft-subscription/index.html
 ---
 
 # Activate your AWS Marketplace Cloudcraft subscription

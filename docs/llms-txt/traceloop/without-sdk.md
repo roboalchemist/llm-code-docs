@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/tracing/without-sdk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Without OpenLLMetry SDK
 
 All the instrumentations are provided as standard OpenTelemetry instrumentations so you can use them directly if you're
@@ -49,8 +53,3 @@ OpenAIInstrumentor().instrument()
   If you're setting OpenTelemetry's `TracerProvider` manually, make sure to do
   this before calling `instrument()`.
 </Tip>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

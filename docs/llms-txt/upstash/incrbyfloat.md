@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/string/incrbyfloat.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/incrbyfloat.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/incrbyfloat.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/incrbyfloat.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/incrbyfloat.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/incrbyfloat.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/incrbyfloat.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/incrbyfloat.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/incrbyfloat.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/incrbyfloat.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # INCRBYFLOAT
 
@@ -28,11 +14,11 @@ If a key does not exist, it is initialized as 0 before performing the operation.
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to decrement.
 </ParamField>
 
-<ParamField body="incrementBy" type="float" required>
+<ParamField body="increment" type="float" required>
   The amount to increment by.
 </ParamField>
 
@@ -43,9 +29,10 @@ If a key does not exist, it is initialized as 0 before performing the operation.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.set("key", 6);
-  await redis.incrbyfloat("key", 4,5);
-  // returns 10.5
+  ```py Example theme={"system"}
+  redis.set("key", 6)
+
+  # returns 10.5
+  redis.incrbyfloat("key", 4,5)
   ```
 </RequestExample>

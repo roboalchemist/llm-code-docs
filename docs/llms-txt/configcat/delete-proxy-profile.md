@@ -2,10 +2,7 @@
 
 # Delete Proxy Profile
 
-```
-DELETE 
-/v1/proxy-profiles/:proxyProfileId
-```
+Copy page
 
 This endpoint removes a Proxy Profile identified by the `proxyProfileId` parameter.
 

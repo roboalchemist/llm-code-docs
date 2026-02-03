@@ -40,7 +40,7 @@ Async sub-client for manipulating a single request queue.
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/request_queue.py#L431)\_\_init\_\_
+### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/request_queue.py#L431)\_\_init\_\_
 
 * ****\_\_init\_\_**(args, \*, client\_key, kwargs): None
 
@@ -62,7 +62,7 @@ Async sub-client for manipulating a single request queue.
 
   #### Returns None
 
-### [**](#add_request)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/request_queue.py#L527)add\_request
+### [**](#add_request)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/request_queue.py#L527)add\_request
 
 * **async **add\_request**(request, \*, forefront): dict
 
@@ -84,7 +84,7 @@ Async sub-client for manipulating a single request queue.
 
   #### Returns dict
 
-### [**](#batch_add_requests)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/request_queue.py#L713)batch\_add\_requests
+### [**](#batch_add_requests)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/request_queue.py#L713)batch\_add\_requests
 
 * **async **batch\_add\_requests**(requests, \*, forefront, max\_parallel, max\_unprocessed\_requests\_retries, min\_delay\_between\_unprocessed\_requests\_retries): [BatchAddRequestsResult](https://docs.apify.com/api/client/python/api/client/python/reference/class/BatchAddRequestsResult.md)
 
@@ -120,7 +120,7 @@ Async sub-client for manipulating a single request queue.
 
   #### Returns [BatchAddRequestsResult](https://docs.apify.com/api/client/python/api/client/python/reference/class/BatchAddRequestsResult.md)
 
-### [**](#batch_delete_requests)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/request_queue.py#L793)batch\_delete\_requests
+### [**](#batch_delete_requests)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/request_queue.py#L793)batch\_delete\_requests
 
 * **async **batch\_delete\_requests**(requests): dict
 
@@ -138,7 +138,7 @@ Async sub-client for manipulating a single request queue.
 
   #### Returns dict
 
-### [**](#delete)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/request_queue.py#L475)delete
+### [**](#delete)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/request_queue.py#L475)delete
 
 * **async **delete**(): None
 
@@ -150,7 +150,7 @@ Async sub-client for manipulating a single request queue.
 
   #### Returns None
 
-### [**](#delete_request)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/request_queue.py#L602)delete\_request
+### [**](#delete_request)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/request_queue.py#L602)delete\_request
 
 * **async **delete\_request**(request\_id): None
 
@@ -168,7 +168,7 @@ Async sub-client for manipulating a single request queue.
 
   #### Returns None
 
-### [**](#delete_request_lock)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/request_queue.py#L646)delete\_request\_lock
+### [**](#delete_request_lock)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/request_queue.py#L646)delete\_request\_lock
 
 * **async **delete\_request\_lock**(request\_id, \*, forefront): None
 
@@ -190,7 +190,7 @@ Async sub-client for manipulating a single request queue.
 
   #### Returns None
 
-### [**](#get)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/request_queue.py#L446)get
+### [**](#get)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/request_queue.py#L446)get
 
 * **async **get**(): dict | None
 
@@ -202,7 +202,7 @@ Async sub-client for manipulating a single request queue.
 
   #### Returns dict | None
 
-### [**](#get_request)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/request_queue.py#L551)get\_request
+### [**](#get_request)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/request_queue.py#L551)get\_request
 
 * **async **get\_request**(request\_id): dict | None
 
@@ -220,7 +220,7 @@ Async sub-client for manipulating a single request queue.
 
   #### Returns dict | None
 
-### [**](#list_and_lock_head)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/request_queue.py#L504)list\_and\_lock\_head
+### [**](#list_and_lock_head)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/request_queue.py#L504)list\_and\_lock\_head
 
 * **async **list\_and\_lock\_head**(\*, lock\_secs, limit): dict
 
@@ -242,7 +242,7 @@ Async sub-client for manipulating a single request queue.
 
   #### Returns dict
 
-### [**](#list_head)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/request_queue.py#L482)list\_head
+### [**](#list_head)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/request_queue.py#L482)list\_head
 
 * **async **list\_head**(\*, limit): dict
 
@@ -260,7 +260,7 @@ Async sub-client for manipulating a single request queue.
 
   #### Returns dict
 
-### [**](#list_requests)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/request_queue.py#L812)list\_requests
+### [**](#list_requests)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/request_queue.py#L812)list\_requests
 
 * **async **list\_requests**(\*, limit, exclusive\_start\_id): dict
 
@@ -282,7 +282,7 @@ Async sub-client for manipulating a single request queue.
 
   #### Returns dict
 
-### [**](#prolong_request_lock)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/request_queue.py#L619)prolong\_request\_lock
+### [**](#prolong_request_lock)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/request_queue.py#L619)prolong\_request\_lock
 
 * **async **prolong\_request\_lock**(request\_id, \*, forefront, lock\_secs): dict
 
@@ -308,7 +308,7 @@ Async sub-client for manipulating a single request queue.
 
   #### Returns dict
 
-### [**](#unlock_requests)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/request_queue.py#L837)unlock\_requests
+### [**](#unlock_requests)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/request_queue.py#L837)unlock\_requests
 
 * **async **unlock\_requests**(): dict
 
@@ -320,7 +320,7 @@ Async sub-client for manipulating a single request queue.
 
   #### Returns dict
 
-### [**](#update)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/request_queue.py#L456)update
+### [**](#update)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/request_queue.py#L456)update
 
 * **async **update**(\*, name, general\_access): dict
 
@@ -342,7 +342,7 @@ Async sub-client for manipulating a single request queue.
 
   #### Returns dict
 
-### [**](#update_request)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/request_queue.py#L576)update\_request
+### [**](#update_request)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/request_queue.py#L576)update\_request
 
 * **async **update\_request**(request, \*, forefront): dict
 
@@ -366,7 +366,7 @@ Async sub-client for manipulating a single request queue.
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#http_client)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L94)http\_client
+### [**](#http_client)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L94)http\_client
 
 **http\_client: [HTTPClient](https://docs.apify.com/api/client/python/api/client/python/reference/class/HTTPClient.md) | [HTTPClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/HTTPClientAsync.md)
 
@@ -374,19 +374,19 @@ Inherited from [BaseClientAsync.http\_client](https://docs.apify.com/api/client/
 
 Overrides [\_BaseBaseClient.http\_client](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#http_client)
 
-### [**](#params)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L17)params
+### [**](#params)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L17)params
 
 **params: dict
 
 Inherited from [\_BaseBaseClient.params](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#params)
 
-### [**](#resource_id)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L15)resource\_id
+### [**](#resource_id)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L15)resource\_id
 
 **resource\_id: str | None
 
 Inherited from [\_BaseBaseClient.resource\_id](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#resource_id)
 
-### [**](#root_client)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L95)root\_client
+### [**](#root_client)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L95)root\_client
 
 **root\_client: [ApifyClient](https://docs.apify.com/api/client/python/api/client/python/reference/class/ApifyClient.md) | [ApifyClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/ApifyClientAsync.md)
 
@@ -394,7 +394,7 @@ Inherited from [BaseClientAsync.root\_client](https://docs.apify.com/api/client/
 
 Overrides [\_BaseBaseClient.root\_client](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#root_client)
 
-### [**](#url)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L16)url
+### [**](#url)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L16)url
 
 **url: str
 

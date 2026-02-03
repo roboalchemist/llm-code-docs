@@ -1,6 +1,6 @@
 # Source: https://docs.intelligems.io/personalizations/getting-started-with-offers.md
 
-# Offer Experiences
+# Offer Personalizations
 
 ## Offers User Guide
 
@@ -130,7 +130,7 @@ Follow these simple steps to create any type of offer:
 
 #### Step 1: Choose Your Offer Type
 
-1. Go to the Offers page in your dashboard
+1. On the left navigation under Personalizations, click on Offers
 2. Click "Create New Offer"
 3. Pick one of the five offer types
 4. Give your offer a clear name (like "Summer Sale - 20% Off Dresses")
@@ -167,7 +167,7 @@ You can limit who sees your offer:
 
 ### Understanding Offer Components
 
-#### [Quantity Buttons](https://docs.intelligems.io/offer-experiences/quantity-buttons)
+#### [Quantity Buttons](https://docs.intelligems.io/offer-personalizations/quantity-buttons)
 
 These buttons appear on product pages and help customers quickly add multiple items to their cart.
 
@@ -189,7 +189,7 @@ These buttons appear on product pages and help customers quickly add multiple it
 2. Customize the button colors and styles in Global Styles
 3. Add the code snippet to your product pages (your developer can help with this)
 
-#### [Progress Bar](https://docs.intelligems.io/offer-experiences/progress-bars)
+#### [Progress Bar](https://docs.intelligems.io/offer-personalizations/progress-bars)
 
 This bar shows customers how much more they need to spend or buy to earn rewards.
 
@@ -209,9 +209,9 @@ This bar shows customers how much more they need to spend or buy to earn rewards
 
 1. Add the progress bar component when creating your offer
 2. Customize the colors and messages in Global Styles
-3. Add the code snippet to your cart page (your developer can help with this, following [this guide](https://docs.intelligems.io/offer-experiences/offers-integrating-widgets#offer-progress-bar))
+3. Add the code snippet to your cart page (your developer can help with this, following [this guide](https://docs.intelligems.io/offer-personalizations/offers-integrating-widgets#offer-progress-bar))
 
-#### [Offer Message](https://docs.intelligems.io/offer-experiences/slide-outs)
+#### [Offer Message](https://docs.intelligems.io/offer-personalizations/slide-outs)
 
 This component displays promotional messages about your offer throughout your website.
 
@@ -297,6 +297,6 @@ If you need assistance with setting up offers:
 * Contact Intelligems support for help with complex configurations
 * Work with your developer for custom implementations
 
-For more technical details about integrating offer components, see [Integrating Components with Offers](https://docs.intelligems.io/offer-experiences/offers-integrating-widgets).
+For more technical details about integrating offer components, see [Integrating Components with Offers](https://docs.intelligems.io/offer-personalizations/offers-integrating-widgets).
 
-To learn about testing different offers against each other, see [Testing Offer Experiences](https://docs.intelligems.io/offer-experiences/testing-offer-personalizations).
+To learn about testing different offers against each other, see [Testing Offers](https://docs.intelligems.io/offer-personalizations/testing-offer-personalizations).

@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/reference/langchain.md
+# Source: https://exa.ai/docs/reference/langchain.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # LangChain
 
@@ -201,8 +205,3 @@ LangChain is a framework for building applications that combine LLMs with data, 
     As you can see, the output generation is enriched with the context of our Exa Search query result!
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

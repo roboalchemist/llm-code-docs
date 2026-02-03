@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/schema/enum/download-auth-type.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # DownloadAuthType
 
 > Enum for DownloadAuthType - authentication methods for media downloads
@@ -127,8 +131,3 @@ mutation {
 * [BearerTokenAuthInput](/schema/input/bearer-token-auth-input) - Bearer token configuration
 * [BasicAuthInput](/schema/input/basic-auth-input) - Basic auth configuration
 * [AudioUploadInput](/schema/input/audio-upload-input) - Parent input type
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireflies.ai/llms.txt

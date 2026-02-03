@@ -16,4 +16,4 @@ To use your own proxies with Apify Console, in your Actor's **Input and options*
 
 ## Custom proxies in SDK
 
-In the Apify SDK, use the `proxyConfiguration.newUrl(sessionId)` (JavaScript) or `proxy_configuration.new_url(session_id)` (Python) command to add your custom proxy URLs to the proxy configuration. See the https://docs.apify.com/sdk/js/api/apify/class/ProxyConfiguration#newUrl or https://docs.apify.com/sdk/python/reference/class/ProxyConfiguration#new_url SDK docs for more details.
+In the Apify SDK, use the `proxyConfiguration.newUrl(sessionId)` (JavaScript) or `proxy_configuration.new_url(session_id)` (Python) command to add your custom proxy URLs to the proxy configuration. See the [JavaScript](https://docs.apify.com/sdk/js/api/apify/class/ProxyConfiguration#newUrl) or [Python](https://docs.apify.com/sdk/python/reference/class/ProxyConfiguration#new_url) SDK docs for more details.

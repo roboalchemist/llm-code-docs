@@ -58,6 +58,10 @@ In order to save new items to the dataset, send HTTP POST request with JSON payl
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

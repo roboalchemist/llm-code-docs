@@ -2,10 +2,6 @@
 
 # Source: https://ast-grep.github.io/cheatsheet/rule.md
 
-# Source: https://ast-grep.github.io/reference/rule.md
-
-# Source: https://ast-grep.github.io/cheatsheet/rule.md
-
 ---
 url: /cheatsheet/rule.md
 ---

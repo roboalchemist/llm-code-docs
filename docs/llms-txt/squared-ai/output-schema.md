@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/activation/ai-modelling/output-schema.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Output Schema
 
 > Define how to handle and structure your AI/ML model's responses.

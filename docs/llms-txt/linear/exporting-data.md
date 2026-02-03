@@ -8,24 +8,24 @@ Export your workspace data using built-in tools, integrations, or the API
 
 ## Overview
 
-Export data from your workspace to build custom reports, keep records, or input into LLMs.
+Export data from your workspace to build custom reports, keep records, or input into LLMs. 
 
 ### Workspace CSV exports
 
-Admins can export a workspace's issue data in CSV format from [Settings > Administration > Import Export](https://linear.app/settings/import-export) and click **Export data** at the bottom. There is a toggle option to include private teams, if any. This export action is recorded in the audit log.
+Admins (Owners, on Enterprise plans) can export a workspace's issue data in CSV format from [Settings > Administration > Import Export](https://linear.app/settings/import-export) and click **Export data** at the bottom. There is a toggle option to include private teams, if any. This export action is recorded in the audit log.
 
 This export contains the following fields for each issue: _ID, Team, Title, Description, Status, Estimate, Priority, Project ID, Project, Creator, Assignee, Labels, Cycle Number, Cycle Name, Cycle Start, Cycle End, Created, Updated, Started, Triaged, Completed, Canceled, Archived, Due Date, Parent issue, Initiatives, Project Milestone ID, Project Milestone, SLA Status_
 
 ## Member list CSV exports
 
-Admins can export the list of members in CSV format from your [Settings > Administration > Members](https://linear.app/settings/members) and click **Export CSV** button.
+Admins (Owners, on Enterprise plans) can export the list of members in CSV format from your [Settings > Administration > Members](https://linear.app/settings/members) and click **Export CSV** button.
 
 ## Issue view CSV exports
 
 Export a CSV of issues from any issue view, project or issue list using the `Ctrl`/`CMD` + `K `menu. In projects and custom views, this action is also accessible through the dropdown menu pictured.
 
 > [!NOTE]
-> Members can export up to 250 issues at a time while Admins can export views with up to 2,000 issues.
+> Members can export up to 250 issues at a time while Admins (Owners, on Enterprise plans) can export views with up to 2,000 issues. 
 > 
 > Guest users cannot export issues from a Linear workspace.
 

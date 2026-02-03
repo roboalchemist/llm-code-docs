@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/connectors/microsoft-sharepoint.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Microsoft SharePoint connector
 
 > Connect WRITER Agent to SharePoint to access sites, documents, and collaboration content
@@ -67,8 +71,3 @@ For detailed instructions, see [Microsoft's OAuth 2.0 documentation](https://lea
 * [Tool calling guide](/home/tool-calling): Understand how AI agents use tools in conversations
 * [Action Agent guide](https://support.writer.com/article/293-how-to-use-action-agent): Learn how to use Action Agent with connected tools
 * [MCP gateway overview](/home/mcp-gateway): Learn about Writer's MCP gateway architecture
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://dev.writer.com/llms.txt

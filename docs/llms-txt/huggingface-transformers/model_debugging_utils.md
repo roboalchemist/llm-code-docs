@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/internal/model_debugging_utils.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/internal/model_debugging_utils.md
 
 # Model debugging toolboxes
 
@@ -228,7 +228,7 @@ layers.
 
 #### transformers.model_addition_debugger_context[[transformers.model_addition_debugger_context]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/model_debugging_utils.py#L398)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/model_debugging_utils.py#L397)
 
 # Model addition debugger - context manager for model adders
 This context manager is a power user tool intended for model adders.

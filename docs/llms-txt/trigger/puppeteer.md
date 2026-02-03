@@ -2,17 +2,9 @@
 
 # Source: https://trigger.dev/docs/config/extensions/puppeteer.md
 
-# Source: https://trigger.dev/docs/guides/examples/puppeteer.md
-
-# Source: https://trigger.dev/docs/config/extensions/puppeteer.md
-
-# Source: https://trigger.dev/docs/guides/examples/puppeteer.md
-
-# Source: https://trigger.dev/docs/config/extensions/puppeteer.md
-
-# Source: https://trigger.dev/docs/guides/examples/puppeteer.md
-
-# Source: https://trigger.dev/docs/config/extensions/puppeteer.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Puppeteer
 
@@ -22,7 +14,7 @@
 
 To use Puppeteer in your project, add these build settings to your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { puppeteer } from "@trigger.dev/build/extensions/puppeteer";
 
@@ -37,7 +29,7 @@ export default defineConfig({
 
 And add the following environment variable in your Trigger.dev dashboard on the Environment Variables page:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 PUPPETEER_EXECUTABLE_PATH: "/usr/bin/google-chrome-stable",
 ```
 

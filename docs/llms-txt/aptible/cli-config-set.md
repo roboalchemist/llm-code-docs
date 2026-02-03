@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-config-set.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible config:set
 
 This command sets [Configuration](/core-concepts/apps/deploying-apps/configuration) variables for an [App](/core-concepts/apps/overview).
@@ -8,7 +12,7 @@ This command sets [Configuration](/core-concepts/apps/deploying-apps/configurati
 
 ```
 Usage:
-  aptible config:set [VAR1=VAL1] [VAR2=VAL2] [...]
+  aptible config:set [--app APP] [VAR1=VAL1] [VAR2=VAL2] [...]
 
 Options:
       [--app=APP]

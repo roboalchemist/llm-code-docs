@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/cli/custom-commands.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom Slash Commands
 
 > Create and manage custom slash commands for frequently-used prompts and workflows.

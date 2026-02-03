@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/geneva/jobs/backfilling.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Backfilling
 
 > Learn how to trigger backfill operations to populate column values in your LanceDB table using Geneva's distributed framework.
@@ -9,6 +13,35 @@
 Triggering backfill creates a distributed job to run the UDF and populate the column values in your LanceDB table. The Geneva framework simplifies several aspects of distributed execution.
 
 **Checkpoints**: Each batch of UDF execution is checkpointed so that partial results are not lost in case of job failures. Jobs can resume and avoid most of the expense of having to recalculate values.
+
+## Adaptive checkpoint sizing
+
+Geneva can automatically adjust checkpoint sizes during a backfill. It starts with small checkpoints (faster proof-of-life) and grows them as it observes stable throughput, while staying within safe bounds. Planning still uses your configured checkpoint size (`checkpoint_size`), but the actual checkpoint chunks can be smaller when adaptive sizing is enabled.
+
+Adaptive sizing is always clamped to bounds:
+
+* `max_checkpoint_size`: Upper bound. Defaults to the job's checkpoint size (`checkpoint_size`) and is capped at that value if you set a larger max.
+* `min_checkpoint_size`: Lower bound. Defaults to 1.
+
+When `min_checkpoint_size == max_checkpoint_size`, adaptive sizing is disabled and checkpoints are fixed-size.
+
+You can set adaptive bounds in two places:
+
+* On the UDF definition via `@udf(..., min_checkpoint_size=..., max_checkpoint_size=...)`
+* On the backfill call via `table.backfill(..., min_checkpoint_size=..., max_checkpoint_size=...)`
+
+Backfill-level values take precedence over UDF defaults.
+
+<CodeGroup>
+  ```python Python icon="python" theme={"theme":{"light":"vitesse-light","dark":"catppuccin-mocha"}}
+  @udf(min_checkpoint_size=25, max_checkpoint_size=200)
+  def embed_udf(text):
+      ...
+
+  # Override the UDF defaults for this run
+  tbl.backfill("embedding", min_checkpoint_size=10, max_checkpoint_size=100)
+  ```
+</CodeGroup>
 
 ## Managing concurrency
 
@@ -96,8 +129,3 @@ Reference:
 
 * [`backfill` API](https://lancedb.github.io/geneva/api/table/#geneva.table.Table.backfill)
 * [`backfill_async` API](https://lancedb.github.io/geneva/api/table/#geneva.table.Table.backfill_async)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

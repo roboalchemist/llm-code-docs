@@ -6,7 +6,6 @@ description: >-
   Visualize and analyze individual traces using flame graphs, span lists,
   waterfalls, and maps with detailed span information.
 breadcrumbs: Docs > APM > Trace Explorer > Trace View
-source_url: https://docs.datadoghq.com/trace_explorer/trace_view/index.html
 ---
 
 # Trace View

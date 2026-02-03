@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/ambient-agents/mcp-servers-for-agents.md
+# Source: https://docs.warp.dev/agent-platform/ambient-agents/mcp-servers-for-agents.md
 
 # MCP Servers for Agents
 
@@ -7,16 +7,6 @@ Ambient Agents in Warp can call external tools through [Model Context Protocol (
 Warp currently supports the [**MCP JSON configuration standard**](https://gofastmcp.com/integrations/mcp-json-configuration), either inline or via file. This guide explains how to define, load, validate, and troubleshoot MCP configurations when running an Ambient Agent.
 
 ***
-
-### When to Use MCP Servers
-
-Use an MCP server when your agent needs access to:
-
-* External tools or APIs wrapped behind an MCP interface
-* Local processes that expose MCP endpoints
-* Internal developer tools that you want integrated into your ambient workflows
-
-Agents call MCP tools automatically whenever their workflow requires them.
 
 ### When to Use MCP Servers
 

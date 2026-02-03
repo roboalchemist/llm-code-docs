@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/http/fetch-unix.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # fetch with unix domain sockets in Bun
 
 In Bun, the `unix` option in `fetch()` lets you send HTTP requests over a [unix domain socket](https://en.wikipedia.org/wiki/Unix_domain_socket).

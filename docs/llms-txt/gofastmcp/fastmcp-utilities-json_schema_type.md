@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-utilities-json_schema_type.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # json_schema_type
 
 # `fastmcp.utilities.json_schema_type`
@@ -40,7 +44,7 @@ Person = json_schema_to_type(schema)
 
 ## Functions
 
-### `json_schema_to_type` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/json_schema_type.py#L110" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `json_schema_to_type` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/json_schema_type.py#L111" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 json_schema_to_type(schema: Mapping[str, Any], name: str | None = None) -> type
@@ -109,4 +113,4 @@ class Name:
 
 ## Classes
 
-### `JSONSchema` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/json_schema_type.py#L77" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `JSONSchema` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/json_schema_type.py#L78" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>

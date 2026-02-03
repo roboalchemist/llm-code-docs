@@ -74,7 +74,7 @@ interface PageFeatureProps {
   /**
    * The icon displayed next to the title when `orientation` is `horizontal` and above the title when `orientation` is `vertical`.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   title?: string | undefined;
   description?: string | undefined;
   /**
@@ -82,7 +82,7 @@ interface PageFeatureProps {
    * @default "\"horizontal\""
    */
   orientation?: "horizontal" | "vertical" | undefined;
-  to?: string | RouteLocationAsRelativeGeneric | RouteLocationAsPathGeneric | undefined;
+  to?: string | kt | Tt | undefined;
   target?: "_blank" | "_parent" | "_self" | "_top" | (string & {}) | null | undefined;
   onClick?: ((event: MouseEvent) => void | Promise<void>) | undefined;
   ui?: { root?: ClassNameValue; wrapper?: ClassNameValue; leading?: ClassNameValue; leadingIcon?: ClassNameValue; title?: ClassNameValue; description?: ClassNameValue; } | undefined;
@@ -110,7 +110,7 @@ export default defineAppConfig({
   ui: {
     pageFeature: {
       slots: {
-        root: 'relative',
+        root: 'relative rounded-sm',
         wrapper: '',
         leading: 'inline-flex items-center justify-center',
         leadingIcon: 'size-5 shrink-0 text-primary',
@@ -127,6 +127,14 @@ export default defineAppConfig({
             leading: 'mb-2.5'
           }
         },
+        to: {
+          true: {
+            root: [
+              'has-focus-visible:ring-2 has-focus-visible:ring-primary',
+              'transition'
+            ]
+          }
+        },
         title: {
           true: {
             description: 'mt-1'
@@ -140,8 +148,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

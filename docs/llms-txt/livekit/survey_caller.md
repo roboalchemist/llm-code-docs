@@ -276,7 +276,7 @@ if __name__ == "__main__":
 
 ---
 
-This document was rendered at 2025-12-31T18:29:43.025Z.
+This document was rendered at 2026-02-03T03:25:29.299Z.
 For the latest version of this document, see [https://docs.livekit.io/recipes/survey_caller.md](https://docs.livekit.io/recipes/survey_caller.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

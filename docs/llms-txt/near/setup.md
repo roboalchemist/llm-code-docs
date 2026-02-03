@@ -40,6 +40,12 @@ You can see this interface defined in `nearcore` [here](https://github.com/near/
 
 ---
 
+  :::important
+
+The endpoints https://*.near.org are officially deprecated and heavy rate-limited. Please use any of [the available RPC providers](https://docs.near.org/api/rpc/providers) in production. See [this announcement](https://www.near.org/blog/deprecation-of-near-org-and-pagoda-co-rpc-endpoints) for more info.
+
+  :::
+
 ## Postman Setup {#postman-setup}
 
 An easy way to test the queries in this documentation page is to use an API request tool such as [Postman](https://www.postman.com/).
@@ -54,14 +60,15 @@ You only need to configure two things:
 After that is set up, just copy/paste the `JSON object` example snippets below into the `body` of your request, on Postman, and click `send`.
 
 ---
+
 ## JavaScript Setup {#javascript-setup}
 
 All of the queries listed in this documentation page can be called using [`near-api-js`](https://github.com/near/near-api-js).
 
 - For `near-api-js` installation and setup please refer to `near-api-js` [quick reference documentation](../../tools/near-api.md).
-- All JavaScript code snippets require a `near` object. For examples of how to instantiate, [**click here**](../../tools/near-api.md#connect).
 
 ---
+
 ## HTTPie Setup {#httpie-setup}
 
 If you prefer to use a command line interface, we have provided RPC examples you can use with [HTTPie](https://httpie.org/). Please note that params take

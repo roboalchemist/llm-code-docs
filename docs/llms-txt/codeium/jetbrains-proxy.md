@@ -1,8 +1,12 @@
 # Source: https://docs.windsurf.com/troubleshooting/plugins-enterprise/jetbrains-proxy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Proxy Configuration for Windsurf in JetBrains IDEs
 
-> Configure proxy settings for Windsurf plugin in JetBrains IDEs
+> Configure HTTP/HTTPS proxy settings for Windsurf plugin in JetBrains IDEs including remote development and Gateway environments.
 
 Some corporate and enterprise networks route traffic through HTTP/HTTPS proxies. The Windsurf plugin in JetBrains IDEs needs to reach external Windsurf services (for sign-in and AI features), so you may need to configure a proxy before things work reliably.
 

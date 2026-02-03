@@ -1,297 +1,320 @@
-# Source: https://docs.exa.ai/reference/exa-mcp.md
+# Source: https://exa.ai/docs/reference/exa-mcp.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Exa MCP
 
-[![Install in Cursor](https://img.shields.io/badge/Install_in-Cursor-000000?style=flat-square\&logoColor=white)](https://cursor.com/en/install-mcp?name=exa\&config=eyJuYW1lIjoiZXhhIiwidHlwZSI6Imh0dHAiLCJ1cmwiOiJodHRwczovL21jcC5leGEuYWkvbWNwIn0=)
-[![Install in VS Code](https://img.shields.io/badge/Install_in-VS_Code-0098FF?style=flat-square\&logo=visualstudiocode\&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=exa\&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.exa.ai%2Fmcp%22%7D)
+Exa MCP connects AI assistants to Exa's search capabilities, including web search and code search. It is open-source and available on [GitHub](https://github.com/exa-labs/exa-mcp-server).
 
-### exa-code: fast and efficient web context for coding agents
+## Installation
 
-Vibe coding should never have a bad vibe. `exa-code` is a huge step towards coding agents that never hallucinate.
-
-When your coding agent makes a search query, `exa-code` searches over billions of GitHub repos, docs pages, StackOverflow posts, and more to find the perfect, token-efficient context that the agent needs to code correctly. It's powered by the Exa search engine.
-
-Examples of queries you can make with `exa-code`:
-
-* use Exa search in python and make sure content is always livecrawled
-* use correct syntax for vercel ai sdk to call gpt-5 nano asking it how are you
-
-**Works with Cursor and Claude Code!** Use the HTTP-based configuration format:
-
-```json  theme={null}
-{
-  "mcpServers": {
-    "exa": {
-      "type": "http",
-      "url": "https://mcp.exa.ai/mcp",
-      "headers": {}
-    }
-  }
-}
-```
-
-Installing Exa MCP like below will install Exa web search as well as `exa-code`. To maximize performance, be sure to leave *only* `exa-code` turned on in your MCP client.
-
-***
-
-Exa MCP Server enables AI assistants like Claude to perform real-time web searches through the Exa Search API, allowing them to access up-to-date information from the internet. It is open-source, check out [GitHub](https://github.com/exa-labs/exa-mcp-server/).
-
-## Remote Exa MCP
-
-Connect directly to Exa's hosted MCP server using this URL:
+Connect to Exa MCP:
 
 ```
 https://mcp.exa.ai/mcp
 ```
 
-You can enable specific tool(s) using the `tools` parameter (if multiple, then with a comma-separated list):
+<Tabs>
+  <Tab title="Cursor">
+    [![Install with one click](https://img.shields.io/badge/Install_with_one_click-Cursor-000000?style=flat-square\&logoColor=white)](https://cursor.com/en/install-mcp?name=exa\&config=eyJuYW1lIjoiZXhhIiwidHlwZSI6Imh0dHAiLCJ1cmwiOiJodHRwczovL21jcC5leGEuYWkvbWNwIn0=)
 
-```
-https://mcp.exa.ai/mcp?tools=web_search_exa,get_code_context_exa
-```
+    Or add to `~/.cursor/mcp.json`:
 
-Or enable all tools:
-
-```
-https://mcp.exa.ai/mcp?tools=web_search_exa,get_code_context_exa,crawling_exa,company_research_exa,linkedin_search_exa,deep_researcher_start,deep_researcher_check
-```
-
-You may include your exa api key in the url like this:
-
-```
-https://mcp.exa.ai/mcp?exaApiKey=YOUREXAKEY
-```
-
-**Note:** By default, only `web_search_exa` and `get_code_context_exa` are enabled. Add other tools as needed using the `tools` parameter.
-
-### Claude Desktop Configuration for Remote MCP
-
-Add this to your Claude Desktop configuration file:
-
-```json  theme={null}
-{
-  "mcpServers": {
-    "exa": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://mcp.exa.ai/mcp"
-      ]
+    ```json  theme={null}
+    {
+      "mcpServers": {
+        "exa": {
+          "url": "https://mcp.exa.ai/mcp"
+        }
+      }
     }
-  }
-}
-```
+    ```
+  </Tab>
 
-### Cursor and Claude Code Configuration for Remote MCP
+  <Tab title="VS Code">
+    [![Install with one click](https://img.shields.io/badge/Install_with_one_click-VS_Code-0098FF?style=flat-square\&logo=visualstudiocode\&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=exa\&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.exa.ai%2Fmcp%22%7D)
 
-For Cursor and Claude Code, use this HTTP-based configuration format:
+    Or add to `.vscode/mcp.json`:
 
-```json  theme={null}
-{
-  "mcpServers": {
-    "exa": {
-      "type": "http",
-      "url": "https://mcp.exa.ai/mcp",
-      "headers": {}
+    ```json  theme={null}
+    {
+      "servers": {
+        "exa": {
+          "type": "http",
+          "url": "https://mcp.exa.ai/mcp"
+        }
+      }
     }
-  }
-}
-```
+    ```
+  </Tab>
 
-Replace the above link to this to enable all tools:
+  <Tab title="Claude Code">
+    Run in terminal:
 
-```
-https://mcp.exa.ai/mcp?tools=web_search_exa,get_code_context_exa,crawling_exa,company_research_exa,linkedin_search_exa,deep_researcher_start,deep_researcher_check
-```
+    ```bash  theme={null}
+    claude mcp add --transport http exa https://mcp.exa.ai/mcp
+    ```
+  </Tab>
+
+  <Tab title="Claude Desktop">
+    Add to your Claude Desktop config file:
+
+    **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+
+    **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+
+    ```json  theme={null}
+    {
+      "mcpServers": {
+        "exa": {
+          "command": "npx",
+          "args": ["-y", "mcp-remote", "https://mcp.exa.ai/mcp"]
+        }
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Codex">
+    Run in terminal:
+
+    ```bash  theme={null}
+    codex mcp add exa --url https://mcp.exa.ai/mcp
+    ```
+  </Tab>
+
+  <Tab title="OpenCode">
+    Add to your `opencode.json`:
+
+    ```json  theme={null}
+    {
+      "mcp": {
+        "exa": {
+          "type": "remote",
+          "url": "https://mcp.exa.ai/mcp",
+          "enabled": true
+        }
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Windsurf">
+    Add to `~/.codeium/windsurf/mcp_config.json`:
+
+    ```json  theme={null}
+    {
+      "mcpServers": {
+        "exa": {
+          "serverUrl": "https://mcp.exa.ai/mcp"
+        }
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Zed">
+    Add to your Zed settings:
+
+    ```json  theme={null}
+    {
+      "context_servers": {
+        "exa": {
+          "url": "https://mcp.exa.ai/mcp"
+        }
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Gemini CLI">
+    Add to `~/.gemini/settings.json`:
+
+    ```json  theme={null}
+    {
+      "mcpServers": {
+        "exa": {
+          "httpUrl": "https://mcp.exa.ai/mcp"
+        }
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="v0 by Vercel">
+    In v0, select **Prompt Tools** > **Add MCP** and enter:
+
+    ```
+    https://mcp.exa.ai/mcp
+    ```
+  </Tab>
+
+  <Tab title="Warp">
+    Go to **Settings** > **MCP Servers** > **Add MCP Server** and add:
+
+    ```json  theme={null}
+    {
+      "exa": {
+        "url": "https://mcp.exa.ai/mcp"
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Kiro">
+    Add to `~/.kiro/settings/mcp.json`:
+
+    ```json  theme={null}
+    {
+      "mcpServers": {
+        "exa": {
+          "url": "https://mcp.exa.ai/mcp"
+        }
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Roo Code">
+    Add to your Roo Code MCP config:
+
+    ```json  theme={null}
+    {
+      "mcpServers": {
+        "exa": {
+          "type": "streamable-http",
+          "url": "https://mcp.exa.ai/mcp"
+        }
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Via npm Package">
+    Standard `mcpServers` format with the npm package. [Get your Exa API key](https://dashboard.exa.ai/api-keys).
+
+    ```json  theme={null}
+    {
+      "mcpServers": {
+        "exa": {
+          "command": "npx",
+          "args": ["-y", "exa-mcp-server"],
+          "env": {
+            "EXA_API_KEY": "your_api_key"
+          }
+        }
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Other">
+    For other MCP clients that support remote MCP:
+
+    ```json  theme={null}
+    {
+      "mcpServers": {
+        "exa": {
+          "url": "https://mcp.exa.ai/mcp"
+        }
+      }
+    }
+    ```
+
+    If your client doesn't support remote MCP servers directly:
+
+    ```json  theme={null}
+    {
+      "mcpServers": {
+        "exa": {
+          "command": "npx",
+          "args": ["-y", "mcp-remote", "https://mcp.exa.ai/mcp"]
+        }
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+<br />
+
+<br />
 
 ## Available Tools
 
-**Note:** By default, only `web_search_exa` and `get_code_context_exa` are enabled. You can enable additional tools using the `tools` parameter (see examples below).
+<Tabs>
+  <Tab title="Enabled by Default">
+    | Tool                   | Description                                                                                        |
+    | ---------------------- | -------------------------------------------------------------------------------------------------- |
+    | `web_search_exa`       | Search the web for any topic and get clean, ready-to-use content                                   |
+    | `get_code_context_exa` | Find code examples, documentation, and programming solutions from GitHub, Stack Overflow, and docs |
+    | `company_research_exa` | Research any company to get business information, news, and insights                               |
+  </Tab>
 
-Exa MCP includes several specialized search tools:
+  <Tab title="Off by Default">
+    | Tool                      | Description                                                                             |
+    | ------------------------- | --------------------------------------------------------------------------------------- |
+    | `web_search_advanced_exa` | Advanced web search with full control over filters, domains, dates, and content options |
+    | `deep_search_exa`         | Deep search with automatic query expansion for thorough research                        |
+    | `crawling_exa`            | Get the full content of a specific webpage from a known URL                             |
+    | `people_search_exa`       | Find people and their professional profiles                                             |
+    | `deep_researcher_start`   | Start an AI research agent that searches, reads, and writes a detailed report           |
+    | `deep_researcher_check`   | Check status and get results from a deep research task                                  |
 
-| Tool                       | Description                                                                                                                                                                                                                                                                                     |
-| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`get_code_context_exa`** | **NEW!** Search and get relevant code snippets, examples, and documentation from open source libraries, GitHub repositories, and programming frameworks. Perfect for finding up-to-date code documentation, implementation examples, API usage patterns, and best practices from real codebases |
-| `web_search_exa`           | Performs real-time web searches with optimized results and content extraction                                                                                                                                                                                                                   |
-| `deep_researcher_start`    | Start a smart AI researcher for complex questions. The AI will search the web, read many sources, and think deeply about your question to create a detailed research report                                                                                                                     |
-| `deep_researcher_check`    | Check if your research is ready and get the results. Use this after starting a research task to see if it's done and get your comprehensive report                                                                                                                                              |
-| `company_research`         | Comprehensive company research tool that crawls company websites to gather detailed information about businesses                                                                                                                                                                                |
-| `crawling`                 | Extracts content from specific URLs, useful for reading articles, PDFs, or any web page when you have the exact URL                                                                                                                                                                             |
-| `linkedin_search`          | Search LinkedIn for companies and people using Exa AI. Simply include company names, person names, or specific LinkedIn URLs in your query                                                                                                                                                      |
+    Enable these by adding the `tools` parameter to the URL:
 
-## Usage Examples
+    ```
+    https://mcp.exa.ai/mcp?tools=web_search_exa,deep_search_exa
+    ```
+  </Tab>
 
-Once configured, you can ask Claude to perform searches:
+  <Tab title="Enable All">
+    Use this URL instead of the default to enable all tools:
 
-### Code Search Examples
+    ```
+    https://mcp.exa.ai/mcp?tools=web_search_exa,web_search_advanced_exa,get_code_context_exa,deep_search_exa,crawling_exa,company_research_exa,people_search_exa,deep_researcher_start,deep_researcher_check
+    ```
+  </Tab>
+</Tabs>
 
-* "Show me how to use React hooks with TypeScript"
-* "Find examples of how to implement authentication with NextJS"
-* "Get documentation and examples for the pandas library"
+<br />
 
-### Other Search Examples
+<br />
 
-* "Research the company exa.ai and find information about their pricing"
-* "Start a deep research project on the impact of artificial intelligence on healthcare, then check when it's complete to get a comprehensive report"
+<CardGroup cols={2}>
+  <Card title="GitHub" icon="github" iconType="brands" color="#000000" href="https://github.com/exa-labs/exa-mcp-server">
+    View Exa MCP source code
+  </Card>
 
-## Local Installation
+  <Card title="npm" icon="npm" iconType="brands" color="#000000" href="https://www.npmjs.com/package/exa-mcp-server">
+    Install Exa MCP npm package
+  </Card>
+</CardGroup>
 
-### Using Claude Code
+<Accordion title="Usage Examples" icon="magnifying-glass">
+  **Web Search**
 
-The quickest way to set up Exa MCP is using Claude Code:
+  ```
+  Search for recent developments in AI agents and summarize the key trends.
+  ```
 
-```bash  theme={null}
-claude mcp add exa -e EXA_API_KEY=YOUR_API_KEY -- npx -y exa-mcp-server
-```
+  **Code Search**
 
-Replace `YOUR_API_KEY` with your Exa API key from above.
+  ```
+  Find Python examples for implementing OAuth 2.0 authentication.
+  ```
 
-## Configuring Claude Desktop
+  **Company Research**
 
-To configure Claude Desktop to use Exa MCP:
+  ```
+  Research Stripe and give me an overview of their products and recent news.
+  ```
 
-1. **Enable Developer Mode in Claude Desktop**
-   * Open Claude Desktop
-   * Click on the top-left menu
-   * Enable Developer Mode
+  **Deep Research**
 
-2. **Open the Configuration File**
-
-   * After enabling Developer Mode, go to Settings
-   * Navigate to the Developer Option
-   * Click "Edit Config" to open the configuration file
-
-   Alternatively, you can open it directly:
-
-   **macOS:**
-
-   ```bash  theme={null}
-   code ~/Library/Application\ Support/Claude/claude_desktop_config.json
-   ```
-
-   **Windows:**
-
-   ```powershell  theme={null}
-   code %APPDATA%\Claude\claude_desktop_config.json
-   ```
-
-3. **Add Exa MCP Configuration**
-
-   Add the following to your configuration:
-
-   ```json  theme={null}
-   {
-     "mcpServers": {
-       "exa": {
-         "command": "npx",
-         "args": [
-           "-y",
-          "exa-mcp-server"
-          ],
-         "env": {
-           "EXA_API_KEY": "your-api-key-here"
-         }
-       }
-     }
-   }
-   ```
-
-   Replace `your-api-key-here` with your actual Exa API key.
-
-4. **Enabling Specific Tools**
-
-   To enable only code search (recommended for developers):
-
-   ```json  theme={null}
-   {
-     "mcpServers": {
-       "exa": {
-         "command": "npx",
-         "args": [
-           "-y",
-           "exa-mcp-server",
-           "tools=get_code_context_exa"
-         ],
-         "env": {
-           "EXA_API_KEY": "your-api-key-here"
-         }
-       }
-     }
-   }
-   ```
-
-   To enable code search and web search together:
-
-   ```json  theme={null}
-   {
-     "mcpServers": {
-       "exa": {
-         "command": "npx",
-         "args": [
-           "-y",
-           "exa-mcp-server",
-           "tools=get_code_context_exa,web_search_exa"
-         ],
-         "env": {
-           "EXA_API_KEY": "your-api-key-here"
-         }
-       }
-     }
-   }
-   ```
-
-   To enable all tools:
-
-   ```json  theme={null}
-   {
-     "mcpServers": {
-       "exa": {
-         "command": "npx",
-         "args": [
-           "-y",
-           "exa-mcp-server",
-           "tools=web_search_exa,get_code_context_exa,crawling_exa,company_research_exa,linkedin_search_exa,deep_researcher_start,deep_researcher_check"
-         ],
-         "env": {
-           "EXA_API_KEY": "your-api-key-here"
-         }
-       }
-     }
-   }
-   ```
-
-### Using NPX
-
-The simplest way to install and run Exa MCP is via NPX:
-
-```bash  theme={null}
-# Install globally
-npm install -g exa-mcp-server
-
-# Or run directly with npx
-npx exa-mcp-server
-```
-
-To specify which tools to enable:
-
-```bash  theme={null}
-# Run with default tools only (web_search_exa and get_code_context_exa)
-npx exa-mcp-server
-
-# Enable specific tools only
-npx exa-mcp-server tools=web_search_exa
-
-# All tools
-npx exa-mcp-server tools=web_search_exa,get_code_context_exa,crawling_exa,company_research_exa,linkedin_search_exa,deep_researcher_start,deep_researcher_check
-```
-
-## Additional Resources
-
-For more information, visit the [Exa MCP Server GitHub repository](https://github.com/exa-labs/exa-mcp-server/).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt
+  ```
+  Create a detailed report on the current state of quantum computing startups.
+  ```
+</Accordion>

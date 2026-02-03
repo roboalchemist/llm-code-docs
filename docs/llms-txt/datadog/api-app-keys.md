@@ -6,7 +6,6 @@ description: >-
   Manage API keys, application keys, and client tokens for browser applications
   with security features.
 breadcrumbs: Docs > Account Management > API and Application Keys
-source_url: https://docs.datadoghq.com/api-app-keys/index.html
 ---
 
 # API and Application Keys

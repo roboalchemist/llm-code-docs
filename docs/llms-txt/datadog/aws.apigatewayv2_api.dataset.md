@@ -4,8 +4,6 @@
 title: API Gateway API
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > API Gateway API
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.apigatewayv2_api.dataset/index.html
 ---
 
 # API Gateway API
@@ -36,6 +34,6 @@ aws.apigatewayv2_api
 | name                         | core | string        | The name of the API.                                                                                                                                                                                                                                                                                               |
 | protocol_type                | core | string        | The API protocol.                                                                                                                                                                                                                                                                                                  |
 | route_selection_expression   | core | string        | The route selection expression for the API. For HTTP APIs, the routeSelectionExpression must be ${request.method} ${request.path}. If not provided, this will be the default for HTTP APIs. This property is required for WebSocket APIs.                                                                          |
-| tags                         | core | hstore        |
+| tags                         | core | hstore_csv    |
 | version                      | core | string        | A version identifier for the API.                                                                                                                                                                                                                                                                                  |
 | warnings                     | core | array<string> | The warning messages reported when failonwarnings is turned on during API import.                                                                                                                                                                                                                                  |

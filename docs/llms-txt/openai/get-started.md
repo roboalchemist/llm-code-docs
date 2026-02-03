@@ -36,26 +36,26 @@ Instant Checkout lets users buy directly from merchants through ChatGPT, and all
 | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | Find and buy anything using ChatGPT as a personal shopping assistant with trusted, fast recommendations. | Reach buyers in the moment, boost conversion, and keep your customer. |
 
-![ChatGPT mobile commerce experience](/images/commerce/commerce-mobile.png)
+![ChatGPT mobile commerce experience](https://developers.openai.com/images/commerce/commerce-mobile.png)
 
 Instant Checkout works across:
 
 - Platforms: web, iOS and Android
 - Payment methods: All major card brands, Apple Pay, Google Pay, Link by Stripe and more coming soon
 
-Merchants who want to enable Instant Checkout should implement the [Agentic Commerce Protocol](/commerce/specs/checkout) and provide OpenAI with a product feed through the [Product Feed Spec](/commerce/specs/feed).
+Merchants who want to enable Instant Checkout should implement the [Agentic Commerce Protocol](https://developers.openai.com/commerce/specs/checkout) and provide OpenAI with a product feed through the [Product Feed Spec](https://developers.openai.com/commerce/specs/feed).
 
 ## Apply to build
 
 Building with the Agentic Commerce Protocol is open to all. Instant Checkout in ChatGPT is currently available to approved partners. To make your products available for Instant Checkout through ChatGPT, please do the following:
 
 1. **Apply** to participate in [Instant Checkout](https://chatgpt.com/merchants).
-2. **Share your product feed** according to our [Product Feed Spec](/commerce/specs/feed) in order to provide ChatGPT with accurate, up-to-date information about your products.
-3. **Build your Agentic Checkout API** according to the [Agentic Checkout Spec](/commerce/specs/checkout). This involves:
+2. **Share your product feed** according to our [Product Feed Spec](https://developers.openai.com/commerce/specs/feed) in order to provide ChatGPT with accurate, up-to-date information about your products.
+3. **Build your Agentic Checkout API** according to the [Agentic Checkout Spec](https://developers.openai.com/commerce/specs/checkout). This involves:
    a. Implementing the required REST endpoints
    b. Implementing webhooks to notify OpenAI of order events
    c. Returning rich checkout state on every response
-4. **Build your payments integration**. Use a trusted payment service provider (PSP) that is compliant with the [Delegated Payment Spec](/commerce/specs/payment) in order to securely transmit and charge payment credentials. [Stripe’s Shared Payment Token](https://docs.stripe.com/agentic-commerce) is the first Delegated Payment Spec-compatible implementation with more PSPs coming soon. If you’re a PSP or a PCI DSS level 1 merchant with your own vault, [learn how to build a direct integration with OpenAI](/commerce/specs/payment).
+4. **Build your payments integration**. Use a trusted payment service provider (PSP) that is compliant with the [Delegated Payment Spec](https://developers.openai.com/commerce/specs/payment) in order to securely transmit and charge payment credentials. [Stripe’s Shared Payment Token](https://docs.stripe.com/agentic-commerce) is the first Delegated Payment Spec-compatible implementation with more PSPs coming soon. If you’re a PSP or a PCI DSS level 1 merchant with your own vault, [learn how to build a direct integration with OpenAI](https://developers.openai.com/commerce/specs/payment).
 5. **Certify with OpenAI and move to production**. To ensure products, payments and orders are all working correctly, work with OpenAI to pass conformance checks and receive production access.
 
 OpenAI plans to onboard new partners on a rolling basis, beginning in the U.S. If you’re an Etsy or Shopify merchant, you do not need to apply or build an integration as you are already eligible.

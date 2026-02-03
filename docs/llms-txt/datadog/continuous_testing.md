@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/getting_started/continuous_testing.md
+
 # Source: https://docs.datadoghq.com/continuous_testing.md
 
 ---
@@ -6,7 +8,6 @@ description: >-
   Customize the number of Continuous Testing tests running in parallel in your
   CI/CD pipelines to increase your testing coverage.
 breadcrumbs: Docs > Continuous Testing
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Continuous Testing

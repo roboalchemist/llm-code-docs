@@ -13,7 +13,7 @@ In most cases, implementing your own request handlers is unnecessary, as both se
 
 ## Implementing a request handler
 
-Upon receiving a request, the request handler must consume its content, process it, and then return a response. The most convenient way to implement a request handler is by subclassing the [ThreadedHttpRequestHandler](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/container/jdisc/ThreadedHttpRequestHandler.html).
+Upon receiving a request, the request handler must consume its content, process it, and then return a response. The most convenient way to implement a request handler is by subclassing the [ThreadedHttpRequestHandler](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/container/jdisc/ThreadedHttpRequestHandler.html).
 
 This utility base class uses a synchronous API and a multithreaded execution model. It also implements a lot of functionality that is needed by most request handlers:
 
@@ -40,5 +40,5 @@ To deploy a request handler in an application, use the [handler](../reference/ap
 
 A request handler may be bound to zero or more URI patterns by adding a [binding](../reference/applications/services/container.html#binding) element for each pattern.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

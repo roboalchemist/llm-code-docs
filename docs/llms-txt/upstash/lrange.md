@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/list/lrange.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lrange.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # LRANGE
 
@@ -26,17 +12,17 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the list.
 </ParamField>
 
-<ParamField body="start" type="integer" required>
+<ParamField body="start" type="int" required>
   The starting index of the range to return.
 
   Use negative numbers to specify offsets starting at the end of the list.
 </ParamField>
 
-<ParamField body="end" type="integer" required>
+<ParamField body="end" type="int" required>
   The ending index of the range to return.
 
   Use negative numbers to specify offsets starting at the end of the list.
@@ -44,14 +30,16 @@
 
 ## Response
 
-<ResponseField type="TValue[]" required>
+<ResponseField type="List[str]">
   The list of elements in the specified range.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example  theme={"system"}
-  await redis.lpush("key", "a", "b", "c"); 
-  const elements = await redis.lrange("key", 1, 2); 
-  console.log(elements) // ["b", "c"]
+  ```py Example  theme={"system"}
+  redis.rpush("mylist", "one", "two", "three")
+
+  assert redis.lrange("mylist", 0, 1) == ["one", "two"]
+
+  assert redis.lrange("mylist", 0, -1) == ["one", "two", "three"]
   ```
 </RequestExample>

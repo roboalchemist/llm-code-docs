@@ -4,7 +4,6 @@
 title: Anomalies Page
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloud Cost Management > Cost Changes > Anomalies Page
-source_url: https://docs.datadoghq.com/cost_changes/anomalies/index.html
 ---
 
 # Anomalies Page

@@ -4,8 +4,6 @@
 title: Auto Scaling Group
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Auto Scaling Group
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.autoscaling_group.dataset/index.html
 ---
 
 # Auto Scaling Group
@@ -53,7 +51,7 @@ aws.autoscaling_group
 | service_linked_role_arn               | core | string        | The Amazon Resource Name (ARN) of the service-linked role that the Auto Scaling group uses to call other Amazon Web Services on your behalf.                                                                                                                                        |
 | status                                | core | string        | The current state of the group when the DeleteAutoScalingGroup operation is in progress.                                                                                                                                                                                            |
 | suspended_processes                   | core | json          | The suspended processes associated with the group.                                                                                                                                                                                                                                  |
-| tags                                  | core | hstore        |
+| tags                                  | core | hstore_csv    |
 | target_group_arns                     | core | array<string> | The Amazon Resource Names (ARN) of the target groups for your load balancer.                                                                                                                                                                                                        |
 | termination_policies                  | core | array<string> | The termination policies for the group.                                                                                                                                                                                                                                             |
 | traffic_sources                       | core | json          | The traffic sources associated with this Auto Scaling group.                                                                                                                                                                                                                        |

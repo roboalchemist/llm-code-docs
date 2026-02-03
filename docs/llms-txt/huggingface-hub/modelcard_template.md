@@ -1,3 +1,5 @@
+# Source: https://github.com/huggingface/huggingface_hub/blob/main/src/huggingface_hub/templates/modelcard_template.md
+
 # huggingface_hub/src/huggingface_hub/templates/modelcard_template.md at main · huggingface/huggingface_hub · GitHub
 
 The provided HTML content is primarily a navigation menu and a GitHub logo, along with a skip-to-content link. The main content of the HTML is not present in the provided HTML snippet. Therefore, there is no main content to extract and convert into Markdown.

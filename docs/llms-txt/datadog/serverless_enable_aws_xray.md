@@ -4,7 +4,6 @@
 title: Enable AWS X-Ray Tracing
 description: Trace your Lambda functions with AWS X-Ray
 breadcrumbs: Docs > APM > Tracing Guides > Enable AWS X-Ray Tracing
-source_url: https://docs.datadoghq.com/guide/serverless_enable_aws_xray/index.html
 ---
 
 # Enable AWS X-Ray Tracing

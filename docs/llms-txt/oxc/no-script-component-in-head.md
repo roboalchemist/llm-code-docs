@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/nextjs/no-script-component-in-head.md
 ---
-# nextjs/no-script-component-in-head&#x20;
 
 ### What it does
 

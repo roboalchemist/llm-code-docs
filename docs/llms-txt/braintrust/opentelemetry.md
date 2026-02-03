@@ -1,6 +1,12 @@
 # Source: https://braintrust.dev/docs/integrations/sdk-integrations/opentelemetry.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OpenTelemetry (OTel)
+
+export const feature_0 = "OTel compatibility mode"
 
 To set up Braintrust as an [OpenTelemetry](https://opentelemetry.io/docs/)
 backend, you'll need to route the traces to Braintrust's OpenTelemetry endpoint,
@@ -117,7 +123,7 @@ For more advanced configuration, you can pass in the following arguments to `Bra
 ## OTel compatibility mode
 
 <Warning>
-  OTel compatibility mode is a beta feature.
+  {feature_0} is a beta feature.
 </Warning>
 
 OpenTelemetry compatibility mode allows seamless tracing between Braintrust SDKs and OTel. It works by generating OTel compatible span IDs and storing the current active span in OTel's context. It is useful if you are running evals that wrap OpenTelemetry-instrumented code or doing distributed tracing between processes that use each mode of tracing.
@@ -367,8 +373,8 @@ If you are using a different language or want to use pure OTel code, you can set
 
 Once you set up an [OTLP exporter](https://opentelemetry.io/docs/languages/js/exporters/) to send traces to Braintrust, we automatically
 convert LLM calls into Braintrust `LLM` spans, which
-can be saved as [prompts](/core/functions/prompts)
-and evaluated in the [playground](/core/playground).
+can be saved as [prompts](/deploy/prompts)
+and evaluated in the [playground](/evaluate/playgrounds).
 
 For JavaScript/TypeScript applications, you can use the `BraintrustExporter` directly:
 
@@ -406,7 +412,7 @@ OTEL_EXPORTER_OTLP_HEADERS="Authorization=Bearer <Your API Key>, x-bt-parent=pro
 
 The `x-bt-parent` header sets the trace's parent project or experiment. You can use
 a prefix like `project_id:`, `project_name:`, or `experiment_id:` here, or pass in
-a [span slug](/guides/traces#distributed-tracing)
+a [span slug](/instrument/custom-tracing#distributed-tracing)
 (`span.export()`) to nest the trace under a span within the parent object.
 
 <Note>
@@ -590,7 +596,7 @@ You can also use the `braintrust` namespace to set fields in Braintrust directly
 | `braintrust.scores`          | `scores`          | A JSON-serialized dictionary with string keys, where values are scores for the span. Alternatively, you can use flattened attribute names, like `braintrust.scores.accuracy` or `braintrust.scores.relevance`.                                                                    |
 | `braintrust.expected`        | `expected`        | The expected output for the span. Can be any value (string, number, object, etc.).                                                                                                                                                                                                |
 | `braintrust.expected_json`   | `expected`        | A JSON-serialized string containing the expected output. Use this when you need to pass complex objects or arrays as the expected value.                                                                                                                                          |
-| `braintrust.tags`            | `tags`            | An array of strings that can be set on the root span.                                                                                                                                                                                                                             |
+| `braintrust.tags`            | `tags`            | An array of strings that can be set on any span. Tags from all spans in a trace are aggregated together.                                                                                                                                                                          |
 | `braintrust.span_attributes` | `span_attributes` | A JSON-serialized dictionary with string keys. Alternatively, you can use flattened attribute names, like `braintrust.span_attributes.type` or `braintrust.span_attributes.name`. The `type` field can be one of: `"llm"`, `"task"`, `"tool"`, `"eval"`, `"score"`, `"function"`. |
 
 Fields mapped from `braintrust.*` attributes are deleted and translated into Braintrust's native format.
@@ -735,8 +741,3 @@ There are a few common reasons why your traces may not show up in Braintrust:
   API URL as the `OTLP_ENDPOINT`, for example `https://dfwhllz61x709.cloudfront.net/otel`.
 * You must explicitly set up OpenTelemetry in your application. If you're using Next.js, then follow the [Next.js OpenTelemetry guide](https://nextjs.org/docs/app/guides/open-telemetry).
   If you are using Node.js without a framework, then follow [this example](https://github.com/vercel/ai/blob/main/examples/ai-core/src/telemetry/stream-text.ts) to set up a basic exporter.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

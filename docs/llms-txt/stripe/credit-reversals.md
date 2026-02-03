@@ -257,11 +257,10 @@ const creditReversal = await stripe.treasury.creditReversals.retrieve(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.TreasuryCreditReversalRetrieveParams{
-  CreditReversal: stripe.String("{{CREDIT_REVERSAL_ID}}"),
-}
+params := &stripe.TreasuryCreditReversalRetrieveParams{}
 params.SetStripeAccount("{{CONNECTEDACCOUNT_ID}}")
-result, err := sc.V1TreasuryCreditReversals.Retrieve(context.TODO(), params)
+result, err := sc.V1TreasuryCreditReversals.Retrieve(
+  context.TODO(), "{{CREDIT_REVERSAL_ID}}", params)
 ```
 
 ```dotnet

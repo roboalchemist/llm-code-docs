@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/prompts/
+
 # Prompt Configuration
 
 Define what you send to your LLMs - from simple strings to complex multi-turn conversations.

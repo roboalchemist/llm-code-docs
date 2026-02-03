@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/api/modules/server.md
 
-# Source: https://docs.convex.dev/generated-api/server.md
-
-# Source: https://docs.convex.dev/api/modules/server.md
-
 # Module: server
 
 Utilities for implementing server-side Convex query and mutation functions.
@@ -427,7 +423,7 @@ This is a feature of components, which are in beta. This API is unstable and may
 
 #### Defined in[​](#defined-in-14 "Direct link to Defined in")
 
-[server/components/index.ts:402](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L402)
+[server/components/index.ts:414](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L414)
 
 ***
 
@@ -437,7 +433,7 @@ This is a feature of components, which are in beta. This API is unstable and may
 
 #### Defined in[​](#defined-in-15 "Direct link to Defined in")
 
-[server/components/index.ts:442](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L442)
+[server/components/index.ts:454](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L454)
 
 ***
 
@@ -2084,7 +2080,7 @@ This is a feature of components, which are in beta. This API is unstable and may
 
 #### Defined in[​](#defined-in-92 "Direct link to Defined in")
 
-[server/components/index.ts:359](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L359)
+[server/components/index.ts:371](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L371)
 
 ***
 
@@ -2102,7 +2098,7 @@ This is a feature of components, which are in beta. This API is unstable and may
 
 #### Defined in[​](#defined-in-93 "Direct link to Defined in")
 
-[server/components/index.ts:385](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L385)
+[server/components/index.ts:397](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L397)
 
 ***
 
@@ -2116,7 +2112,7 @@ This is a feature of components, which are in beta. This API is unstable and may
 
 #### Defined in[​](#defined-in-94 "Direct link to Defined in")
 
-[server/components/index.ts:440](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L440)
+[server/components/index.ts:452](https://github.com/get-convex/convex-js/blob/main/src/server/components/index.ts#L452)
 
 ***
 

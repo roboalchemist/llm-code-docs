@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/cookbooks/openai-batch-api.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Logging OpenAI Batch API Requests with Helicone
 
 > Learn how to track and monitor OpenAI Batch API requests using Helicone's Manual Logger for comprehensive observability.

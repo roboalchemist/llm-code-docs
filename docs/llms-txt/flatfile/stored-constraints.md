@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/stored-constraints.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Stored Constraints Plugin
 
 > Automatically applies server-side validation rules to records during the data import process using reusable JavaScript functions defined at the App level.
@@ -14,7 +18,7 @@ This plugin is ideal for enforcing complex or reusable business logic, such as v
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-stored-constraints
 ```
 
@@ -46,7 +50,7 @@ By default, the plugin does nothing if no fields in a Sheet are configured with 
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // listener.js
   import { storedConstraint } from '@flatfile/plugin-stored-constraints';
 
@@ -56,7 +60,7 @@ By default, the plugin does nothing if no fields in a Sheet are configured with 
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   // listener.ts
   import type { FlatfileListener } from "@flatfile/listener";
   import { storedConstraint } from '@flatfile/plugin-stored-constraints';
@@ -71,7 +75,7 @@ By default, the plugin does nothing if no fields in a Sheet are configured with 
 ### Configuration Example
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // In your Flatfile Sheet/Blueprint configuration (JSON or UI):
   /*
   {
@@ -109,7 +113,7 @@ By default, the plugin does nothing if no fields in a Sheet are configured with 
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   // In your Flatfile Sheet/Blueprint configuration (JSON or UI):
   /*
   {
@@ -154,7 +158,7 @@ By default, the plugin does nothing if no fields in a Sheet are configured with 
 Stored constraint functions have access to a `deps` object containing helpful libraries. This example shows a constraint using the `validator` library to check for a valid email format.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // In your Flatfile App's Stored Constraints section (UI):
   /*
     Validator Name: "is-valid-email-advanced"
@@ -176,7 +180,7 @@ Stored constraint functions have access to a `deps` object containing helpful li
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   // In your Flatfile App's Stored Constraints section (UI):
   /*
     Validator Name: "is-valid-email-advanced"
@@ -204,7 +208,7 @@ Stored constraint functions have access to a `deps` object containing helpful li
 
 #### User-facing Error
 
-```javascript
+```javascript  theme={null}
 // Stored constraint function defined in the Flatfile App UI
 function(value, key, { record }) {
   if (value === null || value === '') {
@@ -216,7 +220,7 @@ function(value, key, { record }) {
 
 #### Server-side Error
 
-```javascript
+```javascript  theme={null}
 // Stored constraint function defined in the Flatfile App UI
 function(value, key, { record }) {
   // This will throw an exception because 'badProperty' does not exist

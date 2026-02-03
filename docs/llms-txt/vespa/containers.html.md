@@ -53,5 +53,5 @@ Vespa's Java container - JDisc, hosts all application components as well as the 
 - [healthchecks](../reference/operations/health-checks.html) - using the Container with a VIP 
 - [Vespa Component Reference](../reference/applications/components.html): The Container's request processing lifecycle 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

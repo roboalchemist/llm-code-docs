@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/monitor/analytics.md
 
-# Source: https://docs.avaamo.com/user-guide/how-to/build-agents/monitor-and-analyze/analytics.md
-
-# Source: https://docs.avaamo.com/user-guide/monitor/analytics.md
-
 # Analytics
 
 The Avaamo platform includes a built-in Analytics tool that visually represents agent and user interactions. This tool provides valuable insights into user engagement, helping you understand how users interact with your assistant. By leveraging these statistics, you can identify areas for improvement and optimize your agent to better align with your business requirements.

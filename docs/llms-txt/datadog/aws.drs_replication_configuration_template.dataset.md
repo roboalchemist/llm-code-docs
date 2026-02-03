@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > DDSQL Reference > Data Directory > Elastic Disaster Recovery
   Replication Configuration Template
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.drs_replication_configuration_template.dataset/index.html
 ---
 
 # Elastic Disaster Recovery Replication Configuration Template
@@ -39,5 +37,5 @@ aws.drs_replication_configuration_template
 | replication_servers_security_groups_i_ds | core | array<string> | The security group IDs that will be used by the replication server.                                                                                 |
 | staging_area_subnet_id                   | core | string        | The subnet to be used by the replication staging area.                                                                                              |
 | staging_area_tags                        | core | hstore        | A set of tags to be associated with all resources created in the replication staging area: EC2 replication server, EBS volumes, EBS snapshots, etc. |
-| tags                                     | core | hstore        |
+| tags                                     | core | hstore_csv    |
 | use_dedicated_replication_server         | core | bool          | Whether to use a dedicated Replication Server in the replication staging area.                                                                      |

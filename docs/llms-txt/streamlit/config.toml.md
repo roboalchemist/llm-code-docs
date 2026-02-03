@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/configuration/config.toml
+
 # config.toml
 
 `config.toml` is an optional file you can define for your working directory or global development environment. When `config.toml` is defined both globally and in your working directory, Streamlit combines the configuration options and gives precedence to the working-directory configuration. Additionally, you can use environment variables and command-line options to override additional configuration options. For more information, see [Configuration options](https://docs.streamlit.io/develop/concepts/configuration/options).

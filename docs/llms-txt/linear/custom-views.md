@@ -2,7 +2,7 @@
 
 # Custom Views
 
-Create durable filtered views of issues projects, or initiatives that you can save and share with others in your workspace.
+Create durable filtered views of issues, projects, or initiatives that you can save and share with others in your workspace.
 
 > [!NOTE]
 > Initiative views are available on Enterprise plans.
@@ -45,7 +45,9 @@ To share a view across multiple teams but limit it to projects or issues within 
 
 ![+ Create new view button next to All Issues, Active and Backlog views](https://webassets.linear.app/images/ornj730p/production/f8bbfb68fe973ab9e7de98fc8b8a7318653aff17-800x218.png?q=95&auto=format&dpr=2)
 
-From your team's Issues and Projects sections, you can create new views to appear alongside the team's default views. These will be visible to all members of the team. Use the `+ Create new view` button beside the default or existing views to create additional views here. 
+From your team's Issues and Projects sections, you can create new views that appear alongside the team's default views (All Issues, Active and Backlog.)   
+  
+Unlike shared team views in the Views menu, these contextual views are shown only in the Issues and Projects section. 
 
 ### Copy view link
 

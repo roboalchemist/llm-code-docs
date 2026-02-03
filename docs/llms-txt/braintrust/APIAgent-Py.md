@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/APIAgent-Py.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # An agent that runs OpenAPI commands
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/APIAgent-Py/APIAgent.ipynb) by [Ankur Goyal](https://twitter.com/ankrgyl) on 2024-08-12</div>
@@ -21,7 +25,7 @@ Before getting started, make sure you have a [Braintrust account](https://www.br
 
 ### Install dependencies
 
-We're not going to use any frameworks or complex dependencies to keep things simple and literate. Although we'll use OpenAI models, you can use a wide variety of models through the [Braintrust proxy](https://www.braintrust.dev/docs/guides/proxy) without having to write model-specific code.
+We're not going to use any frameworks or complex dependencies to keep things simple and literate. Although we'll use OpenAI models, you can use a wide variety of models through the [Braintrust proxy](/deploy/ai-proxy) without having to write model-specific code.
 
 ```python  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
 %pip install -U autoevals braintrust jsonref openai numpy pydantic requests tiktoken
@@ -616,7 +620,7 @@ Awesome! The logs now have a `no_hallucination` score which we can use to filter
 ### Creating datasets
 
 Let's create two datasets: one for good answers and the other for hallucinations. To keep things simple, we'll assume that the
-non-hallucinations are correct, but in a real-world scenario, you could [collect user feedback](https://www.braintrust.dev/docs/guides/logging#user-feedback)
+non-hallucinations are correct, but in a real-world scenario, you could [collect user feedback](/instrument/custom-tracing#user-feedback)
 and treat positively rated feedback as ground truth.
 
 <img src="https://mintcdn.com/braintrust/miepTDmD0QMRaWQF/cookbook/assets/APIAgent-Py/dataset-setup.gif?s=0506aa45c4e570d56e779147e2ff6a57" alt="Dataset setup" data-og-width="1737" width="1737" data-og-height="1152" height="1152" data-path="cookbook/assets/APIAgent-Py/dataset-setup.gif" data-optimize="true" data-opv="3" />
@@ -764,8 +768,3 @@ with native support for logging and evals. As a next step, you can:
 * Collect user feedback and build a more robust eval set
 
 Happy building!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

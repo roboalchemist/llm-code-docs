@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/reference/inference-api/predict-endpoints/deployment-async-run-remote.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Async chains deployment
 
 Use this endpoint to call any [deployment](/deployment/deployments) of your
@@ -33,7 +37,7 @@ https://chain-{chain_id}.api.baseten.co/deployment/{deployment_id}/async_run_rem
 </ParamField>
 
 <RequestExample>
-  ```py Python theme={"system"}
+  ```python Python theme={"system"}
   import urllib3
   import os
 
@@ -62,7 +66,7 @@ https://chain-{chain_id}.api.baseten.co/deployment/{deployment_id}/async_run_rem
     -d '{}' # JSON-serializable chain input
   ```
 
-  ```js Node.js theme={"system"}
+  ```javascript Node.js theme={"system"}
   const fetch = require("node-fetch");
 
   const resp = await fetch(

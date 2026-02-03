@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/publish-a-docs-site/public-publishing.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/publish-a-docs-site/public-publishing.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/publish-a-docs-site/public-publishing.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/publish-a-docs-site/public-publishing.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/publish-a-docs-site/public-publishing.md
 

@@ -1,12 +1,16 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to/share-a-project.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Share a project
 
 > All projects on Galileo can be shared with others to enable collaboration.
 
 To share your project, click the "Share Project" button at the top of your project page. You can share projects with other users or groups.
 
-![Share a project](https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/share-modal.png)
+<img src="https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/share-modal.png?fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=fde64700b963f72134b22d36a35669ef" alt="Share a project" data-og-width="2174" width="2174" data-og-height="768" height="768" data-path="images/share-modal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/share-modal.png?w=280&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=02e355c0e70c323931830b032d89fec6 280w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/share-modal.png?w=560&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=5e2ce0b1c087c6c2c91a0c03323b13f6 560w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/share-modal.png?w=840&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=4e2e9b745b8c9ff81035094f23281500 840w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/share-modal.png?w=1100&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=44fe4a089690c310998e8481d471d3c4 1100w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/share-modal.png?w=1650&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=0716a230e499a3e9b15ca262833b47b7 1650w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/share-modal.png?w=2500&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=fdafef17073788f6ee222b974ada0cfe 2500w" />
 
 ### Access Levels
 

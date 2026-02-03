@@ -1,16 +1,18 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/project-setup.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/project-setup.md
-
 # Setting up your project
 
 **Create a new project with npm and Node.js. Install necessary libraries, and test that everything works before starting the next lesson.**
+
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
 
 ***
 
 When you open a website in a browser, the browser first downloads the page's HTML. To do the same thing with Node.js, we will install a program - an npm module - to help us with it. npm modules are installed using `npm`, which is another program, automatically installed with Node.js.
 
-> The https://www.npmjs.com/ registry offers a huge collection of open-source libraries for Node.js. You can (and you should) utilize it to save time and tap into the amazing open-source community around JavaScript and Node.js.
+> The [npmjs.com](https://www.npmjs.com/) registry offers a huge collection of open-source libraries for Node.js. You can (and you should) utilize it to save time and tap into the amazing open-source community around JavaScript and Node.js.
 
 ## Creating a new project with npm
 
@@ -40,7 +42,7 @@ Node.js and npm support two types of projects, let's call them legacy and modern
 
 > More recent versions of npm might already have `"type": "commonjs",` pre-defined; if so, simply replace `commonjs` with `module`.
 
-If you want to learn more about JSON and its syntax, we recommend https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON.
+If you want to learn more about JSON and its syntax, we recommend [this tutorial on MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON).
 
 ## Installing necessary libraries
 
@@ -52,9 +54,9 @@ npm install got-scraping cheerio
 ```
 
 
-https://github.com/apify/got-scraping is a library that's made especially for scraping and downloading page's HTML. It's based on the popular https://github.com/sindresorhus/got, which means any features of **got** are also available in **got-scraping**. Both **got** and **got-scraping** are HTTP clients. To learn more about HTTP, https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP.
+[got-scraping](https://github.com/apify/got-scraping) is a library that's made especially for scraping and downloading page's HTML. It's based on the popular [got library](https://github.com/sindresorhus/got), which means any features of **got** are also available in **got-scraping**. Both **got** and **got-scraping** are HTTP clients. To learn more about HTTP, [visit this MDN tutorial](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP).
 
-https://github.com/cheeriojs/cheerio is a popular Node.js library for parsing and processing HTML. If you know how to work with https://jquery.com/, you'll find Cheerio familiar.
+[Cheerio](https://github.com/cheeriojs/cheerio) is a popular Node.js library for parsing and processing HTML. If you know how to work with [jQuery](https://jquery.com/), you'll find Cheerio familiar.
 
 ## Test everything
 
@@ -85,4 +87,4 @@ If you see **it works!** printed in your terminal, great job! You set up everyth
 
 ## Next up
 
-With the project set up, the https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/node-js-scraper.md will show you how to use **got-scraping** to download the website's HTML and extract data from it with Cheerio.
+With the project set up, the [next lesson](https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/node-js-scraper.md) will show you how to use **got-scraping** to download the website's HTML and extract data from it with Cheerio.

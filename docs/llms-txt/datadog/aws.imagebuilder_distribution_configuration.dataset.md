@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > DDSQL Reference > Data Directory > EC2 Image Builder Distribution
   Configuration
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.imagebuilder_distribution_configuration.dataset/index.html
 ---
 
 # EC2 Image Builder Distribution Configuration
@@ -20,10 +18,10 @@ aws.imagebuilder_distribution_configuration
 
 ## Fields
 
-| Title                      | ID   | Type   | Data Type                                             | Description |
-| -------------------------- | ---- | ------ | ----------------------------------------------------- | ----------- |
-| _key                       | core | string |
-| account_id                 | core | string |
-| distribution_configuration | core | json   | The distribution configuration object.                |
-| request_id                 | core | string | The request ID that uniquely identifies this request. |
-| tags                       | core | hstore |
+| Title                      | ID   | Type       | Data Type                                             | Description |
+| -------------------------- | ---- | ---------- | ----------------------------------------------------- | ----------- |
+| _key                       | core | string     |
+| account_id                 | core | string     |
+| distribution_configuration | core | json       | The distribution configuration object.                |
+| request_id                 | core | string     | The request ID that uniquely identifies this request. |
+| tags                       | core | hstore_csv |

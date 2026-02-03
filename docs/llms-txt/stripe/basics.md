@@ -149,7 +149,7 @@ Manage the settings for individual Stripe products directly from the Dashboard. 
 
 - [Payments](https://dashboard.stripe.com/settings/checkout): Manage user checkout, payment methods, currency conversion, and so on.
 
-- [Tax](https://dashboard.stripe.com/settings/tax): Manage origin address, preset tax code, default tax behavior, and tax integrations.
+- [Tax](https://dashboard.stripe.com/settings/tax): Manage head office address, preset tax code, default tax behavior, and tax integrations.
 
 - [Data pipeline](https://dashboard.stripe.com/settings/stripe-data-pipeline): Manage an external data warehouse.
 

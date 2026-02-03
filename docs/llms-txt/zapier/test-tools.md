@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/test-tools.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Testing Tools
 
 > The Zapier platform provides a set of tools to help inform and validate your integration before pushing changes out to users.

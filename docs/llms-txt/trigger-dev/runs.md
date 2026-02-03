@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/runs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Runs
 
 > Understanding the lifecycle of task run execution in Trigger.dev
@@ -92,7 +96,7 @@ At this point, the run will have either an output (if successful) or an error (i
 
 Run objects returned from the API and Realtime include convenient boolean helper methods to check the run's status:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 const run = await runs.retrieve("run_1234");
@@ -112,7 +116,7 @@ if (run.isCompleted) {
 
 These helpers are also available when subscribing to Realtime run updates:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 for await (const run of runs.subscribeToRun("run_1234")) {
@@ -129,7 +133,7 @@ for await (const run of runs.subscribeToRun("run_1234")) {
 
 When triggering a task, you can provide an idempotency key to ensure the task is executed only once, even if triggered multiple times. This is useful for preventing duplicate executions in distributed systems.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 await yourTask.trigger({ foo: "bar" }, { idempotencyKey: "unique-key" });
 ```
 
@@ -142,7 +146,7 @@ See our [Idempotency docs](/idempotency) for more information.
 
 You can cancel an in-progress run using the API or the dashboard:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 await runs.cancel(runId);
 ```
 
@@ -160,7 +164,7 @@ When a run is canceled:
 
 TTL is a time-to-live setting that defines the maximum duration a run can remain in a queued state before being automatically expired. You can set a TTL when triggering a run:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 await yourTask.trigger({ foo: "bar" }, { ttl: "10m" });
 ```
 
@@ -174,7 +178,7 @@ Note that dev runs automatically have a 10-minute TTL. In Staging and Production
 
 You can schedule a run to start after a specified delay:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 await yourTask.trigger({ foo: "bar" }, { delay: "1h" });
 ```
 
@@ -186,7 +190,7 @@ This is useful for tasks that need to be executed at a specific time in the futu
 
 You can create a new run with the same payload as a previous run:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 await runs.replay(runId);
 ```
 
@@ -214,7 +218,7 @@ Similar to `triggerAndWait()`, the `batchTriggerAndWait()` function lets you bat
 
 List runs in a specific environment. You can filter the runs by status, created at, task identifier, version, and more:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 // Get the first page of runs, returning up to 20 runs
@@ -233,7 +237,7 @@ while (page.hasNextPage()) {
 
 You can also use an Async Iterator to get all runs:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 for await (const run of runs.list({ limit: 20 })) {
@@ -243,7 +247,7 @@ for await (const run of runs.list({ limit: 20 })) {
 
 You can provide multiple filters to the `list()` function to narrow down the results:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 const response = await runs.list({
@@ -262,7 +266,7 @@ const response = await runs.list({
 
 Fetch a single run by it's ID:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 const run = await runs.retrieve(runId);
@@ -270,7 +274,7 @@ const run = await runs.retrieve(runId);
 
 You can provide the type of the task to correctly type the `run.payload` and `run.output`:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 import type { myTask } from "./trigger/myTask";
 
@@ -282,7 +286,7 @@ console.log(run.output.bar); // string
 
 If you have just triggered a run, you can pass the entire response object to `retrieve()` and the response will already be typed:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs, tasks } from "@trigger.dev/sdk";
 import type { myTask } from "./trigger/myTask";
 
@@ -297,7 +301,7 @@ console.log(run.output.bar); // string
 
 Cancel a run:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 await runs.cancel(runId);
@@ -307,7 +311,7 @@ await runs.cancel(runId);
 
 Replay a run:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 await runs.replay(runId);
@@ -317,7 +321,7 @@ await runs.replay(runId);
 
 Updates a delayed run with a new delay. Only valid when the run is in the DELAYED state.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 await runs.reschedule(runId, { delay: "1h" });
@@ -327,7 +331,7 @@ await runs.reschedule(runId, { delay: "1h" });
 
 Subscribe to changes to a specific run in real-time:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 for await (const run of runs.subscribeToRun(runId)) {
@@ -337,7 +341,7 @@ for await (const run of runs.subscribeToRun(runId)) {
 
 Similar to `runs.retrieve()`, you can provide the type of the task to correctly type the `run.payload` and `run.output`:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 import type { myTask } from "./trigger/myTask";
 

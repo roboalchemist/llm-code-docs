@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/api-reference/security.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Secure your integration
 
 Ensure compliance and secure communications between Writer and your server.

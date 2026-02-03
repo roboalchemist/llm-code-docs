@@ -2,75 +2,92 @@
 
 # Swift and Objective-C
 
-## Applicability and integration
-
 {% hint style="info" %}
-Swift is supported for Snyk Code and Snyk Open Source.
+Swift and Objective-C are supported for Snyk Code and Snyk Open Source.
 {% endhint %}
 
-Available integrations:
+## Swift and Objective-C for Snyk Code
 
-* SCM import
-* CLI and IDE: test or monitor your app
+{% hint style="info" %}
+Code analysis support for Objective-C is in Early Access and is available only with Enterprise plans. To enable the feature, see [Snyk Preview](https://docs.snyk.io/snyk-platform-administration/snyk-preview).
+{% endhint %}
 
-Available functions:
+For an overview of the supported security rules, visit [Swift rules](https://docs.snyk.io/scan-with-snyk/snyk-code/snyk-code-security-rules/swift-rules) and [Objective-C rules](https://docs.snyk.io/scan-with-snyk/snyk-code/snyk-code-security-rules/objective-c-rules).
 
-* Test your app's SBOM using `pkg:swift`, `pkg:cocoapods`
-* Test your app's packages using `pkg:swift`, `pkg:cocoapods`
-
-## Technical specifications
+For Swift with Snyk Code, Snyk supports Swift versions up to 5.7.x. You can use higher versions, but Snyk does not provide support for them.
 
 ### Supported frameworks and libraries
 
 For Swift and Objective-C, the following frameworks and libraries are supported:
 
-* Swift standard library
-* Foundation
-* AppKit
-* Swift UI
-* UI Kit
-* Asynchttpclient
-* Commoncrypt
-* Commoncrypto
-* Cryptokit
-* Cryptoswift
-* Cryptor
+{% columns %}
+{% column %}
+
+* AFNetworking
 * AlamoFire
-* Filekit
-* google-gemini/generative-ai-swift
-* MacPaw/OpenAI
+* AppKit
+* Asynchttpclient
+* CocoaLumberjack
+* CommonCrypto (Native API)
+* Commoncrypt
+* Cryptokit
+* Cryptor
+* Cryptoswift
 * dylanshine/openai-kit
+* Filekit
+* FMDB
+* Foundation
+* google-gemini/generative-ai-swift
+* IDZSwiftCommonCrypto
+* JLRoutes
+* MacPaw/OpenAI
+* Mantle
+* NSTask (Native API)
+  {% endcolumn %}
+
+{% column %}
+
+* OneSignal-iOS-SDK
 * Pathos
-* SQLite3
-* Webkit
-* SwiftCLI
-* ShellOut
-* SwiftShell
-* Subprocess
-* Shout
-* Swiftline
+* Realm
 * RNCryptor
+* SDWebImage
+* ShellOut
+* Shout
+* SQLite3
+* Subprocess
+* Swift standard library
+* Swift UI
+* SwiftCLI
+* Swiftline
+* SwiftShell
+* UI Kit
+* Webkit
+* XLForm
+* ZXingObjC
+  {% endcolumn %}
+  {% endcolumns %}
+
+### Supported file formats
+
+For Swift, Snyk supports .`swift`
+
+For Objective-C, Snyk supports `.m` files, and implicitly supports `.h` files.
+
+### Available features
+
+* Reports
+* Interfile analysis
+
+## Swift and Objective-C for Snyk Open Source
+
+For Swift with Snyk Open Source, Snyk supports Swifts versions from 3.0 up to 6.2.x.
 
 ### Supported package managers and registries
 
 For Swift and Objective-C, Snyk supports the following package managers: CocoaPods, Swift Package Manager v3.0 or higher.
 
 As package registries, Snyk for Swift and Objective-C uses multiple sources, including [cocoapods.org](https://cocoapods.org/) and [swiftpackageregistry.com](https://swiftpackageregistry.com/).
-
-## Swift for Snyk Code
-
-For Swift with Snyk Code, Snyk supports Swift versions up to 5.7.x. You can use higher versions, but Snyk does not provide support for them.
-
-For Swift with Snyk Code, the following file formats are supported: .`swift`
-
-Available features:
-
-* Reports
-* Interfile analysis
-
-## Swift for Snyk Open Source
-
-For Swift with Snyk Open Source, you can use Swift 3.0 or higher.
 
 ### Supported file formats
 
@@ -84,6 +101,13 @@ For Swift and Objective-C with Snyk Open Source, Snyk provides support for packa
 * For CocoaPods: CLI support, Git support, License scanning
 * For Swift Package Manager: CLI support
 
+{% hint style="info" %}
+The **Snyk Fix PR** feature is not available for Swift and Objective-C. This means that you will not be notified if the PR checks fail when the following conditions are met:
+
+* The **PR checks** feature is enabled and configured to **Only fail when the issues found have a fix available**.
+* **"Fixed in" available** is set to **Yes**.
+  {% endhint %}
+
 ### Requirements for Swift Package Manager
 
 {% hint style="info" %}
@@ -96,28 +120,12 @@ When the .build folder of your Project is not present - in a pipeline, for examp
 
 Swift Package Manager supports pre-processing and post-processing. For post-processing, custom commands can add extra dependencies. Detecting such dependencies is not supported.
 
-It is not possible to scan Swift Package Manager Projects using Git import.
+It is not possible to scan Swift Package Manager Projects using SCM import.
 
 ### Cocoapods and CLI
 
-To build the dependency graph, Snyk examines the `Podfile` and `Podfile.lock` files.\
-\
+To build the dependency graph, Snyk examines the `Podfile` and `Podfile.lock` files.
+
 When working with Swift and Objective-C projects from the Snyk CLI, you can prevent testing any lock files that are out-of-sync by using the `--strict-out-of-sync=true`
 
 For Cocoapods and Git, to test your Projects, Snyk analyzes the `Podfile` and `Podfile.lock` files.
-
-The following summarizes support for Git import and testing.
-
-### Features
-
-Available features:
-
-* License scanning (CocoaPods)
-* Reports
-
-{% hint style="info" %}
-The **Snyk Fix PR** feature is not available for Swift and Objective-C. This means that you will not be notified if the PR checks fail when the following conditions are met:
-
-* The **PR checks** feature is enabled and configured to **Only fail when the issues found have a fix available.**
-* "**Fixed in" available** is set to **Yes.**
-  {% endhint %}

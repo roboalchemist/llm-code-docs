@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/ai-productivity/ai-compose/deploying-ai-compose-api.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deploying AI Compose API
 
 > Communicate with AI Compose via API.
@@ -7,7 +11,7 @@
 AI Compose has the following technical components:
 
 * **An autosuggest model** that ASAPP retrains weekly with [agent usage data you provide through the `/analytics/message-sent` endpoint](#sending-agent-usage-data "Sending Agent Usage Data")
-* **Data storage** for historical conversations, global response lists and agent historical feature usage that are used for weekly retraining
+* **Data storage** for historical conversations, global response lists, and agent historical feature usage that ASAPP uses for weekly retraining
 * The **Conversation API** for creating and updating conversation data and the **AI Compose API** that interfaces with the application with which agents interact and receives agent usage data in the form of message analytics events
 
 <Frame>
@@ -25,12 +29,12 @@ ASAPP provides an AI Services [Developer Portal](/getting-started/developers). W
 In order to use ASAPP's APIs, all apps must be registered through the portal. Once registered, each app will be provided unique API keys for ongoing use.
 
 <Tip>
-  Visit the [Get Started](/getting-started/developers) page on the Developer Portal for instructions on creating a developer account, managing teams and apps, and setup for using AI Service APIs.
+  Visit the [Get Started](/getting-started/developers) page on the Developer Portal for instructions on creating a developer account, managing teams and apps, and setting up AI Service APIs.
 </Tip>
 
 ## Usage
 
-ASAPP AI Compose exposes API endpoints that each enable distinct features in the course of an agent's message composition workflow. Requests should be sent to each endpoint based on events in the conversation and actions taken by the agent in their interface.
+ASAPP AI Compose exposes API endpoints that each enable distinct features in the course of an agent's message composition workflow. You should send requests to each endpoint based on events in the conversation and actions taken by the agent in their interface.
 
 For example, the sequence below shows requests made for a typical new conversation in which the agent begins creating their first message, sends the first message and receives one message in return from an end-customer:
 

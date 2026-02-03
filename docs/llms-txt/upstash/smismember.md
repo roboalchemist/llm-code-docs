@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/set/smismember.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smismember.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/smismember.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smismember.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/smismember.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smismember.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/smismember.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smismember.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/smismember.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smismember.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SMISMEMBER
 
@@ -26,7 +12,7 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the set to check.
 </ParamField>
 
@@ -36,15 +22,17 @@
 
 ## Response
 
-<ResponseField type="(0 | 1)[]" required>
-  An array of `0` and `1` values.
-  `1` if the member exists in the set, `0` if not.
+<ResponseField type="List[bool]" required>
+  An array of `True` and `False` values.
+  `True` if the member exists in the set, `False` if not.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example  theme={"system"}
-  await redis.sadd("set", "a", "b", "c"); 
-  const members =  await redis.smismember("set", ["a", "b", "d"]);
-  console.log(members); // [1, 1, 0]
+  ```py Example  theme={"system"}
+  redis.sadd("myset", "one", "two", "three")
+
+  assert redis.smismember("myset", "one", "four") == [True, False]
+
+  assert redis.smismember("myset", "four", "five") == [False, False]
   ```
 </RequestExample>

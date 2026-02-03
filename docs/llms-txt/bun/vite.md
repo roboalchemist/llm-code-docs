@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/ecosystem/vite.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build a frontend using Vite and Bun
 
 <Note>
@@ -72,4 +76,4 @@ bunx --bun vite build
 
 ***
 
-This is a stripped down guide to get you started with Vite + Bun. For more information, see the [Vite documentation](https://vitejs.dev/guide/).
+This is a stripped down guide to get you started with Vite + Bun. For more information, see the [Vite documentation](https://vite.dev/guide/).

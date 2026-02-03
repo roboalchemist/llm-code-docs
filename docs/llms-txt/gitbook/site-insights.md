@@ -2,10 +2,6 @@
 
 # Source: https://gitbook.com/docs/developers/gitbook-api/api-reference/docs-sites/site-insights.md
 
-# Source: https://gitbook.com/docs/help-center/published-documentation/site-insights.md
-
-# Source: https://gitbook.com/docs/developers/gitbook-api/api-reference/docs-sites/site-insights.md
-
 # Site insights
 
 This API delivers insights about how visitors interact with your site, including page views and user engagement, helping you measure and optimize your content strategy.

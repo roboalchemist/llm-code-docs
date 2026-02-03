@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/vector/api/endpoints/fetch-random.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Fetch Random Vector
 
 > Fetches a random vector.

@@ -1,12 +1,16 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-utilities-cli.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # cli
 
 # `fastmcp.utilities.cli`
 
 ## Functions
 
-### `is_already_in_uv_subprocess` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/cli.py#L27" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `is_already_in_uv_subprocess` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/cli.py#L28" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 is_already_in_uv_subprocess() -> bool
@@ -14,7 +18,7 @@ is_already_in_uv_subprocess() -> bool
 
 Check if we're already running in a FastMCP uv subprocess.
 
-### `load_and_merge_config` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/cli.py#L32" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `load_and_merge_config` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/cli.py#L33" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 load_and_merge_config(server_spec: str | None, **cli_overrides) -> tuple[MCPServerConfig, str]
@@ -34,18 +38,10 @@ run, inspect, and dev commands.
 
 * Tuple of (MCPServerConfig, resolved\_server\_spec)
 
-### `log_server_banner` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/cli.py#L200" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `log_server_banner` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/cli.py#L201" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-log_server_banner(server: FastMCP[Any], transport: Literal['stdio', 'http', 'sse', 'streamable-http']) -> None
+log_server_banner(server: FastMCP[Any]) -> None
 ```
 
 Creates and logs a formatted banner with server information and logo.
-
-**Args:**
-
-* `transport`: The transport protocol being used
-* `server_name`: Optional server name to display
-* `host`: Host address (for HTTP transports)
-* `port`: Port number (for HTTP transports)
-* `path`: Server path (for HTTP transports)

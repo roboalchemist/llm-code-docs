@@ -5,10 +5,7 @@ title: Changing Your Container Registry
 description: >-
   Switch between Datadog container image registries for different deployment
   environments and requirements
-breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Changing Your Container
-  Registry
-source_url: https://docs.datadoghq.com/guide/changing_container_registry/index.html
+breadcrumbs: Docs > Containers > Containers Guides > Changing Your Container Registry
 ---
 
 # Changing Your Container Registry

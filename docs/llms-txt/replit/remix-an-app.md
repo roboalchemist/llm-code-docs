@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/getting-started/quickstarts/remix-an-app.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Remix an App
 
 > Learn how to create a **Remix** as a starting point for your app. A Remix is a Replit App started from a publicly shared Replit App.
@@ -16,7 +20,7 @@ Follow the steps in this guide to create a Remix of the following solar system v
 
 <Tip>
   Try the published app at [Solar System Visualization Demo Replit
-  App](https://solar-system-viz.replit.app/).
+  App](https://replit.com/@matt/Solar-System-Visualization).
 </Tip>
 
 <Steps>
@@ -64,21 +68,20 @@ Follow the steps in this guide to create a Remix of the following solar system v
 
 ## Explore
 
-Try the tasks in the following sections to learn how **Agent** and **Assistant**,
-Replit's AI-powered tools can help you build your app.
+Try the tasks in the following sections to learn how **Agent**,
+Replit's AI-powered tool, can help you build your app.
 
-Agent specializes in building projects from scratch and making complex changes to a Replit App.
-Assistant specializes in smaller changes and describing the app's code.
+Agent specializes in building projects from scratch and making changes to a Replit App. Use [Fast mode](/replitai/fast-mode) for quick, targeted edits.
 
 <Note>
-  Assistant and Agent, which rely on popular AI models, occasionally produce
+  Agent relies on popular AI models and occasionally produces
   results that don't fulfill your request. If you encounter issues, follow up
   with a prompt that describes the error messages or the incorrect behavior.
   Alternatively, you can use the Rollback feature to restore your Replit App to
   a previously known working state.
 </Note>
 
-The following sections show examples of using them to enhance this Remix.
+The following sections show examples of using Agent to enhance this Remix.
 
 ### Add a feature using Agent
 
@@ -131,19 +134,19 @@ Follow these steps to add a complex feature to your Remix using Agent:
   </Step>
 </Steps>
 
-### Add a feature using Assistant
+### Add a feature using Fast mode
 
-Follow these steps to add a quick enhancement to your Remix using Assistant:
+Follow these steps to add a quick enhancement to your Remix using [Fast mode](/replitai/fast-mode):
 
 <Steps>
   <Step title="Craft a prompt">
-    Navigate to the **Assistant** tab and enter the following prompt:
+    Switch to [Fast mode](/replitai/fast-mode) and enter the following prompt:
 
     ```text  theme={null}
     Add a button that changes the planet orbit speeds to 0.5x, 1x, and 2x.
     ```
 
-    After you submit the prompt, Assistant describes the changes it wants to make and lets you review the code changes before proceeding.
+    After you submit the prompt, Agent describes the changes it wants to make and lets you review the code changes before proceeding.
     Select **Preview code changes** to view a comparison of the current code and the updates.
   </Step>
 
@@ -152,13 +155,13 @@ Follow these steps to add a quick enhancement to your Remix using Assistant:
 
     Navigate to the **Preview** tab to check the result.
 
-    After Assistant completes the feature, the **Preview** might resemble the following image:
+    After Agent completes the feature, the **Preview** might resemble the following image:
 
     <Frame>
       <img src="https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_remix_assistant_result.png?fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=54d2f6e5a2bd9d654898245a6ee9ba4a" alt="image of the solar system visualization with speed controls" data-og-width="932" width="932" data-og-height="645" height="645" data-path="images/getting-started/quickstart_remix_assistant_result.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_remix_assistant_result.png?w=280&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=f2412ad5f6910e265f6650d470f859d4 280w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_remix_assistant_result.png?w=560&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=94b6ae810c0eb2cf33131db674c4d9c5 560w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_remix_assistant_result.png?w=840&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=439fb5041217504e27012e997d681207 840w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_remix_assistant_result.png?w=1100&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=cfd56daf737804b1e2a43a0e5267a0d3 1100w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_remix_assistant_result.png?w=1650&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=68f08585bf51164d1a5af59f2d54d020 1650w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_remix_assistant_result.png?w=2500&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=1d92b70b96ae1fb84881e3375df34edb 2500w" />
     </Frame>
 
-    To undo these changes, select **Undo these changes** in the **Assistant** tab.
+    To undo these changes, use the Rollback feature in the **Agent** tab.
   </Step>
 </Steps>
 
@@ -168,6 +171,6 @@ Now that you've completed this tutorial, you're ready to explore more possibilit
 Try the following next steps to enhance your skills:
 
 * Ask Agent to implement a new complex feature or to check the code for bugs.
-* Ask Assistant to explain how the code works or to generate user instructions.
+* Use [Fast mode](/replitai/fast-mode) for quick, targeted edits and code explanations.
 * View and edit the Replit App source code and configuration in the **Files** tab.
 * Share your Replit App for others to remix. To learn more, see [Make your Replit App Public](/replit-app/collaborate#make-your-replit-app-public).

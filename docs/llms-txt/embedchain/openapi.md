@@ -1,10 +1,14 @@
 # Source: https://docs.embedchain.ai/components/data-sources/openapi.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🙌 OpenAPI
 
 To add any OpenAPI spec yaml file (currently the json file will be detected as JSON data type), use the data\_type as 'openapi'. 'openapi' allows remote urls and conventional file paths.
 
-```python
+```python  theme={null}
 from embedchain import App
 
 app = App()

@@ -4,12 +4,6 @@
 
 # Source: https://docs.zenml.io/concepts/artifacts.md
 
-# Source: https://docs.zenml.io/api-reference/oss-api/oss-api/model-versions/artifacts.md
-
-# Source: https://docs.zenml.io/api-reference/oss-api/oss-api/artifacts.md
-
-# Source: https://docs.zenml.io/concepts/artifacts.md
-
 # Artifacts
 
 Artifacts are a cornerstone of ZenML's ML pipeline management system. This guide explains what artifacts are, how they work, and how to use them effectively in your pipelines.

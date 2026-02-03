@@ -6,7 +6,6 @@ description: >-
   Learn how to use Code Origin to understand where your spans originate in your
   codebase
 breadcrumbs: Docs > APM > Code Origin for Spans
-source_url: https://docs.datadoghq.com/code_origin/index.html
 ---
 
 # Code Origin for Spans

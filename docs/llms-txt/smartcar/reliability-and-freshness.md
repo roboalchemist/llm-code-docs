@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/help/reliability-and-freshness.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Reliability
 
 > When making requests to vehicles, there is variation in how often data is updated and how many requests it can process in a given period. The tables below indicate the performance for each of Smartcar supported brands in each region.

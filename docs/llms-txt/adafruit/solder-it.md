@@ -4,140 +4,130 @@
 
 # Source: https://learn.adafruit.com/adafruit-pi-cobbler-kit/solder-it.md
 
-# Source: https://learn.adafruit.com/adafruit-prototyping-pi-plate/solder-it.md
-
-# Source: https://learn.adafruit.com/adafruit-pi-cobbler-kit/solder-it.md
-
-# Source: https://learn.adafruit.com/adafruit-prototyping-pi-plate/solder-it.md
-
-# Adafruit Prototyping Pi Plate
+# Adafruit Pi Cobbler Kit
 
 ## Solder it!
 
-Check that you have all the parts - a PCB, a 2x13 female header, a 1x6 female header, two 1x8 female headers, bumper, three 3-pin terminal blocks and ten 2-pin terminal blocks  
+First up, open up your kit and verify you have the components - gray cable, blue PCB, black connector and a stick of male header. The header is breakaway, so it might be one long piece instead of two shorter
+
+![raspberry_pi_ID914parts_LRG.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/601/medium640/raspberry_pi_ID914parts_LRG.jpg?1396764419)
+
+![raspberry_pi_t1.jpg](https://cdn-learn.adafruit.com/assets/assets/000/003/951/medium640/raspberry_pi_t1.jpg?1396804279)
+
+Start by putting the PCB in front of you with the text as shown on the left. Then place the header on top.   
   
-You will also need a soldering iron and solder to assemble the kit
-
-![raspberry_pi_ID801parts_LRG.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/617/medium640/raspberry_pi_ID801parts_LRG.jpg?1396764546)
-
-Place the single bumper underneath the SOIC breakout area. This will make the plate sit nicely on the Ethernet port
-
-![raspberry_pi_bumper.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/616/medium640/raspberry_pi_bumper.jpg?1396764540)
-
-Place the big 2x13 pin header onto the Raspberry Pi GPIO breakouts so that it covers every pin. The connector is symmetric so it will fit on either way.
-
-![raspberry_pi_headerplace.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/659/medium640/raspberry_pi_headerplace.jpg?1396764820)
-
-Place the proto plate PCB on so that the 2x13 header pins poke out through the matching 2x13 pads in the corner.
-
-![raspberry_pi_pcbplace.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/661/medium640/raspberry_pi_pcbplace.jpg?1396764835)
-
-Heat up the soldering iron to 650 &deg;F and wait for it to get up to temperature. Then heat a corner pad/pin with the iron tip and after two seconds poke in a small amount of solder. After the solder has melted into the pad/pin remove the iron.  
+**<u>For the classic cobbler: THERE IS A NOTCH IN THE HEADER MAKE SURE ITS RIGHT NEXT TO THE PIN LABELED #21! </u>**  
   
-Start by soldering the two corner pins. This will allow you to make sure the plate is aligned properly and fix it if its crooked.
+**<u>For the T-cobbler: THERE IS A NOTCH IN THE HEADER MAKE SURE ITS RIGHT NEXT TO TWO HOLES AT THE T JUNCTION<br><br></u>** Its really important to line up the header right, because otherwise the pins will be reversed, making the cobbler useless
 
-![raspberry_pi_cornder.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/664/medium640/raspberry_pi_cornder.jpg?1396764855)
+![raspberry_pi_idcplace.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/602/medium640/raspberry_pi_idcplace.jpg?1396764425)
 
-![raspberry_pi_tack.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/665/medium640/raspberry_pi_tack.jpg?1396764861)
+![raspberry_pi_tnot.jpg](https://cdn-learn.adafruit.com/assets/assets/000/003/952/medium640/raspberry_pi_tnot.jpg?1396804287)
 
-Continue to solder all 26 pins!
+Flip over the two pieces so they are resting on the black header.
 
-![raspberry_pi_solder1.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/666/medium640/raspberry_pi_solder1.jpg?1396764870)
+![raspberry_pi_idcflip.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/603/medium640/raspberry_pi_idcflip.jpg?1396764432)
 
-![raspberry_pi_solder2.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/667/medium640/raspberry_pi_solder2.jpg?1396764876)
+![raspberry_pi_tflip.jpg](https://cdn-learn.adafruit.com/assets/assets/000/003/953/medium640/raspberry_pi_tflip.jpg?1396804298)
 
-![raspberry_pi_headered.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/668/medium640/raspberry_pi_headered.jpg?1396764885)
-
-Find the terminal blocks, they're blue and come in 3-pin and 2-pin shapes. We'll need to slide the blocks together for the next step where we put the blocks into the proto plate. Slide them together to make 1x8 pin, 1x5 pin, &nbsp;and 3x4pin terminal blocks&nbsp;
-
-![raspberry_pi_terminals.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/669/medium640/raspberry_pi_terminals.jpg?1396764891)
-
-![raspberry_pi_slide.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/671/medium640/raspberry_pi_slide.jpg?1396764904)
-
-![raspberry_pi_joined.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/672/medium640/raspberry_pi_joined.jpg?1396764907)
-
-Place the blue terminal blocks around the perimeter of the Proto Plate&nbsp;PCB. Make sure you place them so that the open ends are facing out as shown.
-
-![raspberry_pi_termplace.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/673/medium640/raspberry_pi_termplace.jpg?1396764916)
-
-![raspberry_pi_termplace2.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/674/medium640/raspberry_pi_termplace2.jpg?1396764926)
-
-Carefully flip over the PCB, you may need to tape down the terminal blocks with scotch tape if they seem to fall out. With all the terminal blocks in place, it should sit flat on a table.
-
-![raspberry_pi_termflip.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/675/medium640/raspberry_pi_termflip.jpg?1396764936)
-
-Solder each terminal block connection to the PCB using plenty of solder to make a strong mechanical connection
-
-![raspberry_pi_term1.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/676/medium640/raspberry_pi_term1.jpg?1396764943)
-
-![raspberry_pi_term2.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/677/medium640/raspberry_pi_term2.jpg?1396764953)
-
-![raspberry_pi_term4.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/678/medium640/raspberry_pi_term4.jpg?1396764960)
-
-This part is optional, but if you want to have sockets for the GPIO pins so you can plug wires in and out easily, you can solder in the two 8-pin and single 6-pin header.  
+With your soldering iron heated up to 700 degrees F, and some solder, heat up each ring/pin pair for 2 seconds, then poke the end of the solder in to melt it in and make a strong electrical and mechanical connection. Then pull the solder away. Finally remove the iron.   
   
-Place the headers in the slots right next to the terminal blocks. You'll want to tape them in place so they don't fall over when you flip the PCB.
+Repeat for all 26 pins!
 
-![raspberry_pi_socketplace.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/680/medium640/raspberry_pi_socketplace.jpg?1396764974)
+![raspberry_pi_idcsolder1.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/604/medium640/raspberry_pi_idcsolder1.jpg?1396764441)
 
-![raspberry_pi_sockettape.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/681/medium640/raspberry_pi_sockettape.jpg?1396764980)
+![raspberry_pi_idcsolder2.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/605/medium640/raspberry_pi_idcsolder2.jpg?1396764449)
 
-Solder in all 3 sockets
+![raspberry_pi_idcsoldered.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/606/medium640/raspberry_pi_idcsoldered.jpg?1396764456)
 
-![raspberry_pi_socket1.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/682/medium640/raspberry_pi_socket1.jpg?1396764989)
+![raspberry_pi_tsolder1.jpg](https://cdn-learn.adafruit.com/assets/assets/000/003/954/medium640/raspberry_pi_tsolder1.jpg?1396804309)
 
-![raspberry_pi_socket2.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/683/medium640/raspberry_pi_socket2.jpg?1396764996)
+![raspberry_pi_tsolder2.jpg](https://cdn-learn.adafruit.com/assets/assets/000/003/955/medium640/raspberry_pi_tsolder2.jpg?1396804320)
 
-That's it! You're done assembling the proto plate, next up check the User manual for some ideas on how to use
+Next break the long piece of header into two 13 pin pieces. You can do this with diagonal cutters, pliers or your fingers
 
-![raspberry_pi_ID801bare_LRG.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/684/medium640/raspberry_pi_ID801bare_LRG.jpg?1396765005)
+![raspberry_pi_headerbreak.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/607/medium640/raspberry_pi_headerbreak.jpg?1396764464)
 
-- [Previous Page](https://learn.adafruit.com/adafruit-prototyping-pi-plate/overview.md)
-- [Next Page](https://learn.adafruit.com/adafruit-prototyping-pi-plate/user-manual.md)
+![raspberry_pi_thead.jpg](https://cdn-learn.adafruit.com/assets/assets/000/003/956/medium640/raspberry_pi_thead.jpg?1396804332)
+
+The easiest way to align the pins is to plug them into a solder-less breadboard as shown, with the LONG ends down into the breadboard.   
+  
+Then place the cobbler PCB on top so that the short ends of the header stick through the 26 pads on either side of the connector. If the PCB doesn't slip right on, check that you have the pins aligned and spaced right. It doesn't matter which way the PCB is oriented on the breadboard.
+
+![raspberry_pi_headerplace.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/608/medium640/raspberry_pi_headerplace.jpg?1396764477)
+
+![raspberry_pi_bbplace.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/610/medium640/raspberry_pi_bbplace.jpg?1396764494)
+
+![raspberry_pi_tnext.jpg](https://cdn-learn.adafruit.com/assets/assets/000/003/957/medium640/raspberry_pi_tnext.jpg?1396804343)
+
+![raspberry_pi_ttop.jpg](https://cdn-learn.adafruit.com/assets/assets/000/003/958/medium640/raspberry_pi_ttop.jpg?1396804358)
+
+Solder each of the 26 pads just like you did with the connector before.
+
+![raspberry_pi_bbsolder1.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/611/medium640/raspberry_pi_bbsolder1.jpg?1396764484)
+
+![raspberry_pi_bbsoldered2.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/612/medium640/raspberry_pi_bbsoldered2.jpg?1396764502)
+
+![raspberry_pi_bbsoldered.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/613/medium640/raspberry_pi_bbsoldered.jpg?1396764514)
+
+![raspberry_pi_tsolder1.jpg](https://cdn-learn.adafruit.com/assets/assets/000/003/960/medium640/raspberry_pi_tsolder1.jpg?1396804377)
+
+![raspberry_pi_tsolder2.jpg](https://cdn-learn.adafruit.com/assets/assets/000/003/961/medium640/raspberry_pi_tsolder2.jpg?1396804391)
+
+That's it! Now you can turn off the soldering iron and plug the IDC cable. Note that one wire of the cable has a red stripe. That's pin #1. Because the cobbler connector has that notch, you can only put it in the right way (whew!)  
+  
+<u><b>However, it is possible to put the cable in upside down on the Raspberry Pi! Check the images on the left to verify that the stripe is on the edge closest to the SD card!</b><br><br></u>_Note that the stripe may be red (gray cable) or white (black cable)_
+
+![raspberry_pi_cablein.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/614/medium640/raspberry_pi_cablein.jpg?1396764525)
+
+![raspberry_pi_ID914_LRG.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/615/medium640/raspberry_pi_ID914_LRG.jpg?1396764530)
+
+![raspberry_pi_1105_LRG.jpg](https://cdn-learn.adafruit.com/assets/assets/000/003/962/medium640/raspberry_pi_1105_LRG.jpg?1396804404)
+
+- [Previous Page](https://learn.adafruit.com/adafruit-pi-cobbler-kit/overview.md)
+- [Next Page](https://learn.adafruit.com/adafruit-pi-cobbler-kit/downloads.md)
 
 ## Featured Products
 
-### Raspberry Pi - Skill badge, iron-on patch
+### Adafruit Assembled Pi Cobbler Breakout + Cable for Raspberry Pi
 
-[Raspberry Pi - Skill badge, iron-on patch](https://www.adafruit.com/product/906)
-You are learning to use the small Linux based board, the Raspberry Pi! Adafruit offers a fun and exciting "badges" of achievement for electronics, science and engineering. We believe everyone should be able to be rewarded for learning a useful skill, a badge is just one of the many...
+[Adafruit Assembled Pi Cobbler Breakout + Cable for Raspberry Pi](https://www.adafruit.com/product/914)
+Now that you've finally got your hands on a [Raspberry Pi® Model B](http://www.raspberrypi.org/), you're probably itching to make some fun embedded computer projects with it. What you need is an add on prototyping Pi Cobbler from Adafruit, which can break out all those...
+
+No Longer Stocked
+[Buy Now](https://www.adafruit.com/product/914)
+[Related Guides to the Product](https://learn.adafruit.com/products/914/guides)
+### Full Sized Premium Breadboard - 830 Tie Points
+
+[Full Sized Premium Breadboard - 830 Tie Points](https://www.adafruit.com/product/239)
+This is a 'full-size' premium quality breadboard, 830 tie points. Good for small and medium projects. It's 2.2" x 7" (5.5 cm x 17 cm) with a standard double-strip in the middle and two power rails on both sides. You can pull the power rails off easily to make the...
 
 In Stock
-[Buy Now](https://www.adafruit.com/product/906)
-[Related Guides to the Product](https://learn.adafruit.com/products/906/guides)
-### Adafruit Pi Box -  Enclosure for Raspberry Pi Model A or B
+[Buy Now](https://www.adafruit.com/product/239)
+[Related Guides to the Product](https://learn.adafruit.com/products/239/guides)
+### Adafruit Pi Unassembled T-Cobbler Breakout Kit for Raspberry Pi
 
-[Adafruit Pi Box -  Enclosure for Raspberry Pi Model A or B](https://www.adafruit.com/product/859)
- **Discontinued** - you can grab&nbsp;[Adafruit Pi Box Plus - Enclosure for RasPi Model B+/Pi 2/ Pi 3](https://www.adafruit.com/product/1985) instead!&nbsp;
-
-**We're still selling this classic Adafruit case for those who specifically want it but <a...></a...>**
+[Adafruit Pi Unassembled T-Cobbler Breakout Kit for Raspberry Pi](https://www.adafruit.com/product/1105)
+Now that you've finally got your hands on a [Raspberry Pi®](http://www.raspberrypi.org/), you're probably itching to make some fun embedded computer projects with it. What you need is an add on prototyping Pi T-Cobbler from Adafruit, which can break out all those tasty...
 
 No Longer Stocked
-[Buy Now](https://www.adafruit.com/product/859)
-[Related Guides to the Product](https://learn.adafruit.com/products/859/guides)
-### Adafruit Prototyping Pi Plate Kit for Raspberry Pi
-
-[Adafruit Prototyping Pi Plate Kit for Raspberry Pi](https://www.adafruit.com/product/801)
-Now that you've finally got your hands on a [Raspberry Pi®](http://www.raspberrypi.org/), you're probably itching to make some fun embedded computer projects with it. What you need is an add on prototyping Pi Plate from Adafruit, which can snap onto the Pi PCB (and is...
-
-No Longer Stocked
-[Buy Now](https://www.adafruit.com/product/801)
-[Related Guides to the Product](https://learn.adafruit.com/products/801/guides)
+[Buy Now](https://www.adafruit.com/product/1105)
+[Related Guides to the Product](https://learn.adafruit.com/products/1105/guides)
 
 ## Related Guides
 
-- [Internet of Things Printer for Raspberry Pi](https://learn.adafruit.com/pi-thermal-printer.md)
-- [Adafruit Raspberry Pi Educational Linux Distro](https://learn.adafruit.com/adafruit-raspberry-pi-educational-linux-distro.md)
-- [Skill Badge Requirements: Raspberry Pi](https://learn.adafruit.com/skill-badge-requirements-raspberry-pi.md)
-- [BNO055 Absolute Orientation Sensor with Raspberry Pi & BeagleBone Black](https://learn.adafruit.com/bno055-absolute-orientation-sensor-with-raspberry-pi-and-beaglebone-black.md)
-- [Adafruit AM2320 Sensor](https://learn.adafruit.com/adafruit-am2320-temperature-humidity-i2c-sensor.md)
-- [Adafruit QT Py RP2040](https://learn.adafruit.com/adafruit-qt-py-2040.md)
+- [Adafruit's Raspberry Pi Lesson 13. Power Control](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-13-power-control.md)
 - [Raspberry Pi Pipboy 3000](https://learn.adafruit.com/raspberry-pi-pipboy-3000.md)
-- [Adafruit Sensirion SHTC3 - Temperature & Humidity Sensor Breakout](https://learn.adafruit.com/adafruit-sensirion-shtc3-temperature-humidity-sensor.md)
-- [Adafruit Data Logger Shield](https://learn.adafruit.com/adafruit-data-logger-shield.md)
-- [Adafruit GA1A12S202 Log-scale Analog Light Sensor](https://learn.adafruit.com/adafruit-ga1a12s202-log-scale-analog-light-sensor.md)
-- [Adafruit HUZZAH ESP8266 breakout](https://learn.adafruit.com/adafruit-huzzah-esp8266-breakout.md)
-- [NXP Precision 9DoF Breakout](https://learn.adafruit.com/nxp-precision-9dof-breakout.md)
-- [Adafruit VS1053 MP3/AAC/Ogg/MIDI/WAV Codec Breakout Tutorial](https://learn.adafruit.com/adafruit-vs1053-mp3-aac-ogg-midi-wav-play-and-record-codec-tutorial.md)
-- [Adafruit Mini TFT with Joystick Featherwing](https://learn.adafruit.com/adafruit-mini-tft-featherwing.md)
-- [Adafruit INA23x DC Current Voltage Power Monitor](https://learn.adafruit.com/adafruit-ina237-dc-current-voltage-power-monitor.md)
+- [Raspberry Pi Thermal Printer One Time Pads](https://learn.adafruit.com/raspberry-pi-thermal-printer-one-time-pads.md)
+- [Raspberry Pi Zero NPR One Radio](https://learn.adafruit.com/raspberry-pi-zero-npr-one-radio.md)
+- [Read-Only Raspberry Pi](https://learn.adafruit.com/read-only-raspberry-pi.md)
+- [Networked Thermal Printer using Raspberry Pi and CUPS](https://learn.adafruit.com/networked-thermal-printer-using-cups-and-raspberry-pi.md)
+- [Using a Mini PAL/NTSC Display with a Raspberry Pi](https://learn.adafruit.com/using-a-mini-pal-ntsc-display-with-a-raspberry-pi.md)
+- [Raspberry Pi Care and Troubleshooting](https://learn.adafruit.com/raspberry-pi-care-and-troubleshooting.md)
+- [Set up Home Assistant with a Raspberry Pi](https://learn.adafruit.com/set-up-home-assistant-with-a-raspberry-pi.md)
+- [5" Display Kippah Portable Raspberry Pi](https://learn.adafruit.com/portable-kippah-pi.md)
+- [piBeacon - DIY Beacon with a Raspberry Pi](https://learn.adafruit.com/pibeacon-ibeacon-with-a-raspberry-pi.md)
+- [SSD1306 OLED Displays with Raspberry Pi and BeagleBone Black](https://learn.adafruit.com/ssd1306-oled-displays-with-raspberry-pi-and-beaglebone-black.md)
+- [How we designed an injection-molded case](https://learn.adafruit.com/how-we-designed-an-injection-molded-case-for-raspberry-pi.md)
+- [7” Portable Multitouch Raspberry Pi Tablet](https://learn.adafruit.com/7-portable-raspberry-pi-multitouch-tablet.md)
+- [PiGRRL 2](https://learn.adafruit.com/pigrrl-2.md)

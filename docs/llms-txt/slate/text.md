@@ -2,14 +2,6 @@
 
 # Source: https://docs.slatejs.org/v0.47/slate-core/text.md
 
-# Source: https://docs.slatejs.org/api/nodes/text.md
-
-# Source: https://docs.slatejs.org/v0.47/slate-core/text.md
-
-# Source: https://docs.slatejs.org/api/nodes/text.md
-
-# Source: https://docs.slatejs.org/v0.47/slate-core/text.md
-
 # Text
 
 ```javascript

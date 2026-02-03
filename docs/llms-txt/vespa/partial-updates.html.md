@@ -111,5 +111,5 @@ Attribute fields that are also in summary get their values from the memory struc
 - [proton](../content/proton.html) - this should have the full write pipeline, go here for this
 - [parent-child](../schemas/parent-child.html) - how to use parent attributes for even higher update rates
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

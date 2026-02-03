@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/learn/tool-hooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tool Call Hooks
 
 > Learn how to use tool call hooks to intercept, modify, and control tool execution in CrewAI

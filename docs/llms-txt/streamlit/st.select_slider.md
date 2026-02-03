@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/widgets/st.select_slider
+
 # st.select_slider
 
 Display a slider widget to select items from a list.

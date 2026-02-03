@@ -4,8 +4,6 @@ Source: https://zagjs.com/llms-full.txt
 
 ---
 
-# Introduction to Zag
-
 Zag is a framework agnostic toolkit for implementing complex, interactive, and
 accessible UI components in your design system and web applications. Works for
 React, Solid and Vue.
@@ -129,8 +127,6 @@ Some of the projects we've been inspired by include:
   patterns in the machine (`computed` and `watch`)
 - [David Khourshid](https://twitter.com/DavidKPiano) for talking about state
   machines long enough to get me started on this project
-# Getting Started
-
 Zag can be used within most JS frameworks like Vue, React, Svelte and Solid.
 
 To get Zag running, you'll need to:
@@ -314,8 +310,6 @@ These little nuances between frameworks are handled automatically when you use
 
 Thanks for reading! If you're curious about how state machines work, the next
 page will give you a quick overview.
-# What is a state machine?
-
 A state machine is a tool for modeling stateful, reactive systems. It is useful
 for declaratively describing the behavior of an application or component.
 
@@ -487,8 +481,6 @@ That's it! Now you've learned the fundamentals of a component state machine.
 Now that you understand the basics, learn about the advanced concepts that power Zag machines:
 
 - [Building Machines Guide](/guides/building-machines) - Deep dive into context (bindable), watch/track, computed, refs, and more
-# Frequently Asked Questions
-
 ## Why the need for `normalizeProps`?
 
 The goal of `normalizeProps` is to convert the props of the component into the
@@ -548,8 +540,6 @@ yarn upgrade --scope @zag-js
 # or
 npm up @zag-js/...
 ```
-# LLMs.txt
-
 ## What is LLMs.txt?
 
 We support [LLMs.txt](https://llmstxt.org/) files for making the Zag JS
@@ -599,15 +589,13 @@ choice.
 
 ## React
 
-# Accordion
-
 An accordion is a vertically stacked set of interactive headings containing a
 title, content snippet, or thumbnail representing a section of content.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/accordion)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/accordion)
 [Logic Visualizer](https://zag-visualizer.vercel.app/accordion)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/accordion)
 
@@ -1074,8 +1062,6 @@ Description: When focus is on an trigger, moves focus to the first trigger.
 
 **`End`**
 Description: When focus is on an trigger, moves focus to the last trigger.
-# Angle Slider
-
 An angle slider is a circular dial that allows users to select an angle,
 typically in degrees, within a 360Â° range. It provides an intuitive way to
 control rotations or orientations, offering accessibility features.
@@ -1083,7 +1069,7 @@ control rotations or orientations, offering accessibility features.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/angle-slider)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/angle-slider)
 [Logic Visualizer](https://zag-visualizer.vercel.app/angle-slider)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/angle-slider)
 
@@ -1495,8 +1481,6 @@ Description: Sets the value to 0 degrees.
 
 **`End`**
 Description: Sets the value to 360 degrees.
-# Avatar
-
 The Avatar component is a React component that represents a user avatar or
 profile picture. It displays an image or initials within container.
 
@@ -1506,7 +1490,7 @@ load, or when the image is not provided.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/avatar)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/avatar)
 [Logic Visualizer](https://zag-visualizer.vercel.app/avatar)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/avatar)
 
@@ -1735,15 +1719,13 @@ Description: Function to set error state.
 **`data-scope`**: avatar
 **`data-part`**: fallback
 **`data-state`**: "hidden" | "visible"
-# Carousel
-
 an accessible carousel component that leverages native CSS Scroll Snap for
 smooth, performant scrolling between slides.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/carousel)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/carousel)
 [Logic Visualizer](https://zag-visualizer.vercel.app/carousel)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/carousel)
 
@@ -2261,15 +2243,13 @@ and clamp the page
 ### CSS Variables
 
 <CssVarTable name="carousel" />
-# Checkbox
-
 A checkbox allows users to make a binary choice, i.e. a choice between one of
 two possible mutually exclusive options.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/checkbox)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/checkbox)
 [Logic Visualizer](https://zag-visualizer.vercel.app/checkbox)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/checkbox)
 
@@ -2662,14 +2642,12 @@ Description: Function to toggle the checked state of the checkbox
 
 **`Space`**
 Description: Toggle the checkbox
-# Clipboard
-
 The clipboard machine allows users to quickly copy content to clipboard.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/clipboard)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/clipboard)
 [Logic Visualizer](https://zag-visualizer.vercel.app/clipboard)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/clipboard)
 
@@ -2893,14 +2871,12 @@ Description: Copy the value to the clipboard
 **`data-scope`**: clipboard
 **`data-part`**: trigger
 **`data-copied`**: Present when copied state is true
-# Collapsible
-
 A collapsible is a component which expands and collapses a panel.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/collapsible)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/collapsible)
 [Logic Visualizer](https://zag-visualizer.vercel.app/collapsible)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/collapsible)
 
@@ -3281,8 +3257,6 @@ Description: Opens/closes the collapsible.
 
 **`Enter`**
 Description: Opens/closes the collapsible.
-# Color Picker
-
 The color picker is an input widget used to select a color value from a
 predefined list or a color area.
 
@@ -3292,7 +3266,7 @@ provides a more customizable and consistent user experience.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/color-picker)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/color-picker)
 [Logic Visualizer](https://zag-visualizer.vercel.app/color-picker)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/color-picker)
 
@@ -4092,15 +4066,13 @@ Description: <span>When focus is on the color area, decreases the saturation val
 
 **`Esc`**
 Description: Closes the color picker and moves focus to the trigger
-# Combobox
-
 A combobox is an input widget with an associated popup that enables users to
 select a value from a collection of possible values.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/combobox)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/combobox)
 [Logic Visualizer](https://zag-visualizer.vercel.app/combobox)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/combobox)
 
@@ -4986,8 +4958,6 @@ Description: Selects the highlighted option and closes the combobox.
 
 **`Esc`**
 Description: Closes the combobox
-# Date Picker
-
 A datepicker allows users to enter a date either through text input, or by
 choosing a date from the calendar.
 
@@ -4998,7 +4968,7 @@ choosing a date from the calendar.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/date-picker)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/date-picker)
 [Logic Visualizer](https://zag-visualizer.vercel.app/date-picker)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/date-picker)
 
@@ -5610,6 +5580,14 @@ Description: Whether the calendar is disabled.
 Type: `boolean`
 Description: Whether the calendar is read-only.
 
+**`required`**
+Type: `boolean`
+Description: Whether the date picker is required
+
+**`invalid`**
+Type: `boolean`
+Description: Whether the date picker is invalid
+
 **`outsideDaySelectable`**
 Type: `boolean`
 Description: Whether day outside the visible range can be selected.
@@ -5761,9 +5739,29 @@ Description: Whether the input is focused
 Type: `boolean`
 Description: Whether the date picker is open
 
+**`disabled`**
+Type: `boolean`
+Description: Whether the date picker is disabled
+
+**`invalid`**
+Type: `boolean`
+Description: Whether the date picker is invalid
+
+**`readOnly`**
+Type: `boolean`
+Description: Whether the date picker is read-only
+
 **`inline`**
 Type: `boolean`
 Description: Whether the date picker is rendered inline
+
+**`numOfMonths`**
+Type: `number`
+Description: The number of months to display
+
+**`selectionMode`**
+Type: `SelectionMode`
+Description: The selection mode (single, multiple, or range)
 
 **`view`**
 Type: `DateView`
@@ -5916,6 +5914,7 @@ Description: Returns the state details for a given year cell.
 **`data-state`**: "open" | "closed"
 **`data-disabled`**: Present when disabled
 **`data-readonly`**: Present when read-only
+**`data-empty`**: Present when no value is selected
 
 **`Label`**
 
@@ -5931,6 +5930,7 @@ Description: Returns the state details for a given year cell.
 **`data-scope`**: date-picker
 **`data-part`**: control
 **`data-disabled`**: Present when disabled
+**`data-placeholder-shown`**: Present when placeholder is shown
 
 **`Content`**
 
@@ -6059,6 +6059,7 @@ Description: Returns the state details for a given year cell.
 **`data-part`**: trigger
 **`data-placement`**: The placement of the trigger
 **`data-state`**: "open" | "closed"
+**`data-placeholder-shown`**: Present when placeholder is shown
 
 **`View`**
 
@@ -6084,12 +6085,12 @@ Description: Returns the state details for a given year cell.
 **`data-part`**: input
 **`data-index`**: The index of the item
 **`data-state`**: "open" | "closed"
+**`data-placeholder-shown`**: Present when placeholder is shown
+**`data-invalid`**: Present when invalid
 
 ### CSS Variables
 
 <CssVarTable name="date-picker" />
-# Dialog
-
 A dialog is a window overlaid on either the primary window or another dialog
 window. Content behind a modal dialog is inert, meaning that users cannot
 interact with it.
@@ -6097,7 +6098,7 @@ interact with it.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/dialog)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/dialog)
 [Logic Visualizer](https://zag-visualizer.vercel.app/dialog)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/dialog)
 
@@ -6541,8 +6542,6 @@ Description: Moves focus to the previous focusable element. Focus is trapped wit
 
 **`Esc`**
 Description: Closes the dialog and moves focus to trigger or the defined final focus element
-# Editable
-
 Editable is an input field used for editing a single line of text. It renders as
 static text and transforms into a text input field when then edit interaction is
 triggered (click, focus, or double-click).
@@ -6550,7 +6549,7 @@ triggered (click, focus, or double-click).
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/editable)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/editable)
 [Logic Visualizer](https://zag-visualizer.vercel.app/editable)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/editable)
 
@@ -7005,8 +7004,6 @@ Description: Saves the edited content and exits edit mode.
 
 **`Escape`**
 Description: Discards the changes and exits edit mode.
-# File Upload
-
 File upload component is used to upload multiple files.
 
 The native input file element is quite difficult to style and doesn't provide a
@@ -7018,7 +7015,7 @@ drag-n-drop version.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/file-upload)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/file-upload)
 [Logic Visualizer](https://zag-visualizer.vercel.app/file-upload)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/file-upload)
 
@@ -7660,8 +7657,6 @@ Returns `true` if the clipboard data contains files, `false` otherwise.
 **`data-scope`**: file-upload
 **`data-part`**: clear-trigger
 **`data-disabled`**: Present when disabled
-# Floating Panel
-
 A floating panel is a detachable window that floats above the main interface,
 typically used for displaying and editing properties. The panel can be dragged,
 resized, and positioned anywhere on the screen for optimal workflow.
@@ -8306,14 +8301,12 @@ Description: Whether the panel is draggable
 ### CSS Variables
 
 <CssVarTable name="floating-panel" />
-# Hover Card
-
 An hover card allows sighted users to preview content available behind a link
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/hover-card)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/hover-card)
 [Logic Visualizer](https://zag-visualizer.vercel.app/hover-card)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/hover-card)
 
@@ -8579,8 +8572,6 @@ Description: Function to reposition the popover
 
 The hover card is intended for mouse users only so will not respond to keyboard
 navigation.
-# Image Cropper
-
 The image cropper machine keeps track of the crop rectangle, zoom, rotation, pan
 offset, flip state, and every gesture required to edit them. It exposes a set of
 DOM props so you can render your own viewport, frame, and handles in any
@@ -8589,7 +8580,7 @@ framework.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/image-cropper)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/image-cropper)
 [Logic Visualizer](https://zag-visualizer.vercel.app/image-cropper)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/image-cropper)
 
@@ -9266,15 +9257,13 @@ Use this for server-side cropping or state persistence.
 ### CSS Variables
 
 <CssVarTable name="image-cropper" />
-# Listbox
-
 A listbox component that displays a list of selectable options, supporting both
 single and multiple selection modes.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/listbox)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/listbox)
 [Logic Visualizer](https://zag-visualizer.vercel.app/listbox)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/listbox)
 
@@ -9872,15 +9861,13 @@ Description: Whether the select is disabled
 
 Adheres to the
 [Listbox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/).
-# Marquee
-
 An accessible auto-scrolling marquee component for displaying scrolling content
 like logos, announcements, or featured items.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/marquee)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/marquee)
 [Logic Visualizer](https://zag-visualizer.vercel.app/marquee)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/marquee)
 
@@ -10578,15 +10565,13 @@ Description: Restart the marquee animation from the beginning.
 ### CSS Variables
 
 <CssVarTable name="marquee" />
-# Menu
-
 An accessible dropdown and context menu that is used to display a list of
 actions or options that a user can choose.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/menu)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/menu)
 [Logic Visualizer](https://zag-visualizer.vercel.app/menu)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/menu)
 
@@ -11124,212 +11109,13 @@ Description: <span>When focus is on trigger, opens or closes the submenu dependi
 
 **`Esc`**
 Description: Closes the menu and moves focus to the trigger
-# Context Menu
-
-An accessible dropdown and context menu that is used to display a list of
-actions or options that a user can choose when a trigger element is
-right-clicked or long pressed.
-
-## Resources
-
-
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/menu)
-[Logic Visualizer](https://zag-visualizer.vercel.app/menu)
-[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/menu)
-
-
-
-**Features**
-
-- Support for items, labels, groups of items
-- Focus is fully managed using `aria-activedescendant` pattern
-- Typeahead to allow focusing items by typing text
-- Keyboard navigation support including arrow keys, home/end, page up/down
-
-## Installation
-
-To use the menu machine in your project, run the following command in your
-command line:
-
-```bash
-npm install @zag-js/menu @zag-js/react
-# or
-yarn add @zag-js/menu @zag-js/react
-```
-
-## Anatomy
-
-To set up the menu correctly, you'll need to understand its anatomy and how we
-name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
-
-
-## Usage
-
-First, import the menu package into your project
-
-```jsx
-import * as menu from "@zag-js/menu"
-```
-
-The menu package exports two key functions:
-
-- `machine` â The state machine logic for the menu widget.
-- `connect` â The function that translates the machine's state to JSX attributes
-  and event handlers.
-
-> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
-> ensure that every part has a unique identifier.
-
-Next, import the required hooks and functions for your framework and use the
-menu machine in your project ð¥
-
-To show the menu when a trigger element is right-clicked, use the
-`contextTriggerProps` provided by the menu's connect function.
-
-Context menu's are also opened during a long-press of roughly `700ms` when the
-pointer is pen or touch.
-
-```jsx
-import * as menu from "@zag-js/menu"
-import { useMachine, normalizeProps } from "@zag-js/react"
-
-export function ContextMenu() {
-  const service = useMachine(menu.machine, { id: "1" })
-  const api = menu.connect(service, normalizeProps)
-
-  return (
-    <div>
-      <div {...api.getContextTriggerProps()}>
-        <div>Open context menu</div>
-      </div>
-      <div {...api.getPositionerProps()}>
-        <ul {...api.getContentProps()}>
-          <li {...api.getItemProps({ value: "edit" })}>Edit</li>
-          <li {...api.getItemProps({ value: "duplicate" })}>Duplicate</li>
-          <li {...api.getItemProps({ value: "delete" })}>Delete</li>
-          <li {...api.getItemProps({ value: "export" })}>Export...</li>
-        </ul>
-      </div>
-    </div>
-  )
-}
-```
-
-## Styling guide
-
-Earlier, we mentioned that each menu part has a `data-part` attribute added to
-them to select and style them in the DOM.
-
-### Highlighted item state
-
-When an item is highlighted, via keyboard navigation or pointer, it is given a
-`data-highlighted` attribute.
-
-```css
-[data-part="item"][data-highlighted] {
-  /* styles for highlighted state */
-}
-
-[data-part="item"][data-type="radio|checkbox"][data-highlighted] {
-  /* styles for highlighted state */
-}
-```
-
-### Disabled item state
-
-When an item or an option item is disabled, it is given a `data-disabled`
-attribute.
-
-```css
-[data-part="item"][data-disabled] {
-  /* styles for disabled state */
-}
-
-[data-part="item"][data-type="radio|checkbox"][data-disabled] {
-  /* styles for disabled state */
-}
-```
-
-### Using arrows
-
-When using arrows within the menu, you can style it using css variables.
-
-```css
-[data-part="arrow"] {
-  --arrow-size: 20px;
-  --arrow-background: red;
-}
-```
-
-### Checked option item state
-
-When an option item is checked, it is given a `data-state` attribute.
-
-```css
-[data-part="item"][data-type="radio|checkbox"][data-state="checked"] {
-  /* styles for checked state */
-}
-```
-
-## Methods and Properties
-
-### Machine Context
-
-The menu machine exposes the following context properties:
-
-
-
-### Machine API
-
-The menu `api` exposes the following methods:
-
-
-
-### Data Attributes
-
-<DataAttrTable name="menu" />
-
-### CSS Variables
-
-<CssVarTable name="menu" />
-
-## Accessibility
-
-Uses
-[aria-activedescendant](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/examples/menu-button-actions-active-descendant/)
-pattern to manage focus movement among menu items.
-
-### Keyboard Interactions
-
-**`Space`**
-Description: Activates/Selects the highlighted item
-
-**`Enter`**
-Description: Activates/Selects the highlighted item
-
-**`ArrowDown`**
-Description: Highlights the next item in the menu
-
-**`ArrowUp`**
-Description: Highlights the previous item in the menu
-
-**`ArrowRight + ArrowLeft`**
-Description: When focus is on trigger, opens or closes the submenu depending on reading direction.
-
-**`Esc`**
-Description: Closes the context menu
-# Nested Menu
-
 An accessible dropdown and context menu that is used to display a list of
 actions or options that a user can choose.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/menu)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/menu)
 [Logic Visualizer](https://zag-visualizer.vercel.app/menu)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/menu)
 
@@ -11518,13 +11304,13 @@ When an option item is checked, it is given a `data-state` attribute.
 
 The menu machine exposes the following context properties:
 
-
+<ContextTable name="menu" />
 
 ### Machine API
 
 The menu `api` exposes the following methods:
 
-
+<ApiTable name="menu" />
 
 ### Data Attributes
 
@@ -11562,15 +11348,907 @@ Description: Closes the nested menu.
 
 **`Esc`**
 Description: Closes the nested menu and moves focus to the parent menu item.
-# Number Input
+An accessible dropdown and context menu that is used to display a list of
+actions or options that a user can choose when a trigger element is
+right-clicked or long pressed.
 
+## Resources
+
+
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/menu)
+[Logic Visualizer](https://zag-visualizer.vercel.app/menu)
+[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/menu)
+
+
+
+**Features**
+
+- Support for items, labels, groups of items
+- Focus is fully managed using `aria-activedescendant` pattern
+- Typeahead to allow focusing items by typing text
+- Keyboard navigation support including arrow keys, home/end, page up/down
+
+## Installation
+
+To use the menu machine in your project, run the following command in your
+command line:
+
+```bash
+npm install @zag-js/menu @zag-js/react
+# or
+yarn add @zag-js/menu @zag-js/react
+```
+
+## Anatomy
+
+To set up the menu correctly, you'll need to understand its anatomy and how we
+name its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+
+
+## Usage
+
+First, import the menu package into your project
+
+```jsx
+import * as menu from "@zag-js/menu"
+```
+
+The menu package exports two key functions:
+
+- `machine` â The state machine logic for the menu widget.
+- `connect` â The function that translates the machine's state to JSX attributes
+  and event handlers.
+
+> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
+> ensure that every part has a unique identifier.
+
+Next, import the required hooks and functions for your framework and use the
+menu machine in your project ð¥
+
+To show the menu when a trigger element is right-clicked, use the
+`contextTriggerProps` provided by the menu's connect function.
+
+Context menu's are also opened during a long-press of roughly `700ms` when the
+pointer is pen or touch.
+
+```jsx
+import * as menu from "@zag-js/menu"
+import { useMachine, normalizeProps } from "@zag-js/react"
+
+export function ContextMenu() {
+  const service = useMachine(menu.machine, { id: "1" })
+  const api = menu.connect(service, normalizeProps)
+
+  return (
+    <div>
+      <div {...api.getContextTriggerProps()}>
+        <div>Open context menu</div>
+      </div>
+      <div {...api.getPositionerProps()}>
+        <ul {...api.getContentProps()}>
+          <li {...api.getItemProps({ value: "edit" })}>Edit</li>
+          <li {...api.getItemProps({ value: "duplicate" })}>Duplicate</li>
+          <li {...api.getItemProps({ value: "delete" })}>Delete</li>
+          <li {...api.getItemProps({ value: "export" })}>Export...</li>
+        </ul>
+      </div>
+    </div>
+  )
+}
+```
+
+## Styling guide
+
+Earlier, we mentioned that each menu part has a `data-part` attribute added to
+them to select and style them in the DOM.
+
+### Highlighted item state
+
+When an item is highlighted, via keyboard navigation or pointer, it is given a
+`data-highlighted` attribute.
+
+```css
+[data-part="item"][data-highlighted] {
+  /* styles for highlighted state */
+}
+
+[data-part="item"][data-type="radio|checkbox"][data-highlighted] {
+  /* styles for highlighted state */
+}
+```
+
+### Disabled item state
+
+When an item or an option item is disabled, it is given a `data-disabled`
+attribute.
+
+```css
+[data-part="item"][data-disabled] {
+  /* styles for disabled state */
+}
+
+[data-part="item"][data-type="radio|checkbox"][data-disabled] {
+  /* styles for disabled state */
+}
+```
+
+### Using arrows
+
+When using arrows within the menu, you can style it using css variables.
+
+```css
+[data-part="arrow"] {
+  --arrow-size: 20px;
+  --arrow-background: red;
+}
+```
+
+### Checked option item state
+
+When an option item is checked, it is given a `data-state` attribute.
+
+```css
+[data-part="item"][data-type="radio|checkbox"][data-state="checked"] {
+  /* styles for checked state */
+}
+```
+
+## Methods and Properties
+
+### Machine Context
+
+The menu machine exposes the following context properties:
+
+<ContextTable name="menu" />
+
+### Machine API
+
+The menu `api` exposes the following methods:
+
+<ApiTable name="menu" />
+
+### Data Attributes
+
+<DataAttrTable name="menu" />
+
+### CSS Variables
+
+<CssVarTable name="menu" />
+
+## Accessibility
+
+Uses
+[aria-activedescendant](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/examples/menu-button-actions-active-descendant/)
+pattern to manage focus movement among menu items.
+
+### Keyboard Interactions
+
+**`Space`**
+Description: Activates/Selects the highlighted item
+
+**`Enter`**
+Description: Activates/Selects the highlighted item
+
+**`ArrowDown`**
+Description: Highlights the next item in the menu
+
+**`ArrowUp`**
+Description: Highlights the previous item in the menu
+
+**`ArrowRight + ArrowLeft`**
+Description: When focus is on trigger, opens or closes the submenu depending on reading direction.
+
+**`Esc`**
+Description: Closes the context menu
+An accessible navigation menu component that provides a list of links with
+optional dropdown content. Supports keyboard navigation, hover/click
+interactions, animated indicators, and follows WAI-ARIA practices.
+
+## Resources
+
+
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/navigation-menu)
+[Logic Visualizer](https://zag-visualizer.vercel.app/navigation-menu)
+[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/navigation-menu)
+
+
+
+**Features**
+
+- Support for basic (inline content) and viewport (shared viewport) patterns
+- Hover and click trigger support with configurable delays
+- Keyboard navigation with arrow keys, Tab, Home/End
+- Animated indicator that follows the active trigger
+- Smooth content animations with viewport positioning
+- Support for nested links within dropdown content
+- Horizontal and vertical orientation
+- RTL (right-to-left) support
+- Fully managed focus and tab order
+- Dismissible with click outside or Escape key
+
+## Installation
+
+To use the navigation menu machine in your project, run the following command in
+your command line:
+
+```bash
+npm install @zag-js/navigation-menu @zag-js/react
+# or
+yarn add @zag-js/navigation-menu @zag-js/react
+```
+
+## Anatomy
+
+To set up the navigation menu correctly, you'll need to understand its anatomy
+and how we name its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+
+
+## Usage
+
+First, import the navigation menu package into your project
+
+```jsx
+import * as navigationMenu from "@zag-js/navigation-menu"
+```
+
+The navigation menu package exports two key functions:
+
+- `machine` â The state machine logic for the navigation menu widget.
+- `connect` â The function that translates the machine's state to JSX attributes
+  and event handlers.
+
+> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
+> ensure that every part has a unique identifier.
+
+Next, import the required hooks and functions for your framework and use the
+navigation menu machine in your project ð¥
+
+```jsx
+import * as navigationMenu from "@zag-js/navigation-menu"
+import { useMachine, normalizeProps } from "@zag-js/react"
+import { useId } from "react"
+
+export function NavigationMenu() {
+  const service = useMachine(navigationMenu.machine, {
+    id: useId(),
+  })
+
+  const api = navigationMenu.connect(service, normalizeProps)
+
+  return (
+    <nav {...api.getRootProps()}>
+      <ul {...api.getListProps()}>
+        {/* Item with dropdown content */}
+        <li {...api.getItemProps({ value: "products" })}>
+          <button {...api.getTriggerProps({ value: "products" })}>
+            Products
+          </button>
+          <div {...api.getContentProps({ value: "products" })}>
+            <a {...api.getLinkProps({ value: "products" })} href="/analytics">
+              Analytics
+            </a>
+            <a {...api.getLinkProps({ value: "products" })} href="/marketing">
+              Marketing
+            </a>
+          </div>
+        </li>
+
+        {/* Simple link item */}
+        <li {...api.getItemProps({ value: "pricing" })}>
+          <a {...api.getLinkProps({ value: "pricing" })} href="/pricing">
+            Pricing
+          </a>
+        </li>
+      </ul>
+    </nav>
+  )
+}
+```
+
+The basic pattern places content directly within each item. This is suitable for
+simple dropdown menus where each dropdown appears below its trigger.
+
+### Advanced pattern with viewport
+
+The viewport pattern uses a shared viewport container for all content. This
+enables smooth transitions and better performance for complex navigation
+layouts.
+
+In this pattern:
+
+- Content is rendered inside a shared `viewport` element
+- The viewport automatically positions itself relative to the active trigger
+- You must include `triggerProxy` and `viewportProxy` for proper focus
+  management
+
+```jsx
+import * as navigationMenu from "@zag-js/navigation-menu"
+import { useMachine, normalizeProps } from "@zag-js/react"
+import { useId } from "react"
+
+export function NavigationMenu() {
+  const service = useMachine(navigationMenu.machine, { id: useId() })
+  const api = navigationMenu.connect(service, normalizeProps)
+
+  return (
+    <nav {...api.getRootProps()}>
+      <div {...api.getIndicatorTrackProps()}>
+        <ul {...api.getListProps()}>
+          {/* Item with trigger */}
+          <li {...api.getItemProps({ value: "products" })}>
+            <button {...api.getTriggerProps({ value: "products" })}>
+              Products
+            </button>
+            {/* Focus management proxies */}
+            <span {...api.getTriggerProxyProps({ value: "products" })} />
+            <span {...api.getViewportProxyProps({ value: "products" })} />
+          </li>
+
+          {/* Simple link */}
+          <li {...api.getItemProps({ value: "pricing" })}>
+            <a {...api.getLinkProps({ value: "pricing" })} href="/pricing">
+              Pricing
+            </a>
+          </li>
+
+          {/* Indicator */}
+          <div {...api.getIndicatorProps()}>
+            <div {...api.getArrowProps()} />
+          </div>
+        </ul>
+      </div>
+
+      {/* Shared viewport for all content */}
+      <div {...api.getViewportPositionerProps()}>
+        <div {...api.getViewportProps()}>
+          {/* Content for products */}
+          <div {...api.getContentProps({ value: "products" })}>
+            <a {...api.getLinkProps({ value: "products" })} href="/analytics">
+              Analytics
+            </a>
+            <a {...api.getLinkProps({ value: "products" })} href="/marketing">
+              Marketing
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  )
+}
+```
+
+**When to use viewport pattern:**
+
+- Complex navigation with varying content sizes
+- Smooth animated transitions between different content
+- Header navigation bars (like on e-commerce sites)
+- When you want a single shared container for all dropdowns
+
+### Controlling the navigation menu
+
+To control which item is currently open, pass the `value` and `onValueChange`
+properties to the machine.
+
+```jsx {1,4-8}
+import { useState } from "react"
+
+export function NavigationMenu() {
+  const [value, setValue] = useState("")
+
+  const service = useMachine(navigationMenu.machine, {
+    id: useId(),
+    value,
+    onValueChange: (details) => setValue(details.value),
+  })
+
+  const api = navigationMenu.connect(service, normalizeProps)
+
+  return (
+    <div>
+      <button onClick={() => setValue("products")}>Open Products</button>
+      <button onClick={() => setValue("")}>Close All</button>
+
+      <nav {...api.getRootProps()}>{/* ... navigation items ... */}</nav>
+    </div>
+  )
+}
+```
+
+### Listening for value changes
+
+When the open item changes, the `onValueChange` callback is invoked with the new
+value.
+
+```jsx {3-6}
+const service = useMachine(navigationMenu.machine, {
+  id: "nav",
+  onValueChange(details) {
+    // details => { value: string }
+    console.log("Current open item:", details.value)
+  },
+})
+```
+
+### Adding an animated indicator
+
+To show a visual indicator that animates to the active trigger, render the
+indicator within the list container:
+
+```jsx {3-5}
+<nav {...api.getRootProps()}>
+  <div {...api.getListProps()}>
+    {/* ... items ... */}
+
+    <div {...api.getIndicatorProps()}>
+      <div {...api.getArrowProps()} />
+    </div>
+  </div>
+</nav>
+```
+
+The indicator automatically transitions to match the active trigger's position
+and size using CSS variables.
+
+### Configuring hover delays
+
+You can customize the delay before opening and closing on hover:
+
+```jsx {2-3}
+const service = useMachine(navigationMenu.machine, {
+  openDelay: 300, // Delay before opening on hover (default: 200ms)
+  closeDelay: 400, // Delay before closing on pointer leave (default: 300ms)
+})
+```
+
+**Tip**: Longer delays provide a more forgiving user experience but can feel
+less responsive.
+
+### Disabling hover or click triggers
+
+You can disable hover or click triggers independently:
+
+```jsx {2-6}
+const service = useMachine(navigationMenu.machine, {
+  disableHoverTrigger: true, // Only open on click
+  // OR
+  disableClickTrigger: true, // Only open on hover
+  // OR
+  disablePointerLeaveClose: true, // Prevents closing when pointer leaves
+})
+```
+
+- `disableHoverTrigger` â Prevents opening on hover (click only)
+- `disableClickTrigger` â Prevents opening on click (hover only)
+- `disablePointerLeaveClose` â Prevents closing when pointer leaves
+
+### Changing orientation
+
+The default orientation is horizontal. To create a vertical navigation menu:
+
+```jsx {2}
+const service = useMachine(navigationMenu.machine, {
+  orientation: "vertical",
+})
+```
+
+This affects keyboard navigation (arrow keys) and indicator positioning.
+
+### Disabling items
+
+To disable a navigation item, pass `disabled: true` to the item props:
+
+```jsx
+<div {...api.getItemProps({ value: "products", disabled: true })}>
+  <button {...api.getTriggerProps({ value: "products", disabled: true })}>
+    Products
+  </button>
+</div>
+```
+
+Disabled items cannot be opened and are skipped during keyboard navigation.
+
+### Indicating current page
+
+To highlight the current page link, use the `current` prop:
+
+```jsx
+<a {...api.getLinkProps({ value: "products", current: true })}>Products</a>
+```
+
+This adds `data-current` attribute and `aria-current="page"` for accessibility.
+
+### RTL support
+
+The navigation menu supports right-to-left languages. Set the `dir` property to
+`rtl`:
+
+```jsx {2}
+const service = useMachine(navigationMenu.machine, {
+  dir: "rtl",
+})
+```
+
+## Styling guide
+
+Earlier, we mentioned that each navigation menu part has a `data-part` attribute
+added to them to select and style them in the DOM.
+
+### Open and closed states
+
+When content is open or closed, it receives a `data-state` attribute:
+
+```css
+[data-part="content"][data-state="open|closed"] {
+  /* Styles for open or closed content */
+}
+
+[data-part="trigger"][data-state="open|closed"] {
+  /* Styles for open or closed trigger */
+}
+
+[data-part="viewport"][data-state="open|closed"] {
+  /* Styles for viewport open/closed state */
+}
+```
+
+### Selected item state
+
+When an item is selected (open), it receives `data-state="open"`:
+
+```css
+[data-part="item"][data-state="open"] {
+  /* Styles for open item */
+}
+```
+
+### Disabled state
+
+Disabled items have a `data-disabled` attribute:
+
+```css
+[data-part="item"][data-disabled] {
+  /* Styles for disabled items */
+}
+
+[data-part="trigger"][data-disabled] {
+  /* Styles for disabled triggers */
+}
+```
+
+### Orientation styles
+
+All parts have a `data-orientation` attribute:
+
+```css
+[data-part="root"][data-orientation="horizontal|vertical"] {
+  /* Orientation-specific styles */
+}
+
+[data-part="list"][data-orientation="horizontal"] {
+  display: flex;
+  flex-direction: row;
+}
+
+[data-part="list"][data-orientation="vertical"] {
+  display: flex;
+  flex-direction: column;
+}
+```
+
+### Current link state
+
+Links marked as current have a `data-current` attribute:
+
+```css
+[data-part="link"][data-current] {
+  /* Styles for current page link */
+}
+```
+
+### Styling the indicator
+
+The indicator uses CSS variables for positioning and sizing:
+
+```css
+[data-part="indicator"] {
+  position: absolute;
+  transition:
+    translate 250ms ease,
+    width 250ms ease,
+    height 250ms ease;
+}
+
+[data-part="indicator"][data-orientation="horizontal"] {
+  left: 0;
+  translate: var(--trigger-x) 0;
+  width: var(--trigger-width);
+}
+
+[data-part="indicator"][data-orientation="vertical"] {
+  top: 0;
+  translate: 0 var(--trigger-y);
+  height: var(--trigger-height);
+}
+```
+
+### Styling the viewport
+
+The viewport uses CSS variables for positioning and sizing:
+
+```css
+[data-part="viewport"] {
+  position: absolute;
+  width: var(--viewport-width);
+  height: var(--viewport-height);
+  transition:
+    width 300ms ease,
+    height 300ms ease;
+}
+```
+
+### Arrow styling
+
+The arrow can be styled using CSS variables:
+
+```css
+[data-part="root"] {
+  --arrow-size: 20px;
+}
+
+[data-part="arrow"] {
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  background: white;
+  rotate: 45deg;
+}
+```
+
+### Motion attributes
+
+When using the viewport pattern, content elements receive `data-motion`
+attributes for directional animations:
+
+```css
+[data-part="content"][data-motion="from-start"] {
+  animation: slideFromStart 250ms ease;
+}
+
+[data-part="content"][data-motion="from-end"] {
+  animation: slideFromEnd 250ms ease;
+}
+
+[data-part="content"][data-motion="to-start"] {
+  animation: slideToStart 250ms ease;
+}
+
+[data-part="content"][data-motion="to-end"] {
+  animation: slideToEnd 250ms ease;
+}
+```
+
+**Tip**: The motion direction indicates where the content is coming from
+(from-start/from-end) or going to (to-start/to-end), enabling context-aware
+animations when switching between items.
+
+## Methods and Properties
+
+### Machine Context
+
+The navigation menu machine exposes the following context properties:
+
+**`ids`**
+Type: `Partial<{ root: string; list: string; item: string; trigger: (value: string) => string; content: (value: string) => string; viewport: string; }>`
+Description: The ids of the elements in the machine.
+
+**`value`**
+Type: `string`
+Description: The controlled value of the navigation menu
+
+**`defaultValue`**
+Type: `string`
+Description: The default value of the navigation menu.
+Use when you don't want to control the value of the menu.
+
+**`onValueChange`**
+Type: `(details: ValueChangeDetails) => void`
+Description: Function called when the value of the menu changes
+
+**`openDelay`**
+Type: `number`
+Description: The delay before the menu opens
+
+**`closeDelay`**
+Type: `number`
+Description: The delay before the menu closes
+
+**`disableClickTrigger`**
+Type: `boolean`
+Description: Whether to disable the click trigger
+
+**`disableHoverTrigger`**
+Type: `boolean`
+Description: Whether to disable the hover trigger
+
+**`disablePointerLeaveClose`**
+Type: `boolean`
+Description: Whether to disable the pointer leave close
+
+**`dir`**
+Type: `"ltr" | "rtl"`
+Description: The document's text/writing direction.
+
+**`id`**
+Type: `string`
+Description: The unique identifier of the machine.
+
+**`getRootNode`**
+Type: `() => ShadowRoot | Node | Document`
+Description: A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
+
+**`orientation`**
+Type: `"horizontal" | "vertical"`
+Description: The orientation of the element.
+
+### Machine API
+
+The navigation menu `api` exposes the following methods:
+
+**`value`**
+Type: `string`
+Description: The current value of the menu
+
+**`setValue`**
+Type: `(value: string) => void`
+Description: Sets the value of the menu
+
+**`open`**
+Type: `boolean`
+Description: Whether the menu is open
+
+**`isViewportRendered`**
+Type: `boolean`
+Description: Whether the viewport is rendered
+
+**`getViewportNode`**
+Type: `() => HTMLElement`
+Description: Gets the viewport node element
+
+**`orientation`**
+Type: `Orientation`
+Description: The orientation of the menu
+
+**`reposition`**
+Type: `VoidFunction`
+Description: Function to reposition the viewport
+
+### Data Attributes
+
+**`Root`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: root
+**`data-orientation`**: The orientation of the navigation-menu
+
+**`List`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: list
+**`data-orientation`**: The orientation of the list
+
+**`Item`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: item
+**`data-value`**: The value of the item
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the item
+**`data-disabled`**: Present when disabled
+
+**`Indicator`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: indicator
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the indicator
+
+**`Arrow`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: arrow
+**`data-orientation`**: The orientation of the arrow
+
+**`Trigger`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: trigger
+**`data-trigger-proxy-id`**: 
+**`data-value`**: The value of the item
+**`data-state`**: "open" | "closed"
+**`data-disabled`**: Present when disabled
+
+**`TriggerProxy`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: trigger-proxy
+**`data-trigger-proxy`**: 
+**`data-trigger-id`**: 
+
+**`Link`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: link
+**`data-value`**: The value of the item
+**`data-current`**: Present when current
+
+**`Content`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: content
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the content
+**`data-value`**: The value of the item
+
+**`ViewportPositioner`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: viewport-positioner
+**`data-orientation`**: The orientation of the viewportpositioner
+**`data-align`**: 
+
+**`Viewport`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: viewport
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the viewport
+**`data-align`**: 
+
+**`ItemIndicator`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: item-indicator
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the item
+**`data-value`**: The value of the item
+
+### CSS Variables
+
+<CssVarTable name="navigation-menu" />
+
+## Accessibility
+
+### Keyboard Interactions
+
+**`ArrowDown`**
+Description: When focus is on trigger (vertical orientation), moves focus to the next trigger.
+
+**`ArrowUp`**
+Description: When focus is on trigger (vertical orientation), moves focus to the previous trigger.
+
+**`ArrowRight`**
+Description: <span>When focus is on trigger (horizontal orientation), moves focus to the next trigger.<br />When focus is on content, moves focus to the next link.</span>
+
+**`ArrowLeft`**
+Description: <span>When focus is on trigger (horizontal orientation), moves focus to the previous trigger.<br />When focus is on content, moves focus to the previous link.</span>
+
+**`Home`**
+Description: <span>When focus is on trigger, moves focus to the first trigger.<br />When focus is on content, moves focus to the first link.</span>
+
+**`End`**
+Description: <span>When focus is on trigger, moves focus to the last trigger.<br />When focus is on content, moves focus to the last link.</span>
 The number input provides controls for editing, incrementing or decrementing
 numeric values using the keyboard or pointer.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/number-input)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/number-input)
 [Logic Visualizer](https://zag-visualizer.vercel.app/number-input)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/number-input)
 
@@ -12163,15 +12841,13 @@ Description: Sets the value of the number input to its maximum allowed value.
 
 **`Enter`**
 Description: Submits the value entered in the number input.
-# Pagination
-
 Pagination is an interface that allows navigating between pages that contain
 split information, instead of being shown on a single page.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/pagination)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/pagination)
 [Logic Visualizer](https://zag-visualizer.vercel.app/pagination)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/pagination)
 
@@ -12503,12 +13179,10 @@ Description: Function to go to the last page.
 **`data-scope`**: pagination
 **`data-part`**: next-trigger
 **`data-disabled`**: Present when disabled
-# Password Input
-
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/password-input)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/password-input)
 [Logic Visualizer](https://zag-visualizer.vercel.app/password-input)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/password-input)
 
@@ -12855,8 +13529,6 @@ Description: Set the visibility of the password input.
 **`toggleVisible`**
 Type: `VoidFunction`
 Description: Toggle the visibility of the password input.
-# Pin Input
-
 The pin input is optimized for entering a sequence of digits or letters. The
 input fields allow one character at a time. When the digit or letter is entered,
 focus transfers to the next input in the sequence, until every input is filled.
@@ -12864,7 +13536,7 @@ focus transfers to the next input in the sequence, until every input is filled.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/pin-input)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/pin-input)
 [Logic Visualizer](https://zag-visualizer.vercel.app/pin-input)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/pin-input)
 
@@ -13315,8 +13987,6 @@ Description: Deletes the value in the current input
 
 **`Control + V`**
 Description: Pastes the value into the input fields
-# Popover
-
 A popover is a non-modal dialog that floats around a trigger. It is used to
 display contextual information to the user, and should be paired with a
 clickable trigger element.
@@ -13324,7 +13994,7 @@ clickable trigger element.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/popover)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/popover)
 [Logic Visualizer](https://zag-visualizer.vercel.app/popover)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/popover)
 
@@ -13793,8 +14463,6 @@ Description: <span>Moves focus to the previous focusable element within the cont
 
 **`Esc`**
 Description: <span>Closes the popover and moves focus to the trigger.</span>
-# Presence
-
 The presence machine is a state machine that helps you manage exit animations in
 your project.
 
@@ -13808,7 +14476,7 @@ animation before removing or hiding it.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/presence)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/presence)
 [Logic Visualizer](https://zag-visualizer.vercel.app/presence)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/presence)
 
@@ -13962,15 +14630,13 @@ Description: Function to set the node (as early as possible)
 **`unmount`**
 Type: `VoidFunction`
 Description: Function to programmatically unmount the node
-# Linear Progress
-
 Linear progress is a simple progress bar that can be used to show the progress
 of a task such as downloading a file, uploading an image, etc.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/progress)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/progress)
 [Logic Visualizer](https://zag-visualizer.vercel.app/progress)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/progress)
 
@@ -14152,13 +14818,13 @@ selector.
 
 The progress machine exposes the following context properties:
 
-
+<ContextTable name="progress" />
 
 ### Machine API
 
 The progress `api` exposes the following methods:
 
-
+<ApiTable name="progress" />
 
 ### Data Attributes
 
@@ -14167,15 +14833,13 @@ The progress `api` exposes the following methods:
 ### CSS Variables
 
 <CssVarTable name="progress" />
-# Circular Progress
-
 Circular progress is a circular progress bar that can be used to show the
 progress of a task such as downloading a file, uploading an image, etc.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/progress)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/progress)
 [Logic Visualizer](https://zag-visualizer.vercel.app/progress)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/progress)
 
@@ -14378,19 +15042,17 @@ selector.
 
 The progress machine exposes the following context properties:
 
-
+<ContextTable name="progress" />
 
 ### Machine API
 
 The progress `api` exposes the following methods:
 
-
+<ApiTable name="progress" />
 
 ### Data Attributes
 
 <DataAttrTable name="progress" />
-# QR Code
-
 QR (Quick Response) Code is used to provide information or link which can be
 accessed by scanning the code with an app or a smartphone.
 
@@ -14400,7 +15062,7 @@ accessed by scanning the code with an app or a smartphone.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/qr-code)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/qr-code)
 [Logic Visualizer](https://zag-visualizer.vercel.app/qr-code)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/qr-code)
 
@@ -14639,15 +15301,13 @@ Description: Set the value to encode.
 **`getDataUrl`**
 Type: `(type: DataUrlType, quality?: number) => Promise<string>`
 Description: Returns the data URL of the qr code.
-# Radio Group
-
 A radio group allows users to make a single choice from a select number of
 option
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/radio-group)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/radio-group)
 [Logic Visualizer](https://zag-visualizer.vercel.app/radio-group)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/radio-group)
 
@@ -14961,356 +15621,12 @@ Description: Moves focus to the previous radio item in the group.
 
 **`ArrowLeft`**
 Description: Moves focus to the previous radio item in the group.
-# Range Slider
-
-A range slider is a multi-thumb slider used to select a range between two
-numbers.
-
-## Resources
-
-
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/slider)
-[Logic Visualizer](https://zag-visualizer.vercel.app/slider)
-[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/slider)
-
-
-
-**Features**
-
-- Fully managed keyboard navigation
-- Supports touch or click on track to update value
-- Supports Right-to-Left directionality
-- Support for horizontal and vertical orientations
-- Prevents text selection while dragging
-
-## Installation
-
-To use the range slider machine in your project, run the following command in
-your command line:
-
-```bash
-npm install @zag-js/slider @zag-js/react
-# or
-yarn add @zag-js/slider @zag-js/react
-```
-
-## Anatomy
-
-To set up the slider correctly, you'll need to understand its anatomy and how we
-name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
-
-
-## Usage
-
-First, import the range slider package into your project
-
-```jsx
-import * as rangeSlider from "@zag-js/slider"
-```
-
-The range slider package exports two key functions:
-
-- `machine` â The state machine logic for the slider widget as described in the
-  WAI-ARIA spec.
-- `connect` â The function that translates the machine's state to JSX attributes
-  and event handlers.
-
-> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
-> ensure that every part has a unique identifier.
-
-Next, import the required hooks and functions for your framework and use the
-range slider machine in your project ð¥
-
-```jsx
-import * as slider from "@zag-js/slider"
-import { useMachine, normalizeProps } from "@zag-js/react"
-
-export function RangeSlider() {
-  const service = useMachine(slider.machine, {
-    id: "1",
-    name: "quantity",
-    defaultValue: [10, 60],
-  })
-
-  const api = slider.connect(service, normalizeProps)
-
-  return (
-    <div {...api.getRootProps()}>
-      <div {...api.getControlProps()}>
-        <div {...api.getTrackProps()}>
-          <div {...api.getRangeProps()} />
-        </div>
-        {api.value.map((_, index) => (
-          <div key={index} {...api.getThumbProps({ index })}>
-            <input {...api.getHiddenInputProps({ index })} />
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
-```
-
-## Changing the orientation
-
-By default, the slider is assumed to be horizontal. To change the orientation to
-vertical, set the `orientation` property in the machine's context to `vertical`.
-
-In this mode, the slider will use the arrow up and down keys to
-increment/decrement its value.
-
-> Don't forget to change the styles of the vertical slider by specifying its
-> height
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  orientation: "vertical",
-})
-```
-
-## Setting the initial value
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  defaultValue: [30, 60],
-})
-```
-
-## Specifying the minimum and maximum
-
-By default, the minimum is `0` and the maximum is `100`. If that's not what you
-want, you can easily specify different bounds by changing the values of the min
-and/or max attributes.
-
-For example, to ask the user for a value between `-10` and `10`, you can use:
-
-```jsx {2-3}
-const service = useMachine(slider.machine, {
-  min: -10,
-  max: 10,
-})
-```
-
-## Setting the value's granularity
-
-By default, the granularity, is `1`, meaning that the value is always an
-integer. You can change the step attribute to control the granularity.
-
-For example, If you need a value between `5` and `10`, accurate to two decimal
-places, you should set the value of step to `0.01`:
-
-```jsx {4}
-const service = useMachine(slider.machine, {
-  min: 5,
-  max: 10,
-  step: 0.01,
-})
-```
-
-## Listening for changes
-
-When the slider value changes, the `onValueChange` and `onValueChangeEnd`
-callbacks are invoked. You can use this to setup custom behaviors in your app.
-
-```jsx {2-7}
-const service = useMachine(slider.machine, {
-  onValueChange(details) {
-    // details => { values: number[] }
-    console.log("value changing to:", details)
-  },
-  onValueChangeEnd(details) {
-    // details => { values: number[] }
-    console.log("value has changed to:", details)
-  },
-})
-```
-
-## Preventing thumb overlap
-
-By default, the range slider thumbs are allowed to overlap when their values are
-equal. To prevent this, use the `minStepsBetweenThumbs` to avoid thumbs with
-equal values.
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  minStepsBetweenThumbs: 1,
-})
-```
-
-## Usage within forms
-
-To use slider within forms, use the exposed `getInputProps` from the `connect`
-function and ensure you pass `name` value to the machine's context. It will
-render a hidden input for each value and ensure the value changes get propagated
-to the form correctly.
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  name: "quantity",
-})
-```
-
-## RTL Support
-
-The slider has built-in support for RTL alignment and interaction. In the RTL
-mode, operations are performed from right to left, meaning, the left arrow key
-will increment and the right arrow key will decrement.
-
-To enable RTL support, pass the `dir: rtl` context property
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  dir: "rtl",
-})
-```
-
-> While we take care of the interactions in RTL mode, you'll have to ensure you
-> apply the correct CSS styles to flip the layout.
-
-## Styling guide
-
-Earlier, we mentioned that each slider part has a `data-part` attribute added to
-them to select and style them in the DOM.
-
-### Focused State
-
-When the slider thumb is focused, the `data-focus` attribute is added to the
-root, control, thumb and label parts.
-
-```css
-[data-part="root"][data-focus] {
-  /* styles for root focus state */
-}
-
-[data-part="thumb"]:focus {
-  /* styles for thumb focus state */
-}
-
-[data-part="control"][data-focus] {
-  /* styles for control focus state */
-}
-
-[data-part="track"][data-focus] {
-  /* styles for track focus state */
-}
-
-[data-part="range"][data-focus] {
-  /* styles for range focus state */
-}
-```
-
-### Disabled State
-
-When the slider is disabled, the `data-disabled` attribute is added to the root,
-label, control and thumb.
-
-```css
-[data-part="root"][data-disabled] {
-  /* styles for root disabled state */
-}
-
-[data-part="label"][data-disabled] {
-  /* styles for label disabled state */
-}
-
-[data-part="control"][data-disabled] {
-  /* styles for control disabled state */
-}
-
-[data-part="value-text"][data-disabled] {
-  /* styles for output disabled state */
-}
-
-[data-part="thumb"][data-disabled] {
-  /* styles for thumb disabled state */
-}
-
-[data-part="range"][data-disabled] {
-  /* styles for range disabled state */
-}
-```
-
-### Orientation
-
-```css
-[data-part="root"][data-orientation="(horizontal|vertical)"] {
-  /* styles for horizontal or vertical  */
-}
-
-[data-part="thumb"][data-orientation="(horizontal|vertical)"] {
-  /* styles for horizontal or vertical  */
-}
-
-[data-part="track"][data-orientation="(horizontal|vertical)"] {
-  /* styles for horizontal or vertical  */
-}
-```
-
-## Methods and Properties
-
-### Machine Context
-
-The slider machine exposes the following context properties:
-
-
-
-### Machine API
-
-The slider `api` exposes the following methods:
-
-
-
-### Data Attributes
-
-<DataAttrTable name="slider" />
-
-## Accessibility
-
-Adheres to the
-[Slider WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slidertwothumb).
-
-### Keyboard Interactions
-
-**`ArrowRight`**
-Description: <span>Increments the focused thumb based on defined step</span>
-
-**`ArrowLeft`**
-Description: <span>Decrements the focused thumb based on defined step</span>
-
-**`ArrowUp`**
-Description: <span>Increases the focused thumb by the step amount.</span>
-
-**`ArrowDown`**
-Description: <span>Decreases the focused thumb by the step amount.</span>
-
-**`PageUp`**
-Description: <span>Increases the focused thumb value by a larger step</span>
-
-**`PageDown`**
-Description: <span>Decreases the focused thumb value by a larger step</span>
-
-**`Shift + ArrowUp`**
-Description: <span>Increases the focused thumb value by a larger step</span>
-
-**`Shift + ArrowDown`**
-Description: <span>Decreases the focused thumb value by a larger step</span>
-
-**`Home`**
-Description: Sets the focused thumb value to its minimum.
-
-**`End`**
-Description: Sets the focused thumb value to its maximum.
-# Rating Group
-
 Rating group allows a user to assign rating to an item within a product.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/rating-group)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/rating-group)
 [Logic Visualizer](https://zag-visualizer.vercel.app/rating-group)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/rating-group)
 
@@ -15662,15 +15978,13 @@ Description: Moves focus to the previous star, decreasing the rating value based
 
 **`Enter`**
 Description: Selects the focused star in the rating group.
-# Scroll Area
-
 A scroll area provides a scrollable viewport with customizable scrollbars for
 content that exceeds the container's dimensions.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/scroll-area)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/scroll-area)
 [Logic Visualizer](https://zag-visualizer.vercel.app/scroll-area)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/scroll-area)
 
@@ -16057,8 +16371,6 @@ Description: Returns the state of the scrollbar
 ### CSS Variables
 
 <CssVarTable name="scroll-area" />
-# Segmented Control
-
 A Segmented control allows users to make a single selection from multiple
 exclusive options, providing a visually distinct and intuitive way of
 interacting with radio inputs.
@@ -16066,7 +16378,7 @@ interacting with radio inputs.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/radio-group)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/radio-group)
 [Logic Visualizer](https://zag-visualizer.vercel.app/segmented-control)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/segmented-control)
 
@@ -16276,25 +16588,23 @@ label parts.
 
 The radio group machine exposes the following context properties:
 
-
+<ContextTable name="radio-group" />
 
 ### Machine API
 
 The radio group `api` exposes the following methods:
 
-
+<ApiTable name="radio-group" />
 
 ### Data Attributes
 
 <DataAttrTable name="radio-group" />
-# Select
-
 A Select component allows users pick a value from predefined options.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/select)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/select)
 [Logic Visualizer](https://zag-visualizer.vercel.app/select)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/select)
 
@@ -17230,15 +17540,13 @@ Description: <span>Closes the select and moves focus to trigger.</span>
 
 **`A-Z + a-z`**
 Description: <span>When focus is on trigger, selects the item whose label starts with the typed character.<br />When focus is on the listbox, moves focus to the next item with a label that starts with the typed character.</span>
-# Signature Pad
-
 The signature pad component allows users to draw handwritten signatures using
 touch or pointer devices. The signature can be saved as an image or cleared.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/signature-pad)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/signature-pad)
 [Logic Visualizer](https://zag-visualizer.vercel.app/signature-pad)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/signature-pad)
 
@@ -17570,8 +17878,6 @@ Description: Clears the signature pad.
 **`data-scope`**: signature-pad
 **`data-part`**: guide
 **`data-disabled`**: Present when disabled
-# Slider
-
 A slider allows users to make selections from a range of values. Think of it as
 a custom `<input type='range'/>` with the ability to achieve custom styling and
 accessibility.
@@ -17579,7 +17885,7 @@ accessibility.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/slider)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/slider)
 [Logic Visualizer](https://zag-visualizer.vercel.app/slider)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/slider)
 
@@ -18307,8 +18613,346 @@ Description: Sets the value to its minimum.
 
 **`End`**
 Description: Sets the value to its maximum.
-# Splitter
+A range slider is a multi-thumb slider used to select a range between two
+numbers.
 
+## Resources
+
+
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/slider)
+[Logic Visualizer](https://zag-visualizer.vercel.app/slider)
+[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/slider)
+
+
+
+**Features**
+
+- Fully managed keyboard navigation
+- Supports touch or click on track to update value
+- Supports Right-to-Left directionality
+- Support for horizontal and vertical orientations
+- Prevents text selection while dragging
+
+## Installation
+
+To use the range slider machine in your project, run the following command in
+your command line:
+
+```bash
+npm install @zag-js/slider @zag-js/react
+# or
+yarn add @zag-js/slider @zag-js/react
+```
+
+## Anatomy
+
+To set up the slider correctly, you'll need to understand its anatomy and how we
+name its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+
+
+## Usage
+
+First, import the range slider package into your project
+
+```jsx
+import * as rangeSlider from "@zag-js/slider"
+```
+
+The range slider package exports two key functions:
+
+- `machine` â The state machine logic for the slider widget as described in the
+  WAI-ARIA spec.
+- `connect` â The function that translates the machine's state to JSX attributes
+  and event handlers.
+
+> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
+> ensure that every part has a unique identifier.
+
+Next, import the required hooks and functions for your framework and use the
+range slider machine in your project ð¥
+
+```jsx
+import * as slider from "@zag-js/slider"
+import { useMachine, normalizeProps } from "@zag-js/react"
+
+export function RangeSlider() {
+  const service = useMachine(slider.machine, {
+    id: "1",
+    name: "quantity",
+    defaultValue: [10, 60],
+  })
+
+  const api = slider.connect(service, normalizeProps)
+
+  return (
+    <div {...api.getRootProps()}>
+      <div {...api.getControlProps()}>
+        <div {...api.getTrackProps()}>
+          <div {...api.getRangeProps()} />
+        </div>
+        {api.value.map((_, index) => (
+          <div key={index} {...api.getThumbProps({ index })}>
+            <input {...api.getHiddenInputProps({ index })} />
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+```
+
+## Changing the orientation
+
+By default, the slider is assumed to be horizontal. To change the orientation to
+vertical, set the `orientation` property in the machine's context to `vertical`.
+
+In this mode, the slider will use the arrow up and down keys to
+increment/decrement its value.
+
+> Don't forget to change the styles of the vertical slider by specifying its
+> height
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  orientation: "vertical",
+})
+```
+
+## Setting the initial value
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  defaultValue: [30, 60],
+})
+```
+
+## Specifying the minimum and maximum
+
+By default, the minimum is `0` and the maximum is `100`. If that's not what you
+want, you can easily specify different bounds by changing the values of the min
+and/or max attributes.
+
+For example, to ask the user for a value between `-10` and `10`, you can use:
+
+```jsx {2-3}
+const service = useMachine(slider.machine, {
+  min: -10,
+  max: 10,
+})
+```
+
+## Setting the value's granularity
+
+By default, the granularity, is `1`, meaning that the value is always an
+integer. You can change the step attribute to control the granularity.
+
+For example, If you need a value between `5` and `10`, accurate to two decimal
+places, you should set the value of step to `0.01`:
+
+```jsx {4}
+const service = useMachine(slider.machine, {
+  min: 5,
+  max: 10,
+  step: 0.01,
+})
+```
+
+## Listening for changes
+
+When the slider value changes, the `onValueChange` and `onValueChangeEnd`
+callbacks are invoked. You can use this to setup custom behaviors in your app.
+
+```jsx {2-7}
+const service = useMachine(slider.machine, {
+  onValueChange(details) {
+    // details => { values: number[] }
+    console.log("value changing to:", details)
+  },
+  onValueChangeEnd(details) {
+    // details => { values: number[] }
+    console.log("value has changed to:", details)
+  },
+})
+```
+
+## Preventing thumb overlap
+
+By default, the range slider thumbs are allowed to overlap when their values are
+equal. To prevent this, use the `minStepsBetweenThumbs` to avoid thumbs with
+equal values.
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  minStepsBetweenThumbs: 1,
+})
+```
+
+## Usage within forms
+
+To use slider within forms, use the exposed `getInputProps` from the `connect`
+function and ensure you pass `name` value to the machine's context. It will
+render a hidden input for each value and ensure the value changes get propagated
+to the form correctly.
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  name: "quantity",
+})
+```
+
+## RTL Support
+
+The slider has built-in support for RTL alignment and interaction. In the RTL
+mode, operations are performed from right to left, meaning, the left arrow key
+will increment and the right arrow key will decrement.
+
+To enable RTL support, pass the `dir: rtl` context property
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  dir: "rtl",
+})
+```
+
+> While we take care of the interactions in RTL mode, you'll have to ensure you
+> apply the correct CSS styles to flip the layout.
+
+## Styling guide
+
+Earlier, we mentioned that each slider part has a `data-part` attribute added to
+them to select and style them in the DOM.
+
+### Focused State
+
+When the slider thumb is focused, the `data-focus` attribute is added to the
+root, control, thumb and label parts.
+
+```css
+[data-part="root"][data-focus] {
+  /* styles for root focus state */
+}
+
+[data-part="thumb"]:focus {
+  /* styles for thumb focus state */
+}
+
+[data-part="control"][data-focus] {
+  /* styles for control focus state */
+}
+
+[data-part="track"][data-focus] {
+  /* styles for track focus state */
+}
+
+[data-part="range"][data-focus] {
+  /* styles for range focus state */
+}
+```
+
+### Disabled State
+
+When the slider is disabled, the `data-disabled` attribute is added to the root,
+label, control and thumb.
+
+```css
+[data-part="root"][data-disabled] {
+  /* styles for root disabled state */
+}
+
+[data-part="label"][data-disabled] {
+  /* styles for label disabled state */
+}
+
+[data-part="control"][data-disabled] {
+  /* styles for control disabled state */
+}
+
+[data-part="value-text"][data-disabled] {
+  /* styles for output disabled state */
+}
+
+[data-part="thumb"][data-disabled] {
+  /* styles for thumb disabled state */
+}
+
+[data-part="range"][data-disabled] {
+  /* styles for range disabled state */
+}
+```
+
+### Orientation
+
+```css
+[data-part="root"][data-orientation="(horizontal|vertical)"] {
+  /* styles for horizontal or vertical  */
+}
+
+[data-part="thumb"][data-orientation="(horizontal|vertical)"] {
+  /* styles for horizontal or vertical  */
+}
+
+[data-part="track"][data-orientation="(horizontal|vertical)"] {
+  /* styles for horizontal or vertical  */
+}
+```
+
+## Methods and Properties
+
+### Machine Context
+
+The slider machine exposes the following context properties:
+
+<ContextTable name="slider" />
+
+### Machine API
+
+The slider `api` exposes the following methods:
+
+<ApiTable name="slider" />
+
+### Data Attributes
+
+<DataAttrTable name="slider" />
+
+## Accessibility
+
+Adheres to the
+[Slider WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slidertwothumb).
+
+### Keyboard Interactions
+
+**`ArrowRight`**
+Description: <span>Increments the focused thumb based on defined step</span>
+
+**`ArrowLeft`**
+Description: <span>Decrements the focused thumb based on defined step</span>
+
+**`ArrowUp`**
+Description: <span>Increases the focused thumb by the step amount.</span>
+
+**`ArrowDown`**
+Description: <span>Decreases the focused thumb by the step amount.</span>
+
+**`PageUp`**
+Description: <span>Increases the focused thumb value by a larger step</span>
+
+**`PageDown`**
+Description: <span>Decreases the focused thumb value by a larger step</span>
+
+**`Shift + ArrowUp`**
+Description: <span>Increases the focused thumb value by a larger step</span>
+
+**`Shift + ArrowDown`**
+Description: <span>Decreases the focused thumb value by a larger step</span>
+
+**`Home`**
+Description: Sets the focused thumb value to its minimum.
+
+**`End`**
+Description: Sets the focused thumb value to its maximum.
 A splitter allow create dynamic layouts split into vertically or horizontally
 arranged panes. Panes are separated by the splitter bars that allow dragging to
 resize or expand/collapse them.
@@ -18316,7 +18960,7 @@ resize or expand/collapse them.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/splitter)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/splitter)
 [Logic Visualizer](https://zag-visualizer.vercel.app/splitter)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/splitter)
 
@@ -18617,6 +19261,10 @@ The splitter `api` exposes the following methods:
 Type: `boolean`
 Description: Whether the splitter is currently being resized.
 
+**`orientation`**
+Type: `"horizontal" | "vertical"`
+Description: The orientation of the splitter.
+
 **`getSizes`**
 Type: `() => number[]`
 Description: Returns the current sizes of the panels.
@@ -18628,6 +19276,14 @@ Description: Sets the sizes of the panels.
 **`getItems`**
 Type: `() => SplitterItem[]`
 Description: Returns the items of the splitter.
+
+**`getPanels`**
+Type: `() => PanelData[]`
+Description: Returns the panels of the splitter.
+
+**`getPanelById`**
+Type: `(id: string) => PanelData`
+Description: Returns the panel with the specified id.
 
 **`getPanelSize`**
 Type: `(id: string) => number`
@@ -18661,6 +19317,10 @@ Description: Returns the layout of the splitter.
 Type: `VoidFunction`
 Description: Resets the splitter to its initial state.
 
+**`getResizeTriggerState`**
+Type: `(props: ResizeTriggerProps) => ResizeTriggerState`
+Description: Returns the state of the resize trigger.
+
 ### Data Attributes
 
 **`Root`**
@@ -18668,12 +19328,14 @@ Description: Resets the splitter to its initial state.
 **`data-scope`**: splitter
 **`data-part`**: root
 **`data-orientation`**: The orientation of the splitter
+**`data-dragging`**: Present when in the dragging state
 
 **`Panel`**
 
 **`data-scope`**: splitter
 **`data-part`**: panel
 **`data-orientation`**: The orientation of the panel
+**`data-dragging`**: Present when in the dragging state
 **`data-id`**: 
 **`data-index`**: The index of the item
 
@@ -18684,16 +19346,15 @@ Description: Resets the splitter to its initial state.
 **`data-id`**: 
 **`data-orientation`**: The orientation of the resizetrigger
 **`data-focus`**: Present when focused
+**`data-dragging`**: Present when in the dragging state
 **`data-disabled`**: Present when disabled
-# Steps
-
 Steps are used to guide users through a series of steps in a process. It's a
 great way to break down a complex process into smaller, more manageable steps.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/steps)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/steps)
 [Logic Visualizer](https://zag-visualizer.vercel.app/steps)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/steps)
 
@@ -19092,14 +19753,12 @@ Description: Returns the state of the item at the given index.
 ### CSS Variables
 
 <CssVarTable name="steps" />
-# Switch
-
 A switch allows users to turn an individual option on or off.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/switch)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/switch)
 [Logic Visualizer](https://zag-visualizer.vercel.app/switch)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/switch)
 
@@ -19428,8 +20087,6 @@ Adheres to the
 
 **`Space + Enter`**
 Description: Toggle the switch
-# Tabs
-
 An accessible tabs component that follows the WAI-ARIA Tabs Design Pattern. Each
 tab in the tab list has associated content, with only the selected tab's content
 being displayed.
@@ -19437,7 +20094,7 @@ being displayed.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tabs)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tabs)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tabs)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tabs)
 
@@ -19951,8 +20608,6 @@ Description: Moves focus to the last trigger and activates its associated conten
 
 **`Enter + Space`**
 Description: In manual mode, when a trigger is focused, moves focus to its associated content.
-# Tags Input
-
 Tag inputs render tags inside an input, followed by an actual text input. By
 default, tags are added when text is typed in the input field and the `Enter` or
 `Comma` key is pressed. Throughout the interaction, DOM focus remains on the
@@ -19961,7 +20616,7 @@ input element.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tags-input)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tags-input)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tags-input)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tags-input)
 
@@ -20148,13 +20803,17 @@ const service = useMachine(tagsInput.machine, {
 Before a tag is added, the machine provides a `validate` function you can use to
 determine whether to accept or reject a tag.
 
-A common use-case for validating tags is preventing duplicates or validating the
-data type.
+> **Note:** Duplicate tags are automatically prevented by design. You don't need
+> to handle this in your `validate` function.
 
-```jsx {2-3}
+Common use-cases for validating tags include enforcing format, length, or
+content rules.
+
+```jsx {2-4}
 const service = useMachine(tagsInput.machine, {
   validate(details) {
-    return !details.values.includes(details.inputValue)
+    // Example: only allow lowercase alphabetic tags
+    return /^[a-z]+$/.test(details.inputValue)
   },
 })
 ```
@@ -20629,15 +21288,13 @@ Description: Deletes the tag item that has visual focus
 
 **`Control + V`**
 Description: When `addOnPaste` is set. Adds the pasted value as a tags
-# Timer
-
 The timer machine is used to record the time elapsed from zero or since a
 specified target time.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/timer)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/timer)
 [Logic Visualizer](https://zag-visualizer.vercel.app/timer)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/timer)
 
@@ -20968,15 +21625,13 @@ Description: Function to restart the timer.
 **`progressPercent`**
 Type: `number`
 Description: The progress percentage of the timer.
-# Toast
-
 The toast component is used to give feedback to users after an action has taken
 place.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/toast)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/toast)
 [Logic Visualizer](https://zag-visualizer.vercel.app/toast)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/toast)
 
@@ -21508,14 +22163,12 @@ Description: Subscribe to the toast group
 ### CSS Variables
 
 <CssVarTable name="toast" />
-# Toggle Group
-
 A toggle group is used to toggle either one option or multiple options.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/toggle-group)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/toggle-group)
 [Logic Visualizer](https://zag-visualizer.vercel.app/toggle-group)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/toggle-group)
 
@@ -21845,8 +22498,6 @@ Description: Moves focus to the first item.
 
 **`End`**
 Description: Moves focus to the last item.
-# Tooltip
-
 A tooltip is a brief, informative message that appears when a user interacts
 with an element. Tooltips are usually initiated when a button is focused or
 hovered.
@@ -21854,7 +22505,7 @@ hovered.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tooltip)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tooltip)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tooltip)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tooltip)
 
@@ -22234,8 +22885,6 @@ Description: Opens/closes the tooltip without delay.
 
 **`Escape`**
 Description: If open, closes the tooltip without delay.
-# Tour
-
 A tour is an onboarding component used to guide users through a new product
 feature or series of steps. It is often used to boost feature discoverability or
 onboard new users by highlighting specific elements on the page.
@@ -22243,7 +22892,7 @@ onboard new users by highlighting specific elements on the page.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tour)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tour)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tour)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tour)
 
@@ -22869,8 +23518,6 @@ Description: Returns the progress text
 **`getProgressPercent`**
 Type: `() => number`
 Description: Returns the progress percent
-# Tree View
-
 The TreeView component provides a hierarchical view of data, similar to a file
 system explorer. It allows users to expand and collapse branches, select
 individual or multiple nodes, and traverse the hierarchy using keyboard
@@ -22879,7 +23526,7 @@ navigation.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tree-view)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tree-view)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tree-view)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tree-view)
 
@@ -23779,15 +24426,13 @@ Description: Selects all nodes in the tree. If all nodes are selected, unselects
 
 ## Solid
 
-# Accordion
-
 An accordion is a vertically stacked set of interactive headings containing a
 title, content snippet, or thumbnail representing a section of content.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/accordion)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/accordion)
 [Logic Visualizer](https://zag-visualizer.vercel.app/accordion)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/accordion)
 
@@ -24265,8 +24910,6 @@ Description: When focus is on an trigger, moves focus to the first trigger.
 
 **`End`**
 Description: When focus is on an trigger, moves focus to the last trigger.
-# Angle Slider
-
 An angle slider is a circular dial that allows users to select an angle,
 typically in degrees, within a 360Â° range. It provides an intuitive way to
 control rotations or orientations, offering accessibility features.
@@ -24274,7 +24917,7 @@ control rotations or orientations, offering accessibility features.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/angle-slider)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/angle-slider)
 [Logic Visualizer](https://zag-visualizer.vercel.app/angle-slider)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/angle-slider)
 
@@ -24693,8 +25336,6 @@ Description: Sets the value to 0 degrees.
 
 **`End`**
 Description: Sets the value to 360 degrees.
-# Avatar
-
 The Avatar component is a React component that represents a user avatar or
 profile picture. It displays an image or initials within container.
 
@@ -24704,7 +25345,7 @@ load, or when the image is not provided.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/avatar)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/avatar)
 [Logic Visualizer](https://zag-visualizer.vercel.app/avatar)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/avatar)
 
@@ -24874,15 +25515,13 @@ Description: Function to set error state.
 **`data-scope`**: avatar
 **`data-part`**: fallback
 **`data-state`**: "hidden" | "visible"
-# Carousel
-
 an accessible carousel component that leverages native CSS Scroll Snap for
 smooth, performant scrolling between slides.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/carousel)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/carousel)
 [Logic Visualizer](https://zag-visualizer.vercel.app/carousel)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/carousel)
 
@@ -25403,15 +26042,13 @@ and clamp the page
 ### CSS Variables
 
 <CssVarTable name="carousel" />
-# Checkbox
-
 A checkbox allows users to make a binary choice, i.e. a choice between one of
 two possible mutually exclusive options.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/checkbox)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/checkbox)
 [Logic Visualizer](https://zag-visualizer.vercel.app/checkbox)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/checkbox)
 
@@ -25804,14 +26441,12 @@ Description: Function to toggle the checked state of the checkbox
 
 **`Space`**
 Description: Toggle the checkbox
-# Clipboard
-
 The clipboard machine allows users to quickly copy content to clipboard.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/clipboard)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/clipboard)
 [Logic Visualizer](https://zag-visualizer.vercel.app/clipboard)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/clipboard)
 
@@ -26037,14 +26672,12 @@ Description: Copy the value to the clipboard
 **`data-scope`**: clipboard
 **`data-part`**: trigger
 **`data-copied`**: Present when copied state is true
-# Collapsible
-
 A collapsible is a component which expands and collapses a panel.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/collapsible)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/collapsible)
 [Logic Visualizer](https://zag-visualizer.vercel.app/collapsible)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/collapsible)
 
@@ -26427,8 +27060,6 @@ Description: Opens/closes the collapsible.
 
 **`Enter`**
 Description: Opens/closes the collapsible.
-# Color Picker
-
 The color picker is an input widget used to select a color value from a
 predefined list or a color area.
 
@@ -26438,7 +27069,7 @@ provides a more customizable and consistent user experience.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/color-picker)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/color-picker)
 [Logic Visualizer](https://zag-visualizer.vercel.app/color-picker)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/color-picker)
 
@@ -27243,15 +27874,13 @@ Description: <span>When focus is on the color area, decreases the saturation val
 
 **`Esc`**
 Description: Closes the color picker and moves focus to the trigger
-# Combobox
-
 A combobox is an input widget with an associated popup that enables users to
 select a value from a collection of possible values.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/combobox)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/combobox)
 [Logic Visualizer](https://zag-visualizer.vercel.app/combobox)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/combobox)
 
@@ -28143,8 +28772,6 @@ Description: Selects the highlighted option and closes the combobox.
 
 **`Esc`**
 Description: Closes the combobox
-# Date Picker
-
 A datepicker allows users to enter a date either through text input, or by
 choosing a date from the calendar.
 
@@ -28155,7 +28782,7 @@ choosing a date from the calendar.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/date-picker)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/date-picker)
 [Logic Visualizer](https://zag-visualizer.vercel.app/date-picker)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/date-picker)
 
@@ -28781,6 +29408,14 @@ Description: Whether the calendar is disabled.
 Type: `boolean`
 Description: Whether the calendar is read-only.
 
+**`required`**
+Type: `boolean`
+Description: Whether the date picker is required
+
+**`invalid`**
+Type: `boolean`
+Description: Whether the date picker is invalid
+
 **`outsideDaySelectable`**
 Type: `boolean`
 Description: Whether day outside the visible range can be selected.
@@ -28932,9 +29567,29 @@ Description: Whether the input is focused
 Type: `boolean`
 Description: Whether the date picker is open
 
+**`disabled`**
+Type: `boolean`
+Description: Whether the date picker is disabled
+
+**`invalid`**
+Type: `boolean`
+Description: Whether the date picker is invalid
+
+**`readOnly`**
+Type: `boolean`
+Description: Whether the date picker is read-only
+
 **`inline`**
 Type: `boolean`
 Description: Whether the date picker is rendered inline
+
+**`numOfMonths`**
+Type: `number`
+Description: The number of months to display
+
+**`selectionMode`**
+Type: `SelectionMode`
+Description: The selection mode (single, multiple, or range)
 
 **`view`**
 Type: `DateView`
@@ -29087,6 +29742,7 @@ Description: Returns the state details for a given year cell.
 **`data-state`**: "open" | "closed"
 **`data-disabled`**: Present when disabled
 **`data-readonly`**: Present when read-only
+**`data-empty`**: Present when no value is selected
 
 **`Label`**
 
@@ -29102,6 +29758,7 @@ Description: Returns the state details for a given year cell.
 **`data-scope`**: date-picker
 **`data-part`**: control
 **`data-disabled`**: Present when disabled
+**`data-placeholder-shown`**: Present when placeholder is shown
 
 **`Content`**
 
@@ -29230,6 +29887,7 @@ Description: Returns the state details for a given year cell.
 **`data-part`**: trigger
 **`data-placement`**: The placement of the trigger
 **`data-state`**: "open" | "closed"
+**`data-placeholder-shown`**: Present when placeholder is shown
 
 **`View`**
 
@@ -29255,12 +29913,12 @@ Description: Returns the state details for a given year cell.
 **`data-part`**: input
 **`data-index`**: The index of the item
 **`data-state`**: "open" | "closed"
+**`data-placeholder-shown`**: Present when placeholder is shown
+**`data-invalid`**: Present when invalid
 
 ### CSS Variables
 
 <CssVarTable name="date-picker" />
-# Dialog
-
 A dialog is a window overlaid on either the primary window or another dialog
 window. Content behind a modal dialog is inert, meaning that users cannot
 interact with it.
@@ -29268,7 +29926,7 @@ interact with it.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/dialog)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/dialog)
 [Logic Visualizer](https://zag-visualizer.vercel.app/dialog)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/dialog)
 
@@ -29714,8 +30372,6 @@ Description: Moves focus to the previous focusable element. Focus is trapped wit
 
 **`Esc`**
 Description: Closes the dialog and moves focus to trigger or the defined final focus element
-# Editable
-
 Editable is an input field used for editing a single line of text. It renders as
 static text and transforms into a text input field when then edit interaction is
 triggered (click, focus, or double-click).
@@ -29723,7 +30379,7 @@ triggered (click, focus, or double-click).
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/editable)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/editable)
 [Logic Visualizer](https://zag-visualizer.vercel.app/editable)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/editable)
 
@@ -30182,8 +30838,6 @@ Description: Saves the edited content and exits edit mode.
 
 **`Escape`**
 Description: Discards the changes and exits edit mode.
-# File Upload
-
 File upload component is used to upload multiple files.
 
 The native input file element is quite difficult to style and doesn't provide a
@@ -30195,7 +30849,7 @@ drag-n-drop version.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/file-upload)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/file-upload)
 [Logic Visualizer](https://zag-visualizer.vercel.app/file-upload)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/file-upload)
 
@@ -30843,8 +31497,6 @@ Returns `true` if the clipboard data contains files, `false` otherwise.
 **`data-scope`**: file-upload
 **`data-part`**: clear-trigger
 **`data-disabled`**: Present when disabled
-# Floating Panel
-
 A floating panel is a detachable window that floats above the main interface,
 typically used for displaying and editing properties. The panel can be dragged,
 resized, and positioned anywhere on the screen for optimal workflow.
@@ -31489,14 +32141,12 @@ Description: Whether the panel is draggable
 ### CSS Variables
 
 <CssVarTable name="floating-panel" />
-# Hover Card
-
 An hover card allows sighted users to preview content available behind a link
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/hover-card)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/hover-card)
 [Logic Visualizer](https://zag-visualizer.vercel.app/hover-card)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/hover-card)
 
@@ -31764,8 +32414,6 @@ Description: Function to reposition the popover
 
 The hover card is intended for mouse users only so will not respond to keyboard
 navigation.
-# Image Cropper
-
 The image cropper machine keeps track of the crop rectangle, zoom, rotation, pan
 offset, flip state, and every gesture required to edit them. It exposes a set of
 DOM props so you can render your own viewport, frame, and handles in any
@@ -31774,7 +32422,7 @@ framework.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/image-cropper)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/image-cropper)
 [Logic Visualizer](https://zag-visualizer.vercel.app/image-cropper)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/image-cropper)
 
@@ -32453,15 +33101,13 @@ Use this for server-side cropping or state persistence.
 ### CSS Variables
 
 <CssVarTable name="image-cropper" />
-# Listbox
-
 A listbox component that displays a list of selectable options, supporting both
 single and multiple selection modes.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/listbox)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/listbox)
 [Logic Visualizer](https://zag-visualizer.vercel.app/listbox)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/listbox)
 
@@ -33067,15 +33713,13 @@ Description: Whether the select is disabled
 
 Adheres to the
 [Listbox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/).
-# Marquee
-
 An accessible auto-scrolling marquee component for displaying scrolling content
 like logos, announcements, or featured items.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/marquee)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/marquee)
 [Logic Visualizer](https://zag-visualizer.vercel.app/marquee)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/marquee)
 
@@ -33777,15 +34421,13 @@ Description: Restart the marquee animation from the beginning.
 ### CSS Variables
 
 <CssVarTable name="marquee" />
-# Menu
-
 An accessible dropdown and context menu that is used to display a list of
 actions or options that a user can choose.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/menu)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/menu)
 [Logic Visualizer](https://zag-visualizer.vercel.app/menu)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/menu)
 
@@ -34328,214 +34970,13 @@ Description: <span>When focus is on trigger, opens or closes the submenu dependi
 
 **`Esc`**
 Description: Closes the menu and moves focus to the trigger
-# Context Menu
-
-An accessible dropdown and context menu that is used to display a list of
-actions or options that a user can choose when a trigger element is
-right-clicked or long pressed.
-
-## Resources
-
-
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/menu)
-[Logic Visualizer](https://zag-visualizer.vercel.app/menu)
-[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/menu)
-
-
-
-**Features**
-
-- Support for items, labels, groups of items
-- Focus is fully managed using `aria-activedescendant` pattern
-- Typeahead to allow focusing items by typing text
-- Keyboard navigation support including arrow keys, home/end, page up/down
-
-## Installation
-
-To use the menu machine in your project, run the following command in your
-command line:
-
-```bash
-npm install @zag-js/menu @zag-js/solid
-# or
-yarn add @zag-js/menu @zag-js/solid
-```
-
-## Anatomy
-
-To set up the menu correctly, you'll need to understand its anatomy and how we
-name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
-
-
-## Usage
-
-First, import the menu package into your project
-
-```jsx
-import * as menu from "@zag-js/menu"
-```
-
-The menu package exports two key functions:
-
-- `machine` â The state machine logic for the menu widget.
-- `connect` â The function that translates the machine's state to JSX attributes
-  and event handlers.
-
-> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
-> ensure that every part has a unique identifier.
-
-Next, import the required hooks and functions for your framework and use the
-menu machine in your project ð¥
-
-To show the menu when a trigger element is right-clicked, use the
-`contextTriggerProps` provided by the menu's connect function.
-
-Context menu's are also opened during a long-press of roughly `700ms` when the
-pointer is pen or touch.
-
-```jsx
-import * as menu from "@zag-js/menu"
-import { normalizeProps, useMachine } from "@zag-js/solid"
-import { createMemo, createUniqueId } from "solid-js"
-
-export function ContextMenu() {
-  const service = useMachine(menu.machine, { id: createUniqueId() })
-
-  const api = createMemo(() => menu.connect(service, normalizeProps))
-
-  return (
-    <div>
-      <div {...api().getContextTriggerProps()}>
-        <div style={{ border: "solid 1px red" }}>Open context menu</div>
-      </div>
-      <div {...api().getPositionerProps()}>
-        <ul {...api().getContentProps()}>
-          <li {...api().getItemProps({ value: "edit" })}>Edit</li>
-          <li {...api().getItemProps({ value: "duplicate" })}>Duplicate</li>
-          <li {...api().getItemProps({ value: "delete" })}>Delete</li>
-          <li {...api().getItemProps({ value: "export" })}>Export...</li>
-        </ul>
-      </div>
-    </div>
-  )
-}
-```
-
-## Styling guide
-
-Earlier, we mentioned that each menu part has a `data-part` attribute added to
-them to select and style them in the DOM.
-
-### Highlighted item state
-
-When an item is highlighted, via keyboard navigation or pointer, it is given a
-`data-highlighted` attribute.
-
-```css
-[data-part="item"][data-highlighted] {
-  /* styles for highlighted state */
-}
-
-[data-part="item"][data-type="radio|checkbox"][data-highlighted] {
-  /* styles for highlighted state */
-}
-```
-
-### Disabled item state
-
-When an item or an option item is disabled, it is given a `data-disabled`
-attribute.
-
-```css
-[data-part="item"][data-disabled] {
-  /* styles for disabled state */
-}
-
-[data-part="item"][data-type="radio|checkbox"][data-disabled] {
-  /* styles for disabled state */
-}
-```
-
-### Using arrows
-
-When using arrows within the menu, you can style it using css variables.
-
-```css
-[data-part="arrow"] {
-  --arrow-size: 20px;
-  --arrow-background: red;
-}
-```
-
-### Checked option item state
-
-When an option item is checked, it is given a `data-state` attribute.
-
-```css
-[data-part="item"][data-type="radio|checkbox"][data-state="checked"] {
-  /* styles for checked state */
-}
-```
-
-## Methods and Properties
-
-### Machine Context
-
-The menu machine exposes the following context properties:
-
-
-
-### Machine API
-
-The menu `api` exposes the following methods:
-
-
-
-### Data Attributes
-
-<DataAttrTable name="menu" />
-
-### CSS Variables
-
-<CssVarTable name="menu" />
-
-## Accessibility
-
-Uses
-[aria-activedescendant](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/examples/menu-button-actions-active-descendant/)
-pattern to manage focus movement among menu items.
-
-### Keyboard Interactions
-
-**`Space`**
-Description: Activates/Selects the highlighted item
-
-**`Enter`**
-Description: Activates/Selects the highlighted item
-
-**`ArrowDown`**
-Description: Highlights the next item in the menu
-
-**`ArrowUp`**
-Description: Highlights the previous item in the menu
-
-**`ArrowRight + ArrowLeft`**
-Description: When focus is on trigger, opens or closes the submenu depending on reading direction.
-
-**`Esc`**
-Description: Closes the context menu
-# Nested Menu
-
 An accessible dropdown and context menu that is used to display a list of
 actions or options that a user can choose.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/menu)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/menu)
 [Logic Visualizer](https://zag-visualizer.vercel.app/menu)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/menu)
 
@@ -34733,13 +35174,13 @@ When an option item is checked, it is given a `data-state` attribute.
 
 The menu machine exposes the following context properties:
 
-
+<ContextTable name="menu" />
 
 ### Machine API
 
 The menu `api` exposes the following methods:
 
-
+<ApiTable name="menu" />
 
 ### Data Attributes
 
@@ -34777,15 +35218,909 @@ Description: Closes the nested menu.
 
 **`Esc`**
 Description: Closes the nested menu and moves focus to the parent menu item.
-# Number Input
+An accessible dropdown and context menu that is used to display a list of
+actions or options that a user can choose when a trigger element is
+right-clicked or long pressed.
 
+## Resources
+
+
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/menu)
+[Logic Visualizer](https://zag-visualizer.vercel.app/menu)
+[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/menu)
+
+
+
+**Features**
+
+- Support for items, labels, groups of items
+- Focus is fully managed using `aria-activedescendant` pattern
+- Typeahead to allow focusing items by typing text
+- Keyboard navigation support including arrow keys, home/end, page up/down
+
+## Installation
+
+To use the menu machine in your project, run the following command in your
+command line:
+
+```bash
+npm install @zag-js/menu @zag-js/solid
+# or
+yarn add @zag-js/menu @zag-js/solid
+```
+
+## Anatomy
+
+To set up the menu correctly, you'll need to understand its anatomy and how we
+name its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+
+
+## Usage
+
+First, import the menu package into your project
+
+```jsx
+import * as menu from "@zag-js/menu"
+```
+
+The menu package exports two key functions:
+
+- `machine` â The state machine logic for the menu widget.
+- `connect` â The function that translates the machine's state to JSX attributes
+  and event handlers.
+
+> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
+> ensure that every part has a unique identifier.
+
+Next, import the required hooks and functions for your framework and use the
+menu machine in your project ð¥
+
+To show the menu when a trigger element is right-clicked, use the
+`contextTriggerProps` provided by the menu's connect function.
+
+Context menu's are also opened during a long-press of roughly `700ms` when the
+pointer is pen or touch.
+
+```jsx
+import * as menu from "@zag-js/menu"
+import { normalizeProps, useMachine } from "@zag-js/solid"
+import { createMemo, createUniqueId } from "solid-js"
+
+export function ContextMenu() {
+  const service = useMachine(menu.machine, { id: createUniqueId() })
+
+  const api = createMemo(() => menu.connect(service, normalizeProps))
+
+  return (
+    <div>
+      <div {...api().getContextTriggerProps()}>
+        <div style={{ border: "solid 1px red" }}>Open context menu</div>
+      </div>
+      <div {...api().getPositionerProps()}>
+        <ul {...api().getContentProps()}>
+          <li {...api().getItemProps({ value: "edit" })}>Edit</li>
+          <li {...api().getItemProps({ value: "duplicate" })}>Duplicate</li>
+          <li {...api().getItemProps({ value: "delete" })}>Delete</li>
+          <li {...api().getItemProps({ value: "export" })}>Export...</li>
+        </ul>
+      </div>
+    </div>
+  )
+}
+```
+
+## Styling guide
+
+Earlier, we mentioned that each menu part has a `data-part` attribute added to
+them to select and style them in the DOM.
+
+### Highlighted item state
+
+When an item is highlighted, via keyboard navigation or pointer, it is given a
+`data-highlighted` attribute.
+
+```css
+[data-part="item"][data-highlighted] {
+  /* styles for highlighted state */
+}
+
+[data-part="item"][data-type="radio|checkbox"][data-highlighted] {
+  /* styles for highlighted state */
+}
+```
+
+### Disabled item state
+
+When an item or an option item is disabled, it is given a `data-disabled`
+attribute.
+
+```css
+[data-part="item"][data-disabled] {
+  /* styles for disabled state */
+}
+
+[data-part="item"][data-type="radio|checkbox"][data-disabled] {
+  /* styles for disabled state */
+}
+```
+
+### Using arrows
+
+When using arrows within the menu, you can style it using css variables.
+
+```css
+[data-part="arrow"] {
+  --arrow-size: 20px;
+  --arrow-background: red;
+}
+```
+
+### Checked option item state
+
+When an option item is checked, it is given a `data-state` attribute.
+
+```css
+[data-part="item"][data-type="radio|checkbox"][data-state="checked"] {
+  /* styles for checked state */
+}
+```
+
+## Methods and Properties
+
+### Machine Context
+
+The menu machine exposes the following context properties:
+
+<ContextTable name="menu" />
+
+### Machine API
+
+The menu `api` exposes the following methods:
+
+<ApiTable name="menu" />
+
+### Data Attributes
+
+<DataAttrTable name="menu" />
+
+### CSS Variables
+
+<CssVarTable name="menu" />
+
+## Accessibility
+
+Uses
+[aria-activedescendant](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/examples/menu-button-actions-active-descendant/)
+pattern to manage focus movement among menu items.
+
+### Keyboard Interactions
+
+**`Space`**
+Description: Activates/Selects the highlighted item
+
+**`Enter`**
+Description: Activates/Selects the highlighted item
+
+**`ArrowDown`**
+Description: Highlights the next item in the menu
+
+**`ArrowUp`**
+Description: Highlights the previous item in the menu
+
+**`ArrowRight + ArrowLeft`**
+Description: When focus is on trigger, opens or closes the submenu depending on reading direction.
+
+**`Esc`**
+Description: Closes the context menu
+An accessible navigation menu component that provides a list of links with
+optional dropdown content. Supports keyboard navigation, hover/click
+interactions, animated indicators, and follows WAI-ARIA practices.
+
+## Resources
+
+
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/navigation-menu)
+[Logic Visualizer](https://zag-visualizer.vercel.app/navigation-menu)
+[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/navigation-menu)
+
+
+
+**Features**
+
+- Support for basic (inline content) and viewport (shared viewport) patterns
+- Hover and click trigger support with configurable delays
+- Keyboard navigation with arrow keys, Tab, Home/End
+- Animated indicator that follows the active trigger
+- Smooth content animations with viewport positioning
+- Support for nested links within dropdown content
+- Horizontal and vertical orientation
+- RTL (right-to-left) support
+- Fully managed focus and tab order
+- Dismissible with click outside or Escape key
+
+## Installation
+
+To use the navigation menu machine in your project, run the following command in
+your command line:
+
+```bash
+npm install @zag-js/navigation-menu @zag-js/solid
+# or
+yarn add @zag-js/navigation-menu @zag-js/solid
+```
+
+## Anatomy
+
+To set up the navigation menu correctly, you'll need to understand its anatomy
+and how we name its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+
+
+## Usage
+
+First, import the navigation menu package into your project
+
+```jsx
+import * as navigationMenu from "@zag-js/navigation-menu"
+```
+
+The navigation menu package exports two key functions:
+
+- `machine` â The state machine logic for the navigation menu widget.
+- `connect` â The function that translates the machine's state to JSX attributes
+  and event handlers.
+
+> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
+> ensure that every part has a unique identifier.
+
+Next, import the required hooks and functions for your framework and use the
+navigation menu machine in your project ð¥
+
+```jsx
+import * as navigationMenu from "@zag-js/navigation-menu"
+import { useMachine, normalizeProps } from "@zag-js/solid"
+import { createMemo, createUniqueId } from "solid-js"
+
+export function NavigationMenu() {
+  const service = useMachine(navigationMenu.machine, {
+    id: createUniqueId(),
+  })
+
+  const api = createMemo(() => navigationMenu.connect(service, normalizeProps))
+
+  return (
+    <nav {...api().getRootProps()}>
+      <ul {...api().getListProps()}>
+        {/* Item with dropdown content */}
+        <li {...api().getItemProps({ value: "products" })}>
+          <button {...api().getTriggerProps({ value: "products" })}>
+            Products
+          </button>
+          <div {...api().getContentProps({ value: "products" })}>
+            <a {...api().getLinkProps({ value: "products" })} href="/analytics">
+              Analytics
+            </a>
+            <a {...api().getLinkProps({ value: "products" })} href="/marketing">
+              Marketing
+            </a>
+          </div>
+        </li>
+
+        {/* Simple link item */}
+        <li {...api().getItemProps({ value: "pricing" })}>
+          <a {...api().getLinkProps({ value: "pricing" })} href="/pricing">
+            Pricing
+          </a>
+        </li>
+      </ul>
+    </nav>
+  )
+}
+```
+
+The basic pattern places content directly within each item. This is suitable for
+simple dropdown menus where each dropdown appears below its trigger.
+
+### Advanced pattern with viewport
+
+The viewport pattern uses a shared viewport container for all content. This
+enables smooth transitions and better performance for complex navigation
+layouts.
+
+In this pattern:
+
+- Content is rendered inside a shared `viewport` element
+- The viewport automatically positions itself relative to the active trigger
+- You must include `triggerProxy` and `viewportProxy` for proper focus
+  management
+
+```jsx
+import * as navigationMenu from "@zag-js/navigation-menu"
+import { useMachine, normalizeProps } from "@zag-js/solid"
+import { createMemo, createUniqueId } from "solid-js"
+
+export function NavigationMenu() {
+  const service = useMachine(navigationMenu.machine, { id: createUniqueId() })
+  const api = createMemo(() => navigationMenu.connect(service, normalizeProps))
+
+  return (
+    <nav {...api().getRootProps()}>
+      <div {...api().getIndicatorTrackProps()}>
+        <ul {...api().getListProps()}>
+          {/* Item with trigger */}
+          <li {...api().getItemProps({ value: "products" })}>
+            <button {...api().getTriggerProps({ value: "products" })}>
+              Products
+            </button>
+            {/* Focus management proxies */}
+            <span {...api().getTriggerProxyProps({ value: "products" })} />
+            <span {...api().getViewportProxyProps({ value: "products" })} />
+          </li>
+
+          {/* Simple link */}
+          <li {...api().getItemProps({ value: "pricing" })}>
+            <a {...api().getLinkProps({ value: "pricing" })} href="/pricing">
+              Pricing
+            </a>
+          </li>
+
+          {/* Indicator */}
+          <div {...api().getIndicatorProps()}>
+            <div {...api().getArrowProps()} />
+          </div>
+        </ul>
+      </div>
+
+      {/* Shared viewport for all content */}
+      <div {...api().getViewportPositionerProps()}>
+        <div {...api().getViewportProps()}>
+          {/* Content for products */}
+          <div {...api().getContentProps({ value: "products" })}>
+            <a {...api().getLinkProps({ value: "products" })} href="/analytics">
+              Analytics
+            </a>
+            <a {...api().getLinkProps({ value: "products" })} href="/marketing">
+              Marketing
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  )
+}
+```
+
+**When to use viewport pattern:**
+
+- Complex navigation with varying content sizes
+- Smooth animated transitions between different content
+- Header navigation bars (like on e-commerce sites)
+- When you want a single shared container for all dropdowns
+
+### Controlling the navigation menu
+
+To control which item is currently open, pass the `value` and `onValueChange`
+properties to the machine.
+
+```jsx {1,4-8}
+import { createSignal } from "solid-js"
+
+export function NavigationMenu() {
+  const [value, setValue] = createSignal("")
+
+  const service = useMachine(navigationMenu.machine, {
+    id: createUniqueId(),
+    value: value(),
+    onValueChange: (details) => setValue(details.value),
+  })
+
+  const api = createMemo(() => navigationMenu.connect(service, normalizeProps))
+
+  return (
+    <div>
+      <button onClick={() => setValue("products")}>Open Products</button>
+      <button onClick={() => setValue("")}>Close All</button>
+
+      <nav {...api().getRootProps()}>{/* ... navigation items ... */}</nav>
+    </div>
+  )
+}
+```
+
+### Listening for value changes
+
+When the open item changes, the `onValueChange` callback is invoked with the new
+value.
+
+```jsx {3-6}
+const service = useMachine(navigationMenu.machine, {
+  id: "nav",
+  onValueChange(details) {
+    // details => { value: string }
+    console.log("Current open item:", details.value)
+  },
+})
+```
+
+### Adding an animated indicator
+
+To show a visual indicator that animates to the active trigger, render the
+indicator within the list container:
+
+```jsx {3-5}
+<nav {...api().getRootProps()}>
+  <div {...api().getListProps()}>
+    {/* ... items ... */}
+
+    <div {...api().getIndicatorProps()}>
+      <div {...api().getArrowProps()} />
+    </div>
+  </div>
+</nav>
+```
+
+The indicator automatically transitions to match the active trigger's position
+and size using CSS variables.
+
+### Configuring hover delays
+
+You can customize the delay before opening and closing on hover:
+
+```jsx {2-3}
+const service = useMachine(navigationMenu.machine, {
+  openDelay: 300, // Delay before opening on hover (default: 200ms)
+  closeDelay: 400, // Delay before closing on pointer leave (default: 300ms)
+})
+```
+
+**Tip**: Longer delays provide a more forgiving user experience but can feel
+less responsive.
+
+### Disabling hover or click triggers
+
+You can disable hover or click triggers independently:
+
+```jsx {2-6}
+const service = useMachine(navigationMenu.machine, {
+  disableHoverTrigger: true, // Only open on click
+  // OR
+  disableClickTrigger: true, // Only open on hover
+  // OR
+  disablePointerLeaveClose: true, // Prevents closing when pointer leaves
+})
+```
+
+- `disableHoverTrigger` â Prevents opening on hover (click only)
+- `disableClickTrigger` â Prevents opening on click (hover only)
+- `disablePointerLeaveClose` â Prevents closing when pointer leaves
+
+### Changing orientation
+
+The default orientation is horizontal. To create a vertical navigation menu:
+
+```jsx {2}
+const service = useMachine(navigationMenu.machine, {
+  orientation: "vertical",
+})
+```
+
+This affects keyboard navigation (arrow keys) and indicator positioning.
+
+### Disabling items
+
+To disable a navigation item, pass `disabled: true` to the item props:
+
+```jsx
+<div {...api.getItemProps({ value: "products", disabled: true })}>
+  <button {...api.getTriggerProps({ value: "products", disabled: true })}>
+    Products
+  </button>
+</div>
+```
+
+Disabled items cannot be opened and are skipped during keyboard navigation.
+
+### Indicating current page
+
+To highlight the current page link, use the `current` prop:
+
+```jsx
+<a {...api.getLinkProps({ value: "products", current: true })}>Products</a>
+```
+
+This adds `data-current` attribute and `aria-current="page"` for accessibility.
+
+### RTL support
+
+The navigation menu supports right-to-left languages. Set the `dir` property to
+`rtl`:
+
+```jsx {2}
+const service = useMachine(navigationMenu.machine, {
+  dir: "rtl",
+})
+```
+
+## Styling guide
+
+Earlier, we mentioned that each navigation menu part has a `data-part` attribute
+added to them to select and style them in the DOM.
+
+### Open and closed states
+
+When content is open or closed, it receives a `data-state` attribute:
+
+```css
+[data-part="content"][data-state="open|closed"] {
+  /* Styles for open or closed content */
+}
+
+[data-part="trigger"][data-state="open|closed"] {
+  /* Styles for open or closed trigger */
+}
+
+[data-part="viewport"][data-state="open|closed"] {
+  /* Styles for viewport open/closed state */
+}
+```
+
+### Selected item state
+
+When an item is selected (open), it receives `data-state="open"`:
+
+```css
+[data-part="item"][data-state="open"] {
+  /* Styles for open item */
+}
+```
+
+### Disabled state
+
+Disabled items have a `data-disabled` attribute:
+
+```css
+[data-part="item"][data-disabled] {
+  /* Styles for disabled items */
+}
+
+[data-part="trigger"][data-disabled] {
+  /* Styles for disabled triggers */
+}
+```
+
+### Orientation styles
+
+All parts have a `data-orientation` attribute:
+
+```css
+[data-part="root"][data-orientation="horizontal|vertical"] {
+  /* Orientation-specific styles */
+}
+
+[data-part="list"][data-orientation="horizontal"] {
+  display: flex;
+  flex-direction: row;
+}
+
+[data-part="list"][data-orientation="vertical"] {
+  display: flex;
+  flex-direction: column;
+}
+```
+
+### Current link state
+
+Links marked as current have a `data-current` attribute:
+
+```css
+[data-part="link"][data-current] {
+  /* Styles for current page link */
+}
+```
+
+### Styling the indicator
+
+The indicator uses CSS variables for positioning and sizing:
+
+```css
+[data-part="indicator"] {
+  position: absolute;
+  transition:
+    translate 250ms ease,
+    width 250ms ease,
+    height 250ms ease;
+}
+
+[data-part="indicator"][data-orientation="horizontal"] {
+  left: 0;
+  translate: var(--trigger-x) 0;
+  width: var(--trigger-width);
+}
+
+[data-part="indicator"][data-orientation="vertical"] {
+  top: 0;
+  translate: 0 var(--trigger-y);
+  height: var(--trigger-height);
+}
+```
+
+### Styling the viewport
+
+The viewport uses CSS variables for positioning and sizing:
+
+```css
+[data-part="viewport"] {
+  position: absolute;
+  width: var(--viewport-width);
+  height: var(--viewport-height);
+  transition:
+    width 300ms ease,
+    height 300ms ease;
+}
+```
+
+### Arrow styling
+
+The arrow can be styled using CSS variables:
+
+```css
+[data-part="root"] {
+  --arrow-size: 20px;
+}
+
+[data-part="arrow"] {
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  background: white;
+  rotate: 45deg;
+}
+```
+
+### Motion attributes
+
+When using the viewport pattern, content elements receive `data-motion`
+attributes for directional animations:
+
+```css
+[data-part="content"][data-motion="from-start"] {
+  animation: slideFromStart 250ms ease;
+}
+
+[data-part="content"][data-motion="from-end"] {
+  animation: slideFromEnd 250ms ease;
+}
+
+[data-part="content"][data-motion="to-start"] {
+  animation: slideToStart 250ms ease;
+}
+
+[data-part="content"][data-motion="to-end"] {
+  animation: slideToEnd 250ms ease;
+}
+```
+
+**Tip**: The motion direction indicates where the content is coming from
+(from-start/from-end) or going to (to-start/to-end), enabling context-aware
+animations when switching between items.
+
+## Methods and Properties
+
+### Machine Context
+
+The navigation menu machine exposes the following context properties:
+
+**`ids`**
+Type: `Partial<{ root: string; list: string; item: string; trigger: (value: string) => string; content: (value: string) => string; viewport: string; }>`
+Description: The ids of the elements in the machine.
+
+**`value`**
+Type: `string`
+Description: The controlled value of the navigation menu
+
+**`defaultValue`**
+Type: `string`
+Description: The default value of the navigation menu.
+Use when you don't want to control the value of the menu.
+
+**`onValueChange`**
+Type: `(details: ValueChangeDetails) => void`
+Description: Function called when the value of the menu changes
+
+**`openDelay`**
+Type: `number`
+Description: The delay before the menu opens
+
+**`closeDelay`**
+Type: `number`
+Description: The delay before the menu closes
+
+**`disableClickTrigger`**
+Type: `boolean`
+Description: Whether to disable the click trigger
+
+**`disableHoverTrigger`**
+Type: `boolean`
+Description: Whether to disable the hover trigger
+
+**`disablePointerLeaveClose`**
+Type: `boolean`
+Description: Whether to disable the pointer leave close
+
+**`dir`**
+Type: `"ltr" | "rtl"`
+Description: The document's text/writing direction.
+
+**`id`**
+Type: `string`
+Description: The unique identifier of the machine.
+
+**`getRootNode`**
+Type: `() => ShadowRoot | Node | Document`
+Description: A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
+
+**`orientation`**
+Type: `"horizontal" | "vertical"`
+Description: The orientation of the element.
+
+### Machine API
+
+The navigation menu `api` exposes the following methods:
+
+**`value`**
+Type: `string`
+Description: The current value of the menu
+
+**`setValue`**
+Type: `(value: string) => void`
+Description: Sets the value of the menu
+
+**`open`**
+Type: `boolean`
+Description: Whether the menu is open
+
+**`isViewportRendered`**
+Type: `boolean`
+Description: Whether the viewport is rendered
+
+**`getViewportNode`**
+Type: `() => HTMLElement`
+Description: Gets the viewport node element
+
+**`orientation`**
+Type: `Orientation`
+Description: The orientation of the menu
+
+**`reposition`**
+Type: `VoidFunction`
+Description: Function to reposition the viewport
+
+### Data Attributes
+
+**`Root`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: root
+**`data-orientation`**: The orientation of the navigation-menu
+
+**`List`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: list
+**`data-orientation`**: The orientation of the list
+
+**`Item`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: item
+**`data-value`**: The value of the item
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the item
+**`data-disabled`**: Present when disabled
+
+**`Indicator`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: indicator
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the indicator
+
+**`Arrow`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: arrow
+**`data-orientation`**: The orientation of the arrow
+
+**`Trigger`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: trigger
+**`data-trigger-proxy-id`**: 
+**`data-value`**: The value of the item
+**`data-state`**: "open" | "closed"
+**`data-disabled`**: Present when disabled
+
+**`TriggerProxy`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: trigger-proxy
+**`data-trigger-proxy`**: 
+**`data-trigger-id`**: 
+
+**`Link`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: link
+**`data-value`**: The value of the item
+**`data-current`**: Present when current
+
+**`Content`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: content
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the content
+**`data-value`**: The value of the item
+
+**`ViewportPositioner`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: viewport-positioner
+**`data-orientation`**: The orientation of the viewportpositioner
+**`data-align`**: 
+
+**`Viewport`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: viewport
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the viewport
+**`data-align`**: 
+
+**`ItemIndicator`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: item-indicator
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the item
+**`data-value`**: The value of the item
+
+### CSS Variables
+
+<CssVarTable name="navigation-menu" />
+
+## Accessibility
+
+### Keyboard Interactions
+
+**`ArrowDown`**
+Description: When focus is on trigger (vertical orientation), moves focus to the next trigger.
+
+**`ArrowUp`**
+Description: When focus is on trigger (vertical orientation), moves focus to the previous trigger.
+
+**`ArrowRight`**
+Description: <span>When focus is on trigger (horizontal orientation), moves focus to the next trigger.<br />When focus is on content, moves focus to the next link.</span>
+
+**`ArrowLeft`**
+Description: <span>When focus is on trigger (horizontal orientation), moves focus to the previous trigger.<br />When focus is on content, moves focus to the previous link.</span>
+
+**`Home`**
+Description: <span>When focus is on trigger, moves focus to the first trigger.<br />When focus is on content, moves focus to the first link.</span>
+
+**`End`**
+Description: <span>When focus is on trigger, moves focus to the last trigger.<br />When focus is on content, moves focus to the last link.</span>
 The number input provides controls for editing, incrementing or decrementing
 numeric values using the keyboard or pointer.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/number-input)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/number-input)
 [Logic Visualizer](https://zag-visualizer.vercel.app/number-input)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/number-input)
 
@@ -35386,15 +36721,13 @@ Description: Sets the value of the number input to its maximum allowed value.
 
 **`Enter`**
 Description: Submits the value entered in the number input.
-# Pagination
-
 Pagination is an interface that allows navigating between pages that contain
 split information, instead of being shown on a single page.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/pagination)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/pagination)
 [Logic Visualizer](https://zag-visualizer.vercel.app/pagination)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/pagination)
 
@@ -35730,12 +37063,10 @@ Description: Function to go to the last page.
 **`data-scope`**: pagination
 **`data-part`**: next-trigger
 **`data-disabled`**: Present when disabled
-# Password Input
-
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/password-input)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/password-input)
 [Logic Visualizer](https://zag-visualizer.vercel.app/password-input)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/password-input)
 
@@ -36083,8 +37414,6 @@ Description: Set the visibility of the password input.
 **`toggleVisible`**
 Type: `VoidFunction`
 Description: Toggle the visibility of the password input.
-# Pin Input
-
 The pin input is optimized for entering a sequence of digits or letters. The
 input fields allow one character at a time. When the digit or letter is entered,
 focus transfers to the next input in the sequence, until every input is filled.
@@ -36092,7 +37421,7 @@ focus transfers to the next input in the sequence, until every input is filled.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/pin-input)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/pin-input)
 [Logic Visualizer](https://zag-visualizer.vercel.app/pin-input)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/pin-input)
 
@@ -36546,8 +37875,6 @@ Description: Deletes the value in the current input
 
 **`Control + V`**
 Description: Pastes the value into the input fields
-# Popover
-
 A popover is a non-modal dialog that floats around a trigger. It is used to
 display contextual information to the user, and should be paired with a
 clickable trigger element.
@@ -36555,7 +37882,7 @@ clickable trigger element.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/popover)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/popover)
 [Logic Visualizer](https://zag-visualizer.vercel.app/popover)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/popover)
 
@@ -37018,8 +38345,6 @@ Description: <span>Moves focus to the previous focusable element within the cont
 
 **`Esc`**
 Description: <span>Closes the popover and moves focus to the trigger.</span>
-# Presence
-
 The presence machine is a state machine that helps you manage exit animations in
 your project.
 
@@ -37033,7 +38358,7 @@ animation before removing or hiding it.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/presence)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/presence)
 [Logic Visualizer](https://zag-visualizer.vercel.app/presence)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/presence)
 
@@ -37191,15 +38516,13 @@ Description: Function to set the node (as early as possible)
 **`unmount`**
 Type: `VoidFunction`
 Description: Function to programmatically unmount the node
-# Linear Progress
-
 Linear progress is a simple progress bar that can be used to show the progress
 of a task such as downloading a file, uploading an image, etc.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/progress)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/progress)
 [Logic Visualizer](https://zag-visualizer.vercel.app/progress)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/progress)
 
@@ -37381,13 +38704,13 @@ selector.
 
 The progress machine exposes the following context properties:
 
-
+<ContextTable name="progress" />
 
 ### Machine API
 
 The progress `api` exposes the following methods:
 
-
+<ApiTable name="progress" />
 
 ### Data Attributes
 
@@ -37396,15 +38719,13 @@ The progress `api` exposes the following methods:
 ### CSS Variables
 
 <CssVarTable name="progress" />
-# Circular Progress
-
 Circular progress is a circular progress bar that can be used to show the
 progress of a task such as downloading a file, uploading an image, etc.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/progress)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/progress)
 [Logic Visualizer](https://zag-visualizer.vercel.app/progress)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/progress)
 
@@ -37607,19 +38928,17 @@ selector.
 
 The progress machine exposes the following context properties:
 
-
+<ContextTable name="progress" />
 
 ### Machine API
 
 The progress `api` exposes the following methods:
 
-
+<ApiTable name="progress" />
 
 ### Data Attributes
 
 <DataAttrTable name="progress" />
-# QR Code
-
 QR (Quick Response) Code is used to provide information or link which can be
 accessed by scanning the code with an app or a smartphone.
 
@@ -37629,7 +38948,7 @@ accessed by scanning the code with an app or a smartphone.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/qr-code)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/qr-code)
 [Logic Visualizer](https://zag-visualizer.vercel.app/qr-code)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/qr-code)
 
@@ -37868,15 +39187,13 @@ Description: Set the value to encode.
 **`getDataUrl`**
 Type: `(type: DataUrlType, quality?: number) => Promise<string>`
 Description: Returns the data URL of the qr code.
-# Radio Group
-
 A radio group allows users to make a single choice from a select number of
 option
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/radio-group)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/radio-group)
 [Logic Visualizer](https://zag-visualizer.vercel.app/radio-group)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/radio-group)
 
@@ -38193,359 +39510,12 @@ Description: Moves focus to the previous radio item in the group.
 
 **`ArrowLeft`**
 Description: Moves focus to the previous radio item in the group.
-# Range Slider
-
-A range slider is a multi-thumb slider used to select a range between two
-numbers.
-
-## Resources
-
-
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/slider)
-[Logic Visualizer](https://zag-visualizer.vercel.app/slider)
-[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/slider)
-
-
-
-**Features**
-
-- Fully managed keyboard navigation
-- Supports touch or click on track to update value
-- Supports Right-to-Left directionality
-- Support for horizontal and vertical orientations
-- Prevents text selection while dragging
-
-## Installation
-
-To use the range slider machine in your project, run the following command in
-your command line:
-
-```bash
-npm install @zag-js/slider @zag-js/solid
-# or
-yarn add @zag-js/slider @zag-js/solid
-```
-
-## Anatomy
-
-To set up the slider correctly, you'll need to understand its anatomy and how we
-name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
-
-
-## Usage
-
-First, import the range slider package into your project
-
-```jsx
-import * as rangeSlider from "@zag-js/slider"
-```
-
-The range slider package exports two key functions:
-
-- `machine` â The state machine logic for the slider widget as described in the
-  WAI-ARIA spec.
-- `connect` â The function that translates the machine's state to JSX attributes
-  and event handlers.
-
-> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
-> ensure that every part has a unique identifier.
-
-Next, import the required hooks and functions for your framework and use the
-range slider machine in your project ð¥
-
-```jsx
-import * as slider from "@zag-js/slider"
-import { normalizeProps, useMachine } from "@zag-js/solid"
-import { createMemo, For, createUniqueId } from "solid-js"
-
-export function RangeSlider() {
-  const service = useMachine(slider.machine, {
-    id: createUniqueId(),
-    name: "quantity",
-    defaultValue: [10, 60],
-  })
-
-  const api = createMemo(() => slider.connect(service, normalizeProps))
-
-  return (
-    <div {...api().getRootProps()}>
-      <div {...api().getControlProps()}>
-        <div {...api().getTrackProps()}>
-          <div {...api().getRangeProps()} />
-        </div>
-        <For each={api().value}>
-          {(_, index) => (
-            <div {...api().getThumbProps({ index: index() })}>
-              <input {...api().getHiddenInputProps({ index: index() })} />
-            </div>
-          )}
-        </For>
-      </div>
-    </div>
-  )
-}
-```
-
-## Changing the orientation
-
-By default, the slider is assumed to be horizontal. To change the orientation to
-vertical, set the `orientation` property in the machine's context to `vertical`.
-
-In this mode, the slider will use the arrow up and down keys to
-increment/decrement its value.
-
-> Don't forget to change the styles of the vertical slider by specifying its
-> height
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  orientation: "vertical",
-})
-```
-
-## Setting the initial value
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  defaultValue: [30, 60],
-})
-```
-
-## Specifying the minimum and maximum
-
-By default, the minimum is `0` and the maximum is `100`. If that's not what you
-want, you can easily specify different bounds by changing the values of the min
-and/or max attributes.
-
-For example, to ask the user for a value between `-10` and `10`, you can use:
-
-```jsx {2-3}
-const service = useMachine(slider.machine, {
-  min: -10,
-  max: 10,
-})
-```
-
-## Setting the value's granularity
-
-By default, the granularity, is `1`, meaning that the value is always an
-integer. You can change the step attribute to control the granularity.
-
-For example, If you need a value between `5` and `10`, accurate to two decimal
-places, you should set the value of step to `0.01`:
-
-```jsx {4}
-const service = useMachine(slider.machine, {
-  min: 5,
-  max: 10,
-  step: 0.01,
-})
-```
-
-## Listening for changes
-
-When the slider value changes, the `onValueChange` and `onValueChangeEnd`
-callbacks are invoked. You can use this to setup custom behaviors in your app.
-
-```jsx {2-7}
-const service = useMachine(slider.machine, {
-  onValueChange(details) {
-    // details => { values: number[] }
-    console.log("value changing to:", details)
-  },
-  onValueChangeEnd(details) {
-    // details => { values: number[] }
-    console.log("value has changed to:", details)
-  },
-})
-```
-
-## Preventing thumb overlap
-
-By default, the range slider thumbs are allowed to overlap when their values are
-equal. To prevent this, use the `minStepsBetweenThumbs` to avoid thumbs with
-equal values.
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  minStepsBetweenThumbs: 1,
-})
-```
-
-## Usage within forms
-
-To use slider within forms, use the exposed `getInputProps` from the `connect`
-function and ensure you pass `name` value to the machine's context. It will
-render a hidden input for each value and ensure the value changes get propagated
-to the form correctly.
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  name: "quantity",
-})
-```
-
-## RTL Support
-
-The slider has built-in support for RTL alignment and interaction. In the RTL
-mode, operations are performed from right to left, meaning, the left arrow key
-will increment and the right arrow key will decrement.
-
-To enable RTL support, pass the `dir: rtl` context property
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  dir: "rtl",
-})
-```
-
-> While we take care of the interactions in RTL mode, you'll have to ensure you
-> apply the correct CSS styles to flip the layout.
-
-## Styling guide
-
-Earlier, we mentioned that each slider part has a `data-part` attribute added to
-them to select and style them in the DOM.
-
-### Focused State
-
-When the slider thumb is focused, the `data-focus` attribute is added to the
-root, control, thumb and label parts.
-
-```css
-[data-part="root"][data-focus] {
-  /* styles for root focus state */
-}
-
-[data-part="thumb"]:focus {
-  /* styles for thumb focus state */
-}
-
-[data-part="control"][data-focus] {
-  /* styles for control focus state */
-}
-
-[data-part="track"][data-focus] {
-  /* styles for track focus state */
-}
-
-[data-part="range"][data-focus] {
-  /* styles for range focus state */
-}
-```
-
-### Disabled State
-
-When the slider is disabled, the `data-disabled` attribute is added to the root,
-label, control and thumb.
-
-```css
-[data-part="root"][data-disabled] {
-  /* styles for root disabled state */
-}
-
-[data-part="label"][data-disabled] {
-  /* styles for label disabled state */
-}
-
-[data-part="control"][data-disabled] {
-  /* styles for control disabled state */
-}
-
-[data-part="value-text"][data-disabled] {
-  /* styles for output disabled state */
-}
-
-[data-part="thumb"][data-disabled] {
-  /* styles for thumb disabled state */
-}
-
-[data-part="range"][data-disabled] {
-  /* styles for range disabled state */
-}
-```
-
-### Orientation
-
-```css
-[data-part="root"][data-orientation="(horizontal|vertical)"] {
-  /* styles for horizontal or vertical  */
-}
-
-[data-part="thumb"][data-orientation="(horizontal|vertical)"] {
-  /* styles for horizontal or vertical  */
-}
-
-[data-part="track"][data-orientation="(horizontal|vertical)"] {
-  /* styles for horizontal or vertical  */
-}
-```
-
-## Methods and Properties
-
-### Machine Context
-
-The slider machine exposes the following context properties:
-
-
-
-### Machine API
-
-The slider `api` exposes the following methods:
-
-
-
-### Data Attributes
-
-<DataAttrTable name="slider" />
-
-## Accessibility
-
-Adheres to the
-[Slider WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slidertwothumb).
-
-### Keyboard Interactions
-
-**`ArrowRight`**
-Description: <span>Increments the focused thumb based on defined step</span>
-
-**`ArrowLeft`**
-Description: <span>Decrements the focused thumb based on defined step</span>
-
-**`ArrowUp`**
-Description: <span>Increases the focused thumb by the step amount.</span>
-
-**`ArrowDown`**
-Description: <span>Decreases the focused thumb by the step amount.</span>
-
-**`PageUp`**
-Description: <span>Increases the focused thumb value by a larger step</span>
-
-**`PageDown`**
-Description: <span>Decreases the focused thumb value by a larger step</span>
-
-**`Shift + ArrowUp`**
-Description: <span>Increases the focused thumb value by a larger step</span>
-
-**`Shift + ArrowDown`**
-Description: <span>Decreases the focused thumb value by a larger step</span>
-
-**`Home`**
-Description: Sets the focused thumb value to its minimum.
-
-**`End`**
-Description: Sets the focused thumb value to its maximum.
-# Rating Group
-
 Rating group allows a user to assign rating to an item within a product.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/rating-group)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/rating-group)
 [Logic Visualizer](https://zag-visualizer.vercel.app/rating-group)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/rating-group)
 
@@ -38898,15 +39868,13 @@ Description: Moves focus to the previous star, decreasing the rating value based
 
 **`Enter`**
 Description: Selects the focused star in the rating group.
-# Scroll Area
-
 A scroll area provides a scrollable viewport with customizable scrollbars for
 content that exceeds the container's dimensions.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/scroll-area)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/scroll-area)
 [Logic Visualizer](https://zag-visualizer.vercel.app/scroll-area)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/scroll-area)
 
@@ -39293,8 +40261,6 @@ Description: Returns the state of the scrollbar
 ### CSS Variables
 
 <CssVarTable name="scroll-area" />
-# Segmented Control
-
 A Segmented control allows users to make a single selection from multiple
 exclusive options, providing a visually distinct and intuitive way of
 interacting with radio inputs.
@@ -39302,7 +40268,7 @@ interacting with radio inputs.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/radio-group)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/radio-group)
 [Logic Visualizer](https://zag-visualizer.vercel.app/segmented-control)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/segmented-control)
 
@@ -39517,25 +40483,23 @@ label parts.
 
 The radio group machine exposes the following context properties:
 
-
+<ContextTable name="radio-group" />
 
 ### Machine API
 
 The radio group `api` exposes the following methods:
 
-
+<ApiTable name="radio-group" />
 
 ### Data Attributes
 
 <DataAttrTable name="radio-group" />
-# Select
-
 A Select component allows users pick a value from predefined options.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/select)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/select)
 [Logic Visualizer](https://zag-visualizer.vercel.app/select)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/select)
 
@@ -40463,15 +41427,13 @@ Description: <span>Closes the select and moves focus to trigger.</span>
 
 **`A-Z + a-z`**
 Description: <span>When focus is on trigger, selects the item whose label starts with the typed character.<br />When focus is on the listbox, moves focus to the next item with a label that starts with the typed character.</span>
-# Signature Pad
-
 The signature pad component allows users to draw handwritten signatures using
 touch or pointer devices. The signature can be saved as an image or cleared.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/signature-pad)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/signature-pad)
 [Logic Visualizer](https://zag-visualizer.vercel.app/signature-pad)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/signature-pad)
 
@@ -40803,8 +41765,6 @@ Description: Clears the signature pad.
 **`data-scope`**: signature-pad
 **`data-part`**: guide
 **`data-disabled`**: Present when disabled
-# Slider
-
 A slider allows users to make selections from a range of values. Think of it as
 a custom `<input type='range'/>` with the ability to achieve custom styling and
 accessibility.
@@ -40812,7 +41772,7 @@ accessibility.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/slider)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/slider)
 [Logic Visualizer](https://zag-visualizer.vercel.app/slider)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/slider)
 
@@ -41545,8 +42505,349 @@ Description: Sets the value to its minimum.
 
 **`End`**
 Description: Sets the value to its maximum.
-# Splitter
+A range slider is a multi-thumb slider used to select a range between two
+numbers.
 
+## Resources
+
+
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/slider)
+[Logic Visualizer](https://zag-visualizer.vercel.app/slider)
+[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/slider)
+
+
+
+**Features**
+
+- Fully managed keyboard navigation
+- Supports touch or click on track to update value
+- Supports Right-to-Left directionality
+- Support for horizontal and vertical orientations
+- Prevents text selection while dragging
+
+## Installation
+
+To use the range slider machine in your project, run the following command in
+your command line:
+
+```bash
+npm install @zag-js/slider @zag-js/solid
+# or
+yarn add @zag-js/slider @zag-js/solid
+```
+
+## Anatomy
+
+To set up the slider correctly, you'll need to understand its anatomy and how we
+name its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+
+
+## Usage
+
+First, import the range slider package into your project
+
+```jsx
+import * as rangeSlider from "@zag-js/slider"
+```
+
+The range slider package exports two key functions:
+
+- `machine` â The state machine logic for the slider widget as described in the
+  WAI-ARIA spec.
+- `connect` â The function that translates the machine's state to JSX attributes
+  and event handlers.
+
+> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
+> ensure that every part has a unique identifier.
+
+Next, import the required hooks and functions for your framework and use the
+range slider machine in your project ð¥
+
+```jsx
+import * as slider from "@zag-js/slider"
+import { normalizeProps, useMachine } from "@zag-js/solid"
+import { createMemo, For, createUniqueId } from "solid-js"
+
+export function RangeSlider() {
+  const service = useMachine(slider.machine, {
+    id: createUniqueId(),
+    name: "quantity",
+    defaultValue: [10, 60],
+  })
+
+  const api = createMemo(() => slider.connect(service, normalizeProps))
+
+  return (
+    <div {...api().getRootProps()}>
+      <div {...api().getControlProps()}>
+        <div {...api().getTrackProps()}>
+          <div {...api().getRangeProps()} />
+        </div>
+        <For each={api().value}>
+          {(_, index) => (
+            <div {...api().getThumbProps({ index: index() })}>
+              <input {...api().getHiddenInputProps({ index: index() })} />
+            </div>
+          )}
+        </For>
+      </div>
+    </div>
+  )
+}
+```
+
+## Changing the orientation
+
+By default, the slider is assumed to be horizontal. To change the orientation to
+vertical, set the `orientation` property in the machine's context to `vertical`.
+
+In this mode, the slider will use the arrow up and down keys to
+increment/decrement its value.
+
+> Don't forget to change the styles of the vertical slider by specifying its
+> height
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  orientation: "vertical",
+})
+```
+
+## Setting the initial value
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  defaultValue: [30, 60],
+})
+```
+
+## Specifying the minimum and maximum
+
+By default, the minimum is `0` and the maximum is `100`. If that's not what you
+want, you can easily specify different bounds by changing the values of the min
+and/or max attributes.
+
+For example, to ask the user for a value between `-10` and `10`, you can use:
+
+```jsx {2-3}
+const service = useMachine(slider.machine, {
+  min: -10,
+  max: 10,
+})
+```
+
+## Setting the value's granularity
+
+By default, the granularity, is `1`, meaning that the value is always an
+integer. You can change the step attribute to control the granularity.
+
+For example, If you need a value between `5` and `10`, accurate to two decimal
+places, you should set the value of step to `0.01`:
+
+```jsx {4}
+const service = useMachine(slider.machine, {
+  min: 5,
+  max: 10,
+  step: 0.01,
+})
+```
+
+## Listening for changes
+
+When the slider value changes, the `onValueChange` and `onValueChangeEnd`
+callbacks are invoked. You can use this to setup custom behaviors in your app.
+
+```jsx {2-7}
+const service = useMachine(slider.machine, {
+  onValueChange(details) {
+    // details => { values: number[] }
+    console.log("value changing to:", details)
+  },
+  onValueChangeEnd(details) {
+    // details => { values: number[] }
+    console.log("value has changed to:", details)
+  },
+})
+```
+
+## Preventing thumb overlap
+
+By default, the range slider thumbs are allowed to overlap when their values are
+equal. To prevent this, use the `minStepsBetweenThumbs` to avoid thumbs with
+equal values.
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  minStepsBetweenThumbs: 1,
+})
+```
+
+## Usage within forms
+
+To use slider within forms, use the exposed `getInputProps` from the `connect`
+function and ensure you pass `name` value to the machine's context. It will
+render a hidden input for each value and ensure the value changes get propagated
+to the form correctly.
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  name: "quantity",
+})
+```
+
+## RTL Support
+
+The slider has built-in support for RTL alignment and interaction. In the RTL
+mode, operations are performed from right to left, meaning, the left arrow key
+will increment and the right arrow key will decrement.
+
+To enable RTL support, pass the `dir: rtl` context property
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  dir: "rtl",
+})
+```
+
+> While we take care of the interactions in RTL mode, you'll have to ensure you
+> apply the correct CSS styles to flip the layout.
+
+## Styling guide
+
+Earlier, we mentioned that each slider part has a `data-part` attribute added to
+them to select and style them in the DOM.
+
+### Focused State
+
+When the slider thumb is focused, the `data-focus` attribute is added to the
+root, control, thumb and label parts.
+
+```css
+[data-part="root"][data-focus] {
+  /* styles for root focus state */
+}
+
+[data-part="thumb"]:focus {
+  /* styles for thumb focus state */
+}
+
+[data-part="control"][data-focus] {
+  /* styles for control focus state */
+}
+
+[data-part="track"][data-focus] {
+  /* styles for track focus state */
+}
+
+[data-part="range"][data-focus] {
+  /* styles for range focus state */
+}
+```
+
+### Disabled State
+
+When the slider is disabled, the `data-disabled` attribute is added to the root,
+label, control and thumb.
+
+```css
+[data-part="root"][data-disabled] {
+  /* styles for root disabled state */
+}
+
+[data-part="label"][data-disabled] {
+  /* styles for label disabled state */
+}
+
+[data-part="control"][data-disabled] {
+  /* styles for control disabled state */
+}
+
+[data-part="value-text"][data-disabled] {
+  /* styles for output disabled state */
+}
+
+[data-part="thumb"][data-disabled] {
+  /* styles for thumb disabled state */
+}
+
+[data-part="range"][data-disabled] {
+  /* styles for range disabled state */
+}
+```
+
+### Orientation
+
+```css
+[data-part="root"][data-orientation="(horizontal|vertical)"] {
+  /* styles for horizontal or vertical  */
+}
+
+[data-part="thumb"][data-orientation="(horizontal|vertical)"] {
+  /* styles for horizontal or vertical  */
+}
+
+[data-part="track"][data-orientation="(horizontal|vertical)"] {
+  /* styles for horizontal or vertical  */
+}
+```
+
+## Methods and Properties
+
+### Machine Context
+
+The slider machine exposes the following context properties:
+
+<ContextTable name="slider" />
+
+### Machine API
+
+The slider `api` exposes the following methods:
+
+<ApiTable name="slider" />
+
+### Data Attributes
+
+<DataAttrTable name="slider" />
+
+## Accessibility
+
+Adheres to the
+[Slider WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slidertwothumb).
+
+### Keyboard Interactions
+
+**`ArrowRight`**
+Description: <span>Increments the focused thumb based on defined step</span>
+
+**`ArrowLeft`**
+Description: <span>Decrements the focused thumb based on defined step</span>
+
+**`ArrowUp`**
+Description: <span>Increases the focused thumb by the step amount.</span>
+
+**`ArrowDown`**
+Description: <span>Decreases the focused thumb by the step amount.</span>
+
+**`PageUp`**
+Description: <span>Increases the focused thumb value by a larger step</span>
+
+**`PageDown`**
+Description: <span>Decreases the focused thumb value by a larger step</span>
+
+**`Shift + ArrowUp`**
+Description: <span>Increases the focused thumb value by a larger step</span>
+
+**`Shift + ArrowDown`**
+Description: <span>Decreases the focused thumb value by a larger step</span>
+
+**`Home`**
+Description: Sets the focused thumb value to its minimum.
+
+**`End`**
+Description: Sets the focused thumb value to its maximum.
 A splitter allow create dynamic layouts split into vertically or horizontally
 arranged panes. Panes are separated by the splitter bars that allow dragging to
 resize or expand/collapse them.
@@ -41554,7 +42855,7 @@ resize or expand/collapse them.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/splitter)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/splitter)
 [Logic Visualizer](https://zag-visualizer.vercel.app/splitter)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/splitter)
 
@@ -41855,6 +43156,10 @@ The splitter `api` exposes the following methods:
 Type: `boolean`
 Description: Whether the splitter is currently being resized.
 
+**`orientation`**
+Type: `"horizontal" | "vertical"`
+Description: The orientation of the splitter.
+
 **`getSizes`**
 Type: `() => number[]`
 Description: Returns the current sizes of the panels.
@@ -41866,6 +43171,14 @@ Description: Sets the sizes of the panels.
 **`getItems`**
 Type: `() => SplitterItem[]`
 Description: Returns the items of the splitter.
+
+**`getPanels`**
+Type: `() => PanelData[]`
+Description: Returns the panels of the splitter.
+
+**`getPanelById`**
+Type: `(id: string) => PanelData`
+Description: Returns the panel with the specified id.
 
 **`getPanelSize`**
 Type: `(id: string) => number`
@@ -41899,6 +43212,10 @@ Description: Returns the layout of the splitter.
 Type: `VoidFunction`
 Description: Resets the splitter to its initial state.
 
+**`getResizeTriggerState`**
+Type: `(props: ResizeTriggerProps) => ResizeTriggerState`
+Description: Returns the state of the resize trigger.
+
 ### Data Attributes
 
 **`Root`**
@@ -41906,12 +43223,14 @@ Description: Resets the splitter to its initial state.
 **`data-scope`**: splitter
 **`data-part`**: root
 **`data-orientation`**: The orientation of the splitter
+**`data-dragging`**: Present when in the dragging state
 
 **`Panel`**
 
 **`data-scope`**: splitter
 **`data-part`**: panel
 **`data-orientation`**: The orientation of the panel
+**`data-dragging`**: Present when in the dragging state
 **`data-id`**: 
 **`data-index`**: The index of the item
 
@@ -41922,16 +43241,15 @@ Description: Resets the splitter to its initial state.
 **`data-id`**: 
 **`data-orientation`**: The orientation of the resizetrigger
 **`data-focus`**: Present when focused
+**`data-dragging`**: Present when in the dragging state
 **`data-disabled`**: Present when disabled
-# Steps
-
 Steps are used to guide users through a series of steps in a process. It's a
 great way to break down a complex process into smaller, more manageable steps.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/steps)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/steps)
 [Logic Visualizer](https://zag-visualizer.vercel.app/steps)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/steps)
 
@@ -42334,14 +43652,12 @@ Description: Returns the state of the item at the given index.
 ### CSS Variables
 
 <CssVarTable name="steps" />
-# Switch
-
 A switch allows users to turn an individual option on or off.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/switch)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/switch)
 [Logic Visualizer](https://zag-visualizer.vercel.app/switch)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/switch)
 
@@ -42671,8 +43987,6 @@ Adheres to the
 
 **`Space + Enter`**
 Description: Toggle the switch
-# Tabs
-
 An accessible tabs component that follows the WAI-ARIA Tabs Design Pattern. Each
 tab in the tab list has associated content, with only the selected tab's content
 being displayed.
@@ -42680,7 +43994,7 @@ being displayed.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tabs)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tabs)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tabs)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tabs)
 
@@ -43201,8 +44515,6 @@ Description: Moves focus to the last trigger and activates its associated conten
 
 **`Enter + Space`**
 Description: In manual mode, when a trigger is focused, moves focus to its associated content.
-# Tags Input
-
 Tag inputs render tags inside an input, followed by an actual text input. By
 default, tags are added when text is typed in the input field and the `Enter` or
 `Comma` key is pressed. Throughout the interaction, DOM focus remains on the
@@ -43211,7 +44523,7 @@ input element.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tags-input)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tags-input)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tags-input)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tags-input)
 
@@ -43407,13 +44719,17 @@ const service = useMachine(tagsInput.machine, {
 Before a tag is added, the machine provides a `validate` function you can use to
 determine whether to accept or reject a tag.
 
-A common use-case for validating tags is preventing duplicates or validating the
-data type.
+> **Note:** Duplicate tags are automatically prevented by design. You don't need
+> to handle this in your `validate` function.
 
-```jsx {2-3}
+Common use-cases for validating tags include enforcing format, length, or
+content rules.
+
+```jsx {2-4}
 const service = useMachine(tagsInput.machine, {
   validate(details) {
-    return !details.values.includes(details.inputValue)
+    // Example: only allow lowercase alphabetic tags
+    return /^[a-z]+$/.test(details.inputValue)
   },
 })
 ```
@@ -43888,15 +45204,13 @@ Description: Deletes the tag item that has visual focus
 
 **`Control + V`**
 Description: When `addOnPaste` is set. Adds the pasted value as a tags
-# Timer
-
 The timer machine is used to record the time elapsed from zero or since a
 specified target time.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/timer)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/timer)
 [Logic Visualizer](https://zag-visualizer.vercel.app/timer)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/timer)
 
@@ -44229,15 +45543,13 @@ Description: Function to restart the timer.
 **`progressPercent`**
 Type: `number`
 Description: The progress percentage of the timer.
-# Toast
-
 The toast component is used to give feedback to users after an action has taken
 place.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/toast)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/toast)
 [Logic Visualizer](https://zag-visualizer.vercel.app/toast)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/toast)
 
@@ -44761,14 +46073,12 @@ Description: Subscribe to the toast group
 ### CSS Variables
 
 <CssVarTable name="toast" />
-# Toggle Group
-
 A toggle group is used to toggle either one option or multiple options.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/toggle-group)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/toggle-group)
 [Logic Visualizer](https://zag-visualizer.vercel.app/toggle-group)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/toggle-group)
 
@@ -45098,8 +46408,6 @@ Description: Moves focus to the first item.
 
 **`End`**
 Description: Moves focus to the last item.
-# Tooltip
-
 A tooltip is a brief, informative message that appears when a user interacts
 with an element. Tooltips are usually initiated when a button is focused or
 hovered.
@@ -45107,7 +46415,7 @@ hovered.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tooltip)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tooltip)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tooltip)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tooltip)
 
@@ -45488,8 +46796,6 @@ Description: Opens/closes the tooltip without delay.
 
 **`Escape`**
 Description: If open, closes the tooltip without delay.
-# Tour
-
 A tour is an onboarding component used to guide users through a new product
 feature or series of steps. It is often used to boost feature discoverability or
 onboard new users by highlighting specific elements on the page.
@@ -45497,7 +46803,7 @@ onboard new users by highlighting specific elements on the page.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tour)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tour)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tour)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tour)
 
@@ -46125,8 +47431,6 @@ Description: Returns the progress text
 **`getProgressPercent`**
 Type: `() => number`
 Description: Returns the progress percent
-# Tree View
-
 The TreeView component provides a hierarchical view of data, similar to a file
 system explorer. It allows users to expand and collapse branches, select
 individual or multiple nodes, and traverse the hierarchy using keyboard
@@ -46135,7 +47439,7 @@ navigation.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tree-view)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tree-view)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tree-view)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tree-view)
 
@@ -47041,15 +48345,13 @@ Description: Selects all nodes in the tree. If all nodes are selected, unselects
 
 ## Vue
 
-# Accordion
-
 An accordion is a vertically stacked set of interactive headings containing a
 title, content snippet, or thumbnail representing a section of content.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/accordion)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/accordion)
 [Logic Visualizer](https://zag-visualizer.vercel.app/accordion)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/accordion)
 
@@ -47460,8 +48762,6 @@ Description: When focus is on an trigger, moves focus to the first trigger.
 
 **`End`**
 Description: When focus is on an trigger, moves focus to the last trigger.
-# Angle Slider
-
 An angle slider is a circular dial that allows users to select an angle,
 typically in degrees, within a 360Â° range. It provides an intuitive way to
 control rotations or orientations, offering accessibility features.
@@ -47469,7 +48769,7 @@ control rotations or orientations, offering accessibility features.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/angle-slider)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/angle-slider)
 [Logic Visualizer](https://zag-visualizer.vercel.app/angle-slider)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/angle-slider)
 
@@ -47887,8 +49187,6 @@ Description: Sets the value to 0 degrees.
 
 **`End`**
 Description: Sets the value to 360 degrees.
-# Avatar
-
 The Avatar component is a React component that represents a user avatar or
 profile picture. It displays an image or initials within container.
 
@@ -47898,7 +49196,7 @@ load, or when the image is not provided.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/avatar)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/avatar)
 [Logic Visualizer](https://zag-visualizer.vercel.app/avatar)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/avatar)
 
@@ -48069,15 +49367,13 @@ Description: Function to set error state.
 **`data-scope`**: avatar
 **`data-part`**: fallback
 **`data-state`**: "hidden" | "visible"
-# Carousel
-
 an accessible carousel component that leverages native CSS Scroll Snap for
 smooth, performant scrolling between slides.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/carousel)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/carousel)
 [Logic Visualizer](https://zag-visualizer.vercel.app/carousel)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/carousel)
 
@@ -48598,15 +49894,13 @@ and clamp the page
 ### CSS Variables
 
 <CssVarTable name="carousel" />
-# Checkbox
-
 A checkbox allows users to make a binary choice, i.e. a choice between one of
 two possible mutually exclusive options.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/checkbox)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/checkbox)
 [Logic Visualizer](https://zag-visualizer.vercel.app/checkbox)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/checkbox)
 
@@ -49000,14 +50294,12 @@ Description: Function to toggle the checked state of the checkbox
 
 **`Space`**
 Description: Toggle the checkbox
-# Clipboard
-
 The clipboard machine allows users to quickly copy content to clipboard.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/clipboard)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/clipboard)
 [Logic Visualizer](https://zag-visualizer.vercel.app/clipboard)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/clipboard)
 
@@ -49232,14 +50524,12 @@ Description: Copy the value to the clipboard
 **`data-scope`**: clipboard
 **`data-part`**: trigger
 **`data-copied`**: Present when copied state is true
-# Collapsible
-
 A collapsible is a component which expands and collapses a panel.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/collapsible)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/collapsible)
 [Logic Visualizer](https://zag-visualizer.vercel.app/collapsible)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/collapsible)
 
@@ -49618,8 +50908,6 @@ Description: Opens/closes the collapsible.
 
 **`Enter`**
 Description: Opens/closes the collapsible.
-# Color Picker
-
 The color picker is an input widget used to select a color value from a
 predefined list or a color area.
 
@@ -49629,7 +50917,7 @@ provides a more customizable and consistent user experience.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/color-picker)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/color-picker)
 [Logic Visualizer](https://zag-visualizer.vercel.app/color-picker)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/color-picker)
 
@@ -50438,15 +51726,13 @@ Description: <span>When focus is on the color area, decreases the saturation val
 
 **`Esc`**
 Description: Closes the color picker and moves focus to the trigger
-# Combobox
-
 A combobox is an input widget with an associated popup that enables users to
 select a value from a collection of possible values.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/combobox)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/combobox)
 [Logic Visualizer](https://zag-visualizer.vercel.app/combobox)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/combobox)
 
@@ -51333,8 +52619,6 @@ Description: Selects the highlighted option and closes the combobox.
 
 **`Esc`**
 Description: Closes the combobox
-# Date Picker
-
 A datepicker allows users to enter a date either through text input, or by
 choosing a date from the calendar.
 
@@ -51345,7 +52629,7 @@ choosing a date from the calendar.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/date-picker)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/date-picker)
 [Logic Visualizer](https://zag-visualizer.vercel.app/date-picker)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/date-picker)
 
@@ -51945,6 +53229,14 @@ Description: Whether the calendar is disabled.
 Type: `boolean`
 Description: Whether the calendar is read-only.
 
+**`required`**
+Type: `boolean`
+Description: Whether the date picker is required
+
+**`invalid`**
+Type: `boolean`
+Description: Whether the date picker is invalid
+
 **`outsideDaySelectable`**
 Type: `boolean`
 Description: Whether day outside the visible range can be selected.
@@ -52096,9 +53388,29 @@ Description: Whether the input is focused
 Type: `boolean`
 Description: Whether the date picker is open
 
+**`disabled`**
+Type: `boolean`
+Description: Whether the date picker is disabled
+
+**`invalid`**
+Type: `boolean`
+Description: Whether the date picker is invalid
+
+**`readOnly`**
+Type: `boolean`
+Description: Whether the date picker is read-only
+
 **`inline`**
 Type: `boolean`
 Description: Whether the date picker is rendered inline
+
+**`numOfMonths`**
+Type: `number`
+Description: The number of months to display
+
+**`selectionMode`**
+Type: `SelectionMode`
+Description: The selection mode (single, multiple, or range)
 
 **`view`**
 Type: `DateView`
@@ -52251,6 +53563,7 @@ Description: Returns the state details for a given year cell.
 **`data-state`**: "open" | "closed"
 **`data-disabled`**: Present when disabled
 **`data-readonly`**: Present when read-only
+**`data-empty`**: Present when no value is selected
 
 **`Label`**
 
@@ -52266,6 +53579,7 @@ Description: Returns the state details for a given year cell.
 **`data-scope`**: date-picker
 **`data-part`**: control
 **`data-disabled`**: Present when disabled
+**`data-placeholder-shown`**: Present when placeholder is shown
 
 **`Content`**
 
@@ -52394,6 +53708,7 @@ Description: Returns the state details for a given year cell.
 **`data-part`**: trigger
 **`data-placement`**: The placement of the trigger
 **`data-state`**: "open" | "closed"
+**`data-placeholder-shown`**: Present when placeholder is shown
 
 **`View`**
 
@@ -52419,12 +53734,12 @@ Description: Returns the state details for a given year cell.
 **`data-part`**: input
 **`data-index`**: The index of the item
 **`data-state`**: "open" | "closed"
+**`data-placeholder-shown`**: Present when placeholder is shown
+**`data-invalid`**: Present when invalid
 
 ### CSS Variables
 
 <CssVarTable name="date-picker" />
-# Dialog
-
 A dialog is a window overlaid on either the primary window or another dialog
 window. Content behind a modal dialog is inert, meaning that users cannot
 interact with it.
@@ -52432,7 +53747,7 @@ interact with it.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/dialog)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/dialog)
 [Logic Visualizer](https://zag-visualizer.vercel.app/dialog)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/dialog)
 
@@ -52868,8 +54183,6 @@ Description: Moves focus to the previous focusable element. Focus is trapped wit
 
 **`Esc`**
 Description: Closes the dialog and moves focus to trigger or the defined final focus element
-# Editable
-
 Editable is an input field used for editing a single line of text. It renders as
 static text and transforms into a text input field when then edit interaction is
 triggered (click, focus, or double-click).
@@ -52877,7 +54190,7 @@ triggered (click, focus, or double-click).
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/editable)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/editable)
 [Logic Visualizer](https://zag-visualizer.vercel.app/editable)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/editable)
 
@@ -53331,8 +54644,6 @@ Description: Saves the edited content and exits edit mode.
 
 **`Escape`**
 Description: Discards the changes and exits edit mode.
-# File Upload
-
 File upload component is used to upload multiple files.
 
 The native input file element is quite difficult to style and doesn't provide a
@@ -53344,7 +54655,7 @@ drag-n-drop version.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/file-upload)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/file-upload)
 [Logic Visualizer](https://zag-visualizer.vercel.app/file-upload)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/file-upload)
 
@@ -53986,8 +55297,6 @@ Returns `true` if the clipboard data contains files, `false` otherwise.
 **`data-scope`**: file-upload
 **`data-part`**: clear-trigger
 **`data-disabled`**: Present when disabled
-# Floating Panel
-
 A floating panel is a detachable window that floats above the main interface,
 typically used for displaying and editing properties. The panel can be dragged,
 resized, and positioned anywhere on the screen for optimal workflow.
@@ -54630,14 +55939,12 @@ Description: Whether the panel is draggable
 ### CSS Variables
 
 <CssVarTable name="floating-panel" />
-# Hover Card
-
 An hover card allows sighted users to preview content available behind a link
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/hover-card)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/hover-card)
 [Logic Visualizer](https://zag-visualizer.vercel.app/hover-card)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/hover-card)
 
@@ -54899,8 +56206,6 @@ Description: Function to reposition the popover
 
 The hover card is intended for mouse users only so will not respond to keyboard
 navigation.
-# Image Cropper
-
 The image cropper machine keeps track of the crop rectangle, zoom, rotation, pan
 offset, flip state, and every gesture required to edit them. It exposes a set of
 DOM props so you can render your own viewport, frame, and handles in any
@@ -54909,7 +56214,7 @@ framework.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/image-cropper)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/image-cropper)
 [Logic Visualizer](https://zag-visualizer.vercel.app/image-cropper)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/image-cropper)
 
@@ -55588,15 +56893,13 @@ Use this for server-side cropping or state persistence.
 ### CSS Variables
 
 <CssVarTable name="image-cropper" />
-# Listbox
-
 A listbox component that displays a list of selectable options, supporting both
 single and multiple selection modes.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/listbox)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/listbox)
 [Logic Visualizer](https://zag-visualizer.vercel.app/listbox)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/listbox)
 
@@ -56200,15 +57503,13 @@ Description: Whether the select is disabled
 
 Adheres to the
 [Listbox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/).
-# Marquee
-
 An accessible auto-scrolling marquee component for displaying scrolling content
 like logos, announcements, or featured items.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/marquee)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/marquee)
 [Logic Visualizer](https://zag-visualizer.vercel.app/marquee)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/marquee)
 
@@ -56906,15 +58207,13 @@ Description: Restart the marquee animation from the beginning.
 ### CSS Variables
 
 <CssVarTable name="marquee" />
-# Menu
-
 An accessible dropdown and context menu that is used to display a list of
 actions or options that a user can choose.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/menu)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/menu)
 [Logic Visualizer](https://zag-visualizer.vercel.app/menu)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/menu)
 
@@ -57456,214 +58755,13 @@ Description: <span>When focus is on trigger, opens or closes the submenu dependi
 
 **`Esc`**
 Description: Closes the menu and moves focus to the trigger
-# Context Menu
-
-An accessible dropdown and context menu that is used to display a list of
-actions or options that a user can choose when a trigger element is
-right-clicked or long pressed.
-
-## Resources
-
-
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/menu)
-[Logic Visualizer](https://zag-visualizer.vercel.app/menu)
-[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/menu)
-
-
-
-**Features**
-
-- Support for items, labels, groups of items
-- Focus is fully managed using `aria-activedescendant` pattern
-- Typeahead to allow focusing items by typing text
-- Keyboard navigation support including arrow keys, home/end, page up/down
-
-## Installation
-
-To use the menu machine in your project, run the following command in your
-command line:
-
-```bash
-npm install @zag-js/menu @zag-js/vue
-# or
-yarn add @zag-js/menu @zag-js/vue
-```
-
-## Anatomy
-
-To set up the menu correctly, you'll need to understand its anatomy and how we
-name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
-
-
-## Usage
-
-First, import the menu package into your project
-
-```jsx
-import * as menu from "@zag-js/menu"
-```
-
-The menu package exports two key functions:
-
-- `machine` â The state machine logic for the menu widget.
-- `connect` â The function that translates the machine's state to JSX attributes
-  and event handlers.
-
-> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
-> ensure that every part has a unique identifier.
-
-Next, import the required hooks and functions for your framework and use the
-menu machine in your project ð¥
-
-To show the menu when a trigger element is right-clicked, use the
-`contextTriggerProps` provided by the menu's connect function.
-
-Context menu's are also opened during a long-press of roughly `700ms` when the
-pointer is pen or touch.
-
-```html
-<script setup>
-  import * as menu from "@zag-js/menu"
-  import { normalizeProps, useMachine } from "@zag-js/vue"
-  import { computed } from "vue"
-
-  const service = useMachine(menu.machine, { id: "1", "aria-label": "File" })
-
-  const api = computed(() => menu.connect(service, normalizeProps))
-</script>
-
-<template>
-  <div ref="ref">
-    <button v-bind="api.getContextTriggerProps()">
-      <div :style="{ border: 'solid 1px red' }">Open context menu</div>
-    </button>
-    <div v-bind="api.getPositionerProps()">
-      <ul v-bind="api.getContentProps()">
-        <li v-bind="api.getItemProps({ value: 'edit' })">Edit</li>
-        <li v-bind="api.getItemProps({ value: 'duplicate' })">Duplicate</li>
-        <li v-bind="api.getItemProps({ value: 'delete' })">Delete</li>
-        <li v-bind="api.getItemProps({ value: 'export' })">Export...</li>
-      </ul>
-    </div>
-  </div>
-</template>
-```
-
-## Styling guide
-
-Earlier, we mentioned that each menu part has a `data-part` attribute added to
-them to select and style them in the DOM.
-
-### Highlighted item state
-
-When an item is highlighted, via keyboard navigation or pointer, it is given a
-`data-highlighted` attribute.
-
-```css
-[data-part="item"][data-highlighted] {
-  /* styles for highlighted state */
-}
-
-[data-part="item"][data-type="radio|checkbox"][data-highlighted] {
-  /* styles for highlighted state */
-}
-```
-
-### Disabled item state
-
-When an item or an option item is disabled, it is given a `data-disabled`
-attribute.
-
-```css
-[data-part="item"][data-disabled] {
-  /* styles for disabled state */
-}
-
-[data-part="item"][data-type="radio|checkbox"][data-disabled] {
-  /* styles for disabled state */
-}
-```
-
-### Using arrows
-
-When using arrows within the menu, you can style it using css variables.
-
-```css
-[data-part="arrow"] {
-  --arrow-size: 20px;
-  --arrow-background: red;
-}
-```
-
-### Checked option item state
-
-When an option item is checked, it is given a `data-state` attribute.
-
-```css
-[data-part="item"][data-type="radio|checkbox"][data-state="checked"] {
-  /* styles for checked state */
-}
-```
-
-## Methods and Properties
-
-### Machine Context
-
-The menu machine exposes the following context properties:
-
-
-
-### Machine API
-
-The menu `api` exposes the following methods:
-
-
-
-### Data Attributes
-
-<DataAttrTable name="menu" />
-
-### CSS Variables
-
-<CssVarTable name="menu" />
-
-## Accessibility
-
-Uses
-[aria-activedescendant](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/examples/menu-button-actions-active-descendant/)
-pattern to manage focus movement among menu items.
-
-### Keyboard Interactions
-
-**`Space`**
-Description: Activates/Selects the highlighted item
-
-**`Enter`**
-Description: Activates/Selects the highlighted item
-
-**`ArrowDown`**
-Description: Highlights the next item in the menu
-
-**`ArrowUp`**
-Description: Highlights the previous item in the menu
-
-**`ArrowRight + ArrowLeft`**
-Description: When focus is on trigger, opens or closes the submenu depending on reading direction.
-
-**`Esc`**
-Description: Closes the context menu
-# Nested Menu
-
 An accessible dropdown and context menu that is used to display a list of
 actions or options that a user can choose.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/menu)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/menu)
 [Logic Visualizer](https://zag-visualizer.vercel.app/menu)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/menu)
 
@@ -57852,13 +58950,13 @@ When an option item is checked, it is given a `data-state` attribute.
 
 The menu machine exposes the following context properties:
 
-
+<ContextTable name="menu" />
 
 ### Machine API
 
 The menu `api` exposes the following methods:
 
-
+<ApiTable name="menu" />
 
 ### Data Attributes
 
@@ -57896,15 +58994,910 @@ Description: Closes the nested menu.
 
 **`Esc`**
 Description: Closes the nested menu and moves focus to the parent menu item.
-# Number Input
+An accessible dropdown and context menu that is used to display a list of
+actions or options that a user can choose when a trigger element is
+right-clicked or long pressed.
 
+## Resources
+
+
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/menu)
+[Logic Visualizer](https://zag-visualizer.vercel.app/menu)
+[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/menu)
+
+
+
+**Features**
+
+- Support for items, labels, groups of items
+- Focus is fully managed using `aria-activedescendant` pattern
+- Typeahead to allow focusing items by typing text
+- Keyboard navigation support including arrow keys, home/end, page up/down
+
+## Installation
+
+To use the menu machine in your project, run the following command in your
+command line:
+
+```bash
+npm install @zag-js/menu @zag-js/vue
+# or
+yarn add @zag-js/menu @zag-js/vue
+```
+
+## Anatomy
+
+To set up the menu correctly, you'll need to understand its anatomy and how we
+name its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+
+
+## Usage
+
+First, import the menu package into your project
+
+```jsx
+import * as menu from "@zag-js/menu"
+```
+
+The menu package exports two key functions:
+
+- `machine` â The state machine logic for the menu widget.
+- `connect` â The function that translates the machine's state to JSX attributes
+  and event handlers.
+
+> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
+> ensure that every part has a unique identifier.
+
+Next, import the required hooks and functions for your framework and use the
+menu machine in your project ð¥
+
+To show the menu when a trigger element is right-clicked, use the
+`contextTriggerProps` provided by the menu's connect function.
+
+Context menu's are also opened during a long-press of roughly `700ms` when the
+pointer is pen or touch.
+
+```html
+<script setup>
+  import * as menu from "@zag-js/menu"
+  import { normalizeProps, useMachine } from "@zag-js/vue"
+  import { computed } from "vue"
+
+  const service = useMachine(menu.machine, { id: "1", "aria-label": "File" })
+
+  const api = computed(() => menu.connect(service, normalizeProps))
+</script>
+
+<template>
+  <div ref="ref">
+    <button v-bind="api.getContextTriggerProps()">
+      <div :style="{ border: 'solid 1px red' }">Open context menu</div>
+    </button>
+    <div v-bind="api.getPositionerProps()">
+      <ul v-bind="api.getContentProps()">
+        <li v-bind="api.getItemProps({ value: 'edit' })">Edit</li>
+        <li v-bind="api.getItemProps({ value: 'duplicate' })">Duplicate</li>
+        <li v-bind="api.getItemProps({ value: 'delete' })">Delete</li>
+        <li v-bind="api.getItemProps({ value: 'export' })">Export...</li>
+      </ul>
+    </div>
+  </div>
+</template>
+```
+
+## Styling guide
+
+Earlier, we mentioned that each menu part has a `data-part` attribute added to
+them to select and style them in the DOM.
+
+### Highlighted item state
+
+When an item is highlighted, via keyboard navigation or pointer, it is given a
+`data-highlighted` attribute.
+
+```css
+[data-part="item"][data-highlighted] {
+  /* styles for highlighted state */
+}
+
+[data-part="item"][data-type="radio|checkbox"][data-highlighted] {
+  /* styles for highlighted state */
+}
+```
+
+### Disabled item state
+
+When an item or an option item is disabled, it is given a `data-disabled`
+attribute.
+
+```css
+[data-part="item"][data-disabled] {
+  /* styles for disabled state */
+}
+
+[data-part="item"][data-type="radio|checkbox"][data-disabled] {
+  /* styles for disabled state */
+}
+```
+
+### Using arrows
+
+When using arrows within the menu, you can style it using css variables.
+
+```css
+[data-part="arrow"] {
+  --arrow-size: 20px;
+  --arrow-background: red;
+}
+```
+
+### Checked option item state
+
+When an option item is checked, it is given a `data-state` attribute.
+
+```css
+[data-part="item"][data-type="radio|checkbox"][data-state="checked"] {
+  /* styles for checked state */
+}
+```
+
+## Methods and Properties
+
+### Machine Context
+
+The menu machine exposes the following context properties:
+
+<ContextTable name="menu" />
+
+### Machine API
+
+The menu `api` exposes the following methods:
+
+<ApiTable name="menu" />
+
+### Data Attributes
+
+<DataAttrTable name="menu" />
+
+### CSS Variables
+
+<CssVarTable name="menu" />
+
+## Accessibility
+
+Uses
+[aria-activedescendant](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/examples/menu-button-actions-active-descendant/)
+pattern to manage focus movement among menu items.
+
+### Keyboard Interactions
+
+**`Space`**
+Description: Activates/Selects the highlighted item
+
+**`Enter`**
+Description: Activates/Selects the highlighted item
+
+**`ArrowDown`**
+Description: Highlights the next item in the menu
+
+**`ArrowUp`**
+Description: Highlights the previous item in the menu
+
+**`ArrowRight + ArrowLeft`**
+Description: When focus is on trigger, opens or closes the submenu depending on reading direction.
+
+**`Esc`**
+Description: Closes the context menu
+An accessible navigation menu component that provides a list of links with
+optional dropdown content. Supports keyboard navigation, hover/click
+interactions, animated indicators, and follows WAI-ARIA practices.
+
+## Resources
+
+
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/navigation-menu)
+[Logic Visualizer](https://zag-visualizer.vercel.app/navigation-menu)
+[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/navigation-menu)
+
+
+
+**Features**
+
+- Support for basic (inline content) and viewport (shared viewport) patterns
+- Hover and click trigger support with configurable delays
+- Keyboard navigation with arrow keys, Tab, Home/End
+- Animated indicator that follows the active trigger
+- Smooth content animations with viewport positioning
+- Support for nested links within dropdown content
+- Horizontal and vertical orientation
+- RTL (right-to-left) support
+- Fully managed focus and tab order
+- Dismissible with click outside or Escape key
+
+## Installation
+
+To use the navigation menu machine in your project, run the following command in
+your command line:
+
+```bash
+npm install @zag-js/navigation-menu @zag-js/vue
+# or
+yarn add @zag-js/navigation-menu @zag-js/vue
+```
+
+## Anatomy
+
+To set up the navigation menu correctly, you'll need to understand its anatomy
+and how we name its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+
+
+## Usage
+
+First, import the navigation menu package into your project
+
+```jsx
+import * as navigationMenu from "@zag-js/navigation-menu"
+```
+
+The navigation menu package exports two key functions:
+
+- `machine` â The state machine logic for the navigation menu widget.
+- `connect` â The function that translates the machine's state to JSX attributes
+  and event handlers.
+
+> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
+> ensure that every part has a unique identifier.
+
+Next, import the required hooks and functions for your framework and use the
+navigation menu machine in your project ð¥
+
+```html
+<script setup lang="ts">
+import * as navigationMenu from "@zag-js/navigation-menu"
+import { useMachine, normalizeProps } from "@zag-js/vue"
+import { computed } from "vue"
+
+const service = useMachine(navigationMenu.machine, { id: "nav" })
+const api = computed(() => navigationMenu.connect(service, normalizeProps))
+</script>
+
+<template>
+  <nav v-bind="api.getRootProps()">
+    <ul v-bind="api.getListProps()">
+      <!-- Item with dropdown content -->
+      <li v-bind="api.getItemProps({ value: 'products' })">
+        <button v-bind="api.getTriggerProps({ value: 'products' })">
+          Products
+        </button>
+        <div v-bind="api.getContentProps({ value: 'products' })">
+          <a v-bind="api.getLinkProps({ value: 'products' })" href="/analytics">
+            Analytics
+          </a>
+          <a v-bind="api.getLinkProps({ value: 'products' })" href="/marketing">
+            Marketing
+          </a>
+        </div>
+      </li>
+
+      <!-- Simple link item -->
+      <li v-bind="api.getItemProps({ value: 'pricing' })">
+        <a v-bind="api.getLinkProps({ value: 'pricing' })" href="/pricing">
+          Pricing
+        </a>
+      </li>
+    </ul>
+  </nav>
+</template>
+```
+
+The basic pattern places content directly within each item. This is suitable for
+simple dropdown menus where each dropdown appears below its trigger.
+
+### Advanced pattern with viewport
+
+The viewport pattern uses a shared viewport container for all content. This
+enables smooth transitions and better performance for complex navigation
+layouts.
+
+In this pattern:
+
+- Content is rendered inside a shared `viewport` element
+- The viewport automatically positions itself relative to the active trigger
+- You must include `triggerProxy` and `viewportProxy` for proper focus
+  management
+
+```html
+<script setup lang="ts">
+import * as navigationMenu from "@zag-js/navigation-menu"
+import { useMachine, normalizeProps } from "@zag-js/vue"
+import { computed } from "vue"
+
+const service = useMachine(navigationMenu.machine, { id: "nav" })
+const api = computed(() => navigationMenu.connect(service, normalizeProps))
+</script>
+
+<template>
+  <nav v-bind="api.getRootProps()">
+    <div v-bind="api.getIndicatorTrackProps()">
+      <ul v-bind="api.getListProps()">
+        <!-- Item with trigger -->
+        <li v-bind="api.getItemProps({ value: 'products' })">
+          <button v-bind="api.getTriggerProps({ value: 'products' })">
+            Products
+          </button>
+          <!-- Focus management proxies -->
+          <span v-bind="api.getTriggerProxyProps({ value: 'products' })" />
+          <span v-bind="api.getViewportProxyProps({ value: 'products' })" />
+        </li>
+
+        <!-- Simple link -->
+        <li v-bind="api.getItemProps({ value: 'pricing' })">
+          <a v-bind="api.getLinkProps({ value: 'pricing' })" href="/pricing">
+            Pricing
+          </a>
+        </li>
+
+        <!-- Indicator -->
+        <div v-bind="api.getIndicatorProps()">
+          <div v-bind="api.getArrowProps()" />
+        </div>
+      </ul>
+    </div>
+
+    <!-- Shared viewport for all content -->
+    <div v-bind="api.getViewportPositionerProps()">
+      <div v-bind="api.getViewportProps()">
+        <!-- Content for products -->
+        <div v-bind="api.getContentProps({ value: 'products' })">
+          <a v-bind="api.getLinkProps({ value: 'products' })" href="/analytics">
+            Analytics
+          </a>
+          <a v-bind="api.getLinkProps({ value: 'products' })" href="/marketing">
+            Marketing
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</template>
+```
+
+**When to use viewport pattern:**
+
+- Complex navigation with varying content sizes
+- Smooth animated transitions between different content
+- Header navigation bars (like on e-commerce sites)
+- When you want a single shared container for all dropdowns
+
+### Controlling the navigation menu
+
+To control which item is currently open, pass the `value` and `onValueChange`
+properties to the machine.
+
+```html {4,6-11}
+<script setup lang="ts">
+import { ref, computed } from "vue"
+
+const value = ref("")
+
+const service = useMachine(navigationMenu.machine, {
+  id: "nav",
+  value: value.value,
+  onValueChange(details) {
+    value.value = details.value
+  },
+})
+
+const api = computed(() => navigationMenu.connect(service, normalizeProps))
+</script>
+
+<template>
+  <div>
+    <button @click="value = 'products'">Open Products</button>
+    <button @click="value = ''">Close All</button>
+
+    <nav v-bind="api.getRootProps()">
+      <!-- ... navigation items ... -->
+    </nav>
+  </div>
+</template>
+```
+
+### Listening for value changes
+
+When the open item changes, the `onValueChange` callback is invoked with the new
+value.
+
+```jsx {3-6}
+const service = useMachine(navigationMenu.machine, {
+  id: "nav",
+  onValueChange(details) {
+    // details => { value: string }
+    console.log("Current open item:", details.value)
+  },
+})
+```
+
+### Adding an animated indicator
+
+To show a visual indicator that animates to the active trigger, render the
+indicator within the list container:
+
+```html {3-5}
+<nav v-bind="api.getRootProps()">
+  <div v-bind="api.getListProps()">
+    <!-- ... items ... -->
+
+    <div v-bind="api.getIndicatorProps()">
+      <div v-bind="api.getArrowProps()" />
+    </div>
+  </div>
+</nav>
+```
+
+The indicator automatically transitions to match the active trigger's position
+and size using CSS variables.
+
+### Configuring hover delays
+
+You can customize the delay before opening and closing on hover:
+
+```jsx {2-3}
+const service = useMachine(navigationMenu.machine, {
+  openDelay: 300, // Delay before opening on hover (default: 200ms)
+  closeDelay: 400, // Delay before closing on pointer leave (default: 300ms)
+})
+```
+
+**Tip**: Longer delays provide a more forgiving user experience but can feel
+less responsive.
+
+### Disabling hover or click triggers
+
+You can disable hover or click triggers independently:
+
+```jsx {2-6}
+const service = useMachine(navigationMenu.machine, {
+  disableHoverTrigger: true, // Only open on click
+  // OR
+  disableClickTrigger: true, // Only open on hover
+  // OR
+  disablePointerLeaveClose: true, // Prevents closing when pointer leaves
+})
+```
+
+- `disableHoverTrigger` â Prevents opening on hover (click only)
+- `disableClickTrigger` â Prevents opening on click (hover only)
+- `disablePointerLeaveClose` â Prevents closing when pointer leaves
+
+### Changing orientation
+
+The default orientation is horizontal. To create a vertical navigation menu:
+
+```jsx {2}
+const service = useMachine(navigationMenu.machine, {
+  orientation: "vertical",
+})
+```
+
+This affects keyboard navigation (arrow keys) and indicator positioning.
+
+### Disabling items
+
+To disable a navigation item, pass `disabled: true` to the item props:
+
+```jsx
+<div {...api.getItemProps({ value: "products", disabled: true })}>
+  <button {...api.getTriggerProps({ value: "products", disabled: true })}>
+    Products
+  </button>
+</div>
+```
+
+Disabled items cannot be opened and are skipped during keyboard navigation.
+
+### Indicating current page
+
+To highlight the current page link, use the `current` prop:
+
+```jsx
+<a {...api.getLinkProps({ value: "products", current: true })}>Products</a>
+```
+
+This adds `data-current` attribute and `aria-current="page"` for accessibility.
+
+### RTL support
+
+The navigation menu supports right-to-left languages. Set the `dir` property to
+`rtl`:
+
+```jsx {2}
+const service = useMachine(navigationMenu.machine, {
+  dir: "rtl",
+})
+```
+
+## Styling guide
+
+Earlier, we mentioned that each navigation menu part has a `data-part` attribute
+added to them to select and style them in the DOM.
+
+### Open and closed states
+
+When content is open or closed, it receives a `data-state` attribute:
+
+```css
+[data-part="content"][data-state="open|closed"] {
+  /* Styles for open or closed content */
+}
+
+[data-part="trigger"][data-state="open|closed"] {
+  /* Styles for open or closed trigger */
+}
+
+[data-part="viewport"][data-state="open|closed"] {
+  /* Styles for viewport open/closed state */
+}
+```
+
+### Selected item state
+
+When an item is selected (open), it receives `data-state="open"`:
+
+```css
+[data-part="item"][data-state="open"] {
+  /* Styles for open item */
+}
+```
+
+### Disabled state
+
+Disabled items have a `data-disabled` attribute:
+
+```css
+[data-part="item"][data-disabled] {
+  /* Styles for disabled items */
+}
+
+[data-part="trigger"][data-disabled] {
+  /* Styles for disabled triggers */
+}
+```
+
+### Orientation styles
+
+All parts have a `data-orientation` attribute:
+
+```css
+[data-part="root"][data-orientation="horizontal|vertical"] {
+  /* Orientation-specific styles */
+}
+
+[data-part="list"][data-orientation="horizontal"] {
+  display: flex;
+  flex-direction: row;
+}
+
+[data-part="list"][data-orientation="vertical"] {
+  display: flex;
+  flex-direction: column;
+}
+```
+
+### Current link state
+
+Links marked as current have a `data-current` attribute:
+
+```css
+[data-part="link"][data-current] {
+  /* Styles for current page link */
+}
+```
+
+### Styling the indicator
+
+The indicator uses CSS variables for positioning and sizing:
+
+```css
+[data-part="indicator"] {
+  position: absolute;
+  transition:
+    translate 250ms ease,
+    width 250ms ease,
+    height 250ms ease;
+}
+
+[data-part="indicator"][data-orientation="horizontal"] {
+  left: 0;
+  translate: var(--trigger-x) 0;
+  width: var(--trigger-width);
+}
+
+[data-part="indicator"][data-orientation="vertical"] {
+  top: 0;
+  translate: 0 var(--trigger-y);
+  height: var(--trigger-height);
+}
+```
+
+### Styling the viewport
+
+The viewport uses CSS variables for positioning and sizing:
+
+```css
+[data-part="viewport"] {
+  position: absolute;
+  width: var(--viewport-width);
+  height: var(--viewport-height);
+  transition:
+    width 300ms ease,
+    height 300ms ease;
+}
+```
+
+### Arrow styling
+
+The arrow can be styled using CSS variables:
+
+```css
+[data-part="root"] {
+  --arrow-size: 20px;
+}
+
+[data-part="arrow"] {
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  background: white;
+  rotate: 45deg;
+}
+```
+
+### Motion attributes
+
+When using the viewport pattern, content elements receive `data-motion`
+attributes for directional animations:
+
+```css
+[data-part="content"][data-motion="from-start"] {
+  animation: slideFromStart 250ms ease;
+}
+
+[data-part="content"][data-motion="from-end"] {
+  animation: slideFromEnd 250ms ease;
+}
+
+[data-part="content"][data-motion="to-start"] {
+  animation: slideToStart 250ms ease;
+}
+
+[data-part="content"][data-motion="to-end"] {
+  animation: slideToEnd 250ms ease;
+}
+```
+
+**Tip**: The motion direction indicates where the content is coming from
+(from-start/from-end) or going to (to-start/to-end), enabling context-aware
+animations when switching between items.
+
+## Methods and Properties
+
+### Machine Context
+
+The navigation menu machine exposes the following context properties:
+
+**`ids`**
+Type: `Partial<{ root: string; list: string; item: string; trigger: (value: string) => string; content: (value: string) => string; viewport: string; }>`
+Description: The ids of the elements in the machine.
+
+**`value`**
+Type: `string`
+Description: The controlled value of the navigation menu
+
+**`defaultValue`**
+Type: `string`
+Description: The default value of the navigation menu.
+Use when you don't want to control the value of the menu.
+
+**`onValueChange`**
+Type: `(details: ValueChangeDetails) => void`
+Description: Function called when the value of the menu changes
+
+**`openDelay`**
+Type: `number`
+Description: The delay before the menu opens
+
+**`closeDelay`**
+Type: `number`
+Description: The delay before the menu closes
+
+**`disableClickTrigger`**
+Type: `boolean`
+Description: Whether to disable the click trigger
+
+**`disableHoverTrigger`**
+Type: `boolean`
+Description: Whether to disable the hover trigger
+
+**`disablePointerLeaveClose`**
+Type: `boolean`
+Description: Whether to disable the pointer leave close
+
+**`dir`**
+Type: `"ltr" | "rtl"`
+Description: The document's text/writing direction.
+
+**`id`**
+Type: `string`
+Description: The unique identifier of the machine.
+
+**`getRootNode`**
+Type: `() => ShadowRoot | Node | Document`
+Description: A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
+
+**`orientation`**
+Type: `"horizontal" | "vertical"`
+Description: The orientation of the element.
+
+### Machine API
+
+The navigation menu `api` exposes the following methods:
+
+**`value`**
+Type: `string`
+Description: The current value of the menu
+
+**`setValue`**
+Type: `(value: string) => void`
+Description: Sets the value of the menu
+
+**`open`**
+Type: `boolean`
+Description: Whether the menu is open
+
+**`isViewportRendered`**
+Type: `boolean`
+Description: Whether the viewport is rendered
+
+**`getViewportNode`**
+Type: `() => HTMLElement`
+Description: Gets the viewport node element
+
+**`orientation`**
+Type: `Orientation`
+Description: The orientation of the menu
+
+**`reposition`**
+Type: `VoidFunction`
+Description: Function to reposition the viewport
+
+### Data Attributes
+
+**`Root`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: root
+**`data-orientation`**: The orientation of the navigation-menu
+
+**`List`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: list
+**`data-orientation`**: The orientation of the list
+
+**`Item`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: item
+**`data-value`**: The value of the item
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the item
+**`data-disabled`**: Present when disabled
+
+**`Indicator`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: indicator
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the indicator
+
+**`Arrow`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: arrow
+**`data-orientation`**: The orientation of the arrow
+
+**`Trigger`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: trigger
+**`data-trigger-proxy-id`**: 
+**`data-value`**: The value of the item
+**`data-state`**: "open" | "closed"
+**`data-disabled`**: Present when disabled
+
+**`TriggerProxy`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: trigger-proxy
+**`data-trigger-proxy`**: 
+**`data-trigger-id`**: 
+
+**`Link`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: link
+**`data-value`**: The value of the item
+**`data-current`**: Present when current
+
+**`Content`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: content
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the content
+**`data-value`**: The value of the item
+
+**`ViewportPositioner`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: viewport-positioner
+**`data-orientation`**: The orientation of the viewportpositioner
+**`data-align`**: 
+
+**`Viewport`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: viewport
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the viewport
+**`data-align`**: 
+
+**`ItemIndicator`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: item-indicator
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the item
+**`data-value`**: The value of the item
+
+### CSS Variables
+
+<CssVarTable name="navigation-menu" />
+
+## Accessibility
+
+### Keyboard Interactions
+
+**`ArrowDown`**
+Description: When focus is on trigger (vertical orientation), moves focus to the next trigger.
+
+**`ArrowUp`**
+Description: When focus is on trigger (vertical orientation), moves focus to the previous trigger.
+
+**`ArrowRight`**
+Description: <span>When focus is on trigger (horizontal orientation), moves focus to the next trigger.<br />When focus is on content, moves focus to the next link.</span>
+
+**`ArrowLeft`**
+Description: <span>When focus is on trigger (horizontal orientation), moves focus to the previous trigger.<br />When focus is on content, moves focus to the previous link.</span>
+
+**`Home`**
+Description: <span>When focus is on trigger, moves focus to the first trigger.<br />When focus is on content, moves focus to the first link.</span>
+
+**`End`**
+Description: <span>When focus is on trigger, moves focus to the last trigger.<br />When focus is on content, moves focus to the last link.</span>
 The number input provides controls for editing, incrementing or decrementing
 numeric values using the keyboard or pointer.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/number-input)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/number-input)
 [Logic Visualizer](https://zag-visualizer.vercel.app/number-input)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/number-input)
 
@@ -58500,15 +60493,13 @@ Description: Sets the value of the number input to its maximum allowed value.
 
 **`Enter`**
 Description: Submits the value entered in the number input.
-# Pagination
-
 Pagination is an interface that allows navigating between pages that contain
 split information, instead of being shown on a single page.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/pagination)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/pagination)
 [Logic Visualizer](https://zag-visualizer.vercel.app/pagination)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/pagination)
 
@@ -58834,12 +60825,10 @@ Description: Function to go to the last page.
 **`data-scope`**: pagination
 **`data-part`**: next-trigger
 **`data-disabled`**: Present when disabled
-# Password Input
-
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/password-input)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/password-input)
 [Logic Visualizer](https://zag-visualizer.vercel.app/password-input)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/password-input)
 
@@ -59188,8 +61177,6 @@ Description: Set the visibility of the password input.
 **`toggleVisible`**
 Type: `VoidFunction`
 Description: Toggle the visibility of the password input.
-# Pin Input
-
 The pin input is optimized for entering a sequence of digits or letters. The
 input fields allow one character at a time. When the digit or letter is entered,
 focus transfers to the next input in the sequence, until every input is filled.
@@ -59197,7 +61184,7 @@ focus transfers to the next input in the sequence, until every input is filled.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/pin-input)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/pin-input)
 [Logic Visualizer](https://zag-visualizer.vercel.app/pin-input)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/pin-input)
 
@@ -59650,8 +61637,6 @@ Description: Deletes the value in the current input
 
 **`Control + V`**
 Description: Pastes the value into the input fields
-# Popover
-
 A popover is a non-modal dialog that floats around a trigger. It is used to
 display contextual information to the user, and should be paired with a
 clickable trigger element.
@@ -59659,7 +61644,7 @@ clickable trigger element.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/popover)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/popover)
 [Logic Visualizer](https://zag-visualizer.vercel.app/popover)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/popover)
 
@@ -60122,8 +62107,6 @@ Description: <span>Moves focus to the previous focusable element within the cont
 
 **`Esc`**
 Description: <span>Closes the popover and moves focus to the trigger.</span>
-# Presence
-
 The presence machine is a state machine that helps you manage exit animations in
 your project.
 
@@ -60137,7 +62120,7 @@ animation before removing or hiding it.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/presence)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/presence)
 [Logic Visualizer](https://zag-visualizer.vercel.app/presence)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/presence)
 
@@ -60302,15 +62285,13 @@ Description: Function to set the node (as early as possible)
 **`unmount`**
 Type: `VoidFunction`
 Description: Function to programmatically unmount the node
-# Linear Progress
-
 Linear progress is a simple progress bar that can be used to show the progress
 of a task such as downloading a file, uploading an image, etc.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/progress)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/progress)
 [Logic Visualizer](https://zag-visualizer.vercel.app/progress)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/progress)
 
@@ -60492,13 +62473,13 @@ selector.
 
 The progress machine exposes the following context properties:
 
-
+<ContextTable name="progress" />
 
 ### Machine API
 
 The progress `api` exposes the following methods:
 
-
+<ApiTable name="progress" />
 
 ### Data Attributes
 
@@ -60507,15 +62488,13 @@ The progress `api` exposes the following methods:
 ### CSS Variables
 
 <CssVarTable name="progress" />
-# Circular Progress
-
 Circular progress is a circular progress bar that can be used to show the
 progress of a task such as downloading a file, uploading an image, etc.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/progress)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/progress)
 [Logic Visualizer](https://zag-visualizer.vercel.app/progress)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/progress)
 
@@ -60718,19 +62697,17 @@ selector.
 
 The progress machine exposes the following context properties:
 
-
+<ContextTable name="progress" />
 
 ### Machine API
 
 The progress `api` exposes the following methods:
 
-
+<ApiTable name="progress" />
 
 ### Data Attributes
 
 <DataAttrTable name="progress" />
-# QR Code
-
 QR (Quick Response) Code is used to provide information or link which can be
 accessed by scanning the code with an app or a smartphone.
 
@@ -60740,7 +62717,7 @@ accessed by scanning the code with an app or a smartphone.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/qr-code)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/qr-code)
 [Logic Visualizer](https://zag-visualizer.vercel.app/qr-code)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/qr-code)
 
@@ -60980,15 +62957,13 @@ Description: Set the value to encode.
 **`getDataUrl`**
 Type: `(type: DataUrlType, quality?: number) => Promise<string>`
 Description: Returns the data URL of the qr code.
-# Radio Group
-
 A radio group allows users to make a single choice from a select number of
 option
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/radio-group)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/radio-group)
 [Logic Visualizer](https://zag-visualizer.vercel.app/radio-group)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/radio-group)
 
@@ -61305,358 +63280,12 @@ Description: Moves focus to the previous radio item in the group.
 
 **`ArrowLeft`**
 Description: Moves focus to the previous radio item in the group.
-# Range Slider
-
-A range slider is a multi-thumb slider used to select a range between two
-numbers.
-
-## Resources
-
-
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/slider)
-[Logic Visualizer](https://zag-visualizer.vercel.app/slider)
-[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/slider)
-
-
-
-**Features**
-
-- Fully managed keyboard navigation
-- Supports touch or click on track to update value
-- Supports Right-to-Left directionality
-- Support for horizontal and vertical orientations
-- Prevents text selection while dragging
-
-## Installation
-
-To use the range slider machine in your project, run the following command in
-your command line:
-
-```bash
-npm install @zag-js/slider @zag-js/vue
-# or
-yarn add @zag-js/slider @zag-js/vue
-```
-
-## Anatomy
-
-To set up the slider correctly, you'll need to understand its anatomy and how we
-name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
-
-
-## Usage
-
-First, import the range slider package into your project
-
-```jsx
-import * as rangeSlider from "@zag-js/slider"
-```
-
-The range slider package exports two key functions:
-
-- `machine` â The state machine logic for the slider widget as described in the
-  WAI-ARIA spec.
-- `connect` â The function that translates the machine's state to JSX attributes
-  and event handlers.
-
-> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
-> ensure that every part has a unique identifier.
-
-Next, import the required hooks and functions for your framework and use the
-range slider machine in your project ð¥
-
-```html
-<script setup>
-  import * as slider from "@zag-js/slider"
-  import { normalizeProps, useMachine } from "@zag-js/vue"
-  import { computed } from "vue"
-
-  const service = useMachine(slider.machine, {
-    id: "1",
-    name: "quantity",
-    defaultValue: [10, 60],
-  })
-  const api = computed(() => slider.connect(service, normalizeProps))
-</script>
-
-<template>
-  <div ref="ref" v-bind="api.getRootProps()">
-    <div v-bind="api.getControlProps()">
-      <div v-bind="api.getTrackProps()">
-        <div v-bind="api.getRangeProps()" />
-      </div>
-      <div
-        v-for="(_, index) in api.value"
-        :key="index"
-        v-bind="api.getThumbProps({ index })"
-      >
-        <input v-bind="api.getHiddenInputProps({ index })" />
-      </div>
-    </div>
-  </div>
-</template>
-```
-
-## Changing the orientation
-
-By default, the slider is assumed to be horizontal. To change the orientation to
-vertical, set the `orientation` property in the machine's context to `vertical`.
-
-In this mode, the slider will use the arrow up and down keys to
-increment/decrement its value.
-
-> Don't forget to change the styles of the vertical slider by specifying its
-> height
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  orientation: "vertical",
-})
-```
-
-## Setting the initial value
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  defaultValue: [30, 60],
-})
-```
-
-## Specifying the minimum and maximum
-
-By default, the minimum is `0` and the maximum is `100`. If that's not what you
-want, you can easily specify different bounds by changing the values of the min
-and/or max attributes.
-
-For example, to ask the user for a value between `-10` and `10`, you can use:
-
-```jsx {2-3}
-const service = useMachine(slider.machine, {
-  min: -10,
-  max: 10,
-})
-```
-
-## Setting the value's granularity
-
-By default, the granularity, is `1`, meaning that the value is always an
-integer. You can change the step attribute to control the granularity.
-
-For example, If you need a value between `5` and `10`, accurate to two decimal
-places, you should set the value of step to `0.01`:
-
-```jsx {4}
-const service = useMachine(slider.machine, {
-  min: 5,
-  max: 10,
-  step: 0.01,
-})
-```
-
-## Listening for changes
-
-When the slider value changes, the `onValueChange` and `onValueChangeEnd`
-callbacks are invoked. You can use this to setup custom behaviors in your app.
-
-```jsx {2-7}
-const service = useMachine(slider.machine, {
-  onValueChange(details) {
-    // details => { values: number[] }
-    console.log("value changing to:", details)
-  },
-  onValueChangeEnd(details) {
-    // details => { values: number[] }
-    console.log("value has changed to:", details)
-  },
-})
-```
-
-## Preventing thumb overlap
-
-By default, the range slider thumbs are allowed to overlap when their values are
-equal. To prevent this, use the `minStepsBetweenThumbs` to avoid thumbs with
-equal values.
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  minStepsBetweenThumbs: 1,
-})
-```
-
-## Usage within forms
-
-To use slider within forms, use the exposed `getInputProps` from the `connect`
-function and ensure you pass `name` value to the machine's context. It will
-render a hidden input for each value and ensure the value changes get propagated
-to the form correctly.
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  name: "quantity",
-})
-```
-
-## RTL Support
-
-The slider has built-in support for RTL alignment and interaction. In the RTL
-mode, operations are performed from right to left, meaning, the left arrow key
-will increment and the right arrow key will decrement.
-
-To enable RTL support, pass the `dir: rtl` context property
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  dir: "rtl",
-})
-```
-
-> While we take care of the interactions in RTL mode, you'll have to ensure you
-> apply the correct CSS styles to flip the layout.
-
-## Styling guide
-
-Earlier, we mentioned that each slider part has a `data-part` attribute added to
-them to select and style them in the DOM.
-
-### Focused State
-
-When the slider thumb is focused, the `data-focus` attribute is added to the
-root, control, thumb and label parts.
-
-```css
-[data-part="root"][data-focus] {
-  /* styles for root focus state */
-}
-
-[data-part="thumb"]:focus {
-  /* styles for thumb focus state */
-}
-
-[data-part="control"][data-focus] {
-  /* styles for control focus state */
-}
-
-[data-part="track"][data-focus] {
-  /* styles for track focus state */
-}
-
-[data-part="range"][data-focus] {
-  /* styles for range focus state */
-}
-```
-
-### Disabled State
-
-When the slider is disabled, the `data-disabled` attribute is added to the root,
-label, control and thumb.
-
-```css
-[data-part="root"][data-disabled] {
-  /* styles for root disabled state */
-}
-
-[data-part="label"][data-disabled] {
-  /* styles for label disabled state */
-}
-
-[data-part="control"][data-disabled] {
-  /* styles for control disabled state */
-}
-
-[data-part="value-text"][data-disabled] {
-  /* styles for output disabled state */
-}
-
-[data-part="thumb"][data-disabled] {
-  /* styles for thumb disabled state */
-}
-
-[data-part="range"][data-disabled] {
-  /* styles for range disabled state */
-}
-```
-
-### Orientation
-
-```css
-[data-part="root"][data-orientation="(horizontal|vertical)"] {
-  /* styles for horizontal or vertical  */
-}
-
-[data-part="thumb"][data-orientation="(horizontal|vertical)"] {
-  /* styles for horizontal or vertical  */
-}
-
-[data-part="track"][data-orientation="(horizontal|vertical)"] {
-  /* styles for horizontal or vertical  */
-}
-```
-
-## Methods and Properties
-
-### Machine Context
-
-The slider machine exposes the following context properties:
-
-
-
-### Machine API
-
-The slider `api` exposes the following methods:
-
-
-
-### Data Attributes
-
-<DataAttrTable name="slider" />
-
-## Accessibility
-
-Adheres to the
-[Slider WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slidertwothumb).
-
-### Keyboard Interactions
-
-**`ArrowRight`**
-Description: <span>Increments the focused thumb based on defined step</span>
-
-**`ArrowLeft`**
-Description: <span>Decrements the focused thumb based on defined step</span>
-
-**`ArrowUp`**
-Description: <span>Increases the focused thumb by the step amount.</span>
-
-**`ArrowDown`**
-Description: <span>Decreases the focused thumb by the step amount.</span>
-
-**`PageUp`**
-Description: <span>Increases the focused thumb value by a larger step</span>
-
-**`PageDown`**
-Description: <span>Decreases the focused thumb value by a larger step</span>
-
-**`Shift + ArrowUp`**
-Description: <span>Increases the focused thumb value by a larger step</span>
-
-**`Shift + ArrowDown`**
-Description: <span>Decreases the focused thumb value by a larger step</span>
-
-**`Home`**
-Description: Sets the focused thumb value to its minimum.
-
-**`End`**
-Description: Sets the focused thumb value to its maximum.
-# Rating Group
-
 Rating group allows a user to assign rating to an item within a product.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/rating-group)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/rating-group)
 [Logic Visualizer](https://zag-visualizer.vercel.app/rating-group)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/rating-group)
 
@@ -62009,15 +63638,13 @@ Description: Moves focus to the previous star, decreasing the rating value based
 
 **`Enter`**
 Description: Selects the focused star in the rating group.
-# Scroll Area
-
 A scroll area provides a scrollable viewport with customizable scrollbars for
 content that exceeds the container's dimensions.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/scroll-area)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/scroll-area)
 [Logic Visualizer](https://zag-visualizer.vercel.app/scroll-area)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/scroll-area)
 
@@ -62402,8 +64029,6 @@ Description: Returns the state of the scrollbar
 ### CSS Variables
 
 <CssVarTable name="scroll-area" />
-# Segmented Control
-
 A Segmented control allows users to make a single selection from multiple
 exclusive options, providing a visually distinct and intuitive way of
 interacting with radio inputs.
@@ -62411,7 +64036,7 @@ interacting with radio inputs.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/radio-group)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/radio-group)
 [Logic Visualizer](https://zag-visualizer.vercel.app/segmented-control)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/segmented-control)
 
@@ -62622,25 +64247,23 @@ label parts.
 
 The radio group machine exposes the following context properties:
 
-
+<ContextTable name="radio-group" />
 
 ### Machine API
 
 The radio group `api` exposes the following methods:
 
-
+<ApiTable name="radio-group" />
 
 ### Data Attributes
 
 <DataAttrTable name="radio-group" />
-# Select
-
 A Select component allows users pick a value from predefined options.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/select)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/select)
 [Logic Visualizer](https://zag-visualizer.vercel.app/select)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/select)
 
@@ -63566,15 +65189,13 @@ Description: <span>Closes the select and moves focus to trigger.</span>
 
 **`A-Z + a-z`**
 Description: <span>When focus is on trigger, selects the item whose label starts with the typed character.<br />When focus is on the listbox, moves focus to the next item with a label that starts with the typed character.</span>
-# Signature Pad
-
 The signature pad component allows users to draw handwritten signatures using
 touch or pointer devices. The signature can be saved as an image or cleared.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/signature-pad)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/signature-pad)
 [Logic Visualizer](https://zag-visualizer.vercel.app/signature-pad)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/signature-pad)
 
@@ -63907,8 +65528,6 @@ Description: Clears the signature pad.
 **`data-scope`**: signature-pad
 **`data-part`**: guide
 **`data-disabled`**: Present when disabled
-# Slider
-
 A slider allows users to make selections from a range of values. Think of it as
 a custom `<input type='range'/>` with the ability to achieve custom styling and
 accessibility.
@@ -63916,7 +65535,7 @@ accessibility.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/slider)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/slider)
 [Logic Visualizer](https://zag-visualizer.vercel.app/slider)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/slider)
 
@@ -64645,8 +66264,348 @@ Description: Sets the value to its minimum.
 
 **`End`**
 Description: Sets the value to its maximum.
-# Splitter
+A range slider is a multi-thumb slider used to select a range between two
+numbers.
 
+## Resources
+
+
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/slider)
+[Logic Visualizer](https://zag-visualizer.vercel.app/slider)
+[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/slider)
+
+
+
+**Features**
+
+- Fully managed keyboard navigation
+- Supports touch or click on track to update value
+- Supports Right-to-Left directionality
+- Support for horizontal and vertical orientations
+- Prevents text selection while dragging
+
+## Installation
+
+To use the range slider machine in your project, run the following command in
+your command line:
+
+```bash
+npm install @zag-js/slider @zag-js/vue
+# or
+yarn add @zag-js/slider @zag-js/vue
+```
+
+## Anatomy
+
+To set up the slider correctly, you'll need to understand its anatomy and how we
+name its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+
+
+## Usage
+
+First, import the range slider package into your project
+
+```jsx
+import * as rangeSlider from "@zag-js/slider"
+```
+
+The range slider package exports two key functions:
+
+- `machine` â The state machine logic for the slider widget as described in the
+  WAI-ARIA spec.
+- `connect` â The function that translates the machine's state to JSX attributes
+  and event handlers.
+
+> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
+> ensure that every part has a unique identifier.
+
+Next, import the required hooks and functions for your framework and use the
+range slider machine in your project ð¥
+
+```html
+<script setup>
+  import * as slider from "@zag-js/slider"
+  import { normalizeProps, useMachine } from "@zag-js/vue"
+  import { computed } from "vue"
+
+  const service = useMachine(slider.machine, {
+    id: "1",
+    name: "quantity",
+    defaultValue: [10, 60],
+  })
+  const api = computed(() => slider.connect(service, normalizeProps))
+</script>
+
+<template>
+  <div ref="ref" v-bind="api.getRootProps()">
+    <div v-bind="api.getControlProps()">
+      <div v-bind="api.getTrackProps()">
+        <div v-bind="api.getRangeProps()" />
+      </div>
+      <div
+        v-for="(_, index) in api.value"
+        :key="index"
+        v-bind="api.getThumbProps({ index })"
+      >
+        <input v-bind="api.getHiddenInputProps({ index })" />
+      </div>
+    </div>
+  </div>
+</template>
+```
+
+## Changing the orientation
+
+By default, the slider is assumed to be horizontal. To change the orientation to
+vertical, set the `orientation` property in the machine's context to `vertical`.
+
+In this mode, the slider will use the arrow up and down keys to
+increment/decrement its value.
+
+> Don't forget to change the styles of the vertical slider by specifying its
+> height
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  orientation: "vertical",
+})
+```
+
+## Setting the initial value
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  defaultValue: [30, 60],
+})
+```
+
+## Specifying the minimum and maximum
+
+By default, the minimum is `0` and the maximum is `100`. If that's not what you
+want, you can easily specify different bounds by changing the values of the min
+and/or max attributes.
+
+For example, to ask the user for a value between `-10` and `10`, you can use:
+
+```jsx {2-3}
+const service = useMachine(slider.machine, {
+  min: -10,
+  max: 10,
+})
+```
+
+## Setting the value's granularity
+
+By default, the granularity, is `1`, meaning that the value is always an
+integer. You can change the step attribute to control the granularity.
+
+For example, If you need a value between `5` and `10`, accurate to two decimal
+places, you should set the value of step to `0.01`:
+
+```jsx {4}
+const service = useMachine(slider.machine, {
+  min: 5,
+  max: 10,
+  step: 0.01,
+})
+```
+
+## Listening for changes
+
+When the slider value changes, the `onValueChange` and `onValueChangeEnd`
+callbacks are invoked. You can use this to setup custom behaviors in your app.
+
+```jsx {2-7}
+const service = useMachine(slider.machine, {
+  onValueChange(details) {
+    // details => { values: number[] }
+    console.log("value changing to:", details)
+  },
+  onValueChangeEnd(details) {
+    // details => { values: number[] }
+    console.log("value has changed to:", details)
+  },
+})
+```
+
+## Preventing thumb overlap
+
+By default, the range slider thumbs are allowed to overlap when their values are
+equal. To prevent this, use the `minStepsBetweenThumbs` to avoid thumbs with
+equal values.
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  minStepsBetweenThumbs: 1,
+})
+```
+
+## Usage within forms
+
+To use slider within forms, use the exposed `getInputProps` from the `connect`
+function and ensure you pass `name` value to the machine's context. It will
+render a hidden input for each value and ensure the value changes get propagated
+to the form correctly.
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  name: "quantity",
+})
+```
+
+## RTL Support
+
+The slider has built-in support for RTL alignment and interaction. In the RTL
+mode, operations are performed from right to left, meaning, the left arrow key
+will increment and the right arrow key will decrement.
+
+To enable RTL support, pass the `dir: rtl` context property
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  dir: "rtl",
+})
+```
+
+> While we take care of the interactions in RTL mode, you'll have to ensure you
+> apply the correct CSS styles to flip the layout.
+
+## Styling guide
+
+Earlier, we mentioned that each slider part has a `data-part` attribute added to
+them to select and style them in the DOM.
+
+### Focused State
+
+When the slider thumb is focused, the `data-focus` attribute is added to the
+root, control, thumb and label parts.
+
+```css
+[data-part="root"][data-focus] {
+  /* styles for root focus state */
+}
+
+[data-part="thumb"]:focus {
+  /* styles for thumb focus state */
+}
+
+[data-part="control"][data-focus] {
+  /* styles for control focus state */
+}
+
+[data-part="track"][data-focus] {
+  /* styles for track focus state */
+}
+
+[data-part="range"][data-focus] {
+  /* styles for range focus state */
+}
+```
+
+### Disabled State
+
+When the slider is disabled, the `data-disabled` attribute is added to the root,
+label, control and thumb.
+
+```css
+[data-part="root"][data-disabled] {
+  /* styles for root disabled state */
+}
+
+[data-part="label"][data-disabled] {
+  /* styles for label disabled state */
+}
+
+[data-part="control"][data-disabled] {
+  /* styles for control disabled state */
+}
+
+[data-part="value-text"][data-disabled] {
+  /* styles for output disabled state */
+}
+
+[data-part="thumb"][data-disabled] {
+  /* styles for thumb disabled state */
+}
+
+[data-part="range"][data-disabled] {
+  /* styles for range disabled state */
+}
+```
+
+### Orientation
+
+```css
+[data-part="root"][data-orientation="(horizontal|vertical)"] {
+  /* styles for horizontal or vertical  */
+}
+
+[data-part="thumb"][data-orientation="(horizontal|vertical)"] {
+  /* styles for horizontal or vertical  */
+}
+
+[data-part="track"][data-orientation="(horizontal|vertical)"] {
+  /* styles for horizontal or vertical  */
+}
+```
+
+## Methods and Properties
+
+### Machine Context
+
+The slider machine exposes the following context properties:
+
+<ContextTable name="slider" />
+
+### Machine API
+
+The slider `api` exposes the following methods:
+
+<ApiTable name="slider" />
+
+### Data Attributes
+
+<DataAttrTable name="slider" />
+
+## Accessibility
+
+Adheres to the
+[Slider WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slidertwothumb).
+
+### Keyboard Interactions
+
+**`ArrowRight`**
+Description: <span>Increments the focused thumb based on defined step</span>
+
+**`ArrowLeft`**
+Description: <span>Decrements the focused thumb based on defined step</span>
+
+**`ArrowUp`**
+Description: <span>Increases the focused thumb by the step amount.</span>
+
+**`ArrowDown`**
+Description: <span>Decreases the focused thumb by the step amount.</span>
+
+**`PageUp`**
+Description: <span>Increases the focused thumb value by a larger step</span>
+
+**`PageDown`**
+Description: <span>Decreases the focused thumb value by a larger step</span>
+
+**`Shift + ArrowUp`**
+Description: <span>Increases the focused thumb value by a larger step</span>
+
+**`Shift + ArrowDown`**
+Description: <span>Decreases the focused thumb value by a larger step</span>
+
+**`Home`**
+Description: Sets the focused thumb value to its minimum.
+
+**`End`**
+Description: Sets the focused thumb value to its maximum.
 A splitter allow create dynamic layouts split into vertically or horizontally
 arranged panes. Panes are separated by the splitter bars that allow dragging to
 resize or expand/collapse them.
@@ -64654,7 +66613,7 @@ resize or expand/collapse them.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/splitter)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/splitter)
 [Logic Visualizer](https://zag-visualizer.vercel.app/splitter)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/splitter)
 
@@ -64955,6 +66914,10 @@ The splitter `api` exposes the following methods:
 Type: `boolean`
 Description: Whether the splitter is currently being resized.
 
+**`orientation`**
+Type: `"horizontal" | "vertical"`
+Description: The orientation of the splitter.
+
 **`getSizes`**
 Type: `() => number[]`
 Description: Returns the current sizes of the panels.
@@ -64966,6 +66929,14 @@ Description: Sets the sizes of the panels.
 **`getItems`**
 Type: `() => SplitterItem[]`
 Description: Returns the items of the splitter.
+
+**`getPanels`**
+Type: `() => PanelData[]`
+Description: Returns the panels of the splitter.
+
+**`getPanelById`**
+Type: `(id: string) => PanelData`
+Description: Returns the panel with the specified id.
 
 **`getPanelSize`**
 Type: `(id: string) => number`
@@ -64999,6 +66970,10 @@ Description: Returns the layout of the splitter.
 Type: `VoidFunction`
 Description: Resets the splitter to its initial state.
 
+**`getResizeTriggerState`**
+Type: `(props: ResizeTriggerProps) => ResizeTriggerState`
+Description: Returns the state of the resize trigger.
+
 ### Data Attributes
 
 **`Root`**
@@ -65006,12 +66981,14 @@ Description: Resets the splitter to its initial state.
 **`data-scope`**: splitter
 **`data-part`**: root
 **`data-orientation`**: The orientation of the splitter
+**`data-dragging`**: Present when in the dragging state
 
 **`Panel`**
 
 **`data-scope`**: splitter
 **`data-part`**: panel
 **`data-orientation`**: The orientation of the panel
+**`data-dragging`**: Present when in the dragging state
 **`data-id`**: 
 **`data-index`**: The index of the item
 
@@ -65022,16 +66999,15 @@ Description: Resets the splitter to its initial state.
 **`data-id`**: 
 **`data-orientation`**: The orientation of the resizetrigger
 **`data-focus`**: Present when focused
+**`data-dragging`**: Present when in the dragging state
 **`data-disabled`**: Present when disabled
-# Steps
-
 Steps are used to guide users through a series of steps in a process. It's a
 great way to break down a complex process into smaller, more manageable steps.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/steps)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/steps)
 [Logic Visualizer](https://zag-visualizer.vercel.app/steps)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/steps)
 
@@ -65434,14 +67410,12 @@ Description: Returns the state of the item at the given index.
 ### CSS Variables
 
 <CssVarTable name="steps" />
-# Switch
-
 A switch allows users to turn an individual option on or off.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/switch)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/switch)
 [Logic Visualizer](https://zag-visualizer.vercel.app/switch)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/switch)
 
@@ -65774,8 +67748,6 @@ Adheres to the
 
 **`Space + Enter`**
 Description: Toggle the switch
-# Tabs
-
 An accessible tabs component that follows the WAI-ARIA Tabs Design Pattern. Each
 tab in the tab list has associated content, with only the selected tab's content
 being displayed.
@@ -65783,7 +67755,7 @@ being displayed.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tabs)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tabs)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tabs)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tabs)
 
@@ -66299,8 +68271,6 @@ Description: Moves focus to the last trigger and activates its associated conten
 
 **`Enter + Space`**
 Description: In manual mode, when a trigger is focused, moves focus to its associated content.
-# Tags Input
-
 Tag inputs render tags inside an input, followed by an actual text input. By
 default, tags are added when text is typed in the input field and the `Enter` or
 `Comma` key is pressed. Throughout the interaction, DOM focus remains on the
@@ -66309,7 +68279,7 @@ input element.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tags-input)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tags-input)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tags-input)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tags-input)
 
@@ -66498,13 +68468,17 @@ const service = useMachine(tagsInput.machine, {
 Before a tag is added, the machine provides a `validate` function you can use to
 determine whether to accept or reject a tag.
 
-A common use-case for validating tags is preventing duplicates or validating the
-data type.
+> **Note:** Duplicate tags are automatically prevented by design. You don't need
+> to handle this in your `validate` function.
 
-```jsx {2-3}
+Common use-cases for validating tags include enforcing format, length, or
+content rules.
+
+```jsx {2-4}
 const service = useMachine(tagsInput.machine, {
   validate(details) {
-    return !details.values.includes(details.inputValue)
+    // Example: only allow lowercase alphabetic tags
+    return /^[a-z]+$/.test(details.inputValue)
   },
 })
 ```
@@ -66979,15 +68953,13 @@ Description: Deletes the tag item that has visual focus
 
 **`Control + V`**
 Description: When `addOnPaste` is set. Adds the pasted value as a tags
-# Timer
-
 The timer machine is used to record the time elapsed from zero or since a
 specified target time.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/timer)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/timer)
 [Logic Visualizer](https://zag-visualizer.vercel.app/timer)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/timer)
 
@@ -67320,15 +69292,13 @@ Description: Function to restart the timer.
 **`progressPercent`**
 Type: `number`
 Description: The progress percentage of the timer.
-# Toast
-
 The toast component is used to give feedback to users after an action has taken
 place.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/toast)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/toast)
 [Logic Visualizer](https://zag-visualizer.vercel.app/toast)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/toast)
 
@@ -67826,14 +69796,12 @@ Description: Subscribe to the toast group
 ### CSS Variables
 
 <CssVarTable name="toast" />
-# Toggle Group
-
 A toggle group is used to toggle either one option or multiple options.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/toggle-group)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/toggle-group)
 [Logic Visualizer](https://zag-visualizer.vercel.app/toggle-group)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/toggle-group)
 
@@ -68163,8 +70131,6 @@ Description: Moves focus to the first item.
 
 **`End`**
 Description: Moves focus to the last item.
-# Tooltip
-
 A tooltip is a brief, informative message that appears when a user interacts
 with an element. Tooltips are usually initiated when a button is focused or
 hovered.
@@ -68172,7 +70138,7 @@ hovered.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tooltip)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tooltip)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tooltip)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tooltip)
 
@@ -68550,8 +70516,6 @@ Description: Opens/closes the tooltip without delay.
 
 **`Escape`**
 Description: If open, closes the tooltip without delay.
-# Tour
-
 A tour is an onboarding component used to guide users through a new product
 feature or series of steps. It is often used to boost feature discoverability or
 onboard new users by highlighting specific elements on the page.
@@ -68559,7 +70523,7 @@ onboard new users by highlighting specific elements on the page.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tour)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tour)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tour)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tour)
 
@@ -69185,8 +71149,6 @@ Description: Returns the progress text
 **`getProgressPercent`**
 Type: `() => number`
 Description: Returns the progress percent
-# Tree View
-
 The TreeView component provides a hierarchical view of data, similar to a file
 system explorer. It allows users to expand and collapse branches, select
 individual or multiple nodes, and traverse the hierarchy using keyboard
@@ -69195,7 +71157,7 @@ navigation.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tree-view)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tree-view)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tree-view)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tree-view)
 
@@ -70113,15 +72075,13 @@ Description: Selects all nodes in the tree. If all nodes are selected, unselects
 
 ## Svelte
 
-# Accordion
-
 An accordion is a vertically stacked set of interactive headings containing a
 title, content snippet, or thumbnail representing a section of content.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/accordion)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/accordion)
 [Logic Visualizer](https://zag-visualizer.vercel.app/accordion)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/accordion)
 
@@ -70525,8 +72485,6 @@ Description: When focus is on an trigger, moves focus to the first trigger.
 
 **`End`**
 Description: When focus is on an trigger, moves focus to the last trigger.
-# Angle Slider
-
 An angle slider is a circular dial that allows users to select an angle,
 typically in degrees, within a 360Â° range. It provides an intuitive way to
 control rotations or orientations, offering accessibility features.
@@ -70534,7 +72492,7 @@ control rotations or orientations, offering accessibility features.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/angle-slider)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/angle-slider)
 [Logic Visualizer](https://zag-visualizer.vercel.app/angle-slider)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/angle-slider)
 
@@ -70942,8 +72900,6 @@ Description: Sets the value to 0 degrees.
 
 **`End`**
 Description: Sets the value to 360 degrees.
-# Avatar
-
 The Avatar component is a React component that represents a user avatar or
 profile picture. It displays an image or initials within container.
 
@@ -70953,7 +72909,7 @@ load, or when the image is not provided.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/avatar)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/avatar)
 [Logic Visualizer](https://zag-visualizer.vercel.app/avatar)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/avatar)
 
@@ -71121,15 +73077,13 @@ Description: Function to set error state.
 **`data-scope`**: avatar
 **`data-part`**: fallback
 **`data-state`**: "hidden" | "visible"
-# Carousel
-
 an accessible carousel component that leverages native CSS Scroll Snap for
 smooth, performant scrolling between slides.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/carousel)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/carousel)
 [Logic Visualizer](https://zag-visualizer.vercel.app/carousel)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/carousel)
 
@@ -71641,15 +73595,13 @@ and clamp the page
 ### CSS Variables
 
 <CssVarTable name="carousel" />
-# Checkbox
-
 A checkbox allows users to make a binary choice, i.e. a choice between one of
 two possible mutually exclusive options.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/checkbox)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/checkbox)
 [Logic Visualizer](https://zag-visualizer.vercel.app/checkbox)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/checkbox)
 
@@ -72033,14 +73985,12 @@ Description: Function to toggle the checked state of the checkbox
 
 **`Space`**
 Description: Toggle the checkbox
-# Clipboard
-
 The clipboard machine allows users to quickly copy content to clipboard.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/clipboard)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/clipboard)
 [Logic Visualizer](https://zag-visualizer.vercel.app/clipboard)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/clipboard)
 
@@ -72265,14 +74215,12 @@ Description: Copy the value to the clipboard
 **`data-scope`**: clipboard
 **`data-part`**: trigger
 **`data-copied`**: Present when copied state is true
-# Collapsible
-
 A collapsible is a component which expands and collapses a panel.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/collapsible)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/collapsible)
 [Logic Visualizer](https://zag-visualizer.vercel.app/collapsible)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/collapsible)
 
@@ -72646,8 +74594,6 @@ Description: Opens/closes the collapsible.
 
 **`Enter`**
 Description: Opens/closes the collapsible.
-# Color Picker
-
 The color picker is an input widget used to select a color value from a
 predefined list or a color area.
 
@@ -72657,7 +74603,7 @@ provides a more customizable and consistent user experience.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/color-picker)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/color-picker)
 [Logic Visualizer](https://zag-visualizer.vercel.app/color-picker)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/color-picker)
 
@@ -73448,15 +75394,13 @@ Description: <span>When focus is on the color area, decreases the saturation val
 
 **`Esc`**
 Description: Closes the color picker and moves focus to the trigger
-# Combobox
-
 A combobox is an input widget with an associated popup that enables users to
 select a value from a collection of possible values.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/combobox)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/combobox)
 [Logic Visualizer](https://zag-visualizer.vercel.app/combobox)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/combobox)
 
@@ -74336,8 +76280,6 @@ Description: Selects the highlighted option and closes the combobox.
 
 **`Esc`**
 Description: Closes the combobox
-# Date Picker
-
 A datepicker allows users to enter a date either through text input, or by
 choosing a date from the calendar.
 
@@ -74348,7 +76290,7 @@ choosing a date from the calendar.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/date-picker)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/date-picker)
 [Logic Visualizer](https://zag-visualizer.vercel.app/date-picker)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/date-picker)
 
@@ -74913,6 +76855,14 @@ Description: Whether the calendar is disabled.
 Type: `boolean`
 Description: Whether the calendar is read-only.
 
+**`required`**
+Type: `boolean`
+Description: Whether the date picker is required
+
+**`invalid`**
+Type: `boolean`
+Description: Whether the date picker is invalid
+
 **`outsideDaySelectable`**
 Type: `boolean`
 Description: Whether day outside the visible range can be selected.
@@ -75064,9 +77014,29 @@ Description: Whether the input is focused
 Type: `boolean`
 Description: Whether the date picker is open
 
+**`disabled`**
+Type: `boolean`
+Description: Whether the date picker is disabled
+
+**`invalid`**
+Type: `boolean`
+Description: Whether the date picker is invalid
+
+**`readOnly`**
+Type: `boolean`
+Description: Whether the date picker is read-only
+
 **`inline`**
 Type: `boolean`
 Description: Whether the date picker is rendered inline
+
+**`numOfMonths`**
+Type: `number`
+Description: The number of months to display
+
+**`selectionMode`**
+Type: `SelectionMode`
+Description: The selection mode (single, multiple, or range)
 
 **`view`**
 Type: `DateView`
@@ -75219,6 +77189,7 @@ Description: Returns the state details for a given year cell.
 **`data-state`**: "open" | "closed"
 **`data-disabled`**: Present when disabled
 **`data-readonly`**: Present when read-only
+**`data-empty`**: Present when no value is selected
 
 **`Label`**
 
@@ -75234,6 +77205,7 @@ Description: Returns the state details for a given year cell.
 **`data-scope`**: date-picker
 **`data-part`**: control
 **`data-disabled`**: Present when disabled
+**`data-placeholder-shown`**: Present when placeholder is shown
 
 **`Content`**
 
@@ -75362,6 +77334,7 @@ Description: Returns the state details for a given year cell.
 **`data-part`**: trigger
 **`data-placement`**: The placement of the trigger
 **`data-state`**: "open" | "closed"
+**`data-placeholder-shown`**: Present when placeholder is shown
 
 **`View`**
 
@@ -75387,12 +77360,12 @@ Description: Returns the state details for a given year cell.
 **`data-part`**: input
 **`data-index`**: The index of the item
 **`data-state`**: "open" | "closed"
+**`data-placeholder-shown`**: Present when placeholder is shown
+**`data-invalid`**: Present when invalid
 
 ### CSS Variables
 
 <CssVarTable name="date-picker" />
-# Dialog
-
 A dialog is a window overlaid on either the primary window or another dialog
 window. Content behind a modal dialog is inert, meaning that users cannot
 interact with it.
@@ -75400,7 +77373,7 @@ interact with it.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/dialog)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/dialog)
 [Logic Visualizer](https://zag-visualizer.vercel.app/dialog)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/dialog)
 
@@ -75831,8 +77804,6 @@ Description: Moves focus to the previous focusable element. Focus is trapped wit
 
 **`Esc`**
 Description: Closes the dialog and moves focus to trigger or the defined final focus element
-# Editable
-
 Editable is an input field used for editing a single line of text. It renders as
 static text and transforms into a text input field when then edit interaction is
 triggered (click, focus, or double-click).
@@ -75840,7 +77811,7 @@ triggered (click, focus, or double-click).
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/editable)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/editable)
 [Logic Visualizer](https://zag-visualizer.vercel.app/editable)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/editable)
 
@@ -76293,8 +78264,6 @@ Description: Saves the edited content and exits edit mode.
 
 **`Escape`**
 Description: Discards the changes and exits edit mode.
-# File Upload
-
 File upload component is used to upload multiple files.
 
 The native input file element is quite difficult to style and doesn't provide a
@@ -76306,7 +78275,7 @@ drag-n-drop version.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/file-upload)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/file-upload)
 [Logic Visualizer](https://zag-visualizer.vercel.app/file-upload)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/file-upload)
 
@@ -76943,8 +78912,6 @@ Returns `true` if the clipboard data contains files, `false` otherwise.
 **`data-scope`**: file-upload
 **`data-part`**: clear-trigger
 **`data-disabled`**: Present when disabled
-# Floating Panel
-
 A floating panel is a detachable window that floats above the main interface,
 typically used for displaying and editing properties. The panel can be dragged,
 resized, and positioned anywhere on the screen for optimal workflow.
@@ -77586,14 +79553,12 @@ Description: Whether the panel is draggable
 ### CSS Variables
 
 <CssVarTable name="floating-panel" />
-# Hover Card
-
 An hover card allows sighted users to preview content available behind a link
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/hover-card)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/hover-card)
 [Logic Visualizer](https://zag-visualizer.vercel.app/hover-card)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/hover-card)
 
@@ -77849,8 +79814,6 @@ Description: Function to reposition the popover
 
 The hover card is intended for mouse users only so will not respond to keyboard
 navigation.
-# Image Cropper
-
 The image cropper machine keeps track of the crop rectangle, zoom, rotation, pan
 offset, flip state, and every gesture required to edit them. It exposes a set of
 DOM props so you can render your own viewport, frame, and handles in any
@@ -77859,7 +79822,7 @@ framework.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/image-cropper)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/image-cropper)
 [Logic Visualizer](https://zag-visualizer.vercel.app/image-cropper)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/image-cropper)
 
@@ -78533,15 +80496,13 @@ Use this for server-side cropping or state persistence.
 ### CSS Variables
 
 <CssVarTable name="image-cropper" />
-# Listbox
-
 A listbox component that displays a list of selectable options, supporting both
 single and multiple selection modes.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/listbox)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/listbox)
 [Logic Visualizer](https://zag-visualizer.vercel.app/listbox)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/listbox)
 
@@ -79131,15 +81092,13 @@ Description: Whether the select is disabled
 
 Adheres to the
 [Listbox WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/).
-# Marquee
-
 An accessible auto-scrolling marquee component for displaying scrolling content
 like logos, announcements, or featured items.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/marquee)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/marquee)
 [Logic Visualizer](https://zag-visualizer.vercel.app/marquee)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/marquee)
 
@@ -79835,15 +81794,13 @@ Description: Restart the marquee animation from the beginning.
 ### CSS Variables
 
 <CssVarTable name="marquee" />
-# Menu
-
 An accessible dropdown and context menu that is used to display a list of
 actions or options that a user can choose.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/menu)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/menu)
 [Logic Visualizer](https://zag-visualizer.vercel.app/menu)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/menu)
 
@@ -80375,211 +82332,13 @@ Description: <span>When focus is on trigger, opens or closes the submenu dependi
 
 **`Esc`**
 Description: Closes the menu and moves focus to the trigger
-# Context Menu
-
-An accessible dropdown and context menu that is used to display a list of
-actions or options that a user can choose when a trigger element is
-right-clicked or long pressed.
-
-## Resources
-
-
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/menu)
-[Logic Visualizer](https://zag-visualizer.vercel.app/menu)
-[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/menu)
-
-
-
-**Features**
-
-- Support for items, labels, groups of items
-- Focus is fully managed using `aria-activedescendant` pattern
-- Typeahead to allow focusing items by typing text
-- Keyboard navigation support including arrow keys, home/end, page up/down
-
-## Installation
-
-To use the menu machine in your project, run the following command in your
-command line:
-
-```bash
-npm install @zag-js/menu @zag-js/svelte
-# or
-yarn add @zag-js/menu @zag-js/svelte
-```
-
-## Anatomy
-
-To set up the menu correctly, you'll need to understand its anatomy and how we
-name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
-
-
-## Usage
-
-First, import the menu package into your project
-
-```jsx
-import * as menu from "@zag-js/menu"
-```
-
-The menu package exports two key functions:
-
-- `machine` â The state machine logic for the menu widget.
-- `connect` â The function that translates the machine's state to JSX attributes
-  and event handlers.
-
-> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
-> ensure that every part has a unique identifier.
-
-Next, import the required hooks and functions for your framework and use the
-menu machine in your project ð¥
-
-To show the menu when a trigger element is right-clicked, use the
-`contextTriggerProps` provided by the menu's connect function.
-
-Context menu's are also opened during a long-press of roughly `700ms` when the
-pointer is pen or touch.
-
-```svelte
-<script lang="ts">
-  import * as menu from "@zag-js/menu"
-  import { normalizeProps, useMachine } from "@zag-js/svelte"
-
-  const id = $props.id()
-  const service = useMachine(menu.machine, { id })
-  const api = $derived(menu.connect(service, normalizeProps))
-</script>
-
-<div>
-  <div {...api.getContextTriggerProps()}>
-    <div>Open context menu</div>
-  </div>
-  <div {...api.getPositionerProps()}>
-    <ul {...api.getContentProps()}>
-      <li {...api.getItemProps({ value: "edit" })}>Edit</li>
-      <li {...api.getItemProps({ value: "duplicate" })}>Duplicate</li>
-      <li {...api.getItemProps({ value: "delete" })}>Delete</li>
-      <li {...api.getItemProps({ value: "export" })}>Export...</li>
-    </ul>
-  </div>
-</div>
-```
-
-## Styling guide
-
-Earlier, we mentioned that each menu part has a `data-part` attribute added to
-them to select and style them in the DOM.
-
-### Highlighted item state
-
-When an item is highlighted, via keyboard navigation or pointer, it is given a
-`data-highlighted` attribute.
-
-```css
-[data-part="item"][data-highlighted] {
-  /* styles for highlighted state */
-}
-
-[data-part="item"][data-type="radio|checkbox"][data-highlighted] {
-  /* styles for highlighted state */
-}
-```
-
-### Disabled item state
-
-When an item or an option item is disabled, it is given a `data-disabled`
-attribute.
-
-```css
-[data-part="item"][data-disabled] {
-  /* styles for disabled state */
-}
-
-[data-part="item"][data-type="radio|checkbox"][data-disabled] {
-  /* styles for disabled state */
-}
-```
-
-### Using arrows
-
-When using arrows within the menu, you can style it using css variables.
-
-```css
-[data-part="arrow"] {
-  --arrow-size: 20px;
-  --arrow-background: red;
-}
-```
-
-### Checked option item state
-
-When an option item is checked, it is given a `data-state` attribute.
-
-```css
-[data-part="item"][data-type="radio|checkbox"][data-state="checked"] {
-  /* styles for checked state */
-}
-```
-
-## Methods and Properties
-
-### Machine Context
-
-The menu machine exposes the following context properties:
-
-
-
-### Machine API
-
-The menu `api` exposes the following methods:
-
-
-
-### Data Attributes
-
-<DataAttrTable name="menu" />
-
-### CSS Variables
-
-<CssVarTable name="menu" />
-
-## Accessibility
-
-Uses
-[aria-activedescendant](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/examples/menu-button-actions-active-descendant/)
-pattern to manage focus movement among menu items.
-
-### Keyboard Interactions
-
-**`Space`**
-Description: Activates/Selects the highlighted item
-
-**`Enter`**
-Description: Activates/Selects the highlighted item
-
-**`ArrowDown`**
-Description: Highlights the next item in the menu
-
-**`ArrowUp`**
-Description: Highlights the previous item in the menu
-
-**`ArrowRight + ArrowLeft`**
-Description: When focus is on trigger, opens or closes the submenu depending on reading direction.
-
-**`Esc`**
-Description: Closes the context menu
-# Nested Menu
-
 An accessible dropdown and context menu that is used to display a list of
 actions or options that a user can choose.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/menu)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/menu)
 [Logic Visualizer](https://zag-visualizer.vercel.app/menu)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/menu)
 
@@ -80754,13 +82513,13 @@ When an option item is checked, it is given a `data-state` attribute.
 
 The menu machine exposes the following context properties:
 
-
+<ContextTable name="menu" />
 
 ### Machine API
 
 The menu `api` exposes the following methods:
 
-
+<ApiTable name="menu" />
 
 ### Data Attributes
 
@@ -80798,15 +82557,899 @@ Description: Closes the nested menu.
 
 **`Esc`**
 Description: Closes the nested menu and moves focus to the parent menu item.
-# Number Input
+An accessible dropdown and context menu that is used to display a list of
+actions or options that a user can choose when a trigger element is
+right-clicked or long pressed.
 
+## Resources
+
+
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/menu)
+[Logic Visualizer](https://zag-visualizer.vercel.app/menu)
+[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/menu)
+
+
+
+**Features**
+
+- Support for items, labels, groups of items
+- Focus is fully managed using `aria-activedescendant` pattern
+- Typeahead to allow focusing items by typing text
+- Keyboard navigation support including arrow keys, home/end, page up/down
+
+## Installation
+
+To use the menu machine in your project, run the following command in your
+command line:
+
+```bash
+npm install @zag-js/menu @zag-js/svelte
+# or
+yarn add @zag-js/menu @zag-js/svelte
+```
+
+## Anatomy
+
+To set up the menu correctly, you'll need to understand its anatomy and how we
+name its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+
+
+## Usage
+
+First, import the menu package into your project
+
+```jsx
+import * as menu from "@zag-js/menu"
+```
+
+The menu package exports two key functions:
+
+- `machine` â The state machine logic for the menu widget.
+- `connect` â The function that translates the machine's state to JSX attributes
+  and event handlers.
+
+> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
+> ensure that every part has a unique identifier.
+
+Next, import the required hooks and functions for your framework and use the
+menu machine in your project ð¥
+
+To show the menu when a trigger element is right-clicked, use the
+`contextTriggerProps` provided by the menu's connect function.
+
+Context menu's are also opened during a long-press of roughly `700ms` when the
+pointer is pen or touch.
+
+```svelte
+<script lang="ts">
+  import * as menu from "@zag-js/menu"
+  import { normalizeProps, useMachine } from "@zag-js/svelte"
+
+  const id = $props.id()
+  const service = useMachine(menu.machine, { id })
+  const api = $derived(menu.connect(service, normalizeProps))
+</script>
+
+<div>
+  <div {...api.getContextTriggerProps()}>
+    <div>Open context menu</div>
+  </div>
+  <div {...api.getPositionerProps()}>
+    <ul {...api.getContentProps()}>
+      <li {...api.getItemProps({ value: "edit" })}>Edit</li>
+      <li {...api.getItemProps({ value: "duplicate" })}>Duplicate</li>
+      <li {...api.getItemProps({ value: "delete" })}>Delete</li>
+      <li {...api.getItemProps({ value: "export" })}>Export...</li>
+    </ul>
+  </div>
+</div>
+```
+
+## Styling guide
+
+Earlier, we mentioned that each menu part has a `data-part` attribute added to
+them to select and style them in the DOM.
+
+### Highlighted item state
+
+When an item is highlighted, via keyboard navigation or pointer, it is given a
+`data-highlighted` attribute.
+
+```css
+[data-part="item"][data-highlighted] {
+  /* styles for highlighted state */
+}
+
+[data-part="item"][data-type="radio|checkbox"][data-highlighted] {
+  /* styles for highlighted state */
+}
+```
+
+### Disabled item state
+
+When an item or an option item is disabled, it is given a `data-disabled`
+attribute.
+
+```css
+[data-part="item"][data-disabled] {
+  /* styles for disabled state */
+}
+
+[data-part="item"][data-type="radio|checkbox"][data-disabled] {
+  /* styles for disabled state */
+}
+```
+
+### Using arrows
+
+When using arrows within the menu, you can style it using css variables.
+
+```css
+[data-part="arrow"] {
+  --arrow-size: 20px;
+  --arrow-background: red;
+}
+```
+
+### Checked option item state
+
+When an option item is checked, it is given a `data-state` attribute.
+
+```css
+[data-part="item"][data-type="radio|checkbox"][data-state="checked"] {
+  /* styles for checked state */
+}
+```
+
+## Methods and Properties
+
+### Machine Context
+
+The menu machine exposes the following context properties:
+
+<ContextTable name="menu" />
+
+### Machine API
+
+The menu `api` exposes the following methods:
+
+<ApiTable name="menu" />
+
+### Data Attributes
+
+<DataAttrTable name="menu" />
+
+### CSS Variables
+
+<CssVarTable name="menu" />
+
+## Accessibility
+
+Uses
+[aria-activedescendant](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/examples/menu-button-actions-active-descendant/)
+pattern to manage focus movement among menu items.
+
+### Keyboard Interactions
+
+**`Space`**
+Description: Activates/Selects the highlighted item
+
+**`Enter`**
+Description: Activates/Selects the highlighted item
+
+**`ArrowDown`**
+Description: Highlights the next item in the menu
+
+**`ArrowUp`**
+Description: Highlights the previous item in the menu
+
+**`ArrowRight + ArrowLeft`**
+Description: When focus is on trigger, opens or closes the submenu depending on reading direction.
+
+**`Esc`**
+Description: Closes the context menu
+An accessible navigation menu component that provides a list of links with
+optional dropdown content. Supports keyboard navigation, hover/click
+interactions, animated indicators, and follows WAI-ARIA practices.
+
+## Resources
+
+
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/navigation-menu)
+[Logic Visualizer](https://zag-visualizer.vercel.app/navigation-menu)
+[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/navigation-menu)
+
+
+
+**Features**
+
+- Support for basic (inline content) and viewport (shared viewport) patterns
+- Hover and click trigger support with configurable delays
+- Keyboard navigation with arrow keys, Tab, Home/End
+- Animated indicator that follows the active trigger
+- Smooth content animations with viewport positioning
+- Support for nested links within dropdown content
+- Horizontal and vertical orientation
+- RTL (right-to-left) support
+- Fully managed focus and tab order
+- Dismissible with click outside or Escape key
+
+## Installation
+
+To use the navigation menu machine in your project, run the following command in
+your command line:
+
+```bash
+npm install @zag-js/navigation-menu @zag-js/svelte
+# or
+yarn add @zag-js/navigation-menu @zag-js/svelte
+```
+
+## Anatomy
+
+To set up the navigation menu correctly, you'll need to understand its anatomy
+and how we name its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+
+
+## Usage
+
+First, import the navigation menu package into your project
+
+```jsx
+import * as navigationMenu from "@zag-js/navigation-menu"
+```
+
+The navigation menu package exports two key functions:
+
+- `machine` â The state machine logic for the navigation menu widget.
+- `connect` â The function that translates the machine's state to JSX attributes
+  and event handlers.
+
+> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
+> ensure that every part has a unique identifier.
+
+Next, import the required hooks and functions for your framework and use the
+navigation menu machine in your project ð¥
+
+```svelte
+<script lang="ts">
+  import * as navigationMenu from "@zag-js/navigation-menu"
+  import { useMachine, normalizeProps } from "@zag-js/svelte"
+
+  const id = $props.id()
+  const service = useMachine(navigationMenu.machine, { id })
+  const api = $derived(navigationMenu.connect(service, normalizeProps))
+</script>
+
+<nav {...api.getRootProps()}>
+  <ul {...api.getListProps()}>
+    <!-- Item with dropdown content -->
+    <li {...api.getItemProps({ value: "products" })}>
+      <button {...api.getTriggerProps({ value: "products" })}>
+        Products
+      </button>
+      <div {...api.getContentProps({ value: "products" })}>
+        <a {...api.getLinkProps({ value: "products" })} href="/analytics">
+          Analytics
+        </a>
+        <a {...api.getLinkProps({ value: "products" })} href="/marketing">
+          Marketing
+        </a>
+      </div>
+    </li>
+
+    <!-- Simple link item -->
+    <li {...api.getItemProps({ value: "pricing" })}>
+      <a {...api.getLinkProps({ value: "pricing" })} href="/pricing">
+        Pricing
+      </a>
+    </li>
+  </ul>
+</nav>
+```
+
+The basic pattern places content directly within each item. This is suitable for
+simple dropdown menus where each dropdown appears below its trigger.
+
+### Advanced pattern with viewport
+
+The viewport pattern uses a shared viewport container for all content. This
+enables smooth transitions and better performance for complex navigation
+layouts.
+
+In this pattern:
+
+- Content is rendered inside a shared `viewport` element
+- The viewport automatically positions itself relative to the active trigger
+- You must include `triggerProxy` and `viewportProxy` for proper focus
+  management
+
+```svelte
+<script lang="ts">
+  import * as navigationMenu from "@zag-js/navigation-menu"
+  import { useMachine, normalizeProps } from "@zag-js/svelte"
+
+  const id = $props.id()
+  const service = useMachine(navigationMenu.machine, { id })
+  const api = $derived(navigationMenu.connect(service, normalizeProps))
+</script>
+
+<nav {...api.getRootProps()}>
+  <div {...api.getIndicatorTrackProps()}>
+    <ul {...api.getListProps()}>
+      <!-- Item with trigger -->
+      <li {...api.getItemProps({ value: "products" })}>
+        <button {...api.getTriggerProps({ value: "products" })}>
+          Products
+        </button>
+        <!-- Focus management proxies -->
+        <span {...api.getTriggerProxyProps({ value: "products" })} />
+        <span {...api.getViewportProxyProps({ value: "products" })} />
+      </li>
+
+      <!-- Simple link -->
+      <li {...api.getItemProps({ value: "pricing" })}>
+        <a {...api.getLinkProps({ value: "pricing" })} href="/pricing">
+          Pricing
+        </a>
+      </li>
+
+      <!-- Indicator -->
+      <div {...api.getIndicatorProps()}>
+        <div {...api.getArrowProps()} />
+      </div>
+    </ul>
+  </div>
+
+  <!-- Shared viewport for all content -->
+  <div {...api.getViewportPositionerProps()}>
+    <div {...api.getViewportProps()}>
+      <!-- Content for products -->
+      <div {...api.getContentProps({ value: "products" })}>
+        <a {...api.getLinkProps({ value: "products" })} href="/analytics">
+          Analytics
+        </a>
+        <a {...api.getLinkProps({ value: "products" })} href="/marketing">
+          Marketing
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+```
+
+**When to use viewport pattern:**
+
+- Complex navigation with varying content sizes
+- Smooth animated transitions between different content
+- Header navigation bars (like on e-commerce sites)
+- When you want a single shared container for all dropdowns
+
+### Controlling the navigation menu
+
+To control which item is currently open, pass the `value` and `onValueChange`
+properties to the machine.
+
+```svelte {3,5-10}
+<script lang="ts">
+  import { writable } from "svelte/store"
+
+  const value = writable("")
+
+  const service = useMachine(navigationMenu.machine, {
+    id: "nav",
+    value: $value,
+    onValueChange: (details) => value.set(details.value),
+  })
+
+  const api = $derived(navigationMenu.connect(service, normalizeProps))
+</script>
+
+<div>
+  <button on:click={() => value.set("products")}>Open Products</button>
+  <button on:click={() => value.set("")}>Close All</button>
+
+  <nav {...api.getRootProps()}>
+    <!-- ... navigation items ... -->
+  </nav>
+</div>
+```
+
+### Listening for value changes
+
+When the open item changes, the `onValueChange` callback is invoked with the new
+value.
+
+```jsx {3-6}
+const service = useMachine(navigationMenu.machine, {
+  id: "nav",
+  onValueChange(details) {
+    // details => { value: string }
+    console.log("Current open item:", details.value)
+  },
+})
+```
+
+### Adding an animated indicator
+
+To show a visual indicator that animates to the active trigger, render the
+indicator within the list container:
+
+```svelte {3-5}
+<nav {...api.getRootProps()}>
+  <div {...api.getListProps()}>
+    <!-- ... items ... -->
+
+    <div {...api.getIndicatorProps()}>
+      <div {...api.getArrowProps()} />
+    </div>
+  </div>
+</nav>
+```
+
+The indicator automatically transitions to match the active trigger's position
+and size using CSS variables.
+
+### Configuring hover delays
+
+You can customize the delay before opening and closing on hover:
+
+```jsx {2-3}
+const service = useMachine(navigationMenu.machine, {
+  openDelay: 300, // Delay before opening on hover (default: 200ms)
+  closeDelay: 400, // Delay before closing on pointer leave (default: 300ms)
+})
+```
+
+**Tip**: Longer delays provide a more forgiving user experience but can feel
+less responsive.
+
+### Disabling hover or click triggers
+
+You can disable hover or click triggers independently:
+
+```jsx {2-6}
+const service = useMachine(navigationMenu.machine, {
+  disableHoverTrigger: true, // Only open on click
+  // OR
+  disableClickTrigger: true, // Only open on hover
+  // OR
+  disablePointerLeaveClose: true, // Prevents closing when pointer leaves
+})
+```
+
+- `disableHoverTrigger` â Prevents opening on hover (click only)
+- `disableClickTrigger` â Prevents opening on click (hover only)
+- `disablePointerLeaveClose` â Prevents closing when pointer leaves
+
+### Changing orientation
+
+The default orientation is horizontal. To create a vertical navigation menu:
+
+```jsx {2}
+const service = useMachine(navigationMenu.machine, {
+  orientation: "vertical",
+})
+```
+
+This affects keyboard navigation (arrow keys) and indicator positioning.
+
+### Disabling items
+
+To disable a navigation item, pass `disabled: true` to the item props:
+
+```jsx
+<div {...api.getItemProps({ value: "products", disabled: true })}>
+  <button {...api.getTriggerProps({ value: "products", disabled: true })}>
+    Products
+  </button>
+</div>
+```
+
+Disabled items cannot be opened and are skipped during keyboard navigation.
+
+### Indicating current page
+
+To highlight the current page link, use the `current` prop:
+
+```jsx
+<a {...api.getLinkProps({ value: "products", current: true })}>Products</a>
+```
+
+This adds `data-current` attribute and `aria-current="page"` for accessibility.
+
+### RTL support
+
+The navigation menu supports right-to-left languages. Set the `dir` property to
+`rtl`:
+
+```jsx {2}
+const service = useMachine(navigationMenu.machine, {
+  dir: "rtl",
+})
+```
+
+## Styling guide
+
+Earlier, we mentioned that each navigation menu part has a `data-part` attribute
+added to them to select and style them in the DOM.
+
+### Open and closed states
+
+When content is open or closed, it receives a `data-state` attribute:
+
+```css
+[data-part="content"][data-state="open|closed"] {
+  /* Styles for open or closed content */
+}
+
+[data-part="trigger"][data-state="open|closed"] {
+  /* Styles for open or closed trigger */
+}
+
+[data-part="viewport"][data-state="open|closed"] {
+  /* Styles for viewport open/closed state */
+}
+```
+
+### Selected item state
+
+When an item is selected (open), it receives `data-state="open"`:
+
+```css
+[data-part="item"][data-state="open"] {
+  /* Styles for open item */
+}
+```
+
+### Disabled state
+
+Disabled items have a `data-disabled` attribute:
+
+```css
+[data-part="item"][data-disabled] {
+  /* Styles for disabled items */
+}
+
+[data-part="trigger"][data-disabled] {
+  /* Styles for disabled triggers */
+}
+```
+
+### Orientation styles
+
+All parts have a `data-orientation` attribute:
+
+```css
+[data-part="root"][data-orientation="horizontal|vertical"] {
+  /* Orientation-specific styles */
+}
+
+[data-part="list"][data-orientation="horizontal"] {
+  display: flex;
+  flex-direction: row;
+}
+
+[data-part="list"][data-orientation="vertical"] {
+  display: flex;
+  flex-direction: column;
+}
+```
+
+### Current link state
+
+Links marked as current have a `data-current` attribute:
+
+```css
+[data-part="link"][data-current] {
+  /* Styles for current page link */
+}
+```
+
+### Styling the indicator
+
+The indicator uses CSS variables for positioning and sizing:
+
+```css
+[data-part="indicator"] {
+  position: absolute;
+  transition:
+    translate 250ms ease,
+    width 250ms ease,
+    height 250ms ease;
+}
+
+[data-part="indicator"][data-orientation="horizontal"] {
+  left: 0;
+  translate: var(--trigger-x) 0;
+  width: var(--trigger-width);
+}
+
+[data-part="indicator"][data-orientation="vertical"] {
+  top: 0;
+  translate: 0 var(--trigger-y);
+  height: var(--trigger-height);
+}
+```
+
+### Styling the viewport
+
+The viewport uses CSS variables for positioning and sizing:
+
+```css
+[data-part="viewport"] {
+  position: absolute;
+  width: var(--viewport-width);
+  height: var(--viewport-height);
+  transition:
+    width 300ms ease,
+    height 300ms ease;
+}
+```
+
+### Arrow styling
+
+The arrow can be styled using CSS variables:
+
+```css
+[data-part="root"] {
+  --arrow-size: 20px;
+}
+
+[data-part="arrow"] {
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  background: white;
+  rotate: 45deg;
+}
+```
+
+### Motion attributes
+
+When using the viewport pattern, content elements receive `data-motion`
+attributes for directional animations:
+
+```css
+[data-part="content"][data-motion="from-start"] {
+  animation: slideFromStart 250ms ease;
+}
+
+[data-part="content"][data-motion="from-end"] {
+  animation: slideFromEnd 250ms ease;
+}
+
+[data-part="content"][data-motion="to-start"] {
+  animation: slideToStart 250ms ease;
+}
+
+[data-part="content"][data-motion="to-end"] {
+  animation: slideToEnd 250ms ease;
+}
+```
+
+**Tip**: The motion direction indicates where the content is coming from
+(from-start/from-end) or going to (to-start/to-end), enabling context-aware
+animations when switching between items.
+
+## Methods and Properties
+
+### Machine Context
+
+The navigation menu machine exposes the following context properties:
+
+**`ids`**
+Type: `Partial<{ root: string; list: string; item: string; trigger: (value: string) => string; content: (value: string) => string; viewport: string; }>`
+Description: The ids of the elements in the machine.
+
+**`value`**
+Type: `string`
+Description: The controlled value of the navigation menu
+
+**`defaultValue`**
+Type: `string`
+Description: The default value of the navigation menu.
+Use when you don't want to control the value of the menu.
+
+**`onValueChange`**
+Type: `(details: ValueChangeDetails) => void`
+Description: Function called when the value of the menu changes
+
+**`openDelay`**
+Type: `number`
+Description: The delay before the menu opens
+
+**`closeDelay`**
+Type: `number`
+Description: The delay before the menu closes
+
+**`disableClickTrigger`**
+Type: `boolean`
+Description: Whether to disable the click trigger
+
+**`disableHoverTrigger`**
+Type: `boolean`
+Description: Whether to disable the hover trigger
+
+**`disablePointerLeaveClose`**
+Type: `boolean`
+Description: Whether to disable the pointer leave close
+
+**`dir`**
+Type: `"ltr" | "rtl"`
+Description: The document's text/writing direction.
+
+**`id`**
+Type: `string`
+Description: The unique identifier of the machine.
+
+**`getRootNode`**
+Type: `() => ShadowRoot | Node | Document`
+Description: A root node to correctly resolve document in custom environments. E.x.: Iframes, Electron.
+
+**`orientation`**
+Type: `"horizontal" | "vertical"`
+Description: The orientation of the element.
+
+### Machine API
+
+The navigation menu `api` exposes the following methods:
+
+**`value`**
+Type: `string`
+Description: The current value of the menu
+
+**`setValue`**
+Type: `(value: string) => void`
+Description: Sets the value of the menu
+
+**`open`**
+Type: `boolean`
+Description: Whether the menu is open
+
+**`isViewportRendered`**
+Type: `boolean`
+Description: Whether the viewport is rendered
+
+**`getViewportNode`**
+Type: `() => HTMLElement`
+Description: Gets the viewport node element
+
+**`orientation`**
+Type: `Orientation`
+Description: The orientation of the menu
+
+**`reposition`**
+Type: `VoidFunction`
+Description: Function to reposition the viewport
+
+### Data Attributes
+
+**`Root`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: root
+**`data-orientation`**: The orientation of the navigation-menu
+
+**`List`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: list
+**`data-orientation`**: The orientation of the list
+
+**`Item`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: item
+**`data-value`**: The value of the item
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the item
+**`data-disabled`**: Present when disabled
+
+**`Indicator`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: indicator
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the indicator
+
+**`Arrow`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: arrow
+**`data-orientation`**: The orientation of the arrow
+
+**`Trigger`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: trigger
+**`data-trigger-proxy-id`**: 
+**`data-value`**: The value of the item
+**`data-state`**: "open" | "closed"
+**`data-disabled`**: Present when disabled
+
+**`TriggerProxy`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: trigger-proxy
+**`data-trigger-proxy`**: 
+**`data-trigger-id`**: 
+
+**`Link`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: link
+**`data-value`**: The value of the item
+**`data-current`**: Present when current
+
+**`Content`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: content
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the content
+**`data-value`**: The value of the item
+
+**`ViewportPositioner`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: viewport-positioner
+**`data-orientation`**: The orientation of the viewportpositioner
+**`data-align`**: 
+
+**`Viewport`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: viewport
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the viewport
+**`data-align`**: 
+
+**`ItemIndicator`**
+
+**`data-scope`**: navigation-menu
+**`data-part`**: item-indicator
+**`data-state`**: "open" | "closed"
+**`data-orientation`**: The orientation of the item
+**`data-value`**: The value of the item
+
+### CSS Variables
+
+<CssVarTable name="navigation-menu" />
+
+## Accessibility
+
+### Keyboard Interactions
+
+**`ArrowDown`**
+Description: When focus is on trigger (vertical orientation), moves focus to the next trigger.
+
+**`ArrowUp`**
+Description: When focus is on trigger (vertical orientation), moves focus to the previous trigger.
+
+**`ArrowRight`**
+Description: <span>When focus is on trigger (horizontal orientation), moves focus to the next trigger.<br />When focus is on content, moves focus to the next link.</span>
+
+**`ArrowLeft`**
+Description: <span>When focus is on trigger (horizontal orientation), moves focus to the previous trigger.<br />When focus is on content, moves focus to the previous link.</span>
+
+**`Home`**
+Description: <span>When focus is on trigger, moves focus to the first trigger.<br />When focus is on content, moves focus to the first link.</span>
+
+**`End`**
+Description: <span>When focus is on trigger, moves focus to the last trigger.<br />When focus is on content, moves focus to the last link.</span>
 The number input provides controls for editing, incrementing or decrementing
 numeric values using the keyboard or pointer.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/number-input)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/number-input)
 [Logic Visualizer](https://zag-visualizer.vercel.app/number-input)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/number-input)
 
@@ -81396,15 +84039,13 @@ Description: Sets the value of the number input to its maximum allowed value.
 
 **`Enter`**
 Description: Submits the value entered in the number input.
-# Pagination
-
 Pagination is an interface that allows navigating between pages that contain
 split information, instead of being shown on a single page.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/pagination)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/pagination)
 [Logic Visualizer](https://zag-visualizer.vercel.app/pagination)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/pagination)
 
@@ -81731,12 +84372,10 @@ Description: Function to go to the last page.
 **`data-scope`**: pagination
 **`data-part`**: next-trigger
 **`data-disabled`**: Present when disabled
-# Password Input
-
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/password-input)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/password-input)
 [Logic Visualizer](https://zag-visualizer.vercel.app/password-input)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/password-input)
 
@@ -82085,8 +84724,6 @@ Description: Set the visibility of the password input.
 **`toggleVisible`**
 Type: `VoidFunction`
 Description: Toggle the visibility of the password input.
-# Pin Input
-
 The pin input is optimized for entering a sequence of digits or letters. The
 input fields allow one character at a time. When the digit or letter is entered,
 focus transfers to the next input in the sequence, until every input is filled.
@@ -82094,7 +84731,7 @@ focus transfers to the next input in the sequence, until every input is filled.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/pin-input)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/pin-input)
 [Logic Visualizer](https://zag-visualizer.vercel.app/pin-input)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/pin-input)
 
@@ -82543,8 +85180,6 @@ Description: Deletes the value in the current input
 
 **`Control + V`**
 Description: Pastes the value into the input fields
-# Popover
-
 A popover is a non-modal dialog that floats around a trigger. It is used to
 display contextual information to the user, and should be paired with a
 clickable trigger element.
@@ -82552,7 +85187,7 @@ clickable trigger element.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/popover)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/popover)
 [Logic Visualizer](https://zag-visualizer.vercel.app/popover)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/popover)
 
@@ -83004,8 +85639,6 @@ Description: <span>Moves focus to the previous focusable element within the cont
 
 **`Esc`**
 Description: <span>Closes the popover and moves focus to the trigger.</span>
-# Presence
-
 The presence machine is a state machine that helps you manage exit animations in
 your project.
 
@@ -83019,7 +85652,7 @@ animation before removing or hiding it.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/presence)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/presence)
 [Logic Visualizer](https://zag-visualizer.vercel.app/presence)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/presence)
 
@@ -83179,15 +85812,13 @@ Description: Function to set the node (as early as possible)
 **`unmount`**
 Type: `VoidFunction`
 Description: Function to programmatically unmount the node
-# Linear Progress
-
 Linear progress is a simple progress bar that can be used to show the progress
 of a task such as downloading a file, uploading an image, etc.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/progress)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/progress)
 [Logic Visualizer](https://zag-visualizer.vercel.app/progress)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/progress)
 
@@ -83366,13 +85997,13 @@ selector.
 
 The progress machine exposes the following context properties:
 
-
+<ContextTable name="progress" />
 
 ### Machine API
 
 The progress `api` exposes the following methods:
 
-
+<ApiTable name="progress" />
 
 ### Data Attributes
 
@@ -83381,15 +86012,13 @@ The progress `api` exposes the following methods:
 ### CSS Variables
 
 <CssVarTable name="progress" />
-# Circular Progress
-
 Circular progress is a circular progress bar that can be used to show the
 progress of a task such as downloading a file, uploading an image, etc.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/progress)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/progress)
 [Logic Visualizer](https://zag-visualizer.vercel.app/progress)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/progress)
 
@@ -83591,19 +86220,17 @@ selector.
 
 The progress machine exposes the following context properties:
 
-
+<ContextTable name="progress" />
 
 ### Machine API
 
 The progress `api` exposes the following methods:
 
-
+<ApiTable name="progress" />
 
 ### Data Attributes
 
 <DataAttrTable name="progress" />
-# QR Code
-
 QR (Quick Response) Code is used to provide information or link which can be
 accessed by scanning the code with an app or a smartphone.
 
@@ -83613,7 +86240,7 @@ accessed by scanning the code with an app or a smartphone.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/qr-code)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/qr-code)
 [Logic Visualizer](https://zag-visualizer.vercel.app/qr-code)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/qr-code)
 
@@ -83849,15 +86476,13 @@ Description: Set the value to encode.
 **`getDataUrl`**
 Type: `(type: DataUrlType, quality?: number) => Promise<string>`
 Description: Returns the data URL of the qr code.
-# Radio Group
-
 A radio group allows users to make a single choice from a select number of
 option
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/radio-group)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/radio-group)
 [Logic Visualizer](https://zag-visualizer.vercel.app/radio-group)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/radio-group)
 
@@ -84172,354 +86797,12 @@ Description: Moves focus to the previous radio item in the group.
 
 **`ArrowLeft`**
 Description: Moves focus to the previous radio item in the group.
-# Range Slider
-
-A range slider is a multi-thumb slider used to select a range between two
-numbers.
-
-## Resources
-
-
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/slider)
-[Logic Visualizer](https://zag-visualizer.vercel.app/slider)
-[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/slider)
-
-
-
-**Features**
-
-- Fully managed keyboard navigation
-- Supports touch or click on track to update value
-- Supports Right-to-Left directionality
-- Support for horizontal and vertical orientations
-- Prevents text selection while dragging
-
-## Installation
-
-To use the range slider machine in your project, run the following command in
-your command line:
-
-```bash
-npm install @zag-js/slider @zag-js/svelte
-# or
-yarn add @zag-js/slider @zag-js/svelte
-```
-
-## Anatomy
-
-To set up the slider correctly, you'll need to understand its anatomy and how we
-name its parts.
-
-> Each part includes a `data-part` attribute to help identify them in the DOM.
-
-
-
-## Usage
-
-First, import the range slider package into your project
-
-```jsx
-import * as rangeSlider from "@zag-js/slider"
-```
-
-The range slider package exports two key functions:
-
-- `machine` â The state machine logic for the slider widget as described in the
-  WAI-ARIA spec.
-- `connect` â The function that translates the machine's state to JSX attributes
-  and event handlers.
-
-> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
-> ensure that every part has a unique identifier.
-
-Next, import the required hooks and functions for your framework and use the
-range slider machine in your project ð¥
-
-```svelte
-<script lang="ts">
-  import * as slider from "@zag-js/slider"
-  import { normalizeProps, useMachine } from "@zag-js/svelte"
-
-  const id = $props.id()
-  const service = useMachine(slider.machine, {
-    id,
-    name: "quantity",
-    defaultValue: [10, 60],
-  })
-  const api = $derived(slider.connect(service, normalizeProps))
-</script>
-
-<div {...api.getRootProps()}>
-  <div {...api.getControlProps()}>
-    <div {...api.getTrackProps()}>
-      <div {...api.getRangeProps()}></div>
-    </div>
-    {#each api.value as _, index}
-      <div {...api.getThumbProps({ index })}>
-        <input {...api.getHiddenInputProps({ index })} />
-      </div>
-    {/each}
-  </div>
-</div>
-```
-
-## Changing the orientation
-
-By default, the slider is assumed to be horizontal. To change the orientation to
-vertical, set the `orientation` property in the machine's context to `vertical`.
-
-In this mode, the slider will use the arrow up and down keys to
-increment/decrement its value.
-
-> Don't forget to change the styles of the vertical slider by specifying its
-> height
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  orientation: "vertical",
-})
-```
-
-## Setting the initial value
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  defaultValue: [30, 60],
-})
-```
-
-## Specifying the minimum and maximum
-
-By default, the minimum is `0` and the maximum is `100`. If that's not what you
-want, you can easily specify different bounds by changing the values of the min
-and/or max attributes.
-
-For example, to ask the user for a value between `-10` and `10`, you can use:
-
-```jsx {2-3}
-const service = useMachine(slider.machine, {
-  min: -10,
-  max: 10,
-})
-```
-
-## Setting the value's granularity
-
-By default, the granularity, is `1`, meaning that the value is always an
-integer. You can change the step attribute to control the granularity.
-
-For example, If you need a value between `5` and `10`, accurate to two decimal
-places, you should set the value of step to `0.01`:
-
-```jsx {4}
-const service = useMachine(slider.machine, {
-  min: 5,
-  max: 10,
-  step: 0.01,
-})
-```
-
-## Listening for changes
-
-When the slider value changes, the `onValueChange` and `onValueChangeEnd`
-callbacks are invoked. You can use this to setup custom behaviors in your app.
-
-```jsx {2-7}
-const service = useMachine(slider.machine, {
-  onValueChange(details) {
-    // details => { values: number[] }
-    console.log("value changing to:", details)
-  },
-  onValueChangeEnd(details) {
-    // details => { values: number[] }
-    console.log("value has changed to:", details)
-  },
-})
-```
-
-## Preventing thumb overlap
-
-By default, the range slider thumbs are allowed to overlap when their values are
-equal. To prevent this, use the `minStepsBetweenThumbs` to avoid thumbs with
-equal values.
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  minStepsBetweenThumbs: 1,
-})
-```
-
-## Usage within forms
-
-To use slider within forms, use the exposed `getInputProps` from the `connect`
-function and ensure you pass `name` value to the machine's context. It will
-render a hidden input for each value and ensure the value changes get propagated
-to the form correctly.
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  name: "quantity",
-})
-```
-
-## RTL Support
-
-The slider has built-in support for RTL alignment and interaction. In the RTL
-mode, operations are performed from right to left, meaning, the left arrow key
-will increment and the right arrow key will decrement.
-
-To enable RTL support, pass the `dir: rtl` context property
-
-```jsx {2}
-const service = useMachine(slider.machine, {
-  dir: "rtl",
-})
-```
-
-> While we take care of the interactions in RTL mode, you'll have to ensure you
-> apply the correct CSS styles to flip the layout.
-
-## Styling guide
-
-Earlier, we mentioned that each slider part has a `data-part` attribute added to
-them to select and style them in the DOM.
-
-### Focused State
-
-When the slider thumb is focused, the `data-focus` attribute is added to the
-root, control, thumb and label parts.
-
-```css
-[data-part="root"][data-focus] {
-  /* styles for root focus state */
-}
-
-[data-part="thumb"]:focus {
-  /* styles for thumb focus state */
-}
-
-[data-part="control"][data-focus] {
-  /* styles for control focus state */
-}
-
-[data-part="track"][data-focus] {
-  /* styles for track focus state */
-}
-
-[data-part="range"][data-focus] {
-  /* styles for range focus state */
-}
-```
-
-### Disabled State
-
-When the slider is disabled, the `data-disabled` attribute is added to the root,
-label, control and thumb.
-
-```css
-[data-part="root"][data-disabled] {
-  /* styles for root disabled state */
-}
-
-[data-part="label"][data-disabled] {
-  /* styles for label disabled state */
-}
-
-[data-part="control"][data-disabled] {
-  /* styles for control disabled state */
-}
-
-[data-part="value-text"][data-disabled] {
-  /* styles for output disabled state */
-}
-
-[data-part="thumb"][data-disabled] {
-  /* styles for thumb disabled state */
-}
-
-[data-part="range"][data-disabled] {
-  /* styles for range disabled state */
-}
-```
-
-### Orientation
-
-```css
-[data-part="root"][data-orientation="(horizontal|vertical)"] {
-  /* styles for horizontal or vertical  */
-}
-
-[data-part="thumb"][data-orientation="(horizontal|vertical)"] {
-  /* styles for horizontal or vertical  */
-}
-
-[data-part="track"][data-orientation="(horizontal|vertical)"] {
-  /* styles for horizontal or vertical  */
-}
-```
-
-## Methods and Properties
-
-### Machine Context
-
-The slider machine exposes the following context properties:
-
-
-
-### Machine API
-
-The slider `api` exposes the following methods:
-
-
-
-### Data Attributes
-
-<DataAttrTable name="slider" />
-
-## Accessibility
-
-Adheres to the
-[Slider WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slidertwothumb).
-
-### Keyboard Interactions
-
-**`ArrowRight`**
-Description: <span>Increments the focused thumb based on defined step</span>
-
-**`ArrowLeft`**
-Description: <span>Decrements the focused thumb based on defined step</span>
-
-**`ArrowUp`**
-Description: <span>Increases the focused thumb by the step amount.</span>
-
-**`ArrowDown`**
-Description: <span>Decreases the focused thumb by the step amount.</span>
-
-**`PageUp`**
-Description: <span>Increases the focused thumb value by a larger step</span>
-
-**`PageDown`**
-Description: <span>Decreases the focused thumb value by a larger step</span>
-
-**`Shift + ArrowUp`**
-Description: <span>Increases the focused thumb value by a larger step</span>
-
-**`Shift + ArrowDown`**
-Description: <span>Decreases the focused thumb value by a larger step</span>
-
-**`Home`**
-Description: Sets the focused thumb value to its minimum.
-
-**`End`**
-Description: Sets the focused thumb value to its maximum.
-# Rating Group
-
 Rating group allows a user to assign rating to an item within a product.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/rating-group)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/rating-group)
 [Logic Visualizer](https://zag-visualizer.vercel.app/rating-group)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/rating-group)
 
@@ -84873,15 +87156,13 @@ Description: Moves focus to the previous star, decreasing the rating value based
 
 **`Enter`**
 Description: Selects the focused star in the rating group.
-# Scroll Area
-
 A scroll area provides a scrollable viewport with customizable scrollbars for
 content that exceeds the container's dimensions.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/scroll-area)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/scroll-area)
 [Logic Visualizer](https://zag-visualizer.vercel.app/scroll-area)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/scroll-area)
 
@@ -85264,8 +87545,6 @@ Description: Returns the state of the scrollbar
 ### CSS Variables
 
 <CssVarTable name="scroll-area" />
-# Segmented Control
-
 A Segmented control allows users to make a single selection from multiple
 exclusive options, providing a visually distinct and intuitive way of
 interacting with radio inputs.
@@ -85273,7 +87552,7 @@ interacting with radio inputs.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/radio-group)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/radio-group)
 [Logic Visualizer](https://zag-visualizer.vercel.app/segmented-control)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/segmented-control)
 
@@ -85484,25 +87763,23 @@ label parts.
 
 The radio group machine exposes the following context properties:
 
-
+<ContextTable name="radio-group" />
 
 ### Machine API
 
 The radio group `api` exposes the following methods:
 
-
+<ApiTable name="radio-group" />
 
 ### Data Attributes
 
 <DataAttrTable name="radio-group" />
-# Select
-
 A Select component allows users pick a value from predefined options.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/select)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/select)
 [Logic Visualizer](https://zag-visualizer.vercel.app/select)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/select)
 
@@ -86429,15 +88706,13 @@ Description: <span>Closes the select and moves focus to trigger.</span>
 
 **`A-Z + a-z`**
 Description: <span>When focus is on trigger, selects the item whose label starts with the typed character.<br />When focus is on the listbox, moves focus to the next item with a label that starts with the typed character.</span>
-# Signature Pad
-
 The signature pad component allows users to draw handwritten signatures using
 touch or pointer devices. The signature can be saved as an image or cleared.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/signature-pad)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/signature-pad)
 [Logic Visualizer](https://zag-visualizer.vercel.app/signature-pad)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/signature-pad)
 
@@ -86764,8 +89039,6 @@ Description: Clears the signature pad.
 **`data-scope`**: signature-pad
 **`data-part`**: guide
 **`data-disabled`**: Present when disabled
-# Slider
-
 A slider allows users to make selections from a range of values. Think of it as
 a custom `<input type='range'/>` with the ability to achieve custom styling and
 accessibility.
@@ -86773,7 +89046,7 @@ accessibility.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/slider)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/slider)
 [Logic Visualizer](https://zag-visualizer.vercel.app/slider)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/slider)
 
@@ -87498,8 +89771,344 @@ Description: Sets the value to its minimum.
 
 **`End`**
 Description: Sets the value to its maximum.
-# Splitter
+A range slider is a multi-thumb slider used to select a range between two
+numbers.
 
+## Resources
+
+
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/slider)
+[Logic Visualizer](https://zag-visualizer.vercel.app/slider)
+[Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/slider)
+
+
+
+**Features**
+
+- Fully managed keyboard navigation
+- Supports touch or click on track to update value
+- Supports Right-to-Left directionality
+- Support for horizontal and vertical orientations
+- Prevents text selection while dragging
+
+## Installation
+
+To use the range slider machine in your project, run the following command in
+your command line:
+
+```bash
+npm install @zag-js/slider @zag-js/svelte
+# or
+yarn add @zag-js/slider @zag-js/svelte
+```
+
+## Anatomy
+
+To set up the slider correctly, you'll need to understand its anatomy and how we
+name its parts.
+
+> Each part includes a `data-part` attribute to help identify them in the DOM.
+
+
+
+## Usage
+
+First, import the range slider package into your project
+
+```jsx
+import * as rangeSlider from "@zag-js/slider"
+```
+
+The range slider package exports two key functions:
+
+- `machine` â The state machine logic for the slider widget as described in the
+  WAI-ARIA spec.
+- `connect` â The function that translates the machine's state to JSX attributes
+  and event handlers.
+
+> You'll need to provide a unique `id` to the `useMachine` hook. This is used to
+> ensure that every part has a unique identifier.
+
+Next, import the required hooks and functions for your framework and use the
+range slider machine in your project ð¥
+
+```svelte
+<script lang="ts">
+  import * as slider from "@zag-js/slider"
+  import { normalizeProps, useMachine } from "@zag-js/svelte"
+
+  const id = $props.id()
+  const service = useMachine(slider.machine, {
+    id,
+    name: "quantity",
+    defaultValue: [10, 60],
+  })
+  const api = $derived(slider.connect(service, normalizeProps))
+</script>
+
+<div {...api.getRootProps()}>
+  <div {...api.getControlProps()}>
+    <div {...api.getTrackProps()}>
+      <div {...api.getRangeProps()}></div>
+    </div>
+    {#each api.value as _, index}
+      <div {...api.getThumbProps({ index })}>
+        <input {...api.getHiddenInputProps({ index })} />
+      </div>
+    {/each}
+  </div>
+</div>
+```
+
+## Changing the orientation
+
+By default, the slider is assumed to be horizontal. To change the orientation to
+vertical, set the `orientation` property in the machine's context to `vertical`.
+
+In this mode, the slider will use the arrow up and down keys to
+increment/decrement its value.
+
+> Don't forget to change the styles of the vertical slider by specifying its
+> height
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  orientation: "vertical",
+})
+```
+
+## Setting the initial value
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  defaultValue: [30, 60],
+})
+```
+
+## Specifying the minimum and maximum
+
+By default, the minimum is `0` and the maximum is `100`. If that's not what you
+want, you can easily specify different bounds by changing the values of the min
+and/or max attributes.
+
+For example, to ask the user for a value between `-10` and `10`, you can use:
+
+```jsx {2-3}
+const service = useMachine(slider.machine, {
+  min: -10,
+  max: 10,
+})
+```
+
+## Setting the value's granularity
+
+By default, the granularity, is `1`, meaning that the value is always an
+integer. You can change the step attribute to control the granularity.
+
+For example, If you need a value between `5` and `10`, accurate to two decimal
+places, you should set the value of step to `0.01`:
+
+```jsx {4}
+const service = useMachine(slider.machine, {
+  min: 5,
+  max: 10,
+  step: 0.01,
+})
+```
+
+## Listening for changes
+
+When the slider value changes, the `onValueChange` and `onValueChangeEnd`
+callbacks are invoked. You can use this to setup custom behaviors in your app.
+
+```jsx {2-7}
+const service = useMachine(slider.machine, {
+  onValueChange(details) {
+    // details => { values: number[] }
+    console.log("value changing to:", details)
+  },
+  onValueChangeEnd(details) {
+    // details => { values: number[] }
+    console.log("value has changed to:", details)
+  },
+})
+```
+
+## Preventing thumb overlap
+
+By default, the range slider thumbs are allowed to overlap when their values are
+equal. To prevent this, use the `minStepsBetweenThumbs` to avoid thumbs with
+equal values.
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  minStepsBetweenThumbs: 1,
+})
+```
+
+## Usage within forms
+
+To use slider within forms, use the exposed `getInputProps` from the `connect`
+function and ensure you pass `name` value to the machine's context. It will
+render a hidden input for each value and ensure the value changes get propagated
+to the form correctly.
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  name: "quantity",
+})
+```
+
+## RTL Support
+
+The slider has built-in support for RTL alignment and interaction. In the RTL
+mode, operations are performed from right to left, meaning, the left arrow key
+will increment and the right arrow key will decrement.
+
+To enable RTL support, pass the `dir: rtl` context property
+
+```jsx {2}
+const service = useMachine(slider.machine, {
+  dir: "rtl",
+})
+```
+
+> While we take care of the interactions in RTL mode, you'll have to ensure you
+> apply the correct CSS styles to flip the layout.
+
+## Styling guide
+
+Earlier, we mentioned that each slider part has a `data-part` attribute added to
+them to select and style them in the DOM.
+
+### Focused State
+
+When the slider thumb is focused, the `data-focus` attribute is added to the
+root, control, thumb and label parts.
+
+```css
+[data-part="root"][data-focus] {
+  /* styles for root focus state */
+}
+
+[data-part="thumb"]:focus {
+  /* styles for thumb focus state */
+}
+
+[data-part="control"][data-focus] {
+  /* styles for control focus state */
+}
+
+[data-part="track"][data-focus] {
+  /* styles for track focus state */
+}
+
+[data-part="range"][data-focus] {
+  /* styles for range focus state */
+}
+```
+
+### Disabled State
+
+When the slider is disabled, the `data-disabled` attribute is added to the root,
+label, control and thumb.
+
+```css
+[data-part="root"][data-disabled] {
+  /* styles for root disabled state */
+}
+
+[data-part="label"][data-disabled] {
+  /* styles for label disabled state */
+}
+
+[data-part="control"][data-disabled] {
+  /* styles for control disabled state */
+}
+
+[data-part="value-text"][data-disabled] {
+  /* styles for output disabled state */
+}
+
+[data-part="thumb"][data-disabled] {
+  /* styles for thumb disabled state */
+}
+
+[data-part="range"][data-disabled] {
+  /* styles for range disabled state */
+}
+```
+
+### Orientation
+
+```css
+[data-part="root"][data-orientation="(horizontal|vertical)"] {
+  /* styles for horizontal or vertical  */
+}
+
+[data-part="thumb"][data-orientation="(horizontal|vertical)"] {
+  /* styles for horizontal or vertical  */
+}
+
+[data-part="track"][data-orientation="(horizontal|vertical)"] {
+  /* styles for horizontal or vertical  */
+}
+```
+
+## Methods and Properties
+
+### Machine Context
+
+The slider machine exposes the following context properties:
+
+<ContextTable name="slider" />
+
+### Machine API
+
+The slider `api` exposes the following methods:
+
+<ApiTable name="slider" />
+
+### Data Attributes
+
+<DataAttrTable name="slider" />
+
+## Accessibility
+
+Adheres to the
+[Slider WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slidertwothumb).
+
+### Keyboard Interactions
+
+**`ArrowRight`**
+Description: <span>Increments the focused thumb based on defined step</span>
+
+**`ArrowLeft`**
+Description: <span>Decrements the focused thumb based on defined step</span>
+
+**`ArrowUp`**
+Description: <span>Increases the focused thumb by the step amount.</span>
+
+**`ArrowDown`**
+Description: <span>Decreases the focused thumb by the step amount.</span>
+
+**`PageUp`**
+Description: <span>Increases the focused thumb value by a larger step</span>
+
+**`PageDown`**
+Description: <span>Decreases the focused thumb value by a larger step</span>
+
+**`Shift + ArrowUp`**
+Description: <span>Increases the focused thumb value by a larger step</span>
+
+**`Shift + ArrowDown`**
+Description: <span>Decreases the focused thumb value by a larger step</span>
+
+**`Home`**
+Description: Sets the focused thumb value to its minimum.
+
+**`End`**
+Description: Sets the focused thumb value to its maximum.
 A splitter allow create dynamic layouts split into vertically or horizontally
 arranged panes. Panes are separated by the splitter bars that allow dragging to
 resize or expand/collapse them.
@@ -87507,7 +90116,7 @@ resize or expand/collapse them.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/splitter)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/splitter)
 [Logic Visualizer](https://zag-visualizer.vercel.app/splitter)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/splitter)
 
@@ -87805,6 +90414,10 @@ The splitter `api` exposes the following methods:
 Type: `boolean`
 Description: Whether the splitter is currently being resized.
 
+**`orientation`**
+Type: `"horizontal" | "vertical"`
+Description: The orientation of the splitter.
+
 **`getSizes`**
 Type: `() => number[]`
 Description: Returns the current sizes of the panels.
@@ -87816,6 +90429,14 @@ Description: Sets the sizes of the panels.
 **`getItems`**
 Type: `() => SplitterItem[]`
 Description: Returns the items of the splitter.
+
+**`getPanels`**
+Type: `() => PanelData[]`
+Description: Returns the panels of the splitter.
+
+**`getPanelById`**
+Type: `(id: string) => PanelData`
+Description: Returns the panel with the specified id.
 
 **`getPanelSize`**
 Type: `(id: string) => number`
@@ -87849,6 +90470,10 @@ Description: Returns the layout of the splitter.
 Type: `VoidFunction`
 Description: Resets the splitter to its initial state.
 
+**`getResizeTriggerState`**
+Type: `(props: ResizeTriggerProps) => ResizeTriggerState`
+Description: Returns the state of the resize trigger.
+
 ### Data Attributes
 
 **`Root`**
@@ -87856,12 +90481,14 @@ Description: Resets the splitter to its initial state.
 **`data-scope`**: splitter
 **`data-part`**: root
 **`data-orientation`**: The orientation of the splitter
+**`data-dragging`**: Present when in the dragging state
 
 **`Panel`**
 
 **`data-scope`**: splitter
 **`data-part`**: panel
 **`data-orientation`**: The orientation of the panel
+**`data-dragging`**: Present when in the dragging state
 **`data-id`**: 
 **`data-index`**: The index of the item
 
@@ -87872,16 +90499,15 @@ Description: Resets the splitter to its initial state.
 **`data-id`**: 
 **`data-orientation`**: The orientation of the resizetrigger
 **`data-focus`**: Present when focused
+**`data-dragging`**: Present when in the dragging state
 **`data-disabled`**: Present when disabled
-# Steps
-
 Steps are used to guide users through a series of steps in a process. It's a
 great way to break down a complex process into smaller, more manageable steps.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/steps)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/steps)
 [Logic Visualizer](https://zag-visualizer.vercel.app/steps)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/steps)
 
@@ -87898,7 +90524,11 @@ great way to break down a complex process into smaller, more manageable steps.
 To use the steps machine in your project, run the following command in your
 command line:
 
-
+```bash
+npm install @zag-js/steps @zag-js/svelte
+# or
+yarn add @zag-js/steps @zag-js/svelte
+```
 
 ## Anatomy
 
@@ -87929,7 +90559,54 @@ The steps package exports two key functions:
 Next, import the required hooks and functions for your framework and use the
 steps machine in your project ð¥
 
+```svelte
+<script lang="ts">
+  import { normalizeProps, useMachine } from "@zag-js/svelte"
+  import * as steps from "@zag-js/steps"
 
+  const stepsData = [
+    { title: "Step 1" },
+    { title: "Step 2" },
+    { title: "Step 3" },
+  ]
+
+  const service = useMachine(steps.machine, {
+    id: "1",
+    count: stepsData.length,
+  })
+
+  const api = $derived(steps.connect(service, normalizeProps))
+</script>
+
+<div {...api.getRootProps()}>
+  <div {...api.getListProps()}>
+    {#each stepsData as step, index}
+      <div {...api.getItemProps({ index })}>
+        <button {...api.getTriggerProps({ index })}>
+          <div {...api.getIndicatorProps({ index })}>{index + 1}</div>
+          <span>{step.title}</span>
+        </button>
+        <div {...api.getSeparatorProps({ index })} />
+      </div>
+    {/each}
+  </div>
+
+  {#each stepsData as step, index}
+    <div {...api.getContentProps({ index })}>
+      {step.title} - {step.description}
+    </div>
+  {/each}
+
+  <div {...api.getContentProps({ index: stepsData.length })}>
+    Steps Complete - Thank you for filling out the form!
+  </div>
+
+  <div>
+    <button {...api.getPrevTriggerProps()}>Back</button>
+    <button {...api.getNextTriggerProps()}>Next</button>
+  </div>
+</div>
+```
 
 ## Setting the initial step
 
@@ -88226,14 +90903,12 @@ Description: Returns the state of the item at the given index.
 ### CSS Variables
 
 <CssVarTable name="steps" />
-# Switch
-
 A switch allows users to turn an individual option on or off.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/switch)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/switch)
 [Logic Visualizer](https://zag-visualizer.vercel.app/switch)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/switch)
 
@@ -88563,8 +91238,6 @@ Adheres to the
 
 **`Space + Enter`**
 Description: Toggle the switch
-# Tabs
-
 An accessible tabs component that follows the WAI-ARIA Tabs Design Pattern. Each
 tab in the tab list has associated content, with only the selected tab's content
 being displayed.
@@ -88572,7 +91245,7 @@ being displayed.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tabs)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tabs)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tabs)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tabs)
 
@@ -89078,8 +91751,6 @@ Description: Moves focus to the last trigger and activates its associated conten
 
 **`Enter + Space`**
 Description: In manual mode, when a trigger is focused, moves focus to its associated content.
-# Tags Input
-
 Tag inputs render tags inside an input, followed by an actual text input. By
 default, tags are added when text is typed in the input field and the `Enter` or
 `Comma` key is pressed. Throughout the interaction, DOM focus remains on the
@@ -89088,7 +91759,7 @@ input element.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tags-input)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tags-input)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tags-input)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tags-input)
 
@@ -89269,13 +91940,17 @@ const service = useMachine(tagsInput.machine, {
 Before a tag is added, the machine provides a `validate` function you can use to
 determine whether to accept or reject a tag.
 
-A common use-case for validating tags is preventing duplicates or validating the
-data type.
+> **Note:** Duplicate tags are automatically prevented by design. You don't need
+> to handle this in your `validate` function.
 
-```jsx {2-3}
+Common use-cases for validating tags include enforcing format, length, or
+content rules.
+
+```jsx {2-4}
 const service = useMachine(tagsInput.machine, {
   validate(details) {
-    return !details.values.includes(details.inputValue)
+    // Example: only allow lowercase alphabetic tags
+    return /^[a-z]+$/.test(details.inputValue)
   },
 })
 ```
@@ -89750,15 +92425,13 @@ Description: Deletes the tag item that has visual focus
 
 **`Control + V`**
 Description: When `addOnPaste` is set. Adds the pasted value as a tags
-# Timer
-
 The timer machine is used to record the time elapsed from zero or since a
 specified target time.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/timer)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/timer)
 [Logic Visualizer](https://zag-visualizer.vercel.app/timer)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/timer)
 
@@ -90081,15 +92754,13 @@ Description: Function to restart the timer.
 **`progressPercent`**
 Type: `number`
 Description: The progress percentage of the timer.
-# Toast
-
 The toast component is used to give feedback to users after an action has taken
 place.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/toast)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/toast)
 [Logic Visualizer](https://zag-visualizer.vercel.app/toast)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/toast)
 
@@ -90615,14 +93286,12 @@ Description: Subscribe to the toast group
 ### CSS Variables
 
 <CssVarTable name="toast" />
-# Toggle Group
-
 A toggle group is used to toggle either one option or multiple options.
 
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/toggle-group)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/toggle-group)
 [Logic Visualizer](https://zag-visualizer.vercel.app/toggle-group)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/toggle-group)
 
@@ -90950,8 +93619,6 @@ Description: Moves focus to the first item.
 
 **`End`**
 Description: Moves focus to the last item.
-# Tooltip
-
 A tooltip is a brief, informative message that appears when a user interacts
 with an element. Tooltips are usually initiated when a button is focused or
 hovered.
@@ -90959,7 +93626,7 @@ hovered.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tooltip)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tooltip)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tooltip)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tooltip)
 
@@ -91335,8 +94002,6 @@ Description: Opens/closes the tooltip without delay.
 
 **`Escape`**
 Description: If open, closes the tooltip without delay.
-# Tour
-
 A tour is an onboarding component used to guide users through a new product
 feature or series of steps. It is often used to boost feature discoverability or
 onboard new users by highlighting specific elements on the page.
@@ -91344,7 +94009,7 @@ onboard new users by highlighting specific elements on the page.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tour)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tour)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tour)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tour)
 
@@ -91939,8 +94604,6 @@ Description: Returns the progress text
 **`getProgressPercent`**
 Type: `() => number`
 Description: Returns the progress percent
-# Tree View
-
 The TreeView component provides a hierarchical view of data, similar to a file
 system explorer. It allows users to expand and collapse branches, select
 individual or multiple nodes, and traverse the hierarchy using keyboard
@@ -91949,7 +94612,7 @@ navigation.
 ## Resources
 
 
-[Latest version: v1.28.0](https://www.npmjs.com/package/@zag-js/tree-view)
+[Latest version: v1.33.1](https://www.npmjs.com/package/@zag-js/tree-view)
 [Logic Visualizer](https://zag-visualizer.vercel.app/tree-view)
 [Source Code](https://github.com/chakra-ui/zag/tree/main/packages/machines/tree-view)
 

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/sagemaker/
+
 # Amazon SageMaker AI
 
 The `sagemaker` provider allows you to use Amazon SageMaker AI endpoints in your evals. This enables testing and evaluation of any model deployed on SageMaker AI, including models from Hugging Face, custom-trained models, foundation models from Amazon SageMaker JumpStart, and more. For AWS-managed foundation models without custom endpoints, you might also consider the [AWS Bedrock provider](/docs/providers/aws-bedrock/).

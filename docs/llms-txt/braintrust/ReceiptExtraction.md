@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/ReceiptExtraction.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluating multimodal receipt extraction
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/ReceiptExtraction/ReceiptExtraction.ipynb) by [Ankur Goyal](https://twitter.com/ankrgyl) on 2024-09-30</div>
@@ -342,8 +346,3 @@ more comprehensive benchmark:
 * Dig into a few regressions and tweak the scoring methods to better reflect the actual use case
 
 To get started with this use case in Braintrust, you can [sign up for a free account](https://www.braintrust.dev/signup) and start with this Notebook. Happy evaluating!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/client/react/components.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Components
 
 > Ready-to-use React components for Pipecat applications
@@ -173,8 +177,3 @@ Renders a visual representation of audio input levels on a `<canvas>` element.
 <ParamField path="barMaxHeight" type="number">
   The maximum height at full volume of each bar in pixels. Default: 120
 </ParamField>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

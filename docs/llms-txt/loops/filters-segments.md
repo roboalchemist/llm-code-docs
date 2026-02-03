@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/contacts/filters-segments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Filters and Segments
 
 > How to send emails to specific groups of contacts and save segments for future use.

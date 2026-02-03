@@ -4,8 +4,6 @@
 title: B2B Data Interchange Partnership
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > B2B Data Interchange Partnership
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.b2bi_partnership.dataset/index.html
 ---
 
 # B2B Data Interchange Partnership
@@ -32,5 +30,5 @@ aws.b2bi_partnership
 | partnership_id     | core | string        | Returns the unique, system-generated identifier for a partnership.                                                                             |
 | phone              | core | string        | Returns the phone number associated with the partnership.                                                                                      |
 | profile_id         | core | string        | Returns the unique, system-generated identifier for the profile connected to this partnership.                                                 |
-| tags               | core | hstore        |
+| tags               | core | hstore_csv    |
 | trading_partner_id | core | string        | Returns the unique identifier for the partner for this partnership.                                                                            |

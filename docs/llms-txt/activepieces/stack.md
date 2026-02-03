@@ -1,6 +1,8 @@
 # Source: https://www.activepieces.com/docs/handbook/engineering/onboarding/stack.md
 
-# Source: https://www.activepieces.com/docs/install/architecture/stack.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Stack & Tools
 
@@ -34,7 +36,7 @@ This enables it to focus on learning fewer tooling options and perfect them acro
 * CI/CD: [GitHub Actions](https://github.com/features/actions) / [Depot](https://depot.dev/) / [Kamal](https://kamal-deploy.org/)
 * Containerization: [Docker](https://www.docker.com/)
 * Linter: [ESLint](https://eslint.org/)
-* Logging: [Loki](https://grafana.com/)
+* Logging: [OpenTelemetry](https://opentelemetry.io/)
 * Building: [NX Monorepo](https://nx.dev/)
 
 ## Adding New Tool

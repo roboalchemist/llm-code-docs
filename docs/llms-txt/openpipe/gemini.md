@@ -1,5 +1,9 @@
 # Source: https://docs.openpipe.ai/features/chat-completions/gemini.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.openpipe.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Gemini Proxy
 
 OpenPipe can translate your existing OpenAI chat completion requests to work with Gemini models automatically, allowing you to use Gemini without changing your prompt format.
@@ -8,7 +12,7 @@ After adding your Google AI Studio API Key in your project settings, specify the
 
 <Tabs>
   <Tab title="Python">
-    ```python
+    ```python  theme={null}
     from openpipe import OpenAI
 
     # Find the config values in "Installing the SDK"
@@ -23,7 +27,7 @@ After adding your Google AI Studio API Key in your project settings, specify the
   </Tab>
 
   <Tab title="NodeJS">
-    ```typescript
+    ```typescript  theme={null}
     import OpenAI from "openpipe/openai";
 
     // Find the config values in "Installing the SDK"

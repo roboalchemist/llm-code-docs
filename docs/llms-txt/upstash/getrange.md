@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/string/getrange.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/getrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/getrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/getrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/getrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/getrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/getrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/getrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/getrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/getrange.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # GETRANGE
 
@@ -26,26 +12,28 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to get.
 </ParamField>
 
-<ParamField body="start" type="integer" required>
+<ParamField body="start" type="int" required>
   The start index of the substring.
 </ParamField>
 
-<ParamField body="end" type="integer" required>
+<ParamField body="end" type="int" required>
   The end index of the substring.
 </ParamField>
 
 ## Response
 
-<ResponseField type="string" required>
+<ResponseField type="str" required>
   The substring.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const substring = await redis.getrange("key", 2, 4);
+  ```py Example theme={"system"}
+  redis.set("key", "Hello World")
+
+  assert redis.getrange("key", 0, 4) == "Hello"
   ```
 </RequestExample>

@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/agent-builder/invoice-processing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Process invoices and send to Slack
 
 This tutorial walks through building an agent that processes PDF invoices, extracts structured data, and sends the results to Slack. The agent takes an uploaded invoice PDF, extracts key information like vendor details and line items, and posts a formatted summary to a Slack channel.

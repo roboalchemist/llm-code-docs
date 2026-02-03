@@ -2,44 +2,25 @@
 
 # Source: https://docs.chatling.ai/chatbot/builder/blocks/inputs/text.md
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/send/text.md
-
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/inputs/text.md
-
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/send/text.md
-
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/inputs/text.md
-
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/send/text.md
-
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/inputs/text.md
-
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/send/text.md
-
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/inputs/text.md
-
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/send/text.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Text Block
 
-> Learn about the Text block and how to set it up in the builder
+> Learn about the Text input block and how to set it up in the Builder.
 
-The Text block is used to display a text message to the user. You can use it to provide information, ask questions, or guide the user through the conversation.
+The Text block is used to capture user input in the form of text. You can use this block to prompt users for answers and collect the necessary information.
 
-## Adding text
+## Configuration
 
-Once you add a Text block to the canvas, click on it to open the block editor. You can then enter your message in the text editor and apply formatting using the toolbar.
+<img src="https://chatling-assets.b-cdn.net/input-text-block-editor-1.png" alt="Input text block editor" width="300" />
 
-<img src="https://chatling-assets.b-cdn.net/output-text-editor.jpg" alt="Output text block editor" width="300" />
+You can configure the following settings for the Text block:
 
-## Inserting variables
-
-You can insert variables into your text message to make it more dynamic and personalized.
-
-To insert a variable, type `{` and a list of available variables will appear. Select the variable you want to insert and it will be added to the text message.
-
-<img src="https://chatling-assets.b-cdn.net/insert-variable-in-output-text.jpeg" alt="Insert variable" width="300" />
-
-For example, if you have captured the user's name earlier in the conversation and stored it in a variable called `contact_name`, you can insert it into the text message by typing `{contact_name}`. When the message is sent to the user, the variable will be replaced with the user's name.
-
-<img src="https://chatling-assets.b-cdn.net/insert-user-name-variable.jpg" alt="output user's name within the text" width="300" />
+* **Store answer in variable**: Choose a variable to store the user's response. You can use the stored data in other blocks to personalize the conversation.
+* **Input required**: Determine whether the user must provide an answer to proceed. If this option is disabled, a Skip button will appear, allowing users to skip the input.
+* **[Voice Input](/chatbot/builder/block-options/voice-input)**: Toggle on the Voice Input option to allow users to send messages using voice.
+* **Min. characters**: The minimum number of characters the user must enter.
+* **Max. characters**: The maximum number of characters the user can enter.
+* **[Quick replies](/chatbot/builder/block-options/quick-replies)**

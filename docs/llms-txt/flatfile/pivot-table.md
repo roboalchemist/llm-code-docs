@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/pivot-table.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pivot Table Exporter
 
 > A Flatfile plugin that performs data analysis and summarization by generating pivot tables from workbook data and uploading them as Markdown documents.
@@ -10,7 +14,7 @@ The Pivot Table Exporter plugin for Flatfile is designed to perform data analysi
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-export-pivot-table
 ```
 
@@ -53,7 +57,7 @@ By default, the plugin requires `pivotColumn`, `aggregateColumn`, and `aggregati
 This example shows the simplest way to use the plugin with the required configuration.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { pivotTablePlugin } from '@flatfile/plugin-export-pivot-table';
 
@@ -68,7 +72,7 @@ This example shows the simplest way to use the plugin with the required configur
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { pivotTablePlugin } from '@flatfile/plugin-export-pivot-table';
 
@@ -89,7 +93,7 @@ This example shows the simplest way to use the plugin with the required configur
 This example demonstrates a more complete configuration, including the optional `groupByColumn` and `debug` options.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { pivotTablePlugin } from '@flatfile/plugin-export-pivot-table';
 
@@ -106,7 +110,7 @@ This example demonstrates a more complete configuration, including the optional 
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { pivotTablePlugin } from '@flatfile/plugin-export-pivot-table';
 
@@ -129,7 +133,7 @@ This example demonstrates a more complete configuration, including the optional 
 The plugin has built-in error handling. To see more detailed logs on your server, enable the `debug` flag.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { pivotTablePlugin } from '@flatfile/plugin-export-pivot-table';
 
@@ -148,7 +152,7 @@ The plugin has built-in error handling. To see more detailed logs on your server
   export default listener;
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { pivotTablePlugin } from '@flatfile/plugin-export-pivot-table';
 

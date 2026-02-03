@@ -1,12 +1,30 @@
+# Source: https://docs.datadoghq.com/feature_flags/server/go.md
+
+# Source: https://docs.datadoghq.com/security/code_security/software_composition_analysis/setup_runtime/compatibility/go.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/gcp/cloud-run/go.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/aws/lambda/go.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/compatibility/go.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/go.md
+
+# Source: https://docs.datadoghq.com/data_streams/setup/language/go.md
+
 # Source: https://docs.datadoghq.com/profiler/profiler_troubleshooting/go.md
 
 # Source: https://docs.datadoghq.com/profiler/enabling/go.md
 
 # Source: https://docs.datadoghq.com/tracing/other_telemetry/connect_logs_and_traces/go.md
 
+# Source: https://docs.datadoghq.com/tracing/trace_collection/dynamic_instrumentation/enabling/go.md
+
 # Source: https://docs.datadoghq.com/tracing/trace_collection/library_config/go.md
 
 # Source: https://docs.datadoghq.com/tracing/trace_collection/compatibility/go.md
+
+# Source: https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/go.md
 
 # Source: https://docs.datadoghq.com/tracing/trace_collection/dd_libraries/go.md
 
@@ -16,7 +34,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Add the Datadog Tracing Library >
   Tracing Go Applications
-source_url: https://docs.datadoghq.com/trace_collection/dd_libraries/go/index.html
 ---
 
 # Tracing Go Applications

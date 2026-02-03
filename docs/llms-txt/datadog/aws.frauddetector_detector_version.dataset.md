@@ -4,8 +4,6 @@
 title: Fraud Detector Detector Version
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Fraud Detector Detector Version
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.frauddetector_detector_version.dataset/index.html
 ---
 
 # Fraud Detector Detector Version
@@ -33,4 +31,4 @@ aws.frauddetector_detector_version
 | rule_execution_mode      | core | string        | The execution mode of the rule in the dectector FIRST_MATCHED indicates that Amazon Fraud Detector evaluates rules sequentially, first to last, stopping at the first matched rule. Amazon Fraud dectector then provides the outcomes for that single rule. ALL_MATCHED indicates that Amazon Fraud Detector evaluates all rules and returns the outcomes for all matched rules. You can define and edit the rule mode at the detector version level, when it is in draft status. |
 | rules                    | core | json          | The rules included in the detector version.                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | status                   | core | string        | The status of the detector version.                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| tags                     | core | hstore        |
+| tags                     | core | hstore_csv    |

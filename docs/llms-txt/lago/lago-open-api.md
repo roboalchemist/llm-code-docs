@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/lago-open-api.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Lago OpenAPI
 
 Using our Open API is a great way to explore and interact with Lago's API documentation.

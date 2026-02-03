@@ -2,10 +2,6 @@
 
 # Source: https://ast-grep.github.io/reference/playground.md
 
-# Source: https://ast-grep.github.io/playground.md
-
-# Source: https://ast-grep.github.io/reference/playground.md
-
 ---
 url: /reference/playground.md
 ---

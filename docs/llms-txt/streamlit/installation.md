@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/get-started/installation
+
 # Install Streamlit
 
 There are multiple ways to set up your development environment and install Streamlit. Developing locally with Python installed on your own computer is the most common scenario.

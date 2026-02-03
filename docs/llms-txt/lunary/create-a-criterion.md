@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/evals/create-a-criterion.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create a criterion
 
 
@@ -58,7 +62,3 @@ components:
       scheme: bearer
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

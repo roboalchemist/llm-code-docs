@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/actions/if_else.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # If/Else Statement
 
 Run actions only when certain conditions are met - perfect for conditional logic and branching workflows.

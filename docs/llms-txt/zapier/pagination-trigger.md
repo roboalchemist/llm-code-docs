@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/pagination-trigger.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use pagination in triggers
 
 > By default, Zapier triggers fetch new or recently updated data to start Zaps, and only need to find the most recently added items. Triggers can also be used to populate [dynamic dropdown fields](/platform/build/add-fields#dynamic-dropdown), and there they need to find all possible items to populate the field.

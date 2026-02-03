@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/examples/use-cases/chat.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Chat
 
 > Build a conversational chat agent with real-time web search, crawl, and extract capabilities using Tavily's API
@@ -110,8 +114,3 @@ The workflow consists of several key components:
     * Source processing
   </Accordion>
 </AccordionGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

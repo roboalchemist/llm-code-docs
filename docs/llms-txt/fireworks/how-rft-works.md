@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/fine-tuning/how-rft-works.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Basics
 
 > Understand the reinforcement learning fundamentals behind RFT
@@ -27,7 +31,7 @@ Reinforcement fine-tuning helps you train models to excel at:
 
 <Steps>
   <Step title="Design your evaluator">
-    Define how you'll score model outputs from 0 to 1. For example, scoring outputs higherchecking if your agent called the right tools, or if your LLM-as-judge rates the output highly.
+    Define how you'll score model outputs from 0 to 1. For example, scoring outputs higher by checking if your agent called the right tools, or if your LLM-as-judge rates the output highly.
   </Step>
 
   <Step title="Prepare dataset">

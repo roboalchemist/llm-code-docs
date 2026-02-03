@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/security/cloud_security_management/review_remediate/workflows.md
+
 # Source: https://docs.datadoghq.com/actions/workflows.md
 
 ---
@@ -6,7 +8,6 @@ description: >-
   Orchestrate and automate end-to-end processes with workflows that connect
   actions across your infrastructure and tools.
 breadcrumbs: Docs > Workflow Automation
-source_url: https://docs.datadoghq.com/workflows/index.html
 ---
 
 # Workflow Automation

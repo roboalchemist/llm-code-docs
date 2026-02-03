@@ -135,12 +135,12 @@ services:
 You can define `<SERVICE_NAME>` as you like, so long as it's unique between all defined services
 and matches in both the application and services configuration.
 
-The example above leverages [default endpoint](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
-That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+The example above leverages [default endpoint](https://docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes, providing a [relationship](https://docs.upsun.com/create-apps/image-properties/relationships.md)
 (the network address a service is accessible from) that is identical to the _name_ of that service.
 
 Depending on your needs, instead of default endpoint configuration,
-you can use [explicit endpoint configuration](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [explicit endpoint configuration](https://docs.upsun.com/create-apps/image-properties/relationships.md).
 
 With the above definition, the application container (``<APP_NAME>``) now has access to the service via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [service environment variables](https://docs.upsun.com/development/variables.md#service-environment-variables).
 

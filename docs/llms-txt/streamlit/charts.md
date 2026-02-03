@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/charts
+
 # Chart elements
 
 Streamlit supports several different charting libraries, and our goal is to continually add support for more. Right now, the most basic library in our arsenal is [Matplotlib](https://matplotlib.org/). Then there are also interactive charting libraries like [Vega Lite](https://vega.github.io/vega-lite/) (2D charts) and [deck.gl](https://github.com/uber/deck.gl) (maps and 3D charts). And finally we also provide a few chart types that are "native" to Streamlit, like `st.line_chart` and `st.area_chart`.

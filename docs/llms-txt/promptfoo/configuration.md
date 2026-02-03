@@ -1,3 +1,7 @@
+# Source: https://www.promptfoo.dev/docs/red-team/configuration/
+
+# Source: https://www.promptfoo.dev/docs/category/configuration/
+
 # configuration
 
 Configuration

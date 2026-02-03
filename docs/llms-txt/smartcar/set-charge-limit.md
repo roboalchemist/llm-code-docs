@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/evs/set-charge-limit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Charge Limit
 
 > Set the  charge limit of an electric vehicle.

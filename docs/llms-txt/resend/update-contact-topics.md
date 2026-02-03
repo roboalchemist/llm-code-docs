@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/contacts/update-contact-topics.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update Contact Topics
 
 > Update topic subscriptions for a contact.
@@ -21,7 +25,7 @@ Either `id` or `email` must be provided.
 <ParamField body="topics" type="array" required>
   Array of topic subscription updates.
 
-  <Expandable defaultOpen="true" title="properties">
+  <Expandable defaultOpen title="properties">
     <ParamField body="id" type="string" required>
       The Topic ID.
     </ParamField>
@@ -33,7 +37,7 @@ Either `id` or `email` must be provided.
 </ParamField>
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -69,7 +73,7 @@ Either `id` or `email` must be provided.
   });
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   // Update by contact id
@@ -97,7 +101,7 @@ Either `id` or `email` must be provided.
   ]);
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = 're_xxxxxxxxx'
@@ -125,7 +129,7 @@ Either `id` or `email` must be provided.
   response = resend.Contacts.Topics.update(params_by_email)
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -151,7 +155,7 @@ Either `id` or `email` must be provided.
   updated_topics = Resend::Contacts::Topics.update(update_params)
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
   import (
@@ -163,9 +167,7 @@ Either `id` or `email` must be provided.
 
   func main() {
   	ctx := context.TODO()
-  	apiKey := "re_xxxxxxxxx"
-
-  	client := resend.NewClient(apiKey)
+  	client := resend.NewClient("re_xxxxxxxxx")
 
   	// Update by contact id
   	params := &resend.UpdateContactTopicsRequest{
@@ -211,7 +213,7 @@ Either `id` or `email` must be provided.
   }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{
     types::{SubscriptionType, UpdateContactTopicOptions},
     Resend, Result,
@@ -241,7 +243,7 @@ Either `id` or `email` must be provided.
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -281,7 +283,7 @@ Either `id` or `email` must be provided.
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -303,7 +305,7 @@ Either `id` or `email` must be provided.
       topics );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   // Update by contact id
   curl -X PATCH 'https://api.resend.com/contacts/e169aa45-1ecf-4183-9955-b1499d5701d3/topics' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
@@ -329,7 +331,7 @@ Either `id` or `email` must be provided.
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "id": "b6d24b8e-af0b-4c3c-be0c-359bbd97381e"
   }

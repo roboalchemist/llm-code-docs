@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/apps/sdks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SDKs
 
 > Ultravox Client SDK for building user-facing experiences.
@@ -71,8 +75,3 @@ All the features of the SDK are documented in the [SDK Reference](/sdk-reference
 
 * Need your voice AI agent to make or receive phone calls? Check out our guide on [Telephony →](/telephony/overview)
 * Ultravox has a native protocol for fully custom integrations via [WebSockets →](/apps/websockets)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

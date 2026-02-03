@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/guides/ghost-email-sequence.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Set up a welcome email sequence for new Ghost members
 
 > Send automated email sequences to new Ghost subscribers using Zapier and Loops.

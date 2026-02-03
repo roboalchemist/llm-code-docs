@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-app
+
 # Manage your app
 
 You can manage your deployed app from your workspace at [share.streamlit.io](https://share.streamlit.io/) or directly from `<your-custom-subdomain>.streamlit.app`. You can view, deploy, delete, reboot, or favorite an app.

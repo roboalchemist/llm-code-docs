@@ -1,10 +1,11 @@
+# Source: https://docs.datadoghq.com/coterm/install.md
+
 # Source: https://docs.datadoghq.com/cloudprem/install.md
 
 ---
 title: Install CloudPrem
 description: Learn how to deploy CloudPrem on various platforms and environments
 breadcrumbs: Docs > CloudPrem > Install CloudPrem
-source_url: https://docs.datadoghq.com/install/index.html
 ---
 
 # Install CloudPrem
@@ -32,6 +33,10 @@ CloudPrem can be deployed in various environments, from cloud-managed Kubernetes
 
 ## Prerequisites{% #prerequisites %}
 
+{% alert level="info" %}
+If you don't see the CloudPrem entry in the Logs menu, it means CloudPrem is not activated on your account. Join the [CloudPrem Preview](https://www.datadoghq.com/product-preview/cloudprem/) to activate CloudPrem on your account.
+{% /alert %}
+
 ### Kubernetes cluster requirements{% #kubernetes-cluster-requirements %}
 
 | Requirement                        | Details                                                                                                                                     |
@@ -54,6 +59,7 @@ CloudPrem supports the following object storage types:
 
 ## Cloud-managed Kubernetes{% #cloud-managed-kubernetes %}
 
-- [Install on AWS EKS](https://docs.datadoghq.com/cloudprem/install/aws_eks/)
-- [Install on Azure AKS](https://docs.datadoghq.com/cloudprem/install/azure_aks/)
-- [Install locally with Docker for testing](https://docs.datadoghq.com/cloudprem/install/docker/)
+- [Install on AWS EKS](https://docs.datadoghq.com/cloudprem/install/aws_eks)
+- [Install on Azure AKS](https://docs.datadoghq.com/cloudprem/install/azure_aks)
+- [Install locally with Docker for testing](https://docs.datadoghq.com/cloudprem/install/docker)
+- [Install on Custom Kubernetes (manual)](https://docs.datadoghq.com/cloudprem/install/custom_k8s)

@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/vits.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/vits.md
 
 # VITS
 
@@ -9,7 +9,7 @@ You can find all the original VITS checkpoints under the [AI at Meta](https://hu
 > [!TIP]
 > Click on the VITS models in the right sidebar for more examples of how to apply VITS.
 
-The example below demonstrates how to generate text based on an image with [Pipeline](/docs/transformers/v5.0.0rc1/en/main_classes/pipelines#transformers.Pipeline) or the [AutoModel](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModel) class.
+The example below demonstrates how to generate text based on an image with [Pipeline](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.Pipeline) or the [AutoModel](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModel) class.
 
 ```python
 import torch
@@ -84,7 +84,7 @@ Audio(waveform, rate=model.config.sampling_rate)
 
 **Parameters:**
 
-vocab_size (`int`, *optional*, defaults to 38) : Vocabulary size of the VITS model. Defines the number of different tokens that can be represented by the `inputs_ids` passed to the forward method of [VitsModel](/docs/transformers/v5.0.0rc1/en/model_doc/vits#transformers.VitsModel).
+vocab_size (`int`, *optional*, defaults to 38) : Vocabulary size of the VITS model. Defines the number of different tokens that can be represented by the `inputs_ids` passed to the forward method of [VitsModel](/docs/transformers/v5.0.0/en/model_doc/vits#transformers.VitsModel).
 
 hidden_size (`int`, *optional*, defaults to 192) : Dimensionality of the text encoder layers.
 
@@ -172,18 +172,20 @@ noise_scale_duration (`float`, *optional*, defaults to 0.8) : How random the dur
 
 sampling_rate (`int`, *optional*, defaults to 16000) : The sampling rate at which the output audio waveform is digitalized expressed in hertz (Hz).
 
+pad_token_id (`int`, *optional*) : Padding token id.
+
 ## VitsTokenizer[[transformers.VitsTokenizer]]
 
 #### transformers.VitsTokenizer[[transformers.VitsTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/vits/tokenization_vits.py#L47)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/vits/tokenization_vits.py#L46)
 
 Construct a VITS tokenizer. Also supports MMS-TTS.
 
-This tokenizer inherits from [PreTrainedTokenizer](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.PythonBackend) which contains most of the main methods. Users should refer to
+This tokenizer inherits from [PreTrainedTokenizer](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.PythonBackend) which contains most of the main methods. Users should refer to
 this superclass for more information regarding those methods.
 
-__call__transformers.VitsTokenizer.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L2469[{"name": "text", "val": ": Union[TextInput, PreTokenizedInput, list[TextInput], list[PreTokenizedInput], None] = None"}, {"name": "text_pair", "val": ": Optional[Union[TextInput, PreTokenizedInput, list[TextInput], list[PreTokenizedInput]]] = None"}, {"name": "text_target", "val": ": Union[TextInput, PreTokenizedInput, list[TextInput], list[PreTokenizedInput], None] = None"}, {"name": "text_pair_target", "val": ": Optional[Union[TextInput, PreTokenizedInput, list[TextInput], list[PreTokenizedInput]]] = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": Union[bool, str, PaddingStrategy] = False"}, {"name": "truncation", "val": ": Union[bool, str, TruncationStrategy, None] = None"}, {"name": "max_length", "val": ": Optional[int] = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "is_split_into_words", "val": ": bool = False"}, {"name": "pad_to_multiple_of", "val": ": Optional[int] = None"}, {"name": "padding_side", "val": ": Optional[str] = None"}, {"name": "return_tensors", "val": ": Optional[Union[str, TensorType]] = None"}, {"name": "return_token_type_ids", "val": ": Optional[bool] = None"}, {"name": "return_attention_mask", "val": ": Optional[bool] = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "tokenizer_kwargs", "val": ": Optional[dict[str, Any]] = None"}, {"name": "**kwargs", "val": ""}]- **text** (`str`, `list[str]`, `list[list[str]]`, *optional*) --
+__call__transformers.VitsTokenizer.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L2464[{"name": "text", "val": ": TextInput | PreTokenizedInput | list[TextInput] | list[PreTokenizedInput] | None = None"}, {"name": "text_pair", "val": ": TextInput | PreTokenizedInput | list[TextInput] | list[PreTokenizedInput] | None = None"}, {"name": "text_target", "val": ": TextInput | PreTokenizedInput | list[TextInput] | list[PreTokenizedInput] | None = None"}, {"name": "text_pair_target", "val": ": TextInput | PreTokenizedInput | list[TextInput] | list[PreTokenizedInput] | None = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": bool | str | PaddingStrategy = False"}, {"name": "truncation", "val": ": bool | str | TruncationStrategy | None = None"}, {"name": "max_length", "val": ": int | None = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "is_split_into_words", "val": ": bool = False"}, {"name": "pad_to_multiple_of", "val": ": int | None = None"}, {"name": "padding_side", "val": ": str | None = None"}, {"name": "return_tensors", "val": ": str | TensorType | None = None"}, {"name": "return_token_type_ids", "val": ": bool | None = None"}, {"name": "return_attention_mask", "val": ": bool | None = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "tokenizer_kwargs", "val": ": dict[str, Any] | None = None"}, {"name": "**kwargs", "val": ""}]- **text** (`str`, `list[str]`, `list[list[str]]`, *optional*) --
   The sequence or batch of sequences to be encoded. Each sequence can be a string or a list of strings
   (pretokenized string). If the sequences are provided as list of strings (pretokenized), you must set
   `is_split_into_words=True` (to lift the ambiguity with a batch of sequences).
@@ -208,7 +210,7 @@ __call__transformers.VitsTokenizer.__call__https://github.com/huggingface/transf
   `PretrainedTokenizerBase.build_inputs_with_special_tokens` function, which defines which tokens are
   automatically added to the input ids. This is useful if you want to add `bos` or `eos` tokens
   automatically.
-- **padding** (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) --
+- **padding** (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) --
   Activates and controls padding. Accepts the following values:
 
   - `True` or `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single
@@ -217,7 +219,7 @@ __call__transformers.VitsTokenizer.__call__https://github.com/huggingface/transf
     acceptable input length for the model if that argument is not provided.
   - `False` or `'do_not_pad'` (default): No padding (i.e., can output a batch with sequences of different
     lengths).
-- **truncation** (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`) --
+- **truncation** (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`) --
   Activates and controls truncation. Accepts the following values:
 
   - `True` or `'longest_first'`: Truncate to a maximum length specified with the argument `max_length` or
@@ -254,7 +256,7 @@ __call__transformers.VitsTokenizer.__call__https://github.com/huggingface/transf
 - **padding_side** (`str`, *optional*) --
   The side on which the model should have padding applied. Should be selected between ['right', 'left'].
   Default value is picked from the class attribute of the same name.
-- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*) --
+- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
   If set, will return tensors instead of list of python integers. Acceptable values are:
 
   - `'pt'`: Return PyTorch `torch.Tensor` objects.
@@ -279,13 +281,13 @@ __call__transformers.VitsTokenizer.__call__https://github.com/huggingface/transf
 - **return_offsets_mapping** (`bool`, *optional*, defaults to `False`) --
   Whether or not to return `(char_start, char_end)` for each token.
 
-  This is only available on fast tokenizers inheriting from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend), if using
+  This is only available on fast tokenizers inheriting from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend), if using
   Python's tokenizer, this method will raise `NotImplementedError`.
 - **return_length**  (`bool`, *optional*, defaults to `False`) --
   Whether or not to return the lengths of the encoded inputs.
 - **verbose** (`bool`, *optional*, defaults to `True`) --
   Whether or not to print more information and warnings.
-- ****kwargs** -- passed to the `self.tokenize()` method0[BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding)A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields:
+- ****kwargs** -- passed to the `self.tokenize()` method0[BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding)A [BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields:
 
 - **input_ids** -- List of token ids to be fed to a model.
 
@@ -328,9 +330,9 @@ is_uroman (`bool`, *optional*, defaults to `False`) : Whether the `uroman` Roman
 
 **Returns:**
 
-`[BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding)`
+`[BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding)`
 
-A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields:
+A [BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields:
 
 - **input_ids** -- List of token ids to be fed to a model.
 
@@ -355,17 +357,17 @@ A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transfo
 - **length** -- The length of the inputs (when `return_length=True`)
 #### save_vocabulary[[transformers.VitsTokenizer.save_vocabulary]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/vits/tokenization_vits.py#L234)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/vits/tokenization_vits.py#L233)
 
 ## VitsModel[[transformers.VitsModel]]
 
 #### transformers.VitsModel[[transformers.VitsModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/vits/modeling_vits.py#L1241)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/vits/modeling_vits.py#L1242)
 
 The complete VITS model, for text-to-speech synthesis.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -373,11 +375,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.VitsModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/vits/modeling_vits.py#L1268[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "speaker_id", "val": ": typing.Optional[int] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "labels", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.VitsModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/vits/modeling_vits.py#L1269[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "speaker_id", "val": ": int | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "labels", "val": ": torch.FloatTensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -396,27 +398,27 @@ forwardtransformers.VitsModel.forwardhttps://github.com/huggingface/transformers
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **labels** (`torch.FloatTensor` of shape `(batch_size, config.spectrogram_bins, sequence_length)`, *optional*) --
   Float values of target spectrogram. Timesteps set to `-100.0` are ignored (masked) for the loss
   computation.0`transformers.models.vits.modeling_vits.VitsModelOutput` or `tuple(torch.FloatTensor)`A `transformers.models.vits.modeling_vits.VitsModelOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([VitsConfig](/docs/transformers/v5.0.0rc1/en/model_doc/vits#transformers.VitsConfig)) and inputs.
+elements depending on the configuration ([VitsConfig](/docs/transformers/v5.0.0/en/model_doc/vits#transformers.VitsConfig)) and inputs.
 
 - **waveform** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- The final audio waveform predicted by the model.
 - **sequence_lengths** (`torch.FloatTensor` of shape `(batch_size,)`) -- The length in samples of each element in the `waveform` batch.
 - **spectrogram** (`torch.FloatTensor` of shape `(batch_size, sequence_length, num_bins)`) -- The log-mel spectrogram predicted at the output of the flow model. This spectrogram is passed to the Hi-Fi
   GAN decoder model to obtain the final audio waveform.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [VitsModel](/docs/transformers/v5.0.0rc1/en/model_doc/vits#transformers.VitsModel) forward method, overrides the `__call__` special method.
+The [VitsModel](/docs/transformers/v5.0.0/en/model_doc/vits#transformers.VitsModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -443,7 +445,7 @@ torch.Size([1, 45824])
 
 **Parameters:**
 
-config ([VitsConfig](/docs/transformers/v5.0.0rc1/en/model_doc/vits#transformers.VitsConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([VitsConfig](/docs/transformers/v5.0.0/en/model_doc/vits#transformers.VitsConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -451,17 +453,17 @@ config ([VitsConfig](/docs/transformers/v5.0.0rc1/en/model_doc/vits#transformers
 
 A `transformers.models.vits.modeling_vits.VitsModelOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([VitsConfig](/docs/transformers/v5.0.0rc1/en/model_doc/vits#transformers.VitsConfig)) and inputs.
+elements depending on the configuration ([VitsConfig](/docs/transformers/v5.0.0/en/model_doc/vits#transformers.VitsConfig)) and inputs.
 
 - **waveform** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- The final audio waveform predicted by the model.
 - **sequence_lengths** (`torch.FloatTensor` of shape `(batch_size,)`) -- The length in samples of each element in the `waveform` batch.
 - **spectrogram** (`torch.FloatTensor` of shape `(batch_size, sequence_length, num_bins)`) -- The log-mel spectrogram predicted at the output of the flow model. This spectrogram is passed to the Hi-Fi
   GAN decoder model to obtain the final audio waveform.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention

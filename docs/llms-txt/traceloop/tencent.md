@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/integrations/tencent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Observability with Tencent APM and OpenLLMetry
 
 [Tencent APM](https://console.tencentcloud.com/apm), also known as `TAPM`, is a monitoring and observability platform that provides a comprehensive view of your application's performance and behavior.
@@ -18,8 +22,3 @@ TRACELOOP_HEADERS="Authorization=Bearer%20<TAPM_TOKEN>" # header values in env v
 ```
 
 Tencent APM defaults to using port `4317` for the gRPC exporter, and we recommend using port `55681` instead here, which is the HTTP exporter port.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

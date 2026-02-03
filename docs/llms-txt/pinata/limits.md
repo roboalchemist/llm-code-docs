@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/account-management/limits.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Limits
 
 The Private IPFS API and IPFS API have variying limits that users should be aware of.
@@ -8,11 +12,12 @@ The Private IPFS API and IPFS API have variying limits that users should be awar
 
 API rate limits on both the Private IPFS API and IPFS API are currently determined by plan type:
 
-| Plan   | Rate Limit              |
-| ------ | ----------------------- |
-| Free   | 60 requests per minute  |
-| Picnic | 250 requests per minute |
-| Fiesta | 500 requests per minute |
+| Plan       | Rate Limit              |
+| ---------- | ----------------------- |
+| Free       | 60 requests per minute  |
+| Picnic     | 250 requests per minute |
+| Fiesta     | 500 requests per minute |
+| Enterprise | 100 requests per second |
 
 ### Exceptions
 
@@ -43,7 +48,9 @@ Beyond 100MB the max file size is **25GB** at this time.
 
 ### IPFS API
 
-<Warning>While the upload limit is 25GB we would recommend only uploading up to 15GB per file/folder for reliability reasons. We can try to assist uploads 15GB-25GB but we cannot guarantee success at this time.</Warning>
+<Warning>
+  While the upload limit is 25GB we would recommend only uploading up to 15GB per file/folder for reliability reasons. We can try to assist uploads 15GB-25GB but we cannot guarantee success at this time.
+</Warning>
 
 There is no aggregate limit for uploads, but each individual upload (whether it is a file or a folder) is limited to **25 GB**.
 

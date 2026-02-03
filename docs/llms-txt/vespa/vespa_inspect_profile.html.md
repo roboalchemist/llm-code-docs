@@ -41,7 +41,7 @@ vespa inspect profile [flags]
 
 - [vespa inspect](vespa_inspect.html) - Provides insight
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/examples/models/kokoro/kokoro.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Kokoro
 
 > Kokoro is a frontier TTS model for its size of 82 million parameters (text in/audio out).

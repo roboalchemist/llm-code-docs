@@ -1,3 +1,5 @@
+# Source: https://embednotionpages.com/blog/notion-cover-sizes
+
 # Notion Cover Size & Dimensions
 
 Choosing the right size makes your Notion page clean and sharp.

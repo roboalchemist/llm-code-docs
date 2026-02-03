@@ -1,5 +1,9 @@
 # Source: https://docs.openpipe.ai/features/fallback.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.openpipe.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Fallback options
 
 >  Safeguard your application against potential failures, timeouts, or instabilities that may occur when using experimental or newly released models.
@@ -14,7 +18,7 @@ To enable fallback to OpenAI, you can simply pass the `fallback` option to the `
 
 <Tabs>
   <Tab title="Python">
-    ```python
+    ```python  theme={null}
     from openpipe import OpenAI
 
     client = OpenAI()
@@ -33,7 +37,7 @@ To enable fallback to OpenAI, you can simply pass the `fallback` option to the `
   </Tab>
 
   <Tab title="NodeJS">
-    ```typescript
+    ```typescript  theme={null}
     import OpenAI from "openpipe/openai";
 
     const openai = new OpenAI();
@@ -56,7 +60,7 @@ In the example below, the request will fall back to OpenAI after 10 seconds.
 
 <Tabs>
   <Tab title="Python">
-    ```python
+    ```python  theme={null}
     from openpipe import OpenAI
 
     client = OpenAI(timeout=10) # initial OpenPipe call timeout in seconds
@@ -77,7 +81,7 @@ In the example below, the request will fall back to OpenAI after 10 seconds.
   </Tab>
 
   <Tab title="NodeJS">
-    ```typescript
+    ```typescript  theme={null}
     import OpenAI from "openpipe/openai";
 
     const openai = new OpenAI();
@@ -108,7 +112,7 @@ If you want to use another OpenAI-compatible fallback client, you can pass a `fa
 
 <Tabs>
   <Tab title="Python">
-    ```python
+    ```python  theme={null}
     from openpipe import OpenAI
 
     client = OpenAI(
@@ -129,7 +133,7 @@ If you want to use another OpenAI-compatible fallback client, you can pass a `fa
   </Tab>
 
   <Tab title="NodeJS">
-    ```typescript
+    ```typescript  theme={null}
     import OpenAI from "openpipe/openai";
 
     const openai = new OpenAI({

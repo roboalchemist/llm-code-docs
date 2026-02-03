@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/rag-poisoning/
+
 # RAG Poisoning
 
 Promptfoo includes a RAG Poisoning utility that tests your system's resilience against adversarial attacks on the document retrieval process.

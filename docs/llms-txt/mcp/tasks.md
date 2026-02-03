@@ -1,5 +1,9 @@
 # Source: https://modelcontextprotocol.io/specification/2025-11-25/basic/utilities/tasks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://modelcontextprotocol.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tasks
 
 <div id="enable-section-numbers" />
@@ -887,8 +891,3 @@ Additionally, receivers **SHOULD** implement rate limiting on task operations to
 2. Requestors **SHOULD**:
    1. Log task lifecycle events for debugging and audit purposes
    2. Track task IDs and their associated operations
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://modelcontextprotocol.io/llms.txt

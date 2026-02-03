@@ -4,7 +4,6 @@
 title: How do I delete my account?
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > FAQ > How do I delete my account?
-source_url: https://docs.datadoghq.com/faq/delete-account/index.html
 ---
 
 # How do I delete my account?

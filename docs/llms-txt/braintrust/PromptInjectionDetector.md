@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/PromptInjectionDetector.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Detecting Prompt Injections
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/PromptInjectionDetector/PromptInjectionGPT4o.ipynb) by [Nelson Auner](https://twitter.com/nelsonauner) on 2024-05-20</div>
@@ -247,8 +251,3 @@ Awesome - it looks like our changes improved classification performance! We see 
 You can open the experiments page to see a summary of improvements over time:
 
 <img src="https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/PromptInjectionDetector/experiment_overview_conclusion.png?fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=8cb6c71f173894d0b45c9bfef7be9231" alt="Compare" data-og-width="1393" width="1393" data-og-height="591" height="591" data-path="cookbook/assets/PromptInjectionDetector/experiment_overview_conclusion.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/PromptInjectionDetector/experiment_overview_conclusion.png?w=280&fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=d18c31de882214f2c77977fc8c7eda7e 280w, https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/PromptInjectionDetector/experiment_overview_conclusion.png?w=560&fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=104688b3901a44900fb2298c8fb8ae18 560w, https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/PromptInjectionDetector/experiment_overview_conclusion.png?w=840&fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=44aca525b3237e0d597c1fae4ead608f 840w, https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/PromptInjectionDetector/experiment_overview_conclusion.png?w=1100&fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=40154048eda04a793b5bab74f772c718 1100w, https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/PromptInjectionDetector/experiment_overview_conclusion.png?w=1650&fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=d61cbefa1930298af24d7e6a21b8db3f 1650w, https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/PromptInjectionDetector/experiment_overview_conclusion.png?w=2500&fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=c524a4e4e4b91163c89f8220932d320d 2500w" />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/platform-guides/setup-sso-auth0.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Set Up Single Sign-On (SSO) for Auth0
 
 > This guide provides detailed instructions on how to set up a custom SAML application in Auth0 for integration with Aptible.

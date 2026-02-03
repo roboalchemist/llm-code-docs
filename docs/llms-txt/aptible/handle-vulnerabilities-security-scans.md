@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/platform-guides/handle-vulnerabilities-security-scans.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to handle vulnerabilities found in security scans
 
 [Security Scans](/core-concepts/security-compliance/security-scans) look for vulnerable OS packages installed in your Docker images by your Operating System’s package manager, so the solutions suggested below highlight the various ways you can manipulate these packages to mitigate the vulnerabilities.

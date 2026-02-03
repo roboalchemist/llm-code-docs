@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/llm/fireworks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Fireworks AI
 
 > LLM service implementation using Fireworks AI's API with OpenAI-compatible interface
@@ -47,8 +51,3 @@ Before using Fireworks AI LLM services, you need:
 ### Required Environment Variables
 
 * `FIREWORKS_API_KEY`: Your Fireworks AI API key for authentication
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

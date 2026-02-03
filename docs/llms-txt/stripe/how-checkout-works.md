@@ -16,14 +16,14 @@ You can also customize Checkout and access additional functionality with [Checko
 
 ## Checkout lifecycle 
 ![](https://docs.stripecdn.com/how_it_works_hosted.7eedb1ea7079a84bb6a89e1cc033bfed06963fb60f5fb9d94c649fc7e04efb2c.mp4)
-1. When customers are ready to complete their purchase, your application creates a new Checkout Session.
-1. The Checkout Session provides a URL that redirects customers to a Stripe-hosted payment page.
+1. When customers are ready to complete their purchase, your application creates a new `Checkout Session`.
+1. The `Checkout Session` provides a URL that redirects customers to a Stripe-hosted payment page.
 1. Customers enter their payment details on the payment page and complete the transaction.
 1. After the transaction, a *webhook* (A webhook is a real-time push notification sent to your application as a JSON payload through HTTPS requests) [fulfills the order](https://docs.stripe.com/checkout/fulfillment.md) using the [checkout.session.completed](https://docs.stripe.com/api/events/types.md#event_types-checkout.session.completed) event.
 A diagram of a Stripe-hosted page integration's lifecycle (See full diagram at https://docs.stripe.com/payments/checkout/how-checkout-works)
 ## Low-code integration 
 
-Checkout requires minimal coding and is the best choice for most integrations because of its prebuilt features and customization options. You can integrate Checkout by creating a Checkout Session and collecting customer payment details. Collect payments by redirecting customers to a [Stripe-hosted payment page](https://docs.stripe.com/payments/accept-a-payment.md?platform=web&ui=stripe-hosted).
+Checkout requires minimal coding and is the best choice for most integrations because of its prebuilt features and customization options. You can integrate Checkout by creating a `Checkout Session` and collecting customer payment details. Collect payments by redirecting customers to a [Stripe-hosted payment page](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=checkout&ui=stripe-hosted).
 
 [Compare Checkout](https://docs.stripe.com/payments/online-payments.md#compare-features-and-availability) to other Stripe payment options to determine the best one for you. Checkout displays a payment form to collect customer payment information, validates cards, handles errors, and so on.
 
@@ -68,7 +68,7 @@ If you use Stripe’s [custom domain feature](https://docs.stripe.com/payments/c
 
 ## Checkout Session 
 
-The Checkout Session is a programmatic representation of what your customers see on the checkout page. After creating a Checkout Session, redirect your customers to the Session’s URL to complete the purchase. When customers complete their purchase, you can [fulfill their orders](https://docs.stripe.com/checkout/fulfillment.md) by configuring an [event destination](https://docs.stripe.com/event-destinations.md) to process Checkout Session events. This code snippet from the [quickstart guide](https://docs.stripe.com/checkout/quickstart.md) is an example of how to create a Checkout Session in your application.
+The `Checkout Session` is a programmatic representation of what your customers see on the checkout page. After creating a `Checkout Session`, redirect your customers to its URL to complete the purchase. When customers complete their purchase, you can [fulfill their orders](https://docs.stripe.com/checkout/fulfillment.md) by configuring an [event destination](https://docs.stripe.com/event-destinations.md) to process `Checkout Session` events. This code snippet from the [quickstart guide](https://docs.stripe.com/checkout/quickstart.md) is an example of how to create a `Checkout Session` in your application.
 
 ```curl
 curl https://api.stripe.com/v1/checkout/sessions \
@@ -212,7 +212,7 @@ Stripe.Checkout.Session session = service.Create(options);
 
 ### One-time and recurring payments 
 
-Allow customers to make one-time payments or subscribe to a product or service by setting the [mode](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-mode) parameter in a Checkout Session.
+Allow customers to make one-time payments or subscribe to a product or service by setting the [mode](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-mode) parameter in a `Checkout Session`.
 
 | Mode                                                                      | Purchase type                                                                     |
 | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
@@ -406,27 +406,29 @@ You can view, enable, and disable different payment methods in the [Stripe Dashb
 
 ### Save payment details and default payment methods 
 
-You can [save payment details for future use](https://docs.stripe.com/payments/save-and-reuse.md) by sending an API parameter when you create a Session. Options to save payment details include:
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
 
-- **Single payment**: If your Checkout Session uses `payment` mode, set the [payment_intent_data.setup_future_usage](https://docs.stripe.com/payments/payment-intents.md#future-usage) parameter.
-- **Subscription payment**: If your Checkout Session uses `subscription` mode, Stripe saves the payment method by default.
-- [Multiple saved payment methods](https://docs.stripe.com/payments/accept-a-payment.md?platform=web&ui=checkout#save-payment-method-details): If a customer has multiple payment methods saved, you can store a default payment method to the Customer object’s [default_payment_method](https://docs.stripe.com/api/customers/object.md#customer_object-invoice_settings-default_payment_method) field. However, these payment methods don’t appear for return purchases in Checkout.
+You can [save payment details for future use](https://docs.stripe.com/payments/save-and-reuse.md) by sending an API parameter when you create a `Checkout Session`. Options to save payment details include:
+
+- **Single payment**: If your `Checkout Session` uses `payment` mode, set the [payment_intent_data.setup_future_usage](https://docs.stripe.com/payments/payment-intents.md#future-usage) parameter.
+- **Subscription payment**: If your `Checkout Session` uses `subscription` mode, Stripe saves the payment method by default.
+- [Multiple saved payment methods](https://docs.stripe.com/payments/accept-a-payment.md?platform=web&ui=checkout#save-payment-method-details): If a customer has multiple payment methods saved, you can store a default payment method to the `Customer` object’s [default_payment_method](https://docs.stripe.com/api/customers/object.md#customer_object-invoice_settings-default_payment_method) field. However, these payment methods don’t appear for return purchases in Checkout.
 
 ### Guest customers 
 
-The `Customer` object represents a customer of your business. It stores their information and associates them with their subscriptions and payments. Checkout Sessions that don’t use existing `Customers` or create new ones are associated with [guest customers](https://docs.stripe.com/payments/checkout/guest-customers.md) instead.
+The `Customer` object represents a customer of your business. It stores their information and associates them with their subscriptions and payments. `Checkout Sessions` that don’t use existing `Customers` or create new ones are associated with [guest customers](https://docs.stripe.com/payments/checkout/guest-customers.md) instead.
 
 ### Expiration 
 
-By default, Checkout Sessions expire after 24 hours.
+By default, a `Checkout Session` expires after 24 hours.
 
-You can set a custom expiration time for a Checkout Session by setting the [expires_at](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-expires_at) parameter. It can be anywhere from 30 minutes to 24 hours after Checkout Session creation.
+You can set a custom expiration time for a `Checkout Session` by setting the [expires_at](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-expires_at) parameter. It can be anywhere from 30 minutes to 24 hours after `Checkout Session` creation.
 
-You can also use the [expire](https://docs.stripe.com/api/checkout/sessions/expire.md) API to expire a Checkout Session.
+You can also [expire](https://docs.stripe.com/api/checkout/sessions/expire.md) a `Checkout Session`.
 
 ## Complete a transaction 
 
-To automate business flows after a transaction has occurred, register an [event destination](https://docs.stripe.com/event-destinations.md) and build a [webhook endpoint handler](https://docs.stripe.com/webhooks/quickstart.md). Consider the following events and automations to enable:
+To automate business flows after a transaction occurs, register an [event destination](https://docs.stripe.com/event-destinations.md) and build a [webhook endpoint handler](https://docs.stripe.com/webhooks/quickstart.md). Consider the following events and automations to enable:
 
 - Process the [checkout.session.completed](https://docs.stripe.com/api/events/types.md#event_types-checkout.session.completed) event to fulfill orders when a customer completes their purchase.
 - Process the [checkout.session.expired](https://docs.stripe.com/api/events/types.md#event_types-checkout.session.expired) event to return items to your inventory or send users a cart [abandonment](https://docs.stripe.com/payments/checkout/abandoned-carts.md) email when they don’t make a purchase and their cart expires.
@@ -438,14 +440,14 @@ To automate business flows after a transaction has occurred, register an [event 
 
 ## Checkout lifecycle 
 ![](https://docs.stripecdn.com/how_it_works_embedded.0e959f038676541a6341d6ba5fe2ceb27fd5d2093ae52132c7a04d22bb274f5e.mp4)
-1. When a customer is ready to complete their purchase, your application creates a new Checkout Session.
+1. When a customer is ready to complete their purchase, your application creates a new `Checkout Session`.
 1. You embed Checkout on your website to show a payment form.
 1. Customers enter their payment details and complete the transaction.
 1. After the transaction, the [checkout.session.completed](https://docs.stripe.com/api/events/types.md#event_types-checkout.session.completed) webhook event triggers the [order fulfillment process](https://docs.stripe.com/checkout/fulfillment.md).
 A diagram of an embedded form integration's lifecycle (See full diagram at https://docs.stripe.com/payments/checkout/how-checkout-works)
 ## Low-code integration 
 
-Checkout requires minimal coding and is the best choice for most integrations because of its prebuilt functionalities and customization options. You can integrate Checkout by creating a Checkout Session and collecting customer payment details. Collect payment by [embedding a payment form](https://docs.stripe.com/payments/accept-a-payment.md?platform=web&ui=embedded-form) in your website.
+Checkout requires minimal coding and is the best choice for most integrations because of its prebuilt functionalities and customization options. You can integrate Checkout by creating a `Checkout Session` and collecting customer payment details. Collect payment by [embedding a payment form](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=checkout&ui=embedded-form) in your website.
 
 [Compare Checkout](https://docs.stripe.com/payments/online-payments.md#compare-features-and-availability) to other Stripe payment options to determine the best one for you. Checkout displays a payment form to collect customer payment information, validates cards, handles errors, and so on.
 
@@ -484,7 +486,7 @@ You can set fonts, colors, icons, and field styles for your embedded form using 
 
 ## Checkout Session 
 
-The Checkout Session is a programmatic representation of what your customers see on the payment form. After creating a Checkout Session, mount Checkout on your payment page to complete the purchase. When customers complete their purchase, you can [fulfill their orders](https://docs.stripe.com/checkout/fulfillment.md) by configuring an [event destination](https://docs.stripe.com/event-destinations.md) to process Checkout Session events. This code snippet from the [quickstart guide](https://docs.stripe.com/checkout/quickstart.md) is an example of how to create a Checkout Session in your application.
+The `Checkout Session` is a programmatic representation of what your customers see on the payment form. After creating a `Checkout Session`, mount Checkout on your payment page to complete the purchase. When customers complete their purchase, you can [fulfill their orders](https://docs.stripe.com/checkout/fulfillment.md) by configuring an [event destination](https://docs.stripe.com/event-destinations.md) to process `Checkout Session` events. This code snippet from the [quickstart guide](https://docs.stripe.com/checkout/quickstart.md) is an example of how to create a `Checkout Session` in your application.
 
 ```curl
 curl https://api.stripe.com/v1/checkout/sessions \
@@ -637,7 +639,7 @@ Stripe.Checkout.Session session = service.Create(options);
 
 ### One-time and recurring payments 
 
-Allow customers to make one-time payments or subscribe to a product or service by setting the [mode](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-mode) parameter in a Checkout Session.
+Allow customers to make one-time payments or subscribe to a product or service by setting the [mode](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-mode) parameter in a `Checkout Session`.
 
 | Mode                                                                      | Purchase type                                                                     |
 | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
@@ -840,23 +842,25 @@ You can view, enable, and disable different payment methods in the [Stripe Dashb
 
 ### Save payment details and default payment methods 
 
-You can [save payment details for future use](https://docs.stripe.com/payments/save-and-reuse.md) by sending an API parameter when you create a Session. Options to save payment details include:
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
 
-- **Single payment**: If your Checkout Session uses `payment` mode, set the [payment_intent_data.setup_future_usage](https://docs.stripe.com/payments/payment-intents.md#future-usage) parameter.
-- **Subscription payment**: If your Checkout Session uses `subscription` mode, Stripe saves the payment method by default.
-- [Multiple saved payment methods](https://docs.stripe.com/payments/accept-a-payment.md?platform=web&ui=checkout#save-payment-method-details): If a customer has multiple payment methods saved, you can store a default payment method to the Customer object’s [default_payment_method](https://docs.stripe.com/api/customers/object.md#customer_object-invoice_settings-default_payment_method) field. However, these payment methods don’t appear for return purchases in Checkout.
+You can [save payment details for future use](https://docs.stripe.com/payments/save-and-reuse.md) by sending an API parameter when you create a `Checkout Session`. Options to save payment details include:
+
+- **Single payment**: If your `Checkout Session` uses `payment` mode, set the [payment_intent_data.setup_future_usage](https://docs.stripe.com/payments/payment-intents.md#future-usage) parameter.
+- **Subscription payment**: If your `Checkout Session` uses `subscription` mode, Stripe saves the payment method by default.
+- [Multiple saved payment methods](https://docs.stripe.com/payments/accept-a-payment.md?platform=web&ui=checkout#save-payment-method-details): If a customer has multiple payment methods saved, you can store a default payment method to the `Customer` object’s [default_payment_method](https://docs.stripe.com/api/customers/object.md#customer_object-invoice_settings-default_payment_method) field. However, these payment methods don’t appear for return purchases in Checkout.
 
 ### Guest customers 
 
-The `Customer` object represents a customer of your business, and it helps tracking subscriptions and payments that belong to the same customer. Checkout Sessions that don’t create Customers are associated with [guest customers](https://docs.stripe.com/payments/checkout/guest-customers.md) instead.
+The `Customer` object represents a customer of your business, and it helps tracking subscriptions and payments that belong to the same customer. `Checkout Sessions` that don’t create `Customers` are associated with [guest customers](https://docs.stripe.com/payments/checkout/guest-customers.md) instead.
 
 ### Expiration 
 
-By default, Checkout Sessions expire after 24 hours.
+By default, a `Checkout Session` expires after 24 hours.
 
-You can set a custom expiration time for a Checkout Session by setting the [expires_at](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-expires_at) parameter. It can be anywhere from 30 minutes to 24 hours after Checkout Session creation.
+You can set a custom expiration time for a `Checkout Session` by setting the [expires_at](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-expires_at) parameter. It can be anywhere from 30 minutes to 24 hours after `Checkout Session` creation.
 
-You can also use the [expire](https://docs.stripe.com/api/checkout/sessions/expire.md) API to expire a Checkout Session.
+You can also [expire](https://docs.stripe.com/api/checkout/sessions/expire.md) a `Checkout Session`.
 
 ## Complete a transaction 
 
@@ -875,7 +879,7 @@ Use [Elements with the Checkout Sessions API](https://docs.stripe.com/payments/q
 
 ## Checkout lifecycle 
 
-1. When a customer is ready to complete their purchase, your application creates a new Checkout Session.
+1. When a customer is ready to complete their purchase, your application creates a new `Checkout Session`.
 1. You embed Elements on your website to show a payment form.
 1. Customers enter their payment details and complete the transaction.
 1. After the transaction, the [checkout.session.completed](https://docs.stripe.com/api/events/types.md#event_types-checkout.session.completed) webhook event triggers the [order fulfillment process](https://docs.stripe.com/checkout/fulfillment.md).

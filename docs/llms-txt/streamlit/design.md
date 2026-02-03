@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/design
+
 # App design concepts and considerations
 
 ## Explore comprehensive guides about app design including animating elements, button behavior, custom styling, dataframe design, multithreading, and timezone handling.

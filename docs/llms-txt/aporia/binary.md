@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/model-types/binary.md
 
-# Source: https://docs.aporia.com/model-types/binary.md
-
-# Source: https://docs.aporia.com/v1/model-types/binary.md
-
 # Binary Classification
 
 Binary classification models predict a binary outcome (one of two possible classes). In Aporia, these models are represented by the binary model type.

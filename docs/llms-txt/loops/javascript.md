@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/sdks/javascript.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # JavaScript SDK
 
 > The official Loops SDK for JavaScript, with full TypeScript support.

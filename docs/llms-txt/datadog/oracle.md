@@ -4,7 +4,6 @@
 title: Oracle
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloud Cost Management > Setup > Oracle
-source_url: https://docs.datadoghq.com/setup/oracle/index.html
 ---
 
 # Oracle

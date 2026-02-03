@@ -1,3 +1,17 @@
+# Source: https://platform.claude.com/docs/en/api/typescript/beta/skills.md
+
+# Source: https://platform.claude.com/docs/en/api/ruby/beta/skills.md
+
+# Source: https://platform.claude.com/docs/en/api/python/beta/skills.md
+
+# Source: https://platform.claude.com/docs/en/api/kotlin/beta/skills.md
+
+# Source: https://platform.claude.com/docs/en/api/java/beta/skills.md
+
+# Source: https://platform.claude.com/docs/en/api/go/beta/skills.md
+
+# Source: https://platform.claude.com/docs/en/api/beta/skills.md
+
 # Source: https://platform.claude.com/docs/en/agent-sdk/skills.md
 
 # Agent Skills in the SDK

@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/troubleshooting/plugins-enterprise/jetbrains.md
 
-# JetBrains
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# JetBrains Troubleshooting
+
+> Troubleshoot JetBrains plugin issues including JCEF errors, certificate problems, custom workspaces, and extension diagnostics.
 
 # Supported Versions
 
@@ -20,12 +26,6 @@ For older versions of the extension:
 2. Export or copy the logs
 
 # Known IDE issues and solutions
-
-## Cascade doesn't work (or Windsurf plugin doesn't work at all)
-
-If the Windsurf JetBrains plugin isn't working, a good first step is to try and reset the plugin by going to `Help > Find Action > Reset Windsurf Enterprise Updater`.
-
-If the issue is isolated to a few users, this is likely because the Enterprise Domain URL certificate is not loaded to your IDE. Your team's admin should know how to do this.
 
 ## Cascade not being displayed
 
@@ -123,3 +123,19 @@ Non-enterprise users get automatic workspace indexing:
 * The selective indexing feature is not relevant under this model
 
 After completing the setup steps above, Cascade should be able to access your workspace and function normally.
+
+## Keyboard Shortcuts Not Working in Rider on Windows
+
+If you are using JetBrains Rider on Windows and experience issues where Shift+Enter does not create a new line in Cascade, or the Delete key does not work, this is caused by a keybinding conflict with Rider's Unit Test Tool Window.
+
+This is a known issue affecting AI plugins in Rider. To resolve this:
+
+1. Open your JetBrains IDE Settings by going to `File > Settings`
+
+2. Navigate to `Keymap`
+
+3. Search for "Unit Test Tool Window Action"
+
+4. Disable or reassign the conflicting keybindings (Shift+Enter and Delete)
+
+5. Restart your IDE for the changes to take effect

@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/vim/setup-augment/install-vim-neovim.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Install Augment for Vim and Neovim
 
 > Augment for Vim and Neovim gives you powerful code completions and chat capabilities integrated into your favorite code editor.

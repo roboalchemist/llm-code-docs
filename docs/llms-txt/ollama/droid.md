@@ -1,5 +1,9 @@
 # Source: https://docs.ollama.com/integrations/droid.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Droid
 
 ## Install
@@ -10,9 +14,23 @@ Install the [Droid CLI](https://factory.ai/):
 curl -fsSL https://app.factory.ai/cli | sh
 ```
 
-<Note>Droid requires a larger context window. It is recommended to use a context window of at least 32K tokens. See [Context length](/context-length) for more information.</Note>
+<Note>Droid requires a larger context window. It is recommended to use a context window of at least 64k tokens. See [Context length](/context-length) for more information.</Note>
 
 ## Usage with Ollama
+
+### Quick setup
+
+```bash  theme={"system"}
+ollama launch droid
+```
+
+To configure without launching:
+
+```shell  theme={"system"}
+ollama launch droid --config
+```
+
+### Manual setup
 
 Add a local configuration block to `~/.factory/config.json`:
 

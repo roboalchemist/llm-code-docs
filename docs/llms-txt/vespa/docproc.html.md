@@ -163,7 +163,7 @@ Specifies configuration for the thread pool used by document processor chains. A
 
 Number of worker threads per vCPU. Default value is `1`. The pool runs with `threads * vCPU` workers.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

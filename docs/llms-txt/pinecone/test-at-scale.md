@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/get-started/test-at-scale.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Test Pinecone at scale
 
 > Test Pinecone with a real-world dataset and semantic search workload.
@@ -400,8 +404,3 @@ You can check the costs for the import, queries, and storage in the Pinecone con
 ## 7. Clean up
 
 When you no longer need your test index, [delete it](/guides/manage-data/manage-indexes#delete-an-index) to avoid incurring unnecessary costs.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pinecone.io/llms.txt

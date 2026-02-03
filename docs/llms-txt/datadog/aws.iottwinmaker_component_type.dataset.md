@@ -4,8 +4,6 @@
 title: IoT TwinMaker Component Type
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > IoT TwinMaker Component Type
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.iottwinmaker_component_type.dataset/index.html
 ---
 
 # IoT TwinMaker Component Type
@@ -37,6 +35,6 @@ aws.iottwinmaker_component_type
 | property_groups           | core | string        | The maximum number of results to return at one time. The default is 25. Valid Range: Minimum value of 1. Maximum value of 250.                |
 | status                    | core | json          | The current status of the component type.                                                                                                     |
 | sync_source               | core | string        | The syncSource of the SyncJob, if this entity was created by a SyncJob.                                                                       |
-| tags                      | core | hstore        |
+| tags                      | core | hstore_csv    |
 | update_date_time          | core | timestamp     | The date and time when the component was last updated.                                                                                        |
 | workspace_id              | core | string        | The ID of the workspace that contains the component type.                                                                                     |

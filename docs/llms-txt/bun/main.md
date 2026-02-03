@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/util/main.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get the absolute path to the current entrypoint
 
 The `Bun.main` property contains the absolute path to the current entrypoint.
@@ -36,4 +40,4 @@ bun run foo.ts
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.

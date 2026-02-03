@@ -1,286 +1,404 @@
 # Source: https://docs.fireworks.ai/api-reference/resume-supervised-fine-tuning-job.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Resume Supervised Fine-tuning Job
+
+
 
 ## OpenAPI
 
 ````yaml post /v1/accounts/{account_id}/supervisedFineTuningJobs/{supervised_fine_tuning_job_id}:resume
+openapi: 3.1.0
+info:
+  title: Gateway REST API
+  version: 4.21.6
+servers:
+  - url: https://api.fireworks.ai
+security:
+  - BearerAuth: []
+tags:
+  - name: Gateway
 paths:
-  path: >-
-    /v1/accounts/{account_id}/supervisedFineTuningJobs/{supervised_fine_tuning_job_id}:resume
-  method: post
-  servers:
-    - url: https://api.fireworks.ai
-  request:
-    security:
-      - title: BearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                Bearer authentication using your Fireworks API key. Format:
-                Bearer <API_KEY>
-          cookie: {}
-    parameters:
-      path:
-        account_id:
+  /v1/accounts/{account_id}/supervisedFineTuningJobs/{supervised_fine_tuning_job_id}:resume:
+    post:
+      tags:
+        - Gateway
+      summary: Resume Supervised Fine-tuning Job
+      operationId: Gateway_ResumeSupervisedFineTuningJob
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: The Account Id
           schema:
-            - type: string
-              required: true
-              description: The Account Id
-        supervised_fine_tuning_job_id:
+            type: string
+        - name: supervised_fine_tuning_job_id
+          in: path
+          required: true
+          description: The Supervised Fine-tuning Job Id
           schema:
-            - type: string
-              required: true
-              description: The Supervised Fine-tuning Job Id
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties: {}
-            required: true
-            refIdentifier: '#/components/schemas/GatewayResumeSupervisedFineTuningJobBody'
-        examples:
-          example:
-            value: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              name:
-                allOf:
-                  - type: string
-                    readOnly: true
-              displayName:
-                allOf:
-                  - type: string
-              createTime:
-                allOf:
-                  - type: string
-                    format: date-time
-                    readOnly: true
-              completedTime:
-                allOf:
-                  - type: string
-                    format: date-time
-                    readOnly: true
-              dataset:
-                allOf:
-                  - type: string
-                    description: The name of the dataset used for training.
-              state:
-                allOf:
-                  - $ref: '#/components/schemas/gatewayJobState'
-                    readOnly: true
-              status:
-                allOf:
-                  - $ref: '#/components/schemas/gatewayStatus'
-                    readOnly: true
-              createdBy:
-                allOf:
-                  - type: string
-                    description: >-
-                      The email address of the user who initiated this
-                      fine-tuning job.
-                    readOnly: true
-              outputModel:
-                allOf:
-                  - type: string
-                    description: >-
-                      The model ID to be assigned to the resulting fine-tuned
-                      model. If not specified, the job ID will be used.
-              baseModel:
-                allOf:
-                  - type: string
-                    description: >-
-                      The name of the base model to be fine-tuned
-
-                      Only one of 'base_model' or 'warm_start_from' should be
-                      specified.
-              warmStartFrom:
-                allOf:
-                  - type: string
-                    description: >-
-                      The PEFT addon model in Fireworks format to be fine-tuned
-                      from
-
-                      Only one of 'base_model' or 'warm_start_from' should be
-                      specified.
-              jinjaTemplate:
-                allOf:
-                  - type: string
-                    title: >-
-                      The Jinja template for conversation formatting. If not
-                      specified, defaults to the base model's conversation
-                      template configuration
-              earlyStop:
-                allOf:
-                  - type: boolean
-                    description: >-
-                      Whether to stop training early if the validation loss does
-                      not improve.
-              epochs:
-                allOf:
-                  - type: integer
-                    format: int32
-                    description: The number of epochs to train for.
-              learningRate:
-                allOf:
-                  - type: number
-                    format: float
-                    description: The learning rate used for training.
-              maxContextLength:
-                allOf:
-                  - type: integer
-                    format: int32
-                    description: The maximum context length to use with the model.
-              loraRank:
-                allOf:
-                  - type: integer
-                    format: int32
-                    description: The rank of the LoRA layers.
-              wandbConfig:
-                allOf:
-                  - $ref: '#/components/schemas/gatewayWandbConfig'
-                    description: >-
-                      The Weights & Biases team/user account for logging
-                      training progress.
-              evaluationDataset:
-                allOf:
-                  - type: string
-                    description: The name of a separate dataset to use for evaluation.
-              isTurbo:
-                allOf:
-                  - type: boolean
-                    description: Whether to run the fine-tuning job in turbo mode.
-              evalAutoCarveout:
-                allOf:
-                  - type: boolean
-                    description: Whether to auto-carve the dataset for eval.
-              region:
-                allOf:
-                  - $ref: '#/components/schemas/gatewayRegion'
-                    description: The region where the fine-tuning job is located.
-              updateTime:
-                allOf:
-                  - type: string
-                    format: date-time
-                    description: The update time for the supervised fine-tuning job.
-                    readOnly: true
-              nodes:
-                allOf:
-                  - type: integer
-                    format: int32
-                    description: The number of nodes to use for the fine-tuning job.
-              batchSize:
-                allOf:
-                  - type: integer
-                    format: int32
-                    title: The batch size for sequence packing in training
-              mtpEnabled:
-                allOf:
-                  - type: boolean
-                    title: Whether to enable MTP (Model-Token-Prediction) mode
-              mtpNumDraftTokens:
-                allOf:
-                  - type: integer
-                    format: int32
-                    title: Number of draft tokens to use in MTP mode
-              mtpFreezeBaseModel:
-                allOf:
-                  - type: boolean
-                    title: >-
-                      Whether to freeze the base model parameters during MTP
-                      training
-              hiddenStatesGenConfig:
-                allOf:
-                  - $ref: '#/components/schemas/gatewayHiddenStatesGenConfig'
-                    description: >-
-                      Config for generating dataset with hidden states for
-                      training.
-              metricsFileSignedUrl:
-                allOf:
-                  - type: string
-                    title: The signed URL for the metrics file
-              gradientAccumulationSteps:
-                allOf:
-                  - type: integer
-                    format: int32
-                    title: Number of gradient accumulation steps
-              learningRateWarmupSteps:
-                allOf:
-                  - type: integer
-                    format: int32
-                    title: Number of steps for learning rate warm up
-            title: 'Next ID: 42'
-            refIdentifier: '#/components/schemas/gatewaySupervisedFineTuningJob'
-            requiredProperties:
-              - dataset
-        examples:
-          example:
-            value:
-              name: <string>
-              displayName: <string>
-              createTime: '2023-11-07T05:31:56Z'
-              completedTime: '2023-11-07T05:31:56Z'
-              dataset: <string>
-              state: JOB_STATE_UNSPECIFIED
-              status:
-                code: OK
-                message: <string>
-              createdBy: <string>
-              outputModel: <string>
-              baseModel: <string>
-              warmStartFrom: <string>
-              jinjaTemplate: <string>
-              earlyStop: true
-              epochs: 123
-              learningRate: 123
-              maxContextLength: 123
-              loraRank: 123
-              wandbConfig:
-                enabled: true
-                apiKey: <string>
-                project: <string>
-                entity: <string>
-                runId: <string>
-                url: <string>
-              evaluationDataset: <string>
-              isTurbo: true
-              evalAutoCarveout: true
-              region: REGION_UNSPECIFIED
-              updateTime: '2023-11-07T05:31:56Z'
-              nodes: 123
-              batchSize: 123
-              mtpEnabled: true
-              mtpNumDraftTokens: 123
-              mtpFreezeBaseModel: true
-              hiddenStatesGenConfig:
-                deployedModel: <string>
-                maxWorkers: 123
-                maxTokens: 123
-                inputOffset: 123
-                inputLimit: 123
-                maxContextLen: 123
-                regenerateAssistant: true
-                outputActivations: true
-                apiKey: <string>
-              metricsFileSignedUrl: <string>
-              gradientAccumulationSteps: 123
-              learningRateWarmupSteps: 123
-        description: A successful response.
-  deprecated: false
-  type: path
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GatewayResumeSupervisedFineTuningJobBody'
+        required: true
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewaySupervisedFineTuningJob'
 components:
   schemas:
+    GatewayResumeSupervisedFineTuningJobBody:
+      type: object
+    gatewaySupervisedFineTuningJob:
+      type: object
+      properties:
+        name:
+          type: string
+          readOnly: true
+        displayName:
+          type: string
+        createTime:
+          type: string
+          format: date-time
+          readOnly: true
+        completedTime:
+          type: string
+          format: date-time
+          readOnly: true
+        dataset:
+          type: string
+          description: The name of the dataset used for training.
+        awsS3Config:
+          $ref: '#/components/schemas/gatewayAwsS3Config'
+          description: The AWS configuration for S3 dataset access.
+        state:
+          $ref: '#/components/schemas/gatewayJobState'
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/gatewayStatus'
+          readOnly: true
+        createdBy:
+          type: string
+          description: The email address of the user who initiated this fine-tuning job.
+          readOnly: true
+        outputModel:
+          type: string
+          description: >-
+            The model ID to be assigned to the resulting fine-tuned model. If
+            not specified, the job ID will be used.
+        baseModel:
+          type: string
+          description: |-
+            The name of the base model to be fine-tuned
+            Only one of 'base_model' or 'warm_start_from' should be specified.
+        warmStartFrom:
+          type: string
+          description: |-
+            The PEFT addon model in Fireworks format to be fine-tuned from
+            Only one of 'base_model' or 'warm_start_from' should be specified.
+        jinjaTemplate:
+          type: string
+          title: >-
+            The Jinja template for conversation formatting. If not specified,
+            defaults to the base model's conversation template configuration
+        earlyStop:
+          type: boolean
+          description: >-
+            Whether to stop training early if the validation loss does not
+            improve.
+        epochs:
+          type: integer
+          format: int32
+          description: The number of epochs to train for.
+        learningRate:
+          type: number
+          format: float
+          description: The learning rate used for training.
+        maxContextLength:
+          type: integer
+          format: int32
+          description: The maximum context length to use with the model.
+        loraRank:
+          type: integer
+          format: int32
+          description: The rank of the LoRA layers.
+        wandbConfig:
+          $ref: '#/components/schemas/gatewayWandbConfig'
+          description: >-
+            The Weights & Biases team/user account for logging training
+            progress.
+        evaluationDataset:
+          type: string
+          description: The name of a separate dataset to use for evaluation.
+        isTurbo:
+          type: boolean
+          description: Whether to run the fine-tuning job in turbo mode.
+        evalAutoCarveout:
+          type: boolean
+          description: Whether to auto-carve the dataset for eval.
+        region:
+          $ref: '#/components/schemas/gatewayRegion'
+          description: The region where the fine-tuning job is located.
+        updateTime:
+          type: string
+          format: date-time
+          description: The update time for the supervised fine-tuning job.
+          readOnly: true
+        nodes:
+          type: integer
+          format: int32
+          description: The number of nodes to use for the fine-tuning job.
+        batchSize:
+          type: integer
+          format: int32
+          title: The batch size for sequence packing in training
+        mtpEnabled:
+          type: boolean
+          title: Whether to enable MTP (Model-Token-Prediction) mode
+        mtpNumDraftTokens:
+          type: integer
+          format: int32
+          title: Number of draft tokens to use in MTP mode
+        mtpFreezeBaseModel:
+          type: boolean
+          title: Whether to freeze the base model parameters during MTP training
+        metricsFileSignedUrl:
+          type: string
+          title: The signed URL for the metrics file
+        trainerLogsSignedUrl:
+          type: string
+          description: |-
+            The signed URL for the trainer logs file (stdout/stderr).
+            Only populated if the account has trainer log reading enabled.
+          readOnly: true
+        gradientAccumulationSteps:
+          type: integer
+          format: int32
+          title: Number of gradient accumulation steps
+        learningRateWarmupSteps:
+          type: integer
+          format: int32
+          title: Number of steps for learning rate warm up
+        batchSizeSamples:
+          type: integer
+          format: int32
+          description: The number of samples per gradient batch.
+        estimatedCost:
+          $ref: '#/components/schemas/typeMoney'
+          description: The estimated cost of the job.
+          readOnly: true
+        optimizerWeightDecay:
+          type: number
+          format: float
+          description: Weight decay (L2 regularization) for optimizer.
+      title: 'Next ID: 49'
+      required:
+        - dataset
+    gatewayAwsS3Config:
+      type: object
+      properties:
+        credentialsSecret:
+          type: string
+          title: >-
+            Reference to a Secret resource containing AWS access key
+            credentials.
+
+            Format: accounts/{account_id}/secrets/{secret_id}
+
+            The secret value must be JSON: {"aws_access_key_id": "AKIA...",
+            "aws_secret_access_key": "..."}
+        iamRoleArn:
+          type: string
+          title: >-
+            IAM role ARN to assume for accessing S3 datasets via GCP OIDC
+            federation.
+
+            Format: arn:aws:iam::account-id:role/role-name
+      description: |-
+        AwsS3Config is the configuration for AWS S3 dataset access which
+        will be used by a training job.
+    gatewayJobState:
+      type: string
+      enum:
+        - JOB_STATE_UNSPECIFIED
+        - JOB_STATE_CREATING
+        - JOB_STATE_RUNNING
+        - JOB_STATE_COMPLETED
+        - JOB_STATE_FAILED
+        - JOB_STATE_CANCELLED
+        - JOB_STATE_DELETING
+        - JOB_STATE_WRITING_RESULTS
+        - JOB_STATE_VALIDATING
+        - JOB_STATE_DELETING_CLEANING_UP
+        - JOB_STATE_PENDING
+        - JOB_STATE_EXPIRED
+        - JOB_STATE_RE_QUEUEING
+        - JOB_STATE_CREATING_INPUT_DATASET
+        - JOB_STATE_IDLE
+        - JOB_STATE_CANCELLING
+        - JOB_STATE_EARLY_STOPPED
+        - JOB_STATE_PAUSED
+      default: JOB_STATE_UNSPECIFIED
+      description: |-
+        JobState represents the state an asynchronous job can be in.
+
+         - JOB_STATE_PAUSED: Job is paused, typically due to account suspension or manual intervention.
+    gatewayStatus:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/gatewayCode'
+          description: The status code.
+        message:
+          type: string
+          description: A developer-facing error message in English.
+      title: >-
+        Mimics
+        [https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto]
+    gatewayWandbConfig:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Whether to enable wandb logging.
+        apiKey:
+          type: string
+          description: The API key for the wandb service.
+        project:
+          type: string
+          description: The project name for the wandb service.
+        entity:
+          type: string
+          description: The entity name for the wandb service.
+        runId:
+          type: string
+          description: The run ID for the wandb service.
+        url:
+          type: string
+          description: The URL for the wandb service.
+          readOnly: true
+      description: >-
+        WandbConfig is the configuration for the Weights & Biases (wandb)
+        logging which
+
+        will be used by a training job.
+    gatewayRegion:
+      type: string
+      enum:
+        - REGION_UNSPECIFIED
+        - US_IOWA_1
+        - US_VIRGINIA_1
+        - US_VIRGINIA_2
+        - US_ILLINOIS_1
+        - AP_TOKYO_1
+        - EU_LONDON_1
+        - US_ARIZONA_1
+        - US_TEXAS_1
+        - US_ILLINOIS_2
+        - EU_FRANKFURT_1
+        - US_TEXAS_2
+        - EU_PARIS_1
+        - EU_HELSINKI_1
+        - US_NEVADA_1
+        - EU_ICELAND_1
+        - EU_ICELAND_2
+        - US_WASHINGTON_1
+        - US_WASHINGTON_2
+        - EU_ICELAND_DEV_1
+        - US_WASHINGTON_3
+        - US_ARIZONA_2
+        - AP_TOKYO_2
+        - US_CALIFORNIA_1
+        - US_MISSOURI_1
+        - US_UTAH_1
+        - US_TEXAS_3
+        - US_ARIZONA_3
+        - US_GEORGIA_1
+        - US_GEORGIA_2
+        - US_WASHINGTON_4
+        - US_GEORGIA_3
+        - NA_BRITISHCOLUMBIA_1
+        - US_GEORGIA_4
+        - EU_ICELAND_3
+        - US_OHIO_1
+      default: REGION_UNSPECIFIED
+      description: |-
+        - US_IOWA_1: GCP us-central1 (Iowa)
+         - US_VIRGINIA_1: AWS us-east-1 (N. Virginia)
+         - US_VIRGINIA_2: OCI us-ashburn-1 [HIDE_FROM_DOCS]
+         - US_ILLINOIS_1: OCI us-chicago-1
+         - AP_TOKYO_1: OCI ap-tokyo-1
+         - EU_LONDON_1: OCI uk-london-1 [HIDE_FROM_DOCS]
+         - US_ARIZONA_1: OCI us-phoenix-1
+         - US_TEXAS_1: Lambda us-south-3 (C. Texas)
+         - US_ILLINOIS_2: Lambda us-midwest-1 (Illinois)
+         - EU_FRANKFURT_1: OCI eu-frankfurt-1
+         - US_TEXAS_2: Lambda us-south-2 (N. Texas)
+         - EU_PARIS_1: Nebius eu-west1 [HIDE_FROM_DOCS]
+         - EU_HELSINKI_1: Nebius eu-north1 [HIDE_FROM_DOCS]
+         - US_NEVADA_1: GCP us-west4 [HIDE_FROM_DOCS]
+         - EU_ICELAND_1: Crusoe eu-iceland1
+         - EU_ICELAND_2: Crusoe eu-iceland1 (network1)
+         - US_WASHINGTON_1: Voltage Park us-pyl-1 (Detach audio cluster from control_plane)
+         - US_WASHINGTON_2: Voltage Park us-seattle-2
+         - EU_ICELAND_DEV_1: Crusoe eu-iceland1 (dev) [HIDE_FROM_DOCS]
+         - US_WASHINGTON_3: Vultr Seattle 1
+         - US_ARIZONA_2: Azure westus3 (Anysphere BYOC) [HIDE_FROM_DOCS]
+         - AP_TOKYO_2: AWS ap-northeast-1
+         - US_CALIFORNIA_1: AWS us-west-1 (N. California)
+         - US_MISSOURI_1: Nebius us-central1 (Anysphere BYOC) [HIDE_FROM_DOCS]
+         - US_UTAH_1: GCP us-west3 (Utah)
+         - US_TEXAS_3: Crusoe us-southcentral1 [HIDE_FROM_DOCS]
+         - US_ARIZONA_3: Coreweave us-west-04a-1 [HIDE_FROM_DOCS]
+         - US_GEORGIA_1: DigitalOcean us-atl1
+         - US_GEORGIA_2: Vultr Atlanta 1
+         - US_WASHINGTON_4: Coreweave us-west-09b-1
+         - US_GEORGIA_3: Alicloud us-southeast-1
+         - NA_BRITISHCOLUMBIA_1: Fluidstack ca-west-1
+         - US_GEORGIA_4: DigitalOcean us-atl1 MI350X
+         - EU_ICELAND_3: Crusoe eu-iceland1 (Anysphere BYOC) [HIDE_FROM_DOCS]
+         - US_OHIO_1: Lambda us-midwest-2 (Ohio)
+      title: 'Next ID: 35'
+    typeMoney:
+      type: object
+      properties:
+        currencyCode:
+          type: string
+          description: The three-letter currency code defined in ISO 4217.
+        units:
+          type: string
+          format: int64
+          description: >-
+            The whole units of the amount.
+
+            For example if `currencyCode` is `"USD"`, then 1 unit is one US
+            dollar.
+        nanos:
+          type: integer
+          format: int32
+          description: >-
+            Number of nano (10^-9) units of the amount.
+
+            The value must be between -999,999,999 and +999,999,999 inclusive.
+
+            If `units` is positive, `nanos` must be positive or zero.
+
+            If `units` is zero, `nanos` can be positive, zero, or negative.
+
+            If `units` is negative, `nanos` must be negative or zero.
+
+            For example $-1.75 is represented as `units`=-1 and
+            `nanos`=-750,000,000.
+      description: Represents an amount of money with its currency type.
     gatewayCode:
       type: string
       enum:
@@ -426,145 +544,13 @@ components:
       title: >-
         Mimics
         [https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto]
-    gatewayHiddenStatesGenConfig:
-      type: object
-      properties:
-        deployedModel:
-          type: string
-        maxWorkers:
-          type: integer
-          format: int32
-        maxTokens:
-          type: integer
-          format: int32
-        inputOffset:
-          type: integer
-          format: int32
-        inputLimit:
-          type: integer
-          format: int32
-        maxContextLen:
-          type: integer
-          format: int32
-        regenerateAssistant:
-          type: boolean
-        outputActivations:
-          type: boolean
-        apiKey:
-          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
       description: >-
-        Config for generating dataset with hidden states for SFTJ or eagle
-        training.
-    gatewayJobState:
-      type: string
-      enum:
-        - JOB_STATE_UNSPECIFIED
-        - JOB_STATE_CREATING
-        - JOB_STATE_RUNNING
-        - JOB_STATE_COMPLETED
-        - JOB_STATE_FAILED
-        - JOB_STATE_CANCELLED
-        - JOB_STATE_DELETING
-        - JOB_STATE_WRITING_RESULTS
-        - JOB_STATE_VALIDATING
-        - JOB_STATE_DELETING_CLEANING_UP
-        - JOB_STATE_PENDING
-        - JOB_STATE_EXPIRED
-        - JOB_STATE_RE_QUEUEING
-        - JOB_STATE_CREATING_INPUT_DATASET
-        - JOB_STATE_IDLE
-        - JOB_STATE_CANCELLING
-        - JOB_STATE_EARLY_STOPPED
-      default: JOB_STATE_UNSPECIFIED
-      description: JobState represents the state an asynchronous job can be in.
-    gatewayRegion:
-      type: string
-      enum:
-        - REGION_UNSPECIFIED
-        - US_IOWA_1
-        - US_VIRGINIA_1
-        - US_ILLINOIS_1
-        - AP_TOKYO_1
-        - US_ARIZONA_1
-        - US_TEXAS_1
-        - US_ILLINOIS_2
-        - EU_FRANKFURT_1
-        - US_TEXAS_2
-        - EU_ICELAND_1
-        - EU_ICELAND_2
-        - US_WASHINGTON_1
-        - US_WASHINGTON_2
-        - US_WASHINGTON_3
-        - AP_TOKYO_2
-        - US_CALIFORNIA_1
-        - US_UTAH_1
-        - US_TEXAS_3
-        - US_GEORGIA_1
-        - US_GEORGIA_2
-        - US_WASHINGTON_4
-        - US_GEORGIA_3
-      default: REGION_UNSPECIFIED
-      title: |-
-        - US_IOWA_1: GCP us-central1 (Iowa)
-         - US_VIRGINIA_1: AWS us-east-1 (N. Virginia)
-         - US_ILLINOIS_1: OCI us-chicago-1
-         - AP_TOKYO_1: OCI ap-tokyo-1
-         - US_ARIZONA_1: OCI us-phoenix-1
-         - US_TEXAS_1: Lambda us-south-3 (C. Texas)
-         - US_ILLINOIS_2: Lambda us-midwest-1 (Illinois)
-         - EU_FRANKFURT_1: OCI eu-frankfurt-1
-         - US_TEXAS_2: Lambda us-south-2 (N. Texas)
-         - EU_ICELAND_1: Crusoe eu-iceland1
-         - EU_ICELAND_2: Crusoe eu-iceland1 (network1)
-         - US_WASHINGTON_1: Voltage Park us-pyl-1 (Detach audio cluster from control_plane)
-         - US_WASHINGTON_2: Voltage Park us-seattle-2
-         - US_WASHINGTON_3: Vultr Seattle 1
-         - AP_TOKYO_2: AWS ap-northeast-1
-         - US_CALIFORNIA_1: AWS us-west-1 (N. California)
-         - US_UTAH_1: GCP us-west3 (Utah)
-         - US_TEXAS_3: Crusoe us-southcentral1
-         - US_GEORGIA_1: DigitalOcean us-atl1
-         - US_GEORGIA_2: Vultr Atlanta 1
-         - US_WASHINGTON_4: Coreweave us-west-09b-1
-         - US_GEORGIA_3: Alicloud us-southeast-1
-    gatewayStatus:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/gatewayCode'
-          description: The status code.
-        message:
-          type: string
-          description: A developer-facing error message in English.
-      title: >-
-        Mimics
-        [https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto]
-    gatewayWandbConfig:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-          description: Whether to enable wandb logging.
-        apiKey:
-          type: string
-          description: The API key for the wandb service.
-        project:
-          type: string
-          description: The project name for the wandb service.
-        entity:
-          type: string
-          description: The entity name for the wandb service.
-        runId:
-          type: string
-          description: The run ID for the wandb service.
-        url:
-          type: string
-          description: The URL for the wandb service.
-          readOnly: true
-      description: >-
-        WandbConfig is the configuration for the Weights & Biases (wandb)
-        logging which
-
-        will be used by a training job.
+        Bearer authentication using your Fireworks API key. Format: Bearer
+        <API_KEY>
+      bearerFormat: API_KEY
 
 ````

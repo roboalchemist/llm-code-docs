@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-fastapi.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with FastAPI
 
 > Learn how to send your first email using FastAPI and the Resend Python SDK.
@@ -16,7 +20,7 @@ To get the most out of this guide, you'll need to:
 Get the Resend Python SDK.
 
 <CodeGroup>
-  ```bash Pip theme={null}
+  ```bash Pip theme={"theme":{"light":"github-light","dark":"vesper"}}
   pip install resend
   ```
 </CodeGroup>
@@ -25,24 +29,25 @@ Get the Resend Python SDK.
 
 The easiest way to send an email is by using the `html` parameter.
 
-```py main.py theme={null}
-import resend
+```py main.py theme={"theme":{"light":"github-light","dark":"vesper"}}
+import os
 from typing import Dict
 from fastapi import FastAPI
+import resend
 
-resend.api_key = "re_xxxxxxxxx"
+resend.api_key = os.environ["RESEND_API_KEY"]
 
 app = FastAPI()
 
 @app.post("/")
 def send_mail() -> Dict:
     params: resend.Emails.SendParams = {
-        "from": "onboarding@resend.dev",
+        "from": "Acme <onboarding@resend.dev>",
         "to": ["delivered@resend.dev"],
-        "subject": "Hello World",
+        "subject": "hello world",
         "html": "<strong>it works!</strong>",
     }
-    email: resend.Email = resend.Emails.send(params)
+    email: resend.Emails.SendResponse = resend.Emails.send(params)
     return email
 ```
 

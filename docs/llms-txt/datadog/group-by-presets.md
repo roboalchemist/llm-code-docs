@@ -4,7 +4,6 @@
 title: Group By and Presets
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > Getting started > Group By and Presets
-source_url: https://docs.datadoghq.com/getting-started/group-by-presets/index.html
 ---
 
 # Group By and Presets

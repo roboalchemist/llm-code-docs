@@ -12,6 +12,10 @@
 
 # Source: https://nextjs.org/docs/pages/guides/scripts.md
 
+# Source: https://nextjs.org/docs/app/guides/scripts.md
+
+# Source: https://nextjs.org/docs/pages/guides/scripts.md
+
 # Source: https://nextjs.org/docs/pages/guides/scripts.md
 
 # Source: https://nextjs.org/docs/pages/guides/scripts.md

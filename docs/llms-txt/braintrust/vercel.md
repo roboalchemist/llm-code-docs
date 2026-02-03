@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/integrations/sdk-integrations/vercel.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vercel
 
 Braintrust integrates with [Vercel](https://vercel.com) in two ways: through the **Vercel AI SDK** for code-based tracing, and through the **Vercel Marketplace** for dashboard-based observability.
@@ -22,11 +26,15 @@ Install the Braintrust SDK alongside the Vercel AI SDK. The Braintrust SDK suppo
 <CodeGroup>
   ```bash Typescript theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
   # pnpm
-  pnpm add braintrust ai
+  pnpm add braintrust ai zod
   # npm
-  npm install braintrust ai
+  npm install braintrust ai zod
   ```
 </CodeGroup>
+
+<Note>
+  Starting with Braintrust SDK v2.0.0, `zod` is a peer dependency and must be installed separately when using the Vercel AI SDK integration.
+</Note>
 
 Then use `wrapAISDK` to wrap the Vercel AI SDK functions (`generateText`, `streamText`, `generateObject`, `streamObject`).
 
@@ -305,8 +313,3 @@ In your Next.js project, create an `instrumentation.ts` file and call `registerO
 * [Vercel AI SDK documentation](https://sdk.vercel.ai/docs)
 * [Vercel Marketplace integration](https://vercel.com/integrations/braintrust)
 * [Vercel OpenTelemetry docs](https://vercel.com/docs/otel)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/graphql-schema.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # GraphQL Schema to Flatfile Blueprint Converter
 
 > Automatically generate Flatfile Space configurations by converting GraphQL schemas into Workbooks and Sheets, streamlining data import setup for GraphQL APIs.
@@ -18,7 +22,7 @@ The primary purpose is to significantly speed up the setup process for developer
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-graphql-schema
 ```
 
@@ -54,7 +58,7 @@ The plugin is configured via a `setupFactory` object passed to the `configureSpa
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { configureSpaceGraphQL } from '@flatfile/plugin-graphql-schema'
 
@@ -76,7 +80,7 @@ The plugin is configured via a `setupFactory` object passed to the `configureSpa
   })
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { configureSpaceGraphQL } from '@flatfile/plugin-graphql-schema'
 
@@ -102,7 +106,7 @@ The plugin is configured via a `setupFactory` object passed to the `configureSpa
 ### Filtering Sheets
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { configureSpaceGraphQL } from '@flatfile/plugin-graphql-schema'
 
@@ -122,7 +126,7 @@ The plugin is configured via a `setupFactory` object passed to the `configureSpa
   })
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { configureSpaceGraphQL } from '@flatfile/plugin-graphql-schema'
 
@@ -146,7 +150,7 @@ The plugin is configured via a `setupFactory` object passed to the `configureSpa
 ### Advanced Configuration
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { configureSpaceGraphQL } from '@flatfile/plugin-graphql-schema'
 
@@ -191,7 +195,7 @@ The plugin is configured via a `setupFactory` object passed to the `configureSpa
   })
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { configureSpaceGraphQL } from '@flatfile/plugin-graphql-schema'
   import type { FlatfileEvent } from '@flatfile/listener'
@@ -241,7 +245,7 @@ The plugin is configured via a `setupFactory` object passed to the `configureSpa
 ### Using Local Schema File
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { configureSpaceGraphQL } from '@flatfile/plugin-graphql-schema'
   import fs from 'fs'
@@ -267,7 +271,7 @@ The plugin is configured via a `setupFactory` object passed to the `configureSpa
   })
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { configureSpaceGraphQL } from '@flatfile/plugin-graphql-schema'
   import fs from 'fs'

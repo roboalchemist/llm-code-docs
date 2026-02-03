@@ -400,6 +400,11 @@ Stripe creates event types marked as **Selection required** only when at least o
 
   Occurs whenever a new Stripe-generated file is available for your account.
 
+- `financial_connections.account.account_numbers_updated`
+  `data.object` is one of: [`financial_connections.account`](https://docs.stripe.com/api#financial_connections_account_object)
+
+  Occurs when a Financial Connections account’s account numbers are updated.
+
 - `financial_connections.account.created`
   `data.object` is one of: [`financial_connections.account`](https://docs.stripe.com/api#financial_connections_account_object)
 
@@ -434,6 +439,11 @@ Stripe creates event types marked as **Selection required** only when at least o
   `data.object` is one of: [`financial_connections.account`](https://docs.stripe.com/api#financial_connections_account_object)
 
   Occurs when an Account’s `transaction_refresh` status transitions from `pending` to either `succeeded` or `failed`.
+
+- `financial_connections.account.upcoming_account_number_expiry`
+  `data.object` is one of: [`financial_connections.account`](https://docs.stripe.com/api#financial_connections_account_object)
+
+  Occurs when an Account’s tokenized account number is about to expire.
 
 - `identity.verification_session.canceled`
   `data.object` is one of: [`identity.verification_session`](https://docs.stripe.com/api#identity_verification_session_object)

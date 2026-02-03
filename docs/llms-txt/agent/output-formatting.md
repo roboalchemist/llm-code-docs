@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/output-formatting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Format Output for Better Readability
 
 When working with data in [Agent.ai](http://Agent.ai), you might find that the default output format isn't always easy to read or interpret. This is especially true when dealing with structured data like tweets, JSON, or other complex information. In this guide, we'll show you simple but powerful techniques to transform messy output into beautifully formatted, readable content.

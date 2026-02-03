@@ -4,12 +4,6 @@
 
 # Source: https://vitest.dev/config/ui.md
 
-# Source: https://vitest.dev/guide/ui.md
-
-# Source: https://vitest.dev/config/browser/ui.md
-
-# Source: https://vitest.dev/config/ui.md
-
 ---
 url: /config/ui.md
 ---

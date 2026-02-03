@@ -1,14 +1,16 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling/recap-extraction-basics.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/crawling/recap-extraction-basics.md
-
 # Recap of data extraction basics
 
 **Review our e-commerce website scraper and refresh our memory about its code and the programming techniques we used to extract and save the data.**
 
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
+
 ***
 
-We finished off the https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction.md of the *Web scraping basics for JavaScript devs* course by creating a web scraper in Node.js. The scraper collected all the on-sale products from https://warehouse-theme-metal.myshopify.com/collections/sales. Let's see the code with some comments added.
+We finished off the [first section](https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction.md) of the *Web scraping basics for JavaScript devs* course by creating a web scraper in Node.js. The scraper collected all the on-sale products from [Warehouse store](https://warehouse-theme-metal.myshopify.com/collections/sales). Let's see the code with some comments added.
 
 
 ```
@@ -65,12 +67,12 @@ writeFileSync('products.csv', csv);
 
 tip
 
-If some of the code is hard for you to understand, please review the https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction.md section. We will not go through the details again in this section about crawling.
+If some of the code is hard for you to understand, please review the [Basics of data extraction](https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction.md) section. We will not go through the details again in this section about crawling.
 
 caution
 
-We are using JavaScript features like `import` statements and top-level `await`. If you see errors like *Cannot use import outside of a module*, please review the https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/project-setup.md#modern-javascript, where we explain how to enable those features.
+We are using JavaScript features like `import` statements and top-level `await`. If you see errors like *Cannot use import outside of a module*, please review the [Project setup lesson](https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/project-setup.md#modern-javascript), where we explain how to enable those features.
 
 ## Next up
 
-The https://docs.apify.com/academy/web-scraping-for-beginners/crawling/finding-links.md is all about finding links to crawl on the https://warehouse-theme-metal.myshopify.com/collections/sales.
+The [next lesson](https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling/finding-links.md) is all about finding links to crawl on the [Warehouse store](https://warehouse-theme-metal.myshopify.com/collections/sales).

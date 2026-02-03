@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/conversational-video-interface/faq.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # FAQs
 
 > Frequently asked questions about Tavus's Conversational Video Interface.
@@ -440,7 +444,7 @@
         Tavus offers flexibility in choosing the LLM (Large Language Model) to power your conversational replicas. You can either use one of Tavus's own models or bring your own!
 
         * **Tavus-Provided LLMs:** You can choose between three different models:
-          * **`tavus-llama-4`:** The **default** choice if no LLM layer is provided. This is the smartest and fastest model, offering the best user-to-user (U2U) experience. It's on-premise, making it incredibly performant.
+          * **`tavus-gpt-oss`:** The **default** choice if no LLM layer is provided.
           * **`tavus-gpt-4o`:** Another viable option for complex interactions.
           * **`tavus-gpt-4o-mini`:** Faster than `tavus-gpt-4o` at the slight cost of performance.
 
@@ -450,7 +454,7 @@
       </Accordion>
 
       <Accordion title="What is the maximum context window supported by the default LLM?">
-        * The default LLM, `tavus-llama-4`, has a **limit of 32,000 tokens**.
+        * The default LLM, `tavus-gpt-oss`, has a **limit of 32,000 tokens**.
         * Contexts over **25,000 tokens** will experience noticeable performance degradation (slower response times).
 
         <Tip>
@@ -678,18 +682,6 @@
         * BAA compliant
 
         This ensures your data is handled with the highest levels of care and control.
-      </Accordion>
-
-      <Accordion title="How does Tavus protect customer data and support data privacy?">
-        Tavus is designed with strict privacy and data segregation standards:
-
-        * We never train our models on your data.
-        * Any data processed through Tavus is not retained by default.
-        * Conversations and Personas are managed using anony/mized IDs.
-        * You own and store all transcripts, conversation recordings, and outputs.
-        * Memory and knowledge base are stored internally and only utilize specific datasets related to the conversation.
-
-        This approach allows you to maintain full control and isolation over sensitive data, including for use cases that require private model training or strict regulatory compliance.
       </Accordion>
     </AccordionGroup>
   </Accordion>

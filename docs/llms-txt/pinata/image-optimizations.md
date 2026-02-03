@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/gateways/image-optimizations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Image Optimizations
 
 Pinata image optimizations provides image optimization functionality directly through your [Gateway](/gateways/retrieving-files). These capabilities that can significantly improve the load time and experience when viewing image content.

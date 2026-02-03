@@ -2,7 +2,7 @@
 
 # When to use Puppeteer Scraper
 
-You may have read in the https://apify.com/apify/web-scraper readme or somewhere else at Apify that https://apify.com/apify/puppeteer-scraper is more powerful and gives you more control over the browser, enabling you to do almost anything. But what does that really mean? In this article, we will talk about the differences in more detail and show you some minimal examples to strengthen that understanding.
+You may have read in the [Web Scraper](https://apify.com/apify/web-scraper) readme or somewhere else at Apify that [Puppeteer Scraper](https://apify.com/apify/puppeteer-scraper) is more powerful and gives you more control over the browser, enabling you to do almost anything. But what does that really mean? In this article, we will talk about the differences in more detail and show you some minimal examples to strengthen that understanding.
 
 ## What exactly is Puppeteer?
 
@@ -41,7 +41,7 @@ const bodyHTML = await context.page.evaluate(() => {
 
 The `context.page.evaluate()` call executes the provided function in the browser environment and passes back the return value back to the Node.js environment. One very important caveat though! Since we're in different environments, we cannot use our existing variables, such as `context` inside of the evaluated function, because they are not available there. Different environments, different variables.
 
-*See the* `page.evaluate()` *https://pptr.dev/#?product=Puppeteer&show=api-pageevaluatepagefunction-args for info on how to pass variables from Node.js to browser.*
+*See the* `page.evaluate()` *[documentation](https://pptr.dev/#?product=Puppeteer&show=api-pageevaluatepagefunction-args) for info on how to pass variables from Node.js to browser.*
 
 With the help of Apify SDK, we can even inject jQuery into the browser. You can use the `Pre goto function` input option to manipulate the page's environment before it loads.
 
@@ -96,7 +96,7 @@ await Promise.all([
 
 Will work as expected and after the `Promise.all()` call resolves, you will have the next page loaded and ready for scraping.
 
-Pay special attention to the `page.waitForNavigation()` (https://pptr.dev/#?product=Puppeteer&show=api-pagewaitfornavigationoptions) call which is very important. It pauses your script until the navigation completes. Without it, the execution would start immediately after the mouse click. It's also important that you place it before the click itself, otherwise it creates a race condition and your script will behave unpredictably.
+Pay special attention to the `page.waitForNavigation()` ([see docs](https://pptr.dev/#?product=Puppeteer&show=api-pagewaitfornavigationoptions)) call which is very important. It pauses your script until the navigation completes. Without it, the execution would start immediately after the mouse click. It's also important that you place it before the click itself, otherwise it creates a race condition and your script will behave unpredictably.
 
 You can go even further and navigate programmatically by calling:
 
@@ -120,7 +120,7 @@ context.page.on('request', (req) => console.log(req.url()));
 
 This can be useful in many ways, such as blocking unwanted assets or scripts from being downloaded, modifying request methods or faking responses, etc.
 
-*Explaining how to do interception properly is out of scope of this article. See https://pptr.dev/#?product=Puppeteer&show=api-pagesetrequestinterceptionvalue and the https://docs.apify.com/sdk/js/docs/api/puppeteer#puppeteeraddinterceptrequesthandler-promise for request interception.*
+*Explaining how to do interception properly is out of scope of this article. See [Puppeteer docs](https://pptr.dev/#?product=Puppeteer&show=api-pagesetrequestinterceptionvalue) and the [Apify SDK helper](https://docs.apify.com/sdk/js/docs/api/puppeteer#puppeteeraddinterceptrequesthandler-promise) for request interception.*
 
 ## Enqueueing JavaScript links
 
@@ -136,7 +136,7 @@ Since we're actually clicking in the page, which may or may not trigger some nas
 
 ## Plain form submit navigations
 
-This works out of the box. It's typically used on older websites such as https://www.remax.com.tr/ofis-office-franchise-girisimci-agent-arama. For a site like this you can set the `Clickable elements selector` and you're good to go:
+This works out of the box. It's typically used on older websites such as [Turkish Remax](https://www.remax.com.tr/ofis-office-franchise-girisimci-agent-arama). For a site like this you can set the `Clickable elements selector` and you're good to go:
 
 
 ```
@@ -146,7 +146,7 @@ This works out of the box. It's typically used on older websites such as https:/
 
 ## Form submit navigations with side-effects
 
-Those are similar to the ones above with an important caveat. Once you click the first thing, it usually modifies the page in a way that causes more clicking to become impossible. We deal with those by scraping the pages one by one, using the pagination "next" button. See http://www.maxwellrender.com/materials/ and use the following selector:
+Those are similar to the ones above with an important caveat. Once you click the first thing, it usually modifies the page in a way that causes more clicking to become impossible. We deal with those by scraping the pages one by one, using the pagination "next" button. See [Maxwell Materials](http://www.maxwellrender.com/materials/) and use the following selector:
 
 
 ```
@@ -156,7 +156,7 @@ Those are similar to the ones above with an important caveat. Once you click the
 
 ## Frontend navigations
 
-Websites often won't navigate away just to fetch the next set of results. They will do it in the background and update the displayed data. You can paginate such websites with either Web Scraper or Puppeteer Scraper. Try it on https://www.udemy.com/topic/javascript/ for example. Click the next button to load the next set of courses.
+Websites often won't navigate away just to fetch the next set of results. They will do it in the background and update the displayed data. You can paginate such websites with either Web Scraper or Puppeteer Scraper. Try it on [Udemy](https://www.udemy.com/topic/javascript/) for example. Click the next button to load the next set of courses.
 
 
 ```
@@ -170,15 +170,15 @@ await page.click('li a span.pagination-next');
 
 ## Using Apify SDK
 
-https://docs.apify.com/sdk/js is the library we used to build all of our scrapers. For power users, it is the best tool out there to scrape using JavaScript. If you're not yet ready to start writing your own Actors using SDK, Puppeteer Scraper enables you to use its features without having to worry about building your own Actors.
+[Apify SDK](https://docs.apify.com/sdk/js) is the library we used to build all of our scrapers. For power users, it is the best tool out there to scrape using JavaScript. If you're not yet ready to start writing your own Actors using SDK, Puppeteer Scraper enables you to use its features without having to worry about building your own Actors.
 
 The possibilities are endless, but to show you some examples:
 
-* Check out the https://docs.apify.com/sdk/js/docs/api/puppeteer#puppeteer.infiniteScroll function that enables scraping pages with infinite scroll in one line of code.
+* Check out the [Apify.utils.puppeteer.infiniteScroll()](https://docs.apify.com/sdk/js/docs/api/puppeteer#puppeteer.infiniteScroll) function that enables scraping pages with infinite scroll in one line of code.
 
-* https://docs.apify.com/sdk/js/docs/api/puppeteer#puppeteer.blockRequests allows you to block network requests based on URL patterns.
+* [Apify.utils.puppeteer.blockRequests()](https://docs.apify.com/sdk/js/docs/api/puppeteer#puppeteer.blockRequests) allows you to block network requests based on URL patterns.
 
-* https://docs.apify.com/sdk/js/docs/api/apify#module_Apify.openDataset lets you work with any dataset under your account.
+* [Apify.openDataset()](https://docs.apify.com/sdk/js/docs/api/apify#module_Apify.openDataset) lets you work with any dataset under your account.
 
 * Make HTTP requests with `Apify.utils.requestAsBrowser()` to fetch external resources.
 

@@ -4,24 +4,34 @@
 
 # Source: https://docs.unstructured.io/api-reference/legacy-api/partition/examples.md
 
-# Source: https://docs.unstructured.io/ui/examples.md
-
-# Source: https://docs.unstructured.io/open-source/how-to/examples.md
-
-# Source: https://docs.unstructured.io/api-reference/legacy-api/partition/examples.md
-
-# Source: https://docs.unstructured.io/ui/examples.md
-
-# Source: https://docs.unstructured.io/open-source/how-to/examples.md
-
-# Source: https://docs.unstructured.io/api-reference/partition/examples.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Examples
 
 > This page provides some examples of accessing Unstructured Partition Endpoint via different methods.
 
+<Note>
+  The following information applies to the legacy Unstructured Partition Endpoint.
+
+  Unstructured recommends that you use the
+  [on-demand jobs](/api-reference/workflow/overview#run-an-on-demand-job) functionality in the
+  [Unstructured API](/api-reference/overview) instead. Unstructured's on-demand jobs provide
+  many benefits over the legacy Unstructured Partition Endpoint, including support for:
+
+  * Production-level usage.
+  * Multiple local input files in batches.
+  * The latest and highest-performing models.
+  * Post-transform enrichments.
+  * All of Unstructured's chunking strategies.
+  * The generation of vector embeddings.
+
+  The Unstructured API also provides support for processing files and data in remote locations.
+</Note>
+
 To use these examples, you'll first need to set an environment variable named `UNSTRUCTURED_API_KEY`,
-representing your Unstructured API key. [Get your API key](/api-reference/partition/overview).
+representing your Unstructured API key. [Get your API key](/api-reference/legacy-api/partition/overview).
 
 Also, you'll need to set an environment variable named `UNSTRUCTURED_API_URL` to the
 value of the Unstructured API URL for your account. This API URL was provided to you when your Unstructured account was created.

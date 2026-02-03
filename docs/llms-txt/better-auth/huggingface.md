@@ -4,11 +4,7 @@
 
 Hugging Face provider setup and usage.
 
-***
 
-title: Hugging Face
-description: Hugging Face provider setup and usage.
----------------------------------------------------
 
 <Steps>
   <Step>

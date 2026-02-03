@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/ecosystem/discordjs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create a Discord bot
 
 Discord.js works out of the box with Bun. Let's write a simple bot. First create a directory and initialize it with `bun init`.
@@ -20,7 +24,7 @@ bun add discord.js
 
 ***
 
-Before we go further, we need to go to the [Discord developer portal](https://discord.com/developers/applications), login/signup, create a new *Application*, then create a new *Bot* within that application. Follow the [official guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot) for step-by-step instructions.
+Before we go further, we need to go to the [Discord developer portal](https://discord.com/developers/applications), login/signup, create a new *Application*, then create a new *Bot* within that application. Follow the [official guide](https://discordjs.guide/legacy/preparations/app-setup#creating-your-bot) for step-by-step instructions.
 
 ***
 
@@ -28,8 +32,8 @@ Once complete, you'll be presented with your bot's *private key*. Let's add this
 
 <Note>This is an example token that has already been invalidated.</Note>
 
-```txt .env.local icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
-DISCORD_TOKEN=DISCORD_TOKEN_REDACTED
+```ini .env.local icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+DISCORD_TOKEN=NzkyNzE1NDU0MTk2MDg4ODQy.X-hvzA.Ovy4MCQywSkoMRRclStW4xAYK7I
 ```
 
 ***

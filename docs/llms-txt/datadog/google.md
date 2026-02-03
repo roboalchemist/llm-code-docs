@@ -6,7 +6,6 @@ description: >-
   Configure Google as a SAML identity provider for Datadog with service provider
   details and attribute mapping for secure single sign-on.
 breadcrumbs: Docs > Account Management > Single Sign On With SAML > Google SAML IdP
-source_url: https://docs.datadoghq.com/saml/google/index.html
 ---
 
 # Google SAML IdP

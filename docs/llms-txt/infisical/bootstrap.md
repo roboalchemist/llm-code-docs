@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/cli/commands/bootstrap.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # infisical bootstrap
 
 > Automate the initial setup of a new Infisical instance for headless deployment and infrastructure-as-code workflows

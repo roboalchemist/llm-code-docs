@@ -1,134 +1,113 @@
 # Source: https://docs.anchorbrowser.io/api-reference/integrations/create-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Integration
 
 > Creates a new integration with a third-party service like 1Password. 
 The integration can then be used in browser sessions to automatically load secrets and credentials.
 
 
+
+
 ## OpenAPI
 
 ````yaml openapi-mintlify.yaml post /v1/integrations
+openapi: 3.1.0
+info:
+  title: AnchorBrowser API
+  version: 1.0.0
+  description: APIs to manage all browser-related actions and configuration.
+servers:
+  - url: https://api.anchorbrowser.io
+    description: API server
+security: []
 paths:
-  path: /v1/integrations
-  method: post
-  servers:
-    - url: https://api.anchorbrowser.io
-      description: API server
-  request:
-    security:
-      - title: api key header
-        parameters:
-          query: {}
-          header:
-            anchor-api-key:
-              type: apiKey
-              description: API key passed in the header
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              name:
-                allOf:
-                  - type: string
-                    minLength: 1
-                    description: Name for the integration
-                    example: My 1Password Integration
-              type:
-                allOf:
-                  - $ref: '#/components/schemas/IntegrationType'
-              credentials:
-                allOf:
-                  - $ref: '#/components/schemas/ServiceAccountCredentials'
-            required: true
-            refIdentifier: '#/components/schemas/CreateIntegrationRequest'
-            requiredProperties:
-              - name
-              - type
-              - credentials
-        examples:
-          onePasswordIntegration:
-            summary: Create a 1Password integration
-            value:
-              name: My 1Password Integration
-              type: 1PASSWORD
-              credentials:
-                type: serviceAccount
-                data:
-                  serviceAccount: ops_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
-                    properties:
-                      integration:
-                        $ref: '#/components/schemas/IntegrationItem'
-            refIdentifier: '#/components/schemas/IntegrationResponse'
-        examples:
-          example:
-            value:
-              data:
-                integration:
-                  id: 550e8400-e29b-41d4-a716-446655440000
+  /v1/integrations:
+    post:
+      tags:
+        - Integrations
+      summary: Create Integration
+      description: >
+        Creates a new integration with a third-party service like 1Password. 
+
+        The integration can then be used in browser sessions to automatically
+        load secrets and credentials.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateIntegrationRequest'
+            examples:
+              onePasswordIntegration:
+                summary: Create a 1Password integration
+                value:
                   name: My 1Password Integration
                   type: 1PASSWORD
-                  path: integrations/team-id/550e8400-e29b-41d4-a716-446655440000
-                  createdAt: '2024-01-01T00:00:00.000Z'
-        description: Integration created successfully
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: object
-                    properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Invalid request or validation failed
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Failed to create integration
-  deprecated: false
-  type: path
+                  credentials:
+                    type: serviceAccount
+                    data:
+                      serviceAccount: ops_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      responses:
+        '200':
+          description: Integration created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationResponse'
+        '400':
+          description: Invalid request or validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Failed to create integration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key_header: []
 components:
   schemas:
+    CreateIntegrationRequest:
+      type: object
+      required:
+        - name
+        - type
+        - credentials
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: Name for the integration
+          example: My 1Password Integration
+        type:
+          $ref: '#/components/schemas/IntegrationType'
+        credentials:
+          $ref: '#/components/schemas/ServiceAccountCredentials'
+    IntegrationResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            integration:
+              $ref: '#/components/schemas/IntegrationItem'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
     IntegrationType:
       type: string
       enum:
@@ -177,5 +156,11 @@ components:
           format: date-time
           description: Timestamp when the integration was created
           example: '2024-01-01T00:00:00.000Z'
+  securitySchemes:
+    api_key_header:
+      type: apiKey
+      in: header
+      name: anchor-api-key
+      description: API key passed in the header
 
 ````

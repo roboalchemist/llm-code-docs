@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/glossary/text-node.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Text Node
 
 > Learn how the Text Node in Giselle allows you to store and manage plain text, such as prompts, instructions, or data, directly within your workflows.

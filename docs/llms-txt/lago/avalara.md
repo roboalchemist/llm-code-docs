@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/integrations/taxes/avalara.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Avalara
 
 > Lago's native integration with Avalara allows you to automatically update your invoices with tax amounts sourced directly from Avalara. This integration ensures compliance with international tax regulations by calculating taxes for US & non-US obligations, like VAT.

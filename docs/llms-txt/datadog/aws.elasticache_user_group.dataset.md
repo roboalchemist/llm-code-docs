@@ -4,8 +4,6 @@
 title: ElastiCache User Group
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > ElastiCache User Group
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.elasticache_user_group.dataset/index.html
 ---
 
 # ElastiCache User Group
@@ -29,6 +27,6 @@ aws.elasticache_user_group
 | replication_groups     | core | array<string> | A list of replication groups that the user group can access.                                                                                  |
 | serverless_caches      | core | array<string> | Indicates which serverless caches the specified user group is associated with. Available for Valkey, Redis OSS and Serverless Memcached only. |
 | status                 | core | string        | Indicates user group status. Can be "creating", "active", "modifying", "deleting".                                                            |
-| tags                   | core | hstore        |
+| tags                   | core | hstore_csv    |
 | user_group_id          | core | string        | The ID of the user group.                                                                                                                     |
 | user_ids               | core | array<string> | The list of user IDs that belong to the user group.                                                                                           |

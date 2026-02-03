@@ -1,16 +1,16 @@
 # Source: https://docs.baseten.co/inference/integrations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integrations
 
 > Integrate your models with tools like LangChain, LiteLLM, and more.
 
 <CardGroup cols={2}>
-  <Card title="Chainlit" icon="link" iconType="light" href="https://github.com/Chainlit/cookbook/tree/main/baseten-llama-2-chat">
-    Build your own open-source ChatGPT with Baseten and Chainlit.
-  </Card>
-
   <Card title="Cline" icon="robot" iconType="light" href="https://www.baseten.co/blog/from-prompt-to-production-baseten-inference-in-your-ide-with-cline/">
-    Use frontier open-source models like Kimi K2 and Qwen3 Coder inside your IDE with Baseten and Cline.
+    Use frontier open-source models like Kimi K2 Thinking, GLM 4.6, DeepSeek V3.2 inside your IDE with Baseten and Cline.
   </Card>
 
   <Card title="HumanLayer" icon="person" iconType="light" href="https://www.humanlayer.dev">
@@ -31,6 +31,10 @@
 
   <Card title="LiveKit" icon="microphone-lines" iconType="light" href="https://docs.livekit.io/agents/integrations/tts/baseten/">
     Build real-time voice agents with TTS models hosted on Baseten.
+  </Card>
+
+  <Card title="Roo Code" icon="rabbit" iconType="light" href="https://docs.roocode.com/providers/baseten">
+    Use frontier open-source models like Kimi K2 Thinking, GLM 4.6, DeepSeek V3.2 inside your IDE with Baseten and Roo Code.
   </Card>
 
   <Card title="Vercel" icon="computer" iconType="light" href="https://ai-sdk.dev/providers/ai-sdk-providers/baseten">

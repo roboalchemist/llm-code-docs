@@ -12,8 +12,6 @@ As you enter training phrases for the invocation intent, the platform automatica
 
 ![](https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LpXFTiTgns4Ml77XGi3%2F-Ma4D1bNLbh_rRZXnqvS%2F-Ma4E8THSD1qjMhffJnK%2F5.7-dialog-skill-invocation-intent.png?alt=media\&token=4973bb5e-7599-4b31-be33-9d07aebbdd93)
 
-### 1. Intent key
-
 {% hint style="success" %}
 **Key Point**: You can also create a post-processing script in the Dialog skill.
 {% endhint %}

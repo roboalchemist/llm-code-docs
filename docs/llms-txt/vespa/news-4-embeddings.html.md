@@ -236,7 +236,7 @@ class ContentBasedModel(torch.nn.Module):
 The forward pass function is pretty much the same as before. You can see the entire training script in[train\_cold\_start.py](https://github.com/vespa-engine/sample-apps/blob/master/news/src/python/train_cold_start.py). Running this results in:
 
 ```
-$ python3 src/python/train_cold_start.py mind 10
+$ python3 src/python/train_cold_start.py mind 5
 ```
 
 ```
@@ -309,7 +309,7 @@ We are now ready to feed these embedding vectors to Vespa.
 
 Now that we've generated user and document embeddings, we can start using these to recommend news items to users. We'll start feeding these in the [next part of the tutorial](news-5-recommendation.html).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

@@ -45,7 +45,6 @@ In order to use a custom GraphQL Client, the Linear SDK must be extended with a 
 
 ```ts
 import { LinearError, LinearFetch, LinearRequest, LinearSdk, parseLinearError, UserConnection } from "@linear/sdk";
-import { DocumentNode, GraphQLClient, print } from "graphql";
 import { CustomGraphqlClient } from "./graphql-client";
 
 /** Create a custom client configured with the Linear API base url and API key */
@@ -55,11 +54,11 @@ const customGraphqlClient = new CustomGraphqlClient("https://api.linear.app/grap
 
 /** Create the custom request function */
 const customLinearRequest: LinearRequest = <Response, Variables>(
-  document: DocumentNode,
+  document: string,
   variables?: Variables
 ) => {
-  /** The request must take a GraphQL document and variables, then return a promise for the result */
-  return customGraphqlClient.request<Data>(print(document), variables).catch(error => {
+  /** The request must take a GraphQL document string and variables, then return a promise for the result */
+  return customGraphqlClient.request<Data>(document, variables).catch(error => {
     /** Optionally catch and parse errors from the Linear API */
     throw parseLinearError(error);
   });

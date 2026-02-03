@@ -1,16 +1,20 @@
 # Source: https://docs.asapp.com/agent-desk/virtual-agent/flows.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Flows
 
 > Learn how to build flows to define how the virtual agent interacts with the customer.
 
 Flows define how the virtual agent interacts with the customer. They can be as simple as an answer to an FAQ, or as complex as a multi-turn dialog used to offer self-service recommendations.
 
-Flows are built through a series of [nodes](getting-started#flow-nodes "Flow Nodes") that dictate the flow of the conversation as well as any business logic it needs to perform. Once built, flows can be reached from intents, or redirected to from other flows.
+Flows are built through a series of [nodes](getting-started#flow-nodes "Flow Nodes") that dictate the flow of the conversation as well as any business logic it needs to perform. Once built, customers can reach flows from intents, or other flows can redirect to them.
 
 ## Flows List
 
-In the flows page, you will find a list of existing flows for your business. The following information displays in table format:
+In the flows page, you will find a list of existing flows for your business. The system displays the following information in table format:
 
 * **Flow Name**
   A unique flow name, with letters and numbers only.
@@ -63,7 +67,7 @@ The node configuration panel allows you to manage settings and configure routing
 
 ### Toolbar
 
-The toolbar displays the flow name and allows to you perform a number of different functions:
+The toolbar displays the flow name and allows you to perform a number of different functions:
 
 1. [Version Dropdown:](#navigate-flow-versions "Navigate Flow Versions") view and toggle through multiple versions of the flow.
 2. [Version Indicators](#version-indicators "Version Indicators"): keep track of flow version deployment to Test or Production environments
@@ -95,9 +99,9 @@ The **Response** node allows you to configure virtual agent responses, send deep
 
 ### Content
 
-The **Content** section allows you to specify the responses and deeplinks that will be sent to the customer. You can add as many of either as you like by clicking **Add Content** and selecting from the menu.
+The **Content** section allows you to specify the responses and deeplinks that the system will send to the customer. You can add as many of either as you like by clicking **Add Content** and selecting from the menu.
 
-Once added, this content can be easily reordered by dragging, or deleted by hovering over the content block and clicking the trash icon. In the flow graph, you will be able to preview how the content will be displayed to the customer.
+Once added, this content can be easily reordered by dragging, or deleted by hovering over the content block and clicking the trash icon. In the flow graph, you will be able to preview how the system will display the content to the customer.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-14590ffb-dd26-1a48-5ebe-05db63fb8363.jpg?fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=68ee53c3bfcc7857ef86dec8ad88a890" data-og-width="1200" width="1200" data-og-height="1240" height="1240" data-path="image/uuid-14590ffb-dd26-1a48-5ebe-05db63fb8363.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-14590ffb-dd26-1a48-5ebe-05db63fb8363.jpg?w=280&fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=70372fe4f7557dceee3bad4547bf6411 280w, https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-14590ffb-dd26-1a48-5ebe-05db63fb8363.jpg?w=560&fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=95fbd862f31f30c9a3f221dc457b6c7a 560w, https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-14590ffb-dd26-1a48-5ebe-05db63fb8363.jpg?w=840&fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=a6b0bc8101779985f184f94280683891 840w, https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-14590ffb-dd26-1a48-5ebe-05db63fb8363.jpg?w=1100&fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=d59b2ab7abab0a8713b8fa5b99bfc33f 1100w, https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-14590ffb-dd26-1a48-5ebe-05db63fb8363.jpg?w=1650&fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=b69909bb6317d0bd6dd84044da919fa1 1650w, https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-14590ffb-dd26-1a48-5ebe-05db63fb8363.jpg?w=2500&fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=2dcf202a67359154a09440e8942214c5 2500w" />

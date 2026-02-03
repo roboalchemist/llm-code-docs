@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Continuous Integration Visibility > CI Pipeline Visibility in Datadog >
   Adding Custom Commands to Pipeline Traces
-source_url: https://docs.datadoghq.com/pipelines/custom_commands/index.html
 ---
 
 # Adding Custom Commands to Pipeline Traces

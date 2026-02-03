@@ -4,8 +4,6 @@
 title: Fraud Detector Detector
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Fraud Detector Detector
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.frauddetector_detector.dataset/index.html
 ---
 
 # Fraud Detector Detector
@@ -18,14 +16,14 @@ aws.frauddetector_detector
 
 ## Fields
 
-| Title             | ID   | Type   | Data Type                                        | Description |
-| ----------------- | ---- | ------ | ------------------------------------------------ | ----------- |
-| _key              | core | string |
-| account_id        | core | string |
-| arn               | core | string | The detector ARN.                                |
-| created_time      | core | string | Timestamp of when the detector was created.      |
-| description       | core | string | The detector description.                        |
-| detector_id       | core | string | The detector ID.                                 |
-| event_type_name   | core | string | The name of the event type.                      |
-| last_updated_time | core | string | Timestamp of when the detector was last updated. |
-| tags              | core | hstore |
+| Title             | ID   | Type       | Data Type                                        | Description |
+| ----------------- | ---- | ---------- | ------------------------------------------------ | ----------- |
+| _key              | core | string     |
+| account_id        | core | string     |
+| arn               | core | string     | The detector ARN.                                |
+| created_time      | core | string     | Timestamp of when the detector was created.      |
+| description       | core | string     | The detector description.                        |
+| detector_id       | core | string     | The detector ID.                                 |
+| event_type_name   | core | string     | The name of the event type.                      |
+| last_updated_time | core | string     | Timestamp of when the detector was last updated. |
+| tags              | core | hstore_csv |

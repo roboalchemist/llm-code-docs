@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/understanding.md
 
-# Source: https://docs.convex.dev/components/understanding.md
-
-# Source: https://docs.convex.dev/understanding.md
-
 # Convex Overview
 
 Convex is the open source, reactive database where queries are TypeScript code running right in the database. Just like React components react to state changes, Convex queries react to database changes.
@@ -174,6 +170,8 @@ Convex is designed around a small set of composable abstractions with strong gua
 Together, these features mean AI can focus on your business logic while Convex's guarantees prevent common failure modes.
 
 ## Learn more[​](#learn-more "Direct link to Learn more")
+
+[YouTube video player](https://www.youtube.com/embed/3d29eKJ2Vws)
 
 If you are intrigued about the details of how Convex pulls this all off, you can read Convex co-founder Sujay's excellent [How Convex Works](https://stack.convex.dev/how-convex-works) blog post.
 

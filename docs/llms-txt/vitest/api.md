@@ -4,12 +4,6 @@
 
 # Source: https://vitest.dev/config/api.md
 
-# Source: https://vitest.dev/api.md
-
-# Source: https://vitest.dev/config/browser/api.md
-
-# Source: https://vitest.dev/config/api.md
-
 ---
 url: /config/api.md
 ---

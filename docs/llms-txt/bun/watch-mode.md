@@ -2,17 +2,9 @@
 
 # Source: https://bun.com/docs/guides/test/watch-mode.md
 
-# Source: https://bun.com/docs/runtime/watch-mode.md
-
-# Source: https://bun.com/docs/guides/test/watch-mode.md
-
-# Source: https://bun.com/docs/runtime/watch-mode.md
-
-# Source: https://bun.com/docs/guides/test/watch-mode.md
-
-# Source: https://bun.com/docs/runtime/watch-mode.md
-
-# Source: https://bun.com/docs/guides/test/watch-mode.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Run tests in watch mode with Bun
 
@@ -33,4 +25,4 @@ This will restart the running Bun process whenever a file change is detected. It
 
 ***
 
-See [Docs > Test Runner](https://bun.sh/docs/cli/test) for complete documentation on the test runner.
+See [Docs > Test Runner](/test) for complete documentation on the test runner.

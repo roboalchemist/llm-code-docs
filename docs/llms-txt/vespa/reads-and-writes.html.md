@@ -118,5 +118,5 @@ The [Document API](document-api-guide.html) forwards requests to distributors on
 - [/document/v1/ API guide](document-v1-api-guide.html)
 - [/document/v1/ API reference](../reference/api/document-v1.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

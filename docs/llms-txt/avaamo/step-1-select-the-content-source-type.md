@@ -1,18 +1,4 @@
-# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/files/step-1-select-the-content-source-type.md
-
-# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/website/step-1-select-the-content-source-type.md
-
-# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/servicenow/step-1-select-the-content-source-type.md
-
-# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/sharepoint/step-1-select-the-content-source-type.md
-
-# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/files/step-1-select-the-content-source-type.md
-
-# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/website/step-1-select-the-content-source-type.md
-
-# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/servicenow/step-1-select-the-content-source-type.md
-
-# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/sharepoint/step-1-select-the-content-source-type.md
+# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/confluence/step-1-select-the-content-source-type.md
 
 # Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/files/step-1-select-the-content-source-type.md
 
@@ -21,6 +7,8 @@
 # Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/servicenow/step-1-select-the-content-source-type.md
 
 # Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/sharepoint/step-1-select-the-content-source-type.md
+
+# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/confluence/step-1-select-the-content-source-type.md
 
 # Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/files/step-1-select-the-content-source-type.md
 

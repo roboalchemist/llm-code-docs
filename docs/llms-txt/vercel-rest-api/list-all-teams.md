@@ -1,252 +1,116 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/teams/list-all-teams.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List all teams
 
 > Get a paginated list of all the Teams the authenticated User is a member of.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v2/teams
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v2/teams
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        limit:
+  /v2/teams:
+    get:
+      tags:
+        - teams
+      summary: List all teams
+      description: >-
+        Get a paginated list of all the Teams the authenticated User is a member
+        of.
+      operationId: getTeams
+      parameters:
+        - name: limit
+          description: Maximum number of Teams which may be returned.
+          in: query
           schema:
-            - type: number
-              description: Maximum number of Teams which may be returned.
-              example: 20
-        since:
+            description: Maximum number of Teams which may be returned.
+            example: 20
+            type: number
+        - name: since
+          description: >-
+            Timestamp (in milliseconds) to only include Teams created since
+            then.
+          in: query
           schema:
-            - type: number
-              description: >-
-                Timestamp (in milliseconds) to only include Teams created since
-                then.
-              example: 1540095775951
-        until:
+            description: >-
+              Timestamp (in milliseconds) to only include Teams created since
+              then.
+            example: 1540095775951
+            type: number
+        - name: until
+          description: >-
+            Timestamp (in milliseconds) to only include Teams created until
+            then.
+          in: query
           schema:
-            - type: number
-              description: >-
-                Timestamp (in milliseconds) to only include Teams created until
-                then.
-              example: 1540095775951
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getTeams
-        lang: go
-        source: "package main\n\nimport(\n\t\"os\"\n\t\"github.com/vercel/vercel\"\n\t\"context\"\n\t\"log\"\n)\n\nfunc main() {\n    s := vercel.New(\n        vercel.WithSecurity(os.Getenv(\"VERCEL_BEARER_TOKEN\")),\n    )\n\n    ctx := context.Background()\n    res, err := s.Teams.GetTeams(ctx, vercel.Float64(20), vercel.Float64(1540095775951), vercel.Float64(1540095775951))\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Object != nil {\n        // handle response\n    }\n}"
-      - label: getTeams
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.teams.getTeams({
-              limit: 20,
-              since: 1540095775951,
-              until: 1540095775951,
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              teams:
-                allOf:
-                  - items:
+            description: >-
+              Timestamp (in milliseconds) to only include Teams created until
+              then.
+            example: 1540095775951
+            type: number
+      responses:
+        '200':
+          description: A paginated list of teams.
+          content:
+            application/json:
+              schema:
+                properties:
+                  teams:
+                    items:
                       oneOf:
                         - $ref: '#/components/schemas/Team'
                         - $ref: '#/components/schemas/TeamLimited'
                     type: array
-              pagination:
-                allOf:
-                  - $ref: '#/components/schemas/Pagination'
-            description: A paginated list of teams.
-            requiredProperties:
-              - teams
-              - pagination
-        examples:
-          example:
-            value:
-              teams:
-                - connect:
-                    enabled: true
-                  creatorId: R6efeCJQ2HKXywuasPDc0fOWB
-                  updatedAt: 1611796915677
-                  emailDomain: example.com
-                  saml:
-                    connection:
-                      type: OktaSAML
-                      status: linked
-                      state: active
-                      connectedAt: 1611796915677
-                      lastReceivedWebhookEvent: 1611796915677
-                    directory:
-                      type: OktaSAML
-                      state: active
-                      connectedAt: 1611796915677
-                      lastReceivedWebhookEvent: 1611796915677
-                    enforced: true
-                    defaultRedirectUri: vercel.com
-                    roles: {}
-                  inviteCode: hasihf9e89
-                  description: >-
-                    Our mission is to make cloud computing accessible to
-                    everyone.
-                  defaultRoles:
-                    teamRoles:
-                      - OWNER
-                    teamPermissions:
-                      - IntegrationManager
-                  stagingPrefix: <string>
-                  resourceConfig:
-                    concurrentBuilds: 123
-                    elasticConcurrencyEnabled: true
-                    edgeConfigSize: 123
-                    edgeConfigs: 123
-                    kvDatabases: 123
-                    blobStores: 123
-                    postgresDatabases: 123
-                    buildEntitlements:
-                      enhancedBuilds: true
-                  previewDeploymentSuffix: example.dev
-                  platform: true
-                  disableHardAutoBlocks: 123
-                  remoteCaching:
-                    enabled: true
-                  defaultDeploymentProtection:
-                    passwordProtection:
-                      deploymentType: <string>
-                    ssoProtection:
-                      deploymentType: <string>
-                  defaultExpirationSettings:
-                    expirationDays: 123
-                    expirationDaysProduction: 123
-                    expirationDaysCanceled: 123
-                    expirationDaysErrored: 123
-                    deploymentsToKeep: 123
-                  enablePreviewFeedback: default
-                  enableProductionFeedback: default
-                  sensitiveEnvironmentVariablePolicy: default
-                  hideIpAddresses: true
-                  hideIpAddressesInLogDrains: true
-                  ipBuckets:
-                    - bucket: <string>
-                      supportUntil: 123
-                  id: team_nllPyCtREAqxxdyFKbbMDlxd
-                  slug: my-team
-                  name: My Team
-                  avatar: 6eb07268bcfadd309905ffb1579354084c24655c
-                  membership:
-                    uid: <string>
-                    entitlements:
-                      - entitlement: <string>
-                    teamId: <string>
-                    confirmed: true
-                    accessRequestedAt: 123
-                    role: OWNER
-                    teamRoles:
-                      - OWNER
-                    teamPermissions:
-                      - IntegrationManager
-                    createdAt: 123
-                    created: 123
-                    joinedFrom:
-                      origin: link
-                      commitId: <string>
-                      repoId: <string>
-                      repoPath: <string>
-                      gitUserId: <string>
-                      gitUserLogin: <string>
-                      ssoUserId: <string>
-                      ssoConnectedAt: 123
-                      idpUserId: <string>
-                      dsyncUserId: <string>
-                      dsyncConnectedAt: 123
-                  createdAt: 1630748523395
-              pagination:
-                count: 20
-                next: 1540095775951
-                prev: 1540095775951
-        description: A paginated list of teams.
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401': {}
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-  deprecated: false
-  type: path
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+                required:
+                  - pagination
+                  - teams
+                type: object
+                description: A paginated list of teams.
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: ''
+        '403':
+          description: You do not have permission to access this resource.
+      security:
+        - bearerToken: []
 components:
   schemas:
-    Pagination:
-      properties:
-        count:
-          type: number
-          description: Amount of items in the current page.
-          example: 20
-        next:
-          nullable: true
-          type: number
-          description: Timestamp that must be used to request the next page.
-          example: 1540095775951
-        prev:
-          nullable: true
-          type: number
-          description: Timestamp that must be used to request the previous page.
-          example: 1540095775951
-      required:
-        - count
-        - next
-        - prev
-      type: object
-      description: >-
-        This object contains information related to the pagination of the
-        current request, including the necessary parameters to get the next or
-        previous page of data.
     Team:
       properties:
         connect:
           properties:
             enabled:
               type: boolean
+              enum:
+                - false
+                - true
           type: object
         creatorId:
           type: string
@@ -291,11 +155,29 @@ components:
                     Timestamp (in milliseconds) of when the last webhook event
                     was received from WorkOS.
                   example: 1611796915677
+                lastSyncedAt:
+                  type: number
+                  description: >-
+                    Timestamp (in milliseconds) of when the last directory sync
+                    was performed.
+                  example: 1611796915677
+                syncState:
+                  type: string
+                  enum:
+                    - SETUP
+                    - ACTIVE
+                  description: >-
+                    Controls whether directory sync events are processed. -
+                    'SETUP': Directory connected but role mappings not yet
+                    configured. Events are acknowledged but not processed. -
+                    'ACTIVE': Fully configured. Events are processed normally. -
+                    undefined: Legacy directory (pre-feature), treat as 'ACTIVE'
+                    for backwards compatibility.
               required:
-                - type
-                - status
-                - state
                 - connectedAt
+                - state
+                - status
+                - type
               type: object
               description: Information for the SAML Single Sign-On configuration.
             directory:
@@ -320,14 +202,35 @@ components:
                     Timestamp (in milliseconds) of when the last webhook event
                     was received from WorkOS.
                   example: 1611796915677
+                lastSyncedAt:
+                  type: number
+                  description: >-
+                    Timestamp (in milliseconds) of when the last directory sync
+                    was performed.
+                  example: 1611796915677
+                syncState:
+                  type: string
+                  enum:
+                    - SETUP
+                    - ACTIVE
+                  description: >-
+                    Controls whether directory sync events are processed. -
+                    'SETUP': Directory connected but role mappings not yet
+                    configured. Events are acknowledged but not processed. -
+                    'ACTIVE': Fully configured. Events are processed normally. -
+                    undefined: Legacy directory (pre-feature), treat as 'ACTIVE'
+                    for backwards compatibility.
               required:
-                - type
-                - state
                 - connectedAt
+                - state
+                - type
               type: object
               description: Information for the Directory Sync configuration.
             enforced:
               type: boolean
+              enum:
+                - false
+                - true
               description: >-
                 When `true`, interactions with the Team **must** be done with an
                 authentication token that has been authenticated with the Team's
@@ -428,6 +331,9 @@ components:
               description: The total amount of concurrent builds that can be used.
             elasticConcurrencyEnabled:
               type: boolean
+              enum:
+                - false
+                - true
               description: >-
                 Whether every build for this team / user has elastic concurrency
                 enabled automatically.
@@ -452,7 +358,21 @@ components:
               properties:
                 enhancedBuilds:
                   type: boolean
+                  enum:
+                    - false
+                    - true
               type: object
+            buildMachine:
+              properties:
+                default:
+                  type: string
+                  enum:
+                    - standard
+                    - enhanced
+                    - turbo
+                  description: Default build machine type for new builds
+              type: object
+              description: Build machine configuration
           type: object
         previewDeploymentSuffix:
           nullable: true
@@ -461,21 +381,31 @@ components:
           example: example.dev
         platform:
           type: boolean
+          enum:
+            - false
+            - true
           description: Whether the team is a platform team.
           example: true
         disableHardAutoBlocks:
           oneOf:
             - type: number
             - type: boolean
+              enum:
+                - false
+                - true
         remoteCaching:
           properties:
             enabled:
               type: boolean
+              enum:
+                - false
+                - true
           type: object
           description: Is remote caching enabled for this team
         defaultDeploymentProtection:
           properties:
             passwordProtection:
+              nullable: true
               properties:
                 deploymentType:
                   type: string
@@ -483,6 +413,7 @@ components:
                 - deploymentType
               type: object
             ssoProtection:
+              nullable: true
               properties:
                 deploymentType:
                   type: string
@@ -490,7 +421,9 @@ components:
                 - deploymentType
               type: object
           type: object
-          description: Default deployment protection for this team
+          description: >-
+            Default deployment protection for this team null indicates
+            protection is disabled
         defaultExpirationSettings:
           properties:
             expirationDays:
@@ -551,12 +484,18 @@ components:
         hideIpAddresses:
           nullable: true
           type: boolean
+          enum:
+            - false
+            - true
           description: >-
             Indicates if IP addresses should be accessible in observability
             (o11y) tooling
         hideIpAddressesInLogDrains:
           nullable: true
           type: boolean
+          enum:
+            - false
+            - true
           description: Indicates if IP addresses should be accessible in log drains
         ipBuckets:
           items:
@@ -569,6 +508,34 @@ components:
               - bucket
             type: object
           type: array
+        strictDeploymentProtectionSettings:
+          properties:
+            enabled:
+              type: boolean
+              enum:
+                - false
+                - true
+            updatedAt:
+              type: number
+          required:
+            - enabled
+            - updatedAt
+          type: object
+          description: >-
+            When enabled, deployment protection settings require stricter
+            permissions (owner-only).
+        nsnbConfig:
+          properties:
+            preference:
+              type: string
+              enum:
+                - auto-approval
+                - manual-approval
+                - block
+          required:
+            - preference
+          type: object
+          description: NSNB configuration for the team.
         id:
           type: string
           description: The Team's unique identifier.
@@ -606,6 +573,8 @@ components:
               type: string
             confirmed:
               type: boolean
+              enum:
+                - true
             accessRequestedAt:
               type: number
             role:
@@ -666,6 +635,7 @@ components:
                     - dsync
                     - feedback
                     - organization-teams
+                    - nsnb-auto-approve
                 commitId:
                   type: string
                 repoId:
@@ -693,9 +663,9 @@ components:
               type: object
           required:
             - confirmed
-            - role
-            - createdAt
             - created
+            - createdAt
+            - role
           type: object
           description: The membership of the authenticated User in relation to the Team.
         createdAt:
@@ -703,16 +673,16 @@ components:
           description: UNIX timestamp (in milliseconds) when the Team was created.
           example: 1630748523395
       required:
-        - creatorId
-        - updatedAt
-        - description
-        - stagingPrefix
-        - id
-        - slug
-        - name
         - avatar
-        - membership
         - createdAt
+        - creatorId
+        - description
+        - id
+        - membership
+        - name
+        - slug
+        - stagingPrefix
+        - updatedAt
       type: object
       description: Data representing a Team.
       additionalProperties: true
@@ -720,6 +690,8 @@ components:
       properties:
         limited:
           type: boolean
+          enum:
+            - true
           description: >-
             Property indicating that this Team data contains only limited
             information, due to the authentication token missing privileges to
@@ -731,8 +703,8 @@ components:
           items:
             type: string
             enum:
-              - scope
               - mfa
+              - scope
           type: array
         saml:
           properties:
@@ -762,11 +734,29 @@ components:
                     Timestamp (in milliseconds) of when the last webhook event
                     was received from WorkOS.
                   example: 1611796915677
+                lastSyncedAt:
+                  type: number
+                  description: >-
+                    Timestamp (in milliseconds) of when the last directory sync
+                    was performed.
+                  example: 1611796915677
+                syncState:
+                  type: string
+                  enum:
+                    - SETUP
+                    - ACTIVE
+                  description: >-
+                    Controls whether directory sync events are processed. -
+                    'SETUP': Directory connected but role mappings not yet
+                    configured. Events are acknowledged but not processed. -
+                    'ACTIVE': Fully configured. Events are processed normally. -
+                    undefined: Legacy directory (pre-feature), treat as 'ACTIVE'
+                    for backwards compatibility.
               required:
-                - type
-                - status
-                - state
                 - connectedAt
+                - state
+                - status
+                - type
               type: object
               description: Information for the SAML Single Sign-On configuration.
             directory:
@@ -791,14 +781,35 @@ components:
                     Timestamp (in milliseconds) of when the last webhook event
                     was received from WorkOS.
                   example: 1611796915677
+                lastSyncedAt:
+                  type: number
+                  description: >-
+                    Timestamp (in milliseconds) of when the last directory sync
+                    was performed.
+                  example: 1611796915677
+                syncState:
+                  type: string
+                  enum:
+                    - SETUP
+                    - ACTIVE
+                  description: >-
+                    Controls whether directory sync events are processed. -
+                    'SETUP': Directory connected but role mappings not yet
+                    configured. Events are acknowledged but not processed. -
+                    'ACTIVE': Fully configured. Events are processed normally. -
+                    undefined: Legacy directory (pre-feature), treat as 'ACTIVE'
+                    for backwards compatibility.
               required:
-                - type
-                - state
                 - connectedAt
+                - state
+                - type
               type: object
               description: Information for the Directory Sync configuration.
             enforced:
               type: boolean
+              enum:
+                - false
+                - true
               description: >-
                 When `true`, interactions with the Team **must** be done with an
                 authentication token that has been authenticated with the Team's
@@ -847,6 +858,8 @@ components:
               type: string
             confirmed:
               type: boolean
+              enum:
+                - true
             accessRequestedAt:
               type: number
             role:
@@ -907,6 +920,7 @@ components:
                     - dsync
                     - feedback
                     - organization-teams
+                    - nsnb-auto-approve
                 commitId:
                   type: string
                 repoId:
@@ -934,9 +948,9 @@ components:
               type: object
           required:
             - confirmed
-            - role
-            - createdAt
             - created
+            - createdAt
+            - role
           type: object
           description: The membership of the authenticated User in relation to the Team.
         createdAt:
@@ -944,17 +958,47 @@ components:
           description: UNIX timestamp (in milliseconds) when the Team was created.
           example: 1630748523395
       required:
+        - avatar
+        - createdAt
+        - id
         - limited
         - limitedBy
-        - id
-        - slug
-        - name
-        - avatar
         - membership
-        - createdAt
+        - name
+        - slug
       type: object
       description: >-
         A limited form of data representing a Team, due to the authentication
         token missing privileges to read the full Team data.
+    Pagination:
+      properties:
+        count:
+          type: number
+          description: Amount of items in the current page.
+          example: 20
+        next:
+          nullable: true
+          type: number
+          description: Timestamp that must be used to request the next page.
+          example: 1540095775951
+        prev:
+          nullable: true
+          type: number
+          description: Timestamp that must be used to request the previous page.
+          example: 1540095775951
+      required:
+        - count
+        - next
+        - prev
+      type: object
+      description: >-
+        This object contains information related to the pagination of the
+        current request, including the necessary parameters to get the next or
+        previous page of data.
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

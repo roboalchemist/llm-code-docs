@@ -31,5 +31,5 @@ To build vector indexes larger than available memory efficiently the procedure d
 5. Feed each of the types completely one by one, without applying queries at the same time.
 6. Once all the types are written, you can apply query traffic. Vespa will search across all the types by default, but it is possible to restrict to a subset using the [restrict](../reference/api/query.html#model.restrict) query parameter.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

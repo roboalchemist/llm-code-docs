@@ -1,23 +1,21 @@
 # Source: https://gitbook.com/docs/developers/gitbook-api/api-reference/translations.md
 
-# Source: https://gitbook.com/docs/documentation/zh/gitbook-agent/translations.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/gitbook-agent/translations.md
 
-# Source: https://gitbook.com/docs/documentation/fr/gitbook-agent/translations.md
+# Source: https://gitbook.com/docs/documentation/zh/gitbook-dai-li-agent/translations.md
 
-# Source: https://gitbook.com/docs/gitbook-agent/translations.md
-
-# Source: https://gitbook.com/docs/developers/gitbook-api/api-reference/translations.md
-
-# Source: https://gitbook.com/docs/documentation/zh/gitbook-agent/translations.md
-
-# Source: https://gitbook.com/docs/documentation/fr/gitbook-agent/translations.md
+# Source: https://gitbook.com/docs/documentation/fr/agent-gitbook/translations.md
 
 # Source: https://gitbook.com/docs/gitbook-agent/translations.md
 
 # Translations
 
 {% hint style="warning" %}
-Auto translations are currently in Beta. Let us know if you have any feedback or encounter any issues.
+Auto translations are currently in Beta. [Let us know](https://www.gitbook.com/contact) if you have any feedback or encounter any issues.
+{% endhint %}
+
+{% hint style="info" %}
+Only [organization admins](https://gitbook.com/docs/account-management/member-management/roles#admin) can create and access translations, as it’s [a billable feature](#pricing).
 {% endhint %}
 
 Auto translations make it easy to keep your documentation up-to-date in multiple languages, with minimal manual effort. You can create a space as a translation of another, and let GitBook Agent handle the rest.
@@ -79,7 +77,7 @@ Translations are a paid **monthly** add-on:
 
 Each month includes 50,000 words of translation for $25. After that, every additional 1,000 words costs $0.20. Your 50,000-word allowance resets at the start of each month.
 
-In your first translation, every word will count towards your bill. After that, only **pages** with new or updated words are charged. For example, if you edit your docs later, only the pages with new words will count towards your word limit — you won’t be re-billed for the entire document.&#x20;
+In your first translation, every word will count towards your bill. After that, only **pages** with new or updated words are charged. For example, if you edit your docs later, only the pages with new words will count towards your word limit — you won’t be re-billed for the entire document.
 
 {% hint style="warning" %}
 Be cautious when working on multiple translations with large pages, as translated word count includes all words within a page that contains a change — meaning if only a few words are changed in a large page, the entire page will be re-translated.

@@ -1,11 +1,13 @@
 # Source: https://turbo.build/guides/tools/tailwind.md
 
 # Tailwind CSS
-Description: Learn how to use Tailwind CSS in a Turborepo.
 
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
-import { Callout } from '#components/callout';
-import { Steps, Step } from '#components/steps';
+<CopyPrompt
+  title="Set up Tailwind CSS in a Turborepo"
+  prompt={
+  "Set up Tailwind CSS in this Turborepo.\n1) Create a shared Tailwind config package\n2) Configure the UI package to use it\n3) Set up applications to use the styles\n\nWalk me through each step."
+}
+/>
 
 [Tailwind CSS](https://tailwindcss.com/) is a CSS framework that allows you to rapidly build modern websites without ever leaving your HTML.
 
@@ -13,7 +15,7 @@ import { Steps, Step } from '#components/steps';
 
 If you'd rather use a template, this guide is walking through how to build [this Tailwind CSS + Turborepo template](https://github.com/vercel/turborepo/tree/main/examples/with-tailwind).
 
-<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
+<PackageManagerTabs>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx create-turbo@latest -e with-tailwind
@@ -37,11 +39,13 @@ If you'd rather use a template, this guide is walking through how to build [this
     bunx create-turbo@latest -e with-tailwind
     ```
   </Tab>
-</Tabs>
+</PackageManagerTabs>
 
 ## Guide
 
-<Callout type="info">This guide is for Tailwind CSS v4.</Callout>
+<Callout type="info">
+  This guide is for Tailwind CSS v4.
+</Callout>
 
 <Steps>
   <Step>
@@ -49,7 +53,7 @@ If you'd rather use a template, this guide is walking through how to build [this
 
     If you don't have an existing project, use [create-turbo](/docs/getting-started/installation) to create a new monorepo:
 
-    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
+    <PackageManagerTabs>
       <Tab value="pnpm">
         ```bash title="Terminal"
         pnpm dlx create-turbo@latest
@@ -73,7 +77,7 @@ If you'd rather use a template, this guide is walking through how to build [this
         bunx create-turbo@latest
         ```
       </Tab>
-    </Tabs>
+    </PackageManagerTabs>
   </Step>
 
   <Step>
@@ -87,7 +91,7 @@ If you'd rather use a template, this guide is walking through how to build [this
   <Step>
     ### Create a shared Tailwind CSS configuration package
 
-    First, build an [Internal Package](https://turborepo.com/docs/core-concepts/internal-packages) with four files:
+    First, build an [Internal Package](https://turborepo.dev/docs/core-concepts/internal-packages) with four files:
 
     <Tabs items={["package.json", "shared-styles.css", "postcss.config.js (Optional)"]}>
       <Tab value="package.json">
@@ -115,7 +119,7 @@ If you'd rather use a template, this guide is walking through how to build [this
         This `shared-styles.css` file will be shared to the libraries and applications in the repository. The variables shown will be available anywhere that the file is included.
 
         ```css title="./packages/tailwind-config/shared-styles.css"
-        @import 'tailwindcss';
+        @import "tailwindcss";
 
         @theme {
           --blue-1000: #2a8af6;
@@ -131,7 +135,7 @@ If you'd rather use a template, this guide is walking through how to build [this
         ```js title="./packages/tailwind-config/postcss.config.js"
         export const postcssConfig = {
           plugins: {
-            '@tailwindcss/postcss': {},
+            "@tailwindcss/postcss": {},
           },
         };
         ```
@@ -172,7 +176,7 @@ If you'd rather use a template, this guide is walking through how to build [this
         }
         ```
 
-        <Callout type="good-to-know">
+        <Callout type="info">
           Above, we've only included the code related to setting up Tailwind. The full
           package.json is
           [here](https://github.com/vercel/turborepo/tree/main/examples/with-tailwind/packages/ui/package.json).
@@ -216,7 +220,7 @@ If you'd rather use a template, this guide is walking through how to build [this
 
         ```css title="./packages/ui/src/styles.css"
         /* Component-level styles for the UI package */
-        @import 'tailwindcss' prefix(ui);
+        @import "tailwindcss" prefix(ui);
         ```
 
         <Callout type="info">
@@ -232,7 +236,7 @@ If you'd rather use a template, this guide is walking through how to build [this
 
     Install the packages you've created into your application.
 
-    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
+    <PackageManagerTabs>
       <Tab value="pnpm">
         ```bash title="Terminal"
         pnpm add @repo/ui @repo/tailwind-config --save-dev --filter=@repo/ui --filter=web
@@ -258,28 +262,28 @@ If you'd rather use a template, this guide is walking through how to build [this
         cd packages/ui && bun install @repo/ui @repo/tailwind-config --dev
         ```
       </Tab>
-    </Tabs>
+    </PackageManagerTabs>
 
     Then, configure the files in your application so the styles from the UI package are reflected in the application.
 
     <Tabs items={["globals.css", "layout.tsx", "postcss.config.js (Optional)"]}>
       <Tab value="globals.css">
         ```css title="./apps/web/app/globals.css"
-        @import 'tailwindcss';
-        @import '@repo/tailwind-config';
+        @import "tailwindcss";
+        @import "@repo/tailwind-config";
         ```
       </Tab>
 
       <Tab value="layout.tsx">
         ```tsx title="./apps/web/app/layout.tsx"
-        import '@repo/ui/styles.css';
-        import './globals.css';
+        import "@repo/ui/styles.css";
+        import "./globals.css";
         ```
       </Tab>
 
       <Tab value="postcss.config.js (Optional)">
         ```js title="./apps/web/postcss.config.js"
-        import { postcssConfig } from '@repo/tailwind-config/postcss';
+        import { postcssConfig } from "@repo/tailwind-config/postcss";
 
         export default postcssConfig;
         ```
@@ -287,3 +291,7 @@ If you'd rather use a template, this guide is walking through how to build [this
     </Tabs>
   </Step>
 </Steps>
+
+---
+
+[View full sitemap](/sitemap.md)

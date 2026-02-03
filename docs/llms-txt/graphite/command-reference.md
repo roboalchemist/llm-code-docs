@@ -1,5 +1,9 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/command-reference.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Command Reference
 
 > This reference documents every command and flag available in Graphite’s command-line interface.
@@ -166,6 +170,8 @@ Delete a branch and its Graphite metadata (local-only). Children will be restack
 
 #### flags
 
+`-c, --close`Close associated pull requests on GitHub.
+
 `--downstack`Also delete any ancestors of the specified branch.
 
 `-f, --force`Delete the branch even if it is not merged or closed.
@@ -223,7 +229,7 @@ Fold a branch's changes into its parent, update dependencies of descendants of t
 
 ### `gt freeze [branch]`
 
-Freezing a branch prevents local modifications to the branch including any restacks. You can still sync remote changes to the branch with `gt sync` or `gt get`. You can also build PRs on top of a frozen branch. Freezing can be useful when you want to stack on top of someone else's PRs without making any changes to them. This operation can be undone with `gt unfreeze`.
+Freeze specified branch and branches downstack of it. Freezing a branch prevents local modifications to the branch including any restacks. You can still sync remote changes to the branch with `gt sync` or `gt get`. You can also build PRs on top of a frozen branch. Freezing can be useful when you want to stack on top of someone else's PRs without making any changes to them. This operation can be undone with `gt unfreeze`.
 
 #### arguments
 
@@ -231,7 +237,7 @@ Freezing a branch prevents local modifications to the branch including any resta
 
 ### `gt get [branch]`
 
-For a given branch or PR number, sync branches from trunk to the given branch from remote, prompting the user to resolve any conflicts. If the branch passed to get already exists locally, any local branches upstack of the branch are also synced; to opt out of this behavior, use the --downstack flag. Note that remote-only branches upstack of the branch are not currently synced. If no branch is provided, sync the current stack.
+For a given branch or PR number, sync branches from trunk to the given branch from remote, prompting the user to resolve any conflicts. If the branch passed to get already exists locally, any local branches upstack of the branch are also synced; to opt out of this behavior, use the --downstack flag. Note that remote-only branches upstack of the branch are not synced by default; to do so, pass the --remote-upstack (-u) flag. If no branch is provided, sync the current stack.
 
 #### arguments
 
@@ -246,6 +252,8 @@ For a given branch or PR number, sync branches from trunk to the given branch fr
 `--restack`Restack any branches in the stack that can be restacked without conflicts (true by default; skip with --no-restack).
 
 `-U, --unfrozen`Checkout new branches as unfrozen (allow local edits)
+
+`-u, --remote-upstack`Include upstack PRs when fetching PR information from remote
 
 ### `gt guide [title]`
 
@@ -333,6 +341,8 @@ Modify the current branch by amending its commit or creating a new commit. Autom
 `-e, --edit`If passed, open an editor to edit the commit message. When creating a new commit, this flag is ignored.
 
 `--interactive-rebase`Ignore all other flags and start a git interactive rebase on the commits in this branch.
+
+`--into`Amend staged changes to the specified downstack branch. If no branch is provided, you will be prompted to select a branch.
 
 `-m, --message`The message for the new or amended commit. If passed, no editor is opened.
 
@@ -446,11 +456,11 @@ Create a branch that reverts a commit on the trunk branch. Currently experimenta
 
 Split the current branch into multiple branches.
 
-Has three forms: `gt split --by-commit`, `gt split --by-hunk`, and `gt split --by-file <pathspecs>`.
+Has three forms: `gt split --by-commit`, `gt split --by-hunk`, and `gt split --by-file <pathspec>`.
 
 * `gt split --by-commit` slices up the commit history, allowing you to select split points between existing commits.
 * `gt split --by-hunk` interactively stages changes to create new single-commit branches.
-* `gt split --by-file <pathspecs>` extracts files matching the pathspecs and splits them into a new parent branch.
+* `gt split --by-file <pathspec>` extracts files matching the pathspec and splits them into a new parent branch. Repeat the flag for multiple patterns (e.g., `gt split -f "*.json" -f "*.yaml"`).
 
 All forms must be run interactively except for `--by-file` which can run non-interactively.
 `gt split` without options will prompt for a splitting strategy.
@@ -461,7 +471,7 @@ All forms must be run interactively except for `--by-file` which can run non-int
 
 `-c, --commit, --by-commit`Split by commit - slice up the history of this branch.
 
-`-f, --file, --by-file`Split by file - takes a number of pathspecs and splits any matching files into a new parent branch.
+`-f, --file, --by-file`Split by file - takes a pathspec and splits any matching files into a new parent branch. Repeat the flag for multiple patterns.
 
 `-h, --hunk, --by-hunk`Split by hunk - split into new single-commit branches.
 
@@ -589,7 +599,7 @@ Undo the most recent Graphite mutations.
 
 ### `gt unfreeze [branch]`
 
-Freezing a branch prevents local modifications to the branch including any restacks. Unfreezing will enable local modifications to the branch. See `gt freeze` for more information.
+Unfreeze specified branch and branches upstack of it. Freezing a branch prevents local modifications to the branch including any restacks. Unfreezing will enable local modifications to the branch. See `gt freeze` for more information.
 
 #### arguments
 

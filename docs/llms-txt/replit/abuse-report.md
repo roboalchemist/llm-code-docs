@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/legal-and-security-info/abuse-report.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Reporting Abuse on Replit
 
 > At Replit, we strive to maintain a safe and welcoming environment for all our users. If you encounter abusive, harmful, or inappropriate content, we encourage you to report it immediately. We have established multiple channels to address various types of concerns efficiently. Here's how you can help

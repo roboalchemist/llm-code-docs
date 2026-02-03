@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-exceptions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # exceptions
 
 # `fastmcp.exceptions`
@@ -43,3 +47,7 @@ Object not found.
 ### `DisabledError` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/exceptions.py#L38" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 Object is disabled.
+
+### `AuthorizationError` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/exceptions.py#L42" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+Error when authorization check fails.

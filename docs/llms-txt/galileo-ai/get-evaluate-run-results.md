@@ -1,200 +1,133 @@
 # Source: https://docs.galileo.ai/api-reference/evaluate/get-evaluate-run-results.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Evaluate Run Results
 
 > Fetch evaluation results for a specific run including rows and aggregate information.
 
+
+
 ## OpenAPI
 
-````yaml https://api.acme.rungalileo.io/public/v1/openapi.json post /v1/evaluate/run-workflows
+````yaml https://api.staging.galileo.ai/public/v1/openapi.json post /v1/evaluate/run-workflows
+openapi: 3.1.0
+info:
+  title: FastAPI
+  version: 0.1.0
+servers:
+  - url: https://api.staging.galileo.ai
+    description: Galileo Public APIs - staging
+security: []
 paths:
-  path: /v1/evaluate/run-workflows
-  method: post
-  servers:
-    - url: https://api.acme.rungalileo.io
-      description: Galileo Public APIs - acme
-  request:
-    security:
-      - title: APIKeyHeader
-        parameters:
-          query: {}
-          header:
-            Galileo-API-Key:
-              type: apiKey
-          cookie: {}
-      - title: OAuth2PasswordBearer
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: oauth2
-          cookie: {}
-      - title: HTTPBasic
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: basic
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              starting_token:
-                allOf:
-                  - type: integer
-                    title: Starting Token
-                    default: 0
-              limit:
-                allOf:
-                  - type: integer
-                    title: Limit
-                    default: 100
-              project_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: uuid4
-                      - type: 'null'
-                    title: Project Id
-              project_name:
-                allOf:
-                  - anyOf:
-                      - type: string
-                      - type: 'null'
-                    title: Project Name
-              run_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: uuid4
-                      - type: 'null'
-                    title: Run Id
-              run_name:
-                allOf:
-                  - anyOf:
-                      - type: string
-                      - type: 'null'
-                    title: Run Name
-            required: true
-            title: EvaluateRunResultsRequest
-            refIdentifier: '#/components/schemas/EvaluateRunResultsRequest'
-        examples:
-          example:
-            value:
-              starting_token: 0
-              limit: 100
-              project_id: <string>
-              project_name: <string>
-              run_id: <string>
-              run_name: <string>
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              starting_token:
-                allOf:
-                  - type: integer
-                    title: Starting Token
-                    default: 0
-              limit:
-                allOf:
-                  - type: integer
-                    title: Limit
-                    default: 100
-              paginated:
-                allOf:
-                  - type: boolean
-                    title: Paginated
-                    default: false
-              next_starting_token:
-                allOf:
-                  - anyOf:
-                      - type: integer
-                      - type: 'null'
-                    title: Next Starting Token
-              workflows:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/BaseGalileoStep'
-                    type: array
-                    title: Workflows
-            title: WorkflowsReadResponse
-            description: Response model for workflow evaluation results
-            refIdentifier: '#/components/schemas/WorkflowsReadResponse'
-            requiredProperties:
-              - workflows
-        examples:
-          example:
-            value:
-              starting_token: 0
-              limit: 100
-              paginated: false
-              next_starting_token: 123
-              workflows:
-                - type: workflow
-                  input: <string>
-                  redacted_input: <string>
-                  output: <string>
-                  redacted_output: <string>
-                  name: ''
-                  created_at_ns: 123
-                  duration_ns: 0
-                  metadata: {}
-                  status_code: 123
-                  ground_truth: <string>
-                  root_workflow_id: <string>
-                  workflow_id: <string>
-                  step_id: <string>
-                  steps:
-                    - {}
-                  metrics:
-                    - name: <string>
-                      value: <any>
-                      status: <string>
-                      explanation: <string>
-                      rationale: <string>
-                      cost: 123
-                      model_alias: <string>
-                      num_judges: 123
-                      display_value: <any>
-                      data_type: unknown
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+  /v1/evaluate/run-workflows:
+    post:
+      tags:
+        - evaluate
+      summary: Get Evaluate Run Results
+      description: >-
+        Fetch evaluation results for a specific run including rows and aggregate
+        information.
+      operationId: get_evaluate_run_results_v1_evaluate_run_workflows_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EvaluateRunResultsRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowsReadResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - APIKeyHeader: []
+        - OAuth2PasswordBearer: []
+        - HTTPBasic: []
 components:
   schemas:
+    EvaluateRunResultsRequest:
+      properties:
+        starting_token:
+          type: integer
+          title: Starting Token
+          default: 0
+        limit:
+          type: integer
+          title: Limit
+          default: 100
+        project_id:
+          anyOf:
+            - type: string
+              format: uuid4
+            - type: 'null'
+          title: Project Id
+        project_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Project Name
+        run_id:
+          anyOf:
+            - type: string
+              format: uuid4
+            - type: 'null'
+          title: Run Id
+        run_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Run Name
+      type: object
+      title: EvaluateRunResultsRequest
+    WorkflowsReadResponse:
+      properties:
+        starting_token:
+          type: integer
+          title: Starting Token
+          default: 0
+        limit:
+          type: integer
+          title: Limit
+          default: 100
+        paginated:
+          type: boolean
+          title: Paginated
+          default: false
+        next_starting_token:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Next Starting Token
+        workflows:
+          items:
+            $ref: '#/components/schemas/BaseGalileoStep'
+          type: array
+          title: Workflows
+      type: object
+      required:
+        - workflows
+      title: WorkflowsReadResponse
+      description: Response model for workflow evaluation results
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     BaseGalileoStep:
       properties:
         type:
@@ -288,36 +221,27 @@ components:
       required:
         - input
       title: BaseGalileoStep
-    DataTypeOptions:
-      type: string
-      enum:
-        - unknown
-        - text
-        - label
-        - floating_point
-        - integer
-        - timestamp
-        - milli_seconds
-        - boolean
-        - uuid
-        - percentage
-        - dollars
-        - array
-        - template_label
-        - thumb_rating_percentage
-        - user_id
-        - text_offsets
-        - segments
-        - hallucination_segments
-        - thumb_rating
-        - score_rating
-        - star_rating
-        - tags_rating
-        - thumb_rating_aggregate
-        - score_rating_aggregate
-        - star_rating_aggregate
-        - tags_rating_aggregate
-      title: DataTypeOptions
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError
     NodeType:
       type: string
       enum:
@@ -381,26 +305,49 @@ components:
         - name
         - value
       title: StepMetric
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-              - type: string
-              - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-        - loc
-        - msg
-        - type
-      title: ValidationError
+    DataTypeOptions:
+      type: string
+      enum:
+        - unknown
+        - text
+        - label
+        - floating_point
+        - integer
+        - timestamp
+        - milli_seconds
+        - boolean
+        - uuid
+        - percentage
+        - dollars
+        - array
+        - template_label
+        - thumb_rating_percentage
+        - user_id
+        - text_offsets
+        - segments
+        - hallucination_segments
+        - thumb_rating
+        - score_rating
+        - star_rating
+        - tags_rating
+        - thumb_rating_aggregate
+        - score_rating_aggregate
+        - star_rating_aggregate
+        - tags_rating_aggregate
+      title: DataTypeOptions
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: Galileo-API-Key
+    OAuth2PasswordBearer:
+      type: oauth2
+      flows:
+        password:
+          scopes: {}
+          tokenUrl: https://api.staging.galileo.ai/login
+    HTTPBasic:
+      type: http
+      scheme: basic
 
 ````

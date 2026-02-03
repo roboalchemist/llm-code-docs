@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrinsert.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrinsert.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrinsert.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrinsert.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrinsert.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrinsert.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrinsert.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrinsert.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrinsert.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrinsert.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # JSON.ARRINSERT
 
@@ -26,15 +12,15 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the json entry.
 </ParamField>
 
-<ParamField body="path" type="string" default="$">
+<ParamField body="path" type="str" required>
   The path of the array.
 </ParamField>
 
-<ParamField body="index" type="integer" required>
+<ParamField body="index" type="int" required>
   The index where to insert the values.
 </ParamField>
 
@@ -44,12 +30,12 @@
 
 ## Response
 
-<ResponseField type="integer[]" required>
+<ResponseField type="List[int]" required>
   The length of the array after the insertion.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const length = await redis.json.arrinsert("key", "$.path.to.array", 2, "a", "b");
+  ```py Example theme={"system"}
+  length = redis.json.arrinsert("key", "$.path.to.array", 2, "a", "b")
   ```
 </RequestExample>

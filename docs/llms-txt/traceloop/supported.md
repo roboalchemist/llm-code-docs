@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/tracing/supported.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What's Supported?
 
 > A list of the models, vector DBs and frameworks that OpenLLMetry supports out of the box.
@@ -56,8 +60,3 @@ In the meantime, you can still use OpenLLMetry to report the [LLM and vector DB 
 | [LiteLLM](https://www.litellm.ai/)                              | ✅      | ❌          |
 | [LlamaIndex](https://www.llamaindex.ai/)                        | ✅      | ✅          |
 | [OpenAI Agents](https://github.com/openai/openai-agents-python) | ✅      | ❌          |
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

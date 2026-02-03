@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/agents/patterns/prompt-chaining.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prompt Chaining
 
 <img src="https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/prompt-chain-diagram.png?fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=9da3927de6a1ad5fb0f98f72cac0cf3e" data-og-width="2420" width="2420" data-og-height="558" height="558" data-path="img/workflow/agents/diagram/prompt-chain-diagram.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/prompt-chain-diagram.png?w=280&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=e9a735fdeb2b78dbf59354c452ac66a9 280w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/prompt-chain-diagram.png?w=560&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=f416bdab7c162b795d2f75d9cc1e6dcb 560w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/prompt-chain-diagram.png?w=840&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=540400910092635e06e56bdd43e2a1c6 840w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/prompt-chain-diagram.png?w=1100&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=58e8a04126d3d1cfa331b42c0773f93d 1100w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/prompt-chain-diagram.png?w=1650&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=fa20136d6c7b9505b6b4f475b5bf085c 1650w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/diagram/prompt-chain-diagram.png?w=2500&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=9dc6a4d288b55c9b854efb6b895f7ddc 2500w" />
@@ -8,12 +12,14 @@ This workflow involves chaining multiple LLM calls, where the output of one agen
 
 ```ts  theme={"system"}
 import { serve } from "@upstash/workflow/nextjs";
+import { agentWorkflow } from "@upstash/workflow-agents";
 import { WikipediaQueryRun } from "@langchain/community/tools/wikipedia_query_run";
 
 export const { POST } = serve(async (context) => {
-  const model = context.agents.openai('gpt-3.5-turbo');
+  const agents = agentWorkflow(context);
+  const model = agents.openai('gpt-3.5-turbo');
 
-  const agent1 = context.agents.agent({
+  const agent1 = agents.agent({
     model,
     name: 'firstAgent',
     maxSteps: 1,
@@ -21,7 +27,7 @@ export const { POST } = serve(async (context) => {
     tools: {}
   });
 
-  const agent2 = context.agents.agent({
+  const agent2 = agents.agent({
     model,
     name: 'secondAgent',
     // set to 2 as this agent will first request tools
@@ -38,7 +44,7 @@ export const { POST } = serve(async (context) => {
     }
   });
 
-  const agent3 = context.agents.agent({
+  const agent3 = agents.agent({
     model,
     name: 'thirdAgent',
     maxSteps: 1,
@@ -49,18 +55,18 @@ export const { POST } = serve(async (context) => {
   });
 
   // Chaining agents
-  const firstOutput = await context.agents.task({
+  const firstOutput = await agents.task({
     agent: agent1,
     prompt: "List 3 famous physicists."
   }).run();
 
-  const secondOutput = await context.agents.task({
+  const secondOutput = await agents.task({
     agent: agent2,
     prompt: `Describe the work of: ${firstOutput.text}`
   }).run();
   
 
-  const { text } = await context.agents.task({
+  const { text } = await agents.task({
     agent: agent3,
     prompt: `Summarize: ${secondOutput.text}`
   }).run();

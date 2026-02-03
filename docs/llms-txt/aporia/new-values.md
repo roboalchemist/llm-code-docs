@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/monitors/new-values.md
 
-# Source: https://docs.aporia.com/monitors-and-alerts/new-values.md
-
-# Source: https://docs.aporia.com/v1/monitors/new-values.md
-
 # New Values
 
 ### Why Monitor New Values?

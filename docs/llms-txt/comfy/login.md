@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/account/login.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Log in to your Comfy account
 
 > Access your Comfy account for ComfyUI to use all platform features and services.
@@ -94,10 +98,12 @@ Since not all ComfyUI deployments are on our domain authorization whitelist, we 
 
         <Warning>
           Since the API Key is only visible upon first creation, please save it immediately after creation. It cannot be viewed later, so please keep it safe.
-          Please note that you should not share your API Key with others.Once it leaked, you can delete it and create a new one.
+          Please note that you should not share your API Key with others. Once it leaked, you can delete it and create a new one.
         </Warning>
       </Step>
+    </Steps>
 
+    <Steps>
       <Step title="API Key Management">
         <img src="https://mintcdn.com/dripart/NmGUk_QSXQXRVtZP/images/interface/setting/user/user-login-api-key-5.jpg?fit=max&auto=format&n=NmGUk_QSXQXRVtZP&q=85&s=7ad65e12a293e4ddc3ad962e986871da" alt="API Key Management" data-og-width="2298" width="2298" data-og-height="1432" height="1432" data-path="images/interface/setting/user/user-login-api-key-5.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dripart/NmGUk_QSXQXRVtZP/images/interface/setting/user/user-login-api-key-5.jpg?w=280&fit=max&auto=format&n=NmGUk_QSXQXRVtZP&q=85&s=3a4e374cb24d27524a5aaa75638b1ed1 280w, https://mintcdn.com/dripart/NmGUk_QSXQXRVtZP/images/interface/setting/user/user-login-api-key-5.jpg?w=560&fit=max&auto=format&n=NmGUk_QSXQXRVtZP&q=85&s=301ad0bf4ebd6ffe3381d07e9ba312f3 560w, https://mintcdn.com/dripart/NmGUk_QSXQXRVtZP/images/interface/setting/user/user-login-api-key-5.jpg?w=840&fit=max&auto=format&n=NmGUk_QSXQXRVtZP&q=85&s=ceb156cfa577945c5ab38862e3f33f4a 840w, https://mintcdn.com/dripart/NmGUk_QSXQXRVtZP/images/interface/setting/user/user-login-api-key-5.jpg?w=1100&fit=max&auto=format&n=NmGUk_QSXQXRVtZP&q=85&s=48528443658153f9744b970444a1a18b 1100w, https://mintcdn.com/dripart/NmGUk_QSXQXRVtZP/images/interface/setting/user/user-login-api-key-5.jpg?w=1650&fit=max&auto=format&n=NmGUk_QSXQXRVtZP&q=85&s=c0d147abd07a62c5f7492bddc79f1d4b 1650w, https://mintcdn.com/dripart/NmGUk_QSXQXRVtZP/images/interface/setting/user/user-login-api-key-5.jpg?w=2500&fit=max&auto=format&n=NmGUk_QSXQXRVtZP&q=85&s=01c437b2f999314141d7c91cfd513c19 2500w" />
         For unused API Keys or those at risk of being leaked, you can click `Delete` to remove them to prevent unnecessary losses.

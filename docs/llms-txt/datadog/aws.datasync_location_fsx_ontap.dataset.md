@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > DDSQL Reference > Data Directory > DataSync Location for Amazon FSx for
   NetApp ONTAP
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.datasync_location_fsx_ontap.dataset/index.html
 ---
 
 # DataSync Location for Amazon FSx for NetApp ONTAP
@@ -31,4 +29,4 @@ aws.datasync_location_fsx_ontap
 | protocol                    | core | json          | Specifies the data transfer protocol that DataSync uses to access your Amazon FSx file system.                       |
 | security_group_arns         | core | array<string> | The security groups that DataSync uses to access your FSx for ONTAP file system.                                     |
 | storage_virtual_machine_arn | core | string        | The ARN of the storage virtual machine (SVM) on your FSx for ONTAP file system where you're copying data to or from. |
-| tags                        | core | hstore        |
+| tags                        | core | hstore_csv    |

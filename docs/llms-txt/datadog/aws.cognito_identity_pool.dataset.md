@@ -1,16 +1,14 @@
 # Source: https://docs.datadoghq.com/ddsql_reference/data_directory/aws/aws.cognito_identity_pool.dataset.md
 
 ---
-title: Cognito Identity Pools
+title: Cognito Identity Pool
 description: Datadog, the leading service for cloud-scale monitoring.
-breadcrumbs: Docs > DDSQL Reference > Data Directory > Cognito Identity Pools
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.cognito_identity_pool.dataset/index.html
+breadcrumbs: Docs > DDSQL Reference > Data Directory > Cognito Identity Pool
 ---
 
-# Cognito Identity Pools
+# Cognito Identity Pool
 
-This table represents the Cognito Identity Pools resource from Amazon Web Services.
+This table represents the Cognito Identity Pool resource from Amazon Web Services.
 
 ```
 aws.cognito_identity_pool
@@ -35,4 +33,4 @@ aws.cognito_identity_pool
 | roles                            | core | hstore        | The map of roles associated with this pool. Currently only authenticated and unauthenticated roles are supported.                                                                                                                                                                               |
 | saml_provider_arns               | core | array<string> | An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.                                                                                                                                                                                                           |
 | supported_login_providers        | core | hstore        | Optional key:value pairs mapping provider names to provider app IDs.                                                                                                                                                                                                                            |
-| tags                             | core | hstore        |
+| tags                             | core | hstore_csv    |

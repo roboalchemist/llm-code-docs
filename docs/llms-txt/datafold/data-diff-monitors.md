@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/data-monitoring/monitors/data-diff-monitors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Data Diff Monitors
 
 > Data Diff monitors compare datasets across or within databases, identifying row and column discrepancies with customizable scheduling and notifications.

@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/export-cli.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Export integration to Platform CLI
 
 > The Zapier Platform CLI (Command Line Interface) is a toolset you install and run in your local development environment. It allows you to build, test, and manage your Zapier integration through JavaScript code and terminal commands.

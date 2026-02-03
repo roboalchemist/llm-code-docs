@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/space-configure.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Flatfile Space Configuration Plugin
 
 > Programmatically set up and configure a new Flatfile Space with workbooks, sheets, documents, and metadata from a single configuration object.
@@ -16,7 +20,7 @@ This plugin is essential for developers who want to create templatized, repeatab
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-space-configure
 ```
 
@@ -60,7 +64,7 @@ The `setup` object has the following properties:
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { configureSpace } from '@flatfile/plugin-space-configure'
 
   export default function (listener) {
@@ -77,7 +81,7 @@ The `setup` object has the following properties:
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import type { FlatfileListener } from '@flatfile/listener'
   import { configureSpace } from '@flatfile/plugin-space-configure'
 
@@ -99,7 +103,7 @@ The `setup` object has the following properties:
 ### Configuration with Workbook and Sheets
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { configureSpace } from '@flatfile/plugin-space-configure'
 
   export default function (listener) {
@@ -133,7 +137,7 @@ The `setup` object has the following properties:
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import type { FlatfileListener } from '@flatfile/listener'
   import { configureSpace } from '@flatfile/plugin-space-configure'
 
@@ -172,7 +176,7 @@ The `setup` object has the following properties:
 ### Advanced Usage with Callback
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { configureSpace } from '@flatfile/plugin-space-configure'
   import api from '@flatfile/api'
 
@@ -213,7 +217,7 @@ The `setup` object has the following properties:
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import type { FlatfileListener } from '@flatfile/listener'
   import { configureSpace } from '@flatfile/plugin-space-configure'
   import api from '@flatfile/api'
@@ -259,7 +263,7 @@ The `setup` object has the following properties:
 ### Using Data Checklist Plugin
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { configureSpace, dataChecklistPlugin } from '@flatfile/plugin-space-configure'
 
   export default function (listener) {
@@ -276,7 +280,7 @@ The `setup` object has the following properties:
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import type { FlatfileListener } from '@flatfile/listener'
   import { configureSpace, dataChecklistPlugin } from '@flatfile/plugin-space-configure'
 
@@ -298,7 +302,7 @@ The `setup` object has the following properties:
 ### Error Handling Example
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { configureSpace } from '@flatfile/plugin-space-configure'
 
   export default function (listener) {
@@ -321,7 +325,7 @@ The `setup` object has the following properties:
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import type { FlatfileListener } from '@flatfile/listener'
   import { configureSpace } from '@flatfile/plugin-space-configure'
 

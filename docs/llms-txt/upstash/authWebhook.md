@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/examples/authWebhook.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Auth Provider Webhook
 
 This example demonstrates an authentication provider webhook process using Upstash Workflow.

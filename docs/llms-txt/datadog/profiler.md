@@ -1,10 +1,11 @@
+# Source: https://docs.datadoghq.com/getting_started/profiler.md
+
 # Source: https://docs.datadoghq.com/profiler.md
 
 ---
 title: Continuous Profiler
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Continuous Profiler
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Continuous Profiler
@@ -55,7 +56,7 @@ The Datadog Learning Center is full of hands-on courses to help you learn about 
 See [Profile Types](https://docs.datadoghq.com/profiler/profile_types/) for descriptions of the kinds of profile data collected for each supported language.
 
 {% image
-   source="https://datadog-docs.imgix.net/images/profiler/profile-types.d54490df9c84d66ec1a7f42c5978d6fc.png?auto=format"
+   source="https://datadog-docs.imgix.net/images/profiler/profile-types2.2d235ea865d10e1f9161ecc520fa879c.png?auto=format"
    alt="The list of profile types collected for Java applications" /%}
 
 ### Search profiles by tags{% #search-profiles-by-tags %}
@@ -63,7 +64,7 @@ See [Profile Types](https://docs.datadoghq.com/profiler/profile_types/) for desc
 [Use tags to search profiles](https://docs.datadoghq.com/profiler/search_profiles) across any dimensionâwhether it's a specific host, service, version, or any combination.
 
 {% video
-   url="https://datadog-docs.imgix.net/images/profiler/search_profiles2.mp4" /%}
+   url="https://datadog-docs.imgix.net/images/profiler/search_profiles4.mp4" /%}
 
 ### Track function performance over deployments{% #track-function-performance-over-deployments %}
 

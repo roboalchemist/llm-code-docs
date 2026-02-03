@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/openrouter/
+
 # OpenRouter
 
 [OpenRouter](https://openrouter.ai/) provides a unified interface for accessing various LLM APIs, including models from OpenAI, Meta, Perplexity, and others. It follows the OpenAI API format - see our [OpenAI provider documentation](/docs/providers/openai/) for base API details.

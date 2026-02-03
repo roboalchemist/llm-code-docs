@@ -2,17 +2,9 @@
 
 # Source: https://trigger.dev/docs/realtime/react-hooks/triggering.md
 
-# Source: https://trigger.dev/docs/triggering.md
-
-# Source: https://trigger.dev/docs/realtime/react-hooks/triggering.md
-
-# Source: https://trigger.dev/docs/triggering.md
-
-# Source: https://trigger.dev/docs/realtime/react-hooks/triggering.md
-
-# Source: https://trigger.dev/docs/triggering.md
-
-# Source: https://trigger.dev/docs/realtime/react-hooks/triggering.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Trigger hooks
 
@@ -39,7 +31,7 @@ We provide three hooks for triggering tasks from your frontend application:
 
 The `useTaskTrigger` hook allows you to trigger a task from your frontend application.
 
-```tsx  theme={null}
+```tsx  theme={"theme":"css-variables"}
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
 import { useTaskTrigger } from "@trigger.dev/react-hooks";
@@ -77,7 +69,7 @@ export function MyComponent({ publicAccessToken }: { publicAccessToken: string }
 
 The `submit` function triggers the task with the specified payload. You can additionally pass an optional [options](/triggering#options) argument to the `submit` function:
 
-```tsx  theme={null}
+```tsx  theme={"theme":"css-variables"}
 submit({ foo: "bar" }, { tags: ["tag1", "tag2"] });
 ```
 
@@ -85,7 +77,7 @@ submit({ foo: "bar" }, { tags: ["tag1", "tag2"] });
 
 You can use the `handle` object to initiate a subsequent [Realtime hook](/realtime/react-hooks/subscribe#userealtimerun) to subscribe to the run.
 
-```tsx  theme={null}
+```tsx  theme={"theme":"css-variables"}
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
 import { useTaskTrigger, useRealtimeRun } from "@trigger.dev/react-hooks";
@@ -134,7 +126,7 @@ We've also created some additional hooks that allow you to trigger tasks and sub
 
 The `useRealtimeTaskTrigger` hook allows you to trigger a task from your frontend application and then subscribe to the run in using Realtime:
 
-```tsx  theme={null}
+```tsx  theme={"theme":"css-variables"}
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
 import { useRealtimeTaskTrigger } from "@trigger.dev/react-hooks";
@@ -166,7 +158,7 @@ export function MyComponent({ publicAccessToken }: { publicAccessToken: string }
 
 The `useRealtimeTaskTriggerWithStreams` hook allows you to trigger a task from your frontend application and then subscribe to the run in using Realtime, and also receive any streams that are emitted by the task.
 
-```tsx  theme={null}
+```tsx  theme={"theme":"css-variables"}
 "use client"; // This is needed for Next.js App Router or other RSC frameworks
 
 import { useRealtimeTaskTriggerWithStreams } from "@trigger.dev/react-hooks";

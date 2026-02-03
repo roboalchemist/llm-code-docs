@@ -40,7 +40,7 @@ git clone abcdefgh1234567@git.eu.upsun.com:abcdefgh1234567.git project-name
 ## 2. Download your files
 
 Some files might not be stored in Git,
-such as data your app writes [in mounts](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts).
+such as data your app writes [in mounts](https://docs.upsun.com/create-apps/image-properties/mounts.md).
 
 You can download your files [using the CLI](https://docs.upsun.com/development/file-transfer.md#transfer-files-using-the-cli) or [using SSH](https://docs.upsun.com/development/file-transfer.md#transfer-files-using-an-ssh-client).
 

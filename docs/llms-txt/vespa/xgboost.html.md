@@ -6,6 +6,8 @@
 
 Vespa supports importing Gradient Boosting Decision Tree (GBDT) models trained with XGBoost.
 
+ **Warning:** Vespa only supports XGBoost models trained with XGBoost version 1.5 or earlier. Using models trained with later versions of XGBoost may result in prediction mismatches between Vespa and XGBoost's native predict functions.
+
 ## Exporting models from XGBoost
 
 Vespa supports importing XGBoost's JSON model dump, e.g. Python API[xgboost.Booster.dump\_model](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.Booster.dump_model). When dumping the trained model, XGBoost allows users to set the `dump_format` to `json`, and users can specify the feature names to be used in `fmap`.
@@ -152,7 +154,7 @@ schema xgboost {
 - It's also important to use the highest possible precision when reading Vespa features for training as Vespa outputs features using `double` precision. If the training routine rounds features to `float` or other more compact floating number representations, feature split decisions might differ in Vespa versus XGboost.
 - In a distributed setting when multiple nodes uses the model, text matching features such as `nativeRank`, `nativFieldMatch`, `bm25` and `fieldMatch`might differ, depending on which node produced the hit. The reason is that all these features use [term(n).significance](../reference/ranking/rank-features.html#query-features), which is computed locally indexed corpus. The `term(n).significance` feature is related to _Inverse Document Frequency (IDF)_. The `term(n).significance` should be set by a searcher in the container for global correctness as each node will estimate the significance values from the local corpus.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

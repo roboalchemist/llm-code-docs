@@ -170,7 +170,7 @@ There are three types of productions:
 
 The weight is a percentage integer denoting the importance of the produced term. The default is 100. In the query namespace the weight becomes the term weight, determining the relevance contribution of the term.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

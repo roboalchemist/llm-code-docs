@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/secret-rotation/aws-iam-user-secret.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AWS IAM User
 
 > Learn how to automatically rotate Access Key Id and Secret Key of AWS IAM Users.

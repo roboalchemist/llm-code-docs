@@ -4,11 +4,7 @@
 
 Better Auth client library for authentication.
 
-***
 
-title: Client
-description: Better Auth client library for authentication.
------------------------------------------------------------
 
 Better Auth offers a client library compatible with popular frontend frameworks like React, Vue, Svelte, and more. This client library includes a set of functions for interacting with the Better Auth server. Each framework's client library is built on top of a core client library that is framework-agnostic, so that all methods and hooks are consistently available across all client libraries.
 
@@ -16,7 +12,7 @@ Better Auth offers a client library compatible with popular frontend frameworks 
 
 If you haven't already, install better-auth.
 
-<CodeBlockTabs defaultValue="npm">
+<CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
   <CodeBlockTabsList>
     <CodeBlockTabsTrigger value="npm">
       npm
@@ -189,8 +185,8 @@ In addition to the standard methods, the client provides hooks to easily access 
   <Tab value="Svelte">
     ```svelte title="user.svelte"
     <script lang="ts">
-    import { client } from "$lib/client";
-    const session = client.useSession();
+    import { authClient } from "$lib/auth-client";
+    const session = authClient.useSession();
     </script>
 
     <div
@@ -231,11 +227,11 @@ In addition to the standard methods, the client provides hooks to easily access 
 
   <Tab value="Solid">
     ```tsx title="user.tsx"
-    import { client } from "~/lib/client";
+    import { authClient } from "~/lib/auth-client";
     import { Show } from 'solid-js';
 
     export default function Home() {
-        const session = client.useSession()
+        const session = authClient.useSession()
         return (
             <Show
                 when={session()}

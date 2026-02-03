@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/reference/api/known-limitations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Known limitations
 
 This page describes known limitations and feature restrictions in Pinecone.

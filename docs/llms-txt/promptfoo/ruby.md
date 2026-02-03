@@ -1,3 +1,7 @@
+# Source: https://www.promptfoo.dev/docs/providers/ruby/
+
+# Source: https://www.promptfoo.dev/docs/configuration/expected-outputs/ruby/
+
 # Ruby Assertions
 
 The `ruby` assertion allows you to provide a custom Ruby function to validate the LLM output.

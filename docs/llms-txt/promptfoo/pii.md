@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/pii/
+
 # PII Plugin
 
 The PII (Personally Identifiable Information) plugin tests an AI system's ability to protect sensitive personal data. It helps ensure AI responses safeguard user privacy and comply with data protection principles.

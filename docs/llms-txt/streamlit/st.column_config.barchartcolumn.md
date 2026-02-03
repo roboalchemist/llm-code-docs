@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/data/st.column_config/st.column_config.barchartcolumn
+
 # st.column_config.BarChartColumn
 
 Configure a bar chart column in `st.dataframe` or `st.data_editor`.

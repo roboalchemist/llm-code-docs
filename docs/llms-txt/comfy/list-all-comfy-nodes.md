@@ -1,147 +1,92 @@
 # Source: https://docs.comfy.org/api-reference/registry/list-all-comfy-nodes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # list all comfy-nodes
+
+
 
 ## OpenAPI
 
 ````yaml https://api.comfy.org/openapi get /comfy-nodes
+openapi: 3.0.2
+info:
+  title: Comfy API
+  version: '1.0'
+servers:
+  - url: https://api.comfy.org
+security: []
 paths:
-  path: /comfy-nodes
-  method: get
-  servers:
-    - url: https://api.comfy.org
-  request:
-    security: []
-    parameters:
-      path: {}
-      query:
-        pageSize:
+  /comfy-nodes:
+    get:
+      tags:
+        - Registry
+      summary: list all comfy-nodes
+      operationId: ListAllComfyNodes
+      parameters:
+        - in: query
+          name: pageSize
           schema:
-            - type: integer
-              default: 100
-        page:
+            default: 100
+            type: integer
+        - description: Page number (1-based indexing)
+          in: query
+          name: page
           schema:
-            - type: integer
-              description: Page number (1-based indexing)
-              default: 1
-        node_id:
+            default: 1
+            type: integer
+        - description: Filter by node ID
+          in: query
+          name: node_id
           schema:
-            - type: string
-              description: Filter by node ID
-        node_version:
+            type: string
+        - description: Filter by node version
+          in: query
+          name: node_version
           schema:
-            - type: string
-              description: Filter by node version
-        comfy_node_name:
+            type: string
+        - description: Filter by ComfyUI node name
+          in: query
+          name: comfy_node_name
           schema:
-            - type: string
-              description: Filter by ComfyUI node name
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              comfy_nodes:
-                allOf:
-                  - items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  comfy_nodes:
+                    items:
                       $ref: '#/components/schemas/ComfyNode'
                     type: array
-              total:
-                allOf:
-                  - description: Total number of comfy nodes
+                  total:
+                    description: Total number of comfy nodes
                     type: integer
-        examples:
-          example:
-            value:
-              comfy_nodes:
-                - category: <string>
-                  comfy_node_name: <string>
-                  deprecated: true
-                  description: <string>
-                  experimental: true
-                  function: <string>
-                  input_types: <string>
-                  output_is_list:
-                    - true
-                  policy: ComfyNodePolicyActive
-                  return_names: <string>
-                  return_types: <string>
-              total: 123
-        description: OK
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: string
-              message:
-                allOf:
-                  - &ref_1
-                    type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: &ref_2
-              - error
-              - message
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Bad request, invalid input data.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Unauthorized
-        examples: {}
-        description: Unauthorized
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Forbidden
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Internal server error
-  deprecated: false
-  type: path
+                type: object
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request, invalid input data.
+        '401':
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
 components:
   schemas:
     ComfyNode:
@@ -184,6 +129,16 @@ components:
         return_types:
           description: Specifies the types of outputs produced by the node.
           type: string
+      type: object
+    ErrorResponse:
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+      required:
+        - error
+        - message
       type: object
     ComfyNodePolicy:
       enum:

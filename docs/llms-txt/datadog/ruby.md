@@ -1,3 +1,19 @@
+# Source: https://docs.datadoghq.com/feature_flags/server/ruby.md
+
+# Source: https://docs.datadoghq.com/error_tracking/backend/capturing_handled_errors/ruby.md
+
+# Source: https://docs.datadoghq.com/security/code_security/software_composition_analysis/setup_runtime/compatibility/ruby.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/gcp/cloud-run/ruby.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/aws/lambda/ruby.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/compatibility/ruby.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/ruby.md
+
+# Source: https://docs.datadoghq.com/data_streams/setup/language/ruby.md
+
 # Source: https://docs.datadoghq.com/profiler/profiler_troubleshooting/ruby.md
 
 # Source: https://docs.datadoghq.com/profiler/enabling/ruby.md
@@ -22,7 +38,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Add the Datadog Tracing Library >
   Tracing Ruby Applications
-source_url: https://docs.datadoghq.com/trace_collection/dd_libraries/ruby/index.html
 ---
 
 # Tracing Ruby Applications

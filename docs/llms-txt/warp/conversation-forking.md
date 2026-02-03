@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/agents/using-agents/agent-conversations/conversation-forking.md
+# Source: https://docs.warp.dev/agent-platform/agent/using-agents/agent-conversations/conversation-forking.md
 
 # Conversation Forking
 
@@ -24,21 +24,21 @@ Open the menu using the command palette (`CMD + Y` on macOS / `CTRL + SHIFT + Y`
 
 Select **Fork current conversation** to fork your current conversation, or fork a specific conversation from open conversations.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-76923961454a4ed5b990183d7b84aeed22f1697b%2Fconversation-forking-palette.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-76923961454a4ed5b990183d7b84aeed22f1697b%2Fconversation-forking-palette.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 In addition, when you hover over any open conversation in the command palette, you’ll see a **fork button**. This lets you fork not only active conversations, but also inactive and historical ones.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-78a0cc4938a84942ef2e0226cccb9d3d953a7718%2Fconversation-forking-open-conversations.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-78a0cc4938a84942ef2e0226cccb9d3d953a7718%2Fconversation-forking-open-conversations.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 You can also access this conversation view from the [universal input chip](https://docs.warp.dev/terminal/universal-input) in the current conversation.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-4ad356110556f0fd52eae5e17187ad633b484cef%2Fconversation-forking-chip.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-4ad356110556f0fd52eae5e17187ad633b484cef%2Fconversation-forking-chip.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 #### **2. From the footer of the most recent AI response block**
 
 In any conversation in the blocklist, click the **fork button** in the footer of the most recent AI block. A new conversation opens in a separate pane with the full context of the original.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-4d05d9b53ff9e7c2efbbd96d0a0a659ac87a786e%2Fconversation-forking-footer.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-4d05d9b53ff9e7c2efbbd96d0a0a659ac87a786e%2Fconversation-forking-footer.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 #### **3. Using the /fork slash command**
 
@@ -48,9 +48,9 @@ Type `/fork` in the input to fork the current conversation. You can optionally i
 
 #### **4. Using the /fork-and-compact slash command**
 
-Type `/fork-and-compact` to fork the current conversation and automatically compact the forked version. This combines forking with [context window management](https://docs.warp.dev/agents/using-agents/agent-conversations/..#context-window-management), giving you a fresh start with a summarized context.
+Type `/fork-and-compact` to fork the current conversation and automatically compact the forked version. This combines forking with [context window management](https://docs.warp.dev/agent-platform/agent/using-agents/agent-conversations/..#context-window-management), giving you a fresh start with a summarized context.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2FFx3AICg8vQltUuRPgGIT%2Fimage.png?alt=media&#x26;token=4676d2d2-f86a-4e24-9a86-3834e689cb7a" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-6b203ff6fd097282f0a4da110e06aa642bb075ca%2Fconversation-fork-and-compact.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### Fork from anywhere in a conversation
 
@@ -58,7 +58,7 @@ In addition to forking from the end of a conversation, you can fork from any poi
 
 {% embed url="<https://youtu.be/SlhF4_0bBxY>" %}
 
-To fork from a specific point, **right-click** on any agent response block or click the three-dot menu in the top-right corner of the block.&#x20;
+To fork from a specific point, **right-click** on any agent response block or click the three-dot menu in the top-right corner of the block.
 
 * Select **Fork conversation from here** to create a new conversation that includes everything up to and including that response, but excludes any queries or responses that came after it.
 

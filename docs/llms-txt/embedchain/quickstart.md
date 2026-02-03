@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/get-started/quickstart.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ⚡ Quickstart
 
 > 💡 Create an AI app on your own data in a minute
@@ -8,7 +12,7 @@
 
 First install the Python package:
 
-```bash
+```bash  theme={null}
 pip install embedchain
 ```
 
@@ -33,7 +37,7 @@ This section gives a quickstart example of using Mistral as the Open source LLM 
 We are using Mistral hosted at Hugging Face, so will you need a Hugging Face token to run this example. Its *free* and you can create one [here](https://huggingface.co/docs/hub/security-tokens).
 
 <CodeGroup>
-  ```python huggingface_demo.py
+  ```python huggingface_demo.py theme={null}
   import os
   # Replace this with your HF token
   os.environ["HUGGINGFACE_ACCESS_TOKEN"] = "hf_xxxx"
@@ -67,7 +71,7 @@ We are using Mistral hosted at Hugging Face, so will you need a Hugging Face tok
 
 In this section, we will use both LLM and embedding model from OpenAI.
 
-```python openai_demo.py
+```python openai_demo.py theme={null}
 import os
 from embedchain import App
 

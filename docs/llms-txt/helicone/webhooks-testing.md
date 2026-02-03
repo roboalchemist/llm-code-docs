@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/features/webhooks-testing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Webhooks Local Testing
 
 When developing webhook integrations, you need to test how your application handles Helicone events before deploying to production. Webhooks local testing uses tunneling tools like ngrok to expose your local development server to the internet, allowing Helicone to send real webhook events to your local machine for debugging and integration testing.

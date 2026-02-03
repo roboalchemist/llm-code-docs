@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/LLaMa-3_1-Tools.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tool calls in LLaMa 3.1
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/LLaMa-3_1-Tools/LLaMa-3_1-Tools.ipynb) by [Ankur Goyal](https://twitter.com/ankrgyl) on 2024-07-26</div>
@@ -13,7 +17,7 @@ Let's dig into how we can use these models with tools, and run an eval to see ho
 ## Setup
 
 You can access LLaMa 3.1 models through inference services like [Together](https://www.together.ai/), which has generous rate limits and OpenAI protocol compatibility. We'll use Together, through the
-[Braintrust proxy](https://www.braintrust.dev/docs/guides/proxy) to access LLaMa 3.1 and OpenAI models.
+[Braintrust proxy](/deploy/ai-proxy) to access LLaMa 3.1 and OpenAI models.
 
 To get started, make sure you have a Braintrust account and an API key for [Together](https://www.together.ai) and [OpenAI](https://platform.openai.com/). Make sure to plug them into your Braintrust account's
 [AI secrets](https://www.braintrust.dev/app/settings?subroute=secrets) configuration and acquire a [BRAINTRUST\_API\_KEY](https://www.braintrust.dev/app/settings?subroute=api-keys). Feel free to put your BRAINTRUST\_API\_KEY in a `.env.local` file next to this notebook, or just hardcode it into the code below.
@@ -602,8 +606,3 @@ To explore this further, you could:
 * Play with other models, like GPT-4o-mini or Claude to see how they compare.
 
 Happy evaluating!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

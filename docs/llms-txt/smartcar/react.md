@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/getting-started/tutorials/react.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # React Tutorial
 
 > In this tutorial, we will use the JavaScript SDK to integrate Connect into your application.

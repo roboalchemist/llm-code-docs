@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/tracing/
+
 # Tracing
 
 Promptfoo supports OpenTelemetry (OTLP) tracing to help you understand the internal operations of your LLM providers during evaluations.

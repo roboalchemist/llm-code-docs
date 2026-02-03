@@ -2,10 +2,7 @@
 
 # Update Segment
 
-```
-PUT 
-/v1/segments/:segmentId
-```
+Copy page
 
 This endpoint updates a Segment identified by the `segmentId` parameter.
 

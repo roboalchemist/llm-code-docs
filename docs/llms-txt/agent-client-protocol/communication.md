@@ -1,5 +1,9 @@
 # Source: https://agentclientprotocol.com/community/communication.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Contributor Communication
 
 > Communication methods for Agent Client Protocol contributors
@@ -85,8 +89,3 @@ When to use:
 
 1. Contact lead and/or core maintainers, or [hi@zed.dev](mailto:hi@zed.dev) directly.
 2. Follow responsible disclosure guidelines.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/flan-t5.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/flan-t5.md
 
 # FLAN-T5
 

@@ -4,11 +4,7 @@
 
 Better Auth now collects anonymous telemetry data about general usage.
 
-***
 
-title: Telemetry
-description: Better Auth now collects anonymous telemetry data about general usage.
------------------------------------------------------------------------------------
 
 Better Auth collects anonymous usage data to help us improve the project. This is optional, transparent, and disabled by default.
 
@@ -55,7 +51,7 @@ All collected data is fully anonymous and only useful in aggregate. It cannot be
 
 * **No PII or secrets**: We do not collect emails, usernames, tokens, secrets, client IDs, client secrets, or database URLs.
 * **No full config**: We never send your full `betterAuth` configuration. Instead we send a reduced, redacted snapshot of nonâsensitive toggles and counts.
-* **Redaction by design**: See [detect-auth-config.ts](https://github.com/better-auth/better-auth/blob/main/packages/better-auth/src/telemetry/detectors/detect-auth-config.ts) in the Better Auth source for the exact shape of what is included. It purposely converts sensitive values to booleans, counts, or generic identifiers.
+* **Redaction by design**: See [detect-auth-config.ts](https://github.com/better-auth/better-auth/blob/canary/packages/telemetry/src/detectors/detect-auth-config.ts) in the Better Auth source for the exact shape of what is included. It purposely converts sensitive values to booleans, counts, or generic identifiers.
 
 ## How can I enable it?
 

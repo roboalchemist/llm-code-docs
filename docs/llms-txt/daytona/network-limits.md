@@ -57,6 +57,28 @@ const sandbox = await daytona.create({
 
 
 
+```ruby
+require 'daytona'
+
+daytona = Daytona::Daytona.new
+
+# Allow access to specific IP addresses (Wikipedia, X/Twitter, private network)
+sandbox = daytona.create(
+  Daytona::CreateSandboxFromSnapshotParams.new(
+    network_allow_list: '208.80.154.232/32,199.16.156.103/32,192.168.1.0/24'
+  )
+)
+
+# Or block all network access
+sandbox = daytona.create(
+  Daytona::CreateSandboxFromSnapshotParams.new(
+    network_block_all: true
+  )
+)
+```
+
+
+
 :::note
 If both `networkBlockAll` and `networkAllowList` are specified, `networkBlockAll` takes precedence and all network access will be blocked, ignoring the allow list.
 :::
@@ -115,32 +137,70 @@ Test network connectivity before starting critical development work and consider
 
 The following services are whitelisted and accessible on all tiers:
 
-- Package registries:
-  - npm: `registry.npmjs.org`, `registry.npmjs.com`, `nodejs.org`, `nodesource.com`, `npm.pkg.github.com`
-  - yarn: `classic.yarnpkg.com`, `registry.yarnpkg.com`, `repo.yarnpkg.com`, `releases.yarnpkg.com`, `yarn.npmjs.org`, `yarnpkg.netlify.com`, `dl.yarnpkg.com`, `yarnpkg.com`
-  - PyPI: `pypi.org`, `pypi.python.org`, `files.pythonhosted.org`, `bootstrap.pypa.io`
-  - Maven: `repo1.maven.org`, `repo.maven.apache.org`
-- Container registries:
-  - Docker: `download.docker.com`, `registry-1.docker.io`, `registry.docker.io`, `auth.docker.io`, `index.docker.io`, `hub.docker.com`, `docker.io`
-  - Google: `gcr.io`, `asia.gcr.io`, `eu.gcr.io`, `us.gcr.io`, `marketplace.gcr.io`, `registry.cloud.google.com`
-  - Microsoft: `mcr.microsoft.com`
-  - Quay: `quay.io`, `quay-registry.s3.amazonaws.com`
-  - Kubernetes: `registry.k8s.io`
-- Git repositories:
-  - GitHub: `github.com`, `api.github.com`, `raw.githubusercontent.com`, `github-releases.githubusercontent.com`, `codeload.github.com`, `ghcr.io`, `packages.github.com`
-  - GitLab: `gitlab.com`, `registry.gitlab.com`
-  - Bitbucket: `bitbucket.org`
-- System package managers:
-  - Ubuntu: `archive.ubuntu.com`, `security.ubuntu.com`
-  - Debian: `deb.debian.org`, `security.debian.org`, `cdn-fastly.deb.debian.org`, `ftp.debian.org`
-- CDN services:
-  - Cloudflare: `cloudflare.com`
-  - Fastly: `fastly.com`
-  - JavaScript CDNs: `unpkg.com`, `jsdelivr.net`
-- AI/ML services:
-  - Anthropic: `api.anthropic.com`
-- Platform services:
-  - Daytona: `app.daytona.io`
+### NPM Registry and Package Managers
+
+- **NPM Registry**: `registry.npmjs.org`, `registry.npmjs.com`, `nodejs.org`, `nodesource.com`, `npm.pkg.github.com`
+- **Yarn Packages**: `classic.yarnpkg.com`, `registry.yarnpkg.com`, `repo.yarnpkg.com`, `releases.yarnpkg.com`, `yarn.npmjs.org`, `yarnpkg.netlify.com`, `dl.yarnpkg.com`, `yarnpkg.com`
+
+### Git Hosting and Version Control
+
+- **GitHub**: `github.com`, `api.github.com`, `raw.githubusercontent.com`, `github-releases.githubusercontent.com`, `codeload.github.com`, `ghcr.io`, `packages.github.com`
+- **GitLab**: `gitlab.com`, `registry.gitlab.com`
+- **Bitbucket**: `bitbucket.org`
+
+### Python Package Managers
+
+- **PyPI**: `pypi.org`, `pypi.python.org`, `files.pythonhosted.org`, `bootstrap.pypa.io`
+
+### Ubuntu/Debian Package Repositories
+
+- **Ubuntu Repos**: `archive.ubuntu.com`, `security.ubuntu.com`
+- **Debian Repos**: `deb.debian.org`, `security.debian.org`, `cdn-fastly.deb.debian.org`, `ftp.debian.org`
+
+### CDN and Content Delivery
+
+- **CDN Services**: `fastly.com`, `cloudflare.com`
+- **JavaScript CDNs**: `unpkg.com`, `jsdelivr.net`
+
+### AI/ML Services
+
+- **Anthropic**: `api.anthropic.com`
+- **OpenAI**: `api.openai.com`
+- **Perplexity**: `api.perplexity.ai`
+- **DeepSeek**: `api.deepseek.com`
+- **Groq**: `api.groq.com`
+- **Expo**: `api.expo.dev`
+- **OpenRouter**: `openrouter.ai`
+
+### Docker Registries and Container Services
+
+- **Docker Registries**: `download.docker.com`, `registry-1.docker.io`, `registry.docker.io`, `auth.docker.io`, `index.docker.io`, `hub.docker.com`, `docker.io`
+- **Microsoft Container Registry**: `mcr.microsoft.com`
+- **Kubernetes Registry**: `registry.k8s.io`
+- **Google Container Registry**: `gcr.io`, `asia.gcr.io`, `eu.gcr.io`, `us.gcr.io`, `marketplace.gcr.io`, `registry.cloud.google.com`
+- **Quay**: `quay.io`, `quay-registry.s3.amazonaws.com`
+
+### Maven Repositories
+
+- **Maven Repos**: `repo1.maven.org`, `repo.maven.apache.org`
+
+### Google Fonts
+
+- **Google Fonts**: `fonts.googleapis.com`, `fonts.gstatic.com`
+
+### AWS S3 Endpoints
+
+- **US East**: `s3.us-east-1.amazonaws.com`, `s3.us-east-2.amazonaws.com`
+- **US West**: `s3.us-west-1.amazonaws.com`, `s3.us-west-2.amazonaws.com`
+- **EU**: `s3.eu-central-1.amazonaws.com`, `s3.eu-west-1.amazonaws.com`, `s3.eu-west-2.amazonaws.com`
+
+### Daytona Platform
+
+- **Daytona**: `app.daytona.io`
+
+:::note
+This list is continuously updated. If you require access to additional essential development services, you can submit a request via the [sandbox-network-whitelist](https://github.com/daytonaio/sandbox-network-whitelist) repository or contact [support@daytona.io](mailto:support@daytona.io).
+:::
 
 
 ## Getting Help

@@ -4,8 +4,6 @@
 title: DocumentDB Elastic Cluster Snapshot
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > DocumentDB Elastic Cluster Snapshot
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.docdbelastic_cluster_snapshot.dataset/index.html
 ---
 
 # DocumentDB Elastic Cluster Snapshot
@@ -32,5 +30,5 @@ aws.docdbelastic_cluster_snapshot
 | snapshot_type          | core | string        | The type of cluster snapshots to be returned. You can specify one of the following values: automated - Return all cluster snapshots that Amazon DocumentDB has automatically created for your Amazon Web Services account. manual - Return all cluster snapshots that you have manually created for your Amazon Web Services account.                                                                                                                                        |
 | status                 | core | string        | The status of the elastic cluster snapshot.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | subnet_ids             | core | array<string> | The Amazon EC2 subnet IDs for the elastic cluster.                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| tags                   | core | hstore        |
+| tags                   | core | hstore_csv    |
 | vpc_security_group_ids | core | array<string> | A list of EC2 VPC security groups to associate with the elastic cluster.                                                                                                                                                                                                                                                                                                                                                                                                     |

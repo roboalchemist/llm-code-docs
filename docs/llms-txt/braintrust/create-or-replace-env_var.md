@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/envvars/create-or-replace-env_var.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create or replace env_var
 
 > Create or replace env_var. If there is an existing env_var with the same name as the one specified in the request, will replace the existing env_var with the provided fields
@@ -69,6 +73,20 @@ paths:
                   description: >-
                     The value of the environment variable. Will be encrypted at
                     rest.
+                metadata:
+                  type: object
+                  nullable: true
+                  additionalProperties:
+                    nullable: true
+                  description: >-
+                    Optional metadata associated with the environment variable
+                    when managed via the function secrets API
+                secret_type:
+                  type: string
+                  nullable: true
+                  description: >-
+                    Optional classification for the secret (for example, the AI
+                    provider name)
               required:
                 - object_type
                 - object_id
@@ -165,6 +183,29 @@ components:
           nullable: true
           format: date-time
           description: Date the environment variable was last used
+        metadata:
+          type: object
+          nullable: true
+          additionalProperties:
+            nullable: true
+          description: >-
+            Optional metadata associated with the environment variable when
+            managed via the function secrets API
+        secret_type:
+          type: string
+          nullable: true
+          description: >-
+            Optional classification for the secret (for example, the AI provider
+            name)
+        secret_category:
+          type: string
+          enum:
+            - env_var
+            - ai_provider
+          default: env_var
+          description: >-
+            The category of the secret: env_var for regular environment
+            variables, ai_provider for AI provider API keys
       required:
         - id
         - object_type
@@ -182,7 +223,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

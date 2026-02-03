@@ -6,7 +6,6 @@ description: >-
   Guide to the ddagentuser account used by the Windows Agent, covering
   installation, permissions, security policies, and integration considerations.
 breadcrumbs: Docs > Agent > Agent Guides > Datadog Windows Agent User
-source_url: https://docs.datadoghq.com/guide/windows-agent-ddagent-user/index.html
 ---
 
 # Datadog Windows Agent User

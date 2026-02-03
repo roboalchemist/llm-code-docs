@@ -6,7 +6,6 @@ description: >-
   Navigate between multiple Datadog organizations using the org switcher with
   proper authentication and session management across different orgs.
 breadcrumbs: Docs > Account Management > Switching Between Organizations
-source_url: https://docs.datadoghq.com/org_switching/index.html
 ---
 
 # Switching Between Organizations

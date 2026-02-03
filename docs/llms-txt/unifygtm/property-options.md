@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/integrations/hubspot/property-options.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Property Options
 
 > Find the options for a property in HubSpot.

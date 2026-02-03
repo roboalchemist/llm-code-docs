@@ -2,19 +2,7 @@
 
 # Source: https://docs.livekit.io/agents/models/tts/inference/inworld.md
 
-# Source: https://docs.livekit.io/agents/models/tts/plugins/inworld.md
-
-# Source: https://docs.livekit.io/agents/models/tts/inference/inworld.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/inworld.md
-
-# Source: https://docs.livekit.io/agents/models/tts/inference/inworld.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/inworld.md
-
-# Source: https://docs.livekit.io/agents/models/tts/inference/inworld.md
-
-LiveKit docs › Models › Text-to-speech (TTS) › LiveKit Inference › Inworld
+LiveKit docs › Models › TTS › Inference › Inworld
 
 ---
 
@@ -28,6 +16,8 @@ LiveKit Inference offers voice models powered by Inworld. Pricing information is
 
 | Model ID | Languages |
 | -------- | --------- |
+| `inworld/inworld-tts-1.5-max` | `en`, `es`, `fr`, `ko`, `nl`, `zh`, `de`, `it`, `ja`, `pl`, `pt`, `ru`, `hi` |
+| `inworld/inworld-tts-1.5-mini` | `en`, `es`, `fr`, `ko`, `nl`, `zh`, `de`, `it`, `ja`, `pl`, `pt`, `ru`, `hi` |
 | `inworld/inworld-tts-1-max` | `en`, `es`, `fr`, `ko`, `nl`, `zh`, `de`, `it`, `ja`, `pl`, `pt`, `ru` |
 | `inworld/inworld-tts-1` | `en`, `es`, `fr`, `ko`, `nl`, `zh`, `de`, `it`, `ja`, `pl`, `pt`, `ru` |
 
@@ -41,7 +31,7 @@ To use Inworld, pass a descriptor with the model and voice to the `tts` argument
 from livekit.agents import AgentSession
 
 session = AgentSession(
-    tts="inworld/inworld-tts-1-max:Ashley",
+    tts="inworld/inworld-tts-1.5-max:Ashley",
     # ... llm, stt, vad, turn_detection, etc.
 )
 
@@ -55,7 +45,7 @@ session = AgentSession(
 import { AgentSession } from '@livekit/agents';
 
 session = new AgentSession({
-    tts: "inworld/inworld-tts-1-max:Ashley",
+    tts: "inworld/inworld-tts-1.5-max:Ashley",
     // ... llm, stt, vad, turn_detection, etc.
 });
 
@@ -72,7 +62,7 @@ from livekit.agents import AgentSession, inference
 
 session = AgentSession(
     tts=inference.TTS(
-        model="inworld/inworld-tts-1-max", 
+        model="inworld/inworld-tts-1.5-max", 
         voice="Ashley", 
         language="en"
     ),
@@ -90,7 +80,7 @@ import { AgentSession } from '@livekit/agents';
 
 session = new AgentSession({
     tts: new inference.TTS({ 
-        model: "inworld/inworld-tts-1-max", 
+        model: "inworld/inworld-tts-1.5-max", 
         voice: "Ashley", 
         language: "en" 
     }),
@@ -136,7 +126,7 @@ The following links provide more information about Inworld in LiveKit Inference.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:13.261Z.
+This document was rendered at 2026-02-03T03:25:04.681Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/tts/inference/inworld.md](https://docs.livekit.io/agents/models/tts/inference/inworld.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

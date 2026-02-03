@@ -4,7 +4,6 @@
 title: Profile Types
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Continuous Profiler > Profile Types
-source_url: https://docs.datadoghq.com/profile_types/index.html
 ---
 
 # Profile Types

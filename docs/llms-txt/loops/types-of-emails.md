@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/types-of-emails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Types of emails
 
 > Learn about the three types of emails that you can send with Loops: Campaigns, Loops, and Transactional.

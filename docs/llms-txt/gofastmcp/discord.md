@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/integrations/discord.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Discord OAuth 🤝 FastMCP
 
 > Secure your FastMCP server with Discord OAuth
@@ -187,80 +191,3 @@ mcp = FastMCP(name="Production Discord App", auth=auth_provider)
 
   For complete details on these parameters, see the [OAuth Proxy documentation](/servers/auth/oauth-proxy#configuration-parameters).
 </Note>
-
-## Environment Variables
-
-For production deployments, use environment variables instead of hardcoding credentials.
-
-### Provider Selection
-
-Setting this environment variable allows the Discord provider to be used automatically without explicitly instantiating it in code.
-
-<Card>
-  <ParamField path="FASTMCP_SERVER_AUTH" default="Not set">
-    Set to `fastmcp.server.auth.providers.discord.DiscordProvider` to use Discord authentication.
-  </ParamField>
-</Card>
-
-### Discord-Specific Configuration
-
-These environment variables provide default values for the Discord provider, whether it's instantiated manually or configured via `FASTMCP_SERVER_AUTH`.
-
-<Card>
-  <ParamField path="FASTMCP_SERVER_AUTH_DISCORD_CLIENT_ID" required>
-    Your Discord Application Client ID (e.g., `12345`)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_DISCORD_CLIENT_SECRET" required>
-    Your Discord OAuth Client Secret
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_DISCORD_BASE_URL" default="http://localhost:8000">
-    Public URL where OAuth endpoints will be accessible (includes any mount path)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_DISCORD_ISSUER_URL" default="Uses BASE_URL">
-    Issuer URL for OAuth metadata (defaults to `BASE_URL`). Set to root-level URL when mounting under a path prefix to avoid 404 logs. See [HTTP Deployment guide](/deployment/http#mounting-authenticated-servers) for details.
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_DISCORD_REDIRECT_PATH" default="/auth/callback">
-    Redirect path configured in your Discord OAuth settings
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_DISCORD_REQUIRED_SCOPES" default="[&#x22;identify&#x22;]">
-    Comma-, space-, or JSON-separated list of required Discord scopes (e.g., `identify,email` or `["identify","email"]`)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_DISCORD_TIMEOUT_SECONDS" default="10">
-    HTTP request timeout for Discord API calls
-  </ParamField>
-</Card>
-
-Example `.env` file:
-
-```bash  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-FASTMCP_SERVER_AUTH=fastmcp.server.auth.providers.discord.DiscordProvider
-
-FASTMCP_SERVER_AUTH_DISCORD_CLIENT_ID=12345
-FASTMCP_SERVER_AUTH_DISCORD_CLIENT_SECRET=your-client-secret
-FASTMCP_SERVER_AUTH_DISCORD_BASE_URL=https://your-server.com
-FASTMCP_SERVER_AUTH_DISCORD_REQUIRED_SCOPES=identify,email
-```
-
-With environment variables set, your server code simplifies to:
-
-```python server.py theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-from fastmcp import FastMCP
-
-mcp = FastMCP(name="Discord Secured App")
-
-@mcp.tool
-async def protected_tool(query: str) -> str:
-    """A tool that requires Discord authentication to access."""
-    return f"Processing authenticated request: {query}"
-```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://gofastmcp.com/llms.txt

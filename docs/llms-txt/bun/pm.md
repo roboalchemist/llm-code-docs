@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/pm/cli/pm.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # bun pm
 
 > Package manager utilities
@@ -249,7 +253,7 @@ bun pm version
 ```
 
 ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun pm version v1.3.2 (ca7428e9)
+bun pm version v1.3.3 (ca7428e9)
 Current package version: v1.0.0
 
 Increment:

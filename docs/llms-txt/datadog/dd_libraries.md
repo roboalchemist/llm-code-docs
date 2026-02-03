@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/error_tracking/backend/getting_started/dd_libraries.md
+
 # Source: https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/dd_libraries.md
 
 # Source: https://docs.datadoghq.com/tracing/trace_collection/dd_libraries.md
@@ -6,7 +8,6 @@
 title: Add the Datadog Tracing Library
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > APM > Application Instrumentation > Add the Datadog Tracing Library
-source_url: https://docs.datadoghq.com/trace_collection/dd_libraries/index.html
 ---
 
 # Add the Datadog Tracing Library
@@ -74,6 +75,7 @@ Set up your application to send [traces](https://docs.datadoghq.com/tracing/glos
 - [Node.js](https://docs.datadoghq.com/tracing/trace_collection/dd_libraries/nodejs)
 - [PHP](https://docs.datadoghq.com/tracing/trace_collection/dd_libraries/php)
 - [C++](https://docs.datadoghq.com/tracing/trace_collection/dd_libraries/cpp)
+- [Rust](https://docs.datadoghq.com/tracing/trace_collection/dd_libraries/rust/)
 - [.Net](https://docs.datadoghq.com/tracing/trace_collection/dd_libraries/dotnet-core)
 - [.Net](https://docs.datadoghq.com/tracing/trace_collection/dd_libraries/dotnet-framework)
 - [Android](https://docs.datadoghq.com/tracing/trace_collection/dd_libraries/android)

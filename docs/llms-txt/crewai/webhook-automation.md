@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/enterprise/guides/webhook-automation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Webhook Automation
 
 > Automate CrewAI AMP workflows using webhooks with platforms like ActivePieces, Zapier, and Make.com

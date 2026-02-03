@@ -1,14 +1,14 @@
 # Source: https://dev.writer.com/home/web-search-tool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Web search in a chat
 
-> Search the web for real-time information during chat completions. Enable Palmyra models to access current news, facts, and up-to-date data.
+> Search the web for real-time information during chat completions. Enable models to access current news, facts, and up-to-date data.
 
-The web search tool for chat completions allows you to search the web for current information during a conversation with a Palmyra model.
-
-While Palmyra models have extensive knowledge, they may not have access to the most current information or real-time data. The web search tool enables your AI assistant to find up-to-date information, news, and facts from the web to provide more accurate and timely responses.
-
-The Writer API also has a [`web-search` endpoint](/api-reference/tool-api/web-search) that you can use to search the web outside of a chat completion. See the [web search API guide](/home/web-search) for more information.
+The web search tool for chat completions allows you to search the web for current information during a conversation.
 
 This guide explains how to use the web search tool in a chat completion and provides an example of how to use it.
 
@@ -18,9 +18,111 @@ This guide explains how to use the web search tool in a chat completion and prov
   We recommend setting the API key as an environment variable in a `.env` file with the name `WRITER_API_KEY`.
 </Note>
 
+<CodeGroup>
+  ```bash cURL theme={null}
+  curl --location 'https://api.writer.com/v1/chat' \
+      --header 'Content-Type: application/json' \
+      --header "Authorization: Bearer $WRITER_API_KEY" \
+      --data '{
+          "model": "palmyra-x5",
+          "messages": [
+              {
+                  "role": "user",
+                  "content": "What are the latest developments in AI technology?"
+              }
+          ],
+          "tool_choice": "auto",
+          "tools": [
+              {
+                  "type": "web_search",
+                  "function": {
+                      "include_domains": ["wikipedia.org", "github.com", "techcrunch.com"],
+                      "exclude_domains": ["quora.com"]
+                  }
+              }
+          ]
+      }'
+  ```
+
+  ```python Python theme={null}
+  from writerai import Writer
+
+  # Initialize the Writer client. If you don't pass the `api_key` parameter,
+  # the client looks for the `WRITER_API_KEY` environment variable.
+  client = Writer()
+
+  # Create the tools array containing a web search tool
+  tools = [{
+      "type": "web_search",
+      "function": {
+          "include_domains": ["wikipedia.org", "github.com", "techcrunch.com"],
+          "exclude_domains": ["quora.com"]
+      }
+  }]
+
+  # Create the messages array containing a user message that prompts the model to use the web search tool
+  messages = [{"role": "user", "content": "What are the latest developments in AI technology?"}]
+
+  response = client.chat.chat(
+      model="palmyra-x5", 
+      messages=messages, 
+      tools=tools,  # The tools array defined earlier.
+      tool_choice="auto"
+  )
+
+  print(response.choices[0].message.content)
+  ```
+
+  ```js JavaScript theme={null}
+  import { Writer } from "writer-sdk";
+
+  // Initialize the Writer client. If you don't pass the `apiKey` parameter,
+  // the client looks for the `WRITER_API_KEY` environment variable.
+  const client = new Writer();
+
+  // Create the tools array containing a web search tool
+  tools = [{
+      type: "web_search",
+      function: {
+          include_domains: ["wikipedia.org", "github.com", "techcrunch.com"],
+          exclude_domains: ["quora.com"]
+      }
+  }]
+
+  // Create the messages array containing a user message that prompts the model to use the web search tool
+  const messages = [{role: "user", content: "What are the latest developments in AI technology?"}];
+
+  const response = await client.chat.chat({
+      model: "palmyra-x5", 
+      messages: messages, 
+      tools: tools, // The tools array defined earlier.
+      tool_choice: "auto"
+  });
+
+  console.log(response.choices[0].message.content);
+  ```
+</CodeGroup>
+
 ## Tool structure
 
-The web search tool allows you to search the web during a [chat with a Palmyra model](/home/chat-completion).
+The web search tool allows you to search the web during a [chat completion](/home/chat-completion).
+
+<Tip>
+  To customize search parameters like including raw source text, limiting the number of sources, or specifying time ranges, include these requirements **in your prompt** to the model. The model uses these parameters when making the web search call. For example, your message to the model might include:
+
+  * "Include raw source text"
+  * "Limit the number of sources to 5"
+  * "Search for news articles from the last 30 days"
+
+  Example:
+
+  ```json  theme={null}
+  "messages": [{
+    "role": "user",
+    "content": "Find the latest news about AI technology. Include raw source text and limit the number of sources to 5."
+  }]
+  ```
+</Tip>
 
 To use the web search tool, add it to the `tools` array in your `chat-completion` endpoint request.
 
@@ -32,14 +134,6 @@ The web search tool object has the following structure:
 | `function`                 | `object` | An object containing the tool's configuration                   |
 | `function.include_domains` | `array`  | An array of domains to include in the search results            |
 | `function.exclude_domains` | `array`  | An array of domains to exclude from the search results          |
-
-<Tip>
-  To customize search parameters like including raw source text, limiting the number of sources, or specifying time ranges, include these requirements in your prompt to the model. The model uses these parameters when making the web search call. For example, your message to the model might include:
-
-  * "Include raw source text"
-  * "Limit the number of sources to 5"
-  * "Search for news articles from the last 30 days"
-</Tip>
 
 Below shows the structure of the web search tool object.
 
@@ -112,7 +206,7 @@ The response also contains a `web_search_data` field that contains the following
 See the [chat completion endpoint](/api-reference/completion-api/chat-completion#response-id) for more information on the response fields.
 
 <CodeGroup>
-  ```json non-streaming response theme={null}
+  ```json non-streaming response [expandable] theme={null}
   {
     "id": "2ac04514-35cd-49e7-8d11-df0ace4336db",
     "object": "chat.completion",
@@ -177,7 +271,7 @@ See the [chat completion endpoint](/api-reference/completion-api/chat-completion
   }
   ```
 
-  ```json streaming response  theme={null}
+  ```json streaming response [expandable] theme={null}
   {
     "id": "94131ba5-35f0-4319-b4a6-3929ebb1669a",
     "choices": [
@@ -272,49 +366,17 @@ See the [chat completion endpoint](/api-reference/completion-api/chat-completion
 
 This example uses the web search tool to find current information about AI developments during a chat completion.
 
-### Create a tools array containing a web search tool
+To use the web search tool:
 
-First, create a `tools` array that specifies the web search tool you want to use.
+1. Create a `tools` array that specifies the web search tool.
 
-<CodeGroup>
-  ```bash cURL theme={null}
-  "tools": [
-      {
-          "type": "web_search",
-          "function": {
-              "include_domains": ["wikipedia.org", "github.com", "techcrunch.com"],
-              "exclude_domains": ["quora.com"]
-          }
-      }
-  ]
-  ```
+* The tool array should include the `type` and `function` parameters. The `function` parameter should include the `include_domains` and `exclude_domains` parameters.
 
-  ```python Python theme={null}
-  tools = [{
-      "type": "web_search",
-      "function": {
-          "include_domains": ["wikipedia.org", "github.com", "techcrunch.com"],
-          "exclude_domains": ["quora.com"]
-      }
-  }]
-  ```
+2. Create a `messages` array that contains the user message that prompts the model to use the web search tool.
 
-  ```js JavaScript theme={null}
-  const tools = [{
-      type: "web_search",
-      function: {
-          include_domains: ["wikipedia.org", "github.com", "techcrunch.com"],
-          exclude_domains: ["quora.com"]
-      }
-  }]
-  ```
-</CodeGroup>
+* The message should contain the requirements for the search, such as including raw source text, limiting the number of sources, or specifying time ranges.
 
-### Send the request using chat completions
-
-Add the tools array to the chat endpoint call along with your array of messages. Setting `tool_choice` to `auto` allows the model to choose when to use the web search tool, based on the message provided in the `messages` array.
-
-The response contains the search results and generated answer in the `choices[0].message.content` field.
+3. Call the `chat.chat` method with the `tools` parameter set to the `tools` array and `tool_choice` set to `auto`.
 
 <CodeGroup>
   ```bash cURL theme={null}

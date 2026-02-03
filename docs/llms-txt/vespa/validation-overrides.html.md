@@ -47,5 +47,5 @@ An `allow` tag disables a particular validation for a limited time and contains 
 
 See [ValidationId.java](https://github.com/vespa-engine/vespa/blob/master/config-model-api/src/main/java/com/yahoo/config/application/api/ValidationId.java) for a complete list of validation overrides.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

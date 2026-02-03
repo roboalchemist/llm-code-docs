@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/components/data-sources/discord.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 💬 Discord
 
 To add any Discord channel messages to your app, just add the `channel_id` as the source and set the `data_type` to `discord`.
@@ -10,7 +14,7 @@ To add any Discord channel messages to your app, just add the `channel_id` as th
   <a href="https://www.writebots.com/discord-bot-token/">How to Get a Discord Bot Token?</a>.
 </Note>
 
-```python
+```python  theme={null}
 import os
 from embedchain import App
 

@@ -8,7 +8,6 @@ description: >-
   Configure the Datadog Agent to send traffic through HTTP/HTTPS proxies with
   authentication and bypass options.
 breadcrumbs: Docs > Agent > Agent Configuration > Datadog Agent Proxy Configuration
-source_url: https://docs.datadoghq.com/configuration/proxy/index.html
 ---
 
 # Datadog Agent Proxy Configuration

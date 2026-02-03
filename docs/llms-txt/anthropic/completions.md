@@ -1,10 +1,20 @@
 # Source: https://platform.claude.com/docs/en/api/typescript/completions.md
 
+# Source: https://platform.claude.com/docs/en/api/ruby/completions.md
+
+# Source: https://platform.claude.com/docs/en/api/python/completions.md
+
+# Source: https://platform.claude.com/docs/en/api/kotlin/completions.md
+
+# Source: https://platform.claude.com/docs/en/api/java/completions.md
+
+# Source: https://platform.claude.com/docs/en/api/go/completions.md
+
+# Source: https://platform.claude.com/docs/en/api/completions.md
+
 # Completions
 
 ## Create
-
-`client.completions.create(CompletionCreateParamsparams, RequestOptionsoptions?): Completion | Stream<Completion>`
 
 **post** `/v1/complete`
 
@@ -14,247 +24,227 @@ The Text Completions API is a legacy API. We recommend using the [Messages API](
 
 Future models and features will not be compatible with Text Completions. See our [migration guide](https://docs.claude.com/en/api/migrating-from-text-completions-to-messages) for guidance in migrating from Text Completions to Messages.
 
-### Parameters
+### Header Parameters
 
-- `CompletionCreateParams = CompletionCreateParamsNonStreaming | CompletionCreateParamsStreaming`
+- `"anthropic-beta": optional array of AnthropicBeta`
 
-  - `CompletionCreateParamsBase`
+  Optional header to specify the beta version(s) you want to use.
 
-    - `max_tokens_to_sample: number`
+  - `UnionMember0 = string`
 
-      Body param: The maximum number of tokens to generate before stopping.
+  - `UnionMember1 = "message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 16 more`
 
-      Note that our models may stop _before_ reaching this maximum. This parameter only specifies the absolute maximum number of tokens to generate.
+    - `"message-batches-2024-09-24"`
 
-    - `model: Model`
+    - `"prompt-caching-2024-07-31"`
 
-      Body param: The model that will complete your prompt.
+    - `"computer-use-2024-10-22"`
 
-      See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
+    - `"computer-use-2025-01-24"`
 
-      - `"claude-opus-4-5-20251101" | "claude-opus-4-5" | "claude-3-7-sonnet-latest" | 17 more`
+    - `"pdfs-2024-09-25"`
 
-        - `"claude-opus-4-5-20251101"`
+    - `"token-counting-2024-11-01"`
 
-          Premium model combining maximum intelligence with practical performance
+    - `"token-efficient-tools-2025-02-19"`
 
-        - `"claude-opus-4-5"`
+    - `"output-128k-2025-02-19"`
 
-          Premium model combining maximum intelligence with practical performance
+    - `"files-api-2025-04-14"`
 
-        - `"claude-3-7-sonnet-latest"`
+    - `"mcp-client-2025-04-04"`
 
-          High-performance model with early extended thinking
+    - `"mcp-client-2025-11-20"`
 
-        - `"claude-3-7-sonnet-20250219"`
+    - `"dev-full-thinking-2025-05-14"`
 
-          High-performance model with early extended thinking
+    - `"interleaved-thinking-2025-05-14"`
 
-        - `"claude-3-5-haiku-latest"`
+    - `"code-execution-2025-05-22"`
 
-          Fastest and most compact model for near-instant responsiveness
+    - `"extended-cache-ttl-2025-04-11"`
 
-        - `"claude-3-5-haiku-20241022"`
+    - `"context-1m-2025-08-07"`
 
-          Our fastest model
+    - `"context-management-2025-06-27"`
 
-        - `"claude-haiku-4-5"`
+    - `"model-context-window-exceeded-2025-08-26"`
 
-          Hybrid model, capable of near-instant responses and extended thinking
+    - `"skills-2025-10-02"`
 
-        - `"claude-haiku-4-5-20251001"`
+### Body Parameters
 
-          Hybrid model, capable of near-instant responses and extended thinking
+- `max_tokens_to_sample: number`
 
-        - `"claude-sonnet-4-20250514"`
+  The maximum number of tokens to generate before stopping.
 
-          High-performance model with extended thinking
+  Note that our models may stop _before_ reaching this maximum. This parameter only specifies the absolute maximum number of tokens to generate.
 
-        - `"claude-sonnet-4-0"`
+- `model: Model`
 
-          High-performance model with extended thinking
+  The model that will complete your prompt.
 
-        - `"claude-4-sonnet-20250514"`
+  See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-          High-performance model with extended thinking
+  - `UnionMember0 = "claude-opus-4-5-20251101" or "claude-opus-4-5" or "claude-3-7-sonnet-latest" or 17 more`
 
-        - `"claude-sonnet-4-5"`
+    The model that will complete your prompt.
 
-          Our best model for real-world agents and coding
+    See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-        - `"claude-sonnet-4-5-20250929"`
+    - `"claude-opus-4-5-20251101"`
 
-          Our best model for real-world agents and coding
+      Premium model combining maximum intelligence with practical performance
 
-        - `"claude-opus-4-0"`
+    - `"claude-opus-4-5"`
 
-          Our most capable model
+      Premium model combining maximum intelligence with practical performance
 
-        - `"claude-opus-4-20250514"`
+    - `"claude-3-7-sonnet-latest"`
 
-          Our most capable model
+      High-performance model with early extended thinking
 
-        - `"claude-4-opus-20250514"`
+    - `"claude-3-7-sonnet-20250219"`
 
-          Our most capable model
+      High-performance model with early extended thinking
 
-        - `"claude-opus-4-1-20250805"`
+    - `"claude-3-5-haiku-latest"`
 
-          Our most capable model
+      Fastest and most compact model for near-instant responsiveness
 
-        - `"claude-3-opus-latest"`
+    - `"claude-3-5-haiku-20241022"`
 
-          Excels at writing and complex tasks
+      Our fastest model
 
-        - `"claude-3-opus-20240229"`
+    - `"claude-haiku-4-5"`
 
-          Excels at writing and complex tasks
+      Hybrid model, capable of near-instant responses and extended thinking
 
-        - `"claude-3-haiku-20240307"`
+    - `"claude-haiku-4-5-20251001"`
 
-          Our previous most fast and cost-effective
+      Hybrid model, capable of near-instant responses and extended thinking
 
-      - `(string & {})`
+    - `"claude-sonnet-4-20250514"`
 
-    - `prompt: string`
+      High-performance model with extended thinking
 
-      Body param: The prompt that you want Claude to complete.
+    - `"claude-sonnet-4-0"`
 
-      For proper response generation you will need to format your prompt using alternating `
+      High-performance model with extended thinking
 
-      Human:`and`
+    - `"claude-4-sonnet-20250514"`
 
-      Assistant:` conversational turns. For example:
+      High-performance model with extended thinking
 
-      ```
-      "
-      
-      Human: {userQuestion}
-      
-      Assistant:"
-      ```
+    - `"claude-sonnet-4-5"`
 
-      See [prompt validation](https://docs.claude.com/en/api/prompt-validation) and our guide to [prompt design](https://docs.claude.com/en/docs/intro-to-prompting) for more details.
+      Our best model for real-world agents and coding
 
-    - `metadata?: Metadata`
+    - `"claude-sonnet-4-5-20250929"`
 
-      Body param: An object describing metadata about the request.
+      Our best model for real-world agents and coding
 
-      - `user_id?: string | null`
+    - `"claude-opus-4-0"`
 
-        An external identifier for the user who is associated with the request.
+      Our most capable model
 
-        This should be a uuid, hash value, or other opaque identifier. Anthropic may use this id to help detect abuse. Do not include any identifying information such as name, email address, or phone number.
+    - `"claude-opus-4-20250514"`
 
-    - `stop_sequences?: Array<string>`
+      Our most capable model
 
-      Body param: Sequences that will cause the model to stop generating.
+    - `"claude-4-opus-20250514"`
 
-      Our models stop on `"
+      Our most capable model
 
-      Human:"`, and may include additional built-in stop sequences in the future. By providing the stop_sequences parameter, you may include additional strings that will cause the model to stop generating.
+    - `"claude-opus-4-1-20250805"`
 
-    - `stream?: false`
+      Our most capable model
 
-      Body param: Whether to incrementally stream the response using server-sent events.
+    - `"claude-3-opus-latest"`
 
-      See [streaming](https://docs.claude.com/en/api/streaming) for details.
+      Excels at writing and complex tasks
 
-      - `false`
+    - `"claude-3-opus-20240229"`
 
-    - `temperature?: number`
+      Excels at writing and complex tasks
 
-      Body param: Amount of randomness injected into the response.
+    - `"claude-3-haiku-20240307"`
 
-      Defaults to `1.0`. Ranges from `0.0` to `1.0`. Use `temperature` closer to `0.0` for analytical / multiple choice, and closer to `1.0` for creative and generative tasks.
+      Our previous most fast and cost-effective
 
-      Note that even with `temperature` of `0.0`, the results will not be fully deterministic.
+  - `UnionMember1 = string`
 
-    - `top_k?: number`
+- `prompt: string`
 
-      Body param: Only sample from the top K options for each subsequent token.
+  The prompt that you want Claude to complete.
 
-      Used to remove "long tail" low probability responses. [Learn more technical details here](https://towardsdatascience.com/how-to-sample-from-language-models-682bceb97277).
+  For proper response generation you will need to format your prompt using alternating `
 
-      Recommended for advanced use cases only. You usually only need to use `temperature`.
+  Human:`and`
 
-    - `top_p?: number`
+  Assistant:` conversational turns. For example:
 
-      Body param: Use nucleus sampling.
+  ```
+  "
+  
+  Human: {userQuestion}
+  
+  Assistant:"
+  ```
 
-      In nucleus sampling, we compute the cumulative distribution over all the options for each subsequent token in decreasing probability order and cut it off once it reaches a particular probability specified by `top_p`. You should either alter `temperature` or `top_p`, but not both.
+  See [prompt validation](https://docs.claude.com/en/api/prompt-validation) and our guide to [prompt design](https://docs.claude.com/en/docs/intro-to-prompting) for more details.
 
-      Recommended for advanced use cases only. You usually only need to use `temperature`.
+- `metadata: optional Metadata`
 
-    - `betas?: Array<AnthropicBeta>`
+  An object describing metadata about the request.
 
-      Header param: Optional header to specify the beta version(s) you want to use.
+  - `user_id: optional string`
 
-      - `(string & {})`
+    An external identifier for the user who is associated with the request.
 
-      - `"message-batches-2024-09-24" | "prompt-caching-2024-07-31" | "computer-use-2024-10-22" | 16 more`
+    This should be a uuid, hash value, or other opaque identifier. Anthropic may use this id to help detect abuse. Do not include any identifying information such as name, email address, or phone number.
 
-        - `"message-batches-2024-09-24"`
+- `stop_sequences: optional array of string`
 
-        - `"prompt-caching-2024-07-31"`
+  Sequences that will cause the model to stop generating.
 
-        - `"computer-use-2024-10-22"`
+  Our models stop on `"
 
-        - `"computer-use-2025-01-24"`
+  Human:"`, and may include additional built-in stop sequences in the future. By providing the stop_sequences parameter, you may include additional strings that will cause the model to stop generating.
 
-        - `"pdfs-2024-09-25"`
+- `stream: optional boolean`
 
-        - `"token-counting-2024-11-01"`
+  Whether to incrementally stream the response using server-sent events.
 
-        - `"token-efficient-tools-2025-02-19"`
+  See [streaming](https://docs.claude.com/en/api/streaming) for details.
 
-        - `"output-128k-2025-02-19"`
+- `temperature: optional number`
 
-        - `"files-api-2025-04-14"`
+  Amount of randomness injected into the response.
 
-        - `"mcp-client-2025-04-04"`
+  Defaults to `1.0`. Ranges from `0.0` to `1.0`. Use `temperature` closer to `0.0` for analytical / multiple choice, and closer to `1.0` for creative and generative tasks.
 
-        - `"mcp-client-2025-11-20"`
+  Note that even with `temperature` of `0.0`, the results will not be fully deterministic.
 
-        - `"dev-full-thinking-2025-05-14"`
+- `top_k: optional number`
 
-        - `"interleaved-thinking-2025-05-14"`
+  Only sample from the top K options for each subsequent token.
 
-        - `"code-execution-2025-05-22"`
+  Used to remove "long tail" low probability responses. [Learn more technical details here](https://towardsdatascience.com/how-to-sample-from-language-models-682bceb97277).
 
-        - `"extended-cache-ttl-2025-04-11"`
+  Recommended for advanced use cases only. You usually only need to use `temperature`.
 
-        - `"context-1m-2025-08-07"`
+- `top_p: optional number`
 
-        - `"context-management-2025-06-27"`
+  Use nucleus sampling.
 
-        - `"model-context-window-exceeded-2025-08-26"`
+  In nucleus sampling, we compute the cumulative distribution over all the options for each subsequent token in decreasing probability order and cut it off once it reaches a particular probability specified by `top_p`. You should either alter `temperature` or `top_p`, but not both.
 
-        - `"skills-2025-10-02"`
-
-  - `CompletionCreateParamsNonStreaming extends CompletionCreateParamsBase`
-
-    - `stream?: false`
-
-      Body param: Whether to incrementally stream the response using server-sent events.
-
-      See [streaming](https://docs.claude.com/en/api/streaming) for details.
-
-      - `false`
-
-  - `CompletionCreateParamsNonStreaming extends CompletionCreateParamsBase`
-
-    - `stream?: false`
-
-      Body param: Whether to incrementally stream the response using server-sent events.
-
-      See [streaming](https://docs.claude.com/en/api/streaming) for details.
-
-      - `false`
+  Recommended for advanced use cases only. You usually only need to use `temperature`.
 
 ### Returns
 
-- `Completion`
+- `Completion = object { id, completion, model, 2 more }`
 
   - `id: string`
 
@@ -272,7 +262,11 @@ Future models and features will not be compatible with Text Completions. See our
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `"claude-opus-4-5-20251101" | "claude-opus-4-5" | "claude-3-7-sonnet-latest" | 17 more`
+    - `UnionMember0 = "claude-opus-4-5-20251101" or "claude-opus-4-5" or "claude-3-7-sonnet-latest" or 17 more`
+
+      The model that will complete your prompt.
+
+      See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
       - `"claude-opus-4-5-20251101"`
 
@@ -354,9 +348,9 @@ Future models and features will not be compatible with Text Completions. See our
 
         Our previous most fast and cost-effective
 
-    - `(string & {})`
+    - `UnionMember1 = string`
 
-  - `stop_reason: string | null`
+  - `stop_reason: string`
 
     The reason that we stopped.
 
@@ -375,27 +369,24 @@ Future models and features will not be compatible with Text Completions. See our
 
 ### Example
 
-```typescript
-import Anthropic from '@anthropic-ai/sdk';
-
-const client = new Anthropic({
-  apiKey: process.env['ANTHROPIC_API_KEY'], // This is the default and can be omitted
-});
-
-const completion = await client.completions.create({
-  max_tokens_to_sample: 256,
-  model: 'claude-opus-4-5-20251101',
-  prompt: '\n\nHuman: Hello, world!\n\nAssistant:',
-});
-
-console.log(completion.id);
+```http
+curl https://api.anthropic.com/v1/complete \
+    -H 'Content-Type: application/json' \
+    -H 'anthropic-version: 2023-06-01' \
+    -H "X-Api-Key: $ANTHROPIC_API_KEY" \
+    --max-time 600 \
+    -d '{
+          "max_tokens_to_sample": 256,
+          "model": "claude-opus-4-5-20251101",
+          "prompt": "\\n\\nHuman: Hello, world!\\n\\nAssistant:"
+        }'
 ```
 
 ## Domain Types
 
 ### Completion
 
-- `Completion`
+- `Completion = object { id, completion, model, 2 more }`
 
   - `id: string`
 
@@ -413,7 +404,11 @@ console.log(completion.id);
 
     See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
-    - `"claude-opus-4-5-20251101" | "claude-opus-4-5" | "claude-3-7-sonnet-latest" | 17 more`
+    - `UnionMember0 = "claude-opus-4-5-20251101" or "claude-opus-4-5" or "claude-3-7-sonnet-latest" or 17 more`
+
+      The model that will complete your prompt.
+
+      See [models](https://docs.anthropic.com/en/docs/models-overview) for additional details and options.
 
       - `"claude-opus-4-5-20251101"`
 
@@ -495,9 +490,9 @@ console.log(completion.id);
 
         Our previous most fast and cost-effective
 
-    - `(string & {})`
+    - `UnionMember1 = string`
 
-  - `stop_reason: string | null`
+  - `stop_reason: string`
 
     The reason that we stopped.
 

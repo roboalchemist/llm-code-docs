@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/cookbooks/fine-tune.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to fine-tune LLMs with Helicone and OpenPipe
 
 > Learn how to fine-tune large language models with Helicone and OpenPipe to optimize performance for specific tasks.

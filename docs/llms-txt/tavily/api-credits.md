@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/api-credits.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Credits & Pricing
 
 > Learn how to get and manage your Tavily API Credits.
@@ -74,7 +78,14 @@ For example:
 * If you crawl 10 pages with basic extraction depth, you'll be charged **1 credit for mapping** (10 pages) + **2 credits for extraction** (10 successful extractions ÷ 5) = **3 total credits**
 * If you crawl 10 pages with advanced extraction depth, you'll be charged **1 credit for mapping** + **4 credits for extraction** = **5 total credits**
 
+### Tavily Research
 
----
+Tavily Research follows a dynamic
+pricing model with minimum and maximum credit consumption boundaries associated
+with each request. The minimum and maximum boundaries differ based on if the
+request uses `model=mini` or `model=pro`.
 
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt
+| Request Cost Boundaries | model=pro   | model=mini  |
+| ----------------------- | ----------- | ----------- |
+| Per-request minimum     | 15 credits  | 4 credits   |
+| Per-request maximum     | 250 credits | 110 credits |

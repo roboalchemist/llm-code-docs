@@ -6,7 +6,6 @@ description: >-
   Learn how to set up and use Remote Configuration to dynamically manage tracing
   library settings without restarting applications.
 breadcrumbs: Docs > APM > Tracing Guides > Setting up Remote Configuration for Tracing
-source_url: https://docs.datadoghq.com/guide/remote_config/index.html
 ---
 
 # Setting up Remote Configuration for Tracing

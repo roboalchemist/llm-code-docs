@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/examples/text-to-speech.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Text to speech
 
 > Building a text-to-speech model with Kokoro

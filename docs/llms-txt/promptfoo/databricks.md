@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/databricks/
+
 # Databricks Foundation Model APIs
 
 The Databricks provider integrates with Databricks' Foundation Model APIs, offering access to state-of-the-art models through a unified OpenAI-compatible interface. It supports multiple deployment modes to match your specific use case and performance requirements.

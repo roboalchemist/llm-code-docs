@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/open-source/guides/architecture/technical-stack.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Technical Stack
 
 ### Frameworks

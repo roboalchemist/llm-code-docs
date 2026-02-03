@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/file-document/pdfsearchtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PDF RAG Search
 
 > The `PDFSearchTool` is designed to search PDF files and return the most relevant results.
@@ -63,15 +67,15 @@ tool = PDFSearchTool(
             "config": {
                 # Model identifier for the chosen provider. "model" will be auto-mapped to "model_name" internally.
                 "model": "text-embedding-3-small",
-                # Optional: API key. If omitted, the tool will use provider-specific env vars when available
-                # (e.g., OPENAI_API_KEY for provider="openai").
+                # Optional: API key. If omitted, the tool will use provider-specific env vars
+                # (e.g., OPENAI_API_KEY or EMBEDDINGS_OPENAI_API_KEY for OpenAI).
                 # "api_key": "sk-...",
 
                 # Provider-specific examples:
                 # --- Google Generative AI ---
                 # (Set provider="google-generativeai" above)
-                # "model": "models/embedding-001",
-                # "task_type": "retrieval_document",
+                # "model_name": "gemini-embedding-001",
+                # "task_type": "RETRIEVAL_DOCUMENT",
                 # "title": "Embeddings",
 
                 # --- Cohere ---

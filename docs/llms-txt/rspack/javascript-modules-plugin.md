@@ -1,11 +1,8 @@
 # Source: https://rspack.dev/plugins/webpack/javascript-modules-plugin.md
 
-import { ApiMeta } from '@components/ApiMeta.tsx';
-
 # JavascriptModulesPlugin
 
-<ApiMeta addedVersion={'1.0.0-alpha.0'} />
-
+[Added in v1.0.0-alpha.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.0.0-alpha.0)
 Handles the bundling of JavaScript, usually used to access the [hooks of the JavascriptModulesPlugin](/api/plugin-api/javascript-modules-plugin-hooks.md):
 
 ```js

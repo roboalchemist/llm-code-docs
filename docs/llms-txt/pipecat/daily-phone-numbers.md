@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/guides/telephony/daily-phone-numbers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Daily Phone Numbers
 
 > Purchase and manage phone numbers for Daily's PSTN services
@@ -136,8 +140,3 @@ We need the following information:
   name database and can take longer to update for major carriers, who check the
   national database periodically.
 </Info>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

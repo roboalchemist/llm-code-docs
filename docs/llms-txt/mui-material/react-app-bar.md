@@ -1427,8 +1427,10 @@ import { AppBar } from '@mui/material';
 | children | `node` | - | No |  |
 | classes | `object` | - | No | Override or extend the styles applied to the component. |
 | color | `'default' \| 'inherit' \| 'primary' \| 'secondary' \| 'transparent' \| 'error' \| 'info' \| 'success' \| 'warning' \| string` | `'primary'` | No |  |
+| elevation | `number` | `4` | No |  |
 | enableColorOnDark | `bool` | `false` | No |  |
 | position | `'absolute' \| 'fixed' \| 'relative' \| 'static' \| 'sticky'` | `'fixed'` | No |  |
+| square | `bool` | `true` | No |  |
 | sx | `Array<func \| object \| bool> \| func \| object` | - | No | The system prop that allows defining system overrides as well as additional CSS styles. |
 
 > **Note**: The `ref` is forwarded to the root element (HTMLElement).

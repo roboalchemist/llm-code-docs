@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/integrations/sdk-integrations/langchain.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LangChain
 
 [LangChain](https://www.langchain.com/) is a framework for developing applications powered by language models. Braintrust integrates with LangChain using callback handlers to automatically trace chains, agents, and LLM calls.
@@ -85,8 +89,3 @@ To trace your LangChain application, configure the `BraintrustCallbackHandler`:
 
 * [LangChain callback documentation](https://python.langchain.com/docs/how_to/#callbacks)
 * [LangChain official documentation](https://python.langchain.com/docs/introduction/)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

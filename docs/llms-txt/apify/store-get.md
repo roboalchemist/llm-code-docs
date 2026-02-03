@@ -18,6 +18,10 @@ The endpoint supports pagination using the `limit` and `offset` parameters. It w
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

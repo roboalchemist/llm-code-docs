@@ -1,8 +1,12 @@
 # Source: https://bun.com/docs/guides/process/ipc.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Spawn a child process and communicate using IPC
 
-Use [`Bun.spawn()`](https://bun.com/docs/api/spawn) to spawn a child process. When spawning a second `bun` process, you can open a direct inter-process communication (IPC) channel between the two processes.
+Use [`Bun.spawn()`](/runtime/child-process) to spawn a child process. When spawning a second `bun` process, you can open a direct inter-process communication (IPC) channel between the two processes.
 
 <Note>
   This API is only compatible with other `bun` processes. Use `process.execPath` to get a path to the currently running
@@ -64,4 +68,4 @@ process.send({ message: "Hello from child as object" });
 
 ***
 
-See [Docs > API > Child processes](https://bun.com/docs/api/spawn) for complete documentation.
+See [Docs > API > Child processes](/runtime/child-process) for complete documentation.

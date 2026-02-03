@@ -482,10 +482,9 @@ const invoice = await stripe.invoices.retrieve('upcoming_in_1OujwkClCIKljWvsq5v2
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.InvoiceRetrieveParams{
-  Invoice: stripe.String("upcoming_in_1OujwkClCIKljWvsq5v2ICAN"),
-}
-result, err := sc.V1Invoices.Retrieve(context.TODO(), params)
+params := &stripe.InvoiceRetrieveParams{}
+result, err := sc.V1Invoices.Retrieve(
+  context.TODO(), "upcoming_in_1OujwkClCIKljWvsq5v2ICAN", params)
 ```
 
 ```dotnet
@@ -1222,7 +1221,6 @@ result, err := sc.V1Invoices.CreatePreview(context.TODO(), params)
 // See your keys here: https://dashboard.stripe.com/apikeys
 var options = new InvoiceCreatePreviewOptions
 {
-    PreviewMode = "recurring",
     SubscriptionDetails = new InvoiceSubscriptionDetailsOptions
     {
         Items = new List<InvoiceSubscriptionDetailsItemOptions>
@@ -1244,6 +1242,7 @@ var options = new InvoiceCreatePreviewOptions
         new InvoiceDiscountOptions { PromotionCode = "promo_WINTERSALE" },
     },
 };
+options.AddExtraParam("preview_mode", "recurring");
 var client = new StripeClient("<<YOUR_SECRET_KEY>>");
 var service = client.V1.Invoices;
 Invoice invoice = service.CreatePreview(options);

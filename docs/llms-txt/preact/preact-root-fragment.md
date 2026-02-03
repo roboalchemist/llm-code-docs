@@ -1,3 +1,5 @@
+# Source: https://preactjs.com/guide/v10/preact-root-fragment
+
 # preact-root-fragment
 
 preact-root-fragment is a standalone and more flexible Preact 10+ implementation of the deprecated `replaceNode` parameter from Preact 10.

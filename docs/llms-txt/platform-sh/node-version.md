@@ -6,7 +6,7 @@
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 Each Upsun container image includes a specific language in a specific version.
 A set of dependencies is also provided based on that language version.
@@ -62,7 +62,7 @@ This property accepts either an exact version or a range:
 applications:
   # The app's name, which must be unique within the project.
   myapp:
-    type: 'python:3.13'
+    type: 'python:3.14'
     dependencies:
       nodejs:
         n: "*"
@@ -75,7 +75,7 @@ applications:
 applications:
   # The app's name, which must be unique within the project.
   myapp:
-    type: 'python:3.13'
+    type: 'python:3.14'
     dependencies:
       nodejs:
         n: "*"
@@ -89,7 +89,7 @@ applications:
 applications:
   # The app's name, which must be unique within the project.
   myapp:
-    type: 'python:3.13'
+    type: 'python:3.14'
     dependencies:
       nodejs:
         n: "*"
@@ -116,7 +116,7 @@ Your final app configuration should look something like this:
 applications:
   # The app's name, which must be unique within the project.
   myapp:
-    type: 'python:3.13'
+    type: 'python:3.14'
     dependencies:
       nodejs:
         n: "*"
@@ -153,7 +153,7 @@ To use `nvm`, follow these steps:
     applications:
       # The app's name, which must be unique within the project.
       myapp:
-        type: 'python:3.13'
+        type: 'python:3.14'
         variables:
           env:
             # Update for your desired NVM version.
@@ -168,7 +168,7 @@ To use `nvm`, follow these steps:
     applications:
       # The app's name, which must be unique within the project.
       myapp:
-        type: 'python:3.13'
+        type: 'python:3.14'
         variables:
           env:
             # Update these for your desired NVM and Node versions.
@@ -183,7 +183,7 @@ To use `nvm`, follow these steps:
     applications:
       # The app's name, which must be unique within the project.
       myapp:
-        type: 'python:3.13'
+        type: 'python:3.14'
         variables:
           env:
             # Update these for your desired NVM and Node versions.
@@ -217,7 +217,7 @@ rsync -av $PLATFORM_CACHE_DIR/.nvm $PLATFORM_APP_DIR
     applications:
       # The app's name, which must be unique within the project.
       myapp:
-        type: 'python:3.13'
+        type: 'python:3.14'
         variables:
           env:
             # Update these for your desired NVM and Node versions.
@@ -260,7 +260,7 @@ rsync -av $PLATFORM_CACHE_DIR/.nvm $PLATFORM_APP_DIR
     applications:
       # The app's name, which must be unique within the project.
       myapp:
-        type: 'python:3.13'
+        type: 'python:3.14'
         variables:
           env:
             # Update these for your desired NVM and Node versions.

@@ -2,21 +2,9 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/manage-api-keys.md
 
-# Source: https://docs.pinecone.io/guides/projects/manage-api-keys.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/manage-api-keys.md
-
-# Source: https://docs.pinecone.io/guides/projects/manage-api-keys.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/manage-api-keys.md
-
-# Source: https://docs.pinecone.io/guides/projects/manage-api-keys.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/manage-api-keys.md
-
-# Source: https://docs.pinecone.io/guides/projects/manage-api-keys.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/manage-api-keys.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Manage API keys
 
@@ -74,7 +62,7 @@ You can create a new API key for your project, as follows:
       PINECONE_ACCESS_TOKEN="YOUR_ACCESS_TOKEN"
 
       curl -X POST "https://api.pinecone.io/admin/projects/$PINECONE_PROJECT_ID/api-keys" \
-           -H "X-Pinecone-Api-Version: 2025-04" \
+           -H "X-Pinecone-Api-Version: 2025-10" \
            -H "Authorization: Bearer $PINECONE_ACCESS_TOKEN" \
            -d '{
                  "name": "example-api-key",
@@ -145,7 +133,7 @@ You can [view the API keys](/reference/api/latest/admin/list_api_keys) for your 
 
       curl -X GET "https://api.pinecone.io/admin/projects/$PINECONE_PROJECT_ID/api-keys" \
            -H "Authorization: Bearer $PINECONE_ACCESS_TOKEN" \
-           -H "X-Pinecone-Api-Version: 2025-04"
+           -H "X-Pinecone-Api-Version: 2025-10"
       ```
 
       ```bash CLI theme={null}
@@ -224,7 +212,7 @@ You can [view the details of an API key](/reference/api/latest/admin/fetch_api_k
       curl -X GET "https://api.pinecone.io/admin/api-keys/$PINECONE_API_KEY_ID" \
            -H "Authorization: Bearer $PINECONE_ACCESS_TOKEN" \
            -H "accept: application/json" \
-           -H "X-Pinecone-Api-Version: 2025-04"
+           -H "X-Pinecone-Api-Version: 2025-10"
       ```
 
       ```bash CLI theme={null}
@@ -296,7 +284,7 @@ If you are a [project owner](/guides/projects/understanding-projects#project-rol
       PINECONE_ACCESS_TOKEN="YOUR_ACCESS_TOKEN"
 
       curl -X PATCH "https://api.pinecone.io/admin/api-keys/$PINECONE_API_KEY_ID" \
-           -H "X-Pinecone-Api-Version: 2025-04" \
+           -H "X-Pinecone-Api-Version: 2025-10" \
            -H "Authorization: Bearer $PINECONE_ACCESS_TOKEN" \
            -d '{
                  "name": "new-api-key-name",
@@ -369,7 +357,7 @@ If you are a [project owner](/guides/projects/understanding-projects#project-rol
       PINECONE_ACCESS_TOKEN="YOUR_ACCESS_TOKEN"
 
       curl -X DELETE "https://api.pinecone.io/admin/api-keys/$PINECONE_API_KEY_ID" \
-           -H "X-Pinecone-Api-Version: 2025-04" \
+           -H "X-Pinecone-Api-Version: 2025-10" \
            -H "Authorization: Bearer $PINECONE_ACCESS_TOKEN"
       ```
 

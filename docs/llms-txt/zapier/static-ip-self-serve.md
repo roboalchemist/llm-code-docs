@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/news/2025/static-ip-self-serve.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Self-serve static IP for private integrations
 
 > Developers can now enable static IP addresses for private integrations directly in Platform UI without contacting support.

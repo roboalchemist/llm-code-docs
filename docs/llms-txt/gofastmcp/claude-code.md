@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/integrations/claude-code.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Claude Code 🤝 FastMCP
 
 > Install and use FastMCP servers in Claude Code
@@ -11,17 +15,14 @@ export const LocalFocusTip = () => {
 };
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
 <LocalFocusTip />
 
-Claude Code supports MCP servers through multiple transport methods including STDIO, SSE, and HTTP, allowing you to extend Claude's capabilities with custom tools, resources, and prompts from your FastMCP servers.
+[Claude Code](https://docs.anthropic.com/en/docs/claude-code) supports MCP servers through multiple transport methods including STDIO, SSE, and HTTP, allowing you to extend Claude's capabilities with custom tools, resources, and prompts from your FastMCP servers.
 
 ## Requirements
 

@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/realtime/plugins/nova-sonic.md
 
-LiveKit docs › Partner spotlight › AWS › Amazon Nova Sonic Plugin
+LiveKit docs › Models › Realtime › Plugins › Nova Sonic
 
 ---
 
@@ -83,7 +83,7 @@ The following resources provide more information about using Nova Sonic with Liv
 
 ---
 
-This document was rendered at 2025-11-18T23:55:15.225Z.
+This document was rendered at 2026-02-03T03:25:06.379Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/realtime/plugins/nova-sonic.md](https://docs.livekit.io/agents/models/realtime/plugins/nova-sonic.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

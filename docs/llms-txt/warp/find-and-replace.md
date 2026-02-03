@@ -12,7 +12,7 @@ Press `CMD-F` on macOS or `CTRL-SHIFT-F` on Windows and Linux to open the find m
 
 You can toggle regex and case-sensitive search options directly in the query editor.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-855117616ffd1d4361aaf770ac3388045616e48d%2Fcode-find-menu.gif?alt=media" alt="using find in the code editor"><figcaption><p>Using the find menu in Warp's Code Editor</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-855117616ffd1d4361aaf770ac3388045616e48d%2Fcode-find-menu.gif?alt=media" alt="using find in the code editor"><figcaption><p>Using the find menu in Warp's Code Editor</p></figcaption></figure>
 
 ## Replace
 
@@ -28,4 +28,4 @@ Toggle Preserve Case to keep the original casing of replaced text. Case is prese
 * Replacing “OldValue” with “newValue” will result in “NewValue”
 * Replacing “my-Old-VALUE” with “my-new-value” will result in “my-New-VALUE”
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-8e786a8f163bde3d9e695a1485e7f55d921222dd%2Fcode-replace-menu.gif?alt=media" alt="using replace in the code editor"><figcaption><p>Using the replace menu in Warp's Code Editor</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-8e786a8f163bde3d9e695a1485e7f55d921222dd%2Fcode-replace-menu.gif?alt=media" alt="using replace in the code editor"><figcaption><p>Using the replace menu in Warp's Code Editor</p></figcaption></figure>

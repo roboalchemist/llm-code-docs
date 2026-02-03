@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-encryption/database-encryption-in-transit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Database Encryption in Transit
 
 Aptible [Databases](/core-concepts/managed-databases/overview) are configured to allow connecting with SSL. Where possible, they are also configured to require SSL to ensure data is encrypted in transit. See the documentation for your [supported Database type](/core-concepts/managed-databases/supported-databases/overview) for details on how it's configured.

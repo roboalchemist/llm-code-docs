@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-regex-spaces.md
 ---
-# eslint/no-regex-spaces&#x20;
 
 ### What it does
 

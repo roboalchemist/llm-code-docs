@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/prompt-registry/input-variable-sets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Input Variable Sets
 
 Input Variable Sets allow you to save and reuse collections of input variables across prompts and agents. Instead of re-entering the same variable values repeatedly, you can create named sets and apply them wherever needed.
@@ -70,8 +74,3 @@ For more information on how to structure your template variables, see the [Templ
 * [Template Variables](/features/prompt-registry/template-variables) - Learn how to create dynamic prompts with variables
 * [Datasets](/features/evaluations/datasets) - Use datasets for comprehensive evaluation
 * [Playground](/why-promptlayer/playground) - Test prompts with different variable configurations
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

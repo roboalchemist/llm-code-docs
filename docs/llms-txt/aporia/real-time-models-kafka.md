@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/storing-your-predictions/real-time-models-kafka.md
 
-# Source: https://docs.aporia.com/storing-your-predictions/real-time-models-kafka.md
-
-# Source: https://docs.aporia.com/v1/storing-your-predictions/real-time-models-kafka.md
-
 # Real-time Models (Kafka)
 
 For high-throughput, real-time models (e.g models with an HTTP endpoint such as `POST /predict` and billions of predictions per day), you can stream predictions to [Kafka](https://kafka.apache.org/) or other message brokers, and then have a separate process to store them in a persistent storage.

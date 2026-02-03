@@ -21,8 +21,7 @@ In the demo, we run three parallel workflows:
 
 {% stepper %}
 {% step %}
-
-### Launch Agents in Parallel
+**Launch Agents in Parallel**
 
 Each agent runs in its own tab.
 
@@ -70,16 +69,14 @@ Use the gcloud tool to list all my open projects. Once you've done that, let me 
 {% endstep %}
 
 {% step %}
-
-### Monitor All Agents
+**Monitor All Agents**
 
 The **task pane** in Warp shows all running agents.\
 You can view plans, progress, and results live without interrupting other tasks.
 {% endstep %}
 
 {% step %}
-
-### Review Results
+**Review Results**
 
 * **Coding Agent:** Implements UI fixes accurately.
 * **Code Review Agent:** Reports 26 open PRs (identifies bottlenecks).
@@ -87,8 +84,7 @@ You can view plans, progress, and results live without interrupting other tasks.
   {% endstep %}
 
 {% step %}
-
-### Why This Matters
+**Why This Matters**
 
 Warp multi‑agent execution allows you to:
 

@@ -1,5 +1,9 @@
 # Source: https://docs.envoyer.io/projects/deployment-hooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.envoyer.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deployment Hooks
 
 > Learn how to deploy your projects with Deployment Hooks.
@@ -10,10 +14,10 @@ Deployment hooks allow you to customize your entire deployment plan by writing s
 
 Envoyer creates several first-party deployment hooks that cannot be modified or re-ordered:
 
-*   Clone New Release
-*   Install Composer Dependencies (if you have configured your project to do so)
-*   Activate New Release
-*   Purge Old Releases
+* Clone New Release
+* Install Composer Dependencies (if you have configured your project to do so)
+* Activate New Release
+* Purge Old Releases
 
 Your custom hooks can be re-ordered before / after each of these fixed actions.
 
@@ -41,7 +45,7 @@ Of course, any deployment hooks you have configured will also be run during the 
 
 Within your deployment hook scripts, you may use the `release` variable to access the most current release directory. For example:
 
-```bash
+```bash  theme={null}
 cd {{ release }}
 
 php artisan command

@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/open-source/installation/full-installation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Full installation
 
 To install the Unstructured open source library on a local development machine, run one or more of the following commands.

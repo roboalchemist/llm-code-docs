@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Advanced > Create a custom IAM policy to use
   with Cloudcraft
-source_url: https://docs.datadoghq.com/advanced/minimal-iam-policy/index.html
 ---
 
 # Create a custom IAM policy to use with Cloudcraft

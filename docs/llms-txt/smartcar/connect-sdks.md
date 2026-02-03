@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/connect/connect-sdks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SDKs for Connect
 
 > Our SDKs make integrating Smartcar fast and easy in different languages and frameworks.
@@ -19,5 +23,5 @@ For server-side rendered applications, you can use one of our backend SDKs:
 
 <Tip>
   Don't see an SDK for your language? No problem!
-  As long as you can build a URL and handle http requests, you're good to go.
+  As long as you can build a URL and handle HTTP requests, you're good to go.
 </Tip>

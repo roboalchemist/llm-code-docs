@@ -6,65 +6,32 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/json/mget.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/mget.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/mget.md
+# JSON.MGET
 
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/mget.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/mget.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/mget.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/mget.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/mget.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/mget.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/mget.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/mget.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/mget.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/mget.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/mget.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/mget.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/mget.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/mget.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/mget.md
-
-# MGET
-
-> Load multiple keys from Redis in one go.
-
-For billing purposes, this counts as a single command.
+> Get the same path from multiple JSON documents.
 
 ## Arguments
 
-<ParamField body="keys" type="...string" required>
-  Multiple keys to load from Redis.
+<ParamField body="keys" type="List[str]" required>
+  One or more keys of JSON documents.
+</ParamField>
+
+<ParamField body="path" type="str" required>
+  The path to get from the JSON document.
 </ParamField>
 
 ## Response
 
-<ResponseField type="T[]" required>
-  An array of values corresponding to the keys passed in. If a key doesn't exist, the value will be `null`.
+<ResponseField type="List[List[TValue]]" required>
+  The values at the specified path or `null` if the path does not exist.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  type MyType = {
-      a: number;
-      b: string;
-  }
-  const values = await redis.mget<MyType>("key1", "key2", "key3");
-  // values.length -> 3
+  ```py Example theme={"system"}
+  values = redis.json.mget(["key1", "key2"],  "$.path.to.somewhere")
   ```
 </RequestExample>

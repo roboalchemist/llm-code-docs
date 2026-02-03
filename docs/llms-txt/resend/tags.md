@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/emails/tags.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Managing Tags
 
 > Add unique identifiers to emails sent.
@@ -17,7 +21,7 @@ Here's how you can add custom tags to your emails.
 ## Add tags on the `POST /emails` endpoint
 
 <CodeGroup>
-  ```ts Node.js {10-15} theme={null}
+  ```ts Node.js {10-15} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -36,7 +40,7 @@ Here's how you can add custom tags to your emails.
   });
   ```
 
-  ```php PHP {8-13} theme={null}
+  ```php PHP {8-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->emails->send([
@@ -53,7 +57,7 @@ Here's how you can add custom tags to your emails.
   ]);
   ```
 
-  ```python Python {10-12} theme={null}
+  ```python Python {10-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -72,7 +76,7 @@ Here's how you can add custom tags to your emails.
   print(email)
   ```
 
-  ```rb Ruby {10-12} theme={null}
+  ```rb Ruby {10-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -91,7 +95,7 @@ Here's how you can add custom tags to your emails.
   puts sent
   ```
 
-  ```go Go {16} theme={null}
+  ```go Go {16} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import (
   	"fmt"
 
@@ -119,7 +123,7 @@ Here's how you can add custom tags to your emails.
   }
   ```
 
-  ```rust Rust {14} theme={null}
+  ```rust Rust {14} theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::types::{CreateEmailBaseOptions, Tag};
   use resend_rs::{Resend, Result};
 
@@ -141,7 +145,7 @@ Here's how you can add custom tags to your emails.
   }
   ```
 
-  ```java Java {17} theme={null}
+  ```java Java {17} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -166,7 +170,7 @@ Here's how you can add custom tags to your emails.
   }
   ```
 
-  ```csharp .NET {12} theme={null}
+  ```csharp .NET {12} theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -183,7 +187,7 @@ Here's how you can add custom tags to your emails.
   Console.WriteLine( "Email Id={0}", resp.Content );
   ```
 
-  ```bash cURL {9-14} theme={null}
+  ```bash cURL {9-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/emails' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -205,7 +209,7 @@ Here's how you can add custom tags to your emails.
 ## Add tags on the `POST /emails/batch` endpoint
 
 <CodeGroup>
-  ```ts Node.js {11-16,23-28} theme={null}
+  ```ts Node.js {11-16,23-28} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -238,7 +242,7 @@ Here's how you can add custom tags to your emails.
   ]);
   ```
 
-  ```php PHP {9-13,21-25} theme={null}
+  ```php PHP {9-13,21-25} theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->batch->send([
@@ -269,7 +273,7 @@ Here's how you can add custom tags to your emails.
   ]);
   ```
 
-  ```py Python {12-17,24-29} theme={null}
+  ```py Python {12-17,24-29} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
   from typing import List
 
@@ -305,7 +309,7 @@ Here's how you can add custom tags to your emails.
   resend.Batch.send(params)
   ```
 
-  ```rb Ruby {11-16,23-28} theme={null}
+  ```rb Ruby {11-16,23-28} theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = 're_xxxxxxxxx'
@@ -340,8 +344,8 @@ Here's how you can add custom tags to your emails.
   Resend::Batch.send(params)
   ```
 
-  ```go Go {22,29} theme={null}
-  package examples
+  ```go Go {22,29} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
 
   import (
   	"fmt"
@@ -382,7 +386,7 @@ Here's how you can add custom tags to your emails.
   }
   ```
 
-  ```rust Rust {15,22} theme={null}
+  ```rust Rust {15,22} theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::types::CreateEmailBaseOptions;
   use resend_rs::{Resend, Result};
 
@@ -413,7 +417,7 @@ Here's how you can add custom tags to your emails.
   }
   ```
 
-  ```java Java {12-15,23-26} theme={null}
+  ```java Java {12-15,23-26} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -449,7 +453,7 @@ Here's how you can add custom tags to your emails.
   }
   ```
 
-  ```csharp .NET {11,20} theme={null}
+  ```csharp .NET {11,20} theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -476,7 +480,7 @@ Here's how you can add custom tags to your emails.
   Console.WriteLine( "Nr Emails={0}", resp.Content.Count );
   ```
 
-  ```bash cURL {10-15,22-27} theme={null}
+  ```bash cURL {10-15,22-27} theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/emails/batch' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \

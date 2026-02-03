@@ -4,7 +4,6 @@
 title: Governance Console
 description: Provides a centralized, self-service view of Datadog usage and adoption.
 breadcrumbs: Docs > Account Management > Governance Console
-source_url: https://docs.datadoghq.com/governance_console/index.html
 ---
 
 # Governance Console

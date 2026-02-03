@@ -6,9 +6,8 @@ description: >-
   Troubleshoot Custom Metrics Server issues with Datadog Cluster Agent and
   Horizontal Pod Autoscaler (HPA)
 breadcrumbs: >-
-  Docs > Container Monitoring > Container Troubleshooting > Troubleshooting
-  Custom Metrics Server and HPA
-source_url: https://docs.datadoghq.com/troubleshooting/hpa/index.html
+  Docs > Containers > Container Troubleshooting > Troubleshooting Custom Metrics
+  Server and HPA
 ---
 
 # Troubleshooting Custom Metrics Server and HPA

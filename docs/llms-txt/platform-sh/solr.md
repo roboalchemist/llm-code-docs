@@ -1,13 +1,5 @@
 # Source: https://docs.upsun.com/add-services/solr.md
 
-# Source: https://docs.upsun.com/guides/spring/solr.md
-
-# Source: https://docs.upsun.com/add-services/solr.md
-
-# Source: https://docs.upsun.com/guides/spring/solr.md
-
-# Source: https://docs.upsun.com/add-services/solr.md
-
 # Solr (Search service)
 
 Apache Solr is a scalable and fault-tolerant search index.
@@ -37,11 +29,9 @@ The following versions are [deprecated](https://docs.upsun.com/glossary.md#depre
 They're available, but they don't receive security updates from upstream and aren't guaranteed to work.
 They'll be removed in the future – consider migrating to a [supported version](#supported-versions).
 
+   - 9.0
+
    - 8.11
-
-   - 8.6
-
-   - 8.4
 
    - 8.0
 
@@ -135,11 +125,11 @@ applications:
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services
 and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
-That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+The example above leverages [default endpoint](https://docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes, providing a [relationship](https://docs.upsun.com/create-apps/image-properties/relationships.md)
 (the network address a service is accessible from) that is identical to the name of that service.
 Depending on your needs, instead of default endpoint configuration,
-you can use [explicit endpoint configuration](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [explicit endpoint configuration](https://docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container (``<APP_NAME>``) now has access to the service via the relationship ``<SERVICE_NAME>`` and its corresponding [service environment variables](https://docs.upsun.com/development/variables.md#service-environment-variables).
 
     .upsun/config.yaml
@@ -159,9 +149,9 @@ applications:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [service environment variables](https://docs.upsun.com/development/variables.md#service-environment-variables).
 
 ### Example configuration
@@ -254,7 +244,7 @@ services:
 
 This configuration defines a single application (`myapp`), whose source code exists in the `<PROJECT_ROOT>/myapp` directory. 
 `myapp` has access to the `solr` service, via a relationship whose name is [identical to the service name](#2-define-the-relationship)
-(as per [default endpoint](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships).
+(as per [default endpoint](https://docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships).
 
 From this, ``myapp`` can retrieve access credentials to the service through the [relationship environment variables](#relationship-reference).
 

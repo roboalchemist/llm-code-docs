@@ -30,7 +30,7 @@ In this scenario, the contents of the "loader" get transferred into the "manager
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__init__)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/request_loaders/_request_manager_tandem.py#L31)\_\_init\_\_
+### [**](#__init__)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/request_loaders/_request_manager_tandem.py#L31)\_\_init\_\_
 
 * ****\_\_init\_\_**(request\_loader, request\_manager): None
 
@@ -41,7 +41,7 @@ In this scenario, the contents of the "loader" get transferred into the "manager
 
   #### Returns None
 
-### [**](#add_request)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/request_loaders/_request_manager_tandem.py#L52)add\_request
+### [**](#add_request)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/request_loaders/_request_manager_tandem.py#L52)add\_request
 
 * **async **add\_request**(request, \*, forefront): [ProcessedRequest](https://crawlee.dev/python/api/class/ProcessedRequest)
 
@@ -63,7 +63,7 @@ In this scenario, the contents of the "loader" get transferred into the "manager
 
   #### Returns [ProcessedRequest](https://crawlee.dev/python/api/class/ProcessedRequest)
 
-### [**](#add_requests)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/request_loaders/_request_manager_tandem.py#L56)add\_requests
+### [**](#add_requests)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/request_loaders/_request_manager_tandem.py#L56)add\_requests
 
 * **async **add\_requests**(requests, \*, forefront, batch\_size, wait\_time\_between\_batches, wait\_for\_all\_requests\_to\_be\_added, wait\_for\_all\_requests\_to\_be\_added\_timeout): None
 
@@ -101,7 +101,7 @@ In this scenario, the contents of the "loader" get transferred into the "manager
 
   #### Returns None
 
-### [**](#drop)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/request_loaders/_request_manager_tandem.py#L107)drop
+### [**](#drop)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/request_loaders/_request_manager_tandem.py#L107)drop
 
 * **async **drop**(): None
 
@@ -113,7 +113,7 @@ In this scenario, the contents of the "loader" get transferred into the "manager
 
   #### Returns None
 
-### [**](#fetch_next_request)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/request_loaders/_request_manager_tandem.py#L76)fetch\_next\_request
+### [**](#fetch_next_request)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/request_loaders/_request_manager_tandem.py#L76)fetch\_next\_request
 
 * **async **fetch\_next\_request**(): Request | None
 
@@ -127,7 +127,7 @@ In this scenario, the contents of the "loader" get transferred into the "manager
 
   #### Returns Request | None
 
-### [**](#get_handled_count)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/request_loaders/_request_manager_tandem.py#L36)get\_handled\_count
+### [**](#get_handled_count)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/request_loaders/_request_manager_tandem.py#L36)get\_handled\_count
 
 * **async **get\_handled\_count**(): int
 
@@ -139,7 +139,7 @@ In this scenario, the contents of the "loader" get transferred into the "manager
 
   #### Returns int
 
-### [**](#get_total_count)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/request_loaders/_request_manager_tandem.py#L40)get\_total\_count
+### [**](#get_total_count)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/request_loaders/_request_manager_tandem.py#L40)get\_total\_count
 
 * **async **get\_total\_count**(): int
 
@@ -151,7 +151,7 @@ In this scenario, the contents of the "loader" get transferred into the "manager
 
   #### Returns int
 
-### [**](#is_empty)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/request_loaders/_request_manager_tandem.py#L44)is\_empty
+### [**](#is_empty)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/request_loaders/_request_manager_tandem.py#L44)is\_empty
 
 * **async **is\_empty**(): bool
 
@@ -163,7 +163,7 @@ In this scenario, the contents of the "loader" get transferred into the "manager
 
   #### Returns bool
 
-### [**](#is_finished)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/request_loaders/_request_manager_tandem.py#L48)is\_finished
+### [**](#is_finished)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/request_loaders/_request_manager_tandem.py#L48)is\_finished
 
 * **async **is\_finished**(): bool
 
@@ -175,7 +175,7 @@ In this scenario, the contents of the "loader" get transferred into the "manager
 
   #### Returns bool
 
-### [**](#mark_request_as_handled)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/request_loaders/_request_manager_tandem.py#L103)mark\_request\_as\_handled
+### [**](#mark_request_as_handled)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/request_loaders/_request_manager_tandem.py#L103)mark\_request\_as\_handled
 
 * **async **mark\_request\_as\_handled**(request): ProcessedRequest | None
 
@@ -191,7 +191,7 @@ In this scenario, the contents of the "loader" get transferred into the "manager
 
   #### Returns ProcessedRequest | None
 
-### [**](#reclaim_request)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/request_loaders/_request_manager_tandem.py#L99)reclaim\_request
+### [**](#reclaim_request)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/request_loaders/_request_manager_tandem.py#L99)reclaim\_request
 
 * **async **reclaim\_request**(request, \*, forefront): [ProcessedRequest](https://crawlee.dev/python/api/class/ProcessedRequest) | None
 
@@ -210,7 +210,7 @@ In this scenario, the contents of the "loader" get transferred into the "manager
 
   #### Returns [ProcessedRequest](https://crawlee.dev/python/api/class/ProcessedRequest) | None
 
-### [**](#to_tandem)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/request_loaders/_request_loader.py#L56)to\_tandem
+### [**](#to_tandem)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/request_loaders/_request_loader.py#L56)to\_tandem
 
 * **async **to\_tandem**(request\_manager): [RequestManagerTandem](https://crawlee.dev/python/api/class/RequestManagerTandem)
 

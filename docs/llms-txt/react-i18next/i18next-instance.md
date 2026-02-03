@@ -2,10 +2,6 @@
 
 # Source: https://react.i18next.com/latest/i18next-instance.md
 
-# Source: https://react.i18next.com/legacy-v9/i18next-instance.md
-
-# Source: https://react.i18next.com/latest/i18next-instance.md
-
 # i18next instance
 
 The instance is an initialized i18next instance. In the following code snippet, we add a backend to load translations from server and a language detector for detecting user language.

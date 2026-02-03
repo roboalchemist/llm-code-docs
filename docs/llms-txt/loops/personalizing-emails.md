@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/creating-emails/personalizing-emails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Personalizing emails
 
 > Add context and personalization to emails.

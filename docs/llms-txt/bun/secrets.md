@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/secrets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Secrets
 
 > Use Bun's Secrets API to store and retrieve sensitive credentials securely
@@ -11,24 +15,28 @@ Store and retrieve sensitive credentials securely using the operating system's n
 ```typescript index.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { secrets } from "bun";
 
-const githubToken = await secrets.get({
+let githubToken: string | null = await secrets.get({
   service: "my-cli-tool",
   name: "github-token",
 });
 
 if (!githubToken) {
-  const response = await fetch("https://api.github.com/name", {
-    headers: { Authorization: `token ${githubToken}` },
-  });
-  console.log("Please enter your GitHub token");
-} else {
+  githubToken = prompt("Please enter your GitHub token");
+
   await secrets.set({
     service: "my-cli-tool",
     name: "github-token",
-    value: prompt("Please enter your GitHub token"),
+    value: githubToken,
   });
+
   console.log("GitHub token stored");
 }
+
+const response = await fetch("https://api.github.com/user", {
+  headers: { Authorization: `token ${githubToken}` },
+});
+
+console.log(`Logged in as ${(await response.json()).login}`);
 ```
 
 ***

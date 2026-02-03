@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/support-and-billing/troubleshooting-login-issues.md
+# Source: https://docs.warp.dev/support-and-community/troubleshooting-and-support/troubleshooting-login-issues.md
 
 # Troubleshooting Login
 
@@ -65,31 +65,37 @@ In cases where you logged in with another method, please do the following to fix
 3. Once logged in, go to [app.warp.dev/link\_sso](https://app.warp.dev/link_sso)
 4. This should link your login to SSO. You can now proceed to login with "Continue with SSO".
 
-## Blocked for Terms of Service violation
+## Flagged as Fraudulent
 
-Warp has a system in place that identifies users that could potentially be fraudulent, but it can produce false positives if the user has a restrictive ad, script, and/or tracker blocking extensions or browsers.
+If you received the message "This account has been flagged as fraudulent.", this means that you have failed one or more checks in our fraud detection system, and you will be unable to authenticate to Warp or leverage AI features.
 
-To workaround this issue, try disabling any ad, script, and/or tracking blockers to see if that helps. If that doesn't work, try logging in with any other Warp accounts you may have as those may not be blocked.\
-\
-If none of the above work, the system has determined your account is blocked and you can't proceed with using Warp, please email <appeals@warp.dev> for appealing the block (note that response to that inbox is greatly delayed)\
-\
-If you have an active subscription and continue to have login issues, please the the rest of the recommendations on [this doc](#get-help-with-login-issues).
+Please note that creating multiple accounts or using throwaway emails is against our [Terms of Service](https://www.warp.dev/terms-of-service) and increases the chance of triggering this system significantly.
+
+### False Positives
+
+At times, ad-blockers or systems like Pi-hole may falsely trigger this system. You may be able to remediate this error by temporarily disabling these and attempting login again.
+
+### Requesting an Appeal
+
+If you are still unable to authenticate, you may email <appeals@warp.dev> to request an appeal. Please include the email of the account you are experiencing the issue on so a member of our support team can investigate. This may take 5-10 days.
+
+If you have an active subscription and continue to have login issues, please see the rest of the recommendations on [this page](#get-help-with-login-issues).
 
 ## How to get an Auth token to login
 
-If the browser does not open from Warp directly when you click "Sign up" or "Sign in". Please go to the [Signup ](https://app.warp.dev/signup)page to create an account or [Login](https://app.warp.dev/login) page if you already have one, then copy the auth token from the "here" link on the logged\_in page and paste it into Warp.
+If the browser does not open from Warp directly when you click "Sign up" or "Sign in". Please go to the [Signup](https://app.warp.dev/signup) page to create an account or [Login](https://app.warp.dev/login) page if you already have one, then copy the auth token from the "here" link on the logged\_in page and paste it into Warp.
 
 If nothing happens when you click "Take me to Warp" on the logged-in page. If this happens to you, copy the "here" link on the web logged-in page (<https://app.warp.dev/logged\\_in>) to copy the authentication token, then paste it into the app as shown below.
 
 {% hint style="warning" %}
-The on Linux and Windows, the default copy-and-paste [Keyboard shortcuts](https://docs.warp.dev/getting-started/keyboard-shortcuts) are `CTRL-SHIFT-C` and `CTRL-SHIFT-V` respectively.\
+The on Linux and Windows, the default copy-and-paste [Keyboard shortcuts](https://docs.warp.dev/getting-started/keyboard-shortcuts) are `CTRL+SHIFT+C` and `CTRL+SHIFT+V` respectively.\
 \
 On Linux and WSL you should install and set your default `$BROWSER` to `brave-browser` to workaround any copy-paste issues. Please see the workaround guide below.
 {% endhint %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-7ffe106c39bee67b4de47eddcf0f27d4093bfb0d%2Fauth-token-demo.gif?alt=media&#x26;token=635cd095-578a-4d65-a24c-23232cbe8129" alt=""><figcaption><p>Authentication Token Linux</p></figcaption></figure>
+<figure><img src="https://2974137108-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FD4dBaHbuMVNs0iB2iqZ1%2Fuploads%2Fgit-blob-7ffe106c39bee67b4de47eddcf0f27d4093bfb0d%2Fauth-token-demo.gif?alt=media" alt=""><figcaption><p>Authentication Token Linux</p></figcaption></figure>
 
-![Authentication Token Mac](https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-274f6892c157adc07e85a64f2d9ca0d2cd58577c%2Fauth-token-flow.png?alt=media\&token=eb46d29b-2e8c-49d3-89b7-91b028615b99)
+![Authentication Token Mac](https://2974137108-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FD4dBaHbuMVNs0iB2iqZ1%2Fuploads%2Fgit-blob-274f6892c157adc07e85a64f2d9ca0d2cd58577c%2Fauth-token-flow.png?alt=media)
 
 If "Take me to Warp" is still not working it may be due to a [proxy issue](#proxies), please see this article for more information on a workaround [here](https://embiid.blog/post/WARP-does-not-work-after-submitting-an-invite-code/).
 

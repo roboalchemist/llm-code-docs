@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/getting-started/ai-documentation.md
-
-# Source: https://gitbook.com/docs/documentation/fr/getting-started/ai-documentation.md
-
-# Source: https://gitbook.com/docs/getting-started/ai-documentation.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/getting-started/ai-documentation.md
 
 # Source: https://gitbook.com/docs/documentation/zh/getting-started/ai-documentation.md
 
@@ -35,6 +31,8 @@ GitBook Agent will create content based on your prompts, allowing you to jumpsta
 You can add a style guide and custom instructions that apply across your organization, reference other pages to add context, and ask for help on individual blocks — or your entire page.
 
 And soon, the Agent will suggest and generate docs improvements based on support tickets, GitHub issues and other connected services. You’ll be able to browse through it’s suggestions, review the change requests it opens and edit or merge them if they’re useful.
+
+If you prefer to edit your GitBook docs locally using [Git Sync](https://gitbook.com/docs/getting-started/git-sync) and AI coding assistants like Claude Code and Cursor, you can also use GitBook's [skill.md](https://gitbook.com/docs/skill.md) file to provide all of the needed context to create, edit, and manage your documentation in your own environment using all of GitBook’s features and blocks.
 
 And if you want to translate your docs site into other languages, all you have to do is choose the language you want. [GitBook’s built-in AI Translation tool](https://gitbook.com/docs/gitbook-agent/translations) will handle the translation, duplicating all your primary content and localizing it ready for you to add to your site. When you update your primary content, the translated versions automatically update to reflect your changes — no effort or review needed.
 

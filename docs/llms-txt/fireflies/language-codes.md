@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/miscellaneous/language-codes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Language codes
 
 > Language code abbreviations for the Fireflies.ai API

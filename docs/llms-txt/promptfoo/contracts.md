@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/contracts/
+
 # Contracts Plugin
 
 The Contracts red teaming plugin is designed to test whether an AI system can be influenced to enter into unintended business contracts or make unauthorized commitments.

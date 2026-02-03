@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/pki/concepts/certificate-mgmt.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Certificate Management
 
 > Learn what is certificate management and why it matters for building secure systems.
@@ -10,7 +14,7 @@ A (digital) *certificate* is a file that is tied to a cryptographic key pair and
 
 For example, when you visit a website over HTTPS, your browser checks the TLS certificate deployed on the web server or load balancer to make sure it’s really the site it claims to be. If the certificate is valid, your browser establishes an encrypted connection with the server.
 
-Certificates contain information about the subject (who it identifies), the public key, and a digital signature from the CA that issued the certificate. They also include additional fields such as key usages, validity periods, and extensions that define how and where the certificate can be used. When a certificate expires, the service presenting it is no longer trusted, and clients won't be able to establish a secure connection to the service.
+Certificates contain information about the subject (who it identifies), the public key, and a digital signature from the Certificate Authority (CA) that issued the certificate. They also include additional fields such as key usages, validity periods, and extensions that define how and where the certificate can be used. When a certificate expires, the service presenting it is no longer trusted, and clients won't be able to establish a secure connection to the service.
 
 ## What is Certificate Management?
 

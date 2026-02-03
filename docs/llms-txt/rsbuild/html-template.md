@@ -1,3 +1,5 @@
+# Source: https://rsbuild.dev/guide/basic/html-template.md
+
 # html-template
 
 Rsbuild generates an HTML file for each entry defined in `[source.entry](/config/source/entry.md)`.

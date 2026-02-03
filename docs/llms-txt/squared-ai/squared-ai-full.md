@@ -116,7 +116,7 @@ Start by logging into your Anthropic Console.
 
 1. Sign in to your Anthropic account at [Anthropic](https://console.anthropic.com/dashboard).
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742405724/Multiwoven/connectors/Antropic-model/Dashboard_xr5wie.png" />
+     <img />
    </Frame>
 
 ## Step 2: Locate API keys
@@ -129,7 +129,7 @@ Once you're in the Anthropic, you'll find the necessary configuration details:
    * If you haven't created an API Key before, click on "Create API key" to generate a new one. Make sure to copy the API Key as they are shown only once.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742405724/Multiwoven/connectors/Antropic-model/API_keys_q4zhke.png" />
+     <img />
    </Frame>
 
 ## Step 3: Configure Anthropic Model Connector in Your Application
@@ -144,7 +144,7 @@ Now that you have gathered all the necessary details enter the following informa
   <Accordion title="Stream disabled" icon="key">
     **Request:**
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "model": "claude-3-7-sonnet-20250219",
       "max_tokens": 256,
@@ -155,7 +155,7 @@ Now that you have gathered all the necessary details enter the following informa
 
     **Response:**
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "id": "msg_0123ABC",
       "type": "message",
@@ -184,7 +184,7 @@ Now that you have gathered all the necessary details enter the following informa
   <Accordion title="Stream enabled" icon="key">
     **Request:**
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "model": "claude-3-7-sonnet-20250219",
       "max_tokens": 1024,
@@ -195,7 +195,7 @@ Now that you have gathered all the necessary details enter the following informa
 
     **Response:**
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "type": "content_block_delta",
       "index": 0,
@@ -240,25 +240,25 @@ Once you're in the AWS console, you'll find the necessary configuration details:
    * In the "Access keys" section, you can create or view your access keys.
    * If you haven't created an access key pair before, click on "Create access key" to generate a new one. Make sure to copy the Access Key ID and Secret Access Key as they are shown only once.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1725025888/Multiwoven/connectors/aws_sagemaker-model/Create_access_keys_sh1tmz.jpg" />
+       <img />
      </Frame>
 
 2. **Region:**
    * The AWS region can be selected from the top right corner of the AWS Management Console. Choose the region where your AWS Bedrock resources is located and note down the region.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1725025964/Multiwoven/connectors/aws_sagemaker-model/region_nonhav.jpg" />
+       <img />
      </Frame>
 
 3. **Inference Profile ARN:**
    * The Inference Profile ARN is in the Cross-region inference page and can be found in your selected model.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1745884727/Multiwoven/connectors/aws_bedrock-model/Bedrock_Inference_Profile_pngrpa.png" />
+       <img />
      </Frame>
 
 4. **Model ID:**
    * The AWS Model Id can be found in your selected models catalog.
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1745549438/Multiwoven/connectors/aws_bedrock-model/Model_Id_m0uetd.png" />
+     <img />
    </Frame>
 
 ## Step 3: Configure AWS Bedrock Model Connector in Your Application
@@ -278,7 +278,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Jamba 1.5 Large" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "messages": [
           {
@@ -292,7 +292,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "id": "chatcmpl",
         "choices": [
@@ -322,7 +322,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Jamba 1.5 Mini" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "messages": [
           {
@@ -336,7 +336,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "id": "chatcmpl",
         "choices": [
@@ -370,7 +370,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Nova Lite" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "inferenceConfig": {
           "max_new_tokens": 100
@@ -390,7 +390,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "output": {
           "message": {
@@ -417,7 +417,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Nova Micro" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "inferenceConfig": {
           "max_new_tokens": 100
@@ -437,7 +437,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "output": {
           "message": {
@@ -464,7 +464,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Nova Pro" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "inferenceConfig": {
           "max_new_tokens": 100
@@ -484,7 +484,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "output": {
           "message": {
@@ -511,7 +511,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Titan Text G1 - Premier" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "inputText": "hello",
         "textGenerationConfig": {
@@ -523,7 +523,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "inputTextTokenCount": 3,
         "results": [
@@ -540,7 +540,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Titan Text G1 - Express" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "inputText": "hello",
         "textGenerationConfig": {
@@ -552,7 +552,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "inputTextTokenCount": 3,
         "results": [
@@ -569,7 +569,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Titan Text G1 - Lite" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "inputText": "hello",
         "textGenerationConfig": {
@@ -581,7 +581,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "inputTextTokenCount": 3,
         "results": [
@@ -602,7 +602,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Claude 3.7 Sonnet" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "anthropic_version": "bedrock-2023-05-31",
         "max_tokens": 100,
@@ -622,7 +622,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "id": "msg_01XFDUDYJgAACzvnptvVoYEL",
         "type": "message",
@@ -647,7 +647,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Claude 3.5 Haiku" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "anthropic_version": "bedrock-2023-05-31",
         "max_tokens": 100,
@@ -667,7 +667,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "id": "msg_02ABC1234",
         "type": "message",
@@ -691,7 +691,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Claude 3.5 Sonnet v2" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "anthropic_version": "bedrock-2023-05-31",
         "max_tokens": 100,
@@ -711,7 +711,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "id": "msg_03XYZ5678",
         "type": "message",
@@ -735,7 +735,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Claude 3.5 Sonnet" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "anthropic_version": "bedrock-2023-05-31",
         "max_tokens": 100,
@@ -755,7 +755,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "id": "msg_bdrk",
         "type": "message",
@@ -780,7 +780,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Claude 3 Opus" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "anthropic_version": "bedrock-2023-05-31",
         "max_tokens": 100,
@@ -800,7 +800,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "id": "msg_05OPQ2345",
         "type": "message",
@@ -824,7 +824,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Claude 3 Haiku" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "anthropic_version": "bedrock-2023-05-31",
         "max_tokens": 100,
@@ -844,7 +844,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "id": "msg_06RST6789",
         "type": "message",
@@ -872,7 +872,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Command R" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       { 
         "message": "Hi" 
       }
@@ -880,7 +880,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "response_id": "123D7",
         "text": "Hi there!",
@@ -903,7 +903,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Command R+" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       { 
         "message": "Hi" 
       }
@@ -911,7 +911,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "response_id": "123D7",
         "text": "Hi there!",
@@ -934,7 +934,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Command Light" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "prompt": "hello",
         "max_tokens": 100
@@ -943,7 +943,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "id": "5e820f61f54d",
         "generations": [
@@ -961,7 +961,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Command" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "prompt": "hello",
         "max_tokens": 100
@@ -970,7 +970,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "id": "5e820f61f54d",
         "generations": [
@@ -992,7 +992,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="DeepSeek-R1" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "prompt": "Hello",
         "max_tokens": 100
@@ -1001,7 +1001,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "choices": [
           {
@@ -1020,7 +1020,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Llama 3.3 70B Instruct" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "prompt": "hello",
         "max_gen_len": 100
@@ -1029,7 +1029,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "generation": "Hi!",
         "prompt_token_count": 1,
@@ -1042,7 +1042,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Llama 3.2 11B Instruct" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "prompt": "hello",
         "max_gen_len": 100 
@@ -1051,7 +1051,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "generation": "Hi",
         "prompt_token_count": 1,
@@ -1064,7 +1064,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Llama 3.2 1B Instruct" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "prompt": "hello",
         "max_gen_len": 100
@@ -1073,7 +1073,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "generation": "Hi!",
         "prompt_token_count": 1,
@@ -1086,7 +1086,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Llama 3.2 3B Instruct" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "prompt": "hello",
         "max_gen_len": 100 
@@ -1095,7 +1095,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "generation": "Hi!",
         "prompt_token_count": 1,
@@ -1108,7 +1108,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Llama 3.2 90B Instruct" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "prompt": "hello",
         "max_gen_len": 100 
@@ -1117,7 +1117,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "generation": "Hi!",
         "prompt_token_count": 1,
@@ -1130,7 +1130,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Llama 3.1 70B Instruct" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "prompt": "hello",
         "max_gen_len": 100
@@ -1139,7 +1139,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "generation": "Hi!",
         "prompt_token_count": 1,
@@ -1152,7 +1152,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Llama 3.1 8B Instruct" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "prompt": "hello",
         "max_gen_len": 100
@@ -1161,7 +1161,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "generation": "Hi!",
         "prompt_token_count": 1,
@@ -1174,7 +1174,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Llama 3 70B Instruct" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "prompt": "hello",
         "max_gen_len": 100
@@ -1183,7 +1183,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "generation": "Hi!",
         "prompt_token_count": 1,
@@ -1196,7 +1196,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Llama 3 8B Instruct" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "prompt": "hello",
         "max_gen_len": 100
@@ -1205,7 +1205,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "generation": "Hi!",
         "prompt_token_count": 1,
@@ -1222,7 +1222,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Pixtral Large (25.02)" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "messages": [
           {
@@ -1240,7 +1240,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "id": "model_id",
         "object": "chat.completion",
@@ -1268,7 +1268,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Mistral Large (24.02)" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "prompt": "<s>[INST] hello [/INST]",
         "max_tokens": 100
@@ -1277,7 +1277,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "outputs": [
           {
@@ -1292,7 +1292,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Mistral 7B Instruct" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "prompt": "<s>[INST] hello [/INST]",
         "max_tokens": 100
@@ -1301,7 +1301,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "outputs": [
           {
@@ -1316,7 +1316,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Mixtral 8x7B Instruct" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "prompt": "<s>[INST] hello [/INST]",
         "max_tokens": 100
@@ -1325,7 +1325,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "outputs": [
           {
@@ -1340,7 +1340,7 @@ Now that you have gathered all the necessary details enter the following informa
     <Accordion title="Mistral Small (24.02)" icon="key">
       **Request:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "prompt": "<s>[INST] hello [/INST]",
         "max_tokens": 100
@@ -1349,7 +1349,7 @@ Now that you have gathered all the necessary details enter the following informa
 
       **Response:**
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "outputs": [
           {
@@ -1393,12 +1393,12 @@ Once you're in the Open AI, you'll find the necessary configuration details:
 
    * Click the gear icon on the top right corner.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742430767/Multiwoven/connectors/Open_ai/Setting_hutqpy.png" />
+       <img />
      </Frame>
    * Click on "API keys" to view your API keys.
    * If you haven't created an API Key before, click on "Create new secret key" to generate a new one. Make sure to copy the API Key as they are shown only once.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742430766/Multiwoven/connectors/Open_ai/Open_ai_API_keys_oae2fn.png" />
+       <img />
      </Frame>
 
 ## Step 3: Configure Generic Open AI Model Connector in Your Application
@@ -1443,7 +1443,7 @@ Start by logging into your Google Cloud Console.
    * Select the region where your endpoint is and select your endpoint. Note down the Region that is shown.
    * Click on "SAMPLE REQUEST" and note down the Endpoint ID and Project ID
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1725470985/Multiwoven/connectors/google_vertex-model/Details_hd4uhu.jpg" />
+       <img />
      </Frame>
 
 2. **JSON Key File:**
@@ -1453,7 +1453,7 @@ Start by logging into your Google Cloud Console.
    * In the "Credentials" section, you can create or select your service account.
    * After selecting your service account goto the "KEYS" tab and click "ADD KEY". For Key type select JSON.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1725470985/Multiwoven/connectors/google_vertex-model/Add_Key_qi9ogq.jpg" />
+       <img />
      </Frame>
 
 ## Step 3: Configure Google Vertex Model Connector in Your Application
@@ -1490,7 +1490,7 @@ Sign in to your AI Squared account and navigate to the **Source** section.
 From AI/ML Sources in Sources click **Add Source** and select **HTTP Model** from the list of available source types.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1731535400/Multiwoven/connectors/HTTP-model/http_model_source_lz03gb.png" alt="Configure HTTP Destination" />
+  <img alt="Configure HTTP Destination" />
 </Frame>
 
 ## Step 3: Configure HTTP Connection Details
@@ -1498,7 +1498,7 @@ From AI/ML Sources in Sources click **Add Source** and select **HTTP Model** fro
 Enter the following information to set up your HTTP connection:
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1731595872/Multiwoven/connectors/HTTP-model/HTTP_Model_Source_Connection_Page_h5rwe3.png" alt="Configure HTTP Destination" />
+  <img alt="Configure HTTP Destination" />
 </Frame>
 
 * **URL**: The URL where your model resides.
@@ -1510,7 +1510,7 @@ Enter the following information to set up your HTTP connection:
 Use the **Test Connection** feature to ensure that AI Squared can connect to your HTTP Model endpoint. If the test is successful, you’ll receive a confirmation message. If not, review your connection details.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1731595872/Multiwoven/connectors/HTTP-model/HTTP_Model_Source_Connection_Success_clnbnf.png" alt="Configure HTTP Destination" />
+  <img alt="Configure HTTP Destination" />
 </Frame>
 
 ## Step 5: Save the Connector Settings
@@ -1547,12 +1547,12 @@ Once you're in the Open AI, you'll find the necessary configuration details:
 
    * Click the gear icon on the top right corner.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742430767/Multiwoven/connectors/Open_ai/Setting_hutqpy.png" />
+       <img />
      </Frame>
    * Click on "API keys" to view your API keys.
    * If you haven't created an API Key before, click on "Create new secret key" to generate a new one. Make sure to copy the API Key as they are shown only once.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742430766/Multiwoven/connectors/Open_ai/Open_ai_API_keys_oae2fn.png" />
+       <img />
      </Frame>
 
 ## Step 3: Configure Open AI Model Connector in Your Application
@@ -1591,34 +1591,34 @@ Once you're in the WatsonX.AI, you'll find the necessary configuration details:
 
 * Scroll down to Developer access.
   <Frame>
-    <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742348073/Multiwoven/connectors/WatsonX_AI/Discover_g59hes.png" />
+    <img />
   </Frame>
 * Click on "Manage IBM Cloud API keys" to view your API keys.
 * If you haven't created an API Key before, click on "Create API key" to generate a new one. Make sure to copy the API Key as they are shown only once.
   <Frame>
-    <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742348072/Multiwoven/connectors/WatsonX_AI/Create_API_Key_qupq4r.png" />
+    <img />
   </Frame>
 
 2. **Region**
 
 * The IBM Cloud region can be selected from the top right corner of the WatsonX.AI Console. Choose the region where your WatsonX.AI resources is located and note down the region.
   <Frame>
-    <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742400772/Multiwoven/connectors/WatsonX_AI/Region_mlxbpz.png" />
+    <img />
   </Frame>
 
 3. **Deployment Id**
 
 * Scroll down to Deployment spaces and click on your deployment space.
   <Frame>
-    <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742392179/Multiwoven/connectors/WatsonX_AI/Deployment_ojvyuk.png" />
+    <img />
   </Frame>
 * In your selected deployment space select your online deployed model
   <Frame>
-    <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742398916/Multiwoven/connectors/WatsonX_AI/Deployment_Space_oszqu6.png" />
+    <img />
   </Frame>
 * On the right-hand side, under "About this deployment", the Deployment ID will appear under "Deployment Details".
   <Frame>
-    <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1742392179/Multiwoven/connectors/WatsonX_AI/Deployment_ID_ij3k50.png" />
+    <img />
   </Frame>
 
 ## Step 3: Configure WatsonX.AI Model Connector in Your Application
@@ -1767,7 +1767,7 @@ Each input field includes the following:
 
 ## Example Input Schema
 
-```json  theme={null}
+```json theme={null}
 {
   "customer_id": "12345",
   "email": "user@example.com",
@@ -1840,7 +1840,7 @@ Understand what AI Modeling means inside AI Squared and how to configure your mo
 
 AI Modeling in AI Squared allows you to connect, configure, and prepare your hosted AI/ML models for use inside business applications. This process ensures that AI outputs are both reliable and context-aware—ready for consumption by business users within CRMs, ERPs, and custom interfaces.
 
-<img className="block" src="https://res.cloudinary.com/dspflukeu/image/upload/f_auto,q_auto/v1/DevRel/models" alt="Hero Light" />
+<img alt="Hero Light" />
 
 ## Why AI Modeling Matters
 
@@ -1906,7 +1906,7 @@ Each field you expect from the model response must be described in the schema:
 
 ## Example Output Payload
 
-```json  theme={null}
+```json theme={null}
 {
   "churn_risk_score": 0.92,
   "prediction_label": "High Risk",
@@ -2019,11 +2019,11 @@ This guide walks through the steps to enable, install, and run `.air` model file
 
 1. Go to **Settings > Organization > Headless** tab.
 
-<img src="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/headless/1.png?fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=6b6ce19eae7a1ceee5c688a0ced7779f" alt="title" data-og-width="2880" width="2880" data-og-height="1670" height="1670" data-path="images/headless/1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/headless/1.png?w=280&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=e669b4573b5a7bdd6895f9dc1ee6b8d2 280w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/headless/1.png?w=560&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=693d5c08ef45e35d9f787069c408363c 560w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/headless/1.png?w=840&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=adce86c6ae4fb8e2e7cd8bba30d60be3 840w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/headless/1.png?w=1100&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=3bf90a86ed0994268ac56106085555a8 1100w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/headless/1.png?w=1650&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=dc4834ed466a877be6fa3a936b18afdb 1650w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/headless/1.png?w=2500&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=990043435fb93b629dd2b15d006eb95d 2500w" />
+<img alt="title" />
 
 2. Toggle **Enable Headless Extension** to ON.
 
-<img src="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/headless/1.png?fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=6b6ce19eae7a1ceee5c688a0ced7779f" alt="title" data-og-width="2880" width="2880" data-og-height="1670" height="1670" data-path="images/headless/1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/headless/1.png?w=280&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=e669b4573b5a7bdd6895f9dc1ee6b8d2 280w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/headless/1.png?w=560&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=693d5c08ef45e35d9f787069c408363c 560w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/headless/1.png?w=840&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=adce86c6ae4fb8e2e7cd8bba30d60be3 840w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/headless/1.png?w=1100&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=3bf90a86ed0994268ac56106085555a8 1100w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/headless/1.png?w=1650&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=dc4834ed466a877be6fa3a936b18afdb 1650w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/headless/1.png?w=2500&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=990043435fb93b629dd2b15d006eb95d 2500w" />
+<img alt="title" />
 
 ## Install the Headless Chrome Extension
 
@@ -2067,7 +2067,7 @@ Once uploaded:
 
 Watch the complete demo video for headless extension setup
 
-<video autoPlay muted loop playsInline className="w-full aspect-video rounded-xl" src="https://res.cloudinary.com/da3470iir/video/upload/v1753923660/headless_a4rjez.mov" />
+<video />
 
 ## ✅ You're Done!
 
@@ -2106,13 +2106,13 @@ When creating or configuring a Data App, select your rendering method:
 
 * ✅ **No-Code Integration**: Uses the AI Squared Chrome Extension (Platform Extension)
 
-<img src="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/1.png?fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=446de844eda3d4b1f5c7795bfb25bdb9" alt="title" data-og-width="2316" width="2316" data-og-height="378" height="378" data-path="images/platform-ext/1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/1.png?w=280&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=fcb1b55830a6338589d5343cc0b73f94 280w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/1.png?w=560&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=a1015c205f30b51770472eb506889228 560w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/1.png?w=840&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=0d31b913d5ff4792686cfffce7a299d4 840w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/1.png?w=1100&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=3cc3dd3cfa12697c69dd456691ee4424 1100w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/1.png?w=1650&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=cd94e1748aa4da705845caa80b1f2ff1 1650w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/1.png?w=2500&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=be471e164222572c5f7956be16bc08ef 2500w" />
+<img alt="title" />
 
 ## Install the Chrome Extension
 
 Install the **AI Squared – Data Apps** extension from the Chrome Web Store:
 
-<img src="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/2.png?fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=2ff0ae1bf532513f3accd9a74bcf79a6" alt="title" data-og-width="2880" width="2880" data-og-height="1580" height="1580" data-path="images/platform-ext/2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/2.png?w=280&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=e3ef75afdd64fe7e6d311f02be94c82f 280w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/2.png?w=560&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=75fc897211de96befbd196b1d02079f1 560w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/2.png?w=840&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=d78f7fdf092cb7c1fc914cfbc02ae588 840w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/2.png?w=1100&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=8bd3fc4c0214b0969e563f6de33a92ca 1100w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/2.png?w=1650&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=3b879737c42a38bfe8e2d810ebbe5b6a 1650w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/2.png?w=2500&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=5fb9bc04781c88752f6ed1b439c19cb7 2500w" />
+<img alt="title" />
 
 ## Run a Data App in Any Web App
 
@@ -2123,7 +2123,7 @@ Once installed:
 3. Log in and select your organization
 4. You'll see a list of **Data Apps** available to run
 
-<img src="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/3.png?fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=55630d98e046bceb1007a195641f9c23" alt="title" data-og-width="732" width="732" data-og-height="1208" height="1208" data-path="images/platform-ext/3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/3.png?w=280&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=c7c2fef359b8b95079d1459c44807436 280w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/3.png?w=560&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=63ec674ae73eb5fbedccf1350ef45ea1 560w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/3.png?w=840&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=ebb08e268a74647de572ba96c4263038 840w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/3.png?w=1100&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=77ad783d54242501fc8d179608616ee7 1100w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/3.png?w=1650&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=07492ca027fa51f2c11e15214fbe3526 1650w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/3.png?w=2500&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=ab3e301e895a8aa470549998fe9a4412 2500w" />
+<img alt="title" />
 
 ## Pin a Data App to a Page
 
@@ -2133,7 +2133,7 @@ You can pin a Data App to automatically render when a certain app or page loads.
 * The extension remembers this page and keeps the app live until unpinned
 * AI output is displayed in a floating panel on the right
 
-<img src="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/4.png?fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=8defb9af6f00ad18fdb53b69d4baf218" alt="title" data-og-width="1230" width="1230" data-og-height="1022" height="1022" data-path="images/platform-ext/4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/4.png?w=280&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=675550c8ff32019b7d91cdf58456da94 280w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/4.png?w=560&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=e9a6d760d8d0a20d82935f2e5eaee8c8 560w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/4.png?w=840&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=f3a4feade9f8a5cf57dfac32cbd014ac 840w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/4.png?w=1100&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=4cc034700c2e65dae015b6fd96f1d748 1100w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/4.png?w=1650&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=9e1189ed8ebe6e444df0ab44fe6158f9 1650w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/platform-ext/4.png?w=2500&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=608d29d4a9f685720d5c1e17ef109c11 2500w" />
+<img alt="title" />
 
 ## Best Practices
 
@@ -2496,7 +2496,7 @@ Once you're in the Pinecone console, you'll find the necessary configuration det
    * Click the API Keys tab on the left side the Pinecone Console.
    * If you haven't created an API key before, click on "Create API key" to generate a new one. Make sure to copy the API Key as they are shown only once.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1746239791/Multiwoven/connectors/Pinecone/Pinecone_API_Key_qmdap5.png" />
+       <img />
      </Frame>
 
 2. **Region, Index Name, and Namespace:**
@@ -2504,7 +2504,7 @@ Once you're in the Pinecone console, you'll find the necessary configuration det
    * Click on your selected Index.
    * The following details, region, index name, namespace will be shown on this page.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1746239791/Multiwoven/connectors/Pinecone/Pinecone_Index_t2lhyx.png" />
+       <img />
      </Frame>
 
 ## Step 3: Configure PineconeDB Connector in Your Application
@@ -2553,7 +2553,7 @@ Start by logging into your Qdrant account.
 2. Select Clusters from the side bar.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1747594908/Multiwoven/connectors/Qdrant/Qdrant_Get_Started_gdkuuz.png" />
+  <img />
 </Frame>
 
 ## Step 2: Locate Qdrant Configuration Details
@@ -2566,7 +2566,7 @@ Once in your selected Qdrant cluster, you'll find the necessary configuration de
 * If you haven't created an API key before, click on "Create" to generate a new one. Make sure to copy the API Key as they are shown only once.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1747596348/Multiwoven/connectors/Qdrant/Qdrant_Cluster_API_Keys_ai7ptp.png" />
+  <img />
 </Frame>
 
 **Host and Collection name:**
@@ -2576,7 +2576,7 @@ Once in your selected Qdrant cluster, you'll find the necessary configuration de
 * Note down your host, the url address before `/dashboard#/collections`, and the name of the collection.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1749759834/Multiwoven/connectors/Qdrant/Qdrant_collection_shbztm.png" />
+  <img />
 </Frame>
 
 ## Step 3: Configure qdrant Connector in Your Application
@@ -2695,7 +2695,7 @@ Welcome to the AI Squared API documentation! You can use our API to access all t
 
 The AI Squared API uses a JWT-based authentication mechanism. To access the API, you need a valid JWT token which should be included in the header of your requests. This ensures that your interactions with the API are secure and authenticated.
 
-```text  theme={null}
+```text theme={null}
 --header 'Authorization: Bearer <YOUR_JWT_TOKEN>'
 ```
 
@@ -2717,7 +2717,7 @@ The base URL for all API requests is `https://api.squared.ai/api/v1/`
 
 The API reference contains a list of all the endpoints available in the AI Squared API. You can also use the navigation bar on the left to browse through the different endpoints.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Models" icon="square-1">
     Models are the core of the AI Squared API. They represent the different
     entities in the AI Squared platform.
@@ -2742,7 +2742,7 @@ The API reference contains a list of all the endpoints available in the AI Squar
 
 Requests that return multiple items will be paginated to 100 items by default. You can specify further pages with the `page` parameter. You can also set a custom page size up to 100 with the `page_size` parameter.
 
-```text  theme={null}
+```text theme={null}
 https://api.squared.ai/api/v1/models?page=2&page_size=50
 ```
 
@@ -3006,7 +3006,7 @@ Source: https://docs.squared.ai/deployment-and-security/security-and-compliance/
 
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1727312424/SOC_2_Type_2_Certification_Announcement_-_Blog_Banner_zmeurr.png" />
+  <img />
 </Frame>
 
 At AI Squared, we are dedicated to safeguarding your data and privacy. We adhere to industry best practices to ensure the security and protection of your information.
@@ -3049,19 +3049,19 @@ This guide will walk you through setting up Multiwoven on AKS. We'll cover confi
 1. **Select a Resource Group for your deployment:**
    * Navigate to your Azure subscription and select a Resource Group or, if necessary, start by creating a new Resource Group.
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715290055/Screenshot_2024-05-09_at_5.26.26_PM_zdv5dh.png" />
+     <img />
    </Frame>
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715290055/Screenshot_2024-05-09_at_5.26.32_PM_mvrv2n.png" />
+     <img />
    </Frame>
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715290055/Screenshot_2024-05-09_at_5.26.41_PM_walsv7.png" />
+     <img />
    </Frame>
 2. **Initiate AKS Deployment**
    * Select the **Create +** button at the top of the overview section of your Resource Group which will take you to the Azure Marketplace.
    * In the Azure Marketplace, type **aks** into the search field at the top. Select **Azure Kuberenetes Service (AKS)** and create.
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286916/Screenshot_2024-05-07_at_12.04.46_PM_vrtry3.png" />
+     <img />
    </Frame>
 3. **Configure your AKS Cluster**
    * **Basics**
@@ -3071,53 +3071,53 @@ This guide will walk you through setting up Multiwoven on AKS. We'll cover confi
      * For **Kubernetes version**, we recommend sticking with the current **default**.
      * For **Authentication and Authorization**, we recommend **Local accounts with Kubernetes RBAC** for simplicity.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286917/Screenshot_2024-05-07_at_12.06.03_PM_xp7soo.png" />
+       <img />
      </Frame>
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286917/Screenshot_2024-05-07_at_12.06.23_PM_lflhwv.png" />
+       <img />
      </Frame>
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286917/Screenshot_2024-05-07_at_12.06.31_PM_xal5nh.png" />
+       <img />
      </Frame>
    * **Node Pools**
      * Leave defaults
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286917/Screenshot_2024-05-07_at_12.07.23_PM_ynj6cu.png" />
+       <img />
      </Frame>
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286917/Screenshot_2024-05-07_at_12.07.29_PM_arveg8.png" />
+       <img />
      </Frame>
    * **Networking**
      * For **Network Configuration**, we recommend the **Azure CNI** network configuration for simplicity.
      * For **Network Policy**, we recommend **Azure**.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286917/Screenshot_2024-05-07_at_12.07.57_PM_v3thlf.png" />
+       <img />
      </Frame>
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286916/Screenshot_2024-05-07_at_12.08.05_PM_dcsvlo.png" />
+       <img />
      </Frame>
    * **Integrations**
      * Leave defaults
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286916/Screenshot_2024-05-07_at_12.09.36_PM_juypye.png" />
+       <img />
      </Frame>
    * **Monitoring**
      * Leave defaults, however, to reduce costs, you can uncheck **Managed Prometheus** which will automatically uncheck **Managed Grafana**.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286917/Screenshot_2024-05-07_at_12.10.44_PM_epn32u.png" />
+       <img />
      </Frame>
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286916/Screenshot_2024-05-07_at_12.10.57_PM_edxypj.png" />
+       <img />
      </Frame>
    * **Advanced**
      * Leave defaults
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715286916/Screenshot_2024-05-07_at_12.11.19_PM_i2smpg.png" />
+       <img />
      </Frame>
    * **Tags**
      * Add tags if necessary, otherwise, leave defaults.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715289232/Screenshot_2024-05-09_at_5.13.26_PM_su7yyx.png" />
+       <img />
      </Frame>
    * **Review + Create**
      * If there are validation errors that arise during the review, like a missed mandatory field, address the errors and create. If there are no validation errors, proceed to create.
@@ -3125,10 +3125,10 @@ This guide will walk you through setting up Multiwoven on AKS. We'll cover confi
 4. **Connecting to your AKS Cluster**
    * In the **Overview** section of your AKS cluster, there is a **Connect** button at the top. Choose whichever method suits you best and follow the on-screen instructions. Make sure to run at least one of the test commands to verify that your kubectl commands are being run against your new AKS cluster.
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715289389/Screenshot_2024-05-09_at_5.14.58_PM_enzily.png" />
+     <img />
    </Frame>
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715289389/Screenshot_2024-05-09_at_5.15.39_PM_fbhv86.png" />
+     <img />
    </Frame>
 5. **Deploying Multiwoven**
    * Please refer to the **Helm Charts** section of our guide to proceed with your installation of Multiwoven!\
@@ -3199,7 +3199,7 @@ curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/.
 
 3. Rename the file .env.production to .env and update the environment variables if required.
 
-```bash  theme={null}
+```bash theme={null}
 mv .env.production .env
 ```
 
@@ -3229,14 +3229,14 @@ Open your web browser and navigate to `http://<your_vm_public_ip>:8000` (replace
 
 To stop Multiwoven, navigate to the `multiwoven` directory and run.
 
-```bash  theme={null}
+```bash theme={null}
 docker-compose down
 ```
 
 **7. Upgrading Multiwoven:**
 When a new version of Multiwoven is released, you can upgrade the Multiwoven using the following command.
 
-```bash  theme={null}
+```bash theme={null}
 docker-compose pull && docker-compose up -d
 ```
 
@@ -3276,32 +3276,32 @@ Multiwoven can be deployed using two different options for PostgreSQL database.
   <Tab title="In-built PostgreSQL">
     1. Create a new directory for Multiwoven and navigate to it.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     mkdir multiwoven
     cd multiwoven
     ```
 
     2. Download the production `docker-compose.yml` file from the following link.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/docker-compose.yaml
     ```
 
     3. Download the `.env.production` file from the following link.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/.env.production
     ```
 
     4. Rename the file .env.production to .env and update the environment variables if required.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     mv .env.production .env
     ```
 
     5. Start the Multiwoven using the following command.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     docker-compose up -d
     ```
 
@@ -3309,7 +3309,7 @@ Multiwoven can be deployed using two different options for PostgreSQL database.
 
     To stop the Multiwoven, use the following command.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     docker-compose down
     ```
 
@@ -3317,7 +3317,7 @@ Multiwoven can be deployed using two different options for PostgreSQL database.
 
     When a new version of Multiwoven is released, you can upgrade the Multiwoven using the following command.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     docker-compose pull && docker-compose up -d
     ```
 
@@ -3327,14 +3327,14 @@ Multiwoven can be deployed using two different options for PostgreSQL database.
   <Tab title="Cloud PostgreSQL">
     1. Create a new directory for Multiwoven and navigate to it.
 
-       ```bash  theme={null}
+       ```bash theme={null}
        mkdir multiwoven
        cd multiwoven
        ```
 
        2. Download the production `docker-compose.yml` file from the following link.
 
-       ```bash  theme={null}
+       ```bash theme={null}
        curl -LO https://multiwoven-deployments.s3.amazonaws.com/docker/docker-compose/docker-compose-cloud-postgres.yaml
        ```
 
@@ -3348,13 +3348,13 @@ Multiwoven can be deployed using two different options for PostgreSQL database.
 
        The default port for PostgreSQL is 5432. If you are using a different port, update the `DB_PORT` environment variable.
 
-       ```bash  theme={null}
+       ```bash theme={null}
        mv .env.production .env
        ```
 
        4. Start the Multiwoven using the following command.
 
-       ```bash  theme={null}
+       ```bash theme={null}
        docker-compose up -d
        ```
   </Tab>
@@ -3366,13 +3366,13 @@ Once the Multiwoven is up and running, you can access it using the following URL
 
 Multiwoven Server URL:
 
-```http  theme={null}
+```http theme={null}
 http://<server-ip>:3000
 ```
 
 Multiwoven UI Service:
 
-```http  theme={null}
+```http theme={null}
 http://<server-ip>:8000
 ```
 
@@ -3386,7 +3386,7 @@ http://<server-ip>:8000
 
 To restore the backup, you can use the following command.
 
-```bash  theme={null}
+```bash theme={null}
 cat dump.sql | docker exec -i --user postgres <postgres-container-name> psql -U postgres
 ```
 
@@ -3409,7 +3409,7 @@ Source: https://docs.squared.ai/deployment-and-security/setup/docker-compose-dev
 
 Verify that you have the correct versions installed:
 
-```bash  theme={null}
+```bash theme={null}
 docker --version
 docker-compose --version
 ```
@@ -3418,19 +3418,19 @@ docker-compose --version
 
 1. Clone the repository
 
-```bash  theme={null}
+```bash theme={null}
 git clone git@github.com:Multiwoven/multiwoven.git
 ```
 
 2. Navigate to the `multiwoven` directory
 
-```bash  theme={null}
+```bash theme={null}
 cd multiwoven
 ```
 
 3. Initialize .env file
 
-```bash  theme={null}
+```bash theme={null}
 cp .env.example .env
 ```
 
@@ -3438,25 +3438,25 @@ cp .env.example .env
 
 4. Build docker images
 
-```bash  theme={null}
+```bash theme={null}
 docker-compose build
 ```
 
 <Tip>Note: The default build architecture is for **x86\_64**. If you are using **arm64** architecture, you will need to run the below command to build the images for arm64.</Tip>
 
-```bash  theme={null}
+```bash theme={null}
 TARGETARCH=arm64 docker-compose
 ```
 
 5. Start the containers
 
-```bash  theme={null}
+```bash theme={null}
 docker-compose up
 ```
 
 6. Stop the containers
 
-```bash  theme={null}
+```bash theme={null}
 docker-compose down
 ```
 
@@ -3470,7 +3470,7 @@ The `multiwoven API` is available at [http://localhost:3000/api/v1](http://local
 
 1. Running the complete test suite on the multiwoven server
 
-```bash  theme={null}
+```bash theme={null}
 docker-compose exec multiwoven-server bundle exec rspec
 ```
 
@@ -3478,7 +3478,7 @@ docker-compose exec multiwoven-server bundle exec rspec
 
 To cleanup all images and containers, run the following commands:
 
-```bash  theme={null}
+```bash theme={null}
 docker rmi -f $(docker images -q)
 docker rm -f $(docker ps -a -q)
 ```
@@ -3487,7 +3487,7 @@ prune all unused images, containers, networks and volumes
 
 <Warning>**Danger:** This will remove all unused images, containers, networks and volumes.</Warning>
 
-```bash  theme={null}
+```bash theme={null}
 docker system prune -a
 ```
 
@@ -3535,7 +3535,7 @@ This guide walks you through setting up Multiwoven, on an AWS EC2 instance using
 **1.1** In the AWS Management Console, navigate to Amazon Certificate Manager and request a new certificate.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718661486/Screenshot_2024-06-17_at_5.54.16_PM_tffjih.png" />
+  <img />
 </Frame>
 
 1.2 Unless your organization has created a Private CA (Certificate Authority), we recommend requesting a public certificate.
@@ -3543,7 +3543,7 @@ This guide walks you through setting up Multiwoven, on an AWS EC2 instance using
 1.3 Request a single ACM certificate that can verify all three of your chosen subdomains for this deployment. DNS validation is recommended for automatic rotation of your certificate but this method requires access to your domain's DNS record set.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718661706/Screenshot_2024-06-17_at_6.01.25_PM_egtqer.png" />
+  <img />
 </Frame>
 
 1.4 Once you have added your selected sub-domains, scroll down and click **Request**.
@@ -3551,7 +3551,7 @@ This guide walks you through setting up Multiwoven, on an AWS EC2 instance using
 5. Once your request has been made, you will be taken to a page that will describe your certificate request and its current status. Scroll down a bit and you will see a section labeled **Domains** with 3 subdomains and 1 CNAME validation record for each. These records need to be added to your DNS record set. Please refer to your organization's internal documentation or the documentation of your DNS service for further instruction on how to add DNS records to your domain's record set. <br />
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718663532/Screenshot_2024-06-17_at_6.29.24_PM_qoauh2.png" />
+     <img />
    </Frame>
 
    **Note:** For automatic certificate rotation, you need to leave these records
@@ -3563,26 +3563,20 @@ This guide walks you through setting up Multiwoven, on an AWS EC2 instance using
 
 1. In the AWS Management Console, navigate to the EC2 Dashboard and select **Load Balancers**.
 
-   {" "}
-
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718663854/Screenshot_2024-06-17_at_6.37.03_PM_lorrnq.png" />
+     <img />
    </Frame>
 
 2. On the next screen select **Create** under **Application Load Balancer**.
 
-   {" "}
-
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718665389/Screenshot_2024-06-17_at_7.02.31_PM_qjjo3i.png" />
+     <img />
    </Frame>
 
 3. Under **Basic configuration** name your load balancer. If you are deploying this application within a private network, select **Internal**. Otherwise, select **Internet-facing**. Consult with your internal Networking team if you are unsure as this setting can not be changed post-deployment and you will need to create an entirely new load balancer to correct this.
 
-   {" "}
-
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718665609/Screenshot_2024-06-17_at_7.06.16_PM_xfeq5r.png" />
+     <img />
    </Frame>
 
 4. Under **Network mapping**, select a VPC and write it down somewhere for later use. Also, select 2 subnets (2 are **required** for an Application Load Balancer) and write them down too for later use.<br />
@@ -3590,73 +3584,73 @@ This guide walks you through setting up Multiwoven, on an AWS EC2 instance using
    **Note:** If you are using the **internal** configuration, select only **private** subnets. If you are using the **internet-facing** configuration, you must select **public** subnets and they must have routes to an **Internet Gateway**.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718665808/Screenshot_2024-06-17_at_7.09.18_PM_gqd6pb.png" />
+     <img />
    </Frame>
 
 5. Under **Security groups**, select the link to **create a new security group** and a new tab will open.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718666010/Screenshot_2024-06-17_at_7.12.56_PM_f809y7.png" />
+     <img />
    </Frame>
 
 6. Under **Basic details**, name your security group and provide a description. Be sure to pick the same VPC that you selected for your load balancer configuration.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718666207/Screenshot_2024-06-17_at_7.16.18_PM_ssg81d.png" />
+     <img />
    </Frame>
 
 7. Under **Inbound rules**, create rules for HTTP and HTTPS and set the source for both rules to **Anywhere**. This will expose inbound ports 80 and 443 on the load balancer. Leave the default **Outbound rules** allowing for all outbound traffic for simplicity. Scroll down and select **Create security group**.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718666442/Screenshot_2024-06-17_at_7.20.01_PM_meylpq.png" />
+     <img />
    </Frame>
 
 8. Once the security group has been created, close the security group tab and return to the load balancer tab. On the load balancer tab, in the **Security groups** section, hit the refresh icon and select your newly created security group. If the VPC's **default security group** gets appended automatically, be sure to remove it before proceeding.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718667183/Screenshot_2024-06-17_at_7.32.24_PM_bdmsf3.png" />
+     <img />
    </Frame>
 
 9. Under **Listeners and routing** in the card for **Listener HTTP:80**, select **Create target group**. A new tab will open.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718666826/Screenshot_2024-06-17_at_7.26.35_PM_sc62nw.png" />
+     <img />
    </Frame>
 
 10. Under **Basic configuration**, select **Instances**.
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718666904/Screenshot_2024-06-17_at_7.27.42_PM_ne7euy.png" />
+      <img />
     </Frame>
 
 11. Scroll down and name your target group. This first one will be for the Platform's web app so you should name it accordingly. Leave the protocol set to HTTP **but** change the port value to 8000. Also, make sure that the pre-selected VPC matches the VPC that you selected for the load balancer. Scroll down and click **Next**.
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718667095/Screenshot_2024-06-17_at_7.30.56_PM_wna7en.png" />
+      <img />
     </Frame>
 
 12. Leave all defaults on the next screen, scroll down and select **Create target group**. Repeat this process 2 more times, once for the **Platform API** on **port 3000** and again for **Temporal UI** on **port 8080**. You should now have 3 target groups.
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718667613/Screenshot_2024-06-17_at_7.38.59_PM_pqvtbv.png" />
+      <img />
     </Frame>
 
 13. Navigate back to the load balancer configuration screen and hit the refresh button in the card for **Listener HTTP:80**. Now, in the target group dropdown, you should see your 3 new target groups. For now, select any one of them. There will be some further configuration needed after the creation of the load balancer.
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718667785/Screenshot_2024-06-17_at_7.41.49_PM_u9jecz.png" />
+      <img />
     </Frame>
 
 14. Now, click **Add listener**.
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718667845/Screenshot_2024-06-17_at_7.43.30_PM_vtjpyk.png" />
+      <img />
     </Frame>
 
 15. Change the protocol to HTTPS and in the target group dropdown, again, select any one of the target groups that you previously created.
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718668686/Screenshot_2024-06-17_at_7.45.24_PM_m77rvm.png" />
+      <img />
     </Frame>
 
 16. Scroll down to the **Secure listener settings**. Under **Default SSL/TLS server certificate**, select **From ACM** and in the **Select a certificate** dropdown, select the certificate that you created in Step 1. In the dropdown, your certificate will only show the first subdomain that you listed when you created the certificate request. This is expected behavior.
@@ -3666,43 +3660,43 @@ This guide walks you through setting up Multiwoven, on an AWS EC2 instance using
     (2) you created your certificate in a different region and will need to either recreate your load balancer in the same region as your certificate OR recreate your certificate in the region in which you are creating your load balancer.
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718668686/Screenshot_2024-06-17_at_7.57.37_PM_jeyltt.png" />
+      <img />
     </Frame>
 
 17. Scroll down to the bottom of the page and click **Create load balancer**. Load balancers take a while to create, approximately 10 minutes or more. However, while the load balancer is creating, copy the DNS name of the load balancer and create CNAME records in your DNS record set, pointing all 3 of your chosen subdomains to the DNS name of the load balancer. Until you complete this step, the deployment will not work as expected. You can proceed with the final steps of the deployment but you need to create those CNAME records.
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718669401/Screenshot_2024-06-17_at_8.08.00_PM_lscyfu.png" />
+      <img />
     </Frame>
 
 18. At the bottom of the details page for your load balancer, you will see the section **Listeners and rules**. Click on the listener labeled **HTTP:80**.
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718669552/Screenshot_2024-06-17_at_8.12.05_PM_hyybin.png" />
+      <img />
     </Frame>
 
 19. Check the box next to the **Default** rule and click the **Actions** dropdown.
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718669716/Screenshot_2024-06-17_at_8.14.41_PM_xnv4fc.png" />
+      <img />
     </Frame>
 
 20. Scroll down to **Routing actions** and select **Redirect to URL**. Leave **URI parts** selected. In the **Protocol** dropdown, select **HTTPS** and set the port value to **443**. This configuration step will automatically redirect all insecure requests to the load balancer on port 80 (HTTP) to port 443 (HTTPS). Scroll to the bottom and click **Save**.
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718670073/Screenshot_2024-06-17_at_8.20.53_PM_sapmoj.png" />
+      <img />
     </Frame>
 
 21. Return to the load balancer's configuration page (screenshot in step 18) and scroll back down to the *Listeners and rules* section. This time, click the listener labled **HTTPS:443**.
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718684557/Screenshot_2024-06-18_at_12.22.10_AM_pbjtuo.png" />
+      <img />
     </Frame>
 
 22. Click **Add rule**.
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718732781/Screenshot_2024-06-18_at_1.45.19_PM_egsfx2.png" />
+      <img />
     </Frame>
 
 23. On the next page, you can optionally add a name to this new rule. Click **Next**.
@@ -3710,23 +3704,23 @@ This guide walks you through setting up Multiwoven, on an AWS EC2 instance using
 24. On the next page, click **Add condition**. In the **Add condition** pop-up, select **Host header** from the dropdown. For the host header, put the subdomain that you selected for the Platform web app and click **Confirm** and then click **Next**.
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718734838/Screenshot_2024-06-18_at_2.11.36_PM_cwazra.png" />
+      <img />
     </Frame>
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718736912/Screenshot_2024-06-18_at_2.54.32_PM_o7ylel.png" />
+      <img />
     </Frame>
 
 25. One the next page, under **Actions**. Leave the **Routing actions** set to **Forward to target groups**. From the **Target group** dropdown, select the target group that you created for the web app. Click **Next**.
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718737171/Screenshot_2024-06-18_at_2.58.50_PM_rcmuao.png" />
+      <img />
     </Frame>
 
 26. On the next page, you can set the **Priority** to 1 and click **Next**.
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718737279/Screenshot_2024-06-18_at_3.00.49_PM_kovsvw.png" />
+      <img />
     </Frame>
 
 27. On the next page, click **Create**.
@@ -3736,7 +3730,7 @@ This guide walks you through setting up Multiwoven, on an AWS EC2 instance using
 29. Optionally, you can also edit the default rule so that it **Returns a fixed response**. The default **Response code** of 503 is fine.
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718737699/Screenshot_2024-06-18_at_3.07.52_PM_hlt91e.png" />
+      <img />
     </Frame>
 
 **3. Launch EC2 Instance**
@@ -3744,53 +3738,53 @@ This guide walks you through setting up Multiwoven, on an AWS EC2 instance using
 1. Navigate to the EC2 Dashboard and click **Launch Instance**.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718738785/Screenshot_2024-06-18_at_3.25.56_PM_o1ffon.png" />
+     <img />
    </Frame>
 
 2. Name your instance and select **Ubuntu 22.04 or later** with **64-bit** architecture.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718739054/Screenshot_2024-06-18_at_3.29.02_PM_ormuxu.png" />
+     <img />
    </Frame>
 
 3. For instance type, we recommend **t3.large**. You can find EC2 on-demand pricing here: [EC2 Instance On-Demand Pricing](https://aws.amazon.com/ec2/pricing/on-demand). Also, create a **key pair** or select a pre-existing one as you will need it to SSH into the instance later.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718739395/Screenshot_2024-06-18_at_3.36.09_PM_ohv7jn.png" />
+     <img />
    </Frame>
 
 4. Under **Network settings**, click **Edit**.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718890642/Screenshot_2024-06-18_at_3.38.21_PM_pp1sxo.png" />
+     <img />
    </Frame>
 
 5. First, verify that the listed **VPC** is the same one that you selected for the load balancer. Also, verify that the pre-selected subnet is one of the two that you selected earlier for the load balancer as well. If either is incorrect, make the necessary changes. If you are using **private subnets** because your load balancer is **internal**, you do not need to auto-assign a public IP. However, if you chose **internet-facing**, you may need to associate a public IP address with your instance so you can SSH into it from your local machine.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718739981/Screenshot_2024-06-18_at_3.45.06_PM_sbiike.png" />
+     <img />
    </Frame>
 
 6. Under **Firewall (security groups)**, we recommend that you name the security group but this is optional. After naming the security security group, click the button \*Add security group rule\*\* 3 times to create 3 additional rules.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718740294/Screenshot_2024-06-18_at_3.50.03_PM_hywm9g.png" />
+     <img />
    </Frame>
 
 7. In the first new rule (rule 2), set the port to **3000**. Click the **Source** input box and scroll down until you see the security group that you previously created for the load balancer. Doing this will firewall inbound traffic to port 3000 on the EC2 instance, only allowing inbound traffic from the load balancer that you created earlier. Do the same for rules 3 and 4, using ports 8000 and 8080 respectively.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718740803/Screenshot_2024-06-18_at_3.57.10_PM_gvvpig.png" />
+     <img />
    </Frame>
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718740802/Screenshot_2024-06-18_at_3.58.37_PM_gyxneg.png" />
+     <img />
    </Frame>
 
 8. Scroll to the bottom of the screen and click on **Advanced Details**.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718745225/Screenshot_2024-06-18_at_5.12.35_PM_cioo3f.png" />
+     <img />
    </Frame>
 
 9. In the **User data** box, paste the following to automate the installation of **Docker** and **docker-compose**.
@@ -3835,13 +3829,13 @@ sudo systemctl enable docker
 ```
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718745225/Screenshot_2024-06-18_at_5.13.02_PM_gd4lfi.png" />
+  <img />
 </Frame>
 
 10. In the right-hand panel, click **Launch instance**.
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718745564/Screenshot_2024-06-18_at_5.15.36_PM_zaw3m6.png" />
+      <img />
     </Frame>
 
 **4. Register EC2 Instance in Target Groups**
@@ -3849,29 +3843,29 @@ sudo systemctl enable docker
 1. Navigate back to the EC2 Dashboard and in the left panel, scroll down to **Target groups**.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718745704/Screenshot_2024-06-18_at_5.21.20_PM_icj8mi.png" />
+     <img />
    </Frame>
 
 2. Click on the name of the first listed target group.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718745784/Screenshot_2024-06-18_at_5.22.46_PM_vn4pwm.png" />
+     <img />
    </Frame>
 
 3. Under **Registered targets**, click **Register targets**.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718745869/Screenshot_2024-06-18_at_5.23.40_PM_ubfog9.png" />
+     <img />
    </Frame>
 
 4. Under **Available instances**, you should see the instance that you just created. Check the tick-box next to the instance and click **Include as pending below**. Once the instance shows in **Review targets**, click **Register pending targets**.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718746192/Screenshot_2024-06-18_at_5.26.56_PM_sdzm0e.png" />
+     <img />
    </Frame>
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718746130/Screenshot_2024-06-18_at_5.27.54_PM_ojsle5.png" />
+     <img />
    </Frame>
 
 5. **Repeat steps 2 - 4 for the remaining 2 target groups.**
@@ -3881,7 +3875,7 @@ sudo systemctl enable docker
 1. SSH into the EC2 instance that you created earlier. For assistance, you can navigate to your EC2 instance in the EC2 dashboard and click the **Connect** button. In the **Connect to instance** screen, click on **SSH client** and follow the instructions on the screen.
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718746962/Screenshot_2024-06-18_at_5.39.06_PM_h1ourx.png" />
+     <img />
    </Frame>
 
 2. Verify that **Docker** and **docker-compose** were successfully installed by running the following commands
@@ -3894,7 +3888,7 @@ sudo docker-compose --version
 You should see something similar to
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718746612/Screenshot_2024-06-18_at_5.34.45_PM_uppsh1.png" />
+  <img />
 </Frame>
 
 3. Change directory to the **ais** directory and download the AIS Platform docker-compose file and the corresponding .env file.
@@ -3914,7 +3908,7 @@ ls -a
 You should see the following
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718747493/Screenshot_2024-06-18_at_5.50.35_PM_gk3n7e.png" />
+  <img />
 </Frame>
 
 4. You will need to edit both files a little before deploying. First open the .env file.
@@ -3932,11 +3926,11 @@ If you selected ***app.c1.mydomain.com***, ***api.c1.mydomain.com*** and ***temp
 For simplicity, the remaining defaults are fine.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718748317/Screenshot_2024-06-18_at_5.54.59_PM_upnaov.png" />
+  <img />
 </Frame>
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1720563829/Screenshot_2024-07-09_at_6.22.27_PM_q4prkv.png" />
+  <img />
 </Frame>
 
 Commands to save and exit **nano**.<br />
@@ -3964,13 +3958,13 @@ The only changes that you should make here are to the AIS Platform image reposit
 Before changes
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718750766/Screenshot_2024-06-18_at_6.44.34_PM_ewwwn4.png" />
+  <img />
 </Frame>
 
 After changes
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1718751265/Screenshot_2024-06-18_at_6.53.55_PM_hahs8c.png" />
+  <img />
 </Frame>
 
 6. Deploy the AIS Platform. This step requires a private repository access key that you should have received from your AIS point of contact. If you do not have one, please reach out to AIS.
@@ -4015,8 +4009,8 @@ Source: https://docs.squared.ai/deployment-and-security/setup/environment-variab
 Multiwoven uses the following environment variables for both the client and server:
 
 <Note>
-  If you have any questions about these variables, please contact us at{" "}
-  <a href="mailto:hello@multiwoven.com">Hello Multiwoven</a> or join our{" "}
+  If you have any questions about these variables, please contact us at
+  <a href="mailto:hello@multiwoven.com">Hello Multiwoven</a> or join our
   <a href="https://multiwoven.slack.com">Slack Community</a>.
 </Note>
 
@@ -4219,7 +4213,7 @@ REDIS_PASSWORD=your_redis_password
 
 **Start Multiwoven:** Navigate to the `multiwoven` directory and run.
 
-```bash  theme={null}
+```bash theme={null}
 docker-compose up -d
 ```
 
@@ -4231,14 +4225,14 @@ Open your web browser and navigate to `http://<external_ip_address>:8000` (repla
 
 To stop Multiwoven, navigate to the `multiwoven` directory and run.
 
-```bash  theme={null}
+```bash theme={null}
 docker-compose down
 ```
 
 **8. Upgrading Multiwoven:**
 When a new version of Multiwoven is released, you can upgrade the Multiwoven using the following command.
 
-```bash  theme={null}
+```bash theme={null}
 docker-compose pull && docker-compose up -d
 ```
 
@@ -4383,7 +4377,7 @@ kubectl get svc -n ingress-nginx
 ```
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715374296/Screenshot_2024-05-10_at_4.45.06_PM_k5bh0d.png" />
+  <img />
 </Frame>
 
 2. Once you have this IP address, go to your DNS record set and use that IP address to create three A records, one for each subdomain. Below are a list of Cloud Service Provider DNS tools but please refer to the documentation of your specific provider if not listed below.
@@ -4401,13 +4395,13 @@ kubectl describe certificate -n multiwoven mw-tls-cert
 When the certificate has been issued, you will see the following output from the command above.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715374727/Screenshot_2024-05-10_at_4.41.12_PM_b3mjhs.png" />
+  <img />
 </Frame>
 
 We also encourage you to further verify by navigating to your subdomain, app.your\_domain, and check the certificate received by the browser. You should see something similar to the image below:
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715374727/Screenshot_2024-05-10_at_4.43.02_PM_twq1gs.png" />
+  <img />
 </Frame>
 
 Once the invalid certificate has been successfully issued, you are ready for the final steps.
@@ -4755,7 +4749,7 @@ Source: https://docs.squared.ai/getting-started/introduction
 
 Learn what AI Squared is, who it's for, and how it helps businesses integrate AI seamlessly into their workflows.
 
-<img src="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/data-ai-source-intro.png?fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=ba9488f2054e91678b9954fd163d55be" alt="title" data-og-width="2950" width="2950" data-og-height="917" height="917" data-path="images/data-ai-source-intro.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/data-ai-source-intro.png?w=280&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=6baa01ad15898575a1de9dc5c65fa767 280w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/data-ai-source-intro.png?w=560&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=776a40fb343a2ce49dac31aa195d743f 560w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/data-ai-source-intro.png?w=840&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=b971cde222593930d17fb77a8e4cfec5 840w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/data-ai-source-intro.png?w=1100&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=d2016543a3eab6056c8d52c3fe96b05e 1100w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/data-ai-source-intro.png?w=1650&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=eb9bdb9f0a0c9a5caffbd2ded37cf42a 1650w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/data-ai-source-intro.png?w=2500&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=d1733ba01a41eeda1e1d42afde38f0c4 2500w" />
+<img alt="title" />
 
 ## What is AI Squared?
 
@@ -4868,7 +4862,7 @@ Learn how to create an account, manage workspaces, and define user roles and per
 
 You can sign up with your email ID at the following URL: [app.squared.ai](https://app.squared.ai).
 
-<img src="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/get-started/login.png?fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=cb3653187e46319f142fea6765a0ba11" alt="title" data-og-width="1978" width="1978" data-og-height="1452" height="1452" data-path="images/get-started/login.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/get-started/login.png?w=280&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=3ba5d5968f058c6580b2a5ca587992b6 280w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/get-started/login.png?w=560&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=c60866cba9b3b9d29b3a27a1ee002bf0 560w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/get-started/login.png?w=840&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=aa343d0b9c9073db9ad508743331e3e8 840w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/get-started/login.png?w=1100&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=0c0b0bd57407687182e0c2d4feab333d 1100w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/get-started/login.png?w=1650&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=7fdca18c079380a687aa5753caa3d97c 1650w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/get-started/login.png?w=2500&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=8ec990416fb5407561145ffcc007ec68 2500w" />
+<img alt="title" />
 
 ## User Roles & Permissions
 
@@ -4922,21 +4916,21 @@ Workspaces enable the governance of data & AI activation. Each workspace within 
 
 You can access Workspace settings from within Settings on the left navigation menu. The workspace’s name and description can be edited at any time for clarity.
 
-<img src="https://res.cloudinary.com/dsyfasxld/image/upload/v1718360388/workspace_settings_yb4ag0.jpg" />
+<img />
 
 ### Inviting users to a workspace
 
 You can view the list of active users on the Members tab, within Settings. Users can be invited or deleted from this screen.
 
-<img src="https://res.cloudinary.com/dsyfasxld/image/upload/v1718360624/Members_Tab_gpuvor.png" />
+<img />
 
 To invite a user, enter their email ID and choose their role. The invited user will receive an email invite (with a link that will expire after 30 days).
 
-<img src="https://res.cloudinary.com/dsyfasxld/image/upload/v1718360738/User_Invite_xwfajv.png" />
+<img />
 
 The invite to a user can be cancelled or resent from this screen.
 
-<img src="https://res.cloudinary.com/dsyfasxld/image/upload/v1718360959/Cancel_Resend_invite_khuh2t.png" />
+<img />
 
 ### Role-based access control (RBAC)
 
@@ -4952,19 +4946,19 @@ Governance within workspaces is enabled by user Role-based access control (RBAC)
 
 To create a workspace, use the drop-down on the left navigation panel that shows your current active workspace, click Manage Workspaces.
 
-<img src="https://res.cloudinary.com/dsyfasxld/image/upload/v1718361367/manage_workspace_selection_c2ybrp.png" />
+<img />
 
 Choose Create New Workspace.
 
-<img src="https://res.cloudinary.com/dsyfasxld/image/upload/v1718361604/select_workspace_olhlwz.png" />
+<img />
 
-<img src="https://res.cloudinary.com/dsyfasxld/image/upload/v1718361523/create_new_workspace_wzjz1q.png" />
+<img />
 
 ### Moving between workspaces
 
 Your active workspace is visible on the left tab. The drop-down will allow you to view workspaces that you have access to, move between workspaces or create a workspace.
 
-<img src="https://res.cloudinary.com/dsyfasxld/image/upload/v1718361751/moving_between_workspaces_aogs0l.png" />
+<img />
 
 
 # Adding a Data Source
@@ -4982,10 +4976,10 @@ Follow the steps below to connect your first data source.
 
 1. Go to **Sources** → **Data Sources** in the left sidebar.
 2. Click **“Add Source”**.
-   <img src="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/01.png?fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=ef2c3a591ca26320243f0b2ca663b6bd" alt="title" data-og-width="3442" width="3442" data-og-height="1298" height="1298" data-path="images/add-data-source/01.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/01.png?w=280&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=8b19b864b593691ba7f57045cb819c60 280w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/01.png?w=560&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=3e997d7f7afe0f8896b00dd940edccec 560w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/01.png?w=840&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=6bb9a4b412c0f01dab05be2f265f3518 840w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/01.png?w=1100&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=a24deeb51b9f327445c19969b245aa8e 1100w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/01.png?w=1650&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=6c9e1649acf8715c3b63561175b559cc 1650w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/01.png?w=2500&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=8aaf0a2142d71a130e833b8d9789038b 2500w" />
+   <img alt="title" />
 3. Select your connector from the available list (e.g., Snowflake, BigQuery, PostgreSQL, etc.).
 
-<img src="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/02.png?fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=8c37a4088a9cecc862dc7d58eae1ad1d" alt="title" data-og-width="3434" width="3434" data-og-height="1526" height="1526" data-path="images/add-data-source/02.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/02.png?w=280&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=98a65d594b636c063170413aed17de98 280w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/02.png?w=560&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=97b2aa5c5cc8bbe726deaea20f3a8096 560w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/02.png?w=840&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=fee22415204d0f6d9364c023213586d1 840w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/02.png?w=1100&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=5b56d5a6ad4c6f11ca60df69f8819f3b 1100w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/02.png?w=1650&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=0062f158a48b3db7958de99ff2c9876b 1650w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/02.png?w=2500&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=8302ef52cb2d643e40272b884be6be6f 2500w" />
+<img alt="title" />
 
 ***
 
@@ -5001,7 +4995,7 @@ Each data source requires standard connection credentials. These typically inclu
 * **Username & Password / Token** – Credentials for access.
 * **Schema (if applicable)** – Filter down to the relevant DB schema.
 
-<img src="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/03.png?fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=8253b211b2784f9086672d88b74419ee" alt="title" data-og-width="3422" width="3422" data-og-height="1752" height="1752" data-path="images/add-data-source/03.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/03.png?w=280&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=98c3b37d6c56d13f53682ef8346dbe78 280w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/03.png?w=560&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=6f029ccebb9eb9a255336c4e63f105e0 560w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/03.png?w=840&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=b96ab512937de8ae51054dc13288b0f6 840w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/03.png?w=1100&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=28e16cc16dc361afbc77591b1accbcda 1100w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/03.png?w=1650&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=6ed2358397cf008ea06766f349955d38 1650w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/03.png?w=2500&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=6bbdb30f10e8542930f37e478f0aa02c 2500w" />
+<img alt="title" />
 
 ***
 
@@ -5011,7 +5005,7 @@ Click **“Test Connection”** to validate that your source credentials are cor
 
 > ⚠️ Common issues include invalid credentials, incorrect hostnames, or firewall rules blocking access.
 
-<img src="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/04.png?fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=35cb6288e105be1a238fc455f8863d03" alt="title" data-og-width="3416" width="3416" data-og-height="1752" height="1752" data-path="images/add-data-source/04.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/04.png?w=280&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=32149117f64d7fd5903c0f220d9e0d96 280w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/04.png?w=560&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=86b6b4cc9202aba3accf31fe08e65a1f 560w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/04.png?w=840&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=6648775acc880442ef3e88dd434fbd6a 840w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/04.png?w=1100&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=0dd0f709dbbc1eadfa901a09ad0adfb3 1100w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/04.png?w=1650&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=e186deecd0ff54ed5b95e0ad65eab18d 1650w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/04.png?w=2500&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=16c60623b94c9ddb3f1b25cb552c5c1c 2500w" />
+<img alt="title" />
 
 ***
 
@@ -5022,7 +5016,7 @@ After successful testing:
 * Click **Finish** to finalize the connection.
 * The source will now appear under **Data Sources** in your account.
 
-<img src="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/05.png?fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=6196f5777f2593a7651c1703d85cad98" alt="title" data-og-width="3430" width="3430" data-og-height="1750" height="1750" data-path="images/add-data-source/05.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/05.png?w=280&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=f838bc6ad0015977ef35ce709d139b13 280w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/05.png?w=560&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=d3b809a68b298c539839c49dee839021 560w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/05.png?w=840&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=592e74f4a9d85491522a8b0a56186f4d 840w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/05.png?w=1100&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=abfe08b447e6cf1382cd073f617282fb 1100w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/05.png?w=1650&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=53b497b476f9378c2255dee73a7387ad 1650w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/add-data-source/05.png?w=2500&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=e1e19d1c6bf6e3351e2066b3c701b9a6 2500w" />
+<img alt="title" />
 
 ***
 
@@ -5050,7 +5044,7 @@ Source: https://docs.squared.ai/guides/core-concepts
 
 The core concepts of data movement in AI Squared are the foundation of your data journey. They include Sources, Destinations, Models, and Syncs. Understanding these concepts is crucial to building a robust data pipeline.
 
-<img className="block" src="https://res.cloudinary.com/dspflukeu/image/upload/v1714756028/AIS/Core_Concepts_v4o7rp.png" alt="Hero Light" />
+<img alt="Hero Light" />
 
 ## Sources: The Foundation of Data
 
@@ -5058,7 +5052,7 @@ The core concepts of data movement in AI Squared are the foundation of your data
 
 Sources are the starting points of your data journey. It's where all your data is stored and where AI Squared pulls data from.
 
-<img className="block" src="https://res.cloudinary.com/dspflukeu/image/upload/v1714756029/AIS/Sources_xrjsvz.png" alt="Hero Light" />
+<img alt="Hero Light" />
 
 These can be:
 
@@ -5075,7 +5069,7 @@ To integrate a source with AI Squared, navigate to the Sources overview page and
 
 'Destinations' in AI Squared are business tools where you want to send your data stored in sources.
 
-<img className="block" src="https://res.cloudinary.com/dspflukeu/image/upload/v1714756029/AIS/Destinations_p2du4o.png" alt="Hero Light" />
+<img alt="Hero Light" />
 
 These can be:
 
@@ -5093,7 +5087,7 @@ Add a destination by going to the Destinations page and clicking 'Add destinatio
 
 'Models' in AI Squared determine the data you wish to sync from a source to a destination. They are the building blocks of your data pipeline.
 
-<img className="block" src="https://res.cloudinary.com/dspflukeu/image/upload/v1714756030/AIS/Models_dyihll.png" alt="Hero Light" />
+<img alt="Hero Light" />
 
 They can be defined through:
 
@@ -5111,7 +5105,7 @@ Every model must have a unique primary key to ensure each data entry is distinct
 
 'Syncs' in AI Squared helps you move data from sources to destinations. They help you in mapping the data from your models to the destination.
 
-<img className="block" src="https://res.cloudinary.com/dspflukeu/image/upload/v1714756030/AIS/Syncs_dncrnv.png" alt="Hero Light" />
+<img alt="Hero Light" />
 
 There are two types of syncs:
 
@@ -5128,7 +5122,7 @@ Source: https://docs.squared.ai/guides/data-modelling/models/overview
 
 **Models** are designed to define and organize data, simplifying the process of querying from various sources.
 
-<img className="block" src="https://res.cloudinary.com/dspflukeu/image/upload/v1714756030/AIS/Models_dyihll.png" alt="Hero Light" />
+<img alt="Hero Light" />
 
 This guide outlines the process of creating a model, from selecting a data source to defining the model using various methods such as SQL queries, table selectors, or dbt models.
 
@@ -5155,7 +5149,7 @@ Once you log in to the AI Squared platform, you can access the Models section to
 
 1. Choose from the list of existing connected data warehouse sources. This source will be the foundation for your model.
 
-<img className="block" src="https://res.cloudinary.com/dspflukeu/image/upload/v1708066638/Multiwoven/Docs/models/image_6_krkxp5.png" alt="Hero Light" />
+<img alt="Hero Light" />
 
 ### Step 4: Select a Modeling Method
 
@@ -5165,7 +5159,7 @@ Based on your requirements, select one of the following modeling methods:
 2. **Table Selector**: For a straightforward, visual approach to model building.
 3. **dbt Model**: Ideal for advanced data transformation, leveraging the dbt framework.
 
-<img className="block" src="https://res.cloudinary.com/dspflukeu/image/upload/v1708066637/Multiwoven/Docs/models/image_7_bhyi24.png" alt="Hero Light" />
+<img alt="Hero Light" />
 
 ### Step 5: Define Your Model
 
@@ -5174,7 +5168,7 @@ If you selected the SQL Query method:
 1. Write your SQL query in the provided field.
 2. Use the `Run Query` option to preview the results and ensure accuracy.
 
-<img className="block" src="https://res.cloudinary.com/dspflukeu/image/upload/v1708066459/Multiwoven/Docs/models/image_8_sy7n0f.png" alt="Hero Light" />
+<img alt="Hero Light" />
 
 ### Step 6: Finalize Your Model
 
@@ -5182,7 +5176,7 @@ Complete the model setup by:
 
 1. Adding a name and a brief description for your model. This helps in identifying and managing your models within AI Squared.
 
-<img className="block" src="https://res.cloudinary.com/dspflukeu/image/upload/v1708066496/Multiwoven/Docs/models/image_9_vkgq1a.png" alt="Hero Light" />
+<img alt="Hero Light" />
 
 #### Unique Primary Key Requirement
 
@@ -5218,7 +5212,7 @@ AI Squared's SQL Editor allows you to define and manage your data models directl
 
 Begin by writing a SQL query to define your model. For instance, if using a typical eCommerce dataset, you might start with a query like:
 
-```sql  theme={null}
+```sql theme={null}
 SELECT * FROM sales_data.customers
 ```
 
@@ -5250,7 +5244,7 @@ Every model requires a unique primary key. If no unique column exists, consider:
 
 To filter duplicates, use a `GROUP BY` clause in your SQL query. For instance:
 
-```sql  theme={null}
+```sql theme={null}
 SELECT *
 FROM customer_data
 GROUP BY unique_identifier_column
@@ -5260,7 +5254,7 @@ GROUP BY unique_identifier_column
 
 In scenarios where a unique primary key is not available, construct a composite key. Example:
 
-```sql  theme={null}
+```sql theme={null}
 SELECT customer_id, 
        email, 
        purchase_date,
@@ -5272,7 +5266,7 @@ FROM sales_data
 
 To save a model expected to have future data:
 
-```sql  theme={null}
+```sql theme={null}
 UNION ALL
 SELECT NULL, NULL, NULL
 ```
@@ -5283,7 +5277,7 @@ Add this to your query to include a dummy row, ensuring the model can be saved.
 
 To exclude rows with null values:
 
-```sql  theme={null}
+```sql theme={null}
 SELECT *
 FROM your_dataset
 WHERE important_column1 IS NOT NULL AND important_column2 IS NOT NULL
@@ -5334,7 +5328,7 @@ During this sync run, both Charles Beaumont's and Eleanor Villiers' records woul
 
 ##### Query
 
-```sql  theme={null}
+```sql theme={null}
 SELECT * FROM source_table
 WHERE updated_at >= '2024-04-20 10:00:00';
 ```
@@ -5353,7 +5347,7 @@ During the second sync run with the same cursor field, only the records for Elea
 
 ##### Query
 
-```sql  theme={null}
+```sql theme={null}
 SELECT * FROM source_table
 WHERE updated_at >= '2024-04-20 11:00:00';
 ```
@@ -5372,7 +5366,7 @@ During the third sync run with the same cursor field, only the records for Charl
 
 ##### Query
 
-```sql  theme={null}
+```sql theme={null}
 SELECT * FROM source_table
 WHERE updated_at >= '2024-04-21 10:00:00 ';
 ```
@@ -5494,7 +5488,7 @@ Source: https://docs.squared.ai/guides/data-modelling/syncs/overview
 
 Syncs help in determining how the data appears in your destination. They are used to map the data from the source to the destination.
 
-<img className="block" src="https://res.cloudinary.com/dspflukeu/image/upload/v1714756030/AIS/Syncs_dncrnv.png" alt="Hero Light" />
+<img alt="Hero Light" />
 
 In order to create a sync, you need to have a source and a destination. The source is the data that you want to sync and the destination is where you want to sync the data to.
 
@@ -5617,7 +5611,7 @@ Once you're logged into Databricks, you'll find the necessary configuration deta
    * Once the token is generated, copy it as it will be required for configuring the connector. **Note:** This token will only be shown once, so make sure to store it securely.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1709669164/05_p6ikgb.jpg" />
+  <img />
 </Frame>
 
 ## Step 3: Test the Databricks Connection
@@ -5684,7 +5678,7 @@ HubSpot private applications facilitate interaction with your HubSpot account's 
       Within your HubSpot account, access the settings menu from the main navigation bar. Navigate through the left sidebar menu to Integrations > Private Apps.
 
       <Frame>
-        <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1709115020/Multiwoven/connectors/hubspot/private-app-section.png" />
+        <img />
       </Frame>
     </Step>
 
@@ -5692,7 +5686,7 @@ HubSpot private applications facilitate interaction with your HubSpot account's 
       Click the Create Private App button.
 
       <Frame>
-        <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1709115178/Multiwoven/connectors/hubspot/create-app.png" />
+        <img />
       </Frame>
     </Step>
 
@@ -5708,7 +5702,7 @@ HubSpot private applications facilitate interaction with your HubSpot account's 
       Navigate to the Scopes tab and select the desired access level (Write) for each data element your app requires. Utilize the search bar to locate specific scopes.
 
       <Frame>
-        <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1709115239/Multiwoven/connectors/hubspot/scope.png" />
+        <img />
       </Frame>
     </Step>
 
@@ -5720,7 +5714,7 @@ HubSpot private applications facilitate interaction with your HubSpot account's 
       A dialog box will display your app's unique access token. Click Continue creating to proceed.
 
       <Frame>
-        <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1709115355/Multiwoven/connectors/hubspot/api-key.png" />
+        <img />
       </Frame>
     </Step>
 
@@ -5751,7 +5745,7 @@ Before proceeding, ensure you have the necessary instance URL, tenant ID, applic
 Start by logging into your Azure Portal.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1738204195/Multiwoven/connectors/Microsoft%20Dynamics/Portal_Home_bcool0.png" />
+  <img />
 </Frame>
 
 1. Navigate to the Azure Portal and go to [App Registration](https://portal.azure.com/#home).
@@ -5766,7 +5760,7 @@ Start by logging into your Azure Portal.
 10. Create a new client secret and make note of the Client Secret ID and the Client Secret Value
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1738204173/Multiwoven/connectors/Microsoft%20Dynamics/AppRegistrations_Home_ceo2es.png" />
+  <img />
 </Frame>
 
 ## Step 2: Add App Registration as Application User for Dynamics 365
@@ -5889,7 +5883,7 @@ Before initiating the Salesforce connector setup, ensure you have an appropriate
         Start by logging into your Salesforce account with admin rights. Look for a Setup option in the menu at the top-right corner of the screen and click on it.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707482972/Multiwoven/connectors/salesforce-crm/setup.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -5897,7 +5891,7 @@ Before initiating the Salesforce connector setup, ensure you have an appropriate
         On the left side of the screen, you'll see a menu. Click on Apps, then App Manager.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707484672/Multiwoven/connectors/salesforce-crm/app-manager.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -5910,7 +5904,7 @@ Before initiating the Salesforce connector setup, ensure you have an appropriate
         Here, you need to fill in some basic info: the name you want for your app, its API name (a technical identifier), and your email address.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707485030/Multiwoven/connectors/salesforce-crm/details.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -5920,7 +5914,7 @@ Before initiating the Salesforce connector setup, ensure you have an appropriate
         You also need to pick some permissions from a list called Selected OAuth Scopes. Choose these: Access and manage your data (api), Perform requests on your behalf at any time (refresh\_token, offline\_access), Provide access to your data via the Web (web), and then add them to your app settings.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707486682/Multiwoven/connectors/salesforce-crm/enable-oauth.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -5932,7 +5926,7 @@ Before initiating the Salesforce connector setup, ensure you have an appropriate
         Go back to where all your apps are listed (under Apps > App Manager), find the app you just created, and click Manage next to it.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707487232/Multiwoven/connectors/salesforce-crm/my-app.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -5941,7 +5935,7 @@ Before initiating the Salesforce connector setup, ensure you have an appropriate
         There’s an option for OAuth policies; under Permitted Users, choose All users may self-authorize. Save your changes.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707487471/Multiwoven/connectors/salesforce-crm/self-authorize.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -5949,7 +5943,7 @@ Before initiating the Salesforce connector setup, ensure you have an appropriate
         Head back to your app list, find your new app again, and this time click View.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707487890/Multiwoven/connectors/salesforce-crm/view.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -5959,7 +5953,7 @@ Before initiating the Salesforce connector setup, ensure you have an appropriate
         These are important because you'll use them to connect Salesforce.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707488140/Multiwoven/connectors/salesforce-crm/credentials.png" />
+          <img />
         </Frame>
       </Step>
     </Steps>
@@ -6020,7 +6014,7 @@ Before initiating the Salesforce connector setup, ensure you have an appropriate
   </Accordion>
 </AccordionGroup>
 
-<Accordion title="Supported Sync" icon="arrows-rotate" defaultOpen="true">
+<Accordion title="Supported Sync" icon="arrows-rotate">
   | Mode             | Supported (Yes/No/Coming soon) |
   | ---------------- | ------------------------------ |
   | Incremental sync | Yes                            |
@@ -6075,7 +6069,7 @@ As mentioned earlier, this setup requires your Zendesk username and password wit
       Log into your Zendesk Developer account and navigate to the Admin Center by clicking on the gear icon in the sidebar.
 
       <Frame>
-        <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1716392386/Multiwoven/connectors/zendesk/zendesk-admin-console_nlu5ci.png" alt="Zendesk Admin Console" />
+        <img alt="Zendesk Admin Console" />
       </Frame>
     </Step>
 
@@ -6083,7 +6077,7 @@ As mentioned earlier, this setup requires your Zendesk username and password wit
       Within the Admin Center, go to Channels > API. Ensure that the Password access is enabled by toggling the switch.
 
       <Frame>
-        <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1716392385/Multiwoven/connectors/zendesk/zendesk-auth-enablement_uuqkxg.png" alt="Zendesk Auth Enablement" />
+        <img alt="Zendesk Auth Enablement" />
       </Frame>
     </Step>
 
@@ -6252,11 +6246,11 @@ In your Oracle database, you'll need to find the necessary configuration details
      1. **Using SQL\*Plus or SQL Developer:**
         * Connect to your Oracle database using SQL\*Plus or SQL Developer.
         * Execute the following query:
-          ```sql  theme={null}
+          ```sql theme={null}
           select instance from v$thread
           ```
           or
-          ```sql  theme={null}
+          ```sql theme={null}
           SELECT sys_context('userenv', 'service_name') AS service_name FROM dual;
           ```
         * The result will display the SID or service name of your Oracle database.
@@ -6327,7 +6321,7 @@ Once you're in the Pinecone console, you'll find the necessary configuration det
    * Click the API Keys tab on the left side the Pinecone Console.
    * If you haven't created an API key before, click on "Create API key" to generate a new one. Make sure to copy the API Key as they are shown only once.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1746239791/Multiwoven/connectors/Pinecone/Pinecone_API_Key_qmdap5.png" />
+       <img />
      </Frame>
 
 2. **Region and Index Name:**
@@ -6335,7 +6329,7 @@ Once you're in the Pinecone console, you'll find the necessary configuration det
    * Click on your selected Index.
    * The following details, region and index name will be shown on this page.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1746239791/Multiwoven/connectors/Pinecone/Pinecone_Index_t2lhyx.png" />
+       <img />
      </Frame>
 
 ## Step 3: Configure Pinecone DB Connector in Your Application
@@ -6440,19 +6434,19 @@ Start by logging into your Qdrant account.
 1. Sign in to your Qdrant account at [Qdrant Account](https://login.cloud.qdrant.io/u/login/identifier?state=hKFo2SB6bDNQQTlydWFFZnpySEc0TXk1QlVWVHJ0Tk9MTDNyeqFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIDVCYm9qV010WXVRSXZvZVFMMkFiLW8wXzl5SkhvZnM4o2NpZNkgckkxd2NPUEhPTWRlSHVUeDR4MWtGMEtGZFE3d25lemc)
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1747594906/Multiwoven/connectors/Qdrant/Qdrant_Login_yi4xve.png" />
+  <img />
 </Frame>
 
 2. Select Clusters from the side bar.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1747594908/Multiwoven/connectors/Qdrant/Qdrant_Get_Started_gdkuuz.png" />
+  <img />
 </Frame>
 
 3. Select your cluster to see more details.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1747594904/Multiwoven/connectors/Qdrant/Qdrant_Clusters_jbnamw.png" />
+  <img />
 </Frame>
 
 ## Step 2: Locate Qdrant Configuration Details
@@ -6465,7 +6459,7 @@ Once in your Qdrant cluster, you'll find the necessary configuration details:
 * Copy the Endpoint URL (API Url).
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1747596094/Multiwoven/connectors/Qdrant/Qdrant_Cluster_Overview_fsw2r1.png" />
+  <img />
 </Frame>
 
 **API Key:**
@@ -6474,7 +6468,7 @@ Once in your Qdrant cluster, you'll find the necessary configuration details:
 * If you haven't created an API key before, click on "Create" to generate a new one. Make sure to copy the API Key as they are shown only once.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1747596348/Multiwoven/connectors/Qdrant/Qdrant_Cluster_API_Keys_ai7ptp.png" />
+  <img />
 </Frame>
 
 ## Step 3: Configure qdrant Connector in Your Application
@@ -6549,25 +6543,25 @@ Once you're in the AWS console, you'll find the necessary configuration details:
    * In the "Access keys" section, you can create or view your access keys.
    * If you haven't created an access key pair before, click on "Create access key" to generate a new one. Make sure to copy the Access Key ID and Secret Access Key as they are shown only once.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1725025888/Multiwoven/connectors/aws_sagemaker-model/Create_access_keys_sh1tmz.jpg" />
+       <img />
      </Frame>
 
 2. **Region:**
    * The AWS region can be selected from the top right corner of the AWS Management Console. Choose the region where your AWS Sagemaker resources is located and note down the region.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1736442701/Multiwoven/connectors/amazon_S3/AmazonS3_Region_xpszth.png" />
+       <img />
      </Frame>
 
 3. **Bucket Name:**
    * The S3 Bucket name can be found by selecting "General purpose buckets" on the left hand corner of the S3 Console. From there select the bucket you want to use and note down its name.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1736442700/Multiwoven/connectors/amazon_S3/AmazonS3_Bucket_msmuow.png" />
+       <img />
      </Frame>
 
 4. **File Path**
    * After select your S3 bucket you can create a folder where you want your file to be stored or use an exist one.
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1736442700/Multiwoven/connectors/amazon_S3/AmazonS3_File_Path_djofzv.png" />
+     <img />
    </Frame>
 
 ## Step 3: Configure Amazon S3 Connector in Your Application
@@ -6658,13 +6652,13 @@ The Hyper Text Transfer Protocol (HTTP) connector is a method of transerring dat
 ### Destination Setup
 
 <AccordionGroup>
-  <Accordion title="Create an HTTP destination" icon="key" defaultOpen="true">
+  <Accordion title="Create an HTTP destination" icon="key">
     <Steps>
       <Step title="Access AI Squared">
         Log in to your AI Squared account and navigate to the **Destinations** section to manage your data destinations.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1716396869/http_dest_1.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -6672,7 +6666,7 @@ The Hyper Text Transfer Protocol (HTTP) connector is a method of transerring dat
         Click on the **Add Destination** button. Select **HTTP** from the list of available destination types.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1716396869/http_dest_2.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -6685,7 +6679,7 @@ The Hyper Text Transfer Protocol (HTTP) connector is a method of transerring dat
         Enter these details in the respective fields on the connector configuration page and press **Finish**.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1716396869/http_dest_3.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -6702,7 +6696,7 @@ The Hyper Text Transfer Protocol (HTTP) connector is a method of transerring dat
   </Accordion>
 </AccordionGroup>
 
-<Accordion title="Supported Sync" icon="arrows-rotate" defaultOpen="true">
+<Accordion title="Supported Sync" icon="arrows-rotate">
   | Mode             | Supported (Yes/No/Coming soon) |
   | ---------------- | ------------------------------ |
   | Incremental sync | Yes                            |
@@ -6754,7 +6748,7 @@ Once you're logged into Iterable, you'll find the necessary configuration detail
    * Click on "Integrations" and select "API Keys" from the dropdown menu.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1710242447/Multiwoven/connectors/iterable/iterable_api_key.png" />
+  <img />
 </Frame>
 
 * Here, you can create a new API key or use an existing one. Click on "+ New API key" if needed, and give it a name.
@@ -6831,7 +6825,7 @@ To integrate Mailchimp with AI Squared, you need to establish a destination conn
 ## Step 2: Create a New Destination Connector
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/f_auto,q_auto/v1/DevRel/Mailchimp/zabdi90se75ehy0w1vhu" />
+  <img />
 </Frame>
 
 1. Click on the **Add Destination** button.
@@ -6842,7 +6836,7 @@ To integrate Mailchimp with AI Squared, you need to establish a destination conn
 To establish a connection between AI Squared and Mailchimp, provide the following details:
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/f_auto,q_auto/v1/DevRel/Mailchimp/eyt4nbbzjwdnomq72qpf" />
+  <img />
 </Frame>
 
 1. **API Key**
@@ -6862,7 +6856,7 @@ Enter these parameters in their respective fields on the connector configuration
 ## Step 4: Test the Connection
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/f_auto,q_auto/v1/DevRel/Mailchimp/qzf8qecchcr3vdtiskgu" />
+  <img />
 </Frame>
 
 1. Use the **Test Connection** feature to ensure AI Squared can successfully connect to your Mailchimp account.
@@ -6874,7 +6868,7 @@ Enter these parameters in their respective fields on the connector configuration
 1. Save the connector settings to establish the Mailchimp destination connection.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/f_auto,q_auto/v1/DevRel/Mailchimp/gn1jbkrh7h6gsgldh3ct" />
+  <img />
 </Frame>
 
 ***
@@ -6995,7 +6989,7 @@ Make sure to grant it write privileges only. Additionally, it's advisable to ena
 ### Set up Stripe
 
 <AccordionGroup>
-  <Accordion title="Create API Key" icon="stripe" defaultOpen="true">
+  <Accordion title="Create API Key" icon="stripe">
     <Steps>
       <Step title="Sign In">
         Sign into your Stripe account.
@@ -7005,7 +6999,7 @@ Make sure to grant it write privileges only. Additionally, it's advisable to ena
         Click 'Developers' on the top navigation bar.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1713863933/Multiwoven/connectors/stripe/developers_kyj50a.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -7021,7 +7015,7 @@ Make sure to grant it write privileges only. Additionally, it's advisable to ena
         Name your key, and ensure 'Write' is selected for all permissions.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1713863934/Multiwoven/connectors/stripe/naming_z6njmb.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -7032,14 +7026,14 @@ Make sure to grant it write privileges only. Additionally, it's advisable to ena
   </Accordion>
 </AccordionGroup>
 
-<Accordion title="Supported Sync" icon="arrows-rotate" defaultOpen="true">
+<Accordion title="Supported Sync" icon="arrows-rotate">
   | Mode             | Supported (Yes/No/Coming soon) |
   | ---------------- | ------------------------------ |
   | Incremental sync | Yes                            |
   | Full refresh     | Coming soon                    |
 </Accordion>
 
-<Accordion title="Supported Streams" defaultOpen="true">
+<Accordion title="Supported Streams">
   | Stream   | Supported (Yes/No/Coming soon) |
   | -------- | ------------------------------ |
   | Customer | Yes                            |
@@ -7069,7 +7063,7 @@ Ensure you have created an Airtable account before you begin. Sign up [here](htt
    Start by generating a personal access token. Follow the guide [here](https://airtable.com/developers/web/guides/personal-access-tokens) for instructions.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1710242447/Multiwoven/connectors/airtable/create_token_vjkaye.png" />
+  <img />
 </Frame>
 
 2. **Grant Required Scopes**
@@ -7082,7 +7076,7 @@ Ensure you have created an Airtable account before you begin. Sign up [here](htt
    * `schema.bases:write`
 
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1710242455/Multiwoven/connectors/airtable/token_scope_lxw0ps.png" />
+     <img />
    </Frame>
 
 
@@ -7116,11 +7110,11 @@ Before initiating the Google Sheet connector setup, ensure you have an created o
     <Step title="Create a Service Account">
       * Navigate to the [Service Accounts](https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts) page in your Google Cloud console.
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1710246065/Multiwoven/connectors/google-sheets-service-account/service-account.png" />
+          <img />
         </Frame>
       * Choose an existing project or create a new one.
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1710246116/Multiwoven/connectors/google-sheets-service-account/service-account-form.png" />
+          <img />
         </Frame>
       * Click + Create service account, enter its name and description, then click Create and Continue.
       * Assign appropriate permissions, recommending the Editor role, then click Continue.
@@ -7129,25 +7123,25 @@ Before initiating the Google Sheet connector setup, ensure you have an created o
     <Step title="Generate a Key">
       * Access the [API Console > Credentials](https://console.cloud.google.com/apis/credentials) page, select your service account's email.
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1710246147/Multiwoven/connectors/google-sheets-service-account/credentials.png" />
+          <img />
         </Frame>
       * In the Keys tab, click + Add key and select Create new key.
       * Choose JSON as the Key type to download your authentication JSON key file. Click Continue.
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1710246195/Multiwoven/connectors/google-sheets-service-account/create-credentials.png" />
+          <img />
         </Frame>
     </Step>
 
     <Step title="Enable the Google Sheets API">
       * Navigate to the [API Console > Library](https://console.cloud.google.com/apis/library) page.
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1710246418/Multiwoven/connectors/google-sheets-service-account/api-library.png" />
+          <img />
         </Frame>
       * Verify that the correct project is selected at the top.
       * Find and select the Google Sheets API.
       * Click ENABLE.
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1710246457/Multiwoven/connectors/google-sheets-service-account/update-google-sheets-api.png" />
+          <img />
         </Frame>
     </Step>
 
@@ -7205,7 +7199,7 @@ Once you're logged into Microsoft Excel do the following:
    * In the sheet of your choosing make a table with the required headers you want to transfer data to.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1723599643/Multiwoven/connectors/microsoft-excel/Workbook_setup_withfd.jpg" />
+  <img />
 </Frame>
 
 ## Step 3: Configure Microsoft Excel Connector in Your Application
@@ -7267,7 +7261,7 @@ When setting up an integration between Salesforce Consumer Goods Cloud and Multi
 ### Setting Up Security Token in Salesforce
 
 <AccordionGroup>
-  <Accordion title="Steps to Retrieve or Reset a Salesforce Security Token" icon="salesforce" defaultOpen="true">
+  <Accordion title="Steps to Retrieve or Reset a Salesforce Security Token" icon="salesforce">
     <Steps>
       <Step title="Sign In">
         Log in to your Salesforce account.
@@ -7277,7 +7271,7 @@ When setting up an integration between Salesforce Consumer Goods Cloud and Multi
         Navigate to Settings or My Settings by first clicking on My Profile and then clicking **Settings** under the Personal Information section.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1713892144/Multiwoven/connectors/salesforce-consumer-goods-cloud/settings.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -7285,7 +7279,7 @@ When setting up an integration between Salesforce Consumer Goods Cloud and Multi
         Once inside the Settings page click on the Quick Find box and type "Reset My Security Token" to quickly navigate to the option.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1713892144/Multiwoven/connectors/salesforce-consumer-goods-cloud/reset.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -7294,21 +7288,21 @@ When setting up an integration between Salesforce Consumer Goods Cloud and Multi
         If you do not see the option to reset the security token, it may be because your organization uses Single Sign-On (SSO) or has IP restrictions that negate the need for a token.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1713892144/Multiwoven/connectors/salesforce-consumer-goods-cloud/security-token.png" />
+          <img />
         </Frame>
       </Step>
     </Steps>
   </Accordion>
 </AccordionGroup>
 
-<Accordion title="Supported Sync" icon="arrows-rotate" defaultOpen="true">
+<Accordion title="Supported Sync" icon="arrows-rotate">
   | Mode             | Supported (Yes/No/Coming soon) |
   | ---------------- | ------------------------------ |
   | Incremental sync | Yes                            |
   | Full refresh     | Coming soon                    |
 </Accordion>
 
-<Accordion title="Supported Streams" defaultOpen="true">
+<Accordion title="Supported Streams">
   | Stream      | Supported (Yes/No/Coming soon) |
   | ----------- | ------------------------------ |
   | Account     | Yes                            |
@@ -7333,7 +7327,7 @@ Source: https://docs.squared.ai/guides/destinations/retl-destinations/team-colla
 
 ## Usecase
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Sales and Support Alerts" icon="bell">
     Notify sales or customer support teams about significant customer events,
     like contract renewals or support tickets, directly in Slack.
@@ -7380,7 +7374,7 @@ This strategy enables you to maintain control over the extent of actions AI Squa
         Initiate the process by selecting the "Create New App" option.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707307305/Multiwoven/connectors/slack/create-app.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -7392,7 +7386,7 @@ This strategy enables you to maintain control over the extent of actions AI Squa
         Proceed by entering your desired App Name and selecting a workspace where the app will be deployed.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707307572/Multiwoven/connectors/slack/scratch.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -7400,7 +7394,7 @@ This strategy enables you to maintain control over the extent of actions AI Squa
         Navigate to the **Add features and functionality** menu and select **Bots** to add this capability to your app.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707308671/Multiwoven/connectors/slack/bots.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -7408,7 +7402,7 @@ This strategy enables you to maintain control over the extent of actions AI Squa
         Within the menu on the side labeled as **Features** column, locate and click on **OAuth & Permissions**.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707308830/Multiwoven/connectors/slack/oauth.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -7416,7 +7410,7 @@ This strategy enables you to maintain control over the extent of actions AI Squa
         In the "OAuth & Permissions" section, add the scope **chat:write** to define the permissions for your app.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707310851/Multiwoven/connectors/slack/write.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -7424,7 +7418,7 @@ This strategy enables you to maintain control over the extent of actions AI Squa
         To finalize the Bot installation, click on "Install to workspace" found in the "OAuth Tokens for Your Workspace" section.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707311271/Multiwoven/connectors/slack/install.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -7433,7 +7427,7 @@ This strategy enables you to maintain control over the extent of actions AI Squa
         It is crucial to copy this token as it is required for the configuration of the Slack destination connector within AI Squared.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707311787/Multiwoven/connectors/slack/token.png" />
+          <img />
         </Frame>
       </Step>
     </Steps>
@@ -7447,7 +7441,7 @@ This strategy enables you to maintain control over the extent of actions AI Squa
         From the context menu, select **View channel details**
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707312009/Multiwoven/connectors/slack/channel-selection.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -7455,7 +7449,7 @@ This strategy enables you to maintain control over the extent of actions AI Squa
         Locate and copy the Channel ID, which is displayed at the lower left corner of the tab.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1707312154/Multiwoven/connectors/slack/channel-id.png" />
+          <img />
         </Frame>
       </Step>
     </Steps>
@@ -7503,7 +7497,7 @@ Additional info you will need regardless of authentication type will be:
         Navigate to the the **Users**. This can be found in the left navigation under "Access Management" -> "Users".
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1720193401/aws_users_view.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -7512,7 +7506,7 @@ Additional info you will need regardless of authentication type will be:
         After selecting the user, go to **Security Credentials** tab and in it you should be able to see the Access keys for that user.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1720193401/aws_users_access_key.png" />
+          <img />
         </Frame>
       </Step>
     </Steps>
@@ -7533,7 +7527,7 @@ Additional info you will need regardless of authentication type will be:
         Navigate to the the **Roles**. This can be found in the left navigation under "Access Management" -> "Roles".
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1720193401/aws_roles_view.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -7770,13 +7764,13 @@ Once you're in the AWS console, you'll find the necessary configuration details:
    * In the "Access keys" section, you can create or view your access keys.
    * If you haven't created an access key pair before, click on "Create access key" to generate a new one. Make sure to copy the Access Key ID and Secret Access Key as they are shown only once.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1725025888/Multiwoven/connectors/aws_sagemaker-model/Create_access_keys_sh1tmz.jpg" />
+       <img />
      </Frame>
 
 2. **Region:**
    * The AWS region can be selected from the top right corner of the AWS Management Console. Choose the region where your AWS Sagemaker resources is located and note down the region.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1725025964/Multiwoven/connectors/aws_sagemaker-model/region_nonhav.jpg" />
+       <img />
      </Frame>
 
 ## Step 3: Configure AWS Sagemaker Model Connector in Your Application
@@ -7926,7 +7920,7 @@ AI Squared enables you to transfer data from Databricks to various destinations 
     In your Databricks account, navigate to the "Workspaces" page, choose the desired workspace, and click Open workspace
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1709668680/01-select_workspace_hsovls.jpg" />
+      <img />
     </Frame>
   </Step>
 
@@ -7934,7 +7928,7 @@ AI Squared enables you to transfer data from Databricks to various destinations 
     In your workspace, go the SQL warehouses and click on the relevant warehouse
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1709669032/02-select-warehouse_kzonnt.jpg" />
+      <img />
     </Frame>
   </Step>
 
@@ -7942,7 +7936,7 @@ AI Squared enables you to transfer data from Databricks to various destinations 
     Go to the Connection details section.This tab shows your cluster's Server Hostname, Port, and HTTP Path, essential for connecting to AI Squared
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1709669111/03_yoeixj.jpg" />
+      <img />
     </Frame>
   </Step>
 
@@ -7950,7 +7944,7 @@ AI Squared enables you to transfer data from Databricks to various destinations 
     Then click on the create a personal token link to generate the personal access token
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1709669164/05_p6ikgb.jpg" />
+      <img />
     </Frame>
   </Step>
 </Steps>
@@ -7983,7 +7977,7 @@ AI Squared enables you to transfer data from a Databricks Model to various desti
     configure, and locate the Databricks host and endpoint as shown below.
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1724264572/Multiwoven/connectors/DataBricks/endpoint_rt3tea.png" />
+      <img />
     </Frame>
   </Step>
 
@@ -7992,7 +7986,7 @@ AI Squared enables you to transfer data from a Databricks Model to various desti
     documentation](https://docs.databricks.com/en/dev-tools/auth/pat.html).
 
     <Frame>
-      <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1709669164/05_p6ikgb.jpg" />
+      <img />
     </Frame>
   </Step>
 </Steps>
@@ -8034,7 +8028,7 @@ Once you're in your Firecrawl account, you'll find the necessary configuration d
 1. **API key:**
    * Click the **API Keys** tab on the left side of the Firecrawl dashboard
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1750904631/Multiwoven/connectors/Firecrawl/Firecrawl_APIkey_fqhzbm.png" />
+       <img />
      </Frame>
 
 ## Step 3: Configure Firecrawl Connector in Your Application
@@ -8081,11 +8075,11 @@ Before initiating the Google Drive connector setup, ensure you have created or h
 
 1. Navigate to the [Service Accounts](https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts) page in your Google Cloud console.
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1754396454/Multiwoven/connectors/google_drive/service-account.png" />
+     <img />
    </Frame>
 2. Choose an existing project or create a new one.
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1754396588/Multiwoven/connectors/google_drive/service-account-form.png" />
+     <img />
    </Frame>
 3. Click + Create service account, enter its name and description, then click Create and Continue.
 4. Assign appropriate permissions, recommending the Editor role, then click Continue.
@@ -8094,25 +8088,25 @@ Before initiating the Google Drive connector setup, ensure you have created or h
 
 1. Access the [API Console > Credentials](https://console.cloud.google.com/apis/credentials) page, select your service account's email.
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1754396720/Multiwoven/connectors/google_drive/credentials.png" />
+     <img />
    </Frame>
 2. In the Keys tab, click + Add key and select Create new key.
 3. Choose JSON as the Key type to download your authentication JSON key file. Click Continue.
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1754396821/Multiwoven/connectors/google_drive/create-credentials.png" />
+     <img />
    </Frame>
 
 ### Step 3: Enable the Google Drive API
 
 1. Navigate to the [API Console > Library](https://console.cloud.google.com/apis/library) page.
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1754396877/Multiwoven/connectors/google_drive/api-library.png" />
+     <img />
    </Frame>
 2. Verify that the correct project is selected at the top.
 3. Find and select the Google Drive API.
 4. Click ENABLE.
    <Frame>
-     <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1754396938/Multiwoven/connectors/google_drive/update-google-drive-api.png" />
+     <img />
    </Frame>
 
 ### Step 4: Configure Google Drive connector
@@ -8186,7 +8180,7 @@ Once you're in the Intuit QuickBooks console, you'll find the necessary configur
 1. **Client ID, Client Secret, Realm ID, and Refresh Token:**
    * Click the **My Hub** dropdown menu on the top-right of the Intuit QuickBooks Console then click **Playground**.
      <Frame>
-       <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1749087244/Multiwoven/connectors/IntuitQuickBooks/QuickBooks_Console_xckb7o.png" />
+       <img />
      </Frame>
    * Once in Playground follow the steps to retrive your **Client ID, Client Secret, Realm ID, and Refresh Token** and note them down.
 
@@ -8369,11 +8363,11 @@ In your Oracle database, you'll need to find the necessary configuration details
      1. **Using SQL\*Plus or SQL Developer:**
         * Connect to your Oracle database using SQL\*Plus or SQL Developer.
         * Execute the following query:
-          ```sql  theme={null}
+          ```sql theme={null}
           select instance from v$thread
           ```
           or
-          ```sql  theme={null}
+          ```sql theme={null}
           SELECT sys_context('userenv', 'service_name') AS service_name FROM dual;
           ```
         * The result will display the SID or service name of your Oracle database.
@@ -8531,7 +8525,7 @@ After a successful connection test:
 
 <Note>It is recommended to create a dedicated user with read-only access to the tables you want to query. Ensure that the new user has the necessary permissions to access the required tables and views.</Note>
 
-```sql  theme={null}
+```sql theme={null}
 CREATE USER aisquared PASSWORD 'password';
 GRANT USAGE ON SCHEMA public TO aisquared;
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO aisquared;
@@ -8574,7 +8568,7 @@ When setting up an integration between Salesforce Consumer Goods Cloud and Multi
 ### Setting Up Security Token in Salesforce
 
 <AccordionGroup>
-  <Accordion title="Steps to Retrieve or Reset a Salesforce Security Token" icon="salesforce" defaultOpen="true">
+  <Accordion title="Steps to Retrieve or Reset a Salesforce Security Token" icon="salesforce">
     <Steps>
       <Step title="Sign In">
         Log in to your Salesforce account.
@@ -8584,7 +8578,7 @@ When setting up an integration between Salesforce Consumer Goods Cloud and Multi
         Navigate to Settings or My Settings by first clicking on My Profile and then clicking **Settings** under the Personal Information section.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1713892144/Multiwoven/connectors/salesforce-consumer-goods-cloud/settings.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -8592,7 +8586,7 @@ When setting up an integration between Salesforce Consumer Goods Cloud and Multi
         Once inside the Settings page click on the Quick Find box and type "Reset My Security Token" to quickly navigate to the option.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1713892144/Multiwoven/connectors/salesforce-consumer-goods-cloud/reset.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -8601,21 +8595,21 @@ When setting up an integration between Salesforce Consumer Goods Cloud and Multi
         If you do not see the option to reset the security token, it may be because your organization uses Single Sign-On (SSO) or has IP restrictions that negate the need for a token.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1713892144/Multiwoven/connectors/salesforce-consumer-goods-cloud/security-token.png" />
+          <img />
         </Frame>
       </Step>
     </Steps>
   </Accordion>
 </AccordionGroup>
 
-<Accordion title="Supported Sync" icon="arrows-rotate" defaultOpen="true">
+<Accordion title="Supported Sync" icon="arrows-rotate">
   | Mode             | Supported (Yes/No/Coming soon) |
   | ---------------- | ------------------------------ |
   | Incremental sync | Yes                            |
   | Full refresh     | Coming soon                    |
 </Accordion>
 
-<Accordion title="Supported Streams" defaultOpen="true">
+<Accordion title="Supported Streams">
   | Stream      | Supported (Yes/No/Coming soon) |
   | ----------- | ------------------------------ |
   | Account     | Yes                            |
@@ -8658,7 +8652,7 @@ Once you're in your select instance of your SFTP Server, you'll find the necessa
 * **Password**: The password associated with the username.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1735878893/Multiwoven/connectors/SFTP-Source/SFTP_credentials_ngkpu0.png" />
+  <img />
 </Frame>
 
 #### 2. File Manager section
@@ -8667,7 +8661,7 @@ Once you're in your select instance of your SFTP Server, you'll find the necessa
 * **File Name**: The name of the file to be read.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1735879781/Multiwoven/connectors/SFTP-Source/SFTP_File_vnb0am.png" />
+  <img />
 </Frame>
 
 ### Step 3: Configure and Test the SFTP Connection
@@ -8759,14 +8753,14 @@ by following these steps in order:
 1. Scroll down to Developer access.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1743647604/Multiwoven/connectors/WatsonX_Data/Developer_Access_pcrfvl.png" />
+  <img />
 </Frame>
 
 2. Click on `Manage IBM Cloud API keys` to view your API keys.
 3. If you haven't created an API key before, click on `Create API key` to generate a new one. Make sure to copy the API Key as they are shown only once.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1743648360/Multiwoven/connectors/WatsonX_Data/Create_Key_mhnxfm.png" />
+  <img />
 </Frame>
 
 ### Region
@@ -8779,19 +8773,19 @@ by following these steps in order:
 5. Open the `Navigation Menu`, select `Administration`, `Services`, and finally `Service instances`.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1743632852/Multiwoven/connectors/WatsonX_Data/Navigation_Menu_kvecrn.png" />
+  <img />
 </Frame>
 
 6. From the `Service instances` table, select your WatsonX.Data instance.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1743632852/Multiwoven/connectors/WatsonX_Data/Services_Instances_frhyzd.png" />
+  <img />
 </Frame>
 
 7. Scroll down to Deployment details, and write down the CRN, that's your Instance Id.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1743632851/Multiwoven/connectors/WatsonX_Data/Deployment_Details_l8vdgx.png" />
+  <img />
 </Frame>
 
 ### Engine ID
@@ -8799,7 +8793,7 @@ by following these steps in order:
 8. Scroll back up and click `Open web console`.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1743632852/Multiwoven/connectors/WatsonX_Data/Watsonx.Data_Manage_ewukot.png" />
+  <img />
 </Frame>
 
 9. Open the Global Menu, select `Infrastructure manager`.
@@ -8807,13 +8801,13 @@ by following these steps in order:
 10. Select the Presto engine you are building the connector for to show the Engine details.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1743632851/Multiwoven/connectors/WatsonX_Data/Infrastructure_Manager_hnniyt.png" />
+  <img />
 </Frame>
 
 11. Write down the Engine ID.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1743632852/Multiwoven/connectors/WatsonX_Data/Engine_Details_auru98.png" />
+  <img />
 </Frame>
 
 ### Database
@@ -8825,7 +8819,7 @@ by following these steps in order:
 12. Open the Global Menu, select `Data manager`, and expand your associated catalog to show the available schemas.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1743632851/Multiwoven/connectors/WatsonX_Data/Data_Manager_errsmu.png" />
+  <img />
 </Frame>
 
 ## Step 3: Configure WatsonX.Data Source Connector in Your Application
@@ -8845,88 +8839,37 @@ Source: https://docs.squared.ai/home/welcome
 
 
 
-export function openSearch() {
-  document.getElementById('search-bar-entry').click();
-}
-
-<div className="relative w-full flex items-center justify-center" style={{ height: '31.25rem', backgroundColor: '#1F1F33', overflow: 'hidden' }}>
-  <div style={{ flex: 'none' }}>
-    <img className="pointer-events-none" src="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/aisquared_banner.png?fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=c23108c90e3c60287fce1cd197c03509" data-og-width="3840" width="3840" data-og-height="1474" height="1474" data-path="images/aisquared_banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/aisquared_banner.png?w=280&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=78e5499aeaefb60c2d2b775425e87994 280w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/aisquared_banner.png?w=560&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=62d24823fa1fd91dd762a8ae4ed64afb 560w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/aisquared_banner.png?w=840&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=2331dcee14b809fdc24fb372ebae46ca 840w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/aisquared_banner.png?w=1100&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=a5806f7fbd6c7e27d238b9e504fc4a64 1100w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/aisquared_banner.png?w=1650&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=3432d9faee48ee380dacf6af7b1466a3 1650w, https://mintcdn.com/multiwoven-74/0cWhN_GlAyOtF2Qi/images/aisquared_banner.png?w=2500&fit=max&auto=format&n=0cWhN_GlAyOtF2Qi&q=85&s=e6fe17095797e5c87aec44cc5b2d01fa 2500w" />
+<div>
+  <div>
+    <img />
   </div>
 
-  <div style={{ position: 'absolute', textAlign: 'center' }}>
-    <div
-      style={{
-      color: 'white',
-      fontWeight: '400',
-      fontSize: '48px',
-      margin: '0',
-    }}
-    >
+  <div>
+    <div>
       Bring AI To Where Work Happens
     </div>
 
-    <p
-      style={{
-      color: 'white',
-      fontWeight: '400',
-      fontSize: '20px',
-      opacity: '0.7',
-    }}
-    >
+    <p>
       What can we help you build?
     </p>
 
-    <button
-      type="button"
-      className="mx-auto w-full flex items-center text-sm leading-6 shadow-sm text-gray-400 bg-white gap-2 ring-1 ring-gray-400/20 focus:outline-primary"
-      id="home-search-entry"
-      style={{
-      maxWidth: '24rem',
-      borderRadius: '4px',
-      marginTop: '3rem',
-      paddingLeft: '0.75rem',
-      paddingRight: '0.75rem',
-      paddingTop: '0.75rem',
-      paddingBottom: '0.75rem',
-    }}
-      onClick={openSearch}
-    >
-      <svg
-        className="h-4 w-4 ml-1.5 mr-3 flex-none bg-gray-500 hover:bg-gray-600 dark:bg-white/50 dark:hover:bg-white/70"
-        style={{
-        maskImage:
-          'url("https://mintlify.b-cdn.net/v6.5.1/solid/magnifying-glass.svg")',
-        maskRepeat: 'no-repeat',
-        maskPosition: 'center center',
-      }}
-      />
+    <button type="button">
+      <svg />
 
       Start a chat with us...
     </button>
   </div>
 </div>
 
-<div
-  style={{marginTop: '6rem', marginBottom: '8rem', maxWidth: '70rem', marginLeft: 'auto',
-  marginRight: 'auto', paddingLeft: '1.25rem',
-  paddingRight: '1.25rem' }}
->
-  <div
-    style={{
-  textAlign: 'center',
-  fontSize: '24px',
-  fontWeight: '600',
-  marginBottom: '3rem',
-}}
-  >
-    <h1 className="text-black dark:text-white">
-      Choose a topic below or simply{' '}
-      <a href="https://app.squared.ai" className="text-primary underline" style={{textUnderlineOffset: "5px"}}>get started</a>
+<div>
+  <div>
+    <h1>
+      Choose a topic below or simply
+      <a href="https://app.squared.ai">get started</a>
     </h1>
   </div>
 
-  <CardGroup cols={3}>
+  <CardGroup>
     <Card title="Getting Started" icon="book-open" href="/getting-started">
       Onboarding, setup, and key concepts to get started with AI Squared.
     </Card>
@@ -8939,7 +8882,7 @@ export function openSearch() {
       Latest features, enhancements, and release notes.
     </Card>
 
-    <Card title="Data Movement" icon="database" iconType="solid" href="/guides/core-concepts">
+    <Card title="Data Movement" icon="database" href="/guides/core-concepts">
       Add AI-powered insights, chatbots, and automation into business apps.
     </Card>
 
@@ -9052,7 +8995,7 @@ Source: https://docs.squared.ai/open-source/community-support/overview
 
 
 
-<img className="block" src="https://res.cloudinary.com/dspflukeu/image/upload/v1715100646/AIS/Community_Support_-_multiwoven_dtp6dr.png" alt="Hero Light" />
+<img alt="Hero Light" />
 
 The aim of our community to provide anyone with the assistance they need, connect them with fellow users, and encourage them to contribute to the growth of the Multiwoven ecosystem.
 
@@ -9093,7 +9036,7 @@ Source: https://docs.squared.ai/open-source/community-support/release-process
 The release process at Multiwoven is fully automated through GitHub Actions.
 
 <AccordionGroup>
-  <Accordion title="Automation Stages" icon="github" defaultOpen="true">
+  <Accordion title="Automation Stages" icon="github">
     Here's an overview of our automation stages, each facilitated by specific GitHub Actions:
 
     <Steps>
@@ -9103,7 +9046,7 @@ The release process at Multiwoven is fully automated through GitHub Actions.
         * **Additional Triggers**: The same workflow can be manually triggered to create a patch version (e.g., v0.4.1 for quick fixes) or a major version (e.g., v1.0.0 for significant architectural changes). This is done using the workflow dispatch feature in GitHub Actions.
 
         <Frame>
-          <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1714027592/Multiwoven/Docs/release-process/manual_kyjtne.png" />
+          <img />
         </Frame>
       </Step>
 
@@ -9118,12 +9061,12 @@ The release process at Multiwoven is fully automated through GitHub Actions.
           * [Build and push Multiwoven server docker image to Docker Hub](https://github.com/Multiwoven/multiwoven/actions/workflows/server-docker-hub-push-tags.yaml): This action handles the server-side Docker image push to docker hub with tag as latest and the new release tag i.e **v0.4.0**
 
             <Frame>
-              <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1714027592/Multiwoven/Docs/release-process/docker-server_ujdnap.png" />
+              <img />
             </Frame>
           * [Build and push Multiwoven UI docker image to Docker Hub](https://github.com/Multiwoven/multiwoven/actions/workflows/ui-docker-hub-push-tags.yaml): This action handles the user interface Docker image  to docker hub with tag as latest and the new release tag i.e **v0.4.0**
 
             <Frame>
-              <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1714027593/Multiwoven/Docs/release-process/docker-ui_sjo8nv.png" />
+              <img />
             </Frame>
       </Step>
     </Steps>
@@ -9184,7 +9127,7 @@ The server delivers all the essential horizontal services needed for configuring
 Connectors are developed within the [multiwoven-integrations](https://github.com/Multiwoven/multiwoven-integrations) Ruby gem, which pushes and pulls data to and from various sources and destinations. These connectors are constructed following the [Multiwoven Protocol](https://docs.multiwoven.com/guides/architecture/multiwoven-protocol), which outlines the interface for transferring data between a source and a destination.
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1706791257/dev%20docs%20assets/Screenshot_2024-02-01_at_5.50.40_PM_qj6ikq.png" />
+  <img />
 </Frame>
 
 1. [Multiwoven-UI](https://github.com/Multiwoven/multiwoven-ui) - User interface to interact with [ multiwoven-server](https://github.com/Multiwoven/multiwoven-server).
@@ -9243,10 +9186,8 @@ Multiwoven [protocol](https://github.com/Multiwoven/multiwoven-integrations/blob
 | `schema_mode `             | A string value that identifies the schema handling mode for the connector. Supported values include **static, dynamic, and schemaless**. This parameter is crucial for determining how the connector handles data schema.           |
 
 <Note>
-  {" "}
-
   Rate limit specified in catalog will applied to stream if there is no stream specific
-  rate limit is defined.{" "}
+  rate limit is defined.
 </Note>
 
 **[Model](https://github.com/Multiwoven/multiwoven-integrations/blob/6462867b1a2698b4c30ae5abcdf3219a207a28d9/lib/multiwoven/integrations/protocol/protocol.rb#L86)** - Models specify the data to be extracted from a source
@@ -9485,59 +9426,43 @@ Source: https://docs.squared.ai/release-notes/2024
 
 
 
-<CardGroup cols={3}>
-  <Card title="December 2024" icon="book-open" href="/release-notes/December_2024">
-    Version: v0.36.0 to v0.38.0
+<CardGroup>
+  <Card title="May 2024" icon="book-open" href="/release-notes/2024/May-2024">
+    Version: v0.5.0 to v0.8.0
   </Card>
 
-  <Card title="November 2024" icon="book-open" href="/release-notes/November_2024">
-    Version: v0.31.0 to v0.35.0
-  </Card>
-
-  <Card title="October 2024" icon="book-open" href="/release-notes/October_2024">
-    Version: v0.25.0 to v0.30.0
-  </Card>
-
-  <Card title="September 2024" icon="book-open" href="/release-notes/September_2024">
-    Version: v0.23.0 to v0.24.0
-  </Card>
-
-  <Card title="August 2024" icon="book-open" href="/release-notes/August_2024">
-    Version: v0.20.0 to v0.22.0
-  </Card>
-
-  <Card title="July 2024" icon="book-open" href="/release-notes/July_2024">
-    Version: v0.14.0 to v0.19.0
-  </Card>
-
-  <Card title="June 2024" icon="book-open" href="/release-notes/June_2024">
+  <Card title="June 2024" icon="book-open" href="/release-notes/2024/June-2024">
     Version: v0.12.0 to v0.13.0
   </Card>
 
-  <Card title="May 2024" icon="book-open" href="/release-notes/May_2024">
-    Version: v0.5.0 to v0.8.0
-  </Card>
-</CardGroup>
-
-
-# 2025 releases
-Source: https://docs.squared.ai/release-notes/2025
-
-
-
-<CardGroup cols={3}>
-  <Card title="January 2025" icon="book-open" href="/release-notes/January_2025">
-    Version: v0.39.0 to v0.45.0
+  <Card title="July 2024" icon="book-open" href="/release-notes/2024/July-2024">
+    Version: v0.14.0 to v0.19.0
   </Card>
 
-  <Card title="February 2025" icon="book-open" href="/release-notes/Feb-2025">
-    Version: v0.46.0 to v0.48.0
+  <Card title="August 2024" icon="book-open" href="/release-notes/2024/August-2024">
+    Version: v0.20.0 to v0.22.0
+  </Card>
+
+  <Card title="September 2024" icon="book-open" href="/release-notes/2024/September-2024">
+    Version: v0.23.0 to v0.24.0
+  </Card>
+
+  <Card title="October 2024" icon="book-open" href="/release-notes/2024/October-2024">
+    Version: v0.25.0 to v0.30.0
+  </Card>
+
+  <Card title="November 2024" icon="book-open" href="/release-notes/2024/November-2024">
+    Version: v0.31.0 to v0.35.0
+  </Card>
+
+  <Card title="December 2024" icon="book-open" href="/release-notes/2024/December-2024">
+    Version: v0.36.0 to v0.38.0
   </Card>
 </CardGroup>
 
 
 # August 2024 releases
-Source: https://docs.squared.ai/release-notes/August_2024
+Source: https://docs.squared.ai/release-notes/2024/August-2024
 
 Release updates for the month of August
 
@@ -9645,7 +9570,7 @@ Refactored error messages to align with agreed-upon standards, resulting in clea
 
 
 # December 2024 releases
-Source: https://docs.squared.ai/release-notes/December_2024
+Source: https://docs.squared.ai/release-notes/2024/December-2024
 
 Release updates for the month of December
 
@@ -9732,101 +9657,8 @@ Titles dynamically change based on the current route for better navigation.
 ***
 
 
-# February 2025 Releases
-Source: https://docs.squared.ai/release-notes/Feb-2025
-
-Release updates for the month of February
-
-## 🚀 Features
-
-* **PG vector as source changes**\
-  Made changes to the PostgreSQL connector to support PG Vector.
-
-## 🐛 Bug Fixes
-
-* **Vulnerable integration gem versions update**\
-  Upgraded Server Gems to the new versions, fixing vulnerabilities found in previous versions of the Gems.
-
-## ⚙️ Miscellaneous Tasks
-
-* **Sync alert bug fixes**\
-  Fixed certain issues in the Sync Alert mailers.
-
-
-# January 2025 Releases
-Source: https://docs.squared.ai/release-notes/January_2025
-
-Release updates for the month of January
-
-## 🚀 Features
-
-* **Added Empty State for Feedback Overview Table**\
-  Introduces a default view when no feedback data is available, ensuring clearer guidance and intuitive messaging for end users.
-
-* **Custom Visual Component for Writing Data to Destination Connectors**\
-  Simplifies the process of sending or mapping data to various destination connectors within the platform’s interface.
-
-* **Azure Blob Storage Integration**\
-  Adds support for storing and retrieving data from Azure Blob, expanding available cloud storage options.
-
-* **Update Workflows to Deploy Solid Worker**\
-  Automates deployment of a dedicated worker process, improving back-end task management and system scalability.
-
-* **Chatbot Visual Type**\
-  Adds a dedicated visualization type designed for chatbot creation and management, enabling more intuitive configuration of conversational experiences.
-
-* **Trigger Sync Alerts / Sync Alerts**\
-  Implements a notification system to inform teams about the success or failure of data synchronization events in real time.
-
-* **Runner Script Enhancements for Chatbot**\
-  Improves the runner script’s capability to handle chatbot logic, ensuring smoother automated operations.
-
-* **Add S3 Destination Connector**\
-  Enables direct export of transformed or collected data to Amazon S3, broadening deployment possibilities for cloud-based workflows.
-
-* **Add SFTP Source Connector**\
-  Permits data ingestion from SFTP servers, streamlining workflows where secure file transfers are a primary data source.
-
-## 🐛 Bug Fixes
-
-* **Handle Chatbot Response When Streaming Is Off**\
-  Resolves an issue causing chatbot responses to fail when streaming mode was disabled, improving overall reliability.
-
-* **Sync Alert Issues**\
-  Fixes various edge cases where alerts either triggered incorrectly or failed to trigger for certain data sync events.
-
-* **UI Enhancements and Fixes**\
-  Addresses multiple interface inconsistencies, refining the user experience for navigation and data presentation.
-
-* **Validation for “Continue” CTA During Chatbot Creation**\
-  Ensures that all mandatory fields are properly completed before users can progress through chatbot setup.
-
-* **Refetch Data Model After Update**\
-  Corrects a scenario where updated data models were not automatically reloaded, preventing stale information in certain views.
-
-* **OpenAI Connector Failure Handling**\
-  Improves error handling and retry mechanisms for OpenAI-related requests, reducing the impact of transient network issues.
-
-* **Stream Fetch Fix for Salesforce**\
-  Patches a problem causing occasional timeouts or failed data streams when retrieving records from Salesforce.
-
-* **Radio Button Inconsistencies**\
-  Unifies radio button behavior across the platform’s interface, preventing unexpected selection or styling errors.
-
-* **Keep Reports Link Highlight**\
-  Ensures the “Reports” link remains visibly highlighted in the navigation menu, maintaining consistent visual cues.
-
-## ⚙️ Miscellaneous Tasks
-
-* **Add Default Request and Response in Connection Configuration for OpenAI**\
-  Provides pre-populated request/response templates for OpenAI connectors, simplifying initial setup for users.
-
-* **Add Alert Policy to Roles**\
-  Integrates alert policies into user role management, allowing fine-grained control over who can create or modify data alerts.
-
-
 # July 2024 releases
-Source: https://docs.squared.ai/release-notes/July_2024
+Source: https://docs.squared.ai/release-notes/2024/July-2024
 
 Release updates for the month of July
 
@@ -9922,7 +9754,7 @@ Set the refresh flag to true, and the catalog will be forcefully refreshed. This
 
 
 # June 2024 releases
-Source: https://docs.squared.ai/release-notes/June_2024
+Source: https://docs.squared.ai/release-notes/2024/June-2024
 
 Release updates for the month of June
 
@@ -9988,7 +9820,7 @@ Release updates for the month of June
 
 
 # May 2024 releases
-Source: https://docs.squared.ai/release-notes/May_2024
+Source: https://docs.squared.ai/release-notes/2024/May-2024
 
 Release updates for the month of May
 
@@ -10096,7 +9928,7 @@ Release updates for the month of May
 
 
 # November 2024 releases
-Source: https://docs.squared.ai/release-notes/November_2024
+Source: https://docs.squared.ai/release-notes/2024/November-2024
 
 Release updates for the month of November
 
@@ -10183,7 +10015,7 @@ Increased token expiry duration for extended session stability.
 
 
 # October 2024 releases
-Source: https://docs.squared.ai/release-notes/October_2024
+Source: https://docs.squared.ai/release-notes/2024/October-2024
 
 Release updates for the month of October
 
@@ -10231,7 +10063,7 @@ Release updates for the month of October
 
 
 # September 2024 releases
-Source: https://docs.squared.ai/release-notes/September_2024
+Source: https://docs.squared.ai/release-notes/2024/September-2024
 
 Release updates for the month of September
 
@@ -10315,6 +10147,1635 @@ Release updates for the month of September
 > For further details on any feature or update, check the detailed documentation or contact our support team. We’re here to help make your experience seamless!
 
 ***
+
+
+# 2025 Releases
+Source: https://docs.squared.ai/release-notes/2025
+
+Release updates for the year 2025
+
+<CardGroup>
+  <Card title="January 2025" icon="book-open" href="/release-notes/2025/January-2025">
+    Version: v0.39.0 to v0.41.0
+  </Card>
+
+  <Card title="February 2025" icon="book-open" href="/release-notes/2025/Feb-2025">
+    Version: v0.41.0 to v0.41.0
+  </Card>
+
+  <Card title="March 2025" icon="book-open" href="/release-notes/2025/March-2025">
+    Version: v0.42.0 to v0.46.0
+  </Card>
+
+  <Card title="April 2025" icon="book-open" href="/release-notes/2025/April-2025">
+    Version: v0.47.0 to v0.50.0
+  </Card>
+
+  <Card title="May 2025" icon="book-open" href="/release-notes/2025/May-2025">
+    Version: v0.51.0 to v0.54.0
+  </Card>
+
+  <Card title="June 2025" icon="book-open" href="/release-notes/2025/June-2025">
+    Version: v0.55.0 to v0.59.0
+  </Card>
+
+  <Card title="July 2025" icon="book-open" href="/release-notes/2025/July-2025">
+    Version: v0.60.0 to v0.63.0
+  </Card>
+
+  <Card title="August 2025" icon="book-open" href="/release-notes/2025/August-2025">
+    Version: v0.64.0 to v0.67.0
+  </Card>
+
+  <Card title="September 2025" icon="book-open" href="/release-notes/2025/September-2025">
+    Version: v0.68.0 to v0.72.0
+  </Card>
+
+  <Card title="October 2025" icon="book-open" href="/release-notes/2025/October-2025">
+    Version: v0.73.0 to v0.77.0
+  </Card>
+
+  <Card title="November 2025" icon="book-open" href="/release-notes/2025/November-2025">
+    Version: v0.78.0 to v0.81.0
+  </Card>
+
+  <Card title="December 2025" icon="book-open" href="/release-notes/2025/December-2025">
+    Version: v0.82.0 to v0.85.0
+  </Card>
+</CardGroup>
+
+
+# April 2025 Releases
+Source: https://docs.squared.ai/release-notes/2025/April-2025
+
+Release updates for the month of April
+
+## 🚀 Features
+
+* **Assistant UI**\
+  Introduced a new Assistant interface with UI improvements for enhanced user interaction and workflow automation.
+
+* **EULA Management**\
+  Added End User License Agreement (EULA) controller and management capabilities, including database storage, permissions, and acceptance tracking.
+
+* **WatsonX.Data Source Connector**\
+  Added IBM WatsonX.Data as a new source connector for data integration workflows.
+
+* **Generic Connector Edit Component**\
+  Introduced a reusable generic connector edit component for improved maintainability and consistent editing experience.
+
+* **Unstructured File Support in S3 Connector**\
+  Added support for unstructured files in the S3 connector, expanding data ingestion capabilities.
+
+* **Chatbot Data App Reports Enhancements**\
+  Improved reporting capabilities for chatbot data applications with new overview pages and dedicated routes.
+
+* **Databricks Timeout Configuration**\
+  Added timeout configuration options for the Databricks source connector to handle long-running queries.
+
+* **QA Verification Workflow**\
+  Enforced qa-verified label requirement for PRs with needs-qa label, improving quality assurance processes.
+
+* **CI/CD Improvements**\
+  Updated workflows with GHA Docker cache, latest versions, and improved trigger event types for faster builds.
+
+* **Snyk Security Scanning**\
+  Enhanced Snyk scanning to focus on manifests and lockfiles for more efficient vulnerability detection.
+
+## 🐛 Bug Fixes
+
+* **Top Bar Name Rendering**\
+  Fixed proper rendering of names in the top bar and added truncation for long names with tooltips.
+
+* **Confirm Email Template**\
+  Corrected issues with the email confirmation template.
+
+* **Test Connection Flow**\
+  Removed separate test connection step and combined it with the save changes button for streamlined UX.
+
+* **Connector Deletion**\
+  Fixed connector deletion to use connectorID as the parameter.
+
+* **Query Handling with Multiple FROMs**\
+  Applied different gsub handling when queries contain multiple FROM clauses.
+
+* **Catalog Refresh Indicator**\
+  Added visual indicator for catalog refresh and fixed duplicate API calls.
+
+* **EULA Enable Fix**\
+  Resolved issues with EULA enable functionality and added skip option for invite sign-up flow.
+
+* **Add Models Button**\
+  Fixed redirect issues with the Add Models button from the syncs page.
+
+* **SSO Documentation**\
+  Updated notes to clarify support for Okta and Azure in SSO configuration.
+
+* **Assistant UI Bugs**\
+  Fixed various bugs in the Assistant UI including duplicate field entity components.
+
+* **SFTP Connection Query**\
+  Fixed inner query replacement for SFTP connections.
+
+* **Data App Message Feedbacks**\
+  Ensured selected data apps only display their own message feedbacks.
+
+* **Breadcrumb Navigation**\
+  Fixed navigation issues in breadcrumb components.
+
+* **Chatbot Keys**\
+  Corrected key usage for chatbot components.
+
+* **AI/ML Source State Persistence**\
+  Fixed state persistence when creating AI/ML sources and prevented resubmission when navigating back.
+
+* **Company Name Display**\
+  Fixed display to show company name instead of workspace name in invitations and org settings.
+
+* **EULA Popup Flash**\
+  Fixed EULA popup briefly appearing when updating documents.
+
+## 🚜 Refactor
+
+* **Destination Name in Syncs**\
+  Changed destination name display in Syncs from Connector Name to Name for clarity.
+
+* **Image to SVG Conversion**\
+  Converted images to SVGs for better scalability and performance.
+
+* **Custom Select Widget for RJSF**\
+  Added custom widget for select components in React JSON Schema Forms.
+
+* **Reports UI/UX Audit**\
+  Completed Reports UI/UX audit fixes for improved user experience.
+
+* **Data Apps Audit**\
+  Addressed medium priority items from the Data Apps audit.
+
+* **Error Logs Modal**\
+  Refactored error logs modal for better usability.
+
+* **Catalog Fetching Hook**\
+  Created dedicated hook for fetching catalog data.
+
+* **Reports Overview Page**\
+  Added new Overview page with RBAC for Reports route and dedicated data apps reports route.
+
+* **User Invite Company Name**\
+  Updated user invites to send company name instead of workspace name.
+
+* **Data App Reports Tags**\
+  Changed tag and empty copy for data app reports.
+
+* **Feature Flag Arrays**\
+  Changed feature flags to use arrays for enabling across multiple workspaces.
+
+## ⚙️ Miscellaneous Tasks
+
+* **EULA Database Setup**\
+  Added EULA to database, factory, and model with proper permissions and role groups.
+
+* **Okta SSO Support**\
+  Added Okta support to Single Sign-On configuration.
+
+* **Assistant Resources**\
+  Added assistant rendering type, resource permissions, and role group configuration.
+
+* **Server Gem Updates**\
+  Updated server gem through versions 0.22.0, 0.22.1, 0.22.3, 0.22.5, and integrations gem to 0.22.6.
+
+* **Visual Component Model Update**\
+  Updated the Visual Component model with improvements.
+
+* **Chat Report Implementation**\
+  Added Chat Report implementation to Data App functionality.
+
+* **Template Mapping Tests**\
+  Added comprehensive tests for template mapping options and static template options.
+
+* **EULA Application Check**\
+  Added EULA check to Application controller for compliance enforcement.
+
+* **Dependency Updates**\
+  Bumped dependency versions for security and compatibility improvements.
+
+* **Legacy File Cleanup**\
+  Removed old and unused files from the codebase.
+
+
+# August 2025 Releases
+Source: https://docs.squared.ai/release-notes/2025/August-2025
+
+Release updates for the month of August
+
+## 🚀 Features
+
+* **Google Drive Source Connector**\
+  Added Google Drive as a new source connector for integrating cloud storage documents and files.
+
+* **Headless Extension Support**\
+  Introduced headless browser extension support for enhanced automation capabilities.
+
+* **Agent Templates**\
+  Added agent template modal and functionality for creating workflows from pre-built templates.
+
+* **Assistant PDF Export**\
+  Added ability to export assistant messages as PDF documents.
+
+* **Chat History Persistence**\
+  Implemented persistent chat history storage for maintaining conversation context across sessions.
+
+* **Bar Chart Enhancements**\
+  Added color coding and X/Y axes labels to bar charts for improved data visualization.
+
+* **Data App Workflow Integration**\
+  Integrated workflows with data apps, enabling workflow execution through chatbot and assistant interfaces.
+
+* **Lead Capture for HubSpot and Slack**\
+  Added lead capture functionality for HubSpot and Slack integrations.
+
+* **Chatbot Expand Toggle**\
+  Added toggle functionality to expand and collapse the chatbot interface.
+
+* **Assistant List View**\
+  Added list view for displaying available assistants with breadcrumb navigation.
+
+* **GitHub Bot Release Workflows**\
+  Updated release workflows with GitHub bot integration for automated releases.
+
+## 🐛 Bug Fixes
+
+* **Overview Card Heights**\
+  Fixed inconsistent height rendering for overview cards.
+
+* **Connection Edges**\
+  Resolved issues with connection edges in workflow canvas.
+
+* **File Name Assignment**\
+  Fixed file name incorrectly being assigned file ID in Google Drive connector.
+
+* **Workflow Name Assignment**\
+  Corrected workflow name assignment during updates.
+
+* **Chatbot Error Responses**\
+  Fixed error response handling in chatbot interactions.
+
+* **LLM Field Label**\
+  Corrected label for LLM configuration field.
+
+* **Google Drive Vendor Name**\
+  Fixed missing vendor name in field list for Google Drive connector.
+
+* **Exception Data Handling**\
+  Fixed missing exception from returned data.
+
+* **Workflow Failure**\
+  Resolved workflow execution failure issues.
+
+* **One2Many Type Parsing**\
+  Fixed parsing of one2many type as JSON array.
+
+* **Signup Form Copy**\
+  Updated copy changes for signup form.
+
+* **Assistant Component Properties**\
+  Fixed component properties rendering in assistant.
+
+* **Base URL Configuration**\
+  Corrected base URL for published links and API calls.
+
+* **Chatbot Dimensions**\
+  Fixed chatbot dimensions when in expanded state.
+
+* **Model Configuration Key**\
+  Changed model to configurable key for flexibility.
+
+* **Data Apps Pagination**\
+  Fixed pagination for data apps and assistants lists.
+
+* **Chatbot Cross Icon**\
+  Fixed chatbot cross icon visibility in expanded state.
+
+* **No Access Rendering**\
+  Fixed rendering of No Access state on page reload.
+
+## 🚜 Refactor
+
+* **Feedback Metric Calculation**\
+  Updated and reverted feedback metric calculation changes.
+
+* **Workflow Create & Update Logic**\
+  Changed logic for workflow creation and update operations.
+
+* **Table Styling**\
+  Updated styling and copy in table components.
+
+* **Node Selection**\
+  Prevented multiple node selection in workflow builder.
+
+* **Attribution Removal**\
+  Removed attribution from components.
+
+* **JSON Form Font Size**\
+  Changed font size in JSON Form for better readability.
+
+* **Data App Deletion**\
+  Added automatic data app deletion during workflow deletion.
+
+* **Configurable Type Default**\
+  Added configurable\_type as model as default value.
+
+* **Filter Updates**\
+  Changed filters for improved data filtering.
+
+## ⚙️ Miscellaneous Tasks
+
+* **Server Gem Updates**\
+  Updated server gem through versions 0.32.3 and 0.33.0.
+
+* **Integrations Gem Updates**\
+  Upgraded integrations gem through versions 0.33.3 and 0.33.4.
+
+* **Error Message Handling**\
+  Updated error message handling in detail field for APIs.
+
+* **AI Workflow Description**\
+  Updated AI Workflow description text.
+
+* **Workflow Log Database**\
+  Added Workflow Log storage in database.
+
+* **Direct Database Template**\
+  Changed the Direct Database Template configuration.
+
+* **Embedding Provider Service**\
+  Added support for embedding provider service.
+
+* **Chat Messages Title**\
+  Added Title field to Chat Messages database table.
+
+* **Sync Run Logger**\
+  Added logger for sync run status updates.
+
+* **Data App Session Title**\
+  Moved title field to Data App Session database.
+
+* **Workflow Logger**\
+  Added workflow execution logger for debugging.
+
+* **Data App Session API**\
+  Added destroy API endpoint to data app session controller.
+
+* **Template Null Fix**\
+  Added template fix for handling null values.
+
+* **Data App Token**\
+  Send data app token on workflow run request.
+
+* **Chat History Search**\
+  Added search bar for chat history.
+
+
+# December 2025 Releases
+Source: https://docs.squared.ai/release-notes/2025/December-2025
+
+Release updates for the month of December
+
+## 🚀 Features
+
+* **Workflow RBAC**\
+  Added Role-Based Access Control for workflows with governance UI for managing permissions.
+
+* **AIS Hosted Vector Store**\
+  Introduced AIS Hosted Vector Store setup for managed vector database storage.
+
+* **Guardrails Workflow Component**\
+  Added guardrails component support for implementing safety constraints in workflows.
+
+* **Connector Form State Persistence**\
+  Added form state persistence for connectors to maintain user input across sessions.
+
+* **SQL Schema for Vector Store Tables**\
+  Added SQL schema option during vector store table creation for customized data structures.
+
+* **Workflow Auditability**\
+  Implemented workflow auditability features for tracking changes and compliance.
+
+* **Custom Compliance Support**\
+  Added custom compliance support with custom list input capabilities.
+
+* **Chatbot Chat Sessions**\
+  Implemented chatbot chat sessions support for persistent conversations.
+
+* **User Uploadable Chat Avatar**\
+  Added ability for users to upload custom chat avatars.
+
+* **Scatterplot Visualization**\
+  Introduced scatterplot visualization type for data analysis.
+
+* **Stepped Form Persistent State**\
+  Implemented persistent state for stepped forms to preserve progress.
+
+* **Coverage Report Prefix**\
+  Added prefix to coverage report in UI-CI workflow for better organization.
+
+## 🐛 Bug Fixes
+
+* **Workflow Run ID in Error**\
+  Fixed workflow run ID display in error messages.
+
+* **Unit Test Coverage CI**\
+  Reverted unit test coverage display in CI.
+
+* **See More Endpoint Payload**\
+  Corrected payload for see more endpoint.
+
+* **File Download Error Handling**\
+  Fixed error string handling in handle\_file\_download\_error.
+
+* **Chat Assistant Date Display**\
+  Fixed date display alongside time in chat assistant with proper formatting.
+
+* **Cursor Assertion Error**\
+  Fixed missing cursor assertion error.
+
+* **Coverage File Collection**\
+  Fixed coverage collection from all files.
+
+* **Delete Data App Session Policy**\
+  Updated delete data app session policy.
+
+* **Workflow Name During Setup**\
+  Fixed showing the name of the workflow during setup process.
+
+* **Odoo Abstract Field**\
+  Fixed abstract field not available in model in some Odoo versions.
+
+## 🚜 Refactor
+
+* **Model Provider Selection**\
+  Changed to allow model selection only after provider is selected.
+
+* **Fallback Value Formatting**\
+  Changed fallback and formatted value handling.
+
+## ⚙️ Miscellaneous Tasks
+
+* **Workflow Error Handling**\
+  Added raise error in await workflow result for better error propagation.
+
+* **Server Gem Update**\
+  Updated Server Gem to version 0.34.12.
+
+* **Vector DB Connector Filters**\
+  Added filter changes for vector DB connectors and storage components.
+
+* **Parsing Flag Removal**\
+  Removed need parsing flag from workflow processing.
+
+* **Auth Failure Logging**\
+  Added logs for authentication failures.
+
+* **Workflows Page Title**\
+  Added page title for Workflows section.
+
+* **Chatbot Interface Tests**\
+  Improved tests for chatbot interface and helpers.
+
+* **Prompt Input Sample**\
+  Added sample input to prompt input component.
+
+* **Unit Test Coverage**\
+  Added comprehensive unit tests for workflow builder.
+
+* **Assistant Workspace IDs**\
+  Removed ASSISTANT\_ENABLED\_WORKSPACE\_IDS constant.
+
+* **CI Naming Updates**\
+  Updated CI name and job titles for clarity.
+
+* **Integrations Gem Update**\
+  Upgraded integrations gem to version 0.34.13.
+
+* **Knowledge Base Database**\
+  Added Knowledge Base and Knowledge Base File to database.
+
+* **Dynamic SQL Payload**\
+  Updated DynamicSql in Payload Generator.
+
+* **Tool Model**\
+  Added Tool model for workflow tooling support.
+
+* **Knowledge Base Create API**\
+  Added Knowledge Base Create API endpoint.
+
+
+# February 2025 Releases
+Source: https://docs.squared.ai/release-notes/2025/Feb-2025
+
+Release updates for the month of February
+
+## 🚀 Features
+
+* **PG vector as source changes**\
+  Made changes to the PostgreSQL connector to support PG Vector.
+
+## 🐛 Bug Fixes
+
+* **Vulnerable integration gem versions update**\
+  Upgraded Server Gems to the new versions, fixing vulnerabilities found in previous versions of the Gems.
+
+## ⚙️ Miscellaneous Tasks
+
+* **Sync alert bug fixes**\
+  Fixed certain issues in the Sync Alert mailers.
+
+
+# January 2025 Releases
+Source: https://docs.squared.ai/release-notes/2025/January-2025
+
+Release updates for the month of January
+
+## 🚀 Features
+
+* **Added Empty State for Feedback Overview Table**\
+  Introduces a default view when no feedback data is available, ensuring clearer guidance and intuitive messaging for end users.
+
+* **Custom Visual Component for Writing Data to Destination Connectors**\
+  Simplifies the process of sending or mapping data to various destination connectors within the platform’s interface.
+
+* **Azure Blob Storage Integration**\
+  Adds support for storing and retrieving data from Azure Blob, expanding available cloud storage options.
+
+* **Update Workflows to Deploy Solid Worker**\
+  Automates deployment of a dedicated worker process, improving back-end task management and system scalability.
+
+* **Chatbot Visual Type**\
+  Adds a dedicated visualization type designed for chatbot creation and management, enabling more intuitive configuration of conversational experiences.
+
+* **Trigger Sync Alerts / Sync Alerts**\
+  Implements a notification system to inform teams about the success or failure of data synchronization events in real time.
+
+* **Runner Script Enhancements for Chatbot**\
+  Improves the runner script’s capability to handle chatbot logic, ensuring smoother automated operations.
+
+* **Add S3 Destination Connector**\
+  Enables direct export of transformed or collected data to Amazon S3, broadening deployment possibilities for cloud-based workflows.
+
+* **Add SFTP Source Connector**\
+  Permits data ingestion from SFTP servers, streamlining workflows where secure file transfers are a primary data source.
+
+## 🐛 Bug Fixes
+
+* **Handle Chatbot Response When Streaming Is Off**\
+  Resolves an issue causing chatbot responses to fail when streaming mode was disabled, improving overall reliability.
+
+* **Sync Alert Issues**\
+  Fixes various edge cases where alerts either triggered incorrectly or failed to trigger for certain data sync events.
+
+* **UI Enhancements and Fixes**\
+  Addresses multiple interface inconsistencies, refining the user experience for navigation and data presentation.
+
+* **Validation for “Continue” CTA During Chatbot Creation**\
+  Ensures that all mandatory fields are properly completed before users can progress through chatbot setup.
+
+* **Refetch Data Model After Update**\
+  Corrects a scenario where updated data models were not automatically reloaded, preventing stale information in certain views.
+
+* **OpenAI Connector Failure Handling**\
+  Improves error handling and retry mechanisms for OpenAI-related requests, reducing the impact of transient network issues.
+
+* **Stream Fetch Fix for Salesforce**\
+  Patches a problem causing occasional timeouts or failed data streams when retrieving records from Salesforce.
+
+* **Radio Button Inconsistencies**\
+  Unifies radio button behavior across the platform’s interface, preventing unexpected selection or styling errors.
+
+* **Keep Reports Link Highlight**\
+  Ensures the “Reports” link remains visibly highlighted in the navigation menu, maintaining consistent visual cues.
+
+## ⚙️ Miscellaneous Tasks
+
+* **Add Default Request and Response in Connection Configuration for OpenAI**\
+  Provides pre-populated request/response templates for OpenAI connectors, simplifying initial setup for users.
+
+* **Add Alert Policy to Roles**\
+  Integrates alert policies into user role management, allowing fine-grained control over who can create or modify data alerts.
+
+
+# July 2025 Releases
+Source: https://docs.squared.ai/release-notes/2025/July-2025
+
+Release updates for the month of July
+
+## 🚀 Features
+
+* **Workflow Builder**\
+  Introduced a comprehensive visual workflow builder with React Flow canvas, drag-and-drop components, sidebar navigation, and node configuration. Includes auto-save functionality, workflow publishing, and interface testing capabilities.
+
+* **Odoo Source Connector**\
+  Added Odoo as a new source connector for ERP data integration.
+
+* **Odoo Destination Connector**\
+  Introduced Odoo as a destination connector for writing data to Odoo systems.
+
+* **Workflow Run Feature API**\
+  Added API endpoints for executing and managing workflow runs.
+
+* **Retrieval Flow Components**\
+  Implemented retrieval flow with configurable components for building AI-powered data retrieval workflows.
+
+* **Agent Routes Setup**\
+  Set up routing infrastructure for agent-based workflow interactions.
+
+* **Workflow Interface**\
+  Added chatbot/assistant interface for testing workflows with pagination support and list view.
+
+* **Workflow Component Descriptions**\
+  Added descriptions for workflow components to improve user understanding.
+
+* **Code Quality Migration**\
+  Migrated code climate and code coverage tools to qlty.sh with updated badges.
+
+* **GitHub Workflow Timeout**\
+  Added timeout configuration for server-ci GitHub Actions workflow.
+
+## 🐛 Bug Fixes
+
+* **Global Namespace Violation**\
+  Fixed global namespace violation in runner script.
+
+* **JSON Schema Validation**\
+  Removed invalid field from JSON schema and fixed various schema issues.
+
+* **Batched Query Processing**\
+  Added batched\_query call and improved SQL parsing capabilities.
+
+* **Workflow Builder UI Fixes**\
+  Fixed numerous workflow builder issues including drop position calculation, component selection, node duplication, edge deletion, and fit view functionality.
+
+* **LLM Model Temperature**\
+  Fixed missing temperature field for LLM model configuration.
+
+* **Component Rendering**\
+  Fixed component icon rendering from URLs and dynamic component loading from API.
+
+* **Interface State Persistence**\
+  Resolved issues with interface state not persisting correctly.
+
+* **Auto-Save Status**\
+  Fixed auto-save to correctly update status to draft and trigger after 1 second delay.
+
+* **Chatbot Messages**\
+  Fixed assistant chat JSON messages, loading states, and message responder issues.
+
+* **Prompt Input Modal**\
+  Resolved issues with prompt input modal and variable values.
+
+* **Chart Rendering**\
+  Fixed chart rendering issues in workflow interfaces.
+
+* **RBAC Policy**\
+  Corrected RBAC policy implementation for workflows.
+
+* **Sidebar Styling**\
+  Fixed sidebar collapsed state, styling, and component sizes.
+
+* **Async Dropdown**\
+  Fixed async dropdown scrolling and sizing to window dimensions.
+
+* **Workflow Template JSON**\
+  Corrected workflow template JSON structure.
+
+* **Workflow Execution Errors**\
+  Added user feedback on workflow execution errors.
+
+## 🚜 Refactor
+
+* **AIS Data Store Discover**\
+  Fixed AIS Data Store discover method implementation.
+
+* **Workflow Templates**\
+  Refactored workflow templates for better maintainability.
+
+## ⚙️ Miscellaneous Tasks
+
+* **Sub-Category Support**\
+  Added sub\_category to connector model and fixed postgres sub-category handling.
+
+* **Connector Instance Protocol**\
+  Added connector\_instance to protocol for better connector management.
+
+* **Server Gem Updates**\
+  Updated server gem through versions 0.30.4, 0.31.3, 0.32.0, and 0.32.1.
+
+* **Vector Search Enhancements**\
+  Added execute\_search to connector for vector operations and vector search support for PostgreSQL.
+
+* **Firecrawl Updates**\
+  Added markdown\_hash to Firecrawl and updated web\_scraping extractors for VectorDB integration.
+
+* **Workflow Components**\
+  Updated workflow components with filters, JSON updates, and schema improvements.
+
+* **Chatbot Default State**\
+  Changed chatbot to render closed by default.
+
+* **Workflow Run Model**\
+  Added workflow run model changes and scope for updated\_at descending.
+
+* **Security Enhancements**\
+  Added rack attack for rate limiting, secured cross-domain access, and added clickjacking prevention.
+
+* **Credential Masking**\
+  Implemented connector credentials masking for improved security.
+
+* **PG Vector Migration**\
+  Migrated existing PostgreSQL vector connectors to vector sub\_category.
+
+* **NASA Workspace**\
+  Added NASA workspace to production environment.
+
+* **Workflow Role Group**\
+  Added Workflows role group for permission management.
+
+* **Workflow Template Database**\
+  Added and reverted template field for workflow in database.
+
+* **Workflow Builder Validations**\
+  Implemented agent workflow builder validations.
+
+* **Async Dropdown Filtering**\
+  Added async dropdown service support with filters and connector sub\_category filtering.
+
+* **BigQuery Private Key**\
+  Reformatted private\_key in BigQuery client for connection handling.
+
+* **Pinecone Metadata**\
+  Updated metadata handling in Pinecone DB destination connector.
+
+
+# June 2025 Releases
+Source: https://docs.squared.ai/release-notes/2025/June-2025
+
+Release updates for the month of June
+
+## 🚀 Features
+
+* **Intuit QuickBooks Source Connector**\
+  Added Intuit QuickBooks as a new source connector for integrating accounting and financial data.
+
+* **Pinecone DB Source Connector**\
+  Added Pinecone DB as a source connector for reading from vector databases.
+
+* **Qdrant Source Connector**\
+  Introduced Qdrant as a source connector for vector search data retrieval.
+
+* **Firecrawl Source Connector**\
+  Added Firecrawl as a new source connector for web crawling and scraping capabilities.
+
+* **White-Labelling Support**\
+  Introduced comprehensive white-labelling capabilities including custom logo uploads for workspaces and organizations.
+
+* **Workflow CRUD APIs**\
+  Added complete Create, Read, Update, Delete APIs for workflow management.
+
+* **Components Schema API**\
+  Introduced components schema API for better component management and configuration.
+
+* **File-Based Assistant**\
+  Added file-based assistant functionality for Space Cadet workspace.
+
+* **Email Verification Redirect**\
+  Implemented redirect to login page when email verification is disabled for streamlined user experience.
+
+* **Empty Graph Text**\
+  Added descriptive text for empty graph states to improve user guidance.
+
+* **Deploy to Staging and QA Workflows**\
+  Created new deployment workflows for staging and QA environments with failure handling and environment visibility.
+
+## 🐛 Bug Fixes
+
+* **Continue Button State**\
+  Fixed continue button being incorrectly disabled in forms.
+
+* **Searchbar Double Border**\
+  Resolved double border styling issue on search bars.
+
+* **Long Title Truncation**\
+  Added truncation for long titles to prevent layout issues.
+
+* **Double Toast Notifications**\
+  Fixed duplicate toast notifications appearing.
+
+* **Workflow Component Schema**\
+  Corrected workflow component schema configuration issues.
+
+* **Qdrant and Pinecone Spec**\
+  Quick fix for Qdrant and Pinecone connector specifications.
+
+* **Read User Permission**\
+  Removed read user permission from non-admin roles for better security.
+
+## 🚜 Refactor
+
+* **Chatbot Metrics Data App Reports**\
+  Added support for chatbot metrics in data app reports.
+
+* **Models Audit Changes**\
+  Implemented audit-related improvements for models.
+
+* **SignUp Email Verification**\
+  Updated SignUp flow to handle email verification configuration.
+
+* **Searchbar Width Prop**\
+  Added width prop to searchbar component for flexible sizing.
+
+* **Vector Search Protocol**\
+  Updated protocol handling for Vector\_Search type.
+
+* **Logo Management**\
+  Refactored logo imports, API responses, and added sidebar logo component with max file size validation.
+
+* **API Host Configuration**\
+  Changed API host configuration for better environment management.
+
+* **Error Toast Handling**\
+  Added consistent error toast notifications across the application.
+
+## ⚙️ Miscellaneous Tasks
+
+* **Logo Upload Infrastructure**\
+  Added database changes and serializer updates for logo upload functionality.
+
+* **Data App Reports Enhancement**\
+  Updated Data App reports to show messages and feedback responses.
+
+* **Monthly API Response**\
+  Updated API to return 'monthly' instead of 'month' for consistency.
+
+* **Enterprise Controller Updates**\
+  Updated Enterprise Workspace and Organization controllers for logo upload support.
+
+* **Workflow Model Changes**\
+  Added workflow model associations and unique index for workflow names.
+
+* **Component URL Icons**\
+  Updated component URL icons for better visual consistency.
+
+* **Server Gem Updates**\
+  Updated server gem through versions 0.27.0, 0.29.0, 0.30.0, and 0.30.3.
+
+* **S3 Bucket Storage**\
+  Enabled S3 bucket for storage capabilities.
+
+* **Connector Sub-Categories**\
+  Added sub\_category field to connector meta for better organization.
+
+* **Firecrawl Optimizations**\
+  Optimized Firecrawl client and added query support.
+
+* **Demo Stage Workspace**\
+  Added demo stage workspace ID to assistant enabled workspace IDs.
+
+* **Component Model Updates**\
+  Updated component model with improvements.
+
+* **BCLL Cleanup**\
+  Removed hardcoded BCLL logo and custom height configurations.
+
+
+# March 2025 Releases
+Source: https://docs.squared.ai/release-notes/2025/March-2025
+
+Release updates for the month of March
+
+## 🚀 Features
+
+* **Custom RBAC UI**\
+  Introduced a comprehensive Role-Based Access Control interface, allowing administrators to create, edit, and manage custom roles with granular permissions across the platform.
+
+* **SSO Integration**\
+  Added complete Single Sign-On support including SSO Configuration Controller, SSO Login, ACS Callback, and organization settings for seamless enterprise authentication.
+
+* **WatsonX.AI Connector**\
+  Added IBM WatsonX.AI as a new AI/ML source connector, expanding the available AI model integrations.
+
+* **Anthropic AI/ML Source Connector**\
+  Introduced Anthropic as a new AI/ML source connector for leveraging Claude models in data workflows.
+
+* **Chatbot Enhancements**\
+  Added feedback display on chatbot preview and history context for user prompts, improving conversational AI experiences.
+
+* **Sync Export API**\
+  New API endpoints for exporting sync configurations and sync records, enabling better data portability and backup options.
+
+* **Environment Variables for Connection Config**\
+  Support for using environment variables in connection configurations, improving security and deployment flexibility.
+
+* **Enhanced Search Functionality**\
+  Added search bars to model selection, destination section, and data source views for easier navigation in large datasets.
+
+* **Delete Confirmation Modals**\
+  Added confirmation dialogs when deleting sources and workspace members to prevent accidental data loss.
+
+* **Docker Hub Integration**\
+  Updated workflow to automatically push images to Docker Hub when new releases are created.
+
+* **Snyk Security Testing**\
+  Integrated Snyk tests for server, UI, and integrations to enhance security vulnerability detection.
+
+* **Primary Key Helper Text**\
+  Added helper text and tooltips for Primary Key fields to improve user understanding during data modeling.
+
+## 🐛 Bug Fixes
+
+* **Pagination in Empty State**\
+  Fixed pagination controls incorrectly showing when there are no results to display.
+
+* **Content Layout**\
+  Corrected content centering at maximum width for better visual consistency.
+
+* **User Login with Email Confirmation**\
+  Resolved issues with user login flow when email confirmation is required.
+
+* **Role Permission Count**\
+  Fixed incorrect permission count display for roles and updated to group permission count.
+
+* **SSO Entity ID**\
+  Corrected entity ID handling in SSO configuration.
+
+* **Missing Logo Icons**\
+  Fixed missing logo icons appearing in various authentication views.
+
+* **Invite User Workflow**\
+  Addressed issues in the user invitation workflow for better reliability.
+
+* **Solid Worker Migrations**\
+  Fixed migration issues affecting the Solid Worker background job processor.
+
+* **Anthropic Connector**\
+  Fixed spelling error and quick fixes for the Anthropic AI/ML connector.
+
+* **Template Value Persistence**\
+  Resolved issues where template values were not persisting correctly in AI/ML models.
+
+* **Auth UI/UX Improvements**\
+  Fixed password validation design, forgot password positioning, sign-in/sign-up UI audit issues, and checkbox styling on RJSF forms.
+
+## 🚜 Refactor
+
+* **Data Apps Audits**\
+  Completed high-priority audit items for Data Apps, improving overall code quality and user experience.
+
+* **Template Mapping Components**\
+  Refactored template options into generic, reusable components for better maintainability.
+
+* **Model Page Improvements**\
+  Applied audit fixes to model pages including navigation, timestamp formatting, and empty state handling.
+
+* **Settings Page Audit**\
+  Completed comprehensive audit of settings pages for consistency and usability.
+
+* **Authentication UI**\
+  Improved copy for invalid credentials, placeholders, terms and privacy policy messages, and password instructions.
+
+* **Stepped Form Exit**\
+  Removed unnecessary exit warnings when leaving stepped forms for smoother user experience.
+
+## ⚙️ Miscellaneous Tasks
+
+* **ChatMessage Model**\
+  Added ChatMessage model and ChatMessageTransformer for enhanced chat prompt message handling.
+
+* **Ruby SAML Gem**\
+  Added ruby-saml gem to support SAML-based SSO authentication.
+
+* **Playwright E2E Tests**\
+  Set up Playwright framework for end-to-end testing automation.
+
+* **SSO Configuration Permissions**\
+  Added permissions for SSO Configuration management at organization and workspace levels.
+
+* **Signing Certificate Verification**\
+  Implemented signing certificate verification for enhanced security.
+
+* **Audit Log Enhancements**\
+  Added audit logging to Roles Controller and updated audit usage across multiple controllers for better traceability.
+
+* **Export Improvements**\
+  Refactored date handling in Audit Log and Feedback exports, and added Additional Remarks field to message feedback exports.
+
+* **Server Gem Updates**\
+  Updated Server gem to versions 0.20.0, 0.21.1, and 0.21.2 with various improvements and fixes.
+
+* **System Role Descriptions**\
+  Updated descriptions for system roles to provide clearer guidance.
+
+* **Security Updates**\
+  Updated gems to address Snyk security vulnerabilities.
+
+
+# May 2025 Releases
+Source: https://docs.squared.ai/release-notes/2025/May-2025
+
+Release updates for the month of May
+
+## 🚀 Features
+
+* **Amazon Bedrock Source Connector**\
+  Added Amazon Bedrock as a new AI/ML source connector for integrating AWS foundation models into data workflows.
+
+* **Pinecone Vector DB Destination Connector**\
+  Introduced Pinecone as a destination connector for vector database storage and retrieval.
+
+* **Qdrant Destination Connector**\
+  Added Qdrant as a new vector database destination connector for similarity search workloads.
+
+* **Generic OpenAI Spec Connector**\
+  Added a generic OpenAI specification connector for flexible integration with OpenAI-compatible endpoints.
+
+* **Unstructured Data Support**\
+  Comprehensive support for unstructured data including LangChain Ruby integration, chunking configuration, and embedding config screens.
+
+* **Assistant UI Enhancements**\
+  Added Bar and Pie Chart support, feedback collection, table data rendering, CSV download capability, and dynamic title changes based on conversation.
+
+* **Vector Search Model Support**\
+  Added unstructured and vector\_search types to ModelQueryType with embedding configuration for vector-based models.
+
+* **Sync Alerts Workflow**\
+  Added workflow middleware for sync alerts to improve notification handling.
+
+* **Solid Worker in Docker Compose**\
+  Added solid worker service to docker-compose.yml for improved background job processing.
+
+* **Prometheus Client**\
+  Added prometheus client gem for metrics collection and monitoring.
+
+* **Update Feedback and Message Feedback**\
+  Implemented update capabilities for feedback and message feedback records.
+
+* **Demo Workspace for Assistant**\
+  Added Demo Workspace to Assistant Enabled Workspaces for easier onboarding and testing.
+
+* **Custom Workspace Branding**\
+  Added support for logo and name customization for specific workspaces (e.g., BCLL Workspace).
+
+## 🐛 Bug Fixes
+
+* **Bedrock Inference Profile**\
+  Removed inference profile from Bedrock connector configuration.
+
+* **Sync Run Email Notifications**\
+  Disabled sync run send\_status\_email and fixed sync run mailer issues.
+
+* **CVE Corrections**\
+  Corrected CVEs for BAH using Trivy security scanning.
+
+* **Failed Sync Alerts Email Format**\
+  Fixed email format for failed sync alerts and added end\_time to sync failure emails.
+
+* **Pagination Issues**\
+  Fixed broken pagination across various views.
+
+* **Logo URL Updates**\
+  Updated the logo URL for Slack and Email Alerts.
+
+* **Email Taken Error Message**\
+  Improved error message when email is already taken during signup.
+
+* **Unstructured Model Handling**\
+  Fixed model updates for vector type, catalog data usage, and API updates for unstructured models.
+
+* **Duplicate API Calls**\
+  Removed duplicate GET call during connector updates.
+
+* **Pinecone Spec**\
+  Removed model and namespace from Pinecone specification.
+
+* **Connector Edit Navigation**\
+  Fixed opening connector edit screen after creation.
+
+* **Stepped Form Issues**\
+  Fixed multiple issues with stepped form including browser back restriction, query params in URL, and infinite loop problems.
+
+* **Configure Sync Screen**\
+  Resolved issues with the configure sync screen for unstructured models.
+
+* **Embedding Validation**\
+  Disabled continue button if embedding configuration is not completed.
+
+* **Chat History Display**\
+  Show chat history only when messages exist.
+
+* **Unstructured Model Steps**\
+  Fixed dynamic step addition for unstructured models and preserved base steps for reset.
+
+## 🚜 Refactor
+
+* **Button Styling Updates**\
+  Changed button styling across the application for consistency.
+
+* **Datalist Icon Removal**\
+  Removed icons from datalist components for cleaner UI.
+
+* **Error Toast Improvements**\
+  Removed titleCase from error toasts and added support to hide success toasts when not needed.
+
+* **Schema Validation**\
+  Removed input and output schema validation for improved flexibility.
+
+* **Pagination Logic**\
+  Changed logic to show pagination only when rows equal 10 or more.
+
+* **Assistant Deployment Option**\
+  Changed deploy to assistant option to only be visible in Assistant Enabled Workspaces.
+
+* **Embedding Config Component**\
+  Extracted embedding config fields into a standalone reusable component.
+
+* **Chart Export Utilities**\
+  Added chart download and copy functionality with export function moved to utilities.
+
+* **Data Apps Empty State**\
+  Improved copy for empty state in data apps.
+
+* **Slack Sync Button**\
+  Updated View Sync Run button styling for Slack notifications.
+
+* **Stepped Form Store**\
+  Refactored stepped form state management for better maintainability.
+
+## ⚙️ Miscellaneous Tasks
+
+* **EULA Role Updates**\
+  Made read permission in EULA true for Custom Role.
+
+* **Model Query Type Updates**\
+  Added unstructured and vector\_search types to ModelQueryType.
+
+* **Data App Querying**\
+  Enabled Data App querying capabilities.
+
+* **Redis Removal**\
+  Removed Redis dependency from the application stack.
+
+* **Data Format Type Names**\
+  Updated title names for Data Format Types.
+
+* **Server Gem Updates**\
+  Updated server gem through versions 0.23.2, 0.24.0, 0.24.1, 0.24.2, 0.25.0, and 0.26.0.
+
+* **Connector Documentation URLs**\
+  Updated connector documentation URLs in spec and meta files.
+
+* **Counter Culture for Messages**\
+  Added count\_culture for chat\_messages and message\_feedbacks for efficient counting.
+
+
+# November 2025 Releases
+Source: https://docs.squared.ai/release-notes/2025/November-2025
+
+Release updates for the month of November
+
+## 🚀 Features
+
+* **Workflow Builder Control Panel**\
+  Added control panel for workflow builder with enhanced management capabilities.
+
+* **Export Workflows as Slack App**\
+  Enabled exporting workflows as Slack applications for seamless team integration.
+
+* **Embeddable Chat Assistants**\
+  Introduced embeddable assistant support with script updates for embedding chatbots in external applications.
+
+* **Hosted Data Store**\
+  Added Hosted Database and Hosted Table support with complete CRUD APIs for managed data storage.
+
+* **Semistructured Data Support**\
+  Added semistructured model query type with configuration support for handling partially structured data formats.
+
+* **Primary Key Disabled Callout**\
+  Added callout notification when primary key is disabled to improve user awareness.
+
+* **Google Drive Connector Refactor**\
+  Refactored Google Drive source connector for improved performance and reliability.
+
+* **Larger CI Runner**\
+  Added support for new larger runner in CI pipeline for faster builds.
+
+## 🐛 Bug Fixes
+
+* **Spec Fix**\
+  Resolved specification test issues.
+
+* **AWS Bedrock Sub-Category**\
+  Changed AWS Bedrock sub-category for proper classification.
+
+* **Embeddable Assistant Variable**\
+  Fixed variable handling in embeddable assistant configuration.
+
+* **Message Content Fallback**\
+  Assign message to content at fallback for proper error handling.
+
+* **Chat Messages Overflow**\
+  Added overflow handling to chat messages for long content.
+
+* **Interface Toggle Condition**\
+  Fixed condition handling for interface toggle state.
+
+* **Google Drive File Download**\
+  Fixed errors when downloading files from Drive with backslashes and next\_page\_token clearing issues.
+
+* **Duplicate Submissions**\
+  Handled duplicate form submissions to prevent data duplication.
+
+* **Semistructure Column Mapping**\
+  Fixed missing columns for mapping in semistructure models.
+
+* **Lightning Request Timeout**\
+  Increased lightning request timeout and removed explicit DPI settings.
+
+* **Enterprise Config Fetch**\
+  Updated MW fetch to use enterprise configuration.
+
+* **Store ID in Connector List**\
+  Fixed returning store ID in connector list API.
+
+* **File Upload for Assistants**\
+  Fixed file upload functionality for assistant interactions.
+
+* **File Prompt and Response**\
+  Fixed file prompt and response handling in chat.
+
+* **Unit Test Coverage CI**\
+  Fixed unit test coverage reporting in CI pipeline.
+
+## 🚜 Refactor
+
+* **Welcome Message Rename**\
+  Changed introduction\_message to welcome\_message in channel\_join for consistency.
+
+* **Chatbot Unified Component**\
+  Refactored chatbot into unified component for better maintainability.
+
+* **Hosted Data Store Creation**\
+  Refactored hosted data store creation workflow.
+
+* **Data Store Delete API**\
+  Removed enable check for Data Store delete API.
+
+* **Hosted Data Stores Validation**\
+  Added raise for existing hosted data stores validation.
+
+* **Connector Host Addition**\
+  Added host field to connector configuration.
+
+* **Axios Config Unification**\
+  Updated axios config to be common for enterprise and CE APIs.
+
+* **SQL Script Table Rename**\
+  Allowed update SQL script to rename tables.
+
+## ⚙️ Miscellaneous Tasks
+
+* **LLM Component Enhancement**\
+  Enhanced LLM Component to handle Generic OpenAI endpoints.
+
+* **PostHog Feature Flags**\
+  Implemented PostHog feature flag integration for controlled rollouts.
+
+* **Slack Bot Chat History**\
+  Added chat history support to Slack Bot.
+
+* **Template ID for Hosted Data Store**\
+  Added template ID to Hosted Data Store model.
+
+* **Vector Store Template API**\
+  Added Template API for Vector Store configuration.
+
+* **Data App Auth for List API**\
+  Added data\_app\_auth support for list API endpoints.
+
+* **Server Gem Update**\
+  Updated Server Gem to version 0.34.7.
+
+* **Hosted DB APIs**\
+  Added Create, Index, Update, Destroy, Enable, and Delete APIs for Hosted Data Store and Tables.
+
+* **Component Failure Scenarios**\
+  Added failure scenarios handling for workflow components.
+
+* **PGUtils Addition**\
+  Added PGUtils utility for PostgreSQL operations.
+
+* **Embed Login Header**\
+  Added login support with X-App-Context header for embed scenarios.
+
+* **Workflow Model RBAC**\
+  Added RBAC changes for workflow model permissions.
+
+* **Data Store Template Refactor**\
+  Refactored Data Store template configuration.
+
+* **Integrations Gem Updates**\
+  Upgraded multiwoven-integrations gem through versions 0.34.11.
+
+* **Hosted DB Connectors**\
+  Added connectors for hosted database integration.
+
+* **Connector Model Configuration**\
+  Added empty configuration support for Connector model.
+
+* **Sync-Based Table Updates**\
+  Updated data store table based on sync creation.
+
+* **Hosted Data Store Connector Definition**\
+  Added hosted data store to connector definition.
+
+* **PostgreSQL Destination Refactor**\
+  Refactored PostgreSQL Destination Connector for improved performance.
+
+
+# October 2025 Releases
+Source: https://docs.squared.ai/release-notes/2025/October-2025
+
+Release updates for the month of October
+
+## 🚀 Features
+
+* **Conditional Component**\
+  Added conditional component functionality for enhanced workflow control.
+
+* **Conditional Workflow Component**\
+  Implemented conditional workflow component for enterprise workflows.
+
+* **S3 Storage Encryption Options**\
+  Added encryption options to S3 storage configuration for enhanced data security.
+
+* **Pipeline Appsignal Revision Variable**\
+  Updated pipelines to fix Appsignal revision variable handling.
+
+* **Deploy Pipeline Cleanup**\
+  Cleaned up deploy pipelines for improved maintainability.
+
+* **Deploy Pipeline Updates**\
+  Updated deploy pipeline configuration and processes.
+
+* **License Links Update**\
+  Updated license links in Readme files for UI and server components.
+
+* **Workflow Job Timeout**\
+  Added timeout configuration at job level for all workflows.
+
+* **Full Screen Chart Modal**\
+  Added modal functionality to view charts in full screen mode.
+
+* **Custom Date Range for Reports**\
+  Implemented custom date range filter for data app reports.
+
+## 🐛 Bug Fixes
+
+* **Preview Image Display**\
+  Fixed preview image being pushed down in the interface.
+
+* **CI/CD Spec Failure**\
+  Resolved CI/CD specification test failures.
+
+* **Chatbot White Background**\
+  Fixed white background issue in chatbot data app.
+
+* **Workflow Integration Folder**\
+  Renamed integration folder for Workflow Integration consistency.
+
+* **Agent Selection Reset**\
+  Fixed issue where selectedAgent was not set to null when creating new Agent.
+
+## 🚜 Refactor
+
+* **Google Drive Textract Environment Variable**\
+  Renamed environment variable for Textract in Google Drive connector.
+
+## ⚙️ Miscellaneous Tasks
+
+* **Slack App Database Integration**\
+  Added Slack App to database schema.
+
+* **Branding Update**\
+  Updated multiwoven references to AI Squared across the codebase.
+
+* **Integrations Gem Upgrade**\
+  Upgraded integrations gem to version 0.34.5.
+
+* **Reports Tab Date Range**\
+  Added custom date range functionality for reports tab in data apps.
+
+* **Security Gem Updates**\
+  Upgraded git and rexml gems per security findings.
+
+
+# September 2025 Releases
+Source: https://docs.squared.ai/release-notes/2025/September-2025
+
+Release updates for the month of September
+
+## 🚀 Features
+
+* **Workflow Playground Testing**\
+  Added playground environment for testing workflows before deployment.
+
+* **HTTP Source Connector**\
+  Introduced HTTP as a new source connector for fetching data from REST APIs and web endpoints.
+
+* **Chat Assistant Session History**\
+  Implemented session history for chat assistants to maintain conversation context.
+
+* **Animated Thinking Text**\
+  Added animated thinking text in chat responses for better user feedback during processing.
+
+* **Custom Code Component**\
+  Added Custom Code Component in Workflow Builder with Python support for advanced customizations.
+
+* **Workflow Export**\
+  Implemented workflow export functionality for sharing and backup purposes.
+
+* **Custom Component Platform**\
+  Added platform changes to support custom component development and integration.
+
+* **Dynamic Schema for PGVector**\
+  Added dynamic schema change capability for PGVector Vector Store.
+
+* **Multi-Page PDF Support**\
+  Added support for processing multi-page PDF documents.
+
+* **Full Screen Chart Modal**\
+  Added modal to view charts in full screen mode for better data analysis.
+
+* **Custom Date Range Filter**\
+  Implemented custom date range filter for data app report filtering.
+
+* **Remote Code Executions Model**\
+  Added remote code executions model changes for extended processing capabilities.
+
+* **Invoice Catalog Results**\
+  Added full results to invoices catalog for comprehensive data access.
+
+* **Deploy Workflow Updates**\
+  Updated deploy to staging and QA workflows for improved CI/CD.
+
+## 🐛 Bug Fixes
+
+* **Chat Title Trim**\
+  Fixed trimming of chat title during delete session modal.
+
+* **Session Token in Workflow Run**\
+  Corrected session token handling in workflow run execution.
+
+* **Chat Response Parsing**\
+  Fixed parsing of chat responses to handle data correctly.
+
+* **Middleware Fix**\
+  Resolved middleware issues affecting request processing.
+
+* **Python Component Logo**\
+  Fixed Python component logo display in workflow builder.
+
+* **HTTP Client Increment Strategy**\
+  Added increment\_strategy check to HTTP Client for proper pagination.
+
+* **Visual Component ID**\
+  Fixed passing visual component ID during workflow update.
+
+* **Pinecone Namespace**\
+  Fixed Pinecone default namespaces and write operations.
+
+* **Selected Agent Reset**\
+  Set selectedAgent to null when creating new Agent to prevent state issues.
+
+## 🚜 Refactor
+
+* **Sync Enhancements**\
+  Added source, models, and destinations to Sync for comprehensive data mapping.
+
+* **Textract Environment Variable**\
+  Renamed environment variable for Textract in Google Drive connector.
+
+## ⚙️ Miscellaneous Tasks
+
+* **Session ID Serializer**\
+  Added Session ID to Data App Serializer.
+
+* **Server Gem Updates**\
+  Updated server gem through versions 0.33.5 and 0.34.4.
+
+* **Integrations Gem Update**\
+  Updated multiwoven integrations gem to 0.34.3.
+
+* **PGVector Support**\
+  Modified vector component to support PGVector integration.
+
+* **Workflow Chat History**\
+  Added chat history support for workflows.
+
+* **HTTP Client Update**\
+  Updated HTTP Client with improvements and added HTTP extractor.
+
+* **Vector Store JSON**\
+  Updated vector store JSON configuration.
+
+* **SOC2 Agreement Checkboxes**\
+  Added agreement checkboxes for SOC2 compliance.
+
+* **Chat Message Serializer**\
+  Added chat message serializer for API responses.
+
+* **User Prompt Query Fix**\
+  Temporary fix for user prompt query modification.
+
+* **Workflow Feedback**\
+  Added workflow feedback support for collecting user input.
+
+* **Custom Date Range Reports**\
+  Added custom date range support for reports tab in data apps.
+
+* **Security Gem Updates**\
+  Upgraded git and rexml gems per security findings.
+
+
+# 2026 Releases
+Source: https://docs.squared.ai/release-notes/2026
+
+Release updates for the year 2026
+
+<CardGroup>
+  <Card title="January 2026" icon="book-open" href="/release-notes/2026/January-2026">
+    Version: v0.86.0 to v0.90.0
+  </Card>
+</CardGroup>
+
+
+# January 2026 Releases
+Source: https://docs.squared.ai/release-notes/2026/January-2026
+
+Release updates for the month of January 2026
+
+## 🚀 Features
+
+* **Custom Roles Edit Support**
+  Added *Edit Details* button for Custom Roles to allow User-defined Roles to be modified.
+
+* **Knowledge Base**
+  Introduced Knowledge Base for use with Workflows.
+
+* **Hugging Face Embedding Models**
+  Added support for Hugging Face embedding models.
+
+* **Agent Tools**
+  Introduced Agent Tools.
+
+* **Knowledge Base Component**
+  Added Knowledge Base component in Workflows.
+
+## 🐛 Bug Fixes
+
+* **Collapsed Chat Overflow**
+  Fixed overflow issue in collapsed chat.
+
+* **Template Temperatures**
+  Fixed temperature handling in templates.
+
+* **Text Feedback Submission**
+  Allowed text feedback submission even when additional remarks are required.
+
+* **Prompt Template Variable Handling**
+  Fixed handling when no variables are found in prompt templates.
+
+* **Workflow Edge Updates**
+  Fixed edge updates when deleting nodes in workflows.
+
+* **React Optimization**
+  Removed unnecessary useCallback and useMemo usage.
+
+* **Vector Store UI**
+  Fixed UI issues while creating vector stores in Knowledge Base.
+
+* **Token Handling**
+  Ensured different tokens per data app.
+
+## 🚜 Refactor
+
+* **Custom Component Layout**
+  Allowed fit-content for Custom Components for better-fitting layouts.
+
+## ⚙️ Miscellaneous Tasks
+
+* **Anthropic Ruby Gem**
+  Added Ruby Anthropic gem support.
+
+* **Testing & Linting**
+  Improved tests, linting, and overall code quality.
 
 
 # How Sparx Works
@@ -10429,7 +11890,7 @@ Visual representation of Sparx platform components
 Sparx - **Data scientist in a box** system architecture diagram
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1754849036/AIS/2_i1fbwk.png" alt="Sparx Architecture" />
+  <img alt="Sparx Architecture" />
 </Frame>
 
 
@@ -10443,7 +11904,7 @@ Real-world examples and before/after comparisons
 Franchise implementation diagram showing Sparx integration with multiple franchise locations and systems
 
 <Frame>
-  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1754849037/AIS/1_uicbju.png" alt="use-case" />
+  <img alt="use-case" />
 </Frame>
 
 ## Before & After Sparx

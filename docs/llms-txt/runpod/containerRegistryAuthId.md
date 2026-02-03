@@ -2,6 +2,10 @@
 
 # Source: https://docs.runpod.io/api-reference/container-registry-auths/DELETE/containerregistryauth/containerRegistryAuthId.md
 
+# Source: https://docs.runpod.io/api-reference/container-registry-auths/GET/containerregistryauth/containerRegistryAuthId.md
+
+# Source: https://docs.runpod.io/api-reference/container-registry-auths/DELETE/containerregistryauth/containerRegistryAuthId.md
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.

@@ -1,176 +1,112 @@
 # Source: https://docs.baseten.co/reference/management-api/environments/update-an-environments-settings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update model environment
 
 > Updates an environment's settings and returns the updated environment.
 
+
+
 ## OpenAPI
 
 ````yaml patch /v1/models/{model_id}/environments/{env_name}
+openapi: 3.1.0
+info:
+  description: REST API for management of Baseten resources
+  title: Baseten management API
+  version: 1.0.0
+servers:
+  - url: https://api.baseten.co
+security:
+  - ApiKeyAuth: []
 paths:
-  path: /v1/models/{model_id}/environments/{env_name}
-  method: patch
-  servers:
-    - url: https://api.baseten.co
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-              description: >-
-                You must specify the scheme 'Api-Key' in the Authorization
-                header. For example, `Authorization: Api-Key <Your_Api_Key>`
-          cookie: {}
+  /v1/models/{model_id}/environments/{env_name}:
     parameters:
-      path:
-        model_id:
-          schema:
-            - type: string
-              required: true
-        env_name:
-          schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              autoscaling_settings:
-                allOf:
-                  - anyOf:
-                      - $ref: '#/components/schemas/UpdateAutoscalingSettingsV1'
-                      - type: 'null'
-                    default: null
-                    description: Autoscaling settings for the environment
-                    examples:
-                      - autoscaling_window: 800
-                        concurrency_target: 3
-                        max_replica: 2
-                        min_replica: 1
-                        scale_down_delay: 60
-                        target_utilization_percentage: null
-              promotion_settings:
-                allOf:
-                  - anyOf:
-                      - $ref: '#/components/schemas/UpdatePromotionSettingsV1'
-                      - type: 'null'
-                    default: null
-                    description: Promotion settings for the environment
-                    examples:
-                      - ramp_up_duration_seconds: 600
-                        ramp_up_while_promoting: true
-                        redeploy_on_promotion: true
-                        rolling_deploy: null
-            required: true
-            title: UpdateEnvironmentRequestV1
-            description: A request to update an environment.
-            refIdentifier: '#/components/schemas/UpdateEnvironmentRequestV1'
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              autoscaling_settings:
-                autoscaling_window: 800
-                concurrency_target: 3
-                max_replica: 2
-                min_replica: 1
-                scale_down_delay: 60
-                target_utilization_percentage: null
-              promotion_settings:
-                ramp_up_duration_seconds: 600
-                ramp_up_while_promoting: true
-                redeploy_on_promotion: true
-                rolling_deploy: null
-    codeSamples:
-      - lang: bash
-        source: >-
-          curl --request PATCH \
-
-          --url
-          https://api.baseten.co/v1/models/{model_id}/environments/{env_name} \
-
-          --header "Authorization: Api-Key $BASETEN_API_KEY" \
-
-          --data '{
-            "autoscaling_settings": {
-              "autoscaling_window": 800,
-              "concurrency_target": 3,
-              "max_replica": 2,
-              "min_replica": 1,
-              "scale_down_delay": 60,
-              "target_utilization_percentage": null
-            },
-            "promotion_settings": {
-              "ramp_up_duration_seconds": 600,
-              "ramp_up_while_promoting": true,
-              "redeploy_on_promotion": true,
-              "rolling_deploy": null
-            }
-          }'
-      - lang: python
-        source: >-
-          import requests
-
-          import os
-
-          API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
-
-          url =
-          "https://api.baseten.co/v1/models/{model_id}/environments/{env_name}"
-
-
-          headers = {"Authorization": f"Api-Key {API_KEY}"}
-
-
-          response = requests.request(
-              "PATCH",
-              url,
-              headers=headers,
-              json={'autoscaling_settings': {'autoscaling_window': 800, 'concurrency_target': 3, 'max_replica': 2, 'min_replica': 1, 'scale_down_delay': 60, 'target_utilization_percentage': None}, 'promotion_settings': {'ramp_up_duration_seconds': 600, 'ramp_up_while_promoting': True, 'redeploy_on_promotion': True, 'rolling_deploy': None}}
-          )
-
-
-          print(response.text)
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - $ref: '#/components/schemas/UpdateAutoscalingSettingsStatusV1'
-                    description: Status of the request to update autoscaling settings
-              message:
-                allOf:
-                  - description: >-
-                      A message describing the status of the request to update
-                      autoscaling settings
-                    title: Message
-                    type: string
-            title: UpdateAutoscalingSettingsResponseV1
-            description: The response to a request to update autoscaling settings.
-            refIdentifier: '#/components/schemas/UpdateAutoscalingSettingsResponseV1'
-            requiredProperties:
-              - status
-              - message
-        examples:
-          example:
-            value:
-              status: ACCEPTED
-              message: <string>
-        description: The response to a request to update autoscaling settings.
-  deprecated: false
-  type: path
+      - $ref: '#/components/parameters/model_id'
+      - $ref: '#/components/parameters/env_name'
+    patch:
+      summary: Update an environment's settings
+      description: Updates an environment's settings and returns the updated environment.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateEnvironmentRequestV1'
+        required: true
+      responses:
+        '200':
+          description: The response to a request to update autoscaling settings.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateAutoscalingSettingsResponseV1'
 components:
+  parameters:
+    model_id:
+      schema:
+        type: string
+      name: model_id
+      in: path
+      required: true
+    env_name:
+      schema:
+        type: string
+      name: env_name
+      in: path
+      required: true
   schemas:
+    UpdateEnvironmentRequestV1:
+      additionalProperties: false
+      description: A request to update an environment.
+      properties:
+        autoscaling_settings:
+          anyOf:
+            - $ref: '#/components/schemas/UpdateAutoscalingSettingsV1'
+            - type: 'null'
+          default: null
+          description: Autoscaling settings for the environment
+          examples:
+            - autoscaling_window: 800
+              concurrency_target: 3
+              max_replica: 2
+              min_replica: 1
+              scale_down_delay: 60
+              target_in_flight_tokens: null
+              target_utilization_percentage: null
+        promotion_settings:
+          anyOf:
+            - $ref: '#/components/schemas/UpdatePromotionSettingsV1'
+            - type: 'null'
+          default: null
+          description: Promotion settings for the environment
+          examples:
+            - ramp_up_duration_seconds: 600
+              ramp_up_while_promoting: true
+              redeploy_on_promotion: true
+              rolling_deploy: null
+              rolling_deploy_config: null
+      title: UpdateEnvironmentRequestV1
+      type: object
+    UpdateAutoscalingSettingsResponseV1:
+      description: The response to a request to update autoscaling settings.
+      properties:
+        status:
+          $ref: '#/components/schemas/UpdateAutoscalingSettingsStatusV1'
+          description: Status of the request to update autoscaling settings
+        message:
+          description: >-
+            A message describing the status of the request to update autoscaling
+            settings
+          title: Message
+          type: string
+      required:
+        - status
+        - message
+      title: UpdateAutoscalingSettingsResponseV1
+      type: object
     UpdateAutoscalingSettingsV1:
       additionalProperties: false
       description: >-
@@ -231,16 +167,19 @@ components:
           examples:
             - 70
           title: Target Utilization Percentage
+        target_in_flight_tokens:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          default: null
+          description: >-
+            Target number of in-flight tokens for autoscaling decisions. Early
+            access only.
+          examples:
+            - 40000
+          title: Target In Flight Tokens
       title: UpdateAutoscalingSettingsV1
       type: object
-    UpdateAutoscalingSettingsStatusV1:
-      description: The status of a request to update autoscaling settings.
-      enum:
-        - ACCEPTED
-        - QUEUED
-        - UNCHANGED
-      title: UpdateAutoscalingSettingsStatusV1
-      type: string
     UpdatePromotionSettingsV1:
       description: Promotion settings for model promotion
       properties:
@@ -266,6 +205,12 @@ components:
           examples:
             - true
           title: Rolling Deploy
+        rolling_deploy_config:
+          anyOf:
+            - $ref: '#/components/schemas/UpdateRollingDeployConfigV1'
+            - type: 'null'
+          default: null
+          description: Rolling deploy configuration for promotions
         ramp_up_while_promoting:
           anyOf:
             - type: boolean
@@ -286,5 +231,82 @@ components:
           title: Ramp Up Duration Seconds
       title: UpdatePromotionSettingsV1
       type: object
+    UpdateAutoscalingSettingsStatusV1:
+      description: The status of a request to update autoscaling settings.
+      enum:
+        - ACCEPTED
+        - QUEUED
+        - UNCHANGED
+      title: UpdateAutoscalingSettingsStatusV1
+      type: string
+    UpdateRollingDeployConfigV1:
+      description: Rolling deploy config for promoting chains and oracles
+      properties:
+        rolling_deploy_strategy:
+          anyOf:
+            - $ref: '#/components/schemas/RollingDeployStrategyV1'
+            - type: 'null'
+          default: null
+          description: The rolling deploy strategy to use for promotions.
+          examples:
+            - REPLICA
+        max_surge_percent:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          default: 20
+          description: The maximum surge percentage for rolling deploys.
+          examples:
+            - 20
+          title: Max Surge Percent
+        max_unavailable_percent:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          default: null
+          description: The maximum unavailable percentage for rolling deploys.
+          examples:
+            - 20
+          title: Max Unavailable Percent
+        stabilization_time_seconds:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          default: null
+          description: The stabilization time in seconds for rolling deploys.
+          examples:
+            - 300
+          title: Stabilization Time Seconds
+        promotion_cleanup_strategy:
+          anyOf:
+            - $ref: '#/components/schemas/PromotionCleanupStrategyV1'
+            - type: 'null'
+          default: null
+          description: The promotion cleanup strategy to use for rolling deploys.
+          examples:
+            - SCALE_TO_ZERO
+      title: UpdateRollingDeployConfigV1
+      type: object
+    RollingDeployStrategyV1:
+      description: The rolling deploy strategy.
+      enum:
+        - REPLICA
+      title: RollingDeployStrategyV1
+      type: string
+    PromotionCleanupStrategyV1:
+      description: The promotion cleanup strategy.
+      enum:
+        - KEEP
+        - SCALE_TO_ZERO
+      title: PromotionCleanupStrategyV1
+      type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        You must specify the scheme 'Api-Key' in the Authorization header. For
+        example, `Authorization: Api-Key <Your_Api_Key>`
 
 ````

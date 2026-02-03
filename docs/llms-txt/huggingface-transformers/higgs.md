@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/quantization/higgs.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/quantization/higgs.md
 
 # HIGGS
 
@@ -16,7 +16,7 @@ pip install flute-kernel
 pip install flute-kernel -i https://flute-ai.github.io/whl/cu12.4
 ```
 
-Create a [HiggsConfig](/docs/transformers/v5.0.0rc1/en/main_classes/quantization#transformers.HiggsConfig) with the number of bits to quantize a model to.
+Create a [HiggsConfig](/docs/transformers/v5.0.0/en/main_classes/quantization#transformers.HiggsConfig) with the number of bits to quantize a model to.
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer, HiggsConfig

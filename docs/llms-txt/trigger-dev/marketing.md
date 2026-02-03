@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/use-cases/marketing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Marketing workflows
 
 > Learn how to use Trigger.dev for marketing workflows, including drip campaigns, behavioral triggers, personalization engines, and AI-powered content workflows
@@ -45,7 +49,7 @@ Build marketing workflows from email drip sequences to orchestrating full multi-
     Simple drip campaign. User signs up, waits specified delay, sends personalized email, tracks engagement.
 
     <div align="center">
-      ```mermaid  theme={null}
+      ```mermaid  theme={"theme":"css-variables"}
       graph TB
           A[userCreateAccount] --> B[sendWelcomeEmail]
           B --> C[wait.for 24h]
@@ -61,7 +65,7 @@ Build marketing workflows from email drip sequences to orchestrating full multi-
     **Router pattern with delay orchestration**. User action triggers campaign, router selects channel based on preferences (email/SMS/push), coordinates multi-day sequence with delays between messages, tracks engagement across channels.
 
     <div align="center">
-      ```mermaid  theme={null}
+      ```mermaid  theme={"theme":"css-variables"}
       graph TB
           A[startCampaign] --> B[fetchUserProfile]
           B --> C[selectChannel]
@@ -85,7 +89,7 @@ Build marketing workflows from email drip sequences to orchestrating full multi-
     **Supervisor pattern with approval gate**. Generates AI marketing content (images, copy, assets), pauses with wait.forToken for human review, applies revisions if needed, publishes to channels after approval.
 
     <div align="center">
-      ```mermaid  theme={null}
+      ```mermaid  theme={"theme":"css-variables"}
       graph TB
           A[createCampaignAssets] --> B[generateAIContent]
           B --> C[wait.forToken approval]
@@ -102,7 +106,7 @@ Build marketing workflows from email drip sequences to orchestrating full multi-
     **Coordinator pattern with enrichment**. User completes survey, batch triggers parallel enrichment from CRM/analytics, analyzes and scores responses, updates customer profiles, triggers personalized follow-up campaigns.
 
     <div align="center">
-      ```mermaid  theme={null}
+      ```mermaid  theme={"theme":"css-variables"}
       graph TB
           A[processSurveyResponse] --> B[coordinateEnrichment]
           B --> C[batchTriggerAndWait]

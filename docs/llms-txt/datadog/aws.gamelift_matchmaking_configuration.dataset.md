@@ -4,8 +4,6 @@
 title: GameLift Matchmaking Configuration
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > GameLift Matchmaking Configuration
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.gamelift_matchmaking_configuration.dataset/index.html
 ---
 
 # GameLift Matchmaking Configuration
@@ -39,4 +37,4 @@ aws.gamelift_matchmaking_configuration
 | request_timeout_seconds    | core | int64         | The maximum duration, in seconds, that a matchmaking ticket can remain in process before timing out. Requests that fail due to timing out can be resubmitted as needed.                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | rule_set_arn               | core | string        | The Amazon Resource Name (<a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html">ARN</a>) associated with the GameLift matchmaking rule set resource that this configuration uses.                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | rule_set_name              | core | string        | A unique identifier for the matchmaking rule set to use with this configuration. A matchmaking configuration can only use rule sets that are defined in the same Region.                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| tags                       | core | hstore        |
+| tags                       | core | hstore_csv    |

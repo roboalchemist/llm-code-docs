@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/oxc/bad-array-method-on-arguments.md
 ---
-# oxc/bad-array-method-on-arguments&#x20;
 
 ### What it does
 

@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/sdks/languages/java.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Infisical Java SDK
 
 If you're working with Java, the official Infisical Java SDK package is the easiest way to fetch and work with secrets for your application.

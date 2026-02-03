@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/fine-tuning/parameter-tuning.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Parameter Tuning
 
 > Learn how training parameters affect model behavior and outcomes
@@ -275,8 +279,8 @@ Best practices for adjusting parameters to achieve your training goals.
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="Parameters Reference" icon="list" href="/fine-tuning/rft-parameters-reference">
-    Quick lookup table for all parameters with defaults and valid ranges
+  <Card title="CLI Reference" icon="terminal" href="/tools-sdks/firectl/commands/reinforcement-fine-tuning-job-create">
+    Complete guide to CLI parameters and options
   </Card>
 
   <Card title="Launch Training" icon="rocket" href="/fine-tuning/cli-reference">

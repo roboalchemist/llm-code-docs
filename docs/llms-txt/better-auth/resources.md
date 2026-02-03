@@ -4,11 +4,7 @@
 
 A curated collection of resources to help you learn and master Better Auth.
 
-***
 
-title: Resources
-description: A curated collection of resources to help you learn and master Better Auth.
-----------------------------------------------------------------------------------------
 
 import { Resource } from "@/components/resource-section";
 
@@ -19,6 +15,12 @@ A curated collection of resources to help you learn and master Better Auth. From
 <Resource
   resources={
   [
+  	{
+  		title: "10 Better Auth plugins that just save so much time",
+  		description: "<strong>Dreams of Code</strong> showcases a comprehensive list of Better Auth plugins that can save you a lot of time.",
+  		href: "https://www.youtube.com/watch?v=CpBgjjnXuy4",
+  		tags: ["trends", "showcase", "review"],
+  	},
   	{
   		title: "The State of Authentication",
   		description:

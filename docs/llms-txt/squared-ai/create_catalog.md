@@ -1,127 +1,92 @@
 # Source: https://docs.squared.ai/api-reference/catalogs/create_catalog.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Catalog
+
+
 
 ## OpenAPI
 
 ````yaml POST /api/v1/catalogs
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/catalogs
-  method: post
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              connector_id:
-                allOf:
-                  - type: integer
-                    example: 6
-              catalog:
-                allOf:
-                  - type: object
-                    properties:
-                      json_schema:
-                        type: object
-                        example:
-                          key: value
-            required: true
-        examples:
-          example:
-            value:
-              connector_id: 6
-              catalog:
-                json_schema:
-                  key: value
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: integer
+  /api/v1/catalogs:
+    post:
+      tags:
+        - Catalogs
+      summary: Create catalog
+      operationId: createCatalog
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                connector_id:
+                  type: integer
+                  example: 6
+                catalog:
+                  type: object
+                  properties:
+                    json_schema:
+                      type: object
+                      example:
+                        key: value
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
                     example: 123
-              connector_id:
-                allOf:
-                  - type: integer
+                  connector_id:
+                    type: integer
                     example: 6
-              workspace_id:
-                allOf:
-                  - type: integer
+                  workspace_id:
+                    type: integer
                     example: 2
-              catalog:
-                allOf:
-                  - type: object
+                  catalog:
+                    type: object
                     properties:
                       json_schema:
                         type: object
                         example:
                           key: value
-              created_at:
-                allOf:
-                  - type: string
+                  created_at:
+                    type: string
                     format: date-time
                     example: '2023-08-20T15:28:00Z'
-              updated_at:
-                allOf:
-                  - type: string
+                  updated_at:
+                    type: string
                     format: date-time
                     example: '2023-08-20T15:28:00Z'
-        examples:
-          example:
-            value:
-              id: 123
-              connector_id: 6
-              workspace_id: 2
-              catalog:
-                json_schema:
-                  key: value
-              created_at: '2023-08-20T15:28:00Z'
-              updated_at: '2023-08-20T15:28:00Z'
-        description: Successful response
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Bad Request
-        examples: {}
-        description: Bad Request
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Unauthorized
-        examples: {}
-        description: Unauthorized
-    '500':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Internal Server Error
-        examples: {}
-        description: Internal Server Error
-  deprecated: false
-  type: path
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal Server Error
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

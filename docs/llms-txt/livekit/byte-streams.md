@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/transport/data/byte-streams.md
 
-# Source: https://docs.livekit.io/home/client/data/byte-streams.md
-
-LiveKit docs › LiveKit SDKs › Realtime text & data › Sending files & bytes
+LiveKit docs › Data › Sending files & bytes
 
 ---
 
@@ -14,7 +12,7 @@ LiveKit docs › LiveKit SDKs › Realtime text & data › Sending files & bytes
 
 Byte streams provide a simple way to send files, images, or other binary data between participants in realtime. Each individual stream is associated with a topic, and you must register a handler to receive incoming streams for that topic. Streams can target specific participants or the entire room.
 
-To send text data, use [text streams](https://docs.livekit.io/home/client/data/text-streams.md) instead.
+To send text data, use [text streams](https://docs.livekit.io/transport/data/text-streams.md) instead.
 
 ## Sending files
 
@@ -596,11 +594,11 @@ The processes for writing and reading streams are optimized separately. This mea
 
 > ℹ️ **Note**
 > 
-> Streams are a simple and powerful way to send data, but if you need precise control over individual packet behavior, the lower-level [data packets](https://docs.livekit.io/home/client/data/packets.md) API may be more appropriate.
+> Streams are a simple and powerful way to send data, but if you need precise control over individual packet behavior, the lower-level [data packets](https://docs.livekit.io/transport/data/packets.md) API may be more appropriate.
 
 ---
 
-This document was rendered at 2025-11-18T23:54:51.962Z.
-For the latest version of this document, see [https://docs.livekit.io/home/client/data/byte-streams.md](https://docs.livekit.io/home/client/data/byte-streams.md).
+This document was rendered at 2026-02-03T03:25:18.884Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/data/byte-streams.md](https://docs.livekit.io/transport/data/byte-streams.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

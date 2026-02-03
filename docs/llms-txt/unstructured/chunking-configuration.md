@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/open-source/ingestion/ingest-configuration/chunking-configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Chunking configuration
 
 A common chunking configuration is a critical element in the data processing pipeline, particularly when creating embeddings and populating vector databases with the results. This configuration defines the parameters governing the segmentation of text into meaningful chunks, whether at the document, paragraph, or sentence level. It plays a pivotal role in determining the size and structure of these chunks, ensuring that they align with the specific requirements of downstream tasks, such as embedding generation and vector database population. By carefully configuring chunking parameters, users can optimize the granularity of data segments, ultimately contributing to more cohesive and contextually rich results. This is crucial for tasks like natural language processing and text analysis, as well as for the efficient storage and retrieval of embeddings in vector databases, enhancing the quality and relevance of the results.
@@ -24,7 +28,7 @@ A common chunking configuration is a critical element in the data processing pip
 
 * `chunk_overlap_all`: Applies overlap to chunks formed from whole elements as well as those formed by text-splitting oversized elements. The overlap length is taken from the `chunk_overlap` value.
 
-* `chunking_endpoint`: If `chunk_by_api` is set to `True`, chunking requests are sent to this Unstructured API URL. By default, this URL is the Unstructured Partition Endpoint URL: `https://api.unstructuredapp.io/general/v0/general`. However, you should always use the URL that was provided to you when your Unstructured account was created. If you do not have this URL, email Unstructured Support at [support@unstructured.io](mailto:support@unstructured.io).
+* `chunking_endpoint`: If `chunk_by_api` is set to `True`, chunking requests are sent to this Unstructured API URL. By default, this URL is the legacy Unstructured Partition Endpoint URL: `https://api.unstructuredapp.io/general/v0/general`. However, you should always use the URL that was provided to you when your Unstructured account was created. If you do not have this URL, email Unstructured Support at [support@unstructured.io](mailto:support@unstructured.io).
 
 * `chunking_strategy`: One of `basic` or `by_title`. When omitted, no chunking is performed. The `basic` strategy maximally fills each chunk with whole elements, up the specified size limits as specified by `max_characters` and `new_after_n_chars`. A single element that exceeds this length is divided into two or more chunks using text-splitting. A `Table` element is never combined with any other element and appears as a chunk of its own or as a sequence of `TableChunk` elements splitting is required. The `by_title` behaviors are the same except that section and optionally page boundaries are respected such that two consecutive elements from different sections appear in separate chunks.
 

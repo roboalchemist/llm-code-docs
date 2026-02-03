@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/guides/html-emails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Why we don't support HTML emails
 
 > Understanding why Loops doesn't support HTML email content and the benefits of our approach.

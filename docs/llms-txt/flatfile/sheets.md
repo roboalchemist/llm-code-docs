@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/core-concepts/sheets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sheets
 
 > Individual data tables within Workbooks that organize and structure imported data
@@ -27,7 +31,7 @@ The following examples demonstrate the configuration of isolated Sheets, which a
 
 This example configures a single [Sheet](/core-concepts/sheets) containing three [Fields](/core-concepts/fields) and one [Action](/core-concepts/actions) and defining [access controls](#sheet-level-access).
 
-```javascript
+```javascript  theme={null}
 const customerSheet = {
   name: "Customers",
   slug: "customers",
@@ -83,7 +87,7 @@ With `access` you can control Sheet-level access for users.
   being added automatically.
 </Warning>
 
-```javascript
+```javascript  theme={null}
 {
   "sheets": [
     {
@@ -104,7 +108,7 @@ Sheet constraints apply validation rules across multiple fields or entire sheets
 
 Ensures that combinations of multiple field values are unique across all records in the sheet. This is useful when individual fields can have duplicate values, but their combination should be unique.
 
-```javascript
+```javascript  theme={null}
 {
   name: "Customers",
   slug: "customers",
@@ -174,7 +178,7 @@ In this example, the `concat` strategy would consider the following records to b
 
 <CardGroup cols={2}>
   <Card>
-    ```json
+    ```json  theme={null}
       {
         "firstName": "John",
         "lastName": "Smith"
@@ -183,7 +187,7 @@ In this example, the `concat` strategy would consider the following records to b
   </Card>
 
   <Card>
-    ```json
+    ```json  theme={null}
       {
         "firstName": "JohnS",
         "lastName": "mith"
@@ -194,7 +198,7 @@ In this example, the `concat` strategy would consider the following records to b
 
 Constraint configuration with `concat` strategy:
 
-```javascript
+```javascript  theme={null}
 {
   // sheet configuration
   constraints: [
@@ -210,21 +214,21 @@ Constraint configuration with `concat` strategy:
 
 This is because both records have the same concatenated value:
 
-```javascript
+```javascript  theme={null}
 "John" + "Smith" = "JohnSmith"
 "JohnS" + "mith" = "JohnSmith"
 ```
 
 But the `hash` strategy would prevent this, because the hash function creates a unique identifier based on each field's invividual value rather than a simple concatenation.
 
-```javascript
+```javascript  theme={null}
 hash(["John", "Smith"]) = "9e03c21f9beff9d943843c1b0623848fe63e2beb"
 hash(["JohnS", "mith"]) = "2fd09d2f5e62d980988094b43640966a3bffbde9"
 ```
 
 Constraint configuration with `hash` strategy:
 
-```javascript
+```javascript  theme={null}
 {
   // sheet configuration
   constraints: [
@@ -260,7 +264,7 @@ The `requiredFields` property enables conditional uniqueness validation. When an
 
 Consider a customer registration system where you want unique combinations of email and company, but only when `email` is provided:
 
-```javascript
+```javascript  theme={null}
 {
   name: "unique-customer-profile",
   type: "unique",
@@ -287,7 +291,7 @@ All records would be validated, potentially causing errors during partial data i
 
 For more complex scenarios, you can specify multiple required fields:
 
-```javascript
+```javascript  theme={null}
 {
   name: "unique-order-item",
   type: "unique",
@@ -325,12 +329,12 @@ The following example depicts a Blueprint defining a single Workbook with three 
 <Tabs>
   <Tab title="Screenshot">
     <Frame caption="An example of Sheets grouped by Collection">
-      <img src="https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/core-concepts/assets/sheet-collections.png" />
+      <img src="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/sheet-collections.png?fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=2ac77c2216674308523e84c57f8f1c90" data-og-width="1690" width="1690" data-og-height="1420" height="1420" data-path="core-concepts/assets/sheet-collections.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/sheet-collections.png?w=280&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=c532c9f5cbf99203a2afe73ec8fd5d05 280w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/sheet-collections.png?w=560&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=c5df586d515299a86f1a2769bfc3b87c 560w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/sheet-collections.png?w=840&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=e69d56e86669ee973afc5379ec062a04 840w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/sheet-collections.png?w=1100&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=2e7d5fd0bd00aa7884dd7d9d93b2d925 1100w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/sheet-collections.png?w=1650&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=73ecf5d9c5fd1603c930cb4c960f1bff 1650w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/sheet-collections.png?w=2500&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=4bf5dfa56e4c8c96dad30cfcb7db3a80 2500w" />
     </Frame>
   </Tab>
 
   <Tab title="Blueprints">
-    ```javascript
+    ```javascript  theme={null}
     const workbook = {
       name: "Data Processing Pipeline",
       sheets: [
@@ -386,7 +390,7 @@ Giving your Sheet a treatment of `"ENUM_REFERENCE"` will mark it as reference da
   Please note that this feature is not intended for situations where PII or other sensitive data must be hidden from view of the user - for situations like that, reach out to support or your CSM for best practices.
 </Warning>
 
-```javascript
+```javascript  theme={null}
 const referenceSheet = {
   name: "Countries",
   slug: "countries",

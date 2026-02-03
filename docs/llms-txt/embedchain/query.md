@@ -2,127 +2,118 @@
 
 # Source: https://docs.embedchain.ai/api-reference/app/query.md
 
-# Source: https://docs.embedchain.ai/examples/rest-api/query.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.embedchain.ai/api-reference/app/query.md
+# ❓ query
 
-# Source: https://docs.embedchain.ai/examples/rest-api/query.md
+`.query()` method empowers developers to ask questions and receive relevant answers through a user-friendly query API. Function signature is given below:
 
-# Source: https://docs.embedchain.ai/api-reference/app/query.md
+### Parameters
 
-# Source: https://docs.embedchain.ai/examples/rest-api/query.md
+<ParamField path="input_query" type="str">
+  Question to ask
+</ParamField>
 
-# Source: https://docs.embedchain.ai/api-reference/app/query.md
+<ParamField path="config" type="BaseLlmConfig" optional>
+  Configure different llm settings such as prompt, temprature, number\_documents etc.
+</ParamField>
 
-# Source: https://docs.embedchain.ai/examples/rest-api/query.md
+<ParamField path="dry_run" type="bool" optional>
+  The purpose is to test the prompt structure without actually running LLM inference. Defaults to `False`
+</ParamField>
 
-# Query app
+<ParamField path="where" type="dict" optional>
+  A dictionary of key-value pairs to filter the chunks from the vector database. Defaults to `None`
+</ParamField>
 
-> Query an app
+<ParamField path="citations" type="bool" optional>
+  Return citations along with the LLM answer. Defaults to `False`
+</ParamField>
 
-## OpenAPI
+### Returns
 
-````yaml post /{app_id}/query
-paths:
-  path: /{app_id}/query
-  method: post
-  request:
-    security: []
-    parameters:
-      path:
-        app_id:
-          schema:
-            - type: string
-              required: true
-              title: App Id
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              query:
-                allOf:
-                  - type: string
-                    title: Query
-                    description: The query that you want to ask the App.
-                    default: ''
-            required: true
-            title: QueryApp
-            refIdentifier: '#/components/schemas/QueryApp'
-            example:
-              query: Who is Elon Musk?
-        examples:
-          example:
-            value:
-              query: Who is Elon Musk?
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              response:
-                allOf:
-                  - type: string
-                    title: Response
-            title: DefaultResponse
-            refIdentifier: '#/components/schemas/DefaultResponse'
-            requiredProperties:
-              - response
-        examples:
-          example:
-            value:
-              response: <string>
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
-components:
-  schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-              - type: string
-              - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-        - loc
-        - msg
-        - type
-      title: ValidationError
+<ResponseField name="answer" type="str | tuple">
+  If `citations=False`, return a stringified answer to the question asked. <br />
+  If `citations=True`, returns a tuple with answer and citations respectively.
+</ResponseField>
 
-````
+## Usage
+
+### With citations
+
+If you want to get the answer to question and return both answer and citations, use the following code snippet:
+
+```python With Citations theme={null}
+from embedchain import App
+
+# Initialize app
+app = App()
+
+# Add data source
+app.add("https://www.forbes.com/profile/elon-musk")
+
+# Get relevant answer for your query
+answer, sources = app.query("What is the net worth of Elon?", citations=True)
+print(answer)
+# Answer: The net worth of Elon Musk is $221.9 billion.
+
+print(sources)
+# [
+#    (
+#        'Elon Musk PROFILEElon MuskCEO, Tesla$247.1B$2.3B (0.96%)Real Time Net Worthas of 12/7/23 ...',
+#        {
+#           'url': 'https://www.forbes.com/profile/elon-musk', 
+#           'score': 0.89,
+#           ...
+#        }
+#    ),
+#    (
+#        '74% of the company, which is now called X.Wealth HistoryHOVER TO REVEAL NET WORTH BY YEARForbes ...',
+#        {
+#           'url': 'https://www.forbes.com/profile/elon-musk', 
+#           'score': 0.81,
+#           ...
+#        }
+#    ),
+#    (
+#        'founded in 2002, is worth nearly $150 billion after a $750 million tender offer in June 2023 ...',
+#        {
+#           'url': 'https://www.forbes.com/profile/elon-musk', 
+#           'score': 0.73,
+#           ...
+#        }
+#    )
+# ]
+```
+
+<Note>
+  When `citations=True`, note that the returned `sources` are a list of tuples where each tuple has two elements (in the following order):
+
+  1. source chunk
+  2. dictionary with metadata about the source chunk
+     * `url`: url of the source
+     * `doc_id`: document id (used for book keeping purposes)
+     * `score`: score of the source chunk with respect to the question
+     * other metadata you might have added at the time of adding the source
+</Note>
+
+### Without citations
+
+If you just want to return answers and don't want to return citations, you can use the following example:
+
+```python Without Citations theme={null}
+from embedchain import App
+
+# Initialize app
+app = App()
+
+# Add data source
+app.add("https://www.forbes.com/profile/elon-musk")
+
+# Get relevant answer for your query
+answer = app.query("What is the net worth of Elon?")
+print(answer)
+# Answer: The net worth of Elon Musk is $221.9 billion.
+```

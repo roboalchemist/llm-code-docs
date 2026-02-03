@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/community/refer-a-friend.md
+# Source: https://docs.warp.dev/support-and-community/community/refer-a-friend.md
 
 # Refer a Friend & Earn Rewards
 
@@ -11,13 +11,9 @@ Go to `Settings > Referrals` to open the invite a friend referral dialog.
 1. Send them an invite link. They will be directed to our product download page.
 2. Input their email address, which we'll use to email them with your referral link.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-1fe7c19128ea40ced49d95dd47b0e0b99c6d2195%2Frefer-a-friend.gif?alt=media" alt=""><figcaption><p>Refer a friend modal in settings.</p></figcaption></figure>
-
 ## Referral Rewards Program
 
 We give out themes, swag, and other perks as thanks for helping to grow our community.
-
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-96efeb367acc1768ef3574701ef01e0e91479540%2Freferrals-swag.png?alt=media&#x26;token=30e38f67-8465-4c01-8cf3-409630d32fc5" alt=""><figcaption></figcaption></figure>
 
 The tiers are as follows:
 
@@ -37,8 +33,6 @@ By participating in Warp's Referral Program, you agree to the [Referral Program 
 ### Your friend gets a theme
 
 If your friend joins and activates their Warp account after clicking your invite link, they will receive a unique theme.
-
-![](https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-0370341f89e09106a86e5af809aa693fa86dce9b%2Freceive_referral_theme.png?alt=media\&token=f570d374-9f84-46f7-99e7-434142563f4d)
 
 ## Referral Program Terms and Conditions
 

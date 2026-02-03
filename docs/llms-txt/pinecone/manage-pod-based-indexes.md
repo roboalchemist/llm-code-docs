@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/indexes/pods/manage-pod-based-indexes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manage pod-based indexes
 
 > List, describe, and configure pod-based indexes
@@ -201,7 +205,7 @@ Use the [`describe_index`](/reference/api/latest/control-plane/describe_index/) 
 
   curl -i -X GET "https://api.pinecone.io/indexes/docs-example" \
       -H "Api-Key: $PINECONE_API_KEY" \
-      -H "X-Pinecone-API-Version: 2025-04"
+      -H "X-Pinecone-Api-Version: 2025-10"
   # Response:
   # {
   #    "name": "docs-example",
@@ -316,7 +320,7 @@ Use the [`delete_index`](/reference/api/latest/control-plane/delete_index) opera
 
   curl -i -X DELETE "https://api.pinecone.io/indexes/docs-example" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-04"
+    -H "X-Pinecone-Api-Version: 2025-10"
   ```
 </CodeGroup>
 
@@ -502,7 +506,7 @@ The following example creates a pod-based index that only indexes the `genre` me
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
            "name": "docs-example",
            "dimension": 1536,
@@ -525,7 +529,7 @@ The following example creates a pod-based index that only indexes the `genre` me
 ## Prevent index deletion
 
 <Note>
-  This feature requires [Pinecone API version](/reference/api/versioning) `2024-07`, [Python SDK](/reference/python-sdk) v5.0.0, [Node.js SDK](/reference/node-sdk) v3.0.0, [Java SDK](/reference/java-sdk) v2.0.0, or [Go SDK](/reference/go-sdk) v1.0.0 or later.
+  This feature requires [Pinecone API version](/reference/api/versioning) `2024-07`, [Python SDK](/reference/sdks/python/overview) v5.0.0, [Node.js SDK](/reference/sdks/node/overview) v3.0.0, [Java SDK](/reference/sdks/java/overview) v2.0.0, or [Go SDK](/reference/sdks/go/overview) v1.0.0 or later.
 </Note>
 
 You can prevent an index and its data from accidental deleting when [creating a new index](/guides/index-data/create-an-index) or when [configuring an existing index](/guides/indexes/pods/manage-pod-based-indexes). In both cases, you set the `deletion_protection` parameter to `enabled`.
@@ -659,7 +663,7 @@ To enable deletion protection when creating a new index:
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
            "name": "docs-example",
            "dimension": 1536,
@@ -757,7 +761,7 @@ To enable deletion protection when configuring an existing index:
   curl -s -X PATCH "https://api.pinecone.io/indexes/docs-example" \
       -H "Content-Type: application/json" \
       -H "Api-Key: $PINECONE_API_KEY" \
-      -H "X-Pinecone-API-Version: 2025-04" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -d '{
           "deletion_protection": "enabled"
           }'
@@ -853,7 +857,7 @@ Before you can [delete an index](#delete-a-pod-based-index) with deletion protec
   curl -s -X PATCH "https://api.pinecone.io/indexes/docs-example" \
       -H "Content-Type: application/json" \
       -H "Api-Key: $PINECONE_API_KEY" \
-      -H "X-Pinecone-API-Version: 2025-04" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -d '{
           "deletion_protection": "disabled"
           }'
@@ -1079,7 +1083,7 @@ For example, the following code deletes all records with a `genre` field set to 
   curl -i "https://$INDEX_HOST/vectors/delete" \
     -H 'Api-Key: $PINECONE_API_KEY' \
     -H 'Content-Type: application/json' \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
       "filter": {"genre": {"$eq": "documentary"}},
       "namespace": "example-namespace"
@@ -1115,7 +1119,7 @@ To control costs, [project owners](/guides/projects/understanding-projects#proje
     curl -X PATCH "https://api.pinecone.io/admin/projects/$PROJECT_ID" \
       -H "accept: application/json" \
       -H "Content-Type: application/json" \
-    	-H "X-Pinecone-Api-Version: 2025-04" \
+    	-H "X-Pinecone-Api-Version: 2025-10" \
       -d '{
         "max_pods": 5
         }'

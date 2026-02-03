@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/data/st.column_config/st.column_config.linechartcolumn
+
 # st.column_config.LineChartColumn
 
 Configure a line chart column in `st.dataframe` or `st.data_editor`.

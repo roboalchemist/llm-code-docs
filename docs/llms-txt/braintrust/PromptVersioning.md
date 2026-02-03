@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/PromptVersioning.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prompt versioning and deployment
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/PromptVersioning/PromptVersioning.ipynb) by [Adrian Barbir](https://www.linkedin.com/in/adrianbarbir/) on 2025-02-24</div>
@@ -332,17 +336,12 @@ eval_task = Eval(
 )
 ```
 
-If you keep the same slug for multiple changes, Braintrust’s built-in versioning allows you to revert within the UI. See the docs on [prompt versioning](/core/functions/prompts#in-code) for more information.
+If you keep the same slug for multiple changes, Braintrust’s built-in versioning allows you to revert within the UI. See the docs on [prompt versioning](/evaluate/write-prompts#in-code) for more information.
 
 <img src="https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/PromptVersioning/versions1.png?fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=5fd64bed4778bbd703657b5e8241e8fe" alt="versions1" data-og-width="3306" width="3306" data-og-height="1886" height="1886" data-path="cookbook/assets/PromptVersioning/versions1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/PromptVersioning/versions1.png?w=280&fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=ce97f814de268dcfb7f3c69accd7b506 280w, https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/PromptVersioning/versions1.png?w=560&fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=732ff8f0e2e1a728a07c69b2c01d4bcd 560w, https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/PromptVersioning/versions1.png?w=840&fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=3ead527193153233cd8355511f7570f2 840w, https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/PromptVersioning/versions1.png?w=1100&fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=f0d27d9e6534a08e830f519dbcb7534f 1100w, https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/PromptVersioning/versions1.png?w=1650&fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=99a299e3e724d702ead61209c9cbbb58 1650w, https://mintcdn.com/braintrust/rJl2RwVgGaZvMrWa/cookbook/assets/PromptVersioning/versions1.png?w=2500&fit=max&auto=format&n=rJl2RwVgGaZvMrWa&q=85&s=f776d2cb7276c138574d29263aa3d22e 2500w" />
 
 ## Next steps
 
-* Now that you have some prompts saved, you can rapidly test them with new models in our [prompt playground](/core/playground).
+* Now that you have some prompts saved, you can rapidly test them with new models in our [prompt playground](/evaluate/playgrounds).
 * Learn more about [evaluating a chat assistant](/cookbook/recipes/EvaluatingChatAssistant).
-* Think about how you might add more sophisticated [scoring functions](/core/experiments/write#scorers) to your evals.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+* Think about how you might add more sophisticated [scoring functions](/evaluate/run-evaluations#scorers) to your evals.

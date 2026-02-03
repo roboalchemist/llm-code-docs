@@ -1,3 +1,7 @@
+# Source: https://www.promptfoo.dev/docs/integrations/github-action/
+
+# Source: https://www.promptfoo.dev/docs/code-scanning/github-action/
+
 # GitHub Action
 
 Automatically scan pull requests for LLM security vulnerabilities with promptfoo's [code scanning GitHub action](/code-scanning/github-action/).

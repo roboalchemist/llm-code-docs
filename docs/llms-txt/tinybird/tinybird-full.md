@@ -1,6 +1,6 @@
 # Tinybird Documentation (FWD)
 
-Generated on: 2025-11-24T12:49:00.951Z
+Generated on: 2026-02-02T09:23:41.297Z
 
 URL: https://www.tinybird.co/docs/forward
 Last update: 2025-06-04T08:32:07.000Z
@@ -97,7 +97,7 @@ tb --cloud open Go to **Endpoints** and select an endpoint to see stats and snip
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data
-Last update: 2025-08-27T13:52:16.000Z
+Last update: 2026-01-30T13:38:54.000Z
 Content:
 ---
 title: "Work with data · Tinybird Docs"
@@ -147,7 +147,11 @@ You can select an item to see its details in the side panel.
 
 [Explorations](/docs/forward/work-with-data/explorations) is a conversational UI feature in Tinybird that lets you explore and interact with your data using natural language.
 
-## Analytics agents [¶](https://www.tinybird.co/docs/forward/work-with-data#analytics-agents)
+## Playgrounds [¶](https://www.tinybird.co/docs/forward/work-with-data#playgrounds)
+
+[Playgrounds](/docs/forward/work-with-data/playgrounds) let you prototype and iterate on SQL quickly, then move finished queries into Pipes for production use.
+
+## AI agents [¶](https://www.tinybird.co/docs/forward/work-with-data#ai-agents)
 
 The Tinybird [MCP server](/docs/forward/analytics-agents/mcp) enables AI agents to connect directly to your Tinybird workspace to execute queries or use your endpoints as tools using the [Model Context Protocol](https://modelcontextprotocol.io/).
 
@@ -157,7 +161,8 @@ The Tinybird [MCP server](/docs/forward/analytics-agents/mcp) enables AI agents 
 - Learn about[  Publish data](/docs/forward/work-with-data/publish-data)  .
 - Learn about[  Optimize](/docs/forward/work-with-data/optimize)  .
 - Learn about[  Explorations](/docs/forward/work-with-data/explorations)  .
-- Learn about[  Analytics agents](/docs/forward/analytics-agents)  .
+- Learn about[  Playgrounds](/docs/forward/work-with-data/playgrounds)  .
+- Learn about[  AI agents](/docs/forward/analytics-agents)  .
 
 
 
@@ -336,7 +341,7 @@ Tinybird only supports one live and one staging deployment per workspace.
 ---
 
 URL: https://www.tinybird.co/docs/forward/support
-Last update: 2025-09-24T11:47:49.000Z
+Last update: 2025-12-11T19:06:55.000Z
 Content:
 ---
 title: "Support · Tinybird Docs"
@@ -350,7 +355,7 @@ inkeep:version: "forward"
 
 # Support [¶](https://www.tinybird.co/docs/forward/support#support)
 
-Copy as MD Tinybird provides support through different channels depending on your plan. See [Plans](../pricing).
+Copy as MD Tinybird provides support through different channels depending on your plan. See [Plans](/docs/docs/pricing).
 
 Read on to learn more about support options and common solutions.
 
@@ -366,7 +371,7 @@ Tinybird provides support through the following channels depending on your plan:
 
 ## Integrated troubleshooting [¶](https://www.tinybird.co/docs/forward/support#integrated-troubleshooting)
 
-Tinybird tries to give you direct feedback and notifications if it spots anything going wrong. Use Tinybird's [Service Data Sources](../monitoring/service-datasources) to get more details on what's going on in your data and queries.
+Tinybird tries to give you direct feedback and notifications if it spots anything going wrong. Use Tinybird's [Service Data Sources](/docs/classic/monitoring/service-datasources) to get more details on what's going on in your data and queries.
 
 ## Recover deleted items [¶](https://www.tinybird.co/docs/forward/support#recover-deleted-items)
 
@@ -376,7 +381,7 @@ Tinybird creates and backs up daily snapshots and retains them for 7 days.
 
 The quickest way to recover rows from quarantine is to fix the cause of the errors and then reingest the data. See Recover data from quarantine.
 
-You can also use the [Service Data Sources](../monitoring/service-datasources) , like `datasources_ops_log`.
+You can also use the [Service Data Sources](/docs/classic/monitoring/service-datasources) , like `datasources_ops_log`.
 
 ## Get help [¶](https://www.tinybird.co/docs/forward/support#get-help)
 
@@ -389,7 +394,7 @@ If you have an Enterprise account with Tinybird, contact us using your shared Sl
 ---
 
 URL: https://www.tinybird.co/docs/forward/pricing
-Last update: 2025-10-02T12:05:27.000Z
+Last update: 2026-01-07T08:46:55.000Z
 Content:
 ---
 title: "Pricing · Tinybird Docs"
@@ -517,7 +522,9 @@ Enterprise plans include Premium support, which includes:
 
 ### Adjust resources [¶](https://www.tinybird.co/docs/forward/pricing#enterprise-adjust-resources)
 
-To adjust the limits and resources of your Enterprise plan or request a different size, [contact sales](https://www.tinybird.co/contact-us).
+If you're on an Enterprise plan with dedicated infrastructure, you can manage your cluster replicas directly from the **Plan & Billing** page. This allows you to add or remove replicas, adjust their size, and control traffic distribution. See [Cluster management](/docs/forward/administration/organizations/cluster-management) for more information.
+
+For other adjustments to your Enterprise plan, including upgrades to shared infrastructure or changes to plan limits, [contact sales](https://www.tinybird.co/contact-us).
 
 ## Next steps [¶](https://www.tinybird.co/docs/forward/pricing#next-steps)
 
@@ -549,6 +556,7 @@ Copy as MD Tinybird is built around the idea of data that changes or grows conti
 - [  Analyze endpoint performance](/docs/forward/monitoring/analyze-endpoints-performance)
 - [  Health checks](/docs/forward/monitoring/health-checks)
 - [  Measure endpoint latency](/docs/forward/monitoring/latency)
+- [  Monitor Kafka connectors](/docs/forward/monitoring/kafka-clickhouse-monitoring)
 - [  Monitor Workspace jobs](/docs/forward/monitoring/jobs)
 - [  Organization Consumption](/docs/forward/monitoring/organization-consumption)
 - [  Service Data Sources](/docs/forward/monitoring/service-datasources)
@@ -558,7 +566,7 @@ Copy as MD Tinybird is built around the idea of data that changes or grows conti
 ---
 
 URL: https://www.tinybird.co/docs/forward/install-tinybird
-Last update: 2025-10-07T01:02:12.000Z
+Last update: 2026-01-05T11:30:24.000Z
 Content:
 ---
 title: "Install Tinybird Local · Tinybird Docs"
@@ -621,31 +629,6 @@ tb login This opens a browser window where you can sign in to Tinybird Cloud.
 
 To install Tinybird on a cloud provider, see [Self-managed cloud](/docs/forward/install-tinybird/self-managed).
 
-## Uninstall the Tinybird CLI [¶](https://www.tinybird.co/docs/forward/install-tinybird#uninstall-the-tinybird-cli)
-
-How you uninstall the Tinybird CLI ( `tb` ) depends on how it was installed.
-
-### Using a package manager [¶](https://www.tinybird.co/docs/forward/install-tinybird#using-a-package-manager)
-
-If you installed the CLI using a package manager, use its uninstall command:
-
-- Homebrew: `brew uninstall tinybird-cli`
-- pip: `pip uninstall tinybird-cli`
-- npm: `npm uninstall -g @tinybirdco/cli`
-
-### Manual uninstallation [¶](https://www.tinybird.co/docs/forward/install-tinybird#manual-uninstallation)
-
-If you installed the CLI using the `curl` script, you can remove the executable file:
-
-rm $(which tb) The binary is typically located at:
-
-- Linux/macOS: `/usr/local/bin/tb`
-- Or wherever `which tb`   points to
-
-To completely remove all configuration and cache files (optional):
-
-rm -rf ~/.tinyb/ The `~/.tinyb/` directory contains tokens, configuration, and cache data.
-
 ## Next steps [¶](https://www.tinybird.co/docs/forward/install-tinybird#next-steps)
 
 - Follow the[  Deploy a new project in five minutes](/docs/forward)   quick start guide.
@@ -657,7 +640,7 @@ rm -rf ~/.tinyb/ The `~/.tinyb/` directory contains tokens, configuration, and c
 ---
 
 URL: https://www.tinybird.co/docs/forward/get-data-in
-Last update: 2025-05-08T13:40:58.000Z
+Last update: 2025-12-04T08:55:50.000Z
 Content:
 ---
 title: "Get data into Tinybird · Tinybird Docs"
@@ -673,6 +656,7 @@ inkeep:version: "forward"
 
 Copy as MD You can bring your data into Tinybird from a variety of sources:
 
+- How ingestion overload is prevented. See[  Ingestion Protection](/docs/forward/get-data-in/ingestion-protection)
 - Events in NDJSON and JSON format. See[  Events API](/docs/forward/get-data-in/events-api)  .
 - Data from local or remote files. See[  Ingest data from files](/docs/forward/get-data-in/local-file)  .
 - Data from Kafka. See[  Ingest data from Kafka](/docs/forward/get-data-in/connectors/kafka)  .
@@ -742,21 +726,32 @@ To learn more about Tinybird security controls and certifications, visit the [Ti
 ---
 
 URL: https://www.tinybird.co/docs/forward/analytics-agents
-Last update: 2025-07-04T07:52:33.000Z
+Last update: 2026-01-29T22:06:15.000Z
 Content:
 ---
-title: "Analytics agents · Tinybird Docs"
+title: "AI agents · Tinybird Docs"
 theme-color: "#171612"
-description: "Build analytics agents with Tinybird."
+description: "Interact with Tinybird via AI agents."
 inkeep:version: "forward"
 ---
 
 
 
 
-# Analytics agents [¶](https://www.tinybird.co/docs/forward/analytics-agents#analytics-agents)
+# AI agents [¶](https://www.tinybird.co/docs/forward/analytics-agents#ai-agents)
 
-Copy as MD Every Tinybird workspace is a fully managed remote MCP server you can instantly connect to LLMs, agents and other MCP clients such as Cursor, Windsurf or Claude.
+Copy as MD Apart from manually creating your projects and integrating them in your app, you can use AI agents to both, build and consume, Tinybird projects.
+
+## Build Tinybird projects with agents [¶](https://www.tinybird.co/docs/forward/analytics-agents#build-tinybird-projects-with-agents)
+
+Use agents to generate, refine, and test Tinybird projects as code.
+
+- [  Tinybird Code](/docs/forward/tinybird-code)   turns natural language requests into datafiles, endpoints, and deployments.
+- [  Agent skills](/docs/analytics-agents/agent-skills)   add Tinybird-specific guidance to your coding agents.
+
+## Query Tinybird data with agents [¶](https://www.tinybird.co/docs/forward/analytics-agents#query-tinybird-data-with-agents)
+
+Every Tinybird workspace is a fully managed remote MCP server you can connect to.
 
 The Tinybird remote MCP server enables AI agents to connect directly to your workspace to use endpoints as tools or execute queries. The [Model Context Protocol](https://modelcontextprotocol.io/) gives AI assistants access to your analytics APIs, data sources, and endpoints through a standardized interface.
 
@@ -764,59 +759,13 @@ This integration is ideal when you want AI agents to autonomously query your dat
 
 Our server only supports Streamable HTTP as the transport protocol. If your MCP client doesn't support it, you'll need to use the `mcp-remote` package as a bridge.
 
-## Before you start [¶](https://www.tinybird.co/docs/forward/analytics-agents#before-you-start)
-
-Before connecting to the Tinybird MCP server, ensure:
-
-- You have a Tinybird account and workspace
-- Find your Auth Token with appropriate scopes for your use case. Details below.
-- Your MCP client supports either Streamable HTTP or can use the `mcp-remote`   bridge
-
-### Authentication and Token Requirements [¶](https://www.tinybird.co/docs/forward/analytics-agents#authentication-and-token-requirements)
-
-You'll need an Auth Token with the following scopes depending on which tools you want to access:
-
-**Static tokens**
-
-Use the `admin token` to access to all available tools or resource-scoped tokens for granular access to endpoint tools.
-
-Copy your static tokens from the [dashboard](https://cloud.tinybird.co/tokens)
-
-**JSON Web tokens (JWTs)**
-
-Use them to have granular access to endpoint tools, multi-tenancy, concurrency control and more.
-
-Learn more about authentication tokens [here](/docs/administration/tokens)
-
-## Quickstart [¶](https://www.tinybird.co/docs/forward/analytics-agents#quickstart)
-
-Get a [token](https://cloud.tinybird.co/tokens) and use this URL in your MCP client or agent framework:
-
-https://mcp.tinybird.co?token=TINYBIRD_TOKEN Replace `TINYBIRD_TOKEN` with your actual Auth Token. Use resource-scoped static tokens or JWTs for fine-grained access control.
-
-### MCP Clients Requiring Bridge (Cursor, Windsurf, Claude Desktop) [¶](https://www.tinybird.co/docs/forward/analytics-agents#mcp-clients-requiring-bridge-cursor-windsurf-claude-desktop)
-
-For clients that don't support Streamable HTTP natively:
-
-// Get your TINYBIRD_TOKEN from https://cloud.tinybird.co/tokens
-{
-  "mcpServers": {
-    "tinybird": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://mcp.tinybird.co?token=TINYBIRD_TOKEN"
-      ]
-    }
-  }
-} All new Tinybird tokens have embedded the Tinybird API host, for old tokens you can provide your API host as a query param `https://mcp.tinybird.co?token=TINYBIRD_TOKEN&host=https://api.tinybird.co` . Get the list of Tinybird API hosts [here](/api-reference#current-tinybird-regions)
+For practical examples and guardrails, see [MCP examples](/docs/analytics-agents/mcp-server-snippets) and [MCP best practices](/docs/analytics-agents/best-practices).
 
 ## See also [¶](https://www.tinybird.co/docs/forward/analytics-agents#see-also)
 
 - Learn about the[  MCP server](/docs/analytics-agents/mcp)   tools
 - Check some[  example snippets](/docs/analytics-agents/mcp-server-snippets)
-- Learn about[  best practices](/docs/analytics-agents/best-practices)   to use MCP server for analytics agents.
+- Learn about[  best practices](/docs/analytics-agents/best-practices)   to use MCP server for AI agents.
 
 
 
@@ -890,7 +839,7 @@ Using the previous example where `lim` sets the amount of maximum rows you want 
 
 ##### Using a data Pipes API endpoint containing dynamic parameters
 
-curl -d https://api.tinybird.co/v0/pipes/tr_pipe?lim=20&token=.... You can specify parameters in more than one node in a data pipe. When invoking the API endpoint through its URL, the passed parameters are included in the request.
+curl -d https://<your_host>/v0/pipes/tr_pipe?lim=20&token=.... You can specify parameters in more than one node in a data pipe. When invoking the API endpoint through its URL, the passed parameters are included in the request.
 
 You can't use query parameters in materialized views.
 
@@ -1197,6 +1146,70 @@ If you prefer a more database-like approach, you can query data directly using t
 
 ---
 
+URL: https://www.tinybird.co/docs/forward/work-with-data/playgrounds
+Last update: 2026-01-30T13:38:54.000Z
+Content:
+---
+title: "Playgrounds · Tinybird Docs"
+theme-color: "#171612"
+description: "Prototype and test SQL queries in Tinybird Playgrounds."
+inkeep:version: "forward"
+---
+
+
+
+
+# Playgrounds [¶](https://www.tinybird.co/docs/forward/work-with-data/playgrounds#playgrounds)
+
+Copy as MD Playgrounds are interactive SQL workspaces in Tinybird Cloud. Use them to explore data, iterate on query logic, and validate results before turning the SQL into a Pipe or Endpoint.
+
+## Getting started [¶](https://www.tinybird.co/docs/forward/work-with-data/playgrounds#getting-started)
+
+1. Go to[  Tinybird Cloud](https://cloud.tinybird.co/)   and log in to your account.
+2. Select**  Playgrounds**   in the sidebar.
+3. Click**  New playground**  .
+4. Give the playground a title and optional description.
+5. Start writing SQL.
+
+![Playgrounds editor with the playground list, description, and SQL editor](/docs/_next/image?url=%2Fdocs%2Fimg%2Fplaygrounds-fwd.png&w=3840&q=75)
+
+For the statements, functions, and settings you can use in queries, see the [SQL reference](/docs/sql-reference).
+
+## Playground workflow [¶](https://www.tinybird.co/docs/forward/work-with-data/playgrounds#playground-workflow)
+
+**Organize your playground**
+
+Use the list on the left to switch between playgrounds. Mark favorites for quick access and use filters like **Favorites** or **Private** to focus the list.
+
+**Build queries with nodes**
+
+Each playground is made of nodes. Keep nodes focused and readable so you can build multi-step logic and iterate quickly.
+
+**Run and review results**
+
+Use **Run** to execute a node and preview results. Adjust the row limit (for example, **Limited to 100** ) or export results when you need to validate outputs outside Tinybird.
+
+**Format and document**
+
+Use **Format** to keep SQL readable. Add node descriptions, or use **Update node description using AI** to keep your work self-documented as it grows.
+
+**Share with your team**
+
+Use **Share** to make a playground available to your workspace when it is ready to review.
+
+## From playground to production [¶](https://www.tinybird.co/docs/forward/work-with-data/playgrounds#from-playground-to-production)
+
+When a query is ready, move the SQL into a Pipe so it can be versioned, deployed, and used by Endpoints or other resources.
+
+## Next steps [¶](https://www.tinybird.co/docs/forward/work-with-data/playgrounds#next-steps)
+
+- Learn about[  Pipes](/docs/forward/work-with-data/pipes)  .
+- Learn about[  Publish data](/docs/forward/work-with-data/publish-data)  .
+
+
+
+---
+
 URL: https://www.tinybird.co/docs/forward/work-with-data/pipes
 Last update: 2025-09-20T00:40:12.000Z
 Content:
@@ -1283,7 +1296,7 @@ Each approach has its own strengths and use cases:
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/explorations
-Last update: 2025-09-19T07:00:13.000Z
+Last update: 2026-01-30T13:38:54.000Z
 Content:
 ---
 title: "Explorations · Tinybird Docs"
@@ -1297,7 +1310,7 @@ inkeep:version: "forward"
 
 # Explorations [¶](https://www.tinybird.co/docs/forward/work-with-data/explorations#explorations)
 
-Copy as MD Explorations is a conversational UI feature in Tinybird that lets you explore and interact with your data using natural language. Choose from three specialized modes designed for different data exploration tasks.
+Copy as MD Explorations is a conversational UI feature in Tinybird that lets you explore and interact with your data using natural language.
 
 ## Getting started [¶](https://www.tinybird.co/docs/forward/work-with-data/explorations#getting-started)
 
@@ -1305,38 +1318,18 @@ To start using Explorations:
 
 1. Go to[  Tinybird Cloud](https://cloud.tinybird.co/)   and log in to your account
 2. Select**  Explorations**   in the sidebar
-3. Choose your preferred mode or start with a suggested prompt
+3. Start with a suggested prompt or ask your own question
 4. Begin exploring your data
 
-You can switch between modes within the same exploration to combine different approaches.
+![Explorations initial screen](/docs/_next/image?url=%2Fdocs%2Fimg%2Fexplorations-empty.png&w=3840&q=75)
 
-![Explorations initial screen with chat mode selected](/docs/_next/image?url=%2Fdocs%2Fimg%2Fexplorations-empty.png&w=3840&q=75)
+## How it works [¶](https://www.tinybird.co/docs/forward/work-with-data/explorations#how-it-works)
 
-## Exploration modes [¶](https://www.tinybird.co/docs/forward/work-with-data/explorations#exploration-modes)
+Explorations provides conversational analysis through a chat interface. Ask questions in natural language and receive structured, step-by-step responses. The AI breaks down complex analyses into clear, actionable steps that build upon each other. The chat also suggests follow-up questions that reference previous results, creating a natural flow where each question deepens your understanding of the data.
 
-Explorations offers three focused modes to match your data exploration workflow.
+![An example of a conversation in Explorations](/docs/_next/image?url=%2Fdocs%2Fimg%2Fexplorations-chat.png&w=3840&q=75)
 
-**Chat mode**
-
-Chat mode provides conversational analysis where you can ask questions in natural language and receive structured, step-by-step responses. The AI breaks down complex analyses into clear, actionable steps that build upon each other. The chat also suggests follow-up questions that reference previous results, creating a natural flow where each question deepens your understanding of the data.
-
-![An example of a conversation in the chat mode](/docs/_next/image?url=%2Fdocs%2Fimg%2Fexplorations-chat.png&w=3840&q=75)
-
-**Free query mode**
-
-Free query mode offers direct SQL editing with or without AI assistance, featuring a fullscreen editor with syntax highlighting and autocomplete. This mode is perfect when you know exactly what SQL you want to write. Nodes in Explorations are similar to nodes in Pipes. A node can query other nodes within the same Exploration.
-
-In fullscreen mode, you can edit your queries manually or using an AI-contextualized chat.
-
-
-![Video]()
-Controls: true
-
-**Time Series mode**
-
-Time Series mode is purpose-built for time-based data analysis with a visualization-first approach. Configure granularity, filters, and chart types interactively, and work with real-time streaming data for up-to-date insights.
-
-![An example of a time series manually configured](/docs/_next/image?url=%2Fdocs%2Fimg%2Fexplorations-timeseries.png&w=3840&q=75)
+If you want to write your own SQL queries, use [Playgrounds](/docs/forward/work-with-data/playgrounds) . For time-based data visualization, use Time Series.
 
 ## Get the most out of Explorations [¶](https://www.tinybird.co/docs/forward/work-with-data/explorations#get-the-most-out-of-explorations)
 
@@ -1346,19 +1339,11 @@ Fine-tune how the AI assistant responds to get faster and more relevant results.
 
 ### Add context [¶](https://www.tinybird.co/docs/forward/work-with-data/explorations#add-context)
 
-Click the `@` icon near the submit button in chat mode to add specific resources to your query. The LLM will prioritize them for that specific prompt.
+Click the `@` icon near the submit button to add specific resources to your query. The LLM will prioritize them for that specific prompt.
 
 ### Getting better results [¶](https://www.tinybird.co/docs/forward/work-with-data/explorations#getting-better-results)
 
 Start with specific questions rather than broad exploratory queries. Instead of asking "show me my data," try "what are the top 5 pages by traffic in the last 7 days?" The AI performs better with clear, focused requests that have measurable outcomes.
-
-### Working across modes [¶](https://www.tinybird.co/docs/forward/work-with-data/explorations#working-across-modes)
-
-Use Chat mode to understand your data structure and identify interesting patterns, then switch to Free query mode to refine the generated SQL for production use. Time Series mode works best when you already know which metrics you want to visualize over time.
-
-### Node organization [¶](https://www.tinybird.co/docs/forward/work-with-data/explorations#node-organization)
-
-Keep related queries in the same exploration by building on previous nodes. Reference earlier nodes in new queries to create analysis pipelines. If you're starting a completely different analysis, create a new exploration to maintain clean context.
 
 ## Usage and Billing [¶](https://www.tinybird.co/docs/forward/work-with-data/explorations#usage-and-billing)
 
@@ -1376,8 +1361,8 @@ Currently, Explorations cannot be shared or exported. Each user can only access 
 
 ## Next steps [¶](https://www.tinybird.co/docs/forward/work-with-data/explorations#next-steps)
 
+- Learn about[  Playgrounds](/docs/forward/work-with-data/playgrounds)   to write your own SQL queries.
 - Learn about[  Pipes](/docs/forward/work-with-data/pipes)  .
-- Learn about[  Copy pipes](/docs/forward/work-with-data/optimize/copy-pipes)  .
 - Learn about[  Materialized views](/docs/forward/work-with-data/optimize/materialized-views)  .
 
 
@@ -1714,7 +1699,7 @@ tb open `tb dev` exposes your project as API, so you can edit it directly in the
 ---
 
 URL: https://www.tinybird.co/docs/forward/test-and-deploy/evolve-data-source
-Last update: 2025-11-06T11:58:10.000Z
+Last update: 2025-12-05T11:03:00.000Z
 Content:
 ---
 title: "Evolve data sources · Tinybird Docs"
@@ -1742,11 +1727,11 @@ You can evolve your data sources by editing one or more of the following:
 
 When you make changes to the schema of a landing data source, such as adding or editing columns or changing a data type, you can follow these steps:
 
-1. In Tinybird Local, start a dev session with `tb dev`  .
+1. Check that Tinybird Local is running and your Workspace has the project deployed. If not, `tb local start && tb deploy`  .
 2. Edit the .datasource file to add the changes. See[  SCHEMA instructions](/docs/forward/dev-reference/datafiles/datasource-files#schema)  .
 3. Add a[  forward query](https://www.tinybird.co/docs/forward/test-and-deploy/evolve-data-source#forward-query)   instruction to tell Tinybird how to migrate your data.
 4. Run `tb deploy --check`   to validate the deployment before creating it. This is a good way of catching potential breaking changes.
-5. Deploy and promote your changes in Tinybird Cloud using `tb --cloud deploy`  .
+5. Deploy and promote your changes in Tinybird Cloud using `tb --cloud deploy --check`  .
 
 When Tinybird Cloud creates the deployment, it automatically populates the new table following the updated schema.
 
@@ -1803,7 +1788,7 @@ FORWARD_QUERY >
 
 When you make changes to the engine settings of a landing data source, such as changing the sorting or partition key, you can follow these steps:
 
-1. In Tinybird Local, start a dev session with `tb dev`  .
+1. In Tinybird Local, be sure you have your project ready. If not, `tb deploy`  .
 2. Edit the .datasource file to add the changes. No forward query is required. See[  engine settings](/docs/forward/dev-reference/datafiles/datasource-files#engine-settings)  .
 3. Run `tb deploy --check`   to validate the deployment before creating it. This is a good way of catching potential breaking changes.
 4. Deploy and promote your changes in Tinybird Cloud using `tb --cloud deploy`  .
@@ -1918,7 +1903,7 @@ You can use the [Events API](/docs/forward/get-data-in/events-api) to write dire
 curl \
     -H "Authorization: Bearer <import_token>" \
     -d '{"date": "2020-04-05 00:05:38", "city": "Chicago", "new_column": "value"}' \
-    'https://api.tinybird.co/v0/events?name=events_test&__tb__min_deployment=5' In the example, if the ID of your current live deployment is 4 and you're creating deployment with an ID of 5, the data will be ingested into the staging deployment 5 only. This allows you to:
+    'https://<your_host>/v0/events?name=events_test&__tb__min_deployment=5' In the example, if the ID of your current live deployment is 4 and you're creating deployment with an ID of 5, the data will be ingested into the staging deployment 5 only. This allows you to:
 
 1. Make schema changes in a staging deployment.
 2. Ingest data compatible with the new schema.
@@ -1935,7 +1920,7 @@ You can query data from a staging deployment using [pipe endpoints](/docs/forwar
 
 curl \
     -H "Authorization: Bearer <query_token>" \
-    'https://api.tinybird.co/v0/pipes/my_endpoint?__tb__deployment=5' This allows you to:
+    'https://<your_host>/v0/pipes/my_endpoint?__tb__deployment=5' This allows you to:
 
 1. Test your endpoints with the new schema changes.
 2. Validate query results before promoting to live.
@@ -2068,7 +2053,7 @@ Branches are a great way to test your project with real production data. You sho
 ---
 
 URL: https://www.tinybird.co/docs/forward/pricing/limits
-Last update: 2025-09-29T08:43:18.000Z
+Last update: 2025-12-18T12:06:53.000Z
 Content:
 ---
 title: "Limits · Tinybird Docs"
@@ -2175,12 +2160,12 @@ The following limits apply to all workspaces in an organization, regardless of t
 | Number of Workspaces | 90 Workspaces. Soft limit, contact support to increase it. |
 | Number of members | 90 members. Soft limit, contact support to increase it. |
 | Number of Data Sources | 100 Data Sources. Soft limit, contact support to increase it. |
-| Number of Copy Pipes | Up to 10 Pipes, depending on the plan. See[  Copy Pipe limits](../pricing/limits#copy-pipe-limits) |
+| Number of Copy Pipes | Up to 200 Copy Pipes, depending on the plan. See[  Copy Pipe limits](../pricing/limits#copy-pipe-limits) |
 | Number of Sink Pipes | Up to 10 Pipes, depending on the plan. See[  Sink Pipe limits](../pricing/limits#sink-pipe-limits)  . |
 | Number of Tokens | 100,000 tokens. If you need more you should take a look at[  JWT tokens](../administration/tokens/jwt)   ) |
 | Number of secrets | 100 secrets. |
 
-See [Rate limits for JWTs](../administration/tokens/jwt#rate-limits-for-jwt-tokens) for more detail specifically on JWT limits.
+See [Rate limits for JWTs](../administration/tokens/jwt#rate-limits-for-jwts) for more detail specifically on JWT limits.
 
 ## Ingestion limits [¶](https://www.tinybird.co/docs/forward/pricing/limits#ingestion-limits)
 
@@ -2255,7 +2240,7 @@ To avoid query timeouts, you can:
 - Optimize your queries to remove inefficiencies and common mistakes.
 - Increase the number of available threads in your plan to process queries concurrently. See[  Max threads](../pricing/concepts#max-threads)   to understand how threads affect query execution.
 
-If you still need to increase the timeout limit, contact support. See [Get help](../pricing/support#get-help).
+If you still need to increase the timeout limit, contact support. See [Get help](/docs/docs/support#get-help).
 
 Only paid accounts can raise the timeout limit.
 
@@ -2277,13 +2262,13 @@ The following publishing limits apply to all workspaces in an organization, rega
 
 ### Copy Pipe limits [¶](https://www.tinybird.co/docs/forward/pricing/limits#copy-pipe-limits)
 
-Copy Pipes have the following limits, depending on your billing plan:
+Copy Pipes have the following limits per Workspace, depending on your billing plan:
 
-| Plan | Copy Pipes per Workspace | Execution time | Frequency | Active jobs (running or queued) |
+| Plan | Active jobs (running or queued) | Execution time | Minimum scheduled frequency | Copy Pipes |
 | --- | --- | --- | --- | --- |
-| Free | 1 | 20s | Once an hour | 1 |
-| Developer | 3 | 30s | Up to every 10 minutes | 3 |
-| Enterprise | 10 | 50% of the scheduling period, 30 minutes max | Up to every minute | 6 |
+| Free | 1 | 20s | Once an hour | 20 |
+| Developer | 3 | 30s | Up to every 10 minutes | 100 |
+| Enterprise | 6 | 50% of the scheduling period, 30 minutes max | Up to every minute | 200 |
 
 The 6 active Copy Pipe jobs includes:
 
@@ -2320,7 +2305,7 @@ Delete jobs have the following limits, depending on your billing plan:
 ---
 
 URL: https://www.tinybird.co/docs/forward/pricing/concepts
-Last update: 2025-09-29T08:43:18.000Z
+Last update: 2026-01-09T15:54:28.000Z
 Content:
 ---
 title: "Key concepts · Tinybird Docs"
@@ -2340,7 +2325,7 @@ Read on to understand the key concepts behind your bill and plan limits.
 
 ## Active vCPU minutes / hours [¶](https://www.tinybird.co/docs/forward/pricing/concepts#active-vcpu-minutes-hours)
 
-Developer plans bill vCPU usage using active minutes. An active minute is when any operation used a vCPU for a minute. Multiple operations executed within the same minute still count as a single active minute. When using fractioned vCPUs, an active minute is proportional to the fraction, for example 30 seconds of 0.5 vCPU.
+Developer plans bill vCPU usage using active minutes. An active minute is any minute where at least one operation used a vCPU, regardless of actual vCPU time consumed during that minute. Whether you use 1 vCPU second or 60 vCPU seconds within a minute, it counts as 1 active minute. Multiple operations executed within the same minute still count as a single active minute. When using fractioned vCPUs, an active minute is proportional to the fraction, for example 30 seconds of 0.5 vCPU.
 
 Plan sizes come with a number of active hours, which is the number of active minutes you can use divided by 60. If you consume all your active minutes, the overage is billed at a fixed rate per minute. Usage bursts allows you to temporarily exceed the vCPU usage limit. See [vCPU burst mode](https://www.tinybird.co/docs/forward/pricing/concepts#vcpu-burst-mode).
 
@@ -2444,7 +2429,7 @@ See [LLM usage billing](../pricing/billing) for detailed pricing information.
 ---
 
 URL: https://www.tinybird.co/docs/forward/pricing/billing
-Last update: 2025-09-29T08:43:18.000Z
+Last update: 2026-01-28T12:09:10.000Z
 Content:
 ---
 title: "Understand your bill · Tinybird Docs"
@@ -2465,6 +2450,8 @@ To learn about the prices of each plan, see [Pricing](https://www.tinybird.co/pr
 ## Developer plans [¶](https://www.tinybird.co/docs/forward/pricing/billing#developer-plans)
 
 Developer plans come in many sizes, depending on the compute resources you need. Each size includes a base capacity for your organization, which is a fixed amount you pay for. Other items are billed according to usage beyond a threshold. All plan resources and limits are shared across all workspaces in your organization.
+
+Each organization is tied to a single region. You can create multiple workspaces within one organization, all covered by the same billing plan. If you need workspaces in a different region, you must create a separate organization, which requires its own plan.
 
 Developer plans billing is calculated from the following resources:
 
@@ -2579,7 +2566,7 @@ You can monitor your real-time LLM usage through the<a href="../monitoring/servi
 ---
 
 URL: https://www.tinybird.co/docs/forward/monitoring/service-datasources
-Last update: 2025-09-19T07:19:35.000Z
+Last update: 2025-12-30T14:08:31.000Z
 Content:
 ---
 title: "Service data sources · Tinybird Docs"
@@ -2730,7 +2717,8 @@ Contains all operations performed to your data sources. Tinybird tracks the foll
 | `append-hfi` | Append operation using the[  High-frequency Ingestion API](/docs/forward/get-data-in/events-api)  . |
 | `append-kafka` | Append operation using the[  Kafka Connector](/docs/forward/get-data-in/connectors/kafka)  . |
 | `replace` | A replace operation took place in the data source. |
-| `delete` | A delete operation took place in the data source. |
+| `delete` | A data source is deleted. |
+| `delete_data` | A delete operation took place in the data source. |
 | `truncate` | A truncate operation took place in the data source. |
 | `rename` | The data source was renamed. |
 | `populateview-queued` | A populate operation was queued for execution. |
@@ -2950,6 +2938,30 @@ Contains all job executions performed in your workspace. Tinybird logs all jobs 
 
 Learn more about how to track background jobs execution in the [Jobs monitoring guide](./jobs).
 
+### tinybird.query_validator_log [¶](https://www.tinybird.co/docs/forward/monitoring/service-datasources#tinybird-query-validator-log)
+
+Contains information about query validation executions for Pipes and Materialized Views in your Workspace.
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `host` | `LowCardinality(String)` | Name of the host the query was extracted from — might differ from the host the query was executed on. |
+| `version` | `LowCardinality(String)` | The version in which the query was tested. |
+| `stable_version` | `LowCardinality(String)` | The version that was running in the cluster when the query was validated. |
+| `query_hash` | `UInt64` | The normalized query hash. |
+| `query_last_execution` | `DateTime` | The last execution time of this query at the time when it was extracted. |
+| `region` | `String` | The region in which the cluster is deployed. |
+| `workspace` | `String` | The name of the Workspace, for Pipe queries. |
+| `database` | `String` | The internal database name for this Workspace. |
+| `pipe_name` | `String` | The name of the Pipe, for Pipe queries. |
+| `error_code` | `Int16` | Error code returned by ClickHouse. |
+| `error` | `String` | Detailed error message if the query failed. |
+| `query_id` | `String` | ClickHouse query ID. For Pipe queries, this can be matched with `system.query_log`   . For Materialized Views, it contains the qualified internal table name. |
+| `query` | `String` | The full query. |
+| `fix_suggestion` | `String` | Optionally, a suggestion on how to fix the query. |
+| `run_validation` | `DateTime` | The time when this query was validated. |
+
+Learn more about how to monitor your queries for validation in the [guide](./query-validation).
+
 ## Query _state columns [¶](https://www.tinybird.co/docs/forward/monitoring/service-datasources#query-state-columns)
 
 Several of the Service data sources include columns suffixed with `_state` . This suffix identifies columns with values that are in an intermediate aggregated state. When reading these columns, merge the intermediate states to get the final value.
@@ -3021,6 +3033,366 @@ The available metrics are the following:
 | ReplicasSumQueueSize | Sum queue size (in the number of operations like get, merge) across Replicated tables. |
 | ReplicasSumMergesInQueue | Sum of merge operations in the queue (still to be applied) across Replicated tables. |
 | ReplicasSumInsertsInQueue | Sum of insert operations in the queue (still to be applied) across Replicated tables. |
+
+
+
+---
+
+URL: https://www.tinybird.co/docs/forward/monitoring/query-validation
+Last update: 2025-12-01T11:31:58.000Z
+Content:
+---
+title: "Query validation · Tinybird Docs"
+theme-color: "#171612"
+description: "Use the built-in Tinybird tools to monitor queries that may fail when upgrading your cluster to a newer ClickHouse version."
+inkeep:version: "forward"
+---
+
+
+
+
+# Monitor your queries validation status [¶](https://www.tinybird.co/docs/forward/monitoring/query-validation#monitor-your-queries-validation-status)
+
+Copy as MD When you use Tinybird, we manage ClickHouse upgrades for you. We select stable versions based on our internal testing and only upgrade when we're confident it won't impact your queries. As part of this process, we test all queries you've run in the past 7 days against the upcoming ClickHouse version.
+
+In Tinybird, we work mainly with three versions at the same time:
+
+- Edge. This version has the latest features, and it's the version we use as a testbench.
+- Stable. Most of our clusters are on this version; it's the one we keep as the main reference. We don't promote a version from Edge to Stable until we're sure it has no regressions and we've tested it on clusters with varying workloads.
+- Deprecated. When we promote a version to Stable, the previous ones become deprecated. We aim to have the fewest clusters possible on deprecated versions; these are typically for very specific use cases.
+
+This means that, to ensure all clusters are running fully supported versions, we aim to upgrade them regularly. Some of the queries that you run might break in newer versions. For this reason, we run the *validator* , a tool that tests your recent queries against the next version (typically Edge) to ensure the upgrade won't break them.
+
+When we find queries that would break, we add them to the Service Data Source<a href="./service-datasources#tinybird-query-validator-log"> `query_validator_log`</a> . In this Data Source, we provide you with information about the query, such as:
+
+- The originating Workspace and Pipe.
+- The full query text.
+- The error message produced in the new ClickHouse version.
+- The new ClickHouse version used for testing.
+
+You can use this information to fix the issues and ensure your queries won't break when we upgrade your cluster.
+
+## Monitoring for broken queries [¶](https://www.tinybird.co/docs/forward/monitoring/query-validation#monitoring-for-broken-queries)
+
+You can query the `query_validator_log` like this:
+
+SELECT
+    stable_version,
+    version,
+    query_last_execution,
+    workspace,
+    pipe_name,
+    query,
+    error_code,
+    error,
+    fix_suggestion
+FROM
+    (
+        SELECT *
+        FROM query_validator_log
+        WHERE error != '' AND query_id LIKE 'MV_%'
+        ORDER BY run_validation DESC
+        LIMIT 1 BY query_id
+        UNION ALL
+        SELECT *
+        FROM query_validator_log
+        WHERE error != '' AND query_id NOT LIKE 'MV_%'
+        ORDER BY run_validation DESC
+        LIMIT 1 BY workspace, pipe_name
+    ) This will yield the queries that need fixing, along with a possible fix suggestion in `fix_suggestion` . Queries extracted from the definition of Materialized Views will not have meaningful information in the `workspace` and `pipe_name` fields, so you need to recognize the Materialized View from the `query` field (this will be improved soon).
+
+The queries returned in this Data Source correspond to the full queries that we send to ClickHouse, which are composed from all the nodes you create in your Pipes.
+
+## Fixing queries [¶](https://www.tinybird.co/docs/forward/monitoring/query-validation#fixing-queries)
+
+Some queries might be easy to fix with the provided `fix_suggestion` , or with the `error` field. You can check that your fix worked by looking up your Pipe in the Data Source the next day, and checking that the `error_code` and `error` fields are empty. We plan to provide better ways to test queries soon. You can also contact support if you need help fixing your queries.
+
+
+
+---
+
+URL: https://www.tinybird.co/docs/forward/monitoring/query-log
+Last update: 2025-12-12T11:21:25.000Z
+Content:
+---
+title: "How to debug queries using system.query\_log · Tinybird Docs"
+theme-color: "#171612"
+description: "Learn how to use system.query_log to debug slow queries, analyze memory usage, and troubleshoot issues in your Tinybird Workspace."
+inkeep:version: "forward"
+---
+
+
+
+
+# How to debug queries using system.query_log [¶](https://www.tinybird.co/docs/forward/monitoring/query-log#how-to-debug-queries-using-system-query-log)
+
+Copy as MD When troubleshooting performance issues or investigating query failures, you often need execution details beyond what standard monitoring provides.  The `system.query_log` table is a native ClickHouse system table that records query execution at the database engine level beneath Tinybird. It stores detailed information for every query executed in your Workspace, including execution time, memory usage, error codes, and failure reasons. For a complete description of available columns and data types, see the ClickHouse documentation on the<a href="https://clickhouse.com/docs/operations/system-tables/query_log"> `system.query_log`</a> table.
+
+**When should I use system.query_log?**
+
+Use `system.query_log` when you need to:
+
+- Debug queries that are slower than expected
+- Investigate why specific queries are failing
+- Analyze memory consumption patterns
+- Track which Endpoints consume the most resources
+- Correlate query execution with Endpoint performance metrics
+
+For routine monitoring of Endpoint performance, use<a href="./analyze-endpoints-performance"> `tinybird.pipe_stats_rt`</a> instead.
+
+Read on to learn how to safely query `system.query_log` and use it to solve real-world debugging challenges.
+
+## Before you start [¶](https://www.tinybird.co/docs/forward/monitoring/query-log#before-you-start)
+
+The `system.query_log` table is a ClickHouse system table that contains extensive historical data. Before querying it, understand:
+
+- How to[  analyze Endpoint performance](./analyze-endpoints-performance)   using `tinybird.pipe_stats_rt`
+- Basic SQL query patterns in Tinybird
+
+The `system.query_log` table contains all historical query data. **Always filter by `event_time`** to avoid slow queries or timeouts. Queries without time filters can take hundreds of seconds or timeout completely. **Never run** `SELECT * FROM system.query_log` without filtering by time.
+
+##### Safe query pattern with 1-hour lookback
+
+SELECT *
+FROM system.query_log
+WHERE event_time >= now() - INTERVAL 1 HOUR Start with a 1-hour window (typically 1-2 seconds to execute) and expand the time range only if needed.
+
+## Understand query lifecycle [¶](https://www.tinybird.co/docs/forward/monitoring/query-log#understand-query-lifecycle)
+
+Every query in Tinybird generates two entries in `system.query_log`:
+
+1. **  QueryStart**   - Logged when query execution begins
+2. **  QueryFinish**   - Logged when the query completes successfully
+
+If a query fails, you'll see a different type instead of `QueryFinish`:
+
+- **  ExceptionBeforeStart**   - Query failed before execution started (usually syntax errors)
+- **  ExceptionWhileProcessing**   - Query failed during execution (timeouts, memory exceeded, runtime errors)
+
+Here's how the query lifecycle flows:
+
+┌─────────────────┐
+│  Query Begins   │
+└────────┬────────┘
+         │
+         ▼
+    QueryStart ──────────────────┐
+         │                       │
+         │                       │
+         ▼                       ▼
+┌─────────────────┐     ┌──────────────────────┐
+│ Query Executes  │     │  Syntax/Init Error   │
+└────────┬────────┘     └──────────┬───────────┘
+         │                         │
+         │                         ▼
+         │              ExceptionBeforeStart
+         │
+    ┌────┴────┐
+    │         │
+    ▼         ▼
+ Success   Runtime Error
+    │         │
+    ▼         ▼
+QueryFinish   ExceptionWhileProcessing This two-entry pattern helps you distinguish between queries that are still running and those that have finished or failed.
+
+## Common debugging scenarios [¶](https://www.tinybird.co/docs/forward/monitoring/query-log#common-debugging-scenarios)
+
+### Find slow queries [¶](https://www.tinybird.co/docs/forward/monitoring/query-log#find-slow-queries)
+
+Identify queries taking longer than expected:
+
+##### Queries taking more than 5 seconds
+
+SELECT
+    event_time,
+    query_id,
+    JSONExtractString(log_comment, 'pipe') as pipe_name,
+    query_duration_ms / 1000.0 as duration_seconds,
+    formatReadableSize(memory_usage) as peak_memory,
+    substring(query, 1, 100) as query_preview
+FROM system.query_log
+WHERE event_time >= now() - INTERVAL 1 HOUR
+    AND type = 'QueryFinish'
+    AND query_duration_ms > 5000
+ORDER BY query_duration_ms DESC
+LIMIT 20 This helps you identify performance bottlenecks in your Endpoints or scheduled operations.
+
+### Investigate query failures [¶](https://www.tinybird.co/docs/forward/monitoring/query-log#investigate-query-failures)
+
+Track which queries are failing and why:
+
+##### Failed queries in the last hour
+
+SELECT
+    event_time,
+    query_id,
+    type,
+    JSONExtractString(log_comment, 'pipe') as pipe_name,
+    exception
+FROM system.query_log
+WHERE event_time >= now() - INTERVAL 1 HOUR
+    AND type IN ('ExceptionBeforeStart', 'ExceptionWhileProcessing')
+ORDER BY event_time DESC The `exception` column contains the error message, helping you quickly identify syntax errors, timeouts, or resource limits.
+
+### Analyze memory consumption [¶](https://www.tinybird.co/docs/forward/monitoring/query-log#analyze-memory-consumption)
+
+Find queries consuming the most memory:
+
+##### Memory-intensive queries
+
+SELECT
+    event_time,
+    query_id,
+    JSONExtractString(log_comment, 'pipe') as pipe_name,
+    formatReadableSize(memory_usage) as peak_memory,
+    query_duration_ms / 1000.0 as duration_seconds
+FROM system.query_log
+WHERE event_time >= now() - INTERVAL 1 HOUR
+    AND type = 'QueryFinish'
+ORDER BY memory_usage DESC
+LIMIT 20 The `memory_usage` column shows peak memory in bytes. High memory usage may indicate opportunities for query optimization.
+
+### Track query failure rates [¶](https://www.tinybird.co/docs/forward/monitoring/query-log#track-query-failure-rates)
+
+Monitor how often queries are failing over time:
+
+##### Query failures by hour
+
+SELECT
+    toStartOfHour(event_time) as hour,
+    type,
+    count() as failure_count
+FROM system.query_log
+WHERE event_time >= now() - INTERVAL 24 HOUR
+    AND type IN ('ExceptionBeforeStart', 'ExceptionWhileProcessing')
+GROUP BY hour, type
+ORDER BY hour DESC
+## Connect query_log with Endpoint stats [¶](https://www.tinybird.co/docs/forward/monitoring/query-log#connect-query-log-with-endpoint-stats)
+
+The `query_id` in `system.query_log` matches the `request_id` from `tinybird.pipe_stats_rt` . This lets you combine high-level request metrics with detailed query execution data.
+
+##### Combine endpoint stats with query details
+
+SELECT
+    ps.pipe_name,
+    ps.start_datetime,
+    ps.duration as request_duration,
+    formatReadableSize(ql.memory_usage) as query_memory,
+    ql.type as execution_status
+FROM tinybird.pipe_stats_rt ps
+JOIN system.query_log ql ON ps.request_id = ql.query_id
+WHERE ps.start_datetime >= now() - INTERVAL 1 HOUR
+    AND ql.type = 'QueryFinish'
+ORDER BY ps.start_datetime DESC
+LIMIT 100 The `event_time` from `system.query_log` and `start_datetime` from `pipe_stats_rt` may differ by a few milliseconds. Always join using `query_id` and `request_id` for accurate matching.
+
+## Extract pipe names from log_comment [¶](https://www.tinybird.co/docs/forward/monitoring/query-log#extract-pipe-names-from-log-comment)
+
+Endpoint queries include metadata in the `log_comment` column as JSON. Extract the pipe name to filter by specific Endpoints:
+
+##### Filter by Endpoint name
+
+SELECT
+    event_time,
+    query_id,
+    JSONExtractString(log_comment, 'pipe') as pipe_name,
+    JSONExtractString(log_comment, 'workspace') as workspace,
+    formatReadableSize(memory_usage) as memory_usage,
+    query_duration_ms / 1000.0 as duration_seconds
+FROM system.query_log
+WHERE event_time >= now() - INTERVAL 1 HOUR
+    AND log_comment != ''
+    AND JSONExtractString(log_comment, 'pipe') = 'your_pipe_name'
+    AND type = 'QueryFinish'
+ORDER BY event_time DESC The `log_comment` JSON structure looks like:
+
+{"workspace":"prod","pipe":"last_impressions__v7"}
+## Find memory-intensive endpoints [¶](https://www.tinybird.co/docs/forward/monitoring/query-log#find-memory-intensive-endpoints)
+
+Identify which Endpoints consistently use the most memory:
+
+##### Average memory by Endpoint
+
+SELECT
+    JSONExtractString(log_comment, 'pipe') as pipe_name,
+    formatReadableSize(avg(memory_usage)) as avg_memory,
+    formatReadableSize(max(memory_usage)) as max_memory,
+    formatReadableSize(quantile(0.9)(memory_usage)) as p90_memory,
+    count() as query_count
+FROM system.query_log
+WHERE event_time >= now() - INTERVAL 24 HOUR
+    AND type = 'QueryFinish'
+    AND log_comment != ''
+GROUP BY pipe_name
+ORDER BY avg(memory_usage) DESC
+LIMIT 20
+## Common mistakes [¶](https://www.tinybird.co/docs/forward/monitoring/query-log#common-mistakes)
+
+Avoid these common pitfalls when working with `system.query_log`:
+
+### Running queries without time filters [¶](https://www.tinybird.co/docs/forward/monitoring/query-log#running-queries-without-time-filters)
+
+**Never do this:**
+
+SELECT * FROM system.query_log
+WHERE query LIKE '%my_datasource_id%' This scans the entire table history and will timeout or take hundreds of seconds.
+
+**Always include time filters:**
+
+SELECT * FROM system.query_log
+WHERE event_time >= now() - INTERVAL 1 HOUR
+  AND query LIKE '%my_datasource_id%'
+### Selecting all columns with SELECT * [¶](https://www.tinybird.co/docs/forward/monitoring/query-log#selecting-all-columns-with-select)
+
+Avoid `SELECT *` in production queries. The `query` column can be very large, and many columns aren't needed for most debugging tasks.
+
+**Instead, select only what you need:**
+
+SELECT
+    event_time,
+    query_id,
+    type,
+    query_duration_ms,
+    memory_usage,
+    exception
+FROM system.query_log
+WHERE event_time >= now() - INTERVAL 1 HOUR
+### Forgetting to filter by query type [¶](https://www.tinybird.co/docs/forward/monitoring/query-log#forgetting-to-filter-by-query-type)
+
+When analyzing completed queries, include `type = 'QueryFinish'` to exclude `QueryStart` entries and avoid counting queries twice:
+
+-- Without type filter: counts each query twice (Start + Finish)
+SELECT count(*) FROM system.query_log
+WHERE event_time >= now() - INTERVAL 1 HOUR
+
+-- With type filter: accurate count
+SELECT count(*) FROM system.query_log
+WHERE event_time >= now() - INTERVAL 1 HOUR
+  AND type = 'QueryFinish'
+### Using overly broad time windows [¶](https://www.tinybird.co/docs/forward/monitoring/query-log#using-overly-broad-time-windows)
+
+Start with 1-hour windows and expand only if needed. A 24-hour query takes significantly longer than a 1-hour query:
+
+- **  1 hour**   : ~1-2 seconds
+- **  24 hours**   : ~15-30 seconds
+- **  7 days**   : May timeout or take minutes
+
+## Best practices [¶](https://www.tinybird.co/docs/forward/monitoring/query-log#best-practices)
+
+When querying `system.query_log` , follow these guidelines:
+
+1. **  Always filter by time**   - Use `event_time >= now() - INTERVAL X HOUR`   in every query
+2. **  Filter by query type**   - Add `AND type = 'QueryFinish'`   if you only need completed queries
+3. **  Limit your results**   - Use `LIMIT`   to avoid processing unnecessary data
+4. **  Start small**   - Begin with 1-hour windows, then expand as needed
+5. **  Create monitoring Pipes**   - Turn useful debug queries into Endpoints for dashboards
+
+Convert your most useful `system.query_log` queries into Pipes and expose them as Endpoints. This makes it easy to build real-time monitoring dashboards or set up alerts.
+
+## Next steps [¶](https://www.tinybird.co/docs/forward/monitoring/query-log#next-steps)
+
+- Learn how to[  analyze Endpoint performance](./analyze-endpoints-performance)   using `tinybird.pipe_stats_rt`
+- Monitor[  Jobs](./jobs)   in your Workspace
 
 
 
@@ -3338,6 +3710,490 @@ In your workspace, go to **Time Series** and select **Endpoint performance** to 
 
 ---
 
+URL: https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring
+Last update: 2025-12-11T18:51:33.000Z
+Content:
+---
+title: "Monitor Kafka to ClickHouse® connector and consumer lag · Tinybird Docs"
+theme-color: "#171612"
+description: "Track consumer lag, identify bottlenecks, and optimize your Kafka to ClickHouse® data pipeline with real-time monitoring queries and alerts."
+inkeep:version: "forward"
+---
+
+
+
+
+# Monitor Kafka to ClickHouse® connector and consumer lag [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#monitor-kafka-to-clickhouse-connector-and-consumer-lag)
+
+Copy as MD Tinybird's Kafka connector automatically consumes data from Kafka topics and ingests it into ClickHouse® Data Sources. The connector features consumer autoscaling and multi-broker connectivity. The `tinybird.kafka_ops_log` [Service Data Source](/docs/forward/monitoring/service-datasources) provides operational logs for monitoring your integration, tracking consumer lag, analyzing performance, and optimizing your connector configuration.
+
+Use `kafka_ops_log` to monitor consumer lag, track throughput, identify errors, and analyze performance across your Data Sources. The connector's serverless architecture automatically scales consumers based on load, and `kafka_ops_log` provides visibility into this autoscaling behavior along with error handling and debugging information.
+
+Logs are retained for 30 days and include information about each partition, topic, and Data Source in your workspace. This supports analysis of partition assignment, rebalancing, and consumer group scaling behavior.
+
+**New to the Kafka connector?** If you're setting up the Kafka connector for the first time, see the [Kafka connector documentation](/docs/forward/get-data-in/connectors/kafka) for setup instructions, configuration options, and troubleshooting. This monitoring guide focuses on operational monitoring once your connector is running.
+
+## Kafka meta columns in your Data Sources [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#kafka-meta-columns-in-your-data-sources)
+
+In addition to monitoring via `kafka_ops_log` , each Data Source connected to Kafka includes [Kafka meta columns](/docs/forward/get-data-in/connectors/kafka#kafka-meta-columns) that store metadata from Kafka messages. These columns are automatically added to your Data Source schema and can be used for analysis, debugging, and monitoring.
+
+The available meta columns include:
+
+- ** `__topic`**   : The Kafka topic the message was read from
+- ** `__partition`**   : The partition number the message was read from
+- ** `__offset`**   : The message offset within the partition
+- ** `__timestamp`**   : The timestamp of the Kafka message
+- ** `__key`**   : The message key (if present)
+- ** `__value`**   : The raw message value (if `KAFKA_STORE_RAW_VALUE`   is set to `True`   )
+- ** `__headers`**   : Kafka headers as a Map (if `KAFKA_STORE_HEADERS`   is set to `True`   )
+
+### Use cases for Kafka meta columns [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#use-cases-for-kafka-meta-columns)
+
+**Track message ordering and detect gaps** : Use `__offset` to identify missing messages or gaps in your data ingestion. Compare consecutive offsets to detect when messages are skipped.
+
+**Analyze distribution** : Use `__partition` to understand how messages are distributed across partitions. This helps verify that your partition key design is working as expected and that messages are evenly distributed.
+
+**Correlate with `kafka_ops_log`** : Join your Data Source with `kafka_ops_log` using `__partition` and `__offset` to correlate ingested messages with connector operations, helping you understand ingestion latency and identify bottlenecks.
+
+**Message timestamp analysis** : Compare `__timestamp` (Kafka message timestamp) with your Data Source's ingestion timestamp to understand end-to-end latency from message production to ClickHouse ingestion.
+
+**Debug with message keys** : Use `__key` to track specific messages or understand how keys map to partitions, which is essential for partition key design optimization.
+
+**Leverage headers for routing and tracing** : If `KAFKA_STORE_HEADERS` is set to `True` , use `__headers` to access custom metadata, trace IDs, routing information, or other context stored in Kafka headers. This is useful for distributed tracing, A/B testing, or routing logic based on header values.
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `timestamp` | `DateTime` | Date and time when the operation took place. |
+| `datasource_id` | `String` | ID of your Data Source. The Data Source ID is consistent after renaming operations. |
+| `topic` | `String` | Kafka topic. |
+| `partition` | `Int16` | Partition number, or `-1`   for all partitions. Use this field to analyze partition assignment and identify which partitions are assigned to your consumer. |
+| `msg_type` | `String` | `'info'`   for regular messages, `'warning'`   for issues related to the user's Kafka cluster, deserialization or Materialized Views, and `'error'`   for other issues. |
+| `lag` | `Int64` | Number of messages behind for the partition. This is the difference between the high-water mark and the last commit offset. This is the primary metric for consumer lag monitoring. |
+| `processed_messages` | `Int32` | Messages processed for a topic and partition. |
+| `processed_bytes` | `Int32` | Amount of bytes processed. |
+| `committed_messages` | `Int32` | Messages ingested for a topic and partition. |
+| `msg` | `String` | Information in the case of warnings or errors. Empty otherwise. |
+
+The `tinybird.kafka_ops_log` Service Data Source includes operational metrics from your serverless Kafka connector. Each row represents a snapshot of the connector's state for a specific partition at a point in time, providing visibility into autoscaling consumer behavior, error handling, and debugging information.
+
+## Monitor consumer lag [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#monitor-consumer-lag)
+
+Consumer lag is the difference between the latest offset in a partition (high-water mark) and the last committed offset by your consumer. High lag values indicate that your consumer is falling behind the producer, which can lead to delayed data ingestion. With Tinybird's serverless connector, consumer autoscaling automatically adjusts to handle increased load, but monitoring lag helps you understand when scaling occurs and verify that autoscaling is working effectively.
+
+Monitoring consumer lag is critical for performance tuning. When lag increases, Tinybird's autoscaling infrastructure automatically scales consumers to handle the load. The `kafka_ops_log` provides visibility into this autoscaling behavior, helping you understand partition assignment patterns and verify that your integration is performing optimally. For more details on consumer configuration, see the [Kafka connector documentation](/docs/forward/get-data-in/connectors/kafka).
+
+### Find current consumer lag by partition [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#find-current-consumer-lag-by-partition)
+
+Get the most recent lag measurement for each partition:
+
+SELECT
+    datasource_id,
+    topic,
+    partition,
+    lag,
+    timestamp
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 1 hour
+  AND partition >= 0
+  AND msg_type = 'info'
+ORDER BY timestamp DESC
+LIMIT 1 BY datasource_id, topic, partition
+### Consumer lag trend over time [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#consumer-lag-trend-over-time)
+
+Track how lag changes over time to identify patterns and trends:
+
+SELECT
+    toStartOfHour(timestamp) as hour,
+    datasource_id,
+    topic,
+    partition,
+    max(lag) as max_lag,
+    avg(lag) as avg_lag
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 24 hour
+  AND partition >= 0
+  AND msg_type = 'info'
+GROUP BY hour, datasource_id, topic, partition
+ORDER BY hour DESC, max_lag DESC Rising lag trends may indicate that your current consumer group configuration cannot keep up with the message rate. This is particularly useful for understanding how Tinybird's consumer autoscaling responds to varying load patterns.
+
+### Find partitions with high lag [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#find-partitions-with-high-lag)
+
+Identify partitions that need immediate attention:
+
+SELECT
+    datasource_id,
+    topic,
+    partition,
+    max(lag) as current_lag,
+    timestamp
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 1 hour
+  AND partition >= 0
+  AND msg_type = 'info'
+GROUP BY datasource_id, topic, partition, timestamp
+HAVING current_lag > 10000
+ORDER BY current_lag DESC High lag on specific partitions may indicate uneven message distribution, where some partitions receive more messages than others. This is valuable information for partition key design and scaling decisions.
+
+## Track throughput and performance [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#track-throughput-and-performance)
+
+Throughput monitoring helps you understand how efficiently your connector is processing messages. This is essential for performance tuning and understanding how the autoscaling infrastructure responds to varying message rates.
+
+### Messages processed per hour by topic [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#messages-processed-per-hour-by-topic)
+
+Track message processing rates over time:
+
+SELECT
+    toStartOfHour(timestamp) as hour,
+    datasource_id,
+    topic,
+    sum(processed_messages) as total_messages,
+    sum(processed_bytes) as total_bytes,
+    sum(committed_messages) as total_committed
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 24 hour
+  AND msg_type = 'info'
+GROUP BY hour, datasource_id, topic
+ORDER BY hour DESC Use this to track throughput trends and identify peak processing periods. This data helps you understand how consumer autoscaling responds to load changes and supports capacity planning.
+
+### Processing rate comparison across partitions [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#processing-rate-comparison-across-partitions)
+
+Compare processing rates to identify bottlenecks:
+
+SELECT
+    datasource_id,
+    topic,
+    partition,
+    sum(processed_messages) as total_processed,
+    sum(committed_messages) as total_committed,
+    count(*) as operation_count,
+    sum(processed_messages) / count(*) as avg_messages_per_operation
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 1 hour
+  AND partition >= 0
+  AND msg_type = 'info'
+GROUP BY datasource_id, topic, partition
+ORDER BY total_processed DESC Uneven processing rates may indicate that you need to review your partition key design or adjust your partition assignment strategy.
+
+### Throughput efficiency [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#throughput-efficiency)
+
+Compare processed messages to committed messages to understand your ingestion success rate:
+
+SELECT
+    datasource_id,
+    topic,
+    sum(processed_messages) as processed,
+    sum(committed_messages) as committed,
+    (sum(committed_messages) * 100.0 / sum(processed_messages)) as success_rate_pct
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 24 hour
+  AND msg_type = 'info'
+  AND processed_messages > 0
+GROUP BY datasource_id, topic
+ORDER BY success_rate_pct ASC A low success rate indicates that messages are being processed but not successfully ingested into ClickHouse, which may point to schema issues, data quality problems, or configuration errors. The connector's quarantine feature automatically handles problematic messages, and error details in `kafka_ops_log` help you debug and resolve issues. Learn more about [Quarantine Data Sources](/docs/forward/get-data-in/quarantine).
+
+## Monitor errors and warnings [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#monitor-errors-and-warnings)
+
+Errors and warnings can indicate issues with your Kafka cluster connectivity, deserialization problems, Materialized View errors, or configuration issues. The serverless connector includes comprehensive error handling with quarantine for problematic messages. Regular monitoring of `kafka_ops_log` helps you catch and resolve issues before they impact your data pipeline. For troubleshooting guidance, see the [Kafka connector troubleshooting guide](/docs/forward/get-data-in/connectors/kafka/troubleshooting).
+
+### Recent errors and warnings [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#recent-errors-and-warnings)
+
+View all errors and warnings from your connector operations:
+
+SELECT
+    timestamp,
+    datasource_id,
+    topic,
+    partition,
+    msg_type,
+    msg,
+    lag
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 24 hour
+  AND msg_type IN ('warning', 'error')
+ORDER BY timestamp DESC Review these messages to identify patterns and root causes. Common issues include partition rebalancing events, deserialization failures, and connectivity problems.
+
+### Error count by Data Source and topic [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#error-count-by-data-source-and-topic)
+
+Identify which Data Sources or topics are experiencing the most issues:
+
+SELECT
+    datasource_id,
+    topic,
+    msg_type,
+    count(*) as error_count
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 24 hour
+  AND msg_type IN ('warning', 'error')
+GROUP BY datasource_id, topic, msg_type
+ORDER BY error_count DESC This helps prioritize troubleshooting efforts and identify if specific topics or partitions are problematic.
+
+### Group errors by message type [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#group-errors-by-message-type)
+
+Identify recurring issues and patterns:
+
+SELECT
+    msg,
+    msg_type,
+    count(*) as occurrence_count,
+    count(DISTINCT datasource_id) as affected_datasources
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 7 day
+  AND msg_type IN ('warning', 'error')
+  AND msg != ''
+GROUP BY msg, msg_type
+ORDER BY occurrence_count DESC This analysis helps you understand common failure modes in your connector.
+
+## Health checks [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#health-checks)
+
+Regular health checks help you assess the overall status of your integration. These queries provide a comprehensive view of connector health, including consumer lag, throughput, and error rates. You can also set up automated [health checks](/docs/forward/monitoring/health-checks) for continuous monitoring.
+
+### Connector health summary [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#connector-health-summary)
+
+Get a comprehensive health overview of all your connectors:
+
+SELECT
+    datasource_id,
+    topic,
+    max(lag) as max_lag,
+    sum(processed_messages) as total_processed,
+    sum(committed_messages) as total_committed,
+    countIf(msg_type = 'error') as error_count,
+    countIf(msg_type = 'warning') as warning_count,
+    max(timestamp) as last_activity
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 1 hour
+GROUP BY datasource_id, topic
+ORDER BY max_lag DESC Use this for a quick assessment of your connector performance and to identify connectors that need attention.
+
+### Find inactive connectors [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#find-inactive-connectors)
+
+Find Data Sources that haven't processed messages recently:
+
+SELECT
+    datasource_id,
+    topic,
+    max(timestamp) as last_activity,
+    now() - max(timestamp) as time_since_last_activity
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 7 day
+GROUP BY datasource_id, topic
+HAVING time_since_last_activity > INTERVAL 1 hour
+ORDER BY time_since_last_activity DESC Inactive connectors may indicate that the consumer has stopped, the topic has no new messages, or there's a connectivity issue.
+
+## Partition-level analysis [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#partition-level-analysis)
+
+Partition analysis helps you understand how your partition assignment strategy is working and identify partitions that may need attention. This analysis helps with scaling decisions and optimizing your partition key design.
+
+### Partition performance comparison [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#partition-performance-comparison)
+
+Compare performance metrics across all partitions:
+
+SELECT
+    datasource_id,
+    topic,
+    partition,
+    max(lag) as max_lag,
+    avg(lag) as avg_lag,
+    sum(processed_messages) as total_messages,
+    countIf(msg_type = 'error') as errors,
+    countIf(msg_type = 'warning') as warnings
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 24 hour
+  AND partition >= 0
+GROUP BY datasource_id, topic, partition
+ORDER BY max_lag DESC, errors DESC This helps you understand if your partition assignment is balanced and whether you need to adjust your setup.
+
+### Lag distribution analysis [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#lag-distribution-analysis)
+
+Understand the distribution of consumer lag across partitions:
+
+SELECT
+    datasource_id,
+    topic,
+    quantile(0.5)(lag) as median_lag,
+    quantile(0.95)(lag) as p95_lag,
+    quantile(0.99)(lag) as p99_lag,
+    max(lag) as max_lag,
+    min(lag) as min_lag
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 1 hour
+  AND partition >= 0
+  AND msg_type = 'info'
+GROUP BY datasource_id, topic
+ORDER BY max_lag DESC This helps identify if lag is evenly distributed or concentrated in specific partitions. Uneven lag distribution may indicate that you need to review your partition key design or consider rebalancing.
+
+## Alerting queries [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#alerting-queries)
+
+Set up automated alerts based on these queries to catch issues early. These queries are designed to trigger alerts when critical conditions are met, helping you maintain reliable data pipelines. Combine these with [health checks](/docs/forward/monitoring/health-checks) for comprehensive monitoring.
+
+**Connect to monitoring tools** : You can connect these monitoring queries to external alerting tools like Grafana, Datadog, PagerDuty, and Slack. Query the [ClickHouse HTTP interface](/docs/forward/work-with-data/publish-data/clickhouse-interface) directly, or create API endpoints from these queries. For Prometheus-compatible tools, you can export queries in [Prometheus format](/docs/forward/work-with-data/publish-data/guides/consume-api-endpoints-in-prometheus-format) . Configure your monitoring tools to poll these queries periodically and trigger alerts when thresholds are exceeded.
+
+### High consumer lag alert [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#high-consumer-lag-alert)
+
+Alert when consumer lag exceeds a threshold:
+
+SELECT
+    datasource_id,
+    topic,
+    partition,
+    lag,
+    timestamp
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 5 minute
+  AND partition >= 0
+  AND msg_type = 'info'
+  AND lag > 50000
+ORDER BY timestamp DESC
+LIMIT 1 BY datasource_id, topic, partition High lag indicates that your consumer is falling behind and may need scaling. With Tinybird's consumer autoscaling, the infrastructure automatically handles increased load, but this alert helps you verify autoscaling effectiveness.
+
+### Error rate alert [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#error-rate-alert)
+
+Alert when the error rate exceeds a threshold:
+
+SELECT
+    datasource_id,
+    topic,
+    countIf(msg_type = 'error') as error_count,
+    count(*) as total_operations,
+    (countIf(msg_type = 'error') * 100.0 / count(*)) as error_rate_pct
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 15 minute
+GROUP BY datasource_id, topic
+HAVING error_rate_pct > 5
+ORDER BY error_rate_pct DESC High error rates indicate problems with your connector configuration, cluster connectivity, or data quality issues that need immediate attention.
+
+### Processing stall alert [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#processing-stall-alert)
+
+Alert when no messages are being processed:
+
+SELECT
+    datasource_id,
+    topic,
+    max(timestamp) as last_activity,
+    sum(processed_messages) as messages_in_window
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 10 minute
+GROUP BY datasource_id, topic
+HAVING messages_in_window = 0
+ORDER BY last_activity DESC This indicates that your consumer may have stopped, there's a connectivity issue, or the topic has no new messages.
+
+## Combine with other Service Data Sources [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#combine-with-other-service-data-sources)
+
+You can join `tinybird.kafka_ops_log` with other [Service Data Sources](/docs/forward/monitoring/service-datasources) for deeper analysis. This supports comprehensive analysis that correlates connector operations with Data Source ingestion metrics. Learn more about all available [Service Data Sources](/docs/forward/monitoring/service-datasources#tinybird-kafka-ops-log).
+
+### Correlate with Data Source operations [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#correlate-with-data-source-operations)
+
+Join Kafka operations log with [Data Source operations log](/docs/forward/monitoring/service-datasources#tinybird-datasources-ops-log) to understand the complete pipeline from message consumption to ClickHouse ingestion:
+
+SELECT
+    k.timestamp,
+    k.datasource_id,
+    k.topic,
+    k.partition,
+    k.processed_messages,
+    k.committed_messages,
+    d.rows as rows_in_datasource,
+    d.elapsed_time
+FROM tinybird.kafka_ops_log k
+LEFT JOIN (
+    SELECT
+        datasource_id,
+        rows,
+        elapsed_time,
+        timestamp
+    FROM tinybird.datasources_ops_log
+    WHERE event_type = 'append-kafka'
+      AND timestamp > now() - INTERVAL 1 hour
+) d ON k.datasource_id = d.datasource_id
+    AND toStartOfMinute(k.timestamp) = toStartOfMinute(d.timestamp)
+WHERE k.timestamp > now() - INTERVAL 1 hour
+  AND k.msg_type = 'info'
+ORDER BY k.timestamp DESC This helps you identify bottlenecks in the ingestion process and optimize your connector performance.
+
+### Analyze ingestion using Kafka meta columns [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#analyze-ingestion-using-kafka-meta-columns)
+
+Use the [Kafka meta columns](/docs/forward/get-data-in/connectors/kafka#kafka-meta-columns) in your Data Sources to analyze ingestion patterns. For example, track message gaps by analyzing offset sequences:
+
+SELECT
+    __partition,
+    __topic,
+    min(__offset) as min_offset,
+    max(__offset) as max_offset,
+    count(*) as message_count,
+    max(__offset) - min(__offset) + 1 as expected_count,
+    (max(__offset) - min(__offset) + 1) - count(*) as missing_messages
+FROM your_kafka_datasource
+WHERE timestamp > now() - INTERVAL 1 hour
+GROUP BY __partition, __topic
+HAVING missing_messages > 0 This helps identify if any messages were skipped during ingestion. You can also analyze distribution to verify your partition key design:
+
+SELECT
+    __partition,
+    count(*) as message_count,
+    count(DISTINCT __key) as unique_keys,
+    min(__timestamp) as first_message,
+    max(__timestamp) as last_message
+FROM your_kafka_datasource
+WHERE timestamp > now() - INTERVAL 24 hour
+GROUP BY __partition
+ORDER BY __partition This shows how messages are distributed across partitions, helping you understand if your partition assignment is balanced.
+
+## Schema evolution monitoring [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#schema-evolution-monitoring)
+
+Monitor schema changes and their impact on ingestion:
+
+SELECT
+    timestamp,
+    datasource_id,
+    topic,
+    msg,
+    count(*) as occurrence_count
+FROM tinybird.kafka_ops_log
+WHERE msg_type = 'warning'
+  AND (msg LIKE '%schema%' OR msg LIKE '%deserialization%')
+  AND timestamp > now() - INTERVAL 24 hour
+GROUP BY timestamp, datasource_id, topic, msg
+ORDER BY occurrence_count DESC This helps identify schema evolution issues and deserialization problems that may affect ingestion performance.
+
+## Performance tuning best practices [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#performance-tuning-best-practices)
+
+Based on monitoring data from `tinybird.kafka_ops_log` , follow these best practices:
+
+- **  Monitor consumer lag regularly**   : Set up alerts for high lag values to catch issues early. With Tinybird's serverless architecture, consumer autoscaling automatically handles increased load, but monitoring lag helps you verify that autoscaling is working effectively.
+- **  Track error patterns**   : Review error messages periodically to identify recurring issues. Common problems include partition assignment issues, deserialization failures, and connectivity problems.
+- **  Compare partition performance**   : If one partition has significantly higher lag than others, investigate the cause. This may indicate uneven message distribution and the need to review your partition key design.
+- **  Monitor throughput trends**   : Track processing rates over time to understand how the autoscaling infrastructure responds to varying message rates.
+- **  Use time windows**   : Filter queries by recent time windows (for example, last hour, last 24 hours) to focus on current state and avoid analyzing stale data.
+- **  Analyze partition assignment**   : Use partition-level metrics to understand if your partition assignment strategy is working effectively. Uneven partition loads may require rebalancing or adjustments to your setup.
+- **  Optimize partition key design**   : If you see uneven lag distribution across partitions, consider reviewing your partition key design to ensure messages are distributed evenly.
+
+For detailed performance optimization strategies, see the [performance optimization guide](/docs/forward/get-data-in/connectors/kafka/guides/performance-optimization).
+
+## Next steps [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#next-steps)
+
+### Kafka connector documentation [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#kafka-connector-documentation)
+
+- **[  Kafka connector guide](/docs/forward/get-data-in/connectors/kafka)**   - Complete setup, configuration, and troubleshooting guide
+- **[  Troubleshooting guide](/docs/forward/get-data-in/connectors/kafka/troubleshooting)**   - Common errors and solutions
+- **[  Performance optimization](/docs/forward/get-data-in/connectors/kafka/guides/performance-optimization)**   - Throughput tuning and best practices
+- **[  Partitioning strategies](/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies)**   - Partition optimization
+- **[  Schema management](/docs/forward/get-data-in/connectors/kafka/guides/schema-management)**   - Schema evolution and data type mapping
+
+### Monitoring and observability [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#monitoring-and-observability)
+
+- **[  Service Data Sources](/docs/forward/monitoring/service-datasources)**   - Explore other monitoring options
+- **[  Health checks](/docs/forward/monitoring/health-checks)**   - Automated monitoring setup
+- **[  Data Source operations](/docs/forward/monitoring/service-datasources#tinybird-datasources-ops-log)**   - Monitor ingestion performance
+- **[  Workspace jobs](/docs/forward/monitoring/jobs)**   - Additional pipeline observability
+
+### Integrate with monitoring tools [¶](https://www.tinybird.co/docs/forward/monitoring/kafka-clickhouse-monitoring#integrate-with-monitoring-tools)
+
+Connect monitoring queries to Grafana, Datadog, PagerDuty, Slack, and other alerting systems by querying the [ClickHouse HTTP interface](/docs/forward/work-with-data/publish-data/clickhouse-interface) directly. You can also create API endpoints from these queries, or export them in [Prometheus format](/docs/forward/work-with-data/publish-data/guides/consume-api-endpoints-in-prometheus-format) for Prometheus-compatible tools.
+
+
+
+---
+
 URL: https://www.tinybird.co/docs/forward/monitoring/jobs
 Last update: 2025-05-08T12:27:33.000Z
 Content:
@@ -3375,7 +4231,7 @@ curl \
 
 
 
-Replace the Tinybird API hostname or region with the [API region](/docs/api-reference#regions-and-endpoints) that matches your Workspace.
+The API host in the following examples must match your Workspace's region. See the full list of [regions and hosts](/docs/api-reference#regions-and-endpoints)
 
 ### SQL queries [¶](https://www.tinybird.co/docs/forward/monitoring/jobs#sql-queries-track-specific-job)
 
@@ -3700,7 +4556,7 @@ For example, when running a query against the Query API you can leverage a param
 curl -X POST \
     -H "Authorization: Bearer <PIPE:READ token>" \
     --data "% SELECT * FROM events LIMIT {{Int8(my_limit, 10)}}" \
-    "https://api.tinybird.co/v0/sql?my_limit=10&app_name=explorer" When you run the following queries, use the `parameters` attribute to access those queries where `app_name` equals "explorer":
+    "https://<your_host>/v0/sql?my_limit=10&app_name=explorer" When you run the following queries, use the `parameters` attribute to access those queries where `app_name` equals "explorer":
 
 ##### Simple Parameterized Query
 
@@ -3945,7 +4801,7 @@ See [tb infra](/docs/forward/dev-reference/commands/tb-infra) for more informati
 ---
 
 URL: https://www.tinybird.co/docs/forward/install-tinybird/migrate
-Last update: 2025-11-12T15:09:39.000Z
+Last update: 2025-12-29T13:18:00.000Z
 Content:
 ---
 title: "Migrate from Tinybird Classic · Tinybird Docs"
@@ -3965,30 +4821,46 @@ Copy as MD Tinybird Forward introduces a new way of working with your data proje
 
 Before migrating your workspace from Tinybird Classic, understand these key differences in Forward:
 
-- Development happens locally using the[  Tinybird Local container](/docs/forward/install-tinybird/local)   , not in the UI
-- The following features are not yet supported:
-  - DynamoDB connector
-  - BI Connector (check the[    ClickHouse HTTP Interface](/docs/forward/work-with-data/publish-data/clickhouse-interface)     )
-  - Shared data sources ([    supported](/docs/forward/get-data-in/data-sources#share-a-data-source)     , but not the creation of MVs from the destination workspace)
-  - Include files
-  - `VERSION`     tag in datafiles
-  - CI/CD workflows use different CLI commands than Classic. See[    CI/CD](/docs/forward/test-and-deploy/deployments/cicd)    .
-  - Resource-scoped tokens using the `:sql_filter`     suffix (e.g. `DATASOURCES:READ:datasource_name:sql_filter`    , `PIPES:READ:pipe_name:sql_filter`     ) are no longer supported and must be removed before migrating. Check[    JWTs](/docs/forward/administration/tokens/jwt)     instead.
-- The Tinybird support team will need to[  enable a feature flag](https://www.tinybird.co/docs/forward/install-tinybird/migrate#enable-forward-feature-flag)   to complete the migration.
+- Development happens locally using the[  Tinybird Local container](/docs/forward/install-tinybird/local)   , not in the UI.
+- Before starting the migration, remove all the branches that are not the main one. That can be done from the UI or using[  the CLI](/docs/classic/cli/command-ref#tb-branch)  .
+- Contact the Tinybird support team to remove any existing rollback releases. Only the live release must remain to proceed with the migration.
+- The Tinybird support team will need to[  enable a feature flag](https://www.tinybird.co/docs/forward/install-tinybird/migrate#contact-support-to-enable-the-forward-feature-flag)   to complete the migration to Forward.
+- The following features have limitations or require changes:
 
-**External ID Changes for AWS Integrations** : In Classic, Tinybird uses the workspace ID as the seed for generating External IDs, while in Forward it uses the connection name. This means the same connection will have a different External ID after migration.
-
-If you have AWS integrations (like S3 connectors or Sinks), you'll need to update your AWS Trust Policy to include the new External ID. To get the new External ID, access:
-
-https://api.tinybird.co/v0/integrations/s3/policies/trust-policy \
-  ?external_id_seed={CONNECTION_NAME} \ # Replace with your connection name
-  &token={YOUR_ADMIN_TOKEN} # Replace with your admin token This returns a Trust Policy with the new External ID. You should add this new External ID to your existing Trust Policy's `sts:ExternalId` array to maintain access during and after migration.
-
-**Additional S3 Sinks Permission** : If you use S3 Sinks, you'll also need to add the `s3:GetBucketLocation` permission to your AWS Access Policy. This new requirement allows connections to work with buckets across multiple regions without specifying the region when creating the connection, making it more flexible for multi-region deployments.
+| Feature | Status | Solution/Alternative |
+| --- | --- | --- |
+| DynamoDB connector | Not supported | No alternative available yet. Pause migration if you depend on DynamoDB connectors. |
+| BI Connector | Not supported | Use the[  ClickHouse HTTP Interface](/docs/forward/work-with-data/publish-data/clickhouse-interface)   instead. Most BI tools support ClickHouse HTTP connections. |
+| Shared data sources | Partially supported | Data source sharing is[  supported](/docs/forward/get-data-in/data-sources#share-a-data-source)   , but you cannot create Materialized Views from shared data sources in the destination workspace. Create Materialized Views in the source workspace instead. |
+| Include files | Not supported | Use[  tb secret](/docs/forward/dev-reference/commands/tb-secret)   for connector credentials and[  generic pipes](/docs/forward/work-with-data/pipes#create-generic-pipes)   to reuse query logic. See[  Replace include files](https://www.tinybird.co/docs/forward/install-tinybird/migrate#replace-include-files)   for migration steps. |
+| `VERSION`   tag in datafiles | Not supported | Remove any `VERSION`   tags from your datafiles before migrating. |
+| CI/CD workflows | Different commands | Forward uses different CLI commands. See[  CI/CD](/docs/forward/test-and-deploy/deployments/cicd)   for details. |
+| Testing strategy | Different approach | Regression tests and data quality tests are not supported in Forward. Fixture tests have been enhanced for easier test creation and management. See[  Test your project](/docs/forward/test-and-deploy/test-your-project)   for details. |
+| Resource-scoped tokens with `:sql_filter` | Not supported | Remove all tokens using the `:sql_filter`   suffix (e.g., `DATASOURCES:READ:datasource_name:sql_filter`   ) before migrating. Use[  JWTs](/docs/forward/administration/tokens/jwt)   instead. |
+| AWS External IDs (S3 connectors/Sinks) | Breaking change | External IDs change from workspace ID to connection name. Update AWS Trust Policies before migrating. See[  External ID changes for AWS integrations](https://www.tinybird.co/docs/forward/install-tinybird/migrate#external-id-changes-for-aws-integrations)   for details. |
+| `TYPE endpoint`   to the .pipe files | Breaking change | Add `TYPE endpoint`   parameter to the .pipe files to publish them as API endpoints |
 
 If these changes work for your use case, continue reading to learn how to migrate.
 
 Migration is permanent and cannot be reversed. After deploying with Forward, you cannot switch your workspace back to Classic.
+
+## External ID changes for AWS integrations [¶](https://www.tinybird.co/docs/forward/install-tinybird/migrate#external-id-changes-for-aws-integrations)
+
+If you use AWS integrations (S3 connectors or S3 Sinks), you must update your AWS Trust Policies before migrating to Forward.
+
+In Classic, Tinybird uses the workspace ID as the seed for generating External IDs, while in Forward it uses the connection name. This means the same connection will have a different External ID after migration.
+
+### Update AWS Trust Policy [¶](https://www.tinybird.co/docs/forward/install-tinybird/migrate#update-aws-trust-policy)
+
+To get the new External ID for your connection, access:
+
+https://<your_host>/v0/integrations/s3/policies/trust-policy \
+  ?external_id_seed={CONNECTION_NAME} \ # Replace with your connection name
+  &token={YOUR_ADMIN_TOKEN} # Replace with your admin token This returns a Trust Policy with the new External ID. Add this new External ID to your existing Trust Policy's `sts:ExternalId` array to maintain access during and after migration.
+
+### Additional S3 Sinks permission [¶](https://www.tinybird.co/docs/forward/install-tinybird/migrate#additional-s3-sinks-permission)
+
+If you use S3 Sinks, add the `s3:GetBucketLocation` permission to your AWS Access Policy. This requirement allows connections to work with buckets across multiple regions without specifying the region when creating the connection, making it more flexible for multi-region deployments.
 
 ## Migrate your workspace [¶](https://www.tinybird.co/docs/forward/install-tinybird/migrate#migrate-your-workspace)
 
@@ -4106,7 +4978,7 @@ See [Connectors](/docs/forward/get-data-in/connectors) for more information abou
 
 Some settings in the Kafka connector have been deprecated. You need to update your Kafka .connection file to use the most up-to-date [Kafka settings](/docs/forward/get-data-in/connectors/kafka#kafka-connection-settings).
 
-### Replace include files with secrets [¶](https://www.tinybird.co/docs/forward/install-tinybird/migrate#replace-include-files-with-secrets)
+### Replace include files [¶](https://www.tinybird.co/docs/forward/install-tinybird/migrate#replace-include-files)
 
 Include files are not supported in Forward. The fix depends on your use of include files:
 
@@ -4214,7 +5086,7 @@ Remember that `tb local stop` does not remove the data. `tb local restart` does,
 ---
 
 URL: https://www.tinybird.co/docs/forward/get-started/quick-start
-Last update: 2025-07-23T11:54:08.000Z
+Last update: 2026-01-29T22:06:15.000Z
 Content:
 ---
 title: "Quick start guide · Tinybird Docs"
@@ -4269,53 +5141,62 @@ After you've authenticated, run `tb local start` to start a Tinybird Local insta
 tb local start 4
 ### Create a project [¶](https://www.tinybird.co/docs/forward/get-started/quick-start#create-a-project)
 
+**Agent mode** : If you run `tb` without any arguments, the CLI will run in "agent mode", enabling you to work purely with natural language commands. Read more about [Tinybird code](/docs/forward/tinybird-code).
+
+If you use coding agents, install the Tinybird agent skills so they understand Tinybird project structure and best practices:
+
+npx skills add tinybirdco/tinybird-agent-skills Learn more in [AI agents](/docs/forward/analytics-agents).
+
 Start with the project structure `tb create`:
 
-tb create 
+tb create Output should be this folder scaffolding:
 
-# » Creating new project structure...
-# Learn more about data files https://www.tinybird.co/docs/forward/datafiles
-# ./datasources       → Where your data lives. Define the schema and settings for your tables.
-# ./endpoints         → Expose real-time HTTP APIs of your transformed data.
-# ./materializations  → Stream continuous updates of the result of a pipe into a new data source.
-# ./copies            → Capture the result of a pipe at a moment in time and write it into a target data source.
-# ./sinks             → Export your data to external systems on a scheduled or on-demand basis.
-# ./pipes             → Transform your data and reuse the logic in endpoints, materializations and copies.
-# ./fixtures          → Files with sample data for your project.
-# ./tests             → Test your pipe files with data validation tests.
-# ./connections       → Connect to and ingest data from popular sources: Kafka, S3 or GCS.
-# ✓ Scaffolding completed!
-
-
-# » Creating .env.local file...
-# ✓ Done!
+» Creating new project structure...
+Learn more about data files https://www.tinybird.co/docs/forward/datafiles
+./datasources       → Where your data lives. Define the schema and settings for your tables.
+./endpoints         → Expose real-time HTTP APIs of your transformed data.
+./materializations  → Stream continuous updates of the result of a pipe into a new data source.
+./copies            → Capture the result of a pipe at a moment in time and write it into a target data source.
+./sinks             → Export your data to external systems on a scheduled or on-demand basis.
+./pipes             → Transform your data and reuse the logic in endpoints, materializations and copies.
+./fixtures          → Files with sample data for your project.
+./tests             → Test your pipe files with data validation tests.
+./connections       → Connect to and ingest data from popular sources: Kafka, S3 or GCS.
+✓ Scaffolding completed!
 
 
-# » Creating CI/CD files for GitHub and GitLab...
-# ./.gitignore
-# ./.github/workflows/tinybird-ci.yml
-# ./.github/workflows/tinybird-cd.yml
-# ./.gitlab-ci.yml
-# ./.gitlab/tinybird/tinybird-ci.yml
-# ./.gitlab/tinybird/tinybird-cd.yml
-# ✓ Done!
+» Creating .env.local file...
+✓ Done!
 
 
-# » Creating rules...
-# ./.cursorrules
-# ✓ Done!
+» Creating CI/CD files for GitHub and GitLab...
+./.gitignore
+./.github/workflows/tinybird-ci.yml
+./.github/workflows/tinybird-cd.yml
+./.gitlab-ci.yml
+./.gitlab/tinybird/tinybird-ci.yml
+./.gitlab/tinybird/tinybird-cd.yml
+✓ Done!
 
 
-# » Creating Claude Code rules...
-# ./CLAUDE.md
-# ✓ Done! First things first, you need a data source. Use NYC yellow taxis [dataset](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page) if you don't have sample data.
+» Creating rules...
+./.cursorrules
+✓ Done!
 
-tb datasource create --url https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2025-05.parquet --name trips
-# Running against Tinybird Local
 
-# » Creating .datasource file...
-# /datasources/trips.datasource
-# ✓ .datasource created! Data sources are the definition of the database tables where you will store the data. More information about data sources [here](/docs/forward/dev-reference/datafiles/datasource-files).
+» Creating Claude Code rules...
+./CLAUDE.md
+✓ Done! First things first, you need a data source. Use NYC yellow taxis [dataset](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page) if you don't have sample data.
+
+tb datasource create --url https://tbrd.co/taxi_data.parquet --name trips This creates a new file in your project:
+
+Running against Tinybird Local
+
+» Creating .datasource file...
+/datasources/trips.datasource
+✓ .datasource created! Data sources are the definition of the database tables where you will store the data. More information about data sources [here](/docs/forward/dev-reference/datafiles/datasource-files).
+
+**Always run `tb` from your Tinybird project root** : When you run `tb` commands, the CLI loads environment variables from `.env` files in the current directory and its parent directories. If you run `tb` from a parent directory (for example, running `tb` from `./my-app/` when your Tinybird project is in `./my-app/tinybird/` ), the CLI may load unintended `.env` files from your application's root. Always execute `tb` commands from the root of your Tinybird project to ensure the correct environment variables are loaded.
 
 #### Content of /datasources/trips.datasource [¶](https://www.tinybird.co/docs/forward/get-started/quick-start#content-of-datasourcestrips-datasource)
 
@@ -4324,41 +5205,43 @@ Inspecting the file you see a description and the schema, with the column names,
 ##### datasources/trips.datasource
 
 DESCRIPTION >
-    Generated from https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2025-05.parquet
+    Generated from https://tbrd.co/taxi_data.parquet
 
 SCHEMA >
-    VendorID Int32 `json:$.VendorID`,
-    tpep_pickup_datetime DateTime64(6) `json:$.tpep_pickup_datetime`,
-    tpep_dropoff_datetime DateTime64(6) `json:$.tpep_dropoff_datetime`,
-    passenger_count Int64 `json:$.passenger_count`,
-    trip_distance Float64 `json:$.trip_distance`,
-    RatecodeID Int64 `json:$.RatecodeID`,
-    store_and_fwd_flag String `json:$.store_and_fwd_flag`,
-    PULocationID Int32 `json:$.PULocationID`,
-    DOLocationID Int32 `json:$.DOLocationID`,
-    payment_type Int64 `json:$.payment_type`,
-    fare_amount Float64 `json:$.fare_amount`,
-    extra Float64 `json:$.extra`,
-    mta_tax Float64 `json:$.mta_tax`,
-    tip_amount Float64 `json:$.tip_amount`,
-    tolls_amount Float64 `json:$.tolls_amount`,
-    improvement_surcharge Float64 `json:$.improvement_surcharge`,
-    total_amount Float64 `json:$.total_amount`,
-    congestion_surcharge Float64 `json:$.congestion_surcharge`,
-    Airport_fee Float64 `json:$.Airport_fee`,
-    cbd_congestion_fee Float64 `json:$.cbd_congestion_fee` **Agent mode** : Note that if you run simply `tb` , the CLI will run in "agent mode", enabling you to work purely with natural language commands. Read more about [Tinybird code](/docs/forward/tinybird-code).
+    VendorID Nullable(Int32) `json:$.VendorID`,
+    tpep_pickup_datetime Nullable(DateTime64(6)) `json:$.tpep_pickup_datetime`,
+    tpep_dropoff_datetime Nullable(DateTime64(6)) `json:$.tpep_dropoff_datetime`,
+    passenger_count Nullable(Int64) `json:$.passenger_count`,
+    trip_distance Nullable(Float64) `json:$.trip_distance`,
+    RatecodeID Nullable(Int64) `json:$.RatecodeID`,
+    store_and_fwd_flag Nullable(String) `json:$.store_and_fwd_flag`,
+    PULocationID Nullable(Int32) `json:$.PULocationID`,
+    DOLocationID Nullable(Int32) `json:$.DOLocationID`,
+    payment_type Nullable(Int64) `json:$.payment_type`,
+    fare_amount Nullable(Float64) `json:$.fare_amount`,
+    extra Nullable(Float64) `json:$.extra`,
+    mta_tax Nullable(Float64) `json:$.mta_tax`,
+    tip_amount Nullable(Float64) `json:$.tip_amount`,
+    tolls_amount Nullable(Float64) `json:$.tolls_amount`,
+    improvement_surcharge Nullable(Float64) `json:$.improvement_surcharge`,
+    total_amount Nullable(Float64) `json:$.total_amount`,
+    congestion_surcharge Nullable(Float64) `json:$.congestion_surcharge`,
+    Airport_fee Nullable(Float64) `json:$.Airport_fee`,
+    cbd_congestion_fee Nullable(Float64) `json:$.cbd_congestion_fee`
 
-5
-### Add fixtures data for testing [¶](https://www.tinybird.co/docs/forward/get-started/quick-start#add-fixtures-data-for-testing)
+ENGINE "MergeTree"
+# ENGINE_SORTING_KEY "user_id, timestamp"
+# ENGINE_TTL "timestamp + toIntervalDay(60)"
+# 📖 See the datafile reference at https://www.tinybird.co/docs/forward/dev-reference/datafiles/datasource-files""" 5
+### Add fixtures data for local testing [¶](https://www.tinybird.co/docs/forward/get-started/quick-start#add-fixtures-data-for-local-testing)
 
 It is important to test locally, and if you're going to add this file to your repo, it is better not to have real production data in case it contains PII. `tb mock` will create synthetic data for that, and with `--prompt` and `--rows` flags you can customize it.
 
-tb mock trips --prompt "data looks like this {'VendorID':1,'tpep_pickup_datetime':1746058026000,'tpep_dropoff_datetime':1746059055000,'passenger_count':1,'trip_distance':3.7,'RatecodeID':1,'store_and_fwd_flag':'N','PULocationID':140,'DOLocationID':202,'payment_type':1,'fare_amount':18.4,'extra':4.25,'mta_tax':0.5,'tip_amount':4.85,'tolls_amount':0,'improvement_surcharge':1,'total_amount':29,'congestion_surcharge':2.5,'Airport_fee':0,'cbd_congestion_fee':0.75} and location ids range go from 1 to 265" --rows 10000
-# Running against Tinybird Local
+tb mock trips Running against Tinybird Local
 
-# » Creating fixture for trips...
-# ✓ /fixtures/trips.ndjson created
-# ✓ Sample data for trips created with 10000 rows 6
+» Creating fixture for trips...
+✓ /fixtures/trips.ndjson created
+✓ Sample data for trips created with 10000 rows 6
 ### Add the lookup table and create an endpoint [¶](https://www.tinybird.co/docs/forward/get-started/quick-start#add-the-lookup-table-and-create-an-endpoint)
 
 Projects in Tinybird usually consist of data sources and API Endpoints to expose the query results. Create one to check in which zone passengers give bigger tips. Also, trips data source has two columns, `PULocationID` and `DOLocationID` that need a reference table to be understood. Add that table as well.
@@ -4369,21 +5252,21 @@ tb create \
     --prompt "Create the lookup table (data attached) and add an endpoint that finds which Zone is more likely to have better tips for a given pickup location (default to JFK Airport but make it dynamic so users enter the pickup zone in text).
     Note: Trips parquet file rows look like this: {'VendorID':1,'tpep_pickup_datetime':1746058026000,'tpep_dropoff_datetime':1746059055000,'passenger_count':1,'trip_distance':3.7,'RatecodeID':1,'store_and_fwd_flag':'N','PULocationID':140,'DOLocationID':202,'payment_type':1,'fare_amount':18.4,'extra':4.25,'mta_tax':0.5,'tip_amount':4.85,'tolls_amount':0,'improvement_surcharge':1,'total_amount':29,'congestion_surcharge':2.5,'Airport_fee':0,'cbd_congestion_fee':0.75}
     Note 2: for the lookup, prioritize subqueries over joins" \
-    --data "https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv"
+    --data "https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv" This will create the needed resources.
 
-# » Creating resources...
-# ./datasources/taxi_zone_lookup.datasource
-# ./endpoints/taxi_zone_lookup_endpoint.pipe
-# ./endpoints/best_tip_zones.pipe
+» Creating resources...
+./datasources/taxi_zone_lookup.datasource
+./endpoints/taxi_zone_lookup_endpoint.pipe
+./endpoints/best_tip_zones.pipe
 
-# » Creating project description...
-# ./README.md
-# ✓ Resources created!
+» Creating project description...
+./README.md
+✓ Resources created!
 
 
-# » Generating fixtures...
-# ./fixtures/taxi_zone_lookup.csv
-# ✓ Done!
+» Generating fixtures...
+./fixtures/taxi_zone_lookup.csv
+✓ Done!
 #### /datasources/taxi_zone_lookup.datasource [¶](https://www.tinybird.co/docs/forward/get-started/quick-start#datasourcestaxi-zone-lookup-datasource)
 
 In this case, as it is a CSV data source there are no JSONPaths and column names are taken from CSV headers.
@@ -4398,6 +5281,11 @@ SCHEMA >
     `borough` String,
     `zone` String,
     `service_zone` String
+
+ENGINE "MergeTree"
+# ENGINE_SORTING_KEY "user_id, timestamp"
+# ENGINE_TTL "timestamp + toIntervalDay(60)"
+# 📖 See the datafile reference at https://www.tinybird.co/docs/forward/dev-reference/datafiles/datasource-files%
 #### /fixtures/taxi_zone_lookup.csv [¶](https://www.tinybird.co/docs/forward/get-started/quick-start#fixturestaxi-zone-lookup-csv)
 
 A sample of the CSV data so you can test locally.
@@ -4417,50 +5305,56 @@ Endpoints are a kind of [pipe](/docs/forward/work-with-data/pipes) that you can 
 ##### endpoints/best_tip_zones.pipe
 
 DESCRIPTION >
-    Finds which Zone is more likely to have better tips for a given pickup location
+    Endpoint that finds the zone most likely to have better tips for a given pickup location
 
-NODE best_tip_zones_query
+NODE pickup_zone_lookup
 SQL >
     %
-    WITH pickup_zone AS (
-        SELECT locationid
-        FROM taxi_zone_lookup
-        WHERE zone = {{String(pickup_zone, 'JFK Airport')}}
-        LIMIT 1
-    )
-    SELECT
-        tz.zone AS dropoff_zone,
-        tz.borough AS dropoff_borough,
-        AVG(tip_amount / fare_amount) AS avg_tip_ratio,
-        COUNT(*) AS trip_count
-    FROM trips t
-    JOIN taxi_zone_lookup tz ON t.DOLocationID = tz.locationid
-    WHERE
-        t.PULocationID = (SELECT locationid FROM pickup_zone)
-        AND t.fare_amount > 0
-        AND t.payment_type = 1 -- Credit card payments only
-    GROUP BY dropoff_zone, dropoff_borough
-    ORDER BY avg_tip_ratio DESC
-    LIMIT 20
+    SELECT locationid
+    FROM taxi_zone_lookup
+    WHERE zone ILIKE concat('%', {{String(pickup_zone, 'JFK Airport')}}, '%')
+    LIMIT 1
 
-TYPE ENDPOINT 7
+NODE tip_analysis
+SQL >
+    %
+    SELECT
+        t.DOLocationID,
+        tz.zone as destination_zone,
+        avg(t.tip_amount) as avg_tip,
+        count(*) as trip_count,
+        avg(t.tip_amount / nullif(t.total_amount, 0)) as tip_percentage
+    FROM trips t
+    LEFT JOIN taxi_zone_lookup tz ON t.DOLocationID = tz.locationid
+    WHERE t.PULocationID = (SELECT locationid FROM pickup_zone_lookup)
+        AND t.tip_amount > 0
+        AND t.total_amount > 0
+    GROUP BY t.DOLocationID, tz.zone
+    HAVING trip_count >= 10
+    ORDER BY avg_tip DESC
+    LIMIT 10
+
+TYPE endpoint 7
 ### Run the development server [¶](https://www.tinybird.co/docs/forward/get-started/quick-start#run-the-development-server)
 
-To start developing, run the `tb dev` command and start editing the data files within the created project directory. This command starts the development server and also provides a console to interact with the database. The project will automatically rebuild and reload upon saving changes to any file.
+To start developing, run the `tb dev` command and start editing the data files within the created project directory.
 
-tb dev
+tb dev This command starts the development server and also provides a console to interact with the database. The project will automatically rebuild and reload upon saving changes to any file.
 
-# » Building project...
-# ✓ datasources/taxi_zone_lookup.datasource created
-# ✓ datasources/trips.datasource created
-# ✓ endpoints/taxi_zone_lookup_endpoint.pipe created
-# ✓ endpoints/best_tip_zones.pipe created
+» Exposing your project to Tinybird UI...
+✓ Access your project at http://cloud.tinybird.co/local/7181/gnz_fwd_tst/project
 
-# ✓ Build completed in 1.5s
+» Building project...
+✓ datasources/taxi_zone_lookup.datasource created
+✓ datasources/trips.datasource created
+✓ endpoints/taxi_zone_lookup_endpoint.pipe created
+✓ endpoints/best_tip_zones.pipe created
 
-# Watching for changes...
+✓ Build completed in 1.5s
 
-# tb » 8
+Watching for changes...
+
+tb » 8
 ### Test the API Endpoint [¶](https://www.tinybird.co/docs/forward/get-started/quick-start#test-the-api-endpoint)
 
 The goal is to have a working endpoint that you can call from other applications.
@@ -4479,52 +5373,49 @@ Outside the dev server, copy the token value with `tb token copy` and use it to 
 
 tb token copy "admin local_testing@tinybird.co" && TB_LOCAL_TOKEN=$(pbpaste)
 
-curl -X GET "http://localhost:7181/v0/pipes/best_tip_zones.json?token=$TB_LOCAL_TOKEN&pickup_zone=Newark+Airport"
-# {
-#         "meta":
-#         [
-#                 {
-#                         "name": "dropoff_zone",
-#                         "type": "String"
-#                 },
-#                 {
-#                         "name": "dropoff_borough",
-#                         "type": "String"
-#                 },
-#                 {
-#                         "name": "avg_tip_ratio",
-#                         "type": "Float64"
-#                 },
-#                 {
-#                         "name": "trip_count",
-#                         "type": "UInt64"
-#                 }
-#         ],
-#
-#         "data":
-#         [
-#                 {
-#                         "dropoff_zone": "Newark Airport",
-#                         "dropoff_borough": "EWR",
-#                         "avg_tip_ratio": 0.22222222219635465,
-#                         "trip_count": 8
-#                 }
-#         ],
-#
-#         "rows": 1,
-#
-#         "rows_before_limit_at_least": 1,
-#
-#         "statistics":
-#         {
-#                 "elapsed": 0.018887949,
-#                 "rows_read": 10530,
-#                 "bytes_read": 339680
-#         }
-# } 9
+curl -X GET "http://localhost:7181/v0/pipes/best_tip_zones.json?token=$TB_LOCAL_TOKEN&pickup_zone=Newark+Airport" {
+        "meta":
+        [
+                {
+                        "name": "dropoff_zone",
+                        "type": "String"
+                },
+                {
+                        "name": "dropoff_borough",
+                        "type": "String"
+                },
+                {
+                        "name": "avg_tip_ratio",
+                        "type": "Float64"
+                },
+                {
+                        "name": "trip_count",
+                        "type": "UInt64"
+                }
+        ],
+        "data":
+        [
+                {
+                        "dropoff_zone": "Newark Airport",
+                        "dropoff_borough": "EWR",
+                        "avg_tip_ratio": 0.22222222219635465,
+                        "trip_count": 8
+                }
+        ],
+        "rows": 1,
+        "rows_before_limit_at_least": 1,
+        "statistics":
+        {
+                "elapsed": 0.018887949,
+                "rows_read": 10530,
+                "bytes_read": 339680
+        }
+} Output is a JSON with the results and some metadata, but note you can change the extension and get the endpoint result as .csv, .parquet...
+
+9
 ### Deploy to Tinybird Cloud [¶](https://www.tinybird.co/docs/forward/get-started/quick-start#deploy-to-tinybird-cloud)
 
-To deploy to Tinybird Cloud, create a deployment using the `--cloud` flag. This prepares all the resources in the cloud environment.
+To deploy to Tinybird Cloud, create a deployment using the `--cloud` flag. This prepares all the resources in the Cloud Live environment.
 
 tb --cloud deploy 10
 ### Append data to Tinybird Cloud [¶](https://www.tinybird.co/docs/forward/get-started/quick-start#append-data-to-tinybird-cloud)
@@ -4895,7 +5786,7 @@ Best for real-time streaming data, and can be used to send data directly from th
 
 ##### Events API ingestion
 
-curl -X POST "https://api.tinybird.co/v0/events?name=user_events" \
+curl -X POST "https://<your_host>/v0/events?name=user_events" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"user_id": 123, "event_type": "page_view", "timestamp": "2024-01-15 10:30:00", "properties": "{\"page\": \"/dashboard\"}"}' Learn more about the [Events API](/docs/api-reference/events-api).
@@ -4906,7 +5797,7 @@ For batch ingestion of CSV, Parquet, or NDJSON files:
 
 ##### Batch file ingestion
 
-curl -X POST "https://api.tinybird.co/v0/datasources?mode=append&name=user_events" \
+curl -X POST "https://<your_host>/v0/datasources?mode=append&name=user_events" \
   -H "Authorization: Bearer YOUR_TOKEN" \
   -F "csv=@user_events.csv" Learn more about the [Data Sources API](/docs/api-reference/datasource-api).
 
@@ -5000,7 +5891,7 @@ SQL >
 
 TYPE ENDPOINT Access the endpoint:
 
-curl "https://api.tinybird.co/v0/pipes/user_activity.json?user_id=123&start_date=2024-01-01" \
+curl "https://<your_host>/v0/pipes/user_activity.json?user_id=123&start_date=2024-01-01" \
   -H "Authorization: Bearer READ_TOKEN" Learn more about [API Endpoints](/docs/forward/work-with-data/publish-data/endpoints).
 
 ### BI integration using ClickHouse interface [¶](https://www.tinybird.co/docs/forward/get-started/migrate-from-clickhouse#bi-integration-using-clickhouse-interface)
@@ -5184,7 +6075,7 @@ Copy as MD You can integrate Tinybird with various data sources and devtools to 
 
 ## List of integrations [¶](https://www.tinybird.co/docs/forward/get-started/integrations#list-of-integrations)
 
-View All Storage Streaming & Pub/Sub Observability & Logs BI & Visualization Authentication Language Clients & ORMs Notifications Version Control AI & LLMs Billing Devtools
+View All Kafka Storage Webhooks Streaming & Pub/Sub Databases & CDC BI & Visualization Observability & Logs Language Clients Billing & Payments Notifications Authentication Version Control AI & LLMs Devtools
 
 ---
 
@@ -5926,6 +6817,197 @@ Although replacements are atomic, Tinybird can't assure data consistency if you 
 
 ---
 
+URL: https://www.tinybird.co/docs/forward/get-data-in/ingestion-protection
+Last update: 2025-12-04T08:55:50.000Z
+Content:
+---
+title: "Ingestion Protection · Tinybird Docs"
+theme-color: "#171612"
+description: "How Tinybird prevents ingestion overload, ensures fair resource usage, and protects your data pipelines."
+inkeep:version: "forward"
+---
+
+
+
+
+# Ingestion protection [¶](https://www.tinybird.co/docs/forward/get-data-in/ingestion-protection#ingestion-protection)
+
+Copy as MD Tinybird provides **ingestion flow control mechanisms** to prevent resource saturation and ensure fair usage across shared infrastructure.
+These mechanisms protect your ingestion pipelines from causing general service degradation or even data loss, maintaining overall system health and reliability.
+
+When needed, these mechanisms may **temporarily delay ingestion** (reducing data freshness) or **temporarily reject ingestion requests**.
+In all cases, Tinybird monitors these events closely and sends you **notifications** so that you can take timely corrective action.
+
+## Understanding the challenges of data ingestion [¶](https://www.tinybird.co/docs/forward/get-data-in/ingestion-protection#understanding-the-challenges-of-data-ingestion)
+
+[ClickHouse®](https://clickhouse.com/docs/en) is not optimized for high-frequency writes.
+Frequent inserts can saturate system resources, but many real-time use cases benefit from near-continuous data ingestion.
+[Asynchronous Inserts](https://clickhouse.com/docs/optimize/asynchronous-inserts) can help in some cases, but they come with important limitations, including potential issues with Materialized Views and the risk of data duplication.
+
+Tinybird goes beyond the base capabilities of ClickHouse® to offer a **complete data ingestion solution**.
+You can send high-frequency data through:
+
+- **  The Events API**[  Reference](events-api)
+- **  Data Connectors**[  Kafka Ingestion](connectors/kafka)
+
+To make the most of these services, it’s important to:
+
+- Understand your ingestion patterns.
+- Plan your throughput and resource requirements.
+- Monitor and act when ingestion begins to saturate your current[  plan’s limits](app/__forward/pricing/limits)  .
+
+This section explains how Tinybird’s **High-Frequency Ingestion (HFI)** platform and **backpressure mechanisms** preserve system stability for both dedicated and shared environments.
+
+## How frequent ingestion works [¶](https://www.tinybird.co/docs/forward/get-data-in/ingestion-protection#how-frequent-ingestion-works)
+
+To avoid overwhelming the ClickHouse® clusters, Tinybird gathers incoming insertions over a short period known as the **flush interval** before writing (flushing) them into the ClickHouse® tables that back your landing Data Sources.
+
+- The**  flush interval**   duration depends on your workspace’s billing plan.
+- A**  longer flush interval**   reduces cluster load but increases data freshness latency.
+
+When ingestion flushes occur, data is written **separately for each partition** of the destination table.
+Therefore:
+
+- A high number of partitions per insertion can still cause ingestion bottlenecks.
+- It’s important to <a href="app/__sql-reference/engines/mergetree">**  define partitioning and insertion strategies carefully**</a>   to avoid excessive pressure on the ingestion system.
+
+## When writes fail [¶](https://www.tinybird.co/docs/forward/get-data-in/ingestion-protection#when-writes-fail)
+
+Ingestion into a landing Data Source may fail for multiple reasons, including:
+
+- Cluster saturation
+- Network connectivity problems
+- Timeout errors
+- SQL execution errors
+
+Tinybird classifies errors as either:
+
+- **  Retriable**   — temporary issues that can be retried later.
+- **  Non-retriable**   — permanent issues such as invalid data or SQL errors.
+
+### Retriable failures [¶](https://www.tinybird.co/docs/forward/get-data-in/ingestion-protection#retriable-failures)
+
+Data affected by retriable errors is stored in a **staging area** and automatically retried later.
+During this process:
+
+- You may experience ingestion delays.
+- Tinybird’s ingestion logic avoids duplicates caused for partially inserted data for up to**  5 hours**  .  
+  After this 5-hour window, de-duplication is not guaranteed.
+
+### Non-retriable failures [¶](https://www.tinybird.co/docs/forward/get-data-in/ingestion-protection#non-retriable-failures)
+
+Data affected by non-retriable errors is kept in the **quarantine table** associated with your Data Source.
+You can inspect these records and take corrective action manually.
+
+**Be aware of failures**
+
+- When using the**  Events API**   , make use of the `wait`   parameter to[  obtain synchronous confirmation of every write](events-api#write-acknowledgements)
+- Access the[  Services data sources](../monitoring/service-datasources)   to detect problems
+
+## Backpressure and flow control [¶](https://www.tinybird.co/docs/forward/get-data-in/ingestion-protection#backpressure-and-flow-control)
+
+Tinybird’s **backpressure mechanisms** preserve the health of your ingestion infrastructure by isolating problematic Data Sources before they affect others.
+
+When a particular Data Source causes excessive resource consumption — for example, due to:
+
+- Inefficient materialized views
+- Poor partitioning configuration
+- Long-running queries
+
+— the system automatically applies backpressure in two escalating phases.
+
+### 1. Delayed ingestion [¶](https://www.tinybird.co/docs/forward/get-data-in/ingestion-protection#1-delayed-ingestion)
+
+The first line of defense is **delayed ingestion**.
+When backpressure is activated, insertions are temporarily delayed and resumed when resource consumption returns to safe levels.
+
+Tinybird continuously monitors:
+
+- The number of delayed insertions
+- The age of pending insertions
+
+If these metrics increase beyond safe limits, the system escalates protection to the next phase.
+
+#### Typical triggers for delayed ingestion: [¶](https://www.tinybird.co/docs/forward/get-data-in/ingestion-protection#typical-triggers-for-delayed-ingestion)
+
+- High**  memory usage**
+- Excessive**  throughput**   , exceeding cluster capacity
+
+Throughput overload can result not only from ingestion frequency but also from:
+
+> - Large payload sizes
+- Long insert durations (e.g., due to complex materialized views)
+- High partition counts
+- Your cluster’s capacity, defined by your billing plan, which determines when these limits are reached.
+
+Whenever possible, Tinybird applies the delay **only to the affected Data Source** , minimizing the impact on your workspace or cluster.
+
+During delayed ingestion:
+
+- Data is accepted, but its insertion into landing tables is**  postponed**  .
+- You’ll see**  reduced data freshness**   (similar to a longer flush interval).
+- If the issue is transient, ingestion will recover automatically.
+
+You will receive an **email notification** whenever delayed ingestion is activated.
+Always review these notifications and take corrective action if necessary.
+
+### 2. Temporary ingestion restriction [¶](https://www.tinybird.co/docs/forward/get-data-in/ingestion-protection#2-temporary-ingestion-restriction)
+
+If ingestion delays persist and accumulated data grows beyond safe thresholds, Tinybird temporarily **rate limits ingestion** for the affected Data Source (by applying a temporary rate limit of 1 request/message per second for one minute).
+
+These restrinctions can be applied also when the **CPU usage** exceeds the plan limits.
+
+When this occurs:
+
+- **  Events API**   calls return HTTP**  429**   responses with details about the cause.
+- **  Data Connectors**   are paused temporarily and will automatically attempt recovery.
+
+You’ll receive an **email alert** immediately when ingestion is denied.
+
+This temporary service denial prevents cascading issues that could otherwise impact system stability.
+In most cases, ingestion resumes automatically once the issue is resolved.
+
+If the problem persists:
+
+- Review the metrics and logs associated with your ingestion workload.
+- Check for inefficient queries, heavy partitioning, or high system load.
+- Contact <a href="app/__docs/support/index">**  Tinybird Support**</a>   if you cannot identify the root cause.
+
+In rare cases, ingestion protection may be triggered by issues unrelated to your ingestion (e.g., cloud provider disruptions).
+Rest assured that our monitoring systems will detect and remediate such situations as quickly as possible.
+
+## Best practices [¶](https://www.tinybird.co/docs/forward/get-data-in/ingestion-protection#best-practices)
+
+To reduce the likelihood of backpressure activation:
+
+- Design**  efficient partitioning strategies**  .
+- Optimize**  materialized views**   and avoid long-running transformations during ingestion.
+- Batch inserts where possible rather than sending individual events. Use the appropriate ingestion mechanism to your scenario (e.g. for large, infrequent writes you can ingest[  data from files](local-file)   or[  from S3](connectors/s3)  .
+- Monitor ingestion metrics regularly.
+- Pay attention to**  flush intervals**  ,**  notifications**   , and**  system alerts**  .
+- Choose the right**  billing plan**   for your ingestion needs, and consider upgrading when ingestion volume or concurrency approaches the limits of your current plan.
+
+## Summary [¶](https://www.tinybird.co/docs/forward/get-data-in/ingestion-protection#summary)
+
+Tinybird’s ingestion protection mechanisms ensure:
+
+- **  Fair usage**   across users and workspaces
+- **  Reliability**   of ingestion pipelines
+- **  Automatic recovery**   from transient issues
+- **  Transparent communication**   through alerts and monitoring
+
+These mechanisms — combining **delayed ingestion**, **automatic retries** , and **temporary rate limiting** — form a robust framework to keep your ingestion stable, efficient, and predictable.
+
+**See also:**
+
+- [  Events API Reference](events-api)
+- [  Kafka Connector Guide](connectors/kafka)
+- [  Data Source Quarantine Tables](quarantine)
+
+
+
+---
+
 URL: https://www.tinybird.co/docs/forward/get-data-in/guides
 Last update: 2025-05-09T07:54:31.000Z
 Content:
@@ -5955,7 +7037,6 @@ Each guide provides step-by-step instructions and best practices for setting up 
 - [  Estuary](/docs/forward/get-data-in/guides/ingest-with-estuary)
 - [  GitHub](/docs/forward/get-data-in/guides/ingest-from-github)
 - [  GitLab](/docs/forward/get-data-in/guides/ingest-from-gitlab)
-- [  Google Cloud Storage](/docs/forward/get-data-in/guides/ingest-from-google-gcs)
 - [  Google Pub/Sub](/docs/forward/get-data-in/guides/ingest-from-google-pubsub)
 - [  Knock](/docs/forward/get-data-in/guides/ingest-from-knock)
 - [  LiteLLM](/docs/forward/get-data-in/guides/ingest-litellm)
@@ -5983,7 +7064,7 @@ Each guide provides step-by-step instructions and best practices for setting up 
 ---
 
 URL: https://www.tinybird.co/docs/forward/get-data-in/events-api
-Last update: 2025-09-19T09:15:14.000Z
+Last update: 2025-12-04T08:55:50.000Z
 Content:
 ---
 title: "Send events · Tinybird Docs"
@@ -6055,18 +7136,18 @@ Here is an example of sending a JSON event compressed with Gzip from the command
 echo '{"timestamp":"2022-10-27T11:43:02.099Z","transaction_id":"8d1e1533-6071-4b10-9cda-b8429c1c7a67","name":"Bobby Drake","email":"bobby.drake@pressure.io","age":42,"passport_number":3847665,"flight_from":"Barcelona","flight_to":"London","extra_bags":1,"flight_class":"economy","priority_boarding":false,"meal_choice":"vegetarian","seat_number":"15D","airline":"Red Balloon"}' | gzip > body.gz 
 
 curl \
-    -X POST 'https://api.tinybird.co/v0/events?name=gzip_events_example' \
+    -X POST 'https://<your_host>/v0/events?name=gzip_events_example' \
     -H "Authorization: Bearer <AUTH_TOKEN>" \
     -H "Content-Encoding: gzip" \
     --data-binary @body.gz
-## Write operation acknowledgements [¶](https://www.tinybird.co/docs/forward/get-data-in/events-api#write-operation-acknowledgements)
+## Write operation acknowledgements [¶](https://www.tinybird.co/docs/forward/get-data-in/events-api#write-acknowledgements)
 
 When you send data to the Events API, you usually receive an `HTTP202` response, which indicates that the request was successful, although it doesn't confirm that the data has been committed into the underlying database. This is useful when guarantees on writes aren't strictly necessary.
 
 Typically, it takes under two seconds to receive a response from the Events API. For example:
 
 curl \
-    -X POST 'https://api.tinybird.co/v0/events?name=events_example' \
+    -X POST 'https://<your_host>/v0/events?name=events_example' \
     -H "Authorization: Bearer <AUTH_TOKEN>" \
     -d $'{"timestamp":"2022-10-27T11:43:02.099Z"}'
 
@@ -6081,7 +7162,7 @@ Using `wait=true` with your request asks the Events API to wait for acknowledgem
 Adding `wait=true` to your request can result in a slower response time. Use a timeout of at least 10 seconds when waiting for the response. For example:
 
 curl \
-    -X POST 'https://api.tinybird.co/v0/events?name=events_example&wait=true' \
+    -X POST 'https://<your_host>/v0/events?name=events_example&wait=true' \
     -H "Authorization: Bearer <AUTH_TOKEN>" \
     -d $'{"timestamp":"2022-10-27T11:43:02.099Z"}'
 
@@ -6096,7 +7177,7 @@ curl \
 ---
 
 URL: https://www.tinybird.co/docs/forward/get-data-in/data-sources
-Last update: 2025-09-05T14:16:54.000Z
+Last update: 2025-12-04T16:49:55.000Z
 Content:
 ---
 title: "Data sources · Tinybird Docs"
@@ -6125,7 +7206,11 @@ SCHEMA >
     `session_id` String `json:$.session_id`,
     `action` LowCardinality(String) `json:$.action`,
     `version` LowCardinality(String) `json:$.version`,
-    `payload` String `json:$.payload` See all syntax options in the [Reference](/docs/forward/dev-reference/datafiles/datasource-files).
+    `payload` String `json:$.payload`
+
+ENGINE "MergeTree"
+ENGINE_SORTING_KEY "session_id, timestamp"
+ENGINE_TTL "timestamp + toIntervalDay(60)" See all syntax options in the [Reference](/docs/forward/dev-reference/datafiles/datasource-files).
 
 ## Create Data Sources [¶](https://www.tinybird.co/docs/forward/get-data-in/data-sources#create-data-sources)
 
@@ -6200,12 +7285,12 @@ See the [Quarantine](/docs/forward/get-data-in/quarantine) page for more details
 ---
 
 URL: https://www.tinybird.co/docs/forward/get-data-in/data-operations
-Last update: 2025-09-05T13:55:34.000Z
+Last update: 2025-12-03T14:21:32.000Z
 Content:
 ---
 title: "Data Operations · Tinybird Docs"
 theme-color: "#171612"
-description: "Learn how to perform various data operations in Tinybird including GDPR-compliant data deletion."
+description: "Replace and delete data, GDPR-compliant."
 inkeep:version: "forward"
 ---
 
@@ -6214,18 +7299,21 @@ inkeep:version: "forward"
 
 # Data Operations [¶](https://www.tinybird.co/docs/forward/get-data-in/data-operations#data-operations)
 
-Copy as MD This section covers various data operations you can perform in Tinybird to manage and maintain your Data Sources effectively.
+Copy as MD After ingesting data into Tinybird, you might need to perform various operations to maintain and optimize your data.
 
-## Available Operations [¶](https://www.tinybird.co/docs/forward/get-data-in/data-operations#available-operations)
+This section covers common data operations like:
 
+- [  Replacing and deleting data](./data-operations/replace-and-delete-data)   - Update or remove data selectively or entirely from your Data Sources.
 - [  GDPR-Compliant Data Deletion](./data-operations/gdpr-compliant-data-deletion)   - Learn how to delete user data to maintain GDPR compliance using various methods and best practices.
+
+These operations help you maintain data quality, adapt to changing requirements, and ensure your data pipeline runs smoothly. Whether you need to fix data issues, modify schemas, or automate routine tasks, Tinybird provides the tools to manage your data effectively.
 
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/get-data-in/connectors
-Last update: 2025-05-08T13:40:58.000Z
+Last update: 2025-12-18T21:56:34.000Z
 Content:
 ---
 title: "Connectors · Tinybird Docs"
@@ -6250,6 +7338,31 @@ Each connector is fully managed by Tinybird and requires minimal setup - typical
 - Scheduling and orchestration
 
 You can configure connectors using the Tinybird CLI, making it easy to incorporate them into your data workflows and CI/CD pipelines.
+
+## Create a connection [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors#create-a-connection)
+
+To create a new connection to a service, run the<a href="/docs/forward/dev-reference/commands/tb-connection"> `tb connection create` command</a>:
+
+tb connection create <type> Where `<type>` is one of the available connector types:
+
+- `kafka`   - Create a[  Kafka connection](/docs/forward/get-data-in/connectors/kafka)
+- `s3`   - Create an[  Amazon S3 connection](/docs/forward/get-data-in/connectors/s3)
+- `gcs`   - Create a[  Google Cloud Storage connection](/docs/forward/get-data-in/connectors/gcs)
+
+The CLI will guide you through the configuration process, prompting you for the required credentials and settings. Once created, the connection will be saved as a `.connection` file in your project's `connections/` folder.
+
+You can also create the `.connection` file manually. See [Connection files](/docs/forward/dev-reference/datafiles/connection-files) for more details.
+
+## Delete a connection [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors#delete-a-connection)
+
+Connections and data sources are independent resources in Tinybird. When you delete a data source that uses a connection, the connection itself is not deleted - it remains in your project with zero connected data sources. This allows you to reuse the connection for new data sources without reconfiguring credentials.
+
+To delete a connection from Tinybird:
+
+1. Remove the `.connection`   file from your project's `connections/`   folder.
+2. Deploy your changes using the `--allow-destructive-operations`   flag to confirm the removal:
+
+tb deploy --allow-destructive-operations Before deleting a connection, make sure no data sources are using it. If data sources reference the connection, the deployment will fail. Remove the connection reference from all data sources first.
 
 ## Available connectors [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors#available-connectors)
 
@@ -7427,6 +8540,7 @@ Copy as MD The following list shows all available commands in the Tinybird comma
 - [  tb deployment](/docs/forward/dev-reference/commands/tb-deployment)
 - [  tb dev](/docs/forward/dev-reference/commands/tb-dev)
 - [  tb endpoint](/docs/forward/dev-reference/commands/tb-endpoint)
+- [  tb fmt](/docs/forward/dev-reference/commands/tb-fmt)
 - [  tb info](/docs/forward/dev-reference/commands/tb-info)
 - [  tb infra](/docs/forward/dev-reference/commands/tb-infra)
 - [  tb job](/docs/forward/dev-reference/commands/tb-job)
@@ -7437,6 +8551,7 @@ Copy as MD The following list shows all available commands in the Tinybird comma
 - [  tb mock](/docs/forward/dev-reference/commands/tb-mock)
 - [  tb open](/docs/forward/dev-reference/commands/tb-open)
 - [  tb pipe](/docs/forward/dev-reference/commands/tb-pipe)
+- [  tb pull](/docs/forward/dev-reference/commands/tb-pull)
 - [  tb secret](/docs/forward/dev-reference/commands/tb-secret)
 - [  tb sink](/docs/forward/dev-reference/commands/tb-sink)
 - [  tb sql](/docs/forward/dev-reference/commands/tb-sql)
@@ -7450,7 +8565,7 @@ Copy as MD The following list shows all available commands in the Tinybird comma
 ---
 
 URL: https://www.tinybird.co/docs/forward/analytics-agents/mcp
-Last update: 2025-07-21T12:09:15.000Z
+Last update: 2026-01-29T22:06:15.000Z
 Content:
 ---
 title: "MCP server · Tinybird Docs"
@@ -7470,11 +8585,64 @@ This integration is ideal when you want AI agents to autonomously query your dat
 
 Our server only supports Streamable HTTP as the transport protocol. If your MCP client doesn't support it, you'll need to use the `mcp-remote` package as a bridge.
 
+## Before you start [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp#before-you-start)
+
+Before connecting to the Tinybird MCP server, ensure:
+
+- You have a Tinybird account and workspace
+- Find your Auth Token with appropriate scopes for your use case. Details below.
+- Your MCP client supports either Streamable HTTP or can use the `mcp-remote`   bridge
+
+### Authentication and Token Requirements [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp#authentication-and-token-requirements)
+
+You'll need an Auth Token with the following scopes depending on which tools you want to access:
+
+**Static tokens**
+
+Use the `admin token` to access all available tools or resource-scoped tokens for granular access to endpoint tools.
+
+Copy your static tokens from the [dashboard](https://cloud.tinybird.co/tokens)
+
+**JSON Web tokens (JWTs)**
+
+Use them for granular access to endpoint tools, multi-tenancy, concurrency control and more.
+
+Learn more about authentication tokens [here](/docs/administration/tokens)
+
+### MCP clients requiring a bridge [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp#mcp-clients-requiring-a-bridge)
+
+For clients that don't support Streamable HTTP natively:
+
+// Get your TINYBIRD_TOKEN from https://cloud.tinybird.co/tokens
+{
+  "mcpServers": {
+    "tinybird": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.tinybird.co?token=TINYBIRD_TOKEN"
+      ]
+    }
+  }
+} All new Tinybird tokens have embedded the Tinybird API host, for old tokens you can provide your API host as a query param `https://mcp.tinybird.co?token=TINYBIRD_TOKEN&host=https://api.tinybird.co` . Get the list of Tinybird API hosts [here](/api-reference#current-tinybird-regions)
+
 ## Quickstart [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp#quickstart)
 
 Get a [token](https://cloud.tinybird.co/tokens) and use this URL in your MCP client or agent framework:
 
 https://mcp.tinybird.co?token=TINYBIRD_TOKEN Replace `TINYBIRD_TOKEN` with your actual Auth Token. Use resource-scoped static tokens or JWTs for fine-grained access control.
+
+### Using JWT tokens with non-default regions [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp#using-jwt-tokens-with-non-default-regions)
+
+When using JWT tokens, you must specify the `host` parameter in the URL with your region's API endpoint, as JWT tokens don't contain region information:
+
+https://mcp.tinybird.co?token=JWT_TOKEN&host=https://api.REGION.PROVIDER.tinybird.co **Examples:**
+
+- EU Central 1 (AWS): `https://mcp.tinybird.co?token=JWT_TOKEN&host=https://api.eu-central-1.aws.tinybird.co`
+- US East 4 (GCP): `https://mcp.tinybird.co?token=JWT_TOKEN&host=https://api.us-east.tinybird.co`
+
+See [Regions and endpoints](/docs/api-reference#regions-and-endpoints) for the full list of available regions and their API URLs.
 
 ## Available tools [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp#available-tools)
 
@@ -7583,6 +8751,16 @@ SELECT *
 FROM tinybird.pipe_stats_rt
 WHERE url LIKE '%from=mcp%'
 AND start_datetime > now() - INTERVAL 1 HOUR
+## Troubleshooting [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp#troubleshooting)
+
+### Workspace not found error with JWT [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp#workspace-not-found-error-with-jwt)
+
+If you receive an error like:
+
+Error calling TinybirdAPI: invalid authentication token. Workspace with ID ... not found This typically means you're using a JWT token without specifying the region. JWT tokens don't include region information, so you must add the `host` parameter to your MCP URL:
+
+https://mcp.tinybird.co?token=JWT_TOKEN&host=https://api.REGION.PROVIDER.tinybird.co See [Using JWT tokens with non-default regions](https://www.tinybird.co/docs/forward/analytics-agents/mcp#using-jwt-tokens-with-non-default-regions) for examples.
+
 ## See also [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp#see-also)
 
 - [  Auth Tokens](/docs/administration/tokens)   - Learn about creating and managing authentication tokens
@@ -7595,28 +8773,28 @@ AND start_datetime > now() - INTERVAL 1 HOUR
 ---
 
 URL: https://www.tinybird.co/docs/forward/analytics-agents/mcp-server-snippets
-Last update: 2025-07-07T10:07:42.000Z
+Last update: 2026-01-29T22:06:15.000Z
 Content:
 ---
 title: "MCP server integration examples · Tinybird Docs"
 theme-color: "#171612"
-description: "Learn how to integrate the Tinybird MCP server to build analytics agents"
+description: "Learn how to integrate the Tinybird MCP server to build AI agents"
 inkeep:version: "forward"
 ---
 
 
 
 
-# Agents code examples [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp-server-snippets#agents-code-examples)
+# AI agent code examples [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp-server-snippets#ai-agent-code-examples)
 
-Copy as MD Here are some of examples of simple agents using Tinybird's MCP Server:
+Copy as MD Here are some examples of simple AI agents using Tinybird's MCP Server:
 
 - They are based on the[  web analytics project](https://www.tinybird.co/templates/web-analytics-starter-kit)   but you can adapt it to your own project by using your `TINYBIRD_TOKEN`  .
-- Model and libraries set up (such as API keys and other environmenta variables) is omitted
+- Model and libraries set up (such as API keys and other environmental variables) is omitted
 
 Building an agent? Want to know which LLM generates best SQL queries? Explore the results in the [LLM Benchmark](https://llm-benchmark.tinybird.live/).
 
-## Code Snippets [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp-server-snippets#code-snippets)
+## Code snippets [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp-server-snippets#code-snippets)
 
 ### Basic Query Execution with Pydantic AI [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp-server-snippets#basic-query-execution-with-pydantic-ai)
 
@@ -7809,11 +8987,11 @@ if __name__ == "__main__":
     asyncio.run(dashboard_assistant())
 ## Example prompts [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp-server-snippets#example-prompts)
 
-Use the prompts from the links below as the `SYSTEM_PROMPT` value in the snippets to build analytics agents for your data.
+Use the prompts from the links below as the `SYSTEM_PROMPT` value in the snippets to build AI agents for your data.
 
 ### Tinybird organization metrics [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp-server-snippets#tinybird-organization-metrics)
 
-Build analytics agents that report summaries on your organization metrics using [service data sources](/forward/monitoring/service-datasources#organization-service-data-sources).
+Build AI agents that report summaries on your organization metrics using [service data sources](/forward/monitoring/service-datasources#organization-service-data-sources).
 
 Configure the MCP Server with an Organization Admin Token. You can manage your Tokens in the [Tinybird UI](https://cloud.tinybird.co/tokens).
 
@@ -7826,7 +9004,7 @@ Configure the MCP Server with an Organization Admin Token. You can manage your T
 
 ### Tinybird workspace metrics [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp-server-snippets#tinybird-workspace-metrics)
 
-Build analytics agents that report summaries on metrics for a specific Workspace using [service data sources](/forward/monitoring/service-datasources#service-data-sources).
+Build AI agents that report summaries on metrics for a specific Workspace using [service data sources](/forward/monitoring/service-datasources#service-data-sources).
 
 Configure the MCP server with a Workspace Admin Token. You can manage your Tokens in the [Tinybird UI](https://cloud.tinybird.co/tokens).
 
@@ -7834,9 +9012,9 @@ Configure the MCP server with a Workspace Admin Token. You can manage your Token
 
 - [  MCP usage](https://github.com/tinybirdco/ai/blob/main/agents/birdwatcher/missions/mcp_usage.md)   : Reports the most-called Endpoints for a given Workspace by agents using MCP.
 
-### Analytics agents over your data [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp-server-snippets#analytics-agents-over-your-data)
+### AI agents over your data [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp-server-snippets#ai-agents-over-your-data)
 
-Every Endpoint in a Workspace is published as an MCP tool. Use a [resource-scoped token](/docs/forward/administration/tokens) to create analytics agents for your data.
+Every Endpoint in a Workspace is published as an MCP tool. Use a [resource-scoped token](/docs/forward/administration/tokens) to create AI agents for your data.
 
 Some examples:
 
@@ -7847,7 +9025,7 @@ Some examples:
 
 ## Next steps [¶](https://www.tinybird.co/docs/forward/analytics-agents/mcp-server-snippets#next-steps)
 
-- Learn[  best practices to build analytics agents](/docs/analytics-agents/best-practices)
+- Learn[  best practices to build AI agents](/docs/analytics-agents/best-practices)
 - Check[  this repository](https://github.com/tinybirdco/ai/tree/main/agents/birdwatcher/missions)   for more examples
 
 
@@ -8021,6 +9199,35 @@ For integrations, check out:
 
 - [  Clerk JWT Template](https://www.tinybird.co/templates/clerk-jwt)
 - [  Auth0 JWT Template](https://www.tinybird.co/templates/auth0-jwt)
+
+
+
+---
+
+URL: https://www.tinybird.co/docs/forward/analytics-agents/agent-skills
+Last update: 2026-01-29T22:06:15.000Z
+Content:
+---
+title: "Agent skills · Tinybird Docs"
+theme-color: "#171612"
+description: "Install Tinybird agent skills to teach coding agents how to work with Tinybird projects."
+inkeep:version: "forward"
+---
+
+
+
+
+# Agent skills [¶](https://www.tinybird.co/docs/forward/analytics-agents/agent-skills#agent-skills)
+
+Copy as MD Tinybird agent skills help coding agents (Cursor, Claude Code, Amp, Open Code...) understand Tinybird project structure, datafiles, SQL conventions, deployments, and testing.
+
+## Install [¶](https://www.tinybird.co/docs/forward/analytics-agents/agent-skills#install)
+
+npx skills add tinybirdco/tinybird-agent-skills This installs the open-source skills from [tinybirdco/tinybird-agent-skills](https://github.com/tinybirdco/tinybird-agent-skills).
+
+## When to use them [¶](https://www.tinybird.co/docs/forward/analytics-agents/agent-skills#when-to-use-them)
+
+Use agent skills when you want help creating or updating Tinybird resources, improving SQL, or reviewing project changes.
 
 
 
@@ -8678,7 +9885,7 @@ Follow an exponential backoff when retrying requests that produce the previous e
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/clickhouse-interface
-Last update: 2025-09-17T08:18:04.000Z
+Last update: 2025-12-17T10:19:32.000Z
 Content:
 ---
 title: "ClickHouse Interface · Tinybird Docs"
@@ -8737,8 +9944,13 @@ Your Auth Token must have the following permissions:
 - **  Read access**   to Service Data Sources (if needed)
 - **  Read access**   to Organization Data Sources (if needed)
 
-System tables are considered Service Data Sources. For BI tools that require introspection capabilities, you'll likely need read access to these system tables: `system.settings`, `system.databases`, `system.tables`, `system.columns` , and `system.table_engines` . Use the `DATASOURCES:READ` scope for each system table.
+You can create a token with these permissions with these commands:
 
+**In Forward**
+
+tb --cloud token create static <token_name> --scope "WORKSPACE:READ_ALL" --scope "ORG_DATASOURCES:READ" **In Classic**
+
+tb token create <token_name> --scope "WORKSPACE:READ_ALL" --scope "ORG_DATASOURCES:READ"
 ### Tinybird Local [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/clickhouse-interface#tinybird-local)
 
 To connect to your local development environment using Tinybird Local, use these connection parameters:
@@ -8755,8 +9967,8 @@ curl -H "X-ClickHouse-Key: your_token_here" \
 The ClickHouse interface exposes four databases:
 
 - ** `<your_workspace_name>`**   : Contains your Workspace's Data Sources.
-- ** `tinybird`**   : Contains[  Workspace Service Data Sources](../../../monitoring/service-datasources#service-data-sources)   , such as `tinybird.datasources_ops_log`   and `tinybird.pipe_stats_rt`  .
-- ** `organization`**   : Contains[  Organization Service Data Sources](../../../monitoring/service-datasources#organization-service-data-sources)   , such as `organization.workspaces`   and `organization.pipe_stats_rt`  .
+- ** `tinybird`**   : Contains[  Workspace Service Data Sources](/docs/classic/monitoring/service-datasources#service-data-sources)   , such as `tinybird.datasources_ops_log`   and `tinybird.pipe_stats_rt`  .
+- ** `organization`**   : Contains[  Organization Service Data Sources](/docs/classic/monitoring/service-datasources#organization-service-data-sources)   , such as `organization.workspaces`   and `organization.pipe_stats_rt`  .
 - ** `system`**   : Contains a subset of system tables, including `system.tables`  , `system.columns`  , `system.parts`  , `system.part_log`  , `system.query_views_log`   , and `system.query_log`  .
 
 Querying `system.query_log`, `system.query_views_log` or `system.part_log` without filters is too resource-intensive and will timeout. Always apply a time filter on the `event_time` column to query a reasonable time frame.
@@ -8855,7 +10067,7 @@ Connect your BI tool and follow the specific integration guide to set up dashboa
 - [  Holistics](/docs/forward/work-with-data/publish-data/guides/connect-holistics)
 - [  Luzmo](/docs/forward/work-with-data/publish-data/guides/connect-luzmo)
 - [  Metabase](/docs/forward/work-with-data/publish-data/guides/connect-metabase)
-- [  Mitz](/docs/forward/work-with-data/publish-data/guides/connect-mitzu)
+- [  Mitzu](/docs/forward/work-with-data/publish-data/guides/connect-mitzu)
 - [  Power BI](/docs/forward/work-with-data/publish-data/guides/connect-powerbi)
 - [  Redash](/docs/forward/work-with-data/publish-data/guides/connect-redash)
 - [  Superset](/docs/forward/work-with-data/publish-data/guides/connect-superset)
@@ -9074,7 +10286,7 @@ Copy as MD These guides provide practical strategies and patterns for optimizing
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/optimize/copy-pipes
-Last update: 2025-10-23T23:27:57.000Z
+Last update: 2025-12-19T08:33:57.000Z
 Content:
 ---
 title: "Copy pipes · Tinybird Docs"
@@ -9114,6 +10326,8 @@ COPY_MODE append --(Optional) The strategy to ingest data for copy jobs. One of 
 ## Schedule a copy pipe [¶](https://www.tinybird.co/docs/forward/work-with-data/optimize/copy-pipes#schedule-a-copy-pipe)
 
 You can schedule copy pipes to run at a specific time using a cron expression. To schedule a copy pipe, configure `COPY_SCHEDULE` with a cron expression. On-demand copy pipes are defined by configuring `COPY_SCHEDULE` with the value `@on-demand`.
+
+Copy Pipes scheduled with a cron expression have a maximum timeout defined by the minimum between the limit enforced by your plan and half of the time of your cron expression. For example, let's say your Copy Pipe is scheduled to run every 5 minutes (300 seconds). That means that even if your plan allows you to run a Copy Pipe for an hour, we will cap it to 2.5 minutes (150 seconds). This prevents your Copy Pipes from overlapping.
 
 Here is an example of a copy pipe scheduled to run every hour and that writes the results of a query into the `sales_hour_copy` data source:
 
@@ -10340,6 +11554,223 @@ Check a full working example in this [GitHub repository](https://github.com/tiny
 
 ---
 
+URL: https://www.tinybird.co/docs/forward/get-data-in/data-operations/replace-and-delete-data
+Last update: 2025-12-03T14:21:32.000Z
+Content:
+---
+title: "Replace and delete data · Tinybird Docs"
+theme-color: "#171612"
+description: "Update & delete operations are common in transactional databases over operational data, but sometimes you also need to make these changes on your analytical data in Tinybird."
+inkeep:version: "forward"
+---
+
+
+
+
+# Replace and delete data in your Tinybird Data Sources [¶](https://www.tinybird.co/docs/forward/get-data-in/data-operations/replace-and-delete-data#replace-and-delete-data-in-your-tinybird-data-sources)
+
+Copy as MD Update and delete operations are common in transactional databases over operational data, but sometimes you also need to make these changes on your analytical data in Tinybird.
+
+Sometimes, you need to delete or replace some of your data in Tinybird. Perhaps there was a bug in your app, a transient error in your operational database, or simply an evolution of requirements due to product or regulatory changes.
+
+It's **not safe** to replace data in the partitions where you are actively ingesting data. You may lose the data inserted during the process.
+
+Tinybird works well with append-only workloads but also fully supports replacing and deleting data. It abstracts away the tricky complexities of data replication, partition management and mutations rewriting, allowing you to focus on your data engineering flows and not the internals of real-time analytical databases.
+
+This guide shows you using different examples, how to selectively delete or update data in Tinybird using the REST API. You can then adapt these processes for your own needs.
+
+All API operations on this page require a Token with the `ADMIN` [scope](/docs/forward/administration/tokens/static-tokens#other-tokens) . In the code snippets, replace `<token_with_ADMIN_scope>` by your actual token.
+
+## Delete data selectively [¶](https://www.tinybird.co/docs/forward/get-data-in/data-operations/replace-and-delete-data#delete-data-selectively)
+
+To delete data that's within a condition, send a POST request to the [Data Sources /delete API](/docs/api-reference/datasource-api#post--v0-datasources-(.+)-delete) , providing the name of one of your Data Sources in Tinybird and a `delete_condition` parameter, which is an SQL expression filter.
+
+Delete operations don't automatically cascade to downstream Materialized Views. You may need to perform separate delete operations on Materialized Views.
+
+Imagine you have a Data Source called `events` and you want to remove all the transactions for November 2019. You'd send a POST request like this:
+
+- CLI
+- API
+
+##### Delete data selectively
+
+tb datasource delete events --sql-condition "toDate(date) >= '2019-11-01' and toDate(date) <= '2019-11-30'" Once you make the request, you can see that the `POST` request to the delete API Endpoint is asynchronous. It returns a [job response](/docs/api-reference/jobs-api#jobs-api-getting-information-about-jobs) , indicating an ID for the job, the status of the job, the `delete_condition` , and some other metadata. Although the delete operation runs asynchronously, the operation waits synchronously for all the mutations to be rewritten and delete the data replicas. Queries reading data either see the state before the operation or after it's complete.
+
+{
+  "id": "64e5f541-xxxx-xxxx-xxxx-00524051861b",
+  "job_id": "64e5f541-xxxx-xxxx-xxxx-00524051861b",
+  "job_url": "https://<your_host>/v0/jobs/64e5f541-xxxx-xxxx-xxxx-00524051861b",
+  "job": {
+    "kind": "delete_data",
+    "id": "64e5f541-xxxx-xxxx-xxxx-00524051861b",
+    "job_id": "64e5f541-xxxx-xxxx-xxxx-00524051861b",
+    "status": "waiting",
+    "created_at": "2023-04-11 13:52:32.423207",
+    "updated_at": "2023-04-11 13:52:32.423213",
+    "started_at": null,
+    "is_cancellable": true,
+    "datasource": {
+      "id": "t_c45d5ae6781b41278fcee365f5bxxxxx",
+      "name": "shopping_data"
+    },
+    "delete_condition": "event = 'search'"
+  },
+  "status": "waiting",
+  "delete_id": "64e5f541-xxxx-xxxx-xxxx-00524051861b"
+} You can periodically poll the `job_url` with the given ID to check the status of the deletion process. When the status is `done` your job deleted the data matching the SQL expression filter and all your Pipes and API Endpoints continue running with the remaining data in the Data Source.
+
+### Truncate a Data Source [¶](https://www.tinybird.co/docs/forward/get-data-in/data-operations/replace-and-delete-data#truncate-a-data-source)
+
+Sometimes you want to delete all data contained in a Data Source. You can perform this action from the UI and API.
+
+Using the API, the [truncate](/docs/api-reference/datasource-api#post--v0-datasources-(.+)-truncate) endpoint deletes all rows in a Data Source as shown in this example:
+
+- CLI
+- API
+
+##### Truncate a Data Source
+
+tb datasource truncate <your_datasource> You can also truncate a Data Source directly from the UI:
+
+
+
+<-figure->
+![](/docs/_next/image?url=%2Fdocs%2Fimg%2Freplacing-and-deleting-data-1-forward.png&w=3840&q=75)
+
+<-figcaption->
+Deleting available via CLI or API, but truncating it to delete all the data is available via the UI.
+
+</-figcaption->
+
+
+</-figure->
+## Replace data selectively [¶](https://www.tinybird.co/docs/forward/get-data-in/data-operations/replace-and-delete-data#replace-data-selectively)
+
+The ability to update data is often not the top priority when designing analytical databases, but there are always scenarios where you need to update or replace your analytical data. For example, you might have reconciliation processes over your transactions that affect your original data. Or maybe your ingestion process was simply faulty, and you ingested inaccurate data for a period of time.
+
+In Tinybird, you can specify a condition to replace only part of the data during the ingestion process. For instance, if you want to reingest a CSV with the data for November 2019 and update your Data Source accordingly. To update the data, you pass the `replace_condition` parameter with the `toDate(date) >= '2019-11-01' and toDate(date) <= '2019-11-30'` condition.
+
+- CLI
+- API
+
+##### Replace data selectively
+
+tb datasource replace events \
+https://storage.googleapis.com/tinybird-assets/datasets/guides/events_1M_november2019_1.csv \
+--sql-condition "toDate(date) >= '2019-11-01' and toDate(date) <= '2019-11-30'" The response to the previous API call looks like this:
+
+##### Response after replacing data
+
+{
+    "id": "a83fcb35-8d01-47b9-842c-a288d87679d0",
+    "job_id": "a83fcb35-8d01-47b9-842c-a288d87679d0",
+    "job_url": "https://<your_host>/v0/jobs/a83fcb35-8d01-47b9-842c-a288d87679d0",
+    "job": {
+        "kind": "import",
+        "id": "a83fcb35-8d01-47b9-842c-a288d87679d0",
+        "job_id": "a83fcb35-8d01-47b9-842c-a288d87679d0",
+        "import_id": "a83fcb35-8d01-47b9-842c-a288d87679d0",
+        "status": "waiting",
+        "statistics": null,
+        "datasource": { ... },
+        "quarantine_rows": 0,
+        "invalid_lines": 0
+    },
+    "status": "waiting",
+    "import_id": "a83fcb35-8d01-47b9-842c-a288d87679d0"
+} As in the case of the selective deletion, selective replacement also runs as an asynchronous request, so [check the status of the job](/docs/api-reference/jobs-api#jobs-api-getting-information-about-jobs) periodically. You can see the status of the job by using the `job_url` returned in the previous response.
+
+### About the replace condition [¶](https://www.tinybird.co/docs/forward/get-data-in/data-operations/replace-and-delete-data#about-the-replace-condition)
+
+Conditional replaces apply over partitions and the match condition selects partitions needed for the operation. The records remaining after the match condition determine the partitions involved.
+
+Always include the partition key in the replace condition to maintain consistency.
+
+The replace condition filters the new data that's appended, meaning it excludes rows not matching the condition. The condition is also applied for the selected partitions in the Data Source, removing rows that don't match the condition in these partitions. Rows that don't match the condition and may be present in other partitions remain.
+
+See the [example](https://www.tinybird.co/docs/forward/get-data-in/data-operations/replace-and-delete-data#example) that follows for a better understanding of selectively replacing data in a datasource.
+
+### Linked Materialized Views [¶](https://www.tinybird.co/docs/forward/get-data-in/data-operations/replace-and-delete-data#linked-materialized-views)
+
+If you have several connected Materialized Views, then selective replaces proceed in a cascading fashion. For example, if datasource A materializes data to datasource B and from there to datasource C, then when you replace data in datasource A, datasources B and C automatically update accordingly. All three Data Sources need to have compatible partition keys since replaces processed by partition.
+
+Remember: The provided Token must have the `ADMIN` [scope](/docs/forward/administration/tokens/static-tokens#other-tokens).
+
+### Example [¶](https://www.tinybird.co/docs/forward/get-data-in/data-operations/replace-and-delete-data#example)
+
+For this example, consider this Data Source:
+
+
+
+<-figure->
+![](/docs/_next/image?url=%2Fdocs%2Fimg%2Freplacing-example-1-forward.png&w=3840&q=75)
+
+</-figure->
+##### characters.datasource
+
+SCHEMA >
+    `age` Int32 `json:$.age`,
+    `name` String `json:$.name`,
+    `profession` String `json:$.profession`
+
+ENGINE "MergeTree"
+ENGINE_SORTING_KEY "name"
+ENGINE_PARTITION_KEY "profession" Its partition key is `ENGINE_PARTITION_KEY "profession"` . If you wanted to replace the last two rows with new data, you can send this request with the replace condition `replace_condition=(profession='Jedi')`:
+
+- CLI
+- API
+
+##### Replace with partition in condition
+
+echo "50,Mace Windu,Jedi" > jedi.csv
+tb datasource replace characters jedi.csv --sql-condition "profession='Jedi'" Since the replace condition column matches the partition key, the result is:
+
+
+
+<-figure->
+![](/docs/_next/image?url=%2Fdocs%2Fimg%2Freplacing-example-2-forward.png&w=3840&q=75)
+
+</-figure->
+However, consider what happens if you create the Data Source with `ENGINE_PARTITION_KEY "name"`:
+
+##### characters.datasource
+
+SCHEMA >
+    `age` Int32 `json:$.age`,
+    `name` String `json:$.name`,
+    `profession` String `json:$.profession`
+
+ENGINE "MergeTree"
+ENGINE_SORTING_KEY "name"
+ENGINE_PARTITION_KEY "name" If you were to run the same replace request, the result probably doesn't make sense:
+
+
+
+<-figure->
+![](/docs/_next/image?url=%2Fdocs%2Fimg%2Freplacing-example-3-forward.png&w=3840&q=75)
+
+</-figure->
+Why were the existed rows not removed? Because the `replace` process uses the payload rows to identify which partitions to work on. The Data Source is now partitioned by name and not profession, so the process didn't delete the other "Jedi" rows. They're in different partitions because they have different names.
+
+The rule of thumb is this: **Always make sure the replace condition uses the partition key as the filter field**.
+
+## Replace a Data Source completely [¶](https://www.tinybird.co/docs/forward/get-data-in/data-operations/replace-and-delete-data#replace-a-data-source-completely)
+
+To replace a complete Data Source, make an API call similar to the previous example, without providing a `replace_condition`:
+
+- CLI
+- API
+
+##### Replace Data Source completely
+
+tb datasource replace events https://storage.googleapis.com/tinybird-assets/datasets/guides/events_1M_november2019_1.csv The example request is replacing a Data Source with the data found in a given URL pointing to a CSV file.
+
+Schemas must be identical. When replacing data either selectively or entirely, the schema of the new inbound data must match that of the original Data Source. Rows not containing the same schema go to quarantine.
+
+
+
+---
+
 URL: https://www.tinybird.co/docs/forward/get-data-in/data-operations/gdpr-compliant-data-deletion
 Last update: 2025-08-16T22:14:51.000Z
 Content:
@@ -10397,7 +11828,7 @@ For large-scale applications with frequent deletion requests:
 ---
 
 URL: https://www.tinybird.co/docs/forward/get-data-in/connectors/s3
-Last update: 2025-08-29T08:05:22.000Z
+Last update: 2026-01-08T21:58:47.000Z
 Content:
 ---
 title: "S3 connector · Tinybird Docs"
@@ -10440,7 +11871,43 @@ tb local start --use-aws-creds
 * Waiting for Tinybird Local to be ready...
 ✓ Tinybird Local is ready! If you're using a specific AWS profile, you can specify it using the `AWS_PROFILE` environment variable:
 
-AWS_PROFILE=my-profile tb local start --use-aws-creds When using the S3 connector in the `--local` environment, continuous file ingestion is limited. For continuous ingestion of new files, use the Cloud environment.
+AWS_PROFILE=my-profile tb local start --use-aws-creds
+#### Docker Compose setup [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/s3#docker-compose-setup)
+
+If you're running Tinybird Local via Docker Compose instead of the CLI, you can pass AWS credentials using environment variables in your `docker-compose.yml`:
+
+services:
+  tinybird-local:
+    image: tinybirdco/tinybird-local:latest
+    container_name: tinybird-local
+    platform: linux/amd64
+    ports:
+      - "7181:7181"
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN}  # Optional, for temporary credentials
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION} # Optional, add region if available
+    volumes:
+      - ./:/workspace
+      - tinybird-data:/var/lib/tinybird
+
+volumes:
+  tinybird-data: You can then start the container with your AWS credentials set as environment variables:
+
+# Export your credentials
+export AWS_ACCESS_KEY_ID="your-access-key-id"
+export AWS_SECRET_ACCESS_KEY="your-secret-access-key"
+export AWS_DEFAULT_REGION="us-east-1"
+
+# Start Docker Compose
+docker compose up -d Alternatively, if you're using named AWS profiles, you can use the AWS CLI to export credentials:
+
+# Export credentials from a named profile
+eval "$(aws configure export-credentials --profile my-profile --format env)"
+
+# Start Docker Compose
+docker compose up -d When using the S3 connector in the `--local` environment, continuous file ingestion is limited. For continuous ingestion of new files, use the Cloud environment.
 
 ## Set up the connector [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/s3#set-up-the-connector)
 
@@ -10573,7 +12040,23 @@ The S3 connector supports the following wildcard patterns:
 
 Use the full S3 file URI and wildcards to select multiple files. The file extension is required to accurately match the desired files in your pattern.
 
-Due to a limitation in Amazon S3, you can't create different S3 data sources with path expressions that collide. For example: `s3://my_bucket/**/*.csv` and `s3://my_bucket/transactions/*.csv`.
+Due to a limitation in Amazon S3 bucket notifications, only one S3 data source with `IMPORT_SCHEDULE=@auto` can be configured per unique bucket URI pattern.
+
+**What counts as a collision?**
+
+Two URI patterns collide if one pattern would match files that the other pattern could also match. This happens when patterns share overlapping prefixes or wildcards.
+
+**Examples of collisions:**
+
+- `s3://my-bucket/stock_*.csv`   collides with `s3://my-bucket/stock_prices*.csv`   (first pattern would match files from the second)
+- `s3://my-bucket/**/*.csv`   collides with `s3://my-bucket/transactions/*.csv`   (first pattern would match files from the second)
+- `s3://my-bucket/*.csv`   collides with `s3://my-bucket/export_*.csv`   (first pattern would match files from the second)
+
+**Examples that work (non-overlapping prefixes):**
+
+- `s3://my-bucket/export_*.csv`   and `s3://my-bucket/import_*.csv`   (different prefixes)
+- `s3://my-bucket/prod/*.csv`   and `s3://my-bucket/staging/*.csv`   (different directories)
+- `s3://my-bucket/data/*.json`   and `s3://my-bucket/data/*.csv`   (different file extensions)
 
 ### Examples [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/s3#examples)
 
@@ -10673,6 +12156,8 @@ The S3 connector requires an IAM Role with specific permissions to access object
 - `s3:PutBucketNotification`
 - `s3:GetBucketLocation`
 
+**One IAM role can access multiple buckets** : You can update the access policy to include multiple buckets by adding their ARNs to the `Resource` array. This allows you to reuse the same IAM role across multiple S3 connections for different buckets, simplifying credential management.
+
 You need to create both an access policy and a trust policy in AWS:
 
 - AWS Access Policy
@@ -10702,26 +12187,26 @@ You need to create both an access policy and a trust policy in AWS:
 
   - For Cloud environments: Tinybird's AWS account ID, which varies depending on your region and provider
   - For Local environments: The AWS account ID of the credentials you pass to the Docker container with `--use-aws-creds`
-- `{EXTERNAL_ID}`   : A unique identifier provided by Tinybird for your connection.
+- `{EXTERNAL_ID}`   : A unique identifier provided by Tinybird and generated from your connection name.
 
 To get the correct values for your Trust Policy:
 
 1. Use the guided CLI process with `tb connection create s3`   (recommended)
 2. Or access the API endpoint `/v0/integrations/s3/policies/trust-policy?external_id_seed={CONNECTION_NAME}`   for your workspace
 
-Each Tinybird workspace has its own specific Trust Policy values based on region and environment.
+To allow access from both Local and Cloud environments with a single IAM role, add both account IDs to the `Principal.AWS` in array format: `["arn:aws:iam::{LOCAL_ACCOUNT_ID}:root", "arn:aws:iam::{CLOUD_ACCOUNT_ID}:root"]` in the Trust Policy. This is useful when you want to use the same IAM role for both environments to simplify credential management.
 
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka
-Last update: 2025-11-13T11:58:12.000Z
+Last update: 2025-12-11T11:38:13.000Z
 Content:
 ---
 title: "Kafka connector · Tinybird Docs"
 theme-color: "#171612"
-description: "Learn how to configure the Kafka connector for Tinybird."
+description: "Complete guide to setting up and configuring the Kafka connector for Tinybird. Connect to Kafka, Confluent Cloud, AWS MSK, Redpanda, and other Kafka-compatible platforms. Includes authentication, troubleshooting, and performance optimization."
 inkeep:version: "forward"
 ---
 
@@ -10745,7 +12230,7 @@ You can create a Kafka connection in Tinybird using either the CLI or by manuall
 
 Run the following command to create a connection:
 
-tb connection create kafka You will be prompted to enter:
+tb connection create kafka You are prompted to enter:
 
 1. A name for your connection.
 2. The bootstrap server
@@ -10760,7 +12245,13 @@ Create a [.connection file](/docs/forward/dev-reference/datafiles/connection-fil
 
 Secrets are only replaced in your resources when you deploy. If you change a secret, you need to deploy for the changes to take effect.
 
+#### Authentication methods [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#authentication-methods)
+
+Tinybird supports multiple authentication methods for Kafka connections:
+
 ##### SASL/PLAIN
+
+The most common authentication method for cloud Kafka providers like Confluent Cloud.
 
 ##### kafka_sasl_plain.connection
 
@@ -10773,7 +12264,22 @@ KAFKA_SECRET {{ tb_secret("KAFKA_SECRET", "secret") }} Set the kafka key and sec
 
 tb [--cloud] secret set KAFKA_KEY <KAFKA_KEY>
 tb [--cloud] secret set KAFKA_SECRET <KAFKA_SECRET>
-##### SASL/OAUTHBEARER
+##### SASL/SCRAM-SHA-256 or SCRAM-SHA-512
+
+For Kafka clusters using SCRAM authentication:
+
+##### kafka_sasl_scram.connection
+
+TYPE kafka
+KAFKA_BOOTSTRAP_SERVERS <BOOTSTRAP_SERVERS:PORT>
+KAFKA_SECURITY_PROTOCOL SASL_SSL
+KAFKA_SASL_MECHANISM SCRAM-SHA-256
+KAFKA_KEY {{ tb_secret("KAFKA_KEY", "key") }}
+KAFKA_SECRET {{ tb_secret("KAFKA_SECRET", "secret") }} Replace `SCRAM-SHA-256` with `SCRAM-SHA-512` if your cluster uses SHA-512.
+
+##### SASL/OAuthBearer (AWS MSK)
+
+For AWS MSK clusters using IAM authentication:
 
 ##### kafka_sasl_oauthbearer_aws.connection
 
@@ -10788,14 +12294,78 @@ KAFKA_SASL_OAUTHBEARER_AWS_EXTERNAL_ID <AWS_EXTERNAL_ID> When using AWS method, 
 
 Set the AWS role ARN using [tb secret](/docs/forward/dev-reference/commands/tb-secret):
 
-tb [--cloud] secret set AWS_ROLE_ARN <AWS_ROLE_ARN> 2
+tb [--cloud] secret set AWS_ROLE_ARN <AWS_ROLE_ARN> For detailed setup instructions for specific vendors, see:
+
+- [  Confluent Cloud setup guide](guides/confluent-cloud-setup)
+- [  AWS MSK setup guide](guides/aws-msk-setup)
+- [  Redpanda setup guide](guides/redpanda-setup)
+
+##### PLAINTEXT (local development only)
+
+For local development with unsecured Kafka:
+
+##### kafka_plaintext.connection
+
+TYPE kafka
+KAFKA_BOOTSTRAP_SERVERS localhost:9092
+KAFKA_SECURITY_PROTOCOL PLAINTEXT PLAINTEXT connections are only suitable for local development. Production Kafka clusters should use SASL_SSL.
+
+For more information on local development setup, see the [local development guide](guides/local-development).
+
+2
+### Bootstrap servers configuration [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#bootstrap-servers-configuration)
+
+The `KAFKA_BOOTSTRAP_SERVERS` setting specifies one or more Kafka brokers to connect to. Use comma-separated values for multiple brokers:
+
+KAFKA_BOOTSTRAP_SERVERS broker1:9092,broker2:9092,broker3:9092 **Important considerations:**
+
+- Use the advertised listeners address, not the internal broker address
+- For cloud providers, use the public endpoint provided by your Kafka service
+- Ensure the port matches your security protocol (9092 for PLAINTEXT, 9093-9096 for SASL_SSL depending on provider)
+- For AWS MSK, use the bootstrap broker string from the MSK console
+
+If you encounter connection issues, see the [troubleshooting guide](troubleshooting#error-connection-timeout-or-broker-unreachable) for bootstrap server configuration help.
+
+3
+### SSL/TLS certificate configuration [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#ssltls-certificate-configuration)
+
+When using `SASL_SSL` security protocol, you may need to provide a CA certificate, especially for:
+
+- Self-signed certificates
+- Private CA certificates
+- Aiven Kafka (Private CA port)
+
+The recommended way to provide the certificate is using secrets.
+
+Create the multiline secret with the certificate using [tb secret](/docs/forward/dev-reference/commands/tb-secret#tb-secret-set) . This opens an editor to introduce the value.
+
+tb [--cloud] secret set --multiline KAFKA_PROD_SSL_CA_PEM Use the secret in the `KAFKA_SSL_CA_PEM` setting of the connection file. Take into account this is a [multiline setting](/docs/forward/dev-reference/datafiles#multiple-lines).
+
+##### /connections/kafka_ssl_ca_pem.connection
+
+TYPE kafka
+KAFKA_BOOTSTRAP_SERVERS {{ tb_secret("KAFKA_PROD_SERVER", "kafka:29092") }}
+KAFKA_SECURITY_PROTOCOL {{ tb_secret("KAFKA_PROD_SECURITY_PROTOCOL", "PLAINTEXT") }}
+KAFKA_SASL_MECHANISM {{ tb_secret("KAFKA_PROD_SASL_MECHANISM", "PLAIN") }}
+KAFKA_KEY {{ tb_secret("KAFKA_PROD_KEY", "key") }}
+KAFKA_SECRET {{ tb_secret("KAFKA_PROD_SECRET", "secret") }}
+KAFKA_SSL_CA_PEM >
+  {{ tb_secret("KAFKA_PROD_SSL_CA_PEM") }} **Certificate format requirements:**
+
+- Certificate must be in PEM format (starts with `-----BEGIN CERTIFICATE-----`   )
+- Include the full certificate chain if required
+- For Aiven Kafka, download the CA certificate from the Aiven console
+
+For troubleshooting SSL certificate issues, see the [troubleshooting guide](troubleshooting#error-ssltls-certificate-validation-failed).
+
+4
 ### Create a Kafka data source [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#create-a-kafka-data-source)
 
 Create a .datasource file using `tb datasource create --kafka` or manually.
 
 Define the data source schema as with any non-Kafka datasource and specify the required Kafka settings. The value of `KAFKA_CONNECTION_NAME` must match the name of the .connection file you created in the previous step.
 
-Default .datasource created will store the whole message in a column called `data` . Then, you can use [JSONExtract functions](/docs/sql-reference/functions/json-functions#jsonextract-functions) to access the message fields, either at query time or using materialized views.
+The default .datasource stores the whole message in a column called `data` . Then, you can use [JSONExtract functions](/docs/sql-reference/functions/json-functions#jsonextract-functions) to access the message fields, either at query time or using materialized views.
 
 ##### kafka_default.datasource
 
@@ -10820,29 +12390,55 @@ KAFKA_CONNECTION_NAME kafka_sample # The name of the .connection file
 KAFKA_TOPIC test_topic
 KAFKA_GROUP_ID {{ tb_secret("KAFKA_GROUP_ID") }} In addition to the columns specified in `SCHEMA` , Kafka data sources have additional columns that store metadata of the messages ingested. See [Kafka meta columns](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#kafka-meta-columns) for more information.
 
-For a complete list of Kafka data source settings, see [Kafka .datasource settings](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#datasource-settings).
+For a complete list of Kafka data source settings, see [Kafka .datasource settings](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#kafka-datasource-settings).
 
 Use different consumer group values for `KAFKA_GROUP_ID` at different environments to isolate consumers and their committed offset.
 
-If you use [Kafka Tombstones](https://docs.confluent.io/kafka/design/log_compaction.html#compaction-enables-deletes) , Tinybird sends these `null` -payload messages to the Quarantine Data Source if your Data Source's schema can't accept them. This allows you to inspect the tombstone records without affecting your main Data Source.
+If you use [Kafka Tombstones](https://docs.confluent.io/kafka/design/log_compaction.html#compaction-enables-deletes) , Tinybird sends these `null` -payload messages to the Quarantine Data Source if your Data Source's schema can't accept them. You can inspect the tombstone records without affecting your main Data Source.
 
-3
+5
 ### Connectivity check [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#connectivity-check)
 
-After defining your Kafka data source and connection, validate the setup by running a deploy check:
+After defining your Kafka data source and connection, test the connection and preview data:
 
-tb --cloud deploy --check This will check that the Kafka broker is reachable and that Tinybird can connect to it with the provided credentials. Remember to set any secrets used by the connection.
+tb connection data <connection_name> This command prompts you to:
+
+1. Select a Kafka topic
+2. Enter a consumer group ID
+3. Returns preview data from the topic
+
+This validates that Tinybird can connect to your Kafka broker, authenticate, and consume messages. Remember to set any secrets used by the connection.
 
 ## Compatibility [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#compatibility)
 
 The connector is compatible with Apache Kafka and works with any compatible implementation and vendor. The following are tried and tested:
 
 - Apache Kafka
-- Confluent Platform and Confluent Cloud
+- Confluent Platform and Confluent Cloud Platform
 - Redpanda
 - AWS MSK
 - Azure Event Hubs for Apache Kafka
 - Estuary
+
+For vendor-specific setup guides, see:
+
+- [  Confluent Cloud setup](guides/confluent-cloud-setup)
+- [  AWS MSK setup](guides/aws-msk-setup)
+- [  Redpanda setup](guides/redpanda-setup)
+
+## Schema management and evolution [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#schema-management-and-evolution)
+
+Tinybird supports multiple serialization formats for Kafka messages:
+
+- **  JSON**   ( `json_without_schema`   or `json_with_schema`   )
+- **  Avro**   (requires Schema Registry)
+- **  JSON Schema**   (requires Schema Registry)
+
+When using Schema Registry, Tinybird automatically handles schema evolution for backward-compatible changes. For detailed information on schema management, including adding fields, handling nullable types, and data type mapping, see the [schema management guide](guides/schema-management).
+
+### Message size limits [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#message-size-limits)
+
+Tinybird has a default message size limit of 10 MB. Messages exceeding this limit are sent to the Quarantine Data Source. For strategies on handling large messages and troubleshooting quarantined messages, see the [message size handling guide](guides/message-size-handling).
 
 ## Kafka .datasource settings [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#kafka-datasource-settings)
 
@@ -10870,8 +12466,8 @@ The connector is compatible with Apache Kafka and works with any compatible impl
 | `KAFKA_SASL_OAUTHBEARER_AWS_REGION` | When using SASL `OAUTHBEARER` | AWS MSK cluster region. |
 | `KAFKA_SASL_OAUTHBEARER_AWS_ROLE_ARN` | When using SASL `OAUTHBEARER` | AWS role ARN to assume. |
 | `KAFKA_SASL_OAUTHBEARER_AWS_EXTERNAL_ID` | When using SASL `OAUTHBEARER` | External ID used when assuming the role. |
-| `KAFKA_SCHEMA_REGISTRY_URL` | No | URL of the Kafka schema registry. Used for `avro`   and `json_with_schema`   deserialization of   keys and values. If Basic Auth is required, it must be included in the URL as in `https://user:password@registry_url` |
-| `KAFKA_SSL_CA_PEM` | No | Content of the CA certificate in PEM format for SSL connections. |
+| `KAFKA_SCHEMA_REGISTRY_URL` | No | URL of the Kafka schema registry. Used for `avro`   and `json_with_schema`   deserialization of   keys and values. If Basic Auth is required, include credentials in the URL format: `https://<username>:<password>@<registry_host>` |
+| `KAFKA_SSL_CA_PEM` | No | Content of the CA certificate in PEM format for SSL connections.[  Multiline setting](/docs/forward/dev-reference/datafiles#multiple-lines) |
 
 ## AWS IAM permissions [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#aws-iam-permissions)
 
@@ -10914,19 +12510,19 @@ To grant Tinybird access to your Kafka cluster, you must create an AWS IAM role 
         }
     ]
 }
-- `<MSK_CLUSTER_REGION>`   : AWS region where the MSK cluster is located (e.g. `us-east-1`   ).
+- `<MSK_CLUSTER_REGION>`   : AWS region where the MSK cluster is located (for example, `us-east-1`   ).
 - `<MSK_CLUSTER_ACCOUNT_ID>`   : AWS account identifier of the MSK cluster.
-- `<MSK_CLUSTER_NAME>`   : Name of the MSK cluster (e.g. `demo-cluster-1`   ).
+- `<MSK_CLUSTER_NAME>`   : Name of the MSK cluster (for example, `demo-cluster-1`   ).
 - `<KAFKA_TOPIC>`   : Name of the Kafka topic to give read access. Use `*`   to allow all topics.
 - `<KAFKA_GROUP>`   : Name of the consumer group to give read access. Use `*`   to allow all groups.
 - `<TINYBIRD_ACCOUNT_ID>`  :
-  - For Cloud environments: Tinybird's AWS account ID, which varies depending on your region and provider
+  - For Tinybird Cloud environments: Tinybird's AWS account ID, which varies depending on your region and provider
   - For Local environments: The AWS account ID of the credentials you pass to the Docker container with `--use-aws-creds`
 - `<EXTERNAL_ID>`   : A unique identifier for your connection.
 
 ### Get the configuration from the API [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#get-the-configuration-from-the-api)
 
-Check [current tinybird regions](/docs/api-reference#current-tinybird-regions) to see the available regions and their corresponding API endpoints.
+Check [current Tinybird regions](/docs/api-reference#current-tinybird-regions) to see the available regions and their corresponding API endpoints.
 
 - Access Policy: `/v0/integrations/kafka/policies/read-access-policy`
   - Use the `msk_cluster_arn`     paramter to limit the access to only one MSK cluster.
@@ -10938,6 +12534,8 @@ Check [current tinybird regions](/docs/api-reference#current-tinybird-regions) t
 ## Kafka connector in the local environment [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#kafka-connector-in-the-local-environment)
 
 You can use the Kafka connector in the [Tinybird Local container](/docs/forward/install-tinybird/local) to consume messages from a local Kafka server or a Kafka server in the cloud.
+
+For detailed local development setup instructions, including Docker Compose examples and environment management, see the [local development guide](guides/local-development).
 
 ### Local Kafka server with Docker Compose [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#local-kafka-server-with-docker-compose)
 
@@ -10981,18 +12579,18 @@ services:
       - kafka-data:/var/lib/kafka/data
     networks:
       - kafka_network
-### Network Configuration [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#network-configuration)
+### Network configuration [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#network-configuration)
 
 The key points about the network configuration:
 
-1. The example uses a bridge network ( `kafka_network`   ) to enable communication between containers
+1. The example uses a bridge network ( `kafka_network`   ) to allow communication between containers
 2. The Kafka service exposes ports for both internal container communication and external access
 3. Tinybird Local connects to Kafka using the internal network address
-4. The bootstrap servers address in your Kafka Connection should match the `KAFKA_ADVERTISED_LISTENERS`   in the `docker-compose.yml`   file (e.g., `kafka:29092`   )
+4. The bootstrap servers address in your Kafka Connection should match the `KAFKA_ADVERTISED_LISTENERS`   in the `docker-compose.yml`   file (for example, `kafka:29092`   )
 
-### Creating the Kafka Connection and Data Source [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#creating-the-kafka-connection-and-data-source)
+### Creating the Kafka connection and data source [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#creating-the-kafka-connection-and-data-source)
 
-The following examples use default values in the `tb_secret()` function, which are suitable for this local setup. When deploying to Tinybird Cloud, you'll set these secrets in the Cloud environment instead.
+The following examples use default values in the `tb_secret()` function, which are suitable for this local setup. When deploying to Tinybird Cloud, you set these secrets in the Tinybird Cloud environment instead.
 
 Connection file `/connections/kafka_conn.connection`
 
@@ -11106,8 +12704,46 @@ SELECT *
 FROM tinybird.kafka_ops_log
 WHERE datasource_id = 't_1234'
   AND timestamp > now() - interval 1 day
-  AND msg_type IN ['info', 'warning', 'error']
+  AND msg_type IN ['info', 'warning', 'error'] When your Data Source encounters a high rate of specific Kafka connection errors, we temporarily stop ingestion for exponentially increasing periods of time. This mechanism is called a Circuit Breaker. It prevents polluting your logs and our system and is only activated by the errors listed in [this section](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#kafka-circuit-breaker-errors).
+
+For example, if your Kafka brokers are unreachable, you will see a message in your logs similar to this: "We have opened a circuit breaker because your error rate is too high. Please, fix your connection and if you think everything is fine, contact support."
+
+If the connection issue persists through all retries, ingestion will be paused. Once you fix the underlying connection problem, the Circuit Breaker resets, and ingestion will resume from where it left off.
+
+### Kafka circuit breaker errors [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#kafka-circuit-breaker-errors)
+
+The following Kafka errors trigger the Circuit Breaker
+
+| Error | Error message |
+| --- | --- |
+| `_ALL_BROKERS_DOWN` | Local: All broker connections are down |
+| `_TRANSPORT` | Local: Broker transport failure |
+| `_TIMED_OUT` | Local: Timed out |
+| `_DESTROY` | Local: Broker handle destroyed |
+| `_AUTHENTICATION` | Local: Authentication failure |
+| `_RESOLVE` | Local: Host resolution failure |
+| `_UNKNOWN_TOPIC` | Local: Unknown topic |
+| `_UNKNOWN_PARTITION` | Local: Unknown partition |
+| `SASL_AUTHENTICATION_FAILED` | Broker: SASL Authentication failed |
+| `TOPIC_AUTHORIZATION_FAILED` | Broker: Topic authorization failed |
+| `GROUP_AUTHORIZATION_FAILED` | Broker: Group authorization failed |
+| `CLUSTER_AUTHORIZATION_FAILED` | Broker: Cluster authorization failed |
+
+For comprehensive monitoring of your Kafka connectors, including lag tracking, throughput analysis, and error monitoring, see [Monitor Kafka connectors](/docs/forward/monitoring/kafka-clickhouse-monitoring).
+
 ## Troubleshooting [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#troubleshooting)
+
+For comprehensive troubleshooting guidance, see the [Kafka connector troubleshooting guide](troubleshooting).
+
+Common issues include:
+
+- Connection timeout or broker unreachable
+- Authentication failures
+- SSL/TLS certificate validation errors
+- Deserialization errors (Avro, JSON)
+- Offset and consumer group conflicts
+- Consumer lag issues
+- Schema mismatches
 
 Each combination of `KAFKA_TOPIC` and `KAFKA_GROUP_ID` can only be used in one data source, otherwise the offsets committed by the consumers of different data sources clash.
 
@@ -11134,6 +12770,31 @@ Create the Kafka .connection file if it does not exist, add the desired Kafka se
 To disconnect a data source from Kafka, remove the Kafka settings from the .datasource file.
 
 If you want to keep any of the [Kafka meta columns](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#kafka-meta-columns) , add them to the schema with a default value and adjust the `FORWARD_QUERY` accordingly.
+
+## Additional resources [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#additional-resources)
+
+### Guides [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#guides)
+
+- [  Confluent Cloud setup](guides/confluent-cloud-setup)   - End-to-end setup for Confluent Cloud
+- [  AWS MSK setup](guides/aws-msk-setup)   - Complete MSK configuration guide
+- [  Redpanda setup](guides/redpanda-setup)   - Redpanda-specific configuration
+- [  Local development](guides/local-development)   - Local development setup and testing
+- [  CI/CD and version control](guides/cicd-version-control)   - Managing connections across environments
+- [  Schema management](guides/schema-management)   - Schema evolution and data type mapping
+- [  Partitioning strategies](guides/partitioning-strategies)   - Best practices for Kafka partitioning
+- [  Message size handling](guides/message-size-handling)   - Handling large messages and troubleshooting
+- [  Performance optimization](guides/performance-optimization)   - Throughput optimization and tuning
+
+### Reference [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#reference)
+
+- [  Troubleshooting guide](troubleshooting)   - Comprehensive error resolution with error lookup table
+- [  Limits and quotas](limits)   - Kafka connector limits and how to request increases
+
+### Related documentation [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka#related-documentation)
+
+- [  Monitor Kafka connectors](/docs/forward/monitoring/kafka-clickhouse-monitoring)   - Monitoring queries and alerts
+- [  Kafka Sink](/docs/forward/work-with-data/publish-data/sinks/kafka-sink)   - Exporting data to Kafka
+- [  Quarantine Data Sources](/docs/forward/get-data-in/quarantine)   - Handling failed messages
 
 
 
@@ -11455,7 +13116,7 @@ Redpanda Connect continuosly consumes changes from Postgres and pushes them to y
 ---
 
 URL: https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-with-estuary
-Last update: 2025-05-09T07:54:31.000Z
+Last update: 2025-12-11T11:38:13.000Z
 Content:
 ---
 title: "Ingest with Estuary · Tinybird Docs"
@@ -11486,7 +13147,7 @@ In Estuary, create a new Dekaf materialization to use for the Tinybird connectio
 
 You can create it from the [Estuary destinations tab](https://dashboard.estuary.dev/materializations/create). You have all the details on the [Tinybird Dekaf Estuary docs page.](https://docs.estuary.dev/reference/Connectors/materialization-connectors/Dekaf/tinybird/)
 
-In your Tinybird workspace, create a new data source and use the [Kafka Connector](../connectors/kafka).
+In your Tinybird workspace, create a new data source and use the [Kafka Connector](/docs/forward/get-data-in/connectors/kafka).
 
 To configure the connection details, use the following settings (these can also be found in the [Estuary Dekaf docs](https://docs.estuary.dev/guides/dekaf_reading_collections_from_kafka/#connection-details) ).
 
@@ -11498,16 +13159,16 @@ To configure the connection details, use the following settings (these can also 
 Tick the `Decode Avro messages with Schema Register` box, and use the following settings:
 
 - URL: `https://dekaf.estuary-data.com`
-- Username: The same Materialization name as above, `YOUR-ORG/YOUR-PREFIX/YOUR-MATERIALIZATION`
-- Password: The same Auth token created on the Dekaf materialization as above
+- Username: The same Materialization name from the preceding step, `YOUR-ORG/YOUR-PREFIX/YOUR-MATERIALIZATION`
+- Password: The same Auth token created on the Dekaf materialization from the preceding step
 
-Click **Next** and you will see a list of topics. These topics are the collections you have in Estuary. Select the collection you want to ingest into Tinybird, and click **Next**.
+Select **Next** and you see a list of topics. These topics are the collections you have in Estuary. Select the collection you want to ingest into Tinybird, and select **Next**.
 
 Configure your consumer group as needed.
 
-Finally, you will see a preview of the data source schema. Feel free to make any modifications as required, then click **Create data source**.
+Finally, you see a preview of the data source schema. Feel free to make any modifications as required, then select **Create data source**.
 
-This will complete the connection with Estuary, and new data from the Estuary collection will arrive in your Tinybird data source in real-time.
+This completes the connection with Estuary, and new data from the Estuary collection arrives in your Tinybird data source in real-time.
 
 If you need *support for deletions* , check the [configuring support for deletions](https://docs.estuary.dev/reference/Connectors/materialization-connectors/Dekaf/tinybird) section on Estuary docs.
 
@@ -11517,7 +13178,11 @@ When capturing change data that includes updates and deletes, you need to dedupl
 
 There are several strategies to deduplicate data in your data source, but with Estuary, the recommended approach is to use a [ReplacingMergeTree engine](/docs/sql-reference/engines/replacingmergetree) with appropriate settings and the `FINAL` modifier.
 
-Do not build materialized views with an AggregatingMergeTree on top of a ReplacingMergeTree. The target data source will always contain duplicates due to the incremental nature of materialized views.
+Do not build materialized views with an AggregatingMergeTree on top of a ReplacingMergeTree. The target data source always contains duplicates due to the incremental nature of materialized views.
+
+## Learn more [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-with-estuary#learn-more)
+
+For a complete step-by-step tutorial on setting up CDC with PostgreSQL, Estuary Flow, and Tinybird, see the [From CDC to real-time analytics with Tinybird and Estuary](https://www.tinybird.co/blog-posts/cdc-real-time-analytics-estuary-dekaf) blog post.
 
 
 
@@ -11579,9 +13244,9 @@ ENGINE_SORTING_KEY "event_time" The proxy column is a JSON string. Use the [JSON
 
 Log Drains webhook needs to be verified by Vercel. You can do this by adding the `x-vercel-verify` parameter to the request.
 
-https://api.tinybird.co/v0/events?name=vercel_logs&x-vercel-verify=<your-x-vercel-verify-token>
+https://<your_host>/v0/events?name=vercel_logs&x-vercel-verify=<your-x-vercel-verify-token>
 
-Replace the Tinybird API hostname or region with the [API region](/docs/api-reference#regions-and-endpoints) that matches your Workspace.
+The API host in the following examples must match your Workspace's region. See the full list of [regions and hosts](/docs/api-reference#regions-and-endpoints)
 
 1. Select**  Custom Headers**   , add `Authorization`   with the value `Bearer <your-tinybird-token>`   and select**  Add**  .
 2. Select**  Verify**   and optionally use**  Test Log Drain**   from Vercel to check data gets to the `vercel_logs`   data source in Tinybird.
@@ -11941,9 +13606,9 @@ The `JSON` data type is in private beta. If you are interested in using this typ
 1. In Tinybird, copy a token with privileges to append to the data source you created. You can use the admin token or create one with the required scope.
 2. Back in Vercel, paste the Events API URL in your Webhook Endpoint URL. Use the query parameter `name`   to match the name of the data source you created in Tinybird. For example:
 
-https://api.tinybird.co/v0/events?name=vercel&token=<your user token>
+https://<your_host>/v0/events?name=vercel&token=<your user token>
 
-Replace the Tinybird API hostname or region with the [API region](/docs/api-reference#regions-and-endpoints) that matches your Workspace.
+The API host in the following examples must match your Workspace's region. See the full list of [regions and hosts](/docs/api-reference#regions-and-endpoints)
 
 1. You're done. Any of the Vercel events you selected is automatically sent to Tinybird through the[  Events API](../events-api)  .
 
@@ -12034,7 +13699,7 @@ Learn more about other sources you can use to ingest data into Tinybird in the [
 ---
 
 URL: https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-stripe
-Last update: 2025-05-09T07:54:31.000Z
+Last update: 2026-01-07T08:17:27.000Z
 Content:
 ---
 title: "Send Stripe Events to Tinybird · Tinybird Docs"
@@ -12080,22 +13745,20 @@ This guide covers the base case for sending Stripe events to Tinybird.
 SCHEMA >
   `event_time` DateTime `json:$.tinybirdIngestTime` DEFAULT now(),
   `event_type` String `json:$.type` DEFAULT 'unknown',
-  `event` JSON `json:$` DEFAULT '{}'
+  `event` String `json:$` DEFAULT '{}'
 
 ENGINE "MergeTree"
 ENGINE_PARTITION_KEY "toYYYYMM(event_time)"
-ENGINE_SORTING_KEY "event_time" Using the [JSON Data Type](/docs/sql-reference/data-types/json) you can store the semi-structured data you receive from Stripe in a single column. You can later retrieve various events and their metadata as needed in your pipes.
-
-The `JSON` data type is in private beta. If you are interested in using this type, contact Tinybird at [support@tinybird.co](mailto:support@tinybird.co) or in the [Community Slack](/docs/community).
+ENGINE_SORTING_KEY "event_time" Store the JSON-formatted data you receive from Stripe as a `String` in a single column. You can later parse the JSON string to retrieve various events and their metadata as needed in your Pipes.
 
 1. From Tinybird Cloud, copy a token with privileges to append to the data source you created. You can use the admin token or create one with the required scope.
 2. Back in Stripe, paste the Events API URL in your Webhook Endpoint URL. Use the query parameter `name`   to match the name of the data source you created in Tinybird.
 
-https://api.tinybird.co/v0/events?name=stripe&format=json&token=<your user token> Make sure to use the `format=json` query parameter.
+https://<your_host>/v0/events?name=stripe&format=json&token=<your user token> Make sure to use the `format=json` query parameter.
 
 
 
-Replace the Tinybird API hostname or region with the [API region](/docs/api-reference#regions-and-endpoints) that matches your Workspace.
+The API host in the following examples must match your Workspace's region. See the full list of [regions and hosts](/docs/api-reference#regions-and-endpoints)
 
 1. Select**  Select events**   and select the events you want to send to Tinybird.
 2. Save and you're done.
@@ -12330,7 +13993,7 @@ See the following resources:
 ---
 
 URL: https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-snowflake-using-azure-blob-storage
-Last update: 2025-06-16T16:21:33.000Z
+Last update: 2025-12-10T14:15:57.000Z
 Content:
 ---
 title: "Ingest from Snowflake using Azure Blob Storage · Tinybird Docs"
@@ -12388,7 +14051,7 @@ Take the generated URL and make a call to Tinybird. You need a [token](/docs/adm
 
 curl \
 -H "Authorization: Bearer <DATASOURCES:CREATE token>" \
--X POST "https://api.tinybird.co/v0/datasources?name=my_datasource_name" \
+-X POST "https://<your_host>/v0/datasources?name=my_datasource_name" \
 -d url='https://myaccount.blob.core.windows.net/unload/data.csv.gz?se=2024-05-31T10%3A57%3A41Z&sp=r&spr=https&sv=2022-11-02&sr=b&sig=PMC%2E9ZvOFtKATczsBQgFSsH1%2BNkuJvO9dDPkTpxXH0g%5D' You now have your Snowflake Table in Tinybird.
 
 ## Automation [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-snowflake-using-azure-blob-storage#automation)
@@ -12413,14 +14076,14 @@ See the following resources:
 
 - [  Ingest from Snowflake using AWS S3](./ingest-from-snowflake-using-aws-s3)
 - [  Ingest from Snowflake using incremental updates](./ingest-from-snowflake-using-incremental-updates)
-- [  Ingest from Google Cloud Storage](./ingest-from-google-gcs)
+- [  GCS Connector](/docs/forward/get-data-in/connectors/gcs)
 
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-snowflake-using-aws-s3
-Last update: 2025-05-09T07:54:31.000Z
+Last update: 2025-12-10T14:15:57.000Z
 Content:
 ---
 title: "Ingest from Snowflake using AWS S3 · Tinybird Docs"
@@ -12554,7 +14217,7 @@ See the following resources:
 
 - [  Ingest from Snowflake using Azure Blob Storage](./ingest-from-snowflake-using-azure-blob-storage)
 - [  Ingest from Snowflake using incremental updates](./ingest-from-snowflake-using-incremental-updates)
-- [  Ingest from Google Cloud Storage](./ingest-from-google-gcs)
+- [  GCS Connector](/docs/forward/get-data-in/connectors/gcs)
 
 
 
@@ -12613,9 +14276,9 @@ The `JSON` data type is in private beta. If you are interested in using this typ
 1. From Tinybird Cloud, copy a token with privileges to append to the data source you created. You can use the admin token or create one with the required scope.
 2. Back in Sentry, paste the Events API URL in your Custom Integration. Use the query parameter `name`   to match the name of the data source you created in Tinybird.
 
-https://api.tinybird.co/v0/events?name=sentry&token=<your user token>
+https://<your_host>/v0/events?name=sentry&token=<your user token>
 
-Replace the Tinybird API hostname or region with the [API region](/docs/api-reference#regions-and-endpoints) that matches your Workspace.
+The API host in the following examples must match your Workspace's region. See the full list of [regions and hosts](/docs/api-reference#regions-and-endpoints)
 
 1. Select**  Alert Rule Action**  .
 2. In the**  Permissions**   box**  Issue and Event**   >**  Read**  .
@@ -12684,7 +14347,7 @@ Select **Webhook**:
 2. Connect your sources, you can test with the Rudderstack Sample HTTP Source.
 3. Input the following Connection Settings:
 
-- Webhook URL:*  <   https://api.tinybird.co   /v0/events>*
+- Webhook URL:*  <   https://<your_host>   /v0/events>*
 - URL Method:*  POST*
 - Headers Key:*  Authorization*
 - Headers Value:*  Bearer TINYBIRD_AUTH_TOKEN*
@@ -12742,7 +14405,7 @@ Select **Webhook**:
 2. Connect your sources, you can test with the Rudderstack Sample HTTP Source.
 3. Input the following Connection Settings:
 
-- Webhook URL:*  <   https://api.tinybird.co   /v0/events?name=rudderstack_events>*
+- Webhook URL:*  <   https://<your_host>   /v0/events?name=rudderstack_events>*
 - URL Method:*  POST*
 - Headers Key:*  Authorization*
 - Headers Value:*  Bearer TINYBIRD_AUTH_TOKEN*
@@ -12815,9 +14478,9 @@ The `JSON` data type is in private beta. If you are interested in using this typ
 1. From Tinybird Cloud, copy a token with privileges to append to the data source you created. You can use the admin token or create one with the required scope.
 2. Back in Resend, paste the Events API URL in your Webhook URL. Use the query parameter `name`   to match the name of the data source you created in Tinybird. For example:
 
-https://api.tinybird.co/v0/events?name=resend&token=<your user token>
+https://<your_host>/v0/events?name=resend&token=<your user token>
 
-Replace the Tinybird API hostname or region with the [API region](/docs/api-reference#regions-and-endpoints) that matches your Workspace.
+The API host in the following examples must match your Workspace's region. See the full list of [regions and hosts](/docs/api-reference#regions-and-endpoints)
 
 1. Select the checkboxes for the Resend events you want to send to Tinybird, and select**  Add**  .
 2. You're done. Sending emails to Resend will now push events to Tinybird via the[  Events API](../events-api)  .
@@ -12882,9 +14545,9 @@ The `JSON` data type is in private beta. If you are interested in using this typ
 1. From Tinybird Cloud, copy a token with privileges to append to the data source you created. You can use the admin token or create one with the required scope.
 2. Back in PagerDuty, paste the Events API URL in your Webhook URL. Use the query parameter `name`   to match the name of the data source you created in Tinybird. For example:
 
-https://api.tinybird.co/v0/events?name=pagerduty
+https://<your_host>/v0/events?name=pagerduty
 
-Replace the Tinybird API hostname or region with the [API region](/docs/api-reference#regions-and-endpoints) that matches your Workspace.
+The API host in the following examples must match your Workspace's region. See the full list of [regions and hosts](/docs/api-reference#regions-and-endpoints)
 
 1. Select**  Add custom header**   and add 'Authorization' as**  Name**   and paste the token you created in Tinybird as**  Value**  .
 
@@ -12955,9 +14618,9 @@ The `JSON` data type is in private beta. If you are interested in using this typ
 1. From Tinybird Cloud, copy a token with privileges to append to the data source you created. You can use the admin token or create one with the required scope.
 2. Back in Orb, paste the Events API URL in your Webhook Endpoint URL. Use the query parameter `name`   to match the name of the data source you created in Tinybird. For example:
 
-https://api.tinybird.co/v0/events?name=orb&token=<your user token>
+https://<your_host>/v0/events?name=orb&token=<your user token>
 
-Replace the Tinybird API hostname or region with the [API region](/docs/api-reference#regions-and-endpoints) that matches your Workspace.
+The API host in the following examples must match your Workspace's region. See the full list of [regions and hosts](/docs/api-reference#regions-and-endpoints)
 
 1. Select**  Send test request**   to test the connection and check the data gets to the `orb`   data source in Tinybird.
 2. You're done. Any of the Orb events is automatically sent to Tinybird through the[  Events API](../events-api)  .
@@ -13352,11 +15015,11 @@ The `JSON` data type is in private beta. If you are interested in using this typ
 1. From Tinybird Cloud, copy a token with privileges to append to the data source you created. You can use the admin token or create one with the required scope.
 2. Back in Mailgun, paste the Events API URL in your Webhook Endpoint URL. Use the query parameter `name`   to match the name of the data source you created in Tinybird.
 
-https://api.tinybird.co/v0/events?name=mailgun&format=json&token=<your user token> Make sure to use the `format=json` query parameter.
+https://<your_host>/v0/events?name=mailgun&format=json&token=<your user token> Make sure to use the `format=json` query parameter.
 
 
 
-Replace the Tinybird API hostname or region with the [API region](/docs/api-reference#regions-and-endpoints) that matches your Workspace.
+The API host in the following examples must match your Workspace's region. See the full list of [regions and hosts](/docs/api-reference#regions-and-endpoints)
 
 1. Select**  Event type**   and choose the event you want to send to Tinybird. You can use the same Tinybird data source for multiple events.
 2. Select**  Create webhook**   abd you're done.
@@ -13433,9 +15096,9 @@ The `JSON` data type is in private beta. If you are interested in using this typ
 1. From Tinybird Cloud, copy a token with privileges to append to the data source you created. You can use the admin token or create one with the required scope.
 2. Back in Knock, paste the Events API URL in your Webhook Endpoint URL. Use the query parameter `name`   to match the name of the data source you created in Tinybird.
 
-https://api.tinybird.co/v0/events?name=knock&token=<your user token>
+https://<your_host>/v0/events?name=knock&token=<your user token>
 
-Replace the Tinybird API hostname or region with the [API region](/docs/api-reference#regions-and-endpoints) that matches your Workspace.
+The API host in the following examples must match your Workspace's region. See the full list of [regions and hosts](/docs/api-reference#regions-and-endpoints)
 
 1. Select**  Save webhook**  .
 2. You're done.
@@ -13489,9 +15152,9 @@ In the **Endpoint URL** field, ue the following snippet (which uses the [Tinybir
 
 ##### Endpoint URL
 
-https://api.tinybird.co/v0/events?wait=true&name=<Data Source name>&token=<Static token>
+https://<your_host>/v0/events?wait=true&name=<Data Source name>&token=<Static token>
 
-Replace the Tinybird API hostname or region with the [API region](/docs/api-reference#regions-and-endpoints) that matches your Workspace.
+The API host in the following examples must match your Workspace's region. See the full list of [regions and hosts](/docs/api-reference#regions-and-endpoints)
 
 If you are sending single-line JSON payload through Pubsub, tick the **Enable payload unwrapping** option to enable unwrapping. This means that data isn't base64 encoded before sending it to Tinybird. If you are sending any other format via Pubsub, leave this unchecked (you'll need to follow the decoding steps at the bottom of this guide).
 
@@ -13518,203 +15181,6 @@ SELECT
     message_publish_time,
     base64Decode(message_data) as message_data
   FROM events_demo
-
----
-
-URL: https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-google-gcs
-Last update: 2025-05-09T07:54:31.000Z
-Content:
----
-title: "Ingest from Google Cloud Storage · Tinybird Docs"
-theme-color: "#171612"
-description: "In this guide, you'll learn how to automatically synchronize all the CSV files in a Google GCS bucket to a Tinybird data source."
-inkeep:version: "forward"
----
-
-
-
-
-# Ingest from Google Cloud Storage [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-google-gcs#ingest-from-google-cloud-storage)
-
-Copy as MD In this guide, you'll learn how to automatically synchronize all the CSV files in a Google GCS bucket to a Tinybird data source.
-
-## Prerequisites [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-google-gcs#prerequisites)
-
-This guide assumes you have familiarity with [Google GCS buckets](https://cloud.google.com/storage/docs/buckets) and the basics of [ingesting data into Tinybird](../../get-data-in).
-
-## Perform a one-off load [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-google-gcs#perform-a-one-off-load)
-
-When building on Tinybird, people often want to load historical data that comes from another system (called 'seeding' or 'backfilling'). A very common pattern is exporting historical data by creating a dump of CSV files into a Google GCS bucket, then ingesting these CSV files into Tinybird.
-
-You can append these files to a data source in Tinybird using the data sources API.
-
-Let's assume you have a set of CSV files in your GCS bucket:
-
-##### List of events files
-
-tinybird-assets/datasets/guides/events/events_0.csv
-tinybird-assets/datasets/guides/events/events_1.csv
-tinybird-assets/datasets/guides/events/events_10.csv
-tinybird-assets/datasets/guides/events/events_11.csv
-tinybird-assets/datasets/guides/events/events_12.csv
-tinybird-assets/datasets/guides/events/events_13.csv
-tinybird-assets/datasets/guides/events/events_14.csv
-tinybird-assets/datasets/guides/events/events_15.csv
-tinybird-assets/datasets/guides/events/events_16.csv
-tinybird-assets/datasets/guides/events/events_17.csv
-tinybird-assets/datasets/guides/events/events_18.csv
-tinybird-assets/datasets/guides/events/events_19.csv
-tinybird-assets/datasets/guides/events/events_2.csv
-tinybird-assets/datasets/guides/events/events_20.csv
-tinybird-assets/datasets/guides/events/events_21.csv
-tinybird-assets/datasets/guides/events/events_22.csv
-tinybird-assets/datasets/guides/events/events_23.csv
-tinybird-assets/datasets/guides/events/events_24.csv
-tinybird-assets/datasets/guides/events/events_25.csv
-tinybird-assets/datasets/guides/events/events_26.csv
-tinybird-assets/datasets/guides/events/events_27.csv
-tinybird-assets/datasets/guides/events/events_28.csv
-tinybird-assets/datasets/guides/events/events_29.csv
-tinybird-assets/datasets/guides/events/events_3.csv
-tinybird-assets/datasets/guides/events/events_30.csv
-tinybird-assets/datasets/guides/events/events_31.csv
-tinybird-assets/datasets/guides/events/events_32.csv
-tinybird-assets/datasets/guides/events/events_33.csv
-tinybird-assets/datasets/guides/events/events_34.csv
-tinybird-assets/datasets/guides/events/events_35.csv
-tinybird-assets/datasets/guides/events/events_36.csv
-tinybird-assets/datasets/guides/events/events_37.csv
-tinybird-assets/datasets/guides/events/events_38.csv
-tinybird-assets/datasets/guides/events/events_39.csv
-tinybird-assets/datasets/guides/events/events_4.csv
-tinybird-assets/datasets/guides/events/events_40.csv
-tinybird-assets/datasets/guides/events/events_41.csv
-tinybird-assets/datasets/guides/events/events_42.csv
-tinybird-assets/datasets/guides/events/events_43.csv
-tinybird-assets/datasets/guides/events/events_44.csv
-tinybird-assets/datasets/guides/events/events_45.csv
-tinybird-assets/datasets/guides/events/events_46.csv
-tinybird-assets/datasets/guides/events/events_47.csv
-tinybird-assets/datasets/guides/events/events_48.csv
-tinybird-assets/datasets/guides/events/events_49.csv
-tinybird-assets/datasets/guides/events/events_5.csv
-tinybird-assets/datasets/guides/events/events_6.csv
-tinybird-assets/datasets/guides/events/events_7.csv
-tinybird-assets/datasets/guides/events/events_8.csv
-tinybird-assets/datasets/guides/events/events_9.csv
-### Ingest a single file [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-google-gcs#ingest-a-single-file)
-
-To ingest a single file, [generate a signed URL in GCP](https://cloud.google.com/storage/docs/access-control/signed-urls) , and send the URL to the data sources API using the `append` mode flag:
-
-##### Example POST request with append mode flag
-
-curl -H "Authorization: Bearer <your_auth_token>" \
-   -X POST "https://api.tinybird.co/v0/datasources?name=<my_data_source_name>&mode=append" \
-   --data-urlencode "url=<my_gcs_file_http_url>"
-### Ingest multiple files [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-google-gcs#ingest-multiple-files)
-
-If you want to ingest multiple files, you probably don't want to manually write each cURL. Instead, create a script to iterate over the files in the bucket and generate the cURL commands automatically.
-
-The following script example requires the [gsutil tool](https://cloud.google.com/storage/docs/gsutil) and assumes you have already created your Tinybird data source.
-
-You can use the `gsutil` tool to list the files in the bucket, extract the name of the CSV file, and create a signed URL. Then, generate a cURL to send the signed URL to Tinybird.
-
-To avoid hitting [API rate limits](/docs/api-reference#limits) you should delay 15 seconds between each request.
-
-Here's an example script in bash:
-
-##### Ingest CSV files from a Google Cloud Storage Bucket to Tinybird
-
-TB_HOST=<region>
-TB_TOKEN=<token>
-BUCKET=gs://<name_of_bucket>
-DESTINATION_DATA_SOURCE=<name_of_datasource>
-GOOGLE_APPLICATION_CREDENTIALS=
-REGION=<region>
-
-for url in $(gsutil ls $BUCKET | grep csv)
-do
-  echo $url
-  SIGNED=`gsutil signurl -r $REGION $GOOGLE_APPLICATION_CREDENTIALS $url | tail -n 1 | python3 -c "import sys; print(sys.stdin.read().split('\t')[-1])"`
-  curl -H "Authorization: Bearer $TB_TOKEN" \
-    -X POST "$TB_HOST/v0/datasources?name=$DESTINATION_DATA_SOURCE&mode=append" \
-    --data-urlencode "url=$SIGNED"
-  echo
-  sleep 15
-done The script uses the following variables:
-
-- `TB_HOST`   as the corresponding URL for[  your region](/docs/api-reference#regions-and-endpoints)  .
-- `TB_TOKEN`   as a Tinybird[  Token](../../administration/auth-tokens)   with `DATASOURCE:CREATE`   or `DATASOURCE:APPEND`   scope. See the[  Tokens API](/docs/api-reference/token-api)   for more information.
-- `BUCKET`   as the GCS URI of the bucket containing the events CSV files.
-- `DESTINATION_DATA_SOURCE`   as the name of the data source in Tinybird, in this case `events`  .
-- `GOOGLE_APPLICATION_CREDENTIALS`   as the local path of a Google Cloud service account JSON file.
-- `REGION`   as the Google Cloud region name.
-
-## Automatically sync files with Google Cloud Functions [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-google-gcs#automatically-sync-files-with-google-cloud-functions)
-
-The previous scenario covered a one-off dump of CSV files in a bucket to Tinybird. A slightly more complex scenario is appending to a Tinybird data source each time a new CSV file is dropped into a GCS bucket, which can be done using Google Cloud Functions.
-
-That way you can have your ETL process exporting data from your Data Warehouse (such as Snowflake or BigQuery) or any other origin and you don't have to think about manually synchronizing those files to Tinybird.
-
-Imagine you have a GCS bucket named `gs://automatic-ingestion-poc/` and each time you put a CSV there you want to sync it automatically to an `events` data source previously created in Tinybird:
-
-1. Clone<a href="https://github.com/tinybirdco/gcs-cloud-function">  this GitHub repository ( `gcs-cloud-function`   )</a>  .
-2. Install and configure the `gcloud`   command line tool.
-3. Run `cp .env.yaml.sample .env.yaml`   and set the `TB_HOST`   , and `TB_TOKEN`   variable
-4. Run:
-
-##### Syncing from GCS to Tinybird with Google Cloud Functions
-
-# set some environment variables before deploying
-PROJECT_NAME=<the_GCP_project_name>
-SERVICE_ACCOUNT_NAME=<service_account_name@project_name.iam.gserviceaccount.com>
-BUCKET_NAME=<bucket_name>
-REGION=<region>
-TB_FUNCTION_NAME=<name_of_the_function>
-
-# grant permissions to deploy the cloud function and read from storage to the service account
-gcloud projects add-iam-policy-binding $PROJECT_NAME --member serviceAccount:$SERVICE_ACCOUNT_NAME --role roles/storage.admin
-gcloud projects add-iam-policy-binding $PROJECT_NAME --member serviceAccount:$SERVICE_ACCOUNT_NAME --role roles/iam.serviceAccountTokenCreator
-gcloud projects add-iam-policy-binding $PROJECT_NAME --member serviceAccount:$SERVICE_ACCOUNT_NAME --role roles/editor
-
-# deploy the cloud function
-gcloud functions deploy $TB_FUNCTION_NAME \
-  --runtime python38 \
-  --trigger-resource $BUCKET_NAME \
-  --trigger-event google.storage.object.finalize \
-  --region $REGION \
-  --env-vars-file .env.yaml \
-  --service-account $SERVICE_ACCOUNT_NAME It deploys a Google Cloud Function with name `TB_FUNCTION_NAME` to your Google Cloud account, which listens for new files in the `BUCKET_NAME` provided (in this case `automatic-ingestion-poc` ), and automatically appends them to the Tinybird data source described by the `FILE_REGEXP` environment variable.
-
-
-
-<-figure->
-![](/docs/_next/image?url=%2Fdocs%2Fimg%2Fsyncing-data-from-s3-or-gcs-buckets-3.png&w=3840&q=75)
-
-<-figcaption->
-Cloud function to sync a GCS bucket to Tinybird
-
-</-figcaption->
-
-
-</-figure->
-Now you can drop CSV files into the configured bucket:
-
-
-
-<-figure->
-![](/docs/_next/image?url=%2Fdocs%2Fimg%2Fsyncing-data-from-s3-or-gcs-buckets-4.gif&w=3840&q=75)
-
-<-figcaption->
-Drop files to a GCS bucket and check the datasources_ops_log
-
-</-figcaption->
-
-
-</-figure->
-A recommended pattern is naming the CSV files in the format `datasourcename_YYYYMMDDHHMMSS.csv` so they are automatically appended to `datasourcename` in Tinybird. For instance, `events_20210125000000.csv` will be appended to the `events` data source.
-
-
 
 ---
 
@@ -13777,9 +15243,9 @@ The `JSON` data type is in private beta. If you are interested in using this typ
 1. From Tinybird Cloud, copy a token with privileges to append to the data source you created. You can use the admin token or create one with the required scope.
 2. Back in GitLab, paste the Events API URL in your Webhook URL. Use the query parameter `name`   to match the name of the data source you created in Tinybird.
 
-https://api.tinybird.co/v0/events?name=gitlab
+https://<your_host>/v0/events?name=gitlab
 
-Replace the Tinybird API hostname or region with the [API region](/docs/api-reference#regions-and-endpoints) that matches your Workspace.
+The API host in the following examples must match your Workspace's region. See the full list of [regions and hosts](/docs/api-reference#regions-and-endpoints)
 
 1. Select**  Add custom header**   and add 'Authorization' as**  Header name**   and paste the token you created in Tinybird as**  Header value**  .
 
@@ -13860,9 +15326,9 @@ The `JSON` data type is in private beta. If you are interested in using this typ
 1. From Tinybird Cloud, copy a token with privileges to append to the data source you created. You can use the admin token or create one with the required scope.
 2. Back in GitHub, paste the Events API URL in your Webhook URL. Use the query parameter `name`   to match the name of the data source you created in Tinybird.
 
-https://api.tinybird.co/v0/events?name=github&token=<your user token>
+https://<your_host>/v0/events?name=github&token=<your user token>
 
-Replace the Tinybird API hostname or region with the [API region](/docs/api-reference#regions-and-endpoints) that matches your Workspace.
+The API host in the following examples must match your Workspace's region. See the full list of [regions and hosts](/docs/api-reference#regions-and-endpoints)
 
 1. Select**  application/json**   as the content type.
 2. You're done.
@@ -14139,9 +15605,9 @@ The `JSON` data type is in private beta. If you are interested in using this typ
 1. From Tinybird Cloud, copy a token with privileges to append to the data source you created. You can use the admin token or create one with the required scope.
 2. Back in Dub, paste the Events API URL as your webhook URL. Use the query parameter `name`   to match the name of the data source you created in Tinybird. For example:
 
-https://api.tinybird.co/v0/events?name=dub&token=<your user token>
+https://<your_host>/v0/events?name=dub&token=<your user token>
 
-Replace the Tinybird API hostname or region with the [API region](/docs/api-reference#regions-and-endpoints) that matches your Workspace.
+The API host in the following examples must match your Workspace's region. See the full list of [regions and hosts](/docs/api-reference#regions-and-endpoints)
 
 1. Select the checkboxes for the Dub events you want to send to Tinybird, and select**  Create webhook**  .
 2. You're done. Dub will now push events to Tinybird via the[  Events API](../events-api)  .
@@ -14262,14 +15728,14 @@ The `JSON` data type is in private beta. If you are interested in using this typ
 
 1. Back in Clerk, paste the Events API URL in your Webhook Endpoint URL. Use the query parameter `name`   to match the name of the data source you created in Tinybird, for example:
 
-https://api.tinybird.co/v0/events?name=clerk
+https://<your_host>/v0/events?name=clerk
 
-Replace the Tinybird API hostname or region with the [API region](/docs/api-reference#regions-and-endpoints) that matches your Workspace.
+The API host in the following examples must match your Workspace's region. See the full list of [regions and hosts](/docs/api-reference#regions-and-endpoints)
 
 1. From Tinybird Cloud, copy a token with privileges to write to the data source you created. You can use the admin token or create one with the required scope.
 2. Return to the Clerk Webhooks page, and update the URL to add a new search parameter `token`   with the token you copied. The final URL looks like the following:
 
-https://api.tinybird.co/v0/events?name=clerk&token=p.eyXXXXX
+https://<your_host>/v0/events?name=clerk&token=p.eyXXXXX
 1. Select the checkboxes for the Clerk events you want to send to Tinybird, and select**  Create**  .
 2. You're done. Any of the Clerk events you selected is automatically sent to Tinybird through the[  Events API](../events-api)   . You can test the integration from the**  Testing**   tab in the Clerk Webhooks UI.
 
@@ -14278,7 +15744,7 @@ https://api.tinybird.co/v0/events?name=clerk&token=p.eyXXXXX
 ---
 
 URL: https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-bigquery-using-google-cloud-storage
-Last update: 2025-05-09T07:54:31.000Z
+Last update: 2025-12-10T14:15:57.000Z
 Content:
 ---
 title: "Ingest from BigQuery using Google Cloud Storage · Tinybird Docs"
@@ -14294,113 +15760,189 @@ inkeep:version: "forward"
 
 Copy as MD Read on to learn how to send data from BigQuery to Tinybird, for example when you need to periodically run full replaces of a table or do a one-off ingest.
 
-This process relies on [BigQuery's exporting capabilities](https://cloud.google.com/bigquery/docs/exporting-data#sql) , or bulk exporting data as gzipped CSVs and then ingesting them using the [Data Sources API](/docs/api-reference/datasource-api).
+This process relies on [BigQuery's exporting capabilities](https://cloud.google.com/bigquery/docs/exporting-data#sql) , or bulk exporting data as CSV, NDJSON, or Parquet files and then ingesting them using the [GCS Connector](../connectors/gcs).
 
 ## Prerequisites [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-bigquery-using-google-cloud-storage#prerequisites)
 
-To follow these steps you need a Tinybird account and access to BigQuery and Google Cloud Storage.
+You need a Tinybird account and access to BigQuery and Google Cloud Storage.
 
 1
 ## Export the BigQuery table [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-bigquery-using-google-cloud-storage#export-the-bigquery-table)
 
-The first step consists in unloading the BigQuery table, or query result set, to a gzipped CSV file.
+The first step consists in exporting the BigQuery table, or query result set, to a GCS bucket.
 
-Run the following SQL statement to unload the data:
+### 1. Grant the required permissions in Google Cloud Console [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-bigquery-using-google-cloud-storage#1-grant-the-required-permissions-in-google-cloud-console)
 
-EXPORT DATA
-  OPTIONS (
-    uri = 'gs://bucket/folder/*.csv',
-    format = 'CSV',
-    compression = 'GZIP',
-    overwrite = true,
-    header = true,
-    field_delimiter = ';')
-AS (
-  SELECT field1, field2
-  FROM mydataset.table1
-  ORDER BY field1
-); More details about the `EXPORT DATA` statement in the [Google Cloud docs](https://cloud.google.com/bigquery/docs/reference/standard-sql/export-statements#export_data_statement)
+Make sure the GCS bucket allows BigQuery to write files. The service account used by BigQuery needs the `roles/storage.objectCreator` role on the bucket. You can grant this permission in the Google Cloud Console:
 
-To automate the unloading, you can create a BigQuery Scheduled Query.
+1. Navigate to your GCS bucket in the Cloud Console
+2. Go to the**  Permissions**   tab
+3. Click**  Grant Access**
+4. Add the BigQuery service account (format: `service-<project-number>@gcp-sa-bigquery.iam.gserviceaccount.com`   ) with the**  Storage Object Creator**   role
 
-You can follow [Google Cloud official docs for Scheduled queries](https://cloud.google.com/bigquery/docs/scheduling-queries).
+### 2. Export the data [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-bigquery-using-google-cloud-storage#2-export-the-data)
+
+Run the following SQL statement to export the data:
+
+EXPORT DATA OPTIONS(
+  uri = 'gs://your-bucket-name/path/orders/*.csv',
+  format = 'CSV',
+  compression = 'GZIP',
+  overwrite = true,
+  header = true,
+  field_delimiter = ','
+) AS (
+  SELECT
+    order_id,
+    customer_id,
+    order_status,
+    total_price,
+    order_date,
+    order_priority,
+    clerk
+  FROM `your-project.your_dataset.orders`
+  ORDER BY order_date
+); Replace `your-bucket-name`, `path` , and the table reference with your actual values.
+
+**CSV format limitations** : CSV does not support nested or repeated fields (arrays, structs). If your BigQuery table contains arrays or nested data types, you must use JSON or Parquet format instead. Attempting to export arrays or nested structures to CSV will result in an error.
+
+### 3. Export arrays and nested data [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-bigquery-using-google-cloud-storage#3-export-arrays-and-nested-data)
+
+For tables with arrays or nested structures, use JSON format:
+
+EXPORT DATA OPTIONS(
+  uri = 'gs://your-bucket-name/path/orders/*.json',
+  format = 'JSON',
+  compression = 'GZIP',
+  overwrite = true
+) AS (
+  SELECT
+    order_id,
+    customer_id,
+    items,  -- Array field
+    shipping_address,  -- Nested struct
+    order_date
+  FROM `your-project.your_dataset.orders`
+  ORDER BY order_date
+); **JSON format considerations** : When exporting to JSON format, BigQuery encodes `INT64` values as JSON strings to maintain precision. You may need to handle this in your Tinybird schema by parsing these strings as integers.
+
+### 4. Export using Parquet format [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-bigquery-using-google-cloud-storage#4-export-using-parquet-format)
+
+Parquet format also supports nested and repeated data, and can be more efficient for large datasets:
+
+EXPORT DATA OPTIONS(
+  uri = 'gs://your-bucket-name/path/orders/*.parquet',
+  format = 'PARQUET',
+  compression = 'GZIP',
+  overwrite = true
+) AS (
+  SELECT
+    order_id,
+    customer_id,
+    items,
+    shipping_address,
+    order_date
+  FROM `your-project.your_dataset.orders`
+  ORDER BY order_date
+);
+### 5. Automate the export [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-bigquery-using-google-cloud-storage#5-automate-the-export)
+
+To automate the export, you can create a BigQuery Scheduled Query:
+
+1. In the BigQuery Console, click**  Scheduled queries**
+2. Click**  Create scheduled query**
+3. Enter your `EXPORT DATA`   statement
+4. Set the schedule (e.g., daily, hourly)
+5. Configure the destination dataset and table if needed
+
+Follow the [Google Cloud documentation for Scheduled Queries](https://cloud.google.com/bigquery/docs/scheduling-queries) for more details.
 
 2
 ## Ingest data into Tinybird [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-bigquery-using-google-cloud-storage#ingest-data-into-tinybird)
 
-After your data is in a Google Cloud Storage bucket, you can ingest it in Tinybird generating signed URLs and sending them to the [Data Sources API](/docs/api-reference/datasource-api).
+Before ingesting your BigQuery data from the GCS bucket, you need to create the GCS connection. For more details and advanced use cases, see the [GCS Connector](../connectors/gcs) documentation.
 
-You can use this example script:
+### Supported file formats [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-bigquery-using-google-cloud-storage#supported-file-formats)
 
-import json
-import time
-import requests
-from google.cloud import storage
-from google.auth.credentials import AnonymousCredentials
-from google.oauth2 import service_account
-from datetime import datetime, timedelta
+The GCS Connector supports the following formats exported from BigQuery:
 
-# Configuration
-BUCKET_NAME = "your-gcs-bucket"
-TINYBIRD_HOST = "https://api.tinybird.co"
-TINYBIRD_DATASOURCE = "your_datasource_name"
-TINYBIRD_TOKEN = "your_tinybird_token"
-SERVICE_ACCOUNT_JSON = "path/to/service-account.json"
-URL_EXPIRATION = 3600  # 1 hour
+| File Type | Accepted Extensions | Supported Compression | Notes |
+| --- | --- | --- | --- |
+| CSV | `.csv`  , `.csv.gz` | `gzip` | Does not support arrays or nested data. Use for simple, flat schemas. |
+| NDJSON | `.ndjson`  , `.ndjson.gz`  , `.jsonl`  , `.jsonl.gz` | `gzip` | Supports arrays and nested data. Each line must be a valid JSON object. |
+| Parquet | `.parquet`  , `.parquet.gz` | `snappy`  , `gzip`  , `lzo`  , `brotli`  , `lz4`  , `zstd` | Supports arrays and nested data. More efficient for large datasets. |
 
-# Authenticate with GCS
-credentials = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_JSON)
-storage_client = storage.Client(credentials=credentials)
+**NDJSON format** : JSON files must follow the **Newline Delimited JSON (NDJSON)** format. Each line must be a valid JSON object and must end with a `\n` character. BigQuery's `EXPORT DATA` with `format='JSON'` produces NDJSON format.
 
-def generate_signed_url(blob_name):
-    """Generate a signed URL for a blob in GCS."""
-    bucket = storage_client.bucket(BUCKET_NAME)
-    blob = bucket.blob(blob_name)
-    url = blob.generate_signed_url(expiration=timedelta(seconds=URL_EXPIRATION))
-    return url
+### Create the data source [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-bigquery-using-google-cloud-storage#create-the-data-source)
 
-def list_gcs_files():
-    """List files in the specified GCS bucket."""
-    bucket = storage_client.bucket(BUCKET_NAME)
-    return [blob.name for blob in bucket.list_blobs()]
+You can use the following schema for the data source:
 
-def send_to_tinybird(url, tinybird_token, datasource_name):
-    """Uploads signed URLs to Tinybird."""
-    u = f"{TINYBIRD_HOST}/v0/datasources?name={datasource_name}&mode=append&format=ndjson&token={tinybird_token}"
-    
-    data = {"url": url}
-    response = requests.post(u, data)
-    
-    if response.status_code == 200:
-        print("Successfully sent data to Tinybird")
-    else:
-        print(f"Failed to send data: {response.text}")
+SCHEMA >
+    `order_id` Int64,
+    `customer_id` Int64,
+    `order_status` String,
+    `total_price` Float32,
+    `order_date` DateTime,
+    `order_priority` String,
+    `clerk` String
 
-def main():
-    print("Fetching GCS files...")
-    files = list_gcs_files()
-    signed_urls = [generate_signed_url(file) for file in files]
-    print(f"Generated {len(signed_urls)} signed URLs.")
+ENGINE "MergeTree"
+ENGINE_PARTITION_KEY "toYYYYMM(order_date)"
+ENGINE_SORTING_KEY "order_date, order_priority"
 
-    print("Sending to Tinybird...")
-    for url in signed_urls:
-        send_to_tinybird(url, TINYBIRD_TOKEN, TINYBIRD_DATASOURCE)
-        time.sleep(15)
+IMPORT_CONNECTION_NAME 'tb-gcs'
+IMPORT_BUCKET_URI 'gs://your-bucket-name/path/orders/*.csv.gz'
+IMPORT_SCHEDULE '@on-demand' For JSON exports with arrays, you'll need to handle the nested structure:
 
-if __name__ == "__main__":
-    main() Check more detailed use cases in the [Ingest from Google Cloud Storage](./ingest-from-google-gcs) guide.
+SCHEMA >
+    `order_id` Int64 `json:$.order_id`,
+    `customer_id` Int64 `json:$.customer_id`,
+    `items` Array(String) `json:$.items[:]`,
+    `shipping_address` String `json:$.shipping_address`,
+    `order_date` DateTime `json:$.order_date`
+
+ENGINE "MergeTree"
+ENGINE_PARTITION_KEY "toYYYYMM(order_date)"
+ENGINE_SORTING_KEY "order_date"
+
+IMPORT_CONNECTION_NAME 'tb-gcs'
+IMPORT_BUCKET_URI 'gs://your-bucket-name/path/orders/*.json.gz'
+IMPORT_SCHEDULE '@on-demand' **Handling BigQuery arrays and nested data** : When exporting arrays or nested structures from BigQuery to JSON, they are stored as JSON strings in Tinybird. You can parse them in your Pipes using JSON functions like `JSONExtractArrayRaw()` or `JSONExtractString()` to work with the nested data.
+
+Deploy the data source. Since the GCS Connector uses `@on-demand` mode, you'll need to manually sync data when new files are available.
+
+### Sync data [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-bigquery-using-google-cloud-storage#sync-data)
+
+After BigQuery exports new files to GCS, trigger a sync in Tinybird:
+
+#### Using the API [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-bigquery-using-google-cloud-storage#using-the-api)
+
+curl -X POST "https://api.tinybird.co/v0/datasources/<datasource_name>/scheduling/runs" \
+  -H "Authorization: Bearer <your-tinybird-token>"
+#### Using the CLI [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-bigquery-using-google-cloud-storage#using-the-cli)
+
+tb datasource sync <datasource_name> Each file is appended to the Tinybird data source. As records might be duplicated if BigQuery re-exports the same data, consider using a materialized view to consolidate a stateful set of your BigQuery table.
+
+## Data type considerations [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-bigquery-using-google-cloud-storage#data-type-considerations)
+
+When exporting from BigQuery to Tinybird, be aware of these data type quirks:
+
+**INT64 in JSON** : BigQuery exports `INT64` values as JSON strings in JSON format to preserve precision. In your Tinybird schema, you may need to parse these strings. For example, if BigQuery exports `"1234567890123456789"` as a string, use `toInt64(column_name)` in your Pipes.
 
 ## Limits [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-bigquery-using-google-cloud-storage#limits)
 
-Because you're using the data sources API, its [limits](/docs/api-reference#limits) apply.
+Because you're using the GCS Connector, its [limits](/docs/forward/get-data-in/connectors/gcs#limitations) apply.
 
-Remember you can [limit the size of the exported files](https://cloud.google.com/bigquery/docs/exporting-data#limit_the_exported_file_size) to accommodate to your Tinybird plan limits.
+The GCS Connector has its own limitations. To stay within your Tinybird plan's limits, you might need to [limit the size of the exported files](https://docs.cloud.google.com/bigquery/docs/exporting-data#limit_the_exported_file_size) . BigQuery automatically splits large exports into multiple files of up to 1 GB when you use a wildcard in the URI (e.g., `gs://bucket/path/*.csv` ).
 
 ## Next steps [¶](https://www.tinybird.co/docs/forward/get-data-in/guides/ingest-from-bigquery-using-google-cloud-storage#next-steps)
 
 See the following resources:
 
-- [  Ingest from Google Cloud Storage](./ingest-from-google-gcs)
+- [  GCS Connector](/docs/forward/get-data-in/connectors/gcs)
+- [  Ingest from Snowflake using AWS S3](./ingest-from-snowflake-using-aws-s3)
+- [  Ingest from Snowflake using Azure Blob Storage](./ingest-from-snowflake-using-azure-blob-storage)
 
 
 
@@ -14455,7 +15997,7 @@ Set the **Source** to **Amazon Kinesis Data Streams** and the **Destination** to
 
 In the **Destination Settings** , set **HTTP Endpoint URL** to point to the [Tinybird Events API](../events-api).
 
-https://api.tinybird.co/v0/events?name=<your_datasource_name>&wait=true&token=<your_token_with_DS_rights> This example is for workspaces in the `GCP` --> `europe-west3` region. If necessary, replace with the [correct region for your workspace](/docs/api-reference#regions-and-endpoints) . Additionally, note the `wait=true` parameter. Learn more about it [in the Events API docs](../events-api#wait-for-acknowledgement).
+https://<your_host>/v0/events?name=<your_datasource_name>&wait=true&token=<your_token_with_DS_rights> This example is for workspaces in the `GCP` --> `europe-west3` region. If necessary, replace with the [correct region for your workspace](/docs/api-reference#regions-and-endpoints) . Additionally, note the `wait=true` parameter. Learn more about it [in the Events API docs](../events-api#wait-for-acknowledgement).
 
 You don't need to create the data source in advance; it will automatically be created for you.
 
@@ -14674,9 +16216,9 @@ The `JSON` data type is in private beta. If you are interested in using this typ
 1. In Tinybird, copy a token with privileges to append to the data source you created. You can use the admin token or create one with the required scope.
 2. Back in Auth0, paste the Events API URL in your Webhook Endpoint URL. Use the query parameter `name`   to match the name of the data source you created in Tinybird. For example:
 
-https://api.tinybird.co/v0/events?name=auth0&token=<your user token>
+https://<your_host>/v0/events?name=auth0&token=<your user token>
 
-Replace the Tinybird API hostname or region with the [API region](/docs/api-reference#regions-and-endpoints) that matches your Workspace.
+The API host in the following examples must match your Workspace's region. See the full list of [regions and hosts](/docs/api-reference#regions-and-endpoints)
 
 Content Type is `application/json` and Content Format is `JSON Lines`.
 
@@ -14986,7 +16528,7 @@ When using a `kafka` connection, you can use the following instructions:
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/datafiles/datasource-files
-Last update: 2025-09-03T13:36:11.000Z
+Last update: 2026-01-21T17:18:21.000Z
 Content:
 ---
 title: "Datasource files · Tinybird Docs"
@@ -15011,7 +16553,7 @@ The following instructions are available for .datasource files.
 | `SCHEMA <indented_schema_definition>` | Yes | Defines a block for a data source schema. The block must be indented. |
 | `ENGINE <engine_type>` | No | Sets the engine for data source. Default value is `MergeTree`  . |
 | `ENGINE_SORTING_KEY <sql>` | No | Sets the `ORDER BY`   expression for the data source. |
-| `ENGINE_PARTITION_KEY <sql>` | No | Sets the `PARTITION`   expression for the data source. |
+| `ENGINE_PARTITION_KEY <sql>` | No | Sets the `PARTITION`   expression for the data source.**  Use monthly ( `toYYYYMM(date_column)`   ) or yearly ( `toYear(date_column)`   ) partitions only.**   Overly granular partition keys severely degrade write performance. See[  MergeTree engine](/docs/sql-reference/engines/mergetree#engine-settings)   for details. |
 | `ENGINE_TTL <sql>` | No | Sets the `TTL`   expression for the data source. |
 | `ENGINE_VER <column_name>` | No | Column with the version of the object state. Required when using `ENGINE ReplacingMergeTree`  . |
 | `ENGINE_SIGN <column_name>` | No | Column to compute the state. Required when using `ENGINE CollapsingMergeTree`   or `ENGINE VersionedCollapsingMergeTree`  . |
@@ -15050,14 +16592,45 @@ SCHEMA >
     `session_id` String `json:$.session_id`,
     `action` LowCardinality(String) `json:$.action`,
     `version` LowCardinality(String) `json:$.version`,
-    `payload` String `json:$.payload` Each column in a `SCHEMA` declaration is in the format `<column_name> <data_type> <json_path> <default_value>` , where:
+    `payload` String `json:$.payload`
+#### Column definition [¶](https://www.tinybird.co/docs/forward/dev-reference/datafiles/datasource-files#column-definition)
 
-- `<column_name>`   is the name of the column in the data source.
-- `<data_type>`   is one of the supported[  Data types](/docs/sql-reference/data-types)  .
-- `<json_path>`   is optional and only required for NDJSON data sources.
-- `<default_value>`   sets a default value to the column when it's null. A common use case is to set a default date to a column, like `updated_at DateTime DEFAULT now()`  .
+Each column in a `SCHEMA` declaration has the following format:
 
-### JSONPath expressions [¶](https://www.tinybird.co/docs/forward/dev-reference/datafiles/datasource-files#jsonpath-expressions)
+`<column_name>` <data_type> `<json_path>` DEFAULT <default_value> CODEC(<codec>)| Field | Required | Description |
+| --- | --- | --- |
+| `<column_name>` | Yes | The name of the column in the data source. |
+| `<data_type>` | Yes | One of the supported[  Data types](/docs/sql-reference/data-types)  . |
+| `<json_path>` | No | JSONPath expression for NDJSON or Parquet data. See[  JSONPath expressions](https://www.tinybird.co/docs/forward/dev-reference/datafiles/datasource-files#jsonpath-expressions)  . |
+| `DEFAULT <default_value>` | No | Sets a default value for the column when the value is null or missing. |
+| `CODEC(<codec>)` | No | Overrides the default compression codec. See[  Column compression codecs](https://www.tinybird.co/docs/forward/dev-reference/datafiles/datasource-files#column-compression-codecs)  . |
+
+The following example shows a column definition using all available fields:
+
+##### Complete column definition example
+
+SCHEMA >
+    `timestamp` DateTime64(3) `json:$.timestamp` DEFAULT now() CODEC(DoubleDelta, ZSTD(1)),
+    `session_id` String `json:$.session_id` DEFAULT '' CODEC(ZSTD(1)),
+    `status` LowCardinality(String) `json:$.status` DEFAULT 'unknown',
+    `count` Int32 `json:$.count` DEFAULT 0,
+    `payload` String `json:$`
+#### Default values [¶](https://www.tinybird.co/docs/forward/dev-reference/datafiles/datasource-files#default-values)
+
+Use `DEFAULT` to set a value for a column when the incoming data is null or missing. This is useful for:
+
+- Providing fallback values for optional fields
+- Setting automatic timestamps with `now()`
+- Avoiding nullable types when a default makes sense
+
+##### Example with DEFAULT values
+
+SCHEMA >
+    `timestamp` DateTime DEFAULT now(),
+    `status` String DEFAULT 'pending',
+    `count` Int32 DEFAULT 0,
+    `is_active` UInt8 DEFAULT 1
+#### JSONPath expressions [¶](https://www.tinybird.co/docs/forward/dev-reference/datafiles/datasource-files#jsonpath-expressions)
 
 `SCHEMA` definitions need JSONPath expressions when working with Parquet or NDJSON data.
 
@@ -15093,7 +16666,7 @@ SCHEMA >
 SCHEMA >
     cli_command String `json:$.attributes.['otel.attributes'].cli_command` Tinybird's JSONPath syntax support has some limitations: It support nested objects at multiple levels, but it **supports nested arrays only at the first level** , as in the example before. To ingest and transform more complex JSON objects, store the whole JSON as a String "<column_name> String `json:$` ", and use [JSONExtract functions](/docs/sql-reference/functions/json-functions#jsonextract-functions) to parse at query time or in materializations.
 
-### Column compression codecs [¶](https://www.tinybird.co/docs/forward/dev-reference/datafiles/datasource-files#column-compression-codecs)
+#### Column compression codecs [¶](https://www.tinybird.co/docs/forward/dev-reference/datafiles/datasource-files#column-compression-codecs)
 
 Tinybird applies compression codecs to data types to optimize storage. You can override the default compression codecs by adding the `CODEC(<codec>)` statement after the type declarations in your .datasource schema. For example:
 
@@ -15174,7 +16747,7 @@ To update or refresh a connection after changing settings or secrets, redeploy y
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb
-Last update: 2025-07-22T05:30:06.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb · Tinybird Docs"
@@ -15216,12 +16789,20 @@ tb -p "Create an e-commerce project with user events Data Source"
 tb -p "Optimize my slow endpoint with a Materialized View"
 tb -p "Show me top 10 errors from logs in the last 24 hours" For detailed capabilities, see the [Tinybird Code guide](/docs/forward/tinybird-code).
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✗ No | Tinybird Code works with all environments depending on the prompt. |
+| `--cloud` | ✗ No | Tinybird Code works with all environments depending on the prompt. |
+| `--branch=BRANCH_NAME` | ✗ No | Branches are not supported in Tinybird Code yet. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-workspace
-Last update: 2025-07-31T09:08:51.000Z
+Last update: 2025-12-18T21:56:34.000Z
 Content:
 ---
 title: "tb workspace · Tinybird Docs"
@@ -15300,12 +16881,20 @@ Switches to another workspace. Use `tb workspace ls` to list the workspaces you 
 | --- | --- |
 | --user_token TEXT | When passed, Tinybird won't prompt asking for it. |
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-workspace#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (default) | Manages workspaces in Tinybird Local. |
+| `--cloud` | ✓ Yes | Manages workspaces in Tinybird Cloud. `clear`   command not supported. |
+| `--branch=BRANCH_NAME` | ✓ Yes | Manages workspaces in a branch. `clear`   command not supported. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-update
-Last update: 2025-06-04T08:32:07.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb update · Tinybird Docs"
@@ -15333,11 +16922,20 @@ tb update
 - For Windows
 
 curl https://tinybird.co | sh
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-update#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✗ No | Updates the CLI binary globally. |
+| `--cloud` | ✗ No | Updates the CLI binary globally. |
+| `--branch=BRANCH_NAME` | ✗ No | Updates the CLI binary globally. |
+
+
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-token
-Last update: 2025-10-15T01:48:02.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb token · Tinybird Docs"
@@ -15390,12 +16988,20 @@ tb token create jwt my_jwt --ttl 1h --scope PIPES:READ --resource my_pipe --fixe
 | --resource | Resource you want to associate the scope with. Required |
 | --fixed-params | Fixed parameters in `key=value`   format. You can separate multiple values using commas. |
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-token#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (default) | Manages tokens for Tinybird Local. |
+| `--cloud` | ✓ Yes | Manages tokens in Tinybird Cloud. |
+| `--branch=BRANCH_NAME` | ✓ Yes | Manages tokens in a branch. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-test
-Last update: 2025-09-25T09:50:59.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb test · Tinybird Docs"
@@ -15409,7 +17015,9 @@ inkeep:version: "forward"
 
 # tb test [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-test#tb-test)
 
-Copy as MD Generates and runs tests. The following subcommands are available:
+Copy as MD Generates and runs tests.
+
+The following subcommands are available:
 
 | Command | Description |
 | --- | --- |
@@ -15449,12 +17057,20 @@ Running against Tinybird Local
 
 Updates the test's expectations. For example: `tb test update get_lego_sets_by_year`.
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-test#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (default) | Runs tests locally with fixture data. |
+| `--cloud` | ✗ No | Tests run locally, not in cloud. |
+| `--branch=BRANCH_NAME` | ✗ No | Tests run locally, not in branches. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-sql
-Last update: 2025-07-22T06:31:12.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb sql · Tinybird Docs"
@@ -15510,11 +17126,20 @@ Running against Tinybird Local
   2025-03-12 16:15:27     0.03177452   query_api  
 ──────────────────────────────────────────────────
   2025-03-12 16:15:33    0.010550499   query_api
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-sql#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (default) | Runs SQL queries locally. |
+| `--cloud` | ✓ Yes | Runs SQL queries in Tinybird Cloud. |
+| `--branch=BRANCH_NAME` | ✓ Yes | Runs SQL queries in a branch. |
+
+
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-sink
-Last update: 2025-06-16T16:46:57.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb sink · Tinybird Docs"
@@ -15547,12 +17172,20 @@ Runs a sink job.
 | --mode [append|replace] | Defines the sink strategy. |
 | --param TEXT | Key and value of the params you want the sink pipe to be called with. For example: tb sink run <my_sink_pipe> --param foo=bar |
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-sink#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (default) | Manages sink pipes locally. |
+| `--cloud` | ✓ Yes | Manages sink pipes in Tinybird Cloud. |
+| `--branch=BRANCH_NAME` | ✓ Yes | Manages sink pipes in a branch. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-secret
-Last update: 2025-05-20T15:10:47.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb secret · Tinybird Docs"
@@ -15591,7 +17224,7 @@ The following subcommands are available:
 | --- | --- |
 | ls | Lists all secrets in the project. |
 | rm NAME | Deletes a secret. |
-| set NAME VALUE | Creates or updates a secret. |
+| set NAME [VALUE] | Creates or updates a secret. If the value is not provided as part of the command, it will be asked. |
 
 ## tb secret ls [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-secret#tb-secret-ls)
 
@@ -15601,12 +17234,58 @@ Lists secrets.
 | --- | --- |
 | --match TEXT | Retrieves any resource matching the pattern. |
 
+## tb secret set [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-secret#tb-secret-set)
+
+| Option | Description |
+| --- | --- |
+| --multiline | Opens an editor to enter a multiline value |
+
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-secret#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (default) | Manages secrets locally. Can use `.env`   files. |
+| `--cloud` | ✓ Yes | Manages secrets in Tinybird Cloud. |
+| `--branch=BRANCH_NAME` | ✓ Yes | Manages secrets in a branch. |
+
+
+
+---
+
+URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-pull
+Last update: 2025-12-24T07:36:26.000Z
+Content:
+---
+title: "tb pull · Tinybird Docs"
+theme-color: "#171612"
+description: "Download the latest version of your datafiles from a Tinybird Workspace to your local project."
+inkeep:version: "forward"
+---
+
+
+
+
+# tb pull [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-pull#tb-pull)
+
+Copy as MD Downloads the latest version of your datafiles from a Tinybird Workspace to your local project. If local files have been modified, you will be prompted to overwrite them.
+
+## Example [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-pull#example)
+
+tb pull
+## Options [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-pull#options)
+
+| Option | Description |
+| --- | --- |
+| --only-vendored | Only download and update vendored files. |
+| -f, --force | Overwrite existing files without prompting for confirmation. |
+| --fmt | Format files before saving. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-pipe
-Last update: 2025-05-08T13:40:58.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb pipe · Tinybird Docs"
@@ -15637,12 +17316,20 @@ Lists all the pipes you have access to.
 | --match TEXT | Retrieves any resource matching the pattern. For example, `--match _test`  . |
 | --format [json] | Returns the results in the specified format. |
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-pipe#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (default) | Manages pipes locally. |
+| `--cloud` | ✓ Yes | Manages pipes in Tinybird Cloud. |
+| `--branch=BRANCH_NAME` | ✓ Yes | Manages pipes in a branch. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-open
-Last update: 2025-05-08T13:40:58.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb open · Tinybird Docs"
@@ -15670,12 +17357,20 @@ tb --cloud open --workspace someworkspace The following options are available:
 | --- | --- |
 | --workspace | Sets the workspace you want to open. If unset, your current workspace is used. |
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-open#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (default) | Opens Tinybird UI for Tinybird Local. |
+| `--cloud` | ✓ Yes | Opens Tinybird UI for Tinybird Cloud. |
+| `--branch=BRANCH_NAME` | ✓ Yes | Opens Tinybird UI for a branch. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-mock
-Last update: 2025-05-07T10:44:34.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb mock · Tinybird Docs"
@@ -15704,12 +17399,20 @@ To use the fixture data in your project, use `tb test` . See [tb test](/docs/for
 
 The `tb mock` command saves the SQL query used to generate the data inside the `/fixtures` directory. You can edit the SQL query file to generate different data.
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-mock#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (default) | Generates mock data from local data sources. |
+| `--cloud` | ✓ Yes | Generates mock data from Tinybird Cloud data sources. |
+| `--branch=BRANCH_NAME` | ✓ Yes | Generates mock data from branch data sources. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-materialization
-Last update: 2025-06-19T11:03:06.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb materialization · Tinybird Docs"
@@ -15740,12 +17443,20 @@ Lists materialized views.
 | --match TEXT | Retrieves any resource matching the pattern. |
 | --format [json] | Returns the results in the specified format. |
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-materialization#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (default) | Lists materialized views locally. |
+| `--cloud` | ✓ Yes | Lists materialized views in Tinybird Cloud. |
+| `--branch=BRANCH_NAME` | ✓ Yes | Lists materialized views in a branch. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-logout
-Last update: 2025-05-07T10:44:34.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb logout · Tinybird Docs"
@@ -15768,12 +17479,20 @@ tb logout
 
 To log back in, run `tb login`.
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-logout#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✗ No | Logout is global and erases all credentials. |
+| `--cloud` | ✗ No | Logout is global and erases all credentials. |
+| `--branch=BRANCH_NAME` | ✗ No | Logout is global and erases all credentials. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-login
-Last update: 2025-09-26T10:14:27.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb login · Tinybird Docs"
@@ -15806,12 +17525,20 @@ The credentials are stored in the `.tinyb` file. See [.tinyb file](/docs/forward
 
 To log out, run `tb logout`.
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-login#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✗ No | Authentication is global and applies to all environments. |
+| `--cloud` | ✗ No | Authentication is global and applies to all environments. |
+| `--branch=BRANCH_NAME` | ✗ No | Authentication is global and applies to all environments. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-local
-Last update: 2025-10-24T12:29:51.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb local · Tinybird Docs"
@@ -15825,7 +17552,9 @@ inkeep:version: "forward"
 
 # tb local [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-local#tb-local)
 
-Copy as MD Manages the local development environment. The following subcommands are available:
+Copy as MD Manages the local development environment.
+
+The following subcommands are available:
 
 | Subcommand | Description | Arguments |
 | --- | --- | --- |
@@ -15845,12 +17574,20 @@ Starts the local development environment.
 | --- | --- |
 | --watch | Watches the logs of Tinybird Local while it is running. |
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-local#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✗ No | This command manages Tinybird Local itself. |
+| `--cloud` | ✗ No | This command manages Tinybird Local itself. |
+| `--branch=BRANCH_NAME` | ✗ No | This command manages Tinybird Local itself. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-job
-Last update: 2025-05-08T13:40:58.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb job · Tinybird Docs"
@@ -15874,12 +17611,20 @@ The following subcommands are available:
 | details JOB_ID | Gets details for any job created in the last 48h. |
 | ls [OPTIONS] | Lists jobs. Use `--status [waiting|working|done|error]`   or `-s`   to show results with the desired status. |
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-job#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (default) | Manages jobs locally. |
+| `--cloud` | ✓ Yes | Manages jobs in Tinybird Cloud. |
+| `--branch=BRANCH_NAME` | ✓ Yes | Manages jobs in a branch. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-infra
-Last update: 2025-05-07T10:44:34.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb infra · Tinybird Docs"
@@ -16045,11 +17790,20 @@ Running against Tinybird Cloud: Workspace example_workspace
 | example      | https://tinybird.example.com                            |
 | example2     | https://tinybird2.example.com                           |
 --------------------------------------------------------------------------
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-infra#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✗ No | Infrastructure management requires cloud. |
+| `--cloud` | ✓ Yes (implicit) | Manages self-managed infrastructure regions. |
+| `--branch=BRANCH_NAME` | ✗ No | Infrastructure is managed at account level, not in branches. |
+
+
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-info
-Last update: 2025-05-08T13:40:58.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb info · Tinybird Docs"
@@ -16097,11 +17851,70 @@ current: /path/to/your/project
 .tinyb: /path/to/your/project/.tinyb
 project: /path/to/your/project
 ---------------------------------------------------
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-info#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✗ No | Displays info for all environments. |
+| `--cloud` | ✗ No | Displays info for all environments. |
+| `--branch=BRANCH_NAME` | ✗ No | Displays info for all environments. |
+
+
+
+---
+
+URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-fmt
+Last update: 2025-12-15T09:56:58.000Z
+Content:
+---
+title: "tb fmt · Tinybird Docs"
+theme-color: "#171612"
+description: "Formats a .datasource or .pipe file"
+inkeep:version: "forward"
+---
+
+
+
+
+## tb fmt [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-fmt#tb-fmt)
+
+Formats a .datasource or .pipe file. .connection files are not *yet* supported.
+
+These are the options available for the `fmt` command:
+
+| Option | Description |
+| --- | --- |
+| --line-length INTEGER | A number indicating the maximum characters per line in the node SQL, lines split based on the SQL syntax and the number of characters passed as a parameter. |
+| --dry-run | Don't ask to overwrite the local file. |
+| --yes | Don't ask for confirmation to overwrite the local file. |
+| --diff | Outputs correctly formatted block (if differs from local file) and prompts to apply correction to local file. |
+
+This command applies opinionated formatting rules and may reorder file properties for consistency. For example, these properties:
+
+ENGINE "MergeTree"
+ENGINE_SORTING_KEY "name"
+ENGINE_PARTITION_KEY "name" will be formatted as:
+
+ENGINE MergeTree
+ENGINE_PARTITION_KEY name
+ENGINE_SORTING_KEY name This command removes comments starting with # from the file, so use DESCRIPTION or a comment block instead:
+
+##### Example comment block
+
+%
+{% comment this is a comment and fmt keeps it %}
+
+SELECT
+  {% comment this is another comment and fmt keeps it %}
+  count() c
+FROM stock_prices_1m You can add `tb fmt` to your git `pre-commit` hook to have your files properly formatted. If the SQL formatting results aren't what you expect, you can disable it just for the blocks needed. Read [how to disable fmt](https://docs.sqlfmt.com/getting-started/disabling-sqlfmt).
+
+
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-endpoint
-Last update: 2025-05-08T13:40:58.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb endpoint · Tinybird Docs"
@@ -16153,12 +17966,20 @@ Prints stats of the last 7 days for an endpoint.
 | --- | --- |
 | --format [json] | Returns the results in the specified format. |
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-endpoint#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (default) | Manages endpoints locally. |
+| `--cloud` | ✓ Yes | Manages endpoints in Tinybird Cloud. |
+| `--branch=BRANCH_NAME` | ✓ Yes | Manages endpoints in a branch. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-dev
-Last update: 2025-11-10T14:09:43.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb dev · Tinybird Docs"
@@ -16172,7 +17993,7 @@ inkeep:version: "forward"
 
 # tb dev [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-dev#tb-dev)
 
-Copy as MD Use `tb dev` to build your project and watch for changes. When in watch mode you can run SQL queries against the project and also run commands, as `--local` becomes the default target.
+Copy as MD Use `tb dev` to build your project and watch for changes. On each datafile change, the project will rebuild. When in watch mode you can run SQL queries against the project and also run commands. Remember that `--local` is the default target.
 
 For example:
 
@@ -16225,11 +18046,20 @@ tb branch create my_feature_branch --last-partition
 ** Branch 'my_feature_branch' from 'web_analytics' has been created Then you can point your dev session to the branch by passing the `--branch` flag.
 
 tb --branch=my_feature_branch dev
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-dev#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (default) | Starts a dev session in Tinybird Local. |
+| `--cloud` | ✗ No | Dev sessions are not available in Tinybird Cloud. |
+| `--branch=BRANCH_NAME` | ✓ Yes | Starts a dev session in a branch. |
+
+
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-deployment
-Last update: 2025-09-26T18:25:43.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb deployment · Tinybird Docs"
@@ -16272,12 +18102,20 @@ Removing data sources is an irreversible operation. Be careful when using the `-
 
 The `--check` flag validates external connections to S3, Kafka, GCS, and databases referenced via table functions. For local success, set connection secrets with `tb secret set` and use `tb local start --use-aws-creds` for S3 connections.
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-deployment#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (default) | Manages deployments locally. |
+| `--cloud` | ✓ Yes | Manages deployments in Tinybird Cloud. |
+| `--branch=BRANCH_NAME` | ✓ Yes | Manages deployments in a branch. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-deploy
-Last update: 2025-05-07T10:44:34.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb deploy · Tinybird Docs"
@@ -16313,12 +18151,20 @@ Removing old deployment
 Deployment promotion successfully started
 Deployment promoted successfully See [tb deployment](/docs/forward/dev-reference/commands/tb-deployment) for more information.
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-deploy#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (default) | Deploys to Tinybird Local. |
+| `--cloud` | ✓ Yes | Deploys to Tinybird Cloud. |
+| `--branch=BRANCH_NAME` | ✓ Yes | Deploys to a branch. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-datasource
-Last update: 2025-06-12T10:38:54.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb datasource · Tinybird Docs"
@@ -16453,12 +18299,20 @@ Truncates a data source. For example, `tb datasource truncate my_datasource`.
 | --yes | Does not ask for confirmation |
 | --cascade | Truncates the dependent data source attached in cascade to the given data source |
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-datasource#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (default) | Manages data sources in Tinybird Local. |
+| `--cloud` | ✓ Yes | Manages data sources in Tinybird Cloud. |
+| `--branch=BRANCH_NAME` | ✓ Yes | Manages data sources in a branch. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-create
-Last update: 2025-05-07T10:54:16.000Z
+Last update: 2026-01-29T22:06:15.000Z
 Content:
 ---
 title: "tb create · Tinybird Docs"
@@ -16483,14 +18337,22 @@ Pass the `--prompt` flag to generate a customized starter project based on your 
 | --prompt STRING | Prompt to generate a customized initial project. Tinybird Local and authentication are required. |
 | --folder PATH | Path that will contain the Tinybird project files. Dotfiles are created in project's root. Tinybird Local (run `tb local start`   ) and authentication ( `tb login`   ) are required. |
 | --data STRING | Creates a data project based on the file passed as an argument. You can pass a url or a path to a local file. Supported formats are CSV, NDJSON and Parquet. |
-| --agent | Creates rules for an LLM agent. Supported values are `cursor`   and `windsurf`   . The default value is `cursor`  . |
+| --agent | Creates rules for an LLM agent. Supported values are `cursor`   . The default value is `cursor`  . |
+
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-create#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (implicit) | Creates project files locally but you will need to run `tb build`   or `tb deploy`   to see the new resources in Tinybird Local. |
+| `--cloud` | ✗ No | To see the new resources in Tinybird Cloud, you will need to run `tb --cloud deploy`  . |
+| `--branch=BRANCH_NAME` | ✗ No | To see the new resources in a branch, you will need to run `tb --branch=BRANCH_NAME build`   or `tb --branch=BRANCH_NAME deploy`  . |
 
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-copy
-Last update: 2025-05-08T13:40:58.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb copy · Tinybird Docs"
@@ -16526,12 +18388,20 @@ Runs a copy job.
 | --yes | Does not ask for confirmation. |
 | --param TEXT | Key and value of the params you want the copy pipe to be called with. For example: tb pipe copy run <my_copy_pipe> --param foo=bar |
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-copy#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (default) | Manages copy pipes locally. |
+| `--cloud` | ✓ Yes | Manages copy pipes in Tinybird Cloud. |
+| `--branch=BRANCH_NAME` | ✓ Yes | Manages copy pipes in a branch. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-connection
-Last update: 2025-05-13T20:04:54.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb connection · Tinybird Docs"
@@ -16566,12 +18436,20 @@ Lists connections.
 | --- | --- |
 | --service TEXT | Filter by service. |
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-connection#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (default) | Manages connections in Tinybird Local. |
+| `--cloud` | ✓ Yes | Manages connections in Tinybird Cloud. |
+| `--branch=BRANCH_NAME` | ✓ Yes | Manages connections in a branch. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-build
-Last update: 2025-10-02T12:05:27.000Z
+Last update: 2025-12-18T09:52:50.000Z
 Content:
 ---
 title: "tb build · Tinybird Docs"
@@ -16605,12 +18483,20 @@ While similar, `tb build` and `tb deployment create` have different purposes:
 
 For example, when updating a data project in a workspace, `tb build` checks that the new version of your project is valid, while `tb deployment create --check` verifies that you can successfully migrate from the old version to the new one.
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-build#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✓ Yes (default) | Builds your project locally. |
+| `--cloud` | ✗ No | Use `tb deployment create --check`   to validate your project against Tinybird Cloud. |
+| `--branch=BRANCH_NAME` | ✓ Yes | Builds your project in a remote branch. |
+
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/dev-reference/commands/tb-branch
-Last update: 2025-11-10T14:09:43.000Z
+Last update: 2025-12-18T21:56:34.000Z
 Content:
 ---
 title: "tb branch · Tinybird Docs"
@@ -16676,6 +18562,14 @@ tb --branch=my_feature_branch dev
 # Open Tinybird UI for the branch
 tb --branch=my_feature_branch open For more information about working with branches, see [Branches](/docs/forward/test-and-deploy/branches).
 
+## Environment support [¶](https://www.tinybird.co/docs/forward/dev-reference/commands/tb-branch#environment-support)
+
+| Environment | Supported | Description |
+| --- | --- | --- |
+| `--local` | ✗ No | Branches are not available locally. |
+| `--cloud` | ✗ No | Branches are always created associated with a workspace in Tinybird Cloud. |
+| `--branch=BRANCH_NAME` | ✗ No | Use `--branch`   with other commands to work in a branch, not for managing branches. |
+
 
 
 ---
@@ -16719,7 +18613,7 @@ Enter them before the command name. For example: `tb --host https://api.tinybird
 ---
 
 URL: https://www.tinybird.co/docs/forward/administration/tokens/static-tokens
-Last update: 2025-10-15T01:48:02.000Z
+Last update: 2025-12-17T09:59:55.000Z
 Content:
 ---
 title: "Static tokens · Tinybird Docs"
@@ -16754,7 +18648,7 @@ Users can create additional tokens with different authorization scopes. This all
 There are two types of static tokens:
 
 - **[  Resource-scoped tokens](https://www.tinybird.co/docs/forward/administration/tokens/static-tokens#resource-scoped-tokens)  :**   grant specific permissions on specific resources, such as reading from a given endpoint or appending to a given data source. Created in*  .pipe*   and*  .datasource*   files and managed via deployments.
-- **[  Workspace and Org. level tokens](https://www.tinybird.co/docs/forward/administration/tokens/static-tokens#other-tokens)  :**   tokens with `ADMIN`   or `TOKENS`   scope to interact with other Workspace resources, or with `ORG_DATASOURCES:READ`   scope to query Organization level data sources. Created and managed via the CLI or API.
+- **[  Workspace and Org. level tokens](https://www.tinybird.co/docs/forward/administration/tokens/static-tokens#other-tokens)  :**   tokens with workspace or organization-wide scopes: `WORKSPACE:READ_ALL`  , `ADMIN`  , `TOKENS`   or `ORG_DATASOURCES:READ`   . Created and managed via the CLI or API.
 
 ### Resource-scoped tokens [¶](https://www.tinybird.co/docs/forward/administration/tokens/static-tokens#resource-scoped-tokens)
 
@@ -16803,6 +18697,7 @@ tb token create static new_admin_token --scope <scope> The following scopes are 
 | --- | --- |
 | `TOKENS` | Grants the token permission to create, delete or refresh tokens. |
 | `ADMIN` | Grants full access to the workspace. Use sparingly. |
+| `WORKSPACE:READ_ALL` | Grants read access to all workspace resources: datasources, pipes, `tinybird.*`   service data sources, and `system.*`   tables. Particularly useful for BI Tools. |
 | `ORG_DATASOURCES:READ` | Grants the token read access to organization service datasources. |
 
 ## List existing tokens [¶](https://www.tinybird.co/docs/forward/administration/tokens/static-tokens#list-existing-tokens)
@@ -16837,7 +18732,7 @@ tb token rm <token_name> See [tb token](/docs/forward/dev-reference/commands/tb-
 ---
 
 URL: https://www.tinybird.co/docs/forward/administration/tokens/jwt
-Last update: 2025-07-21T12:09:15.000Z
+Last update: 2025-11-26T17:58:03.000Z
 Content:
 ---
 title: "JSON Web tokens (JWTs) · Tinybird Docs"
@@ -16878,7 +18773,7 @@ The payload of a JWT is a JSON object that contains the following fields:
 | scopes.resource | t_b9427fe2bcd543d1a8923d18c094e8c1 or top_airlines | Yes | The ID or name of the pipe that the scope applies to, like which API endpoint the token can access. |
 | scopes.fixed_params | {"org_id": "testing"} | No | Valid for scope `PIPES:READ`   . Pass arbitrary fixed values to the API endpoint. These values can be accessed by pipe templates to supply dynamic values at query time. |
 | scopes.filter | "org_id = 'testing'" | No | Valid for scope `DATASOURCES:READ`   . Passes a WHERE filter that will be appended to the specified scope resource. |
-| limits | {"rps": 10} | No | You can limit the number of requests per second the JWT can perform. See[  JWT rate limit](https://www.tinybird.co/docs/forward/administration/tokens/jwt#rate-limits-for-jwt-tokens)  . |
+| limits | {"rps": 10} | No | You can limit the number of requests per second the JWT can perform. See[  JWT rate limit](https://www.tinybird.co/docs/forward/administration/tokens/jwt#rate-limits-for-jwts)  . |
 
 Check out the [JWT example](https://www.tinybird.co/docs/forward/administration/tokens/jwt#jwt-example) to see what a complete payload looks like.
 
@@ -17128,7 +19023,7 @@ If you want to limit for each specific user, you can generate a JWT using the fo
 ---
 
 URL: https://www.tinybird.co/docs/forward/administration/organizations/cluster-management
-Last update: 2025-11-17T15:04:49.000Z
+Last update: 2026-01-07T08:46:55.000Z
 Content:
 ---
 title: "Cluster management · Tinybird Docs"
@@ -17142,7 +19037,7 @@ inkeep:version: "forward"
 
 # Cluster management [¶](https://www.tinybird.co/docs/forward/administration/organizations/cluster-management#cluster-management)
 
-Copy as MD If you're on an Enterprise plan with dedicated infrastructure and have access to the private beta, you can manage your ClickHouse® cluster replicas directly from the **Plan & Billing** page. This allows you to horizontally scale your cluster by adding or removing replicas and controlling how read and write workloads are distributed across them.
+Copy as MD If you're on an Enterprise plan with dedicated infrastructure, you can manage your ClickHouse® cluster replicas directly from the **Plan & Billing** page. This allows you to horizontally scale your cluster by adding or removing replicas and controlling how read and write workloads are distributed across them.
 
 ## Access Cluster Management [¶](https://www.tinybird.co/docs/forward/administration/organizations/cluster-management#access-cluster-management)
 
@@ -17165,8 +19060,6 @@ Each replica in your cluster has the following configuration:
 | Memory | Amount of memory allocated to this replica in gigabytes. |
 
 ## Managing a Cluster [¶](https://www.tinybird.co/docs/forward/administration/organizations/cluster-management#managing-a-cluster)
-
-Cluster management is currently in private beta for Enterprise customers on dedicated infrastructure. [Contact support](mailto:support@tinybird.co) to request access for your cluster.
 
 Cluster operations like adding, removing or rebalancing replica weights may take a few minutes to complete. During this time, no other operations can be performed on your cluster. However, the cluster will continue to operate normally while operations are in progress.
 
@@ -17676,7 +19569,7 @@ Data Transfer depends on your environment. There are two scenarios:
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/sinks/kafka-sink
-Last update: 2025-06-26T06:36:23.000Z
+Last update: 2025-12-11T11:38:13.000Z
 Content:
 ---
 title: "Kafka Sink · Tinybird Docs"
@@ -17726,7 +19619,7 @@ You can create a Kafka connection in Tinybird using either the guided CLI proces
 
 The Tinybird CLI provides a guided process that helps you set up the Kafka connection:
 
-tb connection create kafka When prompted, you'll need to:
+tb connection create kafka When prompted, provide:
 
 1. Enter a name for your connection.
 2. Provide the Kafka bootstrap servers (comma-separated list).
@@ -17777,9 +19670,9 @@ EXPORT_KAFKA_TOPIC "events_topic"
 EXPORT_SCHEDULE "*/5 * * * *" 3
 ### Deploy the Sink pipe [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/sinks/kafka-sink#deploy-the-sink-pipe)
 
-After defining your Sink pipe and connection, test it by running a deploy check:
+After defining your Sink pipe and connection, test the Kafka connection:
 
-tb --cloud deploy --check This runs the connection locally and checks if the connection is valid. To see the connection details, run `tb --cloud connection ls`.
+tb connection data <connection_name> This command tests the Kafka connection configuration by attempting to consume from a topic (it's designed for the Kafka source connector). While it validates connection details, for Kafka Sinks, the connection is used to produce data to Kafka, not consume from it. To see the connection details, run `tb --cloud connection ls`.
 
 When ready, push the datafile to your Workspace using `tb deploy` to create the Sink pipe:
 
@@ -17796,7 +19689,7 @@ The Kafka connector uses the following settings in .connection files:
 | `KAFKA_SECRET` | Yes | Secret used to authenticate with Kafka. Sometimes called Secret, Secret Key, or Password depending on the Kafka distribution. |
 | `KAFKA_SECURITY_PROTOCOL` | No | Security protocol for the connection. Accepted values are `PLAINTEXT`   and `SASL_SSL`   . Default value is `SASL_SSL`  . |
 | `KAFKA_SASL_MECHANISM` | No | SASL mechanism to use for authentication. Supported values are `PLAIN`  , `SCRAM-SHA-256`  , `SCRAM-SHA-512`   . Default value is `PLAIN`  . |
-| `KAFKA_SCHEMA_REGISTRY_URL` | No | URL of the Kafka schema registry. Used for `avro`   and `json_with_schema`   deserialization of   keys and values. If Basic Auth is required, it must be included in the URL as in `https://user:password@registry_url` |
+| `KAFKA_SCHEMA_REGISTRY_URL` | No | URL of the Kafka schema registry. Used for `avro`   and `json_with_schema`   deserialization of   keys and values. If Basic Auth is required, include credentials in the URL format: `https://<username>:<password>@registry.example.com` |
 | `KAFKA_SSL_CA_PEM` | No | Content of the CA certificate in PEM format for SSL connections. |
 
 ## .pipe settings [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/sinks/kafka-sink#pipe-settings)
@@ -17806,7 +19699,7 @@ The Kafka Sink pipe uses the following settings in .pipe files:
 | Key | Type | Description |
 | --- | --- | --- |
 | `EXPORT_CONNECTION_NAME` | string | Required. The connection name to the destination service. This is the connection created in Step 1. |
-| `EXPORT_KAFKA_TOPIC` | string | Required. The Kafka topic where events will be published. |
+| `EXPORT_KAFKA_TOPIC` | string | Required. The Kafka topic where events are published. |
 | `EXPORT_SCHEDULE` | string | Required. A crontab expression that sets the frequency of the Sink operation or the @on-demand string. |
 
 ### Scheduling considerations [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/sinks/kafka-sink#scheduling-considerations)
@@ -17820,7 +19713,7 @@ To reduce the chances of a busy queue affecting your Sink pipe execution schedul
 You can add [query parameters](/docs/forward/work-with-data/query-parameters) to your Sink pipes, the same way you do in API Endpoints or Copy pipes.
 
 - For on-demand executions, you can set parameters when you trigger the Sink pipe to whatever values you wish.
-- For scheduled executions, the default values for the parameters will be used when the Sink pipe runs.
+- For scheduled executions, the default values for the parameters are used when the Sink pipe runs.
 
 ## Execute the Sink pipe [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/sinks/kafka-sink#execute-the-sink-pipe)
 
@@ -17832,7 +19725,7 @@ tb sink run <pipe_name> When triggering a Sink pipe you have the option of overr
 
 ### Scheduled execution [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/sinks/kafka-sink#scheduled-execution)
 
-If you configured a schedule with `EXPORT_SCHEDULE` , the Sink pipe will run automatically according to the cron expression.
+If you configured a schedule with `EXPORT_SCHEDULE` , the Sink pipe runs automatically according to the cron expression.
 
 Once the Sink pipe is triggered, it creates a standard Tinybird job that can be followed via the `v0/jobs` API or using `tb job ls --kind=sink`.
 
@@ -17856,10 +19749,182 @@ When a Sink pipe executes, it uses your plan's included compute resources (vCPUs
 
 Tinybird includes Data Transfer allowances for Enterprise customers. Contact your Customer Success team or email us at [support@tinybird.co](mailto:support@tinybird.co) to discuss your specific requirements.
 
+## Performance [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/sinks/kafka-sink#performance)
+
+### Throughput considerations [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/sinks/kafka-sink#throughput-considerations)
+
+Kafka Sink performance depends on:
+
+- Query result size
+- Network latency to Kafka cluster
+- Kafka cluster capacity
+- Message serialization overhead
+
+**Monitor Sink performance:**
+
+SELECT
+    pipe_name,
+    job_type,
+    status,
+    elapsed_time,
+    rows_written,
+    bytes_written
+FROM tinybird.jobs_log
+WHERE job_type = 'sink'
+  AND timestamp > now() - INTERVAL 24 hour
+ORDER BY timestamp DESC
+### Optimization tips [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/sinks/kafka-sink#optimization-tips)
+
+1. **  Batch size**   : Larger batches improve throughput but increase latency
+2. **  Schedule frequency**   : Balance between freshness and resource usage
+3. **  Query optimization**   : Optimize your Sink pipe queries for performance
+4. **  Message format**   : Use efficient serialization (JSON is typically fastest)
+
+## Use cases and examples [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/sinks/kafka-sink#use-cases-and-examples)
+
+### Real-time event streaming [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/sinks/kafka-sink#real-time-event-streaming)
+
+Stream processed events to downstream systems:
+
+##### event_stream.pipe
+
+NODE node_0
+
+SQL >
+    SELECT
+        user_id,
+        event_type,
+        timestamp,
+        metadata
+    FROM processed_events
+    WHERE timestamp > now() - INTERVAL 1 hour
+      AND status = 'processed'
+
+TYPE sink
+EXPORT_CONNECTION_NAME "kafka_connection"
+EXPORT_KAFKA_TOPIC "downstream_events"
+EXPORT_SCHEDULE "*/5 * * * *"
+### Data synchronization [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/sinks/kafka-sink#data-synchronization)
+
+Sync data changes to external systems:
+
+##### user_sync.pipe
+
+NODE node_0
+
+SQL >
+    SELECT
+        user_id,
+        email,
+        updated_at,
+        status
+    FROM users
+    WHERE updated_at > now() - INTERVAL 1 hour
+
+TYPE sink
+EXPORT_CONNECTION_NAME "kafka_connection"
+EXPORT_KAFKA_TOPIC "user_updates"
+EXPORT_SCHEDULE "0 * * * *"
+### Analytics data export [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/sinks/kafka-sink#analytics-data-export)
+
+Export aggregated analytics to Kafka for further processing:
+
+##### analytics_export.pipe
+
+NODE node_0
+
+SQL >
+    SELECT
+        toStartOfHour(timestamp) as hour,
+        event_type,
+        count() as event_count,
+        uniq(user_id) as unique_users
+    FROM events
+    WHERE timestamp > now() - INTERVAL 1 hour
+    GROUP BY hour, event_type
+
+TYPE sink
+EXPORT_CONNECTION_NAME "kafka_connection"
+EXPORT_KAFKA_TOPIC "hourly_analytics"
+EXPORT_SCHEDULE "0 * * * *"
+## Troubleshooting [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/sinks/kafka-sink#troubleshooting)
+
+### Issue: Sink not executing [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/sinks/kafka-sink#issue-sink-not-executing)
+
+**Symptoms:**
+
+- No jobs in `jobs_log`
+- Scheduled Sink not running
+
+**Solutions:**
+
+1. Verify schedule syntax is correct (cron format)
+2. Check Sink pipe is deployed: `tb pipe ls`
+3. Test connection: `tb connection data <connection_name>`   (validates connection details; note this command is for the Kafka source connector and tests consumption, while Sinks produce data)
+4. Check for errors in `jobs_log`
+
+### Issue: Messages not appearing in Kafka [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/sinks/kafka-sink#issue-messages-not-appearing-in-kafka)
+
+**Symptoms:**
+
+- Sink executes successfully
+- No messages in Kafka topic
+
+**Solutions:**
+
+1. Verify topic name is correct
+2. Check Kafka connection credentials
+3. Verify topic exists in Kafka cluster
+4. Check Kafka producer permissions
+5. Review `sinks_ops_log`   for errors
+
+### Issue: Slow Sink execution [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/sinks/kafka-sink#issue-slow-sink-execution)
+
+**Symptoms:**
+
+- Long execution times
+- Timeouts
+
+**Solutions:**
+
+1. Optimize Sink pipe query
+2. Reduce query result size
+3. Add filters to limit data
+4. Check network latency to Kafka
+5. Monitor Kafka cluster performance
+
+### Monitoring Sink operations [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/sinks/kafka-sink#monitoring-sink-operations)
+
+**Check Sink execution status:**
+
+SELECT
+    timestamp,
+    pipe_name,
+    status,
+    elapsed_time,
+    rows_written,
+    error
+FROM tinybird.jobs_log
+WHERE job_type = 'sink'
+  AND timestamp > now() - INTERVAL 24 hour
+ORDER BY timestamp DESC **Check Sink-specific metrics:**
+
+SELECT
+    timestamp,
+    pipe_name,
+    topic,
+    messages_sent,
+    bytes_sent,
+    error
+FROM tinybird.sinks_ops_log
+WHERE timestamp > now() - INTERVAL 24 hour
+ORDER BY timestamp DESC
 ## Next steps [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/sinks/kafka-sink#next-steps)
 
 - Get familiar with the[  Service Data Source](/docs/forward/monitoring/service-datasources)   and see what's going on in your account
 - Deep dive on Tinybird's[  pipes concept](/docs/forward/work-with-data/pipes)
+- Review[  Kafka connector documentation](/docs/forward/get-data-in/connectors/kafka)   for Kafka setup
+- Learn about[  monitoring Sink operations](/docs/forward/monitoring/service-datasources#tinybird-sinks-ops-log)
 
 
 
@@ -18534,7 +20599,7 @@ TINYBIRD_SIGNING_TOKEN="TINYBIRD_SIGNING_TOKEN>" # Use your Admin Token as the s
 TINYBIRD_WORKSPACE="YOUR_WORKSPACE_ID"  # The UUID of your workspace
 NEXT_PUBLIC_TINYBIRD_HOST="YOUR_TINYBIRD_API_REGION e.g. https://api.tinybird.co" # Your regional API host
 
-Replace the Tinybird API hostname or region with the [API region](/docs/api-reference#regions-and-endpoints) that matches your Workspace.
+The API host in the following examples must match your Workspace's region. See the full list of [regions and hosts](/docs/api-reference#regions-and-endpoints)
 
 ### Run the demo app [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/consume-apis-nextjs#run-the-demo-app)
 
@@ -18780,7 +20845,7 @@ params = {'q': sql + f" FORMAT {format}"}
 r = s.get(f"{URL}?{urlencode(params)}")
 df = pd.read_csv(StringIO(r.text))
 
-Replace the Tinybird API hostname or region with the [API region](/docs/api-reference#regions-and-endpoints) that matches your Workspace.
+The API host in the following examples must match your Workspace's region. See the full list of [regions and hosts](/docs/api-reference#regions-and-endpoints)
 
 ## Fetch data from an API endpoint & parameters [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/consume-apis-in-a-notebook#fetch-data-from-an-api-endpoint-parameters)
 
@@ -18815,7 +20880,7 @@ params = {'date_start': date_start,
 r = s.get(f"{URL}?{urlencode(params)}")
 df = pd.read_csv(StringIO(r.text))
 
-Replace the Tinybird API hostname or region with the [API region](/docs/api-reference#regions-and-endpoints) that matches your Workspace.
+The API host in the following examples must match your Workspace's region. See the full list of [regions and hosts](/docs/api-reference#regions-and-endpoints)
 
 ## Fetch batches of data using the Query API [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/consume-apis-in-a-notebook#fetch-batches-of-data-using-the-query-api)
 
@@ -19044,7 +21109,7 @@ Check the [Tinybird Organization metrics](https://github.com/tinybirdco/tinybird
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-tableau
-Last update: 2025-09-08T10:54:59.000Z
+Last update: 2025-12-17T09:59:55.000Z
 Content:
 ---
 title: "Connect Tableau to Tinybird · Tinybird Docs"
@@ -19065,7 +21130,7 @@ The ClickHouse® connection to Tinybird is read-only. You can use it to analyze 
 ## Prerequisites [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-tableau#prerequisites)
 
 - A Tinybird workspace with data sources
-- A Tinybird Auth Token with read permissions for the workspace data sources
+- A Tinybird Auth Token with scopes `WORKSPACE:READ_ALL`   and optionally `ORG_DATASOURCES:READ`   . See[  how to create it](../clickhouse-interface#auth-token-requirements)  .
 
 ## Add Tinybird as a data source [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-tableau#add-tinybird-as-a-data-source)
 
@@ -19104,14 +21169,14 @@ Tableau ClickHouse® connection configuration
 ## Learn more [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-tableau#learn-more)
 
 - [  ClickHouse Interface overview](../clickhouse-interface)
-- [  Tinybird Auth Token management](/docs/concepts/auth-tokens)
+- [  Tinybird Auth Token management](/docs/classic/administration/auth-tokens)
 
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-superset
-Last update: 2025-09-03T17:55:11.000Z
+Last update: 2025-12-17T09:59:55.000Z
 Content:
 ---
 title: "Connect Superset to Tinybird · Tinybird Docs"
@@ -19134,7 +21199,7 @@ The ClickHouse® connection to Tinybird is read-only. You can use it to visualiz
 - Apache Superset instance (self-hosted or cloud)
 - ClickHouse® database driver installed ( `clickhouse-driver`   Python package)
 - A Tinybird workspace with data sources
-- A Tinybird Auth Token with read permissions for the workspace data sources
+- A Tinybird Auth Token with scopes `WORKSPACE:READ_ALL`   and optionally `ORG_DATASOURCES:READ`   . See[  how to create it](../clickhouse-interface#auth-token-requirements)  .
 
 ## Add Tinybird as a database [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-superset#add-tinybird-as-a-database)
 
@@ -19184,14 +21249,14 @@ If the connection is working, you should see the result.
 ## Learn more [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-superset#learn-more)
 
 - [  ClickHouse Interface overview](../clickhouse-interface)
-- [  Tinybird Auth Token management](/docs/concepts/auth-tokens)
+- [  Tinybird Auth Token management](/docs/classic/administration/auth-tokens)
 
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-redash
-Last update: 2025-09-03T20:35:44.000Z
+Last update: 2025-12-17T09:59:55.000Z
 Content:
 ---
 title: "Connect Redash to Tinybird · Tinybird Docs"
@@ -19213,7 +21278,7 @@ The ClickHouse® connection to Tinybird is read-only. You can use it to query an
 
 - [  Redash](https://redash.io/)   installed
 - A Tinybird workspace with data sources
-- A Tinybird Auth Token with read permissions for the workspace data sources
+- A Tinybird Auth Token with scopes `WORKSPACE:READ_ALL`   and optionally `ORG_DATASOURCES:READ`   . See[  how to create it](../clickhouse-interface#auth-token-requirements)  .
 
 ## Create a new connection [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-redash#create-a-new-connection)
 
@@ -19232,14 +21297,14 @@ Database Name: <WORKSPACE_NAME>  # Your workspace name See the list of [ClickHou
 ## Learn more [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-redash#learn-more)
 
 - [  ClickHouse Interface overview](../clickhouse-interface)
-- [  Tinybird Auth Token management](/docs/concepts/auth-tokens)
+- [  Tinybird Auth Token management](/docs/classic/administration/auth-tokens)
 
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-powerbi
-Last update: 2025-09-05T17:36:23.000Z
+Last update: 2025-12-17T09:59:55.000Z
 Content:
 ---
 title: "Connect Microsoft Power BI to Tinybird · Tinybird Docs"
@@ -19261,7 +21326,7 @@ The ClickHouse® connection to Tinybird is read-only. You can use it to query an
 
 - [  Microsoft Power BI](https://www.microsoft.com/en-us/download/details.aspx?id=58494)
 - A Tinybird workspace with data sources
-- A Tinybird Auth Token with read permissions for the workspace data sources
+- A Tinybird Auth Token with scopes `WORKSPACE:READ_ALL`   and optionally `ORG_DATASOURCES:READ`   . See[  how to create it](../clickhouse-interface#auth-token-requirements)  .
 
 ## Install the ODBC Driver [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-powerbi#install-the-odbc-driver)
 
@@ -19397,14 +21462,14 @@ Close, save and restart Power BI Desktop
 ## Learn more [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-powerbi#learn-more)
 
 - [  ClickHouse Interface overview](../clickhouse-interface)
-- [  Tinybird Auth Token management](/docs/concepts/auth-tokens)
+- [  Tinybird Auth Token management](/docs/classic/administration/auth-tokens)
 
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-mitzu
-Last update: 2025-09-03T17:55:11.000Z
+Last update: 2025-12-17T09:59:55.000Z
 Content:
 ---
 title: "Connect Mitzu to Tinybird · Tinybird Docs"
@@ -19426,7 +21491,7 @@ The ClickHouse® connection to Tinybird is read-only. You can use it to query an
 
 - A[  Mitzu](https://mitzu.io/)   account
 - A Tinybird workspace with data sources
-- A Tinybird Auth Token with read permissions for the workspace data sources
+- A Tinybird Auth Token with scopes `WORKSPACE:READ_ALL`   and optionally `ORG_DATASOURCES:READ`   . See[  how to create it](../clickhouse-interface#auth-token-requirements)  .
 
 ## Create a new connection [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-mitzu#create-a-new-connection)
 
@@ -19445,14 +21510,14 @@ See the list of [ClickHouse hosts](../clickhouse-interface#clickhouse-interface-
 ## Learn more [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-mitzu#learn-more)
 
 - [  ClickHouse Interface overview](../clickhouse-interface)
-- [  Tinybird Auth Token management](/docs/concepts/auth-tokens)
+- [  Tinybird Auth Token management](/docs/classic/administration/auth-tokens)
 
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-metabase
-Last update: 2025-10-22T09:49:37.000Z
+Last update: 2025-12-17T09:59:55.000Z
 Content:
 ---
 title: "Connect Metabase to Tinybird · Tinybird Docs"
@@ -19475,7 +21540,7 @@ Tinybird does not support Metabase's Roles or Impersonation features. You will b
 ## Prerequisites [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-metabase#prerequisites)
 
 - A Tinybird workspace with data sources
-- A Tinybird Auth Token with read permissions for the workspace data sources
+- A Tinybird Auth Token with scopes `WORKSPACE:READ_ALL`   and optionally `ORG_DATASOURCES:READ`   . See[  how to create it](../clickhouse-interface#auth-token-requirements)  .
 - ClickHouse® driver installed in Metabase (available by default in recent versions)
 
 ## Add Tinybird as a database [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-metabase#add-tinybird-as-a-database)
@@ -19528,14 +21593,14 @@ If the connection is working, you should see the result.
 ## Learn more [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-metabase#learn-more)
 
 - [  ClickHouse Interface overview](../clickhouse-interface)
-- [  Tinybird Auth Token management](/docs/concepts/auth-tokens)
+- [  Tinybird Auth Token management](/docs/classic/administration/auth-tokens)
 
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-luzmo
-Last update: 2025-09-03T17:55:11.000Z
+Last update: 2025-12-17T09:59:55.000Z
 Content:
 ---
 title: "Connect Luzmo to Tinybird · Tinybird Docs"
@@ -19557,7 +21622,7 @@ The ClickHouse® connection to Tinybird is read-only. You can use it to query an
 
 - A[  Luzmo](https://luzmo.com/)   account
 - A Tinybird workspace with data sources
-- A Tinybird Auth Token with read permissions for the workspace data sources
+- A Tinybird Auth Token with scopes `WORKSPACE:READ_ALL`   and optionally `ORG_DATASOURCES:READ`   . See[  how to create it](../clickhouse-interface#auth-token-requirements)  .
 
 ## Create a new connection [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-luzmo#create-a-new-connection)
 
@@ -19576,14 +21641,14 @@ See the list of [ClickHouse hosts](../clickhouse-interface#clickhouse-interface-
 ## Learn more [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-luzmo#learn-more)
 
 - [  ClickHouse Interface overview](../clickhouse-interface)
-- [  Tinybird Auth Token management](/docs/concepts/auth-tokens)
+- [  Tinybird Auth Token management](/docs/classic/administration/auth-tokens)
 
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-holistics
-Last update: 2025-09-03T18:35:58.000Z
+Last update: 2025-12-17T09:59:55.000Z
 Content:
 ---
 title: "Connect Holistics to Tinybird · Tinybird Docs"
@@ -19605,7 +21670,7 @@ The ClickHouse® connection to Tinybird is read-only. You can use it to query an
 
 - A[  Holistics](https://holistics.io/)   account
 - A Tinybird workspace with data sources
-- A Tinybird Auth Token with read permissions for the workspace data sources
+- A Tinybird Auth Token with scopes `WORKSPACE:READ_ALL`   and optionally `ORG_DATASOURCES:READ`   . See[  how to create it](../clickhouse-interface#auth-token-requirements)  .
 
 ## Create a new connection [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-holistics#create-a-new-connection)
 
@@ -19628,14 +21693,14 @@ See the list of [ClickHouse hosts](../clickhouse-interface#clickhouse-interface-
 ## Learn more [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-holistics#learn-more)
 
 - [  ClickHouse Interface overview](../clickhouse-interface)
-- [  Tinybird Auth Token management](/docs/concepts/auth-tokens)
+- [  Tinybird Auth Token management](/docs/classic/administration/auth-tokens)
 
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-hex
-Last update: 2025-09-03T17:55:11.000Z
+Last update: 2025-12-17T09:59:55.000Z
 Content:
 ---
 title: "Connect Hex to Tinybird · Tinybird Docs"
@@ -19656,7 +21721,7 @@ The ClickHouse® connection to Tinybird is read-only. You can use it to analyze 
 ## Prerequisites [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-hex#prerequisites)
 
 - A Tinybird workspace with data sources
-- A Tinybird Auth Token with read permissions for the workspace data sources
+- A Tinybird Auth Token with scopes `WORKSPACE:READ_ALL`   and optionally `ORG_DATASOURCES:READ`   . See[  how to create it](../clickhouse-interface#auth-token-requirements)  .
 
 ## Add Tinybird as a data source [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-hex#add-tinybird-as-a-data-source)
 
@@ -19703,14 +21768,14 @@ If the connection is working, you should see the result.
 ## Learn more [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-hex#learn-more)
 
 - [  ClickHouse Interface overview](../clickhouse-interface)
-- [  Tinybird Auth Token management](/docs/concepts/auth-tokens)
+- [  Tinybird Auth Token management](/docs/classic/administration/auth-tokens)
 
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-grafana
-Last update: 2025-09-15T13:32:54.000Z
+Last update: 2025-12-17T09:59:55.000Z
 Content:
 ---
 title: "Connect Grafana to Tinybird · Tinybird Docs"
@@ -19740,7 +21805,7 @@ And if you want to connect regular API Endpoints and not Data Sources you can us
 
 - A Tinybird workspace
 - A Grafana instance (local or cloud)
-- A Tinybird Auth Token with read permissions for the workspace data sources, and Organization data sources.
+- A Tinybird Auth Token with scopes `WORKSPACE:READ_ALL`   and optionally `ORG_DATASOURCES:READ`   . See[  how to create it](../clickhouse-interface#auth-token-requirements)  .
 
 ## Install the ClickHouse® plugin [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-grafana#install-the-clickhouse-plugin)
 
@@ -19961,7 +22026,7 @@ The SQL API exposes four databases: organization, system, tinybird, and workspac
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-fabi
-Last update: 2025-09-03T17:55:11.000Z
+Last update: 2025-12-17T09:59:55.000Z
 Content:
 ---
 title: "Connect Fabi.ai to Tinybird · Tinybird Docs"
@@ -19983,7 +22048,7 @@ The ClickHouse® connection to Tinybird is read-only. You can use it to query an
 
 - A[  Fabi.ai](https://fabi.ai/)   account
 - A Tinybird workspace with data sources
-- A Tinybird Auth Token with read permissions for the workspace data sources
+- A Tinybird Auth Token with scopes `WORKSPACE:READ_ALL`   and optionally `ORG_DATASOURCES:READ`   . See[  how to create it](../clickhouse-interface#auth-token-requirements)  .
 
 ## Create a new connection [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-fabi#create-a-new-connection)
 
@@ -20002,14 +22067,14 @@ Password: <TOKEN>  # Your Tinybird auth token See the list of [ClickHouse hosts]
 ## Learn more [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-fabi#learn-more)
 
 - [  ClickHouse Interface overview](../clickhouse-interface)
-- [  Tinybird Auth Token management](/docs/concepts/auth-tokens)
+- [  Tinybird Auth Token management](/docs/classic/administration/auth-tokens)
 
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-draxlr
-Last update: 2025-09-03T17:55:11.000Z
+Last update: 2025-12-17T09:59:55.000Z
 Content:
 ---
 title: "Connect Draxlr to Tinybird · Tinybird Docs"
@@ -20031,7 +22096,7 @@ The ClickHouse® connection to Tinybird is read-only. You can use it to query an
 
 - A[  Draxlr](https://www.draxlr.com/)   account
 - A Tinybird workspace with data sources
-- A Tinybird Auth Token with read permissions for the workspace data sources
+- A Tinybird Auth Token with scopes `WORKSPACE:READ_ALL`   and optionally `ORG_DATASOURCES:READ`   . See[  how to create it](../clickhouse-interface#auth-token-requirements)  .
 
 ## Create a new connection [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-draxlr#create-a-new-connection)
 
@@ -20052,14 +22117,14 @@ Use TSL: Yes See the list of [ClickHouse hosts](../clickhouse-interface#clickhou
 ## Learn more [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-draxlr#learn-more)
 
 - [  ClickHouse Interface overview](../clickhouse-interface)
-- [  Tinybird Auth Token management](/docs/concepts/auth-tokens)
+- [  Tinybird Auth Token management](/docs/classic/administration/auth-tokens)
 
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-deepnote
-Last update: 2025-09-03T17:55:11.000Z
+Last update: 2025-12-17T09:59:55.000Z
 Content:
 ---
 title: "Connect Deepnote to Tinybird · Tinybird Docs"
@@ -20081,7 +22146,7 @@ The ClickHouse® connection to Tinybird is read-only. You can use it to query an
 
 - A[  Deepnote](https://deepnote.com/)   account
 - A Tinybird workspace with data sources
-- A Tinybird Auth Token with read permissions for the workspace data sources
+- A Tinybird Auth Token with scopes `WORKSPACE:READ_ALL`   and optionally `ORG_DATASOURCES:READ`   . See[  how to create it](../clickhouse-interface#auth-token-requirements)  .
 
 ## Create a new connection [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-deepnote#create-a-new-connection)
 
@@ -20102,14 +22167,14 @@ Enforce SSL encryption: yes See the list of [ClickHouse hosts](../clickhouse-int
 ## Learn more [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-deepnote#learn-more)
 
 - [  ClickHouse Interface overview](../clickhouse-interface)
-- [  Tinybird Auth Token management](/docs/concepts/auth-tokens)
+- [  Tinybird Auth Token management](/docs/classic/administration/auth-tokens)
 
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-dbeaver
-Last update: 2025-09-03T17:55:11.000Z
+Last update: 2025-12-17T09:59:55.000Z
 Content:
 ---
 title: "Connect DBeaver to Tinybird · Tinybird Docs"
@@ -20131,7 +22196,7 @@ The ClickHouse® connection to Tinybird is read-only. You can use it to query an
 
 - DBeaver Community or Enterprise Edition
 - A Tinybird workspace with data sources
-- A Tinybird Auth Token with read permissions for the workspace data sources
+- A Tinybird Auth Token with scopes `WORKSPACE:READ_ALL`   and optionally `ORG_DATASOURCES:READ`   . See[  how to create it](../clickhouse-interface#auth-token-requirements)  .
 
 ## Create a new connection [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-dbeaver#create-a-new-connection)
 
@@ -20206,14 +22271,14 @@ SQL Error [22000]: Code: 0. DB::Exception: <Unreadable error message> (transport
 ## Learn more [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-dbeaver#learn-more)
 
 - [  ClickHouse Interface overview](../clickhouse-interface)
-- [  Tinybird Auth Token management](/docs/concepts/auth-tokens)
+- [  Tinybird Auth Token management](/docs/classic/administration/auth-tokens)
 
 
 
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-datagrip
-Last update: 2025-09-03T17:55:11.000Z
+Last update: 2025-12-17T09:59:55.000Z
 Content:
 ---
 title: "Connect DataGrip to Tinybird · Tinybird Docs"
@@ -20235,7 +22300,7 @@ The ClickHouse® connection to Tinybird is read-only. You can use it to query an
 
 - DataGrip IDE (part of JetBrains IDEs)
 - A Tinybird workspace with data sources
-- A Tinybird Auth Token with read permissions for the workspace data sources
+- A Tinybird Auth Token with scopes `WORKSPACE:READ_ALL`   and optionally `ORG_DATASOURCES:READ`   . See[  how to create it](../clickhouse-interface#auth-token-requirements)  .
 
 ## Create a new data source [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-datagrip#create-a-new-data-source)
 
@@ -20314,7 +22379,7 @@ LIMIT 10 Replace `<WORKSPACE_NAME>` with your actual workspace name. If the conn
 ## Learn more [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-datagrip#learn-more)
 
 - [  ClickHouse Interface overview](../clickhouse-interface)
-- [  Tinybird Auth Token management](/docs/concepts/auth-tokens)
+- [  Tinybird Auth Token management](/docs/classic/administration/auth-tokens)
 - [  DataGrip documentation](https://www.jetbrains.com/help/datagrip/)
 
 
@@ -20322,7 +22387,7 @@ LIMIT 10 Replace `<WORKSPACE_NAME>` with your actual workspace name. If the conn
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-clickhouse-python
-Last update: 2025-09-04T13:51:21.000Z
+Last update: 2025-12-11T19:06:55.000Z
 Content:
 ---
 title: "Connect ClickHouse Python Client to Tinybird · Tinybird Docs"
@@ -20578,7 +22643,7 @@ result = client.query(
 ## Learn more [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-clickhouse-python#learn-more)
 
 - [  ClickHouse Interface overview](../clickhouse-interface)
-- [  Tinybird Auth Token management](/docs/concepts/auth-tokens)
+- [  Tinybird Auth Token management](/docs/classic/administration/auth-tokens)
 - [  ClickHouse Python Client documentation](https://github.com/ClickHouse/clickhouse-connect)
 
 
@@ -20586,7 +22651,7 @@ result = client.query(
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-clickhouse-js
-Last update: 2025-09-04T13:51:21.000Z
+Last update: 2025-12-17T09:59:55.000Z
 Content:
 ---
 title: "Connect ClickHouse JS Client to Tinybird · Tinybird Docs"
@@ -20608,7 +22673,7 @@ The ClickHouse® connection to Tinybird is read-only. You can use it to query an
 
 - Node.js 16.0 or later
 - A Tinybird workspace with data sources
-- A Tinybird Auth Token with read permissions for the workspace data sources
+- A Tinybird Auth Token with scopes `WORKSPACE:READ_ALL`   and optionally `ORG_DATASOURCES:READ`   . See[  how to create it](../clickhouse-interface#auth-token-requirements)  .
 
 ## Installation [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-clickhouse-js#installation)
 
@@ -20740,7 +22805,7 @@ async function safeQuery(query) {
 ## Learn more [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-clickhouse-js#learn-more)
 
 - [  ClickHouse Interface overview](../clickhouse-interface)
-- [  Tinybird Auth Token management](/docs/concepts/auth-tokens)
+- [  Tinybird Auth Token management](/docs/classic/administration/auth-tokens)
 - [  ClickHouse JavaScript Client documentation](https://github.com/ClickHouse/clickhouse-js)
 
 
@@ -20748,7 +22813,7 @@ async function safeQuery(query) {
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-clickhouse-go
-Last update: 2025-09-04T13:51:21.000Z
+Last update: 2025-12-11T19:06:55.000Z
 Content:
 ---
 title: "Connect ClickHouse Go Client to Tinybird · Tinybird Docs"
@@ -21012,7 +23077,7 @@ func handleQueryError(err error) {
 ## Learn more [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-clickhouse-go#learn-more)
 
 - [  ClickHouse Interface overview](../clickhouse-interface)
-- [  Tinybird Auth Token management](/docs/concepts/auth-tokens)
+- [  Tinybird Auth Token management](/docs/classic/administration/auth-tokens)
 - [  ClickHouse Go Client documentation](https://github.com/ClickHouse/clickhouse-go)
 
 
@@ -21020,7 +23085,7 @@ func handleQueryError(err error) {
 ---
 
 URL: https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-chartbrew
-Last update: 2025-09-03T17:55:11.000Z
+Last update: 2025-12-17T09:59:55.000Z
 Content:
 ---
 title: "Connect Chartbrew to Tinybird · Tinybird Docs"
@@ -21042,7 +23107,7 @@ The ClickHouse® connection to Tinybird is read-only. You can use it to query an
 
 - A[  Chartbrew](https://chartbrew.com/)   account
 - A Tinybird workspace with data sources
-- A Tinybird Auth Token with read permissions for the workspace data sources
+- A Tinybird Auth Token with scopes `WORKSPACE:READ_ALL`   and optionally `ORG_DATASOURCES:READ`   . See[  how to create it](../clickhouse-interface#auth-token-requirements)  .
 
 ## Create a new connection [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-chartbrew#create-a-new-connection)
 
@@ -21064,7 +23129,7 @@ SSL Mode: Require See the list of [ClickHouse hosts](../clickhouse-interface#cli
 ## Learn more [¶](https://www.tinybird.co/docs/forward/work-with-data/publish-data/guides/connect-chartbrew#learn-more)
 
 - [  ClickHouse Interface overview](../clickhouse-interface)
-- [  Tinybird Auth Token management](/docs/concepts/auth-tokens)
+- [  Tinybird Auth Token management](/docs/classic/administration/auth-tokens)
 
 
 
@@ -21894,6 +23959,3285 @@ Since `1970-01-01 00:00:00` is used as a default placeholder, ensure that any do
 - Read the[  materialized views docs](/docs/forward/work-with-data/optimize/materialized-views)  .
 - Read the[  Lambda architecture guide](/docs/forward/work-with-data/optimize/guides/lambda-architecture)  .
 - Publish your data with[  API endpoints](/docs/forward/work-with-data/publish-data/endpoints)  .
+
+
+
+---
+
+URL: https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting
+Last update: 2025-12-11T11:38:13.000Z
+Content:
+---
+title: "Kafka connector troubleshooting guide · Tinybird Docs"
+theme-color: "#171612"
+description: "Comprehensive troubleshooting guide for common Kafka connector errors, including connectivity issues, deserialization failures, offset conflicts, and performance problems."
+inkeep:version: "forward"
+---
+
+
+
+
+# Kafka connector troubleshooting guide [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#kafka-connector-troubleshooting-guide)
+
+Copy as MD This guide helps you diagnose and resolve common issues with Tinybird's Kafka connector. Use the `tinybird.kafka_ops_log` [Service Data Source](/docs/forward/monitoring/service-datasources#tinybird-kafka-ops-log) to monitor errors and warnings in real time.
+
+For setup instructions and configuration details, see the [Kafka connector documentation](index).
+
+## Quick error lookup [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#quick-error-lookup)
+
+Use this table to quickly find errors and their solutions. Errors may appear in `kafka_ops_log` (Kafka connector operations) or `datasources_ops_log` (Data Source ingestion operations).
+
+| Error message / symptom | Category | Log source | Solution link |
+| --- | --- | --- | --- |
+| Connection timeout or broker unreachable | Connectivity | kafka_ops_log | [  Connection timeout](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-connection-timeout-or-broker-unreachable) |
+| Authentication failed | Authentication | kafka_ops_log, datasources_ops_log | [  Authentication failed](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-authentication-failed) |
+| SSL handshake failed | SSL/TLS | kafka_ops_log | [  SSL certificate validation](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-ssltls-certificate-validation-failed) |
+| Schema Registry connection failed | Deserialization | kafka_ops_log | [  Schema Registry](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-schema-registry-connection-failed) |
+| Deserialization failed - Avro | Deserialization | kafka_ops_log | [  Avro deserialization](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-deserialization-failed---avro) |
+| Deserialization failed - JSON | Deserialization | kafka_ops_log | [  JSON deserialization](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-deserialization-failed---json) |
+| Offset commit failed | Consumer group | kafka_ops_log | [  Offset commit](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-offset-commit-failed-or-consumer-group-conflict) |
+| Consumer lag continuously increasing | Performance | kafka_ops_log | [  Consumer lag](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-consumer-lag-continuously-increasing) |
+| Schema mismatch or type conversion failed | Schema | kafka_ops_log | [  Schema mismatch](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-schema-mismatch-or-type-conversion-failed) |
+| Materialized View errors | Schema | kafka_ops_log, datasources_ops_log | [  Materialized View errors](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-materialized-view-errors) |
+| Low throughput or processing stall | Performance | kafka_ops_log | [  Low throughput](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-low-throughput-or-processing-stall) |
+| Uneven partition processing | Performance | kafka_ops_log | [  Uneven partitions](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-uneven-partition-processing) |
+| Message too large | Message size | kafka_ops_log | [  Message size](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-message-too-large-or-quarantined-due-to-size) |
+| Compressed message handling | Message format | kafka_ops_log | [  Compression](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-compressed-message-handling) |
+| Unknown topic or partition | Kafka | datasources_ops_log | [  Unknown topic](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-unknown-topic-or-partition) |
+| Group authorization failed | Authorization | datasources_ops_log | [  Group authorization](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-group-authorization-failed) |
+| Topic authorization failed | Authorization | datasources_ops_log | [  Topic authorization](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-topic-authorization-failed) |
+| Unknown partition | Kafka | datasources_ops_log | [  Unknown partition](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-unknown-partition) |
+| Table in readonly mode | Data Source | datasources_ops_log | [  Readonly mode](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-table-in-readonly-mode) |
+| Timeout or memory limit exceeded | Resource | datasources_ops_log | [  Timeout](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-timeout-or-memory-limit-exceeded) |
+
+## How to diagnose errors [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#how-to-diagnose-errors)
+
+Use both `kafka_ops_log` and `datasources_ops_log` to diagnose Kafka connector issues:
+
+### Check Kafka connector operations [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#check-kafka-connector-operations)
+
+Query recent errors and warnings from `kafka_ops_log`:
+
+SELECT
+    timestamp,
+    datasource_id,
+    topic,
+    partition,
+    msg_type,
+    msg,
+    lag
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 1 hour
+  AND msg_type IN ('warning', 'error')
+ORDER BY timestamp DESC
+### Check Data Source ingestion errors [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#check-data-source-ingestion-errors)
+
+Query errors from `datasources_ops_log` to see issues during data ingestion:
+
+SELECT
+    timestamp,
+    datasource_id,
+    event_type,
+    result,
+    error,
+    elapsed_time
+FROM tinybird.datasources_ops_log
+WHERE timestamp > now() - INTERVAL 1 hour
+  AND result = 'error'
+  AND event_type LIKE '%kafka%'
+ORDER BY timestamp DESC This shows errors that occur during the actual data processing phase, even when the Kafka connection itself might be working.
+
+**Set up automated monitoring** : Connect these diagnostic queries to your monitoring and alerting tools. Query the [ClickHouse® HTTP interface](/docs/forward/work-with-data/publish-data/clickhouse-interface) directly from tools like Grafana, Datadog, PagerDuty, and Slack. Alternatively, create API endpoints from these queries, or export them in [Prometheus format](/docs/forward/work-with-data/publish-data/guides/consume-api-endpoints-in-prometheus-format) for Prometheus-compatible tools. Configure your tools to poll these queries periodically and trigger alerts when errors are detected.
+
+For detailed monitoring queries, see [Monitor Kafka connectors](/docs/forward/monitoring/kafka-clickhouse-monitoring).
+
+## Connectivity errors [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#connectivity-errors)
+
+### Error: Connection timeout or broker unreachable [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-connection-timeout-or-broker-unreachable)
+
+**Symptoms:**
+
+- No messages are being processed
+- Errors in `kafka_ops_log`   with messages like "Connection timeout" or "Broker unreachable"
+- High lag values that continue to increase
+
+**Root causes:**
+
+1. Incorrect `KAFKA_BOOTSTRAP_SERVERS`   configuration
+2. Network connectivity issues between Tinybird and your Kafka cluster
+3. Firewall or security group rules blocking access
+4. Kafka broker is down or unreachable
+
+**Solutions:**
+
+1. **  Verify bootstrap servers configuration:**  
+
+  - Check that `KAFKA_BOOTSTRAP_SERVERS`     in your `.connection`     file includes the correct host and port
+  - Ensure you're using the advertised listeners address, not the internal broker address
+  - For multiple brokers, use comma-separated values: `broker1:9092,broker2:9092,broker3:9092`
+  - For cloud providers, verify you're using the public endpoint provided by your Kafka service
+2. **  Test connectivity:**
+
+tb connection data <connection_name> This command allows you to select a topic and consumer group ID, then returns preview data. This validates that Tinybird can reach your Kafka broker, authenticate, and consume messages.
+
+1. **  Check network configuration:**  
+
+  - Verify firewall rules allow outbound connections from Tinybird to your Kafka cluster
+  - For AWS MSK, ensure security groups allow inbound traffic on the Kafka port
+  - For Confluent Cloud, verify network access settings
+  - For PrivateLink setups (Enterprise), verify the PrivateLink connection is active
+2. **  Verify security protocol:**  
+
+  - Ensure `KAFKA_SECURITY_PROTOCOL`     matches your Kafka cluster configuration
+  - For most cloud providers, use `SASL_SSL`
+  - For local development, you may use `PLAINTEXT`
+
+For vendor-specific network configuration help, see:
+
+- [  Confluent Cloud setup guide](guides/confluent-cloud-setup)
+- [  AWS MSK setup guide](guides/aws-msk-setup)
+
+### Error: Authentication failed [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-authentication-failed)
+
+**Symptoms:**
+
+- Errors in `kafka_ops_log`   with "Authentication failed" or "SASL authentication error"
+- Connection check fails with authentication errors
+
+**Root causes:**
+
+1. Incorrect `KAFKA_KEY`   or `KAFKA_SECRET`   credentials
+2. Wrong `KAFKA_SASL_MECHANISM`   configuration
+3. Expired credentials or tokens
+4. For AWS MSK with OAuthBearer, incorrect IAM role configuration
+
+**Solutions:**
+
+1. **  Verify credentials:**
+
+tb [--cloud] secret get KAFKA_KEY
+tb [--cloud] secret get KAFKA_SECRET Ensure the secrets match your Kafka cluster credentials.
+
+1. **  Check SASL mechanism:**  
+
+  - Verify `KAFKA_SASL_MECHANISM`     matches your Kafka cluster (PLAIN, SCRAM-SHA-256, SCRAM-SHA-512, or OAUTHBEARER)
+  - For Confluent Cloud, typically use `PLAIN`
+  - For AWS MSK with IAM, use `OAUTHBEARER`     with `KAFKA_SASL_OAUTHBEARER_METHOD AWS`
+  - For Redpanda, check your cluster's configured SASL mechanism
+2. **  For AWS MSK OAuthBearer:**  
+
+  - Verify the IAM role ARN is correct: `tb [--cloud] secret get AWS_ROLE_ARN`
+  - Check that the IAM role has the correct trust policy allowing Tinybird to assume the role
+  - Verify the external ID matches between your connection configuration and IAM trust policy
+  - Ensure the IAM role has the required Kafka cluster permissions (see[    AWS IAM permissions](index#aws-iam-permissions)     )
+3. **  Rotate credentials if needed:**  
+
+  - If credentials have expired, update them using `tb secret set`
+  - Redeploy your connection after updating secrets
+
+For detailed authentication setup, see:
+
+- [  AWS MSK setup guide](guides/aws-msk-setup)   for IAM authentication
+- [  Confluent Cloud setup guide](guides/confluent-cloud-setup)   for API key authentication
+
+### Error: SSL/TLS certificate validation failed [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-ssltls-certificate-validation-failed)
+
+**Symptoms:**
+
+- Errors mentioning "SSL handshake failed" or "certificate validation error"
+- Connection failures when using `SASL_SSL`   security protocol
+
+**Root causes:**
+
+1. Missing or incorrect CA certificate
+2. Self-signed certificate not provided
+3. Certificate expired or invalid
+
+**Solutions:**
+
+1. **  Provide CA certificate:**
+
+tb [--cloud] secret set --multiline KAFKA_SSL_CA_PEM Paste your CA certificate in PEM format.
+
+1. **  Add certificate to connection file:**
+
+KAFKA_SSL_CA_PEM >
+   {{ tb_secret("KAFKA_SSL_CA_PEM") }} Note: This is a [multiline setting](/docs/forward/dev-reference/datafiles#multiple-lines).
+
+1. **  Verify certificate format:**
+  - Ensure the certificate is in PEM format (starts with `-----BEGIN CERTIFICATE-----`     )
+  - Include the full certificate chain if required
+  - For Aiven Kafka, download the CA certificate from the Aiven console
+
+## Deserialization errors [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#deserialization-errors)
+
+### Error: Schema Registry connection failed [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-schema-registry-connection-failed)
+
+**Symptoms:**
+
+- Errors in `kafka_ops_log`   mentioning "Schema Registry" or "Failed to fetch schema"
+- Messages not being ingested when using Avro or JSON with schema
+
+**Root causes:**
+
+1. Incorrect `KAFKA_SCHEMA_REGISTRY_URL`   configuration
+2. Missing or incorrect Schema Registry credentials
+3. Schema Registry is unreachable
+4. Schema not found in Schema Registry
+
+**Solutions:**
+
+1. **  Verify Schema Registry URL:**  
+
+  - Check that `KAFKA_SCHEMA_REGISTRY_URL`     in your `.connection`     file is correct
+  - For Basic Auth, use format: `https://<username>:<password>@<registry_host>`
+  - Ensure the URL is accessible from Tinybird's network
+2. **  Check schema exists:**  
+
+  - Verify the schema exists in your Schema Registry for the topic
+  - Ensure the schema subject name matches your topic naming convention
+  - For Confluent Schema Registry, check subject names like `{topic-name}-value`     or `{topic-name}-key`
+3. **  Test Schema Registry access:**  
+
+  - Use curl or similar tool to verify Schema Registry is reachable
+  - Verify credentials work with Schema Registry API
+
+For more information on schema management, see the [schema management guide](guides/schema-management).
+
+### Error: Deserialization failed - Avro [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-deserialization-failed-avro)
+
+**Symptoms:**
+
+- Warnings in `kafka_ops_log`   with "Deserialization failed" or "Avro parsing error"
+- Messages sent to Quarantine Data Source
+- `processed_messages`   > `committed_messages`   in monitoring queries
+
+**Root causes:**
+
+1. Schema mismatch between message and Schema Registry
+2. Schema evolution incompatibility
+3. Incorrect `KAFKA_VALUE_FORMAT`   or `KAFKA_KEY_FORMAT`   configuration
+4. Corrupted message data
+
+**Solutions:**
+
+1. **  Verify format configuration:**  
+
+  - Ensure `KAFKA_VALUE_FORMAT`     is set to `avro`     for Avro messages
+  - Ensure `KAFKA_KEY_FORMAT`     is set to `avro`     if keys are Avro-encoded
+  - Verify `KAFKA_SCHEMA_REGISTRY_URL`     is configured
+2. **  Check schema compatibility:**  
+
+  - Verify the message schema matches the schema in Schema Registry
+  - Check for schema evolution issues (backward/forward compatibility)
+  - Review Quarantine Data Source to see the actual message that failed
+3. **  Inspect quarantined messages:**
+
+SELECT *
+FROM your_datasource_quarantine
+WHERE timestamp > now() - INTERVAL 1 hour
+ORDER BY timestamp DESC
+LIMIT 100 This helps you see the actual message content and identify the issue.
+
+1. **  Schema evolution:**
+  - Ensure schema changes are backward compatible
+  - Consider using schema versioning strategies
+  - Test schema changes in a development environment first
+
+For detailed schema evolution guidance, see the [schema management guide](guides/schema-management).
+
+### Error: Deserialization failed - JSON [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-deserialization-failed-json)
+
+**Symptoms:**
+
+- Warnings in `kafka_ops_log`   with "JSON parsing error" or "Invalid JSON"
+- Messages in Quarantine Data Source
+- Low success rate in throughput monitoring
+
+**Root causes:**
+
+1. Invalid JSON format in message payload
+2. Schema mismatch with JSONPath expressions
+3. Missing required fields in JSON
+4. Incorrect `KAFKA_VALUE_FORMAT`   configuration
+
+**Solutions:**
+
+1. **  Verify JSON format:**  
+
+  - Check that messages are valid JSON
+  - Use a JSON validator to test sample messages
+  - Review Quarantine Data Source for examples of failed messages
+2. **  Check JSONPath expressions:**  
+
+  - Verify JSONPath expressions in your Data Source schema match the message structure
+  - Test JSONPath expressions with sample messages
+  - Use `json:$`     to store the entire message if you're unsure of the structure
+3. **  Handle missing fields:**  
+
+  - Use nullable types for optional fields: `Nullable(String)`
+  - Provide default values in JSONPath: `json:$.field DEFAULT ''`
+  - Consider using a schemaless approach with `data String json:$`     and extract fields later
+4. **  Verify format configuration:**  
+
+  - Use `json_without_schema`     for plain JSON messages
+  - Use `json_with_schema`     only if you're using Schema Registry for JSON schemas
+
+## Offset and consumer group errors [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#offset-and-consumer-group-errors)
+
+### Error: Offset commit failed or consumer group conflict [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-offset-commit-failed-or-consumer-group-conflict)
+
+**Symptoms:**
+
+- Data Source only receives messages from the last committed offset
+- Multiple Data Sources competing for the same consumer group
+- Errors about offset commit failures
+
+**Root causes:**
+
+1. Multiple Data Sources using the same `KAFKA_TOPIC`   and `KAFKA_GROUP_ID`   combination
+2. Consumer group already in use by another app
+3. Offset reset behavior not working as expected
+
+**Solutions:**
+
+1. **  Use unique consumer group IDs:**  
+
+  - Each Data Source must use a unique `KAFKA_GROUP_ID`     for the same topic
+  - Use environment-specific group IDs: `{{ tb_secret("KAFKA_GROUP_ID", "prod-group") }}`
+  - For testing, use unique group IDs to avoid conflicts
+2. **  Check for duplicate configurations:**
+
+SELECT
+      datasource_id,
+      topic,
+      count(*) as group_count
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 24 hour
+GROUP BY datasource_id, topic
+HAVING group_count > 1 This helps identify if multiple Data Sources are consuming from the same topic.
+
+1. **  Reset offset behavior:**  
+
+  - `KAFKA_AUTO_OFFSET_RESET=earliest`     only works for new consumer groups
+  - If a consumer group already has committed offsets, it resumes from the last committed offset
+  - To start from the beginning, use a new `KAFKA_GROUP_ID`     or reset offsets in your Kafka cluster
+2. **  Best practices:**  
+
+  - Use different `KAFKA_GROUP_ID`     values for development, staging, and production
+  - Document which consumer groups are in use
+  - Monitor consumer group activity in your Kafka cluster
+
+For managing consumer groups across environments, see the [CI/CD and version control guide](guides/cicd-version-control).
+
+### Error: Consumer lag continuously increasing [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-consumer-lag-continuously-increasing)
+
+**Symptoms:**
+
+- Lag values in `kafka_ops_log`   keep growing
+- Messages are not being processed fast enough
+- Throughput is lower than message production rate
+
+**Root causes:**
+
+1. Message production rate exceeds processing capacity
+2. Consumer autoscaling not keeping up with load
+3. Network latency or connectivity issues
+4. Data Source schema or Materialized View performance issues
+
+**Solutions:**
+
+1. **  Monitor lag trends:**
+
+SELECT
+      datasource_id,
+      topic,
+      partition,
+      max(lag) as current_lag,
+      avg(lag) as avg_lag
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 1 hour
+   AND partition >= 0
+GROUP BY datasource_id, topic, partition
+ORDER BY current_lag DESC
+1. **  Verify autoscaling:**  
+
+  - Tinybird's serverless Kafka connector automatically scales consumers
+  - Monitor `kafka_ops_log`     to see partition assignment changes
+  - If lag continues to increase, there may be a bottleneck in your Data Source or Materialized Views
+2. **  Check Data Source performance:**  
+
+  - Review Materialized View queries that trigger on append
+  - Optimize complex Materialized View queries that may slow down ingestion
+  - Check for schema issues causing slow parsing
+3. **  Analyze throughput:**
+
+SELECT
+      datasource_id,
+      topic,
+      sum(processed_messages) as processed,
+      sum(committed_messages) as committed,
+      (sum(committed_messages) * 100.0 / sum(processed_messages)) as success_rate
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 1 hour
+GROUP BY datasource_id, topic Low success rates indicate processing issues.
+
+1. **  Review partitioning strategy:**  
+
+  - Check if partition distribution is even
+  - Review partition key design if lag is uneven across partitions
+  - See the[    partitioning strategies guide](guides/partitioning-strategies)     for optimization tips
+2. **  Contact support:**  
+
+  - If lag continues to increase despite autoscaling, contact Tinybird support
+  - Provide `kafka_ops_log`     queries showing the issue
+  - Include information about message production rates
+
+For performance optimization strategies, see the [performance optimization guide](guides/performance-optimization).
+
+## Data quality and schema errors [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#data-quality-and-schema-errors)
+
+### Error: Schema mismatch or type conversion failed [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-schema-mismatch-or-type-conversion-failed)
+
+**Symptoms:**
+
+- Warnings in `kafka_ops_log`   about type mismatches
+- Messages in Quarantine Data Source
+- Low `committed_messages`   compared to `processed_messages`
+
+**Root causes:**
+
+1. Data type mismatch between message and Data Source schema
+2. Missing required fields
+3. Invalid data formats (for example, date strings that can't be parsed)
+4. JSONPath expressions not matching message structure
+
+**Solutions:**
+
+1. **  Review schema definition:**  
+
+  - Verify column types match the data in messages
+  - Use appropriate ClickHouse® types (for example, `DateTime`     for timestamps, `Int64`     for large integers)
+  - Check for nullable vs non-nullable field requirements
+2. **  Test with sample messages:**  
+
+  - Use `tb sql`     to test JSONPath expressions with sample data
+  - Verify date/time formats can be parsed correctly
+  - Check numeric formats and precision
+3. **  Handle data quality issues:**  
+
+  - Use nullable types for fields that may be missing: `Nullable(String)`
+  - Provide default values: `json:$.field DEFAULT 0`
+  - Use type conversion functions if needed: `toDateTime(JSONExtractString(data, 'timestamp'))`
+4. **  Inspect quarantined data:**  
+
+  - Regularly check Quarantine Data Source for patterns
+  - Identify common data quality issues
+  - Update schema or data producers to fix root causes
+
+For detailed schema management guidance, see the [schema management guide](guides/schema-management).
+
+### Error: Materialized View errors [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-materialized-view-errors)
+
+**Symptoms:**
+
+- Warnings in `kafka_ops_log`   mentioning Materialized View errors
+- Data ingested but Materialized Views not updating
+- Errors in Materialized View queries
+- Errors in Materialized View queries affecting ingestion
+
+**Root causes:**
+
+1. Materialized View query errors
+2. Schema changes breaking Materialized View queries
+3. Resource constraints (memory, CPU)
+4. Circular dependencies between Materialized Views
+
+**Solutions:**
+
+1. **  Check Materialized View queries:**  
+
+  - Review Materialized View pipe definitions
+  - Test Materialized View queries independently
+  - Verify queries work with the current Data Source schema
+2. **  Monitor Materialized View impact:**  
+
+  - Monitor overall ingestion throughput in `kafka_ops_log`     to see if Materialized Views are slowing down ingestion
+  - Check for errors in Materialized View queries that may be blocking ingestion
+  - Review Materialized View query complexity and execution time
+3. **  Optimize Materialized View queries:**  
+
+  - Simplify complex aggregations
+  - Add appropriate filters to reduce data volume
+  - Consider breaking complex Materialized Views into multiple steps
+4. **  Handle schema evolution:**  
+
+  - Update Materialized View queries when Data Source schema changes
+  - Test Materialized View changes in development first
+  - Use `FORWARD_QUERY`     to provide default values for new columns
+
+## Data Source operation errors [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#data-source-operation-errors)
+
+These errors occur during the data ingestion phase and are logged in `datasources_ops_log` . They represent problems that happen during actual data processing, even when the Kafka connection itself might be working.
+
+### Error: Unknown topic or partition [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-unknown-topic-or-partition)
+
+**Error message:**
+
+- "KafkaError[UNKNOWN_TOPIC_OR_PART]: Broker: Unknown topic or partition"
+
+**Symptoms:**
+
+- Errors in `datasources_ops_log`   with "Unknown topic or partition"
+- No messages being ingested
+- Topic name errors
+
+**Root causes:**
+
+1. Topic doesn't exist in Kafka cluster
+2. Topic was deleted
+3. Topic name typo in configuration
+4. Topic retention policies caused data deletion
+
+**Solutions:**
+
+1. **  Verify topic exists:**  
+
+  - Check your Kafka cluster to confirm the topic exists
+  - Use Kafka tools: `kafka-topics.sh --list --bootstrap-server <server>`
+  - Verify topic name matches exactly (case-sensitive)
+2. **  Check topic configuration:**  
+
+  - Ensure topic hasn't been deleted
+  - Verify topic retention policies haven't removed all data
+  - Check if topic was renamed
+3. **  Verify Data Source configuration:**
+
+cat <datasource_name.datasource> Check that `KAFKA_TOPIC` matches the actual topic name.
+
+1. **  Create topic if needed:**
+  - If topic doesn't exist, create it in your Kafka cluster
+  - Ensure proper replication factor and partitions
+  - Redeploy the Data Source after creating the topic
+
+**Note:** If the error specifically mentions a partition (not the topic), see [Unknown partition](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-unknown-partition) in the following section for partition-specific troubleshooting.
+
+**Monitor topic errors:**
+
+SELECT
+    timestamp,
+    datasource_id,
+    error,
+    count(*) as error_count
+FROM tinybird.datasources_ops_log
+WHERE timestamp > now() - INTERVAL 24 hour
+  AND result = 'error'
+  AND error LIKE '%UNKNOWN_TOPIC%'
+GROUP BY timestamp, datasource_id, error
+ORDER BY error_count DESC
+### Error: Authentication failure (during ingestion) [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-authentication-failure-during-ingestion)
+
+**Error message:**
+
+- "KafkaError[_AUTHENTICATION]: Local: Authentication failure"
+
+**Symptoms:**
+
+- Errors in `datasources_ops_log`   with authentication failures
+- Connection works initially but fails during ingestion
+- Credentials expired or rotated during operation
+
+**Root causes:**
+
+1. SASL credentials expired or invalid during ingestion
+2. SSL certificates expired
+3. Authentication settings changed on Kafka broker
+4. Credentials rotated but not updated in Tinybird
+5. Token-based authentication expired mid-operation
+
+**Solutions:**
+
+1. **  Verify credentials:**
+
+tb [--cloud] secret get KAFKA_KEY
+tb [--cloud] secret get KAFKA_SECRET Ensure secrets match your Kafka cluster credentials.
+
+1. **  Check for credential expiration:**  
+
+  - Some credentials have expiration dates
+  - Rotate credentials if they've expired
+  - Update secrets and redeploy connection
+  - For token-based auth, ensure tokens are refreshed before expiration
+2. **  Verify SSL certificates:**  
+
+  - Check certificate expiration dates
+  - Update certificates if expired
+  - Verify certificate format is correct
+3. **  Test connection:**
+
+tb connection data <connection_name> This validates authentication is working.
+
+1. **  Check for intermittent auth failures:**
+  - Monitor `datasources_ops_log`     for authentication error patterns
+  - If errors occur periodically, credentials may be expiring
+  - Set up credential rotation before expiration
+
+**Note:** This error occurs during data ingestion, not during initial connection. If you see authentication errors during connection setup, see [Authentication failed](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-authentication-failed) in the Connectivity errors section.
+
+**Monitor authentication errors:**
+
+SELECT
+    timestamp,
+    datasource_id,
+    error,
+    count(*) as error_count
+FROM tinybird.datasources_ops_log
+WHERE timestamp > now() - INTERVAL 24 hour
+  AND result = 'error'
+  AND error LIKE '%AUTHENTICATION%'
+GROUP BY timestamp, datasource_id, error
+ORDER BY error_count DESC
+### Error: Group authorization failed [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-group-authorization-failed)
+
+**Error message:**
+
+- "KafkaError[GROUP_AUTHORIZATION_FAILED]: Broker: Group authorization failed"
+
+**Symptoms:**
+
+- Errors in `datasources_ops_log`   with "Group authorization failed"
+- Consumer group lacks permissions
+- ACLs not configured correctly
+
+**Root causes:**
+
+1. Consumer group lacks proper authorization
+2. Kafka ACLs not configured for the consumer group
+3. Consumer group name doesn't match ACL configuration
+4. Permissions changed on Kafka cluster
+
+**Solutions:**
+
+1. **  Check Kafka ACLs:**  
+
+  - Verify consumer group has read permissions
+  - Check ACLs for the specific consumer group ID
+  - Ensure ACLs allow operations on the topic
+2. **  Verify consumer group ID:**  
+
+  - Check the `KAFKA_GROUP_ID`     in your Data Source configuration
+  - Ensure it matches what's configured in Kafka ACLs
+  - Use consistent naming across environments
+3. **  Update ACLs:**  
+
+  - Grant necessary permissions to the consumer group
+  - Ensure group has access to read from the topic
+  - Verify group can commit offsets
+4. **  Test with different group ID:**  
+
+  - Try a different consumer group ID temporarily
+  - If it works, the issue is with ACLs for the original group
+  - Update ACLs for the original group
+
+**Monitor authorization errors:**
+
+SELECT
+    timestamp,
+    datasource_id,
+    error,
+    count(*) as error_count
+FROM tinybird.datasources_ops_log
+WHERE timestamp > now() - INTERVAL 24 hour
+  AND result = 'error'
+  AND error LIKE '%GROUP_AUTHORIZATION%'
+GROUP BY timestamp, datasource_id, error
+ORDER BY error_count DESC
+### Error: Topic authorization failed [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-topic-authorization-failed)
+
+**Error message:**
+
+- "KafkaError[TOPIC_AUTHORIZATION_FAILED]: Broker: Topic authorization failed"
+
+**Symptoms:**
+
+- Errors in `datasources_ops_log`   with "Topic authorization failed"
+- Cannot read from topic
+- ACLs not configured for topic access
+
+**Root causes:**
+
+1. Kafka client lacks permission to read from topic
+2. Topic ACLs not configured
+3. Permissions changed on Kafka cluster
+4. Credentials don't have topic access
+
+**Solutions:**
+
+1. **  Check topic ACLs:**  
+
+  - Verify credentials have read permissions on the topic
+  - Check ACLs for the specific topic name
+  - Ensure ACLs allow consumer operations
+2. **  Verify credentials:**  
+
+  - Ensure credentials have proper topic access
+  - Check if topic permissions have changed
+  - Update credentials if needed
+3. **  Update ACLs:**  
+
+  - Grant read permissions to the topic
+  - Ensure consumer group has topic access
+  - Verify ACLs are applied correctly
+4. **  Test connection:**
+
+tb connection data <connection_name> Select the topic to verify access.
+
+**Monitor topic authorization errors:**
+
+SELECT
+    timestamp,
+    datasource_id,
+    error,
+    count(*) as error_count
+FROM tinybird.datasources_ops_log
+WHERE timestamp > now() - INTERVAL 24 hour
+  AND result = 'error'
+  AND error LIKE '%TOPIC_AUTHORIZATION%'
+GROUP BY timestamp, datasource_id, error
+ORDER BY error_count DESC
+### Error: Unknown partition [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-unknown-partition)
+
+**Error message:**
+
+- "KafkaError[_UNKNOWN_PARTITION]: Local: Unknown partition"
+
+**Symptoms:**
+
+- Errors in `datasources_ops_log`   with "Unknown partition" (note: different from "Unknown topic or partition")
+- Specific partition no longer available
+- Topic reconfiguration issues
+- Partition-specific errors
+
+**Root causes:**
+
+1. Partition no longer exists in topic (topic was reconfigured)
+2. Topic reconfiguration changed partition count
+3. Broker failures affecting specific partition availability
+4. Partition replication issues
+5. Partition was deleted or reassigned
+
+**Solutions:**
+
+1. **  Check topic configuration:**  
+
+  - Verify current partition count for the topic
+  - Check if topic was reconfigured (partitions added/removed)
+  - Ensure partition assignments are correct
+  - Compare current partition count with what the connector expects
+2. **  Check broker health:**  
+
+  - Verify all brokers are healthy
+  - Check for broker failures that might affect specific partitions
+  - Ensure partition replication is working
+  - Review partition leader assignments
+3. **  Review partition assignments:**  
+
+  - Check if partition assignments changed
+  - Verify replication factors are correct
+  - Consider rebalancing if needed
+  - Check if partitions were reassigned to different brokers
+4. **  Monitor partition availability:**  
+
+  - Use `kafka_ops_log`     to see which partitions are being accessed
+  - Check for partition-specific errors
+  - Identify which specific partition is causing issues
+  - Contact support if partitions are consistently unavailable
+
+**Note:** This error is different from "Unknown topic or partition" - this specifically indicates a partition issue when the topic exists. If you see "UNKNOWN_TOPIC_OR_PART", see [Unknown topic or partition](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-unknown-topic-or-partition) in the preceding section.
+
+**Monitor partition errors:**
+
+SELECT
+    timestamp,
+    datasource_id,
+    error,
+    count(*) as error_count
+FROM tinybird.datasources_ops_log
+WHERE timestamp > now() - INTERVAL 24 hour
+  AND result = 'error'
+  AND error LIKE '%UNKNOWN_PARTITION%'
+  AND error NOT LIKE '%UNKNOWN_TOPIC%'
+GROUP BY timestamp, datasource_id, error
+ORDER BY error_count DESC
+### Error: Table in readonly mode [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-table-in-readonly-mode)
+
+**Error message:**
+
+- "Table is in readonly mode: replica_path=..."
+
+**Symptoms:**
+
+- Errors in `datasources_ops_log`   with "readonly mode"
+- Data Source temporarily unavailable for writes
+- Replication or maintenance in progress
+
+**Root causes:**
+
+1. ClickHouse® table in readonly mode during replication
+2. Ongoing maintenance operations
+3. ClickHouse® cluster issues
+4. Replication lag or issues
+
+**Solutions:**
+
+1. **  Wait for table to become writable:**  
+
+  - This is often a transient state
+  - Wait a few minutes and check again
+  - Monitor `datasources_ops_log`     for resolution
+2. **  Check ClickHouse® cluster:**  
+
+  - Verify cluster health
+  - Check for ongoing maintenance
+3. **  Monitor for resolution:**
+
+SELECT
+      timestamp,
+      datasource_id,
+      error,
+      count(*) as occurrence_count
+FROM tinybird.datasources_ops_log
+WHERE timestamp > now() - INTERVAL 1 hour
+   AND result = 'error'
+   AND error LIKE '%readonly%'
+GROUP BY timestamp, datasource_id, error
+ORDER BY timestamp DESC
+1. **  Contact support:**
+  - If issue persists for extended period
+  - Provide `datasources_ops_log`     queries showing the issue
+  - Include timestamps and Data Source IDs
+
+**Note:** Readonly mode errors are typically transient and resolve automatically. If they persist, contact Tinybird support.
+
+### Error: Timeout or memory limit exceeded [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-timeout-or-memory-limit-exceeded)
+
+**Error message:**
+
+- "memory limit exceeded: would use ... GiB"
+- "Waiting timeout for memo"
+- Timeout errors during ingestion
+
+**Symptoms:**
+
+- Errors in `datasources_ops_log`   with timeout or memory errors
+- Large messages or complex transformations
+- Resource constraints
+
+**Root causes:**
+
+1. Message size too large
+2. Complex Materialized View queries consuming too much memory
+3. High message throughput
+4. Resource constraints
+
+**Solutions:**
+
+1. **  Reduce message size:**  
+
+  - Use Kafka compression
+  - Split large messages into smaller chunks
+  - Move large data to external storage
+2. **  Optimize Materialized View queries:**  
+
+  - Simplify complex aggregations
+  - Add filters to reduce data volume
+  - Break complex transformations into multiple steps
+3. **  Monitor memory usage:**
+
+SELECT
+      timestamp,
+      datasource_id,
+      error,
+      elapsed_time
+FROM tinybird.datasources_ops_log
+WHERE timestamp > now() - INTERVAL 24 hour
+   AND result = 'error'
+   AND (error LIKE '%memory%' OR error LIKE '%timeout%')
+ORDER BY timestamp DESC
+1. **  Optimize transformations:**  
+
+  - Reduce data processed per operation
+  - Use more efficient query patterns
+  - Consider batching operations
+2. **  Contact support:**  
+
+  - If memory issues persist
+  - Discuss resource requirements
+  - Consider plan upgrades if needed
+
+For more information on handling large messages, see the [message size handling guide](guides/message-size-handling).
+
+## Performance and throughput issues [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#performance-and-throughput-issues)
+
+### Error: Low throughput or processing stall [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-low-throughput-or-processing-stall)
+
+**Symptoms:**
+
+- `processed_messages`   is zero or low
+- No recent activity in `kafka_ops_log`
+- Data Source not receiving new messages
+
+**Root causes:**
+
+1. Kafka topic has no new messages
+2. Consumer has stopped or crashed
+3. Network connectivity issues
+4. Configuration errors preventing consumption
+
+**Solutions:**
+
+1. **  Verify topic has messages:**  
+
+  - Check your Kafka cluster to verify messages are being produced
+  - Use Kafka tools to verify topic has new messages
+  - Check producer metrics
+2. **  Check connector activity:**
+
+SELECT
+      datasource_id,
+      topic,
+      max(timestamp) as last_activity,
+      now() - max(timestamp) as time_since_activity
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 7 day
+GROUP BY datasource_id, topic
+HAVING time_since_activity > INTERVAL 1 hour
+1. **  Verify configuration:**  
+
+  - Run `tb connection data <connection_name>`     to test the connection and preview data
+  - Verify all required settings are present
+  - Check for typos in topic names or connection names
+2. **  Check for errors:**  
+
+  - Review recent errors in `kafka_ops_log`
+  - Check Quarantine Data Source for issues
+  - Review `datasources_ops_log`     for Data Source operation errors
+
+### Error: Uneven partition processing [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-uneven-partition-processing)
+
+**Symptoms:**
+
+- Some partitions have high lag while others have low lag
+- Uneven message distribution across partitions
+- Some partitions processing faster than others
+
+**Root causes:**
+
+1. Uneven message distribution in Kafka topic
+2. Partition key design causing hot partitions
+3. Consumer assignment imbalance
+4. Different message sizes across partitions
+
+**Solutions:**
+
+1. **  Analyze partition distribution:**
+
+SELECT
+      datasource_id,
+      topic,
+      partition,
+      max(lag) as max_lag,
+      avg(lag) as avg_lag,
+      sum(processed_messages) as total_messages
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 24 hour
+   AND partition >= 0
+GROUP BY datasource_id, topic, partition
+ORDER BY max_lag DESC
+1. **  Review partition key strategy:**  
+
+  - Ensure partition keys distribute messages evenly
+  - Avoid using keys that create hot partitions
+  - Consider using random keys if even distribution is needed
+2. **  Monitor autoscaling:**  
+
+  - Tinybird's connector automatically balances partition assignment
+  - Monitor `kafka_ops_log`     to see partition assignment changes
+  - High lag should trigger additional consumer instances
+3. **  Optimize at producer level:**  
+
+  - Review Kafka producer configuration
+  - Adjust partition key strategy if needed
+  - Consider increasing topic partitions if needed
+
+For detailed partitioning strategies, see the [partitioning strategies guide](guides/partitioning-strategies).
+
+## Compression and message format errors [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#compression-and-message-format-errors)
+
+### Error: Compressed message handling [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-compressed-message-handling)
+
+**Symptoms:**
+
+- Messages ingested as raw bytes instead of decompressed content
+- Warnings about message format
+
+**Root causes:**
+
+1. Messages compressed before being sent to Kafka producer
+2. Kafka compression not configured correctly
+3. Message format not recognized
+
+**Solutions:**
+
+1. **  Understand compression types:**  
+
+  - Kafka compression (configured in producer): Automatically decompressed by Kafka consumer
+  - App-level compression (compressed before producing): Not automatically decompressed
+2. **  Use Kafka compression:**  
+
+  - Configure Kafka producer with `compression.type=gzip`     (or snappy, lz4)
+  - Kafka consumer automatically decompresses these messages
+  - Messages arrive in Tinybird already decompressed
+3. **  Handle app-level compression:**  
+
+  - If you compress messages before sending to Kafka, you need to handle decompression
+  - Consider storing compressed messages and decompressing in Materialized Views
+  - Or change producer to use Kafka compression instead
+4. **  Verify message format:**  
+
+  - Check that `KAFKA_VALUE_FORMAT`     matches your message format
+  - For JSON, use `json_without_schema`     or `json_with_schema`
+  - For Avro, use `avro`     with Schema Registry configured
+
+## Message size errors [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#message-size-errors)
+
+### Error: Message too large or quarantined due to size [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#error-message-too-large-or-quarantined-due-to-size)
+
+**Symptoms:**
+
+- Messages sent to Quarantine Data Source
+- Errors about message size limits
+- Large messages not being ingested
+
+**Root causes:**
+
+1. Message exceeds Tinybird's 10 MB default limit
+2. Large payloads causing memory issues
+3. Compression not reducing message size effectively
+
+**Solutions:**
+
+1. **  Check message size:**  
+
+  - Review Quarantine Data Source for size-related errors
+  - Verify message sizes in your Kafka topic
+  - Use Kafka tools to inspect message sizes
+2. **  Implement compression:**  
+
+  - Use Kafka compression to reduce message size
+  - Consider compressing large payloads before producing to Kafka
+3. **  Split large messages:**  
+
+  - Break large messages into smaller chunks
+  - Use message headers to track message parts
+  - Reassemble in Materialized Views if needed
+4. **  Alternative approaches:**  
+
+  - Store large payloads in object storage (S3, GCS) and reference them in Kafka messages
+  - Use external storage for large binary data
+
+For detailed guidance on handling large messages, see the [message size handling guide](guides/message-size-handling).
+
+## Quarantine Data Source issues [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#quarantine-data-source-issues)
+
+### Understanding Quarantine Data Source [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#understanding-quarantine-data-source)
+
+When messages fail to ingest into your main Data Source, they are automatically sent to a Quarantine Data Source. This prevents data loss and allows you to inspect problematic messages.
+
+**Common reasons for quarantine:**
+
+- Schema mismatches
+- Invalid data formats
+- Type conversion errors
+- Missing required fields
+- Deserialization failures
+- Message size limits exceeded
+
+**How to inspect quarantined messages:**
+
+SELECT *
+FROM your_datasource_quarantine
+WHERE timestamp > now() - INTERVAL 24 hour
+ORDER BY timestamp DESC
+LIMIT 100 **How to resolve:**
+
+1. Identify patterns in quarantined messages
+2. Fix schema or data quality issues
+3. Update Data Source schema if needed
+4. Fix data producers to send correct formats
+5. Consider reprocessing quarantined messages after fixes
+
+For more information, see [Quarantine Data Sources](/docs/forward/get-data-in/quarantine).
+
+## Getting help [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#getting-help)
+
+If you've tried the preceding solutions and still experience issues:
+
+1. **  Collect diagnostic information:**  
+
+  - Recent errors from `kafka_ops_log`
+  - Recent errors from `datasources_ops_log`
+  - Connection configuration (without secrets)
+  - Data Source schema
+  - Sample of problematic messages (if available)
+2. **  Check monitoring:**  
+
+  - Review[    Kafka monitoring guide](/docs/forward/monitoring/kafka-clickhouse-monitoring)
+  - Check Service Data Sources for additional context
+  - Query both `kafka_ops_log`     and `datasources_ops_log`     for complete picture
+3. **  Review related guides:**  
+
+  - [    Performance optimization guide](guides/performance-optimization)     for throughput issues
+  - [    Schema management guide](guides/schema-management)     for schema-related problems
+4. **  Contact support:**  
+
+  - Provide error messages and timestamps from both logs
+  - Include relevant queries from `kafka_ops_log`     and `datasources_ops_log`
+  - Share configuration details (sanitized)
+  - Describe steps to reproduce the issue
+
+## Prevention best practices [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/troubleshooting#prevention-best-practices)
+
+1. **  Use unique consumer group IDs**   for each Data Source and environment
+2. **  Test schema changes**   in development before deploying to production
+3. **  Monitor both `kafka_ops_log`   and `datasources_ops_log`**   regularly to catch issues early
+4. **  Set up automated alerts**   for high lag or error rates in both logs using monitoring tools
+5. **  Review Quarantine Data Source**   periodically to identify data quality issues
+6. **  Test connections**   using `tb connection data <connection_name>`   to preview data before deploying
+7. **  Document consumer group usage**   to avoid conflicts
+8. **  Test with sample messages**   before connecting production topics
+9. **  Use environment-specific configurations**   for development, staging, and production
+10. **  Keep credentials secure**   using Tinybird secrets, never hardcode them
+11. **  Regularly review Kafka ACLs**   to ensure proper permissions
+12. **  Monitor for missing tables**   and recreate Data Sources if accidentally deleted
+13. **  Verify topic and partition availability**   before deploying connectors
+14. **  Optimize Materialized View queries**   to prevent timeout and memory errors
+15. **  Set up monitoring for authorization errors**   to catch permission issues early
+
+**Integrate with your monitoring stack** : Connect the monitoring queries in this guide to your existing monitoring tools. Query the [ClickHouse® HTTP interface](/docs/forward/work-with-data/publish-data/clickhouse-interface) directly from Grafana, Datadog, PagerDuty, Slack, and other alerting systems. You can also create API endpoints from these queries, or export them in [Prometheus format](/docs/forward/work-with-data/publish-data/guides/consume-api-endpoints-in-prometheus-format) for Prometheus-compatible tools. This activates proactive monitoring and automated alerting for your Kafka connectors.
+
+For comprehensive monitoring queries and alerts, see [Monitor Kafka connectors](/docs/forward/monitoring/kafka-clickhouse-monitoring).
+
+
+
+---
+
+URL: https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/limits
+Last update: 2025-12-11T11:38:13.000Z
+Content:
+---
+title: "Kafka connector limits and quotas · Tinybird Docs"
+theme-color: "#171612"
+description: "Learn about Kafka connector limits, how they're applied, and how to request limit increases for your Tinybird workspace."
+inkeep:version: "forward"
+---
+
+
+
+
+# Kafka connector limits and quotas [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/limits#kafka-connector-limits-and-quotas)
+
+Copy as MD This page describes the limits and quotas that apply to the Kafka connector in Tinybird. For general workspace limits, see [Limits](/docs/forward/pricing/limits).
+
+## How limits are applied [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/limits#how-limits-are-applied)
+
+Kafka connector limits are applied at the **organization level** , meaning all workspaces within your organization share the same limits. This ensures consistent resource allocation across your organization.
+
+## Topic limits [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/limits#topic-limits)
+
+The number of Kafka topics you can connect to depends on your plan:
+
+| Plan | Topic limit | Notes |
+| --- | --- | --- |
+| Free | 5 topics | Hard limit |
+| Developer | 5 topics | Hard limit |
+| Enterprise | Unlimited topics | Contact support for high topic counts |
+
+### Requesting a topic limit increase [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/limits#requesting-a-topic-limit-increase)
+
+Enterprise plan users can request an increase to the topic limit by contacting [support@tinybird.co](mailto:support@tinybird.co) . Include the following information in your request:
+
+- Your organization name
+- Current number of topics in use
+- Expected number of topics needed
+- Use case description
+
+## Consumer group limits [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/limits#consumer-group-limits)
+
+There are no hard limits on the number of consumer groups you can use. However, each combination of `KAFKA_TOPIC` and `KAFKA_GROUP_ID` can only be used in one Data Source.
+
+**Best practices:**
+
+- Use unique consumer group IDs for each Data Source
+- Use environment-specific group IDs (for example, `prod-group`  , `staging-group`   )
+- Document which consumer groups are in use
+
+For managing consumer groups across environments, see the [CI/CD and version control guide](guides/cicd-version-control).
+
+## Connection limits [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/limits#connection-limits)
+
+You can create up to **3 Kafka connections per workspace** . Each connection can be used by multiple Data Sources.
+
+If you need more connections, contact [support@tinybird.co](mailto:support@tinybird.co) to discuss your use case.
+
+## Message size limits [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/limits#message-size-limits)
+
+Tinybird has a default message size limit of **10 MB** per message. Messages exceeding this limit are automatically sent to the Quarantine Data Source.
+
+**Strategies for handling large messages:**
+
+- Use Kafka compression to reduce message size
+- Split large messages into smaller chunks
+- Store large payloads in object storage (S3, GCS) and reference them in Kafka messages
+
+For detailed guidance, see the [message size handling guide](guides/message-size-handling).
+
+## Throughput limits [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/limits#throughput-limits)
+
+The Kafka connector has the following throughput limits:
+
+- **  Minimum flush time**   : 4 seconds
+- **  Throughput (uncompressed)**   : 20 MB/s per connection
+
+If you're regularly hitting these limits, contact [support@tinybird.co](mailto:support@tinybird.co) for support. Enterprise customers may have higher limits based on their infrastructure.
+
+## Deployment failures due to limits [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/limits#deployment-failures-due-to-limits)
+
+If a deployment fails due to limits, you see an error message indicating which limit was exceeded. Common scenarios:
+
+1. **  Topic limit exceeded**   : You've reached the maximum number of topics for your plan
+2. **  Connection limit exceeded**   : You've created the maximum number of connections for your workspace
+3. **  Message size limit**   : A message exceeds the 10 MB limit (sent to quarantine, not a deployment failure)
+
+**To resolve:**
+
+1. Review your current usage against the limits
+2. Remove unused topics or connections if needed
+3. Contact support to request limit increases (Enterprise plans)
+
+## Best practices for managing limits [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/limits#best-practices-for-managing-limits)
+
+1. **  Monitor your usage**   : Regularly check how many topics and connections you're using
+2. **  Clean up unused resources**   : Remove Data Sources and connections that are no longer needed
+3. **  Plan for growth**   : Consider your future needs when designing your Kafka integration
+4. **  Use environment-specific configurations**   : Separate development, staging, and production to better manage resources
+
+## Requesting limit increases [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/limits#requesting-limit-increases)
+
+Enterprise plan users can request limit increases by contacting [support@tinybird.co](mailto:support@tinybird.co) . Include:
+
+- Your organization name
+- Which limit you need increased (topics, connections, throughput)
+- Current usage and expected growth
+- Use case description
+
+Free and Developer plan users can upgrade to Enterprise to access higher limits. See [Pricing](/docs/forward/pricing) for plan details.
+
+## Related documentation [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/limits#related-documentation)
+
+- [  Kafka connector documentation](index)   - Main connector setup guide
+- [  Troubleshooting guide](troubleshooting)   - Resolve common issues
+- [  Performance optimization guide](guides/performance-optimization)   - Optimize throughput
+- [  General limits documentation](/docs/forward/pricing/limits)   - All workspace limits
+
+
+
+---
+
+URL: https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides
+Last update: 2025-12-11T19:06:55.000Z
+Content:
+---
+title: "Kafka connector guides · Tinybird Docs"
+theme-color: "#171612"
+description: "Comprehensive Kafka connector guides for setup, configuration, and optimization. Connect to Confluent Cloud, AWS MSK, Redpanda, and other Kafka platforms with step-by-step tutorials."
+inkeep:version: "forward"
+---
+
+
+
+
+# Kafka connector guides [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides#kafka-connector-guides)
+
+Copy as MD This section contains detailed guides for setting up, configuring, and optimizing your Kafka connector. Each guide focuses on a specific aspect of working with Kafka in Tinybird.
+
+## Setup guides [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides#setup-guides)
+
+### Vendor-specific setup [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides#vendor-specific-setup)
+
+- **[  Confluent Cloud setup](/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup)**   - Connect Tinybird to your Confluent Cloud cluster with step-by-step instructions for authentication, SSL configuration, and testing.
+- **[  AWS MSK setup](/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup)**   - Integrate Tinybird with Amazon MSK, including IAM authentication, security group configuration, and connection testing.
+- **[  Redpanda setup](/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup)**   - Connect to your Redpanda cluster, configure authentication, and set up your first Data Source.
+- **[  Local development](/docs/forward/get-data-in/connectors/kafka/guides/local-development)**   - Set up a local Kafka environment using Docker Compose for development and testing.
+
+## Configuration and management [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides#configuration-and-management)
+
+- **[  CI/CD and version control](/docs/forward/get-data-in/connectors/kafka/guides/cicd-version-control)**   - Manage Kafka connector configurations in CI/CD pipelines, handle environment-specific settings, and implement best practices for version control.
+- **[  Schema management](/docs/forward/get-data-in/connectors/kafka/guides/schema-management)**   - Understand schema evolution, handle Avro and JSON Schema formats, and implement schema versioning strategies.
+
+## Performance and optimization [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides#performance-and-optimization)
+
+- **[  Partitioning strategies](/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies)**   - Learn best practices for Kafka topic partitioning, understand partition assignment, and optimize for performance.
+- **[  Message size handling](/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling)**   - Handle large Kafka messages, implement compression strategies, and work within message size limits.
+- **[  Performance optimization](/docs/forward/get-data-in/connectors/kafka/guides/performance-optimization)**   - Optimize throughput, reduce consumer lag, scale consumers effectively, and tune your Kafka connector for maximum performance.
+
+## Related documentation [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides#related-documentation)
+
+- [  Kafka connector documentation](/docs/forward/get-data-in/connectors/kafka)   - Main setup and configuration guide
+- [  Troubleshooting guide](/docs/forward/get-data-in/connectors/kafka/troubleshooting)   - Comprehensive troubleshooting for common issues
+- [  Monitor Kafka connectors](/docs/forward/monitoring/kafka-clickhouse-monitoring)   - Monitoring and alerting
+
+
+
+---
+
+URL: https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management
+Last update: 2025-12-11T19:06:55.000Z
+Content:
+---
+title: "Schema management and evolution · Tinybird Docs"
+theme-color: "#171612"
+description: "Complete guide to managing Kafka message schemas, including adding fields, handling nullable types, data type mapping, and schema evolution strategies."
+inkeep:version: "forward"
+---
+
+
+
+
+# Schema management and evolution [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#schema-management-and-evolution)
+
+Copy as MD This guide covers managing schemas for Kafka messages in Tinybird, including adding and modifying fields, handling nullable types, data type mapping between Kafka and ClickHouse®, and implementing schema evolution strategies.
+
+## Prerequisites [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#prerequisites)
+
+- Understanding of Kafka message formats (JSON, Avro)
+- Basic knowledge of ClickHouse® data types
+- Access to Schema Registry (if using Avro or JSON Schema)
+
+## Supported serialization formats [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#supported-serialization-formats)
+
+Tinybird supports the following serialization formats:
+
+- **  JSON**   ( `json_without_schema`   ) - Plain JSON messages
+- **  JSON Schema**   ( `json_with_schema`   ) - JSON with Schema Registry
+- **  Avro**   ( `avro`   ) - Avro with Schema Registry
+
+## Adding and modifying fields [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#adding-and-modifying-fields)
+
+### Adding new fields [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#adding-new-fields)
+
+When adding new fields to your Kafka messages, the key is making them backward compatible. Old messages (without the field) should still work.
+
+**The pattern:**
+
+1. Update your Data Source schema to include the new field
+2. Make it nullable if the field may be missing in older messages
+3. Provide default values in JSONPath expressions if needed
+
+**Example:**
+
+##### datasources/events_updated.datasource
+
+SCHEMA >
+    `order_id` String `json:$.order_id`,
+    `customer_id` String `json:$.customer_id`,
+    `order_total` Float64 `json:$.order_total`,
+    `payment_method` Nullable(String) `json:$.payment_method`,  -- New field, nullable
+    `data` String `json:$` Why nullable? Old messages don't have `payment_method` , so it will be `null` . After all messages include it, you can make it non-nullable if needed.
+
+**For Avro/JSON Schema:**
+
+- Add fields as optional (not in `required`   array)
+- Provide default values in Schema Registry
+- Use nullable types in ClickHouse
+
+### Modifying existing fields [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#modifying-existing-fields)
+
+Modifying existing fields requires more care. Some changes are safe, others require migration.
+
+**Safe modifications:**
+
+- Adding default values to existing fields
+- Making fields nullable (if they weren't before)
+- Widening types (Int32 → Int64, String → Nullable(String))
+
+**Example of safe modification:**
+
+-- Before: String field
+`status` String `json:$.status`
+
+-- After: Still String, but with default
+`status` String `json:$.status DEFAULT 'pending'` **Unsafe modifications (require FORWARD_QUERY):**
+
+- Changing field types (String → Int32)
+- Narrowing types (Int64 → Int32)
+- Removing fields
+
+**Example of type change:**
+
+-- Before
+`count` Int32 `json:$.count`
+
+-- After: Changed to Int64
+`count` Int64 `json:$.count` Use FORWARD_QUERY to convert existing data:
+
+FORWARD_QUERY >
+    SELECT
+        *,
+        toInt64(count) as count  -- Convert Int32 to Int64
+    FROM previous_datasource This migrates existing data while new messages use the new type.
+
+**Deploying changes:**
+
+- Test locally: `tb deploy`
+- Deploy to production: `tb --cloud deploy`
+- Always test schema changes in development first
+
+## Nullable vs non-nullable [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#nullable-vs-non-nullable)
+
+### When to use nullable [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#when-to-use-nullable)
+
+Use `Nullable()` types when:
+
+- Fields may be missing in some messages
+- Fields can have `null`   values
+- You're adding new optional fields
+- You want to handle schema evolution gracefully
+
+**Example:**
+
+SCHEMA >
+    `order_id` String `json:$.order_id`,                    -- Required
+    `email` Nullable(String) `json:$.email`,              -- Optional
+    `preferences` Nullable(String) `json:$.preferences`, -- Optional
+    `data` String `json:$`
+### When to use non-nullable [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#when-to-use-non-nullable)
+
+Use non-nullable types when:
+
+- Fields are always present in messages
+- You want to enforce data quality
+- Fields are required for your use case
+
+**Example:**
+
+SCHEMA >
+    `order_id` String `json:$.order_id`,        -- Always present
+    `timestamp` DateTime `json:$.timestamp`,  -- Always present
+    `event_type` String `json:$.event_type`,  -- Always present
+    `data` String `json:$`
+### Handling missing fields [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#handling-missing-fields)
+
+If a field might be missing, provide a default value:
+
+`status` String `json:$.status DEFAULT 'unknown'`
+`count` Int32 `json:$.count DEFAULT 0`
+`is_active` UInt8 `json:$.is_active DEFAULT 0` Defaults handle missing fields gracefully without requiring nullable types.
+
+## Data type mapping [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#data-type-mapping)
+
+### Kafka to ClickHouse® mapping [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#kafka-to-clickhouse-mapping)
+
+| Kafka/JSON Type | ClickHouse Type | Notes |
+| --- | --- | --- |
+| `string` | `String` | Text data |
+| `number`   (integer) | `Int32`  , `Int64` | Use Int64 for large numbers |
+| `number`   (float) | `Float32`  , `Float64` | Use Float64 for precision |
+| `boolean` | `UInt8`  , `Boolean` | 0 or 1, or true/false |
+| `null` | `Nullable(T)` | Wrap in Nullable |
+| `array` | `Array(T)` | Specify element type |
+| `object` | `String`   (JSON) or `Map(K, V)` | Store as JSON string or Map |
+
+### Common type conversions [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#common-type-conversions)
+
+**String to DateTime:**
+
+`timestamp` DateTime `json:$.timestamp`
+-- Assumes ISO 8601 format: "2024-01-01T00:00:00Z" **String to number:**
+
+`price` Float64 `json:$.price`
+-- JSON numbers are automatically converted **Array handling:**
+
+`tags` Array(String) `json:$.tags[:]`
+-- For JSON arrays of strings **Nested objects:**
+
+`metadata` String `json:$.metadata`
+-- Store nested object as JSON string, extract later with JSONExtract **Nested fields:**
+
+For nested JSON structures, use JSONPath to extract specific fields:
+
+SCHEMA >
+    `customer_id` String `json:$.customer.id`,
+    `customer_email` String `json:$.customer.email`,
+    `order_data` String `json:$.order.data`,
+    `data` String `json:$` **Maps:**
+
+Use Map type for key-value structures:
+
+`headers` Map(String, String) `json:$.headers`
+-- For Kafka headers or metadata maps
+## Schema Registry integration [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#schema-registry-integration)
+
+### Avro schemas [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#avro-schemas)
+
+When using Avro with Schema Registry:
+
+1. Register schema in Schema Registry
+2. Set format to `avro`   in Data Source
+3. Configure Schema Registry URL in connection
+
+KAFKA_VALUE_FORMAT avro
+KAFKA_SCHEMA_REGISTRY_URL https://registry.example.com **Schema evolution rules:**
+
+- Add optional fields (with defaults)
+- Remove fields (backward compatible)
+- Change field types only if compatible
+- Don't change required fields to optional without defaults
+
+### JSON Schema [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#json-schema)
+
+When using JSON Schema with Schema Registry:
+
+KAFKA_VALUE_FORMAT json_with_schema
+KAFKA_SCHEMA_REGISTRY_URL https://registry.example.com **Best practices:**
+
+- Use schema versioning
+- Test schema changes in development
+- Monitor schema compatibility
+- Add new properties without adding them to `required`
+
+## Schema evolution strategies [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#schema-evolution-strategies)
+
+### Backward compatibility [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#backward-compatibility)
+
+Ensure schema changes are backward compatible:
+
+**Safe changes:**
+
+- Adding optional fields
+- Removing fields
+- Making fields nullable
+- Adding default values
+- Widening types (Int32 → Int64)
+
+**Breaking changes:**
+
+- Removing required fields
+- Changing field types incompatibly
+- Renaming fields
+- Narrowing types (Int64 → Int32)
+
+### Versioning strategy [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#versioning-strategy)
+
+For breaking changes, use topic versioning:
+
+orders-v1
+orders-v2
+orders-v3 Create separate Data Sources for each version, then merge in queries if needed. This is safer than trying to migrate in place.
+
+### Gradual rollout [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#gradual-rollout)
+
+When adding new fields:
+
+1. Add new field as nullable in Data Source
+2. Update producers to include new field
+3. Monitor for any issues
+4. Make field required once all messages include it (optional)
+
+This approach minimizes risk and allows you to roll back if needed.
+
+## Monitoring schema changes [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#monitoring-schema-changes)
+
+### Detect schema mismatches [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#detect-schema-mismatches)
+
+Query `kafka_ops_log` for deserialization errors:
+
+SELECT
+    timestamp,
+    datasource_id,
+    topic,
+    msg,
+    count(*) as error_count
+FROM tinybird.kafka_ops_log
+WHERE msg_type = 'warning'
+  AND msg LIKE '%schema%'
+  AND timestamp > now() - INTERVAL 1 hour
+GROUP BY timestamp, datasource_id, topic, msg
+ORDER BY error_count DESC This helps you catch schema evolution issues early.
+
+### Monitor quarantined messages [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#monitor-quarantined-messages)
+
+Check Quarantine Data Source for schema-related issues:
+
+SELECT
+    timestamp,
+    count(*) as quarantined_count
+FROM your_datasource_quarantine
+WHERE timestamp > now() - INTERVAL 1 hour
+GROUP BY timestamp
+ORDER BY timestamp DESC Quarantined messages often indicate schema mismatches or data quality issues.
+
+## Common pitfalls [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#common-pitfalls)
+
+### Changing field types incompatibly [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#changing-field-types-incompatibly)
+
+**Problem:** Changing `count` from `String` to `Int32` breaks old messages.
+
+**Solution:** Use `FORWARD_QUERY` to convert types, or add a new field and migrate gradually.
+
+### Removing required fields [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#removing-required-fields)
+
+**Problem:** Removing a field that old messages require causes deserialization failures.
+
+**Solution:** Make the field optional first, wait for all consumers to update, then remove it.
+
+### Not handling nullable fields [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#not-handling-nullable-fields)
+
+**Problem:** Adding a new field as non-nullable breaks old messages that don't have it.
+
+**Solution:** Always make new fields nullable initially. After all messages include it, you can make it non-nullable.
+
+### Ignoring Schema Registry compatibility [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#ignoring-schema-registry-compatibility)
+
+**Problem:** Schema changes that violate compatibility settings cause failures.
+
+**Solution:** Check your compatibility mode ( `BACKWARD`, `FORWARD`, `FULL` ) and test schema changes before deploying.
+
+## Best practices [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#best-practices)
+
+1. **  Use nullable types**   for optional fields
+2. **  Provide default values**   for missing fields
+3. **  Test schema changes**   in development first with `tb deploy`
+4. **  Deploy to production**   using `tb --cloud deploy`   after testing
+5. **  Monitor schema evolution**   using `kafka_ops_log`
+6. **  Use Schema Registry**   for Avro and JSON Schema
+7. **  Document schema changes**   in your team
+8. **  Version schemas**   for breaking changes
+9. **  Keep schemas backward compatible**   when possible
+10. **  Start with nullable**   when adding new fields
+
+## Troubleshooting schema issues [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#troubleshooting-schema-issues)
+
+### Type conversion failed [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#type-conversion-failed)
+
+**Solutions:**
+
+1. Verify JSONPath expressions match message structure
+2. Check data types are compatible
+3. Use type conversion functions if needed
+4. Make fields nullable if data might be missing
+
+### Schema mismatch [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#schema-mismatch)
+
+**Solutions:**
+
+1. Review Quarantine Data Source for actual message format
+2. Update Data Source schema to match messages
+3. Check Schema Registry if using Avro/JSON Schema
+4. Verify schema evolution is backward compatible
+
+### Missing fields [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#missing-fields)
+
+**Solutions:**
+
+1. Make fields nullable
+2. Provide default values
+3. Update producers to include required fields
+4. Handle missing fields in queries
+
+## Related documentation [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/schema-management#related-documentation)
+
+- [  Kafka connector documentation](/docs/forward/get-data-in/connectors/kafka)   - Main setup and configuration guide
+- [  Troubleshooting guide](../troubleshooting)   - Schema-related error troubleshooting
+- [  Evolve Data Sources](/docs/forward/test-and-deploy/evolve-data-source)   - Managing schema changes
+- [  ClickHouse® data types](/docs/sql-reference/data-types)   - Available data types
+
+
+
+---
+
+URL: https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup
+Last update: 2025-12-11T19:06:55.000Z
+Content:
+---
+title: "Redpanda setup guide · Tinybird Docs"
+theme-color: "#171612"
+description: "Guide to setting up Tinybird's Kafka connector with Redpanda, including authentication and network configuration."
+inkeep:version: "forward"
+---
+
+
+
+
+# Redpanda setup guide [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#redpanda-setup-guide)
+
+Copy as MD This guide walks you through setting up Tinybird's Kafka connector with Redpanda, a Kafka-compatible streaming data platform.
+
+## Prerequisites [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#prerequisites)
+
+- A Redpanda cluster (self-hosted or Redpanda Cloud)
+- Redpanda credentials (if authentication is turned on)
+- Network access to your Redpanda cluster
+- A Tinybird workspace
+
+## Redpanda compatibility [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#redpanda-compatibility)
+
+Redpanda is fully compatible with the Apache Kafka protocol, so you can use Tinybird's Kafka connector with Redpanda without any special configuration. The connector works with Redpanda the same way it works with Apache Kafka.
+
+## Step 1: Get your Redpanda connection details [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#step-1-get-your-redpanda-connection-details)
+
+### Bootstrap servers [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#bootstrap-servers)
+
+1. For**  Redpanda Cloud**   : Get the bootstrap server from your Redpanda Cloud console
+2. For**  self-hosted Redpanda**   : Use your Redpanda broker addresses
+
+The bootstrap server format is: `<host>:<port>`
+
+Common ports:
+
+- `9092`   for PLAINTEXT
+- `9093`   for SASL_SSL
+- `9094`   for TLS
+
+### Authentication [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#authentication)
+
+Redpanda supports multiple authentication methods:
+
+- **  SASL/PLAIN**   - Username and password
+- **  SASL/SCRAM-SHA-256**   or**  SCRAM-SHA-512**   - SCRAM authentication
+- **  TLS/mTLS**   - Certificate-based authentication
+- **  PLAINTEXT**   - No authentication (local development only)
+
+## Step 2: Create the Kafka connection [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#step-2-create-the-kafka-connection)
+
+You can create the Kafka connection using the CLI wizard or by manually creating a connection file.
+
+### Option 1: Use the CLI wizard (recommended) [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#option-1-use-the-cli-wizard-recommended)
+
+Run the following command to create a connection interactively:
+
+tb connection create kafka The wizard prompts you for:
+
+1. Connection name
+2. Bootstrap server
+3. Kafka key (username for SASL/PLAIN or SCRAM)
+4. Kafka secret (password for SASL/PLAIN or SCRAM)
+
+After the wizard completes, you can edit the generated `.connection` file to add additional settings like `KAFKA_SASL_MECHANISM` if needed (defaults to PLAIN).
+
+### Option 2: Manually create a connection file [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#option-2-manually-create-a-connection-file)
+
+#### SASL/PLAIN authentication [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#saslplain-authentication)
+
+##### connections/redpanda.connection
+
+TYPE kafka
+KAFKA_BOOTSTRAP_SERVERS <REDPANDA_BOOTSTRAP_SERVER>
+KAFKA_SECURITY_PROTOCOL SASL_SSL
+KAFKA_SASL_MECHANISM PLAIN
+KAFKA_KEY {{ tb_secret("REDPANDA_USERNAME") }}
+KAFKA_SECRET {{ tb_secret("REDPANDA_PASSWORD") }} Set the secrets:
+
+tb [--cloud] secret set REDPANDA_USERNAME <YOUR_USERNAME>
+tb [--cloud] secret set REDPANDA_PASSWORD <YOUR_PASSWORD>
+### SASL/SCRAM authentication [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#saslscram-authentication)
+
+##### connections/redpanda_scram.connection
+
+TYPE kafka
+KAFKA_BOOTSTRAP_SERVERS <REDPANDA_BOOTSTRAP_SERVER>
+KAFKA_SECURITY_PROTOCOL SASL_SSL
+KAFKA_SASL_MECHANISM SCRAM-SHA-256
+KAFKA_KEY {{ tb_secret("REDPANDA_USERNAME") }}
+KAFKA_SECRET {{ tb_secret("REDPANDA_PASSWORD") }}
+### PLAINTEXT (local development only) [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#plaintext-local-development-only)
+
+##### connections/redpanda_local.connection
+
+TYPE kafka
+KAFKA_BOOTSTRAP_SERVERS localhost:9092
+KAFKA_SECURITY_PROTOCOL PLAINTEXT PLAINTEXT connections should only be used for local development. Production Redpanda clusters should use SASL_SSL.
+
+## Step 3: SSL/TLS certificate (if required) [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#step-3-ssltls-certificate-if-required)
+
+If your Redpanda cluster uses self-signed certificates or a private CA, provide the CA certificate:
+
+tb [--cloud] secret set --multiline REDPANDA_SSL_CA_PEM Add to your connection file:
+
+KAFKA_SSL_CA_PEM >
+  {{ tb_secret("REDPANDA_SSL_CA_PEM") }}
+## Step 4: Create the Kafka Data Source [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#step-4-create-the-kafka-data-source)
+
+Now that your connection is configured, create a Kafka Data Source. See [Create a Kafka data source](/docs/forward/get-data-in/connectors/kafka#create-a-kafka-data-source) in the main Kafka connector guide for detailed instructions on:
+
+- Using `tb datasource create --kafka`   for a guided setup
+- Manually creating `.datasource`   files
+- Defining schemas with JSONPath expressions
+- Configuring Kafka-specific settings
+
+## Step 5: Test the connection [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#step-5-test-the-connection)
+
+Test your connection and preview data:
+
+tb connection data redpanda This command prompts you to select a topic and consumer group ID, then returns preview data. This verifies that Tinybird can connect to your Redpanda cluster, authenticate, and consume messages.
+
+## Redpanda Cloud specific setup [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#redpanda-cloud-specific-setup)
+
+If you're using Redpanda Cloud:
+
+1. **  Get connection details**   from the Redpanda Cloud console
+2. **  Use SASL/PLAIN**   authentication with your Redpanda Cloud credentials
+3. **  Use the provided bootstrap server**   address
+4. **  No SSL certificate needed**   - Redpanda Cloud uses public CA certificates
+
+## Common Redpanda issues [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#common-redpanda-issues)
+
+### Issue: Authentication failed [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#issue-authentication-failed)
+
+**Solutions:**
+
+1. Verify username and password are correct
+2. Check SASL mechanism matches your Redpanda configuration
+3. Ensure the user has read permissions on the topic
+4. Verify security protocol matches (SASL_SSL vs PLAINTEXT)
+
+### Issue: Connection timeout [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#issue-connection-timeout)
+
+**Solutions:**
+
+1. Verify bootstrap server address is correct
+2. Check network connectivity to Redpanda cluster
+3. Verify firewall rules allow outbound connections
+4. For self-hosted Redpanda, ensure the cluster is accessible
+
+### Issue: SSL certificate validation [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#issue-ssl-certificate-validation)
+
+**Solutions:**
+
+1. Provide CA certificate if using self-signed certificates
+2. Verify certificate is in PEM format
+3. Check certificate hasn't expired
+
+## Redpanda vs Kafka differences [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#redpanda-vs-kafka-differences)
+
+While Redpanda is Kafka-compatible, there are some differences to be aware of:
+
+1. **  Performance**   : Redpanda is optimized for lower latency and higher throughput
+2. **  Resource usage**   : Redpanda typically uses less CPU and memory
+3. **  Configuration**   : Some Kafka-specific configurations may not apply
+4. **  Schema Registry**   : Redpanda doesn't include Schema Registry by default (use Confluent Schema Registry separately if needed)
+
+## Best practices [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#best-practices)
+
+1. **  Use SASL_SSL**   for production Redpanda clusters
+2. **  Monitor consumer lag**   using `kafka_ops_log`
+3. **  Use unique consumer group IDs**   for each Data Source
+4. **  Set up alerts**   for high lag or errors
+5. **  Test connections**   before deploying to production
+
+## Related documentation [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/redpanda-setup#related-documentation)
+
+- [  Kafka connector documentation](/docs/forward/get-data-in/connectors/kafka)   - Main setup and configuration guide
+- [  Monitor Kafka connectors](/docs/forward/monitoring/kafka-clickhouse-monitoring)   - Set up monitoring and alerts
+- [  Troubleshooting guide](../troubleshooting)   - Common issues and solutions
+
+
+
+---
+
+URL: https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/performance-optimization
+Last update: 2025-12-11T11:38:13.000Z
+Content:
+---
+title: "Kafka connector performance optimization · Tinybird Docs"
+theme-color: "#171612"
+description: "Optimize Kafka connector performance with schema optimization, Materialized View tuning, and throughput best practices. Learn how to reduce consumer lag and improve ingestion speed."
+inkeep:version: "forward"
+---
+
+
+
+
+# Performance optimization [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/performance-optimization#performance-optimization)
+
+Copy as MD This guide covers strategies for optimizing your Kafka connector performance, focusing on schema design, Materialized View optimization, and best practices.
+
+## Schema optimization [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/performance-optimization#schema-optimization)
+
+### Use explicit schemas [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/performance-optimization#use-explicit-schemas)
+
+Explicit schemas are faster and more efficient than schemaless:
+
+**Recommended:**
+
+SCHEMA >
+    `user_id` String `json:$.user_id`,
+    `event_type` LowCardinality(String) `json:$.event_type`,
+    `timestamp` DateTime `json:$.timestamp` **Avoid (slower):**
+
+SCHEMA >
+    `data` String `json:$`  -- Requires parsing at query time
+### Optimize data types [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/performance-optimization#optimize-data-types)
+
+- Use `LowCardinality(String)`   for enum-like fields
+- Use smallest integer type needed ( `Int32`   vs `Int64`   )
+- Use `DateTime`   for timestamps (not `String`   )
+- Use `Nullable()`   only when needed
+
+**Example:**
+
+SCHEMA >
+    `user_id` String `json:$.user_id`,
+    `event_type` LowCardinality(String) `json:$.event_type`,
+    `timestamp` DateTime `json:$.timestamp`,
+    `count` Int32 `json:$.count`,
+    `metadata` Nullable(String) `json:$.metadata`  -- Only if needed
+## Materialized View optimization [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/performance-optimization#materialized-view-optimization)
+
+Complex Materialized Views can slow down ingestion. Materialized Views that trigger on append operations from Kafka data sources can impact ingestion performance, especially if they perform expensive aggregations or joins.
+
+### Optimization strategies [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/performance-optimization#optimization-strategies)
+
+1. **  Simplify aggregations**   - Keep aggregations efficient
+2. **  Add filters**   - Reduce data volume processed
+3. **  Optimize joins**   - Use appropriate join strategies
+4. **  Avoid cascade MVs**   - Don't create multiple Materialized Views from the same Kafka data source, as this increases ingestion latency
+5. **  Limit MVs per data source**   - Too many Materialized Views reading from the same Kafka data source can slow down ingestion
+
+## Partition distribution [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/performance-optimization#partition-distribution)
+
+Ensure even partition distribution to maximize throughput. Monitor partition lag:
+
+SELECT
+    partition,
+    max(lag) as max_lag,
+    avg(lag) as avg_lag,
+    sum(processed_messages) as total_processed
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 1 hour
+  AND partition >= 0
+GROUP BY partition
+ORDER BY max_lag DESC Uneven distribution may indicate:
+
+- Poor partition key design
+- Hot partitions
+- Need for more partitions
+
+See the [partitioning strategies guide](partitioning-strategies) for detailed guidance.
+
+## Common performance bottlenecks [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/performance-optimization#common-performance-bottlenecks)
+
+### Schema parsing [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/performance-optimization#schema-parsing)
+
+**Symptoms:**
+
+- High CPU usage
+- Slow message processing
+- Low throughput
+
+**Solutions:**
+
+1. Use explicit schemas instead of schemaless
+2. Optimize JSONPath expressions
+3. Reduce schema complexity
+4. Use appropriate data types
+
+### Materialized Views [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/performance-optimization#materialized-views)
+
+**Symptoms:**
+
+- Slow ingestion
+- High memory usage
+- Timeouts in Materialized Views
+
+**Solutions:**
+
+1. Simplify Materialized View queries
+2. Add filters to reduce data volume
+3. Avoid cascade MVs or multiple MVs from the same Kafka data source
+4. Optimize aggregations
+
+### Partition imbalance [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/performance-optimization#partition-imbalance)
+
+**Symptoms:**
+
+- Uneven lag across partitions
+- Some partitions slow
+- Overall throughput limited
+
+**Solutions:**
+
+1. Review partition key strategy
+2. Redistribute messages more evenly
+3. Increase partitions if needed
+4. Monitor partition distribution
+
+## Best practices [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/performance-optimization#best-practices)
+
+1. **  Use explicit schemas**   - Faster parsing and better performance
+2. **  Optimize data types**   - Use smallest types needed, `LowCardinality`   for enums
+3. **  Simplify Materialized Views**   - Keep MVs efficient to avoid slowing ingestion
+4. **  Ensure even partition distribution**   - Monitor and optimize partition keys
+5. **  Monitor performance**   - Track lag, throughput, and error rates regularly
+
+## Related documentation [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/performance-optimization#related-documentation)
+
+- [  Monitor Kafka connectors](/docs/forward/monitoring/kafka-clickhouse-monitoring)   - Comprehensive monitoring queries and metrics
+- [  Partitioning strategies guide](partitioning-strategies)   - Optimize partition distribution
+- [  Troubleshooting guide](../troubleshooting)   - Resolve performance issues
+
+
+
+---
+
+URL: https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies
+Last update: 2025-12-11T11:38:13.000Z
+Content:
+---
+title: "Kafka partitioning strategies · Tinybird Docs"
+theme-color: "#171612"
+description: "Best practices for Kafka topic partitioning, including partition key design, impact on ingestion performance, and relationship to ClickHouse® table partitions."
+inkeep:version: "forward"
+---
+
+
+
+
+# Kafka partitioning strategies [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies#kafka-partitioning-strategies)
+
+Copy as MD This guide covers best practices for Kafka topic partitioning and how it affects Tinybird's Kafka connector performance.
+
+## Understanding Kafka partitions [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies#understanding-kafka-partitions)
+
+Kafka topics are divided into partitions, which allow:
+
+- **  Parallel processing**   - Multiple consumers can process different partitions simultaneously
+- **  Scalability**   - Distribute load across partitions
+- **  Ordering**   - Messages with the same key go to the same partition, maintaining order
+
+Tinybird's Kafka connector automatically assigns partitions to consumer instances and scales consumers based on lag and load.
+
+**Partition assignment is automatic** : Tinybird's Kafka connector automatically handles partition assignment. There is no configuration option to explicitly target specific partitions or turn off automatic assignment. The connector manages partition distribution across consumers automatically.
+
+## Kafka partitions vs ClickHouse® table partitions [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies#kafka-partitions-vs-clickhouse-table-partitions)
+
+**Kafka partitions** and **ClickHouse® table partitions** are different concepts:
+
+- **  Kafka partitions**   : Logical divisions of a topic for parallel processing and ordering. Each Kafka partition can be consumed independently.
+- **  ClickHouse® table partitions**   : Physical divisions of data in ClickHouse® tables, typically organized by time (for example, monthly partitions).
+
+**How they relate:**
+
+- Each Kafka partition can write data to multiple ClickHouse® parts within a ClickHouse® partition
+- Multiple Kafka partitions can write to the same ClickHouse® partition
+- ClickHouse® typically partitions by time (for example, `ENGINE_PARTITION_KEY "toYYYYMM(timestamp)"`   )
+
+**TOO_MANY_PARTS error:**
+
+If you have too many Kafka partitions writing to the same ClickHouse® partition, you may encounter the `TOO_MANY_PARTS` error. This happens when ClickHouse® creates too many parts in a single partition, which can impact query performance.
+
+**Best practice:** For ClickHouse®, partitioning by time (for example, monthly or daily) is usually fine for time-series data. This is independent of your Kafka partition key strategy. Kafka partition keys should focus on distributing load evenly across Kafka partitions, while ClickHouse® partitioning organizes data by time for efficient querying.
+
+## Partition design best practices [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies#partition-design-best-practices)
+
+### Number of partitions [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies#number-of-partitions)
+
+**Guidelines:**
+
+- Start with**  3-6 partitions**   for most use cases
+- Scale up if you see uneven lag distribution
+- More partitions = more parallelism, but also more overhead
+- Too many partitions can cause frequent rebalancing and ClickHouse® TOO_MANY_PARTS errors
+
+**Factors to consider:**
+
+- Expected message throughput
+- Consumer capacity
+- ClickHouse® partition strategy
+
+### Kafka partition key strategy [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies#kafka-partition-key-strategy)
+
+The partition key determines which Kafka partition a message goes to. This is about **Kafka partitions** , not ClickHouse partitions.
+
+**Goal: Even distribution across Kafka partitions**
+
+- Use keys that distribute messages evenly across Kafka partitions
+- Avoid keys that create "hot partitions" (one Kafka partition receiving most messages)
+- Consider hash-based keys for even distribution
+
+**Example of good partition key:**
+
+# Even distribution using hash - distributes messages across Kafka partitions
+partition_key = hash(user_id) % num_partitions **Example of problematic partition key:**
+
+# Creates hot partition - all messages go to one Kafka partition
+partition_key = "all-users" **Note:** Partition keys are for distributing load across Kafka partitions. For ClickHouse® table partitioning, you typically partition by time (for example, `ENGINE_PARTITION_KEY "toYYYYMM(timestamp)"` ), which is usually fine for time-series data. ClickHouse® partitioning is independent of Kafka partition keys.
+
+## Monitoring partition performance [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies#monitoring-partition-performance)
+
+### Monitor partition lag [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies#monitor-partition-lag)
+
+Partition lag indicates how far behind your consumer is:
+
+SELECT
+    datasource_id,
+    topic,
+    partition,
+    max(lag) as current_lag,
+    avg(lag) as avg_lag
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 1 hour
+  AND partition >= 0
+GROUP BY datasource_id, topic, partition
+ORDER BY current_lag DESC
+### Detect hot partitions [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies#detect-hot-partitions)
+
+Check if messages are evenly distributed across partitions:
+
+SELECT
+    __partition,
+    count(*) as message_count,
+    count(*) * 100.0 / sum(count(*)) OVER () as percentage
+FROM your_datasource
+WHERE timestamp > now() - INTERVAL 1 hour
+GROUP BY __partition
+ORDER BY message_count DESC Uneven distribution (for example, one partition has >50% of messages) indicates a hot partition.
+
+### Monitor partition assignment [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies#monitor-partition-assignment)
+
+Track how partitions are assigned to consumers:
+
+SELECT
+    datasource_id,
+    topic,
+    partition,
+    count(*) as assignment_count
+FROM tinybird.kafka_ops_log
+WHERE timestamp > now() - INTERVAL 1 hour
+  AND partition >= 0
+GROUP BY datasource_id, topic, partition
+ORDER BY assignment_count DESC
+## How it works in practice [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies#how-it-works-in-practice)
+
+1. **  Producer sends messages**   to Kafka topics with optional partition keys
+2. **  Kafka assigns messages**   to partitions based on the key (or round-robin if no key)
+3. **  Tinybird connector**   consumes from all partitions in parallel
+4. **  Data is ingested**   into ClickHouse®, where it's organized into ClickHouse® partitions (typically by time)
+5. **  Multiple Kafka partitions**   can write to the same ClickHouse® partition
+6. **  Each Kafka partition**   may create multiple ClickHouse® parts within a partition
+
+**Example flow:**
+
+Kafka Topic: events (6 partitions)
+  ├─ Partition 0 → ClickHouse® partition 202401 (multiple parts)
+  ├─ Partition 1 → ClickHouse® partition 202401 (multiple parts)
+  ├─ Partition 2 → ClickHouse® partition 202402 (multiple parts)
+  └─ ... **Rebalancing:**
+
+When partitions are added, removed, or consumer instances change, Kafka rebalances partition assignments. This causes a brief pause in processing. Monitor for rebalancing by tracking partition assignment changes in `kafka_ops_log`.
+
+## Troubleshooting [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies#troubleshooting)
+
+### Issue: Uneven partition lag [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies#issue-uneven-partition-lag)
+
+**Symptoms:** Some partitions have high lag while others are idle
+
+**Solutions:**
+
+1. Review partition key strategy
+2. Check message distribution across partitions
+3. Consider increasing partitions if needed
+4. Adjust partition key to distribute more evenly
+
+### Issue: Hot partitions [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies#issue-hot-partitions)
+
+**Symptoms:** One partition receives most messages, causing high lag
+
+**Solutions:**
+
+1. Change partition key strategy
+2. Use hash-based keys for even distribution
+3. Split high-volume keys across multiple partitions
+
+### Issue: TOO_MANY_PARTS error [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies#issue-too-many-parts-error)
+
+**Symptoms:** ClickHouse® error indicating too many parts in a partition
+
+**Solutions:**
+
+1. Reduce number of Kafka partitions writing to the same ClickHouse® partition
+2. Adjust ClickHouse® merge settings if needed
+3. Consider increasing ClickHouse® partition granularity (for example, daily instead of monthly)
+4. Note: Kafka partition key strategy doesn't directly affect this - ClickHouse® partitioning by time is usually fine
+
+## Best practices [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies#best-practices)
+
+1. **  Start with 3-6 Kafka partitions**   and scale as needed
+2. **  Use Kafka partition keys**   that distribute messages evenly across Kafka partitions
+3. **  For ClickHouse®**   , partition by time (for example, monthly) - this is usually fine for time-series data
+4. **  Monitor partition lag**   regularly
+5. **  Avoid hot Kafka partitions**   by using hash-based keys
+6. **  Watch for TOO_MANY_PARTS**   errors and adjust ClickHouse® partition granularity if needed
+7. **  Remember**   : Kafka partition keys (for load distribution) and ClickHouse® partitioning (for data organization) serve different purposes
+
+## Related documentation [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/partitioning-strategies#related-documentation)
+
+- [  Performance optimization guide](performance-optimization)   - Overall performance tuning
+- [  Monitor Kafka connectors](/docs/forward/monitoring/kafka-clickhouse-monitoring)   - Monitoring partition performance
+- [  Troubleshooting guide](../troubleshooting)   - Resolve partition issues
+
+
+
+---
+
+URL: https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling
+Last update: 2025-12-11T19:06:55.000Z
+Content:
+---
+title: "Kafka message size limits and handling · Tinybird Docs"
+theme-color: "#171612"
+description: "Handle large Kafka messages and troubleshoot 10 MB message size limits. Learn compression strategies, splitting techniques, and how to work with quarantined messages in Tinybird's Kafka connector."
+inkeep:version: "forward"
+---
+
+
+
+
+# Message size handling [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling#message-size-handling)
+
+Copy as MD This guide covers handling large Kafka messages in Tinybird, including message size limits and strategies for large messages.
+
+## Message size limits [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling#message-size-limits)
+
+Tinybird has a default message size limit of **10 MB** per message. Messages exceeding this limit are automatically sent to the Quarantine Data Source.
+
+## Checking message sizes [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling#checking-message-sizes)
+
+Check quarantined messages for size-related issues:
+
+SELECT
+    timestamp,
+    length(__value) as message_size_bytes,
+    length(__value) / 1024 / 1024 as message_size_mb,
+    msg
+FROM your_datasource_quarantine
+WHERE timestamp > now() - INTERVAL 1 hour
+ORDER BY message_size_bytes DESC
+LIMIT 100
+## Strategies for handling large messages [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling#strategies-for-handling-large-messages)
+
+### Option 1: Compression [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling#option-1-compression)
+
+Use Kafka compression to reduce message size:
+
+**Producer configuration:**
+
+producer = KafkaProducer(
+    bootstrap_servers=['localhost:9092'],
+    compression_type='gzip',  # or 'snappy', 'lz4'
+    value_serializer=lambda v: json.dumps(v).encode('utf-8')
+) **Compression types:**
+
+- `gzip`   - Best compression, higher CPU
+- `snappy`   - Good balance
+- `lz4`   - Fast, lower compression
+
+### Option 2: Split large messages [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling#option-2-split-large-messages)
+
+Break large messages into smaller chunks on the producer side, then reassemble in a Materialized View if needed.
+
+### Option 3: External storage [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling#option-3-external-storage)
+
+Store large payloads in object storage (S3, GCS) and send only references in Kafka:
+
+# Upload to S3, send reference in Kafka
+message = {
+    'message_id': message_id,
+    's3_key': s3_key,
+    'metadata': {...}
+}
+producer.send('topic', value=message)
+### Option 4: Schema optimization [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling#option-4-schema-optimization)
+
+Reduce message size by storing only necessary data and using references for large content:
+
+{
+  "user_id": "123",
+  "profile_summary": "key points only",
+  "full_profile_s3_key": "s3://bucket/profiles/123.json"
+}
+## Troubleshooting quarantined messages [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling#troubleshooting-quarantined-messages)
+
+### Identify size-related quarantines [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling#identify-size-related-quarantines)
+
+SELECT
+    timestamp,
+    length(__value) as message_size,
+    length(__value) / 1024 / 1024 as size_mb,
+    msg
+FROM your_datasource_quarantine
+WHERE timestamp > now() - INTERVAL 24 hour
+  AND length(__value) > 10 * 1024 * 1024  -- Over 10 MB
+ORDER BY message_size DESC
+### Extract useful data from quarantined messages [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling#extract-useful-data-from-quarantined-messages)
+
+Even if the full message is too large, you can extract metadata:
+
+SELECT
+    timestamp,
+    JSONExtractString(__value, 'message_id') as message_id,
+    JSONExtractString(__value, 'user_id') as user_id,
+    length(__value) as original_size
+FROM your_datasource_quarantine
+WHERE timestamp > now() - INTERVAL 24 hour
+## Monitoring message sizes [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling#monitoring-message-sizes)
+
+### Track message size distribution [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling#track-message-size-distribution)
+
+SELECT
+    quantile(0.5)(message_size) as median_size,
+    quantile(0.95)(message_size) as p95_size,
+    quantile(0.99)(message_size) as p99_size,
+    max(message_size) as max_size
+FROM (
+    SELECT length(__value) as message_size
+    FROM your_datasource
+    WHERE timestamp > now() - INTERVAL 1 hour
+)
+### Alert on large messages [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling#alert-on-large-messages)
+
+SELECT
+    timestamp,
+    length(__value) as message_size,
+    length(__value) / 1024 / 1024 as size_mb
+FROM your_datasource
+WHERE length(__value) > 8 * 1024 * 1024  -- Over 8MB
+  AND timestamp > now() - INTERVAL 1 hour
+ORDER BY message_size DESC
+## Best practices [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling#best-practices)
+
+1. **  Target size:**   Keep messages under 1 MB when possible
+2. **  Use Kafka compression**   for large messages
+3. **  Store only necessary data**   in Kafka messages
+4. **  Use references**   for large binary data (S3, GCS)
+5. **  Monitor message sizes**   regularly to catch issues early
+
+## Common issues and solutions [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling#common-issues-and-solutions)
+
+### Issue: Messages consistently over 10 MB [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling#issue-messages-consistently-over-10-mb)
+
+**Solutions:**
+
+1. Implement Kafka compression
+2. Split messages into chunks
+3. Move large data to external storage
+4. Optimize schema to reduce size
+
+### Issue: Compression not helping [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling#issue-compression-not-helping)
+
+**Solutions:**
+
+1. Check if data is already compressed
+2. Try different compression types
+3. Verify compression is turned on in producer
+4. Consider if data is compressible (text vs binary)
+
+## Related documentation [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/message-size-handling#related-documentation)
+
+- [  Troubleshooting guide](../troubleshooting#error-message-too-large-or-quarantined-due-to-size)   - Message size error troubleshooting
+- [  Quarantine Data Sources](/docs/forward/get-data-in/quarantine)   - Handling quarantined messages
+- [  Kafka connector documentation](/docs/forward/get-data-in/connectors/kafka)   - Main setup and configuration guide
+
+
+
+---
+
+URL: https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development
+Last update: 2025-12-11T19:06:55.000Z
+Content:
+---
+title: "Kafka connector local development setup · Tinybird Docs"
+theme-color: "#171612"
+description: "Set up Kafka connector for local development with Docker Compose. Learn environment management, testing strategies, and how to use default values for local Kafka connections."
+inkeep:version: "forward"
+---
+
+
+
+
+# Local development setup [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#local-development-setup)
+
+Copy as MD This guide helps you set up the Kafka connector for local development, including running Kafka locally, connecting to cloud Kafka from your local environment, and managing environment-specific configurations.
+
+## Prerequisites [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#prerequisites)
+
+- Docker and Docker Compose installed
+- Tinybird Local installed (see[  Install Tinybird Local](/docs/forward/install-tinybird/local)   )
+- A Tinybird project directory
+
+## Option 1: Local Kafka with Docker Compose [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#option-1-local-kafka-with-docker-compose)
+
+The easiest way to develop locally is to run Kafka in Docker alongside Tinybird Local.
+
+### Docker Compose setup [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#docker-compose-setup)
+
+Create a `docker-compose.yml` file in your project:
+
+networks:
+  kafka_network:
+    driver: bridge
+
+volumes:
+  kafka-data:
+
+services:
+  tinybird-local:
+    image: tinybirdco/tinybird-local:latest
+    container_name: tinybird-local
+    platform: linux/amd64
+    ports:
+      - "7181:7181"
+    networks:
+      - kafka_network
+    volumes:
+      - ./:/workspace
+      - tinybird-data:/var/lib/tinybird
+
+  kafka:
+    image: apache/kafka:latest
+    hostname: broker
+    container_name: broker
+    ports:
+      - 9092:9092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_PROCESS_ROLES: "broker,controller"
+      KAFKA_CONTROLLER_QUORUM_VOTERS: "1@broker:29093"
+      KAFKA_CONTROLLER_LISTENER_NAMES: "CONTROLLER"
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,CONTROLLER:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:29092,PLAINTEXT_HOST://0.0.0.0:9092,CONTROLLER://0.0.0.0:29093
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+    volumes:
+      - kafka-data:/var/lib/kafka/data
+    networks:
+      - kafka_network
+### Start the services [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#start-the-services)
+
+docker compose up -d
+### Create a topic [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#create-a-topic)
+
+docker exec -it broker /opt/kafka/bin/kafka-topics.sh --create \
+  --topic test-topic \
+  --bootstrap-server localhost:9092 \
+  --partitions 3 \
+  --replication-factor 1
+### Connection configuration [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#connection-configuration)
+
+Create a connection file for local development:
+
+##### connections/kafka_local.connection
+
+TYPE kafka
+KAFKA_BOOTSTRAP_SERVERS {{ tb_secret("KAFKA_BOOTSTRAP_SERVERS", "kafka:29092") }}
+KAFKA_SECURITY_PROTOCOL {{ tb_secret("KAFKA_SECURITY_PROTOCOL", "PLAINTEXT") }} **Note:** The bootstrap server `kafka:29092` uses the Docker service name, which works from within the Docker network.
+
+### Data source configuration [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#data-source-configuration)
+
+##### datasources/test_topic.datasource
+
+SCHEMA >
+    `data` String `json:$`
+
+KAFKA_CONNECTION_NAME kafka_local
+KAFKA_TOPIC test-topic
+KAFKA_GROUP_ID {{ tb_secret("KAFKA_GROUP_ID", "local-dev-group") }}
+### Test locally [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#test-locally)
+
+# Deploy to Tinybird Local
+tb deploy
+
+# Send a test message
+echo '{"test": "data"}' | docker exec -i broker /opt/kafka/bin/kafka-console-producer.sh \
+  --topic test-topic \
+  --bootstrap-server localhost:9092
+
+# Query the data
+tb sql "SELECT * FROM test_topic LIMIT 10"
+## Option 2: Connect to cloud Kafka from local [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#option-2-connect-to-cloud-kafka-from-local)
+
+You can also connect Tinybird Local to a cloud Kafka cluster (Confluent Cloud, AWS MSK, etc.) for testing.
+
+### Connection configuration [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#connection-configuration)
+
+Use the same connection configuration as production, but with local secrets:
+
+##### connections/kafka_cloud_local.connection
+
+TYPE kafka
+KAFKA_BOOTSTRAP_SERVERS {{ tb_secret("KAFKA_BOOTSTRAP_SERVERS", "your-cloud-bootstrap:9092") }}
+KAFKA_SECURITY_PROTOCOL SASL_SSL
+KAFKA_SASL_MECHANISM PLAIN
+KAFKA_KEY {{ tb_secret("KAFKA_KEY", "your-key") }}
+KAFKA_SECRET {{ tb_secret("KAFKA_SECRET", "your-secret") }} **Important:** The `tb_secret()` function uses default values when running locally. These defaults are only used in Tinybird Local, not in Cloud.
+
+### Set local secrets [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#set-local-secrets)
+
+# Set secrets for local environment
+tb secret set KAFKA_BOOTSTRAP_SERVERS "your-cloud-bootstrap:9092"
+tb secret set KAFKA_KEY "your-key"
+tb secret set KAFKA_SECRET "your-secret"
+## Environment-specific configurations [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#environment-specific-configurations)
+
+### Using default values for local development [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#using-default-values-for-local-development)
+
+The `tb_secret()` function supports default values that are used in local environments. This allows you to use the same Connection and Data Source files across all environments:
+
+KAFKA_BOOTSTRAP_SERVERS {{ tb_secret("KAFKA_BOOTSTRAP_SERVERS", "kafka:29092") }}
+KAFKA_SECURITY_PROTOCOL {{ tb_secret("KAFKA_SECURITY_PROTOCOL", "PLAINTEXT") }}
+KAFKA_KEY {{ tb_secret("KAFKA_KEY", "key") }}
+KAFKA_SECRET {{ tb_secret("KAFKA_SECRET", "secret") }}
+- **  Local**   : Uses the default values (for example, `kafka:29092`   for local Docker Kafka)
+- **  Cloud**   : Uses the secret values set in Tinybird Cloud for each workspace
+
+## Testing strategies [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#testing-strategies)
+
+### Unit testing with sample data [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#unit-testing-with-sample-data)
+
+Create sample messages for testing:
+
+# Create a test topic
+docker exec -it broker /opt/kafka/bin/kafka-topics.sh --create \
+  --topic test-events \
+  --bootstrap-server localhost:9092
+
+# Send sample messages
+cat <<EOF | docker exec -i broker /opt/kafka/bin/kafka-console-producer.sh \
+  --topic test-events \
+  --bootstrap-server localhost:9092
+{"user_id": "123", "event": "click", "timestamp": "2024-01-01T00:00:00Z"}
+{"user_id": "456", "event": "view", "timestamp": "2024-01-01T00:01:00Z"}
+{"user_id": "123", "event": "purchase", "timestamp": "2024-01-01T00:02:00Z"}
+EOF
+### Integration testing [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#integration-testing)
+
+Test the full pipeline:
+
+# 1. Deploy to local
+tb deploy
+
+# 2. Send test messages
+# (use your application or kafka-console-producer)
+
+# 3. Verify ingestion
+tb sql "SELECT count() FROM your_datasource"
+
+# 4. Test queries
+tb sql "SELECT * FROM your_datasource WHERE timestamp > now() - INTERVAL 1 hour"
+### Schema testing [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#schema-testing)
+
+Test schema changes locally before deploying:
+
+# Test schema with sample data
+SCHEMA >
+    `user_id` String `json:$.user_id`,
+    `event` LowCardinality(String) `json:$.event`,
+    `timestamp` DateTime `json:$.timestamp`
+## Debugging local connections [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#debugging-local-connections)
+
+### Check container logs [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#check-container-logs)
+
+# Kafka logs
+docker compose logs kafka
+
+# Tinybird Local logs
+docker compose logs tinybird-local
+### Verify network connectivity [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#verify-network-connectivity)
+
+# From Tinybird Local container
+docker exec -it tinybird-local ping kafka
+
+# Test Kafka connectivity
+docker exec -it tinybird-local telnet kafka 29092
+### Common issues [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#common-issues)
+
+**Issue: Connection timeout**
+
+- Verify containers are on the same network
+- Check bootstrap server address matches `KAFKA_ADVERTISED_LISTENERS`
+- Ensure Kafka container is running: `docker compose ps`
+
+**Issue: Topic not found**
+
+- Create the topic before deploying
+- Check topic exists: `docker exec -it broker /opt/kafka/bin/kafka-topics.sh --list --bootstrap-server localhost:9092`
+
+**Issue: No messages received**
+
+- Verify messages are being produced
+- Check consumer group: `docker exec -it broker /opt/kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list`
+- Review `kafka_ops_log`   in Tinybird Local
+
+## Best practices [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#best-practices)
+
+1. **  Use separate consumer group IDs**   for local development to avoid conflicts
+2. **  Test schema changes locally**   before deploying to production
+3. **  Use default values**   in `tb_secret()`   for local development
+4. **  Keep local and cloud configs separate**   to avoid accidental deployments
+5. **  Clean up test topics**   regularly to avoid clutter
+6. **  Use Docker Compose**   for consistent local environments
+7. **  Document local setup**   for your team
+
+## Related documentation [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/local-development#related-documentation)
+
+- [  Kafka connector documentation](/docs/forward/get-data-in/connectors/kafka)   - Main setup and configuration guide
+- [  Troubleshooting guide](../troubleshooting)   - Debugging local connection issues
+- [  CI/CD and version control](cicd-version-control)   - Managing environments
+
+
+
+---
+
+URL: https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup
+Last update: 2025-12-11T19:06:55.000Z
+Content:
+---
+title: "Confluent Cloud setup guide · Tinybird Docs"
+theme-color: "#171612"
+description: "Complete guide to setting up Tinybird's Kafka connector with Confluent Cloud, including authentication, Schema Registry, and Private Link configuration."
+inkeep:version: "forward"
+---
+
+
+
+
+# Confluent Cloud setup guide [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#confluent-cloud-setup-guide)
+
+Copy as MD This guide walks you through setting up Tinybird's Kafka connector with Confluent Cloud, including authentication, network configuration, and Schema Registry integration.
+
+## Prerequisites [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#prerequisites)
+
+- A Confluent Cloud account with an active cluster
+- API keys for your Confluent Cloud cluster
+- Access to your Confluent Cloud console
+- A Tinybird workspace
+
+## Step 1: Get your Confluent Cloud connection details [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#step-1-get-your-confluent-cloud-connection-details)
+
+### Bootstrap servers [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#bootstrap-servers)
+
+1. Log in to the[  Confluent Cloud console](https://confluent.cloud/)
+2. Navigate to your cluster
+3. Go to**  Cluster settings**   >**  Bootstrap server**
+4. Copy the bootstrap server address (for example, `pkc-xxxxx.us-east-1.aws.confluent.cloud:9092`   )
+
+### API keys [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#api-keys)
+
+1. In Confluent Cloud, go to**  API Keys**
+2. Select**  Add key**   and select**  Global access**   or**  Resource-specific**
+3. Copy the**  API Key**   and**  API Secret**
+4. Save these securely - you need them for the Tinybird connection
+
+## Step 2: Create the Kafka connection [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#step-2-create-the-kafka-connection)
+
+You can create the Kafka connection using the CLI wizard or by manually creating a connection file.
+
+### Option 1: Use the CLI wizard (recommended) [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#option-1-use-the-cli-wizard-recommended)
+
+Run the following command to create a connection interactively:
+
+tb connection create kafka The wizard prompts you for:
+
+1. Connection name
+2. Bootstrap server
+3. Kafka key (API Key)
+4. Kafka secret (API Secret)
+
+After the wizard completes, you can edit the generated `.connection` file to add additional settings like `KAFKA_SCHEMA_REGISTRY_URL` if needed.
+
+### Option 2: Manually create a connection file [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#option-2-manually-create-a-connection-file)
+
+Create a `.connection` file in your Tinybird project:
+
+##### connections/confluent_cloud.connection
+
+TYPE kafka
+KAFKA_BOOTSTRAP_SERVERS <YOUR_BOOTSTRAP_SERVER>
+KAFKA_SECURITY_PROTOCOL SASL_SSL
+KAFKA_SASL_MECHANISM PLAIN
+KAFKA_KEY {{ tb_secret("CONFLUENT_API_KEY") }}
+KAFKA_SECRET {{ tb_secret("CONFLUENT_API_SECRET") }} Set the secrets:
+
+tb [--cloud] secret set CONFLUENT_API_KEY <YOUR_API_KEY>
+tb [--cloud] secret set CONFLUENT_API_SECRET <YOUR_API_SECRET>
+## Step 3: Configure Schema Registry (optional) [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#step-3-configure-schema-registry-optional)
+
+If you're using Avro or JSON Schema with Schema Registry:
+
+1. In Confluent Cloud, go to**  Schema Registry**
+2. Get the Schema Registry endpoint URL
+3. Create API keys for Schema Registry (separate from cluster API keys)
+4. Add to your connection file:
+
+##### connections/confluent_cloud_with_registry.connection
+
+TYPE kafka
+KAFKA_BOOTSTRAP_SERVERS <YOUR_BOOTSTRAP_SERVER>
+KAFKA_SECURITY_PROTOCOL SASL_SSL
+KAFKA_SASL_MECHANISM PLAIN
+KAFKA_KEY {{ tb_secret("CONFLUENT_API_KEY") }}
+KAFKA_SECRET {{ tb_secret("CONFLUENT_API_SECRET") }}
+KAFKA_SCHEMA_REGISTRY_URL https://<REGISTRY_API_KEY>:<REGISTRY_API_SECRET>@<REGISTRY_ENDPOINT> Set the Schema Registry credentials:
+
+tb [--cloud] secret set CONFLUENT_REGISTRY_API_KEY <YOUR_REGISTRY_API_KEY>
+tb [--cloud] secret set CONFLUENT_REGISTRY_API_SECRET <YOUR_REGISTRY_API_SECRET> Then use in the connection:
+
+KAFKA_SCHEMA_REGISTRY_URL https://{{ tb_secret("CONFLUENT_REGISTRY_API_KEY") }}:{{ tb_secret("CONFLUENT_REGISTRY_API_SECRET") }}@<REGISTRY_ENDPOINT>
+## Step 4: Network configuration [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#step-4-network-configuration)
+
+### Standard setup [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#standard-setup)
+
+For most Confluent Cloud clusters, no additional network configuration is needed. Tinybird connects directly to Confluent Cloud's public endpoints.
+
+### Private Link (Enterprise only) [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#private-link-enterprise-only)
+
+If you're using Confluent Cloud Private Link:
+
+1. Ensure your Confluent Cloud cluster has Private Link turned on
+2. Contact Tinybird support to set up Private Link connectivity
+3. Use the Private Link endpoint as your bootstrap server
+
+For Private Link setup, contact [support@tinybird.co](mailto:support@tinybird.co) with:
+
+- Your Confluent Cloud cluster details
+- Private Link endpoint information
+- Your Tinybird organization name
+
+## Step 5: Create the Kafka Data Source [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#step-5-create-the-kafka-data-source)
+
+Now that your connection is configured, create a Kafka Data Source. See [Create a Kafka data source](/docs/forward/get-data-in/connectors/kafka#create-a-kafka-data-source) in the main Kafka connector guide for detailed instructions on:
+
+- Using `tb datasource create --kafka`   for a guided setup
+- Manually creating `.datasource`   files
+- Defining schemas with JSONPath expressions
+- Configuring Kafka-specific settings
+
+## Step 6: Test the connection [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#step-6-test-the-connection)
+
+Test your connection and preview data:
+
+tb connection data confluent_cloud This command prompts you to select a topic and consumer group ID, then returns preview data. This verifies that Tinybird can connect to your Confluent Cloud cluster, authenticate, and consume messages.
+
+## Common Confluent Cloud issues [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#common-confluent-cloud-issues)
+
+### Issue: Authentication failed [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#issue-authentication-failed)
+
+**Symptoms:**
+
+- "Authentication failed" errors in `kafka_ops_log`
+- Connection check fails
+
+**Solutions:**
+
+1. Verify API keys are correct and active in Confluent Cloud
+2. Check API key has the correct permissions (read access to topics)
+3. Ensure you're using `PLAIN`   as the SASL mechanism
+4. Verify the API key hasn't been deleted or rotated
+
+### Issue: Schema Registry connection failed [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#issue-schema-registry-connection-failed)
+
+**Symptoms:**
+
+- "Schema Registry connection failed" errors
+- Avro messages not being ingested
+
+**Solutions:**
+
+1. Verify Schema Registry endpoint URL is correct
+2. Check Schema Registry API keys are separate from cluster API keys
+3. Ensure Schema Registry API keys have read permissions
+4. Verify the schema exists in Schema Registry for your topic
+
+### Issue: Network connectivity [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#issue-network-connectivity)
+
+**Symptoms:**
+
+- Connection timeout errors
+- Broker unreachable
+
+**Solutions:**
+
+1. Verify bootstrap server address is correct
+2. Check if your Confluent Cloud cluster allows public access
+3. For Private Link, ensure the connection is properly configured
+4. Verify firewall rules allow outbound connections
+
+## Best practices [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#best-practices)
+
+1. **  Use separate API keys for different environments**   (dev, staging, prod)
+2. **  Rotate API keys regularly**   for security
+3. **  Use resource-specific API keys**   instead of global access when possible
+4. **  Monitor API key usage**   in Confluent Cloud console
+5. **  Set up alerts**   for authentication failures
+
+## Related documentation [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/confluent-cloud-setup#related-documentation)
+
+- [  Kafka connector documentation](/docs/forward/get-data-in/connectors/kafka)   - Main setup and configuration guide
+- [  Monitor Kafka connectors](/docs/forward/monitoring/kafka-clickhouse-monitoring)   - Set up monitoring and alerts
+- [  Troubleshooting guide](../troubleshooting)   - Common issues and solutions
+
+
+
+---
+
+URL: https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/cicd-version-control
+Last update: 2025-12-11T19:06:55.000Z
+Content:
+---
+title: "Kafka connector CI/CD and version control · Tinybird Docs"
+theme-color: "#171612"
+description: "Manage Kafka connector configurations in CI/CD pipelines. Learn how to use secrets for environment-specific settings, deploy with GitHub Actions and GitLab CI, and implement version control best practices."
+inkeep:version: "forward"
+---
+
+
+
+
+# CI/CD and version control [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/cicd-version-control#cicd-and-version-control)
+
+Copy as MD This guide covers managing Kafka connector configurations across different environments (local, staging, production) using secrets.
+
+## Managing secrets across environments [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/cicd-version-control#managing-secrets-across-environments)
+
+### Local development [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/cicd-version-control#local-development)
+
+Use default values in `tb_secret()` for local development:
+
+KAFKA_BOOTSTRAP_SERVERS {{ tb_secret("KAFKA_BOOTSTRAP_SERVERS", "kafka:29092") }}
+KAFKA_SECURITY_PROTOCOL {{ tb_secret("KAFKA_SECURITY_PROTOCOL", "PLAINTEXT") }}
+KAFKA_KEY {{ tb_secret("KAFKA_KEY", "key") }}
+KAFKA_SECRET {{ tb_secret("KAFKA_SECRET", "secret") }}
+- **  Local**   : Uses the default values (for example, `kafka:29092`   for local Docker Kafka)
+- **  Cloud**   : Uses the secret values set in each Tinybird workspace
+
+### Staging and production [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/cicd-version-control#staging-and-production)
+
+Set secrets in each workspace using the `--token` flag:
+
+# Staging workspace
+tb --cloud --host <STAGING_HOST> --token <STAGING_TOKEN> secret set KAFKA_BOOTSTRAP_SERVERS "staging-kafka:9092"
+tb --cloud --host <STAGING_HOST> --token <STAGING_TOKEN> secret set KAFKA_KEY "staging-key"
+tb --cloud --host <STAGING_HOST> --token <STAGING_TOKEN> secret set KAFKA_SECRET "staging-secret"
+
+# Production workspace
+tb --cloud --host <PROD_HOST> --token <PROD_TOKEN> secret set KAFKA_BOOTSTRAP_SERVERS "prod-kafka:9092"
+tb --cloud --host <PROD_HOST> --token <PROD_TOKEN> secret set KAFKA_KEY "prod-key"
+tb --cloud --host <PROD_HOST> --token <PROD_TOKEN> secret set KAFKA_SECRET "prod-secret" The same Connection and Data Source files work across all environments - secrets handle the differences.
+
+## CI/CD integration [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/cicd-version-control#cicd-integration)
+
+### GitHub Actions example [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/cicd-version-control#github-actions-example)
+
+name: Deploy to Tinybird
+
+on:
+  push:
+    branches: [main]
+
+env:
+  TINYBIRD_HOST: ${{ secrets.TINYBIRD_HOST }}
+  TINYBIRD_TOKEN: ${{ secrets.TINYBIRD_TOKEN }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Tinybird CLI
+        run: |
+          curl https://tinybird.co | sh
+      
+      - name: Test connection
+        run: |
+          tb --cloud --host ${{ env.TINYBIRD_HOST }} --token ${{ env.TINYBIRD_TOKEN }} connection data <connection_name>
+      
+      - name: Deploy
+        run: |
+          tb --cloud --host ${{ env.TINYBIRD_HOST }} --token ${{ env.TINYBIRD_TOKEN }} deploy **Secrets setup** : Set secrets in your Tinybird workspace before running the pipeline. Secrets are configured once per workspace, not on every deployment. See [Managing secrets across environments](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/cicd-version-control#managing-secrets-across-environments) for instructions.
+
+### GitLab CI example [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/cicd-version-control#gitlab-ci-example)
+
+deploy:
+  image: ubuntu:latest
+  before_script:
+    - apt update && apt install -y curl
+    - curl https://tinybird.co | sh
+    - export PATH="$HOME/.local/bin:$PATH"
+  script:
+    - tb --cloud --host $TINYBIRD_HOST --token $TINYBIRD_TOKEN connection data <connection_name>
+    - tb --cloud --host $TINYBIRD_HOST --token $TINYBIRD_TOKEN deploy
+  only:
+    - main
+## Consumer group ID management [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/cicd-version-control#consumer-group-id-management)
+
+Always use different consumer group IDs for each environment to avoid conflicts:
+
+KAFKA_GROUP_ID {{ tb_secret("KAFKA_GROUP_ID", "dev-events-group") }} Set different group IDs in each workspace:
+
+- Local: Uses default `"dev-events-group"`
+- Staging: Set `tb --cloud --host <STAGING_HOST> --token <STAGING_TOKEN> secret set KAFKA_GROUP_ID "staging-events-group"`
+- Production: Set `tb --cloud --host <PROD_HOST> --token <PROD_TOKEN> secret set KAFKA_GROUP_ID "prod-events-group"`
+
+## Version control best practices [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/cicd-version-control#version-control-best-practices)
+
+### What to commit [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/cicd-version-control#what-to-commit)
+
+**Commit:**
+
+- Connection file structure (with `tb_secret()`   references, not actual secret values)
+- Data Source schemas
+- Pipe definitions
+
+**Don't commit:**
+
+- Secret values
+- API keys
+- Passwords
+- Production credentials
+
+## Related documentation [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/cicd-version-control#related-documentation)
+
+- [  Kafka connector documentation](/docs/forward/get-data-in/connectors/kafka)   - Main setup and configuration guide
+- [  Test and deploy](/docs/forward/test-and-deploy)   - General deployment guide
+- [  Troubleshooting guide](../troubleshooting)   - Resolving deployment issues
+
+
+
+---
+
+URL: https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup
+Last update: 2025-12-11T19:06:55.000Z
+Content:
+---
+title: "AWS MSK setup guide · Tinybird Docs"
+theme-color: "#171612"
+description: "Complete guide to setting up Tinybird's Kafka connector with AWS MSK, including IAM authentication, security groups, VPC configuration, and PrivateLink setup."
+inkeep:version: "forward"
+---
+
+
+
+
+# AWS MSK setup guide [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#aws-msk-setup-guide)
+
+Copy as MD This guide walks you through setting up Tinybird's Kafka connector with Amazon MSK (Managed Streaming for Apache Kafka), including IAM authentication, network configuration, and security group setup.
+
+## Prerequisites [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#prerequisites)
+
+- An AWS account with an MSK cluster
+- AWS IAM permissions to create roles and policies
+- Access to AWS Console
+- A Tinybird workspace
+
+## Step 1: Get your MSK cluster details [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#step-1-get-your-msk-cluster-details)
+
+### Bootstrap servers [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#bootstrap-servers)
+
+1. In AWS Console, navigate to**  Amazon MSK**
+2. Select your cluster
+3. Go to**  Properties**   tab
+4. Copy the**  Bootstrap broker string**   (for example, `b-1.example-cluster.abc123.c2.kafka.us-east-1.amazonaws.com:9098,b-2.example-cluster.abc123.c2.kafka.us-east-1.amazonaws.com:9098`   )
+
+**Important:** Use the port that matches your authentication method:
+
+- Port 9098 for SASL/IAM (OAUTHBEARER)
+- Port 9096 for SASL/SCRAM
+- Port 9094 for TLS
+- Port 9092 for plaintext (not recommended for production)
+
+### Cluster ARN [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#cluster-arn)
+
+1. In the cluster**  Properties**   tab
+2. Copy the**  Cluster ARN**   (for example, `arn:aws:kafka:us-east-1:123456789012:cluster/example-cluster/abc123-def456-789`   )
+
+You need this for the IAM policy configuration.
+
+## Step 2: Create the Kafka connection [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#step-2-create-the-kafka-connection)
+
+You can create the Kafka connection using the CLI wizard or by manually creating a Connection file.
+
+### Option 1: Use the CLI wizard (recommended) [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#option-1-use-the-cli-wizard-recommended)
+
+Run the following command to create a connection interactively:
+
+tb connection create kafka The wizard prompts you for:
+
+1. Connection name
+2. Bootstrap server
+3. Kafka key (for SASL/SCRAM) or IAM role ARN (for IAM authentication)
+4. Kafka secret (for SASL/SCRAM) or external ID (for IAM authentication)
+
+After the wizard completes, edit the generated Connection file to add AWS MSK-specific settings like `KAFKA_SASL_OAUTHBEARER_METHOD AWS` and `AWS_ROLE_ARN` for IAM authentication.
+
+### Option 2: Manually create a Connection file [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#option-2-manually-create-a-connection-file)
+
+For AWS MSK with IAM authentication, manually create the Connection file with the specific IAM settings. See the manual setup steps in the following section.
+
+## Step 3: Set up IAM authentication [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#step-3-set-up-iam-authentication)
+
+MSK supports IAM authentication using OAUTHBEARER. You need to create an IAM role that Tinybird can assume.
+
+### Create IAM role [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#create-iam-role)
+
+1. In AWS Console, go to**  IAM**   >**  Roles**
+2. Select**  Create role**
+3. Select**  AWS account**   as the trusted entity type
+4. For**  Account ID**   , use Tinybird's AWS account ID (contact support for the correct ID for your region)
+5. Check**  Require external ID**   and enter a unique external ID (save this for later)
+6. Select**  Next**
+
+### Create access policy [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#create-access-policy)
+
+Create a policy that grants access to your MSK cluster:
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "kafka-cluster:Connect",
+                "kafka-cluster:AlterCluster",
+                "kafka-cluster:DescribeCluster"
+            ],
+            "Resource": "arn:aws:kafka:<REGION>:<ACCOUNT_ID>:cluster/<CLUSTER_NAME>/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "kafka-cluster:DescribeTopic",
+                "kafka-cluster:CreateTopic",
+                "kafka-cluster:WriteData",
+                "kafka-cluster:ReadData"
+            ],
+            "Resource": "arn:aws:kafka:<REGION>:<ACCOUNT_ID>:topic/<CLUSTER_NAME>/*/<TOPIC_NAME>"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "kafka-cluster:AlterGroup",
+                "kafka-cluster:DescribeGroup"
+            ],
+            "Resource": "arn:aws:kafka:<REGION>:<ACCOUNT_ID>:group/<CLUSTER_NAME>/*/<GROUP_ID>"
+        }
+    ]
+} Replace:
+
+- `<REGION>`   : Your AWS region (for example, `us-east-1`   )
+- `<ACCOUNT_ID>`   : Your AWS account ID
+- `<CLUSTER_NAME>`   : Your MSK cluster name
+- `<TOPIC_NAME>`   : Your Kafka topic name (or `*`   for all topics)
+- `<GROUP_ID>`   : Your consumer group ID (or `*`   for all groups)
+
+**Alternative:** Use Tinybird's API to generate the policy:
+
+curl "https://api.tinybird.co/v0/integrations/kafka/policies/read-access-policy?msk_cluster_arn=<CLUSTER_ARN>&topics=<TOPIC_NAME>&groups=<GROUP_ID>"
+### Create trust policy [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#create-trust-policy)
+
+The trust policy allows Tinybird to assume the role:
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "sts:AssumeRole",
+            "Principal": {
+                "AWS": "arn:aws:iam::<TINYBIRD_ACCOUNT_ID>:root"
+            },
+            "Condition": {
+                "StringEquals": {
+                    "sts:ExternalId": "<EXTERNAL_ID>"
+                }
+            }
+        }
+    ]
+} Replace:
+
+- `<TINYBIRD_ACCOUNT_ID>`   : Tinybird's AWS account ID (contact support for your region)
+- `<EXTERNAL_ID>`   : The external ID you set when creating the role
+
+**Alternative:** Use Tinybird's API:
+
+curl "https://api.tinybird.co/v0/integrations/kafka/policies/trust-policy?external_id_seed=<CONNECTION_NAME>"
+### Attach policies to role [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#attach-policies-to-role)
+
+1. Attach the access policy to your IAM role
+2. Set the trust policy on the role
+3. Copy the**  Role ARN**   (for example, `arn:aws:iam::123456789012:role/msk-tinybird-role`   )
+
+## Step 4: Configure security groups [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#step-4-configure-security-groups)
+
+### MSK security group [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#msk-security-group)
+
+1. In AWS Console, go to**  EC2**   >**  Security Groups**
+2. Find the security group used by your MSK cluster
+3. Add an inbound rule:
+  - **    Type:**     Custom TCP
+  - **    Port:**     9098 (or the port matching your authentication)
+  - **    Source:**     Tinybird's IP ranges (contact support for details)
+
+**Note:** For PrivateLink setups (Enterprise), security group configuration may differ.
+
+## Step 5: Create the Kafka connection (manual method) [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#step-5-create-the-kafka-connection-manual-method)
+
+If you didn't use the CLI wizard in Step 2, create a Connection file manually:
+
+##### connections/aws_msk.connection
+
+TYPE kafka
+KAFKA_BOOTSTRAP_SERVERS <BOOTSTRAP_BROKER_STRING>
+KAFKA_SECURITY_PROTOCOL SASL_SSL
+KAFKA_SASL_MECHANISM OAUTHBEARER
+KAFKA_SASL_OAUTHBEARER_METHOD AWS
+KAFKA_SASL_OAUTHBEARER_AWS_REGION us-east-1
+KAFKA_SASL_OAUTHBEARER_AWS_ROLE_ARN {{ tb_secret("AWS_ROLE_ARN") }}
+KAFKA_SASL_OAUTHBEARER_AWS_EXTERNAL_ID <EXTERNAL_ID> Set the role ARN secret:
+
+tb [--cloud] secret set AWS_ROLE_ARN <YOUR_ROLE_ARN> Replace:
+
+- `<BOOTSTRAP_BROKER_STRING>`   : The bootstrap broker string from Step 1
+- `<EXTERNAL_ID>`   : The external ID you set in the IAM role in Step 3
+- `us-east-1`   : Your AWS region
+
+## Step 6: VPC and network configuration [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#step-6-vpc-and-network-configuration)
+
+### Standard setup [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#standard-setup)
+
+For most MSK clusters, Tinybird connects via the public endpoint. Ensure:
+
+1. Your MSK cluster has public access turned on
+2. Security groups allow inbound connections from Tinybird
+3. Network ACLs don't block the connection
+
+### PrivateLink setup (Enterprise only) [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#privatelink-setup-enterprise-only)
+
+For PrivateLink connectivity:
+
+1. Ensure your MSK cluster supports PrivateLink
+2. Contact Tinybird support to set up PrivateLink endpoint
+3. Use the PrivateLink endpoint as your bootstrap server
+
+Contact [support@tinybird.co](mailto:support@tinybird.co) with:
+
+- Your MSK cluster details
+- VPC and subnet information
+- Your Tinybird organization name
+
+## Step 7: Create the Kafka Data Source [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#step-7-create-the-kafka-data-source)
+
+Now that your connection is configured, create a Kafka Data Source. See [Create a Kafka data source](/docs/forward/get-data-in/connectors/kafka#create-a-kafka-data-source) in the main Kafka connector guide for detailed instructions on:
+
+- Using `tb datasource create --kafka`   for a guided setup
+- Manually creating Data Source files
+- Defining schemas with JSONPath expressions
+- Configuring Kafka-specific settings
+
+## Step 8: Test the connection [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#step-8-test-the-connection)
+
+Test your connection and preview data:
+
+tb connection data aws_msk This command prompts you to select a topic and consumer group ID, then returns preview data. This verifies that Tinybird can:
+
+1. Assume the IAM role
+2. Connect to your MSK cluster
+3. Authenticate using OAUTHBEARER
+4. Consume messages from the topic
+
+## Common AWS MSK issues [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#common-aws-msk-issues)
+
+### Issue: IAM authentication failed [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#issue-iam-authentication-failed)
+
+**Symptoms:**
+
+- "Authentication failed" errors
+- "Unable to assume role" errors
+
+**Solutions:**
+
+1. Verify the IAM role ARN is correct
+2. Check the trust policy allows Tinybird's AWS account
+3. Verify the external ID matches between connection and trust policy
+4. Ensure the IAM role has the correct access policy attached
+5. Check IAM role permissions in AWS Console
+
+### Issue: Security group blocking connection [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#issue-security-group-blocking-connection)
+
+**Symptoms:**
+
+- Connection timeout errors
+- Broker unreachable
+
+**Solutions:**
+
+1. Verify security group allows inbound traffic on the correct port
+2. Check source IP ranges (contact Tinybird support for current IPs)
+3. Verify network ACLs don't block the connection
+4. For PrivateLink, ensure VPC endpoint is configured correctly
+
+### Issue: Network connectivity [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#issue-network-connectivity)
+
+**Symptoms:**
+
+- Connection timeout
+- Unable to reach bootstrap servers
+
+**Solutions:**
+
+1. Verify bootstrap server address is correct
+2. Check if MSK cluster has public access turned on
+3. Verify DNS resolution for MSK cluster endpoints
+4. For PrivateLink, ensure endpoint is active and accessible
+
+## Best practices [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#best-practices)
+
+1. **  Use least privilege IAM policies**   - Only grant access to specific topics and groups
+2. **  Use unique external IDs**   for each connection
+3. **  Monitor IAM role usage**   in CloudTrail
+4. **  Rotate IAM roles periodically**   for security
+5. **  Use separate roles**   for different environments (dev, staging, prod)
+6. **  Turn on VPC flow logs**   to monitor network traffic
+7. **  Set up CloudWatch alarms**   for MSK cluster health
+
+## Troubleshooting IAM permissions [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#troubleshooting-iam-permissions)
+
+If you encounter permission errors, verify:
+
+1. **  Access policy**   grants the required Kafka cluster actions
+2. **  Trust policy**   allows Tinybird to assume the role
+3. **  External ID**   matches in both connection and trust policy
+4. **  Role ARN**   is correct in the Connection file
+5. **  Region**   matches your MSK cluster region
+
+Use AWS CloudTrail to see detailed error messages for IAM authentication failures.
+
+## Related documentation [¶](https://www.tinybird.co/docs/forward/get-data-in/connectors/kafka/guides/aws-msk-setup#related-documentation)
+
+- [  Kafka connector documentation](/docs/forward/get-data-in/connectors/kafka)   - Main setup and configuration guide
+- [  Monitor Kafka connectors](/docs/forward/monitoring/kafka-clickhouse-monitoring)   - Set up monitoring and alerts
+- [  Troubleshooting guide](../troubleshooting)   - Common issues and solutions
 
 
 

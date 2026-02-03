@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/deployment-testing/configuration/model-specific-ci/time-travel.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Time Travel
 
 > Use `prod_time_travel` and `pr_time_travel` to diff tables from specific points in time.

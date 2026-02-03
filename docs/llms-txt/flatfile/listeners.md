@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/core-concepts/listeners.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Events and Listeners
 
 > The anatomy of Events and Listeners - core components of the Flatfile Platform
@@ -38,7 +42,7 @@ The callback function can be as simple as logging the Event or as advanced as in
 </Warning>
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   export default function (listener) {
     listener.on("**", (event) => {
       console.log(`Received event: ${event.topic}`);
@@ -48,7 +52,7 @@ The callback function can be as simple as logging the Event or as advanced as in
 
   For a more concrete and practical example, follow along with our [Coding Tutorial](/coding-tutorial).
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener, FlatfileEvent } from '@flatfile/listener';
 
   export default function (listener: FlatfileListener) {
@@ -71,7 +75,7 @@ For a complete list of Events published by Flatfile, see [Events Reference](/ref
 
 **Type Signature:**
 
-```typescript
+```typescript  theme={null}
 listener.on(
   eventPattern: string, 
   callback: (event: FlatfileEvent) => void | Promise<void>
@@ -87,7 +91,7 @@ listener.on(
 **Examples:**
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // Basic Event handling
   listener.on('file:created', async (event) => {
     console.log(`New file uploaded: ${event.context.fileId}`);
@@ -106,7 +110,7 @@ listener.on(
   });
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileEvent } from '@flatfile/listener';
 
   // Basic Event handling with proper typing
@@ -129,7 +133,7 @@ The `listener.use()` method is for building and distributing listener functions 
 Inside that callback function, you can use `listener.on()` to register Event handlers or introduce various [Plugins](/core-concepts/plugins) to your listener. The result can be an `index` file with with little more than `listener.use()` calls, each of which distributes your listener function to other places in your codebase:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // import statements
 
   export default function (listener) {
@@ -141,7 +145,7 @@ Inside that callback function, you can use `listener.on()` to register Event han
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   // import statements
 
   export default function (listener: FlatfileListener): void {
@@ -162,14 +166,14 @@ You'll find this pattern often when using [Plugins](/core-concepts/plugins) to e
 
 **Type Signature:**
 
-```typescript
+```typescript  theme={null}
 listener.use(configFunction: (listener: FlatfileListener) => void): void
 ```
 
 **Examples:**
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // Custom configuration function
   function validateCustomerData(listener) {
     listener.on('commit:created', { sheet: 'customers' }, async (event) => {
@@ -196,7 +200,7 @@ listener.use(configFunction: (listener: FlatfileListener) => void): void
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener, FlatfileEvent } from '@flatfile/listener';
 
   // Custom configuration function with proper typing
@@ -252,7 +256,7 @@ For comprehensive examples, patterns, and detailed configuration options, see ou
 **Usage Examples:**
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   export default function (listener) {
     // Use namespaces for architectural organization
     listener.namespace('space:customer-portal', (customerListener) => {
@@ -279,7 +283,7 @@ For comprehensive examples, patterns, and detailed configuration options, see ou
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener, FlatfileEvent } from '@flatfile/listener';
 
   export default function (listener: FlatfileListener): void {
@@ -321,7 +325,7 @@ In Flatfile, an **Agent** refers to a server-side listener bundled and deployed 
 
 To deploy an Agent, run the following command in your terminal from the root directory containing your listener file:
 
-```bash
+```bash  theme={null}
 npx flatfile@latest deploy
 ```
 
@@ -331,7 +335,7 @@ The CLI will automatically examine your listener code and register itself to lis
 
 **Unique Slug**: Use the `-s` flag to give your Agent a unique slug. This is useful when managing multiple Agents in the same Environment.
 
-```bash
+```bash  theme={null}
 npx flatfile@latest deploy -s my-custom-agent
 ```
 
@@ -375,7 +379,7 @@ Failures occur when an Agent fails to execute properly. That means either an unc
 If you are catching and handling errors within your code, those executions will not be marked as failures. If you would prefer to see them marked this way, re-throw your error after handling to bubble it up to the execution handler.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   export default function (listener) {
     //note: listening to all Events with a wildcard can be used while testing but is not
     //recommended for production, as it will capture all Events and may cause performance issues
@@ -390,7 +394,7 @@ If you are catching and handling errors within your code, those executions will 
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener, FlatfileEvent } from '@flatfile/listener';
 
   export default function (listener: FlatfileListener) {

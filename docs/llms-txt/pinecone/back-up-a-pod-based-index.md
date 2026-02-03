@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/indexes/pods/back-up-a-pod-based-index.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Back up a pod-based index
 
 > Backup pod-based indexes using Pinecone collections
@@ -102,7 +106,7 @@ The following example creates a [collection](/guides/indexes/pods/understanding-
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
           "name": "example-collection",
           "source": "docs-example"
@@ -200,7 +204,7 @@ The following example gets the creation status and size of a collection named `e
 
   curl -i -X GET "https://api.pinecone.io/collections/example-collection" \
       -H "Api-Key: $PINECONE_API_KEY" \
-      -H "X-Pinecone-API-Version: 2025-04"
+      -H "X-Pinecone-Api-Version: 2025-10"
   ```
 </CodeGroup>
 
@@ -297,7 +301,7 @@ To get a list of the collections in the current project, use the [`list_collecti
 
   curl -i -X GET "https://api.pinecone.io/collections" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-04"
+    -H "X-Pinecone-Api-Version: 2025-10"
   ```
 
   <Tip>
@@ -393,7 +397,7 @@ Deleting the collection takes several minutes. During this time, the [`describe_
 
   curl -i -X DELETE "https://api.pinecone.io/collections/example-collection" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-04"
+    -H "X-Pinecone-Api-Version: 2025-10"
   ```
 </CodeGroup>
 

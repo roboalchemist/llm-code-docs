@@ -2,46 +2,43 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/generic/rename.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/rename.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/rename.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/rename.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/rename.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/rename.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/rename.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/rename.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/rename.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/rename.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # RENAME
 
 > Rename a key
 
+Renames a key and overwrites the new key if it already exists.
+
+Throws an exception if the key does not exist.
+
 ## Arguments
 
-<ParamField body="source" type="string" required>
+<ParamField body="source" type="str" required>
   The original key.
 </ParamField>
 
-<ParamField body="destination" type="string" required>
+<ParamField body="destination" type="str" required>
   A new name for the key.
 </ParamField>
 
 ## Response
 
-<ResponseField type="string" required>
-  `OK`
+<ResponseField type="bool" required>
+  `True` if key was renamed
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-   await redis.rename("old", "new");
+  ```py Example theme={"system"}
+  redis.set("key1", "Hello")
+  redis.rename("key1", "key2")
+
+  assert redis.get("key1") is None
+  assert redis.get("key2") == "Hello"
+
+  # Renaming a nonexistent key throws an exception
+  redis.rename("nonexistent", "key3")
   ```
 </RequestExample>

@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/enterprise/resources/frequently-asked-questions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # FAQs
 
 > Frequently asked questions about CrewAI AMP

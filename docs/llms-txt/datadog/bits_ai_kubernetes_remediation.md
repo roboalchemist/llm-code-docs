@@ -5,8 +5,7 @@ title: Bits AI Kubernetes Remediation
 description: >-
   Discover and automatically remediate Kubernetes errors with Bits AI Kubernetes
   Remediation
-breadcrumbs: Docs > Container Monitoring > Bits AI Kubernetes Remediation
-source_url: https://docs.datadoghq.com/bits_ai_kubernetes_remediation/index.html
+breadcrumbs: Docs > Containers > Bits AI Kubernetes Remediation
 ---
 
 # Bits AI Kubernetes Remediation

@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/qstash/howto/url-group-endpoint.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create URL Groups and Endpoints
 
 QStash allows you to group multiple APIs together into a single namespace,

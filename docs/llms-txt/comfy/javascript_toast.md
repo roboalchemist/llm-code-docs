@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/custom-nodes/js/javascript_toast.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Toast API
 
 The Toast API provides a way to display non-blocking notification messages to users. These are useful for providing feedback without interrupting workflow.

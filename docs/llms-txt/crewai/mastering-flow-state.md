@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/guides/flows/mastering-flow-state.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Mastering Flow State Management
 
 > A comprehensive guide to managing, persisting, and leveraging state in CrewAI Flows for building robust AI applications.

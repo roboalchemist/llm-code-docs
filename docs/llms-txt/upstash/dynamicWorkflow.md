@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/examples/dynamicWorkflow.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Dynamic Workflows
 
 This example demonstrates how to build **dynamic, configurable workflows** using Upstash Workflow, while safely handling ordering, naming, and versioning constraints.
@@ -207,8 +211,3 @@ Avoid the following:
 * ❌ Conditional execution based on non-deterministic logic (`Math.random`, `Date.now`)
 
 All workflow logic must be **idempotent**.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://upstash.com/docs/llms.txt

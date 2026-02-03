@@ -1,5 +1,19 @@
 # Source: https://platform.claude.com/docs/en/api/typescript/beta.md
 
+# Source: https://platform.claude.com/docs/en/api/ruby/beta.md
+
+# Source: https://platform.claude.com/docs/en/api/python/beta.md
+
+# Source: https://platform.claude.com/docs/en/api/kotlin/beta.md
+
+# Source: https://platform.claude.com/docs/en/api/java/beta.md
+
+# Source: https://platform.claude.com/docs/en/api/go/beta.md
+
+# Source: https://platform.claude.com/docs/en/api/beta.md
+
+# Source: https://platform.claude.com/docs/en/api/typescript/beta.md
+
 # Beta
 
 ## Domain Types

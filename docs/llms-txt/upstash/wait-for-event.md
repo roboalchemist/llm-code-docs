@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/features/wait-for-event.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Overview
 
 Wait for Event feature that allows you to pause workflow execution until an external event occurs.
@@ -25,6 +29,10 @@ Each waiter has a timeout duration to wait for the event and then fires automati
 
 A race condition can occur when `notify` is called before `waitForEvent` is executed.
 In this scenario, the notification will be sent but no workflow will be waiting to receive it, causing the event to be lost.
+
+<Warning>
+  For better protection against race conditions, consider using [Webhooks](/workflow/features/webhooks) which have built-in lookback and are safer against timing issues.
+</Warning>
 
 To prevent race conditions, always check the response of the `notify` operation.
 The `notify` method returns a list of notified waiters.

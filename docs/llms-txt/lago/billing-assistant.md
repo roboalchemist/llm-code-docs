@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/ai-agents/billing-assistant.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # The Billing Assistant (Beta)
 
 > Your AI-powered billing assistant for automating manual and repetitive billing operations.
@@ -167,8 +171,3 @@ flowchart LR
 | MCP Server | Rust + rmcp           | Model Context Protocol server     |
 | AI Model   | Mistral Agents API    | LLM with function calling         |
 | API Client | lago-rust-client      | Type-safe Lago API interactions   |
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://getlago.com/docs/llms.txt

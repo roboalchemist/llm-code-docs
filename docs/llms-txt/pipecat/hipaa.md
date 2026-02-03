@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/security/hipaa.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # HIPAA
 
 > HIPAA compliance for Pipecat Cloud
@@ -41,8 +45,3 @@ Contact us at [help@daily.co](mailto:help@daily.co) to:
 * Enable HIPAA controls for your account
 * Sign a Business Associate Agreement
 * Learn more about HIPAA compliance features
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,12 +1,14 @@
 # Source: https://modelcontextprotocol.io/specification/2025-11-25/server/resources.md
 
-# Source: https://modelcontextprotocol.io/specification/2025-06-18/server/resources.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://modelcontextprotocol.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Resources
 
 <div id="enable-section-numbers" />
 
-<Info>**Protocol Revision**: 2025-06-18</Info>
+<Info>**Protocol Revision**: 2025-11-25</Info>
 
 The Model Context Protocol (MCP) provides a standardized way for servers to expose
 resources to clients. Resources allow servers to share data that provides context to
@@ -25,7 +27,7 @@ For example, applications could:
 * Allow the user to search through and filter available resources
 * Implement automatic context inclusion, based on heuristics or the AI model's selection
 
-<img src="https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/specification/2025-06-18/server/resource-picker.png?fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=133fa885ef6e9c2e20049da5c33f4386" alt="Example of resource context picker" data-og-width="174" width="174" data-og-height="181" height="181" data-path="specification/2025-06-18/server/resource-picker.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/specification/2025-06-18/server/resource-picker.png?w=280&fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=206f6dcc471323787199d7539a16b7d3 280w, https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/specification/2025-06-18/server/resource-picker.png?w=560&fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=576d4587b4fdfe91bb14d8f77eb40e35 560w, https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/specification/2025-06-18/server/resource-picker.png?w=840&fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=c0d19d08d43fe75f27ee43fb89d5e31b 840w, https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/specification/2025-06-18/server/resource-picker.png?w=1100&fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=463f52a7f01214ad65731626bedc4a50 1100w, https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/specification/2025-06-18/server/resource-picker.png?w=1650&fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=7478600400e55427ba7d3649ae7e8c88 1650w, https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/specification/2025-06-18/server/resource-picker.png?w=2500&fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=c7ec8e376a75bf1aa5d5fcc235a74d2b 2500w" />
+<img src="https://mintcdn.com/mcp/uzELntid9uQ-QMAr/specification/2025-11-25/server/resource-picker.png?fit=max&auto=format&n=uzELntid9uQ-QMAr&q=85&s=bc7bc3db17d447a69809689e5888a3ab" alt="Example of resource context picker" data-og-width="174" width="174" data-og-height="181" height="181" data-path="specification/2025-11-25/server/resource-picker.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mcp/uzELntid9uQ-QMAr/specification/2025-11-25/server/resource-picker.png?w=280&fit=max&auto=format&n=uzELntid9uQ-QMAr&q=85&s=b093f0470ec2596ab192c4bc20eb952c 280w, https://mintcdn.com/mcp/uzELntid9uQ-QMAr/specification/2025-11-25/server/resource-picker.png?w=560&fit=max&auto=format&n=uzELntid9uQ-QMAr&q=85&s=cbcb9e1e469251fed19d7b308b6afd40 560w, https://mintcdn.com/mcp/uzELntid9uQ-QMAr/specification/2025-11-25/server/resource-picker.png?w=840&fit=max&auto=format&n=uzELntid9uQ-QMAr&q=85&s=17cb3398d551de7422f75bcdb001a1c8 840w, https://mintcdn.com/mcp/uzELntid9uQ-QMAr/specification/2025-11-25/server/resource-picker.png?w=1100&fit=max&auto=format&n=uzELntid9uQ-QMAr&q=85&s=d47124f9e59726522461b2af86ac74e7 1100w, https://mintcdn.com/mcp/uzELntid9uQ-QMAr/specification/2025-11-25/server/resource-picker.png?w=1650&fit=max&auto=format&n=uzELntid9uQ-QMAr&q=85&s=d513f8be56a7180539e89c1fee74eae9 1650w, https://mintcdn.com/mcp/uzELntid9uQ-QMAr/specification/2025-11-25/server/resource-picker.png?w=2500&fit=max&auto=format&n=uzELntid9uQ-QMAr&q=85&s=b5b34d2d84d5a34a75d5b2539e74acd8 2500w" />
 
 However, implementations are free to expose resources through any interface pattern that
 suits their needs—the protocol itself does not mandate any specific user
@@ -89,7 +91,7 @@ either, or both:
 ### Listing Resources
 
 To discover available resources, clients send a `resources/list` request. This operation
-supports [pagination](/specification/2025-06-18/server/utilities/pagination).
+supports [pagination](/specification/2025-11-25/server/utilities/pagination).
 
 **Request:**
 
@@ -117,7 +119,14 @@ supports [pagination](/specification/2025-06-18/server/utilities/pagination).
         "name": "main.rs",
         "title": "Rust Software Application Main File",
         "description": "Primary application entry point",
-        "mimeType": "text/x-rust"
+        "mimeType": "text/x-rust",
+        "icons": [
+          {
+            "src": "https://example.com/rust-file-icon.png",
+            "mimeType": "image/png",
+            "sizes": ["48x48"]
+          }
+        ]
       }
     ],
     "nextCursor": "next-page-cursor"
@@ -164,7 +173,7 @@ To retrieve resource contents, clients send a `resources/read` request:
 
 Resource templates allow servers to expose parameterized resources using
 [URI templates](https://datatracker.ietf.org/doc/html/rfc6570). Arguments may be
-auto-completed through [the completion API](/specification/2025-06-18/server/utilities/completion).
+auto-completed through [the completion API](/specification/2025-11-25/server/utilities/completion).
 
 **Request:**
 
@@ -189,7 +198,14 @@ auto-completed through [the completion API](/specification/2025-06-18/server/uti
         "name": "Project Files",
         "title": "📁 Project Files",
         "description": "Access files in the project directory",
-        "mimeType": "application/octet-stream"
+        "mimeType": "application/octet-stream",
+        "icons": [
+          {
+            "src": "https://example.com/folder-icon.png",
+            "mimeType": "image/png",
+            "sizes": ["48x48"]
+          }
+        ]
       }
     ]
   }
@@ -249,6 +265,10 @@ sequenceDiagram
     Client->>Server: resources/list
     Server-->>Client: List of resources
 
+    Note over Client,Server: Resource Template Discovery
+    Client->>Server: resources/templates/list
+    Server-->>Client: List of resource templates
+
     Note over Client,Server: Resource Access
     Client->>Server: resources/read
     Server-->>Client: Resource contents
@@ -273,6 +293,7 @@ A resource definition includes:
 * `name`: The name of the resource.
 * `title`: Optional human-readable name of the resource for display purposes.
 * `description`: Optional description
+* `icons`: Optional array of icons for display in user interfaces
 * `mimeType`: Optional MIME type
 * `size`: Optional size in bytes
 

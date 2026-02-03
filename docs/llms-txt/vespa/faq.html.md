@@ -4,7 +4,7 @@
 
  
 
-Refer to [Vespa Support](https://vespa.ai/support) for more support options.
+Refer to [Vespa Support](https://vespa.ai/support/) for more support options.
 
 ## Ranking
 
@@ -279,7 +279,7 @@ See [result diversity](../querying/result-diversity) for strategies on how to cr
 
 If you want to search for the most dissimilar items, you can with angular distance multiply your `clip_query_embedding` by the scalar -1. Then you are searching for the points that are closest to the point which is the farthest away from your `clip_query_embedding`.
 
-Also see a [pyvespa example](https://pyvespa.readthedocs.io/en/latest/examples/pyvespa-examples.html#Neighbors).
+Also see a [pyvespa example](https://vespa-engine.github.io/pyvespa/examples/pyvespa-examples.html#Neighbors).
 
 ## Feeding
 
@@ -409,6 +409,16 @@ In short, Vespa is not designed to release memory once used. It is designed for 
 When deleting documents, one can observe a slight increase in memory. A deleted document is represented using a [tombstone](../operations/self-managed/admin-procedures.html#content-cluster-configuration), that will later be removed, see [removed-db-prune-age](../reference/applications/services/content.html#removed-db-prune-age). When running garbage collection, the summary store is scanned using mmap and both VIRT and page cache memory usage increases.
 
 Read up on [attributes](../content/attributes.html) to understand more of how such fields are stored and managed.[Paged attributes](../content/attributes.html#paged-attributes) trades off memory usage vs. query latency for a lower max memory usage.
+
+### Do empty fields consume memory?
+
+A field is of type _index_ or _attribute_ - [details](../querying/text-matching.html#index-and-attribute).
+
+Fields with _index_ use no incremental memory at deployment, if the field has no value.
+
+Fields with _attribute_ use memory, even if the field value is not set,
+
+Attributes are optimized for random access: To be able to jump to the value of any document in O(1) time. That requires allocating a constant amount of memory (the value, or a pointer) per document, regardless of whether there is a value. In short, knowing that a value is unset is a value in itself for attributes, so deploying new fields or new schemas with attributes will cause an incremental increase in memory. Applications with many unused schemas and fields can factor this in when sizing for memory. Refer to [attributes](../content/attributes.html#attribute-memory-usage) for details.
 
 ### What is the best practice for scaling Vespa for day vs night?
 
@@ -567,7 +577,7 @@ See [encoding troubleshooting](../linguistics/troubleshooting-encoding.html)for 
 
 ### How to get started?
 
-[Deploy an application](../basics/deploy-an-application.html) to create a tenant and start your [free trial](https://vespa.ai/free-trial). This tenant can be your personal tenant, or shared with others. It can not be renamed.
+[Deploy an application](../basics/deploy-an-application.html) to create a tenant and start your [free trial](https://vespa.ai/free-trial/). This tenant can be your personal tenant, or shared with others. It can not be renamed.
 
 ### How to create a company tenant?
 
@@ -673,7 +683,7 @@ At termination, all application instances are removed, with data, before the ten
 
 In `dev` zones we use shared resources hence have more than one node on each host/instance. In order to provide a best possible overall responsiveness we do not restrict CPU resources for the individual application nodes.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 
@@ -746,6 +756,7 @@ In `dev` zones we use shared resources hence have more than one node on each hos
 - [Get request for a document when document is not in sync in all the replica nodes?](#get-request-for-a-document-when-document-is-not-in-sync-in-all-the-replica-nodes)
 - [How to keep indexes in memory?](#how-to-keep-indexes-in-memory)
 - [Is memory freed when deleting documents?](#is-memory-freed-when-deleting-documents)
+- [Do empty fields consume memory?](#do-empty-fields-consume-memory)
 - [What is the best practice for scaling Vespa for day vs night?](#what-is-the-best-practice-for-scaling-vespa-for-day-vs-night)
 - [We can spike 8x in 5 minutes in terms of throughput requirements.](#we-can-spike-8x-in-5-minutes-in-terms-of-throughput-requirements)
 - [How much lower-level configuration do we need to do? For example, do we need to alter the number of threads per container?](#how-much-lower-level-configuration-do-we-need-to-do-for-example-do-we-need-to-alter-the-number-of-threads-per-container)

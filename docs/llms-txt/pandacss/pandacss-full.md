@@ -16,7 +16,6 @@ This document contains the complete Panda CSS documentation, organized by catego
 - [Browser Support](#browser-support)
 - [Frequently Asked Questions](#frequently-asked-questions)
 - [Get started with Panda](#get-started-with-panda)
-- [LLMs.txt](#llms.txt)
 - [Why Panda](#why-panda)
 
 ### Installation
@@ -664,57 +663,6 @@ The development of Panda was only possible due to the inspiration and ideas from
 - [Styled System](https://styled-system.com/) - for the initial idea of Styled Props
 - [Linaria](https://linaria.dev/) - for inspiring the initial atomic css strategy
 - [Uno CSS](https://unocss.dev) - for inspiring the studio and astro integration
-
----
-
-
-## LLMs.txt
-
-Help AI tools understand Panda CSS with LLMs.txt support.
-
-## What is LLMs.txt?
-
-[LLMs.txt](https://llmstxt.org/) files are used to provide the Panda CSS documentation to large language models (LLMs).
-This helps AI tools better understand our styling engine, its APIs, and usage patterns.
-
-## Available Routes
-
-These routes are available to help AI tools access our documentation:
-
-- [/llms.txt](/llms.txt) - Contains a structured overview of all concepts and their documentation links
-- [/llms-full.txt](/llms-full.txt) - Provides comprehensive documentation including implementation details and examples
-
-## Access Individual Pages
-
-You can also access the raw markdown content for any documentation page by adding `.mdx` to the end of the URL. For
-example:
-
-- [`/docs/overview/getting-started.mdx`](/docs/overview/getting-started.mdx) - Raw markdown for the getting started page
-- [`/docs/concepts/recipes.mdx`](/docs/concepts/recipes.mdx) - Raw markdown for the recipes documentation
-- [`/docs/theming/tokens.mdx`](/docs/theming/tokens.mdx) - Raw markdown for the tokens documentation
-
-This is useful for AI tools that need to access specific documentation sections directly.
-
-## Usage with AI Tools
-
-### Cursor
-
-Use the `@Docs` feature in Cursor to include the LLMs.txt files in your project. This helps Cursor provide more accurate
-code suggestions and documentation for Panda CSS.
-
-[Read more about @Docs in Cursor](https://docs.cursor.com/context/@-symbols/@-docs)
-
-### Windsurf
-
-Reference the LLMs.txt files using `@` or in your `.windsurfrules` files to enhance Windsurf's understanding of Panda
-CSS.
-
-[Read more about Windsurf Memories](https://docs.codeium.com/windsurf/memories#memories-and-rules)
-
-### Other AI Tools
-
-Any AI tool that supports LLMs.txt can use these routes to better understand Panda CSS. Simply point your tool to any of
-the routes above to get comprehensive documentation about our styling engine.
 
 ---
 
@@ -19899,6 +19847,54 @@ pnpm panda emit-pkg --outdir styled-system
 | `--base <path>`  | The base directory of the package.json entrypoints   | -                                                      |
 | `--silent`       | Whether to suppress all output                       | [`config.logLevel`](/docs/references/config#log-level) |
 | `--cwd <path>`   | Current working directory                            | [`config.cwd`](/docs/references/config#cwd)            |
+
+## mcp
+
+Start the MCP (Model Context Protocol) server for AI assistants. This exposes your design system to AI tools like
+Claude, Cursor, VS Code Copilot, and more.
+
+```bash
+pnpm panda mcp
+
+# With custom config path
+pnpm panda mcp --config ./panda.config.ts
+
+# Specify working directory
+pnpm panda mcp --cwd ./my-project
+```
+
+| Flag                  | Description               | Related                                     |
+| --------------------- | ------------------------- | ------------------------------------------- |
+| `--config, -c <path>` | Path to Panda config file | [`config`](/docs/references/config.md)      |
+| `--cwd <path>`        | Current working directory | [`config.cwd`](/docs/references/config#cwd) |
+
+> Note: This command is typically started automatically by AI clients. See the [MCP Server guide](/docs/ai/mcp-server)
+> for setup instructions.
+
+## init-mcp
+
+Initialize MCP configuration for AI clients. This creates the necessary configuration files for AI assistants to connect
+to the Panda MCP server.
+
+```bash
+# Interactive mode - select clients from a list
+pnpm panda init-mcp
+
+# Configure specific clients
+pnpm panda init-mcp --client claude,cursor
+
+# Specify working directory
+pnpm panda init-mcp --cwd ./my-project
+```
+
+| Flag               | Description                               | Related                                     |
+| ------------------ | ----------------------------------------- | ------------------------------------------- |
+| `--client <names>` | AI clients to configure (comma-separated) | -                                           |
+| `--cwd <path>`     | Current working directory                 | [`config.cwd`](/docs/references/config#cwd) |
+
+Supported clients: `claude`, `cursor`, `vscode`, `windsurf`, `codex`
+
+See the [MCP Server guide](/docs/ai/mcp-server) for detailed usage and available tools.
 
 ---
 

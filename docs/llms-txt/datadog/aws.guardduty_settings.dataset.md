@@ -4,8 +4,6 @@
 title: GuardDuty Settings
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > GuardDuty Settings
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.guardduty_settings.dataset/index.html
 ---
 
 # GuardDuty Settings
@@ -18,12 +16,12 @@ aws.guardduty_settings
 
 ## Fields
 
-| Title                     | ID   | Type   | Data Type                                                                | Description |
-| ------------------------- | ---- | ------ | ------------------------------------------------------------------------ | ----------- |
-| _key                      | core | string |
-| account_id                | core | string |
-| administrator             | core | json   | The administrator account details.                                       |
-| ebs_snapshot_preservation | core | string | An enum value representing possible snapshot preservation settings.      |
-| master                    | core | json   | The administrator account details.                                       |
-| scan_resource_criteria    | core | json   | Represents the criteria to be used in the filter for scanning resources. |
-| tags                      | core | hstore |
+| Title                     | ID   | Type       | Data Type                                                                | Description |
+| ------------------------- | ---- | ---------- | ------------------------------------------------------------------------ | ----------- |
+| _key                      | core | string     |
+| account_id                | core | string     |
+| administrator             | core | json       | The administrator account details.                                       |
+| ebs_snapshot_preservation | core | string     | An enum value representing possible snapshot preservation settings.      |
+| master                    | core | json       | The administrator account details.                                       |
+| scan_resource_criteria    | core | json       | Represents the criteria to be used in the filter for scanning resources. |
+| tags                      | core | hstore_csv |

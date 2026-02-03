@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/examples/use-cases/market-researcher.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Market Researcher
 
 > Get comprehensive market insights and analysis for stocks in your portfolio
@@ -30,8 +34,3 @@
 ## How Does It Work?
 
 We use the Tavily 'news' and Tavily 'finance' parameters to make two separate search calls for each ticker retrieving the most relevant and up to date financial news data and metrics. All the searches are parallelized to maximize speed.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

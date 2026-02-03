@@ -6,11 +6,7 @@
 
 Polar provider setup and usage.
 
-***
 
-title: Polar
-description: Polar provider setup and usage.
---------------------------------------------
 
 <Steps>
   <Step>

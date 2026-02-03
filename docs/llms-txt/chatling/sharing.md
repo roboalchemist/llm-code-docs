@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/general-settings/sharing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Share
 
 > A guide on how to share your chatbot or agent with others.

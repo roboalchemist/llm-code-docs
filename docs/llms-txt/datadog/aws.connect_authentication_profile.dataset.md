@@ -4,8 +4,6 @@
 title: Connect Authentication Profile
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Connect Authentication Profile
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.connect_authentication_profile.dataset/index.html
 ---
 
 # Connect Authentication Profile
@@ -34,4 +32,4 @@ aws.connect_authentication_profile
 | max_session_duration      | core | int64         | The long lived session duration for users logged in to Amazon Connect, in minutes. After this time period, users must log in again. For more information, see Configure the session duration in the Amazon Connect Administrator Guide.                                                 |
 | name                      | core | string        | The name for the authentication profile.                                                                                                                                                                                                                                                |
 | periodic_session_duration | core | int64         | The short lived session duration configuration for users logged in to Amazon Connect, in minutes. This value determines the maximum possible time before an agent is authenticated. For more information, see Configure the session duration in the Amazon Connect Administrator Guide. |
-| tags                      | core | hstore        |
+| tags                      | core | hstore_csv    |

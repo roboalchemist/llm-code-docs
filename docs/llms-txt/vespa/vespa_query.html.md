@@ -12,7 +12,7 @@ Issue a query to Vespa
 
 Issue a query to Vespa.
 
-Any parameter from [https://docs.vespa.ai/en/reference/query-api-reference.html](https://docs.vespa.ai/en/reference/query-api-reference.html)can be set by the syntax [parameter-name]=[value].
+Any parameter from [https://docs.vespa.ai/en/reference/api/query.html](https://docs.vespa.ai/en/reference/api/query.html)can be set by the syntax [parameter-name]=[value].
 
 ```
 vespa query query-parameters [flags]
@@ -55,7 +55,7 @@ $ vespa query --header='X-First-Name: Joe' 'yql=select * from music where album 
 
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

@@ -37,7 +37,7 @@ On Windows, some graphics drivers may not support rendering transparent or trans
 
 ## How it works
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-79a7d9b64b98fad12b103e20f755d20d59d1f88c%2Fwindow_size_demo.gif?alt=media" alt="Window Size Demo"><figcaption><p>Window Size Demo</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-79a7d9b64b98fad12b103e20f755d20d59d1f88c%2Fwindow_size_demo.gif?alt=media" alt="Window Size Demo"><figcaption><p>Window Size Demo</p></figcaption></figure>
 
 {% embed url="<https://www.loom.com/share/22c9ef25392e4a5e80f9e01394c84dc4?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true>" %}
 Window Opacity and Blurring Demo

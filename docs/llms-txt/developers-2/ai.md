@@ -155,61 +155,65 @@ If a number is passed, it needs to be in the range 0-2. For larger values, 2 wil
 
 ### AI.Model
 
-The AI model to use to answer to the prompt. Defaults to `AI.Model["OpenAI_GPT3.5-turbo"]`.
+The AI model to use to answer to the prompt. Defaults to `AI.Model["OpenAI_GPT-4o_mini"]`.
 
-#### Enumeration members
-
-| Model                                         | Description                                                                            |
-| --------------------------------------------- | -------------------------------------------------------------------------------------- |
-| OpenAI\_GPT5-mini                             | OpenAI's latest model, great for well-defined tasks and precise prompts.               |
-| OpenAI\_GPT5-nano                             | OpenAI's latest model, great for summarization and classification tasks.               |
-| OpenAI\_GPT4.1                                | OpenAI's flagship model optimized for complex problem solving.                         |
-| OpenAI\_GPT4.1-mini                           | Balanced GPT-4.1 variant optimized for speed and cost efficiency.                      |
-| OpenAI\_GPT4.1-nano                           | Fastest and most cost-effective GPT-4.1 variant.                                       |
-| OpenAI\_GPT4                                  | Previous generation GPT-4 model with broad knowledge and complex instruction handling. |
-| OpenAI\_GPT4-turbo                            | Previous generation GPT-4 with expanded context window.                                |
-| OpenAI\_GPT4o                                 | Advanced OpenAI model optimized for speed and complex problem solving.                 |
-| OpenAI\_GPT4o-mini                            | Fast and intelligent model for everyday tasks.                                         |
-| OpenAI\_GPT5                                  | OpenAI's latest model, great for coding and agentic tasks across domains.              |
-| OpenAI\_o3                                    | Advanced model excelling in math, science, coding, and visual tasks.                   |
-| OpenAI\_o4-mini                               | Fast, efficient model optimized for coding and visual tasks.                           |
-| OpenAI\_o1                                    | Advanced reasoning model for complex STEM problems.                                    |
-| OpenAI\_o3-mini                               | Fast reasoning model optimized for STEM tasks.                                         |
-| OpenAI\_GPT\_OSS\_20b                         | OpenAI's first open-source model, 20b variant.                                         |
-| OpenAI\_GPT\_OSS\_120b                        | OpenAI's first open-source model, 120b variant.                                        |
-| Anthropic\_Claude\_Haiku                      | Anthropic's fastest model with large context window for code and text analysis.        |
-| Anthropic\_Claude\_Sonnet                     | Enhanced Claude model for complex tasks and visual reasoning.                          |
-| Anthropic\_Claude\_Sonnet\_3.7                | Anthropic's most intelligent model.                                                    |
-| Anthropic\_Claude\_4\_Sonnet                  | Anthropic's most intelligent model.                                                    |
-| Anthropic\_Claude\_4\_Opus                    | Anthropic's model for complex tasks with exceptional fluency.                          |
-| Anthropic\_Claude\_4.1\_Opus                  | Anthropic's model for complex tasks with exceptional fluency.                          |
-| Perplexity\_Sonar                             | Fast Perplexity model with integrated search capabilities.                             |
-| Perplexity\_Sonar\_Pro                        | Advanced Perplexity model for complex queries with search integration.                 |
-| Perplexity\_Sonar\_Reasoning                  | Fast reasoning model powered by DeepSeek R1.                                           |
-| Perplexity\_Sonar\_Reasoning\_Pro             | Premium reasoning model with DeepSeek R1 capabilities.                                 |
-| Llama4\_Scout                                 | Advanced 17B parameter multimodal model with 16 experts.                               |
-| Llama3.3\_70B                                 | Meta's state-of-the-art model for reasoning and general knowledge.                     |
-| Llama3.1\_8B                                  | Fast, instruction-optimized open-source model.                                         |
-| Llama3.1\_405B                                | Meta's flagship model with advanced capabilities across multiple domains.              |
-| Mistral\_Nemo                                 | Small, Apache-licensed model built with NVIDIA.                                        |
-| Mistral\_Large                                | Top-tier reasoning model with strong multilingual support.                             |
-| Mistral\_Medium                               | A powerful, cost-effective, frontier-class multimodal model.                           |
-| Mistral\_Small                                | Latest enterprise-grade small model with improved reasoning.                           |
-| Mistral\_Codestral                            | Specialized model for code-related tasks and testing.                                  |
-| Groq\_Kimi\_K2\_Instruct                      | Kimi K2 is a powerful and versatile AI model designed for a wide range of tasks.       |
-| Groq\_Qwen3\_32B                              | The latest generation of large language models in the Qwen series.                     |
-| DeepSeek\_R1\_Distill\_Llama\_3.3\_70B        | Fine-tuned Llama model with enhanced reasoning capabilities.                           |
-| Google\_Gemini\_2.5\_Pro                      | Advanced thinking model for complex problem solving.                                   |
-| Google\_Gemini\_2.5\_Flash                    | Fast, well-rounded thinking model.                                                     |
-| Google\_Gemini\_2.5\_Flash\_Lite              | Fast model optimized for large-scale text output.                                      |
-| Google\_Gemini\_2.0\_Flash                    | Low-latency model optimized for agentic experiences.                                   |
-| Groq\_Qwen3\_235B\_A22B\_Instruct\_2507\_tput | A varied model with enhanced reasoning.                                                |
-| DeepSeek\_R1                                  | Open-source model matching OpenAI-o1 performance.                                      |
-| DeepSeek\_V3                                  | Advanced Mixture-of-Experts model.                                                     |
-| xAI\_Grok\_4                                  | Advanced language model with enhanced reasoning and tool capabilities.                 |
-| xAI\_Grok\_3                                  | Enterprise-focused model for data, coding, and summarization tasks.                    |
-| xAI\_Grok\_3\_Mini                            | Fast, lightweight model for logic-based tasks.                                         |
-| xAI\_Grok\_2                                  | Advanced language model with strong reasoning capabilities.                            |
+| Model                                            | Description                                                                                                        |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| OpenAI\_GPT-5\_mini                              | OpenAI's latest model, great for well-defined tasks and precise prompts.                                           |
+| OpenAI\_GPT-5\_nano                              | OpenAI's latest model, great for summarization and classification tasks.                                           |
+| OpenAI\_GPT-4.1                                  | OpenAI's flagship model optimized for complex problem solving.                                                     |
+| OpenAI\_GPT-4.1\_mini                            | Balanced GPT-4.1 variant optimized for speed and cost efficiency.                                                  |
+| OpenAI\_GPT-4.1\_nano                            | Fastest and most cost-effective GPT-4.1 variant.                                                                   |
+| OpenAI\_GPT-4                                    | Previous generation GPT-4 model with broad knowledge and complex instruction handling.                             |
+| OpenAI\_GPT-4\_Turbo                             | Previous generation GPT-4 with expanded context window.                                                            |
+| OpenAI\_GPT-4o                                   | Advanced OpenAI model optimized for speed and complex problem solving.                                             |
+| OpenAI\_GPT-4o\_mini                             | Fast and intelligent model for everyday tasks.                                                                     |
+| OpenAI\_GPT-5                                    | OpenAI's latest model, great for coding and agentic tasks across domains.                                          |
+| OpenAI\_GPT-5\_Codex                             | OpenAI's model optimized for agentic coding tasks in Codex and similar environments.                               |
+| OpenAI\_GPT-5.1                                  | OpenAI's model with adaptive reasoning, great for coding and agentic tasks across domains.                         |
+| OpenAI\_GPT-5.1\_Codex                           | A version of GPT-5.1 optimized for agentic coding tasks in Codex or similar environments.                          |
+| OpenAI\_GPT-5.1\_Instant                         | OpenAI's fastest GPT-5.1 model with adaptive reasoning, optimized for speed and efficiency.                        |
+| OpenAI\_GPT-5.2                                  | OpenAI's most capable model for professional work and long-running agents with state-of-the-art tool-calling.      |
+| OpenAI\_GPT-5.2\_Instant                         | OpenAI's fast, capable model for everyday work with improved info-seeking, how-tos, and technical writing.         |
+| OpenAI\_o3                                       | Advanced model excelling in math, science, coding, and visual tasks.                                               |
+| OpenAI\_o4-mini                                  | Fast, efficient model optimized for coding and visual tasks.                                                       |
+| OpenAI\_o1                                       | Advanced reasoning model for complex STEM problems.                                                                |
+| OpenAI\_o3-mini                                  | Fast reasoning model optimized for STEM tasks.                                                                     |
+| Groq\_GPT-OSS\_20b                               | OpenAI's first open-source model, 20b variant.                                                                     |
+| Groq\_GPT-OSS\_120b                              | OpenAI's first open-source model, 120b variant.                                                                    |
+| Anthropic\_Claude\_4.5\_Haiku                    | Anthropic's offering focusing on being the best combination of performance and speed.                              |
+| Anthropic\_Claude\_4\_Sonnet                     | Anthropic's most intelligent model.                                                                                |
+| Anthropic\_Claude\_4.5\_Sonnet                   | Anthropic's most intelligent model with the highest intelligence across most tasks.                                |
+| Anthropic\_Claude\_4\_Opus                       | Anthropic's model for complex tasks with exceptional fluency.                                                      |
+| Anthropic\_Claude\_4.1\_Opus                     | Anthropic's model for complex tasks with exceptional fluency.                                                      |
+| Anthropic\_Claude\_4.5\_Opus                     | Anthropic's model for complex tasks with exceptional fluency.                                                      |
+| Perplexity\_Sonar                                | Fast Perplexity model with integrated search capabilities.                                                         |
+| Perplexity\_Sonar\_Pro                           | Advanced Perplexity model for complex queries with search integration.                                             |
+| Groq\_Llama\_4\_Scout                            | Advanced 17B parameter multimodal model with 16 experts.                                                           |
+| Groq\_Llama\_3.3\_70B                            | Meta's state-of-the-art model for reasoning and general knowledge.                                                 |
+| Groq\_Llama\_3.1\_8B                             | Fast, instruction-optimized open-source model.                                                                     |
+| Together\_AI\_Llama\_3.1\_405B                   | Meta's flagship model with advanced capabilities across multiple domains.                                          |
+| Mistral\_Nemo                                    | Small, Apache-licensed model built with NVIDIA.                                                                    |
+| Mistral\_Large                                   | Top-tier reasoning model with strong multilingual support.                                                         |
+| Mistral\_Medium                                  | A powerful, cost-effective, frontier-class multimodal model.                                                       |
+| Mistral\_Small\_3                                | Latest enterprise-grade small model with improved reasoning.                                                       |
+| Mistral\_Codestral                               | Specialized model for code-related tasks and testing.                                                              |
+| Groq\_Kimi\_K2\_Instruct                         | Kimi K2 is a powerful and versatile AI model designed for a wide range of tasks.                                   |
+| Groq\_Qwen3-32B                                  | The latest generation of large language models in the Qwen series.                                                 |
+| Google\_Gemini\_3\_Flash                         | Fast thinking model with strong balance of speed, performance, and value.                                          |
+| Google\_Gemini\_3\_Pro                           | Advanced thinking model for complex problem solving.                                                               |
+| Google\_Gemini\_2.5\_Pro                         | Advanced thinking model for complex problem solving.                                                               |
+| Google\_Gemini\_2.5\_Flash                       | Fast, well-rounded thinking model.                                                                                 |
+| Google\_Gemini\_2.5\_Flash\_Lite                 | Fast model optimized for large-scale text output.                                                                  |
+| Together\_AI\_Qwen3-235B-A22B-Instruct-2507-tput | A varied model with enhanced reasoning.                                                                            |
+| Together\_AI\_DeepSeek-R1                        | Open-source model matching OpenAI-o1 performance.                                                                  |
+| Together\_AI\_DeepSeek-V3                        | Advanced Mixture-of-Experts model.                                                                                 |
+| xAI\_Grok-4.1\_Fast                              | xAI's best agentic tool calling model that shines in real-world use cases like customer support and deep research. |
+| xAI\_Grok-4                                      | Advanced language model with enhanced reasoning and tool capabilities.                                             |
+| xAI\_Grok-4\_Fast                                | xAI's latest advancement in cost-efficient reasoning models.                                                       |
+| xAI\_Grok\_Code\_Fast\_1                         | Grok Code Fast 1 is xAI's Coding Agent focused model                                                               |
+| xAI\_Grok-3\_Beta                                | Enterprise-focused model for data, coding, and summarization tasks.                                                |
+| xAI\_Grok-3\_Mini\_Beta                          | Fast, lightweight model for logic-based tasks.                                                                     |
 
 If a model isn't available to the user (or has been disabled by the user), Raycast will fallback to a similar one.
 
@@ -217,8 +221,8 @@ If a model isn't available to the user (or has been disabled by the user), Rayca
 
 #### Properties
 
-| Property   | Description                                                                                                                                                                                                                                                      | Type                                                                   |
-| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| creativity | Concrete tasks, such as fixing grammar, require less creativity while open-ended questions, such as generating ideas, require more. If a number is passed, it needs to be in the range 0-2. For larger values, 2 will be used. For lower values, 0 will be used. | [`AI.Creativity`](#ai.creativity)                                      |
-| model      | The AI model to use to answer to the prompt.                                                                                                                                                                                                                     | [`AI.Model`](#ai.model)                                                |
-| signal     | Abort signal to cancel the request.                                                                                                                                                                                                                              | [`Date`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) |
+| Property   | Description                                                                                                                                                                                                                                                      | Type                                                                          |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| creativity | Concrete tasks, such as fixing grammar, require less creativity while open-ended questions, such as generating ideas, require more. If a number is passed, it needs to be in the range 0-2. For larger values, 2 will be used. For lower values, 0 will be used. | [`AI.Creativity`](#ai.creativity)                                             |
+| model      | The AI model to use to answer to the prompt.                                                                                                                                                                                                                     | [`AI.Model`](#ai.model)                                                       |
+| signal     | Abort signal to cancel the request.                                                                                                                                                                                                                              | [`AbortSignal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) |

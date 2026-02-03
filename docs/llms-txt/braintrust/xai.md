@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/integrations/ai-providers/xai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # xAI
 
 > xAI model provider configuration and integration guide
@@ -11,7 +15,7 @@ xAI provides access to the Grok family of language models designed for reasoning
 To use xAI models, configure your xAI API key in Braintrust.
 
 1. Get an xAI API key from [xAI Console](https://console.x.ai/)
-2. Add the xAI API key to your organization's [AI providers](https://www.braintrust.dev/app/settings/secrets)
+2. Add the xAI API key to your [organization's AI providers](/admin/organizations#configure-ai-providers) or to a [project's AI providers](/admin/projects#configure-ai-providers)
 3. Set the xAI API key and your Braintrust API key as environment variables
 
 ```bash title=".env" theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
@@ -23,12 +27,12 @@ BRAINTRUST_API_KEY=<your-braintrust-api-key>
 ```
 
 <Note>
-  API keys are encrypted using 256-bit AES-GCM encryption and are not stored or logged by Braintrust.
+  API keys are encrypted at rest using [transparent data encryption](https://en.wikipedia.org/wiki/Transparent_data_encryption) with a [unique 256-bit key and nonce](https://libsodium.gitbook.io/doc/secret-key_cryptography/aead).
 </Note>
 
 ## Use xAI with Braintrust AI proxy
 
-The [Braintrust AI Proxy](/guides/proxy) allows you to access xAI models through a unified OpenAI-compatible interface.
+The [Braintrust AI Proxy](/deploy/ai-proxy) allows you to access xAI models through a unified OpenAI-compatible interface.
 
 First, install the `braintrust` and `openai` packages.
 
@@ -81,7 +85,7 @@ Then, initialize the client and make a request to a xAI model via the Braintrust
 
 ## Trace logs with xAI
 
-[Trace](/guides/traces) your xAI LLM calls for observability and monitoring.
+[Trace](/instrument/custom-tracing) your xAI LLM calls for observability and monitoring.
 
 When using the Braintrust AI Proxy, API calls are automatically logged to the specified project.
 
@@ -129,12 +133,12 @@ When using the Braintrust AI Proxy, API calls are automatically logged to the sp
 </CodeGroup>
 
 <Tip>
-  The Braintrust AI Proxy is not required. For more control, learn how to [customize traces](/guides/traces/customize).
+  The Braintrust AI Proxy is not required. For more control, learn how to [customize traces](/instrument/advanced-tracing).
 </Tip>
 
 ## Evaluate with xAI
 
-Evaluations distill the non-deterministic outputs of xAI models into an effective feedback loop that enables you to ship more reliable, higher quality products. Braintrust `Eval` is a simple function composed of a dataset of user inputs, a task, and a set of scorers. To learn more about evaluations, check out the [Experiments](/core/experiments) guide.
+Evaluations distill the non-deterministic outputs of xAI models into an effective feedback loop that enables you to ship more reliable, higher quality products. Braintrust `Eval` is a simple function composed of a dataset of user inputs, a task, and a set of scorers. To learn more about evaluations, check out the [Experiments](/evaluate/run-evaluations) guide.
 
 <CodeGroup dropdown>
   ```typescript  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
@@ -204,10 +208,5 @@ Evaluations distill the non-deterministic outputs of xAI models into an effectiv
 </CodeGroup>
 
 <Tip>
-  To learn more about tool use, multimodal support, attachments, and masking sensitive data with xAI, visit the [customize traces](/guides/traces/customize) guide.
+  To learn more about tool use, multimodal support, attachments, and masking sensitive data with xAI, visit the [customize traces](/instrument/advanced-tracing) guide.
 </Tip>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

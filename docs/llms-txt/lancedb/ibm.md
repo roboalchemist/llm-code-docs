@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/embedding/ibm.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # IBM watsonx
 
 export const PyEmbeddingIbmUsage = "import os\nimport tempfile\nfrom pathlib import Path\n\nimport lancedb\nfrom lancedb.embeddings import EmbeddingFunctionRegistry\nfrom lancedb.pydantic import LanceModel, Vector\n\nwatsonx_embed = (\n    EmbeddingFunctionRegistry.get_instance()\n    .get(\"watsonx\")\n    .create(\n        name=\"ibm/slate-125m-english-rtrvr\",\n        api_key=os.environ.get(\"WATSONX_API_KEY\"),\n        project_id=os.environ.get(\"WATSONX_PROJECT_ID\"),\n    )\n)\n\nclass TextModel(LanceModel):\n    text: str = watsonx_embed.SourceField()\n    vector: Vector(watsonx_embed.ndims()) = watsonx_embed.VectorField()\n\ndata = [\n    {\"text\": \"hello world\"},\n    {\"text\": \"goodbye world\"},\n]\n\ndb = lancedb.connect(str(Path(tempfile.mkdtemp()) / \"watsonx-demo\"))\ntbl = db.create_table(\"watsonx_test\", schema=TextModel, mode=\"overwrite\")\ntbl.add(data)\n\nrs = tbl.search(\"hello\").limit(1).to_pandas()\nprint(rs.head())\n";
@@ -47,8 +51,3 @@ export WATSONX_PROJECT_ID="YOUR_WATSONX_PROJECT_ID"
     {PyEmbeddingIbmUsage}
   </CodeBlock>
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

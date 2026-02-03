@@ -8,9 +8,9 @@
 
 ## Global Hotkey
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-048acf9fd85b0fa2129bb90a1b3d8a2d1f911f5b%2FDedicated%20Window.gif?alt=media&#x26;token=39195b3a-16c6-44e5-b2e2-f4bb84677c30" alt=""><figcaption><p>Global Hotkey - Dedicated Window Demo</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-048acf9fd85b0fa2129bb90a1b3d8a2d1f911f5b%2FDedicated-Window.gif?alt=media" alt=""><figcaption><p>Global Hotkey - Dedicated Window Demo</p></figcaption></figure>
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-af6164e0085e8fa8f3d2ff3602178e4c9343332c%2FShow-Hide%20All%20Windows.gif?alt=media&#x26;token=e292ad67-f087-4b0b-a779-f5266be40a45" alt=""><figcaption><p>Global Hotkey - Show/Hide All Windows Demo</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-af6164e0085e8fa8f3d2ff3602178e4c9343332c%2FShow-Hide-All-Windows.gif?alt=media" alt=""><figcaption><p>Global Hotkey - Show/Hide All Windows Demo</p></figcaption></figure>
 
 ## Tabs
 

@@ -2,13 +2,9 @@
 
 # Source: https://dub.co/docs/conversions/leads/segment.md
 
-# Source: https://dub.co/docs/conversions/sales/segment.md
-
-# Source: https://dub.co/docs/conversions/leads/segment.md
-
-# Source: https://dub.co/docs/conversions/sales/segment.md
-
-# Source: https://dub.co/docs/conversions/leads/segment.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Segment
 

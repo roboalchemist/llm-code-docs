@@ -6,7 +6,6 @@ description: >-
   Explore different trace sampling use cases and strategies to optimize
   ingestion volume while maintaining troubleshooting capabilities.
 breadcrumbs: Docs > APM > Tracing Guides > Trace Sampling Use Cases
-source_url: https://docs.datadoghq.com/guide/ingestion_sampling_use_cases/index.html
 ---
 
 # Trace Sampling Use Cases

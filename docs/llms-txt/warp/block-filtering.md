@@ -13,7 +13,7 @@ To apply a filter to a block:
 3. (Optional) Click on the regex, case sensitive search, or invert filter buttons to enable.
 4. (Optional) Type a number in the right input field to add context lines around matched lines.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-5f6785698f91c37b77b73df65d4d4d93808bec3a%2Fblock_filtering_with_context_lines.gif?alt=media&#x26;token=1008c7bb-0679-40c8-a936-8acb60208eef" alt=""><figcaption><p>Filter a block's output, with the ability to add context lines.</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-5f6785698f91c37b77b73df65d4d4d93808bec3a%2Fblock_filtering_with_context_lines.gif?alt=media" alt=""><figcaption><p>Filter a block's output, with the ability to add context lines.</p></figcaption></figure>
 
 {% tabs %}
 {% tab title="macOS" %}
@@ -42,4 +42,4 @@ You can also toggle a filter on/off by:
 Toggling a filter on a block without a filter applied will open the filter editor. If you toggle a filter off, the same filter will be applied if you toggle filtering on again.
 {% endhint %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-6ef2a07dd1deac53be41c2fa3c8b9dcdb4a8bc42%2Fblock_filtering_toggle.gif?alt=media&#x26;token=4684807d-957c-43f0-90d5-7112a975a720" alt=""><figcaption><p>Toggle a block filter on/off.</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-6ef2a07dd1deac53be41c2fa3c8b9dcdb4a8bc42%2Fblock_filtering_toggle.gif?alt=media" alt=""><figcaption><p>Toggle a block filter on/off.</p></figcaption></figure>

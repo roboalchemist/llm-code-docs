@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/custom-nodes/js/javascript_examples.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Annotated Examples
 
 A growing collection of fragments of example code...
@@ -119,6 +123,10 @@ import { api } from "../../scripts/api.js";
 
 ## Detect an interrupted workflow
 
+<Note>
+  **Deprecated:** The API hijacking pattern shown below is deprecated and subject to change at any point in the near future. Use the official [extension hooks](/custom-nodes/js/javascript_hooks) and API event listeners where available.
+</Note>
+
 A simple example of hijacking the api:
 
 ```Javascript  theme={null}
@@ -133,6 +141,10 @@ import { api } from "../../scripts/api.js";
 ```
 
 ## Catch clicks on your node
+
+<Note>
+  **Deprecated:** The node method hijacking pattern shown below is deprecated and subject to change at any point in the near future. Use the official [extension hooks](/custom-nodes/js/javascript_hooks) where available.
+</Note>
 
 `node` has a mouseDown method you can hijack.
 This time we're careful to pass on any return value.

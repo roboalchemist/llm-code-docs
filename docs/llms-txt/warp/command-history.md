@@ -8,7 +8,7 @@ While running, Warp isolates the history of each shell session e.g. if you have 
 
 Command History also provides rich information like exit code, directory, thread, time to finish running, last run, etc.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-abf97bc8031534f9b5db2c988b486f5d69f10ba0%2Fcommand-history-rich.png?alt=media&#x26;token=f35f53a6-4b94-45c2-bc90-7ada463ccc41" alt=""><figcaption><p>Command History rich information</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-abf97bc8031534f9b5db2c988b486f5d69f10ba0%2Fcommand-history-rich.png?alt=media" alt=""><figcaption><p>Command History rich information</p></figcaption></figure>
 
 ## How to access it
 

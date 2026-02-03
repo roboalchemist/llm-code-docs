@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/zhang-hu-guan-li/plans/community/sponsored-site-plan.md
-
-# Source: https://gitbook.com/docs/documentation/fr/gestion-du-compte/plans/community/sponsored-site-plan.md
-
-# Source: https://gitbook.com/docs/account-management/plans/community/sponsored-site-plan.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/akaunto/plans/community/sponsored-site-plan.md
 
 # Source: https://gitbook.com/docs/documentation/zh/zhang-hu-guan-li/plans/community/sponsored-site-plan.md
 
@@ -15,8 +11,6 @@
 {% hint style="info" %}
 This site plan is only available to users on our [community plan](https://gitbook.com/docs/account-management/plans/community).
 {% endhint %}
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fd34wI7wY5tYwwd6rBirF%2FSponsored%20site%20plan.svg?alt=media&#x26;token=c9a7dabd-77ef-4ca4-9cb8-04d28a49b73a" alt="A GitBook screenshot showing the sponsored site plan hero section"><figcaption><p>Learn more about the sponsored site plan in GitBook.</p></figcaption></figure>
 
 The sponsored site plan lets you access all of GitBook’s best docs site features at no cost while displaying a small, relevant ad in the corner of your documentation site. Each view generates revenue for you, turning your documentation into a source of income.
 

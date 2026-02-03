@@ -2,9 +2,15 @@
 
 # Terms of Service
 
+## Rules for using Klarna assets/services including liability limits, monitoring rights, and Klarna’s ability to change or restrict access to its services.
+
 ## 1. General
 
-These terms describe the rights and obligations when using specific assets which are defined as Klarna Assets by Klarna Bank AB (publ), SE-556737-0431, (“Klarna”) or any of its affiliates. By using Klarna Assets you agree that you have read, understood and that you accept these terms of service (the “Terms”). Klarna has the right to change these Terms at any time and it is your responsibility to keep yourself up to date as regards any changes to these Terms. You will always find the most recent version of these terms of service here: [docs.klarna.com/policies/terms-of-service](https://docs.klarna.com/resources/legal-and-compliance/policies-and-term-of-service/terms-of-service.md). If you have a merchant account with Klarna (e.g. an EID or MID), it is important that you protect the account credentials and inform Klarna about any unauthorized use of such account. For the purpose of these terms, “Klarna Assets” include any application programming interfaces (APIs), Klarna trade names, trademarks, logos, data, tooltip, part payment widget, modules, SDKs, databases, domain names or any other distinctive assets of Klarna that are provided to you for use under these Terms.
+These terms describe the rights and obligations when using specific assets which are defined as Klarna Assets by Klarna Bank AB (publ), SE-556737-0431, (“Klarna”) or any of its affiliates. By using Klarna Assets you agree that you have read, understood and that you accept these terms of service (the “Terms”). Klarna has the right to change these Terms at any time and it is your responsibility to keep yourself up to date as regards any changes to these Terms. You will always find the most recent version of these terms of service here: [docs.klarna.com/policies/terms-of-service](https://docs.klarna.com/resources/legal-and-compliance/policies-and-term-of-service/terms-of-service/).
+
+If you have a merchant account with Klarna (e.g. an EID or MID), it is important that you protect the account credentials and inform Klarna about any unauthorized use of such account.
+
+For the purpose of these terms, “Klarna Assets” include any application programming interfaces (APIs), Klarna trade names, trademarks, logos, data, tooltip, part payment widget, modules, SDKs, databases, domain names or any other distinctive assets of Klarna that are provided to you for use under these Terms.
 
 ## 2. Intellectual Property Rights
 
@@ -12,7 +18,25 @@ Klarna Assets may be protected by copyright, trademarks and service marks and/or
 
 ## 3. Specific Terms of Use
 
-You are solely granted a limited, personal, revocable right and license to use the Klarna Assets for your internal business purposes and for the functions set forth in Klarna’s instructions and documentation. You may only use Klarna Assets in accordance with Klarna’s instructions and documentation. It is your responsibility to ensure that you are aware of the applicable instructions and documentation at all times. If you are unsure whether you are up to date as regards to Klarna’s instructions, please contact Klarna. You may under no circumstances use the Klarna Assets for malicious purposes, including to spread viruses, worms, Trojan horses or other forms of malware through Klarna Assets and/or on the website where Klarna Assets are used. You must comply at all times with any applicable laws when using our assets and you may not promote or encourage any illegal activity. You acknowledge and agree that Klarna, without having to obtain any specific approval in each case, is entitled to use any data that you submit, share or in any other way make available to Klarna. Klarna’s use of such data includes, but is not limited to, conducting processes to improve risk assessment and consumer experience. Klarna has the right, at its own discretion, to restrict or limit the usage of Klarna Assets at any time. Klarna monitors, including through automated means, the use of Klarna Assets to ensure compliance with these Terms and to ascertain quality, detect misuse, improve Klarna’s products and services and you consent to such monitoring. When using Klarna Assets you do so at your own risk. You will be fully liable for any damage or loss of any kind arising from your use of any Klarna Assets. You acknowledge and agree that open source software that is provided by Klarna may have terms which might take precedence over these Terms. Unless specifically agreed otherwise, by using Klarna's Services you as a merchant acknowledge and agree that Klarna may use your logo, name and other trademarks (including, but not limited to, product visuals) within Klarna's Services, features and product offering, as well as in marketing activities Below provisions are applicable on merchants for card acceptance:
+You are solely granted a limited, personal, revocable right and license to use the Klarna Assets for your internal business purposes and for the functions set forth in Klarna’s instructions and documentation. You may only use Klarna Assets in accordance with Klarna’s instructions and documentation. It is your responsibility to ensure that you are aware of the applicable instructions and documentation at all times. If you are unsure whether you are up to date as regards to Klarna’s instructions, please contact Klarna.
+
+You may under no circumstances use the Klarna Assets for malicious purposes, including to spread viruses, worms, Trojan horses or other forms of malware through Klarna Assets and/or on the website where Klarna Assets are used.
+
+You must comply at all times with any applicable laws when using our assets and you may not promote or encourage any illegal activity.
+
+You acknowledge and agree that Klarna, without having to obtain any specific approval in each case, is entitled to use any data that you submit, share or in any other way make available to Klarna. Klarna’s use of such data includes, but is not limited to, conducting processes to improve risk assessment and consumer experience.
+
+Klarna has the right, at its own discretion, to restrict or limit the usage of Klarna Assets at any time.
+
+Klarna monitors, including through automated means, the use of Klarna Assets to ensure compliance with these Terms and to ascertain quality, detect misuse, improve Klarna’s products and services and you consent to such monitoring.
+
+When using Klarna Assets you do so at your own risk. You will be fully liable for any damage or loss of any kind arising from your use of any Klarna Assets.
+
+You acknowledge and agree that open source software that is provided by Klarna may have terms which might take precedence over these Terms.
+
+Unless specifically agreed otherwise, by using Klarna's Services you as a merchant acknowledge and agree that Klarna may use your logo, name and other trademarks (including, but not limited to, product visuals) within Klarna's Services, features and product offering, as well as in marketing activities
+
+Below provisions are applicable on merchants for card acceptance:
 
 - Merchant must indicate its acceptance of the card whenever it communicates the payment methods it accepts to customers and display our Marks according to our guidelines;
 - Merchant must not criticize or mischaracterize the card or any of card scheme's services or programs;
@@ -20,7 +44,7 @@ You are solely granted a limited, personal, revocable right and license to use t
 
 ## 4. Amendments and Alterations
 
-Klarna has the right to make amendments to Klarna Assets and these Terms at any time. This includes, but is not limited to, changes to the API and the API content. You fully accept any such changes by continuing the use of a Klarna Asset after any change or alteration. If you should not agree to the new or amended Terms you may no longer use Klarna Assets and you are obliged to stop using Klarna Assets. Klarna may at any time, at its own discretion, deprecate or change the functionality of Klarna Assets. For the purpose of these Terms, deprecation means that Klarna will no longer support or update versions or specific functionalities. Klarna is in no way obliged to inform users about deprecations of version or functionalities. The applicable version of Klarna’s deprecation policy can be found [here](https://docs.klarna.com/resources/legal-and-compliance/policies-and-term-of-service/deprecation-policy.md).
+Klarna has the right to make amendments to Klarna Assets and these Terms at any time. This includes, but is not limited to, changes to the API and the API content. You fully accept any such changes by continuing the use of a Klarna Asset after any change or alteration. If you should not agree to the new or amended Terms you may no longer use Klarna Assets and you are obliged to stop using Klarna Assets. Klarna may at any time, at its own discretion, deprecate or change the functionality of Klarna Assets. For the purpose of these Terms, deprecation means that Klarna will no longer support or update versions or specific functionalities. Klarna is in no way obliged to inform users about deprecations of version or functionalities. The applicable version of Klarna’s deprecation policy can be found [here](https://docs.klarna.com/resources/legal-and-compliance/policies-and-term-of-service/deprecation-policy/).
 
 ## 5. Liability
 
@@ -28,11 +52,21 @@ Klarna is in relation to Klarna Assets and the use of such assets under no circu
 
 ## 6. Personal Data
 
-Any data that you may receive from Klarna shall be handled with due care and in accordance with applicable laws and/or in accordance with what may be set forth in any merchant or other agreement between you and Klarna. Unless the parties have a separate agreement which include transfer and processing of personal data, the following shall apply. If personal data (as defined in Regulation (EU) 2016/679 (the “GDPR”)) is processed during use of Klarna’s Assets, you shall comply with applicable data protection legislation and ensure that you have legal ground to process such personal data. In the event Klarna is deemed the controller of such personal data, you agree, not to use any such data until you have entered into a Data Processing Agreement with Klarna. Transfer of personal data outside of the EU/EES is not allowed to the extent that Klarna is deemed to be the controller of such data.
+Any data that you may receive from Klarna shall be handled with due care and in accordance with applicable laws and/or in accordance with what may be set forth in any merchant or other agreement between you and Klarna.
+
+Unless the parties have a separate agreement which include transfer and processing of personal data, the following shall apply.
+
+If personal data (as defined in Regulation (EU) 2016/679 (the “GDPR”)) is processed during use of Klarna’s Assets, you shall comply with applicable data protection legislation and ensure that you have legal ground to process such personal data. In the event Klarna is deemed the controller of such personal data, you agree, not to use any such data until you have entered into a Data Processing Agreement with Klarna. Transfer of personal data outside of the EU/EES is not allowed to the extent that Klarna is deemed to be the controller of such data.
 
 ### 6.A **Tracking technologies**
 
-If you choose to integrate the Klarna Web SDK on your website, for example but not limited to, to enable Klarna’s conversion boosters or other similar features, you are responsible for informing your users about the tracking technologies employed. This information must be provided prior to any tracking taking place, for instance via a cookie banner or similar mechanism. You must disclose both strictly necessary tracking technologies and any specific technologies used by the Klarna Web SDK, including details such as name, purpose, provider, use of local storage, and retention period. You may use the below wording as is, or adapt it to align with your existing cookie banner or privacy policy, provided the information remains complete, accurate, and compliant with applicable laws: <span>*Strictly necessary cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. For the purpose of ensuring service security and prevention of fraud, we do also collect device fingerprints, including, but not limited to, your browser name, IP address, time zone and language preference and service availability.*</span>
+If you choose to integrate the Klarna Web SDK on your website, for example but not limited to, to enable Klarna’s conversion boosters or other similar features, you are responsible for informing your users about the tracking technologies employed. This information must be provided prior to any tracking taking place, for instance via a cookie banner or similar mechanism.
+
+You must disclose both strictly necessary tracking technologies and any specific technologies used by the Klarna Web SDK, including details such as name, purpose, provider, use of local storage, and retention period.
+
+You may use the below wording as is, or adapt it to align with your existing cookie banner or privacy policy, provided the information remains complete, accurate, and compliant with applicable laws:
+
+<span>*Strictly necessary cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. For the purpose of ensuring service security and prevention of fraud, we do also collect device fingerprints, including, but not limited to, your browser name, IP address, time zone and language preference and service availability.*</span>
 
 | Name | Purpose | <span>Supplier (first/ third)</span> | <span>Session/ Persistent/local</span> | Expiry |
 |----|----|----|----|----|
@@ -40,7 +74,9 @@ If you choose to integrate the Klarna Web SDK on your website, for example but n
 
 ## 7. Term and termination
 
-We may terminate these Terms at any time with notice to you. Upon termination, you must cease using the Klarna Assets. These Terms are valid until further notice by Klarna and apply to you for as long as you use Klarna Assets and/or for as long as you have any remaining obligations in accordance with these Terms. If your merchant agreement or merchant account with Klarna is terminated, you are, unless otherwise agreed, required to stop using Klarna Assets as of such termination.
+We may terminate these Terms at any time with notice to you. Upon termination, you must cease using the Klarna Assets. These Terms are valid until further notice by Klarna and apply to you for as long as you use Klarna Assets and/or for as long as you have any remaining obligations in accordance with these Terms.
+
+If your merchant agreement or merchant account with Klarna is terminated, you are, unless otherwise agreed, required to stop using Klarna Assets as of such termination.
 
 ## 8. Indemnity
 
@@ -52,4 +88,6 @@ The invalidity or unenforceability of any provisions of these Terms shall not af
 
 ## 10. Governing law
 
-These Terms are governed by Swedish law. Any dispute, controversy or claim arising out of or in connection with this contract, or the breach, termination or invalidity thereof, shall be finally settled by arbitration administered by the Arbitration Institute of the Stockholm Chamber of Commerce (the “SCC”). The Rules for Expedited Arbitrations shall apply, unless the SCC in its discretion determines, taking into account the complexity of the case, the amount in dispute and other circumstances, that the Arbitration Rules shall apply. In the latter case, the SCC shall also decide whether the Arbitral Tribunal shall be composed of one or three arbitrators. The seat of arbitration shall be Stockholm, Sweden. The language to be used in the arbitral proceedings shall be English.
+These Terms are governed by Swedish law. Any dispute, controversy or claim arising out of or in connection with this contract, or the breach, termination or invalidity thereof, shall be finally settled by arbitration administered by the Arbitration Institute of the Stockholm Chamber of Commerce (the “SCC”).
+
+The Rules for Expedited Arbitrations shall apply, unless the SCC in its discretion determines, taking into account the complexity of the case, the amount in dispute and other circumstances, that the Arbitration Rules shall apply. In the latter case, the SCC shall also decide whether the Arbitral Tribunal shall be composed of one or three arbitrators. The seat of arbitration shall be Stockholm, Sweden. The language to be used in the arbitral proceedings shall be English.

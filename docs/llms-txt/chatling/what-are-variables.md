@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/chatbot/builder/variables/what-are-variables.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What are variables?
 
 > Learn about Variables, the different types, and how to use them

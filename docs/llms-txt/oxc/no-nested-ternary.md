@@ -1,9 +1,10 @@
+# Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-nested-ternary.md
+
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/eslint/no-nested-ternary.md
 
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-nested-ternary.md
 ---
-# eslint/no-nested-ternary&#x20;
 
 ### What it does
 

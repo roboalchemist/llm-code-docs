@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/evaluate-rag/
+
 # Evaluating RAG pipelines
 
 Retrieval-augmented generation is a method for enriching LLM prompts with relevant data. Typically, the user prompt will be converting into an embedding and matching documents are fetched from a vector store. Then, the LLM is called with the matching documents as part of the prompt.

@@ -30,23 +30,28 @@ import { RadarChart } from '@mui/x-charts-premium';
 | disableAxisListener | `bool` | `false` | No |  |
 | divisions | `number` | `5` | No |  |
 | height | `number` | - | No |  |
+| hiddenItems | `Array<{ dataIndex?: number, seriesId?: number \| string, type: 'radar' }>` | - | No |  |
 | hideLegend | `bool` | - | No |  |
 | highlight | `'axis' \| 'none' \| 'series'` | `'axis'` | No |  |
 | highlightedItem | `{ dataIndex?: number, seriesId: number \| string }` | - | No |  |
 | id | `string` | - | No |  |
+| initialHiddenItems | `Array<{ dataIndex?: number, seriesId?: number \| string, type: 'radar' }>` | - | No |  |
 | loading | `bool` | `false` | No |  |
 | localeText | `object` | - | No |  |
 | margin | `number \| { bottom?: number, left?: number, right?: number, top?: number }` | - | No |  |
 | onAreaClick | `function(event: React.MouseEvent<SVGPathElement, MouseEvent>, radarItemIdentifier: RadarItemIdentifier) => void` | - | No |  |
 | onAxisClick | `function(event: MouseEvent, data: null \| ChartsAxisData) => void` | - | No |  |
+| onHiddenItemsChange | `function(hiddenItems: Array<VisibilityIdentifier>) => void` | - | No |  |
 | onHighlightChange | `function(highlightedItem: HighlightItemData \| null) => void` | - | No |  |
 | onMarkClick | `function(event: React.MouseEvent<SVGPathElement, MouseEvent>, radarItemIdentifier: RadarItemIdentifier) => void` | - | No |  |
+| onTooltipItemChange | `function(tooltipItem: SeriesItemIdentifier<TSeries> \| null) => void` | - | No |  |
 | shape | `'circular' \| 'sharp'` | `'sharp'` | No |  |
 | showToolbar | `bool` | `false` | No |  |
 | skipAnimation | `bool` | - | No |  |
 | slotProps | `object` | `{}` | No |  |
 | slots | `object` | `{}` | No |  |
 | stripeColor | `function(index: number) => string` | `(index) => index % 2 === 1 ? (theme.vars || theme).palette.text.secondary : 'none'` | No |  |
+| tooltipItem | `{ dataIndex?: number, seriesId: number \| string, type: 'radar' }` | - | No |  |
 | width | `number` | - | No |  |
 
 > **Note**: The `ref` is forwarded to the root element (SVGSVGElement).

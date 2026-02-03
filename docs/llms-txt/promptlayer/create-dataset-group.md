@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/create-dataset-group.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Dataset Group
 
 Create a new dataset group within a workspace. When a dataset group is created, an initial draft dataset (version\_number = -1) is automatically created. Dataset group names must be unique within a workspace. Supports both JWT and API key authentication.
@@ -162,7 +166,3 @@ components:
       description: Error response format.
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

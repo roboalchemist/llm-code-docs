@@ -6,13 +6,11 @@
 
 ## Usage
 
-The Main component works together with the [Header](/docs/components/header) component to create a full-height layout that extends to the viewport's available height.
+The Main component renders a `<main>` element that works together with the [Header](/docs/components/header) component to create a full-height layout that extends to the viewport's available height.
 
-<tip to="/docs/getting-started/theme/css-variables#header">
-
-The Main component uses the `--ui-header-height` CSS variable to position itself correctly below the [Header](/docs/components/header).
-
-</tip>
+> [!TIP]
+> See: /docs/getting-started/theme/css-variables#header
+> The Main component uses the `--ui-header-height` CSS variable to position itself correctly below the `Header`.
 
 ## Examples
 
@@ -47,6 +45,7 @@ Use the Main component in your `app.vue` or in a layout:
 interface MainProps {
   /**
    * The element or component this component should render as.
+   * @default "\"main\""
    */
   as?: any;
 }
@@ -77,8 +76,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

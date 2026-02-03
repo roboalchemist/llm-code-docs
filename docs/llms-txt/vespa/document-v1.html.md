@@ -599,7 +599,7 @@ In the JSON format a continuation is included _once_ at the very end of the resp
 
 In the JSON Lines format, a contination object is emitted to the stream _every time_ a backend data [bucket](../../content/buckets.html) has been fully visited, as well as at the end of the response stream. This may happen many times in a response. Each continuation object _subsumes_ the progress of previously emitted continuations, meaning that a client only needs to remember the _most recent_ continuation value it observed in the response. If the request fails prior to completion, the client can specify the most recent continuation in the next request; it will then only receive duplicates for the data buckets that were actively being processed when the request failed.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

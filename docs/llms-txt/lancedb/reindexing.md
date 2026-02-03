@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/indexing/reindexing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Keeping Indexes Up-to-Date with Reindexing
 
 > Learn how to keep your indexes up-to-date in LanceDB using incremental indexing, including best practices for adding new records without full reindexing.
@@ -42,8 +46,3 @@ LanceDB Cloud/Enterprise support incremental reindexing through an automated bac
   and operate continuously in the background, minimizing the impact on latency under high loads.
   In OSS, you must manually manage the reindexing cadence based on your data growth and performance needs.
 </Tip>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

@@ -4,8 +4,6 @@
 title: IoT Wireless Service Profile
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > IoT Wireless Service Profile
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.iotwireless_service_profile.dataset/index.html
 ---
 
 # IoT Wireless Service Profile
@@ -18,12 +16,12 @@ aws.iotwireless_service_profile
 
 ## Fields
 
-| Title      | ID   | Type   | Data Type                                 | Description |
-| ---------- | ---- | ------ | ----------------------------------------- | ----------- |
-| _key       | core | string |
-| account_id | core | string |
-| arn        | core | string | The Amazon Resource Name of the resource. |
-| id         | core | string | The ID of the service profile.            |
-| lo_ra_wan  | core | json   | Information about the service profile.    |
-| name       | core | string | The name of the resource.                 |
-| tags       | core | hstore |
+| Title      | ID   | Type       | Data Type                                 | Description |
+| ---------- | ---- | ---------- | ----------------------------------------- | ----------- |
+| _key       | core | string     |
+| account_id | core | string     |
+| arn        | core | string     | The Amazon Resource Name of the resource. |
+| id         | core | string     | The ID of the service profile.            |
+| lo_ra_wan  | core | json       | Information about the service profile.    |
+| name       | core | string     | The name of the resource.                 |
+| tags       | core | hstore_csv |

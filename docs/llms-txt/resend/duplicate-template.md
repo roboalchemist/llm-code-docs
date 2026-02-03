@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/templates/duplicate-template.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Duplicate Template
 
 > Duplicate a template.
@@ -11,7 +15,7 @@
 </ParamField>
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -21,13 +25,13 @@
   );
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->templates->duplicate('34a080c9-b17d-4187-ad80-5af20266e535');
   ```
 
-  ```py Python theme={null}
+  ```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -35,7 +39,7 @@
   resend.Templates.duplicate("34a080c9-b17d-4187-ad80-5af20266e535")
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -43,7 +47,7 @@
   Resend::Templates.duplicate("34a080c9-b17d-4187-ad80-5af20266e535")
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   import (
   	"context"
 
@@ -53,14 +57,14 @@
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
 
-  	template, err := client.Templates.DuplicateWithContext(
+  	client.Templates.DuplicateWithContext(
   		context.TODO(),
   		"34a080c9-b17d-4187-ad80-5af20266e535",
   	)
   }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{Resend, Result};
 
   #[tokio::main]
@@ -76,7 +80,7 @@
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -88,7 +92,7 @@
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -96,7 +100,7 @@
   await resend.TemplateDuplicateAsync( new Guid( "34a080c9-b17d-4187-ad80-5af20266e535" ) );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/templates/34a080c9-b17d-4187-ad80-5af20266e535/duplicate' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json'
@@ -104,7 +108,7 @@
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "template",
     "id": "e169aa45-1ecf-4183-9955-b1499d5701d3"

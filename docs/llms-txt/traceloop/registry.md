@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/prompts/registry.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prompt Registry
 
 > Manage your prompts on the Traceloop platform
@@ -81,8 +85,3 @@ If you want to make changes to your prompt after deployment, simply create a new
   If you change the names of variables or add/remove existing variables, you
   will be required to create a new prompt.
 </Warning>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

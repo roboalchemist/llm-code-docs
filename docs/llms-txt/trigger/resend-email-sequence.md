@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/resend-email-sequence.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send a sequence of emails using Resend
 
 > This example will show you how to send a sequence of emails over several days using Resend with Trigger.dev.
@@ -12,7 +16,7 @@ Additionally this task uses wait.for to wait for a certain amount of time before
 
 ## Task code
 
-```ts trigger/email-sequence.ts theme={null}
+```ts trigger/email-sequence.ts theme={"theme":"css-variables"}
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_ASP_KEY);
@@ -74,7 +78,7 @@ export const emailSequence = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "userId": "123",
   "email": "<your-test-email>", // Replace with your test email

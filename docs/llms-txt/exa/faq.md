@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/websets/faq.md
+# Source: https://exa.ai/docs/websets/faq.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # FAQ
 
@@ -93,8 +97,3 @@
   Contact your account representative or point person if you need help,
   additional credits, or have feedback about your results, or [hello@exa.ai](mailto:hello@exa.ai).
 </Accordion>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

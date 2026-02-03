@@ -1,10 +1,14 @@
 # Source: https://infisical.com/docs/documentation/platform/pki/integration-guides/tomcat-certbot.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tomcat
 
-> Learn how to issue SSL/TLS certificates from Infisical using ACME enrollment on Tomcat with Certbot
+> Learn how to issue TLS certificates from Infisical using ACME enrollment on Tomcat with Certbot
 
-This guide demonstrates how to use Infisical to issue SSL/TLS certificates for your [Apache Tomcat](https://tomcat.apache.org/) application server.
+This guide demonstrates how to use Infisical to issue TLS certificates for your [Apache Tomcat](https://tomcat.apache.org/) application server.
 
 It uses [Certbot](https://certbot.eff.org/), an installable [ACME](https://en.wikipedia.org/wiki/Automatic_Certificate_Management_Environment) client, to request and renew certificates from Infisical using the [ACME enrollment method](/documentation/platform/pki/enrollment-methods/acme) configured on a [certificate profile](/documentation/platform/pki/certificates/profiles). Unlike web servers with native Certbot plugins, Tomcat requires certificates to be manually configured after issuance.
 
@@ -30,7 +34,7 @@ Before you begin, make sure you have:
 
     From the ACME configuration, gather the following values:
 
-    * ACME Directory URL: The URL that Certbot will use to communicate with Infisical's ACME server. This takes the form `https://your-infisical-instance.com/api/v1/pki/certificate-profiles/{profile-id}/acme/directory`.
+    * ACME Directory URL: The URL that Certbot will use to communicate with Infisical's ACME server. This takes the form `https://your-infisical-instance.com/api/v1/cert-manager/certificate-profiles/{profile-id}/acme/directory`.
     * EAB Key Identifier (KID): A unique identifier that tells Infisical which ACME account is making the request.
     * EAB Secret: A secret key that authenticates your ACME client with Infisical.
 
@@ -65,7 +69,7 @@ Before you begin, make sure you have:
     ```bash  theme={"dark"}
     sudo certbot certonly \
       --standalone \
-      --server "https://your-infisical-instance.com/api/v1/pki/certificate-profiles/{profile-id}/acme/directory" \
+      --server "https://your-infisical-instance.com/api/v1/cert-manager/certificate-profiles/{profile-id}/acme/directory" \
       --eab-kid "your-eab-key-identifier" \
       --eab-hmac-key "your-eab-secret" \
       -d example.infisical.com \

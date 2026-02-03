@@ -5,10 +5,7 @@ title: Autodiscovery Container Identifiers
 description: >-
   Configure Autodiscovery templates to target specific containers using
   container identifiers and image names
-breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Autodiscovery Container
-  Identifiers
-source_url: https://docs.datadoghq.com/guide/ad_identifiers/index.html
+breadcrumbs: Docs > Containers > Containers Guides > Autodiscovery Container Identifiers
 ---
 
 # Autodiscovery Container Identifiers

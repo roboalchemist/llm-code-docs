@@ -22,7 +22,7 @@ See the [Financial Accounts for platforms Fraud guide](https://docs.stripe.com/f
 Stripe Financial Accounts for platforms are available only to platforms and connected accounts located in the United States. To be considered a US business, you must be able to demonstrate:
 
 - Your business physically operates from an address within the United States and that address can’t be a PO box, highway contract box, or private mailbox.
-- Your business has at least one account representative that lives at an address within the United States.  That address can’t be a PO box, highway contract box, or private mailbox.
+- Your business has at least one account representative that lives at an address within the United States. That address can’t be a PO box, highway contract box, or private mailbox.
 
 Business owners that reside in certain countries outside of the US are permissible, but might require enhanced review. Additionally, you can’t use the Financial Account to send or receive funds to or from sources outside the United States. Stripe prohibits using Financial Accounts for any dealings, engagement, or sale of goods or services linked directly or indirectly with jurisdictions Stripe has deemed high risk, such as Cuba, Iran, North Korea, Syria, and the Crimea, Donetsk, and Luhansk regions.
 
@@ -32,7 +32,7 @@ Stripe Financial Accounts for platforms are available only to platforms with B2B
 
 ## Connected account types
 
-Financial Accounts for platforms only supports connected accounts that don’t use a Stripe-hosted dashboard and where your platform is responsible for requirements collection and loss liability, including Custom connected accounts. Learn how to [create connected accounts](https://docs.stripe.com/connect/design-an-integration.md?connect-onboarding-surface=api&connect-dashboard-type=none&connect-economic-model=buy-rate&connect-loss-liability-owner=platform&connect-charge-type=direct) that work with Financial Accounts for platforms.
+Financial Accounts for platforms only supports connected accounts that don’t use a Stripe-hosted dashboard and where your platform is responsible for requirements collection and loss liability, including Custom connected accounts. Learn how to [create connected accounts](https://docs.stripe.com/connect/interactive-platform-guide.md?connect-charge-type=direct&connect-loss-liability-owner=platform) that work with Financial Accounts for platforms.
 
 As a platform with connected accounts, you’re responsible for maintaining a minimum API version, communicating terms of service updates to your connected accounts, handling information requests from them, and providing them with support. Because your platform is ultimately responsible for the losses your connected accounts incur, you’re also responsible for vetting them for fraud. To learn more, read the [Financial Accounts for platforms fraud guide](https://docs.stripe.com/financial-accounts/connect/examples/fraud-guide.md).
 

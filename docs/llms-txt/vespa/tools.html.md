@@ -2,14 +2,6 @@
 
 # Source: https://docs.vespa.ai/en/reference/operations/self-managed/tools.html.md
 
-# Source: https://docs.vespa.ai/en/reference/operations/tools.html.md
-
-# Source: https://docs.vespa.ai/en/reference/operations/self-managed/tools.html.md
-
-# Source: https://docs.vespa.ai/en/reference/operations/tools.html.md
-
-# Source: https://docs.vespa.ai/en/reference/operations/self-managed/tools.html.md
-
 # Vespa Command-line Tools
 
  
@@ -801,7 +793,7 @@ In this example the input is generated with `vespa-significance export`. This is
 | --format \<FORMAT\> | Input format. Format can be `jsonl` or `vstsv`. Defaults to `jsonl`. |
 | -o, --out \<model.json[.zst]\> | Output [significance model](../../../ranking/significance#significance-model-file). |
 | -f, --field \<field\> | JSONL: the name of the text field to analyse. VSTSV: No effect. |
-| -l, --language \<tag[,tag...]\> | Comma-separated ISO language tags. The first tag controls tokenization; additional tags are stored in the model. Required for JSONL, optional for VSTSV (defaults to `un`). See supported tags in [linguistics in Vespa](../../../linguistics/linguistics.html#default-languages). |
+| -l, --language \<tag[,tag...]\> | Comma-separated ISO language tags. The first tag controls tokenization; additional tags are stored in the model. Required for JSONL, optional for VSTSV (defaults to `un`). See supported tags in [linguistics in Vespa](../../../linguistics/linguistics-opennlp.html#default-languages). |
 | -zst, --zst-compression \<ENABLED\> | Enable Zstandard compression of the output. Enabled can be `true` or `false`. Default `false`. When `true`, the output file must end with `.zst`. |
 
 ### vespa-significance export
@@ -1070,7 +1062,7 @@ Synopsis: `vespa-visit-target [options]`
 | -t, --bindtosocket \<port\> | Bind to TCP port. One, and only one, of the binding options must be set |
 | -v, --verbose | Indent output, show progress and info on STDERR |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

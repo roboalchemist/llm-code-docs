@@ -6,9 +6,8 @@ description: >-
   Install and configure the Datadog Agent on Amazon EKS using the Datadog
   Operator as an EKS add-on
 breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Installing the Datadog Agent
-  on Amazon EKS with the Datadog Operator add-on
-source_url: https://docs.datadoghq.com/guide/operator-eks-addon/index.html
+  Docs > Containers > Containers Guides > Installing the Datadog Agent on Amazon
+  EKS with the Datadog Operator add-on
 ---
 
 # Installing the Datadog Agent on Amazon EKS with the Datadog Operator add-on

@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-laravel-smtp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails using Laravel with SMTP
 
 > Learn how to send your first email using Laravel with SMTP.
@@ -15,7 +19,7 @@ To get the most out of this guide, you'll need to:
 
 First, configure your Resend SMTP details in your application's `.env` file:
 
-```ini .env theme={null}
+```ini .env theme={"theme":{"light":"github-light","dark":"vesper"}}
 MAIL_MAILER=smtp
 MAIL_HOST=smtp.resend.com
 MAIL_PORT=587
@@ -30,7 +34,7 @@ MAIL_FROM_NAME=Acme
 
 Now you're ready to send emails with Laravel's powerful email service. Here's an example of how you could send your first email using Resend SMTP:
 
-```php OrderShipmentController.php theme={null}
+```php OrderShipmentController.php theme={"theme":{"light":"github-light","dark":"vesper"}}
 <?php
 
 namespace App\Http\Controllers;

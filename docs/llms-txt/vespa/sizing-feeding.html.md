@@ -332,7 +332,7 @@ vds.idealstate.merge_bucket.done_failed
 ```
  |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

@@ -1,22 +1,34 @@
 # Source: https://dev.writer.com/home/observability.md
 
-# Track usage and spend
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-AI Studio provides observability tools to help you understand how your organization is using AI Studio.
+# Platform observability
 
-View your organization's usage and spend in the Consumption tab in AI Studio.
+> Monitor usage, costs, and agent performance across your organization
 
-You can also view metrics and session logs for individual agents. See [Agent observability](/home/agent-observability) for more information.
+AI Studio provides observability tools to help you understand how your organization uses AI and how your agents perform. Track spending and token usage at the organization level, or drill down into individual agent sessions to debug and optimize performance.
 
-## Consumption view
+<CardGroup cols={2}>
+  <Card title="Usage and spend" icon="chart-pie" href="#track-usage-and-spend">
+    Monitor organization-wide costs, token usage, and consumption trends.
+  </Card>
+
+  <Card title="Agent performance" icon="gauge-high" href="/home/agent-observability">
+    View session logs, debug conversations, and track agent-level metrics.
+  </Card>
+</CardGroup>
+
+## Track usage and spend
 
 <Info>
-  The Consumption view is only available to [organization admins](/home/account_management).
+  The Consumption view is only available to [organization admins](https://support.writer.com).
 </Info>
 
 The Consumption view in AI Studio gives you a detailed view of your usage and spend month-by-month across all agents.
 
-To access this view, [log in to AI Studio](https://app.writer.com/aistudio) and click the **Consumption** tab in the left sidebar.
+To access this view, [log in to AI Studio](https://app.writer.com/aistudio) and select the **Consumption** tab in the left sidebar.
 
 <img src="https://mintcdn.com/writer/EtzIGhya5-RmdX2Q/images/home/consumption-sidebar.png?fit=max&auto=format&n=EtzIGhya5-RmdX2Q&q=85&s=ab19b2ef2bb32d3fb54acce3836b7081" alt="Consumption view in AI Studio" data-og-width="276" width="276" data-og-height="322" height="322" data-path="images/home/consumption-sidebar.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/writer/EtzIGhya5-RmdX2Q/images/home/consumption-sidebar.png?w=280&fit=max&auto=format&n=EtzIGhya5-RmdX2Q&q=85&s=edb4fdd6d2414c31b5380c8be62732c2 280w, https://mintcdn.com/writer/EtzIGhya5-RmdX2Q/images/home/consumption-sidebar.png?w=560&fit=max&auto=format&n=EtzIGhya5-RmdX2Q&q=85&s=e79c1bf0189bf976cf7031ade91f1ebc 560w, https://mintcdn.com/writer/EtzIGhya5-RmdX2Q/images/home/consumption-sidebar.png?w=840&fit=max&auto=format&n=EtzIGhya5-RmdX2Q&q=85&s=e4351b1596765558f41fcd825dff3e34 840w, https://mintcdn.com/writer/EtzIGhya5-RmdX2Q/images/home/consumption-sidebar.png?w=1100&fit=max&auto=format&n=EtzIGhya5-RmdX2Q&q=85&s=2ce6eb112595b0db4256515f7d2cdfd8 1100w, https://mintcdn.com/writer/EtzIGhya5-RmdX2Q/images/home/consumption-sidebar.png?w=1650&fit=max&auto=format&n=EtzIGhya5-RmdX2Q&q=85&s=2b64ed70376a2f32dbd02a04abfa0c46 1650w, https://mintcdn.com/writer/EtzIGhya5-RmdX2Q/images/home/consumption-sidebar.png?w=2500&fit=max&auto=format&n=EtzIGhya5-RmdX2Q&q=85&s=26643b20a36917107d3025d31033ae03 2500w" />
 
@@ -45,3 +57,7 @@ The activity view shows the following information:
 * **Top agents by token usage**: The top five agents with the most token usage.
 * **Token usage by agent type**: A day-by-day breakdown of the token usage by agent type (API, Framework, and No-Code).
 * **Token usage by model**: The total number of tokens used for each model.
+
+## Next steps
+
+Learn how to monitor individual agent performance with [session logs and agent metrics](/home/agent-observability).

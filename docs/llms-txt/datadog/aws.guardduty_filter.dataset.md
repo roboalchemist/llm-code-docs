@@ -4,8 +4,6 @@
 title: GuardDuty Filter
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > GuardDuty Filter
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.guardduty_filter.dataset/index.html
 ---
 
 # GuardDuty Filter
@@ -18,13 +16,13 @@ aws.guardduty_filter
 
 ## Fields
 
-| Title            | ID   | Type   | Data Type                                                                                                                                      | Description |
-| ---------------- | ---- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| _key             | core | string |
-| account_id       | core | string |
-| action           | core | string | Specifies the action that is to be applied to the findings that match the filter.                                                              |
-| description      | core | string | The description of the filter.                                                                                                                 |
-| finding_criteria | core | json   | Represents the criteria to be used in the filter for querying findings.                                                                        |
-| name             | core | string | The name of the filter.                                                                                                                        |
-| rank             | core | int64  | Specifies the position of the filter in the list of current filters. Also specifies the order in which this filter is applied to the findings. |
-| tags             | core | hstore |
+| Title            | ID   | Type       | Data Type                                                                                                                                      | Description |
+| ---------------- | ---- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key             | core | string     |
+| account_id       | core | string     |
+| action           | core | string     | Specifies the action that is to be applied to the findings that match the filter.                                                              |
+| description      | core | string     | The description of the filter.                                                                                                                 |
+| finding_criteria | core | json       | Represents the criteria to be used in the filter for querying findings.                                                                        |
+| name             | core | string     | The name of the filter.                                                                                                                        |
+| rank             | core | int64      | Specifies the position of the filter in the list of current filters. Also specifies the order in which this filter is applied to the findings. |
+| tags             | core | hstore_csv |

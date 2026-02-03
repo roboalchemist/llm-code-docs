@@ -12,4 +12,4 @@ Each lesson will prepare you for real-world API scraping, and will help put yet 
 
 ## Next up
 
-In our https://docs.apify.com/academy/api-scraping/general-api-scraping/locating-and-learning.md, we will take a look at how to locate a website's API endpoints with DevTools, and how to use them. This is your entrypoint into learning how to scrape APIs.
+In our [first lesson](https://docs.apify.com/academy/api-scraping/general-api-scraping/locating-and-learning.md), we will take a look at how to locate a website's API endpoints with DevTools, and how to use them. This is your entrypoint into learning how to scrape APIs.

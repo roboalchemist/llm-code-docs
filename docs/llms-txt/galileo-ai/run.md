@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/concepts/run.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Run
 
 > Runs in Galileo are experiments or iterations done within a [project](/galileo/gen-ai-studio-products/galileo-evaluate/concepts/project).
@@ -20,7 +24,7 @@ Runs can be created either from the Console, or via code.
 
 Creating runs from code:
 
-```py
+```py  theme={null}
 from promptquality import Scorers
 from promptquality import SupportedModels
 from datetime import datetime

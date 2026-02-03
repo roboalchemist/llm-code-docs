@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/compatibility/by-region-and-make.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # By Region and Make
 
 > Compatibility will vary by model, year, and trim. This API is for reference purposes only and it showcases vehicle makes and models that may be compatible with Smartcar and it does not guarantee that a specific vehicle will be compatible.

@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/ai/kiln.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Kiln AI
 
 [**Kiln**](https://kiln.tech) is a free tool for building production-ready AI systems, combining an intuitive desktop application and an open-source Python library. It supports RAG pipelines, evaluations, agents, MCP tool-calling, synthetic data generation, and fine-tuning. Kiln provides deep integration with LanceDB for vector search, full-text search (BM25), and hybrid search.
@@ -43,8 +47,3 @@ See the [Kiln documentation for creating a RAG system](https://docs.kiln.tech/do
 * [Kiln GitHub Repository](https://github.com/Kiln-AI/Kiln)
 * [Building RAG Systems - Kiln Documentation](https://docs.kiln.tech/docs/documents-and-search-rag)
 * [Python Library](https://pypi.org/project/kiln-ai/) or `pip install kiln_ai`
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/agent-builder/summarize-pdfs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Upload, parse, and summarize PDFs
 
 > Build a PDF research paper summarizer with Agent Builder. Upload PDFs, parse content, and generate summaries for specific personas.

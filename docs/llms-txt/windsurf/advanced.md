@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/windsurf/advanced.md
 
-# Advanced
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Advanced Configuration
+
+> Advanced Windsurf configurations including SSH support, Dev Containers, WSL, extension marketplace settings, and gitignore access for Cascade.
 
 All advanced configurations can be found in Windsurf Settings which can be accessed by the top right dropdown → Windsurf Settings or Command Palette (Ctrl/⌘+Shift+P) → Open Windsurf Settings Page.
 
@@ -19,25 +25,11 @@ This extension has worked great for our internal development, but there are some
 
 * We don't have all the features of the Microsoft SSH extension right now. We mostly just support the important thing: connecting to a host. If you have feature requests, let us know!
 
-* Connecting to a remote host via SSH then accessing a devcontainer on that remote host won't work like it does in VSCode. (We're working on it!) For now, if you want to do this, we recommend instead manually setting up an SSH daemon inside your devcontainer. Here is the set-up which we've found to work, but please be careful to make sure it's right for your use-case.
+* To access a devcontainer on a remote host after connecting via SSH, use the Command Palette (Ctrl/Cmd+Shift+P) and choose one of the following options:
 
-  1. Inside the devcontainer, run this once (running multiple times may mess up your `sshd_config`):
-
-  ```
-  sudo -s -- <<HERE
-  sed -i '/SSO SSH Config START/Q' /etc/ssh/sshd_config
-  echo "Port 2222" >> /etc/ssh/sshd_config
-  ssh-keygen -A
-  HERE
-  ```
-
-  2. Inside the devcontainer, run this in a terminal you keep alive (e.g. via tmux):
-
-  ```
-  sudo /usr/sbin/sshd -D
-  ```
-
-  3. Then just connect to your remote host via SSH in windsurf, but using the port 2222.
+<Frame>
+  <img src="https://mintcdn.com/codeium/N8HSATTxHA_U1q9o/assets/windsurf/ssh-devcontainer-options.png?fit=max&auto=format&n=N8HSATTxHA_U1q9o&q=85&s=954ffbef6cbc583dcfb0a472bf38c141" data-og-width="394" width="394" data-og-height="65" height="65" data-path="assets/windsurf/ssh-devcontainer-options.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/N8HSATTxHA_U1q9o/assets/windsurf/ssh-devcontainer-options.png?w=280&fit=max&auto=format&n=N8HSATTxHA_U1q9o&q=85&s=4a6562c7e758353186a167746b3be746 280w, https://mintcdn.com/codeium/N8HSATTxHA_U1q9o/assets/windsurf/ssh-devcontainer-options.png?w=560&fit=max&auto=format&n=N8HSATTxHA_U1q9o&q=85&s=eb5e820959d6f2cd9ecb5a94e8342d6e 560w, https://mintcdn.com/codeium/N8HSATTxHA_U1q9o/assets/windsurf/ssh-devcontainer-options.png?w=840&fit=max&auto=format&n=N8HSATTxHA_U1q9o&q=85&s=c8433f6f0860fc79e9e8a3aeb289c57d 840w, https://mintcdn.com/codeium/N8HSATTxHA_U1q9o/assets/windsurf/ssh-devcontainer-options.png?w=1100&fit=max&auto=format&n=N8HSATTxHA_U1q9o&q=85&s=fb81aa94d20a4d908b3be1aefb10c3a6 1100w, https://mintcdn.com/codeium/N8HSATTxHA_U1q9o/assets/windsurf/ssh-devcontainer-options.png?w=1650&fit=max&auto=format&n=N8HSATTxHA_U1q9o&q=85&s=5d511f59a8a5a1997cccf16d771c2332 1650w, https://mintcdn.com/codeium/N8HSATTxHA_U1q9o/assets/windsurf/ssh-devcontainer-options.png?w=2500&fit=max&auto=format&n=N8HSATTxHA_U1q9o&q=85&s=5b1235472b7e82598f6bbb08770a52aa 2500w" />
+</Frame>
 
 * SSH agent-forwarding is on by default, and will use Windsurf's latest connection to that host. If you're having trouble with it, try reloading the window to refresh the connection.
 

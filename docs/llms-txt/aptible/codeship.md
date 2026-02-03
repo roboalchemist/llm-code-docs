@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/app-guides/integrate-aptible-with-ci/codeship.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Codeship
 
 You don't need to create a new SSH public key for your robot user when using Codeship. Once you've completed the steps for [CI Integration](/how-to-guides/app-guides/integrate-aptible-with-ci/overview), set up Codeship as follows:

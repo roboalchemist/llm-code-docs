@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/expected-outputs/deterministic/
+
 # Deterministic Metrics for LLM Output Validation
 
 These metrics are created by logical tests that are run on LLM output.

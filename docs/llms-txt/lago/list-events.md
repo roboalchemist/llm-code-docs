@@ -1,267 +1,279 @@
 # Source: https://getlago.com/docs/api-reference/events/list-events.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List all events
 
 > This endpoint is used for retrieving all events.
 
+
+
 ## OpenAPI
 
 ````yaml GET /events
+openapi: 3.1.0
+info:
+  title: Lago API documentation
+  description: >-
+    Lago API allows your application to push customer information and metrics
+    (events) from your application to the billing application.
+  version: 1.41.0
+  license:
+    name: AGPLv3
+    identifier: AGPLv3
+  contact:
+    email: tech@getlago.com
+servers:
+  - url: https://api.getlago.com/api/v1
+    description: US Lago cluster
+  - url: https://api.eu.getlago.com/api/v1
+    description: EU Lago cluster
+security:
+  - bearerAuth: []
+tags:
+  - name: activity_logs
+    description: Everything about Activity logs
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/audit-logs/activity-logs-object
+  - name: analytics
+    description: Everything about Analytics
+  - name: api_logs
+    description: Everything about API logs
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/audit-logs/api-logs-object
+  - name: billable_metrics
+    description: Everything about Billable metric collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/billable-metrics/object
+  - name: features
+    description: Everything about Feature collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/features/object
+  - name: entitlements
+    description: Everything about Entitlement collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/entitlements/object
+  - name: billing_entities
+    description: Everything about Billing Entities
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/billing-entities/object
+  - name: customers
+    description: Everything about Customer collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/customers/object
+  - name: plans
+    description: Everything about Plan collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/plans/object
+  - name: subscriptions
+    description: Everything about Subscription collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/subscriptions/subscription-object
+  - name: events
+    description: Everything about Event collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/events/event-object
+  - name: organizations
+    description: Everything about Organization collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/organizations/organization-object
+  - name: taxes
+    description: Everything about Tax collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/taxes/tax-object
+  - name: coupons
+    description: Everything about Coupon collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/coupons/coupon-object
+  - name: add_ons
+    description: Everything about Add-on collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/add-ons/add-on-object
+  - name: fees
+    description: Everything about Fees
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/invoices/invoice-object#fee-object
+  - name: invoices
+    description: Everything about Invoice collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/invoices/invoice-object
+  - name: wallets
+    description: Everything about Wallet collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/wallets/wallet-object
+  - name: credit_notes
+    description: Everything about Credit notes collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/credit-notes/credit-note-object
+  - name: webhooks
+    description: Everything about Webhooks
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/webhooks/format---signature#1-retrieve-the-public-key
+  - name: webhook_endpoints
+    description: Everything about Webhook Endpoints
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/webhook-endpoints/webhook-endpoint-object
+  - name: payment_receipts
+    description: Everything about Payment receipts
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/payment-receipts/payment-receipt-object
+  - name: payment_requests
+    description: Everything about PaymentRequests
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/payment-requests/payment-request-object
+  - name: payments
+    description: Everything about Payments
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/payments/payment-object
+externalDocs:
+  description: Lago Github
+  url: https://github.com/getlago
 paths:
-  path: /events
-  method: get
-  servers:
-    - url: https://api.getlago.com/api/v1
-      description: US Lago cluster
-    - url: https://api.eu.getlago.com/api/v1
-      description: EU Lago cluster
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        page:
-          schema:
-            - type: integer
-              required: false
-              description: Page number.
-              example: 1
+  /events:
+    get:
+      tags:
+        - events
+      summary: List all events
+      description: This endpoint is used for retrieving all events.
+      operationId: findAllEvents
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/per_page'
+        - $ref: '#/components/parameters/external_subscription_id'
+        - name: code
+          in: query
+          description: Filter events by its code.
+          required: false
           explode: true
-        per_page:
           schema:
-            - type: integer
-              required: false
-              description: Number of records per page.
-              example: 20
+            type: string
+            example: event-123
+        - name: timestamp_from_started_at
+          in: query
+          description: >-
+            Requires `external_subscription_id` to be set. Filter events by
+            timestamp after the subscription started at datetime.
+          required: false
           explode: true
-        external_subscription_id:
           schema:
-            - type: string
-              required: false
-              description: External subscription ID
-              example: 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
+            type: boolean
+            example: true
+        - name: timestamp_from
+          in: query
+          description: Filter events by timestamp starting from a specific date.
+          required: false
           explode: true
-        code:
           schema:
-            - type: string
-              required: false
-              description: Filter events by its code.
-              example: event-123
+            type: string
+            format: date-time
+            example: '2022-08-08T00:00:00Z'
+        - name: timestamp_to
+          in: query
+          description: Filter events by timestamp up to a specific date.
+          required: false
           explode: true
-        timestamp_from_started_at:
           schema:
-            - type: boolean
-              required: false
-              description: >-
-                Requires `external_subscription_id` to be set. Filter events by
-                timestamp after the subscription started at datetime.
-              example: true
-          explode: true
-        timestamp_from:
-          schema:
-            - type: string
-              required: false
-              description: Filter events by timestamp starting from a specific date.
-              format: date-time
-              example: '2022-08-08T00:00:00Z'
-          explode: true
-        timestamp_to:
-          schema:
-            - type: string
-              required: false
-              description: Filter events by timestamp up to a specific date.
-              format: date-time
-              example: '2022-08-08T00:00:00Z'
-          explode: true
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              events:
-                allOf:
-                  - type: array
-                    items:
-                      $ref: '#/components/schemas/EventObject'
-              meta:
-                allOf:
-                  - $ref: '#/components/schemas/PaginationMeta'
-            refIdentifier: '#/components/schemas/EventsPaginated'
-            requiredProperties:
-              - events
-              - meta
-        examples:
-          example:
-            value:
-              events:
-                - lago_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                  transaction_id: transaction_1234567890
-                  lago_customer_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                  code: storage
-                  timestamp: '2022-04-29T08:59:51.123Z'
-                  precise_total_amount_cents: '1234.56'
-                  properties:
-                    gb: 10
-                  lago_subscription_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                  external_subscription_id: sub_1234567890
-                  created_at: '2022-04-29T08:59:51Z'
-              meta:
-                current_page: 2
-                next_page: 3
-                prev_page: 1
-                total_pages: 4
-                total_count: 70
-        description: Events
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: integer
-                    format: int32
-                    example: 401
-              error:
-                allOf:
-                  - type: string
-                    example: Unauthorized
-            refIdentifier: '#/components/schemas/ApiErrorUnauthorized'
-            requiredProperties:
-              - status
-              - error
-        examples:
-          example:
-            value:
-              status: 401
-              error: Unauthorized
-        description: Unauthorized error
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: integer
-                    format: int32
-                    example: 403
-              error:
-                allOf:
-                  - type: string
-                    example: Forbidden
-              code:
-                allOf:
-                  - type: string
-                    example: feature_unavailable
-            refIdentifier: '#/components/schemas/ApiErrorForbidden'
-            requiredProperties:
-              - status
-              - error
-              - code
-        examples:
-          example:
-            value:
-              status: 403
-              error: Forbidden
-              code: feature_unavailable
-        description: Forbidden
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: integer
-                    format: int32
-                    example: 422
-              error:
-                allOf:
-                  - type: string
-                    example: Unprocessable entity
-              code:
-                allOf:
-                  - type: string
-                    example: validation_errors
-              error_details:
-                allOf:
-                  - type: object
-            refIdentifier: '#/components/schemas/ApiErrorUnprocessableEntity'
-            requiredProperties:
-              - status
-              - error
-              - code
-              - error_details
-        examples:
-          example:
-            value:
-              status: 422
-              error: Unprocessable entity
-              code: validation_errors
-              error_details: {}
-        description: Unprocessable entity error
-  deprecated: false
-  type: path
+            type: string
+            format: date-time
+            example: '2022-08-08T00:00:00Z'
+      responses:
+        '200':
+          description: Events
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventsPaginated'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
 components:
+  parameters:
+    page:
+      name: page
+      in: query
+      description: Page number.
+      required: false
+      explode: true
+      schema:
+        type: integer
+        example: 1
+    per_page:
+      name: per_page
+      in: query
+      description: Number of records per page.
+      required: false
+      explode: true
+      schema:
+        type: integer
+        example: 20
+    external_subscription_id:
+      name: external_subscription_id
+      in: query
+      description: External subscription ID
+      required: false
+      explode: true
+      schema:
+        type: string
+        example: 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
   schemas:
-    PaginationMeta:
+    EventsPaginated:
       type: object
       required:
-        - current_page
-        - total_pages
-        - total_count
+        - events
+        - meta
       properties:
-        current_page:
-          type: integer
-          description: Current page.
-          example: 2
-        next_page:
-          type:
-            - integer
-            - 'null'
-          description: Next page.
-          example: 3
-        prev_page:
-          type:
-            - integer
-            - 'null'
-          description: Previous page.
-          example: 1
-        total_pages:
-          type: integer
-          description: Total number of pages.
-          example: 4
-        total_count:
-          type: integer
-          description: Total number of records.
-          example: 70
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventObject'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
     EventObject:
       type: object
       required:
-        - lago_id
         - transaction_id
         - lago_customer_id
         - code
         - timestamp
         - lago_subscription_id
         - external_subscription_id
-        - created_at
       properties:
         lago_id:
-          type: string
+          type:
+            - string
+            - 'null'
           format: uuid
           example: 1a901a90-1a90-1a90-1a90-1a901a901a90
           description: >-
@@ -362,7 +374,9 @@ components:
             It is a mandatory field when the customer possesses multiple
             subscriptions or when the `external_customer_id` is not provided.
         created_at:
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
           example: '2022-04-29T08:59:51Z'
           description: >-
@@ -370,5 +384,109 @@ components:
             presented in the ISO 8601 datetime format, specifically in
             Coordinated Universal Time (UTC). It provides the precise timestamp
             of when the event's record was created within the Lago application
+    PaginationMeta:
+      type: object
+      required:
+        - current_page
+        - total_pages
+        - total_count
+      properties:
+        current_page:
+          type: integer
+          description: Current page.
+          example: 2
+        next_page:
+          type:
+            - integer
+            - 'null'
+          description: Next page.
+          example: 3
+        prev_page:
+          type:
+            - integer
+            - 'null'
+          description: Previous page.
+          example: 1
+        total_pages:
+          type: integer
+          description: Total number of pages.
+          example: 4
+        total_count:
+          type: integer
+          description: Total number of records.
+          example: 70
+    ApiErrorUnauthorized:
+      type: object
+      required:
+        - status
+        - error
+      properties:
+        status:
+          type: integer
+          format: int32
+          example: 401
+        error:
+          type: string
+          example: Unauthorized
+    ApiErrorForbidden:
+      type: object
+      required:
+        - status
+        - error
+        - code
+      properties:
+        status:
+          type: integer
+          format: int32
+          example: 403
+        error:
+          type: string
+          example: Forbidden
+        code:
+          type: string
+          example: feature_unavailable
+    ApiErrorUnprocessableEntity:
+      type: object
+      required:
+        - status
+        - error
+        - code
+        - error_details
+      properties:
+        status:
+          type: integer
+          format: int32
+          example: 422
+        error:
+          type: string
+          example: Unprocessable entity
+        code:
+          type: string
+          example: validation_errors
+        error_details:
+          type: object
+  responses:
+    Unauthorized:
+      description: Unauthorized error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiErrorUnauthorized'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiErrorForbidden'
+    UnprocessableEntity:
+      description: Unprocessable entity error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiErrorUnprocessableEntity'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
 
 ````

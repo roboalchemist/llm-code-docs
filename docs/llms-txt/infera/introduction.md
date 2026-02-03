@@ -2,52 +2,16 @@
 
 # Source: https://docs.infera.org/api-reference/introduction.md
 
-# Source: https://docs.infera.org/introduction.md
-
-# Source: https://docs.infera.org/api-reference/introduction.md
-
-# Source: https://docs.infera.org/introduction.md
-
-# Source: https://docs.infera.org/api-reference/introduction.md
-
-# Source: https://docs.infera.org/introduction.md
-
-# Source: https://docs.infera.org/api-reference/introduction.md
-
-# Source: https://docs.infera.org/introduction.md
-
-# Source: https://docs.infera.org/api-reference/introduction.md
-
-# Source: https://docs.infera.org/introduction.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.infera.org/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Introduction
 
-> Begin your journey with Infera by following these simple steps to set up and run a node, discover use cases, and explore how the network operates.
+<Note>
+  This API documentation is meant for developers who want to build on top of Infera. If you are only looking to run a node, learn more about that [here](/node/quickstart)
+</Note>
 
-## How to run a node and use the network
+## Authentication
 
-<CardGroup cols={2}>
-  <Card title="Run a node" icon="bolt" href="/node">
-    Learn how to set up and operate a node to contribute to the Infera Network.
-  </Card>
-
-  <Card title="API Reference" icon="code" href="/api-reference">
-    Explore the API to start developing with compute available on the Infera Network.
-  </Card>
-</CardGroup>
-
-## Learn about Infera and our mission
-
-<CardGroup cols={2}>
-  <Card title="About" icon="bolt" href="/about">
-    Discover the vision and mission behind the Infera Network.
-  </Card>
-
-  <Card title="Litepaper" icon="code" href="/litepaper">
-    Explore the core concepts and framework of the Infera Network.
-  </Card>
-
-  <Card title="Challenges and Solutions" icon="code" href="/challenges">
-    Learn about the challenges in the space and our approach to solve these challenges.
-  </Card>
-</CardGroup>
+All API endpoints are authenticated using an **api-key** that can only be granted by talking to a member of the developer team. Join our [Discord](https://discord.com/invite/infera) and tell us what you want to build, an api-key will be supplied!

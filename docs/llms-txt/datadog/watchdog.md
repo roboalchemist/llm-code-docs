@@ -4,7 +4,6 @@
 title: Datadog Watchdogâ¢
 description: Automatically detect potential application and infrastructure issues
 breadcrumbs: Docs > Datadog Watchdogâ¢
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Datadog Watchdogâ¢

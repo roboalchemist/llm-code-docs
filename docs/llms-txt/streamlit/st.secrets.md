@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/connections/st.secrets
+
 # st.secrets
 
 `st.secrets` provides a dictionary-like interface to access secrets stored in a `secrets.toml` file. It behaves similarly to `st.session_state`. `st.secrets` can be used with both key and attribute notation. For example, `st.secrets.your_key` and `st.secrets[&quot;your_key&quot;]` refer to the same value. For more information about using `st.secrets`, see [Secrets management](/develop/concepts/connections/secrets-management).

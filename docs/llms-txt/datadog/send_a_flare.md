@@ -4,7 +4,6 @@
 title: Agent Flare
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Agent > Agent Troubleshooting > Agent Flare
-source_url: https://docs.datadoghq.com/troubleshooting/send_a_flare/index.html
 ---
 
 # Agent Flare

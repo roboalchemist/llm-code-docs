@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/cookbooks/cost-tracking.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cost Tracking & Optimization
 
 > Monitor LLM spending, optimize costs, and understand unit economics across your AI application

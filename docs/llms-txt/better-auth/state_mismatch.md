@@ -1,14 +1,10 @@
-# Source: https://www.better-auth.com/llms.txt/docs/errors/state_mismatch.md
+# Source: https://www.better-auth.com/llms.txt/docs/reference/errors/state_mismatch.md
 
-# State mismatch
+# state_mismatch
 
 The state parameter in the request doesn't match the state parameter in the cookie.
 
-***
 
-title: State mismatch
-description: The state parameter in the request doesn't match the state parameter in the cookie.
-------------------------------------------------------------------------------------------------
 
 ## What is it?
 

@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/telephony/outbound-calls.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Outbound Calls
 
 > Configure AI agents to make outbound phone calls to users.
@@ -170,8 +174,3 @@ For more see [Template Context →](/agents/making-calls#template-context-and-va
 * Learn about [Call Transfers](/telephony/call-transfers) to escalate calls to human agents
 * Read [Managing Concurrency](/gettingstarted/concurrency) to learn how to keep the pipe full when making many calls
 * Use [Outbound Call Scheduler](/telephony/outbound-call-scheduler) for bulk calling campaigns
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

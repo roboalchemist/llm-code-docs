@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Account Management > Datadog Audit Trail > Forwarding Audit Events to
   Custom Destinations
-source_url: https://docs.datadoghq.com/audit_trail/forwarding_audit_events/index.html
 ---
 
 # Forwarding Audit Events to Custom Destinations

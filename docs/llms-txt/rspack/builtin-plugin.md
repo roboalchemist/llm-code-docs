@@ -53,8 +53,8 @@ pub struct CompilerHooks {
 
 There are 5 kinds of exec kind:
 
-* `AsyncSeries`, return value is `Result<()>`
-* `AsyncSeriesBail`, return value is `Result<Option<T>>`
-* `AsyncParallel`, return value is `Result<()>`
-* `SyncSeries`, return value is `Result<()>`
-* `SyncSeriesBail`, return value is `Result<Option<T>>`
+- `AsyncSeries`, return value is `Result<()>`
+- `AsyncSeriesBail`, return value is `Result<Option<T>>`
+- `AsyncParallel`, return value is `Result<()>`
+- `SyncSeries`, return value is `Result<()>`
+- `SyncSeriesBail`, return value is `Result<Option<T>>`

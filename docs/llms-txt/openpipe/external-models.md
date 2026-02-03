@@ -2,77 +2,66 @@
 
 # Source: https://docs.openpipe.ai/features/chat-completions/external-models.md
 
-# Source: https://docs.openpipe.ai/features/external-models.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.openpipe.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.openpipe.ai/features/chat-completions/external-models.md
-
-# Source: https://docs.openpipe.ai/features/external-models.md
-
-# Source: https://docs.openpipe.ai/features/chat-completions/external-models.md
-
-# Source: https://docs.openpipe.ai/features/external-models.md
-
-# Source: https://docs.openpipe.ai/features/chat-completions/external-models.md
-
-# Source: https://docs.openpipe.ai/features/external-models.md
-
-# Source: https://docs.openpipe.ai/features/chat-completions/external-models.md
-
-# Source: https://docs.openpipe.ai/features/external-models.md
-
-# External Models
+# Proxying to External Models
 
 <Info>
-  Before defining a custom external model provider, check your project settings to see if the
-  provider you're looking for is already supported.
+  Adding custom external models is not required to proxy requests to Anthropic, Gemini, or OpenAI
+  models. See our docs on proxying to [Anthropic](/features/chat-completions/anthropic),
+  [Gemini](/features/chat-completions/gemini), or
+  [OpenAI](/features/request-logs/logging-requests#proxy) for more information.
 </Info>
 
-To use a custom external model from a cloud provider that OpenPipe doesn't support, you can add an external model provider to your project. External models can be used for the following purposes:
+To proxy requests to models from unsupported providers, you'll need to complete the following steps:
 
-* [Proxying chat completions](/features/chat-completions/external-models)
-* [Filtering and relabeling your data](/features/evaluations/head-to-head)
-* [Evaluating outputs through criteria](/features/criteria/quick-start)
+1. Add an external model provider
+2. Update your chat completion requests
 
-The instructions below demonstrate how to add a DeepSeek (OpenAI Compatible) and Azure provider to your project.
+To add an external model provider to your project, follow the instructions in [External Models](/features/external-models). Once it's been added, continue to the next step.
 
-### Creating an external model provider
+### Updating your chat completion requests
 
-Find the **External Model Providers** section of your project settings, and click the **Add Provider** button.
+Set the model parameter in your requests to match this format: `openpipe:<external-model-provider-slug>/<external-model-slug>`.
 
-<Frame>![](https://mintlify.s3.us-west-1.amazonaws.com/openpipe/images/external-models/add-provider-button.png)</Frame>
-
-Give your custom provider a slug, API key, and add a custom base url if necessary. The provider slug should be unique,
-and will be used when we proxy requests to models associated with this provider.
+For example, if you're calling <b>gpt-4o-2024-08-06</b> on Azure, the model parameter should be `openpipe:custom-azure-provider/gpt-4o-2024-08-06`.
 
 <Tabs>
-  <Tab title="DeepSeek (OpenAI Compatible)">
-    <Frame>![](https://mintlify.s3.us-west-1.amazonaws.com/openpipe/images/external-models/add-provider-modal-deepseek.png)</Frame>
+  <Tab title="Python">
+    ```python  theme={null}
+    from openpipe import OpenAI
+
+    # Find the config values in "Installing the SDK"
+    client = OpenAI()
+
+    completion = client.chat.completions.create(
+        model="openpipe:custom-azure-provider/gpt-4o-2024-08-06",
+        messages=[{"role": "system", "content": "count to 10"}],
+        metadata={"prompt_id": "counting", "any_key": "any_value"},
+    )
+    ```
   </Tab>
 
-  <Tab title="Azure Endpoint">
-    <Frame>![](https://mintlify.s3.us-west-1.amazonaws.com/openpipe/images/external-models/add-provider-modal-azure.png)</Frame>
+  <Tab title="NodeJS">
+    ```typescript  theme={null}
+    import OpenAI from "openpipe/openai";
+
+    // Find the config values in "Installing the SDK"
+    const client = OpenAI();
+
+    const completion = await client.chat.completions.create({
+      model: "openpipe:custom-azure-provider/gpt-4o-2024-08-06",
+      messages: [{ role: "user", content: "Count to 10" }],
+      metadata: {
+        prompt_id: "counting",
+        any_key: "any_value",
+      },
+    });
+    ```
   </Tab>
 </Tabs>
 
-### Adding a model to the external provider
-
-To add a model to the provider you're creating, click the <b>Add Model</b> button.
-
-<Frame>![](https://mintlify.s3.us-west-1.amazonaws.com/openpipe/images/external-models/add-model-button.png)</Frame>
-
-Provide a slug that matches the model you'd like to call on your external provider. To call <b>gpt-4o-2024-08-06</b> on Azure for instance, the slug should be `gpt-4o-2024-08-06`.
-
-<Tabs>
-  <Tab title="DeepSeek (OpenAI Compatible)">
-    <Frame>![](https://mintlify.s3.us-west-1.amazonaws.com/openpipe/images/external-models/add-model-row-deepseek.png)</Frame>
-  </Tab>
-
-  <Tab title="Azure Endpoint">
-    <Frame>![](https://mintlify.s3.us-west-1.amazonaws.com/openpipe/images/external-models/add-model-row-azure.png)</Frame>
-  </Tab>
-</Tabs>
-
-Setting input cost and output cost is optional, but can be helpful for showing relative costs in the [evals](/features/evaluations) page.
-
-We currently support custom external
+External models can also be used for filtering and relabeling your data. We currently support custom external
 models for providers with openai and azure-compatible endpoints. If you'd like support for an external provider with a different API format, send a request to [hello@openpipe.ai](mailto:hello@openpipe.ai).

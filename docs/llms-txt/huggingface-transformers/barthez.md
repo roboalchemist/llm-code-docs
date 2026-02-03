@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/barthez.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/barthez.md
 
 # BARThez
 
@@ -10,7 +10,7 @@ You can find all of the original BARThez checkpoints under the [BARThez](https:/
 > This model was contributed by [moussakam](https://huggingface.co/moussakam).
 > Refer to the [BART](./bart) docs for more usage examples.
 
-The example below demonstrates how to predict the `` token with [Pipeline](/docs/transformers/v5.0.0rc1/en/main_classes/pipelines#transformers.Pipeline), [AutoModel](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModel), and from the command line.
+The example below demonstrates how to predict the `` token with [Pipeline](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.Pipeline), [AutoModel](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModel), and from the command line.
 
 ```py
 import torch
@@ -58,12 +58,12 @@ echo -e "Les plantes produisent  grâce à un processus appelé photosynthèse."
 
 #### transformers.BarthezTokenizer[[transformers.BarthezTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/barthez/tokenization_barthez.py#L35)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/barthez/tokenization_barthez.py#L32)
 
-Adapted from [CamembertTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/camembert#transformers.CamembertTokenizer) and [BartTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/longformer#transformers.RobertaTokenizer). Construct a "fast" BARThez tokenizer. Based on
+Adapted from [CamembertTokenizer](/docs/transformers/v5.0.0/en/model_doc/camembert#transformers.CamembertTokenizer) and [BartTokenizer](/docs/transformers/v5.0.0/en/model_doc/mvp#transformers.RobertaTokenizer). Construct a "fast" BARThez tokenizer. Based on
 [SentencePiece](https://github.com/google/sentencepiece).
 
-This tokenizer inherits from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
+This tokenizer inherits from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
 refer to this superclass for more information regarding those methods.
 
 **Parameters:**
@@ -92,12 +92,12 @@ add_prefix_space (`bool`, *optional*, defaults to `True`) : Whether or not to ad
 
 #### transformers.BarthezTokenizer[[transformers.BarthezTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/barthez/tokenization_barthez.py#L35)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/barthez/tokenization_barthez.py#L32)
 
-Adapted from [CamembertTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/camembert#transformers.CamembertTokenizer) and [BartTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/longformer#transformers.RobertaTokenizer). Construct a "fast" BARThez tokenizer. Based on
+Adapted from [CamembertTokenizer](/docs/transformers/v5.0.0/en/model_doc/camembert#transformers.CamembertTokenizer) and [BartTokenizer](/docs/transformers/v5.0.0/en/model_doc/mvp#transformers.RobertaTokenizer). Construct a "fast" BARThez tokenizer. Based on
 [SentencePiece](https://github.com/google/sentencepiece).
 
-This tokenizer inherits from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
+This tokenizer inherits from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
 refer to this superclass for more information regarding those methods.
 
 **Parameters:**

@@ -101,7 +101,7 @@ Clients also have the ability to control which tracks they're subscribed to. An 
 
 ---
 
-This document was rendered at 2025-12-31T18:29:41.004Z.
+This document was rendered at 2026-02-03T03:25:26.543Z.
 For the latest version of this document, see [https://docs.livekit.io/reference/internals/client-protocol.md](https://docs.livekit.io/reference/internals/client-protocol.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

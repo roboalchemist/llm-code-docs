@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Components: Azure > Service bus namespace
   Component
-source_url: https://docs.datadoghq.com/components-azure/service-bus-namespace/index.html
 ---
 
 # Service bus namespace Component

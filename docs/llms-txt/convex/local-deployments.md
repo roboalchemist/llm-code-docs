@@ -58,7 +58,7 @@ Remember your cloud dev deployment and each local dev deployment are completely 
 
 * **No Public URL** - Cloud deployments have public URL to receive incoming HTTP requests from services like Twilio, but local deployments listen for HTTP requests on your own computer. Similarly, you can't power websites with Convex WebSocket connections unless your users browsers know how to reach your computer. Set up a proxy like ngrok or use a cloud deployment for these uses cases.
 
-* **Node actions require specific Node.js versions** - Running Node.js actions (actions defined in files with `"use node;"`) requires having Node.js 18 installed, since this is the version of Node.js used in production when Node.js actions run in AWS Lambda functions. To resolve this you can install and set up [nvm](https://github.com/nvm-sh/nvm) and then install Node.js version 18. You don't need to use Node.js 18 for the rest of your project.
+* **Node actions require specific Node.js versions** - Running Node.js actions (actions defined in files with `"use node;"`) requires having the same version of Node.js as your project is [configured for](/production/project-configuration.md#configuring-the-nodejs-version). By default this is Node.js 20 today, though this may change in the future. To resolve this you can install and set up [nvm](https://github.com/nvm-sh/nvm) and then install the required Node.js version. You don't need to use this version for the rest of your project.
 
 * **Node.js actions run directly on your computer** - Like a normal Node.js server, code running in Node.js actions has unrestricted filesystem access. Queries, mutations, and Convex runtime actions still run in isolated environments.
 

@@ -103,6 +103,22 @@ Intelligems allows you to test redirects between subdomains. All subdomains used
 
 <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-9fb2ca4b0d597652a58b80a455aed49645e2fdee%2Fstep%207.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
+#### Multiple Domain Support
+
+If your brand operates multiple domains under one Shopify account (e.g., dogsuppy.com and dogsuppy.co.uk), you can register all of them in your Intelligems Settings. This allows you to set up Split URL tests for each domain without manually switching your primary domain.
+
+**Example setup for multi-domain brands:**
+
+| Origin URL             | Redirect URL               | Supported? |
+| ---------------------- | -------------------------- | ---------- |
+| dogsuppy.com/landing   | try.dogsuppy.com/landing   | ✅ Yes      |
+| dogsuppy.co.uk/landing | try.dogsuppy.co.uk/landing | ✅ Yes      |
+| dogsuppy.com/landing   | dogsuppy.co.uk/landing     | ❌ No       |
+
+**Important:** Cross-domain redirects (redirecting visitors from one top-level domain to a different top-level domain) are not supported. Each domain's redirects must stay within that domain or its subdomains.
+
+To register additional domains, go to **Settings → Domain Settings** in the Intelligems app.
+
 ## **Step 4: Set up targeting if needed**
 
 Targeting is an optional step. By default, a visitor will only be included in a split URL test if they visit the origin URL. When a visitor lands on the origin URL, they are randomized into a test group. If they are not in the control group, they are redirected to the specified destination URL.

@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/realtime/features/middleware.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Authentication
 
 Protect your realtime endpoints with custom auth logic.
@@ -14,9 +18,6 @@ import { currentUser } from "@/auth"
 export const GET = handle({
   realtime,
   middleware: async ({ request, channels }) => {
-    // channels: the channels a user is attempting to connect to
-    // default: ["default"]
-
     const user = await currentUser(request)
 
     if (!user) {
@@ -39,8 +40,8 @@ The middleware function receives:
 </ParamField>
 
 <ResponseField name="return">
-  * Return `undefined` or nothing to allow the connection - Return a `Response` object to
-    block the connection with a custom error
+  * Return `undefined` or nothing to allow the connection
+  * Return a `Response` object to block the connection with a custom error
 </ResponseField>
 
 ## Authentication Patterns
@@ -56,8 +57,7 @@ The middleware function receives:
         const user = await currentUser(request)
 
         for (const channel of channels) {
-          // 👇 optional: allow access to the default channel
-          if(channel === "default") {
+          if (channel === "default") {
             continue
           }
 
@@ -99,8 +99,7 @@ The middleware function receives:
         const user = await currentUser(request)
 
         for (const channel of channels) {
-          // 👇 optional: allow access to the default channel
-          if(channel === "default") {
+          if (channel === "default") {
             continue
           }
 

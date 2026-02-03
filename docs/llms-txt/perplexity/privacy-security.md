@@ -1,4 +1,8 @@
-# Source: https://docs.perplexity.ai/guides/privacy-security.md
+# Source: https://docs.perplexity.ai/docs/resources/privacy-security.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Privacy & Security
 
@@ -29,10 +33,6 @@ Perplexity is compliant with industry-leading security standards and certificati
 
 <Check>
   **[SOC 2 Type II Report](https://trust.perplexity.ai/)** - Comprehensive security controls audit covering security, availability, processing integrity, confidentiality, and privacy
-</Check>
-
-<Check>
-  **[SOC 2 Type 1 Report (Insight Assurance)](https://trust.perplexity.ai/)** - Initial assessment of security control design and implementation
 </Check>
 
 <Check>

@@ -62,6 +62,7 @@ Use the LiveKit CLI to create an [inbound trunk](https://docs.livekit.io/telepho
 {
   "trunk": {
     "name": "My inbound trunk",
+    "numbers": ["<your_phone_number>"],
     "auth_username": "<sip_trunk_username>",
     "auth_password": "<sip_trunk_password>"
   }
@@ -71,7 +72,7 @@ Use the LiveKit CLI to create an [inbound trunk](https://docs.livekit.io/telepho
 
 > ℹ️ **Note**
 > 
-> Be sure to use the same username and password that's specified in the TwiML Bin.
+> Be sure to use the same phone number, username, and password that's specified in the TwiML Bin.
 2. Use the CLI to create an inbound trunk:
 
 ```shell
@@ -102,6 +103,13 @@ Use the LiveKit CLI to create a [dispatch rule](https://docs.livekit.io/telephon
 
 ```shell
 lk sip dispatch create dispatch-rule.json
+
+```
+
+If you already have a default [caller dispatch rule](https://docs.livekit.io/telephony/accepting-calls/dispatch-rule.md#caller-dispatch-rule-individual-) and want to match a specific trunk, create the dispatch rule using the `trunks` flag with the ID of the trunk you just created:
+
+```shell
+lk sip dispatch create dispatch-rule.json --trunks "<trunk-id>"
 
 ```
 
@@ -184,7 +192,7 @@ node bridge.js
 
 ---
 
-This document was rendered at 2025-12-31T18:29:36.102Z.
+This document was rendered at 2026-02-03T03:25:12.752Z.
 For the latest version of this document, see [https://docs.livekit.io/telephony/accepting-calls/inbound-twilio.md](https://docs.livekit.io/telephony/accepting-calls/inbound-twilio.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

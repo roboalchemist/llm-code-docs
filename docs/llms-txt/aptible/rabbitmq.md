@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/managed-databases/supported-databases/rabbitmq.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # RabbitMQ
 
 # Available Versions
@@ -13,7 +17,7 @@ The following versions of RabbitMQ are currently available:
 |   4.1   |  Available |        N/A       |        N/A       |
 |   4.2   |  Available |        N/A       |        N/A       |
 
-For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). The latest version offered on Aptible will always be available for provisioning, regardless of end-of-life date.
+<Note>For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). Restoring a database from a backup will provision a new database that matches the version associated with the backup, even if that version is EOL or Deprecated. The latest version offered on Aptible will always be available for provisioning, regardless of end-of-life date.</Note>
 
 # Connecting to RabbitMQ
 

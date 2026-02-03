@@ -2,6 +2,8 @@
 
 # RunResurrectOptions<!-- -->
 
+Options for resurrecting a finished Run.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -15,7 +17,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#build)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L290)optionalbuild
+### [**](#build)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L516)optionalbuild
 
 **build?
 
@@ -23,7 +25,7 @@
 
 : string
 
-### [**](#maxItems)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L293)optionalmaxItems
+### [**](#maxItems)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L519)optionalmaxItems
 
 **maxItems?
 
@@ -31,7 +33,7 @@
 
 : number
 
-### [**](#maxTotalChargeUsd)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L294)optionalmaxTotalChargeUsd
+### [**](#maxTotalChargeUsd)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L520)optionalmaxTotalChargeUsd
 
 **maxTotalChargeUsd?
 
@@ -39,7 +41,7 @@
 
 : number
 
-### [**](#memory)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L291)optionalmemory
+### [**](#memory)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L517)optionalmemory
 
 **memory?
 
@@ -47,7 +49,7 @@
 
 : number
 
-### [**](#restartOnError)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L295)optionalrestartOnError
+### [**](#restartOnError)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L521)optionalrestartOnError
 
 **restartOnError?
 
@@ -55,7 +57,7 @@
 
 : boolean
 
-### [**](#timeout)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L292)optionaltimeout
+### [**](#timeout)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L518)optionaltimeout
 
 **timeout?
 

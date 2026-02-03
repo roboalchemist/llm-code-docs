@@ -4,8 +4,6 @@
 title: Ec2 Co Ip Pool
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Ec2 Co Ip Pool
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ec2_co_ip_pool.dataset/index.html
 ---
 
 # Ec2 Co Ip Pool
@@ -26,4 +24,4 @@ aws.ec2_co_ip_pool
 | pool_arn                     | core | string        | The ARN of the address pool.             |
 | pool_cidrs                   | core | array<string> | The address ranges of the address pool.  |
 | pool_id                      | core | string        | The ID of the address pool.              |
-| tags                         | core | hstore        |
+| tags                         | core | hstore_csv    |

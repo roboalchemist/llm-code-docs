@@ -1,5 +1,9 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/merge-pull-requests.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Merge Pull Requests
 
 > Learn how to seamlessly merge a single PR or stack of PRs with Graphite and handle merge conflicts efficiently.
@@ -125,8 +129,6 @@ As a result, the length of a merge job depends on how many PRs need to be rebase
 ## Compatibility with third-party merge queues
 
 Today, merge stack supports label-based merge queues, with future plans to support GitHub's merge queue (currently not compatible).
-
-If you're not sure whether `Merge (N)` will work with your team's merge process, feel free to reach out to **[support@graphite.dev](mailto:support@graphite.dev)**—we'd love to help you with this.
 
 ## Automatic rebasing
 

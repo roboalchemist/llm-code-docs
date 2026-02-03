@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/integrations/bitbucket-pipelines/
+
 # Bitbucket Pipelines Integration
 
 This guide demonstrates how to set up promptfoo with Bitbucket Pipelines to run evaluations as part of your CI pipeline.

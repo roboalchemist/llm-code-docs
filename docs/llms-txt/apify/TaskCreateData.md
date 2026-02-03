@@ -2,6 +2,8 @@
 
 # TaskCreateData<!-- -->
 
+Fields that can be updated when modifying a Task.
+
 ### Hierarchy
 
 * [TaskUpdateData](https://docs.apify.com/api/client/js/api/client/js/reference.md#TaskUpdateData)
@@ -21,11 +23,11 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#actId)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task_collection.ts#L59)actId
+### [**](#actId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task_collection.ts#L97)actId
 
 **actId: string
 
-### [**](#actorStandby)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L217)optionalinheritedactorStandby
+### [**](#actorStandby)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L295)optionalinheritedactorStandby
 
 **actorStandby?
 
@@ -35,7 +37,7 @@
 
 Inherited from TaskUpdateData.actorStandby
 
-### [**](#description)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L210)optionalinheriteddescription
+### [**](#description)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L288)optionalinheriteddescription
 
 **description?
 
@@ -45,7 +47,7 @@ Inherited from TaskUpdateData.actorStandby
 
 Inherited from TaskUpdateData.description
 
-### [**](#input)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L216)optionalinheritedinput
+### [**](#input)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L294)optionalinheritedinput
 
 **input?
 
@@ -55,7 +57,7 @@ Inherited from TaskUpdateData.description
 
 Inherited from TaskUpdateData.input
 
-### [**](#name)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L208)optionalinheritedname
+### [**](#name)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L286)optionalinheritedname
 
 **name?
 
@@ -65,7 +67,7 @@ Inherited from TaskUpdateData.input
 
 Inherited from TaskUpdateData.name
 
-### [**](#options)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L215)optionalinheritedoptions
+### [**](#options)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L293)optionalinheritedoptions
 
 **options?
 
@@ -75,7 +77,7 @@ Inherited from TaskUpdateData.name
 
 Inherited from TaskUpdateData.options
 
-### [**](#title)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L209)optionalinheritedtitle
+### [**](#title)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L287)optionalinheritedtitle
 
 **title?
 

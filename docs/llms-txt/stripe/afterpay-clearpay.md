@@ -106,9 +106,9 @@ The following table lists total transaction limits and installment schedules by 
 
 | Stripe account and customer country | Currency | Transaction limits |
 | ----------------------------------- | -------- | ------------------ |
-| Australia                           | AUD      | 1 - 2,000 AUD      |
+| Australia                           | AUD      | 1 - 4,000 AUD      |
 | Canada                              | CAD      | 1 - 2,000 CAD      |
-| New Zealand                         | NZD      | 1 - 2,000 NZD      |
+| New Zealand                         | NZD      | 1 - 4,000 NZD      |
 | United Kingdom                      | GBP      | 1 - 1,200 GBP      |
 | United States                       | USD      | 1 - 4,000 USD      |
 

@@ -118,7 +118,7 @@ public class ConfigureOpenAi : IHostingStartup
 Open AI providers are maintained in the **ServiceStack.AI** NuGet Package:
 
 ```xml
-<PackageReference Include="ServiceStack.AI" Version="8.*" />
+<PackageReference Include="ServiceStack.AI" Version="10.*" />
 ```
 
 ### Using Node TypeChat
@@ -154,7 +154,7 @@ the .NET process invokes to utilize TypeChat, located in the Content Directory r
 [x mix](/mix-tool):
 
 :::sh
-x mix typechat.mjs
+npx add-in typechat.mjs
 :::
 
 ### Using Microsoft Semantic Kernel
@@ -232,7 +232,7 @@ public class ConfigureGoogleCloud : IHostingStartup
 Google Cloud providers are maintained in the **ServiceStack.GoogleCloud** NuGet Package:
 
 ```xml
-<PackageReference Include="ServiceStack.GoogleCloud" Version="8.*" />
+<PackageReference Include="ServiceStack.GoogleCloud" Version="10.*" />
 ```
 
 ### Multiple custom Speech-to-Text configurations
@@ -363,7 +363,7 @@ public class ConfigureAzure : IHostingStartup
 Azure providers are maintained in the **ServiceStack.Azure** NuGet Package:
 
 ```xml
-<PackageReference Include="ServiceStack.Azure" Version="8.*" />
+<PackageReference Include="ServiceStack.Azure" Version="10.*" />
 ```
 
 ### Enable Web Audio Support
@@ -416,7 +416,7 @@ public class ConfigureAws : IHostingStartup
 Amazon Web Services providers are maintained in the **ServiceStack.Aws** NuGet Package:
 
 ```xml
-<PackageReference Include="ServiceStack.Aws" Version="8.*" />
+<PackageReference Include="ServiceStack.Aws" Version="10.*" />
 ```
 
 ### AWS Speech-to-Text Factory
@@ -505,7 +505,7 @@ public class ConfigureCloudflare : IHostingStartup
 Cloudflare's `R2VirtualFiles` provider is maintained in the **ServiceStack.Aws** NuGet Package:
 
 ```xml
-<PackageReference Include="ServiceStack.Aws" Version="8.*" />
+<PackageReference Include="ServiceStack.Aws" Version="10.*" />
 ```
 
 ## Local OpenAI Whisper

@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/connect/other-actions/tesla-virtual-key.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tesla Virtual Keys
 
 > To support vehicle commands such as lock/unlock or start/stop charge, and benefit from faster data frequencies, Tesla requires a Virtual Key to be added to the vehicle.
@@ -41,3 +45,13 @@ Virtual Key status can be checked at any time from the Tesla infotainment screen
 </Frame>
 
 Smartcar will automatically determine which Tesla vehicles require a Virtual Key and prompt users to add it only for those vehicles. If a user has multiple Tesla vehicles, they will be prompted to add a Virtual Key for each vehicle that requires it. At least one vehicle must complete the pairing process before the user can continue with the Connect flow and connect their Tesla to your application.
+
+### 2020 and Earlier Model S/X with Streaming Support
+
+For 2020 and earlier Model S and X vehicles that support streaming (via a software update), Smartcar Connect handles this differently:
+
+* These vehicles **do not require Virtual Key installation**
+* During the Connect flow, users are prompted about enabling streaming via an in-vehicle toggle
+* Users can request email instructions on how to enable the streaming setting in their vehicle's infotainment screen
+* Once the streaming toggle is enabled in the vehicle, data will be refreshed more frequently
+* Without streaming enabled, data is refreshed every 5 minutes while the vehicle is awake

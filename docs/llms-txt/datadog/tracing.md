@@ -1,10 +1,11 @@
+# Source: https://docs.datadoghq.com/getting_started/tracing.md
+
 # Source: https://docs.datadoghq.com/tracing.md
 
 ---
 title: APM
 description: Instrument your code to improve performance
 breadcrumbs: Docs > APM
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # APM

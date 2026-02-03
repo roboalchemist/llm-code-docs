@@ -12,11 +12,11 @@ This guide walks you through the full lifecycle of an Actor. You'll start by cre
 
 ### Prerequisites
 
-* An Apify account. https://console.apify.com/sign-up on the Apify website.
+* An Apify account. [Sign up for a free account](https://console.apify.com/sign-up) on the Apify website.
 
 ### Step 1: Create your Actor
 
-Log in to https://console.apify.com, navigate to https://console.apify.com/actors/development/my-actors, then click the **Develop new** button.
+Log in to [Apify Console](https://console.apify.com), navigate to [My Actors](https://console.apify.com/actors/development/my-actors), then click the **Develop new** button.
 
 ![Create Actor](/assets/images/create-actor-69b32bf8ad2b2173628df60685cb9969.png)
 
@@ -26,7 +26,7 @@ These templates provide boilerplate code and a preconfigured environment. Choose
 
 Explore Actor templates
 
-Browse the https://apify.com/templates to find the best fit for your Actor.
+Browse the [full list of templates](https://apify.com/templates) to find the best fit for your Actor.
 
 ![Templates](/assets/images/actor-templates-b19999bcbcd98ba04d9c66f73632c38f.png)
 
@@ -34,13 +34,13 @@ After choosing the template, your Actor will be automatically named and you'll b
 
 ### Step 2: Explore the Actor
 
-The provided boilerplate code utilizes the https://docs.apify.com/sdk/js/ combined with https://crawlee.dev/, Apify's popular open-source Node.js web scraping library.
+The provided boilerplate code utilizes the [Apify SDK](https://docs.apify.com/sdk/js/) combined with [Crawlee](https://crawlee.dev/), Apify's popular open-source Node.js web scraping library.
 
-By default, the code crawls the https://apify.com website, but you can change it to any website.
+By default, the code crawls the [apify.com](https://apify.com) website, but you can change it to any website.
 
 Crawlee
 
-https://crawlee.dev/ is an open-source Node.js library designed for web scraping and browser automation. It helps you build reliable crawlers quickly and efficiently.
+[Crawlee](https://crawlee.dev/) is an open-source Node.js library designed for web scraping and browser automation. It helps you build reliable crawlers quickly and efficiently.
 
 ### Step 3: Build the Actor
 
@@ -141,7 +141,7 @@ Once you've made the desired changes, you can push the updated code back to the 
 
 ## Next steps
 
-* Visit the https://docs.apify.com/academy.md to access a comprehensive collection of tutorials, documentation, and learning resources.
-* To understand Actors in detail, read the https://whitepaper.actor/.
-* Check https://docs.apify.com/platform/actors/development/deployment/continuous-integration.md documentation to automate your Actor development process.
-* After you finish building your first Actor, you can https://docs.apify.com/platform/actors/publishing.md.
+* Visit the [Apify Academy](https://docs.apify.com/academy.md) to access a comprehensive collection of tutorials, documentation, and learning resources.
+* To understand Actors in detail, read the [Actor Whitepaper](https://whitepaper.actor/).
+* Check [Continuous integration](https://docs.apify.com/platform/actors/development/deployment/continuous-integration.md) documentation to automate your Actor development process.
+* After you finish building your first Actor, you can [share it with other users and even monetize it](https://docs.apify.com/platform/actors/publishing.md).

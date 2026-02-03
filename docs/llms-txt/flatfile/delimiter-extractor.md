@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/delimiter-extractor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delimiter Extractor Plugin
 
 > Parse text files with custom delimiters and automatically extract structured data for import into Flatfile
@@ -12,7 +16,7 @@ This plugin is useful in scenarios where data is provided in custom formats that
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-delimiter-extractor
 ```
 
@@ -73,14 +77,14 @@ npm install @flatfile/plugin-delimiter-extractor
 Configure the listener to use the plugin for any `.txt` file, specifying that the data is separated by a colon:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from "@flatfile/platform";
   import { DelimiterExtractor } from "@flatfile/plugin-delimiter-extractor";
 
   listener.use(DelimiterExtractor(".txt", { delimiter: ":" }));
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from "@flatfile/platform";
   import { DelimiterExtractor } from "@flatfile/plugin-delimiter-extractor";
 
@@ -93,7 +97,7 @@ Configure the listener to use the plugin for any `.txt` file, specifying that th
 This example shows a more detailed configuration for `.data` files with type conversion, empty line handling, and value transformation:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from "@flatfile/platform";
   import { DelimiterExtractor } from "@flatfile/plugin-delimiter-extractor";
 
@@ -112,7 +116,7 @@ This example shows a more detailed configuration for `.data` files with type con
   listener.use(DelimiterExtractor(".data", options));
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from "@flatfile/platform";
   import { DelimiterExtractor } from "@flatfile/plugin-delimiter-extractor";
 
@@ -137,7 +141,7 @@ This example shows a more detailed configuration for `.data` files with type con
 This example demonstrates how to use advanced header detection options to explicitly define headers:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from "@flatfile/platform";
   import { DelimiterExtractor } from "@flatfile/plugin-delimiter-extractor";
 
@@ -153,7 +157,7 @@ This example demonstrates how to use advanced header detection options to explic
   listener.use(DelimiterExtractor(".inv", advancedOptions));
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from "@flatfile/platform";
   import { DelimiterExtractor } from "@flatfile/plugin-delimiter-extractor";
 
@@ -175,7 +179,7 @@ This example demonstrates how to use advanced header detection options to explic
 For advanced use cases where you need to parse a buffer directly:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import * as fs from 'fs';
   import { delimiterParser } from "@flatfile/plugin-delimiter-extractor";
 
@@ -191,7 +195,7 @@ For advanced use cases where you need to parse a buffer directly:
   parseLocalFile();
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import * as fs from 'fs';
   import { delimiterParser } from "@flatfile/plugin-delimiter-extractor";
 
@@ -221,7 +225,7 @@ If a file is uploaded but no data appears, check the following:
 ### Unsupported File Types Error
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   try {
     // This will throw an error
     const csvExtractor = DelimiterExtractor(".csv", { delimiter: "," });
@@ -231,7 +235,7 @@ If a file is uploaded but no data appears, check the following:
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   try {
     // This will throw an error
     const csvExtractor = DelimiterExtractor(".csv", { delimiter: "," });

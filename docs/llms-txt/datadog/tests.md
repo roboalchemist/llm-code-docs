@@ -4,7 +4,6 @@
 title: Test Optimization in Datadog
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Test Optimization in Datadog
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Test Optimization in Datadog
@@ -39,62 +38,62 @@ In addition to tests, Test Optimization provides visibility over the whole testi
 
 ### Supported features{% #supported-features %}
 
-| .NET                                                                                                                                                                                                                                                                                    | Java/JVMâbased | Javascript | Python           | Ruby | Swift            | Go  | JUnit Xml |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | ---------- | ---------------- | ---- | ---------------- | --- | --------- |
+| .NET                                                                                                                                                                                                                                                                                    | Java/JVMâbased | Javascript | Python           | Ruby | Swift | Go  | JUnit Xml |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | ---------- | ---------------- | ---- | ----- | --- | --------- |
 | {% collapsible-section style="margin-bottom:0" %}
   Accurate time/durations results: Microseconds resolution in test start time and duration.
-    {% /collapsible-section %}                                                                                                            | yes            | yes        | yes              | yes  | yes              | yes | yes       |
+    {% /collapsible-section %}                                                                                                            | yes            | yes        | yes              | yes  | yes   | yes | yes       |
 | {% collapsible-section style="margin-bottom:0" %}
   Distributed traces on integration tests: Tests that make calls to external services instrumented with Datadog show the full distributed trace in their test details.
-    {% /collapsible-section %}                                 | yes            | yes        | yes              | yes  | yes              | yes | yes       |
+    {% /collapsible-section %}                                 | yes            | yes        | yes              | yes  | yes   | yes | yes       |
 | {% collapsible-section style="margin-bottom:0" %}
   Agent-based reporting: Ability to report test information through the Datadog Agent.
-    {% /collapsible-section %}                                                                                                                 | yes            | yes        | yes              | yes  | yes              | yes | yes       |
+    {% /collapsible-section %}                                                                                                                 | yes            | yes        | yes              | yes  | yes   | yes | yes       |
 | {% collapsible-section style="margin-bottom:0" %}
   Agentless reporting: Ability to report test information without the Datadog Agent.
-    {% /collapsible-section %}                                                                                                                   | yes            | yes        | yes              | yes  | yes              | yes | yes       | yes              |
+    {% /collapsible-section %}                                                                                                                   | yes            | yes        | yes              | yes  | yes   | yes | yes       | yes              |
 | {% collapsible-section style="margin-bottom:0" %}
   Test suite level visibility: Visibility over the whole testing process, including session, module, suites, and tests.
-    {% /collapsible-section %}                                                                                | yes            | yes        | yes              | yes  | yes              | yes | yes       | yes              |
+    {% /collapsible-section %}                                                                                | yes            | yes        | yes              | yes  | yes   | yes | yes       | yes              |
 | {% collapsible-section style="margin-bottom:0" %}
   Manual API: Ability to programmatically create CI Visibility events for test frameworks that are not supported by Datadog's automatic instrumentation.
-    {% /collapsible-section %}                                               | yes            | yes        | yes              | yes  | yes              |
+    {% /collapsible-section %}                                               | yes            | yes        | yes              | yes  | yes   |
 | {% collapsible-section style="margin-bottom:0" %}
   Codeowner by test: Automatic detection of the owner of a test file based on the CODEOWNERS file.
-    {% /collapsible-section %}                                                                                                     | yes            | yes        | yes              | yes  | yes              | yes | yes       | yes (partially)  |
+    {% /collapsible-section %}                                                                                                     | yes            | yes        | yes              | yes  | yes   | yes | yes       | yes (partially)  |
 | {% collapsible-section style="margin-bottom:0" %}
   Source code start/end: Automatic report of the start and end lines of a test.
-    {% /collapsible-section %}                                                                                                                        | yes            | yes        | yes (only start) | yes  | yes (only start) | yes | yes       | yes (only start) |
+    {% /collapsible-section %}                                                                                                                        | yes            | yes        | yes (only start) | yes  | yes   | yes | yes       | yes (only start) |
 | {% collapsible-section style="margin-bottom:0" %}
   CI and git info: Automatic collection of git and CI environment metadata, such as CI provider, git commit SHA or pipeline URL.
-    {% /collapsible-section %}                                                                       | yes            | yes        | yes              | yes  | yes              | yes | yes       | yes              |
+    {% /collapsible-section %}                                                                       | yes            | yes        | yes              | yes  | yes   | yes | yes       | yes              |
 | {% collapsible-section style="margin-bottom:0" %}
   Git metadata upload: Automatic upload of git tree information used for [Test Impact Analysis](https://docs.datadoghq.com/tests/test_impact_analysis).
-    {% /collapsible-section %}                                                | yes            | yes        | yes              | yes  | yes              | yes | yes       | yes              |
+    {% /collapsible-section %}                                                | yes            | yes        | yes              | yes  | yes   | yes | yes       | yes              |
 | {% collapsible-section style="margin-bottom:0" %}
   Test Impact Analysis *: Capability to enable [Test Impact Analysis](https://docs.datadoghq.com/tests/test_impact_analysis), which intelligently skips tests based on code coverage and git metadata.
-    {% /collapsible-section %} | yes            | yes        | yes              | yes  | yes              | yes | yes       |
+    {% /collapsible-section %} | yes            | yes        | yes              | yes  | yes   | yes | yes       |
 | {% collapsible-section style="margin-bottom:0" %}
   Code coverage support: Ability to report [total code coverage](https://docs.datadoghq.com/tests/code_coverage) metrics.
-    {% /collapsible-section %}                                                                              | yes            | yes        | yes              | yes  | yes              | yes | yes       | yes (manual)     |
+    {% /collapsible-section %}                                                                              | yes            | yes        | yes              | yes  | yes   | yes | yes       | yes (manual)     |
 | {% collapsible-section style="margin-bottom:0" %}
   Benchmark tests support: Automatic detection of performance statistics for benchmark tests.
     {% /collapsible-section %}                                                                                                          | yes            | yes        | yes              | yes  |
 | {% collapsible-section style="margin-bottom:0" %}
   Parameterized tests: Automatic detection of parameterized tests.
-    {% /collapsible-section %}                                                                                                                                     | yes            | yes        | yes              | yes  | yes              | yes |
+    {% /collapsible-section %}                                                                                                                                     | yes            | yes        | yes              | yes  | yes   | yes |
 | {% collapsible-section style="margin-bottom:0" %}
   Early flake detection *: Automatically [retry new tests](https://docs.datadoghq.com/tests/flaky_test_management/early_flake_detection) to detect flakiness.
-    {% /collapsible-section %}                                          | yes            | yes        | yes              | yes  | yes              | yes | yes       |
+    {% /collapsible-section %}                                          | yes            | yes        | yes              | yes  | yes   | yes | yes       |
 | {% collapsible-section style="margin-bottom:0" %}
   Auto test retries *: Automatically [retry failed tests](https://docs.datadoghq.com/tests/flaky_test_management/auto_test_retries) up to N times to avoid failing the build due to test flakiness.
-    {% /collapsible-section %}    | yes            | yes        | yes              | yes  | yes              | yes | yes       |
+    {% /collapsible-section %}    | yes            | yes        | yes              | yes  | yes   | yes | yes       |
 | {% collapsible-section style="margin-bottom:0" %}
   Failed test replay *: [Access local variable information](https://docs.datadoghq.com/tests/flaky_test_management/auto_test_retries#failed-test-replay) on retried failed tests.
     {% /collapsible-section %}                      | yes            | yes        | yes              |
 | {% collapsible-section style="margin-bottom:0" %}
   Selenium RUM integration: Automatically [link browser sessions to test cases](https://docs.datadoghq.com/tests/browser_tests) when testing RUM-instrumented applications.
-    {% /collapsible-section %}                            | yes            | yes        | yes              | yes  | yes              |
+    {% /collapsible-section %}                            | yes            | yes        | yes              | yes  | yes   |
 
 \* The feature is opt-in, and needs to be enabled on the [**Test Optimization Settings** page](https://app.datadoghq.com/ci/settings/test-optimization).
 
@@ -193,3 +192,4 @@ When you're evaluating failed or flaky tests, or the performance of a CI test, y
 - [Learn how to instrument your browser tests with RUM](https://docs.datadoghq.com/tests/browser_tests/)
 - [Learn how to troubleshoot Test Optimization](https://docs.datadoghq.com/tests/troubleshooting/)
 - [Troubleshoot faster with the GitLab Source Code integration in Datadog](https://www.datadoghq.com/blog/gitlab-source-code-integration)
+- [Implement dbt data quality checks with dbt-expectations](https://www.datadoghq.com/blog/dbt-data-quality-testing)

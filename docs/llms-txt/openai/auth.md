@@ -2,10 +2,6 @@
 
 # Source: https://developers.openai.com/apps-sdk/build/auth.md
 
-# Source: https://developers.openai.com/codex/auth.md
-
-# Source: https://developers.openai.com/apps-sdk/build/auth.md
-
 # Authentication
 
 ## Authenticate your users
@@ -41,9 +37,7 @@ Here is what the spec expects, in plain language.
 ```json
 {
   "resource": "https://your-mcp.example.com",
-  "authorization_servers": [
-    "https://auth.yourcompany.com"
-  ],
+  "authorization_servers": ["https://auth.yourcompany.com"],
   "scopes_supported": ["files:read", "files:write"],
   "resource_documentation": "https://yourcompany.com/docs/mcp"
 }
@@ -112,25 +106,25 @@ Provided that you have implemented the MCP authorization spec delineated above, 
 
 1. ChatGPT queries your MCP server for protected resource metadata.
 
-![](/images/apps-sdk/protected_resource_metadata.png)
+![](https://developers.openai.com/images/apps-sdk/protected_resource_metadata.png)
 
 2. ChatGPT registers itself via dynamic client registration with your authorization server using the `registration_endpoint` and obtains a `client_id`.
 
-![](/images/apps-sdk/client_registration.png)
+![](https://developers.openai.com/images/apps-sdk/client_registration.png)
 
 3. When the user first invokes a tool, the ChatGPT client launches the OAuth authorization code + PKCE flow. The user authenticates and consents to the requested scopes.
 
-![](/images/apps-sdk/preparing_authorization.png)
+![](https://developers.openai.com/images/apps-sdk/preparing_authorization.png)
 
 4. ChatGPT exchanges the authorization code for an access token and attaches it to subsequent MCP requests (`Authorization: Bearer <token>`).
 
-![](/images/apps-sdk/auth_complete.png)
+![](https://developers.openai.com/images/apps-sdk/auth_complete.png)
 
 5. Your server verifies the token on each request (issuer, audience, expiration, scopes) before executing the tool.
 
 ### Client registration
 
-The MCP spec currently requires dynamic client registration (DCR). This means that each time ChatGPT connects, it registers a fresh OAuth client with your authorization server, obtains a unique `client_id`, and uses that identity during token exchange. The downside of this approach is that it can generate thousands of short-lived clients—often one per user session. 
+The MCP spec currently requires dynamic client registration (DCR). This means that each time ChatGPT connects, it registers a fresh OAuth client with your authorization server, obtains a unique `client_id`, and uses that identity during token exchange. The downside of this approach is that it can generate thousands of short-lived clients—often one per user session.
 
 To address this issue, the MCP council is currently advancing [Client Metadata Documents (CMID)](https://blog.modelcontextprotocol.io/posts/client_registration/). In the CMID model, ChatGPT will publish a stable document (for example `https://openai.com/chatgpt.json`) that declares its OAuth metadata and identity. Your authorization server can fetch the document over HTTPS, pin it as the canonical client record, and enforce policies such as redirect URI allowlists or rate limits without relying on per-session registration. CMID is still in draft, so continue supporting DCR until CIMD has landed.
 
@@ -142,9 +136,9 @@ Once rolled out, CMID directly addresses the client identification problem by gi
 
 ### Choosing an identity provider
 
-Most OAuth 2.1 identity providers can satisfy the MCP authorization requirements once they expose a discovery document, allow dynamic client registration, and echo the `resource` parameter into issued tokens. 
+Most OAuth 2.1 identity providers can satisfy the MCP authorization requirements once they expose a discovery document, allow dynamic client registration, and echo the `resource` parameter into issued tokens.
 
-We *strongly* recommend that you use an existing established identity provider rather than implementing authentication from scratch  yourself.
+We _strongly_ recommend that you use an existing established identity provider rather than implementing authentication from scratch yourself.
 
 Here are instructions for some popular identity providers.
 
@@ -198,7 +192,6 @@ Triggering the tool-level OAuth flow requires both metadata (`securitySchemes` a
 2. **Describe each tool’s auth policy with `securitySchemes`.** Declaring `securitySchemes` per tool tells ChatGPT which tools require OAuth versus which can run anonymously. Stick to per-tool declarations even if the entire server uses the same policy; server-level defaults make it difficult to evolve individual tools later.
 
    Two scheme types are available today, and you can list more than one to express optional auth:
-
    - `noauth` — the tool is callable anonymously; ChatGPT can run it immediately.
    - `oauth2` — the tool needs an OAuth 2.0 access token; include the scopes you will request so the consent screen is accurate.
 

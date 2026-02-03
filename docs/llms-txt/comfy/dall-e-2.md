@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/partner-nodes/openai/dall-e-2.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OpenAI DALL·E 2 Node
 
 > Learn how to use the OpenAI DALL·E 2 Partner node to generate images in ComfyUI
@@ -40,7 +44,7 @@ The **OpenAI DALL·E 2** node generates images synchronously through OpenAI's im
 
     <Tab title="Desktop or Cloud users">
       * The Desktop is base on ComfyUI stable release, it will auto-update when there is a new Desktop stable release available.
-      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release, we will update the Cloud after ComfyUI stable release.
+      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release.
 
       So, if you find any core node missing in this document, it might be because the new core nodes have not yet been released in the latest stable version. Please wait for the next stable release.
     </Tab>
@@ -174,7 +178,7 @@ Since this workflow is relatively simple, if you want to manually implement the 
   </Accordion>
 
   <Accordion title="Can credits go negative?">
-    Credits cannot go negative, so please ensure you have enough credits before making the corresponding API calls.
+    Credits are not intended to be used as a negative balance or credit line. However, due to race conditions where partner nodes don't always report costs before execution, a single execution may consume more credits than your remaining balance and temporarily result in a negative balance after completion. When your balance is negative, you will not be able to run Partner Nodes until you top up and restore a positive balance. Please ensure you have enough credits before making API calls.
   </Accordion>
 
   <Accordion title="Where can I check usage and expenses?">

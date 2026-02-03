@@ -483,24 +483,26 @@ Select a country to view the sample data you can use to test Klarna.
 
 #### Private person
 
-| Flow | Email address | Phone number |
-|----|----|----|
-| Approved | customer@email.no | +4740123456 |
-| Denied | customer+denied@email.no | +4740123457 |
-| New user sign up | customer+new_user@email.no | +4740123485 |
-| Dispute: return | customer+disputed-return@email.no | +4740123474 |
-| Dispute: goods not received | customer+disputed-goods_not_received@email.no | +4740123475 |
-| Dispute: order already paid | customer+disputed-already_paid@email.no | +4740123476 |
-| Dispute: faulty goods | customer+disputed-faulty_goods@email.no | +4740123477 |
-| Dispute: incorrect invoice | customer+disputed-incorrect_invoice@email.no | +4740123478 |
-| Dispute: high-risk order | customer+disputed-high_risk_order@email.no | +4740123479 |
-| Dispute: unauthorized purchase | customer+disputed-unauthorized_purchase@email.no | +4740123480 |
-| Dispute: non-guaranteed payment program | customer+disputed-non_guaranteed_payment_program@email.no | +4740123490 |
-| Dispute: non-compliance | customer+disputed-non_compliance@email.no | +4740123491 |
-| Dispute: return not possible | customer+disputed-return_not_possible@email.no | +4740123492 |
+When testing different flows, make sure to add National Identification Number before continuing with BankID in order to get the intended flow.
+
+| Flow | Email address | Phone number | National Identification Number |
+|----|----|----|----|
+| Approved | customer@email.no | +4740123456 | NO01087000571 |
+| Denied | customer+denied@email.no | +4740123457 | NO01087000148 |
+| New user sign up | customer+new_user@email.no | +4740123485 | NO09117548023 |
+| Dispute: return | customer+disputed-return@email.no | +4740123474 | NO30062449205 |
+| Dispute: goods not received | customer+disputed-goods_not_received@email.no | +4740123475 | NO27083206670 |
+| Dispute: order already paid | customer+disputed-already_paid@email.no | +4740123476 | NO14040845144 |
+| Dispute: faulty goods | customer+disputed-faulty_goods@email.no | +4740123477 | NO16089639496 |
+| Dispute: incorrect invoice | customer+disputed-incorrect_invoice@email.no | +4740123478 | NO19046731789 |
+| Dispute: high-risk order | customer+disputed-high_risk_order@email.no | +4740123479 | NO27115906319 |
+| Dispute: unauthorized purchase | customer+disputed-unauthorized_purchase@email.no | +4740123480 | NO25064127953 |
+| Dispute: non-guaranteed payment program | customer+disputed-non_guaranteed_payment_program@email.no | +4740123490 | NO05117538967 |
+| Dispute: non-compliance | customer+disputed-non_compliance@email.no | +4740123491 | NO09108528945 |
+| Dispute: return not possible | customer+disputed-return_not_possible@email.no | +4740123492 | NO09108578989 |
 
 | Field | Approved | Denied | Other flows |
-|-----|--------|------|-----------|
+|----|----|----|----|
 | First name | Jane | Test | Person NO |
 | Last name | Test | Person-no | Test |
 | Address | Edvard Munchs Plass 1 | Sæffleberggate 56 | Edvard Munchs Plass 1 |
@@ -508,19 +510,18 @@ Select a country to view the sample data you can use to test Klarna.
 | City | Oslo | Oslo | Oslo |
 | Country | NO | NO | NO |
 | Date of birth (DD-MM-YYYY) | 01-08-1970 | 01-08-1970 | 01-01-2000 |
-| Personal number | NO01087000571 | NO01087000148 | <ul><li>Dispute - return:NO30062449205</li><li>Dispute - goods not received:NO27083206670</li><li>Dispute - order already paid:NO14040845144</li><li>Dispute - faulty goods:NO16089639496</li><li>Dispute - incorrect invoice:NO19046731789</li><li>Dispute - high-risk order:NO27115906319</li><li>Dispute - unauthorized purchase:NO25064127953</li></ul> |
 | OTP (Random 6 digits different from 999999) | 123456 | 123456 | 123456 |
 
 #### Company
 
-| Approved                    | Denied              |
-|-----------------------------|---------------------|
-| Company registration number | 999999999           |
-| Company name                | Testcompany-no      |
-| Street                      | Sæffleberggate 56   |
-| Zip code                    | 0563                |
-| City                        | Oslo                |
-| Email                       | youremail@email.com |
+|                             | Approved            | Denied                     |
+|-----------------------------|---------------------|----------------------------|
+| Company registration number | 999999999           | 811111112                  |
+| Company name                | Testcompany-no      | Testcompany-no             |
+| Street                      | Sæffleberggate 56   | Sæffleberggate 56          |
+| Zip code                    | 0563                | 0563                       |
+| City                        | Oslo                | Oslo                       |
+| Email                       | youremail@email.com | youremail+denied@email.com |
 
 ### Poland
 
@@ -687,24 +688,26 @@ Select a country to view the sample data you can use to test Klarna.
 
 #### Private person
 
-| Flow | Email address | Phone number |
-|----|----|----|
-| Approved | customer@email.se | +46701740615 |
-| Denied | customer+denied@email.se | +46701740620 |
-| New user sign up | customer+new_user@email.se | +46701740656 |
-| Dispute: return | customer+disputed-return@email.se | +46701740637 |
-| Dispute: goods not received | customer+disputed-goods_not_received@email.se | +46701740638 |
-| Dispute: order already paid | customer+disputed-already_paid@email.se | +46701740639 |
-| Dispute: faulty goods | customer+disputed-faulty_goods@email.se | +46701740640 |
-| Dispute: incorrect invoice | customer+disputed-incorrect_invoice@email.se | +46701740641 |
-| Dispute: high-risk order | customer+disputed-high_risk_order@email.se | +46701740642 |
-| Dispute: unauthorized purchase | customer+disputed-unauthorized_purchase@email.se | +46701740643 |
-| Dispute: non-guaranteed payment program | customer+disputed-non_guaranteed_payment_program@email.se | +46701740660 |
-| Dispute: non-compliance | customer+disputed-non_compliance@email.se | +46701740661 |
-| Dispute: return not possible | customer+disputed-return_not_possible@email.se | +46701740662 |
+When testing different flows, make sure to add National Identification Number before continuing with BankID in order to get the intended flow.
+
+| Flow | Email address | Phone number | National Identification Number |
+|----|----|----|----|
+| Approved | customer@email.se | +46701740615 | SE194103219202 |
+| Denied | customer+denied@email.se | +46701740620 | SE194110288083 |
+| New user sign up | customer+new_user@email.se | +46701740656 | SE199502182380 |
+| Dispute: return | customer+disputed-return@email.se | +46701740637 | SE200001011287 |
+| Dispute: goods not received | customer+disputed-goods_not_received@email.se | +46701740638 | SE200001011493 |
+| Dispute: order already paid | customer+disputed-already_paid@email.se | +46701740639 | SE200001015270 |
+| Dispute: faulty goods | customer+disputed-faulty_goods@email.se | +46701740640 | SE200001019744 |
+| Dispute: incorrect invoice | customer+disputed-incorrect_invoice@email.se | +46701740641 | SE200001011485 |
+| Dispute: high-risk order | customer+disputed-high_risk_order@email.se | +46701740642 | SE200001015726 |
+| Dispute: unauthorized purchase | customer+disputed-unauthorized_purchase@email.se | +46701740643 | SE200001015973 |
+| Dispute: non-guaranteed payment program | customer+disputed-non_guaranteed_payment_program@email.se | +46701740660 | SE199304282388 |
+| Dispute: non-compliance | customer+disputed-non_compliance@email.se | +46701740661 | SE200412052391 |
+| Dispute: return not possible | customer+disputed-return_not_possible@email.se | +46701740662 | SE199108062390 |
 
 | Field | Approved | Denied | Other flows |
-|-----|--------|------|-----------|
+|----|----|----|----|
 | First name | Alice | Test | Person SE |
 | Last name | Test | Person-se | Test |
 | Address | Södra Blasieholmshamnen 2 | Karlaplan 3 | Södra Blasieholmshamnen 2 |
@@ -712,23 +715,22 @@ Select a country to view the sample data you can use to test Klarna.
 | City | Stockholm | Stockholm | Stockholm |
 | Country | SE | SE | SE |
 | Date of birth (DD-MM-YYYY) | 21-03-1941 | 28-10-1941 | 01-01-2000 |
-| Personal number | SE194103219202 | SE194110288083 | <ul><li>Dispute - return:SE200001011287</li><li>Dispute - goods not received:SE200001011493</li><li>Dispute - order already paid:SE200001015270</li><li>Dispute - faulty goods:SE200001019744</li><li>Dispute - incorrect invoice:SE200001011485</li><li>Dispute - high-risk order:SE200001015726</li><li>Dispute - unauthorized purchase:SE200001015973</li></ul> |
 | OTP (Random 6 digits different from 999999) | 123456 | 123456 | 123456 |
 
 #### Company
 
-| Approved                    | Denied              |
-|-----------------------------|---------------------|
-| Company registration number | 002031-0132         |
-| Company name                | Testcompany-se      |
-| Street \#1                  | Stårgatan 1         |
-| Zip code \#1                | 12345               |
-| City \#1                    | Ankeborg            |
-| Street \#2                  | Lillegatan 1        |
-| Zip code \#2                | 12334               |
-| City \#2                    | Ankeborg            |
-| Phone number                | 0765260000          |
-| Email                       | youremail@email.com |
+|                             | Approved            | Denied                     |
+|-----------------------------|---------------------|----------------------------|
+| Company registration number | 002031-0132         | 002032-0131                |
+| Company name                | Testcompany-se      | Testcompany-se             |
+| Street \#1                  | Stårgatan 1         | Stårgatan 1                |
+| Zip code \#1                | 12345               | 12345                      |
+| City \#1                    | Ankeborg            | Ankeborg                   |
+| Street \#2                  | Lillegatan 1        | Lillegatan 1               |
+| Zip code \#2                | 12334               | 12334                      |
+| City \#2                    | Ankeborg            | Ankeborg                   |
+| Phone number                | 0765260000          | 0765260000                 |
+| Email                       | youremail@email.com | youremail+denied@email.com |
 
 ### Switzerland
 
@@ -1016,6 +1018,14 @@ In the next step, enter the following bank details:
 | Country | NZ | NZ | NZ |
 | Date of birth (DD-MM-YYYY) | 10-07-1970 | 10-07-1970 | 01-01-2000 |
 | OTP (Random 6 digits different from 999999) | 123456 | 123456 | 123456 |
+
+## Test ID Card
+
+You can test the ID scan flow with this mock national ID card. Use the same image as both front and back of the card for all markets.
+
+
+![Mock national ID card](Sample_Identity_Card.png)
+*Mock national ID card*
 
 ## Other test scenarios
 

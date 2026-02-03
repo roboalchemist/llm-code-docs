@@ -2,19 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/cascade/memories.md
 
-# Source: https://docs.windsurf.com/windsurf/cascade/memories.md
-
-# Source: https://docs.windsurf.com/plugins/cascade/memories.md
-
-# Source: https://docs.windsurf.com/windsurf/cascade/memories.md
-
-# Source: https://docs.windsurf.com/plugins/cascade/memories.md
-
-# Source: https://docs.windsurf.com/windsurf/cascade/memories.md
-
-# Source: https://docs.windsurf.com/plugins/cascade/memories.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Memories & Rules
+
+> Configure Cascade memories and rules to persist context across conversations with global rules, workspace rules, and system-level rules for enterprise.
 
 `Memories` is the system for sharing and persisting context across conversations.
 
@@ -98,3 +92,39 @@ For example:
 - Always add documentation when creating new functions and classes
 </coding_guidelines>
 ```
+
+## System-Level Rules (Enterprise)
+
+Enterprise organizations can deploy system-level rules that apply globally across all workspaces and cannot be modified by end users without administrator permissions. This is ideal for enforcing organization-wide coding standards, security policies, and compliance requirements.
+
+System-level rules are loaded from OS-specific directories:
+
+**macOS:**
+
+```
+/Library/Application Support/Windsurf/rules/*.md
+```
+
+**Linux/WSL:**
+
+```
+/etc/windsurf/rules/*.md
+```
+
+**Windows:**
+
+```
+C:\ProgramData\Windsurf\rules\*.md
+```
+
+Place your rule files (as `.md` files) in the appropriate directory for your operating system. The system will automatically load all `.md` files from these directories.
+
+### How System Rules Work
+
+System-level rules are merged with workspace and global rules, providing additional context to Cascade without overriding user-defined rules. This allows organizations to establish baseline standards while still permitting teams to add project-specific customizations.
+
+In the Cascade UI, system-level rules are displayed with a "System" label and cannot be deleted by end users.
+
+<Note>
+  **Important**: System-level rules should be managed by your IT or security team. Ensure your internal teams handle deployment, updates, and compliance according to your organization's policies. You can use standard tools and workflows such as Mobile Device Management (MDM) or Configuration Management to do so.
+</Note>

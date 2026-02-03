@@ -5,24 +5,24 @@ title: RDBMS Background Jobs
 ---
 
 The **DatabaseJobFeature** is a new implementation purpose built for **PostgreSQL**, **SQL Server** and **MySQL** 
-backends that's a drop-in replacement for [SQLite's BackgroundsJobFeature](/background-jobs) which can be applied to an existing .NET 8+ project by [mixing in](/mix-tool) the **db-identity** or **db-jobs** gist files to your host project.
+backends that's a drop-in replacement for [SQLite's BackgroundsJobFeature](/background-jobs) which can be applied to an existing .NET 10+ project by [mixing in](/mix-tool) the **db-identity** or **db-jobs** gist files to your host project.
 
 ### Install
 
 For [ServiceStack ASP.NET Identity Auth](https://servicestack.net/start) Projects:
 
 :::sh
-x mix db-identity
+npx add-in db-identity
 :::
 
 Which replaces `Configure.BackgroundJobs.cs` and `Configure.RequestLogs.cs` with an equivalent
 version that uses the `DatabaseJobFeature` for sending Application Emails and `DbRequestLogger` 
 for API Request Logging.
 
-All other .NET 8+ ServiceStack Apps should instead use:
+All other .NET 10+ ServiceStack Apps should instead use:
 
 :::sh
-x mix db-jobs
+npx add-in db-jobs
 :::
 
 Which replaces `Configure.BackgroundJobs.cs` to use `DatabaseJobFeature`:

@@ -2,10 +2,6 @@
 
 # Source: https://vitest.dev/config/browser/locators.md
 
-# Source: https://vitest.dev/api/browser/locators.md
-
-# Source: https://vitest.dev/config/browser/locators.md
-
 ---
 url: /config/browser/locators.md
 ---

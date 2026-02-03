@@ -29,26 +29,26 @@ dotnet run
 If you have different App requirements you can instead create a project from scratch that integrates with your existing preferred infrastructure - the [mix tool](/mix-tool) and ServiceStack's layered [Modular Startup](/modular-startup) configurations makes this a cinch, start with an empty `web` project:
 
 :::sh
-x new web ProjectName
+npx create-net web ProjectName
 :::
 
 Then mix in your desired features. E.g. In order for this project to be self-hosting it utilizes the embedded SQLite database, which we can configure along with configuration to enable popular Authentication providers and an RDBMS SQLite Auth Repository with:
 
 :::sh
-x mix auth auth-db sqlite
+npx add-in auth auth-db sqlite
 :::
 
 But if you also wanted to enable the new [Sign in with Apple](/auth/signin-with-apple) and use SQL Server you'll instead run:
 
 :::sh
-x mix auth-ext auth-db sqlserver
+npx add-in auth-ext auth-db sqlserver
 :::
 
 You can view all DB and Auth options available by searching for available layered gist configurations by tag:
 
 ```bash
-x mix [db]
-x mix [auth]
+npx add-in [db]
+npx add-in [auth]
 ```
 
 Typically the only configuration that needs updating is your DB connection string in [Configure.Db.cs](https://github.com/NetCoreApps/BookingsCrud/blob/main/Acme/Configure.Db.cs), in this case it's changed to use a persistent SQLite DB:

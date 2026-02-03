@@ -46,12 +46,17 @@ is not guaranteed to be the same on each certificate renewal.
 ### Certificate renewals
 
 When you use the [TLS certificates](#tls-certificates) provided by Upsun,
-certificate renewals are automatic.
-They trigger a redeployment of your environment.
-During this redeployment, required security and system upgrades are applied to your containers.
-So the duration of the redeployment depends on what needs to be upgraded.
+certificate renewals occur automatically.
+
+These automatic renewals trigger a redeployment, and the following events occur, which can affect the duration of the redeployment: 
+- Any required security and system upgrades are applied to your containers.
+- The `post_deploy` hook is invoked. 
+**Make sure the scripts in your `post_deploy` hook are written to be idempotent** (safe to run multiple times) or have checks against duplication.
 
 ## Enable HTTPS
+
+**Before adding routes to your Upsun project, you must configure your DNS records** so that each route’s hostname resolves to the project’s assigned target (for example, via CNAME or appropriate DNS records).
+If DNS doesn’t point to your project, certificate renewal will fail. 
 
 To enable HTTPS, add a routing configuration similar to the following:
 

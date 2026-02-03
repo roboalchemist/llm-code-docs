@@ -1,10 +1,17 @@
+# Source: https://docs.datadoghq.com/database_monitoring/setup_sql_server/rds.md
+
+# Source: https://docs.datadoghq.com/database_monitoring/setup_postgres/rds.md
+
+# Source: https://docs.datadoghq.com/database_monitoring/setup_oracle/rds.md
+
+# Source: https://docs.datadoghq.com/database_monitoring/setup_mysql/rds.md
+
 # Source: https://docs.datadoghq.com/cloudcraft/components-aws/rds.md
 
 ---
 title: RDS Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > RDS Component
-source_url: https://docs.datadoghq.com/components-aws/rds/index.html
 ---
 
 # RDS Component

@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/search-research/exasearchtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # EXA Search Web Loader
 
 > The `EXASearchTool` is designed to perform a semantic search for a specified query from a text's content across the internet.

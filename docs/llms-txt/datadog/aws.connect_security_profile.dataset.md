@@ -4,8 +4,6 @@
 title: Connect Security Profile
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Connect Security Profile
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.connect_security_profile.dataset/index.html
 ---
 
 # Connect Security Profile
@@ -33,4 +31,4 @@ aws.connect_security_profile
 | organization_resource_id                  | core | string        | The organization resource identifier for the security profile.                                                                                   |
 | security_profile_name                     | core | string        | The name for the security profile.                                                                                                               |
 | tag_restricted_resources                  | core | array<string> | The list of resources that a security profile applies tag restrictions to in Amazon Connect.                                                     |
-| tags                                      | core | hstore        |
+| tags                                      | core | hstore_csv    |

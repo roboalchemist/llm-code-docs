@@ -46,9 +46,9 @@ public class DemoHandler extends com.yahoo.container.jdisc.ThreadedHttpRequestHa
 
 ## Accessing the HTTP request
 
-Custom [request handlers](request-handlers.html), are given a[com.yahoo.container.jdisc.HttpRequest](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/container/jdisc/HttpRequest.html), with direct access to associated properties and request data.
+Custom [request handlers](request-handlers.html), are given a[com.yahoo.container.jdisc.HttpRequest](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/container/jdisc/HttpRequest.html), with direct access to associated properties and request data.
 
-In [Processing](processing.html), the Processors are given a [com.yahoo.processing.Request](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/processing/Request.html)containing the HTTP URL parameters:
+In [Processing](processing.html), the Processors are given a [com.yahoo.processing.Request](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/processing/Request.html)containing the HTTP URL parameters:
 
 ```
 // url parameters are added to properties
@@ -140,7 +140,7 @@ This is the right way since it ties that execution to the one you're in.
 
 One hence cannot execute a search chain from the search chain component constructor to e.g. refresh a cache. It is impossible since the search chains can't be constructed until this constructor returns. An alternative is to extract the refreshing into a separate component which has both the client and execution factory injected into it.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

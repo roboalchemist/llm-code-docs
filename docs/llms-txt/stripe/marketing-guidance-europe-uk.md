@@ -6,25 +6,11 @@ Learn about marketing guidelines for Issuing programs in the United Kingdom and 
 
 > Requirements as of 1 June 2022
 
-# Scope of application
-
-These marketing guidelines only apply when you’re marketing Stripe’s Issuing product and services. If you’re only using Stripe Issuing for your own business expenses (and not to facilitate or provide services to your customers) then we wouldn’t expect you to carry out any marketing of Stripe’s products and services (so these marketing guidelines wouldn’t apply).
-
-# Basic Requirements
+These marketing guidelines only apply when you’re marketing Stripe’s Issuing product and services. If you’re only using Stripe Issuing for your own business expenses (and not to facilitate or provide services to your customers) then you don’t need to market any of Stripe’s products and services and these marketing guidelines wouldn’t apply.
 
 To offer and promote Stripe’s Issuing products in the United Kingdom and countries within Europe, your user interfaces and advertising must adhere to the guidelines outlined in this document. We’re providing these guidelines to help you navigate the financial regulations that govern the messaging you can use to describe our Issuing product. Deviation from these guidelines can result in poor user experiences and potential regulatory consequences for both you and Stripe. As such, consult both your in-house Legal team and Stripe’s compliance team ([platform-compliance@stripe.com](mailto:platform-compliance@stripe.com)), if it’s unclear how to apply these guidelines to your user interfaces or advertising.
 
-We’ve organized the relevant information for you in the following components:
-
-- Messaging guidelines
-- Pre-approved messages
-- Language
-- Prohibited types of marketing
-- User agreements
-- Required legal disclosures
-- Record keeping and monitoring
-
-# Messaging Guidelines 
+## Messaging guidelines 
 
 In the context of marketing, financial regulations require user interfaces and advertising to be fair, clear, and not misleading (taking into account how the advertising is communicated and whom it is directed to).
 
@@ -113,17 +99,15 @@ Always prohibited
 
 - Fake testimonials or quotes about the services
 
-# Language
+## Language
 
 When marketing services and products offered by Stripe, you must use either (a) English or (b) one of the official or commonly used languages of the country where your customer resides.
 
-# Prohibited types of marketing
+## Prohibited types of marketing
 
-Unless approved by Stripe in writing, you must not market Stripe’s products and services through any of the following types of marketing channels:
+Unless approved by Stripe in writing, you must not market Stripe’s products and services through telemarketing.
 
-- Telemarketing
-
-# User agreements
+## User agreements
 
 You must present user agreements to your prospective customers before they submit their application. This allows businesses to fully understand the terms and conditions of the product before entering into a contract to use Stripe Issuing services. There are a few user agreements that prospective customers need access to depending on their geographic location, including:
 
@@ -133,13 +117,13 @@ You must present user agreements to your prospective customers before they submi
 
 Your platform’s terms and conditions must clearly outline any fees or credits that you plan to offer your customers and any activities or qualifications that they need to meet for the fee or credit to be applied.
 
-# Pre-approved messages
+## Pre-approved messages
 
 Because marketing regulations can be cumbersome, we provide pre-approved messaging for communicating the key points of the Stripe Issuing program in your user-facing materials.
 
 We allow non-substantive changes to these messages as long as the key information remains the same. Any substantive changes require approval from Stripe’s compliance team. Approvals can take up to 10 business days to process.
 
-| Category                                | Suggested Messaging                                                                                                                                                                                                                        |
+| Category                                | Suggested messaging                                                                                                                                                                                                                        |
 | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Limitations on card program use         | Cardholders can only use the Card Program for commercial purposes (which means the payment of business expenses), and not for personal, family, or household purposes.                                                                     |
 | Currency                                | All Card Program cards are GBP or EUR denominated.                                                                                                                                                                                         |
@@ -148,7 +132,7 @@ We allow non-substantive changes to these messages as long as the key informatio
 | Speed of virtual card issuance          | Instantly access your own virtual card                                                                                                                                                                                                     |
 | Speed of physical card issuance         | Receive your physical card in a matter of days                                                                                                                                                                                             |
 
-# Required Legal Disclosures
+## Required legal disclosures
 
 For legal reasons, we require that all marketing, including user interfaces and advertisements, include this disclosure:
 
@@ -164,13 +148,13 @@ Including this disclosure is an essential element of managing your Stripe Issuin
 
 The disclosure may be placed on your marketing in an area of your choosing, as long as the location follows the location principles described in the [“Messaging Guidelines”](https://docs.stripe.com/issuing/marketing-guidance-europe-uk.md#messaging-guidelines) above. Typically our customers opt to place the disclosures towards the end of their webpage, social media, or email marketing.
 
-## Space constrained advertisements
+### Space constrained advertisements
 
 If you’re planning to market through a medium with character limitations which prohibits the full disclosure as set out above (such as in a social media advertisement), include a shortened version of the required legal disclosure, and a link within the advertisement that redirects a user to a webpage with the full legal disclosure.
 
 > “Cards issued by Stripe”
 
-# Record keeping and monitoring
+## Record keeping and monitoring
 
 To demonstrate your adherence to the requirements listed above, we ask that you keep thorough records of all marketing materials, customer data, account information, and other disclosures you make to customers for at least 5 years.
 

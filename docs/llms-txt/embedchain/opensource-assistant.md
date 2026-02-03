@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/examples/opensource-assistant.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Open-Source AI Assistant
 
 Embedchain also provides support for creating Open-Source AI Assistants (similar to [OpenAI Assistants API](https://platform.openai.com/docs/assistants/overview)) which allows you to build AI assistants within your own applications using any LLM (OpenAI or otherwise). An Assistant has instructions and can leverage models, tools, and knowledge to respond to user queries.
@@ -15,7 +19,7 @@ Creating an Open-Source AI Assistant is a simple 3 step process.
 
 ## Step 1: Instantiate AI Assistant
 
-```python Initialize
+```python Initialize theme={null}
 from embedchain.store.assistants import AIAssistant
 
 assistant = AIAssistant(
@@ -25,7 +29,7 @@ assistant = AIAssistant(
 
 If you want to use the existing assistant, you can do something like this:
 
-```python Initialize
+```python Initialize theme={null}
 # Load an assistant and create a new thread
 assistant = AIAssistant(assistant_id="asst_xxx")
 
@@ -37,7 +41,7 @@ assistant = AIAssistant(assistant_id="asst_xxx", thread_id="thread_xxx")
 
 You can add any custom data source that is supported by Embedchain. Else, you can directly pass the file path on your local system and Embedchain propagates it to OpenAI Assistant.
 
-```python Add data
+```python Add data theme={null}
 assistant.add("/path/to/file.pdf")
 assistant.add("https://www.youtube.com/watch?v=U9mJuUkhUzk")
 assistant.add("https://openai.com/blog/new-models-and-developer-products-announced-at-devday")
@@ -45,7 +49,7 @@ assistant.add("https://openai.com/blog/new-models-and-developer-products-announc
 
 ## Step-3: Chat with your AI Assistant
 
-```python Chat
+```python Chat theme={null}
 assistant.chat("How much OpenAI credits were offered to attendees during OpenAI DevDay?")
 # Response: 'Every attendee of OpenAI DevDay 2023 was offered $500 in OpenAI credits.'
 ```

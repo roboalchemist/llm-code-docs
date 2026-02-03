@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/geneva/jobs/performance.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Distributed Job Performance
 
 > Learn how to tune Geneva distributed job performance by scaling compute resources and balancing write bandwidth.
@@ -24,7 +28,7 @@ The `Table.backfill(..) ` method has several optional arguments to tune performa
 
 `commit_granularity` controls how frequently fragments are committed so that partical results can be come visible to table readers.
 
-Setting `batch_size` smaller introduces finer-grained checkpoints and can help provide more frequent proof of life as a job is being executed.  This is useful if the computation on your data is expensive.
+Setting `checkpoint_size` smaller introduces finer-grained checkpoints and can help provide more frequent proof of life as a job is being executed.  This is useful if the computation on your data is expensive.
 
 Reference:
 
@@ -44,8 +48,3 @@ Certain jobs that take a small data set and expand it may appear as if the write
 An example is table that contains a list of URLs pointing to large media files.  This list is relatively small (\< 100MB) and can fit into a single fragment.  A UDF that downloads will fetch all the data and then attempt to write all of it out through the single writer.  This single writer then can be responsible for serially writing out 500+GB of data to a single file!
 
 To mitigate this, you can load your initial table so that there will be multipe fragments.  Each fragment with new outputs can be written in parallel with higher write throughput.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

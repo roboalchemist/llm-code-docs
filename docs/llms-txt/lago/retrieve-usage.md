@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/events/retrieve-usage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieving usage
 
 > Learn how to retrieve usage data for both current and past billing periods.

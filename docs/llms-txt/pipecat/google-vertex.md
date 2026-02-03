@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/llm/google-vertex.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Google Vertex AI
 
 > LLM service implementation using Google's Vertex AI with OpenAI-compatible interface
@@ -49,8 +53,3 @@ Before using Google Vertex AI LLM services, you need:
 
 * `GOOGLE_APPLICATION_CREDENTIALS`: Path to your service account key file (recommended)
 * Or use Application Default Credentials for cloud deployments
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

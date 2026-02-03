@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/getting-started/import.md
-
-# Source: https://gitbook.com/docs/documentation/fr/getting-started/import.md
-
-# Source: https://gitbook.com/docs/getting-started/import.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/getting-started/import.md
 
 # Source: https://gitbook.com/docs/documentation/zh/getting-started/import.md
 
@@ -22,7 +18,7 @@ The Import panel makes it easy to migrate your content into your GitBook organiz
 
 When you choose to import from another online documentation site, all you have to do is add the URL of the site and GitBook will handle the rest.
 
-By default, GitBook uses AI to streamline the import process. This will intelligently refine and clean up imported content that doesn’t perfectly match GitBook’s formats — meaning the output will be more polished and use GitBook’s blocks more effectively. You can disable this from the menu.
+By default, GitBook uses AI to streamline the import process. This will intelligently refine and clean up imported content that doesn’t perfectly match GitBook’s formats — meaning the output will be more polished and use GitBook’s blocks more effectively. You can disable this from the menu.
 
 ### Supported import formats
 
@@ -80,8 +76,7 @@ You’ll find the essential steps to import your content below. For more detaile
 
 {% stepper %}
 {% step %}
-
-#### Convert your content into Markdown
+**Convert your content into Markdown**
 
 GitBook is Markdown-based, so importing content in Markdown format will yield the best results. If your current tools support exporting in Markdown, we recommend using that format for a smoother import process.
 
@@ -89,22 +84,19 @@ If your content isn’t already in Markdown files, we recommend using a script (
 {% endstep %}
 
 {% step %}
-
-#### Organize your content in GitHub or GitLab
+**Organize your content in GitHub or GitLab**
 
 When setting up your GitBook site, it’s crucial to organize your content in your GitHub or GitLab repository efficiently. Since Git Sync occurs at the space level, carefully plan how to group your content. Create multiple repositories or folders, ensuring the necessary Markdown files are in the correct locations.
 {% endstep %}
 
 {% step %}
-
-#### Set up spaces and configure Git Sync
+**Set up spaces and configure Git Sync**
 
 To organize your content, create one or more spaces in GitBook as needed. Install the [GitHub Sync](https://www.gitbook.com/integrations/github-sync) or [GitLab Sync](https://www.gitbook.com/integrations/gitlab-sync) integrations in your organization and configure it for those spaces. You’ll need to synchronize your space with the folder or repository you set up in the previous step.
 {% endstep %}
 
 {% step %}
-
-#### Run Git Sync in the direction GitHub → GitBook
+**Run Git Sync in the direction GitHub → GitBook**
 
 When following the configuration process, make sure you select the direction of GitHub → GitBook. This will result in the contents of your folder or repository being pulled from GitHub or GitLab into GitBook.
 {% endstep %}

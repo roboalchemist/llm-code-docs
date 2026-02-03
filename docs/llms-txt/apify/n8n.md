@@ -6,7 +6,7 @@
 
 ***
 
-https://n8n.io/ is an open source, fair-code licensed tool for workflow automation. With the https://github.com/apify/n8n-nodes-apify, you can connect Apify Actors and storage to hundreds of services You can run scrapers, extract data, and trigger workflows based on Actor or task events.
+[n8n](https://n8n.io/) is an open source, fair-code licensed tool for workflow automation. With the [Apify integration for n8n](https://github.com/apify/n8n-nodes-apify), you can connect Apify Actors and storage to hundreds of services You can run scrapers, extract data, and trigger workflows based on Actor or task events.
 
 In this guide, you'll learn how to install the Apify node, set up authentication, and incorporate it into your n8n workflows as either a trigger or an action.
 
@@ -14,8 +14,8 @@ In this guide, you'll learn how to install the Apify node, set up authentication
 
 Before you begin, make sure you have:
 
-* An https://console.apify.com/
-* An https://docs.n8n.io/learning-path/ (self‑hosted or cloud)
+* An [Apify account](https://console.apify.com/)
+* An [n8n instance](https://docs.n8n.io/learning-path/) (self‑hosted or cloud)
 
 ## Install the Apify Node (self-hosted)
 
@@ -24,8 +24,8 @@ If you're running a self-hosted n8n instance, you can install the Apify communit
 1. Open your n8n instance.
 2. Go to **Settings > Community Nodes**.
 3. Select **Install**.
-4. Enter the npm package name: `@apify/n8n-nodes-apify` (for latest version). To install a specific https://www.npmjs.com/package/@apify/n8n-nodes-apify?activeTab=versions enter e.g `@apify/n8n-nodes-apify@0.4.4`.
-5. Agree to the https://docs.n8n.io/integrations/community-nodes/risks/ of using community nodes and select **Install**.
+4. Enter the npm package name: `@apify/n8n-nodes-apify` (for latest version). To install a specific [version](https://www.npmjs.com/package/@apify/n8n-nodes-apify?activeTab=versions) enter e.g `@apify/n8n-nodes-apify@0.4.4`.
+5. Agree to the [risks](https://docs.n8n.io/integrations/community-nodes/risks/) of using community nodes and select **Install**.
 6. You can now use the node in your workflows.
 
 ![Apify Install Node](/assets/images/n8n-install-node-self-hosted-b2015cc6380ce3461e1b212390e654e7.png)
@@ -54,7 +54,7 @@ The Apify node offers two authentication methods to securely connect to your Api
 
 1. In the n8n Editor UI, click on **Create Credential**.
 2. Search for Apify API and click **Continue**.
-3. Enter your Apify API token. (find it in the https://console.apify.com/settings/integrations).
+3. Enter your Apify API token. (find it in the [Apify Console](https://console.apify.com/settings/integrations)).
 4. Click **Save**.
 
 ![Apify Auth](/assets/images/n8n-api-auth-07566be823d949ed892e161e034e9a0f.png)
@@ -123,7 +123,7 @@ Actions allow you to perform operations like running an Actor within a workflow.
 
    <!-- -->
 
-   * **Custom input**: JSON input for the Actor run, which you can find on the Actor input page in Apify Console. See https://docs.apify.com/platform/actors/running/input-and-output.md#input for more information. If empty, the run uses the input specified in the default run configuration
+   * **Custom input**: JSON input for the Actor run, which you can find on the Actor input page in Apify Console. See [Inputs](https://docs.apify.com/platform/actors/running/input-and-output.md#input) for more information. If empty, the run uses the input specified in the default run configuration
    * **Timeout**: Timeout for the Actor run in seconds. Zero value means there is no timeout
    * **Memory**: Amount of memory allocated for the Actor run, in megabytes
    * **Build Tag**: Specifies the Actor build tag to run. By default, the run uses the build specified in the default run configuration for the Actor (typically `latest`)
@@ -197,11 +197,11 @@ Pull data from Apify storage.
 
 #### Datasets
 
-* **Get Items**: Retrieves items from a https://docs.apify.com/platform/storage/dataset.md
+* **Get Items**: Retrieves items from a [dataset](https://docs.apify.com/platform/storage/dataset.md)
 
 #### Key-Value Stores
 
-* **Get Record**: Retrieves a value from a https://docs.apify.com/platform/storage/key-value-store.md
+* **Get Record**: Retrieves a value from a [key-value store](https://docs.apify.com/platform/storage/key-value-store.md)
 
 ### Triggers
 
@@ -212,9 +212,9 @@ Automatically start an n8n workflow when an Actor or task run finishes:
 
 ## Resources
 
-* https://docs.n8n.io/integrations/community-nodes/
-* https://docs.apify.com
-* https://docs.n8n.io
+* [n8n Community Nodes Documentation](https://docs.n8n.io/integrations/community-nodes/)
+* [Apify API Documentation](https://docs.apify.com)
+* [n8n Documentation](https://docs.n8n.io)
 
 ## Troubleshooting
 
@@ -223,4 +223,4 @@ If you encounter issues, start by double-checking basics.
 * **Authentication errors**: Verify your API token or OAuth2 settings in **Credentials**.
 * **Operation failures**: Check input parameters, JSON syntax, and resource IDs in your Apify account.
 
-Feel free to explore other resources and contribute to the integration on https://github.com/apify/n8n-nodes-apify.
+Feel free to explore other resources and contribute to the integration on [GitHub](https://github.com/apify/n8n-nodes-apify).

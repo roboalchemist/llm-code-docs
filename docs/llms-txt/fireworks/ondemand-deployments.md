@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/guides/ondemand-deployments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deployments
 
 > Configure and manage on-demand deployments on dedicated GPUs
@@ -23,8 +27,8 @@ Need higher GPU quotas or want to reserve capacity? [Contact us](https://firewor
 **Create a deployment:**
 
 ```bash  theme={null}
-# This command returns your DEPLOYMENT_NAME - save it for querying
-firectl create deployment accounts/fireworks/models/<MODEL_NAME> --wait
+# This command returns your accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID> - save it for querying
+firectl deployment create accounts/fireworks/models/<MODEL_NAME> --wait
 ```
 
 See [Deployment shapes](#deployment-shapes) below to optimize for speed, throughput, or cost.
@@ -34,47 +38,38 @@ See [Deployment shapes](#deployment-shapes) below to optimize for speed, through
 After creating a deployment, query it using this format:
 
 ```
-<MODEL_NAME>#<DEPLOYMENT_NAME>
+accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>
 ```
 
 <Tip>
-  You can find your deployment name anytime with `firectl list deployments` and `firectl get deployment <DEPLOYMENT_ID>`.
+  You can find your deployment name anytime with `firectl deployment list` and `firectl deployment get <DEPLOYMENT_ID>`.
 </Tip>
 
-**Examples:**
+**Example:**
 
-<Tabs>
-  <Tab title="Fireworks model">
-    ```
-    accounts/fireworks/models/mixtral-8x7b#accounts/alice/deployments/12345678
-    ```
-
-    * Model: `accounts/fireworks/models/mixtral-8x7b`
-    * Deployment: `accounts/alice/deployments/12345678`
-
-    <Tip>
-      You can also use shorthand: `fireworks/mixtral-8x7b#alice/12345678`
-    </Tip>
-  </Tab>
-
-  <Tab title="Custom model">
-    ```
-    accounts/alice/models/custom-model#accounts/alice/deployments/12345678
-    ```
-
-    * Model: `accounts/alice/models/custom-model`
-    * Deployment: `accounts/alice/deployments/12345678`
-
-    <Tip>
-      You can also use shorthand: `alice/custom-model#alice/12345678`
-    </Tip>
-  </Tab>
-</Tabs>
+```
+accounts/alice/deployments/12345678
+```
 
 ### Code examples
 
 <Tabs>
-  <Tab title="Python">
+  <Tab title="Python (Fireworks SDK)">
+    ```python  theme={null}
+    from fireworks import Fireworks
+
+    client = Fireworks()
+
+    response = client.chat.completions.create(
+      model="accounts/fireworks/models/gpt-oss-120b#<DEPLOYMENT_NAME>",
+      messages=[{"role": "user", "content": "Explain quantum computing in simple terms"}]
+    )
+
+    print(response.choices[0].message.content)
+    ```
+  </Tab>
+
+  <Tab title="Python (OpenAI SDK)">
     ```python  theme={null}
     import os
     from openai import OpenAI
@@ -85,7 +80,7 @@ After creating a deployment, query it using this format:
     )
 
     response = client.chat.completions.create(
-        model="accounts/fireworks/models/gpt-oss-120b#<DEPLOYMENT_NAME>",
+        model="accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>",
         messages=[{"role": "user", "content": "Explain quantum computing in simple terms"}]
     )
 
@@ -103,7 +98,7 @@ After creating a deployment, query it using this format:
     });
 
     const response = await client.chat.completions.create({
-      model: "accounts/fireworks/models/gpt-oss-120b#<DEPLOYMENT_NAME>",
+      model: "accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>",
       messages: [
         {
           role: "user",
@@ -122,7 +117,7 @@ After creating a deployment, query it using this format:
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $FIREWORKS_API_KEY" \
       -d '{
-        "model": "accounts/fireworks/models/gpt-oss-120b#<DEPLOYMENT_NAME>",
+        "model": "accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>",
         "messages": [
           {
             "role": "user",
@@ -146,17 +141,17 @@ Deployment shapes are the primary way to configure deployments. They're pre-conf
 
 ```bash  theme={null}
 # List available shapes
-firectl list deployment-shape-versions --base-model <model-id>
+firectl deployment-shape-version list --base-model <model-id>
 
 # Create with a shape (shorthand)
-firectl create deployment accounts/fireworks/models/deepseek-v3 --deployment-shape throughput
+firectl deployment create accounts/fireworks/models/deepseek-v3 --deployment-shape throughput
 
 # Create with full shape ID
-firectl create deployment accounts/fireworks/models/llama-v3p3-70b-instruct \
+firectl deployment create accounts/fireworks/models/llama-v3p3-70b-instruct \
   --deployment-shape accounts/fireworks/deploymentShapes/llama-v3p3-70b-instruct-fast
 
 # View shape details
-firectl get deployment-shape-version <full-deployment-shape-version-id>
+firectl deployment-shape-version get <full-deployment-shape-version-id>
 ```
 
 <Tip>
@@ -169,18 +164,22 @@ firectl get deployment-shape-version <full-deployment-shape-version-id>
 
 ```bash  theme={null}
 # List all deployments
-firectl list deployments
+firectl deployment list
 
 # Check deployment status
-firectl get deployment <DEPLOYMENT_ID>
+firectl deployment get <DEPLOYMENT_ID>
 
 # Delete a deployment
-firectl delete deployment <DEPLOYMENT_ID>
+firectl deployment delete <DEPLOYMENT_ID>
 ```
 
 <Note>
   By default, deployments scale to zero if unused for 1 hour. Deployments with min replicas set to 0 are automatically deleted after 7 days of no traffic.
 </Note>
+
+<Warning>
+  When a deployment is scaled to zero, requests return a `503` error immediately while the deployment scales up. Your application should implement retry logic to handle this. See [Scaling from zero behavior](/deployments/autoscaling#scaling-from-zero-behavior) for implementation details.
+</Warning>
 
 ### GPU hardware
 
@@ -203,7 +202,7 @@ See the [Autoscaling guide](/deployments/autoscaling) for configuration options.
 Use multiple GPUs to improve latency and throughput:
 
 ```bash  theme={null}
-firectl create deployment <MODEL_NAME> --accelerator-count 2
+firectl deployment create <MODEL_NAME> --accelerator-count 2
 ```
 
 More GPUs = faster generation. Note that scaling is sub-linear (2x GPUs ≠ 2x performance).

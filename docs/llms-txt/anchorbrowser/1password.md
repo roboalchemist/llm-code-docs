@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/integrations/1password.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 1Password
 
 > Securely inject 1Password secrets into your browser sessions
@@ -8,9 +12,9 @@
 
 The 1Password integration **enables your AI agent to securely authenticate with services** during browser automation by injecting secrets, credentials, and other sensitive data from your 1Password vaults directly into your Anchor Browser sessions. This gives your AI agent the ability to log into websites, access APIs, and perform authenticated actions **without you needing to hardcode credentials** in your automation scripts.
 
-<Info>
+<Note>
   The actual secret values are **never exposed** to the AI agent, logs, API responses, or any other output
-</Info>
+</Note>
 
 ## Prerequisites
 
@@ -158,9 +162,9 @@ The conversion follows these rules:
 3. Convert to uppercase
 4. Prefix with `OP_`
 
-<Info>
+<Note>
   **AI Agent Security**: When your AI agent accesses these environment variables, it can use them for authentication with external services, but the actual credential values are never visible in the agent's output, logs, or responses. The credentials are used transparently by the browser environment for authentication purposes only.
-</Info>
+</Note>
 
 ### Example: Using Secrets in Automation
 

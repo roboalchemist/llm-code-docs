@@ -1,8 +1,12 @@
-# Source: https://braintrust.dev/docs/guides/remote-evals.md
+# Source: https://braintrust.dev/docs/evaluate/remote-evals.md
 
-# Remote evals
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Run evaluations on remote infrastructure
+# Run remote evaluations
+
+> Run evaluations on your own infrastructure
 
 Remote evals let you run evaluations on your own infrastructure while using Braintrust's playground for iteration, comparison, and analysis. Your evaluation code runs on your servers or local machine, and the Braintrust playground sends parameters and receives results through a simple HTTP interface.
 
@@ -126,22 +130,91 @@ A remote eval looks like a standard `Eval()` call with a `parameters` field that
       },
   )
   ```
+
+  ```java SimpleRemoteEval.java theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  // Requires Braintrust Java SDK v0.2.1+
+  import com.openai.client.OpenAIClient;
+  import com.openai.client.okhttp.OpenAIOkHttpClient;
+  import com.openai.models.ChatModel;
+  import com.openai.models.chat.completions.ChatCompletionCreateParams;
+  import dev.braintrust.Braintrust;
+  import dev.braintrust.devserver.Devserver;
+  import dev.braintrust.devserver.RemoteEval;
+  import dev.braintrust.eval.Scorer;
+  import dev.braintrust.instrumentation.openai.BraintrustOpenAI;
+  import java.util.List;
+
+  class SimpleRemoteEval {
+      public static void main(String[] args) throws Exception {
+          var braintrust = Braintrust.get();
+          var openTelemetry = braintrust.openTelemetryCreate();
+          OpenAIClient client = BraintrustOpenAI.wrapOpenAI(openTelemetry, OpenAIOkHttpClient.fromEnv());
+
+          dev.braintrust.devserver.RemoteEval<String, String> eval =
+                  dev.braintrust.devserver.RemoteEval.<String, String>builder()
+                          .name("Simple eval")
+                          .taskFunction(
+                                  input -> {
+                                      var request =
+                                              ChatCompletionCreateParams.builder()
+                                                      .model(ChatModel.GPT_4O)
+                                                      .addUserMessage(input)
+                                                      .build();
+
+                                      var response = client.chat().completions().create(request);
+                                      return response.choices()
+                                              .get(0)
+                                              .message()
+                                              .content()
+                                              .orElse("");
+                                  })
+                          .scorers(
+                                  List.of(
+                                          Scorer.of(
+                                                  "accuracy",
+                                                  (expected, output) ->
+                                                          output.equals(expected) ? 1.0 : 0.0)))
+                          .build();
+
+          Devserver devserver =
+                  Devserver.builder()
+                          .config(braintrust.config())
+                          .registerEval(eval)
+                          .host("localhost")
+                          .port(8300)
+                          .build();
+
+          Runtime.getRuntime()
+                  .addShutdownHook(
+                          new Thread(
+                                  () -> {
+                                      System.out.println("Shutting down...");
+                                      devserver.stop();
+                                      System.out.flush();
+                                      System.err.flush();
+                                  }));
+
+          System.out.println("Starting Braintrust dev server on http://localhost:8300");
+          devserver.start();
+      }
+  }
+  ```
 </CodeGroup>
 
 ### Remote eval parameters
 
 Parameters define runtime configuration that users can modify in the playground without changing code. They appear as form controls in the UI.
 
-When implementing remote evals, the parameter system works the same way in both languages but uses different syntax:
+When implementing remote evals, the parameter system works the same way across languages but uses different syntax:
 
-| Feature               | TypeScript                                                                                                                    | Python                                                                                                                 |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| **Parameter types**   | `type: "prompt"` for LLM prompts<br />`z.string()`, `z.boolean()`, `z.number()`, `z.array()`, `z.object()` with `.describe()` | `type: "prompt"` for LLM prompts<br />Dictionary with `type: "string"`, `"boolean"`, `"number"`, `"array"`, `"object"` |
-| **Type definition**   | Zod schemas with chained methods                                                                                              | Dictionary with `type`, `description`, `default` fields                                                                |
-| **Parameter access**  | Direct property access: `parameters.prefix`                                                                                   | Dictionary access: `parameters["prefix"]` or `parameters.get("prefix")`                                                |
-| **Prompt parameters** | `type: "prompt"` with `messages` array directly in `default`                                                                  | `type: "prompt"` with nested `prompt.messages` and `options` objects                                                   |
-| **Prompt usage**      | `parameters.main.build({ input: value })`                                                                                     | `**parameters["main"].build(input=value)`                                                                              |
-| **Async handling**    | `async`/`await` with promises                                                                                                 | `async`/`await` with coroutines                                                                                        |
+| Feature               | TypeScript                                                                                                                    | Python                                                                                                                 | Java                                                                                                              |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **Parameter types**   | `type: "prompt"` for LLM prompts<br />`z.string()`, `z.boolean()`, `z.number()`, `z.array()`, `z.object()` with `.describe()` | `type: "prompt"` for LLM prompts<br />Dictionary with `type: "string"`, `"boolean"`, `"number"`, `"array"`, `"object"` | `type: "prompt"` for LLM prompts<br />`Map` with `type: "string"`, `"boolean"`, `"number"`, `"array"`, `"object"` |
+| **Type definition**   | Zod schemas with chained methods                                                                                              | Dictionary with `type`, `description`, `default` fields                                                                | Map with `type`, `description`, `default` fields                                                                  |
+| **Parameter access**  | Direct property access: `parameters.prefix`                                                                                   | Dictionary access: `parameters["prefix"]` or `parameters.get("prefix")`                                                | Map access: `parameters.get("prefix")` or `parameters.getOrDefault("prefix", default)`                            |
+| **Prompt parameters** | `type: "prompt"` with `messages` array directly in `default`                                                                  | `type: "prompt"` with nested `prompt.messages` and `options` objects                                                   | `type: "prompt"` with nested `prompt.messages` and `options` objects                                              |
+| **Prompt usage**      | `parameters.main.build({ input: value })`                                                                                     | `**parameters["main"].build(input=value)`                                                                              | `parameters.get("main").build(Map.of("input", value))`                                                            |
+| **Async handling**    | `async`/`await` with promises                                                                                                 | `async`/`await` with coroutines                                                                                        | Synchronous or `CompletableFuture`                                                                                |
 
 When your remote eval runs, Braintrust sends the configured parameter values through the `parameters` object in your task function.
 
@@ -156,6 +229,10 @@ To make your eval accessible to Braintrust, run it with the `--dev` flag to star
 
   <Tab title="Python">
     Run `braintrust eval path/to/eval.py --dev` to start the dev server at `http://localhost:8300`.
+  </Tab>
+
+  <Tab title="Java">
+    Run `braintrust eval RemoteEval --dev` to start the dev server at `http://localhost:8300`.
   </Tab>
 </Tabs>
 
@@ -202,11 +279,6 @@ This video walks through exposing a remote eval to Braintrust and using it in a 
 
 ## Next steps
 
-* Learn more about [evaluations](/core/experiments) and how to structure effective evals
-* Read about [scoring functions](/core/scorers) to understand how to evaluate outputs
-* Check out [playground documentation](/core/playground) to learn about comparing and analyzing results
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+* [Use playgrounds](/evaluate/playgrounds) to compare and analyze results.
+* [Write scorers](/evaluate/write-scorers) to evaluate outputs.
+* [Run evaluations](/evaluate/run-evaluations) programmatically.

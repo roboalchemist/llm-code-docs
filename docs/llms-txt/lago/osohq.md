@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/integrations/entitlements/osohq.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Oso
 
 [Oso](https://www.osohq.com/)  is an authorization-as-a-service provider partnering with Lago to offer entitlements. You can use either the open-source version (available on [Github](https://github.com/osohq/oso)) or the cloud-hosted version. To create entitlements with Lago, you must open an account on Oso.

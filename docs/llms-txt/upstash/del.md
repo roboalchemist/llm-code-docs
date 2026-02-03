@@ -6,62 +6,33 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/generic/del.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/del.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/del.md
+# DEL
 
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/del.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/del.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/del.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/del.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/del.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/del.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/del.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/del.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/del.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/del.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/del.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/del.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/del.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/del.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/del.md
-
-# JSON.DEL
-
-> Delete a key from a JSON document.
+> Removes the specified keys. A key is ignored if it does not exist.
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
-  The key of the json entry.
-</ParamField>
-
-<ParamField body="path" type="string" default="$">
-  The path to delete
+<ParamField body="keys" type="*List[str]" required>
+  One or more keys to remove.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
-  How many paths were deleted.
+<ResponseField type="int" required>
+  The number of keys that were removed.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.json.del("key", "$.path.to.value");
+  ```py Example theme={"system"}
+  redis.set("key1", "Hello")
+  redis.set("key2", "World")
+  redis.delete("key1", "key2")
+
+  assert redis.get("key1") is None
+  assert redis.get("key2") is None
   ```
 </RequestExample>

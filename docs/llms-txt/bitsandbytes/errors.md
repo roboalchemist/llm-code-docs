@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/bitsandbytes/v0.49.0/errors.md
+# Source: https://huggingface.co/docs/bitsandbytes/v0.49.1/errors.md
 
 # Troubleshoot
 

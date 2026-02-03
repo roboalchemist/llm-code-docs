@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/test-cases/
+
 # Test Case Configuration
 
 Define evaluation scenarios with variables, assertions, and test data.

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/deploy/streamlit-community-cloud
+
 # Streamlit Community Cloud
 
 With Streamlit Community Cloud, you can create, deploy, and manage your Streamlit apps — all for free. Share your apps with the world and build a customized profile page to display your work. Your Community Cloud account connects directly to your GitHub repositories (public or private). Most apps will launch in only a few minutes. Community Cloud handles all of the containerization, so deploying is easy. Bring your own code, or start from one of our popular templates. Rapidly prototype, explore, and update apps by simply changing your code in GitHub. Most changes appear immediately!

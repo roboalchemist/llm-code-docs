@@ -4,8 +4,6 @@
 title: DynamoDB Backup
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > DynamoDB Backup
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.dynamodb_backup.dataset/index.html
 ---
 
 # DynamoDB Backup
@@ -18,11 +16,11 @@ aws.dynamodb_backup
 
 ## Fields
 
-| Title                        | ID   | Type   | Data Type                                                                                                                     | Description |
-| ---------------------------- | ---- | ------ | ----------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| _key                         | core | string |
-| account_id                   | core | string |
-| backup_details               | core | json   | Contains the details of the backup created for the table.                                                                     |
-| source_table_details         | core | json   | Contains the details of the table when the backup was created.                                                                |
-| source_table_feature_details | core | json   | Contains the details of the features enabled on the table when the backup was created. For example, LSIs, GSIs, streams, TTL. |
-| tags                         | core | hstore |
+| Title                        | ID   | Type       | Data Type                                                                                                                     | Description |
+| ---------------------------- | ---- | ---------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key                         | core | string     |
+| account_id                   | core | string     |
+| backup_details               | core | json       | Contains the details of the backup created for the table.                                                                     |
+| source_table_details         | core | json       | Contains the details of the table when the backup was created.                                                                |
+| source_table_feature_details | core | json       | Contains the details of the features enabled on the table when the backup was created. For example, LSIs, GSIs, streams, TTL. |
+| tags                         | core | hstore_csv |

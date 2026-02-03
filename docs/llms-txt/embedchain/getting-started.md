@@ -1,12 +1,16 @@
 # Source: https://docs.embedchain.ai/examples/rest-api/getting-started.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🌍 Getting Started
 
 ## Quickstart
 
 To use Embedchain as a REST API service, run the following command:
 
-```bash
+```bash  theme={null}
 docker run --name embedchain -p 8080:8080 embedchain/rest-api:latest
 ```
 
@@ -20,14 +24,14 @@ Navigate to [http://localhost:8080/docs](http://localhost:8080/docs) to interact
   <Step title="⚙️ Create an app">
     <Tabs>
       <Tab title="cURL">
-        ```bash
+        ```bash  theme={null}
         curl --request POST "http://localhost:8080/create?app_id=my-app" \
          -H "accept: application/json"
         ```
       </Tab>
 
       <Tab title="python">
-        ```python
+        ```python  theme={null}
         import requests
 
         url = "http://localhost:8080/create?app_id=my-app"
@@ -41,7 +45,7 @@ Navigate to [http://localhost:8080/docs](http://localhost:8080/docs) to interact
       </Tab>
 
       <Tab title="javascript">
-        ```javascript
+        ```javascript  theme={null}
         const data = fetch("http://localhost:8080/create?app_id=my-app", {
           method: "POST",
         }).then((res) => res.json());
@@ -51,7 +55,7 @@ Navigate to [http://localhost:8080/docs](http://localhost:8080/docs) to interact
       </Tab>
 
       <Tab title="go">
-        ```go
+        ```go  theme={null}
         package main
 
         import (
@@ -87,7 +91,7 @@ Navigate to [http://localhost:8080/docs](http://localhost:8080/docs) to interact
   <Step title="🗃️ Add data sources">
     <Tabs>
       <Tab title="cURL">
-        ```bash
+        ```bash  theme={null}
         curl --request POST \
           --url http://localhost:8080/my-app/add \
           -d "source=https://www.forbes.com/profile/elon-musk" \
@@ -96,7 +100,7 @@ Navigate to [http://localhost:8080/docs](http://localhost:8080/docs) to interact
       </Tab>
 
       <Tab title="python">
-        ```python
+        ```python  theme={null}
         import requests
 
         url = "http://localhost:8080/my-app/add"
@@ -111,7 +115,7 @@ Navigate to [http://localhost:8080/docs](http://localhost:8080/docs) to interact
       </Tab>
 
       <Tab title="javascript">
-        ```javascript
+        ```javascript  theme={null}
         const data = fetch("http://localhost:8080/my-app/add", {
           method: "POST",
           body: "source=https://www.forbes.com/profile/elon-musk&data_type=web_page",
@@ -122,7 +126,7 @@ Navigate to [http://localhost:8080/docs](http://localhost:8080/docs) to interact
       </Tab>
 
       <Tab title="go">
-        ```go
+        ```go  theme={null}
         package main
 
         import (
@@ -159,7 +163,7 @@ Navigate to [http://localhost:8080/docs](http://localhost:8080/docs) to interact
   <Step title="💬 Query on your data">
     <Tabs>
       <Tab title="cURL">
-        ```bash
+        ```bash  theme={null}
         curl --request POST \
           --url http://localhost:8080/my-app/query \
           -d "query=Who is Elon Musk?"
@@ -167,7 +171,7 @@ Navigate to [http://localhost:8080/docs](http://localhost:8080/docs) to interact
       </Tab>
 
       <Tab title="python">
-        ```python
+        ```python  theme={null}
         import requests
 
         url = "http://localhost:8080/my-app/query"
@@ -182,7 +186,7 @@ Navigate to [http://localhost:8080/docs](http://localhost:8080/docs) to interact
       </Tab>
 
       <Tab title="javascript">
-        ```javascript
+        ```javascript  theme={null}
         const data = fetch("http://localhost:8080/my-app/query", {
           method: "POST",
           body: "query=Who is Elon Musk?",
@@ -193,7 +197,7 @@ Navigate to [http://localhost:8080/docs](http://localhost:8080/docs) to interact
       </Tab>
 
       <Tab title="go">
-        ```go
+        ```go  theme={null}
         package main
 
         import (
@@ -230,7 +234,7 @@ Navigate to [http://localhost:8080/docs](http://localhost:8080/docs) to interact
   <Step title="🚀 (Optional) Deploy your app to Embedchain Platform">
     <Tabs>
       <Tab title="cURL">
-        ```bash
+        ```bash  theme={null}
         curl --request POST \
           --url http://localhost:8080/my-app/deploy \
           -d "api_key=ec-xxxx"
@@ -238,7 +242,7 @@ Navigate to [http://localhost:8080/docs](http://localhost:8080/docs) to interact
       </Tab>
 
       <Tab title="python">
-        ```python
+        ```python  theme={null}
         import requests
 
         url = "http://localhost:8080/my-app/deploy"
@@ -252,7 +256,7 @@ Navigate to [http://localhost:8080/docs](http://localhost:8080/docs) to interact
       </Tab>
 
       <Tab title="javascript">
-        ```javascript
+        ```javascript  theme={null}
         const data = fetch("http://localhost:8080/my-app/deploy", {
           method: "POST",
           body: "api_key=ec-xxxx",
@@ -263,7 +267,7 @@ Navigate to [http://localhost:8080/docs](http://localhost:8080/docs) to interact
       </Tab>
 
       <Tab title="go">
-        ```go
+        ```go  theme={null}
         package main
 
         import (

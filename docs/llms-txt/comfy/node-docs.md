@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/interface/features/node-docs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Node docs - View documentation for any node
 
 > Learn how to access built-in documentation for nodes in ComfyUI, including both built-in and custom nodes.

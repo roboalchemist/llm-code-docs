@@ -6,25 +6,9 @@
 
 # Source: https://docs.unstructured.io/api-reference/workflow/destinations/local.md
 
-# Source: https://docs.unstructured.io/open-source/ingestion/source-connectors/local.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/local.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/sources/local.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/local.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/source-connectors/local.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/local.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/sources/local.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/local.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/sources/local.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/local.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Local
 

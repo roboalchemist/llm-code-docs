@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > FAQ > Has Cloudcraft gone through security
   audits?
-source_url: https://docs.datadoghq.com/faq/security-audits/index.html
 ---
 
 # Has Cloudcraft gone through security audits?

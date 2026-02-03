@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/management/batches/stream-items.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Stream batch items
 
 > Phase 2 of 2-phase batch API. Accepts an NDJSON stream of batch items and enqueues them.
@@ -160,7 +164,3 @@ components:
       bearerFormat: JWT
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://trigger.dev/docs/llms.txt

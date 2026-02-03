@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/troubleshooting/max_record_size_exceeded.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ERR max single record size exceeded
 
 ### Symptom

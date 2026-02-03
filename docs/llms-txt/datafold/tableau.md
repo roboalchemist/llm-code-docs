@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/integrations/bi-data-apps/tableau.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tableau
 
 > Visualize downstream Tableau dependencies and understand how warehouse changes impact your BI layer.

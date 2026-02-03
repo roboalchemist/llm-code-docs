@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/reference/telephony/sip-participant.md
 
-# Source: https://docs.livekit.io/sip/sip-participant.md
-
-LiveKit docs › Reference › SIP participant
+LiveKit docs › Telephony › SIP participant
 
 ---
 
@@ -12,15 +10,15 @@ LiveKit docs › Reference › SIP participant
 
 > ℹ️ **Note**
 > 
-> To create a SIP participant to make outbound calls, see [Make outbound calls](https://docs.livekit.io/sip/outbound-calls.md).
+> To create a SIP participant to make outbound calls, see [Make outbound calls](https://docs.livekit.io/telephony/making-calls/outbound-calls/.md).
 
-Each user in a LiveKit telephony app is a [LiveKit participant](https://docs.livekit.io/home/get-started/api-primitives.md#participant). This includes end users who call in using your inbound trunk, the participant you use to make outbound calls, and if you're using an agent, the AI voice agent that interacts with callers.
+Each user in a LiveKit telephony app is a [LiveKit participant](https://docs.livekit.io/intro/basics/rooms-participants-tracks.md). This includes end users who call in using your inbound trunk, the participant you use to make outbound calls, and if you're using an agent, the AI voice agent that interacts with callers.
 
-SIP participants are managed like any other participant using the [participant management commands](https://docs.livekit.io/home/server/managing-participants.md).
+SIP participants are managed like any other participant using the [participant management commands](https://docs.livekit.io/intro/basics/rooms-participants-tracks/participants.md).
 
 ## SIP participant attributes
 
-SIP participants can be identified using the `kind` field for participants, which identifies the [type of participant](https://docs.livekit.io/home/get-started/api-primitives.md#types-of-participants) in a LiveKit room (i.e. session). For SIP participants, this is `Participant.Kind == SIP`.
+SIP participants can be identified using the `kind` field for participants, which identifies the [type of participant](https://docs.livekit.io/intro/basics/rooms-participants-tracks/participants.md#types-of-participants) in a LiveKit room (i.e. session). For SIP participants, this is `Participant.Kind == SIP`.
 
 The participant `attributes` field contains SIP specific attributes that identify the caller and call details. You can use SIP participant attributes to create different workflows based on the caller. For example, look up customer information in a database to identify the caller.
 
@@ -57,7 +55,7 @@ If you're using Twilio SIP trunks, the following additional attributes are inclu
 
 You can add custom SIP participant attributes in one of two ways:
 
-- Adding attributes to the dispatch rule. To learn more, see [Setting custom attributes on inbound SIP participants](https://docs.livekit.io/sip/dispatch-rule.md#setting-custom-attributes-on-inbound-sip-participants).
+- Adding attributes to the dispatch rule. To learn more, see [Setting custom attributes on inbound SIP participants](https://docs.livekit.io/telephony/accepting-calls/dispatch-rule.md#setting-custom-attributes-on-inbound-sip-participants).
 - Using SIP headers: For any `X-*` SIP headers, you can configure your trunk with `headers_to_attributes` and a key/value pair mapping.
 
 For example:
@@ -241,11 +239,11 @@ if (participant.kind === ParticipantKind.SIP) {
 
 ## Creating a SIP participant to make outbound calls
 
-To make outbound calls, create a SIP participant. To learn more, see [Make outbound calls](https://docs.livekit.io/sip/outbound-calls.md).
+To make outbound calls, create a SIP participant. To learn more, see [Make outbound calls](https://docs.livekit.io/telephony/making-calls/outbound-calls/.md).
 
 ---
 
-This document was rendered at 2025-11-18T23:55:22.348Z.
-For the latest version of this document, see [https://docs.livekit.io/sip/sip-participant.md](https://docs.livekit.io/sip/sip-participant.md).
+This document was rendered at 2026-02-03T03:25:13.379Z.
+For the latest version of this document, see [https://docs.livekit.io/reference/telephony/sip-participant.md](https://docs.livekit.io/reference/telephony/sip-participant.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

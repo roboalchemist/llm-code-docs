@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/pki/ca/lets-encrypt.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Let's Encrypt
 
 > Learn how to connect Infisical to Let's Encrypt to issue certificates.

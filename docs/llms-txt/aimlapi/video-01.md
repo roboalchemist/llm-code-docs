@@ -39,7 +39,7 @@ Below, you can find both corresponding API schemas.
 ## API Schemas
 
 {% hint style="success" %}
-Now, all of our API schemas for video models use our new universal short URL — `https://api.aimlapi.com/v2/video/generations`. \
+Now, all of our API schemas for video models use our new universal short URL — `https://api.aimlapi.com/v2/video/generations`.\
 However, you can still call this model using the legacy URL that includes the vendor name.
 {% endhint %}
 
@@ -56,7 +56,7 @@ However, you can still call this model using the legacy URL that includes the ve
 ### Retrieve the generated video from the server
 
 After sending a request for video generation, this task is added to the queue. This endpoint lets you check the status of a video generation task using its `id`, obtained from the endpoint described above.\
-If the video generation task status is `complete`, the response will include the final result — with the generated video URL and additional metadata.
+If the video generation task status is `completed`, the response will include the final result — with the generated video URL and additional metadata.
 
 ## GET /v2/video/generations
 

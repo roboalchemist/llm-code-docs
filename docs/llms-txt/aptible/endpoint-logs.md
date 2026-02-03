@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/app-endpoints/https-endpoints/endpoint-logs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Endpoint Logs
 
 Logs from HTTP(S) Endpoints can be routed to [Log Drains](/core-concepts/observability/logs/log-drains/overview) (select this option when creating the Log Drain). These logs will contain all requests your Endpoint receives, as well as most errors pertaining to the inability of your App to serve a response, if applicable.

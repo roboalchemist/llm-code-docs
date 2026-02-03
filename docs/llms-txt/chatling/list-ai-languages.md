@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/api-reference/v2/ai-kb/list-ai-languages.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List AI languages
 
 > Get a list of all the supported AI languages.

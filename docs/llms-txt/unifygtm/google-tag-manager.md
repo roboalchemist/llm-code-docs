@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/integrations/google-tag-manager.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Google Tag Manager Integration Guide
 
 > This guide outlines how to install the Unify website tag using Google Tag Manager.

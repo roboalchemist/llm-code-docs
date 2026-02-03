@@ -6,8 +6,6 @@ description: >-
   Input parameters allow you to embed the same app in multiple dashboards or
   notebooks using different configurations for each instance.
 breadcrumbs: Docs > App Builder > Embedded Apps > Input Parameters
-source_url: >-
-  https://docs.datadoghq.com/app_builder/embedded_apps/input_parameters/index.html
 ---
 
 # Input Parameters

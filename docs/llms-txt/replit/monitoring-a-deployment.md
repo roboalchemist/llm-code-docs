@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/cloud-services/deployments/monitoring-a-deployment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Published App Monitoring
 
 > The Publishing tool provides real-time insights for your published Replit Apps.

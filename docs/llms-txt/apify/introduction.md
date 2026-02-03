@@ -1,38 +1,14 @@
-# Source: https://docs.apify.com/sdk/python/docs/overview/introduction.md
-
 # Source: https://docs.apify.com/sdk/js/docs/readme/introduction.md
-
-# Source: https://docs.apify.com/api/client/python/docs/overview/introduction.md
 
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/introduction.md
-
-# Source: https://docs.apify.com/sdk/python/docs/overview/introduction.md
-
-# Source: https://docs.apify.com/sdk/js/docs/readme/introduction.md
-
-# Source: https://docs.apify.com/api/client/python/docs/overview/introduction.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/introduction.md
-
-# Source: https://docs.apify.com/sdk/python/docs/overview/introduction.md
-
-# Source: https://docs.apify.com/sdk/js/docs/readme/introduction.md
-
-# Source: https://docs.apify.com/api/client/python/docs/overview/introduction.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/introduction.md
-
-# Source: https://docs.apify.com/sdk/python/docs/overview/introduction.md
-
-# Source: https://docs.apify.com/sdk/js/docs/readme/introduction.md
-
-# Source: https://docs.apify.com/api/client/python/docs/overview/introduction.md
-
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/introduction.md
 
 # Introduction
 
 **Start learning about web scraping, web crawling, data extraction, and popular tools to start developing your own scraper.**
+
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
 
 ***
 
@@ -54,4 +30,4 @@ We use web scraping as an umbrella term for crawling, web data extraction and al
 
 ## Next up
 
-In the https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction.md, you will learn about the basic building blocks of each web page. HTML, CSS and JavaScript.
+In the [next lesson](https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction.md), you will learn about the basic building blocks of each web page. HTML, CSS and JavaScript.

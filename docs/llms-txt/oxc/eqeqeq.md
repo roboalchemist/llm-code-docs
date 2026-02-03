@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/eqeqeq.md
 ---
-# eslint/eqeqeq&#x20;
 
 ### What it does
 
@@ -13,29 +12,7 @@ Requires the use of the `===` and `!==` operators, disallowing the use of `==` a
 
 Using non-strict equality operators leads to unexpected behavior due to type coercion, which can cause hard-to-find bugs.
 
-### Options
-
-First option:
-
-* Type: `string`
-* Default: `"always"`
-
-Possible values:
-
-* `"always"` - always require `===`/`!==`
-* `"smart"` - allow safe comparisons (`typeof`, literals, nullish)
-
-Second option (only used with `"always"`):
-
-* Type: `object`
-* Properties:
-  * `null`: `string` (default: `"always"`) - `"ignore"` allows `== null` and `!= null`.
-
-Possible values for `null`:
-
-* `"always"` - always require `=== null`/`!== null`
-* `"never"` - always require `== null`/`!= null`
-* `"ignore"` - allow both `== null`/`!= null` and `=== null`/`!== null`
+### Examples
 
 Example JSON configuration:
 
@@ -45,14 +22,12 @@ Example JSON configuration:
 }
 ```
 
-### Examples
-
 #### `"always"` (default)
 
 Examples of **incorrect** code for this rule:
 
 ```js
-/* eslint eqeqeq: "error" */
+/* eqeqeq: "error" */
 
 if (x == 42) {
 }
@@ -65,7 +40,7 @@ if (obj.getStuff() != undefined) {
 Examples of **correct** code for this rule:
 
 ```js
-/* eslint eqeqeq: "error" */
+/* eqeqeq: "error" */
 
 if (x === 42) {
 }
@@ -80,7 +55,7 @@ if (obj.getStuff() !== undefined) {
 Examples of **incorrect** code for this rule with the `"smart"` option:
 
 ```js
-/* eslint eqeqeq: ["error", "smart"] */
+/* eqeqeq: ["error", "smart"] */
 
 if (x == 42) {
 }
@@ -91,7 +66,7 @@ if ("" == text) {
 Examples of **correct** code for this rule with the `"smart"` option:
 
 ```js
-/* eslint eqeqeq: ["error", "smart"] */
+/* eqeqeq: ["error", "smart"] */
 
 if (typeof foo == "undefined") {
 }
@@ -106,7 +81,7 @@ if (foo != null) {
 Examples of **incorrect** code for this rule with the `{ "null": "ignore" }` option:
 
 ```js
-/* eslint eqeqeq: ["error", "always", { "null": "ignore" }] */
+/* eqeqeq: ["error", "always", { "null": "ignore" }] */
 if (x == 42) {
 }
 if ("" == text) {
@@ -116,7 +91,7 @@ if ("" == text) {
 Examples of **correct** code for this rule with the `{ "null": "ignore" }` option:
 
 ```js
-/* eslint eqeqeq: ["error", "always", { "null": "ignore" }] */
+/* eqeqeq: ["error", "always", { "null": "ignore" }] */
 if (foo == null) {
 }
 if (foo != null) {
@@ -128,7 +103,7 @@ if (foo != null) {
 Examples of **incorrect** code for this rule with the `{ "null": "always" }` option:
 
 ```js
-/* eslint eqeqeq: ["error", "always", { "null": "always" }] */
+/* eqeqeq: ["error", "always", { "null": "always" }] */
 
 if (foo == null) {
 }
@@ -139,7 +114,7 @@ if (foo != null) {
 Examples of **correct** code for this rule with the `{ "null": "always" }` option:
 
 ```js
-/* eslint eqeqeq: ["error", "always", { "null": "always" }] */
+/* eqeqeq: ["error", "always", { "null": "always" }] */
 
 if (foo === null) {
 }
@@ -152,7 +127,7 @@ if (foo !== null) {
 Examples of **incorrect** code for this rule with the `{ "null": "never" }` option:
 
 ```js
-/* eslint eqeqeq: ["error", "always", { "null": "never" }] */
+/* eqeqeq: ["error", "always", { "null": "never" }] */
 
 if (x == 42) {
 }
@@ -167,7 +142,7 @@ if (foo !== null) {
 Examples of **correct** code for this rule with the `{ "null": "never" }` option:
 
 ```js
-/* eslint eqeqeq: ["error", "always", { "null": "never" }] */
+/* eqeqeq: ["error", "always", { "null": "never" }] */
 
 if (x === 42) {
 }
@@ -181,15 +156,39 @@ if (foo != null) {
 
 ## Configuration
 
-This rule accepts a configuration object with the following properties:
-
-### compareType
+### The 1st option
 
 type: `"always" | "smart"`
 
-### nullType
+#### `"always"`
+
+Always require triple-equal comparisons, `===`/`!==`.
+This is the default.
+
+#### `"smart"`
+
+Allow certain safe comparisons to use `==`/`!=` (`typeof`, literals, nullish).
+
+### The 2nd option
+
+This option is an object with the following properties:
+
+#### null
 
 type: `"always" | "never" | "ignore"`
+
+##### `"always"`
+
+Always require triple-equals when comparing with null, `=== null`/`!== null`.
+This is the default.
+
+##### `"never"`
+
+Never require triple-equals when comparing with null, always use `== null`/`!= null`.
+
+##### `"ignore"`
+
+Ignore null comparisons, allow either `== null`/`!= null` or `=== null`/`!== null`.
 
 ## How to use
 

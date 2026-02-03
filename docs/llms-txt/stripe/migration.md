@@ -10,9 +10,7 @@ Accept many payment methods with a single Element.
 
 Previously, each payment method (cards, iDEAL, and so on) required a separate Element. By migrating to the Payment Element, you can accept many payment methods with a single Element.
 
-PaymentIntents and SetupIntents each have their own set of migration guidelines. See the appropriate guide for your integration path, including example code.
-
-> If your integration still uses the Charges API with tokens, follow the [Migrating to the Payment Intents API](https://docs.stripe.com/payments/payment-intents/migration.md#web) guide first.
+PaymentIntents and SetupIntents each have their own set of migration guidelines. See the appropriate guide for your integration path, including example code. If your integration still uses the Charges API with tokens, first [Migrate to the Payment Intents API](https://docs.stripe.com/payments/payment-intents/migration.md#web) before you use this guide.
 
 # PaymentIntent migration
 
@@ -22,7 +20,7 @@ If your existing integration uses the [Payment Intents](https://docs.stripe.com/
 
 ## Enable payment methods
 
-> This integration path doesn’t support BLIK or pre-authorized debits that use the Automated Clearing Settlement System (ACSS).
+> This integration path doesn’t support BLIK or pre-authorized debits that use the Automated Clearing Settlement System (ACSS). You also can’t use `customer_balance` with dynamic payment methods when the deferred intent is created client-side. The client-side deferred-intent flow can’t include a [Customer](https://docs.stripe.com/api/customers/object.md), and `customer_balance` requires a `Customer` on the [PaymentIntent](https://docs.stripe.com/api/payment_intents.md), so it’s excluded to avoid errors. To use `customer_balance`, create the `PaymentIntent` server-side with a `Customer` and return its `client_secret` to the client.
 
 View your [payment methods settings](https://dashboard.stripe.com/settings/payment_methods) and enable the payment methods you want to support. You need at least one payment method enabled to create a *PaymentIntent* (The Payment Intents API tracks the lifecycle of a customer checkout flow and triggers additional authentication steps when required by regulatory mandates, custom Radar fraud rules, or redirect-based payment methods).
 
@@ -131,7 +129,7 @@ function App() {
 };
 ```
 
-You also need to pass `setup_future_usage` when creating your PaymentIntent.
+Pass `setup_future_usage` when creating your PaymentIntent.
 
 #### curl
 
@@ -285,7 +283,7 @@ Any of the additional elements options passed when creating the Elements group i
 ```bash
 curl https://api.stripe.com/v1/payment_intents \
   -u <<YOUR_SECRET_KEY>>: \
-  -H "Stripe-Version: 2025-10-29.clover" \
+  -H "Stripe-Version: 2026-01-28.clover" \
   -d "amount"=1099 \
   -d "currency"="usd" \-d "automatic_payment_methods[enabled]"=true \
 ```
@@ -401,12 +399,12 @@ var paymentIntent = service.Create(options);
 
 ```bash
 stripe payment_intents create \
-  --stripe-version="2025-10-29.clover" \
+  --stripe-version="2026-01-28.clover" \
   --amount=1099 \
   --currency=usd \-d "automatic_payment_methods[enabled]"=true
 ```
 
-> Each payment method needs to support the currency passed in the PaymentIntent and your business needs to be based in one of the countries each payment method supports. See the [Payment method integration options](https://docs.stripe.com/payments/payment-methods/integration-options.md) page for more details about what’s supported.
+> Each payment method needs to support the currency passed in the PaymentIntent and your business needs to be based in one of the countries each payment method supports. For more details about what’s supported, see the [Payment method integration options](https://docs.stripe.com/payments/payment-methods/integration-options.md).
 
 ## Update the submit handler [Client-side]
 
@@ -496,6 +494,40 @@ const handleSubmit = async (event) => {
 };
 ```
 
+## Optional: Recollect a CVC
+
+When creating subsequent payments on a saved card, you may want to re-collect the CVC of the card as an additional fraud measure to verify the user.
+
+Start by creating a PaymentIntent on your server with the amount, currency, your [Customer](https://docs.stripe.com/api/payment_intents/create.md#create_payment_intent-customer) ID, and [require_cvc_recollection](https://docs.stripe.com/api/payment_intents/create.md#create_payment_intent-payment_method_options-card-require_cvc_recollection). [List](https://docs.stripe.com/api/payment_methods/list.md) the *PaymentMethods* (PaymentMethods represent your customer's payment instruments, used with the Payment Intents or Setup Intents APIs) associated with your *Customer* (Customer objects represent customers of your business. They let you reuse payment methods and give you the ability to track multiple payments) to determine which PaymentMethods to show for CVC re-collection.
+
+After passing the PaymentIntent’s client secret to the browser, you’re ready to re-collect CVC information with Stripe Elements on your client. Use the `cardCvc` Element to re-collect a CVC value from your user, and then confirm the payment from your client using [stripe.confirmCardPayment](https://docs.stripe.com/js.md#stripe-confirm-card-payment). Set `payment_method` to your PaymentMethod ID, and `payment_method_options[card][cvc]` to your `cardCvc` Element.
+
+```javascript
+const result = await stripe.confirmCardPayment(clientSecret, {
+  payment_method: '{{PAYMENT_METHOD_ID}}',
+  payment_method_options: {
+    card: {
+      cvc: cardCvcElement
+    }
+  },
+});
+
+if (result.error) {
+  // Show error to your customer
+  console.log(result.error.message);
+} else {
+  if (result.paymentIntent.status === 'succeeded') {
+    // Show a success message to your customer
+    // There's a risk of the customer closing the window before callback
+    // execution. Set up a webhook or plugin to listen for the
+    // payment_intent.succeeded event that handles any business critical
+    // post-payment actions.
+  }
+}
+```
+
+A payment may succeed even with a failed CVC check. To prevent this, configure your [Radar rules](https://docs.stripe.com/radar/rules.md#traditional-bank-checks) to block payments when CVC verification fails.
+
 ## Handle post-payment events [Server-side]
 
 Stripe sends a [payment_intent.succeeded](https://docs.stripe.com/api/events/types.md#event_types-payment_intent.succeeded) event when the payment completes. Use the [Dashboard webhook tool](https://dashboard.stripe.com/webhooks) or follow the [webhook guide](https://docs.stripe.com/webhooks/quickstart.md) to receive these events and run actions, such as sending an order confirmation email to your customer, logging the sale in a database, or starting a shipping workflow.
@@ -562,7 +594,7 @@ If your existing integration uses the [Setup Intents](https://docs.stripe.com/pa
 
 ## Enable payment methods
 
-> This integration path doesn’t support BLIK or pre-authorized debits that use the Automated Clearing Settlement System (ACSS).
+> This integration path doesn’t support BLIK or pre-authorized debits that use the Automated Clearing Settlement System (ACSS). You also can’t use `customer_balance` with dynamic payment methods when the deferred intent is created client-side. The client-side deferred-intent flow can’t include a [Customer](https://docs.stripe.com/api/customers/object.md), and `customer_balance` requires a `Customer` on the [PaymentIntent](https://docs.stripe.com/api/payment_intents.md), so it’s excluded to avoid errors. To use `customer_balance`, create the `PaymentIntent` server-side with a `Customer` and return its `client_secret` to the client.
 
 View your [payment methods settings](https://dashboard.stripe.com/settings/payment_methods) and enable the payment methods you want to support. You need at least one payment method enabled to create a *SetupIntent* (The Setup Intents API lets you build dynamic flows for collecting payment method details for future payments. It tracks the lifecycle of a payment setup flow and can trigger additional authentication steps if required by law or by the payment method).
 
@@ -701,7 +733,7 @@ Any of the additional elements options passed when creating the Elements group i
 ```bash
 curl https://api.stripe.com/v1/setup_intents \
   -u <<YOUR_SECRET_KEY>>: \
-  -H "Stripe-Version: 2025-10-29.clover" \
+  -H "Stripe-Version: 2026-01-28.clover" \
   -d "customer"="{{CUSTOMER_ID}}" \-d "automatic_payment_methods[enabled]"=true
 ```
 
@@ -753,7 +785,7 @@ const paymentIntent = await stripe.setupIntents.create({
 
 ```bash
 stripe setup_intents create \
-  --stripe-version="2025-10-29.clover" \
+  --stripe-version="2026-01-28.clover" \
   --customer={{CUSTOMER_ID}} \-d "automatic_payment_methods[enabled]"=true
 ```
 

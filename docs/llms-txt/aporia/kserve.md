@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/storing-your-predictions/kserve.md
 
-# Source: https://docs.aporia.com/storing-your-predictions/kserve.md
-
-# Source: https://docs.aporia.com/v1/storing-your-predictions/kserve.md
-
 # Kubeflow / KServe
 
 If you are using [Kubeflow](https://www.kubeflow.org/) or [KServe](https://github.com/kserve/kserve) for model serving, you can store the predictions of your models using InferenceDB.

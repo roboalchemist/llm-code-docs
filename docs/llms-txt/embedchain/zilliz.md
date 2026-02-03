@@ -1,17 +1,21 @@
 # Source: https://docs.embedchain.ai/components/vector-databases/zilliz.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zilliz
 
 Install related dependencies using the following command:
 
-```bash
+```bash  theme={null}
 pip install --upgrade 'embedchain[milvus]'
 ```
 
 Set the Zilliz environment variables `ZILLIZ_CLOUD_URI` and `ZILLIZ_CLOUD_TOKEN` which you can find it on their [cloud platform](https://cloud.zilliz.com/).
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -22,7 +26,7 @@ Set the Zilliz environment variables `ZILLIZ_CLOUD_URI` and `ZILLIZ_CLOUD_TOKEN`
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   vectordb:
     provider: zilliz
     config:

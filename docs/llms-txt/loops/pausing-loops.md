@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/loop-builder/pausing-loops.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pausing Loops
 
 > Learn how to pause and stop a Loop to control the sending of emails.

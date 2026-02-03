@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/enterprise/architecture.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Architecture
 
 > Learn about LanceDB Enterprise architecture and system design.
@@ -48,8 +52,3 @@ Furthermore, we achieve high-throughput indexing operations without compromising
 <Info>
   Indexing scales down to zero when there is no activity on the table.
 </Info>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

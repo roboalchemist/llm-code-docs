@@ -1,106 +1,86 @@
 # Source: https://docs.baseten.co/reference/management-api/chains/gets-a-chain-by-id.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # By ID
+
+
 
 ## OpenAPI
 
 ````yaml get /v1/chains/{chain_id}
+openapi: 3.1.0
+info:
+  description: REST API for management of Baseten resources
+  title: Baseten management API
+  version: 1.0.0
+servers:
+  - url: https://api.baseten.co
+security:
+  - ApiKeyAuth: []
 paths:
-  path: /v1/chains/{chain_id}
-  method: get
-  servers:
-    - url: https://api.baseten.co
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-              description: >-
-                You must specify the scheme 'Api-Key' in the Authorization
-                header. For example, `Authorization: Api-Key <Your_Api_Key>`
-          cookie: {}
+  /v1/chains/{chain_id}:
     parameters:
-      path:
-        chain_id:
-          schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - lang: bash
-        source: |
-          curl --request GET \
-          --url https://api.baseten.co/v1/chains/{chain_id} \
-          --header "Authorization: Api-Key $BASETEN_API_KEY"
-      - lang: python
-        source: |-
-          import requests
-          import os
-          API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
-          url = "https://api.baseten.co/v1/chains/{chain_id}"
-
-          headers = {"Authorization": f"Api-Key {API_KEY}"}
-
-          response = requests.request(
-              "GET",
-              url,
-              headers=headers,
-              json={}
-          )
-
-          print(response.text)
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: Unique identifier of the chain
-                    title: Id
-                    type: string
-              created_at:
-                allOf:
-                  - description: Time the chain was created in ISO 8601 format
-                    format: date-time
-                    title: Created At
-                    type: string
-              name:
-                allOf:
-                  - description: Name of the chain
-                    title: Name
-                    type: string
-              deployments_count:
-                allOf:
-                  - description: Number of deployments of the chain
-                    title: Deployments Count
-                    type: integer
-            title: ChainV1
-            description: A chain.
-            refIdentifier: '#/components/schemas/ChainV1'
-            requiredProperties:
-              - id
-              - created_at
-              - name
-              - deployments_count
-        examples:
-          example:
-            value:
-              id: <string>
-              created_at: '2023-11-07T05:31:56Z'
-              name: <string>
-              deployments_count: 123
-        description: A chain.
-  deprecated: false
-  type: path
+      - $ref: '#/components/parameters/chain_id'
+    get:
+      summary: Gets a chain by ID
+      responses:
+        '200':
+          description: A chain.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChainV1'
 components:
-  schemas: {}
+  parameters:
+    chain_id:
+      schema:
+        type: string
+      name: chain_id
+      in: path
+      required: true
+  schemas:
+    ChainV1:
+      description: A chain.
+      properties:
+        id:
+          description: Unique identifier of the chain
+          title: Id
+          type: string
+        created_at:
+          description: Time the chain was created in ISO 8601 format
+          format: date-time
+          title: Created At
+          type: string
+        name:
+          description: Name of the chain
+          title: Name
+          type: string
+        deployments_count:
+          description: Number of deployments of the chain
+          title: Deployments Count
+          type: integer
+        team_name:
+          description: Name of the team associated with the chain
+          title: Team Name
+          type: string
+      required:
+        - id
+        - created_at
+        - name
+        - deployments_count
+        - team_name
+      title: ChainV1
+      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        You must specify the scheme 'Api-Key' in the Authorization header. For
+        example, `Authorization: Api-Key <Your_Api_Key>`
 
 ````

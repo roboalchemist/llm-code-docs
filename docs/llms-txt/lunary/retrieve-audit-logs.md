@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/audit-logs/retrieve-audit-logs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve audit logs
 
 > Retrieve a list of audit logs for the current organization. Note that this functionality is still under development and the audits logs are not fully exhaustive.
@@ -60,7 +64,3 @@ components:
       scheme: bearer
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

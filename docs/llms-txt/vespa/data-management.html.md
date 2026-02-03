@@ -200,7 +200,7 @@ If only a few documents are returned per response, _wantedDocumentCount_ (defaul
 
 Specifying _concurrency_ (default 1, max 100) increases throughput, at the cost of resource usage. This also increases the number of documents per response, and _could_ lead to excessive memory usage in the HTTP container when many large documents are buffered to be returned in the same response.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

@@ -2,10 +2,7 @@
 
 # Post values
 
-```
-POST 
-/v1/configs/:configId/environments/:environmentId/values
-```
+Copy page
 
 This endpoint replaces the values of a specified Config's Feature Flags or Settings identified by the `configId` parameter in a specified Environment identified by the `environmentId` parameter.
 
@@ -15,7 +12,7 @@ Only the `value`, `rolloutRules` and `percentageRules` attributes are modifiable
 
 For example: We have the following resource.
 
-```
+```json
 {
   "settingValues": [
     {
@@ -35,11 +32,12 @@ For example: We have the following resource.
     }
   ]
 }
+
 ```
 
 If we send a replace request body as below:
 
-```
+```json
 { 
   "settingValues": [
     {
@@ -48,11 +46,12 @@ If we send a replace request body as below:
     }
   ]
 }
+
 ```
 
 Then besides that the default value is set to `true`, all the Percentage Rules are deleted. So we get a response like this:
 
-```
+```json
 {
   "settingValues": [
     {
@@ -66,6 +65,7 @@ Then besides that the default value is set to `true`, all the Percentage Rules a
     }
   ]
 }
+
 ```
 
 The `rolloutRules` property describes two types of rules:

@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/dashboards/configure.md
+
 # Source: https://docs.datadoghq.com/cloudprem/configure.md
 
 # Source: https://docs.datadoghq.com/bits_ai/bits_ai_sre/configure.md
@@ -6,7 +8,6 @@
 title: Configure integrations and settings
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Bits AI > Bits AI SRE > Configure integrations and settings
-source_url: https://docs.datadoghq.com/bits_ai_sre/configure/index.html
 ---
 
 # Configure integrations and settings

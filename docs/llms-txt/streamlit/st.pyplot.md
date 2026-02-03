@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/charts/st.pyplot
+
 # st.pyplot
 
 Display a matplotlib.pyplot figure.

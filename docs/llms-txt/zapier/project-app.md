@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/reference/project-app.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zapier integration structure for a project management app
 
 > While you can't automate project work, you can automatically add tasks, create new projects, and keep track of progress via an app integration on Zapier.

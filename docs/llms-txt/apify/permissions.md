@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/platform/actors/development/permissions.md
 
-# Source: https://docs.apify.com/platform/actors/running/permissions.md
-
-# Source: https://docs.apify.com/platform/actors/development/permissions.md
-
-# Source: https://docs.apify.com/platform/actors/running/permissions.md
-
-# Source: https://docs.apify.com/platform/actors/development/permissions.md
-
-# Source: https://docs.apify.com/platform/actors/running/permissions.md
-
-# Source: https://docs.apify.com/platform/actors/development/permissions.md
-
 # Permissions
 
 **Learn how to declare and manage permissions for your Actor, what permission levels mean, and how to build secure, trusted Actors for Apify users.**
@@ -24,7 +12,7 @@ Every time a user runs your Actor, it runs under their Apify account. **Actor pe
 
 Your Actors can request two levels of access:
 
-* **Limited permissions:** Actors with this permission level have restricted access, primarily to their own storages and the data they generate. They cannot access other user data on the Apify platform.
+* **Limited permissions (default):** Actors with this permission level have restricted access, primarily to their own storages and the data they generate. They cannot access other user data on the Apify platform.
 * **Full permissions:** This level grants an Actor access to all of a user's Apify account data.
 
 Most Actors should use limited permissions to request only the specific access they need and reserve full permissions for exceptional cases where the Actor cannot function otherwise.
@@ -35,7 +23,7 @@ When a user runs an Actor, it receives an Apify API token. This token is injecte
 
 Actors with **Full permissions** receive a token that grants complete access to the user's Apify account via the Apify API.
 
-Actors with **Limited permissions** receive https://docs.apify.com/platform/integrations/api.md#api-tokens-with-limited-permissions. This token only allows the Actor to perform a specific set of actions, which covers the vast majority of common use cases.
+Actors with **Limited permissions** receive [a restricted scoped token](https://docs.apify.com/platform/integrations/api.md#api-tokens-with-limited-permissions). This token only allows the Actor to perform a specific set of actions, which covers the vast majority of common use cases.
 
 A limited-permission Actor can:
 
@@ -43,7 +31,7 @@ A limited-permission Actor can:
 * Create any additional storage, and write to that storage.
 * Read and write to storages created in previous runs.
 * Update the current run's status or abort the run.
-* https://docs.apify.com/platform/actors/development/programming-interface/metamorph.md to another Actor with limited permissions.
+* [Metamorph](https://docs.apify.com/platform/actors/development/programming-interface/metamorph.md) to another Actor with limited permissions.
 * Read and write to storages provided via Actor input (for example, when the user provides a dataset that the Actor should write into).
 * Read basic user information from the environment (whether the user is paying, their proxy password, or public profile).
 * Run any other Actor with limited permissions.
@@ -52,11 +40,11 @@ This approach ensures your Actor has everything it needs to function while prote
 
 Migrating to limited permissions
 
-To learn how to migrate your Actors to run under limited permissions, check out the https://docs.apify.com/platform/actors/development/permissions/migration-guide.md
+To learn how to migrate your Actors to run under limited permissions, check out the [Migration guide](https://docs.apify.com/platform/actors/development/permissions/migration-guide.md)
 
 ### Configuring Actor permissions level
 
-You can set the permission level for your Actor in the Apify Console under its **Settings** tab. All the existing Actors are configured to use full permissions.
+You can set the permission level for your Actor in the Apify Console under its **Settings** tab. New Actors are configured to use limited permissions by default. Older Actors might still use full permissions until you update their configuration.
 
 ![Actor permissions configuration in Actor settings](/assets/images/actor_settings_permissions-cefa4b8f962836c1cfc8000f1ad54987.webp)
 
@@ -70,7 +58,7 @@ Users see a visible permission badge on your Actor's detail page indicating whet
 
 Impact on Actor Quality score
 
-When possible, design your Actors to use limited permissions and request only the access they truly need. Actors requiring full permissions may receive a lower https://docs.apify.com/platform/actors/publishing/quality-score.md, which can reduce their ranking in the store.
+When possible, design your Actors to use limited permissions and request only the access they truly need. Actors requiring full permissions may receive a lower [Actor Quality score](https://docs.apify.com/platform/actors/publishing/quality-score.md), which can reduce their ranking in the store.
 
 ### Accessing user provided storages
 
@@ -119,16 +107,16 @@ Behavior at run time:
 * The user’s selection is injected into the run input, and the run token is expanded to allow only the requested operations on the selected storages.
 * If your code attempts an operation not covered by `resourcePermissions` (for example, writing with only `READ`), the platform returns an insufficient-permissions error.
 
-See the full https://docs.apify.com/platform/actors/development/actor-definition/input-schema/specification/v1.md.
+See the full [input schema reference for details.](https://docs.apify.com/platform/actors/development/actor-definition/input-schema/specification/v1.md).
 
 ### Requesting full permissions
 
-Designing your Actors to work under limited permissions is the recommended approach, it helps improve your https://docs.apify.com/platform/actors/publishing/quality-score.md#trustworthiness and increases user trust and adoption. However, some use cases do legitimately require broader access to user data (e.g., to perform administrative tasks or orchestrate other Actors). If your Actor falls in this category or cannot function with limited permissions for another reason:
+Designing your Actors to work under limited permissions is the recommended approach, it helps improve your [Actor Quality score](https://docs.apify.com/platform/actors/publishing/quality-score.md#trustworthiness) and increases user trust and adoption. However, some use cases do legitimately require broader access to user data (e.g., to perform administrative tasks or orchestrate other Actors). If your Actor falls in this category or cannot function with limited permissions for another reason:
 
 * Explain why you need full permissions in your Actor's README. This will help keep user trust and set correct user expectations.
 * Set the permission level in the Actor’s **Settings** in Console to **Full permissions**.
-* Be aware of the  and impact on https://docs.apify.com/platform/actors/publishing/quality-score.md for full-permission Actors.
+* Be aware of the  and impact on [Actor Quality score](https://docs.apify.com/platform/actors/publishing/quality-score.md) for full-permission Actors.
 
 Need help with Actor permissions?
 
-If you cannot migrate to limited permissions or have a use case that should work under limited permissions but does not, contact support or ask on https://discord.gg/eN73Xdhtqc.
+If you cannot migrate to limited permissions or have a use case that should work under limited permissions but does not, contact support or ask on [the community forum](https://discord.gg/eN73Xdhtqc).

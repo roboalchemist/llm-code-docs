@@ -2,6 +2,8 @@
 
 # Service Status & Monitoring
 
+Copy page
+
 To check the current health and status of the service visit: <https://status.configcat.com>.
 
 ## API[​](#api "Direct link to API")

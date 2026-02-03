@@ -4,31 +4,9 @@
 
 # Source: https://upstash.com/docs/qstash/integrations/datadog.md
 
-# Source: https://upstash.com/docs/workflow/integrations/datadog.md
-
-# Source: https://upstash.com/docs/redis/howto/datadog.md
-
-# Source: https://upstash.com/docs/qstash/integrations/datadog.md
-
-# Source: https://upstash.com/docs/workflow/integrations/datadog.md
-
-# Source: https://upstash.com/docs/redis/howto/datadog.md
-
-# Source: https://upstash.com/docs/qstash/integrations/datadog.md
-
-# Source: https://upstash.com/docs/workflow/integrations/datadog.md
-
-# Source: https://upstash.com/docs/redis/howto/datadog.md
-
-# Source: https://upstash.com/docs/qstash/integrations/datadog.md
-
-# Source: https://upstash.com/docs/workflow/integrations/datadog.md
-
-# Source: https://upstash.com/docs/redis/howto/datadog.md
-
-# Source: https://upstash.com/docs/qstash/integrations/datadog.md
-
-# Source: https://upstash.com/docs/workflow/integrations/datadog.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Datadog - Upstash QStash Integration
 

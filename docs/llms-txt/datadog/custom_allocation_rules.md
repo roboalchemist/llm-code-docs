@@ -4,7 +4,6 @@
 title: Custom Allocation Rules
 description: Allocate cloud costs based on custom allocation rules.
 breadcrumbs: Docs > Cloud Cost Management > Cost Allocation > Custom Allocation Rules
-source_url: https://docs.datadoghq.com/allocation/custom_allocation_rules/index.html
 ---
 
 # Custom Allocation Rules

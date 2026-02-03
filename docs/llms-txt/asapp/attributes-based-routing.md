@@ -1,12 +1,16 @@
 # Source: https://docs.asapp.com/agent-desk/digital-agent-desk/queues-and-routing/attributes-based-routing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Attributes Based Routing
 
-> Learn how to use Attributes Based Routing (ABR) to route chats to the appropriate Agent Queue.
+> Learn how to use Attributes Based Routing (ABR) to route chats to the appropriate agent queue.
 
-Attributes Based Routing (ABR) is a rules-based system to determine which Agent Queue an incoming chat should be assigned to.
+Attributes Based Routing (ABR) uses a rules-based system to determine which agent queue should receive an incoming chat.
 
-ASAPP invokes ABR by default after our Machine Learning model classifies a customer's utterances to an Intent and determines that the Intent cannot be serviced by an automated flow.
+ASAPP invokes ABR by default after our Machine Learning model classifies customer utterances to an intent and determines that the intent cannot be handled by an automated flow.
 
 ## Attributes of ABR
 
@@ -28,13 +32,13 @@ The ASAPP SDK defines additional parameters, which can also be used in ABR. You 
 * Segments
   Ex: NorthEast, USA, EMEA
 
-You can also define custom customer specific attributes to be used in routing. Customer Information allows definition of any number of attributes as key-value pairs, which can be set per chat and be used for routing to specific agent queues. Please refer to the Customer Information section for more details on how to define custom attributes.
+You can also define custom customer-specific attributes for routing. Customer Information allows definition of any number of attributes as key-value pairs, which you can set per chat and use for routing to specific agent queues. Refer to the Customer Information section for more details on defining custom attributes.
 
 ## Configuration
 
-ABR is capable of using any or all of the above attributes to determine which queue to route a chat. The configuration is extremely flexible and can accommodate various complex rules including regular expression matches, as well as multi value matches.
+ABR can use any or all of the above attributes to determine which queue receives a chat. The configuration offers extreme flexibility and can accommodate various complex rules including regular expression matches and multi-value matches.
 
-Contact your Implementation Manager to model the routing rules.
+Contact your implementation manager to model the routing rules.
 
 ## Template for Submitting Rules
 
@@ -48,6 +52,6 @@ See the [User Management](/agent-desk/digital-agent-desk/user-management) sectio
 
 ## Queue Management
 
-You can define Queues based on business or technical needs. You can define any number of queues and can follow any desired naming convention. You can apply Business Hours to queues individually. For more information on other features and functionality, please contact your Implementation Manager.
+You can define queues based on business or technical needs. You can define any number of queues and follow any desired naming convention. You can apply business hours to queues individually. For more information on other features and functionality, contact your implementation manager.
 
-You can assign Agents to one or more queues based on skills and/or requirements. Please refer to [User Management](/agent-desk/digital-agent-desk/user-management) for more details.
+You can assign agents to one or more queues based on skills and requirements. Refer to [User Management](/agent-desk/digital-agent-desk/user-management) for more details.

@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/knowledge-graph.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create and manage a Knowledge Graph
 
 > Integrate graph-based RAG into your agents with Knowledge Graph API. Achieve higher accuracy than traditional vector-based retrieval methods.

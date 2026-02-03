@@ -2,10 +2,7 @@
 
 # Update Webhook
 
-```
-PATCH 
-/v1/webhooks/:webhookId
-```
+Copy page
 
 This endpoint updates a Webhook identified by the `webhookId` parameter with a collection of [JSON Patch](https://jsonpatch.com) operations.
 
@@ -13,7 +10,7 @@ The advantage of using JSON Patch is that you can describe individual update ope
 
 For example: We have the following resource.
 
-```
+```json
 {
   "webhookId": 6,
   "url": "https://example.com/hook",
@@ -21,11 +18,12 @@ For example: We have the following resource.
   "content": "null",
   "webHookHeaders": []
 }
+
 ```
 
 If we send an update request body as below (it changes the `content` field and adds a new HTTP header):
 
-```
+```json
 [
   {
     "op": "replace", 
@@ -41,11 +39,12 @@ If we send an update request body as below (it changes the `content` field and a
     }
   }
 ]
+
 ```
 
 Only the `content` and `webHookHeaders` are updated and all the other attributes remain unchanged. So we get a response like this:
 
-```
+```json
 {
   "webhookId": 6,
   "url": "https://example.com/hook",
@@ -59,6 +58,7 @@ Only the `content` and `webHookHeaders` are updated and all the other attributes
     }
   ]
 }
+
 ```
 
 ## Request[​](#request "Direct link to Request")

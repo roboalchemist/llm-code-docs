@@ -1,190 +1,219 @@
 # Source: https://docs.solidfi.com/v2/api-reference/card-holders/list-all-card-holders.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.solidfi.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List all Card Holders
 
 > List all Card Holders
 
+
+
 ## OpenAPI
 
 ````yaml get /v2/issuing/card_holder
+openapi: 3.0.3
+info:
+  title: Solid v2
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://api.sandbox.solidfi.com
+  - url: https://api.prod.solidfi.com
+security: []
+tags:
+  - name: Master Accounts
+  - name: Sub Account Holders
+  - name: Sub Accounts
+  - name: Counterparties
+  - name: Card Holders
+  - name: Cards
+  - name: Transactions
+  - name: Attachments
+  - name: Webhooks
+  - name: Simulation
+  - name: ACH
+  - name: Card
 paths:
-  path: /v2/issuing/card_holder
-  method: get
-  servers:
-    - url: https://api.sandbox.solidfi.com
-    - url: https://api.prod.solidfi.com
-  request:
-    security:
-      - title: ''
-        parameters:
-          query: {}
-          header: {}
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        master_account_id:
+  /v2/issuing/card_holder:
+    get:
+      tags:
+        - Card Holders
+      summary: List all Card Holders
+      description: List all Card Holders
+      operationId: listAllCardHolders
+      parameters:
+        - name: master_account_id
+          in: query
           schema:
-            - type: string
-              description: unique id of the master account
-              example: mas_743fa071316bc6beaf5dddfd05f49c30
-        limit:
+            type: string
+            example: mas_743fa071316bc6beaf5dddfd05f49c30
+            description: unique id of the master account
+        - name: limit
+          in: query
           schema:
-            - type: number
-              description: number of records to return
-              example: 10
-        starting_after:
+            type: number
+            example: 10
+            description: number of records to return
+        - name: starting_after
+          in: query
           schema:
-            - type: string
-              description: >-
-                A cursor for use in pagination. `starting_after` is an ID that
-                defines your place in the list. For instance, if you make a list
-                request and receive 50 records, ending with
-                `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your
-                subsequent call can include
-                `starting_after=Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`
-                in order to fetch the next page of the list.
-              example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
-        ending_before:
+            type: string
+            example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
+            description: >-
+              A cursor for use in pagination. `starting_after` is an ID that
+              defines your place in the list. For instance, if you make a list
+              request and receive 50 records, ending with
+              `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your
+              subsequent call can include
+              `starting_after=Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`
+              in order to fetch the next page of the list.
+        - name: ending_before
+          in: query
           schema:
-            - type: string
-              description: >-
-                A cursor for use in pagination. `ending_before` is an ID that
-                defines your place in the list. For instance, if you make a list
-                request and receive 50 records, starting with
-                `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your
-                subsequent call can include `ending_before=
-                Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky` in order to
-                fetch the previous page of the list.
-              example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
-      header:
-        api-key:
+            type: string
+            example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
+            description: >-
+              A cursor for use in pagination. `ending_before` is an ID that
+              defines your place in the list. For instance, if you make a list
+              request and receive 50 records, starting with
+              `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your
+              subsequent call can include `ending_before=
+              Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky` in order to
+              fetch the previous page of the list.
+        - name: api-key
+          in: header
           schema:
-            - type: string
-              required: true
-              description: >-
-                API key is required to call Solid APIs. You can view and manage
-                your API keys in the Solid dashboard.
-              example: '{{api_key}}'
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              total:
-                allOf:
-                  - type: number
-                    example: 1
-                    description: total number of records
-              data:
-                allOf:
-                  - type: array
-                    items:
-                      $ref: '#/components/schemas/card_holder'
-              has_more:
-                allOf:
-                  - type: string
-                    example: 'true'
-                    description: if there are more records to iterate or not
-                    enum:
-                      - 'true'
-                      - 'false'
-              starting_after:
-                allOf:
-                  - type: string
-                    example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
-                    description: >-
-                      A cursor for use in pagination. `starting_after` is an ID
-                      that defines your place in the list. For instance, if you
-                      make a list request and receive 50 records, ending with
-                      `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your
-                      subsequent call can include
-                      `starting_after=Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`
-                      in order to fetch the next page of the list.
-              ending_before:
-                allOf:
-                  - type: string
-                    example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
-                    description: >-
-                      A cursor for use in pagination. `ending_before` is an ID
-                      that defines your place in the list. For instance, if you
-                      make a list request and receive 50 records, starting with
-                      `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your
-                      subsequent call can include `ending_before=
-                      Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky` in order
-                      to fetch the previous page of the list.
-            refIdentifier: '#/components/schemas/list_card_holder'
-        examples:
-          list_card_holder_example:
-            value:
-              total: 1
-              data:
-                - id: cah_a120a61f60dfd40fdb07b2e8bcd1f6f0
-                  client_id: cli_64c6c87ee9d609f36a6f390dc378a4ce
-                  master_account_holder_id: mah_201e02c581a098a740456c5c19fcfcd6
-                  master_account_id: mas_743fa071316bc6beaf5dddfd05f49c30
-                  sub_account_holder_id: sah_5ccfeef0adf0cbe2aa0980d2c9505752
-                  sub_account_id: sub_bda1e562657c41e553104b10aad3fe70
-                  person:
-                    first_name: John
-                    last_name: Doe
-                    id_type: ssn
-                    id_number: '223902234'
-                    date_of_birth: '1974-01-25'
-                    phone: '+19418405843'
-                    email: john.doe@gmail.com
-                    address:
-                      line1: 123 Main St
-                      line2: ''
-                      city: New York
-                      state: NY
-                      country: US
-                      postal_code: '10001'
-                  external_reference_id: 6RPD1QW-W75
-                  purpose: Ace Sales Rep
-                  ofac:
-                    status: pass
-                    last_updated_at: '2024-04-01T21:00:00Z'
-                  metadata:
-                    designation: Senior Sales Manager
-                    employee_number: '77'
-                  attachments:
-                    - label: Employee Badge
-                      id: att_a8d2b191fa0e960d8e49a4bfd320e07b
-                      created_at: '2024-04-01T21:00:00Z'
-                  status: activated
-                  timestamps:
-                    created_at: '2024-04-01T21:00:00Z'
-                    updated_at: '2024-04-02T21:00:00Z'
-                    deactivated_at: '2024-04-02T21:00:00Z'
-              has_more: 'true'
-              starting_after: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
-              ending_before: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
-        description: List all Card Holders
-    '401':
-      application/json:
-        schemaArray:
-          - type: any
-        examples:
-          list_card_holder_example:
-            value:
-              request_id: req_01900e34c96d7abfa970a9f454ab2d5d
-              client_id: ''
-              method: GET
-              status: 401
-              error:
-                code: ERROR_CODE_UNAUTHORIZED
-                message: unauthorized
-                field_name: ''
-              created_at: '2024-06-12T20:47:38Z'
-        description: Unauthorized Error
-  deprecated: false
-  type: path
+            type: string
+            example: '{{api_key}}'
+            description: >-
+              API key is required to call Solid APIs. You can view and manage
+              your API keys in the Solid dashboard.
+          required: true
+      responses:
+        '200':
+          description: List all Card Holders
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/list_card_holder'
+                type: object
+              examples:
+                list_card_holder_example:
+                  $ref: '#/components/examples/list_card_holder_example'
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              examples:
+                list_card_holder_example:
+                  $ref: '#/components/examples/unauth_error'
+      security:
+        - {}
 components:
   schemas:
+    list_card_holder:
+      type: object
+      properties:
+        total:
+          type: number
+          example: 1
+          description: total number of records
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/card_holder'
+        has_more:
+          type: string
+          example: 'true'
+          description: if there are more records to iterate or not
+          enum:
+            - 'true'
+            - 'false'
+        starting_after:
+          type: string
+          example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
+          description: >-
+            A cursor for use in pagination. `starting_after` is an ID that
+            defines your place in the list. For instance, if you make a list
+            request and receive 50 records, ending with
+            `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your subsequent
+            call can include
+            `starting_after=Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky` in
+            order to fetch the next page of the list.
+        ending_before:
+          type: string
+          example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
+          description: >-
+            A cursor for use in pagination. `ending_before` is an ID that
+            defines your place in the list. For instance, if you make a list
+            request and receive 50 records, starting with
+            `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your subsequent
+            call can include `ending_before=
+            Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky` in order to fetch
+            the previous page of the list.
+    card_holder:
+      type: object
+      properties:
+        id:
+          type: string
+          example: cah_a120a61f60dfd40fdb07b2e8bcd1f6f0
+          description: unique id of the card holder
+        client_id:
+          type: string
+          example: cli_64c6c87ee9d609f36a6f390dc378a4ce
+          description: unique id of the client that issued the card
+        master_account_holder_id:
+          type: string
+          example: mah_201e02c581a098a740456c5c19fcfcd6
+          description: unique id of the master account holder
+        master_account_id:
+          type: string
+          example: mas_743fa071316bc6beaf5dddfd05f49c30
+          description: unique id of the master account
+        sub_account_holder_id:
+          type: string
+          example: sah_5ccfeef0adf0cbe2aa0980d2c9505752
+          description: unique id of the sub account holder
+        sub_account_id:
+          type: string
+          example: sub_bda1e562657c41e553104b10aad3fe70
+          description: unique id of the sub account
+        person:
+          $ref: '#/components/schemas/person'
+          type: object
+        external_reference_id:
+          type: string
+          example: 6RPD1QW-W75
+          description: unique id to cross-reference records with external systems
+        purpose:
+          type: string
+          example: Ace Sales Rep
+          description: purpose of card holder
+        ofac:
+          $ref: '#/components/schemas/card_holder_ofac'
+          type: object
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/attachment_object'
+        metadata:
+          $ref: '#/components/schemas/metadata'
+          type: object
+        status:
+          type: string
+          example: activated
+          description: status of card holder
+          enum:
+            - pending_activation
+            - activated
+            - suspended
+            - deactivated
+            - locked
+        timestamps:
+          $ref: '#/components/schemas/card_holder_timestamp'
+          type: object
     person:
       type: object
       properties:
@@ -289,29 +318,29 @@ components:
               type: object
               properties:
                 name:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 address:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 dob:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 ssn:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 phone:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 email:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 watchlist:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
                 fraud:
-                  type: object
                   $ref: '#/components/schemas/kyc_kyb'
+                  type: object
         idv:
           type: object
           properties:
@@ -361,32 +390,6 @@ components:
           description: >-
             last date and time at which the card holder's ofac status was
             checked
-    kyc_kyb:
-      type: object
-      properties:
-        status:
-          type: string
-          example: pass
-          enum:
-            - pass
-            - fail
-            - review
-            - in_review
-        reasons:
-          type: array
-          items:
-            $ref: '#/components/schemas/kyc_kyb_reasons'
-    kyc_kyb_reasons:
-      type: object
-      properties:
-        code:
-          type: string
-          example: N001
-          description: reason code
-        description:
-          type: string
-          example: First name didn't match
-          description: description of reason code
     attachment_object:
       type: object
       properties:
@@ -433,66 +436,88 @@ components:
           type: string
           example: '2024-04-01T21:00:00Z'
           description: date and time at which the card holder was deactivated
-    card_holder:
+    kyc_kyb:
       type: object
       properties:
-        id:
-          type: string
-          example: cah_a120a61f60dfd40fdb07b2e8bcd1f6f0
-          description: unique id of the card holder
-        client_id:
-          type: string
-          example: cli_64c6c87ee9d609f36a6f390dc378a4ce
-          description: unique id of the client that issued the card
-        master_account_holder_id:
-          type: string
-          example: mah_201e02c581a098a740456c5c19fcfcd6
-          description: unique id of the master account holder
-        master_account_id:
-          type: string
-          example: mas_743fa071316bc6beaf5dddfd05f49c30
-          description: unique id of the master account
-        sub_account_holder_id:
-          type: string
-          example: sah_5ccfeef0adf0cbe2aa0980d2c9505752
-          description: unique id of the sub account holder
-        sub_account_id:
-          type: string
-          example: sub_bda1e562657c41e553104b10aad3fe70
-          description: unique id of the sub account
-        person:
-          type: object
-          $ref: '#/components/schemas/person'
-        external_reference_id:
-          type: string
-          example: 6RPD1QW-W75
-          description: unique id to cross-reference records with external systems
-        purpose:
-          type: string
-          example: Ace Sales Rep
-          description: purpose of card holder
-        ofac:
-          type: object
-          $ref: '#/components/schemas/card_holder_ofac'
-        attachments:
-          type: array
-          items:
-            $ref: '#/components/schemas/attachment_object'
-        metadata:
-          type: object
-          $ref: '#/components/schemas/metadata'
         status:
           type: string
-          example: activated
-          description: status of card holder
+          example: pass
           enum:
-            - pending_activation
-            - activated
-            - suspended
-            - deactivated
-            - locked
-        timestamps:
-          type: object
-          $ref: '#/components/schemas/card_holder_timestamp'
+            - pass
+            - fail
+            - review
+            - in_review
+        reasons:
+          type: array
+          items:
+            $ref: '#/components/schemas/kyc_kyb_reasons'
+    kyc_kyb_reasons:
+      type: object
+      properties:
+        code:
+          type: string
+          example: N001
+          description: reason code
+        description:
+          type: string
+          example: First name didn't match
+          description: description of reason code
+  examples:
+    list_card_holder_example:
+      value:
+        total: 1
+        data:
+          - id: cah_a120a61f60dfd40fdb07b2e8bcd1f6f0
+            client_id: cli_64c6c87ee9d609f36a6f390dc378a4ce
+            master_account_holder_id: mah_201e02c581a098a740456c5c19fcfcd6
+            master_account_id: mas_743fa071316bc6beaf5dddfd05f49c30
+            sub_account_holder_id: sah_5ccfeef0adf0cbe2aa0980d2c9505752
+            sub_account_id: sub_bda1e562657c41e553104b10aad3fe70
+            person:
+              first_name: John
+              last_name: Doe
+              id_type: ssn
+              id_number: '223902234'
+              date_of_birth: '1974-01-25'
+              phone: '+19418405843'
+              email: john.doe@gmail.com
+              address:
+                line1: 123 Main St
+                line2: ''
+                city: New York
+                state: NY
+                country: US
+                postal_code: '10001'
+            external_reference_id: 6RPD1QW-W75
+            purpose: Ace Sales Rep
+            ofac:
+              status: pass
+              last_updated_at: '2024-04-01T21:00:00Z'
+            metadata:
+              designation: Senior Sales Manager
+              employee_number: '77'
+            attachments:
+              - label: Employee Badge
+                id: att_a8d2b191fa0e960d8e49a4bfd320e07b
+                created_at: '2024-04-01T21:00:00Z'
+            status: activated
+            timestamps:
+              created_at: '2024-04-01T21:00:00Z'
+              updated_at: '2024-04-02T21:00:00Z'
+              deactivated_at: '2024-04-02T21:00:00Z'
+        has_more: 'true'
+        starting_after: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
+        ending_before: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
+    unauth_error:
+      value:
+        request_id: req_01900e34c96d7abfa970a9f454ab2d5d
+        client_id: ''
+        method: GET
+        status: 401
+        error:
+          code: ERROR_CODE_UNAUTHORIZED
+          message: unauthorized
+          field_name: ''
+        created_at: '2024-06-12T20:47:38Z'
 
 ````

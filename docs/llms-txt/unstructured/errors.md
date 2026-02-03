@@ -1,9 +1,13 @@
 # Source: https://docs.unstructured.io/api-reference/workflow/errors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Errors
 
 For the [Unstructured Python SDK](/api-reference/workflow/overview#unstructured-python-sdk),
-the [Unstructured Workflow Endpoint](/api-reference/workflow/overview) returns errors primarily through
+the [Unstructured API's workflow operations](/api-reference/workflow/overview) returns errors primarily through
 the `UnstructuredClientError` class (the base class for all errors raised by the Unstructured Python SDK) and
 the `HTTPValidationError` class (inherited from `UnstructuredClientError`). Less common errors are returned through the following classes:
 

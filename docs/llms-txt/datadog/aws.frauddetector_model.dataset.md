@@ -4,8 +4,6 @@
 title: Fraud Detector Model
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Fraud Detector Model
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.frauddetector_model.dataset/index.html
 ---
 
 # Fraud Detector Model
@@ -18,15 +16,15 @@ aws.frauddetector_model
 
 ## Fields
 
-| Title             | ID   | Type   | Data Type                                     | Description |
-| ----------------- | ---- | ------ | --------------------------------------------- | ----------- |
-| _key              | core | string |
-| account_id        | core | string |
-| arn               | core | string | The ARN of the model.                         |
-| created_time      | core | string | Timestamp of when the model was created.      |
-| description       | core | string | The model description.                        |
-| event_type_name   | core | string | The name of the event type.                   |
-| last_updated_time | core | string | Timestamp of last time the model was updated. |
-| model_id          | core | string | The model ID.                                 |
-| model_type        | core | string | The model type.                               |
-| tags              | core | hstore |
+| Title             | ID   | Type       | Data Type                                     | Description |
+| ----------------- | ---- | ---------- | --------------------------------------------- | ----------- |
+| _key              | core | string     |
+| account_id        | core | string     |
+| arn               | core | string     | The ARN of the model.                         |
+| created_time      | core | string     | Timestamp of when the model was created.      |
+| description       | core | string     | The model description.                        |
+| event_type_name   | core | string     | The name of the event type.                   |
+| last_updated_time | core | string     | Timestamp of last time the model was updated. |
+| model_id          | core | string     | The model ID.                                 |
+| model_type        | core | string     | The model type.                               |
+| tags              | core | hstore_csv |

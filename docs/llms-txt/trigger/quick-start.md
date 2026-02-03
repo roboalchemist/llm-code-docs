@@ -1,28 +1,16 @@
 # Source: https://trigger.dev/docs/quick-start.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quick start
 
 > How to get started in 3 minutes using the CLI and SDK.
 
-In this guide we will:
-
-1. Create a `trigger.config.ts` file and a `/trigger` directory with an example task.
-2. Get you to run the task using the CLI.
-3. Show you how to view the run logs for that task.
-
 <Steps titleSize="h3">
   <Step title="Create a Trigger.dev account">
-    You can either:
-
-    * Use the [Trigger.dev Cloud](https://cloud.trigger.dev).
-    * Or [self-host](/open-source-self-hosting) the service.
-  </Step>
-
-  <Step title="Create your first project">
-    Once you've created an account, follow the steps in the app to:
-
-    1. Complete your account details.
-    2. Create your first Organization and Project.
+    Sign up at [Trigger.dev Cloud](https://cloud.trigger.dev) (or [self-host](/open-source-self-hosting)). The onboarding flow will guide you through creating your first organization and project.
   </Step>
 
   <Step title="Run the CLI `init` command">
@@ -31,25 +19,31 @@ In this guide we will:
     Run this command in the root of your project to get started:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest init
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest init
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest init
       ```
     </CodeGroup>
 
     It will do a few things:
 
-    1. Log you into the CLI if you're not already logged in.
-    2. Create a `trigger.config.ts` file in the root of your project.
-    3. Ask where you'd like to create the `/trigger` directory.
-    4. Create the `/trigger` directory with an example task, `/trigger/example.[ts/js]`.
+    <Tip title="MCP Server">
+      Our [Trigger.dev MCP server](/mcp-introduction) gives your AI assistant direct access to Trigger.dev tools; search docs, trigger tasks, deploy projects, and monitor runs. We recommend installing it for the best developer experience.
+    </Tip>
+
+    1. Ask if you want to install the [Trigger.dev MCP server](/mcp-introduction) for your AI assistant.
+    2. Log you into the CLI if you're not already logged in.
+    3. Ask you to select your project.
+    4. Install the required SDK packages.
+    5. Ask where you'd like to create the `/trigger` directory and create it with an example task.
+    6. Create a `trigger.config.ts` file in the root of your project.
 
     Install the "Hello World" example task when prompted. We'll use this task to test the setup.
   </Step>
@@ -60,15 +54,15 @@ In this guide we will:
     It can also update your `@trigger.dev/*` packages to prevent version mismatches and failed deploys. You will always be prompted first.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest dev
       ```
     </CodeGroup>
@@ -99,12 +93,20 @@ In this guide we will:
 
 ## Next steps
 
-<CardGroup>
+<CardGroup cols={2}>
+  <Card title="Building with AI" icon="brain" href="/building-with-ai">
+    Learn how to build Trigger.dev projects using AI coding assistants
+  </Card>
+
   <Card title="How to trigger your tasks" icon="bolt" href="/triggering">
     Learn how to trigger tasks from your code.
   </Card>
 
   <Card title="Writing tasks" icon="wand-magic-sparkles" href="/tasks/overview">
     Tasks are the core of Trigger.dev. Learn what they are and how to write them.
+  </Card>
+
+  <Card title="Guides and example projects" icon="books" href="/guides/introduction">
+    Guides and examples for triggering tasks from your code.
   </Card>
 </CardGroup>

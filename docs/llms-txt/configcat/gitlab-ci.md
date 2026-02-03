@@ -2,19 +2,21 @@
 
 # GitLab - Scan your source code for feature flags
 
-This section describes how to use the [ConfigCat CLI](https://configcat.com/docs/docs/advanced/cli/.md) in [GitLab CI/CD](https://docs.gitlab.com/ee/ci/) to automatically scan your source code for feature flag and setting usages and upload the found code references to ConfigCat.
+Copy page
 
-## Setup[â€‹](#setup "Direct link to Setup")
+This section describes how to use the [ConfigCat CLI](https://configcat.com/docs/advanced/cli.md) in [GitLab CI/CD](https://docs.gitlab.com/ee/ci/) to automatically scan your source code for feature flag and setting usages and upload the found code references to ConfigCat.
+
+## Setup[​](#setup "Direct link to Setup")
 
 1. Create a new [ConfigCat Management API credential](https://app.configcat.com/my-account/public-api-credentials) and store its values in GitLab's [CI/CD Variables](https://docs.gitlab.com/ee/ci/variables/) with the following names: `CONFIGCAT_API_USER`, `CONFIGCAT_API_PASS`.
 
    ![GitLab secrets](/docs/assets/cli/scan/gl_secrets.png)
 
-2. Get your selected [Config's ID](https://configcat.com/docs/docs/advanced/code-references/overview/.md#config-id).
+2. Get your selected [Config's ID](https://configcat.com/docs/advanced/code-references/overview.md#config-id).
 
 3. Create a new or open your existing `.gitlab-ci.yml` file, and put the following job into it. Don't forget to replace the `PASTE-YOUR-CONFIG-ID-HERE` value with your actual Config ID.
 
-   ```
+   ```yaml
    configcat-scan-repository:
      stage: deploy # the job will run in the deploy phase, but you can choose from any other phases you have
      image:
@@ -30,6 +32,7 @@ This section describes how to use the [ConfigCat CLI](https://configcat.com/docs
          --runner="ConfigCat GitLab Job"
          --upload
          --non-interactive
+
    ```
 
 4. Commit & push your changes.

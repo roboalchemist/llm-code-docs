@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/gettingstarted/quickstart/telephony-outbound.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Outbound Call Quickstart
 
 > Create an outbound voice AI call with Ultravox and Twilio in under 3 minutes.
@@ -171,8 +175,3 @@ main();
 
 1. Check out the full [Outbound Phone Call](/gettingstarted/examples/outbound-phone-call) example for a fuller explanation of how to do outbound voice AI calls.
 2. Ultravox Realtime provides telephony integrations for Telnyx, Twilio, Plivo, and Exotel. Learn more [here](/telephony/overview).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

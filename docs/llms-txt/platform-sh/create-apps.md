@@ -8,12 +8,15 @@ Control your apps and how they’re built and deployed on Upsun with YAML config
 Within a single project, you can have one or more apps and each app can have multiple instances.
 Instances are where the same code can be run with different configurations,
 such as one for external communication and one for background processes.
-All apps and instances are configured with the same syntax.
-You can find a [complete reference](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md) of all possible settings.
+Apps and instances use similar properties, with minor differences depending on the image type that you choose:
+- [Single-runtime image](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md)
+- [Composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.md)
+
+Not sure which image type to use? See [choosing an image type](https://docs.upsun.com/create-apps/app-reference.md).
 
 ## A minimal application
 
-To create a very basic app, you need a few things:
+To create a very basic app (for this example, using a single-runtime image), you need a few things:
 
 * A unique name not shared by any other app in the project.
 * The runtime `type` defining what language it uses.
@@ -58,7 +61,7 @@ If you want to use one of the [databases or other services Upsun provides](https
 set it up by following these steps:
 
 1. Configure the service based on the documentation for that service.
-1. Use the information from that service inside your app's [`relationships` definition](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+1. Use the information from that service inside your app's [`relationships` definition](https://docs.upsun.com/create-apps/image-properties/relationships.md)
    to configure how your app communicates with the service.
 
 ## Control the build and deploy process
@@ -74,7 +77,7 @@ Hooks are places for your custom scripts to control how your app is built and de
 ## Configure what's served
 
 Once your app is built, it needs a defined way to communicate with the outside world.
-Define its behavior with a [`web` instance](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web).
+Define its behavior with a [`web` instance](https://docs.upsun.com/create-apps/image-properties/web.md).
 There you can set what command runs every time your app is restarted,
 how dynamic requests are handled, and how to respond with static files.
 
@@ -107,7 +110,7 @@ This approach supports any file type and offers some CPU optimization, especiall
 
 Unlike other runtimes, most PHP applications do not have a start command. There is a daemon running configured to work automatically with the web server. More often than not there will be a single entry-point a “front-controller”. In the case of PHP the ``passthru`` property is a string with the location of the front-controller rather than a boolean.
 
-The following example shows a setup for a PHP app with comments to explain the settings.  Please note that Composable image is currently available as a Beta feature.
+The following example shows a setup for a PHP app with comments to explain the settings.
 
 ```yaml {}
 applications:
@@ -171,21 +174,31 @@ services:
 ```yaml {}
 applications:
   # The app's name, which must be unique within the project.
-  myapp:
+  <APP_NAME>:
     # The list of packages you want installed (from the Upsun collection
     # of supported runtimes and/or from Nixpkgs).
     # For more information, see the Composable image page in the App reference section.
+    type: "composable:25.11"
     stack:
-      - "php@8.3"
-          # The list of PHP extensions you want installed.
-          extensions:
-            - apcu
-            - ctype
-            - iconv
-            - mbstring
-            - pdo_pgsql
-            - sodium
-            - xsl
+      runtimes:
+        - "php@8.4":
+            # The list of PHP extensions you want installed.
+            extensions:
+              - apcu
+              - ctype
+              - iconv
+              - mbstring
+              - pdo_pgsql
+              - sodium
+              - xsl
+            disabled_extensions:
+              - gd
+        - "nodejs@24"
+      packages:
+        - yarn
+        - imagemagick
+        - package: wkhtmltopdf
+          channel: unstable
     # Relationships enable an app container's access to a service or another app.
     # The example below shows simplified configuration leveraging a default service
     # (identified from the relationship name) and a default endpoint.

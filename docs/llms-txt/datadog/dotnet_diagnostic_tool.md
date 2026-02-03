@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > APM Troubleshooting > Using the .NET diagnostic tool for
   troubleshooting
-source_url: https://docs.datadoghq.com/troubleshooting/dotnet_diagnostic_tool/index.html
 ---
 
 # Using the .NET diagnostic tool for troubleshooting

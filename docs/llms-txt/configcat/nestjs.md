@@ -2,23 +2,26 @@
 
 # Using ConfigCat's OpenFeature Provider in NestJS
 
+Copy page
+
 ## Getting started[​](#getting-started "Direct link to Getting started")
 
 OpenFeature offers a [NestJS SDK](https://github.com/open-feature/js-sdk/tree/main/packages/nest) to streamline the use of OpenFeature in NestJS applications. This SDK is built on top of the [OpenFeature JavaScript Node.js SDK](https://github.com/open-feature/js-sdk/blob/main/packages/server).
 
-Since ConfigCat implements [a provider](https://configcat.com/docs/docs/sdk-reference/openfeature/node/.md) for the Node.js SDK, you can use ConfigCat with the OpenFeature NestJS SDK, as explained below.
+Since ConfigCat implements [a provider](https://configcat.com/docs/sdk-reference/openfeature/node.md) for the Node.js SDK, you can use ConfigCat with the OpenFeature NestJS SDK, as explained below.
 
 ### 1. Install the NestJS SDK and the ConfigCat provider[​](#1-install-the-nestjs-sdk-and-the-configcat-provider "Direct link to 1. Install the NestJS SDK and the ConfigCat provider")
 
-```
+```bash
 npm i @openfeature/nestjs-sdk @openfeature/config-cat-provider
+
 ```
 
 ### 2. Initialize the NestJS SDK[​](#2-initialize-the-nestjs-sdk "Direct link to 2. Initialize the NestJS SDK")
 
-The `ConfigCatProvider.create()` function takes the SDK key, the desired [polling mode](https://configcat.com/docs/docs/sdk-reference/js/node/.md#polling-modes) (Auto Polling is recommended for this kind of application) and an optional `options` argument containing additional configuration options for the underlying [ConfigCat client](https://configcat.com/docs/docs/sdk-reference/js/node/.md#creating-the-configcat-client):
+The `ConfigCatProvider.create()` function takes the SDK key, the desired [polling mode](https://configcat.com/docs/sdk-reference/js/node.md#polling-modes) (Auto Polling is recommended for this kind of application) and an optional `options` argument containing additional configuration options for the underlying [ConfigCat client](https://configcat.com/docs/sdk-reference/js/node.md#creating-the-configcat-client):
 
-```
+```ts
 import { Module } from '@nestjs/common';
 import { OpenFeatureModule } from '@openfeature/nestjs-sdk';
 import { ConfigCatProvider } from '@openfeature/config-cat-provider';
@@ -44,13 +47,14 @@ const configCatProvider = ConfigCatProvider.create('#YOUR-SDK-KEY#', PollingMode
   providers: [FeatureFlagService],
 })
 export class AppModule {}
+
 ```
 
 ### 3. Use your feature flag[​](#3-use-your-feature-flag "Direct link to 3. Use your feature flag")
 
 To improve maintainability and testability, it's usually a good idea not to directly evaluate your feature flags, but to wrap them in a service:
 
-```
+```ts
 import { Injectable } from '@nestjs/common';
 import { OpenFeatureClient, Client } from '@openfeature/nestjs-sdk';
 
@@ -65,11 +69,12 @@ export class FeatureFlagService {
     return await this.defaultClient.getBooleanValue('isAwesomeFeatureEnabled', false);
   }
 }
+
 ```
 
 Then you can inject this service into your controllers and use it to evaluate feature flags:
 
-```
+```ts
 import { Controller, Get } from '@nestjs/common';
 import { FeatureFlagService } from './_services/feature-flag.service';
 
@@ -86,13 +91,14 @@ export class AppController {
       : 'Awesome feature is disabled.';
   }
 }
+
 ```
 
 ## Evaluation Context[​](#evaluation-context "Direct link to Evaluation Context")
 
 An [evaluation context](https://openfeature.dev/docs/reference/concepts/evaluation-context) in the OpenFeature specification is a container for arbitrary contextual data that can be used as a basis for feature flag evaluation.
 
-You can find [here](https://configcat.com/docs/docs/sdk-reference/openfeature/node/.md#evaluation-context) how the ConfigCat provider translates these evaluation contexts to ConfigCat [User Objects](https://configcat.com/docs/docs/sdk-reference/js/node/.md#user-object).
+You can find [here](https://configcat.com/docs/sdk-reference/openfeature/node.md#evaluation-context) how the ConfigCat provider translates these evaluation contexts to ConfigCat [User Objects](https://configcat.com/docs/sdk-reference/js/node.md#user-object).
 
 ## Advanced features[​](#advanced-features "Direct link to Advanced features")
 

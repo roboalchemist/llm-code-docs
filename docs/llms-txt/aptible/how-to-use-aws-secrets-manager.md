@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/app-guides/how-to-use-aws-secrets-manager.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to use AWS Secrets Manager with Aptible Apps
 
 > Learn how to use AWS Secrets Manager with Aptible Apps

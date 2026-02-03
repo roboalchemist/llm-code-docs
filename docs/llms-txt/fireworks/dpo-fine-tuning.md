@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/fine-tuning/dpo-fine-tuning.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Direct Preference Optimization
 
 Direct Preference Optimization (DPO) fine-tunes models by training them on pairs of preferred and non-preferred responses to the same prompt. This teaches the model to generate more desirable outputs while reducing unwanted behaviors.
@@ -78,7 +82,7 @@ Direct Preference Optimization (DPO) fine-tunes models by training them on pairs
         * Upload dataset using `firectl`
 
         ```bash  theme={null}
-        firectl create dataset <dataset-id> /path/to/file.jsonl
+        firectl dataset create <dataset-id> /path/to/file.jsonl
         ```
       </Tab>
 
@@ -124,7 +128,7 @@ Direct Preference Optimization (DPO) fine-tunes models by training them on pairs
     Simple use `firectl` to create a new DPO job:
 
     ```bash  theme={null}
-    firectl create dpoj \
+    firectl dpoj create \
       --base-model accounts/account-id/models/base-model-id \
       --dataset accounts/my-account-id/datasets/my-dataset-id \
       --output-model new-model-id
@@ -133,7 +137,7 @@ Direct Preference Optimization (DPO) fine-tunes models by training them on pairs
     for our example, we might run the following command:
 
     ```bash  theme={null}
-    firectl create dpoj \
+    firectl dpoj create \
       --base-model accounts/fireworks/models/llama-v3p1-8b-instruct \
       --dataset accounts/pyroworks/datasets/einstein-dpo \
       --output-model einstein-dpo-model
@@ -146,7 +150,7 @@ Direct Preference Optimization (DPO) fine-tunes models by training them on pairs
     Use `firectl` to monitor progress updates for the DPO fine-tuning job.
 
     ```bash  theme={null}
-    firectl get dpoj dpo-job-id
+    firectl dpoj get dpo-job-id
     ```
 
     Once the job is complete, the `STATE` will be set to `JOB_STATE_COMPLETED`, and the fine-tuned model can be deployed.

@@ -6,13 +6,13 @@
 
 ***
 
-Actor tasks let you create multiple reusable configurations of a single Actor, adapted for specific use cases. For example, you can create one https://apify.com/apify/web-scraper configuration (task) that scrapes the latest reviews from https://www.imdb.com/, another that scrapes nike.com for the latest sneakers, and a third that scrapes your competitor's e-shop. You can then use and reuse these configurations directly from https://console.apify.com/actors/tasks, https://docs.apify.com/platform/schedules.md, or https://docs.apify.com/api/v2/actor-task-runs-post.md.
+Actor tasks let you create multiple reusable configurations of a single Actor, adapted for specific use cases. For example, you can create one [Web Scraper](https://apify.com/apify/web-scraper) configuration (task) that scrapes the latest reviews from [IMDb](https://www.imdb.com/), another that scrapes nike.com for the latest sneakers, and a third that scrapes your competitor's e-shop. You can then use and reuse these configurations directly from [Apify Console](https://console.apify.com/actors/tasks), [Schedules](https://docs.apify.com/platform/schedules.md), or [API](https://docs.apify.com/api/v2/actor-task-runs-post.md).
 
-You can find all your tasks in the https://console.apify.com/actors/tasks.
+You can find all your tasks in the [Apify Console](https://console.apify.com/actors/tasks).
 
 ## Create
 
-To create a task, open any Actor from https://console.apify.com/store or your list of https://console.apify.com/actors in Apify Console. At the top-right section of the page, click the **Create task** button.
+To create a task, open any Actor from [Apify Store](https://console.apify.com/store) or your list of [Actors](https://console.apify.com/actors) in Apify Console. At the top-right section of the page, click the **Create task** button.
 
 ![Create a new Apify task](/assets/images/tasks-create-task-fe2022d6fab46890d47ca528749cd4c1.png)
 
@@ -24,7 +24,7 @@ You can set up your task's input under the **Input** tab. A task's input configu
 
 An Actors' input fields may vary depending on their purpose, but they all follow the same principle: *you provide an Actor with the information it needs so it can do what you want it to do.*
 
-You can set run options such as timeout and https://docs.apify.com/platform/actors/running/usage-and-resources.md in the **Run options** tab of the task's input configuration.
+You can set run options such as timeout and [memory](https://docs.apify.com/platform/actors/running/usage-and-resources.md) in the **Run options** tab of the task's input configuration.
 
 ### Naming
 
@@ -42,11 +42,11 @@ Or using the **Start** button positioned following the input configuration.
 
 You can also run tasks using:
 
-* https://docs.apify.com/platform/schedules.md.
-* Directly via the https://docs.apify.com/api/v2/actor-task-runs-post.md.
-* The https://docs.apify.com/api/client/js/reference/class/TaskClient.
-* The https://docs.apify.com/api/client/python/reference/class/TaskClient.
+* [Schedules](https://docs.apify.com/platform/schedules.md).
+* Directly via the [Apify API](https://docs.apify.com/api/v2/actor-task-runs-post.md).
+* The [JavaScript API client](https://docs.apify.com/api/client/js/reference/class/TaskClient).
+* The [Python API client](https://docs.apify.com/api/client/python/reference/class/TaskClient).
 
 ## Share
 
-Like any other resource, you can share your Actor tasks with other Apify users via the https://docs.apify.com/platform/collaboration.md system.
+Like any other resource, you can share your Actor tasks with other Apify users via the [access rights](https://docs.apify.com/platform/collaboration.md) system.

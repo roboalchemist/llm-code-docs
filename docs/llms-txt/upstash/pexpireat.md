@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/generic/pexpireat.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pexpireat.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/pexpireat.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pexpireat.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/pexpireat.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pexpireat.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/pexpireat.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pexpireat.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/pexpireat.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pexpireat.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # PEXPIREAT
 
@@ -26,23 +12,44 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to expire.
 </ParamField>
 
-<ParamField body="unixmilli" type="integer">
-  The unix timestamp in milliseconds at which the key will expire.
+<ParamField body="unix_time_milliseconds" type="int | datetime.datetime" required>
+  The timeout in unix milliseconds timestamp as int or a datetime.datetime object.
+</ParamField>
+
+<ParamField body="nx" type="bool">
+  Set expiry only when the key has no expiry
+</ParamField>
+
+<ParamField body="xx" type="bool">
+  Set expiry only when the key has an existing expiry
+</ParamField>
+
+<ParamField body="gt" type="bool">
+  Set expiry only when the new expiry is greater than current one
+</ParamField>
+
+<ParamField body="lt" type="bool">
+  Set expiry only when the new expiry is less than current one
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
-  `1` if the timeout was applied, `0` if `key` does not exist.
+<ResponseField type="bool">
+  `True` if the timeout was set
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const 10MinutesFromNow = Date.now() + 10 * 60 * 1000;
-   await redis.pexpireat(key, 10MinutesFromNow);
+  ```py Example theme={"system"}
+  # With a unix timestamp
+  redis.set("mykey", "Hello")
+  redis.pexpireat("mykey", int(time.time() * 1000) )
+
+  # With a datetime object
+  redis.set("mykey", "Hello")
+  redis.pexpireat("mykey", datetime.datetime.now() + datetime.timedelta(seconds=5))
   ```
 </RequestExample>

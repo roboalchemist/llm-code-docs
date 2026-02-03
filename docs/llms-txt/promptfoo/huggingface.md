@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/huggingface/
+
 # HuggingFace
 
 Promptfoo includes support for the [HuggingFace Inference Providers](https://huggingface.co/docs/inference-providers), for classification, embeddings, and other ML tasks, as well as [HuggingFace Datasets](https://huggingface.co/docs/datasets).

@@ -2,6 +2,8 @@
 
 # What is a config JSON download?
 
+Copy page
+
 A config JSON download is counted every time your application downloads a configuration file from the ConfigCat CDN. The frequency of these downloads is totally under your control. Between downloads, you can evaluate your feature flags as many times as you like, it still counts as one config JSON download.
 
 See an [overview of the ConfigCat architecture](https://configcat.com/architecture/).
@@ -101,11 +103,11 @@ Make sure that you use the *ConfigCat Client* as a Singleton object in your appl
 
 ### Increase the polling interval[​](#increase-the-polling-interval "Direct link to Increase the polling interval")
 
-You can lower the frequency your application downloads the `config JSON` by setting larger polling intervals or using a different [polling mode](https://configcat.com/docs/docs/advanced/caching/.md) other than the default auto polling. See the [SDK References for more.](https://configcat.com/docs/docs/sdk-reference/overview/.md)
+You can lower the frequency your application downloads the `config JSON` by setting larger polling intervals or using a different [polling mode](https://configcat.com/docs/advanced/caching.md) other than the default auto polling. See the [SDK References for more.](https://configcat.com/docs/sdk-reference/overview.md)
 
 ### Use webhooks[​](#use-webhooks "Direct link to Use webhooks")
 
-In a backend application, you may want to consider using [Webhooks.](https://configcat.com/docs/docs/advanced/notifications-webhooks/.md) This way your application receives notifications about changes and downloads the `config JSON` only when needed.
+In a backend application, you may want to consider using [Webhooks.](https://configcat.com/docs/advanced/notifications-webhooks.md) This way your application receives notifications about changes and downloads the `config JSON` only when needed.
 
 ### Call your backend instead of the ConfigCat CDN[​](#call-your-backend-instead-of-the-configcat-cdn "Direct link to Call your backend instead of the ConfigCat CDN")
 
@@ -113,7 +115,7 @@ In the case of a frontend application, you can reduce the number of calls made t
 
 ### Use the ConfigCat Proxy to cache/proxy config JSON downloads[​](#use-the-configcat-proxy-to-cacheproxy-config-json-downloads "Direct link to Use the ConfigCat Proxy to cache/proxy config JSON downloads")
 
-The [ConfigCat Proxy](https://configcat.com/docs/docs/advanced/proxy/proxy-overview/.md) allows you to host a feature flag evaluation and config JSON proxy/cache service within your own infrastructure.<br /><!-- -->The [CDN proxy](https://configcat.com/docs/docs/advanced/proxy/endpoints/.md#cdn-proxy) feature allows you to proxy/cache config JSON downloads, and the ConfigCat SDKs can be routed to the ConfigCat Proxy running in your own infrastructure, greatly reducing the number of config JSON downloads.
+The [ConfigCat Proxy](https://configcat.com/docs/advanced/proxy/proxy-overview.md) allows you to host a feature flag evaluation and config JSON proxy/cache service within your own infrastructure.<br /><!-- -->The [CDN proxy](https://configcat.com/docs/advanced/proxy/endpoints.md#cdn-proxy) feature allows you to proxy/cache config JSON downloads, and the ConfigCat SDKs can be routed to the ConfigCat Proxy running in your own infrastructure, greatly reducing the number of config JSON downloads.
 
 ### Purchase additional config JSON downloads[​](#purchase-additional-config-json-downloads "Direct link to Purchase additional config JSON downloads")
 

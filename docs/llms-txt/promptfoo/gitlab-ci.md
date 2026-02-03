@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/integrations/gitlab-ci/
+
 # Setting up Promptfoo with GitLab CI
 
 This guide shows how to integrate Promptfoo's LLM evaluation into your GitLab CI pipeline. This allows you to automatically test your prompts and models whenever changes are made to your repository.

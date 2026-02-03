@@ -1,8 +1,8 @@
-# Source: https://www.daytona.io/docs/en/claude-agent-sdk-interactive-terminal-sandbox.md
+# Source: https://www.daytona.io/docs/en/guides/claude/claude-agent-sdk-interactive-terminal-sandbox.md
 
 import { Image } from 'astro:assets'
 
-import claudeAgentSDKInteractiveTerminalSandboxResult from '../../../assets/docs/images/claude-agent-sdk-interactive-terminal-sandbox-result.gif'
+import claudeAgentSDKInteractiveTerminalSandboxResult from '../../../../../assets/docs/images/claude-agent-sdk-interactive-terminal-sandbox-result.gif'
 
 This guide demonstrates how to run an autonomous coding agent based on [Claude Code](https://code.claude.com/docs/en/overview) inside a Daytona sandbox environment. The agent uses the [Claude Agent SDK](https://platform.claude.com/docs/en/agent-sdk/overview) to follow user prompts.
 
@@ -16,10 +16,7 @@ When you launch the main module, a Daytona sandbox is created and a Python agent
 
 You interact with the main program via a command line chat interface. The program sends your prompts to the agent inside the sandbox, which executes them and returns the results:
 
-<details>
-  <summary>Click to view example workflow</summary>
-  <div>
-    ```
+```
 $ npm run start                                   174s
 Creating sandbox...
 Installing Agent SDK...
@@ -68,8 +65,6 @@ The game features smooth movement, collision detection with trees and rocks, and
 Enjoy your adventure! 🗡️✨
 User:
 ```
-  </div>
-</details>
 
 The agent can also host web apps and provide you with a preview link using the [Daytona Preview Links](https://www.daytona.io/docs/en/preview-and-authentication.md) feature. When your task involves running or previewing a web application, the agent automatically reasons about this need, hosts the app, and generates a preview link for you to inspect the live result:
 
@@ -90,7 +85,7 @@ First, clone the daytona [repository](https://github.com/daytonaio/daytona.git) 
 
 ```bash
 git clone https://github.com/daytonaio/daytona.git
-cd daytona/guides/typescript/claude-agent-sdk
+cd daytona/guides/typescript/anthropic/single-claude-agent-sdk
 ```
 
 #### Configure Environment
@@ -135,10 +130,7 @@ The agent will start and wait for your prompt.
 
 Example chat session:
 
-<details>
-  <summary>Click to view example chat session</summary>
-  <div>
-    ```
+```
 $ npm run start
 Creating sandbox...
 Installing Agent SDK...
@@ -217,10 +209,7 @@ The page includes:
 Click the link to see your fun pet store landing page in action! 🐾
 User:
 
-````
-
-</div>
-</details>
+```
 
 ### 4. Understanding the Agent's Architecture
 
@@ -232,7 +221,8 @@ This example consists of two main components:
 #### Initialization
 
 On initialization, the main program:
-1. Creates a new [Daytona sandbox](https://www.daytona.io/docs/en/sandbox-management.md) with your Anthropic API key included in the environment variables.
+
+1. Creates a new [Daytona sandbox](https://www.daytona.io/docs/en/sandboxes.md) with your Anthropic API key included in the environment variables.
 2. Installs the Claude Agent SDK by running `pip install` in the sandbox with [process execution](https://www.daytona.io/docs/en/process-code-execution.md#process-execution).
 3. Creates a new [code interpreter context](https://www.daytona.io/docs/en/process-code-execution.md#stateful-code-interpreter).
 4. Uploads the coding agent script to the sandbox with [file uploading](https://www.daytona.io/docs/file-system-operations.md#uploading-a-single-file).
@@ -245,7 +235,7 @@ Once the agent is running, the program creates a readline interface to read user
 Each user request is passed to the agent by running a Python command in the code interpreter context:
 
 ```typescript
- const result = await sandbox.codeInterpreter.runCode(
+const result = await sandbox.codeInterpreter.runCode(
   `coding_agent.run_query_sync(os.environ.get('PROMPT', ''))`,
   {
     context: ctx,
@@ -253,8 +243,8 @@ Each user request is passed to the agent by running a Python command in the code
     onStdout,
     onStderr,
   }
-);
-````
+)
+```
 
 The `onStdout` and `onStderr` callbacks are used to pass the agent's output back to the main program. After the agent finishes responding to the prompt, the main program waits for the next user input.
 

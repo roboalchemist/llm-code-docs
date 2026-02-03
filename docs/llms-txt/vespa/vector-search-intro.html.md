@@ -68,7 +68,7 @@ Read more on selecting the optimal type:
 
 Vectors are often some hundred numbers long, like 768 or 384. A longer vector can hold more information, but some dimensions are more information-rich than others. If most of the values in a dimension are equal or very close to each other, the dimension has little value and can be eliminated:
 
-- [Dimension reduction using Principal Component Analysis (PCA)](https://blog.vespa.ai/building-billion-scale-vector-search-part-two#dimension-reduction-using-principal-component-analysis-pca)
+- [Dimension reduction using Principal Component Analysis (PCA)](https://blog.vespa.ai/building-billion-scale-vector-search-part-two/#dimension-reduction-using-principal-component-analysis-pca)
 
 A better approach is often to use an ML model with the optimal size from the start for the use case, once found.
 
@@ -94,7 +94,7 @@ There are ways to approximate this by doing fewer calculations, and still findin
 
 Note that ANNs require some kind of indexing to speed up search, so inserts (adding a new vector) are more expensive (uses more CPU) and takes more space (memory and disk). When evaluating different kinds of ANN indexing, consider if your use case requires updates, including deletes, to the vectors - Vespa supports all.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

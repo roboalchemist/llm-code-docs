@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/webhook-egress.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Webhook Egress
 
 > Send workbook data from Flatfile to external webhook endpoints for seamless integration with your systems
@@ -12,7 +16,7 @@ This plugin is ideal for integrating Flatfile with custom backends, serverless f
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-webhook-egress
 ```
 
@@ -37,7 +41,7 @@ When the `webhookUrl` parameter is not provided during initialization, the plugi
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // listener.js
   import { listener } from '@flatfile/listener';
   import { webhookEgress } from '@flatfile/plugin-webhook-egress';
@@ -61,7 +65,7 @@ When the `webhookUrl` parameter is not provided during initialization, the plugi
   };
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   // listener.ts
   import { listener } from '@flatfile/listener';
   import { webhookEgress } from '@flatfile/plugin-webhook-egress';
@@ -89,7 +93,7 @@ When the `webhookUrl` parameter is not provided during initialization, the plugi
 ### Explicit Webhook URL Configuration
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // listener.js
   import { listener } from '@flatfile/listener';
   import { webhookEgress } from '@flatfile/plugin-webhook-egress';
@@ -99,7 +103,7 @@ When the `webhookUrl` parameter is not provided during initialization, the plugi
   listener.use(webhookEgress('workbook:submitActionFg', MY_WEBHOOK_URL));
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   // listener.ts
   import { listener } from '@flatfile/listener';
   import { webhookEgress } from '@flatfile/plugin-webhook-egress';
@@ -115,7 +119,7 @@ When the `webhookUrl` parameter is not provided during initialization, the plugi
 The plugin can process responses from your webhook that contain data rejections. If your webhook performs validation and finds errors, it can return them in a specific JSON format, and the plugin will display these errors in the Flatfile UI.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // Example webhook endpoint response format
   // POST https://api.myapp.com/data-ingest
   /*
@@ -149,7 +153,7 @@ The plugin can process responses from your webhook that contain data rejections.
   listener.use(webhookEgress('workbook:submit', 'https://webhook.site/your-unique-url'));
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   // Example webhook endpoint response format
   // POST https://api.myapp.com/data-ingest
   /*

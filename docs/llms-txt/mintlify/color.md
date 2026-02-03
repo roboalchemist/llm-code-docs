@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/components/color.md
+# Source: https://www.mintlify.com/docs/components/color.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Color
 
@@ -140,8 +144,3 @@ Define different colors for light and dark modes using an object with `light` an
 <ResponseField name="value" type="string | { light: string, dark: string }" required>
   Color value in any CSS format, or an object with light and dark mode values.
 </ResponseField>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://mintlify.com/docs/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/digital-agent-desk/agent-desk-navigation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Digital Agent Desk Navigation
 
 > Overview of the Digital Agent Desk navigation and features.
@@ -28,13 +32,13 @@
 
 ### B. Navigation
 
-| **Feature**            | **Feature Overview**                                                                                                                                            | **Configurability** |
-| :--------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------ |
-| Concurrency Slots      | The agent can see their concurrent chats and available 'Open Slots' directly in Agent Desk.                                                                     | Configurable        |
-| Waiting Timers         | A timer will display, both if the customer is waiting and if the agent is waiting. The customer waiting time displays in larger text and with a badge around it | Core                |
-| Last Message Preview   | Preview of the last message a customer sent in chat.                                                                                                            | Core                |
-| Color Coded Chat Cards | Unique color assigned to each chat card to help distinguish chats.                                                                                              | Core                |
-| Copy Tool              | Hover-over tool to easily copy entities across Agent Desk.                                                                                                      | Core                |
+| **Feature**            | **Feature Overview**                                                                                                                                  | **Configurability** |
+| :--------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------ |
+| Concurrency Slots      | The agent can see their concurrent chats and available 'Open Slots' directly in Agent Desk.                                                           | Configurable        |
+| Waiting Timers         | A timer displays when either the customer is waiting or the agent is waiting. The customer waiting time appears in larger text with a badge around it | Core                |
+| Last Message Preview   | Preview of the last message a customer sent in chat.                                                                                                  | Core                |
+| Color Coded Chat Cards | Unique color assigned to each chat card to help distinguish chats.                                                                                    | Core                |
+| Copy Tool              | Hover-over tool to easily copy entities across Agent Desk.                                                                                            | Core                |
 
 ### C. Help & Resources
 
@@ -46,10 +50,10 @@
 
 ### D. Preferences
 
-| Feature           | Feature Overview                                  | Configurability |
-| :---------------- | :------------------------------------------------ | :-------------- |
-| Font Size         | Select the Font Size: **Small,Medium**, **Large** | Core            |
-| Color Temperature | Adjust the display to reduce eye strain.          | Core            |
+| Feature           | Feature Overview                                       | Configurability |
+| :---------------- | :----------------------------------------------------- | :-------------- |
+| Font Size         | Select the Font Size: **Small**, **Medium**, **Large** | Core            |
+| Color Temperature | Adjust the display to reduce eye strain.               | Core            |
 
 ### E. Status Switcher & Log Out
 
@@ -74,12 +78,12 @@
 
 ### B. Navigation
 
-| **Feature**            | **Feature Overview**                                                                                                                                                        | **Configurability** |
-| :--------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------ |
-| Waiting Timers         | A timer will display, both if the customer is waiting and if the agent is waiting.<br /><br />The customer waiting time displays in larger text and with a badge around it. | Core                |
-| Last Message Preview   | Preview of the last message a customer sent in chat.                                                                                                                        | Core                |
-| Color Coded Chat Cards | Unique color assigned to each chat card to help distinguish chats.                                                                                                          | Core                |
-| Copy Tool              | Hover-over tool to easily copy entities across Agent Desk.                                                                                                                  | Core                |
+| **Feature**            | **Feature Overview**                                                                                                                                              | **Configurability** |
+| :--------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------ |
+| Waiting Timers         | A timer displays when either the customer is waiting or the agent is waiting.<br /><br />The customer waiting time appears in larger text with a badge around it. | Core                |
+| Last Message Preview   | Preview of the last message a customer sent in chat.                                                                                                              | Core                |
+| Color Coded Chat Cards | Unique color assigned to each chat card to help distinguish chats.                                                                                                | Core                |
+| Copy Tool              | Hover-over tool to easily copy entities across Agent Desk.                                                                                                        | Core                |
 
 ## 3. Conversation
 
@@ -89,29 +93,29 @@
 
 ### A. Conversation Header
 
-| **Feature**                                 | **Feature Overview**                                                                                                                                                                                                                                                                             | **Configurability** |
-| :------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------ |
-| Chat Duration                               | Indication of how long the customer has been chatting and waiting, at the top of the conversation panel.                                                                                                                                                                                         | Core                |
-| **Contextual Actions (From Left to Right)** |                                                                                                                                                                                                                                                                                                  |                     |
-| Quick Notes                                 | Ability for an agent to type and save notes during a conversation that will save in Conversation History                                                                                                                                                                                         | Configurable        |
-| Secure Messaging                            | Ability for an agent to send an invite to customers to share sensitive information (e.g. credit card number) securely.                                                                                                                                                                           | Configurable        |
-| Send to Flow                                | Expose **Send Flow** buttons in the center panel drop-down menu that allow an agent to send the customer back to SRS and into a particular automated flow.                                                                                                                                       | Configurable        |
-| Autopilot Forms / Quick Send                | Configurable forms and flows to send to customer and remain connected. You can configure deep links and single step flows.                                                                                                                                                                       | Configurable        |
-| Co-Browsing                                 | Ability for an agent to send an invitation to a customer to share their screen. The agent has limited capabilities (can scroll, draw, and focus, but can't click or type).                                                                                                                       | Configurable        |
-| **End Controls**                            |                                                                                                                                                                                                                                                                                                  |                     |
-| Autopilot Timeout (APTO)                    | Allows an agent to initiate an autopilot flow that checks in and eventually times out an unresponsive customer; timeout suggestions can appear after an initial conversation turn with a live agent                                                                                              | Configurable        |
-| Timeout                                     | Ability for the agent to timeout a customer.                                                                                                                                                                                                                                                     | Core                |
-| Transfer                                    | Ability for the agent to transfer a customer to another queue or individual agent. Queues are only available for transfer if business hours are open, the queue is not paused, and at least one agent in the queue is online. If needed, specific queues can be excluded from the transfer menu. | Configurable        |
-| End Chat                                    | Ability for the agent to close an issue.                                                                                                                                                                                                                                                         | Core                |
-| Auto Transfer on Agent Disconnect           | If agents disconnect from Agent Desk for over 60 seconds, ASAPP will auto transfer any currently assigned issues to another agent.                                                                                                                                                               | Core                |
-| Auto Requeue if Agent is unresponsive       | When a chat is first connected to an agent, give them X seconds to send their first message. If they exceed this timer, auto-reassign the issue to the next available agent.                                                                                                                     | Configurable        |
+| **Feature**                                 | **Feature Overview**                                                                                                                                                                                                                                                                         | **Configurability** |
+| :------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------ |
+| Chat Duration                               | Indication of how long the customer has been chatting and waiting, at the top of the conversation panel.                                                                                                                                                                                     | Core                |
+| **Contextual Actions (From Left to Right)** |                                                                                                                                                                                                                                                                                              |                     |
+| Quick Notes                                 | Enables an agent to type and save notes during a conversation that will save in Conversation History                                                                                                                                                                                         | Configurable        |
+| Secure Messaging                            | Enables an agent to send an invite to customers to share sensitive information (e.g. credit card number) securely.                                                                                                                                                                           | Configurable        |
+| Send to Flow                                | Expose **Send Flow** buttons in the center panel drop-down menu that allow an agent to send the customer back to SRS and into a particular automated flow.                                                                                                                                   | Configurable        |
+| Autopilot Forms / Quick Send                | Configurable forms and flows to send to customer and remain connected. You can configure deep links and single step flows.                                                                                                                                                                   | Configurable        |
+| Co-Browsing                                 | Enables an agent to send an invitation to a customer to share their screen. The agent has limited capabilities (can scroll, draw, and focus, but can't click or type).                                                                                                                       | Configurable        |
+| **End Controls**                            |                                                                                                                                                                                                                                                                                              |                     |
+| Autopilot Timeout (APTO)                    | Allows an agent to initiate an autopilot flow that checks in and eventually times out an unresponsive customer; timeout suggestions can appear after an initial conversation turn with a live agent                                                                                          | Configurable        |
+| Timeout                                     | Enables the agent to timeout a customer.                                                                                                                                                                                                                                                     | Core                |
+| Transfer                                    | Enables the agent to transfer a customer to another queue or individual agent. Queues are only available for transfer if business hours are open, the queue is not paused, and at least one agent in the queue is online. If needed, specific queues can be excluded from the transfer menu. | Configurable        |
+| End Chat                                    | Enables the agent to close an issue.                                                                                                                                                                                                                                                         | Core                |
+| Auto Transfer on Agent Disconnect           | If agents disconnect from Agent Desk for over 60 seconds, ASAPP will auto transfer any currently assigned issues to another agent.                                                                                                                                                           | Core                |
+| Auto Requeue if Agent is unresponsive       | When a chat is first connected to an agent, give them X seconds to send their first message. If they exceed this timer, auto-reassign the issue to the next available agent.                                                                                                                 | Configurable        |
 
 ### B. Conversation
 
-| **Feature**      | **Feature Overview**                                                                           | **Configurability** |
-| :--------------- | :--------------------------------------------------------------------------------------------- | :------------------ |
-| Chat Log         | Ability to scroll through the customer's previous conversation history.                        | Core                |
-| Message Previews | Ability to see a preview of what the customer is typing before the customer sends the message. | Core                |
+| **Feature**      | **Feature Overview**                                                                            | **Configurability** |
+| :--------------- | :---------------------------------------------------------------------------------------------- | :------------------ |
+| Chat Log         | Enables scrolling through the customer's previous conversation history.                         | Core                |
+| Message Previews | Enables viewing a preview of what the customer is typing before the customer sends the message. | Core                |
 
 ### C. Composer
 
@@ -259,7 +263,7 @@ When a customer sends an attachment, the agent will receive a notification in th
   <img width="350px" src="https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8ecf4069-2b40-c674-2577-307f42810d61.png?fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=c59bad2144cb5a527b09b58d79ecf4fe" data-og-width="556" data-og-height="818" data-path="image/uuid-8ecf4069-2b40-c674-2577-307f42810d61.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8ecf4069-2b40-c674-2577-307f42810d61.png?w=280&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=fc37fa7265d87696fa8171db0f86086b 280w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8ecf4069-2b40-c674-2577-307f42810d61.png?w=560&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=a27883947fa29e647af1920964cf6d8e 560w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8ecf4069-2b40-c674-2577-307f42810d61.png?w=840&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=a1e338164d92c86c756aad305a67bac9 840w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8ecf4069-2b40-c674-2577-307f42810d61.png?w=1100&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=c9139bde7f7fdd6cb1d01e2ed6a080d6 1100w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8ecf4069-2b40-c674-2577-307f42810d61.png?w=1650&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=1fb33139afdc96ffa1c206ee40ff3fb9 1650w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8ecf4069-2b40-c674-2577-307f42810d61.png?w=2500&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=29500946c748771c7f72d81a34cece4c 2500w" />
 </Frame>
 
-Images can be viewed in a modal while pdfs can be downloaded for the agent to view within their own desktop environment.
+Images can be viewed in a modal while PDFs can be downloaded for the agent to view within their own desktop environment.
 
 <AccordionGroup>
   <Accordion title="Supported File Types">
@@ -279,3 +283,28 @@ Images can be viewed in a modal while pdfs can be downloaded for the agent to vi
     Apple Messages for Business
   </Accordion>
 </AccordionGroup>
+
+### Undelivered Messages
+
+If the live agent fails to send a message to the customer, the agent will see an undelivered message indicator near the transcript.
+
+Message delivery issues impact customer experience, agent efficiency, and operational clarity. With this feature:
+
+* Agents gain clarity into whether a customer actually received the message they sent, reducing unnecessary repetition.
+* Admins and supervisors gain visibility into reliability issues that previously went undetected, enabling quicker diagnosis and resolution.
+* Quality Assurance and Compliance teams benefit from transcripts that accurately reflect what the customer saw.
+* CSMs and Delivery teams gain insights to help customers troubleshoot delivery issues and validate expected outcomes.
+
+This feature strengthens trust in the CXP transcript as an accurate record and improves the overall reliability of customer-facing communication flows.
+
+When a message fails to deliver, the following occurs:
+
+1. When a message fails to deliver to a customer, the transcript displays a **"Failed to send"** indicator directly below the undelivered message.
+2. The indicator shows that message delivery failed and displays an additional banner stating "Messaging service is unavailable".
+3. Agents immediately see this status when viewing the transcript during customer interactions.
+4. Admins and supervisors see the same delivery failure status in conversation history and can use this information for quality assurance and review.
+5. The feature automatically applies to all customers without requiring any action from end users.
+
+<Frame>
+  <img src="https://mintcdn.com/asapp/1fDV2_vz_I8h9n4C/images/messaging-platform/digital-agent-desk/undelivered-messages.png?fit=max&auto=format&n=1fDV2_vz_I8h9n4C&q=85&s=29dfb750245fb666a456bedb17cbf0ee" alt="Undelivered Messages Interface" data-og-width="420" width="420" data-og-height="772" height="772" data-path="images/messaging-platform/digital-agent-desk/undelivered-messages.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/1fDV2_vz_I8h9n4C/images/messaging-platform/digital-agent-desk/undelivered-messages.png?w=280&fit=max&auto=format&n=1fDV2_vz_I8h9n4C&q=85&s=5a60eb4d0486061cfd7146abd725fea7 280w, https://mintcdn.com/asapp/1fDV2_vz_I8h9n4C/images/messaging-platform/digital-agent-desk/undelivered-messages.png?w=560&fit=max&auto=format&n=1fDV2_vz_I8h9n4C&q=85&s=5be6e69ff374df45b5ef22cd951784b9 560w, https://mintcdn.com/asapp/1fDV2_vz_I8h9n4C/images/messaging-platform/digital-agent-desk/undelivered-messages.png?w=840&fit=max&auto=format&n=1fDV2_vz_I8h9n4C&q=85&s=5d25caeb66cf40dfa8dcd10482bcb7ca 840w, https://mintcdn.com/asapp/1fDV2_vz_I8h9n4C/images/messaging-platform/digital-agent-desk/undelivered-messages.png?w=1100&fit=max&auto=format&n=1fDV2_vz_I8h9n4C&q=85&s=21c682dd867e2c1537b894480f55840b 1100w, https://mintcdn.com/asapp/1fDV2_vz_I8h9n4C/images/messaging-platform/digital-agent-desk/undelivered-messages.png?w=1650&fit=max&auto=format&n=1fDV2_vz_I8h9n4C&q=85&s=01c756776ac02820dbd009a366461249 1650w, https://mintcdn.com/asapp/1fDV2_vz_I8h9n4C/images/messaging-platform/digital-agent-desk/undelivered-messages.png?w=2500&fit=max&auto=format&n=1fDV2_vz_I8h9n4C&q=85&s=3eb3ef04178d5472ab1217895fb9dcc8 2500w" />
+</Frame>

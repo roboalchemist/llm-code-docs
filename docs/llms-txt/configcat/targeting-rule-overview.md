@@ -2,6 +2,8 @@
 
 # Targeting Rule
 
+Copy page
+
 ## What is a Targeting Rule?[​](#what-is-a-targeting-rule "Direct link to What is a Targeting Rule?")
 
 *Targeting Rules* allow you to set different feature flag values for specific users or groups of users in your application.
@@ -34,9 +36,9 @@ The conditions are in an **AND** relationship, meaning that all of them must eva
 
 The conditions can be added to the Targeting Rule on the Dashboard, using the **+AND** ("Add AND condition") button. There are three types of conditions:
 
-* [User Condition](https://configcat.com/docs/docs/targeting/targeting-rule/user-condition/.md) - A condition that is based on some property of the user.
-* [Flag Condition (Prerequisite)](https://configcat.com/docs/docs/targeting/targeting-rule/flag-condition/.md) - A condition that is based on the value of another feature flag.
-* [Segment Condition](https://configcat.com/docs/docs/targeting/targeting-rule/segment-condition/.md) - A condition that is based on a segment.
+* [User Condition](https://configcat.com/docs/targeting/targeting-rule/user-condition.md) - A condition that is based on some property of the user.
+* [Flag Condition (Prerequisite)](https://configcat.com/docs/targeting/targeting-rule/flag-condition.md) - A condition that is based on the value of another feature flag.
+* [Segment Condition](https://configcat.com/docs/targeting/targeting-rule/segment-condition.md) - A condition that is based on a segment.
 
 ### THEN part[​](#then-part "Direct link to THEN part")
 
@@ -77,7 +79,7 @@ On the Dashboard:
 
 In the code:
 
-```
+```js
 const userObject = {
   identifier: userId,
   email: userEmail,
@@ -87,4 +89,5 @@ const userObject = {
 };
 
 const value = await configCatClient.getValueAsync("enableCafeNotifications", false, userObject);
+
 ```

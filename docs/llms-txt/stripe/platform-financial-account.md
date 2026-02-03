@@ -184,10 +184,9 @@ const financialAccount = await stripe.treasury.financialAccounts.retrieve(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.TreasuryFinancialAccountRetrieveParams{
-  FinancialAccount: stripe.String("{{TREASURYFINANCIALACCOUNT_ID}}"),
-}
-result, err := sc.V1TreasuryFinancialAccounts.Retrieve(context.TODO(), params)
+params := &stripe.TreasuryFinancialAccountRetrieveParams{}
+result, err := sc.V1TreasuryFinancialAccounts.Retrieve(
+  context.TODO(), "{{TREASURYFINANCIALACCOUNT_ID}}", params)
 ```
 
 ```dotnet
@@ -365,10 +364,9 @@ const financialAccountFeatures = await stripe.treasury.financialAccounts.retriev
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.TreasuryFinancialAccountRetrieveFeaturesParams{
-  FinancialAccount: stripe.String("{{TREASURYFINANCIALACCOUNT_ID}}"),
-}
-result, err := sc.V1TreasuryFinancialAccounts.RetrieveFeatures(context.TODO(), params)
+params := &stripe.TreasuryFinancialAccountRetrieveFeaturesParams{}
+result, err := sc.V1TreasuryFinancialAccounts.RetrieveFeatures(
+  context.TODO(), "{{TREASURYFINANCIALACCOUNT_ID}}", params)
 ```
 
 ```dotnet

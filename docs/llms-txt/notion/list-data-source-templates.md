@@ -1,124 +1,348 @@
 # Source: https://developers.notion.com/reference/list-data-source-templates.md
 
-# Notion API
-
-## Objects
-
-### Block
-- [Rich text](/reference/rich-text)
-
-### Page
-- [Page properties](/reference/page-property-values)
-  - [Page property items](/reference/property-item-object)
-
-### Database
-- [Database](/reference/database)
-
-### Data source
-- [Data source properties](/reference/data-source)
-
-### Comment
-- [Comment attachment](/reference/comment-attachment)
-- [Comment display name](/reference/comment-display-name)
-
-### File
-- [File Upload](/reference/file-upload)
-
-### User
-- [User](/reference/user)
-
-### Parent
-- [Parent](/reference/parent-object)
-
-### Emoji
-- [Emoji](/reference/emoji-object)
-
-### Unfurl attribute (Link Previews)
-- [Unfurl attribute (Link Previews)](/reference/unfurl-attribute-object)
-
-## Endpoints
-
-### Authentication
-- [Create a token](/reference/create-a-token) (post)
-- [Introspect token](/reference/introspect-token) (post)
-- [Revoke token](/reference/revoke-token) (post)
-- [Refresh a token](/reference/refresh-a-token) (post)
-
-### Blocks
-- [Append block children](/reference/append-block-children) (patch)
-- [Retrieve a block](/reference/retrieve-a-block) (get)
-- [Retrieve block children](/reference/retrieve-block-children) (get)
-- [Update a block](/reference/update-a-block) (patch)
-- [Delete a block](/reference/delete-a-block) (del)
-
-### Pages
-- [Create a page](/reference/create-a-page) (post)
-- [Retrieve a page](/reference/retrieve-a-page) (get)
-- [Retrieve a page property item](/reference/retrieve-a-page-property) (get)
-- [Update page](/reference/update-page)
-  - [Trash a page](/reference/trash-a-page)
-
-### Databases
-- [Create a database](/reference/create-database) (post)
-- [List databases](/reference/list-databases) (get)
-- [Delete a database](/reference/delete-database) (del)
-```
+> ## Documentation Index
+> Fetch the complete documentation index at: https://developers.notion.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # List data source templates
 
-[post](https://docs.rapidapi.com/reference/list-data-source-templates)
-
-## Main Menu
-
-*   [Create a database](https://docs.rapidapi.com/reference/database-create)
-    *   [Update a database](https://docs.rapidapi.com/reference/database-update)
-    *   [Retrieve a database](https://docs.rapidapi.com/reference/database-retrieve)
-*   [Data sources](https://docs.rapidapi.com/reference/create-a-data-source)
-    *   [Create a data source](https://docs.rapidapi.com/reference/create-a-data-source)
-    *   [Update a data source](https://docs.rapidapi.com/reference/update-a-data-source)
-        *   [Update data source properties](https://docs.rapidapi.com/reference/update-data-source-properties)
-    *   [Retrieve a data source](https://docs.rapidapi.com/reference/retrieve-a-data-source)
-    *   [Query a data source](https://docs.rapidapi.com/reference/query-a-data-source)
-        *   [Filter data source entries](https://docs.rapidapi.com/reference/filter-data-source-entries)
-        *   [Sort data source entries](https://docs.rapidapi.com/reference/sort-data-source-entries)
-    *   [List data source templates](https://docs.rapidapi.com/reference/list-data-source-templates)
-*   [Databases (deprecated)](https://docs.rapidapi.com/reference/create-a-database)
-    *   [Create a database](https://docs.rapidapi.com/reference/create-a-database)
-    *   [Query a database](https://docs.rapidapi.com/reference/post-database-query)
-        *   [Filter database entries](https://docs.rapidapi.com/reference/post-database-query-filter)
-        *   [Sort database entries](https://docs.rapidapi.com/reference/post-database-query-sort)
-    *   [Retrieve a database](https://docs.rapidapi.com/reference/retrieve-a-database)
-    *   [Update a database](https://docs.rapidapi.com/reference/update-a-database)
-        *   [Update database properties](https://docs.rapidapi.com/reference/update-property-schema-object)
-    *   [List databases (deprecated)](https://docs.rapidapi.com/reference/get-databases)
-*   [Comments](https://docs.rapidapi.com/reference/create-a-comment)
-    *   [Create comment](https://docs.rapidapi.com/reference/create-a-comment)
-    *   [Retrieve a comment](https://docs.rapidapi.com/reference/retrieve-comment)
-    *   [List comments](https://docs.rapidapi.com/reference/list-comments)
-*   [File Uploads](https://docs.rapidapi.com/reference/create-a-file-upload)
-    *   [Create a file upload](https://docs.rapidapi.com/reference/create-a-file-upload)
-    *   [Send a file upload](https://docs.rapidapi.com/reference/send-a-file-upload)
-    *   [Complete a file upload](https://docs.rapidapi.com/reference/complete-a-file-upload)
-    *   [Retrieve a file upload](https://docs.rapidapi.com/reference/retrieve-a-file-upload)
-    *   [List file uploads](https://docs.rapidapi.com/reference/list-file-uploads)
-*   [Search](https://docs.rapidapi.com/reference/post-search)
-```
-
-# List data source templates
-
-Use this API to retrieve details of all page templates available for a data source.
+> Use this API to retrieve details of all page templates available for a data source.
 
 The response object contains an array `page_size` results (up to 100) under the `templates` key. Each element of the array is a JSON object with the following attributes:
 
-| Key | Data Type | Meaning |
-| --- | --- | --- |
-| `id` | `String` (UUIDv4 format) | The ID of the template. |
-| `name` | `String` | The display name of the template. |
-| `is_default` | `Boolean` | Whether that template is the data source's default. |
+| Key          | Data Type                | Meaning                                             |
+| :----------- | :----------------------- | :-------------------------------------------------- |
+| `id`         | `String` (UUIDv4 format) | The ID of the template.                             |
+| `name`       | `String`                 | The display name of the template.                   |
+| `is_default` | `Boolean`                | Whether that template is the data source's default. |
 
 **Pagination**: When there are more templates than the current API response contains, the `has_more` boolean field is set to `true`, and the `next_cursor` is set to the ID of the next template to use as the `start_cursor` of your next API request.
 
 Only templates under the data source identified by the `data_source_id` in the URL are returned. Also, the bot must have access to the template for it to appear in this API. However, in most cases, as long as the bot is connected to the data source's parent database (check the "Connections" list under the 3-dot menu), this access also extends to all of the child templates.
 
 Templates are also valid Notion pages, so you can retrieve a template's full properties and content using the [Retrieve a page](/reference/retrieve-a-page) API. This also means that opening a template in the Notion app and copying its URL is an alternative way to get its ID.
-```
+
+
+## OpenAPI
+
+````yaml get /v1/data_sources/{data_source_id}/templates
+openapi: 3.1.0
+info:
+  title: Notion API
+  version: 1.0.0
+  termsOfService: >-
+    https://notion.notion.site/Terms-and-Privacy-28ffdd083dc3473e9c2da6ec011b58ac
+servers:
+  - url: https://api.notion.com
+security:
+  - bearerAuth: []
+tags:
+  - name: Databases
+    description: Database endpoints
+  - name: Data sources
+    description: Data source endpoints
+  - name: Pages
+    description: Page endpoints
+  - name: Blocks
+    description: Block endpoints
+  - name: Comments
+    description: Comment endpoints
+  - name: File uploads
+    description: File upload endpoints
+  - name: OAuth
+    description: OAuth endpoints (basic authentication)
+  - name: Users
+    description: User endpoints
+  - name: Search
+    description: Search endpoints
+paths:
+  /v1/data_sources/{data_source_id}/templates:
+    get:
+      tags:
+        - Data sources
+      summary: List templates in a data source
+      operationId: list-data-source-templates
+      parameters:
+        - name: data_source_id
+          in: path
+          required: true
+          schema:
+            $ref: '#/components/schemas/idRequest'
+            description: ID of a Notion data source.
+        - name: name
+          in: query
+          schema:
+            type: string
+            description: Filter templates by name (case-insensitive substring match).
+        - name: start_cursor
+          in: query
+          schema:
+            type: string
+            description: >-
+              If supplied, this endpoint will return a page of results starting
+              after the cursor provided. If not supplied, this endpoint will
+              return the first page of results.
+        - name: page_size
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            description: >-
+              The number of items from the full list desired in the response.
+              Maximum: 100
+        - $ref: '#/components/parameters/notionVersion'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  templates:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          $ref: '#/components/schemas/idResponse'
+                          description: ID of the template page.
+                        name:
+                          type: string
+                          description: Name of the template.
+                        is_default:
+                          type: boolean
+                          description: >-
+                            Whether this template is the default template for
+                            the data source.
+                      additionalProperties: false
+                      required:
+                        - id
+                        - name
+                        - is_default
+                    maxItems: 100
+                    description: Array of templates available in this data source.
+                  has_more:
+                    type: boolean
+                    description: >-
+                      Whether there are more templates available beyond this
+                      page.
+                  next_cursor:
+                    oneOf:
+                      - $ref: '#/components/schemas/idResponse'
+                      - type: 'null'
+                    description: >-
+                      Cursor to use for the next page of results. Null if there
+                      are no more results.
+                additionalProperties: false
+                required:
+                  - templates
+                  - has_more
+                  - next_cursor
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_api_400'
+        '401':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_api_401'
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_api_403'
+        '404':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_api_404'
+        '409':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_api_409'
+        '429':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_api_429'
+        '500':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_api_500'
+        '503':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error_api_503'
+components:
+  schemas:
+    idRequest:
+      type: string
+    idResponse:
+      type: string
+      format: uuid
+    error_api_400:
+      allOf:
+        - $ref: '#/components/schemas/publicApiCommonErrorResponse'
+        - type: object
+          properties:
+            code:
+              enum:
+                - invalid_json
+                - invalid_request_url
+                - invalid_request
+                - missing_version
+                - validation_error
+            status:
+              const: 400
+          required:
+            - code
+            - status
+          additionalProperties: false
+    error_api_401:
+      allOf:
+        - $ref: '#/components/schemas/publicApiCommonErrorResponse'
+        - type: object
+          properties:
+            code:
+              enum:
+                - unauthorized
+            status:
+              const: 401
+          required:
+            - code
+            - status
+          additionalProperties: false
+    error_api_403:
+      allOf:
+        - $ref: '#/components/schemas/publicApiCommonErrorResponse'
+        - type: object
+          properties:
+            code:
+              enum:
+                - restricted_resource
+            status:
+              const: 403
+          required:
+            - code
+            - status
+          additionalProperties: false
+    error_api_404:
+      allOf:
+        - $ref: '#/components/schemas/publicApiCommonErrorResponse'
+        - type: object
+          properties:
+            code:
+              enum:
+                - object_not_found
+            status:
+              const: 404
+          required:
+            - code
+            - status
+          additionalProperties: false
+    error_api_409:
+      allOf:
+        - $ref: '#/components/schemas/publicApiCommonErrorResponse'
+        - type: object
+          properties:
+            code:
+              enum:
+                - conflict_error
+            status:
+              const: 409
+          required:
+            - code
+            - status
+          additionalProperties: false
+    error_api_429:
+      allOf:
+        - $ref: '#/components/schemas/publicApiCommonErrorResponse'
+        - type: object
+          properties:
+            code:
+              enum:
+                - rate_limited
+            status:
+              const: 429
+          required:
+            - code
+            - status
+          additionalProperties: false
+    error_api_500:
+      allOf:
+        - $ref: '#/components/schemas/publicApiCommonErrorResponse'
+        - type: object
+          properties:
+            code:
+              enum:
+                - internal_server_error
+            status:
+              const: 500
+          required:
+            - code
+            - status
+          additionalProperties: false
+    error_api_503:
+      allOf:
+        - $ref: '#/components/schemas/publicApiCommonErrorResponse'
+        - type: object
+          properties:
+            code:
+              enum:
+                - service_unavailable
+            status:
+              const: 503
+          required:
+            - code
+            - status
+          additionalProperties: false
+    publicApiCommonErrorResponse:
+      type: object
+      properties:
+        object:
+          const: error
+        message:
+          type: string
+        additional_data:
+          type: object
+          additionalProperties:
+            oneOf:
+              - type: string
+              - type: array
+                items:
+                  type: string
+      required:
+        - object
+        - message
+  parameters:
+    notionVersion:
+      name: Notion-Version
+      in: header
+      required: true
+      schema:
+        enum:
+          - '2025-09-03'
+      description: >-
+        The [API version](/reference/versioning) to use for this request. The
+        latest version is `2025-09-03`.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+
+````

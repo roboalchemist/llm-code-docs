@@ -1,9 +1,13 @@
 # Source: https://docs.fireworks.ai/tools-sdks/python-client/sdk-basics.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build SDK Basics
 
 <Warning>
-  This SDK documentation applies to version [0.19.20](https://pypi.org/project/fireworks-ai/0.19.20/) and earlier. The Build SDK will be deprecated and replaced with version 1.0.0 of the SDK (see our [changelog](/updates/changelog#2025-11-12) for more details). Please migrate to the new SDK when it becomes available.
+  This SDK documentation applies to version [0.19.20](https://pypi.org/project/fireworks-ai/0.19.20/) and earlier. The Build SDK will be deprecated and replaced with version 1.0.0 of the SDK (see our [changelog](/updates/changelog#2025-11-12) for more details). Please migrate to the [new SDK](/tools-sdks/python-sdk).
 </Warning>
 
 ## Why use the Build SDK?
@@ -125,7 +129,7 @@ For non-finetuned models, you can always specify the deployment type of `LLM()` 
   When using `deployment_type="on-demand"`, you must provide an `id` parameter to uniquely identify your deployment. This is required to prevent accidental creation of multiple deployments.
 </Warning>
 
-For finetuned (LoRA) models, passing `deployment_type="serverless" ` will try to deploy the finetuned model to serverless hosting, `deployment_type="on-demand"` will create an on-demand deployment of your base model and merge in your LoRA weights, `deployment_type="on-demand-lora"` will create an on-demand deployment with Multi-LoRA enabled, and `deployment_type="auto"` will try to use `serverless` if available, otherwise fall back to `on-demand-lora`.
+For finetuned (LoRA) models, `deployment_type="on-demand"` will create an on-demand deployment of your base model and merge in your LoRA weights, and `deployment_type="on-demand-lora"` will create an on-demand deployment with Multi-LoRA enabled. When using `deployment_type="auto"`, the SDK will create an on-demand deployment.
 
 #### Deploying Fine-tuned Models with On-Demand
 

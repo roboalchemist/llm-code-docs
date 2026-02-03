@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/update-report-score-card.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Configure Custom Scoring
 
 > Configure custom scoring logic for an evaluation pipeline
@@ -188,8 +192,3 @@ return {"score": score}
 * If no custom code is provided, the default scoring (average of boolean columns) is used
 * Changes to the score card on a blueprint affect all future runs
 * For completed runs, the score is recalculated immediately after updating the score card
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

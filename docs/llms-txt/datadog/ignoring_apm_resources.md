@@ -6,7 +6,6 @@ description: >-
   Learn how to exclude unwanted resources like health checks from traces using
   sampling rules and filtering to reduce noise and manage costs.
 breadcrumbs: Docs > APM > Tracing Guides > Ignoring Unwanted Resources in APM
-source_url: https://docs.datadoghq.com/guide/ignoring_apm_resources/index.html
 ---
 
 # Ignoring Unwanted Resources in APM

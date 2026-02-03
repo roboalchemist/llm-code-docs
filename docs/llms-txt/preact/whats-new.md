@@ -1,3 +1,5 @@
+# Source: https://preactjs.com/guide/v10/whats-new/#componentdidcatch
+
 # What's new in Preact X
 
 Preact X is a huge step forward from Preact 8.x. We've rethought every bit and byte of our code and added a plethora of major features in the process. Same goes for compatibility enhancements to support more third-party libraries.

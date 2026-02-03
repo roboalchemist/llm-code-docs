@@ -1,113 +1,89 @@
 # Source: https://docs.infera.org/api-reference/endpoint/chat-completions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.infera.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Chat Completions
+
+
 
 ## OpenAPI
 
 ````yaml post /chat/completions
+openapi: 3.1.0
+info:
+  title: FastAPI
+  version: 0.1.0
+servers:
+  - url: https://api.infera.org/
+    description: Infera production servers
+security: []
 paths:
-  path: /chat/completions
-  method: post
-  servers:
-    - url: https://api.infera.org/
-      description: Infera production servers
-  request:
-    security:
-      - title: APIKeyHeader
-        parameters:
-          query: {}
-          header:
-            api_key:
-              type: apiKey
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              model:
-                allOf:
-                  - type: string
-                    title: Model
-              messages:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/InputMessage'
-                    type: array
-                    title: Messages
-              max_tokens:
-                allOf:
-                  - type: integer
-                    title: Max Tokens
-              temperature:
-                allOf:
-                  - type: number
-                    title: Temperature
-              request_timeout_time:
-                allOf:
-                  - anyOf:
-                      - type: integer
-                      - type: 'null'
-                    title: Request Timeout Time
-                    default: 240
-            required: true
-            title: ChatCompletionsRequest
-            refIdentifier: '#/components/schemas/ChatCompletionsRequest'
-            requiredProperties:
-              - model
-              - messages
-              - max_tokens
-              - temperature
-        examples:
-          example:
-            value:
-              model: <string>
-              messages:
-                - role: <string>
-                  content: <string>
-              max_tokens: 123
-              temperature: 123
-              request_timeout_time: 123
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: any
-        examples:
-          example:
-            value: <any>
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+  /chat/completions:
+    post:
+      summary: Chat Completions
+      operationId: chat_completions_chat_completions_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatCompletionsRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - APIKeyHeader: []
 components:
   schemas:
+    ChatCompletionsRequest:
+      properties:
+        model:
+          type: string
+          title: Model
+        messages:
+          items:
+            $ref: '#/components/schemas/InputMessage'
+          type: array
+          title: Messages
+        max_tokens:
+          type: integer
+          title: Max Tokens
+        temperature:
+          type: number
+          title: Temperature
+        request_timeout_time:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Request Timeout Time
+          default: 240
+      type: object
+      required:
+        - model
+        - messages
+        - max_tokens
+        - temperature
+      title: ChatCompletionsRequest
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     InputMessage:
       properties:
         role:
@@ -142,5 +118,10 @@ components:
         - msg
         - type
       title: ValidationError
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: api_key
 
 ````

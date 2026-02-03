@@ -46,7 +46,7 @@ And you can level-up
 all the way
 to syncing into a local embedded
 
-[PGlite database](/product/pglite).
+[PGlite database](/products/pglite).
 
 With
 

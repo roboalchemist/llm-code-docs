@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/integrations/composio.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Composio
 
 > Tavily is now available for integration through Composio.
@@ -142,8 +146,3 @@ else:
 1. **Research Automation**: Automate the collection and summarization of research data
 2. **Content Curation**: Gather and organize information from multiple sources
 3. **Real-time Data Integration**: Keeping your AI models up-to-date with the latest information.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

@@ -32,7 +32,7 @@
 |cards=
 {{Card
 |title=Partnership branding guidelines
-|image=Zn1RTJbWFbowe8Qo Marketing_Guidelines_for_Partners.pdf
+|image=Zn1RTJbWFbowe8Qo_Marketing_Guidelines_for_Partners.pdf
 |downloadBehaviour=null
 |contentType=Partnership branding guidelines
 |assetSize=8286018

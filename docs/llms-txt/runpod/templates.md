@@ -2,6 +2,10 @@
 
 # Source: https://docs.runpod.io/api-reference/templates/GET/templates.md
 
+# Source: https://docs.runpod.io/api-reference/templates/POST/templates.md
+
+# Source: https://docs.runpod.io/api-reference/templates/GET/templates.md
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.

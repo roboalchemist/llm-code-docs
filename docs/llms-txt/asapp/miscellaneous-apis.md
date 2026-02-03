@@ -2,21 +2,9 @@
 
 # Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/miscellaneous-apis.md
 
-# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/miscellaneous-apis.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/miscellaneous-apis.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/miscellaneous-apis.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/miscellaneous-apis.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/miscellaneous-apis.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/miscellaneous-apis.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/miscellaneous-apis.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/miscellaneous-apis.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Miscellaneous APIs
 
@@ -43,9 +31,9 @@ You can trigger this handler in two ways:
 ASAPP.instance.fetchConversationStatus()
 ```
 
-The Chat SDK will fetch the status asynchronously and callback to `conversationStatusHandler` once it is available.
+The Chat SDK fetches the status asynchronously and calls back to `conversationStatusHandler` once it becomes available.
 
-2. The handler may be triggered when a push notification is received if the application is in the foreground. If your application handles Firebase push notifications, use:
+2. The system may trigger the handler when you receive a push notification if the application is in the foreground. If your application handles Firebase push notifications, use:
 
 ```kotlin  theme={null}
 class MyFirebaseMessagingService : FirebaseMessagingService() {
@@ -58,7 +46,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 ```
 
 <Note>
-  The Chat SDK only looks for conversation status data in the payload and doesn't cache or persist analytics. If the push notification was sent from ASAPP, the SDK returns true and triggers the `conversationStatusHandler` callback.
+  The Chat SDK only looks for conversation status data in the payload and doesn't cache or persist analytics. If ASAPP sent the push notification, the SDK returns true and triggers the `conversationStatusHandler` callback.
 </Note>
 
 ## Debug Logs
@@ -113,10 +101,10 @@ ASAPP.instance.chatEventHandler = object : ASAPPChatEventHandler {
 
 ### Implement Chat end, New Issue, and Agent Assigned
 
-To track the `end of a chat`, or add custom codes on `new issue` and `agent assigned` implement the following custom events
+To track the `end of a chat`, or add custom codes on `new issue` and `agent assigned`, implement the following custom events
 
 <Tip>
-  In this example, the event messages are shown as Toasts. But you add any custom code here.
+  In this example, the system shows event messages as Toasts. But you can add any custom code here.
 </Tip>
 
 ```kotlin  theme={null}

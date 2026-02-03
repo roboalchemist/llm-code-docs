@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/reference/for-llms.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # For LLMs
 
 > AI-optimized documentation formats and tools for better LLM integration
@@ -10,9 +14,9 @@ The Flatfile documentation is optimized for use with Large Language Models (LLMs
 
 We provide a contextual menu on every documentation page with quick access to AI-optimized content and direct integrations with popular AI tools:
 
-<img className="block dark:hidden" src="https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/static/images/contextual-menu.png" alt="Contextual menu showing AI integration options" />
+<img className="block dark:hidden" src="https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/contextual-menu.png?fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=08f1a4db22d6d2f3edbd30ce1cbfd489" alt="Contextual menu showing AI integration options" data-og-width="1396" width="1396" data-og-height="944" height="944" data-path="static/images/contextual-menu.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/contextual-menu.png?w=280&fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=dc4f03a1866d1ed16b898221ecd57285 280w, https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/contextual-menu.png?w=560&fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=8087a16398cd15d028d89245eb52b89e 560w, https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/contextual-menu.png?w=840&fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=5675e09709f817a5a3970cb9dbbc9289 840w, https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/contextual-menu.png?w=1100&fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=120559a0a091ce214588da53dede61a0 1100w, https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/contextual-menu.png?w=1650&fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=815bd6c62f3b62cb3c5dff3647b6c9ab 1650w, https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/contextual-menu.png?w=2500&fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=ee97c046aae7db788a8f58bd52e4c083 2500w" />
 
-<img className="hidden dark:block" src="https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/static/images/contextual-menu.png" alt="Contextual menu showing AI integration options" />
+<img className="hidden dark:block" src="https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/contextual-menu.png?fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=08f1a4db22d6d2f3edbd30ce1cbfd489" alt="Contextual menu showing AI integration options" data-og-width="1396" width="1396" data-og-height="944" height="944" data-path="static/images/contextual-menu.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/contextual-menu.png?w=280&fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=dc4f03a1866d1ed16b898221ecd57285 280w, https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/contextual-menu.png?w=560&fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=8087a16398cd15d028d89245eb52b89e 560w, https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/contextual-menu.png?w=840&fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=5675e09709f817a5a3970cb9dbbc9289 840w, https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/contextual-menu.png?w=1100&fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=120559a0a091ce214588da53dede61a0 1100w, https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/contextual-menu.png?w=1650&fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=815bd6c62f3b62cb3c5dff3647b6c9ab 1650w, https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/contextual-menu.png?w=2500&fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=ee97c046aae7db788a8f58bd52e4c083 2500w" />
 
 * **Copy page** - Copies the current page as Markdown for pasting as context into AI tools
 * **View as Markdown** - Opens the current page in a clean Markdown format

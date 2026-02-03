@@ -1,3 +1,7 @@
+# Source: https://www.promptfoo.dev/docs/red-team/guardrails/
+
+# Source: https://www.promptfoo.dev/docs/configuration/expected-outputs/guardrails/
+
 # Guardrails
 
 Use the `guardrails` assert type to ensure that LLM outputs pass safety checks based on the provider's built-in guardrails.

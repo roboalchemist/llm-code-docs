@@ -2,13 +2,14 @@
 
 # Source: https://docs.datadoghq.com/account_management/audit_trail/events.md
 
+# Source: https://docs.datadoghq.com/api/latest/events.md
+
 # Source: https://docs.datadoghq.com/events.md
 
 ---
 title: Event Management
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Event Management
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Event Management

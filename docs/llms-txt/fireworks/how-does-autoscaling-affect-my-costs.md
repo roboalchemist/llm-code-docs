@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/faq-new/deployment-infrastructure/how-does-autoscaling-affect-my-costs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How does autoscaling affect my costs?
 
 * **Scaling from 0**: No minimum cost when scaled to zero

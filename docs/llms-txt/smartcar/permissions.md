@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/permissions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Permissions
 
 > In order to use an endpoint or webhook, you'll need to request the associated permissions from your user in [Connect](/docs/connect/what-is-connect).

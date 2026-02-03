@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/integrations/javascript/custom-model.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom Models
 
 If you're not using LangChain or OpenAI, you can still integrate Lunary with your own LLMs.
@@ -106,8 +110,3 @@ lunary.trackEvent('llm','end',{
   }
   ```
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

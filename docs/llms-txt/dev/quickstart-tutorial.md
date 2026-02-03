@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/framework/quickstart-tutorial.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart tutorial
 
 In this tutorial, we'll guide you through creating a logistic regression visualisation tool using Framework. Logistic regression is a fundamental technique in machine learning for binary classification tasks, and visualising its decision boundary can provide valuable insights into the model's behaviour.

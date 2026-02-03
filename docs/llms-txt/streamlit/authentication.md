@@ -1,3 +1,7 @@
+# Source: https://docs.streamlit.io/develop/tutorials/authentication
+
+# Source: https://docs.streamlit.io/develop/concepts/connections/authentication
+
 # User authentication and information
 
 Personalizing your app for your users is a great way to make your app more engaging.

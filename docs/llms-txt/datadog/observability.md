@@ -6,7 +6,6 @@ description: >-
   Use the Observability overlay in Cloudcraft to see where the Datadog Agent is
   installed and which features are enabled per host.
 breadcrumbs: Docs > Cloudcraft in Datadog > Overlays > Observability
-source_url: https://docs.datadoghq.com/overlays/observability/index.html
 ---
 
 # Observability

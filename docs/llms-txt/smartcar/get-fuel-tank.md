@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/get-fuel-tank.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Fuel Tank
 
 > Returns the status of the fuel remaining in the vehicle’s fuel tank.

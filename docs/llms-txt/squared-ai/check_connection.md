@@ -1,83 +1,72 @@
 # Source: https://docs.squared.ai/api-reference/connector_definitions/check_connection.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Check Connection
+
+
 
 ## OpenAPI
 
 ````yaml POST /api/v1/connector_definitions/check_connection
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/connector_definitions/check_connection
-  method: post
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              type:
-                allOf:
-                  - type: string
-                    enum:
-                      - source
-                      - destination
-              name:
-                allOf:
-                  - type: string
-              connection_spec:
-                allOf:
-                  - type: object
-                    description: >-
-                      Generic connection specification structure. Specifics
-                      depend on the connector type.
-                    additionalProperties: true
-            required: true
-        examples:
-          example:
-            value:
-              type: source
-              name: <string>
-              connection_spec: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              result:
-                allOf:
-                  - type: string
+  /api/v1/connector_definitions/check_connection:
+    post:
+      tags:
+        - Connector Definitions
+      summary: Checks the connection for a specified connector definition
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum:
+                    - source
+                    - destination
+                name:
+                  type: string
+                connection_spec:
+                  type: object
+                  description: >-
+                    Generic connection specification structure. Specifics depend
+                    on the connector type.
+                  additionalProperties: true
+      responses:
+        '200':
+          description: Connection check successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
                     enum:
                       - success
                       - failure
-              details:
-                allOf:
-                  - type: string
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              result: success
-              details: <string>
-        description: Connection check successful
-  deprecated: false
-  type: path
+                  details:
+                    type: string
+                additionalProperties: false
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

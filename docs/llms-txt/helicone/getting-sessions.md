@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/cookbooks/getting-sessions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieving Sessions
 
 > Use the Request API to retrieve session data, allowing you to analyze conversation threads.

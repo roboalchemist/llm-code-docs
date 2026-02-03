@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/toxic-check.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Toxic check
 
 We developed an independent system that classifies input and output textual data and predicts its level of toxicity. Our model was trained on a distinct dataset that included both toxic and nontoxic examples. Each prompt is sent through the API to one of our large language models, and the generated text is analyzed and classified by a model that predicts the text's toxicity level. This probability lies between 0 and 1, where 0 indicates toxic classes and 1 indicates nontoxic classes

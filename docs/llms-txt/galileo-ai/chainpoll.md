@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo-ai-research/chainpoll.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Chainpoll
 
 > ChainPoll is a powerful, flexible technique for LLM-based evaluation that is unique to Galileo. It is used to power multiple metrics across the Galileo platform.
@@ -17,7 +21,7 @@ ChainPoll involves two core ideas, which make up the two parts of its name:
 * **Poll:** Prompting an LLM multiple times
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/chain-poll.avif" />
+  <img src="https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/chain-poll.avif?fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=8a5ec4ea7f14eb3819d215070a665e1d" data-og-width="800" width="800" data-og-height="431" height="431" data-path="images/chain-poll.avif" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/chain-poll.avif?w=280&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=1176e58530b8503f2a51049653352c42 280w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/chain-poll.avif?w=560&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=5e883c615687e154ce69f2bc9e97b0b1 560w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/chain-poll.avif?w=840&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=f164302a61733861014c2ac244689724 840w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/chain-poll.avif?w=1100&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=d7764000638658e686600457bd1e399b 1100w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/chain-poll.avif?w=1650&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=7de6a5b04b2d3995665aa5a2875bdbdc 1650w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/chain-poll.avif?w=2500&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=f3905d16284d68a772b5837969d9523f 2500w" />
 </Frame>
 
 Let's cover these one by one.
@@ -29,11 +33,9 @@ Let's cover these one by one.
 A chain-of-thought prompt is simply a prompt that asks the LLM to write out its step-by-step reasoning process before stating its final answer. For example:
 
 * Prompt without CoT:
-
   * "Roger has 5 tennis balls. He buys 2 more cans of tennis balls. Each can has 3 tennis balls. How many tennis balls does he have now?"
 
 * Prompt with CoT:
-
   * "Roger has 5 tennis balls. He buys 2 more cans of tennis balls. Each can has 3 tennis balls. How many tennis balls does he have now? *Think step by step, and present your reasoning before giving the answer.*"
 
 While this might seem like a small change, it often dramatically improves the accuracy of the answer.
@@ -149,7 +151,6 @@ ChainPoll scores are averages over multiple True-or-False answers. You can inter
 For example:
 
 * A score of 0.667 means that the evaluating LLM said Yes 2/3 of the time, and No 1/3 of the time.
-
   * In other words, its *overall inclination* was toward Yes, but it wasn't totally sure.
 
 * A score of 1.0 would indicate the same overall inclination, with higher confidence.
@@ -177,11 +178,9 @@ However, under the hood, the two scores work very differently.
 To compute Faithfulness, RAGAS calls an LLM in two distinct steps:
 
 1. The LLM is asked to break the *response* down into one or more granular *statements.*
-
    1. In this step, the LLM can only see the *response*, not the *context*.
 
 2. The LLM given the *statements* and the *context*, and is asked to judge whether or not each statement is consistent with the context.
-
    1. In this step, the LLM can see the context, but *not* the original response. Instead, it only sees the statements that were written in step 1.
 
 The scores for each statement (0 for inconsistent, 1 for consistent) are averaged over statements to produce a score.
@@ -333,7 +332,6 @@ TruLens **Groundedness** works as follows:
 1. The response is split up into sentences.
 
 2. An LLM is given the list of sentences, along with the context. It is asked to:
-
    1. quote the part of the context (if any) that supports the sentence
 
    2. rate the "information overlap" between each sentence and the context on a 0-to-10 scale.

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-promise-executor-return.md
 ---
-# eslint/no-promise-executor-return&#x20;
 
 ### What it does
 

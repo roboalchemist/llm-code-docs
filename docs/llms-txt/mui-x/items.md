@@ -2,10 +2,6 @@
 
 # Source: https://mui.com/x/react-tree-view/simple-tree-view/items.md
 
-# Source: https://mui.com/x/react-tree-view/rich-tree-view/items.md
-
-# Source: https://mui.com/x/react-tree-view/simple-tree-view/items.md
-
 ---
 productId: x-tree-view
 title: Simple Tree View - Items

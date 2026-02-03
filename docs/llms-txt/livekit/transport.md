@@ -116,12 +116,6 @@ Self-host LiveKit servers for full control over your WebRTC infrastructure, data
 
 - **[Self-hosting overview](https://docs.livekit.io/transport/self-hosting.md)**: Learn how to self-host LiveKit servers for full control over your infrastructure.
 
-### Hardware
-
-Build realtime applications for embedded devices, ESP32 microcontrollers, and other hardware platforms. LiveKit provides specialized SDKs and tools for integrating with physical devices for IoT and edge computing use cases.
-
-- **[Hardware overview](https://docs.livekit.io/transport/hardware.md)**: Learn how to integrate LiveKit with hardware devices and embedded systems.
-
 ## Getting started
 
 Choose your platform to get started building your application:
@@ -130,7 +124,7 @@ Choose your platform to get started building your application:
 
 ---
 
-This document was rendered at 2025-12-31T18:29:36.691Z.
+This document was rendered at 2026-02-03T03:25:14.011Z.
 For the latest version of this document, see [https://docs.livekit.io/transport.md](https://docs.livekit.io/transport.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

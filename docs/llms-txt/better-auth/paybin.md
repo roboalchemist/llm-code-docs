@@ -4,11 +4,7 @@
 
 Paybin provider setup and usage.
 
-***
 
-title: Paybin
-description: Paybin provider setup and usage.
----------------------------------------------
 
 <Steps>
   <Step>

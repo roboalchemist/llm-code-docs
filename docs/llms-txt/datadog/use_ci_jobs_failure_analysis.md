@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Continuous Integration Visibility > CI Visibility Guides > Use CI jobs
   failure analysis to identify root causes in failed jobs
-source_url: https://docs.datadoghq.com/guides/use_ci_jobs_failure_analysis/index.html
 ---
 
 # Use CI jobs failure analysis to identify root causes in failed jobs

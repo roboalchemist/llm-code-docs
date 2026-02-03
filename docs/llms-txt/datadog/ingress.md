@@ -6,7 +6,6 @@ description: >-
   Learn how to configure and manage ingress controllers for your CloudPrem
   deployment
 breadcrumbs: Docs > CloudPrem > Configure CloudPrem > CloudPrem Ingress Configuration
-source_url: https://docs.datadoghq.com/configure/ingress/index.html
 ---
 
 # CloudPrem Ingress Configuration
@@ -130,5 +129,5 @@ rules:
 
 ## Further reading{% #further-reading %}
 
-- [Set up Log Ingestion](https://docs.datadoghq.com/cloudprem/ingest_logs/)
-- [Manage and Monitor](https://docs.datadoghq.com/cloudprem/manage/)
+- [Set up Log Ingestion](https://docs.datadoghq.com/cloudprem/ingest/)
+- [Monitor CloudPrem](https://docs.datadoghq.com/cloudprem/operate/monitoring/)

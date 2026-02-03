@@ -4,426 +4,767 @@
 
 # Source: https://getlago.com/docs/api-reference/analytics/usage.md
 
-# Source: https://getlago.com/docs/guide/analytics/usage.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://getlago.com/docs/api-reference/events/usage.md
+# Retrieve usage data
 
-# Source: https://getlago.com/docs/api-reference/analytics/usage.md
+> Returns usages.
 
-# Source: https://getlago.com/docs/api-reference/events/usage.md
 
-# Send usage event
-
-> This endpoint is used for transmitting usage measurement events to either a designated customer or a specific subscription.
 
 ## OpenAPI
 
-````yaml POST /events
+````yaml GET /analytics/usage
+openapi: 3.1.0
+info:
+  title: Lago API documentation
+  description: >-
+    Lago API allows your application to push customer information and metrics
+    (events) from your application to the billing application.
+  version: 1.41.0
+  license:
+    name: AGPLv3
+    identifier: AGPLv3
+  contact:
+    email: tech@getlago.com
+servers:
+  - url: https://api.getlago.com/api/v1
+    description: US Lago cluster
+  - url: https://api.eu.getlago.com/api/v1
+    description: EU Lago cluster
+security:
+  - bearerAuth: []
+tags:
+  - name: activity_logs
+    description: Everything about Activity logs
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/audit-logs/activity-logs-object
+  - name: analytics
+    description: Everything about Analytics
+  - name: api_logs
+    description: Everything about API logs
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/audit-logs/api-logs-object
+  - name: billable_metrics
+    description: Everything about Billable metric collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/billable-metrics/object
+  - name: features
+    description: Everything about Feature collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/features/object
+  - name: entitlements
+    description: Everything about Entitlement collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/entitlements/object
+  - name: billing_entities
+    description: Everything about Billing Entities
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/billing-entities/object
+  - name: customers
+    description: Everything about Customer collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/customers/object
+  - name: plans
+    description: Everything about Plan collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/plans/object
+  - name: subscriptions
+    description: Everything about Subscription collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/subscriptions/subscription-object
+  - name: events
+    description: Everything about Event collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/events/event-object
+  - name: organizations
+    description: Everything about Organization collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/organizations/organization-object
+  - name: taxes
+    description: Everything about Tax collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/taxes/tax-object
+  - name: coupons
+    description: Everything about Coupon collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/coupons/coupon-object
+  - name: add_ons
+    description: Everything about Add-on collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/add-ons/add-on-object
+  - name: fees
+    description: Everything about Fees
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/invoices/invoice-object#fee-object
+  - name: invoices
+    description: Everything about Invoice collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/invoices/invoice-object
+  - name: wallets
+    description: Everything about Wallet collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/wallets/wallet-object
+  - name: credit_notes
+    description: Everything about Credit notes collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/credit-notes/credit-note-object
+  - name: webhooks
+    description: Everything about Webhooks
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/webhooks/format---signature#1-retrieve-the-public-key
+  - name: webhook_endpoints
+    description: Everything about Webhook Endpoints
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/webhook-endpoints/webhook-endpoint-object
+  - name: payment_receipts
+    description: Everything about Payment receipts
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/payment-receipts/payment-receipt-object
+  - name: payment_requests
+    description: Everything about PaymentRequests
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/payment-requests/payment-request-object
+  - name: payments
+    description: Everything about Payments
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/payments/payment-object
+externalDocs:
+  description: Lago Github
+  url: https://github.com/getlago
 paths:
-  path: /events
-  method: post
-  servers:
-    - url: https://api.getlago.com/api/v1
-      description: US Lago cluster
-    - url: https://api.eu.getlago.com/api/v1
-      description: EU Lago cluster
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              event:
-                allOf:
-                  - $ref: '#/components/schemas/EventInputObject'
-            required: true
-            refIdentifier: '#/components/schemas/EventInput'
-            requiredProperties:
-              - event
-        examples:
-          example:
-            value:
-              event:
-                transaction_id: transaction_1234567890
-                external_subscription_id: sub_1234567890
-                code: storage
-                timestamp: '1651240791.123'
-                precise_total_amount_cents: '1234.56'
-                properties:
-                  gb: 10
-        description: Event payload
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              event:
-                allOf:
-                  - allOf:
-                      - $ref: '#/components/schemas/EventObject'
-                      - type: object
-                        properties:
-                          lago_customer_id:
-                            type: 'null'
-                            description: >-
-                              The value will always be null in this response as
-                              the event processing is done asynchronously
-                            example: null
-            refIdentifier: '#/components/schemas/EventCreated'
-            requiredProperties:
-              - event
-        examples:
-          example:
-            value:
-              event:
-                lago_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                transaction_id: transaction_1234567890
-                lago_customer_id: null
-                code: storage
-                timestamp: '2022-04-29T08:59:51.123Z'
-                precise_total_amount_cents: '1234.56'
-                properties:
-                  gb: 10
-                lago_subscription_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                external_subscription_id: sub_1234567890
-                created_at: '2022-04-29T08:59:51Z'
-        description: Event
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: integer
-                    format: int32
-                    example: 400
-              error:
-                allOf:
-                  - type: string
-                    example: Bad request
-            refIdentifier: '#/components/schemas/ApiErrorBadRequest'
-            requiredProperties:
-              - status
-              - error
-        examples:
-          example:
-            value:
-              status: 400
-              error: Bad request
-        description: Bad Request error
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: integer
-                    format: int32
-                    example: 401
-              error:
-                allOf:
-                  - type: string
-                    example: Unauthorized
-            refIdentifier: '#/components/schemas/ApiErrorUnauthorized'
-            requiredProperties:
-              - status
-              - error
-        examples:
-          example:
-            value:
-              status: 401
-              error: Unauthorized
-        description: Unauthorized error
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: integer
-                    format: int32
-                    example: 403
-              error:
-                allOf:
-                  - type: string
-                    example: Forbidden
-              code:
-                allOf:
-                  - type: string
-                    example: feature_unavailable
-            refIdentifier: '#/components/schemas/ApiErrorForbidden'
-            requiredProperties:
-              - status
-              - error
-              - code
-        examples:
-          example:
-            value:
-              status: 403
-              error: Forbidden
-              code: feature_unavailable
-        description: Forbidden
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: integer
-                    format: int32
-                    example: 422
-              error:
-                allOf:
-                  - type: string
-                    example: Unprocessable entity
-              code:
-                allOf:
-                  - type: string
-                    example: validation_errors
-              error_details:
-                allOf:
-                  - type: object
-            refIdentifier: '#/components/schemas/ApiErrorUnprocessableEntity'
-            requiredProperties:
-              - status
-              - error
-              - code
-              - error_details
-        examples:
-          example:
-            value:
-              status: 422
-              error: Unprocessable entity
-              code: validation_errors
-              error_details: {}
-        description: Unprocessable entity error
-  deprecated: false
-  type: path
+  /analytics/usage:
+    get:
+      tags:
+        - analytics
+      summary: List usage
+      description: Returns usages.
+      operationId: findAllUsages
+      parameters:
+        - name: time_granularity
+          in: query
+          description: >-
+            The time granularity of usage analytics. Possible values are
+            'daily', 'weekly', 'monthly', 'yearly'.
+          required: false
+          schema:
+            type: string
+            enum:
+              - daily
+              - weekly
+              - monthly
+            example: monthly
+        - name: currency
+          in: query
+          description: The currency of usage analytics. Format must be ISO 4217.
+          required: false
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/Currency'
+              - example: USD
+        - name: from_date
+          in: query
+          description: >-
+            The start date of the period for which the usage analytics is
+            calculated.
+          required: false
+          schema:
+            type: string
+            format: date
+            example: '2023-11-01'
+        - name: to_date
+          in: query
+          description: >-
+            The end date of the period for which the usage analytics is
+            calculated.
+          required: false
+          schema:
+            type: string
+            format: date
+            example: '2023-11-30'
+        - name: customer_type
+          in: query
+          description: >-
+            The type of customer for which the usage analytics is calculated.
+            Possible values are 'individual', 'company'.
+          required: false
+          schema:
+            type: string
+            enum:
+              - individual
+              - company
+            example: individual
+        - name: external_customer_id
+          in: query
+          description: >-
+            The external identifier of the customer for which the usage
+            analytics is calculated.
+          required: false
+          schema:
+            type: string
+            example: ext-customer-123
+        - name: customer_country
+          in: query
+          description: >-
+            The country of the customer for which the usage analytics is
+            calculated.
+          required: false
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/Country'
+              - example: US
+        - name: external_subscription_id
+          in: query
+          description: >-
+            The external identifier of the subscription for which the usage
+            analytics is calculated.
+          required: false
+          schema:
+            type: string
+            example: ext-subscription-123
+        - name: is_billable_metric_recurring
+          in: query
+          description: >-
+            Indicates whether the billable metric associated with the usage is
+            recurring.
+          required: false
+          schema:
+            type: boolean
+            example: true
+        - name: plan_code
+          in: query
+          description: The code of the plan for which the usage analytics is calculated.
+          required: false
+          schema:
+            type: string
+            example: plan-code-123
+        - name: billable_metric_code
+          in: query
+          description: >-
+            The code of the usage-based billable metrics for which the usage
+            analytics is calculated.
+          required: false
+          schema:
+            type: string
+            example: code1
+      responses:
+        '200':
+          description: Usage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Usages'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    EventObject:
+    Currency:
+      type: string
+      example: USD
+      enum:
+        - AED
+        - AFN
+        - ALL
+        - AMD
+        - ANG
+        - AOA
+        - ARS
+        - AUD
+        - AWG
+        - AZN
+        - BAM
+        - BBD
+        - BDT
+        - BGN
+        - BIF
+        - BMD
+        - BND
+        - BOB
+        - BRL
+        - BSD
+        - BWP
+        - BYN
+        - BZD
+        - CAD
+        - CDF
+        - CHF
+        - CLF
+        - CLP
+        - CNY
+        - COP
+        - CRC
+        - CVE
+        - CZK
+        - DJF
+        - DKK
+        - DOP
+        - DZD
+        - EGP
+        - ETB
+        - EUR
+        - FJD
+        - FKP
+        - GBP
+        - GEL
+        - GHS
+        - GIP
+        - GMD
+        - GNF
+        - GTQ
+        - GYD
+        - HKD
+        - HNL
+        - HRK
+        - HTG
+        - HUF
+        - IDR
+        - ILS
+        - INR
+        - ISK
+        - JMD
+        - JPY
+        - KES
+        - KGS
+        - KHR
+        - KMF
+        - KRW
+        - KYD
+        - KZT
+        - LAK
+        - LBP
+        - LKR
+        - LRD
+        - LSL
+        - MAD
+        - MDL
+        - MGA
+        - MKD
+        - MMK
+        - MNT
+        - MOP
+        - MRO
+        - MUR
+        - MVR
+        - MWK
+        - MXN
+        - MYR
+        - MZN
+        - NAD
+        - NGN
+        - NIO
+        - NOK
+        - NPR
+        - NZD
+        - PAB
+        - PEN
+        - PGK
+        - PHP
+        - PKR
+        - PLN
+        - PYG
+        - QAR
+        - RON
+        - RSD
+        - RUB
+        - RWF
+        - SAR
+        - SBD
+        - SCR
+        - SEK
+        - SGD
+        - SHP
+        - SLL
+        - SOS
+        - SRD
+        - STD
+        - SZL
+        - THB
+        - TJS
+        - TOP
+        - TRY
+        - TTD
+        - TWD
+        - TZS
+        - UAH
+        - UGX
+        - USD
+        - UYU
+        - UZS
+        - VND
+        - VUV
+        - WST
+        - XAF
+        - XCD
+        - XOF
+        - XPF
+        - YER
+        - ZAR
+        - ZMW
+    Country:
+      type: string
+      example: US
+      enum:
+        - AD
+        - AE
+        - AF
+        - AG
+        - AI
+        - AL
+        - AM
+        - AO
+        - AQ
+        - AR
+        - AS
+        - AT
+        - AU
+        - AW
+        - AX
+        - AZ
+        - BA
+        - BB
+        - BD
+        - BE
+        - BF
+        - BG
+        - BH
+        - BI
+        - BJ
+        - BL
+        - BM
+        - BN
+        - BO
+        - BQ
+        - BR
+        - BS
+        - BT
+        - BV
+        - BW
+        - BY
+        - BZ
+        - CA
+        - CC
+        - CD
+        - CF
+        - CG
+        - CH
+        - CI
+        - CK
+        - CL
+        - CM
+        - CN
+        - CO
+        - CR
+        - CU
+        - CV
+        - CW
+        - CX
+        - CY
+        - CZ
+        - DE
+        - DJ
+        - DK
+        - DM
+        - DO
+        - DZ
+        - EC
+        - EE
+        - EG
+        - EH
+        - ER
+        - ES
+        - ET
+        - FI
+        - FJ
+        - FK
+        - FM
+        - FO
+        - FR
+        - GA
+        - GB
+        - GD
+        - GE
+        - GF
+        - GG
+        - GH
+        - GI
+        - GL
+        - GM
+        - GN
+        - GP
+        - GQ
+        - GR
+        - GS
+        - GT
+        - GU
+        - GW
+        - GY
+        - HK
+        - HM
+        - HN
+        - HR
+        - HT
+        - HU
+        - ID
+        - IE
+        - IL
+        - IM
+        - IN
+        - IO
+        - IQ
+        - IR
+        - IS
+        - IT
+        - JE
+        - JM
+        - JO
+        - JP
+        - KE
+        - KG
+        - KH
+        - KI
+        - KM
+        - KN
+        - KP
+        - KR
+        - KW
+        - KY
+        - KZ
+        - LA
+        - LB
+        - LC
+        - LI
+        - LK
+        - LR
+        - LS
+        - LT
+        - LU
+        - LV
+        - LY
+        - MA
+        - MC
+        - MD
+        - ME
+        - MF
+        - MG
+        - MH
+        - MK
+        - ML
+        - MM
+        - MN
+        - MO
+        - MP
+        - MQ
+        - MR
+        - MS
+        - MT
+        - MU
+        - MV
+        - MW
+        - MX
+        - MY
+        - MZ
+        - NA
+        - NC
+        - NE
+        - NF
+        - NG
+        - NI
+        - NL
+        - 'NO'
+        - NP
+        - NR
+        - NU
+        - NZ
+        - OM
+        - PA
+        - PE
+        - PF
+        - PG
+        - PH
+        - PK
+        - PL
+        - PM
+        - PN
+        - PR
+        - PS
+        - PT
+        - PW
+        - PY
+        - QA
+        - RE
+        - RO
+        - RS
+        - RU
+        - RW
+        - SA
+        - SB
+        - SC
+        - SD
+        - SE
+        - SG
+        - SH
+        - SI
+        - SJ
+        - SK
+        - SL
+        - SM
+        - SN
+        - SO
+        - SR
+        - SS
+        - ST
+        - SV
+        - SX
+        - SY
+        - SZ
+        - TC
+        - TD
+        - TF
+        - TG
+        - TH
+        - TJ
+        - TK
+        - TL
+        - TM
+        - TN
+        - TO
+        - TR
+        - TT
+        - TV
+        - TW
+        - TZ
+        - UA
+        - UG
+        - UM
+        - US
+        - UY
+        - UZ
+        - VA
+        - VC
+        - VE
+        - VG
+        - VI
+        - VN
+        - VU
+        - WF
+        - WS
+        - YE
+        - YT
+        - ZA
+        - ZM
+        - ZW
+    Usages:
       type: object
       required:
-        - lago_id
-        - transaction_id
-        - lago_customer_id
-        - code
-        - timestamp
-        - lago_subscription_id
-        - external_subscription_id
-        - created_at
+        - usages
       properties:
-        lago_id:
-          type: string
-          format: uuid
-          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
-          description: >-
-            Unique identifier assigned to the event within the Lago application.
-            This ID is exclusively created by Lago and serves as a unique
-            identifier for the event's record within the Lago system
-        transaction_id:
-          type: string
-          example: transaction_1234567890
-          description: >-
-            This field represents a unique identifier for the event. It is
-            crucial for ensuring idempotency, meaning that each event can be
-            uniquely identified and processed without causing any unintended
-            side effects.
-        lago_customer_id:
-          type:
-            - string
-            - 'null'
-          format: uuid
-          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
-          description: >-
-            Unique identifier assigned to the customer within the Lago
-            application. This ID is exclusively created by Lago and serves as a
-            unique identifier for the customer's record within the Lago system
-        code:
-          type: string
-          example: storage
-          description: >-
-            The code that identifies a targeted billable metric. It is essential
-            that this code matches the `code` property of one of your active
-            billable metrics. If the provided code does not correspond to any
-            active billable metric, it will be ignored during the process.
-        timestamp:
-          type: string
-          format: date-time
-          example: '2022-04-29T08:59:51.123Z'
-          description: >-
-            This field captures the Unix timestamp in seconds indicating the
-            occurrence of the event in Coordinated Universal Time (UTC). If this
-            timestamp is not provided, the API will automatically set it to the
-            time of event reception.
-        precise_total_amount_cents:
-          type:
-            - string
-            - 'null'
-          example: '1234.56'
-          description: >-
-            The precise total amount that was sent in the event payload. This
-            filed is used by the `dynamic` pricing model.
-        properties:
-          type: object
-          description: >-
-            This field represents additional properties associated with the
-            event, which are utilized in the calculation of the final fee. This
-            object becomes mandatory when the targeted billable metric employs a
-            `sum_agg`, `max_agg`, or `unique_count_agg` aggregation method.
-            However, when using a simple `count_agg`, this object is not
-            required.
-          properties:
-            operation_type:
-              type:
-                - string
-                - 'null'
-              description: >-
-                The `operation_type` field is only necessary when adding or
-                removing a specific unit when the targeted billable metric
-                adopts a `unique_count_agg` aggregation method. In other cases,
-                the `operation_type` field is not required. The valid values for
-                the `operation_type` field are `add` or `remove`, which indicate
-                whether the unit is being added or removed from the unique count
-                aggregation, respectively.
-              enum:
-                - add
-                - remove
-          additionalProperties:
-            oneOf:
-              - type: string
-              - type: integer
-              - type: number
-          example:
-            gb: 10
-        lago_subscription_id:
-          type:
-            - string
-            - 'null'
-          format: uuid
-          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
-          description: >-
-            Unique identifier assigned to the subscription within the Lago
-            application. This ID is exclusively created by Lago and serves as a
-            unique identifier for the subscription's record within the Lago
-            system
-        external_subscription_id:
-          type: string
-          example: sub_1234567890
-          description: >-
-            The unique identifier of the subscription within your application.
-            It is a mandatory field when the customer possesses multiple
-            subscriptions or when the `external_customer_id` is not provided.
-        created_at:
-          type: string
-          format: date-time
-          example: '2022-04-29T08:59:51Z'
-          description: >-
-            The creation date of the event's record in the Lago application,
-            presented in the ISO 8601 datetime format, specifically in
-            Coordinated Universal Time (UTC). It provides the precise timestamp
-            of when the event's record was created within the Lago application
-    EventInputObject:
+        usages:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageObject'
+    UsageObject:
       type: object
       required:
-        - transaction_id
-        - external_subscription_id
-        - code
+        - organization_id
+        - amount_cents
+        - amount_currency
       properties:
-        transaction_id:
+        organization_id:
           type: string
-          example: transaction_1234567890
-          description: >
-            This field represents a unique identifier for the event.
-
-            It is crucial for ensuring idempotency, meaning that each event can
-            be uniquely identified and processed without causing any unintended
-            side effects.
-
-
-            WARNING: If the Lago organization is configured to use the new
-            Clickhouse-based event pipeline (designed for high-volume
-            processing), the idempotency logic is handled differently.
-
-            Event uniqueness is maintained with both `transaction_id` and
-            `timestamp` fields.
-
-            If a new event arrives with identical values for these two fields as
-            an existing event, the new one will overwrite the previous event
-            rather than being rejected.
-        external_subscription_id:
+          format: uuid
+          description: >-
+            The unique identifier of the organization for which the usage
+            analytics is calculated.
+          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
+        start_of_period_dt:
           type: string
-          example: sub_1234567890
+          format: date
           description: >-
-            The unique identifier of the subscription in your application. This
-            field is mandatory in order to link events to the correct customer
-            subscription.
-        code:
+            The start date of the period for which the usage analytics is
+            calculated.
+          example: '2023-11-01'
+        end_of_period_dt:
           type: string
-          example: storage
+          format: date
           description: >-
-            The code that identifies a targeted billable metric. It is essential
-            that this code matches the `code` property of one of your active
-            billable metrics. If the provided code does not correspond to any
-            active billable metric, it will be ignored during the process.
-        timestamp:
-          oneOf:
-            - type: integer
-            - type: string
-          example: '1651240791.123'
-          description: >
-            This field captures the Unix timestamp in seconds indicating the
-            occurrence of the event in Coordinated Universal Time (UTC).
-
-            If this timestamp is not provided, the API will automatically set it
-            to the time of event reception.
-
-            You can also provide miliseconds precision by appending decimals to
-            the timestamp.
-        precise_total_amount_cents:
-          type:
-            - string
-            - 'null'
-          example: '1234.56'
+            The end date of the period for which the usage analytics is
+            calculated.
+          example: '2023-11-30'
+        amount_currency:
+          $ref: '#/components/schemas/Currency'
+          description: The currency of usage analytics. Format must be ISO 4217.
+          example: USD
+        amount_cents:
+          type: integer
+          description: The total amount for usages for a period, expressed in cents.
+          example: 50000
+        billable_metric_code:
+          type: string
+          description: The code of the usage-based billable metrics.
+          example: code1
+        units:
+          type: string
+          description: The total number of units for the usage-based billable metrics.
+          pattern: ^[0-9]+.?[0-9]*$
+          example: '1.0'
+        is_billable_metric_deleted:
+          type: boolean
           description: >-
-            The precise total amount in cents with precision used by the
-            `dynamic` pricing model to compute the usage amount.
-        properties:
-          type:
-            - object
-            - 'null'
-          description: >-
-            This field represents additional properties associated with the
-            event, which are utilized in the calculation of the final fee. This
-            object becomes mandatory when the targeted billable metric employs a
-            `sum_agg`, `max_agg`, or `unique_count_agg` aggregation method.
-            However, when using a simple `count_agg`, this object is not
-            required.
-          additionalProperties:
-            oneOf:
-              - type: string
-              - type: integer
-              - type: number
-          example:
-            gb: 10
+            Indicates whether the billable metric associated with the usage is
+            deleted.
+          example: false
+    ApiErrorUnauthorized:
+      type: object
+      required:
+        - status
+        - error
+      properties:
+        status:
+          type: integer
+          format: int32
+          example: 401
+        error:
+          type: string
+          example: Unauthorized
+  responses:
+    Unauthorized:
+      description: Unauthorized error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiErrorUnauthorized'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
 
 ````

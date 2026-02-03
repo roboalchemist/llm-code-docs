@@ -56,6 +56,16 @@ Set the specified styles of the element using an object that can contain multipl
 element.setStyleProperties(styleProperties);
 ```
 
+### `Element.getComputedStyleProperty()`
+
+Get the ComputedStyle for the element by key. The style name must be in [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case).
+
+Refer to [Element.getComputedStyleProperty](/api/lynx-api/main-thread/element-get-computed-style.md).
+
+```ts
+const width = element.getComputedStyleProperty(styleName);
+```
+
 ### `Element.querySelector()`
 
 Find the first element within the element's child elements that matches the specified selector. Returns a `MainThread.Element`. If no matching element is found, returns `null`. For a list of supported selectors, see [selector](/api/lynx-api/selector-query/selector-query-select.md#selector).

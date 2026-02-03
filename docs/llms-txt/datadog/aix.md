@@ -6,7 +6,6 @@ description: >-
   Install and manage the Datadog UNIX Agent on IBM AIX systems for
   infrastructure monitoring and custom metrics collection.
 breadcrumbs: Docs > Agent > Supported Platforms > AIX
-source_url: https://docs.datadoghq.com/supported_platforms/aix/index.html
 ---
 
 # AIX

@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/gettingstarted/examples/outbound-phone-call.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Outbound Phone Calls
 
 > Connect outbound Twilio calls to an Ultravox agent in 5 minutes or less.
@@ -97,8 +101,3 @@ npm start
 
 1. Check out the [Inbound Phone Call](/gettingstarted/examples/inbound-phone-call) example.
 2. Ultravox Realtime provides telephony integrations for Telnyx, Twilio, Plivo, and Exotel. Learn more [here](/telephony/overview).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

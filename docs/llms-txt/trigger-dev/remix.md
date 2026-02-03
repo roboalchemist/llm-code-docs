@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/frameworks/remix.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Remix setup guide
 
 > This guide will show you how to setup Trigger.dev in your existing Remix project, test an example task, and view the run.
@@ -22,25 +26,31 @@ export const framework_0 = "Remix"
     Run this command in the root of your project to get started:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest init
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest init
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest init
       ```
     </CodeGroup>
 
     It will do a few things:
 
-    1. Log you into the CLI if you're not already logged in.
-    2. Create a `trigger.config.ts` file in the root of your project.
-    3. Ask where you'd like to create the `/trigger` directory.
-    4. Create the `/trigger` directory with an example task, `/trigger/example.[ts/js]`.
+    <Tip title="MCP Server">
+      Our [Trigger.dev MCP server](/mcp-introduction) gives your AI assistant direct access to Trigger.dev tools; search docs, trigger tasks, deploy projects, and monitor runs. We recommend installing it for the best developer experience.
+    </Tip>
+
+    1. Ask if you want to install the [Trigger.dev MCP server](/mcp-introduction) for your AI assistant.
+    2. Log you into the CLI if you're not already logged in.
+    3. Ask you to select your project.
+    4. Install the required SDK packages.
+    5. Ask where you'd like to create the `/trigger` directory and create it with an example task.
+    6. Create a `trigger.config.ts` file in the root of your project.
 
     Install the "Hello World" example task when prompted. We'll use this task to test the setup.
   </Step>
@@ -51,15 +61,15 @@ export const framework_0 = "Remix"
     It can also update your `@trigger.dev/*` packages to prevent version mismatches and failed deploys. You will always be prompted first.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest dev
       ```
     </CodeGroup>
@@ -106,7 +116,7 @@ For more information on authenticating with Trigger.dev, see the [API keys page]
   <Step title="Add your task">
     Add this code to your `api.hello-world.ts` file which imports your task:
 
-    ```ts app/routes/api.hello-world.ts theme={null}
+    ```ts app/routes/api.hello-world.ts theme={"theme":"css-variables"}
     import type { helloWorldTask } from "../../src/trigger/example";
     import { tasks } from "@trigger.dev/sdk";
 
@@ -124,15 +134,15 @@ For more information on authenticating with Trigger.dev, see the [API keys page]
     Run your Remix app:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npm run dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm run dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dev
       ```
     </CodeGroup>
@@ -140,22 +150,22 @@ For more information on authenticating with Trigger.dev, see the [API keys page]
     Run the dev server from Step 2. of the [Initial Setup](/guides/frameworks/remix#initial-setup) section above if it's not already running:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest dev
       ```
     </CodeGroup>
 
     Now visit the URL in your browser to trigger the task. Ensure the port number is the same as the one you're running your Remix app on. For example, if you're running your Remix app on port 3000, visit:
 
-    ```bash  theme={null}
+    ```bash  theme={"theme":"css-variables"}
     http://localhost:3000/api/trigger
     ```
 
@@ -184,15 +194,15 @@ You can also add environment variables in code by following the steps on the [En
 For this guide, we'll manually deploy your task by running the [CLI deploy command](/cli-deploy) below. Other ways to deploy are listed in the next section.
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest deploy
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest deploy
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest deploy
   ```
 </CodeGroup>
@@ -222,7 +232,7 @@ There are a few extra steps to follow to deploy your `/api/hello-world` API endp
   <Step title="Update your API route">
     Update your API route to use the `runtime: "edge"` option and change it to an `action()` so we can trigger the task from a curl request later on.
 
-    ```ts app/routes/api.hello-world.ts theme={null}
+    ```ts app/routes/api.hello-world.ts theme={"theme":"css-variables"}
     import { tasks } from "@trigger.dev/sdk";
     import type { helloWorldTask } from "../../src/trigger/example";
     //      👆 **type-only** import
@@ -245,7 +255,7 @@ There are a few extra steps to follow to deploy your `/api/hello-world` API endp
   <Step title="Update the Vercel configuration">
     Create or update the `vercel.json` file with the following:
 
-    ```json vercel.json theme={null}
+    ```json vercel.json theme={"theme":"css-variables"}
     {
       "buildCommand": "npm run vercel-build",
       "devCommand": "npm run dev",
@@ -259,7 +269,7 @@ There are a few extra steps to follow to deploy your `/api/hello-world` API endp
   <Step title="Update package.json scripts">
     Update your `package.json` to include the following scripts:
 
-    ```json package.json theme={null}
+    ```json package.json theme={"theme":"css-variables"}
     "scripts": {
         "build": "remix vite:build",
         "dev": "remix vite:dev",
@@ -278,7 +288,7 @@ There are a few extra steps to follow to deploy your `/api/hello-world` API endp
   <Step title="Add your Vercel environment variables">
     In the Vercel project settings, add your Trigger.dev secret key:
 
-    ```bash  theme={null}
+    ```bash  theme={"theme":"css-variables"}
     TRIGGER_SECRET_KEY=your-secret-key
     ```
 
@@ -299,7 +309,7 @@ There are a few extra steps to follow to deploy your `/api/hello-world` API endp
   <Step title="Test your task in production">
     After deployment, you can test your task in production by running this curl command:
 
-    ```bash  theme={null}
+    ```bash  theme={"theme":"css-variables"}
     curl -X POST https://your-app.vercel.app/api/hello-world \
     -H "Content-Type: application/json" \
     -d '{"name": "James"}'

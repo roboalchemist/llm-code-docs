@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/knowledge-base/add-data-source.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add data source
 
 > A guide on adding data sources to the Knowledge Base.

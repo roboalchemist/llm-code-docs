@@ -4,7 +4,6 @@
 title: Route 53 Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > Route 53 Component
-source_url: https://docs.datadoghq.com/components-aws/route-53/index.html
 ---
 
 # Route 53 Component

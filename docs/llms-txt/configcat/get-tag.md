@@ -2,10 +2,7 @@
 
 # Get Tag
 
-```
-GET 
-/v1/tags/:tagId
-```
+Copy page
 
 This endpoint returns the metadata of a Tag identified by the `tagId`.
 

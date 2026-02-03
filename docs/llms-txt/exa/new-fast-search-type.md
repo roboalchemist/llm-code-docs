@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/changelog/new-fast-search-type.md
+# Source: https://exa.ai/docs/changelog/new-fast-search-type.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # New Fast Search Type
 
@@ -76,8 +80,3 @@ While Fast search is optimized for speed, certain options can increase response 
 * **Subpages**: Including subpages in your search requires additional processing and can significantly increase latency.
 
 For the fastest possible performance, use Fast search with minimal parameters and rely on cached content.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

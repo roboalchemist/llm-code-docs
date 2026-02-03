@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/api-reference/validate-evaluator-upload.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Validate Evaluator Upload
 
 > Triggers server-side validation of the uploaded source code (**step 5** in
@@ -15,7 +19,7 @@ Poll [Get Evaluator](/api-reference/get-evaluator) to monitor progress.
 openapi: 3.1.0
 info:
   title: Gateway REST API
-  version: 4.15.25
+  version: 4.21.6
 servers:
   - url: https://api.fireworks.ai
 security:
@@ -81,7 +85,3 @@ components:
       bearerFormat: API_KEY
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireworks.ai/llms.txt

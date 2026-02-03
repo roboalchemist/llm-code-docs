@@ -6,7 +6,6 @@ description: >-
   Understand how primary operations work in services and how to configure them
   to properly organize traces and resources in APM.
 breadcrumbs: Docs > APM > Tracing Guides > Primary Operations in Services
-source_url: https://docs.datadoghq.com/guide/configuring-primary-operation/index.html
 ---
 
 # Primary Operations in Services

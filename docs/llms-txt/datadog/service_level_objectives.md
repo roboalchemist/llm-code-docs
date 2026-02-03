@@ -4,7 +4,6 @@
 title: Service Level Objectives
 description: Track the status of your SLOs
 breadcrumbs: Docs > Service Level Objectives
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Service Level Objectives
@@ -417,3 +416,4 @@ The SLO statuses are calculated based on the SLO type:
 - [Best practices for managing your SLOs with Datadog](https://www.datadoghq.com/blog/define-and-manage-slos/)
 - [Create and manage SLOs with Terraform](https://registry.terraform.io/providers/DataDog/datadog/latest/docs/resources/service_level_objective)
 - [Burn Rate is a Better Error Rate](https://www.datadoghq.com/blog/burn-rate-is-better-error-rate/)
+- [Design effective executive dashboards with Datadog](https://www.datadoghq.com/blog/datadog-executive-dashboards)

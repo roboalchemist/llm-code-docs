@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/concepts/deep-links/migrating-from-firebase.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Migrating from Firebase Dynamic Links
 
 > Learn how to migrate from Firebase Dynamic Links to Dub.

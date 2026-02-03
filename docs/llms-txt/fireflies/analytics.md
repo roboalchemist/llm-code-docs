@@ -2,344 +2,237 @@
 
 # Source: https://docs.fireflies.ai/graphql-api/query/analytics.md
 
-# Source: https://docs.fireflies.ai/schema/analytics.md
-
-# Source: https://docs.fireflies.ai/graphql-api/query/analytics.md
-
-# Source: https://docs.fireflies.ai/schema/analytics.md
-
-# Source: https://docs.fireflies.ai/graphql-api/query/analytics.md
-
-# Source: https://docs.fireflies.ai/schema/analytics.md
-
-# Source: https://docs.fireflies.ai/graphql-api/query/analytics.md
-
-# Source: https://docs.fireflies.ai/schema/analytics.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Analytics
 
-> Schema for Analytics
-
-<ParamField path="team" type="TeamAnalytics">
-  Analytics data for the team. See [TeamAnalytics](#teamanalytics)
-</ParamField>
-
-<ParamField path="users" type="[UserAnalytics]">
-  List of analytics data for individual users. See [UserAnalytics](#useranalytics)
-</ParamField>
-
-## TeamAnalytics
-
-<ParamField path="conversation" type="TeamConversationStats">
-  Conversation statistics for the team. See [TeamConversationStats](#teamconversationstats)
-</ParamField>
-
-<ParamField path="meeting" type="TeamMeetingStats">
-  Meeting statistics for the team. See [TeamMeetingStats](#teammeetingstats)
-</ParamField>
-
-## TeamMeetingStats
-
-<ParamField path="count" type="Int">
-  Total count of meetings
-</ParamField>
-
-<ParamField path="count_diff_pct" type="Int" optional>
-  Percentage difference in meeting count compared to previous period
-</ParamField>
-
-<ParamField path="duration" type="Float">
-  Total duration of meetings in minutes
-</ParamField>
-
-<ParamField path="duration_diff_pct" type="Int" optional>
-  Percentage difference in meeting duration compared to previous period
-</ParamField>
-
-<ParamField path="average_count" type="Int">
-  Average number of meetings per user
-</ParamField>
-
-<ParamField path="average_count_diff_pct" type="Int" optional>
-  Percentage difference in average meeting count compared to previous period
-</ParamField>
-
-<ParamField path="average_duration" type="Int">
-  Average duration of meetings in minutes
-</ParamField>
-
-<ParamField path="average_duration_diff_pct" type="Int" optional>
-  Percentage difference in average meeting duration compared to previous period
-</ParamField>
-
-## UserMeetingStats
-
-<ParamField path="count" type="Int">
-  Total count of meetings for the user
-</ParamField>
-
-<ParamField path="count_diff" type="Int">
-  Difference in meeting count compared to previous period
-</ParamField>
-
-<ParamField path="count_diff_compared_to" type="Int">
-  Meeting count in the previous period
-</ParamField>
-
-<ParamField path="count_diff_pct" type="Int" optional>
-  Percentage difference in meeting count compared to previous period
-</ParamField>
-
-<ParamField path="duration" type="Float">
-  Total duration of meetings in minutes for the user
-</ParamField>
-
-<ParamField path="duration_diff" type="Int">
-  Difference in meeting duration compared to previous period
-</ParamField>
-
-<ParamField path="duration_diff_compared_to" type="Int">
-  Meeting duration in the previous period
-</ParamField>
-
-<ParamField path="duration_diff_pct" type="Int" optional>
-  Percentage difference in meeting duration compared to previous period
-</ParamField>
-
-## TeamConversationStats
-
-<ParamField path="average_filler_words" type="Int">
-  Average number of filler words used per meeting
-</ParamField>
-
-<ParamField path="average_filler_words_diff_pct" type="Int" optional>
-  Percentage difference in average filler words compared to previous period
-</ParamField>
-
-<ParamField path="average_monologues_count" type="Int">
-  Average number of monologues per meeting
-</ParamField>
-
-<ParamField path="average_monologues_count_diff_pct" type="Int" optional>
-  Percentage difference in average monologues count compared to previous period
-</ParamField>
-
-<ParamField path="average_questions" type="Int">
-  Average number of questions asked per meeting
-</ParamField>
-
-<ParamField path="average_questions_diff_pct" type="Int" optional>
-  Percentage difference in average questions compared to previous period
-</ParamField>
-
-<ParamField path="average_sentiments" type="Sentiments">
-  Average sentiment analysis results for team meetings. See [Sentiments](/schema/sentiments)
-</ParamField>
-
-<ParamField path="average_silence_duration" type="Float">
-  Average duration of silence in minutes per meeting
-</ParamField>
-
-<ParamField path="average_silence_duration_diff_pct" type="Int" optional>
-  Percentage difference in average silence duration compared to previous period
-</ParamField>
-
-<ParamField path="average_talk_listen_ratio" type="Float">
-  Average ratio of talking to listening across all meetings
-</ParamField>
-
-<ParamField path="average_words_per_minute" type="Float">
-  Average words spoken per minute across all meetings
-</ParamField>
-
-<ParamField path="longest_monologue_duration_sec" type="Int">
-  Duration in seconds of the longest monologue
-</ParamField>
-
-<ParamField path="longest_monologue_duration_diff_pct" type="Int" optional>
-  Percentage difference in longest monologue duration compared to previous period
-</ParamField>
-
-<ParamField path="total_filler_words" type="Int">
-  Total number of filler words used across all meetings
-</ParamField>
-
-<ParamField path="total_filler_words_diff_pct" type="Int" optional>
-  Percentage difference in total filler words compared to previous period
-</ParamField>
-
-<ParamField path="total_meeting_notes_count" type="Int">
-  Total count of meeting notes created
-</ParamField>
-
-<ParamField path="total_meetings_count" type="Int">
-  Total count of meetings
-</ParamField>
-
-<ParamField path="total_monologues_count" type="Int">
-  Total count of monologues across all meetings
-</ParamField>
-
-<ParamField path="total_monologues_diff_pct" type="Int" optional>
-  Percentage difference in total monologues compared to previous period
-</ParamField>
-
-<ParamField path="teammates_count" type="Int">
-  Number of teammates included in the analytics
-</ParamField>
-
-<ParamField path="total_questions" type="Int">
-  Total number of questions asked across all meetings
-</ParamField>
-
-<ParamField path="total_questions_diff_pct" type="Int" optional>
-  Percentage difference in total questions compared to previous period
-</ParamField>
-
-<ParamField path="total_silence_duration" type="Float">
-  Total duration of silence in minutes across all meetings
-</ParamField>
-
-<ParamField path="total_silence_duration_diff_pct" type="Int" optional>
-  Percentage difference in total silence duration compared to previous period
-</ParamField>
-
-## UserConversationStats
-
-<ParamField path="talk_listen_pct" type="Float">
-  Percentage of time spent talking vs listening
-</ParamField>
-
-<ParamField path="talk_listen_ratio" type="Float">
-  Ratio of talking to listening
-</ParamField>
-
-<ParamField path="total_silence_duration" type="Float">
-  Total duration of silence in minutes for the user
-</ParamField>
-
-<ParamField path="total_silence_duration_compare_to" type="Float" optional>
-  Silence duration in the previous period
-</ParamField>
-
-<ParamField path="total_silence_pct" type="Float">
-  Percentage of meeting time spent in silence
-</ParamField>
-
-<ParamField path="total_silence_ratio" type="Float">
-  Ratio of silence to speaking time
-</ParamField>
-
-<ParamField path="total_speak_duration" type="Float">
-  Total duration of speaking time in minutes
-</ParamField>
-
-<ParamField path="total_speak_duration_with_user" type="Float">
-  Total duration of speaking time with specific user in minutes
-</ParamField>
-
-<ParamField path="total_word_count" type="Int">
-  Total count of words spoken
-</ParamField>
-
-<ParamField path="user_filler_words" type="Int">
-  Number of filler words used by the user
-</ParamField>
-
-<ParamField path="user_filler_words_compare_to" type="Int">
-  Filler words used in the previous period
-</ParamField>
-
-<ParamField path="user_filler_words_diff_pct" type="Int" optional>
-  Percentage difference in filler words compared to previous period
-</ParamField>
-
-<ParamField path="user_longest_monologue_sec" type="Int">
-  Duration in seconds of the user's longest monologue
-</ParamField>
-
-<ParamField path="user_longest_monologue_compare_to" type="Int">
-  Longest monologue duration in the previous period
-</ParamField>
-
-<ParamField path="user_longest_monologue_diff_pct" type="Int" optional>
-  Percentage difference in longest monologue duration compared to previous period
-</ParamField>
-
-<ParamField path="user_monologues_count" type="Int">
-  Count of monologues by the user
-</ParamField>
-
-<ParamField path="user_monologues_count_compare_to" type="Int">
-  Monologues count in the previous period
-</ParamField>
-
-<ParamField path="user_monologues_count_diff_pct" type="Int" optional>
-  Percentage difference in monologues count compared to previous period
-</ParamField>
-
-<ParamField path="user_questions" type="Int">
-  Number of questions asked by the user
-</ParamField>
-
-<ParamField path="user_questions_compare_to" type="Int">
-  Questions asked in the previous period
-</ParamField>
-
-<ParamField path="user_questions_diff_pct" type="Int" optional>
-  Percentage difference in questions asked compared to previous period
-</ParamField>
-
-<ParamField path="user_speak_duration" type="Float">
-  Duration of time the user spent speaking in minutes
-</ParamField>
-
-<ParamField path="user_word_count" type="Int">
-  Count of words spoken by the user
-</ParamField>
-
-<ParamField path="user_words_per_minute" type="Int">
-  Words spoken per minute by the user
-</ParamField>
-
-<ParamField path="user_words_per_minute_compare_to" type="Int">
-  Words per minute in the previous period
-</ParamField>
-
-<ParamField path="user_words_per_minute_diff_pct" type="Int" optional>
-  Percentage difference in words per minute compared to previous period
-</ParamField>
-
-## UserAnalytics
-
-<ParamField path="user_id" type="String">
-  Unique identifier for the user
-</ParamField>
-
-<ParamField path="user_name" type="String">
-  Name of the user
-</ParamField>
-
-<ParamField path="user_email" type="String">
-  Email address of the user
-</ParamField>
-
-<ParamField path="conversation" type="UserConversationStats">
-  Conversation statistics for the user. See [UserConversationStats](#userconversationstats)
-</ParamField>
-
-<ParamField path="meeting" type="UserMeetingStats">
-  Meeting statistics for the user. See [UserMeetingStats](#usermeetingstats)
-</ParamField>
+> Querying conversation and meeting analytics for teams and users
+
+## Overview
+
+The analytics query fetches detailed conversation and meeting metrics for teams and users across a specified date range.
+
+## Arguments
+
+<ParamField path="start_time" type="String">
+  The `start_time` parameter filters results starting from a specific datetime (ISO 8601 format).
+</ParamField>
+
+<ParamField path="end_time" type="String">
+  The `end_time` parameter filters results up to a specific datetime (ISO 8601 format).
+</ParamField>
+
+## Schema
+
+Fields available to the [Analytics](/schema/analytics) query.
+
+## Usage Example
+
+```graphql  theme={null}
+query Analytics($startTime: String, $endTime: String) {
+  analytics(start_time: $startTime, end_time: $endTime) {
+    team {
+      conversation {
+        average_filler_words
+        average_filler_words_diff_pct
+        average_monologues_count
+        average_monologues_count_diff_pct
+        average_questions
+        average_questions_diff_pct
+        average_sentiments {
+          negative_pct
+          neutral_pct
+          positive_pct
+        }
+        average_silence_duration
+        average_silence_duration_diff_pct
+        average_talk_listen_ratio
+        average_words_per_minute
+        longest_monologue_duration_sec
+        longest_monologue_duration_diff_pct
+        total_filler_words
+        total_filler_words_diff_pct
+        total_meeting_notes_count
+        total_meetings_count
+        total_monologues_count
+        total_monologues_diff_pct
+        teammates_count
+        total_questions
+        total_questions_diff_pct
+        total_silence_duration
+        total_silence_duration_diff_pct
+      }
+      meeting {
+        count
+        count_diff_pct
+        duration
+        duration_diff_pct
+        average_count
+        average_count_diff_pct
+        average_duration
+        average_duration_diff_pct
+      }
+    }
+    users {
+      user_id
+      user_name
+      user_email
+      conversation {
+        talk_listen_pct
+        talk_listen_ratio
+        total_silence_duration
+        total_silence_duration_compare_to
+        total_silence_pct
+        total_silence_ratio
+        total_speak_duration
+        total_speak_duration_with_user
+        total_word_count
+        user_filler_words
+        user_filler_words_compare_to
+        user_filler_words_diff_pct
+        user_longest_monologue_sec
+        user_longest_monologue_compare_to
+        user_longest_monologue_diff_pct
+        user_monologues_count
+        user_monologues_count_compare_to
+        user_monologues_count_diff_pct
+        user_questions
+        user_questions_compare_to
+        user_questions_diff_pct
+        user_speak_duration
+        user_word_count
+        user_words_per_minute
+        user_words_per_minute_compare_to
+        user_words_per_minute_diff_pct
+      }
+      meeting {
+        count
+        count_diff
+        count_diff_compared_to
+        count_diff_pct
+        duration
+        duration_diff
+        duration_diff_compared_to
+        duration_diff_pct
+      }
+    }
+  }
+}
+```
+
+<RequestExample>
+  ```bash curl theme={null}
+  curl -X POST \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer your_api_key" \
+      --data '{ "query": "query Analytics($startTime: String, $endTime: String) { analytics(start_time: $startTime, end_time: $endTime) { team { conversation { average_filler_words } } } }", "variables": { "startTime": "2024-01-01T00:00:00Z", "endTime": "2024-01-31T23:59:59Z" } }' \
+      https://api.fireflies.ai/graphql
+  ```
+
+  ```javascript javascript theme={null}
+  const axios = require('axios');
+
+  const url = 'https://api.fireflies.ai/graphql';
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer your_api_key'
+  };
+
+  const data = {
+    query:
+      'query Analytics($startTime: String, $endTime: String) { analytics(start_time: $startTime, end_time: $endTime) { team { conversation { average_filler_words } } } }',
+    variables: { startTime: '2024-01-01T00:00:00Z', endTime: '2024-01-31T23:59:59Z' }
+  };
+  axios
+    .post(url, data, { headers: headers })
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  ```
+
+  ```python python theme={null}
+  import requests
+
+  url = 'https://api.fireflies.ai/graphql'
+  headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer your_api_key'
+  }
+
+  data = '{"query": "query Analytics($startTime: String, $endTime: String) { analytics(start_time: $startTime, end_time: $endTime) { team { conversation { average_filler_words } } } }", "variables": {"startTime": "2024-01-01T00:00:00Z", "endTime": "2024-01-31T23:59:59Z"}}'
+
+  response = requests.post(url, headers=headers, data=data)
+  print(response.json())
+  ```
+
+  ```java java theme={null}
+  import java.net.URI;
+  import java.net.http.HttpClient;
+  import java.net.http.HttpRequest;
+  import java.net.http.HttpResponse;
+  import java.net.http.HttpResponse.BodyHandlers;
+
+  public class ApiRequest {
+      public static void main(String[] args) throws Exception {
+          HttpClient client = HttpClient.newHttpClient();
+          String json = "{\"query\":\"query Analytics($startTime: String, $endTime: String) { analytics(start_time: $startTime, end_time: $endTime) { team { conversation { average_filler_words } } } }\", \"variables\":{\"startTime\":\"2024-01-01T00:00:00Z\", \"endTime\":\"2024-01-31T23:59:59Z\"}}";
+          HttpRequest request = HttpRequest.newBuilder()
+                  .uri(URI.create("https://api.fireflies.ai/graphql"))
+                  .header("Content-Type", "application/json")
+                  .header("Authorization", "Bearer your_api_key")
+                  .POST(HttpRequest.BodyPublishers.ofString(json))
+                  .build();
+
+          client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+              .thenApply(HttpResponse::body)
+              .thenAccept(System.out::println)
+              .join();
+      }
+  }
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json Response theme={null}
+  {
+    "data": {
+      "analytics": {
+        "team": {
+          "conversation": {
+            "average_filler_words": 15
+          }
+        }
+      }
+    }
+  }
+  ```
+</ResponseExample>
+
+## Error Codes
+
+List of possible error codes that may be returned by the `analytics` query. Full list of error codes can be found [here](/miscellaneous/error-codes).
+
+<Accordion title="paid_required (business_or_higher)">
+  <p>You need to be on a Business or higher plan to query analytics.</p>
+</Accordion>
+
+<Accordion title="require_elevated_privilege">
+  <p>The user does not have admin privileges to view analytics for team.</p>
+</Accordion>
 
 ## Additional Resources
 
 <CardGroup cols={2}>
-  <Card title="Sentiments" icon="link" href="/schema/sentiments">
-    Schema for Sentiments
+  <Card title="Transcripts" icon="link" href="/graphql-api/query/transcripts">
+    Querying list of transcripts
   </Card>
 
-  <Card title="Meeting Analytics" icon="link" href="/schema/meeting-analytics">
-    Schema for Meeting Analytics
+  <Card title="Users" icon="link" href="/graphql-api/query/users">
+    Querying list of users
   </Card>
 </CardGroup>

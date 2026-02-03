@@ -1,5 +1,9 @@
 # Source: https://docs.meshconnect.com/testing/testnets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.meshconnect.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Testnets
 
 # What It Is

@@ -4,8 +4,6 @@
 title: EC2 VPC Endpoint Service
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EC2 VPC Endpoint Service
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ec2_vpcendpoint_service.dataset/index.html
 ---
 
 # EC2 VPC Endpoint Service
@@ -36,5 +34,5 @@ aws.ec2_vpcendpoint_service
 | service_region                      | core | string        | The Region where the service is hosted.                                                                                                                        |
 | service_type                        | core | json          | The type of service.                                                                                                                                           |
 | supported_ip_address_types          | core | array<string> | The supported IP address types.                                                                                                                                |
-| tags                                | core | hstore        |
+| tags                                | core | hstore_csv    |
 | vpc_endpoint_policy_supported       | core | bool          | Indicates whether the service supports endpoint policies.                                                                                                      |

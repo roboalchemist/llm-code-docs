@@ -4,8 +4,6 @@
 title: EventBridge Connection
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EventBridge Connection
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.eventbridge_connection.dataset/index.html
 ---
 
 # EventBridge Connection
@@ -18,16 +16,16 @@ aws.eventbridge_connection
 
 ## Fields
 
-| Title                | ID   | Type      | Data Type                                                                                                               | Description |
-| -------------------- | ---- | --------- | ----------------------------------------------------------------------------------------------------------------------- | ----------- |
-| _key                 | core | string    |
-| account_id           | core | string    |
-| authorization_type   | core | string    | The authorization type specified for the connection. OAUTH tokens are refreshed when a 401 or 407 response is returned. |
-| connection_arn       | core | string    | The ARN of the connection.                                                                                              |
-| connection_state     | core | string    | The state of the connection.                                                                                            |
-| creation_time        | core | timestamp | A time stamp for the time that the connection was created.                                                              |
-| last_authorized_time | core | timestamp | A time stamp for the time that the connection was last authorized.                                                      |
-| last_modified_time   | core | timestamp | A time stamp for the time that the connection was last modified.                                                        |
-| name                 | core | string    | The name of the connection.                                                                                             |
-| state_reason         | core | string    | The reason that the connection is in the connection state.                                                              |
-| tags                 | core | hstore    |
+| Title                | ID   | Type       | Data Type                                                                                                               | Description |
+| -------------------- | ---- | ---------- | ----------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key                 | core | string     |
+| account_id           | core | string     |
+| authorization_type   | core | string     | The authorization type specified for the connection. OAUTH tokens are refreshed when a 401 or 407 response is returned. |
+| connection_arn       | core | string     | The ARN of the connection.                                                                                              |
+| connection_state     | core | string     | The state of the connection.                                                                                            |
+| creation_time        | core | timestamp  | A time stamp for the time that the connection was created.                                                              |
+| last_authorized_time | core | timestamp  | A time stamp for the time that the connection was last authorized.                                                      |
+| last_modified_time   | core | timestamp  | A time stamp for the time that the connection was last modified.                                                        |
+| name                 | core | string     | The name of the connection.                                                                                             |
+| state_reason         | core | string     | The reason that the connection is in the connection state.                                                              |
+| tags                 | core | hstore_csv |

@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/deployments/scheduling-automatic-backups-for-your-cluster.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Scheduling Automatic Backups For Your Cluster
 
 > Schedule automatic backups for Galileo clusters with this guide, ensuring data security, disaster recovery, and operational resilience for deployments.

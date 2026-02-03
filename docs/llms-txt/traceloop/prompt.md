@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/playgrounds/columns/prompt.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prompt Column
 
 > Execute LLM prompts with full model configuration
@@ -72,8 +76,3 @@ Fine-tune model behavior options:
 A prompt can be executed across all cells in a column or on a specific cell.
 
 Prompt outputs can be mapped to different columns by clicking a cell and selecting the mapping icon, or by double-clicking the cell
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

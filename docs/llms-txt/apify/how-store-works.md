@@ -2,27 +2,27 @@
 
 # How Apify Store works
 
-**Out of thousands of Actors on https://apify.com/store marketplace, most of them were created by developers just like you. Let's get acquainted with the concept of Apify Store and what it takes to publish an Actor there.**
+**Out of thousands of Actors on [Apify Store](https://apify.com/store) marketplace, most of them were created by developers just like you. Let's get acquainted with the concept of Apify Store and what it takes to publish an Actor there.**
 
 ***
 
 ## What are Actors (and why they're called that)?
 
-https://apify.com/actors are serverless cloud applications that run on the Apify platform, capable of performing various computing tasks on the web, such as crawling websites or sending automated emails. They are developed by independent developers all over the world, and *you can be one of them*.
+[Actors](https://apify.com/actors) are serverless cloud applications that run on the Apify platform, capable of performing various computing tasks on the web, such as crawling websites or sending automated emails. They are developed by independent developers all over the world, and *you can be one of them*.
 
 The term "Actor" is used because, like human actors, these programs follow a script. This naming convention unifies both web scraping and web automation solutions, including AI agents, under a single term. Actors can range in complexity and function, targeting different websites or performing multiple tasks, which makes the umbrella term very useful.
 
 ## What is Apify Store?
 
-https://apify.com/store is a public library of Actors that is constantly growing and evolving. It's basically a publicly visible (and searchable) part of the Apify platform. With thousands of Actors currently available, most of them are created and maintained by the community. Actors that consistently perform well remain on Apify Store, while those reported as malfunctioning or under maintenance are eventually removed. This keeps the tools in our ecosystem reliable, effective, and competitive.
+[Apify Store](https://apify.com/store) is a public library of Actors that is constantly growing and evolving. It's basically a publicly visible (and searchable) part of the Apify platform. With thousands of Actors currently available, most of them are created and maintained by the community. Actors that consistently perform well remain on Apify Store, while those reported as malfunctioning or under maintenance are eventually removed. This keeps the tools in our ecosystem reliable, effective, and competitive.
 
 ### Types of Actors
 
-* *Web scraping Actors*: for instance, https://apify.com/apidojo/twitter-user-scraper extracts data from Twitter.
-* *Automation Actors*: for example, https://apify.com/jakubbalada/content-checker monitors website content for changes and emails you once a change occurs.
-* *Bundles*: chains of multiple Actors united by a common data point or target website. For example, https://apify.com/tri_angle/restaurant-review-aggregator can scrape reviews from six platforms at once.
+* *Web scraping Actors*: for instance, [Twitter (X) Scraper](https://apify.com/apidojo/twitter-user-scraper) extracts data from Twitter.
+* *Automation Actors*: for example, [Content Checker](https://apify.com/jakubbalada/content-checker) monitors website content for changes and emails you once a change occurs.
+* *Bundles*: chains of multiple Actors united by a common data point or target website. For example, [Restaurant Review Aggregator](https://apify.com/tri_angle/restaurant-review-aggregator) can scrape reviews from six platforms at once.
 
-Learn more about bundles here: https://docs.apify.com/academy/actor-marketing-playbook/product-optimization/actor-bundles.md
+Learn more about bundles here: [Actor bundles](https://docs.apify.com/academy/actor-marketing-playbook/product-optimization/actor-bundles.md)
 
 ## Public and private Actors
 
@@ -40,7 +40,7 @@ You can monetize your Actors using three different pricing models:
 * Pay per event: the price is based on specific events triggered by the Actor.
 * Monthly billing: set a fixed monthly rental rate for using the Actor.
 
-For detailed information on which pricing model might work for your Actor, refer to https://docs.apify.com/academy/actor-marketing-playbook/store-basics/how-actor-monetization-works.md.
+For detailed information on which pricing model might work for your Actor, refer to [How Actor monetization works](https://docs.apify.com/academy/actor-marketing-playbook/store-basics/how-actor-monetization-works.md).
 
 ## Actor ownership on Store
 
@@ -93,12 +93,12 @@ Each Actor has an **Issues** tab in Apify Console and on the web. Here, users ca
 
 Since the **Issues** tab is public, the level of activity — or lack thereof — can be observed by potential users and may serve as an indicator of the Actor's reliability. A well-maintained Issues tab with prompt responses suggests an active and dependable Actor.
 
-Learn more about how to handle the https://docs.apify.com/academy/actor-marketing-playbook/interact-with-users/issues-tab.md
+Learn more about how to handle the [Issues tab](https://docs.apify.com/academy/actor-marketing-playbook/interact-with-users/issues-tab.md)
 
 ## Resources
 
-* Best practices on setting up https://docs.apify.com/platform/actors/publishing/test
-* What are Apify-maintained and https://help.apify.com/en/articles/6999799-what-are-apify-maintained-and-community-maintained-actors? On ownership, maintenance, features, and support
-* Step-by-step guide on how to https://docs.apify.com/platform/actors/publishing
-* Watch our webinar on how to https://www.youtube.com/watch?v=4nxStxC1BJM
-* Detailed https://docs.apify.com/platform/actors/running/actors-in-store for Actors in Store
+* Best practices on setting up [testing for your Actor](https://docs.apify.com/platform/actors/publishing/test)
+* What are Apify-maintained and [Community-maintained Actors](https://help.apify.com/en/articles/6999799-what-are-apify-maintained-and-community-maintained-actors)? On ownership, maintenance, features, and support
+* Step-by-step guide on how to [publish your Actor](https://docs.apify.com/platform/actors/publishing)
+* Watch our webinar on how to [build, publish and monetize Actors](https://www.youtube.com/watch?v=4nxStxC1BJM)
+* Detailed [guide on pricing models](https://docs.apify.com/platform/actors/running/actors-in-store) for Actors in Store

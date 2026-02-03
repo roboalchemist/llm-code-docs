@@ -4,7 +4,6 @@
 title: Tracing PHP CLI Scripts
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > APM > Tracing Guides > Tracing PHP CLI Scripts
-source_url: https://docs.datadoghq.com/guide/trace-php-cli-scripts/index.html
 ---
 
 # Tracing PHP CLI Scripts

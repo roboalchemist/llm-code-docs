@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/how-to-handle-api-keys.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Handle API Keys
 
 > Learn our suggested practices for handling API keys.
@@ -38,7 +42,7 @@ Many programming languages have built-in support for environment variables. Here
   <Step title="Create an environment variable">
     Once you create the API key, you can store it in an environment variable in a `.env` file.
 
-    ```ts .env theme={null}
+    ```ts .env theme={"theme":{"light":"github-light","dark":"vesper"}}
     RESEND_API_KEY = 're_xxxxxxxxx';
     ```
   </Step>
@@ -46,12 +50,18 @@ Many programming languages have built-in support for environment variables. Here
   <Step title="Add the file to your gitignore">
     Add the `.env` file to your `.gitignore` file to prevent it from being committed to version control. Many frameworks already add `.env` to the `.gitignore` file by default.
 
-    ```ts .gitignore theme={null}
+    ```ts .gitignore theme={"theme":{"light":"github-light","dark":"vesper"}}
     .env
     ```
   </Step>
 
   <Step title="Use the environment variable in your code">
-    `ts const resend = new Resend(process.env.RESEND_API_KEY); `
+    ```ts app.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    ```
+
+    <Note>
+      The environment variables in your `.env` file will *not* be available automatically. You *must* load them. On Node.js `v20` and later, you can pass your `.env` file's variables to your script using the `--env-file=.env` flag. Alternatively, you can use the `dotenv` package to load the variables.
+    </Note>
   </Step>
 </Steps>

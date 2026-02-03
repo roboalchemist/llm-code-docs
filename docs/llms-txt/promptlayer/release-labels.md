@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/prompt-registry/release-labels.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Release Labels
 
 Release Labels provide a powerful way to organize and manage versions of your prompt templates in the Prompt Registry. They allow you to:
@@ -54,8 +58,3 @@ This approach allows you to test prompt changes on a subset of users, compare pe
 * Use Dynamic Release Labels for more advanced traffic splitting and segmentation
 
 With Release Labels, you can confidently manage prompt template versions and roll out updates without code changes. Combine them with PromptLayer's [versioning](/features/prompt-registry/overview), [analytics](/why-promptlayer/analytics), and [evaluations](/features/evaluations/overview) for a powerful prompt engineering workflow.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

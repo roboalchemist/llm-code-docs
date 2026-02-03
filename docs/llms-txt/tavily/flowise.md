@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/integrations/flowise.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # FlowiseAI
 
 > Tavily is now available for integration through Flowise.
@@ -104,8 +108,3 @@ In Agent applications, you can integrate the Tavily tool to access web data in r
 * Provide accurate, context-aware answers to user queries
 
 <img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/flowise-tavily.png?fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=25e21b93e92b99d765eb7c0c4aba06c5" alt="Flowise Tavily Integration" width="400" height="300" data-og-width="926" data-og-height="1008" data-path="images/flowise-tavily.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/flowise-tavily.png?w=280&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=2baa34742d39bb8a29dc13e1c5658d81 280w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/flowise-tavily.png?w=560&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=827771e8502ad22a89cff1e564a8c550 560w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/flowise-tavily.png?w=840&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=9f6f8a85bac404c02610bd789fdfc20f 840w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/flowise-tavily.png?w=1100&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=238ad15bdd3a95a6134f2c4c44016179 1100w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/flowise-tavily.png?w=1650&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=92dce9d3f2d73ae75dce1592ec87950b 1650w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/flowise-tavily.png?w=2500&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=267b7f82ffcc878c31c8e607b834fc8b 2500w" />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/sequences/smart-snippets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Smart Snippets
 
 > Personalize your outreach with AI-powered email copy generation.

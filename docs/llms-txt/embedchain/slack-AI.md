@@ -1,10 +1,14 @@
 # Source: https://docs.embedchain.ai/examples/slack-AI.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # null
 
 [Embedchain Examples Repo](https://github.com/embedchain/examples) contains code on how to build your own Slack AI to chat with the unstructured data lying in your slack channels.
 
-![Slack AI Demo](https://mintlify.s3.us-west-1.amazonaws.com/embedchain/images/slack-ai.png)
+<img src="https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/slack-ai.png?fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=35a7bc2e04f1619f25e939532e342607" alt="Slack AI Demo" data-og-width="2630" width="2630" data-og-height="2140" height="2140" data-path="images/slack-ai.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/slack-ai.png?w=280&fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=858368e83709c5cb0feda8d911816529 280w, https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/slack-ai.png?w=560&fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=2834586a894fdb02ebd8d57ea0202732 560w, https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/slack-ai.png?w=840&fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=7689ac5bbe8088f9a675ed4afa5d56a5 840w, https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/slack-ai.png?w=1100&fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=18c0fafce6c18946c35761cea459b033 1100w, https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/slack-ai.png?w=1650&fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=0bf813bd2db2f13f794432906634db0a 1650w, https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/slack-ai.png?w=2500&fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=d5cd03b6c8abc89a2de1633c8b60c222 2500w" />
 
 ## Getting started
 
@@ -55,14 +59,14 @@ Follow the instructions given below to run app locally based on your development
 
 #### With docker
 
-```bash
+```bash  theme={null}
 docker-compose build
 ec start --docker
 ```
 
 #### Without docker
 
-```bash
+```bash  theme={null}
 ec install-reqs
 ec start
 ```

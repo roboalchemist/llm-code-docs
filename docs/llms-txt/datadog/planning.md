@@ -6,7 +6,6 @@ description: >-
   Plan and optimize your cloud costs with budgets and commitment programs in
   Cloud Cost Management.
 breadcrumbs: Docs > Cloud Cost Management > Planning
-source_url: https://docs.datadoghq.com/planning/index.html
 ---
 
 # Planning

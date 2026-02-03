@@ -1,0 +1,9 @@
+# Source: https://docs.snyk.io/scan-with-snyk/snyk-iac/scan-your-iac-source-code/scan-arm-configuration-files.md
+
+# Scan ARM configuration files
+
+Snyk IaC currently supports scanning ARM configurations with the CLI only.
+
+For the CLI, users can share their ARM scan results with the platform and present them in the UI by using the [Share CLI results feature](https://docs.snyk.io/developer-tools/snyk-cli/scan-and-maintain-projects-using-the-cli/snyk-cli-for-iac/share-cli-results-with-the-snyk-web-ui).
+
+For more information, see [Test your ARM files with the CLI tool](https://docs.snyk.io/developer-tools/snyk-cli/scan-and-maintain-projects-using-the-cli/snyk-cli-for-iac/test-your-iac-files/arm-files).

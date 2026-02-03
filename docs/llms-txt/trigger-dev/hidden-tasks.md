@@ -1,12 +1,16 @@
 # Source: https://trigger.dev/docs/hidden-tasks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hidden tasks
 
 > Create tasks that are not exported from your trigger files but can still be executed.
 
 Hidden tasks are tasks that are not exported from your trigger files but can still be executed. These tasks are only accessible to other tasks within the same file or module where they're defined.
 
-```ts trigger/my-task.ts theme={null}
+```ts trigger/my-task.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 // This is a hidden task - not exported
@@ -20,7 +24,7 @@ const internalTask = task({
 
 Hidden tasks are useful for creating internal workflows that should only be triggered by other tasks in the same file:
 
-```ts trigger/my-workflow.ts theme={null}
+```ts trigger/my-workflow.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 // Hidden task for internal use
@@ -44,7 +48,7 @@ export const mainWorkflow = task({
 
 You can also create packages of reusable tasks that can be imported and used without needing to re-export them:
 
-```ts trigger/my-task.ts theme={null}
+```ts trigger/my-task.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { sendToSlack } from "@repo/tasks"; // Hidden task from another package
 

@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/dunning/automatic-dunning.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Automatic dunning
 
 > Automate customer communications to remind them of overdue invoices and recover outstanding balances through targeted dunning campaigns.

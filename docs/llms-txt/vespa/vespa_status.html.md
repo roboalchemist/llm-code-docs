@@ -53,7 +53,7 @@ $ vepsa status --format plain --cluster mycluster
 - [vespa status deploy](vespa_status_deploy.html) - Show status of the Vespa deploy service
 - [vespa status deployment](vespa_status_deployment.html) - Show status of a Vespa deployment
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

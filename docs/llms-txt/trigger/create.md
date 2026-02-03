@@ -4,237 +4,166 @@
 
 # Source: https://trigger.dev/docs/management/batches/create.md
 
-# Source: https://trigger.dev/docs/management/schedules/create.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://trigger.dev/docs/management/envvars/create.md
+# Create batch
 
-# Source: https://trigger.dev/docs/management/batches/create.md
+> Phase 1 of 2-phase batch API. Creates a batch record and optionally blocks the parent run for batchTriggerAndWait.
+After creating a batch, stream items via POST /api/v3/batches/{batchId}/items.
 
-# Source: https://trigger.dev/docs/management/schedules/create.md
 
-# Source: https://trigger.dev/docs/management/envvars/create.md
 
-# Source: https://trigger.dev/docs/management/schedules/create.md
-
-# Source: https://trigger.dev/docs/management/envvars/create.md
-
-# Create Env Var
-
-> Create a new environment variable for a specific project and environment.
 
 ## OpenAPI
 
-````yaml v3-openapi POST /api/v1/projects/{projectRef}/envvars/{env}
+````yaml openapi POST /api/v3/batches
+openapi: 3.0.0
+info:
+  title: Trigger.dev API
+  description: API for triggering events in Trigger.dev
+  version: 1.0.0
+servers:
+  - url: https://api.trigger.dev
+    description: Trigger.dev API server
+security:
+  - BearerAuth: []
 paths:
-  path: /api/v1/projects/{projectRef}/envvars/{env}
-  method: post
-  servers:
-    - url: https://api.trigger.dev
-      description: Trigger.dev API
-  request:
-    security:
-      - title: secretKey
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >
-                Use your project-specific Secret API key. Will start with
-                `tr_dev_`, `tr_prod`, `tr_stg`, etc.
+  /api/v3/batches:
+    post:
+      tags:
+        - Batches
+      summary: Create a batch (Phase 1)
+      description: >
+        Phase 1 of 2-phase batch API. Creates a batch record and optionally
+        blocks the parent run for batchTriggerAndWait.
 
-
-                You can find your Secret API key in the API Keys section of your
-                Trigger.dev project dashboard.
-
-
-                Our TypeScript SDK will default to using the value of the
-                `TRIGGER_SECRET_KEY` environment variable if it is set. If you
-                are using the SDK in a different environment, you can set the
-                key using the `configure` function.
-
-
-                ```typescript
-
-                import { configure } from "@trigger.dev/sdk";
-
-
-                configure({ accessToken: "tr_dev_1234" });
-
-                ```
-          cookie: {}
-      - title: personalAccessToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >
-                Use your user-specific Personal Access Token, which you can
-                generate from the Trigger.dev dashboard in your account
-                settings. (It will start with `tr_pat_`.)
-
-
-                Our TypeScript SDK will default to using the value of the
-                `TRIGGER_ACCESS_TOKEN` environment variable if it is set. If you
-                are using the SDK in a different environment, you can set the
-                key using the `configure` function.
-
-
-                ```typescript
-
-                import { configure } from "@trigger.dev/sdk";
-
-
-                configure({ accessToken: "tr_pat_1234" });
-
-                ```
-          cookie: {}
-    parameters:
-      path:
-        projectRef:
-          schema:
-            - type: string
-              required: true
-              description: >-
-                The external ref of the project. You can find this in the
-                project settings. Starts with `proj_`.
-        env:
-          schema:
-            - type: enum<string>
-              enum:
-                - dev
-                - staging
-                - prod
-              required: true
-              description: The environment of the project to list variables for.
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              name:
-                allOf:
-                  - type: string
-                    example: SLACK_API_KEY
-              value:
-                allOf:
-                  - type: string
-                    example: slack_123456
-            required: true
-            refIdentifier: '#/components/schemas/EnvVar'
-            requiredProperties:
-              - name
-              - value
-        examples:
-          example:
-            value:
-              name: SLACK_API_KEY
-              value: slack_123456
-    codeSamples:
-      - label: Outside of a task
-        lang: typescript
-        source: |-
-          import { envvars } from "@trigger.dev/sdk";
-
-          await envvars.create("proj_yubjwjsfkxnylobaqvqz", "dev", {
-            name: "SLACK_API_KEY",
-            value: "slack_123456"
-          });
-      - label: Inside a task
-        lang: typescript
-        source: |-
-          import { envvars, task } from "@trigger.dev/sdk";
-
-          export const myTask = task({
-            id: "my-task",
-            run: async () => {
-              // projectRef and env are automatically inferred from the task context
-              await envvars.create({
-                name: "SLACK_API_KEY",
-                value: "slack_123456"
-              });
-            }
-          })
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              success:
-                allOf:
-                  - type: boolean
-            refIdentifier: '#/components/schemas/SucceedResponse'
-            requiredProperties:
-              - success
-        examples:
-          example:
-            value:
-              success: true
-        description: Environment variable created successfully
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
-              issues:
-                allOf:
-                  - type: array
-                    items:
-                      type: object
-              variableErrors:
-                allOf:
-                  - type: array
-                    items:
-                      type: object
-            refIdentifier: '#/components/schemas/InvalidEnvVarsRequestResponse'
-        examples:
-          example:
-            value:
-              error: <string>
-              issues:
-                - {}
-              variableErrors:
-                - {}
-        description: Invalid request parameters or body
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
-        examples:
-          example:
-            value:
-              error: <string>
-        description: Unauthorized request
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
-        examples:
-          example:
-            value:
-              error: <string>
-        description: Resource not found
-  deprecated: false
-  type: path
+        After creating a batch, stream items via POST
+        /api/v3/batches/{batchId}/items.
+      operationId: createBatch
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBatchRequest'
+      responses:
+        '202':
+          description: Batch successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateBatchResponse'
+          headers:
+            x-trigger-jwt-claims:
+              description: JWT claims for the batch
+              schema:
+                type: string
+            x-trigger-jwt:
+              description: JWT token for browser clients
+              schema:
+                type: string
+        '400':
+          description: Invalid request (e.g., runCount <= 0 or exceeds maximum)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized - API key is missing or invalid
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          description: Rate limit exceeded
+          headers:
+            X-RateLimit-Limit:
+              description: Maximum number of requests allowed
+              schema:
+                type: integer
+            X-RateLimit-Remaining:
+              description: Number of requests remaining
+              schema:
+                type: integer
+            X-RateLimit-Reset:
+              description: Unix timestamp when the rate limit resets
+              schema:
+                type: integer
+            Retry-After:
+              description: Seconds to wait before retrying
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      externalDocs:
+        description: Find more info here
+        url: https://trigger.dev/docs/triggering
 components:
-  schemas: {}
+  schemas:
+    CreateBatchRequest:
+      type: object
+      required:
+        - runCount
+      properties:
+        runCount:
+          type: integer
+          minimum: 1
+          description: Expected number of items in the batch. Must be a positive integer.
+        parentRunId:
+          type: string
+          description: Parent run ID (friendly ID) for batchTriggerAndWait.
+        resumeParentOnCompletion:
+          type: boolean
+          description: >-
+            Whether to resume parent on completion. Set to true for
+            batchTriggerAndWait.
+        idempotencyKey:
+          type: string
+          description: >-
+            Idempotency key for the batch. If provided and a batch with this key
+            already exists, the existing batch will be returned.
+    CreateBatchResponse:
+      type: object
+      required:
+        - id
+        - runCount
+        - isCached
+      properties:
+        id:
+          type: string
+          description: >-
+            The batch ID (friendly ID). Use this to stream items via POST
+            /api/v3/batches/{batchId}/items.
+        runCount:
+          type: integer
+          description: The expected run count.
+        isCached:
+          type: boolean
+          description: Whether this response came from a cached/idempotent batch.
+        idempotencyKey:
+          type: string
+          description: The idempotency key if provided.
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

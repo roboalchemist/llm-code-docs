@@ -2,70 +2,116 @@
 
 # Source: https://upstash.com/docs/qstash/integrations/anthropic.md
 
-# Source: https://upstash.com/docs/workflow/integrations/anthropic.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/qstash/integrations/anthropic.md
+# LLM with Anthropic
 
-# Source: https://upstash.com/docs/workflow/integrations/anthropic.md
+QStash integrates smoothly with Anthropic's API, allowing you to send LLM requests and leverage QStash features like retries, callbacks, and batching. This is especially useful when working in serverless environments where LLM response times vary and traditional timeouts may be limiting. QStash provides an HTTP timeout of up to 2 hours, which is ideal for most LLM cases.
 
-# Source: https://upstash.com/docs/qstash/integrations/anthropic.md
+### Example: Publishing and Enqueueing Requests
 
-# Source: https://upstash.com/docs/workflow/integrations/anthropic.md
+Specify the `api` as `llm` with the provider set to `anthropic()` when publishing requests. Use the `Upstash-Callback` header to handle responses asynchronously, as streaming completions aren’t supported for this integration.
 
-# Source: https://upstash.com/docs/qstash/integrations/anthropic.md
+#### Publishing a Request
 
-# Source: https://upstash.com/docs/workflow/integrations/anthropic.md
+```typescript  theme={"system"}
+import { anthropic, Client } from "@upstash/qstash";
 
-# Source: https://upstash.com/docs/qstash/integrations/anthropic.md
+const client = new Client({ token: "<QSTASH_TOKEN>" });
+await client.publishJSON({
+  api: { name: "llm", provider: anthropic({ token: "<ANTHROPIC_TOKEN>" }) },
+  body: {
+    model: "claude-3-5-sonnet-20241022",
+    messages: [{ role: "user", content: "Summarize recent tech trends." }],
+  },
+  callback: "https://example.com/callback",
+});
+```
 
-# Source: https://upstash.com/docs/workflow/integrations/anthropic.md
+### Enqueueing a Chat Completion Request
 
-# Anthropic
+Use `enqueueJSON` with Anthropic as the provider to enqueue requests for asynchronous processing.
 
-The standard way to call a third-party endpoint in your workflow is by using [`context.call`](/workflow/basics/context#context-call).
+```typescript  theme={"system"}
+import { anthropic, Client } from "@upstash/qstash";
 
-However, if you need to call the Anthropic endpoint for text generation ([`/v1/messages`](https://docs.anthropic.com/en/api/messages)), you can leverage the type-safe method `context.api.anthropic.call` method:
+const client = new Client({ token: "<QSTASH_TOKEN>" });
 
-<Note>
-  `context.api.anthropic.call` is not yet available in
-  [workflow-py](https://github.com/upstash/workflow-py). You can use `context.call` instead to work with Anthropic. See our
-  [Roadmap](/workflow/roadmap) for feature parity plans and
-  [Changelog](/workflow/changelog) for updates.
-</Note>
+const result = await client.queue({ queueName: "your-queue-name" }).enqueueJSON({
+  api: { name: "llm", provider: anthropic({ token: "<ANTHROPIC_TOKEN>" }) },
+  body: {
+    model: "claude-3-5-sonnet-20241022",
+    messages: [
+      {
+        role: "user",
+        content: "Generate ideas for a marketing campaign.",
+      },
+    ],
+  },
+  callback: "https://example.com/callback",
+});
 
-```ts  theme={"system"}
-const { status, body } = await context.api.anthropic.call(
-  "Call Anthropic",
+console.log(result);
+```
+
+### Sending Chat Completion Requests in Batches
+
+Use `batchJSON` to send multiple requests at once. Each request in the batch specifies the same Anthropic provider and includes a callback URL.
+
+```typescript  theme={"system"}
+import { anthropic, Client } from "@upstash/qstash";
+
+const client = new Client({ token: "<QSTASH_TOKEN>" });
+
+const result = await client.batchJSON([
   {
-    token: "<ANTHROPIC_API_KEY>",
-    operation: "messages.create",
+    api: { name: "llm", provider: anthropic({ token: "<ANTHROPIC_TOKEN>" }) },
     body: {
       model: "claude-3-5-sonnet-20241022",
-      max_tokens: 1024,
       messages: [
-          {"role": "user", "content": "Hello, world"}
-      ]
+        {
+          role: "user",
+          content: "Describe the latest in AI research.",
+        },
+      ],
     },
-  }
-);
-
-// get text:
-console.log(body.content[0].text)
-```
-
-The SDK provides predefined types for the body field in both the request parameters and the response, simplifying common use cases. If you need to customize these types, you can override them as shown below:
-
-```ts  theme={"system"}
-type ResponseBodyType = { ... }; // Define your response body type
-type RequestBodyType = { ... };  // Define your request body type
-
-const { status, body } = await context.api.anthropic.call<
-  ResponseBodyType,
-  RequestBodyType
->(
-  "Call Anthropic",
+    callback: "https://example.com/callback1",
+  },
   {
-    ...
-  }
-);
+    api: { name: "llm", provider: anthropic({ token: "<ANTHROPIC_TOKEN>" }) },
+    body: {
+      model: "claude-3-5-sonnet-20241022",
+      messages: [
+        {
+          role: "user",
+          content: "Outline the future of remote work.",
+        },
+      ],
+    },
+    callback: "https://example.com/callback2",
+  },
+  // Add more requests as needed
+]);
+
+console.log(result);
 ```
+
+#### Analytics with Helicone
+
+To monitor usage, include Helicone analytics by passing your Helicone API key under `analytics`:
+
+```typescript  theme={"system"}
+await client.publishJSON({
+  api: {
+    name: "llm",
+    provider: anthropic({ token: "<ANTHROPIC_TOKEN>" }),
+    analytics: { name: "helicone", token: process.env.HELICONE_API_KEY! },
+  },
+  body: { model: "claude-3-5-sonnet-20241022", messages: [{ role: "user", content: "Hello!" }] },
+  callback: "https://example.com/callback",
+});
+```
+
+With this setup, Anthropic can be used seamlessly in any LLM workflows in QStash.

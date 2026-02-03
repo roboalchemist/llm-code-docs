@@ -6,118 +6,61 @@
 
 # Source: https://upstash.com/docs/workflow/basics/client/cancel.md
 
-# Source: https://upstash.com/docs/workflow/rest/runs/cancel.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/workflow/howto/cancel.md
+# client.cancel
 
-# Source: https://upstash.com/docs/workflow/basics/context/cancel.md
+There are multiple ways you can cancel workflow runs:
 
-# Source: https://upstash.com/docs/workflow/basics/client/cancel.md
+* Pass one or more workflow run ids to cancel them
+* Pass a workflow url to cancel all runs starting with this url
+* cancel all pending or active workflow runs
 
-# Source: https://upstash.com/docs/workflow/rest/runs/cancel.md
+## Arguments
 
-# Source: https://upstash.com/docs/workflow/howto/cancel.md
-
-# Source: https://upstash.com/docs/workflow/basics/context/cancel.md
-
-# Source: https://upstash.com/docs/workflow/basics/client/cancel.md
-
-# Source: https://upstash.com/docs/qstash/api/messages/cancel.md
-
-# Source: https://upstash.com/docs/workflow/rest/runs/cancel.md
-
-# Source: https://upstash.com/docs/workflow/howto/cancel.md
-
-# Source: https://upstash.com/docs/workflow/basics/context/cancel.md
-
-# Source: https://upstash.com/docs/workflow/basics/client/cancel.md
-
-# Source: https://upstash.com/docs/qstash/api/messages/cancel.md
-
-# Source: https://upstash.com/docs/workflow/rest/runs/cancel.md
-
-# Source: https://upstash.com/docs/workflow/howto/cancel.md
-
-# Source: https://upstash.com/docs/workflow/basics/context/cancel.md
-
-# Source: https://upstash.com/docs/workflow/basics/client/cancel.md
-
-# Source: https://upstash.com/docs/qstash/api/messages/cancel.md
-
-# Source: https://upstash.com/docs/workflow/rest/runs/cancel.md
-
-# Cancel Workflow
-
-> Stop a running workflow run
-
-Cancelling a workflow run will remove it from QStash and stop it from being delivered
-in the future.
-
-## Request
-
-<ParamField path="workflowRunId" type="string" required>
-  The id of the message to cancel.
+<ParamField body="ids" type="array">
+  The set of workflow run IDs you want to cancel
 </ParamField>
 
-## Response
+<ParamField body="urlStartingWith" type="string">
+  The URL address you want to filter while canceling
+</ParamField>
 
-This endpoint returns
+<ParamField body="all" type="bool">
+  Whether you want to cancel all workflow runs without any filter.
+</ParamField>
 
-* `200 OK` when successful.
-* `404 NOT FOUND` when a workflow run is not found with the given id.
-* `500 INTERNAL SERVER` when an unexpected error occurs.
+## Usage
 
-<RequestExample>
-  ```sh curl theme={"system"}
-  curl -XDELETE https://qstash.upstash.io/v2/workflows/runs/wfr_TzazoUCuZmFGp2u9cdy5K \
-    -H "Authorization: Bearer <token>"
-  ```
+### Cancel a set of workflow runs
 
-  ```js Workflow SDK theme={"system"}
-  import { Client } from "@upstash/workflow";
+```ts  theme={"system"}
+// cancel a single workflow
+await client.cancel({ ids: "<WORKFLOW_RUN_ID>" });
 
-  const client = new Client({ token: "<QSTASH_TOKEN>" })
-  await client.cancel({ workflowRunId: "<WORKFLOW_RUN_ID>" })
-  ```
+// cancel a set of workflow runs
+await client.cancel({ ids: ["<WORKFLOW_RUN_ID_1>", "<WORKFLOW_RUN_ID_2>"] });
+```
 
-  ```js Node theme={"system"}
-  const response = await fetch('https://qstash.upstash.io/v2/workflows/runs/wfr_TzazoUCuZmFGp2u9cdy5K', {
-    method: 'DELETE',
-    headers: {
-      'Authorization': 'Bearer <token>'
-    }
-  });
-  ```
+### Cancel workflow runs with URL filter
 
-  ```python Python theme={"system"}
-  import requests
+If you have an endpoint called `https://your-endpoint.com` and you
+want to cancel all workflow runs on it, you can use `urlStartingWith`.
 
-  headers = {
-      'Authorization': 'Bearer <token>',
-  }
+Note that this will cancel workflows in all endpoints under
+`https://your-endpoint.com`.
 
-  response = requests.delete(
-    'https://qstash.upstash.io/v2/workflows/runs/wfr_TzazoUCuZmFGp2u9cdy5K', 
-    headers=headers
-  )
-  ```
+```ts  theme={"system"}
+await client.cancel({ urlStartingWith: "https://your-endpoint.com" });
+```
 
-  ```go Go theme={"system"}
-  req, err := http.NewRequest("DELETE", "https://qstash.upstash.io/v2/workflows/runs/wfr_TzazoUCuZmFGp2u9cdy5K", nil)
-  if err != nil {
-    log.Fatal(err)
-  }
-  req.Header.Set("Authorization", "Bearer <token>")
-  resp, err := http.DefaultClient.Do(req)
-  if err != nil {
-    log.Fatal(err)
-  }
-  defer resp.Body.Close()
-  ```
-</RequestExample>
+### Cancel *all* workflows
 
-<ResponseExample>
-  ```text 200 OK theme={"system"}
-  OK
-  ```
-</ResponseExample>
+To cancel all pending and currently running workflows, you can
+do it like this:
+
+```ts  theme={"system"}
+await client.cancel({ all: true });
+```

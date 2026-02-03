@@ -1,4 +1,4 @@
-# Source: https://docs.intelligems.io/developer-resources/targeting-by-customer-parameters.md
+# Source: https://docs.intelligems.io/general-features/targeting/targeting-by-customer-parameters.md
 
 # Targeting By Customer Parameters
 

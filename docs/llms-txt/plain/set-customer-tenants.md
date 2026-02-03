@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/tenants/set-customer-tenants.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Set customer tenants
 
 You can also set all tenants for a customer. Unlike the more specific add or remove mutations this is useful if you are sycing tenants and customers with Plain.

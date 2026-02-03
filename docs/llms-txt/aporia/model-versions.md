@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/core-concepts/model-versions.md
 
-# Source: https://docs.aporia.com/core-concepts/model-versions.md
-
-# Source: https://docs.aporia.com/v1/core-concepts/model-versions.md
-
 # Models & Versions
 
 ### Model

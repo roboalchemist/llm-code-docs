@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-extend-native.md
 ---
-# eslint/no-extend-native&#x20;
 
 ### What it does
 

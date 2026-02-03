@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/firecrawl-url-crawl.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Crawl a URL using Firecrawl
 
 > This example demonstrates how to crawl a URL using Firecrawl with Trigger.dev.
@@ -19,12 +23,12 @@ Here are two examples of how to use Firecrawl with Trigger.dev:
 
 This task crawls a website and returns the `crawlResult` object. You can set the `limit` parameter to control the number of URLs that are crawled.
 
-```ts trigger/firecrawl-url-crawl.ts theme={null}
-import FirecrawlApp from "@mendable/firecrawl-js";
+```ts trigger/firecrawl-url-crawl.ts theme={"theme":"css-variables"}
+import Firecrawl from "@mendable/firecrawl-js";
 import { task } from "@trigger.dev/sdk";
 
 // Initialize the Firecrawl client with your API key
-const firecrawlClient = new FirecrawlApp({
+const firecrawlClient = new Firecrawl({
   apiKey: process.env.FIRECRAWL_API_KEY, // Get this from your Firecrawl dashboard
 });
 
@@ -34,15 +38,15 @@ export const firecrawlCrawl = task({
     const { url } = payload;
 
     // Crawl: scrapes all the URLs of a web page and return content in LLM-ready format
-    const crawlResult = await firecrawlClient.crawlUrl(url, {
+    const crawlResult = await firecrawlClient.crawl(url, {
       limit: 100, // Limit the number of URLs to crawl
       scrapeOptions: {
         formats: ["markdown", "html"],
       },
     });
 
-    if (!crawlResult.success) {
-      throw new Error(`Failed to crawl: ${crawlResult.error}`);
+    if (crawlResult.status === "failed") {
+      throw new Error(`Failed to crawl: ${url}`);
     }
 
     return {
@@ -56,7 +60,7 @@ export const firecrawlCrawl = task({
 
 You can test your task by triggering it from the Trigger.dev dashboard.
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 "url": "<url-to-crawl>" // Replace with the URL you want to crawl
 ```
 
@@ -64,12 +68,12 @@ You can test your task by triggering it from the Trigger.dev dashboard.
 
 This task scrapes a single URL and returns the `scrapeResult` object.
 
-```ts trigger/firecrawl-url-scrape.ts theme={null}
-import FirecrawlApp, { ScrapeResponse } from "@mendable/firecrawl-js";
+```ts trigger/firecrawl-url-scrape.ts theme={"theme":"css-variables"}
+import Firecrawl from "@mendable/firecrawl-js";
 import { task } from "@trigger.dev/sdk";
 
 // Initialize the Firecrawl client with your API key
-const firecrawlClient = new FirecrawlApp({
+const firecrawlClient = new Firecrawl({
   apiKey: process.env.FIRECRAWL_API_KEY, // Get this from your Firecrawl dashboard
 });
 
@@ -79,13 +83,9 @@ export const firecrawlScrape = task({
     const { url } = payload;
 
     // Scrape: scrapes a URL and get its content in LLM-ready format (markdown, structured data via LLM Extract, screenshot, html)
-    const scrapeResult = (await firecrawlClient.scrapeUrl(url, {
+    const scrapeResult = await firecrawlClient.scrape(url, {
       formats: ["markdown", "html"],
-    })) as ScrapeResponse;
-
-    if (!scrapeResult.success) {
-      throw new Error(`Failed to scrape: ${scrapeResult.error}`);
-    }
+    });
 
     return {
       data: scrapeResult,
@@ -98,6 +98,6 @@ export const firecrawlScrape = task({
 
 You can test your task by triggering it from the Trigger.dev dashboard.
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 "url": "<url-to-scrape>" // Replace with the URL you want to scrape
 ```

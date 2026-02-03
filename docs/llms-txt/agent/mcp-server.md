@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/mcp-server.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MCP Server
 
 > Connect Agent.ai tools to ChatGPT, Claude, Cursor, and other AI assistants.

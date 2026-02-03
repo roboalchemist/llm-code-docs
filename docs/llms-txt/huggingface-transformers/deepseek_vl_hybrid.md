@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/deepseek_vl_hybrid.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/deepseek_vl_hybrid.md
 
 # DeepseekVLHybrid
 
@@ -9,7 +9,7 @@ You can find all the original Deepseek-VL-Hybrid checkpoints under the [DeepSeek
 > [!TIP]
 > Click on the Deepseek-VL-Hybrid models in the right sidebar for more examples of how to apply Deepseek-VL-Hybrid to different vision and language tasks.
 
-The example below demonstrates how to generate text based on an image with [Pipeline](/docs/transformers/v5.0.0rc1/en/main_classes/pipelines#transformers.Pipeline) or the [AutoModel](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModel) class.
+The example below demonstrates how to generate text based on an image with [Pipeline](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.Pipeline) or the [AutoModel](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModel) class.
 
 ```py
 import torch
@@ -173,15 +173,15 @@ model = DeepseekVLHybridForConditionalGeneration.from_pretrained(
 
 #### transformers.DeepseekVLHybridConfig[[transformers.DeepseekVLHybridConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/deepseek_vl_hybrid/configuration_deepseek_vl_hybrid.py#L31)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/deepseek_vl_hybrid/configuration_deepseek_vl_hybrid.py#L29)
 
-This is the configuration class to store the configuration of a [DeepseekVLHybridModel](/docs/transformers/v5.0.0rc1/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridModel). It is used to instantiate a
+This is the configuration class to store the configuration of a [DeepseekVLHybridModel](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridModel). It is used to instantiate a
 DeepseekVLHybrid model according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of the DeepseekVLHybrid
 [deepseek-community/deepseek-vl-7b-chat](https://huggingface.co/deepseek-community/deepseek-vl-7b-chat) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -212,43 +212,62 @@ image_token_id (`int`, *optional*, defaults to 100015) : The index representing 
 
 #### transformers.DeepseekVLHybridProcessor[[transformers.DeepseekVLHybridProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/deepseek_vl_hybrid/processing_deepseek_vl_hybrid.py#L36)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/deepseek_vl_hybrid/processing_deepseek_vl_hybrid.py#L36)
 
-Constructs a DeepseekVLHybrid processor which wraps a DeepseekVLHybrid Image Processor and a Llama tokenizer into a single processor.
+Constructs a DeepseekVLHybridProcessor which wraps a image processor and a tokenizer into a single processor.
 
-[DeepseekVLHybridProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridProcessor) offers all the functionalities of [DeepseekVLHybridImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridImageProcessor) and [LlamaTokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/llama2#transformers.LlamaTokenizer). See the
-`__call__()` and [decode()](/docs/transformers/v5.0.0rc1/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridProcessor.decode) for more information.
+[DeepseekVLHybridProcessor](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridProcessor) offers all the functionalities of [DeepseekVLHybridImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridImageProcessorFast) and `tokenizer_class`. See the
+[~DeepseekVLHybridImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridImageProcessorFast) and `~tokenizer_class` for more information.
 
-batch_decodetransformers.DeepseekVLHybridProcessor.batch_decodehttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/deepseek_vl_hybrid/processing_deepseek_vl_hybrid.py#L130[{"name": "*args", "val": ""}, {"name": "**kwargs", "val": ""}]
+__call__transformers.DeepseekVLHybridProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/deepseek_vl_hybrid/processing_deepseek_vl_hybrid.py#L53[{"name": "text", "val": ": str | list[str] | list[list[str]] = None"}, {"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.deepseek_vl_hybrid.processing_deepseek_vl_hybrid.DeepseekVLHybridProcessorKwargs]"}]- **text** (`Union[str, list, list]`, *optional*) --
+  The sequence or batch of sequences to be encoded. Each sequence can be a string or a list of strings
+  (pretokenized string). If you pass a pretokenized input, set `is_split_into_words=True` to avoid ambiguity with batched inputs.
+- **images** (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list]`, *optional*) --
+  Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
+  passing in images with pixel values between 0 and 1, set `do_rescale=False`.
+- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
+  If set, will return tensors of a particular framework. Acceptable values are:
 
-This method forwards all its arguments to LlamaTokenizerFast's [batch_decode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.batch_decode). Please
-refer to the docstring of this method for more information.
+  - `'pt'`: Return PyTorch `torch.Tensor` objects.
+  - `'np'`: Return NumPy `np.ndarray` objects.0[BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature)A [BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature) with the following fields:
+
+- **input_ids** -- List of token ids to be fed to a model. Returned when `text` is not `None`.
+- **attention_mask** -- List of indices specifying which tokens should be attended to by the model (when
+  `return_attention_mask=True` or if *"attention_mask"* is in `self.model_input_names` and if `text` is not
+  `None`).
+- **pixel_values** -- Pixel values to be fed to a model. Returned when `images` is not `None`.
 
 **Parameters:**
 
-image_processor ([DeepseekVLHybridImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridImageProcessor)) : The image processor is a required input.
+image_processor (`DeepseekVLHybridImageProcessorFast`) : The image processor is a required input.
 
-tokenizer ([LlamaTokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/llama2#transformers.LlamaTokenizer)) : The tokenizer is a required input.
+tokenizer (`tokenizer_class`) : The tokenizer is a required input.
 
-chat_template (`str`, *optional*) : A Jinja template which will be used to convert lists of messages in a chat into a tokenizable string.
+chat_template (`str`) : A Jinja template to convert lists of messages in a chat into a tokenizable string.
 
 num_image_tokens (`int`, *optional*, defaults to 576) : The number of special image tokens used as placeholders for visual content in text sequences.
-#### decode[[transformers.DeepseekVLHybridProcessor.decode]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/deepseek_vl_hybrid/processing_deepseek_vl_hybrid.py#L137)
+**Returns:**
 
-This method forwards all its arguments to LlamaTokenizerFast's [decode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.decode). Please refer to
-the docstring of this method for more information.
+`[BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature)`
+
+A [BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature) with the following fields:
+
+- **input_ids** -- List of token ids to be fed to a model. Returned when `text` is not `None`.
+- **attention_mask** -- List of indices specifying which tokens should be attended to by the model (when
+  `return_attention_mask=True` or if *"attention_mask"* is in `self.model_input_names` and if `text` is not
+  `None`).
+- **pixel_values** -- Pixel values to be fed to a model. Returned when `images` is not `None`.
 
 ## DeepseekVLHybridImageProcessor[[transformers.DeepseekVLHybridImageProcessor]]
 
 #### transformers.DeepseekVLHybridImageProcessor[[transformers.DeepseekVLHybridImageProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/deepseek_vl_hybrid/image_processing_deepseek_vl_hybrid.py#L79)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/deepseek_vl_hybrid/image_processing_deepseek_vl_hybrid.py#L79)
 
 Constructs a DEEPSEEK_VL_HYBRID image processor.
 
-pad_to_squaretransformers.DeepseekVLHybridImageProcessor.pad_to_squarehttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/deepseek_vl_hybrid/image_processing_deepseek_vl_hybrid.py#L446[{"name": "image", "val": ": ndarray"}, {"name": "background_color", "val": ": typing.Union[int, tuple[int, int, int]] = 0"}, {"name": "data_format", "val": ": typing.Union[str, transformers.image_utils.ChannelDimension, NoneType] = None"}, {"name": "input_data_format", "val": ": typing.Union[str, transformers.image_utils.ChannelDimension, NoneType] = None"}]- **image** (`np.ndarray`) --
+pad_to_squaretransformers.DeepseekVLHybridImageProcessor.pad_to_squarehttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/deepseek_vl_hybrid/image_processing_deepseek_vl_hybrid.py#L446[{"name": "image", "val": ": ndarray"}, {"name": "background_color", "val": ": int | tuple[int, int, int] = 0"}, {"name": "data_format", "val": ": str | transformers.image_utils.ChannelDimension | None = None"}, {"name": "input_data_format", "val": ": str | transformers.image_utils.ChannelDimension | None = None"}]- **image** (`np.ndarray`) --
   The image to pad.
 - **background_color** (`int` or `tuple[int, int, int]`, *optional*, defaults to 0) --
   The color to use for the padding. Can be an integer for single channel or a
@@ -305,7 +324,7 @@ do_pad (`bool`, *optional*, defaults to `True`) : Whether to pad the image to sq
 The padded image.
 #### preprocess[[transformers.DeepseekVLHybridImageProcessor.preprocess]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/deepseek_vl_hybrid/image_processing_deepseek_vl_hybrid.py#L253)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/deepseek_vl_hybrid/image_processing_deepseek_vl_hybrid.py#L253)
 
 Preprocess an image or batch of images.
 
@@ -350,7 +369,7 @@ do_pad (`bool`, *optional*, defaults to `self.do_pad`) : Whether to pad the imag
 background_color (`tuple[int, int, int]`) : The background color to use for the padding.
 #### resize[[transformers.DeepseekVLHybridImageProcessor.resize]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/deepseek_vl_hybrid/image_processing_deepseek_vl_hybrid.py#L188)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/deepseek_vl_hybrid/image_processing_deepseek_vl_hybrid.py#L188)
 
 Resize an image to dynamically calculated size.
 
@@ -376,11 +395,11 @@ The resized image.
 
 #### transformers.DeepseekVLHybridImageProcessorFast[[transformers.DeepseekVLHybridImageProcessorFast]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/deepseek_vl_hybrid/image_processing_deepseek_vl_hybrid_fast.py#L47)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/deepseek_vl_hybrid/image_processing_deepseek_vl_hybrid_fast.py#L47)
 
 Constructs a fast Deepseek Vl Hybrid image processor.
 
-pad_to_squaretransformers.DeepseekVLHybridImageProcessorFast.pad_to_squarehttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/deepseek_vl_hybrid/image_processing_deepseek_vl_hybrid_fast.py#L104[{"name": "images", "val": ": torch.Tensor"}, {"name": "background_color", "val": ": typing.Union[int, tuple[int, int, int]] = 0"}]- **images** (`torch.Tensor`) --
+pad_to_squaretransformers.DeepseekVLHybridImageProcessorFast.pad_to_squarehttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/deepseek_vl_hybrid/image_processing_deepseek_vl_hybrid_fast.py#L104[{"name": "images", "val": ": torch.Tensor"}, {"name": "background_color", "val": ": int | tuple[int, int, int] = 0"}]- **images** (`torch.Tensor`) --
   The images to pad.
 - **background_color** (`int` or `tuple[int, int, int]`, *optional*, defaults to 0) --
   The color to use for the padding. Can be an integer for single channel or a
@@ -405,11 +424,11 @@ The padded images.
 
 #### transformers.DeepseekVLHybridModel[[transformers.DeepseekVLHybridModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/deepseek_vl_hybrid/modeling_deepseek_vl_hybrid.py#L243)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/deepseek_vl_hybrid/modeling_deepseek_vl_hybrid.py#L266)
 
 The bare Deepseek Vl Hybrid Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -417,20 +436,20 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.DeepseekVLHybridModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/deepseek_vl_hybrid/modeling_deepseek_vl_hybrid.py#L302[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "high_res_pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "logits_to_keep", "val": ": typing.Union[int, torch.Tensor] = 0"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.DeepseekVLHybridModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/deepseek_vl_hybrid/modeling_deepseek_vl_hybrid.py#L341[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "high_res_pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "logits_to_keep", "val": ": int | torch.Tensor = 0"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [DeepseekVLHybridImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridImageProcessor). See [DeepseekVLHybridImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([DeepseekVLHybridProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridProcessor) uses
-  [DeepseekVLHybridImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridImageProcessor) for processing images).
+  [DeepseekVLHybridImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridImageProcessorFast). See [DeepseekVLHybridImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([DeepseekVLHybridProcessor](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridProcessor) uses
+  [DeepseekVLHybridImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridImageProcessorFast) for processing images).
 - **high_res_pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size), *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [AutoImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoImageProcessor).
+  [AutoImageProcessor](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoImageProcessor).
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
 
@@ -447,8 +466,8 @@ forwardtransformers.DeepseekVLHybridModel.forwardhttps://github.com/huggingface/
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -466,13 +485,38 @@ forwardtransformers.DeepseekVLHybridModel.forwardhttps://github.com/huggingface/
 - **use_cache** (`bool`, *optional*) --
   If set to `True`, `past_key_values` key value states are returned and can be used to speed up decoding (see
   `past_key_values`).
-- **logits_to_keep** (`Union[int, torch.Tensor]`, defaults to `0`) --
+- **logits_to_keep** (`Union[int, torch.Tensor]`, *optional*, defaults to `0`) --
   If an `int`, compute logits for the last `logits_to_keep` tokens. If `0`, calculate logits for all
   `input_ids` (special case). Only last token logits are needed for generation, and calculating them only for that
   token can save memory, which becomes pretty significant for long sequences or large vocabulary size.
   If a `torch.Tensor`, must be 1D corresponding to the indices to keep in the sequence length dimension.
-  This is useful when using packed tensor format (single dimension for batch and sequence length).0
-The [DeepseekVLHybridModel](/docs/transformers/v5.0.0rc1/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridModel) forward method, overrides the `__call__` special method.
+  This is useful when using packed tensor format (single dimension for batch and sequence length).0`transformers.models.deepseek_vl_hybrid.modeling_deepseek_vl_hybrid.DeepseekVLHybridBaseModelOutputWithPast` or `tuple(torch.FloatTensor)`A `transformers.models.deepseek_vl_hybrid.modeling_deepseek_vl_hybrid.DeepseekVLHybridBaseModelOutputWithPast` or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([DeepseekVLHybridConfig](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
+
+  If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
+  hidden_size)` is output.
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+
+  Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
+  `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
+  input) to speed up sequential decoding.
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+- **image_hidden_states** (`tuple(torch.FloatTensor)`, *optional*) -- Tuple of `torch.FloatTensor` (one for the output of the image embeddings, `(batch_size, num_images,
+  sequence_length, hidden_size)`.
+
+  image_hidden_states of the model produced by the vision encoder, and optionally by the perceiver
+The [DeepseekVLHybridModel](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -480,28 +524,98 @@ the latter silently ignores them.
 
 **Parameters:**
 
-config ([DeepseekVLHybridModel](/docs/transformers/v5.0.0rc1/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([DeepseekVLHybridModel](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+
+**Returns:**
+
+``transformers.models.deepseek_vl_hybrid.modeling_deepseek_vl_hybrid.DeepseekVLHybridBaseModelOutputWithPast` or `tuple(torch.FloatTensor)``
+
+A `transformers.models.deepseek_vl_hybrid.modeling_deepseek_vl_hybrid.DeepseekVLHybridBaseModelOutputWithPast` or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([DeepseekVLHybridConfig](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
+
+  If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
+  hidden_size)` is output.
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+
+  Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
+  `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
+  input) to speed up sequential decoding.
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+- **image_hidden_states** (`tuple(torch.FloatTensor)`, *optional*) -- Tuple of `torch.FloatTensor` (one for the output of the image embeddings, `(batch_size, num_images,
+  sequence_length, hidden_size)`.
+
+  image_hidden_states of the model produced by the vision encoder, and optionally by the perceiver
+#### get_image_features[[transformers.DeepseekVLHybridModel.get_image_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/deepseek_vl_hybrid/modeling_deepseek_vl_hybrid.py#L295)
+
+**Parameters:**
+
+pixel_values (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) : The tensors corresponding to the input images. Pixel values can be obtained using [DeepseekVLHybridImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridImageProcessorFast). See [DeepseekVLHybridImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([DeepseekVLHybridProcessor](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridProcessor) uses [DeepseekVLHybridImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridImageProcessorFast) for processing images).
+
+high_res_pixel_values (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size), *optional*) : The tensors corresponding to the input images. Pixel values can be obtained using [AutoImageProcessor](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoImageProcessor).
+
+**Returns:**
+
+``transformers.models.deepseek_vl_hybrid.modeling_deepseek_vl_hybrid.BaseModelOutputWithHighResVisionEncodings` or `tuple(torch.FloatTensor)``
+
+A `transformers.models.deepseek_vl_hybrid.modeling_deepseek_vl_hybrid.BaseModelOutputWithHighResVisionEncodings` or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([DeepseekVLHybridConfig](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`, *optional*) -- Last layer hidden-state after a pooling operation on the spatial dimensions.
+- **hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+- **high_res_vision_last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the high resolution vision model.
+- **high_res_vision_hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the high resolution vision model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the high resolution vision model at the output of each layer plus the optional initial embedding outputs.
+- **high_res_vision_attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)` from the high resolution vision model.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
 
 ## DeepseekVLHybridForConditionalGeneration[[transformers.DeepseekVLHybridForConditionalGeneration]]
 
 #### transformers.DeepseekVLHybridForConditionalGeneration[[transformers.DeepseekVLHybridForConditionalGeneration]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/deepseek_vl_hybrid/modeling_deepseek_vl_hybrid.py#L391)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/deepseek_vl_hybrid/modeling_deepseek_vl_hybrid.py#L435)
 
-forwardtransformers.DeepseekVLHybridForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/deepseek_vl_hybrid/modeling_deepseek_vl_hybrid.py#L411[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "high_res_pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "logits_to_keep", "val": ": typing.Union[int, torch.Tensor] = 0"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.DeepseekVLHybridForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/deepseek_vl_hybrid/modeling_deepseek_vl_hybrid.py#L455[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "high_res_pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "logits_to_keep", "val": ": int | torch.Tensor = 0"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [DeepseekVLHybridImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridImageProcessor). See [DeepseekVLHybridImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([DeepseekVLHybridProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridProcessor) uses
-  [DeepseekVLHybridImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridImageProcessor) for processing images).
+  [DeepseekVLHybridImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridImageProcessorFast). See [DeepseekVLHybridImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([DeepseekVLHybridProcessor](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridProcessor) uses
+  [DeepseekVLHybridImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridImageProcessorFast) for processing images).
 - **high_res_pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size), *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [AutoImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoImageProcessor).
+  [AutoImageProcessor](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoImageProcessor).
 
   labels (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*):
   Labels for computing the masked language modeling loss. Indices should either be in `[0, ...,
@@ -523,8 +637,8 @@ forwardtransformers.DeepseekVLHybridForConditionalGeneration.forwardhttps://gith
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -546,13 +660,35 @@ forwardtransformers.DeepseekVLHybridForConditionalGeneration.forwardhttps://gith
 - **use_cache** (`bool`, *optional*) --
   If set to `True`, `past_key_values` key value states are returned and can be used to speed up decoding (see
   `past_key_values`).
-- **logits_to_keep** (`Union[int, torch.Tensor]`, defaults to `0`) --
+- **logits_to_keep** (`Union[int, torch.Tensor]`, *optional*, defaults to `0`) --
   If an `int`, compute logits for the last `logits_to_keep` tokens. If `0`, calculate logits for all
   `input_ids` (special case). Only last token logits are needed for generation, and calculating them only for that
   token can save memory, which becomes pretty significant for long sequences or large vocabulary size.
   If a `torch.Tensor`, must be 1D corresponding to the indices to keep in the sequence length dimension.
-  This is useful when using packed tensor format (single dimension for batch and sequence length).0
-The [DeepseekVLHybridForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridForConditionalGeneration) forward method, overrides the `__call__` special method.
+  This is useful when using packed tensor format (single dimension for batch and sequence length).0`transformers.models.deepseek_vl_hybrid.modeling_deepseek_vl_hybrid.DeepseekVLHybridCausalLMOutputWithPast` or `tuple(torch.FloatTensor)`A `transformers.models.deepseek_vl_hybrid.modeling_deepseek_vl_hybrid.DeepseekVLHybridCausalLMOutputWithPast` or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([DeepseekVLHybridConfig](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridConfig)) and inputs.
+
+- **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
+- **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+
+  Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
+  `past_key_values` input) to speed up sequential decoding.
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+- **image_hidden_states** (`tuple(torch.FloatTensor)`, *optional*) -- Tuple of `torch.FloatTensor` (one for the output of the image embeddings, `(batch_size, num_images,
+  sequence_length, hidden_size)`.
+
+  image_hidden_states of the model produced by the vision encoder, and optionally by the perceiver
+The [DeepseekVLHybridForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridForConditionalGeneration) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -562,7 +698,6 @@ Example:
 
 ```python
 >>> from PIL import Image
->>> import requests
 >>> from transformers import AutoProcessor, DeepseekVLHybridForConditionalGeneration
 
 >>> model = DeepseekVLHybridForConditionalGeneration.from_pretrained("deepseek-community/deepseek-vl-7b-chat")
@@ -591,17 +726,17 @@ Example:
 
 **Parameters:**
 
-input_ids (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) : Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.  [What are input IDs?](../glossary#input-ids)
+input_ids (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) : Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.  [What are input IDs?](../glossary#input-ids)
 
-pixel_values (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) : The tensors corresponding to the input images. Pixel values can be obtained using [DeepseekVLHybridImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridImageProcessor). See [DeepseekVLHybridImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([DeepseekVLHybridProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridProcessor) uses [DeepseekVLHybridImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridImageProcessor) for processing images).
+pixel_values (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) : The tensors corresponding to the input images. Pixel values can be obtained using [DeepseekVLHybridImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridImageProcessorFast). See [DeepseekVLHybridImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([DeepseekVLHybridProcessor](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridProcessor) uses [DeepseekVLHybridImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridImageProcessorFast) for processing images).
 
-high_res_pixel_values (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size), *optional*) : The tensors corresponding to the input images. Pixel values can be obtained using [AutoImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoImageProcessor).  labels (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*): Labels for computing the masked language modeling loss. Indices should either be in `[0, ..., config.vocab_size]` or -100 (see `input_ids` docstring). Tokens with indices set to `-100` are ignored (masked), the loss is only computed for the tokens with labels in `[0, ..., config.vocab_size]`.
+high_res_pixel_values (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size), *optional*) : The tensors corresponding to the input images. Pixel values can be obtained using [AutoImageProcessor](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoImageProcessor).  labels (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*): Labels for computing the masked language modeling loss. Indices should either be in `[0, ..., config.vocab_size]` or -100 (see `input_ids` docstring). Tokens with indices set to `-100` are ignored (masked), the loss is only computed for the tokens with labels in `[0, ..., config.vocab_size]`.
 
 attention_mask (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) : Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:  - 1 for tokens that are **not masked**, - 0 for tokens that are **masked**.  [What are attention masks?](../glossary#attention-mask)
 
 position_ids (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) : Indices of positions of each input sequence tokens in the position embeddings. Selected in the range `[0, config.n_positions - 1]`.  [What are position IDs?](../glossary#position-ids)
 
-past_key_values (`~cache_utils.Cache`, *optional*) : Pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values` returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache). If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.  The model will output the same cache format that is fed as input.  If `past_key_values` are used, the user is expected to input only unprocessed `input_ids` (those that don't have their past key value states given to this model) of shape `(batch_size, unprocessed_length)` instead of all `input_ids` of shape `(batch_size, sequence_length)`.
+past_key_values (`~cache_utils.Cache`, *optional*) : Pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values` returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache). If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.  The model will output the same cache format that is fed as input.  If `past_key_values` are used, the user is expected to input only unprocessed `input_ids` (those that don't have their past key value states given to this model) of shape `(batch_size, unprocessed_length)` instead of all `input_ids` of shape `(batch_size, sequence_length)`.
 
 cache_position (`torch.LongTensor` of shape `(sequence_length)`, *optional*) : Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`, this tensor is not affected by padding. It is used to update the cache in the correct position and to infer the complete sequence length.
 
@@ -611,5 +746,33 @@ labels (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*)
 
 use_cache (`bool`, *optional*) : If set to `True`, `past_key_values` key value states are returned and can be used to speed up decoding (see `past_key_values`).
 
-logits_to_keep (`Union[int, torch.Tensor]`, defaults to `0`) : If an `int`, compute logits for the last `logits_to_keep` tokens. If `0`, calculate logits for all `input_ids` (special case). Only last token logits are needed for generation, and calculating them only for that token can save memory, which becomes pretty significant for long sequences or large vocabulary size. If a `torch.Tensor`, must be 1D corresponding to the indices to keep in the sequence length dimension. This is useful when using packed tensor format (single dimension for batch and sequence length).
+logits_to_keep (`Union[int, torch.Tensor]`, *optional*, defaults to `0`) : If an `int`, compute logits for the last `logits_to_keep` tokens. If `0`, calculate logits for all `input_ids` (special case). Only last token logits are needed for generation, and calculating them only for that token can save memory, which becomes pretty significant for long sequences or large vocabulary size. If a `torch.Tensor`, must be 1D corresponding to the indices to keep in the sequence length dimension. This is useful when using packed tensor format (single dimension for batch and sequence length).
+
+**Returns:**
+
+``transformers.models.deepseek_vl_hybrid.modeling_deepseek_vl_hybrid.DeepseekVLHybridCausalLMOutputWithPast` or `tuple(torch.FloatTensor)``
+
+A `transformers.models.deepseek_vl_hybrid.modeling_deepseek_vl_hybrid.DeepseekVLHybridCausalLMOutputWithPast` or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([DeepseekVLHybridConfig](/docs/transformers/v5.0.0/en/model_doc/deepseek_vl_hybrid#transformers.DeepseekVLHybridConfig)) and inputs.
+
+- **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
+- **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+
+  Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
+  `past_key_values` input) to speed up sequential decoding.
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+- **image_hidden_states** (`tuple(torch.FloatTensor)`, *optional*) -- Tuple of `torch.FloatTensor` (one for the output of the image embeddings, `(batch_size, num_images,
+  sequence_length, hidden_size)`.
+
+  image_hidden_states of the model produced by the vision encoder, and optionally by the perceiver
 

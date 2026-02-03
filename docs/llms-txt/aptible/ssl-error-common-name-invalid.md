@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/troubleshooting/common-errors-issues/ssl-error-common-name-invalid.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SSL error ERR_CERT_COMMON_NAME_INVALID
 
 ## Cause and Resolution

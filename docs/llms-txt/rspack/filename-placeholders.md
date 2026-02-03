@@ -41,8 +41,8 @@ dist/
 
 The following table summarizes common filename options and the placeholder types they support:
 
-| Option                                                                             | Placeholder Types              | Description                   |
-| ---------------------------------------------------------------------------------- | ------------------------------ | ----------------------------- |
+| Option                                                                                | Placeholder Types              | Description                   |
+| ------------------------------------------------------------------------------------- | ------------------------------ | ----------------------------- |
 | [output.filename](/config/output.md#outputfilename)                                   | Compilation, Chunk             | Entry chunk filenames         |
 | [output.chunkFilename](/config/output.md#outputchunkfilename)                         | Chunk                          | Non-entry chunk filenames     |
 | [output.cssFilename](/config/output.md#outputcssfilename)                             | Compilation, Chunk             | Entry CSS chunk filenames     |
@@ -100,14 +100,14 @@ File placeholders expose information derived from the file path.
 
 Relationships:
 
-* `[file]` equals `[path][base]`
-* `[base]` equals `[name][ext]`
+- `[file]` equals `[path][base]`
+- `[base]` equals `[name][ext]`
 
 A complete path can be built using any of these forms:
 
-* `[path][name][ext][query][fragment]`
-* `[path][base][query][fragment]`
-* `[file][query][fragment]`
+- `[path][name][ext][query][fragment]`
+- `[path][base][query][fragment]`
+- `[file][query][fragment]`
 
 ### URL placeholders
 

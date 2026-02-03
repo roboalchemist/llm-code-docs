@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/indexing/quantization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quantization
 
 > Learn about quantization when creating an index in LanceDB.
@@ -62,8 +66,3 @@ The full list of parameters to the algorithm are listed below.
   Number of samples per partition during training. Higher values may improve accuracy but increase training time.
 * `target_partition_size`: Optional\[int], defaults to None\
   Target number of vectors per partition. Adjust to control partition granularity and memory usage.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

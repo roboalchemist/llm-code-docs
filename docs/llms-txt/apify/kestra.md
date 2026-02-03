@@ -6,7 +6,7 @@
 
 ***
 
-https://kestra.io/ is an open-source, event-driven orchestration platform. The https://github.com/kestra-io/plugin-kestra connects Apify Actors and storage to your workflows. Run scrapers, extract structured data — all defined declaratively in YAML and orchestrated directly from the UI.
+[Kestra](https://kestra.io/) is an open-source, event-driven orchestration platform. The [Apify plugin for Kestra](https://github.com/kestra-io/plugin-kestra) connects Apify Actors and storage to your workflows. Run scrapers, extract structured data — all defined declaratively in YAML and orchestrated directly from the UI.
 
 This guide shows you how to set up the integration, configure authentication, and create a workflow that runs an Actor and processes its results.
 
@@ -14,12 +14,12 @@ This guide shows you how to set up the integration, configure authentication, an
 
 Before you begin, make sure you have:
 
-* An https://console.apify.com/
-* A https://kestra.io/docs/getting-started/quickstart (self‑hosted or cloud)
+* An [Apify account](https://console.apify.com/)
+* A [Kestra instance](https://kestra.io/docs/getting-started/quickstart) (self‑hosted or cloud)
 
 ## Authentication
 
-The Apify plugin uses API key authentication. Store your API key in https://kestra.io/docs/concepts/secret through the UI or environment variables. In the open-source version, manage Secrets using base64-encoded environment variables. You can also use https://kestra.io/docs/concepts/kv-store to persist API keys across executions and workflows.
+The Apify plugin uses API key authentication. Store your API key in [Kestra Secrets](https://kestra.io/docs/concepts/secret) through the UI or environment variables. In the open-source version, manage Secrets using base64-encoded environment variables. You can also use [Kestra's KV Store](https://kestra.io/docs/concepts/kv-store) to persist API keys across executions and workflows.
 
 To add your Apify API token, go to the Secrets section in the Kestra UI and create a new secret with the key `APIFY_API_KEY` and your token as the value.
 
@@ -90,15 +90,15 @@ tasks:
 
 ## Resources
 
-* https://kestra.io/plugins/plugin-apify
-* https://docs.apify.com
-* https://kestra.io/docs
+* [Kestra Apify Plugin](https://kestra.io/plugins/plugin-apify)
+* [Apify API Documentation](https://docs.apify.com)
+* [Kestra Documentation](https://kestra.io/docs)
 
 ## Troubleshooting
 
 If you encounter issues, start by double-checking basics.
 
-* **Authentication errors**: Verify your API token in https://kestra.io/docs/concepts/secret.
+* **Authentication errors**: Verify your API token in [Secrets](https://kestra.io/docs/concepts/secret).
 * **Operation failures**: Check input parameters, YAML syntax, and resource IDs in your Apify account.
 
-Feel free to explore other resources and contribute to the integration on https://github.com/kestra-io/plugin-apify.
+Feel free to explore other resources and contribute to the integration on [GitHub](https://github.com/kestra-io/plugin-apify).

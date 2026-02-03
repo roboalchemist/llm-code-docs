@@ -1,0 +1,47 @@
+# Source: https://docs.datadoghq.com/ddsql_reference/data_directory/gcp/gcp.speech_phrase_set.dataset.md
+
+---
+title: PhraseSet
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: Docs > DDSQL Reference > Data Directory > PhraseSet
+---
+
+# PhraseSet
+
+PhraseSet is a Google Cloud Speech-to-Text resource that defines a collection of phrases or words to help improve speech recognition accuracy. It allows you to provide context-specific hints so the transcription model can better recognize domain-specific terms, names, or commonly used expressions.
+
+```
+gcp.speech_phrase_set
+```
+
+## Fields
+
+| Title                | ID   | Type          | Data Type                                                                                                                                                                                                                                                                                                                                                                                                                                            | Description |
+| -------------------- | ---- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key                 | core | string        |
+| ancestors            | core | array<string> |
+| annotations          | core | hstore        | Allows users to store small amounts of arbitrary data. Both the key and the value must be 63 characters or less each. At most 100 annotations.                                                                                                                                                                                                                                                                                                       |
+| boost                | core | float64       | Hint Boost. Positive value will increase the probability that a specific phrase will be recognized over other similar sounding phrases. The higher the boost, the higher the chance of false positive recognition as well. Valid `boost` values are between 0 (exclusive) and 20. We recommend using a binary search approach to finding the optimal value for your use case as well as adding phrases both with and without boost to your requests. |
+| create_time          | core | timestamp     | Output only. Creation time.                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| datadog_display_name | core | string        |
+| delete_time          | core | timestamp     | Output only. The time at which this resource was requested for deletion.                                                                                                                                                                                                                                                                                                                                                                             |
+| etag                 | core | string        | Output only. This checksum is computed by the server based on the value of other fields. This may be sent on update, undelete, and delete requests to ensure the client has an up-to-date value before proceeding.                                                                                                                                                                                                                                   |
+| expire_time          | core | timestamp     | Output only. The time at which this resource will be purged.                                                                                                                                                                                                                                                                                                                                                                                         |
+| gcp_display_name     | core | string        | User-settable, human-readable name for the PhraseSet. Must be 63 characters or less.                                                                                                                                                                                                                                                                                                                                                                 |
+| kms_key_name         | core | string        | Output only. The [KMS key name](https://cloud.google.com/kms/docs/resource-hierarchy#keys) with which the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.                                                                                                                                                                                                      |
+| kms_key_version_name | core | string        | Output only. The [KMS key version name](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) with which the PhraseSet is encrypted. The expected format is `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`.                                                                                                                                               |
+| labels               | core | array<string> |
+| name                 | core | string        | Output only. Identifier. The resource name of the PhraseSet. Format: `projects/{project}/locations/{location}/phraseSets/{phrase_set}`.                                                                                                                                                                                                                                                                                                              |
+| organization_id      | core | string        |
+| parent               | core | string        |
+| phrases              | core | json          | A list of word and phrases.                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| project_id           | core | string        |
+| project_number       | core | string        |
+| reconciling          | core | bool          | Output only. Whether or not this PhraseSet is in the process of being updated.                                                                                                                                                                                                                                                                                                                                                                       |
+| region_id            | core | string        |
+| resource_name        | core | string        |
+| state                | core | string        | Output only. The PhraseSet lifecycle state.                                                                                                                                                                                                                                                                                                                                                                                                          |
+| tags                 | core | hstore_csv    |
+| uid                  | core | string        | Output only. System-assigned unique identifier for the PhraseSet.                                                                                                                                                                                                                                                                                                                                                                                    |
+| update_time          | core | timestamp     | Output only. The most recent time this resource was modified.                                                                                                                                                                                                                                                                                                                                                                                        |
+| zone_id              | core | string        |

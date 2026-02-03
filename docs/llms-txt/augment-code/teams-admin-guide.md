@@ -1,12 +1,16 @@
 # Source: https://docs.augmentcode.com/teams/teams-admin-guide.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using Teams
 
-> Use Teams to collect individual Augment Code accounts (either Indie or Developer) into a Team. Once established you can bundle billing for your organization.
+> Use Teams to collect individual Augment Code accounts (Indie, Standard, or Max plans) into a Team. Once established you can bundle billing for your organization.
 
 ## About Teams
 
-If multiple people from your organization use Augment Code through our [Indie or Developer plan](https://augmentcode.com/pricing), Teams gathers accounts together for better collaboration. Teams simplify account management, offer better access control and centralize billing. Team administrators have special privileges to invite members, manage seats, change plans, and control team settings. Teams are not available for Enterprise plans since this plan by defaults groups the entire organization.
+If multiple people from your organization use Augment Code through our [Indie, Standard or Max plan](https://augmentcode.com/pricing), Teams gathers accounts together for better collaboration. Teams simplify account management, offer better access control and centralize billing. Team administrators have special privileges to invite members, manage seats, change plans, and control team settings. Teams are not available for Enterprise plans since this plan by defaults groups the entire organization.
 
 <Note>
   Team settings and billing management are only accessible to accounts assigned as the administrator. Individual team members can view team information but cannot modify settings or manage subscriptions. To change which account is set as the administrator, contact [Augment Code Support](https://portal.usepylon.com/augment-code/forms/augment-support)

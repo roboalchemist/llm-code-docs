@@ -2,287 +2,255 @@
 
 # Source: https://docs.pinecone.io/reference/api/2025-10/admin-assistant/fetch_project.md
 
-# Source: https://docs.pinecone.io/reference/api/2025-10/admin/fetch_project.md
-
-# Source: https://docs.pinecone.io/reference/api/2025-10/admin-assistant/fetch_project.md
-
-# Source: https://docs.pinecone.io/reference/api/2025-10/admin/fetch_project.md
-
-# Source: https://docs.pinecone.io/reference/api/2025-10/admin-assistant/fetch_project.md
-
-# Source: https://docs.pinecone.io/reference/api/2025-04/admin/fetch_project.md
-
-# Source: https://docs.pinecone.io/reference/api/2025-04/admin-assistant/fetch_project.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Get project details
 
 > Get details about a project.
 
+<RequestExample>
+  ```bash curl theme={null}
+  PINECONE_ACCESS_TOKEN="YOUR_ACCESS_TOKEN"
+  PROJECT_ID="3fa85f64-5717-4562-b3fc-2c963f66afa6"
+
+  curl -X GET "https://api.pinecone.io/admin/projects/$PROJECT_ID" \
+      -H "Authorization: Bearer $PINECONE_ACCESS_TOKEN" \
+  	-H "X-Pinecone-Api-Version: 2025-10" \
+      -H "accept: application/json"
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json curl theme={null}
+  {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "name": "example-project",
+    "max_pods": 0,
+    "force_encryption_with_cmek": false,
+    "organization_id": "string",
+    "created_at": "2025-03-17T00:30:23.262Z"
+  }
+  ```
+</ResponseExample>
+
+
 ## OpenAPI
 
-````yaml https://raw.githubusercontent.com/pinecone-io/pinecone-api/refs/heads/main/2025-04/admin_2025-04.oas.yaml get /admin/projects/{project_id}
+````yaml https://raw.githubusercontent.com/pinecone-io/pinecone-api/refs/heads/main/2025-10/admin_2025-10.oas.yaml get /admin/projects/{project_id}
+openapi: 3.0.3
+info:
+  title: Pinecone Admin API
+  description: |
+    Provides an API for managing a Pinecone organization and its resources.
+  contact:
+    name: Pinecone Support
+    url: https://support.pinecone.io
+    email: support@pinecone.io
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  version: 2025-10
+servers:
+  - url: https://api.pinecone.io
+    description: Production API endpoints
+security:
+  - BearerAuth: []
+tags:
+  - name: API Keys
+    description: Actions that manage API Keys.
+  - name: Organizations
+    description: Actions that manage organizations.
+  - name: Projects
+    description: Actions that manage projects.
 paths:
-  path: /admin/projects/{project_id}
-  method: get
-  servers:
-    - url: https://api.pinecone.io
-      description: Production API endpoints
-  request:
-    security:
-      - title: BearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >
-                An [access
-                token](https://docs.pinecone.io/guides/organizations/manage-service-accounts#retrieve-an-access-token)
-                must be provided in the `Authorization` header using the
-                `Bearer` scheme.
-          cookie: {}
-    parameters:
-      path:
-        project_id:
+  /admin/projects/{project_id}:
+    get:
+      tags:
+        - Projects
+      summary: Get project details
+      description: Get details about a project.
+      operationId: fetch_project
+      parameters:
+        - in: header
+          name: X-Pinecone-Api-Version
+          description: Required date-based version header
+          required: true
           schema:
-            - type: string
-              required: true
-              description: Project ID
-              format: uuid
+            default: 2025-10
+            type: string
           style: simple
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: The unique ID of the project.
-                    type: string
-                    format: uuid
-              name:
-                allOf:
-                  - description: The name of the project.
-                    type: string
-                    minLength: 1
-                    maxLength: 512
-              max_pods:
-                allOf:
-                  - description: >-
-                      The maximum number of Pods that can be created in the
-                      project.
-                    type: integer
-              force_encryption_with_cmek:
-                allOf:
-                  - description: >-
-                      Whether to force encryption with a customer-managed
-                      encryption key (CMEK).
-                    type: boolean
-              organization_id:
-                allOf:
-                  - description: >-
-                      The unique ID of the organization that the project belongs
-                      to.
-                    type: string
-              created_at:
-                allOf:
-                  - description: The date and time when the project was created.
-                    type: string
-                    format: date-time
-            description: The details of a project.
-            refIdentifier: '#/components/schemas/Project'
-            requiredProperties:
-              - id
-              - name
-              - max_pods
-              - force_encryption_with_cmek
-              - organization_id
-        examples:
-          example:
-            value:
-              id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              name: <string>
-              max_pods: 123
-              force_encryption_with_cmek: true
-              organization_id: <string>
-              created_at: '2023-11-07T05:31:56Z'
-        description: The details of a project.
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - &ref_0
-                    example: 500
-                    description: The HTTP status code of the error.
-                    type: integer
-              error:
-                allOf:
-                  - &ref_1
-                    example:
-                      code: INVALID_ARGUMENT
-                      message: >-
-                        Index name must contain only lowercase alphanumeric
-                        characters or hyphens, and must not begin or end with a
-                        hyphen.
-                    description: Detailed information about the error that occurred.
-                    type: object
-                    properties:
-                      code:
-                        description: >-
-                          The error code.
-
-                          Possible values: `OK`, `UNKNOWN`, `INVALID_ARGUMENT`,
-                          `DEADLINE_EXCEEDED`, `QUOTA_EXCEEDED`, `NOT_FOUND`,
-                          `ALREADY_EXISTS`, `PERMISSION_DENIED`,
-                          `UNAUTHENTICATED`, `RESOURCE_EXHAUSTED`,
-                          `FAILED_PRECONDITION`, `ABORTED`, `OUT_OF_RANGE`,
-                          `UNIMPLEMENTED`, `INTERNAL`, `UNAVAILABLE`,
-                          `DATA_LOSS`, `FORBIDDEN`, or `UNPROCESSABLE_ENTITY`.
-                        x-enum:
-                          - OK
-                          - UNKNOWN
-                          - INVALID_ARGUMENT
-                          - DEADLINE_EXCEEDED
-                          - QUOTA_EXCEEDED
-                          - NOT_FOUND
-                          - ALREADY_EXISTS
-                          - PERMISSION_DENIED
-                          - UNAUTHENTICATED
-                          - RESOURCE_EXHAUSTED
-                          - FAILED_PRECONDITION
-                          - ABORTED
-                          - OUT_OF_RANGE
-                          - UNIMPLEMENTED
-                          - INTERNAL
-                          - UNAVAILABLE
-                          - DATA_LOSS
-                          - FORBIDDEN
-                          - UNPROCESSABLE_ENTITY
-                        type: string
-                      message:
-                        example: >-
-                          Index name must contain only lowercase alphanumeric
-                          characters or hyphens, and must not begin or end with
-                          a hyphen.
-                        type: string
-                      details:
-                        description: >-
-                          Additional information about the error. This field is
-                          not guaranteed to be present.
-                        type: object
-                    required:
-                      - code
-                      - message
-            description: The response shape used for all error responses.
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: &ref_2
-              - status
-              - error
-            example: &ref_3
-              error:
-                code: QUOTA_EXCEEDED
-                message: >-
-                  The index exceeds the project quota of 5 pods by 2 pods.
-                  Upgrade your account or change the project settings to
-                  increase the quota.
-              status: 429
-        examples:
-          unauthorized:
-            summary: Unauthorized
-            value:
-              error:
-                code: UNAUTHENTICATED
-                message: Invalid API key.
-              status: 401
-        description: 'Unauthorized. Possible causes: Invalid API key.'
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - *ref_0
-              error:
-                allOf:
-                  - *ref_1
-            description: The response shape used for all error responses.
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-            example: *ref_3
-        examples:
-          example:
-            value:
-              error:
-                code: QUOTA_EXCEEDED
-                message: >-
-                  The index exceeds the project quota of 5 pods by 2 pods.
-                  Upgrade your account or change the project settings to
-                  increase the quota.
-              status: 429
-        description: Not found
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - *ref_0
-              error:
-                allOf:
-                  - *ref_1
-            description: The response shape used for all error responses.
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-            example: *ref_3
-        examples:
-          internal-server-error:
-            summary: Internal server error
-            value:
-              error:
-                code: UNKNOWN
-                message: Internal server error
-              status: 500
-        description: Internal server error.
-    4XX:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - *ref_0
-              error:
-                allOf:
-                  - *ref_1
-            description: The response shape used for all error responses.
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-            example: *ref_3
-        examples:
-          example:
-            value:
-              error:
-                code: QUOTA_EXCEEDED
-                message: >-
-                  The index exceeds the project quota of 5 pods by 2 pods.
-                  Upgrade your account or change the project settings to
-                  increase the quota.
-              status: 429
-        description: Unexpected error on request.
-  deprecated: false
-  type: path
+        - in: path
+          name: project_id
+          description: Project ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+          style: simple
+      responses:
+        '200':
+          description: The details of a project.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '401':
+          description: 'Unauthorized. Possible causes: Invalid API key.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                unauthorized:
+                  summary: Unauthorized
+                  value:
+                    error:
+                      code: UNAUTHENTICATED
+                      message: Invalid API key.
+                    status: 401
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                internal-server-error:
+                  summary: Internal server error
+                  value:
+                    error:
+                      code: UNKNOWN
+                      message: Internal server error
+                    status: 500
+        4XX:
+          description: Unexpected error on request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 components:
-  schemas: {}
+  schemas:
+    Project:
+      description: The details of a project.
+      type: object
+      properties:
+        id:
+          description: The unique ID of the project.
+          type: string
+          format: uuid
+        name:
+          description: The name of the project.
+          type: string
+          minLength: 1
+          maxLength: 512
+        max_pods:
+          description: The maximum number of Pods that can be created in the project.
+          type: integer
+        force_encryption_with_cmek:
+          description: >-
+            Whether to force encryption with a customer-managed encryption key
+            (CMEK).
+          type: boolean
+        organization_id:
+          description: The unique ID of the organization that the project belongs to.
+          type: string
+        created_at:
+          description: The date and time when the project was created.
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - max_pods
+        - force_encryption_with_cmek
+        - organization_id
+    ErrorResponse:
+      example:
+        error:
+          code: QUOTA_EXCEEDED
+          message: >-
+            The index exceeds the project quota of 5 pods by 2 pods. Upgrade
+            your account or change the project settings to increase the quota.
+        status: 429
+      description: The response shape used for all error responses.
+      type: object
+      properties:
+        status:
+          example: 500
+          description: The HTTP status code of the error.
+          type: integer
+        error:
+          example:
+            code: INVALID_ARGUMENT
+            message: >-
+              Index name must contain only lowercase alphanumeric characters or
+              hyphens, and must not begin or end with a hyphen.
+          description: Detailed information about the error that occurred.
+          type: object
+          properties:
+            code:
+              description: >-
+                The error code.
+
+                Possible values: `OK`, `UNKNOWN`, `INVALID_ARGUMENT`,
+                `DEADLINE_EXCEEDED`, `QUOTA_EXCEEDED`, `NOT_FOUND`,
+                `ALREADY_EXISTS`, `PERMISSION_DENIED`, `UNAUTHENTICATED`,
+                `RESOURCE_EXHAUSTED`, `FAILED_PRECONDITION`, `ABORTED`,
+                `OUT_OF_RANGE`, `UNIMPLEMENTED`, `INTERNAL`, `UNAVAILABLE`,
+                `DATA_LOSS`, `FORBIDDEN`, or `UNPROCESSABLE_ENTITY`.        
+              x-enum:
+                - OK
+                - UNKNOWN
+                - INVALID_ARGUMENT
+                - DEADLINE_EXCEEDED
+                - QUOTA_EXCEEDED
+                - NOT_FOUND
+                - ALREADY_EXISTS
+                - PERMISSION_DENIED
+                - UNAUTHENTICATED
+                - RESOURCE_EXHAUSTED
+                - FAILED_PRECONDITION
+                - ABORTED
+                - OUT_OF_RANGE
+                - UNIMPLEMENTED
+                - INTERNAL
+                - UNAVAILABLE
+                - DATA_LOSS
+                - FORBIDDEN
+                - UNPROCESSABLE_ENTITY
+              type: string
+            message:
+              example: >-
+                Index name must contain only lowercase alphanumeric characters
+                or hyphens, and must not begin or end with a hyphen.
+              type: string
+            details:
+              description: >-
+                Additional information about the error. This field is not
+                guaranteed to be present.
+              type: object
+          required:
+            - code
+            - message
+      required:
+        - status
+        - error
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: >
+        An [access
+        token](https://docs.pinecone.io/guides/organizations/manage-service-accounts#retrieve-an-access-token)
+        must be provided in the `Authorization` header using the `Bearer`
+        scheme.
 
 ````

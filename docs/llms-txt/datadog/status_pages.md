@@ -1,10 +1,11 @@
+# Source: https://docs.datadoghq.com/incident_response/incident_management/integrations/status_pages.md
+
 # Source: https://docs.datadoghq.com/incident_response/status_pages.md
 
 ---
 title: Status Pages
 description: Datadog, the leading service for cloud-scale monitoring.
-breadcrumbs: Docs > Status Pages
-source_url: https://docs.datadoghq.com/status_pages/index.html
+breadcrumbs: Docs > Incident Response > Status Pages
 ---
 
 # Status Pages
@@ -21,15 +22,16 @@ This product is not supported for your selected [Datadog site](https://docs.data
 ## Overview{% #overview %}
 
 {% image
-   source="https://datadog-docs.imgix.net/images/service_management/status_pages/shopist_status_page.7d7820a094382955da89d3e1e5dc7702.png?auto=format"
+   source="https://datadog-docs.imgix.net/images/service_management/status_pages/shopist_status_page2.dbd4b0ef6089c9110a1e08a0f868aab4.png?auto=format"
    alt="Example status page showing service components with their current status and recent incident updates" /%}
 
-Status Pages is part of Datadog's Incident Response suite, alongside On-Call and Incident Management. It lets your team proactively communicate **service availability** and **incidents** with customers or internal stakeholders through a shareable web page.
+Status Pages is part of Datadog's Incident Response suite, alongside On-Call and Incident Management. It lets your team proactively communicate **service availability**, **incidents**, and **planned maintenance** with customers or internal stakeholders through a shareable web page.
 
 Use Status Pages to:
 
 - Share the availability of critical systems and features
 - Communicate service disruptions clearly during incidents
+- Announce scheduled maintenance and planned downtime in advance
 - Reduce inbound support volume with proactive email notifications
 
 ## Configure permissions{% #configure-permissions %}
@@ -38,11 +40,11 @@ There are three RBAC permissions that are relevant to Status Pages. Users with t
 
 To create, update, or publish Status Pages, you must have `status_pages_settings_read`, `status_pages_settings_write`, and `status_pages_incident_write` RBAC permissions. For more information, see [Access Control](https://docs.datadoghq.com/account_management/rbac/).
 
-| Name                                                   | Description                                                                                                            | Default Role           |
-| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| Status Pages Settings Readstatus_pages_settings_read   | View the list of Status Pages, the settings of each Status Pages, their Incidents, and launched Internal Status Pages. | Datadog Read Only Role |
-| Status Pages Settings Writestatus_pages_settings_write | Create and launch new Status Pages, and configure Status Pages settings.                                               | Datadog Admin Role     |
-| Status Pages Notice Writestatus_pages_incident_write   | Publish and update Incidents.                                                                                          | Datadog Admin Role     |
+| Name                                                   | Description                                                                                                         | Default Role           |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| Status Pages Settings Readstatus_pages_settings_read   | View the list of Status Pages, the settings of each Status Page, their Notices, and launched Internal Status Pages. | Datadog Read Only Role |
+| Status Pages Settings Writestatus_pages_settings_write | Create and launch new Status Pages, and configure Status Pages settings.                                            | Datadog Admin Role     |
+| Status Pages Notice Writestatus_pages_incident_write   | Publish and update Incidents.                                                                                       | Datadog Admin Role     |
 
 ## Create a status page{% #create-a-status-page %}
 
@@ -71,7 +73,7 @@ Components are the building blocks of your status page. Each one represents a se
 - Database Cluster
 - US Region Services
 
-You can add components to your status page either on intial setup or through the status page settings:
+You can add components to your status page either on initial setup or through the status page settings:
 
 1. From your status page, click **Settings** and select the **Components** tab.
 1. Create individual components or a group of related components. You can associate notices with these components to reflect impact on your status page.
@@ -79,6 +81,10 @@ You can add components to your status page either on intial setup or through the
    1. Bars and Uptime Percentage
    1. Bars Only
    1. Component Name Only
+
+### Component hierarchy{% #component-hierarchy %}
+
+If multiple notices affect the same component, the notice with the greatest impact takes precedence: Major Outage > Partial Outage > Degraded Performance > Maintenance > Operational
 
 ## Publish your status page{% #publish-your-status-page %}
 
@@ -91,30 +97,72 @@ If you selected:
 
 ## Add a notice{% #add-a-notice %}
 
-Notices on Status Pages are carefully crafted messages posted to a public website to communicate system status. When an issue arises, you can communicate it clearly through your status page.
-
-1. From a status page, click **Publish Notice** to open a "Publish Status Page Notice" modal and provide:
-| Field                    | Description                                                                                     |
-| ------------------------ | ----------------------------------------------------------------------------------------------- |
-| **Title**                | Short, clear description of the incident*Example: Increased error rates on US region*           |
-| **Status**               | Current state of the incident:- Investigating- Identified- Monitoring- Resolved                 |
-| **Message** *(optional)* | Additional details for your users*Examples: known cause, expected resolution time*              |
-| **Components impacted**  | One or more components impacted by the incident                                                 |
-| **Impact**               | Level of impact per component:- Operational- Degraded Performance- Partial Outage- Major Outage |
-| **Notify Subscribers**   | Toggle to send the notice to subscribers                                                        |
-1. Click **Publish Notice**.
+Notices are messages published to a status page to communicate system status. Status Pages support two types of notices: **degradations** for unplanned service impact and **maintenance windows** for planned downtime.
 
 {% image
-   source="https://datadog-docs.imgix.net/images/service_management/status_pages/publish_status_page_incident_1.74ee82bdfac1abc227d0292e2b84c354.png?auto=format"
-   alt="Screenshot of the Status Page Notice creation modal with fields filled out" /%}
+   source="https://datadog-docs.imgix.net/images/service_management/status_pages/select_notice_type_status_page.02deb3be62eef0ce4233a921105a84f1.png?auto=format"
+   alt="Status page notice type selector with degradation and scheduled maintenance options" /%}
 
-After a notice is published, the notice:
+### Publish a degradation{% #publish-a-degradation %}
 
-- Appears on the Status Pages List under **Active Notices**.
+{% image
+   source="https://datadog-docs.imgix.net/images/service_management/status_pages/shopist_status_page_degradations.6c547d25759dc798b93a5e2756944d9a.png?auto=format"
+   alt="Example status page showing service components experience degradation" /%}
+
+Degradation notices communicate **unplanned service impact**, such as incidents or service disruptions. Use degradation notices to keep users informed as an issue is investigated, mitigated, and resolved.
+
+From a status page, click **Publish Notice** and select **Degradation**, then provide:
+
+| Field                   | Description                                                                                              |
+| ----------------------- | -------------------------------------------------------------------------------------------------------- |
+| **Notice title**        | Short, clear description of the issue*Example: Increased error rates in US region*                       |
+| **Status**              | Current state of the issue:- Investigating- Identified- Monitoring- Resolved                             |
+| **Message**             | Additional details for your users*Example: We are aware of the issue and are actively working on a fix.* |
+| **Components impacted** | One or more components affected by the degradation                                                       |
+| **Impact**              | Impact level per component:- Operational- Degraded Performance- Partial Outage- Major Outage             |
+| **Notify subscribers**  | Toggle to send updates to subscribed users                                                               |
+
+{% image
+   source="https://datadog-docs.imgix.net/images/service_management/status_pages/publish_status_page_degradation.4f77bc188dfffdc29b576ff2f75aa068.png?auto=format"
+   alt="Example publish notice modal for degradations" /%}
+
+After a degradation notice is reviewed and published, it:
+
+- Appears on the **Status Pages List** under Active Notices.
 - Updates the uptime bars for impacted components.
 - Is visible in the notice history timeline.
 
-You can post **updates** over time to keep users informed, and then mark the notice as **Resolved**.
+You can publish updates over time and mark the notice as **Resolved** when the issue is fully mitigated.
+
+### Schedule a maintenance window{% #schedule-a-maintenance-window %}
+
+{% image
+   source="https://datadog-docs.imgix.net/images/service_management/status_pages/shopist_maintenance_example.986133754af461c3e4f5df00f37613ce.png?auto=format"
+   alt="Example status page showing service components undergoing maintenance" /%}
+
+Maintenance windows allow you to proactively communicate planned downtime or service impact before it happens. Unlike degradations which are used for unplanned incidents, maintenance windows are scheduled in advance for infrastructure upgrades, system maintenance, database migrations, and other planned work. This allows you to keep customers informed and reduce support volume.
+
+From the status page, click **Schedule Maintenance**, or click **Publish Notice** and select **Scheduled Maintenance**. Then, provide the following details:
+
+| Field                   | Description                                                                             |
+| ----------------------- | --------------------------------------------------------------------------------------- |
+| **Notice title**        | Clear description of the maintenance activity*Example: Database infrastructure upgrade* |
+| **Maintenance window**  | Scheduled start and end time for the maintenance                                        |
+| **Messages**            | Messages that are automatically published as the maintenance progresses                 |
+| **Components impacted** | Components affected during the maintenance window                                       |
+| **Notify subscribers**  | Toggle to send advance notification to subscribers                                      |
+
+{% image
+   source="https://datadog-docs.imgix.net/images/service_management/status_pages/publish_status_page_maintenance.774ab646b9f05beaee7d2b43a123c34c.png?auto=format"
+   alt="Example publish notice modal for maintenance windows" /%}
+
+After reviewing and scheduling, the maintenance window:
+
+- Appears under **Upcoming Maintenance** on the status page
+- Automatically updates component status to **Maintenance** when the window begins
+- Returns components to **Operational** when the window ends (unless manually overridden)
+
+You can post updates if plans change or reschedule the maintenance window as needed.
 
 ## Email subscriptions{% #email-subscriptions %}
 
@@ -151,4 +199,3 @@ Custom domains require access to your DNS provider to add a CNAME or A record.
 - [Learn more about Incident Management](https://docs.datadoghq.com/incident_response/incident_management/)
 - [Learn more about On-Call Scheduling](https://docs.datadoghq.com/incident_response/on-call/)
 - [Integrate Datadog Status Pages with Incident Management](https://docs.datadoghq.com/incident_response/incident_management/integrations/status_pages)
-- [Keep stakeholders informed with Datadog Status Pages](https://www.datadoghq.com/blog/status-pages/)

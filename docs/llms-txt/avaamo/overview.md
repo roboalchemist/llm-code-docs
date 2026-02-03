@@ -6,15 +6,7 @@
 
 # Source: https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/overview.md
 
-# Source: https://docs.avaamo.com/user-guide/llamb/llamb-filters/overview.md
-
-# Source: https://docs.avaamo.com/user-guide/outreach/overview.md
-
-# Source: https://docs.avaamo.com/user-guide/live-agent-console/overview.md
-
-# Source: https://docs.avaamo.com/user-guide/how-to/build-agents/learning-continuous-improvement/overview.md
-
-# Source: https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/web-channel/overview.md
+# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/add-user-intent/overview.md
 
 # Source: https://docs.avaamo.com/user-guide/llamb/llamb-filters/overview.md
 

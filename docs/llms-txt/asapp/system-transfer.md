@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/configuring/tasks-and-functions/system-transfer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # System Transfer Functions
 
 > Signal conversation control transfer to external systems with System Transfer Functions.
@@ -38,7 +42,7 @@ Navigate to the Functions page and click "Create Function."
 
 The input parameters are the values that GenerativeAgent needs to pass when calling this function to transfer control to the external system.
 
-Under "Input Parameters," enter a valid JSON schema describing the required parameters. GenerativeAgent will gather the necessary information (from user messages or prior context) before calling the function.
+Under "Input Parameters," enter a valid JSON schema describing the required parameters. GenerativeAgent gathers the necessary information (from user messages or prior context) before calling the function.
 
 ```json Example Input Schema theme={null}
 {
@@ -93,7 +97,7 @@ After saving, you'll see a detail page showing the JSON schema and any configure
 
 ## Step 5: Using the System Transfer Function in the Conversation
 
-Once you have created your system transfer function, you must add the function to the task's list of available functions for GenerativeAgent to use it.
+Once you have created your system transfer function, add it to the task's list of available functions for GenerativeAgent to use it.
 
 GenerativeAgent may call the function proactively, but we recommend you instruct GenerativeAgent to call the function explicitly.
 
@@ -102,7 +106,7 @@ Always make sure to test your functions with Previewer to ensure they work as ex
 Here's how the function works within a task and conversation flow:
 
 1. GenerativeAgent collects the required parameters from the user (or context).
-2. (Optional) A "Message before Sending" can be displayed to the user, clarifying why GenerativeAgent is transferring control.
+2. (Optional) The system can display a "Message before Sending" to the user, clarifying why GenerativeAgent is transferring control.
 3. Jinja2 transformations convert or combine inputs, if defined.
 4. GenerativeAgent calls the System Transfer Function, signaling that control returns to the external system.
    * All reference variables collected during the conversation are passed along.
@@ -159,9 +163,9 @@ Here's how the function works within a task and conversation flow:
 
 ## Step 6: Handle the System Transfer Event
 
-When the function is called in your task, the conversation will be transferred to your system. This transfer is communicated via the [generative agent events](/generativeagent/integrate/handling-events) that are sent as part of the conversation handling.
+When the function is called in your task, the system transfers the conversation to your system. The system communicates this transfer via the [generative agent events](/generativeagent/integrate/handling-events) that the system sends as part of the conversation handling.
 
-Each reference variable currently set are passed as `referenceVariables`, and any variables set in the function are passed as `transferVariables`.
+The system passes all currently set reference variables as `referenceVariables`, and the system passes any variables set in the function as `transferVariables`.
 
 ```json Example System Transfer Event theme={null}
 {

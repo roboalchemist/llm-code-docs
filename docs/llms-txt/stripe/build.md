@@ -10,6 +10,8 @@ Use your SmartPOS DevKit device to test and iterate your application without goi
 
 If you need a DevKit device, you can [order up to five per user](https://docs.stripe.com/terminal/fleet/order-and-return-readers.md) from the [Readers](https://dashboard.stripe.com/terminal) section in your Dashboard.
 
+> Verifone reader support is in public preview for the US and CA. To join the preview, you must [contact the Sales team to order the applicable reader](https://stripe.com/contact/sales).
+
 ## Set up the DevKit 
 
 Before you can use your DevKit for app development, you must do the following:
@@ -46,8 +48,8 @@ Add the following dependencies to your project’s Gradle build script. Apps on 
 
 ```kotlin
 dependencies {
-   implementation("com.stripe:stripeterminal-core:5.0.0")
-   implementation("com.stripe:stripeterminal-appsondevices:5.0.0")
+   implementation("com.stripe:stripeterminal-core:5.2.0")
+   implementation("com.stripe:stripeterminal-appsondevices:5.2.0")
 }
 ```
 
@@ -55,12 +57,12 @@ dependencies {
 
 ```groovy
 dependencies {
-   implementation "com.stripe:stripeterminal-core:5.0.0"
-   implementation "com.stripe:stripeterminal-appsondevices:5.0.0"
+   implementation "com.stripe:stripeterminal-core:5.2.0"
+   implementation "com.stripe:stripeterminal-appsondevices:5.2.0"
 }
 ```
 
-Make sure that you aren’t using any other Stripe Terminal SDK dependencies. For example, if you previously integrated the Terminal Android SDK, don’t use the top-level `com.stripe:stripeterminal` dependency (for example, `com.stripe:stripeterminal:5.0.0`).
+Make sure that you aren’t using any other Stripe Terminal SDK dependencies. For example, if you previously integrated the Terminal Android SDK, don’t use the top-level `com.stripe:stripeterminal` dependency (for example, `com.stripe:stripeterminal:5.2.0`).
 
 See an example of [including dependencies in your app’s build script](https://github.com/stripe-samples/terminal-apps-on-devices/blob/718c2de38c7b8003fcf58c536c266bb990ad43a7/app/build.gradle.kts#L66).
 
@@ -295,29 +297,39 @@ The following example shows how to discover and connect to a Stripe reader using
 ```js
 const { discoverReaders, connectReader, discoveredReaders } =
     useStripeTerminal({
-      onUpdateDiscoveredReaders: (readers) => {
+      onUpdateDiscoveredReaders: async (readers) => {
         // After the SDK discovers a reader, your app can connect to it.
+        // The discoverReaders method doesn't resolve until discovery completes,
+        // so use this callback to handle discovered readers.
+        if (readers.length > 0) {
+          const { reader, error } = await connectReader(
+            { reader: readers[0] },
+            'handoff'
+          );
+
+          if (error) {
+            console.log('connectReader error:', error);
+            return;
+          }
+
+          console.log('Reader connected successfully', reader);
+        }
       },
     });
 
-  useEffect(() => {
-    const fetchReaders = async () => {
-      const { error } = await discoverReaders({
-        discoveryMethod: 'handoff',
-      });
+  const handleDiscoverReaders = async () => {
+    const { error } = await discoverReaders({
+      discoveryMethod: 'handoff',
+    });
+
+    if (error) {
+      console.log('discoverReaders error:', error);
     }
+  };
 
-    fetchReaders();
+  useEffect(() => {
+    handleDiscoverReaders();
   }, [discoverReaders]);
-
-const { reader, error } = await connectReader({reader}, 'handoff');
-
-if (error) {
-console.log('connectReader error:', error);
-return;
-}
-
-console.log('Reader connected successfully', reader);
 ```
 
 ### Collect payments

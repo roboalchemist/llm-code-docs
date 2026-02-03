@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > DDSQL Reference > Data Directory > Image Builder Public Container
   Recipe
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.imagebuilder_public_container_recipe.dataset/index.html
 ---
 
 # Image Builder Public Container Recipe
@@ -20,10 +18,10 @@ aws.imagebuilder_public_container_recipe
 
 ## Fields
 
-| Title            | ID   | Type   | Data Type                                             | Description |
-| ---------------- | ---- | ------ | ----------------------------------------------------- | ----------- |
-| _key             | core | string |
-| account_id       | core | string |
-| container_recipe | core | json   | The container recipe object that is returned.         |
-| request_id       | core | string | The request ID that uniquely identifies this request. |
-| tags             | core | hstore |
+| Title            | ID   | Type       | Data Type                                             | Description |
+| ---------------- | ---- | ---------- | ----------------------------------------------------- | ----------- |
+| _key             | core | string     |
+| account_id       | core | string     |
+| container_recipe | core | json       | The container recipe object that is returned.         |
+| request_id       | core | string     | The request ID that uniquely identifies this request. |
+| tags             | core | hstore_csv |

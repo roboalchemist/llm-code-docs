@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/integrations/sidekiq.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sidekiq with Upstash Redis
 
 You can use Sidekiq with Upstash Redis. Sidekiq is a Ruby based queue library with a Redis-based queue storage so you can use with Upstash Redis.

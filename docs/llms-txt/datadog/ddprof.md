@@ -8,7 +8,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Continuous Profiler > Enabling the Profiler > Enabling the Native
   Profiler for Compiled Languages
-source_url: https://docs.datadoghq.com/enabling/ddprof/index.html
 ---
 
 # Enabling the Native Profiler for Compiled Languages

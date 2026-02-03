@@ -1,14 +1,15 @@
-# Source: https://electric-sql.com/product/pglite.md
+# Source: https://electric-sql.com/products/pglite.md
 
 ---
-url: /product/pglite.md
-description: 'Sync into a lightweight WASM Postgres with real-time, reactive bindings.'
+url: /products/pglite.md
+description: >-
+  Embeddable Postgres with reactivity and sync. For a full database inside your
+  client or runtime.
 ---
 
 # PGlite&#x20;
 
-Sync into a lightweight WASM Postgres with
-real-time, reactive bindings.
+Embeddable Postgres with reactivity and sync. For a full database inside your client or runtime.
 
 ## Lightweight WASM Postgres
 
@@ -31,10 +32,14 @@ It can be used as an ephemeral [in-memory database](https://pglite.dev/docs/file
 
 ### Syncing into PGlite
 
-You can use [Electric](/product/electric) to sync between a cloud Postgres and an embedded PGlite instance. For example, to sync an `items` [Shape](/docs/guides/shapes) into an `items` table:
+You can use [Postgres Sync](/products/postgres-sync) to sync between a cloud Postgres and an embedded PGlite instance. For example, to sync an `items` [Shape](/docs/guides/shapes) into an `items` table:
 
 <<< @/src/partials/sync-into-pglite.tsx
 
+## Related posts
+
 ## More information
 
-See the PGlite website at [pglite.dev](https://pglite.dev) for comprehensive [Docs](https://pglite.dev/docs/), a list of [Examples](https://pglite.dev/examples) and a [live in-browser REPL](https://pglite.dev/repl/). The source code is on GitHub at [electric-sql/pglite](https://github.com/electric-sql/pglite).
+See the PGlite website at [pglite.dev](https://pglite.dev) for comprehensive [Docs](https://pglite.dev/docs/), a list of [Examples](https://pglite.dev/examples) and a [live in-browser REPL](https://pglite.dev/repl/).
+
+The source code is on GitHub at [electric-sql/pglite](https://github.com/electric-sql/pglite).

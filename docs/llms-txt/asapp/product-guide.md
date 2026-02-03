@@ -2,13 +2,9 @@
 
 # Source: https://docs.asapp.com/ai-productivity/ai-compose/product-guide.md
 
-# Source: https://docs.asapp.com/ai-productivity/ai-transcribe/product-guide.md
-
-# Source: https://docs.asapp.com/ai-productivity/ai-compose/product-guide.md
-
-# Source: https://docs.asapp.com/ai-productivity/ai-transcribe/product-guide.md
-
-# Source: https://docs.asapp.com/ai-productivity/ai-compose/product-guide.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # AI Compose Product Guide
 
@@ -18,7 +14,7 @@
 
 This page provides an overview of the features and functionalities in AI Compose.
 
-After AI Compose is integrated into your applications, you can use its features to scale up your agent responses.
+After you integrate AI Compose into your applications, you can use its features to scale up your agent responses.
 
 <Note>
   The following UI descriptions are examples of AI Compose Integrations with LivePerson and Salesforce.
@@ -37,7 +33,7 @@ The machine learning models powering AI Compose suggestions use the entire conve
 
 ### Response Library
 
-AI Compose suggests responses from a library curated from a wide range of domain-specific conversation topics. The response library is a combination of three lists:
+AI Compose suggests responses from a library curated from a wide range of domain-specific conversation topics. The response library combines three lists:
 
 <Frame>
   <img src="https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-2ee5ac6b-e459-ad20-3eea-939ce44e089a.png?fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=90c7e210b5dd27c3ea88d82cc5234fa3" data-og-width="1674" width="1674" data-og-height="739" height="739" data-path="image/uuid-2ee5ac6b-e459-ad20-3eea-939ce44e089a.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-2ee5ac6b-e459-ad20-3eea-939ce44e089a.png?w=280&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=bc30483c96df2fe5d75af28810e10870 280w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-2ee5ac6b-e459-ad20-3eea-939ce44e089a.png?w=560&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=c83ddd0102a21478ae4b3193d2b1ff9f 560w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-2ee5ac6b-e459-ad20-3eea-939ce44e089a.png?w=840&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=eae455fbce583099d93328d9500fbdd6 840w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-2ee5ac6b-e459-ad20-3eea-939ce44e089a.png?w=1100&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=45926e21408b05c09a28efe63d0867b4 1100w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-2ee5ac6b-e459-ad20-3eea-939ce44e089a.png?w=1650&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=c1ab56cabffd36db1dc4f36f0ac36d40 1650w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-2ee5ac6b-e459-ad20-3eea-939ce44e089a.png?w=2500&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=59a5be7292c84d21262dbadcddd41db5 2500w" />
@@ -45,7 +41,7 @@ AI Compose suggests responses from a library curated from a wide range of domain
 
 1. **Global response list:** Messages created and maintained by program administrators available to a designated full agent population.
 2. **Custom response list:** Messages created and maintained directly in AI Compose by individual agents; only available to the agent that created the message.
-3. **Organically growing response list:** Messages automatically created by ASAPP for each agent based on their most commonly used messages that do not already exist in the global response list or the agent's curated custom response list.
+3. **Organically growing response list:** Messages that ASAPP automatically creates for each agent based on their most commonly used messages that do not already exist in the global response list or the agent's curated custom response list.
 
 <Tip>
   Agents use custom responses to make their favorite messages readily available for sending quickly: well-honed explanations for difficult processes and concepts, discovery questions, personal anecdotes, and greetings and farewells infused with their personal style.  Agents often curate their custom responses based on global responses, with a bit of their own personal touch.
@@ -53,7 +49,7 @@ AI Compose suggests responses from a library curated from a wide range of domain
 
 ### Agent Interface
 
-AI Compose provides three complete response suggestions in the drawer above the composer both before typing begins and in the early stages of message composition; phrase completion suggestions are made directly in-line as more of a sentence is typed.
+AI Compose provides three complete response suggestions in the drawer above the composer both before typing begins and in the early stages of message composition; the system makes phrase completion suggestions directly in-line as the agent types more of a sentence.
 
 Agents can also search for a response in two places:
 
@@ -82,7 +78,7 @@ Once the agent begins typing, AI Compose provides two forms of autocomplete sugg
   <img src="https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-4fc5f306-00fa-07a2-a43e-6b950b1bb065.png?fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=cf32971e470d9f0692ad5201fd43c9d6" data-og-width="1197" width="1197" data-og-height="728" height="728" data-path="image/uuid-4fc5f306-00fa-07a2-a43e-6b950b1bb065.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-4fc5f306-00fa-07a2-a43e-6b950b1bb065.png?w=280&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=a4373b095d722e9d849263e546dfb132 280w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-4fc5f306-00fa-07a2-a43e-6b950b1bb065.png?w=560&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=5b44e423af04a78fdf074d224b6c82b6 560w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-4fc5f306-00fa-07a2-a43e-6b950b1bb065.png?w=840&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=77bcf6123b52680a0f788f865dbff259 840w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-4fc5f306-00fa-07a2-a43e-6b950b1bb065.png?w=1100&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=93fd50837bcad3b712157af8df107abe 1100w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-4fc5f306-00fa-07a2-a43e-6b950b1bb065.png?w=1650&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=7a98634df2eecc54653260e1181ed0ec 1650w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-4fc5f306-00fa-07a2-a43e-6b950b1bb065.png?w=2500&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=5a9c38cbf37235fe89092bb8b9a6bb88 2500w" />
 </Frame>
 
-Phrase completions are generated from common, high-frequency phrases used in each implementation's production conversations. AI Compose only makes phrase suggestions when a sufficiently high-confidence phrase is available and only uses language found in the global and custom response library.
+AI Compose provides phrase completions from common, high-frequency phrases used in each implementation's production conversations. AI Compose only makes phrase suggestions when a sufficiently high-confidence phrase is available and only uses language found in the global and custom response library.
 
 ### Templated Responses
 
@@ -108,7 +104,7 @@ Corrections are underlined in the composer for agent-awareness and can be undone
 
 **Profanity Blocking**
 
-AI Compose checks for profanity in messages when the agent attempts to send the message. If any terms match ASAPP's profanity criteria, the message will not be sent and the agent will be informed.
+AI Compose checks for profanity in messages when the agent attempts to send the message. If any terms match ASAPP's profanity criteria, the system does not send the message and informs the agent.
 
 ## Customization
 
@@ -121,7 +117,7 @@ The AI Compose suggestion model functions as a custom recommendation service for
 Prior to deployment, ASAPP can generate a domain-relevant global response list using representative historical conversations as an input. This is a highly recommended customization to ensure agents receive useful, relevant suggestions as early as possible.
 
 <Note>
-  If historical conversation data is unavailable prior to deploying AI Compose, production conversations after deployment can be used to adapt the response list at a later date.
+  If historical conversation data is unavailable prior to deploying AI Compose, you can use production conversations after deployment to adapt the response list at a later date.
 </Note>
 
 | **Option**      | **Description**                                                                                            | **Requirements**                                                 |
@@ -134,7 +130,7 @@ For more information on sending historical transcript files to ASAPP, see [Trans
 
 AI Compose can filter the global response list by agent queue/skill for a given conversation. For example, a subset of responses appropriate only for sales conversations can be labeled to be removed from technical troubleshooting conversations.
 
-Responses are labeled with applicable queue(s)/skill(s) and are unavailable for suggestion if their labels do not match the conversation.
+The system labels responses with applicable queue(s)/skill(s) and makes them unavailable for suggestion if their labels do not match the conversation.
 
 | **Option**                                  | **Description**                                                                                              | **Requirements**                          |
 | :------------------------------------------ | :----------------------------------------------------------------------------------------------------------- | :---------------------------------------- |
@@ -184,7 +180,7 @@ While the model may not initially have much indication on language that a partic
 
 **How does the suggestion model improve over time?**
 
-The model is automatically trained weekly on the latest historical data, informed by agent interactions with AI Compose at given moments of conversations. As more situational agent behaviors are observed, better response suggestions are surfaced at more relevant points in the conversation.
+The system automatically trains the model weekly on the latest historical data, informed by agent interactions with AI Compose at given moments of conversations. As the system observes more situational agent behaviors, it surfaces better response suggestions at more relevant points in the conversation.
 
 **Does the model adapt to topics not seen before?**
 

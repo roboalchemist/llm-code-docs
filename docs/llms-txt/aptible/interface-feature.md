@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/interface-feature.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Interface Feature Availability Matrix
 
 There are three supported methods for managing resources on Aptible:

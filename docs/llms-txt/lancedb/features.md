@@ -2,9 +2,9 @@
 
 # Source: https://docs.lancedb.com/enterprise/features.md
 
-# Source: https://docs.lancedb.com/features.md
-
-# Source: https://docs.lancedb.com/enterprise/features.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # LanceDB Enterprise vs OSS
 
@@ -82,8 +82,3 @@ LanceDB OSS makes sense when the entire dataset fits on one machine, daily traff
 Move to LanceDB Enterprise when you have petabyte-scale data, or you need latency to be below 200 ms, or you need higher query throughput towards thousands of QPS, or your business requires high availability, compliance controls, and vendor support.
 
 If these sound like your use cases, [reach out via this form](https://lancedb.com/contact/) and we can help you scope your workload and arrange an Enterprise proof of concept.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

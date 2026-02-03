@@ -4,153 +4,134 @@
 
 # Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/united-kingdom/regulated-financing-promotion-rules-101.md
 
-# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/united-states/regulated-financing-promotion-rules-101.md
-
-# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/sweden/regulated-financing-promotion-rules-101.md
-
-# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/united-kingdom/regulated-financing-promotion-rules-101.md
-
-# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/united-states/regulated-financing-promotion-rules-101.md
-
-# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/sweden/regulated-financing-promotion-rules-101.md
-
-# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/united-kingdom/regulated-financing-promotion-rules-101.md
-
-# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/united-states/regulated-financing-promotion-rules-101.md
-
-# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/sweden/regulated-financing-promotion-rules-101.md
-
-# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/united-kingdom/regulated-financing-promotion-rules-101.md
-
-# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/united-states/regulated-financing-promotion-rules-101.md
-
 # Regulated financing promotion rules 101
 
-## Financial services are highly regulated. This means that Klarna and our merchants who advertise with us need to follow the laws and regulations that govern advertising financial products.
+## If you advertise retail credit options which are regulated by the FCA, we recommend that you seek independent legal advice when undertaking any advertising. Using a non-compliant advert can result in enforcement action including fines and the withdrawal of your authorised status from the FCA. Klarna does not accept any liability  to Klarna merchants or other third parties for the information contained in this guide. Please keep up to date on the latest updates and changes to the regulations from  the relevant authorities, as the information provided in this guide may change.
 
-The following Financing Advertising Guidelines provide a general overview of the requirements you need to follow when advertising Klarna’s financing products offered in partnership with WebBank. Remember that it is also *your responsibility* to learn and understand the laws governing the advertising of financial products. If you ever have any questions, please reach out to Klarna. This Financing Advertising Guideline should be reviewed along with the [BNPL Promotion Rules 101](https://docs.klarna.com/resources/marketing-tools/advertising-legal-guidelines/united-states/bnpl-promotion-rules-101) page for the U**YOU ARE LEGALLY RESPONSIBLE FOR THE CONTENT OF ADVERTISING THAT YOU CREATE.** **THESE GUIDELINES DO NOT CONSTITUTE LEGAL ADVICE. PLEASE CONFER WITH YOUR INDEPENDENT LEGAL COUNSEL FOR ANY LEGAL ADVICE ON THE COMPLIANCE OF YOUR ADVERTISING.**
+<em>Important: Update to Klarna’s Firm Reference Number</em> Klarna Financial Services UK Ltd is now authorised by the FCA as an Electronic Money Institution (EMI) under **FRN** **1021834**, **replacing our previous FRN 987816**. To remain compliant please ensure you update all FRN references in all consumer-facing touchpoints - including websites, social content, checkout messaging, and legal disclosures. Klarna’s financing products are regulated credit agreements. **Financing **falls into two categories, **fixed sum credit **and **revolving credit **(also known as running account credit). **Fixed sum credit **is a regulated credit agreement with a fixed duration (term). Klarna offers fixed sum credit agreements from 6 months to 4 years. Fixed sum credit can be offered on interest-free or interest- bearing amounts and may incur a default fee if a repayment is missed **Revolving credit **is a regulated credit agreement with no fixed duration. This allows consumers to use their account on a rolling basis up to an agreed limit. Revolving credit can be offered with different interest rates (possibly at 0%) and may include a promotional period for a set period of time. Once this time has passed, if the consumer has not made sufficient repayments over the set period of time the promotion period is offered, any promotional interest rate will revert to Klarna’s standard rate of interest *Klarna Financing* is a fully-regulated credit product.
 
-## What disclosures do I need to make?
+## Regulatory and oversight regime
 
-***The following disclosures will need to be updated by April 22, 2025. See below for new disclosures.***
+This guide has been designed to help you understand the legal requirements when promoting or communicating finance options for consumers. This guide primarily contains information relevant to our regulated Financing products which are regulated credit agreements (“Financing Products”). **Do you need FCA authorisation as a credit broker?**If you offer our Financing products in the UK, you must obtain a credit broker license from the Financial Conduct Authority (FCA). A credit broker is a person who carries out certain activities by way of business in the UK, the most relevant of which are:
 
-| Product Referenced | Example Advertising Messaging (list not exhaustive) | Required Disclosure |
-|----|----|----|
-| **Financing** | Pay over time with monthly financing with Klarna. \*Shop now. Pay over time with Klarna. \*Split your purchase into monthly payments. | Monthly financing through Klarna issued by WebBank. |
-| **Financing (Representative Example)** | \*As low as \$60 every month. | A \$1,000 purchase might cost \$176.52 per month over 6 months at 19.99% APR.\* |
-| **Financing (Full Disclosure)** | \*As low as \$60 every month. | Rate ranges from 7.99%-33.99% APR based on creditworthiness and subject to credit approval, resulting in, for example, 12 equal monthly payments of \$86.98 at 7.99% APR to \$99.46 at 33.99% APR per \$1,000 borrowed. Minimum purchase required. A down payment may be required. Estimation of monthly payment excludes potential tax and shipping costs. Monthly financing through Klarna issued by WebBank. |
+- Effecting introductions relating to credit agreements
+- Presenting or offering an agreement that would, if entered into, be a regulated agreement
+- Assisting with preparatory work relating to entering into a regulated credit agreement
+- Entering into a regulated credit agreement on behalf of a lender.
 
-**Updated disclosures below should go live as of April 22, 2025**
+If you carry out any regulated activities without first being authorised by the FCA then you may be committing a criminal offence. **If you only offer BNPL Products products then you do not require a credit broker authorisation from the FCA. Any advertisements would, however, need to be approved by Klarna before published to a UK audience.** The rules applicable to advertising in the UK are found in both legislation and in self-regulatory industry codes of practice. The following authorities are responsible for regulating the advertising/financial promotion and communication with a consumer. **The Financial Conduct Authority (FCA)** The main aim of the FCA is to ensure that financial markets function well. In order to achieve this, it has three operational objectives which are to:
 
-### Legal disclosure table for Financing (Term Loan)
+- Secure an appropriate degree of protection for consumers
+- Protect and enhance the integrity of the UK financial system; and
+- Promote effective competition in the interests of consumers
 
-| Product Referenced | Example Advertising Messaging (list not exhaustive) | Required Disclosure |
-|----|----|----|
-| **Financing** | Pay over time with monthly financing with Klarna. \*Shop now. Pay over time with Klarna. \*Split your purchase into monthly payments. | Monthly financing through Klarna issued by WebBank. |
-| **Financing (Representative Example)** | \*As low as \$60 every month. | A \$1,000 purchase might cost \$173.53 per month over 6 months at 13.99% APR. |
-| **Financing (Representative Example Full Disclosure)** | \*As low as \$60 every month. | Rate ranges from 0.00%-35.99% APR based on creditworthiness, term length, and subject to credit approval, resulting in, for example, 3 equal monthly payments of \$333.33 at 0.00% APR to \$353.52 at 35.99% APR per \$1,000 borrowed. Minimum purchase amount and down payment may be required. Estimation of monthly payment excludes potential tax and shipping costs. Monthly financing through Klarna issued by WebBank. |
+It is committed to ensuring the consumer credit market works well and that customers are treated fairly. The FCA's Principles for Business (the Principles) and Consumer Credit Sourcebook (CONC) govern financial promotions issued, distributed or communicated by authorised credit broking firms to consumers. **The Advertising Standards Authority (ASA)** The ASA is the UK’s advertising regulator and is responsible for applying the Advertising Codes (the UK Code of Non-broadcast Advertising and Direct & Promotional Marketing and the UK Code of Broadcast Advertising) written by the Committee of Advertising Practice (CAP) and Broadcast Committee of Advertising Practice (BCAP). These apply to all UK firms.
 
-#### Additional required disclosures for Financing
+| ASA Powers | FCA Powers |
+|----------|----------|
+| The ASA considers all complaints about non-technical aspects of advertisements in non-broadcast media. For example, offence, social responsibility, fear and distress and competitor denigration. The ASA also assesses complaints about broadcast advertisements and liaises with the FCA on technical matters, as appropriate. The ASA investigates general advertising complaints and can: * Require changes to advertising or ban advertising * Publish findings and decisions on the ASA website * Refer financial advertising to the FCA * Refer a complaint to Trading Standards, who have a broader range of enforcement powers available to them. Trading Standards can, for example, take legal action resulting in possible (unlimited) fines and/or imprisonment * Liaise with the Competition & Markets Authority (CMA) in respect of an issue | The FCA monitors and investigates compliance with the Principles, CONC and its other rules generally and has a variety of powers, including swift direct intervention with firms to force the immediate amendment or withdrawal of financial promotions which contravene its financial promotion rules under section 137S of the FSMA. The FCA also has the power to, amongst other things: * Ban financial promotions * Issue fines and public censure * Take legal action which may result in fines or imprisonment; and * Vary or remove FCA permissions |
 
-The following disclosures are required under TILA if you use “trigger terms” in your advertising for **<u>Klarna's financing product.</u>**
+As the FCA does not pre-approve promotions, it is incumbent on senior management of those firms making such promotions to make sure they remain compliant. **Other guidelines that apply to financial promotions.** Financial promotions are subject to a variety of laws and rules, some of which we consider in this guide alongside the detailed CONC requirements, which may include:
 
-| Trigger Term | Trigger Term Example (examples not exhaustive) | Required Disclosure |
-|----|----|----|
-| **Periodic Payment Amount** | \* As low as \$60 every month. | Representative Example and Representative Example Full Disclosure required. |
-| **Number of payments or period of repayment** | \* 6 payments or 6 months. | Representative Example and Representative Example Full Disclosure required. |
-| **Amount of interest (APR)** | \* As low as 0% APR. | Representative Example and Representative Example Full Disclosure required. |
-| **Amount of down payment** | \* No money down. | Representative Example and Representative Example Full Disclosure required. |
+- **Consumer Protection from Unfair Trading Regulations 2008** – set out the commercial practices, of which advertising is one
+- **Business Protection from Misleading Marketing Regulations 2008**
+- **Consumer Rights Act 2015**
 
-### When do I need to use these disclosures?
+## Regulated Financing disclosures
 
-If your ad mentions**monthly financing *at all*,**the following disclosure is required to be included in the marketing materials. 
+### Risk warnings
 
-- ***Disclosure**: \*Monthly financing through Klarna issued by WebBank.*
+For regulated credit products. Financial promotions may contravene the FCA’s ‘clear, fair and not misleading’ rules if they omit relevant risk warnings. Examples of relevant risk warnings for regulated products include:
 
-**Examples of messaging that references monthly financing**(this list is not exhaustive).
+- Late or missing repayments may have serious consequences for you and cause you serious money problems.
+- Your credit rating may be affected which will make it more difficult or more expensive for you to obtain credit in the future.
 
-- Pay over time with monthly financing.\* 
+### Disclosures (wording examples)
 
-## If your ad refers to Pay in 4 and/or Pay in 30; AND monthly financing
+- Outlined below are our recommended disclosures for your advertising of Klarna's Financing products. Please ensure you apply the correct disclosure for your situation.
 
-If your ad mentions *both* **Pay in 4** and/or **Pay in 30** and **monthly financing**, the following disclosure is required to be included in the marketing materials: 
+REMEMBER that you must always add a risk warning.
 
-- ***Disclosure:** Monthly financing through Klarna issued by WebBank. Other CA resident loans made or arranged pursuant to a California Financing Law license.*
+## Disclosures to use from December 2023
 
-## If your ad references payment terms or interest rates for financing.
+### Disclosure 1 – Example of credit broker disclosure wording for regulated credit products – use if you offer products provided exclusively by Klarna.
 
-If you list payment terms when referring to Klarna’s monthly financing products offered through Klarna’s partnership with WebBank, you need to understand the Truth-in-Lending Act. Please work with your legal and compliance teams to review the next sections carefully.
+**\[Merchant’s legal entity name and postal address (as it appears on the FCA Register)\] is authorised and regulated by the Financial Conduct Authority ("FCA") (FCA FRN XXXXX)**and acts as a credit intermediary and not a lender, offering credit products provided exclusively by Klarna Financial Services UK Limited (company number 14290857), which is authorised and regulated by the FCA by the FCA for carrying out regulated consumer credit activities (firm reference number 987889), and for the provision of payment services under the Electronic Money Regulations 2011 (firm reference number 1021834). Finance is only available to permanent UK residents aged 18+, subject to status, T&Cs apply. Klarna.com/uk/terms-and-conditions **\[Insert postal address of the firm making the financial promotion if required\*\]** **Remember to always add an appropriate risk warning to the promotion which needs to be prominently displayed above the disclosure and near to the benefits being promoted.**
 
-### The Truth-in-Lending Act (TILA)
+### Disclosure 2 – Example of credit broker disclosure wording for regulated credit products – use if you offer products provided by a limited number of finance providers.
 
-You have to disclose important terms of credit to a consumer when you advertise Klarna’s financing products offered in partnership with WebBank. When advertising the terms of this type of credit, advertisements can only state terms that are *actually available*. When you mention specific terms of credit (called “*trigger terms*”), TILA requires you to provide specific information about the terms of the financing. This is referred to as a "*representative example"* of what a real loan might look like. This helps consumers understand what they are agreeing to.
+**\[Merchant’s legal entity name and postal address (as it appears on the FCA Register)\] is authorised and regulated by the Financial Conduct Authority ("FCA") (FCA FRN XXXXX)** and acts as a credit intermediary and not a lender, offering credit products provided by a limited number of finance providers, including Klarna Financial Services UK Limited (company number 14290857), which is authorised and regulated by the FCA for carrying out regulated consumer credit activities (firm reference number 987889), and for the provision of payment services under the Electronic Money Regulations 2011 (firm reference number 1021834). **\[Insert postal address of the firm making the financial promotion if required\*\]** **Remember to always add an appropriate risk warning to the promotion which needs to be prominently displayed above the disclosure and near to the benefits being promoted.**
 
-### What are trigger terms?
+### Disclosure 3 – Example of credit broker disclosure wording for regulated and unregulated finance options – use if your financial promotion includes both regulated and unregulated finance options.
 
-The following are examples of trigger terms. If you use these, you need to provide a representative example.
+**\[Merchant’s legal entity name and postal address (as it appears on the FCA Register)\] is authorised and regulated by the Financial Conduct Authority (FCA FRN XXXXX)** and acts as a credit intermediary and not a lender, offering credit products provided \[exclusively by Klarna Financial Services UK Limited\] \[by a limited number of finance providers, including Klarna Financial Services UK Limited\]. Please note that \[Pay in 3 instalments\] \[and\] \[Pay in 30 days\] agreements are not regulated by the FCA. Finance is only available to permanent UK residents aged 18+, subject to status, T&Cs and late fees apply. Klarna.com/uk/terms-and-conditions **\[insert postal address of the firm making the financial promotion if required\*\]** **Remember to always add an appropriate risk warning to the promotion which needs to be prominently displayed above the disclosure and near to the benefits being promoted.**
 
-- The periodic payment amount (e.g., \$60/every month). 
-- The number of payments or period of repayment (e.g., 6 payments or 6 months).
-- The amount of interest.
-- The amount or percentage of any down payment.
+### Disclosure 4 – Example of merchant’s website/ promotions disclosure for Buy Now Pay Later products only. This needs to be in addition to or part of your standard disclosure.
 
-### What aren’t trigger terms
+Klarna’s \[Pay in 3 instalments\] \[and\] \[Pay in 30 days\] are unregulated credit agreements.Borrowing more than you can afford or paying late may negatively impact your financial status and ability to obtain credit. 18+, UK residents only. Subject to status. [Ts&Cs and late fees apply.](https://www.klarna.com/uk/terms-and-conditions/) **Remember to always add an appropriate risk warning in the disclosure which needs to be prominently displayed above the disclosure and near the top the benefits being promoted.**
 
-The following words aren’t trigger terms. If you use them without the above mentioned trigger terms, you don’t need to include a representative example.
+## Restricted Expressions
 
-- Klarna.
-- Monthly payments.
-- Pay over time
-- Financing
-- Term loan
-- Pay later.
-- Pay in 4.
-- Pay in 30 days.
+Be careful when using these phrases in your advertising of Klarna's regulated Financing products **“Overdraft”**, must not be used, **unless**you are offering a running-account credit agreement  which enables a consumer to overdraw on a  current account  **“Interest free”**, or any similar **expression**, must not be stated unless the total amount payable does not exceed the cash price  **“No deposit”**, can only be used where there are no advance payments to be made  **“Gift”**, **“present”**, or any similar expression can only be used where there are no conditions which would require a consumer to repay the credit or return the  item that is the subject of the claim  **“Weekly equivalent”**or any similar expression or other periodical equivalent, unless weekly repayment or the other periodical payments  are provided for under the agreement
 
-### Representative example and disclosure
+## Representative annual percentage rate (APR)
 
-If you use a *trigger term,* you have to provide a (i) *<u>representative example</u>* and (ii) <u>*full* *disclosure*</u> to consumers. A **representative example** shows what a typical loan looks like and needs to include the following information:
+When a financial promotion must  include a representative APR.
 
-- Monthly payment.
-- Number of months.
-- Total payment/purchase price
-- Amount of any down payment.
-- Representative Annual percentage rate
+### When a financial promotion must include a representative APR
 
-The **full disclosure** provides consumers with all of the information that they need to make an informed decision about the financing offer. It includes:
+Unless the representative APR is 0%, the representative  APR will need to be clearly displayed within the  example. The representative APR must also be shown  when a financial promotion: 
 
-- Available APRs
-- Important conditions and limitations Klarna's financing products offered in partnership with WebBank
-- A clear range of payments so consumers understand how APRs affect their monthly payment.
+- States or implies that credit is available to persons  who might consider their access to credit restricted 
+- Includes a favourable comparison relating to the  credit, whether express or implied, with another  person, product or service; or 
+- Includes an incentive to apply for credit or to  enter into an agreement under which credit is  provided (e.g. the speed or ease of processing the  application, considering or granting an application,  or making funds available to apply for credit or enter  into a credit agreement etc.) 
 
-#### Klarna financing (term loan) representative example:
+The content of your promotion will determine  whether the representative APR can be shown in  isolation or whether it must be shown as part of the  ‘representative example’.  The representative APR is the APR at or below which  you reasonably expect, at the date on which the  promotion is communicated, that credit would be  provided under at least 51% of the credit agreements  which will be entered into as a result of the promotion.  In other words, the % APR that consumers are most  likely to be approved for, should be used as your  representative APR.  A representative APR must be shown as a % APR’  and used with the word ‘representative’. Where a  representative APR is subject to change it must be  accompanied by the word “variable’’.   It should be noted that the representative APR must be  given no less prominence than any of the other matters  referred to in this guide (e.g. an inducement or an  incentive to apply for credit etc.). 
 
-For the closed term loan financing product, we have approved the following in the representative example. Please place the representative example on the same creative as the trigger term—in close proximity, and in a similar font size.
+### Calculation of the annual percentage rate of charge
 
-- A \$1,000 purchase might cost \$173.53 per month over 6 months at 13.99% APR.
+The annual percentage rate of charge is calculated  in accordance with the mathematical formula set out in **CONC**.  **Triggers for showing representative APR**
 
-#### Klarna financing (term loan) full disclosure:
+- Our lowest rates ever
+- Been refused for credit?
+- Apply for credit today and get a free pen
+- Simple, quick and easy credit - why wait? Apply now!
+- Get 10% discount on any credit purchase if you apply before 31st March
 
-You **must also include** the following full legal disclosure (1) on the asset, (2) at the bottom of the page connected with a signal, or (3) one click away.
+**Does not trigger the need to show a representative APR**
 
-- Rate ranges from 0.00%-35.99% APR based on creditworthiness, term length, and subject to credit approval, resulting in, for example, 3 equal monthly payments of \$333.33 at 0.00% APR to \$353.52 at 35.99% APR per \$1,000 borrowed. Minimum purchase amount and down payment may be required. Estimation of monthly payment excludes potential tax and shipping costs. Monthly financing through Klarna issued by WebBank.
+- We offer efficient friendly consumer service
+- We act as a credit broker not a lender
 
- If you have any questions or are unsure, please reach out to your Klarna representative for advice. See "[Basics of Disclosures](https://docs.klarna.com/resources/marketing-tools/advertising-legal-guidelines/united-states/bnpl-promotion-rules-101)" for more information on disclosure placements and signals.
+## Representative Example
 
-## Guidance for email sendouts, video-ads, and TV-spots
+### When a financial  promotion must include a  representative example. 
 
-​**Emails with TILA trigger terms must include the full terms of repayment or a representative example in the email itself, not one click away. Please ensure that you have reviewed this Financing section and the [legal disclosures table](https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/united-states.md) to ensure all appropriate disclosures are included.**
+Where a financial promotion includes **a rate of interest**(excluding the representative APR) or **an amount relating to the cost of credit**it must include a ‘**representative example**’, and **specify a postal address of the firm making the financial  promotion**(i.e. the postal address of the merchant).  A rate of interest for this purpose is not limited  to an annual rate of interest and would include a  monthly or daily rate or an APR. An amount relating  to the cost of credit would include the amount  of any fee or charge, or any repayment of credit  (where it includes interest or other charges).  It should be noted that a firm making the  financial promotion does not need to specify a postal address when the promotion is being  communicated by television or radio broadcast, or  is on the firm’s premises, unless the promotion is  made in writing which the consumer can take away.  The representative example must comprise the  information listed in the standard information as  shown on the following page and must be  accompanied by the words ‘’representative  example’’. It must be representative of agreements  to which the representative APR applies and which  are expected to result from the advertisement.  The representative example is unlikely to be  representative if, for example, most consumers  entering into agreements as a result of the financial  promotion are likely to do so for a lower amount of credit than that indicated in the example, or with  higher rates of interest or other charges than those  indicated in the example. **A representative example MUST**also include all of the following for a **fixed sum regulated  credit agreement (fixed duration): **
 
-- If the subject line has a trigger term, a representative example needs to be clear and conspicuous in the body of the email. 
-- The subject line and sender must be accurate and not misleading.
-- If the body of the email has a trigger term, a representative example needs to be clear and conspicuous and near the trigger term.
-- Marketing emails must comply with the CAN-SPAM requirements.
+1.  The rate of interest and whether it is fixed  or variable or both, expressed as a fixed or  variable percentage applied on an annual  basis to the amount of credit drawn down 
+2.  The nature and amount of any other charge  included in the total charge for credit 
+3.  The total amount of credit  
+4.  The representative APR 
+5.  In the case of credit in the form of a  deferred payment for specific goods,  services or other things, the cash price  and the amount of any advance payment 
+6.  The duration of the agreement 
+7.  Total amount payable; and 
+8.  The amount of each repayment of credit  
 
-**If your ads are in a Video and/or TV-spot**For any videos/TV spots that mention trigger terms, a representative example needs to be included. 
+**The information contained in a representative  example must be: **
 
-- All other relevant legal disclosures must be made.
-- Disclosures can be verbal or shown on screen.
-- Disclosures must be legible to a reasonable person (8 pt. or larger).
-- Introduction of disclosures: Be sure they’re introduced at the same time as or before the trigger term, with enough video left to keep it on screen for the required length of time.
-- Disclosures can be over any visual as long as they’re visible at the bottom.
-- Disclosures need to be based on a reading time of 3 words/second.
+- Specified in a clear, concise and prominent way 
+- Accompanied by the words “representative example” 
+- Presented together, with each item of  information being given equal prominence 
+
+**And given no less prominence than: **
+
+- Any other information relating to the cost of  credit in the financial promotion; and 
+- Any indication or incentive encouraging the  consumer to apply for credit 
+
+**Guidance on total charge for credit** The total cost of credit represents the true cost to  the borrower of the credit provided, or to be provided,  under a regulated credit agreement and includes  fees and/or charges payable by the consumer to  a credit broker.  **Guidance on the total amount  of credit** The total amount of credit equates to the sum available  to the consumer to use under the credit agreement (i.e.  the credit limit) and does not include charges which are  financed by the credit agreement; those are part of the  total charge for credit.
+
+### Representative Example (layout examples)
+
+
+![klarna docs image](b18c8b65-ec73-4094-b31c-70b46aa875cf-Representative-Example-Layout.jpeg)image

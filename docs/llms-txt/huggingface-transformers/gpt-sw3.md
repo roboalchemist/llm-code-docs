@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/gpt-sw3.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/gpt-sw3.md
 
 # GPT-Sw3
 
@@ -49,11 +49,11 @@ Note that sentencepiece is required to use our tokenizer and can be installed wi
 
 #### transformers.GPTSw3Tokenizer[[transformers.GPTSw3Tokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/gpt_sw3/tokenization_gpt_sw3.py#L21)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/gpt_sw3/tokenization_gpt_sw3.py#L21)
 
 Construct an GPTSw3 tokenizer. Based on [SentencePiece](https://github.com/google/sentencepiece).
 
-This tokenizer inherits from [PreTrainedTokenizer](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.PythonBackend) which contains most of the main methods. Users should refer to
+This tokenizer inherits from [PreTrainedTokenizer](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.PythonBackend) which contains most of the main methods. Users should refer to
 this superclass for more information regarding those methods.
 
 Example usage:
@@ -65,7 +65,7 @@ Example usage:
 [1814, 377, 3617, 63504]
 ```
 
-save_vocabularytransformers.GPTSw3Tokenizer.save_vocabularyhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_sentencepiece.py#L238[{"name": "save_directory", "val": ": str"}, {"name": "filename_prefix", "val": ": typing.Optional[str] = None"}]- **save_directory** (`str`) --
+save_vocabularytransformers.GPTSw3Tokenizer.save_vocabularyhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_sentencepiece.py#L237[{"name": "save_directory", "val": ": str"}, {"name": "filename_prefix", "val": ": str | None = None"}]- **save_directory** (`str`) --
   The directory in which to save the vocabulary.
 - **filename_prefix** (`str`, *optional*) --
   An optional prefix to add to the named of the saved files.0`tuple(str)`Paths to the files saved.

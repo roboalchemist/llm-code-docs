@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/qstash/quickstarts/aws-lambda/python.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AWS Lambda (Python)
 
 [Source Code](https://github.com/upstash/qstash-examples/tree/main/aws-lambda/python-example)

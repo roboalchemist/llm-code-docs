@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/sdks/languages/go.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Infisical Go SDK
 
 If you're working with Go, the official Infisical Go SDK package is the easiest way to fetch and work with secrets for your application.
@@ -54,8 +58,8 @@ This example demonstrates how to use the Infisical Go SDK in a simple Go applica
 
 <Warning>
   We do not recommend hardcoding your [Machine Identity
-  Tokens](/documentation/platform/identities/machine-identities). Setting it as an environment variable
-  would be best.
+  Tokens](/documentation/platform/identities/machine-identities). Setting it as
+  an environment variable would be best.
 </Warning>
 
 # Installation
@@ -280,6 +284,135 @@ if err != nil {
   os.Exit(1)
 }
 ```
+
+#### JWT Auth
+
+<Info>
+  Please note that this authentication method requires a valid JWT token from
+  your JWT issuer. Please [read
+  more](/documentation/platform/identities/jwt-auth) about this authentication
+  method.
+</Info>
+
+**Using the SDK**
+
+```go  theme={"dark"}
+credential, err := client.Auth().JwtAuthLogin("MACHINE_IDENTITY_ID", "JWT_TOKEN")
+
+if err != nil {
+  fmt.Println(err)
+  os.Exit(1)
+}
+```
+
+#### LDAP Auth
+
+<Info>
+  Please note that this authentication method requires LDAP credentials. Please
+  [read more](/documentation/platform/identities/ldap-auth/general) about this
+  authentication method.
+</Info>
+
+**Using environment variables**
+
+You can set the `INFISICAL_LDAP_AUTH_IDENTITY_ID` environment variable and pass empty string for the identity ID:
+
+```go  theme={"dark"}
+credential, err := client.Auth().LdapAuthLogin("", "LDAP_USERNAME", "LDAP_PASSWORD")
+
+if err != nil {
+  fmt.Println(err)
+  os.Exit(1)
+}
+```
+
+**Using the SDK directly**
+
+```go  theme={"dark"}
+credential, err := client.Auth().LdapAuthLogin("MACHINE_IDENTITY_ID", "LDAP_USERNAME", "LDAP_PASSWORD")
+
+if err != nil {
+  fmt.Println(err)
+  os.Exit(1)
+}
+```
+
+#### OCI Auth
+
+<Info>
+  Please note that this authentication method will only work if you're running
+  your application on Oracle Cloud Infrastructure. Please [read
+  more](/documentation/platform/identities/oci-auth) about this authentication
+  method.
+</Info>
+
+**Using environment variables**
+
+You can set the `INFISICAL_OCI_AUTH_IDENTITY_ID` environment variable and omit the `IdentityID` field:
+
+```go  theme={"dark"}
+credential, err := client.Auth().OciAuthLogin(infisical.OciAuthLoginOptions{
+  UserID:      "USER_OCID",
+  TenancyID:   "TENANCY_OCID",
+  Fingerprint: "FINGERPRINT",
+  PrivateKey:  "PRIVATE_KEY",
+  Region:      "REGION",
+})
+
+if err != nil {
+  fmt.Println(err)
+  os.Exit(1)
+}
+```
+
+**Using the SDK directly**
+
+```go  theme={"dark"}
+credential, err := client.Auth().OciAuthLogin(infisical.OciAuthLoginOptions{
+  IdentityID:  "MACHINE_IDENTITY_ID",
+  UserID:      "USER_OCID",
+  TenancyID:   "TENANCY_OCID",
+  Fingerprint: "FINGERPRINT",
+  PrivateKey:  "PRIVATE_KEY",
+  Region:      "REGION",
+  Passphrase:  nil, // Optional: pointer to string if your private key has a passphrase
+})
+
+if err != nil {
+  fmt.Println(err)
+  os.Exit(1)
+}
+```
+
+**OciAuthLoginOptions fields:**
+
+* `IdentityID` (string) - Your Infisical Machine Identity ID. Can be set via `INFISICAL_OCI_AUTH_IDENTITY_ID` environment variable.
+* `UserID` (string) - Your OCI user OCID.
+* `TenancyID` (string) - Your OCI tenancy OCID.
+* `Fingerprint` (string) - Your OCI API key fingerprint.
+* `PrivateKey` (string) - Your OCI private key (PEM format).
+* `Region` (string) - Your OCI region (e.g., `us-ashburn-1`).
+* `Passphrase` (\*string) - Optional: pointer to passphrase string if your private key is encrypted.
+
+## Organization Authentication
+
+All SDK authentication methods support logging into a sub-organization that your machine identity has access to. This is optional and only necessary when attempting to authenticate into a sub-organization using an identity created at the root organization.
+
+Use the `.Auth().WithOrganizationSlug("<organization-slug>")` method to specify which organization to authenticate against:
+
+```go  theme={"dark"}
+_, err := client.Auth().WithOrganizationSlug("ORGANIZATION_SLUG").UniversalAuthLogin("CLIENT_ID", "CLIENT_SECRET")
+
+if err != nil {
+  fmt.Println(err)
+  os.Exit(1)
+}
+```
+
+<Note>
+  If no organization slug is provided, the authentication session defaults to
+  the organization where the machine identity was originally created.
+</Note>
 
 ## Secrets
 
@@ -1081,7 +1214,9 @@ res, err := client.Kms().Signing().ListSigningAlgorithms(infisical.KmsListSignin
 ### Get Public Key
 
 <Note>
-  This method is only available for keys with key usage `sign-verify`. If you attempt to use this method on a key that is intended for encryption/decryption, it will return an error.
+  This method is only available for keys with key usage `sign-verify`. If you
+  attempt to use this method on a key that is intended for
+  encryption/decryption, it will return an error.
 </Note>
 
 `client.Kms().Signing().GetPublicKey(options)`

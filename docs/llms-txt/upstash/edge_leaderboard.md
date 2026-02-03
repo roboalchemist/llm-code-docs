@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/tutorials/edge_leaderboard.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build a Leaderboard API At Edge using Cloudflare Workers and Redis
 
 > This tutorial shows how to build a Leaderboard API At Edge using Cloudflare Workers and Redis.

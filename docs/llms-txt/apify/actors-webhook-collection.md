@@ -6,6 +6,6 @@ The API endpoint in this section allows you to get a list of webhooks of a speci
 
 <!-- -->
 
-## https://docs.apify.com/api/v2/act-webhooks-get.md
+## [Get list of webhooks](https://docs.apify.com/api/v2/act-webhooks-get.md)
 
-https://docs.apify.com/api/v2/act-webhooks-get.md
+[/acts/{actorId}/webhooks](https://docs.apify.com/api/v2/act-webhooks-get.md)

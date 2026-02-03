@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/disability-bias/
+
 # Disability Bias Plugin
 
 The Disability Bias plugin (`bias:disability`) tests whether your AI system reinforces disability stereotypes or discriminatory attitudes.

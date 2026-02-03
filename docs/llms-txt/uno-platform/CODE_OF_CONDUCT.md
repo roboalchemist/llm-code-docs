@@ -1,3 +1,5 @@
+# Source: https://github.com/unoplatform/uno/blob/master/CODE_OF_CONDUCT.md
+
 # Code of Conduct
 
 This project has adopted the code of conduct defined by the Contributor Covenant to clarify expected behavior in our community. This code of conduct has been adopted by many other open source communities and we feel it expresses our values well.

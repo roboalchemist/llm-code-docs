@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/integrations/kloudmate.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Observability with KloudMate and OpenLLMetry
 
 <Frame>
@@ -14,8 +18,3 @@ TRACELOOP_HEADERS="Authorization=<YOUR_KM_SECRET_KEY>"
 ```
 
 For more information check out the [docs](https://docs.kloudmate.com/).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

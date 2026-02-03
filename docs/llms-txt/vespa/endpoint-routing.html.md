@@ -60,7 +60,7 @@ If all deployments of an endpoint are deactivated, requests are distributed as i
 
 While Vespa Cloud is hosted in AWS, clients that talk to Vespa Cloud from AWS nodes will be treated as any other client from the Internet. This means clients in AWS will generate regular Internet egress traffic even though they are talking to a service in AWS in the same zone.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

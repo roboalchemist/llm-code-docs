@@ -33,6 +33,229 @@ export default function BasicLegend() {
 
 ```
 
+## Toggle visibility
+
+You can enable interactive visibility toggling by setting the `toggleVisibilityOnClick` prop to `true`.
+When enabled, clicking on a legend item hides or shows the corresponding series or data item in the chart.
+
+Hidden items are visually indicated in the legend with reduced opacity.
+
+```tsx
+import * as React from 'react';
+import { BarChart } from '@mui/x-charts/BarChart';
+import { dataset, valueFormatter } from '../dataset/weather';
+
+const chartSetting = {
+  xAxis: [
+    {
+      label: 'rainfall (mm)',
+    },
+  ],
+  height: 300,
+};
+
+export default function ToggleSeriesVisibility() {
+  return (
+    <BarChart
+      dataset={dataset}
+      yAxis={[{ scaleType: 'band', dataKey: 'month' }]}
+      series={[
+        { dataKey: 'london', label: 'London', valueFormatter },
+        { dataKey: 'paris', label: 'Paris', valueFormatter },
+        { dataKey: 'newYork', label: 'New York', valueFormatter },
+      ]}
+      layout="horizontal"
+      slotProps={{
+        legend: {
+          toggleVisibilityOnClick: true,
+        },
+      }}
+      {...chartSetting}
+    />
+  );
+}
+
+```
+
+### Visibility change callback
+
+You can listen to visibility changes using the `onHiddenItemsChange` prop on the chart component.
+This callback receives an array of hidden item identifiers whenever the visibility state changes.
+
+To set the initial hidden items, you can use the `initialHiddenItems` prop.
+
+The following demo shows a line chart where you can toggle series' visibility and see the count of currently visible series.
+
+```tsx
+import * as React from 'react';
+import { LineChart } from '@mui/x-charts/LineChart';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import type { VisibilityIdentifier } from '@mui/x-charts/plugins';
+
+const series = [
+  { id: 'series-a', data: [20, 30, 25, 40, 30], label: 'Series A' },
+  { id: 'series-b', data: [15, 25, 20, 35, 20], label: 'Series B' },
+  { id: 'series-c', data: [10, 20, 15, 30, 25], label: 'Series C' },
+];
+
+export default function VisibilityOnChange() {
+  const [hiddenItems, setHiddenItems] = React.useState<VisibilityIdentifier[]>([]);
+
+  const visibleCount = series.length - hiddenItems.length;
+
+  return (
+    <Stack direction="column" spacing={2} width={'100%'}>
+      <LineChart
+        series={series}
+        height={300}
+        slotProps={{
+          legend: {
+            toggleVisibilityOnClick: true,
+          },
+        }}
+        initialHiddenItems={[{ type: 'line', seriesId: 'series-a' }]}
+        onHiddenItemsChange={(newHiddenItems) => setHiddenItems(newHiddenItems)}
+      />
+      <Typography variant="body2" textAlign="center">
+        Visible series: {visibleCount} / {series.length}
+      </Typography>
+    </Stack>
+  );
+}
+
+```
+
+:::info
+The `toggleVisibilityOnClick` prop can be combined with the `onItemClick` handler.
+When both are in use, the `onItemClick` callback is called first, followed by `onHiddenItemsChange`.
+:::
+
+### Controlled visibility
+
+You can control the visibility state externally using the `hiddenItems` prop.
+This prop accepts an array of item identifiers that should be hidden in the chart.
+
+Different chart types have different identifier formats:
+
+- All identifiers require a `type` field indicating the series type (for example, `'line'`, `'bar'`, `'pie'`, etc.).
+- Use `VisibilityIdentifier` type to build such identifiers.
+  - It accepts a series type as generic parameter, and can be used as `VisibilityIdentifier<'line'>` in order to narrow the allowed values.
+
+The demo below shows how to control which items are visible using buttons.
+
+```tsx
+import * as React from 'react';
+import { PieChart } from '@mui/x-charts/PieChart';
+import Stack from '@mui/material/Stack';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import type { VisibilityIdentifier } from '@mui/x-charts/plugins';
+
+const data = [
+  { value: 10, label: 'Series A' },
+  { value: 15, label: 'Series B' },
+  { value: 20, label: 'Series C' },
+];
+
+export default function ControlledVisibility() {
+  const [hiddenItems, setHiddenItems] = React.useState<
+    VisibilityIdentifier<'pie'>[]
+  >([{ type: 'pie', seriesId: 'custom', dataIndex: 0 }]);
+
+  const handleShowAll = () => {
+    setHiddenItems([]);
+  };
+
+  const handleHideAll = () => {
+    setHiddenItems([
+      { type: 'pie', seriesId: 'custom', dataIndex: 0 },
+      { type: 'pie', seriesId: 'custom', dataIndex: 1 },
+      { type: 'pie', seriesId: 'custom', dataIndex: 2 },
+    ]);
+  };
+
+  const handleShowOnlyA = () => {
+    setHiddenItems([
+      { type: 'pie', seriesId: 'custom', dataIndex: 1 },
+      { type: 'pie', seriesId: 'custom', dataIndex: 2 },
+    ]);
+  };
+
+  const handleToggleChange = (
+    _event: React.MouseEvent<HTMLElement>,
+    newValue: string | null,
+  ) => {
+    if (newValue === 'all') {
+      handleShowAll();
+    } else if (newValue === 'none') {
+      handleHideAll();
+    } else if (newValue === 'onlyA') {
+      handleShowOnlyA();
+    }
+  };
+
+  const getCurrentValue = () => {
+    const allVisible = hiddenItems.length === 0;
+    const allHidden = hiddenItems.length === data.length;
+    const onlyAVisible =
+      hiddenItems.length === 2 &&
+      hiddenItems[0].dataIndex === 1 &&
+      hiddenItems[1].dataIndex === 2;
+
+    if (allVisible) {
+      return 'all';
+    }
+    if (allHidden) {
+      return 'none';
+    }
+    if (onlyAVisible) {
+      return 'onlyA';
+    }
+    return null;
+  };
+
+  return (
+    <Stack spacing={2}>
+      <FormControl sx={{ mb: 2 }}>
+        <FormLabel>Controlled Highlighting</FormLabel>
+        <ToggleButtonGroup
+          value={getCurrentValue()}
+          exclusive
+          onChange={handleToggleChange}
+          aria-label="highlight control"
+          size="small"
+        >
+          <ToggleButton value="all" aria-label="show all nodes">
+            Show All
+          </ToggleButton>
+          <ToggleButton value="none" aria-label="show no nodes">
+            Hide All
+          </ToggleButton>
+          <ToggleButton value="onlyA" aria-label="show only node A">
+            Show Only A
+          </ToggleButton>
+        </ToggleButtonGroup>
+      </FormControl>
+      <PieChart
+        series={[{ id: 'custom', data }]}
+        height={300}
+        hiddenItems={hiddenItems}
+        slotProps={{
+          legend: {
+            toggleVisibilityOnClick: true,
+          },
+        }}
+        onHiddenItemsChange={(newIdentifiers) => setHiddenItems(newIdentifiers)}
+      />
+    </Stack>
+  );
+}
+
+```
+
 ## Customization
 
 This section explains how to customize the legend using classes and properties.

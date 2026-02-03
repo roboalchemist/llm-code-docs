@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-cli-tasks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # tasks
 
 # `fastmcp.cli.tasks`
@@ -34,8 +38,3 @@ Start an additional worker to process background tasks.
 Connects to your Docket backend and processes tasks in parallel with
 any other running workers. Configure via environment variables
 (FASTMCP\_DOCKET\_\*).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://gofastmcp.com/llms.txt

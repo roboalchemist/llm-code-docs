@@ -2,6 +2,8 @@
 
 # Organization & Roles
 
+Copy page
+
 An *Organization* represents a collection of preferences that apply to all your *Products* and *Members* in that *Organization*. This includes things like billing information, sign-in methods, and data privacy settings.
 
 The *Manage Organization* menu is only available for *Organization Admins*.

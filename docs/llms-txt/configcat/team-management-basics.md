@@ -2,6 +2,8 @@
 
 # Team Management Basics
 
+Copy page
+
 *Team members* are your friends, colleagues, and clients who work on the same *Product*. You can invite as many of them to your *Product* as you want.
 
 The following guide provides an overview of how to manage your team in ConfigCat.
@@ -19,7 +21,7 @@ You can modify their permission group later anytime.
 
 You can manage your team on the [Team Members page](https://app.configcat.com/product/members) of every Product.
 
-*Organization Admins* have unlimited access to every Product under an Organization, their permissions can't be edited under the product. [Read more on Organization Management](https://configcat.com/docs/docs/organization/.md)
+*Organization Admins* have unlimited access to every Product under an Organization, their permissions can't be edited under the product. [Read more on Organization Management](https://configcat.com/docs/organization.md)
 
 ## Managing Team Members (Organization level)[​](#managing-team-members-organization-level "Direct link to Managing Team Members (Organization level)")
 
@@ -39,12 +41,12 @@ Enforce 2FA for your team members to increase the security of your organization.
 
 ## Auto-assign users[​](#auto-assign-users "Direct link to Auto-assign users")
 
-All new users who sign up with a [verified email domain](https://configcat.com/docs/docs/advanced/team-management/domain-verification/.md) can be automatically added to your organization. Furthermore, you can also set which Organization roles / Product permissions they should get upon on-boarding.
+All new users who sign up with a [verified email domain](https://configcat.com/docs/advanced/team-management/domain-verification.md) can be automatically added to your organization. Furthermore, you can also set which Organization roles / Product permissions they should get upon on-boarding.
 
-Read more about [Auto-assigning users](https://configcat.com/docs/docs/advanced/team-management/auto-assign-users/.md).
+Read more about [Auto-assigning users](https://configcat.com/docs/advanced/team-management/auto-assign-users.md).
 
 ## SSO (Single Sign-On)[​](#sso-single-sign-on "Direct link to SSO (Single Sign-On)")
 
 You can let your organization members sign in to ConfigCat using 3rd party SSO (Single Sign-On) providers.
 
-Read more about [SSO](https://configcat.com/docs/docs/advanced/team-management/single-sign-on-sso/.md).
+Read more about [SSO](https://configcat.com/docs/advanced/team-management/single-sign-on-sso.md).

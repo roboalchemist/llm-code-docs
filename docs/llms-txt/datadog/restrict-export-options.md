@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > FAQ > Can I disable or restrict the export
   options?
-source_url: https://docs.datadoghq.com/faq/restrict-export-options/index.html
 ---
 
 # Can I disable or restrict the export options?

@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/quantization/mxfp4.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/quantization/mxfp4.md
 
 # MXFP4
 

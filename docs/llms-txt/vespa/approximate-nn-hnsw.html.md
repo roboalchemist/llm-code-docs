@@ -20,7 +20,7 @@ Vespa implements a modified version of the Hierarchical Navigable Small World (H
 
 - **Multithreaded Indexing** - The costly part when performing real time changes to the _HNSW_ graph is distance calculations while searching the graph layers to find which links to change. These distance calculations are performed by multiple indexing threads.
 
-- **Multiple value types** - The cost driver of vector search is often storing the vectors in memory, which is required to produce accurate results at low latency. An effective way to reduce cost is to reduce the size of each vector value. Vespa supports double, float, bfloat16, int8 and [single-bit values](../rag/binarizing-vectors.md). Changing from float to bfloat16 can halve cost with negligible impact on accuracy, while single-bit values greatly reduce both memory and cpu costs, and can be effectively combined with larger vector values stored on disk as a paged attribute to be used for ranking.
+- **Multiple value types** - The cost driver of vector search is often storing the vectors in memory, which is required to produce accurate results at low latency. An effective way to reduce cost is to reduce the size of each vector value. Vespa supports double, float, bfloat16, int8 and [single-bit values](../rag/binarizing-vectors.html). Changing from float to bfloat16 can halve cost with negligible impact on accuracy, while single-bit values greatly reduce both memory and cpu costs, and can be effectively combined with larger vector values stored on disk as a paged attribute to be used for ranking.
 
 - **Optimized HNSW lookups** - ANN searches in Vespa [support](https://blog.vespa.ai/tweaking-ann-parameters/) both pre-and post-filtering, beam exploration, and filtering before distance calculation ("Acorn 1"). Tuning parameters for these makes it possible to strike a good balance between performance and accuracy for any data set. Vespa's [ANN tuning tool](https://vespa-engine.github.io/pyvespa/examples/ann-parameter-tuning-vespa-cloud.html) can be used to automate the process.
 
@@ -142,7 +142,7 @@ Using lower tensor cell type precision can reduce memory footprint significantly
 
 Vespa [tensor cell value types](../performance/feature-tuning.html#cell-value-types) include:
 
-- `int8` - 1 byte per value. Also used to represent [packed binary values](../rag/binarizing-vectors.md).
+- `int8` - 1 byte per value. Also used to represent [packed binary values](../rag/binarizing-vectors.html).
 - `bfloat16` - 2 bytes per value. See [bfloat16 floating-point format](https://en.wikipedia.org/wiki/Bfloat16_floating-point_format).
 - `float` - 4 bytes per value. Standard float.
 - `double` - 8 bytes per value. Standard double.
@@ -159,7 +159,7 @@ Note that strongly sublinear search is not necessarily true if the application u
 
 Changing the [distance-metric](../reference/schemas/schemas.html#distance-metric)for a tensor field with `hnsw` index requires [restarting](../reference/schemas/schemas.html#changes-that-require-restart-but-not-re-feed), but not re-indexing (re-feed vectors). Similar, changing the `max-links-per-node` and`neighbors-to-explore-at-insert` construction parameters requires re-starting.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

@@ -9,7 +9,7 @@ https://api.apify.com/v2/actor-tasks/:actorTaskId/input
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/TaskClientAsync#update_inputhttps://docs.apify.com/api/client/js/reference/class/TaskClient#updateInputUpdates the input of a task using values specified by an object passed as JSON in the PUT payload.
+Updates the input of a task using values specified by an object passed as JSON in the PUT payload.
 
 If the object does not define a specific property, its value is not updated.
 
@@ -24,6 +24,10 @@ When providing your API authentication token, we recommend using the request's `
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

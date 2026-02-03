@@ -2,7 +2,7 @@
 
 # NVIDIA DLSS
 
-NVIDIA DLSS is a suite of neural rendering technologies powered by NVIDIA RTX™ Tensor Cores that boosts frame rates while delivering crisp, high-quality images that rival native resolution. The latest breakthrough, DLSS 4, brings new Multi Frame Generation, and in unison with the suite of DLSS technologies, increases performance by up to 8X over traditional rendering while maintaining responsiveness with NVIDIA Reflex.
+NVIDIA DLSS is a suite of neural rendering technologies powered by NVIDIA RTX™ Tensor Cores that boosts frame rates while delivering crisp, high-quality images that rival native resolution. DLSS 4 introduced Multi Frame Generation (MFG) and a transformer model for high quality super resolution. DLSS 4.5 introduces Dynamic MFG and a second generation transformer model for super resolution.
 
 [Download Now](#getstarted)[Forum](https://forums.developer.nvidia.com/c/gaming-and-visualization-technologies/dlss/493)[Notify Me](https://developer.nvidia.com/rtx/dlss/notify-me)
 
@@ -10,15 +10,15 @@ NVIDIA DLSS is a suite of neural rendering technologies powered by NVIDIA RTX™
 
 ## DLSS AI Technologies
 
-DLSS 4 neural rendering technologies include:
+DLSS neural rendering technologies include:
 
 - 
 
-**DLSS Multi Frame Generation** boosts frame rates by using AI to generate up to three frames per rendered frame, powered by NVIDIA GeForce RTX 50 Series and RTX PRO Blackwell Generation GPUs with fifth-generation Tensor Cores.
+**DLSS Multi Frame Generation**  boosts frame rates by using AI to generate up to three frames per rendered frame - and up to five frames coming soon, powered by NVIDIA GeForce RTX 50 Series and RTX PRO Blackwell Generation GPUs with fifth-generation Tensor Cores.
 
 - 
 
-**DLSS Frame Generation**  boosts performance by using AI to generate frames while maintaining great responsiveness with NVIDIA Reflex.
+**DLSS Dynamic Multi Frame Generation** Dynamically adjusts the frame generation multiplier to maximize smoothness across different games and scenes (coming in Spring).
 
 - 
 
@@ -26,33 +26,33 @@ DLSS 4 neural rendering technologies include:
 
 - 
 
-**DLSS Super Resolution**  boosts performance by using AI to output higher-resolution frames from a lower-resolution input. DLSS samples multiple lower-resolution images and uses motion data and feedback from prior frames to construct high-quality images..
+**DLSS Super Resolution** boosts performance by using AI to output higher-resolution frames from a lower-resolution input. DLSS samples multiple lower-resolution images and uses motion data and feedback from prior frames to construct high-quality images. A new second-generation Transformer AI model further improves stability, anti-aliasing, and visual clarity.
 
 - 
 
-**Deep Learning Anti-Aliasing**  provides higher image quality with an AI-based anti-aliasing technique. DLAA uses the same Super Resolution technology developed for DLSS, constructing a more realistic, high-quality image at native resolution.
+**Deep Learning Anti-Aliasing** provides higher image quality with an AI-based anti-aliasing technique. DLAA uses the same Super Resolution technology developed for DLSS, constructing a more realistic, high-quality image at native resolution.
 
-DLSS Super Resolution, Ray Reconstruction, and DLAA now use a new transformer AI model trained by NVIDIA’s supercomputers for improved stability from one frame to the next, enhanced lighting detail, and more detail in motion.
+DLSS Super Resolution, Ray Reconstruction, and DLAA use cutting-edge transformer AI models trained by NVIDIA’s supercomputers for the best image quality.
 
-https://www.youtube-nocookie.com/embed/qQn3bsPNTyI?
+https://www.youtube-nocookie.com/embed/u4cfzFd9HzU?&amp;rel=0
  
 * * *
 
-## See DLSS 4 in Action
+## See DLSS in Action
 
-### Black Myth: Wukong
+### Borderlands 4
 
-https://www.youtube-nocookie.com/embed/wcn25vlHgec?
+https://www.youtube-nocookie.com/embed/jaFfHMZmXV4?&amp;rel=0
  
 
-### Dune: Awakening  
+### ARC Raiders
 
-https://www.youtube-nocookie.com/embed/UjnEiP9a9kQ?
+https://www.youtube-nocookie.com/embed/ub2OrMkdpYc?&amp;rel=0
  
 
-### Alan Wake 2
+### Battlefield 6
 
-https://www.youtube-nocookie.com/embed/-Hi2EyAwedQ?
+https://www.youtube-nocookie.com/embed/ICJajlj_ujo?&amp;rel=0
  
 
 * * *
@@ -81,7 +81,9 @@ For additional help, refer to the [FAQ](https://forums.developer.nvidia.com/t/dl
 
 ### DLSS Multi Frame Generation Streamline Plugin 
 
-Create up to three additional frames, providing a huge performance boost versus traditional rendering.
+Create up to three additional frames, providing a huge performance boost versus traditional brute-force rendering.   
+  
+Dynamic Multi Frame Generation Coming Spring. Sign up to be notified when it&#39;s available [here](https://developer.nvidia.com/rtx/dlss/notify-me).
 
 ### DLSS Ray Reconstruction Streamline Plugin
 
@@ -128,10 +130,6 @@ NVIDIA DLSS Super Resolution is now available through Unity 2021.2 Beta versions
 - 
 
 [Download Unity](https://unity.com/download)
-
-* * *
-
-## DLSS Learning Library
 
 * * *
 

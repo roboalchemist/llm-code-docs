@@ -1,5 +1,9 @@
 # Source: https://docs.frigade.com/platform/targeting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Targeting
 
 Use targeting to personalize Flows to different cohorts of users, seamlessly link multiple onboarding experiences together, and define completion criterias for a Step in a Flow.
@@ -11,7 +15,7 @@ Use targeting to personalize Flows to different cohorts of users, seamlessly lin
 You can optionally add targeting to every Flow you create. You can view and edit this targeting logic on the **Targeting** tab of the Flow detail page. The Flow targeting logic is used to determine who should see the Flow.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/flow-detail-audience.png" alt="Flow Targeting" />
+  <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=3ff629c1598a46737aad2579fcd342b1" alt="Flow Targeting" data-og-width="3456" width="3456" data-og-height="1926" height="1926" data-path="images/platform/flow-detail-audience.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=6be15fee4c76d9da2cd14014ff762843 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=59a1aeb9087ce79ce5e731351740b43f 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=6430d0069d4fb14ef1a4271bdee6c85f 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=25d1e7ec6bd9d9ffc8fd030b1a05a7f6 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=5ad647ada4e6bf57add11f123df68e43 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-audience.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=d05ba711ef7422ebb937b35ea9b75ad6 2500w" />
 </Frame>
 
 ### Example use cases
@@ -33,7 +37,7 @@ Here are some common ways we see developers using Flow targeting:
 You can also leverage targeting logic within the Steps of a Flow by using the Advanced Editor.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/flow-detail-yaml-step-visibility.png" alt="Step visibility" className="rounded-lg" style={{border: '1px solid #D3D3D3',}} />
+  <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-yaml-step-visibility.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=614526d567e2202cecc1458859c34581" alt="Step visibility" className="rounded-lg" style={{border: '1px solid #D3D3D3',}} data-og-width="1639" width="1639" data-og-height="596" height="596" data-path="images/platform/flow-detail-yaml-step-visibility.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-yaml-step-visibility.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=7fffa9c7035df77c5c64670f32af26b9 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-yaml-step-visibility.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=22ae0823c1ba68267b53f43d5c40c23b 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-yaml-step-visibility.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=9723d7b4190517b5666fca65fa66e056 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-yaml-step-visibility.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=081169fc1a9b8a70c4717383eaf3f50c 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-yaml-step-visibility.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=1b8e6f3daa1da0d9742c54e19fd5a090 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-yaml-step-visibility.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=f801f71c7bbdc48acaa50c03b59f96b0 2500w" />
 </Frame>
 
 ### Example use cases
@@ -84,19 +88,19 @@ Here are some examples of some of the most popular targeting logic we see develo
 You can use relative dates in your targeting logic similar to how this is handled in [plain Javascript](https://stackoverflow.com/questions/7763327/how-to-calculate-date-difference-in-javascript).
 For example, you can target users who are younger than at least 30 days:
 
-```javascript
+```javascript  theme={"system"}
 user.property('accountCreatedDate') within 30d
 ```
 
 Or target users who are older than 30 days:
 
-```javascript
+```javascript  theme={"system"}
 user.property('accountCreatedDate') !within 30d
 ```
 
 This behavior also works for targeting users who have completed a Flow within as certain time frame:
 
-```javascript
+```javascript  theme={"system"}
 user.flow('flow_i6kH7DjcbE6tiaQd') !within 4w
 ```
 
@@ -104,7 +108,7 @@ user.flow('flow_i6kH7DjcbE6tiaQd') !within 4w
 
 Target a Flow to a user who has connected their bank account:
 
-```javascript
+```javascript  theme={"system"}
 user.property('bankAccountConnected') == true
 ```
 
@@ -112,7 +116,7 @@ user.property('bankAccountConnected') == true
 
 Target a Flow to a user who has a job title:
 
-```javascript
+```javascript  theme={"system"}
 user.property('jobTitle') != null
 ```
 
@@ -120,7 +124,7 @@ user.property('jobTitle') != null
 
 Target a Flow only for users signed up after a certain date:
 
-```javascript
+```javascript  theme={"system"}
 user.property('accountCreatedDate') > '2023-03-01 00:00:00'
 ```
 
@@ -128,19 +132,19 @@ user.property('accountCreatedDate') > '2023-03-01 00:00:00'
 
 Target a Flow to a user who has completed another onboarding Flow already and has connected a bank account:
 
-```javascript
+```javascript  theme={"system"}
 user.flow('flow_i6kH7DjcbE6tiaQd') == 'COMPLETED_FLOW' && user.property('bankAccountConnected') == true`
 ```
 
 Target a Flow when a Step in another Flow is completed:
 
-```javascript
+```javascript  theme={"system"}
 user.flowStep('flow_i6kH7DjcbE6tiaQd', 'my-step-id') == 'COMPLETED_STEP'
 ```
 
 Target the output of a previous step in the same Flow:
 
-```javascript
+```javascript  theme={"system"}
 user.flowStepData('flow_i6kH7DjcbE6tiaQd', 'my-step-id', 'my-field-id') == 'some-value'
 ```
 
@@ -148,13 +152,13 @@ user.flowStepData('flow_i6kH7DjcbE6tiaQd', 'my-step-id', 'my-field-id') == 'some
 
 If the event properties do not matter and you simply wish to see if a user has triggered an event, you can use the following expression:
 
-```javascript
+```javascript  theme={"system"}
 user.event('pageView').count > 0
 ```
 
 Automatically trigger when a group/organization sends a specific event:
 
-```javascript
+```javascript  theme={"system"}
 group.event('connectedBankAccount').count > 0
 ```
 
@@ -162,12 +166,12 @@ group.event('connectedBankAccount').count > 0
 
 Target based on the current URL contains a specific string:
 
-```javascript
+```javascript  theme={"system"}
 user.currentUrl() contains 'example.com'
 ```
 
 Target based on the current URL ends with a specific string:
 
-```javascript
+```javascript  theme={"system"}
 user.currentUrl() endsWith '?myParam=123'
 ```

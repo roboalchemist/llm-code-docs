@@ -1,5 +1,9 @@
 # Source: https://agentclientprotocol.com/rfds/request-cancellation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Request Cancellation Mechanism
 
 * Author(s): [Artem Bukhonov](https://github.com/nerzhulart)
@@ -194,8 +198,3 @@ This ensures complete cleanup and prevents resource leaks.
 * 2025-11-13: Initial version converted from PR #183
 * 2025-12-05: Updated with current implementation.
 * 2025-12-09: Mirror LSP behavior.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

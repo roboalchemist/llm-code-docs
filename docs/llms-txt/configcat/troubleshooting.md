@@ -2,6 +2,8 @@
 
 # Troubleshooting
 
+Copy page
+
 The following issues were reported by customers. We've collected what we've learned and provided the possible solutions below.
 
 ## Long response times and connection issues[​](#long-response-times-and-connection-issues "Direct link to Long response times and connection issues")
@@ -11,10 +13,10 @@ First, check the [Service Status Monitor](https://status.configcat.com) to see i
 ### General SDK Checklist[​](#general-sdk-checklist "Direct link to General SDK Checklist")
 
 1. Make sure you're using the latest version of the ConfigCat SDK.
-2. Check if you've configured the [Data Governance](https://configcat.com/docs/docs/advanced/data-governance/.md) functionality correctly.
+2. Check if you've configured the [Data Governance](https://configcat.com/docs/advanced/data-governance.md) functionality correctly.
 3. Singleton: We strongly recommend using the ConfigCat SDK as a Singleton object. Initializing the SDK multiple times can cause serious performance issues in production. If you need to use multiple SDK Keys in the same application, create only one *ConfigCat Client* per SDK Key.
-4. Are you using the proper polling mode for your use case? Details on polling modes in the [SDK Docs](https://configcat.com/docs/docs/sdk-reference/overview/.md).
-5. Are you using the right polling interval for `Auto Polling`? Too frequent polling will increase your network traffic. Please check the [SDK Docs](https://configcat.com/docs/docs/sdk-reference/overview/.md).
+4. Are you using the proper polling mode for your use case? Details on polling modes in the [SDK Docs](https://configcat.com/docs/sdk-reference/overview.md).
+5. Are you using the right polling interval for `Auto Polling`? Too frequent polling will increase your network traffic. Please check the [SDK Docs](https://configcat.com/docs/sdk-reference/overview.md).
 6. In `Manual Polling` mode, are you calling `forceRefresh()` in your code as frequently as needed? Excessive refreshes will increase your network traffic.
 7. You can try one of our lightweight sample applications to rule out local issues. Find in the [repository of each SDK](https://github.com/configcat).
 

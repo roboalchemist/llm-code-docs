@@ -15,7 +15,9 @@ Billie is the leading provider of Buy Now, Pay Later (BNPL) payment methods for 
 
 ### Klarna payments
 
-To start using Billie’s payment methods in your Klarna payments solution, integrate Billie either using the Klarna payments API or through Computop. For more details and integration guides for both methods, refer to Billie Docs:
+To start using Billie’s payment methods in your Klarna payments solution, integrate Billie either using the Klarna payments API or through Computop.
+
+For more details and integration guides for both methods, refer to Billie Docs:
 
 - [Klarna payments via API](https://docs.billie.io/reference/integration-via-klarna-payments)
 - [Klarna payments via Computop](https://docs.billie.io/reference/klarna-payments-integration-computop)
@@ -26,7 +28,7 @@ Implementing Billie with Klarna gives you a carefree implementation process, it 
 
 |  |  |
 |----|----|
-| **Market availability** | DE, SE, AT, NL, FR, NO, GB |
+| **Market availability** | AT, FI, FR, DE, NL, NO, SE, GB, CH, IT, ES, DK |
 | **Payment solutions** | [Klarna Payments](https://docs.klarna.com/payments/web-payments/before-you-start/what-is-klarna-payments/) |
 | **Klarna payment methods** | Pay Later (30 days) |
 | **Partial and full capture** | YES |

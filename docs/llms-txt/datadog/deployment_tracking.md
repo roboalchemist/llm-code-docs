@@ -4,7 +4,6 @@
 title: Deployment  Tracking
 description: Use Datadog to track your deployments through version tags
 breadcrumbs: Docs > APM > Service Observability > Deployment Tracking
-source_url: https://docs.datadoghq.com/services/deployment_tracking/index.html
 ---
 
 # Deployment Tracking

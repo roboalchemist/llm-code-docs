@@ -1,15 +1,19 @@
 # Source: https://docs.augmentcode.com/context-services/mcp/quickstart-anti-gravity.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart (AntiGravity)
 
 > Get started with Augment Context Engine MCP in AntiGravity in minutes
 
 ## Quick Start with AntiGravity
 
-### 1. Install Auggie CLI (Pre-release version)
+### 1. Install Auggie CLI
 
 ```bash  theme={null}
-npm install -g @augmentcode/auggie@prerelease
+npm install -g @augmentcode/auggie@latest
 ```
 
 ### 2. Sign in to Augment
@@ -29,20 +33,14 @@ This will open a browser window for authentication.
 * Click View raw config
   <img src="https://mintcdn.com/augment-mtje7p526w/bPUsQPriBJwiNgJV/images/anti-gravity-3.png?fit=max&auto=format&n=bPUsQPriBJwiNgJV&q=85&s=aba540233efbcb11816383c6c1cf2fe0" alt="View raw config" data-og-width="149" width="149" data-og-height="58" height="58" data-path="images/anti-gravity-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/augment-mtje7p526w/bPUsQPriBJwiNgJV/images/anti-gravity-3.png?w=280&fit=max&auto=format&n=bPUsQPriBJwiNgJV&q=85&s=4a241ea7b929fb79e70f40a841d60e15 280w, https://mintcdn.com/augment-mtje7p526w/bPUsQPriBJwiNgJV/images/anti-gravity-3.png?w=560&fit=max&auto=format&n=bPUsQPriBJwiNgJV&q=85&s=185a5843d250e13e48b020e73bc9cb24 560w, https://mintcdn.com/augment-mtje7p526w/bPUsQPriBJwiNgJV/images/anti-gravity-3.png?w=840&fit=max&auto=format&n=bPUsQPriBJwiNgJV&q=85&s=ff04fd53e99ecd54ecbe034b596a845b 840w, https://mintcdn.com/augment-mtje7p526w/bPUsQPriBJwiNgJV/images/anti-gravity-3.png?w=1100&fit=max&auto=format&n=bPUsQPriBJwiNgJV&q=85&s=190ddc51a816d7a203697803dd11c7da 1100w, https://mintcdn.com/augment-mtje7p526w/bPUsQPriBJwiNgJV/images/anti-gravity-3.png?w=1650&fit=max&auto=format&n=bPUsQPriBJwiNgJV&q=85&s=fa41a641184396ba37fc6b49fa558ede 1650w, https://mintcdn.com/augment-mtje7p526w/bPUsQPriBJwiNgJV/images/anti-gravity-3.png?w=2500&fit=max&auto=format&n=bPUsQPriBJwiNgJV&q=85&s=bf0d291eb6a5f54f4d5d330613b16142 2500w" />
 
-Paste this configuration. Update the **/path/to/your/project**.
+Paste this configuration:
 
-```
+```json  theme={null}
 {
   "mcpServers": {
     "augment-context-engine": {
       "command": "auggie",
-      "args": [
-        "--mcp",
-        "-m",
-        "default",
-        "-w",
-        "/path/to/your/project"
-      ]
+      "args": ["--mcp", "--mcp-auto-workspace"]
     }
   }
 }
@@ -51,13 +49,8 @@ Paste this configuration. Update the **/path/to/your/project**.
 ### 4. Test the integration
 
 ```
-Prompt : "What is this project ? Please use codebase retrieval tool to get the answer."
+Prompt: "What is this project? Please use codebase retrieval tool to get the answer."
 ```
 
 AntiGravity should confirm it has access to the `codebase-retrieval` tool.
 <img src="https://mintcdn.com/augment-mtje7p526w/bPUsQPriBJwiNgJV/images/anti-gravity-4.png?fit=max&auto=format&n=bPUsQPriBJwiNgJV&q=85&s=a047aed452e06af1c7d41e2c2461e731" alt="AntiGravity test" data-og-width="477" width="477" data-og-height="83" height="83" data-path="images/anti-gravity-4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/augment-mtje7p526w/bPUsQPriBJwiNgJV/images/anti-gravity-4.png?w=280&fit=max&auto=format&n=bPUsQPriBJwiNgJV&q=85&s=95f51899bca5fbcf18eb44ef02a950f5 280w, https://mintcdn.com/augment-mtje7p526w/bPUsQPriBJwiNgJV/images/anti-gravity-4.png?w=560&fit=max&auto=format&n=bPUsQPriBJwiNgJV&q=85&s=eb1cfdf6d7ce279dada9c084b399f409 560w, https://mintcdn.com/augment-mtje7p526w/bPUsQPriBJwiNgJV/images/anti-gravity-4.png?w=840&fit=max&auto=format&n=bPUsQPriBJwiNgJV&q=85&s=2f4a62a806afc44e2faffe5ef3ba18aa 840w, https://mintcdn.com/augment-mtje7p526w/bPUsQPriBJwiNgJV/images/anti-gravity-4.png?w=1100&fit=max&auto=format&n=bPUsQPriBJwiNgJV&q=85&s=b0127e4d82023981a71e3ff2413ac0b9 1100w, https://mintcdn.com/augment-mtje7p526w/bPUsQPriBJwiNgJV/images/anti-gravity-4.png?w=1650&fit=max&auto=format&n=bPUsQPriBJwiNgJV&q=85&s=6a036d07f32b60722a8dd571def93756 1650w, https://mintcdn.com/augment-mtje7p526w/bPUsQPriBJwiNgJV/images/anti-gravity-4.png?w=2500&fit=max&auto=format&n=bPUsQPriBJwiNgJV&q=85&s=8bf4a626905bef9b009913a26c5c4352 2500w" />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.augmentcode.com/llms.txt

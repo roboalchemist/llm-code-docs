@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/enterprise/remediation-reports/
+
 # Remediation Reports
 
 Promptfoo Enterprise automatically generates remediation reports after each red team scan. These reports provide actionable security recommendations with implementation guidance.

@@ -6,7 +6,6 @@ description: >-
   Learn how Bits AI SRE autonomously investigates alerts to improve on-call
   operations.
 breadcrumbs: Docs > Bits AI > Bits AI SRE
-source_url: https://docs.datadoghq.com/bits_ai_sre/index.html
 ---
 
 # Bits AI SRE

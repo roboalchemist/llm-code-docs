@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/smart-turn/smart-turn-overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Smart Turn Overview
 
 > Advanced conversational turn detection powered by the smart-turn model
@@ -23,18 +27,9 @@ Smart Turn Detection is an advanced feature in Pipecat that determines when a us
   </Card>
 </CardGroup>
 
-Pipecat provides two implementations of Smart Turn Detection:
-
-1. **LocalSmartTurnAnalyzerV3** - Runs inference locally using ONNX. This method is recommended due to the fast CPU inference times in Smart Turn v3.
-2. **FalSmartTurnAnalyzer** - Uses Fal's hosted smart-turn model for inference.
-
-All implementations share the same underlying API and parameters, making it easy to switch between them based on your deployment requirements.
+Pipecat provides `LocalSmartTurnAnalyzerV3` which runs inference locally using ONNX. This is the recommended approach due to the fast CPU inference times in Smart Turn v3.
 
 ## Installation
-
-The Smart Turn Detection feature requires additional dependencies depending on which implementation you choose.
-
-**For local inference:**
 
 ```bash  theme={null}
 pip install "pipecat-ai[local-smart-turn-v3]"
@@ -42,25 +37,38 @@ pip install "pipecat-ai[local-smart-turn-v3]"
 
 The Smart Turn model weights are bundled with Pipecat, so no need to download these separately.
 
-**For Fal's hosted service inference:**
+## Integration with User Turn Strategies
 
-```bash  theme={null}
-pip install "pipecat-ai[remote-smart-turn]"
-```
-
-## Integration with Transport
-
-Smart Turn Detection is integrated into your application by setting one of the available turn analyzers as the `turn_analyzer` parameter in your transport configuration:
+Smart Turn Detection is integrated into your application by configuring a `TurnAnalyzerUserTurnStopStrategy` with `LocalSmartTurnAnalyzerV3` in your context aggregator:
 
 ```python  theme={null}
+from pipecat.audio.turn.smart_turn.local_smart_turn_v3 import LocalSmartTurnAnalyzerV3
+from pipecat.audio.vad.silero import SileroVADAnalyzer
+from pipecat.audio.vad.vad_analyzer import VADParams
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
 from pipecat.transports.base_transport import TransportParams
+from pipecat.turns.user_stop import TurnAnalyzerUserTurnStopStrategy
+from pipecat.turns.user_turn_strategies import UserTurnStrategies
 
 transport = SmallWebRTCTransport(
     webrtc_connection=webrtc_connection,
     params=TransportParams(
         audio_in_enabled=True,
+    ),
+)
+
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_turn_strategies=UserTurnStrategies(
+            stop=[TurnAnalyzerUserTurnStopStrategy(
+                turn_analyzer=LocalSmartTurnAnalyzerV3()
+            )]
+        ),
         vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
-        turn_analyzer=LocalSmartTurnAnalyzerV3(),
     ),
 )
 ```
@@ -69,14 +77,13 @@ transport = SmallWebRTCTransport(
   Smart Turn Detection requires VAD to be enabled and works best when the VAD analyzer is set to a short `stop_secs` value. We recommend 0.2 seconds.
 
   ```python  theme={null}
-  audio_in_enabled=True,
   vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2))
   ```
 </Tip>
 
 ## Configuration
 
-All implementations use the same `SmartTurnParams` class to configure behavior:
+The `SmartTurnParams` class configures turn detection behavior:
 
 <ParamField path="stop_secs" type="float" default="3.0">
   Duration of silence in seconds required before triggering a silence-based end
@@ -91,54 +98,6 @@ All implementations use the same `SmartTurnParams` class to configure behavior:
   Maximum allowed segment duration in seconds. For segments longer than this
   value, a rolling window is used.
 </ParamField>
-
-## Remote Smart Turn
-
-The `FalSmartTurnAnalyzer` class uses a remote service for turn detection inference.
-
-### Constructor Parameters
-
-<ParamField path="url" type="str" required>
-  The URL of the remote Smart Turn service
-</ParamField>
-
-<ParamField path="sample_rate" type="Optional[int]" default="None">
-  Audio sample rate (will be set by the transport if not provided)
-</ParamField>
-
-<ParamField path="params" type="SmartTurnParams" default="SmartTurnParams()">
-  Configuration parameters for turn detection
-</ParamField>
-
-### Example
-
-```python  theme={null}
-import os
-from pipecat.audio.turn.smart_turn.fal_smart_turn import FalSmartTurnAnalyzer
-from pipecat.audio.turn.smart_turn.base_smart_turn import SmartTurnParams
-from pipecat.transports.base_transport import TransportParams
-
-# Get the URL for the remote Smart Turn service
-remote_smart_turn_url = os.getenv("REMOTE_SMART_TURN_URL")
-
-# Create the transport with Smart Turn detection
-transport = SmallWebRTCTransport(
-    webrtc_connection=webrtc_connection,
-    params=TransportParams(
-        audio_in_enabled=True,
-        audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
-        turn_analyzer=FalSmartTurnAnalyzer(
-            url=remote_smart_turn_url,
-            params=SmartTurnParams(
-                stop_secs=3.0,
-                pre_speech_ms=0.0,
-                max_duration_secs=8.0
-            )
-        ),
-    ),
-)
-```
 
 ## Local Smart Turn
 
@@ -166,16 +125,35 @@ The `LocalSmartTurnAnalyzerV3` runs inference locally. Version 3 of the model su
 
 ```python  theme={null}
 from pipecat.audio.turn.smart_turn.local_smart_turn_v3 import LocalSmartTurnAnalyzerV3
+from pipecat.audio.vad.silero import SileroVADAnalyzer
+from pipecat.audio.vad.vad_analyzer import VADParams
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    LLMUserAggregatorParams,
+)
 from pipecat.transports.base_transport import TransportParams
+from pipecat.turns.user_stop import TurnAnalyzerUserTurnStopStrategy
+from pipecat.turns.user_turn_strategies import UserTurnStrategies
 
-# Create the transport with Smart Turn detection
+# Create the transport
 transport = SmallWebRTCTransport(
     webrtc_connection=webrtc_connection,
     params=TransportParams(
         audio_in_enabled=True,
         audio_out_enabled=True,
+    ),
+)
+
+# Configure Smart Turn Detection via user turn strategies
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        user_turn_strategies=UserTurnStrategies(
+            stop=[TurnAnalyzerUserTurnStopStrategy(
+                turn_analyzer=LocalSmartTurnAnalyzerV3()
+            )]
+        ),
         vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
-        turn_analyzer=LocalSmartTurnAnalyzerV3(),
     ),
 )
 ```
@@ -185,9 +163,7 @@ transport = SmallWebRTCTransport(
 Smart Turn Detection continuously analyzes audio streams to identify natural turn completion points:
 
 1. **Audio Buffering**: The system continuously buffers audio with timestamps, maintaining a small buffer of pre-speech audio.
-
 2. **VAD Processing**: Voice Activity Detection (using the Silero model) detects when there is a pause in the user's speech.
-
 3. **Smart Turn Analysis**: When VAD detects a pause in speech, the Smart Turn model analyzes the audio from the most recent 8 seconds of the user's turn, and makes a decision about whether the turn is complete or incomplete.
 
 The system includes a fallback mechanism: if a turn is classified as incomplete but silence continues for longer than `stop_secs`, the turn is automatically marked as complete.
@@ -198,8 +174,3 @@ The system includes a fallback mechanism: if a turn is classified as incomplete 
 * You can adjust the `stop_secs` parameter based on your application's needs for responsiveness
 * Smart Turn generally provides a more natural conversational experience but is computationally more intensive than simple VAD
 * `LocalSmartTurnAnalyzerV3` is designed to run on CPU, and inference can be performed on low-cost cloud instances in under 100ms. However, by installing the `onnxruntime-gpu` dependency, you can achieve higher performance by making use of GPU inference.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

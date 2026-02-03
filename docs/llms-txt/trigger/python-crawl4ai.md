@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/python/python-crawl4ai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Python headless browser web crawler example
 
 > Learn how to use Python, Crawl4AI and Playwright to create a headless browser web crawler with Trigger.dev.
@@ -54,7 +58,7 @@ Once you have a proxy service, set the following environment variables in your T
 
 After you've initialized your project with Trigger.dev, add these build settings to your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { pythonExtension } from "@trigger.dev/python/extension";
 import type { BuildContext, BuildExtension } from "@trigger.dev/core/build";
@@ -117,7 +121,7 @@ export function installPlaywrightChromium(): BuildExtension {
 
 This task uses the `python.runScript` method to run the `crawl-url.py` script with the given URL as an argument. You can see the original task in our examples repository [here](https://github.com/triggerdotdev/examples/blob/main/python-crawl4ai/src/trigger/pythonTasks.ts).
 
-```ts src/trigger/pythonTasks.ts theme={null}
+```ts src/trigger/pythonTasks.ts theme={"theme":"css-variables"}
 import { logger, schemaTask, task } from "@trigger.dev/sdk";
 import { python } from "@trigger.dev/python";
 import { z } from "zod";
@@ -151,7 +155,7 @@ export const convertUrlToMarkdown = schemaTask({
 
 Add the following to your `requirements.txt` file. This is required in Python projects to install the dependencies.
 
-```txt requirements.txt theme={null}
+```txt requirements.txt theme={"theme":"css-variables"}
 crawl4ai
 playwright
 urllib3<2.0.0
@@ -161,7 +165,7 @@ urllib3<2.0.0
 
 The Python script is a simple script using Crawl4AI that takes a URL and returns the markdown content of the page. You can see the original script in our examples repository [here](https://github.com/triggerdotdev/examples/blob/main/python-crawl4ai/src/python/crawl-url.py).
 
-```python src/python/crawl-url.py theme={null}
+```python src/python/crawl-url.py theme={"theme":"css-variables"}
 import asyncio
 import sys
 import os

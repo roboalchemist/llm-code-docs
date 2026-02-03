@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/get-service-records.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Service History
 
 > Retrieve service records tracked by the vehicle's dealer or manually added by the vehicle owner. Currently supporting Ford, Lincoln, Toyota, Lexus, Mazda and Volkswagen (US)

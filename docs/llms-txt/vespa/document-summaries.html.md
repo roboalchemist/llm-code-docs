@@ -186,7 +186,7 @@ The work, and thus latency, increases with more [hits](../reference/api/query.ht
 
 Refer to [content node summary cache](../performance/caches-in-vespa.html#content-node-summary-cache).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

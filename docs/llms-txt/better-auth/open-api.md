@@ -4,11 +4,11 @@
 
 Open API reference for Better Auth.
 
-***
 
-title: Open API
-description: Open API reference for Better Auth.
-------------------------------------------------
+
+
+
+
 
 This is a plugin that provides an Open API reference for Better Auth. It shows all endpoints added by plugins and the core. It also provides a way to test the endpoints. It uses [Scalar](https://scalar.com/) to display the Open API reference.
 
@@ -39,7 +39,7 @@ This is a plugin that provides an Open API reference for Better Auth. It shows a
 
     Each plugin endpoints are grouped by the plugin name. The core endpoints are grouped under the `Default` group. And Model schemas are grouped under the `Models` group.
 
-    ![Open API reference](/open-api-reference.png)
+        <img alt="Open API reference" src={__img0} placeholder="blur" />
   </Step>
 </Steps>
 
@@ -49,7 +49,7 @@ The Open API reference is generated using the [OpenAPI 3.0](https://swagger.io/s
 
 The reference is generated using the [Scalar](https://scalar.com/) library. Scalar provides a way to view and test the endpoints. You can test the endpoints by clicking on the `Try it out` button and providing the required parameters.
 
-![Open API reference](/open-api-reference.png)
+<img alt="Open API reference" src={__img1} placeholder="blur" />
 
 ### Generated Schema
 

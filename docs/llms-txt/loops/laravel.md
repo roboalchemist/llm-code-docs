@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/smtp/laravel.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Laravel
 
 > Send transactional emails from your Laravel project using Loops' SMTP service.

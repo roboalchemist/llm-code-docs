@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/database-data/qdrantvectorsearchtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Qdrant Vector Search Tool
 
 > Semantic search capabilities for CrewAI agents using Qdrant vector database

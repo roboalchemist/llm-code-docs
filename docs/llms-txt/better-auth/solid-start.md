@@ -4,11 +4,7 @@
 
 Integrate Better Auth with SolidStart.
 
-***
 
-title: SolidStart Integration
-description: Integrate Better Auth with SolidStart.
----------------------------------------------------
 
 Before you start, make sure you have a Better Auth instance configured. If you haven't done that yet, check out the [installation](/docs/installation).
 

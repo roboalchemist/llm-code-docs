@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/components/data-sources/audio.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🎤 Audio
 
 To use an audio as data source, just add `data_type` as `audio` and pass in the path of the audio (local or hosted).
@@ -10,7 +14,7 @@ You would require an Deepgram API key which is available [here](https://console.
 
 ### Without customization
 
-```python
+```python  theme={null}
 import os
 from embedchain import App
 

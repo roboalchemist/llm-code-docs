@@ -1,173 +1,130 @@
 # Source: https://docs.anchorbrowser.io/api-reference/profiles/create-profile.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Profile
 
 > Creates a new profile from a browser session. A Profile stores cookies, local storage, and cache.
 
+
+
 ## OpenAPI
 
 ````yaml openapi-mintlify.yaml post /v1/profiles
+openapi: 3.1.0
+info:
+  title: AnchorBrowser API
+  version: 1.0.0
+  description: APIs to manage all browser-related actions and configuration.
+servers:
+  - url: https://api.anchorbrowser.io
+    description: API server
+security: []
 paths:
-  path: /v1/profiles
-  method: post
-  servers:
-    - url: https://api.anchorbrowser.io
-      description: API server
-  request:
-    security:
-      - title: api key header
-        parameters:
-          query: {}
-          header:
-            anchor-api-key:
-              type: apiKey
-              description: API key passed in the header
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              name:
-                allOf:
-                  - type: string
-                    description: The name of the profile.
-              description:
-                allOf:
-                  - type: string
-                    description: A description of the profile.
-              source:
-                allOf:
-                  - type: string
-                    description: >-
-                      The source of the profile data. currently only `session`
-                      is supported.
-                    enum:
-                      - session
-              session_id:
-                allOf:
-                  - type: string
-                    format: uuid
-                    description: >-
-                      The browser session ID is required if the source is set to
-                      `session`. The browser session must be running, and the
-                      profile will be stored once the browser session
-                      terminates.
-              dedicated_sticky_ip:
-                allOf:
-                  - type: boolean
-                    description: >-
-                      Whether to use a dedicated sticky IP for this profile.
-                      Defaults to false.
-            required: true
-            refIdentifier: '#/components/schemas/ProfileRequestSchema'
-            requiredProperties:
-              - name
-        examples:
-          example:
-            value:
-              name: <string>
-              description: <string>
-              source: session
-              session_id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              dedicated_sticky_ip: true
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
-                    properties:
-                      status:
-                        type: string
-            refIdentifier: '#/components/schemas/SuccessResponse'
-        examples:
-          example:
-            value:
-              data:
-                status: <string>
-        description: Profile created successfully.
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: object
-                    properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Invalid request or input.
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Session not found or unreachable.
-    '409':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Profile name already exists.
-    '501':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Feature not implemented.
-  deprecated: false
-  type: path
+  /v1/profiles:
+    post:
+      tags:
+        - Profiles
+      summary: Create Profile
+      description: >-
+        Creates a new profile from a browser session. A Profile stores cookies,
+        local storage, and cache.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProfileRequestSchema'
+      responses:
+        '200':
+          description: Profile created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Invalid request or input.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Session not found or unreachable.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Profile name already exists.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '501':
+          description: Feature not implemented.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key_header: []
 components:
-  schemas: {}
+  schemas:
+    ProfileRequestSchema:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: The name of the profile.
+        description:
+          type: string
+          description: A description of the profile.
+        source:
+          type: string
+          description: >-
+            The source of the profile data. currently only `session` is
+            supported.
+          enum:
+            - session
+        session_id:
+          type: string
+          format: uuid
+          description: >-
+            The browser session ID is required if the source is set to
+            `session`. The browser session must be running, and the profile will
+            be stored once the browser session terminates.
+        dedicated_sticky_ip:
+          type: boolean
+          description: >-
+            Whether to use a dedicated sticky IP for this profile. Defaults to
+            false.
+    SuccessResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            status:
+              type: string
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+  securitySchemes:
+    api_key_header:
+      type: apiKey
+      in: header
+      name: anchor-api-key
+      description: API key passed in the header
 
 ````

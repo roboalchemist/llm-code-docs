@@ -1,5 +1,9 @@
 # Source: https://agentclientprotocol.com/protocol/session-modes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Session Modes
 
 > Switch between different agent operating modes
@@ -166,8 +170,3 @@ When an option is chosen, the tool runs, setting the mode and sending the `curre
 <Card icon="shield-check" horizontal href="./tool-calls#requesting-permission">
   Learn more about permission requests
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

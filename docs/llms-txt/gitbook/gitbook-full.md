@@ -4,71 +4,451 @@ Source: https://gitbook.com/docs/llms-full.txt
 
 ---
 
-# GitBook Documentation
+# GitBook documentation
 
-Create and publish beautiful documentation your users will love. GitBook has all the tools you need to create everything from product guides to API references and beyond.
+Create and publish AI-native documentation your users will love. GitBook gives you intelligent tools to build product guides, API references, and documentation that improves over time.
 
-At GitBook, our mission is to provide a **user-friendly** and **collaborative** solution for creating, editing, and sharing product and API documentation.
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-type="image">Cover image (dark)</th><th data-hidden data-type="image">Cover image (dark)</th><th data-hidden data-type="image">Cover image (dark)</th><th data-hidden data-type="image">Cover image (dark)</th><th data-hidden data-card-cover-dark data-type="image">Cover image (dark)</th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="image">Cover image</th></tr></thead><tbody><tr><td><strong>Quick start</strong></td><td>Get up and running with GitBook in just a few minutes</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FTMcfVjTpVtXgBj4pzr1p%2FContent%20editor.png?alt=media&#x26;token=310896e8-8867-420f-b31d-38fe3b88520e">25_12_10_content_editor.png</a></td><td></td><td></td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F9DDdXlsGN4bEvSoH18k4%2FQuick%20start.png?alt=media&#x26;token=73883919-cb60-42d1-84e1-aa185dceb6bf">25_12_10_quick_start_1.png</a></td><td><a href="quickstart">quickstart</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F83pPRDl7fpMLyfZzmxHD%2FQuick%20start.png?alt=media&#x26;token=c27ea7fd-0f92-4e50-9824-76287063b663">25_12_10_quick_start.png</a></td></tr><tr><td><strong>Git Sync</strong></td><td>Sync with a Git repository to enable docs-as-code workflows</td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FzAM03aoXMelaF5OJhpKp%2FGit%20Sync.png?alt=media&#x26;token=b26a1966-167b-4b73-85b4-b45c4aa42bd0">25_12_10_git_sync.png</a></td><td></td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FxLWJTTGKn6Hxgf0ervsg%2FGit%20Sync.png?alt=media&#x26;token=bbe236f6-b263-4f4f-b87a-ee4111adbfdb">25_12_10_git_sync_2.png</a></td><td><a href="git-sync">git-sync</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FqBGX0AaDcW3IrCTmorIM%2FGit%20Sync.png?alt=media&#x26;token=ad1e5bd5-caba-4766-ad97-8878f51115aa">25_12_10_git_sync_1.png</a></td></tr><tr><td><strong>Create content</strong></td><td>Create and format your docs using our block-based editor</td><td></td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F0hot54sxdKSmrPQ3b20w%2FCreate%20content.png?alt=media&#x26;token=8e4aa5c0-1566-439b-a996-4d912ab73796">25_12_10_create_content.png</a></td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FVDL9DjG5suXXFH1lhYco%2FCreate%20content.png?alt=media&#x26;token=1d6c6eb2-c098-4abd-b8df-b999df7bdc37">25_12_10_create_content_2.png</a></td><td><a href="../creating-content">creating-content</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Ftoy92eit9xn1lBff06Sc%2FCreate%20content.png?alt=media&#x26;token=8c221a83-ba02-484f-9cd0-21a48f7a3e63">25_12_10_create_content_1.png</a></td></tr><tr><td><strong>Publish your docs</strong></td><td>Publish your docs site to share with others</td><td></td><td></td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FcZfpNCmX7HjlSFWc1zHF%2FPublish%20your%20docs.png?alt=media&#x26;token=a91af20a-c068-4dd9-83fd-c6aa5acef91a">25_12_10_publish_your_docs.png</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FAkc4QWDMUXQFjyNrcCbh%2FPublish%20your%20docs.png?alt=media&#x26;token=049dbb4a-12bc-4649-a222-24963a3c7e98">25_12_10_publish_your_docs_2.png</a></td><td><a href="../publishing-documentation">publishing-documentation</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fzs9hS31cfqO3b2GdjpDs%2FPublish%20your%20docs.png?alt=media&#x26;token=e105d210-ecfb-4f54-a0af-bea9f95bc614">25_12_10_publish_your_docs_1.png</a></td></tr></tbody></table>
 
-<a href="https://app.gitbook.com/join?utm_content=homepage_button_sign_up&#x26;utm_source=gitbook_docs" class="button primary">Sign up</a> <a href="quickstart" class="button secondary">Quickstart</a>
-
-### Discover GitBook&#x20;
-
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover-dark data-type="image">Cover image (dark)</th></tr></thead><tbody><tr><td><strong>Creating content</strong></td><td>Edit pages, content and more in GitBook.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FIa1CNbX9YMMv5RO446MO%2FContent%20editor.svg?alt=media&#x26;token=1fc0e0dc-b003-4c6e-ba92-d3c4d1d18f1d">card_content_editor.svg</a></td><td><a href="../creating-content">creating-content</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fwu8rTzPUvjdMmKYXDCqH%2FContent%20editor.svg?alt=media&#x26;token=d77fdae9-5d98-4f32-af67-08debcaefa36">Content editor.svg</a></td></tr><tr><td><strong>Publishing documentation</strong></td><td>Publish your docs site to share with others.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FXhKtEQu1cgoQpV86CtDp%2FPublished%20documentation.svg?alt=media&#x26;token=a5680a14-fc52-41f4-95c9-03e9ecdc54bb">card_published_documentation.svg</a></td><td><a href="../publishing-documentation">publishing-documentation</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FW0cNoKHfhTPa0cxG695s%2FPublished%20documentation.svg?alt=media&#x26;token=da7482f9-ca21-4159-b34b-20ecec741611">Published documentation.svg</a></td></tr><tr><td><strong>Collaboration</strong></td><td>Invite your team and collaborate in GitBook.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FOjsCMlHhcq7wtscrZNH9%2FCollaboration.svg?alt=media&#x26;token=bbd503d9-6b22-46f2-9247-c1f4e59fcb70">card_collaboration.svg</a></td><td><a href="../collaboration">collaboration</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fu5bFdyogbB9CHgW48cKE%2FCollaboration.svg?alt=media&#x26;token=068f449a-5876-4571-8206-dc1f8b4e4dac">Collaboration.svg</a></td></tr><tr><td><strong>Git Sync</strong></td><td>Sync with a Git repository to enable advanced workflows.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F5eZLWp7DtVCKkh9tnFOQ%2FGit%20Sync%20(1).svg?alt=media&#x26;token=b77c4e1b-228c-4db2-a7eb-850f327285a0">card_git_sync.svg</a></td><td><a href="git-sync">git-sync</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FZBqE2J4z6MGeOy65AMZJ%2FGit%20Sync.svg?alt=media&#x26;token=ef0c64ff-6331-4726-a8b7-6bd4d56c7c8c">Git Sync.svg</a></td></tr><tr><td><strong>Integrations</strong></td><td>Integrate with your favorite tools and applications.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FzvuPBpE9H98mgDoBbYdy%2FIntegrations.svg?alt=media&#x26;token=ab5c2d76-8103-4fe8-becb-cd7cd2174925">card_integrations.svg</a></td><td><a href="../integrations">integrations</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FZphNuTHaW8sMq3zOuYyE%2FIntegrations.svg?alt=media&#x26;token=5a8663d9-0dc6-4164-9d4b-9fe272ed1ccc">Integrations.svg</a></td></tr><tr><td><strong>Account management</strong></td><td>Manage your organization, account, and billing.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FjBQQrTMqLg2PcsFruhz8%2FAccount%20management.svg?alt=media&#x26;token=7f1a8521-4aee-493b-8d33-4c25c2a599d5">card_account_management.svg</a></td><td><a href="../account-management">account-management</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F2t8RlgynmXSTQySTVEn3%2FAccount%20management.svg?alt=media&#x26;token=b429a514-ca1d-4dfa-88cf-b484ca5080d8">Account management.svg</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><strong>Essentials</strong></td><td><ul><li><a href="concepts">Concepts</a></li><li><a href="../creating-content/blocks">Blocks</a></li><li><a href="../publishing-documentation/customization">Customization</a></li><li><a href="../publishing-documentation/authenticated-access">Authenticated access</a></li><li><a href="../publishing-documentation/custom-domain">Custom domains</a></li></ul></td></tr><tr><td><strong>AI-native docs</strong></td><td><ul><li><a href="../gitbook-agent">GitBook Agent</a></li><li><a href="../publishing-documentation/gitbook-ai-assistant">GitBook Assistant</a></li><li><a href="../publishing-documentation/mcp-servers-for-published-docs">MCP</a></li><li><a href="../publishing-documentation/ai-search">AI Search</a></li><li><a href="../publishing-documentation/llm-ready-docs">LLM-ready docs</a></li></ul></td></tr><tr><td><strong>Popular topics</strong></td><td><ul><li><a href="../publishing-documentation/adaptive-content">Adaptive content</a></li><li><a href="git-sync">GitHub &#x26; GitLab Sync</a></li><li><a href="import">Migrate to GitBook</a></li><li><a href="../creating-content/content-structure">Content structure</a></li><li><a href="../gitbook-agent/translations">Translations</a></li></ul></td></tr></tbody></table>
 
 
 # Quickstart
 
 Get up and running in GitBook and publish your first docs site in minutes
 
-### Getting started
+This quickstart guide explains how to get set up in GitBook and publish your first docs site in minutes.
 
-You’ll need a GitBook account to start publishing documentation.
+At the end of this guide, you’ll have a live documentation site, ready to expand and customize.
 
-<a href="https://app.gitbook.com/join?utm_content=quickstart_button_sign_up&#x26;utm_source=gitbook_docs" class="button primary">Sign up</a>
+{% stepper %}
+{% step %}
 
-### Create a docs site
+#### Getting started
 
-When you first sign up, you’ll have a chance to create a docs site from the docs site wizard. You can launch the wizard again to create a new site at any point by clicking the **+** button next to the **Docs sites** header in the sidebar.
+You’ll need to [create an account](https://app.gitbook.com/join) before you can get started with your first documentation site.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Ftr45YCskBmSWji7m4HZj%2Fgetting-started-quickstart.svg?alt=media&#x26;token=160e7114-067b-46cb-979d-5b6ce7b5d0c9" alt="A GitBook screenshot showing the publishing step of the docs site wizard"><figcaption><p>Publish your first site in just a few minutes using the docs site wizard.</p></figcaption></figure>
-
-The docs site wizard will take you through the flow of creating your first site. You’ll need to give your site a name, choose if you want to start from scratch with an empty site or add our sample content, and whether or not you want to publish your docs right away.
-
-### Edit your content
-
-Now that you’ve created a site, you can edit or import your content. If you have an existing repository on GitHub or GitLab with your documentation, you can easily migrate and sync your content to GitBook using [Git Sync](https://gitbook.com/docs/documentation/getting-started/git-sync). Find out more in [our guide to migrating content using Git Sync](https://app.gitbook.com/s/LBGJKQic7BQYBXmVSjy0/editing-and-publishing-documentation/import-or-migrate-your-content-to-gitbook-with-git-sync).
-
-After importing your content, you can edit your pages using GitBook’s built-in editor and do things like [add interactive blocks](https://gitbook.com/docs/documentation/creating-content/blocks), customize the [layout of your pages](https://gitbook.com/docs/documentation/creating-content/content-structure/page) and more.
-
-Check out these resources if you’d like to learn more about the editing experience in GitBook:
-
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover-dark data-type="image">Cover image (dark)</th></tr></thead><tbody><tr><td><strong>Start a change request</strong></td><td>Collaborate on content with your team.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FFe03rMgRn98lDrMoqRdh%2FChange%20Request.svg?alt=media&#x26;token=ea09f115-822e-4a9f-9ca2-b3a5a6497e5f">card_change_request.svg</a></td><td><a href="../collaboration/change-requests">change-requests</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FTUKSbNWQs1VPoO5yuRxV%2FMake%20your%20documentation%20process%20more%20collaborative%20with%20change%20requests%20(1).svg?alt=media&#x26;token=ffd9f2fc-c9b6-4e22-a1c3-605264ff8517">Make your documentation process more collaborative with change requests (1).svg</a></td></tr><tr><td><strong>Install an integration</strong></td><td>Integrate your favorite tools with your published site.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FzvuPBpE9H98mgDoBbYdy%2FIntegrations.svg?alt=media&#x26;token=ab5c2d76-8103-4fe8-becb-cd7cd2174925">card_integrations.svg</a></td><td><a href="../integrations/install-an-integration">install-an-integration</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F2AusRyLQRpZeNphjEgW7%2FIntegrations.svg?alt=media&#x26;token=3751e7db-c348-4d73-b1ca-960f1e029c69">Integrations.svg</a></td></tr><tr><td><strong>Add an OpenAPI spec</strong></td><td>Add API methods directly into your docs.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fz8bfsj6BwyLBl2lX3VCJ%2FOpenAPI.svg?alt=media&#x26;token=63e297ee-7f94-4474-86cd-3e121d424634">card_openapi.svg</a></td><td><a href="../api-references/openapi">openapi</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F8u6iW0gEgoeA0Aic0zmQ%2FOpenAPI.svg?alt=media&#x26;token=b3353633-6926-4eda-9554-c1e569e1052c">OpenAPI.svg</a></td></tr></tbody></table>
-
-### Customize your site
-
-Not only can you edit the content of your site, you can also customize many settings related to the look and feel of your site when it’s published.
-
-You can change things like the [logo, colors & fonts](https://gitbook.com/docs/documentation/publishing-documentation/customization), add more structure through [site sections](https://gitbook.com/docs/documentation/publishing-documentation/site-structure/site-sections) and [variants](https://gitbook.com/docs/documentation/publishing-documentation/site-structure/variants), or update your [site’s visibility](https://gitbook.com/docs/documentation/publishing-documentation/site-settings#audience) settings.
-
-You can read more about customizing your docs in the resources below:
-
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover-dark data-type="image">Cover image (dark)</th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Customize your site</strong></td><td>Customize the look and feel of your site.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FTKcZymjhCYVHntFXEm3u%2FCustomize.svg?alt=media&#x26;token=90013ca9-aa25-4144-be93-5704809f3136">Customize.svg</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fg9kUW4Q6vBnDs0xP6z7b%2FCustomize.svg?alt=media&#x26;token=8467216f-6b71-4881-85ad-02c0c55e9ece">card_customize.svg</a></td><td><a href="../publishing-documentation/customization">customization</a></td></tr><tr><td><strong>Add a custom domain</strong></td><td>Set up a custom domain for your site.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F5VdQ52ZSRUT3VJHQHBWR%2FDomain.svg?alt=media&#x26;token=48b5bd12-b80e-4d9b-b971-e9d275a441f4">Domain.svg</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FdCdWW6ZEVYv0M1tJ1WHL%2FDomain.svg?alt=media&#x26;token=41896c61-835c-41da-83e0-11ec10a109c4">card_custom_domain.svg</a></td><td><a href="../publishing-documentation/custom-domain">custom-domain</a></td></tr><tr><td><strong>Update your site's settings</strong></td><td>Update settings related to your published site.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FtKaejufwVjhXW0DmoBrs%2FSettings.svg?alt=media&#x26;token=90e17ec7-499d-41cf-b9f0-da689b70f410">Settings.svg</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fgit-blob-676622619daf1f4c5a2e8b618df1da57eb579797%2FSettings-card.svg?alt=media">card_settings.svg</a></td><td><a href="../publishing-documentation/site-settings">site-settings</a></td></tr></tbody></table>
-
-### Publish your documentation
-
-Finally, you’re ready to publish your site into the world. If you haven’t already published your site from the wizard, you can publish your site from your site’s dashboard at any time.
-
-After publishing your site, you’ll get a link that you’re able to share with anyone!
-
-If you’re running into problems or have any questions, we’re here to help. [Join our community](https://github.com/orgs/GitbookIO/discussions) or [send our support team a message](https://gitbook.com/docs/help-center/further-help/how-do-i-contact-support) and we’ll help you from there.
+After creating your account, you’ll automatically see a new docs site that’s ready for you to edit and customize. Choose how you want to add content to your site before you publish from the on-screen options.
 
 {% hint style="success" %}
-Want to explore publishing in more details? Check out [our complete guide to creating and publishing content in GitBook](https://app.gitbook.com/s/LBGJKQic7BQYBXmVSjy0/editing-and-publishing-documentation/complete-guide-to-publishing-docs-gitbook).
+Your content isn’t published yet — so you can edit, customize and preview your docs site before making it live. Hit **Publish** to make it live immediately.
+
+<i class="fa-arrow-down">:arrow-down:</i> [Jump to the ‘Publishing’ section on this page](#publish-your-documentation)
+{% endhint %}
+{% endstep %}
+
+{% step %}
+
+#### Edit your content
+
+There are two ways to edit and update your content in GitBook — in our visual editor, or following a docs-as-code workflow. **You can choose one, or use a combination of both**.
+
+Whichever workflow you prefer, you’ll edit your content using a **branch-based editing flow**. Find out more on [the Concepts page](https://gitbook.com/docs/documentation/getting-started/concepts).
+
+<details>
+
+<summary>Use the visual editor</summary>
+
+GitBook’s what-you-see-is-what-you-get (WYSIWYG) editor lets you edit content visually, drag content blocks to reorganize them and see how your content will look as you work.
+
+This visual editing workflow is ideal for users who don’t want to work in a code editor, or who have experience working with tools like Notion or Google Docs.
+
+**1. Edit your docs in a change request**
+
+First, find your docs site in the sidebar and click the item below it. This takes you to the space where your content lives.
+
+Click **Edit** in the top-right. This opens a change request where you can edit the content of the space.
+
+Click **Add new…** in the table of contents on the left-hand side to add a page, and give it a title.
+
+<div data-with-frame="true"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F4NufXeLUPbyqEUbv1xo5%2F13_11_25_change_request.png?alt=media&#x26;token=175ca825-c600-48fc-a23b-b406b7a7c921" alt="A screenshot of the Editor in the GitBook app, zoomed in to show the menu that lets you add new pages, groups, links and more to a GitBook space."><figcaption></figcaption></figure></div>
+
+**2. Preview your changes**
+
+Along the top of the web app you’ll see tabs for **Editor**, **Changes** and **Preview**. These switch between different views for your content.
+
+Click **Preview** to see a live preview of what your docs site will look like with all the changes in your change request, on both desktop and mobile.
+
+<div data-with-frame="true"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FAuVKKPX3JX3tNjpSGXvf%2F13_11_25_site_preview%402x.png?alt=media&#x26;token=b06ee5b4-2f44-421c-bce7-f084696f309f" alt="A screenshot of the GitBook app with the Preview tab open, showing a docs site being previewed on a mobile-size display"><figcaption></figcaption></figure></div>
+
+**3. Merge your changes**
+
+Once you’re happy with your changes, click the **Merge** button in the top-right corner.
+
+This will update the primary version of your content with all the edits from the change request. If the content is part of a live docs site, the site will be updated immediately.
+
+</details>
+
+<details>
+
+<summary>Code-based editing</summary>
+
+Sync your documentation with a GitHub or GitLab repository to enable code-based editing. Once synced, you can edit your docs in your existing developer environment.
+
+This workflow is ideal for technical users who don’t want to switch tools and prefer to manage their documentation alongside other code.
+
+**1. Set up Git Sync**
+
+If you haven’t already set up Git Sync when creating your site, first find your docs site in the sidebar and click the name of the content below it. This takes you to the space where your content lives.
+
+Click the **Set up Git Sync** button in the top-right and follow the instructions to sync your space to your chosen Git repository.
+
+Head to the [Git Sync pages](https://gitbook.com/docs/documentation/getting-started/git-sync) to find out more.
+
+**2. Edit your docs from your developer environment**
+
+Once you’ve synced your space to your Git repository, you can update the content of your docs from that repository in your development environment.
+
+Open the repository, create a pull request and make the changes you want.
+
+{% hint style="info" %}
+
+### Markdown editing
+
+GitBook supports [Markdown editing](https://gitbook.com/docs/documentation/creating-content/formatting/markdown), so you can create and format content using common syntax.
+
+Every standard block in GitBook can be written and formatted using Markdown syntax.
 {% endhint %}
 
+**3. Preview your changes**
 
-# Importing content
+You can [preview your changes](https://gitbook.com/docs/documentation/getting-started/git-sync/github-pull-request-preview) on your published docs site from the pull request in GitHub or GitLab.
+
+In your pull request, you’ll see a status with a unique preview URL. Click **Details** on that status to open the preview URL and see how your site will look when the pull request is merged and your site is updated.
+
+**4. Merge your changes**
+
+You’re good to go. Merge your pull request and your content will be updated both in the GitBook app and on your docs site, if it’s live.
+
+In the GitBook app, every commit and your merged pull request will be synced to your space as updates in the version history.
+
+<div data-with-frame="true"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F1AdVpymURZeqOOsMOzlH%2F13_10_25_github_history%402x.png?alt=media&#x26;token=a7761394-10c8-4286-8b69-bf033d062635" alt="A screenshot of the GitBook app showing the version history side panel open. In the side panel the highlighted entry shows a pull request from GitHub that was merged as part of the history, with a link to view the pull request on GitHub."><figcaption></figcaption></figure></div>
+
+</details>
+{% endstep %}
+
+{% step %}
+
+#### Customize your docs
+
+<details>
+
+<summary>Organize your site navigation</summary>
+
+You can add more content to your site — such as an API reference, a help center or a changelog — at any time. When you add content, you can organize your site’s navigation bar to help users easily find what they’re looking for.
+
+Head to [the Concepts page](https://gitbook.com/docs/documentation/getting-started/concepts) to find out more about site navigation.
+
+Head to [the Site structure page](https://gitbook.com/docs/documentation/publishing-documentation/site-structure) to find out more about adding content to your site.
+
+<div data-with-frame="true"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FsoxIXhHjWQo4xRksb0ui%2F13_11_25_site_navigation%402x.png?alt=media&#x26;token=5d0c93c2-4d57-4c7c-bd52-ca8381e77fc0" alt="A screenshot of a published docs site hosted on GitBook. The top of the site has a navigation bar, and the cursor is hovering over a drop-down in that bar, with a submenu open below it showing links to more pages"><figcaption></figcaption></figure></div>
+
+</details>
+
+<details>
+
+<summary>Customize the look and feel of your docs site</summary>
+
+Your docs site will look great out of the box, but you can also customize many settings that change the look and feel of your published site.
+
+You can customize your site’s [logo, colors and font](https://gitbook.com/docs/documentation/publishing-documentation/customization/icons-colors-and-themes), add to your site navigation bar using [site sections](https://gitbook.com/docs/documentation/publishing-documentation/site-structure/site-sections) and [variants](https://gitbook.com/docs/documentation/publishing-documentation/site-structure/variants), update your [site’s visibility](https://gitbook.com/docs/documentation/publishing-documentation/site-settings#audience) settings and much more.
+
+<div data-with-frame="true"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FPHDUX2Kbmd9wwUBpJqst%2Fcustomization-demo.png?alt=media&#x26;token=7586ba34-9cd2-47ee-9169-81b73dd40923" alt="An illustration showing five docs sites hosted in GitBook, each with distinct visual customizations"><figcaption></figcaption></figure></div>
+
+</details>
+{% endstep %}
+
+{% step %}
+
+#### Publish your documentation
+
+<details>
+
+<summary>Publish your docs</summary>
+
+You can publish your site with a click at any time.
+
+Open your site’s dashboard by clicking the site’s name in the sidebar. Then click **Publish** in the top-right corner to make it live.
+
+Once your site is live, the dashboard will update with a link to the live site.
+
+<div data-with-frame="true"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FLRLvuidU4tZph7NJZiaX%2F13_11_25_site_dashboard%402x.png?alt=media&#x26;token=c6d67f60-04ed-4814-a197-f6f620fddeda" alt="A screenshot of the GitBook app showing a dashboard for a docs site. The dashboard shows the public URL, site status, site content, some top-level analytics for the site, and other options in tabs along the top of the screen."><figcaption></figcaption></figure></div>
+
+{% hint style="success" %}
+Want to explore publishing in more detail? Check out [our complete guide to creating and publishing content in GitBook](https://app.gitbook.com/s/LBGJKQic7BQYBXmVSjy0/editing-and-publishing-documentation/complete-guide-to-publishing-docs-gitbook).
+{% endhint %}
+
+</details>
+
+<details>
+
+<summary>Add a custom domain</summary>
+
+By default, you site will be published with a unique URL with this format:
+
+```
+https://[organization-name].gitbook.io/[site-title]
+```
+
+While this may be suitable for some teams, many choose to change their URL to [a custom domain](https://gitbook.com/docs/documentation/publishing-documentation/custom-domain) or [a custom subdirectory](https://gitbook.com/docs/documentation/publishing-documentation/setting-a-custom-subdirectory).
+
+To do this, open your site dashboard by clicking the site’s name in the sidebar, then open the **Settings** tab and choose **Domain and URL**.
+
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FpgIgLwPDjxeFvDPV5s1A%2F13_11_25_custom_domain%402x.png?alt=media&#x26;token=0b4bc691-21d5-48f8-a068-411dfe0a19c8" alt="A screenshot of the GitBook app showing the menu that guides you through the process of setting up a custom domain for your docs site."><figcaption></figcaption></figure>
+
+Use the buttons on the screen to choose the option you want, and follow the instructions to configure the DNS settings with your domain provider.
+
+{% hint style="info" %}
+It can take up to 48 hours for your DNS changes to take effect — although they typically propagate much faster.
+{% endhint %}
+
+</details>
+{% endstep %}
+{% endstepper %}
+
+### Next steps
+
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-type="image">Cover image (dark)</th><th data-hidden data-type="image">Cover image (dark)</th><th data-hidden data-type="image">Cover image (dark)</th><th data-hidden data-type="image">Cover image (dark)</th><th data-hidden data-card-cover-dark data-type="image">Cover image (dark)</th></tr></thead><tbody><tr><td><strong>Invite your team to collaborate</strong></td><td>Add team members to your organization and set permissions</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fx86ICzAJYkRIHo8CkBfa%2FInvite%20your%20team%20to%20collaborate.png?alt=media&#x26;token=427f64f0-9175-4787-a952-827bcdbec2ab">25_12_10_invite_your_team_to_collaborate_1.png</a></td><td><a href="../account-management/member-management/invite-members-to-your-organization">invite-members-to-your-organization</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fanu5lcBOfoYfNQPIUA65%2FInvite%20your%20team%20to%20collaborate.png?alt=media&#x26;token=1759c40c-08a4-42e4-a345-2b91dfad1f62">25_12_10_invite_your_team_to_collaborate.png</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fanu5lcBOfoYfNQPIUA65%2FInvite%20your%20team%20to%20collaborate.png?alt=media&#x26;token=1759c40c-08a4-42e4-a345-2b91dfad1f62">25_12_10_invite_your_team_to_collaborate.png</a></td><td></td><td></td><td></td></tr><tr><td><strong>Change site visibility</strong></td><td>Control who can see your content with share links and authenticated access</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FA33LxfEQT05aX7uUdLpb%2FChange%20site%20visibility.png?alt=media&#x26;token=896f9961-f57b-4a5b-8903-792303827565">25_12_10_change_site_visibility_1.png</a></td><td><a href="../../publishing-documentation/publish-a-docs-site#publish-a-docs-site">#publish-a-docs-site</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FDpa2c6rD9NiYgtdlIvF0%2FChange%20site%20visibility.png?alt=media&#x26;token=f2c838ef-2737-4b8a-ad8b-69453bf28f53">25_12_10_change_site_visibility.png</a></td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FDpa2c6rD9NiYgtdlIvF0%2FChange%20site%20visibility.png?alt=media&#x26;token=f2c838ef-2737-4b8a-ad8b-69453bf28f53">25_12_10_change_site_visibility.png</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FDpa2c6rD9NiYgtdlIvF0%2FChange%20site%20visibility.png?alt=media&#x26;token=f2c838ef-2737-4b8a-ad8b-69453bf28f53">25_12_10_change_site_visibility.png</a></td><td></td></tr><tr><td><strong>Add auto-translations</strong></td><td>Create one-click translations that update automatically</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FC5waVC2qQyf9I6hE7uQW%2FAdd%20auto-translations.png?alt=media&#x26;token=888e2471-7041-40f0-8b22-83c442bd0808">25_12_10_add_auto_translations_1.png</a></td><td><a href="../publishing-documentation/site-settings">site-settings</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Flewca2EA3o9UnsB9j0vz%2FAdd%20auto-translations.png?alt=media&#x26;token=f3a42248-f303-44ce-b577-375f8579c34c">25_12_10_add_auto_translations.png</a></td><td></td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Flewca2EA3o9UnsB9j0vz%2FAdd%20auto-translations.png?alt=media&#x26;token=f3a42248-f303-44ce-b577-375f8579c34c">25_12_10_add_auto_translations.png</a></td><td></td></tr><tr><td><strong>Install integrations</strong></td><td>Integrate with your stack and extend functionality with powerful integrations</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FitoGCSdPpGwPPCGwb29a%2FInstall%20integrations.png?alt=media&#x26;token=6243ef56-d3f7-464f-8d8b-7ffee19f02a3">25_12_10_install_integrations_1.png</a></td><td><a href="../integrations">integrations</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F5bKkozsx0KN2mbeWaWMv%2FInstall%20integrations.png?alt=media&#x26;token=8f25beb6-8844-486b-8afb-8ae50e9b7554">25_12_10_install_integrations.png</a></td><td></td><td></td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F5bKkozsx0KN2mbeWaWMv%2FInstall%20integrations.png?alt=media&#x26;token=8f25beb6-8844-486b-8afb-8ae50e9b7554">25_12_10_install_integrations.png</a></td></tr><tr><td><strong>Add an API reference</strong></td><td>Create auto-updating, interactive API reference docs from an API spec</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F2mbcS7cM3bp2Gi5XwWmf%2FAdd%20an%20API%20reference.png?alt=media&#x26;token=fed30694-81df-4f0f-a061-9c869879fda1">25_12_10_add_an_api_reference_1.png</a></td><td><a href="../api-references">api-references</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F5q9ieVfqWc6JewePmrTd%2FAdd%20an%20API%20reference.png?alt=media&#x26;token=43439c73-f6bd-43f4-b7fa-6c9c03b3c969">25_12_10_add_an_api_reference.png</a></td><td></td><td></td><td></td><td></td></tr><tr><td><strong>Track docs analytics</strong></td><td>Use the built-in insights to measure success and understand user behavior</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FSmrnppLSbEjgJXeblvHp%2FTrack%20docs%20analytics.png?alt=media&#x26;token=09f31b10-1c10-48e1-a21c-bcc3d356b70d">25_12_10_track_docs_analytics_1.png</a></td><td><a href="../publishing-documentation/insights">insights</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FbzbqcT1c5ndzkO12Eh6d%2FTrack%20docs%20analytics.png?alt=media&#x26;token=23b06593-393f-4382-a97f-697009646263">25_12_10_track_docs_analytics.png</a></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+
+### FAQs
+
+<details>
+
+<summary>What is GitBook?</summary>
+
+GitBook is a collaborative, AI-native documentation platform where teams can create, review, and publish branded docs as websites. Docs sites hosted on GitBook can offer a built-in AI Assistant and connect to other AI tools via MCP.
+
+You can edit content using the advanced visual editor using Markdown, sync your docs with a Git repository for a docs as code workflow — or use a combination of the two. However your team chooses to use GitBook, you’ll use a Git-like branching workflow with a full version history, which protects your primary content while encouraging collaboration and feedback across your entire team.
+
+</details>
+
+<details>
+
+<summary>How do you publish documentation with GitBook?</summary>
+
+Publishing in GitBook is a simple process once your content is ready to go live:
+
+1. Create a new docs site (or open an existing one) and choose the content you want to publish.
+2. Choose your site audience. You can publish to everyone with the **public** setting, or limit the audience with **share links** or **authenticated access**.
+3. (Optional) Customize the branding, domain, and theme using the built-in options.
+4. Click **Publish**. Congrats — your docs are live! You can add more spaces later as site sections or variants.
+
+To find out more, check out [our Quickstart guide](#getting-started) above, or read [the complete guide to creating and publishing documentation in GitBook](https://app.gitbook.com/s/LBGJKQic7BQYBXmVSjy0/editing-and-publishing-documentation/complete-guide-to-publishing-docs-gitbook).
+
+</details>
+
+<details>
+
+<summary>Is GitBook open source?</summary>
+
+GitBook itself is not open source. However, GitBook’s published docs platform — which is used to host and display documentation on a docs site — is open source. You can [visit the repository](https://github.com/GitbookIO/gitbook) to see the code and submit changes for review.
+
+While GitBook itself isn’t open source, **open source projects can publish documentation on GitBook for free**. Teams can sign up for [the Community plan](https://gitbook.com/docs/documentation/account-management/plans/community) and publish content using [a Sponsored site plan](https://gitbook.com/docs/documentation/account-management/plans/community/sponsored-site-plan), both of which are free to qualifying teams.
+
+</details>
+
+<details>
+
+<summary>What’s the difference between a site and a space in GitBook?</summary>
+
+In GitBook, a **docs site** is your overall documentation hub, hosting all content accessible to your audience and featuring customizable options like theme and domain.
+
+Each site contains one or more **spaces**, which serve as individual sections within the site, organizing related content for better modularity and ease of management. Spaces let you focus your collaboration on specific topics, and you can combine multiple spaces on a single site to build structure or enable options like translations (for localized documentation) or multi-product support.
+
+</details>
+
+<details>
+
+<summary>What are the differences between GitBook’s visual editor and Git Sync?</summary>
+
+GitBook offers two main methods for editing documentation — the visual editor and Git Sync. The **visual editor** is an advanced, block-based editor that allows you to create and modify content directly within GitBook using a traditional user interface that includes Markdown support. It's ideal for those who prefer a more intuitive, hands-on editing experience without directly dealing with code.
+
+**Git Sync** integrates your documentation workflow with a Git repository, enabling a ‘docs as code’ approach. This option is ideal for developers and teams who prefer managing documentation alongside their codebase, using familiar Git commands and workflows.
+
+Your team can choose one of these workflows, or use a combination of them both. And whichever method they prefer, editing follows a consistent, Git-like branching workflow with a full version history and content review process. This doesn’t just promote collaboration and quality across your docs — it also safeguards primary content from accidental edits.
+
+</details>
+
+
+# Concepts
+
+Learn the basics of GitBook so you can create and publish outstanding documentation for your users
+
+<div data-full-width="false"><figure><picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F37JXNODvMFd5lJkFftnJ%2FEditor%20and%20block%20palette%20(1).png?alt=media&#x26;token=f13a2e35-6ad0-497d-855c-862ef47bad12" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FncL7zGSB2PvZ84M6O3EG%2FEditor%20and%20block%20palette.png?alt=media&#x26;token=d0115d8f-b63d-45e0-b007-9ce9a8f4bf9b" alt="An illustration showing the block palette open in the GitBook editor. The window is floating on a pastel yellow and pink background"></picture><figcaption></figcaption></figure></div>
+
+## Organizing content
+
+### Space
+
+A space is a project that lets you work on a collection of related pages. Within a space you can write content, organize your pages with groups and subpages, install integrations, and more.
+
+When you want to publish a space, you can do so by adding it to a docs site. You can add as many spaces to a docs site as you like. So when you’re building out your content, you can create separate spaces for your product documentation, API reference, changelog, help center, and anything else you want to include on your documentation — and publish them all on one docs site.
+
+You may also want to create translated versions of your primary documentation, or separate docs for different versions of your product. Each of these will also have their own space and can be added to your single docs site for users to browse.
+
+#### Collection
+
+Collections act like folders within the GitBook app, letting you group spaces together to make it easier to organize and store your content.
+
+As well as letting you keep content organized, collections also make it easier to manage content-level permissions at scale. You can override organization-level permissions across multiple spaces by adding them to a collection and setting permissions for the entire collection.
+
+### Docs site
+
+You can publish your content as a docs site. Your docs will be published and available to your selected audience as a website that you can customize with your own branding, analytics and custom domain.
+
+You can create as many docs sites as you want. They’re all listed in the sidebar and in the Docs sites section of the app, where you can change settings and customization options. You can control all of your docs site’s settings and options in the GitBook app.
+
+The content on your site comes from spaces in your GitBook organization. When you create a new docs site, you can create a new space, or link an existing one. A docs site can contain one space, or multiple spaces containing different content — including translations and previous product versions.
+
+## Editing content
+
+GitBook’s visual editor lets you use a what-you-see-is-what-you-get (WYSIWYG) interface to add content to a space.
+
+### Pages
+
+A page is the place where you add, edit and embed content. Pages always live inside a space, and you can add as many pages to a space as you like.
+
+The pages in your space appear in the table of contents on the left-hand side of the editor. Here, you can add new pages, create page groups, and nest pages within other pages to create subpages.
+
+{% hint style="info" %}
+
+### Can’t see how to edit or add a page?
+
+If your site is published, you’ll need to create a change request before you can make any changes to the content of a space. [Read about change requests below](#change-requests).
+{% endhint %}
+
+### Blocks
+
+GitBook is a block-based editor. That means you can add different kinds of blocks to your page — from standard text and images to more advanced, interactive blocks. Your pages can include any combination of blocks you want, and there’s no limit to the number of blocks you can have on a page.
+
+Block-based editing makes it easy to reorganize your content using drag-and-drop, or add new blocks in the middle of existing content. You can create new blocks using the editor interface, or create and format blocks using Markdown.
+
+Discover all the blocks you can use in GitBook [in the Blocks section](https://gitbook.com/docs/documentation/creating-content/blocks).
+
+#### Markdown editing
+
+GitBook’s editor allows you to create and format content blocks using Markdown.
+
+Markdown is a popular markup syntax that’s widely known for its simplicity. GitBook supports it as a keyboard-friendly way to write rich and structured text — all of GitBook’s blocks can be written using Markdown syntax.
+
+{% hint style="info" %}
+You can learn more about Markdown itself by visiting [CommonMark](https://commonmark.org/help/).
+{% endhint %}
+
+### Git Sync
+
+Git Sync allows teams to synchronize GitHub or GitLab repositories with GitBook and turn Markdown files into beautiful, user-friendly docs. Once set up, it keeps all your content synchronized between the GitBook app and your codebase.
+
+Git Sync is bi-directional, so changes you make in GitBook’s visual editor are automatically synced — as are any commits made on GitHub or GitLab. This allows developers to commit directly from GitHub or GitLab while other team members edit and leave feedback on changes directly in GitBook.
+
+Git Sync also unlocks many other useful workflows in your GitBook docs, such as batch changes, linting, and more. Learn more in [our Git Sync section](https://gitbook.com/docs/documentation/getting-started/git-sync).
+
+## The editing flow
+
+### Change requests
+
+A change request is a [**branch**](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell) of your main content that you can use to make concurrent edits, while maintaining your version history. It will feel familiar to anyone who uses pull requests in GitHub or merge requests in GitLab.
+
+If you want to edit the content on your published docs site, you’ll first need to open a change request in your space.
+
+In a change request, you can add, edit and delete content in a space, then request a review from your team and merge your changes into your main content to update your published docs site.
+
+{% hint style="info" %}
+
+### Branching in brief
+
+Opening a change request creates a copy of your content at that specific moment in time, sometimes called a ‘branch’. Any changes you make will not appear in your main content until you choose to merge your change request.
+
+The advantage of branching is that your teammates can create, edit and merge their own change requests at the same time as you without stepping on each other’s toes. And if someone edits the same content as you, GitBook will guide you through resolving any conflicts before you merge.
+{% endhint %}
+
+#### Reviews
+
+Reviews encourage oversight and help improve the quality and accuracy of your documentation.
+
+You can request a review on your change request before you merge and make the changes live on your docs site. Adding a title and description to your change request gives your reviewers some context.
+
+Reviewers can view the diff for your change request, which highlights everything that’s new, changed or deleted in your change request. They can also leave feedback right on the page using the built-in comments feature -- then approve your change request, or ask for more changes to be made.
+
+#### Merging
+
+Merging a change request will add all the content in your change request into the main branch of content — and those changes will also go live on your docs site.
+
+When you merge your change request, it also creates a new version in the space’s version history.
+
+## Publishing documentation
+
+When you publish your content as a [docs site](#docs-site), you can add more content to your site, change the audience, and customize its look, feel and other settings.
+
+### Structuring your docs site
+
+If you want to add extra content to your site, there are two options for you to use, each designed for different use cases: site sections and variants.
+
+#### Site section
+
+Site sections are designed to let you add **multiple different types of documentation to a single docs site**. For example, you could use a single docs site and use it to host your product docs, API reference, help center and changelog — as we do on this docs site.
+
+When you add new site sections, you build out the navigation bar at the top of your site, with each section getting its own entry on the bar. You can also group site sections together to create a drop-down menu in your navigation bar — ideal for adding hierarchy to your site sections.
+
+#### Variant
+
+Variants are designed to let you add **multiple versions of the same documentation to a single docs site**. For example, you might want to localize your entire documentation into multiple languages, or document previous versions of your product for users that haven’t updated.
+
+Your end users can switch between these variants on your docs site using the language picker or the variant picker at the top of the table of contents on the left-hand side of your site.
+
+<div data-with-frame="true"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FD4oCABc0YRJAFzaaVBpn%2Fstructure%402x.png?alt=media&#x26;token=4c4dd0df-8e8e-40e7-8a57-e9791d337c8f" alt="A screenshot of the Roboflow Documentation site, with a navigation bar along the top and an open drop-down menu at the top of the table of contents showing different language variants for the site."><figcaption><p>Site sections create a navigation bar along the top of your site, while users can switch between variants using a menu in the table of contents.</p></figcaption></figure></div>
+
+### Site audience
+
+You can choose who will see your documentation when you publish it. The default for new sites is for them to be published publicly, and indexed by search engines.
+
+However, if you want more control over who can access your site, you can choose to limit the audience using **share links** or **authenticated access**.
+
+With share links, you can share you content privately with customers or partners without needing to invite them to your organization by creating a private link and sharing it with them directly. Anyone with the link can access your site.
+
+If you want even more control, authenticated access allows you to publish your content while requiring authentication from any visitors who want to view it. When enabled, GitBook lets your authentication provider handle who has access to the content. This is ideal for private content or for publishing an internal knowledge base that should only be accessible by members of your team.
+
+You can also control who sees individual pages or blocks using a feature called adaptive content. Once set up, it will show or hide content based on user attributes that you decide upon. Read more in [the Adaptive content pages](https://gitbook.com/docs/documentation/publishing-documentation/adaptive-content).
+
+### Site customization
+
+GitBook includes built-in customization options for docs sites, helping you match the look and feel of your documentation to your product or brand.
+
+Even if you don’t apply any customizations, your docs will look great as they are. But you have the option to customize logos, icons, and colors, add custom fonts, or choose from some built-in themes that help your docs look as great as your product.
+
+<div data-with-frame="true"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FPHDUX2Kbmd9wwUBpJqst%2Fcustomization-demo.png?alt=media&#x26;token=7586ba34-9cd2-47ee-9169-81b73dd40923" alt="An illustration showing five docs sites hosted in GitBook, each with distinct visual customizations"><figcaption><p>You can customize your documentation to match your brand with your own logos, colors, fonts, images and much more.</p></figcaption></figure></div>
+
+### SEO and AI optimizations
+
+Documentation published in GitBook is automatically optimized for search (SEO) and for AI systems like ChatGPT, Claude, and Google AI Overview (GEO). These are handled in the back end, so all you need to do is write content that includes the keywords and terms you want to target.
+
+Pages pull metadata from each page’s title and description, and your content is formatted to be responsive. GitBook automatically creates a sitemap based on your table of contents, and pages are cached and served via our global CDN to improve performance. All of these help your documentation to rank high in search engines.
+
+Likewise, GitBook also optimizes for AI tools following all the industry standards as they quickly evolve.
+
+GitBook automatically creates .md versions of every page, which makes it easier for large-language models (LLMs) to parse. We also automatically expose a Model Context Protocol (MCP) server for every published site, giving AI tools a structured way to discover and retrieve your docs as resources — no scraping required. Plus, your site also generates `llms.txt` and `llms-full.txt` designed for AI ingestion.
+
+## Team management
+
+### Organization
+
+A GitBook organization contains all of the content and docs sites for an individual company. With your single account, you can be a member of one or many organizations and switch between them using the dropdown menu in the top left corner of the GitBook app.
+
+### Members
+
+Members are individual users within your organization. You can have as many members as you like in an organization, each with permissions suited to their specific access needs.
+
+#### Permissions
+
+Permissions let you decide on the access level of your organization’s members. When a member joins your organization, you assign them a role — such as Editor or Viewer. These roles define their permissions for all of your organization’s content. But you can also override these permissions at a content level. For example:
+
+* You can give someone with the Viewer role editing access to one particular piece of content
+* You can limit access to specific confidential or private content and only grant access to certain members of your organization.
+
+Read more on [the Permissions and inheritance page](https://gitbook.com/docs/documentation/account-management/member-management/permissions-and-inheritance).
+
+
+# Migrate to GitBook
 
 How to import existing content into GitBook from Confluence, Notion, Git and more
 
@@ -76,17 +456,23 @@ You can migrate and unify existing documentation in GitBook using the import too
 
 You have the option to import single or multiple pages using our built-in import tool — or [an entire Git repository using Git Sync](#import-using-git-sync).
 
-## Using the Import Panel
+## Using the Import panel
+
+The Import panel makes it easy to migrate your content into your GitBook organization from another documentation website or from existing files.
+
+When you choose to import from another online documentation site, all you have to do is add the URL of the site and GitBook will handle the rest.
+
+By default, GitBook uses AI to streamline the import process. This will intelligently refine and clean up imported content that doesn’t perfectly match GitBook’s formats — meaning the output will be more polished and use GitBook’s blocks more effectively. You can disable this from the menu.
 
 ### Supported import formats
 
-GitBook supports imports from websites or files in the following formats:
+GitBook supports imports from docs websites or files in the following formats:
 
 * Markdown (`.md` or `.markdown`)
 * HTML (`.html`)
 * Microsoft Word (`.docx`)
 
-We also support imports from:
+GitBook also support imports from:
 
 * Confluence
 * Notion
@@ -95,7 +481,7 @@ We also support imports from:
 * Dropbox Paper
 * Google Docs
 
-If you want to **import multiple pages**, you can upload a ZIP file containing HTML or Markdown files.
+If you want to **import multiple pages**, you can upload a ZIP file containing HTML or Markdown files, or use the **Online docs** import option.
 
 {% hint style="info" %}
 GitBook is Markdown-based, so importing content in Markdown format will yield the best results. If your current tools support exporting in Markdown, we recommend using that format for a smoother import process.
@@ -103,11 +489,11 @@ GitBook is Markdown-based, so importing content in Markdown format will yield th
 
 ### The Import panel
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQPGDN9Aja68uaLDdZt9M%2Fgetting-started-import-panel.svg?alt=media&#x26;token=bf7114a5-c02c-4dfd-acc5-cf527d68309d" alt="A GitBook screenshot showing the import panel"><figcaption><p>The import panel in GitBook.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F8omDHqTDwNkvdG6Hv81q%2FImport%402x%20(1).png?alt=media&#x26;token=a5c0993c-f49a-4911-8297-6e76f0435bcb" alt="A GitBook screenshot showing the import panel"><figcaption><p>The import panel in GitBook.</p></figcaption></figure>
 
-When you create a new space, you’ll have the option to import content from the bottom sheet of the first empty page.
+When you create a new space, you’ll have the option to import content in the modal that appears. If you create an empty space, you can also import using the **Quickstart** section at the bottom of the new empty page when you click **Edit**.
 
-Alternatively, you can always import a page or subpage by selecting **New page** > **Import new pages** in the [table of contents](https://gitbook.com/docs/documentation/resources/gitbook-ui#table-of-contents), or opening the Actions menu <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt="The Actions menu icon in GitBook"></picture> for a page and choosing **Import subpages**.
+Alternatively, you can always import a page or subpage by selecting **Add new** > **Import pages** at the bottom of the [table of contents](https://gitbook.com/docs/documentation/resources/gitbook-ui#table-of-contents), or by opening the **Actions menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt="The Actions menu icon in GitBook"></picture> for a page and choosing **Import subpages**.
 
 After choosing an input source, you can select the file you’d like to import.
 
@@ -124,20 +510,17 @@ GitBook currently has the following limits for imported content:
 
 ***
 
-## Import using Git Sync
+## Import from a GitHub or GitLab repo using Git Sync <a href="#import-using-git-sync" id="import-using-git-sync"></a>
 
-For importing large volumes of content into GitBook, we recommend using [Git Sync](https://gitbook.com/docs/documentation/getting-started/git-sync). Unlike our integrated import tool, Git Sync is better suited for handling larger migrations efficiently.
+When importing large volumes of content into GitBook, we recommend using [Git Sync](https://gitbook.com/docs/documentation/getting-started/git-sync). While our built-in migration tool can handle most imports, Git Sync is better suited for handling larger migrations efficiently.
 
 {% hint style="info" %}
-You’ll find the essential steps to import your content below. For more detailed steps and a video demo, head over to our dedicated guide to [importing content into GitBook using Git Sync](https://app.gitbook.com/s/LBGJKQic7BQYBXmVSjy0/editing-and-publishing-documentation/import-or-migrate-your-content-to-gitbook-with-git-sync).
+You’ll find the essential steps to import your content below. For more detailed steps and a video demo, head over to our dedicated guide for [importing content into GitBook using Git Sync](https://app.gitbook.com/s/LBGJKQic7BQYBXmVSjy0/editing-and-publishing-documentation/import-or-migrate-your-content-to-gitbook-with-git-sync).
 {% endhint %}
-
-Here’s how to do it:
 
 {% stepper %}
 {% step %}
-
-#### Convert your content into Markdown
+**Convert your content into Markdown**
 
 GitBook is Markdown-based, so importing content in Markdown format will yield the best results. If your current tools support exporting in Markdown, we recommend using that format for a smoother import process.
 
@@ -145,33 +528,79 @@ If your content isn’t already in Markdown files, we recommend using a script (
 {% endstep %}
 
 {% step %}
-
-#### Organize your content in GitHub or GitLab
+**Organize your content in GitHub or GitLab**
 
 When setting up your GitBook site, it’s crucial to organize your content in your GitHub or GitLab repository efficiently. Since Git Sync occurs at the space level, carefully plan how to group your content. Create multiple repositories or folders, ensuring the necessary Markdown files are in the correct locations.
 {% endstep %}
 
 {% step %}
-
-#### Set up spaces and Git Sync
+**Set up spaces and configure Git Sync**
 
 To organize your content, create one or more spaces in GitBook as needed. Install the [GitHub Sync](https://www.gitbook.com/integrations/github-sync) or [GitLab Sync](https://www.gitbook.com/integrations/gitlab-sync) integrations in your organization and configure it for those spaces. You’ll need to synchronize your space with the folder or repository you set up in the previous step.
 {% endstep %}
 
 {% step %}
-
-#### Run Git Sync in the direction GitHub → GitBook
+**Run Git Sync in the direction GitHub → GitBook**
 
 When following the configuration process, make sure you select the direction of GitHub → GitBook. This will result in the contents of your folder or repository being pulled from GitHub or GitLab into GitBook.
 {% endstep %}
 {% endstepper %}
 
 
+# AI-native documentation
+
+Learn how AI documentation helps your users find answers, your team maintain docs efficiently, and your docs be more discoverable by AI tools like ChatGPT
+
+Documentation hosted on GitBook benefits from built-in AI features and optimizations out of the box.
+
+These AI-native features help your users find the information they need faster — whether they’re asking the built-in AI Assistant trained on your docs, or using other AI tools like ChatGPT. At the same time, they help your team maintain your docs more efficiently, so they’re always accurate and up to date.
+
+## How AI in GitBook improves your documentation <a href="#what-makes-your-documentation-ai-native" id="what-makes-your-documentation-ai-native"></a>
+
+### Help users find information <a href="#reading" id="reading"></a>
+
+As well as just reading your docs, your users can chat with the [AI Assistant](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant) in your docs to get answers to questions. It's trained on your documentation and can provide detailed information to help guide users to the solution they need. But you can also [connect it to other tools via MCP](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant#extend-gitbook-assistant-with-mcp-servers), allowing the Assistant to give answers from more sources, or even carry out actions like opening support tickets or filing bug reports from users.
+
+You can also [embed your GitBook docs into your product or website](https://gitbook.com/docs/documentation/publishing-documentation/embedding) using Docs Embed, which includes both the Assistant and a docs browser, giving users access to documentation without having to switch tools.
+
+And you can take this even further by allowing the Assistant to understand what your users are currently working on using [adaptive content](https://gitbook.com/docs/documentation/publishing-documentation/adaptive-content). By passing data securely between your product and GitBook, Assistant can provide personalized, context-aware answers and even proactively suggest relevant questions.
+
+### Maintain docs more efficiently <a href="#writing" id="writing"></a>
+
+[GitBook Agent](https://gitbook.com/docs/documentation/gitbook-agent) helps you write and maintain your documentation — and you can use to create and auto-update localized versions of your docs with a click.
+
+GitBook Agent will create content based on your prompts, allowing you to jumpstart your docs process with a first draft to review. Or you can ask the Agent to review your own work before you merge.
+
+You can add a style guide and custom instructions that apply across your organization, reference other pages to add context, and ask for help on individual blocks — or your entire page.
+
+And soon, the Agent will suggest and generate docs improvements based on support tickets, GitHub issues and other connected services. You’ll be able to browse through it’s suggestions, review the change requests it opens and edit or merge them if they’re useful.
+
+If you prefer to edit your GitBook docs locally using [Git Sync](https://gitbook.com/docs/documentation/getting-started/git-sync) and AI coding assistants like Claude Code and Cursor, you can also use GitBook's [skill.md](https://gitbook.com/docs/skill.md) file to provide all of the needed context to create, edit, and manage your documentation in your own environment using all of GitBook’s features and blocks.
+
+And if you want to translate your docs site into other languages, all you have to do is choose the language you want. [GitBook’s built-in AI Translation tool](https://gitbook.com/docs/documentation/gitbook-agent/translations) will handle the translation, duplicating all your primary content and localizing it ready for you to add to your site. When you update your primary content, the translated versions automatically update to reflect your changes — no effort or review needed.
+
+### Improve docs discovery in ChatGPT and other tools <a href="#discovering" id="discovering"></a>
+
+Your published docs site is [automatically optimized for AI tools](https://gitbook.com/docs/documentation/publishing-documentation/llm-ready-docs) and search engines to help users discover your documentation when using tools like ChatGPT, Claude and Google AI Overview.
+
+Your docs site sends pages to AI agents as Markdown rather than HTML, which are easier for AI tools to process and use fewer tokens. And you can view every page as Markdown by adding `.md` to the URL.
+
+GitBook also automatically creates `llms.txt` and `llms-full.txt` files for your docs site. These files are becoming industry-standard, and help LLMs index your documentation so they can respond to user questions quickly with relevant answers.
+
+Plus, GitBook [automatically hosts an MCP server](https://gitbook.com/docs/documentation/publishing-documentation/llm-ready-docs#mcp-server) for every docs site. This lets users connect their AI tools directly to the information in your docs so they can get the latest, most accurate product information rigt when they need it without needing to switch tools.
+
+## Use GitBook’s AI documentation features <a href="#enable-ai-features" id="enable-ai-features"></a>
+
+Choose a feature below to find out more:
+
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h4><i class="fa-sparkles">:sparkles:</i></h4></td><td><strong>AI Assistant</strong></td><td>Embed the Assistant in your product and give users relevant answers trained on your docs — and other tools you choose to connect.</td><td><a href="../publishing-documentation/gitbook-ai-assistant">gitbook-ai-assistant</a></td></tr><tr><td><h4><i class="fa-robot">:robot:</i></h4></td><td><strong>GitBook Agent</strong></td><td>Get proactive suggestions for docs updates based on support tickets, release notes and more — or ask the Agent to review your work.</td><td><a href="../gitbook-agent">gitbook-agent</a></td></tr><tr><td><h4><i class="fa-language">:language:</i></h4></td><td><strong>Translations</strong></td><td>Translate your docs into any language with a click, and watch them automatically update every time you edit your primary content.</td><td><a href="../gitbook-agent/translations">translations</a></td></tr><tr><td><h4><i class="fa-server">:server:</i></h4></td><td><strong>MCP server integration</strong></td><td>Your site’s hosted MCP server lets users connect your docs to other tools so they can pull knowledge whenever they need it.</td><td><a href="../publishing-documentation/mcp-servers-for-published-docs">mcp-servers-for-published-docs</a></td></tr></tbody></table>
+
+
 # GitHub & GitLab Sync
 
 Synchronize your GitBook content with GitHub or GitLab with GitBook’s bi-directional integration
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FwGBRqcgxpK562ZksP7oy%2F10_01_25_git_sync.svg?alt=media&#x26;token=da06acc3-15f8-4fde-ab65-c3c38ef4f31c" alt="A GitBook screenshot showing the Git Sync setup"><figcaption><p>Set up Git Sync for your GitBook space.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fo79JqKUo68L5FgJLGdJp%2FGit%20Sync%402x.png?alt=media&#x26;token=76a81aba-457d-4821-867d-57ad86fea004" alt="A GitBook screenshot showing the Git Sync setup"><figcaption><p>Set up Git Sync for your GitBook space.</p></figcaption></figure>
 
 ### Overview
 
@@ -183,6 +612,10 @@ Git Sync is bi-directional, so changes you make directly in GitBook’s editor a
 Only [administrators and creators](https://gitbook.com/docs/documentation/account-management/member-management/roles) can enable and configure Git Sync.
 {% endhint %}
 
+### skill.md
+
+When working on your docs locally with Git Sync, you can use GitBook's [skill.md file](https://gitbook.com/docs/documentation/creating-content/ai-coding-assistants-and-skill.md) to provide an AI coding assistant with context about GitBook's blocks, features, and best practices.&#x20;
+
 
 # Enabling GitHub Sync
 
@@ -192,7 +625,7 @@ Set up and authorize the GitHub integration for GitBook
 
 In the space you want to sync with your GitHub repo, head to the [space header](https://gitbook.com/docs/documentation/resources/gitbook-ui#space-header) in the top right, and select **Configure**. From the provider list, select **GitHub Sync**.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FIBDpcktPGlj4eeYb2M5R%2Fgitsync-github.svg?alt=media&#x26;token=2f8c51a1-6153-4743-99a8-4bab9d4a99a0" alt="A GitBook screenshot showing GitHub Sync configuration options"><figcaption><p>GitHub Sync configuration options.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FSmP9bdDqDK0gOpDYdSdj%2FEnabling%20GitHub%20Sync%402x.png?alt=media&#x26;token=a10a9f24-4f69-4b34-a802-64424aac7f76" alt="A GitBook screenshot showing GitHub Sync configuration options"><figcaption><p>GitHub Sync configuration options.</p></figcaption></figure>
 
 ### Authenticate with GitHub
 
@@ -252,7 +685,7 @@ Set up and authorize the GitLab integration for GitBook
 
 In the space you want to sync with your GitLab repo, head to the space menu in the top right, and select **Synchronize with Git**. From the provider list, select **GitLab Sync**, and click **Configure**.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FYmaLCLRBnzEYREzUVmLR%2F10_01_25_git_sync-gitlab.svg?alt=media&#x26;token=8ded6039-4bc7-4601-8841-b6b1afe083c8" alt="A GitBook screenshot showing GitLab Sync configuration options"><figcaption><p>GitLab Sync configuration options.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FCZRMtOF5b7dArKJxbQV1%2FEnabling%20GitLab%20Sync%402x.png?alt=media&#x26;token=9e78da77-b61d-44a6-baa3-c219e5b96f85" alt="A GitBook screenshot showing GitLab Sync configuration options"><figcaption><p>GitLab Sync configuration options.</p></figcaption></figure>
 
 ### Generate and enter your API access token
 
@@ -398,6 +831,30 @@ The summary markdown file is **a mirror of the** **table of contents** of your G
 Because of this, it’s not possible to reference the same Markdown file twice in your `SUMMARY.md` file, because this would imply that a single page lives at two different URLs in your GitBook space.
 {% endhint %}
 
+#### Table of contents (sidebar) titles <a href="#sidebar-titles" id="sidebar-titles"></a>
+
+If you want your pages to have a different title in the table of contents sidebar than on the page itself, you can define an optional **page link title** in your `SUMMARY.md` file.
+
+If you’re using Git Sync, the page link title is set on the page link:
+
+{% code title="./SUMMARY.md" %}
+
+```markdown
+# Summary
+
+* [Page main title](page.md "Page link title")
+```
+
+{% endcode %}
+
+The text inside the quotes (`"Page link title"`) will be used:
+
+* In the table of contents (sidebar)
+* In the pagination buttons at the bottom of each page
+* In any relative links you add to that page
+
+Page link titles are optional — if you don’t manually add one, GitBook will use the page’s standard title everywhere by default.
+
 ### ​Redirects <a href="#redirects" id="redirects"></a>
 
 Redirects allow you to define redirects in your `.gitbook.yaml` configuration file. The path is relative to the “root” option. For example, here’s how you can tell GitBook to redirect users accessing a past url `/help` to a new url `/support`
@@ -463,7 +920,7 @@ Use the following URL format, where `spaceId` corresponds to your space’s URL:
 
 `<https://app.gitbook.com/s/{spaceId}/~/changes/<num>/`
 
-<div data-full-width="false"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FjO7dbfEXH6FAOCYaRC6C%2Fgitsync-autolink.svg?alt=media&#x26;token=ce19fb47-bea5-4627-95f1-ac66c7cd91be" alt="A GitBook screenshot showing autolink setup"><figcaption><p>Autolink setup.</p></figcaption></figure></div>
+<div data-full-width="false"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FXMOX8gtwZIZGwdSWhSdX%2Fgitsync-autolink%402x.png?alt=media&#x26;token=bebbbb78-1a5f-4e90-af21-29803b3d2a7a" alt="A GitBook screenshot showing autolink setup"><figcaption><p>Autolink setup.</p></figcaption></figure></div>
 
 ## Customize the commit message template
 
@@ -732,7 +1189,7 @@ Click the color icon in the context menu, and choose a color for the text or its
 
 Use the inline palette to add images, links, math & TeX, and more
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FTUAHcyqQIRn7MgF4wUMD%2Fcreating-content-formatting-your-content-inline.svg?alt=media&#x26;token=ef5b5f37-0a70-4b4d-9458-61156cd1cd38" alt="A GitBook screenshot showing inline content options"><figcaption><p>Add inline elements to your content.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQcBDNerKxNvi1X3Jnk2R%2F26_01_22_inline-palette%402x.png?alt=media&#x26;token=08b0298b-627f-4394-addf-dd5b49cf3501" alt="A GitBook screenshot showing inline content options"><figcaption><p>Add inline elements to your content.</p></figcaption></figure>
 
 The inline palette lets you quickly add extra content to your text block without moving your hands away from the keyboard. Simply hit `/` on any text block to open the inline palette. The forward slash will be replaced by the content you choose to insert.
 
@@ -834,8 +1291,7 @@ To insert an absolute link:
 4. Hit `Enter`.
 
 {% hint style="info" %}
-
-#### Why don't external links open in a new tab?
+**Why don't external links open in a new tab?**
 
 When you add a link to an external site in your docs, it will open in the same tab.
 
@@ -914,7 +1370,7 @@ Expressions allow you to dynamically display content defined in a [variable](htt
 
 Write Markdown directly in the editor to easily create content using common syntax
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FmrxwTHo6a6LIqMcjZAAt%2Fcreating-content-markdown.svg?alt=media&#x26;token=4ea21c75-f935-4f63-ba3a-e6ede94e3951" alt="An image containing the markdown logo"><figcaption><p>Write Markdown in GitBook.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FMbo91kXRJGPsIzXxsgpU%2Fmarkdown%402x.png?alt=media&#x26;token=9d812c93-81df-4bca-a053-baa88d83f572" alt="An image containing the markdown logo"><figcaption><p>Write Markdown in GitBook.</p></figcaption></figure>
 
 GitBook’s editor allows you to create formatted content using Markdown.
 
@@ -937,7 +1393,7 @@ GitBook supports all the classic inline Markdown formatting:
 
 ### Pasting Markdown
 
-When pasting Markdown content directly into the editor, it’s important to use the **Paste and Match Style** option (typically <kbd>Shift</kbd> + <kbd>Cmd</kbd> + <kbd>V</kbd> on Mac or <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>V</kbd> on Windows).&#x20;
+When pasting Markdown content directly into the editor, it’s important to use the **Paste and Match Style** option (typically <kbd>Shift</kbd> + <kbd>Cmd</kbd> + <kbd>V</kbd> on Mac or <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>V</kbd> on Windows).
 
 If you use the standard Paste option for content copied from another editor or from the web, it may be inserted as a code block instead of formatted text.
 
@@ -966,7 +1422,7 @@ GitBook automatically detects and creates ordered and unordered lists as you typ
 * Begin a line with `- [ ]` to start a task list.
 
 {% hint style="info" %}
-When writing any kind of list, hit `Tab` to add a indent, and `Shift+Tab` to outdent.
+When writing any kind of list, hit `Tab` to add a indent, and `Shift+Tab` to outdent.&#x20;
 {% endhint %}
 
 ### Quotes
@@ -990,7 +1446,7 @@ Create pages, spaces and collections
 
 The structure of your content in GitBook is organized through pages, spaces and collections. Pages live inside of spaces, and collections are groups of spaces.
 
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover-dark data-type="image">Cover image (dark)</th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="image">Cover image</th></tr></thead><tbody><tr><td><strong>Spaces</strong></td><td>Create a space to organize your documentation in one place.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FaioaUomEaVXLHnztHl6p%2FSpaces.svg?alt=media&#x26;token=8e2d19bb-6037-411a-9cc9-ad2562ae2480">Spaces.svg</a></td><td><a href="content-structure/space">space</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FtI39XPmv1U3i3pi5jEb6%2FSpaces.svg?alt=media&#x26;token=18f50845-c4ac-4a3e-97da-e5f8d86c2ab9">card_spaces.svg</a></td></tr><tr><td><strong>Pages</strong></td><td>Create pages to split up and edit the content in your documentation.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FV3Dor3wjPo7hOX4JHqgP%2FPages.svg?alt=media&#x26;token=25561773-a6af-49f8-8986-c5fd14dd2fbf">Pages.svg</a></td><td><a href="content-structure/page">page</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FTzBQqRNomT4zDhJQrVWA%2FPages.svg?alt=media&#x26;token=f95884b2-d5c2-4e56-b8aa-3f740fe7339a">card_pages.svg</a></td></tr><tr><td><strong>Collections</strong></td><td>Create collections to group spaces together.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FBpIntuPZEbiWH4iBFRhp%2FCollections.svg?alt=media&#x26;token=d83320e4-7939-4117-889c-3603993aa8ac">Collections.svg</a></td><td><a href="content-structure/collection">collection</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FZp4Dks8VIpDY7WQfndZE%2FCollections.svg?alt=media&#x26;token=2a10a422-1924-47b3-9a7b-cf02f24fc03d">card_collections.svg</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-type="image">Cover image (dark)</th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-card-cover-dark data-type="image">Cover image (dark)</th></tr></thead><tbody><tr><td><strong>Spaces</strong></td><td>Create a space to organize your documentation in one place.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FaioaUomEaVXLHnztHl6p%2FSpaces.svg?alt=media&#x26;token=8e2d19bb-6037-411a-9cc9-ad2562ae2480">25_08_29_spaces.svg</a></td><td><a href="content-structure/space">space</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FKQVUYowoSAi1DVpgCywG%2FSpaces.png?alt=media&#x26;token=f16d38e6-3771-47cc-a8ef-6363034b0505">25_12_10_spaces_1.png</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FvqkOHhBxElvyv12WcG7c%2FSpaces.png?alt=media&#x26;token=b51c617f-bbb8-4017-b16d-1a4fb35b064d">25_12_10_spaces.png</a></td></tr><tr><td><strong>Pages</strong></td><td>Create pages to split up and edit the content in your documentation.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FV3Dor3wjPo7hOX4JHqgP%2FPages.svg?alt=media&#x26;token=25561773-a6af-49f8-8986-c5fd14dd2fbf">25_08_29_pages.svg</a></td><td><a href="content-structure/page">page</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fej3luD2w4Q11PBH9xduk%2FPages.png?alt=media&#x26;token=d89d5933-864a-4727-b657-f7384322ffbb">25_12_10_pages_1.png</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FH8z2ZD3AGzIcRfORxdSU%2FPages.png?alt=media&#x26;token=6bc20289-4ac8-4704-ad48-3de2dbd83639">25_12_10_pages.png</a></td></tr><tr><td><strong>Collections</strong></td><td>Create collections to group spaces together.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FBpIntuPZEbiWH4iBFRhp%2FCollections.svg?alt=media&#x26;token=d83320e4-7939-4117-889c-3603993aa8ac">25_08_29_collections.svg</a></td><td><a href="content-structure/collection">collection</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F4H8lkIUgDDqt2imLP6Cx%2FCollections.png?alt=media&#x26;token=05c7af07-3f67-406a-ac4d-d41c248e6313">25_12_10_collections_1.png</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F0hmjidT4nQ8NWZMTLLyl%2FCollections.png?alt=media&#x26;token=66d34a2f-c9af-45a1-b5c5-26405422c65f">25_12_10_collections.png</a></td></tr></tbody></table>
 
 
 # Spaces
@@ -999,7 +1455,7 @@ Organize the content you create and publish into spaces
 
 A space is a project that lets you work on a collection of related pages. They allow you to write content, organize pages, add integrations and more.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FeN7hvBtq9yBRKTYSFIhJ%2Fcreating-content-content-structure-space.svg?alt=media&#x26;token=a3200f81-cd51-4662-b210-ed5c3215222c" alt="A GitBook screenshot showing the spaces sidebar"><figcaption></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FHaZz8c6V8LYpNM6ZLHlv%2Fcreating-content-content-structure-space%402x.png?alt=media&#x26;token=085393dd-d9a9-4400-8812-7436ebf8bbc5" alt="A GitBook screenshot showing the spaces sidebar"><figcaption></figcaption></figure>
 
 ### Create a space
 
@@ -1042,7 +1498,7 @@ You can create as many pages as you need in a space. They’re all visible on th
 
 {% hint style="info" %}
 
-## Docs site landing page
+### Docs site landing page
 
 The first page in your table of contents is always your space's landing page, even if it's hidden from the table of contents.
 {% endhint %}
@@ -1051,7 +1507,7 @@ The first page in your table of contents is always your space's landing page, ev
 
 When in [live edit](https://gitbook.com/docs/documentation/collaboration/live-edits) mode or in a [change request](https://gitbook.com/docs/documentation/collaboration/change-requests), you can create a new page by clicking **Add new\...** > **Page** at the bottom of your table of contents. Alternatively, you can hover between pages in the table of contents and click the **+** icon that appears.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FKuLZJITi1L5ZEfehKvLF%2F04_02_25_page.svg?alt=media&#x26;token=a6ce2ea9-f655-445b-aade-4269f1733c72" alt="A GitBook screenshot showing an empty page listed in the table of contents"><figcaption><p>An empty page in GitBook. You can see it listed in the table of contents on the left-hand side.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FP0V046UJgzgtkrD1NiQG%2Fcreating-content-content-structure-page%402x%20(1).png?alt=media&#x26;token=69805dbf-4ce7-4a6b-ac4d-43fc958d62c4" alt="A GitBook screenshot showing an empty page listed in the table of contents"><figcaption><p>An empty page in GitBook. You can see it listed in the table of contents on the left-hand side.</p></figcaption></figure>
 
 ### Can’t see the option to create a new page?
 
@@ -1079,7 +1535,27 @@ If you add subpages to an empty parent page, GitBook will automatically generate
 
 When you change the title of a page, the page’s slug (the part at the very end of the URL, e.g. `/hello-world`) will also change — unless you’ve manually set the page’s slug previously.
 
-You can change the title and the slug of a page at any time by clicking opening the page’s **Action menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt="The Actions menu icon in GitBook"></picture> and choosing **Rename**.
+You can change the title, link title and the slug of a page at any time by clicking opening the page’s **Action menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt="The Actions menu icon in GitBook"></picture> and choosing **Edit title & slug**.
+
+#### **Page link title**
+
+If you want your page to have a longer SEO-friendly title while keeping a shorter title for your navigation entry and links, you can optionally define a link title.
+
+Open the page’s **Action menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt="The Actions menu icon in GitBook"></picture> and choose **Edit title & slug**. In the **Edit page** dialog, you'll find the option to enable and define a link title for that page.
+
+If you're using Git Sync, the page link title is set in the `SUMMARY.md` file on the page link:
+
+```markdown
+# Table of contents
+
+* [Page main title](page.md "Page link title")
+```
+
+{% hint style="info" %}
+**Note:** Page link titles are used in the table of contents, the pagination buttons at the bottom of each page, and in any relative links you add to that page.
+{% endhint %}
+
+Page link titles are optional — if you don’t manually add one, your page will use the page’s standard title by default.
 
 #### Page groups
 
@@ -1107,7 +1583,7 @@ To add an icon or emoji, click the **Add icon** button when hovering the page ti
 
 In the **Page options** menu you can customize the look and feel of a selected page within a space, and control its visibility.
 
-**Layout**
+#### **Layout**
 
 You can open the **Page options** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FYyWs3Ec7t9e3nNWPUONI%2Foptions%20-%20dark.svg?alt=media&#x26;token=bb9bdf1d-7f37-47c4-901c-fa24c618922a" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FAsao5RY8jwAmcYhpVwPI%2Foptions.svg?alt=media&#x26;token=d962d9a8-0cd6-42e7-a7b7-50c68a74dfea" alt="The Page options menu icon in GitBook"></picture> menu or change a page’s cover by hovering over the page title. You’ll see the buttons appear just above the page title.
 
@@ -1122,7 +1598,7 @@ Each layout preset will toggle on or off each of the following parts of the page
 * Next/previous links
 * Page metadata
 
-You can also set your page’s global width from this menu. Choosing **Wide** will automatically widen blocks that support the **Full width** option — such as tables, cards and code blocks — to give them more space when the page is published. Which is ideal for creating eye-catching landing pages!
+You can also set your page’s global width from this menu. Choosing **Wide** will automatically widen blocks that support the **Full width** option — such as tables, cards and code blocks — to give them more space when the page is published. Which is ideal for creating eye-catching landing pages!
 
 #### Visibility
 
@@ -1136,6 +1612,19 @@ If hidden the following will appear in the front matter of the markdown file whe
 hidden: true
 <strong>---
 </strong></code></pre>
+
+#### Metadata (SEO)
+
+Use **Page options → Metadata** to control how search engines understand relationships between similar pages (for example: documentation versions or [content variants](https://gitbook.com/docs/documentation/publishing-documentation/site-structure/variants)).
+
+* **Canonical URL**: the preferred (authoritative) URL for this page.
+* **Alternate URLs**: other pages that represent the same content in a different variant.
+
+Both fields support selecting another GitBook page (recommended) or entering an external URL.
+
+{% hint style="info" %}
+A common pattern for versioned docs is to set older pages to be canonical to the latest equivalent page (for example, `1.0` → `2.0`), and then list older versions as alternates on the latest page.
+{% endhint %}
 
 ### Page covers
 
@@ -1155,7 +1644,7 @@ You can also set a page cover for each page of your documentation. When you clic
 
 # Collections
 
-Organize your spaces into folders.
+Organize your spaces into folders
 
 Collections are a way to group spaces together to make it easier for you to organize your content. With collections, you can:
 
@@ -1191,11 +1680,11 @@ You can delete a collection by opening its **Actions menu** <picture><source src
 
 # Blocks
 
-Add and edit blocks within your content.
+Add and edit blocks within your content
 
 GitBook is a block-based editor, meaning you can add different kinds of blocks to your content — from standard text and images to interactive blocks. Your pages can include any combination of blocks you want, and there’s no limit to the number of blocks you can have on a page.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FMznFq7FlIn7aPdPMpiY5%2Fcreating-content-blocks.svg?alt=media&#x26;token=1cbf2ed0-893f-4f95-b963-3dc2943354a6" alt="A GitBook screenshot showing the available content blocks"><figcaption><p>GitBook's built in content blocks.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FspecLXwmhIxrNj5QDyol%2Fcreating-content-blocks%402x%20(1).png?alt=media&#x26;token=a1a7dbe0-f83d-4551-8f38-5665d02221bd" alt="A GitBook screenshot showing the available content blocks"><figcaption><p>GitBook's built in content blocks.</p></figcaption></figure>
 
 ### Inserting a new content block
 
@@ -1231,13 +1720,16 @@ By making your blocks full width, you can create a clear visual hierarchy in you
 
 To make a block full width, click on the **Options menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FjYRg42UtM4u1pHmJl4Ln%2Fdrag%20-%20dark.svg?alt=media&#x26;token=4c219b2b-37d2-449e-9130-19b6ba3d38d2" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FaS1QvPIBVYwhpFTGcPBN%2Foptions-menu.svg?alt=media&#x26;token=3ee40bbf-f4fb-41fa-aa30-306b559cbe88" alt="The Options menu icon in GitBook"></picture> next to your block and select **Full width**. This feature is available for the following block types:
 
-* Code Blocks
-* Image blocks
+* Code
+* Images
 * Tables
 * Cards
-* API Blocks
-* Integration blocks
 * Columns
+* Integration blocks
+
+Some blocks will always display full-width, regardless of the page’s width setting in the [the **Page options** menu](https://gitbook.com/docs/documentation/creating-content/content-structure/page):
+
+* OpenAPI
 
 
 # Paragraphs
@@ -1359,7 +1851,7 @@ To create nested items, you can use **Tab** to indent and **⇧ + Tab** to outde
 
 Add an ordered or numbered list to a page
 
-Ordered lists, also called numbered lists, help you prioritize items or create a list of steps.&#x20;
+Ordered lists, also called numbered lists, help you prioritize items or create a list of steps.
 
 ### Example of ordered list
 
@@ -1394,7 +1886,7 @@ If you want to add an image within an ordered list, add it using the insert menu
 1. Item 1
 2. Item 2
 
-![](https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FFduOhhJv1OXwe96Dhu7L%2F14_03_25_site_sections_published.jpg?alt=media\&token=a4e6f422-0e0f-4e3c-a676-c71fd8e4da7a)
+<div align="left"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FRx3GanTQecoIzxIDcmmO%2FExample%20image.png?alt=media&#x26;token=a0718213-fd07-40b0-b605-faba8eb0d433" alt="" width="375"><figcaption></figcaption></figure></div>
 
 3. Item 3
 4. Item 4
@@ -1431,7 +1923,7 @@ Task lists allow you to create a list of items with checkboxes that you can chec
 
 Add a hint to a page to draw your reader’s attention to specific pieces of important information.
 
-Hints, or callouts, are a great way to bring the reader’s attention to specific elements in your documentation, such as tips, warnings, and other important information.&#x20;
+Hints, or callouts, are a great way to bring the reader’s attention to specific elements in your documentation, such as tips, warnings, and other important information.
 
 There are four different hint styles — you can change the style by clicking the colored icon, or by opening the block’s **Options menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FjYRg42UtM4u1pHmJl4Ln%2Fdrag%20-%20dark.svg?alt=media&#x26;token=4c219b2b-37d2-449e-9130-19b6ba3d38d2" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FaS1QvPIBVYwhpFTGcPBN%2Foptions-menu.svg?alt=media&#x26;token=3ee40bbf-f4fb-41fa-aa30-306b559cbe88" alt="The Options menu icon in GitBook"></picture> and selecting the style you want.
 
@@ -1456,8 +1948,7 @@ Hint blocks support [inline content](https://gitbook.com/docs/documentation/crea
 {% endhint %}
 
 {% hint style="info" %}
-
-#### This is a H2 heading
+**This is a H2 heading**
 
 This is a line
 
@@ -1493,7 +1984,7 @@ To add a heading to your hint, you need to create a heading block as the the fir
 
 This is a line
 
-This is an inline <img src="../../.gitbook/assets/command_icon_light.svg" alt="The Apple computer command icon" data-size="line"> image
+This is an inline <img src="../../.gitbook/assets/25_01_10_command_icon_light.svg" alt="The Apple computer command icon" data-size="line"> image
 
 - This is a second <mark style="color:orange;background-color:purple;">line using an unordered list and color</mark>
 {% endhint %}
@@ -1825,7 +2316,7 @@ and text after the image
 
 To resize your image, hover over it and open the **Edit menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F8pD8Y2BfBxCEZoi99Pnk%2Fedit%20-%20dark.svg?alt=media&#x26;token=89496678-7347-4845-8c98-ee8dd9bedaec" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FA3OfGjPkE5GnOQvN36jN%2Fedit.svg?alt=media&#x26;token=6f70239f-d889-4e64-9ec6-4801df47a48d" alt=""></picture>. Click the **Size** button to change the size of your image from the available options.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fgit-blob-85f7b1f17894a13cae478727fdb8ffd1b37950e1%2F10_01_25_image_resizing.svg?alt=media" alt="A GitBook screenshot showing how to resize an image"><figcaption><p>Resize an image</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F1cWY3c3CgGXIK4Bgnhb6%2Fimage_resizing%402x.png?alt=media&#x26;token=112c7e1d-6a04-4a59-a69d-6292a74297ff" alt="A GitBook screenshot showing how to resize an image"><figcaption><p>Resize an image</p></figcaption></figure>
 
 * **Small** – 25% of the image size
 * **Medium** – 50% of the image size
@@ -1865,7 +2356,7 @@ You can add a frame to image blocks to give your images a consistent look and vi
 
 <div data-with-frame="true"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FfL0VWcltHyuCKeqJsW0Q%2Fimage-frame-demo%402x.jpg?alt=media&#x26;token=6cac6c68-c288-4c42-abb2-e2bb7de23652" alt="A black and white photograph of a lone figure walking across a stark white landscape"><figcaption><p>Framed images can have captions, and show a subtle grid behind the caption.</p></figcaption></figure></div>
 
-To add a frame to an image, hover over it, open the block’s **Options menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FjYRg42UtM4u1pHmJl4Ln%2Fdrag%20-%20dark.svg?alt=media&#x26;token=4c219b2b-37d2-449e-9130-19b6ba3d38d2" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FaS1QvPIBVYwhpFTGcPBN%2Foptions-menu.svg?alt=media&#x26;token=3ee40bbf-f4fb-41fa-aa30-306b559cbe88" alt=""></picture> and enable the **With frame** toggle.&#x20;
+To add a frame to an image, hover over it, open the block’s **Options menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FjYRg42UtM4u1pHmJl4Ln%2Fdrag%20-%20dark.svg?alt=media&#x26;token=4c219b2b-37d2-449e-9130-19b6ba3d38d2" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FaS1QvPIBVYwhpFTGcPBN%2Foptions-menu.svg?alt=media&#x26;token=3ee40bbf-f4fb-41fa-aa30-306b559cbe88" alt=""></picture> and enable the **With frame** toggle.
 
 {% hint style="info" %}
 **Good to know:** You can only frame single images in a block. Image blocks that contain multiple images and inline images cannot have frames.
@@ -2001,7 +2492,7 @@ Hover over the row and click the **Row options** <picture><source srcset="https:
 
 ### Images in tables
 
-When you click into a table cell, you can hit the / key to insert images. This will not work in the header row.
+When you click into a table cell, you can hit the / key to insert images. Images cannot be added to the header row of a table.
 
 ### Representation in Markdown
 
@@ -2015,6 +2506,18 @@ When you click into a table cell, you can hit the / key to insert images. This w
 |   |   |   |
 ```
 
+<details>
+
+<summary>Can I create nested tables in GitBook?</summary>
+
+It's not possible to nest tables in GitBook. To ensure documents remain easy to write, reliable to render, and accessible for all users, GitBook keeps tables flat.
+
+Once a table sits inside another table cell, it becomes difficult to edit, resize, navigate, or maintain consistent formatting across devices.
+
+Nested tables also introduce significant complexity in the underlying document structure, often breaking clean semantics and leading to unpredictability in features such as Git Sync.
+
+</details>
+
 
 # Cards
 
@@ -2026,7 +2529,7 @@ You can adjust [switch between medium or large cards](#card-size) and link them 
 
 ### Example of a card
 
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>GitBook homepage</strong></td><td>Visit our website and find out more about GitBook.</td><td><a href="https://www.gitbook.com/">https://www.gitbook.com/</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FR8TYzdK3sBgPyHUAfLaf%2FGitBook%20homepage.svg?alt=media&#x26;token=75fb66e5-2e50-47d9-8d90-91938114caf9">card_gitbook_website.svg</a></td></tr><tr><td><strong>Developer docs</strong></td><td>Build you own GitBook integration!</td><td><a href="https://developer.gitbook.com/">https://developer.gitbook.com/</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FlMv6pwpKuVBb1iAgG8VE%2FDeveloper%20docs.svg?alt=media&#x26;token=7c7cab48-f429-4af0-afcd-a2db9c236067">card_developer_docs.svg</a></td></tr><tr><td><strong>Sign up to GitBook</strong></td><td>Click here to get started for free.</td><td><a href="https://app.gitbook.com/join">https://app.gitbook.com/join</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FqJfxhjqa71E4ZRf2qmig%2FSignup%20to%20GitBook.svg?alt=media&#x26;token=b0fd365e-cd5b-49d9-830d-f18ee793da7c">card_gitbook_signup.svg</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-type="image">Cover image (dark)</th><th data-hidden data-type="image">Cover image (dark)</th><th data-hidden data-card-cover-dark data-type="image">Cover image (dark)</th></tr></thead><tbody><tr><td><strong>GitBook homepage</strong></td><td>Visit our website and find out more about GitBook.</td><td><a href="https://www.gitbook.com/">https://www.gitbook.com/</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FHAbAKXyi5SHXH1rDhg4E%2FGitBook%20homepage.png?alt=media&#x26;token=b2ced317-e488-408b-94a2-03bf72cce821">25_12_10_cards_3.png</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FYYaAqhyC3yLcBknZdlmW%2FGitBook%20homepage.png?alt=media&#x26;token=8478251c-456e-4f30-8b32-39cbcc5640ef">25_12_10_cards_2.png</a></td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FYYaAqhyC3yLcBknZdlmW%2FGitBook%20homepage.png?alt=media&#x26;token=8478251c-456e-4f30-8b32-39cbcc5640ef">25_12_10_cards_2.png</a></td></tr><tr><td><strong>Developer docs</strong></td><td>Build you own GitBook integration!</td><td><a href="https://developer.gitbook.com/">https://developer.gitbook.com/</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F1wL4yuiP0Pi9Oeu0wnmm%2FDeveloper%20docs.png?alt=media&#x26;token=95e0440c-530d-4ce8-8910-607902fc563c">25_12_10_cards_1.png</a></td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FLpBdK9z1nnfqwZiJxOuD%2FDeveloper%20docs.png?alt=media&#x26;token=32bed668-de47-427b-9371-0cb4ae6976f0">25_12_10_cards.png</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FLpBdK9z1nnfqwZiJxOuD%2FDeveloper%20docs.png?alt=media&#x26;token=32bed668-de47-427b-9371-0cb4ae6976f0">25_12_10_cards.png</a></td></tr><tr><td><strong>Sign up to GitBook</strong></td><td>Click here to get started for free.</td><td><a href="https://app.gitbook.com/join">https://app.gitbook.com/join</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fg2kgdfMsxOpWQx1Meq8s%2FSign%20up.png?alt=media&#x26;token=e7ef635a-1864-4944-b5a9-2ba7893f6cc0">25_12_10_cards_5.png</a></td><td></td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fp4zjlQyIPTIdwuCeremo%2FSign%20up.png?alt=media&#x26;token=2b8904a8-917f-4eb1-b5fe-5a5575757376">25_12_10_cards_4.png</a></td></tr></tbody></table>
 
 ### Adding links <a href="#adding-links-and-images-to-your-cards" id="adding-links-and-images-to-your-cards"></a>
 
@@ -2052,9 +2555,9 @@ To do this, open the card’s **Options menu** <picture><source srcset="https://
 
 GitBook will automatically crop landscape images to a 16:9 ratio on desktop and mobile. If the images you upload are portrait or have a 1:1 ratio, they will be cropped to 16:9 on desktop and display as square or portrait on mobile.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FNygg0LtXTalYWIWQCtOA%2F13_02_25_cards_desktop.svg?alt=media&#x26;token=7a485ddb-1a4a-40dd-95e8-cd03f65cbff2" alt="A GitBook screenshot showing card images on desktop"><figcaption><p>On desktop, all card images will display in a landscape 16:9 ratio, regardless of their dimensions. We recommend using the same dimensions for consistency.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FnX5tZdJgW1Yhf61ZXpGJ%2F26_01_06_cards_desktop%402x.png?alt=media&#x26;token=a49b6556-194d-47ce-a13b-773561703f5b" alt="A GitBook screenshot showing card images on desktop"><figcaption><p>On desktop, all card images will display in a landscape 16:9 ratio, regardless of their dimensions. We recommend using the same dimensions for consistency.</p></figcaption></figure>
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Ft16RVp4AO8Ms8Qll6j1N%2F13_02_25_cards_mobile.svg?alt=media&#x26;token=5b34cf07-dbee-4f19-ab2d-d0126f502ecf" alt="A GitBook screenshot showing card images on mobile"><figcaption><p>On mobile, square or portrait images will displayed as shown on the left. Landscape images will be displayed as shown on the right.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FxUUSyA6H7QwA8p9Nihz1%2F26_01_06_cards_mobile%402x.png?alt=media&#x26;token=df76e62d-dfb4-4197-a140-48d268c52240" alt="A GitBook screenshot showing card images on mobile"><figcaption><p>On mobile, square or portrait images will displayed as shown on the left. Landscape images will be displayed as shown on the right.</p></figcaption></figure>
 
 To keep things consistent across desktop and mobile, we recommend uploading all the images for your cards in a 16:9 format (e.g. 1920px x 1080px).
 
@@ -2244,6 +2747,42 @@ Step 2 text
 There are some limitations on which blocks you can create inside of a stepper block — for example, you cannot add expandable blocks or another stepper block. See all the blocks you can add by starting a new line within a stepper block and pressing `/` to bring up the insert palette.
 
 
+# Updates
+
+Add one or more updates to a page — perfect for adding a changelog to your site
+
+An updates block lets you share new releases on your site in a format that matches established best practices for changelog updates.
+
+You can add a date to your update block, then format the content inside the block using other blocks as you would expect. To change the date or update the date format, click the date in your block. You can choose between the full date, a shortened date, or a date using only numbers (e.g. 12/25/2025).
+
+Once you’ve added an update block to your page, you can hover your cursor above or below the block to see the option to add another in sequence.&#x20;
+
+### Example
+
+{% updates format="full" %}
+{% update date="2025-12-25" %}
+
+## A brand new update
+
+This block is perfect for telling users all about a brand new update to your product. You can easily add other blocks within this update block, including images, code, lists and much more.
+{% endupdate %}
+{% endupdates %}
+
+### Representation in Markdown
+
+{% code overflow="wrap" %}
+
+```markdown
+{% update date="2025-12-25 %}
+## A brand new update
+
+This block is perfect for telling users all about a brand new update to your product. You can easily add other blocks within this update block, including images, code, lists and much more.
+{% endupdate %}
+```
+
+{% endcode %}
+
+
 # Drawings
 
 Create drawings within GitBook and add them to your page
@@ -2336,7 +2875,7 @@ Columns are a great way to create different layouts for your documentation. You 
 {% columns %}
 {% column width="50%" %}
 
-### Create a seamless experience between your docs and product
+#### Create a seamless experience between your docs and product
 
 Integrate your documentation right into your product experience, or give users a personalized experience that gives them what they need faster.
 
@@ -2345,37 +2884,43 @@ Integrate your documentation right into your product experience, or give users a
 
 {% column %}
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F7gRpMBKOqTx3tvgNZJlH%2Fgitbook%20vision%20post.png?alt=media&#x26;token=1f0d2409-4cc7-423a-8c94-9fd7475ab762" alt="An image of GitBook icons demonstrating side by side column functionality"><figcaption></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FNMfJRm6dUVv7erqeWmAk%2Fcolumns.png?alt=media&#x26;token=925af10f-1f4e-40cc-9cd2-cccf213460ff" alt="An image of GitBook icons demonstrating side by side column functionality"><figcaption></figcaption></figure>
 {% endcolumn %}
 {% endcolumns %}
 
 ## Representation in Markdown
 
 <pre class="language-markdown" data-overflow="wrap"><code class="lang-markdown"><strong>## Example
-</strong><strong>
-</strong>{% columns %}
-{% column width="50%" %}
+</strong>
+
+
+
+
 ### Create a seamless experience between your docs and product
 
 Integrate your documentation right into your product experience, or give users a personalized experience that gives them what they need faster.
 
 &#x3C;a href="https://www.gitbook.com/#alpha-waitlist" class="button primary">Learn more&#x3C;/a>
-{% endcolumn %}
 
-{% column %}
+
+
+
+
 &#x3C;figure>&#x3C;img src="../../.gitbook/assets/GitBook vision post.png" alt="An image of GitBook icons demonstrating side by side column functionality">&#x3C;figcaption>&#x3C;/figcaption>&#x3C;/figure>
-{% endcolumn %}
-{% endcolumns %}
+
+
+
+
 </code></pre>
 
 
 # Conditional content
 
-Conditional content blocks let you control who can see a given block of content on your page based on user data and variables. These variables can be passed in via cookies, feature flags, authenticated access, or URL parameters.&#x20;
+Conditional content blocks let you control who can see a given block of content on your page based on user data and variables. These variables can be passed in via cookies, feature flags, authenticated access, or URL parameters.
 
 ### Create conditional content
 
-To add a conditional block, begin a new line in the editor, type <kbd>/</kbd>, then select  <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FG1cXfAVYBRLW0aRpIDRJ%2Fpage-condition%20-%20dark.svg?alt=media&#x26;token=dd656a89-387d-41c7-adf8-994848ec3440" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F51vQZhUqnkdsYpyUo1Pj%2Fpage-condition.svg?alt=media&#x26;token=31dd334a-5097-4081-915c-db460e610ec6" alt="The Page condition icon in GitBook"></picture> **Conditional content**.&#x20;
+To add a conditional block, begin a new line in the editor, type <kbd>/</kbd>, then select <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FG1cXfAVYBRLW0aRpIDRJ%2Fpage-condition%20-%20dark.svg?alt=media&#x26;token=dd656a89-387d-41c7-adf8-994848ec3440" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F51vQZhUqnkdsYpyUo1Pj%2Fpage-condition.svg?alt=media&#x26;token=31dd334a-5097-4081-915c-db460e610ec6" alt="The Page condition icon in GitBook"></picture> **Conditional content**.
 
 After inserting the block, click the red condition badge in the top right of the block.
 
@@ -2416,19 +2961,78 @@ This block is only visible to users **without** attribute A.
 ```
 
 
+# AI coding assistants and skill.md
+
+Use GitBook’s official skill.md file to give your AI coding assistants knowledge of GitBook’s features and blocks
+
+GitBook provides a [skill.md](https://gitbook.com/docs/skill.md) file that teaches AI coding assistants how to properly edit GitBook documentation. Use it as “project rules” when editing GitBook docs locally. This fits well with [Git Sync ](https://gitbook.com/docs/documentation/getting-started/git-sync)workflows where you edit your docs locally and then commit your changes to update your docs site. The reference file covers GitBook's markdown extensions, custom blocks, configuration files, and best practices.
+
+{% hint style="info" %}
+GitBook also offers [GitBook Agent](https://gitbook.com/docs/documentation/gitbook-agent) for AI-assisted documentation right from your editor. This guide is for teams who prefer to use external coding assistants like Claude Code or Cursor.
+{% endhint %}
+
+### What the skill.md file contains
+
+* Complete syntax reference for all custom blocks
+* Configuration file formats (`.gitbook.yaml`, `SUMMARY.md`, `.gitbook/vars.yaml`)
+* Frontmatter options and layout controls
+* Variables and expressions syntax
+* Decision tables for choosing the right block type
+* Common pitfalls and best practices
+
+Adding this file to your AI coding assistant provides the information it needs about creating, editing and formatting content for your GitBook docs. This means that the assistant will follow established frameworks and best practices for GitBook's features.
+
+### Using the skill.md by URL
+
+Most AI coding assistants support project-specific instructions. You can reference the skill file in your project configuration by providing the URL for the skill file so the assistant knows how to work with GitBook syntax.
+
+### Using the skill.md locally
+
+You can also download the skill file and include it in your repository. First, download the skill.md to your repository root, and then reference it in the rules file for your coding assistant: `"Read skill.md in the repo root for GitBook syntax and best practices"` .&#x20;
+
+This approach works offline and allows team-specific modifications.&#x20;
+
+{% hint style="warning" %}
+Remember to update your local repository with the latest skill.md file as GitBook adds new features.
+{% endhint %}
+
+### Testing AI-generated content
+
+It’s important that you always review and test content generated by AI assistants — both for technical accuracy and proper formatting.&#x20;
+
+When working with AI assistants trained on the skill file, you should:
+
+* Verify that any custom blocks render correctly in GitBook
+* Check that all the internal links work
+* Confirm that the frontmatter is valid YAML
+* Test that variables reference the correct scope
+
+{% hint style="warning" %}
+**Note:** AI assistants may occasionally generate incorrect syntax or forget to close custom blocks. Always review changes before committing.
+{% endhint %}
+
+### GitBook Agent
+
+Prefer working directly in GitBook? [GitBook Agent](https://gitbook.com/docs/documentation/gitbook-agent/what-is-gitbook-agent) gives you an AI-assisted workflow in the GitBook editor — regardless of whether you use Git Sync.
+
+The Agent has the full context of your docs, and is already trained on how to use GitBook’s blocks and features in the best possible ways. The Agent helps you draft content, make updates, and optimize your docs for different use-cases all from within the GitBook app.
+
+<a href="../gitbook-agent" class="button primary">Discover GitBook Agent</a>
+
+
 # Variables and expressions
 
 Create reusable variables that can be referenced in pages and spaces
 
-With variables you can create reusable text that can be conditionally referenced in [expressions](https://gitbook.com/docs/documentation/formatting/inline#expressions) and [conditions for adaptive content](https://gitbook.com/docs/documentation/publishing-documentation/adaptive-content/adapting-your-content#working-with-the-condition-editor).&#x20;
+With variables you can create reusable text that can be conditionally referenced in [expressions](https://gitbook.com/docs/documentation/formatting/inline#expressions) and [conditions for adaptive content](https://gitbook.com/docs/documentation/publishing-documentation/adaptive-content/adapting-your-content#working-with-the-condition-editor).
 
-If you repeat the same name, phrase or version number multiple times within your content, you can create a **variable** to help keep all those instances in sync and accurate — which is useful if you ever need to update them, or they’re complex and often mistyped.
+If you repeat the same name, phrase or version number multiple times within your content, you can create a **variable** to help keep all those instances in sync and accurate — which is useful if you ever need to update them, or they’re complex and often mistyped.
 
 You can create variables that are scoped to a single page, or a single space.
 
 ### Create a new variable
 
-To create a new variable, Click the **Variables** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FVJIUUkSBNSVvib2I7bZi%2Fvariables-dark.svg?alt=media&#x26;token=ea265cbe-43cb-4d30-8949-ccf584259eb0" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FLm9dLFUy5c3i4YOEwvSz%2Fvariables.svg?alt=media&#x26;token=ae18f815-541c-4b17-ae42-9c4d90897899" alt=""></picture> icon in the upper right corner when editing an open [change request](https://gitbook.com/docs/documentation/collaboration/change-requests). This will open the Variables side panel.
+To create a new variable, click the **Library** in your Table of Contents when editing an open [change request](https://gitbook.com/docs/documentation/collaboration/change-requests). Then, click **Variables**.
 
 You can use the toggle at the top to view and create variables scoped either to the current page you’re on, or all pages within the current space.
 
@@ -2436,7 +3040,7 @@ Clicking **Create a variable** will launch a modal where you can give your varia
 
 Click **Add variable** to save your variable.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FmyWu2r6UfxkMRCjcDZuc%2Fvariables.jpg?alt=media&#x26;token=40408b2f-bdb2-41bd-9763-bc8caf3bfd40" alt="A GitBook screenshot showing the Add variables screen. The variable Name box has been filled with the text ‘latest_version’ and the Value box has been filled with the text ‘v3.04.1’"><figcaption><p>You can add variables to a single page or an entire space. When you update the value of a variable, every instance of it will update.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQwfTEGjsxDThqQFvgOm8%2FAdd%20variable%402x.png?alt=media&#x26;token=955216f0-67df-4c96-aece-490cfbbf0271" alt="A GitBook screenshot showing the Add variables screen. The variable Name box has been filled with the text ‘latest_version’ and the Value box has been filled with the text ‘v3.04.1’"><figcaption><p>You can add variables to a single page or an entire space. When you update the value of a variable, every instance of it will update.</p></figcaption></figure>
 
 {% hint style="info" %}
 Variable names must start with a letter, and can contain letters, numbers and underscores.
@@ -2444,11 +3048,11 @@ Variable names must start with a letter, and can contain letters, numbers and un
 
 ### Use variables in your content
 
-Variables can be referenced and used within an [expression](https://gitbook.com/docs/documentation/formatting/inline#expressions) — which you can insert into your content inline. After inserting an expression, double click it to open the expression editor.
+Variables can be referenced and used within an [expression](https://gitbook.com/docs/documentation/formatting/inline#expressions) — which you can insert into your content inline. After inserting an expression, double click it to open the expression editor.
 
-Variables defined under your page are accessible under the `page.vars` object. Similarly, variables defined across your entire space are accessible under the `space.vars` object.&#x20;
+Variables defined under your page are accessible under the `page.vars` object. Similarly, variables defined across your entire space are accessible under the `space.vars` object.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FAYoxSMGR9BAtkV9aBszX%2Finsert-variables-expression.jpg?alt=media&#x26;token=ece25501-bfa2-4da8-82c1-f4e4f7ba3f89" alt="A GitBook screenshot showing an expression block within the editor. The expression editor is open below it and the ‘space.vars.latest_version’ variable has been selected"><figcaption><p>You can add variables to your content within expresions. The expression editor offers autocomplete options to help you find the variable you need.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FaRWyFWMI24Cy2nVZmSzE%2FUsing%20variable%402x.png?alt=media&#x26;token=a1999774-f0da-4232-8533-b7e806ddd87c" alt="A GitBook screenshot showing an expression block within the editor. The expression editor is open below it and the ‘space.vars.latest_version’ variable has been selected"><figcaption><p>You can add variables to your content within expresions. The expression editor offers autocomplete options to help you find the variable you need.</p></figcaption></figure>
 
 ### Update a variable
 
@@ -2465,7 +3069,7 @@ This feature is available on [Pro and Enterprise plans](https://www.gitbook.com/
 
 Reusable content lets you sync content across multiple pages and spaces, so you can edit all instances of the block at the same time.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FtNfvAgU9RZyYQ8JriVUu%2F04_02_25_reusable_content.svg?alt=media&#x26;token=efe90ad9-96e5-4378-b627-7c056869a280" alt="A GitBook screenshot showing reusable content"><figcaption><p>Create reusable content within a space.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F21nR8UJaA970B2iHPCWL%2Fcreating-content-reusable-content%402x.png?alt=media&#x26;token=ec03b404-3254-485c-bbee-9d4864cf3aac" alt="A GitBook screenshot showing reusable content"><figcaption><p>Create reusable content within a space.</p></figcaption></figure>
 
 ## Fundamentals
 
@@ -2548,7 +3152,7 @@ If you're writing on the GitHub side, ensure the path to the include is relative
 
 Find what you’re looking for faster with keyword search and AI-powered smart search
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FeqdESbrmoMR2WU0gAfG4%2Fcreating-content-searching-content.svg?alt=media&#x26;token=83d18fbb-6c55-4e7d-8a91-7ad088c8c646" alt="A GitBook screenshot showing the search bar"><figcaption><p>Ask questions or search through your content using the built in search bar.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F7pjBia2KWrxVdItCWgA1%2FSearching%20internal%20content%402x.png?alt=media&#x26;token=a4855c09-ddcc-40d9-9218-af68cc343432" alt="A GitBook screenshot showing the search bar"><figcaption><p>Ask questions or search through your content using the built in search bar.</p></figcaption></figure>
 
 Whether you’re working within the GitBook app or your visitors are reading your published content, GitBook’s search functions help to make it easy to find what you’re looking for.
 
@@ -2556,7 +3160,7 @@ You can use quick find to look for specific words or phrases, or you can ask Git
 
 {% hint style="success" %}
 
-### Global search
+#### Global search
 
 If you’re publishing your documentation on [an Ultimate site plan](https://gitbook.com/docs/documentation/account-management/plans#site-plans), and add multiple spaces as [site sections](https://gitbook.com/docs/documentation/publishing-documentation/site-structure/site-sections), your users will be able to use the **Ask or search** bar to find information across all your site sections.
 {% endhint %}
@@ -2564,9 +3168,9 @@ If you’re publishing your documentation on [an Ultimate site plan](https://git
 
 # Search & Quick find
 
-Search and navigate your documentation fast with quick find.
+Search and navigate your documentation fast with quick find
 
-GitBook’s **Quick find** palette lets you search for content across all your organizations, and jump between them fast.
+GitBook’s **Quick find** palette lets you search for content in your current organization, and jump to pages fast.
 
 ### Use Quick find
 
@@ -2574,9 +3178,9 @@ GitBook’s **Quick find** palette lets you search for content across all your o
 
 ### Search results <a href="#display-of-results" id="display-of-results"></a>
 
-Results from the space you’re currently in appear at the top, followed by results from other spaces from the organization you’re currently working in — **as well as other organizations** you are a member of.
+Results from the space you’re currently in appear at the top, followed by results from other spaces in the organization you’re currently working in.
 
-When you select a search result from an organization, you’ll switch to browsing that organization. To go back, use quick find to select a document in the organization you were in before, or use [the organization switcher](https://gitbook.com/docs/documentation/resources/gitbook-ui#the-sidebar) in the sidebar.
+To search another organization, switch organizations first using [the organization switcher](https://gitbook.com/docs/documentation/resources/gitbook-ui#the-sidebar).
 
 {% hint style="info" %}
 We do not currently support the ability to prioritize certain content in Quick find results.
@@ -2588,9 +3192,9 @@ We do not currently support the ability to prioritize certain content in Quick f
 
 ### Content indexing <a href="#indexation" id="indexation"></a>
 
-We index your content by grouping it into sections. Sections are denoted using [H1, H2 or H3 Headings](https://gitbook.com/docs/documentation/creating-content/blocks/heading), with the content that follows them forming part a section.
+We index your content by grouping it into sections. Sections are denoted using [H1, H2 or H3 Headings](https://gitbook.com/docs/documentation/creating-content/blocks/heading), with the content that follows them forming part of a section.
 
-Each result shows the first three lines of information below the section header. If your section is too big,  your keyword match may not appear in the preview — but don’t worry, quick find still found a match!
+Each result shows the first three lines of information below the section header. If your section is too big, your keyword match may not appear in the preview — but don’t worry, quick find still found a match!
 
 
 # GitBook AI
@@ -2600,7 +3204,7 @@ GitBook uses AI to help you find the knowledge you need within your organization
 When engaging with GitBook AI, you have the ability to ask questions or elaborate on specific requirements. This AI-driven tool is designed to review your documentation in real-time, providing you with quick, direct answers.
 
 {% hint style="info" %}
-GitBook AI search is available both within the GitBook app to search internal content, and [in published content to search that specific docs site](https://gitbook.com/docs/documentation/publishing-documentation/ai-search).&#x20;
+GitBook AI search is available both within the GitBook app to search internal content, and [in published content to search that specific docs site](https://gitbook.com/docs/documentation/publishing-documentation/ai-search).
 {% endhint %}
 
 ## GitBook AI helps you find answers in the GitBook app
@@ -2609,7 +3213,7 @@ GitBook AI search is available both within the GitBook app to search internal co
 This feature is available on [Pro and Enterprise plans](https://www.gitbook.com/pricing).
 {% endhint %}
 
-You can enable GitBook AI for your organization’s internal content, allowing you to ask questions and get semantic answers about your internal knowledge base.&#x20;
+You can enable GitBook AI for your organization’s internal content, allowing you to ask questions and get semantic answers about your internal knowledge base.
 
 Head to the **Organization settings** page and, in the **General** tab, toggle the **Enable GitBook AI** setting on.
 
@@ -2630,69 +3234,6 @@ We pass your content to OpenAI to index and process data. OpenAI **does not** us
 #### How do I prevent hallucinations with GitBook AI search?
 
 If you’re seeing GitBook produce answers that are incorrect, the best method for correcting this is write explicit content around the topic so the AI does not have to guess.
-
-
-# Writing with GitBook AI
-
-Use GitBook AI to generate and build content for your page
-
-{% hint style="info" %}
-This feature is available on [Pro and Enterprise plans](https://www.gitbook.com/pricing).
-{% endhint %}
-
-You can use GitBook AI to create content on any empty line on your page. It can create all kinds of content — formatted in Markdown — including code samples, templates, page summaries and more.
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FeeahKyRVALviZl7n9U4u%2Fcreating-content-writing-with-gitbook-ai.svg?alt=media&#x26;token=045cabaa-36df-42a5-adc4-7eaf69092e29" alt="A GitBook screenshot showing the AI writing options"><figcaption><p>Write with GitBook AI.</p></figcaption></figure>
-
-### Write with GitBook AI
-
-Press `Space` on any empty line, or type `/` and choose **Write with AI** to enter GitBook AI’s writing mode.
-
-You can instantly start typing any prompt you want. GitBook AI will analyze the prompt and generate content based on it. For example:
-
-> Write me a two-paragraph overview of why documentation is important for product teams.
-
-Alternatively, you can also choose from one of the suggested prompts or prompt starters:
-
-#### Continue writing
-
-If you click this option, GitBook AI will analyze the content on your current page and then generate more content based on that.
-
-#### Explain…
-
-Click this and then tell GitBook AI what you want it to explain. This isn’t limited by content on your page, so you can ask it to explain anything at all.
-
-#### Summarize
-
-As you can imagine, this option will summarize all the content on your page — great for writing a TL;DR at the bottom of a detailed document, or adding a quick summary at the top for people just checking in.
-
-#### Explain this
-
-This will break down the complex information on your page and explain it in simpler language — including explaining acronyms and other jargon. This is perfect if the page you’re reading involves a lot of complex information, or you want to add an explainer for less technical folks.
-
-#### Translate
-
-This mode will translate your current page into one of a set number of languages. If you want to translate into a language that’s not on the list, simply type it into the prompt box.
-
-### FAQs
-
-<details>
-
-<summary>How does GitBook AI use my data?</summary>
-
-We always follow [our data protection practices](https://gitbook.com/docs/policies/privacy-and-security/statement) to keep your data private.
-
-GitBook AI does not use your data to train AI models. We will only share the information you add to GitBook AI with OpenAI for the sole purpose of providing you with GitBook AI’s features. Take a look at [OpenAI’s privacy policy](https://openai.com/enterprise-privacy) for more information.
-
-</details>
-
-<details>
-
-<summary>How much does GitBook AI cost?</summary>
-
-GitBook AI is available as part of GitBook’s Pro and Enterprise plans. If you have a Free or Plus plan, you’ll need to upgrade to use GitBook AI writing and editing. [Visit our pricing page](https://www.gitbook.com/pricing) to find out more about upgrading to Pro.
-
-</details>
 
 
 # Version control
@@ -2750,17 +3291,458 @@ Rolling back allows you to revert a space’s content to the way it was at a pre
 To roll back to a previous version of your space, hover over the version in the side panel, click the **Actions button** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt="The Actions menu icon in GitBook"></picture> and select **Rollback**.
 
 
-# Translations
+# What is GitBook Agent?
 
-Auto-translate your content into multiple languages using AI and keep it synced.
+Work with an AI teammate to keep your documentation accurate, complete, and up to date
 
-{% hint style="warning" %}
-Auto translations are currently in Beta. Let us know if you have any feedback or encounter any issues.
+GitBook Agent is an AI teammate that works alongside you, helping you keep your documentation accurate, complete, and current.
+
+The Agent is deeply integrated into GitBook, so you don’t need to learn new workflows to take advantage of it — it works alongside you using the processes you already know.
+
+{% hint style="info" %}
+If you’d like to edit your docs in your local environment using an AI assistant, you can use [GitBook's skill.md file](https://gitbook.com/docs/documentation/creating-content/ai-coding-assistants-and-skill.md).
 {% endhint %}
 
-Auto translations make it easy to keep your documentation up-to-date in multiple languages, with minimal manual effort. You can create a space as a translation of another, and let AI handle the rest.
+### What can GitBook Agent do?
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FqNWM1B8mSQTFFsJYm4cD%2F15_08_25_auto_translations.svg?alt=media&#x26;token=4c999b80-a46d-4756-a705-cd23ea07ae2d" alt=""><figcaption></figcaption></figure>
+GitBook Agent can:
+
+* **Write docs based on a prompt:** Ask the Agent to update a page with the latest information, replace every mention of a product name with a new name, or anything else you need.
+* **Ideate and implement bigger changes:** Describe what you need and the Agent will open a change request, explain its planned edits, respond to your feedback, and then implement the plan you’ve created together.
+* **Understand your style guide:** Add your style guide into your org’s settings and it will always apply it when writing or reviewing content.
+* **Follow custom, organization-level instructions:** Give the Agent specific instructions at an organization level, such as adding links in specific ways, or avoiding specific block types.
+* **Translate your documentation:** Choose the content you want to translate, select a language and the Agent will do the work of localizing your docs.
+* **Summon from a comment:** Add a comment to any block on your page, type @gitbook and tell the Agent what you need.
+* **Review change requests:** Add the Agent as a reviewer on your change request. It can act as a docs linter, identifying or fixing errors, suggesting improvements and flagging style guide deviations.
+
+#### Automatic documentation suggestions
+
+The Agent can also connect to the same signals your team uses to understand your product and what your users need: support conversations, tickets, and threads from your connected tools.
+
+With this context, the Agent can proactively identify gaps, propose updates and generate docs changes automatically. So your docs can evolve with your product, and your users always get the right information when and where they need it.
+
+{% hint style="info" %}
+**Automatic docs suggestions are in early access**
+
+Head to **Organization Settings → GitBook Agent** to request access.
+{% endhint %}
+
+### Explore GitBook Agent’s features
+
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Write with GitBook Agent</strong></td><td>Create content based on a prompt or edit a single block</td><td><a href="write-and-edit-with-ai">write-and-edit-with-ai</a></td></tr><tr><td><strong>Review with GitBook Agent</strong></td><td>Ask the Agent to check your work for spelling, grammar and style</td><td><a href="review-change-requests-with-gitbook-agent">review-change-requests-with-gitbook-agent</a></td></tr><tr><td><strong>Translate your docs site</strong></td><td>GitBook Agent can create auto-updating localizations</td><td><a href="translations">translations</a></td></tr></tbody></table>
+
+### Add a style guide and custom instructions
+
+You can configure GitBook Agent by adding your team’s style guide or specific instructions on how you’d like it to work with your team. The Agent will use these as context whenever it creates or edits content in your organization.
+
+To add a style guide or custom instructions, open your **Organization settings** and then choose the **GitBook Agent** section. Click the **Settings** tab and add your instructions in the text entry field.
+
+You can quickly access this screen by opening the GitBook Agent chat window in a change request, then opening the **Actions menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt=""></picture> and choosing **Configure GitBook Agent** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F6uYUpJto7WTkJf9BUPHv%2Fsettings%20-%20dark.svg?alt=media&#x26;token=bf52415f-e999-43a2-9a1a-c85176a014cd" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FwkBqgOPry9HAcW4cxJk0%2Fsettings.svg?alt=media&#x26;token=67bdbb00-ebf3-4a2d-9df8-0c822406f71c" alt=""></picture>.
+
+#### Custom instructions example
+
+Here’s an example of the kind of custom instructions you could add in GitBook Agent’s settings.
+
+<pre data-overflow="wrap"><code><strong>You are a technical writer at Stripe. Use clear, direct language and prioritize accuracy over flourish. For guides, always introduce the concept with a one-sentence summary and break content into well-structured sections. For quickstarts, always use a stepper and keep every step action-first and concise.
+</strong></code></pre>
+
+### FAQs
+
+<details>
+
+<summary>How does GitBook Agent use my data?</summary>
+
+We always follow our data protection practices to keep your data private.
+
+GitBook Agent does not use your data to train AI models. We share the information you add to GitBook Agent with OpenAI for the sole purpose of providing you with GitBook AI’s features. Take a look at OpenAI’s privacy policy for more information.
+
+</details>
+
+<details>
+
+<summary>How much does GitBook Agent cost?</summary>
+
+GitBook Agent is free for all plans while in beta.
+
+[Translations](https://gitbook.com/docs/documentation/gitbook-agent/translations) are priced separately as a monthly add-on. Visit [the pricing section](https://gitbook.com/docs/documentation/translations#pricing) to find out more.
+
+</details>
+
+
+# Automatic documentation suggestions
+
+Learn how GitBook Agent works in the background to keep your documentation up-to-date
+
+{% hint style="info" %}
+
+#### This feature is currently in early access
+
+Head to **Organization Settings → GitBook Agent** to request access.
+{% endhint %}
+
+GitBook Agent can [connect to the same signals](https://gitbook.com/docs/documentation/gitbook-agent/automatic-documentation-suggestions/connecting-a-source) your team uses to understand both your product and what your users need: support conversations, Slack threads, GitHub issues, and more.
+
+With this context, the Agent can proactively identify gaps, propose updates and generate docs changes automatically.&#x20;
+
+GitBook Agent is trained on your organization’s content, meaning it has the context of your team’s writing style, structure, and tone-of-voice. And you can [add custom instructions](#add-custom-instructions) for the Agent to follow — more on that below.
+
+{% stepper %}
+{% step %}
+
+### Connect a source
+
+To allow GitBook Agent to suggest automatic docs improvements, you’ll first need to [connect a source](https://gitbook.com/docs/documentation/gitbook-agent/automatic-documentation-suggestions/connecting-a-source).&#x20;
+
+After you connect one or more sources, the Agent will start working in the background to collect and analyze your data.
+{% endstep %}
+
+{% step %}
+
+### Explore how GitBook Agent analyzes your data
+
+After connecting a source, GitBook Agent will categorize that contextual information into conversations, issues, and topics.
+
+It uses these in combination to suggest automatic improvements to your docs, which are opened as change requests.
+
+To review the data GitBook Agent analyzes, head to your organization’s settings, then open the [**Data explorer** tab](https://gitbook.com/docs/documentation/gitbook-agent/automatic-documentation-suggestions/exploring-your-data) in the **GitBook Agent** section.
+{% endstep %}
+
+{% step %}
+
+### Review change requests made by GitBook Agent
+
+As more data flows in, GitBook Agent will have enough context to start making suggestions — by opening new [change requests](https://gitbook.com/docs/documentation/collaboration/change-requests) in the relevant spaces.
+
+You can edit change requests opened by GitBook Agent just like any other change request — and anyone on your team can review them, as long as they have the right [permissions](https://gitbook.com/docs/documentation/account-management/member-management/permissions-and-inheritance).&#x20;
+
+You can also [request a review from GitBook Agent](https://gitbook.com/docs/documentation/gitbook-agent/review-change-requests-with-gitbook-agent) to have it analyze the changes it has suggested.
+{% endstep %}
+
+{% step %}
+
+### Collaborate with GitBook Agent on changes
+
+GitBook Agent can also act as a writing partner, allowing you to plan, write, re-write, or update anything within a change request.
+
+When reviewing a change request from the [change requests screen](https://gitbook.com/docs/documentation/collaboration/change-requests/change-requests-screen), opening GitBook Agent will allow you to chat with it directly to make changes in the context of the change request you’re working on.&#x20;
+
+You can also add [comments](https://gitbook.com/docs/documentation/collaboration/comments) to specific blocks, and tag @gitbook to ask GitBook Agent to make a change.
+{% endstep %}
+{% endstepper %}
+
+### Add or remove published sites for GitBook Agent to modify
+
+By default, GitBook Agent will have access to create change requests in any of your published docs sites. In the GitBook Agent’s settings screen, you can choose which sites to which you’d like the Agent to make suggested changes.
+
+### Add custom instructions for GitBook Agent
+
+To [add custom instructions for GitBook Agent](https://gitbook.com/docs/documentation/what-is-gitbook-agent#add-a-style-guide-and-custom-instructions) to follow, open your organization’s settings and choose the **GitBook Agent** page in the sidebar.
+
+From here you’re able to write custom instructions the Agent will use any time it’s preparing, analyzing, and generating change requests for your docs sites.
+
+
+# Connecting a source
+
+Connect different context sources to GitBook, such as Intercom, Slack, email, and more
+
+GitBook Agent can pull in context from different sources, including Intercom, Slack, email, and more. Connecting a source allows the Agent to build change requests based off of real-world context, such as email chains, Slack threads, or resolved Intercom conversations.
+
+The Agent scans this context, groups relevant data together into issues and topics, then generates suggested changes based on those data points.
+
+The context provided through different connectors will allow your team to work faster and more reliably, cutting down duplicated work of documenting something that may have been resolved in another platform.
+
+### Connect a source
+
+Head to your organization’s settings, and into the **GitBook Agent** section. From here, you’ll be able to configure the different connectors in order to successfully connect your desired tool.
+
+Each connector works slightly differently, and may contain different functionality. See the section for your tool below to see how to configure and work with your desired tool.
+
+<details>
+
+<summary>Email</summary>
+
+The email connector is a versatile connector that allows you to provide context to GitBook Agent **through a dedicated email address**.
+
+There’s no configuration to use the email connector — it will work out of the box.
+
+#### Add email threads to GitBook Agent
+
+1. Add any email thread to the Agent by forwarding the email thread to the dedicated email address provided in GitBook Agent’s settings.
+
+#### Use the email connector to connect third party apps
+
+The email connector is the most versatile way of providing context to GitBook. Using tools like [Zapier](https://zapier.com/) or [Relay.app](https://relay.app/), you’re able to connect thousands of third party apps.
+
+In either tool, set up a new workflow/connection, and make sure the output is sent to the dedicated email address provided in GitBook Agent’s settings.
+
+</details>
+
+<details>
+
+<summary>Intercom</summary>
+
+The Intercom connector allows GitBook Agent to pull in context from **resolved or closed conversations**.&#x20;
+
+Any time a conversation is closed by your support team, the Intercom connector will send the full context of the conversation to GitBook Agent. The Agent will use this context to generate [issues](https://gitbook.com/docs/documentation/gitbook-agent/exploring-your-data#issues) (and ultimately [topics](https://gitbook.com/docs/documentation/gitbook-agent/exploring-your-data#topics)), which are then used to generate an actionable change request that can be reviewed by your team.
+
+#### Connect Intercom
+
+1. In GitBook Agent’s settings, click into the Intercom connector and authorize Intercom with your account.
+2. Once signed in, GitBook Agent is ready to start analyzing your closed support tickets.
+
+#### Add Intercom conversations to GitBook Agent
+
+The Intercom connector works in the background — once it’s installed and configured, it will run in the background and add resolved or closed conversations to GitBook Agent automatically.
+
+</details>
+
+<details>
+
+<summary>Slack</summary>
+
+The Slack connector allows GitBook Agent to pull in context from **threads it’s tagged in**.
+
+Once the Slack connector is called in a thread, it will analyze the context of the thread, and send the full context of the conversation to your GitBook Agent. The Agent will then use this context to generate issues (and ultimately topics), which are then used to generate an actionable change request that can be reviewed by your team.
+
+#### Connect Slack
+
+1. In GitBook Agent’s settings, click into Slack connector and authorize Slack with your account.
+2. Install the Slack bot into your organization’s Slack workspace.
+
+#### Add Slack threads to GitBook Agent
+
+1. Call `@gitbook` inside of a thread that you would like to ingest.
+2. Optionally add extra context that the Agent can use, such as:
+
+```
+@gitbook use this conversation to better document our API reference.
+```
+
+</details>
+
+
+# Exploring your data
+
+Explore how GitBook Agent works with your data, and see the output used to create change requests
+
+Once GitBook Agent starts ingesting conversations, it will start to categorize your data into three categories:
+
+1. **Conversations**: Raw data that the agent has indexed from your connectors.
+2. **Issues**: Individual issues that have been identified within a conversation.
+3. **Topics**: Groups of issues that are related to each other on a common topic.
+
+All three are used by GitBook Agent to figure out the types of changes that might need to be made in your documentation to be improved. Below, you can find more information on how each one works.
+
+{% hint style="info" %}
+GitBook Agent categorizes data and makes proactive suggestions for your docs automatically. You don’t need to do anything with this data — it’s available for visibility.
+{% endhint %}
+
+### Conversations
+
+Conversations are the raw data that is sent to GitBook Agent from your [connectors](https://gitbook.com/docs/documentation/gitbook-agent/automatic-documentation-suggestions/connecting-a-source). The Agent analyzes them and assigns an impact score, which is added to the metadata from when the conversation was originally ingested.
+
+Conversations are then split into issues, which are specific areas of improvement that are found within a conversation. A conversation may contain more than one issue.
+
+You can view conversations by opening **Organization settings** > **GitBook Agent** > **Data Explorer** and choosing the **Conversations** tab.
+
+### Issues
+
+Issues are standalone data points that have been identified within a conversation. GitBook Agent assigns them an impact score, which is added to the metadata from when the data was ingested.
+
+You can view issues by opening **Organization settings** > **GitBook Agent** > **Data Explorer** and choosing the **Issues** tab.
+
+Click the **Inspect** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FHBSHfffDzLSBh8vIMDpr%2Finspect.svg?alt=media&#x26;token=66d56df6-aa54-4bd5-985e-83ea0cfed841" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FHBSHfffDzLSBh8vIMDpr%2Finspect.svg?alt=media&#x26;token=66d56df6-aa54-4bd5-985e-83ea0cfed841" alt=""></picture> button on an issue to read a summary, along with GitBook Agent’s analysis of it.
+
+### Topics
+
+Topics are groups of issues that are related to one another. By grouping issues together, GitBook Agent can create useful, context-driven change requests for your team.
+
+The Agent will assign each topic an impact score, and show the number of issues and conversations the Agent used to form the topic. They’ll update automatically as new conversations and issues are processed.
+
+Click **Inspect** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FHBSHfffDzLSBh8vIMDpr%2Finspect.svg?alt=media&#x26;token=66d56df6-aa54-4bd5-985e-83ea0cfed841" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FHBSHfffDzLSBh8vIMDpr%2Finspect.svg?alt=media&#x26;token=66d56df6-aa54-4bd5-985e-83ea0cfed841" alt=""></picture> on any topic to see the issues used to form the topic, along with a log of GitBook Agent’s thinking to process those issues and create the topic.
+
+This inspector screen also shows any change requests GitBook Agent has created based off of the topic — ready for [you and your team to review](https://gitbook.com/docs/documentation/collaboration/change-requests/change-requests-screen).
+
+{% hint style="info" %}
+
+### Disabling a topic
+
+If a topic isn’t valuable, you can toggle the topic off from its inspector screen. Once disabled, the topic will no longer be used to create change requests for your documentation.
+{% endhint %}
+
+
+# Writing with GitBook Agent
+
+Use GitBook Agent to generate and build content for your page
+
+{% hint style="info" %}
+This feature is available on [Pro and Enterprise plans](https://www.gitbook.com/pricing).
+{% endhint %}
+
+GitBook Agent is a powerful tool for generating content for your documentation in GitBook.
+
+The Agent can do everything from write small sections of text on your page, to edit existing blocks and create new pages, sections and more in a change request.
+
+{% hint style="info" %}
+
+### GitBook Agent follows your style guide
+
+You can [add your own style guide and custom instructions](https://gitbook.com/docs/documentation/what-is-gitbook-agent#add-a-style-guide-and-custom-instructions) at an organization level — so the Agent will always match your tone and style whenever you ask it to help.
+{% endhint %}
+
+### What can GitBook Agent do?
+
+GitBook Agent is deeply integrated into the GitBook app, so it understands the blocks you can create in the editor, and the wider content of your space.
+
+That means you can use the Agent to:
+
+* Write new content based on your prompts
+* Search through existing pages and update specific content
+* Reformat content to make the most of GitBook’s different blocks
+* Update code samples
+* Move content around between pages
+* Add new pages in specific locations
+
+### How to interact with GitBook Agent
+
+There are a few ways to work with GitBook Agent:
+
+* Open the Agent within an existing change request and tell it what you need
+* Plan and implement a new change request with GitBook Agent
+* Tag the Agent in a comment on a block
+* Create new content on an empty line on your page
+
+Let’s run through each of these to find out how they work.
+
+#### Open GitBook Agent chat window in any change request
+
+You can open the Agent chat window in a change request at any time by hitting the **GitBook Agent** button in the space header bar. This will open the Agent’s chat window on the right of the app.
+
+<div data-with-frame="true"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FPQtoLdPQWjOsz0vdowMn%2FCleanShot%202025-12-08%20at%2021.41.29%402x.png?alt=media&#x26;token=d3ea84f8-723e-463c-b84b-be6f02db490a" alt=""><figcaption><p>Open GitBook Agent in a change request</p></figcaption></figure></div>
+
+Here you can write a prompt for the Agent to follow — it will explain what it’s doing as it follows your instructions, with the changes appearing in your space is it works.
+
+You can give follow-up instructions or clarify steps, or edit the content of your space directly at any point, allowing you to work alongside GitBook Agent.
+
+#### Implement a change request with GitBook Agent
+
+Click the **GitBook Agent** section of the **Edit** button in the top-right of a space to open a modal.
+
+Here you can write a prompt to tell the Agent what you want your change request to include, then add reference pages that might be useful as context for the changes.
+
+Once you click **Start change request** the Agent will open a change request for you and start carrying out your instructions. At every stage, the Agent will tell you what it’s doing in the chat window on the right-hand side of the app.
+
+When it’s done, you can edit the content yourself directly on the page, or give the Agent more instructions to continue refining your changes.
+
+#### Tag GitBook Agent in a comment
+
+If you want the Agent to review a specific block on your page, you can tag it in a comment and tell it what you need. Simply click **Comment on block** and tag @gitbook to tag the Agent, then tell it what you want it to do.
+
+GitBook Agent will update the content based on your prompt, then reply to your comment telling you what it did.
+
+#### Improve page content with GitBook Agent
+
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FFTJDHOlJcYyh2M3tK6Xe%2Fpage-actions.png?alt=media&#x26;token=65358b13-2bef-4fda-bbe6-9308b7daba6f" alt=""><figcaption></figcaption></figure>
+
+The **Improve** menu gives you a choice of presets that tell GitBook Agent to carry out common actions to improve your page content.
+
+You can access the **Improve** menu from the editor by hovering over the page title, or by opening the page’s **Actions menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt=""></picture>.
+
+From the Improve menu, you can tell the Agent to:
+
+* Add an icon for the page
+* Generate a page description based on its content
+* Fix spelling and grammar
+* Rewrite for consistency with other pages
+* Optimize for SEO
+* Add a summary and next steps section
+* Link to related topics and pages
+* Divide the single page into multiple pages
+
+The first two options are conditional — they change based on your page content. So if your page already has an icon and description, you won’t see those choices in the menu.
+
+Select any option and the Agent will instantly get to work on your task.
+
+#### Create new content in an empty block
+
+You can use GitBook Agent to create content on any empty line on your page. It can create all kinds of content — formatted in Markdown — including code samples, templates, page summaries and more.
+
+Press `Space` on any empty line, or type `/` and choose **Write with AI** to launch GitBook Agent.
+
+You can instantly start typing any prompt you want. GitBook Agent will analyze the prompt and generate content based on it. For example:
+
+> Write me a two-paragraph overview explaining why documentation is important for product teams.
+
+Alternatively, you can choose from one of the suggested prompts or prompt starters:
+
+* **Continue writing** – GitBook Agent will analyze the content on your current page and then generate more content based on that.
+* **Explain…** – Choose this, then tell GitBook Agent what you want it to explain. This isn’t limited by content on your page, so you can ask it to explain anything at all.
+* **Summarize** – Summarize all the content on your page. This is great for writing a TL;DR at the bottom of a detailed document, or adding a quick summary at the top for people just checking in.
+* **Explain this** – This will explain the complex information on your page in simpler language — including explaining acronyms and other jargon. This is perfect if the page you’re reading involves a lot of complex information, or you want to add an explainer for less technical folks.
+* **Translate** – Translate your current page into one of a set number of languages. If you want to translate into a language that’s not on the list, simply type it into the prompt box.
+
+### Write effective prompts for GitBook Agent <a href="#write-effective-prompts" id="write-effective-prompts"></a>
+
+GitBook Agent is like a teammate that’s great at taking directions. You need to give it clear instructions and context to get the best results from it.
+
+Here are some quick tips for writing good prompts:
+
+* **Break it down** – The Agent is best at completing focused tasks. Break down complex projects into smaller steps and ask the Agent to complete them one at a time.
+* **Be specific** – Generic prompts like `@gitbook improve this page` will apply general best practices, but without more specific guidance the Agent may not achieve the goal you had in mind.
+* **Focus on outcomes** – If you’re hearing about a specific problem customers are having, tell the Agent about those problems — or the outcomes you want to achieve. It will suggest improvements based on those outcomes.
+* **Give direct instructions** – If you want the Agent to use a stepper block for a step-by-step guide, or add an FAQ section with a bunch of expandable blocks, tell it precisely what to do to get the right results first time.
+* **Use broad prompts for wider improvements** – For maintenance tasks like fixing typos, updating a feature name across pages or removing specific block types from your docs, you can use commands like `@gitbook replace all instances of v2.3.9 with v2.4.0`.
+
+
+# Review change requests with GitBook Agent
+
+Collaborate with GitBook Agent to review or work on change requests
+
+As well as [creating content](https://gitbook.com/docs/documentation/gitbook-agent/write-and-edit-with-ai), GitBook Agent can review your change requests to quickly find and fix errors, suggest improvements and more.
+
+The Agent understands the context of the rest of your docs content, and you can also add [your team’s style guide](https://gitbook.com/docs/documentation/what-is-gitbook-agent#add-a-style-guide-and-custom-instructions) to ensure it reviews your changes while sticking to your team’s style
+
+### Review change requests with GitBook Agent
+
+You can request a review from GitBook Agent in any [open change request](https://gitbook.com/docs/documentation/collaboration/change-requests/change-requests-screen) in your organization.
+
+When viewing an open change request, you can select GitBook Agent as a reviewer. Once selected as a reviewer, GitBook Agent will go through your changes, and review for accuracy, clarity, and more — through the context of your published site and style guide.
+
+It will suggest further changes if needed — and if you want the Agent to implement them, you can tell it to do so either [through the chat window](https://gitbook.com/docs/documentation/write-and-edit-with-ai#open-gitbook-agent-chat-window-in-any-change-request) or by [tagging it in a comment](https://gitbook.com/docs/documentation/write-and-edit-with-ai#tag-gitbook-agent-in-a-comment).
+
+Once you’re happy with your changes, you can [merge the change request](https://gitbook.com/docs/documentation/collaboration/change-requests#merge) to publish the changes live.
+
+### Update change requests with GitBook Agent
+
+GitBook Agent works with you like another member of your team. [Inside of a change request](https://gitbook.com/docs/documentation/collaboration/change-requests/change-requests-in-a-space), you can [open the GitBook Agent chat window](https://gitbook.com/docs/documentation/write-and-edit-with-ai#open-gitbook-agent-chat-window-in-any-change-request) to start collaborating.
+
+You can ask it to do things like:
+
+* Write new content or expand existing sections
+* Fix typos and spelling errors
+* Rewrite unclear or outdated explanations
+* Review pages for accuracy, clarity, and completeness
+* Generate or update code examples
+* Identify missing docs or gaps in workflows.
+
+Find out more about [writing with GitBook Agent here](https://gitbook.com/docs/documentation/gitbook-agent/write-and-edit-with-ai).
+
+
+# Translations
+
+Auto-translate your content into multiple languages using GitBook’s AI Agent and keep it synced
+
+{% hint style="warning" %}
+Auto translations are currently in Beta. [Let us know](https://www.gitbook.com/contact) if you have any feedback or encounter any issues.
+{% endhint %}
+
+{% hint style="info" %}
+Only [organization admins](https://gitbook.com/docs/documentation/account-management/member-management/roles#admin) can create and access translations, as it’s [a billable feature](#pricing).
+{% endhint %}
+
+Auto translations make it easy to keep your documentation up-to-date in multiple languages, with minimal manual effort. You can create a space as a translation of another, and let GitBook Agent handle the rest.
+
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FhOOp6fNMYks6U4M6UXTO%2FCreate%20translation%402x.png?alt=media&#x26;token=a142a9cd-6ecd-49c4-9670-2226897afc1f" alt=""><figcaption></figcaption></figure>
 
 ## How translations work
 
@@ -2770,7 +3752,7 @@ Auto translations make it easy to keep your documentation up-to-date in multiple
 
 ## Set up an auto translation
 
-To translate a space to a new language, start by creating a new [space](https://gitbook.com/docs/documentation/content-structure/space#create-a-space) in your organization. From the modal that appears, click “Translation” from the quick actions menu.
+To translate a space to a new language, start by creating a new [space](https://gitbook.com/docs/documentation/creating-content/content-structure/space#create-a-space) in your organization. From the modal that appears, click **Translation** from the quick actions menu.
 
 From the modal that appears, you’ll need to choose a:
 
@@ -2810,14 +3792,14 @@ Head to your site settings, under the structure tab to set up a new variant for 
 
 ## Pricing
 
-Translations are a paying **monthly** add-on:
+Translations are a paid **monthly** add-on:
 
 * $25 for up to 50,000 translated words
 * $0.20 per additional 1,000 words
 
 Each month includes 50,000 words of translation for $25. After that, every additional 1,000 words costs $0.20. Your 50,000-word allowance resets at the start of each month.
 
-In your first translation, every word will count towards your bill. After that, only **pages** with new or updated words are charged. For example, if you edit your docs later, only the pages with new words will count towards your word limit — you won’t be re-billed for the entire document.&#x20;
+In your first translation, every word will count towards your bill. After that, only **pages** with new or updated words are charged. For example, if you edit your docs later, only the pages with new words will count towards your word limit — you won’t be re-billed for the entire document.
 
 {% hint style="warning" %}
 Be cautious when working on multiple translations with large pages, as translated word count includes all words within a page that contains a change — meaning if only a few words are changed in a large page, the entire page will be re-translated.
@@ -2872,6 +3854,549 @@ You should only create **one translation workflow per language** of any given so
 If you need help getting started or want to learn more about configuring auto-translations, [contact our support team](https://gitbook.com/docs/help-center/further-help/how-do-i-contact-support).
 
 
+# Inviting your team
+
+Collaborate with your teammates on spaces, collections and more
+
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FcuV3FRj8FZLZMvou0FsR%2Fcollaboration-invite-team%402x.png?alt=media&#x26;token=7de1cfe8-2d72-4640-995a-7af757ce606f" alt="A GitBook screenshot showing the invite team dialog"><figcaption><p>Invite your team to GitBook to collaborate on pages, spaces, and published sites.</p></figcaption></figure>
+
+### Sharing a space or collection
+
+To share a space or collection, click the **Share** button in the top-right corner. This will open the share modal.
+
+Inside the share modal, you’ll see different sharing options along the top.
+
+By default, every member of your organization can see all the content in your organization. However, their permissions are inherited from the [role](https://gitbook.com/docs/documentation/account-management/member-management/roles) assigned to them within your [Organization settings](https://gitbook.com/docs/documentation/account-management/organization-settings).
+
+You can see everyone who access, and their level of access, in the share modal. You can also make changes to these settings here.
+
+### Invite members
+
+#### Invite a person or team from your organization
+
+Some people in your team may not have access to a specific space in your GitBook organization due to their role or specific permissions settings. To invite someone who’s already a member of your organization, simply type their name, choose their role for this space, and hit Invite.
+
+You can also add a [team](https://gitbook.com/docs/documentation/account-management/member-management/teams) by typing the team name and hitting Invite.
+
+#### Invite someone from outside your organization
+
+To invite someone from outside your organization, simply add their email address, choose their role, and hit **Invite**. When you choose their role, you can also choose to leave the **Invite as an organization member** toggle switched on to make them a full member of your organization, with access to all your team’s content when they’re logged in.
+
+Alternatively, toggle this off to invite them as a [guest](https://gitbook.com/docs/documentation/account-management/member-management/roles#guest-role). Guests only have access to the individual spaces that you invite them to, and can be given a specific role within that space — whether it’s to edit the content, or only view and comment on it.
+
+{% hint style="warning" %}
+Inviting someone either as a full member or a guest will make them a member of the organization that owns the space, which **will increase your overall subscription charge.**
+
+The cost for this will depend on [your organization’s plan](https://gitbook.com/docs/documentation/account-management/plans).
+{% endhint %}
+
+It is also possible to [invite members to the organization ](https://gitbook.com/docs/documentation/account-management/member-management/invite-members-to-your-organization)from within the **Organization settings** area.
+
+#### Invite guests via link
+
+If you don’t want to use email to invite someone to your content, or want to invite a number of people as guests quickly, you can create a secret link. You can also set the role of guests that join using the link, so you have control over who can do what to your content.
+
+When you share this link, anyone who clicks on it will be able to sign up, join your organization as a [guest](https://gitbook.com/docs/documentation/account-management/member-management/roles#guest-role), and get access to just this single space and its content.
+
+You can revoke the link at any time by opening the **Actions menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt="The Actions menu icon in GitBook"></picture> next to the link and choosing **Revoke**.
+
+
+# Change requests
+
+Collaborate on content edits through change requests
+
+A change request is a copy of your main content. It comes from the simple concept of [**branching**](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell), and will feel familiar to anyone who uses pull requests in GitHub or merge requests in GitLab.
+
+In a change request, you can edit, update and delete elements of your content, request reviews on your changes, then merge them back into your main version to apply all the changes you made.
+
+To learn more about managing open change requests, head to [reviewing change requests](https://gitbook.com/docs/documentation/collaboration/change-requests/change-requests-screen).
+
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fwn8xlD4x46N7JblHVSnP%2Fcollaboration-change-requests%402x.png?alt=media&#x26;token=d8b94599-ee17-461a-90a9-35a784833ea1" alt="A GitBook screenshot showing the change requests panel"><figcaption><p>Edit your content through change requests.</p></figcaption></figure>
+
+{% stepper %}
+{% step %}
+
+#### Open a change request
+
+To start editing content, you’ll need to start by creating a change request. Change requests can be opened:
+
+* By [pressing the **Edit** button in the top right corner](https://gitbook.com/docs/documentation/collaboration/change-requests-in-a-space#creating-a-change-request) when viewing a space
+* By [implementing a new change request with GitBook Agent](https://gitbook.com/docs/documentation/gitbook-agent/write-and-edit-with-ai)
+* [Automatically by GitBook Agent](https://gitbook.com/docs/documentation/gitbook-agent/automatic-documentation-suggestions)
+  {% endstep %}
+
+{% step %}
+
+#### Make your changes
+
+After a change request is opened, you’re free to make any edits or changes. Changes can be made by working [directly in the editor](https://gitbook.com/docs/documentation/creating-content), or by [working with Docs Agent](https://gitbook.com/docs/documentation/gitbook-agent/write-and-edit-with-ai).
+{% endstep %}
+
+{% step %}
+
+#### Request a review
+
+Once your changes are ready to go, you can request a review from your team in the **Overview** tab. Tagging reviewers in a change request will notify them, and allow you to further collaborate in the change request by directly making more changes in the editor, or discussing changes in [comments](https://gitbook.com/docs/documentation/collaboration/comments).
+
+You can request Docs Agent for any reviews, or anyone on your team with the right [permissions](https://gitbook.com/docs/documentation/account-management/member-management/permissions-and-inheritance).
+{% endstep %}
+
+{% step %}
+
+#### Merge
+
+After your reviews are done, you’ll be able to [merge your changes](#merge) to publish them to your live docs site immediately!
+{% endstep %}
+{% endstepper %}
+
+### Working with change requests
+
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Change request screen</strong></td><td>View and manage change requests across your entire organization</td><td><a href="change-requests/change-requests-screen">change-requests-screen</a></td></tr><tr><td><strong>Change requests in a space</strong></td><td>Create and review change requests in a single space</td><td><a href="change-requests/change-requests-in-a-space">change-requests-in-a-space</a></td></tr></tbody></table>
+
+
+# Change requests screen
+
+Learn about the dedicated change requests screen, which helps you browse, manage and review change requests before merging them and publishing them in your documentation
+
+The change requests screen in GitBook makes it easy to view and manage active change requests in your organization.
+
+In this screen, you can see open change requests, merge finished ones, and even collaborate with GitBook Agent to work on updates — all from a single, unified page.
+
+<div data-with-frame="true"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FSSaXjsyjfrHEwOJGePQG%2FCleanShot%202025-12-08%20at%2022.03.05%402x.png?alt=media&#x26;token=c4ebb192-91c5-4dca-887b-393fe5be9c07" alt=""><figcaption><p>View active change requests from the change requests screen.</p></figcaption></figure></div>
+
+### Navigating the change request screen
+
+Every change request within your organization will appear in the change requests screen, and can be filtered by drafts, in review, merged, and archived.
+
+Additionally, you can filter change requests [created by GitBook Agent](https://gitbook.com/docs/documentation/gitbook-agent/automatic-documentation-suggestions).
+
+Clicking into a change request will open it in an expanded view, allowing you to review, edit, merge, and even [continue working on changes with GitBook Agent](https://gitbook.com/docs/documentation/gitbook-agent/review-change-requests-with-gitbook-agent#update-change-requests-with-docs-agent). This section also shows information about the change request, including the participants and reviewers, the description, and the changes highlighted using diff view.
+
+To view more detailed information about a change request, click the **Edit** button in the upper right to jump straight to the [change request’s space](https://gitbook.com/docs/documentation/collaboration/change-requests/change-requests-in-a-space).
+
+### Reviewing a change request
+
+When someone requests your review on a change request, you can edit the content and leave feedback right from the change requests screen.
+
+You can either request changes if you think it still needs work, or approve the change request, to signal it's ready to merge.
+
+Most reviews will take place in the change request’s [comments](https://gitbook.com/docs/documentation/collaboration/comments), where collaborators can share feedback and have discussions about specific content blocks, or the change request as a whole.
+
+Additionally, you can [review a change request with GitBook Agent](https://gitbook.com/docs/documentation/gitbook-agent/review-change-requests-with-gitbook-agent), allowing you to plan, check, and continue working on changes.
+
+
+# Change requests in a space
+
+Learn about collaborating on a single change request in a space — including how to review, resolve conflicts and merge
+
+When you’re within a [space](https://gitbook.com/docs/documentation/getting-started/concepts#space), you can make changes by opening a new change request, or browse existing change requests to see what other people are working on.
+
+### Creating a change request
+
+Inside a space where live edits are disabled, click the **Edit** button in the [space header](https://gitbook.com/docs/documentation/resources/gitbook-ui#space-header) to start a new change request.
+
+This will open a new change request, where you can edit or delete content as needed. Your changes are saved automatically, and other people can join you in a change request to collaborate in real-time.
+
+When creating a change request, you can add a title and description to provide more context about the changes you’re making.
+
+Once you’re happy with your changes, you can use the button in the header bar to [**Request a review**](#request-a-review-on-a-change-request) of your change request, or [**Merge**](#merging-a-change-request) it directly into the main branch.
+
+#### Creating a change request with GitBook Agent
+
+[GitBook Agent](https://gitbook.com/docs/documentation/gitbook-agent/what-is-gitbook-agent) is an AI teammate that can [plan and implement change requests](https://gitbook.com/docs/documentation/gitbook-agent/write-and-edit-with-ai#implement-a-change-request-with-gitbook-agent) based on any instructions you give it.
+
+To open a new change request with GitBook Agent, click the GitBook Agent icon in the upper right corner next to the “Edit” button, and ask GitBook to implement any changes you want.
+
+Some things you can ask it to do include:
+
+* Add usage examples
+* Improve page SEO
+* Enhance clarity
+* Check for consistency
+* Fix typos and spelling errors
+* Link related content
+* \+ more
+
+Head to [Writing with GitBook Agent](https://gitbook.com/docs/documentation/gitbook-agent/write-and-edit-with-ai) to learn more.
+
+### Previewing a change request
+
+You can preview the changes you’ve made in a change request by clicking the **Preview** option in the [space header](https://gitbook.com/docs/documentation/resources/gitbook-ui#space-header). This will switch to a preview of your published docs with the proposed changes included, so you can see your changes in the entire context of your published documentation.
+
+Below the **Preview** button is a URL for your site preview. Click this and your site preview will open in full in a new tab.
+
+When you open a preview URL in a new tab, you will also see [the Preview toolbar](https://gitbook.com/docs/documentation/resources/gitbook-ui/toolbar-on-published-sites-and-site-previews) at the bottom of the browser window. This toolbar lets you quickly jump back into GitBook to view, edit, or comment on the change request, or open the live version of your site.
+
+{% hint style="info" %}
+You can only preview change requests for spaces added to a [published docs site](https://gitbook.com/docs/documentation/publishing-documentation/publish-a-docs-site).
+{% endhint %}
+
+{% hint style="warning" %}
+If your content is published using share links or authenticated access, the preview function won't appear.
+{% endhint %}
+
+### Request a review on a change request
+
+Request a review on your change request when you want to ask members of your team to check your content before you merge the changes into the main branch.
+
+Select the **Overview** tab in the space header bar to open an overview of your change request — including all the changes you’ve made in diff view.
+
+Here you can add a description to your change request to give your reviewers some context, and tag specific people that you want to check your work.
+
+When you click **Request a review**, the change request’s status will change to **In review**, and anyone you tagged in your review request will get a notification.
+
+If your changes don’t require a review, you have the appropriate [permissions](https://gitbook.com/docs/documentation/account-management/member-management/roles), and you don’t have any blocking [merge rules](https://gitbook.com/docs/documentation/collaboration/merge-rules), you can merge your changes into the main version directly instead.
+
+{% hint style="info" %}
+[Add GitBook Agent as a reviewer](https://gitbook.com/docs/documentation/gitbook-agent/review-change-requests-with-gitbook-agent) to your change request and it can check your content for spelling, grammar and style guide errors, suggest improvements and more.
+{% endhint %}
+
+{% hint style="warning" %}
+If you don’t tag anyone in your review request, everyone with reviewer permissions will get a notification about your request. If no reviewers are in the space, the next role above reviewer will be notified.
+{% endhint %}
+
+#### Diff view <a href="#diff-mode" id="diff-mode"></a>
+
+When you open the **Changes** tab in the space header, the diff view will appear. Diff view highlights every page and block that’s been edited in a change request. It will highlight any edited pages in the table of contents, and on the pages it will show the specific blocks that have been added, edited or removed.
+
+There are two options when using diff view:
+
+1. **Show all pages** – This is the default mode for diff view, which will show both modified and non-modified pages in the table of contents. This is good for seeing which pages have been edited in the context of the entire space.
+2. **Show only changed pages** – This mode will show only the modified pages in the table of contents, which helps you focus on the changed content. This is particularly helpful in larger spaces with many pages and sub-pages.
+
+You can switch to the **Changes** tab to check the diff view in any change request.
+
+### Merging a change request
+
+Merging a change request will add the change request’s changes into the main branch of content, creating an updated version and a new entry in the space’s [version history](https://gitbook.com/docs/documentation/creating-content/version-control#see-the-activity-of-a-specific-draft).
+
+You might not be able to merge a change request if you don’t have the right [permissions](https://gitbook.com/docs/documentation/account-management/member-management/permissions-and-inheritance), or if your change request hasn’t passed your organization or space’s [merge rules](https://gitbook.com/docs/documentation/collaboration/merge-rules).
+
+### Resolving merge conflicts
+
+Sometimes, when you want to merge a change request, you may discover conflicts between the main content and the content you’re trying to merge. In the simplest form, a conflict is a piece of content that could not be merged automatically.
+
+If this happens, you’ll be presented with a conflict alert, and a list of the conflicts you’ll need to resolve before continuing the merge.
+
+You have two options when it comes to resolving a merge conflict — **selecting a version to merge** or **manually** **editing the content**.
+
+#### Selecting a version to merge
+
+You can resolve a merge conflict by selecting a version you want to merge — either your incoming content, or the content that was previously there. This allows you to choose between one change and another — either your recent work, or the original content.
+
+If you’re dealing with a merge conflict that can be resolved this way, you can select the version you want to keep, and the other version will be deleted.
+
+#### Manually editing
+
+If you don’t want to choose between versions, you can resolve a merge conflict by manually editing the conflict. You’ll be able to delete the blocks you don’t need, or even rewrite them entirely. Once you’re happy with the changes, you can move on to the next conflict until they’re all resolved.
+
+### Archiving a change request
+
+If you decide not to merge a change request and want to remove it from the queue, you can archive it.
+
+To archive a change request, first open it up. Then click the **Actions menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fpn5vEw7bYFrMPpdyvpSu%2Factions-horizontal%20-%20dark.svg?alt=media&#x26;token=ec39eefe-a391-4fe2-828a-082b79f2847d" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FPnnI41SqLSaKBNwT98fW%2Factions-horizontal.svg?alt=media&#x26;token=99754200-a354-4ffe-931e-aa6322ea7395" alt="The Actions menu icon in GitBook"></picture> next to the change request’s title and choose **Archive**. You can find and reopen archived change requests later by opening the **Change Requests** menu and selecting the **Archived** tab.
+
+
+# Merge rules
+
+Define requirements that must be met before change requests can be merged
+
+{% hint style="info" %}
+This feature is available on [Pro and Enterprise plans](https://www.gitbook.com/pricing).
+{% endhint %}
+
+Merge rules allow you to define requirements that must be met before change requests can be merged, such as needing a review from a specific user, or requiring a subject or description for the change request.
+
+These rules help maintain content quality and ensure proper review processes across your documentation workflow.
+
+When you have merge rules configured, they’ll automatically evaluate change requests before they can be merged. If a rule isn’t satisfied, the merge will be blocked until the requirements are met.
+
+This provides an automated way to enforce your team’s collaboration and review standards.
+
+## Using merge rules
+
+You can configure merge rules at different levels to match your team’s workflow:
+
+### Organization-level configuration
+
+Organizations can set default merge rules that all spaces inherit. This provides consistency across multiple spaces while still allowing individual spaces to customize their rules as needed.
+
+To configure merge rules for your organization, open the organization menu at the top of the sidebar and choose **Settings** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F6uYUpJto7WTkJf9BUPHv%2Fsettings%20-%20dark.svg?alt=media&#x26;token=bf52415f-e999-43a2-9a1a-c85176a014cd" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FwkBqgOPry9HAcW4cxJk0%2Fsettings.svg?alt=media&#x26;token=67bdbb00-ebf3-4a2d-9df8-0c822406f71c" alt=""></picture>. In the Settings screen, select **Merge rules** under the **Organization** section of the sidebar. Here you can specify merge rules for your entire organization.
+
+Choose between unrestricted merging, or select from the list of presets to apply to change requests across your entire organization.
+
+### Space-level configuration
+
+Whether or not you have enabled organization-wide merge rules, each space can have its own merge requirements tailored to its content and team structure.
+
+This gives you the flexibility to have stricter rules for important documentation and more relaxed rules for draft content.
+
+When setting up merge rules for a space, you can choose to:
+
+* **Inherit** merge rules from your organization
+* **Define custom rules** specific to that space
+* **Disable merge rules** entirely
+
+{% hint style="info" %}
+If you inherit organization rules, any changes to the organization’s merge rules will automatically apply to the space.
+{% endhint %}
+
+To configure merge rules for your organization, open the **Actions menu** <i class="fa-ellipsis">:ellipsis:</i> in the top left of the editor, and then select **Merge rules**. Here you can specify whether to inherit the merge rules from your organization or configure new ones specific to that space.
+
+## Rule evaluation
+
+### How rules work
+
+When someone wants to merge a change request, GitBook will evaluate all the configured rules in order:
+
+* All rules in a configuration must pass for a merge to be allowed
+* Rules are evaluated in the order they appear in your configuration
+* If any rule fails, the merge is blocked with an appropriate error message
+* Rules with bypass capabilities can override previous failures
+
+### Bypass rules
+
+Some rules have bypass capabilities (like **Allow specified actors to bypass requirements**). These special rules can override other rule failures. If a bypass rule evaluates to true, the merge will be allowed even if other rules have failed.
+
+## Best practices
+
+When setting up merge rules, consider these recommendations:
+
+* **Start simple**: Begin with basic rules like requiring at least one review.
+* **Scale gradually**: Add more specific requirements as your team grows and workflows mature.
+* **Use bypass carefully**: Only grant bypass permissions to trusted administrators.
+* **Review regularly**: Adjust rules based on your team’s actual workflow patterns.
+* **Test first**: When possible, test rule changes in a test space before applying to production spaces.
+
+## Available rule types
+
+### Review requirements
+
+<table><thead><tr><th width="279.703125">Rule</th><th>Description</th></tr></thead><tbody><tr><td><strong>Require at least one review</strong></td><td>Ensures that at least one team member has reviewed the change request before it can be merged.</td></tr><tr><td><strong>Require all reviews approved</strong></td><td>All <strong>completed</strong> (not requested) reviews must be approvals. If any reviewer has requested changes or rejected the change request, the merge will be blocked.</td></tr><tr><td><strong>Require review by specified actors</strong></td><td>Requires approval from all specified users. You can select specific team members who must review and approve the change request before it can be merged.</td></tr><tr><td><strong>Require review by one of specified actors</strong></td><td>Requires approval from at least one of the specified users. This is useful when you have multiple qualified reviewers but only need one approval from the group.</td></tr><tr><td><strong>Require Docs Agent review (coming soon)</strong></td><td>Requires a review from the GitBook AI agent. This ensures automated quality checks are performed on content changes before merging.</td></tr></tbody></table>
+
+### Change request requirements
+
+<table><thead><tr><th width="279.703125">Rule</th><th>Description</th></tr></thead><tbody><tr><td><strong>Require up to date change request</strong></td><td>The change request must be current with the primary content branch. If the primary content has been updated since the change request was created, you’ll need to rebase or update it before merging.</td></tr><tr><td><strong>Require subject</strong></td><td>The change request must have a descriptive subject/title. Empty subjects will block the merge.</td></tr><tr><td><strong>Require description</strong></td><td>The change request must include a description explaining what changes were made and why.</td></tr></tbody></table>
+
+### Advanced options
+
+<table><thead><tr><th width="279.703125">Rule</th><th>Description</th></tr></thead><tbody><tr><td><strong>Allow specified actors to bypass requirements</strong></td><td>You can designate specific users who are allowed to bypass all other merge rule requirements. This is useful for administrators or emergency situations where rules need to be overridden.</td></tr><tr><td><strong>Custom expression</strong></td><td>You can create advanced merge rules using custom JavaScript expressions. This allows you to define complex logic based on the evaluation context, with access to properties of the change request, reviews, and the user attempting to merge.</td></tr></tbody></table>
+
+#### Custom Expressions
+
+When you create a custom expression, it will be evaluated each time someone tries to merge a change request. If the expression returns `true`, the merge is allowed. If it returns `false`, the merge is blocked.
+
+{% hint style="info" %}
+Custom expressions support standard JavaScript syntax (ES2022) and have a maximum length of 1024 characters.
+{% endhint %}
+
+**Available context variables:**
+
+* `changeRequest.subject` - The subject/title of the change request
+* `changeRequest.description` - The description of the change request
+* `changeRequest.outdated` - Whether the change request is outdated (boolean)
+* `changeRequest.createdBy.id` - ID of the user who created the change request
+* `reviews` - Array of review objects, each containing:
+  * `reviews[].status` - Review status (`"approved"` or `"changes_requested"`)
+  * `reviews[].reviewer.id` - ID of the reviewer
+* `actor.id` - ID of the user attempting to merge
+
+**Common expression examples:**
+
+{% code title="Require multiple approved reviews" %}
+
+```javascript
+reviews.filter(r => r.status === "approved").length >= 2
+```
+
+{% endcode %}
+
+{% code title="Require approval from specific user" %}
+
+```javascript
+reviews.some(r => r.reviewer.id === "harry" && r.status === "approved")
+```
+
+{% endcode %}
+
+{% code title="Require description for urgent changes" %}
+
+```javascript
+!changeRequest.subject.includes("[URGENT]") || !!changeRequest.description
+```
+
+{% endcode %}
+
+{% code title="Allow self-merge only for minor changes" %}
+
+```javascript
+changeRequest.createdBy.id === actor.id ? changeRequest.subject.startsWith("[minor]") : true
+```
+
+{% endcode %}
+
+
+# Comments
+
+Ask questions to your team or receive feedback on the content you create
+
+Comments allow you to provide feedback around specific pieces of content — without switching out of context from GitBook.
+
+### Add a comment <a href="#comment-within-your-content" id="comment-within-your-content"></a>
+
+You can open the comments panel by clicking on the **Comments** button <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FEkQbWdMgE720SJxq4lyv%2Fcomment%20-%20dark.svg?alt=media&#x26;token=733ae21c-3791-4f12-8ffe-839c8b9e0f1a" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FwY5tC7wFYA0IYlJqzZjb%2Fcomment.svg?alt=media&#x26;token=29d1a323-d832-4791-bb2c-ae13e24ee04c" alt="The Comments button icon in GitBook"></picture> in the [space header](https://gitbook.com/docs/documentation/resources/gitbook-ui#space-header).
+
+Adding a comment here will attach a comment to the entire page. You can also comment on a specific block by hovering over a block and clicking the content icon that appears on the right.
+
+You can tag teammates by typing the `@` symbol followed by their name.
+
+{% hint style="info" %}
+Guests will be able to make comments but they will not be able to see or mention other users in the organization.
+{% endhint %}
+
+### Comment threads
+
+You can reply to any comment to start a conversation with your teammates, turning it into a discussion thread.
+
+You can also leave an emoji reaction on any comment by clicking the emoji button on the message or thread you’d like to react to.
+
+### Resolving comments
+
+If you’re done working through a comment thread or idea, you can **resolve** a comment at any time. Resolving a comment will hide it in the interface, but still keep it accessible in the ’Resolved’ tab of the space’s comments section.
+
+
+# Notifications
+
+Receive notifications about new content, updates to your spaces or changes in visibility
+
+Notifications provide updates about the activity on GitBook that comes from spaces owned by you or an organization that you are a member of.
+
+You can receive notifications inside the GitBook app and/or via email. We support [several types of notifications](#notification-types) which you can disable or enable in your notification settings.
+
+### App notifications
+
+You can find app notifications at the top of the [sidebar](https://gitbook.com/docs/documentation/resources/gitbook-ui#the-sidebar).
+
+Within the notifications pop-up, you’ll see two icons in the top-right corner. You can either mark all of your notifications as read, or head to your notification settings to update your preferences.
+
+### Email notifications
+
+Email notifications are enabled by default, and can be disabled in your notifications settings. When enabled, GitBook will send one email per notification type. This will be sent to the email address associated with your personal GitBook account.
+
+These email will appear to be sent from `no-reply@gitbook.io via sendgrid.net`
+
+#### Possible issues
+
+As with all email delivery, there’s a chance that you might not receive the email. Possible reasons include but are not limited to:
+
+* Our email ends up in your spam folder or caught by another protection mechanism.
+* Emails sent from GitBook to your email address have bounced many times, and therefore further sending has been automatically blocked by our mail service.
+* There could be a temporary delivery problem that will resolve on its own.
+* A wrong expectation about the notifications you should be receiving.
+* A wrong expectation about the email address to which we would be sending the notification.
+
+If you think you might be running into any of these issues, here are some things you can try:
+
+* Check your spam or other protection mechanism and make sure our email address (`no-reply@gitbook.io`) is not blocked on your end.
+* Wait it out if you are aware of any temporary issue with your mail provider.
+* Check [your settings](https://app.gitbook.com/account/notification) to ensure that you have enabled email notifications for the type of notification you are expecting.
+* Make sure you are checking the correct email address. You can see the email address of your personal account in [your account settings](https://app.gitbook.com/account).
+* [Contact support](https://gitbook.com/docs/help-center/support/how-do-i-contact-support) if all other things fail. If you do, please make sure to include as much information as possible. For example, this might include the email address you expect to receive the notification to, the type of the notification (you can see that in the [settings](https://app.gitbook.com/account/notification)), and the exact details of what you feel should have triggered that notification for you. Please include links to anything relevant, as well.
+
+### Notification settings
+
+For both app and email notifications, [you can configure](https://app.gitbook.com/account/notification) which notifications you would like to receive.
+
+#### Notification types
+
+We currently offer notifications for the following areas:
+
+* Spaces and collections
+* Change requests
+* Mentions in comments
+* Organizations
+
+
+# PDF export
+
+Export a PDF copy of your GitBook content
+
+### Allow readers to export a PDF version of your published content
+
+{% hint style="info" %}
+This feature is available on [Premium and Ultimate site plans](https://www.gitbook.com/pricing).
+{% endhint %}
+
+To enable or disable PDF export for visitors to your [published docs site](https://github.com/GitbookIO/public-docs/blob/main/collaboration/broken-reference/README.md), open the docs site’s dashboard, open the **Customization** tab, and navigate to **Configure → Page actions**. From there, you can toggle **Export as PDF** on or off.
+
+This setting determines whether or not **readers of your published content can download it in PDF format**. This feature is only available for **Premium and Ultimate sites**.
+
+### Export your own internal content as PDF
+
+However you decide to configure your published docs sites, all logged-in members of an organization on a Pro or Enterprise can export a page — or an entire space — from your internal knowledge base as a PDF file.
+
+{% hint style="warning" %}
+Note that links across spaces are not currently supported when exporting internal content to PDF.
+{% endhint %}
+
+#### Export an individual page
+
+1. Open the page you want to export, then open the page’s [Actions menu](https://gitbook.com/docs/documentation/resources/gitbook-ui#the-actions-menu)&#x20;
+
+   <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt="The Actions menu icon in GitBook"></picture>
+
+   &#x20;next to the page title.
+2. Select **Export to PDF > Current page**.
+3. Wait for the page to load, then click the **Print or save as PDF** button in the upper right to open your browsers Print menu.
+4. From here, you can save the page as a PDF or open it in your PDF viewer using the typical process for your browser.
+
+#### Export an entire space
+
+1. Open the[ Actions menu](https://gitbook.com/docs/documentation/creating-content/content-structure)&#x20;
+
+   <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt="The Actions menu icon in GitBook"></picture>
+
+   &#x20;next to the page title and choose **Export as PDF > All pages**. Alternatively, open the space’s **Actions menu**&#x20;
+
+   <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fpn5vEw7bYFrMPpdyvpSu%2Factions-horizontal%20-%20dark.svg?alt=media&#x26;token=ec39eefe-a391-4fe2-828a-082b79f2847d" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FPnnI41SqLSaKBNwT98fW%2Factions-horizontal.svg?alt=media&#x26;token=99754200-a354-4ffe-931e-aa6322ea7395" alt="The Actions menu icon in GitBook"></picture>
+
+   &#x20;in the [space header](https://gitbook.com/docs/documentation/resources/gitbook-ui#space-header) and choose **Export as PDF** in the drop-down menu.\
+   \
+   \&#xNAN;*Note: This action is not available within a change request.*
+2. Wait for the page to load, then click the **Print or save as PDF** button in the upper right to open your browsers Print menu.
+3. From here, you can save the page as a PDF or open it in your PDF viewer using the typical process for your browser.
+
+
+# Live edits
+
+Edit pages in real-time with other collaborators
+
+With live edits enabled, members in your org can edit a space without creating [a change request](https://gitbook.com/docs/documentation/collaboration/change-requests). When editing content, you can see the avatars of anyone currently viewing the space in the top-right corner.
+
+GitBook supports live collaboration, meaning you’ll be able to work on the same document with multiple members at the same time.
+
+{% hint style="info" %}
+**Live edits are locked** by default in any newly created space. To edit the content, you will either need to [create a change request](https://gitbook.com/docs/documentation/collaboration/change-requests), or toggle live edits on.
+{% endhint %}
+
+### Toggling live edit mode
+
+You can toggle live edit mode in a space by selecting **Lock live edits** or **Unlock live edits** from the [space header’s](https://gitbook.com/docs/documentation/resources/gitbook-ui#space-header) **Actions menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fpn5vEw7bYFrMPpdyvpSu%2Factions-horizontal%20-%20dark.svg?alt=media&#x26;token=ec39eefe-a391-4fe2-828a-082b79f2847d" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FPnnI41SqLSaKBNwT98fW%2Factions-horizontal.svg?alt=media&#x26;token=99754200-a354-4ffe-931e-aa6322ea7395" alt="The Actions menu icon in GitBook"></picture>.
+
+When a space is in **Live edits** mode, the space header will show the **Editor** tab. When it is in **Locked live edits** mode, the space header will show a **Read-only** tab. When the Read-only tab appears in the space header, you will need to open a change request to edit the content of the page, or unlock live edits.
+
+### When is live editing *not* available?
+
+You cannot unlock live editing if:
+
+1. a space is published with the **In collection**, **Public**, or **Unlisted** visibility option.
+2. a space has [GitHub or GitLab Sync](https://gitbook.com/docs/documentation/getting-started/git-sync) enabled.
+
+{% hint style="info" %}
+Only [administrators and creators](https://gitbook.com/docs/documentation/account-management/member-management/roles) can lock or unlock live edits.
+{% endhint %}
+
+
 # OpenAPI
 
 Add an OpenAPI spec to a page and let your users test endpoints right on the page with interactive blocks.
@@ -2900,18 +4425,24 @@ Powered by [Scalar](https://scalar.com/), you won't need to leave the docs in or
 
 <summary>Why isn’t my spec loading?</summary>
 
-If you can’t fetch the spec, your API is likely blocking cross-origin requests (CORS).  Please check your API’s response headers for: [`Access-Control-Allow-Origin: *`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Access-Control-Allow-Origin) . If your API only allows specific origins, ensure that `*.gitbook.io` is permitted.
+{% hint style="info" %}
+**Note:** This information only applies to **specs added by URL**.
+{% endhint %}
+
+If you added you specification via URL, your API must [allow cross-origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Access-Control-Allow-Origin) GET requests from your docs site. In your API’s CORS settings, allow the exact origin where your docs are hosted (e.g., `https://your-site.gitbook.io` or `https://docs.example.com`). \
+\
+If your endpoint is public and doesn’t use credentials, you can also return: `Access-Control-Allow-Origin: *`\ <br>
 
 </details>
 
 
 # Add an OpenAPI specification
 
-Learn how to add and update an OpenAPI specification in GitBook application or from CLI.
+Learn how to add and update an OpenAPI specification in GitBook application or from CLI
 
 If you have an OpenAPI spec, you can add it to your organization by uploading the file directly, linking to a hosted URL, or using the [GitBook CLI](https://gitbook.com/docs/developers/integrations/reference).
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FtQWk9u72H5YJX3Z0zpKG%2F02_04_25_add_api_spec.svg?alt=media&#x26;token=be82c2fa-7bed-419e-8172-44c5f72d09d5" alt="A GitBook screenshot showing the modal for generating API docs automatically"><figcaption></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F6pg8vIZeVQESjhTw5yI2%2Fgenerate-api-docs%402x.png?alt=media&#x26;token=6b72cd8d-7943-465a-88d5-04f8f0f13245" alt="A GitBook screenshot showing the modal for generating API docs automatically"><figcaption></figcaption></figure>
 
 ### How to add a specification
 
@@ -2923,7 +4454,7 @@ If you have an OpenAPI spec, you can add it to your organization by uploading th
    * Enter a URL to a hosted spec
    * Use the CLI to publish the spec
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FXHNiXo25u5A0fWdIRplr%2F03_04_25_api_spec_modal.svg?alt=media&#x26;token=ffc212b7-3be9-4df2-8da8-f6f2928f4c53" alt="A GitBook screenshot showing the Add an OpenAPI specification modal"><figcaption><p>Add an OpenAPI specification modal.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FpTRwMrbHyYlKZy07CsAp%2Fapi_spec_modal%402x.png?alt=media&#x26;token=77edbf02-aed7-43cc-a1e3-9a61fc001271" alt="A GitBook screenshot showing the Add an OpenAPI specification modal"><figcaption><p>Add an OpenAPI specification modal.</p></figcaption></figure>
 
 ### Update your specification
 
@@ -2955,7 +4486,7 @@ Read our [support-for-ci-cd-with-api-blocks](https://gitbook.com/docs/documentat
 
 # Insert API reference in your docs
 
-Insert complete API reference from your OpenAPI spec or pick individual operation or schemas.
+Insert complete API reference from your OpenAPI spec or pick individual operation or schemas
 
 GitBook allows you to automatically generate pages related to the endpoints you have in your OpenAPI spec. These pages will contain OpenAPI operation blocks, allowing you and your visitors to test your endpoints and explore them further based on the information found in the spec.
 
@@ -2967,12 +4498,11 @@ Endpoints added from your spec will continue to be updated anytime your spec is 
 
 After you’ve [added your OpenAPI spec](https://gitbook.com/docs/documentation/api-references/openapi/add-an-openapi-specification), you can generate endpoint pages by inserting an **OpenAPI Reference** in the table of contents of a Space.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FY5JiiQnDpjYVY50vq8xn%2F03_04_25_create_api_pages.svg?alt=media&#x26;token=e79084f5-f3e7-4dad-8e7f-c4b90767199e" alt="A GitBook screenshot showing how to insert API references into the table of contents of a space"><figcaption><p>Insert API References in the table of contents of a Space.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FYy8gCqxfaO4xjv2eqiL5%2Fcreate_api_pages%402x.png?alt=media&#x26;token=62b8386b-9fea-4233-b961-b6a1e582411e" alt="A GitBook screenshot showing how to insert API references into the table of contents of a space"><figcaption><p>Insert API References in the table of contents of a Space.</p></figcaption></figure>
 
 {% stepper %}
 {% step %}
-
-#### Generate pages from OpenAPI
+**Generate pages from OpenAPI**
 
 In the space you’d like to generate endpoint pages, click the **Add new\...** button from the bottom of your space’s [table of contents](https://gitbook.com/docs/documentation/resources/gitbook-ui#table-of-contents).
 
@@ -2980,15 +4510,13 @@ From here, click **OpenAPI Reference**.
 {% endstep %}
 
 {% step %}
-
-#### Choose your OpenAPI spec
+**Choose your OpenAPI spec**
 
 Choose your previously uploaded OpenAPI spec, and click **Insert** to automatically add your endpoints to your space. You can optionally choose to add a models page referencing all your OpenAPI schemas.
 {% endstep %}
 
 {% step %}
-
-#### Manage your API operations
+**Manage your API operations**
 
 GitBook will automatically generate pages based on your OpenAPI spec and the tags set inside it’s definition.
 
@@ -3002,22 +4530,19 @@ Alternatively, you can add OpenAPI operations or schemas from your spec individu
 
 {% stepper %}
 {% step %}
-
-#### Add a new OpenAPI block
+**Add a new OpenAPI block**
 
 Open the block selector by pressing **/**, and search for OpenAPI.
 {% endstep %}
 
 {% step %}
-
-#### Choose your OpenAPI spec
+**Choose your OpenAPI spec**
 
 Choose your previously uploaded OpenAPI spec, and click **Continue** to choose your the endpoints you’d like to use.
 {% endstep %}
 
 {% step %}
-
-#### Choose the operations or schemas you’d like to insert
+**Choose the operations or schemas you’d like to insert**
 
 Pick the operations and the schemas you want to insert in your docs and click **Insert**.
 {% endstep %}
@@ -3029,7 +4554,7 @@ Pick the operations and the schemas you want to insert in your docs and click **
 
 # Structuring your API reference
 
-Learn how to structure your API reference across multiple pages with icons and descriptions.
+Learn how to structure your API reference across multiple pages with icons and descriptions
 
 GitBook does more than just render your OpenAPI spec. It lets you customize your API reference for better clarity, navigation, and branding.
 
@@ -3180,7 +4705,7 @@ webhooks:
 
 # Adding custom code samples
 
-Learn how to configure custom code samples to display alongside your API endpoints.
+Learn how to configure custom code samples to display alongside your API endpoints
 
 GitBook can automatically generate generic code examples for each API operation. If you’d prefer to showcase custom or more detailed snippets, add `x-codeSamples` to your OpenAPI definition. This way, you control how your endpoints are demonstrated and can offer language or SDK-specific examples.
 
@@ -3222,7 +4747,7 @@ paths:
 
 # Managing API operations
 
-Learn how to mark an OpenAPI API operation as experimental, deprecated or hide it from your documentation.
+Learn how to mark an OpenAPI API operation as experimental, deprecated or hide it from your documentation
 
 It’s common to have operations that are not fully stable yet or that need to be phased out. GitBook supports several OpenAPI extensions to help you manage these scenarios.
 
@@ -3281,6 +4806,33 @@ Add the `x-hideSample: true` attribute to a response object to exclude it from t
 </strong><strong>        200:
 </strong><strong>          x-hideSample: true
 </strong></code></pre>
+
+### Customizing the authorization prefix and token placeholder
+
+You can customize the authorization prefix (for example, `Bearer`, `Token`, or a custom string) and the token placeholder shown when using security schemes in GitBook.
+
+In your OpenAPI spec, under `components.securitySchemes`, define your scheme like this:
+
+<pre class="language-yaml" data-title="openapi.yaml"><code class="lang-yaml">components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+<strong>      x-gitbook-prefix: Token
+</strong><strong>      x-gitbook-token-placeholder: YOUR_CUSTOM_TOKEN
+</strong></code></pre>
+
+These extensions:
+
+* `x-gitbook-prefix` defines the prefix added before the token.
+  * example: `Authorization: <x-gitbook-prefix> YOUR_API_TOKEN`
+* `x-gitbook-token-placeholder` sets the default token value.
+  * example: `Authorization: Bearer <x-gitbook-token-placeholder>`
+
+{% hint style="warning" %}
+`x-gitbook-prefix` is not supported for `http` security schemes because these schemes must follow standard IANA authentication definitions. [Learn more](https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml)
+{% endhint %}
 
 
 # Configuring the “Test it” button
@@ -3464,7 +5016,7 @@ servers:
 
 # Describing enums
 
-Learn how to add descriptions to enums.
+Learn how to add descriptions to enums
 
 When an API operation includes an enum, you can add `x-enumDescriptions` to provide more context about each option. GitBook will display the enum values and their descriptions in a table next to the operation.
 
@@ -3492,7 +5044,7 @@ components:
 
 # Integrating with CI/CD
 
-Learn how to automate the update of your OpenAPI specification in GitBook.
+Learn how to automate the update of your OpenAPI specification in GitBook
 
 GitBook can work with any CI/CD pipeline you already have for managing your OpenAPI specification. By using the GitBook CLI, you can automate updates to your API reference.
 
@@ -3579,7 +5131,7 @@ jobs:
 
 # Extensions reference
 
-The complete reference of OpenAPI extensions supported by GitBook.
+The complete reference of OpenAPI extensions supported by GitBook
 
 You can enhance your OpenAPI specification using extensions—custom fields that start with the `x-` prefix. These extensions let you add extra information and tailor your API documentation to suit different needs.
 
@@ -3652,21 +5204,25 @@ tags:
 
 <details>
 
-<summary><code>x-parent | parent</code></summary>
+<summary><code>parent | x-parent</code>  </summary>
 
 Add hierarchy to tags to organize your pages in GitBook.&#x20;
+
+{% hint style="warning" %}
+`parent` is the official property name in OpenAPI 3.2+. If using OpenAPI versions prior to 3.2 (3.0.x, 3.1.x),  use `x-parent` instead.
+{% endhint %}
 
 {% code title="openapi.yaml" %}
 
 ```yaml
-openapi: '3.0'
+openapi: '3.2'
 info: ...
 tags:
   - name: organization
   - name: admin
-    x-parent: organization
+    parent: organization
   - name: user
-    x-parent: organization
+    parent: organization    
 ```
 
 {% endcode %}
@@ -3886,7 +5442,7 @@ Once you’ve finished writing, editing, or importing your content, you can publ
 
 The content on your site comes from [spaces](https://gitbook.com/docs/documentation/creating-content/content-structure/space) in your organization. When you create a new docs site, you can create a new space, or link an existing one.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FMHFgq8cFWJlX99QPv02O%2F18_07_25_publishing-documentation-publish-docs.svg?alt=media&#x26;token=832dc431-6ae1-4f14-ae63-0b3b9d98ac99" alt="A GitBook screenshot showing the docs sites homepage"><figcaption><p>GitBook's docs sites homepage.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FaTAoahHyizxbZzQ10kq9%2Fpublishing-documentation-publish-docs%402x.png?alt=media&#x26;token=7217e51d-8c38-45d5-95a2-f49cee149c5f" alt="A GitBook screenshot showing the docs sites homepage"><figcaption><p>GitBook's docs sites homepage.</p></figcaption></figure>
 
 ### Create a docs site
 
@@ -3902,7 +5458,7 @@ By default, your site will be published publicly. You can change your site’s v
 
 There are three primary options to choose from when publishing your site:
 
-<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Public</strong></td><td>Publish your docs publicly to the web.</td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fh07YAPTJAFEf2OChagKd%2FPublic.svg?alt=media&#x26;token=0ef630f6-f263-4acb-a3f9-e8c99d88ee96">card_publish_public.svg</a></td><td><a href="publish-a-docs-site/public-publishing">public-publishing</a></td></tr><tr><td><strong>Privately with share links</strong></td><td>Publish your docs with private share links.</td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FJiRinaF7WqJ8IBGdU8oE%2FPrivately.svg?alt=media&#x26;token=99376132-1d66-4125-8a18-1ab35e90e385">card_publish_privately.svg</a></td><td><a href="publish-a-docs-site/share-links">share-links</a></td></tr><tr><td><strong>Authenticated Access</strong></td><td>Protect your published docs behind an OAuth sign in.</td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FiSv6u28TbniLRbdoAqJg%2FVisitor%20Authentication.svg?alt=media&#x26;token=5a829cf4-9505-4320-9e80-ca24e5f89c4f">card_publish_visitor_authentication.svg</a></td><td><a href="authenticated-access">authenticated-access</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-type="image">Cover image (dark)</th><th data-hidden data-type="image">Cover image (dark)</th><th data-hidden data-card-cover-dark data-type="image">Cover image (dark)</th></tr></thead><tbody><tr><td><strong>Public</strong></td><td>Publish your docs publicly to the web.</td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FoilRMA6SHJfDUlmxzFSc%2FPublic.png?alt=media&#x26;token=79c5b78b-d5e1-4f13-9d87-ff449dbc16ab">25_12_12_public.png</a></td><td><a href="publish-a-docs-site/public-publishing">public-publishing</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fjd69hIdmcyS7RbVe6tW8%2FPublic.png?alt=media&#x26;token=1a65de91-1101-4cb3-baaa-4f75c9049e72">25_12_12_public_1.png</a></td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fjd69hIdmcyS7RbVe6tW8%2FPublic.png?alt=media&#x26;token=1a65de91-1101-4cb3-baaa-4f75c9049e72">25_12_12_public_1.png</a></td></tr><tr><td><strong>Privately with share links</strong></td><td>Publish your docs with private share links.</td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Ffc0Pst5E74fYtiKz3Evt%2FShare%20links.png?alt=media&#x26;token=699b168a-ca2d-4752-9b28-7be032147e61">25_12_12_share_links_1.png</a></td><td><a href="publish-a-docs-site/share-links">share-links</a></td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FpSDF3ZEkFoC35xvrNtLo%2FShare%20links.png?alt=media&#x26;token=8decbb40-19a4-49ee-b629-7da186745dbd">25_12_12_share_links.png</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FCS9dGgMUG2sLrcAjaRvw%2FShare%20links.png?alt=media&#x26;token=0cd92dec-e895-4f4a-93b0-6241f525b734">25_01_06_share_links@2x.png</a></td></tr><tr><td><strong>Authenticated Access</strong></td><td>Protect your published docs behind an OAuth sign in.</td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FvnW7XiU7dys1vIf7Hi6l%2FAuth%20access.png?alt=media&#x26;token=5edc9fab-f51f-4acb-a34c-ae16922f7e2f">25_12_10_auth_access_1.png</a></td><td><a href="authenticated-access">authenticated-access</a></td><td></td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fos97IAePIUcHI9MX5p3x%2FAuth%20access.png?alt=media&#x26;token=45ee74db-e185-4faf-9b8a-7c86e542b0c5">25_12_10_auth_access.png</a></td></tr></tbody></table>
 
 ### Delete or unpublish a docs site
 
@@ -3921,7 +5477,7 @@ Users with **Reviewer**, **Editor**, **Commenter**, or **Reader** permissions on
 
 # Public publishing
 
-Publish your docs publicly to the web so that everyone can access them.
+Publish your docs publicly to the web so that everyone can access them
 
 If you created your docs for a public audience, you can publish it on the web. Spaces that you publish on the web can be indexed by search engines and will be available to anyone. If you don’t want your content to be indexed by search engines, you can disable that too — read more about that [below](#publish-as-public).
 
@@ -3972,7 +5528,7 @@ This feature is available on [Premium and Ultimate site plans](https://www.gitbo
 
 # Private publishing with share links
 
-Add greater control over who can view your published GitBook documentation.
+Add greater control over who can view your published GitBook documentation
 
 {% hint style="info" %}
 This feature is available on [Premium and Ultimate site plans](https://www.gitbook.com/pricing).
@@ -4015,7 +5571,7 @@ The content on your site comes from [spaces](https://gitbook.com/docs/documentat
 
 Linked spaces can serve as one of two different content types, which determine how GitBook treats them in relation to each other and shows them to visitors.
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-cover-dark data-type="image">Cover image (dark)</th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden><select></select></th></tr></thead><tbody><tr><td><strong>Content variants</strong></td><td>Publish multiple versions of the same content — ideal for localization, versioning, and more.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FuWpHiQp4LvA5wpM5Ovo8%2FContent%20variants.svg?alt=media&#x26;token=4b02400b-8994-4319-952d-db5e97661f02">Content variants.svg</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fn4cyj32rFyxmzb8md9MZ%2FContent%20variants.svg?alt=media&#x26;token=d4ebcb4d-c0e3-449a-aef7-cdbed54a15d0">card_variants.svg</a></td><td><a href="site-structure/variants">variants</a></td><td></td></tr><tr><td><strong>Site sections</strong></td><td>Split your site into distinct parts — ideal for multiple products or parts of your organization.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FVdIazRjl18hxN5SzpiqR%2FSite%20sections.svg?alt=media&#x26;token=2e1d4bae-4a54-4daa-96f8-b248203c6d6b">Site sections.svg</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FDdZMM5CW3YBw82UlXxxE%2FSite%20sections.svg?alt=media&#x26;token=26294748-75c0-4d32-83ad-1707c3fcf973">card_site_sections.svg</a></td><td><a href="site-structure/site-sections">site-sections</a></td><td></td></tr></tbody></table>
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-type="image">Cover image (dark)</th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden><select></select></th><th data-hidden data-card-cover-dark data-type="image">Cover image (dark)</th></tr></thead><tbody><tr><td><strong>Site sections</strong></td><td>Split your site into distinct parts — ideal for multiple products or parts of your organization.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FVdIazRjl18hxN5SzpiqR%2FSite%20sections.svg?alt=media&#x26;token=2e1d4bae-4a54-4daa-96f8-b248203c6d6b">25_08_29_site_sections.svg</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FGzx9x7fzQtLb7ewwm3T2%2FSite%20sections.png?alt=media&#x26;token=fdc90c1d-6dee-48d9-93d6-a72bb8438cc2">25_12_10_site_sections_1.png</a></td><td><a href="site-structure/site-sections">site-sections</a></td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FB96TQMaauF0yst75RsML%2FSite%20sections.png?alt=media&#x26;token=64f5801b-c97b-4df0-8a6e-97da7d04880d">25_12_10_site_sections.png</a></td></tr><tr><td><strong>Content variants</strong></td><td>Publish multiple versions of the same content — ideal for localization, versioning, and more.</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FuWpHiQp4LvA5wpM5Ovo8%2FContent%20variants.svg?alt=media&#x26;token=4b02400b-8994-4319-952d-db5e97661f02">25_08_29_content_variants.svg</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FDmZINE2qLnmlv30oMxUg%2FContent%20variants.png?alt=media&#x26;token=69243fd5-6aa3-44c9-a5f1-e444ad2bac86">25_12_10_content_variants_1.png</a></td><td><a href="site-structure/variants">variants</a></td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FUbgdVlll8ekhPqtj3V3z%2FContent%20variants.png?alt=media&#x26;token=f696c0df-94de-45ba-8ee7-f72c0c8f8fdf">25_12_10_content_variants.png</a></td></tr></tbody></table>
 
 ## Managing your site structure
 
@@ -4025,7 +5581,7 @@ From your docs site’s dashboard, open the **Settings** tab in the site header,
 
 Your site starts out with a single section with your site's name and a single variant with the space you linked during your site's set-up.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FvWn6UFQHs1t3HBe2kpRR%2F14_03_25_site_structure.png?alt=media&#x26;token=575843bc-0c40-413f-8813-d9db05fa7b74" alt="A GitBook screenshot showing a docs site&#x27;s structure"><figcaption><p>The structure of a published docs site.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FD4oCABc0YRJAFzaaVBpn%2Fstructure%402x.png?alt=media&#x26;token=4c4dd0df-8e8e-40e7-8a57-e9791d337c8f" alt="A GitBook screenshot showing a docs site&#x27;s structure"><figcaption><p>The structure of a published docs site.</p></figcaption></figure>
 
 ### Linking a space to your docs site
 
@@ -4037,7 +5593,7 @@ When you add a space — as a variant or a section — a name and slug will be g
 
 ### Changing sections or variants
 
-<div data-full-width="false"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FmRlOLG1q8O0XUjrggwaB%2F04_02_25_edit_variant.svg?alt=media&#x26;token=69815267-2507-43c2-ad24-1b41844f02e5" alt="A GitBook screenshot showing how to edit a variant"><figcaption><p>Update a site section or variant.</p></figcaption></figure></div>
+<div data-full-width="false"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FoXvDCD0U1CNnP8pJHL1L%2Fedit_variant%402x.png?alt=media&#x26;token=fcea8367-71dd-441c-9f10-37171ab7f450" alt="A GitBook screenshot showing how to edit a variant"><figcaption><p>Update a site section or variant.</p></figcaption></figure></div>
 
 You can change the name and slug of each of sections and variants by clicking the **Edit** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F8pD8Y2BfBxCEZoi99Pnk%2Fedit%20-%20dark.svg?alt=media&#x26;token=89496678-7347-4845-8c98-ee8dd9bedaec" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FA3OfGjPkE5GnOQvN36jN%2Fedit.svg?alt=media&#x26;token=6f70239f-d889-4e64-9ec6-4801df47a48d" alt="The Edit icon in GitBook"></picture> button in the table row of the item you’d like to edit. This will open a modal. Edit the field(s) you’d like to change, then click the **Save** button to save.
 
@@ -4076,13 +5632,87 @@ Removing a space from your site will remove it from the published site, but **wi
 {% endhint %}
 
 
+# Site sections
+
+Add multiple products to your site as site sections and create a content hub with tabs to access all your content
+
+{% hint style="info" %}
+This feature is available on the [Ultimate site plan](https://www.gitbook.com/pricing).
+{% endhint %}
+
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FAfqBhbHbvEllbHg6s9I0%2Fsite_sections%402x.png?alt=media&#x26;token=40811255-7158-49fb-9938-7ebb878b5296" alt="A GitBook screenshot showing site sections on a docs site"><figcaption><p>Example of a GitBook site with site sections</p></figcaption></figure>
+
+With site sections, you can centralize all your documentation and create a seamless experience for your users.
+
+Site sections are perfect for organizing your documentation — whether you’re managing separate products, or catering to both end-users and developers with content tailored to each.
+
+You can also [group site sections together](#create-a-site-section-group). Doing so will create a drop-down menu in your navigation bar — ideal for adding hierarchy to your site sections.
+
+{% hint style="info" %}
+
+#### Sections or variants?
+
+Each site section is a space in GitBook. You can create site sections from any space you like, but we recommend you use sections as semantically different parts of your docs.
+
+If you want to add variations of the same content — such as localizations or historical versions of the same product — consider using [content variants](https://gitbook.com/docs/documentation/publishing-documentation/site-structure/variants) instead.
+{% endhint %}
+
+### Adding a section to your docs site
+
+From your docs site’s dashboard, open the **Settings** tab in the site header, then click **Structure**. Here you can see all the content of your site.
+
+To add a site section, click the **New section** button underneath the table and choose a space to link as a section. The new section is then added to the table and will be available to visitors as a tab at the top of your site.
+
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FF2eMGMOFBOtjgd2ELMXE%2Fstructure%20tree%402x.png?alt=media&#x26;token=83fe9dd0-bbfd-42a7-954c-52d895eae78a" alt="A GitBook screenshot showing site section structure"><figcaption><p>Add structure to your docs with site sections.</p></figcaption></figure>
+
+### Create a site section group
+
+You can group site sections together under a single heading. Site section groups will appear as a drop-down in your site’s nav. Site sections in a group can also include an optional description, which appears below the section title in the drop-down menu.
+
+To create a group, click the arrow next to the **New section** button and choose **New section group**. Give your new group a name, then click **Add section** in the modal to add sections to your group. You can add existing sections of your site to the new group, or select another space you want to add using the menu.
+
+### Editing a section
+
+You can change the name, icon and slug of each of your sections by tapping the <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F8pD8Y2BfBxCEZoi99Pnk%2Fedit%20-%20dark.svg?alt=media&#x26;token=89496678-7347-4845-8c98-ee8dd9bedaec" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FA3OfGjPkE5GnOQvN36jN%2Fedit.svg?alt=media&#x26;token=6f70239f-d889-4e64-9ec6-4801df47a48d" alt="The Edit icon in GitBook"></picture> **Edit** button in the table row of the section you’d like to edit. This will open a modal. Edit the field(s) you’d like to change, then click the **Save** button. You can also delete the variant by clicking the **Delete variant** button in the lower left.
+
+{% hint style="info" %}
+Changing a section’s slug will change its canonical URL. GitBook will create an automatic redirect from the old URL to the new one. You can also [manually create redirects](https://gitbook.com/docs/documentation/publishing-documentation/site-redirects).
+{% endhint %}
+
+Site sections within a group can also optionally display a description, which will appear in the drop-down menu of your site’s nav bar when the section group is hovered. See the image at the top of this page to see an example of how this can look in your published documentation.
+
+### Reordering sections
+
+Your site displays sections in the order that they appear in your Site structure table. Sections can be reordered by grabbing the **Drag handle** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FjYRg42UtM4u1pHmJl4Ln%2Fdrag%20-%20dark.svg?alt=media&#x26;token=4c219b2b-37d2-449e-9130-19b6ba3d38d2" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FaS1QvPIBVYwhpFTGcPBN%2Foptions-menu.svg?alt=media&#x26;token=3ee40bbf-f4fb-41fa-aa30-306b559cbe88" alt="The Options menu icon in GitBook"></picture> and moving it up or down. All the spaces within that section will be moved with it. The changed order will be reflected on your site immediately.
+
+You can also use the keyboard to select and move content: select a section with the space bar, then use the arrow keys to move it up or down. Hit the space bar again to confirm the new position.
+
+### Setting a default section
+
+If you have multiple sections in your site, one section will be marked as the default. This section is shown when visitors arrive on your site, and is served from your site’s root URL. Other sections each have a slug that is appended to the root URL.
+
+To set a section as default, click on the **Actions menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt="The Actions menu icon in GitBook"></picture> in the section's table row and then click **Set as default**.
+
+### Remove a section
+
+To remove a section from a site, click the **Settings** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F6uYUpJto7WTkJf9BUPHv%2Fsettings%20-%20dark.svg?alt=media&#x26;token=bf52415f-e999-43a2-9a1a-c85176a014cd" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FwkBqgOPry9HAcW4cxJk0%2Fsettings.svg?alt=media&#x26;token=67bdbb00-ebf3-4a2d-9df8-0c822406f71c" alt="The Settings icon in GitBook"></picture> button from your docs site dashboard, then click **Structure** to find the content you want to remove. Click the **Edit** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F8pD8Y2BfBxCEZoi99Pnk%2Fedit%20-%20dark.svg?alt=media&#x26;token=89496678-7347-4845-8c98-ee8dd9bedaec" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FA3OfGjPkE5GnOQvN36jN%2Fedit.svg?alt=media&#x26;token=6f70239f-d889-4e64-9ec6-4801df47a48d" alt="The Edit icon in GitBook"></picture> button next to the section you want to remove, then click the **Delete** button in the lower left of the modal. This will remove the section, along with all the variants within it, from the published site. It will not delete the spaces itself, or the content within them.
+
+To remove a section from a site, open the **Settings** tab from your docs site dashboard, then click **Structure** to find the content you want to remove.
+
+Open the **Actions menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt="The Actions menu icon in GitBook"></picture> for the space you want to remove and choose **Remove**.
+
+{% hint style="success" %}
+Removing a section from your site will remove it — and all variants within it — from the published site, but **will not delete any of the spaces or the content within them**.
+{% endhint %}
+
+
 # Content variants
 
 Publish documentation for multiple product versions or languages in a single site
 
 You can publish multiple versions of the same documentation as part of a single docs site. These variants will be available to the end users via the space switcher in the top-left corner of the published site.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FZPZ8XR0WeDMpbBeiXD0b%2F18_07_25_publishing-documentation-site-structure.svg?alt=media&#x26;token=b192833c-6234-47c1-b35c-46fc3bd387f3" alt="A GitBook screenshot showing a docs site&#x27;s structure"><figcaption></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F2cQxJ5sTMVUkXOcuDEU8%2FAdding%20a%20section%402x.png?alt=media&#x26;token=2bd96c5f-0945-4d86-a835-a94102e627d9" alt="A GitBook screenshot showing a docs site&#x27;s structure"><figcaption></figcaption></figure>
 
 ### Add multiple languages or versions
 
@@ -4139,80 +5769,6 @@ Removing a variant from your site will remove it from the published site, but **
 {% endhint %}
 
 
-# Site sections
-
-Add multiple products to your site as site sections and create a content hub with tabs to access all your content
-
-{% hint style="info" %}
-This feature is available on the [Ultimate site plan](https://www.gitbook.com/pricing).
-{% endhint %}
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FFduOhhJv1OXwe96Dhu7L%2F14_03_25_site_sections_published.jpg?alt=media&#x26;token=a4e6f422-0e0f-4e3c-a676-c71fd8e4da7a" alt="A GitBook screenshot showing site sections on a docs site"><figcaption><p>Example of a GitBook site with site sections</p></figcaption></figure>
-
-With site sections, you can centralize all your documentation and create a seamless experience for your users.
-
-Site sections are perfect for organizing your documentation — whether you’re managing separate products, or catering to both end-users and developers with content tailored to each.
-
-You can also [group site sections together](#create-a-site-section-group). Doing so will create a drop-down menu in your navigation bar — ideal for adding hierarchy to your site sections.
-
-{% hint style="info" %}
-
-### Sections or variants?
-
-Each site section is a space in GitBook. You can create site sections from any space you like, but we recommend you use sections as semantically different parts of your docs.
-
-If you want to add variations of the same content — such as localizations or historical versions of the same product — consider using [content variants](https://gitbook.com/docs/documentation/publishing-documentation/site-structure/variants) instead.
-{% endhint %}
-
-### Adding a section to your docs site
-
-From your docs site’s dashboard, open the **Settings** tab in the site header, then click **Structure**. Here you can see all the content of your site.
-
-To add a site section, click the **New section** button underneath the table and choose a space to link as a section. The new section is then added to the table and will be available to visitors as a tab at the top of your site.
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FcEXoEuhxzIEBUgcwJU95%2F18_07_25_publishing-documentation-site-structure_sections.svg?alt=media&#x26;token=ccbd03e8-7ffd-466d-8cb4-b09b72f6c2f8" alt="A GitBook screenshot showing site section structure"><figcaption><p>Add structure to your docs with site sections.</p></figcaption></figure>
-
-### Create a site section group
-
-You can group site sections together under a single heading. Site section groups will appear as a drop-down in your site’s nav. Site sections in a group can also include an optional description, which appears below the section title in the drop-down menu.
-
-To create a group, click the arrow next to the **New section** button and choose **New section group**. Give your new group a name, then click **Add section** in the modal to add sections to your group. You can add existing sections of your site to the new group, or select another space you want to add using the menu.
-
-### Editing a section
-
-You can change the name, icon and slug of each of your sections by tapping the <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F8pD8Y2BfBxCEZoi99Pnk%2Fedit%20-%20dark.svg?alt=media&#x26;token=89496678-7347-4845-8c98-ee8dd9bedaec" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FA3OfGjPkE5GnOQvN36jN%2Fedit.svg?alt=media&#x26;token=6f70239f-d889-4e64-9ec6-4801df47a48d" alt="The Edit icon in GitBook"></picture> **Edit** button in the table row of the section you’d like to edit. This will open a modal. Edit the field(s) you’d like to change, then click the **Save** button. You can also delete the variant by clicking the **Delete variant** button in the lower left.
-
-{% hint style="info" %}
-Changing a section’s slug will change its canonical URL. GitBook will create an automatic redirect from the old URL to the new one. You can also [manually create redirects](https://gitbook.com/docs/documentation/publishing-documentation/site-redirects).
-{% endhint %}
-
-Site sections within a group can also optionally display a description, which will appear in the drop-down menu of your site’s nav bar when the section group is hovered. See the image at the top of this page to see an example of how this can look in your published documentation.
-
-### Reordering sections
-
-Your site displays sections in the order that they appear in your Site structure table. Sections can be reordered by grabbing the **Drag handle** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FjYRg42UtM4u1pHmJl4Ln%2Fdrag%20-%20dark.svg?alt=media&#x26;token=4c219b2b-37d2-449e-9130-19b6ba3d38d2" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FaS1QvPIBVYwhpFTGcPBN%2Foptions-menu.svg?alt=media&#x26;token=3ee40bbf-f4fb-41fa-aa30-306b559cbe88" alt="The Options menu icon in GitBook"></picture> and moving it up or down. All the spaces within that section will be moved with it. The changed order will be reflected on your site immediately.
-
-You can also use the keyboard to select and move content: select a section with the space bar, then use the arrow keys to move it up or down. Hit the space bar again to confirm the new position.
-
-### Setting a default section
-
-If you have multiple sections in your site, one section will be marked as the default. This section is shown when visitors arrive on your site, and is served from your site’s root URL. Other sections each have a slug that is appended to the root URL.
-
-To set a section as default, click on the **Actions menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt="The Actions menu icon in GitBook"></picture> in the section's table row and then click **Set as default**.
-
-### Remove a section
-
-To remove a section from a site, click the **Settings** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F6uYUpJto7WTkJf9BUPHv%2Fsettings%20-%20dark.svg?alt=media&#x26;token=bf52415f-e999-43a2-9a1a-c85176a014cd" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FwkBqgOPry9HAcW4cxJk0%2Fsettings.svg?alt=media&#x26;token=67bdbb00-ebf3-4a2d-9df8-0c822406f71c" alt="The Settings icon in GitBook"></picture> button from your docs site dashboard, then click **Structure** to find the content you want to remove. Click the **Edit** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F8pD8Y2BfBxCEZoi99Pnk%2Fedit%20-%20dark.svg?alt=media&#x26;token=89496678-7347-4845-8c98-ee8dd9bedaec" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FA3OfGjPkE5GnOQvN36jN%2Fedit.svg?alt=media&#x26;token=6f70239f-d889-4e64-9ec6-4801df47a48d" alt="The Edit icon in GitBook"></picture> button next to the section you want to remove, then click the **Delete** button in the lower left of the modal. This will remove the section, along with all the variants within it, from the published site. It will not delete the spaces itself, or the content within them.
-
-To remove a section from a site, open the **Settings** tab from your docs site dashboard, then click **Structure** to find the content you want to remove.
-
-Open the **Actions menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt="The Actions menu icon in GitBook"></picture> for the space you want to remove and choose **Remove**.
-
-{% hint style="success" %}
-Removing a section from your site will remove it — and all variants within it — from the published site, but **will not delete any of the spaces or the content within them**.
-{% endhint %}
-
-
 # Site customization
 
 Create branded documentation with a custom logo, fonts, colors, links and more
@@ -4236,7 +5792,7 @@ Select the whole site or a specific site section using the drop-down menu at the
 * **Site-wide settings** – These automatically apply to all linked spaces.
 * **Section or variant specific settings** – If you’re using site sections or variants, you’re can set specific customization that will override the default site-wise setting.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F6cjcacmfApy0U5LyQsEu%2F19_02_2025_site_customization.svg?alt=media&#x26;token=0b8eeaaa-1ed1-4796-bc05-9f5be385ff44" alt="A GitBook screenshot showing the customization panel"><figcaption><p>The customization panel in GitBook.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FlHCK9XPr7eIuB3XJup6N%2Fcustomization%402x.png?alt=media&#x26;token=b43a01ce-829d-4d0d-9cfa-40f0d45c162b" alt="A GitBook screenshot showing the customization panel"><figcaption><p>The customization panel in GitBook.</p></figcaption></figure>
 
 {% hint style="warning" %}
 Changes you make to specific site sections will override the site-wide customization settings, even if you change the site-wide setting again later.
@@ -4251,10 +5807,12 @@ Every GitBook user can take advantage of basic customization options on their do
 Advanced customization options include:
 
 * **Custom logo** – Add a logo that replaces the emoji and title at the top of your docs site.
-* **Icons** - Change the weight and style of page icons in your docs site.
-* **Custom font** – Change the font of your docs to one of the built-in options.
+* **Icon style** - Change the weight and style of page icons in your docs site.
+* **Custom fonts** – Change the primary font and monospace of your docs site.
 * **Footer** – Add a custom logo, copyright text and navigation to a footer at the bottom of your documentation.
 * **Bold and Gradient themes** – Change the background color for your header, or add a gradient background to your entire site with these new themes.
+* **Semantic colors** – Change the background color of hint blocks and the styling of code blocks within your published content.
+* **Code themes** – Change the appearance of code and API blocks in your published documentation using either preset themes or adaptive themes that use your site's colors.
 
 ### What cannot be customized?
 
@@ -4267,17 +5825,17 @@ The options above provide lots of ways for you to customize your space, but ther
 
 # Icons, colors, and themes
 
-Customize icons, colors, themes and more.
+Customize icons, colors, themes and more granular settings across your published documentation
 
-### Title, icon and logo
+## Title, icon and logo
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FtvdryJLuBTbMvaFhUmUC%2F21_04_25_customization_title.svg?alt=media&#x26;token=5f8a64bb-1198-44cc-8987-4da4864ce474" alt="A GitBook screenshot showing title, icon and logo customization"><figcaption></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FBYTJub4AuG2iJDCS31vp%2Ftitle_icon_logo%402x.png?alt=media&#x26;token=2e3fd867-a480-40da-919b-d5c1e6225317" alt="A GitBook screenshot showing title, icon and logo customization"><figcaption></figcaption></figure>
 
-**Title**
+### Title
 
 You can set any title you choose for your space. Note: this setting will only affect the title that displays *in the published documentation*. If you want to edit the title in the GitBook app, close the customize menu and edit it at the top of the space.
 
-**Icon**
+### Icon
 
 You can set an emoji, or upload an icon of your own. The icon you set in the **Customization** menu will be used as the favicon for your docs site.
 
@@ -4285,120 +5843,161 @@ You can set an emoji, or upload an icon of your own. The icon you set in the **C
 This setting will only affect the icon that displays *in the published documentation*. If you want to edit the icon used within the GitBook app, you can do so when editing content in the space itself.
 {% endhint %}
 
-**Custom logo** <mark style="background-color:purple;">**(Premium & Ultimate)**</mark>
+### Custom logo <mark style="background-color:purple;">(Premium & Ultimate)</mark>
 
 You can replace *both* the published space’s title and icon with a custom logo so that your documentation better reflects your own branding — and you can upload two versions: one for light mode, and one for dark mode.
 
 {% hint style="info" %}
-
-#### What’s the difference between the icon and logo options?
+**What’s the difference between the icon and logo options?**
 
 The icon setting lets you upload a small, 132×132 px image, which will appear *alongside* your space title and function as your site’s favicon. The custom logo option lets you upload a larger image (we recommend at least 600 px wide), which will completely replace any icon and title you’ve set.
 {% endhint %}
 
-### Themes
+## Themes
 
 Themes let you customize the color scheme of your published content for both light and dark mode. There are four themes to choose from. The colors of your site will be directly impacted by the **primary color** and **tint** that you choose. These two selections affect various parts of the interface and can completely change the look and feel of your site.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fg7f0edLNdKBJhMsTZUUG%2F21_04_25_customization_themes.svg?alt=media&#x26;token=e8530742-09ff-4779-8408-f2225a1db5ba" alt="A GitBook screenshot showing theme options"><figcaption></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FtFNAAIZeXh1JKtnWepYZ%2Ftheme%402x.png?alt=media&#x26;token=d8d191df-5ed8-44b1-886a-bd9344add841" alt="A GitBook screenshot showing theme options"><figcaption></figcaption></figure>
 
-#### Clean
+### Clean
 
-A modern theme featuring translucency and minimally styled elements. Your primary color (or tint) affects links and other highlighted interface elements.\
-\&#xNAN;*Clean is available for all sites and is the default theme.*
+A modern theme featuring translucency and minimally styled elements. Your primary color (or tint) affects links and other highlighted interface elements.
 
-#### Muted
+*Clean is available for all sites and is the default theme.*
 
-A sophisticated theme with decreased contrast between elements. The site background is more pronounced and blends in with the foreground, and some elements feature an inverted look — all based on your primary color (or tint).\
-\&#xNAN;*Muted is available for all sites.*
+### Muted
 
-#### Bold <mark style="background-color:purple;">**(Premium & Ultimate)**</mark>
+A sophisticated theme with decreased contrast between elements. The site background is more pronounced and blends in with the foreground, and some elements feature an inverted look — all based on your primary color (or tint).
 
-A high‑impact theme with prominent colors and strong contrasts. Your primary color (or tint) will be used for the header of the site, and other highlighted elements like icons are colored along with it.\
-\&#xNAN;*Bold is only available for Premium or Ultimate sites.*
+*Muted is available for all sites.*
 
-#### Gradient <mark style="background-color:purple;">**(Premium & Ultimate)**</mark>
+### Bold <mark style="background-color:purple;">(Premium & Ultimate)</mark>
 
-A trendsetting theme featuring a gradient background and splashes of color. The gradient and highlighted elements will be colored by your primary color (or tint).\
-\&#xNAN;*Gradient is only available for Premium or Ultimate sites.*
+A high‑impact theme with prominent colors and strong contrasts. Your primary color (or tint) will be used for the header of the site, and other highlighted elements like icons are colored along with it.
 
-### Colors
+*Bold is only available for Premium or Ultimate sites.*
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FrtqfRxxCzos038sdCKeu%2F21_04_25_customization_colors.svg?alt=media&#x26;token=ca0b738e-1c26-43cb-bebf-bfa66f96003c" alt="A GitBook screenshot showing color customization"><figcaption></figcaption></figure>
+### Gradient <mark style="background-color:purple;">(Premium & Ultimate)</mark>
 
-#### Primary color
+A trendsetting theme featuring a gradient background and splashes of color. The gradient and highlighted elements will be colored by your primary color (or tint).
 
-Your site’s primary color will affect the styling of highlighted interface items and navigational elements like links, the current page and section, breadcrumbs, and primary header buttons. GitBook automatically adjusts colors on individual elements for readability if the contrast with the background is too low or when a visitor’s system requests higher contrast.
+*Gradient is only available for Premium or Ultimate sites.*
 
-#### Tint color
+## Colors
 
-Your site’s tint color will subtly change the color of all text and icons across your entire site — including header links, icon color, and UI elements like the **Ask or search** bar. The tint color will *not* affect navigational elements like links and buttons, which always use the primary color. In the **Tint color** section you’ll see suggested colors based on your primary color selection; you can select one to preview it, choose your primary color as your tint, or pick a completely custom color with the color picker.
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FkfBttkCRhIqoNFZGXkX4%2Fcolors%402x.png?alt=media&#x26;token=2ddbf1b0-7893-4fc2-a849-f92656b3151f" alt="A GitBook screenshot showing color customization"><figcaption></figcaption></figure>
 
-#### Semantic colors
+### Primary color
 
-Semantic colors are applied to hint blocks within your published content. You can change the background color of each hint style; these changes will only be reflected on the published site you’re customizing. Hint blocks in the GitBook editor will always remain in their assigned colors.
+Your site’s primary color will affect the styling of highlighted interface items and navigational elements like links, the current page and section, breadcrumbs, and primary header buttons.
 
-### Modes
+GitBook automatically adjusts colors on individual elements for readability if the contrast with the background is too low or when a visitor’s system requests higher contrast.
 
-**Show mode toggle**
+### Tint color
+
+Your site’s tint color will subtly change the color of all text and icons across your entire site — including header links, icon color, and UI elements like the **Ask or search** bar.
+
+The tint color will *not* affect navigational elements like links and buttons, which always use the primary color.
+
+In the **Tint color** section you’ll see suggested colors based on your primary color selection. You can select one to preview it, choose your primary color as your tint, or pick a completely custom color with the color picker.
+
+### Semantic colors <mark style="background-color:purple;">(Premium & Ultimate)</mark>
+
+Semantic colors are applied to hint blocks within your published content, and can also be applied to code blocks.
+
+You can change the background color of each hint style; these changes will be reflected on the published site you’re customizing.
+
+{% hint style="info" %}
+**Note:** Hint blocks in the GitBook editor will always remain in their standard colors and will not match your site’s semantic colors.
+{% endhint %}
+
+### Code theme <mark style="background-color:purple;">(Premium & Ultimate)</mark>
+
+Code themes change the appearance of code and API blocks in your published documentation.
+
+The themes list includes:
+
+* **Adaptive themes** – These standard light and dark mode themes use your site’s color palette to match your brand.
+* [**Shiki**](https://shiki.style/themes) **themes** – Choose from more than 60 theme presets in both light and dark modes.
+
+You can choose individual code themes for your docs’ light and dark mode. And you can use any light or dark color scheme in any mode — e.g. a dark code theme when your docs are in light mode.
+
+By default, your chosen theme will apply to both code blocks and OpenAPI blocks. If you want to set a different theme for OpenAPI blocks, click the **Customize per block type** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F6uYUpJto7WTkJf9BUPHv%2Fsettings%20-%20dark.svg?alt=media&#x26;token=bf52415f-e999-43a2-9a1a-c85176a014cd" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FwkBqgOPry9HAcW4cxJk0%2Fsettings.svg?alt=media&#x26;token=67bdbb00-ebf3-4a2d-9df8-0c822406f71c" alt=""></picture> button.
+
+## Modes
+
+### Show mode toggle
 
 Enable this if you want visitors to manually toggle between light and dark mode. Readers can find the toggle at the bottom of any published page, on both desktop and mobile.
 
-**Default mode**
+### Default mode
 
 Choose whether visitors see your content in light or dark mode by default. If **Show mode toggle** is enabled, they can switch modes; if disabled, they’ll only see the mode you choose here.
 
 *Note: to change the theme within the GitBook app, go to your Settings menu at the bottom of the sidebar.*
 
-### Site styles
+## Site styles
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fxsw0jToBjzuSfqusKuCv%2F21_04_25_customization_site_styles.svg?alt=media&#x26;token=2b541191-55d2-4790-874a-28d21a12ffa1" alt="A GitBook screenshot showing site style settings"><figcaption></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FB8hReiw1xjsXedx7kM2J%2FSite%20styles%402x.png?alt=media&#x26;token=99b1f18b-d1f3-42e4-b11f-4b7bee1c4ceb" alt="A GitBook screenshot showing site style settings"><figcaption></figcaption></figure>
 
-**Font family** <mark style="background-color:purple;">**(Premium & Ultimate)**</mark>
+### Font family <mark style="background-color:purple;">(Premium & Ultimate)</mark>
 
-Choose a font family for your published content from a curated list of popular options.
+Choose a standard and monospace font family for your published content from a curated list of popular options.
 
-**Custom fonts** <mark style="background-color:purple;">**(Ultimate)**</mark>
+{% hint style="info" %}
+Monospace fonts are used in code blocks and OpenAPI blocks on your docs site.
+{% endhint %}
 
-Upload your own fonts to align your published content with your brand’s style guide. To upload a font, click **Add custom font** and follow the instructions. You must upload a font file for both regular and bold weights.
+### Custom fonts <mark style="background-color:purple;">(Ultimate only)</mark>
+
+Upload your own standard and monospace fonts to align your published content with your brand’s style guide. To upload a font, click **Add custom font** and follow the instructions. You must upload a font file for both regular and bold weights.
 
 GitBook currently supports `.woff` and `.woff2`. For other formats, please contact <support@gitbook.com>.
 
-**Icons** <mark style="background-color:purple;">**(Premium & Ultimate)**</mark>
+### Icons <mark style="background-color:purple;">(Premium & Ultimate)</mark>
 
 When using page icons, set the weight and style of the displayed icons here.
 
-**Corner style**
+### Corner style
 
 Choose either rounded or straight corners to match your brand’s style preferences.
 
-**Link style**
+### Depth style
+
+Choose between two depth styles, which apply to cards, buttons and any other element with a shadow:
+
+* **Subtle:** Some shadows and elevation.
+* **Flat:** No shadows or elevation.
+
+### Link style
 
 Choose between two link designs:
 
 * **Default:** highlights the entire link in your primary or tint color.
 * **Accent:** adds a colored underline to the link, leaving the text color unchanged.
 
-### Sidebar styles
+## Sidebar styles
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F5JREt7PiS0R87mOj5Osa%2F21_04_25_customization_sidebar.svg?alt=media&#x26;token=c60321ec-22f6-4699-81e6-428e70d91598" alt="A GitBook screenshot showing sidebar style options"><figcaption></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FjAXB2lbCWFVFhHTDmY3s%2Fsidebar_styles%402x.png?alt=media&#x26;token=c922b2e7-04de-4140-97e0-802375f9c92f" alt="A GitBook screenshot showing sidebar style options"><figcaption><p>This menu gives you a visual idea of how the different styles will change the look of your sidebar.</p></figcaption></figure>
 
-**Background style**
+### Background style
 
 Choose the background style for the sidebar container. The color is derived from your selected theme.
 
-**List style**
+There are two options — **Default** and **Filled** — each with a visual representation of how they’ll change your table of contents.
 
-Choose the style for the sidebar list and its selected items.
+### List style
+
+Choose the style for the sidebar list and its selected items. There are three options — **Default**, **Pill** and **Line** — each with a visual representation showing how they’ll change your table of contents.
 
 
 # Layout and structure
 
-Customize the layout and structure of your published documentation.
+Customize the layout and structure of your published documentation
 
 ### Header
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fgybcd1rVhFfDNcqhGdJR%2F21_04_25_customization_header.svg?alt=media&#x26;token=dfc98274-3428-4945-96be-7a41f67272da" alt="A GitBook screenshot showing header customization settings"><figcaption></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FNWPGJajaYBgFbMaw9BtH%2FHeader%402x.png?alt=media&#x26;token=50b141a9-ce44-4223-9ecf-930d003f8dd5" alt="A GitBook screenshot showing header customization settings"><figcaption></figcaption></figure>
 
 **Search bar**
 
@@ -4422,7 +6021,7 @@ Control the display of the “previous” and “next” buttons that appear at 
 
 ### Footer (Premium & Ultimate)
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F4HFvBK50hoHi5h11CFy6%2F21_04_25_customization_footer.svg?alt=media&#x26;token=2ff4591c-6fd9-433b-bac1-aea97836f4b9" alt="A GitBook screenshot showing footer customization settings"><figcaption></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FRJ8f0ZFhDWvoEmiBB0os%2FFooter%402x.png?alt=media&#x26;token=8f7fd01b-e3ec-4c39-8cba-5691aecf623a" alt="A GitBook screenshot showing footer customization settings"><figcaption></figcaption></figure>
 
 **Logo**
 
@@ -4437,9 +6036,24 @@ Add copyright information to your footer.
 Add links in your footer, organized into multiple sections. Similar to the header, add a title and URL for each link, and include a section title for each group of links.
 
 
+# Sharing and social
+
+Customize the social account metadata and sharing options for your site
+
+### Social accounts
+
+You can add social accounts to your site’s metadata and footer from the **Sharing** tab in the customization menu.
+
+Click **+ Add account** and choose an account type from the list of included options — such as X, GitHub, LinkedIn, Discord and Bluesky. Adding a social account in this menu also adds it to your site’s metadata.&#x20;
+
+For each social account, you can toggle its visibility in your docs site’s footer on or off, without affecting the metadata.
+
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F8dGUWBpVMVNID1jc29gg%2Fsocial_accounts%402x.png?alt=media&#x26;token=24be67aa-c71b-4f15-8625-180c397a6d3c" alt="Social accounts settings in Site customization"><figcaption></figcaption></figure>
+
+
 # Extra configuration
 
-Configure extra options for your published documentation.
+Configure extra options for your published documentation
 
 In the **Configuration** tab you can change other settings associated with your site. For example, you can set up interface localization, link behavior, and page actions that help your users add your content to AI tools like ChatGPT.
 
@@ -4449,7 +6063,7 @@ On this page you’ll learn what each of these options does and how to enable or
 
 You can select from a list of languages to localize the user interface of your published content. This applies translations to the non-custom areas of the interface.
 
-This setting will *not* auto-translate your actual content, but it can help match the interface to the language you’re writing in. To learn more about translating your content, head to the [Translations](https://gitbook.com/docs/documentation/creating-content/translations) section.
+This setting will *not* auto-translate your actual content, but it can help match the interface to the language you’re writing in. To learn more about translating your content, head to the [Translations](https://gitbook.com/docs/documentation/gitbook-agent/translations) section.
 
 Is there a language we don’t yet offer that you’d like to see included? [Let us know](https://github.com/GitbookIO/gitbook/issues), or [contribute your own translation](https://www.gitbook.com/solutions/open-source)!
 
@@ -4465,11 +6079,11 @@ The **External links** section in the **Configure** tab controls the behavior wh
 
 ### Page actions
 
-Page actions adds a page-level dropdown to every page of your docs, allowing users to perform quick actions on a page's content — ideal for using your docs content as context within an AI prompt.&#x20;
+Page actions adds a page-level dropdown to every page of your docs, allowing users to perform quick actions on a page's content — ideal for using your docs content as context within an AI prompt.
 
 You can disable this option from the **Configure** tab if you do not wish to show page options in your published docs.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fd0Pk6IuD7GYRWTk1NpT3%2F01_08_2025_page_options.png?alt=media&#x26;token=4dc670ce-dd85-41d4-9ca0-c9ce5f29697d" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F4mfIo4JtAIRCQNm1fDB6%2FConfigure%402x.png?alt=media&#x26;token=f13e7348-f732-4450-bb72-bc65667feddc" alt=""><figcaption></figcaption></figure>
 
 #### Open in AI providers
 
@@ -4603,13 +6217,13 @@ Set a custom subdirectory for your docs sites
 This feature is available on the [Ultimate site plan](https://www.gitbook.com/pricing).
 {% endhint %}
 
-With a custom subdirectory, you can make your docs site accessible at `example.com/docs`. This is different from a [custom domain](https://gitbook.com/docs/documentation/publishing-documentation/custom-domain) which lets you make your docs site accessible at `docs.example.com`.&#x20;
+With a custom subdirectory, you can make your docs site accessible at `example.com/docs`. This is different from a [custom domain](https://gitbook.com/docs/documentation/publishing-documentation/custom-domain) which lets you make your docs site accessible at `docs.example.com`.
 
 One reason to do this is so that your docs URL is formatted in a consistent way with your other site URLs. Using a subdirectory may also be beneficial for SEO.
 
 To configure a subdirectory, you'll need to set things up in your website's backend, then finalize the process in your GitBook site settings.
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-type="image">Cover image (dark)</th><th data-hidden data-card-cover-dark data-type="image">Cover image (dark)</th></tr></thead><tbody><tr><td>Configuring a subdirectory with Cloudflare</td><td><a href="setting-a-custom-subdirectory/configuring-a-subdirectory-with-cloudflare">configuring-a-subdirectory-with-cloudflare</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FM0E8QF3gdMCdwHMl107b%2FCloudflare.svg?alt=media&#x26;token=6a04f0d2-cccb-4668-93d3-98c9ec3890a6">Cloudflare.svg</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F3zWvv4mOHebRyQB34CHx%2FCloudflare.svg?alt=media&#x26;token=f4109747-5c4d-4039-8b33-168569f41d9d">Cloudflare.svg</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F3zWvv4mOHebRyQB34CHx%2FCloudflare.svg?alt=media&#x26;token=f4109747-5c4d-4039-8b33-168569f41d9d">Cloudflare.svg</a></td></tr><tr><td>Configuring a subdirectory with Vercel</td><td><a href="setting-a-custom-subdirectory/configuring-a-subdirectory-with-vercel">configuring-a-subdirectory-with-vercel</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FItwcojUHfxkmx4RofP6F%2FVercel.svg?alt=media&#x26;token=9cd8279b-d1f9-41f0-97e7-4f9a4eaa4a14">Vercel.svg</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F4Dra7NQYfLaHJdhBTful%2FVercel.svg?alt=media&#x26;token=e53c02a9-86fe-4ddc-8585-5cd0cef82ed4">Vercel.svg</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F4Dra7NQYfLaHJdhBTful%2FVercel.svg?alt=media&#x26;token=e53c02a9-86fe-4ddc-8585-5cd0cef82ed4">Vercel.svg</a></td></tr><tr><td>Configuring a subdirectory with AWS</td><td><a href="setting-a-custom-subdirectory/configuring-a-subdirectory-with-aws">configuring-a-subdirectory-with-aws</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Frq7lwbUlUQK8AOujefPf%2FAWS%20-%20light.png?alt=media&#x26;token=914054bd-a225-41f3-8f11-ff421d86fdd6">AWS - light.png</a></td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FjY2LAVXbmW6RUmaTwXxF%2FAWS%20-%20dark.png?alt=media&#x26;token=ae589916-116d-4a29-8d59-985552addda5">AWS - dark.png</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-type="image">Cover image (dark)</th><th data-hidden data-type="image">Cover image (dark)</th><th data-hidden data-card-cover-dark data-type="image">Cover image (dark)</th></tr></thead><tbody><tr><td>Configuring a subdirectory with Cloudflare</td><td><a href="setting-a-custom-subdirectory/configuring-a-subdirectory-with-cloudflare">configuring-a-subdirectory-with-cloudflare</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FGYtERTwSsUtqY1crFSnk%2FCloudflare.png?alt=media&#x26;token=c4aadcb8-d16e-47d2-ad33-56d137ddbd99">25_12_10_cloudflare_1.png</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F3zWvv4mOHebRyQB34CHx%2FCloudflare.svg?alt=media&#x26;token=f4109747-5c4d-4039-8b33-168569f41d9d">25_08_29_cloudflare.svg</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F3zWvv4mOHebRyQB34CHx%2FCloudflare.svg?alt=media&#x26;token=f4109747-5c4d-4039-8b33-168569f41d9d">25_08_29_cloudflare.svg</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FRQMKddJVVyo47jdleeyw%2FCloudflare.png?alt=media&#x26;token=0f117eb3-2270-48c5-b622-e971374b7a5a">25_12_10_cloudflare.png</a></td></tr><tr><td>Configuring a subdirectory with Vercel</td><td><a href="setting-a-custom-subdirectory/configuring-a-subdirectory-with-vercel">configuring-a-subdirectory-with-vercel</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F6vihVGnoaGJIK47oiPIt%2FVercel.png?alt=media&#x26;token=52cba085-83bf-4aca-9d5f-9a61141e6ec7">25_12_10_vercel_1.png</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F4Dra7NQYfLaHJdhBTful%2FVercel.svg?alt=media&#x26;token=e53c02a9-86fe-4ddc-8585-5cd0cef82ed4">25_08_29_vercel.svg</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F4Dra7NQYfLaHJdhBTful%2FVercel.svg?alt=media&#x26;token=e53c02a9-86fe-4ddc-8585-5cd0cef82ed4">25_08_29_vercel.svg</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FuO2stsXgYy2m3MOndCtz%2FVercel.png?alt=media&#x26;token=6719d901-d0d4-4eeb-9569-faa0607cefd6">25_12_10_vercel.png</a></td></tr><tr><td>Configuring a subdirectory with AWS</td><td><a href="setting-a-custom-subdirectory/configuring-a-subdirectory-with-aws">configuring-a-subdirectory-with-aws</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FYf6n0ahpdjIA7b9Jba2N%2FAWS.png?alt=media&#x26;token=52c282fd-5f63-47ec-8a88-6f0cca3680fe">25_12_10_aws_1.png</a></td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FjY2LAVXbmW6RUmaTwXxF%2FAWS%20-%20dark.png?alt=media&#x26;token=ae589916-116d-4a29-8d59-985552addda5">25_10_23_aws.png</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FAtNKcIuzR5zE8wUVHR0O%2FAWS.png?alt=media&#x26;token=36b45c4e-0c33-47aa-b73c-5f59fd0649ff">25_12_10_aws.png</a></td></tr></tbody></table>
 
 
 # Configuring a subdirectory with Cloudflare
@@ -5020,7 +6634,7 @@ Customize and edit settings across your published site
 Certain customization features are only available on [Premium and Ultimate site plans](https://www.gitbook.com/pricing).
 {% endhint %}
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F0iwL31qTpzsWqGlbhlM1%2F18_07_25_publishing-documentation-site-settings.svg?alt=media&#x26;token=d79833ca-192f-4fea-838a-a27067b71c76" alt="A GitBook screenshot showing site settings"><figcaption><p>Update the settings for your published documentation.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F4boLIj6LJFZ1HCGx58DW%2F25_01_06_site_settings%402x.png?alt=media&#x26;token=1b7f4162-0170-49e1-afb1-62a578b874c3" alt="A GitBook screenshot showing site settings"><figcaption><p>Update the settings for your published documentation.</p></figcaption></figure>
 
 ### General
 
@@ -5110,7 +6724,7 @@ Publish your content on a subdirectory (e.g. `yourcompany.com/docs`). See [#gitb
 
 <details>
 
-<summary>PDF export <mark style="background-color:purple;">Premium &#x26; Ultimate</mark> </summary>
+<summary>PDF export <mark style="background-color:purple;">Premium &#x26; Ultimate</mark></summary>
 
 Let your visitors to export your GitBook as PDF. See [pdf-export](https://gitbook.com/docs/documentation/collaboration/pdf-export "mention") for more info.
 
@@ -5118,7 +6732,7 @@ Let your visitors to export your GitBook as PDF. See [pdf-export](https://gitboo
 
 <details>
 
-<summary>Page ratings <mark style="background-color:purple;">Premium &#x26; Ultimate</mark> </summary>
+<summary>Page ratings <mark style="background-color:purple;">Premium &#x26; Ultimate</mark></summary>
 
 Choose whether or not visitors to your published content can leave a rating on each page to let you know how they feel about it. They’ll be able to choose a sad, neutral, or happy face.
 
@@ -5130,7 +6744,7 @@ You can review the results of these ratings by opening the [**Insights**](https:
 
 <details>
 
-<summary>Choose the AI experience <mark style="background-color:purple;">Premium &#x26; Ultimate</mark> </summary>
+<summary>Choose the AI experience <mark style="background-color:purple;">Premium &#x26; Ultimate</mark></summary>
 
 Let your site visitors ask GitBook anything with AI search or the GitBook assistant. See [ai-search](https://gitbook.com/docs/documentation/publishing-documentation/ai-search "mention") for more info.
 
@@ -5138,7 +6752,7 @@ Let your site visitors ask GitBook anything with AI search or the GitBook assist
 
 <details>
 
-<summary>Extend it with MCP connectors <mark style="background-color:purple;">Ultimate</mark> </summary>
+<summary>Extend it with MCP connectors <mark style="background-color:purple;">Ultimate</mark></summary>
 
 Configure MCP servers that the AI assistant can use when answering user questions inside your docs. See [#how-do-i-use-gitbook-ai](https://gitbook.com/docs/documentation/ai-search#how-do-i-use-gitbook-ai "mention") for more info.
 
@@ -5171,7 +6785,7 @@ You can see a top-level overview of your insights on the **Overview** tab of you
 
 Click the **Insights** tab in the site header to find more detailed insights for your site.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fp2ytevUaxD0kXKzLq5qC%2F18_07_25_publishing-documentation-advanced-site-insights.svg?alt=media&#x26;token=27059941-01fd-489e-9129-73e1b5c8fdf2" alt="A GitBook screenshot showing the site insights dashboard"><figcaption><p>The site insights dashboard.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FTtY3VZjH8K9e3nweJUM5%2F26_01_06_insights%402x.png?alt=media&#x26;token=1b721e07-e689-4ee5-bc67-05387609d6ae" alt="A GitBook screenshot showing the site insights dashboard"><figcaption><p>The site insights dashboard.</p></figcaption></figure>
 
 ### Filters & groups
 
@@ -5181,7 +6795,7 @@ By combining filters and groups, you can drill down in to precise analytics data
 
 ### View by custom time periods
 
-You can use the drop-down menu on the right of the Insights screen to change the time period between the last 24 hours, 7 days, 30 days or 3 months.&#x20;
+You can use the drop-down menu on the right of the Insights screen to change the time period between the last 24 hours, 7 days, 30 days or 3 months.
 
 To view the data over a custom time period, click the **Select custom date range** button <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FkEJhwhMBwOZZGpDTRFku%2Fcalendar-dark.svg?alt=media&#x26;token=68119227-578c-4b03-920c-71c74fa2842b" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F1g9fFv9V674Y7JGjHOGw%2Fcalendar.svg?alt=media&#x26;token=d21fbc59-ac2a-46ab-82cc-2085e7d295df" alt=""></picture> to the right of the menu and choose your custom time period using the calendar that appears.
 
@@ -5245,13 +6859,13 @@ It tracks interactions such as endpoint views, parameter searches, and request e
 
 # Site redirects
 
-Set up site redirects to route traffic to content anywhere on your site.
+Set up site redirects to route traffic to content anywhere on your site
 
 {% hint style="info" %}
 This feature is available on [Premium and Ultimate site plans](https://www.gitbook.com/pricing).
 {% endhint %}
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FG4YuVeNPaMd8T5hsuudf%2FRedirects.svg?alt=media&#x26;token=b0de74e3-8610-442e-ba12-2a980b15425c" alt="A GitBook screenshot showing site redirects"><figcaption><p>Site redirects are useful when migrating documentation or restructuring content to avoid broken links, which can impact SEO.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FSOD2dR0Bb3RtX6Avb7vg%2F26_01_06_redirects%402x.png?alt=media&#x26;token=7e2bf0a2-947c-46d7-96ff-a4e6b54e60b2" alt="A GitBook screenshot showing site redirects"><figcaption><p>Site redirects are useful when migrating documentation or restructuring content to avoid broken links, which can impact SEO.</p></figcaption></figure>
 
 Redirects are commonly used when you are migrating your documentation from one provider to another — like when you just moved docs to GitBook. Broken links can impact SEO so we recommend setting up redirects where needed.
 
@@ -5294,7 +6908,7 @@ This feature is available on the [Ultimate site plan](https://www.gitbook.com/pr
 
 Authenticated access allows you to publish your content while requiring authentication from any visitors who want to view it. When enabled, GitBook lets your authentication provider handle who has access to the content.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FlwfYBtUnP8SnBPbsOZEi%2Fvisitor-authentication.svg?alt=media&#x26;token=23e3c844-fffa-48b6-969e-63afd309d69a" alt="A screenshot showing a login screen for docs behind authenticated access"><figcaption><p>Add a sign in to your published documentation.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FhtkyhDNCjMpzhHtUkBSe%2F26_01_06_authenticated_access%402x.png?alt=media&#x26;token=6ea5554b-c8d6-43ab-b94e-12646fa01451" alt="A screenshot showing a login screen for docs behind authenticated access"><figcaption><p>Add a sign in to your published documentation.</p></figcaption></figure>
 
 ### Use cases
 
@@ -5327,12 +6941,12 @@ Depending on your setup, we have integrations and guides on setting up authentic
 
 Head to the relevant guide to continue setting up authenticated access for your site.
 
-<table data-view="cards"><thead><tr><th></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td>Setting up Auth0</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FRC8ah9trT3HsKVau1mnH%2Fcard_auth0.svg?alt=media&#x26;token=66d83098-b07c-4ee1-b41d-f9766dfdf703">card_auth0.svg</a></td><td><a href="setting-up-auth0">setting-up-auth0</a></td></tr><tr><td>Setting up Azure AD</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FKrbZXlJ3dMpfRu87FMGS%2Fcard_azure_ad.svg?alt=media&#x26;token=9ab99f1f-bd44-4a01-829b-3572d4559dff">card_azure_ad.svg</a></td><td><a href="setting-up-azure-ad">setting-up-azure-ad</a></td></tr><tr><td>Setting up Okta</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fb1BCMkshEsKD26yyp0Wt%2Fcard_okta.svg?alt=media&#x26;token=81133f4d-0a34-40e3-958e-616a268a12c1">card_okta.svg</a></td><td><a href="setting-up-okta">setting-up-okta</a></td></tr><tr><td>Setting up AWS Cognito</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FiWvq26r9Mxig2qbWMJJ4%2Fcard_aws_cognito.svg?alt=media&#x26;token=f275b67c-fbcc-46e2-8eb6-b46f9629ef0e">card_aws_cognito.svg</a></td><td><a href="setting-up-aws-cognito">setting-up-aws-cognito</a></td></tr><tr><td>Setting up OIDC</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F4OZgzd8PCJQQ98Aq1aYz%2Fcard_oidc.svg?alt=media&#x26;token=17363f03-2dc6-4ea4-853b-03a636686496">card_oidc.svg</a></td><td><a href="setting-up-oidc">setting-up-oidc</a></td></tr><tr><td>Setting up a custom backend</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FkiyIjK7tW99zVp1y1ksI%2Fcard_custom_backend.svg?alt=media&#x26;token=03687058-22d1-462e-8d4a-c42f6b51a1df">card_custom_backend.svg</a></td><td><a href="setting-up-a-custom-backend">setting-up-a-custom-backend</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover-dark data-type="image">Cover image (dark)</th></tr></thead><tbody><tr><td>Setting up Auth0</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FvVHZQE8gGhXUKSao8ppc%2FAuth0.png?alt=media&#x26;token=cc32e729-9b69-40ee-b2a7-8a101c34ed30">25_12_10_auth0_1.png</a></td><td><a href="setting-up-auth0">setting-up-auth0</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FcsSVFt516qxTm4HvE7b0%2FAuth0.png?alt=media&#x26;token=f094b5c4-bf7e-4dd5-a258-ae192a938c01">25_12_10_auth0.png</a></td></tr><tr><td>Setting up Azure AD</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FWQrMvQLbPoHKDjRJxO1f%2FAzure.png?alt=media&#x26;token=63905032-607a-4817-9b1a-e1076b22cd0b">25_12_10_azure_1.png</a></td><td><a href="setting-up-azure-ad">setting-up-azure-ad</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fv31LP38AFb2k72uKDrcn%2FAzure.png?alt=media&#x26;token=c518f50e-7293-4549-ba56-4354daa3906f">25_12_10_azure.png</a></td></tr><tr><td>Setting up Okta</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FjEaJJWUqrRwFvHstoDEg%2FOkta.png?alt=media&#x26;token=48ca7133-d722-4d9f-a0b5-f77344dde93c">25_12_10_okta_1.png</a></td><td><a href="setting-up-okta">setting-up-okta</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FE1Kh6s9dW1kozmbh1s2T%2FOkta.png?alt=media&#x26;token=cd7e903b-426d-470c-8d3e-e30bdf715712">25_12_10_okta.png</a></td></tr><tr><td>Setting up AWS Cognito</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FwjoOkuIK3HAONhbOt05o%2FAWS%20Cognito.png?alt=media&#x26;token=191b4e74-7a93-4017-afc8-46d055100f54">25_12_10_aws_cognito_1.png</a></td><td><a href="setting-up-aws-cognito">setting-up-aws-cognito</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F4LMymAVpjWgNz9584JAS%2FAWS%20Cognito.png?alt=media&#x26;token=246644bc-3512-41e9-8b5d-97a5d200f9b5">25_12_10_aws_cognito.png</a></td></tr><tr><td>Setting up OIDC</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FaOx0yDe8XoWpRL9YVN16%2FOIDC.png?alt=media&#x26;token=46288ec1-a08f-4968-95e2-0075be7347b3">25_12_10_oidc_1.png</a></td><td><a href="setting-up-oidc">setting-up-oidc</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FRkL0uaADK5pj6HG5ZkyB%2FOIDC.png?alt=media&#x26;token=144a8f3f-60b7-4d5c-86fe-0868eebba0cc">25_12_10_oidc.png</a></td></tr><tr><td>Setting up a custom backend</td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F18Q6ZoWDTYLP9MoLZHmo%2FCustom.png?alt=media&#x26;token=cdacc6af-475d-4291-a03c-71b72c2a6f1d">25_12_10_custom_1.png</a></td><td><a href="setting-up-a-custom-backend">setting-up-a-custom-backend</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FDGWWDcMZr00F6xwHii6b%2FCustom.png?alt=media&#x26;token=f9e59aa6-937a-4d91-9c3b-ed8431e08d42">25_12_10_custom.png</a></td></tr></tbody></table>
 
 
 # Setting up Auth0
 
-Set up an Auth0 login screen for visitors to your docs.
+Set up an Auth0 login screen for visitors to your docs
 
 {% hint style="info" %}
 Head to our guides to find a [full walk-through](https://gitbook.com/docs/guides/product-guides/how-to-personalize-your-gitbook-site-using-auth0-and-adaptive-content) on setting up authenticated access and adaptive content with Auth0.
@@ -5346,22 +6960,19 @@ To setup your GitBook site with authenticated access using Auth0, the process lo
 
 {% stepper %}
 {% step %}
-
-#### [Create a new application in Auth0](#id-1.-create-a-new-application-in-auth0)
+[**Create a new application in Auth0**](#id-1.-create-a-new-application-in-auth0)
 
 Create an Auth0 application in your Auth0 dashboard.
 {% endstep %}
 
 {% step %}
-
-#### [Install and configure the Auth0 integration](#id-2.-install-and-configure-the-auth0-integration)
+[**Install and configure the Auth0 integration**](#id-2.-install-and-configure-the-auth0-integration)
 
 Install the Auth0 integration and add the required configuration to your GitBook site.
 {% endstep %}
 
 {% step %}
-
-#### [Configure Auth0 for Adaptive content (optional)](#id-3.-configure-auth0-for-adaptive-content-optional)
+[**Configure Auth0 for Adaptive content (optional)**](#id-3.-configure-auth0-for-adaptive-content-optional)
 
 Configure Auth0 to work with adaptive content in GitBook.
 {% endstep %}
@@ -5377,7 +6988,7 @@ Start by creating a new application in your Auth0 platform dashboard. This appli
 4. Under the **Choose an application type,** select **Regular Web Applications**.
 5. In the **Quickstart** screen of the newly created app, select **Node.js (Express)** and then **I want to integrated my app**.
 6. You should then see a configuration screen like below.\
-   Click **Save Settings And Continue**.\\
+   Click **Save Settings And Continue**.<br>
 
    <figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FHoIpHTIRmkCvhw1kBVZZ%2Fauth0_app_configure_screen.png?alt=media&#x26;token=ef189183-2547-4e5e-b22f-2d3169f2b600" alt=""><figcaption></figcaption></figure>
 7. Click on the **Settings** tab.
@@ -5392,15 +7003,15 @@ Please ensure that you have **at least one connection enabled** for your Auth0 a
 Once you've created the Auth0 application, the next step is to install the Auth0 integration in GitBook and link it with your Auth0 application using the credentials you generated earlier:
 
 1. Navigate to the site where you've enabled authenticated access and want to use Auth0 as the identity provider.
-2. Click on the **Integrations** button in the top right from your site’s settings.\\
+2. Click on the **Integrations** button in the top right from your site’s settings.<br>
 
    <figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FgBMsbydNsuqx7eqcz0JN%2Fva_site_integration_overview_screen.png?alt=media&#x26;token=ead70cf3-93cf-4aef-b77a-321afad38900" alt=""><figcaption></figcaption></figure>
 3. Click on **Authenticated Access** from the categories in the sidebar.
 4. Select the **Auth0** integration.
-5. Click **Install on this site**.\\
+5. Click **Install on this site**.<br>
 
    <figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F98d9Svq3PBdpaiRuyV14%2Fauth0_install_integration.png?alt=media&#x26;token=155beba6-bc85-42c6-acb8-18f782f207a4" alt=""><figcaption></figcaption></figure>
-6. After installing the integration on your site, you should see the integration's configuration screen:\\
+6. After installing the integration on your site, you should see the integration's configuration screen:<br>
 
    <figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FGpdmoJqOQvrwFBaQ17Gv%2Fauth0_configure_integration.png?alt=media&#x26;token=61bc203c-2553-453f-b701-176264af044b" alt=""><figcaption></figcaption></figure>
 7. Enter the **Domain**, **Client ID** and **Client Secret** values you copied after creating the Auth0 application earlier. For Auth0 Domain, enter the Domain copied from Auth0 (make sure to prefix it with `https://`).
@@ -5434,7 +7045,7 @@ These claims, represented as key-value pairs, are passed to GitBook and can be u
 
 # Setting up Azure AD
 
-Set up an Azure AD login screen for visitors to your docs.
+Set up an Azure AD login screen for visitors to your docs
 
 {% hint style="warning" %}
 This guide takes you through setting up a protected sign-in screen for your docs. Before going through this guide, make sure you’ve first gone through the process of [enabling authenticated access](https://gitbook.com/docs/documentation/publishing-documentation/authenticated-access/enabling-authenticated-access).
@@ -5452,22 +7063,19 @@ To setup your GitBook site with authenticated access using Azure AD, the process
 
 {% stepper %}
 {% step %}
-
-#### [Create an app registration in Azure AD](#id-1.-create-an-app-registration-in-azure-a-d)
+[**Create an app registration in Azure AD**](#id-1.-create-an-app-registration-in-azure-a-d)
 
 Create an Azure AD application registration in your Microsoft Entra ID admin dashboard.
 {% endstep %}
 
 {% step %}
-
-#### [Install and configure the Azure AD integration on your site](#id-2.-install-and-configure-the-azure-a-d-integration)
+[**Install and configure the Azure AD integration on your site**](#id-2.-install-and-configure-the-azure-a-d-integration)
 
 Install the Azure AD integration and add the required configuration to your GitBook site.
 {% endstep %}
 
 {% step %}
-
-#### [Configure Azure AD for adaptive content (optional)](#id-3.-configure-azure-a-d-for-adaptive-content-optional)
+[**Configure Azure AD for adaptive content (optional)**](#id-3.-configure-azure-a-d-for-adaptive-content-optional)
 
 Configure your Azure AD to work with Adaptive content in GitBook.
 {% endstep %}
@@ -5482,13 +7090,13 @@ Start by creating an app registration in your Microsoft Entra ID dashboard. This
 3. Click on **+ New registration,** and give your registration a name.
 4. Under **Supported account types,** select “**Accounts in this organizational directory only (Default Directory only - Single tenant)”**.
 5. Leave the Redirect URI field empty for now—you will need to fill this in later.
-6. Click **Register** to complete the app registration.\\
+6. Click **Register** to complete the app registration.<br>
 
    <figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FuB6p6HxRmveHp1cfsiKa%2Fazure_ad_integration_register_app.png?alt=media&#x26;token=cbc82bc5-189e-433a-b990-042066768307" alt="An Azure screenshot showing how to register an Azure AD app"><figcaption><p>Register an app for the GitBook VA integration.</p></figcaption></figure>
-7. You should then see your new app registration **Overview** screen. Copy and make note of the **Application (client) ID** and **Directory (tenant) ID**.\\
+7. You should then see your new app registration **Overview** screen. Copy and make note of the **Application (client) ID** and **Directory (tenant) ID**.<br>
 
    <figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FETQziXVuqGnho8GGOVBZ%2Fazure_ad_integration_app_reg_overview.png?alt=media&#x26;token=266a55e3-db75-4a4a-923c-8302f69653d5" alt="An Azure screenshot showing the app registration overview"><figcaption><p>Overview of the newly created app registration.</p></figcaption></figure>
-8. Click on **Add a certificate or secret**. You should see the following **Certificates & Secrets** screen:\\
+8. Click on **Add a certificate or secret**. You should see the following **Certificates & Secrets** screen:<br>
 
    <figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FnXJbnpnGhOI6Udjrx8bS%2Fazure_ad_integration_client_secrets.png?alt=media&#x26;token=9202689b-4657-4bea-bf74-42b51e1051e5" alt="An Azure screenshot showing where to add a certificate or secret"><figcaption><p>Add a certificate or secret.</p></figcaption></figure>
 9. Click on **+ New client secret**.
@@ -5500,32 +7108,32 @@ Start by creating an app registration in your Microsoft Entra ID dashboard. This
 Once you've created the Azure AD app registration, the next step is to install the Azure AD integration in GitBook and link it with your Azure application using the credentials you generated earlier:
 
 1. Navigate to the site where you’ve [enabled authenticated access](https://gitbook.com/docs/documentation/publishing-documentation/enabling-authenticated-access#enable-authenticated-access) and want to use Azure AD as the identity provider.
-2. Click on the **Integrations** button in the top right from your site’s settings.\\
+2. Click on the **Integrations** button in the top right from your site’s settings.<br>
 
    <figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FgBMsbydNsuqx7eqcz0JN%2Fva_site_integration_overview_screen.png?alt=media&#x26;token=ead70cf3-93cf-4aef-b77a-321afad38900" alt="A GitBook screenshot showing the site settings overview"><figcaption></figcaption></figure>
 3. Click on **Authenticated Access** from the categories in the sidebar.
 4. Select the **Azure** integration.
-5. Click **Install on this site**.\\
+5. Click **Install on this site**.<br>
 
    <figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FCiveWUn0FWMEdS3YRU62%2FScreenshot%202025-03-24%20at%2018.10.09.png?alt=media&#x26;token=fcaedce7-40f5-40e5-acd1-040e90822be4" alt="A GitBook screenshot showing installation of the Azure AD integration"><figcaption></figcaption></figure>
-6. After installing the integration on your site, you should see the integration's configuration screen:\\
+6. After installing the integration on your site, you should see the integration's configuration screen:<br>
 
    <figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FvO9pXBCZkcprDDIVFkcf%2FScreenshot%202025-03-24%20at%2018.17.02.png?alt=media&#x26;token=e082d3dd-1e6b-44b4-beaf-a5d67812e055" alt="A GitBook screenshot showing the Azure AD configuration dialog"><figcaption></figcaption></figure>
 7. Enter the **Client ID**, **Tenant ID**, and **Client Secret** values you copied after [creating the Azure AD app registration](#id-1.-create-an-app-registration-in-azure-a-d) earlier, and click “Save”.
 8. Copy the **URL** displayed **at the bottom of the dialog**.
 9. Head back to the Azure AD app registration you created earlier in the Microsoft Entra ID dashboard.
 10. Browse to **Manage** > **Authentication** in the sidebar.
-11. Click **+ Add a platform** and select **Web** card in the panel that opens.\\
+11. Click **+ Add a platform** and select **Web** card in the panel that opens.<br>
 
     <figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FUssw9BNY66urLYH376sE%2FScreenshot%202025-03-24%20at%2018.28.58.png?alt=media&#x26;token=2c2b2b84-b7e9-4fc3-a7bd-2751dacfd579" alt="An Azure screenshot showing authentication platform settings"><figcaption></figcaption></figure>
-12. Paste the GitBook integration **URL** you copied earlier in the **Redirect URI** field, and click “Configure”\\
+12. Paste the GitBook integration **URL** you copied earlier in the **Redirect URI** field, and click “Configure”<br>
 
     <figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fi9fVjsa351I6kVzJw64X%2Fimage.png?alt=media&#x26;token=85d1d25a-bdb8-4453-b30e-54a21304f870" alt="An Azure screenshot showing where to enter the redirect URI"><figcaption></figcaption></figure>
 13. Head back to **Azure integration** installation screen **in GitBook**.
 14. Close the integration dialogs and click on the **Settings** tab in the site screen.
 15. Browse to **Audience** and select **Authenticated access** (if not already selected).
 16. Select **Azure** from the dropdown in the **Authentication backend** section.
-17. Click **Update audience**.\\
+17. Click **Update audience**.<br>
 
     <figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Finc5DrItbyXUIXP4K4ic%2FScreenshot%202025-03-24%20at%2018.41.45.png?alt=media&#x26;token=e06283f6-f7d6-4556-9ef7-747b47493064" alt="A GitBook screenshot showing authenticated access settings"><figcaption></figcaption></figure>
 18. Head to the site's overview screen and click **Publish** if the site is not already published.
@@ -5562,2017 +7170,6 @@ For more details on how to include these different types of claims in the tokens
 * [Custom Claims](https://learn.microsoft.com/en-us/entra/identity-platform/custom-claims-provider-overview)
 
 After setting up and configuring the right claims to send to GitBook, head to “[Adapting your content](https://gitbook.com/docs/documentation/publishing-documentation/adaptive-content/adapting-your-content)” to continue configuring your site.
-
-
-# Setting up AWS Cognito
-
-Set up an AWS Cognito login screen for visitors to your docs.
-
-{% hint style="warning" %}
-This guide takes you through setting up a protected sign-in screen for your docs. Before going through this guide, make sure you’ve first gone through the process of [enabling authenticated access](https://gitbook.com/docs/documentation/publishing-documentation/authenticated-access/enabling-authenticated-access).
-{% endhint %}
-
-To setup your GitBook site with authenticated access using AWS Cognito, the process looks as follows:
-
-{% stepper %}
-{% step %}
-
-#### Create a new AWS Cognito application
-
-Create an AWS Cognito application from your AWS dashboard.
-{% endstep %}
-
-{% step %}
-
-#### Install and configure the AWS Cognito integration
-
-Install the AWS Cognito integration and add the required configuration.
-{% endstep %}
-
-{% step %}
-
-#### Configure AWS Cognito for adaptive content (optional)
-
-Configure AWS Cognito to work with adaptive content in GitBook.
-{% endstep %}
-{% endstepper %}
-
-### Create a new AWS Cognito application
-
-Go to your desired User Pool in Cognito, and click on App integration. Make a note of the Cognito domain, we will need it to configure the integration.
-
-Scroll to the bottom and click "Create app client". For the app type, select "Confidential client." Scroll down to Hosted UI settings. In allowed Callback URLs, enter the Callback URL you got from GitBook upon installing the integration on a space.
-
-Scroll further down to "OAuth 2.0 grant types"- make sure "Authorization code grant" is selected.
-
-For "OpenID connect scopes", make sure OpenID is selected.
-
-Scroll down and click "Create app client".
-
-Click on the created app client and make a note of the Client ID and Client Secret.
-
-### Install and configure the AWS Cognito integration
-
-Navigate to integrations within the GitBook app, select authenticated access as the category, and install the AWS Cognito integration.
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FCZy21M4LIPwMVSxI3ec1%2FScreen%20Shot%202024-12-13%20at%203.37.39%20PM.png?alt=media&#x26;token=4e31d496-04eb-4d00-ac45-011b543edfe4" alt="A GitBook screenshot showing the AWS Cognito integration install screen"><figcaption></figcaption></figure>
-
-Once you've installed it on your site, go to configuration and make a note of the Callback URL right above the Save button. We will need it to set up Cognito.
-
-Open up the Cognito integration's configuration screen for the space you installed the integration on.
-
-It should look like the following image:
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fgy177CzFZiy6U4IntLUE%2FScreen%20Shot%202024-12-13%20at%203.41.57%20PM.png?alt=media&#x26;token=3823d5cb-56e0-4e02-abd6-6d6d66cacf71" alt="A GitBook screenshot showing the AWS Cognito configuration screen"><figcaption></figcaption></figure>
-
-For Client ID, Cognito Domain, and Client Secret, paste in the values you got from Cognito.
-
-Hit Save.
-
-Now, in GitBook, close the integrations modal and click on the Manage site button. Navigate to **Audience**, select **Authenticated access**, and choose Cognito as the backend. Then, click **Update audience**. Go to the site’s screen and click **Publish**.\
-\
-The site is now published behind authenticated access controlled by your Auth0 application. To try it out, click on Visit. You will be asked to sign in with Cognito, which confirms that your site is published behind authenticated access using Auth0.
-
-### Configure AWS Cognito for adaptive content (optional)
-
-To leverage Adaptive Content with authenticated access in GitBook, you’ll need to configure your Amazon Cognito user pool to include custom claims in the ID token.
-
-This is typically done by creating a [Cognito Lambda trigger](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-pre-token-generation.html)—specifically a *Pre Token Generation* Lambda—that returns a JSON payload overriding or appending custom claims. These claims might include user roles, subscription tiers, or any other metadata relevant to your content.
-
-Here’s an example of what that could look like:
-
-```javascript
-export const handler = async (event, context) => {
-  // Retrieve user attribute from event request
-  const userAttributes = event.request.userAttributes;
-
-  // Add additional claims to event response
-  event.response = {
-    "claimsAndScopeOverrideDetails": {
-      "idTokenGeneration": {},
-      "accessTokenGeneration": {
-        "claimsToAddOrOverride": {
-          "products": ['api', 'sites', 'askAI'],
-          "isBetaUser": true,
-          "isAlphaUser": true,
-        }
-      }
-    }
-  };
-  // Return to Amazon Cognito
-  context.done(null, event);
-};
-```
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FwwKLiRUOJ27tjJCPc1Vd%2FScreenshot%202025-06-30%20at%2017.31.23.png?alt=media&#x26;token=f015ad33-1e96-47d4-82a5-e3b259f55a0e" alt=""><figcaption></figcaption></figure>
-
-Once added, these key-value pairs are included in the authentication token and passed to GitBook, allowing your site to dynamically adapt its content based on the authenticated user’s profile.
-
-
-# Setting up Okta
-
-Set up an Okta login screen for visitors to your docs.
-
-{% hint style="warning" %}
-This guide takes you through setting up a protected sign-in screen for your docs. Before going through this guide, make sure you’ve first gone through the process of [enabling authenticated access](https://gitbook.com/docs/documentation/publishing-documentation/authenticated-access/enabling-authenticated-access).
-{% endhint %}
-
-To setup your GitBook site with authenticated access using Okta, the process looks as follows:
-
-{% stepper %}
-{% step %}
-
-#### Create a new Okta application
-
-Create an Okta application from your Okta dashboard.
-{% endstep %}
-
-{% step %}
-
-#### Install and configure the Okta integration
-
-Install the Okta integration and add the required configuration.
-{% endstep %}
-
-{% step %}
-
-#### Configure Okta for adaptive content (optional)
-
-Configure Okta to work with adaptive content in GitBook.
-{% endstep %}
-{% endstepper %}
-
-### Create a new Okta application
-
-First, sign in to Okta platform (the admin version) and create a new app integration (or use an existing one) by clicking the Applications button in the left sidebar.
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F8roQ3QDR5zsyFh2FoQS4%2FScreen%20Shot%202023-10-30%20at%201.32.55%20PM.png?alt=media&#x26;token=dc46f9f6-ec54-456f-ba7b-397477089e1a" alt="An Okta screenshot showing the create app integration screen"><figcaption></figcaption></figure>
-
-Click Create App Integration and select OIDC - OpenID Connect as the Sign-In method. And then select Web Application as the application type.
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FqgFHYo6HOUGF8dUTFEJM%2FScreen%20Shot%202023-10-30%20at%201.39.15%20PM.png?alt=media&#x26;token=0ac8e337-6082-4a28-b3df-33fa4e33dc0d" alt="An Okta screenshot showing the integration setup"><figcaption></figcaption></figure>
-
-Name it appropriately and don't edit any other setting on that page. For assignments, choose the appropriate checkbox. Click Save.
-
-On the next screen, copy Client ID and Client Secret. Copy the Okta Domain right below your email address by clicking the dropdown in the top right.
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FJQWvrITuUlno737DbQKM%2FScreen%20Shot%202023-10-30%20at%204.52.14%20PM.png?alt=media&#x26;token=82a63cfd-a1e6-4666-b132-30fc98e95c22" alt="An Okta screenshot showing where to copy client credentials"><figcaption></figcaption></figure>
-
-We will need these values to configure the Okta Integration.
-
-### Install and configure the Okta integration
-
-Navigate to the Integrations tab in the site you want to publish and locate the Okta integration.
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FeFArORtsvAcvgwbDZNce%2FScreen%20Shot%202024-12-13%20at%203.21.30%20PM.png?alt=media&#x26;token=199acbf6-3100-49af-886e-d2d09445f978" alt="A GitBook screenshot showing the site settings page"><figcaption></figcaption></figure>
-
-Install the integration on your site.
-
-Upon installation on site, you will see a screen asking you enter the Client ID, Okta Domain, and Client Secret.
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FHrwQ0ASv1tD6kTZPVLMY%2FScreen%20Shot%202024-12-13%20at%203.34.37%20PM.png?alt=media&#x26;token=0844c1db-14b8-415c-8d51-33d4618e900e" alt="A GitBook screenshot showing the Okta credentials modal"><figcaption></figcaption></figure>
-
-For Client ID, Okta Domain (remove `https://`prefix, if any) and Client Secret, paste in the value you copied from Okta Dashboard.
-
-Click Save.
-
-Copy the URL displayed in the modal and enter it as a Sign-In redirect URI in Okta (as shown in the below screenshot). Hit Save.
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FpPZlqJlE6koyHrWhSp8i%2FScreen%20Shot%202024-01-14%20at%207.55.08%20PM.png?alt=media&#x26;token=99abc690-c82b-4974-9b5a-7ba6fbd11ed2" alt="An Okta screenshot showing the sign-in redirect URI configuration"><figcaption></figcaption></figure>
-
-Now, in GitBook, close the integrations modal and click on the Manage site button. Navigate to **Audience**, select **Authenticated access**, and choose Okta as the backend. Then, click **Update audience**. Go to the site’s screen and click **Publish**.\
-\
-The site is now published behind authenticated access controlled by your Auth0 application. To try it out, click on Visit. You will be asked to sign in with Okta, which confirms that your site is published behind authenticated access using Auth0.
-
-### Configure Okta for adaptive content (optional)
-
-To enable Adaptive Content in your GitBook site with authenticated access, you’ll need to configure your Okta application to include relevant user data as claims in the authentication token.
-
-Claims are key-value pairs embedded in the token sent to GitBook. These claims can be used to dynamically tailor documentation based on the user’s role, plan, location, or any other identifying attribute.
-
-Okta supports multiple types of claims:
-
-* **Standard Claims**\
-  These are common claims (like `email`, `name`, or `groups`) that may be included by default but often need to be explicitly added to your token configuration for consistent availability.
-* **Custom Claims**\
-  You can define custom claims in Okta using [custom user attributes](https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-add-custom-user-attributes.htm) or expression-based logic. These allow you to pass highly specific values—like plan tier, account ID, or internal team flags.
-* **Groups as Claims**\
-  You can also pass Okta groups as claims, which is especially useful when defining audience segments like “enterprise users” or “beta testers.” These can be filtered and mapped in your authorization server’s claim configuration.
-
-To add or customize claims in Okta:
-
-1. Open your Okta Admin Console.
-2. Navigate to **Security > API > Authorization Servers**.
-3. Edit the authorization server used for your GitBook site.
-4. Under the **Claims** tab, add rules to include the desired claims in the token.
-5. Make sure your GitBook site is reading and mapping those claims correctly.
-
-Once claims are being passed into GitBook, follow the steps in [Adapting your content](https://gitbook.com/docs/documentation/publishing-documentation/adaptive-content/adapting-your-content) to define what content should be shown to whom.
-
-
-# Setting up OIDC
-
-Set up an OIDC login screen for visitors to your docs.
-
-{% hint style="warning" %}
-This guide takes you through setting up a protected sign-in screen for your docs. Before going through this guide, make sure you’ve first gone through the process of [enabling authenticated access](https://gitbook.com/docs/documentation/publishing-documentation/authenticated-access/enabling-authenticated-access).
-{% endhint %}
-
-To setup your GitBook site with authenticated access using OIDC, the process looks as follows:
-
-{% stepper %}
-{% step %}
-
-#### Create a new application with your identity provider
-
-Create an application from your identity provider’s dashboard.
-{% endstep %}
-
-{% step %}
-
-#### Install and configure the OIDC integration
-
-Install the Auth0 integration and add the required configuration.
-{% endstep %}
-{% endstepper %}
-
-OIDC stands for OpenID Connect, and it's an identity layer built on top of OAuth. Many identity providers abide by OIDC, and GitBook's OIDC integration for authenticated access allows you to publish your space behind authenticated access, and access to the content is controlled by your Identity Provider
-
-{% hint style="info" %}
-Since this guide is a generic guide meant for all identity providers, some details may vary depending on your Identity Provider. For illustration purposes, we are using Google as the identity provider in this guide.
-{% endhint %}
-
-### Create a new application with your identity provider
-
-There are some things that you need to set up on your Identity Provider in order to get the integration to work.
-
-You need to create a new app inside your Identity Provider. Its type should be "Web Application." In Google, you create these under "API and Services", "Credentials", and then under "OAuth 2.0 Client IDs."\\
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F8ra7t88ktqM7yX7w1l4m%2FScreen%20Shot%202024-05-15%20at%2011.19.59%20AM.png?alt=media&#x26;token=bc1fbb59-5a36-47f8-985f-da9c743e3adb" alt="A screenshot showing creation of an OAuth client in an identity provider"><figcaption></figcaption></figure>
-
-Click on Create Credentials, select OAuth Client ID, select Web Application as the type, name it appropriately, and under Authorized Redirect URIs, enter the Callback URL you got from GitBook.
-
-Click Create. Make a note of the Client ID and Client Secret. We will need these to finish configuring of our integration in GitBook.
-
-### Install and configure the OIDC integration
-
-Navigate to integrations within the GitBook app, select authenticated access as the category, and install the OIDC integration. Install the OIDC integration on your chosen docs site.
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FCZy21M4LIPwMVSxI3ec1%2FScreen%20Shot%202024-12-13%20at%203.37.39%20PM.png?alt=media&#x26;token=4e31d496-04eb-4d00-ac45-011b543edfe4" alt="A GitBook screenshot showing the OIDC integration installation"><figcaption></figcaption></figure>
-
-Once you've installed it on your site, go to configuration and make a note of the Callback URL right above the Save button. We may need it to set up the Identity Provider.
-
-Open up the OIDC integration's configuration screen for the space you installed the integration on.
-
-It should look like the following image
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F04b2yAGjDIJQsA2aPIEO%2FScreen%20Shot%202024-12-13%20at%203.38.30%20PM.png?alt=media&#x26;token=e89e34c5-0e95-4547-a507-cc1d727b6ee5" alt="A GitBook screenshot showing the OIDC configuration screen"><figcaption></figcaption></figure>
-
-For Client ID and Client Secret, paste in the values you got for your identity provider.
-
-Now, you will need to find the Authorization Endpoint and Access Token Endpoint for your Identity Provider. For Google, these are `https://accounts.google.com/o/oauth2/v2/auth` and `https://oauth2.googleapis.com/token` respectively.
-
-{% hint style="info" %}
-If you are not using Google, these endpoints will be different for you. Please look into the documentation of your identity provider to locate these endpoints
-{% endhint %}
-
-For OAuth Scope, its value will be again be different depending on your Identity Provider. In case of Google, you can enter `openid`.
-
-{% hint style="info" %}
-Please look at the list of allowed scopes in your Identity Provider's documentation, and enter the value of the least permissive scope. We only use the Access Token to verify that the user is authenticated, and we do not use the Access Token to fetch any further information. So, entering the least permissive scope is the best security recommendation.
-{% endhint %}
-
-Hit Save.
-
-Now, in GitBook, close the integrations modal and click on the Manage site button. Navigate to **Audience**, select **Authenticated access**, and choose OIDC as the backend. Then, click **Update audience**. Go to the site’s screen and click **Publish**.\
-\
-The site is now published behind authenticated access controlled by your Auth0 application. To try it out, click on Visit. You will be asked to sign in with OIDC, which confirms that your site is published behind authenticated access using Auth0.
-
-
-# Setting up a custom backend
-
-Set up a custom login screen for visitors to your docs.
-
-{% hint style="warning" %}
-This guide takes you through setting up a protected sign-in screen for your docs. Before going through this guide, make sure you’ve first gone through the process of [enabling authenticated access](https://gitbook.com/docs/documentation/publishing-documentation/authenticated-access/enabling-authenticated-access).
-{% endhint %}
-
-This guide walks you through setting up a protected sign-in screen for your GitBook documentation site using your own **custom** authentication backend.
-
-{% hint style="info" %}
-If you are using one of the authentication providers we support or have an [OpenID Connect](https://auth0.com/docs/authenticate/protocols/openid-connect-protocol) (OIDC) compliant backend, check out our integration guides for a more streamlined setup:\
-\
-[Auth0](https://gitbook.com/docs/documentation/publishing-documentation/authenticated-access/setting-up-auth0) | [Azure AD](https://gitbook.com/docs/documentation/publishing-documentation/authenticated-access/setting-up-azure-ad) | [Okta](https://gitbook.com/docs/documentation/publishing-documentation/authenticated-access/setting-up-okta) | [AWS Cognito](https://gitbook.com/docs/documentation/publishing-documentation/authenticated-access/setting-up-aws-cognito) | [OIDC](https://gitbook.com/docs/documentation/publishing-documentation/authenticated-access/setting-up-oidc)
-{% endhint %}
-
-### Overview
-
-To setup a custom authentication system for your GitBook site, follow these key steps:
-
-{% stepper %}
-{% step %}
-[**Create a custom backend to authenticate your users**](#id-1.-create-a-custom-backend-to-authenticate-your-users)
-
-Implement a backend that prompts users to login and authenticate them.
-{% endstep %}
-
-{% step %}
-[**Sign and pass a JWT token to GitBook**](#id-2.-sign-and-pass-a-jwt-token-to-gitbook)
-
-Create a JWT token and sign it with your site’s private key.
-{% endstep %}
-
-{% step %}
-[**Configure a fallback URL**](#id-3.-configure-a-fallback-url)
-
-Configure a URL to be used when an unauthenticated visitor access your site.
-{% endstep %}
-
-{% step %}
-[**Set up multi-tenant authenticated access (optional)**](#id-4.-set-up-multi-tenant-authenticated-access)
-
-Configure your backend to handle authentication across multiple GitBook sites.
-{% endstep %}
-
-{% step %}
-[**Configure your backend for adaptive content (optional)**](#id-5.-configure-your-backend-for-adaptive-content)
-
-Configure your backend to work with adaptive content in GitBook.
-{% endstep %}
-{% endstepper %}
-
-### 1. Create a custom backend to authenticate your users
-
-In order to start authenticating users before they can visit your documentation, you’ll need to set up a server that can handle login and authentication of users.
-
-Your backend should:
-
-* Prompt users to log in using your preferred authentication method.
-* Validate user credentials and authenticate them.
-* Generate and sign a **JSON Web Token (JWT)** upon successful authentication.
-* Redirect users to GitBook with the JWT included in the URL.
-
-### 2. Sign and pass a JWT token to GitBook
-
-Once your backend authenticates a user, it must **generate a JWT** and **pass it to GitBook** when **redirecting** them to your site. The token should be signed using the **private key** provided in your site's audience settings after [enabling authenticated access](https://gitbook.com/docs/documentation/publishing-documentation/enabling-authenticated-access#enable-authenticated-access).
-
-The following example should demonstrate how a login request handler in your custom backend could look like:
-
-{% code title="index.ts" %}
-
-```typescript
-import { Request, Response } from 'express';
-import * as jose from 'jose';
-
-import { getUserInfo } from '../services/user-info-service';
-import { getFeatureFlags } from '../services/feature-flags-service';
-
-const GITBOOK_VISITOR_SIGNING_KEY = process.env.GITBOOK_VISITOR_SIGNING_KEY!;
-const GITBOOK_DOCS_URL = 'https://mycompany.gitbook.io/myspace';
-
-export async function handleAppLoginRequest(req: Request, res: Response) {
-    // Your business logic for handling the login request
-    // For example, checking credentials and authenticating the user
-    //
-    // e.g.:
-    // const loggedInUser = await authenticateUser(req.body.username, req.body.password);
-    
-    // Generate a signed JWT
-    const gitbookVisitorJWT = await new jose.SignJWT({})
-        .setProtectedHeader({ alg: 'HS256' })
-        .setIssuedAt()
-        .setExpirationTime('2h') // Arbitrary 2-hour expiration
-        .sign(new TextEncoder().encode(GITBOOK_VISITOR_SIGNING_KEY));
-    
-    // Redirect the user to GitBook with the JWT token in the URL
-    const redirectURL = `${GITBOOK_DOCS_URL}/?jwt_token=${gitbookVisitorJWT}`;
-    res.redirect(redirectURL);
-}
-```
-
-{% endcode %}
-
-### 3. Configure a fallback URL
-
-The fallback URL is used when an unauthenticated visitor tries to access your protected site. GitBook will then redirect them to this URL.
-
-This URL should point to a handler in your custom backend, where you can prompt them to login, authenticate and then redirect them back to your site with the JWT included in the URL.
-
-For instance, if your login screen is located at `https://example.com/login`, you should include this value as the fallback URL.
-
-You can configure this fallback URL within your site’s audience settings under the "Authenticated access" tab.
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FB48PEdMz1tCDf0Q0lo4d%2FScreenshot%202025-03-25%20at%2015.00.08.png?alt=media&#x26;token=e22fe867-e1f6-44f7-8b4f-a868ac620464" alt="A GitBook screenshot showing where to configure a fallback URL"><figcaption><p>Configure a fallback URL</p></figcaption></figure>
-
-When redirecting to the fallback URL, GitBook includes a `location` query parameter to the fallback URL that you can leverage in your handler to redirect the user to the original location of the user:
-
-```javascript
-const gitbookVisitorJWT = await new jose.SignJWT({})
-    .setProtectedHeader({ alg: 'HS256' })
-    .setIssuedAt()
-    .setExpirationTime('2h') // Arbitrary 2-hour expiration
-    .sign(new TextEncoder().encode(GITBOOK_VISITOR_SIGNING_KEY));
-    
-// Redirect to the original GitBook docs URL with the JWT included as jwt_token query parameter
-// If a location is provided, the user will be redirected back to their original destination
-const redirectURL = `${GITBOOK_DOCS_URL}/${req.query.location || ''}?jwt_token=${gitbookVisitorJWT}`;
-res.redirect(redirectURL);
-```
-
-{% hint style="warning" %}
-Because GitBook relies on the `location` search param - you cannot use it in your fallback URL. For example, `https://auth.gitbook.com/?location=something` is not a valid fallback URL.
-{% endhint %}
-
-### 4. Set up multi-tenant authenticated access (optional)
-
-If you’re using GitBook as a platform to provide content to your different customers, you probably need to set up multi-tenant authenticated access. Your authentication backend needs to be responsible for handling authentication across multiple different sites. This is possible in GitBook with a few small tweaks to your custom authentication backend code.
-
-#### Adding all tenants to your authentication server
-
-Your authentication backend will need to know the JWT signing keys and the URLs of all the GitBook sites you expect it to handle. If you have two sites in your organization for Customer A and Customer B, you can imagine your authentication code storing such mapping:
-
-```typescript
-const CUSTOMER_A = {
-  jwtSigningKey: 'aaa-aaa-aaa-aaa',
-  url: 'https://mycompany.gitbook.io/customer-a'
-};
-
-const CUSTOMER_B = {
-  jwtSigningKey: 'bbb-bbb-bbb-bbb',
-  url: 'https://mycompany.gitbook.io/customer-b'
-};
-```
-
-#### Giving your authentication server additional context
-
-When GitBook is unable to authenticate a user's request, it redirects them to the fallback URL. This URL points to your authentication backend, which is responsible for authenticating the user and redirecting them back to the requested content.
-
-To support multiple tenants, your authentication backend needs to know which GitBook site the user is meant to access. This information can be passed in the fallback URL.
-
-So for example, you could setup the fallback URLs for each sites as follow:
-
-<table><thead><tr><th width="150.75390625">GitBook Site</th><th>Fallback URL</th></tr></thead><tbody><tr><td>Customer A site</td><td><code>https://auth-backend.acme.org/login?site=customer-a</code></td></tr><tr><td>Customer B site</td><td><code>https://auth-backend.acme.org/login?site=customer-b</code></td></tr></tbody></table>
-
-Your authentication backend can then check this information and handle the redirection to the correct site accordingly:
-
-```javascript
-const customerInfo = req.query.site === 'customer-a' ? CUSTOMER_A : CUSTOMER_B;
-  
-const gitbookVisitorJWT = await new jose.SignJWT({})
-    .setProtectedHeader({ alg: 'HS256' })
-    .setIssuedAt()
-    .setExpirationTime('2h') // Arbitrary 2-hour expiration
-    .sign(new TextEncoder().encode(customerInfo.jwtSigningKey));
-    
-// Redirect to the original GitBook docs URL with the JWT included as jwt_token query parameter
-// If a location is provided, the user will be redirected back to their original destination
-const redirectURL = `${customerInfo.url}/${req.query.location || ''}?jwt_token=${gitbookVisitorJWT}`;
-res.redirect(redirectURL);
-```
-
-### 5. Configure your backend for adaptive content (optional)
-
-{% hint style="warning" %}
-This feature is still under development and coming soon to the [Ultimate site plan](https://www.gitbook.com/pricing).&#x20;
-
-Please sign up for the waitlist at <https://www.gitbook.com/#alpha-waitlist>
-{% endhint %}
-
-To leverage the Adaptive Content capability in your authenticated access setup, you can include additional user attributes (claims) in the payload of the JWT that your custom backend generates and include in the URL when redirecting the user to the site.
-
-These claims when included in the JWT are used by GitBook to [adapt content](https://gitbook.com/docs/documentation/publishing-documentation/adaptive-content/adapting-your-content) dynamically for your site visitors.
-
-Putting it all together, the following code example demonstrates how you could include these claims in the JWT, which can then be used by GitBook to adapt content for your visitors:
-
-{% code title="index.ts" %}
-
-```typescript
-import { Request, Response } from 'express';
-import * as jose from 'jose';
-
-import { getUserInfo } from '../services/user-info-service';
-import { getFeatureFlags } from '../services/feature-flags-service';
-
-const GITBOOK_VISITOR_SIGNING_KEY = process.env.GITBOOK_VISITOR_SIGNING_KEY!;
-const GITBOOK_DOCS_URL = 'https://mycompany.gitbook.io/myspace';
-
-export async function handleAppLoginRequest(req: Request, res: Response) {
-    // Your business logic for handling the login request
-    // For example, checking credentials and authenticating the user
-    //
-    // e.g.:
-    // const loggedInUser = await authenticateUser(req.body.username, req.body.password);
-    
-    // For the purpose of this example, assume a logged-in user object
-    const loggedInUser = { id: '12345' }; // Replace with actual authentication logic
-
-    // Retrieve user information to pass to GitBook
-    const userInfo = await getUserInfo(loggedInUser.id);
-    
-    // Generate a signed JWT and include the user attributes as claims
-    const gitbookVisitorClaims = {
-        firstName: userInfo.firstName,
-        lastName: userInfo.lastName,
-        isBetaUser: userInfo.isBetaUser,
-        products: userInfo.products.map((product) => product.name),
-        featureFlags: await getFeatureFlags({ userId: loggedInUser.id })
-    };
-    
-    const gitbookVisitorJWT = await new jose.SignJWT(gitbookVisitorClaims)
-        .setProtectedHeader({ alg: 'HS256' })
-        .setIssuedAt()
-        .setExpirationTime('2h') // Arbitrary 2-hour expiration
-        .sign(new TextEncoder().encode(GITBOOK_VISITOR_SIGNING_KEY));
-    
-    // Redirect the user to GitBook with the JWT token in the URL
-    const redirectURL = `${GITBOOK_DOCS_URL}/?jwt_token=${gitbookVisitorJWT}`;
-    res.redirect(redirectURL);
-}
-```
-
-{% endcode %}
-
-After setting up and configuring the right claims to send to GitBook, head to “[Adapting your content](https://gitbook.com/docs/documentation/publishing-documentation/adaptive-content/adapting-your-content)” to continue configuring your site.
-
-
-# Adaptive content
-
-Deliver a tailored documentation experience based on who's reading.
-
-{% hint style="info" %}
-This feature is available on the [Ultimate site plan](https://www.gitbook.com/pricing).
-{% endhint %}
-
-When a user visits your site, you may already know things about them — such as who they are, which plan they’re subscribed to, and which features they have access to.
-
-Adaptive content helps to build a tailored documentation experience based on who is reading.
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FwYV7jtuVoJNcmEHjnRTO%2F20_08_25_adaptive_content.webp?alt=media&#x26;token=c7373b37-d23c-4752-8e29-537c99097f0d" alt="A GitBook screenshot showing adaptive content controls"><figcaption><p>Personalize your user’s documentation experience through adaptive content</p></figcaption></figure>
-
-<p align="center"><a href="https://gitbook.com/adaptive-content-demo/" class="button primary">Launch the demo site</a></p>
-
-{% hint style="info" %}
-Adaptive content is slightly different from [authenticated access](https://gitbook.com/docs/documentation/publishing-documentation/authenticated-access), although they can work together.&#x20;
-
-While authenticated access allows you to protect your docs through a login, adaptive content customizes published material based on various authentication methods — including authenticated access or those from your own app.
-{% endhint %}
-
-### How it works
-
-Adaptive content works in one of two ways:
-
-1. Passing data from your app to GitBook
-2. Passing data from authenticated access
-
-When a user visits your sites, we call the data they bring with them their “claims” — basically data that helps to identify a user. These claims are controllable by you — the site author — and can be used through the GitBook editor to show or hide different pages, variants, and sections in your docs.
-
-Head to our page about [enabling adaptive content](https://gitbook.com/docs/documentation/publishing-documentation/adaptive-content/enabling-adaptive-content) to start setting up adaptive content for your site.
-
-
-# Enabling adaptive content
-
-Choose an authentication method to pass user data to GitBook.
-
-To start customizing your documentation experience for your readers, you'll need to enable adaptive content and decide how your visitor data is passed to GitBook. This lets your site's content dynamically adapt based on who's viewing it.
-
-### Enable adaptive content
-
-Before you’re able to pass user data to GitBook, you’ll need to configure your site to use adaptive content.
-
-Head to your [site’s settings](https://gitbook.com/docs/documentation/publishing-documentation/site-settings), and enable **Adaptive content** from your site’s audience settings. Once enabled, you’ll get a generated ‘Visitor token signing key’, which you’ll need in order to continue the adaptive content setup.
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FH5SCBHouCTo5hrp9ymfW%2F18_07_25_enable_adaptive_content.svg?alt=media&#x26;token=3deb470a-f1c9-4621-87fb-7379d95682f0" alt="A GitBook screenshot showing the enable adaptive content toggle"><figcaption><p>Enable adaptive content</p></figcaption></figure>
-
-### Set your visitor schema
-
-After enabling adaptive content, you’ll need to define a schema for the types of claims you expect GitBook to receive when a user visits your site.
-
-The visitor schema should reflect how these claims are structured when sent to GitBook.
-
-For example, if you expect a visitor to potentially be a beta user in your product, you would set a visitor schema similar to:
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "isBetaUser": {
-      "type": "boolean",
-      "description": "Whether the visitor is a Beta user."
-    }
-  },
-  "additionalProperties": false
-}
-```
-
-This will also help you use autocomplete when configuring your claims in the [condition editor](https://gitbook.com/docs/documentation/publishing-documentation/adapting-your-content#working-with-the-condition-editor). Visitor schemas only support the following types:
-
-{% tabs %}
-{% tab title="Strings" %}
-Read claims being passed in as strings.
-
-Strings **must contain an enum** key, which needs to contain any expected values that would be found on the key being read.
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "language": {
-          "type": "string",
-          "description": "The language of the visitor",
-          "enum": [
-            "en",
-            "fr",
-            "it"
-          ]
-  },
-  "additionalProperties": false
-}
-```
-
-{% endtab %}
-
-{% tab title="Booleans" %}
-Read claims being passed in as booleans.
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "isBetaUser": {
-      "type": "boolean",
-      "description": "Whether the visitor is a Beta user."
-    },
-  },
-  "additionalProperties": false
-}
-```
-
-{% endtab %}
-
-{% tab title="Objects" %}
-Nest claims in an object to group similar values.
-
-```json
-{
-  // Top level claims
-  "type": "object",
-  "properties": {
-    // Nested claims
-    "access": {
-      "type": "object",
-      "description": "User’s access to product feature",
-      "properties": {
-        "isAlphaUser": {
-          "type": "boolean",
-          "description": "Whether the visitor is a Alpha user."
-        },
-        "isBetaUser": {
-          "type": "boolean",
-          "description": "Whether the visitor is a Beta user."
-        },
-      },
-      "additionalProperties": false
-    }
-  },
-  "additionalProperties": false
-}
-```
-
-{% endtab %}
-{% endtabs %}
-
-### Set an unsigned claim
-
-Unsigned claims are a specific type of claim that identifies claims coming through that might not be signed by a client application. It is required to set claims in your visitor schema as `unsigned` if you are passing claims through URL parameters, unsigned cookies, and feature flags.
-
-If you intend to work with unsigned claims, you will need to declare the claims you are expecting in the schema under an “unsigned” prop alongside your signed claims.
-
-```json
-{
-  "type": "object",
-  "properties": {
-    "isBetaUser": {
-      "type": "boolean",
-      "description": "Whether the visitor is a Beta user."
-    },
-    // Add unsigned claims
-    "unsigned": {
-      "type": "object",
-      "description": "Unsigned claims of the site visitor.",
-      "properties": {
-        "language": {
-          "type": "string",
-          "description": "The language of the visitor",
-          "enum": [
-            "en",
-            "fr",
-            "it"
-          ]
-        }
-      },
-      "additionalProperties": false
-    }
-  },
-  "additionalProperties": false
-}
-```
-
-### Pass visitor data to GitBook
-
-GitBook provides different ways to pass visitor data to adapt your site's content. After defining your schema, you’ll need to decide how you want to pass your visitor data to GitBook.
-
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><i class="fa-cookie">:cookie:</i></td><td><strong>Cookies</strong></td><td>Pass visitor data into your docs through a public or signed cookie.</td><td><a href="enabling-adaptive-content/cookies">cookies</a></td></tr><tr><td><i class="fa-link">:link:</i></td><td><strong>URL</strong></td><td>Pass visitor data into your docs through URL query parameters.</td><td><a href="enabling-adaptive-content/url">url</a></td></tr><tr><td><i class="fa-flag">:flag:</i></td><td><strong>Feature flags</strong></td><td>Pass visitor data into your docs through a feature flag provider.</td><td><a href="enabling-adaptive-content/feature-flags">feature-flags</a></td></tr><tr><td><i class="fa-lock">:lock:</i></td><td><strong>Authenticated access</strong></td><td>Pass visitor data into your docs through an authentication provider.</td><td><a href="enabling-adaptive-content/authenticated-access">authenticated-access</a></td></tr></tbody></table>
-
-
-# Cookies
-
-Pass visitor data into your docs through a public or signed cookie.
-
-{% hint style="info" %}
-Head to our guides to find a [full walk-through](https://app.gitbook.com/s/LBGJKQic7BQYBXmVSjy0/docs-personalization-and-authentication/setting-up-adaptive-content) on setting up adaptive content with cookies.
-{% endhint %}
-
-{% hint style="warning" %}
-Using adaptive content with feature flags requires adding code to your application.
-
-This method only works if your site is served under a [custom domain](https://gitbook.com/docs/documentation/publishing-documentation/custom-domain).
-{% endhint %}
-
-You can pass visitor data to your docs through your visitors browser cookies. Below is an overview of the different methods.
-
-<table data-full-width="false"><thead><tr><th width="335.125">Method</th><th width="266.6015625">Use-cases</th><th width="206.58984375">Ease of setup</th><th width="202">Security</th><th>Format</th></tr></thead><tbody><tr><td>Signed cookie <code>gitbook-visitor-token</code></td><td>API test credentials, customer identification</td><td>Require signing and a custom domain</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span> Properties can only be defined by the backend</td><td>JWT</td></tr><tr><td>Public cookie <code>gitbook-visitor-public</code></td><td>Feature flags, roles</td><td>Easy to set up</td><td><span data-gb-custom-inline data-tag="emoji" data-code="274c">❌</span> Visitor can override the properties</td><td>JSON</td></tr></tbody></table>
-
-### Public cookie
-
-To pass data to GitBook from a public cookie, you’ll need to send the data from your application by setting a public `gitbook-visitor-public` cookie.
-
-Below is a simple JavaScript example:
-
-```javascript
-import Cookies from 'js-cookie';
-
-const cookieData = {
-  isLoggedIn: true,
-  isBetaUser: false,
-};
-
-Cookies.set('gitbook-visitor-public', JSON.stringify(cookieData), {
-  secure: true,
-  domain: '*.acme.org',
-})
-```
-
-{% hint style="warning" %}
-Data passed through public cookies must be defined in your visitor schema through an [unsigned](https://gitbook.com/docs/publishing-documentation/adaptive-content/enabling-adaptive-content#setting-unsigned-claims) object.
-{% endhint %}
-
-### Signed cookie
-
-To pass data to GitBook more securely, you’ll need to send the data as a [JSON Web Token](https://jwt.io/introduction) from your application in a cookie named `gitbook-visitor-token` tied to your domain.
-
-To set this up, you'll need to adjust your application’s login flow to include the following steps:
-
-{% stepper %}
-{% step %}
-**Generate a JWT when users logs in to your application**
-
-Whenever a user logs in to your product, generate a JWT that contains selected attributes of your authenticated user's info.
-{% endstep %}
-
-{% step %}
-**Sign the JWT using the site's visitor signing key**
-
-Then, make sure to sign the JWT using the site's **visitor signing key**, which you can find in your site’s audience settings after enabling Adaptive Content.
-{% endstep %}
-
-{% step %}
-**Store the JWT in a wildcard session cookie**
-
-Finally you need to store the signed JWT containing your user's info into a wildcard session cookie **under your product domain**.
-
-For example, if your application is served behind the `app.acme.org` domain, the cookie will need to be created under the `.acme.org` wildcard domain.
-{% endstep %}
-{% endstepper %}
-
-Below is a simple TypeScript example:
-
-```typescript
-import * as jose from 'jose';
-
-import { Request, Response } from 'express';
-
-import { getUserInfo } from '../services/user-info-service';
-import { getFeatureFlags } from '../services/feature-flags-service';
-
-const GITBOOK_VISITOR_SIGNING_KEY = process.env.GITBOOK_VISITOR_SIGNING_KEY;
-const GITBOOK_VISITOR_COOKIE_NAME = 'gitbook-visitor-token';
-
-
-export async function handleAppLoginRequest(req: Request, res: Response) {
-   // Your business logic for handling the login request
-   // For example, checking credentials and authenticating the user
-   //
-   // e,g:
-   // const loggedInUser = await authenticateUser(req.body.username, req.body.password);
-
-   // After authenticating the user, retrieve user information that you wish
-   // to pass to GitBook from your database or user service.
-   const userInfo = await getUserInfo(loggedInUser.id);
-      
-   // Build the JWT payload with the user's information
-   const gitbookVisitorClaims = {
-       firstName: userInfo.firstName,
-       lastName: userInfo.lastName,
-       isBetaUser: userInfo.isBetaUser
-       products: userInfo.products.map((product) => product.name),
-       featureFlags: await getFeatureFlags({userId: loggedInUser.id})
-   }
-   
-   // Generate a signed JWT using the claims
-   const gitbookVisitorJWT = await new jose.SignJWT(gitbookVisitorClaims)
-     .setProtectedHeader({ alg: 'HS256' })
-     .setIssuedAt()
-     .setExpirationTime('2h') // abritary 2 hours expiration
-     .sign(GITBOOK_VISITOR_SIGNING_KEY);
-     
-  // Include a `gitbook-visitor-token` cookie including the encoded JWT in your
-  // login handler response
-  res.cookie(GITBOOK_VISITOR_COOKIE_NAME, gitbookVisitorJWT, {
-     httpOnly: true,
-     secure: process.env.NODE_ENV === 'production',
-     maxAge: 2 * 60 * 60 * 1000, // abritary 2 hours expiration
-     domain: '.acme.org' //
-  });
-  
-  // Rest of your login handler logic including redirecting the user to your app
-  res.redirect('/'); // Example redirect
-}
-```
-
-
-# URL
-
-Pass visitor data into your docs through URL query parameters.
-
-{% hint style="info" %}
-Head to our guides to find a [full walk-through](https://gitbook.com/docs/guides/product-guides/how-to-personalize-your-gitbook-site-using-url-parameters-and-adaptive-content) on setting up adaptive content with cookies.
-{% endhint %}
-
-You can pass visitor data to your docs through URL query parameters. Below is an overview of the method:
-
-<table data-full-width="false"><thead><tr><th width="325.45703125">Method</th><th width="266.6015625">Use-cases</th><th width="206.58984375">Ease of setup</th><th width="202">Security</th><th>Format</th></tr></thead><tbody><tr><td>Query parameters <code>visitor.&#x3C;prop>=</code></td><td>Feature flags, roles</td><td>Easy to use</td><td><span data-gb-custom-inline data-tag="emoji" data-code="274c">❌</span> Visitor can override the properties</td><td>JSON</td></tr></tbody></table>
-
-### Query parameters
-
-To pass data to GitBook through URL parameters, you’ll need to pass the data in the URL in the format `visitor.<prop>`.
-
-For example:
-
-```url
-https://docs.acme.org/?visitor.language=fr
-```
-
-This will allow you to use these claims in the [condition editor](https://gitbook.com/docs/documentation/publishing-documentation/adapting-your-content#working-with-the-condition-editor) under the unsigned object:
-
-```javascript
-visitor.claims.unsigned.language === "fr"
-```
-
-{% hint style="warning" %}
-Data passed through query parameters must be defined in your visitor schema through an [unsigned](https://gitbook.com/docs/publishing-documentation/adaptive-content/enabling-adaptive-content#setting-unsigned-claims) object. Additionally, query parameters can be easily changed by the visitor and are best suited for non-sensitive information.
-{% endhint %}
-
-### Video tutorial
-
-{% embed url="<https://www.youtube.com/embed/hCd2_AAHU_I?si=jm2VOThMVh7NdJm>\_" %}
-
-
-# Feature flags
-
-Pass visitor data into your docs through a feature flag provider.
-
-{% hint style="warning" %}
-Using adaptive content with feature flags requires adding code to your application.
-
-Currently, the GitBook helper only supports React based setups.
-{% endhint %}
-
-GitBook provides helper functions and integrations for popular feature flag service providers like [**LaunchDarkly**](#launchdarkly) and [**Reflag**](#reflag).
-
-This allows you to read the feature flags users have access to in your product, as they read your docs. This is useful if you need to show documentation for features that are only available to a specific group of people.
-
-### LaunchDarkly
-
-LaunchDarkly allows you to send feature flag access as claims through the [`launchdarkly-react-client-sdk`](https://launchdarkly.com/docs/sdk/client-side/react/react-web) and GitBook’s [`@gitbook/adaptive`](https://gitbook.com/docs/documentation/publishing-documentation/adaptive-content/enabling-adaptive-content/broken-reference) package.
-
-If you’re using LaunchDarkly feature flags in your product already, chances are you already have this package configured.
-
-To pass you these feature flags as claims to GitBook, follow these steps:
-
-{% stepper %}
-{% step %}
-**Install the LaunchDarkly integration**
-
-To get started, you’ll first need to [install the LaunchDarkly integration](https://app.gitbook.com/integrations/launchdarkly) into your GitBook site.
-{% endstep %}
-
-{% step %}
-**Set up your project and access keys**
-
-Add your project key and your service access token from your [LaunchDarkly settings](https://app.launchdarkly.com/settings) to the integration’s configuration.
-{% endstep %}
-
-{% step %}
-**Install and add the GitBook helper to your application**
-
-After setting up the LaunchDarkly integration, you’ll need to install the GitBook adaptive content helper in your application.
-
-```bash
-npm install @gitbook/adaptive
-```
-
-{% endstep %}
-
-{% step %}
-**Configure your application**
-
-You’ll need to use the `withLaunchDarkly` helper with the LaunchDarkly React SDK to pass context into GitBook.
-
-<pre class="language-javascript"><code class="lang-javascript">import { render } from 'react-dom';
-<strong>import { withLaunchDarkly } from '@gitbook/adaptive';
-</strong><strong>import { asyncWithLDProvider, useLDClient } from 'launchdarkly-react-client-sdk';
-</strong>import MyApplication from './MyApplication';
-
-function PassFeatureFlagsToGitBookSite() {
-<strong>    const ldClient = useLDClient();
-</strong>    React.useEffect(() => {
-        if (!ldClient) {
-            return;
-        }
-<strong>        return withLaunchDarkly(ldClient);
-</strong>    }, [ldClient]);
-    return null;
-}
-(async () => {
-    const LDProvider = await asyncWithLDProvider({
-        clientSideID: 'client-side-id-123abc',
-        context: {
-            kind: 'user',
-            key: 'user-key-123abc',
-            name: 'Sandy Smith',
-            email: 'sandy@example.com'
-        },
-        options: { /* ... */ }
-    });
-    render(
-        &#x3C;LDProvider>
-            &#x3C;PassFeatureFlagsToGitBookSite />
-            &#x3C;MyApplication />
-        &#x3C;/LDProvider>,
-        document.getElementById('reactDiv'),
-    );
-})();
-</code></pre>
-
-{% endstep %}
-
-{% step %}
-**Check your visitor schema**
-
-A [visitor schema](https://gitbook.com/docs/documentation/publishing-documentation/adaptive-content/enabling-adaptive-content/..#set-your-visitor-schema) is required in order for your claims to be able to be read in your published site. Installing and configuring the LaunchDarkly integration should automatically set your visitor schema for you.
-{% endstep %}
-
-{% step %}
-**Personalize your content**
-
-After setting your visitor schema, you’re ready to tailor your docs experience for the users visiting your site, using the feature flags the user has access to.
-
-Any feature flag value available in LaunchDarkly will be exposed as part of the visitor schema under the `visitor.claims.unsigned.launchdarkly` object. Read more about unsigned claims [here](https://gitbook.com/docs/documentation/publishing-documentation/adaptive-content/enabling-adaptive-content/..#set-an-unsigned-claim).
-
-Head to [adapting your content](https://gitbook.com/docs/documentation/publishing-documentation/adaptive-content/adapting-your-content) to learn more about personalizing your docs for your users.
-{% endstep %}
-{% endstepper %}
-
-### Reflag
-
-Reflag allows you to send feature flag access as claims through the [`@reflag/react-sdk`](https://www.npmjs.com/package/@reflag/react-sdk) and GitBook’s [`@gitbook/adaptive`](https://github.com/GitbookIO/integrations/tree/main/packages/adaptive) package.
-
-If you’re using Reflag feature flags in your product already, chances are you already have this package configured.
-
-To pass you these feature flags as claims to GitBook, follow these steps:
-
-{% stepper %}
-{% step %}
-**Install the Reflag Integration**
-
-To get started, you’ll first need to [install the Reflag integration](https://app.gitbook.com/integrations/bucket) into your GitBook site.
-{% endstep %}
-
-{% step %}
-**Set up your secret key**
-
-Add your secret key from your [Reflag settings](https://app.reflag.com/envs/current/settings/app-environments) to the integration’s configuration.
-{% endstep %}
-
-{% step %}
-**Install the GitBook helper to your application**
-
-After setting up the Reflag integration, you’ll need to install the GitBook adaptive content helper in your application.
-
-```bash
-npm install @gitbook/adaptive
-```
-
-{% endstep %}
-
-{% step %}
-**Configure your application**
-
-You’ll need to use the `withReflag` helper with the Reflag React SDK to pass context into GitBook.
-
-<pre class="language-javascript"><code class="lang-javascript"><strong>import { withReflag } from '@gitbook/adaptive';
-</strong><strong>import { ReflagProvider, useClient } from '@reflag/react-sdk';
-</strong>import MyApplication from './MyApplication';
-
-function PassFeatureFlagsToGitBookSite() {
-<strong>    const client = useClient();
-</strong>    React.useEffect(() => {
-        if (!client) {
-            return;
-        }
-<strong>        return withReflag(client);
-</strong>    }, [client]);
-    return null;
-}
-export function Application() {
-    const currentUser = useLoggedInUser();
-    const appConfig = useAppConfig();
-    return (
-        &#x3C;ReflagProvider
-            publishableKey={appConfig.reflagCom.publishableKey}
-            user={{
-                id: currentUser.uid,
-                email: currentUser.email ?? undefined,
-                name: currentUser.displayName ?? '',
-            }}
-            company={{
-                id: currentUser.company.id,
-            }}
-        >
-            &#x3C;PassFeatureFlagsToGitBookSite />
-            &#x3C;MyApplication />
-        &#x3C;/ReflagProvider>
-    );
-}
-</code></pre>
-
-{% endstep %}
-
-{% step %}
-**Check your visitor schema**
-
-A [visitor schema](https://gitbook.com/docs/documentation/publishing-documentation/adaptive-content/enabling-adaptive-content/..#set-your-visitor-schema) is required in order for your claims to be able to be read in your published site. Installing and configuring the Reflag integration should automatically set your visitor schema for you.
-{% endstep %}
-
-{% step %}
-**Personalize your content**
-
-After setting your visitor schema, you’re ready to tailor your docs experience for the users visiting your site, using the feature flags the user has access to.
-
-Any feature flag value available in Reflag will be exposed as part of the visitor schema under the `visitor.claims.unsigned.reflag` object. Read more about unsigned claims [here](https://gitbook.com/docs/documentation/publishing-documentation/adaptive-content/enabling-adaptive-content/..#set-an-unsigned-claim).
-
-Head to [adapting your content](https://gitbook.com/docs/documentation/publishing-documentation/adaptive-content/adapting-your-content) to learn more about personalizing your docs for your users.
-{% endstep %}
-{% endstepper %}
-
-{% hint style="info" %}
-Feature flag values are evaluated on the client side, so avoid using this method to pass sensitive or security-critical data.
-{% endhint %}
-
-
-# Authenticated access
-
-GitBook offers out-of-the box solutions to protect your docs. Integrations for Auth0, Okta, Azure AD, and AWS Cognito allow you install an integration to enforce a log-in screen before being able to access your published site.
-
-Depending on which authenticated access method you’re using, you’ll still need to configure a few more things depending on which integration you’re using in order to send the right data to GitBook.
-
-Head to the relevant guide for full instructions on setting up adaptive content with authenticated access.
-
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Setting up Auth0</strong></td><td>Configure Auth0 with authenticated access and adaptive content.</td><td><a href="../../authenticated-access/setting-up-auth0">setting-up-auth0</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FRC8ah9trT3HsKVau1mnH%2Fcard_auth0.svg?alt=media&#x26;token=66d83098-b07c-4ee1-b41d-f9766dfdf703">card_auth0.svg</a></td></tr><tr><td><strong>Setting up Azure AD</strong></td><td>Configure Azure AD with authenticated access and adaptive content.</td><td><a href="../../authenticated-access/setting-up-azure-ad">setting-up-azure-ad</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FKrbZXlJ3dMpfRu87FMGS%2Fcard_azure_ad.svg?alt=media&#x26;token=9ab99f1f-bd44-4a01-829b-3572d4559dff">card_azure_ad.svg</a></td></tr><tr><td><strong>Setting up AWS Cognito</strong></td><td>Configure AWS Cognito with authenticated access and adaptive content.</td><td><a href="../../authenticated-access/setting-up-aws-cognito">setting-up-aws-cognito</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FiWvq26r9Mxig2qbWMJJ4%2Fcard_aws_cognito.svg?alt=media&#x26;token=f275b67c-fbcc-46e2-8eb6-b46f9629ef0e">card_aws_cognito.svg</a></td></tr><tr><td><strong>Setting up Okta</strong></td><td>Configure Okta with authenticated access and adaptive content.</td><td><a href="../../authenticated-access/setting-up-okta">setting-up-okta</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fb1BCMkshEsKD26yyp0Wt%2Fcard_okta.svg?alt=media&#x26;token=81133f4d-0a34-40e3-958e-616a268a12c1">card_okta.svg</a></td></tr><tr><td><strong>Setting up a custom backend</strong></td><td>Configure a custom backend with authenticated access and adaptive content.</td><td><a href="../../authenticated-access/setting-up-a-custom-backend">setting-up-a-custom-backend</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FkiyIjK7tW99zVp1y1ksI%2Fcard_custom_backend.svg?alt=media&#x26;token=03687058-22d1-462e-8d4a-c42f6b51a1df">card_custom_backend.svg</a></td></tr></tbody></table>
-
-
-# Adapting your content
-
-Tailor your content for different users.
-
-After setting up your authentication method, you’ll be able to use the data to adapt the content in your site for different users.
-
-You can adapt and personalize many parts of your docs, including:
-
-* Hiding or showing [pages](https://gitbook.com/docs/documentation/creating-content/content-structure/page)
-* Hiding or showing site [variants](https://gitbook.com/docs/documentation/publishing-documentation/site-structure/variants)
-* Hiding or showing site [sections](https://gitbook.com/docs/documentation/publishing-documentation/site-structure/site-sections)
-* Hiding or showing [header links](https://gitbook.com/docs/documentation/customization/layout-and-structure#header)
-* Adding personalized content to [inline expressions](https://gitbook.com/docs/documentation/creating-content/variables-and-expressions)
-
-### Working with the condition editor
-
-The condition editor is where you’ll set the conditions for showing or hiding a page, variant, or section. After opening the condition editor, you’ll be able to write your condition as an [expression](https://gitbook.com/docs/documentation/creating-content/variables-and-expressions) that will run against data coming from visitors to your site.&#x20;
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FOuXuIopG1ewhME0Kzeo2%2F28_07_25_condition_editor.svg?alt=media&#x26;token=b342b145-893e-4237-aad7-98f0ebdff208" alt=""><figcaption></figcaption></figure>
-
-#### Example
-
-The data you pass through your users to GitBook is attached to an object called `visitor.claims`.&#x20;
-
-Let’s take a look at an example if we want to write a conditional statement to **only show a page for users who are part of a beta program** you might define.&#x20;
-
-```javascript
-visitor.claims.isBetaUser == true
-```
-
-The expression above means that any user who matches this claim (i.e. `isBetaUser` is `true` in the user’s claim), will be able to see and access the page. Any user who does not match this claim (including visitors without any claims set), will not be able to see or access the page.
-
-The condition editor also comes built in with autocomplete, which suggests claims or attributes that have been found on previous visitors to your site, helping you craft the conditional statement for your pages, variants, or sections.&#x20;
-
-As you use the autocomplete, you'll notice that [variables](https://gitbook.com/docs/documentation/creating-content/variables-and-expressions#use-variables-in-your-content) are also available to use. You can combine variables that you have defined together with claims that come from user data to write conditional expressions. For example, you could:
-
-1. Set a variable for the latest version of your product
-2. Then, configure a claim that shows which version of your product is being used by a visitor to your docs
-3. Finally, write an expression to only show certain pages when a user is on the latest version of your docs
-
-You can write many different kinds of expressions , as long as they are written in valid Javascript. For instance, you can combine multiple claims into the condition editor to match specific users by using the `&&` or `||` operator. You can read more about operators [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#binary_logical_operators).
-
-### Testing with segments
-
-Segments represent mock user data that you can configure to test your conditions.&#x20;
-
-For example, you could set up a segment that represents a developer on your enterprise plan, or a sign-in user on a free plan, and then see which pages would be visible to them.&#x20;
-
-[You can read more about setting up and using segments here.](https://gitbook.com/docs/documentation/publishing-documentation/adaptive-content/testing-with-segments)
-
-### Conditional pages
-
-To launch the condition editor for a page, head to the actions menu <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt="The Actions menu icon in GitBook"></picture> next to a page, and click **Add condition.** You can also launch the condition editor from a [page’s options](https://gitbook.com/docs/documentation/resources/gitbook-ui#page-options).
-
-You can see which pages in your space have conditions set if the page has a page condition icon <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FG1cXfAVYBRLW0aRpIDRJ%2Fpage-condition%20-%20dark.svg?alt=media&#x26;token=dd656a89-387d-41c7-adf8-994848ec3440" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F51vQZhUqnkdsYpyUo1Pj%2Fpage-condition.svg?alt=media&#x26;token=31dd334a-5097-4081-915c-db460e610ec6" alt="The Page condition icon in GitBook"></picture> next to it.
-
-{% if visitor.claims.unsigned.bucket.IF\_BLOCK === true %}
-
-### Conditional blocks
-
-To add a conditional block, begin a new line in the editor, type <kbd>/</kbd>, then select  <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FG1cXfAVYBRLW0aRpIDRJ%2Fpage-condition%20-%20dark.svg?alt=media&#x26;token=dd656a89-387d-41c7-adf8-994848ec3440" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F51vQZhUqnkdsYpyUo1Pj%2Fpage-condition.svg?alt=media&#x26;token=31dd334a-5097-4081-915c-db460e610ec6" alt="The Page condition icon in GitBook"></picture> **Conditional content**.&#x20;
-
-In the top right of the block, click on the  <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FG1cXfAVYBRLW0aRpIDRJ%2Fpage-condition%20-%20dark.svg?alt=media&#x26;token=dd656a89-387d-41c7-adf8-994848ec3440" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F51vQZhUqnkdsYpyUo1Pj%2Fpage-condition.svg?alt=media&#x26;token=31dd334a-5097-4081-915c-db460e610ec6" alt="The Page condition icon in GitBook"></picture> **Condition** button to edit the condition and control the visibility of the block. Not all block types are supported within conditional blocks.
-{% endif %}
-
-### Conditional variants
-
-To launch the condition editor for a variant, head to the actions menu <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt="The Actions menu icon in GitBook"></picture> next to a variant, and click **Add condition**.
-
-You can see which variants in your docs have conditions set if the variant has a page condition icon <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FG1cXfAVYBRLW0aRpIDRJ%2Fpage-condition%20-%20dark.svg?alt=media&#x26;token=dd656a89-387d-41c7-adf8-994848ec3440" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F51vQZhUqnkdsYpyUo1Pj%2Fpage-condition.svg?alt=media&#x26;token=31dd334a-5097-4081-915c-db460e610ec6" alt="The Page condition icon in GitBook"></picture> next to it.
-
-### Conditional sections
-
-To launch the condition editor for a section, head to the actions menu <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt="The Actions menu icon in GitBook"></picture> next to a section, and click **Add condition**.
-
-You can see which sections in your docs have conditions set if the section has a page condition icon <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FG1cXfAVYBRLW0aRpIDRJ%2Fpage-condition%20-%20dark.svg?alt=media&#x26;token=dd656a89-387d-41c7-adf8-994848ec3440" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F51vQZhUqnkdsYpyUo1Pj%2Fpage-condition.svg?alt=media&#x26;token=31dd334a-5097-4081-915c-db460e610ec6" alt="The Page condition icon in GitBook"></picture> next to it.
-
-### Conditional page header links
-
-To launch the condition editor for a page header link, head to the actions menu <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt="The Actions menu icon in GitBook"></picture> next to a header link, and click **Add condition**.
-
-You can see which links in your docs have conditions set if the section has a page condition icon <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FG1cXfAVYBRLW0aRpIDRJ%2Fpage-condition%20-%20dark.svg?alt=media&#x26;token=dd656a89-387d-41c7-adf8-994848ec3440" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F51vQZhUqnkdsYpyUo1Pj%2Fpage-condition.svg?alt=media&#x26;token=31dd334a-5097-4081-915c-db460e610ec6" alt="The Page condition icon in GitBook"></picture> next to it.
-
-### Inline expressions
-
-In addition to controlling the visibility of content, you can also use claims inline using [expressions](https://gitbook.com/docs/documentation/creating-content/variables-and-expressions), just like page and space variables.&#x20;
-
-To reference a claim inline using an expression, type <kbd>/</kbd> in the editor, then select <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FuPn7EFzfXAeRof6dIxwZ%2FExpression%20-%20dark%20mode.svg?alt=media&#x26;token=de1419bc-04f5-4b29-9397-b4b62d1aa4c0" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FyV0YSeHof9IkW4nnHQ4C%2FExpression.svg?alt=media&#x26;token=47e912c2-1ff1-4882-825f-5c3c79b4e6c0" alt=""></picture> **Expression**. Claims will be accessible in the expression editor as properties on `visitor` .
-
-### Working with Git Sync
-
-Conditions set in GitBook are synced through Git Sync and appear in the synced Markdown pages. This means blocks and pages with conditions set on their visibility are still visible in your synced repo.
-
-&#x20;Data passed through claims is never visible in Markdown, and is securely passed to GitBook.
-
-
-# Testing with segments
-
-Test your conditions with mock data.
-
-Segments allow you to test the conditions you set by defining claims on a mock user.
-
-For example, you might want to only show a page or section to beta users. By creating a segment and defining the properties associated with this group of mock users, you can mimic a segment that is specific to the users you’re targeting.
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FqHAwiqV4PhzJbqXNCEZP%2F18_07_25_segment_editor.svg?alt=media&#x26;token=cdc742cf-e1d6-4e0f-8f26-e8b0c9878dd7" alt="A GitBook screenshot showing the segment editor"><figcaption><p>The segment editor in GitBook.</p></figcaption></figure>
-
-### Create a segment
-
-To create a new segment, head to the condition editor, and click the settings icon <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F6uYUpJto7WTkJf9BUPHv%2Fsettings%20-%20dark.svg?alt=media&#x26;token=bf52415f-e999-43a2-9a1a-c85176a014cd" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FwkBqgOPry9HAcW4cxJk0%2Fsettings.svg?alt=media&#x26;token=67bdbb00-ebf3-4a2d-9df8-0c822406f71c" alt="The Settings icon in GitBook"></picture> next to an existing segment in the segment dropdown.
-
-Here you’ll be able to define the data that will appear on a mock user. Because this is the data that’s being represented, the `visitor.claims` key is omitted.
-
-#### Example
-
-To create a segment for beta users following the examples in our docs, you would create a new segment, and add the following data.
-
-```json
-{
-  "isBetaUser": true
-}
-```
-
-When heading back to the condition editor, selecting the beta segment we created should show that the page we’re viewing **would** be accessible to our test user.
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FifSD7Ja6jOfCECLlyxAK%2F21_03_25_testing_segments.svg?alt=media&#x26;token=aad7a05c-ca4e-4eae-9715-ce25bcaf398d" alt="A GitBook screenshot showing how to test a segment"><figcaption><p>Testing a segment in GitBook.</p></figcaption></figure>
-
-### Detected segments
-
-Detected segments allow you to get a sense of the type of claims you are receiving from visitors to your site.
-
-These segments are not editable, but allow you to copy/paste claims from the segment editor to create your own user segments.
-
-### Testing segments in the preview
-
-In addition to testing segments in the segment editor, you’ll be able to use your segments in real time in the preview when viewing changes for your site.
-
-Use the dropdown in the upper left corner when in preview mode for your site to choose a segment to see how your site will look for your chosen segment.
-
-
-# AI Search
-
-Help your users find the information they need faster with powerful AI search tools for your published content
-
-Help your users find the information they need faster with powerful knowledge discovery tools for your published content
-
-### Choose your site’s search experience
-
-GitBook sites offer different search experiences depending on what you want for your users:
-
-* **Keyword search** – A standard search experience based on keywords. Automatically enabled on all sites.
-* **GitBook AI search** – Users get short answers to questions directly from the search box.
-* **GitBook Assistant** – Users get an advanced, interactive chat experience with GitBook’s AI agent. Head to [GitBook Assistant](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant) to learn more.
-
-To choose your site’s search experience, open your site’s dashboard, navigate to the **Settings** page and choose **AI & MCP** from the menu on the left. Here you can choose your preferred experience.
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FZLKjSnbd8AfcHZEDkQIJ%2F29_07_25_search_ai.svg?alt=media&#x26;token=82ca3fbb-0dee-407a-9bf7-b2473b774e06" alt=""><figcaption><p>Choose the search experience you want in your published docs</p></figcaption></figure>
-
-{% hint style="warning" %}
-When GitBook Assistant is enabled, AI search is disabled. Standard keyword searches will always provide the results in the search bar no matter which experience you choose.
-{% endhint %}
-
-## Searching published documentation
-
-**​**Users can open the **Ask or search…** bar by pressing <kbd>⌘</kbd> + <kbd>K</kbd> on Mac or <kbd>Ctrl</kbd> + <kbd>K</kbd> on PC.
-
-Your users can search for keywords within your docs site and jump quickly to specific pages or page sections across your entire site.
-
-If your docs site has multiple [sections](https://gitbook.com/docs/documentation/publishing-documentation/site-structure/site-sections), the search results will contain pages from all of these sections so that you users can jump straight to the page they need.
-
-## GitBook AI search
-
-{% hint style="info" %}
-This feature is available on [Premium and Ultimate site plans](https://www.gitbook.com/pricing).
-{% endhint %}
-
-GitBook AI search offers basic AI-powered answers in the **Search and find…** bar of your site. It’s trained on the content of your docs site, but cannot pull in information from external sources.
-
-### Using GitBook AI search
-
-If you have enabled GitBook AI search from your site’s settings page, your users can access it by asking a question directly in the **Ask or search…** bar at the top of the page.
-
-They can open this by clicking it directly, or by pressing <kbd>⌘</kbd> + <kbd>K</kbd> on a Mac or <kbd>Ctrl</kbd> + <kbd>K</kbd> on a PC.
-
-As well as a summarized answer, below your users will also see an expandable section that shows the sources that GitBook AI used to create its answer, plus related questions you can click as a follow-up.
-
-{% hint style="warning" %}
-GitBook AI does not work across individual published spaces on different [docs sites](https://gitbook.com/docs/documentation/publishing-documentation/publish-a-docs-site).
-
-Multi-space search is only available when viewing published spaces that live as [site sections](https://gitbook.com/docs/documentation/publishing-documentation/site-structure/site-sections) within the same site.
-{% endhint %}
-
-* Press <kbd>⌘</kbd> + <kbd>I</kbd> on Mac or <kbd>Ctrl</kbd> + <kbd>I</kbd> on PC
-* Click the **GitBook Assistant** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FFdcFnImj64xwVYVPFZZp%2Fgitbook-assistant-dark.svg?alt=media&#x26;token=6d5690e2-8587-4646-886a-dfd49caee6d5" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FRPCVZqnhQlwvRJbvEgM9%2Fgitbook-assistant.svg?alt=media&#x26;token=0506ce84-b363-481b-aefb-e0fa47357226" alt=""></picture> button next to the **Ask or search…** bar
-* Type a question into the **Ask or search…** bar and choose the ‘Ask…’ option at the top of the menu.
-
-
-# GitBook Assistant
-
-GitBook Assistant offers users answers based on your docs and tailored to their situation — not just generic responses
-
-{% hint style="info" %}
-This feature is available on the [Ultimate site plan](https://www.gitbook.com/pricing).
-{% endhint %}
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FSYnigoIgRCsPtDbJ4UKr%2F23_07_25_gitbook_assistant.svg?alt=media&#x26;token=384d57b1-fe51-464f-b000-fd7450f250a7" alt="GitBook Assistant"><figcaption><p>The GitBook Assistant</p></figcaption></figure>
-
-GitBook Assistant gives your users fast, accurate answers about your documentation using natural language. It's personalized to your users, can be embedded into your website or product, and is available in the sidebar of your published docs.
-
-Think of it as a product expert available to all of your users, in the places and times they need it most.
-
-The Assistant uses agentic retrieval to understand the context of queries based on the user's current page, previously-read pages, and previous conversations.
-
-<p align="center"><a href="https://gitbook.com/docs/publishing-documentation/gitbook-ai-assistant?ask=how+does+the+gitbook+assistant+help+tie+product+knowledge+closer+to+users+in+my+product" class="button primary">Test GitBook Assistant</a></p>
-
-### Enable GitBook Assistant <a href="#how-do-i-use-gitbook-ai" id="how-do-i-use-gitbook-ai"></a>
-
-To enable GitBook Assistant, open your site's dashboard, navigate to the **Settings** page and choose **AI & MCP** from the menu on the left. Here you can enable GitBook Assistant from the options available.
-
-### Using GitBook Assistant in published docs <a href="#how-do-i-use-gitbook-ai" id="how-do-i-use-gitbook-ai"></a>
-
-Users can access GitBook Assistant in three ways:
-
-* Press <kbd>⌘</kbd> + <kbd>I</kbd> on Mac or <kbd>Ctrl</kbd> + <kbd>I</kbd> on PC
-* Click the **GitBook Assistant**&#x20;
-
-  <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FFdcFnImj64xwVYVPFZZp%2Fgitbook-assistant-dark.svg?alt=media&#x26;token=6d5690e2-8587-4646-886a-dfd49caee6d5" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FRPCVZqnhQlwvRJbvEgM9%2Fgitbook-assistant.svg?alt=media&#x26;token=0506ce84-b363-481b-aefb-e0fa47357226" alt=""></picture>
-
-  &#x20;button next to the **Ask or search…** bar
-* Type a question into the **Ask or search…** bar and choose the 'Ask…' option at the top of the menu
-
-{% if visitor.claims.unsigned.reflag.EMBED\_ASSISTANT\_PANEL == true %}
-
-#### Embed GitBook Assistant in your product
-
-You can embed GitBook Assistant to help you bring your product and product knowledge closer together. Choose the embedding method that fits your stack:
-
-* [**Script tag**](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant/embedding/script) – Quick setup with a `<script>` tag
-* [**Node.js/NPM**](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant/embedding/nodejs) – Server-side or build-time integration
-* [**React component**](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant/embedding/react) – Prebuilt React components
-
-**Additional guides:**
-
-* [Using with authenticated docs](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant/using-with-authenticated-docs) – Required if your docs need sign-in
-* [Customizing the Assistant](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant/configuration/customizing-gitbook-assistant) – Welcome messages, buttons, and suggestions
-* [Creating custom tools](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant/configuration/creating-custom-tools) – Connect Assistant to your APIs
-* [API Reference](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant/configuration/reference) – All available methods and events
-  {% endif %}
-
-### Extend GitBook Assistant with MCP servers
-
-You can also add external data sources to GitBook Assistant to give it more context and data to pull answers from. You can do this by connecting Assistant to MCP servers for external platforms, such as:
-
-* Your community (Slack, Discord, GitHub Communities etc)
-* Support tools (Intercom etc)
-* Your future product roadmap (GitHub, Linear etc)
-* Docs for external integrations with products
-
-To add an MCP server to GitBook Assistant, follow these steps:
-
-{% stepper %}
-{% step %}
-**Open your site's settings**
-
-Navigate to your site dashboard and choose the **Settings** option from the site header. Then choose the **AI & MCP** section from the left-hand menu
-{% endstep %}
-
-{% step %}
-**Add a new server**
-
-At the bottom of the page is a table showing all the connected MCP servers. To add a new server, click **Add MCP server**
-{% endstep %}
-
-{% step %}
-**Choose your MCP server**
-
-To add your server you'll need to give it a name, add the URL for the server, and configure the HTTP headers that will be sent along with the request to the server when a user submits a query.
-{% endstep %}
-{% endstepper %}
-
-
-# Embedding
-
-Choose the embedding method that best fits your tech stack and integration requirements
-
-GitBook Assistant can be embedded directly into your website or app, giving your users instant access to product knowledge right where they need it.
-
-<div data-with-frame="true"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F5krgZgNq1Mj79a3aVB7h%2Femebeddable_assistant.png?alt=media&#x26;token=a89feaac-3656-400b-8dcd-e7969f79d92d" alt="Embed GitBook Assistant into your product or website"><figcaption><p>Embed GitBook Assistant into your product or website</p></figcaption></figure></div>
-
-### Choose your integration method
-
-Pick the approach that matches your setup:
-
-* [**Script tag**](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant/embedding/script) – Drop in a `<script>` tag for the fastest setup
-* [**Node.js/NPM**](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant/embedding/nodejs) – Install via NPM for server-side rendering or build-time control
-* [**React component**](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant/embedding/react) – Use prebuilt React components for seamless integration
-
-### Prerequisites
-
-Before embedding the Assistant, ensure:
-
-1. **GitBook Assistant is enabled** for your docs site (Settings → AI & MCP)
-2. **Your docs are published** and accessible at a URL (e.g., `https://docs.company.com`)
-3. **You have the embed script URL** from your site settings (Settings → AI & MCP → Embed)
-
-### What's next?
-
-Choose your embedding method above, then explore:
-
-* [Using with authenticated docs](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant/using-with-authenticated-docs) – Required if your docs require sign-in
-* [Customizing the Assistant](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant/configuration/customizing-gitbook-assistant) – Add welcome messages, buttons, and suggestions
-* [Creating custom tools](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant/configuration/creating-custom-tools) – Connect Assistant to your product APIs
-
-
-# Script tag
-
-Add GitBook Assistant to any website with a simple script tag
-
-The quickest way to add GitBook Assistant to your website or app is by adding it through a script tag. Every docs site in GitBook includes a ready-to-use script for embedding the Assistant as a widget.
-
-## Steps
-
-1. **Get your embed script URL**
-
-   Navigate to your docs site's **Settings** → **AI & MCP** tab and copy the script URL. It will look like: `https://docs.company.com/~gitbook/embed/script.js`
-2. **Add the script tag to your HTML**
-
-   Place this code in your HTML `<head>` or before the closing `</body>` tag:
-
-   ```html
-   <script src="https://docs.company.com/~gitbook/embed/script.js"></script>
-   <script>
-     window.GitBook("show");
-   </script>
-   ```
-3. **Replace the docs URL**
-
-   Update `docs.company.com` with your actual docs site URL.
-4. **Test the widget**
-
-   Load your page. The Assistant widget should appear in the bottom-right corner.
-5. **Optionally configure the Assistant**
-
-   Add customization options before calling `show()`:
-
-   ```html
-   <script src="https://docs.company.com/~gitbook/embed/script.js"></script>
-   <script>
-     window.GitBook("configure", {
-       welcomeMessage: "Welcome! How can I help you today?",
-       suggestions: [
-         "How do I get started?",
-         "What are the pricing plans?",
-         "How do I reset my password?",
-       ],
-     });
-     window.GitBook("show");
-   </script>
-   ```
-6. **Control widget visibility**
-
-   Use the API to show, hide, open, or close the Assistant:
-
-   ```html
-   <script>
-     // Show the widget
-     window.GitBook("show");
-
-     // Hide the widget
-     window.GitBook("hide");
-
-     // Open the Assistant panel
-     window.GitBook("open");
-
-     // Close the Assistant panel
-     window.GitBook("close");
-   </script>
-   ```
-7. **Load dynamically (optional)**
-
-   For authenticated docs or conditional loading, inject the script at runtime:
-
-   ```html
-   <script>
-     function loadGitBookAssistant() {
-       var script = document.createElement("script");
-       script.src = "https://docs.company.com/~gitbook/embed/script.js";
-       script.async = true;
-       script.onload = function () {
-         window.GitBook("show");
-       };
-       document.head.appendChild(script);
-     }
-
-     // Load when ready
-     loadGitBookAssistant();
-   </script>
-   ```
-8. **Verify the setup**
-
-   Open your browser console and type `window.GitBook` to confirm the API is available.
-
-## Props & Configuration
-
-| Option           | Type       | Required | Default                 | Description                                                                                        |
-| ---------------- | ---------- | -------- | ----------------------- | -------------------------------------------------------------------------------------------------- |
-| `siteURL`        | `string`   | Yes\*    | Derived from script URL | Your GitBook docs site URL. Only required when using `configure()` explicitly.                     |
-| `welcomeMessage` | `string`   | No       | `null`                  | Custom welcome message shown when the Assistant opens.                                             |
-| `suggestions`    | `string[]` | No       | `[]`                    | Array of suggested questions displayed to users.                                                   |
-| `buttons`        | `object[]` | No       | `[]`                    | Custom buttons in the Assistant header. Each button has `label`, `icon`, and `onClick` properties. |
-
-**API Methods** (via `window.GitBook()`):
-
-| Method        | Parameters | Description                                                              |
-| ------------- | ---------- | ------------------------------------------------------------------------ |
-| `'show'`      | `config?`  | Show the Assistant widget. Optionally pass a config object.              |
-| `'hide'`      | None       | Hide the widget without unloading it.                                    |
-| `'open'`      | None       | Open the Assistant panel.                                                |
-| `'close'`     | None       | Close the Assistant panel.                                               |
-| `'toggle'`    | None       | Toggle the panel open/closed.                                            |
-| `'configure'` | `config`   | Set configuration options (welcomeMessage, suggestions, buttons, tools). |
-| `'unload'`    | None       | Completely remove the widget from the page.                              |
-
-## Common pitfalls
-
-* **Script URL is incorrect** – Ensure you're using your actual docs URL, not the example `docs.company.com`.
-* **Calling GitBook before script loads** – Wrap API calls in `script.onload` or place them after the script tag.
-* **Authenticated docs not accessible** – If your docs require sign-in, the Assistant cannot access content unless you provide the `gitbook-visitor-token`. See [Using with authenticated docs](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant/using-with-authenticated-docs).
-* **CORS or CSP errors** – Ensure your site's Content Security Policy allows loading scripts and iframes from your GitBook domain.
-* **Widget not visible** – Check z-index conflicts with other elements on your page. The widget uses a high z-index by default.
-
-
-# Node.js/NPM
-
-Integrate GitBook Assistant using the NPM package for full application-level control
-
-If you need more control and want to work at the application level, you can install the GitBook embed package from npm. This approach is ideal for server-side rendering, build-time integration, or custom iframe management.
-
-## Steps
-
-1. **Install the package**
-
-   Add `@gitbook/embed` to your project:
-
-   ```bash
-   npm install @gitbook/embed
-   ```
-2. **Import the package**
-
-   In your application code, import the `createGitBook` function:
-
-   ```javascript
-   import { createGitBook } from "@gitbook/embed";
-   ```
-
-   Or using CommonJS:
-
-   ```javascript
-   const { createGitBook } = require("@gitbook/embed");
-   ```
-3. **Initialize GitBook**
-
-   Create a GitBook instance with your docs site URL:
-
-   ```javascript
-   const gitbook = createGitBook({
-     siteURL: "https://docs.company.com",
-   });
-   ```
-4. **Create an iframe**
-
-   Generate an iframe element and set its source to the Assistant URL:
-
-   ```javascript
-   const iframe = document.createElement("iframe");
-   iframe.src = gitbook.getFrameURL();
-   iframe.id = "assistant-container";
-   iframe.style.border = "none";
-   iframe.style.width = "100%";
-   iframe.style.height = "600px";
-   ```
-5. **Attach the frame**
-
-   Create a GitBook frame instance and mount it to your page:
-
-   ```javascript
-   const frame = gitbook.createFrame(iframe);
-   document.getElementById("assistant-container").appendChild(iframe);
-   ```
-6. **Control the Assistant programmatically**
-
-   Use the frame instance to interact with the Assistant:
-
-   ```javascript
-   // Open the Assistant
-   frame.open();
-
-   // Close the Assistant
-   frame.close();
-
-   // Toggle the Assistant
-   frame.toggle();
-
-   // Navigate to a specific page
-   frame.navigateToPage("/getting-started");
-
-   // Send a message
-   frame.postUserMessage("How do I get started?");
-   ```
-7. **Add configuration options**
-
-   Pass customization options when initializing:
-
-   ```javascript
-   const gitbook = createGitBook({
-     siteURL: "https://docs.company.com",
-     welcomeMessage: "Welcome to our help center!",
-     suggestions: ["How do I get started?", "What are the pricing plans?"],
-     buttons: [
-       {
-         label: "Contact Support",
-         icon: "envelope",
-         onClick: () => {
-           window.open("mailto:support@example.com", "_blank");
-         },
-       },
-     ],
-   });
-   ```
-
-## Props & Configuration
-
-| Option           | Type       | Required | Default | Description                                                                                                                                                                            |
-| ---------------- | ---------- | -------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `siteURL`        | `string`   | Yes      | N/A     | Your GitBook docs site URL (e.g., `https://docs.company.com`).                                                                                                                         |
-| `welcomeMessage` | `string`   | No       | `null`  | Custom welcome message shown when the Assistant opens.                                                                                                                                 |
-| `suggestions`    | `string[]` | No       | `[]`    | Array of suggested questions displayed to users.                                                                                                                                       |
-| `buttons`        | `object[]` | No       | `[]`    | Custom buttons in the Assistant header. Each button has `label`, `icon`, and `onClick` properties.                                                                                     |
-| `tools`          | `object[]` | No       | `[]`    | Custom tools for the Assistant. See [Creating custom tools](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant/configuration/creating-custom-tools). |
-
-**Frame Methods:**
-
-| Method                     | Parameters        | Description                                   |
-| -------------------------- | ----------------- | --------------------------------------------- |
-| `open()`                   | None              | Open the Assistant panel.                     |
-| `close()`                  | None              | Close the Assistant panel.                    |
-| `toggle()`                 | None              | Toggle the panel open/closed.                 |
-| `navigateToPage(path)`     | `path: string`    | Navigate to a specific docs page.             |
-| `navigateToAssistant()`    | None              | Navigate directly to the Assistant interface. |
-| `postUserMessage(message)` | `message: string` | Send a message as the user.                   |
-| `clearChat()`              | None              | Clear all chat messages.                      |
-| `destroy()`                | None              | Remove the Assistant and clean up resources.  |
-
-## Common pitfalls
-
-* **Forgetting to install the package** – Run `npm install @gitbook/embed` before importing.
-* **Missing siteURL** – The `siteURL` option is required and must match your published docs site.
-* **iFrame not rendering** – Ensure the parent container has sufficient width/height for the iframe to display.
-* **Frame methods called before initialization** – Wait until `createFrame()` completes before calling frame methods.
-* **Not cleaning up on unmount** – Always call `frame.destroy()` to prevent memory leaks in single-page apps.
-
-
-# React
-
-Use prebuilt React components to embed GitBook Assistant in your React application
-
-For React projects, GitBook provides prebuilt components that make embedding the Assistant simple and idiomatic. The components handle state management, context, and lifecycle automatically.
-
-## Steps
-
-1. **Install the package**
-
-   Add `@gitbook/embed` to your React project:
-
-   ```bash
-   npm install @gitbook/embed
-   ```
-2. **Import the React components**
-
-   Import the `GitBookProvider` and `GitBookAssistantFrame` components:
-
-   ```jsx
-   import {
-     GitBookProvider,
-     GitBookAssistantFrame,
-   } from "@gitbook/embed/react";
-   ```
-3. **Wrap your app with GitBookProvider**
-
-   Add the provider at the root of your component tree or where you need the Assistant:
-
-   ```jsx
-   function App() {
-     return (
-       <GitBookProvider siteURL="https://docs.company.com">
-         <YourAppContent />
-       </GitBookProvider>
-     );
-   }
-   ```
-4. **Add the AssistantFrame component**
-
-   Place the frame component where you want the Assistant to appear:
-
-   ```jsx
-   function App() {
-     return (
-       <GitBookProvider siteURL="https://docs.company.com">
-         <div className="app">
-           <YourAppContent />
-           <GitBookAssistantFrame />
-         </div>
-       </GitBookProvider>
-     );
-   }
-   ```
-5. **Customize the Assistant**
-
-   Pass configuration props to the provider:
-
-   ```jsx
-   <GitBookProvider
-     siteURL="https://docs.company.com"
-     welcomeMessage="Welcome to our help center! How can we assist you today?"
-     suggestions={[
-       "How do I get started?",
-       "What are the pricing plans?",
-       "How do I reset my password?",
-     ]}
-     buttons={[
-       {
-         label: "Contact Support",
-         icon: "envelope",
-         onClick: () => {
-           window.open("mailto:support@example.com", "_blank");
-         },
-       },
-     ]}
-   >
-     <GitBookAssistantFrame />
-   </GitBookProvider>
-   ```
-6. **Control the Assistant with the useGitBook hook**
-
-   Use the `useGitBook` hook to interact with the Assistant programmatically:
-
-   ```jsx
-   import { useGitBook } from "@gitbook/embed/react";
-
-   function HelpButton() {
-     const gitbook = useGitBook();
-
-     return <button onClick={() => gitbook.open()}>Open Help</button>;
-   }
-   ```
-7. **Conditionally render the Assistant**
-
-   Show the Assistant only when needed:
-
-   ```jsx
-   function App() {
-     const [showAssistant, setShowAssistant] = useState(false);
-
-     return (
-       <GitBookProvider siteURL="https://docs.company.com">
-         <button onClick={() => setShowAssistant(true)}>Get Help</button>
-         {showAssistant && <GitBookAssistantFrame />}
-       </GitBookProvider>
-     );
-   }
-   ```
-8. **Use with Next.js or server-side rendering**
-
-   Dynamically import the components to avoid SSR issues:
-
-   ```jsx
-   import dynamic from "next/dynamic";
-
-   const GitBookProvider = dynamic(
-     () => import("@gitbook/embed/react").then((mod) => mod.GitBookProvider),
-     { ssr: false }
-   );
-
-   const GitBookAssistantFrame = dynamic(
-     () =>
-       import("@gitbook/embed/react").then((mod) => mod.GitBookAssistantFrame),
-     { ssr: false }
-   );
-   ```
-
-## Props & Configuration
-
-**GitBookProvider Props:**
-
-| Prop             | Type        | Required | Default | Description                                                                                                                                                                            |
-| ---------------- | ----------- | -------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `siteURL`        | `string`    | Yes      | N/A     | Your GitBook docs site URL (e.g., `https://docs.company.com`).                                                                                                                         |
-| `welcomeMessage` | `string`    | No       | `null`  | Custom welcome message shown when the Assistant opens.                                                                                                                                 |
-| `suggestions`    | `string[]`  | No       | `[]`    | Array of suggested questions displayed to users.                                                                                                                                       |
-| `buttons`        | `object[]`  | No       | `[]`    | Custom buttons in the Assistant header. Each button has `label`, `icon`, and `onClick` properties.                                                                                     |
-| `tools`          | `object[]`  | No       | `[]`    | Custom tools for the Assistant. See [Creating custom tools](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant/configuration/creating-custom-tools). |
-| `children`       | `ReactNode` | Yes      | N/A     | Child components to render within the provider.                                                                                                                                        |
-
-**GitBookAssistantFrame Props:**
-
-| Prop        | Type     | Required | Default | Description                                     |
-| ----------- | -------- | -------- | ------- | ----------------------------------------------- |
-| `className` | `string` | No       | `null`  | CSS class name to apply to the frame container. |
-| `style`     | `object` | No       | `{}`    | Inline styles to apply to the frame container.  |
-
-**useGitBook Hook Methods:**
-
-| Method                     | Parameters        | Description                                   |
-| -------------------------- | ----------------- | --------------------------------------------- |
-| `open()`                   | None              | Open the Assistant panel.                     |
-| `close()`                  | None              | Close the Assistant panel.                    |
-| `toggle()`                 | None              | Toggle the panel open/closed.                 |
-| `navigateToPage(path)`     | `path: string`    | Navigate to a specific docs page.             |
-| `navigateToAssistant()`    | None              | Navigate directly to the Assistant interface. |
-| `postUserMessage(message)` | `message: string` | Send a message as the user.                   |
-| `clearChat()`              | None              | Clear all chat messages.                      |
-
-## Common pitfalls
-
-* **Not wrapping with GitBookProvider** – The `GitBookAssistantFrame` requires a parent `GitBookProvider` to function.
-* **Using with SSR without dynamic import** – The component uses browser APIs and must be dynamically imported in Next.js or other SSR frameworks.
-* **siteURL not matching published docs** – Ensure the `siteURL` prop matches your live docs site URL exactly.
-* **Calling useGitBook outside provider** – The `useGitBook` hook must be used within a component that's a child of `GitBookProvider`.
-* **Multiple providers in the tree** – Avoid nesting multiple `GitBookProvider` instances, as this can cause context conflicts.
-
-
-# Authentication
-
-Embed GitBook Assistant on sites that require authentication by dynamically loading the script after users sign in
-
-If your GitBook documentation requires authentication (e.g., visitor authentication via OIDC, Auth0, or a custom backend), the embedded Assistant cannot access your docs content unless the user's authentication token is available.
-
-## How it works
-
-When a user signs in to your authenticated docs, GitBook stores a visitor token in their browser cookies under the key `gitbook-visitor-token`. The Assistant needs this token to fetch content from your docs.
-
-**The recommended flow:**
-
-1. User signs in to your docs site
-2. GitBook stores the visitor token in browser cookies
-3. Your app checks for the token
-4. If the token exists, load the Assistant
-5. If the token doesn't exist, prompt the user to sign in
-
-## Copy-paste snippet
-
-Use this snippet to load the Assistant only after a user has signed in:
-
-```html
-<script>
-  (function () {
-    // Check for the visitor token in cookies
-    function getCookie(name) {
-      var value = "; " + document.cookie;
-      var parts = value.split("; " + name + "=");
-      if (parts.length === 2) return parts.pop().split(";").shift();
-    }
-
-    var token = getCookie("gitbook-visitor-token");
-
-    if (!token) {
-      console.warn("[GitBook Assistant] Please sign in to your docs first.");
-      return;
-    }
-
-    // Token exists, load the Assistant
-    var script = document.createElement("script");
-    script.src = "https://docs.example.com/~gitbook/embed/script.js";
-    script.async = true;
-    script.onload = function () {
-      window.GitBook("show");
-    };
-    document.head.appendChild(script);
-  })();
-</script>
-```
-
-**Important:** Replace `docs.example.com` with your actual docs site URL.
-
-## Alternative: Prompt users to sign in
-
-If the token is missing, you can prompt users to sign in:
-
-```html
-<script>
-  (function () {
-    function getCookie(name) {
-      var value = "; " + document.cookie;
-      var parts = value.split("; " + name + "=");
-      if (parts.length === 2) return parts.pop().split(";").shift();
-    }
-
-    if (!getCookie("gitbook-visitor-token")) {
-      // Redirect to docs or show a message
-      alert("Please sign in to your docs to access help.");
-      window.location.href = "https://docs.example.com";
-      return;
-    }
-
-    // Load the Assistant
-    var script = document.createElement("script");
-    script.src = "https://docs.example.com/~gitbook/embed/script.js";
-    script.async = true;
-    script.onload = function () {
-      window.GitBook("show");
-    };
-    document.head.appendChild(script);
-  })();
-</script>
-```
-
-## Using with React
-
-For React apps, conditionally render the Assistant based on token presence:
-
-```jsx
-import { useEffect, useState } from "react";
-import { GitBookProvider, GitBookAssistantFrame } from "@gitbook/embed/react";
-
-function App() {
-  const [hasToken, setHasToken] = useState(false);
-
-  useEffect(() => {
-    // Check for token in cookies
-    const getCookie = (name) => {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(";").shift();
-    };
-
-    const token = getCookie("gitbook-visitor-token");
-    setHasToken(!!token);
-  }, []);
-
-  if (!hasToken) {
-    return (
-      <div>
-        <p>Please sign in to access help.</p>
-        <a href="https://docs.example.com">Sign in</a>
-      </div>
-    );
-  }
-
-  return (
-    <GitBookProvider siteURL="https://docs.example.com">
-      <YourAppContent />
-      <GitBookAssistantFrame />
-    </GitBookProvider>
-  );
-}
-```
-
-## Using with Node.js/NPM
-
-When using the NPM package, check for the token before initializing:
-
-```javascript
-import { createGitBook } from "@gitbook/embed";
-
-function initializeAssistant() {
-  // Check for token in cookies
-  const getCookie = (name) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
-  };
-
-  if (!getCookie("gitbook-visitor-token")) {
-    console.warn("[GitBook Assistant] User must sign in first.");
-    return null;
-  }
-
-  const gitbook = createGitBook({
-    siteURL: "https://docs.example.com",
-  });
-
-  const iframe = document.createElement("iframe");
-  iframe.src = gitbook.getFrameURL();
-  const frame = gitbook.createFrame(iframe);
-
-  document.getElementById("assistant-container").appendChild(iframe);
-  return frame;
-}
-
-initializeAssistant();
-```
-
-## Common pitfalls
-
-* **Loading the Assistant before sign-in** – Always check for the token before loading the script or components.
-* **Token not persisting across domains** – Cookies don't persist across different domains due to browser security policies. Your app and docs must be on the same domain or subdomain.
-* **Token expired** – Tokens can expire. If the Assistant returns authentication errors, prompt users to sign in again.
-* **Using wrong cookie name** – The token is stored as `gitbook-visitor-token`, not `gitbook-token` or other variations.
-
-## Debugging
-
-To verify the token is present, open your browser console and run:
-
-```javascript
-document.cookie.split(";").find((c) => c.includes("gitbook-visitor-token"));
-```
-
-If this returns `undefined`, the user hasn't signed in to your docs yet.
-
-## Next steps
-
-* [Customizing the Assistant](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant/configuration/customizing-gitbook-assistant) – Add welcome messages and buttons
-* [Creating custom tools](https://gitbook.com/docs/documentation/publishing-documentation/gitbook-ai-assistant/configuration/creating-custom-tools) – Integrate with your product APIs
 
 
 

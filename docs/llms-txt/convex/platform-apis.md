@@ -6,7 +6,7 @@ info
 
 Convex Platform APIs are in openly available in Beta. Please contact <platforms@convex.dev> if your use case requires additional capabilities.
 
-This guide is for products that want to orchestrate multiple Convex projects in their accounts or manage projects in their users' accounts. These APIs are most often used by AI app builders, such as [Bloom](https://bloom.diy/) or [A0](https://a0.dev/).
+This guide is for products that want to orchestrate multiple Convex projects in their accounts or manage projects in their users' accounts. These APIs are most often used by AI app builders, such as [Bloom](https://bloom.diy/), [A0](https://a0.dev/), or [Macaly](https://www.macaly.com/).
 
 These guides assume a good understanding of Convex cloud hierarchy (teams, projects, and deployments) as well as the [development workflow](/understanding/workflow.md).
 

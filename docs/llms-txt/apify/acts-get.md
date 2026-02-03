@@ -9,7 +9,7 @@ https://api.apify.com/v2/acts
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/ActorCollectionClientAsync#listhttps://docs.apify.com/api/client/js/reference/class/ActorCollectionClient#listGets the list of all Actors that the user created or used. The response is a list of objects, where each object contains a basic information about a single Actor.
+Gets the list of all Actors that the user created or used. The response is a list of objects, where each object contains a basic information about a single Actor.
 
 To only get Actors created by the user, add the `my=1` query parameter.
 
@@ -24,6 +24,10 @@ You can also sort by your last run by using the `sortBy=stats.lastRunStartedAt` 
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

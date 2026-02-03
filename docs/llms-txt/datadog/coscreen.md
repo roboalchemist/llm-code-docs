@@ -7,7 +7,6 @@ description: >-
   designed for engineering use cases like pair programming and incident
   management.
 breadcrumbs: Docs > CoScreen
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # CoScreen

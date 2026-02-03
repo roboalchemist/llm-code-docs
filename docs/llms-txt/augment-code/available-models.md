@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/models/available-models.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Available Models
 
 > The LLMs currently available in Augment and how we use them.
@@ -9,9 +13,11 @@
 Augment uses world-class large language models together with our Context Engine. We currently support the following models:
 
 * Claude Haiku 4.5 by Anthropic
+* Claude Opus 4.5 by Anthropic
 * Claude Sonnet 4 by Anthropic
 * Claude Sonnet 4.5 by Anthropic
-* GPT-5 by OpenAI
+* GPT-5.1 by OpenAI
+* GPT-5.2 by OpenAI
 
 ## Choosing a model
 
@@ -22,6 +28,20 @@ You can select the model directly using the Model Picker in the Augment.
 * Your selection applies only to Agent in that workspace and can be changed at any time.
 
 If you don't pick a model, Augment will use your last selection or the default set by your organization.
+
+## Model pricing
+
+Augment uses a credit-based pricing system. Different models consume credits at different rates based on their capabilities and costs:
+
+* **Sonnet 4.5**: Baseline credit consumption for balanced, complex tasks
+* **Opus 4.5**: \~167% of Sonnet's cost - most capable model for the hardest tasks
+* **Haiku 4.5**: \~30% of Sonnet's cost - ideal for quick, simple tasks
+* **GPT-5.1**: \~75% of Sonnet's cost - great for medium-complexity work
+* **GPT-5.2**: \~133% of Sonnet's cost - enhanced reasoning for complex tasks
+
+<Card title="Credit-Based Pricing" icon="credit-card" href="/models/credit-based-pricing">
+  Learn more about credit costs, see detailed examples, and discover tips for optimizing your credit usage
+</Card>
 
 ## Feature compatibility
 

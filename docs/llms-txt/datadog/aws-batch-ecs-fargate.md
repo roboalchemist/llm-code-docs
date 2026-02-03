@@ -6,9 +6,8 @@ description: >-
   Deploy the Datadog Agent alongside AWS Batch jobs running on ECS Fargate for
   comprehensive monitoring
 breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > AWS Batch with ECS Fargate
-  and the Datadog Agent
-source_url: https://docs.datadoghq.com/guide/aws-batch-ecs-fargate/index.html
+  Docs > Containers > Containers Guides > AWS Batch with ECS Fargate and the
+  Datadog Agent
 ---
 
 # AWS Batch with ECS Fargate and the Datadog Agent

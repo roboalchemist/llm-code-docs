@@ -1,5 +1,9 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/ai-privacy-and-security.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AI Privacy and Security
 
 > Graphite offers a handful of AI features to automate parts of the developer workflow. These features are opt-in and do not store or train on your data.
@@ -50,6 +54,6 @@ These subprocessors receive the minimum data necessary to generate the best poss
 
 * Related or similar parts of your codebase
 
-We are committed to protecting your data and privacy at all times, and we understand that some organizations would rather not use these features at all. To disable AI features across your entire organization, please email [support@graphite.dev](mailto:support@graphite.dev) and request a complete block of all AI features for your organization. You can always email us again if you change your mind, and we will unblock these features for your organization upon request.
+We are committed to protecting your data and privacy at all times, and we understand that some organizations would rather not use these features at all. To disable AI features across your entire organization, please email [support@graphite.com](mailto:support@graphite.com) and request a complete block of all AI features for your organization. You can always email us again if you change your mind, and we will unblock these features for your organization upon request.
 
 Lastly, depending on your plan, enabling some of these features may have additional costs. For more details on our features and pricing, please see our [pricing page](https://graphite.com/pricing).

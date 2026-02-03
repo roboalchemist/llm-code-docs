@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/reporting/real-time-event-api.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Building a Real-Time Event API
 
 > Learn how to implement ASAPP's real-time event API to receive activity, journey, and queue state updates.
@@ -12,7 +16,7 @@ Typical use cases that benefit from real-time ASAPP events include:
 * Supporting workforce management needs
 * Integrating with customer-maintained CRM systems
 
-ASAPP's real-time events provide raw data. Complex processing, such as aggregation or deduplication, is handled by batch analytics and reporting.
+ASAPP's real-time events provide raw data. Batch analytics and reporting handle complex processing, such as aggregation or deduplication.
 
 ASAPP presently supports three real-time event feeds:
 
@@ -36,7 +40,7 @@ Upon a customer's request, ASAPP can provide several types of real-time event da
 
 The diagram above provides a high-level view of how a customer-maintained service that receives real-time ASAPP events might be designed; a service that runs on ASAPP-controlled infrastructure will push real-time event data to one or more HTTP endpoints maintained by the customer. For each individual event, the ASAPP service makes one POST request to the endpoint.
 
-Event data will be transmitted using mTLS-based authentication (See the separate document [Securing Endpoints with Mutual TLS](/reporting/secure-data-retrieval#certificate-configuration) for details).
+ASAPP transmits event data using mTLS-based authentication (See the separate document [Securing Endpoints with Mutual TLS](/reporting/secure-data-retrieval#certificate-configuration) for details).
 
 ### Customer Requirements
 
@@ -76,7 +80,7 @@ If the number of retries is exceeded and the customer's API is unable to handle 
 
 ASAPP's standard real-time events include data representing human interactions and general issue lifecycle information from the ASAPP feeds named `com.asapp.event.activity`, `com.asapp.event.journey`, and `com.asapp.event.queue`.
 
-In the future, when additional event sources are added, the event source will be reflected in the name of the stream.
+In the future, when additional event sources are added, the name of the stream will reflect the event source.
 
 ## Payload Schema
 
@@ -90,7 +94,7 @@ Each of ASAPP's feeds will deliver a single event's data in a payload comprised 
    *Some fields may be omitted but the same total set can be expected for each event of the same origin*
 4. Details specific to the event type.
 
-Null fields will be omitted -- the customer's API is expected to interpret missing keys as null.
+The schema omits null fields -- the customer's API is expected to interpret missing keys as null.
 
 **Versioning**
 

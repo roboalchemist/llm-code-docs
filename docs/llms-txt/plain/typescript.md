@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/webhooks/typescript.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Webhooks and Typescript
 
 Our [TypeScript SDK](https://github.com/team-plain/typescript-sdk) provide utilities to [verify the webhook signature](https://www.plain.com/docs/request-signing#request-signing) and parse the webhook body into a typed object.

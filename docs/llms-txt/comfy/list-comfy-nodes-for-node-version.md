@@ -1,143 +1,88 @@
 # Source: https://docs.comfy.org/api-reference/registry/list-comfy-nodes-for-node-version.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # list comfy-nodes for node version
+
+
 
 ## OpenAPI
 
 ````yaml https://api.comfy.org/openapi get /nodes/{nodeId}/versions/{version}/comfy-nodes
+openapi: 3.0.2
+info:
+  title: Comfy API
+  version: '1.0'
+servers:
+  - url: https://api.comfy.org
+security: []
 paths:
-  path: /nodes/{nodeId}/versions/{version}/comfy-nodes
-  method: get
-  servers:
-    - url: https://api.comfy.org
-  request:
-    security: []
+  /nodes/{nodeId}/versions/{version}/comfy-nodes:
     parameters:
-      path:
-        nodeId:
+      - in: path
+        name: nodeId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: version
+        required: true
+        schema:
+          type: string
+    get:
+      tags:
+        - Registry
+      summary: list comfy-nodes for node version
+      operationId: ListComfyNodes
+      parameters:
+        - description: The page number to retrieve.
+          in: query
+          name: page
           schema:
-            - type: string
-              required: true
-        version:
+            default: 1
+            type: integer
+        - description: The number of items to include per page.
+          in: query
+          name: limit
           schema:
-            - type: string
-              required: true
-      query:
-        page:
-          schema:
-            - type: integer
-              description: The page number to retrieve.
-              default: 1
-        limit:
-          schema:
-            - type: integer
-              description: The number of items to include per page.
-              default: 10
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              comfy_nodes:
-                allOf:
-                  - items:
+            default: 10
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  comfy_nodes:
+                    items:
                       $ref: '#/components/schemas/ComfyNode'
                     type: array
-              totalNumberOfPages:
-                allOf:
-                  - type: integer
-        examples:
-          example:
-            value:
-              comfy_nodes:
-                - category: <string>
-                  comfy_node_name: <string>
-                  deprecated: true
-                  description: <string>
-                  experimental: true
-                  function: <string>
-                  input_types: <string>
-                  output_is_list:
-                    - true
-                  policy: ComfyNodePolicyActive
-                  return_names: <string>
-                  return_types: <string>
-              totalNumberOfPages: 123
-        description: Comy Nodes obtained successfully
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Unauthorized
-        examples: {}
-        description: Unauthorized
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: string
-              message:
-                allOf:
-                  - &ref_1
-                    type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: &ref_2
-              - error
-              - message
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Forbidden
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Version not found
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Internal server error
-  deprecated: false
-  type: path
+                  totalNumberOfPages:
+                    type: integer
+                type: object
+          description: Comy Nodes obtained successfully
+        '401':
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Version not found
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
 components:
   schemas:
     ComfyNode:
@@ -180,6 +125,16 @@ components:
         return_types:
           description: Specifies the types of outputs produced by the node.
           type: string
+      type: object
+    ErrorResponse:
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+      required:
+        - error
+        - message
       type: object
     ComfyNodePolicy:
       enum:

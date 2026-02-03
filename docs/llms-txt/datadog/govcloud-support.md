@@ -4,7 +4,6 @@
 title: Is GovCloud supported?
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > FAQ > Is GovCloud supported?
-source_url: https://docs.datadoghq.com/faq/govcloud-support/index.html
 ---
 
 # Is GovCloud supported?

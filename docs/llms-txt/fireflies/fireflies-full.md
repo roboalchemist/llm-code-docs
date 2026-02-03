@@ -13,56 +13,149 @@ Recent updates to the Fireflies API
 
 This document maintains a chronologically ordered list of notable changes for each version of the Fireflies API. It's designed to make it easier for you to keep track of new features, improvements, and bug fixes.
 
+### 2.20.0
+
+<Card>
+  Added `workspace_users` field to [Transcript](/schema/transcript) schema. Returns an array of email addresses of Fireflies users who participated in the meeting and are also members of the requesting user's team/workspace.
+</Card>
+
+### 2.19.0
+
+<Card>
+  Added `channels` query to fetch all channels accessible to the user. Returns public channels and private channels where the user is a member. See [Channels](/graphql-api/query/channels).
+</Card>
+
+<Card>
+  Added `channel` query to fetch a single channel by ID. See [Channel](/graphql-api/query/channel).
+</Card>
+
+<Card>
+  Added new [Channel](/schema/channel) schema with `id`, `title`, `is_private`, `created_at`, `updated_at`, `created_by`, and `members` fields.
+</Card>
+
+<Card>
+  Added new [ChannelMember](/schema/channel-member) schema with `user_id`, `email`, and `name` fields for channel member details.
+</Card>
+
+### 2.18.0
+
+<Card>
+  Added `state` field to [ActiveMeeting](/schema/active-meeting) schema to indicate whether a meeting is `active` or `paused`.
+</Card>
+
+<Card>
+  Added `states` filter to [Active Meetings](/graphql-api/query/active-meetings) query to filter meetings by state. Returns both `active` and `paused` meetings by default when no filter is provided.
+</Card>
+
+<Card>
+  Added new [MeetingState](/schema/enum/meeting-state) enum with values `active` and `paused`.
+</Card>
+
+### 2.17.0
+
+<Card>
+  Added `download_auth` field to [Upload Audio](/graphql-api/mutation/upload-audio) mutation to support authenticated downloads. Allows uploading media files that require bearer token or HTTP basic authentication. See [DownloadAuthInput](/schema/input/download-auth-input) for details.
+</Card>
+
+<Card>
+  Added new schema types for authenticated downloads: [BearerTokenAuthInput](/schema/input/bearer-token-auth-input), [BasicAuthInput](/schema/input/basic-auth-input), and [DownloadAuthType](/schema/enum/download-auth-type) enum.
+</Card>
+
+### 2.16.0
+
+<Card>
+  Introduced **AskFred**, an AI-powered meeting assistant that enables natural language querying of meeting transcripts. Create conversation threads, ask follow-up questions, and analyze single or multiple meetings with intelligent, context-aware responses. See [AskFred Overview](/askfred/overview).
+</Card>
+
+<Card>
+  Added `askfred_threads` query to list all conversation threads with summary information. See [AskFred Threads](/graphql-api/query/askfred-threads).
+</Card>
+
+<Card>
+  Added `askfred_thread` query to retrieve a specific thread with full message history. See [AskFred Thread](/graphql-api/query/askfred-thread).
+</Card>
+
+<Card>
+  Added `createAskFredThread` mutation to start new conversations with questions about meetings. See [Create AskFred Thread](/graphql-api/mutation/create-askfred-thread).
+</Card>
+
+<Card>
+  Added `continueAskFredThread` mutation to add follow-up questions to existing threads. See [Continue AskFred Thread](/graphql-api/mutation/continue-askfred-thread).
+</Card>
+
+<Card>
+  Added `deleteAskFredThread` mutation to remove conversation threads. See [Delete AskFred Thread](/graphql-api/mutation/delete-askfred-thread).
+</Card>
+
+<Card>
+  Added new schemas: [AskFredThread](/schema/askfred-thread), [AskFredMessage](/schema/askfred-message), [AskFredThreadSummary](/schema/askfred-thread-summary), and [AskFredResponse](/schema/askfred-response).
+</Card>
+
 ### 2.15.0
 
 <Card>
-  Added `updateMeetingChannel` mutation to set the channel for one or more meetings. Supports batch updates of 1–5 transcripts to a single channel and requires meeting owner or team admin privileges. See [Update Meeting Channel](/graphql-api/mutation/update-meeting-channel).
+  Added `updateMeetingChannel` mutation to set the channel for one or more meetings. Supports batch
+  updates of 1–5 transcripts to a single channel and requires meeting owner or team admin
+  privileges. See [Update Meeting Channel](/graphql-api/mutation/update-meeting-channel).
 </Card>
 
 ### 2.14.0
 
 <Card>
-  Added `active_meetings` query to retrieve meetings currently in progress. Allows fetching active meetings for users in your team with role-based access control. See [Active Meetings](/graphql-api/query/active-meetings).
+  Added `active_meetings` query to retrieve meetings currently in progress. Allows fetching active
+  meetings for users in your team with role-based access control. See [Active
+  Meetings](/graphql-api/query/active-meetings).
 </Card>
 
 ### 2.13.0
 
 <Card>
-  Added rate limiting to the `deleteTranscript` mutation. It is limited to 10 requests per minute across all user tiers. When exceeded, the API returns HTTP 429 `too_many_requests`. See [Delete Transcript](/graphql-api/mutation/delete-transcript).
+  Added rate limiting to the `deleteTranscript` mutation. It is limited to 10 requests per minute
+  across all user tiers. When exceeded, the API returns HTTP 429 `too_many_requests`. See [Delete
+  Transcript](/graphql-api/mutation/delete-transcript).
 </Card>
 
 ### 2.12.0
 
 <Card>
-  Added `updateMeetingPrivacy` mutation to update meeting privacy settings. Allows meeting owners and team admins to change privacy levels between link, owner, participants, teammatesandparticipants, and teammates. See [Update Meeting Privacy](/graphql-api/mutation/update-meeting-privacy).
+  Added `updateMeetingPrivacy` mutation to update meeting privacy settings. Allows meeting owners
+  and team admins to change privacy levels between link, owner, participants,
+  teammatesandparticipants, and teammates. See [Update Meeting
+  Privacy](/graphql-api/mutation/update-meeting-privacy).
 </Card>
 
 ### 2.11.0
 
 <Card>
-  Added `channels` field to [Transcript](/schema/transcript) schema. Returns an array of [Channel](/schema/channel) objects containing channel IDs associated with the meeting.
+  Added `channels` field to [Transcript](/schema/transcript) schema. Returns an array of
+  [Channel](/schema/channel) objects containing channel IDs associated with the meeting.
 </Card>
 
 ### 2.10.0
 
 <Card>
-  Added new `meeting_attendance` field to [Transcript](/schema/transcript) schema providing participant join and leave times from meeting events data.
+  Added new `meeting_attendance` field to [Transcript](/schema/transcript) schema providing
+  participant join and leave times from meeting events data.
 </Card>
 
 <Card>
-  Added new [MeetingAttendance](/schema/meeting-attendance) schema with `name`, `join_time`, and `leave_time` fields for tracking participant attendance.
+  Added new [MeetingAttendance](/schema/meeting-attendance) schema with `name`, `join_time`, and
+  `leave_time` fields for tracking participant attendance.
 </Card>
 
 ### 2.9.0
 
 <Card>
-  Added `channel_id` parameter to [Transcripts](/graphql-api/query/transcripts) query to filter meetings by specific channel. Accepts a single channel ID string.
+  Added `channel_id` parameter to [Transcripts](/graphql-api/query/transcripts) query to filter
+  meetings by specific channel. Accepts a single channel ID string.
 </Card>
 
 ### 2.8.0
 
 <Card>
-  Added array fields `organizers` and `participants` to [Transcripts](/graphql-api/query/transcripts) query for filtering by multiple email addresses. Previous single email fields `organizer_email` and `participant_email` are now deprecated.
+  Added array fields `organizers` and `participants` to
+  [Transcripts](/graphql-api/query/transcripts) query for filtering by multiple email addresses.
+  Previous single email fields `organizer_email` and `participant_email` are now deprecated.
 </Card>
 
 ### 2.7.1
@@ -75,11 +168,16 @@ This document maintains a chronologically ordered list of notable changes for ea
 
 ### 2.7.0
 
-<Card>Added new `user_groups` query to fetch user groups with optional `mine` filter. See [User Groups](/graphql-api/query/user-groups)</Card>
+<Card>
+  Added new `user_groups` query to fetch user groups with optional `mine` filter. See [User
+  Groups](/graphql-api/query/user-groups)
+</Card>
 
 <Card>Enhanced [UserGroup](/schema/user-groups) schema with `members` field</Card>
 
-<Card>Added new [UserGroupMember](/schema/user-group-member) schema for user group member details</Card>
+<Card>
+  Added new [UserGroupMember](/schema/user-group-member) schema for user group member details
+</Card>
 
 ### 2.6.3
 
@@ -88,7 +186,8 @@ This document maintains a chronologically ordered list of notable changes for ea
 ### 2.6.2
 
 <Card>
-  Updated `transcripts` query to allow text search within meeting transcript (/query/transcripts)\[Transcripts]
+  Updated `transcripts` query to allow text search within meeting transcript
+  (/query/transcripts)\[Transcripts]
 </Card>
 
 ### 2.6.1
@@ -353,6 +452,663 @@ The following fields have been deprecated:
 `participant_email`: Use the `participants` array field to filter by one or more participant email addresses.
 
 
+# Overview
+Source: https://docs.fireflies.ai/askfred/overview
+
+Use AI to intelligently query and analyze your meeting transcripts with natural language
+
+## What is AskFred?
+
+AskFred is Fireflies' AI-powered meeting assistant that lets you ask natural language questions about your meeting transcripts. Query individual meetings or search across multiple meetings to get intelligent, context-aware answers.
+
+### Key Capabilities
+
+**Intelligent Q\&A** - Ask questions in natural language and receive comprehensive answers with smart follow-up suggestions
+
+**Contextual Threads** - Maintain conversations where follow-up questions preserve context from previous exchanges
+
+**Multi-Meeting Analysis** - Query across meetings using filters to identify patterns and aggregate insights
+
+## API Operations
+
+AskFred provides a comprehensive set of GraphQL operations:
+
+### Queries
+
+* [askfred\_threads](/graphql-api/query/askfred-threads) - List all conversation threads
+* [askfred\_thread](/graphql-api/query/askfred-thread) - Get specific thread with full history
+
+### Mutations
+
+* [createAskFredThread](/graphql-api/mutation/create-askfred-thread) - Start a new conversation
+* [continueAskFredThread](/graphql-api/mutation/continue-askfred-thread) - Add follow-up questions
+* [deleteAskFredThread](/graphql-api/mutation/delete-askfred-thread) - Remove threads
+
+## Next Steps
+
+<CardGroup>
+  <Card title="Quickstart" icon="rocket" href="/askfred/quickstart">
+    Create your first thread and start querying meetings
+  </Card>
+
+  <Card title="Use Cases" icon="lightbulb" href="/askfred/use-cases">
+    Example questions and industry-specific scenarios
+  </Card>
+</CardGroup>
+
+
+# Quickstart
+Source: https://docs.fireflies.ai/askfred/quickstart
+
+Get started with AskFred in minutes - learn how to create threads and ask questions about your meetings
+
+## Prerequisites
+
+Before you begin, make sure you have:
+
+1. **API Key**: Obtain your API key from [app.fireflies.ai/integrations](https://app.fireflies.ai/integrations/custom/fireflies)
+2. **Transcript ID** (optional): The ID of a meeting transcript you want to query
+
+<Note>
+  If you don't have a transcript ID, you can query across all your meetings using filters. See [Step 3](#step-3-query-across-meetings) below.
+</Note>
+
+## Step 1: Create Your First Thread
+
+Start by asking a question about a specific meeting:
+
+<CodeGroup>
+  ```graphql GraphQL theme={null}
+  mutation CreateThread {
+    createAskFredThread(input: {
+      query: "What were the main discussion points?",
+      transcript_id: "your_transcript_id",
+      response_language: "en",
+      format_mode: "markdown"
+    }) {
+      message {
+        id
+        thread_id
+        answer
+        suggested_queries
+      }
+    }
+  }
+  ```
+
+  ```bash curl theme={null}
+  curl -X POST \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer your_api_key" \
+    -d '{
+      "query": "mutation CreateThread($input: CreateAskFredThreadInput!) { createAskFredThread(input: $input) { message { id thread_id answer suggested_queries } } }",
+      "variables": {
+        "input": {
+          "query": "What were the main discussion points?",
+          "transcript_id": "your_transcript_id",
+          "response_language": "en",
+          "format_mode": "markdown"
+        }
+      }
+    }' \
+    https://api.fireflies.ai/graphql
+  ```
+
+  ```javascript JavaScript theme={null}
+  const axios = require('axios');
+
+  const url = 'https://api.fireflies.ai/graphql';
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer your_api_key'
+  };
+
+  const mutation = `
+    mutation CreateThread($input: CreateAskFredThreadInput!) {
+      createAskFredThread(input: $input) {
+        message {
+          id
+          thread_id
+          answer
+          suggested_queries
+        }
+      }
+    }
+  `;
+
+  const variables = {
+    input: {
+      query: 'What were the main discussion points?',
+      transcript_id: 'your_transcript_id',
+      response_language: 'en',
+      format_mode: 'markdown'
+    }
+  };
+
+  axios
+    .post(url, { query: mutation, variables }, { headers })
+    .then(response => {
+      console.log(response.data.data.createAskFredThread);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  ```
+
+  ```python Python theme={null}
+  import requests
+
+  url = 'https://api.fireflies.ai/graphql'
+  headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer your_api_key'
+  }
+
+  mutation = """
+  mutation CreateThread($input: CreateAskFredThreadInput!) {
+    createAskFredThread(input: $input) {
+      message {
+        id
+        thread_id
+        answer
+        suggested_queries
+      }
+    }
+  }
+  """
+
+  variables = {
+      'input': {
+          'query': 'What were the main discussion points?',
+          'transcript_id': 'your_transcript_id',
+          'response_language': 'en',
+          'format_mode': 'markdown'
+      }
+  }
+
+  response = requests.post(
+      url,
+      json={'query': mutation, 'variables': variables},
+      headers=headers
+  )
+
+  print(response.json())
+  ```
+</CodeGroup>
+
+### Response
+
+```json theme={null}
+{
+  "data": {
+    "createAskFredThread": {
+      "message": {
+        "id": "msg_abc123",
+        "thread_id": "thread_xyz789",
+        "answer": "The main discussion points were:\n\n1. **Q4 Product Roadmap**: The team reviewed upcoming features...\n2. **Budget Allocation**: Discussion on resource allocation...\n3. **Timeline Concerns**: Several concerns about launch dates...",
+        "suggested_queries": [
+          "Can you elaborate on the timeline concerns?",
+          "What features are prioritized for Q4?",
+          "Who raised concerns about the budget?"
+        ]
+      }
+    }
+  }
+}
+```
+
+## Step 2: Ask Follow-up Questions
+
+Continue the conversation with context-aware follow-ups using the `thread_id` from the previous response:
+
+<CodeGroup>
+  ```graphql GraphQL theme={null}
+  mutation ContinueThread {
+    continueAskFredThread(input: {
+      thread_id: "thread_xyz789",
+      query: "Can you elaborate on the timeline concerns?"
+    }) {
+      message {
+        answer
+        suggested_queries
+      }
+    }
+  }
+  ```
+
+  ```bash curl theme={null}
+  curl -X POST \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer your_api_key" \
+    -d '{
+      "query": "mutation ContinueThread($input: ContinueAskFredThreadInput!) { continueAskFredThread(input: $input) { message { answer suggested_queries } } }",
+      "variables": {
+        "input": {
+          "thread_id": "thread_xyz789",
+          "query": "Can you elaborate on the timeline concerns?"
+        }
+      }
+    }' \
+    https://api.fireflies.ai/graphql
+  ```
+
+  ```javascript JavaScript theme={null}
+  const variables = {
+    input: {
+      thread_id: 'thread_xyz789',
+      query: 'Can you elaborate on the timeline concerns?'
+    }
+  };
+
+  const mutation = `
+    mutation ContinueThread($input: ContinueAskFredThreadInput!) {
+      continueAskFredThread(input: $input) {
+        message {
+          answer
+          suggested_queries
+        }
+      }
+    }
+  `;
+
+  axios.post(url, { query: mutation, variables }, { headers })
+    .then(response => console.log(response.data))
+    .catch(error => console.error(error));
+  ```
+
+  ```python Python theme={null}
+  variables = {
+      'input': {
+          'thread_id': 'thread_xyz789',
+          'query': 'Can you elaborate on the timeline concerns?'
+      }
+  }
+
+  mutation = """
+  mutation ContinueThread($input: ContinueAskFredThreadInput!) {
+    continueAskFredThread(input: $input) {
+      message {
+        answer
+        suggested_queries
+      }
+    }
+  }
+  """
+
+  response = requests.post(
+      url,
+      json={'query': mutation, 'variables': variables},
+      headers=headers
+  )
+
+  print(response.json())
+  ```
+</CodeGroup>
+
+## Step 3: Query Across Meetings
+
+Analyze patterns across multiple meetings using filters:
+
+<CodeGroup>
+  ```graphql GraphQL theme={null}
+  mutation CrossMeetingAnalysis {
+    createAskFredThread(input: {
+      query: "What customer concerns were raised this month?",
+      filters: {
+        start_time: "2024-03-01T00:00:00Z",
+        end_time: "2024-03-31T23:59:59Z",
+        participants: ["customer@example.com"]
+      }
+    }) {
+      message {
+        answer
+        suggested_queries
+      }
+    }
+  }
+  ```
+
+  ```bash curl theme={null}
+  curl -X POST \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer your_api_key" \
+    -d '{
+      "query": "mutation CrossMeetingAnalysis($input: CreateAskFredThreadInput!) { createAskFredThread(input: $input) { message { answer suggested_queries } } }",
+      "variables": {
+        "input": {
+          "query": "What customer concerns were raised this month?",
+          "filters": {
+            "start_time": "2024-03-01T00:00:00Z",
+            "end_time": "2024-03-31T23:59:59Z",
+            "participants": ["customer@example.com"]
+          }
+        }
+      }
+    }' \
+    https://api.fireflies.ai/graphql
+  ```
+</CodeGroup>
+
+<Note>
+  For more details on available filters and parameters, see the [createAskFredThread](/graphql-api/mutation/create-askfred-thread) documentation.
+</Note>
+
+## Step 4: List Your Threads
+
+Retrieve all your conversation threads:
+
+<CodeGroup>
+  ```graphql GraphQL theme={null}
+  query GetThreads {
+    askfred_threads {
+      id
+      title
+      transcript_id
+      created_at
+    }
+  }
+  ```
+
+  ```bash curl theme={null}
+  curl -X POST \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer your_api_key" \
+    -d '{
+      "query": "query { askfred_threads { id title transcript_id created_at } }"
+    }' \
+    https://api.fireflies.ai/graphql
+  ```
+</CodeGroup>
+
+## Additional Resources
+
+<CardGroup>
+  <Card title="Explore Use Cases" icon="lightbulb" href="/askfred/use-cases">
+    Discover common scenarios and example questions
+  </Card>
+
+  <Card title="API Reference" icon="book" href="/graphql-api/mutation/create-askfred-thread">
+    Explore all available parameters and options
+  </Card>
+</CardGroup>
+
+
+# Use Cases
+Source: https://docs.fireflies.ai/askfred/use-cases
+
+Common use cases and example questions for AskFred - meeting summaries, action items, decisions, and more
+
+## Overview
+
+AskFred can help you extract insights from your meetings across a wide range of use cases. This page provides practical examples of questions you can ask for different scenarios.
+
+## Common Use Cases
+
+<AccordionGroup>
+  <Accordion title="Meeting Summaries" icon="file-lines">
+    Extract quick overviews and highlights from your meetings.
+
+    **Example Questions:**
+
+    * "Provide a brief summary of this meeting"
+    * "What were the key takeaways?"
+    * "Give me the highlights in 3 bullet points"
+    * "Summarize the discussion about the product launch"
+    * "What was the meeting about in one sentence?"
+
+    **Best for:**
+
+    * Daily standups
+    * Client meetings
+    * Team retrospectives
+    * Board meetings
+  </Accordion>
+
+  <Accordion title="Action Item Tracking" icon="list-check">
+    Identify tasks, responsibilities, and deliverables.
+
+    **Example Questions:**
+
+    * "What action items were assigned?"
+    * "What are my action items from this week's meetings?"
+    * "Who is responsible for the product roadmap?"
+    * "List all open tasks and their owners"
+    * "What are the deadlines mentioned in this meeting?"
+    * "What tasks were assigned to the engineering team?"
+
+    **Best for:**
+
+    * Sprint planning
+    * Project kickoffs
+    * Weekly team syncs
+    * Customer success calls
+  </Accordion>
+
+  <Accordion title="Decision Documentation" icon="gavel">
+    Track important decisions and their rationale.
+
+    **Example Questions:**
+
+    * "What decisions were made about the budget?"
+    * "What was decided regarding the new feature?"
+    * "List all decisions with their rationales"
+    * "What was the outcome of the pricing discussion?"
+    * "Who made the final decision on the launch date?"
+    * "What alternatives were considered before the decision?"
+
+    **Best for:**
+
+    * Strategy meetings
+    * Leadership discussions
+    * Product planning
+    * Architecture reviews
+  </Accordion>
+
+  <Accordion title="Participant Insights" icon="users">
+    Understand individual contributions and perspectives.
+
+    **Example Questions:**
+
+    * "What did John contribute to the discussion?"
+    * "What concerns did the customer raise?"
+    * "Summarize the CEO's main points"
+    * "What feedback did the design team provide?"
+    * "What questions did stakeholders ask?"
+    * "Who disagreed with the proposal and why?"
+
+    **Best for:**
+
+    * Performance reviews
+    * Client feedback analysis
+    * Team collaboration assessment
+    * Stakeholder management
+  </Accordion>
+
+  <Accordion title="Cross-Meeting Analysis" icon="chart-line">
+    Identify patterns and trends across multiple meetings.
+
+    **Example Questions:**
+
+    * "How has customer sentiment changed over the last month?"
+    * "What topics have been discussed most frequently?"
+    * "Track the progress of Project X across all meetings"
+    * "What are recurring issues in sprint retrospectives?"
+    * "How has the team's velocity changed this quarter?"
+    * "What concerns keep coming up in client calls?"
+
+    **Best for:**
+
+    * Quarterly reviews
+    * Customer health monitoring
+    * Team performance tracking
+    * Product roadmap planning
+  </Accordion>
+
+  <Accordion title="Information Extraction" icon="filter">
+    Pull specific data points and details from meetings.
+
+    **Example Questions:**
+
+    * "Extract all mentioned dates and deadlines"
+    * "List all metrics and KPIs discussed"
+    * "What tools or technologies were mentioned?"
+    * "Find all budget figures discussed"
+    * "What email addresses or contact information was shared?"
+    * "What URLs or resources were mentioned?"
+
+    **Best for:**
+
+    * Meeting notes compilation
+    * Documentation updates
+    * Contact management
+    * Resource tracking
+  </Accordion>
+</AccordionGroup>
+
+## Industry-Specific Examples
+
+<Accordion title="Sales Use Cases" icon="hand shake">
+  **Discovery Calls:**
+
+  * "What pain points did the prospect mention?"
+  * "What is their current solution and why are they looking to change?"
+  * "What is their timeline for making a decision?"
+
+  **Deal Reviews:**
+
+  * "What objections were raised during the demo?"
+  * "Who are the decision-makers mentioned?"
+  * "What competitive solutions are they considering?"
+
+  **Pipeline Analysis:**
+
+  * "What deals progressed this week?"
+  * "What common objections are we seeing across calls?"
+  * "Which prospects mentioned budget concerns?"
+</Accordion>
+
+<Accordion title="Product Use Cases" icon="box">
+  **Feature Discussions:**
+
+  * "What user problems are we trying to solve?"
+  * "What alternatives did we consider?"
+  * "What were the technical constraints mentioned?"
+
+  **Roadmap Planning:**
+
+  * "What features were prioritized for next quarter?"
+  * "What customer feedback influenced our decisions?"
+  * "What dependencies were identified?"
+
+  **User Research:**
+
+  * "What frustrations did users mention?"
+  * "What features did users request most?"
+  * "How do users currently solve this problem?"
+</Accordion>
+
+<Accordion title="Customer Success Use Cases" icon="headset">
+  **Onboarding:**
+
+  * "What questions did the customer ask during onboarding?"
+  * "What features are they most interested in?"
+  * "What integration requirements did they mention?"
+
+  **Health Monitoring:**
+
+  * "What concerns has the customer raised recently?"
+  * "How has their sentiment changed over time?"
+  * "What success metrics are they tracking?"
+
+  **Escalations:**
+
+  * "What issues were reported in the last month?"
+  * "How quickly were problems resolved?"
+  * "What patterns exist in customer complaints?"
+</Accordion>
+
+<Accordion title="Engineering Use Cases" icon="code">
+  **Technical Planning:**
+
+  * "What technical decisions were made?"
+  * "What are the architectural concerns?"
+  * "What dependencies block this feature?"
+
+  **Sprint Retrospectives:**
+
+  * "What went well this sprint?"
+  * "What blockers did the team face?"
+  * "What process improvements were suggested?"
+
+  **Code Reviews:**
+
+  * "What security concerns were raised?"
+  * "What performance considerations were discussed?"
+  * "What refactoring opportunities were identified?"
+</Accordion>
+
+## Advanced Query Patterns
+
+### Time-Based Analysis
+
+```graphql theme={null}
+mutation TimeBasedQuery {
+  createAskFredThread(input: {
+    query: "How have customer satisfaction levels changed since last quarter?",
+    filters: {
+      start_time: "2024-01-01T00:00:00Z",
+      end_time: "2024-03-31T23:59:59Z"
+    }
+  }) {
+    message { answer }
+  }
+}
+```
+
+### Participant-Focused Queries
+
+```graphql theme={null}
+mutation ParticipantQuery {
+  createAskFredThread(input: {
+    query: "What feedback has the executive team provided on our product strategy?",
+    filters: {
+      participants: ["ceo@company.com", "cto@company.com"],
+      start_time: "2024-03-01T00:00:00Z"
+    }
+  }) {
+    message { answer }
+  }
+}
+```
+
+### Topic Tracking
+
+```graphql theme={null}
+mutation TopicTracking {
+  createAskFredThread(input: {
+    query: "Track all discussions about the new pricing model",
+    filters: {
+      start_time: "2024-01-01T00:00:00Z"
+    }
+  }) {
+    message { answer suggested_queries }
+  }
+}
+```
+
+## Additional Resources
+
+<CardGroup>
+  <Card title="AskFred Overview" icon="circle-info" href="/askfred/overview">
+    Learn about AskFred's key capabilities
+  </Card>
+
+  <Card title="API Reference" icon="book" href="/graphql-api/mutation/create-askfred-thread">
+    Explore all available parameters and options
+  </Card>
+</CardGroup>
+
+
 # Advanced
 Source: https://docs.fireflies.ai/examples/advanced
 
@@ -380,7 +1136,7 @@ Explore the complete list of usage examples at [replit.com/@firefliesai](https:/
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Basic examples" icon="link" href="/examples/basic">
     Basic usage examples
   </Card>
@@ -417,7 +1173,7 @@ Explore the complete list of usage examples at [replit.com/@firefliesai](https:/
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Advanced examples" icon="link" href="/examples/advanced">
     Advanced usage examples
   </Card>
@@ -449,7 +1205,7 @@ You can also view the list of examples at the links [Basic examples](/examples/b
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Basic examples" icon="link" href="/examples/basic">
     Basic usage examples
   </Card>
@@ -488,7 +1244,7 @@ To make an authenticated request, add the `Authorization` header followed by the
 
 ### Example of an Authenticated Request Header
 
-```plaintext  theme={null}
+```plaintext theme={null}
 Authorization: Bearer your_api_key
 ```
 
@@ -600,7 +1356,7 @@ Ensure to replace `your_api_key` with your actual API key.
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Quickstart" icon="link" href="/getting-started/quickstart">
     Make your first request in under 5 minutes
   </Card>
@@ -689,7 +1445,7 @@ The schema defines the API's capabilities, including types, queries, mutations, 
 
 For more in-depth information, visit [GraphQL Documentation](https://graphql.org/learn/).
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Quickstart" icon="link" href="/getting-started/quickstart">
     Make your first request in under 5 minutes
   </Card>
@@ -715,15 +1471,15 @@ Our GraphQL API follows a standard format for returning errors. Errors are encap
 
 Please visit [Error codes](/miscellaneous/error-codes) to view explanations for error code types
 
-<ResponseField name="message" type="String" required>
+<ResponseField name="message" type="String">
   Description of the error
 </ResponseField>
 
-<ResponseField name="code" type="String" required>
+<ResponseField name="code" type="String">
   Error code.
 </ResponseField>
 
-<ResponseField name="friendly" type="Boolean" required>
+<ResponseField name="friendly" type="Boolean">
   `friendly === true` are safe to show to the frontend client. Unfriendly errors may have technical
   details that may not be useful to the UI layer.
 </ResponseField>
@@ -757,7 +1513,7 @@ Please visit [Error codes](/miscellaneous/error-codes) to view explanations for 
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Error Codes" icon="link" href="/miscellaneous/error-codes">
     Detailed error code reference
   </Card>
@@ -791,7 +1547,7 @@ Create a new Graphql Request in Postman with the url [api.fireflies.ai/graphql](
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Concepts" icon="link" href="/fundamentals/concepts">
     Foundational guide to the core aspects of the Fireflies API
   </Card>
@@ -852,7 +1608,7 @@ The Add to Live API has a rate limit of 3 requests per 20 minutes.
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Upload Audio" icon="link" href="/graphql-api/mutation/upload-audio">
     Use the API to upload audio to Fireflies.ai
   </Card>
@@ -900,7 +1656,7 @@ Super Admin API is only available to teams on the Enterprise plan. [Learn more h
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Webhooks" icon="link" href="/graphql-api/webhooks">
     Create notifications using webhooks
   </Card>
@@ -931,7 +1687,7 @@ Getting started is simple:
 1. **Access the Search Bar:** Click on the search bar at the top of the page, or use the shortcut `CMD + K` (for Mac users) or `Ctrl + K` (for Windows and Linux users) to jump straight to it.
 2. **Ask Your Question:** Type in your question just as you would when talking to ChatGPT. Whether it's a broad query about API capabilities or a specific request for code examples, the AI Assistant is ready to provide you with precise answers.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Quickstart" icon="link" href="/getting-started/quickstart">
     Foundational guide to the core aspects of the Fireflies API
   </Card>
@@ -979,6 +1735,20 @@ To qualify for the Developer Program, please ensure you have:
 * **GitHub Repository**: Optionally, include a GitHub link to your code or previous work to help us understand your technical expertise
 * **Additional Comments**: Any additional information that can help us assess your project’s alignment with our platform goals
 
+## What to Do After You've Built Your Integration
+
+Once you've successfully built your integration with Fireflies.ai, you can apply to be listed as an official partner integration. To get your integration listed, please submit the [Partner Submission Form](https://yhw88ruu.paperform.co/) or contact us at [partners@fireflies.ai](mailto:partners@fireflies.ai).
+
+### Requirements for Listing as Partner Integration
+
+To be listed as a partner integration, you'll need to provide:
+
+1. **Your SOC2 report**: Security compliance documentation
+2. **A public helpdesk article to assist users**: Documentation to help users set up and use your integration
+3. **A support email for users to reach out**: Contact information for integration support
+4. **A short and long description for the listing**: Marketing copy describing your integration
+5. **Your company logo in SVG format**: High-quality logo for display on our integrations page
+
 ## Program Terms
 
 * **Duration**: The complimentary Business Tier access lasts for three months from the date of approval
@@ -988,13 +1758,195 @@ We look forward to seeing what you’ll build and are excited to support your de
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Introduction" icon="link" href="/getting-started/introduction">
     Welcome to Fireflies public API documentation
   </Card>
 
   <Card title="Authorization" icon="link" href="/fundamentals/authorization">
     Authenticating your requests with the Fireflies API
+  </Card>
+</CardGroup>
+
+
+# Docs MCP Server
+Source: https://docs.fireflies.ai/getting-started/docs-mcp-server
+
+Connect your AI tools to Fireflies documentation using MCP for instant access to API references, guides, and code examples.
+
+### Overview
+
+The Fireflies Documentation MCP Server enables AI tools to search and retrieve information directly from the Fireflies documentation. This allows you to ask questions about the Fireflies API, find code examples, understand features, and get implementation guidance without leaving your development environment.
+
+### What is MCP?
+
+Model Context Protocol (MCP) is an open standard that enables AI applications to securely connect to external data sources and tools. With the Fireflies Documentation MCP Server, your AI tools can search across all Fireflies documentation including API references, guides, and code examples.
+
+### Server Details
+
+The Fireflies Documentation MCP Server is available at:
+
+```
+https://docs.fireflies.ai/mcp
+```
+
+This server provides a `SearchFireflies` tool that searches across the Fireflies knowledge base to find relevant information, code examples, API references, and guides.
+
+### Configuration by Platform
+
+<Tabs>
+  <Tab title="Claude">
+    Claude supports MCP servers through its Connectors feature. To connect Fireflies documentation:
+
+    1. Open [Claude Settings](https://claude.ai/settings/connectors)
+    2. Click **Add Connector**
+    3. Enter the server URL: `https://docs.fireflies.ai/mcp`
+    4. Save and start asking questions about Fireflies
+
+    Once connected, Claude can search the Fireflies documentation to answer your questions about the API, implementation patterns, and best practices.
+  </Tab>
+
+  <Tab title="Claude Desktop">
+    For Claude Desktop, add the following configuration to your `claude_desktop_config.json` file:
+
+    **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+
+    **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+
+    **Linux:** `~/.config/Claude/claude_desktop_config.json`
+
+    ```json theme={null}
+    {
+      "mcpServers": {
+        "fireflies-docs": {
+          "command": "npx",
+          "args": [
+            "mcp-remote",
+            "https://docs.fireflies.ai/mcp"
+          ]
+        }
+      }
+    }
+    ```
+
+    After saving the configuration, restart Claude Desktop. You can then ask Claude questions about Fireflies documentation directly.
+  </Tab>
+
+  <Tab title="VS Code">
+    VS Code supports MCP servers through GitHub Copilot. Create a `.vscode/mcp.json` file in your project:
+
+    ```json theme={null}
+    {
+      "servers": {
+        "fireflies-docs": {
+          "type": "http",
+          "url": "https://docs.fireflies.ai/mcp"
+        }
+      }
+    }
+    ```
+
+    After configuration, use Copilot Chat in agent mode to query Fireflies documentation.
+  </Tab>
+
+  <Tab title="Cursor">
+    Cursor supports MCP servers through its settings. To configure:
+
+    1. Open Cursor Settings (Cmd/Ctrl + ,)
+    2. Navigate to **Features > MCP Servers**
+    3. Click **Add New MCP Server**
+    4. Configure with the following details:
+       * **Name:** `fireflies-docs`
+       * **Type:** `url`
+       * **Server URL:** `https://docs.fireflies.ai/mcp`
+
+    Alternatively, add to your `~/.cursor/mcp.json` file:
+
+    ```json theme={null}
+    {
+      "mcpServers": {
+        "fireflies-docs": {
+          "url": "https://docs.fireflies.ai/mcp"
+        }
+      }
+    }
+    ```
+
+    After configuration, you can ask Cursor's AI assistant questions about Fireflies documentation.
+  </Tab>
+
+  <Tab title="Windsurf">
+    Windsurf supports MCP servers through its configuration. Add the following to your `~/.codeium/windsurf/mcp_config.json` file:
+
+    ```json theme={null}
+    {
+      "mcpServers": {
+        "fireflies-docs": {
+          "serverUrl": "https://docs.fireflies.ai/mcp"
+        }
+      }
+    }
+    ```
+
+    After saving, restart Windsurf to enable the Fireflies documentation search.
+  </Tab>
+</Tabs>
+
+### Available Tool
+
+The server provides one tool for searching documentation:
+
+<ParamField type="Tool">
+  **Description:** Search across the Fireflies knowledge base to find relevant information, code examples, API references, and guides.
+
+  **Parameters:**
+
+  * `query` (string, required) - A query to search the content with
+
+  **Example:**
+
+  ```json theme={null}
+  {
+    "query": "how to upload audio files"
+  }
+  ```
+
+  **Returns:** Contextual content with titles and direct links to the documentation pages.
+</ParamField>
+
+### Example Queries
+
+Once configured, you can ask your AI tool questions like:
+
+* "How do I authenticate with the Fireflies API?"
+* "Show me an example of uploading audio for transcription"
+* "What fields are available in the transcript query?"
+* "How do I set up webhooks for Fireflies?"
+* "What are the rate limits for the API?"
+* "How do I search transcripts by date range?"
+
+### Troubleshooting
+
+**Server not connecting:**
+
+* For Claude Desktop: Ensure you have Node.js installed (required for `npx mcp-remote`)
+* Check that the URL is exactly `https://docs.fireflies.ai/mcp`
+* Restart your AI application after configuration changes
+
+**No results returned:**
+
+* Try rephrasing your query with different keywords
+* Be specific about what you're looking for (e.g., "GraphQL mutation for uploading audio" instead of just "upload")
+
+### Additional Resources
+
+<CardGroup>
+  <Card title="MCP Server Configuration" icon="plug" href="/getting-started/mcp-configuration">
+    Connect AI tools to your meeting data with the Fireflies MCP Server
+  </Card>
+
+  <Card title="MCP Tools Reference" icon="tools" href="/mcp-tools/overview">
+    Complete reference for all available MCP tools for meeting data
   </Card>
 </CardGroup>
 
@@ -1029,7 +1981,7 @@ In the following sections, we will guide you through the essential components of
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Quickstart" icon="link" href="/getting-started/quickstart">
     Make your first request in under 5 minutes
   </Card>
@@ -1083,7 +2035,7 @@ Happy coding!
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="MCP Configuration" icon="link" href="/getting-started/mcp-configuration">
     Connect your AI tools directly to your meeting data
   </Card>
@@ -1126,7 +2078,7 @@ Model Context Protocol (MCP) is an open standard that enables AI applications to
 
 2. **Use your Fireflies API key on Claude Desktop** (Optional):
    1. Add this config to your `claude_desktop_config.json` file:
-      ```json  theme={null}
+      ```json theme={null}
       {
         "mcpServers": {
           "fireflies": {
@@ -1160,12 +2112,16 @@ Model Context Protocol (MCP) is an open standard that enables AI applications to
 
 ### Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
+  <Card title="MCP Tools" icon="tools" href="/mcp-tools/overview">
+    Complete reference for all available MCP tools and their parameters
+  </Card>
+
   <Card title="LLM-based Development" icon="link" href="/getting-started/llm-development">
     Enhance your AI coding experience with LLM readable documentation
   </Card>
 
-  <Card title="Authorization" icon="link" href="/fundamentals/authorization">
+  <Card title="Authorization" icon="lock" href="/fundamentals/authorization">
     Authenticating your requests with the Fireflies API
   </Card>
 </CardGroup>
@@ -1318,7 +2274,7 @@ Continue to the next sections for more detailed examples and advanced usage inst
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Users" icon="link" href="/graphql-api/query/users">
     Query users using the API
   </Card>
@@ -1335,6 +2291,28 @@ Source: https://docs.fireflies.ai/getting-started/whats-new
 Latest updates to the Fireflies API
 
 Take a look at our latest updates, features, and improvements for the Fireflies API.
+
+<Update label="2.16.0" description="AskFred - AI Meeting Assistant">
+  ### AskFred - AI Meeting Assistant
+
+  Introducing **AskFred**, an AI-powered assistant that lets you query your meeting transcripts using natural language. Ask questions about single meetings or analyze patterns across multiple meetings with context-aware, conversational responses.
+
+  **Key Capabilities:**
+
+  * Ask questions in plain language and get instant answers
+  * Maintain conversation threads with contextual follow-ups
+  * Query across multiple meetings with flexible filters
+  * Receive AI-generated suggestions for deeper exploration
+  * Multilingual question and response support
+
+  **Get Started:**
+
+  * [Overview](/askfred/overview) - Learn about capabilities
+  * [Quickstart](/askfred/quickstart) - Create your first thread
+  * [Use Cases](/askfred/use-cases) - Common scenarios and examples
+
+  **New API Operations:** [askfred\_threads](/graphql-api/query/askfred-threads), [askfred\_thread](/graphql-api/query/askfred-thread), [createAskFredThread](/graphql-api/mutation/create-askfred-thread), [continueAskFredThread](/graphql-api/mutation/continue-askfred-thread), [deleteAskFredThread](/graphql-api/mutation/delete-askfred-thread)
+</Update>
 
 <Update label="2.15.0" description="Set Meeting Channels">
   ### Set Meeting Channels
@@ -1432,7 +2410,7 @@ The `addToLiveMeeting` mutation allows you to add the Fireflies.ai bot to an ong
 
 ## Arguments
 
-<ResponseField name="meeting_link" type="String!" required>
+<ResponseField name="meeting_link" type="String!">
   A valid http URL for the meeting link, i.e. gooogle meet, zoom, etc
 </ResponseField>
 
@@ -1470,7 +2448,7 @@ The `addToLiveMeeting` mutation allows you to add the Fireflies.ai bot to an ong
 
 To upload an audio file, provide the necessary input parameters to the mutation. Here's an example of how this mutation could be used:
 
-```graphql  theme={null}
+```graphql theme={null}
 mutation AddToLiveMeeting($meetingLink: String!) {
   addToLiveMeeting(meeting_link: $meetingLink) {
     success
@@ -1622,13 +2600,529 @@ List of possible error codes that may be returned by the `addToLiveMeeting` muta
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Upload Audio" icon="link" href="/graphql-api/mutation/upload-audio">
     Use the API to upload audio to Fireflies.ai
   </Card>
 
   <Card title="Webhooks" icon="link" href="/graphql-api/webhooks">
     Create notifications using webhooks
+  </Card>
+</CardGroup>
+
+
+# Continue AskFred Thread
+Source: https://docs.fireflies.ai/graphql-api/mutation/continue-askfred-thread
+
+Continue an existing AskFred conversation with follow-up questions
+
+## Overview
+
+The `continueAskFredThread` mutation allows you to add follow-up questions to an existing AskFred conversation thread. This maintains the context of previous questions and answers, enabling more sophisticated multi-turn conversations about your meeting data.
+
+## Arguments
+
+<ParamField type="ContinueAskFredThreadInput">
+  <Expandable>
+    <ResponseField name="thread_id" type="String">
+      The ID of the existing thread to continue
+    </ResponseField>
+
+    <ResponseField name="query" type="String">
+      Your follow-up question or query. Maximum 2000 characters.
+    </ResponseField>
+
+    <ResponseField name="response_language" type="LanguageCode">
+      Language code for the response (e.g., 'en' for English, 'es' for Spanish). See [Language Codes](/miscellaneous/language-codes) for full list.
+    </ResponseField>
+
+    <ResponseField name="format_mode" type="FormatMode">
+      Response format: 'markdown' for rich formatting or 'plaintext' for simple text
+    </ResponseField>
+  </Expandable>
+</ParamField>
+
+## Returns
+
+Returns an `AskFredResponse` object containing the generated message with the answer to your follow-up query.
+
+## Usage Example
+
+```graphql theme={null}
+mutation ContinueThread($input: ContinueAskFredThreadInput!) {
+  continueAskFredThread(input: $input) {
+    message {
+      id
+      thread_id
+      query
+      answer
+      suggested_queries
+      status
+      created_at
+    }
+  }
+}
+```
+
+<RequestExample>
+  ```bash curl theme={null}
+  curl -X POST \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer your_api_key" \
+    -d '{
+      "query": "mutation ContinueThread($input: ContinueAskFredThreadInput!) { continueAskFredThread(input: $input) { message { id thread_id query answer suggested_queries status } } }",
+      "variables": {
+        "input": {
+          "thread_id": "thread_abc123",
+          "query": "Can you provide more details about the budget allocation?",
+          "response_language": "en",
+          "format_mode": "markdown"
+        }
+      }
+    }' \
+    https://api.fireflies.ai/graphql
+  ```
+
+  ```javascript javascript theme={null}
+  const axios = require('axios');
+
+  const url = 'https://api.fireflies.ai/graphql';
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer your_api_key'
+  };
+
+  const input = {
+    thread_id: "thread_abc123",
+    query: "Can you provide more details about the budget allocation?",
+    response_language: "en",
+    format_mode: "markdown"
+  };
+
+  const data = {
+    query: `
+      mutation ContinueAskFredThread($input: ContinueAskFredThreadInput!) {
+        continueAskFredThread(input: $input) {
+          message {
+            id
+            thread_id
+            query
+            answer
+            suggested_queries
+            status
+            created_at
+          }
+        }
+      }
+    `,
+    variables: { input }
+  };
+
+  axios
+    .post(url, data, { headers: headers })
+    .then(result => {
+      console.log(result.data);
+    })
+    .catch(e => {
+      console.error(e);
+    });
+  ```
+
+  ```python python theme={null}
+  import requests
+
+  url = 'https://api.fireflies.ai/graphql'
+
+  headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer your_api_key'
+  }
+
+  input_data = {
+      "thread_id": "thread_abc123",
+      "query": "Can you provide more details about the budget allocation?",
+      "response_language": "en",
+      "format_mode": "markdown"
+  }
+
+  query = '''
+      mutation ContinueAskFredThread($input: ContinueAskFredThreadInput!) {
+          continueAskFredThread(input: $input) {
+              message {
+                  id
+                  thread_id
+                  query
+                  answer
+                  suggested_queries
+                  status
+                  created_at
+              }
+          }
+      }
+  '''
+
+  data = {
+      'query': query,
+      'variables': {'input': input_data}
+  }
+
+  response = requests.post(url, headers=headers, json=data)
+
+  if response.status_code == 200:
+      print(response.json())
+  else:
+      print(response.text)
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json Response theme={null}
+  {
+    "data": {
+      "continueAskFredThread": {
+        "message": {
+          "id": "msg_003",
+          "thread_id": "thread_abc123",
+          "query": "Can you provide more details about the budget allocation?",
+          "answer": "Certainly! Here are the detailed budget allocations discussed in the meeting:\n\n## Q4 Budget Breakdown ($150K Total)\n\n### Engineering (60% - $90K)\n- **Infrastructure Improvements**: $30K\n  - Cloud services optimization\n  - Database scaling\n  - Security enhancements\n- **Feature Development**: $45K\n  - Mobile app features: $25K\n  - API v2 development: $20K\n- **Technical Debt**: $15K\n  - Code refactoring\n  - Legacy system migration\n\n### Design & UX (25% - $37.5K)\n- **User Research**: $10K\n- **Design System Updates**: $15K\n- **Prototype Development**: $12.5K\n\n### Marketing & Growth (15% - $22.5K)\n- **Content Creation**: $7.5K\n- **Paid Acquisition Tests**: $10K\n- **Partnership Development**: $5K\n\nThe CFO emphasized maintaining a 10% contingency within each category for unexpected costs.",
+          "suggested_queries": [
+            "Who is responsible for managing each budget category?",
+            "What are the key milestones for the infrastructure improvements?",
+            "How will the budget be tracked and reported?"
+          ],
+          "status": "completed",
+          "created_at": "2024-03-15T10:35:00Z"
+        }
+      }
+    }
+  }
+  ```
+</ResponseExample>
+
+## Error Codes
+
+<Accordion title="object_not_found">
+  <p>The specified thread\_id does not exist or you don't have access to it</p>
+</Accordion>
+
+<Accordion title="require_ai_credits">
+  <p>You have insufficient AI credits to continue the thread. Please upgrade your plan or purchase additional credits.</p>
+</Accordion>
+
+<Accordion title="invalid_language_code">
+  <p>The language code you provided is invalid. Please refer to the [Language Codes](/miscellaneous/language-codes) page for a list of valid language codes.</p>
+</Accordion>
+
+## Related
+
+<CardGroup>
+  <Card title="View Thread" icon="link" href="/graphql-api/query/askfred-thread">
+    Get complete thread with all messages
+  </Card>
+
+  <Card title="Create New Thread" icon="link" href="/graphql-api/mutation/create-askfred-thread">
+    Start a new conversation thread
+  </Card>
+</CardGroup>
+
+
+# Create AskFred Thread
+Source: https://docs.fireflies.ai/graphql-api/mutation/create-askfred-thread
+
+Create a new AskFred conversation thread with a question about your meetings
+
+## Overview
+
+The `createAskFredThread` mutation allows you to start a new AskFred conversation by asking questions about your meeting transcripts. You can ask about a specific meeting or search across multiple meetings using filters. AskFred uses AI to analyze your meeting data and provide intelligent, context-aware answers.
+
+## Arguments
+
+<ParamField type="CreateAskFredThreadInput">
+  <Expandable>
+    <ResponseField name="query" type="String">
+      Your question or query about the meeting(s). Maximum 2000 characters.
+    </ResponseField>
+
+    <ResponseField name="transcript_id" type="String">
+      ID of a specific transcript/meeting to query. If provided, the question will be answered based only on this meeting.
+    </ResponseField>
+
+    <ResponseField name="filters" type="AskFredMeetingFiltersInput">
+      Filters to search across multiple meetings. Only used if transcript\_id is not provided.
+
+      <Expandable>
+        <ResponseField name="start_time" type="String">
+          Filter meetings from this date/time (ISO 8601 format). Cannot be more than 1 year in the past. If not provided, defaults to 30 days before end\_time.
+        </ResponseField>
+
+        <ResponseField name="end_time" type="String">
+          Filter meetings until this date/time (ISO 8601 format). If not provided, defaults to today.
+        </ResponseField>
+
+        <ResponseField name="channel_ids" type="[String]">
+          Filter by specific channel/integration IDs
+        </ResponseField>
+
+        <ResponseField name="organizers" type="[String]">
+          Filter by meeting organizer email addresses
+        </ResponseField>
+
+        <ResponseField name="participants" type="[String]">
+          Filter by participant email addresses
+        </ResponseField>
+
+        <ResponseField name="transcript_ids" type="[String]">
+          Filter by specific transcript IDs
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="response_language" type="LanguageCode">
+      Language code for the response (e.g., 'en' for English, 'es' for Spanish). See [Language Codes](/miscellaneous/language-codes) for full list.
+    </ResponseField>
+
+    <ResponseField name="format_mode" type="FormatMode">
+      Response format: 'markdown' for rich formatting or 'plaintext' for simple text
+    </ResponseField>
+  </Expandable>
+</ParamField>
+
+## Returns
+
+Returns an `AskFredResponse` object containing the generated message with the answer to your query.
+
+## Usage Example
+
+### Query a Specific Meeting
+
+```graphql theme={null}
+mutation CreateThreadForMeeting($input: CreateAskFredThreadInput!) {
+  createAskFredThread(input: $input) {
+    message {
+      id
+      thread_id
+      query
+      answer
+      suggested_queries
+      status
+      created_at
+    }
+  }
+}
+```
+
+### Query Across Multiple Meetings
+
+```graphql theme={null}
+mutation CreateThreadWithFilters($input: CreateAskFredThreadInput!) {
+  createAskFredThread(input: $input) {
+    message {
+      id
+      thread_id
+      query
+      answer
+      suggested_queries
+      status
+    }
+  }
+}
+```
+
+<RequestExample>
+  ```bash curl theme={null}
+  curl -X POST \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer your_api_key" \
+    -d '{
+      "query": "mutation CreateThread($input: CreateAskFredThreadInput!) { createAskFredThread(input: $input) { message { id thread_id query answer suggested_queries status } } }",
+      "variables": {
+        "input": {
+          "query": "What were the main decisions made in the product planning meeting?",
+          "transcript_id": "transcript_xyz789",
+          "response_language": "en",
+          "format_mode": "markdown"
+        }
+      }
+    }' \
+    https://api.fireflies.ai/graphql
+  ```
+
+  ```javascript javascript theme={null}
+  const axios = require('axios');
+
+  const url = 'https://api.fireflies.ai/graphql';
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer your_api_key'
+  };
+
+  // Example 1: Query a specific meeting
+  const inputForSpecificMeeting = {
+    query: "What were the action items discussed?",
+    transcript_id: "transcript_xyz789",
+    response_language: "en",
+    format_mode: "markdown"
+  };
+
+  // Example 2: Query across meetings with filters
+  const inputWithFilters = {
+    query: "What customer concerns were raised this week?",
+    filters: {
+      start_time: "2024-03-10T00:00:00Z",
+      end_time: "2024-03-17T00:00:00Z",
+      participants: ["customer@example.com"]
+    },
+    response_language: "en",
+    format_mode: "markdown"
+  };
+
+  const data = {
+    query: `
+      mutation CreateAskFredThread($input: CreateAskFredThreadInput!) {
+        createAskFredThread(input: $input) {
+          message {
+            id
+            thread_id
+            query
+            answer
+            suggested_queries
+            status
+            created_at
+          }
+        }
+      }
+    `,
+    variables: { input: inputForSpecificMeeting }
+  };
+
+  axios
+    .post(url, data, { headers: headers })
+    .then(result => {
+      console.log(result.data);
+    })
+    .catch(e => {
+      console.error(e);
+    });
+  ```
+
+  ```python python theme={null}
+  import requests
+
+  url = 'https://api.fireflies.ai/graphql'
+
+  headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer your_api_key'
+  }
+
+  # Example 1: Query a specific meeting
+  input_specific = {
+      "query": "What were the action items discussed?",
+      "transcript_id": "transcript_xyz789",
+      "response_language": "en",
+      "format_mode": "markdown"
+  }
+
+  # Example 2: Query across meetings with filters
+  input_filtered = {
+      "query": "What customer concerns were raised this week?",
+      "filters": {
+          "start_time": "2024-03-10T00:00:00Z",
+          "end_time": "2024-03-17T00:00:00Z",
+          "participants": ["customer@example.com"]
+      },
+      "response_language": "en",
+      "format_mode": "markdown"
+  }
+
+  query = '''
+      mutation CreateAskFredThread($input: CreateAskFredThreadInput!) {
+          createAskFredThread(input: $input) {
+              message {
+                  id
+                  thread_id
+                  query
+                  answer
+                  suggested_queries
+                  status
+                  created_at
+              }
+          }
+      }
+  '''
+
+  data = {
+      'query': query,
+      'variables': {'input': input_specific}
+  }
+
+  response = requests.post(url, headers=headers, json=data)
+
+  if response.status_code == 200:
+      print(response.json())
+  else:
+      print(response.text)
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json Response theme={null}
+  {
+    "data": {
+      "createAskFredThread": {
+        "message": {
+          "id": "msg_001",
+          "thread_id": "thread_new123",
+          "query": "What were the main decisions made in the product planning meeting?",
+          "answer": "Based on the product planning meeting transcript, here are the main decisions made:\n\n## Product Roadmap\n- **Q4 Focus**: Prioritize mobile app improvements and API v2 development\n- **Feature Freeze**: No new features after November 15th to focus on stability\n\n## Resource Allocation\n- **Team Expansion**: Approved hiring 2 senior engineers and 1 UX designer\n- **Budget**: Allocated $150K for Q4 development initiatives\n\n## Timeline\n- **Beta Release**: Scheduled for December 1st\n- **Public Launch**: Targeted for January 15th\n\n## Strategic Partnerships\n- **Integration Partners**: Approved partnerships with Slack and Microsoft Teams\n- **API Access**: Will provide early access to 5 strategic partners",
+          "suggested_queries": [
+            "What specific mobile app improvements were discussed?",
+            "Who will be responsible for the API v2 development?",
+            "What were the concerns raised about the timeline?"
+          ],
+          "status": "completed",
+          "created_at": "2024-03-15T10:30:00Z"
+        }
+      }
+    }
+  }
+  ```
+</ResponseExample>
+
+## Error Codes
+
+<Accordion title="invalid_arguments">
+  <p>Validation error occurred. Common causes:</p>
+
+  <ul>
+    <li>Query exceeds 2000 character limit or is empty</li>
+    <li>Both transcript\_id and filters are provided (only one is allowed)</li>
+    <li>start\_time is more than 1 year in the past</li>
+    <li>start\_time is not before end\_time</li>
+  </ul>
+</Accordion>
+
+<Accordion title="object_not_found">
+  <p>The specified transcript\_id does not exist or you don't have access to it</p>
+</Accordion>
+
+<Accordion title="require_ai_credits">
+  <p>You don't have access to AI credits. Upgrade your plan to use AskFred.</p>
+</Accordion>
+
+<Accordion title="invalid_language_code">
+  <p>The provided response\_language code is not supported. See <a href="/miscellaneous/language-codes">Language Codes</a> for valid options.</p>
+</Accordion>
+
+## Related
+
+<CardGroup>
+  <Card title="Continue Thread" icon="link" href="/graphql-api/mutation/continue-askfred-thread">
+    Add follow-up questions to continue the conversation
+  </Card>
+
+  <Card title="List Threads" icon="link" href="/graphql-api/query/askfred-threads">
+    View all your AskFred conversation threads
   </Card>
 </CardGroup>
 
@@ -1644,35 +3138,35 @@ The `createBite` mutation allows you to create a bite through the API.
 
 ## Arguments
 
-<ParamField path="transcript_id" type="ID" required>
+<ParamField type="ID">
   ID of the transcript
 </ParamField>
 
-<ParamField path="name" type="String">
+<ParamField type="String">
   Name of the bite
 
   Maximum length is 256 characters.
 </ParamField>
 
-<ParamField path="start_time" type="Float" required>
+<ParamField type="Float">
   Start time of the bite in seconds
 </ParamField>
 
-<ParamField path="end_time" type="Float" required>
+<ParamField type="Float">
   End time of the bite in seconds
 </ParamField>
 
-<ParamField path="media_type" type="String">
+<ParamField type="String">
   Type of the bite, either 'video' or 'audio'
 </ParamField>
 
-<ParamField path="privacies" type="[String]">
+<ParamField type="[String]">
   Array specifying the visibility of the Soundbite. Possible values are 'public', 'team', and
   'participants'. For example, \["team", "participants"] indicates visibility to both team members
   and participants, while \["public"] denotes full public access.
 </ParamField>
 
-<ParamField path="summary" type="String">
+<ParamField type="String">
   Summary for the bite
 
   Maximum length is 500 characters.
@@ -1682,7 +3176,7 @@ The `createBite` mutation allows you to create a bite through the API.
 
 To create a bite, provide the necessary input parameters to the mutation. Here's an example of how this mutation could be used:
 
-```graphql  theme={null}
+```graphql theme={null}
 mutation Mutation($transcriptId: ID!, $startTime: Float!, $endTime: Float!) {
   createBite(transcript_id: $transcriptId, start_time: $startTime, end_time: $endTime) {
     status
@@ -1815,13 +3309,571 @@ mutation Mutation($transcriptId: ID!, $startTime: Float!, $endTime: Float!) {
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Bites" icon="link" href="/graphql-api/query/bites">
     Querying list of bites
   </Card>
 
   <Card title="Bite" icon="link" href="/graphql-api/query/bite">
     Querying bite details
+  </Card>
+</CardGroup>
+
+
+# Create Live Action Item
+Source: https://docs.fireflies.ai/graphql-api/mutation/create-live-action-item
+
+Use the API to create an action item during a live meeting
+
+## Overview
+
+The `createLiveActionItem` mutation allows you to create an action item during a live meeting through the API. The action item is created using natural language processing via Fred, Fireflies' AI assistant.
+
+This mutation is rate-limited to 10 requests per hour across all user tiers. It also requires AI credits to be available on the user's account.
+
+## Arguments
+
+<ParamField type="CreateLiveActionItemInput!">
+  Input object containing the meeting ID and prompt for the action item. See [CreateLiveActionItemInput](/schema/input/create-live-action-item-input) for details.
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="Boolean!">
+  Whether the action item was created successfully
+</ResponseField>
+
+## Usage Example
+
+To create a live action item, provide the meeting ID and a natural language prompt:
+
+```graphql theme={null}
+mutation CreateLiveActionItem($input: CreateLiveActionItemInput!) {
+  createLiveActionItem(input: $input) {
+    success
+  }
+}
+```
+
+<RequestExample>
+  ```bash curl theme={null}
+  curl -X POST https://api.fireflies.ai/graphql \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer your_api_key" \
+    -d '{
+      "query": "mutation CreateLiveActionItem($input: CreateLiveActionItemInput!) { createLiveActionItem(input: $input) { success } }",
+      "variables": {
+        "input": {
+          "meeting_id": "your_meeting_id",
+          "prompt": "Follow up with the client about the proposal"
+        }
+      }
+    }'
+  ```
+
+  ```javascript javascript theme={null}
+  const axios = require('axios');
+
+  const url = 'https://api.fireflies.ai/graphql';
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer your_api_key'
+  };
+
+  const data = {
+    query: `mutation CreateLiveActionItem($input: CreateLiveActionItemInput!) {
+      createLiveActionItem(input: $input) {
+        success
+      }
+    }`,
+    variables: {
+      input: {
+        meeting_id: 'your_meeting_id',
+        prompt: 'Follow up with the client about the proposal'
+      }
+    }
+  };
+
+  axios
+    .post(url, data, { headers: headers })
+    .then(result => {
+      console.log(result.data);
+    })
+    .catch(e => {
+      console.log(JSON.stringify(e));
+    });
+  ```
+
+  ```python python theme={null}
+  import requests
+
+  url = 'https://api.fireflies.ai/graphql'
+
+  headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer your_api_key'
+  }
+
+  data = {
+      'query': '''
+        mutation CreateLiveActionItem($input: CreateLiveActionItemInput!) {
+          createLiveActionItem(input: $input) {
+            success
+          }
+        }
+      ''',
+      'variables': {
+          'input': {
+              'meeting_id': 'your_meeting_id',
+              'prompt': 'Follow up with the client about the proposal'
+          }
+      }
+  }
+
+  response = requests.post(url, headers=headers, json=data)
+
+  if response.status_code == 200:
+      print(response.json()['data'])
+  else:
+      print(response.text)
+  ```
+
+  ```java java theme={null}
+  import java.net.URI;
+  import java.net.http.HttpClient;
+  import java.net.http.HttpRequest;
+  import java.net.http.HttpResponse;
+  import java.net.http.HttpRequest.BodyPublishers;
+
+  public class ApiRequest {
+      public static void main(String[] args) {
+          HttpClient client = HttpClient.newHttpClient();
+          String jsonRequest = "{\"query\": \"mutation CreateLiveActionItem($input: CreateLiveActionItemInput!) { createLiveActionItem(input: $input) { success } }\", \"variables\": {\"input\": {\"meeting_id\": \"your_meeting_id\", \"prompt\": \"Follow up with the client about the proposal\"}}}";
+          HttpRequest request = HttpRequest.newBuilder()
+              .uri(URI.create("https://api.fireflies.ai/graphql"))
+              .header("Content-Type", "application/json")
+              .header("Authorization", "Bearer your_api_key")
+              .POST(BodyPublishers.ofString(jsonRequest))
+              .build();
+
+          client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+              .thenApply(HttpResponse::body)
+              .thenAccept(System.out::println)
+              .join();
+      }
+  }
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json Response theme={null}
+  {
+    "data": {
+      "createLiveActionItem": {
+        "success": true
+      }
+    }
+  }
+  ```
+</ResponseExample>
+
+## Error Codes
+
+List of possible error codes that may be returned by the `createLiveActionItem` mutation. Full list of error codes can be found [here](/miscellaneous/error-codes).
+
+<Accordion title="account_cancelled">
+  <p>The user account has been cancelled. Please contact support if you encounter this error.</p>
+</Accordion>
+
+<Accordion title="object_not_found">
+  <p>The meeting with the specified ID was not found or you do not have access to it.</p>
+</Accordion>
+
+<Accordion title="require_elevated_privilege">
+  <p>You do not have permission to create action items for this meeting. Only the meeting organizer or team admin can create live action items.</p>
+</Accordion>
+
+<Accordion title="insufficient_ai_credits">
+  <p>Your account does not have sufficient AI credits to perform this operation. Please upgrade your plan or purchase additional credits.</p>
+</Accordion>
+
+<Accordion title="too_many_requests">
+  <p>You have exceeded the rate limit for this mutation. The limit is 10 requests per hour. Please wait before making additional requests.</p>
+</Accordion>
+
+## Additional Resources
+
+<CardGroup>
+  <Card title="Live Action Items" icon="link" href="/graphql-api/query/live-action-items">
+    Query live action items for a meeting
+  </Card>
+
+  <Card title="Update Meeting State" icon="link" href="/graphql-api/mutation/update-meeting-state">
+    Pause or resume recording for a live meeting
+  </Card>
+</CardGroup>
+
+
+# Create Live Soundbite
+Source: https://docs.fireflies.ai/graphql-api/mutation/create-live-soundbite
+
+Use the API to create a soundbite during a live meeting
+
+## Overview
+
+The `createLiveSoundbite` mutation allows you to create a soundbite during a live meeting through the API. The soundbite is created using natural language processing via Fred, Fireflies' AI assistant.
+
+<Note>
+  **Rate Limit:** This mutation is rate-limited to 10 requests per hour across all user tiers. If you exceed this limit, you will receive a `too_many_requests` error with a `retryAfter` timestamp indicating when you can make requests again.
+
+  **AI Credits:** This mutation requires AI credits to be available on the user's account.
+</Note>
+
+## Arguments
+
+<ParamField type="CreateLiveSoundbiteInput!">
+  Input object containing the meeting ID and prompt for the soundbite. See [CreateLiveSoundbiteInput](/schema/input/create-live-soundbite-input) for details.
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="Boolean!">
+  Whether the soundbite was created successfully
+</ResponseField>
+
+## Usage Example
+
+To create a live soundbite, provide the meeting ID and a natural language prompt:
+
+```graphql theme={null}
+mutation CreateLiveSoundbite($input: CreateLiveSoundbiteInput!) {
+  createLiveSoundbite(input: $input) {
+    success
+  }
+}
+```
+
+<RequestExample>
+  ```bash curl theme={null}
+  curl -X POST https://api.fireflies.ai/graphql \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer your_api_key" \
+    -d '{
+      "query": "mutation CreateLiveSoundbite($input: CreateLiveSoundbiteInput!) { createLiveSoundbite(input: $input) { success } }",
+      "variables": {
+        "input": {
+          "meeting_id": "your_meeting_id",
+          "prompt": "Create a soundbite from the last 2 minutes"
+        }
+      }
+    }'
+  ```
+
+  ```javascript javascript theme={null}
+  const axios = require('axios');
+
+  const url = 'https://api.fireflies.ai/graphql';
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer your_api_key'
+  };
+
+  const data = {
+    query: `mutation CreateLiveSoundbite($input: CreateLiveSoundbiteInput!) {
+      createLiveSoundbite(input: $input) {
+        success
+      }
+    }`,
+    variables: {
+      input: {
+        meeting_id: 'your_meeting_id',
+        prompt: 'Create a soundbite from the last 2 minutes'
+      }
+    }
+  };
+
+  axios
+    .post(url, data, { headers: headers })
+    .then(result => {
+      console.log(result.data);
+    })
+    .catch(e => {
+      console.log(JSON.stringify(e));
+    });
+  ```
+
+  ```python python theme={null}
+  import requests
+
+  url = 'https://api.fireflies.ai/graphql'
+
+  headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer your_api_key'
+  }
+
+  data = {
+      'query': '''
+        mutation CreateLiveSoundbite($input: CreateLiveSoundbiteInput!) {
+          createLiveSoundbite(input: $input) {
+            success
+          }
+        }
+      ''',
+      'variables': {
+          'input': {
+              'meeting_id': 'your_meeting_id',
+              'prompt': 'Create a soundbite from the last 2 minutes'
+          }
+      }
+  }
+
+  response = requests.post(url, headers=headers, json=data)
+
+  if response.status_code == 200:
+      print(response.json()['data'])
+  else:
+      print(response.text)
+  ```
+
+  ```java java theme={null}
+  import java.net.URI;
+  import java.net.http.HttpClient;
+  import java.net.http.HttpRequest;
+  import java.net.http.HttpResponse;
+  import java.net.http.HttpRequest.BodyPublishers;
+
+  public class ApiRequest {
+      public static void main(String[] args) {
+          HttpClient client = HttpClient.newHttpClient();
+          String jsonRequest = "{\"query\": \"mutation CreateLiveSoundbite($input: CreateLiveSoundbiteInput!) { createLiveSoundbite(input: $input) { success } }\", \"variables\": {\"input\": {\"meeting_id\": \"your_meeting_id\", \"prompt\": \"Create a soundbite from the last 2 minutes\"}}}";
+          HttpRequest request = HttpRequest.newBuilder()
+              .uri(URI.create("https://api.fireflies.ai/graphql"))
+              .header("Content-Type", "application/json")
+              .header("Authorization", "Bearer your_api_key")
+              .POST(BodyPublishers.ofString(jsonRequest))
+              .build();
+
+          client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+              .thenApply(HttpResponse::body)
+              .thenAccept(System.out::println)
+              .join();
+      }
+  }
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json Response theme={null}
+  {
+    "data": {
+      "createLiveSoundbite": {
+        "success": true
+      }
+    }
+  }
+  ```
+</ResponseExample>
+
+## Error Codes
+
+List of possible error codes that may be returned by the `createLiveSoundbite` mutation. Full list of error codes can be found [here](/miscellaneous/error-codes).
+
+<Accordion title="account_cancelled">
+  <p>The user account has been cancelled. Please contact support if you encounter this error.</p>
+</Accordion>
+
+<Accordion title="object_not_found">
+  <p>The meeting with the specified ID was not found or you do not have access to it.</p>
+</Accordion>
+
+<Accordion title="require_elevated_privilege">
+  <p>You do not have permission to create soundbites for this meeting. Only the meeting organizer or team admin can create live soundbites.</p>
+</Accordion>
+
+<Accordion title="insufficient_ai_credits">
+  <p>Your account does not have sufficient AI credits to perform this operation. Please upgrade your plan or purchase additional credits.</p>
+</Accordion>
+
+<Accordion title="too_many_requests">
+  <p>You have exceeded the rate limit of 10 requests per hour. Wait until the time specified in the `retryAfter` field before making additional requests.</p>
+</Accordion>
+
+## Additional Resources
+
+<CardGroup>
+  <Card title="Create Bite" icon="link" href="/graphql-api/mutation/create-bite">
+    Create a soundbite for a completed meeting
+  </Card>
+
+  <Card title="Update Meeting State" icon="link" href="/graphql-api/mutation/update-meeting-state">
+    Pause or resume recording for a live meeting
+  </Card>
+</CardGroup>
+
+
+# Delete AskFred Thread
+Source: https://docs.fireflies.ai/graphql-api/mutation/delete-askfred-thread
+
+Delete an AskFred conversation thread and all its messages
+
+## Overview
+
+The `deleteAskFredThread` mutation allows you to permanently delete an AskFred conversation thread along with all its associated messages. This action is irreversible.
+
+## Arguments
+
+<ParamField type="String">
+  The unique identifier of the AskFred thread to delete
+</ParamField>
+
+## Returns
+
+Returns the deleted `AskFredThread` object if successful, allowing you to confirm the deletion details.
+
+## Usage Example
+
+```graphql theme={null}
+mutation DeleteThread($id: String!) {
+  deleteAskFredThread(id: $id) {
+    id
+    title
+    transcript_id
+    user_id
+    created_at
+  }
+}
+```
+
+<RequestExample>
+  ```bash curl theme={null}
+  curl -X POST \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer your_api_key" \
+    -d '{
+      "query": "mutation DeleteThread($id: String!) { deleteAskFredThread(id: $id) { id title transcript_id created_at } }",
+      "variables": {
+        "id": "thread_abc123"
+      }
+    }' \
+    https://api.fireflies.ai/graphql
+  ```
+
+  ```javascript javascript theme={null}
+  const axios = require('axios');
+
+  const url = 'https://api.fireflies.ai/graphql';
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer your_api_key'
+  };
+
+  const threadId = 'thread_abc123';
+
+  const data = {
+    query: `
+      mutation DeleteAskFredThread($id: String!) {
+        deleteAskFredThread(id: $id) {
+          id
+          title
+          transcript_id
+          user_id
+          created_at
+        }
+      }
+    `,
+    variables: { id: threadId }
+  };
+
+  axios
+    .post(url, data, { headers: headers })
+    .then(result => {
+      console.log('Thread deleted:', result.data);
+    })
+    .catch(e => {
+      console.error('Error deleting thread:', e);
+    });
+  ```
+
+  ```python python theme={null}
+  import requests
+
+  url = 'https://api.fireflies.ai/graphql'
+
+  headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer your_api_key'
+  }
+
+  thread_id = 'thread_abc123'
+
+  query = '''
+      mutation DeleteAskFredThread($id: String!) {
+          deleteAskFredThread(id: $id) {
+              id
+              title
+              transcript_id
+              user_id
+              created_at
+          }
+      }
+  '''
+
+  variables = {
+      'id': thread_id
+  }
+
+  data = {
+      'query': query,
+      'variables': variables
+  }
+
+  response = requests.post(url, headers=headers, json=data)
+
+  if response.status_code == 200:
+      print('Thread deleted:', response.json())
+  else:
+      print('Error:', response.text)
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json Response theme={null}
+  {
+    "data": {
+      "deleteAskFredThread": {
+        "id": "thread_abc123",
+        "title": "What were the action items from the Q4 planning meeting?",
+        "transcript_id": "transcript_xyz789",
+        "user_id": "user_123",
+        "created_at": "2024-03-15T10:30:00Z"
+      }
+    }
+  }
+  ```
+</ResponseExample>
+
+## Important Notes
+
+<Warning>
+  Deletion is permanent and cannot be undone
+</Warning>
+
+## Error Codes
+
+<Accordion title="object_not_found">
+  <p>The specified thread ID does not exist or you don't have access to it</p>
+</Accordion>
+
+## Related
+
+<CardGroup>
+  <Card title="List Threads" icon="link" href="/graphql-api/query/askfred-threads">
+    View all your threads before deletion
+  </Card>
+
+  <Card title="View Thread Details" icon="link" href="/graphql-api/query/askfred-thread">
+    Review thread content before deletion
   </Card>
 </CardGroup>
 
@@ -1841,7 +3893,7 @@ The `deleteTranscript` mutation is designed to delete a specific transcript by i
 
 ## Arguments
 
-<ParamField path="id" type="String" required>
+<ParamField type="String">
   Transcript ID
 </ParamField>
 
@@ -1849,7 +3901,7 @@ The `deleteTranscript` mutation is designed to delete a specific transcript by i
 
 To delete a transcript, provide the unique id of the transcript as an argument to the mutation. The returned subfields will be from the deleted transcript. Here’s an example of how this mutation could be used:
 
-```graphql  theme={null}
+```graphql theme={null}
 mutation deleteTranscript($id: String!) {
   deleteTranscript(id: $id) {
     id
@@ -2001,7 +4053,7 @@ List of possible error codes that may be returned by the `deleteTranscript` muta
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Transcripts" icon="link" href="/graphql-api/query/transcripts">
     Querying list of transcripts
   </Card>
@@ -2023,11 +4075,11 @@ The `setUserRole` mutation allows for the updating of a user's role within a tea
 
 ## Arguments
 
-<ParamField path="user_id" type="String" required>
+<ParamField type="String">
   The unique identifier of the user.
 </ParamField>
 
-<ParamField path="role" type="Role" required>
+<ParamField type="Role">
   The [Role](/schema/input/role) to be assigned to the user. Valid types for user are `admin` and
   `user`
 </ParamField>
@@ -2036,7 +4088,7 @@ The `setUserRole` mutation allows for the updating of a user's role within a tea
 
 To set a user's role, provide the user's ID and the desired role as arguments to the mutation. Here's an example of how this mutation could be used:
 
-```graphql  theme={null}
+```graphql theme={null}
 mutation setUserRole($userId: String!, $role: Role!) {
   setUserRole(user_id: $userId, role: $role) {
     id
@@ -2190,7 +4242,7 @@ List of possible error codes that may be returned by the `setUserRole` mutation.
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Users" icon="link" href="/graphql-api/query/users">
     Querying list of users
   </Card>
@@ -2212,7 +4264,7 @@ The `updateMeetingChannel` mutation allows for batch updating the channel assign
 
 ## Arguments
 
-<ParamField path="input" type="UpdateMeetingChannelInput" required>
+<ParamField type="UpdateMeetingChannelInput">
   The channel assignment to be applied to the specified transcripts. See [UpdateMeetingChannelInput](/schema/input/update-meeting-channel-input).
 </ParamField>
 
@@ -2220,7 +4272,7 @@ The `updateMeetingChannel` mutation allows for batch updating the channel assign
 
 To update meeting channels, provide an array of transcript IDs (1–5 items) and a single channel ID as arguments to the mutation. Here's an example of how this mutation could be used:
 
-```graphql  theme={null}
+```graphql theme={null}
 mutation UpdateMeetingChannel($input: UpdateMeetingChannelInput!) {
   updateMeetingChannel(input: $input) {
     id
@@ -2422,7 +4474,7 @@ List of possible error codes that may be returned by the `updateMeetingChannel` 
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Transcript" icon="link" href="/graphql-api/query/transcript">
     Querying transcript details
   </Card>
@@ -2452,7 +4504,7 @@ The `updateMeetingPrivacy` mutation allows for updating the privacy setting of a
 
 ## Arguments
 
-<ParamField path="input" type="UpdateMeetingPrivacyInput" required>
+<ParamField type="UpdateMeetingPrivacyInput">
   The privacy setting to be assigned to the meeting / transcript. See [UpdateMeetingPrivacyInput](/schema/input/update-meeting-privacy-input).
 </ParamField>
 
@@ -2460,7 +4512,7 @@ The `updateMeetingPrivacy` mutation allows for updating the privacy setting of a
 
 To update a meeting's privacy setting, provide the transcript ID and the new privacy level as arguments to the mutation. Here's an example of how this mutation could be used:
 
-```graphql  theme={null}
+```graphql theme={null}
 mutation UpdateMeetingPrivacy($input: UpdateMeetingPrivacyInput!) {
   updateMeetingPrivacy(input: $input) {
     id
@@ -2625,13 +4677,211 @@ List of possible error codes that may be returned by the `updateMeetingPrivacy` 
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Transcript" icon="link" href="/graphql-api/query/transcript">
     Querying transcript details
   </Card>
 
   <Card title="Update Meeting Title" icon="link" href="/graphql-api/mutation/update-meeting-title">
     Use the API to update meeting titles
+  </Card>
+</CardGroup>
+
+
+# Update Meeting State
+Source: https://docs.fireflies.ai/graphql-api/mutation/update-meeting-state
+
+Use the API to pause or resume recording for a live meeting
+
+## Overview
+
+The `updateMeetingState` mutation allows you to pause or resume recording for a live meeting through the API. This is useful for controlling the Fireflies bot during an active meeting.
+
+This mutation is rate-limited to 10 requests per hour across all user tiers.
+
+## Arguments
+
+<ParamField type="UpdateMeetingStateInput!">
+  Input object containing the meeting ID and action to perform. See [UpdateMeetingStateInput](/schema/input/update-meeting-state-input) for details.
+</ParamField>
+
+## Response
+
+<ResponseField name="success" type="Boolean!">
+  Whether the action was executed successfully
+</ResponseField>
+
+<ResponseField name="action" type="MeetingStateAction!">
+  The action that was executed
+</ResponseField>
+
+## Usage Example
+
+To update the meeting state, provide the meeting ID and the desired action:
+
+```graphql theme={null}
+mutation UpdateMeetingState($input: UpdateMeetingStateInput!) {
+  updateMeetingState(input: $input) {
+    success
+    action
+  }
+}
+```
+
+<RequestExample>
+  ```bash curl theme={null}
+  curl -X POST https://api.fireflies.ai/graphql \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer your_api_key" \
+    -d '{
+      "query": "mutation UpdateMeetingState($input: UpdateMeetingStateInput!) { updateMeetingState(input: $input) { success action } }",
+      "variables": {
+        "input": {
+          "meeting_id": "your_meeting_id",
+          "action": "pause_recording"
+        }
+      }
+    }'
+  ```
+
+  ```javascript javascript theme={null}
+  const axios = require('axios');
+
+  const url = 'https://api.fireflies.ai/graphql';
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer your_api_key'
+  };
+
+  const data = {
+    query: `mutation UpdateMeetingState($input: UpdateMeetingStateInput!) {
+      updateMeetingState(input: $input) {
+        success
+        action
+      }
+    }`,
+    variables: {
+      input: {
+        meeting_id: 'your_meeting_id',
+        action: 'pause_recording'
+      }
+    }
+  };
+
+  axios
+    .post(url, data, { headers: headers })
+    .then(result => {
+      console.log(result.data);
+    })
+    .catch(e => {
+      console.log(JSON.stringify(e));
+    });
+  ```
+
+  ```python python theme={null}
+  import requests
+
+  url = 'https://api.fireflies.ai/graphql'
+
+  headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer your_api_key'
+  }
+
+  data = {
+      'query': '''
+        mutation UpdateMeetingState($input: UpdateMeetingStateInput!) {
+          updateMeetingState(input: $input) {
+            success
+            action
+          }
+        }
+      ''',
+      'variables': {
+          'input': {
+              'meeting_id': 'your_meeting_id',
+              'action': 'pause_recording'
+          }
+      }
+  }
+
+  response = requests.post(url, headers=headers, json=data)
+
+  if response.status_code == 200:
+      print(response.json()['data'])
+  else:
+      print(response.text)
+  ```
+
+  ```java java theme={null}
+  import java.net.URI;
+  import java.net.http.HttpClient;
+  import java.net.http.HttpRequest;
+  import java.net.http.HttpResponse;
+  import java.net.http.HttpRequest.BodyPublishers;
+
+  public class ApiRequest {
+      public static void main(String[] args) {
+          HttpClient client = HttpClient.newHttpClient();
+          String jsonRequest = "{\"query\": \"mutation UpdateMeetingState($input: UpdateMeetingStateInput!) { updateMeetingState(input: $input) { success action } }\", \"variables\": {\"input\": {\"meeting_id\": \"your_meeting_id\", \"action\": \"pause_recording\"}}}";
+          HttpRequest request = HttpRequest.newBuilder()
+              .uri(URI.create("https://api.fireflies.ai/graphql"))
+              .header("Content-Type", "application/json")
+              .header("Authorization", "Bearer your_api_key")
+              .POST(BodyPublishers.ofString(jsonRequest))
+              .build();
+
+          client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+              .thenApply(HttpResponse::body)
+              .thenAccept(System.out::println)
+              .join();
+      }
+  }
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json Response theme={null}
+  {
+    "data": {
+      "updateMeetingState": {
+        "success": true,
+        "action": "pause_recording"
+      }
+    }
+  }
+  ```
+</ResponseExample>
+
+## Error Codes
+
+List of possible error codes that may be returned by the `updateMeetingState` mutation. Full list of error codes can be found [here](/miscellaneous/error-codes).
+
+<Accordion title="account_cancelled">
+  <p>The user account has been cancelled. Please contact support if you encounter this error.</p>
+</Accordion>
+
+<Accordion title="object_not_found">
+  <p>The meeting with the specified ID was not found or you do not have access to it.</p>
+</Accordion>
+
+<Accordion title="require_elevated_privilege">
+  <p>You do not have permission to control this meeting. Only the meeting organizer or team admin can update the meeting state.</p>
+</Accordion>
+
+<Accordion title="too_many_requests">
+  <p>You have exceeded the rate limit for this mutation. The limit is 10 requests per hour. Please wait before making additional requests.</p>
+</Accordion>
+
+## Additional Resources
+
+<CardGroup>
+  <Card title="Create Live Action Item" icon="link" href="/graphql-api/mutation/create-live-action-item">
+    Create action items during a live meeting
+  </Card>
+
+  <Card title="Create Live Soundbite" icon="link" href="/graphql-api/mutation/create-live-soundbite">
+    Create soundbites during a live meeting
   </Card>
 </CardGroup>
 
@@ -2647,7 +4897,7 @@ The `updateMeetingTitle` mutation allows for updating the title of a meeting tra
 
 ## Arguments
 
-<ParamField path="input" type="UpdateMeetingTitleInput" required>
+<ParamField type="UpdateMeetingTitleInput">
   The new title to be assigned to the meeting / transcript.
 </ParamField>
 
@@ -2655,7 +4905,7 @@ The `updateMeetingTitle` mutation allows for updating the title of a meeting tra
 
 To update a meeting title, provide the transcript ID and the new title as arguments to the mutation. Here's an example of how this mutation could be used:
 
-```graphql  theme={null}
+```graphql theme={null}
 mutation UpdateMeetingTitle($input: UpdateMeetingTitleInput!) {
   updateMeetingTitle(input: $input) {
     title
@@ -2808,7 +5058,7 @@ List of possible error codes that may be returned by the `updateMeetingTitle` mu
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Transcript" icon="link" href="/graphql-api/query/transcript">
     Querying transcript details
   </Card>
@@ -2830,9 +5080,9 @@ The `uploadAudio` mutation allows you to upload audio files to Fireflies.ai for 
 
 ## Arguments
 
-<ParamField path="input" type="AudioUploadInput">
+<ParamField type="AudioUploadInput">
   <Expandable>
-    <ResponseField name="url" type="String" required>
+    <ResponseField name="url" type="String">
       The url of media file to be transcribed. It MUST be a valid https string and publicly accessible to enable us download the audio / video file. Double check to see if the media file is downloadable and that the link is not a preview link before making the request. The media file must be either of these formats - mp3, mp4, wav, m4a, ogg
     </ResponseField>
 
@@ -2868,6 +5118,10 @@ The `uploadAudio` mutation allows you to upload audio files to Fireflies.ai for 
     <ResponseField name="bypass_size_check" type="Boolean">
       Bypasses the internal file size validation that normally rejects audio files smaller than 50kb. Set to true if you need to process very short audio clips.
     </ResponseField>
+
+    <ResponseField name="download_auth" type="DownloadAuthInput">
+      Authentication configuration for downloading the media file. Use this when your audio/video file requires authentication (bearer token or basic auth). If not provided, defaults to no authentication (publicly accessible URL). See [DownloadAuthInput](/schema/input/download-auth-input) for details.
+    </ResponseField>
   </Expandable>
 </ParamField>
 
@@ -2875,7 +5129,7 @@ The `uploadAudio` mutation allows you to upload audio files to Fireflies.ai for 
 
 To upload a file, provide the necessary input parameters to the mutation. Here's an example of how this mutation could be used:
 
-```graphql  theme={null}
+```graphql theme={null}
 mutation uploadAudio($input: AudioUploadInput) {
   uploadAudio(input: $input) {
     success
@@ -3075,14 +5329,81 @@ mutation uploadAudio($input: AudioUploadInput) {
   ```
 </ResponseExample>
 
+## Authenticated Downloads
+
+The `download_auth` field allows you to upload audio/video files that require authentication. This is useful when your media files are hosted on private servers or behind authentication.
+
+### Bearer Token Authentication
+
+Use bearer token authentication when your media URL requires an `Authorization: Bearer <token>` header:
+
+```graphql theme={null}
+mutation {
+  uploadAudio(input: {
+    url: "https://example.com/protected-audio.mp3"
+    title: "Protected Meeting Recording"
+    download_auth: {
+      type: bearer_token
+      bearer: {
+        token: "your-bearer-token-here"
+      }
+    }
+  }) {
+    success
+    message
+  }
+}
+```
+
+### Basic Authentication
+
+Use basic authentication when your media URL requires username and password:
+
+```graphql theme={null}
+mutation {
+  uploadAudio(input: {
+    url: "https://example.com/protected-audio.mp3"
+    title: "Protected Meeting Recording"
+    download_auth: {
+      type: basic_auth
+      basic: {
+        username: "your-username"
+        password: "your-password"
+      }
+    }
+  }) {
+    success
+    message
+  }
+}
+```
+
+**Note:** The username is optional for basic auth. If not provided, only the password will be used.
+
 ## FAQ
 
 <Accordion title="Can I upload a file directly from my machine?">
-  <p>Audio upload only works with publicly accessible URLs. We cannot accept files hosted on your local machine or a private server.</p>
+  <p>Audio upload only works with publicly accessible URLs or URLs with supported authentication (bearer token or basic auth). We cannot accept files hosted on your local machine.</p>
 </Accordion>
 
 <Accordion title="I don't want to expose my audio files to the public internet. How can I upload them to Fireflies.ai safely?">
-  <p>You may use signed urls with short expiry times to upload audio files to Fireflies.ai. Fireflies will download the file from the url and process it.</p>
+  <p>You have two options:</p>
+
+  <ol>
+    <li><strong>Signed URLs:</strong> Use signed URLs with short expiry times (e.g., AWS S3 presigned URLs, Google Cloud Storage signed URLs)</li>
+    <li><strong>Authenticated Downloads:</strong> Use the <code>download\_auth</code> field to provide bearer token or basic authentication credentials. Fireflies will use these credentials when downloading your media file.</li>
+  </ol>
+</Accordion>
+
+<Accordion title="What authentication methods are supported?">
+  <p>Fireflies supports two authentication methods for downloading media files:</p>
+
+  <ul>
+    <li><strong>Bearer Token:</strong> Adds <code>Authorization: Bearer \<token></code> header when downloading</li>
+    <li><strong>Basic Auth:</strong> Adds <code>Authorization: Basic \<base64(username:password)></code> header when downloading</li>
+  </ul>
+
+  <p>If your media file is publicly accessible, you don't need to provide <code>download\_auth</code>.</p>
 </Accordion>
 
 ## Error Codes
@@ -3113,7 +5434,7 @@ List of possible error codes that may be returned by the `uploadAudio` mutation.
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Webhooks" icon="link" href="/graphql-api/webhooks">
     Create notifications using webhooks
   </Card>
@@ -3135,7 +5456,7 @@ The active\_meetings query is designed to fetch a list of meetings that are curr
 
 ## Arguments
 
-<ParamField path="email" type="String">
+<ParamField type="String">
   Filter active meetings by a specific user's email address.
 
   **Permission requirements:**
@@ -3148,15 +5469,26 @@ The active\_meetings query is designed to fetch a list of meetings that are curr
   The email must be valid and belong to a user in the same team as the requester.
 </ParamField>
 
+<ParamField type="[MeetingState]">
+  Filter active meetings by their state. Accepts an array of [MeetingState](/schema/enum/meeting-state) values.
+
+  **Possible values:**
+
+  * `active`: Meetings that are currently in progress
+  * `paused`: Meetings that have been paused
+
+  If this field is omitted, the query returns meetings in both `active` and `paused` states by default.
+</ParamField>
+
 ## Schema
 
 Fields available to the [ActiveMeeting](/schema/active-meeting) query
 
 ## Usage Example
 
-```graphql  theme={null}
-query ActiveMeetings($email: String) {
-  active_meetings(input: { email: $email }) {
+```graphql theme={null}
+query ActiveMeetings($email: String, $states: [MeetingState!]) {
+  active_meetings(input: { email: $email, states: $states }) {
     id
     title
     organizer_email
@@ -3164,6 +5496,7 @@ query ActiveMeetings($email: String) {
     start_time
     end_time
     privacy
+    state
   }
 }
 ```
@@ -3253,14 +5586,16 @@ query ActiveMeetings($email: String) {
           "title": "Team Standup",
           "organizer_email": "user@example.com",
           "meeting_link": "https://zoom.us/j/123456789",
-          "start_time": "2024-01-15T10:00:00.000Z"
+          "start_time": "2024-01-15T10:00:00.000Z",
+          "state": "active"
         },
         {
           "id": "meeting-id-2",
           "title": "Client Review",
           "organizer_email": "user@example.com",
           "meeting_link": "https://meet.google.com/abc-defg-hij",
-          "start_time": "2024-01-15T14:30:00.000Z"
+          "start_time": "2024-01-15T14:30:00.000Z",
+          "state": "paused"
         }
       ]
     }
@@ -3282,7 +5617,7 @@ List of possible error codes that may be returned by the `active_meetings` query
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Transcripts" icon="link" href="/graphql-api/query/transcripts">
     Query completed meetings and transcripts
   </Card>
@@ -3304,11 +5639,11 @@ The analytics query fetches detailed conversation and meeting metrics for teams 
 
 ## Arguments
 
-<ParamField path="start_time" type="String">
+<ParamField type="String">
   The `start_time` parameter filters results starting from a specific datetime (ISO 8601 format).
 </ParamField>
 
-<ParamField path="end_time" type="String">
+<ParamField type="String">
   The `end_time` parameter filters results up to a specific datetime (ISO 8601 format).
 </ParamField>
 
@@ -3318,7 +5653,7 @@ Fields available to the [Analytics](/schema/analytics) query.
 
 ## Usage Example
 
-```graphql  theme={null}
+```graphql theme={null}
 query Analytics($startTime: String, $endTime: String) {
   analytics(start_time: $startTime, end_time: $endTime) {
     team {
@@ -3515,7 +5850,7 @@ List of possible error codes that may be returned by the `analytics` query. Full
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Transcripts" icon="link" href="/graphql-api/query/transcripts">
     Querying list of transcripts
   </Card>
@@ -3537,19 +5872,19 @@ The apps query fetches the results of the AI App for all the meetings it ran suc
 
 ## Arguments
 
-<ParamField path="app_id" type="String">
+<ParamField type="String">
   The `app_id` parameter retrieves all outputs against a specific AI App.
 </ParamField>
 
-<ParamField path="transcript_id" type="String">
+<ParamField type="String">
   The `transcript_id` parameter retrieves all outputs against a specific meeting/transcript.
 </ParamField>
 
-<ParamField path="skip" type="Int">
+<ParamField type="Int">
   Number of records to skip over. Helps paginate results when used in combination with the `limit` param.
 </ParamField>
 
-<ParamField path="limit" type="Int">
+<ParamField type="Int">
   Maximum number of `apps` outputs to fetch in a single query. The default query fetches 10 records, which is the maximum for a single request.
 </ParamField>
 
@@ -3559,7 +5894,7 @@ Fields available to the [AI Apps](/schema/apps) query
 
 ## Usage Example
 
-```graphql  theme={null}
+```graphql theme={null}
 query GetAIAppsOutputs($appId: String, $transcriptId: String, $skip: Float, $limit: Float) {
   apps(app_id: $appId, transcript_id: $transcriptId, skip: $skip, limit: $limit) {
     outputs {
@@ -3669,13 +6004,408 @@ query GetAIAppsOutputs($appId: String, $transcriptId: String, $skip: Float, $lim
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Transcript" icon="link" href="/graphql-api/query/transcript">
     Querying transcript details
   </Card>
 
   <Card title="Transcripts" icon="link" href="/graphql-api/query/transcripts">
     Querying list of transcripts
+  </Card>
+</CardGroup>
+
+
+# AskFred Thread
+Source: https://docs.fireflies.ai/graphql-api/query/askfred-thread
+
+Get a specific AskFred conversation thread with all its messages
+
+## Overview
+
+The `askfred_thread` query retrieves a specific AskFred conversation thread by its ID, including the complete message history. This query provides full details about a thread including all questions asked, answers received, and suggested follow-up queries.
+
+## Arguments
+
+<ParamField type="String">
+  The unique identifier of the AskFred thread to retrieve
+</ParamField>
+
+## Schema
+
+Fields available to the [AskFredThread](/schema/askfred-thread) query:
+
+* `id`: Unique identifier for the thread
+* `title`: Thread title
+* `transcript_id`: Associated transcript/meeting ID (if applicable)
+* `user_id`: ID of the user who created the thread
+* `created_at`: Timestamp when the thread was created
+* `messages`: Array of [AskFredMessage](/schema/askfred-message) objects containing:
+  * `id`: Message identifier
+  * `thread_id`: Parent thread ID
+  * `query`: The question asked
+  * `answer`: The AI-generated response
+  * `suggested_queries`: Array of suggested follow-up questions
+  * `status`: Message processing status (processing, completed, failed)
+  * `error`: Error message if the query failed
+  * `created_at`: When the message was created
+  * `updated_at`: When the message was last updated
+
+## Usage Example
+
+```graphql theme={null}
+query GetAskFredThread($threadId: String!) {
+  askfred_thread(id: $threadId) {
+    id
+    title
+    transcript_id
+    user_id
+    created_at
+    messages {
+      id
+      thread_id
+      query
+      answer
+      suggested_queries
+      status
+      error
+      created_at
+      updated_at
+    }
+  }
+}
+```
+
+<RequestExample>
+  ```bash curl theme={null}
+  curl -X POST \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer your_api_key" \
+    -d '{
+      "query": "query GetThread($id: String!) { askfred_thread(id: $id) { id title transcript_id messages { query answer suggested_queries status } } }",
+      "variables": {
+        "id": "thread_abc123"
+      }
+    }' \
+    https://api.fireflies.ai/graphql
+  ```
+
+  ```javascript javascript theme={null}
+  const axios = require('axios');
+
+  const url = 'https://api.fireflies.ai/graphql';
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer your_api_key'
+  };
+
+  const threadId = 'thread_abc123';
+
+  const data = {
+    query: `
+      query GetAskFredThread($id: String!) {
+        askfred_thread(id: $id) {
+          id
+          title
+          transcript_id
+          user_id
+          created_at
+          messages {
+            id
+            query
+            answer
+            suggested_queries
+            status
+            created_at
+          }
+        }
+      }
+    `,
+    variables: {
+      id: threadId
+    }
+  };
+
+  axios
+    .post(url, data, { headers: headers })
+    .then(result => {
+      console.log(result.data);
+    })
+    .catch(e => {
+      console.error(e);
+    });
+  ```
+
+  ```python python theme={null}
+  import requests
+
+  url = 'https://api.fireflies.ai/graphql'
+
+  headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer your_api_key'
+  }
+
+  thread_id = 'thread_abc123'
+
+  query = '''
+      query GetAskFredThread($id: String!) {
+          askfred_thread(id: $id) {
+              id
+              title
+              transcript_id
+              user_id
+              created_at
+              messages {
+                  id
+                  query
+                  answer
+                  suggested_queries
+                  status
+                  created_at
+              }
+          }
+      }
+  '''
+
+  variables = {
+      'id': thread_id
+  }
+
+  data = {
+      'query': query,
+      'variables': variables
+  }
+
+  response = requests.post(url, headers=headers, json=data)
+
+  if response.status_code == 200:
+      print(response.json())
+  else:
+      print(response.text)
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json Response theme={null}
+  {
+    "data": {
+      "askfred_thread": {
+        "id": "thread_abc123",
+        "title": "What were the action items from the Q4 planning meeting?",
+        "transcript_id": "transcript_xyz789",
+        "user_id": "user_123",
+        "created_at": "2024-03-15T10:30:00Z",
+        "messages": [
+          {
+            "id": "msg_001",
+            "query": "What were the action items from the Q4 planning meeting?",
+            "answer": "Based on the Q4 planning meeting, here are the key action items:\n\n1. **Product Development** - Sarah to finalize the feature roadmap by March 20th\n2. **Marketing Campaign** - John to prepare Q4 marketing strategy presentation by March 25th\n3. **Budget Review** - Finance team to provide updated budget allocations by March 18th\n4. **Customer Success** - Emma to compile customer feedback report by end of week",
+            "suggested_queries": [
+              "Who is responsible for the product roadmap?",
+              "What is the timeline for the marketing strategy?",
+              "What were the budget concerns discussed?"
+            ],
+            "status": "completed",
+            "created_at": "2024-03-15T10:30:00Z"
+          },
+          {
+            "id": "msg_002",
+            "query": "What were the budget concerns discussed?",
+            "answer": "The main budget concerns discussed in the meeting were:\n\n1. **Resource Allocation** - Need to balance investment between product development and marketing\n2. **Headcount** - Discussion about hiring 3 new engineers vs 2 engineers and 1 marketing specialist\n3. **Tool Costs** - Review of current software subscriptions to identify cost-saving opportunities\n4. **Travel Budget** - Proposed 20% reduction in Q4 travel budget due to increased virtual meeting effectiveness",
+            "suggested_queries": [
+              "What was the final decision on headcount?",
+              "Which software subscriptions were identified for review?",
+              "How much is the current travel budget?"
+            ],
+            "status": "completed",
+            "created_at": "2024-03-15T10:32:00Z"
+          }
+        ]
+      }
+    }
+  }
+  ```
+</ResponseExample>
+
+## Related
+
+<CardGroup>
+  <Card title="List All Threads" icon="link" href="/graphql-api/query/askfred-threads">
+    Get a summary of all your threads
+  </Card>
+
+  <Card title="Continue Thread" icon="link" href="/graphql-api/mutation/continue-askfred-thread">
+    Add a follow-up question to this thread
+  </Card>
+</CardGroup>
+
+
+# AskFred Threads
+Source: https://docs.fireflies.ai/graphql-api/query/askfred-threads
+
+Get a summary of all AskFred conversation threads for the current user
+
+## Overview
+
+The `askfred_threads` query retrieves a summary of all AskFred conversation threads belonging to the authenticated user. This query provides a lightweight overview of threads without including the full message history, making it ideal for listing and browsing conversations.
+
+## Arguments
+
+<ParamField type="String">
+  Filter threads to only those associated with a specific transcript ID
+</ParamField>
+
+## Schema
+
+Fields available to the [AskFredThreadSummary](/schema/askfred-thread-summary) query:
+
+* `id`: Unique identifier for the thread
+* `title`: Thread title (typically derived from the first question)
+* `transcript_id`: Associated transcript/meeting ID (if applicable)
+* `user_id`: ID of the user who created the thread
+* `created_at`: Timestamp when the thread was created
+
+## Usage Example
+
+```graphql theme={null}
+query GetAskFredThreads {
+  askfred_threads {
+    id
+    title
+    transcript_id
+    user_id
+    created_at
+  }
+}
+```
+
+### With Filter
+
+```graphql theme={null}
+query GetFilteredThreads($transcriptId: String) {
+  askfred_threads(transcript_id: $transcriptId) {
+    id
+    title
+    transcript_id
+    user_id
+    created_at
+  }
+}
+```
+
+<RequestExample>
+  ```bash curl theme={null}
+  curl -X POST \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer your_api_key" \
+    -d '{
+      "query": "query { askfred_threads { id title transcript_id user_id created_at } }"
+    }' \
+    https://api.fireflies.ai/graphql
+  ```
+
+  ```javascript javascript theme={null}
+  const axios = require('axios');
+
+  const url = 'https://api.fireflies.ai/graphql';
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer your_api_key'
+  };
+
+  const data = {
+    query: `
+      query GetAskFredThreads {
+        askfred_threads {
+          id
+          title
+          transcript_id
+          user_id
+          created_at
+        }
+      }
+    `
+  };
+
+  axios
+    .post(url, data, { headers: headers })
+    .then(result => {
+      console.log(result.data);
+    })
+    .catch(e => {
+      console.error(e);
+    });
+  ```
+
+  ```python python theme={null}
+  import requests
+
+  url = 'https://api.fireflies.ai/graphql'
+
+  headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer your_api_key'
+  }
+
+  query = '''
+      query GetAskFredThreads {
+          askfred_threads {
+              id
+              title
+              transcript_id
+              user_id
+              created_at
+          }
+      }
+  '''
+
+  data = {
+      'query': query
+  }
+
+  response = requests.post(url, headers=headers, json=data)
+
+  if response.status_code == 200:
+      print(response.json())
+  else:
+      print(response.text)
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json Response theme={null}
+  {
+    "data": {
+      "askfred_threads": [
+        {
+          "id": "thread_abc123",
+          "title": "What were the action items from the Q4 planning meeting?",
+          "transcript_id": "transcript_xyz789",
+          "user_id": "user_123",
+          "created_at": "2024-03-15T10:30:00Z"
+        },
+        {
+          "id": "thread_def456",
+          "title": "Summary of customer feedback discussions",
+          "transcript_id": null,
+          "user_id": "user_123",
+          "created_at": "2024-03-14T14:20:00Z"
+        }
+      ]
+    }
+  }
+  ```
+</ResponseExample>
+
+## Related
+
+<CardGroup>
+  <Card title="Get Thread Details" icon="link" href="/graphql-api/query/askfred-thread">
+    Retrieve complete thread with message history
+  </Card>
+
+  <Card title="Create Thread" icon="link" href="/graphql-api/mutation/create-askfred-thread">
+    Start a new AskFred conversation
   </Card>
 </CardGroup>
 
@@ -3691,7 +6421,7 @@ The bite query is designed to fetch details associated with a specific bite ID.
 
 ## Arguments
 
-<ParamField path="id" type="ID" required>
+<ParamField type="ID">
   Unique identifier of the bite
 </ParamField>
 
@@ -3701,7 +6431,7 @@ Fields available to the [Bite](/schema/bite) query
 
 ## Usage Example
 
-```graphql  theme={null}
+```graphql theme={null}
 query Bite($biteId: ID!) {
   bite(id: $biteId) {
     transcript_id
@@ -3837,7 +6567,7 @@ query Bite($biteId: ID!) {
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Bites" icon="link" href="/graphql-api/query/bites">
     Querying list of bites
   </Card>
@@ -3859,23 +6589,23 @@ The bites query is designed to fetch a list of bites against input arguments.
 
 ## Arguments
 
-<ParamField path="mine" type="Boolean" required>
+<ParamField type="Boolean">
   The `mine` parameter, when set to true, fetches results specific to the owner of the API key
 </ParamField>
 
-<ParamField path="transcript_id" type="ID">
+<ParamField type="ID">
   You can use `transcript_id` to query all bites against a specific transcript.
 </ParamField>
 
-<ParamField path="my_team" type="Boolean">
+<ParamField type="Boolean">
   The `my_team` parameter, when set to true, fetches results for the owner of the API key
 </ParamField>
 
-<ParamField path="limit" type="Int">
+<ParamField type="Int">
   Maximum number of bites to fetch in a single query. Maximum of 50
 </ParamField>
 
-<ParamField path="skip" type="Int">
+<ParamField type="Int">
   Number of records to skip over. Helps paginate results when used in combination with the `limit`
   param.
 </ParamField>
@@ -3886,7 +6616,7 @@ Fields available to the [Bites](/schema/bite) query
 
 ## Usage Example
 
-```graphql  theme={null}
+```graphql theme={null}
 query Bites($mine: Boolean) {
   bites(mine: $mine) {
     transcript_id
@@ -4036,13 +6766,666 @@ List of possible error codes that may be returned by the `bites` query. Full lis
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Bite" icon="link" href="/graphql-api/query/bite">
     Querying bite details
   </Card>
 
   <Card title="Create Bite" icon="link" href="/graphql-api/mutation/create-bite">
     Use the API to create a bite
+  </Card>
+</CardGroup>
+
+
+# Channel
+Source: https://docs.fireflies.ai/graphql-api/query/channel
+
+Querying channel details
+
+## Overview
+
+The channel query is designed to fetch details of a specific channel by its ID. The user must have access to the channel (either it's a public channel in their team, or they are a member of the private channel).
+
+## Arguments
+
+<ParamField type="ID!">
+  The unique identifier of the channel to fetch.
+</ParamField>
+
+## Schema
+
+Fields available to the [Channel](/schema/channel) query
+
+## Usage Example
+
+```graphql theme={null}
+query Channel($channelId: ID!) {
+  channel(id: $channelId) {
+    id
+    title
+    is_private
+    created_by
+    created_at
+    updated_at
+    members {
+      user_id
+      email
+      name
+    }
+  }
+}
+```
+
+<RequestExample>
+  ```bash curl theme={null}
+  curl -X POST \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer your_api_key" \
+      --data '{ "query": "query Channel($channelId: ID!) { channel(id: $channelId) { id title is_private members { user_id email } } }", "variables": { "channelId": "your_channel_id" } }' \
+      https://api.fireflies.ai/graphql
+  ```
+
+  ```javascript javascript theme={null}
+  const axios = require('axios');
+
+  const url = 'https://api.fireflies.ai/graphql';
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer your_api_key'
+  };
+
+  const data = {
+    query: 'query Channel($channelId: ID!) { channel(id: $channelId) { id title is_private members { user_id email } } }',
+    variables: { channelId: 'your_channel_id' }
+  };
+
+  axios
+    .post(url, data, { headers: headers })
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  ```
+
+  ```python python theme={null}
+  import requests
+
+  url = 'https://api.fireflies.ai/graphql'
+  headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer your_api_key'
+  }
+
+  data = '{"query": "query Channel($channelId: ID!) { channel(id: $channelId) { id title is_private members { user_id email } } }", "variables": {"channelId": "your_channel_id"}}'
+
+  response = requests.post(url, headers=headers, data=data)
+  print(response.json())
+  ```
+
+  ```java java theme={null}
+  import java.net.URI;
+  import java.net.http.HttpClient;
+  import java.net.http.HttpRequest;
+  import java.net.http.HttpResponse;
+  import java.net.http.HttpRequest.BodyPublishers;
+
+  public class ApiRequest {
+      public static void main(String[] args) {
+          HttpClient client = HttpClient.newHttpClient();
+          String jsonRequest = "{\"query\": \"query Channel($channelId: ID!) { channel(id: $channelId) { id title is_private members { user_id email } } }\", \"variables\": {\"channelId\": \"your_channel_id\"}}";
+          HttpRequest request = HttpRequest.newBuilder()
+              .uri(URI.create("https://api.fireflies.ai/graphql"))
+              .header("Content-Type", "application/json")
+              .header("Authorization", "Bearer your_api_key")
+              .POST(BodyPublishers.ofString(jsonRequest))
+              .build();
+
+          client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+              .thenApply(HttpResponse::body)
+              .thenAccept(System.out::println)
+              .join();
+      }
+  }
+
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json Response theme={null}
+  {
+    "data": {
+      "channel": {
+        "id": "channel-id-1",
+        "title": "Engineering",
+        "is_private": false,
+        "members": [
+          {
+            "user_id": "user-id-1",
+            "email": "john@example.com",
+            "name": "John Doe"
+          },
+          {
+            "user_id": "user-id-2",
+            "email": "jane@example.com",
+            "name": "Jane Smith"
+          }
+        ]
+      }
+    }
+  }
+  ```
+</ResponseExample>
+
+## Error Codes
+
+List of possible error codes that may be returned by the `channel` query. Full list of error codes can be found [here](/miscellaneous/error-codes).
+
+<Accordion title="object_not_found (Channel)">
+  <p>The channel ID you are trying to query does not exist or you do not have access to it.</p>
+</Accordion>
+
+## Additional Resources
+
+<CardGroup>
+  <Card title="Channels" icon="link" href="/graphql-api/query/channels">
+    Query list of channels
+  </Card>
+
+  <Card title="Channel Schema" icon="link" href="/schema/channel">
+    Schema for Channel
+  </Card>
+</CardGroup>
+
+
+# Channels
+Source: https://docs.fireflies.ai/graphql-api/query/channels
+
+Querying list of channels
+
+## Overview
+
+The channels query is designed to fetch a list of channels accessible to the authenticated user. This includes public channels in the user's team and private channels where the user is a member.
+
+## Arguments
+
+This query does not require any arguments.
+
+## Schema
+
+Fields available to the [Channel](/schema/channel) query
+
+## Usage Example
+
+```graphql theme={null}
+query Channels {
+  channels {
+    id
+    title
+    is_private
+    created_by
+    created_at
+    updated_at
+    members {
+      user_id
+      email
+      name
+    }
+  }
+}
+```
+
+<RequestExample>
+  ```bash curl theme={null}
+  curl -X POST \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer your_api_key" \
+      --data '{ "query": "query Channels { channels { id title is_private members { user_id email } } }" }' \
+      https://api.fireflies.ai/graphql
+  ```
+
+  ```javascript javascript theme={null}
+  const axios = require('axios');
+
+  const url = 'https://api.fireflies.ai/graphql';
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer your_api_key'
+  };
+
+  const data = {
+    query: 'query Channels { channels { id title is_private members { user_id email } } }'
+  };
+
+  axios
+    .post(url, data, { headers: headers })
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  ```
+
+  ```python python theme={null}
+  import requests
+
+  url = 'https://api.fireflies.ai/graphql'
+  headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer your_api_key'
+  }
+
+  data = '{"query": "query Channels { channels { id title is_private members { user_id email } } }"}'
+
+  response = requests.post(url, headers=headers, data=data)
+  print(response.json())
+  ```
+
+  ```java java theme={null}
+  import java.net.URI;
+  import java.net.http.HttpClient;
+  import java.net.http.HttpRequest;
+  import java.net.http.HttpResponse;
+  import java.net.http.HttpResponse.BodyHandlers;
+
+  public class ApiRequest {
+      public static void main(String[] args) throws Exception {
+          HttpClient client = HttpClient.newHttpClient();
+          String json = "{\"query\":\"query Channels { channels { id title is_private members { user_id email } } }\"}";
+          HttpRequest request = HttpRequest.newBuilder()
+                  .uri(URI.create("https://api.fireflies.ai/graphql"))
+                  .header("Content-Type", "application/json")
+                  .header("Authorization", "Bearer your_api_key")
+                  .POST(HttpRequest.BodyPublishers.ofString(json))
+                  .build();
+
+          client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+              .thenApply(HttpResponse::body)
+              .thenAccept(System.out::println)
+              .join();
+      }
+  }
+
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json Response theme={null}
+  {
+    "data": {
+      "channels": [
+        {
+          "id": "channel-id-1",
+          "title": "Engineering",
+          "is_private": false,
+          "members": [
+            {
+              "user_id": "user-id-1",
+              "email": "john@example.com",
+              "name": "John Doe"
+            },
+            {
+              "user_id": "user-id-2",
+              "email": "jane@example.com",
+              "name": "Jane Smith"
+            }
+          ]
+        },
+        {
+          "id": "channel-id-2",
+          "title": "Private Project",
+          "is_private": true,
+          "members": [
+            {
+              "user_id": "user-id-1",
+              "email": "john@example.com",
+              "name": "John Doe"
+            }
+          ]
+        }
+      ]
+    }
+  }
+  ```
+</ResponseExample>
+
+## Additional Resources
+
+<CardGroup>
+  <Card title="Channel" icon="link" href="/graphql-api/query/channel">
+    Query a single channel by ID
+  </Card>
+
+  <Card title="Channel Schema" icon="link" href="/schema/channel">
+    Schema for Channel
+  </Card>
+</CardGroup>
+
+
+# Contacts
+Source: https://docs.fireflies.ai/graphql-api/query/contacts
+
+Querying list of contacts
+
+## Overview
+
+The contacts query is designed to fetch a list of all contacts associated with the authenticated user. Contacts are people who have participated in meetings with the user, and include information such as email, name, profile picture, and the date of their last meeting together.
+
+## Schema
+
+Fields available to the [Contact](/schema/contact) query
+
+## Usage Example
+
+```graphql theme={null}
+query Contacts {
+  contacts {
+    email
+    name
+    picture
+    last_meeting_date
+  }
+}
+```
+
+<RequestExample>
+  ```bash curl theme={null}
+  curl -X POST \
+  	-H "Content-Type: application/json" \
+  	-H "Authorization: Bearer your_api_key" \
+  	--data '{ "query": "{ contacts { email name picture last_meeting_date } }" }' \
+  	https://api.fireflies.ai/graphql
+  ```
+
+  ```javascript javascript theme={null}
+  const axios = require('axios');
+
+  const url = 'https://api.fireflies.ai/graphql';
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer your_api_key'
+  };
+  const data = {
+    query: '{ contacts { email name picture last_meeting_date } }'
+  };
+
+  axios
+    .post(url, data, { headers: headers })
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  ```
+
+  ```python python theme={null}
+  import requests
+
+  url = 'https://api.fireflies.ai/graphql'
+  headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer your_api_key'
+  }
+  data = '{"query": "{ contacts { email name picture last_meeting_date } }"}'
+
+  response = requests.post(url, headers=headers, data=data)
+  print(response.json())
+  ```
+
+  ```java java theme={null}
+  import java.net.URI;
+  import java.net.http.HttpClient;
+  import java.net.http.HttpRequest;
+  import java.net.http.HttpResponse;
+  import java.net.http.HttpRequest.BodyPublishers;
+
+  public class ApiRequest {
+      public static void main(String[] args) {
+          HttpClient client = HttpClient.newHttpClient();
+          String jsonRequest = "{\"query\": \"{ contacts { email name picture last_meeting_date } }\"}";
+          HttpRequest request = HttpRequest.newBuilder()
+              .uri(URI.create("https://api.fireflies.ai/graphql"))
+              .header("Content-Type", "application/json")
+              .header("Authorization", "Bearer your_api_key")
+              .POST(BodyPublishers.ofString(jsonRequest))
+              .build();
+
+          client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+              .thenApply(HttpResponse::body)
+              .thenAccept(System.out::println)
+              .join();
+      }
+  }
+
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json Response theme={null}
+  {
+    "data": {
+      "contacts": [
+        {
+          "email": "john.doe@example.com",
+          "name": "John Doe",
+          "picture": "https://example.com/photo.jpg",
+          "last_meeting_date": "2024-12-05"
+        },
+        {
+          "email": "jane.smith@example.com",
+          "name": "Jane Smith",
+          "picture": null,
+          "last_meeting_date": "2024-11-28"
+        }
+      ]
+    }
+  }
+  ```
+</ResponseExample>
+
+## Additional Resources
+
+<CardGroup>
+  <Card title="User" icon="link" href="/graphql-api/query/user">
+    Querying user details
+  </Card>
+
+  <Card title="Users" icon="link" href="/graphql-api/query/users">
+    Querying list of users
+  </Card>
+</CardGroup>
+
+
+# Live Action Items
+Source: https://docs.fireflies.ai/graphql-api/query/live_action_items
+
+Query live action items for a meeting
+
+## Overview
+
+The `live_action_items` query allows you to fetch action items for a live meeting. This includes both action items automatically created by Fireflies during the meeting and action items created via the `createLiveActionItem` mutation.
+
+## Arguments
+
+<ParamField type="ID!">
+  The ID of the meeting to fetch live action items for
+</ParamField>
+
+## Response
+
+Returns an array of `LiveActionItem` objects with the following fields:
+
+<ResponseField name="name" type="String">
+  Name of the person who the action item is associated with
+</ResponseField>
+
+<ResponseField name="action_item" type="String!">
+  The action item text
+</ResponseField>
+
+## Usage Example
+
+To fetch live action items for a meeting:
+
+```graphql theme={null}
+query LiveActionItems($meeting_id: ID!) {
+  live_action_items(meeting_id: $meeting_id) {
+    name
+    action_item
+  }
+}
+```
+
+<RequestExample>
+  ```bash curl theme={null}
+  curl -X POST https://api.fireflies.ai/graphql \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer your_api_key" \
+    -d '{
+      "query": "query LiveActionItems($meeting_id: ID!) { live_action_items(meeting_id: $meeting_id) { name action_item } }",
+      "variables": {
+        "meeting_id": "your_meeting_id"
+      }
+    }'
+  ```
+
+  ```javascript javascript theme={null}
+  const axios = require('axios');
+
+  const url = 'https://api.fireflies.ai/graphql';
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: 'Bearer your_api_key'
+  };
+
+  const data = {
+    query: `query LiveActionItems($meeting_id: ID!) {
+      live_action_items(meeting_id: $meeting_id) {
+        name
+        action_item
+      }
+    }`,
+    variables: {
+      meeting_id: 'your_meeting_id'
+    }
+  };
+
+  axios
+    .post(url, data, { headers: headers })
+    .then(result => {
+      console.log(result.data);
+    })
+    .catch(e => {
+      console.log(JSON.stringify(e));
+    });
+  ```
+
+  ```python python theme={null}
+  import requests
+
+  url = 'https://api.fireflies.ai/graphql'
+
+  headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer your_api_key'
+  }
+
+  data = {
+      'query': '''
+        query LiveActionItems($meeting_id: ID!) {
+          live_action_items(meeting_id: $meeting_id) {
+            name
+            action_item
+          }
+        }
+      ''',
+      'variables': {
+          'meeting_id': 'your_meeting_id'
+      }
+  }
+
+  response = requests.post(url, headers=headers, json=data)
+
+  if response.status_code == 200:
+      print(response.json()['data'])
+  else:
+      print(response.text)
+  ```
+
+  ```java java theme={null}
+  import java.net.URI;
+  import java.net.http.HttpClient;
+  import java.net.http.HttpRequest;
+  import java.net.http.HttpResponse;
+  import java.net.http.HttpRequest.BodyPublishers;
+
+  public class ApiRequest {
+      public static void main(String[] args) {
+          HttpClient client = HttpClient.newHttpClient();
+          String jsonRequest = "{\"query\": \"query LiveActionItems($meeting_id: ID!) { live_action_items(meeting_id: $meeting_id) { name action_item } }\", \"variables\": {\"meeting_id\": \"your_meeting_id\"}}";
+          HttpRequest request = HttpRequest.newBuilder()
+              .uri(URI.create("https://api.fireflies.ai/graphql"))
+              .header("Content-Type", "application/json")
+              .header("Authorization", "Bearer your_api_key")
+              .POST(BodyPublishers.ofString(jsonRequest))
+              .build();
+
+          client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+              .thenApply(HttpResponse::body)
+              .thenAccept(System.out::println)
+              .join();
+      }
+  }
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json Response theme={null}
+  {
+    "data": {
+      "live_action_items": [
+        {
+          "name": "John Doe",
+          "action_item": "Follow up with the client about the proposal"
+        },
+        {
+          "name": "Jane Smith",
+          "action_item": "Schedule a follow-up meeting for next week"
+        }
+      ]
+    }
+  }
+  ```
+</ResponseExample>
+
+## Error Codes
+
+List of possible error codes that may be returned by the `live_action_items` query. Full list of error codes can be found [here](/miscellaneous/error-codes).
+
+<Accordion title="account_cancelled">
+  <p>The user account has been cancelled. Please contact support if you encounter this error.</p>
+</Accordion>
+
+<Accordion title="object_not_found">
+  <p>The meeting with the specified ID was not found or you do not have access to it.</p>
+</Accordion>
+
+<Accordion title="require_elevated_privilege">
+  <p>You do not have permission to view action items for this meeting. Only the meeting organizer or team admin can view live action items.</p>
+</Accordion>
+
+## Additional Resources
+
+<CardGroup>
+  <Card title="Create Live Action Item" icon="link" href="/graphql-api/mutation/create-live-action-item">
+    Create action items during a live meeting
+  </Card>
+
+  <Card title="Update Meeting State" icon="link" href="/graphql-api/mutation/update-meeting-state">
+    Pause or resume recording for a live meeting
   </Card>
 </CardGroup>
 
@@ -4058,7 +7441,7 @@ The transcript query is designed to fetch details associated with a specific tra
 
 ## Arguments
 
-<ParamField path="id" type="String" required />
+<ParamField type="String" />
 
 ## Schema
 
@@ -4066,7 +7449,7 @@ Fields available to the [Transcript](/schema/transcript) query
 
 ## Usage Example
 
-```graphql  theme={null}
+```graphql theme={null}
 query Transcript($transcriptId: String!) {
   transcript(id: $transcriptId) {
     id
@@ -4289,7 +7672,7 @@ List of possible error codes that may be returned by the `transcript` query. Ful
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Transcripts" icon="link" href="/graphql-api/query/transcripts">
     Querying list of transcripts
   </Card>
@@ -4311,7 +7694,7 @@ The transcripts query is designed to fetch a list of transcripts against input a
 
 ## Arguments
 
-<ParamField path="title" type="String">
+<ParamField type="String">
   <b>This field is deprecated. Please use `keyword` instead.</b>
 
   Title of the transcript
@@ -4321,7 +7704,7 @@ The transcripts query is designed to fetch a list of transcripts against input a
   The maximum allowable length for this field is `256` characters.
 </ParamField>
 
-<ParamField path="keyword" type="String">
+<ParamField type="String">
   Allows searching for keywords in meeting title and/or words spoken during the meeting
 
   This argument is mutually exclusive with `title` field
@@ -4329,7 +7712,7 @@ The transcripts query is designed to fetch a list of transcripts against input a
   The maximum allowable length for this field is `255` characters.
 </ParamField>
 
-<ParamField path="scope" type="TranscriptsQueryScope">
+<ParamField type="TranscriptsQueryScope">
   Specify the scope for keyword search.
 
   If scope is provided, `keyword` becomes a required field
@@ -4343,19 +7726,19 @@ The transcripts query is designed to fetch a list of transcripts against input a
   * `all`: Search within title and sentences.
 </ParamField>
 
-<ParamField path="fromDate" type="DateTime">
+<ParamField type="DateTime">
   Return all transcripts created after `fromDate`. The `fromDate` parameter accepts a date-time
   string in the ISO 8601 format, specifically in the form `YYYY-MM-DDTHH:mm.sssZ`. For example, a
   valid timestamp would be `2024-07-08T22:13:46.660Z`.
 </ParamField>
 
-<ParamField path="toDate" type="DateTime">
+<ParamField type="DateTime">
   Return all transcripts created before `toDate`. The `toDate` parameter accepts a date-time string
   in the ISO 8601 format, specifically in the form `YYYY-MM-DDTHH:mm.sssZ`. For example, a valid
   timestamp would be `2024-07-08T22:13:46.660Z`.
 </ParamField>
 
-<ParamField path="date" type="Float">
+<ParamField type="Float">
   <b> This field is deprecated. Please use `fromDate` and `toDate` instead.</b>
 
   Return all transcripts created within the date specified. Query input value must be in milliseconds.
@@ -4365,37 +7748,37 @@ The transcripts query is designed to fetch a list of transcripts against input a
   For more details regarding time since [EPOCH](https://currentmillis.com/)
 </ParamField>
 
-<ParamField path="limit" type="Int">
+<ParamField type="Int">
   Number of transcripts to return. Maxiumum 50 in one query
 </ParamField>
 
-<ParamField path="skip" type="Int">
+<ParamField type="Int">
   Number of transcripts to skip.
 </ParamField>
 
-<ParamField path="host_email" type="String">
+<ParamField type="String">
   Filter all meetings accordingly to meetings that have this email as the host.
 </ParamField>
 
-<ParamField path="organizer_email" type="String">
+<ParamField type="String">
   <b>This field is deprecated. Please use `organizers` instead.</b>
   Filter meetings that have this email as the organizer.
 </ParamField>
 
-<ParamField path="participant_email" type="String">
+<ParamField type="String">
   <b>This field is deprecated. Please use `participants` instead.</b>
   Filter meetings that contain this email as an attendee.
 </ParamField>
 
-<ParamField path="user_id" type="String">
+<ParamField type="String">
   [User id](/schema/user). Filter all meetings that have this user ID as the organizer or participant.
 </ParamField>
 
-<ParamField path="mine" type="Boolean">
+<ParamField type="Boolean">
   Filter all meetings that have the API key owner as the organizer.
 </ParamField>
 
-<ParamField path="organizers" type="[String]">
+<ParamField type="[String]">
   Filter meetings that have any of these emails as organizers. Accepts an array of email addresses.
 
   Cannot be combined with the deprecated `organizer_email` or `participant_email` fields.
@@ -4403,7 +7786,7 @@ The transcripts query is designed to fetch a list of transcripts against input a
   Each email must be valid and 256 characters or fewer.
 </ParamField>
 
-<ParamField path="participants" type="[String]">
+<ParamField type="[String]">
   Filter meetings that contain any of these emails as attendees. Accepts an array of email addresses.
 
   Cannot be combined with the deprecated `organizer_email` or `participant_email` fields.
@@ -4411,7 +7794,7 @@ The transcripts query is designed to fetch a list of transcripts against input a
   Each email must be valid and 256 characters or fewer.
 </ParamField>
 
-<ParamField path="channel_id" type="String">
+<ParamField type="String">
   Filter meetings that belong to a specific channel. Accepts a single channel ID.
 
   The channel ID must be a valid string and 256 characters or fewer.
@@ -4423,7 +7806,7 @@ Fields available to the [Transcript](/schema/transcript) query
 
 ## Usage Example
 
-```graphql  theme={null}
+```graphql theme={null}
 query Transcripts(
   $title: String
   $date: Float
@@ -4673,7 +8056,7 @@ List of possible error codes that may be returned by the `transcripts` query. Fu
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Transcript" icon="link" href="/graphql-api/query/transcript">
     Querying transcript details
   </Card>
@@ -4695,7 +8078,7 @@ The user query is designed to fetch details associated with a specific user id.
 
 ## Arguments
 
-<ParamField path="id" type="String" />
+<ParamField type="String" />
 
 <Note>
   `id` is an optional argument. Not passing an ID to this query will return user details for the
@@ -4708,7 +8091,7 @@ Fields available to the [User](/schema/user) query
 
 ## Usage Example
 
-```graphql  theme={null}
+```graphql theme={null}
 query User($userId: String!) {
   user(id: $userId) {
     user_id
@@ -4836,18 +8219,18 @@ List of possible error codes that may be returned by the `user` query. Full list
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Users" icon="link" href="/graphql-api/query/users">
     Querying list of users
   </Card>
 
-  <Card title="User Groups" icon="link" href="/graphql-api/query/user-groups">
+  <Card title="UserGroups" icon="link" href="/graphql-api/query/user-groups">
     Querying user groups
   </Card>
 </CardGroup>
 
 
-# User Groups
+# UserGroups
 Source: https://docs.fireflies.ai/graphql-api/query/user-groups
 
 Querying user groups
@@ -4858,7 +8241,7 @@ The user\_groups query is designed to fetch a list of all user groups within the
 
 ## Arguments
 
-<ParamField path="mine" type="Boolean">
+<ParamField type="Boolean">
   `mine` is an optional boolean argument. If set to `true`, returns only user groups that the
   current user belongs to. If not provided or set to `false`, returns all user groups in the team.
 </ParamField>
@@ -4869,7 +8252,7 @@ Fields available to the [UserGroup](/schema/user-groups) query
 
 ## Usage Example
 
-```graphql  theme={null}
+```graphql theme={null}
 query UserGroups($mine: Boolean) {
   user_groups(mine: $mine) {
     id
@@ -5011,7 +8394,7 @@ List of possible error codes that may be returned by the `user_groups` query. Fu
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Users" icon="link" href="/graphql-api/query/users">
     Querying list of users
   </Card>
@@ -5037,7 +8420,7 @@ Fields available to the [User](/schema/user) query
 
 ## Usage Example
 
-```graphql  theme={null}
+```graphql theme={null}
 query Users {
   users {
     user_id
@@ -5157,7 +8540,7 @@ query Users {
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="User" icon="link" href="/graphql-api/query/user">
     Querying user details
   </Card>
@@ -5376,23 +8759,23 @@ To see webhook authentication in action, you can view an example at [Fireflies.a
 
 ## Webhook Schema
 
-<ParamField path="meetingId" type="String" required>
+<ParamField type="String">
   Identifier for the meeting / transcript that the webhook has triggered for. MeetingId and
   TranscriptId are used interchangeably for the Fireflies.ai Platform.
 </ParamField>
 
-<ParamField path="eventType" type="String">
+<ParamField type="String">
   Name of the event type that has been fired against the webhook
 </ParamField>
 
-<ParamField path="clientReferenceId" type="ID">
+<ParamField type="ID">
   Custom identifier set by the user during upload. You may use this to identify your uploads in your
   events.
 </ParamField>
 
 ## Example Payload
 
-```json  theme={null}
+```json theme={null}
 {
   "meetingId": "ASxwZxCstx",
   "eventType": "Transcription completed",
@@ -5416,13 +8799,276 @@ To see webhook authentication in action, you can view an example at [Fireflies.a
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Super Admin" icon="link" href="/fundamentals/super-admin">
     Fireflies Super Admin with advanced capabilities
   </Card>
 
   <Card title="Upload Audio" icon="link" href="/graphql-api/mutation/upload-audio">
     Use the API to upload audio to Fireflies.ai
+  </Card>
+</CardGroup>
+
+
+# MCP Tools
+Source: https://docs.fireflies.ai/mcp-tools/overview
+
+Complete reference for all available tools in the Fireflies MCP Server
+
+## Overview
+
+The Fireflies MCP (Model Context Protocol) Server provides tools for searching and retrieving meeting transcripts, summaries, and user data. All tools are read-only and operate within your authenticated Fireflies account.
+
+For setup and configuration instructions, see [MCP Server Configuration](/getting-started/mcp-configuration).
+
+## Available Tools
+
+### Meeting & Transcript Tools
+
+<ParamField type="Tool">
+  **Description:** Advanced search for meeting transcripts using mini grammar syntax.
+
+  **Parameters:**
+
+  * `query` (string, required) - Search query with grammar syntax
+  * `format` (string) - Response format: "toon" (default), "json", or "text"
+
+  **Query Grammar:**
+
+  * `keyword:"term"` - Search keywords
+  * `scope:title|sentences|all` - Search scope
+  * `from:YYYY-MM-DD` - Filter from date
+  * `to:YYYY-MM-DD` - Filter to date
+  * `limit:N` - Max results (50)
+  * `skip:N` - Pagination offset
+  * `organizers:email1,email2` - Filter by organizers
+  * `participants:email1,email2` - Filter by participants
+  * `mine:true|false` - User's meetings only
+
+  **Example:**
+
+  ```json theme={null}
+  {
+    "query": "keyword:\"performance\" scope:sentences from:2024-12-01 limit:20"
+  }
+  ```
+</ParamField>
+
+<ParamField type="Tool">
+  **Description:** Query multiple meetings with structured filters. Returns metadata and summaries.
+
+  **Parameters:**
+
+  * `keyword` (string) - Search term (max 255 chars)
+  * `scope` (enum) - "title", "sentences", or "all"
+  * `fromDate` (string) - ISO date (YYYY-MM-DD)
+  * `toDate` (string) - ISO date (YYYY-MM-DD)
+  * `limit` (number) - Max results (max 50)
+  * `skip` (number) - Pagination offset
+  * `organizers` (array) - Organizer emails
+  * `participants` (array) - Participant emails
+  * `mine` (boolean) - Only user's meetings
+  * `format` (string) - "toon" (default), "json", or "text"
+
+  **Example:**
+
+  ```json theme={null}
+  {
+    "keyword": "product roadmap",
+    "fromDate": "2024-12-01",
+    "limit": 20
+  }
+  ```
+
+  **Returns:** Meeting IDs, titles, dates, participants, summaries (excludes detailed transcript content).
+</ParamField>
+
+<ParamField type="Tool">
+  **Description:** Fetch detailed transcript by ID with sentences, speakers, and timestamps. Excludes summary data.
+
+  **Parameters:**
+
+  * `transcriptId` (string, required) - Meeting ID
+
+  **Example:**
+
+  ```json theme={null}
+  {
+    "transcriptId": "meeting-id-12345"
+  }
+  ```
+
+  **Returns:** Sentences with speaker attribution, timestamps, analytics, and metadata.
+</ParamField>
+
+<ParamField type="Tool">
+  **Description:** Retrieve complete meeting data including transcript, summary, and metadata.
+
+  **Parameters:**
+
+  * `id` (string, required) - Meeting ID
+
+  **Example:**
+
+  ```json theme={null}
+  {
+    "id": "meeting-id-12345"
+  }
+  ```
+
+  **Returns:** Complete meeting data with transcript content, summary, analytics, and metadata.
+</ParamField>
+
+<ParamField type="Tool">
+  **Description:** Fetch meeting summary by ID with action items, keywords, and overview. Excludes transcript content.
+
+  **Parameters:**
+
+  * `transcriptId` (string, required) - Meeting ID
+
+  **Example:**
+
+  ```json theme={null}
+  {
+    "transcriptId": "meeting-id-12345"
+  }
+  ```
+
+  **Returns:** Keywords, action items, overview, topics discussed, meeting type, and outline.
+</ParamField>
+
+### User & Team Tools
+
+<ParamField type="Tool">
+  **Description:** Fetch user account details. Returns authenticated user if no ID provided.
+
+  **Parameters:**
+
+  * `userId` (string, optional) - User ID (omit for current user)
+
+  **Example:**
+
+  ```json theme={null}
+  {
+    "userId": "user-id-12345"
+  }
+  ```
+
+  **Returns:** User ID, email, name, transcript count, recent meeting date, minutes consumed, admin status, and integrations.
+</ParamField>
+
+<ParamField type="Tool">
+  **Description:** Fetch user groups for the authenticated user or team.
+
+  **Parameters:**
+
+  * `mine` (boolean) - true for user's groups only, false (default) for all team groups
+
+  **Example:**
+
+  ```json theme={null}
+  {
+    "mine": false
+  }
+  ```
+
+  **Returns:** Group ID, name, handle, members with emails and roles.
+</ParamField>
+
+<ParamField type="Tool">
+  **Description:** Fetch contact list sorted by most recent meeting date.
+
+  **Parameters:**
+
+  * `format` (string) - "toon" (default), "json", or "text"
+
+  **Example:**
+
+  ```json theme={null}
+  {
+    "format": "json"
+  }
+  ```
+
+  **Returns:** Contact emails, names, profile pictures, and last meeting dates.
+</ParamField>
+
+## Tool Comparison Matrix
+
+| Tool                          | Content Type      | Summary | Parameters           | Best For                              |
+| ----------------------------- | ----------------- | ------- | -------------------- | ------------------------------------- |
+| `fireflies_search`            | Multiple meetings | ✅ Yes   | Complex grammar      | Advanced filtering with mini grammar  |
+| `fireflies_get_transcripts`   | Multiple meetings | ✅ Yes   | Structured params    | Structured queries with clear filters |
+| `fireflies_get_transcript`    | Single meeting    | ❌ No    | Meeting ID only      | Full conversation with timestamps     |
+| `fireflies_fetch`             | Single meeting    | ✅ Yes   | Meeting ID only      | Complete meeting data in one call     |
+| `fireflies_get_summary`       | Single meeting    | ✅ Yes   | Meeting ID only      | Quick insights and action items       |
+| `fireflies_get_user`          | User data         | N/A     | Optional user ID     | Profile and account information       |
+| `fireflies_get_usergroups`    | Team data         | N/A     | Optional mine filter | Team structure and membership         |
+| `fireflies_get_user_contacts` | Contact list      | N/A     | Optional format      | Recent interaction history            |
+
+## Response Formats
+
+Several tools support multiple response formats via the `format` parameter:
+
+* **toon** (default) - Token-efficient format optimized for AI model consumption
+* **json** - Standard JSON format for programmatic processing
+* **text** - Human-readable text format for display
+
+## Common Workflows
+
+### Search and Retrieve Pattern
+
+1. Use `fireflies_search` or `fireflies_get_transcripts` to find relevant meetings
+2. Extract meeting IDs from results
+3. Use `fireflies_fetch` to get complete details, or:
+   * Use `fireflies_get_transcript` for conversation only
+   * Use `fireflies_get_summary` for insights only
+
+### Team Analysis Pattern
+
+1. Use `fireflies_get_usergroups` to get team structure
+2. Extract member emails from target groups
+3. Use `fireflies_get_transcripts` with `participants` filter
+4. Optionally use `fireflies_get_user` for individual member details
+
+### Contact-Based Search Pattern
+
+1. Use `fireflies_get_user_contacts` to get contact list
+2. Find target contact by name or email
+3. Use `fireflies_get_transcripts` with contact email in `participants`
+4. Retrieve detailed transcripts or summaries as needed
+
+## Getting Started
+
+To use these tools:
+
+1. **Configure MCP Server** - Add Fireflies MCP Server to your AI application
+   * Remote server URL: `https://api.fireflies.ai/mcp`
+   * Supports OAuth or API key authentication
+
+2. **Authenticate** - Use OAuth flow or provide API key in configuration
+
+3. **Invoke Tools** - Call tools using their standardized names with JSON parameters
+
+For detailed setup instructions, see [MCP Server Configuration](/getting-started/mcp-configuration).
+
+## Additional Resources
+
+<CardGroup>
+  <Card title="MCP Configuration" icon="gear" href="/getting-started/mcp-configuration">
+    Set up the Fireflies MCP Server in your AI application
+  </Card>
+
+  <Card title="GraphQL API" icon="code" href="/graphql-api/query/transcripts">
+    Direct GraphQL API access for custom integrations
+  </Card>
+
+  <Card title="Authorization" icon="lock" href="/fundamentals/authorization">
+    Learn about API authentication and security
+  </Card>
+
+  <Card title="LLM Development" icon="robot" href="/getting-started/llm-development">
+    Enhance AI coding experience with Fireflies data
   </Card>
 </CardGroup>
 
@@ -5442,7 +9088,7 @@ This page lists the error codes and their corresponding reasons for the Fireflie
 
 Returned when invalid arguments are passed to a query or mutation
 
-```json  theme={null}
+```json theme={null}
 {
   "errors": [
     {
@@ -5476,7 +9122,7 @@ Returned when invalid arguments are passed to a query or mutation
 
 Returned when the subject of your query or mutation is not found. For example, querying a non-existent userId would throw an `object_not_found` error of the type `User`
 
-```json  theme={null}
+```json theme={null}
 {
   "errors": [
     {
@@ -5499,7 +9145,7 @@ Returned when the subject of your query or mutation is not found. For example, q
 
 Returned when you are not allowed to perform an action
 
-```json  theme={null}
+```json theme={null}
 {
   "errors": [
     {
@@ -5519,7 +9165,7 @@ Returned when you are not allowed to perform an action
 
 Returned when you are required to be subscribed to a paid plan for the Fireflies.ai platform. The error will also mentioned the required `tier` for such actions. For example, making a request to `uploadAudio` as a free user will throw a `paid_required` error with tier `pro_or_higher`, which means that you need to be subscribed to a Pro or Higher plan to perform this action
 
-```json  theme={null}
+```json theme={null}
 {
   "errors": [
     {
@@ -5542,7 +9188,7 @@ Returned when you are required to be subscribed to a paid plan for the Fireflies
 
 Returned when you are attempting to query against a `userId` that is not a part of your team
 
-```json  theme={null}
+```json theme={null}
 {
   "errors": [
     {
@@ -5562,7 +9208,7 @@ Returned when you are attempting to query against a `userId` that is not a part 
 
 Returned when you are attempting to perform admin actions as a non-admin user
 
-```json  theme={null}
+```json theme={null}
 {
   "errors": [
     {
@@ -5582,7 +9228,7 @@ Returned when you are attempting to perform admin actions as a non-admin user
 
 Returned when your account has been cancelled due to non-payment or some other reason. Please contact support if you think this is a mistake
 
-```json  theme={null}
+```json theme={null}
 {
   "errors": [
     {
@@ -5602,7 +9248,7 @@ Returned when your account has been cancelled due to non-payment or some other r
 
 Returned when your query or mutation is missing one or more required arguments. The property `extesions.metadata.fields` will provide the list of fields that have this constraints
 
-```json  theme={null}
+```json theme={null}
 {
   "errors": [
     {
@@ -5629,7 +9275,7 @@ Returned when your query or mutation is missing one or more required arguments. 
 
 Returned when you have been rate-limited due to making too many requests. The field `extensions.metadata.retryAfter` mentions the `retryAfter` time
 
-```json  theme={null}
+```json theme={null}
 {
   "errors": [
     {
@@ -5652,7 +9298,7 @@ Returned when you have been rate-limited due to making too many requests. The fi
 
 Returned when the content size for `uploadAudio` mutation is too small. Upload files larger than `50kb` to avoid this error
 
-```json  theme={null}
+```json theme={null}
 {
   "errors": [
     {
@@ -5672,7 +9318,7 @@ Returned when the content size for `uploadAudio` mutation is too small. Upload f
 
 Returned when your request has taken too long to respond.
 
-```json  theme={null}
+```json theme={null}
 {
   "errors": [
     {
@@ -5692,7 +9338,7 @@ Returned when your request has taken too long to respond.
 
 Returned when an invalid language code has been passed to a query or mutation
 
-```json  theme={null}
+```json theme={null}
 {
   "errors": [
     {
@@ -5712,7 +9358,7 @@ Returned when an invalid language code has been passed to a query or mutation
 
 Returned when you are attempting to call `setUserRole` for a single member team
 
-```json  theme={null}
+```json theme={null}
 {
   "errors": [
     {
@@ -5732,7 +9378,7 @@ Returned when you are attempting to call `setUserRole` for a single member team
 
 Returned when an unsupported meeting platform URL is provided to the `addToLiveMeeting` mutation
 
-```json  theme={null}
+```json theme={null}
 {
   "errors": [
     {
@@ -5748,6 +9394,29 @@ Returned when an unsupported meeting platform URL is provided to the `addToLiveM
 }
 ```
 
+### `require_ai_credits`
+
+Returned when you have insufficient AI credits to perform AI-powered operations like AskFred queries. You may need to upgrade your plan or purchase additional credits.
+
+```json theme={null}
+{
+  "errors": [
+    {
+	  ... other fields for error
+      "message": "You do not have sufficient AI credits to perform this action",
+      "code": "require_ai_credits",
+      "extensions": {
+        "code": "require_ai_credits",
+        "status": 402,
+        "helpUrls": [
+          "https://app.fireflies.ai/upgrade"
+        ]
+      }
+    }
+  ]
+}
+```
+
 ### `invariant_violation`
 
 Returned when an internal invariant is violated (unexpected internal state).
@@ -5756,7 +9425,7 @@ This typically indicates a bug and is not actionable by clients.
 
 Please contact support if you receive this error.
 
-```json  theme={null}
+```json theme={null}
 {
   "errors": [
     {
@@ -5789,7 +9458,7 @@ This page lists the language codes supported by the Fireflies.ai API. You may us
 
 ## Codes
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "languageName": "Arabic",
@@ -5990,7 +9659,7 @@ This page documents the events you may receive from the Fireflies.ai Realtime AP
 
 ## Example Payload
 
-```json  theme={null}
+```json theme={null}
 {
   "transcript_id": "abc123",
   "chunk_id": "chunk_001",
@@ -6003,7 +9672,7 @@ This page documents the events you may receive from the Fireflies.ai Realtime AP
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Getting Started" icon="link" href="/realtime-api/getting-started">
     Getting started with Realtime API
   </Card>
@@ -6025,7 +9694,7 @@ This guide shows you how to connect to the Fireflies.ai Realtime API and start r
 
 ## Endpoint
 
-```text  theme={null}
+```text theme={null}
 wss://api.fireflies.ai
 ```
 
@@ -6044,7 +9713,7 @@ You'll need the following:
 
 Use the Socket.IO client to connect and listen for events.
 
-```ts  theme={null}
+```ts theme={null}
 import { io } from 'socket.io-client';
 
 const socket = io('wss://api.fireflies.ai', {
@@ -6089,7 +9758,7 @@ See [Authorization](/fundamentals/authorization)
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Overview" icon="link" href="/realtime-api/overview">
     Overview of Realtime API
   </Card>
@@ -6134,7 +9803,7 @@ The Realtime API uses WebSocket connections to deliver transcription data as it'
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Active Meetings" icon="link" href="/graphql-api/query/active-meetings">
     Query meetings currently in progress
   </Card>
@@ -6185,9 +9854,16 @@ Schema for ActiveMeeting
   * `teammates`: All team members can access
 </ResponseField>
 
+<ResponseField name="state" type="MeetingState">
+  Current state of the meeting. Possible values:
+
+  * `active`: Meeting is currently in progress
+  * `paused`: Meeting has been paused
+</ResponseField>
+
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Active Meetings Query" icon="link" href="/graphql-api/query/active-meetings">
     Query active meetings in progress
   </Card>
@@ -6203,37 +9879,37 @@ Source: https://docs.fireflies.ai/schema/aifilter
 
 Schema for AIFilter
 
-<ParamField path="task" type="String">
+<ParamField type="String">
   Description
 </ParamField>
 
-<ParamField path="pricing" type="String">
+<ParamField type="String">
   Description
 </ParamField>
 
-<ParamField path="metric" type="String">
+<ParamField type="String">
   Description
 </ParamField>
 
-<ParamField path="question" type="String">
+<ParamField type="String">
   Description
 </ParamField>
 
-<ParamField path="date_and_time" type="String">
+<ParamField type="String">
   Description
 </ParamField>
 
-<ParamField path="text_cleanup" type="String">
+<ParamField type="String">
   Description
 </ParamField>
 
-<ParamField path="sentiment" type="String">
+<ParamField type="String">
   Description
 </ParamField>
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Sentence" icon="link" href="/schema/sentence">
     Schema for Sentence
   </Card>
@@ -6249,321 +9925,321 @@ Source: https://docs.fireflies.ai/schema/analytics
 
 Schema for Analytics
 
-<ParamField path="team" type="TeamAnalytics">
+<ParamField type="TeamAnalytics">
   Analytics data for the team. See [TeamAnalytics](#teamanalytics)
 </ParamField>
 
-<ParamField path="users" type="[UserAnalytics]">
+<ParamField type="[UserAnalytics]">
   List of analytics data for individual users. See [UserAnalytics](#useranalytics)
 </ParamField>
 
 ## TeamAnalytics
 
-<ParamField path="conversation" type="TeamConversationStats">
+<ParamField type="TeamConversationStats">
   Conversation statistics for the team. See [TeamConversationStats](#teamconversationstats)
 </ParamField>
 
-<ParamField path="meeting" type="TeamMeetingStats">
+<ParamField type="TeamMeetingStats">
   Meeting statistics for the team. See [TeamMeetingStats](#teammeetingstats)
 </ParamField>
 
 ## TeamMeetingStats
 
-<ParamField path="count" type="Int">
+<ParamField type="Int">
   Total count of meetings
 </ParamField>
 
-<ParamField path="count_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in meeting count compared to previous period
 </ParamField>
 
-<ParamField path="duration" type="Float">
+<ParamField type="Float">
   Total duration of meetings in minutes
 </ParamField>
 
-<ParamField path="duration_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in meeting duration compared to previous period
 </ParamField>
 
-<ParamField path="average_count" type="Int">
+<ParamField type="Int">
   Average number of meetings per user
 </ParamField>
 
-<ParamField path="average_count_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in average meeting count compared to previous period
 </ParamField>
 
-<ParamField path="average_duration" type="Int">
+<ParamField type="Int">
   Average duration of meetings in minutes
 </ParamField>
 
-<ParamField path="average_duration_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in average meeting duration compared to previous period
 </ParamField>
 
 ## UserMeetingStats
 
-<ParamField path="count" type="Int">
+<ParamField type="Int">
   Total count of meetings for the user
 </ParamField>
 
-<ParamField path="count_diff" type="Int">
+<ParamField type="Int">
   Difference in meeting count compared to previous period
 </ParamField>
 
-<ParamField path="count_diff_compared_to" type="Int">
+<ParamField type="Int">
   Meeting count in the previous period
 </ParamField>
 
-<ParamField path="count_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in meeting count compared to previous period
 </ParamField>
 
-<ParamField path="duration" type="Float">
+<ParamField type="Float">
   Total duration of meetings in minutes for the user
 </ParamField>
 
-<ParamField path="duration_diff" type="Int">
+<ParamField type="Int">
   Difference in meeting duration compared to previous period
 </ParamField>
 
-<ParamField path="duration_diff_compared_to" type="Int">
+<ParamField type="Int">
   Meeting duration in the previous period
 </ParamField>
 
-<ParamField path="duration_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in meeting duration compared to previous period
 </ParamField>
 
 ## TeamConversationStats
 
-<ParamField path="average_filler_words" type="Int">
+<ParamField type="Int">
   Average number of filler words used per meeting
 </ParamField>
 
-<ParamField path="average_filler_words_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in average filler words compared to previous period
 </ParamField>
 
-<ParamField path="average_monologues_count" type="Int">
+<ParamField type="Int">
   Average number of monologues per meeting
 </ParamField>
 
-<ParamField path="average_monologues_count_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in average monologues count compared to previous period
 </ParamField>
 
-<ParamField path="average_questions" type="Int">
+<ParamField type="Int">
   Average number of questions asked per meeting
 </ParamField>
 
-<ParamField path="average_questions_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in average questions compared to previous period
 </ParamField>
 
-<ParamField path="average_sentiments" type="Sentiments">
+<ParamField type="Sentiments">
   Average sentiment analysis results for team meetings. See [Sentiments](/schema/sentiments)
 </ParamField>
 
-<ParamField path="average_silence_duration" type="Float">
+<ParamField type="Float">
   Average duration of silence in minutes per meeting
 </ParamField>
 
-<ParamField path="average_silence_duration_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in average silence duration compared to previous period
 </ParamField>
 
-<ParamField path="average_talk_listen_ratio" type="Float">
+<ParamField type="Float">
   Average ratio of talking to listening across all meetings
 </ParamField>
 
-<ParamField path="average_words_per_minute" type="Float">
+<ParamField type="Float">
   Average words spoken per minute across all meetings
 </ParamField>
 
-<ParamField path="longest_monologue_duration_sec" type="Int">
+<ParamField type="Int">
   Duration in seconds of the longest monologue
 </ParamField>
 
-<ParamField path="longest_monologue_duration_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in longest monologue duration compared to previous period
 </ParamField>
 
-<ParamField path="total_filler_words" type="Int">
+<ParamField type="Int">
   Total number of filler words used across all meetings
 </ParamField>
 
-<ParamField path="total_filler_words_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in total filler words compared to previous period
 </ParamField>
 
-<ParamField path="total_meeting_notes_count" type="Int">
+<ParamField type="Int">
   Total count of meeting notes created
 </ParamField>
 
-<ParamField path="total_meetings_count" type="Int">
+<ParamField type="Int">
   Total count of meetings
 </ParamField>
 
-<ParamField path="total_monologues_count" type="Int">
+<ParamField type="Int">
   Total count of monologues across all meetings
 </ParamField>
 
-<ParamField path="total_monologues_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in total monologues compared to previous period
 </ParamField>
 
-<ParamField path="teammates_count" type="Int">
+<ParamField type="Int">
   Number of teammates included in the analytics
 </ParamField>
 
-<ParamField path="total_questions" type="Int">
+<ParamField type="Int">
   Total number of questions asked across all meetings
 </ParamField>
 
-<ParamField path="total_questions_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in total questions compared to previous period
 </ParamField>
 
-<ParamField path="total_silence_duration" type="Float">
+<ParamField type="Float">
   Total duration of silence in minutes across all meetings
 </ParamField>
 
-<ParamField path="total_silence_duration_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in total silence duration compared to previous period
 </ParamField>
 
 ## UserConversationStats
 
-<ParamField path="talk_listen_pct" type="Float">
+<ParamField type="Float">
   Percentage of time spent talking vs listening
 </ParamField>
 
-<ParamField path="talk_listen_ratio" type="Float">
+<ParamField type="Float">
   Ratio of talking to listening
 </ParamField>
 
-<ParamField path="total_silence_duration" type="Float">
+<ParamField type="Float">
   Total duration of silence in minutes for the user
 </ParamField>
 
-<ParamField path="total_silence_duration_compare_to" type="Float" optional>
+<ParamField type="Float">
   Silence duration in the previous period
 </ParamField>
 
-<ParamField path="total_silence_pct" type="Float">
+<ParamField type="Float">
   Percentage of meeting time spent in silence
 </ParamField>
 
-<ParamField path="total_silence_ratio" type="Float">
+<ParamField type="Float">
   Ratio of silence to speaking time
 </ParamField>
 
-<ParamField path="total_speak_duration" type="Float">
+<ParamField type="Float">
   Total duration of speaking time in minutes
 </ParamField>
 
-<ParamField path="total_speak_duration_with_user" type="Float">
+<ParamField type="Float">
   Total duration of speaking time with specific user in minutes
 </ParamField>
 
-<ParamField path="total_word_count" type="Int">
+<ParamField type="Int">
   Total count of words spoken
 </ParamField>
 
-<ParamField path="user_filler_words" type="Int">
+<ParamField type="Int">
   Number of filler words used by the user
 </ParamField>
 
-<ParamField path="user_filler_words_compare_to" type="Int">
+<ParamField type="Int">
   Filler words used in the previous period
 </ParamField>
 
-<ParamField path="user_filler_words_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in filler words compared to previous period
 </ParamField>
 
-<ParamField path="user_longest_monologue_sec" type="Int">
+<ParamField type="Int">
   Duration in seconds of the user's longest monologue
 </ParamField>
 
-<ParamField path="user_longest_monologue_compare_to" type="Int">
+<ParamField type="Int">
   Longest monologue duration in the previous period
 </ParamField>
 
-<ParamField path="user_longest_monologue_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in longest monologue duration compared to previous period
 </ParamField>
 
-<ParamField path="user_monologues_count" type="Int">
+<ParamField type="Int">
   Count of monologues by the user
 </ParamField>
 
-<ParamField path="user_monologues_count_compare_to" type="Int">
+<ParamField type="Int">
   Monologues count in the previous period
 </ParamField>
 
-<ParamField path="user_monologues_count_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in monologues count compared to previous period
 </ParamField>
 
-<ParamField path="user_questions" type="Int">
+<ParamField type="Int">
   Number of questions asked by the user
 </ParamField>
 
-<ParamField path="user_questions_compare_to" type="Int">
+<ParamField type="Int">
   Questions asked in the previous period
 </ParamField>
 
-<ParamField path="user_questions_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in questions asked compared to previous period
 </ParamField>
 
-<ParamField path="user_speak_duration" type="Float">
+<ParamField type="Float">
   Duration of time the user spent speaking in minutes
 </ParamField>
 
-<ParamField path="user_word_count" type="Int">
+<ParamField type="Int">
   Count of words spoken by the user
 </ParamField>
 
-<ParamField path="user_words_per_minute" type="Int">
+<ParamField type="Int">
   Words spoken per minute by the user
 </ParamField>
 
-<ParamField path="user_words_per_minute_compare_to" type="Int">
+<ParamField type="Int">
   Words per minute in the previous period
 </ParamField>
 
-<ParamField path="user_words_per_minute_diff_pct" type="Int" optional>
+<ParamField type="Int">
   Percentage difference in words per minute compared to previous period
 </ParamField>
 
 ## UserAnalytics
 
-<ParamField path="user_id" type="String">
+<ParamField type="String">
   Unique identifier for the user
 </ParamField>
 
-<ParamField path="user_name" type="String">
+<ParamField type="String">
   Name of the user
 </ParamField>
 
-<ParamField path="user_email" type="String">
+<ParamField type="String">
   Email address of the user
 </ParamField>
 
-<ParamField path="conversation" type="UserConversationStats">
+<ParamField type="UserConversationStats">
   Conversation statistics for the user. See [UserConversationStats](#userconversationstats)
 </ParamField>
 
-<ParamField path="meeting" type="UserMeetingStats">
+<ParamField type="UserMeetingStats">
   Meeting statistics for the user. See [UserMeetingStats](#usermeetingstats)
 </ParamField>
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Sentiments" icon="link" href="/schema/sentiments">
     Schema for Sentiments
   </Card>
@@ -6574,42 +10250,42 @@ Schema for Analytics
 </CardGroup>
 
 
-# App Output
+# AppOutput
 Source: https://docs.fireflies.ai/schema/app-output
 
-Schema for App Output
+Schema for AppOutput
 
-<ParamField path="transcript_id" type="String">
+<ParamField type="String">
   The ID of the meeting transcript.
 </ParamField>
 
-<ParamField path="user_id" type="String">
+<ParamField type="String">
   The ID of the user who owns the AI App
 </ParamField>
 
-<ParamField path="app_id" type="String">
+<ParamField type="String">
   The ID of the AI App
 </ParamField>
 
-<ParamField path="created_at" type="Float">
+<ParamField type="Float">
   The timestamp in milliseconds from epoch when the output was generated
 </ParamField>
 
-<ParamField path="title" type="String">
+<ParamField type="String">
   The title of the AI App
 </ParamField>
 
-<ParamField path="prompt" type="String">
+<ParamField type="String">
   The prompt given to the AI App
 </ParamField>
 
-<ParamField path="response" type="String">
+<ParamField type="String">
   The response generated by the AI App
 </ParamField>
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Apps" icon="link" href="/schema/apps">
     Schema for Apps
   </Card>
@@ -6625,19 +10301,311 @@ Source: https://docs.fireflies.ai/schema/apps
 
 Schema for Apps
 
-<ParamField path="outputs" type="[AppOutput]">
+<ParamField type="[AppOutput]">
   List of [AI App outputs](/schema/app-output)
 </ParamField>
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="App Output" icon="link" href="/schema/app-output">
     Schema for App Output
   </Card>
 
   <Card title="Transcript" icon="link" href="/schema/transcript">
     Schema for Transcript
+  </Card>
+</CardGroup>
+
+
+# AskFredMessage
+Source: https://docs.fireflies.ai/schema/askfred-message
+
+Schema definition for individual messages in AskFred conversation threads
+
+## Overview
+
+The `AskFredMessage` type represents a single question-answer exchange within an AskFred conversation thread. Each message contains the user's query, the AI-generated response, and optional follow-up suggestions.
+
+## Fields
+
+<ResponseField name="id" type="String!">
+  Unique identifier for the message
+</ResponseField>
+
+<ResponseField name="thread_id" type="String!">
+  ID of the parent thread this message belongs to
+</ResponseField>
+
+<ResponseField name="query" type="String!">
+  The question or query submitted by the user
+</ResponseField>
+
+<ResponseField name="answer" type="String!">
+  The AI-generated response to the query, formatted according to the specified format\_mode
+</ResponseField>
+
+<ResponseField name="suggested_queries" type="[String!]">
+  Array of suggested follow-up questions based on the context of the conversation
+</ResponseField>
+
+<ResponseField name="status" type="AskFredMessageStatus!">
+  Current status of the message processing. See [AskFredMessageStatus](#askfredmessagestatus) below.
+</ResponseField>
+
+<ResponseField name="created_at" type="String!">
+  ISO 8601 timestamp when the message was created
+</ResponseField>
+
+<ResponseField name="updated_at" type="String">
+  ISO 8601 timestamp when the message was last updated
+</ResponseField>
+
+## AskFredMessageStatus
+
+An enum representing the processing status of a message:
+
+<ResponseField name="processing" type="enum value">
+  The query is currently being processed
+</ResponseField>
+
+<ResponseField name="completed" type="enum value">
+  The query has been successfully processed and answered
+</ResponseField>
+
+<ResponseField name="failed" type="enum value">
+  The query processing failed
+</ResponseField>
+
+## Example
+
+```json theme={null}
+{
+  "id": "msg_001",
+  "thread_id": "thread_abc123",
+  "query": "What were the main action items from the meeting?",
+  "answer": "Based on the meeting transcript, here are the main action items:\n\n1. **Marketing Team** - Prepare Q4 campaign strategy by March 25th\n2. **Product Team** - Finalize feature roadmap by March 20th\n3. **Engineering** - Complete API v2 architecture review by March 18th",
+  "suggested_queries": [
+    "Who is responsible for the Q4 campaign strategy?",
+    "What features are planned for the roadmap?",
+    "What are the API v2 requirements?"
+  ],
+  "status": "completed",
+  "created_at": "2024-03-15T10:30:00Z",
+  "updated_at": "2024-03-15T10:30:15Z"
+}
+```
+
+## Format Modes
+
+The `answer` field can be formatted in different ways based on the `format_mode` parameter used when creating or continuing a thread:
+
+### Markdown Format
+
+Rich text with headers, lists, bold/italic text, and other markdown features for enhanced readability.
+
+### Plaintext Format
+
+Concise text without any formatting, suitable for systems that don't support markdown.
+
+## Related Types
+
+<CardGroup>
+  <Card title="AskFredThread" icon="link" href="/schema/askfred-thread">
+    Parent thread containing messages
+  </Card>
+
+  <Card title="AskFredResponse" icon="link" href="/schema/askfred-response">
+    Response wrapper for newly created messages
+  </Card>
+</CardGroup>
+
+
+# AskFredResponse
+Source: https://docs.fireflies.ai/schema/askfred-response
+
+Response wrapper for AskFred mutations
+
+## Overview
+
+The `AskFredResponse` type is a wrapper object returned by AskFred mutations when creating or continuing conversation threads. It contains the newly generated message with the AI's response to your query.
+
+## Fields
+
+<ResponseField name="message" type="AskFredMessage!">
+  The generated message containing the query, answer, and metadata. See [AskFredMessage](/schema/askfred-message) for detailed field descriptions.
+</ResponseField>
+
+## Example
+
+```json theme={null}
+{
+  "message": {
+    "id": "msg_001",
+    "thread_id": "thread_abc123",
+    "query": "What were the key decisions made in today's meeting?",
+    "answer": "Based on today's meeting, here are the key decisions made:\n\n1. **Product Launch Date**: Confirmed for April 15th, 2024\n2. **Budget Allocation**: Approved $250K for Q2 marketing initiatives\n3. **Team Structure**: Decided to hire 3 additional engineers\n4. **Partnership Strategy**: Approved collaboration with TechCorp",
+    "suggested_queries": [
+      "What are the specific marketing initiatives planned?",
+      "What roles are we hiring for engineering?",
+      "What are the terms of the TechCorp partnership?"
+    ],
+    "status": "completed",
+    "created_at": "2024-03-15T14:30:00Z",
+    "updated_at": "2024-03-15T14:30:05Z"
+  }
+}
+```
+
+## Related Types
+
+<CardGroup>
+  <Card title="AskFredMessage" icon="link" href="/schema/askfred-message">
+    Detailed message structure
+  </Card>
+
+  <Card title="AskFredThread" icon="link" href="/schema/askfred-thread">
+    Thread containing multiple messages
+  </Card>
+</CardGroup>
+
+
+# AskFredThread
+Source: https://docs.fireflies.ai/schema/askfred-thread
+
+Schema definition for AskFred conversation threads
+
+## Overview
+
+The `AskFredThread` type represents a conversation thread in the AskFred system. Each thread contains a series of questions and answers about meeting transcripts, maintaining context throughout the conversation.
+
+## Fields
+
+<ResponseField name="id" type="String!">
+  Unique identifier for the thread
+</ResponseField>
+
+<ResponseField name="title" type="String!">
+  Title of the thread, typically derived from the first question asked
+</ResponseField>
+
+<ResponseField name="transcript_id" type="String">
+  ID of the specific meeting/transcript this thread is associated with (if applicable)
+</ResponseField>
+
+<ResponseField name="user_id" type="String!">
+  ID of the user who created the thread
+</ResponseField>
+
+<ResponseField name="created_at" type="String!">
+  ISO 8601 timestamp when the thread was created
+</ResponseField>
+
+<ResponseField name="messages" type="[AskFredMessage!]!">
+  Array of messages in the thread, containing questions and answers. See [AskFredMessage](/schema/askfred-message) for details.
+</ResponseField>
+
+## Example
+
+```json theme={null}
+{
+  "id": "thread_abc123",
+  "title": "Q4 Planning Meeting Action Items",
+  "transcript_id": "transcript_xyz789",
+  "user_id": "user_123",
+  "created_at": "2024-03-15T10:30:00Z",
+  "messages": [
+    {
+      "id": "msg_001",
+      "thread_id": "thread_abc123",
+      "query": "What were the action items from the Q4 planning meeting?",
+      "answer": "Based on the Q4 planning meeting...",
+      "suggested_queries": ["Who is responsible for...", "What is the timeline..."],
+      "status": "completed",
+      "created_at": "2024-03-15T10:30:00Z"
+    }
+  ]
+}
+```
+
+## Related Types
+
+<CardGroup>
+  <Card title="AskFredMessage" icon="link" href="/schema/askfred-message">
+    Individual messages within a thread
+  </Card>
+
+  <Card title="AskFredThreadSummary" icon="link" href="/schema/askfred-thread-summary">
+    Lightweight thread summary for listings
+  </Card>
+</CardGroup>
+
+
+# AskFredThreadSummary
+Source: https://docs.fireflies.ai/schema/askfred-thread-summary
+
+Lightweight schema for AskFred thread listings
+
+## Overview
+
+The `AskFredThreadSummary` type provides a lightweight representation of an AskFred conversation thread, ideal for displaying thread lists without the overhead of loading all messages. This type is returned when querying multiple threads.
+
+## Fields
+
+<ResponseField name="id" type="String!">
+  Unique identifier for the thread
+</ResponseField>
+
+<ResponseField name="title" type="String!">
+  Title of the thread, typically derived from the first question asked
+</ResponseField>
+
+<ResponseField name="transcript_id" type="String">
+  ID of the specific meeting/transcript this thread is associated with (if applicable)
+</ResponseField>
+
+<ResponseField name="user_id" type="String!">
+  ID of the user who created the thread
+</ResponseField>
+
+<ResponseField name="created_at" type="String!">
+  ISO 8601 timestamp when the thread was created
+</ResponseField>
+
+## Example
+
+```json theme={null}
+{
+  "id": "thread_abc123",
+  "title": "Q4 Planning Meeting Action Items",
+  "transcript_id": "transcript_xyz789",
+  "user_id": "user_123",
+  "created_at": "2024-03-15T10:30:00Z"
+}
+```
+
+## Example Query
+
+```graphql theme={null}
+query GetThreadsSummary {
+  askfred_threads {
+    id
+    title
+    transcript_id
+    created_at
+  }
+}
+```
+
+## Related Types
+
+<CardGroup>
+  <Card title="AskFredThread" icon="link" href="/schema/askfred-thread">
+    Full thread type with messages
+  </Card>
+
+  <Card title="AskFredMessage" icon="link" href="/schema/askfred-message">
+    Individual messages within threads
   </Card>
 </CardGroup>
 
@@ -6661,7 +10629,7 @@ Schema for AudioUploadStatus
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Transcript" icon="link" href="/schema/transcript">
     Schema for Transcript
   </Card>
@@ -6740,11 +10708,11 @@ Schema for Bite
   Object representing the user who created the Bite, including relevant user details
 
   <Expandable title="properties">
-    <ResponseField name="name" type="String" required>
+    <ResponseField name="name" type="String">
       Name associated with the User
     </ResponseField>
 
-    <ResponseField name="id" type="String" required>
+    <ResponseField name="id" type="String">
       ID of the User
     </ResponseField>
 
@@ -6766,7 +10734,7 @@ Schema for Bite
   Array of MediaSource objects for the Bite
 
   <Expandable title="properties">
-    <ResponseField name="src" type="String" required>
+    <ResponseField name="src" type="String">
       Source of the media
     </ResponseField>
 
@@ -6780,27 +10748,27 @@ Schema for Bite
   Array of Object describing text captions associated with the Bite
 
   <Expandable title="properties">
-    <ResponseField name="index" type="String" required>
+    <ResponseField name="index" type="String">
       Index
     </ResponseField>
 
-    <ResponseField name="speaker_id" type="String" required>
+    <ResponseField name="speaker_id" type="String">
       SpeakerId associated with the caption object
     </ResponseField>
 
-    <ResponseField name="text" type="String" required>
+    <ResponseField name="text" type="String">
       Text associated with the caption
     </ResponseField>
 
-    <ResponseField name="speaker_name" type="String" required>
+    <ResponseField name="speaker_name" type="String">
       Name of the speaker associated with this caption
     </ResponseField>
 
-    <ResponseField name="start_time" type="String" required>
+    <ResponseField name="start_time" type="String">
       Start time for the caption
     </ResponseField>
 
-    <ResponseField name="end_time" type="String" required>
+    <ResponseField name="end_time" type="String">
       End time for the caption
     </ResponseField>
   </Expandable>
@@ -6810,15 +10778,15 @@ Schema for Bite
   Object describing the origin of the Bite with the following properties
 
   <Expandable title="properties">
-    <ResponseField name="id" type="String" required>
+    <ResponseField name="id" type="String">
       Unique identifier
     </ResponseField>
 
-    <ResponseField name="name" type="String" required>
+    <ResponseField name="name" type="String">
       Name of the origin source
     </ResponseField>
 
-    <ResponseField name="type" type="String" required>
+    <ResponseField name="type" type="String">
       Type of the original source, e.g., 'meeting'
     </ResponseField>
 
@@ -6830,7 +10798,7 @@ Schema for Bite
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Transcript" icon="link" href="/schema/transcript">
     Schema for Transcript
   </Card>
@@ -6850,17 +10818,292 @@ Schema for Channel
   Unique identifier of the Channel.
 </ResponseField>
 
+<ResponseField name="title" type="String">
+  Title of the Channel.
+</ResponseField>
+
+<ResponseField name="is_private" type="Boolean">
+  Whether the channel is private. Private channels are only visible to their members.
+</ResponseField>
+
+<ResponseField name="created_by" type="String">
+  Email of the user who created the channel.
+</ResponseField>
+
+<ResponseField name="created_at" type="String">
+  Timestamp when the channel was created.
+</ResponseField>
+
+<ResponseField name="updated_at" type="String">
+  Timestamp when the channel was last updated.
+</ResponseField>
+
+<ResponseField name="members" type="[ChannelMember]">
+  List of members of this channel. See [ChannelMember](/schema/channel-member) for available fields.
+</ResponseField>
+
 ## Additional Resources
 
-<CardGroup cols={2}>
-  <Card title="Transcript" icon="link" href="/schema/transcript">
-    Schema for Transcript
+<CardGroup>
+  <Card title="Channels Query" icon="link" href="/graphql-api/query/channels">
+    Query list of channels
   </Card>
 
-  <Card title="User Groups" icon="link" href="/schema/user-groups">
-    Schema for User Groups
+  <Card title="Channel Query" icon="link" href="/graphql-api/query/channel">
+    Query a single channel by ID
   </Card>
 </CardGroup>
+
+
+# ChannelMember
+Source: https://docs.fireflies.ai/schema/channel-member
+
+Schema for ChannelMember
+
+<ResponseField name="user_id" type="String">
+  Unique identifier for the channel member.
+</ResponseField>
+
+<ResponseField name="email" type="String">
+  Email address of the channel member.
+</ResponseField>
+
+<ResponseField name="name" type="String">
+  Display name of the channel member.
+</ResponseField>
+
+## Additional Resources
+
+<CardGroup>
+  <Card title="Channel" icon="link" href="/schema/channel">
+    Schema for Channel
+  </Card>
+
+  <Card title="Channels Query" icon="link" href="/graphql-api/query/channels">
+    Query list of channels
+  </Card>
+</CardGroup>
+
+
+# Contact
+Source: https://docs.fireflies.ai/schema/contact
+
+Schema for Contact
+
+<ResponseField name="email" type="String">
+  Email address of the contact.
+</ResponseField>
+
+<ResponseField name="name" type="String">
+  Full name of the contact.
+</ResponseField>
+
+<ResponseField name="picture" type="String">
+  URL to the contact's profile picture. May be null if no picture is available.
+</ResponseField>
+
+<ResponseField name="last_meeting_date" type="String">
+  The date of the last meeting with this contact in ISO 8601 format (YYYY-MM-DD). May be null if no meeting date is available.
+</ResponseField>
+
+## Additional Resources
+
+<CardGroup>
+  <Card title="Contacts" icon="link" href="/graphql-api/query/contacts">
+    Query contacts using the API
+  </Card>
+
+  <Card title="Users" icon="link" href="/graphql-api/query/users">
+    Query users in your team
+  </Card>
+</CardGroup>
+
+
+# DownloadAuthType
+Source: https://docs.fireflies.ai/schema/enum/download-auth-type
+
+Enum for DownloadAuthType - authentication methods for media downloads
+
+The `DownloadAuthType` enum specifies the authentication method to use when downloading media files during audio upload.
+
+## Values
+
+<ParamField type="Enum Value">
+  No authentication required. The media file is publicly accessible.
+
+  This is the default when `download_auth` is not provided.
+</ParamField>
+
+<ParamField type="Enum Value">
+  Bearer token authentication. Requires the `bearer` field with a token.
+
+  Fireflies will send `Authorization: Bearer <token>` when downloading the file.
+</ParamField>
+
+<ParamField type="Enum Value">
+  HTTP Basic authentication. Requires the `basic` field with username and/or password.
+
+  Fireflies will send `Authorization: Basic <base64(username:password)>` when downloading the file.
+</ParamField>
+
+## Usage
+
+The `DownloadAuthType` enum is used in the [DownloadAuthInput](/schema/input/download-auth-input) type to specify which authentication method should be used:
+
+```graphql theme={null}
+input DownloadAuthInput {
+  type: DownloadAuthType!
+  bearer: BearerTokenAuthInput
+  basic: BasicAuthInput
+}
+```
+
+## Examples
+
+### No Authentication (Default)
+
+```graphql theme={null}
+mutation {
+  uploadAudio(input: {
+    url: "https://public-storage.com/audio.mp3"
+    title: "Public Recording"
+    # download_auth omitted - defaults to 'none'
+  }) {
+    success
+    message
+  }
+}
+```
+
+Or explicitly:
+
+```graphql theme={null}
+mutation {
+  uploadAudio(input: {
+    url: "https://public-storage.com/audio.mp3"
+    title: "Public Recording"
+    download_auth: {
+      type: none
+    }
+  }) {
+    success
+    message
+  }
+}
+```
+
+### Bearer Token
+
+```graphql theme={null}
+mutation {
+  uploadAudio(input: {
+    url: "https://protected-storage.com/audio.mp3"
+    title: "Protected Recording"
+    download_auth: {
+      type: bearer_token
+      bearer: {
+        token: "your-token-here"
+      }
+    }
+  }) {
+    success
+    message
+  }
+}
+```
+
+### Basic Authentication
+
+```graphql theme={null}
+mutation {
+  uploadAudio(input: {
+    url: "https://private-server.com/audio.mp3"
+    title: "Private Recording"
+    download_auth: {
+      type: basic_auth
+      basic: {
+        username: "user"
+        password: "pass"
+      }
+    }
+  }) {
+    success
+    message
+  }
+}
+```
+
+## Choosing the Right Authentication Method
+
+| Method         | Use When                         | Example Use Cases                                                           |
+| -------------- | -------------------------------- | --------------------------------------------------------------------------- |
+| `none`         | File is publicly accessible      | Public S3 buckets, CDN-hosted files, public web servers                     |
+| `bearer_token` | File requires OAuth or API token | Private cloud storage, API-protected resources, JWT-authenticated endpoints |
+| `basic_auth`   | File requires username/password  | Web servers with `.htaccess`, internal file servers, legacy systems         |
+
+## Related Types
+
+* [DownloadAuthInput](/schema/input/download-auth-input) - Authentication configuration using this enum
+* [BearerTokenAuthInput](/schema/input/bearer-token-auth-input) - Bearer token configuration
+* [BasicAuthInput](/schema/input/basic-auth-input) - Basic auth configuration
+* [AudioUploadInput](/schema/input/audio-upload-input) - Parent input type
+
+
+# MeetingState
+Source: https://docs.fireflies.ai/schema/enum/meeting-state
+
+Enum for MeetingState - possible states for active meetings
+
+The `MeetingState` enum specifies the current state of an active meeting.
+
+## Values
+
+<ParamField type="Enum Value">
+  The meeting is currently in progress with the Fireflies bot actively recording.
+</ParamField>
+
+<ParamField type="Enum Value">
+  The meeting has been paused. The Fireflies bot is still in the meeting but recording is temporarily stopped.
+</ParamField>
+
+## Usage
+
+The `MeetingState` enum is used in two contexts:
+
+1. **As a filter** in the [GetActiveMeetingsInput](/schema/input/active-meetings-input) to filter meetings by state
+2. **As a response field** in the [ActiveMeeting](/schema/active-meeting) type to indicate the current state
+
+### Filtering by State
+
+```graphql theme={null}
+query ActiveMeetings {
+  active_meetings(input: { states: [active] }) {
+    id
+    title
+    state
+  }
+}
+```
+
+### Getting All States (Default)
+
+When no `states` filter is provided, both `active` and `paused` meetings are returned:
+
+```graphql theme={null}
+query ActiveMeetings {
+  active_meetings {
+    id
+    title
+    state
+  }
+}
+```
+
+## Related Types
+
+* [ActiveMeeting](/schema/active-meeting) - Schema containing the state field
+* [GetActiveMeetingsInput](/schema/input/active-meetings-input) - Input type using this enum for filtering
+* [Active Meetings Query](/graphql-api/query/active-meetings) - Query documentation
 
 
 # GetActiveMeetingsInput
@@ -6868,7 +11111,7 @@ Source: https://docs.fireflies.ai/schema/input/active-meetings-input
 
 Schema for GetActiveMeetingsInput
 
-<ParamField path="email" type="String">
+<ParamField type="String">
   Filter active meetings by a specific user's email address.
 
   **Permission requirements:**
@@ -6881,23 +11124,34 @@ Schema for GetActiveMeetingsInput
   The email must be valid and belong to a user in the same team as the requester.
 </ParamField>
 
+<ParamField type="[MeetingState]">
+  Filter active meetings by their state. Accepts an array of [MeetingState](/schema/enum/meeting-state) values.
+
+  **Possible values:**
+
+  * `active`: Meetings that are currently in progress
+  * `paused`: Meetings that have been paused
+
+  If this field is omitted, the query returns meetings in both `active` and `paused` states by default.
+</ParamField>
+
 
 # Attendee
 Source: https://docs.fireflies.ai/schema/input/attendee
 
 Schema for Attendee
 
-<ParamField path="displayName" type="String">
+<ParamField type="String">
   Display name of the attendee as it appears in meeting platforms like Google Chat, Zoom, etc.
 </ParamField>
 
-<ParamField path="email" type="String">
+<ParamField type="String">
   Email address of the attendee.
 
   Maximum length is 20 characters.
 </ParamField>
 
-<ParamField path="phoneNumber" type="String">
+<ParamField type="String">
   Phone number of the attendee.
 </ParamField>
 
@@ -6907,38 +11161,370 @@ Source: https://docs.fireflies.ai/schema/input/audio-upload-input
 
 Schema for AudioUploadInput
 
-<ParamField path="url" type="String" required>
+<ParamField type="String">
   URL from which the audio file will be fetched. This should be a direct link to the audio resource.
 </ParamField>
 
-<ParamField path="title" type="String">
+<ParamField type="String">
   Title assigned to the uploaded file. If not provided, the file's original name will be used as its
   title.
 
   Maximum length is 256 characters.
 </ParamField>
 
-<ParamField path="attendees" type="[Attendee]">
+<ParamField type="[Attendee]">
   Array of [Attendee](/schema/attendee) objects, as defined in the [Attendee](/schema/attendee)
   schema. Each element in this array represents an attendee.
 
   Max length of 100 attendees.
 </ParamField>
 
-<ParamField path="custom_language" type="String">
+<ParamField type="String">
   Custom language code for the meeting
 </ParamField>
 
-<ParamField path="client_reference_id" type="String">
+<ParamField type="String">
   Custom identifier set by the user during upload. You may use this to identify your uploads in your
   events.
 
   Maximum length is 128 characters.
 </ParamField>
 
-<ParamField path="save_video" type="Boolean">
+<ParamField type="Boolean">
   Boolean value that specifies whether the content video needs to be saved.
 </ParamField>
+
+<ParamField type="DownloadAuthInput">
+  Authentication configuration for downloading the media file. Use this when your audio/video file requires authentication. Supports bearer token and basic authentication methods. If not provided, defaults to no authentication (publicly accessible URL).
+
+  See [DownloadAuthInput](/schema/input/download-auth-input) for the complete schema definition.
+</ParamField>
+
+
+# BasicAuthInput
+Source: https://docs.fireflies.ai/schema/input/basic-auth-input
+
+Schema for BasicAuthInput - HTTP Basic authentication configuration
+
+The `BasicAuthInput` type configures HTTP Basic authentication for downloading media files. When provided, Fireflies will include an `Authorization: Basic <base64(username:password)>` header when downloading your media file.
+
+## Fields
+
+<ParamField type="String">
+  The username for basic authentication. This field is optional - if not provided, only the password will be used.
+
+  When provided, the value will be trimmed of leading/trailing whitespace.
+</ParamField>
+
+<ParamField type="String">
+  The password for basic authentication. This field is required when using basic auth.
+
+  The password must be a non-empty string and will be trimmed of leading/trailing whitespace.
+</ParamField>
+
+## Usage
+
+HTTP Basic authentication is commonly used with:
+
+* Web servers with `.htaccess` protection
+* Internal company file servers
+* Legacy systems requiring username/password authentication
+* Simple authentication schemes for private media hosting
+
+## Examples
+
+### With Username and Password
+
+```graphql theme={null}
+mutation {
+  uploadAudio(input: {
+    url: "https://files.company.com/recordings/meeting.mp3"
+    title: "Sales Call"
+    download_auth: {
+      type: basic_auth
+      basic: {
+        username: "api-user"
+        password: "secure-password-123"
+      }
+    }
+  }) {
+    success
+    message
+  }
+}
+```
+
+### Password Only
+
+When the server only requires a password (username is optional):
+
+```graphql theme={null}
+mutation {
+  uploadAudio(input: {
+    url: "https://protected.example.com/audio.mp3"
+    title: "Meeting Recording"
+    download_auth: {
+      type: basic_auth
+      basic: {
+        password: "access-key-here"
+      }
+    }
+  }) {
+    success
+    message
+  }
+}
+```
+
+## How It Works
+
+When you provide basic authentication credentials:
+
+1. Fireflies combines the username and password as `username:password`
+2. The combined string is base64-encoded
+3. The encoded value is sent as `Authorization: Basic <base64-encoded-credentials>`
+4. The media file is downloaded using this authentication header
+
+For example, if you provide:
+
+* Username: `user`
+* Password: `pass`
+
+Fireflies will send: `Authorization: Basic dXNlcjpwYXNz`
+
+## Security Considerations
+
+* **HTTPS Required**: The media URL must use HTTPS to ensure credentials are transmitted securely
+* **Credential Storage**: Credentials are used only for downloading the file and are not stored permanently
+* **Access Control**: Use credentials with minimal required permissions (read-only access to the specific file)
+* **Credential Rotation**: For production use, consider rotating credentials regularly
+
+## Related Types
+
+* [DownloadAuthInput](/schema/input/download-auth-input) - Parent authentication configuration
+* [BearerTokenAuthInput](/schema/input/bearer-token-auth-input) - Alternative authentication method
+* [DownloadAuthType](/schema/enum/download-auth-type) - Authentication type enum
+
+
+# BearerTokenAuthInput
+Source: https://docs.fireflies.ai/schema/input/bearer-token-auth-input
+
+Schema for BearerTokenAuthInput - bearer token authentication configuration
+
+The `BearerTokenAuthInput` type configures bearer token authentication for downloading media files. When provided, Fireflies will include an `Authorization: Bearer <token>` header when downloading your media file.
+
+## Fields
+
+<ParamField type="String">
+  The bearer token to use for authentication. This token will be sent as `Authorization: Bearer <token>` when downloading the media file.
+
+  The token must be a non-empty string and will be trimmed of leading/trailing whitespace.
+</ParamField>
+
+## Usage
+
+Bearer token authentication is commonly used with:
+
+* Cloud storage services (AWS S3, Google Cloud Storage, Azure Blob Storage)
+* API-protected media servers
+* OAuth 2.0 protected resources
+* JWT-authenticated endpoints
+
+## Example
+
+```graphql theme={null}
+mutation {
+  uploadAudio(input: {
+    url: "https://storage.example.com/recordings/meeting.mp3"
+    title: "Team Meeting"
+    download_auth: {
+      type: bearer_token
+      bearer: {
+        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dozjgNryP4J3jVmNHl0w5N_XgL0n3I9PlFUP0THsR8U"
+      }
+    }
+  }) {
+    success
+    message
+  }
+}
+```
+
+## Security Considerations
+
+* **Token Expiry**: Ensure your bearer token has sufficient lifetime for Fireflies to download the file (typically a few minutes to hours)
+* **Token Scope**: Use tokens with minimal required permissions (read-only access to the specific file)
+* **Token Rotation**: For production use, consider using short-lived tokens and rotating them regularly
+* **HTTPS Only**: The media URL must use HTTPS to ensure the token is transmitted securely
+
+## Related Types
+
+* [DownloadAuthInput](/schema/input/download-auth-input) - Parent authentication configuration
+* [BasicAuthInput](/schema/input/basic-auth-input) - Alternative authentication method
+* [DownloadAuthType](/schema/enum/download-auth-type) - Authentication type enum
+
+
+# CreateLiveActionItemInput
+Source: https://docs.fireflies.ai/schema/input/create-live-action-item-input
+
+Schema for CreateLiveActionItemInput
+
+<ParamField type="ID!">
+  The ID of the live meeting to create the action item for
+</ParamField>
+
+<ParamField type="String!">
+  Natural language description of the action item to create. Fred will interpret this prompt and create the appropriate action item.
+
+  Min / max of 5 / 255 characters.
+</ParamField>
+
+
+# CreateLiveSoundbiteInput
+Source: https://docs.fireflies.ai/schema/input/create-live-soundbite-input
+
+Schema for CreateLiveSoundbiteInput
+
+<ParamField type="ID!">
+  The ID of the live meeting to create the soundbite for
+</ParamField>
+
+<ParamField type="String!">
+  Natural language description of the soundbite to create. Fred will interpret this prompt and create the appropriate soundbite.
+
+  Min / max of 5 / 255 characters.
+</ParamField>
+
+
+# DownloadAuthInput
+Source: https://docs.fireflies.ai/schema/input/download-auth-input
+
+Schema for DownloadAuthInput - authentication configuration for media downloads
+
+The `DownloadAuthInput` type configures authentication for downloading media files during audio upload. This allows you to upload files that are hosted on private servers or require authentication.
+
+## Fields
+
+<ParamField type="DownloadAuthType">
+  The authentication method to use when downloading the media file. Must be one of:
+
+  * `none` - No authentication (publicly accessible URL)
+  * `bearer_token` - Bearer token authentication
+  * `basic_auth` - HTTP Basic authentication
+
+  See [DownloadAuthType](/schema/enum/download-auth-type) for details.
+</ParamField>
+
+<ParamField type="BearerTokenAuthInput">
+  Bearer token configuration. Required when `type` is `bearer_token`, must not be provided for other types.
+
+  See [BearerTokenAuthInput](/schema/input/bearer-token-auth-input) for the complete schema definition.
+</ParamField>
+
+<ParamField type="BasicAuthInput">
+  Basic authentication configuration. Required when `type` is `basic_auth`, must not be provided for other types.
+
+  See [BasicAuthInput](/schema/input/basic-auth-input) for the complete schema definition.
+</ParamField>
+
+## Validation Rules
+
+The `DownloadAuthInput` type enforces mutual exclusivity between authentication methods:
+
+* When `type` is `bearer_token`, only the `bearer` field should be provided
+* When `type` is `basic_auth`, only the `basic` field should be provided
+* When `type` is `none`, neither `bearer` nor `basic` should be provided
+
+Providing fields for multiple authentication types will result in a validation error.
+
+## Examples
+
+### Bearer Token Authentication
+
+```graphql theme={null}
+{
+  type: bearer_token
+  bearer: {
+    token: "your-bearer-token-here"
+  }
+}
+```
+
+### Basic Authentication
+
+```graphql theme={null}
+{
+  type: basic_auth
+  basic: {
+    username: "your-username"
+    password: "your-password"
+  }
+}
+```
+
+### No Authentication (Default)
+
+When the media file is publicly accessible, you can either omit the `download_auth` field entirely or explicitly set it to `none`:
+
+```graphql theme={null}
+{
+  type: none
+}
+```
+
+## Use Cases
+
+### Private Cloud Storage
+
+Use bearer token authentication for files stored in private cloud storage with token-based access:
+
+```graphql theme={null}
+mutation {
+  uploadAudio(input: {
+    url: "https://storage.example.com/recordings/meeting-123.mp3"
+    title: "Team Standup"
+    download_auth: {
+      type: bearer_token
+      bearer: {
+        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+      }
+    }
+  }) {
+    success
+    message
+  }
+}
+```
+
+### Protected Web Servers
+
+Use basic authentication for files hosted on web servers with HTTP Basic Auth:
+
+```graphql theme={null}
+mutation {
+  uploadAudio(input: {
+    url: "https://recordings.company.com/meeting-123.mp3"
+    title: "Client Call"
+    download_auth: {
+      type: basic_auth
+      basic: {
+        username: "api-user"
+        password: "secure-password"
+      }
+    }
+  }) {
+    success
+    message
+  }
+}
+```
+
+## Related Types
+
+* [BearerTokenAuthInput](/schema/input/bearer-token-auth-input) - Bearer token configuration
+* [BasicAuthInput](/schema/input/basic-auth-input) - Basic auth configuration
+* [DownloadAuthType](/schema/enum/download-auth-type) - Authentication type enum
+* [AudioUploadInput](/schema/input/audio-upload-input) - Parent input type
 
 
 # Role
@@ -6946,7 +11532,7 @@ Source: https://docs.fireflies.ai/schema/input/role
 
 Schema for Role
 
-<ParamField path="role" type="enum">
+<ParamField type="enum">
   Valid types for role are `admin` and `user`
 </ParamField>
 
@@ -6956,11 +11542,11 @@ Source: https://docs.fireflies.ai/schema/input/update-meeting-channel-input
 
 Schema for UpdateMeetingChannelInput
 
-<ParamField path="transcript_ids" type="[String!]!" required>
+<ParamField type="[String!]!">
   Array of Transcript IDs to update. Must contain 1–5 items.
 </ParamField>
 
-<ParamField path="channel_id" type="ID!" required>
+<ParamField type="ID!">
   The target Channel ID. A meeting can only belong to one channel; this mutation sets the meeting's channel to the specified value.
 </ParamField>
 
@@ -6970,11 +11556,11 @@ Source: https://docs.fireflies.ai/schema/input/update-meeting-privacy-input
 
 Schema for UpdateMeetingPrivacyInput
 
-<ParamField path="id" type="String" required>
+<ParamField type="String">
   The unique identifier of the meeting / transcript.
 </ParamField>
 
-<ParamField path="privacy" type="String" required>
+<ParamField type="String">
   The privacy level for the meeting. Must be one of the following values:
 
   * `link` - Anyone with the link can access the meeting
@@ -6985,18 +11571,32 @@ Schema for UpdateMeetingPrivacyInput
 </ParamField>
 
 
+# UpdateMeetingStateInput
+Source: https://docs.fireflies.ai/schema/input/update-meeting-state-input
+
+Schema for UpdateMeetingStateInput
+
+<ParamField type="ID!">
+  The ID of the live meeting to update state for
+</ParamField>
+
+<ParamField type="MeetingStateAction!">
+  The action to perform. Must be one of: `pause_recording` or `resume_recording`
+</ParamField>
+
+
 # UpdateMeetingTitleInput
 Source: https://docs.fireflies.ai/schema/input/update-meeting-title-input
 
 Schema for UpdateMeetingTitleInput
 
-<ParamField path="title" type="String" required>
+<ParamField type="String">
   The new title to be assigned to the meeting / transcript. The title must be a string between 5 and 250 characters long and should not contain any special characters.
 
   Min / max of 5 / 256 characters.
 </ParamField>
 
-<ParamField path="id" type="String" required>
+<ParamField type="String">
   The unique identifier of the meeting / transcript.
 </ParamField>
 
@@ -7080,7 +11680,7 @@ Schema for MeetingAnalytics
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Sentiments" icon="link" href="/schema/sentiments">
     Schema for Sentiments
   </Card>
@@ -7118,7 +11718,7 @@ Schema for MeetingAttendee
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="MeetingAttendance" icon="link" href="/schema/meeting-attendance">
     Schema for MeetingAttendance
   </Card>
@@ -7150,7 +11750,7 @@ Schema for MeetingInfo
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Transcript" icon="link" href="/schema/transcript">
     Schema for Transcript
   </Card>
@@ -7200,7 +11800,7 @@ Schema for Sentence
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="AIFilter" icon="link" href="/schema/aifilter">
     Schema for AIFilter
   </Card>
@@ -7216,21 +11816,21 @@ Source: https://docs.fireflies.ai/schema/sentiments
 
 Schema for Sentiments
 
-<ParamField path="negative_pct" type="Float" optional>
+<ParamField type="Float">
   Percentage of negative sentiment detected in the conversation.
 </ParamField>
 
-<ParamField path="neutral_pct" type="Float" optional>
+<ParamField type="Float">
   Percentage of neutral sentiment detected in the conversation.
 </ParamField>
 
-<ParamField path="positive_pct" type="Float" optional>
+<ParamField type="Float">
   Percentage of positive sentiment detected in the conversation.
 </ParamField>
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Sentence" icon="link" href="/schema/sentence">
     Schema for Sentence
   </Card>
@@ -7256,7 +11856,7 @@ Schema for Speaker
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Transcript" icon="link" href="/schema/transcript">
     Schema for Transcript
   </Card>
@@ -7336,7 +11936,7 @@ AI generated summary of the meeting.
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Summary Section" icon="link" href="/schema/summary-section">
     Schema for Summary Section
   </Card>
@@ -7362,7 +11962,7 @@ Extended sections of the summary included by customizing the summary from the da
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Summary" icon="link" href="/schema/summary">
     Schema for Summary
   </Card>
@@ -7423,6 +12023,10 @@ Schema for Transcript
 <ResponseField name="fireflies_users" type="[String]">
   An array of email addresses of only Fireflies users participants that have fireflies account that
   participated in the meeting
+</ResponseField>
+
+<ResponseField name="workspace_users" type="[String]">
+  An array of email addresses of Fireflies users who participated in the meeting and are also members of the requesting user's team/workspace. This is a subset of `fireflies_users` filtered to only include teammates.
 </ResponseField>
 
 <ResponseField name="duration" type="Number">
@@ -7506,7 +12110,7 @@ Schema for Transcript
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Summary" icon="link" href="/schema/summary">
     Schema for Summary
   </Card>
@@ -7527,7 +12131,7 @@ Schema for User
 </ResponseField>
 
 <ResponseField name="user_groups" type="[UserGroup]">
-  List of user groups the user belongs to. (See [User Groups](/schema/user-groups))
+  List of user groups the user belongs to. (See [UserGroups](/schema/user-groups))
 </ResponseField>
 
 <ResponseField name="email" type="String">
@@ -7565,9 +12169,9 @@ Schema for User
 
 ## Additional Resources
 
-<CardGroup cols={2}>
-  <Card title="User Groups" icon="link" href="/schema/user-groups">
-    Schema for User Groups
+<CardGroup>
+  <Card title="UserGroups" icon="link" href="/schema/user-groups">
+    Schema for UserGroups
   </Card>
 
   <Card title="Transcripts" icon="link" href="/graphql-api/query/transcripts">
@@ -7576,10 +12180,10 @@ Schema for User
 </CardGroup>
 
 
-# User Group Member
+# UserGroupMember
 Source: https://docs.fireflies.ai/schema/user-group-member
 
-Schema for User Group Member
+Schema for UserGroupMember
 
 <ResponseField name="user_id" type="String">
   Unique identifier for the user group member.
@@ -7599,9 +12203,9 @@ Schema for User Group Member
 
 ## Additional Resources
 
-<CardGroup cols={2}>
-  <Card title="User Groups" icon="link" href="/schema/user-groups">
-    Schema for User Groups
+<CardGroup>
+  <Card title="UserGroups" icon="link" href="/schema/user-groups">
+    Schema for UserGroups
   </Card>
 
   <Card title="User" icon="link" href="/schema/user">
@@ -7610,10 +12214,10 @@ Schema for User Group Member
 </CardGroup>
 
 
-# User Groups
+# UserGroups
 Source: https://docs.fireflies.ai/schema/user-groups
 
-Schema for User Groups
+Schema for UserGroups
 
 <ResponseField name="id" type="String">
   Unique ID for the user group
@@ -7627,19 +12231,19 @@ Schema for User Groups
   Unique identifier or handle for the user group.
 </ResponseField>
 
-<ResponseField name="members" type="[UserGroupMember]" nullable="true">
+<ResponseField name="members" type="[UserGroupMember]">
   List of members in the user group. See [UserGroupMember](/schema/user-group-member)
 </ResponseField>
 
 ## Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="User" icon="link" href="/schema/user">
     Schema for User
   </Card>
 
-  <Card title="User Group Member" icon="link" href="/schema/user-group-member">
-    Schema for User Group Member
+  <Card title="UserGroupMember" icon="link" href="/schema/user-group-member">
+    Schema for UserGroupMember
   </Card>
 </CardGroup>
 

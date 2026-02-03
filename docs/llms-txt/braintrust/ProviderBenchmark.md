@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/ProviderBenchmark.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Benchmarking inference providers
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/ProviderBenchmark/ProviderBenchmark.ipynb) by [Ankur Goyal](https://twitter.com/ankrgyl) on 2024-07-29</div>
@@ -283,7 +287,7 @@ const providers = [
 
 We'll run each provider in parallel, and within the provider, we'll run each model in parallel. This roughly assumes that rate limits are per model, not per provider.
 
-We're also running with a low concurrency level (3) to avoid overwhelming a provider and hitting rate limits. The [Braintrust proxy](https://www.braintrust.dev/docs/guides/proxy) handles rate limits for us, but they are reflected in the final task duration.
+We're also running with a low concurrency level (3) to avoid overwhelming a provider and hitting rate limits. The [Braintrust proxy](/deploy/ai-proxy) handles rate limits for us, but they are reflected in the final task duration.
 
 You'll also notice that we parse and track the provider as well as the model in each experiment's metadata. This allows us to do some rich analysis on the results.
 
@@ -417,8 +421,3 @@ If you enjoy performing this kind of analysis, we are [hiring](https://www.brain
 Happy evaluating!
 
 *Thanks to [Hamel](https://x.com/HamelHusain) for hosting the self-hosted model and feedback on drafts.*
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

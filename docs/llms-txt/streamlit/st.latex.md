@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/text/st.latex
+
 # st.latex
 
 Display mathematical expressions formatted as LaTeX.

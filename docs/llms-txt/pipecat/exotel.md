@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/serializers/exotel.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ExotelFrameSerializer
 
 > Serializer for Exotel WebSocket media streaming protocol
@@ -56,8 +60,3 @@ Before using ExotelFrameSerializer, you need:
 * **DTMF Handling**: Process touch-tone events from callers
 * **Indian Telephony**: Optimized for Indian voice infrastructure
 * **WebSocket Streaming**: Real-time audio streaming via WebSocket protocol
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

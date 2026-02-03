@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/events.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Events
 
 > Log important events to have the full picture of what happened in Plain.

@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/deploy/admin/firewall.md
 
-# Source: https://docs.livekit.io/home/cloud/firewall.md
-
-LiveKit docs › LiveKit Cloud › Configuring firewalls
+LiveKit docs › Administration › Configuring firewalls
 
 ---
 
@@ -128,7 +126,9 @@ If wildcard hostnames are not allowed by your firewall or security policy, the f
 Static IPs are currently available for the following regions:
 
 | Region | IP blocks |
-| US and India | `143.223.88.0/21` `161.115.160.0/19` |
+| EU | `143.223.88.0/21` `161.115.160.0/19` |
+| India | `143.223.88.0/21` `161.115.160.0/19` |
+| US | `143.223.88.0/21` `161.115.160.0/19` |
 
 > ℹ️ **Note**
 > 
@@ -138,10 +138,11 @@ Static IPs apply to the following services:
 
 - Realtime
 - SIP signalling and media
+- Webhooks
 
 ---
 
-This document was rendered at 2025-11-18T23:54:58.853Z.
-For the latest version of this document, see [https://docs.livekit.io/home/cloud/firewall.md](https://docs.livekit.io/home/cloud/firewall.md).
+This document was rendered at 2026-02-03T03:25:23.739Z.
+For the latest version of this document, see [https://docs.livekit.io/deploy/admin/firewall.md](https://docs.livekit.io/deploy/admin/firewall.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

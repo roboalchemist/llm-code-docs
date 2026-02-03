@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/production/automated-testing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CI/CD with Pinecone Local and GitHub Actions
 
 > Test Pinecone integration with CI/CD workflows.
@@ -41,7 +45,7 @@ Running code against Pinecone Local is just like running code against your Pinec
 
 * Pinecone Local does not authenticate client requests. API keys are ignored.
 
-* The latest version of Pinecone Local uses [Pinecone API version](/reference/api/versioning) `2025-01` and requires [Python SDK](/reference/python-sdk) `v6.x` or later, [Node.js SDK](/reference/node-sdk) `v5.x` or later, [Java SDK](/reference/java-sdk) `v4.x` or later, [Go SDK](/reference/go-sdk) `v3.x` or later, and [.NET SDK](/reference/dotnet-sdk) `v3.x` or later.
+* The latest version of Pinecone Local uses [Pinecone API version](/reference/api/versioning) `2025-01` and requires [Python SDK](/reference/sdks/python/overview) `v6.x` or later, [Node.js SDK](/reference/sdks/node/overview) `v5.x` or later, [Java SDK](/reference/sdks/java/overview) `v4.x` or later, [Go SDK](/reference/sdks/go/overview) `v3.x` or later, and [.NET SDK](/reference/sdks/dotnet/overview) `v3.x` or later.
 
 <Note>
   Be sure to review the [limitations](#limitations) of Pinecone Local before using it for development or testing.
@@ -1026,7 +1030,7 @@ The following example assumes that you have [started Pinecone Local without inde
   curl -X POST "http://$PINECONE_LOCAL_HOST/indexes" \
       -H "Accept: application/json" \
       -H "Content-Type: application/json" \
-      -H "X-Pinecone-API-Version: 2025-01" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -d '{
               "name": "dense-index",
               "vector_type": "dense",
@@ -1047,7 +1051,7 @@ The following example assumes that you have [started Pinecone Local without inde
   curl -X POST "http://$PINECONE_LOCAL_HOST/indexes" \
       -H "Accept: application/json" \
       -H "Content-Type: application/json" \
-      -H "X-Pinecone-API-Version: 2025-01" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -d '{
               "name": "sparse-index",
               "vector_type": "sparse",
@@ -1067,7 +1071,7 @@ The following example assumes that you have [started Pinecone Local without inde
   # Upsert records into the dense index
   curl -X POST "http://$DENSE_INDEX_HOST/vectors/upsert" \
       -H "Content-Type: application/json" \
-      -H "X-Pinecone-API-Version: 2025-01" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -d '{
               "namespace": "example-namespace",
               "vectors": [
@@ -1092,7 +1096,7 @@ The following example assumes that you have [started Pinecone Local without inde
   # Upsert records into the sparse index
   curl -X POST "http://$SPARSE_INDEX_HOST/vectors/upsert" \
       -H "Content-Type: application/json" \
-      -H "X-Pinecone-API-Version: 2025-01" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -d '{
               "namespace": "example-namespace",
               "vectors": [
@@ -1138,18 +1142,18 @@ The following example assumes that you have [started Pinecone Local without inde
   # Check the number of records in each index
   curl -X POST "http://$DENSE_INDEX_HOST/describe_index_stats" \
       -H "Content-Type: application/json" \
-      -H "X-Pinecone-API-Version: 2025-01" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -d '{}'
 
   curl -X POST "http://$SPARSE_INDEX_HOST/describe_index_stats" \
       -H "Content-Type: application/json" \
-      -H "X-Pinecone-API-Version: 2025-01" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -d '{}'
 
   # Query the dense index with a metadata filter
   curl "http://$DENSE_INDEX_HOST/query" \
       -H "Content-Type: application/json" \
-      -H "X-Pinecone-API-Version: 2025-01" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -d '{
               "vector": [3.0, -2.0],
               "filter": {"genre": {"$eq": "documentary"}},
@@ -1162,7 +1166,7 @@ The following example assumes that you have [started Pinecone Local without inde
   # Query the sparse index with a metadata filter
   curl "http://$SPARSE_INDEX_HOST/query" \
       -H "Content-Type: application/json" \
-      -H "X-Pinecone-API-Version: 2025-01" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -d '{
               "sparseVector": {
                   "values": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
@@ -1177,10 +1181,10 @@ The following example assumes that you have [started Pinecone Local without inde
 
   # Delete the index
   curl -X DELETE "http://$PINECONE_LOCAL_HOST/indexes/dense-index" \
-      -H "X-Pinecone-API-Version: 2025-01"
+      -H "X-Pinecone-Api-Version: 2025-10"
 
   curl -X DELETE "http://$PINECONE_LOCAL_HOST/indexes/sparse-index" \
-      -H "X-Pinecone-API-Version: 2025-01"
+      -H "X-Pinecone-Api-Version: 2025-10"
   ```
 </CodeGroup>
 

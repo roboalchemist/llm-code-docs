@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/patch-workflow.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update Agent (PATCH)
 
 Partially update an Agent by creating a new version with merged changes. This endpoint allows you to modify specific nodes without resending the entire configuration.
@@ -512,7 +516,3 @@ components:
         - right_config
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

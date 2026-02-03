@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/quickstart/nuxt.md
 
-# Source: https://docs.convex.dev/client/vue/nuxt.md
-
-# Source: https://docs.convex.dev/quickstart/nuxt.md
-
 # Nuxt Quickstart
 
 Learn how to query data from Convex in a Nuxt app.

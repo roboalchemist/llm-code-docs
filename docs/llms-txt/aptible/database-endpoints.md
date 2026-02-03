@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/managed-databases/connecting-databases/database-endpoints.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Database Endpoints
 
 <img src="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5eac51b-database-endpoints-basic.png?fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=8165135c3b4463b1f6202053c9cae23e" alt="Image" data-og-width="1280" width="1280" data-og-height="720" height="720" data-path="images/5eac51b-database-endpoints-basic.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5eac51b-database-endpoints-basic.png?w=280&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=d81fb821c318e4d2da7bea968d49ed03 280w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5eac51b-database-endpoints-basic.png?w=560&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=a2f181ad5bb3fbc97f49513061161633 560w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5eac51b-database-endpoints-basic.png?w=840&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=41abc094e86815ce19431a360fd3f51e 840w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5eac51b-database-endpoints-basic.png?w=1100&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=9f4a8d14e9cb65f3a478a0efefca8eff 1100w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5eac51b-database-endpoints-basic.png?w=1650&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=5d026146ef483bb1f68b721c5721e9e8 1650w, https://mintcdn.com/aptible/MtH_goy23rOUOZd7/images/5eac51b-database-endpoints-basic.png?w=2500&fit=max&auto=format&n=MtH_goy23rOUOZd7&q=85&s=a02836b1d8047e1d043ff24c9c25560e 2500w" />

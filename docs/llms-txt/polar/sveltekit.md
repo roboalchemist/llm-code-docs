@@ -1,19 +1,52 @@
 # Source: https://polar.sh/docs/integrate/sdk/adapters/sveltekit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sveltekit
 
 > Payments and Checkouts made dead simple with Sveltekit
 
-```bash  theme={null}
-pnpm install @polar-sh/sveltekit zod
-```
+## Examples
+
+* [With SvelteKit](https://github.com/polarsource/examples/tree/main/with-sveltekit)
+
+## Installation
+
+Install the required Polar packages using the following command:
+
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install zod @polar-sh/sveltekit
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add zod @polar-sh/sveltekit
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add zod @polar-sh/sveltekit
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/sveltekit
+    ```
+  </Tab>
+</Tabs>
 
 ## Checkout
 
 Create a Checkout handler which takes care of redirections.
 
-```typescript  theme={null}
-// /api/checkout/+server.ts
+```typescript icon="square-js" src/routes/checkout/+server.ts theme={null}
 import { Checkout } from "@polar-sh/sveltekit";
 
 export const GET = Checkout({
@@ -40,15 +73,14 @@ Pass query params to this route.
 
 Create a customer portal where your customer can view orders and subscriptions.
 
-```typescript  theme={null}
-// /api/portal/+server.ts
+```typescript icon="square-js" src/routes/portal/+server.ts theme={null}
 import { CustomerPortal } from "@polar-sh/sveltekit";
 
 export const GET = CustomerPortal({
+  server: process.env.POLAR_MODE, // Use sandbox if you're testing Polar - omit the parameter or pass 'production' otherwise
   accessToken: process.env.POLAR_ACCESS_TOKEN,
-  getCustomerId: (event) => "", // Function to resolve a Polar Customer ID
   returnUrl: "https://myapp.com", // An optional URL which renders a back-button in the Customer Portal
-  server: "sandbox", // Use sandbox if you're testing Polar - omit the parameter or pass 'production' otherwise
+  getCustomerId: (event) => "", // Function to resolve a Polar Customer ID
 });
 ```
 
@@ -56,14 +88,14 @@ export const GET = CustomerPortal({
 
 A simple utility which resolves incoming webhook payloads by signing the webhook secret properly.
 
-```typescript  theme={null}
-// api/webhook/polar/+server.ts
+```typescript icon="square-js" src/routes/api/webhooks/polar/+server.ts theme={null}
 import { Webhooks } from "@polar-sh/sveltekit";
 
 export const POST = Webhooks({
-  webhookSecret: process.env.POLAR_WEBHOOK_SECRET!,
+  webhookSecret: process.env.POLAR_WEBHOOK_SECRET,
   onPayload: async (payload) => {
     // Handle the payload
+    console.log(payload)
   },
 });
 ```

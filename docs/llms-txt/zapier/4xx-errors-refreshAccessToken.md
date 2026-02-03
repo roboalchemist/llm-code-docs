@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/news/2025/4xx-errors-refreshAccessToken.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # No more manual handling of 4xx errors in refreshAccessToken
 
 > We now automatically handle 4xx error responses when refreshing OAuth2 access tokens.

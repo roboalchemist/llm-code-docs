@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/general-settings/visibility.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Visibility
 
 > A guide on how to make your chatbot public or private.

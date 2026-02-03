@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/assistant/evaluate-answers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluate answers
 
 > Measure assistant response quality with LLM-based evaluation.

@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xrange.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xrange.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # XRANGE
 
@@ -26,44 +12,44 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
-  The key to of the stream.
+<ParamField body="key" type="str" required>
+  The key of the stream.
 </ParamField>
 
-<ParamField body="start" type="string" required>
-  The stream entry ID to start from.
+<ParamField body="start" type="str" default="-">
+  The stream entry ID to start from. Use "-" for the first available ID.
 </ParamField>
 
-<ParamField body="end" type="string" required>
-  The stream entry ID to end at.
+<ParamField body="end" type="str" default="+">
+  The stream entry ID to end at. Use "+" for the last available ID.
 </ParamField>
 
-<ParamField body="count" type="number">
+<ParamField body="count" type="int">
   The maximum number of entries to return.
 </ParamField>
 
 ## Response
 
-<ResponseField type="Record<streamId, Record<field, value>>">
-  An object of stream entries, keyed by their stream ID
+<ResponseField type="List[Tuple[str, List[str]]]">
+  A list of stream entries, where each entry is a tuple containing the stream ID and its associated fields and values.
 </ResponseField>
 
 <RequestExample>
-  ```ts All entries theme={"system"}
-  const result = await redis.xrange("mystream", "-", "+");
+  ```py All entries theme={"system"}
+  result = redis.xrange("mystream", "-", "+")
   ```
 
-  ```ts Range with specific IDs theme={"system"}
-  const result = await redis.xrange("mystream", "1548149259438-0", "1548149259438-5");
+  ```py Range with specific IDs theme={"system"}
+  result = redis.xrange("mystream", "1548149259438-0", "1548149259438-5")
   ```
 
-  ```ts Limited count theme={"system"}
-  const result = await redis.xrange("mystream", "-", "+", 10);
+  ```py Limited count theme={"system"}
+  result = redis.xrange("mystream", "-", "+", count=10)
   ```
 </RequestExample>
 
 <ResponseExample>
-  ```ts  theme={"system"}
+  ```py  theme={"system"}
   {
     "1548149259438-0": {
       "field1": "value1",

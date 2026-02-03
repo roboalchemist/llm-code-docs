@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/transactional/attachments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Attachments
 
 > How to send attachments with your transactional email.
@@ -47,5 +51,5 @@ When you send this payload, the recipient will receive an email with the ICS fil
 
 ## Limitations
 
-* The total size of the payload must be less than 4MB
+* The total size of the JSON request body must be less than 4 MB. Keep in mind that attachments are base64 encoded, which increases file size by \~33%.
 * Attachments are not generally available. Please [contact us](mailto:help@loops.so) if you need this feature enabled on your account.

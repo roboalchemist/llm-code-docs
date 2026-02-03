@@ -1,6 +1,6 @@
 # Source: https://rspack.dev/blog/rspack-next-partner.md
 
-*April 10, 2025*
+_April 10, 2025_
 
 # Rspack joins the Next.js ecosystem
 
@@ -40,15 +40,15 @@ We have **experimentally ported the theses plugins to Rust**, which dramatically
 
 The situation is much more promising:
 
-* **Development Mode**: 2x faster than webpack
-* **Production Mode**: 1.5x faster than webpack
+- **Development Mode**: 2x faster than webpack
+- **Production Mode**: 1.5x faster than webpack
 
 Users deeply integrated into the webpack ecosystem will find migration easier.
 
 There're some known bottlenecks which limit further performance improvement(like huge Rust-JavaScript communication overhead, slower [output file tracing](https://nextjs.org/docs/pages/api-reference/config/next-config-js/output#how-it-works) implementation) which can be solved in the future, with expected improvements, we foresee:
 
-* **5x faster builds and HMR in development**
-* **3x faster production builds**
+- **5x faster builds and HMR in development**
+- **3x faster production builds**
 
 ## Frequently asked questions
 
@@ -68,9 +68,9 @@ Rspack doesn't replace Turbopack. It's an alternative solution for those with ex
 
 As of now, next-rspack passes around 96% of integration tests, and progress can be monitored on [arewerspackyet](https://www.arewerspackyet.com/).
 
-* Some edge cases and advanced features may still require workarounds or additional support. Let us know how it went in the [feedback discussion](https://github.com/vercel/next.js/discussions/77800), even when you don't run into problems.
-* Due to the current plugin implementation, the performance of the App Router is still suboptimal and there's still plenty of room for performance improvement.
-* Since Rspack is not 100% compatible with webpack's API, some of your webpack plugins may not work smoothly on Rspack. Let us know if you have compatibility problems.
+- Some edge cases and advanced features may still require workarounds or additional support. Let us know how it went in the [feedback discussion](https://github.com/vercel/next.js/discussions/77800), even when you don't run into problems.
+- Due to the current plugin implementation, the performance of the App Router is still suboptimal and there's still plenty of room for performance improvement.
+- Since Rspack is not 100% compatible with webpack's API, some of your webpack plugins may not work smoothly on Rspack. Let us know if you have compatibility problems.
 
 ### How can you help?
 
@@ -78,12 +78,12 @@ Try out next-rspack, report issues, contribute code or docs, and join the commun
 
 ## Future plans
 
-* **Increase Test Coverage**: We aim to raise our test coverage from the current 96% to nearly 100% in the next quarter.
-* **Enhance Performance**: We'll explore deeper integration with Next.js through native plugins to improve build performance.
-* **Iterate Based on User Feedback**: Continue supporting more community plugins from the Next.js ecosystem.
-* **Improve Integration Workflow**: Establish a more robust CI/CD pipeline between Rspack and Next.js to ensure the stability and reliability of next-rspack support.
-* **Better RSC Support**: Turbopack’s unified module graph unlocks faster and simpler RSC implementation. Rspack will deliver a similar API to bring first-class, high-performance RSC support to the ecosystem.
-* **Module Federation Support**: We are discussing with Next.js team about improved support of Module Federation.
+- **Increase Test Coverage**: We aim to raise our test coverage from the current 96% to nearly 100% in the next quarter.
+- **Enhance Performance**: We'll explore deeper integration with Next.js through native plugins to improve build performance.
+- **Iterate Based on User Feedback**: Continue supporting more community plugins from the Next.js ecosystem.
+- **Improve Integration Workflow**: Establish a more robust CI/CD pipeline between Rspack and Next.js to ensure the stability and reliability of next-rspack support.
+- **Better RSC Support**: Turbopack’s unified module graph unlocks faster and simpler RSC implementation. Rspack will deliver a similar API to bring first-class, high-performance RSC support to the ecosystem.
+- **Module Federation Support**: We are discussing with Next.js team about improved support of Module Federation.
 
 Through 2024, stability and artifact integrity were a primary focus for Rspack. In 2025 we are focusing more on speed opportunities and broad ecosystem.
 

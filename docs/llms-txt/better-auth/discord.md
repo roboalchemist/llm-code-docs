@@ -4,11 +4,7 @@
 
 Discord provider setup and usage.
 
-***
 
-title: Discord
-description: Discord provider setup and usage.
-----------------------------------------------
 
 <Steps>
   <Step>

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/eu-ai-act/
+
 # EU AI Act
 
 The EU Artificial Intelligence Act (AI Act) is the world's first comprehensive legal framework specifically regulating artificial intelligence systems. Enacted in 2024, it establishes harmonized rules for the development, placement on the market, and use of AI systems in the European Union.

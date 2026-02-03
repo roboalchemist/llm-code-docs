@@ -121,7 +121,7 @@ Source: https://smartcar.com/docs/api-reference/api-sdks
 
 Our backend SDKs simplify the process of making calls to our Vehicle API.
 
-<Snippet file="sdks/api-sdk-card-group.mdx" />
+<Snippet />
 
 <br />
 
@@ -139,12 +139,12 @@ Returns a list of the permissions that have been granted to your application in 
 
 ## Request
 
-<ParamField path="id" type="string" required>
+<ParamField type="string">
   The vehicle id.
 </ParamField>
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/application-permissions.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -188,7 +188,7 @@ Source: https://smartcar.com/docs/api-reference/audi/get-charge
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/charge
 Returns all charging related data for an Audi vehicle.
 
-<Snippet file="api-reference/note-bse-audi.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -235,7 +235,7 @@ Returns all charging related data for an Audi vehicle.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 ## Response
 
@@ -312,27 +312,27 @@ To interact with the Smartcar API, you will need to exchange your authorization 
 
 **Headers**
 
-<Snippet file="header-basic-auth.mdx" />
+<Snippet />
 
-<ParamField header="Content-Type" type="string" initialValue="application/x-www-form-urlencoded" required>
+<ParamField type="string">
   Must be set to `application/x-www-form-urlencoded`, matching the format of the request body.
 </ParamField>
 
-<ParamField header="User-Agent" type="string" required>
+<ParamField type="string">
   A valid HTTP User Agent value. This value is typically included in the HTTP requests by the client that is making the request. You usually don't have to set this manually.
 </ParamField>
 
 **Body**
 
-<ParamField query="code" type="string" required>
+<ParamField type="string">
   The authorization code received in the handle response step.
 </ParamField>
 
-<ParamField query="grant_type" type="string" required>
+<ParamField type="string">
   This value must be set to `authorization_code`
 </ParamField>
 
-<ParamField query="redirect_uri" type="string" required>
+<ParamField type="string">
   The `redirect_uri` provided in the redirect to Connect step. This value is checked to match the URI sent when the user was directed to Connect.
 </ParamField>
 
@@ -368,7 +368,7 @@ To interact with the Smartcar API, you will need to exchange your authorization 
 
 ## Response
 
-<Snippet file="response-token-pair.mdx" />
+<Snippet />
 
 
 # Overview
@@ -403,7 +403,7 @@ To manage this, we recommend using the [Smartcar User Id](/api-reference/user) t
 will also allow multiple users to connect to vehicles on the same account.
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/connect/StandardFlowDBDiagram.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=6ed076cedb2755b7ae11daa09475f614" data-og-width="850" width="850" data-og-height="324" height="324" data-path="images/connect/StandardFlowDBDiagram.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/connect/StandardFlowDBDiagram.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=215549f52afa07960e4e79170e2ef433 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/connect/StandardFlowDBDiagram.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=1ef28f61d60c6e497951fe1699b5cd92 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/connect/StandardFlowDBDiagram.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=29d52ce9358bfd402e377322317b3f5d 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/connect/StandardFlowDBDiagram.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=cfb0b8f36d52241651c4c36624f6926e 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/connect/StandardFlowDBDiagram.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=d0910d5555b6a82c37b46e9e1b279ccb 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/connect/StandardFlowDBDiagram.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=0dca721dfb26cc28dc307e25873fa8fe 2500w" />
+  <img />
 </Frame>
 
 ### Single Select Connect Flow
@@ -413,7 +413,7 @@ This means that if a user connects multiple vehicles under the same connected se
 to its own set of tokens.
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/connect/ConnectMatchDBDiagram.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=0543e3075f012e372b8a5328509d5161" data-og-width="850" width="850" data-og-height="551" height="551" data-path="images/connect/ConnectMatchDBDiagram.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/connect/ConnectMatchDBDiagram.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=3c1d425f8b4449673fdda5e2761ce74d 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/connect/ConnectMatchDBDiagram.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=17c9fb393808fb58c070ac138cd89a5e 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/connect/ConnectMatchDBDiagram.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=1529833e0983bf57768dd22917dbbea5 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/connect/ConnectMatchDBDiagram.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=41a7223d2aef7827e14fdf1e77ca7da2 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/connect/ConnectMatchDBDiagram.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=0d75de09cc972859a9b71913cff846fb 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/connect/ConnectMatchDBDiagram.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=9519db1db5666638998cede5a393e47a 2500w" />
+  <img />
 </Frame>
 
 ## Token expiry
@@ -439,7 +439,7 @@ To avoid common 401 Authentication errors, please ensure you are **persisting bo
 Source: https://smartcar.com/docs/api-reference/authorization/refreshing-access-token
 
 POST https://auth.smartcar.com/oauth/token
-Your access token will expire **2 hours** after it is issued. When this happens, your application can retrieve a new one by using the corresponding `REFRESH_TOKEN` without requiring the user to re-authenticate.
+Your access token will expire **2 hours** after it is issued. When this happens, your application can retrieve a new one by using the corresponding `refresh_token` without requiring the user to re-authenticate.
 
 <Warning>
   A refresh token is invalidated 10 minutes after use. If your first attempt at refreshing tokens fails, ensure you retry within 10 minutes.
@@ -450,34 +450,34 @@ Your access token will expire **2 hours** after it is issued. When this happens,
 
 **Headers**
 
-<Snippet file="header-basic-auth.mdx" />
+<Snippet />
 
-<ParamField header="Content-Type" type="string" initialValue="application/x-www-form-urlencoded" required>
+<ParamField type="string">
   Must be set to `application/x-www-form-urlencoded`, matching the format of the request body.
 </ParamField>
 
-<ParamField header="User-Agent" type="string" required>
+<ParamField type="string">
   A valid HTTP User Agent value. This value is typically included in the HTTP requests by the client that is making the request. You usually don't have to set this manually.
 </ParamField>
 
 <RequestExample>
-  <Snippet file="authorization/code-group-token-refresh.mdx" />
+  <Snippet />
 </RequestExample>
 
 **Body**
 
-<ParamField query="grant_type" type="string" initialValue="refresh_token" required>
+<ParamField type="string">
   This value must be set to `refresh_token`
 </ParamField>
 
-<ParamField query="refresh_token" type="string" initialValue="3e565aed-d4b2-4296-9b4c-aec35825a6aa" required>
+<ParamField type="string">
   The refresh token received in the response with the access token from an [auth code exchange](/api-reference/authorization/auth-code-exchange)
   or prior token refresh.
 </ParamField>
 
 **Response**
 
-<Snippet file="response-token-pair.mdx" />
+<Snippet />
 
 
 # Batch
@@ -498,22 +498,22 @@ Returns a list of responses from multiple Smartcar `GET` endpoints, all combined
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 **Body**
 
-<ParamField body="requests" type="array" required>
+<ParamField type="array">
   An array of requests to make.
 
   <Expandable>
-    <ParamField body="path" type="string" required>
+    <ParamField type="string">
       The Smartcar endpoint to request data from.
     </ParamField>
   </Expandable>
 </ParamField>
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/batch.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -521,7 +521,7 @@ Returns a list of responses from multiple Smartcar `GET` endpoints, all combined
 <ResponseField name="responses" type="array">
   The responses from Smartcar.
 
-  <Expandable title="response" defaultOpen="true">
+  <Expandable title="response">
     <ResponseField name="headers" type="object">
       The headers for this response.
 
@@ -600,16 +600,16 @@ Returns data associated with completed charging sessions for a vehicle. Limited 
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 **Query**
 
-<ParamField query="startDate">
+<ParamField>
   Date of the first record to return in YYYY-MM-DD format.
   Defaults to 30 days prior  or when the owner first granted your application access, whichever is shorter.
 </ParamField>
 
-<ParamField query="endDate">
+<ParamField>
   Date of the final record to return in YYYY-MM-DD format. Defaults to the date of the request.
 </ParamField>
 
@@ -618,7 +618,7 @@ Returns data associated with completed charging sessions for a vehicle. Limited 
 <ResponseField name="records" type="[object]">
   An array of charge records for the vehicle.
 
-  <Expandable defaultOpen="true">
+  <Expandable>
     <ResponseField name="chargeStart" type="string">
       The start date of the charging record, formatted in ISO 8601 standard
     </ResponseField>
@@ -631,7 +631,7 @@ Returns data associated with completed charging sessions for a vehicle. Limited 
       Location of the charge session.
     </ResponseField>
 
-    <ResponseField name="energy" type="number" default="kWh">
+    <ResponseField name="energy" type="number">
       The amount of energy consumed during the charging session.
     </ResponseField>
 
@@ -725,15 +725,15 @@ Compatibility by region and make allows developers to query the latest version o
 
 **Headers**
 
-<Snippet file="header-basic-auth.mdx" />
+<Snippet />
 
 **Query**
 
-<ParamField query="region" type="string" required>
+<ParamField type="string">
   One of the following regions: `US`, `CA` or `EUROPE`
 </ParamField>
 
-<ParamField query="type" type="string">
+<ParamField type="string">
   Queries for all engine types if none are specified.
 
   <Expandable>
@@ -747,11 +747,11 @@ Compatibility by region and make allows developers to query the latest version o
   </Expandable>
 </ParamField>
 
-<ParamField query="make" type="string">
+<ParamField type="string">
   A space-separated list of [makes](/api-reference/makes). This field is optional. If no make is specified, all makes will be returned.
 </ParamField>
 
-<ParamField query="scope" type="string">
+<ParamField type="string">
   A space-separated list of [permissions](/api-reference/permissions).
   Queries for all permissions if none are specified.
 </ParamField>
@@ -914,19 +914,19 @@ This endpoint only supports checking capabilities for vehicles sold in the Unite
 
 **Headers**
 
-<Snippet file="header-basic-auth.mdx" />
+<Snippet />
 
 **Parameters**
 
-<ParamField query="vin" type="string" required>
+<ParamField type="string">
   The VIN (Vehicle Identification Number) of the vehicle.
 </ParamField>
 
-<ParamField query="scope" type="string" required>
+<ParamField type="string">
   A space-separated list of permissions.
 </ParamField>
 
-<ParamField query="country" default="US" type="string">
+<ParamField type="string">
   An optional country code string according to ISO 3166-1 alpha-2.
 </ParamField>
 
@@ -1043,16 +1043,16 @@ Lock or unlock the vehicle.
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 **Body**
 
-<ParamField body="action" type="string" initialValue="UNLOCK" required>
+<ParamField type="string">
   `LOCK` or `UNLOCK` the vehicle’s doors.
 </ParamField>
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/control-lock-unlock.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -1093,16 +1093,16 @@ Start or stop the vehicle charging.
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 **Body**
 
-<ParamField body="action" type="string" initialValue="START" required>
+<ParamField type="string">
   `START` or `STOP` the vehicle charging.
 </ParamField>
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/control-charge.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -1164,10 +1164,10 @@ Returns the state of charge and the remaining range of an electric vehicle's hig
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/get-battery-level.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -1176,7 +1176,7 @@ Returns the state of charge and the remaining range of an electric vehicle's hig
   The EV's state of charge as a percentage.
 </ResponseField>
 
-<ResponseField name="range" type="number" default="kilometers">
+<ResponseField name="range" type="number">
   The estimated remaining distance the vehicle can travel powered by its high voltage battery.
 </ResponseField>
 
@@ -1208,10 +1208,10 @@ Returns the charge limit configuration for the vehicle.
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/get-charge-limit.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -1236,7 +1236,7 @@ error if the OEM is unable to provide a charge limit unless the vehicle is plugg
 **Ford and Lincoln**<br />
 If a vehicle starts charging as a result of a [start charge](/api-reference/evs/control-charge) request, this endpoint will always return `1` if the charging location has a schedule in place.
 
-For the vehicle to respect its charge limit, please set one along with preferred charge times or clear the schedule through through the [charge schedule by location](/api-reference/ford/set-charge-schedule-by-location) endpoint.
+For the vehicle to respect its charge limit, please set one along with preferred charge times or clear the schedule through the [charge schedule by location](/api-reference/ford/set-charge-schedule-by-location) endpoint.
 
 **BMW and MINI**<br />
 Vehicle needs to be on OS Version 8+
@@ -1260,10 +1260,10 @@ Returns the charge status for the vehicle.
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/get-charge-status.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -1312,17 +1312,17 @@ Set the  charge limit of an electric vehicle.
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 **Body**
 
-<ParamField body="limit" type="number" initialValue="0.7" required>
+<ParamField type="number">
   The level at which the vehicle should stop charging and be considered fully charged.
   Cannot be less than `0.5`, or greater than `1`.
 </ParamField>
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/set-charge-limit.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -1366,7 +1366,7 @@ Source: https://smartcar.com/docs/api-reference/ford/get-charge-schedule-by-loca
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/charge/schedule_by_location
 Returns all saved charging locations for a vehicle and their associated charging limits, schedules and configurations.
 
-<Snippet file="api-reference/note-bse-ford.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -1376,7 +1376,7 @@ Returns all saved charging locations for a vehicle and their associated charging
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 <RequestExample>
   ```bash cURL theme={null}
@@ -1509,7 +1509,7 @@ Returns all saved charging locations for a vehicle and their associated charging
 
 <AccordionGroup>
   <Accordion title="Vehicle will charge at any time">
-    ```json  theme={null}
+    ```json theme={null}
     {
       "chargingLocations": [
         {
@@ -1529,7 +1529,7 @@ Returns all saved charging locations for a vehicle and their associated charging
   </Accordion>
 
   <Accordion title="Vehicle has a schedule for Weekdays only">
-    ```json  theme={null}
+    ```json theme={null}
     {
       "chargingLocations": [
         {
@@ -1554,7 +1554,7 @@ Returns all saved charging locations for a vehicle and their associated charging
   </Accordion>
 
   <Accordion title="Vehicle has a schedule for Weekends only">
-    ```json  theme={null}
+    ```json theme={null}
     {
         "chargingLocation" : {   
             "chargeLimit": 0.9, 
@@ -1580,7 +1580,7 @@ Source: https://smartcar.com/docs/api-reference/ford/set-charge-schedule-by-loca
 PUT https://api.smartcar.com/v2.0/vehicles/{id}/{make}/charge/schedule_by_location
 Set all schedules for the specified charging location.
 
-<Snippet file="api-reference/note-bse-ford.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -1596,53 +1596,53 @@ Set all schedules for the specified charging location.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 **Query**
 
-<ParamField query="longitude" type="number" required>
+<ParamField type="number">
   The longitude of a charging location from [`GET Charge Schedule by Location`](/api-reference/ford/get-charge-schedule-by-location)
 </ParamField>
 
-<ParamField query="latitude" type="number" required>
+<ParamField type="number">
   The latitude of a charging location from [`GET Charge Schedule by Location`](/api-reference/ford/get-charge-schedule-by-location)
 </ParamField>
 
 **Body**
 
-<ParamField body="chargingLocation" type="object" required>
-  <Expandable defaultOpen="true" title="chargingLocation">
-    <ParamField body="chargeLimit" type="number" required>
+<ParamField type="object">
+  <Expandable title="chargingLocation">
+    <ParamField type="number">
       The maximum charge limit for the vehicle at the location as a percent between `0.5` and `1`.
     </ParamField>
 
-    <ParamField body="chargingWindows" type="object" required>
+    <ParamField type="object">
       The weekday and weekend charging schedules for the vehicle at the location.
 
-      <Expandable defaultOpen="true">
-        <ParamField body="weekday" type="[object]" required>
+      <Expandable>
+        <ParamField type="[object]">
           The charging schedule for the vehicle on weekdays (Monday - Friday).
 
-          <Expandable defaultOpen="true">
-            <ParamField body="start" type="string" required>
+          <Expandable>
+            <ParamField type="string">
               The exact hour a vehicle should start charging in HH:00 e.g. 17:00.
             </ParamField>
 
-            <ParamField body="end" type="string" required>
+            <ParamField type="string">
               The exact hour a vehicle should stop charging in HH:00 e.g. 21:00.
             </ParamField>
           </Expandable>
         </ParamField>
 
-        <ParamField body="weekend" type="[object]" required>
+        <ParamField type="[object]">
           The charging schedule for the vehicle on weekends (Saturday - Sunday).
 
-          <Expandable defaultOpen="true">
-            <ParamField body="start" type="string" required>
+          <Expandable>
+            <ParamField type="string">
               The exact hour a vehicle should start charging in HH:00 e.g. 17:00.
             </ParamField>
 
-            <ParamField body="end" type="string" required>
+            <ParamField type="string">
               The exact hour a vehicle should stop charging in HH:00 e.g. 21:00.
             </ParamField>
           </Expandable>
@@ -1792,7 +1792,7 @@ Set all schedules for the specified charging location.
 
 <AccordionGroup>
   <Accordion title="Set a schedule for Weekdays and Weekends">
-    ```json  theme={null}
+    ```json theme={null}
     {
       "chargingLocation" : {   
           "chargeLimit": 0.9, 
@@ -1816,7 +1816,7 @@ Set all schedules for the specified charging location.
   </Accordion>
 
   <Accordion title="Set a schedule for only Weekdays">
-    ```json  theme={null}
+    ```json theme={null}
     {
       "chargingLocation" : {   
           "chargeLimit": 0.9, 
@@ -1835,7 +1835,7 @@ Set all schedules for the specified charging location.
   </Accordion>
 
   <Accordion title="Set a schedule for only Weekends">
-    ```json  theme={null}
+    ```json theme={null}
     {
         "chargingLocation" : {   
             "chargeLimit": 0.9, 
@@ -1854,7 +1854,7 @@ Set all schedules for the specified charging location.
   </Accordion>
 
   <Accordion title="Clear schedules">
-    ```json  theme={null}
+    ```json theme={null}
     {
         "chargingLocation" : {   
             "chargeLimit": 0.9, 
@@ -1911,7 +1911,7 @@ Provides a list of active Diagnostic Trouble Codes (DTCs) reported by the vehicl
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 ## Response
 
@@ -1967,10 +1967,10 @@ Returns the remaining life span of a vehicle’s engine oil.
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/get-engine-oil-life.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -2012,10 +2012,10 @@ Returns the status of the fuel remaining in the vehicle’s fuel tank.
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/get-fuel-tank.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -2024,11 +2024,11 @@ Returns the status of the fuel remaining in the vehicle’s fuel tank.
   The remaining level of fuel in the tank as a percentage.
 </ResponseField>
 
-<ResponseField name="amountRemaining" type="number | null" default="liters">
+<ResponseField name="amountRemaining" type="number | null">
   The amount of fuel in the tank.
 </ResponseField>
 
-<ResponseField name="range" type="number | null" default="kilometers">
+<ResponseField name="range" type="number | null">
   The estimated remaining distance the car can travel.
 </ResponseField>
 
@@ -2080,10 +2080,10 @@ Returns the vehicle's last known location.
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/get-location.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -2124,10 +2124,10 @@ Returns the lock status for a vehicle and the open status of its doors, windows,
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/get-lock-status.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -2271,7 +2271,7 @@ Returns a list of nominal rated battery capacities for a vehicle.
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 <RequestExample>
   ```bash cURL theme={null}
@@ -2287,7 +2287,7 @@ Returns a list of nominal rated battery capacities for a vehicle.
   An array of capacities Objects.
 
   <Expandable title="capacities">
-    <ResponseField name="capacity" type="number | null" default="kWh">
+    <ResponseField name="capacity" type="number | null">
       The rated nominal capacity for the vehicle's battery.
     </ResponseField>
 
@@ -2301,7 +2301,7 @@ Returns a list of nominal rated battery capacities for a vehicle.
 
 <ResponseField name="capacity" type="Object | null">
   <Expandable title="capacity">
-    <ResponseField name="nominal" type="number | null" default="kWh">
+    <ResponseField name="nominal" type="number | null">
       The rated nominal capacity for the vehicle's battery.
     </ResponseField>
 
@@ -2393,8 +2393,8 @@ Smartcar will sometimes return an `availableCapacities` object along side a Conn
 
 When you redirect a vehicle owner to this Smartcar Connect url, they can select the battery capacity of their vehicle for cases where the battery capacity cannot be accurately determined.
 
-<Frame caption="Battery capacity user selection in Connect">
-  <img width="600" src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity-connect.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=c961d991a12ec7159956c2c019c2c3d3" data-og-width="1557" data-og-height="844" data-path="images/changelog/battery-capacity-connect.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity-connect.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=e5adb5112b52ea9e44dfec0560a553c0 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity-connect.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=39d36e8ce845e2160e7b4c53f2fc3a8d 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity-connect.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=98e1670947a946171f6317d42ef64395 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity-connect.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=e18cbf7b80707eaaadfc77ae045e96ee 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity-connect.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=abd113f48a42da549583afb78a8cb640 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity-connect.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=548482aa480e985154dbcaef33171082 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 When a user selects an option, Smartcar will return this value with `USER_SELECTED` as the source.
@@ -2442,15 +2442,15 @@ Returns the vehicle’s last known odometer reading.
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/get-odometer.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
 
-<ResponseField name="distance" type="number" default="kilometers">
+<ResponseField name="distance" type="number">
   The current odometer of the vehicle.
 </ResponseField>
 
@@ -2518,7 +2518,7 @@ Retrieve service records tracked by the vehicle's dealer or manually added by th
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 ## Response
 
@@ -2661,7 +2661,7 @@ Provides a list of vehicle systems and their current health status. Currently su
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 ## Response
 
@@ -2726,27 +2726,27 @@ Returns the air pressure of each of the vehicle’s tires.
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/get-tire-pressure.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
 
-<ResponseField name="frontLeft" type="number" default="kilopascals">
+<ResponseField name="frontLeft" type="number">
   The current air pressure of the front left tire.
 </ResponseField>
 
-<ResponseField name="frontRight" type="number" default="kilopascals">
+<ResponseField name="frontRight" type="number">
   The current air pressure of the front right tire.
 </ResponseField>
 
-<ResponseField name="backLeft" type="number" default="kilopascals">
+<ResponseField name="backLeft" type="number">
   The current air pressure of the back left tire.
 </ResponseField>
 
-<ResponseField name="backRight" type="number" default="kilopascals">
+<ResponseField name="backRight" type="number">
   The current air pressure of the back right tire.
 </ResponseField>
 
@@ -2788,10 +2788,10 @@ Returns a single vehicle object, containing identifying information.
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/get-vehicle-info.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -2842,10 +2842,10 @@ Returns the vehicle’s manufacturer identifier.
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/get-vin.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -2879,16 +2879,16 @@ When the vehicle is charging, returns the date and time the vehicle expects to "
 
 ## Request
 
-<ParamField path="id" type="string" required>
+<ParamField type="string">
   `vehicle_id` of the vehicle you are making the request to.
 </ParamField>
 
-<ParamField path="make" type="string" required>
+<ParamField type="string">
   The make to pass in the URL.
 </ParamField>
 
 <RequestExample>
-  <Snippet file="api-reference/bse/get-charge-completion-time.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -2922,10 +2922,10 @@ When the vehicle is plugged in, returns the charging voltage measured by the veh
 
 ## Request
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 <RequestExample>
-  <Snippet file="api-reference/bse/get-charge-voltmeter.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -2952,7 +2952,7 @@ Smartcar uses the following headers for requests and responses.
 
 ## Request
 
-<ParamField header="SC-Unit-System" type="string" default="metric">
+<ParamField type="string">
   Smartcar supports both `metric` and `imperial` unit systems of measurement.
 </ParamField>
 
@@ -3042,11 +3042,11 @@ This API is useful for improving user experience by verifying eligibility up fro
 
 ***
 
-<Card title="Starter app" icon="github-alt" href="https://github.com/smartcar/starter-app-react-node" horizontal="true">
+<Card title="Starter app" icon="github-alt" href="https://github.com/smartcar/starter-app-react-node">
   Easily connect a vehicle and make API requests using our starter app.
 </Card>
 
-<Card title="Postman" icon="rocket" href="https://www.postman.com/smartcar/smartcar-api/collection/fqmwehs/smartcar-api" horizontal="true">
+<Card title="Postman" icon="rocket" href="https://www.postman.com/smartcar/smartcar-api/collection/fqmwehs/smartcar-api">
   Get a feel for the API using our Postman collection.
 </Card>
 
@@ -3099,16 +3099,16 @@ Deletes all vehicle connections associated with a Smartcar user ID or a specific
 
 **Header**
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   In the format `Basic base64(default:{application_management_token})`. You can find your `application_management_token` under
   your Application Configuration in the Smartcar Dashboard.
 </ParamField>
 
 **Query**
 
-<ParamField query="user_id" type="string" />
+<ParamField type="string" />
 
-<ParamField query="vehicle_id" type="string" />
+<ParamField type="string" />
 
 You can delete connections in three ways:
 
@@ -3238,31 +3238,31 @@ Returns a paged list of all vehicles that are connected to the application assoc
 
 **Header**
 
-<ParamField header="Authorization" type="string" required>
+<ParamField type="string">
   In the format `Basic base64(default:{application_management_token})`. You can find your `application_management_token` under
   your Application Configuration in the Smartcar Dashboard.
 </ParamField>
 
 **Query**
 
-<ParamField query="limit" default="10" type="integer">
+<ParamField type="integer">
   Number of connections to return per page. `Max: 100`
 </ParamField>
 
-<ParamField query="cursor" type="string">
+<ParamField type="string">
   Used for accessing pages other than the first page. Each page returned has a cursor value
   that can be passed here to fetch the “next” page.
 </ParamField>
 
-<ParamField query="user_id" type="string">
+<ParamField type="string">
   Filter for connections created by the provider user ID.
 </ParamField>
 
-<ParamField query="vehicle_id" type="string">
+<ParamField type="string">
   Filter for connections to the provided vehicle ID.
 </ParamField>
 
-<ParamField query="mode" type="string">
+<ParamField type="string">
   Filter for connections by either `live`, `simulated`, or the deprecated `test` mode.
 </ParamField>
 
@@ -3397,10 +3397,10 @@ Returns the charging schedule of a vehicle. The response contains the start time
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 <RequestExample>
-  <Snippet file="api-reference/bse/get-charge-schedule.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -3460,23 +3460,23 @@ Sets the charging schedule for a vehicle.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 **Body**
 
-<ParamField body="chargeSchedules" type="array" required>
+<ParamField type="array">
   An array of charge schedules. A maximum of 3 schedules can be set.
 
-  <Expandable defaultOpen="true">
-    <ParamField body="start" type="string" required>
+  <Expandable>
+    <ParamField type="string">
       HH:mm in UTC for a schedule start time.
     </ParamField>
 
-    <ParamField body="end" type="string" required>
+    <ParamField type="string">
       HH:mm in UTC for a schedule start time.
     </ParamField>
 
-    <ParamField body="days" type="[days]" required>
+    <ParamField type="[days]">
       An array of days for the schedule to be applied.
       Options: `MONDAY` `TUESDAY` `WEDNESDAY` `THURSDAY` `FRIDAY` `SATURDAY` `SUNDAY`
     </ParamField>
@@ -3700,20 +3700,20 @@ Send destination coordinates to the vehicle's navigation system.
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
 **Body**
 
-<ParamField body="latitude" type="number" initialValue="51.5007" required>
+<ParamField type="number">
   The latitude of the location you wish to set the vehicle's navigation to.
 </ParamField>
 
-<ParamField body="longitude" type="number" initialValue="0.1246" required>
+<ParamField type="number">
   The longitude of the location you wish to set the vehicle's navigation to.
 </ParamField>
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/send-destination-to-vehicle.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -3747,13 +3747,13 @@ Signal code: `charge-amperage`
 
 Current amperage flowing to the electric vehicle during a charging session, measured in amps.
 
-<ParamField path="unit" type="string" required={false} />
+<ParamField type="string" />
 
-<ParamField path="value" type="number" required={false} />
+<ParamField type="number" />
 
 ```json Example theme={null}
 {
-  "unit": "amps",
+  "unit": "ampere",
   "value": 32
 }
 ```
@@ -3764,13 +3764,13 @@ Signal code: `charge-amperagemax`
 
 The maximum available amps available to charge.
 
-<ParamField path="unit" type="string" required={false} />
+<ParamField type="string" />
 
-<ParamField path="value" type="number" required={false} />
+<ParamField type="number" />
 
 ```json Example theme={null}
 {
-  "unit": "amps",
+  "unit": "ampere",
   "value": 48
 }
 ```
@@ -3781,13 +3781,13 @@ Signal code: `charge-amperagerequested`
 
 The requested amps to charge the vehicle.
 
-<ParamField path="unit" type="string" required={false} />
+<ParamField type="string" />
 
-<ParamField path="value" type="number" required={false} />
+<ParamField type="number" />
 
 ```json Example theme={null}
 {
-  "unit": "amps",
+  "unit": "ampere",
   "value": 32
 }
 ```
@@ -3798,53 +3798,53 @@ Signal code: `charge-chargelimits`
 
 Object containing the default (global) charge limit configuration and configurations based on location, and charge connector type
 
-<ParamField path="values" type="array" required={false}>
+<ParamField type="array">
   Array of charge limit configurations, each representing a different context (global, location-based, or connector-based).
 </ParamField>
 
 <Expandable title="Array item properties">
-  <ParamField path="type" type="string" required={false}>
+  <ParamField type="string">
     The type of charge limit configuration. "global" applies universally, "location" is specific to a location, and "connector" is specific to a charging connector type.
 
     **Possible values:** `GLOBAL`, `LOCATION`, `CONNECTOR`
   </ParamField>
 
-  <ParamField path="limit" type="number" required={false}>
+  <ParamField type="number">
     The maximum state of charge (SoC) limit configured for this context, expressed as a percentage (0-100).
   </ParamField>
 
-  <ParamField path="condition" type="object" required={false}>
+  <ParamField type="object">
     Additional context for location or connector-based charge limits. Null for global configurations.
   </ParamField>
 
   <Expandable title="condition properties">
-    <ParamField path="name" type="string" required={false}>
+    <ParamField type="string">
       Name of the location or charging station where this limit applies.
     </ParamField>
 
-    <ParamField path="address" type="string" required={false}>
+    <ParamField type="string">
       Street address of the location where this limit applies.
     </ParamField>
 
-    <ParamField path="latitude" type="number" required={false}>
+    <ParamField type="number">
       Geographic latitude coordinate of the location where this limit applies.
     </ParamField>
 
-    <ParamField path="longitude" type="number" required={false}>
+    <ParamField type="number">
       Geographic longitude coordinate of the location where this limit applies.
     </ParamField>
 
-    <ParamField path="connectorType" type="string" required={false}>
+    <ParamField type="string">
       Type of charging connector where this limit applies (only used when type is "connector").
     </ParamField>
   </Expandable>
 </Expandable>
 
-<ParamField path="activeLimit" type="number" required={false}>
+<ParamField type="number">
   Maximum state of charge (SoC) limit currently being applied to the vehicle, expressed as a percentage (0-100). This field will contain a numeric value when the vehicle is plugged in and charging, indicating which of the configured charge limits is currently active. When the vehicle is not plugged in or the active limit cannot be determined, this field will be null.
 </ParamField>
 
-<ParamField path="unit" type="string" required={false}>
+<ParamField type="string">
   The unit of measurement for the charge limits.
 </ParamField>
 
@@ -3878,7 +3878,7 @@ Signal code: `charge-chargeportstatuscolor`
 
 Current status indicator color displayed on or around the vehicle's charging port.
 
-<ParamField path="value" type="string" required={false}>
+<ParamField type="string">
   **Possible values:** `GREEN`, `BLUE`, `ORANGE`, `ETC`
 </ParamField>
 
@@ -3894,13 +3894,13 @@ Signal code: `charge-chargerate`
 
 Current rate at which range is being added to the vehicle during an active charging session
 
-<ParamField path="unit" type="string" required={false} />
+<ParamField type="string" />
 
-<ParamField path="value" type="number" required={false} />
+<ParamField type="number" />
 
 ```json Example theme={null}
 {
-  "unit": "miles_per_hour",
+  "unit": "km/h",
   "value": 25
 }
 ```
@@ -3911,80 +3911,80 @@ Signal code: `charge-chargerecords`
 
 Collection of historical charging session data stored by the vehicle.
 
-<ParamField path="values" type="array" required={true}>
+<ParamField type="array">
   Array of individual charging session records, each representing a completed or ongoing charging event.
 </ParamField>
 
 <Expandable title="Array item properties">
-  <ParamField path="id" type="string" required={false}>
+  <ParamField type="string">
     Unique OEM identifier assigned to the specific charging session.
   </ParamField>
 
-  <ParamField path="cost" type="object" required={false}>
+  <ParamField type="object">
     Detailed breakdown of the charging session costs.
   </ParamField>
 
   <Expandable title="cost properties">
-    <ParamField path="currency" type="string" required={false}>
+    <ParamField type="string">
       Three-letter currency code (e.g., "USD", "EUR") representing the monetary unit used for the charging session transaction.
     </ParamField>
 
-    <ParamField path="energyAmount" type="number" required={false}>
+    <ParamField type="number">
       Cost specifically for the electrical energy consumed during the charging session.
     </ParamField>
 
-    <ParamField path="otherAmount" type="number" required={false}>
+    <ParamField type="number">
       Additional non-energy related charges (e.g., connection fees, parking fees) associated with the charging session.
     </ParamField>
   </Expandable>
 
-  <ParamField path="endTime" type="string" required={false}>
+  <ParamField type="string">
     ISO-8601 timestamp marking when a charging session was completed or terminated.
   </ParamField>
 
-  <ParamField path="location" type="object" required={false}>
+  <ParamField type="object">
     Details about where the charging session took place.
   </ParamField>
 
   <Expandable title="location properties">
-    <ParamField path="name" type="string" required={false}>
+    <ParamField type="string">
       Descriptive name of the charging location (e.g., "Home Charger", "Public Station 123").
     </ParamField>
 
-    <ParamField path="address" type="string" required={false}>
+    <ParamField type="string">
       Street address of the charging location.
     </ParamField>
 
-    <ParamField path="latitude" type="number" required={false}>
+    <ParamField type="number">
       Geographic latitude coordinate of the charging location.
     </ParamField>
 
-    <ParamField path="longitude" type="number" required={false}>
+    <ParamField type="number">
       Geographic longitude coordinate of the charging location.
     </ParamField>
   </Expandable>
 
-  <ParamField path="startTime" type="string" required={false}>
+  <ParamField type="string">
     ISO-8601 timestamp marking when a charging session was initiated.
   </ParamField>
 
-  <ParamField path="energyAdded" type="number" required={false}>
+  <ParamField type="number">
     Total amount of electrical energy delivered during the charging session, measured in kilowatt-hours (kWh).
   </ParamField>
 
-  <ParamField path="connectorType" type="string" required={false}>
+  <ParamField type="string">
     Identifier for the type of charging connector used (e.g., "J1772", "CCS", "CHAdeMO").
   </ParamField>
 
-  <ParamField path="isPublicCharger" type="boolean" required={false}>
+  <ParamField type="boolean">
     Indicates whether the charging occurred at a public charging station (true) or private location (false).
   </ParamField>
 
-  <ParamField path="endStateOfCharge" type="number" required={false}>
+  <ParamField type="number">
     Battery's state of charge (0-100%) at the end of the charging session.
   </ParamField>
 
-  <ParamField path="startStateOfCharge" type="number" required={false}>
+  <ParamField type="number">
     Battery's state of charge (0-100%) at the start of the charging session.
   </ParamField>
 </Expandable>
@@ -4023,76 +4023,76 @@ Signal code: `charge-chargetimers`
 
 Object containing the default (global) charge timer configuration and configurations based on location, and charge connector type
 
-<ParamField path="values" type="array" required={false}>
+<ParamField type="array">
   Array of charging timer configurations, each defining either scheduled charging times or departure times.
 </ParamField>
 
 <Expandable title="Array item properties">
-  <ParamField path="type" type="string" required={false}>
+  <ParamField type="string">
     The type of charging timer configuration. "global" applies universally, "location" is specific to a location, and "connector" is specific to a charging connector type.
 
     **Possible values:** `GLOBAL`, `LOCATION`, `CONNECTOR`
   </ParamField>
 
-  <ParamField path="condition" type="object" required={false}>
+  <ParamField type="object">
     Additional context for location or connector-based charging timers. Null for global configurations.
   </ParamField>
 
   <Expandable title="condition properties">
-    <ParamField path="name" type="string" required={false}>
+    <ParamField type="string">
       Name of the location or charging station where this timer configuration applies.
     </ParamField>
 
-    <ParamField path="address" type="string" required={false}>
+    <ParamField type="string">
       Street address of the location where this timer configuration applies.
     </ParamField>
 
-    <ParamField path="latitude" type="number" required={false}>
+    <ParamField type="number">
       Geographic latitude coordinate of the location where this timer configuration applies.
     </ParamField>
 
-    <ParamField path="longitude" type="number" required={false}>
+    <ParamField type="number">
       Geographic longitude coordinate of the location where this timer configuration applies.
     </ParamField>
 
-    <ParamField path="connectorType" type="string" required={false}>
+    <ParamField type="string">
       Type of charging connector where this timer configuration applies (only used when type is "connector").
     </ParamField>
   </Expandable>
 
-  <ParamField path="schedules" type="array" required={false}>
+  <ParamField type="array">
     Array of time windows during which charging should occur, defined by start and end times on specific days.
   </ParamField>
 
   <Expandable title="Array item properties">
-    <ParamField path="end" type="string" required={false}>
+    <ParamField type="string">
       The time when the charging window should end, in 24-hour format (HH:MM:SS).
     </ParamField>
 
-    <ParamField path="days" type="array" required={false}>
+    <ParamField type="array">
       List of days of the week when this charging schedule should be active.
     </ParamField>
 
-    <ParamField path="start" type="string" required={false}>
+    <ParamField type="string">
       The time when the charging window should begin, in 24-hour format (HH:MM:SS).
     </ParamField>
   </Expandable>
 
-  <ParamField path="departureTimers" type="array" required={false}>
+  <ParamField type="array">
     Array of target departure times when the vehicle should be charged and ready to use.
   </ParamField>
 
   <Expandable title="Array item properties">
-    <ParamField path="days" type="array" required={false}>
+    <ParamField type="array">
       List of days of the week when this departure timer should be active.
     </ParamField>
 
-    <ParamField path="time" type="string" required={false}>
+    <ParamField type="string">
       The target time when the vehicle should be fully charged and ready, in 24-hour format (HH:MM:SS).
     </ParamField>
   </Expandable>
 
-  <ParamField path="isOEMOptimizationEnabled" type="boolean" required={false}>
+  <ParamField type="boolean">
     Indicates whether the vehicle manufacturer's smart charging optimization features are enabled for this timer configuration.
   </ParamField>
 </Expandable>
@@ -4103,13 +4103,10 @@ Signal code: `charge-chargerphases`
 
 The number of phases available from the connected charger.
 
-<ParamField path="unit" type="string" required={false} />
-
-<ParamField path="value" type="integer" required={false} />
+<ParamField type="integer" />
 
 ```json Example theme={null}
 {
-  "unit": "count",
   "value": 3
 }
 ```
@@ -4120,7 +4117,7 @@ Signal code: `charge-chargingconnectortype`
 
 Identifier for the type of charging connector/inlet equipped on the vehicle.
 
-<ParamField path="value" type="string" required={false} />
+<ParamField type="string" />
 
 ```json Example theme={null}
 {
@@ -4134,7 +4131,7 @@ Signal code: `charge-detailedchargingstatus`
 
 String value that provides detailed information about the current state of the charging process.
 
-<ParamField path="value" type="string" required={true}>
+<ParamField type="string">
   **Possible values:** `CHARGING`, `NOT_CHARGING`, `FULLY_CHARGED`
 </ParamField>
 
@@ -4150,13 +4147,13 @@ Signal code: `charge-energyadded`
 
 Cumulative amount of electrical energy delivered to the vehicle during the current or most recent charging session, measured in kilowatt-hours (kWh).
 
-<ParamField path="unit" type="string" required={false} />
+<ParamField type="string" />
 
-<ParamField path="value" type="number" required={false} />
+<ParamField type="number" />
 
 ```json Example theme={null}
 {
-  "unit": "kilowatt_hours",
+  "unit": "kWh",
   "value": 25.5
 }
 ```
@@ -4167,7 +4164,7 @@ Signal code: `charge-fastchargertype`
 
 Identifier for the specific DC fast charging standard currently connected to the vehicle. Indicates the protocol being used for high-power charging
 
-<ParamField path="value" type="string" required={false} />
+<ParamField type="string" />
 
 ```json Example theme={null}
 {
@@ -4181,7 +4178,7 @@ Signal code: `charge-ischarging`
 
 Boolean indicator that shows whether the electric vehicle is actively receiving power from a charging station or outlet.
 
-<ParamField path="value" type="boolean" required={false} />
+<ParamField type="boolean" />
 
 ```json Example theme={null}
 {
@@ -4195,7 +4192,7 @@ Signal code: `charge-ischargingcableconnected`
 
 Boolean indicator that shows whether a charging cable is physically connected to the vehicle's charging port.
 
-<ParamField path="value" type="boolean" required={false} />
+<ParamField type="boolean" />
 
 ```json Example theme={null}
 {
@@ -4209,7 +4206,7 @@ Signal code: `charge-ischargingcablelatched`
 
 Boolean indicator that shows whether the charging cable is securely locked to the vehicle's charging port.
 
-<ParamField path="value" type="boolean" required={false} />
+<ParamField type="boolean" />
 
 ```json Example theme={null}
 {
@@ -4223,7 +4220,7 @@ Signal code: `charge-ischargingportflapopen`
 
 Boolean indicator that shows whether the vehicle's charging port access door or flap is currently open.
 
-<ParamField path="value" type="boolean" required={false} />
+<ParamField type="boolean" />
 
 ```json Example theme={null}
 {
@@ -4237,7 +4234,7 @@ Signal code: `charge-isfastchargerpresent`
 
 Boolean indicator that shows whether the vehicle is connected to a DC fast charging station.
 
-<ParamField path="value" type="boolean" required={false} />
+<ParamField type="boolean" />
 
 ```json Example theme={null}
 {
@@ -4251,9 +4248,9 @@ Signal code: `charge-timetocomplete`
 
 Estimated time remaining until the charging session reaches the activeLimit in minutes.
 
-<ParamField path="unit" type="string" required={false} />
+<ParamField type="string" />
 
-<ParamField path="value" type="number" required={false} />
+<ParamField type="number" />
 
 ```json Example theme={null}
 {
@@ -4267,9 +4264,9 @@ Signal code: `charge-voltage`
 
 Current voltage level being supplied to the electric vehicle during a charging session, measured in volts.
 
-<ParamField path="unit" type="string" required={false} />
+<ParamField type="string" />
 
-<ParamField path="value" type="number" required={false} />
+<ParamField type="number" />
 
 ```json Example theme={null}
 {
@@ -4284,9 +4281,9 @@ Signal code: `charge-wattage`
 
 Current power delivery rate to the electric vehicle during a charging session, measured in watts.
 
-<ParamField path="unit" type="string" required={false} />
+<ParamField type="string" />
 
-<ParamField path="value" type="number" required={false} />
+<ParamField type="number" />
 
 ```json Example theme={null}
 {
@@ -4307,11 +4304,11 @@ Signal code: `climate-externaltemperature`
 
 The current temperature measured outside the vehicle.
 
-<ParamField path="unit" type="string" required={false}>
+<ParamField type="string">
   The unit of temperature measurement (celsius or fahrenheit)
 </ParamField>
 
-<ParamField path="value" type="number" required={false}>
+<ParamField type="number">
   The temperature value
 </ParamField>
 
@@ -4328,11 +4325,11 @@ Signal code: `climate-internaltemperature`
 
 The current temperature measured inside the vehicle's cabin.
 
-<ParamField path="unit" type="string" required={false}>
+<ParamField type="string">
   The unit of temperature measurement (celsius or fahrenheit)
 </ParamField>
 
-<ParamField path="value" type="number" required={false}>
+<ParamField type="number">
   The temperature value
 </ParamField>
 
@@ -4355,33 +4352,33 @@ Signal code: `closure-doors`
 
 An object containing information about the vehicle's doors.
 
-<ParamField path="values" type="array" required={true}>
+<ParamField type="array">
   An array of objects containing information about the state of the vehicle's doors.
 </ParamField>
 
 <Expandable title="Array item properties">
-  <ParamField path="row" type="number" required={false}>
+  <ParamField type="number">
     Represents the row position of a specific door, front to back (0 to Doors.rowCount-1).
   </ParamField>
 
-  <ParamField path="column" type="number" required={false}>
+  <ParamField type="number">
     Represents the column position of a specific door, left to right (0 to Door.ColumnCount-1).
   </ParamField>
 
-  <ParamField path="isOpen" type="boolean" required={false}>
+  <ParamField type="boolean">
     Indicates if the door is open.
   </ParamField>
 
-  <ParamField path="isLocked" type="boolean" required={false}>
+  <ParamField type="boolean">
     Indicates if the door is locked.
   </ParamField>
 </Expandable>
 
-<ParamField path="rowCount" type="number" required={false}>
+<ParamField type="number">
   Indicates the total number of door rows present in the vehicle. This field, along with columnCount, provides information about the vehicle's door layout and the total number of doors available.
 </ParamField>
 
-<ParamField path="columnCount" type="number" required={false}>
+<ParamField type="number">
   Indicates the total number of door columns present in the vehicle. This field, along with rowCount, provides information about the vehicle's door layout and the total number of doors available.
 </ParamField>
 
@@ -4412,7 +4409,7 @@ Signal code: `closure-enginecover`
 
 An object containing information about the state of the vehicle's engine cover for ICE or PHEV vehicles.
 
-<ParamField path="isOpen" type="boolean" required={false}>
+<ParamField type="boolean">
   Indicates if the trunk is open.
 </ParamField>
 
@@ -4422,11 +4419,11 @@ Signal code: `closure-fronttrunk`
 
 An object containing information about the state of the vehicle's front trunk.
 
-<ParamField path="isOpen" type="boolean" required={false}>
+<ParamField type="boolean">
   Indicates if the trunk is open.
 </ParamField>
 
-<ParamField path="isLocked" type="boolean" required={false}>
+<ParamField type="boolean">
   Indicates if the trunk is locked.
 </ParamField>
 
@@ -4436,7 +4433,7 @@ Signal code: `closure-islocked`
 
 A boolean value indicating whether the vehicle's closures are currently locked.
 
-<ParamField path="value" type="boolean" required={false} />
+<ParamField type="boolean" />
 
 ### Rear Trunk
 
@@ -4444,11 +4441,11 @@ Signal code: `closure-reartrunk`
 
 An object containing information about the state of the vehicle's rear trunk.
 
-<ParamField path="isOpen" type="boolean" required={false}>
+<ParamField type="boolean">
   Indicates if the trunk is open.
 </ParamField>
 
-<ParamField path="isLocked" type="boolean" required={false}>
+<ParamField type="boolean">
   Indicates if the trunk is locked.
 </ParamField>
 
@@ -4458,7 +4455,7 @@ Signal code: `closure-sunroof`
 
 An object containing information about the state of the vehicle's sunroof.
 
-<ParamField path="isOpen" type="boolean" required={false}>
+<ParamField type="boolean">
   Indicates if the trunk is open.
 </ParamField>
 
@@ -4468,29 +4465,29 @@ Signal code: `closure-windows`
 
 An object containing information about the vehicle's windows.
 
-<ParamField path="values" type="array" required={true}>
+<ParamField type="array">
   An array of objects, where each object represents a specific window in the vehicle.
 </ParamField>
 
 <Expandable title="Array item properties">
-  <ParamField path="row" type="number" required={true}>
+  <ParamField type="number">
     Represents the row position of a specific window, front to back (0 to Windows.rowCount-1).
   </ParamField>
 
-  <ParamField path="column" type="number" required={true}>
+  <ParamField type="number">
     Represents the column position of a specific window, left to right (0 to Windows.columnCount-1).
   </ParamField>
 
-  <ParamField path="isOpen" type="boolean" required={true}>
+  <ParamField type="boolean">
     Indicates if the window is open.
   </ParamField>
 </Expandable>
 
-<ParamField path="rowCount" type="number" required={false}>
+<ParamField type="number">
   Indicates the total number of window rows present in the vehicle. This field, along with columnCount, provides information about the vehicle's window layout and the total number of windows available.
 </ParamField>
 
-<ParamField path="columnCount" type="number" required={false}>
+<ParamField type="number">
   Indicates the total number of window columns present in the vehicle. This field, along with rowCount, provides information about the vehicle's window layout and the total number of windows available.
 </ParamField>
 
@@ -4525,7 +4522,7 @@ Signal code: `connectivitysoftware-currentfirmwareversion`
 
 Current version number of the firmware installed on the vehicle's telematics control unit or connected hardware.
 
-<ParamField path="value" type="string" required={false} />
+<ParamField type="string" />
 
 ```json Example theme={null}
 {
@@ -4545,7 +4542,7 @@ Signal code: `connectivitystatus-isasleep`
 
 Boolean indicator that shows whether the vehicle is in a low-power or sleep state.
 
-<ParamField path="value" type="boolean" required={false} />
+<ParamField type="boolean" />
 
 ```json Example theme={null}
 {
@@ -4559,7 +4556,7 @@ Signal code: `connectivitystatus-isdigitalkeypaired`
 
 Boolean indicator that shows whether a digital key has been successfully paired with the vehicle.
 
-<ParamField path="value" type="boolean" required={false} />
+<ParamField type="boolean" />
 
 ```json Example theme={null}
 {
@@ -4573,7 +4570,7 @@ Signal code: `connectivitystatus-isonline`
 
 Boolean indicator that shows the connectivity status of the vehicle.
 
-<ParamField path="value" type="boolean" required={false} />
+<ParamField type="boolean" />
 
 ```json Example theme={null}
 {
@@ -4593,13 +4590,13 @@ Signal code: `diagnostics-abs`
 
 A diagnostic category representing the Anti-lock Braking System (ABS).
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4616,13 +4613,13 @@ Signal code: `diagnostics-activesafety`
 
 Encompasses the vehicle's advanced safety technologies designed to prevent or mitigate potential accidents.
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4632,13 +4629,13 @@ Signal code: `diagnostics-airbag`
 
 The system that monitors the vehicle's airbag readiness and functionality.
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4648,13 +4645,13 @@ Signal code: `diagnostics-brakefluid`
 
 The system that monitors the vehicle's brake fluid condition and levels.
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4664,9 +4661,9 @@ Signal code: `diagnostics-dtccount`
 
 The total number of active Diagnostic Trouble Codes (DTCs) currently present in the vehicle's systems.
 
-<ParamField path="unit" type="string" required={false} />
+<ParamField type="string" />
 
-<ParamField path="value" type="integer" required={false} />
+<ParamField type="integer" />
 
 ```json Example theme={null}
 {
@@ -4681,16 +4678,16 @@ Signal code: `diagnostics-dtclist`
 
 An array containing detailed information about each active Diagnostic Trouble Code (DTC) in the vehicle.
 
-<ParamField path="values" type="array" required={true}>
+<ParamField type="array">
   Array of Diagnostic Trouble Code (DTC) entries.
 </ParamField>
 
 <Expandable title="Array item properties">
-  <ParamField path="code" type="string" required={true}>
+  <ParamField type="string">
     The specific alphanumeric code identifying a particular diagnostic trouble code (DTC).
   </ParamField>
 
-  <ParamField path="timestamp" type="string" required={false}>
+  <ParamField type="string">
     The precise date and time when the specific diagnostic trouble code (DTC) was first detected or logged by the vehicle's onboard diagnostic system.
   </ParamField>
 </Expandable>
@@ -4716,13 +4713,13 @@ Signal code: `diagnostics-driverassistance`
 
 The system that monitors the vehicle's advanced driver assistance technologies.
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4732,13 +4729,13 @@ Signal code: `diagnostics-evbatteryconditioning`
 
 The system that monitors the electric vehicle's high-voltage battery thermal management and conditioning.
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4748,13 +4745,13 @@ Signal code: `diagnostics-evcharging`
 
 The system that monitors the electric vehicle's charging processes and infrastructure.
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4764,13 +4761,13 @@ Signal code: `diagnostics-evdriveunit`
 
 The system that monitors the electric vehicle's drive unit performance and functionality.
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4780,13 +4777,13 @@ Signal code: `diagnostics-evhvbattery`
 
 The system that monitors the electric vehicle's high-voltage battery health and performance.
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4796,13 +4793,13 @@ Signal code: `diagnostics-emissions`
 
 The system that monitors the vehicle's exhaust emissions and pollution control mechanisms.
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4812,13 +4809,13 @@ Signal code: `diagnostics-lighting`
 
 The system that monitors the vehicle's exterior and interior lighting functionality.
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4828,13 +4825,13 @@ Signal code: `diagnostics-mil`
 
 The system that monitors the vehicle's Malfunction Indicator Lamp (MIL) status.
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4844,13 +4841,13 @@ Signal code: `diagnostics-oillife`
 
 The system that monitors the vehicle's engine oil condition and remaining useful life.
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4860,13 +4857,13 @@ Signal code: `diagnostics-oilpressure`
 
 The system that monitors the vehicle's engine oil pressure and lubrication system performance.
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4876,13 +4873,13 @@ Signal code: `diagnostics-oiltemperature`
 
 The system that monitors the vehicle's engine oil temperature and thermal conditions.
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4892,13 +4889,13 @@ Signal code: `diagnostics-telematics`
 
 The system that monitors a vehicle's connectivity
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4908,13 +4905,13 @@ Signal code: `diagnostics-tirepressure`
 
 The system that monitors tire pressure levels
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4924,13 +4921,13 @@ Signal code: `diagnostics-tirepressuremonitoring`
 
 The status of the tire pressure monitoring system.
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4940,13 +4937,13 @@ Signal code: `diagnostics-transmission`
 
 The system that monitors the vehicle's transmission
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4956,13 +4953,13 @@ Signal code: `diagnostics-washerfluid`
 
 The system that monitors the vehicle's washer fluid reservoir
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4972,13 +4969,13 @@ Signal code: `diagnostics-waterinfuel`
 
 The system that monitors the presence of water in the vehicle's fuel system
 
-<ParamField path="status" type="string" required={false}>
+<ParamField type="string">
   A ENUM indicating the current operational condition of the related system. (ALERT, OK)
 
   **Possible values:** `ALERT`, `OK`
 </ParamField>
 
-<ParamField path="description" type="string" required={false}>
+<ParamField type="string">
   A description of the system's status, if provided by the OEM.
 </ParamField>
 
@@ -4994,11 +4991,11 @@ Signal code: `hvac-cabintargettemperature`
 
 The target temperature set for the vehicle's cabin.
 
-<ParamField path="unit" type="string" required={false}>
+<ParamField type="string">
   The temperature unit (e.g., celsius, fahrenheit)
 </ParamField>
 
-<ParamField path="value" type="number" required={false}>
+<ParamField type="number">
   The target temperature value
 </ParamField>
 
@@ -5015,7 +5012,7 @@ Signal code: `hvac-iscabinhvacactive`
 
 A boolean value indicating if the cabin HVAC system is active.
 
-<ParamField path="value" type="boolean" required={false} />
+<ParamField type="boolean" />
 
 ```json Example theme={null}
 {
@@ -5029,7 +5026,7 @@ Signal code: `hvac-isfrontdefrosteractive`
 
 A boolean value indicating if the front windshield defroster is active.
 
-<ParamField path="value" type="boolean" required={false} />
+<ParamField type="boolean" />
 
 ```json Example theme={null}
 {
@@ -5043,7 +5040,7 @@ Signal code: `hvac-isreardefrosteractive`
 
 A boolean value indicating if the rear windshield defroster is active.
 
-<ParamField path="value" type="boolean" required={false} />
+<ParamField type="boolean" />
 
 ```json Example theme={null}
 {
@@ -5057,7 +5054,7 @@ Signal code: `hvac-issteeringheateractive`
 
 A boolean value indicating if the steering wheel heater is active.
 
-<ParamField path="value" type="boolean" required={false} />
+<ParamField type="boolean" />
 
 ```json Example theme={null}
 {
@@ -5077,11 +5074,11 @@ Signal code: `internalcombustionengine-amountremaining`
 
 The quantity of fuel remaining in the vehicle's tank
 
-<ParamField path="unit" type="string" required={false}>
+<ParamField type="string">
   The unit of measurement for the fuel amount (e.g., liters, gallons)
 </ParamField>
 
-<ParamField path="value" type="number" required={false}>
+<ParamField type="number">
   The quantity value of remaining fuel
 </ParamField>
 
@@ -5098,11 +5095,11 @@ Signal code: `internalcombustionengine-fuellevel`
 
 The current amount of fuel in the vehicle's tank, expressed as a percentage (0 - 100)
 
-<ParamField path="unit" type="string" required={false}>
+<ParamField type="string">
   The unit for fuel level (always percent)
 </ParamField>
 
-<ParamField path="value" type="number" required={false}>
+<ParamField type="number">
   The fuel level as a percentage between 0 and 100
 </ParamField>
 
@@ -5119,11 +5116,11 @@ Signal code: `internalcombustionengine-oillife`
 
 The engine oil’s remaining life span based on the current quality of the oil, expressed as a percentage. 100 indicates the oil was changed recently and 0 indicates the oil should be changed immediately. It is not a representation of how much oil is left in the vehicle.
 
-<ParamField path="unit" type="string" required={false}>
+<ParamField type="string">
   The unit for oil life (always percent)
 </ParamField>
 
-<ParamField path="value" type="number" required={false}>
+<ParamField type="number">
   The oil life remaining as a percentage between 0 and 100
 </ParamField>
 
@@ -5140,11 +5137,11 @@ Signal code: `internalcombustionengine-range`
 
 The estimated driving distance possible with the current amount of fuel
 
-<ParamField path="unit" type="string" required={false}>
+<ParamField type="string">
   The unit for range measurement (e.g., kilometers, miles)
 </ParamField>
 
-<ParamField path="value" type="number" required={false}>
+<ParamField type="number">
   The estimated driving distance value
 </ParamField>
 
@@ -5167,7 +5164,7 @@ Signal code: `location-isathome`
 
 A boolean indicating if the vehicle is at home. Vehicle owners can set their home location in their OEM application.
 
-<ParamField path="value" type="boolean" required={false}>
+<ParamField type="boolean">
   Boolean indicating if the vehicle is at the configured home location
 </ParamField>
 
@@ -5183,25 +5180,25 @@ Signal code: `location-preciselocation`
 
 An object containing information about a vehicle's precise location.
 
-<ParamField path="heading" type="number" required={false}>
+<ParamField type="number">
   The precise angular heading of the vehicle.
 </ParamField>
 
-<ParamField path="latitude" type="number" required={false}>
+<ParamField type="number">
   The vehicle's current geographic latitude coordinate.
 </ParamField>
 
-<ParamField path="direction" type="string" required={false}>
+<ParamField type="string">
   A cardinal or intercardinal direction representing the vehicle's current heading or orientation.
 
   **Possible values:** `N`, `NE`, `E`, `SE`, `S`, `SW`, `W`, `NW`
 </ParamField>
 
-<ParamField path="longitude" type="number" required={false}>
+<ParamField type="number">
   The vehicle's current geographic longitude coordinate.
 </ParamField>
 
-<ParamField path="locationType" type="string" required={false}>
+<ParamField type="string">
   Indicates whether the location-related fields are expected to update in real time or when the vehicle is parked.
 
   **Possible values:** `LAST_PARKED`, `CURRENT`
@@ -5229,11 +5226,11 @@ Signal code: `lowvoltagebattery-stateofcharge`
 
 Indicates the current charge level of the low voltage battery as a percentage (0 - 100)
 
-<ParamField path="unit" type="string" required={false}>
+<ParamField type="string">
   The unit for state of charge (always percent)
 </ParamField>
 
-<ParamField path="value" type="number" required={false}>
+<ParamField type="number">
   The battery charge level as a percentage between 0 and 100
 </ParamField>
 
@@ -5250,7 +5247,7 @@ Signal code: `lowvoltagebattery-status`
 
 Represents the current operational status of the low voltage battery. (GOOD, WARN, BAD)
 
-<ParamField path="value" type="string" required={false}>
+<ParamField type="string">
   The operational status of the battery
 
   **Possible values:** `GOOD`, `WARN`, `BAD`
@@ -5274,11 +5271,11 @@ Signal code: `motion-currentspeed`
 
 The vehicle's current driving speed, or 0 if it is not currently driving.
 
-<ParamField path="unit" type="string" required={false}>
+<ParamField type="string">
   The unit of speed measurement (e.g., kph, mph)
 </ParamField>
 
-<ParamField path="value" type="number" required={false}>
+<ParamField type="number">
   The current speed value
 </ParamField>
 
@@ -5301,11 +5298,11 @@ Signal code: `odometer-traveleddistance`
 
 The total distance the vehicle has traveled since its initial use
 
-<ParamField path="unit" type="string" required={false}>
+<ParamField type="string">
   The unit for distance measurement (e.g., kilometers, miles)
 </ParamField>
 
-<ParamField path="value" type="number" required={false}>
+<ParamField type="number">
   The total distance traveled
 </ParamField>
 
@@ -5358,6 +5355,30 @@ Below you will find the signal groups and their respective signals. Each signal 
 * [VehicleUserAccount](/api-reference/signals/vehicleuseraccount)
 * [Wheel](/api-reference/signals/wheel)
 
+***
+
+## Next Steps
+
+Now that you know what vehicle data is available, learn how to receive it in your application:
+
+<CardGroup>
+  <Card title="Webhooks (Recommended)" icon="webhook" href="/integrations/webhooks/overview">
+    Real-time vehicle data pushed to your application
+  </Card>
+
+  <Card title="REST API" icon="code" href="/api-reference/vehicles-api-intro">
+    Request vehicle data on-demand via HTTP requests
+  </Card>
+
+  <Card title="Integration Overview" icon="book" href="/getting-started/integration-overview">
+    Compare webhooks vs REST API to choose the right approach
+  </Card>
+
+  <Card title="Check Compatibility" icon="car" href="/api-reference/compatibility-api-intro">
+    See which vehicles support specific signals
+  </Card>
+</CardGroup>
+
 
 # Service Signals
 Source: https://smartcar.com/docs/api-reference/signals/service
@@ -5370,7 +5391,7 @@ Signal code: `service-isinservice`
 
 A boolean that Indicates if the vehicle is currently in service
 
-<ParamField path="value" type="boolean" required={false}>
+<ParamField type="boolean">
   Boolean indicating if the vehicle is in service
 </ParamField>
 
@@ -5386,62 +5407,62 @@ Signal code: `service-records`
 
 An array containing records of service that has been performed on the vehicle.
 
-<ParamField path="values" type="array" required={true}>
+<ParamField type="array">
   An array of service records.
 </ParamField>
 
 <Expandable title="Array item properties">
-  <ParamField path="id" type="string" required={false}>
+  <ParamField type="string">
     A unique identifier for the service record.
   </ParamField>
 
-  <ParamField path="cost" type="object" required={false}>
+  <ParamField type="object">
     The monetary amount billed by the service provider for the service.
   </ParamField>
 
   <Expandable title="cost properties">
-    <ParamField path="amount" type="number" required={false}>
+    <ParamField type="number">
       The numerical portion of the amount.
     </ParamField>
 
-    <ParamField path="currency" type="string" required={false}>
+    <ParamField type="string">
       The currency for the amount.
     </ParamField>
   </Expandable>
 
-  <ParamField path="time" type="string" required={false}>
+  <ParamField type="string">
     The timestamp of when the service occurred.
   </ParamField>
 
-  <ParamField path="tasks" type="array" required={false}>
+  <ParamField type="array">
     An array containing information about tasks performed as part of the service.
   </ParamField>
 
   <Expandable title="Array item properties">
-    <ParamField path="id" type="string" required={false}>
+    <ParamField type="string">
       A unique identifier for the task.
     </ParamField>
 
-    <ParamField path="description" type="string" required={false}>
+    <ParamField type="string">
       A description of the task that was performed.
     </ParamField>
   </Expandable>
 
-  <ParamField path="details" type="array" required={false}>
+  <ParamField type="array">
     An array containing additional details about the service.
   </ParamField>
 
   <Expandable title="Array item properties">
-    <ParamField path="id" type="string" required={false}>
+    <ParamField type="string">
       A unique identifier for the additional detail item.
     </ParamField>
 
-    <ParamField path="description" type="string" required={false}>
+    <ParamField type="string">
       A text string describing the additional detail item.
     </ParamField>
   </Expandable>
 
-  <ParamField path="odometer" type="number" required={false}>
+  <ParamField type="number">
     The vehicle's odometer at the time of the service.
   </ParamField>
 </Expandable>
@@ -5488,7 +5509,7 @@ Signal code: `surveillance-isenabled`
 
 Indicates if the surveillance system is enabled
 
-<ParamField path="value" type="boolean" required={false}>
+<ParamField type="boolean">
   Boolean indicating if surveillance is active
 </ParamField>
 
@@ -5506,7 +5527,7 @@ Signal code: `surveillance-brand`
 
 Indicates the brand of surveillance available on the vehicle e.g. for Tesla this would be Sentry Mode
 
-<ParamField path="value" type="string" required={false}>
+<ParamField type="string">
   The brand name or type of surveillance system
 </ParamField>
 
@@ -5528,7 +5549,7 @@ Signal code: `tractionbattery-isheateractive`
 
 A boolean flag indicating whether the high voltage battery's heating system is currently operating.
 
-<ParamField path="value" type="boolean" required={false} />
+<ParamField type="boolean" />
 
 ### Max Range Charge Counter
 
@@ -5536,9 +5557,9 @@ Signal code: `tractionbattery-maxrangechargecounter`
 
 A counter tracking the number of times the vehicle has been charged to its maximum range capacity.
 
-<ParamField path="unit" type="string" required={false} />
+<ParamField type="string" />
 
-<ParamField path="value" type="integer" required={false} />
+<ParamField type="integer" />
 
 ### Nominal Capacities
 
@@ -5546,31 +5567,31 @@ Signal code: `tractionbattery-nominalcapacity`
 
 An object containing the gross battery capacity and a list of multiple available gross capacity configurations for the high voltage battery.
 
-<ParamField path="source" type="string" required={false}>
+<ParamField type="string">
   Identifies the origin or method used to determine the battery's gross capacity.
 
   **Possible values:** `SMARTCAR`, `USER_SELECTED`
 </ParamField>
 
-<ParamField path="capacity" type="number" required={false}>
+<ParamField type="number">
   The total gross energy storage capacity of the high voltage battery, typically measured in kilowatt-hours (kWh). This value represents the nominal rated battery capacity for a vehicle.
 </ParamField>
 
-<ParamField path="availableCapacities" type="array" required={false}>
+<ParamField type="array">
   An array of available battery capacity configurations for the vehicle.
 </ParamField>
 
 <Expandable title="Array item properties">
-  <ParamField path="capacity" type="number" required={false}>
+  <ParamField type="number">
     The battery capacity value in kilowatt-hours (kWh).
   </ParamField>
 
-  <ParamField path="description" type="string" required={false}>
-    A description of the uniqueness for the nominal capacity and engine type of the vehicle in the form {ENGINE_TYPE}:{TRIM}, for example "BEV:Extended Range".
+  <ParamField type="string">
+    A description of the uniqueness for the nominal capacity and engine type of the vehicle in the form :, for example "BEV:Extended Range".
   </ParamField>
 </Expandable>
 
-<ParamField path="unit" type="string" required={false}>
+<ParamField type="string">
   The unit of measurement for the battery capacity.
 </ParamField>
 
@@ -5588,7 +5609,7 @@ An object containing the gross battery capacity and a list of multiple available
       "description": null
     }
   ],
-  "unit": "kWhr"
+  "unit": "kWh"
 }
 ```
 
@@ -5598,20 +5619,20 @@ Signal code: `tractionbattery-range`
 
 Returns the most accurate real world estimate that is available. Estimated > Ideal > Rated.
 
-<ParamField path="unit" type="string" required={false}>
+<ParamField type="string">
   **Possible values:** `DEFAULT`
 </ParamField>
 
-<ParamField path="value" type="number" required={true} />
+<ParamField type="number" />
 
-<ParamField path="additionalValues" type="array" required={true} />
+<ParamField type="array" />
 
 <Expandable title="Array item properties">
-  <ParamField path="type" type="string" required={true}>
+  <ParamField type="string">
     **Possible values:** `IDEAL_CONDITIONS`, `ESTIMATED`, `RATED`
   </ParamField>
 
-  <ParamField path="value" type="number" required={true} />
+  <ParamField type="number" />
 </Expandable>
 
 ```json Example theme={null}
@@ -5627,9 +5648,9 @@ Signal code: `tractionbattery-stateofcharge`
 
 The current charge level of the high voltage battery, expressed as a percentage (0 - 100).
 
-<ParamField path="unit" type="string" required={false} />
+<ParamField type="string" />
 
-<ParamField path="value" type="number" required={false} />
+<ParamField type="number" />
 
 ```json Example theme={null}
 {
@@ -5650,7 +5671,7 @@ Signal code: `transmission-gearstate`
 
 The current gear selection of the vehicle's transmission.
 
-<ParamField path="value" type="string" required={true}>
+<ParamField type="string">
   The current gear selection of the vehicle's transmission.
 
   **Possible values:** `PARK`, `DRIVE`, `REVERSE`, `NEUTRAL`
@@ -5662,11 +5683,11 @@ Signal code: `transmission-drivemode`
 
 Represents the current drive mode selected in the vehicle's transmission system
 
-<ParamField path="canonical" type="string" required={true}>
+<ParamField type="string">
   The standardized drive mode value
 </ParamField>
 
-<ParamField path="oemDisplayName" type="string" required={true}>
+<ParamField type="string">
   The display name for the drive mode as shown by the OEM
 </ParamField>
 
@@ -5691,7 +5712,7 @@ Signal code: `vehicleidentification-nickname`
 
 Name personally assigned by the vehicle by the owner.
 
-<ParamField path="value" type="string" required={false} />
+<ParamField type="string" />
 
 ## Attributes
 
@@ -5701,7 +5722,7 @@ Signal code: `vehicleidentification-exteriorcolor`
 
 The exterior paint color of the vehicle as specified by the manufacturer.
 
-<ParamField path="value" type="string" required={false} />
+<ParamField type="string" />
 
 ### VIN
 
@@ -5709,7 +5730,7 @@ Signal code: `vehicleidentification-vin`
 
 Vehicle Identification Number - A unique 17-character alphanumeric code assigned to each vehicle that serves as its identifier. Contains encoded information about the vehicle's manufacturer, model, features, and production details.
 
-<ParamField path="value" type="string" required={false} />
+<ParamField type="string" />
 
 
 # VehicleUserAccount Signals
@@ -5723,7 +5744,7 @@ Signal code: `vehicleuseraccount-permissions`
 
 Permissions granted by the connecting account with the OEM. These may be different than your application's Smartcar permissions as they can be managed directly with the OEM.
 
-<ParamField path="values" type="array" required={true}>
+<ParamField type="array">
   An array containing permissions granted by the connecting account with the OEM.
 </ParamField>
 
@@ -5742,7 +5763,7 @@ Signal code: `vehicleuseraccount-role`
 
 Indicates the access level to the vehicle for the connecting account as defined by the OEM. While the OEM representation may vary, these can be thought of as "secondary" and "primary" accounts where "secondary" accounts may have more limited access than an "primary" account. "secondary" accounts are granted access to vehicle by "primary" accounts.
 
-<ParamField path="value" type="string" required={false} />
+<ParamField type="string" />
 
 ```json Example theme={null}
 {
@@ -5764,29 +5785,29 @@ Signal code: `wheel-tires`
 
 An array of objects, where each object represents a specific wheel on the vehicle.
 
-<ParamField path="values" type="array" required={true}>
+<ParamField type="array">
   An array of objects containing information about the vehicle's wheels.
 </ParamField>
 
 <Expandable title="Array item properties">
-  <ParamField path="row" type="number" required={true}>
+  <ParamField type="number">
     Represents the row position of a specific wheel, front to back (0 to Wheels.rowCount-1).
   </ParamField>
 
-  <ParamField path="column" type="number" required={true}>
+  <ParamField type="number">
     Represents the column position of a specific wheel, left to right (0 to Wheels.columnCount-1).
   </ParamField>
 
-  <ParamField path="tirePressure" type="number" required={true}>
+  <ParamField type="number">
     Indicates the current tire pressure of the wheel.
   </ParamField>
 </Expandable>
 
-<ParamField path="rowCount" type="number" required={false}>
+<ParamField type="number">
   Indicates the total number of wheel rows present in the vehicle. This signal, along with WheelColumnCount, provides information about the vehicle's wheel layout and the total number of wheels available.
 </ParamField>
 
-<ParamField path="columnCount" type="number" required={false}>
+<ParamField type="number">
   Indicates the total number of wheel columns present in the vehicle. This signal, along with WheelRowCount, provides information about the vehicle's wheel layout and the total number of wheels available.
 </ParamField>
 
@@ -5798,7 +5819,7 @@ Signal code: `wheel-style`
 
 Wheel style of the vehicle.
 
-<ParamField path="value" type="string" required={false} />
+<ParamField type="string" />
 
 
 # Clear PIN to Drive
@@ -5807,7 +5828,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/clear-pin-to-drive
 DELETE https://api.smartcar.com/v2.0/vehicles/{id}/{make}/pin
 Disables this feature on the vehicle and resets the PIN.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -5817,7 +5838,7 @@ Disables this feature on the vehicle and resets the PIN.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 <RequestExample>
   ```bash cURL theme={null}
@@ -5888,7 +5909,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/control-charge-port
 POST https://api.smartcar.com/v2.0/vehicles/{id}/{make}/charge/charge_port_door
 Open or close the vehicle's charge port door.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -5898,11 +5919,11 @@ Open or close the vehicle's charge port door.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 **Body**
 
-<ParamField body="action" type="string" required>
+<ParamField type="string">
   Indicate whether to open or close the charge port door.
   Options: `OPEN` or `CLOSE`
 </ParamField>
@@ -5976,7 +5997,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/control-frunk
 POST https://api.smartcar.com/v2.0/vehicles/{id}/{make}/security/frunk
 Open or close the frunk (front trunk) of the Tesla vehicle.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -5986,11 +6007,11 @@ Open or close the frunk (front trunk) of the Tesla vehicle.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 **Body**
 
-<ParamField body="action" type="string" required>
+<ParamField type="string">
   Indicate whether to open or close the charge port door.
   Options: `OPEN` or `CLOSE`
 </ParamField>
@@ -6064,7 +6085,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/control-trunk
 POST https://api.smartcar.com/v2.0/vehicles/{id}/{make}/security/trunk
 Open or close the trunk of the Tesla vehicle.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -6074,11 +6095,11 @@ Open or close the trunk of the Tesla vehicle.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 **Body**
 
-<ParamField body="action" type="string" required>
+<ParamField type="string">
   Indicate whether to open or close the charge port door.
   Options: `OPEN` or `CLOSE`
 </ParamField>
@@ -6152,7 +6173,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/get-alerts
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/alerts
 Returns recent alerts from the vehicle.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -6199,7 +6220,7 @@ Returns recent alerts from the vehicle.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 ## Response
 
@@ -6248,7 +6269,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/get-battery
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/battery
 Returns all battery related data for a Tesla vehicle.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 <Warning>
   The following fields are not supported for streaming vehicles:
@@ -6302,7 +6323,7 @@ Returns all battery related data for a Tesla vehicle.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 ## Response
 
@@ -6360,7 +6381,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/get-cabin
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/climate/cabin
 Returns the current state and target temperature setting of a vehicle's cabin climate system.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -6370,7 +6391,7 @@ Returns the current state and target temperature setting of a vehicle's cabin cl
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 <RequestExample>
   ```bash cURL theme={null}
@@ -6435,7 +6456,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/get-charge
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/charge
 Returns all charging related data for a Tesla vehicle.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 <Warning>
   The following fields are not supported for streaming vehicles:
@@ -6492,7 +6513,7 @@ Returns all charging related data for a Tesla vehicle.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 ## Response
 
@@ -6641,16 +6662,16 @@ When the vehicle is charging, returns the date and time when the vehicle is expe
 
 ## Request
 
-<ParamField path="id" type="string" required>
+<ParamField type="string">
   `vehicle_id` of the vehicle you are making the request to.
 </ParamField>
 
-<ParamField path="make" type="string" required>
+<ParamField type="string">
   The make to pass in the URL.
 </ParamField>
 
 <RequestExample>
-  <Snippet file="api-reference/bse/get-charge-completion-time.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -6674,7 +6695,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/get-charge-records-billing
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/charge/records/billing
 Returns information about charging sessions for Tesla vehicles at public Tesla chargers including cost and charging site.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -6684,20 +6705,20 @@ Returns information about charging sessions for Tesla vehicles at public Tesla c
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 **Query**
 
-<ParamField query="startDate">
+<ParamField>
   Date of the first record to return in YYYY-MM-DD format.
   Defaults to 30 days prior  or when the owner first granted your application access, whichever is shorter.
 </ParamField>
 
-<ParamField query="endDate">
+<ParamField>
   Date of the final record to return in YYYY-MM-DD format. Defaults to the date of the request.
 </ParamField>
 
-<ParamField query="page">
+<ParamField>
   The page number to fetch from Tesla where page 1 contains the most recent records.
 </ParamField>
 
@@ -6751,7 +6772,7 @@ Returns information about charging sessions for Tesla vehicles at public Tesla c
   Can be empty if the specified page does not contain any records for the vehicle.
   This **does not** mean that subsequent pages will also contain no records. Please check the `hasMoreData` field for confirmation instead.
 
-  <Expandable defaultOpen="true">
+  <Expandable>
     <ResponseField name="chargeStart" type="string">
       The date and time of charging session start, formatted in ISO 8601 standard.
     </ResponseField>
@@ -6760,14 +6781,14 @@ Returns information about charging sessions for Tesla vehicles at public Tesla c
       The date and time of charging session end, formatted in ISO 8601 standard.
     </ResponseField>
 
-    <ResponseField name="energyConsumed" type="number" default="kWh">
+    <ResponseField name="energyConsumed" type="number">
       Energy consumed in the charging session.
     </ResponseField>
 
     <ResponseField name="cost" type="object">
       A cost breakout of the charging session.
 
-      <Expandable defaultOpen="true">
+      <Expandable>
         <ResponseField name="currency" type="string">
           The currency code for the fees.
         </ResponseField>
@@ -6825,7 +6846,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/get-charge-schedule
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/charge/schedule
 Returns the charging schedule of a vehicle. The response contains the start time and departure time of the vehicle's charging schedule.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -6835,10 +6856,10 @@ Returns the charging schedule of a vehicle. The response contains the start time
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 <RequestExample>
-  <Snippet file="api-reference/bse/get-charge-schedule.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -6906,10 +6927,10 @@ When the vehicle is plugged in, returns the charging voltage measured by the veh
 
 ## Request
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 <RequestExample>
-  <Snippet file="api-reference/bse/get-charge-voltmeter.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -6933,7 +6954,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/get-charge-wattmeter
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/charge/wattmeter
 When the vehicle is charging, returns the instant charging wattage as measured by the vehicle. When the vehicle is not charging, this endpoint results in a vehicle state error.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -6943,7 +6964,7 @@ When the vehicle is charging, returns the instant charging wattage as measured b
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 <RequestExample>
   ```bash cURL theme={null}
@@ -7003,7 +7024,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/get-compass-heading
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/compass
 Returns the current compass heading and direction of the vehicle.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -7013,7 +7034,7 @@ Returns the current compass heading and direction of the vehicle.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 <RequestExample>
   ```bash cURL theme={null}
@@ -7078,7 +7099,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/get-defroster
 GET https://api.smartcar.com/v2.0/vehicles/{is}/{make}/climate/defroster
 Returns the current state of a vehicle's front and rear defroster.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -7125,7 +7146,7 @@ Returns the current state of a vehicle's front and rear defroster.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 ## Response
 
@@ -7153,7 +7174,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/get-ext-vehicle-info
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/attributes
 Returns detailed configuration information for a vehicle.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -7163,7 +7184,7 @@ Returns detailed configuration information for a vehicle.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 <RequestExample>
   ```bash cURL theme={null}
@@ -7289,7 +7310,7 @@ Returns detailed configuration information for a vehicle.
       Style of the wheel.
     </ResponseField>
 
-    <ResponseField name="diameter" type="number" default="millimeters">
+    <ResponseField name="diameter" type="number">
       Diameter of the wheel.
     </ResponseField>
   </Expandable>
@@ -7351,7 +7372,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/get-exterior-temperature
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/thermometer/exterior
 Returns the vehicle’s last known exterior thermometer reading. See our [climate setting](/docs/api-reference/tesla/get-cabin) endpoints for managing a cabin temperature.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -7361,7 +7382,7 @@ Returns the vehicle’s last known exterior thermometer reading. See our [climat
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 <RequestExample>
   ```bash cURL theme={null}
@@ -7402,7 +7423,7 @@ Returns the vehicle’s last known exterior thermometer reading. See our [climat
 
 ## Response
 
-<ResponseField name="temperature" default="celsius" type="number">
+<ResponseField name="temperature" type="number">
   The current exterior temperature of the vehicle.
 </ResponseField>
 
@@ -7421,7 +7442,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/get-interior-temperature
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/thermometer/interior
 Returns the vehicle’s last known interior thermometer reading. See our [climate setting](/docs/api-reference/tesla/get-cabin) endpoints for managing a cabin temperature.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -7431,7 +7452,7 @@ Returns the vehicle’s last known interior thermometer reading. See our [climat
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 <RequestExample>
   ```bash cURL theme={null}
@@ -7472,7 +7493,7 @@ Returns the vehicle’s last known interior thermometer reading. See our [climat
 
 ## Response
 
-<ResponseField name="temperature" default="celsius" type="number">
+<ResponseField name="temperature" type="number">
   The current interior temperature of the vehicle.
 </ResponseField>
 
@@ -7491,7 +7512,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/get-migration-status
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/migration
 Indicates if the vehicle needs to migrate to Tesla's new API. See [Tesla - What's New](https://smartcar.com/docs/help/oem-integrations/tesla/whats-new) for more details.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -7501,7 +7522,7 @@ Indicates if the vehicle needs to migrate to Tesla's new API. See [Tesla - What'
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 <RequestExample>
   ```bash cURL theme={null}
@@ -7561,7 +7582,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/get-speedometer
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/speedometer
 Returns the current speed of the vehicle.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -7571,7 +7592,7 @@ Returns the current speed of the vehicle.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 <RequestExample>
   ```bash cURL theme={null}
@@ -7612,7 +7633,7 @@ Returns the current speed of the vehicle.
 
 ## Response
 
-<ResponseField name="speed" default="km/h" type="number">
+<ResponseField name="speed" type="number">
   The current speed of the vehicle.
 </ResponseField>
 
@@ -7631,7 +7652,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/get-steering-heater
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/climate/steering_wheel
 Returns the current state of a vehicle's steering wheel heater system.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -7641,7 +7662,7 @@ Returns the current state of a vehicle's steering wheel heater system.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 <RequestExample>
   ```bash cURL theme={null}
@@ -7701,7 +7722,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/get-user-access
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/user/access
 Returns the account type and permissions for the connected Tesla account.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 <RequestExample>
   ```bash cURL theme={null}
@@ -7744,7 +7765,7 @@ Returns the account type and permissions for the connected Tesla account.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 ## Response
 
@@ -7776,7 +7797,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/get-user-info
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/user/info
 Returns the email associated with the connected Tesla account.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -7823,7 +7844,7 @@ Returns the email associated with the connected Tesla account.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 ## Response
 
@@ -7846,7 +7867,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/get-vehicle-status
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/status
 Returns the status for the vehicle.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -7856,7 +7877,7 @@ Returns the status for the vehicle.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 <RequestExample>
   ```bash cURL theme={null}
@@ -7926,7 +7947,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/get-virtual-key-status
 GET https://api.smartcar.com/v2.0/vehicles/{id}/{make}/virtual_key
 Indicates if a vehicle has the appropriate virtual key installed. See [Tesla - What's New](https://smartcar.com/docs/help/oem-integrations/tesla/whats-new#if-your-application-issues-commands) for more details on Tesla's virtual key requirements.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -7936,7 +7957,7 @@ Indicates if a vehicle has the appropriate virtual key installed. See [Tesla - W
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 <RequestExample>
   ```bash cURL theme={null}
@@ -8001,7 +8022,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/set-cabin
 POST https://api.smartcar.com/v2.0/vehicles/{id}/{make}/climate/cabin
 Set the temperature and control the cabin climate system for a vehicle.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -8011,11 +8032,11 @@ Set the temperature and control the cabin climate system for a vehicle.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 **Body**
 
-<ParamField body="action" type="string" required>
+<ParamField type="string">
   Indicate whether to start or stop the cabin climate control system, or set the temperature.
   If starting or stopping the system, `temperature` is optional and will use the vehicle's current setting by default.
 
@@ -8030,7 +8051,7 @@ Set the temperature and control the cabin climate system for a vehicle.
   </Expandable>
 </ParamField>
 
-<ParamField body="temperature" type="string">
+<ParamField type="string">
   Indicate what temperature to set (in Celsius by default or in Fahrenheit using the sc-unit-system).
   If the provided temperature is out of the bounds allowed by the vehicle's climate control system,
   the request will fail with the upper and lower limits in the error response message.
@@ -8110,7 +8131,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/set-charge-ammeter
 POST https://api.smartcar.com/v2.0/vehicles/{id}/{make}/charge/ammeter
 Set the amperage drawn by the vehicle from the EVSE for the current charging session. If the vehicle is not plugged in, this endpoint results in a vehicle state error.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -8120,11 +8141,11 @@ Set the amperage drawn by the vehicle from the EVSE for the current charging ses
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 **Body**
 
-<ParamField body="amperage" type="number" required>
+<ParamField type="number">
   The target amperage to be drawn by the vehicle from the charging point (in amperes). If the value passed is greater than what is supported by the charger, it will be set to the maximum.
 </ParamField>
 
@@ -8197,7 +8218,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/set-charge-schedule
 POST https://api.smartcar.com/v2.0/vehicles/{id}/{make}/charge/schedule
 Sets the charging schedule for a vehicle.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -8207,14 +8228,14 @@ Sets the charging schedule for a vehicle.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 **Body**
 
-<ParamField body="type" type="string" required>
+<ParamField type="string">
   The type of schedule you want to set.
 
-  <Expandable title="type" defaultOpen="true">
+  <Expandable title="type">
     <ResponseField name="START_TIME">
       When plugged in, the vehicle will delay starting a charging session until this time in `HH:mm`.
     </ResponseField>
@@ -8226,11 +8247,11 @@ Sets the charging schedule for a vehicle.
   </Expandable>
 </ParamField>
 
-<ParamField body="enable" type="boolean" required>
+<ParamField type="boolean">
   Enables or disables the specified charging schedule.
 </ParamField>
 
-<ParamField body="time" type="string" required>
+<ParamField type="string">
   The time for the provided schedule type in HH:mm.
 </ParamField>
 
@@ -8334,7 +8355,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/set-defroster
 POST https://api.smartcar.com/v2.0/vehicles/{id}/{make}/climate/defroster
 Start or stop the front and rear defroster for a vehicle.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -8344,11 +8365,11 @@ Start or stop the front and rear defroster for a vehicle.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 **Body**
 
-<ParamField body="action" type="string" required>
+<ParamField type="string">
   Indicate whether to start or stop defrosting the vehicle.
   Options: `START` or `STOP`
 </ParamField>
@@ -8418,7 +8439,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/set-pin-to-drive
 POST https://api.smartcar.com/v2.0/vehicles/{id}/{make}/pin
 Enables this feature on the vehicle and sets the PIN needed in order to drive it.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -8428,11 +8449,11 @@ Enables this feature on the vehicle and sets the PIN needed in order to drive it
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 **Body**
 
-<ParamField body="pin" type="string" required>
+<ParamField type="string">
   A four digit numeric PIN
 </ParamField>
 
@@ -8512,7 +8533,7 @@ Source: https://smartcar.com/docs/api-reference/tesla/set-steering-heater
 POST https://api.smartcar.com/v2.0/vehicles/{id}/{make}/climate/steering_wheel
 Start or stop heating a vehicle's steering wheel.
 
-<Snippet file="api-reference/note-bse-tesla.mdx" />
+<Snippet />
 
 ## Permission
 
@@ -8522,11 +8543,11 @@ Start or stop heating a vehicle's steering wheel.
 
 **Path**
 
-<Snippet file="api-reference/path-bse.mdx" />
+<Snippet />
 
 **Body**
 
-<ParamField body="action" type="string" required>
+<ParamField type="string">
   Indicate whether to start or stop heating the vehicle's steering wheel.
   Options: `START` or `STOP`
 </ParamField>
@@ -8609,7 +8630,7 @@ Note: A single user can own multiple vehicles, and multiple users can own the sa
 </Info>
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/user.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -8641,16 +8662,16 @@ Returns a paged list of all vehicles connected to the application for the curren
 
 **Query**
 
-<ParamField query="limit" type="integer" default="10">
+<ParamField type="integer">
   The number of vehicles to return per page. `Max: 50`
 </ParamField>
 
-<ParamField query="offset" type="integer">
+<ParamField type="integer">
   The index to start the `vehicles` list at.
 </ParamField>
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/all-vehicles.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -8761,6 +8782,2197 @@ https://vehicle.api.smartcar.com/v3
 </Info>
 
 
+# Delivery Behavior
+Source: https://smartcar.com/docs/api-reference/webhooks/delivery-behavior
+
+HTTP delivery mechanics, retry policies, timeouts, and ordering guarantees
+
+Understanding how Smartcar delivers webhook events helps you build a reliable integration. This page covers the technical details of webhook delivery, including HTTP semantics, retry behavior, and timing expectations.
+
+## HTTP Request Format
+
+### Request Method
+
+All webhook deliveries use `HTTP POST` requests sent to your configured callback URI.
+
+### Request Headers
+
+Smartcar includes the following headers with every webhook delivery:
+
+<ResponseField name="Content-Type" type="string">
+  Always set to `application/json`. All webhook payloads are JSON-encoded.
+</ResponseField>
+
+<ResponseField name="SC-Signature" type="string">
+  HMAC-SHA256 signature for payload verification. See [Payload Verification](/integrations/webhooks/payload-verification) for details on how to validate this signature.
+</ResponseField>
+
+<ResponseField name="User-Agent" type="string">
+  Identifies requests as coming from Smartcar. Format: `Smartcar/{version}`.
+</ResponseField>
+
+### Request Body
+
+The request body contains a JSON payload matching one of the event types documented in [Event Reference](/api-reference/webhooks/events/overview).
+
+All requests include:
+
+* Valid JSON formatting
+* UTF-8 encoding
+* Content-Length header matching the payload size
+
+## Expected Response
+
+### Success Response
+
+Your webhook endpoint must return a **2xx status code** (200, 201, 202, 204, etc.) within the timeout window to acknowledge successful receipt. Any 2xx response is treated as success.
+
+<CodeGroup>
+  ```http HTTP Response theme={null}
+  HTTP/1.1 200 OK
+  Content-Type: application/json
+
+  {}
+  ```
+
+  ```python Python theme={null}
+  @app.post("/webhooks/smartcar")
+  def handle_webhook(request):
+      # Persist payload first
+      save_to_queue(request.body)
+      
+      # Return 200 immediately
+      return {"status": "received"}, 200
+  ```
+
+  ```javascript Node.js theme={null}
+  app.post('/webhooks/smartcar', (req, res) => {
+    // Persist payload first
+    saveToQueue(req.body);
+    
+    // Return 200 immediately
+    res.status(200).json({ status: 'received' });
+  });
+  ```
+
+  ```java Java theme={null}
+  @PostMapping("/webhooks/smartcar")
+  public ResponseEntity<Map<String, String>> handleWebhook(@RequestBody String payload) {
+      // Persist payload first
+      saveToQueue(payload);
+      
+      // Return 200 immediately
+      return ResponseEntity.ok(Map.of("status", "received"));
+  }
+  ```
+</CodeGroup>
+
+<Info>
+  **Any 2xx status code is accepted.** You can return 200, 201, 202, 204, or any other 2xx response. Smartcar treats all 2xx codes as successful delivery.
+</Info>
+
+<Warning>
+  **Response body is ignored.** Smartcar only checks the HTTP status code. You can return an empty body or a simple acknowledgment object.
+</Warning>
+
+### Response Timeout
+
+**Your endpoint must respond within 15 seconds.** Requests that exceed this timeout are treated as delivery failures, even if your server eventually responds with a 200 status.
+
+<Tip>
+  **Decouple receiving from processing.** Persist the webhook payload to a queue or database immediately, return `200 OK`, then process the data asynchronously. This prevents timeouts from long-running business logic.
+</Tip>
+
+### Failed Responses
+
+Any of the following are considered delivery failures and will trigger retries:
+
+* Non-2xx HTTP status codes (including 3xx redirects, 4xx client errors, 5xx server errors)
+* Connection timeouts (> 15 seconds)
+* Connection refused or DNS resolution failures
+* TLS/SSL handshake failures
+* Network errors or connection resets
+
+## Retry Behavior
+
+### Retry Policy
+
+When a delivery fails, Smartcar automatically retries up to **3 times** using an **exponential backoff** strategy with an initial delay of 25 seconds:
+
+| Attempt       | Wait Time   | Total Elapsed        |
+| ------------- | ----------- | -------------------- |
+| 1st (initial) | 0s          | 0s                   |
+| 2nd           | 25 seconds  | 25 seconds           |
+| 3rd           | 50 seconds  | 1 minute 15 seconds  |
+| 4th (final)   | 100 seconds | 2 minutes 55 seconds |
+
+<Info>
+  If all 4 delivery attempts fail, the payload is permanently dropped. Future events will still be attempted as long as the webhook remains active.
+</Info>
+
+### What Triggers Retries
+
+Retries occur for:
+
+* Non-2xx HTTP status codes (3xx, 4xx, 5xx)
+* Request timeouts (> 15 seconds)
+* Network errors (connection refused, DNS failures, etc.)
+* TLS/SSL errors
+
+### What Doesn't Trigger Retries
+
+Once your endpoint returns any 2xx status code, Smartcar considers the delivery successful and will not retry, even if:
+
+* Your processing logic fails later
+* You detect the payload is invalid
+* Your database write fails after responding
+
+<Warning>
+  **Always validate before responding.** If you return a 2xx status code and then discover the payload is invalid, you cannot trigger a retry. The delivery is considered complete.
+</Warning>
+
+### Retry Identification
+
+Each delivery attempt receives a unique `deliveryId`, but the `eventId` remains the same across all retry attempts. Use the `eventId` to identify retries of the same event:
+
+```json theme={null}
+{
+  "eventId": "f7c0f3e6-4c9d-4f0e-8e5d-6e7f8a9b0c1d",  // Same across all retries
+  // ... event data ...
+  "meta": {
+    "deliveryId": "5d569643-3a47-4cd1-a3ec-db5fc1f6f03b",  // Different for each attempt
+    "deliveredAt": 1678901234567
+  }
+}
+```
+
+If the first delivery fails and Smartcar retries, the payload will have:
+
+* **Same `eventId`**: `f7c0f3e6-4c9d-4f0e-8e5d-6e7f8a9b0c1d`
+* **New `deliveryId`**: `a1b2c3d4-e5f6-7890-abcd-ef1234567890`
+* **Updated `deliveredAt`**: timestamp of the retry attempt
+
+<Tip>
+  Use `eventId` for deduplication, not `deliveryId`. The `eventId` uniquely identifies the webhook event, while `deliveryId` only identifies the specific delivery attempt.
+</Tip>
+
+See [Idempotency & Deduplication](/integrations/webhooks/best-practices#implement-idempotency) for best practices on handling retries.
+
+## Concurrent Deliveries
+
+### Multiple Events for the Same Vehicle
+
+Smartcar can deliver **multiple events for the same vehicle simultaneously**. This most commonly occurs when a vehicle is in a partial error state and triggers both:
+
+* A `VEHICLE_STATE` event with signal data
+* A `VEHICLE_ERROR` event with error details
+
+Your webhook endpoint must handle concurrent requests for the same vehicle. Design your processing logic to be thread-safe and avoid race conditions.
+
+<CodeGroup>
+  ```python Python - Thread-Safe Processing theme={null}
+  from threading import Lock
+
+  vehicle_locks = {}
+
+  @app.post("/webhooks/smartcar")
+  def handle_webhook(request):
+      payload = request.json
+      vehicle_id = payload['data']['vehicle']['id']
+      
+      # Get or create a lock for this vehicle
+      if vehicle_id not in vehicle_locks:
+          vehicle_locks[vehicle_id] = Lock()
+      
+      # Process with vehicle-specific lock
+      with vehicle_locks[vehicle_id]:
+          process_payload(payload)
+      
+      return {"status": "received"}, 200
+  ```
+
+  ```javascript Node.js - Async Queue theme={null}
+  const async = require('async');
+  const vehicleQueues = {};
+
+  app.post('/webhooks/smartcar', (req, res) => {
+    const vehicleId = req.body.data.vehicle.id;
+    
+    // Create queue for this vehicle if it doesn't exist
+    if (!vehicleQueues[vehicleId]) {
+      vehicleQueues[vehicleId] = async.queue(processPayload, 1);
+    }
+    
+    // Add to vehicle-specific queue
+    vehicleQueues[vehicleId].push(req.body);
+    
+    // Return 200 immediately
+    res.status(200).json({ status: 'received' });
+  });
+  ```
+</CodeGroup>
+
+### Cross-Vehicle Concurrency
+
+Events for **different vehicles** can and will be delivered concurrently. If you have 1,000 vehicles subscribed to a webhook, you may receive events for multiple vehicles at the same time.
+
+Your infrastructure should be able to handle concurrent requests proportional to your fleet size.
+
+## Event Batching
+
+### Single vs Multiple Deliveries
+
+**One event per delivery.** Each webhook request contains a single event (either `VEHICLE_STATE` or `VEHICLE_ERROR`).
+
+However, the number of deliveries depends on how the vehicle reports changes:
+
+<AccordionGroup>
+  <Accordion title="Scenario 1: Simultaneous Changes (1 delivery)">
+    If a vehicle reports 3 signal changes at the same time (e.g., during a single vehicle data poll), Smartcar delivers **one `VEHICLE_STATE` event** containing all changed signals:
+
+    ```json theme={null}
+    {
+      "eventType": "VEHICLE_STATE",
+      "data": {
+        "triggers": ["Charge.IsCharging", "TractionBattery.StateOfCharge", "TractionBattery.Range"],
+        "signals": {
+          "Charge.IsCharging": { "value": true, ... },
+          "TractionBattery.StateOfCharge": { "value": 85, ... },
+          "TractionBattery.Range": { "value": 250, ... }
+        }
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="Scenario 2: Sequential Changes (3 deliveries)">
+    If a vehicle reports the same 3 signals as separate changes in quick succession, Smartcar delivers **three separate `VEHICLE_STATE` events**:
+
+    **Delivery 1:**
+
+    ```json theme={null}
+    {
+      "eventType": "VEHICLE_STATE",
+      "data": {
+        "triggers": ["Charge.IsCharging"],
+        "signals": { "Charge.IsCharging": { "value": true, ... }, ... }
+      }
+    }
+    ```
+
+    **Delivery 2:**
+
+    ```json theme={null}
+    {
+      "eventType": "VEHICLE_STATE",
+      "data": {
+        "triggers": ["TractionBattery.StateOfCharge"],
+        "signals": { "TractionBattery.StateOfCharge": { "value": 85, ... }, ... }
+      }
+    }
+    ```
+
+    **Delivery 3:**
+
+    ```json theme={null}
+    {
+      "eventType": "VEHICLE_STATE",
+      "data": {
+        "triggers": ["TractionBattery.Range"],
+        "signals": { "TractionBattery.Range": { "value": 250, ... }, ... }
+      }
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
+<Info>
+  **The behavior depends on the vehicle manufacturer.** Some OEMs batch updates, while others stream individual changes. Your integration should handle both patterns.
+</Info>
+
+## Payload Size Limits
+
+The maximum webhook payload size is **50 KB**. This limit applies to the entire JSON payload.
+
+<Info>
+  Most webhook payloads are well under this limit. A typical `VEHICLE_STATE` event with 10-20 signals usually under 5 KB, depending on the signals.
+</Info>
+
+If you're approaching this limit, consider:
+
+* Reducing the number of signals in your webhook subscription
+* Splitting data across multiple webhooks with different signal sets
+
+## Delivery Logs & Monitoring
+
+### Dashboard Logs
+
+View delivery attempt history in the [Smartcar Dashboard](https://dashboard.smartcar.com) under the **Logs** tab. The logs show:
+
+* **Successful deliveries**: Events that received a 2xx response
+* **Failed deliveries**: Events that failed after all retry attempts
+* **Individual retry attempts**: Each attempt with timestamp, status code, and response time
+* **Signal names**: The signals that were included in the webhook payload
+
+<Tip>
+  Use the dashboard logs to:
+
+  * Debug delivery failures
+  * Monitor webhook health
+  * Track which signals triggered events
+  * Verify retry behavior
+</Tip>
+
+### Delivery Metrics
+
+Track key metrics to ensure webhook reliability:
+
+* **Success rate**: Percentage of events delivered successfully on first attempt
+* **Retry rate**: Percentage of events requiring retries
+* **Average response time**: How quickly your endpoint responds
+* **Failure patterns**: Common error codes or failure reasons
+
+<Warning>
+  Set up monitoring alerts for:
+
+  * Success rate drops below 95%
+  * Average response time exceeds 5 seconds
+  * Consecutive failures for the same vehicle
+</Warning>
+
+## Webhook Lifecycle
+
+### Disabling Webhooks
+
+When you disable a webhook in the Smartcar Dashboard:
+
+* Smartcar **stops monitoring** subscribed vehicles for changes
+* Smartcar **stops attempting deliveries** immediately
+* No events are queued or stored while the webhook is disabled
+
+### Re-enabling Webhooks
+
+When you re-enable a webhook:
+
+* Smartcar **resumes monitoring** subscribed vehicles for changes
+* The next event will include a `FIRST_DELIVERY` trigger with current signal values
+* **Not supported:** Events that occurred while disabled are not retroactively delivered
+
+<Info>
+  **No event history while disabled.** Smartcar does not queue events during the disabled period. When you re-enable, you'll receive current state, not historical changes.
+</Info>
+
+## Delivery Guarantees
+
+### At-Least-Once Delivery
+
+Smartcar guarantees **at-least-once delivery** for all webhook events. This means:
+
+* **Guaranteed:** You will receive every event at least once (unless all retry attempts fail)
+* **Expected:** You may receive the same event multiple times
+* **Not guaranteed:** Events are not delivered in order (see below)
+
+### Ordering
+
+**Events are not guaranteed to be delivered in order.** Due to network conditions, retry behavior, and distributed systems, events may arrive out of sequence.
+
+For example:
+
+1. Vehicle's state of charge changes from 50% → 60% at 10:00 AM
+2. Vehicle's state of charge changes from 60% → 70% at 10:05 AM
+3. You might receive the 70% event before the 60% event
+
+<Tip>
+  **Use timestamps to establish order.** Each signal includes `meta.oemUpdatedAt` and `meta.fetchedAt` timestamps. Compare these values to determine the actual sequence of events:
+
+  ```javascript theme={null}
+  function isNewerThan(signalA, signalB) {
+    return signalA.meta.oemUpdatedAt > signalB.meta.oemUpdatedAt;
+  }
+  ```
+</Tip>
+
+### Duplicate Prevention
+
+While Smartcar delivers each event at least once, duplicates can occur due to:
+
+* **Retry attempts**: If your endpoint doesn't return a 2xx response within 15 seconds, Smartcar will retry the same event, resulting in duplicate deliveries
+* **Network issues**: Temporary connectivity problems may cause duplicate sends
+* **Distributed systems**: Race conditions in distributed infrastructure
+
+<Warning>
+  **Most duplicates are caused by slow or failed responses.** If your endpoint takes longer than 15 seconds to respond or returns a non-2xx status code, Smartcar will retry the delivery. Always return a 2xx response quickly to minimize duplicates.
+</Warning>
+
+#### Rare Edge Case: Multiple Deliveries During Confirmation
+
+In extremely rare circumstances, you may receive multiple deliveries for the same error **even when responding quickly**. This can occur when:
+
+1. Smartcar detects a vehicle error (e.g., expired authorization)
+2. A webhook delivery is initiated to your endpoint
+3. **While confirming delivery**, the same error is detected again (e.g., another API request encounters the same expired authorization)
+4. This triggers a second, independent delivery with a **different `eventId`**
+
+**Key characteristics:**
+
+* Happens during a narrow time window (typically milliseconds to seconds)
+* Results in **different `eventId` values** for what is logically the same error condition
+* Each delivery is a legitimate, distinct event from Smartcar's perspective
+* Most common with `VEHICLE_ERROR` events when multiple operations encounter the same error state
+
+**How to handle this:**
+
+If your application is sensitive to duplicate error notifications (e.g., sending user alerts), implement additional deduplication. Use a combination of `userId`, `vehicleId`, error `code`, and a time window (2-5 minutes) in addition to standard `eventId` deduplication.
+
+<Info>
+  **This edge case is rare in practice.** Most applications won't need special handling beyond standard `eventId` deduplication.
+</Info>
+
+Always implement idempotent processing using the unique `eventId` for standard deduplication. See [Reliability Best Practices](/integrations/webhooks/best-practices/reliability#implement-idempotency) for implementation patterns.
+
+## Latency & Timing
+
+### Understanding Webhook Latency
+
+Webhook delivery latency consists of two components:
+
+**1. Detection Latency** - Time for Smartcar to detect a vehicle data change
+
+* Depends on the vehicle manufacturer's integration and data reporting frequency
+* Varies significantly by OEM (from seconds to minutes)
+* Outside of Smartcar's control
+
+**2. Delivery Latency** - Time from detection to HTTP delivery
+
+* Smartcar delivers webhooks within seconds of detecting a change
+* Actual delivery time depends on network conditions and your endpoint's location
+
+<Info>
+  **Total end-to-end latency** = Detection latency (OEM-dependent) + Delivery latency (typically seconds)
+
+  The detection latency varies by manufacturer and is the primary factor in total webhook latency. Once Smartcar detects a change, delivery occurs quickly.
+</Info>
+
+### Delivery Latency
+
+Webhook deliveries typically occur within **seconds** of the triggering event. Latency depends on:
+
+* **Vehicle OEM latency**: Time for the vehicle manufacturer to report data to Smartcar
+* **Change detection**: Time for Smartcar to detect a signal value change
+* **Network latency**: Time to deliver the HTTP request to your endpoint
+
+<Info>
+  Most deliveries complete within 1-5 seconds of Smartcar detecting a change, but OEM latency can vary significantly by manufacturer.
+</Info>
+
+### Event Freshness
+
+Each signal includes two timestamps to help you understand data freshness:
+
+* **`meta.oemUpdatedAt`**: When the vehicle manufacturer recorded the value (Unix timestamp in milliseconds)
+* **`meta.fetchedAt`**: When Smartcar retrieved the value from the OEM (Unix timestamp in milliseconds)
+
+The difference between these timestamps indicates how fresh the data is from the vehicle's perspective.
+
+## Network Requirements
+
+### HTTPS & SSL
+
+All webhook endpoints must:
+
+* Use HTTPS (not HTTP)
+* Have a valid SSL/TLS certificate
+* Support TLS 1.2 or higher
+
+Self-signed certificates and internal corporate CAs are not supported.
+
+### Public Internet Access
+
+Your webhook endpoint must be accessible from the public internet. Smartcar cannot deliver to:
+
+* `localhost` or `127.0.0.1`
+* Private IP addresses (10.x.x.x, 192.168.x.x, 172.16-31.x.x)
+* Internal corporate networks without public DNS
+
+### IP Addresses
+
+Smartcar sends webhook requests from **public IPv4 addresses** that may change over time. We do not publish a static list of IP addresses.
+
+<Warning>
+  **Avoid IP-based firewall rules.** Instead of allowlisting specific IP addresses, use signature verification to authenticate webhook requests. See [Payload Verification](/integrations/webhooks/payload-verification).
+</Warning>
+
+### Firewall Configuration
+
+If you must use firewall rules:
+
+* Allow inbound HTTPS (port 443) from any IP
+* Use signature verification for authentication
+* Monitor for delivery failures that might indicate blocked IPs
+
+## Error Handling
+
+### Temporary vs Permanent Failures
+
+**Temporary failures** (worth retrying):
+
+* 500, 502, 503, 504 status codes
+* Connection timeouts
+* Temporary DNS failures
+* Network blips
+
+**Permanent failures** (not worth retrying):
+
+* 400, 401, 403, 404, 405 status codes
+* Invalid SSL certificates
+* DNS resolution failures for non-existent domains
+
+Smartcar retries both types, but you should fix permanent failures quickly to avoid dropped events.
+
+### Monitoring Delivery Health
+
+Monitor your webhook delivery success rate in the [Smartcar Dashboard](https://dashboard.smartcar.com) **Logs** tab. High failure rates may indicate:
+
+* Your endpoint is down or unreachable
+* Responses are too slow (> 15 seconds)
+* Your endpoint is rejecting requests (4xx errors)
+* SSL certificate issues
+
+<Tip>
+  Set up alerts for:
+
+  * Delivery success rate drops below 95%
+  * Average response time exceeds 5 seconds
+  * Consecutive delivery failures (3+)
+</Tip>
+
+## Best Practices
+
+To build a reliable webhook integration, follow these essential practices:
+
+1. **Respond Quickly** - Return `200 OK` within 200ms. Queue the payload and process asynchronously to avoid timeouts.
+
+2. **Validate Signatures** - Always verify the `SC-Signature` header before processing payloads to ensure authenticity.
+
+3. **Handle Duplicates** - Use `eventId` to detect and skip duplicate deliveries due to retries or network issues.
+
+4. **Use Timestamps** - Compare `meta.oemUpdatedAt` values to establish correct event ordering, as events may arrive out of sequence.
+
+5. **Monitor Failures** - Track delivery success rates and set up alerts for anomalies or consecutive failures.
+
+6. **Test Error Cases** - Verify your retry and error handling logic with test scenarios during development.
+
+For detailed implementation guidance, see our comprehensive [Best Practices Guide](/integrations/webhooks/best-practices/overview).
+
+***
+
+## Related Resources
+
+<CardGroup>
+  <Card title="Event Reference" icon="list" href="/api-reference/webhooks/events/overview">
+    Complete reference for all webhook event types and payloads
+  </Card>
+
+  <Card title="Payload Verification" icon="signature" href="/integrations/webhooks/payload-verification">
+    How to verify webhook signatures for security
+  </Card>
+
+  <Card title="Idempotency" icon="arrows-rotate" href="/integrations/webhooks/best-practices#implement-idempotency">
+    Handle duplicate deliveries and ensure idempotent processing
+  </Card>
+
+  <Card title="Building a Receiver" icon="code" href="/integrations/webhooks/receiving-webhooks">
+    Step-by-step guide to implementing a webhook endpoint
+  </Card>
+</CardGroup>
+
+
+# Event Reference Overview
+Source: https://smartcar.com/docs/api-reference/webhooks/events/overview
+
+Understanding webhook event structure and types
+
+Smartcar delivers webhook events to your configured endpoint. Each event notifies your application about changes to vehicle state, errors encountered during data retrieval, or verification challenges.
+
+## Event Types
+
+Smartcar webhooks deliver three types of events:
+
+<CardGroup>
+  <Card title="VERIFY" icon="shield-check" href="/api-reference/webhooks/events/verify">
+    One-time challenge to verify your callback URL
+  </Card>
+
+  <Card title="VEHICLE_STATE" icon="car" href="/api-reference/webhooks/events/vehicle-state">
+    Fired when any monitored signal changes value
+  </Card>
+
+  <Card title="VEHICLE_ERROR" icon="triangle-exclamation" href="/api-reference/webhooks/events/vehicle-error">
+    Fired when signal retrieval fails or enters error state
+  </Card>
+</CardGroup>
+
+***
+
+## Event Envelope Structure
+
+All webhook payloads follow this consistent structure:
+
+```json Event Envelope theme={null}
+{
+  "eventId": "52f6e0bb-1369-45da-a61c-9e67d092d6db",
+  "eventType": "VEHICLE_STATE",
+  "vehicleId": "bc6ea99e-57d1-4e41-b129-27e7eb58713e",
+  "data": {
+    // Event-specific data (varies by eventType)
+  },
+  "meta": {
+    "version": "4.0",
+    "webhookId": "5a8e5e38-1e12-4011-a36d-56f120053f9e",
+    "webhookName": "Battery Monitor",
+    "deliveryId": "5d569643-3a47-4cd1-a3ec-db5fc1f6f03b",
+    "deliveredAt": 1761896351529
+  }
+}
+```
+
+### Common Fields
+
+All events include these fields:
+
+<ResponseField name="eventId" type="string">
+  Unique identifier for this event. Use this for deduplication to prevent processing the same event twice.
+
+  **Important:** The `eventId` remains the same across delivery retries. Use this to implement idempotency.
+</ResponseField>
+
+<ResponseField name="eventType" type="string">
+  The type of event: `VERIFY`, `VEHICLE_STATE`, or `VEHICLE_ERROR`.
+
+  Use this field to route events to appropriate handlers in your application.
+</ResponseField>
+
+<ResponseField name="vehicleId" type="string">
+  The Smartcar vehicle ID this event relates to.
+
+  **Note:** Not present in `VERIFY` events, which are webhook-level (not vehicle-specific).
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  Event-specific data. The structure varies by `eventType`:
+
+  * **VERIFY**: Contains a `challenge` string to hash and return
+  * **VEHICLE\_STATE**: Contains **all** signals configured in your webhook subscription
+  * **VEHICLE\_ERROR**: Contains error details and affected signals
+
+  See individual event type pages for complete `data` schemas.
+</ResponseField>
+
+<ResponseField name="meta" type="object">
+  Metadata about the webhook delivery.
+
+  <Expandable title="meta object">
+    <ResponseField name="version" type="string">
+      Webhook API version (e.g., `"4.0"`)
+    </ResponseField>
+
+    <ResponseField name="webhookId" type="string">
+      ID of the webhook subscription that triggered this event
+    </ResponseField>
+
+    <ResponseField name="webhookName" type="string">
+      Name of the webhook subscription (user-defined in Dashboard)
+    </ResponseField>
+
+    <ResponseField name="deliveryId" type="string">
+      Unique identifier for this delivery attempt. Different from `eventId` - each retry gets a new `deliveryId`.
+    </ResponseField>
+
+    <ResponseField name="deliveredAt" type="integer">
+      Unix timestamp (milliseconds) when Smartcar sent this webhook
+    </ResponseField>
+
+    <ResponseField name="mode" type="string">
+      Environment mode: `"LIVE"`
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+## Event Delivery Guarantees
+
+All webhook events follow these delivery characteristics:
+
+<AccordionGroup>
+  <Accordion title="At-Least-Once Delivery" icon="rotate">
+    Events may be delivered more than once due to retries. Always use the `eventId` field for deduplication to ensure you process each unique event exactly once.
+
+    **Why this happens:**
+
+    * Network failures
+    * Your endpoint returning non-2xx status codes
+    * Timeout before your endpoint responds
+  </Accordion>
+
+  <Accordion title="No Ordering Guarantees" icon="arrows-up-down">
+    Events are not guaranteed to arrive in chronological order. Concurrent deliveries or network delays can cause later events to arrive before earlier ones.
+
+    **Best practice:** Always use timestamps to determine data freshness:
+
+    * `meta.deliveredAt` - when Smartcar sent the webhook
+    * `signals[].meta.oemUpdatedAt` - when the vehicle manufacturer updated the signal
+    * `signals[].meta.fetchedAt` - when Smartcar retrieved the signal
+  </Accordion>
+
+  <Accordion title="Idempotent Event IDs" icon="fingerprint">
+    The `eventId` field remains constant across all retry attempts for the same event. The `deliveryId` changes with each retry.
+
+    **Implementation:** Store processed `eventId` values for at least 7 days to handle late retries and reprocessing scenarios.
+  </Accordion>
+
+  <Accordion title="Retry Policy" icon="arrows-rotate">
+    Failed deliveries are retried up to 3 times with exponential backoff:
+
+    | Attempt       | Wait Time   | Total Elapsed        |
+    | ------------- | ----------- | -------------------- |
+    | 1st (initial) | 0s          | 0s                   |
+    | 2nd           | 25 seconds  | 25 seconds           |
+    | 3rd           | 50 seconds  | 1 minute 15 seconds  |
+    | 4th (final)   | 100 seconds | 2 minutes 55 seconds |
+
+    See [Delivery Behavior](/api-reference/webhooks/delivery-behavior) for complete details.
+  </Accordion>
+</AccordionGroup>
+
+***
+
+## Event-Specific Documentation
+
+<CardGroup>
+  <Card title="VERIFY Event" icon="shield-check" href="/api-reference/webhooks/events/verify">
+    Initial endpoint verification challenge
+  </Card>
+
+  <Card title="VEHICLE_STATE Event" icon="car" href="/api-reference/webhooks/events/vehicle-state">
+    Signal data delivery when triggers fire
+  </Card>
+
+  <Card title="VEHICLE_ERROR Event" icon="triangle-exclamation" href="/api-reference/webhooks/events/vehicle-error">
+    Error notifications and resolutions
+  </Card>
+</CardGroup>
+
+***
+
+## Next Steps
+
+<CardGroup>
+  <Card title="Delivery Behavior" icon="truck-fast" href="/api-reference/webhooks/delivery-behavior">
+    Understand retry policies and timeouts
+  </Card>
+
+  <Card title="Receiving Webhooks" icon="code" href="/integrations/webhooks/receiving-webhooks">
+    Build your webhook endpoint
+  </Card>
+
+  <Card title="Best Practices" icon="star" href="/integrations/webhooks/best-practices/reliability">
+    Implement idempotency and ordering
+  </Card>
+
+  <Card title="Payload Verification" icon="shield-check" href="/integrations/webhooks/payload-verification">
+    Verify webhook signatures
+  </Card>
+</CardGroup>
+
+
+# VEHICLE_ERROR Event
+Source: https://smartcar.com/docs/api-reference/webhooks/events/vehicle-error
+
+Error notifications and resolution tracking for signal retrieval issues
+
+Triggered when Smartcar encounters an error while attempting to retrieve signal data from a vehicle. This event helps you monitor data availability, understand missing or stale signal data and provide an event to trigger a user action to resolve the issue.
+
+## When This Event Fires
+
+The `VEHICLE_ERROR` event fires when:
+
+* Smartcar detects an error while retrieving signal data
+* The vehicle manufacturer's API returns an error
+* The vehicle is offline or unreachable
+* Authentication, permission, or compatibility errors occur
+
+<Info>
+  **Resolution notifications**: When an error condition is resolved (e.g., vehicle comes back online), Smartcar sends another `VEHICLE_ERROR` event with `state` set to `"RESOLVED"`. This enables automatic recovery workflows.
+</Info>
+
+***
+
+## Error Categories
+
+Errors are categorized by type and include specific error codes:
+
+<AccordionGroup>
+  <Accordion title="Connected Services Account Errors" icon="user-slash">
+    Issues with the user's account with the vehicle manufacturer.
+
+    | Type                         | Code                    | Description                                     |
+    | ---------------------------- | ----------------------- | ----------------------------------------------- |
+    | `CONNECTED_SERVICES_ACCOUNT` | `ACCOUNT_ISSUE`         | General account problem                         |
+    | `CONNECTED_SERVICES_ACCOUNT` | `AUTHENTICATION_FAILED` | Authentication credentials are invalid          |
+    | `CONNECTED_SERVICES_ACCOUNT` | `PERMISSION`            | User lacks necessary permissions                |
+    | `CONNECTED_SERVICES_ACCOUNT` | `SUBSCRIPTION`          | Required subscription is inactive or expired    |
+    | `CONNECTED_SERVICES_ACCOUNT` | `VIRTUAL_KEY_REQUIRED`  | Vehicle requires a virtual key to be configured |
+  </Accordion>
+
+  <Accordion title="Vehicle State Errors" icon="car-battery">
+    Issues with the vehicle's connectivity or state.
+
+    | Type            | Code                     | Description                              |
+    | --------------- | ------------------------ | ---------------------------------------- |
+    | `VEHICLE_STATE` | `REMOTE_ACCESS_DISABLED` | Remote access is disabled on the vehicle |
+    | `VEHICLE_STATE` | `ASLEEP`                 | Vehicle is in sleep mode                 |
+    | `VEHICLE_STATE` | `UNREACHABLE`            | Vehicle is not connected to the internet |
+  </Accordion>
+
+  <Accordion title="Compatibility Errors" icon="plug">
+    Issues with signal availability for the specific vehicle.
+
+    | Type            | Code                   | Description                                      |
+    | --------------- | ---------------------- | ------------------------------------------------ |
+    | `COMPATIBILITY` | `MAKE_NOT_COMPATIBLE`  | Vehicle manufacturer doesn't support this signal |
+    | `COMPATIBILITY` | `SMARTCAR_NOT_CAPABLE` | Smartcar cannot retrieve this signal yet         |
+    | `COMPATIBILITY` | `VEHICLE_NOT_CAPABLE`  | This specific vehicle doesn't support the signal |
+  </Accordion>
+
+  <Accordion title="Permission Errors" icon="lock">
+    Issues with granted permissions.
+
+    | Type         | Code   | Description                             |
+    | ------------ | ------ | --------------------------------------- |
+    | `PERMISSION` | `null` | Required permission not granted by user |
+  </Accordion>
+</AccordionGroup>
+
+***
+
+## Payload Structure
+
+<ResponseField name="eventId" type="string">
+  Unique identifier for this event. Use this for idempotency to prevent duplicate processing.
+</ResponseField>
+
+<ResponseField name="eventType" type="string">
+  Always `"VEHICLE_ERROR"` for this event type.
+</ResponseField>
+
+<ResponseField name="vehicleId" type="string">
+  Smartcar vehicle ID for the vehicle this event relates to.
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  Container for event data.
+
+  <Expandable title="data object">
+    <ResponseField name="user" type="object">
+      Information about the user who connected the vehicle.
+
+      <ResponseField name="id" type="string">
+        Smartcar user ID
+      </ResponseField>
+    </ResponseField>
+
+    <ResponseField name="vehicle" type="object">
+      Vehicle information
+
+      <ResponseField name="id" type="string">
+        Smartcar vehicle ID
+      </ResponseField>
+
+      <ResponseField name="make" type="string">
+        Vehicle manufacturer (e.g., `"TESLA"`, `"FORD"`, `"BMW"`)
+      </ResponseField>
+
+      <ResponseField name="model" type="string">
+        Vehicle model (e.g., `"Model 3"`, `"Mustang Mach-E"`)
+      </ResponseField>
+
+      <ResponseField name="year" type="integer">
+        Vehicle model year
+      </ResponseField>
+    </ResponseField>
+
+    <ResponseField name="errors" type="array">
+      Array of error objects. Multiple errors may occur simultaneously.
+
+      <ResponseField name="type" type="string">
+        Error category: `CONNECTED_SERVICES_ACCOUNT`, `VEHICLE_STATE`, `COMPATIBILITY`, or `PERMISSION`
+      </ResponseField>
+
+      <ResponseField name="code" type="string">
+        Specific error code (see error categories above)
+      </ResponseField>
+
+      <ResponseField name="state" type="string">
+        Error state: `"ERROR"` when error is active, `"RESOLVED"` when the issue has been fixed
+      </ResponseField>
+
+      <ResponseField name="description" type="string">
+        Technical description of the error for logging and debugging
+      </ResponseField>
+
+      <ResponseField name="suggestedUserMessage" type="string">
+        User-friendly error message suitable for display to end users. Use this in your application UI.
+      </ResponseField>
+
+      <ResponseField name="docURL" type="string">
+        Link to detailed error documentation. Useful for linking users to troubleshooting guides.
+      </ResponseField>
+
+      <ResponseField name="resolution" type="object">
+        Suggested resolution steps
+
+        <ResponseField name="type" type="string">
+          Resolution category: `RETRY_LATER`, `CONTACT_SUPPORT`, `USER_ACTION_REQUIRED`, etc.
+        </ResponseField>
+      </ResponseField>
+
+      <ResponseField name="signals" type="array">
+        Array of signal objects that were affected by this error.
+
+        <ResponseField name="code" type="string">
+          Kebab-case signal identifier (e.g., `"location-preciselocation"`)
+        </ResponseField>
+
+        <ResponseField name="name" type="string">
+          Human-readable signal name (e.g., `"PreciseLocation"`)
+        </ResponseField>
+
+        <ResponseField name="group" type="string">
+          Signal category (e.g., `"Location"`, `"TractionBattery"`)
+        </ResponseField>
+      </ResponseField>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="meta" type="object">
+  Webhook delivery metadata. See [Event Reference Overview](/api-reference/webhooks/events/overview#common-fields) for complete `meta` object schema.
+</ResponseField>
+
+## Example Payloads
+
+<Tabs>
+  <Tab title="Error State">
+    Delivered when an error occurs.
+
+    ```json theme={null}
+    {
+      "eventId": "5a537912-9ad3-424b-ba33-65a1704567e9",
+      "eventType": "VEHICLE_ERROR",
+      "vehicleId": "123e4567-e89b-12d3-a456-426614174000",
+      "data": {
+        "user": {
+          "id": "93b3ea96-ca37-43a9-9073-f4334719iok7"
+        },
+        "vehicle": {
+          "id": "123e4567-e89b-12d3-a456-426614174000",
+          "make": "TESLA",
+          "model": "Model 3",
+          "year": 2020
+        },
+        "errors": [
+          {
+            "type": "COMPATIBILITY",
+            "code": "VEHICLE_NOT_CAPABLE",
+            "state": "ERROR",
+            "description": "The vehicle is incapable of performing your request.",
+            "suggestedUserMessage": "Your car is unable to perform this request.",
+            "docURL": "https://smartcar.com/docs/errors/api-errors/compatibility-errors#vehicle-not-capable",
+            "resolution": {
+              "type": "CONTACT_SUPPORT"
+            },
+            "signals": [
+              {
+                "code": "location-preciselocation",
+                "name": "PreciseLocation",
+                "group": "Location"
+              },
+              {
+                "code": "tractionbattery-stateofcharge",
+                "name": "StateOfCharge",
+                "group": "TractionBattery"
+              }
+            ]
+          }
+        ]
+      },
+      "meta": {
+        "version": "4.0",
+        "deliveryId": "48b25f8f-9fea-42e1-9085-81043682cbb8",
+        "deliveredAt": 1761896351529,
+        "webhookId": "123e4567-e89b-12d3-a456-426614174000",
+        "webhookName": "Battery Monitoring",
+        "mode": "LIVE"
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Resolved State">
+    Delivered when an error condition is resolved.
+
+    ```json theme={null}
+    {
+      "eventId": "8d9e0f1a-2b3c-4d5e-6f7a-8b9c0d1e2f3a",
+      "eventType": "VEHICLE_ERROR",
+      "vehicleId": "123e4567-e89b-12d3-a456-426614174000",
+      "data": {
+        "user": {
+          "id": "93b3ea96-ca37-43a9-9073-f4334719iok7"
+        },
+        "vehicle": {
+          "id": "123e4567-e89b-12d3-a456-426614174000",
+          "make": "TESLA",
+          "model": "Model 3",
+          "year": 2020
+        },
+        "errors": [
+          {
+            "type": "VEHICLE_STATE",
+            "code": "UNREACHABLE",
+            "state": "RESOLVED",
+            "description": "The vehicle is now reachable.",
+            "signals": [
+              {
+                "code": "location-preciselocation",
+                "name": "PreciseLocation",
+                "group": "Location"
+              }
+            ]
+          }
+        ]
+      },
+      "meta": {
+        "version": "4.0",
+        "deliveryId": "9f8e7d6c-5b4a-3c2b-1d0e-9f8e7d6c5b4a",
+        "deliveredAt": 1761898351529,
+        "webhookId": "123e4567-e89b-12d3-a456-426614174000",
+        "webhookName": "Battery Monitoring",
+        "mode": "LIVE"
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+***
+
+## Common Error Scenarios
+
+| Scenario                                | Type                         | Code                  | Recommended Action                              |
+| --------------------------------------- | ---------------------------- | --------------------- | ----------------------------------------------- |
+| Vehicle offline                         | `VEHICLE_STATE`              | `UNREACHABLE`         | Retry later; notify user if persistent          |
+| User revoked permissions                | `CONNECTED_SERVICES_ACCOUNT` | `PERMISSION`          | Prompt user to re-authenticate                  |
+| Connected services subscription expired | `CONNECTED_SERVICES_ACCOUNT` | `SUBSCRIPTION`        | Direct user to renew manufacturer subscription  |
+| Signal not supported                    | `COMPATIBILITY`              | `VEHICLE_NOT_CAPABLE` | Remove signal from webhook or handle gracefully |
+| Vehicle asleep                          | `VEHICLE_STATE`              | `ASLEEP`              | Retry later; avoid waking vehicle unnecessarily |
+
+***
+
+## Processing VEHICLE\_ERROR Events
+
+### Basic Handler
+
+```javascript theme={null}
+function handleVehicleError(payload) {
+  const { vehicleId, data } = payload;
+  const { errors } = data;
+  
+  errors.forEach(error => {
+    if (error.state === 'ERROR') {
+      // New error
+      logError(vehicleId, error);
+      notifyUser(vehicleId, error.suggestedUserMessage);
+      
+      // Take action based on error type
+      if (error.resolution.type === 'RETRY_LATER') {
+        scheduleRetry(vehicleId, error.signals);
+      } else if (error.resolution.type === 'USER_ACTION_REQUIRED') {
+        sendUserNotification(vehicleId, error);
+      }
+    } else if (error.state === 'RESOLVED') {
+      // Error resolved
+      logResolution(vehicleId, error);
+      clearErrorState(vehicleId, error.code);
+      notifyUser(vehicleId, 'Issue resolved, data is now available');
+    }
+  });
+}
+```
+
+### Best Practices
+
+<AccordionGroup>
+  <Accordion title="Track error state changes" icon="chart-line">
+    Monitor both `ERROR` and `RESOLVED` states to implement automatic recovery workflows.
+
+    ```javascript theme={null}
+    async function trackErrorState(payload) {
+      const { vehicleId, data } = payload;
+      
+      for (const error of data.errors) {
+        if (error.state === 'ERROR') {
+          await db.errors.insert({
+            vehicleId,
+            errorType: error.type,
+            errorCode: error.code,
+            affectedSignals: error.signals.map(s => s.code),
+            detectedAt: new Date()
+          });
+        } else if (error.state === 'RESOLVED') {
+          await db.errors.update(
+            { vehicleId, errorCode: error.code },
+            { resolvedAt: new Date(), status: 'resolved' }
+          );
+        }
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="Use suggestedUserMessage for notifications" icon="envelope">
+    Display the user-friendly message to vehicle owners instead of technical error descriptions.
+
+    ```javascript theme={null}
+    function notifyVehicleOwner(error, userId) {
+      const message = error.suggestedUserMessage || 
+        'We encountered an issue retrieving data from your vehicle.';
+      
+      sendNotification(userId, {
+        title: 'Vehicle Data Unavailable',
+        body: message,
+        link: error.docURL // Link to troubleshooting docs
+      });
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="Implement retry logic for transient errors" icon="rotate">
+    Some errors (ASLEEP, UNREACHABLE) are transient. Implement exponential backoff retries.
+
+    ```javascript theme={null}
+    const TRANSIENT_ERROR_CODES = ['ASLEEP', 'UNREACHABLE'];
+
+    function shouldRetry(error) {
+      return TRANSIENT_ERROR_CODES.includes(error.code);
+    }
+
+    async function handleTransientError(vehicleId, error) {
+      const retryDelays = [60000, 300000, 900000]; // 1m, 5m, 15m
+      
+      for (const delay of retryDelays) {
+        await sleep(delay);
+        
+        try {
+          // Attempt to fetch data again
+          const data = await smartcar.fetchSignals(vehicleId, error.signals);
+          return data; // Success
+        } catch (err) {
+          // Still failing, continue retrying
+        }
+      }
+      
+      // All retries failed
+      notifyUser(vehicleId, 'Unable to reach vehicle after multiple attempts');
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="Handle multiple simultaneous errors" icon="layer-group">
+    A single `VEHICLE_ERROR` event can contain multiple errors affecting different signals.
+
+    ```javascript theme={null}
+    function categorizeErrors(errors) {
+      const categorized = {
+        transient: [],
+        userAction: [],
+        permanent: []
+      };
+      
+      errors.forEach(error => {
+        if (['ASLEEP', 'UNREACHABLE'].includes(error.code)) {
+          categorized.transient.push(error);
+        } else if (error.resolution.type === 'USER_ACTION_REQUIRED') {
+          categorized.userAction.push(error);
+        } else {
+          categorized.permanent.push(error);
+        }
+      });
+      
+      return categorized;
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="Degrade gracefully in your UI" icon="shield-halved">
+    When errors occur, show stale data with a clear indication that it's not current.
+
+    ```javascript theme={null}
+    function displayVehicleData(vehicleId, hasActiveErrors) {
+      const data = getLastKnownData(vehicleId);
+      
+      return {
+        ...data,
+        isStale: hasActiveErrors,
+        staleSince: getLastSuccessfulFetch(vehicleId),
+        errorMessage: 'Unable to retrieve current data. Showing last known values.'
+      };
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
+***
+
+## Error Resolution Tracking
+
+When an error condition is resolved, Smartcar sends a `VEHICLE_ERROR` event with `state: "RESOLVED"`:
+
+```javascript theme={null}
+function handleErrorResolution(payload) {
+  const { vehicleId, data } = payload;
+  
+  data.errors.forEach(error => {
+    if (error.state === 'RESOLVED') {
+      console.log(`Error resolved for ${vehicleId}: ${error.code}`);
+      
+      // Clear error flags
+      clearVehicleError(vehicleId, error.code);
+      
+      // Resume data collection
+      resumeDataCollection(vehicleId, error.signals);
+      
+      // Notify user
+      notifyUser(vehicleId, 'Your vehicle is now connected and data is available');
+    }
+  });
+}
+```
+
+<Tip>
+  **Automatic recovery**: Use `state: "RESOLVED"` events to automatically resume normal operations without manual intervention.
+</Tip>
+
+***
+
+## Next Steps
+
+<CardGroup>
+  <Card title="Error Reference" icon="circle-exclamation" href="/errors/api-errors">
+    Complete error code documentation
+  </Card>
+
+  <Card title="VEHICLE_STATE Event" icon="car" href="/api-reference/webhooks/events/vehicle-state">
+    Learn about successful signal deliveries
+  </Card>
+
+  <Card title="Reliability Best Practices" icon="shield" href="/integrations/webhooks/best-practices/reliability">
+    Implement idempotency and retry handling
+  </Card>
+
+  <Card title="Delivery Behavior" icon="truck-fast" href="/api-reference/webhooks/delivery-behavior">
+    Understand retry policies
+  </Card>
+</CardGroup>
+
+
+# VEHICLE_STATE Event
+Source: https://smartcar.com/docs/api-reference/webhooks/events/vehicle-state
+
+Signal data delivery when trigger conditions are met
+
+Triggered when one or more signals you've configured as triggers change their value. This event delivers the updated signal data for all subscribed signals in the payload.
+
+<Warning>
+  **All Configured Signals Are Always Included**
+
+  Every `VEHICLE_STATE` event contains **all** signals you configured in your webhook subscription, regardless of which signal(s) triggered the event. This ensures you always have complete vehicle state data.
+
+  Example: If your webhook subscribes to 10 signals but only 1 trigger changes, you'll receive all 10 signals in the payload.
+</Warning>
+
+## When This Event Fires
+
+The `VEHICLE_STATE` event fires when Smartcar detects a signal value change for any trigger signal configured in your webhook.
+
+### Trigger Configuration
+
+You configure which signals should trigger this event through the Smartcar Dashboard when creating or editing a webhook. For example:
+
+**Triggers:**
+
+* `TractionBattery.StateOfCharge` (code: `tractionbattery-stateofcharge`)
+* `Charge.IsCharging` (code: `charge-ischarging`)
+* `Location.PreciseLocation` (code: `location-preciselocation`)
+
+**Subscribed Signals:**
+
+* `TractionBattery.StateOfCharge`
+* `Charge.IsCharging`
+* `Location.PreciseLocation`
+* `Charge.Voltage`
+* `Odometer.TraveledDistance`
+
+If any of the trigger signals change, a `VEHICLE_STATE` event is delivered containing **all five subscribed signals**.
+
+***
+
+## Identifying Which Triggers Fired
+
+The webhook payload includes a `triggers` field that specifies which trigger signal(s) changed to prompt this delivery. This helps you identify what caused the event without comparing all signal values.
+
+### Trigger Types
+
+<AccordionGroup>
+  <Accordion title="Signal Change Triggers" icon="arrows-rotate">
+    When a monitored trigger signal changes value, the `triggers` array contains the signal(s) that changed.
+
+    ```json theme={null}
+    {
+      "triggers": [
+        {
+          "code": "tractionbattery-stateofcharge",
+          "name": "StateOfCharge",
+          "group": "TractionBattery"
+        }
+      ]
+    }
+    ```
+
+    If multiple triggers change simultaneously, all will be included in the array.
+  </Accordion>
+
+  <Accordion title="First Delivery Trigger" icon="flag-checkered">
+    When a webhook subscription is first created, a `FIRST_DELIVERY` trigger is sent to provide the initial state of the vehicle.
+
+    ```json theme={null}
+    {
+      "triggers": [
+        {
+          "code": "FIRST_DELIVERY"
+        }
+      ]
+    }
+    ```
+
+    This initial delivery:
+
+    * Occurs after vehicle subscription to a webhook
+    * Contains all subscribed signals at their current values
+    * Does not indicate any signal value changes
+    * Helps establish baseline state for your application
+
+    **When FIRST\_DELIVERY is sent again:**
+
+    * When a vehicle is unsubscribed and then resubscribed to your webhook
+    * If your endpoint fails to respond with a 2xx status code, Smartcar will retry delivery with the same `FIRST_DELIVERY` trigger
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  Use the `triggers` field to determine the delivery reason. Check for `"code": "FIRST_DELIVERY"` to identify initial state deliveries versus change-triggered deliveries.
+</Tip>
+
+***
+
+## Payload Structure
+
+<ResponseField name="eventId" type="string">
+  Unique identifier for this event. Use this for idempotency to prevent duplicate processing.
+</ResponseField>
+
+<ResponseField name="eventType" type="string">
+  Always `"VEHICLE_STATE"` for this event type.
+</ResponseField>
+
+<ResponseField name="vehicleId" type="string">
+  Smartcar vehicle ID for the vehicle this event relates to.
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  Container for event data.
+
+  <Expandable title="data object">
+    <ResponseField name="user" type="object">
+      Information about the user who connected the vehicle.
+
+      <ResponseField name="id" type="string">
+        Smartcar user ID
+      </ResponseField>
+    </ResponseField>
+
+    <ResponseField name="vehicle" type="object">
+      Vehicle information
+
+      <ResponseField name="id" type="string">
+        Smartcar vehicle ID
+      </ResponseField>
+
+      <ResponseField name="make" type="string">
+        Vehicle manufacturer (e.g., `"TESLA"`, `"FORD"`, `"BMW"`)
+      </ResponseField>
+
+      <ResponseField name="model" type="string">
+        Vehicle model (e.g., `"Model 3"`, `"Mustang Mach-E"`)
+      </ResponseField>
+
+      <ResponseField name="year" type="integer">
+        Vehicle model year
+      </ResponseField>
+    </ResponseField>
+
+    <ResponseField name="triggers" type="array">
+      Array of trigger signal objects that changed to prompt this delivery. Helps identify which configured triggers actually fired.
+
+      <ResponseField name="code" type="string">
+        Kebab-case signal identifier (e.g., `"tractionbattery-stateofcharge"`) or `"FIRST_DELIVERY"` for initial deliveries
+      </ResponseField>
+
+      <ResponseField name="name" type="string">
+        Human-readable signal name (e.g., `"StateOfCharge"`)
+      </ResponseField>
+
+      <ResponseField name="group" type="string">
+        Signal category (e.g., `"TractionBattery"`)
+      </ResponseField>
+    </ResponseField>
+
+    <ResponseField name="signals" type="array">
+      Array of signal objects containing data for **all** signals configured in your webhook subscription. This array always includes every subscribed signal, even if only one trigger changed to fire this event.
+
+      <ResponseField name="code" type="string">
+        Kebab-case signal identifier (e.g., `"tractionbattery-stateofcharge"`)
+      </ResponseField>
+
+      <ResponseField name="name" type="string">
+        Human-readable signal name (e.g., `"StateOfCharge"`)
+      </ResponseField>
+
+      <ResponseField name="group" type="string">
+        Signal category (e.g., `"TractionBattery"`, `"Charge"`, `"Location"`)
+      </ResponseField>
+
+      <ResponseField name="body" type="object">
+        Signal-specific data structure. See [Signals Reference](/api-reference/signals/schema) for complete schemas.
+
+        Each signal type has a unique body structure. Common examples:
+
+        * Battery state of charge: `{ "unit": "percent", "value": 78 }`
+        * Charging status: `{ "value": true }`
+        * Location: `{ "latitude": 37.4292, "longitude": -122.1381 }`
+      </ResponseField>
+
+      <ResponseField name="meta" type="object">
+        Signal metadata with timestamp information
+
+        <ResponseField name="oemUpdatedAt" type="integer">
+          Unix timestamp (milliseconds) when the vehicle manufacturer last updated this signal
+        </ResponseField>
+
+        <ResponseField name="fetchedAt" type="integer">
+          Unix timestamp (milliseconds) when Smartcar retrieved this signal from the vehicle manufacturer
+        </ResponseField>
+      </ResponseField>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="meta" type="object">
+  Webhook delivery metadata. See [Event Reference Overview](/api-reference/webhooks/events/overview#common-fields) for complete `meta` object schema.
+
+  <Expandable title="meta object (VEHICLE_STATE-specific fields)">
+    <ResponseField name="signalCount" type="integer">
+      Number of signals included in this `VEHICLE_STATE` event. Only present for `VEHICLE_STATE` events.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+***
+
+## Example Payloads
+
+<Tabs>
+  <Tab title="Signal Change Trigger">
+    Delivered when a configured trigger signal changes value.
+
+    ```json theme={null}
+    {
+      "eventId": "550e8400-e29b-41d4-a716-446655440000",
+      "eventType": "VEHICLE_STATE",
+      "vehicleId": "9af13248-3b73-4c9d-9a4b-d937ce6bc8e2",
+      "data": {
+        "user": {
+          "id": "93b3ea96-ca37-43a9-9073-f4334719iok7"
+        },
+        "vehicle": {
+          "id": "9af13248-3b73-4c9d-9a4b-d937ce6bc8e2",
+          "make": "TESLA",
+          "model": "Model 3",
+          "year": 2020
+        },
+        "triggers": [
+          {
+            "code": "tractionbattery-stateofcharge",
+            "name": "StateOfCharge",
+            "group": "TractionBattery"
+          }
+        ],
+        "signals": [
+          {
+            "code": "tractionbattery-stateofcharge",
+            "name": "StateOfCharge",
+            "group": "TractionBattery",
+            "body": {
+              "unit": "percent",
+              "value": 78
+            },
+            "meta": {
+              "oemUpdatedAt": 1731940328000,
+              "fetchedAt": 1731940330000
+            }
+          },
+          {
+            "code": "charge-ischarging",
+            "name": "IsCharging",
+            "group": "Charge",
+            "body": {
+              "value": true
+            },
+            "meta": {
+              "oemUpdatedAt": 1731940328000,
+              "fetchedAt": 1731940330000
+            }
+          },
+          {
+            "code": "charge-voltage",
+            "name": "Voltage",
+            "group": "Charge",
+            "body": {
+              "unit": "volts",
+              "value": 240
+            },
+            "meta": {
+              "oemUpdatedAt": 1731940328000,
+              "fetchedAt": 1731940330000
+            }
+          }
+        ]
+      },
+      "meta": {
+        "version": "4.0",
+        "deliveryId": "48b25f8f-9fea-42e1-9085-81043682cbb8",
+        "deliveredAt": 1731940328000,
+        "webhookId": "abde94ff-d57d-43b9-8d09-6020db2d977a",
+        "webhookName": "Battery Monitoring",
+        "signalCount": 3,
+        "mode": "LIVE"
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="First Delivery">
+    Delivered immediately after webhook subscription creation to provide initial vehicle state.
+
+    ```json theme={null}
+    {
+      "eventId": "7c8d9e10-f2a3-4b5c-6d7e-8f9a0b1c2d3e",
+      "eventType": "VEHICLE_STATE",
+      "vehicleId": "9af13248-3b73-4c9d-9a4b-d937ce6bc8e2",
+      "data": {
+        "user": {
+          "id": "93b3ea96-ca37-43a9-9073-f4334719iok7"
+        },
+        "vehicle": {
+          "id": "9af13248-3b73-4c9d-9a4b-d937ce6bc8e2",
+          "make": "TESLA",
+          "model": "Model 3",
+          "year": 2020
+        },
+        "triggers": [
+          {
+            "code": "FIRST_DELIVERY"
+          }
+        ],
+        "signals": [
+          {
+            "code": "tractionbattery-stateofcharge",
+            "name": "StateOfCharge",
+            "group": "TractionBattery",
+            "body": {
+              "unit": "percent",
+              "value": 65
+            },
+            "meta": {
+              "oemUpdatedAt": 1731926100000,
+              "fetchedAt": 1731926102000
+            }
+          },
+          {
+            "code": "charge-ischarging",
+            "name": "IsCharging",
+            "group": "Charge",
+            "body": {
+              "value": false
+            },
+            "meta": {
+              "oemUpdatedAt": 1731926100000,
+              "fetchedAt": 1731926102000
+            }
+          },
+          {
+            "code": "charge-voltage",
+            "name": "Voltage",
+            "group": "Charge",
+            "body": {
+              "unit": "volts",
+              "value": 0
+            },
+            "meta": {
+              "oemUpdatedAt": 1731926100000,
+              "fetchedAt": 1731926102000
+            }
+          }
+        ]
+      },
+      "meta": {
+        "version": "4.0",
+        "deliveryId": "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        "deliveredAt": 1731926100000,
+        "webhookId": "abde94ff-d57d-43b9-8d09-6020db2d977a",
+        "webhookName": "Battery Monitoring",
+        "signalCount": 3,
+        "mode": "LIVE"
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+***
+
+## Signal Reference
+
+The `signals` array contains data structured according to the [Signals Schema Reference](/api-reference/signals/schema). Each signal type has a specific shape:
+
+<CardGroup>
+  <Card title="Charge Signals" href="/api-reference/signals/charge">
+    Battery charging status and metrics
+  </Card>
+
+  <Card title="Battery Signals" href="/api-reference/signals/tractionbattery">
+    State of charge and battery health
+  </Card>
+
+  <Card title="Location Signals" href="/api-reference/signals/location">
+    GPS coordinates and location data
+  </Card>
+
+  <Card title="Odometer" href="/api-reference/signals/odometer">
+    Distance traveled
+  </Card>
+
+  <Card title="Fuel Tank" href="/api-reference/get-fuel-tank">
+    Fuel level for ICE vehicles
+  </Card>
+
+  <Card title="All Signals" href="/api-reference/signals/schema">
+    Complete signal catalog
+  </Card>
+</CardGroup>
+
+***
+
+## Signal-Level Errors
+
+Individual signals within a `VEHICLE_STATE` payload can contain errors if the vehicle doesn't support that signal or if retrieval fails. When this occurs, the signal will have a `status` object with error details instead of a `body` with data:
+
+```json Signal with Error theme={null}
+{
+  "code": "location-isathome",
+  "name": "IsAtHome",
+  "group": "Location",
+  "status": {
+    "error": {
+      "code": "VEHICLE_NOT_CAPABLE",
+      "type": "COMPATIBILITY"
+    },
+    "value": "ERROR"
+  }
+}
+```
+
+<Info>
+  **Partial data delivery**: When some signals succeed and others fail, you'll receive a `VEHICLE_STATE` event with successful signals containing `body` data and failed signals containing `status` errors. This allows you to process available data even when some signals are unavailable.
+</Info>
+
+For complete error handling, see the [VEHICLE\_ERROR Event](/api-reference/webhooks/events/vehicle-error) documentation.
+
+***
+
+## Processing VEHICLE\_STATE Events
+
+### Basic Handler
+
+```javascript theme={null}
+function handleVehicleState(payload) {
+  const { vehicleId, data } = payload;
+  const { signals, triggers } = data;
+  
+  // Check if this is first delivery
+  const isFirstDelivery = triggers.some(t => t.code === 'FIRST_DELIVERY');
+  
+  // Process each signal
+  signals.forEach(signal => {
+    if (signal.body) {
+      // Signal has data
+      console.log(`${signal.name}: ${JSON.stringify(signal.body)}`);
+      updateDatabase(vehicleId, signal.code, signal.body);
+    } else if (signal.status) {
+      // Signal has error
+      console.error(`${signal.name} error: ${signal.status.error.code}`);
+      handleSignalError(vehicleId, signal);
+    }
+  });
+}
+```
+
+### Best Practices
+
+<AccordionGroup>
+  <Accordion title="Use eventId for deduplication" icon="fingerprint">
+    Always check if you've already processed an `eventId` before updating your database. Retries will have the same `eventId` but different `deliveryId`.
+
+    ```javascript theme={null}
+    async function processWebhook(payload) {
+      const { eventId } = payload;
+      
+      // Check if already processed
+      if (await isProcessed(eventId)) {
+        console.log(`Already processed ${eventId}`);
+        return;
+      }
+      
+      // Process the event
+      await handleVehicleState(payload);
+      
+      // Mark as processed
+      await markProcessed(eventId);
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="Check timestamp freshness" icon="clock">
+    Use `signals[].meta.oemUpdatedAt` to determine if incoming data is newer than your stored state. Events can arrive out of order.
+
+    ```javascript theme={null}
+    function shouldUpdate(currentData, newSignal) {
+      if (!currentData) return true;
+      
+      return newSignal.meta.oemUpdatedAt > currentData.timestamp;
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="Handle partial failures gracefully" icon="shield-halved">
+    Some signals may succeed while others fail. Process available data and log errors for unavailable signals.
+
+    ```javascript theme={null}
+    signals.forEach(signal => {
+      if (signal.body) {
+        updateVehicleData(signal);
+      } else if (signal.status) {
+        logSignalUnavailable(signal);
+        // Don't block processing of other signals
+      }
+    });
+    ```
+  </Accordion>
+
+  <Accordion title="Differentiate FIRST_DELIVERY from changes" icon="flag">
+    Use the `triggers` field to identify initial state deliveries vs. actual signal changes.
+
+    ```javascript theme={null}
+    const isFirstDelivery = payload.data.triggers.some(
+      t => t.code === 'FIRST_DELIVERY'
+    );
+
+    if (isFirstDelivery) {
+      // Initialize vehicle state
+      initializeVehicle(payload.data);
+    } else {
+      // Update changed signals
+      updateVehicleState(payload.data);
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
+***
+
+## Next Steps
+
+<CardGroup>
+  <Card title="VEHICLE_ERROR Event" icon="triangle-exclamation" href="/api-reference/webhooks/events/vehicle-error">
+    Handle error notifications
+  </Card>
+
+  <Card title="Signals Reference" icon="list" href="/api-reference/signals/schema">
+    Complete signal schemas and data structures
+  </Card>
+
+  <Card title="Best Practices" icon="star" href="/integrations/webhooks/best-practices/reliability">
+    Implement idempotency and ordering
+  </Card>
+
+  <Card title="Delivery Behavior" icon="truck-fast" href="/api-reference/webhooks/delivery-behavior">
+    Understand retry policies
+  </Card>
+</CardGroup>
+
+
+# VERIFY Event
+Source: https://smartcar.com/docs/api-reference/webhooks/events/verify
+
+One-time challenge to verify your webhook endpoint
+
+A one-time event sent when you first create a webhook to verify that Smartcar can successfully deliver payloads to your callback URL.
+
+<Warning>
+  **Required Before Data Delivery**
+
+  Your endpoint must successfully respond to the `VERIFY` event before Smartcar will deliver any `VEHICLE_STATE` or `VEHICLE_ERROR` events. This confirms your endpoint is configured correctly and ready to receive webhooks.
+</Warning>
+
+## When This Event Fires
+
+The `VERIFY` event fires once when you:
+
+* Create a new webhook in the Smartcar Dashboard
+* Update the callback URL of an existing webhook
+* Click "Verify this webhook" in the Dashboard
+
+***
+
+## Payload Structure
+
+<CodeGroup>
+  ```json Version 4.0 (Current) theme={null}
+  {
+    "eventId": "52f6e0bb-1369-45da-a61c-9e67d092d6db",
+    "eventType": "VERIFY",
+    "data": {
+      "challenge": "3a5c8f72-e6d9-4b1a-9f2e-8c7d6a5b4e3f"
+    },
+    "meta": {
+      "version": "4.0",
+      "webhookId": "5a8e5e38-1e12-4011-a36d-56f120053f9e",
+      "webhookName": "Example Webhook",
+      "deliveryId": "5d569643-3a47-4cd1-a3ec-db5fc1f6f03b",
+      "deliveredAt": 1761896351529
+    }
+  }
+  ```
+
+  ```json Version 2.0 (Legacy) theme={null}
+  {
+    "version": "2.0",
+    "webhookId": "5a8e5e38-1e12-4011-a36d-56f120053f9e",
+    "eventName": "verify",
+    "payload": { 
+      "challenge": "3a5c8f72-e6d9-4b1a-9f2e-8c7d6a5b4e3f"
+    }
+  }
+  ```
+</CodeGroup>
+
+### Payload Fields
+
+<ResponseField name="eventId" type="string">
+  Unique identifier for this verification event.
+</ResponseField>
+
+<ResponseField name="eventType" type="string">
+  Always `"VERIFY"` for this event type.
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  Container for the challenge.
+
+  <Expandable title="data object">
+    <ResponseField name="challenge" type="string">
+      Random string that must be hashed with your Application Management Token and returned in your response.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="meta" type="object">
+  Webhook delivery metadata. See [Event Reference Overview](/api-reference/webhooks/events/overview#common-fields) for the complete `meta` object schema.
+</ResponseField>
+
+***
+
+## Required Response
+
+Your endpoint must respond with:
+
+1. **Status code**: `200 OK`
+2. **Content-Type header**: `application/json`
+3. **Response body**: JSON object with the HMAC-SHA256 hash
+
+```json Response Body theme={null}
+{
+  "challenge": "a3f5c8e9d2b4a1f6e8c7d9a5b3e1f2c4d6a8b9c1e3f5a7b9c2d4e6f8a1b3c5d7"
+}
+```
+
+### Generate the HMAC
+
+Create an HMAC-SHA256 hash of the `challenge` string using your **Application Management Token** as the secret key, then hex-encode the result:
+
+<Tip>
+  Our [backend SDKs](/api-reference/api-sdks) have helper methods to generate the HMAC automatically.
+</Tip>
+
+<CodeGroup>
+  ```python Python theme={null}
+  import smartcar
+
+  hmac = smartcar.hash_challenge(
+      application_management_token, 
+      challenge
+  )
+
+  # Return in response body
+  return {"challenge": hmac}, 200
+  ```
+
+  ```javascript Node.js theme={null}
+  const smartcar = require('smartcar');
+
+  const hmac = smartcar.hashChallenge(
+      application_management_token, 
+      challenge
+  );
+
+  // Return in response body
+  res.status(200).json({ challenge: hmac });
+  ```
+
+  ```java Java theme={null}
+  import com.smartcar.sdk.Smartcar;
+
+  String hmac = Smartcar.hashChallenge(
+      application_management_token, 
+      challenge
+  );
+
+  // Return in response body
+  return ResponseEntity.ok(Map.of("challenge", hmac));
+  ```
+
+  ```ruby Ruby theme={null}
+  require 'smartcar'
+
+  hmac = Smartcar.hash_challenge(
+      application_management_token, 
+      challenge
+  )
+
+  # Return in response body
+  { challenge: hmac }
+  ```
+</CodeGroup>
+
+***
+
+## Complete Handler Example
+
+Here's a complete webhook handler that responds to the `VERIFY` event:
+
+<CodeGroup>
+  ```javascript Node.js (Express) theme={null}
+  const express = require('express');
+  const smartcar = require('smartcar');
+
+  const app = express();
+  app.use(express.json());
+
+  app.post('/webhooks/smartcar', (req, res) => {
+    const { eventType, data } = req.body;
+    
+    if (eventType === 'VERIFY') {
+      // Generate HMAC challenge response
+      const hmac = smartcar.hashChallenge(
+        process.env.SMARTCAR_MANAGEMENT_TOKEN,
+        data.challenge
+      );
+      
+      return res.status(200).json({ challenge: hmac });
+    }
+    
+    // Handle other event types...
+    res.status(200).json({ status: 'received' });
+  });
+  ```
+
+  ```python Python (Flask) theme={null}
+  from flask import Flask, request, jsonify
+  import smartcar
+  import os
+
+  app = Flask(__name__)
+
+  @app.post('/webhooks/smartcar')
+  def webhook_handler():
+      payload = request.get_json()
+      event_type = payload.get('eventType')
+      
+      if event_type == 'VERIFY':
+          # Generate HMAC challenge response
+          hmac = smartcar.hash_challenge(
+              os.environ['SMARTCAR_MANAGEMENT_TOKEN'],
+              payload['data']['challenge']
+          )
+          
+          return jsonify({"challenge": hmac}), 200
+      
+      # Handle other event types...
+      return jsonify({"status": "received"}), 200
+  ```
+
+  ```java Java (Spring Boot) theme={null}
+  @RestController
+  public class WebhookController {
+      
+      @Value("${smartcar.management.token}")
+      private String managementToken;
+      
+      @PostMapping("/webhooks/smartcar")
+      public ResponseEntity<?> handleWebhook(@RequestBody Map<String, Object> payload) {
+          String eventType = (String) payload.get("eventType");
+          
+          if ("VERIFY".equals(eventType)) {
+              // Generate HMAC challenge response
+              Map<String, Object> data = (Map<String, Object>) payload.get("data");
+              String challenge = (String) data.get("challenge");
+              
+              String hmac = Smartcar.hashChallenge(managementToken, challenge);
+              
+              return ResponseEntity.ok(Map.of("challenge", hmac));
+          }
+          
+          // Handle other event types...
+          return ResponseEntity.ok(Map.of("status", "received"));
+      }
+  }
+  ```
+
+  ```ruby Ruby (Sinatra) theme={null}
+  require 'sinatra'
+  require 'json'
+  require 'smartcar'
+
+  post '/webhooks/smartcar' do
+    payload = JSON.parse(request.body.read)
+    event_type = payload['eventType']
+    
+    if event_type == 'VERIFY'
+      # Generate HMAC challenge response
+      hmac = Smartcar.hash_challenge(
+        ENV['SMARTCAR_MANAGEMENT_TOKEN'],
+        payload['data']['challenge']
+      )
+      
+      status 200
+      content_type :json
+      return { challenge: hmac }.to_json
+    end
+    
+    # Handle other event types...
+    status 200
+    content_type :json
+    { status: 'received' }.to_json
+  end
+  ```
+</CodeGroup>
+
+***
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Verification fails in Dashboard" icon="circle-xmark">
+    **Common causes:**
+
+    * Wrong Application Management Token used
+    * HMAC not hex-encoded
+    * Response body doesn't match `{ "challenge": "..." }` format
+    * Endpoint returns non-200 status code
+    * Response takes longer than 15 seconds
+
+    **Solution:** Use the Dashboard's verification modal to see the expected challenge and response. Compare your implementation against the provided code snippets.
+  </Accordion>
+
+  <Accordion title="How do I test VERIFY locally?" icon="laptop">
+    Use [ngrok](https://ngrok.com) or similar to expose your local server:
+
+    ```bash theme={null}
+    ngrok http 3000
+    ```
+
+    Then use the ngrok URL as your callback URI in the Dashboard. The Dashboard will send a real `VERIFY` event to your local endpoint.
+  </Accordion>
+
+  <Accordion title="Can I re-verify my webhook?" icon="rotate">
+    Yes! You can click "Verify this webhook" in the Dashboard at any time to send a new `VERIFY` event to your endpoint.
+  </Accordion>
+
+  <Accordion title="Do I need to handle VERIFY in production?" icon="question">
+    Yes, your production webhook endpoint should always handle the `VERIFY` event type, even after initial verification. This allows you to re-verify from the Dashboard if needed.
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+  **Timeout Requirement**
+
+  Your endpoint must respond to the `VERIFY` event within **15 seconds**. If verification times out, Smartcar will not activate the webhook.
+</Warning>
+
+***
+
+## Next Steps
+
+After successfully responding to the `VERIFY` event, your webhook is activated and will begin receiving vehicle data.
+
+<CardGroup>
+  <Card title="VEHICLE_STATE Event" icon="car" href="/api-reference/webhooks/events/vehicle-state">
+    Learn about signal data deliveries
+  </Card>
+
+  <Card title="VEHICLE_ERROR Event" icon="triangle-exclamation" href="/api-reference/webhooks/events/vehicle-error">
+    Handle error notifications
+  </Card>
+
+  <Card title="Callback Verification Guide" icon="book" href="/integrations/webhooks/callback-verification">
+    Complete step-by-step implementation
+  </Card>
+
+  <Card title="Receiving Webhooks" icon="code" href="/integrations/webhooks/receiving-webhooks">
+    Build a complete webhook handler
+  </Card>
+</CardGroup>
+
+
 # Subscribe
 Source: https://smartcar.com/docs/api-reference/webhooks/subscribe-webhook
 
@@ -8771,16 +10983,16 @@ Subscribe a vehicle to a webhook.
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
-<ParamField path="webhook_id" type="string" initialValue="9b6ae692-60cc-4b3e-89d8-71e7549cf805" required>
+<ParamField type="string">
   The webhook id you are subscribing the vehicle to. This can be found in Dashboard under Webhooks.
 </ParamField>
 
-<Snippet file="code-group-subscribe.mdx" />
+<Snippet />
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/subscribe-webhook.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -8813,21 +11025,21 @@ Unsubscribe a vehicle from a webhook.
 
 **Header**
 
-<ParamField header="Authorization" type="string" initialValue="Bearer {application_management_token}" required>
+<ParamField type="string">
   In the format `Bearer {application_management_token}`. You can find your `application_management_token` under
   your Application Configuration in Dashboard.
 </ParamField>
 
 **Path**
 
-<Snippet file="api-reference/path-vehicle-id.mdx" />
+<Snippet />
 
-<ParamField path="webhook_id" type="string" initialValue="9b6ae692-60cc-4b3e-89d8-71e7549cf805" required>
+<ParamField type="string">
   The [webhook id](/api-reference/management/get-vehicle-connections) you are unsubscribing the vehicle from.
 </ParamField>
 
 <RequestExample>
-  <Snippet file="api-reference/core-sdk-methods/unsubscribe-webhook.mdx" />
+  <Snippet />
 </RequestExample>
 
 ## Response
@@ -8905,7 +11117,7 @@ Smartcar's webhooks now have beta support for sending events in response to even
 * `CHARGING_COMPLETED`
   Webhook events sent in response to vehicle events can be distinguished from schedule events based on the `eventName` property of the POST body. For example, the POST body for event based webhooks will have the following structure:
 
-```json  theme={null}
+```json theme={null}
 {
   "version": "2.0",
   "webhookId": "uuid",
@@ -9017,8 +11229,8 @@ a. no\_vehicles for when the user does not have any vehicles tied to their accou
 
 b. configuration\_error for when exiting Connect back to your app through an error page (see below).
 
-<Frame caption="Error Page">
-  <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/march14-2023-error-page.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=ae2372638a269dd28e74f1d126548799" data-og-width="457" width="457" data-og-height="590" height="590" data-path="images/changelog/march14-2023-error-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/march14-2023-error-page.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=83d51461fa699a42f6e4f02dff613130 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/march14-2023-error-page.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=b009c9870001e0965c93445a272b056d 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/march14-2023-error-page.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=eeb9f79b5fd21addea1c5684dd11add8 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/march14-2023-error-page.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=ee5a92bc1b84aace59c4cbcd723f6d01 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/march14-2023-error-page.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=626fdc0abc2e350585e4c56077eca495 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/march14-2023-error-page.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=1bde0288d4f9eb5afb9189dd7145c0d3 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 c. server\_error which is thrown if there is not another Connect error specified.
@@ -9083,7 +11295,7 @@ The following endpoints are now available to manage vehicle connections:
 
 ## August 9, 2023
 
-<img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/charge_schedule.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=84fe1287c6901131cc9b5be2369fab44" data-og-width="3200" width="3200" data-og-height="1800" height="1800" data-path="images/changelog/charge_schedule.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/charge_schedule.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=db24065792681b059578b879a6ce5475 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/charge_schedule.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=fc0f3debdb57efc07871c4e0a83bc00a 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/charge_schedule.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=9b64889d60f65e0571660f1a5383878e 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/charge_schedule.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=3bcefd1fabb57ab00a9016ae8c9c9223 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/charge_schedule.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=fa88255cae6d302decbc46d5fdd19688 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/charge_schedule.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=916f3a628b5fb7169bd5dd48a015b507 2500w" />
+<img />
 
 The following brand-specific endpoints are now available for Ford and Lincoln vehicles in Canada, the United States, and our supported European countries:
 
@@ -9098,7 +11310,7 @@ Introducing Vehicle Management! With this initial release you're able to see and
 vehicles connected to your applications from within the [Smartcar Dashboard](https://dashboard.smartcar.com/login).
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/vehicleMgmtDashboard.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=9af2e0a52603a89815ca66762c172a29" data-og-width="2880" width="2880" data-og-height="1590" height="1590" data-path="images/changelog/vehicleMgmtDashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/vehicleMgmtDashboard.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=0a4f5306ac471006a3c8acd13d8d8ae4 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/vehicleMgmtDashboard.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=bfd42655ed067a7d6c1ebad25a15ec5b 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/vehicleMgmtDashboard.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=aefd65730da65fac88542cbb2cdb3afa 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/vehicleMgmtDashboard.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=d670ee8d20bc843fa501b1e33d4cd46a 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/vehicleMgmtDashboard.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=e880098c3dac9893f7760030a0d1949f 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/vehicleMgmtDashboard.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=b02e357b72e685c8ab80b064a3d32574 2500w" />
+  <img />
 </Frame>
 
 <br />
@@ -9118,7 +11330,7 @@ vehicles connected to your applications from within the [Smartcar Dashboard](htt
 
 ## September 06, 2023
 
-<img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/lock_status.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=e1db9270f152efe9c9401f6345919fca" data-og-width="3200" width="3200" data-og-height="1800" height="1800" data-path="images/changelog/lock_status.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/lock_status.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=94f90977ffab5f5d744613336b548b5f 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/lock_status.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=5a5c37a05bedbc700a86537f5b8ab604 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/lock_status.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=ca739afdc85621318780e1ed55628487 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/lock_status.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=0282c82752a1a70d026683b23346f742 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/lock_status.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=12ce5a902cf98ece664c9a54f0dc80c0 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/lock_status.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=8a5e789d425ad00eb10922777e9fe36d 2500w" />
+<img />
 
 Lock Status is now available as a Core endpoint and supported by the following makes:
 
@@ -9138,7 +11350,7 @@ In addition to the lock status of the vehicle, Smartcar will also return the ope
 ## October 19, 2023
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/charge_limit_bmw_mini.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=cfb931328327300571d2dd064d833813" data-og-width="2400" width="2400" data-og-height="1255" height="1255" data-path="images/changelog/charge_limit_bmw_mini.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/charge_limit_bmw_mini.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=1d9ebfa2358c9e1b81beadf5caae7d41 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/charge_limit_bmw_mini.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=0e4c96b811a31137183d507a6b3fbbef 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/charge_limit_bmw_mini.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=c80539aa79b733cba4787a6a2ebe0afa 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/charge_limit_bmw_mini.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=4e259b64c8c3a9132831d4aece06a4f0 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/charge_limit_bmw_mini.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=32c9c7bf05d1a47e29aa7c564167131a 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/charge_limit_bmw_mini.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=ca84cdb684b804986c448e20f03f6f2b 2500w" />
+  <img />
 </Frame>
 
 BMW and MINI EVs are now compatible with the following endpoints globally:
@@ -9149,7 +11361,7 @@ BMW and MINI EVs are now compatible with the following endpoints globally:
 ## October 5, 2023
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/hyundai_eu.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=5a9d595bbc4eaaeff8d6e2733f98e0a9" data-og-width="3200" width="3200" data-og-height="1800" height="1800" data-path="images/changelog/hyundai_eu.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/hyundai_eu.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=17ed7688f6b5fced05389e7e8f2c6a76 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/hyundai_eu.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=33089cb00b419552da9b17722da36dca 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/hyundai_eu.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=f4160b04b74a2458414afa61d2a4d9cc 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/hyundai_eu.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=b548db74cdaa631ea6aed4e15f9ac123 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/hyundai_eu.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=67eaf023ac227bb424de3735c03bd3a4 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/hyundai_eu.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=bec7471818e296717b95d8846e99bc8b 2500w" />
+  <img />
 </Frame>
 
 Smartcar is now compatible with Hyundai in supported European countries.
@@ -9157,7 +11369,7 @@ Smartcar is now compatible with Hyundai in supported European countries.
 ## October 3, 2023
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/mazda_porsche_eu.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=22f330b90eaa9977895c8eae44298b65" data-og-width="2400" width="2400" data-og-height="1255" height="1255" data-path="images/changelog/mazda_porsche_eu.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/mazda_porsche_eu.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=e6801f1bef849d125388ec3fb8858436 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/mazda_porsche_eu.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=91f52ac8aaaad1907d79069658304293 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/mazda_porsche_eu.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=9c412cc84faa03ea488420c11f23a586 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/mazda_porsche_eu.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=e8a37b2fb0b7735a997ee11c68c01149 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/mazda_porsche_eu.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=79602a6b576766121d219c3787d972d9 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/mazda_porsche_eu.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=cd6a9044ccd528599534f6d8bd37bead 2500w" />
+  <img />
 </Frame>
 
 Smartcar is now compatible with Mazda and Porsche in supported European countries.
@@ -9165,7 +11377,7 @@ Smartcar is now compatible with Mazda and Porsche in supported European countrie
 ## November 15, 2023
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/cupra_eu.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=7c96b0fbea7a2310f07099d158b00ca7" data-og-width="2932" width="2932" data-og-height="1572" height="1572" data-path="images/changelog/cupra_eu.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/cupra_eu.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=7678b5586145211bdbc7f4c07e1c33d4 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/cupra_eu.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=707a1cd95c85447a51146bb173edfc99 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/cupra_eu.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=28d2d3fd9b897d5cc22047c87f5a3672 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/cupra_eu.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=93236c72c5a26e4f61d62ef9b35a08f0 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/cupra_eu.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=4c65f0120cd8d7d2cdecf3f6e95d6fba 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/cupra_eu.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=203cd9fd852ac6f6d7d7ce56e966733a 2500w" />
+  <img />
 </Frame>
 
 Smartcar is now compatible with CUPRA in supported European countries.
@@ -9186,7 +11398,7 @@ Source: https://smartcar.com/docs/changelog/2024
   ## Connect Playground
 
   <Frame type="simple">
-    <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/connect-playground.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=1f9592758b704c3ce99badf046a43700" data-og-width="3318" width="3318" data-og-height="2086" height="2086" data-path="images/changelog/connect-playground.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/connect-playground.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=3143ae2cab977bd90f7034b0a5ee4b13 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/connect-playground.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=03390e8f93bdab3f73fe3254d2a5d51f 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/connect-playground.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=34debb120b7f94083517d8c10275b011 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/connect-playground.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=bc0ee77976e46eee3a531700023ca9c3 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/connect-playground.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=620c13bcabef1a421e4eafdcdb0fb983 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/connect-playground.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=c3be25a0e958aaec89f75807ec1c3cee 2500w" />
+    <img />
   </Frame>
 
   The [Connect Playground](https://smartcar.com/docs/getting-started/dashboard/playground) is available, making it easier than ever to create your Connect URL and start requesting vehicle consent.
@@ -9284,7 +11496,7 @@ Source: https://smartcar.com/docs/changelog/2024
   ## Connect Insights is now available!
 
   <Frame type="simple">
-    <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/connect-insights.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=1065079feb7f9f26d3f9ed9717a4d7a4" data-og-width="1896" width="1896" data-og-height="1075" height="1075" data-path="images/changelog/connect-insights.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/connect-insights.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=e2552e78e18415d6df5ba41698f50f5f 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/connect-insights.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=559ed4eb67ed2bbba45b2315750fd1e4 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/connect-insights.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=900aa1f85e0fe92baad1e593cb2bca21 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/connect-insights.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=659e2add70ffcec5a3b7818c20394012 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/connect-insights.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=cc9b62e94097e80dedbb8965ceb2406c 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/connect-insights.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=df300b0e7a4a0e57007ae80ea66c31f5 2500w" />
+    <img />
   </Frame>
 
   * Each Connect flow launched for the previous two weeks is available in the Smartcar Dashboard with a variety of ways to search for specific Connect launches.
@@ -9320,7 +11532,7 @@ Source: https://smartcar.com/docs/changelog/2024
   ## Customize brands in Connect
 
   <Frame type="simple">
-    <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/dynamic-brand-filtering.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=cf5f22e5466c95420867714705607c20" data-og-width="2932" width="2932" data-og-height="1572" height="1572" data-path="images/changelog/dynamic-brand-filtering.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/dynamic-brand-filtering.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=5a0154892639d64cb73638ec73fe4db1 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/dynamic-brand-filtering.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=7f86b7a190e9be12b6f9162473d4134a 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/dynamic-brand-filtering.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=b169a91a7d658ac36d346b8080757722 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/dynamic-brand-filtering.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=33814872babfa92b4b0cd7f70f86274f 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/dynamic-brand-filtering.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=6cb51ce5137c25b00c1de9bbcb7d20cb 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/dynamic-brand-filtering.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=5f05873c3feaf100aa0a8d1ab7c156ed 2500w" />
+    <img />
   </Frame>
 
   You can now customize which bands show up in Connect from the [Dashboard](https://dashboard.smartcar.com/). Easily manage which brands your users can connect to based on engine type or endpoint.
@@ -9365,7 +11577,7 @@ Source: https://smartcar.com/docs/changelog/2024
   ## Tesla charge battery and suggested user messages
 
   <Frame type="simple">
-    <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/tesla-charge-battery.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=8dfa7704a994b4904d59ca788ad3c66c" data-og-width="2932" width="2932" data-og-height="1572" height="1572" data-path="images/changelog/tesla-charge-battery.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/tesla-charge-battery.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=d7c8e7007afcbb9aebe34e1e50051670 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/tesla-charge-battery.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=3f7a4d79f887e47f2bf9fc2c304b0aad 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/tesla-charge-battery.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=9120f80df46b039c299cf088e322da62 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/tesla-charge-battery.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=d9347caf589812805b1030f88b0769d9 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/tesla-charge-battery.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=03dc40f51e98b1e55e3a47aec88180df 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/tesla-charge-battery.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=f7c5a1a39d9477922ee20a82405b30fb 2500w" />
+    <img />
   </Frame>
 
   The following make specific endpoints are now available for Tesla across all supported regions:
@@ -9382,7 +11594,7 @@ Source: https://smartcar.com/docs/changelog/2024
   ## Country management for Smartcar Connect
 
   <Frame type="simple">
-    <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/country-management.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=11757f1b4cc5145df6c08af7b0a21c67" data-og-width="2932" width="2932" data-og-height="1572" height="1572" data-path="images/changelog/country-management.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/country-management.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=2df99c5b631a2d61065b8f976e041759 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/country-management.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=d7b5ed24ce0762197f37b8c89ad1ffce 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/country-management.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=e64c23acbe09fa40cb184a4fbbaccae4 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/country-management.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=bf457fba200fc21eaf6b6c7ce21d7f00 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/country-management.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=d163c4ce0d88dec820ccadf17352e027 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/country-management.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=049fead1c0930daa984c4e09e3a97d76 2500w" />
+    <img />
   </Frame>
 
   Country Management is now available for Connect! Easily manage what countries are enabled for your application on Dashboard.
@@ -9396,7 +11608,7 @@ Source: https://smartcar.com/docs/changelog/2024
   ## Organization access for teams
 
   <Frame type="simple">
-    <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/moo.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=71e3545126a0bf4bdaa9f7f1a4b80d02" data-og-width="2932" width="2932" data-og-height="1572" height="1572" data-path="images/changelog/moo.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/moo.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=a14a5206517af13a66101ac86680efe4 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/moo.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=1188be412d1bda8217b043e14e27490b 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/moo.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=1f99c2344af296c4f37903fc4d2b970a 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/moo.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=b1ccd7f90a5a0ad8cc476929d1aed5ed 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/moo.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=f7bb757ebca96ab9ff7de5c6d1bef3d9 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/moo.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=2e45877f32ebcb819ba45cc41ef78966 2500w" />
+    <img />
   </Frame>
 
   Organization access for Teams is now available on Dashboard. Check out our docs page on [Teams](/getting-started/dashboard/teams) for details.
@@ -9412,7 +11624,7 @@ Source: https://smartcar.com/docs/changelog/2024
   ## Subaru US
 
   <Frame type="simple">
-    <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/subaru-us.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=d9f922b4ca6cbe05ac27249f373c5742" data-og-width="3200" width="3200" data-og-height="1800" height="1800" data-path="images/changelog/subaru-us.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/subaru-us.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=28a5d4b52742c8df1635bd4dee8fecaf 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/subaru-us.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=0368c8cf42aaff6a479fe7cf8e6a7b7c 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/subaru-us.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=fcd496da399e39766e8757ae2e12ab5b 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/subaru-us.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=c795382d489288b2ef6c430b0ca196b0 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/subaru-us.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=b0d3df43fbdbed181c269abbd784920d 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/subaru-us.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=e94b4bffc0bf91a88530f283e1173370 2500w" />
+    <img />
   </Frame>
 
   Smartcar is now compatible with Subaru in the US.
@@ -9430,18 +11642,18 @@ Source: https://smartcar.com/docs/changelog/2024
   ## Fuel endpoint for European brands
 
   <Frame type="simple">
-    <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/eu-fuel.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=42a58cd7e3dfccd0d8b8e3ff57166d47" data-og-width="3200" width="3200" data-og-height="1801" height="1801" data-path="images/changelog/eu-fuel.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/eu-fuel.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=c5779195ef6da9a3a815bd904c31dfc7 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/eu-fuel.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=0e3f875e935f95ee630d9139ed9eb9e0 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/eu-fuel.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=7fe12c3a63dd7428b5325262cbedbac2 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/eu-fuel.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=7197eb5a8a6f6e55b98fb734668f6312 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/eu-fuel.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=8032ac715ac27deb8f3c40cb5dcce8c7 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/eu-fuel.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=9d571258929645b870951f826d2070ce 2500w" />
+    <img />
   </Frame>
 
   The [GET /fuel](/api-reference/get-fuel-tank) endpoint is now available for the following brands in supported European countries:
 
-  | <div style={{ width:150 }} /> | <div style={{ width:150 }} /> | <div style={{ width:150 }} /> | <div style={{ width:150 }} /> |
-  | ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
-  | Audi                          | Hyundai                       | Mercedes-Benz                 | Skoda                         |
-  | BMW                           | Jaguar                        | MINI                          | Vauxhall                      |
-  | Citroen                       | Kia                           | Opel                          | Volkswagen                    |
-  | DS                            | Land Rover                    | Peugeot                       | Volvo                         |
-  | Ford                          | Mazda                         | Renault                       |                               |
+  | <div /> | <div />    | <div />       | <div />    |
+  | ------- | ---------- | ------------- | ---------- |
+  | Audi    | Hyundai    | Mercedes-Benz | Skoda      |
+  | BMW     | Jaguar     | MINI          | Vauxhall   |
+  | Citroen | Kia        | Opel          | Volkswagen |
+  | DS      | Land Rover | Peugeot       | Volvo      |
+  | Ford    | Mazda      | Renault       |            |
 </Update>
 
 
@@ -9451,6 +11663,187 @@ Source: https://smartcar.com/docs/changelog/latest
 Learn about Smartcar's latest product updates and improvements
 
 [Subscribe to changelog updates](https://sta26.share.hsforms.com/2CCbdweFdSOeE5B58UvjVlw) and receive email notifications for new releases and updates.
+
+<Update label="January 28th, 2026">
+  ## Charging signal CONNECTOR replaced with CHARGING\_TYPE is now live
+
+  The charging signal change [announced on January 12th](#upcoming-change-charging-signal-connector-to-charging_type) is now live. The `CONNECTOR` type has been replaced with `CHARGING_TYPE` in the following signals:
+
+  * Charge.ChargeLimits
+  * Charge.ChargeRecords
+  * Charge.ChargeTimers
+
+  These signals now return the charging current type (`AC` or `DC`) instead of a connector hardware type. If your integration parses any of these signals and still references the `CONNECTOR` type, update your code to use `CHARGING_TYPE` and parse the `chargingType` field.
+
+  For full details on the change, see the [original announcement](#upcoming-change-charging-signal-connector-to-charging_type) below.
+</Update>
+
+<Update label="January 20th, 2026">
+  ## Send Destination now available for Volkswagen
+
+  You can now use the Smartcar API to send destinations to Volkswagen vehicles in the United States.
+
+  With the Send Destination command, your application can route a destination directly to a driver's built-in navigation screen. This unlocks new workflows:
+
+  * Fleet management: Route drivers to their next pickup, delivery, or service location
+  * Car sharing and rentals: Send return location addresses when a rental period is ending
+  * Repair and maintenance: Direct customers to your nearest service center when maintenance is needed
+  * Charging networks: Guide EV drivers to available chargers when battery is low
+
+  **Get started**: Request the `control_navigation` permission during the Smartcar Connect flow and call [Send Destination](/api-reference/send-destination-to-vehicle).
+</Update>
+
+<Update label="January 16th, 2026">
+  ## Ruby SDK and Java SDK Updated to Support Version 3 of the Vehicles API
+
+  The [Ruby SDK](https://github.com/smartcar/ruby-sdk) and [Java SDK](https://github.com/smartcar/java-sdk) have been updated to support [Version 3 of the Vehicles API](/api-reference/vehicles-api-intro).
+
+  Both SDKs now include three new methods:
+
+  * `get_vehicle` - Retrieve vehicle information
+  * `get_signal` - Get a specific signal for a vehicle
+  * `get_signals` - Get all available signals for a vehicle
+
+  These new methods provide easier access to vehicle data through the latest API version, enabling developers to work with Smartcar's expanded signal catalog and improved data delivery capabilities.
+
+  **Get started**: Update to the latest SDK version and explore the new methods in the [Ruby SDK](https://github.com/smartcar/ruby-sdk) and [Java SDK](https://github.com/smartcar/java-sdk) documentation.
+</Update>
+
+<Update label="January 14th, 2026">
+  ## Volvo Cars Partner Integration now available!
+
+  <Frame>
+    <img alt="" />
+  </Frame>
+
+  Smartcar is excited to announce a partnership with Volvo Cars, providing access to vehicles across the United States and Europe.
+
+  **What's new:**
+
+  * Access charging, battery, location, and odometer data through Smartcar signals
+  * Use the updated consent flow through Volvo's official portal
+
+  Learn more in the [Volvo integration updates](/help/oem-integrations/volvo/whats-new).
+</Update>
+
+<Update label="January 12th, 2026">
+  ## Upcoming change: Charging signal `CONNECTOR` to `CHARGING_TYPE`
+
+  On January 28th, 2026, we're updating three charging-related signals. This is a breaking change that may require updates to your integration.
+
+  **Affected signals:**
+
+  * `Charge.ChargeLimits`
+  * `Charge.ChargeRecords`
+  * `Charge.ChargeTimers`
+
+  **What's changing:**
+  In all three signals, the `CONNECTOR` type is being replaced with `CHARGING_TYPE`. Instead of returning a connector hardware type (e.g., `J1772`), these signals will now return the charging current type (`AC` or `DC`).
+
+  **Before (current format):**
+
+  ```json theme={null}
+  {
+    "type": "CONNECTOR",
+    "condition": {
+      "connectorType": "J1772"
+    }
+  }
+  ```
+
+  **After (new format):**
+
+  ```json theme={null}
+  {
+    "type": "CHARGING_TYPE",
+    "condition": {
+      "chargingType": "AC"
+    }
+  }
+  ```
+
+  Other types such as `GLOBAL` and `LOCATION` remain unchanged.
+
+  **Why we're making this change:**
+  OEMs report connector hardware types inconsistently--some return proprietary strings, others return nothing at all. In contrast, AC vs. DC charging type is more widely provided across manufacturers.
+
+  This change gives you more consistent, actionable data. Rather than maintaining a mapping of connector type strings, you can rely on a simple AC or DC value to determine whether the vehicle is on Level 1/2 charging or DC fast charging.
+
+  **What you need to do:**
+  If your integration parses any of these signals and handles the `CONNECTOR` type, update your code to:
+
+  * Expect `CHARGING_TYPE` instead of `CONNECTOR`
+  * Parse `chargingType` (values: `AC` or `DC`) instead of `connectorType`
+
+  **Timeline:**
+
+  * Now -> January 27th, 2026: Current format remains in place
+  * January 28th, 2026: New format goes live
+
+  **Questions?**
+  Reach out to your Smartcar account manager or [contact support](https://smartcar.com/contact).
+</Update>
+
+<Update label="December 15th, 2025">
+  ## Mercedes-Benz Partner Integration Now Available in Europe!
+
+  <Frame>
+    <img alt="" />
+  </Frame>
+
+  We're excited to announce that Mercedes-Benz is now available on Smartcar! Connect Mercedes-Benz electric vehicles (BEV and PHEV) to access vehicle data and enable smart charging capabilities.
+
+  **What's new:**
+
+  * Mercedes-Benz BEV and PHEV vehicles can now connect through Smartcar
+  * Enhanced connect flow with VIN verification for Mercedes vehicles
+  * Support for key vehicle data signals including battery level, charge status, and location
+
+  **Important notes:**
+
+  * Currently, only Battery Electric Vehicles (BEV) and Plug-in Hybrid Electric Vehicles (PHEV) are supported with this integration.
+  * Need support for other Mercedes vehicle types? [Contact us](https://smartcar.com/contact) to discuss your requirements.
+
+  Check out the [Mercedes-Benz integration guide](/help/oem-integrations/mercedes/whats-new) for more details.
+</Update>
+
+<Update label="December 5th, 2025">
+  ## Vehicle data in Dashboard Coming Soon!
+
+  <Frame>
+    <img alt="" />
+  </Frame>
+
+  Vehicle data will be available in your Smartcar Dashboard. This feature is now rolling out to some customers and will be available to all customers over the next few weeks.
+
+  If you are interested in this feature or have any questions, please reach out to your Smartcar account manager or contact our support team.
+</Update>
+
+<Update label="December 5th, 2025">
+  ## Dashboard updates: API logs, timezone controls, and more!
+
+  We've added more visibility into production usage in the Dashboard so you can monitor API requests and webhook delivery health in one place.
+
+  **What's new:**
+
+  * **API V3 call tracking**: See which API V3 endpoints are being called directly in the Dashboard to monitor migration progress
+  * **Active vehicle counter**: Track how many vehicles are actively delivering webhooks successfully to spot delivery gaps faster
+  * **Timezone customization**: Set your preferred timezone in the Dashboard so charts and tables align with your operations
+
+  **Get started**: Check out these updates in the [Smartcar Dashboard](https://dashboard.smartcar.com/).
+</Update>
+
+<Update label="December 5th, 2025">
+  ## BMW Charging API now live across Europe
+
+  <Frame>
+    <img alt="" />
+  </Frame>
+
+  We've partnered with BMW to bring their new Charging API to Europe, giving energy providers privacy-first access to BMW EVs for smart charging, grid optimization, and home energy management.
+
+  This integration is now available in select European markets. Reach out to your Smartcar team to enable BMW Charging for your app or learn more in the [partnership announcement](https://smartcar.com/blog/smartcar-and-bmw-partnership).
+</Update>
 
 <Update label="November 19th, 2025">
   ## Improved Webhook Logs in Dashboard
@@ -9492,7 +11885,7 @@ Learn about Smartcar's latest product updates and improvements
   ## Polestar and BYD are now available on Smartcar!
 
   <Frame>
-        <img src="https://mintcdn.com/smartcar-docs/emzQHG3wvjtubP6o/images/changelog/byd-polestar-hero.png?fit=max&auto=format&n=emzQHG3wvjtubP6o&q=85&s=e5ef2ea3f67b7dc0a692aa7fbf5c2be3" alt="" data-og-width="4000" width="4000" data-og-height="2400" height="2400" data-path="images/changelog/byd-polestar-hero.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/emzQHG3wvjtubP6o/images/changelog/byd-polestar-hero.png?w=280&fit=max&auto=format&n=emzQHG3wvjtubP6o&q=85&s=d5525d01ad95038c2704d81263df8570 280w, https://mintcdn.com/smartcar-docs/emzQHG3wvjtubP6o/images/changelog/byd-polestar-hero.png?w=560&fit=max&auto=format&n=emzQHG3wvjtubP6o&q=85&s=dbe61497a58c32af80e52d4242a4c281 560w, https://mintcdn.com/smartcar-docs/emzQHG3wvjtubP6o/images/changelog/byd-polestar-hero.png?w=840&fit=max&auto=format&n=emzQHG3wvjtubP6o&q=85&s=e8f5aa463531ed1decef7f3acc947a1f 840w, https://mintcdn.com/smartcar-docs/emzQHG3wvjtubP6o/images/changelog/byd-polestar-hero.png?w=1100&fit=max&auto=format&n=emzQHG3wvjtubP6o&q=85&s=008cf97c1eb1a226a57f11774d800fde 1100w, https://mintcdn.com/smartcar-docs/emzQHG3wvjtubP6o/images/changelog/byd-polestar-hero.png?w=1650&fit=max&auto=format&n=emzQHG3wvjtubP6o&q=85&s=3b333c105d53f52ec5640bb2b0896bf2 1650w, https://mintcdn.com/smartcar-docs/emzQHG3wvjtubP6o/images/changelog/byd-polestar-hero.png?w=2500&fit=max&auto=format&n=emzQHG3wvjtubP6o&q=85&s=dc62215046c3ede7ecda74c217cbcdbf 2500w" />
+    <img alt="" />
   </Frame>
 
   We're excited to bring compatibility for Polestar and BYD, expanding the number of brands on the platform to 45!
@@ -9513,7 +11906,7 @@ Learn about Smartcar's latest product updates and improvements
 
   Example Payload:
 
-  ```json  theme={null}
+  ```json theme={null}
   {
     "code": "location-preciselocation",
     "name": "PreciseLocation",
@@ -9543,7 +11936,7 @@ Learn about Smartcar's latest product updates and improvements
   ## Verifying webhooks just got a lot easier!
 
   <Frame>
-        <img src="https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge.png?fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=9106c3a746b703281d6fc2ada9bd6249" alt="" data-og-width="1344" width="1344" data-og-height="1095" height="1095" data-path="images/changelog/webhook-challenge.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge.png?w=280&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=2af7016d356c723b2c5f2abf8f55e130 280w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge.png?w=560&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=c402b715adfe634727c3db3777518002 560w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge.png?w=840&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=663b8794492a757bc94bb456642ba025 840w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge.png?w=1100&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=c94a590072ee00fe31f2381424ab4866 1100w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge.png?w=1650&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=c36a0f87b244b4a1915d30d9440724c0 1650w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge.png?w=2500&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=f4870c0fed07dab78526f68c81bd989a 2500w" />
+    <img alt="" />
   </Frame>
 
   When you verify a webhook, you’ll see a guided modal with a sample challenge string, copy-ready SDK snippets (Python, Node, Java, Ruby), and inline instructions for hashing the `application_management_token` plus challenge.
@@ -9551,7 +11944,7 @@ Learn about Smartcar's latest product updates and improvements
   When your server responds with your webhook verification, you'll see the response that Smartcar received compared to the expected hash output.
 
   <Frame>
-        <img src="https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge-calculator.png?fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=12cd5091ce9d0c9f0355569227931374" alt="" data-og-width="1344" width="1344" data-og-height="1095" height="1095" data-path="images/changelog/webhook-challenge-calculator.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge-calculator.png?w=280&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=01c41a08770277ac722cf56d2207755d 280w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge-calculator.png?w=560&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=eb0f7b5c79d5f1d5001cf2b4e0c1fc94 560w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge-calculator.png?w=840&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=e6a0dedfdd279d20479326bcd0f855e2 840w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge-calculator.png?w=1100&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=a8fe313d141c595525270f50f960da76 1100w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge-calculator.png?w=1650&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=b671a190797c06c85e5fea49b0dab359 1650w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge-calculator.png?w=2500&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=bc0b603ce9b29e082e1c5372681297e3 2500w" />
+    <img alt="" />
   </Frame>
 
   If the verification fails, the new response tab surfaces the HTTP status, challenge string, expected hash output, and the payload Smartcar received so you can immediately compare and retry. This feedback loop removes trial-and-error, shortens onboarding for new teams, and ensures your webhook endpoint is producing the correct `SC-Signature` before you start ingesting production signals.
@@ -9567,7 +11960,7 @@ Learn about Smartcar's latest product updates and improvements
   ## TypeScript Webhook Recipe Now Available
 
   <Frame>
-        <img src="https://mintcdn.com/smartcar-docs/iqgpvOkAmDxDHjKR/images/changelog/webhook-recipe.png?fit=max&auto=format&n=iqgpvOkAmDxDHjKR&q=85&s=f79b6068e67c4abf926be8364ba2c927" alt="" data-og-width="1084" width="1084" data-og-height="478" height="478" data-path="images/changelog/webhook-recipe.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/iqgpvOkAmDxDHjKR/images/changelog/webhook-recipe.png?w=280&fit=max&auto=format&n=iqgpvOkAmDxDHjKR&q=85&s=e7a2254c470e0b0c0ad02bb633e7a46a 280w, https://mintcdn.com/smartcar-docs/iqgpvOkAmDxDHjKR/images/changelog/webhook-recipe.png?w=560&fit=max&auto=format&n=iqgpvOkAmDxDHjKR&q=85&s=f69339b3afb0046da2cfc90373c0c4dc 560w, https://mintcdn.com/smartcar-docs/iqgpvOkAmDxDHjKR/images/changelog/webhook-recipe.png?w=840&fit=max&auto=format&n=iqgpvOkAmDxDHjKR&q=85&s=36992d7750724602a81a7ef810e01749 840w, https://mintcdn.com/smartcar-docs/iqgpvOkAmDxDHjKR/images/changelog/webhook-recipe.png?w=1100&fit=max&auto=format&n=iqgpvOkAmDxDHjKR&q=85&s=e3bf0d348cd7ef1365f650918a3bb25a 1100w, https://mintcdn.com/smartcar-docs/iqgpvOkAmDxDHjKR/images/changelog/webhook-recipe.png?w=1650&fit=max&auto=format&n=iqgpvOkAmDxDHjKR&q=85&s=68708cc3b32099325654da2d395d978a 1650w, https://mintcdn.com/smartcar-docs/iqgpvOkAmDxDHjKR/images/changelog/webhook-recipe.png?w=2500&fit=max&auto=format&n=iqgpvOkAmDxDHjKR&q=85&s=2c572f846670d048baaf62d2b94d0eb2 2500w" />
+    <img alt="" />
   </Frame>
 
   Deploy production-ready webhook receivers in minutes with our new [TypeScript Webhook Recipe](https://github.com/smartcar/typescript-webhook-recipe)! This AWS serverless template provides everything you need to handle Smartcar webhooks at scale:
@@ -9586,8 +11979,8 @@ Learn about Smartcar's latest product updates and improvements
 <Update label="September 18th, 2025">
   ## Battery Capacity Selection in the Smartcar Connect Flow
 
-  <Frame style={{ width: '250px', align:'center' }}>
-        <img src="https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/battery-capacity-selection.png?fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=ae0a84b03f024606bfce72e9c1f4a66b" alt="" data-og-width="388" width="388" data-og-height="842" height="842" data-path="images/connect/battery-capacity-selection.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/battery-capacity-selection.png?w=280&fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=0efc0d1d7b90e454505fe7243a4695a9 280w, https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/battery-capacity-selection.png?w=560&fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=d8622e19ba50d06c2f9a03b44c426475 560w, https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/battery-capacity-selection.png?w=840&fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=1628e58db5cbcb928930c083347fcbc5 840w, https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/battery-capacity-selection.png?w=1100&fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=474b6ff769fd376096adcca85a67f05f 1100w, https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/battery-capacity-selection.png?w=1650&fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=0940140efeb5fc2101b3119fd83bcb01 1650w, https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/battery-capacity-selection.png?w=2500&fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=d246877f0146b9d4241e0280fb33be5d 2500w" />
+  <Frame>
+    <img alt="" />
   </Frame>
 
   When you request the `read_battery` permission and Smartcar detects multiple possible battery capacity matches for a vehicle, users will now be automatically prompted to select their battery capacity during the Connect flow.
@@ -9601,7 +11994,7 @@ Learn about Smartcar's latest product updates and improvements
   ## Smartcar Partners with Mercedes-Benz Connectivity Services GmbH!
 
   <Frame>
-        <img src="https://mintcdn.com/smartcar-docs/Bg7Kn_bK3IXZAtXq/images/changelog/mercedes-benz-partnership.png?fit=max&auto=format&n=Bg7Kn_bK3IXZAtXq&q=85&s=2f0a2839bdea0e7a22abb7bdf499d080" alt="" data-og-width="2000" width="2000" data-og-height="1200" height="1200" data-path="images/changelog/mercedes-benz-partnership.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/Bg7Kn_bK3IXZAtXq/images/changelog/mercedes-benz-partnership.png?w=280&fit=max&auto=format&n=Bg7Kn_bK3IXZAtXq&q=85&s=19863b313464c4fc620d30df12c4a9c9 280w, https://mintcdn.com/smartcar-docs/Bg7Kn_bK3IXZAtXq/images/changelog/mercedes-benz-partnership.png?w=560&fit=max&auto=format&n=Bg7Kn_bK3IXZAtXq&q=85&s=8adc584c8118cc3862e4a70e0fdc7d91 560w, https://mintcdn.com/smartcar-docs/Bg7Kn_bK3IXZAtXq/images/changelog/mercedes-benz-partnership.png?w=840&fit=max&auto=format&n=Bg7Kn_bK3IXZAtXq&q=85&s=18ca7624f3954d817a3cd7b51d51a15c 840w, https://mintcdn.com/smartcar-docs/Bg7Kn_bK3IXZAtXq/images/changelog/mercedes-benz-partnership.png?w=1100&fit=max&auto=format&n=Bg7Kn_bK3IXZAtXq&q=85&s=9c4cace159b682759250eafbe4dda527 1100w, https://mintcdn.com/smartcar-docs/Bg7Kn_bK3IXZAtXq/images/changelog/mercedes-benz-partnership.png?w=1650&fit=max&auto=format&n=Bg7Kn_bK3IXZAtXq&q=85&s=e87c7810fbb22b610592ce86c4a8709e 1650w, https://mintcdn.com/smartcar-docs/Bg7Kn_bK3IXZAtXq/images/changelog/mercedes-benz-partnership.png?w=2500&fit=max&auto=format&n=Bg7Kn_bK3IXZAtXq&q=85&s=408823c8d10c25f95d4b0deedd48f7c3 2500w" />
+    <img alt="" />
   </Frame>
 
   We are excited to announce our partnership with Mercedes-Benz Connectivity Services GmbH, expanding seamless access to connected vehicle data for developers and businesses across Europe.
@@ -9617,7 +12010,7 @@ Learn about Smartcar's latest product updates and improvements
   ## Introducing the new Smartcar Platform!
 
   <Frame>
-        <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/data-delivery-announcement.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=22175cab894749206bdc7f3bbd118c56" alt="" data-og-width="2402" width="2402" data-og-height="1184" height="1184" data-path="images/changelog/data-delivery-announcement.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/data-delivery-announcement.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=d6cc8471788593a5626764cc2881cbf4 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/data-delivery-announcement.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=a39af0f2a272dafddd4207bce668ca2f 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/data-delivery-announcement.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=145259f351c51046c8409214ddca69bc 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/data-delivery-announcement.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=84cf82cc8964d47d7809359cf7a7c434 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/data-delivery-announcement.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=90a50fe89f0b8f119233a93dd88ce2e4 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/data-delivery-announcement.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=495ecd701a81e7bd883a2edf05fea531 2500w" />
+    <img alt="" />
   </Frame>
 
   We are excited to announce the launch of the new Smartcar Platform, designed to provide a more reliable and efficient way to access vehicle data. With our new [webhook integration](/integrations/webhooks/overview) and [API](/api-reference/intro), developers can now receive vehicle data at higher frequencies and with improved reliability.
@@ -9635,7 +12028,7 @@ Learn about Smartcar's latest product updates and improvements
   ## Smartcar Partners with Ford in Europe!
 
   <Frame>
-        <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/ford-partnership-hero.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=0d8bdcb5a9506b6871a972831f8f2ea9" alt="" data-og-width="4000" width="4000" data-og-height="2400" height="2400" data-path="images/changelog/ford-partnership-hero.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/ford-partnership-hero.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=c95f5ac2fc4be0ae6e976f9ff19b99d9 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/ford-partnership-hero.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=81b7a259276aaa1018ed43c3068ec7d6 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/ford-partnership-hero.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=6fe1ba02a4edb13d5e6d45bfbe8376d6 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/ford-partnership-hero.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=a34b4271c1cbcb43a00857abdd70e9f3 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/ford-partnership-hero.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=93cbb87a39be0a94283a776a836e0e7b 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/ford-partnership-hero.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=b1c4cb8b89e99434d0b80b3474f414e9 2500w" />
+    <img alt="" />
   </Frame>
 
   Smartcar is thrilled to announce our partnership with Ford in Europe, enabling developers to access vehicle data from millions of Ford vehicles across the continent.
@@ -9649,7 +12042,7 @@ Learn about Smartcar's latest product updates and improvements
   ## Rivian Commands Now Available!
 
   <Frame>
-        <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/rivian-commands.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=c07a5542bef44eada0f996aa37b5cd71" alt="" data-og-width="2000" width="2000" data-og-height="1200" height="1200" data-path="images/changelog/rivian-commands.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/rivian-commands.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=b7e1528a5bdecde87feec868ef567ffa 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/rivian-commands.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=e874ee657fe65071470b4f5682e9029c 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/rivian-commands.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=332b861fac4a870fd621e4810189b2f6 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/rivian-commands.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=c931d52c272e3d09db38da14b72fd5d7 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/rivian-commands.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=05381fedbebf1706cfe27e567cf2adef 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/rivian-commands.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=3145f275f64ee54ee870e0fff89b6013 2500w" />
+    <img alt="" />
   </Frame>
 
   You can now use the Smartcar API to send commands—such as lock, unlock, and start/stop charge—to Rivian vehicles!
@@ -9667,7 +12060,7 @@ Learn about Smartcar's latest product updates and improvements
   ## Hyundai Lock and Unlock now available!
 
   <Frame>
-        <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/hyundai-lock-unlock.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=365b003efcb521065fb5e8c2bffcc405" alt="" data-og-width="2000" width="2000" data-og-height="1200" height="1200" data-path="images/changelog/hyundai-lock-unlock.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/hyundai-lock-unlock.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=ae688d6acdb297e0f9c8a62e621bbb19 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/hyundai-lock-unlock.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=9811e1c70e06bbcb8cae0494702aa6cc 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/hyundai-lock-unlock.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=643ad4fdbf60a0baacc687701202343d 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/hyundai-lock-unlock.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=b894dc8e9c8b243baf9edabafe3a2f41 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/hyundai-lock-unlock.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=28721498b08fdfc567d952f9b22931d5 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/hyundai-lock-unlock.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=d908456253a214a14d8ba6ecc19db8ff 2500w" />
+    <img alt="" />
   </Frame>
 
   You can now lock and unlock Hyundai vehicles using the same standard Smartcar API. This new feature enables remote control of vehicle doors for supported Hyundai models, making it easier to build secure and convenient experiences for your users.
@@ -9685,7 +12078,7 @@ Learn about Smartcar's latest product updates and improvements
   ## New Dashboard Overview Page
 
   <Frame>
-        <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/overview-page.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=fb8a6c0720322cad92144050d38a9e57" alt="" data-og-width="2000" width="2000" data-og-height="1200" height="1200" data-path="images/changelog/overview-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/overview-page.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=cae166f5c4c019ddf09ff1d4b07f2f1f 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/overview-page.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=5f9be6c5690e6848193188ba11aaf116 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/overview-page.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=6e3057b0d701384a7c8f1a9f9a0acc34 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/overview-page.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=5758913ff218c5e75f5e4ddc8b6be3ce 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/overview-page.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=1573f58184b866977b041b4732319e60 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/overview-page.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=b73c2dbf3e821e13c28600522548b131 2500w" />
+    <img alt="" />
   </Frame>
 
   Our new Dashboard overview page offers a comprehensive snapshot of your application's performance at a glance. Now, you can quickly visualize:
@@ -9705,7 +12098,7 @@ Learn about Smartcar's latest product updates and improvements
   Smartcar now provides detailed steps for adding and managing Virtual Keys during the connection flow. Virtual Keys are required for third-party applications to issue commands to Tesla vehicles and are the preferred method for accessing data.
 
   <Frame>
-        <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=e504d181b6936f3e0ba17926a2923be2" alt="" data-og-width="2283" width="2283" data-og-height="931" height="931" data-path="images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=02c5b864bdd1e8c5541ed1a1bfc80549 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=a1ca3a12ee41154e396ae4ce1b56af65 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=89747ff417caaf5f36b30737aa24bd0a 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=6f5036a32588937a17a0ea6fb0adc4bb 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=3e4e9358fb3e91fc7e6b1ad8bc7bac0d 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=b8b9c2e23830523d41d1c9c753d3b309 2500w" />
+    <img alt="" />
   </Frame>
 
   For more details, visit the [Virtual Key documentation](/help/oem-integrations/tesla/virtual-key-tesla).
@@ -9715,7 +12108,7 @@ Learn about Smartcar's latest product updates and improvements
   ## atHome signal is now available!
 
   <Frame>
-        <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/athome.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=6fd0f9ec342e5836f7f424b0d84c1551" alt="" data-og-width="1193" width="1193" data-og-height="605" height="605" data-path="images/changelog/athome.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/athome.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=a011b2164337d474b5d280ae97ee291b 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/athome.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=c23ed8efcf27123587ab12e1ce5ac08d 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/athome.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=142571bd4b338cac17e14765929a0cad 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/athome.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=e48de1bbc49d223ed4923582f72371f9 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/athome.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=9d615b05e54d84695fb7f52965ed2788 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/athome.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=2b157e38c55ef34959bd080a5f7198df 2500w" />
+    <img alt="" />
   </Frame>
 
   Smartcar now supports a new vehicle signal `atHome` that returns true or false if a vehicle is at the configured home location. This signal is currently available for Tesla vehicles capable of streaming via [this endpoint](/api-reference/tesla/get-ext-vehicle-info).
@@ -9725,7 +12118,7 @@ Learn about Smartcar's latest product updates and improvements
   ## Our New Support Features Are Live!
 
   <Frame>
-        <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/support_center.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=b47b4cecbce18a2f9c9b54f1ed1703e4" alt="" data-og-width="3348" width="3348" data-og-height="1746" height="1746" data-path="images/changelog/support_center.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/support_center.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=09434d78152cf5a4fb5fc8f0544f518a 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/support_center.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=1030ad4e23f917c159899d6dcff3d8a4 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/support_center.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=7b4cc7e8c048371f57c71d267ee22680 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/support_center.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=41df3dd4696763920e8780d3557801f7 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/support_center.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=80d4221ec447492ac02d377f6ee8bcd9 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/support_center.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=0bc42dc428026b00fc53bdf7819ead91 2500w" />
+    <img alt="" />
   </Frame>
 
   We’re excited to share that our new support experience is now available. These updates are designed to make it easier and faster to get the help you need through self-service tools, AI-powered assistance, and improved visibility into your support history.
@@ -9757,7 +12150,7 @@ Learn about Smartcar's latest product updates and improvements
   ## Support for Single Sign-on (SSO)
 
   <Frame>
-        <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/sso.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=048c472c915140a7f30819b3867f2dc0" alt="" data-og-width="1400" width="1400" data-og-height="1060" height="1060" data-path="images/changelog/sso.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/sso.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=22c8c3065dfae30246b8b7ce849685a9 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/sso.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=b4526a7300ae12b574a813b20ebd1d26 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/sso.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=2b91d146ccb5bbe18bb7cfc31bd43e92 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/sso.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=639e3dfd1732e648b1345fd0dbb186be 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/sso.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=c042b2ae5b902f1af67c3f7cff74d767 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/sso.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=af0ff4a69b4c60aae59f1d010c7375df 2500w" />
+    <img alt="" />
   </Frame>
 
   Single Sign-On (SSO) is now available for teams on an Enterprise plan. To get
@@ -9770,11 +12163,11 @@ Learn about Smartcar's latest product updates and improvements
   ## User Selected Battery Capacity
 
   <Frame>
-        <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity-connect.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=c961d991a12ec7159956c2c019c2c3d3" alt="" data-og-width="1557" width="1557" data-og-height="844" height="844" data-path="images/changelog/battery-capacity-connect.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity-connect.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=e5adb5112b52ea9e44dfec0560a553c0 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity-connect.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=39d36e8ce845e2160e7b4c53f2fc3a8d 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity-connect.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=98e1670947a946171f6317d42ef64395 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity-connect.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=e18cbf7b80707eaaadfc77ae045e96ee 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity-connect.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=abd113f48a42da549583afb78a8cb640 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity-connect.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=548482aa480e985154dbcaef33171082 2500w" />
+    <img alt="" />
   </Frame>
 
   <Frame>
-        <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=8c3bb7b334461e7cb0c51541b5f65f14" alt="" data-og-width="1568" width="1568" data-og-height="1209" height="1209" data-path="images/changelog/battery-capacity.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=7c334ae84b82eab6a73957919d7f7d54 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=8b97a7c6bed8fd28ba4ef169345bac29 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=5499cebd357e498dc3ffa1275cddf8d9 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=b95903505b20ef79d8b58326e7e992af 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=8081dbd7c77135f86f12bb622b0c2da1 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/battery-capacity.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=20983c624dcb77f3a2d5d00e8ba06402 2500w" />
+    <img alt="" />
   </Frame>
 
   Developers can now redirect vehicle owners to a Smartcar Connect url where they can select the [battery capacity](/api-reference/get-nominal-capacity) of their vehicle for cases where the battery capacity cannot be accurately determined. This can occur when vehicle owners purchase extension packs, or software upgrades specific to their vehicle. When a user selects an option, Smartcar will return this value with `USER_SELECTED` as the source.
@@ -9790,7 +12183,7 @@ Learn about Smartcar's latest product updates and improvements
   ## Support for Simplified Chinese
 
   <Frame>
-        <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/simplified-chinese.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=c8d7225d911a5d6582055f33660021b6" alt="" data-og-width="1050" width="1050" data-og-height="1620" height="1620" data-path="images/changelog/simplified-chinese.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/simplified-chinese.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=a8db316e1b5b4548710116205c6c2daf 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/simplified-chinese.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=4cc6ed25b42c4120b3ec8177e4472961 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/simplified-chinese.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=2c16cd2f676e87737aa84219847e30d1 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/simplified-chinese.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=91621b392e156878162b725ffe2db228 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/simplified-chinese.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=a86833cdbd8f53bd6ff079031fe57c1b 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/simplified-chinese.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=5da4895e6c83a1b561563ecd9b68ae9c 2500w" />
+    <img alt="" />
   </Frame>
 
   Vehicle owners can now select Simplified Chinese as they go through the Smartcar Connect flow to connect their cars.
@@ -9812,7 +12205,7 @@ Learn about Smartcar's latest product updates and improvements
   ## New Billing page in Dashboard
 
   <Frame>
-        <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/billing-page.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=a397ed2408731b110969d82626753f8e" alt="" data-og-width="2844" width="2844" data-og-height="2734" height="2734" data-path="images/changelog/billing-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/billing-page.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=a28d49467d764e61a30ee3b55d829ca8 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/billing-page.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=4aa6539c0d3a00e7e24e854122c6f97d 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/billing-page.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=fcae21a3d6f8f2b15152ea98081ed751 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/billing-page.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=017dcc3fc88a12b09724d1ca36d4ace5 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/billing-page.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=53a863969b8390b2072e5df30d4e922b 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/changelog/billing-page.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=df3f822c49f8021f089f19bd48a78ade 2500w" />
+    <img alt="" />
   </Frame>
 
   This new page provides more visibility and the ability to update your billing information, view past invoices, and view your plan features and available upgrade options.
@@ -9844,22 +12237,22 @@ response_type=code
 
 Alternatively, your users can manually change their country and language on Connect's preamble screen:
 
-<Frame caption="Country selector dropdown on the Preamble screen in Connect" type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/countrySelector.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=6ec90575ab9a84181c4be3ef06a66bfc" data-og-width="786" width="786" data-og-height="1132" height="1132" data-path="images/connect/countrySelector.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/countrySelector.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=f225235b0f894d8b89f5546bbfea87b3 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/countrySelector.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=04a23419bd9c409983c2c5d68095c954 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/countrySelector.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=dad237a120e8b3206c84447fd709280b 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/countrySelector.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=ef748d2898f29a73762bf2183b351306 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/countrySelector.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=76f51cd9c73acae174b740211ddfd99e 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/countrySelector.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=a6846d3072186cd52a0b2a22c104a678 2500w" />
+<Frame type="simple">
+  <img />
 </Frame>
 
 
 # Connect Flows
 Source: https://smartcar.com/docs/connect/advanced-config/flows
 
-Connect can be launched with three different workflows (defult, single select, and single select with VIN). Depending on your use case and what information you  have about the vehicle ahead of a launching Connect, you may be able to leverage one of these flows for a more streamlined Connect experience.
+Connect can be launched with three different workflows (default, single select, and single select with VIN). Depending on your use case and what information you  have about the vehicle ahead of a launching Connect, you may be able to leverage one of these flows for a more streamlined Connect experience.
 
 <Tabs>
-  <Tab title="Default" defaultOpen="true">
+  <Tab title="Default">
     When you launch Connect, users will be able to select the brand of their vehicle from a list before they enter their credentials and grant access to your application.
 
-    <Frame caption="Default Smartcar Connect Flow">
-      <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/default-connect-flow.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=c2cd906b5876221be223249b7ba0c8ef" data-og-width="3782" width="3782" data-og-height="1942" height="1942" data-path="images/default-connect-flow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/default-connect-flow.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=57674aaf78d5e84ec7acf3a3e987101d 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/default-connect-flow.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=3009ebe305a4b1cbe0559c525f3b8bde 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/default-connect-flow.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=2d05dffc04980fbac98e83da00a09218 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/default-connect-flow.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=4c7f94b577ddffff375afe841fe094b5 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/default-connect-flow.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=dc9a2de37a38d85955d176e3eea6a968 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/default-connect-flow.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=bfc194d9d2adabe6d5b0d2478dbe5954 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -9873,8 +12266,8 @@ Connect can be launched with three different workflows (defult, single select, a
 
     Limits the user's selection on the permissions screen to a single car if there are multiple vehicles on their connected services account. Notice that check-boxes turn into radio buttons, and the call to action wording changes slightly.
 
-    <Frame caption="Grant Screen - Single Select without VIN">
-      <img src="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/single-selection.png?fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=c0ea2b982a0c93a3ea88f57b73e22041" data-og-width="863" width="863" data-og-height="1867" height="1867" data-path="images/single-selection.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/single-selection.png?w=280&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=a3620d3ee18252ab2ca59ff4e87fe53a 280w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/single-selection.png?w=560&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=ebc0df1e6ee5fbb05d56a42e0b326958 560w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/single-selection.png?w=840&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=7976153b366c422d046291d2783b1846 840w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/single-selection.png?w=1100&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=ef5334216cccf2e27d08afee2e632dd2 1100w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/single-selection.png?w=1650&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=bd9266503099f1caba742b83d7c9bb94 1650w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/single-selection.png?w=2500&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=e3e1effe1e6566d0962278db31c4d410 2500w" />
+    <Frame>
+      <img />
     </Frame>
 
     To enable Single Select, you can pass `single_select=true` as URL parameter when launching Smartcar Connect.
@@ -9886,8 +12279,8 @@ Connect can be launched with three different workflows (defult, single select, a
     1. Smartcar  decodes the VIN to get the brand and send the user to the appropriate login form directly
     2. If the owner has more than one vehicle on their connected services account, we’ll only show the VIN that was passed to us on the permission grant screen.
 
-    <Frame caption="Single Select /w VIN: Preamble > Brand’s Login Form > Grant Screen  - no vehicle choice">
-      <img src="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/single-select.png?fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=f27cd7030d595ec7c56f9a3dd537cfbc" data-og-width="2822" width="2822" data-og-height="1946" height="1946" data-path="images/single-select.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/single-select.png?w=280&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=2bed927de3ccb4ffcf2b97bd0451cc0a 280w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/single-select.png?w=560&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=884a0ea1717068601a7a1ce8e8b6d0c0 560w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/single-select.png?w=840&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=c3adb6503c4c610b99c9cae241e5f65f 840w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/single-select.png?w=1100&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=43e2c5bab7ff3861f6aee498b2ae81b7 1100w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/single-select.png?w=1650&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=428c81f882fb76a74c9fbebf816fa50f 1650w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/single-select.png?w=2500&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=34424df262f891adcb7281f89fbfc220 2500w" />
+    <Frame>
+      <img />
     </Frame>
 
     To enable Single Select with VIN, you can pass `single_select=true` and `single_select_vin=:vin` as URL parameters when launching Smartcar Connect.
@@ -9898,8 +12291,8 @@ Connect can be launched with three different workflows (defult, single select, a
 
     Instead of having users go through the brand selector screen, you can pass us a brand in the Connect URL and send the user to the appropriate login form directly.
 
-    <Frame caption="Brand Select">
-      <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/brand-select.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=8c25487faed02ad5dfba4e3a853a8ad0" data-og-width="2822" width="2822" data-og-height="1946" height="1946" data-path="images/brand-select.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/brand-select.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=60a46248faa5b363388cedaee53ef617 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/brand-select.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=f5c68e202d9fa45e93cfbc145acad703 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/brand-select.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=6b43c15fd66151bcb7bfbce57bbfb923 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/brand-select.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=c938d1dd783ddd36b1bcee393fd95769 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/brand-select.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=8a255483bf29d22f3aaaea0157d64cf3 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/brand-select.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=3b1a65832e403075d321921f96c928a9 2500w" />
+    <Frame>
+      <img />
     </Frame>
 
     To enable Brand Select, you can pass `make` as URL parameter when launching Connect. For example, `make=TESLA`
@@ -9930,19 +12323,19 @@ Our SDKs make integrating Smartcar fast and easy in different languages and fram
 For mobile or single page web apps, you can use one of our frontend SDKs. Please note that our frontend SDKs only handle
 integrating Connect into your application. You will still need to use a [backend SDK](/api-reference/api-sdks) to manage tokens and make API requests to vehicles.
 
-<Snippet file="sdks/connect-sdk-card-group.mdx" />
+<Snippet />
 
 <Note>**Note:** In addition to using a frontend SDK to integrate with Smartcar Connect, a backend SDK is strongly recommended to securely manage tokens, receive data from Smartcar, and make API requests to issue commands to vehicles. The backend SDK facilitates authentication, token exchange, and all communication with Smartcar’s APIs.</Note>
 
 For server-side rendered applications, you can use one of our backend SDKs:
 
-<Snippet file="sdks/api-sdk-card-group.mdx" />
+<Snippet />
 
 <br />
 
 <Tip>
   Don't see an SDK for your language? No problem!
-  As long as you can build a URL and handle http requests, you're good to go.
+  As long as you can build a URL and handle HTTP requests, you're good to go.
 </Tip>
 
 
@@ -9955,7 +12348,7 @@ Source: https://smartcar.com/docs/connect/dashboard-config
 
 To get started, register your application with Smartcar by navigating to our [dashboard](https://dashboard.smartcar.com/login).
 
-After registration, your application will be assigned a `CLIENT_ID` and a `CLIENT_SECRET`. The `CLIENT_SECRET` must be kept safe and used only in exchanges between your application’s server and Smartcar’s <Tooltip tip="https://connect.smartcar.com">authorization server</Tooltip>.
+After registration, your application will be assigned a `CLIENT_ID` and a `CLIENT_SECRET`. The `CLIENT_SECRET` must be kept safe and used only in exchanges between your application’s server and Smartcar’s <Tooltip>authorization server</Tooltip>.
 
 ## Redirect URIs
 
@@ -9994,7 +12387,7 @@ Upon successfully accepting the permissions, Smartcar will redirect the user bac
   An authorization code used to obtain your initial `ACCESS_TOKEN`. The auth `code` expires after **10 minutes**.
 </ResponseField>
 
-<Snippet file="response-connect-state.mdx" />
+<Snippet />
 
 ```http Success theme={null}
 HTTP/1.1 302 Found
@@ -10015,7 +12408,7 @@ For a detailed description of these errors, please see our [errors page](/api-re
   A detailed description of what caused the error
 </ResponseField>
 
-<Snippet file="response-connect-state.mdx" />
+<Snippet />
 
 ```http Error theme={null}
 HTTP/1.1 302 Found
@@ -10054,26 +12447,26 @@ To support vehicle commands such as lock/unlock or start/stop charge, Rivian req
 
 If permissions for commands are requested in your Connect URL (i.e. `control_security`, `control_charge`), Rivian owners will be prompted to pair their phone to the vehicle to complete the connection. After successful login, users will see a list of vehicles within their Rivian account to pair to. It is important that the mobile phone has Bluetooth enabled at this time.
 
-<Frame caption="Prompting the user to select which Rivian vehicle to connect to">
-  <img width="500" src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-vehicles.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=ab67ad9f1eaf09e8f819bae41e184878" data-og-width="1170" data-og-height="2532" data-path="images/connect/rivian-bt-vehicles.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-vehicles.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=0ebd0cc2517c7262eada5c3d120e481c 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-vehicles.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=7c0917e2712f307fcebb78596118402f 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-vehicles.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=9580d964e0ded9ee928f511e6d034829 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-vehicles.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=79929c99995f70b236dea4220c83ee05 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-vehicles.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=92c58c24d3dff873cff536db242f18db 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-vehicles.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=125d2974195673be2afa68c9bcf71aa8 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 After selecting the vehicle, the user will be prompted to tap “Set up now” on the Rivian vehicle’s display and follow any on-screen prompts to connect.
 
-<Frame caption="Prompting the user to pair their Rivian vehicle via Bluetooth">
-  <img width="500" src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-display.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=3bbe88f38e27fa53afffce49497c3128" data-og-width="1170" data-og-height="2532" data-path="images/connect/rivian-bt-display.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-display.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=befb0318a44c14ba29f0610c4c38161d 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-display.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=1ab0e4a937a381fc0602db496122c41c 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-display.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=22aebbf10671db0cc7255e78d36a40d7 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-display.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=6b4cb07916265fd2edbd1b150277eb69 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-display.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=afa0b9d985c48c69ef33db6f50d493e5 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-display.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=f4c976d28cc20b1b45eeafe15d427034 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 Once setup is complete, the application will be able to issue commands to the Rivian vehicle.
 
-<Frame caption="Rivian Bluetooth pairing complete">
-  <img width="500" src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-complete.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=827d7fce67b6225fca9f32104fe3fa41" data-og-width="1170" data-og-height="2532" data-path="images/connect/rivian-bt-complete.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-complete.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=e1105d614fb4847e64a766855b6dd824 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-complete.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=b0b3612943edf9c830e86f3ff48cd8fe 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-complete.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=ecb5e1c23aebd618b309e9e96f59ef3f 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-complete.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=8d466f07436f7cd81bfc3d92ed8cf694 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-complete.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=0ed4e36b7699e79a3105fcdb35d59507 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-complete.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=4eefc7e0c954f8dca77de5f5346266f1 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 Should Bluetooth be disabled or the Rivian display prompts not followed, the Bluetooth connection will not be established and the vehicle will not be connected to your application.
 
-<Frame caption="Warning users that vehicles that are not paired via Bluetooth will not be connected to the application">
-  <img width="500" src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-not-connected.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=1c25f6c5891bd9b69693804047b534af" data-og-width="1170" data-og-height="2532" data-path="images/connect/rivian-bt-not-connected.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-not-connected.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=9a94b0c0e44c7988dedc653e8be0189c 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-not-connected.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=dae7e524cb3b5d2097dc91d1e3499fd1 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-not-connected.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=b49a9ed5b2ac81d0d8ca4424bca88247 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-not-connected.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=cf3bd4e1bc983fbfe58ac5984bf0caf9 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-not-connected.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=7a42ae6508b36d8da78bbea73cb12d40 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/connect/rivian-bt-not-connected.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=8fee16e39c6afcd5e18ee01f9623c201 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Notes
@@ -10098,8 +12491,8 @@ For more information about Virtual Keys, please visit the [Virtual Key page](/he
 
 Smartcar Connect will present Tesla vehicle owners a prompt to install the Tesla Virtual Key after granting access and prior to redirecting them back to your application.
 
-<Frame caption="Prompting the user to add a Virtual Key">
-  <img width="700" src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=e504d181b6936f3e0ba17926a2923be2" data-og-width="2283" data-og-height="931" data-path="images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=02c5b864bdd1e8c5541ed1a1bfc80549 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=a1ca3a12ee41154e396ae4ce1b56af65 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=89747ff417caaf5f36b30737aa24bd0a 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=6f5036a32588937a17a0ea6fb0adc4bb 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=3e4e9358fb3e91fc7e6b1ad8bc7bac0d 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=b8b9c2e23830523d41d1c9c753d3b309 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 When users open the virtual key link, depending on their device, they will be redirected to the Tesla app or prompted to scan a QR code.
@@ -10108,27 +12501,37 @@ When users open the virtual key link, depending on their device, they will be re
   <Tab title="Mobile Device">
     On mobile devices, they will be redirected to the Tesla app and prompted to add the Virtual Key
 
-    <Frame caption="Opening the link on a mobile device with the Tesla app installed">
-      <img width="600" src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/mobile.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=1aa3cfa6758a83b3c5384019c8ce9516" data-og-width="4964" data-og-height="4854" data-path="images/help-center/oem-integrations/tesla/add-virtual-key/mobile.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/mobile.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=38179fb64a3f35c9c6412881a41f63a2 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/mobile.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=dd132f40eaf0ac8ce3f8c06a4a49937a 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/mobile.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=d1f968b7d55de343324b9c34fa1445ae 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/mobile.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=40b9a8fa4ac2c2060da42b5cf08d849b 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/mobile.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=a01aa61cae09b50959b4f8d03936e056 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/mobile.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=2978ca715f21ff393c8a6fcd150d6b96 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
   <Tab title="Desktop">
     On Desktop, they will be prompted to scan the QR code which in turn opens up the Tesla app and prompts them to add a Virtual Key
 
-    <Frame caption="Opening the link on a desktop">
-      <img width="600" src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/desktop.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=d23186ba53fe3df10da5569734e35a55" data-og-width="2000" data-og-height="2283" data-path="images/help-center/oem-integrations/tesla/add-virtual-key/desktop.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/desktop.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=1fef759823638e7e4bef332c9ecc2746 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/desktop.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=b540a6e8a73a09c2335212f7e76cc83d 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/desktop.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=925d9141cba67f54650113d5b89eff78 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/desktop.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=fb91f775461570fbf9babf0d1aa09e3f 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/desktop.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=072106f529447f5d80c34d216936f07c 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/desktop.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=c64d864789f7d4e035cc4c50bf2cb7dd 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 </Tabs>
 
 Virtual Key status can be checked at any time from the Tesla infotainment screen under Settings > Locks.
 
-<Frame caption="Check Virtual Key status from your Tesla">
-  <img width="600" src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/infotainment.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=2aa353d17ed5cde11109469fd2e0a798" data-og-width="2720" data-og-height="1802" data-path="images/help-center/oem-integrations/tesla/add-virtual-key/infotainment.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/infotainment.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=79989c8784343f6e73094b0e0ebcf348 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/infotainment.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=d8b4063d497c846e867109f96ee6afad 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/infotainment.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=4df5837d63f70457f4be3a837ad565d9 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/infotainment.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=13e05d49490a3d98848e8045e183fb2c 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/infotainment.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=b6b2d077092b08c3fb72f852f706d256 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/infotainment.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=990cf7ae17b09c73129ac1eb6cf934ae 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 Smartcar will automatically determine which Tesla vehicles require a Virtual Key and prompt users to add it only for those vehicles. If a user has multiple Tesla vehicles, they will be prompted to add a Virtual Key for each vehicle that requires it. At least one vehicle must complete the pairing process before the user can continue with the Connect flow and connect their Tesla to your application.
+
+### 2020 and Earlier Model S/X with Streaming Support
+
+For 2020 and earlier Model S and X vehicles that support streaming (via a software update), Smartcar Connect handles this differently:
+
+* These vehicles **do not require Virtual Key installation**
+* During the Connect flow, users are prompted about enabling streaming via an in-vehicle toggle
+* Users can request email instructions on how to enable the streaming setting in their vehicle's infotainment screen
+* Once the streaming toggle is enabled in the vehicle, data will be refreshed more frequently
+* Without streaming enabled, data is refreshed every 5 minutes while the vehicle is awake
 
 
 # Handle the Response
@@ -10142,7 +12545,7 @@ If the re-auth is successful, the redirect to your application will contain a ve
   Unique identifier for a vehicle on Smartcar’s platform.
 </ResponseField>
 
-<Snippet file="response-connect-state.mdx" />
+<Snippet />
 
 ```http Success theme={null}
 HTTP/1.1 302 Found
@@ -10163,7 +12566,7 @@ For a detailed description of these errors, please see our [errors page](/api-re
   A detailed description of what caused the error
 </ResponseField>
 
-<Snippet file="response-connect-state.mdx" />
+<Snippet />
 
 ```http Error theme={null}
 HTTP/1.1 302 Found
@@ -10172,6 +12575,208 @@ error=access_denied
 &error_description=User+denied+access+to+application.
 &state=0facda3319
 ```
+
+
+# OEM Migrations and Re-authentication
+Source: https://smartcar.com/docs/connect/re-auth/oem-migrations
+
+Understanding when and why vehicle owners need to re-authenticate due to OEM infrastructure changes and migrations.
+
+## Overview
+
+As automakers evolve their connected services infrastructure, Smartcar occasionally needs to migrate integrations to newer OEM APIs or authentication systems. These migrations ensure your application maintains access to the latest features, improved reliability, and continued compatibility with OEM platforms. Smartcar does this work on your behalf to minimize disruption.
+
+**Important**: Some OEM migrations will require vehicle owners to re-authenticate through Smartcar Connect. This is a necessary step to maintain secure access to vehicle data.
+
+<Warning>
+  Re-authentication requirements are an inevitable part of working with automotive APIs. Ensuring your application can gracefully manage [re-atuthentication](/connect/re-auth/redirect-to-connect) will help minimize disruption to your users.
+</Warning>
+
+## When Re-authentication Is Required
+
+Vehicle owners may need to re-authenticate in several scenarios:
+
+### Common Scenarios
+
+Re-authentication may be required when:
+
+* Vehicle owners change their OEM account credentials
+* Connected services subscriptions are renewed or modified
+* Vehicle owners revoke and re-grant access through OEM portals
+
+### OEM Infrastructure Changes
+
+When an automaker upgrades their API infrastructure or releases a new connected services platform, existing connections may need to be re-established. Examples include:
+
+* **New APIs**: When OEMs annouce a new API platform for third-parties requiring all connected vehicles to re-authenticate
+* **OEM Platform Updates**: When OEMs periodically update their authentication systems invalidating existing tokens forcing re-authentication
+* **OEM Migrations**: When accounts or platforms are migrated between regions or systems deprecating legacy platforms
+
+## Migration Communication
+
+When a migration requiring re-authentication is necessary, Smartcar will:
+
+1. **Notify you in advance** via email and your dedicated Slack channel
+2. **Provide migration timelines** so you can plan communications with your users
+3. **Offer technical support** throughout the migration process
+4. **Provide documentation** outlining required actions (if any)
+
+## Implementation Best Practices
+
+### Plan for Re-authentication
+
+Build your application with the expectation that re-authentication will be needed:
+
+```javascript theme={null}
+// Example: Handle authentication errors gracefully
+try {
+  const response = await vehicle.odometer();
+} catch (error) {
+  if (error.type === 'AUTHENTICATION' || 
+      error.statusCode === 'CONNECTED_SERVICES_ACCOUNT:AUTHENTICATION_FAILED') {
+    // Prompt user to re-authenticate
+    const reauthUrl = error.resolution?.url;
+    redirectToReauth(reauthUrl);
+  }
+}
+```
+
+### Monitor for Authentication Errors
+
+Watch for authentication-related errors in your API responses:
+
+* `AUTHENTICATION_FAILED`: Indicates credentials are invalid or expired
+* `PERMISSION` errors: May require permission updates through re-authentication
+* API errors with `resolution.url`: Often include a pre-built re-authentication URL
+
+See our [error documentation](/errors/api-errors/connected-services-account-errors) for complete details.
+
+### Use Webhooks for Proactive Detection
+
+Subscribe to [webhooks](/integrations/webhooks/overview) to detect authentication issues before users report them:
+
+```json theme={null}
+{
+  "eventId": "5a537912-9ad3-424b-ba33-65a1704567e9",
+  "eventType": "VEHICLE_ERROR",
+  "vehicleId": "123e4567-e89b-12d3-a456-426614174000",
+  "data": {
+    "user": {
+      "id": "93b3ea96-ca37-43a9-9073-f4334719iok7"
+    },
+    "vehicle": {
+      "id": "123e4567-e89b-12d3-a456-426614174000",
+      "make": "TESLA",
+      "model": "Model 3",
+      "year": 2020
+    },
+    "errors": [
+      {
+        "type": "CONNECTED_SERVICES_ACCOUNT",
+        "code": "AUTHENTICATION_FAILED",
+        "description": "Smartcar was unable to authenticate with the user’s connected services account. Please prompt the user to re-authenticate using Smartcar Connect.",
+        "docURL": "https://smartcar.com/docs/errors/api-errors/connected-services-account-errors#authentication-failed",
+        "statusCode": 400,
+        "requestId": "5dea93a1-3f79-4246-90c5-89610a20471b",
+        "resolution": {
+          "type": "REAUTHENTICATE",
+          "url": "https://connect.smartcar.com/oauth/reauthenticate?response_type=vehicle_id&client_id=8229df9f-91a0-4ff0-a1ae-a1f38ee24d07&vehicle_id=sc4a1b01e5-0497-417c-a30e-6df6ba33ba46"
+        },
+        "suggestedUserMessage": "Your car got disconnected from <app name>. Please use this link to re-connect your car: <link to Smartcar Connect>."
+      }
+    ]
+  },
+  "meta": {
+    "version": "4.0",
+    "deliveryId": "48b25f8f-9fea-42e1-9085-81043682cbb8",
+    "deliveredAt": 1761896351529,
+    "webhookId": "123e4567-e89b-12d3-a456-426614174000",
+    "webhookName": "Your Webhook's Name",
+    "mode": "LIVE"
+  }
+}
+```
+
+### Implement Streamlined Re-authentication
+
+Use Smartcar's [re-authentication flow](/connect/re-auth/redirect-to-connect) to make the process seamless:
+
+* Pre-populate the vehicle ID to skip vehicle selection
+* Use the error's `resolution.url` field when available
+* Provide clear messaging about why re-authentication is needed
+
+### Communicate Proactively
+
+When a migration is announced:
+
+1. **Email users ahead of time** explaining the need and benefits
+2. **Show in-app notifications** with clear calls-to-action
+3. **Provide support resources** for users who have questions
+4. **Track re-authentication completion** to follow up with users who haven't completed the process
+
+### Example User Communication
+
+<Accordion title="Sample email template">
+  **Subject**: Action Required: Reconnect Your \[Vehicle Make] to \[Your App Name]
+
+  Hi \[User Name],
+
+  \[Your App Name] lost connection to your \[Vehicle Make]. Your action is needed to continue receiving \[Your app's benefits].
+
+  **Why is this needed?**
+  Connections to \[Vehicle Make] may expire from time to time. To maintain secure access to your vehicle data, you need to reconnect your vehicle.
+
+  **What you need to do:**
+
+  1. Click the button below to reconnect your vehicle
+  2. Log in with your \[Vehicle Make] account credentials
+  3. Approve the connection
+
+  \[Reconnect My Vehicle Button]
+
+  This process takes less than a minute. Your vehicle data and preferences will not be affected.
+
+  If you have questions, reply to this email or contact our support team.
+
+  Thank you,
+  The \[Your App Name] Team
+</Accordion>
+
+## Frequently Asked Questions
+
+<AccordionGroup>
+  <Accordion title="Will all OEM migrations require re-authentication?">
+    No. Smartcar handles many OEM updates transparently without requiring user action. Re-authentication is only required when the changes are not compatible with the current integration. Smartcar does its best to minimize re-authentication related to OEM platform changes.
+  </Accordion>
+
+  <Accordion title="How much notice will we receive for migrations?">
+    Smartcar provides advance notice for planned migrations, typically several weeks to months depending on the scope. In rare cases where OEMs make unexpected changes, we'll communicate as soon as possible.
+  </Accordion>
+
+  <Accordion title="What happens if users don't re-authenticate?">
+    API requests will continue to fail with authentication errors until re-authentication is completed. The vehicle connection will remain in your system, but no data can be retrieved.
+  </Accordion>
+
+  <Accordion title="Can we force re-authentication for all users at once?">
+    Yes. The sooner re-authentication occurs, the sooner you and your users can leverage new features or resolve downtime.
+  </Accordion>
+
+  <Accordion title="Will access tokens and refresh tokens change?">
+    This depends on the migration. In some cases, existing connections will remain valid. In other cases, existing tokens will expire and re-authentication is required to resolve re-establish a connection. Smartcar will specify this in migration communication.
+  </Accordion>
+</AccordionGroup>
+
+## Need Help?
+
+If you have questions about an upcoming migration or need assistance implementing re-authentication flows:
+
+* Contact [support@smartcar.com](mailto:support@smartcar.com)
+* Visit our [Support Center](/help/accessing-support-center)
+* Check the [Changelog](/changelog/latest) for migration announcements
+
+<Note>
+  For enterprise customers, coordinate Tesla tenant setup and other OEM-specific configurations with your Solutions Architect before going live with customer-facing vehicles.
+</Note>
 
 
 # Redirect to Connect
@@ -10184,35 +12789,39 @@ again to update your authorization through Smartcar.
 
 You can do this with a streamlined Connect flow using a special re-auth URL with the parameters below.
 
+<Info>
+  Re-authentication is also required when OEMs migrate to new API platforms. See [OEM Migrations and Re-authentication](/connect/re-auth/oem-migrations) to understand when and why these migrations occur, and how to prepare your implementation.
+</Info>
+
 <Tip>
   The [`AUTHENTICATION_FAILED`](/errors/api-errors/connected-services-account-errors#authentication-failed) API error contains a partially constructed re-authentication URL in the `resolution.url` field.
 </Tip>
 
 <br />
 
-<ParamField path="client_id" type="string" required>
+<ParamField type="string">
   The application’s unique identifier.
 </ParamField>
 
-<ParamField path="redirect_uri" type="string" required>
+<ParamField type="string">
   The URI a user will be redirected to after authorization. This value **must** match one of the redirect URIs set in the credentials tab of the dashboard.
 
   The first redirect URI you add to your application is automatically set as the default. If you do not specify a `redirect_uri` in your Connect URL, Smartcar will use this default URI. You can add multiple URIs and set any of them as the default in the Smartcar Dashboard.
 </ParamField>
 
-<ParamField path="response_type" type="string" required>
+<ParamField type="string">
   This value must be set to `vehicle_id`.
 </ParamField>
 
-<ParamField path="vehicle_id" type="string" required>
+<ParamField type="string">
   The id of the vehicle you are reauthenticating.
 </ParamField>
 
-<ParamField path="state" type="string">
+<ParamField type="string">
   An optional value included as a query parameter in the redirect\_uri back to your application. This value is often used to identify a user and/or prevent cross-site request forgery
 </ParamField>
 
-<ParamField query="user" type="string">
+<ParamField type="string">
   Specify a unique identifier for the vehicle owner to track and aggregate analytics across Connect sessions for each vehicle owner on Dashboard.
 
   Note: Use the `state` parameter in order to identify the user at your callback URI when receiving an authorization or error code after the user exits the Connect flow.
@@ -10244,13 +12853,13 @@ Learn how to construct the Smartcar Connect URL to redirect users through the ve
 You can configure default permissions for your application in the "Vehicle Access" tab of your application's Configuration page in the [Smartcar Dashboard](https://dashboard.smartcar.com). These settings will determine what permissions are requested during the Connect flow. Any `scope` parameters you specify in the Connect URL will override these dashboard settings.
 
 <Frame>
-  <img src="https://mintcdn.com/smartcar-docs/Nbq9w5qPmZOA1Bge/images/dashboard/dashboard-configuration-vehicle-access.png?fit=max&auto=format&n=Nbq9w5qPmZOA1Bge&q=85&s=c3ab83997ea333267fd1aec7b88a810c" alt="Smartcar Dashboard Configuration Page For Vehicle Access" data-og-width="3262" width="3262" data-og-height="2862" height="2862" data-path="images/dashboard/dashboard-configuration-vehicle-access.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/Nbq9w5qPmZOA1Bge/images/dashboard/dashboard-configuration-vehicle-access.png?w=280&fit=max&auto=format&n=Nbq9w5qPmZOA1Bge&q=85&s=3d8870830dcf057fff8d3672df828ef1 280w, https://mintcdn.com/smartcar-docs/Nbq9w5qPmZOA1Bge/images/dashboard/dashboard-configuration-vehicle-access.png?w=560&fit=max&auto=format&n=Nbq9w5qPmZOA1Bge&q=85&s=a86cf3d20ce33a1158ee56690fe4928b 560w, https://mintcdn.com/smartcar-docs/Nbq9w5qPmZOA1Bge/images/dashboard/dashboard-configuration-vehicle-access.png?w=840&fit=max&auto=format&n=Nbq9w5qPmZOA1Bge&q=85&s=ea4e0ca901f954a6da88b3b2c7b597ab 840w, https://mintcdn.com/smartcar-docs/Nbq9w5qPmZOA1Bge/images/dashboard/dashboard-configuration-vehicle-access.png?w=1100&fit=max&auto=format&n=Nbq9w5qPmZOA1Bge&q=85&s=05f4036f1c0d196b0eb9678a7290fdcd 1100w, https://mintcdn.com/smartcar-docs/Nbq9w5qPmZOA1Bge/images/dashboard/dashboard-configuration-vehicle-access.png?w=1650&fit=max&auto=format&n=Nbq9w5qPmZOA1Bge&q=85&s=721cd3aedc861ecdf8d1b09b4a7eed77 1650w, https://mintcdn.com/smartcar-docs/Nbq9w5qPmZOA1Bge/images/dashboard/dashboard-configuration-vehicle-access.png?w=2500&fit=max&auto=format&n=Nbq9w5qPmZOA1Bge&q=85&s=00ce2c131ae17ee2b88a11c29be84b4d 2500w" />
+  <img alt="Smartcar Dashboard Configuration Page For Vehicle Access" />
 </Frame>
 
 Once you have configured your application, you can get a pre-built Connect URL by clicking the "Share Connect Link" button at the top right in the Smartcar Dashboard.
 
 <Frame>
-  <img src="https://mintcdn.com/smartcar-docs/Nbq9w5qPmZOA1Bge/images/dashboard/dashboard-configuration-share-url.png?fit=max&auto=format&n=Nbq9w5qPmZOA1Bge&q=85&s=5f71af4ad3cb76b586b6ba666c660198" alt="Getting the Connect URL" data-og-width="3252" width="3252" data-og-height="2866" height="2866" data-path="images/dashboard/dashboard-configuration-share-url.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/Nbq9w5qPmZOA1Bge/images/dashboard/dashboard-configuration-share-url.png?w=280&fit=max&auto=format&n=Nbq9w5qPmZOA1Bge&q=85&s=72e7def16513decc7e10f5b21fbd0aa7 280w, https://mintcdn.com/smartcar-docs/Nbq9w5qPmZOA1Bge/images/dashboard/dashboard-configuration-share-url.png?w=560&fit=max&auto=format&n=Nbq9w5qPmZOA1Bge&q=85&s=dac1384e77024c8671458b60ffa67177 560w, https://mintcdn.com/smartcar-docs/Nbq9w5qPmZOA1Bge/images/dashboard/dashboard-configuration-share-url.png?w=840&fit=max&auto=format&n=Nbq9w5qPmZOA1Bge&q=85&s=cece5089bd8aa0df4889c873ae2282d3 840w, https://mintcdn.com/smartcar-docs/Nbq9w5qPmZOA1Bge/images/dashboard/dashboard-configuration-share-url.png?w=1100&fit=max&auto=format&n=Nbq9w5qPmZOA1Bge&q=85&s=6c6213a99dd98c9fd8c3d738529daa83 1100w, https://mintcdn.com/smartcar-docs/Nbq9w5qPmZOA1Bge/images/dashboard/dashboard-configuration-share-url.png?w=1650&fit=max&auto=format&n=Nbq9w5qPmZOA1Bge&q=85&s=48256139733206414edd33c82d0e1143 1650w, https://mintcdn.com/smartcar-docs/Nbq9w5qPmZOA1Bge/images/dashboard/dashboard-configuration-share-url.png?w=2500&fit=max&auto=format&n=Nbq9w5qPmZOA1Bge&q=85&s=ccedd24bce536e69a4c5b1d50afba9d4 2500w" />
+  <img alt="Getting the Connect URL" />
 </Frame>
 
 To build the Connect URL manually by overriding your dashboard settings, pass the following parameters:
@@ -10259,40 +12868,44 @@ To build the Connect URL manually by overriding your dashboard settings, pass th
   Any parameters you specify in the Connect URL will override your dashboard settings.
 </Warning>
 
-<ParamField query="client_id" type="string" required>
+<ParamField type="string">
   The application’s unique identifier. This is available on the credentials tab of the dashboard
 </ParamField>
 
-<ParamField query="redirect_uri" type="string" required>
+<ParamField type="string">
   The URI a user will be redirected to after authorization. This value must match one of the redirect URIs set in the credentials tab of the dashboard.
 
   The first redirect URI you add to your application is automatically set as the default. If you do not specify a `redirect_uri` in your Connect URL, Smartcar will use this default URI. You can add multiple URIs and set any of them as the default in the Smartcar Dashboard.
 </ParamField>
 
-<ParamField query="response_type" type="string" required>
+<ParamField type="string">
   This value must be set to `code` during the initial authentication. OAuth2 outlines multiple authorization types. Smartcar Connect utilizes the “Authorization Code” flow.
 
   To reauthenticate a user after they have already connected a vehicle, you can set this value to the `vehicle_id` of a previously connected vehicle.
 </ParamField>
 
-<ParamField query="scope" type="[permissions]" required>
+<ParamField type="[permissions]">
   A space-separated list of permissions that your application is requesting access to. The valid permission names can be found in the permissions section. A permission is optional by default. It can be made required by adding the required: prefix to the permission name, e.g. required:read\_odometer.
+
+  <Info>
+    **Regional Difference:** This parameter is only suppported in the US & Canada. For European vehicles, the `required:` prefix is not enforced. Vehicles can complete the Connect flow even if they don't support all required permissions, as capability validation happens when you make an API request rather than during Connect. If a vehicle doesn't support a required permission, you'll receive a [VEHICLE\_NOT\_CAPABLE](/errors/api-errors/compatibility-errors#vehicle-not-capable) error when attempting to use that endpoint.
+  </Info>
 
   If you don't specify a `scope` parameter, Smartcar will use the permissions configured in the "Vehicle Access" tab of your application's Configuration page in the Dashboard. Any `scope` parameters passed in the Connect URL will override those dashboard settings.
 </ParamField>
 
-<ParamField query="state" type="string">
+<ParamField type="string">
   An optional value included as a query parameter in the `REDIRECT_URI` back to your application. This value is often used to identify a user and/or prevent cross-site request forgery
 </ParamField>
 
-<ParamField query="approval_prompt" default="auto" type="string">
+<ParamField type="string">
   An optional value that sets the behavior of the approval dialog displayed to the user.
   Defaults to `auto` and will only display the approval dialog if the user has not previously approved the scope.
   Set this to `force` to ensure the approval dialog is always shown to the user even if they have previously approved the same scope.
 </ParamField>
 
-<ParamField query="mode" default="live" type="ENUM">
-  <Expandable title="modes" defaultOpen="true">
+<ParamField type="ENUM">
+  <Expandable title="modes">
     <ResponseField name="simulated" type="string">
       Simulated mode lets you make requests to a vehicle created using the Vehicle Simulator to receive realistic responses from specific makes, models, years, and various states of the vehicle.
 
@@ -10305,18 +12918,18 @@ To build the Connect URL manually by overriding your dashboard settings, pass th
   </Expandable>
 </ParamField>
 
-<ParamField query="make" type="string">
+<ParamField type="string">
   Allows users to bypass the Brand Selector screen. Valid `makes` can be found in the [makes](/api-reference/makes) section on API reference.
   The `single_select_vin` parameter takes precedence over this parameter.
 </ParamField>
 
-<ParamField query="single_select" type="bool" default="false">
+<ParamField type="bool">
   Sets the vehicle selection behavior of the grant dialog. If set to true, then the user is only allowed to select a single vehicle. Please refer to the Single Select section for more information.
 
   This parameter is only available in the Custom Plan.
 </ParamField>
 
-<ParamField query="single_select_vin" type="string">
+<ParamField type="string">
   Sets the behavior of the permissions screen in Smartcar Connect.
   When using `single_select_vin`, you need to pass in the VIN (Vehicle Identification Number) of a specific vehicle into the `single_select_vin` parameter.
   Additionally, you need to set the `single_select` parameter to `true`.
@@ -10327,7 +12940,7 @@ To build the Connect URL manually by overriding your dashboard settings, pass th
   This parameter is only available in the Custom Plan.
 </ParamField>
 
-<ParamField query="flags" type="[flags]">
+<ParamField type="[flags]">
   A space separated list of feature flags in the form `{flag}:{value}`.
 
   <Expandable title="flags">
@@ -10341,7 +12954,7 @@ To build the Connect URL manually by overriding your dashboard settings, pass th
   </Expandable>
 </ParamField>
 
-<ParamField query="user" type="string">
+<ParamField type="string">
   Specify a unique identifier for the vehicle owner to track and aggregate analytics across Connect sessions for each vehicle owner on Dashboard.
 
   Note: Use the `state` parameter in order to identify the user at your callback URI when receiving an authorization or error code after the user exits the Connect flow.
@@ -10369,8 +12982,8 @@ This flow can be launched using the URL provided by the [battery capacity](/docs
 
 When you request the `read_battery` permission, users will automatically be prompted to select their vehicle's battery capacity during the Smartcar Connect flow if we cannot determine the specific capacity for their vehicle(s). This ensures accurate battery information for your application is readily available.
 
-<Frame caption="Battery capacity selection during Smartcar Connect" width="200">
-  <img src="https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/battery-capacity-selection.png?fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=ae0a84b03f024606bfce72e9c1f4a66b" style={{ width: '250px' }} data-og-width="388" width="388" data-og-height="842" height="842" data-path="images/connect/battery-capacity-selection.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/battery-capacity-selection.png?w=280&fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=0efc0d1d7b90e454505fe7243a4695a9 280w, https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/battery-capacity-selection.png?w=560&fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=d8622e19ba50d06c2f9a03b44c426475 560w, https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/battery-capacity-selection.png?w=840&fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=1628e58db5cbcb928930c083347fcbc5 840w, https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/battery-capacity-selection.png?w=1100&fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=474b6ff769fd376096adcca85a67f05f 1100w, https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/battery-capacity-selection.png?w=1650&fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=0940140efeb5fc2101b3119fd83bcb01 1650w, https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/battery-capacity-selection.png?w=2500&fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=d246877f0146b9d4241e0280fb33be5d 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 For users that skip the selection prompt or were connected prior to September 18th, 2025, you can still launch the battery capacity selection flow manually using the URL provided by the [GET /battery/nominal\_capacity](/api-reference/get-nominal-capacity) endpoint.
@@ -10380,7 +12993,7 @@ For users that skip the selection prompt or were connected prior to September 18
 Smartcar will provide a URL with the following parameters from the [GET
 /battery/nominal\_capacity](/api-reference/get-nominal-capacity) endpoint:
 
-```http  theme={null}
+```http theme={null}
 https://connect.smartcar.com/battery-capacity
 ?vehicle_id=36ab27d0-fd9d-4455-823a-ce30af709ffc
 &client_id=8229df9f-91a0-4ff0-a1ae-a1f38ee24d07
@@ -10389,19 +13002,19 @@ https://connect.smartcar.com/battery-capacity
 &redirect_uri=
 ```
 
-<ParamField path="vehicle_id" type="string" required>
+<ParamField type="string">
   The Smartcar vehicle Id.
 </ParamField>
 
-<ParamField path="client_id" type="string" required>
+<ParamField type="string">
   The `client_id` from the Smartcar Dashboard for your application.
 </ParamField>
 
-<ParamField path="response_type" type="string" required>
+<ParamField type="string">
   Must be set to `vehicle_id`.
 </ParamField>
 
-<ParamField path="redirect_uri" type="string" required>
+<ParamField type="string">
   The URI you would like the response sent to after a user exits the
   flow.
 
@@ -10410,7 +13023,7 @@ https://connect.smartcar.com/battery-capacity
   flow successfully and receive confirmation the user has exited the flow.
 </ParamField>
 
-<ParamField path="token" type="string">
+<ParamField type="string">
   A token to validate that the URL was provided from a [battery capacity](/api-reference/get-nominal-capacity)
   response for your application. The token is valid for 30 days. If a token is not provided or is no longer valid,
   the user will be directed to re-auth prior to selecting their capacity.
@@ -10448,8 +13061,8 @@ https://example.com/home
 
 ## Flow Example
 
-<Frame caption="User selected battery capacity flow">
-  <img src="https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/bat-cap-selection.png?fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=9fa1c16c336a9e445dc2e3e916c819af" data-og-width="2970" width="2970" data-og-height="2184" height="2184" data-path="images/connect/bat-cap-selection.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/bat-cap-selection.png?w=280&fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=e648bb495da3728489c780ffdc86b75c 280w, https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/bat-cap-selection.png?w=560&fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=d15a4aff788c5ca7802f693868e1a6e0 560w, https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/bat-cap-selection.png?w=840&fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=c94b84d74787bb0c495acf30365fc4c8 840w, https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/bat-cap-selection.png?w=1100&fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=a6ec28bfc7f81eb115b740458fc2b624 1100w, https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/bat-cap-selection.png?w=1650&fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=9b422b8f6379358443fe40234183b25b 1650w, https://mintcdn.com/smartcar-docs/JqEHibg7VKARCx7z/images/connect/bat-cap-selection.png?w=2500&fit=max&auto=format&n=JqEHibg7VKARCx7z&q=85&s=5f7cfc619fc293e0bae0ec972fe59ad6 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 
@@ -10464,8 +13077,8 @@ Smartcar Connect is the fastest and most transparent way to collect user consent
 2. Sign in
 3. Give consent
 
-<Frame caption="Default Smartcar Connect Flow">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/default-connect-flow.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=c2cd906b5876221be223249b7ba0c8ef" data-og-width="3782" width="3782" data-og-height="1942" height="1942" data-path="images/default-connect-flow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/default-connect-flow.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=57674aaf78d5e84ec7acf3a3e987101d 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/default-connect-flow.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=3009ebe305a4b1cbe0559c525f3b8bde 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/default-connect-flow.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=2d05dffc04980fbac98e83da00a09218 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/default-connect-flow.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=4c7f94b577ddffff375afe841fe094b5 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/default-connect-flow.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=dc9a2de37a38d85955d176e3eea6a968 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/default-connect-flow.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=bfc194d9d2adabe6d5b0d2478dbe5954 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 From your app, you'll [redirect your users to Connect](/connect/redirect-to-connect), and [handle the response](/connect/handle-the-response) once the user completes or exits the Connect flow. You'll receive a `code` that you'll use to [exchange](/api-reference/authorization/auth-code-exchange) for an access token to start making requests to their vehicle(s).
@@ -10484,7 +13097,7 @@ Thrown when there is an issue with your authorization header.
 
 The authorization header is missing or malformed, or it contains invalid or expired authentication credentials (e.g. access token, client ID, client secret). Please check for missing parameters, spelling and casing mistakes, and other syntax issues.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "AUTHENTICATION",
   "code": null,
@@ -10610,7 +13223,7 @@ Thrown when Smartcar does not support a make, or feature for a vehicle.
 
 Smartcar is not yet compatible with this vehicle’s make in the country you specified.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "COMPATIBILITY",
   "code": "MAKE_NOT_COMPATIBLE",
@@ -10631,7 +13244,7 @@ Smartcar is not yet compatible with this vehicle’s make in the country you spe
 
 You're connected to the vehicle using an OEM integration that does not support this endpoint. This can be a result of the OEM migrating to a newer API or requiring vehicle owners to migrate to a new application they have released.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "COMPATIBILITY",
   "code": "PLATFORM_NOT_CAPABLE",
@@ -10652,7 +13265,7 @@ For Tesla vehicles please have the owner re-authenticate using the latest Tesla 
 
 Smartcar does not yet support this feature for this vehicle.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "COMPATIBILITY",
   "code": "SMARTCAR_NOT_CAPABLE",
@@ -10677,7 +13290,7 @@ If you have a vehicle that supports this feature and would like to help out, che
 This error occurs when a physical limitation makes the vehicle incapable of performing your request
 (e.g. battery electric vehicles are incapable of responding to read fuel requests).
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "COMPATIBILITY",
   "code": "VEHICLE_NOT_CAPABLE",
@@ -10710,7 +13323,7 @@ Examples:
 * The user has created but not yet fully activated their connected services account.
 * If you've received this error while testing with Vehicle Simulator, it likely means a simulation has not been started for the vehicle. Visit the Simulator tab in the Smartcar Dashboard to start a simulation for the vehicle.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "CONNECTED_SERVICES_ACCOUNT",
   "code": "ACCOUNT_ISSUE",
@@ -10744,7 +13357,7 @@ The user can resolve this error by logging into their connected services account
 Smartcar was unable to authenticate with the user’s connected services account. This error usually occurs when the user has updated their connected
 services account credentials and not yet re-authenticated in Smartcar Connect. The user should re-authenticate using Smartcar Connect.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "CONNECTED_SERVICES_ACCOUNT",
   "code": "AUTHENTICATION_FAILED",
@@ -10775,7 +13388,7 @@ The resolution field contains a partially constructed URL for Smartcar Connect R
 
 No vehicles found in the user’s connected services account. The user might not yet have added their vehicle to their account, or they might not yet have activated connected services for the vehicle.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "CONNECTED_SERVICES_ACCOUNT",
   "code": "NO_VEHICLES",
@@ -10811,7 +13424,7 @@ The resolution field contains a partially constructed URL for Smartcar Connect R
 
 This error occurs when a vehicle owner had initially granted Smartcar access to their OEM account, but has since revoked it via the OEM's management portal.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "CONNECTED_SERVICES_ACCOUNT",
   "code": "PERMISSION",
@@ -10837,7 +13450,7 @@ For Tesla Owners:
 
 The vehicle’s connected services subscription is inactive or does not support the requested API endpoint.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "CONNECTED_SERVICES_ACCOUNT",
   "code": "SUBSCRIPTION",
@@ -10871,7 +13484,7 @@ The user needs to log into their connected services account and either re-add th
 
 If you've received this error while testing with Vehicle Simulator, it likely means the simulated vehicle has not been found in your application. Visit the Simulator tab in the Smartcar Dashboard to create a simulated vehicle to test with.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "CONNECTED_SERVICES_ACCOUNT",
   "code": "VEHICLE_MISSING",
@@ -10907,7 +13520,7 @@ If the user wishes to disconnect their vehicle from your app, please make a requ
 
 The vehicle owner has granted your application access to the vehicle through Smartcar. However, additional steps are needed on the owners part in order to perform this specific request.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "CONNECTED_SERVICES_ACCOUNT",
   "code": "VIRTUAL_KEY_REQUIRED",
@@ -10951,7 +13564,7 @@ Your application has insufficient permissions to access the requested resource. 
 If you receive this error while testing with Vehicle Simulator, it is likely because the simulated vehicle has not yet been connected to your application, or your application doesn't have access to the requested permission.
 Visit the Simulator documentation to learn how to connect the vehicle to your application.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "PERMISSION",
   "code": null,
@@ -10983,7 +13596,7 @@ Thrown when there is an issue with the frequency of your requests.
 
 Your application has exceeded its rate limit. Please retry your request in a few minutes.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "RATE_LIMIT",
   "code": "SMARTCAR_API",
@@ -11020,7 +13633,7 @@ This limit is in place to prevent excessive vehicle requests that could:
 * Lead to 12v battery drain.
 * Trigger UPSTREAM:RATE\_LIMIT errors that prevent you from making requests for a longer period of time.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "RATE_LIMIT",
   "code": "VEHICLE",
@@ -11054,7 +13667,7 @@ Thrown when the incorrect API version is used or when the endpoint URL is incorr
 
 The requested resource does not exist. Please check the URL and try again.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "RESOURCE_NOT_FOUND",
   "code": "PATH",
@@ -11083,7 +13696,7 @@ You can resolve this error by referring to our API reference and ensuring that y
 
 The requested resource does not exist. Your request either does not specify a version number or it specifies a version number that is not supported by this resource.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "RESOURCE_NOT_FOUND",
   "code": "VERSION",
@@ -11110,7 +13723,7 @@ Thrown when Smartcar runs into an unexpected issue and was unable to process the
 
 An internal Smartcar error has occurred. Our team has been notified and is working to resolve this issue.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "SERVER",
   "code": "INTERNAL",
@@ -11139,7 +13752,7 @@ Smartcar is unable to locate a battery capacity record for this vehicle. Dependi
 
 If you’re seeing this error then the OEM doesn’t provide all the data we aim to provide in our response and we were unable to locate this information from other sources.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "SERVER",
   "code": "RECORD_NOT_FOUND",
@@ -11168,7 +13781,7 @@ Smartcar is unable to locate a battery capacity record for this vehicle. Dependi
 
 If you’re seeing this error then the OEM doesn’t provide all the data we aim to provide in our response and we were unable to find a specific match. Please see the error response `detail` field for possible matches.
 
-```json  theme={null}
+```json theme={null}
 {
 	"statusCode": 500,
 	"type": "SERVER",
@@ -11207,8 +13820,8 @@ Thrown when the OEM servers or vehicle failed to process the request.
   For upt-to-date information on Smartcar's platform and brand reliability, visit our:
 
   <ul>
-    <li><a href="https://brandreliability.smartcar.com/" target="_blank" rel="noopener">Brand Reliability page</a></li>
-    <li><a href="https://status.smartcar.com/" target="_blank" rel="noopener">Platform Status page</a></li>
+    <li><a href="https://brandreliability.smartcar.com/">Brand Reliability page</a></li>
+    <li><a href="https://status.smartcar.com/">Platform Status page</a></li>
   </ul>
 </Info>
 
@@ -11216,7 +13829,7 @@ Thrown when the OEM servers or vehicle failed to process the request.
 
 One of Smartcar’s upstream sources provided data that is malformed, invalid, or logically invalid (e.g. 65535 psi for tire pressure).
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "UPSTREAM",
   "code": "INVALID_DATA",
@@ -11243,7 +13856,7 @@ You can resolve this error by retrying your request at a later time.
 
 Smartcar received an error from an upstream source. This error usually occurs when an upstream source experiences an error that we have previously investigated and categorized as a known issue.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "UPSTREAM",
   "code": "KNOWN_ISSUE",
@@ -11271,7 +13884,7 @@ You can resolve this error by retrying your request at a later time.
 One of Smartcar’s upstream sources failed to respond. This error usually occurs when one of Smartcar’s upstream sources is experiencing issues and is currently unavailable.
 This error can also occur when a specific vehicle in located in an area with weak cellular reception and fails to respond to your request in a timely manner.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "UPSTREAM",
   "code": "NO_RESPONSE",
@@ -11298,7 +13911,7 @@ You can resolve this error by retrying your request at a later time.
 
 Your application’s requests have exceeded this vehicle’s rate limit.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "UPSTREAM",
   "code": "NO_RESPONSE",
@@ -11332,7 +13945,7 @@ There are several reasons why we might not have investigated this error yet:
 * This error does not occur very frequently.
 * This is the first time we have received this error.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "UPSTREAM",
   "code": "UNKNOWN_ISSUE",
@@ -11366,7 +13979,7 @@ Thrown if there is an issue with the format of the request or body.
 
 Request invalid or malformed. Please check for missing parameters, spelling and casing mistakes, and other syntax issues.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "VALIDATION",
   "code": null,
@@ -11401,7 +14014,7 @@ You can resolve this error by referring to our API reference and ensuring that y
 
 Your request is formatted correctly, but one or more of the provided parameters is incorrect.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "VALIDATION",
   "code": null,
@@ -11436,7 +14049,7 @@ Thrown when a request fails due to the state of a vehicle or logically cannot be
 
 The vehicle is in a sleep state and temporarily unable to perform your request. Either the vehicle has been inactive for a certain period of time (time periods vary between makes and models) or the user has manually triggered the vehicle’s sleep state.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "VEHICLE_STATE",
   "code": "ASLEEP",
@@ -11469,7 +14082,7 @@ The vehicle is in a sleep state and temporarily unable to perform your request.
 
 The vehicle is currently charging and unable to perform your request. This error usually occurs when you make a request to the start charge endpoint while the vehicle is already charging.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "VEHICLE_STATE",
   "code": "CHARGING_IN_PROGRESS",
@@ -11501,7 +14114,7 @@ You usually don’t need to resolve this error. If you believe that this error s
 
 The vehicle is connected to an EV charger and unable to perform your request.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "VEHICLE_STATE",
   "code": "CHARGING_PLUG_CONNECTED",
@@ -11532,7 +14145,7 @@ but the vehicle’s charge port does not have an EV charger plugged into it.
 If testing an electric vehicle with Vehicle Simulator, you will receive this error when attempting a start or stop charge request while the vehicle is in a parked
 or driving state (not charging).
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "VEHICLE_STATE",
   "code": "CHARGING_PLUG_NOT_CONNECTED",
@@ -11564,7 +14177,7 @@ The user can resolve this error by plugging an EV charger into the vehicle’s c
 
 The vehicle could not perform your request because one or more of its doors are open. This error usually occurs when you make a request to the lock endpoint while one or more of the vehicle’s doors stand open.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "VEHICLE_STATE",
   "code": "DOOR_OPEN",
@@ -11596,7 +14209,7 @@ The user can resolve this error by fully closing all of the vehicle’s doors an
 
 The vehicle is unable to perform your request because its EV battery is fully charged. This error usually occurs when you make a request to the start charge endpoint while the vehicle is already fully charged.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "VEHICLE_STATE",
   "code": "FULLY_CHARGED",
@@ -11619,7 +14232,7 @@ The vehicle is unable to perform your request because its EV battery is fully ch
 
 The vehicle is unable to perform your request because it is not currently charging. This error usually occurs when you request information about a vehicle’s charge session while the battery is not charging.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "VEHICLE_STATE",
   "code": "NOT_CHARGING",
@@ -11654,7 +14267,7 @@ The vehicle is connected to an EV charger but cannot perform the request because
 * the charger is not providing any current
 * there is a conflict with another charging schedule
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "VEHICLE_STATE",
   "code": "CHARGE_FAULT",
@@ -11698,7 +14311,7 @@ The user can resolve this error by:
 
 The vehicle is unable to perform your request because its hood is open. This error usually occurs when you make a request to the lock endpoint while the vehicle’s hood stands open.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "VEHICLE_STATE",
   "code": "HOOD_OPEN",
@@ -11725,7 +14338,7 @@ The user can resolve this error by ensuring that the vehicle’s hood is fully c
 
 The vehicle was unable to perform your request because its engine is running. Depending on the vehicle’s make and model, this error can occur for a variety of API endpoints.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "VEHICLE_STATE",
   "code": "IGNITION_ON",
@@ -11754,7 +14367,7 @@ The vehicle is currently in motion and unable to perform your request. Depending
 
 If testing with Vehicle Simulator, you will receive this error when attempting a lock/unlock request while the vehicle is in a driving state along the simulation.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "VEHICLE_STATE",
   "code": "IN_MOTION",
@@ -11781,7 +14394,7 @@ The user can resolve this error by parking their car and turning off the engine.
 
 The vehicle is unable to perform your request because the user has disabled remote access for connected services.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "VEHICLE_STATE",
   "code": "REMOTE_ACCESS_DISABLED",
@@ -11808,7 +14421,7 @@ The user can resolve this error by re-enabling remote access inside their vehicl
 
 The vehicle is unable to perform your request because its trunk is open. This error usually occurs when you make a request to the lock endpoint while the vehicle’s trunk and/or front trunk are open.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "VEHICLE_STATE",
   "code": "TRUNK_OPEN",
@@ -11837,7 +14450,7 @@ The vehicle was unable to perform your request due to an unknown issue. This err
 
 If testing an electric vehicle with Vehicle Simulator, you will receive this error when attempting a stop charge request while the vehicle is in a charging state.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "VEHICLE_STATE",
   "code": "UNKNOWN",
@@ -11866,7 +14479,7 @@ The vehicle was unable to perform your request because it is currently unreachab
 
 If testing with Vehicle Simulator, you will receive this error when attempting a lock/unlock or start/stop charge request while the simulation is paused or completed.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "VEHICLE_STATE",
   "code": "UNREACHABLE",
@@ -11893,7 +14506,7 @@ The user can resolve this error by moving the vehicle to a location with better 
 
 The vehicle was unable to perform your request because it is currently in service mode. Service mode temporarily limits or disables the vehicle’s remote capabilities.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "VEHICLE_STATE",
   "code": "VEHICLE_OFFLINE_FOR_SERVICE",
@@ -11920,7 +14533,7 @@ Please retry your request at a later time.
 
 The vehicle was unable to perform your request because the 12v or high voltage battery is too low.
 
-```json  theme={null}
+```json theme={null}
 {
   "type": "VEHICLE_STATE",
   "code": "LOW_BATTERY",
@@ -11968,14 +14581,14 @@ Location: https://example.com/home
 
 To test this error, launch Smartcar Connect in test mode and select “Deny access” on the permissions screen.
 
-<Frame caption="Access Denied">
-  <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/access_denied.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=b45ddc2c280b865a3771507961d5ca39" data-og-width="1275" width="1275" data-og-height="773" height="773" data-path="images/api-reference/access_denied.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/access_denied.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=b97ec8e6693eabba309af544dda4c7de 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/access_denied.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=77c637f8151eda1513b07e61b78f5eab 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/access_denied.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=5580026d6dc60cba5a07ad7226232387 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/access_denied.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=df87b9ccfe523517f78519dc0deaa9d6 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/access_denied.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=897b2604624fc2b93a72870dd10a1f31 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/access_denied.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=3f1c8bdcd7945574102fbda9d1d58507 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 We recommend handling this error by re-prompting the user to authorize their vehicle and adding a message like in the example below.
 
-<Frame caption="Access Denied Message">
-  <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/access_denied_message.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=844e2501b98ecbb86634f85e969e9499" data-og-width="1275" width="1275" data-og-height="775" height="775" data-path="images/api-reference/access_denied_message.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/access_denied_message.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=e61896e9355dd35847c69b49d7625d68 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/access_denied_message.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=5eb24ca7748ca2ffdb7b6a5cfaccd480 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/access_denied_message.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=84e88aba94b6b918e11af0112ba4a2e3 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/access_denied_message.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=bca717e762619039ea2c9144b85242f2 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/access_denied_message.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=ef18bbc6c88ec00f2bccbc6a47cb1691 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/access_denied_message.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=1ac814add89245e26defb2a4337b9996 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 
@@ -12001,15 +14614,15 @@ Location: https://example.com/callback
 
 On redirect, Connect will return the status code and message of the error that they encountered. This will be triggered if:
 
-* A user tried to directly navigate to a page that is past their current step in Connect (ie. going directly from the Preamble screen to the Permission Grants screen by directly going to connect.smartcar.com/grant).
+* A user tried to directly navigate to a page that is past their current step in Connect (i.e. going directly from the Preamble screen to the Permission Grants screen by directly going to connect.smartcar.com/grant).
 * A user is trying to use Single Select in live mode with a test mode VIN or with a simulated VIN in a non-simulated mode.
 * A user is trying to use Single Select with an invalid mock VIN.
 * A validation error occurs when trying to check compatibility by VIN.
 
 These cases will trigger the following error and give the user the ability to “Exit” Connect.
 
-<Frame caption="Error Page">
-  <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/error_page.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=69b4a1e91f6223798b03ed57e696f9e8" data-og-width="457" width="457" data-og-height="590" height="590" data-path="images/api-reference/error_page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/error_page.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=2f208da34113d1c7b21406c00c7555c3 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/error_page.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=f93e888a88c515ed8f83b69754db53e2 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/error_page.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=1afc3e47c727f6526a9bf22bdaf56e10 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/error_page.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=fac59069a414dfd5d4f87795f08c138e 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/error_page.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=12945d56509b0cb91d6d51609f60be57 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/error_page.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=f6fcac1b5d72e1e32ed4281b7c645187 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 
@@ -12032,8 +14645,8 @@ Location: https://example.com/callback
 
 Smartcar will direct the user to the connected services website to (re-)activate their subscription. However, a user may choose to return back to your application instead, like in the example below.
 
-<Frame caption="No Subscription">
-  <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/no_subscription.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=afd7635f3f21192d982b66bbe823f217" data-og-width="1275" width="1275" data-og-height="774" height="774" data-path="images/api-reference/no_subscription.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/no_subscription.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=e1a56a41389ab618dc64d3df3494d360 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/no_subscription.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=830d21e11f453eaec9fcd3f7f8fa0666 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/no_subscription.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=626c6922cf2c384cf8d9b81f9fed33ae 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/no_subscription.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=66532b981cf306ba4f55387aeb11095b 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/no_subscription.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=1e9c50d30adffc8a5a02409b30b32756 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/no_subscription.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=28ae13b73828f13f9b6ae7060e795dd9 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Testing
@@ -12065,8 +14678,8 @@ Location: https://example.com/callback
 
 The error is triggered when a user logs into their connected services account and is shown to have no vehicles listed like in the example below for BMW.
 
-<Frame caption="No Vehicle Error">
-  <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/no_vehicle_error.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=903fa8967ececee46d63b6f1c6aac5e0" data-og-width="455" width="455" data-og-height="478" height="478" data-path="images/api-reference/no_vehicle_error.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/no_vehicle_error.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=a96f4ec8480911f6e7d7027eb49b6d87 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/no_vehicle_error.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=ee814a28e518096eee6fcde00cded710 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/no_vehicle_error.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=998aadc98e9937aad55104a36b43af3b 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/no_vehicle_error.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=9d7cdaaadbac395ee86c112b98465a1d 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/no_vehicle_error.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=c938e037f052aee494e360ac3f2c3bb4 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/no_vehicle_error.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=d5df8eda25c97ae8c89e8d931ff5a00c 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 The user has the option to add vehicles or return to your application.
@@ -12089,8 +14702,8 @@ Location: https://example.com/callback
 &the%20user%20did%20not%20complete%20authorization%20with%20the%20OEM
 ```
 
-<Frame caption="OEM Login Cancelled">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/oem-cancelled.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=809144a9de87c60d807cf552236babe0" data-og-width="1322" width="1322" data-og-height="1121" height="1121" data-path="images/errors/connect-errors/oem-cancelled.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/oem-cancelled.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=365a81c051c9bc890a80f803fae14d48 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/oem-cancelled.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=2ac28f3a48cdefcf6415c375ceaa2f9d 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/oem-cancelled.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=c2cb8000dd88ea6342d1ad83d9084c63 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/oem-cancelled.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=e1e21a85d978104ec6045741ea779acd 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/oem-cancelled.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=2f8500289efa26329c16d1c64aee9d4f 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/oem-cancelled.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=642123a43b235fe9a5862255bc5a2b2b 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 
@@ -12108,20 +14721,20 @@ There are cases where a user may wish to exit Connect before granting your appli
 
 <Tabs>
   <Tab title="Missing Permissions">
-    <Frame caption="Vehicle Incompatible">
-      <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-additional-permissions.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=caf4655b12fd4622a2388b729cef6062" data-og-width="750" width="750" data-og-height="1334" height="1334" data-path="images/errors/connect-errors/r2a-additional-permissions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-additional-permissions.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=7cf587cf7e0c1b2cba08681729975d9e 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-additional-permissions.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=b94ebb2859f7703254342641165a2d7c 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-additional-permissions.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=13387fa92a3ac36533ddaab14c3af732 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-additional-permissions.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=902b6cccab69e580117ea816dcb6d204 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-additional-permissions.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=58179df631724a774f59bc7b98dbb47c 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-additional-permissions.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=7c40443504cd03750b11751769993a57 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
   <Tab title="MFA Entry">
-    <Frame caption="Vehicle Incompatible">
-      <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-mfa-entry.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=24d212a190bb5054eab9c1e83b45de2a" data-og-width="750" width="750" data-og-height="1334" height="1334" data-path="images/errors/connect-errors/r2a-mfa-entry.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-mfa-entry.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=4323baa7ecf4a9fa7e5971757b3e5dee 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-mfa-entry.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=ff92419e74ba4365700a712145ae1eac 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-mfa-entry.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=12451d2285e032eba9906d29562ef065 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-mfa-entry.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=ebb517ebff6f72c834d4a4e238aa36b6 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-mfa-entry.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=18561fd163d8e8d3358b966139d99ca4 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-mfa-entry.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=74115eb37105c0e0ab92e9e08a1d9666 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
   <Tab title="PIN Entry">
-    <Frame caption="Vehicle Incompatible">
-      <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-pin-entry.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=e746980cc79f0b5c73184434ff772f0f" data-og-width="750" width="750" data-og-height="1334" height="1334" data-path="images/errors/connect-errors/r2a-pin-entry.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-pin-entry.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=ffea845ea4f7aa0c0790939bd2335c21 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-pin-entry.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=66528ca361146aa98f3178ab2b9edf65 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-pin-entry.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=30d5044e008af730f9de6961af43f6eb 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-pin-entry.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=d71c7eb73761877c3c13b9343620d98f 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-pin-entry.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=19679505e4bb06522befd9e37e76a502 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/r2a-pin-entry.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=f2c2ce4edec0b6c34d14575bab4d0d18 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 </Tabs>
@@ -12149,8 +14762,8 @@ Location: https://example.com/callback
   We only show the “Exit” button if a redirect URI is available. If there is a failure before the validation of the redirect URI,  we are unable to include the “Exit” button on the Error page. In those cases, we would not be able to report the `status_code` and `error_message` back to the developer, but they will still be available on screen in the Error page.
 </Note>
 
-<Frame caption="Server Error">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/server-error.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=94b0f9f1020d0dcd1156754de31c4231" data-og-width="2000" width="2000" data-og-height="1602" height="1602" data-path="images/errors/connect-errors/server-error.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/server-error.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=9d225822dd6024c1cac4ada2250c45d9 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/server-error.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=d929cb64c48fecfae38c9f35ef9132d9 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/server-error.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=874e0804fd145ee9fb5cffc370cd0afd 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/server-error.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=6ca984de7807d5d6f2a225f1640375d6 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/server-error.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=5d3c20c1d070c54d543058fd4797951b 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/server-error.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=04f572a9df9d09c7c47979dc06bee0f0 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 
@@ -12173,16 +14786,16 @@ In order to be compatible, a vehicle must:
 * Be capable of the required permissions that your application is requesting access to
 * If the user’s vehicle is incompatible, Smartcar will let the user know and offer them to share their vehicle’s VIN, make, model, and year with your application.
 
-This error is triggered when a user selects an unspported make, or selects "I don't see my brand..." and then hits "Back to application"
+This error is triggered when a user selects an unsupported make, or selects "I don't see my brand..." and then hits "Back to application"
 
-<Frame caption="Vehicle Incompatible">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/vehicle-incompatible.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=0490adb032508a9965758ab02c26cd29" data-og-width="2643" width="2643" data-og-height="1472" height="1472" data-path="images/errors/connect-errors/vehicle-incompatible.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/vehicle-incompatible.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=4d6f086ca74d32d88ccd37991392679c 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/vehicle-incompatible.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=0ce9294c9716e4f64008d1c22305b363 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/vehicle-incompatible.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=e082e76f4139fbbe58199d68373f3a4d 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/vehicle-incompatible.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=8bdde4128b6703822e6614c214ccd8e1 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/vehicle-incompatible.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=97adb5491804bc5589800448937d8491 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/errors/connect-errors/vehicle-incompatible.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=c90da19a6ad6ceebe5bdad7963ff051c 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 We recommend that your application provides a flow for incompatible vehicles like in the example below.
 
-<Frame caption="Vehicle Incompatible">
-  <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/vehicle_incompatible.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=004f2159102e0d0c756b2eeeff08fcec" data-og-width="1275" width="1275" data-og-height="774" height="774" data-path="images/api-reference/vehicle_incompatible.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/vehicle_incompatible.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=1d42a9b16af715d5479263ebef9d3806 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/vehicle_incompatible.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=c43ba0468743922e945d8a0dc5579b1b 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/vehicle_incompatible.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=362847a86983a35cb81c0228987893eb 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/vehicle_incompatible.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=61f4dc4a21af5f1a7d73ec095e95c28f 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/vehicle_incompatible.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=3ba9a62f4c6e9c36c9d2fcde981d6225 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/api-reference/vehicle_incompatible.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=1aa0e0fa04a5f90a5c3af5fafb7badd2 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 <br />
@@ -12254,6 +14867,78 @@ You can use use the following emails to test these API error types:
 | `VEHICLE_STATE`              | `VEHICLE_OFFLINE_FOR_SERVICE` | [VEHICLE\_STATE.VEHICLE\_OFFLINE\_FOR\_SERVICE@smartcar.com](mailto:VEHICLE_STATE.VEHICLE_OFFLINE_FOR_SERVICE@smartcar.com)              | 0SCLR0002AF1D71A1 |
 
 
+# Implementation Checklist
+Source: https://smartcar.com/docs/getting-started/Implementation-Checklist
+
+Use this guide to track your progress through the Smartcar integration process, from initial setup to production launch.
+
+## Phase 0: Pre-Kickoff
+
+* **Tech Stack:** Identify technology stack for implementation and explore appropriate SDKs ([frontend](https://smartcar.com/docs/connect/connect-sdks) and [backend](https://smartcar.com/docs/api-reference/api-sdks)) and [getting started resources](https://smartcar.com/docs/getting-started/introduction).
+* **Tesla Tenanting:** (*Enterprise Only*) Check in with your Solution Architect to ensure you have your Tesla Tenant set up enabling your org to have a [Virtual Key with your own brand name](https://smartcar.com/docs/help/oem-integrations/tesla/virtual-key-tesla#enterprise-plan).
+* **Slack Channel**: (*Enterprise Only*) Smartcar will set up a [dedicated Slack channel](https://smartcar.com/docs/help/assist-ai-slack) for technical communications - ensure the relevant stakeholders are added.
+
+## Phase 1: Application Setup & Security Foundation
+
+* **Team Access:** [Invite relevant team members](https://smartcar.com/docs/getting-started/dashboard/teams#members) to your Smartcar Dashboard account.
+* **Subscribe to Updates:** Ensure your team subscribes to [status.smartcar.com](https://status.smartcar.com), [brandreliability.smartcar.com](https://brandreliability.smartcar.com) and [product changelogs](https://smartcar.com/docs/changelog/latest) to stay informed on platform health and updates.
+* **Environment Setup:** Create distinct **Test** and **Production** applications in the dashboard with clear naming conventions.
+* **Credentials:** Capture and securely store your `Client ID`, `Client Secret`, and `Application Management Token`.
+* **Secret Management:** Integrate your `Client Secret` into an enterprise secrets management system (e.g. AWS Secrets Manager, Vault). **Never commit secrets to version control.**
+* **Connect Configuration:** Set each application’s Privacy Policy URL and Logo.
+* **Redirect URIs:** Configure the Redirect URI for each application (ensure they are externally accessible).
+* **Scope Definition:** [Define your Vehicle Access Configuration](https://smartcar.com/docs/getting-started/how-to/configure-permissions#how-to-configure-permissions-for-vehicle-data-collection) (OAuth scopes) based on the specific signals and commands your application requires.
+* **Scope Minimization:** Strictly enforce **Scope Minimization** by requesting only the minimum necessary data permissions from the user.
+* **Brand Select:** Confirm and specify which OEM Brands will be displayed to the user and if you want to automatically add any new brands as they become available.
+* **Compatibility Check:** *(Enterprise Only)* Validate target vehicle compatibility using the [Region and Make Compatibility API](https://smartcar.com/docs/api-reference/compatibility/by-region-and-make).
+
+## Phase 2: Connect Flow & Conversion Optimization
+
+* **User Journey:** Determine how your application will funnel users into the Smartcar Connect flow.
+* **Frontend Implementation:** Implement the frontend Connect flow to generate the authorization URL (using `link.getAuthUrl()`).
+* **First Connection:** Onboard your first test vehicle and review its data in the Smartcar Dashboard.
+* **Brand Select:** Assess and implement [**Brand Select**](https://smartcar.com/docs/connect/advanced-config/flows#bypassing-the-brand-selection-screen) functionality (if applicable) to skip the brand selection screen and accelerate the user flow.
+* **Error Simulation:** Validate your application’s error handling by testing with [simulated error VINs ](https://smartcar.com/docs/errors/testing-errors#testing-errors)(e.g., using the `invalid_subscription` trigger).
+
+## Phase 3: Core Implementation & Token Resilience
+
+* **Architecture**: Design the backend architecture.
+* **Webhook Endpoint:** Implement a [backend endpoint to receive webhook data](https://smartcar.com/docs/integrations/webhooks/receiving-webhooks) and error payloads.
+* **Callback Endpoint:** Implement a backend endpoint to receive the authorization code at your [Redirect URI.](https://smartcar.com/docs/getting-started/tutorials/backend)
+* **Token Exchange:** Implement the logic to [exchange](https://smartcar.com/docs/api-reference/authorization/overview#token-management) the authorization `code` for an `accessToken` (valid for 2 hours) and `refreshToken` (valid for 60 days). **This must be done server-side.**
+* **Secure Storage:** [Securely store tokens](https://smartcar.com/docs/getting-started/how-to/get-an-access-token) in an **encrypted backend database**. Tokens must never be stored client-side.
+* **Proactive Renewal:** Implement a service to exchange the `refreshToken` for a new token pair before the 60-day expiration window closes.
+* **Atomic Token Rotation:** Implement **Atomic Token Rotation** logic to ensure new token pairs are persisted reliably, preventing race conditions that could invalidate single-use tokens.
+* **Support Protocol:** Establish internal support protocols to handle questions from your vehicle owners (ensure your team acts as Tier 1 support before escalating to Smartcar).
+
+## Phase 4: Operational Scale & Error Handling
+
+* **Webhooks-First:** *(If migrating)* Shift data ingestion models from polling to a **Webhooks-First** architecture for real-time scalability.
+* **Webhook Configuration:** Configure Webhook integrations in the Smartcar Dashboard (select triggers, set callback URI).
+* **Payload Verification:** Implement the mandatory callback URI verification logic (responding to the `VERIFY` event with the challenge hash).
+* **User Error Handling:** Map Connect errors (e.g. `no_vehicles`) to clear, actionable messages for your users.
+* **Vehicle Error Handling:** Handle `VEHICLE_ERROR` events and trigger user notifications when specific vehicle owner actions are required to resolve the issue.
+* **Re-authentication:** Implement resolution logic for `ACCOUNT_ISSUE` errors by prompting the user to re-authenticate via Smartcar Connect.
+* **Rate Limiting:** Implement **Exponential Backoff** strategies for retrying API errors (429) and adhere to `Retry-After` headers.
+
+## Phase 5: Production Readiness Review
+
+* **Access Control:** Ensure all service-specific IAM roles adhere to the principle of least privilege.
+* **Secret Management:** Verify all secrets are stored and accessed via a dedicated secrets manager.
+* **Encryption:** Ensure data is encrypted at rest and in transit.
+* **Vulnerability Scanning:** Confirm that dependency and vulnerability scans pass with zero critical/high issues.
+* **Network Security:** Configure firewalls/security groups to block unauthorized ports and apply WAF rules where appropriate.
+* **Logging:** Ensure structured logs are successfully ingested for staging and production environments, with configurable log levels.
+* **Observability:** Configure a dashboard to capture essential metrics (Latency, Error Rate, Traffic).
+* **Alerting:** Configure critical alerts to route to your on-call channels.
+* **CI/CD:** Ensure a fully automated build and deployment pipeline is in place for all environments.
+* **Infrastructure as Code (IaC)**: The service infrastructure is managed using IaC (e.g., Terraform, CDK).
+* **Architecture Review Complete:** The service architecture has passed the formal review.
+* **Service Runbook:** A complete runbook exists detailing: service owners, quick start, deployment, scaling, and incident response.
+* **Tagging:** Tagging policy is applied to infrastructure.
+* **Support Review:** Review the vehicle owner support approach again and ensure VO's are not channeled to Smartcar support directly and that Smartcar support is used as Tier 3
+
+
 # Configure Your Application
 Source: https://smartcar.com/docs/getting-started/configure-application
 
@@ -12270,8 +14955,8 @@ Your application configuration includes several key components:
 * **Privacy Policy URL**: A link to your application's privacy policy that will be presented to users during the authorization process.
 * **Vehicle Data**: Select the specific vehicle data signals your application will request access to. This determines the permissions your application will need from users.
 
-<Frame type="simple" caption="Application Configuration in Smartcar Dashboard">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/configuration.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=1e185b87daf43476f157255e3d01d714" alt="Application Configuration in Smartcar Dashboard" data-og-width="3422" width="3422" data-og-height="2080" height="2080" data-path="images/getting-started/configuration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/configuration.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=b7e0f56bf5e4040cf7e14b8f279141f2 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/configuration.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=41183a9075c8de0340879e45445d4e08 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/configuration.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=30f892047d9e0dcb29066682c9b8dda0 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/configuration.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=8ef45d394f3f6febea7b86371f798714 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/configuration.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=1be78284f76fc78879548bb884c6ef37 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/configuration.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=2dcbfdb4c6f031019de0fe3d2804b690 2500w" />
+<Frame type="simple">
+  <img alt="Application Configuration in Smartcar Dashboard" />
 </Frame>
 
 #### What’s Next?
@@ -12331,6 +15016,10 @@ Before you begin, make sure you have [configured](/getting-started/configure-app
   </Step>
 </Steps>
 
+<Info>
+  Vehicle owners may occasionally need to re-authenticate due to OEM platform migrations, credential changes, or permission updates. Build your integration to handle these scenarios gracefully. See [Handle Re-authentication](/connect/re-auth/oem-migrations) for implementation guidance.
+</Info>
+
 ## What’s Next
 
 * [Build your first integration](/getting-started/integration-overview).
@@ -12349,7 +15038,7 @@ Connect Insights allows you to visualize your Connect conversion rate and identi
 For Enterprise customers, the **Conversion Rate** gives you high-level insight into how users are progressing through the Connect Flow over the last two weeks.
 
 <Frame type="glass">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/connect-insights-overview.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=f6d7dc245b0c40d2f5c2356475b4e022" data-og-width="1896" width="1896" data-og-height="1075" height="1075" data-path="images/getting-started/dashboard/connect-insights-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/connect-insights-overview.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=0bc007baadefdd7c893e321575f8d25a 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/connect-insights-overview.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=51dd8f0d7e986fbc182ff0ee6b731e7b 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/connect-insights-overview.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=cd0e5cb80f6b5fae7ff4e81eefa7ddd6 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/connect-insights-overview.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=fc2999a826f89db5b21a46385c661e42 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/connect-insights-overview.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=692325a1ce05d3f5a629d54532590ed9 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/connect-insights-overview.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=3e2c624c887b8c9b880c5ffad45745ea 2500w" />
+  <img />
 </Frame>
 
 ## Session Details
@@ -12362,7 +15051,7 @@ If you need to dial into a specific time frame or individual user, you can use
 filters such as Date, VIN, User or Session ID to do so.
 
 <Frame type="glass">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/connect-insights-session-detail.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=8f1c0afc8667c7ac5776c335a7753bb7" data-og-width="1671" width="1671" data-og-height="1215" height="1215" data-path="images/getting-started/dashboard/connect-insights-session-detail.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/connect-insights-session-detail.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=ec07dd4f99c3dcff228f4c4ab5136789 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/connect-insights-session-detail.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=173e2f391e117eeb8c0536985cca4133 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/connect-insights-session-detail.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=34768e288d1205a64a01d4c8a606bc13 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/connect-insights-session-detail.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=ced290399495b78fed4b932eebefb82b 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/connect-insights-session-detail.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=c0bd3b1f4f8fb4780ae5e16a5b30cef3 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/connect-insights-session-detail.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=3617d56cbec305aa633e91e19472ace4 2500w" />
+  <img />
 </Frame>
 
 
@@ -12380,7 +15069,7 @@ Once enabled, each following login will require the use of your authenticator ap
 MFA can be disabled for your user at any time, though the authenticator app will be required to disable MFA.
 
 <Frame type="glass">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-mfa.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=903d348d71d6fc30a76492b71e66d195" data-og-width="2048" width="2048" data-og-height="1270" height="1270" data-path="images/dashboard/dashboard-mfa.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-mfa.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=1a40c671a66aa4d67bbf8532795c9e97 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-mfa.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=815955e746107f16840c7c3bdc0ee487 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-mfa.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=6a889a352e445a9a8029e9a7f26876a4 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-mfa.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=ebc7499534c660cc33d2edb558bd1bd0 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-mfa.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=cf7849557374a6a12961e4fa995568a2 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-mfa.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=12b40417f3a7973c81cc561876f085f8 2500w" />
+  <img />
 </Frame>
 
 
@@ -12393,7 +15082,7 @@ You can sign up for a Smartcar account [here](https://dashboard.smartcar.com/sig
 The Smartcar Dashboard allows you to manage your application configurations, connected vehicles, billing settings, team members, simulated vehicles, and webhooks.
 
 <Frame type="glass">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-overview.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=f380311605e31b538adacf58dfdb9f95" data-og-width="3932" width="3932" data-og-height="2942" height="2942" data-path="images/dashboard/dashboard-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-overview.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=4afce001caa3c39d53bdfcdb5085365b 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-overview.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=a48ab2dd052d0908b91d59462dbe489f 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-overview.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=611c2b7a30c5510cac73b70219b168c1 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-overview.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=7586040a9ac2211af976f33807b272b4 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-overview.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=314a6dffcb11862194350a82110a0fe8 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-overview.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=24ab45e7a9dded04bb020814b0890d37 2500w" />
+  <img />
 </Frame>
 
 
@@ -12405,7 +15094,7 @@ Source: https://smartcar.com/docs/getting-started/dashboard/simulator
 Before launching your integration, we recommend using Smartcar’s Vehicle Simulator to test your application on a simulated vehicle. With the Simulator, you can choose the vehicle's region, make, model and year as well as the vehicle state to test with. Watch your simulated vehicle travel in real-time from the Smartcar Dashboard as you test API requests from your application with realistic vehicle data responses.
 
 <Frame type="glass">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-simulator.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=ac953b25a4604fd3e765bd72ef96d843" data-og-width="3338" width="3338" data-og-height="2946" height="2946" data-path="images/dashboard/dashboard-simulator.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-simulator.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=b81561e32e5ebbf09f0b2d29326abb4b 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-simulator.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=0d95d85d8c60a837bbd95c2d324627be 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-simulator.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=218e21b0ae5d62da0afb3c0bb64c5c6e 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-simulator.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=341e6abb99c9895fbc154489816d0a57 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-simulator.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=a9a91ae839225fbc9418a560117ffd25 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-simulator.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=31f3dc853ae247090ccb482060282746 2500w" />
+  <img />
 </Frame>
 
 ## 1. Create a simulated vehicle
@@ -12543,38 +15232,38 @@ The following section will guide you through each step of this process.
 On Dashboard navigate to **Team settings > Security** and select **Enable SSO**
 
 <Frame>
-    <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/enable-sso.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=25cb9f378d60084f216d0c8341d0d846" alt="" data-og-width="1417" width="1417" data-og-height="517" height="517" data-path="images/dashboard/sso/enable-sso.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/enable-sso.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=b877b06d48922a99f9bb92b3e8f4efc4 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/enable-sso.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=e61a60c77fa33f873a1db2e3fe57ed81 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/enable-sso.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=d59d2cd95e627bfacab7173d91d4c67b 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/enable-sso.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=cecb3e19007e9f33df5e7b8b8ac4b6fe 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/enable-sso.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=524b58a248c8701af8283b5a9ce92d3d 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/enable-sso.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=6d9aa3c05e1d6e9612691b8055f40528 2500w" />
+  <img alt="" />
 </Frame>
 
 You’ll be redirected to start the SSO configuration process.
 
 <Frame>
-    <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/verify-domain-1.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=d2163f376519a4a27ccedd07910091e1" alt="" data-og-width="1061" width="1061" data-og-height="705" height="705" data-path="images/dashboard/sso/verify-domain-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/verify-domain-1.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=83581ff2b0559a69d2b2b2ab370549a8 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/verify-domain-1.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=e2510c784e807c1b340da2bbc082e786 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/verify-domain-1.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=16b463970552e8d9a47a8e1d1dc833d6 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/verify-domain-1.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=f4d3c7240ae3d77080f6de659b6fcf6c 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/verify-domain-1.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=4ec6364f91acfd734dda45554a3e0408 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/verify-domain-1.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=7d74cc03530fd081ee1738ff37bcbc77 2500w" />
+  <img alt="" />
 </Frame>
 
 Depending on your DNS provider, you'll receive instructions on how to verify your domain.
 
 <Frame>
-    <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/verify-domain-2.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=8a522104b3e4c392add44c7b7670a8b5" alt="" data-og-width="516" width="516" data-og-height="1016" height="1016" data-path="images/dashboard/sso/verify-domain-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/verify-domain-2.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=fb506b211830b3657f537a6416f0e911 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/verify-domain-2.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=f0c5752093458dea14d516858189d9f9 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/verify-domain-2.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=f348dc19bd86c34cca8fe03ee909c346 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/verify-domain-2.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=11cc2649d63e9031eaa1658b494ffb88 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/verify-domain-2.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=ce55ea6c6cbbe1c0734ff7588b02d610 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/verify-domain-2.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=3c389d53c4e0fe9484667d5b49549482 2500w" />
+  <img alt="" />
 </Frame>
 
 Once your domain is verified, you’ll be able to select your Identity Provider
 (IdP).
 
 <Frame>
-    <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/select-idp.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=cc58d3e1c79ea46ba0ac7d0879cc2f8c" alt="" data-og-width="1145" width="1145" data-og-height="486" height="486" data-path="images/dashboard/sso/select-idp.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/select-idp.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=d729fbaa9b48bdb3d6aefef2bfa9b34e 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/select-idp.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=fd53922bfdccd7ea2b2c61b697890790 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/select-idp.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=c850e9b64b9a01bc5e8c765912d0229f 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/select-idp.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=e3e368a3b8a496a0ee7adc2ee1138d33 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/select-idp.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=86c92b78a1966b299f3c221dc1cbacf5 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/select-idp.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=a1c9ed66aff7e8378e11d1a6cd34a925 2500w" />
+  <img alt="" />
 </Frame>
 
 You'll be provided a guide on how to get set up based on your IdP.
 
 <Frame>
-    <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/config-idp.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=5b175cde2bc4e00277c17b3d63a84e53" alt="" data-og-width="1058" width="1058" data-og-height="588" height="588" data-path="images/dashboard/sso/config-idp.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/config-idp.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=c0b1bea8be73031103dfbc8429d135bd 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/config-idp.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=daac4db2d45418bb324ef5fca7447e4c 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/config-idp.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=8c7331c3ed3011fb2e8d77d8b0a865cf 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/config-idp.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=0047a406d29b6bf7bfb09a7cbf3b73de 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/config-idp.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=1bf560fd843ac8b5867d8df632b6929f 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/config-idp.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=050664254b62d1b1db1b7096e2b2729c 2500w" />
+  <img alt="" />
 </Frame>
 
 Once you’ve got everything configured, you’ll be prompted to test SSO.
 
 <Frame>
-    <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/test-sso.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=2dc072fb8b8c9b3dd933091bb0ffa8a7" alt="" data-og-width="1058" width="1058" data-og-height="366" height="366" data-path="images/dashboard/sso/test-sso.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/test-sso.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=7464494f6b5eed426690448ff4b5caaa 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/test-sso.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=0decc9519c098999c40340a8f81f4b69 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/test-sso.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=ce699b5e204863e02f7c98467880a90b 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/test-sso.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=8d5a5db32d3a5a91b8d5674031b5e7ec 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/test-sso.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=6e1b36599829f751db351b712de0eefc 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/test-sso.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=b5958057a9435dfc4e4f3c2d1c015716 2500w" />
+  <img alt="" />
 </Frame>
 
 <br />
@@ -12585,7 +15274,7 @@ Once you’ve got everything configured, you’ll be prompted to test SSO.
 </Tip>
 
 <Frame>
-    <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/sso-config-pending.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=4e8f44f02059878dce36912a5dde0519" alt="" data-og-width="1076" width="1076" data-og-height="626" height="626" data-path="images/dashboard/sso/sso-config-pending.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/sso-config-pending.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=dbb3f3e5dee8f79067f30b60a5ff7c84 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/sso-config-pending.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=a858f0b128121c9d4d3c374b2dcd15de 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/sso-config-pending.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=25b14426cafd0b438a88fa6e4e5bee0c 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/sso-config-pending.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=9faf2ed7404f98a270ec2ee18bf09c64 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/sso-config-pending.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=959f81303a64f4921223f039cc8c39f5 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/sso-config-pending.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=c19d9c97584ed8e2b21a212be243a86f 2500w" />
+  <img alt="" />
 </Frame>
 
 ## Disabling SSO
@@ -12604,7 +15293,7 @@ Once enabled, you’ll need to add members to your team through your identity
 provider. Invites via the Dashboard will be disabled while SSO is enabled.
 
 <Frame>
-    <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/invite-with-sso.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=cd408514ef3a7e8e46a7b2368e02901e" alt="" data-og-width="875" width="875" data-og-height="285" height="285" data-path="images/dashboard/sso/invite-with-sso.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/invite-with-sso.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=7a938fc9e64e07750d4c5d03a4fc5068 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/invite-with-sso.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=4cdf56ef26632ba9b9ea5d9143cba134 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/invite-with-sso.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=e156364b2a42d2c7823c960113c18db8 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/invite-with-sso.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=50dcc0576cb4ea96daa32a42fa793cc1 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/invite-with-sso.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=296d66de91680940b072231d77454b16 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/sso/invite-with-sso.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=891f8b7fc43e673b75638f3e352c52b0 2500w" />
+  <img alt="" />
 </Frame>
 
 When a newly added member has signed in via SSO, they will have the Viewer role
@@ -12640,25 +15329,25 @@ You can add team members to your Smartcar account on any plan for free.
 Team members can be added to your Smartcar account by navigating to the **Settings** tab in the Dashboard and selecting **Members** under the **Team** section.
 
 <Frame type="glass">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-team-members.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=f42b136eb32b09de7725c31dc6db3dd7" data-og-width="3336" width="3336" data-og-height="2946" height="2946" data-path="images/dashboard/dashboard-team-members.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-team-members.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=00d5f360352218de3998c5d80f36600d 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-team-members.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=8f34d0dc11cad80da78f66ab3dc50bdc 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-team-members.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=9306ba1870873a143d3a0507cb7a88f6 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-team-members.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=99e9b2e2501cc574273a8439d3194785 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-team-members.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=5286298f00b6bd075b0c79084bdb4bf4 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/dashboard/dashboard-team-members.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=11950d938d85453f8248d852a424a402 2500w" />
+  <img />
 </Frame>
 
 ## Roles and Permissions
 
 Team members can be added on any plan. Specific roles are available on our [Enterprise plan](https://smartcar.com/pricing).
 
-| <div style={{ width:200 }} /> | Owner <div style={{ width:100 }} /> | Admin <div style={{ width:100 }} /> | Editor <div style={{ width:100 }} /> | Viewer <div style={{ width:100 }} /> |
-| ----------------------------- | ----------------------------------- | ----------------------------------- | ------------------------------------ | ------------------------------------ |
-| Manage billing                | ✅                                   |                                     |                                      |                                      |
-| View billing                  | ✅                                   |                                     |                                      |                                      |
-| Delete applications           | ✅                                   |                                     |                                      |                                      |
-| Modify team settings          | ✅                                   |                                     |                                      |                                      |
-| Remove team members           | ✅                                   | ✅                                   |                                      |                                      |
-| Modify team members           | ✅                                   | ✅                                   |                                      |                                      |
-| Create applications           | ✅                                   | ✅                                   |                                      |                                      |
-| Modify applications           | ✅                                   | ✅                                   | ✅                                    |                                      |
-| View applications             | ✅                                   | ✅                                   | ✅                                    | ✅                                    |
-| View team members             | ✅                                   | ✅                                   | ✅                                    | ✅                                    |
+| <div />              | Owner <div /> | Admin <div /> | Editor <div /> | Viewer <div /> |
+| -------------------- | ------------- | ------------- | -------------- | -------------- |
+| Manage billing       | ✅             |               |                |                |
+| View billing         | ✅             |               |                |                |
+| Delete applications  | ✅             |               |                |                |
+| Modify team settings | ✅             |               |                |                |
+| Remove team members  | ✅             | ✅             |                |                |
+| Modify team members  | ✅             | ✅             |                |                |
+| Create applications  | ✅             | ✅             |                |                |
+| Modify applications  | ✅             | ✅             | ✅              |                |
+| View applications    | ✅             | ✅             | ✅              | ✅              |
+| View team members    | ✅             | ✅             | ✅              | ✅              |
 
 <Tip>
   Editors and Viewers can be limited to specific applications.
@@ -12724,7 +15413,7 @@ Designing your backend architecture for Smartcar integration ensures secure stor
     2. Exchange the code for tokens using Smartcar’s token endpoint.
     3. Store the tokens in your `tokens` table, linked to the user and vehicle.
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     POST https://auth.smartcar.com/oauth/token
     Content-Type: application/x-www-form-urlencoded
 
@@ -12745,7 +15434,7 @@ Designing your backend architecture for Smartcar integration ensures secure stor
       Want a production-ready AWS implementation? Use the <a href="/getting-started/tutorials/webhook-receiver-recipe">Webhook Receiver Recipe</a>. It includes everything you need to get up and running so you can focus on business logic instead of infrastructure.
     </Info>
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     // Example Express.js handler
     app.post('/api/webhooks/smartcar', async (req, res) => {
       try {
@@ -12799,8 +15488,8 @@ To retrieve vehicle data through Smartcar, you must configure your application t
   <Step title="Select Signals, Commands, and Attributes">
     Under the <b>Signals</b>, <b>Commands</b>, and <b>Attributes</b> tabs, select the specific vehicle data points and actions your application needs. Each selection corresponds to a permission that the vehicle owner must approve.
 
-    <Frame type="simple" caption="Application Configuration in Smartcar Dashboard">
-      <img src="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/how-to/vehicle-access.png?fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=8dbd5a5cbf7561ce6890e8b74d2e3af1" alt="Smartcar Dashboard configuration page showing signal selection and Connect Preview." data-og-width="5014" width="5014" data-og-height="2966" height="2966" data-path="images/how-to/vehicle-access.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/how-to/vehicle-access.png?w=280&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=cddfd1c093f18c5addf4747182e51a93 280w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/how-to/vehicle-access.png?w=560&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=ea20d97a8cd21ed0f9b792cdcafb7655 560w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/how-to/vehicle-access.png?w=840&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=8e81876d3862241affee92b987706cea 840w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/how-to/vehicle-access.png?w=1100&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=31c470447fe2ebdf68c75dd3d160a1fd 1100w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/how-to/vehicle-access.png?w=1650&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=ca57dad41510fe85b7c5407384adfac0 1650w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/how-to/vehicle-access.png?w=2500&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=a95f7e18664d6b9d3592652f3c662607 2500w" />
+    <Frame type="simple">
+      <img alt="Smartcar Dashboard configuration page showing signal selection and Connect Preview." />
     </Frame>
 
     <ul>
@@ -12885,8 +15574,8 @@ Smartcar webhooks make it easy to detect and process vehicle charging sessions i
     Once verified, you will start to receive vehicle data for the vehicles you have subscribed to this webhook. For this guide, we chose not to auto subscribe vehicles, so let's head over to the [Smartcar Dashboard](https://dashboard.smartcar.com/vehicles) to manually subscribe a vehicle to your webhook.
     Select a vehicle from your list of connected vehicles and click on the three dots action menu to the right of the row and click subscribe. Select your newly created webhook from the options and click subscribe.
 
-    <Frame type="simple" caption="Subscribe a vehicle to a webhook in the Smartcar Dashboard">
-      <img src="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/how-to/subscribe-vehicles-from-dashboard.png?fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=5bd20bb10e660b3297ef2de1dbf4c022" alt="Smartcar Dashboard showing how to subscribe a vehicle to a webhook." data-og-width="3298" width="3298" data-og-height="2048" height="2048" data-path="images/how-to/subscribe-vehicles-from-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/how-to/subscribe-vehicles-from-dashboard.png?w=280&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=051e639fdee31c606c0980f8f304b8ff 280w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/how-to/subscribe-vehicles-from-dashboard.png?w=560&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=f4cbba0bde2464efdc3cf1c78ad78bdf 560w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/how-to/subscribe-vehicles-from-dashboard.png?w=840&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=782a6977e48b8e3ba1c8e40cd7cc5433 840w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/how-to/subscribe-vehicles-from-dashboard.png?w=1100&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=953979e3045a081ab1b20c6f792e0b14 1100w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/how-to/subscribe-vehicles-from-dashboard.png?w=1650&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=aa7e740e2f42c98206dd735f89a48286 1650w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/how-to/subscribe-vehicles-from-dashboard.png?w=2500&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=7655f451c559dd4ca247423a4f9884d4 2500w" />
+    <Frame type="simple">
+      <img alt="Smartcar Dashboard showing how to subscribe a vehicle to a webhook." />
     </Frame>
   </Step>
 </Steps>
@@ -12903,7 +15592,7 @@ When a vehicle starts charging, you will receive a webhook event with the `event
 
 Example event payload:
 
-```json  theme={null}
+```json theme={null}
 {
   "eventId": "a7738a15-7ee2-40b3-9815-823d146230cd",
   "eventType": "VEHICLE_STATE",
@@ -12999,7 +15688,7 @@ To make requests to the Smartcar API, you first need to obtain an access token. 
 
     Here is an example using the Smartcar Node.js SDK:
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     const smartcar = require('smartcar'); //Smartcar backend Node SDK
 
     smartcar.OAuth.getToken({
@@ -13052,7 +15741,7 @@ This guide explains how to store, refresh, and rotate tokens using the Smartcar 
   <Step title="Use the Access Token for API Requests">
     * Use the `access_token` as a Bearer token in the `Authorization` header for all API requests.
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     GET https://vehicle.api.smartcar.com/v3/vehicles/{vehicleId}
     Authorization: Bearer ACCESS_TOKEN
     ```
@@ -13068,7 +15757,7 @@ This guide explains how to store, refresh, and rotate tokens using the Smartcar 
   <Step title="Refresh the Access Token">
     * Make a POST request to the Smartcar OAuth token endpoint with `grant_type=refresh_token`.
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     POST https://auth.smartcar.com/oauth/token?client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&grant_type=refresh_token&refresh_token=YOUR_REFRESH_TOKEN
     Content-Type: application/x-www-form-urlencoded
     ```
@@ -13094,25 +15783,58 @@ Source: https://smartcar.com/docs/getting-started/integration-overview
 
 Welcome to the integration phase of your Smartcar journey! After configuring your application and connecting vehicles, the next crucial step is to integrate your systems with Smartcar to receive vehicle data.
 
-## The architecture that's right for you
+## Choosing Webhooks or the REST API
 
-<Info>
-  Webhooks are the recommended way to receive real-time vehicle data from Smartcar. You can still use the REST API for retrieving data and issuing commands, but webhooks are the most scalable and reliable option for most use cases.
-</Info>
+Understanding the differences between webhooks and the REST API will help you choose the right integration method for your use case.
 
-## Webhooks
+### When to Use Webhooks
 
-[Webhooks](/integrations/webhooks/overview) are the most efficient way to receive real-time vehicle data. Smartcar sends you a payload whenever a vehicle event occurs, such as a change in battery level or location. This allows you to build applications that respond instantly to vehicle changes without polling an API.
+**[Webhooks](/integrations/webhooks/overview) are the recommended approach** for applications that need real-time or frequently updated vehicle data. Use webhooks when:
 
-**Quick Start**: Deploy a production-ready webhook receiver in minutes with our [Webhook Receiver Recipe](/getting-started/tutorials/webhook-receiver-recipe) - a complete AWS serverless solution.
+* You need real-time notifications when vehicle data changes
+* You're monitoring vehicle data continuously (e.g., fleet tracking, charging monitoring)
+* You're building applications that react to vehicle events (e.g., alerts, automation)
+* You need to scale to monitor many vehicles efficiently
+* You want to avoid rate limits and reduce server load
 
-Get started with Webhooks [here](/integrations/webhooks/overview).
+**Advantages of webhooks:**
 
-## REST APIs
+* **Require less effort and resources** - no polling the API repeatedly
+* **Scale better** - Scale effortlessly to monitor thousands of vehicles, with no complex polling logic to maintain
+* **Near real-time updates** - receive data within seconds of changes being detected
+* **Avoid rate limits** - Smartcar pushes data to you instead of you calling the API
+* **More reliable** - no missed updates due to polling intervals
+* **Automatic optimizations** - Smartcar continuously optimizes data retrieval, and your application benefits immediately without code changes
 
-If you prefer to retrieve data on demand, you can use the Smartcar [Vehicles API](/api-reference/vehicles-api-intro). This allows you to query vehicle data at any time, but it may not be as efficient for real-time applications. The Vehicles API provides endpoints for accessing signals, issuing commands, and retrieving vehicle attributes.
+**Quick Start**: Deploy a production-ready webhook receiver in minutes with our [Webhook Receiver Recipe](/getting-started/tutorials/webhook-receiver-recipe) - a complete AWS serverless solution that implements best practices for you.
+
+Learn more about [Webhooks](/integrations/webhooks/overview).
+
+### When to Use the REST API
+
+The Vehicles API is designed for **infrequent data retrieval and command execution**. Use the API when:
+
+* You need vehicle data only once or occasionally (e.g., user profile display)
+* You're issuing commands to vehicles (lock/unlock, start/stop charging)
+* You're exploring available signals or testing your integration
+* You have a small number of vehicles and don't need continuous monitoring
 
 The Vehicles API is designed primarily for exploration and non-frequent data retrieval. This API is not designed for continuous polling or real-time monitoring. Data is typically updated once every 24 hours unless the vehicle is actively subscribed to a webhook, which enables more frequent updates. For most use cases, you should avoid polling the Vehicles API at high frequency leverage [webhooks](/integrations/webhooks/overview) instead.
+
+Learn more about the [Vehicles API](/api-reference/vehicles-api-intro).
+
+<Warning>
+  **Do not poll the Vehicles API for real-time monitoring.** The API is not designed for continuous polling. Frequent polling will:
+
+  * Consume your API rate limit quota quickly
+  * Put unnecessary load on your servers and Smartcar's infrastructure
+  * Provide stale data (updated only every 24 hours without webhook subscriptions)
+  * Not scale as your fleet grows
+
+  Use webhooks instead for any use case requiring frequent or real-time data.
+</Warning>
+
+***
 
 ## CSVs (coming soon)
 
@@ -13137,23 +15859,24 @@ Source: https://smartcar.com/docs/getting-started/introduction
 
 Welcome to Smartcar's Developer Documentation! Here, you'll learn how to integrate your application with over 40 OEM brands, securely connect to vehicles, and receive the dynamic vehicle data you need, delivered directly to your systems.
 
-<CardGroup cols={3}>
-  <Card title="Start a tutorial" icon="play" href="/getting-started/tutorials/ios" icontype="duotone">Learn how to configure your first application and connect a vehicle in under 10 minutes.</Card>
-  <Card title="Read How-To Guides" href="/getting-started/how-to/configure-permissions" icon="graduation-cap" icontype="duotone">Solve common implementation challenges with step-by-step instructions.</Card>
+<CardGroup>
+  <Card title="Start a tutorial" icon="play" href="/getting-started/tutorials/ios">Learn how to configure your first application and connect a vehicle in under 10 minutes.</Card>
+  <Card title="Browse Available Data" href="/api-reference/signals/schema" icon="database">Explore the complete catalog of vehicle data points (signals) you can access.</Card>
+  <Card title="Read How-To Guides" href="/getting-started/how-to/configure-permissions" icon="graduation-cap">Solve common implementation challenges with step-by-step instructions.</Card>
 
-  <Card title="Connecting Vehicles" href="/getting-started/connect-vehicles" icon="mobile" icontype="duotone">
+  <Card title="Connecting Vehicles" href="/getting-started/connect-vehicles" icon="mobile">
     Learn how to use our patented consent management authorization flow, to connect vehicles to your application.
   </Card>
 
-  <Card title="Help Center" href="/help/what-is-smartcar" icon="life-ring" icontype="duotone">
+  <Card title="Help Center" href="/help/what-is-smartcar" icon="life-ring">
     Visit our Help Center for FAQs, troubleshooting tips, and to contact support.
   </Card>
 
-  <Card title="Integrations" href="/getting-started/integration-overview" icon="square-terminal" icontype="duotone">Dive deep into our Smartcar integrations and learn how to connect with various services.</Card>
-  <Card title="Browse our SDKs" href="/connect/connect-sdks" icon="computer" icontype="duotone">Connect with other developers, share ideas, and get help.</Card>
+  <Card title="Integrations" href="/getting-started/integration-overview" icon="square-terminal">Dive deep into our Smartcar integrations and learn how to connect with various services.</Card>
+  <Card title="Browse our SDKs" href="/connect/connect-sdks" icon="computer">Connect with other developers, share ideas, and get help.</Card>
 </CardGroup>
 
-Learn how to connect your app to Smartcar so you can access vehicle data like odometer, location, battery level, issue vehicle commands, and more. In this guide, you’ll register your app, walk through the Smartcar Connect flow, and configure a webhook to receive data.
+Learn how to connect your app to Smartcar so you can access [vehicle data signals](/api-reference/signals/schema) like odometer, location, battery level, issue vehicle commands, and more. In this guide, you'll register your app, walk through the Smartcar Connect flow, and configure a webhook to receive data.
 
 By the end of this guide, you’ll have a working setup with access to a vehicle’s data through Smartcar’s platform.
 
@@ -13180,7 +15903,7 @@ Before you begin, you’ll need:
 
     The vehicle access tab in the Smartcar Dashboard will generate a Connect URL for you. You can also generate the URL programmatically using one of our SDKs.
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
 
     const link = new Smartcar.AuthClient({ //Smartcar frontend SDK
       clientId: 'YOUR_CLIENT_ID',
@@ -13200,7 +15923,7 @@ Before you begin, you’ll need:
 
     Use this code in your backend to exchange for access and refresh tokens:
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     const smartcar = require('smartcar'); //Smartcar backend SDK
 
     const client = new smartcar.AuthClient({
@@ -13253,7 +15976,7 @@ In this tutorial, we will use the Android SDK to integrate Connect into your app
 # Overview
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/android/overview.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=e55ce733a1529f22994defa49ca2ca8c" data-og-width="850" width="850" data-og-height="510" height="510" data-path="images/android/overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/android/overview.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=8ded54ca1d073b539d48542e44032e6b 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/android/overview.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=7a3b55192cd87e42e5b5e0cc51ef81f0 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/android/overview.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=050ddfb32ff8eafb4a907ee1601a653a 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/android/overview.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=1e8414af0bb59139f78d4ff54072a129 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/android/overview.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=97d5a32bc895768e53ba94f9139c751a 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/android/overview.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=202b2b7d1ff4c26cbc91677a30d692ea 2500w" />
+  <img />
 </Frame>
 
 <br />
@@ -13287,7 +16010,7 @@ In this tutorial, we will use the Android SDK to integrate Connect into your app
 # Setup
 
 1. Clone our repo and install the required dependencies:
-   ```bash  theme={null}
+   ```bash theme={null}
    $git clone https://github.com/smartcar/getting-started-android-sdk.git
    ```
    <Note>
@@ -13497,14 +16220,14 @@ You can use any of our backend SDKs below to set up the service starting from th
   used for this tutorial i.e. `sc + "clientId" + ://exchange`.
 </Note>
 
-<CardGroup cols={4}>
-  <Card title="Java" icon="java" href="/getting-started/how-to/architecture-design" icontype="duotone" />
+<CardGroup>
+  <Card title="Java" icon="java" href="/getting-started/how-to/architecture-design" />
 
-  <Card title="Node.js" href="/getting-started/how-to/architecture-design" icon="node-js" icontype="duotone" />
+  <Card title="Node.js" href="/getting-started/how-to/architecture-design" icon="node-js" />
 
-  <Card title="Python" icon="python" href="/getting-started/how-to/architecture-design" icontype="duotone" />
+  <Card title="Python" icon="python" href="/getting-started/how-to/architecture-design" />
 
-  <Card title="Ruby" href="/getting-started/how-to/architecture-design" icon="gem" icontype="duotone" />
+  <Card title="Ruby" href="/getting-started/how-to/architecture-design" icon="gem" />
 </CardGroup>
 
 
@@ -13516,7 +16239,7 @@ In this tutorial, we will go over how to integrate Connect into your application
 # Overview
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/backend-sdks/overview.png?fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=c14eeafc1d4ff0ae02482d59c66d451e" data-og-width="850" width="850" data-og-height="491" height="491" data-path="images/backend-sdks/overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/backend-sdks/overview.png?w=280&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=a750458073489eac8055cdb934501cff 280w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/backend-sdks/overview.png?w=560&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=07bb6214d5299d1307fac596f1f9ed62 560w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/backend-sdks/overview.png?w=840&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=92e3e33f2a10f43968b4b54283aaf562 840w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/backend-sdks/overview.png?w=1100&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=d6e7165c1893d87298c28e6c66fef71d 1100w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/backend-sdks/overview.png?w=1650&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=6804f3ac4768b14e517fb07c3448ca6a 1650w, https://mintcdn.com/smartcar-docs/NtuX9OSBHLxFwWIa/images/backend-sdks/overview.png?w=2500&fit=max&auto=format&n=NtuX9OSBHLxFwWIa&q=85&s=bacb0ca36a1b1a5f5c91a6ef0bfb06cc 2500w" />
+  <img />
 </Frame>
 
 <br />
@@ -13540,6 +16263,7 @@ In this tutorial, we will go over how to integrate Connect into your application
 # Setup
 
 1. Clone the repo for the SDK you want to use and install the required dependencies:
+
    <CodeGroup>
      ```bash Node theme={null}
      $ git clone https://github.com/smartcar/getting-started-express.git
@@ -13573,7 +16297,7 @@ In this tutorial, we will go over how to integrate Connect into your application
   `SMARTCAR_REDIRECT_URI` environment variable to the URI you used for that application.
 </Warning>
 
-```bash  theme={null}
+```bash theme={null}
 $export SMARTCAR_CLIENT_ID=<your-client-id>
 $export SMARTCAR_CLIENT_SECRET=<your-client-secret>
 $export SMARTCAR_REDIRECT_URI=http://localhost:8000/exchange
@@ -13589,6 +16313,7 @@ $export SMARTCAR_REDIRECT_URI=http://localhost:8000/exchange
 # Build your Connect URL
 
 1. Instantiate a `Smartcar` object in the constructor of the App component.
+
    <CodeGroup>
      ```js index.js theme={null}
      const client = new smartcar.AuthClient({
@@ -13835,6 +16560,7 @@ After receiving the ACCESS\_TOKEN, the user can be redirected to the `/vehicle` 
 1. Once the backend service or server-side application has the `ACCESS_TOKEN`, it can send requests to a vehicle using the Smartcar API.
    First we'll need to fetch the `vehicle_id`s associated with the `ACCESS_TOKEN`, then fetch vehicle attributes for one of them. After
    receiving the `vehicle_attributes` object, we can render it in a simple table on the page.
+
    <CodeGroup>
      ```js index.js theme={null}
      app.get('/vehicle', async function(req, res) {
@@ -13926,6 +16652,7 @@ After receiving the ACCESS\_TOKEN, the user can be redirected to the `/vehicle` 
    </CodeGroup>
 
 2. Restart your sever and head back to `http://localhost:8000/login` to go through Connect and make your first API request!
+
    <CodeGroup>
      ```bash Node theme={null}
      $node index.js
@@ -13962,7 +16689,7 @@ In this tutorial, we will use the iOS SDK to integrate Connect into your applica
 # Overview
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/ios/overview.png?fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=45bac644e60e25a9e5a92a550e398f37" data-og-width="850" width="850" data-og-height="510" height="510" data-path="images/ios/overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/ios/overview.png?w=280&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=a61885111dee58865db17980113e5035 280w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/ios/overview.png?w=560&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=b8651a42e98db8d2eab1c451f37f6995 560w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/ios/overview.png?w=840&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=bdc2acc2ab6a04e66c4717359d4aa74b 840w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/ios/overview.png?w=1100&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=ac8a17905c843637daf985634c01cf76 1100w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/ios/overview.png?w=1650&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=cf6a43d011422f21f72e89fc7422fcef 1650w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/ios/overview.png?w=2500&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=2e1b4272ed0a314b03128f615747b033 2500w" />
+  <img />
 </Frame>
 
 <br />
@@ -13996,7 +16723,7 @@ In this tutorial, we will use the iOS SDK to integrate Connect into your applica
 # Setup
 
 1. Clone our repo and install the required dependencies:
-   ```bash  theme={null}
+   ```bash theme={null}
    $git clone https://github.com/smartcar/getting-started-ios-sdk.git
    $cd getting-started-ios-sdk/tutorial
    $pod install
@@ -14057,7 +16784,7 @@ iOS applications use custom URI schemes to intercept calls and launch the releva
 3. Finally, set your `Item 0` string to the redirect URI you set up in the [Prerequisites](/getting-started/tutorials/ios#prerequisites) section (i.e. 'sc' + clientId).
 
 <Frame>
-  <img src="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/ios/info-plist.png?fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=f44c4b8181efc5f04fd5032a3b22829d" data-og-width="866" width="866" data-og-height="464" height="464" data-path="images/ios/info-plist.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/ios/info-plist.png?w=280&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=811be6c402b564aff3ee32bd8ed317b7 280w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/ios/info-plist.png?w=560&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=77760fa09f368baac7206da5867b6275 560w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/ios/info-plist.png?w=840&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=92e4e79d535d84f17f8b7c324bfac253 840w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/ios/info-plist.png?w=1100&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=b33b563596db365cddb46d19c2e87494 1100w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/ios/info-plist.png?w=1650&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=09fc68c33c02682e8f352e03b658e193 1650w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/ios/info-plist.png?w=2500&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=71e3a80d7430a15c99788daf2ed85b53 2500w" />
+  <img />
 </Frame>
 
 <br />
@@ -14161,14 +16888,14 @@ You can use any of our backend SDKs below to set up the service starting from th
   used for this tutorial i.e. `sc + "clientId" + ://exchange`.
 </Note>
 
-<CardGroup cols={4}>
-  <Card title="Java" icon="java" href="/getting-started/tutorials/backend#getting-your-first-access-token" icontype="duotone" />
+<CardGroup>
+  <Card title="Java" icon="java" href="/getting-started/tutorials/backend#getting-your-first-access-token" />
 
-  <Card title="Node.js" href="/getting-started/tutorials/backend#getting-your-first-access-token" icon="node-js" icontype="duotone" />
+  <Card title="Node.js" href="/getting-started/tutorials/backend#getting-your-first-access-token" icon="node-js" />
 
-  <Card title="Python" icon="python" href="/getting-started/tutorials/backend#getting-your-first-access-token" icontype="duotone" />
+  <Card title="Python" icon="python" href="/getting-started/tutorials/backend#getting-your-first-access-token" />
 
-  <Card title="Ruby" href="/getting-started/tutorials/backend#getting-your-first-access-token" icon="gem" icontype="duotone" />
+  <Card title="Ruby" href="/getting-started/tutorials/backend#getting-your-first-access-token" icon="gem" />
 </CardGroup>
 
 
@@ -14189,7 +16916,7 @@ In this tutorial, we will use the JavaScript SDK to integrate Connect into your 
 # Overview
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/react/overview.png?fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=a030ac9d073b3f69e52e9831b0e41bea" data-og-width="850" width="850" data-og-height="510" height="510" data-path="images/react/overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/react/overview.png?w=280&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=c46752e77889db204b1930062db34936 280w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/react/overview.png?w=560&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=c1d3d7adcbc35bc127407083157060bc 560w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/react/overview.png?w=840&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=6d9ee3d46aee7f0663736122763c1dba 840w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/react/overview.png?w=1100&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=60875fcb463a344e1015b1ec771ae261 1100w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/react/overview.png?w=1650&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=f2e679d7bbf21c310786a5897d70504f 1650w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/react/overview.png?w=2500&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=ed5d7cecf987432ab8992b387ab6d6eb 2500w" />
+  <img />
 </Frame>
 
 <br />
@@ -14225,14 +16952,14 @@ In this tutorial, we will use the JavaScript SDK to integrate Connect into your 
 # Setup
 
 1. Clone our repo and install the required dependencies:
-   ```bash  theme={null}
+   ```bash theme={null}
    $git clone https://github.com/smartcar/getting-started-javascript-sdk-react.git
    $cd getting-started-javascript-sdk-react/tutorial
    $npm install
    ```
 2. Set the following environment variables. We will be setting up a server later for our React front-end to communicate with.
    For now, let’s assume our server is listening on `http://localhost:8000`.
-   ```bash  theme={null}
+   ```bash theme={null}
    $export REACT_APP_CLIENT_ID=<your-client-id>
    $export REACT_APP_REDIRECT_URI= https://javascript-sdk.smartcar.com/v2/redirect?app_origin=http://localhost:3000
    $export REACT_APP_SERVER=http://localhost:8000
@@ -14260,7 +16987,7 @@ In this tutorial, we will use the JavaScript SDK to integrate Connect into your 
    }
    ```
 
-<Snippet file="tutorials/info-mode-callout.mdx" />
+<Snippet />
 
 2. A single-page application will launch a pop-up window with Smartcar Connect to request access to a user’s vehicle.
    On Connect, the user logs in with the username and password for their vehicle’s connected services account and grants
@@ -14370,14 +17097,14 @@ You can use any of our backend SDKs below to set up the service starting from th
   used for this tutorial i.e. `https://javascript-sdk.smartcar.com/v2/redirect?app_origin=http://localhost:3000`.
 </Note>
 
-<CardGroup cols={4}>
-  <Card title="Java" icon="java" href="/getting-started/how-to/architecture-design" icontype="duotone" />
+<CardGroup>
+  <Card title="Java" icon="java" href="/getting-started/how-to/architecture-design" />
 
-  <Card title="Node.js" href="/getting-started/how-to/architecture-design" icon="node-js" icontype="duotone" />
+  <Card title="Node.js" href="/getting-started/how-to/architecture-design" icon="node-js" />
 
-  <Card title="Python" icon="python" href="/getting-started/how-to/architecture-design" icontype="duotone" />
+  <Card title="Python" icon="python" href="/getting-started/how-to/architecture-design" />
 
-  <Card title="Ruby" href="/getting-started/how-to/architecture-design" icon="gem" icontype="duotone" />
+  <Card title="Ruby" href="/getting-started/how-to/architecture-design" icon="gem" />
 </CardGroup>
 
 
@@ -14394,7 +17121,7 @@ Deploy a production-ready AWS serverless webhook receiver in minutes using our c
 
 The Webhook Receiver Recipe is a production-ready, AWS-based webhook receiver template that helps developers quickly implement robust webhook handling for Smartcar integrations. This TypeScript recipe provides a deployable starting point that makes adding custom business logic easy, eliminating much of the complexity of building webhook infrastructure from scratch.
 
-* **Repository**: [smartcar/typescript-webhook-recipe](https://github.com/smartcar/typescript-webhook-recipe)
+* **Repository**: [`smartcar/typescript-webhook-recipe`](https://github.com/smartcar/typescript-webhook-recipe)
 * **Deployment Target**: AWS (Lambda + API Gateway + SQS)
 * **Language**: TypeScript/Node.js v22+
 * **Infrastructure**: AWS CDK (Infrastructure as Code)
@@ -14421,7 +17148,7 @@ The Webhook Receiver Recipe is a production-ready, AWS-based webhook receiver te
 ### Infrastructure as Code
 
 * Complete AWS CDK setup for repeatable deployments
-* Environment-specific configurations (dev, staging, production)
+* Environment-specific configurations (development, staging, production)
 * Easy customization and extension
 
 ## When to Use This Recipe
@@ -14438,7 +17165,7 @@ The Webhook Receiver Recipe is a production-ready, AWS-based webhook receiver te
 
 The recipe provides a complete serverless webhook receiver infrastructure on AWS. The diagram below shows the data flow from Smartcar webhooks through your deployment:
 
-```mermaid  theme={null}
+```mermaid theme={null}
 graph TD
     A[Smartcar Webhooks] -->|HTTPS POST| B[API Gateway]
     B --> C[Receiver Lambda]
@@ -14485,14 +17212,14 @@ graph TD
 
 <Steps>
   <Step title="Clone the Repository">
-    ```bash  theme={null}
+    ```bash theme={null}
     git clone https://github.com/smartcar/typescript-webhook-recipe.git
     cd typescript-webhook-recipe
     ```
   </Step>
 
   <Step title="Build the Project">
-    ```bash  theme={null}
+    ```bash theme={null}
     make build
     ```
   </Step>
@@ -14500,7 +17227,7 @@ graph TD
   <Step title="Deploy to AWS">
     The recipe uses AWS CDK for infrastructure deployment. First, create a secret to store your Application Management Token, then deploy the stack.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # Step 1: Create the secret for your Application Management Token
     make create-secret appName=your-app-name amt=your_smartcar_application_management_token
 
@@ -14681,7 +17408,7 @@ The recipe includes built-in CloudWatch logging for debugging and monitoring. Yo
 
 ### Debugging Commands
 
-```bash  theme={null}
+```bash theme={null}
 # Monitor queue depths
 aws sqs get-queue-attributes --queue-url <queue-url> --attribute-names ApproximateNumberOfMessages
 
@@ -14706,12 +17433,12 @@ After deploying your webhook receiver:
 
 ***
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Repository" icon="github" href="https://github.com/smartcar/typescript-webhook-recipe">
     View the complete source code and documentation
   </Card>
 
-  <Card title="Webhook Responses" icon="webhook" href="/integrations/webhooks/responses">
+  <Card title="Webhook Responses" icon="webhook" href="/integrations/webhooks/receiving-webhooks">
     Understand webhook payload structures
   </Card>
 </CardGroup>
@@ -14740,25 +17467,25 @@ You’ll need a few things to start making API calls with Smartcar and Postman:
 
 <Tabs>
   <Tab title="Step 1">
-    <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/postman.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=eff974c27c35429e996cc03ac0537ca3" data-og-width="1909" width="1909" data-og-height="735" height="735" data-path="images/help-center/guide-postman/postman.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/postman.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=016888b9f5f7351d6c23031258011ffd 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/postman.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=3fddd8da5d08c02b7b506e691dd0b9dd 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/postman.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=3c70e7485b08c3c9d26bd6c7e2c7dc8a 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/postman.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=44de4f15cf082a01142835380edfa632 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/postman.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=c8fc1eb62d30bf5d77e41f43d6ec7785 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/postman.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=a8bf82c0dfe360db42977824304c19be 2500w" />
+    <img />
   </Tab>
 
   <Tab title="Step 2">
-    <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import1.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=0d6ca63f2c0ec0531d6f43013d898d46" data-og-width="2000" width="2000" data-og-height="781" height="781" data-path="images/help-center/guide-postman/import1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import1.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=75cc5f5c6efea65b11aa05ad9bccaaec 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import1.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=e408a3428f00acb334b0e8c828fd7b77 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import1.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=bfd2d6e8c679444d0f4b669971476c06 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import1.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=3f2f46f58bebc16f68bcadbab4c05e45 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import1.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=83754ca3236b6ea69edc473b9ebdbb73 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import1.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=218117c1cff0ac9877f08284d5fa861d 2500w" />
+    <img />
   </Tab>
 
   <Tab title="Step 3">
-    <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import2.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=ab103641bc93ed9d009e611042a87ddd" data-og-width="2000" width="2000" data-og-height="2034" height="2034" data-path="images/help-center/guide-postman/import2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import2.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=1bf38338e70dd967e6fa08b1a42d1be4 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import2.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=70c3f7ddec9d28f7d9a88a07e2441c64 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import2.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=f151fa36c5b84d324f88e62ecc108bbe 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import2.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=6aec86aa154618901f62892be022faa7 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import2.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=f64bfdc2333313b74a8f68fc104bd4d0 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import2.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=49a5bb764929570322d1d7d6b3b14b86 2500w" />
+    <img />
   </Tab>
 
   <Tab title="Step 4">
-    <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import3.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=ca91ea1a83ddcd32189f05e142917e3e" data-og-width="2000" width="2000" data-og-height="3103" height="3103" data-path="images/help-center/guide-postman/import3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import3.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=11a42a3cadbc26df42e96c5fee19f1b3 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import3.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=b9b8e8c1c6120d82fdc3586f9c66e5a5 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import3.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=d1f18a835ad80f2669bdcfb9f6480667 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import3.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=ba8d70342d7d97385599b04d5c67bc77 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import3.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=6f96f78fcdcc2bece341c64ef878edae 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/import3.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=b8dd3242dd2775d1a41b509344ae763c 2500w" />
+    <img />
   </Tab>
 </Tabs>
 
 ## Smartcar Application Configuration
 
-If you haven’t already signed up for a Smartcar Developer account, you can do so from this [**signup link**](https://dashboard.smartcar.com/signup).
+If you haven’t already signed up for a Smartcar Developer account, you can do so from this [**sign-up link**](https://dashboard.smartcar.com/signup).
 
 * Grab your **Client ID** and **Client Secret** from the Configuration page after you sign in, and copy them to someplace secure. You’ll need those tokens a little later in this setup.
 * Under the Credentials tab for your application, you’ll need to add the following Redirect URIs. This will ensure that Smartcar Connect exits successfully with both Postman’s Native and Web clients.
@@ -14769,13 +17496,13 @@ http://localhost:8000/exchange
 ```
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/appConfig.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=227ee48bcdd4a1994049717c996deaa4" data-og-width="2000" width="2000" data-og-height="1306" height="1306" data-path="images/help-center/guide-postman/appConfig.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/appConfig.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=22525c94a1167dc50c0b7c29f521b75d 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/appConfig.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=35f84af32748222af74a57f5b8b56a1d 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/appConfig.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=7aef027c29db70ca3ba0a8ee7e878626 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/appConfig.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=0efa259095c171610dbabf66573d46e2 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/appConfig.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=d9bcc2b805c2374762e3e4340d0880e0 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/appConfig.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=0fb808d66c484339ccf916af71d3a1e3 2500w" />
+  <img />
 </Frame>
 
-Through the Connect flow, you’re able to get consent from vehicle owners to connect their vehicle to your application. Postman provides an easy way to manage oAuth 2.0 flows under the Authorization tab of a Collection. Set up the Configuration Options for either a live or simulated vehicle.
+Through the Connect flow, you’re able to get consent from vehicle owners to connect their vehicle to your application. Postman provides an easy way to manage OAuth 2.0 flows under the Authorization tab of a Collection. Set up the Configuration Options for either a live or simulated vehicle.
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/authorization.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=44585e961f665d2d259993a8ddd4319e" data-og-width="2000" width="2000" data-og-height="2428" height="2428" data-path="images/help-center/guide-postman/authorization.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/authorization.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=46aa2f12046829bd12721516223962fc 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/authorization.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=e1564439120f97729c09dfdbb991f128 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/authorization.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=c2a4277fff801a484e5119578b772632 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/authorization.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=64c4d2591f0c61bd44dc7652bed92312 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/authorization.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=817af5d94ee6ab342b4429d45d645300 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/authorization.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=8a9fc062932e0fc9d38577d3ecd1ec4f 2500w" />
+  <img />
 </Frame>
 
 **Live Vehicle**
@@ -14803,29 +17530,29 @@ Through the Connect flow, you’re able to get consent from vehicle owners to co
 Under the Simulator tab on Dashboard, hit Add Vehicle. Note that you may already have a pre-created simulated vehicle available, if so skip to **Connecting to a vehicle** below.
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim1.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=ac48f25d23f26724ac3c3a030a98db67" data-og-width="1601" width="1601" data-og-height="633" height="633" data-path="images/help-center/guide-postman/sim1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim1.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=81b228e533bb030731f804c8e5dc79f8 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim1.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=684fa9b64b213b5a14070d9805907e60 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim1.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=cf9129e663aabc81e830c5483165b9a5 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim1.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=1aa6264af9bbe9cc36d80b3cdb691d6f 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim1.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=1cbf429bcd1da5b1191df8a90aadec27 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim1.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=ad28310d044fb17262ac42b120855908 2500w" />
+  <img />
 </Frame>
 
 Select a region and MMY for your vehicle, then hit Search by MMY
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim2.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=d4185d0baab4608387e4bcb418395156" data-og-width="1691" width="1691" data-og-height="1120" height="1120" data-path="images/help-center/guide-postman/sim2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim2.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=3e8c4290600c6fac71158aed12b6311c 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim2.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=4b1c85eda9dffee5d77ba0f3e5df0f71 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim2.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=573ff038bcc73c80a01e07e46a07374e 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim2.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=1347a9538d405c40efc0b8ae939ba73e 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim2.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=a69b34c3beea29e4800ee2663adeaf20 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim2.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=e40af5e2b60a6d1bbd4a36d9bd7c0577 2500w" />
+  <img />
 </Frame>
 
 After selecting Use Vehicle, you’ll want to select a state for the vehicle. After that, you’ll get a set of credentials to use in the Connect flow.
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim3.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=a80ce27d74bf60db8c576a22a73dfe50" data-og-width="1691" width="1691" data-og-height="920" height="920" data-path="images/help-center/guide-postman/sim3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim3.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=5871a63b04a29e9813c2224b6decf078 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim3.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=0d6de51615abdd7657c0aee6bbf0df47 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim3.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=0689689c1f14cb2e861731807feafc16 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim3.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=5cbd492e16eb56d47a7c6015d2feb54b 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim3.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=efbc736170c9e3aa4272d65d019747de 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim3.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=bc5bccd272f3cc5b79e64abacf157dd8 2500w" />
+  <img />
 </Frame>
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim4.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=234f54c381002a8dc4bbb988d9678d23" data-og-width="1929" width="1929" data-og-height="849" height="849" data-path="images/help-center/guide-postman/sim4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim4.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=ea1b8471e9682dd3b1a08502dd887fb5 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim4.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=e511753f8e9c7b299bc7424aeb654ce9 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim4.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=27e78a8cec0bdfb038b737a8e0842ad0 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim4.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=1812b6b804ee240ad2396dacc0c65bb4 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim4.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=0409c59399c2063de53898838018eaf8 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim4.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=da731b53ecdeeb4ef690b58e66cf17a7 2500w" />
+  <img />
 </Frame>
 
 Before proceeding to the next step, you’ll want to start the simulation in the Smartcar Dashboard.
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim5.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=62c9900a88d6027f0ef2c623aaf59729" data-og-width="1468" width="1468" data-og-height="646" height="646" data-path="images/help-center/guide-postman/sim5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim5.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=255690782e946ed2eb4b29788cca8f65 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim5.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=a28d37c35bc257f50c5da645efc968ae 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim5.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=e612df7a4fce464843c5cf89dcc4a51c 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim5.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=b8f37558d09cacbc68e9fab162f46bf4 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim5.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=2b83b12949a032b4fa074e0533c3518e 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/sim5.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=0a3a3318474af0d9f8a964f97f862e39 2500w" />
+  <img />
 </Frame>
 
 ## Connecting to a vehicle
@@ -14837,27 +17564,27 @@ If configured correctly, when you click **Get New Access Token** in Postman, yo
 </Tip>
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect1.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=4eac302ec3adec5e4bd844218b1e8c02" data-og-width="2000" width="2000" data-og-height="2490" height="2490" data-path="images/help-center/guide-postman/connect1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect1.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=b33c86b9a49200aca03b0b2268d56b30 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect1.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=851cfdcc84cca6418304adc05ba75bb6 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect1.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=818c4993a577ac3d44da91d638faaf00 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect1.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=1dcb7d05948fd0a2c6fcd28b65377804 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect1.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=89a567a8b88bcf023347fbad04fa4f65 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect1.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=54f5cb846fd240db594de5887e8b6c05 2500w" />
+  <img />
 </Frame>
 
 Continue through the Connect flow, select the brand of your simulated vehicle and enter in the credentials you were issued for your simulated vehicle.
 After accepting the permissions you’ll be met with the following screen:
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect2.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=b3fda47b60fb4b1d049769362b24b9fa" data-og-width="2000" width="2000" data-og-height="1171" height="1171" data-path="images/help-center/guide-postman/connect2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect2.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=bf14c4a7fa472feed32bf1653a186d0a 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect2.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=f629985aa1b2096126648869f6ef10ff 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect2.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=14afb459a27975f25c8b75f93d9fbaa4 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect2.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=12638020d51f7f48c974e9a1432486ef 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect2.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=ba92c7b42557535ece0de00caf6cbb05 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect2.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=f9af66b4ba70192c5b3317caa2cc4ad1 2500w" />
+  <img />
 </Frame>
 
 Hit Use Token. You should see Access Token under Current Token populate with the access\_token from the popup. Using this access\_token you can make API requests to Smartcar's API.
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect3.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=71eef9cb9f7fffbe7015cb6110b6daa7" data-og-width="2000" width="2000" data-og-height="774" height="774" data-path="images/help-center/guide-postman/connect3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect3.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=228f2abc0f83ae37967465df1e0c118f 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect3.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=14c08260ce21d05fe6c79ecdcde6c0b5 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect3.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=603e838cee16606a98763739e3d8671a 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect3.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=ce42d6b65d2fd760ee1e5006536ce3d2 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect3.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=37d944156781e88428fd65712a838156 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/connect3.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=9db774eaa2fa873059031b38b629e69b 2500w" />
+  <img />
 </Frame>
 
 <br />
 
 <Warning>
   Access tokens are only valid for two hours. If you want to make API requests after it has expired, you'll need to generate a
-  new one by stepping through the Connect Flow again, or through a [token refresh](/api-reference/authorization/token-refresh).
+  new one by stepping through the Connect Flow again, or through a [token refresh](/api-reference/authorization/refreshing-access-token).
 </Warning>
 
 ## Making an API request
@@ -14871,7 +17598,7 @@ In order to make API requests, we’ll need to first get a Smartcar `vehicle Id`
 This can be done with the `All Vehicles` request. Making this request will assign the `vehicle Id` to the `{{vehicle_id}}` variable for other requests in the Collection.
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req1.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=1182006af59ffca20f826b396d7876c5" data-og-width="2000" width="2000" data-og-height="1186" height="1186" data-path="images/help-center/guide-postman/req1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req1.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=e95dac20eef0635b4e16ca565d4d5922 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req1.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=1b4ed61974c72f06e6b5be4789dba84a 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req1.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=9d5aeae2a0334cfcca8bfbd8d1f6e1d1 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req1.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=a1d5f5a2c76f7f52c52fc25d5af49f82 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req1.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=ebb64246814d3f35781c3beb5dd08094 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req1.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=091082c4b9e2057866598684824a1b65 2500w" />
+  <img />
 </Frame>
 
 <br />
@@ -14879,7 +17606,7 @@ This can be done with the `All Vehicles` request. Making this request will assig
 Now that you've got a vehicle Id, you can make a request to other endpoints. Hitting Vehicle Info, we can see the MMY of the vehicle.
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req2.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=c9b1d9dd016d9ef9674a84a368648db6" data-og-width="2000" width="2000" data-og-height="1105" height="1105" data-path="images/help-center/guide-postman/req2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req2.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=80472e786a7f26a6d730ad761ed69d5d 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req2.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=c96f5f6aad6b8db7f8955d7107c6fa61 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req2.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=efa987df738bf5c5219f16dd288181e8 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req2.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=4cc1084b30ed7130b2c28594072f0038 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req2.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=876da9b854b51b8144042e2c007050f1 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req2.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=5fd20e450288ea503841316a82260332 2500w" />
+  <img />
 </Frame>
 
 <br />
@@ -14887,13 +17614,13 @@ Now that you've got a vehicle Id, you can make a request to other endpoints. Hit
 Checking `EV Battery Level`, we can see the response matches the vehicle state on the simulator
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req3.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=7230503ce005f2bde54dddfd00c5b58c" data-og-width="2000" width="2000" data-og-height="1036" height="1036" data-path="images/help-center/guide-postman/req3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req3.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=e4b83819e252f452039d0c963953d541 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req3.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=6add9acb8b6f8a19ef1a75629eac75c1 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req3.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=309bdf161ba4d9ae74452493a1dbcec9 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req3.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=8241ba78505dbb0ee4c81aa4514e6e86 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req3.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=9b65f4395bf55177a09c69c9637a1ac5 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/help-center/guide-postman/req3.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=e7af67311b0bb31397e6d4e7b369ed3d 2500w" />
+  <img />
 </Frame>
 
 <br />
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/req4.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=5798556122aea8b0f4e20aa60d816b7e" data-og-width="2000" width="2000" data-og-height="1580" height="1580" data-path="images/help-center/guide-postman/req4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/req4.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=9a501a8002cb2d23f52a9619349a6fec 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/req4.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=1b9fd83b56957a7d55c5a20f119a4023 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/req4.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=7e8e19baf5e09e99e58bf528e8c6f2a2 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/req4.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=91ef1aed95e552fdeffccea38c4c82c1 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/req4.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=f0b411f53e83c5c7977de54cc874ec42 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/guide-postman/req4.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=ce529293fd334a85251146348945de84 2500w" />
+  <img />
 </Frame>
 
 <br />
@@ -14933,8 +17660,12 @@ Go to [support.smartcar.com](https://support.smartcar.com). You’ll be redirect
 ### Option 2: From the Smartcar Dashboard
 
 1. Log in at [dashboard.smartcar.com](https://dashboard.smartcar.com).
-2. Click the **Help** icon in the bottom-left corner, or the **Help Hub** icon in the bottom-right. <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/help-hub.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=5b38c0162e8814262623c6be79ce7490" alt="Help Hub" data-og-width="3360" width="3360" data-og-height="1846" height="1846" data-path="images/help-center/support-center/help-hub.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/help-hub.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=b059cadbb30bb8967f52c423cdfc37f7 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/help-hub.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=38c81769d3aded28a62a6468859904ae 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/help-hub.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=8b6cfba7fd2863f593ac1ce602550905 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/help-hub.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=894be9202604164d85c3b986ab935418 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/help-hub.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=b14cbeb8d0bb577737bfe7689f06f02f 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/help-hub.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=470e63f058c63faa1ca624143e01dc91 2500w" />
-3. Select the **Support Center** option to be redirected to the full Support Center. <img src="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/support-center-button.png?fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=55b92545b9f29533a420cb8c28bbe23c" alt="Support Center Button" data-og-width="466" width="466" data-og-height="786" height="786" data-path="images/help-center/support-center/support-center-button.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/support-center-button.png?w=280&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=9f739f26b776a019428b99fda9422e14 280w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/support-center-button.png?w=560&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=badc29dd1597ebc701c3d52f1236a244 560w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/support-center-button.png?w=840&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=88fcab31d69334a3f9f45623ad8eacd0 840w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/support-center-button.png?w=1100&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=840b47ed2c930d927532f7b3293a5e3d 1100w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/support-center-button.png?w=1650&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=a0e1e09f307b6da24c61e0ff60dbd767 1650w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/support-center-button.png?w=2500&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=7845362581a401997b75f616768c9f69 2500w" />
+2. Click the **Help** icon in the bottom-left corner, or the **Help Hub** icon in the bottom-right. <img alt="Help Hub" />
+3. Select the **Support Center** option to be redirected to the full Support Center. <img alt="Support Center Button" />
+
+***
+
+For information about email, changelog, status, and brand reliability subscriptions, see [Subscribing to Smartcar Updates and Notifications](/help/smartcar-updates).
 
 
 # Smartcar Usage Limits
@@ -15002,15 +17733,15 @@ As part of our Enterprise Slack support offering, Smartcar includes access on se
 
 ## 1. Ask a Question
 
-In your dedicated Slack support channel, send a message with your question. The AI Agent will attempt to answer it based on Smartcar’s support documentation and past support interactions. <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/ask-a-question.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=bcb149aff43bca356b9714f2760c6e00" alt="Ask a Question" data-og-width="484" width="484" data-og-height="686" height="686" data-path="images/help-center/support-center/ask-a-question.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/ask-a-question.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=985d5e75b4b7ac088fb41c4fe953981c 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/ask-a-question.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=d2a94093bef1bb846b9c8be47c180629 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/ask-a-question.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=7af3235d68f17dd9391d8daeda88515b 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/ask-a-question.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=f00040c1e3e691068b7bd3acd3925c74 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/ask-a-question.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=246667428285e80fa50976cbaf57ebf3 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/ask-a-question.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=8f1fc2a6276ec130bb89e8f673feec4d 2500w" />
+In your dedicated Slack support channel, send a message with your question. The AI Agent will attempt to answer it based on Smartcar’s support documentation and past support interactions. <img alt="Ask a Question" />
 
 ## 2. Submit a Support Ticket
 
-If your question requires deeper support, simply click **"Create a Ticket"** at the bottom of the AI-generated response within the Slack channel. This will open a form to submit a formal, trackable support request. <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/slack-create-a-ticket.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=fa67c071dac4080ff8ecb41cca82fd9b" alt="Create a Ticket" data-og-width="742" width="742" data-og-height="686" height="686" data-path="images/help-center/support-center/slack-create-a-ticket.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/slack-create-a-ticket.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=d0e4daa02485bef86485d67194fd7415 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/slack-create-a-ticket.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=558ab55e94a1961d013da2955aab56d3 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/slack-create-a-ticket.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=b98d375c269b23ee7281f80a077e7c88 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/slack-create-a-ticket.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=f8c83255eb74bd5d6d02f14ef1a05934 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/slack-create-a-ticket.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=40233b951d9422cbfa9daa055fd3745e 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/slack-create-a-ticket.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=82343f5a2589d30d219aaeb8226204c9 2500w" /> <img src="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/slack-create-a-ticket2.png?fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=0a6dbe0e28716ccaab5617fc228363b3" alt="Ticket Form" data-og-width="535" width="535" data-og-height="550" height="550" data-path="images/help-center/support-center/slack-create-a-ticket2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/slack-create-a-ticket2.png?w=280&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=56333728b2fdb4fb7f8125a915d1d635 280w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/slack-create-a-ticket2.png?w=560&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=93eca671b85569fffa0cbd5df5b4ae59 560w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/slack-create-a-ticket2.png?w=840&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=a95096ba02c62cd08eadfdea7b09a361 840w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/slack-create-a-ticket2.png?w=1100&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=0736cedd6937c620e7aeabe44d694271 1100w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/slack-create-a-ticket2.png?w=1650&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=f96b8796852eca5c371a48bcfa1afc05 1650w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/slack-create-a-ticket2.png?w=2500&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=6160f1cdf12aac6e3ba2a5e0d8fd319b 2500w" />
+If your question requires deeper support, simply click **"Create a Ticket"** at the bottom of the AI-generated response within the Slack channel. This will open a form to submit a formal, trackable support request. <img alt="Create a Ticket" /> <img alt="Ticket Form" />
 
 ## 3. View Open Tickets
 
-To check the status of an existing ticket, navigate to the Slack thread where the ticket was created and click the **"View Ticket Info"** icon. This will display the current status and details of your support request. <img src="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/view-ticket-info.png?fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=3d26b2403a32f6706f7a513836753010" alt="View Open Ticket" data-og-width="1036" width="1036" data-og-height="1006" height="1006" data-path="images/help-center/support-center/view-ticket-info.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/view-ticket-info.png?w=280&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=a29da77d07d2c7d7920b11f0273f6270 280w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/view-ticket-info.png?w=560&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=523dc88b41028896536d71568475be8b 560w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/view-ticket-info.png?w=840&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=91f7f89c5b9f1a6b475b063ff7c294ac 840w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/view-ticket-info.png?w=1100&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=1c4058743fc7380361bc1ca0f35cbdc2 1100w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/view-ticket-info.png?w=1650&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=f304a97991bfd1e83cfe2c0219692a74 1650w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/view-ticket-info.png?w=2500&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=01625842882f7f5be2d4cfad94819565 2500w" />
+To check the status of an existing ticket, navigate to the Slack thread where the ticket was created and click the **"View Ticket Info"** icon. This will display the current status and details of your support request. <img alt="View Open Ticket" />
 
 ## 4. Navigate to the Support Center
 
@@ -15080,14 +17811,6 @@ BYD accounts can only maintain one active session at a time. Vehicle owners shou
 
 If customers reach out about being logged out of their BYD mobile app, we recommend instructing users to create a secondary BYD account exclusively for your app.
 
-## Ford/Lincoln
-
-### Authentication
-
-Connecting Ford and Lincoln vehicles requires the use of one of our mobile SDKs. We currently offer SDKs for iOS, Android, and Flutter. Smartcar's Connect SDKs will redirect to Ford’s site to handle the authentication process when the user logs in.
-
-**Authentication via non-mobile platforms such as web browsers is not supported at this time**. See [Connect SDKs](/connect/connect-sdks) for our latest SDKs.
-
 ## GM (Buick, Chevrolet, Cadillac, GMC)
 
 ### VEHICLE\_STATE - ASLEEP errors
@@ -15130,6 +17853,12 @@ The app appears to have an option to edit notifications, but as of Feb 2024 they
 
 If you request control\_charge permissions for PSA EVs, upon login owners will be presented with a PIN and MFA screen in Connect upon submitting their credentials. They will need to have set this up on their OEMs application in order to grant your application this permission.
 
+## Polestar
+
+### Stop charge command limitations
+
+Smartcar cannot fulfill stop charge commands if the vehicle is below 40% state of charge due to limitations with the current Polestar APIs.
+
 ## Rivian
 
 ### MFA
@@ -15153,13 +17882,21 @@ Tesla now requires virtual keys for 3rd-party applications in order to issue com
 * All Cybertrucks, Model 3 and Model Y
 * 2021+ Model S and X
 
-Please see [Virtual Keys](oem-integrations/tesla/virtual-key-tesla) for more information.
+Please see [Virtual Keys](/help/oem-integrations/tesla/virtual-key-tesla) for more information.
+
+### Enterprise Tenant Configuration
+
+<Warning>
+  For enterprise customers, Tesla tenant setup must occur **before** any customer-facing Tesla vehicles are onboarded. Configure this during initial implementation, coordinated with Smartcar.
+</Warning>
+
+Changing Tesla tenant configurations after vehicles are already connected will require all affected users to re-authenticate. See [OEM Migrations and Re-authentication](/connect/re-auth/oem-migrations) for guidance on handling this scenario.
 
 ## Volkswagen
 
 ### Control charge limits
 
-Volkswagen only allows 15 charge commands (start/stop charge) before the vehicle needs to be driven again in order to start responding to start/stop requests.
+Volkswagen limits charge commands to safeguard battery longevity based on environmental and system conditions. Excessive consecutive requests may result in being temporarily rate limited. To restore functionality, the vehicle must be driven again.
 
 ### CONNECTED\_SERVICES\_ACCOUNT errors on lock/unlock commands
 
@@ -15275,7 +18012,7 @@ Below you can find the connected service name for each brand as well as any spec
 
 * Owners that use a username to login to their connected services app will need to migrate to using their email address under account settings in their Ford Pass or Lincoln Way portal.
 
-### Onstar
+### OnStar
 
 * Chevy Bolts MY 2020+ come with the **EV Mobile Command** service included for 5 years with the purchase of a new vehicle. Location data is not included in the package. Bolt owners will need to also subscribe to **Remote Access** to be able to get access to location data.
 * For all other OnStar accounts, we require the modern **Remote Access** plan as our base subscription. This plan comes with the **Vehicle Status** feature set, which is what enables our remote access to data from cars.
@@ -15293,8 +18030,8 @@ Below you can find the connected service name for each brand as well as any spec
 
 ### Uconnect
 
-* For all Uconnect accounts, we require the ability to interact with vehicle information through the UConnect portal
-* A Uconnect account may have access to Mopar, but not all Mopar accounts have access to UConnect. If a user can see information in Mopar but not UConnect, they’ll need to reach out to UConnect support to set up the right UConnect plan for their vehicle.
+* For all Uconnect accounts, we require the ability to interact with vehicle information through the Uconnect portal
+* A Uconnect account may have access to Mopar, but not all Mopar accounts have access to Uconnect. If a user can see information in Mopar but not Uconnect, they'll need to reach out to Uconnect support to set up the right Uconnect plan for their vehicle.
 * 2021+ Jeeps have their own connected service - Jeep Connect
 * 2022+ Rams have their own connected service - Ram Connect
 * 2022+ Jeep Wagoneers have their own connected service - Wagoneer Connect
@@ -15435,7 +18172,7 @@ Below you'll find answers to some of the most frequently asked questions about S
   </Accordion>
 
   <Accordion title="Why do I see requests that resulted in a 460 status code with different error codes and error types on the Smartcar Dashboard?">
-    In the event that we recieve a response from the OEM after the connection is closed, we will show the error code and error type we would have responded with on the Dashboard if the connection had been kept open.
+    In the event that we receive a response from the OEM after the connection is closed, we will show the error code and error type we would have responded with on the Dashboard if the connection had been kept open.
   </Accordion>
 </AccordionGroup>
 
@@ -15451,13 +18188,28 @@ Your feedback shapes our future. Have an idea or improvement you’d love to see
 
 If you have trouble seeing the form below, please visit [this link](https://smartcarapi.notion.site/215f1477e9d380538219cb34866b8540?pvs=105) to submit your feature request.
 
-<iframe src="https://smartcarapi.notion.site/ebd/215f1477e9d380538219cb34866b8540" width="100%" height="900" frameborder="0" allowfullscreen />
+<iframe />
 
 
 # Data Freshness Frequencies
 Source: https://smartcar.com/docs/help/frequencies
 
 Smartcar's goal is to provide as close to real-time data as possible based on available technologies and capabilities from OEMs. Although real-time is not yet available across all OEMs outside of commercial fleets, Smartcar continues to improve these frequencies as platforms and technologies evolve.
+
+## Understanding Real Vehicle Data Freshness Frequencies
+
+At Smartcar, we are committed to transparency about our data. When we report data freshness, we're referring to actual data retrieved directly from vehicles, not cached information. Cached data can be returned instantly.
+
+### What Does The Table Data Mean
+
+* **True Vehicle Freshness**: A frequency range of 30 minutes means how often the vehicle can safely provide new data without side effects. Even if we attempt to fetch it every 5 seconds, the data won't change for 30 minutes.
+* **Data Delivery**: Rather than polling our API to determine when the data has changed, create a [Webhook](/integrations/webhooks/overview) and Smartcar will send you data as frequently as it changes. It provides both the convenience of immediate notifications AND the reliability of truly fresh vehicle data.
+
+### Why This Matters
+
+**Honest Reporting**: We publish actual vehicle data freshness rates rather than platform latency rates that can be misleading. Developers need to understand the true age of the data they're receiving to build reliable applications. When you come across promises of data "every minute" for a brand we show as 30 minutes, this often means you're repeatedly receiving the same cached information at that frequency, not retrieving fresh data from the vehicle.
+
+***
 
 <Note>
   The values below indicate a range of how quickly you can expect to see fresh data and not how frequent you can receive data from Smartcar. i.e. You may request/receive odometer every three minutes from Smartcar, but its value won't change until it is refreshed by the OEM.
@@ -15508,7 +18260,7 @@ Smartcar automatically adjusts polling frequency based on vehicle status to bala
 | RAM           | Global     | 5-10                          |
 | RENAULT       | Europe     | 30-60                         |
 | RIVIAN        | Global     | 3-5                           |
-| SKODA         | Europe     | 5                             |
+| SKODA         | Europe     | 30-60                         |
 | SUBARU        | US         | 5-10                          |
 | TESLA\*       | Global     | 1 sec - 5 min                 |
 | TOYOTA        | US         | 30-60                         |
@@ -15531,52 +18283,6 @@ Smartcar automatically adjusts polling frequency based on vehicle status to bala
   For Volkswagen vehicles in the US, 3 minutes is the average of how often the data is refreshed. For EVs, you may see data refreshed faster when the vehicle is plugged in.
 </Info>
 
-{/*| -----------------------| */}
-
-{/*| -                      | */}
-
-{/*| 3 (US/CA/EUR)          | */}
-
-{/*| 1 (US), 1 (CA)         | */}
-
-{/*| 3 (US), 3 (CA)         | */}
-
-{/*| 3 (EUR)                | */}
-
-{/*| 3 (US), 3 (CA)         | */}
-
-{/*| -                      | */}
-
-{/*| 1 (CA)                 | */}
-
-{/*| 1 (CA)                 | */}
-
-{/*| 1 (US/CA/EUR)          | */}
-
-{/*| 1 (US), 1 (CA), 3 (EUR)| */}
-
-{/*| 1 (US), 2 (CA)         | */}
-
-{/*| 3 (US/CA/EUR)          | */}
-
-{/*| -                      | */}
-
-{/*| 1 (EUR)                | */}
-
-{/*| 3 (EUR)                | */}
-
-{/*| 1 (US/EUR)             | */}
-
-{/*| 1 (EUR)                | */}
-
-{/*| 1 (EUR)                | */}
-
-{/*| 1 (US/CA), 2 (EUR)     | */}
-
-{/*| 1 (EUR)                | */}
-
-{/*| 3 (US)                 | */}
-
 
 # How to Submit a Ticket in the Support Center
 Source: https://smartcar.com/docs/help/how-to-submit-ticket
@@ -15592,7 +18298,7 @@ Learn how to submit a support ticket through the Smartcar Support Center, includ
 ### **How to Submit a Support Ticket**
 
 **1. Select "Submit a Ticket"**\
-Once in the Support Center, click **"Submit a Ticket"** at the top right corner of the page to begin creating your ticket. <img src="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/submit-ticket.png?fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=80b169e08bb58f9b98eb858abdabbe30" alt="Submit a Ticket" data-og-width="3360" width="3360" data-og-height="1754" height="1754" data-path="images/help-center/support-center/submit-ticket.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/submit-ticket.png?w=280&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=447743ab5894ecbcc7a691f6a02c538e 280w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/submit-ticket.png?w=560&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=a234ad51d9abf62b96308b378a642e0f 560w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/submit-ticket.png?w=840&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=b07bdcd9188832735d025b10c9e52833 840w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/submit-ticket.png?w=1100&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=c8d77b19e5419baf6465ee29feab2151 1100w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/submit-ticket.png?w=1650&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=966d80af826b07cc2cb35e1fa7a67b6b 1650w, https://mintcdn.com/smartcar-docs/YqcNJdgEDgXpXtEG/images/help-center/support-center/submit-ticket.png?w=2500&fit=max&auto=format&n=YqcNJdgEDgXpXtEG&q=85&s=6777b10fc2f6136d4876d52420763a32 2500w" />
+Once in the Support Center, click **"Submit a Ticket"** at the top right corner of the page to begin creating your ticket. <img alt="Submit a Ticket" />
 
 **2. Fill Out the Ticket Form**\
 Provide details such as:
@@ -15603,19 +18309,19 @@ Provide details such as:
 * The Smartcar Component affected
 * The issue type
 
-<img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/create-a-new-ticket.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=91d72b48965a5dbc6ba89c9eaa20df7d" alt="Fill Out the Ticket Form" data-og-width="3360" width="3360" data-og-height="1851" height="1851" data-path="images/help-center/support-center/create-a-new-ticket.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/create-a-new-ticket.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=6be2c00b8ed5d86d260a5c0d89349a33 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/create-a-new-ticket.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=224d7fcbcfce41b744c2dcb4b094d7f7 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/create-a-new-ticket.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=ca9b47c013f32ceb7b1427e0717ca341 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/create-a-new-ticket.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=5f07ff2df7da774391869c57a987c045 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/create-a-new-ticket.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=aee3698e259e2619b9100aaf856a9b30 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/create-a-new-ticket.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=6bf8db2c4cee5561f5d83c41cea60cc4 2500w" />
+<img alt="Fill Out the Ticket Form" />
 
 **3. Submit Your Ticket**\
 Click **Submit**, and your request will be sent to our Support team.
 
 **4. Track Your Request**\
-You can view and track the status of your tickets under **"My Tickets"** in the Support Center. <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/my-tickets.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=ba91b60781ce83ffeb732c109c10600c" alt="Track Your Requests" data-og-width="3360" width="3360" data-og-height="1850" height="1850" data-path="images/help-center/support-center/my-tickets.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/my-tickets.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=d5e6291982ac3aef0e6430ee313562c7 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/my-tickets.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=afa2ad9de8ec84aae221a1ed506349cf 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/my-tickets.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=2170ca7fcae9c35f42bcfdc3bb56503a 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/my-tickets.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=04cdb4cad3eb6c947aa7f110998ff15f 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/my-tickets.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=918b19887aedea46cc0bb71854551a08 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/my-tickets.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=44e47e3dae7bcf140fb48a7de7bd004a 2500w" />
+You can view and track the status of your tickets under **"My Tickets"** in the Support Center. <img alt="Track Your Requests" />
 
 **5. Update or Close a Request**\
 Select the ticket you'd like to update or close from the **"My Tickets"** view. Once you're on the ticket page:
 
 * Click **"Reply"** at the bottom left to add more information or request a status update.
-* Click **"Close Ticket"** at the bottom right to mark the request as **Closed - Resolved** if you no longer need assistance. <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/reply-and-close.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=2ec0302e9189c360db7dea39d15f8287" alt="Update or Close a Request" data-og-width="3360" width="3360" data-og-height="1859" height="1859" data-path="images/help-center/support-center/reply-and-close.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/reply-and-close.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=ff9169c4a3410875abb4acc7f4c5fcd7 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/reply-and-close.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=2b4ef90007dd220da9360fd3af67213e 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/reply-and-close.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=4a3486a5aa552943652cbfb4d037dc67 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/reply-and-close.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=21438da0ac095598efb5e901c460e871 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/reply-and-close.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=771450347e6ea23f9cf2cde87283c885 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/support-center/reply-and-close.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=ac89be098828a60df6792b324ee22030 2500w" />
+* Click **"Close Ticket"** at the bottom right to mark the request as **Closed - Resolved** if you no longer need assistance. <img alt="Update or Close a Request" />
 
 ***
 
@@ -15636,7 +18342,7 @@ With [mySmartcar](https://my.smartcar.com/login), you can see which apps are con
 Log into [mySmartcar](https://my.smartcar.com/login) by providing your preferred email address. A 6-digit code will be sent to you by email, which will grant access to mySmartcar.
 
 <Frame>
-  <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-login.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=227273a3bb7f9a2c390eb06b3ab548b5" data-og-width="985" width="985" data-og-height="496" height="496" data-path="images/help-center/mysmartcar/mysmartcar-login.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-login.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=6a382bad851389e0e5d52c0f6a652017 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-login.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=4030bec5be6df02b7758591a9775d50d 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-login.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=565663eacc142a09b97f93168f610b3a 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-login.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=682444bc1e46cbf115183960dbfd1e38 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-login.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=339b2c3bc7759fcbbcdf6087a6f0a97c 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-login.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=156b1d3c1985ccb2b1466e35caa886d3 2500w" />
+  <img />
 </Frame>
 
 ## Connect your OEM account
@@ -15644,7 +18350,7 @@ Log into [mySmartcar](https://my.smartcar.com/login) by providing your preferred
 Now press "Connect your Car" and follow the on-screen prompts to pair your Connected Services account with mySmartcar.
 
 <Frame>
-  <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-connect.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=b9a3adeac57cf04d9b38fdaf7ba9a0a1" data-og-width="960" width="960" data-og-height="408" height="408" data-path="images/help-center/mysmartcar/mysmartcar-connect.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-connect.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=fabbde0f3e5262e96846d13cf7718b59 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-connect.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=ce79a7ad6983535d58ce0ce8b28dd09d 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-connect.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=f6b1d84fcb5ee9ce6c39e88661d6ffef 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-connect.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=6abfc559006e7d01f40cc2884ac83d63 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-connect.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=d237c513da5d10c8bfa5775da6614c2b 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-connect.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=be665141c28af479380b3123a0172b96 2500w" />
+  <img />
 </Frame>
 
 ## Review and manages connected apps
@@ -15654,8 +18360,169 @@ Once your OEM account is connected, Smartcar will provide a list of each applica
 Should you wish to disconnect an application, click "Revoke Access" and confirm to remove access to your vehicle's data for that application.
 
 <Frame>
-  <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-review.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=2caae71bb4f9a047c4d424438b2aec7d" data-og-width="1646" width="1646" data-og-height="962" height="962" data-path="images/help-center/mysmartcar/mysmartcar-review.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-review.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=49fd2a90cf1b58e6926c6686d8baaf25 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-review.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=03c2c7741f7761fab5a5c59afecc645e 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-review.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=1b0460a5c2635a68656050edac45ae82 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-review.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=af9f17be8d7b835d0db22c034cab13e5 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-review.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=6ee2ea68420049576ee3c3f48e88d9f2 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/mysmartcar/mysmartcar-review.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=c74e2f3618181c58b625e816b0d16e29 2500w" />
+  <img />
 </Frame>
+
+
+# BMW Energy APIs for European Markets
+Source: https://smartcar.com/docs/help/oem-integrations/bmw/energy-integration
+
+Access charging data and remote charge control for BMW and MINI EVs in Europe through Smartcar's BMW Energy API integration.
+
+Smartcar's integration with BMW's Energy API gives you access to charging data and remote charge control for BMW and MINI electric vehicles across Europe. This integration is designed for energy providers building smart charging, demand response, and fleet management solutions.
+
+## Capabilities
+
+With this integration, you can:
+
+* **Monitor charging status** — Get visibility into charging state, energy flow, and battery level.
+* **Control AC charging** — Remotely start and stop AC charging sessions.
+* **Build smart charging solutions** — Support use cases like dynamic load balancing, demand response, off-peak optimization, and charge cost tracking.
+
+## Supported Data
+
+The BMW Energy integration provides charging and battery data through Smartcar's standardized signal schema.
+
+| Data Category       | Available Data                                                                    |
+| ------------------- | --------------------------------------------------------------------------------- |
+| Charging            | Connector type, cable connection status, charging state, detailed charging status |
+| Charging Parameters | Charge timers, charge limits, time to complete, charging wattage                  |
+| Battery             | State of charge (SOC), remaining electric range, nominal capacity                 |
+| Location            | High-precision GPS position (when vehicle is within Geofence)                     |
+
+### Smartcar Signals
+
+* [`Charge.ChargingConnectorType`](/api-reference/signals/charge#charging-connector-type)
+* [`Charge.IsChargingCableConnected`](/api-reference/signals/charge#is-charging-cable-connected)
+* [`Charge.IsCharging`](/api-reference/signals/charge#is-charging)
+* [`Charge.DetailedChargingStatus`](/api-reference/signals/charge#detailed-charging-status)
+* [`Charge.ChargeTimers`](/api-reference/signals/charge#charge-timers)
+* [`Charge.ChargeLimits`](/api-reference/signals/charge#charge-limits)
+* [`Charge.TimeToComplete`](/api-reference/signals/charge#time-to-complete)
+* [`Charge.Wattage`](/api-reference/signals/charge#wattage)
+* [`TractionBattery.StateOfCharge`](/api-reference/signals/tractionbattery#state-of-charge)
+* [`TractionBattery.Range`](/api-reference/signals/tractionbattery#range)
+* [`TractionBattery.NominalCapacity`](/api-reference/signals/tractionbattery#nominal-capacities)
+* [`Location.PreciseLocation`](/api-reference/signals/location#location)
+
+### Commands
+
+* [Start Charge](/api-reference/evs/control-charge)
+* [Stop Charge](/api-reference/evs/control-charge)
+
+## Coverage
+
+### Supported Vehicles
+
+This integration supports all Battery Electric Vehicles (BEV) and Plug-in Hybrid Electric Vehicles (PHEV) from BMW and MINI.
+
+### Supported Markets
+
+The integration is available in 17 European markets: Austria, Belgium, Denmark, Finland, France, Germany, Great Britain, Ireland, Italy, Luxembourg, Netherlands, Norway, Poland, Portugal, Spain, Sweden, and Switzerland.
+
+## Geofence restriction
+
+<Warning>
+  Data and commands are only available when the vehicle is within approximately 200 meters of the consented address. Data streaming from BMW to Smartcar and from Smartcar to your app automatically stops when the vehicle exits the Geofence.
+</Warning>
+
+When vehicle owners grant consent, they specify a single address where managed charging will occur. This Geofence defines where data streaming and charge commands are available. This design ensures data privacy and compliance with BMW's requirements.
+
+## Consent Flow
+
+Vehicle owners grant consent through the BMW Connected Drive Portal as part of the Smartcar Connect flow. During this process, they:
+
+1. Log in with their BMW ID
+2. Select the vehicle(s) to connect
+3. Specify the address where managed charging will occur
+4. Accept BMW's terms for data sharing
+
+## Limitations
+
+<Info>
+  Keep these constraints in mind when building your integration.
+</Info>
+
+* **Charging-only scope** — This integration focuses on charging and battery data. Broader vehicle data (odometer, tire pressure, etc.) is not available through the Energy API.
+* **Geofence-restricted** — Data and commands only work within the \~200m Geofence radius.
+* **AC charging only** — Remote charge control is limited to AC charging sessions.
+* **No public charging data** — Data from public charging sessions is not supported.
+* **No cross-border data** — Cross-border data streaming is not currently supported.
+* **Charge stop rate limit** — BMW enforces a rolling 30-day limit of 80 charge stop commands per vehicle.
+
+If you have any questions about these limitations or need additional capabilities, please our support team. We're continuously working with BMW to expand the integration's features and coverage.
+
+
+# Important Updates
+Source: https://smartcar.com/docs/help/oem-integrations/mercedes/whats-new
+
+Updates regarding the Mercedes-Benz Smartcar Integration.
+
+## December 15th, 2025
+
+Smartcar is excited to announce the availability of the Mercedes-Benz Connectivity Services partner integration. This integration enables developers to connect Mercedes-Benz electric vehicles in Europe and access vehicle data for smart charging, energy management, and mobility applications.
+
+### VIN Verification in Connect Flow
+
+When connecting a Mercedes-Benz vehicle through Smartcar Connect, vehicle owners will be prompted to enter their Vehicle Identification Number (VIN) as part of the authentication process. This additional verification step is a requirement from Mercedes to enroll a vehicle.
+
+<Frame type="simple">
+  <img />
+</Frame>
+
+<Note>
+  The VIN can be found in various places such as the Mercedes mobile app, Mercedes web portal, the vehicle's registration documents, insurance papers, or on the vehicle itself (typically on the driver's side dashboard or door jamb).
+</Note>
+
+### Supported Vehicle Types
+
+Currently, the Mercedes-Benz integration supports the following powertrain types for **new connections**:
+
+* **BEV (Battery Electric Vehicles)** - Fully electric Mercedes-Benz vehicles
+* **PHEV (Plug-in Hybrid Electric Vehicles)** - Mercedes-Benz plug-in hybrid vehicles
+
+### Need Support for Other Vehicle Types?
+
+**Existing Connections**: If you have existing connections to Mercedes-Benz vehicles with other powertrain types (such as traditional internal combustion engine vehicles), these connections will continue to work, but re-authentication is not supported at this time. If your application requires support for Mercedes-Benz vehicles with other powertrain types, please [contact our team](mailto:support@smartcar.com) to discuss your specific requirements. We're continuously working with Mercedes to expand compatibility across different vehicle types and would love to hear about your use case.
+
+### Supported Smartcar Signals:
+
+* [Charge.IsChargingCableConnected](/api-reference/signals/charge#is-charging-cable-connected)
+* [Charge.IsCharging](/api-reference/signals/charge#is-charging)
+* [Charge.DetailedChargingStatus](/api-reference/signals/charge#detailed-charging-status)
+* [Charge.ChargeTimers](/api-reference/signals/charge#charge-timers)
+* [Charge.ChargeLimits](/api-reference/signals/charge#charge-limits)
+* [Charge.TimeToComplete](/api-reference/signals/charge#time-to-complete)
+* [Charge.Wattage](/api-reference/signals/charge#wattage)
+* [TractionBattery.StateOfCharge](/api-reference/signals/tractionbattery#state-of-charge)
+* [TractionBattery.Range](/api-reference/signals/tractionbattery#range)
+* [TractionBattery.NominalCapacity](/api-reference/signals/tractionbattery#nominal-capacities)
+* [Location.PreciseLocation](/api-reference/signals/location#location)
+* [Odometer.TraveledDistance](/api-reference/signals/odometer#traveled-distance)
+
+### Smartcar Legacy API v2 Endpoints Supported:
+
+* [/odometer](/api-reference/get-odometer)
+* [/location](/api-reference/get-location)
+* [/battery](/api-reference/evs/get-battery-level)
+* [/battery/capacity](/api-reference/get-nominal-capacity)
+* [/charge](/api-reference/evs/get-charge-limit)
+
+### Supported Commands:
+
+* [Charge Start](/api-reference/evs/control-charge)
+* [Charge Stop](/api-reference/evs/control-charge)
+
+### Notes
+
+This Mercedes-Benz integration is automatically enabled for your application when connecting vehicles out of Europe.
+
+* Supported European markets: Reach customers in Austria, Belgium, Denmark, Finland, France, Germany, Great Britain, Ireland, Italy, Luxembourg, Netherlands, Norway, Poland, Portugal, Spain, Sweden, and Switzerland
+* As part of this integration, drivers will be asked to enter their Vehicle Identification Number (VIN) during the new consent authentication flow. We recommend preparing your customer guidance and support content accordingly
+* If charge control permissions are requested by the connecting application only EQA, EQB, EQE and EQS vehicles are compatible
+* Only EQ models support control charge at this time. For EQE and EQS models, if the state of charge is lower than 20%, stop commands are rejected by Mercedes. For all other EQ models, if the state of charge is below 50%, stopping the charging process is rejected by Mercedes and the car will continue to charge until it reaches at least 50% for vehicle reliability reasons,
+
+For more information about compatible vehicle data and features, see the [compatibility matrix](https://smartcar.com/product/compatible-vehicles).
 
 
 # Tesla Permission Info
@@ -15738,7 +18605,7 @@ As a result if they do not select the necessary permissions with Tesla, they wil
 following screen and be prompted to return to Tesla to update their permissions.
 
 <Frame>
-  <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/tesla-missing-permissions.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=3c3de6736086f806218fd439716cee9a" data-og-width="1308" width="1308" data-og-height="1923" height="1923" data-path="images/help-center/oem-integrations/tesla/tesla-missing-permissions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/tesla-missing-permissions.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=5fb01d16d7c34e696a86a443ba50c30d 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/tesla-missing-permissions.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=e0def47b1a2240586d2225c01b04f848 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/tesla-missing-permissions.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=4fe026ad6d521f59d29ad46b60c35796 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/tesla-missing-permissions.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=41aaba09ac860b141dba082845659333 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/tesla-missing-permissions.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=400fde9714c485477336556f605b94d9 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/tesla-missing-permissions.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=22465ccd5c736ce89d9e51aeff01f4d6 2500w" />
+  <img />
 </Frame>
 
 ## Permission Mappings
@@ -15791,15 +18658,19 @@ We will throw a `CONNECTED_SERVICES_ACCOUNT:VIRTUAL_KEY_REQUIRED` error.
 
 ## Do all vehicles need a virtual key?
 
-2020 and earlier Model S and X **will not** require a virtual key to keep
-working at this time. Smartcar will poll these vehicles in the background every
-5 minutes for data. These requests **will not** wake the vehicle.
+2020 and earlier Model S and X **do not** require a virtual key installation. However, these vehicles can support streaming data access (faster, more frequent updates) if the owner enables a streaming toggle within the vehicle settings. Smartcar Connect will prompt users about this option and can send email instructions on how to enable it.
+
+Older models without streaming enabled, Smartcar will poll these vehicles in the background every 5 minutes for data. These requests **will not** wake the vehicle.
+
+#### How can users enable streaming for 2020 and earlier Model S/X?
+
+During the Smartcar Connect flow, users will be prompted to enable streaming for eligible vehicles. They can request email instructions that will guide them through toggling the streaming setting in their vehicle's infotainment screen. This does not require Virtual Key installation.
 
 #### What happens if a user does not add a virtual key for vehicles that support streaming?
 
-If a vehicle is streaming capable and does not yet have a virtual key installed,
+If a vehicle is streaming capable via virtual key and does not yet have a virtual key installed,
 requests to the vehicle will be limited to 1 request every 8 hours for data. These requests **will
-not** wake the vehicle.
+not** wake the vehicle. Older models that are streaming capable via in-vehicle toggle, will continue to be polled every 5 minutes for data if the toggle is off.
 
 #### What happens if I issue a command but the owner has revoked access through their Tesla portal?
 
@@ -15822,11 +18693,11 @@ Yes. Either account type can go through the Connect flow. As long as the Tesla a
 #### Does the user need to be next to vehicle when adding a virtual key?
 
 Owner accounts can add a virtual key remotely. Driver accounts need to be in
-bluetooth range in order to add a virtual key.
+Bluetooth range in order to add a virtual key.
 
 #### Can driver accounts add a virtual key?
 
-Yes. However, driver accounts can only pair virtual keys via bluetooth. They
+Yes. However, driver accounts can only pair virtual keys via Bluetooth. They
 cannot add a virtual key remotely.
 
 #### Why are my users are seeing a location sharing notification on their navigation unit?
@@ -15839,7 +18710,7 @@ what data is being shared and with whom.
 
 The domain displayed will match the Virtual Key for your application.
 
-<img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/tesla-location-notification.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=199d257346ee46c2e486a370e0b190f8" data-og-width="909" width="909" data-og-height="927" height="927" data-path="images/help-center/oem-integrations/tesla/tesla-location-notification.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/tesla-location-notification.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=653ace5fd5561326713a909ee559e175 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/tesla-location-notification.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=ee3d64ac5d81cf5af33dfe1a715c45b8 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/tesla-location-notification.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=429ff9f5e78ecc2cffccea9526ea8168 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/tesla-location-notification.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=c76c4c2f2f2583b698a8465cdfc1aff8 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/tesla-location-notification.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=0d4096a7631690de964f7ec430a64dc6 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/tesla-location-notification.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=8d16ada3c12e5ce2afb22757d10a0452 2500w" />
+<img />
 
 #### How can my users update their permissions with Tesla?
 
@@ -15874,8 +18745,8 @@ Although Smartcar handles this step on your behalf, the Virtual Key URL for your
 
 Smartcar Connect will present Tesla vehicle owners a prompt to install the Tesla Virtual Key after granting access and prior to redirecting them back to your application.
 
-<Frame caption="Prompting the user to add a Virtual Key">
-  <img width="700" src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=e504d181b6936f3e0ba17926a2923be2" data-og-width="2283" data-og-height="931" data-path="images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=02c5b864bdd1e8c5541ed1a1bfc80549 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=a1ca3a12ee41154e396ae4ce1b56af65 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=89747ff417caaf5f36b30737aa24bd0a 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=6f5036a32588937a17a0ea6fb0adc4bb 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=3e4e9358fb3e91fc7e6b1ad8bc7bac0d 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=b8b9c2e23830523d41d1c9c753d3b309 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 The Virtual Key is a URL in the form:
@@ -15906,34 +18777,44 @@ After prompting your users to open the link, depending on their device, they wil
   <Tab title="Mobile Device">
     On mobile devices, they will be redirected to the Tesla app and prompted to add the Virtual Key
 
-    <Frame caption="Opening the link on a mobile device with the Tesla app installed">
-      <img width="600" src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/mobile.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=1aa3cfa6758a83b3c5384019c8ce9516" data-og-width="4964" data-og-height="4854" data-path="images/help-center/oem-integrations/tesla/add-virtual-key/mobile.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/mobile.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=38179fb64a3f35c9c6412881a41f63a2 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/mobile.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=dd132f40eaf0ac8ce3f8c06a4a49937a 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/mobile.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=d1f968b7d55de343324b9c34fa1445ae 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/mobile.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=40b9a8fa4ac2c2060da42b5cf08d849b 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/mobile.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=a01aa61cae09b50959b4f8d03936e056 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/mobile.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=2978ca715f21ff393c8a6fcd150d6b96 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
   <Tab title="Desktop">
     On Desktop, they will be prompted to scan the QR code which in turn opens up the Tesla app and prompts them to add a Virtual Key
 
-    <Frame caption="Opening the link on a desktop">
-      <img width="600" src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/desktop.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=d23186ba53fe3df10da5569734e35a55" data-og-width="2000" data-og-height="2283" data-path="images/help-center/oem-integrations/tesla/add-virtual-key/desktop.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/desktop.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=1fef759823638e7e4bef332c9ecc2746 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/desktop.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=b540a6e8a73a09c2335212f7e76cc83d 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/desktop.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=925d9141cba67f54650113d5b89eff78 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/desktop.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=fb91f775461570fbf9babf0d1aa09e3f 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/desktop.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=072106f529447f5d80c34d216936f07c 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/desktop.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=c64d864789f7d4e035cc4c50bf2cb7dd 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 </Tabs>
 
 Virtual Key status can be checked at any time from the Tesla infotainment screen under Settings, Locks.
 
-<Frame caption="Check Virtual Key status from your Tesla">
-  <img width="600" src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/infotainment.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=2aa353d17ed5cde11109469fd2e0a798" data-og-width="2720" data-og-height="1802" data-path="images/help-center/oem-integrations/tesla/add-virtual-key/infotainment.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/infotainment.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=79989c8784343f6e73094b0e0ebcf348 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/infotainment.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=d8b4063d497c846e867109f96ee6afad 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/infotainment.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=4df5837d63f70457f4be3a837ad565d9 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/infotainment.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=13e05d49490a3d98848e8045e183fb2c 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/infotainment.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=b6b2d077092b08c3fb72f852f706d256 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/infotainment.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=990cf7ae17b09c73129ac1eb6cf934ae 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Do all vehicles need a virtual key?
 
-2020 and earlier Model S and X **will not** require a virtual key at this time. Data for these vehicles is refreshed every
-5 minutes while the vehicle is awake.
+2020 and earlier Model S and X **do not** require a virtual key installation. However, to enable streaming data access (faster, more frequent updates), owners can enable streaming by toggling a setting within the vehicle.
+
+### Enabling Streaming for 2020 and Earlier Model S/X
+
+For 2020 or earlier Model S or X that supports streaming (requires a software update), users can enable streaming without installing a Virtual Key:
+
+1. During the Smartcar Connect flow, drivers will be prompted about enabling streaming for their vehicle
+2. Drivers can choose to receive email instructions on how to enable the streaming toggle in their vehicle
+3. Access the streaming settings from the Tesla infotainment screen
+4. Toggle the streaming setting on to enable faster data updates
+
+Once streaming is enabled via the vehicle toggle, data will be refreshed more frequently without requiring Virtual Key installation for these modals. If streaming toggle is not enabled, data for these older models is refreshed every 5 minutes while the vehicle is awake.
 
 ## What if a streaming capable vehicle does not have a virtual key installed?
 
-If a vehicle is streaming capable and does not yet have a virtual key installed,
+If a vehicle is streaming capable via virtual key and does not yet have a virtual key installed,
 requests to the vehicle will be limited to 1 request every 8 hours for data. These requests **will
 not** wake the vehicle.
 
@@ -15948,7 +18829,7 @@ Upcoming changes to data access and permissions in 2025
 Smartcar now handles adding Virtual Keys for Tesla vehicles on your behalf in the Connect flow. Virtual Keys are required for third-party applications to issue commands to Tesla vehicles and are the preferred method for accessing data.
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=e504d181b6936f3e0ba17926a2923be2" data-og-width="2283" width="2283" data-og-height="931" height="931" data-path="images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=02c5b864bdd1e8c5541ed1a1bfc80549 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=a1ca3a12ee41154e396ae4ce1b56af65 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=89747ff417caaf5f36b30737aa24bd0a 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=6f5036a32588937a17a0ea6fb0adc4bb 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=3e4e9358fb3e91fc7e6b1ad8bc7bac0d 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=b8b9c2e23830523d41d1c9c753d3b309 2500w" />
+  <img />
 </Frame>
 
 For more details, visit the [Virtual Key documentation](/help/oem-integrations/tesla/virtual-key-tesla).
@@ -16054,9 +18935,7 @@ Solutions Architect for information on setting up your own Virtual Key.
 
     **What about vehicles that do not support Virtual Keys?**
 
-    2020 and earlier Model S and X **will not** require a Virtual Key to keep
-    working at this time. However, you may not always receive the latest data from
-    the vehicle when you make an API request to Smartcar.
+    2020 and earlier Model S and X **do not** require a Virtual Key installation. However, these vehicles can support streaming data access if the owner enables a streaming toggle within the vehicle settings. Smartcar Connect will prompt users about this option and can send email instructions. Without streaming enabled, you may not always receive the latest data from the vehicle when you make an API request to Smartcar.
 
     **Will my users need to reauthenticate?**
 
@@ -16100,15 +18979,113 @@ Solutions Architect for information on setting up your own Virtual Key.
 
     **What about vehicles that do not support Virtual Keys?**
 
-    2020 and earlier Model S and X **will not** require a Virtual Key to keep
-    working at this time. However, you may not always receive the latest data from
-    the vehicle when you make an API request to Smartcar.
+    2020 and earlier Model S and X **do not** require a Virtual Key installation. However, these vehicles can support streaming data access if the owner enables a streaming toggle within the vehicle settings. Smartcar Connect will prompt users about this option and can send email instructions. Without streaming enabled, you may not always receive the latest data from the vehicle when you make an API request to Smartcar.
 
     **Will my users need to reauthenticate?**
 
     No. They simply need to add the Virtual Key to their vehicle.
   </Accordion>
 </AccordionGroup>
+
+
+# Important Updates
+Source: https://smartcar.com/docs/help/oem-integrations/volvo/whats-new
+
+Updates regarding the Volvo Cars Smartcar Integration.
+
+## January 14th, 2026
+
+Smartcar is excited to announce a new partnership with Volvo Cars, enabling API access to all Volvo vehicles across the United States and Europe through Smartcar's developer platform. This official OEM integration replaces our previous integration and provides enhanced coverage, charging control capabilities (coming soon), and access to richer data attributes.
+
+### Capabilities
+
+With this integration, you can:
+
+* **Monitor charging status** — Get close to real-time visibility into charging state, energy flow, and vehicle range
+* **Build smart charging solutions** — Support use cases like dynamic load balancing, demand response, off-peak optimization, and charge cost tracking
+
+### Supported Data
+
+The Volvo integration provides charging, battery, location, odometer, closure, and fuel data through Smartcar's standardized signal schema.
+
+| Data Category       | Available Data                                                                    |
+| ------------------- | --------------------------------------------------------------------------------- |
+| Charging            | Connector type, cable connection status, charging state, detailed charging status |
+| Charging Parameters | Charge timers, charge limits, time to complete, charging wattage                  |
+| Battery             | State of charge (SOC), remaining electric range, nominal capacity                 |
+| Closures            | Door status, window status, lock status                                           |
+| Fuel                | Fuel level, fuel remaining, fuel range                                            |
+| Location            | Last-parked location for Europe only                                              |
+| Odometer            | Total traveled distance                                                           |
+
+### Smartcar Signals
+
+* [Charge.IsChargingCableConnected](/api-reference/signals/charge#is-charging-cable-connected)
+* [Charge.IsCharging](/api-reference/signals/charge#is-charging)
+* [Charge.DetailedChargingStatus](/api-reference/signals/charge#detailed-charging-status)
+* [Charge.ChargingConnectorType](/api-reference/signals/charge#charging-connector-type)
+* [Charge.ChargeTimers](/api-reference/signals/charge#charge-timers)
+* [Charge.ChargeLimits](/api-reference/signals/charge#charge-limits)
+* [Charge.TimeToComplete](/api-reference/signals/charge#time-to-complete)
+* [Charge.Wattage](/api-reference/signals/charge#wattage)
+* [Closure.Doors](/api-reference/signals/closure#doors)
+* [Closure.Windows](/api-reference/signals/closure#windows)
+* [Closure.IsLocked](/api-reference/signals/closure#is-locked)
+* [InternalCombustionEngine.AmountRemaining](/api-reference/signals/internalcombustionengine#amount-remaining)
+* [InternalCombustionEngine.FuelLevel](/api-reference/signals/internalcombustionengine#fuel-level)
+* [InternalCombustionEngine.Range](/api-reference/signals/internalcombustionengine#range)
+* [TractionBattery.StateOfCharge](/api-reference/signals/tractionbattery#state-of-charge)
+* [TractionBattery.Range](/api-reference/signals/tractionbattery#range)
+* [TractionBattery.NominalCapacity](/api-reference/signals/tractionbattery#nominal-capacities)
+* [Location.PreciseLocation](/api-reference/signals/location#location)<sup>1</sup>
+* [Odometer.TraveledDistance](/api-reference/signals/odometer#traveled-distance)
+
+### Smartcar API v2 Endpoints Supported
+
+* [/odometer](/api-reference/get-odometer)
+* [/location](/api-reference/get-location)
+* [/battery](/api-reference/evs/get-battery-level)
+* [/battery/capacity](/api-reference/get-nominal-capacity)
+* [/charge](/api-reference/evs/get-charge-limit)
+
+### Commands
+
+* [Lock](/api-reference/control-lock-unlock)
+* [Unlock](/api-reference/control-lock-unlock)
+
+### Coverage
+
+**Supported Vehicles**
+
+This integration supports all Volvo vehicles regardless of powertrain type, including Internal Combustion Engine (ICE), Battery Electric Vehicle (BEV), and Plug-in Hybrid Electric Vehicle (PHEV) models. Charge commands are coming soon for PHEV Classic models (without built-in Google Automotive Systems). Support for BEV and additional PHEV models is expected in Q2 2026.
+
+**Supported Markets**
+
+* **Europe:** European Economic Area (EEA) countries plus United Kingdom and Switzerland
+* **United States:** Full US coverage
+
+### Consent Flow
+
+Vehicle owners grant consent through Volvo's official portal as part of the Smartcar Connect flow. During this process, they:
+
+1. Log in with their Volvo ID
+2. Select the vehicle(s) to connect
+3. Review the requested permissions
+4. Accept Volvo's terms for data sharing
+
+<Frame type="simple">
+  <img />
+</Frame>
+
+<Frame type="simple">
+  <img />
+</Frame>
+
+### Notes
+
+* \***Location<sup>1</sup>:** Location is not live tracked. The location signal provides the last known GPS position when the ignition was turned off. Location is only available for the European market at this time.
+
+For more information about compatible vehicle data and features, see the [compatibility matrix](https://smartcar.com/product/compatible-vehicles).
 
 
 # Important Updates
@@ -16123,22 +19100,41 @@ Smartcar is excited to announce a new and improved integration with Volkswagen G
 Starting today, VW vehicle owners connecting their cars in the US to Smartcar powered applications will be redirected to Volkswagen's login page for authentication, vehicle selection, and acceptance of VW's terms as part of the Smartcar Connect flow. This change does not affect existing VW vehicle connections.
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/vw/volkswagen-flow.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=976adb1821a643171f8a68e9af0f0c86" data-og-width="7012" width="7012" data-og-height="2890" height="2890" data-path="images/help-center/oem-integrations/vw/volkswagen-flow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/vw/volkswagen-flow.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=2f62a21896b840f025044dc86fe33b7d 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/vw/volkswagen-flow.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=647d65fc63468783658289479aa8e322 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/vw/volkswagen-flow.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=95476326cd0b25cab695f6873f1ccef8 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/vw/volkswagen-flow.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=93ad2518f328c515780046171d3cd5fe 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/vw/volkswagen-flow.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=82b518db41b0d47858ee88ca3ac3c1e9 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/vw/volkswagen-flow.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=2164aae0e8343df53f439a102e079ac5 2500w" />
+  <img />
 </Frame>
 
 Vehicle owners will receive an email from Volkswagen notifying them of new services being added to their account.
 
 <Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/vw/vw-connection-email.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=a3ccfe86772ab239d029d4a63dffd42f" data-og-width="1510" width="1510" data-og-height="2398" height="2398" data-path="images/help-center/oem-integrations/vw/vw-connection-email.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/vw/vw-connection-email.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=8de5053cb43d1127ebcc07bb0fe424d9 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/vw/vw-connection-email.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=d1ee88e895403822b9ddf45d0b34e369 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/vw/vw-connection-email.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=f5ae1fb1b4fb76760162ec9df9214f56 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/vw/vw-connection-email.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=d09464cf2a21c9312c0476c863de60f4 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/vw/vw-connection-email.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=52953f511c9920d6a1c45bcd89dd3d5a 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/vw/vw-connection-email.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=9a03ffa0a21c4ed361dfab197dbb492f 2500w" />
+  <img />
 </Frame>
 
-Vehicle owners can revoke access to Smartcar powered applications at any time through the myVW Mobile App or by logginginto their account online.
+Vehicle owners can revoke access to Smartcar powered applications at any time through the myVW Mobile App or by logging into their account online.
 
 ### Notes
 
 * This change is only applicable to VW vehicles in the US. Volkswagen vehicles in Europe will continue to use the existing Smartcar integration.
 * Car Net does not allow secondary driver accounts to authorize access to any third-party applications including Smartcar. Only the primary account holder can authorize access to any third-party applications.
-* For Volkswagen vehicles in the US, 3 minutes is the average of how often the data is refreshed.
+
+Drivers can check their role in the VW app by navigating to Account > Vehicle Management > Additional Users. The primary driver will be labeled as "Primary user".
+
+<Frame type="simple">
+  <img />
+</Frame>
+
+<Frame type="simple">
+  <img />
+</Frame>
+
+<Frame type="simple">
+  <img />
+</Frame>
+
+<Frame type="simple">
+  <img />
+</Frame>
+
+* Checkout our data freshness page for more information on how often data is updated for VW vehicles: [Data frequencies for Volkswagen](/help/frequencies).
 
 
 # Reliability
@@ -16156,102 +19152,102 @@ This ranking measures the effectiveness with which the vehicle or OEM handles co
 
 ## United States
 
-| <div style={{ width:200 }}>Brand</div> | <div style={{ width:130 }}>Data Reliability</div> | <div style={{ width:140 }}>Command Reliability</div> |
-| -------------------------------------- | ------------------------------------------------- | ---------------------------------------------------- |
-| ACURA                                  | 1                                                 | 1                                                    |
-| ALFA ROMEO                             | 1                                                 | 1                                                    |
-| AUDI                                   | 1                                                 | 2                                                    |
-| BMW                                    | 1                                                 | 2                                                    |
-| BUICK                                  | 1                                                 | 1                                                    |
-| CADILLAC                               | 1                                                 | 2                                                    |
-| CHEVROLET                              | 1                                                 | 3                                                    |
-| CHRYSLER                               | 1                                                 | 2                                                    |
-| DODGE                                  | 1                                                 | 2                                                    |
-| FIAT                                   | 1                                                 | N/A                                                  |
-| FORD                                   | 1                                                 | 3                                                    |
-| GMC                                    | 1                                                 | 2                                                    |
-| HONDA                                  | 1                                                 | 2                                                    |
-| HYUNDAI                                | 1                                                 | 2                                                    |
-| INFINITI                               | 3                                                 | N/A                                                  |
-| JAGUAR                                 | 1                                                 | 3                                                    |
-| JEEP                                   | 1                                                 | 2                                                    |
-| KIA                                    | 1                                                 | 3                                                    |
-| LAND ROVER                             | 1                                                 | 3                                                    |
-| LEXUS                                  | 1                                                 | 3                                                    |
-| LINCOLN                                | 1                                                 | 3                                                    |
-| MAZDA                                  | 1                                                 | 2                                                    |
-| MERCEDES BENZ                          | 1                                                 | 1                                                    |
-| MINI                                   | 1                                                 | 1                                                    |
-| NISSAN                                 | 1                                                 | 2                                                    |
-| PORSCHE                                | 1                                                 | 3                                                    |
-| POLESTAR                               | 1                                                 | N/A                                                  |
-| RAM                                    | 2                                                 | 1                                                    |
-| RIVIAN                                 | 1                                                 | 1                                                    |
-| TESLA                                  | 1                                                 | 1                                                    |
-| TOYOTA                                 | 1                                                 | 3                                                    |
-| VOLKSWAGEN                             | 1                                                 | 2                                                    |
-| VOLVO                                  | 1                                                 | N/A                                                  |
+| <div>Brand</div> | <div>Data Reliability</div> | <div>Command Reliability</div> |
+| ---------------- | --------------------------- | ------------------------------ |
+| ACURA            | 1                           | 1                              |
+| ALFA ROMEO       | 1                           | 1                              |
+| AUDI             | 1                           | 2                              |
+| BMW              | 1                           | 2                              |
+| BUICK            | 1                           | 1                              |
+| CADILLAC         | 1                           | 2                              |
+| CHEVROLET        | 1                           | 3                              |
+| CHRYSLER         | 1                           | 2                              |
+| DODGE            | 1                           | 2                              |
+| FIAT             | 1                           | N/A                            |
+| FORD             | 1                           | 3                              |
+| GMC              | 1                           | 2                              |
+| HONDA            | 1                           | 2                              |
+| HYUNDAI          | 1                           | 2                              |
+| INFINITI         | 3                           | N/A                            |
+| JAGUAR           | 1                           | 3                              |
+| JEEP             | 1                           | 2                              |
+| KIA              | 1                           | 3                              |
+| LAND ROVER       | 1                           | 3                              |
+| LEXUS            | 1                           | 3                              |
+| LINCOLN          | 1                           | 3                              |
+| MAZDA            | 1                           | 2                              |
+| MERCEDES BENZ    | 1                           | 1                              |
+| MINI             | 1                           | 1                              |
+| NISSAN           | 1                           | 2                              |
+| PORSCHE          | 1                           | 3                              |
+| POLESTAR         | 1                           | N/A                            |
+| RAM              | 2                           | 1                              |
+| RIVIAN           | 1                           | 1                              |
+| TESLA            | 1                           | 1                              |
+| TOYOTA           | 1                           | 3                              |
+| VOLKSWAGEN       | 1                           | 2                              |
+| VOLVO            | 1                           | N/A                            |
 
 ## Canada
 
-| <div style={{ width:200 }}>Brand</div> | <div style={{ width:130 }}>Data Reliability</div> | <div style={{ width:140 }}>Command Reliability</div> |
-| -------------------------------------- | ------------------------------------------------- | ---------------------------------------------------- |
-| ACURA                                  | 1                                                 | N/A                                                  |
-| AUDI                                   | 1                                                 | 1                                                    |
-| BMW                                    | 1                                                 | 1                                                    |
-| BUICK                                  | 1                                                 | N/A                                                  |
-| CADILLAC                               | 1                                                 | 2                                                    |
-| CHEVROLET                              | 1                                                 | 2                                                    |
-| DODGE                                  | 1                                                 | 1                                                    |
-| FIAT                                   | 1                                                 | N/A                                                  |
-| FORD                                   | 1                                                 | N/A                                                  |
-| GMC                                    | 1                                                 | 1                                                    |
-| HONDA                                  | 1                                                 | N/A                                                  |
-| HYUNDAI                                | 2                                                 | 1                                                    |
-| JAGUAR                                 | 1                                                 | 3                                                    |
-| JEEP                                   | 1                                                 | 3                                                    |
-| KIA                                    | 1                                                 | 1                                                    |
-| LEXUS                                  | 1                                                 | 3                                                    |
-| MINI                                   | 2                                                 | 1                                                    |
-| RAM                                    | 1                                                 | 1                                                    |
-| TESLA                                  | 1                                                 | 1                                                    |
-| TOYOTA                                 | 1                                                 | 3                                                    |
-| VOLVO                                  | 1                                                 | N/A                                                  |
+| <div>Brand</div> | <div>Data Reliability</div> | <div>Command Reliability</div> |
+| ---------------- | --------------------------- | ------------------------------ |
+| ACURA            | 1                           | N/A                            |
+| AUDI             | 1                           | 1                              |
+| BMW              | 1                           | 1                              |
+| BUICK            | 1                           | N/A                            |
+| CADILLAC         | 1                           | 2                              |
+| CHEVROLET        | 1                           | 2                              |
+| DODGE            | 1                           | 1                              |
+| FIAT             | 1                           | N/A                            |
+| FORD             | 1                           | N/A                            |
+| GMC              | 1                           | 1                              |
+| HONDA            | 1                           | N/A                            |
+| HYUNDAI          | 2                           | 1                              |
+| JAGUAR           | 1                           | 3                              |
+| JEEP             | 1                           | 3                              |
+| KIA              | 1                           | 1                              |
+| LEXUS            | 1                           | 3                              |
+| MINI             | 2                           | 1                              |
+| RAM              | 1                           | 1                              |
+| TESLA            | 1                           | 1                              |
+| TOYOTA           | 1                           | 3                              |
+| VOLVO            | 1                           | N/A                            |
 
 ## Europe
 
-| <div style={{ width:200 }}>Brand</div> | <div style={{ width:130 }}>Data Reliability</div> | <div style={{ width:140 }}>Command Reliability</div> |
-| -------------------------------------- | ------------------------------------------------- | ---------------------------------------------------- |
-| ALFA ROMEO                             | 1                                                 | N/A                                                  |
-| AUDI                                   | 1                                                 | 1                                                    |
-| BMW                                    | 1                                                 | 1                                                    |
-| BYD                                    | 1                                                 | N/A                                                  |
-| CITROEN                                | 1                                                 | 1                                                    |
-| CUPRA                                  | 1                                                 | 1                                                    |
-| DACIA                                  | 1                                                 | 1                                                    |
-| DS                                     | 1                                                 | N/A                                                  |
-| FIAT                                   | 1                                                 | 1                                                    |
-| FORD                                   | 2                                                 | 3                                                    |
-| HYUNDAI                                | 1                                                 | 2                                                    |
-| JAGUAR                                 | 1                                                 | 3                                                    |
-| JEEP                                   | 1                                                 | N/A                                                  |
-| KIA                                    | 1                                                 | 1                                                    |
-| LAND ROVER                             | 1                                                 | N/A                                                  |
-| MAZDA                                  | 1                                                 | 1                                                    |
-| MERCEDES BENZ                          | 1                                                 | 1                                                    |
-| MG                                     | 1                                                 | 1                                                    |
-| MINI                                   | 1                                                 | 1                                                    |
-| NISSAN                                 | 1                                                 | 3                                                    |
-| OPEL                                   | 1                                                 | 1                                                    |
-| PEUGEOT                                | 1                                                 | 1                                                    |
-| PORSCHE                                | 1                                                 | 3                                                    |
-| POLESTAR                               | 1                                                 | N/A                                                  |
-| RENAULT                                | 1                                                 | 1                                                    |
-| SKODA                                  | 1                                                 | 1                                                    |
-| TESLA                                  | 1                                                 | 2                                                    |
-| VAUXHALL                               | 1                                                 | N/A                                                  |
-| VOLKSWAGEN                             | 1                                                 | 2                                                    |
-| VOLVO                                  | 1                                                 | 1                                                    |
+| <div>Brand</div> | <div>Data Reliability</div> | <div>Command Reliability</div> |
+| ---------------- | --------------------------- | ------------------------------ |
+| ALFA ROMEO       | 1                           | N/A                            |
+| AUDI             | 1                           | 1                              |
+| BMW              | 1                           | 1                              |
+| BYD              | 1                           | N/A                            |
+| CITROEN          | 1                           | 1                              |
+| CUPRA            | 1                           | 1                              |
+| DACIA            | 1                           | 1                              |
+| DS               | 1                           | N/A                            |
+| FIAT             | 1                           | 1                              |
+| FORD             | 2                           | 3                              |
+| HYUNDAI          | 1                           | 2                              |
+| JAGUAR           | 1                           | 3                              |
+| JEEP             | 1                           | N/A                            |
+| KIA              | 1                           | 1                              |
+| LAND ROVER       | 1                           | N/A                            |
+| MAZDA            | 1                           | 1                              |
+| MERCEDES BENZ    | 1                           | 1                              |
+| MG               | 1                           | 1                              |
+| MINI             | 1                           | 1                              |
+| NISSAN           | 1                           | 3                              |
+| OPEL             | 1                           | 1                              |
+| PEUGEOT          | 1                           | 1                              |
+| PORSCHE          | 1                           | 3                              |
+| POLESTAR         | 1                           | N/A                            |
+| RENAULT          | 1                           | 1                              |
+| SKODA            | 1                           | 1                              |
+| TESLA            | 1                           | 2                              |
+| VAUXHALL         | 1                           | N/A                            |
+| VOLKSWAGEN       | 1                           | 2                              |
+| VOLVO            | 1                           | 1                              |
 
 Last Updated: November 12, 2025
 
@@ -16282,7 +19278,7 @@ Building and maintaining our APIs is a complex endeavor. Smartcar operates a res
 
 ## Sign up
 
-<iframe src="https://form.typeform.com/to/a8XPIn9W?utm_source=docs.smartcar.com&utm_medium=form-embed&utm_campaign=research-fleet" width="700" height="700" allow="fullscreen" />
+<iframe />
 
 ## FAQs
 
@@ -16299,6 +19295,59 @@ Building and maintaining our APIs is a complex endeavor. Smartcar operates a res
     You may opt-out at any point without any explanation. We simply ask that you give us a heads up that you no longer wish to participate by reaching out to [support@smartcar.com](mailto:support@smartcar.com).
   </Accordion>
 </AccordionGroup>
+
+
+# Subscribing to Smartcar Updates and Notifications
+Source: https://smartcar.com/docs/help/smartcar-updates
+
+Sign up for product announcements, marketing emails, changelog alerts, and status notifications so you can stay up to date with Smartcar.
+
+Stay informed about Smartcar's latest updates, maintenance windows, and platform status by subscribing to our communication channels.
+
+### Product Updates and Marketing Emails
+
+Subscribe to receive product announcements, feature releases, and other important updates:
+
+1. Visit the [Smartcar Marketing Preferences](https://smartcar.com/newsletter) page.
+2. Enter your email address.
+3. Select your communication preferences.
+4. Click **Subscribe** to receive updates.
+
+### Changelog Updates
+
+Stay up to date with the latest product changes and improvements:
+
+* Visit the [Smartcar Changelog](/changelog/latest) to view recent updates.
+* Subscribe to changelog notifications through your Smartcar Dashboard settings.
+
+### Smartcar Status Page
+
+Monitor the real-time status of the Smartcar platform and subscribe to incident notifications:
+
+1. Visit [status.smartcar.com](https://status.smartcar.com).
+2. Click **Subscribe to Updates** in the top-right corner.
+3. Choose your preferred notification method:
+   * **Email** - Receive notifications via email
+   * **SMS** - Get text message alerts (mobile number required)
+   * **Webhook** - Integrate status updates into your systems
+   * **Slack** - Receive notifications in your Slack workspace
+   * **RSS** - Subscribe via RSS feed
+4. Select which components you want to monitor.
+5. Choose the types of incidents you want to be notified about (e.g., all incidents or only major outages).
+
+### Brand Reliability Status Page
+
+Monitor the status of individual vehicle brands and their APIs:
+
+1. Visit [brandreliability.smartcar.com](https://brandreliability.smartcar.com).
+2. Click **Subscribe to Updates** in the top-right corner.
+3. Choose your preferred notification method (Email, SMS, Webhook, Slack, or RSS).
+4. Select specific vehicle brands you want to monitor or choose "All Components" for comprehensive coverage.
+5. Configure your notification preferences for different incident types.
+
+<Info>
+  By subscribing to these channels, you'll receive proactive notifications about planned maintenance, service disruptions, and platform updates that may affect your integration.
+</Info>
 
 
 # Vehicle Simulator
@@ -16394,16 +19443,16 @@ Not listed here are the standard API errors that will be returned if the vehicle
 
 ## Mode Comparison
 
-| <div style={{ width:180 }} />Feature | <div style={{ width:80 }} />Simulator | <div style={{ width:80 }} />Live |   |
-| ------------------------------------ | ------------------------------------- | -------------------------------- | - |
-| Single Select                        | ✅                                     | ✅                                |   |
-| Brand Select                         | ✅                                     | ✅                                |   |
-| Compatibility API\*                  | ✅                                     | ✅                                |   |
-| `control_security`                   | ✅                                     | ✅                                |   |
-| `control_charge`                     | ✅                                     | ✅                                |   |
-| Make-Specific Endpoints              | ❌                                     | ✅                                |   |
-| Scheduled Webhooks                   | ❌                                     | ✅                                |   |
-| Event Based Webhooks\*\*             | ❌                                     | ✅                                |   |
+| <div />Feature           | <div />Simulator | <div />Live |   |
+| ------------------------ | ---------------- | ----------- | - |
+| Single Select            | ✅                | ✅           |   |
+| Brand Select             | ✅                | ✅           |   |
+| Compatibility API\*      | ✅                | ✅           |   |
+| `control_security`       | ✅                | ✅           |   |
+| `control_charge`         | ✅                | ✅           |   |
+| Make-Specific Endpoints  | ❌                | ✅           |   |
+| Scheduled Webhooks       | ❌                | ✅           |   |
+| Event Based Webhooks\*\* | ❌                | ✅           |   |
 
 <sub>
   <sup>
@@ -16468,20 +19517,1314 @@ oil life, Smartcar lets you do so with a single API request.
 Take a look at the video below for a quick overview of how Smartcar works.
 
 <Frame type="simple">
-  <iframe width="800" height="450" src="https://www.youtube.com/embed/P-7CP70r-8U" />
+  <iframe />
 </Frame>
+
+
+# Architecture Patterns
+Source: https://smartcar.com/docs/integrations/webhooks/best-practices/architecture
+
+Design patterns for reliable webhook processing
+
+The most critical pattern for reliable webhook handling is separating acknowledgment from processing.
+
+## Decouple Receipt from Processing
+
+**Return 200 immediately, process asynchronously.** This is the foundation of a reliable webhook integration.
+
+<Steps>
+  <Step title="Receive the webhook">
+    Your endpoint receives the POST request from Smartcar
+  </Step>
+
+  <Step title="Persist immediately">
+    Write the raw payload to a queue, database, or object storage
+  </Step>
+
+  <Step title="Return 200">
+    Acknowledge receipt with a 200 status code (within 15 seconds)
+  </Step>
+
+  <Step title="Process asynchronously">
+    A background worker processes the persisted payload
+  </Step>
+</Steps>
+
+### Why This Matters
+
+* **Prevents timeouts** from slow business logic
+* **Allows retry of processing** without requesting redelivery
+* **Enables processing updates** without losing historical events
+* **Survives outages** in downstream systems
+
+### Implementation Examples
+
+<CodeGroup>
+  ```javascript Node.js (Express + AWS SQS) theme={null}
+  const express = require('express');
+  const AWS = require('aws-sdk');
+
+  const app = express();
+  const sqs = new AWS.SQS();
+
+  app.post('/webhooks/smartcar', async (req, res) => {
+    try {
+      // 1. Get the raw payload
+      const payload = req.body;
+      
+      // 2. Queue for processing
+      await sqs.sendMessage({
+        QueueUrl: process.env.WEBHOOK_QUEUE_URL,
+        MessageBody: JSON.stringify(payload)
+      }).promise();
+      
+      // 3. Return immediately
+      res.status(200).json({ status: 'received' });
+    } catch (error) {
+      console.error('Failed to queue webhook:', error);
+      res.status(500).json({ error: 'Internal error' });
+    }
+  });
+
+  // Separate worker processes the queue
+  async function processWebhook(payload) {
+    const { eventType } = payload;
+    
+    if (eventType === 'VEHICLE_STATE') {
+      await updateVehicleState(payload);
+    } else if (eventType === 'VEHICLE_ERROR') {
+      await handleVehicleError(payload);
+    }
+  }
+  ```
+
+  ```python Python (Flask + Redis Queue) theme={null}
+  from flask import Flask, request
+  from rq import Queue
+  from redis import Redis
+
+  app = Flask(__name__)
+  redis_conn = Redis()
+  queue = Queue(connection=redis_conn)
+
+  @app.post("/webhooks/smartcar")
+  def webhook_handler():
+      # 1. Get the raw payload
+      payload = request.get_json()
+      
+      # 2. Queue for processing
+      queue.enqueue(process_webhook, payload)
+      
+      # 3. Return immediately
+      return {"status": "received"}, 200
+
+  def process_webhook(payload):
+      # This runs asynchronously in a worker
+      event_type = payload.get("eventType")
+      
+      if event_type == "VEHICLE_STATE":
+          update_vehicle_state(payload)
+      elif event_type == "VEHICLE_ERROR":
+          handle_vehicle_error(payload)
+  ```
+
+  ```java Java (Spring Boot + RabbitMQ) theme={null}
+  @RestController
+  public class WebhookController {
+      
+      @Autowired
+      private RabbitTemplate rabbitTemplate;
+      
+      @PostMapping("/webhooks/smartcar")
+      public ResponseEntity<Map<String, String>> handleWebhook(
+          @RequestBody String payload
+      ) {
+          // 1. Queue for processing
+          rabbitTemplate.convertAndSend(
+              "webhook-queue", 
+              payload
+          );
+          
+          // 2. Return immediately
+          return ResponseEntity.ok(
+              Map.of("status", "received")
+          );
+      }
+  }
+
+  @Component
+  public class WebhookProcessor {
+      
+      @RabbitListener(queues = "webhook-queue")
+      public void processWebhook(String payload) {
+          // This runs asynchronously
+          JsonNode json = objectMapper.readTree(payload);
+          String eventType = json.get("eventType").asText();
+          
+          if ("VEHICLE_STATE".equals(eventType)) {
+              updateVehicleState(json);
+          } else if ("VEHICLE_ERROR".equals(eventType)) {
+              handleVehicleError(json);
+          }
+      }
+  }
+  ```
+</CodeGroup>
+
+<Warning>
+  **Don't do this:** If you perform heavy processing before returning a response, your endpoint may timeout and Smartcar will retry, creating duplicate processing work.
+
+  ```python Bad Example theme={null}
+  @app.post("/webhooks/smartcar")
+  def webhook_handler():
+      payload = request.get_json()
+      
+      # DON'T DO THIS: These operations might take too long
+      update_database(payload)
+      call_external_api(payload)
+      send_notifications(payload)
+      
+      # Might timeout before reaching this line
+      return {"status": "received"}, 200
+  ```
+</Warning>
+
+***
+
+## Production-Ready Pattern
+
+For a complete serverless implementation, see the [Webhook Receiver Recipe](/getting-started/tutorials/webhook-receiver-recipe), which provides:
+
+* API Gateway for HTTPS endpoint
+* Lambda function for webhook receipt
+* SQS queue for async processing
+* Dead letter queue for failed messages
+* CloudWatch monitoring and alerts
+
+***
+
+## Next Steps
+
+<CardGroup>
+  <Card title="Security" icon="shield-check" href="/integrations/webhooks/best-practices/security">
+    Verify payload signatures
+  </Card>
+
+  <Card title="Reliability" icon="shield" href="/integrations/webhooks/best-practices/reliability">
+    Implement idempotency
+  </Card>
+
+  <Card title="Delivery Behavior" icon="truck-fast" href="/api-reference/webhooks/delivery-behavior">
+    Understand retry policies
+  </Card>
+
+  <Card title="Webhook Recipe" icon="book" href="/getting-started/tutorials/webhook-receiver-recipe">
+    Deploy serverless infrastructure
+  </Card>
+</CardGroup>
+
+
+# Monitoring & Observability
+Source: https://smartcar.com/docs/integrations/webhooks/best-practices/monitoring
+
+Track webhook performance and detect issues early
+
+Comprehensive logging and monitoring help you debug issues, track performance, and maintain reliability.
+
+## Log Key Events
+
+Track every stage of webhook processing for complete observability.
+
+### What to Log
+
+<AccordionGroup>
+  <Accordion title="Webhook Receipt" icon="inbox">
+    ```json theme={null}
+    {
+      "timestamp": "2025-01-15T10:30:45Z",
+      "event": "webhook.received",
+      "eventId": "abc123",
+      "eventType": "VEHICLE_STATE",
+      "vehicleId": "def456",
+      "deliveryId": "ghi789"
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="Signature Verification" icon="shield-check">
+    ```json theme={null}
+    {
+      "timestamp": "2025-01-15T10:30:45Z",
+      "event": "signature.verified",
+      "eventId": "abc123",
+      "valid": true
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="Processing Start/End" icon="play">
+    ```json theme={null}
+    {
+      "timestamp": "2025-01-15T10:30:46Z",
+      "event": "processing.started",
+      "eventId": "abc123",
+      "eventType": "VEHICLE_STATE"
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="Processing Errors" icon="triangle-exclamation">
+    ```json theme={null}
+    {
+      "timestamp": "2025-01-15T10:30:47Z",
+      "event": "processing.failed",
+      "eventId": "abc123",
+      "error": "Database connection timeout",
+      "stackTrace": "..."
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
+***
+
+## Critical Metrics
+
+Monitor these metrics and set up alerts:
+
+| Metric                              | What It Measures              | Alert Threshold                        |
+| ----------------------------------- | ----------------------------- | -------------------------------------- |
+| **Signature verification failures** | Invalid or spoofed requests   | > 5 in 5 minutes                       |
+| **Processing error rate**           | Code or infrastructure issues | > 5% of events                         |
+| **Queue depth**                     | Processing backlog            | > 1000 messages                        |
+| **Response time**                   | Endpoint performance          | > 10 seconds (approaching 15s timeout) |
+| **Duplicate processing**            | Idempotency check hits        | Track for debugging                    |
+| **VEHICLE\_ERROR rate**             | Signal retrieval issues       | > 10% of vehicles                      |
+
+***
+
+## Implementation Examples
+
+<CodeGroup>
+  ```javascript Node.js (Winston) theme={null}
+  const winston = require('winston');
+
+  const logger = winston.createLogger({
+    format: winston.format.json(),
+    transports: [new winston.transports.Console()]
+  });
+
+  app.post('/webhooks/smartcar', async (req, res) => {
+    const payload = req.body;
+    const { eventId, eventType, vehicleId } = payload;
+    
+    // Log receipt
+    logger.info('webhook.received', {
+      eventId,
+      eventType,
+      vehicleId
+    });
+    
+    // Verify signature
+    const isValid = verifySignature(req.rawBody, req.headers['sc-signature']);
+    logger.info('signature.verified', { eventId, valid: isValid });
+    
+    if (!isValid) {
+      logger.warn('signature.failed', {
+        eventId,
+        sourceIp: req.ip
+      });
+      return res.status(401).json({ error: 'Invalid signature' });
+    }
+    
+    // Queue and return
+    await queue.add(payload);
+    res.status(200).json({ status: 'received' });
+  });
+
+  async function processWebhook(payload) {
+    const { eventId } = payload;
+    const startTime = Date.now();
+    
+    logger.info('processing.started', { eventId });
+    
+    try {
+      await updateVehicleData(payload);
+      logger.info('processing.completed', {
+        eventId,
+        durationMs: Date.now() - startTime
+      });
+    } catch (error) {
+      logger.error('processing.failed', {
+        eventId,
+        error: error.message,
+        stack: error.stack
+      });
+      throw error;
+    }
+  }
+  ```
+
+  ```python Python (Structured Logging) theme={null}
+  import structlog
+
+  logger = structlog.get_logger()
+
+  @app.post("/webhooks/smartcar")
+  def webhook_handler():
+      payload = request.get_json()
+      event_id = payload.get("eventId")
+      
+      # Log receipt
+      logger.info("webhook.received",
+          event_id=event_id,
+          event_type=payload.get("eventType"),
+          vehicle_id=payload.get("vehicleId")
+      )
+      
+      # Verify signature
+      is_valid = verify_signature(request.data, request.headers.get('SC-Signature'))
+      logger.info("signature.verified",
+          event_id=event_id,
+          valid=is_valid
+      )
+      
+      if not is_valid:
+          logger.warning("signature.failed",
+              event_id=event_id,
+              source_ip=request.remote_addr
+          )
+          return {"error": "Invalid signature"}, 401
+      
+      # Queue and return
+      queue.enqueue(process_webhook, payload)
+      return {"status": "received"}, 200
+
+  def process_webhook(payload):
+      event_id = payload.get("eventId")
+      
+      logger.info("processing.started", event_id=event_id)
+      
+      try:
+          update_vehicle_data(payload)
+          logger.info("processing.completed", 
+              event_id=event_id,
+              duration_ms=duration
+          )
+      except Exception as e:
+          logger.error("processing.failed",
+              event_id=event_id,
+              error=str(e),
+              exc_info=True
+          )
+          raise
+  ```
+</CodeGroup>
+
+***
+
+## Next Steps
+
+<CardGroup>
+  <Card title="VEHICLE_ERROR Events" icon="triangle-exclamation" href="/api-reference/webhooks/events/vehicle-error">
+    Track error notifications and resolution
+  </Card>
+
+  <Card title="Reliability" icon="shield" href="/integrations/webhooks/best-practices/reliability">
+    Implement idempotency
+  </Card>
+
+  <Card title="Testing" icon="flask" href="/integrations/webhooks/best-practices/testing">
+    Test your monitoring setup
+  </Card>
+</CardGroup>
+
+
+# Best Practices Overview
+Source: https://smartcar.com/docs/integrations/webhooks/best-practices/overview
+
+Build reliable and maintainable webhook integrations following industry standards
+
+Follow these best practices to build a production-ready webhook integration that handles high volume, recovers from failures, and provides a great developer experience.
+
+<Tip>
+  **Looking for a quick start?** Our [Webhook Receiver Recipe](/getting-started/tutorials/webhook-receiver-recipe) provides a production-ready implementation of these best practices. It's a serverless AWS solution that you can deploy in minutes with built-in queuing, signature verification, retry logic, and monitoring.
+</Tip>
+
+## Key Areas
+
+<CardGroup>
+  <Card title="Architecture Patterns" icon="diagram-project" href="/integrations/webhooks/best-practices/architecture">
+    Decouple receipt from processing with queue-based patterns
+  </Card>
+
+  <Card title="Security" icon="shield-check" href="/integrations/webhooks/best-practices/security">
+    Verify signatures and protect against spoofed requests
+  </Card>
+
+  <Card title="Reliability" icon="shield" href="/integrations/webhooks/best-practices/reliability">
+    Implement idempotency and handle out-of-order delivery
+  </Card>
+
+  <Card title="Monitoring" icon="chart-line" href="/integrations/webhooks/best-practices/monitoring">
+    Log events and set up alerts for critical metrics
+  </Card>
+
+  <Card title="Testing" icon="flask" href="/integrations/webhooks/best-practices/testing">
+    Test locally and validate edge cases before production
+  </Card>
+</CardGroup>
+
+***
+
+## Quick Wins
+
+Start with these essential practices for immediate impact:
+
+<AccordionGroup>
+  <Accordion title="1. Return 200 Immediately" icon="bolt">
+    Persist the payload to a queue and return a 200 status within milliseconds. Process asynchronously in a background worker.
+
+    **Impact:** Prevents timeouts and unnecessary retries
+  </Accordion>
+
+  <Accordion title="2. Verify All Signatures" icon="shield-halved">
+    Check the `SC-Signature` header on every request to ensure the payload came from Smartcar.
+
+    **Impact:** Prevents security vulnerabilities from spoofed requests
+  </Accordion>
+
+  <Accordion title="3. Use eventId for Deduplication" icon="fingerprint">
+    Track processed `eventId` values to avoid processing the same event twice.
+
+    **Impact:** Prevents duplicate database updates and notifications
+  </Accordion>
+
+  <Accordion title="4. Handle VEHICLE_ERROR Events" icon="circle-exclamation">
+    Don't ignore error events. They contain critical information about signal failures and permission issues.
+
+    **Impact:** Better user experience and faster issue resolution
+  </Accordion>
+</AccordionGroup>
+
+***
+
+## Next Steps
+
+<CardGroup>
+  <Card title="Architecture Patterns" icon="diagram-project" href="/integrations/webhooks/best-practices/architecture">
+    Learn the queue-based pattern
+  </Card>
+
+  <Card title="Security" icon="shield-check" href="/integrations/webhooks/best-practices/security">
+    Implement signature verification
+  </Card>
+
+  <Card title="Delivery Behavior" icon="truck-fast" href="/api-reference/webhooks/delivery-behavior">
+    Understand retry policies
+  </Card>
+</CardGroup>
+
+
+# Reliability
+Source: https://smartcar.com/docs/integrations/webhooks/best-practices/reliability
+
+Build resilient webhook processing that handles retries and out-of-order delivery
+
+Design your webhook integration to handle the realities of distributed systems: retries, out-of-order delivery, and duplicate events.
+
+## Implement Idempotency
+
+Use the `eventId` field to ensure you process each event exactly once, even if Smartcar retries delivery or you reprocess from your queue.
+
+### Why Idempotency Matters
+
+* Smartcar retries failed deliveries with the same `eventId`
+* Your queue worker might process the same message multiple times
+* Prevents duplicate database updates or notifications
+* Enables safe reprocessing of historical events
+
+### Implementation Strategies
+
+<Tabs>
+  <Tab title="Redis">
+    ```python theme={null}
+    import redis
+
+    redis_client = redis.Redis()
+
+    def process_webhook(payload):
+        event_id = payload.get("eventId")
+        
+        # Check if already processed
+        if redis_client.exists(f"processed:{event_id}"):
+            print(f"Already processed {event_id}, skipping")
+            return
+        
+        # Process the event
+        process_vehicle_data(payload)
+        
+        # Mark as processed (expires after 7 days)
+        redis_client.setex(
+            f"processed:{event_id}",
+            time=604800,  # 7 days
+            value="1"
+        )
+    ```
+  </Tab>
+
+  <Tab title="DynamoDB">
+    ```javascript theme={null}
+    const processWebhook = async (payload) => {
+      const { eventId } = payload;
+      
+      // Check if already processed
+      const existing = await dynamodb.get({
+        TableName: 'ProcessedEvents',
+        Key: { eventId }
+      }).promise();
+      
+      if (existing.Item) {
+        console.log(`Already processed ${eventId}, skipping`);
+        return;
+      }
+      
+      // Process the event
+      await processVehicleData(payload);
+      
+      // Mark as processed with TTL
+      await dynamodb.put({
+        TableName: 'ProcessedEvents',
+        Item: {
+          eventId,
+          processedAt: new Date().toISOString(),
+          ttl: Math.floor(Date.now() / 1000) + 604800 // 7 days
+        }
+      }).promise();
+    };
+    ```
+  </Tab>
+
+  <Tab title="PostgreSQL">
+    ```python theme={null}
+    def process_webhook(payload):
+        event_id = payload.get("eventId")
+        
+        # Use unique constraint to prevent duplicates
+        try:
+            db.execute(
+                "INSERT INTO processed_events (event_id, processed_at) VALUES (%s, NOW())",
+                (event_id,)
+            )
+        except IntegrityError:
+            # Already processed
+            print(f"Already processed {event_id}, skipping")
+            return
+        
+        # Process the event
+        process_vehicle_data(payload)
+    ```
+
+    ```sql theme={null}
+    -- Table schema
+    CREATE TABLE processed_events (
+        event_id VARCHAR(255) PRIMARY KEY,
+        processed_at TIMESTAMP NOT NULL
+    );
+
+    -- Add TTL-style cleanup (run periodically)
+    DELETE FROM processed_events 
+    WHERE processed_at < NOW() - INTERVAL '7 days';
+    ```
+  </Tab>
+</Tabs>
+
+<Tip>
+  **Retention period:** Store processed `eventId` values for at least 7 days to handle all retries and late reprocessing scenarios.
+</Tip>
+
+***
+
+## Handle Out-of-Order Delivery
+
+Webhook events are delivered **concurrently** and may arrive out of order. Never assume events arrive in chronological sequence.
+
+### Use Timestamps for Freshness
+
+Always check if incoming data is newer than your current stored state:
+
+```python theme={null}
+def update_vehicle_state(payload):
+    vehicle_id = payload.get("vehicleId")
+    delivered_at = payload["meta"]["deliveredAt"]
+    
+    # Get current stored state
+    current = db.get_vehicle_state(vehicle_id)
+    
+    # Only update if this event is newer
+    if current and current.updated_at > delivered_at:
+        print(f"Ignoring older event for {vehicle_id}")
+        return
+    
+    # Safe to update
+    db.update_vehicle_state(vehicle_id, payload["data"], delivered_at)
+```
+
+### Why Order Matters
+
+<AccordionGroup>
+  <Accordion title="Network Delays" icon="network-wired">
+    Events sent at different times may experience different network latencies, causing them to arrive out of sequence.
+  </Accordion>
+
+  <Accordion title="Retry Timing" icon="rotate">
+    If an older event fails initially and is retried later, it might arrive after newer events that succeeded on first attempt.
+  </Accordion>
+
+  <Accordion title="Concurrent Delivery" icon="arrows-split-up-and-left">
+    Smartcar delivers events concurrently for performance. Events sent milliseconds apart might arrive in reverse order.
+  </Accordion>
+</AccordionGroup>
+
+### Timestamp-Based Updates
+
+<CodeGroup>
+  ```python Python theme={null}
+  def update_signal_value(vehicle_id, signal_path, value, timestamp):
+      """Update signal only if timestamp is newer"""
+      with db.transaction():
+          current = db.query(
+              "SELECT value, updated_at FROM signals WHERE vehicle_id = %s AND path = %s",
+              (vehicle_id, signal_path)
+          )
+          
+          if current and current['updated_at'] >= timestamp:
+              # Existing value is newer or same age
+              return False
+          
+          # Update with newer value
+          db.execute(
+              "INSERT INTO signals (vehicle_id, path, value, updated_at) VALUES (%s, %s, %s, %s) ON CONFLICT (vehicle_id, path) DO UPDATE SET value = EXCLUDED.value, updated_at = EXCLUDED.updated_at WHERE signals.updated_at < EXCLUDED.updated_at",
+              (vehicle_id, signal_path, value, timestamp)
+          )
+          return True
+  ```
+
+  ```javascript Node.js theme={null}
+  async function updateSignalValue(vehicleId, signalPath, value, timestamp) {
+    // Conditional update: only if timestamp is newer
+    const result = await db.query(`
+      UPDATE signals 
+      SET value = $1, updated_at = $2
+      WHERE vehicle_id = $3 
+        AND path = $4 
+        AND (updated_at < $2 OR updated_at IS NULL)
+      RETURNING *
+    `, [value, timestamp, vehicleId, signalPath]);
+    
+    return result.rowCount > 0;
+  }
+  ```
+</CodeGroup>
+
+***
+
+## Handle Retries Gracefully
+
+Smartcar automatically retries failed deliveries up to 3 times with exponential backoff.
+
+### Retry Identification
+
+Each delivery attempt receives a unique `deliveryId`, but the `eventId` remains constant:
+
+```json theme={null}
+{
+  "eventId": "abc-123",         // Same across all retries
+  "meta": {
+    "deliveryId": "xyz-789",    // Unique per attempt
+    "deliveredAt": "2025-01-15T10:30:45Z"
+  }
+}
+```
+
+### Processing Strategy
+
+<Steps>
+  <Step title="Check for duplicate eventId">
+    Use idempotency check to skip already-processed events
+  </Step>
+
+  <Step title="Process the payload">
+    Perform your business logic
+  </Step>
+
+  <Step title="Mark as processed">
+    Store the eventId to prevent reprocessing
+  </Step>
+
+  <Step title="Return 200">
+    Acknowledge successful processing
+  </Step>
+</Steps>
+
+<Warning>
+  **Don't trigger retries manually.** If you return a 2xx status code and then discover an issue, you cannot ask Smartcar to retry. The delivery is considered successful.
+</Warning>
+
+***
+
+## Transactional Processing
+
+Ensure database updates and idempotency tracking happen atomically:
+
+<CodeGroup>
+  ```javascript Node.js (PostgreSQL) theme={null}
+  async function processWebhook(payload) {
+    const { eventId } = payload;
+    
+    const client = await pool.connect();
+    try {
+      await client.query('BEGIN');
+      
+      // Try to insert processed event
+      const result = await client.query(
+        `INSERT INTO processed_events (event_id, processed_at) 
+         VALUES ($1, NOW()) 
+         ON CONFLICT (event_id) DO NOTHING 
+         RETURNING event_id`,
+        [eventId]
+      );
+      
+      if (result.rowCount === 0) {
+        // Already processed
+        await client.query('ROLLBACK');
+        return;
+      }
+      
+      // Process within same transaction
+      await updateVehicleData(client, payload);
+      await sendNotifications(client, payload);
+      
+      await client.query('COMMIT');
+    } catch (error) {
+      await client.query('ROLLBACK');
+      throw error;
+    } finally {
+      client.release();
+    }
+  }
+  ```
+
+  ```python Python (PostgreSQL) theme={null}
+  def process_webhook(payload):
+      event_id = payload.get("eventId")
+      
+      with db.transaction():
+          # Check and mark as processed in one transaction
+          result = db.execute(
+              """
+              INSERT INTO processed_events (event_id, processed_at)
+              VALUES (%s, NOW())
+              ON CONFLICT (event_id) DO NOTHING
+              RETURNING event_id
+              """,
+              (event_id,)
+          )
+          
+          if not result:
+              # Already processed in another transaction
+              return
+          
+          # Process within same transaction
+          update_vehicle_data(payload)
+          send_notifications(payload)
+          
+          # Both updates committed together
+  ```
+</CodeGroup>
+
+***
+
+## Recovery Strategies
+
+### Dead Letter Queue
+
+Route persistently failing events to a dead letter queue for manual investigation:
+
+```javascript theme={null}
+async function processWebhook(payload) {
+  const maxRetries = 3;
+  let retryCount = 0;
+  
+  while (retryCount < maxRetries) {
+    try {
+      await doProcessing(payload);
+      return; // Success
+    } catch (error) {
+      retryCount++;
+      if (retryCount >= maxRetries) {
+        // Move to DLQ
+        await dlq.send({
+          payload,
+          error: error.message,
+          attempts: retryCount
+        });
+      } else {
+        // Wait before retry
+        await sleep(Math.pow(2, retryCount) * 1000);
+      }
+    }
+  }
+}
+```
+
+### Circuit Breaker
+
+Stop processing if downstream dependencies are failing:
+
+```python theme={null}
+class CircuitBreaker:
+    def __init__(self, failure_threshold=5):
+        self.failure_count = 0
+        self.failure_threshold = failure_threshold
+        self.is_open = False
+        self.last_failure_time = None
+    
+    def call(self, func, *args):
+        if self.is_open:
+            # Check if we should try again
+            if time.time() - self.last_failure_time > 60:
+                self.is_open = False
+                self.failure_count = 0
+            else:
+                raise Exception("Circuit breaker is open")
+        
+        try:
+            result = func(*args)
+            self.failure_count = 0
+            return result
+        except Exception as e:
+            self.failure_count += 1
+            self.last_failure_time = time.time()
+            
+            if self.failure_count >= self.failure_threshold:
+                self.is_open = True
+            
+            raise e
+
+# Usage
+breaker = CircuitBreaker()
+
+def process_webhook(payload):
+    try:
+        breaker.call(update_database, payload)
+    except Exception:
+        # Return 503 to trigger Smartcar retry later
+        return {"error": "Service unavailable"}, 503
+```
+
+***
+
+## Next Steps
+
+<CardGroup>
+  <Card title="Monitoring" icon="chart-line" href="/integrations/webhooks/best-practices/monitoring">
+    Track idempotency hits and processing failures
+  </Card>
+
+  <Card title="VEHICLE_ERROR Events" icon="triangle-exclamation" href="/api-reference/webhooks/events/vehicle-error">
+    Handle error notifications and resolution tracking
+  </Card>
+
+  <Card title="Delivery Behavior" icon="truck-fast" href="/api-reference/webhooks/delivery-behavior">
+    Understanding retry policies
+  </Card>
+
+  <Card title="Testing" icon="flask" href="/integrations/webhooks/best-practices/testing">
+    Test retry scenarios
+  </Card>
+</CardGroup>
+
+
+# Security
+Source: https://smartcar.com/docs/integrations/webhooks/best-practices/security
+
+Protect your webhook endpoint from spoofed and malicious requests
+
+Always verify that webhook payloads actually came from Smartcar before processing them.
+
+## Verify Payload Signatures
+
+Every webhook payload includes an `SC-Signature` header containing an HMAC-SHA256 signature. **Always verify this signature** before processing the payload.
+
+### How It Works
+
+1. Smartcar creates an HMAC-SHA256 hash of the payload using your Application Management Token as the secret key
+2. The hash is sent in the `SC-Signature` header
+3. You recreate the hash using the same secret and compare it to the received signature
+4. If they match, the payload is authentic
+
+### Implementation
+
+<CodeGroup>
+  ```javascript Node.js theme={null}
+  const crypto = require('crypto');
+
+  function verifySignature(payload, signature, managementToken) {
+    // Create HMAC hash
+    const hmac = crypto
+      .createHmac('sha256', managementToken)
+      .update(payload)
+      .digest('hex');
+    
+    // Use timingSafeEqual to prevent timing attacks
+    return crypto.timingSafeEqual(
+      Buffer.from(hmac),
+      Buffer.from(signature)
+    );
+  }
+
+  app.post('/webhooks/smartcar', express.raw({ type: 'application/json' }), (req, res) => {
+    // Get signature from header
+    const signature = req.headers['sc-signature'];
+    
+    // Get raw body
+    const rawBody = req.body.toString();
+    
+    // Verify before processing
+    if (!verifySignature(rawBody, signature, MANAGEMENT_TOKEN)) {
+      return res.status(401).json({ error: 'Invalid signature' });
+    }
+    
+    // Safe to process
+    const payload = JSON.parse(rawBody);
+    processWebhook(payload);
+    res.status(200).json({ status: 'received' });
+  });
+  ```
+
+  ```python Python theme={null}
+  import hmac
+  import hashlib
+
+  def verify_signature(payload, signature, management_token):
+      """Verify webhook payload authenticity"""
+      expected = hmac.new(
+          management_token.encode(),
+          payload.encode(),
+          hashlib.sha256
+      ).hexdigest()
+      
+      # Use compare_digest to prevent timing attacks
+      return hmac.compare_digest(expected, signature)
+
+  @app.post("/webhooks/smartcar")
+  def webhook_handler():
+      # Get signature from header
+      signature = request.headers.get('SC-Signature')
+      
+      # Get raw body (before JSON parsing)
+      raw_body = request.data.decode('utf-8')
+      
+      # Verify before processing
+      if not verify_signature(raw_body, signature, MANAGEMENT_TOKEN):
+          return {"error": "Invalid signature"}, 401
+      
+      # Safe to process
+      payload = request.get_json()
+      process_webhook(payload)
+      return {"status": "received"}, 200
+  ```
+
+  ```java Java theme={null}
+  import javax.crypto.Mac;
+  import javax.crypto.spec.SecretKeySpec;
+  import java.security.MessageDigest;
+
+  public class WebhookSecurity {
+      
+      public static boolean verifySignature(
+          String payload, 
+          String signature, 
+          String managementToken
+      ) throws Exception {
+          // Create HMAC
+          Mac hmac = Mac.getInstance("HmacSHA256");
+          SecretKeySpec secretKey = new SecretKeySpec(
+              managementToken.getBytes(), 
+              "HmacSHA256"
+          );
+          hmac.init(secretKey);
+          
+          // Generate hash
+          byte[] hash = hmac.doFinal(payload.getBytes());
+          String expected = bytesToHex(hash);
+          
+          // Compare securely
+          return MessageDigest.isEqual(
+              expected.getBytes(),
+              signature.getBytes()
+          );
+      }
+      
+      private static String bytesToHex(byte[] bytes) {
+          StringBuilder result = new StringBuilder();
+          for (byte b : bytes) {
+              result.append(String.format("%02x", b));
+          }
+          return result.toString();
+      }
+  }
+  ```
+</CodeGroup>
+
+<Warning>
+  **Critical:** You must verify the signature against the raw request body, **before** parsing it as JSON. Many frameworks automatically parse JSON, which can alter the body and break signature verification.
+</Warning>
+
+***
+
+## Why Signature Verification Matters
+
+<AccordionGroup>
+  <Accordion title="Prevents Spoofed Requests" icon="user-secret">
+    Without verification, anyone could send fake webhook payloads to your endpoint. Signature verification proves the payload came from Smartcar.
+  </Accordion>
+
+  <Accordion title="Protects Against Replay Attacks" icon="rotate">
+    While signatures don't prevent replays alone, combining them with `eventId` deduplication creates a complete defense.
+  </Accordion>
+
+  <Accordion title="Ensures Data Integrity" icon="shield-halved">
+    If the payload is tampered with in transit, the signature won't match, alerting you to the modification.
+  </Accordion>
+
+  <Accordion title="Compliance Requirements" icon="building-columns">
+    Many security standards and regulations require verification of external data sources.
+  </Accordion>
+</AccordionGroup>
+
+***
+
+## Additional Security Measures
+
+### Use HTTPS Only
+
+Smartcar only delivers webhooks to HTTPS endpoints with valid SSL certificates.
+
+<Check>
+  **Required:** Your callback URL must use HTTPS with a valid, trusted SSL certificate. Self-signed certificates are not supported.
+</Check>
+
+### Restrict Access by IP (Optional)
+
+While Smartcar doesn't publish a fixed IP range (addresses may change), you can add an extra layer of security by:
+
+1. Logging all webhook source IPs
+2. Alerting on unusual source addresses
+3. Rate limiting by IP to prevent abuse
+
+<Note>
+  **Don't rely on IP filtering alone.** Signature verification is the primary security mechanism. IP-based restrictions should be supplementary.
+</Note>
+
+### Rotate Management Tokens Periodically
+
+Your Application Management Token is used to verify webhook signatures. Rotate it periodically for security:
+
+<Steps>
+  <Step title="Generate new token">
+    Create a new Application Management Token in the Dashboard
+  </Step>
+
+  <Step title="Update your code">
+    Deploy code that accepts either the old or new token temporarily
+  </Step>
+
+  <Step title="Switch to new token">
+    Once deployed, switch Dashboard to use the new token
+  </Step>
+
+  <Step title="Remove old token">
+    After confirming all webhooks use the new token, remove old token support
+  </Step>
+</Steps>
+
+### Monitor Failed Verifications
+
+Track and alert on signature verification failures:
+
+```python theme={null}
+@app.post("/webhooks/smartcar")
+def webhook_handler():
+    signature = request.headers.get('SC-Signature')
+    raw_body = request.data.decode('utf-8')
+    
+    if not verify_signature(raw_body, signature, MANAGEMENT_TOKEN):
+        # Log the failure
+        logger.warning(
+            "Invalid webhook signature",
+            extra={
+                "source_ip": request.remote_addr,
+                "signature": signature,
+                "payload_size": len(raw_body)
+            }
+        )
+        
+        # Alert if threshold exceeded
+        if recent_failures_count() > 10:
+            send_security_alert("High rate of invalid webhook signatures")
+        
+        return {"error": "Invalid signature"}, 401
+```
+
+***
+
+## Using SDK Helpers
+
+Smartcar's SDKs provide built-in methods for signature verification:
+
+<CodeGroup>
+  ```javascript Node.js SDK theme={null}
+  const smartcar = require('smartcar');
+
+  // Verify signature
+  const isValid = smartcar.verifyPayload(
+    managementToken,
+    signature,
+    rawBody
+  );
+  ```
+
+  ```python Python SDK theme={null}
+  import smartcar
+
+  # Verify signature
+  is_valid = smartcar.verify_payload(
+      management_token,
+      signature,
+      raw_body
+  )
+  ```
+
+  ```java Java SDK theme={null}
+  import com.smartcar.sdk.Smartcar;
+
+  // Verify signature
+  boolean isValid = Smartcar.verifyPayload(
+      managementToken,
+      signature,
+      rawBody
+  );
+  ```
+</CodeGroup>
+
+***
+
+## Next Steps
+
+<CardGroup>
+  <Card title="Payload Verification Guide" icon="book" href="/integrations/webhooks/payload-verification">
+    Complete implementation details
+  </Card>
+
+  <Card title="Reliability" icon="shield" href="/integrations/webhooks/best-practices/reliability">
+    Implement idempotency
+  </Card>
+
+  <Card title="Monitoring" icon="chart-line" href="/integrations/webhooks/best-practices/monitoring">
+    Track verification failures
+  </Card>
+
+  <Card title="Architecture" icon="diagram-project" href="/integrations/webhooks/best-practices/architecture">
+    Design secure webhook handlers
+  </Card>
+</CardGroup>
+
+
+# Testing
+Source: https://smartcar.com/docs/integrations/webhooks/best-practices/testing
+
+Test your webhook integration before going to production
+
+Thoroughly test your webhook integration to catch issues before they affect users.
+
+## Test in Development
+
+Use the Smartcar Dashboard to trigger test webhook deliveries.
+
+<Steps>
+  <Step title="Set up local tunnel">
+    Use ngrok or similar to expose your local server:
+
+    ```bash theme={null}
+    ngrok http 3000
+    ```
+
+    This creates a public HTTPS URL that forwards to your local development server.
+  </Step>
+
+  <Step title="Configure webhook">
+    In the Smartcar Dashboard, set your ngrok URL as the callback URI (e.g., `https://abc123.ngrok.io/webhooks/smartcar`)
+  </Step>
+
+  <Step title="Verify webhook">
+    Complete the VERIFY challenge to activate the webhook
+  </Step>
+
+  <Step title="Trigger test events">
+    Use the Dashboard to send test `VEHICLE_STATE` and `VEHICLE_ERROR` events to your endpoint
+  </Step>
+
+  <Step title="Verify handling">
+    Check logs to confirm:
+
+    * Signature verification works
+    * Payload is queued successfully
+    * Processing logic executes correctly
+    * Idempotency prevents duplicates
+  </Step>
+</Steps>
+
+***
+
+## Next Steps
+
+Once testing is complete, prepare for production deployment:
+
+<CardGroup>
+  <Card title="Monitoring" icon="chart-line" href="/integrations/webhooks/best-practices/monitoring">
+    Set up production monitoring and alerts
+  </Card>
+
+  <Card title="Security" icon="shield-check" href="/integrations/webhooks/best-practices/security">
+    Review security best practices for production
+  </Card>
+
+  <Card title="Webhook Receiver Recipe" icon="rocket" href="/getting-started/tutorials/webhook-receiver-recipe">
+    Deploy production-ready AWS infrastructure
+  </Card>
+
+  <Card title="Delivery Behavior" icon="truck-fast" href="/api-reference/webhooks/delivery-behavior">
+    Understand production retry and timeout policies
+  </Card>
+</CardGroup>
 
 
 # Callback URI Verification
 Source: https://smartcar.com/docs/integrations/webhooks/callback-verification
 
-Verify your newly-created webhook.
+Verify your webhook endpoint can receive deliveries
 
 <Info>
-  This page covers the verification step **when first setting up a webhook** on Dashboard. Please see our [payload verification](/integrations/webhooks/payload-verification) section for information on how to verify webhook payloads from vehicles.
+  **This page covers initial endpoint verification.** For verifying webhook payload signatures from vehicles, see [Payload Verification](/integrations/webhooks/payload-verification).
 </Info>
 
-When you first set up a webhook in the Smartcar Dashboard, Smartcar will post a challenge request to ensure we're sending payloads to the correct place. This is a **one time** event and will be in the following format:
+When you create a webhook or update a callback URI in the Smartcar Dashboard, Smartcar sends a one-time `VERIFY` event to confirm your endpoint is ready. Your endpoint must respond correctly before Smartcar will deliver any vehicle data.
+
+## The VERIFY Event
+
+Smartcar sends a challenge request to your callback URI in this format:
 
 <CodeGroup>
   ```json Version 4.0 (NEW) theme={null}
@@ -16513,25 +20856,35 @@ When you first set up a webhook in the Smartcar Dashboard, Smartcar will post a 
   ```
 </CodeGroup>
 
-Upon receiving the request, your server will need respond to the challenge by hashing `payload.challenge` with your `application_management_token` to create a `SHA-256` based `HMAC`.
+## Required Response
+
+Your endpoint must respond with:
+
+1. **Status code**: `200 OK`
+2. **Content-Type header**: `application/json`
+3. **Response body**: A JSON object containing the HMAC-SHA256 hash of the challenge
+
+### Generate the HMAC
+
+Create an HMAC-SHA256 hash of the `challenge` string using your **Application Management Token** as the secret key:
 
 <Tip>
-  Our [backend SDKs](/api-reference/api-sdks) have helper methods to generate the `HMAC`.
+  Our [backend SDKs](/api-reference/api-sdks) have helper methods to generate the HMAC.
 </Tip>
 
 <CodeGroup>
-  ```python Python theme={null}
-      hmac = smartcar.hash_challenge(
-              application_management_token, 
-              payload.challenge
-          )
-  ```
-
   ```js Node theme={null}
       let hmac = smartcar.hashChallenge(
           application_management_token, 
           payload.challenge
       ); 
+  ```
+
+  ```python Python theme={null}
+      hmac = smartcar.hash_challenge(
+              application_management_token, 
+              payload.challenge
+          )
   ```
 
   ```java Java theme={null}
@@ -16549,20 +20902,28 @@ Upon receiving the request, your server will need respond to the challenge by ha
   ```
 </CodeGroup>
 
-Return the hex-encoded hash as the value for `challenge` in your response body with a `200` status code, and the `Content-Type` header set to `application/json`.
+### Return the Response
 
-```json verificationResponse.body theme={null}
+Return the hex-encoded hash in your response body with the key `challenge`:
+
+```json Response Body theme={null}
 {
-  "challenge" : "{HMAC}"
+  "challenge": "{HMAC-hex-string}"
 }
 ```
+
+<Warning>
+  If your endpoint fails to respond correctly within 15 seconds, Smartcar will not activate the webhook. You can retry verification from the Dashboard at any time.
+</Warning>
+
+***
 
 ## Verify webhook challenges inside the Dashboard
 
 Use the Smartcar Dashboard to understand exactly what Smartcar expects before you enable webhooks in production. The **Verify webhook** modal shows a sample challenge string plus language-specific snippets so you can implement the same HMAC signature in your code.
 
 <Frame>
-    <img src="https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge.png?fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=9106c3a746b703281d6fc2ada9bd6249" alt="" data-og-width="1344" width="1344" data-og-height="1095" height="1095" data-path="images/changelog/webhook-challenge.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge.png?w=280&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=2af7016d356c723b2c5f2abf8f55e130 280w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge.png?w=560&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=c402b715adfe634727c3db3777518002 560w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge.png?w=840&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=663b8794492a757bc94bb456642ba025 840w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge.png?w=1100&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=c94a590072ee00fe31f2381424ab4866 1100w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge.png?w=1650&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=c36a0f87b244b4a1915d30d9440724c0 1650w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge.png?w=2500&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=f4870c0fed07dab78526f68c81bd989a 2500w" />
+  <img alt="" />
 </Frame>
 
 <Steps>
@@ -16580,537 +20941,866 @@ Use the Smartcar Dashboard to understand exactly what Smartcar expects before yo
 </Steps>
 
 <Frame>
-    <img src="https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge-calculator.png?fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=12cd5091ce9d0c9f0355569227931374" alt="" data-og-width="1344" width="1344" data-og-height="1095" height="1095" data-path="images/changelog/webhook-challenge-calculator.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge-calculator.png?w=280&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=01c41a08770277ac722cf56d2207755d 280w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge-calculator.png?w=560&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=eb0f7b5c79d5f1d5001cf2b4e0c1fc94 560w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge-calculator.png?w=840&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=e6a0dedfdd279d20479326bcd0f855e2 840w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge-calculator.png?w=1100&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=a8fe313d141c595525270f50f960da76 1100w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge-calculator.png?w=1650&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=b671a190797c06c85e5fea49b0dab359 1650w, https://mintcdn.com/smartcar-docs/92ufkjISfFm8Rd1q/images/changelog/webhook-challenge-calculator.png?w=2500&fit=max&auto=format&n=92ufkjISfFm8Rd1q&q=85&s=bc0b603ce9b29e082e1c5372681297e3 2500w" />
+  <img alt="" />
 </Frame>
 
 
-# Webhooks Setup
+# Creating Webhooks
+Source: https://smartcar.com/docs/integrations/webhooks/creating-webhooks
+
+Step-by-step guide to creating and configuring webhook integrations in the Smartcar Dashboard
+
+Head over to the [Smartcar Dashboard](https://dashboard.smartcar.com/integrations) to set up your webhook integration. There are four main steps to create a webhook in Smartcar:
+
+<Frame type="simple">
+  <img alt="Application Configuration in Smartcar Dashboard" />
+</Frame>
+
+<Steps>
+  <Step title="Select an Integration Type">
+    From the integrations page, start by creating a new integration and choosing webhook. For most use cases, webhooks are the recommended option.
+  </Step>
+
+  <Step title="Choose a Trigger">
+    Define **when** Smartcar should send you a webhook. This is the vehicle event or condition that causes data to be delivered.
+
+    **Example triggers:**
+
+    * Vehicle's battery percentage changes
+    * Vehicle is plugged in or unplugged
+    * Odometer changes
+    * Doors or windows open
+    * Vehicle location changes
+  </Step>
+
+  <Step title="Select the Data (Signals)">
+    After choosing a trigger, specify **what** vehicle data ("signals") should be included in the webhook payload. Browse the complete [Vehicle Signals catalog](/api-reference/signals/schema) to see all available data points.
+
+    <Note>
+      **All selected signals are delivered in every webhook event**, not just the signals that triggered it. This ensures you always receive complete vehicle state data.
+    </Note>
+
+    Your selection directly maps to the permissions that the vehicle owner granted your application during the connection process. Smartcar offers over 20 specific [permissions](https://smartcar.com/docs/api-reference/permissions) for granular control.
+  </Step>
+
+  <Step title="Provide a Callback URI & Verify Your Webhook">
+    Enter the destination URL where Smartcar should send the data. This should be your application's endpoint to receive webhook payloads.
+
+    Your callback URI must handle the `"eventType": "VERIFY"` received in the request payload and respond with a `200` status code and a `{"challenge": "{HMAC}"}` body.
+
+    <Info>
+      **Optional: Separate Error Callback URI**
+
+      You can optionally configure a separate callback URI specifically for `VEHICLE_ERROR` events. If not specified, all events (`VEHICLE_STATE` and `VEHICLE_ERROR`) will be sent to the same callback URI.
+    </Info>
+
+    **Resources:**
+
+    * [Callback Verification Guide](/integrations/webhooks/callback-verification) - Learn how to verify your endpoint
+    * [Webhook Receiver Recipe](/getting-started/tutorials/webhook-receiver-recipe) - Deploy a pre-built, verified receiver
+    * [Receiving Webhooks](/integrations/webhooks/receiving-webhooks) - Build your own receiver from scratch
+  </Step>
+</Steps>
+
+***
+
+## Next Steps
+
+After creating your webhook, you'll need to subscribe vehicles to start receiving data.
+
+<Card title="Subscribe Vehicles to Your Webhook" icon="car" href="/integrations/webhooks/subscribing-vehicles">
+  Learn how to subscribe vehicles using auto-enrollment, the Dashboard, or the API
+</Card>
+
+<CardGroup>
+  <Card title="Receiving Webhooks" icon="code" href="/integrations/webhooks/receiving-webhooks">
+    Learn how to handle incoming webhook deliveries
+  </Card>
+
+  <Card title="Event Reference" icon="list" href="/api-reference/webhooks/events/overview">
+    Complete reference of webhook events and payloads
+  </Card>
+
+  <Card title="Verify Your Webhook" icon="shield-check" href="/integrations/webhooks/callback-verification">
+    Secure your webhook endpoint with verification
+  </Card>
+
+  <Card title="Delivery Behavior" icon="truck-fast" href="/api-reference/webhooks/delivery-behavior">
+    Understand retry policies and delivery guarantees
+  </Card>
+</CardGroup>
+
+
+# Webhooks Overview
 Source: https://smartcar.com/docs/integrations/webhooks/overview
 
-Receive a seamless data stream from your vehicles via webhooks with optimized vehicle updates, ensuring you always have the most current information available for all of your vehicles.
+Receive real-time vehicle data automatically with Smartcar's event-based webhooks
 
-Integrating with Smartcar is now easier than ever. We've combined all previous version of webhooks into a much more powerful single webhook offering to get your integration up and running quickly.
+Smartcar's webhooks provide a scalable, event-driven way to receive vehicle data in real-time. Instead of polling the API, your application receives automatic updates when vehicle state changes—reducing latency, server load, and API costs.
 
 <Info>
   Webhooks are the recommended way to receive real-time vehicle data from Smartcar. You can still use the REST API for retrieving data and issuing commands, but webhooks are the most scalable and reliable option for most use cases.
 </Info>
 
-## Quick Start Options
+## How Webhooks Work
 
-### Option 1: Use Our Webhook Receiver Recipe (Recommended)
+1. **Configure triggers** - Define which vehicle events should send you data (e.g., battery percentage changes, location changes, etc.)
+2. **Select signals** - Choose what data points to include in webhook payloads (see [available signals](/api-reference/signals/schema))
+3. **Receive events** - Smartcar automatically sends HTTP POST requests to your endpoint when conditions are met
+4. **Process data** - Your application handles incoming webhook deliveries and updates your system
 
-Deploy a production-ready webhook receiver to AWS in minutes using our [Webhook Receiver Recipe →](/getting-started/tutorials/webhook-receiver-recipe).
+## Webhook Components
 
-This easy to deploy recipe is a complete AWS serverless webhook receiver with built-in validation, error handling, and scalability.
+Understanding Smartcar's webhook system involves three main areas:
 
-### Option 2: Build From Scratch
+### 1. Setup & Configuration
 
-Follow our step-by-step guide to build your own webhook receiver.
+* [Creating Webhooks](/integrations/webhooks/creating-webhooks) - Configure webhooks in the Smartcar Dashboard
+* [Callback Verification](/integrations/webhooks/callback-verification) - Verify your endpoint URL
+* [Receiving Webhooks](/integrations/webhooks/receiving-webhooks) - Build your webhook receiver
 
-**Perfect for**: Custom architectures, learning webhook concepts, non-AWS deployments
+### 2. Security & Validation
 
-[Continue with manual setup ↓](#configuring-a-webhook-integration)
+* [Payload Verification](/integrations/webhooks/payload-verification) - Validate webhook signatures
+* [Best Practices](/integrations/webhooks/best-practices/overview) - Secure your integration
 
-***
+### 3. Technical Reference
 
-## Webhook Recipes & Templates
-
-To help you get started quickly, we provide production-ready webhook receiver templates:
-
-### Webhook Receiver Recipe
-
-A complete AWS serverless webhook receiver with built-in validation, error handling, and scalability.
-
-* **Best for**: New implementations, AWS environments, TypeScript projects
-* **Deployment**: AWS Lambda + API Gateway + SQS
-* **Repository**: [smartcar/typescript-webhook-recipe](https://github.com/smartcar/typescript-webhook-recipe)
-* **Documentation**: [Webhook Receiver Recipe →](/getting-started/tutorials/webhook-receiver-recipe)
-
-*More recipes coming soon for Python, Go, and other cloud platforms.*
+* [Event Reference](/api-reference/webhooks/events/overview) - Complete event and payload documentation
+* [Delivery Behavior](/api-reference/webhooks/delivery-behavior) - Retry policies, ordering, and guarantees
 
 ***
 
-## Configuring a Webhook Integration
+## Next Steps
 
-Head over to the [Smartcar Dashboard](https://dashboard.smartcar.com/integrations) to set up your webhook integration. There are three main steps to set up a webhook in Smartcar:
+<CardGroup>
+  <Card title="Create Your First Webhook" icon="plus" href="/integrations/webhooks/creating-webhooks">
+    Configure a webhook in the Dashboard
+  </Card>
 
-<Frame type="simple" caption="Integrations in Smartcar Dashboard">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/integration.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=d3af48b5bc08ad44ee8570b8687ddb8d" alt="Application Configuration in Smartcar Dashboard" data-og-width="3420" width="3420" data-og-height="2080" height="2080" data-path="images/getting-started/integration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/integration.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=3c570d45ab5e11c646ae694f07f4782e 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/integration.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=4385dc02cfe9a0f737a08afa6cb1a248 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/integration.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=3c0d60e6c8328c7c511070c8491eab7e 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/integration.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=95eecd2c084428179e4acfae1040f730 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/integration.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=1e5d939db4bba88fa2af6c391bf3729a 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/integration.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=3b99e85bc4f6c2b4b1159c28d2a7779b 2500w" />
-</Frame>
+  <Card title="Receiving Webhooks" icon="code" href="/integrations/webhooks/receiving-webhooks">
+    Build your webhook endpoint
+  </Card>
 
-<Steps>
-  <Step title="Select an Integration Type">
-    From the integrations page, start by creating a new integration and choosing webhook. For most use cases, Webhooks are the recommended option.
-  </Step>
-
-  <Step title="Choose a Trigger">
-    Define <b>when</b> Smartcar should send you a webhook. This is the vehicle event or condition that causes data to be delivered.
-
-    <br />
-
-    <b>Example triggers:</b>
-
-    <ul>
-      <li>Vehicle's battery percentage changes</li>
-      <li>Vehicle is plugged in or unplugged</li>
-      <li>Airbags deploy</li>
-      <li>Odometer changes as the vehicle drives</li>
-      <li>Doors or windows open</li>
-      <li>Vehicle location changes as it drives</li>
-    </ul>
-  </Step>
-
-  <Step title="Select the Data (Signals)">
-    After choosing a trigger, specify <b>what</b> vehicle data ("signals") should be included in the webhook payload.<br />
-    Your selection directly maps to the permissions that the vehicle owner granted your application during the connection process. Smartcar offers over 20 specific <a href="https://smartcar.com/docs/api-reference/permissions">permissions</a> for granular control.
-  </Step>
-
-  <Step title="Provide a callback URI & verify your webhook">
-    Enter the destination URL where Smartcar should send the data. This should be your application's endpoint to receive webhook payloads.
-
-    Read more about [verifying your webhook](/integrations/webhooks/callback-verification) or use our [Webhook Receiver Recipe](/getting-started/tutorials/webhook-receiver-recipe) for an out-of-the box solution.
-
-    Read more about [receiving webhooks.](/integrations/webhooks/webhook-receiver)
-
-    Your callback URI should handle the `"eventType" : "VERIFY"` received in the request payload and respond with a `200` status code and a `{"challenge": "{HMAC}"}`. Please see [this guide](/integrations/webhooks/callback-verification) on how to
-    verify your callback URI.
-  </Step>
-</Steps>
-
-## Subscribing Vehicles to a Webhook
-
-Once the user grants access to your application, you can chose between automatically subscribing all vehicles to your webhook or by manually subscribing specific vehicles.
-
-Automatically subscribing vehicles can be done by selecting the option in the Dashboard when creating your webhook. When this option is selected, all vehicles that are connected to your application will be automatically subscribed to your webhook. New connections will also be automatically subscribed and start sending data right away.
-
-If you do not select the option to autosubscribe vehicles, you may also manually subscribe vehicles to webhoooks by issuing requests to the [subscribe](/api-reference/webhooks/subscribe-webhook) and [unsubscribe](/api-reference/webhooks/unsubscribe-webhook) with the corresponding
-webhook ID or from the Smartcar Dashboard.
-
-<Frame type="simple" caption="Webhook Subscription in Smartcar Dashboard">
-  <img src="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/subscribe-from-dashboard.png?fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=0df1e27487ad5b8116a99e2dd3f80b5c" alt="Webhook Subscription in Smartcar Dashboard" data-og-width="3972" width="3972" data-og-height="1932" height="1932" data-path="images/getting-started/dashboard/subscribe-from-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/subscribe-from-dashboard.png?w=280&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=c7ebca922726f37bef95869e227f2c3a 280w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/subscribe-from-dashboard.png?w=560&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=5a4ff5c39f80690cd8f50f23ab53117b 560w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/subscribe-from-dashboard.png?w=840&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=dac53494978cba5d47ed149813c952f9 840w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/subscribe-from-dashboard.png?w=1100&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=5e7d7cd58f719877acb1e8778e02a48a 1100w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/subscribe-from-dashboard.png?w=1650&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=fcdf42ce2444e6d8afcdd5223bb93488 1650w, https://mintcdn.com/smartcar-docs/klvdxjd2EpHsqsG2/images/getting-started/dashboard/subscribe-from-dashboard.png?w=2500&fit=max&auto=format&n=klvdxjd2EpHsqsG2&q=85&s=6687ae24a2eda0e30025de3dcc867301 2500w" />
-</Frame>
-
-In both scenarios, data will be sent only after your webhook has been verified.
-
-When a vehicle is first subscribed to a webhook, Smartcar will send an initial
-payload that attempts to get all the signals you're subscribed to for that vehicle.
-
-Smartcar will only send subsequent data when it matches the conditions specified in your webhook creation steps. For example, when any of the signals you specified change in value.
-
-<Info>
-  The first payload may only contain partial data if there were issues
-  retrieving data from the vehicle initially. Connection or compatibility
-  issues will be reported to your error callback URI as described below.
-</Info>
-
-## FAQS
-
-<AccordionGroup>
-  <Accordion title="What data can I access from a vehicle?">
-    All the data you'd expect from vehicles through the Smartcar API - standardized and accessible through Webhooks. Please refer to the list of supported [signals](/api-reference/signals/schema) for specific data points and signal names.
-  </Accordion>
-
-  <Accordion title="What does the webhook payload look like">
-    Please refer to these [responses](/integrations/webhooks/responses) for success and errors.
-  </Accordion>
-
-  <Accordion title="How often will I get data?">
-    Data update frequency will depend on the brand. Exact frequencies for each brand can be found
-    [here](/help/frequencies). Please note that Smartcar will only send data if it has
-    changed.
-  </Accordion>
-
-  <Accordion title="Will I be billed for using webhooks during beta?">
-    During beta, developers will not be billed for using these webhooks.
-  </Accordion>
-
-  <Accordion title="How do I know if a vehicle supports a signal?">
-    Please refer to [Vehicle compatibility issues](/integrations/webhooks/responses#vehicle-connection-or-compatibility-issues).
-  </Accordion>
-
-  <Accordion title="Do I need a different URL for errors?">
-    No. You may use the same callback URI for both errors and data. In
-    order to distinguish between the types of payloads, please refer to the
-    `type` field.
-  </Accordion>
-
-  <Accordion title="Are Webhooks available on all plans?">
-    Yes. As of Summer of 2025, Smartcar now makes Webhooks available on all plans for ease of integration. Read more about it [here](https://smartcar.com/docs/changelog/latest#august-26th%2C-2025)
-  </Accordion>
-</AccordionGroup>
-
-***
-
-Ready to get started? Check out our [Getting Started guides](/getting-started/) or [tutorials](/getting-started/tutorials/) to connect your first vehicle and set up your integration.
+  <Card title="Event Reference" icon="book" href="/api-reference/webhooks/events/overview">
+    Complete payload documentation
+  </Card>
+</CardGroup>
 
 
 # Payload Verification
 Source: https://smartcar.com/docs/integrations/webhooks/payload-verification
 
-Verify webhook payloads from vehicles to ensure data integrity and security.
+Verify webhook payloads are authentic using signature verification
 
 <Info>
-  This page covers verification of payloads from vehicles.
-  Please see our [callback verification](/integrations/webhooks/callback-verification) section for
-  information on how to initially verify your callback uri.
+  **This page covers verifying ongoing webhook payloads.** For initial endpoint verification when creating a webhook, see [Callback URI Verification](/integrations/webhooks/callback-verification).
 </Info>
 
-Verify webhook payloads against the `SC-Signature` header and a `SHA-256` based `HMAC` generated by hashing
-your `application_management_token` and the body.
+Always verify that webhook payloads actually came from Smartcar before processing them. Every webhook includes an `SC-Signature` header containing an HMAC-SHA256 signature of the payload.
+
+## Why Verification Matters
+
+Without signature verification:
+
+* Anyone could send fake webhook payloads to your endpoint
+* Malicious actors could inject false vehicle data
+* You have no guarantee the payload came from Smartcar
+
+Signature verification ensures:
+
+* The payload was sent by Smartcar
+* The payload wasn't tampered with in transit
+* You can safely process the data
+
+***
+
+## How Signature Verification Works
+
+1. Smartcar creates an HMAC-SHA256 hash of the raw request body using your **Application Management Token** as the secret key
+2. The hash is sent in the `SC-Signature` header
+3. You recreate the hash using the same secret and compare it to the received signature
+4. If they match, the payload is authentic and unmodified
+
+***
+
+## Quick Implementation
+
+Use our SDKs for automatic signature verification:
 
 <Tip>
-  Our [backend SDKs](/api-reference/api-sdks) have helper methods that return `true` if the payload is good.
+  Our [backend SDKs](/api-reference/api-sdks) have helper methods that return `true` if the payload is valid.
 </Tip>
 
 <CodeGroup>
-  ```python Python theme={null}
-      Smartcar.verify_payload(
-          {application_management_token},
-          {SC-Signature}, 
-          {webhook_body}
-      )
+  ```js Node.js theme={null}
+  smartcar.verifyPayload(
+      application_management_token,
+      sc_signature_header, 
+      raw_webhook_body
+  );
   ```
 
-  ```js Node theme={null}
-      smartcar.verifyPayload(
-          {application_management_token},
-          {SC-Signature}, 
-          {webhook_body}
-      );
+  ```python Python theme={null}
+  Smartcar.verify_payload(
+      application_management_token,
+      sc_signature_header, 
+      raw_webhook_body
+  )
   ```
 
   ```java Java theme={null}
-      Smartcar.verifyPayload(
-          {application_management_token},
-          {SC-Signature}, 
-          {webhook_body}
-      );
+  Smartcar.verifyPayload(
+      application_management_token,
+      sc_signature_header, 
+      raw_webhook_body
+  );
   ```
 
   ```ruby Ruby theme={null}
-      Smartcar.verify_payload(
-          {application_management_token},
-          {SC-Signature}, 
-          {webhook_body}
-      )
+  Smartcar.verify_payload(
+      application_management_token,
+      sc_signature_header, 
+      raw_webhook_body
+  )
   ```
 </CodeGroup>
 
+***
 
-# Webhook Response Payloads
-Source: https://smartcar.com/docs/integrations/webhooks/responses
+## Manual Implementation
 
-Receive a seamless data stream from your vehicles via webhooks with optimized vehicle updates, ensuring you always have the most current information available for all of your vehicles.
+If you're not using an SDK, implement signature verification manually:
 
-## Vehicle State
+<CodeGroup>
+  ```javascript Node.js theme={null}
+  const crypto = require('crypto');
 
-When a vehicle is first subscribed to a webhook, Smartcar will send an initial payload that attempts to get all the signals you're subscribed to for that vehicle with a `VEHICLE_STATE` type. Subsequent events will contain a payload with the same event type but only the relevant signals based on your webhook configuration. (i.e, when a signal changes, on a schedule, etc.)
+  function verifyWebhookSignature(payload, signature, managementToken) {
+    // Create HMAC hash of the raw body
+    const hmac = crypto
+      .createHmac('sha256', managementToken)
+      .update(payload)
+      .digest('hex');
+    
+    // Securely compare (prevents timing attacks)
+    return crypto.timingSafeEqual(
+      Buffer.from(hmac),
+      Buffer.from(signature)
+    );
+  }
 
-Vehicle state payloads will contain the following object types for the `triggers` array:
-
-* `SIGNAL_UPDATED`: indicates that a signal value has changed since the last payload was sent. The `signal` object will contain the `code` of the signal that was updated.
-* `FIRST_DELIVERY`: indicates that this is the first payload sent for this vehicle. This trigger will only be present in the initial payload sent when a vehicle is first subscribed to a webhook, unsubscribed and then resubscribed to your webhook, or if your application is not responding with a 200 status code, we will attempt to deliver this webhook again.
-
-If you request a signal as part of your webhook payload data that the vehicle is not capable of, Smartcar will still include it in the `VEHICLE_STATE` payload, but the signal will contain an error object instead of data as shown in the example below.
-
-```json  theme={null}
-{
-    "eventId": "5a537912-9ad3-424b-ba33-65a1704567e9",
-    "eventType": "VEHICLE_STATE",
-    "data": {
-        "user": {
-            "id": "93b3ea96-ca37-43a9-9073-f4334712dbc7"
-        },
-        "vehicle": {
-            "id": "123e4567-e89b-12d3-a456-426614174000",
-            "make": "Test Make",
-            "model": "Test Model",
-            "year": 2020
-        },
-        "signals": [
-            {
-                "code": "location-preciselocation",
-                "name": "PreciseLocation",
-                "group": "Location",
-                "body": {
-                    "latitude": 37.7749,
-                    "longitude": -122.4194
-                },
-                "status": {
-                  "value": "SUCCESS"
-                },
-                "meta": {
-                  "retrievedAt": 1758668712404,
-                  "oemUpdatedAt": 1758668712404
-                }
-            },
-            {
-              "code": "location-isathome",
-              "name": "IsAtHome",
-              "group": "Location",
-              "status": {
-                "error": {
-                  "code": "VEHICLE_NOT_CAPABLE",
-                  "type": "COMPATIBILITY"
-                },
-                "value": "ERROR"
-              }
-            },
-            {
-                "code": "tractionbattery-stateofcharge",
-                "name": "StateOfCharge",
-                "group": "TractionBattery",
-                "body": {
-                    "unit": "percent",
-                    "value": 75
-                },
-                "status": {
-                  "value": "SUCCESS"
-                },
-                "meta": {
-                  "retrievedAt": 1758668712404,
-                  "oemUpdatedAt": 1758668712404
-                }
-            }
-        ]
-    },
-    "triggers": [
-        {
-            "type": "SIGNAL_UPDATED",
-            "signal": {
-                "name": "StateOfCharge",
-                "group": "TractionBattery",
-                "code": "tractionbattery-stateofcharge"
-            }
-        }
-    ],
-    "meta": {
-        "version": "4.0",
-        "deliveryId": "48b25f8f-9fea-42e1-9085-81043682cbb8",
-        "deliveredAt": 1761896351529,
-        "webhookId": "123e4567-e89b-12d3-a456-426614174000",
-        "webhookName": "My First Webhook",
-        "signalCount": 3,
-        "mode": "LIVE"
+  // Important: Use raw body parser
+  app.post('/webhooks/smartcar', 
+    express.raw({ type: 'application/json' }), 
+    (req, res) => {
+      // Get the signature from headers
+      const signature = req.headers['sc-signature'];
+      
+      // Get the raw body
+      const rawBody = req.body.toString();
+      
+      // Verify signature
+      if (!verifyWebhookSignature(rawBody, signature, MANAGEMENT_TOKEN)) {
+        return res.status(401).json({ error: 'Invalid signature' });
+      }
+      
+      // Now safe to process
+      const payload = JSON.parse(rawBody);
+      processWebhook(payload);
+      res.status(200).json({ status: 'received' });
     }
-}
-```
+  );
+  ```
 
-For each signal, you will have a `meta` object that contains the following fields:
+  ```python Python theme={null}
+  import hmac
+  import hashlib
 
-* `retrievedAt`: The timestamp (in milliseconds since epoch) of when the data was retrieved from the vehicle by Smartcar.
-* `oemUpdatedAt`: The timestamp (in milliseconds since epoch) of when the data was last recorder by the vehicle.
+  def verify_webhook_signature(payload, signature, management_token):
+      """Verify the SC-Signature header matches the payload"""
+      # Create HMAC hash of the raw body
+      expected = hmac.new(
+          management_token.encode(),
+          payload.encode(),
+          hashlib.sha256
+      ).hexdigest()
+      
+      # Securely compare (prevents timing attacks)
+      return hmac.compare_digest(expected, signature)
 
-You'll also see a `code` with the unique signal code that can be used to retrieve that signal from the API by calling the [`GET` Signal endpoint](/api-reference/get-signal).
-The `name` and `group` fields correspond to the signal's name and group respectively as defined in the [Signal Schema](/api-reference/signals/schema).
+  @app.post('/webhooks/smartcar')
+  def webhook_handler():
+      # Get the signature from headers
+      signature = request.headers.get('SC-Signature')
+      
+      # Get the raw body (BEFORE parsing as JSON)
+      raw_body = request.data.decode('utf-8')
+      
+      # Verify signature
+      if not verify_webhook_signature(raw_body, signature, MANAGEMENT_TOKEN):
+          return {"error": "Invalid signature"}, 401
+      
+      # Now safe to process
+      payload = request.get_json()
+      process_webhook(payload)
+      return {"status": "received"}, 200
+  ```
 
-## Vehicle connection or compatibility issues
+  ```java Java theme={null}
+  import javax.crypto.Mac;
+  import javax.crypto.spec.SecretKeySpec;
+  import java.security.MessageDigest;
 
-There may be times when Smartcar is unable to get vehicle data because there is
-an issue with our connection to the vehicle that requires vehicle owner
-interaction, or because the subscribed vehicle does not support some of the signals you have configured.
+  public class WebhookVerification {
+      
+      public static boolean verifySignature(
+          String payload, 
+          String signature, 
+          String managementToken
+      ) throws Exception {
+          // Create HMAC-SHA256
+          Mac hmac = Mac.getInstance("HmacSHA256");
+          SecretKeySpec secretKey = new SecretKeySpec(
+              managementToken.getBytes(), 
+              "HmacSHA256"
+          );
+          hmac.init(secretKey);
+          
+          // Generate hash
+          byte[] hash = hmac.doFinal(payload.getBytes());
+          String expected = bytesToHex(hash);
+          
+          // Securely compare
+          return MessageDigest.isEqual(
+              expected.getBytes(),
+              signature.getBytes()
+          );
+      }
+      
+      private static String bytesToHex(byte[] bytes) {
+          StringBuilder result = new StringBuilder();
+          for (byte b : bytes) {
+              result.append(String.format("%02x", b));
+          }
+          return result.toString();
+      }
+  }
 
-Smartcar will allow you to subscribe any vehicle to your webhook. When processing
-the initial payload, we will report compatibility issues to your error callback
-URI. For example, if a vehicle is not capable of the `nickname` signal we would
-send data for other signals as normal, but send the following payload for the `nickname` signal instead.
+  @PostMapping("/webhooks/smartcar")
+  public ResponseEntity<?> handleWebhook(
+      @RequestBody String rawBody,
+      @RequestHeader("SC-Signature") String signature
+  ) {
+      // Verify signature
+      if (!WebhookVerification.verifySignature(rawBody, signature, MANAGEMENT_TOKEN)) {
+          return ResponseEntity.status(401).body(Map.of("error", "Invalid signature"));
+      }
+      
+      // Now safe to process
+      processWebhook(rawBody);
+      return ResponseEntity.ok(Map.of("status", "received"));
+  }
+  ```
 
-When either of these happens, we'll send a `VEHICLE_ERROR` payload to your vehicle error callback URI. If you don't specify a callback URI for errors, Smartcar will send them to the same vehicle data callback URI.
+  ```ruby Ruby theme={null}
+  require 'openssl'
 
-For a list of possible errors, please refer to the [API Errors](/errors/api-errors) section.
+  def verify_webhook_signature(payload, signature, management_token)
+    # Create HMAC hash of the raw body
+    expected = OpenSSL::HMAC.hexdigest(
+      'SHA256',
+      management_token,
+      payload
+    )
+    
+    # Securely compare
+    Rack::Utils.secure_compare(expected, signature)
+  end
 
-```json  theme={null}
-{
-    "eventId": "5a537912-9ad3-424b-ba33-65a1704567e9",
-    "eventType": "VEHICLE_ERROR",
-    "data": {
-        "user": {
-            "id": "93b3ea96-ca37-43a9-9073-f4334719iok7"
-        },
-        "errors": [
-            {
-                "type": "COMPATIBILITY",
-                "code": "VEHICLE_NOT_CAPABLE",
-                "state": "ERROR",
-                "description": "The vehicle is incapable of performing your request.",
-                "suggestedUserMessage": "Your car is unable to perform this request.",
-                "docURL": "https://smartcar.com/docs/errors/api-errors/compatibility-errors#vehicle-not-capable",
-                "resolution": {
-                    "type": "CONTACT_SUPPORT"
-                },
-                "signals": [
-                  {
-                    "code": "location-preciselocation",
-                    "name": "PreciseLocation",
-                    "group": "Location"
-                  },
-                  {
-                    "code": "tractionbattery-stateofcharge",
-                    "name": "StateOfCharge",
-                    "group": "TractionBattery"
-                  }
-                ]
-            }
-        ],
-        "vehicle": {
-            "id": "123e4567-e89b-12d3-a456-426614174000",
-            "make": "TESLA",
-            "model": "Model 3",
-            "year": 2020
-        }
-    },
-    "meta": {
-        "version": "4.0",
-        "deliveryId": "48b25f8f-9fea-42e1-9085-81043682cbb8",
-        "deliveredAt": 1761896351529,
-        "webhookId": "123e4567-e89b-12d3-a456-426614174000",
-        "webhookName": "Bad Webhook",
-        "mode": "LIVE"
-    }
-}
-```
+  post '/webhooks/smartcar' do
+    # Get the signature from headers
+    signature = request.env['HTTP_SC_SIGNATURE']
+    
+    # Get the raw body
+    raw_body = request.body.read
+    
+    # Verify signature
+    unless verify_webhook_signature(raw_body, signature, MANAGEMENT_TOKEN)
+      halt 401, { error: 'Invalid signature' }.to_json
+    end
+    
+    # Now safe to process
+    payload = JSON.parse(raw_body)
+    process_webhook(payload)
+    
+    status 200
+    { status: 'received' }.to_json
+  end
+  ```
+</CodeGroup>
 
-While a vehicle is in one of these states, you may be unable to receive data from the
-vehicle until the owner has taken the necessary steps to re-establish
-the connection.
+<Warning>
+  **Critical:** You must verify the signature against the **raw request body** before parsing it as JSON. Many frameworks automatically parse JSON, which can alter the body and break signature verification.
+</Warning>
 
-Upon resolution of the issue, Smartcar will send another payload to your error callback URI with `state`
-set to `RESOLVED`. If you don't specify a callback URI for errors, Smartcar will send them to the same vehicle data callback URI.
+***
 
-
-# Building a Webhook Receiver
-Source: https://smartcar.com/docs/integrations/webhooks/webhook-receiver
-
-Webhook payloads are sent from Smartcar to your receiving server. Your receiver must respond properly to ensure payloads are delivered without delay.
-
-<Info>
-  **Looking for a quick start?** Our [Webhook Receiver Recipe](/getting-started/tutorials/webhook-receiver-recipe) provides a production-ready AWS serverless webhook receiver that you can deploy in minutes. Perfect for new implementations!
-</Info>
-
-## How Webhooks are Sent
-
-Webhook payloads are sent as HTTP requests to the `Vehicle data callback URI` you defined when you set up the webhook.
-
-The HTTP request body consists of a JSON payload. Webhook payloads will be one of `VEHICLE_STATE` or `VEHICLE_ERROR` as defined in [Response Payloads](/integrations/webhooks/responses).
-
-Optionally, you may configure a separate `Vehicle error callback URI` for `VEHICLE_ERROR` payloads. If this is not defined, all payloads will be sent to the primary URI.
-
-## Verifying Your Receiver Endpoint
-
-Before you can receive vehicle data, Smartcar will send a verification payload to your `Vehicle data callback URI` to validate that your receiver is reachable and responding appropriately.
-
-Please see [Callback URI Verification](/integrations/webhooks/callback-verification) for details on how to correctly respond to this request.
-
-## Responding to Webhook Deliveries
-
-Smartcar expects your webhook receiver to return an HTTP `200` response within 15 seconds of each delivery. Any other status code, or responses that exceed this 15-second timeout, are treated as errors and the delivery will be marked unsuccessful.
-
-Smartcar will attempt to re-deliver unsuccessful requests up to three times, with exponential backoff. If a timely `200` response code is not received for all attempts, the payload is dropped. Future deliveries will still be attempted as long as the webhook is active.
-
-<Info>
-  As a best practice, you should decouple webhook receiving and payload processing. If your receiver does not respond because of a processing issue, Smartcar will consider the payload undelivered and will send it again. Persist the payload first, then run any signal processing logic as a separate step.
-</Info>
-
-## Verifying Payloads
-
-We recommend that you verify the payloads you receive to ensure they are legitimate and complete. Smartcar cryptographically signs each payload using a signature that can only be decoded with your Application Management Token. See [Payload verification](/integrations/webhooks/payload-verification) for details.
-
-## Networking Considerations
-
-* Webhook receivers must be accessible from the public internet so Smartcar can resolve your receiver URI.
-* Receiver URIs must use HTTPS with a valid SSL certificate.
-* Internal corporate network addresses or custom SSL certificates are not supported.
-* Smartcar sends webhook payloads from public IPv4 addresses, which may change over time. Be careful when defining firewall rules.
-
-## Webhook Best Practices
+## Best Practices
 
 <AccordionGroup>
-  <Accordion title="1. Decouple Receiving from Processing">
-    The recipe uses SQS to separate webhook receipt from processing. This ensures:
-
-    * Fast response times (\< 200ms) from your server to Smartcar
-    * No timeouts from long-running business logic
-    * Reliable delivery even during processing failures
+  <Accordion title="Always verify signatures" icon="shield-check">
+    Never skip signature verification, even in development. It's your only guarantee that payloads are authentic.
   </Accordion>
 
-  <Accordion title="2. Validate Webhook Signatures">
-    Every webhook is cryptographically verified using HMAC-SHA256:
-
-    * Confirms payloads come from Smartcar
-    * Prevents replay attacks and tampering
-    * Rejects invalid requests before processing
+  <Accordion title="Use the raw body" icon="file-code">
+    Verify against the raw request body before JSON parsing. Parsed JSON may have different whitespace/ordering that breaks verification.
   </Accordion>
 
-  <Accordion title="3. Implement Retry Logic">
-    Built-in retry mechanisms handle transient failures:
-
-    * Automatic retries for failed processing (up to 3 times)
-    * 30-second visibility timeout between retries
-    * Dead letter queue for manual investigation of persistent failures
+  <Accordion title="Reject invalid signatures" icon="ban">
+    Return `401 Unauthorized` for invalid signatures. Don't process the payload or return `200`.
   </Accordion>
 
-  <Accordion title="4. Return 200 Quickly">
-    The receiver lambda responds within milliseconds:
-
-    * Acknowledges receipt immediately
-    * Prevents Smartcar from retrying unnecessarily
-    * Queues payload for asynchronous processing
-  </Accordion>
-
-  <Accordion title="5. Monitor and Alert">
-    CloudWatch integration provides observability:
-
-    * Track delivery success rates
-    * Monitor queue depths and processing times
-    * Alert on error rate thresholds
-    * Debug issues with comprehensive logging
-  </Accordion>
-
-  <Accordion title="6. Scale Automatically">
-    Serverless architecture handles traffic variability:
-
-    * Lambda auto-scales with webhook volume
-    * No capacity planning required
-    * Pay only for actual usage
-    * Handles traffic spikes seamlessly
-  </Accordion>
-
-  <Accordion title="7. Secure with Least Privilege">
-    IAM policies enforce security best practices:
-
-    * Each Lambda has minimal required permissions
-    * No hardcoded credentials
-    * AWS manages encryption at rest and in transit
-    * Secrets stored securely in AWS Secrets Manager
+  <Accordion title="Keep tokens secure" icon="lock">
+    Store your Application Management Token securely (environment variables, secrets manager). Never commit it to source control.
   </Accordion>
 </AccordionGroup>
 
-## Recommended Webhook Receiver Pattern
+***
 
-This pattern is provides a complete serverless webhook receiver infrastructure on AWS. The diagram below shows the data flow from Smartcar webhooks through your deployment:
+## Next Steps
 
-```mermaid  theme={null}
-graph TD
-    A[Smartcar Webhooks] -->|HTTPS POST| B[API Gateway]
-    B --> C[Receiver Serverless Function]
-    C -->|Validate & Queue| D[Queue]
-    D --> E[Processor Serverless Function]
-    E -->|Process Signals| F[Your Business Logic]
-    E -->|Failed Processing| G[Dead Letter Queue]
-    G --> H[Manual Review/Retry]
+<CardGroup>
+  <Card title="Best Practices" icon="star" href="/integrations/webhooks/best-practices/security">
+    Complete security best practices guide
+  </Card>
+
+  <Card title="Event Reference" icon="book" href="/api-reference/webhooks/events/overview">
+    Understand webhook event structures
+  </Card>
+
+  <Card title="Receiving Webhooks" icon="code" href="/integrations/webhooks/receiving-webhooks">
+    Build your webhook endpoint
+  </Card>
+
+  <Card title="Delivery Behavior" icon="truck-fast" href="/api-reference/webhooks/delivery-behavior">
+    Learn about retries and timeouts
+  </Card>
+</CardGroup>
+
+
+# Receiving Webhooks
+Source: https://smartcar.com/docs/integrations/webhooks/receiving-webhooks
+
+Set up an endpoint to receive and parse webhook payloads from Smartcar
+
+Learn how to build a basic webhook endpoint that receives, parses, and acknowledges Smartcar webhook deliveries.
+
+<Tip>
+  **Want to skip the manual setup?**
+
+  Deploy a production-ready webhook receiver to AWS in minutes with our [Webhook Receiver Recipe](/getting-started/tutorials/webhook-receiver-recipe). It includes complete serverless infrastructure (Lambda + API Gateway + SQS), built-in signature verification, automatic error handling, and TypeScript type safety.
+
+  **Perfect for:** New implementations, AWS environments, or teams wanting to deploy quickly without infrastructure overhead.
+</Tip>
+
+## Basic Requirements
+
+Your webhook endpoint must meet these requirements:
+
+* **Accept POST requests** - Smartcar sends all webhooks as HTTP POST requests
+* **Return 2xx status code** - Any status code from 200-299 acknowledges successful receipt
+* **Use HTTPS** - Your endpoint must use HTTPS with a valid SSL certificate
+* **Respond within 15 seconds** - Return a status code before the timeout window
+* **Publicly accessible** - Your endpoint must be accessible from the public internet
+
+***
+
+## Quick Start Examples
+
+Here are minimal webhook receivers that handle the required `VERIFY` event and acknowledge all other events:
+
+<CodeGroup>
+  ```javascript Node.js (Express) theme={null}
+  const express = require('express');
+  const smartcar = require('smartcar');
+  const app = express();
+
+  app.use(express.json());
+
+  app.post('/webhooks/smartcar', (req, res) => {
+    const { eventType, data } = req.body;
     
-    style A fill:#FFB84D,stroke:#E69500,stroke-width:2px,color:#000
-    style B fill:#FF9900,stroke:#CC7A00,stroke-width:2px,color:#000
-    style C fill:#FF9900,stroke:#CC7A00,stroke-width:2px,color:#000
-    style D fill:#FF9900,stroke:#CC7A00,stroke-width:2px,color:#000
-    style E fill:#FF9900,stroke:#CC7A00,stroke-width:2px,color:#000
-    style F fill:#d3d3d3,stroke:#666,stroke-width:2px,color:#000
-    style G fill:#FF9900,stroke:#CC7A00,stroke-width:2px,color:#000
-    style H fill:#d3d3d3,stroke:#666,stroke-width:2px,color:#000
-```
+    // Handle VERIFY event (required)
+    if (eventType === 'VERIFY') {
+      const hmac = smartcar.hashChallenge(
+        process.env.SMARTCAR_MANAGEMENT_TOKEN,
+        data.challenge
+      );
+      return res.status(200).json({ challenge: hmac });
+    }
+    
+    // Log other events
+    console.log('Received webhook:', eventType);
+    
+    // Acknowledge receipt
+    res.status(200).json({ status: 'received' });
+    
+    // Process asynchronously (recommended)
+    // processWebhook(req.body);
+  });
 
-<Note>
-  **Orange components** are provided by the recipe and deployed automatically. **Gray components** represent external systems where your custom business logic would live.
-</Note>
+  app.listen(3000);
+  ```
+
+  ```python Python (Flask) theme={null}
+  from flask import Flask, request, jsonify
+  import smartcar
+  import os
+
+  app = Flask(__name__)
+
+  @app.post('/webhooks/smartcar')
+  def webhook_handler():
+      payload = request.get_json()
+      event_type = payload.get('eventType')
+      
+      # Handle VERIFY event (required)
+      if event_type == 'VERIFY':
+          hmac = smartcar.hash_challenge(
+              os.environ['SMARTCAR_MANAGEMENT_TOKEN'],
+              payload['data']['challenge']
+          )
+          return jsonify({"challenge": hmac}), 200
+      
+      # Log other events
+      print(f"Received webhook: {event_type}")
+      
+      # Acknowledge receipt
+      return jsonify({"status": "received"}), 200
+      
+      # Process asynchronously (recommended)
+      # process_webhook(payload)
+
+  if __name__ == '__main__':
+      app.run(port=3000)
+  ```
+
+  ```java Java (Spring Boot) theme={null}
+  import com.smartcar.sdk.Webhook;
+  import org.springframework.web.bind.annotation.*;
+  import org.springframework.http.ResponseEntity;
+  import java.util.Map;
+
+  @RestController
+  public class WebhookController {
+      
+      @PostMapping("/webhooks/smartcar")
+      public ResponseEntity<Map<String, String>> handleWebhook(
+          @RequestBody Map<String, Object> payload
+      ) {
+          String eventType = (String) payload.get("eventType");
+          
+          // Handle VERIFY event (required)
+          if ("VERIFY".equals(eventType)) {
+              Map<String, Object> data = (Map<String, Object>) payload.get("data");
+              String challenge = (String) data.get("challenge");
+              
+              String hmac = Webhook.hashChallenge(
+                  System.getenv("SMARTCAR_MANAGEMENT_TOKEN"),
+                  challenge
+              );
+              return ResponseEntity.ok(Map.of("challenge", hmac));
+          }
+          
+          // Log other events
+          System.out.println("Received webhook: " + eventType);
+          
+          // Acknowledge receipt
+          return ResponseEntity.ok(Map.of("status", "received"));
+          
+          // Process asynchronously (recommended)
+          // processWebhook(payload);
+      }
+  }
+  ```
+
+  ```ruby Ruby (Sinatra) theme={null}
+  require 'sinatra'
+  require 'smartcar'
+  require 'json'
+
+  post '/webhooks/smartcar' do
+    payload = JSON.parse(request.body.read)
+    event_type = payload['eventType']
+    
+    # Handle VERIFY event (required)
+    if event_type == 'VERIFY'
+      hmac = Smartcar.hash_challenge(
+        ENV['SMARTCAR_MANAGEMENT_TOKEN'],
+        payload['data']['challenge']
+      )
+      
+      status 200
+      content_type :json
+      return { challenge: hmac }.to_json
+    end
+    
+    # Log other events
+    puts "Received webhook: #{event_type}"
+    
+    # Acknowledge receipt
+    status 200
+    content_type :json
+    { status: 'received' }.to_json
+    
+    # Process asynchronously (recommended)
+    # process_webhook(payload)
+  end
+  ```
+</CodeGroup>
+
+<Warning>
+  **VERIFY event required** - Your endpoint must successfully respond to the `VERIFY` event before Smartcar delivers any vehicle data. See [Callback Verification](/integrations/webhooks/callback-verification) for detailed instructions and troubleshooting.
+</Warning>
+
+<Tip>
+  **Best practice:** Return 200 immediately and process the webhook asynchronously. See [Architecture Best Practices](/integrations/webhooks/best-practices/architecture) for the queue-based pattern.
+</Tip>
+
+<Info>
+  **Any 2xx works:** You can return 200, 201, 202, 204, or any other 2xx status code. Smartcar treats all 2xx responses as successful delivery.
+</Info>
+
+***
+
+## What Happens After Verification
+
+After your endpoint successfully responds to the `VERIFY` event, Smartcar will begin delivering `VEHICLE_STATE` and `VEHICLE_ERROR` events for [subscribed vehicles](/integrations/webhooks/subscribing-vehicles).
+
+<Info>
+  **Understanding payloads:** For detailed payload structure, field definitions, and event-specific schemas, see the [Event Reference Overview](/api-reference/webhooks/events/overview).
+</Info>
+
+***
+
+## Next Steps
+
+<Warning>
+  **Complete the VERIFY challenge first** - Your endpoint must successfully respond to the `VERIFY` event before Smartcar delivers any vehicle data. See [Handling the VERIFY Event](#handling-the-verify-event) above.
+</Warning>
+
+Once your endpoint is verified and receiving webhooks, continue implementing your integration with these guides:
+
+<CardGroup>
+  <Card title="Payload Verification" icon="shield-check" href="/integrations/webhooks/payload-verification">
+    Verify all payloads are authentic using the SC-Signature header
+  </Card>
+
+  <Card title="Event Reference" icon="list" href="/api-reference/webhooks/events/overview">
+    Understand VEHICLE\_STATE, VEHICLE\_ERROR, and VERIFY event structures
+  </Card>
+
+  <Card title="Best Practices" icon="star" href="/integrations/webhooks/best-practices/overview">
+    Implement idempotency, queuing, monitoring, and error handling
+  </Card>
+
+  <Card title="Delivery Behavior" icon="truck-fast" href="/api-reference/webhooks/delivery-behavior">
+    Learn about retry policies, timeouts, and ordering guarantees
+  </Card>
+</CardGroup>
+
+***
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Why isn't my webhook receiving vehicle data?" icon="triangle-exclamation">
+    Your endpoint must successfully respond to the `VERIFY` event before Smartcar delivers any `VEHICLE_STATE` or `VEHICLE_ERROR` events. Check the Dashboard to confirm your webhook shows "Verified" status.
+  </Accordion>
+
+  <Accordion title="How do I test locally?" icon="laptop">
+    Use [ngrok](https://ngrok.com) or similar to expose your local server:
+
+    ```bash theme={null}
+    ngrok http 3000
+    ```
+
+    Then use the ngrok URL in Dashboard as your callback URI.
+    Note that you will have to re-verify the webhook after changing the callback URI.
+  </Accordion>
+
+  <Accordion title="What about signature verification?" icon="key">
+    Always verify the `SC-Signature` header to ensure payloads are authentic. See [Payload Verification](/integrations/webhooks/payload-verification).
+  </Accordion>
+
+  <Accordion title="Should I process webhooks synchronously?" icon="clock">
+    No. Return 200 immediately and process asynchronously using a queue. This prevents timeouts and retry storms. See [Architecture Best Practices](/integrations/webhooks/best-practices/architecture).
+  </Accordion>
+</AccordionGroup>
+
+
+# Subscribing Vehicles
+Source: https://smartcar.com/docs/integrations/webhooks/subscribing-vehicles
+
+Learn how to subscribe and unsubscribe vehicles to webhooks using auto-enrollment, the Dashboard, or the API
+
+Once you've [created a webhook](/integrations/webhooks/creating-webhooks), you need to subscribe vehicles to it before they'll start receiving data. Smartcar offers three methods to manage vehicle subscriptions: automatic enrollment, Dashboard management, and programmatic API control.
+
+<Info>
+  Data will only be sent after your webhook has been verified. See [Callback Verification](/integrations/webhooks/callback-verification) for details.
+</Info>
+
+***
+
+## Subscription Methods
+
+<CardGroup>
+  <Card title="Auto-Enrollment" icon="wand-magic-sparkles" href="/integrations/webhooks/subscribing-vehicles#method-1%3A-auto-enrollment-recommended">
+    Automatic subscription for all connected vehicles
+  </Card>
+
+  <Card title="Dashboard" icon="browser" href="/integrations/webhooks/subscribing-vehicles#method-2%3A-dashboard-management">
+    Manual subscription through the Smartcar Dashboard
+  </Card>
+
+  <Card title="API" icon="code" href="/integrations/webhooks/subscribing-vehicles#method-3%3A-api-subscription">
+    Programmatic subscription via REST API
+  </Card>
+</CardGroup>
+
+***
+
+## Method 1: Auto-Enrollment (Recommended for Production)
+
+The simplest way to manage subscriptions is to enable auto-enrollment when creating your webhook. This automatically subscribes all vehicles connected to your application.
+
+<Warning>
+  **All vehicles will be subscribed immediately.** When you enable auto-enrollment, all currently connected vehicles will be subscribed to the webhook right away. Only enable this feature when you're ready to receive data for all vehicles in your application.
+</Warning>
+
+### How It Works
+
+When auto-enrollment is enabled:
+
+* **Existing vehicles** are immediately subscribed to the webhook
+* **New connections** are automatically subscribed when users connect vehicles
+* **No manual management** required for individual vehicles
+
+### Enable Auto-Enrollment
+
+<Steps>
+  <Step title="Navigate to Dashboard">
+    Go to the [Smartcar Dashboard](https://dashboard.smartcar.com/integrations) and create or edit a webhook
+  </Step>
+
+  <Step title="Enable Auto-Subscribe">
+    Check the "Automatically subscribe all vehicles" option during webhook creation
+  </Step>
+
+  <Step title="Save Configuration">
+    Complete webhook creation - all vehicles will be subscribed automatically
+  </Step>
+</Steps>
+
+<Check>
+  **Best for:** Production deployments where all connected vehicles should receive webhook data
+</Check>
+
+***
+
+## Method 2: Dashboard Management
+
+For selective subscription, you can manually subscribe individual vehicles through the Dashboard.
+
+### Subscribe via Dashboard
+
+<Steps>
+  <Step title="Access Vehicle List">
+    Navigate to [Vehicles](https://dashboard.smartcar.com/vehicles) in the Dashboard
+  </Step>
+
+  <Step title="Select Vehicle">
+    Click on the vehicle you want to subscribe
+  </Step>
+
+  <Step title="Manage Subscriptions">
+    In the vehicle details, find the "Webhook Subscriptions" section
+
+    <Frame type="simple">
+      <img alt="Webhook Subscription in Smartcar Dashboard" />
+    </Frame>
+  </Step>
+
+  <Step title="Add or Remove">
+    Click "Subscribe" to add the vehicle to a webhook, or "Unsubscribe" to remove it
+  </Step>
+</Steps>
+
+<Check>
+  **Best for:** Testing and development, selective vehicle management, or gradual rollouts
+</Check>
+
+***
+
+## Method 3: API Subscription
+
+For programmatic control, use the subscribe and unsubscribe API endpoints.
+
+* [Subscribe Endpoint](/api-reference/webhooks/subscribe-webhook) - Full API reference for subscribing vehicles
+* [Unsubscribe Endpoint](/api-reference/webhooks/unsubscribe-webhook) - Full API reference for unsubscribing vehicles
+
+<Check>
+  **Best for:** Testing and development, dynamic subscription management, custom business logic, or bulk operations
+  **Best for:** Dynamic subscription management, custom business logic, or bulk operations
+</Check>
+
+***
+
+## Common Questions
+
+<AccordionGroup>
+  <Accordion title="Can I use multiple subscription methods together?">
+    Yes! You can enable auto-enrollment for most vehicles and use the API or Dashboard for exceptions. However, be aware that auto-enrollment will automatically subscribe new vehicles.
+  </Accordion>
+
+  <Accordion title="What happens if I unsubscribe a vehicle?">
+    The vehicle immediately stops receiving webhook deliveries. You can re-subscribe at any time, and a new first payload will be sent.
+  </Accordion>
+
+  <Accordion title="How do I know which vehicles are subscribed?">
+    You can view all vehicle subscriptions in the [Dashboard](https://dashboard.smartcar.com/vehicles) or use the [Management API](/api-reference/management/get-vehicle-connections) to programmatically list subscriptions.
+  </Accordion>
+
+  <Accordion title="Is there a limit to how many vehicles I can subscribe?">
+    No, you can subscribe as many vehicles as are connected to your application. Webhooks scale automatically to handle your fleet size.
+  </Accordion>
+
+  <Accordion title="Do I need different webhooks for different vehicle types?">
+    Not necessarily. You can use one webhook for all vehicles and handle signal availability differences using the `VEHICLE_ERROR` events for unsupported signals.
+  </Accordion>
+</AccordionGroup>
+
+***
+
+## Next Steps
+
+<CardGroup>
+  <Card title="Receiving Webhooks" icon="code" href="/integrations/webhooks/receiving-webhooks">
+    Requirements for building your webhook endpoint
+  </Card>
+
+  <Card title="Event Reference" icon="list" href="/api-reference/webhooks/events/overview">
+    Understand all types of available payloads
+  </Card>
+
+  <Card title="Delivery Behavior" icon="truck-fast" href="/api-reference/webhooks/delivery-behavior">
+    Learn about retry policies and guarantees
+  </Card>
+
+  <Card title="Callback URI Verification" icon="shield-check" href="/integrations/webhooks/callback-verification">
+    Ensure your endpoint passes Smartcar's verification challenge
+  </Card>
+</CardGroup>
 
 

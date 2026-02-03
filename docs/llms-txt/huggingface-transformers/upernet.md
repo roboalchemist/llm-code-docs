@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/upernet.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/upernet.md
 
 # UPerNet
 
@@ -47,7 +47,7 @@ Note that this will randomly initialize all the weights of the model.
 A list of official Hugging Face and community (indicated by 🌎) resources to help you get started with UPerNet.
 
 - Demo notebooks for UPerNet can be found [here](https://github.com/NielsRogge/Transformers-Tutorials/tree/master/UPerNet).
-- [UperNetForSemanticSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/upernet#transformers.UperNetForSemanticSegmentation) is supported by this [example script](https://github.com/huggingface/transformers/tree/main/examples/pytorch/semantic-segmentation) and [notebook](https://colab.research.google.com/github/huggingface/notebooks/blob/main/examples/semantic_segmentation.ipynb).
+- [UperNetForSemanticSegmentation](/docs/transformers/v5.0.0/en/model_doc/upernet#transformers.UperNetForSemanticSegmentation) is supported by this [example script](https://github.com/huggingface/transformers/tree/main/examples/pytorch/semantic-segmentation) and [notebook](https://colab.research.google.com/github/huggingface/notebooks/blob/main/examples/semantic_segmentation.ipynb).
 - See also: [Semantic segmentation task guide](../tasks/semantic_segmentation)
 
 If you're interested in submitting a resource to be included here, please feel free to open a Pull Request and we'll review it! The resource should ideally demonstrate something new instead of duplicating an existing resource.
@@ -56,15 +56,15 @@ If you're interested in submitting a resource to be included here, please feel f
 
 #### transformers.UperNetConfig[[transformers.UperNetConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/upernet/configuration_upernet.py#L26)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/upernet/configuration_upernet.py#L25)
 
-This is the configuration class to store the configuration of an [UperNetForSemanticSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/upernet#transformers.UperNetForSemanticSegmentation). It is used to
+This is the configuration class to store the configuration of an [UperNetForSemanticSegmentation](/docs/transformers/v5.0.0/en/model_doc/upernet#transformers.UperNetForSemanticSegmentation). It is used to
 instantiate an UperNet model according to the specified arguments, defining the model architecture. Instantiating a
 configuration with the defaults will yield a similar configuration to that of the UperNet
 [openmmlab/upernet-convnext-tiny](https://huggingface.co/openmmlab/upernet-convnext-tiny) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Examples:
 
@@ -115,11 +115,11 @@ loss_ignore_index (`int`, *optional*, defaults to 255) : The index that is ignor
 
 #### transformers.UperNetForSemanticSegmentation[[transformers.UperNetForSemanticSegmentation]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/upernet/modeling_upernet.py#L281)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/upernet/modeling_upernet.py#L278)
 
 UperNet framework leveraging any vision backbone e.g. for ADE20k, CityScapes.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -127,10 +127,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.UperNetForSemanticSegmentation.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/upernet/modeling_upernet.py#L296[{"name": "pixel_values", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
+forwardtransformers.UperNetForSemanticSegmentation.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/upernet/modeling_upernet.py#L293[{"name": "pixel_values", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [SegformerImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/segformer#transformers.SegformerImageProcessor). See `SegformerImageProcessor.__call__()` for details (`processor_class` uses
-  [SegformerImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/segformer#transformers.SegformerImageProcessor) for processing images).
+  [SegformerImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/segformer#transformers.SegformerImageProcessorFast). See [SegformerImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
+  [SegformerImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/segformer#transformers.SegformerImageProcessorFast) for processing images).
 - **output_attentions** (`bool`, *optional*) --
   Whether or not to return the attentions tensors of all attention layers. See `attentions` under returned
   tensors for more detail.
@@ -141,9 +141,9 @@ forwardtransformers.UperNetForSemanticSegmentation.forwardhttps://github.com/hug
   Ground truth semantic segmentation maps for computing the loss. Indices should be in `[0, ...,
   config.num_labels - 1]`. If `config.num_labels > 1`, a classification loss is computed (Cross-Entropy).
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.SemanticSegmenterOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SemanticSegmenterOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SemanticSegmenterOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SemanticSegmenterOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.SemanticSegmenterOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SemanticSegmenterOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SemanticSegmenterOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SemanticSegmenterOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([UperNetConfig](/docs/transformers/v5.0.0rc1/en/model_doc/upernet#transformers.UperNetConfig)) and inputs.
+elements depending on the configuration ([UperNetConfig](/docs/transformers/v5.0.0/en/model_doc/upernet#transformers.UperNetConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels, logits_height, logits_width)`) -- Classification scores for each pixel.
@@ -165,7 +165,7 @@ elements depending on the configuration ([UperNetConfig](/docs/transformers/v5.0
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [UperNetForSemanticSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/upernet#transformers.UperNetForSemanticSegmentation) forward method, overrides the `__call__` special method.
+The [UperNetForSemanticSegmentation](/docs/transformers/v5.0.0/en/model_doc/upernet#transformers.UperNetForSemanticSegmentation) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -196,15 +196,15 @@ Examples:
 
 **Parameters:**
 
-config ([UperNetForSemanticSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/upernet#transformers.UperNetForSemanticSegmentation)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([UperNetForSemanticSegmentation](/docs/transformers/v5.0.0/en/model_doc/upernet#transformers.UperNetForSemanticSegmentation)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.SemanticSegmenterOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SemanticSegmenterOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.SemanticSegmenterOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SemanticSegmenterOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.SemanticSegmenterOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SemanticSegmenterOutput) or a tuple of
+A [transformers.modeling_outputs.SemanticSegmenterOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SemanticSegmenterOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([UperNetConfig](/docs/transformers/v5.0.0rc1/en/model_doc/upernet#transformers.UperNetConfig)) and inputs.
+elements depending on the configuration ([UperNetConfig](/docs/transformers/v5.0.0/en/model_doc/upernet#transformers.UperNetConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels, logits_height, logits_width)`) -- Classification scores for each pixel.

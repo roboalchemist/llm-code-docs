@@ -1,3 +1,5 @@
+# Source: https://platform.claude.com/docs/en/api/admin/workspaces.md
+
 # Source: https://platform.claude.com/docs/en/build-with-claude/workspaces.md
 
 # Workspaces

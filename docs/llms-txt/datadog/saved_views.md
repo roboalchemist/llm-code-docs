@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/events/explorer/saved_views.md
+
 # Source: https://docs.datadoghq.com/continuous_integration/explorer/saved_views.md
 
 # Source: https://docs.datadoghq.com/continuous_delivery/explorer/saved_views.md
@@ -8,7 +10,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Continuous Delivery Visibility > Explore CD Visibility Deployments >
   Saved Views
-source_url: https://docs.datadoghq.com/explorer/saved_views/index.html
 ---
 
 # Saved Views

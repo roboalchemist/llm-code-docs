@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-utilities-openapi-json_schema_converter.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # json_schema_converter
 
 # `fastmcp.utilities.openapi.json_schema_converter`
@@ -57,8 +61,3 @@ Convert a dictionary of OpenAPI schema definitions to JSON Schema.
 **Returns:**
 
 * Dictionary of converted schema definitions
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://gofastmcp.com/llms.txt

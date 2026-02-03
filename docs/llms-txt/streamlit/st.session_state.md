@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/caching-and-state/st.session_state
+
 # Session State
 
 st.session_state is a way to share variables between reruns, for each user session. In addition to the ability to store and persist state, Streamlit also exposes the ability to manipulate state using Callbacks. Session state also persists across apps inside a [multipage app](/develop/concepts/multipage-apps).

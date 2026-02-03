@@ -1,12 +1,10 @@
 # Source: https://docs.livekit.io/transport/self-hosting/kubernetes.md
 
-# Source: https://docs.livekit.io/home/self-hosting/kubernetes.md
-
 LiveKit docs › Self-hosting › Kubernetes
 
 ---
 
-# Deploy to Kubernetes
+# Kubernetes
 
 > Deploy LiveKit to Kubernetes.
 
@@ -144,11 +142,11 @@ If any configuration has changed, you may need to trigger a restart of the deplo
 
 ### Firewall
 
-Ensure that your [firewall](https://docs.livekit.io/home/self-hosting/ports-firewall.md#firewall) is configured properly to allow traffic into LiveKit ports.
+Ensure that your [firewall](https://docs.livekit.io/transport/self-hosting/ports-firewall.md#firewall) is configured properly to allow traffic into LiveKit ports.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:00.117Z.
-For the latest version of this document, see [https://docs.livekit.io/home/self-hosting/kubernetes.md](https://docs.livekit.io/home/self-hosting/kubernetes.md).
+This document was rendered at 2026-02-03T03:25:20.724Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/self-hosting/kubernetes.md](https://docs.livekit.io/transport/self-hosting/kubernetes.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

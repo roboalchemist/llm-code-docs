@@ -4,7 +4,6 @@
 title: Advanced
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > Advanced
-source_url: https://docs.datadoghq.com/advanced/index.html
 ---
 
 # Advanced

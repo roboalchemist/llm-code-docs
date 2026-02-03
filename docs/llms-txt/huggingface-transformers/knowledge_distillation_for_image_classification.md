@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/tasks/knowledge_distillation_for_image_classification.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/tasks/knowledge_distillation_for_image_classification.md
 
 # Knowledge Distillation for Computer Vision
 

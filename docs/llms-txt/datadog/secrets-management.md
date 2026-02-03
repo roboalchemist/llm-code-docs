@@ -4,7 +4,6 @@
 title: Secrets Management
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Agent > Agent Configuration > Secrets Management
-source_url: https://docs.datadoghq.com/configuration/secrets-management/index.html
 ---
 
 # Secrets Management
@@ -16,6 +15,7 @@ The Datadog Agent helps you securely manage your secrets by integrating with the
 - AWS Secrets Manager
 - AWS SSM
 - Azure KeyVault
+- GCP Secret Manager
 - HashiCorp Vault
 - File JSON
 - File YAML
@@ -42,7 +42,7 @@ secret_backend_config:
   <KEY_1>: <VALUE_1>
 ```
 
-More specific setup instructions depend on the backend type used. Refer to the appropriate section bellow for further information:
+More specific setup instructions depend on the backend type used. See the appropriate section below for further information:
 
 {% collapsible-section #id-for-secrets %}
 #### AWS Secrets
@@ -116,7 +116,7 @@ Configure the Datadog Agent to use AWS Secrets to resolve secrets in Helm using 
 ##### Integration check{% #integration-check %}
 
 ```sh
-datadog: 
+datadog:
   confd:
   # This is an example
     <INTEGRATION_NAME>.yaml: |-
@@ -124,7 +124,7 @@ datadog:
         - <SHORT_IMAGE>
       instances:
         - [...]
-          password: "ENC[secretId;secretKey]" 
+          password: "ENC[secretId;secretKey]"
   env:
    - name: DD_SECRET_BACKEND_TYPE
      value: "aws.secrets"
@@ -144,7 +144,7 @@ You must include the `serviceAccountAnnotations` to grant the Agent permissions 
 ##### Cluster check: without cluster check runners enabled{% #cluster-check-without-cluster-check-runners-enabled %}
 
 ```sh
-datadog: 
+datadog:
   env:
    - name: DD_SECRET_BACKEND_TYPE
      value: "aws.secrets"
@@ -155,20 +155,20 @@ agents:
     # IAM role ARN required to grant the Agent permissions to access the AWS secret
     serviceAccountAnnotations:
       eks.amazonaws.com/role-arn: <IAM_ROLE_ARN>
-clusterAgent:  
+clusterAgent:
   confd:
     # This is an example
     <INTEGRATION_NAME>.yaml: |-
       cluster_check: true
       instances:
         - [...]
-          password: "ENC[secretId;secretKey]" 
+          password: "ENC[secretId;secretKey]"
 ```
 
 ##### Cluster check: with cluster check runners enabled{% #cluster-check-with-cluster-check-runners-enabled %}
 
 ```sh
-datadog: 
+datadog:
   env:
    - name: DD_SECRET_BACKEND_TYPE
      value: "aws.secrets"
@@ -181,8 +181,8 @@ clusterAgent:
       cluster_check: true
       instances:
         - [...]
-          password: "ENC[secretId;secretKey]" 
-clusterChecksRunner: 
+          password: "ENC[secretId;secretKey]"
+clusterChecksRunner:
   enabled: true
   env:
    - name: DD_SECRET_BACKEND_TYPE
@@ -253,7 +253,7 @@ spec:
       # IAM role ARN required to grant the Agent permissions to access the AWS secret
       serviceAccountAnnotations:
         eks.amazonaws.com/role-arn: <IAM_ROLE_ARN>
-    clusterAgent:  
+    clusterAgent:
       extraConfd:
         configDataMap:
         # This is an example
@@ -261,7 +261,7 @@ spec:
             cluster_check: true
             instances:
               - [...]
-                password: "ENC[secretId;secretKey]" 
+                password: "ENC[secretId;secretKey]"
 ```
 
 ##### Cluster check: with cluster check runners enabled{% #cluster-check-with-cluster-check-runners-enabled %}
@@ -288,7 +288,7 @@ spec:
       # IAM role ARN required to grant the Agent permissions to access the AWS secret
       serviceAccountAnnotations:
         eks.amazonaws.com/role-arn: <IAM_ROLE_ARN>
-    clusterAgent:  
+    clusterAgent:
       extraConfd:
         configDataMap:
         # This is an example
@@ -296,7 +296,7 @@ spec:
             cluster_check: true
             instances:
               - [...]
-                password: "ENC[secretId;secretKey]" 
+                password: "ENC[secretId;secretKey]"
 ```
 
 {% /tab %}
@@ -380,6 +380,99 @@ api_key: "ENC[secretKeyNameInKeyVault]"
 
 {% /collapsible-section %}
 
+{% collapsible-section #id-for-gcp %}
+#### GCP Secret Manager
+
+**Available in Agent version 7.74+**
+
+The following GCP services are supported:
+
+| secret_backend_type value | GCP Service                                                                     |
+| ------------------------- | ------------------------------------------------------------------------------- |
+| `gcp.secretmanager`       | [GCP Secret Manager](https://cloud.google.com/security/products/secret-manager) |
+
+##### GCP authentication and access policy{% #gcp-authentication-and-access-policy %}
+
+The GCP Secret Manager implementation uses [Application Default Credentials (ADC)](https://cloud.google.com/docs/authentication/application-default-credentials) for authentication with Google.
+
+To interact with GCP Secret Manager, the service account used by the Datadog Agent (such as the VM's service account, a workload identity, or locally activated credentials) requires the `secretmanager.versions.access` permission.
+
+This can be granted with the predefined role **Secret Manager Secret Accessor** (`roles/secretmanager.secretAccessor`) or a custom role with equivalent [access](https://docs.cloud.google.com/secret-manager/docs/access-control).
+
+On GCE or GKE runtimes, ADC is configured automatically through the instance or pod's attached service account. The attached service account needs to have the proper roles to access GCP Secret Manager. In addition, the GCE or GKE runtime requires the `cloud-platform` [OAuth access scope](https://docs.cloud.google.com/secret-manager/docs/accessing-the-api).
+
+##### GCP configuration example{% #gcp-configuration-example %}
+
+Configure the Datadog Agent to use GCP Secret Manager to resolve secrets with the following configuration:
+
+```yaml
+# datadog.yaml
+secret_backend_type: gcp.secretmanager
+secret_backend_config:
+  gcp_session:
+    project_id: <PROJECT_ID>
+```
+
+After configuring the Agent to use GCP Secret Manager, reference secrets in your configurations with `ENC[secret-name]` or `ENC[secret-name;key;version;]`.
+
+The ENC notation is composed of:
+
+- `secret`: the secret name in GCP Secret Manager (for example, `datadog-api-key`).
+- `key`: (optional) the key to extract from a JSON-formatted secret. If you're using plain-text secrets you can ommit this (example: `ENC[secret-name;;version]`).
+- `version`: (optional) the secret version number. If not specified, the `latest` version is used.
+  - Version syntax examples:
+    - `secret-key` - Implicit `latest` version
+    - `secret-key;;latest` - Explicit `latest` version
+    - `secret-key;;1` - Specific version number
+
+For example, assuming GCP secrets named `datadog-api-key` with two versions and `datadog-app-key`:
+
+```yaml
+# datadog.yaml
+api_key: ENC[datadog-api-key;;1] # specify the first version of the api key
+app_key: ENC[datadog-app-key] # latest version
+
+secret_backend_type: gcp.secretmanager
+secret_backend_config:
+  gcp_session:
+    project_id: <PROJECT_ID>
+```
+
+For JSON-formatted secrets, assuming a secret named `datadog-keys` contains:
+
+```json
+{
+  "api_key": "your_api_key_value",
+  "app_key": "your_app_key_value"
+}
+```
+
+Reference specific keys like this:
+
+```yaml
+# datadog.yaml
+api_key: ENC[datadog-keys;api_key;1] # specify the first version of the api key 
+app_key: ENC[datadog-keys;app_key] # latest
+
+secret_backend_type: gcp.secretmanager
+secret_backend_config:
+  gcp_session:
+    project_id: <PROJECT_ID>
+```
+
+##### Secret versioning{% #secret-versioning %}
+
+GCP Secret Manager supports secret versions. The Agent implementation also supports secret versioning using the `;` delimiter. If no version is specified, the `latest` version is used.
+
+##### JSON secret support{% #json-secret-support %}
+
+The Datadog Agent supports extracting specific keys from JSON-formatted secrets using the `;` delimiter:
+
+- `datadog;api_key` - Extracts the `api_key` field from the `datadog` secret with an implicit `latest` version
+- `datadog;api_key;1` - Extracts the `api_key` field from the `datadog` secret from version `1`
+
+{% /collapsible-section %}
+
 {% collapsible-section #id-for-hashicorp %}
 #### HashiCorp Vault Backend
 
@@ -438,7 +531,7 @@ The following example fetches the API key value from HashiCorp Vault leveraging 
 
 ```yaml
 # datadog.yaml
-api_key: "ENC[/Datadog/Production;apikey]" 
+api_key: "ENC[/Datadog/Production;apikey]"
 
 secret_backend_type: hashicorp.vault
 secret_backend_config:
@@ -803,11 +896,27 @@ On Windows, your executable must:
 
 **Note**: Your executable shares the same environment variables as the Agent.
 
-## Refreshing API/APP keys at runtime{% #refreshing-apiapp-keys-at-runtime %}
+## Refreshing secrets at runtime{% #refreshing-secrets-at-runtime %}
 
-Starting in Agent version v7.67, you can configure the Agent to refresh its API and APP keys at regular intervals without requiring a restart. This relies on the API key and APP key being pulled as secrets.
+Starting in Agent v7.67, you can configure the Agent to refresh resolved secrets without requiring a restart.
 
-To enable this, set `secret_refresh_interval` (in seconds) in your `datadog.yaml` file:
+Set a refresh interval:
+
+```yaml
+secret_refresh_interval: 3600  # refresh every hour
+```
+
+Or, trigger a refresh manually:
+
+```shell
+datadog-agent secret refresh
+```
+
+### API/APP key refresh{% #apiapp-key-refresh %}
+
+API/APP keys pulled as secrets support runtime refresh.
+
+You can enable this by setting `secret_refresh_interval` (in seconds) in `datadog.yaml`:
 
 ```yaml
 api_key: ENC[<secret_handle>]
@@ -815,9 +924,9 @@ api_key: ENC[<secret_handle>]
 secret_refresh_interval: 3600  # refresh every hour
 ```
 
-By default the Agent randomly spreads its first refresh within the specified `secret_refresh_interval` window. This means that it resolves the API key at startup, then refreshes it within the first interval and every interval after that. This avoids having a fleet of Agents refreshing their API/APP key at the same time.
+By default, the Agent randomizes the initial refresh within the `secret_refresh_interval` window to prevent a fleet of Agents from refreshing simultaneously. The key is resolved at startup, then refreshed once within the first interval and every interval thereafter.
 
-To prevent downtime, only invalidate the previous API key and APP key when your entire fleet of Agents has pulled the updated keys from your secret management solution. You can track usage of your API keys in the [Fleet Management](https://app.datadoghq.com/fleet) page.
+To prevent downtime, invalidate old keys only after your entire fleet has pulled the updated keys. You can track key usage on the [Fleet Management](https://app.datadoghq.com/fleet) page.
 
 You can disable this behavior by setting:
 
@@ -825,11 +934,48 @@ You can disable this behavior by setting:
 secret_refresh_scatter: false
 ```
 
-To refresh manually, use:
+### Autodiscovery check secrets refresh{% #autodiscovery-check-secrets-refresh %}
 
+Starting in Agent v7.76, scheduled [Autodiscovery](https://docs.datadoghq.com/agent/kubernetes/integrations/) checks can refresh secrets at runtime if the template uses the `ENC[]` syntax.
+
+```yaml
+labels:
+  tags.datadoghq.com/redis.env: "prod"
+  tags.datadoghq.com/redis.service: "my-redis"
+  tags.datadoghq.com/redis.version: "6.0.3"
+annotations:
+  ad.datadoghq.com/redis.checks: |
+    {
+      "redisdb": {
+        "init_config": {},
+        "instances": [
+          {
+            "host": "%%host%%",
+            "port":"6379",
+            "password":"ENC[<secret_handle>]"
+          }
+        ]
+      }
+    }
 ```
-datadog-agent secret refresh
+
+The Agent can then trigger secrets refresh at either the interval set in `secret_refresh_interval` or manually with `datadog-agent secret refresh`.
+
+### Automatic secrets refresh on API key failure / invalidation{% #automatic-secrets-refresh-on-api-key-failure--invalidation %}
+
+Starting in Agent version v7.74, the Agent can automatically refresh secrets when it detects an invalid API key. This happens when the Agent receives a 403 Forbidden response from Datadog or when the periodic health check detects an invalid or expired API key.
+
+To enable this feature, set `secret_refresh_on_api_key_failure_interval` to an interval in minutes in your `datadog.yaml` file. Set to `0` to disable (default).
+
+This interval is the minimum amount of time between 2 refreshes to avoid spamming your secrets management solution when an invalid API key is detected.
+
+```yaml
+api_key: ENC[<secret_handle>]
+
+secret_refresh_on_api_key_failure_interval: 10
 ```
+
+This setting is compatible with `secret_refresh_interval`.
 
 ### Enabling DDOT collector refresh{% #enabling-ddot-collector-refresh %}
 

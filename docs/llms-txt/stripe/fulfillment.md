@@ -8,16 +8,16 @@ Learn how to fulfill payments received with the Checkout Sessions API.
 
 > This is a Stripe-hosted page for when payment-ui is stripe-hosted. View the full page at https://docs.stripe.com/checkout/fulfillment?payment-ui=stripe-hosted.
 
-When you receive a payment with the Checkout Sessions API (including Payment Links), you might need to take action to provide your customer with what they paid for. For example, you might need to grant them access to a service, or you might need to ship them physical goods.  This process is known as fulfillment, and you have two ways to handle this process:
+When you receive a payment with the Checkout Sessions API (including Payment Links), you might need to take action to provide your customer with what they paid for. For example, you might need to grant them access to a service, or you might need to ship them physical goods. This process is known as fulfillment, and you have two ways to handle this process:
 
 - **Manually**: You can manually fulfill orders using information that Stripe makes available to you. For example, you can monitor the [Dashboard](https://docs.stripe.com/dashboard/basics.md), check payment notification emails, or look at reports and then fulfill orders.
 - **Automatically**: You can build an automated fulfillment system. (Recommended)
 
-The first option works for low volume or experimental ventures, but for most situations we recommend automating fulfillment.  The rest of this guide shows you how to build an automatic fulfillment system.
+The first option works for low volume or experimental ventures, but for most situations we recommend automating fulfillment. The rest of this guide shows you how to build an automatic fulfillment system.
 
 ## Automatic fulfillment 
 
-The automatic fulfillment system outlined below uses a combination of *webhooks* (A webhook is a real-time push notification sent to your application as a JSON payload through HTTPS requests) and a redirect to your website to trigger fulfillment.  You must use webhooks to make sure fulfillment happens for every payment, and redirects let your customers access services or fulfillment details immediately after paying.
+The automatic fulfillment system outlined below uses a combination of *webhooks* (A webhook is a real-time push notification sent to your application as a JSON payload through HTTPS requests) and a redirect to your website to trigger fulfillment. You must use webhooks to make sure fulfillment happens for every payment, and redirects let your customers access services or fulfillment details immediately after paying.
 
 > Payment Links use Checkout, so all of the information below applies to both Payment Links and Checkout unless otherwise noted.
 
@@ -25,7 +25,7 @@ The automatic fulfillment system outlined below uses a combination of *webhooks*
 
 Create a function on your server to fulfill successful payments. Webhooks trigger this function, and it’s called when customers are sent to your website after completing checkout. This guide refers to this function as `fulfill_checkout`, but you can name the function whatever you wish.
 
-Perform fulfillment only once per payment.  Because of how this integration and the internet work, your `fulfill_checkout` function might be called multiple times, possibly concurrently, for the same Checkout Session.  Performing checkout only once ensures this won’t cause undesired behavior.
+Perform fulfillment only once per payment. Because of how this integration and the internet work, your `fulfill_checkout` function might be called multiple times, possibly concurrently, for the same Checkout Session. Performing checkout only once ensures this won’t cause undesired behavior.
 
 Your `fulfill_checkout` function must:
 
@@ -36,7 +36,7 @@ Your `fulfill_checkout` function must:
 1. Perform fulfillment of the line items.
 1. Record fulfillment status for the provided Checkout Session.
 
-Use the code below as a starting point for your `fulfill_checkout` function.  The `TODO` comments indicate any functionality you must implement.
+Use the code below as a starting point for your `fulfill_checkout` function. The `TODO` comments indicate any functionality you must implement.
 
 > The code snippets below might name the `fulfill_checkout` function `fulfillCheckout` or `FulfillCheckout` depending on the language selected, but they all represent the same function.
 
@@ -293,7 +293,7 @@ When someone pays you, it creates a `checkout.session.completed` event. Set up a
 
 Some payment methods aren’t [instant](https://docs.stripe.com/payments/payment-methods.md#payment-notification), such as [ACH direct debit](https://docs.stripe.com/payments/ach-direct-debit.md) and other bank transfers. This means, funds won’t be immediately available when Checkout completes. Delayed payment methods generate a [checkout.session.async_payment_succeeded](https://docs.stripe.com/api/events/types.md#event_types-checkout.session.async_payment_succeeded) event when payment succeeds later. The status of the object is in processing until the payment status either succeeds or fails.
 
-> The webhook secret (`whsec_...`) shown in the code below comes from either the Stripe CLI or your webhook endpoint.  You can use the Stripe CLI for local testing, and Stripe uses a webhook endpoint to send events to your handler when it’s running on a server. See the next section for more details.
+> The webhook secret (`whsec_...`) shown in the code below comes from either the Stripe CLI or your webhook endpoint. You can use the Stripe CLI for local testing, and Stripe uses a webhook endpoint to send events to your handler when it’s running on a server. See the next section for more details.
 
 #### Ruby
 
@@ -575,9 +575,9 @@ You might also want to listen for and handle `checkout.session.async_payment_fai
 
 ## Test your event handler locally
 
-The quickest way to develop and test your webhook event handler is with the [Stripe CLI](https://docs.stripe.com/stripe-cli.md).  If you don’t have the Stripe CLI, follow the [install guide](https://docs.stripe.com/stripe-cli/install.md) to get started.
+The quickest way to develop and test your webhook event handler is with the [Stripe CLI](https://docs.stripe.com/stripe-cli.md). If you don’t have the Stripe CLI, follow the [install guide](https://docs.stripe.com/stripe-cli/install.md) to get started.
 
-When the Stripe CLI is installed, you can test your event handler locally.  Run your server (for example, on `localhost:4242`), then run the [stripe listen](https://docs.stripe.com/cli/listen) command to have the Stripe CLI forward events to your local server:
+When the Stripe CLI is installed, you can test your event handler locally. Run your server (for example, on `localhost:4242`), then run the [stripe listen](https://docs.stripe.com/cli/listen) command to have the Stripe CLI forward events to your local server:
 
 ```bash
 stripe listen --forward-to localhost:4242/webhook
@@ -602,11 +602,11 @@ When the payment completes, verify the following:
 
 ## Create a webhook endpoint
 
-After testing locally, get your webhook event handler up and running on your server.  Next, [create a webhook endpoint](https://docs.stripe.com/webhooks.md#register-webhook) to send `checkout.session.completed` events to your server, then test the Checkout flow again.
+After testing locally, get your webhook event handler up and running on your server. Next, [create a webhook endpoint](https://docs.stripe.com/webhooks.md#register-webhook) to send `checkout.session.completed` events to your server, then test the Checkout flow again.
 
 ## Configure a landing page URL [Recommended]
 
-Configure Checkout to send your customer to a page on your website after they complete Checkout.  Include the `{CHECKOUT_SESSION_ID}` placeholder in your page’s URL, which is replaced with the Checkout Session ID when your customer is redirected from Checkout.
+Configure Checkout to send your customer to a page on your website after they complete Checkout. Include the `{CHECKOUT_SESSION_ID}` placeholder in your page’s URL, which is replaced with the Checkout Session ID when your customer is redirected from Checkout.
 
 ### Hosted Checkout 
 
@@ -752,7 +752,7 @@ var service = client.V1.Checkout.Sessions;
 Stripe.Checkout.Session session = service.Create(options);
 ```
 
-When you have a webhook endpoint set up to listen for `checkout.session.completed` events and you set a `success_url`, Checkout waits up to 10 seconds for your server to respond to the webhook event delivery before redirecting your customer.  If you use this approach, make sure your server responds to `checkout.session.completed` events as quickly as possible. If you’re using the Stripe CLI for local testing, Checkout redirects to the `success_url` immediately.
+When you have a webhook endpoint set up to listen for `checkout.session.completed` events and you set a `success_url`, Checkout waits up to 10 seconds for your server to respond to the webhook event delivery before redirecting your customer. If you use this approach, make sure your server responds to `checkout.session.completed` events as quickly as possible. If you’re using the Stripe CLI for local testing, Checkout redirects to the `success_url` immediately.
 
 This behavior isn’t supported for webhook endpoints registered in an [organization](https://docs.stripe.com/get-started/account/orgs.md) account. Stripe doesn’t wait for organization webhook endpoints that listen to `checkout.session.completed` to respond when redirecting Checkout customers.
 
@@ -938,7 +938,7 @@ For Payment Links you [create in the Dashboard](https://dashboard.stripe.com/pay
 
 ## Trigger fulfillment on your landing page [Recommended]
 
-[Listening to webhooks](https://docs.stripe.com/checkout/fulfillment.md#create-payment-event-handler) is required to make sure you always trigger fulfillment for every payment, but webhooks can sometimes be delayed.  To optimize your payment flow and guarantee immediate fulfillment when your customer is present, trigger fulfillment from your landing page as well.
+[Listening to webhooks](https://docs.stripe.com/checkout/fulfillment.md#create-payment-event-handler) is required to make sure you always trigger fulfillment for every payment, but webhooks can sometimes be delayed. To optimize your payment flow and guarantee immediate fulfillment when your customer is present, trigger fulfillment from your landing page as well.
 
 Use the Checkout Session ID from the URL you specified in the previous step to do the following:
 
@@ -954,7 +954,7 @@ When you render your landing page you can display the following:
 
 > #### Webhooks are required
 > 
-> You can’t rely on triggering fulfillment only from your Checkout landing page, because your customers aren’t guaranteed to visit that page.  For example, someone can pay successfully in Checkout and then lose their connection to the internet before your landing page loads.
+> You can’t rely on triggering fulfillment only from your Checkout landing page, because your customers aren’t guaranteed to visit that page. For example, someone can pay successfully in Checkout and then lose their connection to the internet before your landing page loads.
 > 
 > [Set up a webhook event handler](https://docs.stripe.com/checkout/fulfillment.md#create-payment-event-handler) so Stripe can send payment events directly to your server, bypassing the client entirely. Webhooks provide the most reliable way to confirm when you get paid. If webhook event delivery fails, Stripe [retries multiple times](https://docs.stripe.com/webhooks.md#automatic-retries).
 
@@ -963,22 +963,22 @@ When you render your landing page you can display the following:
 
 > This is a Embedded form for when payment-ui is embedded-form. View the full page at https://docs.stripe.com/checkout/fulfillment?payment-ui=embedded-form.
 
-When you receive a payment with the Checkout Sessions API (including Payment Links), you might need to take action to provide your customer with what they paid for. For example, you might need to grant them access to a service, or you might need to ship them physical goods.  This process is known as fulfillment, and you have two ways to handle this process:
+When you receive a payment with the Checkout Sessions API (including Payment Links), you might need to take action to provide your customer with what they paid for. For example, you might need to grant them access to a service, or you might need to ship them physical goods. This process is known as fulfillment, and you have two ways to handle this process:
 
 - **Manually**: You can manually fulfill orders using information that Stripe makes available to you. For example, you can monitor the [Dashboard](https://docs.stripe.com/dashboard/basics.md), check payment notification emails, or look at reports and then fulfill orders.
 - **Automatically**: You can build an automated fulfillment system. (Recommended)
 
-The first option works for low volume or experimental ventures, but for most situations we recommend automating fulfillment.  The rest of this guide shows you how to build an automatic fulfillment system.
+The first option works for low volume or experimental ventures, but for most situations we recommend automating fulfillment. The rest of this guide shows you how to build an automatic fulfillment system.
 
 ## Automatic fulfillment 
 
-The automatic fulfillment system outlined below uses a combination of *webhooks* (A webhook is a real-time push notification sent to your application as a JSON payload through HTTPS requests) and a redirect to your website to trigger fulfillment.  You must use webhooks to make sure fulfillment happens for every payment, and redirects let your customers access services or fulfillment details immediately after paying.
+The automatic fulfillment system outlined below uses a combination of *webhooks* (A webhook is a real-time push notification sent to your application as a JSON payload through HTTPS requests) and a redirect to your website to trigger fulfillment. You must use webhooks to make sure fulfillment happens for every payment, and redirects let your customers access services or fulfillment details immediately after paying.
 
 ## Create a fulfillment function [Server-side]
 
 Create a function on your server to fulfill successful payments. Webhooks trigger this function, and it’s called when customers are sent to your website after completing checkout. This guide refers to this function as `fulfill_checkout`, but you can name the function whatever you wish.
 
-Perform fulfillment only once per payment.  Because of how this integration and the internet work, your `fulfill_checkout` function might be called multiple times, possibly concurrently, for the same Checkout Session.  Performing checkout only once ensures this won’t cause undesired behavior.
+Perform fulfillment only once per payment. Because of how this integration and the internet work, your `fulfill_checkout` function might be called multiple times, possibly concurrently, for the same Checkout Session. Performing checkout only once ensures this won’t cause undesired behavior.
 
 Your `fulfill_checkout` function must:
 
@@ -989,7 +989,7 @@ Your `fulfill_checkout` function must:
 1. Perform fulfillment of the line items.
 1. Record fulfillment status for the provided Checkout Session.
 
-Use the code below as a starting point for your `fulfill_checkout` function.  The `TODO` comments indicate any functionality you must implement.
+Use the code below as a starting point for your `fulfill_checkout` function. The `TODO` comments indicate any functionality you must implement.
 
 > The code snippets below might name the `fulfill_checkout` function `fulfillCheckout` or `FulfillCheckout` depending on the language selected, but they all represent the same function.
 
@@ -1246,7 +1246,7 @@ When someone pays you, it creates a `checkout.session.completed` event. Set up a
 
 Some payment methods aren’t [instant](https://docs.stripe.com/payments/payment-methods.md#payment-notification), such as [ACH direct debit](https://docs.stripe.com/payments/ach-direct-debit.md) and other bank transfers. This means, funds won’t be immediately available when Checkout completes. Delayed payment methods generate a [checkout.session.async_payment_succeeded](https://docs.stripe.com/api/events/types.md#event_types-checkout.session.async_payment_succeeded) event when payment succeeds later. The status of the object is in processing until the payment status either succeeds or fails.
 
-> The webhook secret (`whsec_...`) shown in the code below comes from either the Stripe CLI or your webhook endpoint.  You can use the Stripe CLI for local testing, and Stripe uses a webhook endpoint to send events to your handler when it’s running on a server. See the next section for more details.
+> The webhook secret (`whsec_...`) shown in the code below comes from either the Stripe CLI or your webhook endpoint. You can use the Stripe CLI for local testing, and Stripe uses a webhook endpoint to send events to your handler when it’s running on a server. See the next section for more details.
 
 #### Ruby
 
@@ -1528,9 +1528,9 @@ You might also want to listen for and handle `checkout.session.async_payment_fai
 
 ## Test your event handler locally
 
-The quickest way to develop and test your webhook event handler is with the [Stripe CLI](https://docs.stripe.com/stripe-cli.md).  If you don’t have the Stripe CLI, follow the [install guide](https://docs.stripe.com/stripe-cli/install.md) to get started.
+The quickest way to develop and test your webhook event handler is with the [Stripe CLI](https://docs.stripe.com/stripe-cli.md). If you don’t have the Stripe CLI, follow the [install guide](https://docs.stripe.com/stripe-cli/install.md) to get started.
 
-When the Stripe CLI is installed, you can test your event handler locally.  Run your server (for example, on `localhost:4242`), then run the [stripe listen](https://docs.stripe.com/cli/listen) command to have the Stripe CLI forward events to your local server:
+When the Stripe CLI is installed, you can test your event handler locally. Run your server (for example, on `localhost:4242`), then run the [stripe listen](https://docs.stripe.com/cli/listen) command to have the Stripe CLI forward events to your local server:
 
 ```bash
 stripe listen --forward-to localhost:4242/webhook
@@ -1555,11 +1555,11 @@ When the payment completes, verify the following:
 
 ## Create a webhook endpoint
 
-After testing locally, get your webhook event handler up and running on your server.  Next, [create a webhook endpoint](https://docs.stripe.com/webhooks.md#register-webhook) to send `checkout.session.completed` events to your server, then test the Checkout flow again.
+After testing locally, get your webhook event handler up and running on your server. Next, [create a webhook endpoint](https://docs.stripe.com/webhooks.md#register-webhook) to send `checkout.session.completed` events to your server, then test the Checkout flow again.
 
 ## Configure a landing page URL [Recommended]
 
-Configure Checkout to send your customer to a page on your website after they complete Checkout.  Include the `{CHECKOUT_SESSION_ID}` placeholder in your page’s URL, which is replaced with the Checkout Session ID when your customer completes the checkout process.
+Configure Checkout to send your customer to a page on your website after they complete Checkout. Include the `{CHECKOUT_SESSION_ID}` placeholder in your page’s URL, which is replaced with the Checkout Session ID when your customer completes the checkout process.
 
 ```curl
 curl https://api.stripe.com/v1/checkout/sessions \
@@ -1712,7 +1712,7 @@ Stripe.Checkout.Session session = service.Create(options);
 
 ## Trigger fulfillment on your landing page [Recommended]
 
-[Listening to webhooks](https://docs.stripe.com/checkout/fulfillment.md#create-payment-event-handler) is required to make sure you always trigger fulfillment for every payment, but webhooks can sometimes be delayed.  To optimize your payment flow and guarantee immediate fulfillment when your customer is present, trigger fulfillment from your landing page as well.
+[Listening to webhooks](https://docs.stripe.com/checkout/fulfillment.md#create-payment-event-handler) is required to make sure you always trigger fulfillment for every payment, but webhooks can sometimes be delayed. To optimize your payment flow and guarantee immediate fulfillment when your customer is present, trigger fulfillment from your landing page as well.
 
 Use the Checkout Session ID from the URL you specified in the previous step to do the following:
 
@@ -1728,7 +1728,7 @@ When you render your landing page you can display the following:
 
 > #### Webhooks are required
 > 
-> You can’t rely on triggering fulfillment only from your Checkout landing page, because your customers aren’t guaranteed to visit that page.  For example, someone can pay successfully in Checkout and then lose their connection to the internet before your landing page loads.
+> You can’t rely on triggering fulfillment only from your Checkout landing page, because your customers aren’t guaranteed to visit that page. For example, someone can pay successfully in Checkout and then lose their connection to the internet before your landing page loads.
 > 
 > [Set up a webhook event handler](https://docs.stripe.com/checkout/fulfillment.md#create-payment-event-handler) so Stripe can send payment events directly to your server, bypassing the client entirely. Webhooks provide the most reliable way to confirm when you get paid. If webhook event delivery fails, Stripe [retries multiple times](https://docs.stripe.com/webhooks.md#automatic-retries).
 

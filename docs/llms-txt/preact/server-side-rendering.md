@@ -1,3 +1,5 @@
+# Source: https://preactjs.com/guide/v10/server-side-rendering
+
 # Server-Side Rendering
 
 Server-Side Rendering (often abbreviated as "SSR") allows you to render your application to an HTML string that can be sent to the client to improve load time. Outside of that, there are other scenarios, like testing, where SSR proves really useful.

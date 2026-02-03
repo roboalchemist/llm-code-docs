@@ -4,8 +4,6 @@
 title: API Gateway Usage Plan Key
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > API Gateway Usage Plan Key
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.apigateway_usageplankey.dataset/index.html
 ---
 
 # API Gateway Usage Plan Key
@@ -18,12 +16,12 @@ aws.apigateway_usageplankey
 
 ## Fields
 
-| Title      | ID   | Type   | Data Type                                                                            | Description |
-| ---------- | ---- | ------ | ------------------------------------------------------------------------------------ | ----------- |
-| _key       | core | string |
-| account_id | core | string |
-| id         | core | string | The Id of a usage plan key.                                                          |
-| name       | core | string | The name of a usage plan key.                                                        |
-| tags       | core | hstore |
-| type       | core | string | The type of a usage plan key. Currently, the valid key type is <code>API_KEY</code>. |
-| value      | core | string | The value of a usage plan key.                                                       |
+| Title      | ID   | Type       | Data Type                                                                            | Description |
+| ---------- | ---- | ---------- | ------------------------------------------------------------------------------------ | ----------- |
+| _key       | core | string     |
+| account_id | core | string     |
+| id         | core | string     | The Id of a usage plan key.                                                          |
+| name       | core | string     | The name of a usage plan key.                                                        |
+| tags       | core | hstore_csv |
+| type       | core | string     | The type of a usage plan key. Currently, the valid key type is <code>API_KEY</code>. |
+| value      | core | string     | The value of a usage plan key.                                                       |

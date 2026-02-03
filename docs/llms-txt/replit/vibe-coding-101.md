@@ -1,8 +1,12 @@
 # Source: https://docs.replit.com/tutorials/vibe-coding-101.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vibe coding 101: from idea to published app
 
-> Learn how to go from an idea to a published application using Replit Agent and Assistant, featuring an interactive map visualization project.
+> Learn how to go from an idea to a published application using Replit Agent, featuring an interactive map visualization project.
 
 export const AiPrompt = ({children}) => {
   return <CodeBlock className="relative block font-sans whitespace-pre-wrap break-words">
@@ -25,23 +29,7 @@ export const YouTubeEmbed = ({videoId, title = "YouTube video", startAt}) => {
     </Frame>;
 };
 
-export const AuthorCard = ({img = "https://replit.com/cdn-cgi/image/width=256,quality=80,format=auto/https://storage.googleapis.com/replit/images/1730840970400_e885f16578bbbb227adbfeb7b979be34.jpeg", href = "https://youtube.com/@mattpalmer", name = "Matt Palmer", role = "Head of Developer Relations"}) => {
-  return <a href={href} target="_blank" className="card block not-prose font-normal group relative my-2 ring-2 ring-transparent rounded-xl bg-white/50 dark:bg-codeblock/50 border border-gray-100 shadow-md dark:shadow-none shadow-gray-300/10 dark:border-gray-800/50 overflow-hidden cursor-pointer hover:!border-primary dark:hover:!border-primary-light">
-      <div className="flex items-center gap-2 p-4">
-        <div className="flex-shrink-0">
-          <img src={img} alt={name} className="w-12 h-12 rounded-full object-cover" />
-        </div>
-        <div className="flex-grow">
-          <h3 className="text-base font-semibold mb-0.5 text-inherit">{name}</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400 m-0">{role}</p>
-        </div>
-      </div>
-    </a>;
-};
-
-<AuthorCard />
-
-This tutorial walks you through the "vibe coding" process on Replit—taking an idea from concept to a fully published application. This tutorial will build an interactive map visualization of San Francisco parks, pulling in external data and using modern frameworks. You'll see how to leverage [Replit Agent](/replitai/agent) for initial development and [Replit Assistant](/replitai/assistant) for refinements and debugging.
+This tutorial walks you through the "vibe coding" process on Replit—taking an idea from concept to a fully published application. This tutorial will build an interactive map visualization of San Francisco parks, pulling in external data and using modern frameworks. You'll see how to leverage [Replit Agent](/replitai/agent) for initial development, refinements and debugging.
 
 <YouTubeEmbed videoId="2v5Fs7Xr11Y" />
 
@@ -125,41 +113,41 @@ Replit Agent can scaffold entire projects, set up environments, and generate ini
   </Step>
 </Steps>
 
-## Refining with Replit Assistant
+## Refining with Fast mode
 
-Once Agent builds the MVP, switch to Replit Assistant for smaller, more targeted edits and refinements. Assistant is generally faster for these tasks.
+Once Agent builds the MVP, use [Fast mode](/replitai/fast-mode) for smaller, more targeted edits and refinements. Fast mode is optimized for quick changes.
 
 <AccordionGroup>
   <Accordion title="Improving Map Styling">
     The initial map was functional but could look better.
-    **Prompt to Assistant**: "Can you use a more minimalist carto style for OpenStreetMap? Carto lite."
+    **Prompt to Agent**: "Can you use a more minimalist carto style for OpenStreetMap? Carto lite."
 
     This relies on knowing that "Carto lite" is a known theme for Leaflet maps.
   </Accordion>
 
   <Accordion title="Adding Dark Mode">
     A common refinement is adding a dark mode.
-    **Prompt to Assistant**: "Can you add a dark mode to my app and use, carto dark for the map in the dark mode?"
+    **Prompt to Agent**: "Can you add a dark mode to my app and use, carto dark for the map in the dark mode?"
 
     <Frame>
-      <img src="https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/vibe-coding-101/dark-mode-assistant.png?fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=30c79e86c302549d9f683124261dad71" alt="Replit Assistant implementing dark mode" data-og-width="5120" width="5120" data-og-height="2828" height="2828" data-path="images/tutorials/vibe-coding-101/dark-mode-assistant.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/vibe-coding-101/dark-mode-assistant.png?w=280&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=a0a264e96f71bf3f342145f6dceb1cbc 280w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/vibe-coding-101/dark-mode-assistant.png?w=560&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=e7b7140a6f1b8004d63f555a57daba9b 560w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/vibe-coding-101/dark-mode-assistant.png?w=840&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=97196fae2bb21ab43bbc1a69993f2096 840w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/vibe-coding-101/dark-mode-assistant.png?w=1100&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=92e957c7c25ec8780eaf34736cb9d80c 1100w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/vibe-coding-101/dark-mode-assistant.png?w=1650&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=2073cb93a2a937299f982fcf544919ce 1650w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/vibe-coding-101/dark-mode-assistant.png?w=2500&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=22b22ddb09527a27e36729fb4d517206 2500w" />
+      <img src="https://mintcdn.com/replit/_Y3y7Jf58i1OzvJs/images/tutorials/vibe-coding-101/dark-mode-agent.png?fit=max&auto=format&n=_Y3y7Jf58i1OzvJs&q=85&s=12d594b5478d9b427e621da59cfb4d97" alt="Replit Agent implementing dark mode" data-og-width="5120" width="5120" data-og-height="2828" height="2828" data-path="images/tutorials/vibe-coding-101/dark-mode-agent.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/_Y3y7Jf58i1OzvJs/images/tutorials/vibe-coding-101/dark-mode-agent.png?w=280&fit=max&auto=format&n=_Y3y7Jf58i1OzvJs&q=85&s=f422de8f933782385167d394fdfede49 280w, https://mintcdn.com/replit/_Y3y7Jf58i1OzvJs/images/tutorials/vibe-coding-101/dark-mode-agent.png?w=560&fit=max&auto=format&n=_Y3y7Jf58i1OzvJs&q=85&s=101946a0846b4d01115fc00c4b94ad27 560w, https://mintcdn.com/replit/_Y3y7Jf58i1OzvJs/images/tutorials/vibe-coding-101/dark-mode-agent.png?w=840&fit=max&auto=format&n=_Y3y7Jf58i1OzvJs&q=85&s=d2f07a73f59c0c2ca298c0330687e4a6 840w, https://mintcdn.com/replit/_Y3y7Jf58i1OzvJs/images/tutorials/vibe-coding-101/dark-mode-agent.png?w=1100&fit=max&auto=format&n=_Y3y7Jf58i1OzvJs&q=85&s=40ef9ab41593d9e1cfa9f83cac13e59c 1100w, https://mintcdn.com/replit/_Y3y7Jf58i1OzvJs/images/tutorials/vibe-coding-101/dark-mode-agent.png?w=1650&fit=max&auto=format&n=_Y3y7Jf58i1OzvJs&q=85&s=2f1dc3822f9dd2329a56951cae9bee11 1650w, https://mintcdn.com/replit/_Y3y7Jf58i1OzvJs/images/tutorials/vibe-coding-101/dark-mode-agent.png?w=2500&fit=max&auto=format&n=_Y3y7Jf58i1OzvJs&q=85&s=cd9a0dc07fb59a4399ecc3fc4099098d 2500w" />
     </Frame>
 
-    Assistant will:
+    Agent will:
 
     * Read files for context.
     * Make changes to necessary files (e.g., theme providers, styles).
     * Restart the app to apply changes.
   </Accordion>
 
-  <Accordion title="Iterative Debugging with Assistant">
+  <Accordion title="Iterative Debugging with Agent">
     Adding dark mode involved several iterations:
 
     1. Initial implementation had a toggle that worked for the map but then disappeared.
        **Feedback**: "The toggle theme button works for the map, but it disappears when clicked. The theme toggle should be in the side nav and the theme should be applied to the side nav."
     2. Issues with multiple toggle buttons and incorrect component references (`side nav` vs. `sidebar`).
        **Feedback & Guidance**: "Now there are two toggle themes. One controls the map, the other controls the side nav. Make them into one in the side. Now and update the CSS."
-       When Assistant made an incorrect assumption (e.g. `SideNav` component), explicitly pointing it to the correct file (`@Sidebar`) helps.
+       When Agent made an incorrect assumption (e.g. `SideNav` component), explicitly pointing it to the correct file (`@Sidebar`) helps.
     3. Final fix to ensure the dark mode toggle in the sidebar correctly toggled the map theme to Carto Dark.
        **Feedback**: "Now the dark mode toggle in @Sidebar does not toggle the map to carto dark."
 
@@ -184,7 +172,7 @@ Your published app will have a public URL (e.g., `park-mapper.replit.app`). Chan
 
 ## Recap and next steps
 
-This tutorial went from an idea to a published interactive map application without writing a single line of code manually. Replit Agent was used for the heavy lifting and Replit Assistant for refinements, leveraging domain knowledge and an iterative debugging process.
+This tutorial went from an idea to a published interactive map application without writing a single line of code manually. Replit Agent was used for the heavy lifting, with Fast mode for refinements, leveraging domain knowledge and an iterative debugging process.
 
 **Potential Next Steps for the Park Mapper App**:
 

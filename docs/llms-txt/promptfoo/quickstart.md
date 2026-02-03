@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/quickstart/
+
 # Quickstart
 
 Promptfoo is an [open-source](https://github.com/promptfoo/promptfoo) tool for red teaming gen AI applications.

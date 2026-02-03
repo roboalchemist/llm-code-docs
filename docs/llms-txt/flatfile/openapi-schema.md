@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/openapi-schema.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OpenAPI Schema to Flatfile Blueprint Converter
 
 > Automatically converts OpenAPI v3.0.3 schemas into Flatfile Blueprints to streamline Space setup using existing API data structures
@@ -8,7 +12,7 @@ This plugin automatically converts an OpenAPI v3.0.3 schema into a Flatfile Blue
 
 ## Installation
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-convert-openapi-schema
 ```
 
@@ -47,7 +51,7 @@ An optional function that executes after the Space and Workbooks have been succe
 This example sets up a listener that configures a Space with a single Workbook and Sheet based on a remote OpenAPI schema.
 
 <CodeGroup>
-  ```javascript
+  ```javascript  theme={null}
   import { configureSpaceWithOpenAPI } from "@flatfile/plugin-convert-openapi-schema";
 
   export default function (listener) {
@@ -66,7 +70,7 @@ This example sets up a listener that configures a Space with a single Workbook a
   }
   ```
 
-  ```typescript
+  ```typescript  theme={null}
   import { configureSpaceWithOpenAPI } from "@flatfile/plugin-convert-openapi-schema";
   import { FlatfileListener } from "@flatfile/listener";
 
@@ -92,7 +96,7 @@ This example sets up a listener that configures a Space with a single Workbook a
 This example shows how to customize the names of the Workbook and Sheet, and how to define multiple Sheets from the same source schema.
 
 <CodeGroup>
-  ```javascript
+  ```javascript  theme={null}
   import { configureSpaceWithOpenAPI } from "@flatfile/plugin-convert-openapi-schema";
 
   export default function (listener) {
@@ -115,7 +119,7 @@ This example shows how to customize the names of the Workbook and Sheet, and how
   }
   ```
 
-  ```typescript
+  ```typescript  theme={null}
   import { configureSpaceWithOpenAPI } from "@flatfile/plugin-convert-openapi-schema";
   import { FlatfileListener } from "@flatfile/listener";
 
@@ -145,7 +149,7 @@ This example shows how to customize the names of the Workbook and Sheet, and how
 This example demonstrates adding custom actions to Workbooks and Sheets, and using the optional callback function to perform additional setup tasks after the Space is configured.
 
 <CodeGroup>
-  ```javascript
+  ```javascript  theme={null}
   import api from "@flatfile/api";
   import { configureSpaceWithOpenAPI } from "@flatfile/plugin-convert-openapi-schema";
 
@@ -184,7 +188,7 @@ This example demonstrates adding custom actions to Workbooks and Sheets, and usi
   }
   ```
 
-  ```typescript
+  ```typescript  theme={null}
   import api from "@flatfile/api";
   import type { FlatfileListener } from "@flatfile/listener";
   import { configureSpaceWithOpenAPI } from "@flatfile/plugin-convert-openapi-schema";

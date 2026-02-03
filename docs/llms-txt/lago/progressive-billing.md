@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/plans/progressive-billing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Progressive billing
 
 > Progressive billing, also known as threshold billing, automatically triggers an invoice when a customer's cumulative usage reaches predefined thresholds. This method ensures that customers cannot exceed certain usage limits without ensuring payment is received, reducing the risk of unpaid services or fraud.

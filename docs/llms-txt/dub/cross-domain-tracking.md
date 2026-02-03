@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/sdks/client-side/features/cross-domain-tracking.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cross-domain tracking
 
 > Track conversions across domains

@@ -10,10 +10,12 @@ Use the Accordion component to display a list of collapsible items.
 
 ```vue
 <script setup lang="ts">
-const items = ref<undefined>([
+import type { AccordionItem } from '@nuxt/ui'
+
+const items = ref<AccordionItem[]>([
   {
     label: 'Is Nuxt UI free to use?',
-    content: 'Yes! Nuxt UI is completely free and open source under the MIT license. All 100+ components are available to everyone.',
+    content: 'Yes! Nuxt UI is completely free and open source under the MIT license. All 125+ components are available to everyone.',
   },
   {
     label: 'Can I use Nuxt UI with Vue without Nuxt?',
@@ -169,11 +171,8 @@ const items = ref<AccordionItem[]>([
 </template>
 ```
 
-<note>
-
-You can inspect the DOM to see each item's content being rendered.
-
-</note>
+> [!NOTE]
+> You can inspect the DOM to see each item's content being rendered.
 
 ### Disabled
 
@@ -214,11 +213,8 @@ const items = ref<AccordionItem[]>([
 
 Use the `trailing-icon` prop to customize the trailing [Icon](/docs/components/icon) of each item. Defaults to `i-lucide-chevron-down`.
 
-<tip>
-
-You can also set an icon for a specific item by using the `trailingIcon` property in the item object.
-
-</tip>
+> [!TIP]
+> You can also set an icon for a specific item by using the `trailingIcon` property in the item object.
 
 ```vue
 <script setup lang="ts">
@@ -249,29 +245,21 @@ const items = ref<AccordionItem[]>([
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.chevronDown` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.chevronDown` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.chevronDown` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.chevronDown` key.
 
 ## Examples
 
 ### Control active item(s)
 
-You can control the active item(s) by using the `default-value` prop or the `v-model` directive with the index of the item.
+You can control the active item by using the `default-value` prop or the `v-model` directive with the `value` of the item. If no `value` is provided, it defaults to the index **as a string**.
 
 ```vue [AccordionModelValueExample.vue]
 <script setup lang="ts">
@@ -310,17 +298,11 @@ onMounted(() => {
 </template>
 ```
 
-<tip>
+> [!TIP]
+> Use the `value-key` prop to change the key used to match items when a `v-model` or `default-value` is provided.
 
-You can also pass the `value` of one of the items if provided.
-
-</tip>
-
-<caution>
-
-When `type="multiple"`, ensure to pass an array to the `default-value` prop or the `v-model` directive.
-
-</caution>
+> [!CAUTION]
+> When `type="multiple"`, ensure to pass an array to the `default-value` prop or the `v-model` directive.
 
 ### With drag and drop
 
@@ -394,11 +376,8 @@ const items: AccordionItem[] = [
 </template>
 ```
 
-<tip>
-
-The `#body` slot includes some pre-defined styles, use the [`#content` slot](#with-content-slot) if you want to start from scratch.
-
-</tip>
+> [!TIP]
+> The `#body` slot includes some pre-defined styles, use the [`#content` slot](#with-content-slot) if you want to start from scratch.
 
 ### With content slot
 
@@ -489,7 +468,7 @@ const items = [
   {
     label: 'Is Nuxt UI free to use?',
     icon: 'i-lucide-circle-help',
-    content: 'Yes! Nuxt UI is completely free and open source under the MIT license. All 100+ components are available to everyone.'
+    content: 'Yes! Nuxt UI is completely free and open source under the MIT license. All 125+ components are available to everyone.'
   },
   {
     label: 'Can I use Nuxt UI with Vue without Nuxt?',
@@ -550,16 +529,21 @@ interface AccordionProps {
    * The element or component this component should render as.
    */
   as?: any;
-  items?: AccordionItem[] | undefined;
+  items?: T[] | undefined;
   /**
    * The icon displayed on the right side of the trigger.
    */
-  trailingIcon?: string | object | undefined;
+  trailingIcon?: any;
+  /**
+   * The key used to get the value from the item.
+   * @default "\"value\""
+   */
+  valueKey?: GetItemKeys<T> | undefined;
   /**
    * The key used to get the label from the item.
    * @default "\"label\""
    */
-  labelKey?: GetItemKeys<AccordionItem> | undefined;
+  labelKey?: GetItemKeys<T> | undefined;
   ui?: { root?: ClassNameValue; item?: ClassNameValue; header?: ClassNameValue; trigger?: ClassNameValue; content?: ClassNameValue; body?: ClassNameValue; leadingIcon?: ClassNameValue; trailingIcon?: ClassNameValue; label?: ClassNameValue; } | undefined;
   /**
    * When type is "single", allows closing content when clicking trigger for an open item.
@@ -655,8 +639,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

@@ -2,10 +2,6 @@
 
 # Source: https://mui.com/x/react-charts/gauge.md
 
-# Source: https://mui.com/x/api/charts/gauge.md
-
-# Source: https://mui.com/x/react-charts/gauge.md
-
 ---
 title: React Gauge chart
 productId: x-charts

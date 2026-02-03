@@ -1,7 +1,5 @@
 # Source: https://rspack.dev/guide/tech/next.md
 
-import { Tabs, Tab, PackageManagerTabs } from '@theme';
-
 # Next.js
 
 [next-rspack](https://www.npmjs.com/package/next-rspack) is a community-driven plugin that enables Next.js projects to use Rspack as the bundler (experimental).
@@ -14,7 +12,26 @@ See the [Rspack joins the Next.js ecosystem](/blog/rspack-next-partner.md) blog 
 
 Install the `next-rspack` package:
 
-<PackageManagerTabs command="add next-rspack -D" />
+
+```sh [npm]
+npm add next-rspack -D
+```
+
+```sh [yarn]
+yarn add next-rspack -D
+```
+
+```sh [pnpm]
+pnpm add next-rspack -D
+```
+
+```sh [bun]
+bun add next-rspack -D
+```
+
+```sh [deno]
+deno add npm:next-rspack -D
+```
 
 :::tip
 If you are using a Next.js version below 15.3.0, please upgrade to >= 15.3.0 first, see [Next.js - Upgrading](https://nextjs.org/docs/pages/building-your-application/upgrading).
@@ -24,33 +41,34 @@ If you are using a Next.js version below 15.3.0, please upgrade to >= 15.3.0 fir
 
 Wrap your existing configuration in the project's `next.config.js` or `next.config.ts`:
 
-<Tabs>
-  <Tab label="next.config.ts">
-    ```ts
-    import withRspack from 'next-rspack';
-    import type { NextConfig } from 'next';
 
-    const nextConfig: NextConfig = {
-      /* config options here */
-    };
+**next.config.ts**
 
-    export default withRspack(nextConfig);
-    ```
-  </Tab>
+```ts
+import withRspack from 'next-rspack';
+import type { NextConfig } from 'next';
 
-  <Tab label="next.config.js">
-    ```ts
-    const withRspack = require('next-rspack');
+const nextConfig: NextConfig = {
+  /* config options here */
+};
 
-    /** @type {import('next').NextConfig} */
-    const nextConfig = {
-      /* config options here */
-    };
+export default withRspack(nextConfig);
+```
 
-    module.exports = withRspack(nextConfig);
-    ```
-  </Tab>
-</Tabs>
+
+**next.config.js**
+
+```ts
+const withRspack = require('next-rspack');
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  /* config options here */
+};
+
+module.exports = withRspack(nextConfig);
+```
+
 
 > Example: [next.js/examples/with-rspack](https://github.com/vercel/next.js/tree/canary/examples/with-rspack).
 

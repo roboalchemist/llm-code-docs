@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/example-projects/realtime-csv-importer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Next.js Realtime CSV Importer
 
 > This example Next.js project demonstrates how to use Trigger.dev Realtime to build a CSV Uploader with progress updates streamed to the frontend.

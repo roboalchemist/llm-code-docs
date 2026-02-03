@@ -6,7 +6,6 @@ description: >-
   Configure Datadog Agent v6 to use Python 3 runtime for Agent checks and
   integrations instead of the default Python 2.
 breadcrumbs: Docs > Agent > Agent Guides > Python Version Management
-source_url: https://docs.datadoghq.com/guide/agent-v6-python-3/index.html
 ---
 
 # Python Version Management

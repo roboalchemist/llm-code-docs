@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/embedding/sdk-server-requests.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # API Requests
 
 > Send requests to your Activepieces instance from the embedded app

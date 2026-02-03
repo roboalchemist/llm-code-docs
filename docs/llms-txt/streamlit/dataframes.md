@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/design/dataframes
+
 # Dataframes
 
 Dataframes are a great way to display and edit data in a tabular format. Working with Pandas DataFrames and other tabular data structures is key to data science workflows. If developers and data scientists want to display this data in Streamlit, they have multiple options: `st.dataframe` and `st.data_editor`. If you want to solely display data in a table-like UI, `st.dataframe` is the way to go. If you want to interactively edit data, use `st.data_editor`.

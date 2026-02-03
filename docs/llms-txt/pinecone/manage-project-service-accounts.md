@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/assistant/admin/manage-project-service-accounts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manage service accounts at the project-level
 
 > Enable programmatic access with project-level service accounts.

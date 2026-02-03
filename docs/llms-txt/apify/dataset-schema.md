@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/academy/deploying-your-code/dataset-schema.md
 
-# Source: https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema.md
-
-# Source: https://docs.apify.com/academy/deploying-your-code/dataset-schema.md
-
-# Source: https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema.md
-
-# Source: https://docs.apify.com/academy/deploying-your-code/dataset-schema.md
-
-# Source: https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema.md
-
-# Source: https://docs.apify.com/academy/deploying-your-code/dataset-schema.md
-
 # Creating dataset schema
 
 **Learn how to generate an appealing Overview table interface to preview your Actor results in real time on the Apify platform.**
@@ -82,7 +70,7 @@ Next, copy-paste the following template code into your `actor.json` file.
 
 To configure the dataset schema, replace the fields in the template with the relevant fields to your Actor.
 
-For reference, you can use the https://github.com/PerVillalva/zappos-scraper-actor/blob/main/.actor/actor.json as an example of how the final implementation of the output tab should look in a live Actor.
+For reference, you can use the [Zappos Scraper source code](https://github.com/PerVillalva/zappos-scraper-actor/blob/main/.actor/actor.json) as an example of how the final implementation of the output tab should look in a live Actor.
 
 
 ```
@@ -179,7 +167,7 @@ Great! Now that everything is set up, it's time to run the Actor and admire your
 
 Additional resources
 
-Visit the https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema.md for more detailed information about how to implement this feature.
+Visit the [dataset schema documentation](https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema.md) for more detailed information about how to implement this feature.
 
 A few seconds after running the Actor, you should see its results displayed in the `Overview` table.
 
@@ -187,4 +175,4 @@ A few seconds after running the Actor, you should see its results displayed in t
 
 ## Next up
 
-In the https://docs.apify.com/academy/deploying-your-code/docker-file.md, we'll learn about a very important file that is required for our project to run on the Apify platform - the Dockerfile.
+In the [next lesson](https://docs.apify.com/academy/deploying-your-code/docker-file.md), we'll learn about a very important file that is required for our project to run on the Apify platform - the Dockerfile.

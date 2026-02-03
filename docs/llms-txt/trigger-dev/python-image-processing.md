@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/python/python-image-processing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Python image processing example
 
 > Learn how to use Trigger.dev with Python to process images from URLs and upload them to S3.
@@ -34,7 +38,7 @@ This demo showcases how to use Trigger.dev with Python to process an image using
 
 After you've initialized your project with Trigger.dev, add these build settings to your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { pythonExtension } from "@trigger.dev/python/extension";
 import { defineConfig } from "@trigger.dev/sdk";
 
@@ -66,7 +70,7 @@ export default defineConfig({
 
 This task uses the `python.runScript` method to run the `image-processing.py` script with the given image URL as an argument. You can adjust the image processing parameters in the payload, with options such as height, width, quality, output format, etc.
 
-```ts src/trigger/processImage.ts theme={null}
+```ts src/trigger/processImage.ts theme={"theme":"css-variables"}
 import { schemaTask } from "@trigger.dev/sdk";
 import { z } from "zod";
 import { python } from "@trigger.dev/python";
@@ -193,7 +197,7 @@ export const processImage = schemaTask({
 
 Add the following to your `requirements.txt` file. This is required in Python projects to install the dependencies.
 
-```txt requirements.txt theme={null}
+```txt requirements.txt theme={"theme":"css-variables"}
 # Core dependencies
 Pillow==10.2.0            # Image processing library
 python-dotenv==1.0.0      # Environment variable management
@@ -208,7 +212,7 @@ opencv-python==4.8.1.78   # For more advanced image processing
 
 The Python script uses Pillow (PIL) to process an image. You can see the original script in our examples repository [here](https://github.com/triggerdotdev/examples/blob/main/python-image-processing/src/python/image-processing.py).
 
-```python src/python/image-processing.py theme={null}
+```python src/python/image-processing.py theme={"theme":"css-variables"}
 from PIL import Image, ImageOps, ImageEnhance
 import io
 from io import BytesIO
@@ -519,7 +523,7 @@ if __name__ == "__main__":
 
 These are all optional parameters that can be passed to the `image-processing.py` Python script from the `processImage.ts` task.
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "imageUrl": "<your-image-url>",
   "height": 1200,

@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/list/rpush.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/rpush.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/rpush.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/rpush.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/rpush.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/rpush.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/rpush.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/rpush.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/rpush.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/rpush.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # RPUSH
 
@@ -26,25 +12,24 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the list.
 </ParamField>
 
-<ParamField body="elements" type="...TValue[]" required>
+<ParamField body="elements" type="*List[str]" required>
   One or more elements to push at the end of the list.
 </ParamField>
 
 ## Response
 
-<ResponseField type="number" required>
+<ResponseField type="int" required>
   The length of the list after the push operation.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example  theme={"system"}
-  const length1 = await redis.rpush("key", "a", "b", "c"); 
-  console.log(length1); // 3
-  const length2 = await redis.rpush("key", "d"); 
-  console.log(length2); // 4
+  ```py Example  theme={"system"}
+  assert redis.rpush("mylist", "one", "two", "three") == 3
+
+  assert lrange("mylist", 0, -1) == ["one", "two", "three"]
   ```
 </RequestExample>

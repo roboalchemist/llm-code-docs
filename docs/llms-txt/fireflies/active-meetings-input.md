@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/schema/input/active-meetings-input.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # GetActiveMeetingsInput
 
 > Schema for GetActiveMeetingsInput
@@ -15,4 +19,15 @@
   If this field is omitted, the query returns active meetings for the authenticated user.
 
   The email must be valid and belong to a user in the same team as the requester.
+</ParamField>
+
+<ParamField path="states" type="[MeetingState]">
+  Filter active meetings by their state. Accepts an array of [MeetingState](/schema/enum/meeting-state) values.
+
+  **Possible values:**
+
+  * `active`: Meetings that are currently in progress
+  * `paused`: Meetings that have been paused
+
+  If this field is omitted, the query returns meetings in both `active` and `paused` states by default.
 </ParamField>

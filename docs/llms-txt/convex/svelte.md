@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/quickstart/svelte.md
 
-# Source: https://docs.convex.dev/client/svelte.md
-
-# Source: https://docs.convex.dev/quickstart/svelte.md
-
 # Svelte Quickstart
 
 Learn how to query data from Convex in a Svelte app.

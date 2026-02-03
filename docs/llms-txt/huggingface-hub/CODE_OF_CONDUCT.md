@@ -1,3 +1,5 @@
+# Source: https://github.com/huggingface/huggingface_hub/blob/main/CODE_OF_CONDUCT.md
+
 # huggingface_hub/CODE_OF_CONDUCT.md at main · huggingface/huggingface_hub · GitHub
 
 The provided HTML content is a complex navigation structure with multiple elements and styles. To convert it to Markdown, we need to focus on the main content and structure that is relevant to the user's interaction or navigation. Since the HTML content is a navigation menu, the main content is likely the main navigation links and their sub-links.

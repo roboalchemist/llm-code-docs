@@ -1,8 +1,13 @@
 # Source: https://rspack.dev/plugins/webpack/normal-module-replacement-plugin.md
 
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/plugins/normal-module-replacement-plugin/](https://webpack.js.org/plugins/normal-module-replacement-plugin/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/plugins/normal-module-replacement-plugin/" />
 
 # NormalModuleReplacementPlugin
 

@@ -2,6 +2,10 @@
 
 # RequestQueueClientRequestSchema<!-- -->
 
+Complete schema for a request in the queue.
+
+Represents a URL to be crawled along with its metadata, retry information, and custom data.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -21,7 +25,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#errorMessages)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L668)optionalerrorMessages
+### [**](#errorMessages)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L957)optionalerrorMessages
 
 **errorMessages?
 
@@ -29,7 +33,7 @@
 
 : string\[]
 
-### [**](#handledAt)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L671)optionalhandledAt
+### [**](#handledAt)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L960)optionalhandledAt
 
 **handledAt?
 
@@ -37,7 +41,7 @@
 
 : string
 
-### [**](#headers)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L669)optionalheaders
+### [**](#headers)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L958)optionalheaders
 
 **headers?
 
@@ -45,11 +49,11 @@
 
 : Record\<string, string>
 
-### [**](#id)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L662)id
+### [**](#id)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L951)id
 
 **id: string
 
-### [**](#loadedUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L673)optionalloadedUrl
+### [**](#loadedUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L962)optionalloadedUrl
 
 **loadedUrl?
 
@@ -57,7 +61,7 @@
 
 : string
 
-### [**](#method)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L665)optionalmethod
+### [**](#method)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L954)optionalmethod
 
 **method?
 
@@ -65,7 +69,7 @@
 
 : [AllowedHttpMethods](https://docs.apify.com/api/client/js/api/client/js/reference.md#AllowedHttpMethods)
 
-### [**](#noRetry)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L672)optionalnoRetry
+### [**](#noRetry)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L961)optionalnoRetry
 
 **noRetry?
 
@@ -73,7 +77,7 @@
 
 : boolean
 
-### [**](#payload)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L666)optionalpayload
+### [**](#payload)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L955)optionalpayload
 
 **payload?
 
@@ -81,7 +85,7 @@
 
 : string
 
-### [**](#retryCount)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L667)optionalretryCount
+### [**](#retryCount)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L956)optionalretryCount
 
 **retryCount?
 
@@ -89,15 +93,15 @@
 
 : number
 
-### [**](#uniqueKey)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L663)uniqueKey
+### [**](#uniqueKey)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L952)uniqueKey
 
 **uniqueKey: string
 
-### [**](#url)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L664)url
+### [**](#url)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L953)url
 
 **url: string
 
-### [**](#userData)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L670)optionaluserData
+### [**](#userData)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L959)optionaluserData
 
 **userData?
 

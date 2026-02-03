@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/image/
+
 # Image Jailbreaking
 
 The Image strategy converts prompt text into an image and then encodes that image as a base64 string. This approach enables testing how AI systems handle images of text, which may potentially bypass text-based guardrails / content filters or lead to different behaviors than when processing plain text.

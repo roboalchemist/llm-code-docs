@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/ClipTextEncodeSdxlRefiner.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ClipTextEncodeSdxlRefiner - ComfyUI Built-in Node Documentation
 
 > The ClipTextEncodeSdxlRefiner node is used to encode text prompts into SDXL Refiner-compatible conditioning embeddings.

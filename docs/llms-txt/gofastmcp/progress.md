@@ -2,49 +2,36 @@
 
 # Source: https://gofastmcp.com/clients/progress.md
 
-# Source: https://gofastmcp.com/servers/progress.md
-
-# Source: https://gofastmcp.com/clients/progress.md
-
-# Source: https://gofastmcp.com/servers/progress.md
-
-# Source: https://gofastmcp.com/clients/progress.md
-
-# Source: https://gofastmcp.com/servers/progress.md
-
-# Source: https://gofastmcp.com/clients/progress.md
-
-# Source: https://gofastmcp.com/servers/progress.md
-
-# Source: https://gofastmcp.com/clients/progress.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Progress Monitoring
 
 > Handle progress notifications from long-running server operations.
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
 <VersionBadge version="2.3.5" />
 
-MCP servers can report progress during long-running operations. The client can receive these updates through a progress handler.
+Use this when you need to track progress of long-running operations.
+
+MCP servers can report progress during operations. The client receives these updates through a progress handler.
 
 ## Progress Handler
 
-Set a progress handler when creating the client:
+Set a handler when creating the client:
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 from fastmcp import Client
 
-async def my_progress_handler(
-    progress: float, 
-    total: float | None, 
+async def progress_handler(
+    progress: float,
+    total: float | None,
     message: str | None
 ) -> None:
     if total is not None:
@@ -55,38 +42,35 @@ async def my_progress_handler(
 
 client = Client(
     "my_mcp_server.py",
-    progress_handler=my_progress_handler
+    progress_handler=progress_handler
 )
 ```
 
-### Handler Parameters
+The handler receives three parameters:
 
-The progress handler receives three parameters:
-
-<Card icon="code" title="Progress Handler Parameters">
+<Card icon="code" title="Handler Parameters">
   <ResponseField name="progress" type="float">
     Current progress value
   </ResponseField>
 
   <ResponseField name="total" type="float | None">
-    Expected total value (may be None)
+    Expected total value (may be None if unknown)
   </ResponseField>
 
   <ResponseField name="message" type="str | None">
-    Optional status message (may be None)
+    Optional status message
   </ResponseField>
 </Card>
 
-## Per-Call Progress Handler
+## Per-Call Handler
 
-Override the progress handler for specific tool calls:
+Override the client-level handler for specific tool calls:
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 async with client:
-    # Override with specific progress handler for this call
     result = await client.call_tool(
-        "long_running_task", 
-        {"param": "value"}, 
+        "long_running_task",
+        {"param": "value"},
         progress_handler=my_progress_handler
     )
 ```

@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/tesla/get-interior-temperature.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Interior Temperature
 
 > Returns the vehicle’s last known interior thermometer reading. See our [climate setting](/docs/api-reference/tesla/get-cabin) endpoints for managing a cabin temperature.

@@ -2,10 +2,6 @@
 
 # Source: https://docs.aimlapi.com/api-references/text-models-llm/mistral-ai.md
 
-# Source: https://docs.aimlapi.com/api-references/vision-models/ocr-optical-character-recognition/mistral-ai.md
-
-# Source: https://docs.aimlapi.com/api-references/text-models-llm/mistral-ai.md
-
 # Mistral AI
 
 - [mistral-nemo](/api-references/text-models-llm/mistral-ai/mistral-nemo.md)

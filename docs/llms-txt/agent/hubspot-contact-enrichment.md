@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/recipes/hubspot-contact-enrichment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # HubSpot Contact Enrichment
 
 > Automatically enrich contact records with company intelligence, news, and AI-powered insights whenever a contact is created or updated

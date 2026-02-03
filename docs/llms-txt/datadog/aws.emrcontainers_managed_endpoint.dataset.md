@@ -4,8 +4,6 @@
 title: EMR on EKS Managed Endpoint
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EMR on EKS Managed Endpoint
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.emrcontainers_managed_endpoint.dataset/index.html
 ---
 
 # EMR on EKS Managed Endpoint
@@ -37,6 +35,6 @@ aws.emrcontainers_managed_endpoint
 | state                   | core | string        | The state of the endpoint.                                                                          |
 | state_details           | core | string        | Additional details of the endpoint state.                                                           |
 | subnet_ids              | core | array<string> | The subnet IDs of the endpoint.                                                                     |
-| tags                    | core | hstore        |
+| tags                    | core | hstore_csv    |
 | type                    | core | string        | The type of the endpoint.                                                                           |
 | virtual_cluster_id      | core | string        | The ID of the endpoint's virtual cluster.                                                           |

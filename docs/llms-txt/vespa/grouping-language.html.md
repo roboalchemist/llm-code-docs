@@ -30,7 +30,7 @@ The identity of a group is held by its _id_. Scalar identities such as long, dou
 
 ### Multivalue attributes
 
-A [multivalue](/en/searching-multi-valued-fields.html) attribute is a[weighted set](../schemas/schemas.html#weightedset),[array](../schemas/schemas.html#array) or[map](../schemas/schemas.html#map). Most grouping functions will just handle the elements of multivalued attributes separately, as if they were all individual values in separate documents. If you are grouping over array of struct or maps, scoping will be used to preserve structure. Each entry in the array/map will be treated as a separate sub-document. The following syntax can be used when grouping on _map_ attribute fields.
+A [multivalue](../../querying/searching-multivalue-fields) attribute is a[weighted set](../schemas/schemas.html#weightedset),[array](../schemas/schemas.html#array) or[map](../schemas/schemas.html#map). Most grouping functions will just handle the elements of multivalued attributes separately, as if they were all individual values in separate documents. If you are grouping over array of struct or maps, scoping will be used to preserve structure. Each entry in the array/map will be treated as a separate sub-document. The following syntax can be used when grouping on _map_ attribute fields.
 
 Group on map keys:
 
@@ -94,7 +94,11 @@ Use a regular expression to match the input, and include only documents that mat
 ```
 all( group(my_array) filter(regex("foo.*", my_array)) ...)
 ```
- Here, each value in _my\_array_ is considered, but only the values that start with a "foo" prefix are collected in groups; All others are ignored. See [example](/en/querying/grouping.html#structured-grouping).
+
+Here only the values that start with a "foo" prefix in _my\_array_ are collected into groups, all others are ignored. See also [this example](../../querying/grouping.html#structured-grouping).
+
+Regex filtering works on the string representation of any field type. For example, you can also filter on boolean values using regex(true) and regex(false).
+
 ### Range filter
 
 Use a `range` filter to match documents where a field value is between a lower and an upper bound. Example:
@@ -545,7 +549,7 @@ bucket ::= "bucket" ( "(" | "[" | "<" )
 rawvalue ::= "{" ( ( string | number ) "," )* "}"
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

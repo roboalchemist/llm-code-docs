@@ -9,13 +9,17 @@ https://api.apify.com/v2/actor-tasks/:actorTaskId
 ```
 
 
-Clientshttps://docs.apify.com/api/client/js/reference/class/TaskClient#deleteDelete the task specified through the `actorTaskId` parameter.
+Delete the task specified through the `actorTaskId` parameter.
 
 ## Request
 
 ## Responses
 
 * 204
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

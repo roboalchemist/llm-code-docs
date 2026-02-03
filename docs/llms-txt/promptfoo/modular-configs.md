@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/modular-configs/
+
 # Managing Large Promptfoo Configurations
 
 As your Promptfoo evaluations grow more complex, you'll need strategies to keep your configurations manageable, maintainable, and reusable. This guide covers best practices for organizing large configurations and making them modular.

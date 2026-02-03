@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/api-reference/privacy/delete_status.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Status of user deletion request
 
 Get the status of your user deletion request.
@@ -23,8 +27,3 @@ Get the status of your user deletion request.
 <ResponseField name="total" type="string">
   The number of spans that needs to be deleted in total.
 </ResponseField>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/common/help/compliance.md
 
-# Source: https://upstash.com/docs/redis/help/compliance.md
-
-# Source: https://upstash.com/docs/common/help/compliance.md
-
-# Source: https://upstash.com/docs/redis/help/compliance.md
-
-# Source: https://upstash.com/docs/common/help/compliance.md
-
-# Source: https://upstash.com/docs/redis/help/compliance.md
-
-# Source: https://upstash.com/docs/common/help/compliance.md
-
-# Source: https://upstash.com/docs/redis/help/compliance.md
-
-# Source: https://upstash.com/docs/common/help/compliance.md
-
-# Source: https://upstash.com/docs/redis/help/compliance.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Compliance
 
@@ -32,7 +18,7 @@
 
 ## Is Upstash SOC2 Compliant?
 
-As of July 2023, Upstash Redis is SOC2 compliant. Check our [trust page](https://trust.upstash.com/) for details.
+Upstash Redis databases under Pro and Enterprise support plans are SOC2 compliant. Check our [trust page](https://trust.upstash.com/) for details.
 
 ## Is Upstash ISO-27001 Compliant?
 
@@ -49,9 +35,7 @@ that we work with.
 
 ## Is Upstash HIPAA Compliant?
 
-Upstash is currently not HIPAA compliant. Contact us
-([support@upstash.com](mailto:support@upstash.com)) if HIPAA is important for
-you and we can share more details.
+Yes. Upstash Redis is HIPAA compliant and we are in process of getting this compliance for our other products. See [Managing Healthcare Data](https://upstash.com/docs/redis/help/managing-healthcare-data) for more details.
 
 ## Is Upstash PCI Compliant?
 
@@ -71,6 +55,4 @@ Yes, we take regular snapshots of the data cluster to the AWS S3 platform.
 
 ## Does Upstash encrypt data?
 
-Customers can enable TLS while creating database/cluster, and we recommend it
-for production databases/clusters. Also we encrypt data at rest at request of
-customers.
+Customers can enable TLS when creating a database or cluster, and we recommend this for production environments. Additionally, we encrypt data at rest upon customer request.

@@ -3,8 +3,7 @@
 ---
 title: Secret Management
 description: Datadog, the leading service for cloud-scale monitoring.
-breadcrumbs: Docs > Container Monitoring > Datadog Operator > Secret Management
-source_url: https://docs.datadoghq.com/datadog_operator/secret_management/index.html
+breadcrumbs: Docs > Containers > Datadog Operator > Secret Management
 ---
 
 # Secret Management

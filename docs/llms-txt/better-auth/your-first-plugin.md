@@ -4,11 +4,7 @@
 
 A step-by-step guide to creating your first Better Auth plugin.
 
-***
 
-title: Create your first plugin
-description: A step-by-step guide to creating your first Better Auth plugin.
-----------------------------------------------------------------------------
 
 In this guide, weâll walk you through the steps of creating your first Better Auth plugin.
 
@@ -28,7 +24,7 @@ In this guide, weâll walk you through the steps of creating your first Bett
   <Step>
     ## Server plugin first
 
-    Better Auth plugins operate as a pair: a <Link href="/docs/concepts/plugins#create-a-server-plugin">server plugin</Link> and a <Link href="/docs/concepts/plugins#create-a-client-plugin">client plugin</Link>.
+    Better Auth plugins operate as a pair: a <Link href="/docs/concepts/plugins#create-a-server-plugin">server plugin</Link> and a <Link href="/docs/concepts/plugins#creating-a-client-plugin">client plugin</Link>.
     The server plugin forms the foundation of your authentication system, while the client plugin provides convenient frontend APIs to interact with your server implementation.
 
     <Callout>
@@ -182,7 +178,7 @@ In this guide, weâll walk you through the steps of creating your first Bett
     Then, add the following code:
 
     ```ts title="client.ts"
-    import { BetterAuthClientPlugin } from "better-auth";
+    import type { BetterAuthClientPlugin } from "better-auth/client";
     import type { birthdayPlugin } from "./index"; // make sure to import the server plugin as a type // [!code highlight]
 
     type BirthdayPlugin = typeof birthdayPlugin;

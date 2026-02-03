@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/scim/group-mappings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SCIM Group Mappings
 
 > Learn how to enhance your SCIM implementation using group mappings

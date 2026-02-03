@@ -2,12 +2,9 @@
 
 # Delete Tag
 
-```
-DELETE 
-/v1/tags/:tagId
-```
+Copy page
 
-This endpoint deletes a Tag identified by the `tagId` parameter. To remove a Tag from a Feature Flag or Setting use the [Update Flag](https://configcat.com/docs/docs/api/reference/update-setting/.md) endpoint.
+This endpoint deletes a Tag identified by the `tagId` parameter. To remove a Tag from a Feature Flag or Setting use the [Update Flag](https://configcat.com/docs/api/reference/update-setting.md) endpoint.
 
 ## Request[​](#request "Direct link to Request")
 

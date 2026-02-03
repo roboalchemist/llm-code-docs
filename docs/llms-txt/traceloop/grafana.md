@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/integrations/grafana.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Observability with Grafana and OpenLLMetry
 
 First, go to the Grafana Cloud account page under `https://grafana.com/orgs/<your org name>`,
@@ -64,8 +68,3 @@ Then, you can set the following environment variables when running your app with
 TRACELOOP_BASE_URL=https://otlp-gateway-<zone>.grafana.net/otlp
 TRACELOOP_HEADERS="Authorization=Basic%20<base64 encoded stack id and api key>"
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

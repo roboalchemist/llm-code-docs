@@ -1,24 +1,58 @@
 # Source: https://developers.openai.com/codex/ide/commands.md
 
-# Codex IDE extension commands
+# Source: https://developers.openai.com/codex/app/commands.md
 
-Use these commands to control Codex from the VS Code Command Palette. You can also bind them to keyboard shortcuts.
+# Codex app commands
 
-## Assign a key binding
+Use these commands and keyboard shortcuts to navigate the Codex app.
 
-To assign or change a key binding for a Codex command:
+## Keyboard shortcuts
 
-1. Open the Command Palette (**Cmd+Shift+P** on macOS or **Ctrl+Shift+P** on Windows/Linux).
-2. Run **Preferences: Open Keyboard Shortcuts**.
-3. Search for `Codex` or the command ID (for example, `chatgpt.newChat`).
-4. Select the pencil icon, then enter the shortcut you want.
+|             | Action             | macOS shortcut                                                                    |
+| ----------- | ------------------ | --------------------------------------------------------------------------------- |
+| **General** |                    |                                                                                   |
+|             | Command menu       | <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> or <kbd>Cmd</kbd> + <kbd>K</kbd> |
+|             | Settings           | <kbd>Cmd</kbd> + <kbd>,</kbd>                                                     |
+|             | Open folder        | <kbd>Cmd</kbd> + <kbd>O</kbd>                                                     |
+|             | Navigate back      | <kbd>Cmd</kbd> + <kbd>[</kbd>                                                     |
+|             | Navigate forward   | <kbd>Cmd</kbd> + <kbd>]</kbd>                                                     |
+|             | Increase font size | <kbd>Cmd</kbd> + <kbd>+</kbd> or <kbd>Cmd</kbd> + <kbd>=</kbd>                    |
+|             | Decrease font size | <kbd>Cmd</kbd> + <kbd>-</kbd> or <kbd>Cmd</kbd> + <kbd>\_</kbd>                   |
+|             | Toggle sidebar     | <kbd>Cmd</kbd> + <kbd>B</kbd>                                                     |
+|             | Toggle diff panel  | <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>B</kbd>                                 |
+|             | Toggle terminal    | <kbd>Cmd</kbd> + <kbd>J</kbd>                                                     |
+|             | Clear the terminal | <kbd>Ctrl</kbd> + <kbd>L</kbd>                                                    |
+| **Thread**  |                    |                                                                                   |
+|             | New thread         | <kbd>Cmd</kbd> + <kbd>N</kbd> or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd> |
+|             | Find in thread     | <kbd>Cmd</kbd> + <kbd>F</kbd>                                                     |
+|             | Previous thread    | <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>[</kbd>                                  |
+|             | Next thread        | <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>]</kbd>                                  |
+|             | Dictation          | <kbd>Ctrl</kbd> + <kbd>M</kbd>                                                    |
 
-## Extension commands
+## Slash commands
 
-| Command                 | Default key binding                        | Description                                               |
-| ----------------------- | ------------------------------------------ | --------------------------------------------------------- |
-| `chatgpt.addToThread`   | -                                          | Add selected text range as context for the current thread |
-| `chatgpt.newChat`       | macOS: `Cmd+N`<br/>Windows/Linux: `Ctrl+N` | Create a new thread                                       |
-| `chatgpt.implementTodo` | -                                          | Ask Codex to address the selected TODO comment            |
-| `chatgpt.newCodexPanel` | -                                          | Create a new codex panel                                  |
-| `chatgpt.openSidebar`   | -                                          | Opens the Codex sidebar panel                             |
+Slash commands let you control Codex without leaving the thread composer. Available commands vary based on your environment and access.
+
+### Use a slash command
+
+1. In the thread composer, type `/`.
+2. Select a command from the list, or keep typing to filter (for example, `/status`).
+
+You can also explicitly invoke skills by typing `$` in the thread composer. See [Skills](https://developers.openai.com/codex/skills).
+
+Enabled skills also appear in the slash command list (for example, `/imagegen`).
+
+### Available slash commands
+
+| Slash command | Description                                                                            |
+| ------------- | -------------------------------------------------------------------------------------- |
+| `/feedback`   | Open the feedback dialog to submit feedback and optionally include logs.               |
+| `/mcp`        | Open MCP status to view connected servers.                                             |
+| `/plan-mode`  | Toggle plan mode for multi-step planning.                                              |
+| `/review`     | Start code review mode to review uncommitted changes or compare against a base branch. |
+| `/status`     | Show the thread ID, context usage, and rate limits.                                    |
+
+## See also
+
+- [Features](https://developers.openai.com/codex/app/features)
+- [Settings](https://developers.openai.com/codex/app/settings)

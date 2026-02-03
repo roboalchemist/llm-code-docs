@@ -7,7 +7,6 @@ description: >-
   init containers that set up tracing, ensuring reliable tracer startup without
   impacting pod scheduling.
 breadcrumbs: Docs > APM > Tracing Guides > Init Container Resource Usage
-source_url: https://docs.datadoghq.com/guide/init_resource_calc/index.html
 ---
 
 # Init Container Resource Usage

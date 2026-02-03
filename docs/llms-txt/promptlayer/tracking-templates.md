@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/prompt-history/tracking-templates.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tracking Templates
 
 PromptLayer allows you to track prompt template usage, latency, cost, and more. This is done by associating a request with a prompt template as shown below.
@@ -31,8 +35,8 @@ To associate requests with a prompt from the prompt registry, run the code
   curl --request POST \
     --url https://api.promptlayer.com/rest/track-prompt \
     --header 'Content-Type: application/json' \
+    --header 'X-API-KEY: pl_<YOUR API KEY>' \
     --data '{
-      "api_key": "pl_<YOUR API KEY>",
       "request_id": "<REQUEST ID>",
       "prompt_name": "<PROMPT TEMPLATE NAME>",
       "prompt_input_variables": <PROMPT TEMPLATE INPUT VARIABLES>,
@@ -72,8 +76,8 @@ You can also use prompt [template release labels](/features/prompt-registry#rele
   curl --request POST \
     --url https://api.promptlayer.com/rest/track-prompt \
     --header 'Content-Type: application/json' \
+    --header 'X-API-KEY: pl_<YOUR API KEY>' \
     --data '{
-      "api_key": "pl_<YOUR API KEY>",
       "request_id": "<REQUEST ID>",
       "prompt_name": "<PROMPT TEMPLATE NAME>",
       "prompt_input_variables": <PROMPT TEMPLATE INPUT VARIABLES>,
@@ -81,8 +85,3 @@ You can also use prompt [template release labels](/features/prompt-registry#rele
     }'
   ```
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

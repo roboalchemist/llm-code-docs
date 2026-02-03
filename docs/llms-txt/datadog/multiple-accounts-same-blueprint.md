@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > FAQ > Can I scan multiple accounts onto the
   same blueprint?
-source_url: https://docs.datadoghq.com/faq/multiple-accounts-same-blueprint/index.html
 ---
 
 # Can I scan multiple accounts onto the same blueprint?

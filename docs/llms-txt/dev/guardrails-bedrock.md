@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/guardrails-bedrock.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Set up Bedrock guardrails
 
 > Configure AWS Bedrock Guardrails for content filtering and sensitive data protection
@@ -227,8 +231,3 @@ Test your guardrail directly in the AWS console before configuring it in AI Stud
 * [AWS Bedrock Guardrails documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html): Detailed AWS documentation
 * [Create a guardrail in AWS](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-create.html): Step-by-step AWS console instructions
 * [AWS Bedrock pricing](https://aws.amazon.com/bedrock/pricing/): Understand Bedrock guardrail costs
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://dev.writer.com/llms.txt

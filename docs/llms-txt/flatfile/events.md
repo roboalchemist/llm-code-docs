@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/reference/events.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Event Reference
 
 > Complete reference for all Flatfile events, their payloads, and when they are triggered
@@ -10,7 +14,7 @@ Flatfile emits events throughout the data import lifecycle, allowing your applic
 
 All Flatfile events follow a consistent structure. Optional fields may be included depending on the event's Domain ([workbook-level](#workbook-events) events, for instance, won't have a sheetId)
 
-```typescript
+```typescript  theme={null}
 interface FlatfileEvent {
   id: string;
   topic: string;
@@ -47,7 +51,7 @@ Job events are triggered when background tasks and operations change state.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     domain: string       // event domain (e.g., "space", "workbook")
     operation: string    // operation name (e.g., "configure")
@@ -61,7 +65,7 @@ Job events are triggered when background tasks and operations change state.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -82,7 +86,7 @@ Job events are triggered when background tasks and operations change state.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     domain: string       // event domain (e.g., "space", "workbook")
     operation: string    // operation name (e.g., "configure")
@@ -96,7 +100,7 @@ Job events are triggered when background tasks and operations change state.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -108,7 +112,7 @@ Job events are triggered when background tasks and operations change state.
 </ResponseField>
 
 <ResponseField name="Usage Example">
-  ```typescript
+  ```typescript  theme={null}
   listener.filter({ job: "*" }, (configure) => {
     configure.on("job:ready", async (event) => {
       const { jobId } = event.context
@@ -126,7 +130,7 @@ Job events are triggered when background tasks and operations change state.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     domain: string       // event domain (e.g., "space", "workbook")
     operation: string    // operation name (e.g., "configure")
@@ -140,7 +144,7 @@ Job events are triggered when background tasks and operations change state.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -160,7 +164,7 @@ Job events are triggered when background tasks and operations change state.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     domain: string       // event domain (e.g., "space", "workbook")
     operation: string    // operation name (e.g., "configure")
@@ -174,7 +178,7 @@ Job events are triggered when background tasks and operations change state.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -192,7 +196,7 @@ Job events are triggered when background tasks and operations change state.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     domain: string       // event domain (e.g., "space", "workbook")
     operation: string    // operation name (e.g., "configure")
@@ -206,7 +210,7 @@ Job events are triggered when background tasks and operations change state.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -225,7 +229,7 @@ Job events are triggered when background tasks and operations change state.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     domain: string       // event domain (e.g., "space", "workbook")
     operation: string    // operation name (e.g., "configure")
@@ -239,7 +243,7 @@ Job events are triggered when background tasks and operations change state.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -259,7 +263,7 @@ Job events are triggered when background tasks and operations change state.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     domain: string       // event domain (e.g., "space", "workbook")
     operation: string    // operation name (e.g., "configure")
@@ -278,7 +282,7 @@ Job events are triggered when background tasks and operations change state.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -294,7 +298,7 @@ Job events are triggered when background tasks and operations change state.
 <ResponseField name="Description">Triggered when a job fails</ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     domain: string       // event domain (e.g., "space", "workbook")
     operation: string    // operation name (e.g., "configure")
@@ -308,7 +312,7 @@ Job events are triggered when background tasks and operations change state.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -328,7 +332,7 @@ Job events are triggered when background tasks and operations change state.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -350,13 +354,13 @@ Program events are triggered when mapping programs and transformations change st
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {}
   ```
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -375,13 +379,13 @@ Program events are triggered when mapping programs and transformations change st
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {}
   ```
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -400,13 +404,13 @@ Program events are triggered when mapping programs and transformations change st
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {}
   ```
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -425,13 +429,13 @@ Program events are triggered when mapping programs and transformations change st
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {}
   ```
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -454,7 +458,7 @@ File events are triggered when files are uploaded, processed, or modified.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -473,7 +477,7 @@ File events are triggered when files are uploaded, processed, or modified.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -485,7 +489,7 @@ File events are triggered when files are uploaded, processed, or modified.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     status: string
     workbookId?: string
@@ -500,7 +504,7 @@ File events are triggered when files are uploaded, processed, or modified.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -518,7 +522,7 @@ File events are triggered when files are uploaded, processed, or modified.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -539,7 +543,7 @@ Record events are triggered when data records are created, updated, or deleted.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     sheetId: string
     recordIds: string[]
@@ -549,7 +553,7 @@ Record events are triggered when data records are created, updated, or deleted.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     environmentId: string
     spaceId: string
@@ -576,7 +580,7 @@ Record events are triggered when data records are created, updated, or deleted.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     sheetId: string
     recordIds: string[]
@@ -597,7 +601,7 @@ Record events are triggered when data records are created, updated, or deleted.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     sheetId: string
     recordIds: string[]
@@ -617,7 +621,7 @@ Sheet events are triggered when sheets are created, modified, or when sheet-leve
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     sheetId: string
     workbookId: string  
@@ -631,7 +635,7 @@ Sheet events are triggered when sheets are created, modified, or when sheet-leve
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -650,7 +654,7 @@ Sheet events are triggered when sheets are created, modified, or when sheet-leve
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     sheetId: string
     workbookId: string
@@ -665,7 +669,7 @@ Sheet events are triggered when sheets are created, modified, or when sheet-leve
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -684,7 +688,7 @@ Sheet events are triggered when sheets are created, modified, or when sheet-leve
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     sheetId: string
     workbookId: string
@@ -702,7 +706,7 @@ Sheet events are triggered when sheets are created, modified, or when sheet-leve
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     sheetId: string
     workbookId: string
@@ -721,7 +725,7 @@ Sheet events are triggered when sheets are created, modified, or when sheet-leve
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     sheetId: string
     workbookId: string
@@ -742,7 +746,7 @@ Workbook events are triggered for workbook-level operations and changes.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     workbookId: string
     spaceId: string
@@ -760,7 +764,7 @@ Workbook events are triggered for workbook-level operations and changes.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     workbookId: string
     spaceId: string
@@ -779,7 +783,7 @@ Workbook events are triggered for workbook-level operations and changes.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     workbookId: string
     spaceId: string
@@ -794,7 +798,7 @@ Workbook events are triggered for workbook-level operations and changes.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     workbookId: string
     spaceId: string
@@ -813,7 +817,7 @@ Space (Project) events are triggered for project lifecycle changes.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     spaceId: string
     environmentId: string
@@ -830,7 +834,7 @@ Space (Project) events are triggered for project lifecycle changes.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     spaceId: string
     environmentId: string
@@ -850,7 +854,7 @@ Space (Project) events are triggered for project lifecycle changes.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -868,7 +872,7 @@ Space (Project) events are triggered for project lifecycle changes.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -885,7 +889,7 @@ Space (Project) events are triggered for project lifecycle changes.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -901,7 +905,7 @@ Space (Project) events are triggered for project lifecycle changes.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     actorId: string
     accountId: string
@@ -918,7 +922,7 @@ Space (Project) events are triggered for project lifecycle changes.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     actorId: string
     accountId: string
@@ -935,13 +939,13 @@ Space (Project) events are triggered for project lifecycle changes.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {}
   ```
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     actorId: string
     accountId: string
@@ -962,13 +966,13 @@ Environment events are triggered for organization-level changes.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {}
   ```
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     environmentId: string
     accountId: string
@@ -985,7 +989,7 @@ Environment events are triggered for organization-level changes.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     environmentId: string
     name: string
@@ -1002,7 +1006,7 @@ Environment events are triggered for organization-level changes.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     environmentId: string
     changes: Array<{
@@ -1021,7 +1025,7 @@ Environment events are triggered for organization-level changes.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     environmentId: string
     deletedAt: string
@@ -1041,7 +1045,7 @@ Action events are triggered when custom actions are created, updated, or deleted
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     actionId: string
     name: string
@@ -1053,7 +1057,7 @@ Action events are triggered when custom actions are created, updated, or deleted
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -1072,7 +1076,7 @@ Action events are triggered when custom actions are created, updated, or deleted
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     actionId: string
     name: string
@@ -1089,7 +1093,7 @@ Action events are triggered when custom actions are created, updated, or deleted
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -1108,7 +1112,7 @@ Action events are triggered when custom actions are created, updated, or deleted
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     actionId: string
     name: string
@@ -1117,7 +1121,7 @@ Action events are triggered when custom actions are created, updated, or deleted
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -1140,7 +1144,7 @@ Document events are triggered when documents are created, updated, or deleted wi
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     actorId: string
     spaceId: string
@@ -1158,7 +1162,7 @@ Document events are triggered when documents are created, updated, or deleted wi
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     actorId: string
     spaceId: string
@@ -1176,7 +1180,7 @@ Document events are triggered when documents are created, updated, or deleted wi
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     actorId: string
     spaceId: string
@@ -1198,7 +1202,7 @@ Commit events are triggered when data changes are made to records.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     sheetId: string
     workbookId: string
@@ -1215,7 +1219,7 @@ Commit events are triggered when data changes are made to records.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     sheetId: string
     workbookId: string
@@ -1231,7 +1235,7 @@ Commit events are triggered when data changes are made to records.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -1250,7 +1254,7 @@ Commit events are triggered when data changes are made to records.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     sheetId: string
     workbookId: string
@@ -1267,7 +1271,7 @@ Commit events are triggered when data changes are made to records.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     sheetId: string
     workbookId: string
@@ -1288,7 +1292,7 @@ Snapshot events are triggered when snapshots of sheet data are created.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     snapshotId: string
     sheetId: string
@@ -1309,7 +1313,7 @@ Agent events are triggered when agents are created, updated, or deleted.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     agentId: string
     environmentId: string
@@ -1324,7 +1328,7 @@ Agent events are triggered when agents are created, updated, or deleted.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     agentId: string
     environmentId: string
@@ -1339,7 +1343,7 @@ Agent events are triggered when agents are created, updated, or deleted.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     agentId: string
     environmentId: string
@@ -1358,7 +1362,7 @@ Secret events are triggered when secrets are managed.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     secretId: string
     spaceId: string
@@ -1374,7 +1378,7 @@ Secret events are triggered when secrets are managed.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     secretId: string
     spaceId: string
@@ -1390,7 +1394,7 @@ Secret events are triggered when secrets are managed.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     secretId: string
     spaceId: string
@@ -1410,7 +1414,7 @@ Data clip events are triggered when data clips are managed.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     dataClipId: string
     collaborators: string[]
@@ -1423,7 +1427,7 @@ Data clip events are triggered when data clips are managed.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -1440,7 +1444,7 @@ Data clip events are triggered when data clips are managed.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     dataClipId: string
     accountId: string
@@ -1456,7 +1460,7 @@ Data clip events are triggered when data clips are managed.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     dataClipId: string
     accountId: string
@@ -1472,7 +1476,7 @@ Data clip events are triggered when data clips are managed.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     dataClipId: string
     accountId: string
@@ -1488,7 +1492,7 @@ Data clip events are triggered when data clips are managed.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     dataClipId: string
     resolutions: Array<{
@@ -1501,7 +1505,7 @@ Data clip events are triggered when data clips are managed.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -1518,13 +1522,13 @@ Data clip events are triggered when data clips are managed.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {}
   ```
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -1541,7 +1545,7 @@ Data clip events are triggered when data clips are managed.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     dataClipId: string
     resolutions: Array<{
@@ -1560,7 +1564,7 @@ Data clip events are triggered when data clips are managed.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -1581,7 +1585,7 @@ Canvas events are triggered when canvases are created, updated, or deleted.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     // Full canvas object with all properties
   }
@@ -1589,7 +1593,7 @@ Canvas events are triggered when canvases are created, updated, or deleted.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     canvasId: string
     spaceId: string
@@ -1606,7 +1610,7 @@ Canvas events are triggered when canvases are created, updated, or deleted.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     // Full canvas object with all properties
   }
@@ -1614,7 +1618,7 @@ Canvas events are triggered when canvases are created, updated, or deleted.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     canvasId: string
     spaceId: string
@@ -1631,7 +1635,7 @@ Canvas events are triggered when canvases are created, updated, or deleted.
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     // Full canvas object with all properties
   }
@@ -1639,7 +1643,7 @@ Canvas events are triggered when canvases are created, updated, or deleted.
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     canvasId: string
     spaceId: string
@@ -1660,7 +1664,7 @@ Canvas area events are triggered when canvas areas are created, updated, or dele
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     // Full canvas area object with all properties
   }
@@ -1668,7 +1672,7 @@ Canvas area events are triggered when canvas areas are created, updated, or dele
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     canvasAreaId: string
     canvasId: string
@@ -1683,7 +1687,7 @@ Canvas area events are triggered when canvas areas are created, updated, or dele
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     // Full canvas area object with all properties
   }
@@ -1691,7 +1695,7 @@ Canvas area events are triggered when canvas areas are created, updated, or dele
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     canvasAreaId: string
     canvasId: string
@@ -1706,7 +1710,7 @@ Canvas area events are triggered when canvas areas are created, updated, or dele
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     // Full canvas area object with all properties
   }
@@ -1714,7 +1718,7 @@ Canvas area events are triggered when canvas areas are created, updated, or dele
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     canvasAreaId: string
     canvasId: string
@@ -1733,7 +1737,7 @@ Thread events are triggered when AI conversation threads are created, updated, o
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     threadId: string
     title?: string
@@ -1744,7 +1748,7 @@ Thread events are triggered when AI conversation threads are created, updated, o
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -1762,7 +1766,7 @@ Thread events are triggered when AI conversation threads are created, updated, o
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {
     threadId: string
     title?: string
@@ -1777,7 +1781,7 @@ Thread events are triggered when AI conversation threads are created, updated, o
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -1795,13 +1799,13 @@ Thread events are triggered when AI conversation threads are created, updated, o
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {}
   ```
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     accountId: string
     environmentId: string
@@ -1829,13 +1833,13 @@ Cron events are system events triggered at scheduled intervals for automated pro
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {}
   ```
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     environmentId: string
   }
@@ -1849,13 +1853,13 @@ Cron events are system events triggered at scheduled intervals for automated pro
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {}
   ```
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     environmentId: string
   }
@@ -1869,13 +1873,13 @@ Cron events are system events triggered at scheduled intervals for automated pro
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {}
   ```
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     environmentId: string
   }
@@ -1889,13 +1893,13 @@ Cron events are system events triggered at scheduled intervals for automated pro
 </ResponseField>
 
 <ResponseField name="Payload">
-  ```typescript
+  ```typescript  theme={null}
   {}
   ```
 </ResponseField>
 
 <ResponseField name="Context">
-  ```typescript
+  ```typescript  theme={null}
   {
     environmentId: string
   }

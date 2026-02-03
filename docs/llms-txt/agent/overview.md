@@ -4,35 +4,9 @@
 
 # Source: https://docs.agent.ai/builder/overview.md
 
-# Source: https://docs.agent.ai/recipes/overview.md
-
-# Source: https://docs.agent.ai/knowledge-agents/overview.md
-
-# Source: https://docs.agent.ai/builder/overview.md
-
-# Source: https://docs.agent.ai/recipes/overview.md
-
-# Source: https://docs.agent.ai/knowledge-agents/overview.md
-
-# Source: https://docs.agent.ai/builder/overview.md
-
-# Source: https://docs.agent.ai/recipes/overview.md
-
-# Source: https://docs.agent.ai/knowledge-agents/overview.md
-
-# Source: https://docs.agent.ai/builder/overview.md
-
-# Source: https://docs.agent.ai/recipes/overview.md
-
-# Source: https://docs.agent.ai/knowledge-agents/overview.md
-
-# Source: https://docs.agent.ai/builder/overview.md
-
-# Source: https://docs.agent.ai/recipes/overview.md
-
-# Source: https://docs.agent.ai/knowledge-agents/overview.md
-
-# Source: https://docs.agent.ai/builder/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Builder Overview
 
@@ -116,6 +90,8 @@ Enabling user configured schedules allows users of your agent to set up recurrin
 #### **Enable agent via email**
 
 When this setting is enabled, the agent will also be accessible via email. Users can email the agent's address and receive a full response back.
+
+Email-triggered agents can now also support file attachments. When an incoming email includes an attachment, the file is automatically uploaded and made available to your workflow. You can reference it in subsequent steps just like any other user-provided file.
 
 <Note>
   Agents will only respond to emails sent from the same address you use to log into [Agent.ai](http://Agent.ai).

@@ -4,7 +4,6 @@
 title: Managed Disk Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: 'Docs > Cloudcraft (Standalone) > Components: Azure > Managed Disk Component'
-source_url: https://docs.datadoghq.com/components-azure/managed-disk/index.html
 ---
 
 # Managed Disk Component

@@ -4,23 +4,9 @@
 
 # Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/named-entity-recognition/model-monitoring-and-data-drift.md
 
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/text-classification/model-monitoring-and-data-drift.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/natural-language-inference/model-monitoring-and-data-drift.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/named-entity-recognition/model-monitoring-and-data-drift.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/text-classification/model-monitoring-and-data-drift.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/natural-language-inference/model-monitoring-and-data-drift.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/named-entity-recognition/model-monitoring-and-data-drift.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/text-classification/model-monitoring-and-data-drift.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/natural-language-inference/model-monitoring-and-data-drift.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/named-entity-recognition/model-monitoring-and-data-drift.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Model Monitoring & Data Drift | Named Entity Recognition
 
@@ -70,7 +56,7 @@ model.predict(input) --> "positive review"
 
 Log your inference dataset. Galileo will join these samples with the model's outputs and present them in the Console. Note that unlike training, where ground truth labels are present for validation, during inference we assume that no ground truth labels exist.
 
-```Py Pytorch
+```Py Pytorch theme={null}
 
     import torch
     import dataquality
@@ -108,7 +94,7 @@ Log your inference dataset. Galileo will join these samples with the model's out
 
 Log model outputs from within your model's forward function.
 
-```py PyTorch
+```py PyTorch theme={null}
 
     import torch
     import torch.nn.functional as F
@@ -146,7 +132,7 @@ Login and initialize a *new* project + run name *or* one matching an existing tr
 
 Note: If you're extending a current training run, the `list_of_labels` logged for your dataset must match exactly that used during training.
 
-```py PyTorch
+```py PyTorch theme={null}
 
     import numpy as np
     import io

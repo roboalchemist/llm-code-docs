@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-empty-function.md
 ---
-# eslint/no-empty-function&#x20;
 
 ### What it does
 

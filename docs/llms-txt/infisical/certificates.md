@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/pki/certificates/certificates.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Certificates
 
 <Note>
@@ -16,23 +20,81 @@ A certificate is the (X.509) leaf certificate issued for a certificate profile.
 Once issued, a certificate is kept track of in the certificate inventory
 where you can manage various aspects of its lifecycle including deployment to cloud key stores, server-side auto-renewal behavior, revocation, and more.
 
+## Guide to Viewing Certificate Details
+
+You can view comprehensive details for any certificate by clicking on it in the certificates table. This opens the certificate details page where you can see all certificate information and perform management actions.
+
+<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate/cert-details.png" alt="pki certificate details page" />
+
+### Certificate Information
+
+The details page displays:
+
+* **Overview**: Common name, friendly name, status badge, serial number, and validity period. Dates are shown in UTC with local time available on hover.
+* **Issuance**: The issuing Certificate Authority (with link to CA details), certificate profile used, and renewal chain showing if the certificate was renewed from or has been renewed by another certificate.
+* **Subject Attributes**: Full distinguished name components including Organization, Organizational Unit, Country, State, Locality, and Subject Alternative Names.
+* **Extensions**: Basic constraints (CA flag and path length), Key Usage flags, and Extended Key Usage purposes.
+* **Cryptographic Info**: Key algorithm, signature algorithm, and certificate fingerprints (SHA-256 and SHA-1).
+
+### Managing Certificates
+
+From the certificate details page, you can perform various actions using the **Options** dropdown menu:
+
+* **Export Certificate**: Download the certificate in PEM or PKCS12 format
+* **Enable/Manage Auto-Renewal**: Configure server-driven certificate renewal (available for API-enrolled certificates with server-generated keys)
+* **Renew Now**: Manually trigger certificate renewal
+* **Manage PKI Syncs**: Configure destinations to sync the certificate to cloud key stores
+* **Revoke Certificate**: Revoke the certificate with a specified reason
+* **Delete Certificate**: Permanently remove the certificate from the inventory
+
 ## Guide to Issuing Certificates
 
-To issue a certificate, you must first create a [certificate profile](/documentation/platform/pki/certificates/profiles) and a [certificate template](/documentation/platform/pki/certificates/templates) to go along with it.
+To [issue a certificate](/documentation/platform/pki/concepts/certificate-lifecycle#enrollment-request-%2F-issuance), you must first create a [certificate profile](/documentation/platform/pki/certificates/profiles) and a [certificate policy](/documentation/platform/pki/certificates/policies) to go along with it.
 
-The [enrollment method](/documentation/platform/pki/enrollment-methods/overview) configured on the certificate profile determines how a certificate is issued for it.
-Refer to the documentation for each enrollment method to learn more about how to issue certificates using it.
+* Self-Signed Certificates: To issue a [self-signed certificate](https://en.wikipedia.org/wiki/Self-signed_certificate), you must configure the certificate profile to use the `Self-Signed` issuer type. You can then use the [API enrollment method](/documentation/platform/pki/enrollment-methods/api) to request a self-signed certificate against it.
+* CA-Issued Certificates: To issue a certificate from a certificate authority, you must configure the certificate profile to use the `Certificate Authority` issuer type and select the [issuing CA](/documentation/platform/pki/ca/overview) to use. You can then use one of the [enrollment methods](/documentation/platform/pki/enrollment-methods/overview) to request a certificate against it.
+
+<Tabs>
+  <Tab title="Infisical UI">
+    <Steps>
+      <Step title="Issue a certificate">
+        To issue a certificate, navigate to your Project > Certificates > Certificate Requests and click **Request**.
+
+                <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate/cert-issue.png" alt="pki certificates" />
+
+        Select the certificate profile and choose the **Request Method**:
+
+        * **Managed**: Infisical generates and manages the private key for you. Fill out the subject attributes, SANs, algorithms, and other certificate details.
+        * **CSR (Certificate Signing Request)**: Provide your own CSR when you need to manage your private key externally. The certificate will be issued using the subject information and public key contained in your CSR. See [Issue a Certificate with CSR](/documentation/platform/pki/guides/request-cert-csr) for more details.
+
+                <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate/cert-issue-modal.png" alt="pki certificate issue modal" />
+
+        When using the **CSR** method, paste your PEM-encoded Certificate Signing Request into the text area and specify the TTL:
+
+                <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate/cert-issue-modal-csr.png" alt="pki certificate issue modal csr" />
+
+        <Note>
+          When using a CSR, the subject attributes, subject alternative names, and key algorithm are extracted from your CSR. You only need to specify the TTL for the certificate. The CSR must be a valid PEM-encoded PKCS#10 request.
+        </Note>
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="API">
+    To issue certificates via API, refer to the [API enrollment method](/documentation/platform/pki/enrollment-methods/api) documentation.
+  </Tab>
+</Tabs>
 
 ## Guide to Renewing Certificates
 
 To [renew a certificate](/documentation/platform/pki/concepts/certificate-lifecycle#renewal), you can either request a new certificate from a certificate profile or have the platform
-automatically request a new one for you. Whether you pursue a client-driven or server-driven approach is totally dependent on the enrollment method configured on your certificate
+automatically request a new one for you to be delivered downstream to a target destination. Whether you pursue a client-driven or server-driven approach is totally dependent on the enrollment method configured on your certificate
 profile as well as your infrastructure use-case.
 
 ### Client-Driven Certificate Renewal
 
 Client-driven certificate renewal is when renewal is initiated client-side by the end-entity consuming the certificate.
-This is the most common approach to certificate renewal and is suitable for most use-cases.
+More specifically, the client (e.g. [Infisical Agent](/integrations/platforms/certificate-agent), [ACME client](https://letsencrypt.org/docs/client-options/), etc.) monitors the certificate and makes a request for Infisical to issue a new certificate back to it when the existing certificate is nearing expiration. This is the most common approach to certificate renewal and is suitable for most use-cases.
 
 ### Server-Driven Certificate Renewal
 
@@ -224,7 +286,7 @@ In the following steps, we explore how to revoke a X.509 certificate and obtain 
         ### Sample request
 
         ```bash Request theme={"dark"}
-        curl --location --request POST 'https://app.infisical.com/api/v1/pki/certificates/<cert-serial-number>/revoke' \
+        curl --location --request POST 'https://app.infisical.com/api/v1/cert-manager/certificates/<cert-id>/revoke' \
           --header 'Authorization: Bearer <access-token>' \
           --header 'Content-Type: application/json' \
           --data-raw '{
@@ -250,7 +312,7 @@ In the following steps, we explore how to revoke a X.509 certificate and obtain 
         ### Sample request
 
         ```bash Request theme={"dark"}
-        curl --location --request GET 'https://app.infisical.com/api/v1/pki/ca/<ca-id>/crls' \
+        curl --location --request GET 'https://app.infisical.com/api/v1/cert-manager/ca/internal/<ca-id>/crls' \
           --header 'Authorization: Bearer <access-token>'
         ```
 

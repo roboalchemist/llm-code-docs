@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/billing/about-usage-based-billing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Publishing and Database Billing
 
 > Learn how Replit bills for publishing and databases, including outbound data transfer, compute units, requests, and PostgreSQL usage metrics.
@@ -14,13 +18,9 @@ You can view your usage in your account [here](https://replit.com/account#resour
 
 If you need additional credits beyond your monthly subscription allowance, you can purchase credit packs on your billing page. See [Managing Your Spend](/billing/managing-spend) for more information about credit packs.
 
-<Note>
-  Credit packs are gradually rolling out to customers, so you may not have access yet. If you have any questions, you can [contact our Support team](https://replit.com/help).
-</Note>
-
 # Publishing
 
-### 1. Publishing Outbound Data Transfer
+## 1. Publishing Outbound Data Transfer
 
 This type of usage is billed per byte with Replit Core users receiving a monthly allowance. Only egress (outgoing) data is counted against this allowance, potentially leading to overages. In contrast, ingress (incoming) data is always free.
 
@@ -34,7 +34,7 @@ See the [pricing page](https://www.replit.com/pricing) for the current price of 
 
 ***
 
-### 2. Compute Units
+## 2. Compute Units
 
 Autoscale Deployments are billed based on Compute Units, which take into account both CPU and RAM usage over time.
 
@@ -53,7 +53,7 @@ Static Deployments don't consume Compute Units. Their billing is solely for Outb
 
 ***
 
-### 3. Requests
+## 3. Requests
 
 Autoscale Deployments also consider the number of requests made.
 
@@ -61,22 +61,22 @@ See the [pricing page](https://www.replit.com/pricing) for the current price of 
 
 # Databases
 
-### 1. PostgreSQL Usage Metrics
+Replit only charges for usage of [production databases](/cloud-services/storage-and-databases/production-databases) -- development databases are always free and included with every Replit App. For details on development databases, see [Development Database](/cloud-services/storage-and-databases/sql-database).
 
-Replit PostgreSQL offers effortless high availability with no administrative or maintenance burden. Being serverless, Replit PostgreSQL only charges for actual usage, resulting in potential cost savings of up to 10 times.
+Replit PostgreSQL is fully managed and serverless, providing effortless high availability and zero maintenance. Billing for production databases is based on actual usage, which can lead to significant cost savings.
 
-Replit PostgreSQL databases bill for usage based on the following usage metrics:
+Production PostgreSQL databases are billed by two usage metrics:
 
-* **[Compute Time](#compute-time)**: The amount of compute resources used per hour.
-* **[Data Storage](#data-storage)**: The volume of data and history stored.
+* **[Compute Time](#compute-time)**: The amount of compute resources consumed per hour.
+* **[Data Storage](#data-storage)**: The total volume of data (including historical data) stored.
 
-You can view your usage in your account [here](https://replit.com/account#resource-usage).
+You can view your current resource usage, including production database usage, in your account [here](https://replit.com/account#resource-usage).
 
-#### **Compute Time**
+## Compute Time
 
 Compute time is determined by number of hours your database remains active during a given billing period. Databases are considered active when they receive requests and for an additional 5-minute period after the last request. If a database remains idle for 5 minutes, it will be suspended and enter an inactive state.
 
-#### **Data Storage**
+## Data Storage
 
 Data storage is the total volume of data stored across all databases in your account, measured in gibibytes (GiB). Storage is calculated as the maximum amount of storage used per month. Each PostgreSQL database consumes 33MB of storage, even if it doesn't contain any data. This is the default storage footprint of the Postgres server.
 

@@ -2,19 +2,7 @@
 
 # Source: https://docs.livekit.io/agents/models/stt/inference/assemblyai.md
 
-# Source: https://docs.livekit.io/agents/models/stt/plugins/assemblyai.md
-
-# Source: https://docs.livekit.io/agents/models/stt/inference/assemblyai.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/assemblyai.md
-
-# Source: https://docs.livekit.io/agents/models/stt/inference/assemblyai.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/assemblyai.md
-
-# Source: https://docs.livekit.io/agents/models/stt/inference/assemblyai.md
-
-LiveKit docs › Models › Speech-to-text (STT) › LiveKit Inference › AssemblyAI
+LiveKit docs › Models › STT › Inference › AssemblyAI
 
 ---
 
@@ -29,6 +17,7 @@ LiveKit Inference offers transcription powered by AssemblyAI. Pricing informatio
 | Model name | Model ID | Languages |
 | -------- | -------- | --------- |
 | Universal-Streaming | `assemblyai/universal-streaming` | `en`, `en-US` |
+| Universal-Streaming-Multilingual | `assemblyai/universal-streaming-multilingual` | `en`, `en-US`, `en-GB`, `en-AU`, `en-CA`, `en-IN`, `en-NZ`, `es`, `es-ES`, `es-MX`, `es-AR`, `es-CO`, `es-CL`, `es-PE`, `es-VE`, `es-EC`, `es-GT`, `es-CU`, `es-BO`, `es-DO`, `es-HN`, `es-PY`, `es-SV`, `es-NI`, `es-CR`, `es-PA`, `es-UY`, `es-PR`, `fr`, `fr-FR`, `fr-CA`, `fr-BE`, `fr-CH`, `de`, `de-DE`, `de-AT`, `de-CH`, `it`, `it-IT`, `it-CH`, `pt`, `pt-BR`, `pt-PT` |
 
 ## Usage
 
@@ -104,6 +93,23 @@ session = new AgentSession({
 
 In Node.js this parameter is called `modelOptions`.
 
+## Turn detection
+
+AssemblyAI includes a custom phrase endpointing model that uses both audio and linguistic information to detect turn boundaries. To use this model for [turn detection](https://docs.livekit.io/agents/build/turns.md), set `turn_detection="stt"` in the `AgentSession` constructor. You should also provide a VAD plugin for responsive interruption handling.
+
+```python
+session = AgentSession(
+    turn_detection="stt",
+    stt=inference.STT(
+        model="assemblyai/universal-streaming", 
+        language="en"
+    ),
+    vad=silero.VAD.load(), # Recommended for responsive interruption handling
+    # ... llm, tts, etc.
+)
+
+```
+
 ## Additional resources
 
 The following links provide more information about AssemblyAI in LiveKit Inference.
@@ -114,7 +120,7 @@ The following links provide more information about AssemblyAI in LiveKit Inferen
 
 ---
 
-This document was rendered at 2025-11-18T23:55:06.229Z.
+This document was rendered at 2026-02-03T03:25:02.318Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/stt/inference/assemblyai.md](https://docs.livekit.io/agents/models/stt/inference/assemblyai.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

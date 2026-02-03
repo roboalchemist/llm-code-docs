@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/openai/
+
 # OpenAI
 
 To use the OpenAI API, set the `OPENAI_API_KEY` environment variable to your OpenAI API key.

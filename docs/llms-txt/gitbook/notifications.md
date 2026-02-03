@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/collaboration/notifications.md
-
-# Source: https://gitbook.com/docs/documentation/fr/collaboration/notifications.md
-
-# Source: https://gitbook.com/docs/collaboration/notifications.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/collaboration/notifications.md
 
 # Source: https://gitbook.com/docs/documentation/zh/collaboration/notifications.md
 

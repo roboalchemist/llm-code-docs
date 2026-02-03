@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/set-api-key.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # firectl set-api-key
 
 > Sets the default API key in ~/.fireworks/auth.ini.
@@ -27,8 +31,3 @@ firectl set-api-key API_KEY
       --api-key string      An API key used to authenticate with Fireworks.
   -p, --profile string      fireworks auth and settings profile to use.
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireworks.ai/llms.txt

@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Continuous Integration Visibility > CI Visibility Guides > Set
   Ingestion Control for CI Visibility
-source_url: https://docs.datadoghq.com/guides/ingestion_control/index.html
 ---
 
 # Set Ingestion Control for CI Visibility

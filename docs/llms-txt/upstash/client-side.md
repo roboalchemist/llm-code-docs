@@ -1,24 +1,82 @@
 # Source: https://upstash.com/docs/realtime/features/client-side.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Client-Side Usage
 
-The `useRealtime` hook connects your React components to realtime events with full type safety.
+The `useRealtime` hook connects your React components to real-time events with full type safety.
+
+## Setup
+
+### 1. Add the Provider
+
+Wrap your app in the `RealtimeProvider`:
+
+```tsx
+providers.tsx
+theme={"system"}
+
+"use client"
+
+import { RealtimeProvider } from "@upstash/realtime/client"
+
+export function Providers({ children }: { children: React.ReactNode }) {
+  return <RealtimeProvider>{children}</RealtimeProvider>
+}
+```
+
+```tsx
+layout.tsx
+theme={"system"}
+
+import { Providers } from "./providers"
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
+    </html>
+  )
+}
+```
+
+### 2. Create Typed Hook
+
+Create a typed `useRealtime` hook using `createRealtime`:
+
+```typescript
+lib/realtime-client.ts
+theme={"system"}
+
+"use client"
+
+import { createRealtime } from "@upstash/realtime/client"
+import type { RealtimeEvents } from "./realtime"
+
+export const { useRealtime } = createRealtime<RealtimeEvents>()
+```
 
 ## Basic Usage
 
 Subscribe to events in any client component:
 
-```tsx page.tsx theme={"system"}
+```tsx
+page.tsx
+theme={"system"}
+
 "use client"
 
-import { useRealtime } from "@upstash/realtime/client"
-import type { RealtimeEvents } from "@/lib/realtime"
+import { useRealtime } from "@/lib/realtime-client"
 
 export default function Page() {
-  useRealtime<RealtimeEvents>({
-    event: "notification.alert",
-    onData(data, channel) {
-      console.log("Received:", data)
+  useRealtime({
+    events: ["notification.alert"],
+    onData({ event, data, channel }) {
+      console.log(`Received ${event}:`, data)
     },
   })
 
@@ -26,37 +84,54 @@ export default function Page() {
 }
 ```
 
-## Hook Options
+## Provider Options
 
-<ParamField path="event" type="string" required>
-  The event to subscribe to (e.g. `"notification.alert"`)
-</ParamField>
-
-<ParamField path="onData" type="function" required>
-  Callback when an event is received. Receives `data` and `channel` as arguments.
-</ParamField>
-
-<ParamField path="channels" type="string[]" default="[&#x22;default&#x22;]">
-  Array of channel names to subscribe to
-</ParamField>
-
-<ParamField path="history" type="boolean | object" default="false">
-  * `true`: Fetch all available history
-  * `{ length: number }`: Fetch the last N messages
-  * `{ since: number }`: Fetch messages after a Unix timestamp (in milliseconds)
-</ParamField>
-
-<ParamField path="enabled" type="boolean" default="true">
-  Whether the connection is active. Set to `false` to disconnect.
+<ParamField path="api" type="object" default="{ url: '/api/realtime', withCredentials: false }">
+  API configuration: - `url`: The realtime endpoint URL - `withCredentials`: Whether to
+  send cookies with requests
 </ParamField>
 
 <ParamField path="maxReconnectAttempts" type="number" default="3">
   Maximum number of reconnection attempts before giving up
 </ParamField>
 
-<ParamField path="api" type="object" default="{ url: &#x22;/api/realtime&#x22;, withCredentials: false }">
-  API configuration: - `url`: The realtime endpoint URL, defaults to `/api/realtime` -
-  `withCredentials`: Whether to send cookies with requests (useful for external backends)
+```tsx
+providers.tsx
+theme={"system"}
+
+"use client"
+
+import { RealtimeProvider } from "@upstash/realtime/client"
+
+export function Providers({ children }: { children: React.ReactNode }) {
+  return (
+    <RealtimeProvider
+      api={{ url: "/api/realtime", withCredentials: true }}
+      maxReconnectAttempts={5}
+    >
+      {children}
+    </RealtimeProvider>
+  )
+}
+```
+
+## Hook Options
+
+<ParamField path="events" type="string[]">
+  Array of event names to subscribe to (e.g. `["notification.alert", "chat.message"]`)
+</ParamField>
+
+<ParamField path="onData" type="function">
+  Callback when an event is received. Receives an object with `event`, `data`, and
+  `channel`.
+</ParamField>
+
+<ParamField path="channels" type="string[]" default=["default"]>
+  Array of channel names to subscribe to
+</ParamField>
+
+<ParamField path="enabled" type="boolean" default="true">
+  Whether the subscription is active. Set to `false` to disconnect.
 </ParamField>
 
 ## Return Value
@@ -64,14 +139,18 @@ export default function Page() {
 The hook returns an object with:
 
 <ResponseField name="status" type="ConnectionStatus">
-  Current connection state: `"connecting"`, `"connected"`, `"reconnecting"`,
-  `"disconnected"`, or `"error"`
+  Current connection state: `"connecting"`, `"connected"`, `"disconnected"`, or `"error"`
 </ResponseField>
 
-```tsx page.tsx theme={"system"}
-const { status } = useRealtime<RealtimeEvents>({
-  event: "notification.alert",
-  onData: (data, channel) => {},
+```tsx
+page.tsx
+theme={"system"}
+
+import { useRealtime } from "@/lib/realtime-client"
+
+const { status } = useRealtime({
+  events: ["notification.alert"],
+  onData({ event, data, channel }) {},
 })
 
 console.log(status)
@@ -81,30 +160,29 @@ console.log(status)
 
 Enable or disable connections dynamically:
 
-```tsx page.tsx theme={"system"}
+```tsx
+page.tsx
+theme={"system"}
+
 "use client"
 
 import { useState } from "react"
-import { useRealtime } from "@upstash/realtime/client"
-import type { RealtimeEvents } from "@/lib/realtime"
+import { useRealtime } from "@/lib/realtime-client"
 
 export default function Page() {
   const [enabled, setEnabled] = useState(true)
 
-  const { status } = useRealtime<RealtimeEvents>({
+  const { status } = useRealtime({
     enabled,
-    event: "notification.alert",
-    onData: (data, channel) => {
-      console.log(data, channel)
+    events: ["notification.alert"],
+    onData({ event, data, channel }) {
+      console.log(event, data, channel)
     },
   })
 
   return (
     <div>
-      <button onClick={() => setEnabled((prev) => !prev)}>
-        {enabled ? "Disconnect" : "Connect"}
-      </button>
-
+      <button onClick={() => setEnabled((prev) => !prev)}>Disconnect</button>
       <p>Status: {status}</p>
     </div>
   )
@@ -115,21 +193,23 @@ export default function Page() {
 
 Connect only when certain conditions are met:
 
-```tsx page.tsx theme={"system"}
+```tsx
+page.tsx
+theme={"system"}
+
 "use client"
 
-import { useRealtime } from "@upstash/realtime/client"
-import type { RealtimeEvents } from "@/lib/realtime"
+import { useRealtime } from "@/lib/realtime-client"
 import { useUser } from "@/hooks/auth"
 
 export default function Page() {
   const { user } = useUser()
 
-  useRealtime<RealtimeEvents>({
+  useRealtime({
     enabled: Boolean(user),
-    channels: [`user-${user.id}`],
-    event: "notification.alert",
-    onData: (data, channel) => {
+    channels: [`user-${user?.id}`],
+    events: ["notification.alert"],
+    onData({ event, data, channel }) {
       console.log(data)
     },
   })
@@ -138,21 +218,50 @@ export default function Page() {
 }
 ```
 
+## Multiple Events
+
+Subscribe to multiple events at once:
+
+```tsx
+page.tsx
+theme={"system"}
+
+"use client"
+
+import { useRealtime } from "@/lib/realtime-client"
+
+export default function Page() {
+  useRealtime({
+    events: ["chat.message", "chat.reaction", "user.joined"],
+    onData({ event, data, channel }) {
+      // 👇 data is automatically typed based on the event
+      if (event === "chat.message") console.log("New message:", data)
+      if (event === "chat.reaction") console.log("New reaction:", data)
+      if (event === "user.joined") console.log("User joined:", data)
+    },
+  })
+
+  return <p>Listening to multiple events</p>
+}
+```
+
 ## Multiple Channels
 
 Subscribe to multiple channels at once:
 
-```tsx page.tsx theme={"system"}
+```tsx
+page.tsx
+theme={"system"}
+
 "use client"
 
-import { useRealtime } from "@upstash/realtime/client"
-import type { RealtimeEvents } from "@/lib/realtime"
+import { useRealtime } from "@/lib/realtime-client"
 
 export default function Page() {
-  useRealtime<RealtimeEvents>({
+  useRealtime({
     channels: ["global", "announcements", "user-123"],
-    event: "notification.alert",
-    onData(data, channel) {
+    events: ["notification.alert"],
+    onData({ event, data, channel }) {
       console.log(`Message from ${channel}:`, data)
     },
   })
@@ -165,20 +274,22 @@ export default function Page() {
 
 Add and remove channels dynamically:
 
-```tsx page.tsx theme={"system"}
+```tsx
+page.tsx
+theme={"system"}
+
 "use client"
 
 import { useState } from "react"
-import { useRealtime } from "@upstash/realtime/client"
-import type { RealtimeEvents } from "@/lib/realtime"
+import { useRealtime } from "@/lib/realtime-client"
 
 export default function Page() {
   const [channels, setChannels] = useState<string[]>(["lobby"])
 
-  useRealtime<RealtimeEvents>({
+  useRealtime({
     channels,
-    event: "chat.message",
-    onData(data, channel) {
+    events: ["chat.message"],
+    onData({ event, data, channel }) {
       console.log(`Message from ${channel}:`, data)
     },
   })
@@ -202,63 +313,29 @@ export default function Page() {
 }
 ```
 
-## Fetch History on Connection
-
-Replay past messages when connecting:
-
-```tsx page.tsx theme={"system"}
-"use client"
-
-import { useState } from "react"
-import { useRealtime } from "@upstash/realtime/client"
-import type { RealtimeEvents } from "@/lib/realtime"
-
-export default function ChatRoom() {
-  const [messages, setMessages] = useState<string[]>([])
-
-  useRealtime<RealtimeEvents>({
-    event: "chat.message",
-    history: { length: 50 },
-    onData(data, channel) {
-      // each history item is automatically passed to this handler
-      // so you can replay with any logic you like
-      setMessages((prev) => [...prev, data])
-    },
-  })
-
-  return (
-    <div>
-      {messages.map((msg, i) => (
-        <p key={i}>{msg}</p>
-      ))}
-    </div>
-  )
-}
-```
-
 ## Custom API Endpoint
 
-Configure a custom realtime endpoint:
+Configure a custom realtime endpoint in the provider:
 
-```tsx page.tsx theme={"system"}
+```tsx
+providers.tsx
+theme={"system"}
+
 "use client"
 
-import { useRealtime } from "@upstash/realtime/client"
-import type { RealtimeEvents } from "@/lib/realtime"
+import { RealtimeProvider } from "@upstash/realtime/client"
 
-export default function Page() {
-  useRealtime<RealtimeEvents>({
-    event: "notification.alert",
-    api: {
-      url: "/api/custom-realtime",
-      withCredentials: true,
-    },
-    onData: (data, channel) => {
-      console.log(data)
-    },
-  })
-
-  return <p>Connected to custom endpoint</p>
+export function Providers({ children }: { children: React.ReactNode }) {
+  return (
+    <RealtimeProvider
+      api={{
+        url: "/api/custom-realtime",
+        withCredentials: true,
+      }}
+    >
+      {children}
+    </RealtimeProvider>
+  )
 }
 ```
 
@@ -268,133 +345,138 @@ export default function Page() {
   <Accordion title="Live Notifications">
     Show real-time notifications to users:
 
-    ```tsx notifications.tsx theme={"system"}
-    "use client"
+    ```tsx
+notifications.tsx
+theme={"system"}
 
-    import { useState } from "react"
-    import { useRealtime } from "@upstash/realtime/client"
-    import type { RealtimeEvents } from "@/lib/realtime"
-    import { toast } from "react-hot-toast"
-    import { useUser } from "@/hooks/auth"
+"use client"
 
-    export default function Notifications() {
-      const { user } = useUser()
+import { useRealtime } from "@/lib/realtime-client"
+import { toast } from "react-hot-toast"
+import { useUser } from "@/hooks/auth"
 
-      useRealtime<RealtimeEvents>({
-        channels: [`user-${user.id}`],
-        event: "notification.alert",
-        onData(content, channel) {
-          toast(content)
-        },
-      })
+export default function Notifications() {
+  const { user } = useUser()
 
-      return <p>Listening for notifications...</p>
-    }
+  useRealtime({
+    channels: [`user-${user.id}`],
+    events: ["notification.alert"],
+    onData({ data }) {
+      toast(data)
+    },
+  })
+
+  return <p>Listening for notifications...</p>
+}
     ```
   </Accordion>
 
   <Accordion title="Realtime Chat">
     Build a real-time chat:
 
-    ```tsx chat.tsx theme={"system"}
-    "use client"
+    ```tsx
+chat.tsx
+theme={"system"}
 
-    import { useState } from "react"
-    import { useRealtime } from "@upstash/realtime/client"
-    import type { RealtimeEvents } from "@/lib/realtime"
-    import z from "zod/v4"
+"use client"
 
-    type Message = z.infer<RealtimeEvents["chat"]["message"]>
+import { useState } from "react"
+import { useRealtime } from "@/lib/realtime-client"
+import z from "zod/v4"
+import type { RealtimeEvents } from "@/lib/realtime"
 
-    export default function Chat() {
-      const [messages, setMessages] = useState<Message[]>([])
+type Message = z.infer<RealtimeEvents["chat"]["message"]>
 
-      useRealtime<RealtimeEvents>({
-        channels: ["room-123"],
-        event: "chat.message",
-        history: true,
-        onData(message, channel) {
-          setMessages((prev) => [...prev, message])
-        },
-      })
+export default function Chat() {
+  const [messages, setMessages] = useState<Message[]>([])
 
-      return (
-        <div>
-          {messages.map((msg, i) => (
-            <p key={i}>
-              <span className="font-bold">{msg.sender}:</span> {msg.text}
-            </p>
-          ))}
-        </div>
-      )
-    }
+  useRealtime({
+    channels: ["room-123"],
+    events: ["chat.message"],
+    onData({ data }) {
+      setMessages((prev) => [...prev, data])
+    },
+  })
+
+  return (
+    <div>
+      {messages.map((msg, i) => (
+        <p key={i}>
+          <span className="font-bold">{msg.sender}:</span> {msg.text}
+        </p>
+      ))}
+    </div>
+  )
+}
     ```
   </Accordion>
 
   <Accordion title="Live Dashboard">
     Update metrics in real-time:
 
-    ```tsx dashboard.tsx theme={"system"}
-    "use client"
+    ```tsx
+dashboard.tsx
+theme={"system"}
 
-    import { useQuery, useQueryClient } from "@tanstack/react-query"
-    import { useRealtime } from "@upstash/realtime/client"
-    import type { RealtimeEvents } from "@/lib/realtime"
+"use client"
 
-    export default function Dashboard() {
-      const queryClient = useQueryClient()
-      
-      const { data: metrics } = useQuery({
-        queryKey: ["metrics"],
-        queryFn: async () => {
-          const res = await fetch("/api/metrics?user=user-123")
-          return res.json()
-        },
-      })
+import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { useRealtime } from "@/lib/realtime-client"
 
-      useRealtime<RealtimeEvents>({
-        channels: ["user-123"],
-        event: "metrics.update",
-        onData() {
-          // 👇 invalidate, so react-query refetches
-          queryClient.invalidateQueries({ queryKey: ["metrics"] })
-        },
-      })
+export default function Dashboard() {
+  const queryClient = useQueryClient()
 
-      return (
-        <div>
-          <p>Active Users: {metrics.users}</p>
-          <p>Revenue: ${metrics.revenue}</p>
-        </div>
-      )
-    }
+  const { data: metrics } = useQuery({
+    queryKey: ["metrics"],
+    queryFn: async () => {
+      const res = await fetch("/api/metrics?user=user-123")
+      return res.json()
+    },
+  })
+
+  useRealtime({
+    channels: ["user-123"],
+    events: ["metrics.update"],
+    onData() {
+      queryClient.invalidateQueries({ queryKey: ["metrics"] })
+    },
+  })
+
+  return (
+    <div>
+      <p>Active Users: {metrics?.users}</p>
+      <p>Revenue: ${metrics?.revenue}</p>
+    </div>
+  )
+}
     ```
   </Accordion>
 
   <Accordion title="Collaborative Editing">
     Sync changes across users:
 
-    ```tsx editor.tsx theme={"system"}
-    "use client"
+    ```tsx
+editor.tsx
+theme={"system"}
 
-    import { useState } from "react"
-    import { useRealtime } from "@upstash/realtime/client"
-    import type { RealtimeEvents } from "@/lib/realtime"
+"use client"
 
-    export default function Editor({ documentId }: { documentId: string }) {
-      const [content, setContent] = useState("")
+import { useState } from "react"
+import { useRealtime } from "@/lib/realtime-client"
 
-      useRealtime<RealtimeEvents>({
-        channels: [`doc-${documentId}`],
-        event: "document.update",
-        history: { length: 1 },
-        onData(data, channel) {
-          setContent(data.content)
-        },
-      })
+export default function Editor({ documentId }: { documentId: string }) {
+  const [content, setContent] = useState("")
 
-      return <textarea value={content} onChange={(e) => setContent(e.target.value)} />
-    }
+  useRealtime({
+    channels: [`doc-${documentId}`],
+    events: ["document.update"],
+    onData({ data }) {
+      setContent(data.content)
+    },
+  })
+
+  return <textarea value={content} onChange={(e) => setContent(e.target.value)} />
+}
     ```
   </Accordion>
 </AccordionGroup>

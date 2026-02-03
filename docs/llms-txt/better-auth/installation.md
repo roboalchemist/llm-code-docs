@@ -4,11 +4,7 @@
 
 Learn how to configure Better Auth in your project.
 
-***
 
-title: Installation
-description: Learn how to configure Better Auth in your project.
-----------------------------------------------------------------
 
 <Steps>
   <Step>
@@ -16,7 +12,7 @@ description: Learn how to configure Better Auth in your project.
 
     Let's start by adding Better Auth to your project:
 
-    <CodeBlockTabs defaultValue="npm">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
       <CodeBlockTabsList>
         <CodeBlockTabsTrigger value="npm">
           npm
@@ -473,22 +469,52 @@ description: Learn how to configure Better Auth in your project.
 
       <Tab value="tanstack-start">
         ```ts title="src/routes/api/auth/$.ts"
+        import { auth } from '@/lib/auth'
         import { createFileRoute } from '@tanstack/react-router'
-        import { auth } from '@/lib/auth/auth'
 
         export const Route = createFileRoute('/api/auth/$')({
-        server: {
-            handlers: {
-                GET: async ({ request }:{ request: Request }) => {
-                    return await auth.handler(request)
-                },
-                POST: async ({ request }:{ request: Request }) => {
-                    return await auth.handler(request)
+            server: {
+                handlers: {
+                    GET: async ({ request }:{ request: Request }) => {
+                        return await auth.handler(request)
+                    },
+                    POST: async ({ request }:{ request: Request }) => {
+                        return await auth.handler(request)
+                    },
                 },
             },
-        },
         })
         ```
+
+        <Callout type="info">
+          When you call functions that need to set cookies (like `signInEmail` or `signUpEmail`), you'll need to handle cookie setting for TanStack Start. Better Auth provides a `tanstackStartCookies` plugin to automatically handle this for you.
+
+          For React (TanStack Start with React):
+
+          ```ts title="src/lib/auth.ts"
+          import { betterAuth } from "better-auth";
+          import { tanstackStartCookies } from "better-auth/tanstack-start";
+
+          export const auth = betterAuth({
+              //...your config
+              plugins: [tanstackStartCookies()] // make sure this is the last plugin in the array
+          })
+          ```
+
+          For Solid.js (TanStack Start with Solid):
+
+          ```ts title="src/lib/auth.ts"
+          import { betterAuth } from "better-auth";
+          import { tanstackStartCookies } from "better-auth/tanstack-start/solid";
+
+          export const auth = betterAuth({
+              //...your config
+              plugins: [tanstackStartCookies()] // make sure this is the last plugin in the array
+          })
+          ```
+
+          Now, when you call functions that set cookies, they will be automatically set using TanStack Start's cookie handling system.
+        </Callout>
       </Tab>
 
       <Tab value="expo">

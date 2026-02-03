@@ -28,7 +28,7 @@ In ASP.NET Core Apps we recommend using [mix](/mix-tool) to configure your prefe
 it proposes adopting a naming convention in app settings and file names that other `mix` features can also make use of:
 
 :::sh
-x mix [mq]
+npx add-in [mq]
 :::
 
 Currently available list of MQ Services:
@@ -52,10 +52,10 @@ If you'd instead prefer to develop stand-alone MQ Servers (i.e. without HTTP acc
 
 || .NET Core C# Worker Service Templates |
 |-|-|
-| [worker-rabbitmq](https://github.com/NetCoreTemplates/worker-rabbitmq)        | .NET 8.0 Rabbit MQ Worker Service |
-| [worker-redismq](https://github.com/NetCoreTemplates/worker-redismq)        | .NET 8.0 Redis MQ Worker Service |
-| [worker-servicebus](https://github.com/NetCoreTemplates/worker-servicebus)        | .NET 8.0 Azure Service Bus MQ Worker Service |
-| [worker-sqs](https://github.com/NetCoreTemplates/worker-sqs)        | .NET 8.0 AWS SQS MQ Worker Service |
+| [worker-rabbitmq](https://github.com/NetCoreTemplates/worker-rabbitmq)        | .NET 10.0 Rabbit MQ Worker Service |
+| [worker-redismq](https://github.com/NetCoreTemplates/worker-redismq)        | .NET 10.0 Redis MQ Worker Service |
+| [worker-servicebus](https://github.com/NetCoreTemplates/worker-servicebus)        | .NET 10.0 Azure Service Bus MQ Worker Service |
+| [worker-sqs](https://github.com/NetCoreTemplates/worker-sqs)        | .NET 10.0 AWS SQS MQ Worker Service |
 
 ## MQ Stats on Admin UI Dashboard
 
@@ -580,7 +580,7 @@ or configure your App to use the In Memory `BackgroundMqService` implementation.
 Add `feature-mq` to your project with:
 
 :::sh
-x mix feature-mq
+npx add-in feature-mq
 :::
 
 ![](/img/pages/nav/feature-mq.png)

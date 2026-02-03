@@ -1,170 +1,133 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/logs/get-logs-for-a-deployment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get logs for a deployment
 
 > Returns a stream of logs for a given deployment.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/projects/{projectId}/deployments/{deploymentId}/runtime-logs
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/projects/{projectId}/deployments/{deploymentId}/runtime-logs
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        projectId:
+  /v1/projects/{projectId}/deployments/{deploymentId}/runtime-logs:
+    get:
+      tags:
+        - logs
+      summary: Get logs for a deployment
+      description: Returns a stream of logs for a given deployment.
+      operationId: getRuntimeLogs
+      parameters:
+        - name: projectId
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-        deploymentId:
+            type: string
+        - name: deploymentId
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-      query:
-        teamId:
+            type: string
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getRuntimeLogs
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.logs.getRuntimeLogs({
-              projectId: "<id>",
-              deploymentId: "<id>",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/stream+json:
-        schemaArray:
-          - type: object
-            properties:
-              level:
-                allOf:
-                  - type: string
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: ''
+          content:
+            application/stream+json:
+              schema:
+                properties:
+                  level:
+                    type: string
                     enum:
                       - error
                       - warning
                       - info
-              message:
-                allOf:
-                  - type: string
-              rowId:
-                allOf:
-                  - type: string
-              source:
-                allOf:
-                  - type: string
+                  message:
+                    type: string
+                  rowId:
+                    type: string
+                  source:
+                    type: string
                     enum:
                       - delimiter
                       - edge-function
                       - edge-middleware
                       - serverless
                       - request
-              timestampInMs:
-                allOf:
-                  - type: number
-              domain:
-                allOf:
-                  - type: string
-              messageTruncated:
-                allOf:
-                  - type: boolean
-              requestMethod:
-                allOf:
-                  - type: string
-              requestPath:
-                allOf:
-                  - type: string
-              responseStatusCode:
-                allOf:
-                  - type: number
-            requiredProperties:
-              - level
-              - message
-              - rowId
-              - source
-              - timestampInMs
-              - domain
-              - messageTruncated
-              - requestMethod
-              - requestPath
-              - responseStatusCode
-        examples:
-          example:
-            value:
-              level: error
-              message: <string>
-              rowId: <string>
-              source: delimiter
-              timestampInMs: 123
-              domain: <string>
-              messageTruncated: true
-              requestMethod: <string>
-              requestPath: <string>
-              responseStatusCode: 123
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-  deprecated: false
-  type: path
+                  timestampInMs:
+                    type: number
+                  domain:
+                    type: string
+                  messageTruncated:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  requestMethod:
+                    type: string
+                  requestPath:
+                    type: string
+                  responseStatusCode:
+                    type: number
+                required:
+                  - domain
+                  - level
+                  - message
+                  - messageTruncated
+                  - requestMethod
+                  - requestPath
+                  - responseStatusCode
+                  - rowId
+                  - source
+                  - timestampInMs
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

@@ -8,35 +8,9 @@
 
 # Source: https://docs.galileo.ai/client-reference/overview.md
 
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/galileo-product-features/overview.md
-
-# Source: https://docs.galileo.ai/galileo-ai-research/overview.md
-
-# Source: https://docs.galileo.ai/examples/overview.md
-
-# Source: https://docs.galileo.ai/deployments/overview.md
-
-# Source: https://docs.galileo.ai/client-reference/overview.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/galileo-product-features/overview.md
-
-# Source: https://docs.galileo.ai/galileo-ai-research/overview.md
-
-# Source: https://docs.galileo.ai/examples/overview.md
-
-# Source: https://docs.galileo.ai/deployments/overview.md
-
-# Source: https://docs.galileo.ai/client-reference/overview.md
-
-# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/galileo-product-features/overview.md
-
-# Source: https://docs.galileo.ai/galileo-ai-research/overview.md
-
-# Source: https://docs.galileo.ai/examples/overview.md
-
-# Source: https://docs.galileo.ai/deployments/overview.md
-
-# Source: https://docs.galileo.ai/client-reference/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Client References
 

@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > FAQ > Why can't I export diagrams as
   Terraform code anymore?
-source_url: https://docs.datadoghq.com/faq/why-cant-export-diagram-to-terraform/index.html
 ---
 
 # Why can't I export diagrams as Terraform code anymore?

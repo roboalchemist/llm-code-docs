@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/guides/scheduled-digest-email.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to create a scheduled email with Loops
 
 > How to send a daily, weekly or monthly email with a summary of what's happened in your app.

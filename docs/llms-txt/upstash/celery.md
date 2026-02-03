@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/integrations/celery.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Celery with Upstash Redis
 
 You can use **Celery** with Upstash Redis to build scalable and serverless task queues. Celery is a Python library that manages asynchronous task execution, while Upstash Redis acts as both the broker (queue) and the result backend.

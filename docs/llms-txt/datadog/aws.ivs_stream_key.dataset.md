@@ -4,8 +4,6 @@
 title: IVS Stream Key
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > IVS Stream Key
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ivs_stream_key.dataset/index.html
 ---
 
 # IVS Stream Key
@@ -18,10 +16,10 @@ aws.ivs_stream_key
 
 ## Fields
 
-| Title       | ID   | Type   | Data Type                   | Description |
-| ----------- | ---- | ------ | --------------------------- | ----------- |
-| _key        | core | string |
-| account_id  | core | string |
-| arn         | core | string | Stream-key ARN.             |
-| channel_arn | core | string | Channel ARN for the stream. |
-| tags        | core | hstore |
+| Title       | ID   | Type       | Data Type                   | Description |
+| ----------- | ---- | ---------- | --------------------------- | ----------- |
+| _key        | core | string     |
+| account_id  | core | string     |
+| arn         | core | string     | Stream-key ARN.             |
+| channel_arn | core | string     | Channel ARN for the stream. |
+| tags        | core | hstore_csv |

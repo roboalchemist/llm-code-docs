@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/bundler/esbuild.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # esbuild
 
 > Migration guide from esbuild to Bun's bundler
@@ -66,6 +70,7 @@ In Bun's CLI, simple boolean flags like `--minify` do not accept an argument. Ot
 | `--chunk-names`        | `--chunk-naming`           | Renamed for consistency with naming in JS API                                                                                                                                                                                                                                                                                                                           |
 | `--color`              | n/a                        | Always enabled                                                                                                                                                                                                                                                                                                                                                          |
 | `--drop`               | `--drop`                   |                                                                                                                                                                                                                                                                                                                                                                         |
+| n/a                    | `--feature`                | Bun-specific. Enable feature flags for compile-time dead-code elimination via `import { feature } from "bun:bundle"`                                                                                                                                                                                                                                                    |
 | `--entry-names`        | `--entry-naming`           | Renamed for consistency with naming in JS API                                                                                                                                                                                                                                                                                                                           |
 | `--global-name`        | n/a                        | Not applicable, Bun does not support `iife` output at this time                                                                                                                                                                                                                                                                                                         |
 | `--ignore-annotations` | `--ignore-dce-annotations` |                                                                                                                                                                                                                                                                                                                                                                         |

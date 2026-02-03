@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/features/advanced-usage/scores.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Eval Scores
 
 When running evaluation frameworks to measure model performance, you need visibility into how well your AI applications are performing across different metrics. Scores let you report evaluation results from any framework to Helicone, providing centralized observability for accuracy, hallucination rates, helpfulness, and custom metrics.

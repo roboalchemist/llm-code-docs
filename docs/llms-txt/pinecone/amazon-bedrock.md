@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/integrations/amazon-bedrock.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Amazon Bedrock
 
 > Pinecone as a Knowledge Base for Amazon Bedrock

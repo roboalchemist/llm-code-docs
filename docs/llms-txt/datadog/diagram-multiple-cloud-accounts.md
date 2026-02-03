@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Getting started > Diagram Multiple Cloud
   Accounts
-source_url: >-
-  https://docs.datadoghq.com/getting-started/diagram-multiple-cloud-accounts/index.html
 ---
 
 # Diagram Multiple Cloud Accounts

@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/process/os-signals.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Listen to OS signals
 
 Bun supports the Node.js `process` global, including the `process.on()` method for listening to OS signals.
@@ -7,16 +11,6 @@ Bun supports the Node.js `process` global, including the `process.on()` method f
 ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
 process.on("SIGINT", () => {
   console.log("Received SIGINT");
-});
-```
-
-***
-
-If you don't know which signal to listen for, you listen to the umbrella `"exit"` event.
-
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
-process.on("exit", code => {
-  console.log(`Process exited with code ${code}`);
 });
 ```
 
@@ -36,4 +30,4 @@ process.on("exit", code => {
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.

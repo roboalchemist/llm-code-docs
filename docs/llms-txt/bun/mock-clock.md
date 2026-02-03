@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/test/mock-clock.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Set the system time in Bun's test runner
 
 Bun's test runner supports setting the system time programmatically with the `setSystemTime` function.
@@ -20,7 +24,7 @@ test("party like it's 1999", () => {
 
 ***
 
-The `setSystemTime` function is commonly used on conjunction with [Lifecycle Hooks](https://bun.sh/docs/test/lifecycle) to configure a testing environment with a deterministic "fake clock".
+The `setSystemTime` function is commonly used on conjunction with [Lifecycle Hooks](/test/lifecycle) to configure a testing environment with a deterministic "fake clock".
 
 ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect, beforeAll, setSystemTime } from "bun:test";
@@ -45,4 +49,4 @@ setSystemTime(); // reset to actual time
 
 ***
 
-See [Docs > Test Runner > Date and time](https://bun.sh/docs/test/time) for complete documentation on mocking with the Bun test runner.
+See [Docs > Test Runner > Date and time](/test/dates-times) for complete documentation on mocking with the Bun test runner.

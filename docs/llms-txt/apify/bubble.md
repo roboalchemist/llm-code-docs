@@ -6,18 +6,18 @@
 
 ***
 
-https://bubble.io/ is a no-code platform that allows you to build web applications without writing code. With the https://bubble.io/plugin/apify-1749639212621x698168698147962900, you can easily connect your Apify Actors to your Bubble applications to automate workflows and display scraped data.
+[Bubble](https://bubble.io/) is a no-code platform that allows you to build web applications without writing code. With the [Apify integration for Bubble](https://bubble.io/plugin/apify-1749639212621x698168698147962900), you can easily connect your Apify Actors to your Bubble applications to automate workflows and display scraped data.
 
 Explore the live demo
 
-Open the demo Bubble app to check out the integration end-to-end before building your own: https://apify-28595.bubbleapps.io
+Open the demo Bubble app to check out the integration end-to-end before building your own: [apify-28595.bubbleapps.io](https://apify-28595.bubbleapps.io)
 
 ## Get started
 
 To use the Apify integration for Bubble, you will need:
 
-* An https://console.apify.com/
-* A https://bubble.io/
+* An [Apify account](https://console.apify.com/)
+* A [Bubble account](https://bubble.io/)
 * A Bubble application where you want to use the integration
 
 ## Install the Apify plugin for Bubble
@@ -288,34 +288,34 @@ The Apify plugin provides two main types of operations:
 
 **Data calls** (data sources):
 
-* https://docs.apify.com/api/v2/dataset-items-get
-* https://docs.apify.com/api/v2/dataset-items-get
-* https://docs.apify.com/api/v2/dataset-items-get
-* https://docs.apify.com/api/v2/datasets-get
-* https://docs.apify.com/api/v2/key-value-stores-get
-* https://docs.apify.com/api/v2/key-value-store-keys-get
-* https://docs.apify.com/api/v2/key-value-store-record-get
-* https://docs.apify.com/api/v2/key-value-store-record-get
-* https://docs.apify.com/api/v2/store-get
-* https://docs.apify.com/api/v2/acts-get
-* https://docs.apify.com/api/v2/actor-tasks-get
-* https://docs.apify.com/api/v2/act-run-sync-get-dataset-items-post
-* https://docs.apify.com/api/v2/act-run-sync-get-dataset-items-post
-* https://docs.apify.com/api/v2/act-runs-get
-* https://docs.apify.com/api/v2/act-runs-get
-* https://docs.apify.com/api/v2/webhooks-get
+* [Fetch Data From Dataset Text As Data](https://docs.apify.com/api/v2/dataset-items-get)
+* [Fetch Data From Dataset File As Data](https://docs.apify.com/api/v2/dataset-items-get)
+* [Fetch Data From Dataset Json As Data](https://docs.apify.com/api/v2/dataset-items-get)
+* [List User Datasets](https://docs.apify.com/api/v2/datasets-get)
+* [List Key-Value Stores](https://docs.apify.com/api/v2/key-value-stores-get)
+* [List Store Keys](https://docs.apify.com/api/v2/key-value-store-keys-get)
+* [Get Record As File](https://docs.apify.com/api/v2/key-value-store-record-get)
+* [Get Record As Image File](https://docs.apify.com/api/v2/key-value-store-record-get)
+* [List Store Actors](https://docs.apify.com/api/v2/store-get)
+* [List User Actors](https://docs.apify.com/api/v2/acts-get)
+* [List User Tasks](https://docs.apify.com/api/v2/actor-tasks-get)
+* [Scrape Single URL As File As Data](https://docs.apify.com/api/v2/act-run-sync-get-dataset-items-post)
+* [Scrape Single URL As Json As Data](https://docs.apify.com/api/v2/act-run-sync-get-dataset-items-post)
+* [List Actor Runs](https://docs.apify.com/api/v2/act-runs-get)
+* [List Specific Actor Runs](https://docs.apify.com/api/v2/act-runs-get)
+* [List Webhooks](https://docs.apify.com/api/v2/webhooks-get)
 
 **Actions** (workflow steps):
 
-* https://docs.apify.com/api/v2/dataset-items-get
-* https://docs.apify.com/api/v2/dataset-items-get
-* https://docs.apify.com/api/v2/key-value-store-record-get
-* https://docs.apify.com/api/v2/act-run-sync-get-dataset-items-post
-* https://docs.apify.com/api/v2/act-run-sync-get-dataset-items-post
-* https://docs.apify.com/api/v2/act-runs-post
-* https://docs.apify.com/api/v2/actor-task-runs-post
-* https://docs.apify.com/api/v2/webhooks-post
-* https://docs.apify.com/api/v2/webhook-delete
+* [Fetch Data From Dataset Text As Action](https://docs.apify.com/api/v2/dataset-items-get)
+* [Fetch Data From Dataset File As Action](https://docs.apify.com/api/v2/dataset-items-get)
+* [Get Record As Text](https://docs.apify.com/api/v2/key-value-store-record-get)
+* [Scrape Single URL As File As Action](https://docs.apify.com/api/v2/act-run-sync-get-dataset-items-post)
+* [Scrape Single URL As Json As Action](https://docs.apify.com/api/v2/act-run-sync-get-dataset-items-post)
+* [Run Actor](https://docs.apify.com/api/v2/act-runs-post)
+* [Run Actor Task](https://docs.apify.com/api/v2/actor-task-runs-post)
+* [Create Webhook](https://docs.apify.com/api/v2/webhooks-post)
+* [Delete Webhook](https://docs.apify.com/api/v2/webhook-delete)
 
 ## Use the latest version of the plugin
 
@@ -339,4 +339,4 @@ Bubble workflows have execution time limits. For long‑running Actors, set the 
 
 Check that your JSON input is valid when providing **Input overrides** and that dynamic expressions resolve to valid JSON values. Verify the structure of the dataset output when displaying it in your app.
 
-If you have any questions or need help, feel free to reach out to us on our https://discord.com/invite/jyEM2PRvMU.
+If you have any questions or need help, feel free to reach out to us on our [developer community on Discord](https://discord.com/invite/jyEM2PRvMU).

@@ -372,7 +372,7 @@ To help with unit testing, each config type has a corresponding builder type. Th
 
 A full example can be found in[ConfigSetSubscriptionTest.java](https://github.com/vespa-engine/vespa/blob/master/config/src/test/java/com/yahoo/config/subscription/ConfigSetSubscriptionTest.java).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

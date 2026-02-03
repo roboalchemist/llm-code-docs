@@ -4,11 +4,7 @@
 
 Google provider setup and usage.
 
-***
 
-title: Google
-description: Google provider setup and usage.
----------------------------------------------
 
 <Steps>
   <Step>

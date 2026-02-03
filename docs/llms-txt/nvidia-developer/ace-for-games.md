@@ -8,19 +8,19 @@ ACE for Games
 
 # NVIDIA ACE for Games
 
-NVIDIA ACE is a suite of digital human technologies for middleware and game developers that powers knowledgeable, actionable and conversational game characters using generative AI. ACE provides ready-to-integrate cloud and on-device AI models for each aspect of digital humans—from speech to intelligence to animation.
+NVIDIA ACE is a suite of AI technologies - spanning models and developer tools - designed to help middleware and game developers build knowledgeable, actionable and conversational in-game characters. ACE provides ready-to-integrate cloud and on-device AI models for each aspect of in-game characters—from speech to intelligence to animation.
 
 [Get Started  
-](#section-getting-started &quot;Github Repo&quot;)[Notify Me](https://developer.nvidia.com/ace-for-games/notify-me &quot;Github Repo&quot;)
+](#section-getting-started &quot;Get Started&quot;)[Notify Me](https://developer.nvidia.com/ace-for-games/notify-me &quot;Notify Me&quot;)
 
  ![A digital human powered by NVIDIA ACE Unreal Engine 5](https://developer.download.nvidia.com/images/ace-for-gamedev/Hiroki1.png)
 * * *
  
 ## Key Benefits
 
-### **Models Purpose Built for Gaming**
+### **Small Models for Gaming** 
 
-ACE offers a curated suite of AI models—from speech, vision and intelligence to realistic animation and behavior built to enhance game assistants, actors and agents
+ACE offers small AI models—from speech to vision, built to enhance game characters.
 
 ### Optimized for On-Device Inference 
 
@@ -36,37 +36,44 @@ AI models fine-tuned and optimized for gaming hardware, provide high accuracy an
 
 NVIDIA ACE is being used by industry-leading game developers and ISVs to build autonomous game characters that inhabit living, breathing worlds and AI assistants that provide tips and guidance to gamers and creators.
 
-### Autonomous Agents  
+### Assistants
 
-KRAFTON’s inZOI features Smart Zois, AI-driven agents that plan, act and reflect on their decisions for unique character dynamics.
+The Total War: PHARAOH AI advisor assists players in learning the game’s many systems and mechanics and is powered by an on-device small language model connected to Total War’s extensive game data.
 
-https://www.youtube-nocookie.com/embed/Pk9z1upOj3U?
- 
+https://www.youtube-nocookie.com/embed/6es-Zvh5bu4?&amp;rel=0
 
-### Autonomous Companions  
-
-KRAFTON’s PUBG introduces Co-Player Characters (CPC), AI-driven allies that communicate with natural language and act autonomously like a human teammate.
-
-https://www.youtube-nocookie.com/embed/wEKUSMqrbzQ?
- 
-
-### Autonomous Enemies  
-
-Wemade Next’s MIR5 introduces AI-powered bosses that continuously learn from previous player tactics to adapt and provide unique fights every run.
-
-https://www.youtube-nocookie.com/embed/-8XeiZ4djKw?
-
-### Conversational Game Characters
-
-Dead Meat is a first of its kind murder mystery interrogation game where players can ask the suspect absolutely anything using their own words.
-
-https://www.youtube-nocookie.com/embed/PFwIVnDU8KM?
-
-### AI Assistants
+### Sidekicks
 
 Streamlabs and Inworld AI introduce an intelligent streaming assistant that serves as a producer, technical assistant and 3D sidekick.
 
-https://www.youtube-nocookie.com/embed/909h0VZeOMM?
+https://www.youtube-nocookie.com/embed/909h0VZeOMM?&amp;rel=0
+ 
+
+### Teammates
+
+KRAFTON’s PUBG introduces Co-Player Characters (CPC), AI-driven allies that communicate with natural language and act autonomously like a human teammate.
+
+https://www.youtube-nocookie.com/embed/OdtFL1CDDwc?&amp;rel=0
+ 
+
+### Enemies  
+
+Wemade Next’s MIR5 introduces AI-powered bosses that continuously learn from previous player tactics to adapt and provide unique fights every run.
+
+https://www.youtube-nocookie.com/embed/-8XeiZ4djKw?&amp;rel=0
+
+### Citizens
+
+KRAFTON’s inZOI features Smart Zois, AI-driven agents that plan, act and reflect on their decisions for unique character dynamics.
+
+https://www.youtube-nocookie.com/embed/Pk9z1upOj3U?&amp;rel=0
+ 
+
+### Characters
+
+Dead Meat is a first of its kind murder mystery interrogation game where players can ask the suspect absolutely anything using their own words.
+
+https://www.youtube-nocookie.com/embed/PFwIVnDU8KM?&amp;rel=0
 
 * * *
 
@@ -114,7 +121,7 @@ Takes an audio stream as input and returns a text transcript in real time. It’
 
 ### Riva TTS  
 
-Takes a text output and converts it into natural and expressive voices in multiple languages in real time. Built for agentic workflows and compatible with multi-vendor GPUs and CPUs. FP16 quantization offers higher accuracy for higher VRAM usage.
+Takes a text output and converts it into natural and expressive voices in multiple languages in real time. Built for agentic workflows and compatible with multi-vendor GPUs and CPUs.. FP16 quantization offers higher accuracy for higher VRAM usage.
 
 [Access Model Card](https://developer.nvidia.com/downloads/assets/ace/model_zip/riva-magpie-tts-flow-1p0.zip)
 
@@ -126,13 +133,27 @@ Takes a text output and converts it into natural and expressive voices in multip
 
 [Documentation](https://github.com/NVIDIA-RTX/NVIGI-Plugins/blob/main/docs/ProgrammingGuideTTSASqFlow.md)
 
-### Qwen3-8B
+### Nemotron Nano 9B v2
 
-8B parameter open source dense model optimized for on-device inference. Qwen3 delivers groundbreaking advancements in reasoning, instruction-following, agent capabilities, and multilingual support. It&#39;s compatible with multi-vendor GPUs and CPUs.
+Class leading small language model on reasoning accuracy, providing higher-quality final responses to tasks. Optimized for memory efficiency.
+
+[Access Model Card](https://developer.nvidia.com/downloads/assets/ace/model_card/nemotron-nano-9b-v2.pdf)
+
+[Download On-Device Model](https://developer.nvidia.com/downloads/assets/ace/model_zip/nvidia_nvidia-nemotron-nano-9b-v2-q4_k_m.gguf.zip)
+
+[Documentation](https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2)
+
+### Qwen3 Family
+
+Open source dense models optimized for on-device inference. Qwen3 delivers groundbreaking advancements in reasoning, instruction-following, agent capabilities, and multilingual support. It&#39;s compatible with multi-vendor GPUs and CPUs.
 
 [Access Model Card](https://developer.nvidia.com/downloads/assets/ace/model_card/qwen3-8b-instruct.pdf)
 
-[Download On-Device Model](https://developer.nvidia.com/downloads/assets/ace/model_zip/qwen3-8b-ggml.zip)
+[Download On-Device .6B Model](https://developer.nvidia.com/downloads/assets/ace/model_zip/qwen_qwen3-0.6b-q4_k_m.gguf.zip)
+
+[Download On-Device 4B Model](https://developer.nvidia.com/downloads/assets/ace/model_zip/qwen3-4b-q4_k_m.gguf.zip)
+
+[Download On-Device 8B Model](https://developer.nvidia.com/downloads/assets/ace/model_zip/qwen3-8b-q4_k_m.gguf.zip)
 
 [Documentation](https://huggingface.co/Qwen/Qwen3-8B)
 
@@ -248,6 +269,6 @@ For more detailed information on ethical considerations for this model, please s
 
 Ready to try NVIDIA ACE?
 
-[Get Started](#section-getting-started)
+[Get Started](#section-getting-started &quot;Get Started&quot;)
 
 

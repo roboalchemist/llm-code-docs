@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/integrations/app-connections/dns-made-easy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # DNS Made Easy
 
 > Learn how to configure a DNS Made Easy Connection for Infisical.
@@ -37,7 +41,7 @@ Infisical supports connecting to DNS Made Easy using API key and secret key for 
 
 <Steps>
   <Step title="Navigate to App Connections">
-    Navigate to the **App Connections** page in the desired project. <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/general/add-connection.png" alt="App
+    Navigate to the **Integrations** tab in the desired project, then select **App Connections**. <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/general/add-connection.png" alt="App
     Connections Tab" />
   </Step>
 
@@ -60,8 +64,3 @@ Infisical supports connecting to DNS Made Easy using API key and secret key for 
     Created" />
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://infisical.com/docs/llms.txt

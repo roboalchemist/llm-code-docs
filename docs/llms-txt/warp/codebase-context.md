@@ -5,7 +5,7 @@
 Codebase Context helps Warp Agents understand your project by indexing your local codebase. This allows Agents to generate more accurate completions, suggest context-aware edits, and answer questions using real knowledge of your code.
 
 {% hint style="info" %}
-Code indexed with Codebase Context is never stored on our servers. Warps coding agent only work on local repositories. The agent can make changes on remote or docker repositories, but fallback to using terminal commands (i.e. `sed`, `grep` ) to make the changes.
+Code indexed with Codebase Context is never stored on our servers. Warp's coding agent only works on local repositories. The agent can make changes on remote or docker repositories, but fallback to using terminal commands (i.e. `sed`, `grep` ) to make the changes.
 {% endhint %}
 
 {% hint style="danger" %}
@@ -16,7 +16,7 @@ Feature requests for support are being tracked in the following Github issues:\
 \- WSL: <https://github.com/warpdotdev/Warp/issues/6744>
 {% endhint %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-caec9a890fdca582d43b9d519c28db26e677b687%2Fcodebase-context-main.png?alt=media" alt=""><figcaption><p>Codebase indexing settings in Warp. Easily track sync status and manage which folders are indexed for AI-powered context and suggestions.</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-caec9a890fdca582d43b9d519c28db26e677b687%2Fcodebase-context-main.png?alt=media" alt=""><figcaption><p>Codebase indexing settings in Warp. Easily track sync status and manage which folders are indexed for AI-powered context and suggestions.</p></figcaption></figure>
 
 ## Indexing your codebase
 
@@ -52,7 +52,7 @@ When viewing indexed codebases in Warp under `Settings > Code`, you may see diff
 * **Failed** – Indexing failed. Common reasons include unreadable `.git` directories or corrupted repositories. Try re-cloning the repo and syncing again.
 * **Codebase too large** – The number of files in the codebase exceeds your current plan’s limit. You can either reduce the number of files being indexed using `.warpindexingignore`, or [contact sales](https://warp.dev/contact-sales) for support with larger codebases.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-dba9d09e439e026a99ba9352675835c6691b4fe4%2Fcodebase-context-statuses.png?alt=media" alt=""><figcaption><p>View and manage the indexing status of your codebases in Warp. Easily see which projects are synced, in progress, or require attention.</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-dba9d09e439e026a99ba9352675835c6691b4fe4%2Fcodebase-context-statuses.png?alt=media" alt=""><figcaption><p>View and manage the indexing status of your codebases in Warp. Easily see which projects are synced, in progress, or require attention.</p></figcaption></figure>
 
 ### When does codebase syncing happen?
 

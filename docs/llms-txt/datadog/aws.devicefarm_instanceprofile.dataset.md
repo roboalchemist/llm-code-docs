@@ -4,8 +4,6 @@
 title: Devicefarm Instanceprofile
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Devicefarm Instanceprofile
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.devicefarm_instanceprofile.dataset/index.html
 ---
 
 # Devicefarm Instanceprofile
@@ -28,4 +26,4 @@ aws.devicefarm_instanceprofile
 | name                              | core | string        | The name of the instance profile.                                                                                                                                                                                                      |
 | package_cleanup                   | core | bool          | When set to <code>true</code>, Device Farm removes app packages after a test run. The default value is <code>false</code> for private devices.                                                                                         |
 | reboot_after_use                  | core | bool          | When set to <code>true</code>, Device Farm reboots the instance after a test run. The default value is <code>true</code>.                                                                                                              |
-| tags                              | core | hstore        |
+| tags                              | core | hstore_csv    |

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/mcp-security-testing/
+
 # MCP Security Testing Guide
 
 This guide covers security testing approaches for Model Context Protocol (MCP) servers.

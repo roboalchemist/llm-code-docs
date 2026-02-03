@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/integrations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integration Channels
 
 > Learn about the channels and integrations available for ASAPP Messaging.
@@ -12,7 +16,7 @@ These integrations are divided into two main categories: [Customer Channels](#cu
 
 <Note>Regardless of which channels you choose to integrate, [Digital Agent Desk](/agent-desk/digital-agent-desk) standardizes the interaction for your agents into a single interface.</Note>
 
-**Applications Integrations** are designed to enhance the functionality and efficiency of your customer service operations. These integrations cover various aspects such as agent authentication, routing, knowledge management, and user management.
+**Applications Integrations** enhance the functionality and efficiency of your customer service operations. These integrations cover various aspects such as agent authentication, routing, knowledge management, and user management.
 
 ## Customer Channels
 

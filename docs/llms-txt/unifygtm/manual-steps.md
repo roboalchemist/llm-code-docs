@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/sequences/manual-steps.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manual Sequence Steps
 
 > Bring human-in-the-loop actions to your Unify Sequences.
@@ -24,11 +28,6 @@ export const ManualEmailIcon = ({size = 24}) => <>
     </svg>
   </>;
 
-export const LinkedInLogo = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-    <path fill="#0A66C2" fillRule="evenodd" d="M2.667 24h18.666A2.667 2.667 0 0 0 24 21.333V2.667A2.667 2.667 0 0 0 21.333 0H2.667A2.667 2.667 0 0 0 0 2.667v18.666A2.667 2.667 0 0 0 2.667 24" clipRule="evenodd" />
-    <path fill="#fff" fillRule="evenodd" d="M20.667 20.666h-3.562V14.6c0-1.663-.632-2.592-1.948-2.592-1.432 0-2.18.967-2.18 2.592v6.066H9.544V9.111h3.433v1.556s1.032-1.91 3.484-1.91c2.45 0 4.206 1.498 4.206 4.593zM5.45 7.598a2.124 2.124 0 0 1-2.117-2.133c0-1.177.948-2.132 2.117-2.132s2.116.955 2.116 2.132A2.124 2.124 0 0 1 5.45 7.598M3.677 20.666h3.58V9.111h-3.58z" clipRule="evenodd" />
-  </svg>;
-
 export const ActionItemIcon = ({size = 24}) => <>
     <svg class="block dark:hidden" stroke="var(--icon-purple-light)" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height={size} width={size} xmlns="http://www.w3.org/2000/svg">
       <path d="M9 11l3 3l8 -8"></path>
@@ -40,7 +39,7 @@ export const ActionItemIcon = ({size = 24}) => <>
     </svg>
   </>;
 
-Manual steps allow you to layer manual emails, phone calls, action items, and LinkedIn touches into your Unify Sequences.
+Manual steps allow you to layer manual emails, phone calls, action items, and social touches into your Unify Sequences.
 
 ## Adding Manual steps to Sequences
 
@@ -53,11 +52,6 @@ In the Sequence Builder, click the `+` button to add a step and choose from the 
 
   <Card title="Phone call" icon={<PhoneCallIcon />} href="#phone-call-steps">
     Create a task to call the prospect.
-  </Card>
-
-  <Card title="LinkedIn" icon={<LinkedInLogo />} href="#linkedin-steps">
-    Create a task to view the prospect's LinkedIn profile, send them a
-    connection request, or send them a LinkedIn message.
   </Card>
 
   <Card title="Action item" icon={<ActionItemIcon />} href="#action-item-steps">
@@ -90,17 +84,6 @@ Phone call steps can include notes that will appear on the call task once create
 
 <Frame caption="Adding a phone call step in a Sequence.">
   <img src="https://mintcdn.com/unify-19/FV7_ax32WGUYsOt7/images/reference/sequences/phone-call-step.png?fit=max&auto=format&n=FV7_ax32WGUYsOt7&q=85&s=a15d26ded98ac73c08678c5e9f863afb" data-og-width="2996" width="2996" data-og-height="1084" height="1084" data-path="images/reference/sequences/phone-call-step.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/unify-19/FV7_ax32WGUYsOt7/images/reference/sequences/phone-call-step.png?w=280&fit=max&auto=format&n=FV7_ax32WGUYsOt7&q=85&s=4f06cabda9b5b8a2b779e2dfa518da85 280w, https://mintcdn.com/unify-19/FV7_ax32WGUYsOt7/images/reference/sequences/phone-call-step.png?w=560&fit=max&auto=format&n=FV7_ax32WGUYsOt7&q=85&s=eb18748781f262406cadf33e953c9d45 560w, https://mintcdn.com/unify-19/FV7_ax32WGUYsOt7/images/reference/sequences/phone-call-step.png?w=840&fit=max&auto=format&n=FV7_ax32WGUYsOt7&q=85&s=c847993e95d3675b0f12975dd8d39138 840w, https://mintcdn.com/unify-19/FV7_ax32WGUYsOt7/images/reference/sequences/phone-call-step.png?w=1100&fit=max&auto=format&n=FV7_ax32WGUYsOt7&q=85&s=7bd5de861a77fd159b119c7dd86dde4f 1100w, https://mintcdn.com/unify-19/FV7_ax32WGUYsOt7/images/reference/sequences/phone-call-step.png?w=1650&fit=max&auto=format&n=FV7_ax32WGUYsOt7&q=85&s=99a6f5d537184c1708a65cbb87cbc369 1650w, https://mintcdn.com/unify-19/FV7_ax32WGUYsOt7/images/reference/sequences/phone-call-step.png?w=2500&fit=max&auto=format&n=FV7_ax32WGUYsOt7&q=85&s=36ece6039276d6cb77e52eb7aa4c0936 2500w" />
-</Frame>
-
-## LinkedIn steps
-
-LinkedIn steps can include notes that will appear on the task once created. These notes
-can be copied and pasted into the connection request or DM that you send to the prospect on LinkedIn.
-[Template variables](/reference/sequences/template-variables) and
-[snippets](/reference/sequences/smart-snippets) can be used to customize the notes.
-
-<Frame caption="Adding a LinkedIn step in a Sequence.">
-  <img src="https://mintcdn.com/unify-19/FV7_ax32WGUYsOt7/images/reference/sequences/linkedin-step.png?fit=max&auto=format&n=FV7_ax32WGUYsOt7&q=85&s=58b347241ed12ce29805610776d3d192" data-og-width="3034" width="3034" data-og-height="816" height="816" data-path="images/reference/sequences/linkedin-step.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/unify-19/FV7_ax32WGUYsOt7/images/reference/sequences/linkedin-step.png?w=280&fit=max&auto=format&n=FV7_ax32WGUYsOt7&q=85&s=3160ef2c1c13e0c650538a8779ba31c4 280w, https://mintcdn.com/unify-19/FV7_ax32WGUYsOt7/images/reference/sequences/linkedin-step.png?w=560&fit=max&auto=format&n=FV7_ax32WGUYsOt7&q=85&s=ddd38f6ed0187f49d511f3c3173054ae 560w, https://mintcdn.com/unify-19/FV7_ax32WGUYsOt7/images/reference/sequences/linkedin-step.png?w=840&fit=max&auto=format&n=FV7_ax32WGUYsOt7&q=85&s=d3d2586cf44b6cd279d38d8d51d83028 840w, https://mintcdn.com/unify-19/FV7_ax32WGUYsOt7/images/reference/sequences/linkedin-step.png?w=1100&fit=max&auto=format&n=FV7_ax32WGUYsOt7&q=85&s=c4b3e880ab29425b56bf9b16c3046a01 1100w, https://mintcdn.com/unify-19/FV7_ax32WGUYsOt7/images/reference/sequences/linkedin-step.png?w=1650&fit=max&auto=format&n=FV7_ax32WGUYsOt7&q=85&s=21c9009b0b60ab2c0076a553d1ba25af 1650w, https://mintcdn.com/unify-19/FV7_ax32WGUYsOt7/images/reference/sequences/linkedin-step.png?w=2500&fit=max&auto=format&n=FV7_ax32WGUYsOt7&q=85&s=12a5470c36a8987837296601c484f540 2500w" />
 </Frame>
 
 ## Action item steps

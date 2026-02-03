@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/layout/st.sidebar
+
 # st.sidebar
 
 Not only can you add interactivity to your app with widgets, you can organize them into a sidebar. Elements can be passed to `st.sidebar` using object notation and `with` notation.

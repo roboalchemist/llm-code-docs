@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/apps/deploying-apps/configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Configuration
 
 > Learn about how configuration variables provide persistent environment variables for your app's containers, simplifying settings management

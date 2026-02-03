@@ -22,8 +22,7 @@ This guide covers how to:
 
 {% stepper %}
 {% step %}
-
-### What Is a Remote MCP Server?
+**What Is a Remote MCP Server?**
 
 A **remote MCP server** runs outside your local machine — Warp connects to it through a secure network call.\
 \
@@ -31,8 +30,7 @@ This means you don’t have to manage processes, ports, or tokens manually. Warp
 {% endstep %}
 
 {% step %}
-
-### Connect Figma MCP to Warp
+**Connect Figma MCP to Warp**
 
 * Copy the Figma MCP configuration JSON
 
@@ -53,8 +51,7 @@ You will need a Figma Dev account for this to work.
 {% endstep %}
 
 {% step %}
-
-### What the Figma MCP Server Provides
+**What the Figma MCP Server Provides**
 
 Once connected, the server enables Warp’s AI to understand your design context by fetching:
 
@@ -67,8 +64,7 @@ Once connected, the server enables Warp’s AI to understand your design context
 | {% endstep %}                    |                                                                      |
 
 {% step %}
-
-### Generate a Website from a Figma File
+**Generate a Website from a Figma File**
 
 Basic flow:
 
@@ -94,8 +90,7 @@ Warp uses the Figma MCP server to pull all necessary context and begin generatin
 {% endstep %}
 
 {% step %}
-
-### Iterating on Output
+**Iterating on Output**
 
 * In under five minutes, Warp generates a working site structure based on the Figma layout.
 * Missing assets (e.g., logos or images) are automatically referenced in an `assets/` folder.
@@ -103,8 +98,7 @@ Warp uses the Figma MCP server to pull all necessary context and begin generatin
   {% endstep %}
 
 {% step %}
-
-### Persistent Input Feature
+**Persistent Input Feature**
 
 Warp’s **persistent input** allows mid-process updates.\
 If you forget an image (e.g., the Misho logo), simply upload it and notify Warp:
@@ -117,8 +111,7 @@ Warp will automatically detect and use it during the same generation session.
 {% endstep %}
 
 {% step %}
-
-### Recap
+**Recap**
 
 * Warp now supports **remote MCP servers** for Figma (and others like GitHub, Sentry, and Linear).
 * OAuth login streamlines setup and removes manual token handling.

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/gemma-vs-llama/
+
 # Gemma vs Llama: benchmark on your own data
 
 Comparing Google's Gemma and Meta's Llama involves more than just looking at their specs and reading about generic benchmarks. The true measure of their usefulness comes down to how they perform on the _specific tasks you need them for_, in the context of your specific application.

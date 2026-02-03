@@ -1,14 +1,10 @@
-# Source: https://www.better-auth.com/llms.txt/docs/errors/account_already_linked_to_different_user.md
+# Source: https://www.better-auth.com/llms.txt/docs/reference/errors/account_already_linked_to_different_user.md
 
-# Account already linked to different user
+# account_already_linked_to_different_user
 
 The account is already linked to a different user.
 
-***
 
-title: Account already linked to different user
-description: The account is already linked to a different user.
----------------------------------------------------------------
 
 ## What is it?
 

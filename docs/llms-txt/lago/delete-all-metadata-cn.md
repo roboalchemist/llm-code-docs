@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/api-reference/credit-notes/metadata/delete-all-metadata-cn.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete all metadata
 
 > This endpoint removes all metadata from a credit note.
@@ -15,7 +19,7 @@ info:
   description: >-
     Lago API allows your application to push customer information and metrics
     (events) from your application to the billing application.
-  version: 1.38.0
+  version: 1.41.0
   license:
     name: AGPLv3
     identifier: AGPLv3
@@ -189,15 +193,15 @@ components:
         - metadata
       properties:
         metadata:
-          $ref: '#/components/schemas/CreditNoteMetadataObject'
-    CreditNoteMetadataObject:
+          $ref: '#/components/schemas/MetadataObject'
+    MetadataObject:
       type:
         - object
         - 'null'
       description: >-
-        Custom metadata for the credit note, stored as key-value pairs.
+        Custom metadata stored as key-value pairs.
 
-        Keys are strings (max 40 characters), values can be strings (max 255
+        Keys are strings (max 100 characters), values can be strings (max 255
         characters) or null.
       additionalProperties:
         type:
@@ -256,7 +260,3 @@ components:
       scheme: bearer
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://getlago.com/docs/llms.txt

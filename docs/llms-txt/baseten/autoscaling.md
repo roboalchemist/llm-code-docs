@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/deployment/autoscaling.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Autoscaling
 
 > Autoscaling dynamically adjusts the number of active replicas to **handle variable traffic** while minimizing idle compute costs.
@@ -15,7 +19,7 @@ Configure autoscaling through:
 * **UI** → Manage settings in your Baseten workspace.
 * **API** → Use the **[autoscaling API](/reference/management-api/deployments/autoscaling)**.
 
-### Replica Scaling
+### Replica scaling
 
 Each deployment scales within a configured range of replicas:
 
@@ -48,7 +52,7 @@ usage on each replica, where a lower number means more headroom and buffer for t
 
 ## Autoscaling behavior
 
-### Scaling Up
+### Scaling up
 
 When the **average requests per active replica** exceed the **concurrency target** within the **autoscaling window**, more replicas are created until:
 
@@ -58,7 +62,7 @@ When the **average requests per active replica** exceed the **concurrency target
 Note here that the amount of headroom is determined by the **target utilization percentage**. For example, with a concurrency target of 10 requests and a
 target utilization percentage of 70%, scaling will begin when the average requests per active replica exceeds 7.
 
-### Scaling Down
+### Scaling down
 
 When traffic drops below the **concurrency target**, excess replicas are flagged for removal. The **scale-down delay** ensures that replicas are not removed prematurely:
 
@@ -91,7 +95,7 @@ A **cold start** is the time required to **initialize a new replica** when scali
 * **Scaled-to-zero deployments** → The first request must wait for a new replica to start.
 * **Scaling events** → When traffic spikes and a deployment requires more replicas.
 
-### Cold Start Optimizations
+### Cold start optimizations
 
 **Network accelerator**
 

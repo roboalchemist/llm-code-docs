@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/set/smove.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smove.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/smove.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smove.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/smove.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smove.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/smove.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smove.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/smove.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smove.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SMOVE
 
@@ -26,30 +12,34 @@
 
 ## Arguments
 
-<ParamField body="source" type="string" required>
+<ParamField body="source" type="str" required>
   The key of the set to move the member from.
 </ParamField>
 
-<ParamField body="destination" type="string" required>
+<ParamField body="destination" type="str" required>
   The key of the set to move the member to.
 </ParamField>
 
-<ParamField body="member" type="TMember">
+<ParamField body="member" type="str">
   The members to move
 </ParamField>
 
 ## Response
 
-<ResponseField type="0 | 1" required>
-  `1` if the member was moved, `0` if not.
+<ResponseField type="bool" required>
+  `True` if the member was moved, `False` if it was not.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example  theme={"system"}
-  await redis.sadd("original", "a", "b", "c"); 
-  const moved =  await redis.smove("original", "destination", "a");
-  // moved:       1
-  // original:    ["b", "c"]
-  // destination: ["a"]
+  ```py Example  theme={"system"}
+  redis.sadd("src", "one", "two", "three")
+
+  redis.sadd("dest", "four")
+
+  assert redis.smove("src", "dest", "three") == True
+
+  assert redis.smembers("source") == {"one", "two"}
+
+  assert redis.smembers("destination") == {"three", "four"}
   ```
 </RequestExample>

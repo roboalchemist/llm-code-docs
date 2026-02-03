@@ -1,113 +1,115 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/environment/lists-all-shared-environment-variables-for-a-team.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Lists all Shared Environment Variables for a team
 
 > Lists all Shared Environment Variables for a team, taking into account optional filters.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/env
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/env
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        search:
+  /v1/env:
+    get:
+      tags:
+        - environment
+      summary: Lists all Shared Environment Variables for a team
+      description: >-
+        Lists all Shared Environment Variables for a team, taking into account
+        optional filters.
+      operationId: listSharedEnvVariable
+      parameters:
+        - name: search
+          in: query
           schema:
-            - type: string
-        projectId:
+            type: string
+        - name: projectId
+          description: Filter SharedEnvVariables that belong to a project
+          in: query
           schema:
-            - type: string
-              description: Filter SharedEnvVariables that belong to a project
-              example: prj_2WjyKQmM8ZnGcJsPWMrHRHrE
-        ids:
+            description: Filter SharedEnvVariables that belong to a project
+            type: string
+            example: prj_2WjyKQmM8ZnGcJsPWMrHRHrE
+        - name: ids
+          description: Filter SharedEnvVariables based on comma separated ids
+          in: query
           schema:
-            - type: string
-              description: Filter SharedEnvVariables based on comma separated ids
-              example: env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV
-        exclude_ids:
+            description: Filter SharedEnvVariables based on comma separated ids
+            type: string
+            example: env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV
+        - name: exclude_ids
+          description: Filter SharedEnvVariables based on comma separated ids
+          in: query
           schema:
-            - type: string
-              description: Filter SharedEnvVariables based on comma separated ids
-              example: env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV
-        exclude-ids:
+            description: Filter SharedEnvVariables based on comma separated ids
+            type: string
+            example: env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV
+        - name: exclude-ids
+          description: Filter SharedEnvVariables based on comma separated ids
+          in: query
           schema:
-            - type: string
-              description: Filter SharedEnvVariables based on comma separated ids
-              example: env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV
-        exclude_projectId:
+            description: Filter SharedEnvVariables based on comma separated ids
+            type: string
+            example: env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV
+        - name: exclude_projectId
+          description: Filter SharedEnvVariables that belong to a project
+          in: query
           schema:
-            - type: string
-              description: Filter SharedEnvVariables that belong to a project
-              example: prj_2WjyKQmM8ZnGcJsPWMrHRHrE
-        exclude-projectId:
+            description: Filter SharedEnvVariables that belong to a project
+            type: string
+            example: prj_2WjyKQmM8ZnGcJsPWMrHRHrE
+        - name: exclude-projectId
+          description: Filter SharedEnvVariables that belong to a project
+          in: query
           schema:
-            - type: string
-              description: Filter SharedEnvVariables that belong to a project
-              example: prj_2WjyKQmM8ZnGcJsPWMrHRHrE
-        teamId:
+            description: Filter SharedEnvVariables that belong to a project
+            type: string
+            example: prj_2WjyKQmM8ZnGcJsPWMrHRHrE
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: listSharedEnvVariable
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.environment.listSharedEnvVariable({
-              projectId: "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
-              ids: "env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV",
-              excludeIdsQueryParameter: "env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV",
-              excludeIdsQueryParameter1: "env_2WjyKQmM8ZnGcJsPWMrHRHrE,env_2WjyKQmM8ZnGcJsPWMrHRCRV",
-              excludeProjectIdQueryParameter: "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
-              excludeProjectIdQueryParameter1: "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - items:
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  data:
+                    items:
                       properties:
                         created:
                           type: string
@@ -197,18 +199,24 @@ paths:
                               - production
                               - preview
                               - development
-                            description: environments this env variable targets
                             example: production
+                            description: environments this env variable targets
                           type: array
                           description: environments this env variable targets
                           example: production
                         applyToAllCustomEnvironments:
                           type: boolean
+                          enum:
+                            - false
+                            - true
                           description: >-
                             whether or not this env varible applies to custom
                             environments
                         decrypted:
                           type: boolean
+                          enum:
+                            - false
+                            - true
                           description: whether or not this env variable is decrypted
                         comment:
                           type: string
@@ -220,65 +228,22 @@ paths:
                           description: The last editor full name or username.
                       type: object
                     type: array
-              pagination:
-                allOf:
-                  - $ref: '#/components/schemas/Pagination'
-            requiredProperties:
-              - data
-              - pagination
-        examples:
-          example:
-            value:
-              data:
-                - created: '2021-02-10T13:11:49.180Z'
-                  key: my-api-key
-                  ownerId: team_LLHUOMOoDlqOp8wPE4kFo9pE
-                  id: env_XCG7t7AIHuO2SBA8667zNUiM
-                  createdBy: 2qDDuGFTWXBLDNnqZfWPDp1A
-                  deletedBy: 2qDDuGFTWXBLDNnqZfWPDp1A
-                  updatedBy: 2qDDuGFTWXBLDNnqZfWPDp1A
-                  createdAt: 1609492210000
-                  deletedAt: 1609492210000
-                  updatedAt: 1609492210000
-                  value: <string>
-                  projectId:
-                    - prj_2WjyKQmM8ZnGcJsPWMrHRHrE
-                    - prj_2WjyKQmM8ZnGcJsPWMrasEFg
-                  type: encrypted
-                  target: production
-                  applyToAllCustomEnvironments: true
-                  decrypted: true
-                  comment: <string>
-                  lastEditedByDisplayName: <string>
-              pagination:
-                count: 20
-                next: 1540095775951
-                prev: 1540095775951
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-  deprecated: false
-  type: path
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+                required:
+                  - data
+                  - pagination
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+      security:
+        - bearerToken: []
 components:
   schemas:
     Pagination:
@@ -306,5 +271,10 @@ components:
         This object contains information related to the pagination of the
         current request, including the necessary parameters to get the next or
         previous page of data.
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

@@ -4,8 +4,6 @@
 title: DMS Replication Subnet Group
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > DMS Replication Subnet Group
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.dms_replication_subnet_group.dataset/index.html
 ---
 
 # DMS Replication Subnet Group
@@ -27,5 +25,5 @@ aws.dms_replication_subnet_group
 | subnet_group_status                  | core | string        | The status of the subnet group.                                                                                                                                                                                           |
 | subnets                              | core | json          | The subnets that are in the subnet group.                                                                                                                                                                                 |
 | supported_network_types              | core | array<string> | The IP addressing protocol supported by the subnet group. This is used by a replication instance with values such as IPv4 only or Dual-stack that supports both IPv4 and IPv6 addressing. IPv6 only is not yet supported. |
-| tags                                 | core | hstore        |
+| tags                                 | core | hstore_csv    |
 | vpc_id                               | core | string        | The ID of the VPC.                                                                                                                                                                                                        |

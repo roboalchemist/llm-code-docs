@@ -1,5 +1,9 @@
 # Source: https://platform.claude.com/docs/en/agent-sdk/quickstart.md
 
+# Source: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/quickstart.md
+
+# Source: https://platform.claude.com/docs/en/agent-sdk/quickstart.md
+
 # Quickstart
 
 Get started with the Python or TypeScript Agent SDK to build AI agents that work autonomously

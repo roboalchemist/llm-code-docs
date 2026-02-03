@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/components/embedding-models.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🧩 Embedding models
 
 ## Overview
@@ -37,7 +41,7 @@ To use OpenAI embedding function, you have to set the `OPENAI_API_KEY` environme
 Once you have obtained the key, you can use it like this:
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -50,7 +54,7 @@ Once you have obtained the key, you can use it like this:
   app.query("What is OpenAI?")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   embedder:
     provider: openai
     config:
@@ -61,14 +65,14 @@ Once you have obtained the key, you can use it like this:
 * OpenAI announced two new embedding models: `text-embedding-3-small` and `text-embedding-3-large`. Embedchain supports both these models. Below you can find YAML config for both:
 
 <CodeGroup>
-  ```yaml text-embedding-3-small.yaml
+  ```yaml text-embedding-3-small.yaml theme={null}
   embedder:
     provider: openai
     config:
       model: 'text-embedding-3-small'
   ```
 
-  ```yaml text-embedding-3-large.yaml
+  ```yaml text-embedding-3-large.yaml theme={null}
   embedder:
     provider: openai
     config:
@@ -81,7 +85,7 @@ Once you have obtained the key, you can use it like this:
 To use Google AI embedding function, you have to set the `GOOGLE_API_KEY` environment variable. You can obtain the Google API key from the [Google Maker Suite](https://makersuite.google.com/app/apikey)
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -90,7 +94,7 @@ To use Google AI embedding function, you have to set the `GOOGLE_API_KEY` enviro
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   embedder:
     provider: google
     config:
@@ -111,7 +115,7 @@ To use Google AI embedding function, you have to set the `GOOGLE_API_KEY` enviro
 To use AWS Bedrock embedding function, you have to set the AWS environment variable.
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -122,7 +126,7 @@ To use AWS Bedrock embedding function, you have to set the AWS environment varia
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   embedder:
     provider: aws_bedrock
     config:
@@ -144,7 +148,7 @@ To use AWS Bedrock embedding function, you have to set the AWS environment varia
 To use Azure OpenAI embedding model, you have to set some of the azure openai related environment variables as given in the code block below:
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -156,7 +160,7 @@ To use Azure OpenAI embedding model, you have to set some of the azure openai re
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
     provider: azure_openai
     config:
@@ -182,14 +186,14 @@ You can find the list of models and deployment name on the [Azure OpenAI Platfor
 GPT4All supports generating high quality embeddings of arbitrary length documents of text using a CPU optimized contrastively trained Sentence Transformer.
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   from embedchain import App
 
   # load embedding model configuration from config.yaml file
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
     provider: gpt4all
     config:
@@ -209,14 +213,14 @@ GPT4All supports generating high quality embeddings of arbitrary length document
 Hugging Face supports generating embeddings of arbitrary length documents of text using Sentence Transformer library. Example of how to generate embeddings using hugging face is given below:
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   from embedchain import App
 
   # load embedding model configuration from config.yaml file
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
     provider: huggingface
     config:
@@ -240,14 +244,14 @@ Hugging Face supports generating embeddings of arbitrary length documents of tex
 Embedchain supports Google's VertexAI embeddings model through a simple interface. You just have to pass the `model_name` in the config yaml and it would work out of the box.
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   from embedchain import App
 
   # load embedding model configuration from config.yaml file
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
     provider: vertexai
     config:
@@ -275,7 +279,7 @@ Generate an API key from their dashboard. Set the API key as `NVIDIA_API_KEY` en
 Below is an example of how to use LLM model and embedding model from NVIDIA AI:
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -321,7 +325,7 @@ Generate an API key from their dashboard. Set the API key as `COHERE_API_KEY` en
 Once you have obtained the key, you can use it like this:
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -331,7 +335,7 @@ Once you have obtained the key, you can use it like this:
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   embedder:
     provider: cohere
     config:
@@ -342,7 +346,7 @@ Once you have obtained the key, you can use it like this:
 * Cohere has few embedding models: `embed-english-v3.0`, `embed-multilingual-v3.0`, `embed-multilingual-light-v3.0`, `embed-english-v2.0`, `embed-english-light-v2.0` and `embed-multilingual-v2.0`. Embedchain supports all these models. Below you can find YAML config for all:
 
 <CodeGroup>
-  ```yaml embed-english-v3.0.yaml
+  ```yaml embed-english-v3.0.yaml theme={null}
   embedder:
     provider: cohere
     config:
@@ -350,7 +354,7 @@ Once you have obtained the key, you can use it like this:
       vector_dimension: 1024
   ```
 
-  ```yaml embed-multilingual-v3.0.yaml
+  ```yaml embed-multilingual-v3.0.yaml theme={null}
   embedder:
     provider: cohere
     config:
@@ -358,7 +362,7 @@ Once you have obtained the key, you can use it like this:
       vector_dimension: 1024
   ```
 
-  ```yaml embed-multilingual-light-v3.0.yaml
+  ```yaml embed-multilingual-light-v3.0.yaml theme={null}
   embedder:
     provider: cohere
     config:
@@ -366,7 +370,7 @@ Once you have obtained the key, you can use it like this:
       vector_dimension: 384
   ```
 
-  ```yaml embed-english-v2.0.yaml
+  ```yaml embed-english-v2.0.yaml theme={null}
   embedder:
     provider: cohere
     config:
@@ -374,7 +378,7 @@ Once you have obtained the key, you can use it like this:
       vector_dimension: 4096
   ```
 
-  ```yaml embed-english-light-v2.0.yaml
+  ```yaml embed-english-light-v2.0.yaml theme={null}
   embedder:
     provider: cohere
     config:
@@ -382,7 +386,7 @@ Once you have obtained the key, you can use it like this:
       vector_dimension: 1024
   ```
 
-  ```yaml embed-multilingual-v2.0.yaml
+  ```yaml embed-multilingual-v2.0.yaml theme={null}
   embedder:
     provider: cohere
     config:
@@ -400,7 +404,7 @@ You can find the list of models at [Ollama Embedding Models](https://ollama.com/
 Below is an example of how to use embedding model Ollama:
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -408,7 +412,7 @@ Below is an example of how to use embedding model Ollama:
   app = App.from_config(config_path="config.yaml")
   ```
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   embedder:
     provider: ollama
     config:
@@ -420,7 +424,7 @@ Below is an example of how to use embedding model Ollama:
 
 Install related dependencies using the following command:
 
-```bash
+```bash  theme={null}
 pip install --upgrade 'embedchain[clarifai]'
 ```
 
@@ -429,7 +433,7 @@ set the `CLARIFAI_PAT` as environment variable which you can find in the [securi
 Now you are all set with exploring Embedchain.
 
 <CodeGroup>
-  ```python main.py
+  ```python main.py theme={null}
   import os
   from embedchain import App
 
@@ -448,7 +452,7 @@ Now you are all set with exploring Embedchain.
   Head to [Clarifai Platform](https://clarifai.com/explore/models?page=1\&perPage=24\&filterData=%5B%7B%22field%22%3A%22output_fields%22%2C%22value%22%3A%5B%22embeddings%22%5D%7D%5D) to explore all the State of the Art embedding models available to use.
   For passing LLM model inference parameters use `model_kwargs` argument in the config file. Also you can use `api_key` argument to pass `CLARIFAI_PAT` in the config.
 
-  ```yaml config.yaml
+  ```yaml config.yaml theme={null}
   llm:
    provider: clarifai
    config:

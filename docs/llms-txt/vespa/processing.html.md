@@ -2,14 +2,6 @@
 
 # Source: https://docs.vespa.ai/en/reference/applications/services/processing.html.md
 
-# Source: https://docs.vespa.ai/en/applications/processing.html.md
-
-# Source: https://docs.vespa.ai/en/reference/applications/services/processing.html.md
-
-# Source: https://docs.vespa.ai/en/applications/processing.html.md
-
-# Source: https://docs.vespa.ai/en/reference/applications/services/processing.html.md
-
 # services.xml - processing
 
  
@@ -257,7 +249,7 @@ The name of a phase or component which should succeed this phase or component. M
 
 The name of a phase or component which should precede this phase or component. Multiple `after` elements can be used to define multiple component or phases which always should precede this component or phase in a chain. In other words, the phase or component defined is placed _after_ the name in the element.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

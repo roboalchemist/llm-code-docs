@@ -1,4 +1,6 @@
-# Source: https://docs.datadoghq.com/cloudprem/architecture.md
+# Source: https://docs.datadoghq.com/database_monitoring/architecture.md
+
+# Source: https://docs.datadoghq.com/cloudprem/introduction/architecture.md
 
 # Source: https://docs.datadoghq.com/agent/architecture.md
 
@@ -8,7 +10,6 @@ description: >-
   Overview of Datadog Agent architecture including main processes, components
   like the Collector and Forwarder, and port configurations.
 breadcrumbs: Docs > Agent > Agent Architecture
-source_url: https://docs.datadoghq.com/architecture/index.html
 ---
 
 # Agent Architecture

@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Account Management > Account Management Guides > Migrating to New Plan
   & Usage CSV Headers the week of February 19, 2024
-source_url: https://docs.datadoghq.com/guide/csv-headers-billing-migration/index.html
 ---
 
 # Migrating to New Plan & Usage CSV Headers the week of February 19, 2024

@@ -4,7 +4,6 @@
 title: Reducing Data Related Risks
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Reducing Data Related Risks
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Reducing Data Related Risks

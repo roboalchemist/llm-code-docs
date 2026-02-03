@@ -4,8 +4,6 @@
 title: IoT Policy
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > IoT Policy
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.iot_policy.dataset/index.html
 ---
 
 # IoT Policy
@@ -18,15 +16,15 @@ aws.iot_policy
 
 ## Fields
 
-| Title              | ID   | Type      | Data Type                                    | Description |
-| ------------------ | ---- | --------- | -------------------------------------------- | ----------- |
-| _key               | core | string    |
-| account_id         | core | string    |
-| creation_date      | core | timestamp | The date the policy was created.             |
-| default_version_id | core | string    | The default policy version ID.               |
-| generation_id      | core | string    | The generation ID of the policy.             |
-| last_modified_date | core | timestamp | The date the policy was last modified.       |
-| policy_arn         | core | string    | The policy ARN.                              |
-| policy_document    | core | string    | The JSON document that describes the policy. |
-| policy_name        | core | string    | The policy name.                             |
-| tags               | core | hstore    |
+| Title              | ID   | Type       | Data Type                                    | Description |
+| ------------------ | ---- | ---------- | -------------------------------------------- | ----------- |
+| _key               | core | string     |
+| account_id         | core | string     |
+| creation_date      | core | timestamp  | The date the policy was created.             |
+| default_version_id | core | string     | The default policy version ID.               |
+| generation_id      | core | string     | The generation ID of the policy.             |
+| last_modified_date | core | timestamp  | The date the policy was last modified.       |
+| policy_arn         | core | string     | The policy ARN.                              |
+| policy_document    | core | string     | The JSON document that describes the policy. |
+| policy_name        | core | string     | The policy name.                             |
+| tags               | core | hstore_csv |

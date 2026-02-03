@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/evaluate-langgraph/
+
 # Evaluate LangGraph: Red Teaming and Testing Stateful Agents
 
 [LangGraph](https://github.com/langchain-ai/langgraph) is an advanced framework built on top of LangChain, designed to enable **stateful, multi-agent graphs** for complex workflows. Whether you're building chatbots, research pipelines, data enrichment flows, or tool-using agents, LangGraph helps you orchestrate chains of language models and functions into structured, interactive systems.

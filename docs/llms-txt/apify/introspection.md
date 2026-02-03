@@ -6,9 +6,9 @@
 
 ***
 
-https://graphql.org/learn/introspection/ is when you make a query to the target GraphQL API requesting information about its schema. When done properly, this can provide a whole lot of information about the API and the different **queries** and **mutations** it supports.
+[Introspection](https://graphql.org/learn/introspection/) is when you make a query to the target GraphQL API requesting information about its schema. When done properly, this can provide a whole lot of information about the API and the different **queries** and **mutations** it supports.
 
-Just like when working with regular RESTful APIs in the https://docs.apify.com/academy/api-scraping/general-api-scraping/locating-and-learning.md section, it's important to learn a bit about the different available features of the GraphQL API (or at least of the query/mutation) you are scraping before actually writing any code.
+Just like when working with regular RESTful APIs in the [General API scraping](https://docs.apify.com/academy/api-scraping/general-api-scraping/locating-and-learning.md) section, it's important to learn a bit about the different available features of the GraphQL API (or at least of the query/mutation) you are scraping before actually writing any code.
 
 Not only does becoming comfortable with and understanding the ins and outs of using the API make the development process easier, but it can also sometimes expose features which will return data you'd otherwise be scraping from a different location.
 
@@ -18,7 +18,7 @@ warning
 
 Cheddar website was changed and the below example no longer works there. Nonetheless, the general approach is still viable on some websites even though introspection is disabled on most.
 
-In order to perform introspection on our https://www.cheddar.com, we need to make a request to their GraphQL API with this introspection query using https://docs.apify.com/academy/tools/insomnia.md or another HTTP client that supports GraphQL:
+In order to perform introspection on our [target website](https://www.cheddar.com), we need to make a request to their GraphQL API with this introspection query using Insomnia or another HTTP client that supports GraphQL:
 
 > To make a GraphQL query in Insomnia, make sure you've set the HTTP method to **POST** and the request body type to **GraphQL Query**.
 
@@ -131,9 +131,9 @@ The response body of our introspection query contains a whole lot of useful info
 
 ## Understanding the response
 
-An introspection query's response body size will vary depending on how big the target API is. In our case, what we got back is a 27 thousand line JSON response 🤯 If you thought to yourself, "Wow, that's a whole lot to sift through! I don't want to look through that!", you are absolutely right. Luckily for us, there is a fantastic online tool called https://graphql-kit.com/graphql-voyager/ (no install required) which can take this massive JSON response and turn it into a digestable visualization of the API.
+An introspection query's response body size will vary depending on how big the target API is. In our case, what we got back is a 27 thousand line JSON response 🤯 If you thought to yourself, "Wow, that's a whole lot to sift through! I don't want to look through that!", you are absolutely right. Luckily for us, there is a fantastic online tool called [GraphQL Voyager](https://graphql-kit.com/graphql-voyager/) (no install required) which can take this massive JSON response and turn it into a digestable visualization of the API.
 
-Let's copy the response to our clipboard by clicking inside of the response body and pressing **CMD** + **A**, then subsequently **CMD** + **C**. Now, we'll head over to https://graphql-kit.com/graphql-voyager/ and click on **Change Schema**. In the modal, we'll click on the **Introspection** tab and paste our data into the text area.
+Let's copy the response to our clipboard by clicking inside of the response body and pressing **CMD** + **A**, then subsequently **CMD** + **C**. Now, we'll head over to [GraphQL Voyager](https://graphql-kit.com/graphql-voyager/) and click on **Change Schema**. In the modal, we'll click on the **Introspection** tab and paste our data into the text area.
 
 ![Pasting the introspection](/assets/images/pasting-introspection-78e8ac32a797fcfd7f17f7f1685bbceb.png)
 
@@ -147,7 +147,7 @@ Now that we have this visualization to work off of, it will be much easier to bu
 
 In future lessons, we'll be building more complex queries using **dynamic variables** and advanced features such as **fragments**; however, for now let's get our feet wet by using the data we have from GraphQL Voyager to build a query.
 
-Right now, our goal is to fetch the 1000 most recent articles on https://www.cheddar.com. From each article, we'd like to fetch the **title** and the **publish date**. After a bit of digging through the schema, we've come across the **media** field within the **organization** type, which has both **title** and **public\_at** fields - seems to check out!
+Right now, our goal is to fetch the 1000 most recent articles on [Cheddar](https://www.cheddar.com). From each article, we'd like to fetch the **title** and the **publish date**. After a bit of digging through the schema, we've come across the **media** field within the **organization** type, which has both **title** and **public\_at** fields - seems to check out!
 
 ![The media field pointing to datatype slugable](/assets/images/media-field-066b5bbc4dccdef44b38495648478deb.jpg)
 
@@ -155,7 +155,7 @@ Cool. Now we know we need to access **media** through the **organization** query
 
 ![Receiving a suggestion for a field titled edges](/assets/images/edges-suggested-65c22c50bf4e1682ec511f97e0790009.png)
 
-While writing our query, we've hit a slight roadblock - the **media** type doesn't seem to be accepting a **title** field; however, we are being suggested an **edges** field. This signifies that Cheddar is using https://relay.dev/graphql/connections.htm#relay-style-cursor-pagination, and that what is returned from media is actually a **Connection** type with multiple properties. The **edges** property contains the list of results we're after, and each result lies within a **Node** type accessible within **edges** as **node**. With this knowledge, we can finish writing our query:
+While writing our query, we've hit a slight roadblock - the **media** type doesn't seem to be accepting a **title** field; however, we are being suggested an **edges** field. This signifies that Cheddar is using [cursor-based relay pagination](https://relay.dev/graphql/connections.htm#relay-style-cursor-pagination), and that what is returned from media is actually a **Connection** type with multiple properties. The **edges** property contains the list of results we're after, and each result lies within a **Node** type accessible within **edges** as **node**. With this knowledge, we can finish writing our query:
 
 
 ```
@@ -192,16 +192,16 @@ The **Authorization** and **X-App-Token** headers seem to be our culprits. Of co
 
 Cool, it worked! Now we know that if we want to scrape this API, we'll likely have to scrape these authorization headers as well in order to not get blocked.
 
-> For more information about cookies, headers, and tokens, refer back to https://docs.apify.com/academy/api-scraping/general-api-scraping/cookies-headers-tokens.md from the previous section of the **API scraping** course.
+> For more information about cookies, headers, and tokens, refer back to [this lesson](https://docs.apify.com/academy/api-scraping/general-api-scraping/cookies-headers-tokens.md) from the previous section of the **API scraping** course.
 
 ## Introspection disabled?
 
-If the target website is smart, they will have introspection disabled. One of the most widely used GraphQL development tools is https://www.apollographql.com/docs/apollo-server/, which automatically disables introspection, so these cases are actually quite common.
+If the target website is smart, they will have introspection disabled. One of the most widely used GraphQL development tools is [ApolloServer](https://www.apollographql.com/docs/apollo-server/), which automatically disables introspection, so these cases are actually quite common.
 
 ![Introspection disabled](/assets/images/introspection-disabled-0b524331e3d8505a3e4c2cc6cdc3e39e.png)
 
-In these cases, it is still possible to get some information about the API when using https://docs.apify.com/academy/tools/insomnia.md or https://docs.apify.com/academy/tools/postman.md, due to the autocomplete that they provide. If we remember from the  section of this lesson, we were able to receive autocomplete suggestions when we entered a non-existent field into the query. Though this is not as great as seeing an entire visualization of the API in GraphQL Voyager, it can still be quite helpful.
+In these cases, it is still possible to get some information about the API when using Insomnia or Postman, due to the autocomplete that they provide. If we remember from the  section of this lesson, we were able to receive autocomplete suggestions when we entered a non-existent field into the query. Though this is not as great as seeing an entire visualization of the API in GraphQL Voyager, it can still be quite helpful.
 
 ## Next up
 
-https://docs.apify.com/academy/api-scraping/graphql-scraping/custom-queries.md's code-along project will walk you through how to construct a custom GraphQL query for scraping purposes, how to accept input into it, and how to retrieve and output the data.
+[Next lesson](https://docs.apify.com/academy/api-scraping/graphql-scraping/custom-queries.md)'s code-along project will walk you through how to construct a custom GraphQL query for scraping purposes, how to accept input into it, and how to retrieve and output the data.

@@ -11,3 +11,4 @@
 - [Deepseek Reasoner V3.1 Terminus](/api-references/text-models-llm/deepseek/deepseek-reasoner-v3.1-terminus.md)
 - [DeepSeek V3.2 Exp Non-thinking](/api-references/text-models-llm/deepseek/deepseek-reasoner-v3.2-exp-non-thinking.md)
 - [DeepSeek V3.2 Exp Thinking](/api-references/text-models-llm/deepseek/deepseek-reasoner-v3.2-exp-thinking.md)
+- [DeepSeek V3.2 Speciale](/api-references/text-models-llm/deepseek/deepseek-v3.2-speciale.md)

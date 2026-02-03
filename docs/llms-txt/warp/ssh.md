@@ -12,7 +12,7 @@ Warpifying your SSH session gives you all the features of Warp while connected t
 
 **Warpifying a remote SSH Session** [**will never make lasting changes to the remote machine without your explicit consent**](#will-warpifying-a-remote-ssh-session-make-changes-to-the-remote-machine)**.**
 
-![SSH](https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-d750cd2460fe3cc59aef6a301b61fdccc4970088%2Fwarpify_ssh_prompt.png?alt=media)
+![SSH](https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-d750cd2460fe3cc59aef6a301b61fdccc4970088%2Fwarpify_ssh_prompt.png?alt=media)
 
 ## FAQs
 
@@ -32,7 +32,7 @@ Yes! You can always cancel Warpification and continue to use SSH, just without s
 
 After you successfully Warpify an SSH connection manually, we provide a brief script you can run to append a message at the end of your shell's rcfile. This allows us to know when your shell is ready to be Warpified, and be found at the bottom of your rcfile for the best results.
 
-![Setting up Auto-Warpify](https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-b2a6821c94e4894c2e0313ccc5b328897106949d%2Fwarpify_ssh_auto_script.png?alt=media)
+![Setting up Auto-Warpify](https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-b2a6821c94e4894c2e0313ccc5b328897106949d%2Fwarpify_ssh_auto_script.png?alt=media)
 
 #### What shells and operating systems are supported?
 

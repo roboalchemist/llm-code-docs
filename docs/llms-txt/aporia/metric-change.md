@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/monitors/metric-change.md
 
-# Source: https://docs.aporia.com/monitors-and-alerts/metric-change.md
-
-# Source: https://docs.aporia.com/v1/monitors/metric-change.md
-
 # Metric Change
 
 ### Why Monitor Metric Change

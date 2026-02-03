@@ -10,31 +10,62 @@ The ChatPromptSubmit component is used inside the [ChatPrompt](/docs/components/
 
 It extends the [Button](/docs/components/button) component, so you can pass any property such as `color`, `variant`, `size`, etc.
 
-<code-preview>
-<u-chat-prompt-submit>
-
-
-
-</u-chat-prompt-submit>
-
-<template v-slot:code="">
-
 ```vue
 <template>
-  <UChatPrompt>
-    <UChatPromptSubmit />
-  </UChatPrompt>
+  <u-chat-prompt-submit />
+  <template v-slot:code=>
+  <pre className=language-vue shiki shiki-themes material-theme-lighter material-theme material-theme-palenight code=<template>
+    <UChatPrompt>
+      <UChatPromptSubmit />
+    </UChatPrompt>
+  </template>
+   language=vue meta= style=>
+  <code __ignoreMap=>
+  <span class=line>
+  <span class=sMK4o>
+  <</span>
+  <span class=swJcz>
+  template</span>
+  <span class=sMK4o>
+  >
+  </span></span>
+  <span class=line>
+  <span class=sMK4o>
+    <</span>
+  <span class=swJcz>
+  UChatPrompt</span>
+  <span class=sMK4o>
+  >
+  </span></span>
+  <span class=line>
+  <span class=sMK4o>
+      <</span>
+  <span class=swJcz>
+  UChatPromptSubmit</span>
+  <span class=sMK4o>
+   />
+  </span></span>
+  <span class=line>
+  <span class=sMK4o>
+    </</span>
+  <span class=swJcz>
+  UChatPrompt</span>
+  <span class=sMK4o>
+  >
+  </span></span>
+  <span class=line>
+  <span class=sMK4o>
+  </</span>
+  <span class=swJcz>
+  template</span>
+  <span class=sMK4o>
+  >
+  </span></span></code></pre></template>
 </template>
 ```
 
-</template>
-</code-preview>
-
-<note>
-
-You can also use it inside the `footer` slot of the [`ChatPrompt`](/docs/components/chat-prompt) component.
-
-</note>
+> [!NOTE]
+> You can also use it inside the `footer` slot of the [`ChatPrompt`](/docs/components/chat-prompt) component.
 
 ### Ready
 
@@ -50,23 +81,15 @@ When its status is `ready`, use the `color`, `variant` and `icon` props to custo
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.arrowUp` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.arrowUp` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.arrowUp` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.arrowUp` key.
 
 ### Submitted
 
@@ -76,11 +99,8 @@ When its status is `submitted`, use the `submitted-color`, `submitted-variant` a
 - `submittedVariant="subtle"`
 - `submittedIcon="i-lucide-square"`
 
-<note>
-
-The `stop` event is emitted when the user clicks on the Button.
-
-</note>
+> [!NOTE]
+> The `stop` event is emitted when the user clicks on the Button.
 
 ```vue
 <template>
@@ -88,23 +108,15 @@ The `stop` event is emitted when the user clicks on the Button.
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.stop` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.stop` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.stop` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.stop` key.
 
 ### Streaming
 
@@ -114,11 +126,8 @@ When its status is `streaming`, use the `streaming-color`, `streaming-variant` a
 - `streamingVariant="subtle"`
 - `streamingIcon="i-lucide-square"`
 
-<note>
-
-The `stop` event is emitted when the user clicks on the Button.
-
-</note>
+> [!NOTE]
+> The `stop` event is emitted when the user clicks on the Button.
 
 ```vue
 <template>
@@ -126,23 +135,15 @@ The `stop` event is emitted when the user clicks on the Button.
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.stop` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.stop` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.stop` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.stop` key.
 
 ### Error
 
@@ -152,11 +153,8 @@ When its status is `error`, use the `error-color`, `error-variant` and `error-ic
 - `errorVariant="soft"`
 - `errorIcon="i-lucide-rotate-ccw"`
 
-<note>
-
-The `reload` event is emitted when the user clicks on the Button.
-
-</note>
+> [!NOTE]
+> The `reload` event is emitted when the user clicks on the Button.
 
 ```vue
 <template>
@@ -164,37 +162,21 @@ The `reload` event is emitted when the user clicks on the Button.
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.reload` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.reload` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.reload` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.reload` key.
 
 ## Examples
 
-<note target="_blank" to="https://ai-sdk.dev/docs/getting-started/nuxt">
-
-These chat components are designed to be used with the **AI SDK v5** from **Vercel AI SDK**.
-
-</note>
-
-<callout icon="i-simple-icons-github" target="_blank" to="https://github.com/nuxt-ui-templates/chat">
-
-Check out the source code of our **AI Chat template** on GitHub for a real-life example.
-
-</callout>
+> [!TIP]
+> See: /docs/components/chat-messages#examples
+> Check the ChatMessages documentation for server API setup and installation instructions.
 
 ### Within a page
 
@@ -205,7 +187,6 @@ Pass the `status` prop and listen to the `stop` and `reload` events to control t
 ```vue [pages/[id].vue]
 <script setup lang="ts">
 import { Chat } from '@ai-sdk/vue'
-import { getTextFromMessage } from '@nuxt/ui/utils/ai'
 
 const input = ref('')
 
@@ -228,7 +209,10 @@ function onSubmit() {
       <UContainer>
         <UChatMessages :messages="chat.messages" :status="chat.status">
           <template #content="{ message }">
-            <MDC :value="getTextFromMessage(message)" :cache-key="message.id" class="*:first:mt-0 *:last:mb-0" />
+            <template v-for="(part, index) in message.parts" :key="`${message.id}-${part.type}-${index}`">
+              <MDC v-if="part.type === 'text' && message.role === 'assistant'" :value="part.text" :cache-key="`${message.id}-${index}`" class="*:first:mt-0 *:last:mb-0" />
+              <p v-else-if="part.type === 'text' && message.role === 'user'" class="whitespace-pre-wrap">{{ part.text }}</p>
+            </template>
           </template>
         </UChatMessages>
       </UContainer>
@@ -237,7 +221,7 @@ function onSubmit() {
     <template #footer>
       <UContainer class="pb-4 sm:pb-6">
         <UChatPrompt v-model="input" :error="chat.error" @submit="onSubmit">
-          <UChatPromptSubmit :status="chat.status" @stop="chat.stop" @reload="chat.regenerate" />
+          <UChatPromptSubmit :status="chat.status" @stop="chat.stop()" @reload="chat.regenerate()" />
         </UChatPrompt>
       </UContainer>
     </template>
@@ -261,7 +245,7 @@ interface ChatPromptSubmitProps {
   /**
    * The icon displayed in the button when the status is `ready`.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   /**
    * The color of the button when the status is `ready`.
    */
@@ -273,7 +257,7 @@ interface ChatPromptSubmitProps {
   /**
    * The icon displayed in the button when the status is `streaming`.
    */
-  streamingIcon?: string | object | undefined;
+  streamingIcon?: any;
   /**
    * The color of the button when the status is `streaming`.
    * @default "\"neutral\""
@@ -287,7 +271,7 @@ interface ChatPromptSubmitProps {
   /**
    * The icon displayed in the button when the status is `submitted`.
    */
-  submittedIcon?: string | object | undefined;
+  submittedIcon?: any;
   /**
    * The color of the button when the status is `submitted`.
    * @default "\"neutral\""
@@ -301,7 +285,7 @@ interface ChatPromptSubmitProps {
   /**
    * The icon displayed in the button when the status is `error`.
    */
-  errorIcon?: string | object | undefined;
+  errorIcon?: any;
   /**
    * The color of the button when the status is `error`.
    * @default "\"error\""
@@ -318,70 +302,13 @@ interface ChatPromptSubmitProps {
    */
   type?: "reset" | "submit" | "button" | undefined;
   /**
-   * Route Location the link should navigate to when clicked on.
-   */
-  to?: string | RouteLocationAsRelativeGeneric | RouteLocationAsPathGeneric | undefined;
-  /**
-   * Class to apply when the link is active
-   */
-  activeClass?: string | undefined;
-  /**
    * Class to apply when the link is exact active
    */
   exactActiveClass?: string | undefined;
   /**
-   * Value passed to the attribute `aria-current` when the link is exact active.
-   */
-  ariaCurrentValue?: "page" | "step" | "location" | "date" | "time" | "true" | "false" | undefined;
-  /**
    * Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported.
    */
   viewTransition?: boolean | undefined;
-  /**
-   * Calls `router.replace` instead of `router.push`.
-   */
-  replace?: boolean | undefined;
-  /**
-   * An alias for `to`. If used with `to`, `href` will be ignored
-   */
-  href?: string | RouteLocationAsRelativeGeneric | RouteLocationAsPathGeneric | undefined;
-  /**
-   * Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases
-   */
-  external?: boolean | undefined;
-  /**
-   * Where to display the linked URL, as the name for a browsing context.
-   */
-  target?: "_blank" | "_parent" | "_self" | "_top" | (string & {}) | null | undefined;
-  /**
-   * A rel attribute value to apply on the link. Defaults to "noopener noreferrer" for external links.
-   */
-  rel?: (string & {}) | "noopener" | "noreferrer" | "nofollow" | "sponsored" | "ugc" | null | undefined;
-  /**
-   * If set to true, no rel attribute will be added to the link
-   */
-  noRel?: boolean | undefined;
-  /**
-   * A class to apply to links that have been prefetched.
-   */
-  prefetchedClass?: string | undefined;
-  /**
-   * When enabled will prefetch middleware, layouts and payloads of links in the viewport.
-   */
-  prefetch?: boolean | undefined;
-  /**
-   * Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.
-   */
-  prefetchOn?: "visibility" | "interaction" | Partial<{ visibility: boolean; interaction: boolean; }> | undefined;
-  /**
-   * Escape hatch to disable `prefetch` attribute.
-   */
-  noPrefetch?: boolean | undefined;
-  /**
-   * An option to either add or remove trailing slashes in the `href` for this specific link.
-   * Overrides the global `trailingSlash` option if provided.
-   */
-  trailingSlash?: "append" | "remove" | undefined;
   autofocus?: Booleanish | undefined;
   disabled?: boolean | undefined;
   form?: string | undefined;
@@ -391,36 +318,11 @@ interface ChatPromptSubmitProps {
   formnovalidate?: Booleanish | undefined;
   formtarget?: string | undefined;
   name?: string | undefined;
-  download?: any;
-  hreflang?: string | undefined;
-  media?: string | undefined;
-  ping?: string | undefined;
-  referrerpolicy?: HTMLAttributeReferrerPolicy | undefined;
   onClick?: ((event: MouseEvent) => void | Promise<void>) | ((event: MouseEvent) => void | Promise<void>)[] | undefined;
   /**
    * The element or component this component should render as when not a link.
    */
   as?: any;
-  /**
-   * Force the link to be active independent of the current route.
-   */
-  active?: boolean | undefined;
-  /**
-   * Will only be active if the current route is an exact match.
-   */
-  exact?: boolean | undefined;
-  /**
-   * Allows controlling how the current route query sets the link as active.
-   */
-  exactQuery?: boolean | "partial" | undefined;
-  /**
-   * Will only be active if the current route hash is an exact match.
-   */
-  exactHash?: boolean | undefined;
-  /**
-   * The class to apply when the link is inactive.
-   */
-  inactiveClass?: string | undefined;
   label?: string | undefined;
   activeColor?: "error" | "primary" | "secondary" | "success" | "info" | "warning" | "neutral" | undefined;
   activeVariant?: "solid" | "outline" | "soft" | "subtle" | "ghost" | "link" | undefined;
@@ -448,7 +350,7 @@ interface ChatPromptSubmitProps {
   /**
    * Display an icon on the left side.
    */
-  leadingIcon?: string | object | undefined;
+  leadingIcon?: any;
   /**
    * When `true`, the icon will be displayed on the right side.
    */
@@ -456,7 +358,7 @@ interface ChatPromptSubmitProps {
   /**
    * Display an icon on the right side.
    */
-  trailingIcon?: string | object | undefined;
+  trailingIcon?: any;
   /**
    * When `true`, the loading icon will be displayed.
    */
@@ -464,15 +366,13 @@ interface ChatPromptSubmitProps {
   /**
    * The icon when the `loading` prop is `true`.
    */
-  loadingIcon?: string | object | undefined;
+  loadingIcon?: any;
 }
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" target="_blank" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes">
-
-This component also supports all native `<button>` HTML attributes.
-
-</callout>
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes
+> This component also supports all native `<button>` HTML attributes.
 
 ### Slots
 
@@ -494,8 +394,8 @@ interface ChatPromptSubmitSlots {
  * Emitted events for the ChatPromptSubmit component
  */
 interface ChatPromptSubmitEmits {
-  stop: (payload: []) => void;
-  reload: (payload: []) => void;
+  stop: (payload: [event: MouseEvent]) => void;
+  reload: (payload: [event: MouseEvent]) => void;
 }
 ```
 
@@ -515,8 +415,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

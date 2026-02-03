@@ -4,11 +4,7 @@
 
 Learn how cookies are used in Better Auth.
 
-***
 
-title: Cookies
-description: Learn how cookies are used in Better Auth.
--------------------------------------------------------
 
 Cookies are used to store data such as session tokens, session data, OAuth state, and more. All cookies are signed using the `secret` key provided in the auth options or the `BETTER_AUTH_SECRET` environment variable.
 

@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/reference/anthropic-tool-calling.md
+# Source: https://exa.ai/docs/reference/anthropic-tool-calling.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Anthropic Tool Calling
 
@@ -370,8 +374,3 @@ This guide will show you how to properly set up and use Anthropic's and Exa's AP
     That's it, enjoy your search agent!
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

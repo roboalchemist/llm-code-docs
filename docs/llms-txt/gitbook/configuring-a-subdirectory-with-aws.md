@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/setting-a-custom-subdirectory/configuring-a-subdirectory-with-aws.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/setting-a-custom-subdirectory/configuring-a-subdirectory-with-aws.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/setting-a-custom-subdirectory/configuring-a-subdirectory-with-aws.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/setting-a-custom-subdirectory/configuring-a-subdirectory-with-aws.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/setting-a-custom-subdirectory/configuring-a-subdirectory-with-aws.md
 

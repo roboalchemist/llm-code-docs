@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/migration-mergent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Migrating from Mergent
 
 > A guide for migrating from Mergent to Trigger.dev
@@ -21,7 +25,7 @@ Mergent is being absorbed into Resend, so if you’re running background jobs or
 2. **Create an organization and a project.**
 3. **Install the CLI** and run the local dev server:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 npx trigger.dev@latest init
 npx trigger.dev@latest dev
 ```
@@ -34,7 +38,7 @@ You’ll get a local server that behaves just like production, and you’ll see 
 
 Here’s a simple Mergent task that processes an image:
 
-```ts processVideo.ts theme={null}
+```ts processVideo.ts theme={"theme":"css-variables"}
 export async function processVideoTask(req: { body: { videoUrl: string } }) {
   const { videoUrl } = req.body;
   // Do some video processing
@@ -47,7 +51,7 @@ This is typically called by Mergent via HTTP POST, and you’d register the endp
 
 #### The same task in Trigger.dev
 
-```ts trigger/processVideo.ts theme={null}
+```ts trigger/processVideo.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const processVideoTask = task({
@@ -74,7 +78,7 @@ export const processVideoTask = task({
 
 You’d set up a schedule in the Mergent dashboard to hit your HTTP endpoint on a cron.
 
-```ts dailyReport.ts theme={null}
+```ts dailyReport.ts theme={"theme":"css-variables"}
 export async function dailyReportTask(req) {
   await sendDailyReport();
 }
@@ -82,7 +86,7 @@ export async function dailyReportTask(req) {
 
 **Trigger.dev scheduled task:**
 
-```ts trigger/dailyReport.ts theme={null}
+```ts trigger/dailyReport.ts theme={"theme":"css-variables"}
 import { schedules } from "@trigger.dev/sdk";
 
 export const dailyReportTask = schedules.task({
@@ -101,7 +105,7 @@ export const dailyReportTask = schedules.task({
 
 **Mergent:** You’d trigger a task by calling the Mergent API, specifying the URL and payload.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 const Mergent = require("mergent");
 const mergent = new Mergent("API_KEY");
 
@@ -117,7 +121,7 @@ mergent.tasks.create({
 
 **Trigger.dev:** You trigger a task directly from your codebase, no HTTP endpoint needed.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { processImageTask } from "@/trigger/processImage";
 
 await processImageTask.trigger({

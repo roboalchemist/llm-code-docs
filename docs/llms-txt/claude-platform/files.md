@@ -14,38 +14,6 @@
 
 # Source: https://platform.claude.com/docs/en/build-with-claude/files.md
 
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/files.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/files.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/files.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/files.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/files.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/files.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/files.md
-
-# Source: https://platform.claude.com/docs/en/build-with-claude/files.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/files.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/files.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/files.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/files.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/files.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/files.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/files.md
-
-# Source: https://platform.claude.com/docs/en/build-with-claude/files.md
-
 # Files API
 
 ---
@@ -58,7 +26,7 @@ The Files API is currently in beta. Please reach out through our [feedback form]
 
 ## Supported models
 
-Referencing a `file_id` in a Messages request is supported in all models that support the given file type. For example, [images](/docs/en/build-with-claude/vision) are supported in all Claude 3+ models, [PDFs](/docs/en/build-with-claude/pdf-support) in all Claude 3.5+ models, and [various other file types](/docs/en/agents-and-tools/tool-use/code-execution-tool#supported-file-types) for the code execution tool in Claude 3.5 Haiku plus all Claude 3.7+ models.
+Referencing a `file_id` in a Messages request is supported in all models that support the given file type. For example, [images](/docs/en/build-with-claude/vision) are supported in all Claude 3+ models, [PDFs](/docs/en/build-with-claude/pdf-support) in all Claude 3.5+ models, and [various other file types](/docs/en/agents-and-tools/tool-use/code-execution-tool#supported-file-types) for the code execution tool in Claude Haiku 4.5 plus all Claude 3.7+ models.
 
 The Files API is currently not supported on Amazon Bedrock or Google Vertex AI.
 

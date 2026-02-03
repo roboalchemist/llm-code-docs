@@ -1,48 +1,63 @@
 # Source: https://docs.tavus.io/api-reference/personas/get-persona.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Persona
 
 > This endpoint returns a single persona by its unique identifier.
 
 
+
+
 ## OpenAPI
 
 ````yaml get /v2/personas/{persona_id}
+openapi: 3.0.3
+info:
+  title: Tavus Developer API Collection
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://tavusapi.com
+security:
+  - apiKey: []
+tags:
+  - name: Videos
+  - name: Replicas
+  - name: Conversations
+  - name: Personas
+  - name: Replacements
+  - name: Transcriptions
+  - name: Documents
 paths:
-  path: /v2/personas/{persona_id}
-  method: get
-  servers:
-    - url: https://tavusapi.com
-  request:
-    security:
-      - title: apiKey
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-          cookie: {}
+  /v2/personas/{persona_id}:
     parameters:
-      path:
-        persona_id:
-          schema:
-            - type: string
-              required: true
-              description: The unique identifier of the persona.
-              example: pf3073f2dcc1
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: array
+      - name: persona_id
+        in: path
+        required: true
+        description: The unique identifier of the persona.
+        schema:
+          type: string
+          example: pf3073f2dcc1
+    get:
+      tags:
+        - Personas
+      summary: Get Persona
+      description: |
+        This endpoint returns a single persona by its unique identifier.
+      operationId: getPersona
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -154,11 +169,34 @@ paths:
                                     Authorization: Bearer your-api-key
                                 extra_body:
                                   type: object
-                                  description: >-
-                                    Optional extra body to provide to your
-                                    custom LLM
+                                  description: >
+                                    Optional parameters to customize the LLM
+                                    request. 
+
+
+                                    For Tavus-hosted models, you can pass
+                                    `temperature` and `top_p`:
+
+                                    - `temperature`: Controls randomness in the
+                                    model's output. Range typically 0.0 to 2.0.
+                                    Lower values make output more deterministic
+                                    and focused, higher values make it more
+                                    creative and varied.
+
+                                    - `top_p`: Controls diversity via nucleus
+                                    sampling. Range 0.0 to 1.0. Lower values
+                                    make output more focused on high-probability
+                                    tokens, higher values allow more diverse
+                                    token selection.
+
+
+                                    For custom LLMs, you can pass any parameters
+                                    that your LLM provider supports (e.g.,
+                                    `temperature`, `top_p`, `frequency_penalty`,
+                                    etc.).
                                   example:
-                                    temperature: 0.5
+                                    temperature: 0.7
+                                    top_p: 0.9
                             tts:
                               type: object
                               properties:
@@ -322,6 +360,10 @@ paths:
                                             - id_type
                             stt:
                               type: object
+                              description: >
+                                **Note**: Turn-taking is now configured on the
+                                [Conversational Flow
+                                layer](/sections/conversational-video-interface/persona/conversational-flow).
                               properties:
                                 stt_engine:
                                   type: string
@@ -335,93 +377,12 @@ paths:
                                   enum:
                                     - tavus-turbo
                                     - tavus-advanced
-                                participant_pause_sensitivity:
-                                  type: string
-                                  description: >-
-                                    Use this parameter to control how long of a
-                                    pause you can take before the replica will
-                                    respond to you. See more details
-                                    [here](/sections/conversational-video-interface/persona/stt#2-participant-pause-sensitivity).
-                                    The default is `medium`, but you can adjust
-                                    this to `low` or `high` depending on your
-                                    needs.
-                                  enum:
-                                    - low
-                                    - medium
-                                    - high
-                                participant_interrupt_sensitivity:
-                                  type: string
-                                  description: >-
-                                    Use this parameter to control how long you
-                                    can speak before the replica will be
-                                    interrupted by you. See more details
-                                    [here](/sections/conversational-video-interface/persona/stt#3-participant-interrupt-sensitivity).
-                                    The default is `medium`, but you can adjust
-                                    this to `low` or `high` depending on your
-                                    needs.
-                                  enum:
-                                    - low
-                                    - medium
-                                    - high
                                 hotwords:
                                   type: string
                                   description: >-
                                     The hotwords that will be used for the STT
                                     engine.
                                   example: This is a hotword example
-                                smart_turn_detection:
-                                  type: boolean
-                                  description: >
-                                    Smart Turn Detection enhances the natural
-                                    flow of conversation between participants
-                                    and digital replicas. This intelligent
-                                    system is powered by the Sparrow model,
-                                    which uses lexical and semantic analysis to
-                                    determine the optimal moment for the digital
-                                    replica to respond. The default value is set
-                                    to true.
-
-
-                                    **How it works:**
-
-                                    - Continuously evaluates the participant's
-                                    speech patterns and content
-
-                                    - Assesses the likelihood that the
-                                    participant has finished speaking
-
-                                    - Multilingual, support for 100 languages 
-
-                                    - Works seamlessly with both speculative and
-                                    non-speculative
-                                    inference,                             
-
-                                    - Continuously uses participant speech
-                                    patterns and content to determine how long
-                                    to wait to respond.
-
-                                    - Works in conjunction with the
-                                    `participant_pause_sensitivity` setting,
-                                    which adjusts the maximum pause for when
-                                    participant is clearly not done.
-
-
-                                    **Key benefits:**
-
-                                    - **Rapid response:** Triggers quick replies
-                                    when the participant has definitively
-                                    concluded their statement.
-
-                                    - **Extended listening:** Allows more time
-                                    when the participant is clearly in the
-                                    middle of expressing a thought.
-
-
-                                    Enabling Smart Turn Detection creates a more
-                                    natural and engaging conversational
-                                    experience, allowing the digital replica to
-                                    interact more seamlessly with human
-                                    participants.
                         created_at:
                           type: string
                           description: The date and time the persona was created.
@@ -431,131 +392,35 @@ paths:
                           description: >-
                             The date and time of when the persona was last
                             updated.
-        examples:
-          example:
-            value:
-              data:
-                - persona_id: p5317866
-                  persona_name: Life Coach
-                  system_prompt: >-
-                    As a Life Coach, you are a dedicated professional who
-                    specializes in...
-                  default_replica_id: r79e1c033f
-                  context: >-
-                    Here are a few times that you have helped an individual make
-                    a breakthrough in...
-                  document_ids:
-                    - d1234567890
-                    - d2468101214
-                  document_tags:
-                    - product_info
-                    - company_policies
-                  layers:
-                    llm:
-                      model: <string>
-                      base_url: your-base-url
-                      api_key: your-api-key
-                      tools:
-                        - type: function
-                          function:
-                            name: get_current_weather
-                            description: Get the current weather in a given location
-                            parameters:
-                              type: object
-                              properties:
-                                location:
-                                  type: string
-                                  description: The city and state, e.g. San Francisco, CA
-                                unit:
-                                  type: string
-                                  enum:
-                                    - celsius
-                                    - fahrenheit
-                              required:
-                                - location
-                      headers:
-                        Authorization: Bearer your-api-key
-                      extra_body:
-                        temperature: 0.5
-                    tts:
-                      api_key: your-api-key
-                      tts_engine: cartesia
-                      external_voice_id: external-voice-id
-                      voice_settings:
-                        speed: 0.5
-                        emotion:
-                          - positivity:high
-                          - curiosity
-                      tts_emotion_control: 'false'
-                      tts_model_name: sonic
-                    perception:
-                      perception_model: raven-0
-                      ambient_awareness_queries:
-                        - Is the user showing an ID card?
-                        - Does the user appear distressed or uncomfortable?
-                      perception_tool_prompt: >-
-                        You have a tool to notify the system when an ID card is
-                        detected, named `notify_if_id_shown`. You MUST use this
-                        tool when a form of ID is detected.
-                      perception_tools:
-                        - type: function
-                          function:
-                            name: notify_if_id_shown
-                            description: >-
-                              Use this function when a drivers license or
-                              passport is detected in the image with high
-                              confidence. After collecting the ID, internally
-                              use final_ask()
-                            parameters:
-                              type: object
-                              properties:
-                                id_type:
-                                  type: string
-                                  description: best guess on what type of ID it is
-                              required:
-                                - id_type
-                    stt:
-                      stt_engine: tavus-turbo
-                      participant_pause_sensitivity: low
-                      participant_interrupt_sensitivity: low
-                      hotwords: This is a hotword example
-                      smart_turn_detection: true
-                  created_at: ''
-                  updated_at: <string>
-        description: ''
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     description: The error message.
                     example: Invalid persona_id
-        examples:
-          example:
-            value:
-              error: Invalid persona_id
-        description: Bad Request
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
+        '401':
+          description: UNAUTHORIZED
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
                     description: The error message.
                     example: Invalid access token
-        examples:
-          example:
-            value:
-              message: Invalid access token
-        description: UNAUTHORIZED
-  deprecated: false
-  type: path
+      security:
+        - apiKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
 
 ````

@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/components/data-sources/data-type-handling.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Data type handling
 
 ## Automatic data type detection
@@ -34,7 +38,7 @@ Default behavior is to create a persistent vector db in the directory **./db**. 
 
 Create a local index:
 
-```python
+```python  theme={null}
 from embedchain import App
 
 config = {
@@ -51,7 +55,7 @@ naval_chat_bot.add("https://navalmanack.s3.amazonaws.com/Eric-Jorgenson_The-Alma
 
 You can reuse the local index with the same code, but without adding new documents:
 
-```python
+```python  theme={null}
 from embedchain import App
 
 config = {
@@ -69,7 +73,7 @@ print(naval_chat_bot.query("What unique capacity does Naval argue humans possess
 
 You can reset the app by simply calling the `reset` method. This will delete the vector database and all other app related files.
 
-```python
+```python  theme={null}
 from embedchain import App
 
 app = App()config = {

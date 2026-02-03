@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/indexes/pods/migrate-a-pod-based-index-to-serverless.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Migrate a pod-based index to serverless
 
 > Migrate existing pod indexes to cost-effective serverless
@@ -7,7 +11,9 @@
 This page shows you how to migrate a pod-based index to [serverless](/guides/get-started/database-architecture). The migration process is free; the standard costs of upserting records to a new serverless index are not applied.
 
 <Warning>
-  In most cases, migrating to serverless reduces costs significantly. However, costs can increase for read-heavy workloads with more than 1 query per second and for indexes with many records in a single namespace. Before migrating, consider [contacting Pinecone Support](/troubleshooting/contact-support) for help estimating and managing cost implications.
+  In most cases, migrating to serverless reduces costs significantly. For read-heavy workloads with more than 1 query per second and for indexes with many records in a single namespace, consider building your serverless indexes on [dedicated read nodes](/guides/index-data/dedicated-read-nodes).
+
+  Before migrating, [contact Pinecone Support](/troubleshooting/contact-support) for help estimating and managing cost implications.
 </Warning>
 
 ## Limitations
@@ -128,7 +134,7 @@ Migrating a pod-based index to serverless can take anywhere from a few minutes t
          -H "Accept: application/json" \
          -H "Content-Type: application/json" \
          -H "Api-Key: $PINECONE_API_KEY" \
-         -H "X-Pinecone-API-Version: 2025-04" \
+         -H "X-Pinecone-Api-Version: 2025-10" \
          -d '{
                  "name": "pod-collection",
                  "source": "pod-index"
@@ -211,7 +217,7 @@ Migrating a pod-based index to serverless can take anywhere from a few minutes t
          -H "Accept: application/json" \
          -H "Content-Type: application/json" \
          -H "Api-Key: $PINECONE_API_KEY" \
-         -H "X-Pinecone-API-Version: 2025-04" \
+         -H "X-Pinecone-Api-Version: 2025-10" \
          -d '{
                  "name": "serverless-index",
                  "vector_type": "dense",
@@ -254,7 +260,7 @@ If you are using an older version of the Python, Node.js, Java, or Go SDK, you m
      ```
    </CodeGroup>
 
-2. If your SDK version is less than 3.0.0 for [Python](https://github.com/pinecone-io/pinecone-python-client/blob/main/README.md), 2.0.0 for [Node.js](https://sdk.pinecone.io/typescript/), 1.0.0 for [Java](https://github.com/pinecone-io/pinecone-java-client), or 1.0.0 for [Go](https://github.com/pinecone-io/go-pinecone), upgrade the SDK as follows:
+2. If your SDK version is less than 3.0.0 for [Python](https://github.com/pinecone-io/pinecone-python-client), 2.0.0 for [Node.js](https://sdk.pinecone.io/typescript/), 1.0.0 for [Java](https://github.com/pinecone-io/pinecone-java-client), or 1.0.0 for [Go](https://github.com/pinecone-io/go-pinecone), upgrade the SDK as follows:
 
    <CodeGroup>
      ```Python Python theme={null}
@@ -282,7 +288,7 @@ If you are using an older version of the Python, Node.js, Java, or Go SDK, you m
      ```
    </CodeGroup>
 
-   If you are using the [.NET SDK](/reference/dotnet-sdk), add a package reference to your project file:
+   If you are using the [.NET SDK](/reference/sdks/dotnet/overview), add a package reference to your project file:
 
    ```shell C# theme={null}
    dotnet add package Pinecone.Client 
@@ -442,7 +448,7 @@ You must make some minor code changes to work with serverless indexes.
 
      curl -i -X GET "https://api.pinecone.io/indexes" \
      -H "Api-Key: $PINECONE_API_KEY" \
-     -H "X-Pinecone-API-Version: 2025-04"
+     -H "X-Pinecone-Api-Version: 2025-10"
      ```
    </CodeGroup>
 
@@ -805,7 +811,7 @@ You must make some minor code changes to work with serverless indexes.
 
      curl -i -X GET "https://api.pinecone.io/indexes/docs-example" \
          -H "Api-Key: $PINECONE_API_KEY" \
-         -H "X-Pinecone-API-Version: 2025-04"
+         -H "X-Pinecone-Api-Version: 2025-10"
      ```
    </CodeGroup>
 
@@ -883,7 +889,7 @@ When you're ready to cutover to your new serverless index:
 
      curl -X POST "https://$INDEX_HOST/describe_index_stats" \  
          -H "Api-Key: $PINECONE_API_KEY" \
-         -H "X-Pinecone-API-Version: 2025-04" 
+         -H "X-Pinecone-Api-Version: 2025-10" 
      ```
    </CodeGroup>
 

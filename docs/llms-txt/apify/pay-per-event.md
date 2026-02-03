@@ -4,24 +4,6 @@
 
 # Source: https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event.md
 
-# Source: https://docs.apify.com/sdk/python/docs/concepts/pay-per-event.md
-
-# Source: https://docs.apify.com/sdk/js/docs/guides/pay-per-event.md
-
-# Source: https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event.md
-
-# Source: https://docs.apify.com/sdk/python/docs/concepts/pay-per-event.md
-
-# Source: https://docs.apify.com/sdk/js/docs/guides/pay-per-event.md
-
-# Source: https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event.md
-
-# Source: https://docs.apify.com/sdk/python/docs/concepts/pay-per-event.md
-
-# Source: https://docs.apify.com/sdk/js/docs/guides/pay-per-event.md
-
-# Source: https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event.md
-
 # Pay per event
 
 **Learn how to monetize your Actor with pay-per-event (PPE) pricing, charging users for specific actions like Actor starts, dataset items, or API calls, and understand how to set profitable, transparent event-based pricing.**
@@ -30,9 +12,9 @@
 
 <!-- -->
 
-The PPE pricing model offers a flexible monetization option for Actors on Apify Store. Unlike https://docs.apify.com/platform/actors/publishing/monetize/pay-per-result.md, PPE allows you to charge users based on specific events triggered programmatically by your Actor's code.
+The PPE pricing model offers a flexible monetization option for Actors on Apify Store. Unlike [pay per result](https://docs.apify.com/platform/actors/publishing/monetize/pay-per-result.md), PPE allows you to charge users based on specific events triggered programmatically by your Actor's code.
 
-PPE lets you define pricing for individual events. You can charge for specific events directly from your Actor using the https://docs.apify.com/sdk/js/reference/class/Actor#charge/https://docs.apify.com/sdk/python/reference/class/Actor#charge SDK, or by calling the https://docs.apify.com/api/v2/post-charge-run.md directly. Common events include Actor start, dataset item creation, and external API calls.
+PPE lets you define pricing for individual events. You can charge for specific events directly from your Actor using the [JS](https://docs.apify.com/sdk/js/reference/class/Actor#charge)/[Python](https://docs.apify.com/sdk/python/reference/class/Actor#charge) SDK, or by calling the [PPE charging API](https://docs.apify.com/api/v2/post-charge-run.md) directly. Common events include Actor start, dataset item creation, and external API calls.
 
 The details on how your cost is computed can be found in .
 
@@ -83,11 +65,11 @@ An Actor's negative net profit does not affect the positive profit of another Ac
 
 Finish the Actor run once charging reaches user-configured maximum cost per run. Apify SDKs (JS and Python) return `ChargeResult` that helps determine when to finish.
 
-The `eventChargeLimitReached` property checks if the current event type can be charged more. If you have multiple event types, analyze the `chargeableWithinLimit` property to see if other events can still be charged before stopping the Actor.
+The `eventChargeLimitReached` property checks if the user's limit allows for another charge of this event. If you have multiple events, analyze the `chargeableWithinLimit` property to see if other events can still be charged before stopping the Actor.
 
 ACTOR\_MAX\_TOTAL\_CHARGE\_USD environment variable
 
-For pay-per-event Actors, users set a spending limit through the Apify Console. This limit is available in your Actor code as the `ACTOR_MAX_TOTAL_CHARGE_USD` https://docs.apify.com/platform/actors/development/programming-interface/environment-variables.md, which contains the user's maximum cost.
+For pay-per-event Actors, users set a spending limit through the Apify Console. This limit is available in your Actor code as the `ACTOR_MAX_TOTAL_CHARGE_USD` [environment variable](https://docs.apify.com/platform/actors/development/programming-interface/environment-variables.md), which contains the user's maximum cost. The Apify SDK's `ChargeResult` respects the user set limit already.
 
 * JavaScript
 * Python
@@ -144,11 +126,11 @@ async def main():
 
 Crawlee integration and spending limits
 
-When using https://crawlee.dev/, use `crawler.autoscaledPool.abort()` instead of `Actor.exit()` to gracefully finish the crawler and allow the rest of your code to process normally.
+When using [Crawlee](https://crawlee.dev/), use `crawler.autoscaledPool.abort()` instead of `Actor.exit()` to gracefully finish the crawler and allow the rest of your code to process normally.
 
 ## Best practices for PPE Actors
 
-Use our https://docs.apify.com/sdk.md (JS and, Python or use https://docs.apify.com/cli/docs/next/reference#apify-actor-charge-eventname when using our Apify CLI) to simplify PPE implementation into your Actor. SDKs help you handle pricing, usage tracking, idempotency keys, API errors, and, event charging via an API. You can also choose not to use it, but then you must handle API integration and possible edge cases manually.
+Use our [SDKs](https://docs.apify.com/sdk.md) (JS and, Python or use [apify actor charge](https://docs.apify.com/cli/docs/next/reference#apify-actor-charge-eventname) when using our Apify CLI) to simplify PPE implementation into your Actor. SDKs help you handle pricing, usage tracking, idempotency keys, API errors, and, event charging via an API. You can also choose not to use it, but then you must handle API integration and possible edge cases manually.
 
 ### Use synthetic start event `apify-actor-start`
 
@@ -158,7 +140,7 @@ We recommend using the synthetic Actor start event in PPE Actors. It benefits bo
 
 Starting an Actor takes time, and creates additional cost for the Actor creator, because the profit equals revenue minus platform costs.
 
-One of the options to charge for the time spent on starting the Actor is to charge an “Actor start” event. Unfortunately, this makes your Actor comparably expensive with other tools on the market (outside of https://docs.apify.com/platform/console/store.md) that do not incur this startup cost.
+One of the options to charge for the time spent on starting the Actor is to charge an “Actor start” event. Unfortunately, this makes your Actor comparably expensive with other tools on the market (outside of [Apify Store](https://docs.apify.com/platform/console/store.md)) that do not incur this startup cost.
 
 We want to make it easier for Actor creators to stay competitive, but also help them to be profitable. Therefore, we have the Apify Actor synthetic start event `apify-actor-start`. This event is enabled by default for all new PPE Actors, and when you use it Apify will cover the compute unit cost of the first 5 seconds of every Actor run.
 
@@ -217,7 +199,7 @@ This event simplifies migration from pay-per-result (PPR) Actors to the pay-per-
 
 ### Set memory limits
 
-Set memory limits using `minMemoryMbytes` and `maxMemoryMbytes` in your https://docs.apify.com/platform/actors/development/actor-definition/actor-json file to control platform usage costs.
+Set memory limits using `minMemoryMbytes` and `maxMemoryMbytes` in your [actor.json](https://docs.apify.com/platform/actors/development/actor-definition/actor-json) file to control platform usage costs.
 
 
 ```
@@ -367,7 +349,7 @@ Fixed pricing is simpler for users to predict, while usage-based pricing more ac
 
 Your profit and costs are computed *only from the first two users* since they are on Apify paid plans.
 
-The platform usage costs are just examples, but you can see the actual costs in the https://docs.apify.com/platform/actors/publishing/monetize/pricing-and-costs.md#computing-your-costs-for-ppe-and-ppr-actors section.
+The platform usage costs are just examples, but you can see the actual costs in the [Computing your costs for PPE and PPR Actors](https://docs.apify.com/platform/actors/publishing/monetize/pricing-and-costs.md#computing-your-costs-for-ppe-and-ppr-actors) section.
 
 ### Revenue breakdown
 
@@ -377,8 +359,8 @@ The platform usage costs are just examples, but you can see the actual costs in 
 
 ## Event names
 
-If you need to know your event names, you can retrieve the list of available pricing event names using the https://apify.com/docs/api/v2/act-get API endpoint.
+If you need to know your event names, you can retrieve the list of available pricing event names using the [Get Actor](https://apify.com/docs/api/v2/act-get) API endpoint.
 
 ## Next steps
 
-* Check out the https://docs.apify.com/platform/actors/publishing/monetize/pricing-and-costs.md section to learn how to compute your costs.
+* Check out the [Pricing and costs](https://docs.apify.com/platform/actors/publishing/monetize/pricing-and-costs.md) section to learn how to compute your costs.

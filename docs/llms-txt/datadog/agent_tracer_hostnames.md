@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Understand the Difference Between the Agent Host
   and the Tracer Host
-source_url: https://docs.datadoghq.com/guide/agent_tracer_hostnames/index.html
 ---
 
 # Understand the Difference Between the Agent Host and the Tracer Host

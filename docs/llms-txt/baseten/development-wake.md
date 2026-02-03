@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/reference/inference-api/wake/development-wake.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Development
 
 Use this endpoint to wake the [development deployment](/deployment/deployments#development-deployment) of your model if it is scaled to zero.
@@ -19,7 +23,7 @@ https://model-{model_id}.api.baseten.co/development/wake
 </ParamField>
 
 <RequestExample>
-  ```py Python theme={"system"}
+  ```python Python theme={"system"}
   import urllib3
   import os
 
@@ -44,7 +48,7 @@ https://model-{model_id}.api.baseten.co/development/wake
     -H 'Authorization: Api-Key YOUR_API_KEY' \
   ```
 
-  ```js Node.js theme={"system"}
+  ```javascript Node.js theme={"system"}
   const fetch = require("node-fetch");
 
   const resp = await fetch(

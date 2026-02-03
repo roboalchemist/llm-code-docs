@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/troubleshooting/overview/
+
 # Red Team Troubleshooting Guide
 
 Common issues encountered when red teaming LLM applications with promptfoo.

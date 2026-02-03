@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/sdk/js/reference/interface/ChargeResult.md
 
-# Source: https://docs.apify.com/sdk/python/reference/class/ChargeResult.md
-
-# Source: https://docs.apify.com/sdk/js/reference/interface/ChargeResult.md
-
-# Source: https://docs.apify.com/sdk/python/reference/class/ChargeResult.md
-
-# Source: https://docs.apify.com/sdk/js/reference/interface/ChargeResult.md
-
-# Source: https://docs.apify.com/sdk/python/reference/class/ChargeResult.md
-
-# Source: https://docs.apify.com/sdk/js/reference/interface/ChargeResult.md
-
 # ChargeResult<!-- -->
 
 ## Index[**](#Index)

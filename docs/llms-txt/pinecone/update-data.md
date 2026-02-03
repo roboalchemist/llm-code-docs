@@ -1,13 +1,17 @@
 # Source: https://docs.pinecone.io/guides/manage-data/update-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update records
 
 > Update vectors and metadata for existing records
 
 You can [update](/reference/api/latest/data-plane/update) a single record using the record ID or multiple records using a metadata filter.
 
-* When updating by ID, you change the vector and/or metadata of a single record.
-* When updating by metadata, you change metadata across multiple records using a metadata filter.
+* **Update by ID**: Update a single record's metadata (add or change fields) or vector values.
+* **Update by metadata**: Update metadata (add or change fields) across multiple records using a metadata filter. Vector values cannot be updated.
 
 To update entire records, use the [upsert](/guides/index-data/upsert-data) operation instead.
 
@@ -183,7 +187,7 @@ In this example, assume you are updating the dense vector values and one metadat
   curl "https://$INDEX_HOST/vectors/update" \
     -H "Api-Key: $PINECONE_API_KEY" \
     -H 'Content-Type: application/json' \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
           "id": "id-3",
           "values": [5.0, 3.0],
@@ -204,10 +208,6 @@ After the update, the dense vector values and the `genre` metadata value are cha
 ```
 
 ## Update by metadata
-
-<Warning>
-  This feature is in [public preview](/release-notes/feature-availability) and is available only on the `2025-10` version of the API. See [limitations](#limitations) for details.
-</Warning>
 
 To add or change metadata across multiple records in a namespace, use the `update` operation with the following parameters:
 
@@ -259,7 +259,7 @@ For example, let's say you have records that represent chunks of a single docume
    curl "https://$INDEX_HOST/vectors/update" \
        -H "Api-Key: $PINECONE_API_KEY" \
        -H 'Content-Type: application/json' \
-       -H "X-Pinecone-API-Version: 2025-10" \
+       -H "X-Pinecone-Api-Version: 2025-10" \
        -d '{
                "dry_run": true,
                "namespace": "example-namespace",
@@ -288,7 +288,7 @@ For example, let's say you have records that represent chunks of a single docume
    curl "https://$INDEX_HOST/vectors/update" \
        -H "Api-Key: $PINECONE_API_KEY" \
        -H 'Content-Type: application/json' \
-       -H "X-Pinecone-API-Version: 2025-10" \
+       -H "X-Pinecone-Api-Version: 2025-10" \
        -d '{
                "namespace": "example-namespace",
                "filter": {
@@ -319,7 +319,7 @@ For example, let's say you have records that represent chunks of a single docume
    curl "https://$INDEX_HOST/vectors/update" \
        -H "Api-Key: $PINECONE_API_KEY" \
        -H 'Content-Type: application/json' \
-       -H "X-Pinecone-API-Version: 2025-10" \
+       -H "X-Pinecone-Api-Version: 2025-10" \
        -d '{
                "dry_run": true,
                "namespace": "example-namespace",
@@ -344,7 +344,7 @@ For example, let's say you have records that represent chunks of a single docume
    curl "https://$INDEX_HOST/vectors/update" \
        -H "Api-Key: $PINECONE_API_KEY" \
        -H 'Content-Type: application/json' \
-       -H "X-Pinecone-API-Version: 2025-10" \
+       -H "X-Pinecone-Api-Version: 2025-10" \
        -d '{
                "namespace": "example-namespace",
                "filter": {
@@ -367,7 +367,7 @@ For example, let's say you have records that represent chunks of a single docume
    curl "https://$INDEX_HOST/vectors/update" \
        -H "Api-Key: $PINECONE_API_KEY" \
        -H 'Content-Type: application/json' \
-       -H "X-Pinecone-API-Version: 2025-10" \
+       -H "X-Pinecone-Api-Version: 2025-10" \
        -d '{
                "dry_run": true,
                "namespace": "example-namespace",
@@ -418,10 +418,13 @@ For example, let's say you have records that represent chunks of a single docume
 
 ### Limitations
 
-* This feature is available only on the `2025-10` version of the API.
 * Each request updates a maximum of 100,000 records. Use `"dry_run": true` to check if you need to run the request multiple times. See the example above for details.
 * You can add or change metadata across multiple records, but you cannot remove metadata fields.
 
 ## Data freshness
 
 Pinecone is eventually consistent, so there can be a slight delay before updates are visible to queries. You can [use log sequence numbers](/guides/index-data/check-data-freshness#check-the-log-sequence-number) to check whether an update request has completed.
+
+## See also
+
+* [Update an entire document](/guides/index-data/data-modeling#update-an-entire-document)

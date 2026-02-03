@@ -10,7 +10,7 @@ LiveKit docs › Other › Agent CLI reference
 
 ## Overview
 
-The LiveKit CLI is the primary interface for managing agents [deployed to LiveKit Cloud](https://docs.livekit.io/deploy/agents/cloud/start.md). All agent commands are prefixed with `lk agent`.
+The LiveKit CLI is the primary interface for managing agents [deployed to LiveKit Cloud](https://docs.livekit.io/deploy/agents.md). All agent commands are prefixed with `lk agent`.
 
 For instructions on installing the CLI, see the LiveKit CLI [Getting started](https://docs.livekit.io/intro/basics/cli.md) guide.
 
@@ -65,7 +65,7 @@ Options for `create`:
 - `--region REGION`: [Region code](https://docs.livekit.io/deploy/admin/regions/agent-deployment.md#regions) for the agent deployment. If no value is provided, the CLI prompts you to select a region.
 - `--secrets KEY=VALUE [--secrets KEY=VALUE]`: Comma-separated `KEY=VALUE` secrets. Injected as environment variables into the agent. Individual values take precedence over values in `--secrets-file`, in the case of duplicate keys.
 - `--secrets-file FILE`: File containing secret `KEY=VALUE` pairs, one per line. Injected as environment variables into the agent.
-- `--secret-mount FILE`: Path to a file to load as a [file-mounted secret](https://docs.livekit.io/deploy/agents/cloud/secrets.md#file-mounted-secrets) in the agent container.
+- `--secret-mount FILE`: Path to a file to load as a [file-mounted secret](https://docs.livekit.io/deploy/agents/secrets.md#file-mounted-secrets) in the agent container.
 - `--config FILE`: Name of the configuration file to create for the new deployment. If no value is provided, the default name is `livekit.toml`.
 - `--silent`: Do not prompt for interactive confirmation. Default: `false`.
 
@@ -84,7 +84,7 @@ lk agent create \
 
 ### Deploy
 
-[Build and deploy](https://docs.livekit.io/deploy/agents/cloud/builds.md) a new agent version based on the working directory. You must have a `livekit.toml` and `Dockerfile` in the working directory.
+[Build and deploy](https://docs.livekit.io/deploy/agents/builds.md) a new agent version based on the working directory. You must have a `livekit.toml` and `Dockerfile` in the working directory.
 
 ```shell
 lk agent deploy [options] [working-dir]
@@ -95,7 +95,7 @@ Options for `deploy`:
 
 - `--secrets KEY=VALUE [--secrets KEY=VALUE]`: Comma-separated `KEY=VALUE` secrets. Injected as environment variables into the agent. Takes precedence over `--secrets-file`.
 - `--secrets-file FILE`: File containing secret `KEY=VALUE` pairs, one per line. Injected as environment variables into the agent.
-- `--secret-mount FILE`: Path to a file to load as a [file-mounted secret](https://docs.livekit.io/deploy/agents/cloud/secrets.md#file-mounted-secrets) in the agent container.
+- `--secret-mount FILE`: Path to a file to load as a [file-mounted secret](https://docs.livekit.io/deploy/agents/secrets.md#file-mounted-secrets) in the agent container.
 
 #### Examples
 
@@ -204,7 +204,7 @@ Options for `update`:
 
 - `--secrets KEY=VALUE [--secrets KEY=VALUE]`: Comma-separated `KEY=VALUE` secrets. Injected as environment variables into the agent. Takes precedence over `--secrets-file`.
 - `--secrets-file FILE`: File containing secret `KEY=VALUE` pairs, one per line. Injected as environment variables into the agent.
-- `--secret-mount FILE`: Path to a file to load as a [file-mounted secret](https://docs.livekit.io/deploy/agents/cloud/secrets.md#file-mounted-secrets) in the agent container.
+- `--secret-mount FILE`: Path to a file to load as a [file-mounted secret](https://docs.livekit.io/deploy/agents/secrets.md#file-mounted-secrets) in the agent container.
 - `--id AGENT_ID`: Agent ID. By default, uses the ID found in the `livekit.toml` file in the working directory.
 
 #### Examples
@@ -262,7 +262,7 @@ lk agent rollback --id CA_MyAgentId --version 20250809003117
 
 ### Logs
 
-Stream [logs](https://docs.livekit.io/deploy/agents/cloud/logs.md) for the specified agent and log type. Also available as `tail`.
+Stream [logs](https://docs.livekit.io/deploy/agents/logs.md) for the specified agent and log type. Also available as `tail`.
 
 ```shell
 lk agent logs [options] [working-dir]
@@ -375,7 +375,7 @@ Using default project [my-project]
 
 ### Secrets
 
-Show the current [secret](https://docs.livekit.io/deploy/agents/cloud/secrets.md) keys for the specified agent. Does not include secret values.
+Show the current [secret](https://docs.livekit.io/deploy/agents/secrets.md) keys for the specified agent. Does not include secret values.
 
 ```shell
 lk agent secrets [options] [working-dir]
@@ -421,7 +421,7 @@ Options for `update-secrets`:
 
 - `--secrets KEY=VALUE [--secrets KEY=VALUE]`: Comma-separated `KEY=VALUE` secrets. Injected as environment variables into the agent. Takes precedence over `--secrets-file`.
 - `--secrets-file FILE`: File containing secret `KEY=VALUE` pairs, one per line. Injected as environment variables into the agent.
-- `--secret-mount FILE`: Path to a file to load as a [file-mounted secret](https://docs.livekit.io/deploy/agents/cloud/secrets.md#file-mounted-secrets) in the agent container.
+- `--secret-mount FILE`: Path to a file to load as a [file-mounted secret](https://docs.livekit.io/deploy/agents/secrets.md#file-mounted-secrets) in the agent container.
 - `--id ID`: Agent ID. If unset and `livekit.toml` is present, uses the ID found there.
 - `--overwrite`: Overwrite existing secrets. Default: `false`.
 
@@ -487,7 +487,7 @@ lk agent dockerfile
 
 ---
 
-This document was rendered at 2025-12-31T18:29:33.506Z.
+This document was rendered at 2026-02-03T03:25:08.279Z.
 For the latest version of this document, see [https://docs.livekit.io/reference/other/agent-cli.md](https://docs.livekit.io/reference/other/agent-cli.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

@@ -1,11 +1,15 @@
 # Source: https://docs.frigade.com/component/checklist/carousel.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Carousel
 
 > A carousel checklist component to drive set up and activation
 
 <Frame className="h-96 items-center">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/carousel.png" style={{ maxWidth: "500px" }} />
+  <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/carousel.png?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=2c69f824b91721872a6b30049c74a211" style={{ maxWidth: "500px" }} data-og-width="1120" width="1120" data-og-height="457" height="457" data-path="images/components/carousel.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/carousel.png?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=8e2941d443ba516af0485df0dad35e50 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/carousel.png?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=2f131d0a29fdfac56ebba97bc391e40e 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/carousel.png?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=2764535aacc1e418dd889818b7b37e51 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/carousel.png?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=37dea889e948ffd22b663de455618f78 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/carousel.png?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=494a483dc72fabe5ca32888966c2d980 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/carousel.png?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=b0662747758ba7d4e6d724f40e0e283b 2500w" />
 </Frame>
 
 ## About this component
@@ -45,7 +49,7 @@ The `Checklist` component is one of Frigade’s most popular tools, especially f
 
 <Tabs>
   <Tab title="Code">
-    ```tsx
+    ```tsx  theme={"system"}
     import * as Frigade from '@frigade/react';
 
     const App = () => {

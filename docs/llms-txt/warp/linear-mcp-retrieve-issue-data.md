@@ -36,7 +36,7 @@ This tutorial covers how to:
 ```
 
 * Click Save.
-* Warp will immediately start the server.&#x20;
+* Warp will immediately start the server.
 * You should now see Linear MCP listed as Running.
 
 ***

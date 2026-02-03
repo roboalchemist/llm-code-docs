@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/cookbooks/github-actions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integrating Helicone with GitHub Actions
 
 > Automate the monitoring and caching of LLM calls in your CI pipelines with Helicone.

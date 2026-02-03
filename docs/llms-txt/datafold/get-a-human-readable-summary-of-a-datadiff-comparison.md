@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/api-reference/data-diffs/get-a-human-readable-summary-of-a-datadiff-comparison.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get a human-readable summary of a DataDiff comparison
 
 > Retrieves a comprehensive, human-readable summary of a completed data diff.
@@ -256,7 +260,3 @@ components:
       type: apiKey
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.datafold.com/llms.txt

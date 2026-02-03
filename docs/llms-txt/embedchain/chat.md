@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/api-reference/app/chat.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 💬 chat
 
 `chat()` method allows you to chat over your data sources using a user-friendly chat API. You can find the signature below:
@@ -43,7 +47,7 @@
 
 If you want to get the answer to question and return both answer and citations, use the following code snippet:
 
-```python With Citations
+```python With Citations theme={null}
 from embedchain import App
 
 # Initialize app
@@ -101,7 +105,7 @@ print(sources)
 
 If you just want to return answers and don't want to return citations, you can use the following example:
 
-```python Without Citations
+```python Without Citations theme={null}
 from embedchain import App
 
 # Initialize app
@@ -120,7 +124,7 @@ print(answer)
 
 If you want to maintain chat sessions for different users, you can simply pass the `session_id` keyword argument. See the example below:
 
-```python With session id
+```python With session id theme={null}
 from embedchain import App
 
 app = App()
@@ -139,7 +143,7 @@ app.chat("What was my last question", session_id="user1")
 
 If you want to customize the context window that you want to use during chat (default context window is 3 document chunks), you can do using the following code snippet:
 
-```python with custom chunks size
+```python with custom chunks size theme={null}
 from embedchain import App
 from embedchain.config import BaseLlmConfig
 
@@ -159,7 +163,7 @@ In order to use Mem0 to enable memory for personalization in your apps:
 * Install the [`mem0`](https://docs.mem0.ai/) package using `pip install mem0ai`.
 * Prepare config for `memory`, refer [Configurations](docs/api-reference/advanced/configuration.mdx).
 
-```python with mem0
+```python with mem0 theme={null}
 from embedchain import App
 
 config = {

@@ -23,6 +23,8 @@ import { LegendItemParams } from '@mui/x-charts'
 | maxValue | `number \| Date \| null` | - | Yes |  |
 | minValue | `number \| Date \| null` | - | Yes |  |
 | seriesId | `SeriesId` | - | Yes |  |
+| dataIndex | `number` | - | No |  |
 | itemId | `PieItemId` | - | No |  |
+| type | `ChartSeriesType` | - | No |  |
 
 > **Note**: The `ref` is forwarded to the root element.

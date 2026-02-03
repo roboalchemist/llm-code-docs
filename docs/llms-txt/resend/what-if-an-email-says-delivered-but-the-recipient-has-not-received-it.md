@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/what-if-an-email-says-delivered-but-the-recipient-has-not-received-it.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What if an email says delivered but the recipient has not received it?
 
 > Learn the steps to take when an email is delivered, but the recipient does not receive it.

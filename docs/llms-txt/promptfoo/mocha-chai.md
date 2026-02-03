@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/integrations/mocha-chai/
+
 # Testing prompts with Mocha/Chai
 
 `promptfoo` can be integrated with test frameworks like [Mocha](https://mochajs.org/) and assertion libraries like [Chai](https://www.chaijs.com/) in order to evaluate prompts as part of existing testing and CI workflows.

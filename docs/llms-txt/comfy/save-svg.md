@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/image/recraft/save-svg.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Save SVG - ComfyUI Built-in Node Documentation
 
 > A utility node for saving SVG vector graphics to files

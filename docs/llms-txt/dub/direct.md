@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/conversions/sales/direct.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Direct sale tracking
 
 > Learn how to track sales without a prior lead event using Dub
@@ -30,8 +34,16 @@ Direct sale tracking is ideal for scenarios where:
 * You're tracking sales for users who haven't signed up or created an account
 
 <Note>
-  If you're tracking both leads and sales in your conversion funnel, use [server-side tracking](/conversions/sales/introduction) or [client-side tracking](/conversions/sales/client-side) instead.
+  If you're tracking both leads and sales in your conversion funnel, use
+  [server-side tracking](/conversions/sales/introduction) or [client-side
+  tracking](/conversions/sales/client-side) instead.
 </Note>
+
+<Warning>
+  [Lead commission
+  rewards](https://dub.co/help/article/partner-rewards#configuring-reward-types)
+  will not be created when using direct sale tracking.
+</Warning>
 
 ## Prerequisites
 
@@ -242,7 +254,7 @@ If you redirect users to a confirmation page after a successful purchase, you ca
   function getCookie(name: string) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop()?.split(';').shift();
+    if (parts.length === 2) return parts.pop()?.split(";").shift();
   }
 
   export function OrderConfirmationPage() {
@@ -265,7 +277,7 @@ If you redirect users to a confirmation page after a successful purchase, you ca
           customerExternalId: customerId,
           amount: parseInt(amount), // Amount in cents
           invoiceId: invoiceId || undefined,
-          
+
           // Required for direct sale tracking:
           clickId: clickId,
           customerName: "John Doe", // Optional: customer name
@@ -295,7 +307,7 @@ If you redirect users to a confirmation page after a successful purchase, you ca
         function getCookie(name) {
           const value = `; ${document.cookie}`;
           const parts = value.split(`; ${name}=`);
-          if (parts.length === 2) return parts.pop().split(';').shift();
+          if (parts.length === 2) return parts.pop().split(";").shift();
         }
 
         // Get query parameters from URL
@@ -314,7 +326,7 @@ If you redirect users to a confirmation page after a successful purchase, you ca
             customerExternalId: customerId,
             amount: parseInt(amount), // Amount in cents
             invoiceId: invoiceId || undefined,
-            
+
             // Required for direct sale tracking:
             clickId: clickId,
             customerName: "John Doe", // Optional: customer name
@@ -344,12 +356,12 @@ You can also track direct sales when users complete a checkout form on your webs
   function getCookie(name: string) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop()?.split(';').shift();
+    if (parts.length === 2) return parts.pop()?.split(";").shift();
   }
 
   export function CheckoutForm() {
     const { trackSale } = useAnalytics();
-    
+
     const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();
 
@@ -363,7 +375,7 @@ You can also track direct sales when users complete a checkout form on your webs
           customerExternalId: "cus_RBfbD57H",
           amount: 5000, // $50.00
           invoiceId: "in_1MtHbELkdIwH",
-          
+
           // Required for direct sale tracking:
           clickId: clickId,
           customerName: "John Doe",
@@ -401,34 +413,36 @@ You can also track direct sales when users complete a checkout form on your webs
         function getCookie(name) {
           const value = `; ${document.cookie}`;
           const parts = value.split(`; ${name}=`);
-          if (parts.length === 2) return parts.pop().split(';').shift();
+          if (parts.length === 2) return parts.pop().split(";").shift();
         }
 
-        document.getElementById("checkoutForm").addEventListener("submit", function (e) {
-          e.preventDefault();
+        document
+          .getElementById("checkoutForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
 
-          // Get click ID from cookie
-          const clickId = getCookie("dub_id");
+            // Get click ID from cookie
+            const clickId = getCookie("dub_id");
 
-          if (clickId) {
-            // Track the direct sale event
-            dubAnalytics.trackSale({
-              eventName: "Purchase",
-              customerExternalId: "cus_RBfbD57H",
-              amount: 5000, // $50.00
-              invoiceId: "in_1MtHbELkdIwH",
-              
-              // Required for direct sale tracking:
-              clickId: clickId,
-              customerName: "John Doe",
-              customerEmail: "john@example.com",
-              customerAvatar: "https://example.com/avatar.jpg",
-              currency: "usd",
-              paymentProcessor: "stripe",
-              metadata: { plan: "pro" },
-            });
-          }
-        });
+            if (clickId) {
+              // Track the direct sale event
+              dubAnalytics.trackSale({
+                eventName: "Purchase",
+                customerExternalId: "cus_RBfbD57H",
+                amount: 5000, // $50.00
+                invoiceId: "in_1MtHbELkdIwH",
+
+                // Required for direct sale tracking:
+                clickId: clickId,
+                customerName: "John Doe",
+                customerEmail: "john@example.com",
+                customerAvatar: "https://example.com/avatar.jpg",
+                currency: "usd",
+                paymentProcessor: "stripe",
+                metadata: { plan: "pro" },
+              });
+            }
+          });
       </script>
     </body>
   </html>
@@ -452,7 +466,7 @@ You can also track direct sales from your backend by passing the `clickId` param
     eventName: "Purchase",
     invoiceId: "in_1MtHbELkdIwH",
     currency: "usd",
-    
+
     // Required for direct sale tracking:
     clickId: "cm3w...", // Pass the click ID from your frontend
     customerName: "John Doe",
@@ -474,7 +488,7 @@ You can also track direct sales from your backend by passing the `clickId` param
       'event_name': 'Purchase',
       'invoice_id': 'in_1MtHbELkdIwH',
       'currency': 'usd',
-      
+
       # Required for direct sale tracking:
       'click_id': 'cm3w...', # Pass the click ID from your frontend
       'customer_name': 'John Doe',
@@ -502,7 +516,7 @@ You can also track direct sales from your backend by passing the `clickId` param
       EventName:          "Purchase",
       InvoiceId:          "in_1MtHbELkdIwH",
       Currency:           "usd",
-      
+
       // Required for direct sale tracking:
       ClickId:         "cm3w...", // Pass the click ID from your frontend
       CustomerName:    "John Doe",
@@ -528,7 +542,7 @@ You can also track direct sales from your backend by passing the `clickId` param
     event_name: 'Purchase',
     invoice_id: 'in_1MtHbELkdIwH',
     currency: 'usd',
-    
+
     # Required for direct sale tracking:
     click_id: 'cm3w...', # Pass the click ID from your frontend
     customer_name: 'John Doe',
@@ -584,7 +598,9 @@ Here are the properties you can include when sending a sale event:
 | `customerAvatar`     | No       | **\[For direct sale tracking]**: The avatar URL of the customer.                                                                                           |
 
 <Note>
-  **When to track sale**: Track sale events only after a user successfully completes a purchase or payment-related action. Ensure the event is triggered **only after the backend confirms the payment was successful**.
+  **When to track sale**: Track sale events only after a user successfully
+  completes a purchase or payment-related action. Ensure the event is triggered
+  **only after the backend confirms the payment was successful**.
 </Note>
 
 ## View your conversions

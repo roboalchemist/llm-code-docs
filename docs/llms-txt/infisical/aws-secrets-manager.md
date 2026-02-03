@@ -2,170 +2,258 @@
 
 # Source: https://infisical.com/docs/documentation/platform/pki/certificate-syncs/aws-secrets-manager.md
 
-# Source: https://infisical.com/docs/integrations/secret-syncs/aws-secrets-manager.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://infisical.com/docs/documentation/platform/pki/certificate-syncs/aws-secrets-manager.md
+# AWS Secrets Manager
 
-# Source: https://infisical.com/docs/integrations/secret-syncs/aws-secrets-manager.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/certificate-syncs/aws-secrets-manager.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/aws-secrets-manager.md
-
-# AWS Secrets Manager Sync
-
-> Learn how to configure an AWS Secrets Manager Sync for Infisical.
+> Learn how to configure an AWS Secrets Manager Certificate Sync for Infisical PKI.
 
 **Prerequisites:**
 
-* Set up and add secrets to [Infisical Cloud](https://app.infisical.com)
-* Create an [AWS Connection](/integrations/app-connections/aws) with the required **Secret Sync** permissions
-* Ensure your network security policies allow incoming requests from Infisical to this secret sync provider, if network restrictions apply.
+* Create an [AWS Connection](/integrations/app-connections/aws)
+* Ensure your network security policies allow incoming requests from Infisical to this certificate sync provider, if network restrictions apply.
+
+<Note>
+  The AWS Secrets Manager Certificate Sync requires the following permissions to be set on the AWS IAM user
+  for Infisical to sync certificates to AWS Secrets Manager: `secretsmanager:CreateSecret`, `secretsmanager:UpdateSecret`,
+  `secretsmanager:GetSecretValue`, `secretsmanager:DeleteSecret`, `secretsmanager:ListSecrets`.
+
+  Any role with these permissions would work such as a custom policy with **SecretsManager** permissions.
+</Note>
+
+<Note>
+  Certificates synced to AWS Secrets Manager will be stored as JSON secrets,
+  preserving both the certificate and private key components as separate fields within the secret value.
+</Note>
 
 <Tabs>
   <Tab title="Infisical UI">
-    1. Navigate to **Project** > **Integrations** and select the **Secret Syncs** tab. Click on the **Add Sync** button.
-       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-syncs/general/secret-sync-tab.png" alt="Secret Syncs Tab" />
+    1. Navigate to **Project** > **Integrations** > **Certificate Syncs** and press **Add Sync**.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate-syncs/general/create-certificate-sync.png" alt="Certificate Syncs Tab" />
 
     2. Select the **AWS Secrets Manager** option.
-       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-syncs/aws-secrets-manager/select-aws-secrets-manager-option.png" alt="Select AWS Secrets Manager" />
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate-syncs/aws-secrets-manager/select-aws-secrets-manager-option.png" alt="Select AWS Secrets Manager" />
 
-    3. Configure the **Source** from where secrets should be retrieved, then click **Next**.
-       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-syncs/aws-secrets-manager/aws-secrets-manager-source.png" alt="Configure Source" />
-
-       * **Environment**: The project environment to retrieve secrets from.
-       * **Secret Path**: The folder path to retrieve secrets from.
-
-    <Tip>
-      If you need to sync secrets from multiple folder locations, check out [secret imports](/documentation/platform/secret-reference#secret-imports).
-    </Tip>
-
-    4. Configure the **Destination** to where secrets should be deployed, then click **Next**.
-       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-syncs/aws-secrets-manager/aws-secrets-manager-destination.png" alt="Configure Destination" />
+    3. Configure the **Destination** to where certificates should be deployed, then click **Next**.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate-syncs/aws-secrets-manager/aws-secrets-manager-destination.png" alt="Configure Destination" />
 
        * **AWS Connection**: The AWS Connection to authenticate with.
-       * **Region**: The AWS region to deploy secrets to.
-       * **Mapping Behavior**: Specify how Infisical should map secrets to AWS Secrets Manager:
-         * **One-To-One**: Each Infisical secret will be mapped to a separate AWS Secrets Manager secret.
-         * **Many-To-One**: All Infisical secrets will be mapped to a single AWS Secrets Manager secret.
-       * **Secret Name**: Specifies the name of the AWS Secret to map secrets to if **Many-To-One** mapping behavior is selected.
+       * **Region**: The AWS region where secrets will be stored.
 
-    5. Configure the **Sync Options** to specify how secrets should be synced, then click **Next**.
-       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-syncs/aws-secrets-manager/aws-secrets-manager-options.png" alt="Configure Options" />
+    4. Configure the **Sync Options** to specify how certificates should be synced, then click **Next**.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate-syncs/aws-secrets-manager/aws-secrets-manager-options.png" alt="Configure Options" />
 
-       * **Initial Sync Behavior**: Determines how Infisical should resolve the initial sync.
-         * **Overwrite Destination Secrets**: Removes any secrets at the destination endpoint not present in Infisical.
-         * **Import Secrets (Prioritize Infisical)**: Imports secrets from the destination endpoint before syncing, prioritizing values from Infisical over Secrets Manager when keys conflict.
-         * **Import Secrets (Prioritize AWS Secrets Manager)**: Imports secrets from the destination endpoint before syncing, prioritizing values from Secrets Manager over Infisical when keys conflict.
-       * **Key Schema**: Template that determines how secret names are transformed when syncing, using `{{secretKey}}` as a placeholder for the original secret name and `{{environment}}` for the environment.
+       * **Enable Removal of Expired/Revoked Certificates**: If enabled, Infisical will remove certificates from the destination if they are no longer active in Infisical.
+       * **Preserve Secret on Renewal**: Only applies to certificate renewals. When a certificate is renewed in Infisical, this option controls how the renewed certificate is handled. If enabled, the renewed certificate will update the existing secret, preserving the same secret name. If disabled, the renewed certificate will be created as a new secret with a new name.
+       * **Include Root CA**: If enabled, the Root CA certificate will be included in the certificate chain when syncing to AWS Secrets Manager. If disabled, only intermediate certificates will be included.
+       * **Certificate Name Schema** (Optional): Customize how secret names are generated in AWS Secrets Manager. Use `{{certificateId}}` as a placeholder for the certificate ID.
+       * **Auto-Sync Enabled**: If enabled, certificates will automatically be synced when changes occur. Disable to enforce manual syncing only.
 
-       <Note>
-         We highly recommend using a Key Schema to ensure that Infisical only manages the specific keys you intend, keeping everything else untouched.
-       </Note>
+    5. Configure the **Field Mappings** to customize how certificate data is stored in AWS Secrets Manager secrets, then click **Next**.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate-syncs/aws-secrets-manager/aws-secrets-manager-field-mappings.png" alt="Configure Field Mappings" />
 
-       * **KMS Key**: The AWS KMS key ID or alias to encrypt secrets with.
-       * **Tags**: Optional tags to add to secrets synced by Infisical.
-       * **Sync Secret Metadata as Tags**: If enabled, metadata attached to secrets will be added as tags to secrets synced by Infisical.
+       * **Certificate Field**: The field name where the certificate will be stored in the secret value (default: `certificate`)
+       * **Private Key Field**: The field name where the private key will be stored in the secret value (default: `private_key`)
+       * **Certificate Chain Field**: The field name where the full certificate chain excluding the root CA certificate will be stored (default: `certificate_chain`)
+       * **CA Certificate Field**: The field name where the root CA certificate will be stored (default: `ca_certificate`)
 
-       <Note>
-         Manually configured tags from the **Tags** field will take precedence over secret metadata when tag keys conflict.
-       </Note>
+    <Tip>
+      **AWS Secrets Manager Secret Structure**: Certificates are stored in AWS Secrets Manager as JSON secrets with the following structure (field names can be customized via field mappings):
 
-       * **Auto-Sync Enabled**: If enabled, secrets will automatically be synced from the source location when changes occur. Disable to enforce manual syncing only.
-       * **Disable Secret Deletion**: If enabled, Infisical will not remove secrets from the sync destination. Enable this option if you intend to manage some secrets manually outside of Infisical.
+      ```json  theme={"dark"}
+      {
+        "certificate": "-----BEGIN CERTIFICATE-----\n...",
+        "private_key": "-----BEGIN PRIVATE KEY-----\n...",
+        "certificate_chain": "-----BEGIN CERTIFICATE-----\n...",
+        "ca_certificate": "-----BEGIN CERTIFICATE-----\n..."
+      }
+      ```
 
-    6. Configure the **Details** of your Secrets Manager Sync, then click **Next**.
-       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-syncs/aws-secrets-manager/aws-secrets-manager-details.png" alt="Configure Details" />
+      **Example with Custom Field Mappings**:
+
+      ```json  theme={"dark"}
+      {
+        "ssl_cert": "-----BEGIN CERTIFICATE-----\n...",
+        "ssl_key": "-----BEGIN PRIVATE KEY-----\n...",
+        "ssl_chain": "-----BEGIN CERTIFICATE-----\n...",
+        "ssl_ca": "-----BEGIN CERTIFICATE-----\n..."
+      }
+      ```
+    </Tip>
+
+    6. Configure the **Details** of your AWS Secrets Manager Certificate Sync, then click **Next**.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate-syncs/aws-secrets-manager/aws-secrets-manager-details.png" alt="Configure Details" />
 
        * **Name**: The name of your sync. Must be slug-friendly.
        * **Description**: An optional description for your sync.
 
-    7. Review your Secrets Manager Sync configuration, then click **Create Sync**.
-       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-syncs/aws-secrets-manager/aws-secrets-manager-review.png" alt="Confirm Configuration" />
+    7. Select which certificates should be synced to AWS Secrets Manager.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate-syncs/aws-secrets-manager/aws-secrets-manager-certificates.png" alt="Select Certificates" />
 
-    8. If enabled, your Secrets Manager Sync will begin syncing your secrets to the destination endpoint.
-       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/secret-syncs/aws-secrets-manager/aws-secrets-manager-created.png" alt="Sync Secrets" />
+    8. Review your AWS Secrets Manager Certificate Sync configuration, then click **Create Sync**.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate-syncs/aws-secrets-manager/aws-secrets-manager-review.png" alt="Confirm Configuration" />
+
+    9. If enabled, your AWS Secrets Manager Certificate Sync will begin syncing your certificates to the destination endpoint.
+       <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate-syncs/aws-secrets-manager/aws-secrets-manager-synced.png" alt="Sync Certificates" />
   </Tab>
 
   <Tab title="API">
-    To create an **AWS Secrets Manager Sync**, make an API request to the [Create AWS
-    Secrets Manager Sync](/api-reference/endpoints/secret-syncs/aws-secrets-manager/create) API endpoint.
+    To create an **AWS Secrets Manager Certificate Sync**, make an API request to the [Create AWS Secrets Manager Certificate Sync](/api-reference/endpoints/pki/syncs/aws-secrets-manager/create) API endpoint.
 
     ### Sample request
 
+    <Note>
+      You can optionally specify `certificateIds` during sync creation to immediately add certificates to the sync.
+      If not provided, you can add certificates later using the certificate management endpoints.
+    </Note>
+
     ```bash Request theme={"dark"}
-    curl    --request POST \
-    --url https://app.infisical.com/api/v1/secret-syncs/aws-secrets-manager \
+    curl --request POST \
+    --url https://app.infisical.com/api/v1/cert-manager/syncs/aws-secrets-manager \
+    --header 'Authorization: Bearer <access-token>' \
     --header 'Content-Type: application/json' \
     --data '{
-        "name": "my-secrets-manager-sync",
+        "name": "my-aws-secrets-manager-cert-sync",
         "projectId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
-        "description": "an example sync",
+        "description": "an example certificate sync",
         "connectionId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
-        "environment": "dev",
-        "secretPath": "/my-secrets",
-        "isEnabled": true,
+        "destination": "aws-secrets-manager",
+        "isAutoSyncEnabled": true,
+        "certificateIds": [
+            "550e8400-e29b-41d4-a716-446655440000",
+            "660f1234-e29b-41d4-a716-446655440001"
+        ],
         "syncOptions": {
-            "initialSyncBehavior": "overwrite-destination"
+            "canRemoveCertificates": true,
+            "preserveSecretOnRenewal": true,
+            "canImportCertificates": false,
+            "includeRootCa": false,
+            "certificateNameSchema": "myapp-{{certificateId}}",
+            "fieldMappings": {
+                "certificate": "ssl_cert",
+                "privateKey": "ssl_key",
+                "certificateChain": "ssl_chain",
+                "caCertificate": "ssl_ca"
+            }
         },
         "destinationConfig": {
             "region": "us-east-1",
-            "mappingBehavior": "one-to-one"
+            "keyId": "alias/my-kms-key"
+        }
+    }'
+    ```
+
+    ### Example with Default Field Mappings
+
+    ```bash Request theme={"dark"}
+    curl --request POST \
+    --url https://app.infisical.com/api/v1/cert-manager/syncs/aws-secrets-manager \
+    --header 'Authorization: Bearer <access-token>' \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "name": "my-aws-secrets-manager-cert-sync-default",
+        "projectId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+        "description": "AWS Secrets Manager sync with default field mappings",
+        "connectionId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+        "destination": "aws-secrets-manager",
+        "isAutoSyncEnabled": true,
+        "syncOptions": {
+            "canRemoveCertificates": true,
+            "preserveSecretOnRenewal": true,
+            "canImportCertificates": false,
+            "includeRootCa": false,
+            "certificateNameSchema": "infisical-{{certificateId}}",
+            "fieldMappings": {
+                "certificate": "certificate",
+                "privateKey": "private_key",
+                "certificateChain": "certificate_chain",
+                "caCertificate": "ca_certificate"
+            }
+        },
+        "destinationConfig": {
+            "region": "us-west-2"
         }
     }'
     ```
 
     ### Sample response
 
-    ```bash Response theme={"dark"}
+    ```json Response theme={"dark"}
     {
-        "secretSync": {
+        "pkiSync": {
             "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
-            "name": "my-secrets-manager-sync",
-            "description": "an example sync",
-            "isEnabled": true,
-            "version": 1,
-            "folderId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
-            "connectionId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
-            "createdAt": "2023-11-07T05:31:56Z",
-            "updatedAt": "2023-11-07T05:31:56Z",
-            "syncStatus": "succeeded",
-            "lastSyncJobId": "123",
-            "lastSyncMessage": null,
-            "lastSyncedAt": "2023-11-07T05:31:56Z",
-            "importStatus": null,
-            "lastImportJobId": null,
-            "lastImportMessage": null,
-            "lastImportedAt": null,
-            "removeStatus": null,
-            "lastRemoveJobId": null,
-            "lastRemoveMessage": null,
-            "lastRemovedAt": null,
-            "syncOptions": {
-                "initialSyncBehavior": "overwrite-destination"
-            },
-            "projectId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
-            "connection": {
-                "app": "aws",
-                "name": "my-aws-connection",
-                "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a"
-            },
-            "environment": {
-                "slug": "dev",
-                "name": "Development",
-                "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a"
-            },
-            "folder": {
-                "id": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
-                "path": "/my-secrets"
-            },
+            "name": "my-aws-secrets-manager-cert-sync",
+            "description": "an example certificate sync",
             "destination": "aws-secrets-manager",
+            "isAutoSyncEnabled": true,
             "destinationConfig": {
                 "region": "us-east-1",
-                "mappingBehavior": "one-to-one"
-            }
+                "keyId": "alias/my-kms-key"
+            },
+            "syncOptions": {
+                "canRemoveCertificates": true,
+                "preserveSecretOnRenewal": true,
+                "canImportCertificates": false,
+                "includeRootCa": false,
+                "certificateNameSchema": "myapp-{{certificateId}}",
+                "fieldMappings": {
+                    "certificate": "ssl_cert",
+                    "privateKey": "ssl_key",
+                    "certificateChain": "ssl_chain",
+                    "caCertificate": "ssl_ca"
+                }
+            },
+            "projectId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+            "connectionId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+            "createdAt": "2023-01-01T00:00:00.000Z",
+            "updatedAt": "2023-01-01T00:00:00.000Z"
         }
     }
     ```
   </Tab>
 </Tabs>
+
+## Certificate Management
+
+Your AWS Secrets Manager Certificate Sync will:
+
+* **Automatic Deployment**: Deploy certificates in Infisical to AWS Secrets Manager as JSON secrets with customizable field names
+* **Certificate Updates**: Update certificates in AWS Secrets Manager when renewals occur
+* **Expiration Handling**: Optionally remove expired certificates from AWS Secrets Manager (if enabled)
+* **Format Preservation**: Maintain certificate format during sync operations
+* **Field Customization**: Map certificate data to custom field names that match your application requirements
+* **CA Certificate Support**: Include CA certificates in secrets for complete certificate chain management
+* **KMS Encryption**: Optionally use custom KMS keys for secret encryption
+* **Regional Deployment**: Deploy secrets to specific AWS regions
+
+<Note>
+  AWS Secrets Manager Certificate Syncs support both automatic and manual
+  synchronization modes. When auto-sync is enabled, certificates are
+  automatically deployed as they are issued or renewed.
+</Note>
+
+## Manual Certificate Sync
+
+You can manually trigger certificate synchronization to AWS Secrets Manager using the sync certificates functionality. This is useful for:
+
+* Initial setup when you have existing certificates to deploy
+* One-time sync of specific certificates
+* Testing certificate sync configurations
+* Force sync after making changes
+
+To manually sync certificates, use the [Sync Certificates](/api-reference/endpoints/pki/syncs/aws-secrets-manager/sync-certificates) API endpoint or the manual sync option in the Infisical UI.
+
+<Note>
+  AWS Secrets Manager does not support importing certificates back into Infisical
+  due to the nature of AWS Secrets Manager where certificates are stored as JSON secrets
+  rather than managed certificate objects.
+</Note>
+
+## Secret Naming Constraints
+
+AWS Secrets Manager has specific naming requirements for secrets:
+
+* **Allowed Characters**: Letters, numbers, hyphens (-), and underscores (\_) only
+* **Length**: 1-512 characters

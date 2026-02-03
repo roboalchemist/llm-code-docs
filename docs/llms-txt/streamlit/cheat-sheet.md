@@ -1,3 +1,7 @@
+# Source: https://docs.streamlit.io/develop/quick-reference/cheat-sheet
+
+# Source: https://docs.streamlit.io/develop/concepts/app-testing/cheat-sheet
+
 # App testing cheat sheet
 
 ## Text elements

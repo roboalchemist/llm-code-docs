@@ -9,13 +9,17 @@ https://api.apify.com/v2/actor-runs/:runId
 ```
 
 
-Clientshttps://docs.apify.com/api/client/js/reference/class/RunClient#deleteDelete the run. Only finished runs can be deleted. Only the person or organization that initiated the run can delete it.
+Delete the run. Only finished runs can be deleted. Only the person or organization that initiated the run can delete it.
 
 ## Request
 
 ## Responses
 
 * 204
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

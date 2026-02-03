@@ -1,3 +1,7 @@
+# Source: https://docs.streamlit.io/develop/api-reference/connections
+
+# Source: https://docs.streamlit.io/develop/concepts/connections
+
 # Working with connections, secrets, and user authentication
 
 ## Connecting to data

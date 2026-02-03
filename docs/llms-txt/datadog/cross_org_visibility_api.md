@@ -6,7 +6,6 @@ description: >-
   Configure cross-organization data sharing connections using the API to enable
   insights across multiple organizations in your account.
 breadcrumbs: Docs > Account Management > Cross-Organization Connections API
-source_url: https://docs.datadoghq.com/org_settings/cross_org_visibility_api/index.html
 ---
 
 # Cross-Organization Connections API

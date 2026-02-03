@@ -9,6 +9,10 @@
 Use the PageAnchors component to display a list of links.
 
 ```vue
+<script setup lang="ts">
+import type { PageAnchor } from '@nuxt/ui'
+</script>
+
 <template>
   <UPageAnchors />
 </template>
@@ -37,11 +41,8 @@ import type { PageAnchor } from '@nuxt/ui'
 
 ## Examples
 
-<note>
-
-While these examples use [Nuxt Content](https://content.nuxt.com), the components can be integrated with any content management system.
-
-</note>
+> [!NOTE]
+> While these examples use [Nuxt Content](https://content.nuxt.com), the components can be integrated with any content management system.
 
 ### Within a layout
 
@@ -106,7 +107,7 @@ interface PageAnchorsProps {
    * @default "\"nav\""
    */
   as?: any;
-  links?: PageAnchor[] | undefined;
+  links?: T[] | undefined;
   ui?: { root?: ClassNameValue; list?: ClassNameValue; item?: ClassNameValue; link?: ClassNameValue; linkLeading?: ClassNameValue; linkLeadingIcon?: ClassNameValue; linkLabel?: ClassNameValue; linkLabelExternalIcon?: ClassNameValue; } | undefined;
 }
 ```
@@ -166,8 +167,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

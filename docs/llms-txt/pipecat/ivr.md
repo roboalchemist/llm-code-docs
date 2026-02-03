@@ -2,13 +2,9 @@
 
 # Source: https://docs.pipecat.ai/guides/fundamentals/ivr.md
 
-# Source: https://docs.pipecat.ai/server/utilities/extensions/ivr.md
-
-# Source: https://docs.pipecat.ai/guides/fundamentals/ivr.md
-
-# Source: https://docs.pipecat.ai/server/utilities/extensions/ivr.md
-
-# Source: https://docs.pipecat.ai/guides/fundamentals/ivr.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # IVR Navigation
 
@@ -226,8 +222,3 @@ The IVRNavigator automatically optimizes Voice Activity Detection (VAD) paramete
 </CardGroup>
 
 The IVRNavigator provides a powerful foundation for automating phone system interactions, allowing your bots to handle the complex task of menu navigation while you focus on the core conversation logic.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

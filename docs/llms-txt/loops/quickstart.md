@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/quickstart.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart
 
 > Welcome to Loops, the platform for SaaS email.
@@ -226,7 +230,7 @@ Edit the email and when you're ready to make it live, click **Start**.
 
 You can use [branches](/loop-builder/branching-loops) to create more complex workflows, sending contacts down different branches depending on contact properties or even whether they've interacted with campaigns you've sent from Loops.
 
-<img src="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=91036180f9de862a99a393e431a80960" alt="Branches in a loop" data-og-width="1707" width="1707" data-og-height="1138" height="1138" data-path="images/loop-builder-branching.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?w=280&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=6b2657a8b28a98eaee91918efca8bca2 280w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?w=560&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=de5dd848d22f71843b1a58e6e637eb4d 560w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?w=840&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=1539737f6d97ea6f1cac423d7a722c7b 840w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?w=1100&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=a216c8a0428be8e01e35dfbe96a2b126 1100w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?w=1650&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=936f5a0d8e08ca46eee492c4dd93cb73 1650w, https://mintcdn.com/loops/OG31ikb--92jQDlq/images/loop-builder-branching.png?w=2500&fit=max&auto=format&n=OG31ikb--92jQDlq&q=85&s=80825241a83c5021d9b0005179f1b676 2500w" />
+<img src="https://mintcdn.com/loops/YzXNyAoWJH6Zxv4S/images/loop-builder-branching.png?fit=max&auto=format&n=YzXNyAoWJH6Zxv4S&q=85&s=f28b3a021d8215d32331cb9e6fd35066" alt="Branches in a loop" data-og-width="2280" width="2280" data-og-height="1479" height="1479" data-path="images/loop-builder-branching.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/loops/YzXNyAoWJH6Zxv4S/images/loop-builder-branching.png?w=280&fit=max&auto=format&n=YzXNyAoWJH6Zxv4S&q=85&s=ff9789af355e784e7c69aa548dea8bac 280w, https://mintcdn.com/loops/YzXNyAoWJH6Zxv4S/images/loop-builder-branching.png?w=560&fit=max&auto=format&n=YzXNyAoWJH6Zxv4S&q=85&s=376818c45ff13412f6af850d670a9af8 560w, https://mintcdn.com/loops/YzXNyAoWJH6Zxv4S/images/loop-builder-branching.png?w=840&fit=max&auto=format&n=YzXNyAoWJH6Zxv4S&q=85&s=f9f8543329ad6424e702a0ce860fd31d 840w, https://mintcdn.com/loops/YzXNyAoWJH6Zxv4S/images/loop-builder-branching.png?w=1100&fit=max&auto=format&n=YzXNyAoWJH6Zxv4S&q=85&s=47edac897c29edb4f90005d0420f590f 1100w, https://mintcdn.com/loops/YzXNyAoWJH6Zxv4S/images/loop-builder-branching.png?w=1650&fit=max&auto=format&n=YzXNyAoWJH6Zxv4S&q=85&s=a53133c2587d35c445348aea4c7d5d60 1650w, https://mintcdn.com/loops/YzXNyAoWJH6Zxv4S/images/loop-builder-branching.png?w=2500&fit=max&auto=format&n=YzXNyAoWJH6Zxv4S&q=85&s=d748e070abf937973fd04e041639a819 2500w" />
 
 <CardGroup cols={2}>
   <Card title="Loop builder" icon="arrows-rotate" href="/loop-builder" />

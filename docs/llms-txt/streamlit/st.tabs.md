@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/layout/st.tabs
+
 # st.tabs
 
 Insert containers separated into tabs.

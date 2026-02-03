@@ -2,11 +2,7 @@
 
 # Source: https://docs.livekit.io/agents/models/llm/plugins/telnyx.md
 
-# Source: https://docs.livekit.io/telephony/start/providers/telnyx.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/telnyx.md
-
-LiveKit docs › Models › Large language models (LLM) › Plugins › Telnyx
+LiveKit docs › Models › LLM › Plugins › Telnyx
 
 ---
 
@@ -20,7 +16,7 @@ Available in:
 
 ## Overview
 
-This plugin allows you to use [Telnyx](https://telnyx.com/) as an LLM provider for your voice agents.
+This plugin allows you to use [Telnyx](https://telnyx.com/) as an LLM provider for your voice agents. Telnyx compatibility is provided by the OpenAI plugin using the Telnyx Chat Completions API.
 
 ## Usage
 
@@ -29,7 +25,7 @@ Install the OpenAI plugin to add Telnyx support:
 **Python**:
 
 ```shell
-uv add "livekit-agents[openai]~=1.2"
+uv add "livekit-agents[openai]~=1.3"
 
 ```
 
@@ -105,7 +101,7 @@ The following links provide more information about the Telnyx LLM integration.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:12.112Z.
+This document was rendered at 2026-02-03T03:25:01.633Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/llm/plugins/telnyx.md](https://docs.livekit.io/agents/models/llm/plugins/telnyx.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

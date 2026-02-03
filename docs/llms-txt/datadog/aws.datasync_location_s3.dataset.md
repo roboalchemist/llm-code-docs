@@ -4,8 +4,6 @@
 title: DataSync Amazon S3 Location
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > DataSync Amazon S3 Location
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.datasync_location_s3.dataset/index.html
 ---
 
 # DataSync Amazon S3 Location
@@ -28,4 +26,4 @@ aws.datasync_location_s3
 | location_uri     | core | string        | The URL of the Amazon S3 location that was described.                                                                                                                                                                                                                   |
 | s3_config        | core | json          | Specifies the Amazon Resource Name (ARN) of the Identity and Access Management (IAM) role that DataSync uses to access your S3 bucket. For more information, see Providing DataSync access to S3 buckets.                                                               |
 | s3_storage_class | core | string        | When Amazon S3 is a destination location, this is the storage class that you chose for your objects. Some storage classes have behaviors that can affect your Amazon S3 storage costs. For more information, see Storage class considerations with Amazon S3 transfers. |
-| tags             | core | hstore        |
+| tags             | core | hstore_csv    |

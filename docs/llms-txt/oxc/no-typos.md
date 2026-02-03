@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/nextjs/no-typos.md
 ---
-# nextjs/no-typos&#x20;
 
 ### What it does
 

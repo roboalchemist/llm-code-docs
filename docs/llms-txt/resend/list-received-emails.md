@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/emails/list-received-emails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Received Emails
 
 > Retrieve a list of received emails for the authenticated user.
@@ -71,7 +75,7 @@ You can list all emails received by your team. The list returns references to in
 <QueryParams type="emails" isRequired={false} />
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -79,13 +83,13 @@ You can list all emails received by your team. The list returns references to in
   const { data, error } = await resend.emails.receiving.list();
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->emails->receiving->list();
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -93,7 +97,7 @@ You can list all emails received by your team. The list returns references to in
   resend.Emails.Receiving.list()
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -101,7 +105,7 @@ You can list all emails received by your team. The list returns references to in
   Resend::Emails::Receiving.list()
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   import (
   	"context"
 
@@ -111,11 +115,11 @@ You can list all emails received by your team. The list returns references to in
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
 
-  	emails, err := client.Emails.Receiving.ListWithContext(context.TODO())
+  	client.Emails.Receiving.ListWithContext(context.TODO())
   }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{list_opts::ListOptions, Resend, Result};
 
   #[tokio::main]
@@ -128,7 +132,7 @@ You can list all emails received by your team. The list returns references to in
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -140,7 +144,7 @@ You can list all emails received by your team. The list returns references to in
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -149,14 +153,14 @@ You can list all emails received by your team. The list returns references to in
   Console.WriteLine( "Nr Received={0}", resp.Content.Data.Count );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X GET 'https://api.resend.com/emails/receiving' \
        -H 'Authorization: Bearer re_xxxxxxxxx'
   ```
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "list",
     "has_more": true,

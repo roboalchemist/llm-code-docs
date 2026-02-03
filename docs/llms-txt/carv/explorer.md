@@ -2,10 +2,6 @@
 
 # Source: https://docs.carv.io/svm-ai-agentic-chain/quick-start/explorer.md
 
-# Source: https://docs.carv.io/carv-ecosystem/verifier-nodes/explorer.md
-
-# Source: https://docs.carv.io/svm-ai-agentic-chain/quick-start/explorer.md
-
 # Explorer
 
 ## Solscan (Recommended)

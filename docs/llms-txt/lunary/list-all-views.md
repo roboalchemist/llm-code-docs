@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/views/list-all-views.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List all views
 
 > Retrieves a list of all views for the current project, ordered by most recently updated.
@@ -104,7 +108,3 @@ components:
           example: '2023-04-01T12:00:00Z'
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

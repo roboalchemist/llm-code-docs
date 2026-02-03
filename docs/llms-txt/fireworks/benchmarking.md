@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/deployments/benchmarking.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Performance benchmarking
 
 > Measure and optimize your deployment's performance with load testing

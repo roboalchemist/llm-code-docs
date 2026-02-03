@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/sdk/js/reference/class/ProxyConfiguration.md
 
-# Source: https://docs.apify.com/sdk/python/reference/class/ProxyConfiguration.md
-
-# Source: https://docs.apify.com/sdk/js/reference/class/ProxyConfiguration.md
-
-# Source: https://docs.apify.com/sdk/python/reference/class/ProxyConfiguration.md
-
-# Source: https://docs.apify.com/sdk/js/reference/class/ProxyConfiguration.md
-
-# Source: https://docs.apify.com/sdk/python/reference/class/ProxyConfiguration.md
-
-# Source: https://docs.apify.com/sdk/js/reference/class/ProxyConfiguration.md
-
 # ProxyConfiguration<!-- -->
 
 Configures connection to a proxy server with the provided options. Proxy servers are used to prevent target websites from blocking your crawlers based on IP address rate limits or blacklists. Setting proxy configuration in your crawlers automatically configures them to use the selected proxies for all connections. You can get information about the currently used proxy by inspecting the [ProxyInfo](https://docs.apify.com/sdk/js/sdk/js/reference/interface/ProxyInfo.md) property in your crawler's page function. There, you can inspect the proxy's URL and other attributes.

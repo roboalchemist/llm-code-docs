@@ -6,11 +6,11 @@
 
 ***
 
-On any website that serves up images, makes https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest, or fetches content in some other way, you can see those requests (and their responses) in the https://docs.apify.com/academy/api-scraping/general-api-scraping/locating-and-learning.md of your browser's DevTools. Lots of data about the request can be found there, such as the headers, payload, and response body.
+On any website that serves up images, makes [XMLHttpRequests](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest), or fetches content in some other way, you can see those requests (and their responses) in the [Network tab](https://docs.apify.com/academy/api-scraping/general-api-scraping/locating-and-learning.md) of your browser's DevTools. Lots of data about the request can be found there, such as the headers, payload, and response body.
 
 In Playwright and Puppeteer, it is also possible to read (and even intercept) requests being made on the page - programmatically. This is very useful for things like reading dynamic headers, saving API responses, blocking certain resources, and much more.
 
-During this lesson, we'll be using https://soundcloud.com/tiesto/following on SoundCloud to demonstrate request/response reading and interception. Here's our basic setup for opening the page:
+During this lesson, we'll be using [Tiësto's following list](https://soundcloud.com/tiesto/following) on SoundCloud to demonstrate request/response reading and interception. Here's our basic setup for opening the page:
 
 * Playwright
 * Puppeteer
@@ -49,7 +49,7 @@ await browser.close();
 
 ## Reading requests
 
-We can use the https://pptr.dev/#?product=Puppeteer&version=v14.0.0&show=api-event-close function to listen for the **request** event, passing in a callback function. The first parameter of the passed in callback function is an object representing the request.
+We can use the [page.on()](https://pptr.dev/#?product=Puppeteer&version=v14.0.0&show=api-event-close) function to listen for the **request** event, passing in a callback function. The first parameter of the passed in callback function is an object representing the request.
 
 Upon visiting Tiësto's following page, we can see in the **Network** tab that a request is made to fetch all of the users which he is following.
 
@@ -221,7 +221,7 @@ One of the most popular ways of speeding up website loading in Puppeteer and Pla
 
 In Puppeteer, we must first enable request interception with the `page.setRequestInterception()` function. Then, we can check whether or not the request's resource ends with one of our blocked file extensions. If so, we'll abort the request. Otherwise, we'll let it continue. All of this logic will still be within the `page.on()` method.
 
-With Playwright, request interception is a bit different. We use the https://playwright.dev/docs/api/class-page#page-route function instead of `page.on()`, passing in a string, regular expression, or a function that will match the URL of the request we'd like to read from. The second parameter is also a callback function, but with the https://playwright.dev/docs/api/class-route object passed into it instead.
+With Playwright, request interception is a bit different. We use the [page.route()](https://playwright.dev/docs/api/class-page#page-route) function instead of `page.on()`, passing in a string, regular expression, or a function that will match the URL of the request we'd like to read from. The second parameter is also a callback function, but with the [Route](https://playwright.dev/docs/api/class-route) object passed into it instead.
 
 ### Blocking resources
 
@@ -295,9 +295,9 @@ This confirms that we've successfully blocked the CSS and image resources from l
 
 #### Quick note about resource blocking
 
-Something **very** important to note is that by using request interception, the browser's cache is turned **off**. This means that resources on websites that would normally be cached (and pulled from the cache instead on the next request for those resources) will not be cached, which can have varying negative effects on performance, especially when making many requests to the same domain, which is very common in web scraping. You can learn how to solve this problem in https://docs.apify.com/academy/node-js/caching-responses-in-puppeteer.md.
+Something **very** important to note is that by using request interception, the browser's cache is turned **off**. This means that resources on websites that would normally be cached (and pulled from the cache instead on the next request for those resources) will not be cached, which can have varying negative effects on performance, especially when making many requests to the same domain, which is very common in web scraping. You can learn how to solve this problem in [this short tutorial](https://docs.apify.com/academy/node-js/caching-responses-in-puppeteer.md).
 
-To block resources, it is better to use a CDP (Chrome DevTools Protocol) Session (https://playwright.dev/docs/api/class-cdpsession/https://pptr.dev/#?product=Puppeteer&version=v14.1.0&show=api-class-cdpsession) to set the blocked URLs. Here is an implementation that achieves the same goal as our above example above; however, the browser's cache remains enabled.
+To block resources, it is better to use a CDP (Chrome DevTools Protocol) Session ([Playwright](https://playwright.dev/docs/api/class-cdpsession)/[Puppeteer](https://pptr.dev/#?product=Puppeteer&version=v14.1.0&show=api-class-cdpsession)) to set the blocked URLs. Here is an implementation that achieves the same goal as our above example above; however, the browser's cache remains enabled.
 
 * Playwright
 * Puppeteer
@@ -350,7 +350,7 @@ await browser.close();
 
 There's much more to intercepting requests than just aborting them though. We can change the payload, headers, query parameters, and even the base URL.
 
-Let's go ahead and intercept and modify the initial request we fire off with the `page.goto()` by making it go to https://soundcloud.com/mestomusic instead.
+Let's go ahead and intercept and modify the initial request we fire off with the `page.goto()` by making it go to [Mesto's following page](https://soundcloud.com/mestomusic) instead.
 
 * Playwright
 * Puppeteer
@@ -408,4 +408,4 @@ Here's what we see when we run `node index.js`:
 
 ## Next up
 
-The https://docs.apify.com/academy/puppeteer-playwright/proxies.md will teach you how to use proxies in Playwright and Puppeteer in order to avoid blocking or to appear as if you are requesting from a different location.
+The [next lesson](https://docs.apify.com/academy/puppeteer-playwright/proxies.md) will teach you how to use proxies in Playwright and Puppeteer in order to avoid blocking or to appear as if you are requesting from a different location.

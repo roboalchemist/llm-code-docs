@@ -1,76 +1,111 @@
 # Source: https://docs.pinata.cloud/api-reference/endpoint/query-pin-requests.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Query Pin Requests
 
 > `org:files:read`
 
 
+
+
 ## OpenAPI
 
 ````yaml get /files/public/pin_by_cid
+openapi: 3.0.0
+info:
+  title: Pinata V3 API
+  version: 1.0.0
+servers:
+  - url: https://api.pinata.cloud/v3
+security:
+  - bearerAuth: []
 paths:
-  path: /files/public/pin_by_cid
-  method: get
-  servers:
-    - url: https://api.pinata.cloud/v3
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        order:
+  /files/public/pin_by_cid:
+    get:
+      summary: Query Pin Requests
+      description: |
+        `org:files:read`
+      operationId: queryPinRequests
+      parameters:
+        - name: order
+          description: Change the order of the results by date_queued
+          in: query
           schema:
-            - type: enum<string>
-              enum:
-                - ASC
-                - DESC
-              description: Change the order of the results by date_queued
-        status:
+            type: string
+            enum:
+              - ASC
+              - DESC
+          example: ASC
+        - name: status
+          description: Filter pin by CID status
+          in: query
           schema:
-            - type: enum<string>
-              enum:
-                - prechecking
-                - backfilled
-                - retreiving
-                - expired
-                - searching
-                - over_free_limit
-                - over_max_size
-                - invalid_object
-                - bad_host_node
-              description: Filter pin by CID status
-        cid:
+            type: string
+            enum:
+              - prechecking
+              - backfilled
+              - retreiving
+              - expired
+              - searching
+              - over_free_limit
+              - over_max_size
+              - invalid_object
+              - bad_host_node
+        - name: cid
+          description: Filter queue by CID
+          in: query
           schema:
-            - type: string
-              description: Filter queue by CID
-        limit:
+            type: string
+          example: QmVLwvmGehsrNEvhcCnnsw5RQNseohgEkFNN1848zNzdng
+        - name: limit
+          description: Limit the number of results returned when querying the queue
+          in: query
           schema:
-            - type: string
-              description: Limit the number of results returned when querying the queue
-        pageToken:
+            type: string
+          example: 10
+        - name: pageToken
+          description: Paginate through pin by cid request results
+          in: query
           schema:
-            - type: string
-              description: Paginate through pin by cid request results
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
+            type: string
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: Tue, 27 Aug 2024 15:04:00 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '303'
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            X-Request-Id:
+              schema:
+                type: string
+                example: 5cda7fd04bb31bc8c6bd461089fcfa1c
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=15724800; includeSubDomains
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
                     properties:
                       jobs:
                         type: array
@@ -97,25 +132,10 @@ paths:
                               type: string
                       next_page_token:
                         type: string
-        examples:
-          example:
-            value:
-              data:
-                jobs:
-                  - id: <string>
-                    cid: <string>
-                    name: <string>
-                    status: <string>
-                    keyvalues: {}
-                    host_nodes:
-                      - <string>
-                    group_id: <string>
-                    date_queued: <string>
-                next_page_token: <string>
-        description: OK
-  deprecated: false
-  type: path
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
 
 ````

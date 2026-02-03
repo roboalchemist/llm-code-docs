@@ -4,7 +4,6 @@
 title: Service remapping rules
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > APM > Service Observability > Service remapping rules
-source_url: https://docs.datadoghq.com/services/service_remapping_rules/index.html
 ---
 
 # Service remapping rules
@@ -56,9 +55,9 @@ You can create service remapping rules only for services instrumented with suppo
 
 ### Step 1: Select remapping action and entities to target{% #step-1-select-remapping-action-and-entities-to-target %}
 
-1. In Datadog, navigate to **APM** > **Software Catalog** > **Manage** > [**Manage Renaming Rules**](https://app.datadoghq.com/software/settings/service-rename) and click **+ Add Rule**.
+1. In Datadog, navigate to **APM** > **Software Catalog** > **Manage** > [**Manage Remapping Rules**](https://app.datadoghq.com/software/settings/service-rename) and click **+ Add Rule**.
 
-Alternatively, navigate to **APM** > [**Software Catalog**](https://app.datadoghq.com/software) and click on a service to open the service side panel. From there, click **Service Page** > **Service Renaming**.
+Alternatively, navigate to **APM** > [**Software Catalog**](https://app.datadoghq.com/software) and click on a service to open the service side panel. From there, click **Service Page** > **Service Remapping**.
 
    {% image
       source="https://datadog-docs.imgix.net/images/tracing/services/renaming_rules/service-side-panel.41c140a9d03535155d3a75b1f54f3a85.png?auto=format"

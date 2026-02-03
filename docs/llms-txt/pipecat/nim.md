@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/llm/nim.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # NVIDIA NIM
 
 > LLM service implementation using NVIDIA's NIM (NVIDIA Inference Microservice) API with OpenAI-compatible interface
@@ -48,8 +52,3 @@ Before using NVIDIA NIM LLM services, you need:
 ### Required Environment Variables
 
 * `NVIDIA_API_KEY`: Your NVIDIA API key for authentication
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

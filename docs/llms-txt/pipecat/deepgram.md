@@ -2,13 +2,9 @@
 
 # Source: https://docs.pipecat.ai/server/services/stt/deepgram.md
 
-# Source: https://docs.pipecat.ai/server/services/tts/deepgram.md
-
-# Source: https://docs.pipecat.ai/server/services/stt/deepgram.md
-
-# Source: https://docs.pipecat.ai/server/services/tts/deepgram.md
-
-# Source: https://docs.pipecat.ai/server/services/stt/deepgram.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Deepgram
 
@@ -20,6 +16,14 @@ Deepgram provides two STT service implementations:
 
 * `DeepgramSTTService` for real-time speech recognition using Deepgram's standard WebSocket API with support for interim results, language detection, and voice activity detection (VAD)
 * `DeepgramFluxSTTService` for advanced conversational AI with Flux capabilities including intelligent turn detection, eager end-of-turn events, and enhanced speech processing for improved response timing.
+
+<Note>
+  Since Deepgram Flux provides its own user turn start and end detection, you
+  should use `ExternalUserTurnStrategies` to let Flux handle turn management.
+  See [User Turn
+  Strategies](/server/utilities/turn-management/user-turn-strategies) for
+  configuration details.
+</Note>
 
 <CardGroup cols={2}>
   <Card title="Deepgram STT API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.deepgram.stt.html">
@@ -68,8 +72,3 @@ Before using Deepgram STT services, you need:
 ### Required Environment Variables
 
 * `DEEPGRAM_API_KEY`: Your Deepgram API key for authentication
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

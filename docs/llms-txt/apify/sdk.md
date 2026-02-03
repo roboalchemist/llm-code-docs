@@ -4,44 +4,46 @@
 
 https://docs.apify.com
 
-https://docs.apify.com/academyhttps://docs.apify.com/platform
+[Academy](https://docs.apify.com/academy)[Platform](https://docs.apify.com/platform)
 
-https://docs.apify.com/api
+[API](https://docs.apify.com/api)
 
-* https://docs.apify.com/api/v2
-* https://docs.apify.com/api/client/js/
-* https://docs.apify.com/api/client/python/
+* [Reference](https://docs.apify.com/api/v2)
+* [Client for JavaScript](https://docs.apify.com/api/client/js/)
+* [Client for Python](https://docs.apify.com/api/client/python/)
 
-https://docs.apify.com/sdk
+[SDK](https://docs.apify.com/sdk)
 
-* https://docs.apify.com/sdk/js/
-* https://docs.apify.com/sdk/python/
+* [SDK for JavaScript](https://docs.apify.com/sdk/js/)
+* [SDK for Python](https://docs.apify.com/sdk/python/)
 
-https://docs.apify.com/cli/
+[CLI](https://docs.apify.com/cli/)
 
-https://docs.apify.com/open-source
+[Open source](https://docs.apify.com/open-source)
 
-* https://crawlee.dev
-* https://github.com/apify/got-scraping
-* https://github.com/apify/fingerprint-suite
-* https://github.com/apify
-* https://whitepaper.actor
+* [Crawlee](https://crawlee.dev)
+* [Fingerprint Suite](https://github.com/apify/fingerprint-suite)
+* [impit](https://github.com/apify/impit)
+* [MCP CLI](https://github.com/apify/mcp-cli)
+* [Actor whitepaper](https://whitepaper.actor)
+* [proxy-chain](https://github.com/apify/proxy-chain)
+* [Apify on GitHub](https://github.com/apify)
 
-[Chat on Discord](https://discord.com/invite/jyEM2PRvMU)https://console.apify.com
+[Chat on Discord](https://discord.com/invite/jyEM2PRvMU)[Go to Console](https://console.apify.com)
 
 # Apify SDK
 
-The Apify SDK is a toolkit for building Actors—serverless microservices running (not only) on the Apify platform. Apify comes with first-class support for JavaScript/TypeScript and Python, but you can run any containerized code on the Apify platform.
+The Apify SDK is a toolkit for building Actors—serverless microservices running on the Apify platform. Apify comes with first-class support for JavaScript/TypeScript and Python, but you can run any containerized code as Actors.
 
 ![](/img/javascript-40x40.svg)![](/img/javascript-40x40.svg)
 
-## SDK for JavaScript
+## Apify SDK for JavaScript
 
-Toolkit for building Actors—serverless microservices running (not only) on the Apify platform.
+The official library for creating Apify Actors in Python, with full lifecycle management, local storage, and event handling.
 
-https://github.com/apify/apify-sdk-js
+[Star](https://github.com/apify/apify-sdk-js)
 
-https://docs.apify.com/sdk/js/docs/guides/apify-platformhttps://docs.apify.com/sdk/js/reference
+[Get started](https://docs.apify.com/sdk/js/docs/guides/apify-platform)[View reference](https://docs.apify.com/sdk/js/reference)
 
 
 ```
@@ -73,13 +75,13 @@ await Actor.exit();
 
 ![](/img/python-40x40.svg)![](/img/python-40x40.svg)
 
-## SDK for Python
+## Apify SDK for Python
 
-The Apify SDK for Python is the official library for creating Apify Actors in Python. It provides useful features like actor lifecycle management, local storage emulation, and actor event handling.
+The official library for creating Apify Actors in Python, with full lifecycle management, local storage, and event handling.
 
-https://github.com/apify/apify-sdk-python
+[Star](https://github.com/apify/apify-sdk-python)
 
-https://docs.apify.com/sdk/python/docs/overview/introductionhttps://docs.apify.com/sdk/python/reference
+[Get started](https://docs.apify.com/sdk/python/docs/overview)[View reference](https://docs.apify.com/sdk/python/reference)
 
 
 ```
@@ -107,30 +109,30 @@ async def main():
 
 Learn
 
-* https://docs.apify.com/academy
-* https://docs.apify.com/platform
+* [Academy](https://docs.apify.com/academy)
+* [Platform](https://docs.apify.com/platform)
 
 API
 
-* https://docs.apify.com/api/v2
-* https://docs.apify.com/api/client/js/
-* https://docs.apify.com/api/client/python/
+* [Reference](https://docs.apify.com/api/v2)
+* [Client for JavaScript](https://docs.apify.com/api/client/js/)
+* [Client for Python](https://docs.apify.com/api/client/python/)
 
 SDK
 
-* https://docs.apify.com/sdk/js/
-* https://docs.apify.com/sdk/python/
+* [SDK for JavaScript](https://docs.apify.com/sdk/js/)
+* [SDK for Python](https://docs.apify.com/sdk/python/)
 
 Other
 
-* https://docs.apify.com/cli/
-* https://docs.apify.com/open-source
+* [CLI](https://docs.apify.com/cli/)
+* [Open source](https://docs.apify.com/open-source)
 
 More
 
-* https://crawlee.dev
-* https://github.com/apify
-* https://discord.com/invite/jyEM2PRvMU
-* https://trust.apify.com
+* [Crawlee](https://crawlee.dev)
+* [GitHub](https://github.com/apify)
+* [Discord](https://discord.com/invite/jyEM2PRvMU)
+* [Trust Center](https://trust.apify.com)
 
 https://apify.com

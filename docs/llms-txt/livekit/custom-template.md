@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/transport/media/ingress-egress/egress/custom-template.md
 
-# Source: https://docs.livekit.io/home/egress/custom-template.md
-
-LiveKit docs › Recording & export › Custom recording templates
+LiveKit docs › Media › Stream export & import › Egress › Custom recording templates
 
 ---
 
@@ -12,18 +10,18 @@ LiveKit docs › Recording & export › Custom recording templates
 
 ## Overview
 
-LiveKit [Room Composite Egress](https://docs.livekit.io/room-composite.md) enables recording of all participants' tracks in a room. This document explains its functionality and customization options.
+LiveKit [RoomComposite egress](https://docs.livekit.io/transport/media/ingress-egress/egress/composite-recording.md#roomcomposite-egress) enables recording of all participants' tracks in a room. This document explains its functionality and customization options.
 
-## Built-in LiveKit Recording View
+## Built-in LiveKit recording view
 
-The recording feature in LiveKit is built on a web-based architecture, utilizing a headless Chrome instance to render and capture output. The default view is built using LiveKit's [React Components](https://docs.livekit.io/reference/components/react.md). There are a handful of configuration options available including:
+The recording feature in LiveKit is built on a web-based architecture, using a headless Chrome instance to render and capture output. The default view is built using LiveKit's [React Components](https://docs.livekit.io/reference/components/react.md). There are a handful of configuration options available including:
 
-- [layout](https://docs.livekit.io/room-composite.md#Default-layouts) to control how the participants are arranged in the view. (You can set or change the layout using either [`StartRoomCompositeEgress()`](https://docs.livekit.io/home/egress/api.md#startroomcompositeegress) or [`UpdateLayout()`](https://docs.livekit.io/home/egress/api.md#updatelayout).)
-- [Encoding options](https://docs.livekit.io/overview.md#EncodingOptions) to control the quality of the audio and/or video captured
+- [layout](https://docs.livekit.io/transport/media/ingress-egress/egress/composite-recording.md#default-layouts) to control how the participants are arranged in the view. (You can set or change the layout using either [`StartRoomCompositeEgress()`](https://docs.livekit.io/reference/other/egress/api.md#startroomcompositeegress) or [`UpdateLayout()`](https://docs.livekit.io/reference/other/egress/api.md#updatelayout).)
+- [Encoding options](https://docs.livekit.io/reference/other/egress/api.md#EncodingOptions) to control the quality of the audio and/or video captured
 
 For more advanced customization, LiveKit supports configuring the URL of the web application that will generate the page to be recorded, allowing full customization of the recording view.
 
-## Building a Custom Recording View
+## Building a custom recording view
 
 While you can use any web framework, it's often easiest to start with the built-in React-based application and modify it to meet your requirements. The source code can be found in the [`template-default` folder](https://github.com/livekit/egress/tree/main/template-default/src) of the [LiveKit egress repository](https://github.com/livekit/egress). The main files include:
 
@@ -42,13 +40,13 @@ While you can use any web framework, it's often easiest to start with the built-
 > 
 > If you are not using `Room.tsx` as a starting point, be sure to leverage the template SDK to handle these and other common tasks.
 
-### Building your Application
+### Building your application
 
 Make a copy of the above files and modify tnem to meet your requirements.
 
-#### Example: Move non-speaking participants to the right side of the Speaker view
+#### Example: Move non-speaking participants to the right side of the speaker view
 
-By default the `Speaker` view shows the non-speaking participants on the left and the speaker on the right. Let's change this so the speaker is on the left and the non-speaking participants are on the right.
+By default the `Speaker` view shows the non-speaking participants on the left and the speaker on the right. Change this so the speaker is on the left and the non-speaking participants are on the right.
 
 1. Copy the default components and CSS files into a new location
 2. Modify `SpeakerLayout.tsx` to move the `FocusLayout` above `CarouselLayout` so it looks like this:
@@ -75,13 +73,13 @@ return (
 
 ```
 
-### Deploying your Application
+### Deploying your application
 
-Once your app is ready for testing or deployment, you'll need to host it on a web server. We recommend using [Vercel](https://vercel.com/) for its simplicity, but many other options are available.
+Once your app is ready for testing or deployment, you'll need to host it on a web server. There are several options, such as [Vercel](https://vercel.com/).
 
-### Testing Your Application
+### Testing your application
 
-We have created the [`egress test-egress-template`](https://github.com/livekit/livekit-cli?tab=readme-ov-file#testing-egress-templates) subcommand in the [LiveKit CLI](https://github.com/livekit/livekit-cli) to make it easier to test.
+The [`egress test-egress-template`](https://github.com/livekit/livekit-cli?tab=readme-ov-file#testing-egress-templates) subcommand in the [LiveKit CLI](https://github.com/livekit/livekit-cli) makes testing easy.
 
 The `egress test-egress-template` subcommand:
 
@@ -125,15 +123,15 @@ lk egress test-template \
 
 This command launches a browser and opens: `http://localhost:3000/lk-recording-view?url=wss%3A%2F%2Ftest-1234567890.livekit.cloud&token=<RECORDER TOKEN>&layout=grid`
 
-### Using the Custom Recording View in Production
+### Using the custom recording view in production
 
 Set the `custom_base_url` parameter on the `StartRoomCompositeEgress()` API to the URL where your custom recording application is deployed.
 
 For additional authentication, most customers attach URL parameters to the `custom_base_url`. For example: `https://your-template-url.example.com/?yourparam={auth_info}` (and set this as your `custom_base_url`).
 
-## Recording Process
+## Recording process
 
-For those curious about the workflow of a recording, the basic steps are:
+Recordings follow this workflow:
 
 1. The `Egress.StartRoomCompositeEgress()` API is invoked
 2. LiveKit assigns an available egress instance to handle the request
@@ -149,7 +147,7 @@ For those curious about the workflow of a recording, the basic steps are:
 
 ---
 
-This document was rendered at 2025-11-18T23:54:57.765Z.
-For the latest version of this document, see [https://docs.livekit.io/home/egress/custom-template.md](https://docs.livekit.io/home/egress/custom-template.md).
+This document was rendered at 2026-02-03T03:25:17.979Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/media/ingress-egress/egress/custom-template.md](https://docs.livekit.io/transport/media/ingress-egress/egress/custom-template.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

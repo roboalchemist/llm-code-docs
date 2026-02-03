@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/guides/utilizing-metadata.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Metadata
 
 > Store descriptive information or data that provides additional context
@@ -10,7 +14,7 @@ Metadata allows you to store and retrieve additional data about any Flatfile res
 
 Metadata can be added during resource creation or updated later using the Flatfile API. The metadata object accepts any valid JSON data and is accessible in all listeners and webhooks.
 
-```javascript
+```javascript  theme={null}
 await api.spaces.update(spaceId, {
   metadata: {
     userId: "user123",

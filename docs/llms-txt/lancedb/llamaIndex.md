@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/ai/llamaIndex.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LlamaIndex
 
 export const PyFrameworksLlamaindexQuickStart = "import logging\nimport sys\nimport textwrap\n\nimport openai\n\n# Uncomment to see debug logs\n# logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)\n# logging.getLogger().addHandler(logging.StreamHandler(stream=sys.stdout))\nfrom llama_index.core import (\n    Document,\n    SimpleDirectoryReader,\n    StorageContext,\n    VectorStoreIndex,\n)\nfrom llama_index.vector_stores.lancedb import LanceDBVectorStore\n\nopenai.api_key = \"sk-...\"\n\ndocuments = SimpleDirectoryReader(\"./data/your-data-dir/\").load_data()\nprint(\"Document ID:\", documents[0].doc_id, \"Document Hash:\", documents[0].hash)\n\n## For LanceDB cloud :\n# vector_store = LanceDBVectorStore(\n#     uri=\"db://db_name\", # your remote DB URI\n#     api_key=\"sk_..\", # lancedb cloud api key\n#     region=\"your-region\" # the region you configured\n#     ...\n# )\n\nvector_store = LanceDBVectorStore(\n    uri=\"./lancedb\", mode=\"overwrite\", query_type=\"vector\"\n)\nstorage_context = StorageContext.from_defaults(vector_store=vector_store)\n\nindex = VectorStoreIndex.from_documents(documents, storage_context=storage_context)\nlance_filter = \"metadata.file_name = 'paul_graham_essay.txt' \"\nretriever = index.as_retriever(vector_store_kwargs={\"where\": lance_filter})\nresponse = retriever.retrieve(\"What did the author do growing up?\")\n";
@@ -53,8 +57,3 @@ to use different search strategies, such as vector search or FTS.
 <Card title="LlamaIndex Vector Stores API reference" href="https://developers.llamaindex.ai/python/framework-api-reference/storage/vector_store/lancedb/">
   See the official LlamaIndex Vector Stores API reference for more details.
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/introduction.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Introduction
 
 > Leverage Tavus tools and guides to give your AI Agent real-time human-like perception and presence, bringing the human layer to AI.

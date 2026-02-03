@@ -2,17 +2,9 @@
 
 # Source: https://bun.com/docs/runtime/cookies.md
 
-# Source: https://bun.com/docs/runtime/http/cookies.md
-
-# Source: https://bun.com/docs/runtime/cookies.md
-
-# Source: https://bun.com/docs/runtime/http/cookies.md
-
-# Source: https://bun.com/docs/runtime/cookies.md
-
-# Source: https://bun.com/docs/runtime/http/cookies.md
-
-# Source: https://bun.com/docs/runtime/cookies.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Cookies
 
@@ -24,7 +16,7 @@ Bun provides native APIs for working with HTTP cookies through `Bun.Cookie` and 
 
 `Bun.CookieMap` provides a Map-like interface for working with collections of cookies. It implements the `Iterable` interface, allowing you to use it with `for...of` loops and other iteration methods.
 
-```ts filename="cookies.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="cookies.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Empty cookie map
 const cookies = new Bun.CookieMap();
 
@@ -48,7 +40,7 @@ const cookies3 = new Bun.CookieMap([
 
 In Bun's HTTP server, the `cookies` property on the request object (in `routes`) is an instance of `CookieMap`:
 
-```ts filename="server.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="server.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({
   routes: {
     "/": req => {
@@ -83,7 +75,7 @@ console.log("Server listening at: " + server.url);
 
 Retrieves a cookie by name. Returns `null` if the cookie doesn't exist.
 
-```ts filename="get-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="get-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Get by name
 const cookie = cookies.get("session");
 
@@ -96,7 +88,7 @@ if (cookie != null) {
 
 Checks if a cookie with the given name exists.
 
-```ts filename="has-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="has-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Check if cookie exists
 if (cookies.has("session")) {
   // Cookie exists
@@ -111,7 +103,7 @@ if (cookies.has("session")) {
 
 Adds or updates a cookie in the map. Cookies default to `{ path: "/", sameSite: "lax" }`.
 
-```ts filename="set-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="set-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Set by name and value
 cookies.set("session", "abc123");
 
@@ -134,7 +126,7 @@ cookies.set(cookie);
 
 Removes a cookie from the map. When applied to a Response, this adds a cookie with an empty string value and an expiry date in the past. A cookie will only delete successfully on the browser if the domain and path is the same as it was when the cookie was created.
 
-```ts filename="delete-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="delete-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Delete by name using default domain and path.
 cookies.delete("session");
 
@@ -150,7 +142,7 @@ cookies.delete({
 
 Converts the cookie map to a serializable format.
 
-```ts filename="cookie-to-json.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="cookie-to-json.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const json = cookies.toJSON();
 ```
 
@@ -160,7 +152,7 @@ Returns an array of values for Set-Cookie headers that can be used to apply all 
 
 When using `Bun.serve()`, you don't need to call this method explicitly. Any changes made to the `req.cookies` map are automatically applied to the response headers. This method is primarily useful when working with other HTTP server implementations.
 
-```ts filename="node-server.js" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js title="node-server.js" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { createServer } from "node:http";
 import { CookieMap } from "bun";
 
@@ -187,7 +179,7 @@ server.listen(3000, () => {
 
 `CookieMap` provides several methods for iteration:
 
-```ts filename="iterate-cookies.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="iterate-cookies.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Iterate over [name, cookie] entries
 for (const [name, value] of cookies) {
   console.log(`${name}: ${value}`);
@@ -220,7 +212,7 @@ cookies.forEach((value, name) => {
 
 Returns the number of cookies in the map.
 
-```ts filename="cookie-size.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="cookie-size.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log(cookies.size); // Number of cookies
 ```
 
@@ -228,7 +220,7 @@ console.log(cookies.size); // Number of cookies
 
 `Bun.Cookie` represents an HTTP cookie with its name, value, and attributes.
 
-```ts filename="cookie-class.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="cookie-class.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Cookie } from "bun";
 
 // Create a basic cookie
@@ -258,7 +250,7 @@ const objCookie = new Bun.Cookie({
 
 ### Constructors
 
-```ts filename="constructors.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="constructors.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Basic constructor with name/value
 new Bun.Cookie(name: string, value: string);
 
@@ -274,7 +266,7 @@ new Bun.Cookie(options: CookieInit);
 
 ### Properties
 
-```ts filename="cookie-properties.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="cookie-properties.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 cookie.name; // string - Cookie name
 cookie.value; // string - Cookie value
 cookie.domain; // string | null - Domain scope (null if not specified)
@@ -293,7 +285,7 @@ cookie.httpOnly; // boolean - Accessible only via HTTP (not JavaScript)
 
 Checks if the cookie has expired.
 
-```ts filename="is-expired.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="is-expired.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Expired cookie (Date in the past)
 const expiredCookie = new Bun.Cookie("name", "value", {
   expires: new Date(Date.now() - 1000),
@@ -317,7 +309,7 @@ console.log(sessionCookie.isExpired()); // false
 
 Returns a string representation of the cookie suitable for a `Set-Cookie` header.
 
-```ts filename="serialize-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="serialize-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const cookie = new Bun.Cookie("session", "abc123", {
   domain: "example.com",
   path: "/admin",
@@ -337,7 +329,7 @@ console.log(cookie.toString());
 
 Converts the cookie to a plain object suitable for JSON serialization.
 
-```ts filename="cookie-json.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="cookie-json.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const cookie = new Bun.Cookie("session", "abc123", {
   secure: true,
   httpOnly: true,
@@ -364,7 +356,7 @@ const jsonString = JSON.stringify(cookie);
 
 Parses a cookie string into a `Cookie` instance.
 
-```ts filename="parse-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="parse-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const cookie = Bun.Cookie.parse("name=value; Path=/; Secure; SameSite=Lax");
 
 console.log(cookie.name); // "name"
@@ -378,7 +370,7 @@ console.log(cookie.sameSite); // "lax"
 
 Factory method to create a cookie.
 
-```ts filename="cookie-from.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="cookie-from.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const cookie = Bun.Cookie.from("session", "abc123", {
   httpOnly: true,
   secure: true,
@@ -388,7 +380,7 @@ const cookie = Bun.Cookie.from("session", "abc123", {
 
 ## Types
 
-```ts filename="types.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="types.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 interface CookieInit {
   name?: string;
   value?: string;

@@ -62,7 +62,7 @@ You can have services that are only exposed to another service as well as servic
 In a clustered application, you can have one of the following configurations:
 
 - Multiple [applications](https://docs.upsun.com/create-apps/multi-app.md), often in different directories or with separate code bases that deploy separately
-- A single app that spawns one or more [worker instances](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#workers) that run background processes
+- A single app that spawns one or more [worker instances](https://docs.upsun.com/create-apps/image-properties/workers.md) that run background processes
 
 With a clustered application, you often don't need multiple service instances.
 The [MySQL, MariaDB](https://docs.upsun.com/add-services/mysql.md),
@@ -92,7 +92,7 @@ Leveraging the multi-site capabilities of an app are appropriate only in the fol
 
 - There is only a single team working on all of the "sites" involved
 - All "sites" should be updated simultaneously as a single unit
-- Each individual site is relatively low traffic. This means that the total traffic for all sites is appropriate for the resources that have been allocated. 
+- Each individual site is relatively low traffic. This means that the total traffic for all sites is appropriate for the resources that have been allocated.
   [allocated resources](https://docs.upsun.com/manage-resources.md)
 - All sites really do use the same codebase with no variation, just different data
 

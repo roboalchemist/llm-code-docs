@@ -1,8 +1,12 @@
 # Source: https://bun.com/docs/installation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Installation
 
-> Install Bun
+> Install Bun with npm, Homebrew, Docker, or the official script.
 
 ## Overview
 
@@ -203,7 +207,7 @@ Since Bun is a single binary, you can install older versions by re-running the i
     To install a specific version, pass the git tag to the install script:
 
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-    curl -fsSL https://bun.com/install | bash -s "bun-v1.3.2"
+    curl -fsSL https://bun.com/install | bash -s "bun-v1.3.3"
     ```
   </Tab>
 
@@ -211,7 +215,7 @@ Since Bun is a single binary, you can install older versions by re-running the i
     On Windows, pass the version number to the PowerShell install script:
 
     ```powershell PowerShell icon="windows" theme={"theme":{"light":"github-light","dark":"dracula"}}
-    iex "& {$(irm https://bun.com/install.ps1)} -Version 1.3.2"
+    iex "& {$(irm https://bun.com/install.ps1)} -Version 1.3.3"
     ```
   </Tab>
 </Tabs>

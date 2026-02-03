@@ -1,4 +1,4 @@
-# Source: https://docs.datadoghq.com/cloudprem/ingest_logs/observability_pipelines.md
+# Source: https://docs.datadoghq.com/cloudprem/ingest/observability_pipelines.md
 
 # Source: https://docs.datadoghq.com/observability_pipelines.md
 
@@ -6,7 +6,6 @@
 title: Observability Pipelines
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Observability Pipelines
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Observability Pipelines
@@ -101,6 +100,7 @@ See [Explore templates](https://docs.datadoghq.com/observability_pipelines/confi
 
 ## Further Reading{% #further-reading %}
 
+- [Simplify log collection and aggregation for MSSPs with Datadog Observability Pipelines](https://www.datadoghq.com/blog/observability-pipelines-mssp)
 - [Manage metric volume and tags in your environment with Observability Pipelines](https://www.datadoghq.com/blog/manage-metrics-cost-control-with-observability-pipelines)
 - [Set up pipelines](https://docs.datadoghq.com/observability_pipelines/configuration/explore_templates/)
 - [Explore use cases and templates](https://docs.datadoghq.com/observability_pipelines/configuration/set_up_pipelines/)

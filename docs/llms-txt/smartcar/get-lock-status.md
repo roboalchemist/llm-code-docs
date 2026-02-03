@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/get-lock-status.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Lock Status
 
 > Returns the lock status for a vehicle and the open status of its doors, windows, storage units, sunroof and charging port where available.

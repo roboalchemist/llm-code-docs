@@ -3,9 +3,7 @@
 ---
 title: Notifications and Integrations
 description: Datadog, the leading service for cloud-scale monitoring.
-breadcrumbs: Docs > Case Management > Notifications and Integrations
-source_url: >-
-  https://docs.datadoghq.com/case_management/notifications_integrations/index.html
+breadcrumbs: Docs > Incident Response > Case Management > Notifications and Integrations
 ---
 
 # Notifications and Integrations

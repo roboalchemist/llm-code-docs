@@ -5,8 +5,7 @@ title: DatadogSLO CRD
 description: >-
   Create and manage Datadog Service Level Objectives (SLOs) using the DatadogSLO
   custom resource definition
-breadcrumbs: Docs > Container Monitoring > Datadog Operator > DatadogSLO CRD
-source_url: https://docs.datadoghq.com/datadog_operator/crd_slo/index.html
+breadcrumbs: Docs > Containers > Datadog Operator > DatadogSLO CRD
 ---
 
 # DatadogSLO CRD

@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/reference/ffql.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Flatfile Query Language
 
 > Learn how to filter data in Sheets with FFQL.
@@ -128,7 +132,7 @@ Here's an example **cURL** request using the `sheets/<sheetId>/records` endpoint
 
 **Shell / cURL**
 
-```bash
+```bash  theme={null}
 curl --location 'https://platform.flatfile.com/api/sheets/us_sh_12345678/records?q="Subscription Status" eq "On-Hold" or "Subscription Status" eq "Pending"' \
     --header 'Accept: */*' \
     --header 'Authorization: Bearer <bearer token>'

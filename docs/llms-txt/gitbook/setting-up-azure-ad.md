@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/authenticated-access/setting-up-azure-ad.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/authenticated-access/setting-up-azure-ad.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/authenticated-access/setting-up-azure-ad.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/authenticated-access/setting-up-azure-ad.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/authenticated-access/setting-up-azure-ad.md
 
@@ -28,22 +24,19 @@ To setup your GitBook site with authenticated access using Azure AD, the process
 
 {% stepper %}
 {% step %}
-
-#### [Create an app registration in Azure AD](#id-1.-create-an-app-registration-in-azure-a-d)
+[**Create an app registration in Azure AD**](#id-1.-create-an-app-registration-in-azure-a-d)
 
 Create an Azure AD application registration in your Microsoft Entra ID admin dashboard.
 {% endstep %}
 
 {% step %}
-
-#### [Install and configure the Azure AD integration on your site](#id-2.-install-and-configure-the-azure-a-d-integration)
+[**Install and configure the Azure AD integration on your site**](#id-2.-install-and-configure-the-azure-a-d-integration)
 
 Install the Azure AD integration and add the required configuration to your GitBook site.
 {% endstep %}
 
 {% step %}
-
-#### [Configure Azure AD for adaptive content (optional)](#id-3.-configure-azure-a-d-for-adaptive-content-optional)
+[**Configure Azure AD for adaptive content (optional)**](#id-3.-configure-azure-a-d-for-adaptive-content-optional)
 
 Configure your Azure AD to work with Adaptive content in GitBook.
 {% endstep %}

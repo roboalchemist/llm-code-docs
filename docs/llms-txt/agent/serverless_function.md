@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/actions/serverless_function.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Call Serverless Function
 
 ## Overview

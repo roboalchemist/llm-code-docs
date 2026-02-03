@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/install/add-optional.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add an optional dependency
 
 To add an npm package as an optional dependency, use the `--optional` flag.
@@ -22,4 +26,4 @@ This will add the package to `optionalDependencies` in `package.json`.
 
 ***
 
-See [Docs > Package manager](https://bun.com/docs/cli/install) for complete documentation of Bun's package manager.
+See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.

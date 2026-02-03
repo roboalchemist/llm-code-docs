@@ -5,8 +5,7 @@ title: Datadog CSI Driver
 description: >-
   High-performance observability for secure Kubernetes environments using the
   Datadog CSI Driver
-breadcrumbs: Docs > Container Monitoring > Kubernetes > Datadog CSI Driver
-source_url: https://docs.datadoghq.com/kubernetes/csi_driver/index.html
+breadcrumbs: Docs > Containers > Kubernetes > Datadog CSI Driver
 ---
 
 # Datadog CSI Driver

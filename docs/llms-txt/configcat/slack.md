@@ -2,6 +2,8 @@
 
 # Slack - Get notified when a feature flag changes
 
+Copy page
+
 ## Overview[​](#overview "Direct link to Overview")
 
 Receive notifications via a Slack Channel message when someone changes a feature flag using the [ConfigCat Feature Flags app for Slack](https://configcat.slack.com/apps/A011CN2QZJB-configcat-feature-flags).

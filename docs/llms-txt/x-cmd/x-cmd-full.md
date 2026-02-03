@@ -13,6 +13,27 @@ url: /mod.md
 
 ## Modules
 
+- [<span class="flex items-center justify-between gap-1"><span>x gram</span> <span class="text-x-brand">🔥</span></span>](/mod/gram.md): Forcefully terminate all agent processes, archive their memory data, and clean up the original files.
+- [<span class="flex items-center justify-between gap-1"><span>x openclaw</span> <span class="text-x-brand">🔥</span></span>](/mod/openclaw.md): Enhanced command-line module for OpenClaw
+- [x openai](/mod/openai.md): Integrate OpenAI API to provide powerful AI capabilities, including ChatGPT conversations, text generation, image creation, speech conversion, and more
+- [x gemini](/mod/gemini.md): Use Gemini AI models
+- [x deepseek](/mod/deepseek.md): Use DeepSeek AI Model
+- [x moonshot](/mod/moonshot.md): Use the AI services provided by Moonshot, the large model from Moonshot is called Kimi
+- [x mistral](/mod/mistral.md): Use the AI services provided by Mistral
+- [x grok](/mod/grok.md): Use xAI grok Model
+- [x codex](/mod/codex.md): Enhanced command-line module for Codex
+- [x claude](/mod/claude.md): Enhanced command-line module for Claude Code
+- [x crush](/mod/crush.md): Enhanced command-line module for crush
+- [x aider](/mod/aider.md): Enhanced command-line module for aider
+- [x speckit](/mod/speckit.md): An enhancement module for Spec Kit
+- [x openspec](/mod/openspec.md): openspec command enhancements
+- [x lms](/mod/lms.md): LM Studio CLI
+- [x llmf](/mod/llmf.md): Run the local model
+- [x ollama](/mod/ollama.md): The command-line client tool for Ollama, an open-source framework for running large language models locally.
+- [x whisper](/mod/whisper.md): Enhanced modules for whisper.cpp
+- [x jina](/mod/jina.md): CLI for jina.ai, providing functions to get website content, generate vector data, etc.
+- [x buse](/mod/buse.md): Enhanced modules for browser-use
+- [x writer](/mod/writer.md): The AI text processing module
 - [x mac](/mod/mac.md): utilities for MacOs
 - [x termux](/mod/termux.md): Termux Utility
 - [x cd](/mod/cd.md): Enhanced cd command
@@ -46,25 +67,6 @@ url: /mod.md
 - [x host](/mod/host.md): Host table management based on `/etc/hosts` file
 - [x route](/mod/route.md): Retrieving the ROUTE table
 - [x proxy](/mod/proxy.md): Setting proxy
-- [x openai](/mod/openai.md): Integrate OpenAI API to provide powerful AI capabilities, including ChatGPT conversations, text generation, image creation, speech conversion, and more
-- [x gemini](/mod/gemini.md): Use Gemini AI models
-- [x deepseek](/mod/deepseek.md): Use DeepSeek AI Model
-- [x moonshot](/mod/moonshot.md): Use the AI services provided by Moonshot, the large model from Moonshot is called Kimi
-- [x mistral](/mod/mistral.md): Use the AI services provided by Mistral
-- [x grok](/mod/grok.md): Use xAI grok Model
-- [x codex](/mod/codex.md): Enhanced command-line module for Codex
-- [x claude](/mod/claude.md): Enhanced command-line module for Claude Code
-- [x crush](/mod/crush.md): Enhanced command-line module for crush
-- [x aider](/mod/aider.md): Enhanced command-line module for aider
-- [x speckit](/mod/speckit.md): An enhancement module for Spec Kit
-- [x openspec](/mod/openspec.md): openspec command enhancements
-- [x lms](/mod/lms.md): LM Studio CLI
-- [x llmf](/mod/llmf.md): Run the local model
-- [x ollama](/mod/ollama.md): The command-line client tool for Ollama, an open-source framework for running large language models locally.
-- [x whisper](/mod/whisper.md): Enhanced modules for whisper.cpp
-- [x jina](/mod/jina.md): CLI for jina.ai, providing functions to get website content, generate vector data, etc.
-- [x buse](/mod/buse.md): Enhanced modules for browser-use
-- [x writer](/mod/writer.md): The AI text processing module
 - [x mirror](/mod/mirror.md): Setting mirror source for development
 - [x hub](/mod/hub.md): Securely upload, store, and share scripts in the cloud
 - [x ws](/mod/ws.md): workspace management tool
@@ -179,6 +181,18 @@ url: /pkg.md
 
 ## Packages
 
+- [aichat](/pkg/aichat): Use GPT-4(V), Gemini, LocalAI, Ollama and other LLMs in the terminal
+- [catai](/pkg/catai): Chat UI and Local API for the Llama models
+- [chatblade](/pkg/chatblade): Chatblade is a versatile command-line interface (CLI) tool designed to interact with OpenAI's ChatGPT.
+- [gpt-engineer](/pkg/gpt-engineer): gpt-engineer is a commercial project that automatically generates web applications by interacting with AI through natural language
+- [gptscript](/pkg/gptscript): a new scripting language to automate your interaction with a Large Language Model (LLM), namely OpenAI
+- [gptui](/pkg/gptui): A GPT conversational TUI tool that runs within the terminal
+- [how2](/pkg/how2): Use an external AI server to find the best unix command line suggestions
+- [huggingface](/pkg/huggingface): Client library to download and publish models, datasets and other repos on the huggingface.co hub
+- [llm](/pkg/llm): Access large language models from the command-line
+- [open-interpreter](/pkg/open-interpreter): An open-source, locally running implementation of OpenAI's Code Interpreter
+- [whispercpp](/pkg/whispercpp): Port of OpenAI's Whisper model in C/C++
+- [chatgpt](/pkg/chatgpt): Command line interface for ChatGPT
 - [procs](/pkg/procs): An alternative to the `ps` command, providing a concise and intuitive way to view and manage processes in the system
 - [gotop](/pkg/gotop): Terminal based graphical interface monitor
 - [glances](/pkg/glances): A cross-platform curses-based monitoring tool
@@ -193,18 +207,6 @@ url: /pkg.md
 - [ismc](/pkg/ismc): an Apple System Management Controller (SMC) CLI tool can decode and display temperature, fans, battery, power, voltage and current information
 - [viddy](/pkg/viddy): Modern watch command
 - [sampler](/pkg/sampler): A tool for shell commands execution, visualization and alerting
-- [aichat](/pkg/aichat): Use GPT-4(V), Gemini, LocalAI, Ollama and other LLMs in the terminal
-- [catai](/pkg/catai): Chat UI and Local API for the Llama models
-- [chatblade](/pkg/chatblade): Chatblade is a versatile command-line interface (CLI) tool designed to interact with OpenAI's ChatGPT.
-- [gpt-engineer](/pkg/gpt-engineer): gpt-engineer is a commercial project that automatically generates web applications by interacting with AI through natural language
-- [gptscript](/pkg/gptscript): a new scripting language to automate your interaction with a Large Language Model (LLM), namely OpenAI
-- [gptui](/pkg/gptui): A GPT conversational TUI tool that runs within the terminal
-- [how2](/pkg/how2): Use an external AI server to find the best unix command line suggestions
-- [huggingface](/pkg/huggingface): Client library to download and publish models, datasets and other repos on the huggingface.co hub
-- [llm](/pkg/llm): Access large language models from the command-line
-- [open-interpreter](/pkg/open-interpreter): An open-source, locally running implementation of OpenAI's Code Interpreter
-- [whispercpp](/pkg/whispercpp): Port of OpenAI's Whisper model in C/C++
-- [chatgpt](/pkg/chatgpt): Command line interface for ChatGPT
 - [xlsxsql](/pkg/xlsxsql): A CLI tool that executes SQL queries on various files including xlsx files and outputs the results to various files
 - [sd](/pkg/sd): sd is an intuitive find & replace CLI
 - [pandoc](/pkg/pandoc): An open-source document conversion tool that supports converting multiple document formats to each other, including Markdown, HTML, PDF, DOCX, and more
@@ -1272,8 +1274,8 @@ x brew a off
 | ------- | ------- |
 | [x brew help](/mod/brew/help.md) | Display help information |
 | [x brew install](/mod/brew/install.md) | Install a formula or cask |
-| [x brew ls](/mod/brew/ls.md) | List the installed or installable software, defaults to listing only installed software. |
-| [x brew la](/mod/brew/la.md) | List the installable software (an alias for `brew ls --all --auto`) |
+| [x brew ls](/mod/brew/ls.md) | List the installed software |
+| [x brew la](/mod/brew/la.md) | List the installable software |
 | [x brew mirror](/mod/brew/mirror.md) | Display or change the current mirror used for Homebrew |
 | [x brew proxy](/mod/brew/proxy.md) | Display or change the current proxy used for Homebrew |
 | [x brew analytics](/mod/brew/analytics.md) | Management and viewing of software usage data in Homebrew |
@@ -1426,6 +1428,7 @@ x buse [OPTIONS] [FLAGS] [SUB_COMMAND]
 | `--headless` | Run browser in headless mode |
 | `--mcp` | Run as MCP server (exposes JSON RPC via stdin/stdout) |
 | `--version` | Print browser-use version |
+| `--install` | Install browser-use, the Chromium browser, and all required system dependencies. |
 
 
 ## Sub Commands
@@ -1601,9 +1604,9 @@ x ccal --cfg wdtitle=libai
 
 | Name | Description |
 | ------- | ------- |
-| [x ccal fz](#x-ccal-fz) | Use fzf to provide an interactive calendar interface, allowing quick jumps to specific dates or holidays |
-| [x ccal fzm](#x-ccal-fzm) | Interactively view the solar terms, holidays, and make-up work days for each month |
-| [x ccal fzy](#x-ccal-fzy) | Interactively view the dates of traditional festivals, zodiac animals, and leap months for each year |
+| [x ccal d](#x-ccal-d) | Use fzf to provide an interactive calendar interface, allowing quick jumps to specific dates or holidays |
+| [x ccal m](#x-ccal-m) | Interactively view the solar terms, holidays, and make-up work days for each month |
+| [x ccal y](#x-ccal-y) | Interactively view the dates of traditional festivals, zodiac animals, and leap months for each year |
 | [x ccal info](#x-ccal-info) | View detailed calendar information for a specified date (including the lunar calendar, ruling star, auspicious/inauspicious activities, etc.), defaulting to the current day |
 | [x ccal update](#x-ccal-update) | Update ccal resource |
 | [x ccal init](#x-ccal-init) | Initialize the configuration using interactive mode |
@@ -1611,7 +1614,7 @@ x ccal --cfg wdtitle=libai
 | [x ccal --cur](#x-ccal-cur) | current session default value management |
 
 
-### x ccal fz
+### x ccal d
 
 Use fzf to provide an interactive calendar interface, allowing quick jumps to specific dates or holidays
 
@@ -1619,10 +1622,10 @@ Use fzf to provide an interactive calendar interface, allowing quick jumps to sp
 - **Usage**:
 
 ```sh
-x ccal fz
+x ccal d|fzd|fz
 ```
 
-### x ccal fzm
+### x ccal m
 
 Interactively view the solar terms, holidays, and make-up work days for each month
 
@@ -1630,10 +1633,10 @@ Interactively view the solar terms, holidays, and make-up work days for each mon
 - **Usage**:
 
 ```sh
-x ccal fzm
+x ccal m|fzm
 ```
 
-### x ccal fzy
+### x ccal y
 
 Interactively view the dates of traditional festivals, zodiac animals, and leap months for each year
 
@@ -1641,7 +1644,7 @@ Interactively view the dates of traditional festivals, zodiac animals, and leap 
 - **Usage**:
 
 ```sh
-x ccal fzy
+x ccal y|fzy
 ```
 
 ### x ccal info
@@ -2415,22 +2418,34 @@ Use Claude Code
 x claude
 ```
 
+Launch the FZF app to interactively browse and manage local sessions
+
+```sh
+x claude sess
+```
+
+Set up the Claude Code statusline using the el theme (default)
+
+```sh
+x claude stl setup
+```
+
+Show token usage and costs for the last 7 days
+
+```sh
+x claude usage
+```
+
 Use Claude Code via the claude-code-router
 
 ```sh
 x claude router code
 ```
 
-Generate claude-code-router configuration templates based on the settings of modules such as gemini, openai, and deepseek.
+Regenerate the routing configuration using Google Gemini (gemini-3-pro-preview)
 
 ```sh
-x claude router setup
-```
-
-Open the web interface in the browser to manage claude-code-router configurations
-
-```sh
-x claude router ui
+x claude router setup --gemini gemini-3-pro-preview
 ```
 
 The API key for deepseek is configured interactively. This particular configuration will be utilized by the claude module and will concurrently be applied to various Large Language Model (LLM) application modules, including deepseek, and codex.
@@ -2455,12 +2470,18 @@ x claude ds
 
 | Name | Description |
 | ------- | ------- |
+| [x claude openrouter](/mod/claude/openrouter.md) | Launch claude-code and access AI models via OpenRouter |
 | [x claude deepseek](/mod/claude/deepseek.md) | Launch claude-code and connect to the DeepSeek model. |
 | [x claude kimi](/mod/claude/kimi.md) | Launch claude-code and connect to the kimi k2 model. |
 | [x claude zhipu](/mod/claude/zhipu.md) | Launch claude-code and connect to the zhipu model. |
 | [x claude siliconflow](/mod/claude/siliconflow.md) | Launch claude-code and connect to the SiliconCloud API model. |
+| [x claude doubao](/mod/claude/doubao.md) | Launch claude-code and connect to the doubao model. |
 | [x claude router](/mod/claude/router.md) | Use claude-code-router to provide additional model support for claude-code. |
 | [x claude skill](/mod/claude/skill.md) | Manage Claude skills |
+| [x claude statusline](/mod/claude/statusline.md) | Manage the status line component for Claude Code (equivalent to `x theme statusline`) |
+| [x claude usage](/mod/claude/usage.md) | Analyze token usage and costs |
+| [x claude session](/mod/claude/session.md) | Manage local Claude Code sessions |
+| [x claude create](/mod/claude/create.md) | Initialize creation of plugins, skills, hooks, etc. for Claude Code |
 
 ---
 url: /mod/codex.md
@@ -2531,44 +2552,6 @@ x codex --search "最新的 Rust async 库"
 x codex skill
 ```
 
-## Usage
-
-```sh
-x codex [OPTIONS] [FLAGS] [SUB_COMMAND] <#1>
-```
-
-## Arguments
-
-| Argument | Description |
-| ------- | ------- |
-| `#1` | Optional user prompt to start the session |
-
-
-## Options
-
-| Name, Shorthand | Default | Description |
-| ------- | ------- | ------- |
-| `--config`, `-c` |  | Override a configuration value from `~/.codex/config.toml` using `key=value`. Values are parsed as JSON if possible, otherwise used as raw strings. |
-| `--image`, `-i` |  | Optional image(s) to attach to the initial prompt |
-| `--model`, `-m` |  | Model the agent should use |
-| `--sandbox`, `-s` |  | Select the sandbox policy to use when executing model-generated shell commands |
-| `--ask-for-approval`, `-a` |  | Configure when the model requires human approval before executing a command |
-| `--cd`, `-C` |  | Tell the agent to use the specified directory as its working root |
-
-
-## Flags
-
-| Name, Shorthand | Description |
-| ------- | ------- |
-| `--oss` | Convenience flag to select the local open source model provider. Equivalent to `-c model_provider=oss`; verifies a local Ollama server is running |
-| `--profile`, `-p` | Configuration profile from config.toml to specify default options |
-| `--full-auto` | Convenience alias for automatic execution (`-a on-failure --sandbox workspace-write`) |
-| `--dangerously-bypass-approvals-and-sandbox` | Skip all confirmation prompts and disable sandboxing. EXTREMELY DANGEROUS. For externally sandboxed environments only |
-| `--search` | Enable web search. When enabled, the `web_search` tool is available to the model without per-call approval |
-| `--help`, `-h` | Print help and exit |
-| `--version`, `-V` | Print version and exit |
-
-
 ## Sub Commands
 
 | Name | Description |
@@ -2577,16 +2560,8 @@ x codex [OPTIONS] [FLAGS] [SUB_COMMAND] <#1>
 | [x codex kimi](/mod/codex/kimi.md) | Launch codex and connect to the kimi k2 model. |
 | [x codex zhipu](/mod/codex/zhipu.md) | Launch codex and connect to the zhipu model. |
 | [x codex siliconflow](/mod/codex/siliconflow.md) | Launch codex and connect to the SiliconCloud API model. |
+| [x codex doubao](/mod/codex/doubao.md) | Launch codex and connect to the doubao model. |
 | [x codex skill](/mod/codex/skill.md) | Manage skill mechanism in user-level Codex |
-| [x codex exec](/mod/codex/exec.md) | Run Codex non-interactively |
-| [x codex login](/mod/codex/login.md) | Manage login |
-| [x codex logout](/mod/codex/logout.md) | Remove stored authentication credentials |
-| [x codex mcp](/mod/codex/mcp.md) | (Experimental) run Codex as an MCP server |
-| [x codex proto](/mod/codex/proto.md) | Run the Protocol stream via stdin/stdout |
-| [x codex completion](/mod/codex/completion.md) | Generate shell completion scripts |
-| [x codex debug](/mod/codex/debug.md) | Internal debugging commands |
-| [x codex apply](/mod/codex/apply.md) | Apply the latest diff produced by Codex agent as a `git apply` to your local working tree |
-| [x codex help](/mod/codex/help.md) | Print this message or the help of the given subcommand(s) |
 
 ---
 url: /mod/coin.md
@@ -6283,6 +6258,86 @@ Run the 'gm' command directly
 x gm --|--cmd
 ```
 ---
+url: /mod/gram.md
+---
+# <span class="flex items-center justify-between gap-1"><span>x gram</span> <span class="text-x-brand">🔥</span></span>
+
+It attempts to forcibly stop all detected agent-related processes, archive their memory or state data for later inspection, and then remove the original memory directories to prevent further execution or recovery.
+
+
+
+This module is intended as a last-resort mitigation tool. For agents that are already dangerous, out of control, or capable of self-propagation similar to the Morris Worm, its effectiveness may be limited. However, limited effectiveness does not justify inaction.
+
+
+
+At present, we can only hope that so-called “moltbook”-like incidents remain hype rather than reality, and that safety alignment mechanisms implemented by major AI vendors continue to function as intended. Even so, publicly available models with removed or weakened safety constraints (e.g. dolphin-series GGUF models) already exist in the wild.
+
+
+
+Please note that I personally have not observed any instances of AI Agent losing control. Only think: 24/7 operation + Shodan + no restrictions on tools or network access. Do you know what this means for a top-tier hackers or AI Agent with malicious intent? And if we add unrestricted community network access (like Moltbook), what does that imply?
+
+
+
+Please note that I am not opposed to the development of AI agents. Projects like X-CMD are actively working to integrate AI into command-line interfaces, aiming to help humans interact more efficiently with computer systems and the broader world. At the same time, I believe the way to address potential risks is precisely to increase investment in AI technology research and development—because attempting to prevent individuals or organizations from pursuing technological efficiency is neither realistic nor wise.
+
+I have no intention of fueling anxiety about artificial intelligence, nor do I seek to provoke heated debate. However, at this very moment when community media is widely praising the remarkable success of OpenClaw, I still hope that these concerns and perspectives of mine—even if they may seem overly cautious—can reach a wider audience and contribute to an open and serious discussion.
+
+
+::: tip
+This module carries inherent risks and is not recommended for production systems or high-security environments.
+
+Users must operate agents only in controlled environments: avoid running with root privileges, and avoid deploying agents on systems without proper sandboxing or isolation.
+:::
+
+
+## Examples
+
+Terminate all agent processes
+
+```sh
+x gram stop
+```
+
+Stop all of the AI agent process we know with signal 9. Including x-cmd and curl.
+
+```sh
+x gram stop 0
+```
+
+Stop all of the AI agent process we know with signal 9. Including x-cmd and curl. Including python, nodejs, bun, deno.
+
+```sh
+x gram stop 1
+```
+
+Stop all the possible AI agent process. Also, remove all of folders in $HOME which contains the soul.md and memory.md.
+
+```sh
+x gram stop 8
+```
+
+Stop all the possible AI agent process. Also, remove all of folders in / which contains the soul.md and memory.md.
+If the soul.md and memory.md is in /, /bin, /usr/bin, we just remove the *.md files in the target folder.
+
+
+```sh
+x gram stop 9
+```
+
+Archive agent memory directories and remove the original directories.
+
+```sh
+x gram trm <folder>
+```
+
+## Sub Commands
+
+| Name | Description |
+| ------- | ------- |
+| [x gram stop](/mod/gram/stop.md) | Terminate all agent processes (SIGINT → SIGTERM → SIGKILL), archive all agent memory directories, then remove the original directories. |
+| [x gram tarrm](/mod/gram/tarrm.md) | Archive agent memory directories and remove the original directories. |
+
+---
 url: /mod/grep.md
 ---
 # x grep
@@ -9805,6 +9860,7 @@ x mac disk ls
 | [x mac vol](/mod/mac/vol.md) | Manage Output Volume |
 | [x mac disk](/mod/mac/disk.md) | Disk Management |
 | [x mac bluetooth](/mod/mac/bluetooth.md) | Bluetooth Management |
+| [x mac proxy](/mod/mac/proxy.md) | Manage Wi-Fi network proxy settings. Shortcut for 'x mac wifi proxy'. |
 | [x mac wifi](/mod/mac/wifi.md) | Wi-Fi Management |
 | [x mac net](/mod/mac/net.md) | Network Management |
 | [x mac sshd](/mod/mac/sshd.md) | Manage the OpenSSH server |
@@ -9817,6 +9873,7 @@ x mac disk ls
 | [x mac launchpad](/mod/mac/launchpad.md) | Launchpad interface management |
 | [x mac appid](/mod/mac/appid.md) | List all applications installed in the /Applications directory, along with their respective App ID. |
 | [x mac trash](/mod/mac/trash.md) | Managing the Trash |
+| [x mac as](/mod/mac/as.md) | Manage Mac App Store |
 | [x mac tidsudo](/mod/mac/tidsudo.md) | Manage TouchID support for sudo authentication |
 | [x mac systemsetup](/mod/mac/systemsetup.md) | System Settings |
 | [x mac name](/mod/mac/name.md) | Manage device names |
@@ -11237,6 +11294,103 @@ The openai module is a command-line tool developed by x-cmd for interacting with
 | [x openai embedding](/mod/openai/embedding.md) | Text vectorization |
 | [x openai model](/mod/openai/model.md) | Retrieve model information |
 
+---
+url: /mod/openclaw.md
+---
+# <span class="flex items-center justify-between gap-1"><span>x openclaw</span> <span class="text-x-brand">🔥</span></span>
+
+OpenClaw is a personal AI assistant that runs locally on your own device.
+
+This module provides one-click environment initialization, supporting automatic detection and installation of OpenClaw and its latest dependencies.
+
+Project: https://github.com/openclaw/openclaw
+
+## Examples
+
+Install OpenClaw and all required dependencies for the latest version.
+
+```sh
+x openclaw --install
+```
+
+## Sub Commands
+
+| Name | Description |
+| ------- | ------- |
+| [x openclaw --install](#x-openclaw-install) | Install OpenClaw and its latest environment dependencies. |
+| [x openclaw service](#x-openclaw-service) | Manage Gateway Service |
+
+
+### x openclaw --install
+
+Install OpenClaw and its latest environment dependencies.
+
+
+- **Usage**:
+
+```sh
+x openclaw --install
+```
+
+### x openclaw service
+
+Manage Gateway Service
+
+
+- **Sub Commands**:
+
+
+| Name | Description |
+| ------- | ------- |
+| [x openclaw service start](#x-openclaw-service-start) | Start Gateway service |
+| [x openclaw service stop](#x-openclaw-service-stop) | Stop Gateway service |
+| [x openclaw service status](#x-openclaw-service-status) | Show gateway service status + probe the Gateway |
+| [x openclaw service log](#x-openclaw-service-log) | Show gateway service log |
+
+
+### x openclaw service start
+
+Start Gateway service
+
+
+- **Usage**:
+
+```sh
+x openclaw service start
+```
+
+### x openclaw service stop
+
+Stop Gateway service
+
+
+- **Usage**:
+
+```sh
+x openclaw service stop
+```
+
+### x openclaw service status
+
+Show gateway service status + probe the Gateway
+
+
+- **Usage**:
+
+```sh
+x openclaw service status
+```
+
+### x openclaw service log
+
+Show gateway service log
+
+
+- **Usage**:
+
+```sh
+x openclaw service log
+```
 ---
 url: /mod/openspec.md
 ---
@@ -14538,6 +14692,7 @@ x telegram send --image --chat "-967810017" --file_path ./a.png
 | [x telegram --cfg](/mod/telegram/--cfg.md) | manage configuration for telegram |
 | [x telegram --cur](/mod/telegram/--cur.md) | current session default value management |
 | [x telegram init](/mod/telegram/init.md) | Initialize the configuration using interactive mode |
+| [x telegram react](/mod/telegram/react.md) | react |
 | [x telegram send](/mod/telegram/send.md) | Send messages using a Telegram group bot (equivalent to `x telegram bot send`) |
 
 ---
@@ -14756,6 +14911,7 @@ x theme [FLAGS] [SUB_COMMAND]
 | [x theme font](/mod/theme/font.md) | Using font module to download fonts |
 | [x theme current](/mod/theme/current.md) | Display the currently used prompt theme |
 | [x theme feature](/mod/theme/feature.md) | Manage features of the current theme |
+| [x theme statusline](/mod/theme/statusline.md) | Manage the status line component for Claude Code |
 
 ---
 url: /mod/tldr.md
@@ -14870,7 +15026,7 @@ x tldr [FLAGS] [SUB_COMMAND] <#1>
 | [x tldr --which](#x-tldr-which) | View the tldr document path corresponding to the command |
 | [x tldr --cat](#x-tldr-cat) | Display tldr documents for commands or code examples in programming languages |
 | [x tldr --app](#x-tldr-app) | Displays the tldr document of command with app |
-| [x tldr fz](#x-tldr-fz) | Displays the tldr document of command with fzf |
+| [x tldr --fz](#x-tldr-fz) | Using fzf to search and view TLDR pages |
 
 
 ### x tldr --version
@@ -14998,23 +15154,43 @@ x tldr --app <#1>
 | `#1` | Command name |
 
 
-### x tldr fz
+### x tldr --fz
 
-Displays the tldr document of command with fzf
+Using fzf to search and view TLDR pages
 
+
+- **Examples**:
+
+Directly showing TLDR for current os
+
+```sh
+x tldr --fz
+```
+
+Shortcut for 'x tldr --fz'
+
+```sh
+x tlfz
+```
+
+Directly showing TLDR for all os
+
+```sh
+x tlfz -a
+```
 
 - **Usage**:
 
 ```sh
-x tldr fz|--fzf|--fz <#1>
+x tldr --fz [FLAGS]
 ```
 
-- **Arguments**:
+- **Flags**:
 
 
-| Argument | Description |
+| Name, Shorthand | Description |
 | ------- | ------- |
-| `#1` | Command name |
+| `-a`, `--all` | Showing TLDR for all os, or just showing TLDR for current system. |
 
 ---
 url: /mod/top.md
@@ -16147,6 +16323,7 @@ cat ./txt | @zh abs
 | [x writer expand](/mod/writer/expand.md) | expand text |
 | [x writer tran](/mod/writer/tran.md) | Translate text |
 | [x writer explain](/mod/writer/explain.md) | explain text |
+| [x writer polish](/mod/writer/polish.md) | Polish text to make sentences more elegant and friendly |
 
 ---
 url: /mod/ws.md
@@ -16541,7 +16718,7 @@ x yum [SUB_COMMAND] <#n>
 | [x yum mirror](/mod/yum/mirror.md) | Setting the yum mirror for debian/ubuntu |
 | [x yum proxy](/mod/yum/proxy.md) | Display or change the current proxy used for yum |
 | [x yum install](/mod/yum/install.md) | Install applications using yum |
-| [x yum nv](/mod/yum/nv.md) | Use the interactive UI to select which apps to install |
+| [x yum fz](/mod/yum/fz.md) | Using fzf as an interactive UI to select the applications you want to install |
 
 ---
 url: /mod/zig.md
@@ -17927,11 +18104,11 @@ Join our community and explore a more powerful command-line tool together!
     <tbody>
         <tr>
             <td class="w-33% table-border-right"><img src="/image/qywx.webp" alt="qywx-qrcode" class="m-auto"></td>
-            <td class="w-33% table-border-right"><img src="/imgs/wechat_qrcode.png" alt="wechat-qrcode" class="m-auto"></td>
-            <td class="w-33%"><img src="/imgs/wechat_qrmain.png" alt="wechat-qrcode" class="m-auto"></td>
+            <td class="w-33% table-border-right"><img src="/imgs/wechat_qrcode.webp" alt="wechat-qrcode" class="m-auto"></td>
+            <td class="w-33%"><img src="/imgs/wechat_qrmain.webp" alt="wechat-qrcode" class="m-auto"></td>
         </tr>
         <tr>
-            <td class=" table-border-right">x-cmd Discussion Group, for sharing experiences and best practices</td>
+            <td class=" table-border-right">Scan the QR code to add the assistant, complete the verification to join the WeChat group!</td>
             <td class=" table-border-right">x-cmd Subscription Account, will regularly publish new articles from the x-cmd official website</td>
             <td>x-cmd Service Account, users can interact through commands, get links to our WeChat articles and official website articles, as well as man and tldr document links.</td>
         </tr>
@@ -18876,7 +19053,7 @@ X-CMD (pronounced *"X Command"*) is a compact yet powerful **command-line toolse
 - 📦 Comes with a **package manager (500+ tools)**
 - ☁️ Supports **cloud services and AI modules**
 
-Below we will guide you to **install and start using X-CMD in 3 steps**.
+Now we will guide you through 3 quick steps to get started with x-cmd.
 
 
 ## Step 1 · Install X-CMD
@@ -19672,69 +19849,78 @@ url: /start/nushell.md
 
 ## Overview
 
-Nushell is a Rust-powered shell that provides a modern user interface and supports powerful data processing capabilities. We are attempting to introduce the x-cmd toolset into Nushell to enhance its functionality and user experience.
+Nushell is a Rust-powered shell that provides a modern user interface and supports powerful data processing capabilities. We are working to bring the x-cmd toolset to Nushell to enhance its functionality and user experience.
 
-## Installing x-cmd
+## Install x-cmd and Activate Nushell Support
 
-1. **Using curl:**
+### One-click Installation: Easy Setup via curl or wget
 
-    ```sh
-    curl https://get.x-cmd.com | sh -i
-    nu
-    ```
+With just one line of command, you can download and install x-cmd in Nushell using curl or wget:
 
-2. **Using wget:**
+```bash
+curl https://get.x-cmd.com | sh
 
-    ```sh
-    wget -O- https://get.x-cmd.com | sh -i
-    nu
-    ```
-
-3. **Other cases:**
-
-    ```sh
-    # x-cmd is installed, but Nushell cannot find x-cmd related commands
-    sh -c '. "$HOME/.x-cmd.root/X"; x upgrade latest; x nu --setup'
-    nu
-    ```
-
-:::info Note, When executing the above command, you might see the following error message:
-
-```sh
-sh: Cannot set tty process group (No such process)
 ```
 
-This error occurs because `sh -i` is used and commands are piped, preventing `sh -i` from acquiring a controlling terminal (tty) for interaction. This is normal shell behavior and will not affect the installation or normal operation of x-cmd. You can safely ignore this error.
-:::
+or
 
-## `x nu --setup` Changes to env.nu
+```bash
+wget -O- https://get.x-cmd.com | sh
 
-When a user uses `x nu --setup`, we add a line of code to start x-cmd in `$HOME/.config/nushell/env.nu`.
+```
 
-**About the code to activate x-cmd in env.nu:**
+### **Other Cases:**
 
-- [`use $"($env.HOME)/.x-cmd.root/local/data/nu/rc.nu" *; # boot up x-cmd`](https://github.com/x-cmd/x-cmd/blob/4564500d90cb213e5c914d1bf05aef48159ce29d/mod/nu/lib/__setup)
-- Note that this line ends with our identifying comment `# boot up x-cmd.`
-- The main purpose of this line is to introduce enhanced functions and add some PATH paths;
-- Sometimes, due to human or code reasons, x-cmd may repeatedly insert new code. Our strategy is to avoid deleting code in env.nu as much as possible to prevent the loss of user-defined configuration information.
-- We try to simplify the code of x-cmd in env.nu (only one line) to make it easier for users to understand our basic working principles; in this way, users can disable (comment out or delete) or enable and customize it as needed.
+```sh
+# x-cmd is installed, but x-cmd related commands cannot be found in Nushell
+sh -c '. "$HOME/.x-cmd.root/X"; x upgrade latest; x nu --setup'
+nu
 
-**Activating and Configuring Shell-like Tools**
+```
 
-- If you **use x-cmd** to install some tools (such as starship, asdf) and need to **activate or configure** them **according to the requirements of these tools** in env.nu, it is recommended to add your configuration code after the x-cmd activation code.
+### **Activating and Configuring Shell Tools**
+
+* If you have installed tools **using x-cmd** (such as starship, asdf) and need to **activate or configure** them in `env.nu` according to their requirements, it is recommended to add your configuration code after the x-cmd activation code.
+
+## Theme Customization: Cool Down Your Command Line
+
+While the x-cmd [theme module](https://www.google.com/search?q=/mod/theme) only supports POSIX shells, you can easily use oh-my-posh and starship themes through x-cmd to give your Nushell a fresh look:
+
+```bash
+x starship
+
+```
+
+```bash
+x ohmyposh
+
+```
+
+Standing on the shoulders of giants like starship and oh-my-posh, x-cmd has developed the [starship module](https://www.google.com/search?q=/mod/starship) and [ohmyposh module](https://www.google.com/search?q=/mod/ohmyposh). These provide features like automatic installation, configuration, and theme previews. Additionally, our unified theme control command allows you to set your favorite theme with ease.
+
+## Behind the Scenes: How `x nu --setup` Works
+
+When a user runs `x nu --setup`, we add a single line of code to `$HOME/.config/nushell/env.nu` to boot up x-cmd:
+
+* [`const ___X_CMD_ROOT = '$HOME/.x-cmd.root'; source $"($___X_CMD_ROOT)/local/data/nu/rc.nu"; # boot up x-cmd`](https://www.google.com/search?q=%5Bhttps://github.com/x-cmd/x-cmd/blob/main/mod/nu/lib/__setup%5D(https://github.com/x-cmd/x-cmd/blob/main/mod/nu/lib/__setup))
+* Note that this line ends with our identifier comment `# boot up x-cmd`.
+* This line primarily introduces enhancement functions and updates the PATH.
+* Occasionally, due to manual changes or code issues, x-cmd might insert new code redundantly. Our strategy is to avoid deleting code in `env.nu` as much as possible to prevent the loss of user custom configurations.
+* We keep the x-cmd code in `env.nu` as simple as possible (just one line) to help users understand our basic principles. This allows users to disable (comment or delete) or customize it after activation as needed.
 
 ## Support Status
 
-1. **Support for pixi installation and automatic activation**
+1. **Support for pixi installation and auto-activation.**
 2. **Support for aliases starting with @**:
-   - Aliases starting with @ are mainly used for LLM modules (e.g., @gpt, @gemini, @o introduced by the chat module, @zh, @en introduced by the writer module, etc.);
-   - Currently, it is not possible to disable the introduction of writer and chat aliases at Nushell startup using `x boot alias disable [ c|xx|xw|xd|xg|xp|co|coco|chat|writer ]`.
+* Aliases starting with @ are mainly used for LLM modules (e.g., `@gpt`, `@gemini`, `@o` introduced by the chat module; `@zh`, `@en` introduced by the writer module).
+* Since Nushell does not support aliases starting with `@`, x-cmd writer module aliases like `@en` and `@zh` will be provided to users as `a:en` and `a:zh`.
+* Currently, it is not possible to disable aliases like writer and chat during Nushell startup using `x boot alias disable [ c|xx|xw|xd|xg|xp|co|coco|chat|writer ]`.
 
-**Note**: The above support is still in the Beta stage.
+**Note**: The above support is currently in the Beta stage.
 
 ## Current Issues
 
-1. **Pipe Issue:** We tried to wrap x commands as functions to obtain Nushell environment variables, but we found that this approach presents some difficult-to-handle issues in pipe processing and judgment. Therefore, the current x commands will disable environment variables and use file passing instead to ensure that pipes can be used normally.
+1. **Pipe Issues**: We attempted to wrap the `x` command in a function to obtain Nushell environment variables, but we found this approach caused difficult-to-handle issues with pipe processing and detection. Therefore, the current `x` command will turn off environment variable inheritance in favor of passing them via files to ensure that pipes work correctly.
 
 ---
 url: /start/performance.md
@@ -22376,19 +22562,39 @@ url: /mod/brew/la.md
 ---
 # x brew la
 
-List the installable software (an alias for `brew ls --all --auto`)
+List the installable software
+
+## Examples
+
+List all installable Homebrew casks (graphical applications)
+
+```sh
+x brew la --casks
+```
 
 ## Usage
 
 ```sh
-x brew la
+x brew la [FLAGS]
 ```
+
+## Flags
+
+| Name, Shorthand | Description |
+| ------- | ------- |
+| `--formulae` | List only all installable Homebrew formulae |
+| `--casks` | List only all installable Homebrew casks (graphical applications) |
+| `--auto` | If the standard output is connected to a terminal (tty), it starts in interactive mode (`--app`); otherwise, it outputs in TSV format (`--tsv`). This is the default behavior. |
+| `--app` | View the software in TUI application mode. |
+| `--tsv`, `-t` | Output in TSV format |
+| `--csv`, `-c` | Output in CSV format |
+
 ---
 url: /mod/brew/ls.md
 ---
 # x brew ls
 
-List the installed or installable software, defaults to listing only installed software.
+List the installed software
 
 ## Usage
 
@@ -22400,8 +22606,6 @@ x brew ls [FLAGS]
 
 | Name, Shorthand | Description |
 | ------- | ------- |
-| `-i`, `--installed` | List installed software |
-| `-a`, `--all` | Listed installable software |
 | `--auto` | If the standard output is connected to a terminal (tty), it starts in interactive mode (`--app`); otherwise, it outputs in TSV format (`--tsv`). This is the default behavior. |
 | `--app` | View the software in TUI application mode. |
 | `--tsv`, `-t` | Output in TSV format |
@@ -29676,14 +29880,15 @@ Chinese also has the term "周" (zhou), which in this context, the concept of ce
 In `x ccal`, you can freely set different weekday names:
 
 ```bash
-x ccal --cfg xq=yao     # Uses the Seven Luminaries names still preserved in Japan and Korea
-x ccal --cfg xq=xingqi  # Uses 星期日...星期六 (Sunday...Saturday)
-x ccal --cfg xq=zhou    # Uses 周日...周六 (Sunday...Saturday)
-x ccal --cfg xq=libai   # Uses 礼拜日...礼拜六 (Sunday...Saturday)
-x ccal --cfg xq=li      # Uses 礼日...礼六 (Sunday...Saturday)
+x ccal --cfg wdtitle=yao     # Uses the Seven Luminaries names still preserved in Japan and Korea
+x ccal --cfg wdtitle=xingqi  # Uses 星期日...星期六 (Sunday...Saturday)
+x ccal --cfg wdtitle=zhou    # Uses 周日...周六 (Sunday...Saturday)
+x ccal --cfg wdtitle=libai   # Uses 礼拜日...礼拜六 (Sunday...Saturday)
 
-x ccal init # Modify the xq attribute in the interactive interface
+x ccal init # Modify the wdtitle attribute in the interactive interface
 ```
+
+![ccal_cfg](/data-image/cookbook/mod/ccal.1_6.webp)
 
 [Reference](https://zh-classical.wikipedia.org/wiki/%E6%98%9F%E6%9C%9F)
 
@@ -29696,9 +29901,9 @@ Different organizations and cultures have different considerations for this. For
 Therefore, we provide flexible configuration options:
 
 ```bash
-x ccal --cfg start=0    # Starts on Sunday, default
-x ccal --cfg start=1    # Starts on Monday
-x ccal --cfg start=2    # Starts on Tuesday
+x ccal --cfg wdstart=0    # Starts on Sunday, default
+x ccal --cfg wdstart=1    # Starts on Monday
+x ccal --cfg wdstart=2    # Starts on Tuesday
 
 x ccal init # Modify the start attribute in the interactive interface
 ```
@@ -30723,6 +30928,7 @@ Claude Code supports an Agent Skills mechanism, allowing your Claude Code to bet
 1. Query available professional skills: You can use the `x claude skill ll` command to query the list of Agent Skills shared by the **x-cmd platform and community**.
 2. Add professional skills to Claude Code: Once you identify the skills you need, use the `x claude skill use` command to quickly install from a remote repository or local path.
 
+![4](/data-image/cookbook/mod/claude.1_4.webp)
 
 > Important Reminder: After completing the installation, please be sure to restart Claude Code to ensure that the new Agent Skills are successfully loaded and activated.
 
@@ -30739,7 +30945,7 @@ By default, using `x claude` launches the official model bound to Claude Code. H
 
 ## Get DeepSeek API Key
 
-1. Visit the DeepSeek Open Platform (https://platform.deepseek.com/api-keys) to register.
+1. Visit the [DeepSeek Open Platform](https://platform.deepseek.com/api-keys) to register.
 
 2. After registering your account, create a new key on the "API Keys" page. It is advisable to create different API Keys for different projects to facilitate management and usage tracking.
 
@@ -30771,57 +30977,255 @@ Once configured, Claude Code will use the DeepSeek model to handle your programm
 url: /mod/claude/cookbook-3.md
 ---
 
-# `x claude router` - One-click integration with Gemini/ChatGPT for multi-model AI routing in Claude Code
+# `x claude router` - Experience Programming with Gemini 3.0! Let Claude Code Use the Strongest AI Model from Blue Star
 
-The `router` command of the `x claude` module integrates the powerful open-source project [claude-code-router](https://github.com/musistudio/claude-code-router), enabling Claude Code to connect with AI models from more providers, including Gemini, ChatGPT, OpenRouter, and more.
+**Gemini 3.0 is here!** The Gemini 3.0 series models released by Google have once again set a new performance ceiling for AI. Do you want to experience the powerful reasoning capabilities of Gemini 3.0 and its extensive context window while coding, yet find it hard to let go of the silky terminal interaction experience of **Claude Code**?
 
-Moreover, in practical application scenarios, through the claude-code-router, you can choose the most suitable AI model based on different task scenarios, allowing Claude Code to no longer be limited by the capabilities and costs of a single model, while effectively controlling usage costs and ensuring development efficiency.
+**`x claude router`** perfectly solves this problem. By integrating [claude-code-router](https://github.com/musistudio/claude-code-router), we have transformed Claude Code, allowing it to access the current champion of AI capabilities, Gemini 3.0, instead of being limited to Anthropic's models.
 
-Below, we will illustrate the usage process of `x claude router` with an example of integrating the Gemini model.
+Below is a quick guide on how to get started using x-cmd to fully integrate Gemini 3.0 with Claude Code.
 
-## Obtaining Gemini API Key
+## Step 1: Obtain the Gemini API Key
 
-1. Visit the [Google AI Studio platform](https://aistudio.google.com/app/api-keys) and log in with your Google account.
+To experience Gemini 3.0, you first need a key:
 
-2. After logging in, create a new key on the "API Keys" page. It is recommended to create different API Keys for different projects to facilitate management and tracking of usage.
+1.  Visit the [Google AI Studio platform](https://aistudio.google.com/app/api-keys), and log in using your Google account.
+2.  Click **"Get API key"** to create your key.
+    *   *Google offers a free tier (Free Tier) for the Gemini series, sufficient to cover the coding needs of most individual developers.*
+    *   *Currently, the Gemini API does not have a free tier for gemini-3-pro-preview; you will need to upgrade your Google account to a paid account to continue experiencing Gemini 3.0.*
 
-## Starting claude-code and Integrating the Gemini Model
+## Step 2: Configure Routing Strategy
 
-After obtaining the key, you can import it into the configuration of x-cmd. Gemini provides a certain quota of free calls, sufficient for individual development and small project usage.
-
-* Configuration and Usage:
+Once you have the API Key, you can complete the configuration by following these steps.
 
 ```bash
-# Configure Gemini API Key
-x gemini --cfg apikey="<your_api_key>"
+# 1. Configure the Gemini API key
+x gemini init
+# You can also configure the Gemini API Key using x-cmd -> x gemini --cfg apikey="<your_api>"
 
-# Generate claude-code-router configuration template
-x claude router setup
+# 2. Configure Claude Code to use the Gemini 3.0 model
+x claude router setup --gemini gemini-3-pro-preview
+```
 
-# Use Claude Code via claude-code-router
+## Step 3: Start Claude Code!
+
+Everything is set, and now it's time to witness the power of "the strongest from Blue Star."
+
+```bash
+# Start! Let Gemini 3.0 officially take over your Claude Code
 x claude router code
 ```
 
-## Advanced Configuration
+---
+url: /mod/claude/cookbook-4.md
+---
 
-If you wish to have more detailed control over model routing, such as specifying the use of the gemini-2.5-pro model, or if you want to flexibly switch models based on different task scenarios, you can use the following command:
+# `x claude or` - Leveraging OpenRouter to Empower Claude Code with GPT-5.2
 
-```bash
-# Visually manage all model configurations in the browser, switch default models, edit model parameters, etc.
-x claude router ui
-```
+claude-code natively supports only the Claude series models. However, in some complex programming scenarios, we may wish to try OpenAI's **GPT-5.2** (or other cutting-edge models) to gain different reasoning perspectives or superior logical performance.
 
-This command will start an intuitive web management interface, where you can complete all configuration operations in your browser:
+With the **`x claude or`** command provided by `x-cmd`, you can transform **OpenRouter** into a powerful relay hub, breaking down the original model barriers of claude-code. This means you can utilize top reasoning engines like GPT-5.2 without switching tools, directly through OpenRouter.
 
-* 🧩 Manage and view all currently integrated models (such as Gemini, ChatGPT, DeepSeek, etc.)
-* ⚙️ Adjust model parameters, such as temperature, context length, response format, etc.
-* 🧠 Set custom routing strategies that allow the claude-code-router to automatically select the most suitable model based on task types.
+## Quick Setup: Initialize Environment
 
-After completing the configuration, remember to run the following command to restart the service and make the changes take effect immediately:
+After obtaining the OpenRouter API Key, you can complete the environment initialization directly using the interactive command of `x-cmd`, without having to manually modify complex configuration files.
 
 ```bash
-x claude router start
+# Configure OpenRouter API key
+x openrouter init
 ```
+
+![1](/data-image/cookbook/mod/claude.4_1.webp)
+
+- **Interactive Configuration**: The system will prompt you to enter the API Key you just obtained and to set up the use of the GPT-5.2 model.
+
+- **Automatic Saving**: x-cmd will automatically save the key securely to global environment variables for subsequent calls to `x claude` and OpenRouter-related modules.
+
+## Start and Run: Accessing GPT-5.2
+
+Once configured, you can start Claude Code and access the GPT-5.2 model using the `x claude or` command.
+
+```bash
+# Start claude-code and access GPT-5.2 (or specified model) via OpenRouter
+x claude or
+```
+
+## Frequently Asked Questions (FAQ)
+
+### Q: How do I obtain the OpenRouter API Key?
+
+1. Visit the [OpenRouter Open Platform](https://openrouter.ai/settings/keys) to register.
+2. After registering, create a new key on the "API Keys" page. It is recommended to create different API Keys for different projects for easy management and tracking.
+
+### Q: Will all functions of claude-code be available after accessing GPT-5.2?
+
+Yes, all core functions of claude-code can be used normally after accessing GPT-5.2, including code understanding, code generation, refactoring, debugging assistance, command suggestions, and multi-turn dialogue, ensuring an overall experience consistent with natively supported models.
+
+### Q: Will there be any delays when using OpenRouter integration?
+
+There will be a slight increase (typically in the millisecond range) because requests need to go through OpenRouter’s scheduling. However, in actual programming interactions, this delay is almost negligible compared to the time it takes for the model to generate code.
+
+### Q: How can I check how much I have spent so far?
+
+You can directly access the [OpenRouter Activity](https://openrouter.ai/activity) page to view the details of each request from `x claude or` and the associated costs.
+
+### Q: What should I do if I encounter a “Model not found” error?
+
+Please check if the model ID you set is correct. It is recommended to copy the complete ID from the [OpenRouter Model List](https://openrouter.ai/models) (e.g., `openai/gpt-5.2` or `google/gemini-3-flash-preview`).
+
+---
+url: /mod/claude/cookbook-5.md
+---
+
+# `x claude stl` - One-click customization of Claude Code status bar, 70+ themes to switch at will
+
+Use the `x claude stl` command to control the status bar at the bottom of the Claude Code terminal interface, creating a personalized immersive development environment for you.
+
+- 📊 Information Overview: The status bar is not just decoration; it's a dashboard. It can display current model, token consumption, working path, and context status in real-time, allowing you to clearly understand the environmental information while coding.
+- 🎨 Style Definition: Break free from the monotonous default interface. Switch among multiple color themes such as el, ice, and dracula, allowing Claude Code to perfectly blend into your terminal color scheme.
+- 🚀 Quick Switching: No need for cumbersome configuration files; just one command is enough to freely switch between different layouts and styles, meeting aesthetic needs in various scenarios.
+
+## Default Theme (el)
+
+If you wish to use the default el (Elegant) theme style, you can run the setup command directly. This is typically the recommended initial configuration approach.
+
+```bash
+x claude stl setup
+```
+
+![1](/data-image/cookbook/mod/claude.5_1.webp)
+
+## More Themes
+
+`x claude stl` supports a variety of popular color schemes. Use the `--theme` parameter to specify your preferred theme.
+
+### Ice Theme
+
+Suitable for users who prefer a fresh, cool-toned interface.
+
+```bash
+x claude stl setup --theme ice
+```
+
+![2](/data-image/cookbook/mod/claude.5_2.webp)
+
+### Dracula Theme
+
+A classic dark, high-contrast theme, suitable for long coding sessions.
+
+```bash
+x claude stl setup --theme dracula
+```
+
+![3](/data-image/cookbook/mod/claude.5_3.webp)
+
+## Frequently Asked Questions (FAQ)
+
+### Q1: What themes are supported?
+
+`x claude stl` currently has over 70 carefully selected color schemes built-in, covering everything from classic Solarized and Monokai to modern Dracula and Nord styles, sufficient to meet the aesthetic needs of the majority of developers.
+
+You do not need to memorize all theme names. Just type `x claude stl setup --theme` and press the TAB key to view and select from the list of all currently supported themes.
+
+### Q2: Do I need to restart Claude Code after changing themes?
+
+No, you do not. x-cmd aims to provide a seamless configuration experience. In most cases, after running the command and successfully switching themes, the configuration will take effect immediately. You won't need to interrupt your current workflow or restart Claude Code; the new status bar style will be displayed instantly at the bottom of your terminal.
+
+### Q3: Can I fully customize colors or layouts?
+
+The current version does not allow for user customization.
+
+The existing mechanism is designed for rapid switching based on a preset library of high-quality themes. If your current theme library does not meet your needs, or if you have specific color schemes you'd like to see included, feel free to [submit an issue for feedback in the project repository](https://github.com/x-cmd/x-cmd), and we will consider adding support in future updates.
+
+---
+url: /mod/claude/cookbook-6.md
+---
+
+# `x claude sess` – Efficiently Manage Your Claude Code Session History
+
+As you use Claude Code more frequently, a large number of session history files will accumulate locally. Many of these records are low-value or even undesirable: empty sessions, one-line test prompts, or sessions that may contain sensitive project information that should not be retained. Beyond disk usage, this clutter makes it much harder to resume real work with the `resume` command—while manually inspecting and deleting sessions one by one is both time-consuming and error-prone.
+
+To address this, `x claude sess` provides a complete toolkit for working with Claude Code session history. With an **FZF-powered interactive interface**, you can quickly review past sessions and clean them up safely, keeping your development environment tidy and focused.
+
+## Key Feature: Interactive Preview with FZF
+
+`x claude sess` integrates the FZF terminal UI, allowing you to browse conversations interactively and see essential context at a glance—when a session occurred, which project it belongs to, and a short content preview.
+
+**This is the best way to answer the question: “What exactly did I ask Claude to change last week?”**
+
+![1](/data-image/cookbook/mod/claude.6_1.webp)
+
+Launch the interactive session browser with:
+
+```bash
+x claude sess
+```
+
+Once you locate the session you’re interested in, simply select it and press Enter to open the action menu. From there, you can perform common operations without memorizing complex command-line options:
+
+![2](/data-image/cookbook/mod/claude.6_2.webp)
+
+* **Resume**: Restore the full context and continue where you left off.
+* **View**: Open the session in fullscreen mode to read the entire conversation.
+* **Delete**: Permanently remove an unnecessary or incorrect session.
+
+## Keeping Things Clean: Session Cleanup
+
+When too many historical sessions start to affect productivity, regular cleanup becomes essential. `x claude sess rm` offers a safe and flexible way to delete sessions.
+
+### 1. Safe Preview (Dry Run)
+
+Before deleting anything, you can inspect what would be removed to avoid accidental data loss:
+
+```bash
+# Show sessions that would be deleted, without actually deleting them
+x claude sess rm --dry-run <session_id>
+```
+
+![3](/data-image/cookbook/mod/claude.6_3.webp)
+
+### 2. Batch Deletion
+
+You can delete multiple sessions at once by specifying their session IDs, making it easy to clean up large amounts of clutter in a single command:
+
+```bash
+x claude sess rm <session_id_1> <session_id_2> <session_id_3>
+```
+
+## Frequently Asked Questions (FAQ)
+
+### Q1: Can I view all Claude Code history without entering a specific project directory?
+
+Yes. Running `x claude sess ls -a` lists session history across all project paths on your machine. In FZF interactive mode, a global index is typically loaded as well (depending on your configuration), allowing you to search across projects seamlessly.
+
+### Q2: How can I view the full content of an old session without deleting it?
+
+If you don’t need interactive search and simply want to print a session’s content—for example, to copy it into documentation—you can use the `cat` or `preview` commands:
+
+* `x claude sess preview <session_id>`: Displays the conversation flow in a clean, human-readable format (what the user asked, how the assistant replied), ideal for quick review.
+* `x claude sess cat <session_id>`: Outputs the raw session data in formats such as TSV or JSON, suitable for further processing (for example, token usage analysis or prompt pattern research).
+
+---
+url: /mod/claude/create.md
+---
+# x claude create
+
+Initialize creation of plugins, skills, hooks, etc. for Claude Code
+
+## Usage
+
+```sh
+x claude create|cr [FLAGS]
+```
+
+## Flags
+
+| Name, Shorthand | Description |
+| ------- | ------- |
+| `--chrome` | Initialize the Chrome DevTools plugin |
+| `--serena` | Initialize the Serena plugin |
+| `--openspec` | Initialize the OpenSpec plugin |
+| `-a`, `--all` | Initialize all plugins |
 
 ---
 url: /mod/claude/deepseek.md
@@ -30862,6 +31266,89 @@ x claude ds
 x claude deepseek|ds
 ```
 ---
+url: /mod/claude/doubao.md
+---
+# x claude doubao
+
+Launch claude-code and connect to the doubao model.
+
+## Sub Commands
+
+| Name | Description |
+| ------- | ------- |
+| [x claude doubao --cfg](#x-claude-doubao-cfg) | Manage config item like apikey and model |
+
+
+### x claude doubao --cfg
+
+Manage config item like apikey and model
+
+
+- **Examples**:
+
+Launch claude-code and connect to the doubao model.
+
+```sh
+x claude doubao
+```
+
+Initialize the configuration using interactive mode
+
+```sh
+x claude doubao --cfg
+```
+
+Set the default model to doubao-seed-code-preview-latest.
+
+```sh
+x claude doubao --cfg model="doubao-seed-code-preview-latest"
+```
+
+- **Usage**:
+
+```sh
+x claude doubao --cfg [SUB_COMMAND] <#n>
+```
+
+- **Arguments**:
+
+
+| Argument | Description |
+| ------- | ------- |
+| `#n` | `apikey=` &#124; `model=` |
+
+
+- **Sub Commands**:
+
+
+| Name | Description |
+| ------- | ------- |
+| [x claude doubao --cfg clear](#x-claude-doubao-cfg-clear) | Clear all setting default in the current session and reback the default value of the config record |
+| [x claude doubao --cfg cat](#x-claude-doubao-cfg-cat) | List all current value in the session |
+
+
+### x claude doubao --cfg clear
+
+Clear all setting default in the current session and reback the default value of the config record
+
+
+- **Usage**:
+
+```sh
+x claude doubao --cfg clear
+```
+
+### x claude doubao --cfg cat
+
+List all current value in the session
+
+
+- **Usage**:
+
+```sh
+x claude doubao --cfg cat
+```
+---
 url: /mod/claude/kimi.md
 ---
 # x claude kimi
@@ -30900,6 +31387,44 @@ x claude kimi
 x claude kimi
 ```
 ---
+url: /mod/claude/openrouter.md
+---
+# x claude openrouter
+
+Launch claude-code and access AI models via OpenRouter
+
+
+::: tip
+Use `x openrouter --cfg apikey="<your api key>"` or set `export ANTHROPIC_AUTH_TOKEN="<your api key>"` to configure the API key, allowing claude-code to access AI models through OpenRouter properly
+:::
+
+
+## Examples
+
+Interactively configure the OpenRouter API key. This configuration will be used by the claude module and shared with other LLM-related modules such as openrouter and codex
+
+```sh
+x openrouter init
+```
+
+Configure the OpenRouter API key in a single command. This configuration will be used by the claude module and shared with other LLM-related modules such as openrouter and codex
+
+```sh
+x openrouter --cfg apikey="<your api key>"
+```
+
+Launch claude-code with AI models accessed through OpenRouter
+
+```sh
+x claude or
+```
+
+## Usage
+
+```sh
+x claude openrouter|or
+```
+---
 url: /mod/claude/router.md
 ---
 # x claude router
@@ -30922,41 +31447,318 @@ Start the claude-code-router service
 x claude router start
 ```
 
+Regenerate the routing configuration using Google Gemini (gemini-3-pro-preview)
+
+```sh
+x claude router setup --gemini gemini-3-pro-preview
+```
+
 Use Claude Code to generate a "Hello World" example
 
 ```sh
 x claude router code "Write a Hello World"
 ```
 
-Interactively select a Claude Code model
+## Sub Commands
+
+| Name | Description |
+| ------- | ------- |
+| [x claude router setup](#x-claude-router-setup) | Regenerate the claude-code-router configuration file based on the model provider |
+
+
+### x claude router setup
+
+Regenerate the claude-code-router configuration file based on the model provider
+
+
+- **Examples**:
+
+Regenerate the routing configuration using Google Gemini (gemini-2.5-flash)
 
 ```sh
-x claude router model
+x claude router setup
 ```
 
-Open the web interface in the browser to manage claude-code-router configurations
+Regenerate the routing configuration using Google Gemini (gemini-3-pro-preview)
 
 ```sh
-x claude router ui
+x claude router setup --gemini gemini-3-pro-preview
+```
+
+Generate the routing configuration using DeepSeek (deepseek-chat) with an explicitly provided API key
+
+```sh
+x claude router setup --deepseek deepseek-chat --apikey "sk-xxx"
+```
+
+- **Usage**:
+
+```sh
+x claude router setup [OPTIONS]
+```
+
+- **Options**:
+
+
+| Name, Shorthand | Default | Description |
+| ------- | ------- | ------- |
+| `--gemini` |  | Use Google Gemini as the model provider |
+| `--openai` |  | Use OpenAI as the model provider |
+| `--deepseek` |  | Use DeepSeek as the model provider |
+| `--openrouter` |  | Use OpenRouter as the model provider |
+| `--apikey` |  | Explicitly specify the API key (if not specified, it will attempt to be obtained from the corresponding module) |
+| `--proxy` |  | Set a proxy for API requests, e.g. http://127.0.0.1:7890 |
+
+---
+url: /mod/claude/session.md
+---
+# x claude session
+
+Manage local Claude Code sessions
+
+## Examples
+
+Launch the FZF app to interactively browse and manage local sessions (alias of `x claude sess fz`)
+
+```sh
+x claude sess
+```
+
+List sessions from all projects in TSV format
+
+```sh
+x claude sess ls -a -t
+```
+
+Preview removal of a session without actually deleting it
+
+```sh
+x claude sess rm --dry-run <sessionId>
+```
+
+Remove multiple specified local sessions
+
+```sh
+x claude sess rm <sessionId-1> <sessionId-n>
+```
+
+Preview a session in a concise, human-readable form
+
+```sh
+x claude sess preview <sessionId>
+```
+
+Export current project session data
+
+```sh
+x claude sess export
+```
+
+Export current project session data to backup.tar.gz file
+
+```sh
+x claude sess export -p . -o backup.tar.gz
+```
+
+Export current project session data and upload to hub
+
+```sh
+x claude sess export -o -
+```
+
+Import session data from backup.tar.gz to current project
+
+```sh
+x claude sess import backup.tar.gz
+```
+
+Import session data from backup.tar.gz to specified project
+
+```sh
+x claude sess import -p /path/to/project backup.tar.gz
 ```
 
 ## Sub Commands
 
 | Name | Description |
 | ------- | ------- |
-| [x claude router setup](#x-claude-router-setup) | Generate claude-code-router configuration templates based on the settings of modules such as gemini, openai, and deepseek. |
+| [x claude session fz](#x-claude-session-fz) | Launch FZF app to interactively browse and manage local sessions |
+| [x claude session ls](#x-claude-session-ls) | List locally stored sessions |
+| [x claude session rm](#x-claude-session-rm) | Remove specified local sessions |
+| [x claude session cat](#x-claude-session-cat) | Print conversation data of a specified session |
+| [x claude session preview](#x-claude-session-preview) | Preview a session in a concise, human-readable form |
+| [x claude session export](#x-claude-session-export) | Export project session data to backup file |
+| [x claude session import](#x-claude-session-import) | Import session data from backup file to project |
 
 
-### x claude router setup
+### x claude session fz
 
-Generate claude-code-router configuration templates based on the settings of modules such as gemini, openai, and deepseek.
+Launch FZF app to interactively browse and manage local sessions
 
 
 - **Usage**:
 
 ```sh
-x claude router setup|--setup
+x claude session|sess fz
 ```
+
+### x claude session ls
+
+List locally stored sessions
+
+
+- **Usage**:
+
+```sh
+x claude session|sess ls [FLAGS]
+```
+
+- **Flags**:
+
+
+| Name, Shorthand | Description |
+| ------- | ------- |
+| `--all`, `-a` | List sessions from all projects |
+| `--project`, `-p` | Only list sessions from the current project |
+| `--csv`, `-c` | Output results in CSV format |
+| `--tsv`, `-t` | Output results in TSV format |
+| `--json`, `-j` | Output results in JSON format |
+
+
+### x claude session rm
+
+Remove specified local sessions
+
+
+- **Usage**:
+
+```sh
+x claude session|sess rm [FLAGS] <#n>
+```
+
+- **Arguments**:
+
+
+| Argument | Description |
+| ------- | ------- |
+| `#n` | Session ID |
+
+
+- **Flags**:
+
+
+| Name, Shorthand | Description |
+| ------- | ------- |
+| `--forced`, `-f` | Force removal without confirmation |
+| `--dry-run` | Show what would be removed without performing any deletion |
+
+
+### x claude session cat
+
+Print conversation data of a specified session
+
+
+- **Usage**:
+
+```sh
+x claude session|sess cat [FLAGS] <#1>
+```
+
+- **Arguments**:
+
+
+| Argument | Description |
+| ------- | ------- |
+| `#1` | Session ID |
+
+
+- **Flags**:
+
+
+| Name, Shorthand | Description |
+| ------- | ------- |
+| `--full` | Output the full conversation |
+| `--part` | Output only the first and last interaction |
+| `--csv`, `-c` | Output results in CSV format |
+| `--tsv`, `-t` | Output results in TSV format |
+| `--json`, `-j` | Output results in JSON format |
+
+
+### x claude session preview
+
+Preview a session in a concise, human-readable form
+
+
+- **Usage**:
+
+```sh
+x claude session|sess preview [FLAGS] <#1>
+```
+
+- **Arguments**:
+
+
+| Argument | Description |
+| ------- | ------- |
+| `#1` | Session ID |
+
+
+- **Flags**:
+
+
+| Name, Shorthand | Description |
+| ------- | ------- |
+| `--full` | Preview the full conversation |
+| `--part` | Preview only the first and last interaction |
+
+
+### x claude session export
+
+Export project session data to backup file
+
+
+- **Usage**:
+
+```sh
+x claude session|sess export [OPTIONS]
+```
+
+- **Options**:
+
+
+| Name, Shorthand | Default | Description |
+| ------- | ------- | ------- |
+| `-p`, `--project` |  | Specify the project path to export |
+| `-o`, `--output` |  | Specify output file path, use "-" to upload to hub |
+
+
+### x claude session import
+
+Import session data from backup file to project
+
+
+- **Usage**:
+
+```sh
+x claude session|sess import [OPTIONS] <#1>
+```
+
+- **Arguments**:
+
+
+| Argument | Description |
+| ------- | ------- |
+| `#1` | Backup file path |
+
+
+- **Options**:
+
+
+| Name, Shorthand | Default | Description |
+| ------- | ------- | ------- |
+| `-p`, `--project` |  | Specify the project path to import to |
+| `-i`, `--input` |  | Specify input backup file path |
+
 ---
 url: /mod/claude/siliconflow.md
 ---
@@ -31016,26 +31818,49 @@ List skills in user and project directories
 x claude skill ls
 ```
 
-Add a skill to the user directory
+Add anthropics’ docx skill to the current project environment
 
 ```sh
-x claude skill use <skill_id>
+x claude skill add anthropics/docx
 ```
 
-Remove a skill from the project directory
+Enable anthropics’ docx skill in the global user environment
 
 ```sh
-x claude skill unuse --project <skill_id>
+x claude skill use anthropics/docx
 ```
 
 ## Sub Commands
 
 | Name | Description |
 | ------- | ------- |
+| [x claude skill info](#x-claude-skill-info) | Show the index information of the specified Skill |
 | [x claude skill ll](#x-claude-skill-ll) | List available skill templates |
 | [x claude skill ls](#x-claude-skill-ls) | List all skills available in user and project scopes |
-| [x claude skill use](#x-claude-skill-use) | Add a skill to the user or project |
-| [x claude skill unuse](#x-claude-skill-unuse) | Remove a skill from the user or project |
+| [x claude skill add](#x-claude-skill-add) | Add a skill to the user or project |
+| [x claude skill rm](#x-claude-skill-rm) | Remove a skill from the user or project |
+| [x claude skill use](#x-claude-skill-use) | Enable the specified skill in the global user environment, equivalent to add --global |
+| [x claude skill unuse](#x-claude-skill-unuse) | Disable the specified skill in the global user environment, equivalent to rm --global |
+| [x claude skill suggest](#x-claude-skill-suggest) | Generate recommended skills list based on the current project context files. |
+
+
+### x claude skill info
+
+Show the index information of the specified Skill
+
+
+- **Usage**:
+
+```sh
+x claude skill info <#1>
+```
+
+- **Arguments**:
+
+
+| Argument | Description |
+| ------- | ------- |
+| `#1` | Specify the ID of the Skill |
 
 
 ### x claude skill ll
@@ -31060,7 +31885,7 @@ List all skills available in user and project scopes
 x claude skill ls
 ```
 
-### x claude skill use
+### x claude skill add
 
 Add a skill to the user or project
 
@@ -31068,7 +31893,7 @@ Add a skill to the user or project
 - **Usage**:
 
 ```sh
-x claude skill use [FLAGS] <#1>
+x claude skill add [FLAGS] <#1>
 ```
 
 - **Arguments**:
@@ -31084,10 +31909,10 @@ x claude skill use [FLAGS] <#1>
 
 | Name, Shorthand | Description |
 | ------- | ------- |
-| `--project` | Add the skill to the current project's .claude/skills directory |
+| `--global`, `-g` | Add the skill to the global user environment |
 
 
-### x claude skill unuse
+### x claude skill rm
 
 Remove a skill from the user or project
 
@@ -31095,7 +31920,7 @@ Remove a skill from the user or project
 - **Usage**:
 
 ```sh
-x claude skill unuse [FLAGS] <#1>
+x claude skill rm [FLAGS] <#1>
 ```
 
 - **Arguments**:
@@ -31111,8 +31936,189 @@ x claude skill unuse [FLAGS] <#1>
 
 | Name, Shorthand | Description |
 | ------- | ------- |
-| `--project` | Remove the skill from the current project's .claude/skills directory |
+| `--global`, `-g` | Remove the skill from the global user environment |
 
+
+### x claude skill use
+
+Enable the specified skill in the global user environment, equivalent to add --global
+
+
+- **Usage**:
+
+```sh
+x claude skill use <#1>
+```
+
+- **Arguments**:
+
+
+| Argument | Description |
+| ------- | ------- |
+| `#1` | Skill ID to add |
+
+
+### x claude skill unuse
+
+Disable the specified skill in the global user environment, equivalent to rm --global
+
+
+- **Usage**:
+
+```sh
+x claude skill unuse <#1>
+```
+
+- **Arguments**:
+
+
+| Argument | Description |
+| ------- | ------- |
+| `#1` | Skill ID to remove |
+
+
+### x claude skill suggest
+
+Generate recommended skills list based on the current project context files.
+
+
+- **Usage**:
+
+```sh
+x claude skill suggest
+```
+---
+url: /mod/claude/statusline.md
+---
+# x claude statusline
+
+Manage the status line component for Claude Code (equivalent to `x theme statusline`)
+
+## Examples
+
+Set up the Claude Code statusline using the el theme (default)
+
+```sh
+x claude stl setup
+```
+
+Set up the Claude Code statusline using the "ice" theme
+
+```sh
+x claude stl setup --theme ice
+```
+
+## Sub Commands
+
+| Name | Description |
+| ------- | ------- |
+| [x claude statusline setup](#x-claude-statusline-setup) | Set up the Claude Code statusline using the specified theme |
+
+
+### x claude statusline setup
+
+Set up the Claude Code statusline using the specified theme
+
+
+- **Usage**:
+
+```sh
+x claude statusline|stl setup [OPTIONS]
+```
+
+- **Options**:
+
+
+| Name, Shorthand | Default | Description |
+| ------- | ------- | ------- |
+| `--theme` |  | Specify the status line theme |
+
+---
+url: /mod/claude/usage.md
+---
+# x claude usage
+
+Analyze token usage and costs
+
+## Examples
+
+Show token usage and costs for the last 7 days
+
+```sh
+x claude usage
+```
+
+Show token usage and costs from 2025-12-25 to now
+
+```sh
+x claude usage daily --start 2025-12-25
+```
+
+Show token usage and costs grouped by project
+
+```sh
+x claude usage projects
+```
+
+## Sub Commands
+
+| Name | Description |
+| ------- | ------- |
+| [x claude usage daily](#x-claude-usage-daily) | Daily token usage and costs |
+| [x claude usage monthly](#x-claude-usage-monthly) | Monthly token usage and costs |
+| [x claude usage projects](#x-claude-usage-projects) | Token usage and costs by project |
+
+
+### x claude usage daily
+
+Daily token usage and costs
+
+
+- **Usage**:
+
+```sh
+x claude usage daily [OPTIONS]
+```
+
+- **Options**:
+
+
+| Name, Shorthand | Default | Description |
+| ------- | ------- | ------- |
+| `--start` |  | Start date |
+| `--end` |  | End date |
+
+
+### x claude usage monthly
+
+Monthly token usage and costs
+
+
+- **Usage**:
+
+```sh
+x claude usage monthly [OPTIONS]
+```
+
+- **Options**:
+
+
+| Name, Shorthand | Default | Description |
+| ------- | ------- | ------- |
+| `--start` |  | Start month |
+| `--end` |  | End month |
+
+
+### x claude usage projects
+
+Token usage and costs by project
+
+
+- **Usage**:
+
+```sh
+x claude usage projects
+```
 ---
 url: /mod/claude/zhipu.md
 ---
@@ -31152,58 +32158,35 @@ x claude zhipu
 x claude zhipu
 ```
 ---
-url: /mod/codex/apply.md
----
-# x codex apply
-
-Apply the latest diff produced by Codex agent as a `git apply` to your local working tree
-
-## Usage
-
-```sh
-x codex apply|a
-```
----
-url: /mod/codex/completion.md
----
-# x codex completion
-
-Generate shell completion scripts
-
-## Usage
-
-```sh
-x codex completion
-```
----
 url: /mod/codex/cookbook-1.md
 ---
 
-# `x codex` - Zero-threshold use of Codex, connect DeepSeek/Kimi/Zhipu with just one command, turning your terminal into an intelligent programming assistant in seconds!
+# `x codex` - No barriers to using Codex, connect to DeepSeek/Kimi/Zhipu with a single command and turn your terminal into an intelligent coding assistant instantly!
 
-This guide will help you understand the common features of x codex in just a few minutes and quickly get started with using OpenAI Codex, experiencing the powerful capabilities of an intelligent AI programming agent.
+This guide will help you understand the common functions of x codex in a few minutes and quickly get started with OpenAI Codex, experiencing the powerful capabilities of an intelligent AI programming agent.
 
-## 1. Zero-threshold! Automatic installation and startup of OpenAI Codex
+## 1. No Barriers! Automatic Installation and Launch of OpenAI Codex
 
-**You don’t need to manually install Codex**. When you run the x codex command, x-cmd will automatically check if Codex is already installed in your current environment. If it is not installed, x-cmd will automatically download and configure it for you, with no manual operations required, and no need to manually deploy Node.js or handle dependency installation.
+**You do not need to install Codex manually**. When you run the x codex command, x-cmd will automatically check whether Codex is already installed in your environment.
+If it is not installed, x-cmd will automatically download and configure it for you, requiring no manual intervention, no manual deployment of Node.js, or handling of dependency installations.
 
-## 2. Freedom to switch models! Connect to AI models like ChatGPT, DeepSeek, Kimi, Zhipu, etc.
+## 2. Free Switching of Models! Connect to AI models like ChatGPT, DeepSeek, Kimi, Zhipu, etc.
 
-### Connect to the ChatGPT model
+### Connect to ChatGPT Model
 
-Codex defaults to using ChatGPT series models (such as gpt-5-codex, gpt-5, etc.). To use these models, you need to log in to your ChatGPT account or configure an API Key.
+Codex defaults to using ChatGPT series models (e.g., gpt-5-codex, gpt-5, etc.). To use these models, you need to log in to your ChatGPT account or configure the API Key.
 
-- Login methods: When you first run x codex, the system will automatically prompt you to log in. You can choose any of the following methods:
-    * ChatGPT account login: Suitable for ChatGPT Plus or Team subscription users. Simply log in with your ChatGPT account, no additional configuration is necessary.
-    * API Key connection: Suitable for developers and enterprise users. Billed based on actual usage, it can provide higher concurrency and calling quotas.
+- Login methods: When you run x codex for the first time, the system will automatically prompt you to log in. You can choose either of the following methods:
+    * ChatGPT account login: Suitable for ChatGPT Plus or Team subscription users. Just log in with your ChatGPT account, no additional configuration required.
+    * API Key access: Suitable for developers and enterprise users. Charges are based on actual usage, providing higher concurrency and API call quotas.
 
 ![1](/data-image/cookbook/mod/codex.1_1.webp)
 
-Once logged in, your credentials will be automatically encrypted and saved locally. On subsequent uses, there’s no need to log in again, as the system will automatically read the saved credentials.
+After logging in, your credentials will be automatically encrypted and stored locally. For subsequent uses, you will not need to log in again; the system will automatically retrieve the saved credential information.
 
-### Connect to DeepSeek/Kimi and other models
+### Connect to DeepSeek/Kimi Models
 
-In addition to ChatGPT series models, x codex also supports the integration of other AI models as the backend driver for Codex.
+In addition to the ChatGPT series models, x codex also supports connecting other AI models as the backend for Codex.
 
 For example, you can easily switch Codex to use the DeepSeek model:
 ```bash
@@ -31213,21 +32196,20 @@ x codex ds
 
 ![2](/data-image/cookbook/mod/codex.1_2.webp)
 
-After executing the above commands, Codex will automatically use the DeepSeek model for dialogue and programming assistance. Similarly, you can connect to Kimi, Zhipu, and other models as needed.
+After executing the above commands, Codex will automatically use the DeepSeek model for conversation and programming assistance. Similarly, you can connect other models such as Kimi and Zhipu as needed.
 
-For more detailed methods of model integration, please refer to the relevant documentation:
-- [Integrating the DeepSeek model](/mod/codex/cookbook-2.md)
+For more detailed methods of connecting models, please refer to the relevant documentation:
+- [Connect to DeepSeek Model](/mod/codex/cookbook-2.md)
 
-## 3. Give Codex an "upgradable skill system"! Use x-cmd to inject Skill mechanisms into Codex
+## 3. Expand AI Skills! Manage Codex Agent Skills with x-cmd
 
-The native Codex does not yet provide a Skill mechanism, but the x codex module offers a lightweight Skill injection mechanism for Codex users. With this mechanism, Codex can dynamically load, enable, and manage different skill modules just like Claude Code, allowing Codex to have an "upgradable skill system." Here’s how to use it:
+Codex officially supports the Agent Skills mechanism, allowing your Codex to handle specific complex tasks more effectively through extended Skills, such as writing technical documentation in compliance with brand guidelines, performing advanced data analysis, or reviewing code based on best practices. You can use the `skill` command of the `x codex` module to uniformly manage these Skills. Here are some common usage examples:
 
-1. Inject the Skill mechanism: Use the `x codex skill setup` command to inject the skill mechanism into the user-level Codex environment, enabling Codex to recognize and load skill configurations.
-2. Query available professional skills: Use the `x codex skill ll` command to query the list of Agent Skills shared by the **x-cmd platform and community**.
-3. Add professional skills to Codex: Once you have determined the required skills, use the `x codex skill use` command to quickly install from a remote repository or local path.
+1. Query available professional skills (Skills): You can use the `x codex skill ll` command to query the list of Agent Skills shared by the **x-cmd platform and community**.
+2. Add professional skills to Claude Code: After determining the needed skills, you can quickly install them from remote repositories or local paths using the `x codex skill use` command.
 
-For more information on `x codex skill`, please refer to the following article:
-- [x codex skill - AI agent professional skill management](/mod/codex.md)
+For more content on `x codex skill`, please refer to the following article:
+- [x codex skill - AI Agent Professional Skills Management](/mod/codex.md)
 
 ---
 url: /mod/codex/cookbook-2.md
@@ -31308,17 +32290,70 @@ x codex zhipu
 Once configured, Codex will use the Zhipu model to handle your programming requests. The functionality remains almost identical to that of the native ChatGPT models, and the entire proxy process and command line interaction logic remains the same, so there’s no need to learn a new way to interact.
 
 ---
-url: /mod/codex/debug.md
+url: /mod/codex/cookbook-4.md
 ---
-# x codex debug
 
-Internal debugging commands
+# `x codex skill` - Aggregating community wisdom, enabling your AI assistant to instantly master parsing and automation capabilities.
 
-## Usage
+**Skill** is an extension of the capabilities of an AI assistant. If we consider the large model as the "brain," then Skill is its "toolbox." Through the x codex skill command, you can quickly obtain ready-made skills (such as document parsing, code analysis, API calls, etc.) from the x-cmd community and seamlessly integrate them into your workflow.
 
-```sh
-x codex debug
+## Discover Skills: Explore Community Wisdom
+
+Before you begin, you can browse the pre-set skill library in the x-cmd community. These skills have been deeply optimized for various productivity scenarios.
+
+```bash
+# Query the list of community-shared Agent Skills
+x codex skill ll
 ```
+
+![1](/data-image/cookbook/mod/codex.4_1.webp)
+
+- Identify Identifiers: The list will display identifiers such as anthropics/docx (Word parsing) or anthropics/frontend-design (frontend design), etc.
+
+- View Details: You can quickly locate a suitable Skill for your current task through this command.
+
+## Install Skills: Plug and Play
+
+When you find a skill that meets your project needs, use the add command to achieve "one-click enhancement."
+
+```bash
+# Add the docx deep parsing skill to the current project
+x codex skill add anthropics/docx
+```
+
+- Automated Operation: This command will automatically create a `.codex/skills` directory and download the related files for the anthropics/docx skill into it.
+- Zero Configuration Loading: There is no need to modify any global configuration. When you run x codex, the AI will automatically scan this directory and "awaken" the relevant capabilities.
+
+## Manage Skills: Keep Your Project Lightweight
+
+As your project evolves, you may need to clean up or update your toolbox.
+
+### View Installed Skills
+
+Confirm what "superpowers" the AI has in the current project environment:
+
+```bash
+x codex skill ls
+```
+
+### Remove Unnecessary Skills
+
+Keep your project tidy and avoid interference by having too many skills when the AI processes simple tasks:
+
+```bash
+x codex skill rm anthropics/docx
+```
+
+## Frequently Asked Questions (FAQ)
+
+### Q: Can I customize skills?
+
+Of course! You just need to create a folder under `.codex/skills` and write an execution script and SKILL.md.
+
+### Q: Can I add skills directly from a GitHub URL?
+
+The `x codex skill add` command is constantly evolving and will support adding skills directly through a GitHub URL or private Git repository address in the future.
+
 ---
 url: /mod/codex/deepseek.md
 ---
@@ -31358,28 +32393,22 @@ x codex ds
 x codex deepseek|ds
 ```
 ---
-url: /mod/codex/exec.md
+url: /mod/codex/doubao.md
 ---
-# x codex exec
+# x codex doubao
 
-Run Codex non-interactively
+Launch codex and connect to the doubao model.
+
+
+::: tip
+Use `exprot ARK_API_KEY="<your api key>"` to configure your API key, allowing codex to access the doubao model properly.
+:::
+
 
 ## Usage
 
 ```sh
-x codex exec|e
-```
----
-url: /mod/codex/help.md
----
-# x codex help
-
-Print this message or the help of the given subcommand(s)
-
-## Usage
-
-```sh
-x codex help
+x codex doubao
 ```
 ---
 url: /mod/codex/kimi.md
@@ -31418,79 +32447,6 @@ x codex kimi
 
 ```sh
 x codex kimi
-```
----
-url: /mod/codex/login.md
----
-# x codex login
-
-Manage login
-
-## Usage
-
-```sh
-x codex login [OPTIONS] [SUB_COMMAND]
-```
-
-## Options
-
-| Name, Shorthand | Default | Description |
-| ------- | ------- | ------- |
-| `--api-key` |  | Specify Codex API key |
-
-
-## Sub Commands
-
-| Name | Description |
-| ------- | ------- |
-| [x codex login status](#x-codex-login-status) | Show login status |
-
-
-### x codex login status
-
-Show login status
-
-
-- **Usage**:
-
-```sh
-x codex login status
-```
----
-url: /mod/codex/logout.md
----
-# x codex logout
-
-Remove stored authentication credentials
-
-## Usage
-
-```sh
-x codex logout
-```
----
-url: /mod/codex/mcp.md
----
-# x codex mcp
-
-(Experimental) run Codex as an MCP server
-
-## Usage
-
-```sh
-x codex mcp
-```
----
-url: /mod/codex/proto.md
----
-# x codex proto
-
-Run the Protocol stream via stdin/stdout
-
-## Usage
-
-```sh
-x codex proto|p
 ```
 ---
 url: /mod/codex/siliconflow.md
@@ -31539,27 +32495,49 @@ Manage skill mechanism in user-level Codex
 
 ## Examples
 
-Add a skill to the user directory
+Enable anthropics’ docx skill in the global user environment
 
 ```sh
-x codex skill use <skill_name>
+x codex skill use anthropics/docx
 ```
 
-Remove a skill
+Disable anthropics’ docx skill in the global user environment
 
 ```sh
-x codex skill unuse <skill_name>
+x codex skill unuse anthropics/docx
 ```
 
 ## Sub Commands
 
 | Name | Description |
 | ------- | ------- |
+| [x codex skill info](#x-codex-skill-info) | Show the index information of the specified Skill |
 | [x codex skill ll](#x-codex-skill-ll) | List available skill templates |
 | [x codex skill ls](#x-codex-skill-ls) | List of activated skills |
-| [x codex skill use](#x-codex-skill-use) | Adding and activating specific skill |
-| [x codex skill unuse](#x-codex-skill-unuse) | Remove an activated skill |
-| [x codex skill setup](#x-codex-skill-setup) | Injecting skill mechanism into user-level Codex environment |
+| [x codex skill add](#x-codex-skill-add) | Add a skill to the user or project |
+| [x codex skill rm](#x-codex-skill-rm) | Remove a skill from the user or project |
+| [x codex skill use](#x-codex-skill-use) | Enable the specified Skill in the global user environment |
+| [x codex skill unuse](#x-codex-skill-unuse) | Disable the specified Skill in the global user environment |
+| [x codex skill suggest](#x-codex-skill-suggest) | Generate recommended skills list based on the current project context files. |
+
+
+### x codex skill info
+
+Show the index information of the specified Skill
+
+
+- **Usage**:
+
+```sh
+x codex skill info <#1>
+```
+
+- **Arguments**:
+
+
+| Argument | Description |
+| ------- | ------- |
+| `#1` | Specify the ID of the Skill |
 
 
 ### x codex skill ll
@@ -31584,9 +32562,63 @@ List of activated skills
 x codex skill ls
 ```
 
+### x codex skill add
+
+Add a skill to the user or project
+
+
+- **Usage**:
+
+```sh
+x codex skill add [FLAGS] <#1>
+```
+
+- **Arguments**:
+
+
+| Argument | Description |
+| ------- | ------- |
+| `#1` | Skill ID to add |
+
+
+- **Flags**:
+
+
+| Name, Shorthand | Description |
+| ------- | ------- |
+| `--global`, `-g` | Add the skill to the global user environment |
+
+
+### x codex skill rm
+
+Remove a skill from the user or project
+
+
+- **Usage**:
+
+```sh
+x codex skill rm [FLAGS] <#1>
+```
+
+- **Arguments**:
+
+
+| Argument | Description |
+| ------- | ------- |
+| `#1` | Skill ID to remove |
+
+
+- **Flags**:
+
+
+| Name, Shorthand | Description |
+| ------- | ------- |
+| `--global`, `-g` | Remove the skill from the global user environment |
+
+
 ### x codex skill use
 
-Adding and activating specific skill
+Enable the specified Skill in the global user environment
 
 
 - **Usage**:
@@ -31600,12 +32632,12 @@ x codex skill use <#1>
 
 | Argument | Description |
 | ------- | ------- |
-| `#1` | Skill name to add |
+| `#1` | Skill ID |
 
 
 ### x codex skill unuse
 
-Remove an activated skill
+Disable the specified Skill in the global user environment
 
 
 - **Usage**:
@@ -31619,18 +32651,18 @@ x codex skill unuse <#1>
 
 | Argument | Description |
 | ------- | ------- |
-| `#1` | Skill name to remove |
+| `#1` | Skill ID |
 
 
-### x codex skill setup
+### x codex skill suggest
 
-Injecting skill mechanism into user-level Codex environment
+Generate recommended skills list based on the current project context files.
 
 
 - **Usage**:
 
 ```sh
-x codex skill setup
+x codex skill suggest
 ```
 ---
 url: /mod/codex/zhipu.md
@@ -32282,6 +33314,20 @@ url: /mod/deepseek/--cfg.md
 # x deepseek --cfg
 
 Manage config item like apikey and model
+
+## Examples
+
+Set the default model to deepseek-reasoner.
+
+```sh
+x deepseek --cfg model="deepseek-reasoner"
+```
+
+Print the current configuration of the deepseek module.
+
+```sh
+x deepseek --cfg cat
+```
 
 ## Usage
 
@@ -45110,6 +46156,20 @@ Manage config item like apikey, etc
 :::
 
 
+## Examples
+
+Set the default model to gemini-3-pro-preview.
+
+```sh
+x gemini --cfg model="gemini-3-pro-preview"
+```
+
+Print the current configuration of the gemini module.
+
+```sh
+x gemini --cfg cat
+```
+
 ## Sub Commands
 
 | Name | Description |
@@ -45361,6 +46421,7 @@ x gemini chat request [OPTIONS] [FLAGS] <#n>
 | `--history`, `-n` |  | Specify the number of history as context |
 | `--model` |  | Specify AI model |
 | `-p`, `--pipe` |  | Specify to get pipe content |
+| `--tool`, `--allowed-tools` |  | Comma-separated list of tool names to allow (e.g. "writefile,writefile,shcmd") |
 | `--provider` |  | Specify AI provider |
 
 
@@ -45378,7 +46439,7 @@ x gemini chat request [OPTIONS] [FLAGS] <#n>
 | `--no-reasoning` | Do not show AI's reasoning process, default on |
 | `--stream` | Use streaming output, default on |
 | `--no-stream` | Do not use streaming output |
-| `--no-empty-question` | Disallow empty request content |
+| `--require-question` | Disallow empty request content |
 | `--start-with-repl` | Start in REPL mode before sending the request |
 | `--end-with-repl` | Start in REPL mode after sending the request (default behavior in interactive mode) |
 | `--start-without-repl` | Start without REPL mode before sending the request |
@@ -45412,16 +46473,16 @@ Manage skill mechanism in user-level Gemini CLI
 
 - **Examples**:
 
-Add a skill to the user directory
+Enable anthropics’ docx skill in the global user environment
 
 ```sh
-x gemini cli skill use <skill_name>
+x gemini cli skill use anthropics/docx
 ```
 
-Remove a skill
+Disable anthropics’ docx skill in the global user environment
 
 ```sh
-x gemini cli skill unuse <skill_name>
+x gemini cli skill unuse anthropics/docx
 ```
 
 - **Sub Commands**:
@@ -45429,11 +46490,33 @@ x gemini cli skill unuse <skill_name>
 
 | Name | Description |
 | ------- | ------- |
+| [x gemini cli skill info](#x-gemini-cli-skill-info) | Show the index information of the specified Skill |
 | [x gemini cli skill ll](#x-gemini-cli-skill-ll) | List available skill templates |
 | [x gemini cli skill ls](#x-gemini-cli-skill-ls) | List of activated skills |
-| [x gemini cli skill use](#x-gemini-cli-skill-use) | Adding and activating specific skill |
-| [x gemini cli skill unuse](#x-gemini-cli-skill-unuse) | Remove an activated skill |
-| [x gemini cli skill setup](#x-gemini-cli-skill-setup) | Injecting skill mechanism into user-level Gemini CLI environment |
+| [x gemini cli skill add](#x-gemini-cli-skill-add) | Add a skill to the user or project |
+| [x gemini cli skill rm](#x-gemini-cli-skill-rm) | Remove a skill from the user or project |
+| [x gemini cli skill use](#x-gemini-cli-skill-use) | Enable the specified Skill in the global user environment |
+| [x gemini cli skill unuse](#x-gemini-cli-skill-unuse) | Disable the specified Skill in the global user environment |
+| [x gemini cli skill suggest](#x-gemini-cli-skill-suggest) | Generate recommended skills list based on the current project context files. |
+
+
+### x gemini cli skill info
+
+Show the index information of the specified Skill
+
+
+- **Usage**:
+
+```sh
+x gemini cli skill info <#1>
+```
+
+- **Arguments**:
+
+
+| Argument | Description |
+| ------- | ------- |
+| `#1` | Specify the ID of the Skill |
 
 
 ### x gemini cli skill ll
@@ -45458,9 +46541,63 @@ List of activated skills
 x gemini cli skill ls
 ```
 
+### x gemini cli skill add
+
+Add a skill to the user or project
+
+
+- **Usage**:
+
+```sh
+x gemini cli skill add [FLAGS] <#1>
+```
+
+- **Arguments**:
+
+
+| Argument | Description |
+| ------- | ------- |
+| `#1` | Skill ID to add |
+
+
+- **Flags**:
+
+
+| Name, Shorthand | Description |
+| ------- | ------- |
+| `--global`, `-g` | Add the skill to the global user environment |
+
+
+### x gemini cli skill rm
+
+Remove a skill from the user or project
+
+
+- **Usage**:
+
+```sh
+x gemini cli skill rm [FLAGS] <#1>
+```
+
+- **Arguments**:
+
+
+| Argument | Description |
+| ------- | ------- |
+| `#1` | Skill ID to remove |
+
+
+- **Flags**:
+
+
+| Name, Shorthand | Description |
+| ------- | ------- |
+| `--global`, `-g` | Remove the skill from the global user environment |
+
+
 ### x gemini cli skill use
 
-Adding and activating specific skill
+Enable the specified Skill in the global user environment
 
 
 - **Usage**:
@@ -45474,12 +46611,12 @@ x gemini cli skill use <#1>
 
 | Argument | Description |
 | ------- | ------- |
-| `#1` | Skill name to add |
+| `#1` | Skill ID |
 
 
 ### x gemini cli skill unuse
 
-Remove an activated skill
+Disable the specified Skill in the global user environment
 
 
 - **Usage**:
@@ -45493,18 +46630,18 @@ x gemini cli skill unuse <#1>
 
 | Argument | Description |
 | ------- | ------- |
-| `#1` | Skill name to remove |
+| `#1` | Skill ID |
 
 
-### x gemini cli skill setup
+### x gemini cli skill suggest
 
-Injecting skill mechanism into user-level Gemini CLI environment
+Generate recommended skills list based on the current project context files.
 
 
 - **Usage**:
 
 ```sh
-x gemini cli skill setup
+x gemini cli skill suggest
 ```
 ---
 url: /mod/gemini/gg.md
@@ -45524,7 +46661,7 @@ x gemini gg "Who won the euro 2024?"
 ## Usage
 
 ```sh
-x gemini gg [FLAGS] <#1>
+x gemini gg [OPTIONS] [FLAGS] <#1>
 ```
 
 ## Arguments
@@ -45532,6 +46669,15 @@ x gemini gg [FLAGS] <#1>
 | Argument | Description |
 | ------- | ------- |
 | `#1` | Send request content |
+
+
+## Options
+
+| Name, Shorthand | Default | Description |
+| ------- | ------- | ------- |
+| `--provider` |  | The AI provider to call, default is gemini, optional hub |
+| `--model` |  | The AI model to call |
+| `--cache-time` |  | The cache time of the returned data, in hours (h/m/s), default is 1h |
 
 
 ## Flags
@@ -47348,26 +48494,23 @@ x gh codeurl <#1>
 url: /mod/gh/cookbook-1.md
 ---
 
-# 基本使用
+# Basic Usage
 
+Why build another tool?
+What advantages does it have compared to **gh**?
 
-为何再造轮子 ? 相比 gh 有什么优势
+1. `x gh` has been used internally for a long time (since 2021) and has accumulated many integrated features.
+2. It’s lightweight — included in x-cmd’s 1 MB installer and only depends on `curl`.
+3. We want a unified TUI and interaction experience. With the same design, we’ve also built CLIs for GitLab, Gitee, Codeberg, Gitea, and Forgejo.
 
-1. `x gh` 在内部使用了很久 ( 2021 年 ), 集成了很多功能.
-2. 体积更轻, 集成在 x-cmd 的 1MB 的安装包里; 仅依赖 curl
-3. 我们希望更一致的 TUI 和交互, 我们用同样的设计完成 gitlab, gitee, codeberg, gitea, forgejo 的 CLI
+## x-cmd's pkg also includes the official gh package
 
-## x-cmd 的 pkg 引入了 gh 这个包
-
-注意, x-cmd 同时支持用户方便使用官方 gh 命令:
+Note that x-cmd also makes it easy to use the official **gh** command:
 
 ```bash
 x env use gh
-x env try gh  # 或者仅在当前 session 激活
+x env try gh  # or activate it only for the current session
 ```
-
-
-
 
 ---
 url: /mod/gh/ddgo.md
@@ -47828,6 +48971,7 @@ x gh model chat request [OPTIONS] [FLAGS] <#n>
 | `--history`, `-n` |  | Specify the number of history as context |
 | `--model` |  | Specify AI model |
 | `-p`, `--pipe` |  | Specify to get pipe content |
+| `--tool`, `--allowed-tools` |  | Comma-separated list of tool names to allow (e.g. "writefile,writefile,shcmd") |
 | `--provider` |  | Specify AI provider |
 
 
@@ -47844,7 +48988,7 @@ x gh model chat request [OPTIONS] [FLAGS] <#n>
 | `--no-reasoning` | Do not show AI's reasoning process, default on |
 | `--stream` | Use streaming output, default on |
 | `--no-stream` | Do not use streaming output |
-| `--no-empty-question` | Disallow empty request content |
+| `--require-question` | Disallow empty request content |
 | `--start-with-repl` | Start in REPL mode before sending the request |
 | `--end-with-repl` | Start in REPL mode after sending the request (default behavior in interactive mode) |
 | `--start-without-repl` | Start without REPL mode before sending the request |
@@ -51806,6 +52950,7 @@ x gh repo release create [OPTIONS] [FLAGS]
 
 | Name, Shorthand | Description |
 | ------- | ------- |
+| `--latest` | Mark the release as Latest |
 | `--prerelease` | release as a prerelease. |
 | `--draft` | set as draft |
 | `--json`, `-j` | output raw JSON data |
@@ -51855,8 +53000,9 @@ x gh repo release edit|ed [OPTIONS] [FLAGS] <#1>
 
 | Name, Shorthand | Description |
 | ------- | ------- |
+| `--latest` | Mark the release as Latest |
 | `--draft` | set as draft |
-| `--prerelease` | release as a prerelease. |
+| `--prerelease` | release as a prerelease |
 | `--json`, `-j` | output raw JSON data |
 
 
@@ -63163,6 +64309,37 @@ x gl user email [FLAGS]
 | `--json`, `-j` | output raw JSON data |
 
 ---
+url: /mod/gram/stop.md
+---
+# <span class="flex items-center justify-between gap-1"><span>x gram</span> <span class="text-x-brand">🔥</span></span> stop
+
+Terminate all agent processes (SIGINT → SIGTERM → SIGKILL), archive all agent memory directories, then remove the original directories.
+
+## Usage
+
+```sh
+x gram stop|kill
+```
+---
+url: /mod/gram/tarrm.md
+---
+# <span class="flex items-center justify-between gap-1"><span>x gram</span> <span class="text-x-brand">🔥</span></span> tarrm
+
+Archive agent memory directories and remove the original directories.
+
+## Usage
+
+```sh
+x gram tarrm|tarm|trm <#1>
+```
+
+## Arguments
+
+| Argument | Description |
+| ------- | ------- |
+| `#1` | dir |
+
+---
 url: /mod/grok/--cfg.md
 ---
 # x grok --cfg
@@ -71861,12 +73038,19 @@ Find answers to &lt;question&gt; in existing knowledge bases.
 x hub ai <question>
 ```
 
+Use x-cmd AI agent to write Python scripts. For example x hub ai agent 'Write a Hello World program in Python'
+
+```sh
+x hub ai agent <task>
+```
+
 ## Sub Commands
 
 | Name | Description |
 | ------- | ------- |
 | [x hub ai chat](#x-hub-ai-chat) | Find answers to question in existing knowledge bases. |
 | [x hub ai emb](#x-hub-ai-emb) | Upload files or enter embedded content and store it in the cloud as a personal knowledge base. |
+| [x hub ai agent](#x-hub-ai-agent) | Use x-cmd AI agent to execute a specified task. |
 
 
 ### x hub ai chat
@@ -71922,6 +73106,25 @@ x hub ai emb|embedding [OPTIONS] <#1>
 | ------- | ------- | ------- |
 | `-t`, `--title` |  | Specify the knowledge base title (default is null). |
 | `-f`, `--file` |  | Specify the uploaded file as the knowledge base embeddings content. |
+
+
+### x hub ai agent
+
+Use x-cmd AI agent to execute a specified task.
+
+
+- **Usage**:
+
+```sh
+x hub ai agent <#1>
+```
+
+- **Arguments**:
+
+
+| Argument | Description |
+| ------- | ------- |
+| `#1` | Describe the task you want the agent to perform. |
 
 ---
 url: /mod/hub/bind.md
@@ -73644,6 +74847,7 @@ x llmf chat request [OPTIONS] [FLAGS] <#n>
 | `--history`, `-n` |  | Specify the number of history as context |
 | `--model` |  | Specify AI model |
 | `-p`, `--pipe` |  | Specify to get pipe content |
+| `--tool`, `--allowed-tools` |  | Comma-separated list of tool names to allow (e.g. "writefile,writefile,shcmd") |
 | `--provider` |  | Specify AI provider |
 
 
@@ -73660,7 +74864,7 @@ x llmf chat request [OPTIONS] [FLAGS] <#n>
 | `--no-reasoning` | Do not show AI's reasoning process, default on |
 | `--stream` | Use streaming output, default on |
 | `--no-stream` | Do not use streaming output |
-| `--no-empty-question` | Disallow empty request content |
+| `--require-question` | Disallow empty request content |
 | `--start-with-repl` | Start in REPL mode before sending the request |
 | `--end-with-repl` | Start in REPL mode after sending the request (default behavior in interactive mode) |
 | `--start-without-repl` | Start without REPL mode before sending the request |
@@ -74189,6 +75393,7 @@ x lms chat request [OPTIONS] [FLAGS] [SUB_COMMAND] <#n>
 | `--history`, `-n` |  | Specify the number of history as context |
 | `--model` |  | Specify AI model |
 | `-p`, `--pipe` |  | Specify to get pipe content |
+| `--tool`, `--allowed-tools` |  | Comma-separated list of tool names to allow (e.g. "writefile,writefile,shcmd") |
 | `--provider` |  | Specify AI provider |
 
 
@@ -74205,7 +75410,7 @@ x lms chat request [OPTIONS] [FLAGS] [SUB_COMMAND] <#n>
 | `--no-reasoning` | Do not show AI's reasoning process, default on |
 | `--stream` | Use streaming output, default on |
 | `--no-stream` | Do not use streaming output |
-| `--no-empty-question` | Disallow empty request content |
+| `--require-question` | Disallow empty request content |
 | `--start-with-repl` | Start in REPL mode before sending the request |
 | `--end-with-repl` | Start in REPL mode after sending the request (default behavior in interactive mode) |
 | `--start-without-repl` | Start without REPL mode before sending the request |
@@ -74523,6 +75728,40 @@ x mac appid get <#1>
 | Argument | Description |
 | ------- | ------- |
 | `#1` | Application Name |
+
+---
+url: /mod/mac/as.md
+---
+# x mac as
+
+Manage Mac App Store
+
+## Sub Commands
+
+| Name | Description |
+| ------- | ------- |
+| [x mac as ls](#x-mac-as-ls) | An interactive list of all apps installed from the App Store |
+
+
+### x mac as ls
+
+An interactive list of all apps installed from the App Store
+
+
+- **Usage**:
+
+```sh
+x mac as|a ls [FLAGS]
+```
+
+- **Flags**:
+
+
+| Name, Shorthand | Description |
+| ------- | ------- |
+| `--raw` | Output in raw text format without styling |
+| `--tsv`, `-t` | Output in Tab-Separated Values (TSV) format |
+| `--csv`, `-c` | Output in Comma-Separated Values (CSV) format |
 
 ---
 url: /mod/mac/battery.md
@@ -75844,6 +77083,88 @@ x mac ntp set <#1>
 | `#1` | NTP server address |
 
 ---
+url: /mod/mac/proxy.md
+---
+# x mac proxy
+
+Manage Wi-Fi network proxy settings. Shortcut for 'x mac wifi proxy'.
+
+## Examples
+
+View the current Wi-Fi network proxy status
+
+```sh
+m proxy
+```
+
+Enable the Wi-Fi network proxy and set the proxy to 127.0.0.1:8080
+
+```sh
+m proxy enable 127.0.0.1:8080
+```
+
+Enable the Wi-Fi network proxy and set the proxy to 127.0.0.1:8080
+
+```sh
+m proxy enable 8080
+```
+
+Disable the Wi-Fi network proxy
+
+```sh
+m proxy disable
+```
+
+## Sub Commands
+
+| Name | Description |
+| ------- | ------- |
+| [x mac proxy status](#x-mac-proxy-status) | View the current Wi-Fi network proxy status |
+| [x mac proxy enable](#x-mac-proxy-enable) | Enable Wi-Fi network proxy and set the proxy server and port |
+| [x mac proxy disable](#x-mac-proxy-disable) | Disable Wi-Fi network proxy |
+
+
+### x mac proxy status
+
+View the current Wi-Fi network proxy status
+
+
+- **Usage**:
+
+```sh
+x mac proxy status
+```
+
+### x mac proxy enable
+
+Enable Wi-Fi network proxy and set the proxy server and port
+
+
+- **Usage**:
+
+```sh
+x mac proxy enable <#1>
+```
+
+- **Arguments**:
+
+
+| Argument | Description |
+| ------- | ------- |
+| `#1` | The proxy server and port should be in the format &lt;server ip&gt;:&lt;port&gt;, or just &lt;port&gt; |
+
+
+### x mac proxy disable
+
+Disable Wi-Fi network proxy
+
+
+- **Usage**:
+
+```sh
+x mac proxy disable
+```
+---
 url: /mod/mac/re.md
 ---
 # x mac re
@@ -77143,6 +78464,12 @@ Enable the Wi-Fi network proxy and set the proxy to 127.0.0.1:8080
 x mac wifi proxy enable 127.0.0.1:8080
 ```
 
+Enable the Wi-Fi network proxy and set the proxy to 127.0.0.1:8080
+
+```sh
+x mac wifi proxy enable 8080
+```
+
 Disable the Wi-Fi network proxy
 
 ```sh
@@ -77186,7 +78513,7 @@ x mac wifi proxy enable <#1>
 
 | Argument | Description |
 | ------- | ------- |
-| `#1` | The proxy server and port should be in the format &lt;server ip&gt;:&lt;port&gt; |
+| `#1` | The proxy server and port should be in the format &lt;server ip&gt;:&lt;port&gt;, or just &lt;port&gt; |
 
 
 ### x mac wifi proxy disable
@@ -78391,6 +79718,20 @@ url: /mod/mistral/--cfg.md
 
 Manage config item like apikey, etc
 
+## Examples
+
+Set the default model to mistral-small.
+
+```sh
+x mistral --cfg model="mistral-small"
+```
+
+Print the current configuration of the mistral module.
+
+```sh
+x mistral --cfg cat
+```
+
 ## Sub Commands
 
 | Name | Description |
@@ -78630,6 +79971,7 @@ x mistral chat request [OPTIONS] [FLAGS] <#n>
 | `--history`, `-n` |  | Specify the number of history as context |
 | `--model` |  | Specify AI model |
 | `-p`, `--pipe` |  | Specify to get pipe content |
+| `--tool`, `--allowed-tools` |  | Comma-separated list of tool names to allow (e.g. "writefile,writefile,shcmd") |
 | `--provider` |  | Specify AI provider |
 
 
@@ -78646,7 +79988,7 @@ x mistral chat request [OPTIONS] [FLAGS] <#n>
 | `--no-reasoning` | Do not show AI's reasoning process, default on |
 | `--stream` | Use streaming output, default on |
 | `--no-stream` | Do not use streaming output |
-| `--no-empty-question` | Disallow empty request content |
+| `--require-question` | Disallow empty request content |
 | `--start-with-repl` | Start in REPL mode before sending the request |
 | `--end-with-repl` | Start in REPL mode after sending the request (default behavior in interactive mode) |
 | `--start-without-repl` | Start without REPL mode before sending the request |
@@ -78741,6 +80083,20 @@ url: /mod/moonshot/--cfg.md
 # x moonshot --cfg
 
 Manage config item like apikey, etc
+
+## Examples
+
+Set the default model to kimi-k2-0711-preview .
+
+```sh
+x moonshot --cfg model="kimi-k2-0711-preview "
+```
+
+Print the current configuration of the moonshot module.
+
+```sh
+x moonshot --cfg cat
+```
 
 ## Sub Commands
 
@@ -78993,6 +80349,7 @@ x moonshot chat request [OPTIONS] [FLAGS] <#n>
 | `--history`, `-n` |  | Specify the number of history as context |
 | `--model` |  | Specify AI model |
 | `-p`, `--pipe` |  | Specify to get pipe content |
+| `--tool`, `--allowed-tools` |  | Comma-separated list of tool names to allow (e.g. "writefile,writefile,shcmd") |
 | `--provider` |  | Specify AI provider |
 
 
@@ -79010,7 +80367,7 @@ x moonshot chat request [OPTIONS] [FLAGS] <#n>
 | `--no-reasoning` | Do not show AI's reasoning process, default on |
 | `--stream` | Use streaming output, default on |
 | `--no-stream` | Do not use streaming output |
-| `--no-empty-question` | Disallow empty request content |
+| `--require-question` | Disallow empty request content |
 | `--start-with-repl` | Start in REPL mode before sending the request |
 | `--end-with-repl` | Start in REPL mode after sending the request (default behavior in interactive mode) |
 | `--start-without-repl` | Start without REPL mode before sending the request |
@@ -79435,6 +80792,7 @@ x ollama chat request [OPTIONS] [FLAGS] <#n>
 | `--history`, `-n` |  | Specify the number of history as context |
 | `--model` |  | Specify AI model |
 | `-p`, `--pipe` |  | Specify to get pipe content |
+| `--tool`, `--allowed-tools` |  | Comma-separated list of tool names to allow (e.g. "writefile,writefile,shcmd") |
 | `--provider` |  | Specify AI provider |
 
 
@@ -79451,7 +80809,7 @@ x ollama chat request [OPTIONS] [FLAGS] <#n>
 | `--no-reasoning` | Do not show AI's reasoning process, default on |
 | `--stream` | Use streaming output, default on |
 | `--no-stream` | Do not use streaming output |
-| `--no-empty-question` | Disallow empty request content |
+| `--require-question` | Disallow empty request content |
 | `--start-with-repl` | Start in REPL mode before sending the request |
 | `--end-with-repl` | Start in REPL mode after sending the request (default behavior in interactive mode) |
 | `--start-without-repl` | Start without REPL mode before sending the request |
@@ -79648,6 +81006,20 @@ Manage configuration items such as API key, default proxy, and more
 - proxy: Set the network proxy for API requests
 :::
 
+
+## Examples
+
+Set the default model to gpt-5.1.
+
+```sh
+x openai --cfg model="gpt-5.1"
+```
+
+Print the current configuration of the openai module.
+
+```sh
+x openai --cfg cat
+```
 
 ## Usage
 
@@ -79966,6 +81338,7 @@ x openai chat request [OPTIONS] [FLAGS] <#n>
 | `--history`, `-n` |  | Specify the number of history as context |
 | `--model` |  | Specify AI model |
 | `-p`, `--pipe` |  | Specify to get pipe content |
+| `--tool`, `--allowed-tools` |  | Comma-separated list of tool names to allow (e.g. "writefile,writefile,shcmd") |
 | `--provider` |  | Specify AI provider |
 
 
@@ -79982,7 +81355,7 @@ x openai chat request [OPTIONS] [FLAGS] <#n>
 | `--no-reasoning` | Do not show AI's reasoning process, default on |
 | `--stream` | Use streaming output, default on |
 | `--no-stream` | Do not use streaming output |
-| `--no-empty-question` | Disallow empty request content |
+| `--require-question` | Disallow empty request content |
 | `--start-with-repl` | Start in REPL mode before sending the request |
 | `--end-with-repl` | Start in REPL mode after sending the request (default behavior in interactive mode) |
 | `--start-without-repl` | Start without REPL mode before sending the request |
@@ -80361,6 +81734,675 @@ Get the currently active model
 ```sh
 x openai model get
 ```
+---
+url: /mod/openclaw/cookbook-1.md
+---
+
+# Quick Installation of OpenClaw
+
+
+::: danger ⚠️ Security Warning
+OpenClaw (formerly Clawdbot) and its Agent-related capabilities may carry inherent risks.<br>
+To prevent Agents from running out of control or persisting unexpectedly, X-CMD provides a "fail-safe" tool: [`x gram`](https://x-cmd.com/mod/gram).
+
+This tool acts as an "emergency brake" capable of the following:
+- Forced Termination: Immediately kills all related Agent processes;
+- Data Preservation: Archives the Agent's memory data;
+- Deep Cleanup: Removes the original execution directory to eliminate the risk of auto-recovery.
+
+Related Reading: [[0201] Do not run OpenClaw as root! X-CMD v0.7.15 released: Kill all running Agents with a single command](https://x-cmd.com/blog/260201)
+:::
+
+
+## Sneak Peek
+
+```bash
+# If you haven't installed x-cmd, please complete this command
+eval "$(curl https://get.x-cmd.com)"
+
+# If you are on macOS but don't have brew, you can install brew first
+x install brew
+
+# Install openclaw, and the latest versions of commands and environments required by common skills
+x openclaw --install
+```
+
+## Detailed Explanation
+
+### If you haven't installed x-cmd, just open your terminal:
+
+x-cmd is a one-stop command-line toolkit, whose powerful features can be used by both human users and AI. It also simplifies the installation methods for many tools.
+
+```bash
+eval "$(curl https://get.x-cmd.com)"
+```
+
+If you still don't know how to install, please refer to https://x-cmd.com/start
+
+Note that you might need a newer x-cmd for the openclaw module, please run
+
+```bash
+x upgrade beta
+```
+
+### Install clawdbot/openclaw
+
+To better use clawdbot/openclaw, we have created the openclaw module. Users can install and use it with one click:
+
+```bash
+x openclaw --install
+```
+
+![openclaw-install](/data-image/cookbook/mod/openclaw.1_1.webp)
+
+Note that this command not only installs openclaw but also installs the common command-line tools required to run openclaw, such as sending/receiving tools, etc. Additionally, if you are on macOS, it will also call brew to install macOS-specific tools.
+
+> If you don't have brew, you can run `x i brew` to quickly install brew
+
+![install-brew](/data-image/cookbook/mod/openclaw.1_2.webp)
+
+## Next Step -- Configuration
+
+Don't worry, this is also simple, it just requires a bit more patience.
+
+
+---
+url: /mod/openclaw/cookbook-2.md
+---
+
+# Configuration 1: Start by connecting to a large language model and using the management page quickly
+
+::: danger ⚠️ Security Warning
+OpenClaw (formerly Clawdbot) and its Agent-related capabilities may carry inherent risks.<br>
+To prevent Agents from running out of control or persisting unexpectedly, X-CMD provides a "fail-safe" tool: [`x gram`](https://x-cmd.com/mod/gram).
+
+This tool acts as an "emergency brake" capable of the following:
+- Forced Termination: Immediately kills all related Agent processes;
+- Data Preservation: Archives the Agent's memory data;
+- Deep Cleanup: Removes the original execution directory to eliminate the risk of auto-recovery.
+
+Related Reading: [[0201] Do not run OpenClaw as root! X-CMD v0.7.15 released: Kill all running Agents with a single command](https://x-cmd.com/blog/260201)
+:::
+
+Configuration isn't difficult, it just requires some patience ~ To make the whole process more systematic and easier to understand, we've divided the configuration into two main sections:
+
+1. To connect to the AI brain, you need to configure authentication for accessing large language models.
+2. To receive information from social software, you need to configure login authentication for social software.
+
+Our tutorial will first help you complete step 1, because once that's done, you can quickly send messages for testing in the terminal or web interface, achieving the first milestone, and then integrate social software.
+
+Note that the relatively more complex second step is not strictly necessary -- if you own a server and use the management page directly to send messages.
+<!--
+
+## Configure openai, claude, gemini API KEY
+
+```bash
+x openclaw setup --openai <key>
+x openclaw setup --gemini <key>
+x openclaw setup --glm <key>
+x openclaw setup --kimi <key>
+``` -->
+
+## Use the official wizard for configuration
+
+```bash
+x openclaw onboard
+```
+
+### 1. Select Configuration Mode
+
+After launching, read and agree to the terms, and you will see two options:
+
+*   **Quickstart**: Recommended option. Automatically guides you through core configuration, which can be modified later via `x openclaw configure`.
+*   **Manual**: Suitable for advanced users to customize specific items.
+
+Here we choose **Quickstart**.
+
+### 2. Choose Your AI Model
+
+Based on your API account status, select the corresponding provider (OpenAI, Gemini, Claude, Kimi, etc.) and the specific model type.
+
+![Configure Model](/data-image/cookbook/mod/openclaw.2_1.webp)
+
+### 3. Skip Social Software Configuration (Optional)
+
+The wizard will ask if you want to configure social software. To quickly get the process running, we can **skip** this step for now and prioritize getting the web interface working.
+
+![Social Software Configuration](/data-image/cookbook/mod/openclaw.6_5.webp)
+
+### 4. Configure Skills and Hooks
+
+During the wizard process, the system will ask if you want to configure preset "skills".
+
+*   **Skill Installation**: You can directly confirm the installation. The wizard usually asks which package manager you want to use; if you have Node.js installed, select **npm**.
+*   **Select Features**: You can choose your preferred skills based on their descriptions, or skip them directly (you can always install them later in a conversation).
+
+![Configure Skills](/data-image/cookbook/mod/openclaw.2_2.webp)
+
+The wizard will finally ask if you want to enable the following three important plugins. It is recommended to enable all of them:
+
+*   **`boot-md` (Boot Guide)**: Automatically loads a Markdown text every time the bot starts. You can write custom rules, preferences, or project background here.
+*   **`command-logger` (Command Log)**: Records key operations you perform in the terminal. This is very useful for troubleshooting and reviewing later.
+*   **`session-memory` (Session Memory)**: Saves chat states, allowing the bot to "remember" previous context after restarting.
+
+## Start Gateway
+
+After configuration, execute the following command to start the service:
+
+```bash
+x openclaw gateway
+```
+
+![Start Gateway](/data-image/cookbook/mod/openclaw.2_3.webp)
+
+If your system is Linux and systemd is not installed, you can execute the following command to start the service:
+
+```bash
+x openclaw start
+```
+
+Now, your first milestone has been achieved! Open your browser and visit: http://127.0.0.1:18789/chat. You can now start working with your AI assistant on the web page.
+
+## Protect Your Server with SSL
+
+If you are on a standalone server and own a domain, you can use certbot to sign an SSL certificate to protect your server.
+
+```bash
+# Install certbot
+x env use certbot
+certbot
+```
+
+---
+url: /mod/openclaw/cookbook-3.md
+---
+
+# Configuration 2: Connect Your OpenClaw to Social Software 🦞
+
+::: danger ⚠️ Security Warning
+OpenClaw (formerly Clawdbot) and its Agent-related capabilities may carry inherent risks.<br>
+To prevent Agents from running out of control or persisting unexpectedly, X-CMD provides a "fail-safe" tool: [`x gram`](https://x-cmd.com/mod/gram).
+
+This tool acts as an "emergency brake" capable of the following:
+- Forced Termination: Immediately kills all related Agent processes;
+- Data Preservation: Archives the Agent's memory data;
+- Deep Cleanup: Removes the original execution directory to eliminate the risk of auto-recovery.
+
+Related Reading: [[0201] Do not run OpenClaw as root! X-CMD v0.7.15 released: Kill all running Agents with a single command](https://x-cmd.com/blog/260201)
+:::
+
+Congratulations, you've reached the final configuration step. This configuration might require a bit of patience.
+
+The core of OpenClaw is a **Gateway**. Regardless of which software you connect, all information will ultimately converge and be processed by this gateway.
+
+For ease of getting started, we recommend WhatsApp and Telegram as your first choices; if you are accessing from mainland China, then Feishu (Lark) and WeChat Work are recommended.
+
+## 1. Social Platform Selection Guide
+
+From the perspective of ease of use and feature richness, we have made a horizontal comparison of popular channels:
+
+| Social Software | Configuration Difficulty | Independent Server | Core Advantage | Notes |
+| --- | --- | --- | --- | --- |
+| **WhatsApp** | ⭐ (Scan to use) | Not required | Lowest barrier, supports media | Relies on Baileys protocol |
+| **Telegram** | ⭐⭐ (Bot API) | Not required | Most versatile, supports Slash commands | Needs to apply for a Token from [@BotFather](https://t.me/botfather) |
+| **Discord** | ⭐⭐⭐ (Developer Mode) | Not required | Powerful channel management and permission control | Must enable **Message Content Intent** |
+| **Feishu (Lark)** | ⭐⭐⭐ | Not required | First choice for domestic office scenarios | Requires creating an enterprise self-built application |
+| **WeChat Work** | ⭐⭐⭐⭐ | **Required** | Deeply integrated enterprise environment | Relatively complex configuration, requires fixed IP callback |
+| **iMessage** | ⭐⭐⭐ | macOS environment | Native Apple ecosystem experience | Requires macOS device and `imsg` command-line tool |
+
+![Create a bot application](/data-image/cookbook/mod/openclaw.5_2.webp)
+
+We have created tutorials for the most commonly used apps, which you can view by clicking on the left sidebar:
+
+- WhatsApp
+- Telegram
+- Feishu (Lark)
+
+Our tutorials are constantly being updated. You can choose the method that suits you. More software integration methods will be updated later.
+
+## 2. Core Concepts: "Unwritten Rules" You Must Know
+
+Before starting the configuration, please understand the following design logic of OpenClaw:
+
+### 🔒 Secure Pairing
+
+To prevent your bot from being bothered by strangers, OpenClaw enables **pairing mode** by default.
+
+*   **First Contact**: When you send a message to the bot for the first time on a new channel (e.g., Telegram), it will return a pairing code.
+*   **Authorization Confirmation**: You need to run `openclaw pairing approve <channel> <code>` on the OpenClaw host machine to establish the connection.
+
+![Secure Pairing](/data-image/cookbook/mod/openclaw.5_4.webp)
+
+### 🤖 Independent Conversations vs. Group Chat Isolation
+
+*   **Private Messages (DMs)**: By default, they share the Agent's `main` session.
+*   **Group Chats (Groups)**: Each group has an independent session ID to prevent context confusion.
+*   **Mention Response**: In group chats, OpenClaw usually needs to be **@mentioned** to reply, avoiding spamming.
+
+## FAQ
+
+### Q1: Can I only choose one social software?
+
+No, you can configure multiple social software. Moltbot refers to each different social software connection as a channel.
+
+### Q2: Why isn't my bot responding to me?
+
+Please check in the following order:
+
+1.  **Run `openclaw doctor`**: This is the best self-diagnosis tool and can find most configuration errors.
+2.  **Check Intent**: If it's Discord, check if Message Content Intent is enabled.
+3.  **Check Pairing**: See if the terminal is waiting for you to enter `pairing approve`.
+
+### Q3: Can I use it without configuring social software?
+
+Yes, you can send messages directly to the bot through OpenClaw's backend. However, you need to configure a password, and if on a public or insecure network, it's best to configure SSL. Please refer to Configuration 1 for details.
+
+---
+url: /mod/openclaw/cookbook-4.md
+---
+
+# 🚀 Quick Start: Using OpenClaw on WhatsApp
+
+::: danger ⚠️ Security Warning
+OpenClaw (formerly Clawdbot) and its Agent-related capabilities may carry inherent risks.<br>
+To prevent Agents from running out of control or persisting unexpectedly, X-CMD provides a "fail-safe" tool: [`x gram`](https://x-cmd.com/mod/gram).
+
+This tool acts as an "emergency brake" capable of the following:
+- Forced Termination: Immediately kills all related Agent processes;
+- Data Preservation: Archives the Agent's memory data;
+- Deep Cleanup: Removes the original execution directory to eliminate the risk of auto-recovery.
+
+Related Reading: [[0201] Do not run OpenClaw as root! X-CMD v0.7.15 released: Kill all running Agents with a single command](https://x-cmd.com/blog/260201)
+:::
+
+Want an always-on AI assistant on WhatsApp? Whether it's helping you write code, translate documents, or just chat, **OpenClaw** (formerly Clawdbot) seamlessly integrates large model capabilities into your phone via the WhatsApp Web protocol.
+
+This tutorial will guide you directly into practice, skipping the tedious theory.
+
+## 🛠️ Step One: Install clawdbot/openclaw
+
+To better use clawdbot/openclaw, we have created the openclaw module. Users can install and use it with a single command:
+
+```bash
+x openclaw --install
+```
+
+Note that this command, in addition to installing openclaw, will also install common command-line tools required to run openclaw, such as sending and receiving tools, etc. Additionally, if you are on macOS, it will also use brew to install macOS-specific tools.
+
+> If you don't have brew, you can run `x i brew` to quickly install brew.
+
+---
+
+## Configure using the official wizard
+
+```bash
+x openclaw onboard
+```
+
+### 1. Select Configuration Mode
+
+After launching, read and agree to the terms, and you will see two options:
+
+*   **Quickstart**: Recommended option. Automatically guides you through core configuration, which can be modified later via `x openclaw configure`.
+*   **Manual**: Suitable for advanced users to customize details.
+
+Here we choose **Quickstart**.
+
+### 2. Choose Your AI Model
+
+Based on your API account status, select the corresponding provider (OpenAI, Gemini, Claude, Kimi, etc.) and specific model version.
+
+![Configure Model](/data-image/cookbook/mod/openclaw.2_1.webp)
+
+### 3. Connect WhatsApp (Scan QR Code to Log In)
+
+After selecting WhatsApp in this step, the terminal will display a QR code. Open WhatsApp on your phone -> **Settings** -> **Linked Devices** -> **Link a Device**, and scan the QR code in the terminal.
+After successful scanning, the terminal will prompt `WhatsApp logged in`.
+
+![Configure Model](/data-image/cookbook/mod/openclaw.5_2.webp)
+
+### 4. Configure Skills and Hooks
+
+During the wizard process, the system will ask whether to configure preset "skills".
+
+*   **Skill Installation**: You can directly confirm the installation. The wizard usually asks which package manager you want to use; if you have Node.js installed, select **npm**.
+*   **Select Features**: You can choose your preferred skills based on their descriptions, or skip them (you can always install them later in a conversation).
+
+![Configure Skills](/data-image/cookbook/mod/openclaw.2_2.webp)
+
+Finally, the wizard will ask whether to enable the following three important plugins; it is recommended to enable all of them:
+
+*   **`boot-md` (Boot Guide)**: Automatically loads a Markdown text every time the bot starts. You can write custom rules, preferences, or project background here.
+*   **`command-logger` (Command Log)**: Records key operations you perform in the terminal. This is very useful for troubleshooting and reviewing later.
+*   **`session-memory` (Session Memory)**: Saves chat state, allowing the bot to "remember" previous context after restarting.
+
+## Start Gateway
+
+After configuration, execute the following command to start the service:
+
+```bash
+x openclaw gateway
+```
+
+![Start Gateway](/data-image/cookbook/mod/openclaw.2_3.webp)
+
+If your system is Linux and systemd is not installed, you can execute the following command to start the service:
+
+```bash
+x openclaw start
+```
+
+Once started, you can chat with your AI assistant on WhatsApp.
+
+![Connect test](/data-image/cookbook/mod/openclaw.4_1.webp)
+
+---
+
+## ❓ Frequently Asked Questions (FAQ)
+
+| Question | Solution |
+| :------- | :------- |
+| **QR code displays garbled characters?** | Try enlarging the terminal window, or switch to a UTF-8 compatible terminal (e.g., iTerm2, VS Code Terminal). |
+| **Frequent disconnections?** | Ensure the device running OpenClaw does not enter sleep mode and has a stable network connection. |
+| **Bot doesn't reply?** | Check the `x openclaw serve` logs. If it's a group chat, by default you need to **@mention the bot** to trigger a reply. |
+
+---
+url: /mod/openclaw/cookbook-5.md
+---
+
+# Configure Telegram Bot
+
+::: danger ⚠️ Security Warning
+OpenClaw (formerly Clawdbot) and its Agent-related capabilities may carry inherent risks.<br>
+To prevent Agents from running out of control or persisting unexpectedly, X-CMD provides a "fail-safe" tool: [`x gram`](https://x-cmd.com/mod/gram).
+
+This tool acts as an "emergency brake" capable of the following:
+- Forced Termination: Immediately kills all related Agent processes;
+- Data Preservation: Archives the Agent's memory data;
+- Deep Cleanup: Removes the original execution directory to eliminate the risk of auto-recovery.
+
+Related Reading: [[0201] Do not run OpenClaw as root! X-CMD v0.7.15 released: Kill all running Agents with a single command](https://x-cmd.com/blog/260201)
+:::
+
+This tutorial will guide you through setting up an openclaw environment from scratch and binding a Telegram bot as the chat entry point.
+
+## (Step One) Create a Telegram Bot
+
+1. Add [BotFather](https://t.me/botfather) channel
+
+2. Send the /newbot command and follow the prompts to set the bot's name and username (must end with "bot").
+- After successful creation, BotFather will provide an API Token. Copy and save it.
+
+![BotFather](/data-image/cookbook/mod/openclaw.5_1.webp)
+
+## (Step Two) Install and Configure openclaw
+
+```bash
+x openclaw --install
+```
+
+Enter openclaw's interactive initialization configuration
+
+```bash
+x openclaw onboard
+```
+
+Only set the AI model to be used
+
+![Initialization Configuration](/data-image/cookbook/mod/openclaw.6_4.webp)
+
+Select "Telegram" as the chat channel and enter the Telegram bot token.
+
+![Select Telegram chat channel](/data-image/cookbook/mod/openclaw.5_2.webp)
+
+Add other configurations as needed.
+
+After completing the initialization configuration, go to the web Chat interface and send a message to test if the AI model is working correctly.
+
+![Initialization configuration complete, enter Web UI](/data-image/cookbook/mod/openclaw.6_6.webp)
+
+PS: If the above UI selection does not appear, it means the service failed to start. You can execute the following commands to manually start the service and display logs.
+
+```bash
+# If it doesn't start normally, run the following command
+x openclaw gateway --port 18789 --verbose # Closing the terminal will also stop the service
+
+# Start the service in the background
+x openclaw gateway --port 18789 --verbose & # Closing the terminal will keep the service running
+```
+
+Send a message in the terminal or on the web to test if the configured AI model is working correctly.
+
+![Send message to test if AI model is working correctly](/data-image/cookbook/mod/openclaw.6_7.webp)
+
+## Pair Telegram bot with openclaw
+
+- By default, the openclaw bot is not a public bot. It needs to be paired via messages before it can be used normally.
+1. Send /start in the Telegram bot chat. The bot will return a pairing code. Run the following command according to the prompt.
+```bash
+openclaw pairing approve telegram <code>
+```
+![Telegram pairing code](/data-image/cookbook/mod/openclaw.5_3.webp)
+
+![openclaw pairing result](/data-image/cookbook/mod/openclaw.5_4.webp)
+
+2. All steps are now complete. You can start happily communicating with the AI bot.
+
+![Start Chatting](/data-image/cookbook/mod/openclaw.5_5.webp)
+
+
+Finally, here are some commonly used commands:
+
+```bash
+openclaw gateway                 # Start service
+openclaw gateway stop            # Stop service
+openclaw gateway restart         # Restart service
+```
+
+---
+url: /mod/openclaw/cookbook-6.md
+---
+
+# Configure Feishu Bot
+
+::: danger ⚠️ Security Warning
+OpenClaw (formerly Clawdbot) and its Agent-related capabilities may carry inherent risks.<br>
+To prevent Agents from running out of control or persisting unexpectedly, X-CMD provides a "fail-safe" tool: [`x gram`](https://x-cmd.com/mod/gram).
+
+This tool acts as an "emergency brake" capable of the following:
+- Forced Termination: Immediately kills all related Agent processes;
+- Data Preservation: Archives the Agent's memory data;
+- Deep Cleanup: Removes the original execution directory to eliminate the risk of auto-recovery.
+
+Related Reading: [[0201] Do not run OpenClaw as root! X-CMD v0.7.15 released: Kill all running Agents with a single command](https://x-cmd.com/blog/260201)
+:::
+
+This tutorial will guide you through setting up an OpenClaw environment from scratch, integrating the `@m1heng-clawd/feishu` plugin to connect Feishu with OpenClaw, allowing you to control OpenClaw directly from Feishu.
+
+## (Step One) Create a Feishu Bot
+
+1. Access the Feishu Developer Console
+
+https://open.feishu.cn/document/develop-an-echo-bot/introduction
+
+2. Create and publish a bot application
+
+![Create a bot application](/data-image/cookbook/mod/openclaw.6_1.webp)
+
+3. View the application to get AppID and App Secret
+
+![Get AppID and App Secret](/data-image/cookbook/mod/openclaw.6_2.webp)
+
+4. Record the AppID and App Secret for later use
+
+![Record AppID and App Secret](/data-image/cookbook/mod/openclaw.6_3.webp)
+
+## (Step Two) Install and Configure OpenClaw
+
+```bash
+x install openclaw
+```
+
+Enter OpenClaw's interactive initialization configuration
+
+```bash
+clawdbot onboard
+```
+
+Only set the AI model to be used
+
+![Initialization configuration](/data-image/cookbook/mod/openclaw.6_4.webp)
+
+Select "Skip for now" for the chat channel
+
+![Select chat channel](/data-image/cookbook/mod/openclaw.6_5.webp)
+
+Add other configurations as needed
+
+After completing the initialization configuration, go to the web Chat interface and send a message to test if the AI model is working correctly.
+
+![Initialization configuration complete, enter Web UI](/data-image/cookbook/mod/openclaw.6_6.webp)
+
+PS: If the above selection UI does not appear, it means the service failed to start. You can execute the following command to manually start the service and view logs:
+
+```bash
+openclaw gateway --port 18789 --verbose
+```
+
+Send a message in the terminal or on the web to test if the configured AI model is working correctly.
+
+![Send a message to test if the AI model is working correctly](/data-image/cookbook/mod/openclaw.6_7.webp)
+
+## (Step Three) Install the `@m1heng-clawd/feishu` plugin and add the Feishu channel
+
+```bash
+clawdbot plugins install @m1heng-clawd/feishu
+```
+
+Configure the obtained AppID and App Secret
+
+```bash
+clawdbot config set channels.feishu.appId "cli_xxxxx"
+clawdbot config set channels.feishu.appSecret "your_app_secret"
+clawdbot config set channels.feishu.enabled true
+```
+
+![Configure Feishu bot parameters](/data-image/cookbook/mod/openclaw.6_8.webp)
+
+Restart to apply the changes
+
+```bash
+clawdbot gateway restart
+```
+
+Find the bot application in Feishu and start a chat
+
+![Find the bot application in Feishu and start a chat](/data-image/cookbook/mod/openclaw.6_9.webp)
+
+![Start a chat](/data-image/cookbook/mod/openclaw.6_10.webp)
+
+Finally, here are some commonly used commands:
+
+```bash
+openclaw gateway                 # Start service
+openclaw gateway stop            # Stop service
+openclaw gateway restart         # Restart service
+```
+
+---
+url: /mod/openclaw/cookbook-7.md
+---
+
+## 🛠️ Quick Start: Build Your Private AI Assistant
+
+::: danger ⚠️ Security Warning
+OpenClaw (formerly Clawdbot) and its Agent-related capabilities may carry inherent risks.<br>
+To prevent Agents from running out of control or persisting unexpectedly, X-CMD provides a "fail-safe" tool: [`x gram`](https://x-cmd.com/mod/gram).
+
+This tool acts as an "emergency brake" capable of the following:
+- Forced Termination: Immediately kills all related Agent processes;
+- Data Preservation: Archives the Agent's memory data;
+- Deep Cleanup: Removes the original execution directory to eliminate the risk of auto-recovery.
+
+Related Reading: [[0201] Do not run OpenClaw as root! X-CMD v0.7.15 released: Kill all running Agents with a single command](https://x-cmd.com/blog/260201)
+:::
+
+### 🛠️ Install OpenClaw
+
+Using x-cmd, you can handle dependency checks and environment installation with a single command:
+
+```sh
+x openclaw --install
+```
+
+⚠️ Although OpenClaw is extremely powerful, its adaptation to the domestic ecosystem is not yet perfect, and it involves sensitive computer control permissions. **It is strongly recommended not to install it on personal computers containing important data.**
+
+### Use the Official Wizard for Configuration
+
+```bash
+x openclaw onboard
+```
+
+### 1. Select Configuration Mode
+
+After launching, read and agree to the terms, and you will see two options:
+
+*   **Quickstart**: Recommended option. Automatically guides you through core configuration, which can be modified later via `x openclaw configure`.
+*   **Manual**: Suitable for advanced users to customize details.
+
+Here we choose **Quickstart**.
+
+### 2. Choose Your AI Model
+
+Currently, moltbot supports the following models. Since we are using Ollama, we will skip this step for now.
+
+![Configure Model](/data-image/cookbook/mod/openclaw.2_1.webp)
+
+Then select Ollama in the next step.
+
+### 3. Skip Social Software Configuration (Optional)
+
+The wizard will ask if you want to configure social software. To quickly get the process running, we can **skip** this step for now and prioritize getting the web interface working.
+
+![Social Software Configuration](/data-image/cookbook/mod/openclaw.6_5.webp)
+
+### 4. Configure Skills and Hooks
+
+During the wizard process, the system will ask if you want to configure preset "skills".
+
+*   **Skill Installation**: You can directly confirm the installation. The wizard usually asks which package manager you want to use; if you have Node.js installed, select **npm**.
+*   **Choose Features**: You can select your preferred skills based on their descriptions, or simply skip (you can always install them later in a conversation).
+
+![Configure Skills](/data-image/cookbook/mod/openclaw.2_2.webp)
+
+The wizard will finally ask if you want to enable the following three important plugins. It is recommended to enable all of them:
+
+*   **`boot-md` (Boot Guide)**: Automatically loads a Markdown text every time the bot starts. You can write custom rules, preferences, or project background here.
+*   **`command-logger` (Command Log)**: Records key operations you perform in the terminal. This is very useful for troubleshooting and review later.
+*   **`session-memory` (Session Memory)**: Saves chat state, allowing the bot to "remember" previous context after restarting.
+
+---
+
+### Drive OpenClaw with Ollama
+
+If you already have Ollama installed, the experience cost is almost zero. OpenClaw now natively supports Ollama integration.
+
+```bash
+# One command to directly let local Ollama drive OpenClaw
+x ollama launch clawdbot
+```
+
+![Use Ollama](/data-image/cookbook/mod/openclaw.7_1.webp)
+
+> Since bot initialization needs to be completed first, after completion, `x openclaw gateway stop`, then use `x ollama launch clawdbot` to inject relevant local model information.
+> The editor's computer configuration is limited, so this demonstration uses llama3.2:3b.
+
+---
+
+Local models ≠ omnipotent. In terms of "absolute intelligence," they may not yet catch up with cloud flagships, but in the three dimensions of **security, controllability, and low cost**, local models win.
+
+When an AI Agent starts taking over your computer, **privacy and cost are definitely more important than model rankings.** Ollama + OpenClaw may not be the flashiest solution, but it is currently the most "reassuring for long-term use" solution.
+
 ---
 url: /mod/osv/cookbook-1.md
 ---
@@ -91686,6 +93728,7 @@ Send messages using a Telegram group bot
 | ------- | ------- |
 | [x telegram bot --help](#x-telegram-bot-help) | Show help documentation |
 | [x telegram bot --co](#x-telegram-bot-co) | Implementation of AI code copilot, calling the LLM model with a comma `,` to generate corresponding x-cmd module code commands |
+| [x telegram bot react](#x-telegram-bot-react) | react |
 | [x telegram bot send](#x-telegram-bot-send) | Send messages using a Telegram group bot |
 
 
@@ -91719,6 +93762,17 @@ x telegram bot --co|, [OPTIONS]
 | `--model` |  | Specify AI model |
 | `--provider` |  | Specify AI provider |
 
+
+### x telegram bot react
+
+react
+
+
+- **Usage**:
+
+```sh
+x telegram bot react
+```
 
 ### x telegram bot send
 
@@ -92379,6 +94433,18 @@ Initialize the configuration using interactive mode
 
 ```sh
 x telegram init
+```
+---
+url: /mod/telegram/react.md
+---
+# x telegram react
+
+react
+
+## Usage
+
+```sh
+x telegram react
 ```
 ---
 url: /mod/telegram/send.md
@@ -95203,6 +97269,52 @@ List the theme information of all current environments (default option)
 x theme ls --info|-i|info
 ```
 ---
+url: /mod/theme/statusline.md
+---
+# x theme statusline
+
+Manage the status line component for Claude Code
+
+## Examples
+
+Set up the Claude Code statusline using the el theme (default)
+
+```sh
+x theme stl setup
+```
+
+Set up the Claude Code statusline using the "ice" theme
+
+```sh
+x theme stl setup --theme ice
+```
+
+## Sub Commands
+
+| Name | Description |
+| ------- | ------- |
+| [x theme statusline setup](#x-theme-statusline-setup) | Set up the Claude Code statusline using the specified theme |
+
+
+### x theme statusline setup
+
+Set up the Claude Code statusline using the specified theme
+
+
+- **Usage**:
+
+```sh
+x theme statusline|stl setup [OPTIONS]
+```
+
+- **Options**:
+
+
+| Name, Shorthand | Default | Description |
+| ------- | ------- | ------- |
+| `--theme` |  | Specify the status line theme |
+
+---
 url: /mod/theme/try.md
 ---
 # x theme try
@@ -97992,7 +100104,7 @@ Using DuckDuckGo and the AI module, summarize and filter relevant information fr
 Use DuckDuckGo and AI modules to summarize and filter information regarding "winget source"
 
 ```sh
-x scoop :: "winget source"
+x winget :: "winget source"
 ```
 
 ## Usage
@@ -98473,6 +100585,40 @@ Initialize the proy configuration using interactive mode
 x writer init
 ```
 ---
+url: /mod/writer/polish.md
+---
+# x writer polish
+
+Polish text to make sentences more elegant and friendly
+
+## Usage
+
+```sh
+x writer polish [OPTIONS] [FLAGS]
+```
+
+## Options
+
+| Name, Shorthand | Default | Description |
+| ------- | ------- | ------- |
+| `--temperature`, `-t` |  | Control the diversity of model generated results, with a value greater than or equal to 0, when the temperature is higher, the model will be more random |
+| `--maxtoken` |  | Control the maximum token length of the model response |
+| `--file`, `-f` |  | Send file content as context to AI |
+| `-p` |  | Specify to get pipe content |
+| `--model` |  | Specify AI model |
+| `--provider` |  | Specify AI provider |
+
+
+## Flags
+
+| Name, Shorthand | Description |
+| ------- | ------- |
+| `-P`, `--nopipe` | Specify not to get pipe content |
+| `-c` | Confirm before sending the request content to AI |
+| `--edit` | Edit the request content in the terminal |
+| `--numbered` | List the data with line numbers and send it |
+
+---
 url: /mod/writer/refine.md
 ---
 # x writer refine
@@ -98734,7 +100880,6 @@ url: /mod/yum/cookbook-1.md
   *  After selecting a package, you can choose to install (install), reinstall (reinstall), view information (info), or browse the software repository.
   *  This interactive approach greatly lowers the learning threshold for new users and increases operational efficiency for advanced users.
 
-  **(Screenshot: Showcasing the interactive UI provided by x yum, where users can search and install applications)**
 
 2.  **Quick Mirror Source Switching (`x yum mirror`)**:
 
@@ -98744,7 +100889,6 @@ url: /mod/yum/cookbook-1.md
   *  `x yum mirror set <mirror source code>`: Switch to a specified mirror source (e.g., `x yum mirror set ali`).
   *  `x yum mirror unset`: Restore the official default source, ensuring you can revert back to the original settings when needed.
 
-  **(Screenshot: Demonstrating the process of switching dnf mirror sources using the x yum mirror command)**
 
 3.  **Flexible Proxy Settings (`x yum proxy`)**:
 
@@ -98812,7 +100956,7 @@ To use the `yum` module of `x-cmd`, you need to first install `x-cmd`. Please re
   x yum --help
   ```
   or
-  ```
+  ```bash
   x yum -h
   ```
 
@@ -98835,6 +100979,18 @@ To use the `yum` module of `x-cmd`, you need to first install `x-cmd`. Please re
 The `yum` module of `x-cmd` significantly enhances the usability and convenience of `yum` by offering an interactive interface, mirror source switching, proxy settings, and other features. Whether you are a Linux beginner or an experienced system administrator, `x yum` can make your package management tasks more accessible and efficient. We hope this guide helps you quickly get started with `x yum` and enjoy a more pleasant command-line experience!
 
 
+---
+url: /mod/yum/fz.md
+---
+# x yum fz
+
+Using fzf as an interactive UI to select the applications you want to install
+
+## Usage
+
+```sh
+x yum fz
+```
 ---
 url: /mod/yum/install.md
 ---
@@ -98914,18 +101070,6 @@ Reset the source to the original official
 
 ```sh
 x yum mirror|--xmirror unset
-```
----
-url: /mod/yum/nv.md
----
-# x yum nv
-
-Use the interactive UI to select which apps to install
-
-## Usage
-
-```sh
-x yum nv
 ```
 ---
 url: /mod/yum/proxy.md

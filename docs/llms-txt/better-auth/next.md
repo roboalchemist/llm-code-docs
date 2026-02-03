@@ -4,11 +4,7 @@
 
 Integrate Better Auth with Next.js.
 
-***
 
-title: Next.js integration
-description: Integrate Better Auth with Next.js.
-------------------------------------------------
 
 Better Auth can be easily integrated with Next.js. Before you start, make sure you have a Better Auth instance configured. If you haven't done that yet, check out the [installation](/docs/installation).
 
@@ -95,7 +91,13 @@ export async function ServerComponent() {
 }
 ```
 
-<Callout type="warn">As RSCs cannot set cookies, the [cookie cache](/docs/concepts/session-management#cookie-cache) will not be refreshed until the server is interacted with from the client via Server Actions or Route Handlers.</Callout>
+<Callout type="warn">
+  As RSCs cannot set cookies, the 
+
+  [cookie cache](/docs/concepts/session-management#cookie-cache)
+
+   will not be refreshed until the server is interacted with from the client via Server Actions or Route Handlers.
+</Callout>
 
 ### Server Action Cookies
 

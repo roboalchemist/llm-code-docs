@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/blueprints/toolcalling.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tool calling
 
 Connects the Agent to external tools to complete tasks it cannot handle directly.
@@ -235,14 +239,14 @@ Below are the possible end states of the block call.
       <td>Success</td>
       <td>-</td>
       <td>success</td>
-      <td>If the function doesn't raise an Exception.</td>
+      <td>The task was completed successfully.</td>
     </tr>
 
     <tr>
       <td>Error</td>
       <td>-</td>
       <td>error</td>
-      <td>If the function raises an Exception.</td>
+      <td>There was an error completing the task.</td>
     </tr>
   </tbody>
 </table>

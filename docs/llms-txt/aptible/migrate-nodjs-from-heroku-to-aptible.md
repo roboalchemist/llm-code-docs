@@ -1,74 +1,136 @@
 # Source: https://www.aptible.com/docs/how-to-guides/app-guides/migrate-nodjs-from-heroku-to-aptible.md
 
-# How to migrate a NodeJS app from Heroku to Aptible
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Guide for migrating a NodeJS app from Heroku to Aptible
+# Heroku to Aptible Migration Guide
 
-## Overview
+> A general guide for migrating applications from Heroku to Aptible, illustrated with a Node.js example
 
-Migrating applications from one PaaS to another might sound like a daunting task, but thankfully similarities between platforms makes transitioning easier than expected. However, while Heroku and Aptible are both PaaS applications with similar value props, there are some notable differences between them.
+# Overview
 
-Today, developers are often switching to Aptible to access easier turn-key compliance and security at reasonable prices with stellar scalability and reliability.
+Migrating your application from Heroku to Aptible is a relatively straightforward process. Because Heroku is also a PaaS, there are many similarities in how applications are built and operated. However, there are a few key differences, primarily in how applications are packaged, deployed, and configured.
 
-One of the most common app types that’s transitioned over is a NodeJS app. We’ll guide you through the various considerations you need to make as well as give you a step-by-step guide to transition your NodeJS app to Aptible.
+This guide focuses on those deployment and configuration differences. It is also worth noting that Aptible differs from Heroku more broadly in its strong focus on security and compliance. [Refer to the Security & Compliance docs for more information on those platform-level capabilities](https://www.aptible.com/docs/core-concepts/security-compliance/overview).
 
-## Set up
+This guide walks you through the general migration process for both your application and database, using a Node.js application with a PostgreSQL database as an example. If you are using a different framework, language, or database, most of the same steps will apply.
 
-Before starting, you should install Aptible’s CLI which will make setting configurations and deploying applications easier. The full guide on installing Aptible’s CLI can be found [here](/reference/aptible-cli/cli-commands/overview). Installing Aptible typically doesn’t take more than a few minutes.
+<Tip>
+  This guide focuses on the technical steps required to migrate from Heroku to Aptible. If you require further assistance or guidance, please [contact Aptible Support](https://app.aptible.com/support).
+</Tip>
 
-Additionally, you should [set up an Aptible account](https://dashboard.aptible.com/signup) and create an Aptible app to pair with your existing project.
+### FAQs for those migrating
 
-## Example
+<AccordionGroup>
+  <Accordion title="Why migrate from Heroku to Aptible?">
+    Aptible is a security, compliance, and reliability-focused platform as a service (PaaS). Migrating to Aptible enables you to instantly adopt a stronger security and compliance posture, with built-in support for frameworks such as HIPAA, HITRUST, and SOC 2, while maintaining the ease of use and developer experience you may already be familiar with from Heroku.
 
-We’ll be moving over a stock NodeJS application with a Postgres database. However, if you use a different database, you’ll still be able to take advantage of most of this tutorial. We chose Postgres for this example because it is the most common stack pair.
+    Teams typically migrate to Aptible when they need more robust security controls, stronger compliance guarantees, or higher reliability, without taking on the operational burden of managing their own infrastructure.
+  </Accordion>
 
-## Things to consider
+  <Accordion title="How does Aptible pricing compare to Heroku (including Heroku Shield)?">
+    If you’re coming from Heroku’s standard platform, Aptible’s pricing model will feel familiar: usage-based billing, simple line items, and no long-term lock-ins or steep minimums.
 
-While Aptible and Heroku have a lot of similarities, there are some differences in how applications are organized and deployed. We’ll summarize those in this section before moving on to a traditional step-by-step guide.
+    If you’re migrating from Heroku Shield specifically, Aptible differs in two important ways: Aptible does not require a 12-month contract, and Aptible does not enforce high minimum spend thresholds. This makes it easier to adopt without long-term financial commitments.
+  </Accordion>
+</AccordionGroup>
 
-### Aptible mandates Docker
+# Before you begin
 
-While many Heroku projects already use Docker, Heroku projects can rely on just Git and Heroku’s [Buildpacks](https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-nodejs). Because Heroku originally catered to hobbyists, supporting projects without a Dockerfile was appropriate.
+Before starting, you should:
 
-However, Aptible’s focus on production-grade deployments and evergreen reliability mean all of our adopters use containerization. Accordingly, Aptible requires Dockerfiles to build an application, even if the application isn’t using the Docker registry.
+1. **Create an Aptible account and select your plan**
 
-If you don’t have a Dockerfile already, you can easily add one.
+   [Sign up for Aptible here](https://app.aptible.com/signup) - by default, you should receive a 30-day free trial.
 
-### Similar Constraints
+   To begin your migration, you will need to select a plan:
 
-Like Heroku, Aptible only supports Linux for deployments (with all apps run inside a Docker container). Also like Heroku, Aptible only supports packets via ports 80 and 443, corresponding to TCP / HTTP and TLS / HTTPS.
+   * **Development** is intended for early-stage development and testing, when you do not yet have production security or compliance requirements.
+   * **Production** is designed for production workloads and provides access to highly secure and compliant resources, including support for frameworks such as HIPAA.
 
-If you need to use UDP, your application will need to connect to an external service that manages UDP endpoints.
+   If you are migrating an existing production application, or if you require compliance or higher security guarantees, you should select the Production plan and create a dedicated stack before migrating your resources.
+2. **Install the Aptible CLI**\
+   Install the Aptible CLI on your local machine. The CLI is used to authenticate, manage environments and apps, and deploy your code.\
+   [Install the CLI here.](/reference/aptible-cli/overview)
+3. **Review your existing Heroku setup**
 
-Additionally, like Heroku, Aptible applications are inherently ephemeral and are not expected to have persistent storage. While Aptible’s pristine state feature (which clears the app’s file system on a restart) can be disabled, it is not recommended. Instead, permanent storage should be delegated to an external service like S3 or Cloud Storage.
+   Before migrating, make note of the following details from your existing Heroku setup, as you will apply them throughout this guide:
 
-### Docker Support
+   * Application process types (web, worker, background jobs)
+   * Environment variables and secrets
+   * Add-ons such as databases, caches, or third-party services
+   * Any custom build or runtime configuration
+   * Networking or domain configuration
 
-Similar to Heroku, Aptible supports both (i) deploying applications via Dockerfile Deploy—where Aptible builds your image—or (ii) pulling a pre-built image from a Docker Registry.
+## Key considerations
 
-### Aptible doesn’t mandate Procfiles
+While Aptible and Heroku are similar in many ways, there are a few important differences in how applications are built, deployed, and run. This section highlights those differences before moving on to the step-by-step migration guide.
 
-Unlike Heroku which requires Procfiles, Aptible considers Procfiles as optional. When a Procfile is missing, Aptible will infer command via the Dockerfile’s `CMD` declaration (known as an [Implicit Service](/how-to-guides/app-guides/define-services#implicit-service-cmd)). In short, Aptible requires Dockerfiles while Heroku requires Procfiles.
+### Platform Constraints
 
-When switching over from Heroku, you can optionally keep your Procfile. Procfile syntax [is standardized](https://ddollar.github.io/foreman/) and is therefore consistent between Aptible and Heroku. Procfiles can be useful when an application has multiple services. However, you might need to change its location. If you are using the [Dockerfile Deploy](/how-to-guides/app-guides/deploy-from-git) approach, the Procfile should remain in your root director. However, if you are using [Direct Docker Image Deploy](/how-to-guides/app-guides/migrate-dockerfile-to-direct-image-deploy), the Procfile should be moved to `/.aptible/Procfile`.
+Aptible and Heroku share several operational constraints:
 
-Alternatively, for `.yaml` fans, you can use Aptible’s optional `.aptible.yml` format. Similar to Procfiles, applications using Dockerfile Deploy should store the `.aptible.yml` file in the root folder, while apps using Direct Docker Image Deploy should store them at `/.aptible/.aptible.yml`.
+* Applications run on Linux inside containers.
+* Incoming application traffic is supported over ports 80 (HTTP) and 443 (HTTPS).
+* Applications are expected to be stateless and ephemeral.
+
+If your application requires UDP or other non-HTTP protocols, it will need to integrate with an external service that manages those endpoints.
+
+Persistent storage should not be stored on the application filesystem. Instead, use managed databases, object storage (such as S3 or Cloud Storage), or other external persistence services.
+
+### Aptible requires Docker
+
+Aptible requires applications to be built and run as containers, which means every application must include a Dockerfile. If your application is not already containerized, not to worry. Adding a Dockerfile is usually straightforward, and Aptible provides guidance and examples to help you get started.
+
+Aptible supports two deployment workflows:
+
+* Deploy from Git, where you push your code to Aptible and Aptible builds the Docker image for you using your Dockerfile.
+* Deploy from a Docker image, where you build the image yourself and have Aptible pull and run it from a registry.
+
+Most teams start by deploying from Git, which provides a Heroku-like experience while still benefiting from containerization. If you need more control over your build process, you can switch to deploying prebuilt images later.
+
+If you do not yet have a Dockerfile, refer to the [Getting Started with Docker guide](https://www.aptible.com/docs/how-to-guides/app-guides/getting-started-with-docker).
+
+### Procfiles are optional
+
+Heroku requires a Procfile to define application processes. Aptible does not.
+
+If no Procfile is present, Aptible will infer the service command from the Dockerfile CMD instruction. This is referred to as an [Implicit Service](https://www.aptible.com/docs/how-to-guides/app-guides/define-services#how-to-define-services).
+
+You can continue using a Procfile if your application has multiple services or process types. Procfile syntax is standardized and compatible between Heroku and Aptible.
+
+Depending on your deployment method, the Procfile location differs:
+
+* Dockerfile Deploy: keep the Procfile in the repository root.
+* Direct Docker Image Deploy: move the Procfile to `.aptible/Procfile`.
+
+Alternatively, you can use Aptible’s optional `.aptible.yml` configuration file. Its placement follows the same rules:
+
+* Root directory for Dockerfile Deploy
+* `.aptible/.aptible.yml` for Direct Docker Image Deploy
 
 ### Private Registry Authentication
 
-If you are using Docker’s private registries, you’ll need to authorize Aptible to pull images from those private registries.
+If you deploy images from a private Docker registry, you must configure Aptible with credentials that allow it to pull your images. This is done using environment variables or the Aptible CLI before deploying.
 
-## Step-by-step guide
+# Step-by-step guide
 
-### 1. Create a Dockerfile (if you don’t have one already)
+This section walks through a typical Heroku to Aptible migration. We’ll use a Node.js app with PostgreSQL as an example, but the same workflow applies to most applications.
 
-For users that don’t have a Dockerfile, you can create a Dockerfile by running
+### 1. Add a Dockerfile (if you don’t have one already)
+
+Aptible requires a Dockerfile. If your Heroku app used buildpacks and did not include one, you’ll need to add it before deploying.
+
+**Node.js example Dockerfile**
+
+Create a Dockerfile:
 
 ```node  theme={null}
 touch Dockerfile
 ```
 
-Next, we can add some contents, such as stating a node runtime, establishing a work directory, and commands to install packages.
+Next, add some contents, such as stating a node runtime, establishing a work directory, and commands to install packages.
 
 ```node  theme={null}
 FROM node:lts
@@ -89,7 +151,7 @@ We also want to expose the right port. For many Node applications, this is port 
 EXPOSE 3000
 ```
 
-Finally, we want to introduce a command for starting an application. We will use Docker’s `CMD` utility to accomplish this. `CMD` accepts an array of individual words. For instance, for **npm start** we could do:
+Finally, we want to introduce a command for starting an application. We will use Docker’s `CMD` utility to accomplish this. `CMD` accepts an array of individual words. For instance, for **npm start,** we could do:
 
 ```js  theme={null}
 CMD [ "npm", "start" ]
@@ -116,29 +178,36 @@ ARG DATABASE_URL
 CMD [ "npm", "start" ]
 ```
 
-### 2. Move over Procfiles (if applicable)
+### 2. Migrate over Procfiles (if applicable)
 
-If you wish to still use your Procfile and also want to use Docker’s registry, you need to move your Procfile’s location into inside the `.aptible` folder. We can do this by running:
+Heroku typically uses a Procfile to define process types (e.g., `web`, `worker`). Aptible supports Procfiles, but they are optional.
+
+* If you do not use a Procfile, Aptible will infer the command from your Dockerfile `CMD`.
+* If you do use a Procfile, you can keep using it.
+
+If you are deploying via Git deploy, keep the Procfile in the repository root.
+
+If you are deploying via Direct Docker Image Deploy, move your Procfile to `.aptible/Procfile`:
 
 ```js  theme={null}
 mkdir .aptible #if it doesn't exist yet
-cp Profile /.aptible/Procfile
+cp Procfile /.aptible/Procfile
 ```
 
 ### 3. Set up Aptible’s remote
 
-Assuming you followed Aptible’s instructions to [provision your account](/getting-started/deploy-custom-code) and grant SSH access, you are ready to set Aptible as a remote.
+If you haven’t already, provision an environment and app in the Aptible UI. Then add the Aptible Git remote.
 
 ```bash  theme={null}
 git remote add aptible <your remote url> 
 #your remote should look like ~ git@beta.aptible.com:<env name>/<app name>.git
 ```
 
-### 4. Migrating databases
+### 4. Migrate your databases
 
-If you previously used Heroku PostgreSQL you’ll find comfort in Aptible’s [managed database solution](https://www.aptible.com/product#databases), which supports PostgreSQL, Redis, Elasticsearch, InfluxDB, mySQL, and MongoDB. Similar to Heroku, Aptible supports automated backups, replicas, failover logic, encryption, network isolation, and automated scaling.
+If your Heroku app uses a database (such as Heroku Postgres), you’ll migrate that data into a new [Aptible-managed database](https://www.aptible.com/docs/core-concepts/managed-databases/overview). Similar to Heroku, Aptible supports automated backups, replicas, failover logic, encryption, network isolation, and automated scaling.
 
-Of course, beyond provisioning a new database, you will need to migrate your data from Heroku to Aptible. You may also want to put your database on maintenance mode when doing this to avoid additional data being written to the database during the process. You can accomplish that by running:
+Beyond provisioning a new database, you will need to migrate your data from Heroku to Aptible. You may also want to put your database in maintenance mode when doing this to avoid additional data from being written to it during the process. You can accomplish that by running:
 
 ```bash  theme={null}
 heroku maintenance:on --app <APP_NAME>
@@ -175,15 +244,13 @@ aptible db:create "new_database" \
   --container-size "4096"
 ```
 
-You can use your current environment, or [create a new environment](/core-concepts/architecture/environments). Then, we will use the Aptible CLI to connect to the database.
+You can use your current environment or [create a new environment](/core-concepts/architecture/environments). Then, we will use the Aptible CLI to connect to the database.
 
 ```bash  theme={null}
 aptible db:tunnel "new_database" --environment "my_environment"
 ```
 
-This should return the tunnel’s URL, e.g.:
-
-<img src="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node-heroku-aptible.png?fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=d9df353b08a7b033e8bdbec48b3be8ce" alt="" data-og-width="2000" width="2000" data-og-height="1125" height="1125" data-path="images/node-heroku-aptible.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node-heroku-aptible.png?w=280&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=b9e0f8d01302e69d65f977fc03c4ea86 280w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node-heroku-aptible.png?w=560&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=11e7bf1ec1ae19fb76773680b1eaace6 560w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node-heroku-aptible.png?w=840&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=e6dfe0ef50f8c6de69ee74bdb2107826 840w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node-heroku-aptible.png?w=1100&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=598d5988509893ff51b2e1b8cb679b55 1100w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node-heroku-aptible.png?w=1650&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=ba2aaaf476fad1a11ad5143af224e82f 1650w, https://mintcdn.com/aptible/opX5eNKf32ujRi0n/images/node-heroku-aptible.png?w=2500&fit=max&auto=format&n=opX5eNKf32ujRi0n&q=85&s=862080b8de18f0b9777a96af0b59cb0d 2500w" />
+This should return the tunnel’s URL.
 
 Keeping the session open, open a new Terminal tab and store the tunnel’s URL as an environment variable:
 
@@ -242,4 +309,6 @@ If the image URL is consistent, you can skip the `--docker-image` tag on subsequ
 
 ## Closing Thoughts
 
-And that’s it! Moving from Heroku to Aptible is actually a fairly simple process. With some modified configurations, you can switch PaaS platforms in less than a day.
+For most teams, migrating from Heroku to Aptible is a same-day process. The core steps are adding a Dockerfile, migrating your data, updating configuration, and deploying your app.
+
+Once complete, your application runs on a platform designed for security, compliance, and reliability, while preserving the simplicity and developer experience you expect from a managed PaaS.

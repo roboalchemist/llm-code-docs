@@ -1,3 +1,7 @@
+# Source: https://docs.datadoghq.com/security/code_security/static_analysis/github_actions.md
+
+# Source: https://docs.datadoghq.com/security/code_security/secret_scanning/github_actions.md
+
 # Source: https://docs.datadoghq.com/continuous_testing/cicd_integrations/github_actions.md
 
 ---
@@ -6,7 +10,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Continuous Testing > Continuous Testing and CI/CD > Continuous Testing
   and CI GitHub Actions
-source_url: https://docs.datadoghq.com/cicd_integrations/github_actions/index.html
 ---
 
 # Continuous Testing and CI GitHub Actions

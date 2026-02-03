@@ -18,13 +18,9 @@ The ColorModeSwitch component extends the [Switch](/docs/components/switch) comp
 
 ### With custom icons
 
-<framework-only>
-<template v-slot:nuxt="">
-<div>
-
-Use the `app.config.ts` to customize the icon with the `ui.icons` property:
-
-```ts [app.config.ts]
+**Nuxt:**
+Use the app.config.ts to customize the icon with the ui.icons property:
+```ts
 export default defineAppConfig({
   ui: {
     icons: {
@@ -33,17 +29,12 @@ export default defineAppConfig({
     }
   }
 })
+
 ```
 
-</div>
-</template>
-
-<template v-slot:vue="">
-<div>
-
-Use the `vite.config.ts` to customize the icon with the `ui.icons` property:
-
-```ts [vite.config.ts]
+**Vue:**
+Use the vite.config.ts to customize the icon with the ui.icons property:
+```ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import ui from '@nuxt/ui/vite'
@@ -61,11 +52,8 @@ export default defineConfig({
     })
   ]
 })
-```
 
-</div>
-</template>
-</framework-only>
+```
 
 ## API
 
@@ -106,7 +94,7 @@ interface ColorModeSwitchProps {
   /**
    * The icon when the `loading` prop is `true`.
    */
-  loadingIcon?: string | object | undefined;
+  loadingIcon?: any;
   /**
    * The state of the switch when it is initially rendered. Use when you do not need to control its state.
    */
@@ -126,8 +114,4 @@ interface ColorModeSwitchProps {
 
 ## Changelog
 
-<component-changelog prefix="color-mode">
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

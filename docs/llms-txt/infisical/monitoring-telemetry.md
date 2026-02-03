@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/self-hosting/guides/monitoring-telemetry.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Monitoring and Telemetry Setup
 
 > Learn how to set up monitoring and telemetry for your self-hosted Infisical instance using Grafana, Prometheus, and OpenTelemetry.
@@ -491,6 +495,35 @@ These metrics track authentication attempts and outcomes, enabling you to monito
     * `client.address` (string): IP address
     * `user_agent.original` (string, optional): User agent/client information
     * `infisical.auth.attempt.username` (string, optional): Attempted username/email (if available)
+  </Accordion>
+</AccordionGroup>
+
+### Key Management Interoperability Protocol Metrics
+
+These metrics track Key Management Interoperability Protocol (KMIP) operations, providing visibility into key management activities including key creation, retrieval, activation, revocation, and destruction.
+
+<AccordionGroup>
+  <Accordion title="KMIP Operations">
+    **Metric Name**: `infisical.kmip.operation.count`
+
+    **Type**: Counter
+
+    **Unit**: `{operation}`
+
+    **Description**: Number of KMIP operations performed
+
+    **Attributes**:
+
+    * `infisical.kmip.operation.type` (string): Operation type (`create`, `get`, `get_attributes`, `activate`, `revoke`, `destroy`, `locate`, `register`)
+    * `infisical.organization.id` (string): Organization ID
+    * `infisical.project.id` (string): Project ID
+    * `infisical.kmip.client.id` (string): KMIP client ID performing the operation
+    * `infisical.kmip.object.id` (string, optional): Managed object/key ID
+    * `infisical.kmip.object.name` (string, optional): Managed object/key name
+    * `infisical.identity.id` (string, optional): Machine identity ID
+    * `infisical.identity.name` (string, optional): Machine identity name
+    * `user_agent.original` (string, optional): User agent string
+    * `client.address` (string, optional): Client IP address
   </Accordion>
 </AccordionGroup>
 

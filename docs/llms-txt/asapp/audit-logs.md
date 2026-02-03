@@ -1,12 +1,16 @@
 # Source: https://docs.asapp.com/getting-started/setup/audit-logs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Audit Logs
 
 > Learn how to view, search, and export audit logs to track changes in AI Console.
 
 All activities in AI Console are saved as events and are viewable in audit logs. These logs provide a detailed record of configuration changes made in AI-Console for AI Services and ASAPP Messaging.
 
-These records are saved indefinitely, providing administrators with a comprehensive historical view of changes made to ASAPP services, including when they were made and by whom.
+The system saves these records indefinitely, providing administrators with a comprehensive historical view of changes made to ASAPP services, including when they were made and by whom.
 
 Administrators of your ASAPP organization can access audit logs.
 
@@ -33,22 +37,22 @@ The following list displays the resources being tracked:
 * **Virtual Agent**
   * Flows
   * Intent routing
-* **AutoCompose**
+* **AI Compose**
   * Global responses
 
 ## Audit Logs Entries
 
-For each audit log record, the following fields are recorded:
+For each audit log record, the system records the following fields:
 
-| Field         | Description                                                                           |
-| :------------ | :------------------------------------------------------------------------------------ |
-| Resource type | Type of resource modified.                                                            |
-| Resource name | Name of the resource modified.                                                        |
-| Event type    | Type of event. Supported fields are create, deploy, undeploy, update, and delete.     |
-| Environment   | Environment to which the resource was deployed to. Only applicable for deploy events. |
-| User          | Name of user who caused the event.                                                    |
-| Timestamp     | Time and date the event occurred, in UTC format.                                      |
-| Unique ID     | (Optional) Unique identifier for the resource.                                        |
+| Field         | Description                                                                       |
+| :------------ | :-------------------------------------------------------------------------------- |
+| Resource type | Type of resource modified.                                                        |
+| Resource name | Name of the resource modified.                                                    |
+| Event type    | Type of event. Supported fields are create, deploy, undeploy, update, and delete. |
+| Environment   | Environment where you deployed the resource. Only applicable for deploy events.   |
+| User          | Name of user who caused the event.                                                |
+| Timestamp     | Time and date the event occurred, in UTC format.                                  |
+| Unique ID     | (Optional) Unique identifier for the resource.                                    |
 
 ## Searching Audit Logs
 
@@ -86,4 +90,4 @@ To download the audit logs as a .csv file:
 1. Navigate to the Audit Logs section in AI Console.
 2. Click on the download button, next to the search bar.
 
-Data in audit logs will be recorded from the time the feature is enabled. Historical activity will not be displayed retroactively.
+The system will record data in audit logs from the time the feature is enabled. The system will not display historical activity retroactively.

@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/monitors/prediction-drift.md
 
-# Source: https://docs.aporia.com/monitors-and-alerts/prediction-drift.md
-
-# Source: https://docs.aporia.com/v1/monitors/prediction-drift.md
-
 # Prediction Drift
 
 ### Why Monitor Prediction Drift?

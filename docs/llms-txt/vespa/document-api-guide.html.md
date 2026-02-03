@@ -30,7 +30,7 @@ Use [DocumentAccess](https://javadoc.io/doc/com.yahoo.vespa/documentapi/latest/c
     <dependency>
         <groupId>com.yahoo.vespa</groupId>
         <artifactId>documentapi</artifactId>
-        <version>8.617.12</version> <!-- Find latest version at[search.maven.org/search?q=g:com.yahoo.vespa%20a:documentapi](https://search.maven.org/search?q=g:com.yahoo.vespa%20a:documentapi)-->
+        <version>8.634.24</version> <!-- Find latest version at[search.maven.org/search?q=g:com.yahoo.vespa%20a:documentapi](https://search.maven.org/search?q=g:com.yahoo.vespa%20a:documentapi)-->
     </dependency>
 <dependencies>
 ```
@@ -470,7 +470,7 @@ public class MyClient {
 
 The first optional argument to this client is the [route](document-routing.html) of the cluster to visit. The second is the [fieldset](../schemas/documents.html#fieldsets) set to retrieve.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

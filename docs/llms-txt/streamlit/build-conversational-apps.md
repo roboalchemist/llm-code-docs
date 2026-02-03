@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/tutorials/chat-and-llm-apps/build-conversational-apps
+
 # Build a basic LLM chat app
 
 ## Introduction

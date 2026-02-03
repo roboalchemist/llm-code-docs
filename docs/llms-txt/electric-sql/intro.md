@@ -2,30 +2,31 @@
 
 ---
 url: /docs/intro.md
-description: Welcome to the ElectricSQL developer documentation!
+description: 'How to build fast, modern, collaborative apps with the Electric stack.'
 ---
 
 # Documentation
 
-Welcome to the ElectricSQL developer documentation!
+How to build [fast, modern, collaborative apps](/sync) with the Electric stack.
 
-ElectricSQL is a Postgres sync engine. Use it to sync [subsets](/docs/guides/shapes) of your Postgres data into [local apps](/use-cases/data-sync), services and [environments](/use-cases/dev-and-test).
+## Getting started
 
-> \[!Tip] 🔥 TanStack DB - now in BETA!
-> [Introducing TanStack DB](/blog/2025/07/29/local-first-sync-with-tanstack-db) - a reactive client store for building super fast apps on sync!
+Start with the [Quickstart](/docs/quickstart) for the fastest way to get up-and-running.
 
-## New to ElectricSQL?
+The easiest way to use Electric in production is the [Electric Cloud](/cloud). Alternatively, the [Deployment](/docs/guides/deployment) guide covers how to self host.
 
-Start with the [Quickstart](/docs/quickstart) to get up-and-running.
+## What's documented where?
 
-The [HTTP API](/docs/api/http) and [TypeScript Client](/docs/api/clients/typescript) docs and the guides on [Auth](/docs/guides/auth) and [Shapes](/docs/guides/shapes) are good entrypoints and helpful to understand how Electric works.
+> \[!Warning] 🔭  Product documentation is split across multiple sites
+> It's worth taking a moment to understand what's documented where.
 
-The [TanStack integration page](/docs/integrations/tanstack) then links to resources showing how to build super fast apps with Electric and TanStack DB.
+This website contains the main documentation for [Postgres Sync](/products/postgres-sync).
 
-The easiest way to use Electric in production is the [Electric Cloud](/product/cloud). Alternatively, the [Deployment](/docs/guides/deployment) guide covers how to self host.
+Usage examples and recipes often use Postgres Sync together with [TanStack DB](/products/tanstack-db). Guides like [Auth](/docs/guides/auth) and [Security](/docs/guides/security) are also generally relevant for [Durable Streams](/products/durable-streams).
 
-> \[!warning] Looking for TanStack DB or PGlite?
-> TanStack DB docs are at [tanstack.com/db](https://tanstack.com/db) and PGlite docs are at [pglite.dev/docs](https://pglite.dev/docs).
+### Project websites
+
+[Durable Streams](/products/durable-streams), [TanStack DB](/products/tanstack-db) and [PGlite](/products/pglite) each have their own docs:
 
 ## Examples
 
@@ -35,7 +36,7 @@ The integration docs also illustrate common patterns, e.g. using Electric with f
 
 ## Source code
 
-ElectricSQL is an open source project developed at [github.com/electric-sql](https://github.com/electric-sql). Check out the source code, issues and development in progress there.
+Electric is an open source project developed at [github.com/electric-sql](https://github.com/electric-sql). Check out the source code, issues and development in progress there.
 
 ## Support
 

@@ -1,12 +1,16 @@
 # Source: https://trigger.dev/docs/config/extensions/additionalFiles.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Additional Files
 
 > Use the additionalFiles build extension to copy additional files to the build directory
 
 Import the `additionalFiles` build extension and use it in your `trigger.config.ts` file:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { additionalFiles } from "@trigger.dev/build/extensions/core";
 
@@ -28,7 +32,7 @@ This extension effects both the `dev` and the `deploy` commands, and the resulti
 
 If you use `legacyDevProcessCwdBehaviour: false`, you can then do this:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import path from "node:path";
 
 // You can use `process.cwd()` if you use `legacyDevProcessCwdBehaviour: false`

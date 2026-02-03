@@ -6,9 +6,8 @@ description: >-
   Understand Agent filesystem writes and configure for read-only root filesystem
   container environments
 breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Running the Datadog Agent
-  with a Read-Only Root Filesystem (ROFS)
-source_url: https://docs.datadoghq.com/guide/readonly-root-filesystem/index.html
+  Docs > Containers > Containers Guides > Running the Datadog Agent with a
+  Read-Only Root Filesystem (ROFS)
 ---
 
 # Running the Datadog Agent with a Read-Only Root Filesystem (ROFS)

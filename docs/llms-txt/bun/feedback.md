@@ -1,14 +1,16 @@
 # Source: https://bun.com/docs/feedback.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Feedback
 
 > Share feedback, bug reports, and feature requests
 
 Whether you've found a bug, have a performance issue, or just want to suggest an improvement, here's how you can open a helpful issue:
 
-<Callout icon="discord">
-  For general questions, please join our [Discord](https://discord.com/invite/CXdq2DP29u).
-</Callout>
+<Callout icon="discord">For general questions, please join our [Discord](https://bun.com/discord).</Callout>
 
 ## Reporting Issues
 
@@ -57,9 +59,7 @@ Whether you've found a bug, have a performance issue, or just want to suggest an
       <Note>
         * For MacOS and Linux: copy the output of `uname -mprs`
         * For Windows: copy the output of this command in the powershell console:
-          ```powershell  theme={"theme":{"light":"github-light","dark":"dracula"}}
-          	"$([Environment]::OSVersion | ForEach-Object VersionString) $(if ([Environment]::Is64BitOperatingSystem) { "x64" } else { "x86" })"
-          ```
+          `"$([Environment]::OSVersion | ForEach-Object VersionString) $(if ([Environment]::Is64BitOperatingSystem) { "x64" } else { "x86" })"`
       </Note>
   </Step>
 </Steps>
@@ -79,23 +79,3 @@ echo "please document X" | bun feedback --email you@example.com
 ```
 
 You can provide feedback as text arguments, file paths, or piped input.
-
-***
-
-## CLI Usage
-
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun feedback [options] [feedback text ... | files ...]
-```
-
-### Contact Information
-
-<ParamField path="--email" type="string">
-  Set the email address used for this submission. Alias: <code>-e</code>
-</ParamField>
-
-### Help
-
-<ParamField path="--help" type="boolean">
-  Show this help message and exit. Alias: <code>-h</code>
-</ParamField>

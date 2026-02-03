@@ -2,10 +2,7 @@
 
 # List Organization Members
 
-```
-GET 
-/v1/organizations/:organizationId/members
-```
+Copy page
 
 deprecated
 

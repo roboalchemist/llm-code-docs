@@ -8,31 +8,7 @@
 
 # Source: https://docs.livekit.io/agents/models/stt/plugins/google.md
 
-# Source: https://docs.livekit.io/agents/models/tts/plugins/google.md
-
-# Source: https://docs.livekit.io/agents/integrations/google.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/google.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/google.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/google.md
-
-# Source: https://docs.livekit.io/agents/integrations/google.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/google.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/google.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/google.md
-
-# Source: https://docs.livekit.io/agents/integrations/google.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/google.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/google.md
-
-LiveKit docs › Partner spotlight › Google › Google Cloud STT Plugin
+LiveKit docs › Models › STT › Plugins › Google
 
 ---
 
@@ -57,7 +33,7 @@ This section includes a basic usage example and some reference material. For lin
 Install the plugin from PyPI:
 
 ```shell
-uv add "livekit-agents[google]~=1.2"
+uv add "livekit-agents[google]~=1.3"
 
 ```
 
@@ -118,7 +94,7 @@ The following resources provide more information about using Google Cloud with L
 
 ---
 
-This document was rendered at 2025-11-18T23:55:08.180Z.
+This document was rendered at 2026-02-03T03:25:03.597Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/stt/plugins/google.md](https://docs.livekit.io/agents/models/stt/plugins/google.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

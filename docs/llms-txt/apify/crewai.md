@@ -8,21 +8,21 @@
 
 ## What is CrewAI
 
-https://www.crewai.com/ is an open-source Python framework designed to orchestrate autonomous, role-playing AI agents that collaborate as a "crew" to tackle complex tasks. It enables developers to define agents with specific roles, assign tasks, and integrate tools—like Apify Actors—for real-world data retrieval and automation.
+[CrewAI](https://www.crewai.com/) is an open-source Python framework designed to orchestrate autonomous, role-playing AI agents that collaborate as a "crew" to tackle complex tasks. It enables developers to define agents with specific roles, assign tasks, and integrate tools—like Apify Actors—for real-world data retrieval and automation.
 
 Explore CrewAI
 
-For more in-depth details on CrewAI, check out its https://docs.crewai.com/.
+For more in-depth details on CrewAI, check out its [official documentation](https://docs.crewai.com/).
 
 ## How to use Apify with CrewAI
 
-This guide demonstrates how to integrate Apify Actors with CrewAI by building a crew of agents that uses the https://apify.com/apify/rag-web-browser Actor to search Google for TikTok profiles and the https://apify.com/clockworks/free-tiktok-scraper Actor to extract and analyze data from the TikTok profiles.
+This guide demonstrates how to integrate Apify Actors with CrewAI by building a crew of agents that uses the [RAG Web Browser](https://apify.com/apify/rag-web-browser) Actor to search Google for TikTok profiles and the [TikTok Data Extractor](https://apify.com/clockworks/free-tiktok-scraper) Actor to extract and analyze data from the TikTok profiles.
 
 ### Prerequisites
 
-* **Apify API token**: To use Apify Actors in CrewAI, you need an Apify API token. Learn how to obtain it in the https://docs.apify.com/platform/integrations/api.
+* **Apify API token**: To use Apify Actors in CrewAI, you need an Apify API token. Learn how to obtain it in the [Apify documentation](https://docs.apify.com/platform/integrations/api).
 
-* **OpenAI API key**: To power the agents in CrewAI, you need an OpenAI API key. Get one from the https://platform.openai.com/account/api-keys.
+* **OpenAI API key**: To power the agents in CrewAI, you need an OpenAI API key. Get one from the [OpenAI platform](https://platform.openai.com/account/api-keys).
 
 * **Python packages**: Install the following Python packages:
 
@@ -215,7 +215,7 @@ print(result)
 
 ## Resources
 
-* https://docs.apify.com/platform/actors
-* https://docs.crewai.com/
-* https://blog.apify.com/what-are-ai-agents/
-* https://blog.apify.com/how-to-build-an-ai-agent/
+* [Apify Actors](https://docs.apify.com/platform/actors)
+* [CrewAI Documentation](https://docs.crewai.com/)
+* [What are AI agents?](https://blog.apify.com/what-are-ai-agents/)
+* [How to build an AI agent](https://blog.apify.com/how-to-build-an-ai-agent/)

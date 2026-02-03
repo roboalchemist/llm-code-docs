@@ -4,11 +4,7 @@
 
 A step-by-step guide to transitioning from Auth0 to Better Auth.
 
-***
 
-title: Migrating from Auth0 to Better Auth
-description: A step-by-step guide to transitioning from Auth0 to Better Auth.
------------------------------------------------------------------------------
 
 In this guide, we'll walk through the steps to migrate a project from Auth0 to Better Auth â including email/password with proper hashing, social/external accounts, two-factor authentication, and more.
 
@@ -26,7 +22,7 @@ Before starting the migration process, set up Better Auth in your project. Follo
 
     You'll need to connect to your database to migrate the users and accounts. You can use any database you want, but for this example, we'll use PostgreSQL.
 
-    <CodeBlockTabs defaultValue="npm">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
       <CodeBlockTabsList>
         <CodeBlockTabsTrigger value="npm">
           npm

@@ -254,6 +254,8 @@ url: /guide/devtool.md
 
 Lynx DevTool is a collection of performance and debugging tools for Lynx apps.
 
+You need to [integrate DevTool](/guide/start/integrate-lynx-devtool.md) into your Lynx pages, and then connect to the device via the [DevTool Desktop Application](#run-lynx-devtool-desktop-application) to debug the page.
+
 <video src="https://lf-lynx.tiktok-cdns.com/obj/lynx-artifacts-oss-sg/lynx-website/assets/devtool-overview.mp4" loop autoPlay muted />
 
 ## Experience Lynx DevTool
@@ -317,6 +319,10 @@ For Android devices, in addition to ensuring a data cable connection, you also n
 
 You can try launching Xcode or Android Studio to compile and run an application to verify that you can connect to the device properly.
 
+## Compatibility
+
+
+**Error:** No compatibility data found for `devtool.integration.connection`
 ## Provide Feedback
 
 Welcome to experience Lynx DevTool. If you need a hand, please file an issue in [Lynx Issues](https://github.com/lynx-family/lynx-devtool/issues). Thank you!
@@ -742,6 +748,10 @@ You can use any of the following workflows to clear the Console:
 - When the Console is in focus, press Control+L or Command+K.
   <img src="https://lf-lynx.tiktok-cdns.com/obj/lynx-artifacts-oss-sg/lynx-website/assets/console/clear-console.png" alt="Clear console" style={{ width: 800 }} />
 
+## Compatibility
+
+
+**Error:** No compatibility data found for `devtool.panels.console`
 
 
 ---
@@ -980,6 +990,15 @@ The **Styles** pane will list properties in the `Inherited from <element-name>` 
 
 <img src="https://lf-lynx.tiktok-cdns.com/obj/lynx-artifacts-oss-sg/lynx-website/assets/elements/css-check3.png" class="full_image" />
 
+## Compatibility
+
+
+### View and Edit
+
+**Error:** No compatibility data found for `devtool.panels.elements.view-and-edit`
+### Preview
+
+**Error:** No compatibility data found for `devtool.panels.elements.preview`
 
 
 ---
@@ -1061,6 +1080,23 @@ To move the chart, do the following:
 To view the element corresponding to the layer in the **Elements** panel, right-click on the corresponding layer in the chart or layer tree, and then click **Reveal in Elements panel**.
 
 <img src="https://lf-lynx.tiktok-cdns.com/obj/lynx-artifacts-oss-sg/lynx-website/assets/layers/layer-element.png" class="full_image" />
+
+## Compatibility
+
+
+**Compatibility Table**
+**Query:** `devtool.panels.layers`
+
+**Platform Support**
+
+| Platform | Version Added | Notes |
+|----------|---------------|-------|
+| Android | 3.0 | - |
+| iOS | 3.0 | - |
+| HarmonyOS | 3.0 | - |
+
+**Description:** View page layers
+
 
 
 
@@ -1695,6 +1731,15 @@ To enable main thread debugging:
 
 In the **Threads** pane, you can switch between debugging the main thread or the background thread. The blue arrow icon represents which context is selected. The currently paused thread will be marked as **paused**.
 
+## Compatibility
+
+
+### Breakpoints
+
+**Error:** No compatibility data found for `devtool.panels.sources.breakpoints`
+### JS Engine
+
+**Error:** No compatibility data found for `devtool.panels.sources.JSEngine`
 
 
 ---
@@ -2061,6 +2106,23 @@ Trace is a multidimensional performance analysis platform:
 <NextSteps.Root>
   <NextSteps.Step href="/guide/devtool/trace/record-trace" title="Record Trace" description="Learn how to record a trace" />
 </NextSteps.Root>
+
+## Compatibility
+
+
+**Compatibility Table**
+**Query:** `devtool.trace`
+
+**Platform Support**
+
+| Platform | Version Added | Notes |
+|----------|---------------|-------|
+| Android | 3.4 | - |
+| iOS | 3.4 | - |
+| HarmonyOS | 3.4 | - |
+
+**Description:** Trace Tool
+
 
 
 
@@ -8131,11 +8193,11 @@ You can find the development version corresponding to your release version at [g
       Update your `Podfile` to use the dev version of the Lynx component.
 
       ```ruby title="Podfile"
-      pod 'Lynx', '3.4.1' # [!code --]
-      pod 'Lynx', '3.4.1-dev' # [!code ++]
+      pod 'Lynx', '3.6.0' # [!code --]
+      pod 'Lynx', '3.6.0-dev' # [!code ++]
 
-      pod 'LynxDevtool', '3.4.1' # [!code --]
-      pod 'LynxDevtool', '3.4.1-dev' # [!code ++]
+      pod 'LynxDevtool', '3.6.0' # [!code --]
+      pod 'LynxDevtool', '3.6.0-dev' # [!code ++]
       ```
 
       ### Install Dependencies
@@ -8161,17 +8223,17 @@ You can find the development version corresponding to your release version at [g
       <Tabs groupId="impl-android">
         <Tab label="build.gradle">
           ```groovy
-          - implementation ("org.lynxsdk.lynx:lynx:3.4.1")
-          + implementation ("org.lynxsdk.lynx:lynx:3.4.1-dev") {
+          - implementation ("org.lynxsdk.lynx:lynx:3.6.0")
+          + implementation ("org.lynxsdk.lynx:lynx:3.6.0-dev") {
           +   // Exclude the lynx-trace module to avoid including it transitively
           +  exclude group: 'org.lynxsdk.lynx', module: 'lynx-trace'
           + }
 
-          - implementation ("org.lynxsdk.lynx:lynx-trace:3.4.1")
-          + implementation ("org.lynxsdk.lynx:lynx-trace:3.4.1-dev")
+          - implementation ("org.lynxsdk.lynx:lynx-trace:3.6.0")
+          + implementation ("org.lynxsdk.lynx:lynx-trace:3.6.0-dev")
 
-          - implementation ("org.lynxsdk.lynx:lynx-devtool:3.4.1")
-          + implementation ("org.lynxsdk.lynx:lynx-devtool:3.4.1") {
+          - implementation ("org.lynxsdk.lynx:lynx-devtool:3.6.0")
+          + implementation ("org.lynxsdk.lynx:lynx-devtool:3.6.0") {
           +   // Exclude the lynx-trace and lynx module to avoid including it transitively
           +   exclude group: 'org.lynxsdk.lynx', module: 'lynx-trace'
           +   exclude group: 'org.lynxsdk.lynx', module: 'lynx'
@@ -8183,17 +8245,17 @@ You can find the development version corresponding to your release version at [g
         <Tab label="build.gradle.kts">
           ```kotlin
 
-          - implementation ("org.lynxsdk.lynx:lynx:3.4.1")
-          + implementation ("org.lynxsdk.lynx:lynx:3.4.1-dev") {
+          - implementation ("org.lynxsdk.lynx:lynx:3.6.0")
+          + implementation ("org.lynxsdk.lynx:lynx:3.6.0-dev") {
           +   // Exclude the lynx-trace module to avoid including it transitively
           +  exclude(group = "org.lynxsdk.lynx", module = "lynx-trace")
           + }
 
-          - implementation ("org.lynxsdk.lynx:lynx-trace:3.4.1")
-          + implementation ("org.lynxsdk.lynx:lynx-trace:3.4.1-dev")
+          - implementation ("org.lynxsdk.lynx:lynx-trace:3.6.0")
+          + implementation ("org.lynxsdk.lynx:lynx-trace:3.6.0-dev")
 
-          - implementation ("org.lynxsdk.lynx:lynx-devtool:3.4.1")
-          + implementation ("org.lynxsdk.lynx:lynx-devtool:3.4.1") {
+          - implementation ("org.lynxsdk.lynx:lynx-devtool:3.6.0")
+          + implementation ("org.lynxsdk.lynx:lynx-devtool:3.6.0") {
           +   // Exclude the lynx-trace and lynx module to avoid including it transitively
           +   exclude(group = "org.lynxsdk.lynx", module = "lynx-trace")'
           +   exclude(group = 'org.lynxsdk.lynx', module = 'lynx')
@@ -8225,10 +8287,10 @@ You can find the development version corresponding to your release version at [g
 
       ```json5
       "dependencies": {
-        "@lynx/lynx": "3.5.1", // [!code --]
-        "@lynx/lynx_devtool": "3.5.1", // [!code --]
-        "@lynx/lynx": "3.5.1-dev", // [!code ++]
-        "@lynx/lynx_devtool": "3.5.1-dev", // [!code ++]
+        "@lynx/lynx": "3.6.0", // [!code --]
+        "@lynx/lynx_devtool": "3.6.0", // [!code --]
+        "@lynx/lynx": "3.6.0-dev", // [!code ++]
+        "@lynx/lynx_devtool": "3.6.0-dev", // [!code ++]
       }
       ```
 
@@ -8463,6 +8525,10 @@ We provide a switch page that helps you quickly view or set DevTool. If you want
 
 You can also customize the page according to your needs, making the configuration of DevTool more diverse.
 
+## Compatibility
+
+
+**Error:** No compatibility data found for `devtool.integration.switch`
 
 
 ---
@@ -8475,10 +8541,12 @@ When encountering issues during Lynx page development, you can use [DevTool](/gu
 However, you need to follow these steps to integrate DevTool first.
 
 :::info
-
 It is recommended to integrate DevTool in non-production environments to keep your production builds lightweight.
-All code examples in this documentation can be found in the [integrating-lynx-demo-projects](https://github.com/lynx-family/integrating-lynx-demo-projects/tree/main).
 
+- **Package size**: DevTool will increase the package size.
+- **Runtime**: Related modules are lazy loaded when enabled, which will increase memory overhead, and some features may affect the loading performance.
+
+All code examples in this documentation can be found in the [integrating-lynx-demo-projects](https://github.com/lynx-family/integrating-lynx-demo-projects/tree/main).
 :::
 
 <PlatformTabs queryKey="platform">
@@ -8491,10 +8559,10 @@ All code examples in this documentation can be found in the [integrating-lynx-de
       ```ruby title="Podfile" {8,11}
       # Ensure Lynx DevTool version matches the Lynx version when integrating
       target 'YourTarget' do
-        pod 'LynxService', '3.4.1', :subspecs => [
+        pod 'LynxService', '3.6.0', :subspecs => [
             'Devtool',
         ]
-        pod 'LynxDevtool', '3.4.1'
+        pod 'LynxDevtool', '3.6.0'
       end
       ```
 
@@ -8583,8 +8651,8 @@ All code examples in this documentation can be found in the [integrating-lynx-de
           ```groovy
           // Ensure Lynx DevTool version matches the Lynx version when integrating
           dependencies {
-            implementation "org.lynxsdk.lynx:lynx-devtool:3.4.1"
-            implementation "org.lynxsdk.lynx:lynx-service-devtool:3.4.1"
+            implementation "org.lynxsdk.lynx:lynx-devtool:3.6.0"
+            implementation "org.lynxsdk.lynx:lynx-service-devtool:3.6.0"
           }
           ```
         </Tab>
@@ -8593,8 +8661,8 @@ All code examples in this documentation can be found in the [integrating-lynx-de
           ```kotlin
           // Ensure Lynx DevTool version matches the Lynx version when integrating
           dependencies {
-            implementation ("org.lynxsdk.lynx:lynx-devtool:3.4.1")
-            implementation ("org.lynxsdk.lynx:lynx-service-devtool:3.4.1")
+            implementation ("org.lynxsdk.lynx:lynx-devtool:3.6.0")
+            implementation ("org.lynxsdk.lynx:lynx-service-devtool:3.6.0")
           }
           ```
         </Tab>
@@ -8641,6 +8709,7 @@ All code examples in this documentation can be found in the [integrating-lynx-de
       <Details title="These three switches are disabled by default, you need to enable them.">
         * `Lynx DevTool` and `Lynx LogBox` switches can only take effect after `Lynx Debug` is enabled.
         * When debugging Lynx pages with the DevTool Desktop, `Lynx DevTool` needs to be enabled.
+          - If you need to use JavaScript debugging, you also need to enable the `LoadJsBridge` switch.
         * LogBox helps you quickly identify and diagnose issues.
       </Details>
 
@@ -8648,7 +8717,7 @@ All code examples in this documentation can be found in the [integrating-lynx-de
 
       <Tabs groupId="turn-on-switches-android">
         <Tab label="Java">
-          ```java title=YourApplication.java {3-9}
+          ```java title=YourApplication.java {3-11}
           private void initLynxEnv() {
             LynxEnv.inst().init(this, null, null, null);
             // Enable Lynx Debug
@@ -8658,13 +8727,15 @@ All code examples in this documentation can be found in the [integrating-lynx-de
             // Enable Lynx LogBox
             LynxDevToolService.getINSTANCE().setLogBoxPresetValue(true);
             LynxEnv.inst().enableLogBox(true);
+            // Enable LoadJsBridge
+            LynxDevToolService.getINSTANCE().setLoadJsBridge(true);
           }
 
           ```
         </Tab>
 
         <Tab label="Kotlin">
-          ```kotlin title=YourApplication.kt {3-9}
+          ```kotlin title=YourApplication.kt {3-11}
           private fun initLynxEnv() {
             LynxEnv.inst().init(this, null, null, null)
             // Enable Lynx Debug
@@ -8674,6 +8745,8 @@ All code examples in this documentation can be found in the [integrating-lynx-de
             // Enable Lynx LogBox
             LynxDevToolService.INSTANCE.setLogBoxPresetValue(true)
             LynxEnv.inst().enableLogBox(true)
+            // Enable LoadJsBridge
+            LynxDevToolService.INSTANCE.setLoadJsBridge(true)
           }
           ```
         </Tab>
@@ -8790,6 +8863,10 @@ connect your app via USB to start debugging.
   <NextSteps.Step href="/guide/start/integrate-lynx-devtool-advanced" title="More DevTool Switches" description="Need more advanced configurations for DevTool?" />
 </NextSteps.Root>
 
+## Compatibility
+
+
+**Error:** No compatibility data found for `devtool.integration`
 ## Next Step
 
 <NextSteps.Root>
@@ -26814,11 +26891,11 @@ The `path()` function takes [SVG path string](https://developer.mozilla.org/zh-C
 | Android | 2.13 | - |
 | iOS | 2.13 | - |
 | HarmonyOS | 3.4 | - |
-| web | 2.13 | - |
 | Clay Android | 3.5 | - |
 | Clay iOS | 3.5 | - |
 | Clay Windows | 3.5 | - |
 | Clay macOS | 3.5 | - |
+| Web | ✅ Yes | - |
 
 
 
@@ -61715,6 +61792,60 @@ Main Thread Scripts are commonly used for smooth animations and gesture handling
 
 
 ---
+url: /api/lynx-api/main-thread/element-get-computed-style.md
+---
+
+# getComputedStyleProperty()
+
+<APISummary />
+
+## Introduction
+
+The **`getComputedStyleProperty()`** method of the [`Element`](/api/lynx-api/main-thread/main-thread-element.md) returns the [computed style](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Property_value_processing#resolved_value) for the element.
+
+## Syntax
+
+```ts
+const value = element.getComputedStyleProperty(styleName);
+```
+
+### Parameters
+
+#### styleName
+
+A string specifying the property name to be retrieved. The style name must be in [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case).
+
+### Return Value
+
+A string containing the value of the [computed style](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Property_value_processing#resolved_value).
+
+## Example
+
+```ts
+const width = element.getComputedStyleProperty('width');
+const backgroundColor = element.getComputedStyleProperty('background-color');
+```
+
+## Compatibility
+
+**Compatibility Table**
+**Query:** `lynx-api.main-thread.ElementGetComputedStyle`
+
+**Platform Support**
+
+| Platform | Version Added | Notes |
+|----------|---------------|-------|
+| Android | 3.5 | - |
+| iOS | 3.5 | - |
+| HarmonyOS | 3.5 | - |
+| Web | ❌ No | - |
+
+**Description:** Create An Animation in MTS
+
+
+
+
+---
 url: /api/lynx-api/main-thread/lynx-animate-api.md
 ---
 
@@ -62148,6 +62279,16 @@ Set the specified styles of the element using an object that can contain multipl
 
 ```ts
 element.setStyleProperties(styleProperties);
+```
+
+### `Element.getComputedStyleProperty()`
+
+Get the ComputedStyle for the element by key. The style name must be in [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case).
+
+Refer to [Element.getComputedStyleProperty](/api/lynx-api/main-thread/element-get-computed-style.md).
+
+```ts
+const width = element.getComputedStyleProperty(styleName);
 ```
 
 ### `Element.querySelector()`
@@ -63633,7 +63774,7 @@ If you fail to receive `LoadBundleEntry`, it may be due to the following reasons
 The rendering pipeline is not executed, typically because:
 
 - **LynxView container state issues**: Width/Height is 0, not in the viewport, or not added to the window.
-- **Business logic renders no content**: For example, in ReactLynx, the component returns `null` because data is not ready.
+- **Business logic renders no content**: For example, in ReactLynx, the component's `render()` function returns `null` because data is not ready.
 
 **2. Listener registered too late**
 
@@ -67360,7 +67501,7 @@ If there are custom requirements, you can also quickly implement and register re
       If you use your own implementation of Lynx Service, please delete the [default implementation](/guide/start/integrate-with-existing-apps.md#platform=ios) provided by Lynx.
 
       ```diff title="Podfile"
-      pod 'LynxService', '3.4.1', :subspecs => [
+      pod 'LynxService', '3.6.0', :subspecs => [
             'Image',
       -     'Log',
             'Http',
@@ -68284,6 +68425,26 @@ Notify the client that a performance event has been sent. It will be called ever
 
 ## Syntax
 
+### Android
+
+```java
+public void onPerformanceEvent(@NonNull PerformanceEntry entry);
+```
+
+#### Parameters
+
+- `entry`: The [PerformanceEntry](/api/lynx-api/performance-api/performance-entry.md) about the performance event.
+
+### iOS
+
+```objc
+- (void)onPerformanceEvent:(nonnull LynxPerformanceEntry *)entry;
+```
+
+#### Parameters
+
+- `entry`: The [PerformanceEntry](/api/lynx-api/performance-api/performance-entry.md) about the performance event.
+
 ### Harmony
 
 ```typescript
@@ -68303,8 +68464,8 @@ public onPerformanceEvent(entry: PerformanceEntry): void;
 
 | Platform | Version Added | Notes |
 |----------|---------------|-------|
-| Android | ❌ No | - |
-| iOS | ❌ No | - |
+| Android | 3.4 | - |
+| iOS | 3.4 | - |
 | HarmonyOS | 3.4 | - |
 | Web | ❌ No | - |
 
@@ -95800,6 +95961,414 @@ _What will you build with Lynx?_
 
 
 ---
+url: /ai/agentsmd.md
+---
+
+# `AGENTS.md` for Lynx
+
+The [`AGENTS.md`](https://agents.md) file is similar to `README.md`, but it's for agents.
+
+In this document, you'll learn how to add a suitable `AGENTS.md` for your Lynx project, ensuring your agents can perform at their best within your Lynx project.
+
+## Creating a New Project
+
+We've included `AGENTS.md` in the initial project template. You can refer to [Quick Start](/guide/start/quick-start.md#create-a-new-lynx-project) to create a new Lynx project. The project's root directory will contain a pre-written `AGENTS.md` file.
+
+## Adding `AGENTS.md` to an Existing Project
+
+For Lynx projects, you can start with this file and then modify it according to your project needs:
+
+- [`AGENTS.md` in Lynx Template Project](https://github.com/lynx-family/lynx-stack/blob/main/packages/rspeedy/create-rspeedy/template-common/AGENTS.md)
+
+## Modifying the existing `AGENTS.md`
+
+Below is an example; please add the "Read in Advance" section to your project's `AGENTS.md`:
+
+:::info No Magic Spell
+
+This section isn't a magic spell; it works because:
+
+1. It provides the agent with the LLM-friendly Lynx website: [llms.txt](https://lynxjs.org/llms.txt).
+
+2. It explicitly emphasizes the importance of reading [llms.txt](https://lynxjs.org/llms.txt) in `AGENTS.md` to agents.
+
+:::
+
+```markdown
+# My Awesome Project
+
+<!-- Here goes your original project description -->
+
+<!-- Insert the section below -->
+
+## Read in Advance
+
+Read the docs below in advance to help you understand the library or frameworks this project depends on.
+
+- Lynx: [llms.txt](https://lynxjs.org/llms.txt).
+  While dealing with a Lynx task, an agent **MUST** read this doc because it is an entry point of all available docs about Lynx.
+
+<!-- Below goes your original content -->
+
+## Build Instructions
+
+<!-- ... -->
+
+## Test Instructions
+
+<!-- ... -->
+```
+
+## Using `AGENTS.md` in a Monorepo
+
+In a monorepo, you can add an `AGENTS.md` file to each subproject to provide specific guidance and information to agents for each subproject. This helps ensure that agents can optimize and adapt to the needs and characteristics of their respective sub-projects.
+
+However, you can use `AGENTS.md` in the monorepo root directory as a global guideline file, providing general information and guiding principles.
+
+For example:
+
+```bash
+
+$ tree
+.
+├── AGENTS.md # the global AGENTS.md
+├── README.md
+└── packages
+    ├── web
+    │   ├── AGENTS.md # the AGENTS.md for web project
+    │   ├── package-a
+    │   │   └── AGENTS.md
+    │   └── package-b
+    │       └── AGENTS.md
+    └── lynx
+        ├── AGENTS.md # the AGENTS.md for lynx project
+        ├── package-c
+        │   └── AGENTS.md
+        └── package-d
+            └── AGENTS.md # the AGENTS.md for d subproject
+```
+
+In this example, you should place Lynx-specific guidance and information in `packages/lynx/AGENTS.md`.
+
+For example, when agents process tasks under package-d, they should first refer to `packages/lynx/package-d/AGENTS.md`, then `packages/lynx/AGENTS.md`, and finally the `AGENTS.md` in the root directory.
+
+Organizing the `AGENTS.md` files in a tree structure avoids repetitive writing of the same information and ensures that agents can access the most relevant and up-to-date guidance. However, developers should ensure that the information in the various `AGENTS.md` files does not conflict with each other to avoid causing abnormal agent behavior.
+
+## Using `llms.txt` as `AGENTS.md`
+
+If agents are not reading the Lynx documentation as required, consider inlining or overwriting the contents of `llms.txt` into `AGENTS.md`.
+
+```bash
+curl https://lynxjs.org/llms.txt > packages/lynx/AGENTS.md
+```
+
+It is recommended to use this method only for public `AGENTS.md` files to avoid duplicate content across multiple files and to override customized instructions for specific subprojects.
+
+If you want to keep `llms.txt` up-to-date, you can add the above command to the prepare script in your package.json (or root package.json for monorepo). Remember to gitignore the generated `AGENTS.md` file to avoid committing it to version control.
+
+## Troubleshooting
+
+### Agents Not Reading Lynx Documentation as Required
+
+Ensure that the "Read in Advance" section is correctly added to `AGENTS.md`, explicitly stating that agents must read [llms.txt](https://lynxjs.org/llms.txt).
+
+If the problem persists, consider inlining the contents of `llms.txt` directly into `AGENTS.md`, as shown in the example above.
+
+
+
+---
+url: /ai/index.md
+---
+
+# Lynx for AI
+
+LLMs are trained on public web data, which means they often lack awareness of the latest Lynx features and best practices. The Lynx team and community are developing a suite of tools to help LLMs understand and develop Lynx more effectively.
+
+## Teaching LLMs about Lynx
+
+### Using Lynx Docs MCP
+
+[Model Context Protocol](https://modelcontextprotocol.io/docs/getting-started/intro) is a standard for connecting LLMs to external tools. Lynx Docs MCP allows the agent fetch accurate guides, API references directly from the Lynx documentation site, to ensure its answers stay correct and up to date.
+
+Read more about Lynx Docs MCP in [Lynx Docs MCP](/ai/lynx-docs-mcp.md).
+
+### Using `llms.txt`
+
+[llms.txt](https://llmstxt.org/) is a standard to help LLMs use a website as a knowledge base. The Lynx website fully supports it, so you can either copy the Markdown or provide its URL to any LLM with web-browsing. For every page, you can get the original Markdown by replacing the `.html` extension with `.md`. For example:
+
+- [https://lynxjs.org/llms.txt](https://lynxjs.org/llms.txt)
+- [https://lynxjs.org/react/introduction.md](https://lynxjs.org/react/introduction.md)
+
+## Developing with Agents
+
+### Using `AGENTS.md`
+
+The [`AGENTS.md`](https://agents.md) file is similar to `README.md`, but it's for agents. Learn how to add a suitable `AGENTS.md` for your Lynx project in [AGENTS.md for Lynx](/ai/agentsmd.md).
+
+### Lynx DevTool MCP
+
+[Lynx DevTool MCP](/ai/lynx-devtool-mcp.md) is the Lynx DevTool for coding agents.
+It lets coding agents _**control, operate and preview**_ Lynx pages, just like human does in DevTool.
+
+Read more in [Lynx DevTool MCP](/ai/lynx-devtool-mcp.md).
+
+
+
+---
+url: /ai/lynx-devtool-mcp.md
+---
+
+# Lynx DevTool MCP
+
+Lynx DevTool MCP is a [Model Context Protocol (MCP) server](https://modelcontextprotocol.io/docs/learn/server-concepts) that lets coding agents _**control, operate and preview**_ Lynx pages.
+
+## Get started
+
+Add the following config to your MCP client:
+
+```json
+{
+  "mcpServers": {
+    "lynx-devtool": {
+      "command": "npx",
+      "args": ["-y", "@lynx-js/devtool-mcp-server@latest"]
+    }
+  }
+}
+```
+
+<details>
+  <summary>
+    Claude Code
+  </summary>
+
+  Use the Claude Code CLI to add the Lynx DevTool MCP server ([guide](https://docs.anthropic.com/en/docs/claude-code/mcp)):
+
+  ```bash
+  claude mcp add lynx-devtool npx @lynx-js/devtool-mcp-server@latest
+  ```
+</details>
+
+<details>
+  <summary>
+    Codex
+  </summary>
+
+  Follow the [configure MCP guide](https://github.com/openai/codex/blob/main/docs/advanced.md#model-context-protocol-mcp) using the standard config from above. You can also install the Lynx DevTool MCP server using the Codex CLI:
+
+  ```bash
+  codex mcp add lynx-devtool -- npx @lynx-js/devtool-mcp-server@latest
+  ```
+</details>
+
+<details>
+  <summary>
+    Copilot / VS Code
+  </summary>
+
+  Follow the MCP install [guide](https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_add-an-mcp-server), with the standard config from above. You can also install the Lynx DevTool MCP server using the VS Code CLI:
+
+  ```bash
+  code --add-mcp '{"name":"lynx-devtool","command":"npx","args":["@lynx-js/devtool-mcp-server@latest"]}'
+  ```
+</details>
+
+<details>
+  <summary>
+    Cursor
+  </summary>
+
+  **Click the button to install:**
+
+  <a href="https://cursor.com/en/install-mcp?name=lynx-devtool&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIkBseW54LWpzL2RldnRvb2wtbWNwLXNlcnZlckBsYXRlc3QiXX0=">
+    <img src="https://cursor.com/deeplink/mcp-install-light.svg" alt="Install Lynx DevTool MCP in Cursor" style={{ display: 'block', cursor: 'pointer' }} />
+  </a>
+
+  **Or install manually:**
+
+  Go to `Cursor Settings` -> `MCP` -> `New MCP Server`. Use the config provided above.
+</details>
+
+<details>
+  <summary>
+    Gemini CLI
+  </summary>
+
+  Install the Lynx DevTool MCP server using the Gemini CLI.
+
+  **Project wide:**
+
+  ```bash
+  gemini mcp add lynx-devtool npx @lynx-js/devtool-mcp-server@latest
+  ```
+
+  **Globally:**
+
+  ```bash
+  gemini mcp add -s user lynx-devtool npx @lynx-js/devtool-mcp-server@latest
+  ```
+
+  Alternatively, follow the [MCP guide](https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md#how-to-set-up-your-mcp-server) and use the standard config from above.
+</details>
+
+## Usage
+
+Using the Lynx DevTool MCP server is just like using DevTool.
+
+You need to connect to the devices and open Apps like LynxExplorer.
+
+### Elements
+
+Just like the "Elements" tab in DevTool,
+there are various tools (prefixed with `CSS_*` or `DOM_*`) in Lynx DevTool MCP server to help you inspect the element tree.
+
+:::note
+All these tools are read-only. Modify the source code to make changes to the element tree.
+:::
+
+### Console
+
+Just like the "Console" tab in DevTool, the coding agent may use Lynx DevTool MCP server to read all the message in Console and their stack traces.
+
+### Sources
+
+Just like the "Sources" tab in DevTool, all the loading JavaScript sources can be read by the Lynx DevTool MCP server.
+
+This is useful for coding agent to find the corresponding code in Console stack traces.
+
+### Interaction
+
+The coding agent may also interact with the Lynx page using Lynx DevTool MCP server, performing actions like tap or drag.
+
+### Screenshot
+
+The Lynx DevTool MCP server also provides tools to take screenshot of the current Lynx page. Using a multimodal model to understand the screenshot.
+
+
+
+---
+url: /ai/lynx-docs-mcp.md
+---
+
+# Lynx Docs MCP
+
+> A MCP Server providing docs for LLMs from [Lynx official site](https://lynxjs.org/), with carefully designed prompting.
+
+`@lynx-js/docs-mcp-server` lets your coding agent (such as Gemini, Claude, Cursor or Copilot)
+access Lynx documentation to assist you in development tasks. Therefore,
+we have specifically optimized [llms.txt](https://lynxjs.org/llms.txt),
+a condensed version of the documentation site optimized for LLMs.
+
+## Requirements
+
+- [Node.js](https://nodejs.org/) v18.17 or a newer [latest maintenance LTS](https://github.com/nodejs/Release#release-schedule) version.
+
+## Getting started
+
+Add the following config to your MCP client:
+
+```json
+{
+  "mcpServers": {
+    "lynx-docs": {
+      "command": "npx",
+      "args": ["-y", "@lynx-js/docs-mcp-server@latest"]
+    }
+  }
+}
+```
+
+`@lynx-js/docs-mcp-server` works best with MCP clients that supports [Server Instructions](https://modelcontextprotocol.io/specification/draft/schema#initializeresult), such as Claude Code.
+If you find your MCP client doesn't know about the MCP server,
+you can manually provide the following instructions
+(e.g. in your `AGENTS.md`, `CLAUDE.md`, or just send it along with your question):
+
+```md
+For any questions or requirements regarding Lynx:
+
+1. Use the "List Resources Tool" to list all Resources provided in MCP "lynx-docs".
+2. First read MCP Resources "lynx-docs://llms.txt" (**REQUIRED**), this document is an ENTRYPOINT of all Lynx Docs.
+3. After reading "lynx-docs://llms.txt", use the "Read MCP Resources Tool" to retrieve docs you need based on the user's questions or requirements, please read them proactively.
+4. If available, prioritize obtaining Lynx-related information through MCP Resources tools over external web searches.
+```
+
+<details>
+  <summary>
+    Claude Code
+  </summary>
+
+  Use the Claude Code CLI to add the Lynx Docs MCP server (<a href="https://docs.anthropic.com/en/docs/claude-code/mcp">guide</a>):
+
+  ```bash
+  claude mcp add lynx-docs npx @lynx-js/docs-mcp-server@latest
+  ```
+</details>
+
+<details>
+  <summary>
+    Codex
+  </summary>
+
+  Follow the <a href="https://github.com/openai/codex/blob/main/docs/advanced.md#model-context-protocol-mcp">configure MCP guide</a>
+  using the standard config from above. You can also install the Lynx Docs MCP server using the Codex CLI:
+
+  ```bash
+  codex mcp add lynx-docs -- npx @lynx-js/docs-mcp-server@latest
+  ```
+</details>
+
+<details>
+  <summary>
+    Copilot / VS Code
+  </summary>
+
+  Follow the MCP install <a href="https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_add-an-mcp-server">guide</a>,
+  with the standard config from above. You can also install the Lynx Docs MCP server using the VS Code CLI:
+
+  ```bash
+  code --add-mcp '{"name":"lynx-docs","command":"npx","args":["@lynx-js/docs-mcp-server@latest"]}'
+  ```
+</details>
+
+<details>
+  <summary>
+    Cursor
+  </summary>
+
+  **Install manually:**
+
+  Go to `Cursor Settings` -> `MCP` -> `New MCP Server`. Use the config provided above.
+</details>
+
+<details>
+  <summary>
+    Gemini CLI
+  </summary>
+
+  Install the Lynx Docs MCP server using the Gemini CLI.
+
+  **Project wide:**
+
+  ```bash
+  gemini mcp add lynx-docs npx @lynx-js/docs-mcp-server@latest
+  ```
+
+  **Globally:**
+
+  ```bash
+  gemini mcp add -s user lynx-docs npx @lynx-js/docs-mcp-server@latest
+  ```
+
+  Alternatively, follow the <a href="https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md#how-to-set-up-your-mcp-server">MCP guide</a> and use the standard config from above.
+</details>
+
+## Credits
+
+This project is inspired by [Svelte MCP server](https://svelte.dev/docs/mcp/overview). Both the implementation and documentation have been adapted and referenced from the original MCP server.
+
+
+
+---
 url: /help/api.md
 ---
 
@@ -104837,6 +105406,2014 @@ Configurations! You have successfully created a product gallery page! 🎉 Throu
 
 ---
 url: /rspeedy/start/tutorial-product-detail.md
+---
+
+# Tutorial: Product Detail
+
+In this tutorial, we'll implement a swiper component to teach you how to write high-performance interactive code. You'll learn:
+
+- [Direct Node Manipulation](#direct-node-manipulation): You'll learn how to listen to events and update node styles
+- [Use Main Thread Script to Reduce Latency](#use-main-thread-scripts-to-reduce-latency): You'll learn how to optimize interaction performance with main thread script
+- [Communication Between Main Thread and Background Thread](#communication-between-main-thread-and-background-thread): You'll learn how to enable communication between main thread and background thread functions
+- [Values Across Main Thread and Background Thread Script](#values-across-main-thread-and-background-thread-script): You'll learn about data flow when using main thread and background thread script together
+
+## What Are We Building?
+
+Let's have a look at what we're building! To try it out, download and install the [Lynx Explorer App](/guide/start/quick-start.md#ios-simulator-platform=macos-arm64,explorer-platform=ios-simulator), then scan the QR code below.
+
+**This is an example below:  swiper**
+
+**Entry:** `src/Swiper, src/utils`
+**Bundle:** `dist/Swiper.lynx.bundle`
+
+```tsx
+import { root } from "@lynx-js/react";
+import "./styles.scss";
+import { Page } from "../Components/Page";
+import { picsArr } from "../utils/pics";
+import { Swiper } from "./Swiper";
+
+const easing = (x: number) => {
+  "main thread";
+  return x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
+};
+
+export default function App() {
+  return (
+    <Page>
+      <Swiper data={picsArr} main-thread:easing={easing} duration={300} />
+    </Page>
+  );
+}
+
+root.render(<App />);
+
+```
+
+
+
+## Setup for the tutorial
+
+Check out our detailed [quick start](/guide/start/quick-start.md) doc that will guide you through creating a new Lynx project.
+
+You may notice that the project is using TypeScript. Although Lynx and ReactLynx support both TypeScript and plain JavaScript, we recommend TypeScript for a better development experience, provided by static type checking and better editor IntelliSense.
+
+You'll see lots of beautiful images throughout this guide. We've put together a package of sample images you can download [here](https://lf-lynx.tiktok-cdns.com/obj/lynx-artifacts-oss-sg/lynx-website/download/product_detail_assets.zip) to use in your projects.
+
+## Direct Node Manipulation
+
+Here's a product detail page example that includes a swiper and some product details. The `<Swiper>` accepts images and displays them in a row. Currently, it can't scroll - let's make it interactive.
+
+**This is an example below:  swiper**
+
+**Entry:** `src/SwiperEmpty, src/utils/pics.ts`
+**Bundle:** `dist/SwiperEmpty.lynx.bundle`
+
+```tsx {10}
+import { root } from "@lynx-js/react";
+import "./styles.scss";
+import { Page } from "../Components/Page";
+import { picsArr } from "../utils/pics";
+import { Swiper } from "./Swiper";
+
+export default function App() {
+  return (
+    <Page>
+      <Swiper data={picsArr} />
+    </Page>
+  );
+}
+
+root.render(<App />);
+
+```
+
+
+
+To achieve this, we need to complete two tasks:
+
+1. Listen to touch events
+2. Update scroll position
+
+### Listen to Touch Events
+
+Let's start by listening to touch events to calculate the current scroll progress.
+
+When a touch starts, we record the initial touch coordinates. This allows us to calculate the distance moved (represented by `delta`) when the finger moves.
+
+```tsx title="index.tsx" "{4-6,8-10}"
+function Swiper() {
+  const touchStartXRef = useRef<number>(0);
+
+  function handleTouchStart(e: TouchEvent) {
+    touchStartXRef.current = e.touches[0].clientX;
+  }
+
+  function handleTouchMove(e: TouchEvent) {
+    const delta = e.touches[0].clientX - touchStartXRef.current;
+  }
+
+  return (
+    <view
+      class="swiper-container"
+      bindtouchstart={handleTouchStart}
+      bindtouchmove={handleTouchMove}
+    >
+      {/* ... */}
+    </view>
+  );
+}
+```
+
+Next, we use `currentOffsetRef` to track the swiper component's offset, adding it to `delta` to get the final offset.
+
+```tsx title="index.tsx" "{13}"
+function Swiper() {
+  const currentOffsetRef = useRef<number>(0);
+  const touchStartXRef = useRef<number>(0);
+  const touchStartCurrentOffsetRef = useRef<number>(0);
+
+  function handleTouchStart(e: TouchEvent) {
+    touchStartXRef.current = e.touches[0].clientX;
+    touchStartCurrentOffsetRef.current = currentOffsetRef.current;
+  }
+
+  function handleTouchMove(e: TouchEvent) {
+    const delta = e.touches[0].clientX - touchStartXRef.current;
+    const offset = touchStartCurrentOffsetRef.current + delta;
+  }
+}
+```
+
+### Updating Scroll Position
+
+Once we get the offset, we can update the scroll position. Add an `updateSwiperOffset` function and call it when the finger moves.
+
+```tsx title="index.tsx" "{9}"
+function Swiper() {
+  function updateSwiperOffset(offset: number) {
+    // Update scroll position
+  }
+
+  function handleTouchMove(e: TouchEvent) {
+    const delta = e.touches[0].clientX - touchStartXRef.current;
+    const offset = touchStartCurrentOffsetRef.current + delta;
+    updateSwiperOffset(offset);
+  }
+}
+```
+
+Next, we use [Node Manipulation](/guide/interaction/event-handling/manipulating-element.react.md) to get the `swiper-container` node and use [`setNativeProps`](/api/lynx-api/nodes-ref/nodes-ref-set-native-props.md) to update the `transform` property, thereby updating the scroll position.
+
+```tsx title="index.tsx" "{5-9,14}"
+function Swiper() {
+  const containerRef = useRef<NodesRef>(null);
+
+  function updateSwiperOffset(offset: number) {
+    containerRef.current
+      ?.setNativeProps({
+        style: {
+          transform: `translateX(${offset}px)`,
+        },
+      })
+      .exec();
+  }
+
+  return <view ref={containerRef}></view>;
+}
+```
+
+**This is an example below:  swiper**
+
+**Entry:** `src/UpdateOffset, src/utils/pics.ts`
+**Bundle:** `dist/UpdateOffset.lynx.bundle`
+
+```tsx
+import "./styles.scss";
+import { useRef } from "@lynx-js/react";
+import type { NodesRef, TouchEvent } from "@lynx-js/types";
+import { SwiperItem } from "./SwiperItem";
+
+export function Swiper({
+  data,
+  itemWidth = SystemInfo.pixelWidth / SystemInfo.pixelRatio,
+}: {
+  data: string[];
+  itemWidth?: number;
+}) {
+  const containerRef = useRef<NodesRef>(null);
+  const currentOffsetRef = useRef<number>(0);
+  const touchStartXRef = useRef<number>(0);
+  const touchStartCurrentOffsetRef = useRef<number>(0);
+
+  function updateSwiperOffset(offset: number) {
+    currentOffsetRef.current = offset;
+    containerRef.current?.setNativeProps({
+      transform: `translateX(${offset}px)`,
+    }).exec();
+  }
+
+  function handleTouchStart(e: TouchEvent) {
+    touchStartXRef.current = e.touches[0].clientX;
+    touchStartCurrentOffsetRef.current = currentOffsetRef.current;
+  }
+
+  function handleTouchMove(e: TouchEvent) {
+    const delta = e.touches[0].clientX - touchStartXRef.current;
+    const offset = touchStartCurrentOffsetRef.current + delta;
+
+    updateSwiperOffset(offset);
+  }
+
+  function handleTouchEnd(e: TouchEvent) {
+    touchStartXRef.current = 0;
+    touchStartCurrentOffsetRef.current = 0;
+  }
+
+  return (
+    <view className="swiper-wrapper">
+      <view
+        className="swiper-container"
+        ref={containerRef}
+        bindtouchstart={handleTouchStart}
+        bindtouchmove={handleTouchMove}
+        bindtouchend={handleTouchEnd}
+      >
+        {data.map((pic) => <SwiperItem pic={pic} itemWidth={itemWidth} />)}
+      </view>
+    </view>
+  );
+}
+
+```
+
+
+
+Now the `<Swiper>` component can scroll with finger movements!
+
+::: details Why not use state to update progress?
+You might think of using `state` to update the progress, like this:
+
+```tsx title="Swiper.tsx"
+function Swiper() {
+  const [offset, setOffset] = useState(0);
+
+  return (
+    <view style={{ transform: `translateX(${offset}px)` }}>{/* ... */}</view>
+  );
+}
+```
+
+However, in scenarios requiring frequent updates, this approach would cause constant component re-rendering, affecting performance. A better approach is to directly manipulate nodes, as shown in the example.
+
+You can refer to [Direct Node Manipulation](/guide/interaction/event-handling/manipulating-element.react.md) to learn more.
+:::
+
+### Simplifying Code with Hooks
+
+The `<Swiper>` component's code is getting complex. We can use hooks to encapsulate the logic into two parts, simplifying the component code and improving maintainability:
+
+1. Encapsulate the [touch event listening](#listening-to-touch-events) code into `useOffset`, centralizing all scroll-related logic in this hook
+2. Encapsulate the [scroll position update](#updating-scroll-position) code into `useUpdateSwiperStyle`, centralizing all `<Swiper>` component style update logic in this hook
+
+```tsx title="Swiper.tsx"
+function Swiper() {
+  const { updateSwiperStyle, swiperContainerRef } = useUpdateSwiperStyle();
+  const { handleTouchStart, handleTouchMove, handleTouchEnd } = useOffset({
+    onOffsetUpdate: updateSwiperStyle,
+  });
+
+  return (
+    <view
+      class="swiper-container"
+      ref={swiperContainerRef}
+      bindtouchstart={handleTouchStart}
+      bindtouchmove={handleTouchMove}
+      bindtouchend={handleTouchEnd}
+    >
+      {/* ... */}
+    </view>
+  );
+}
+```
+
+Finally, the code is more concise.
+
+**This is an example below:  swiper**
+
+**Entry:** `src/SwiperHooks, src/utils/pics.ts`
+**Bundle:** `dist/SwiperHooks.lynx.bundle`
+
+```tsx {13-16}
+import "./styles.scss";
+import { SwiperItem } from "./SwiperItem";
+import { useOffset } from "./useOffset";
+import { useUpdateSwiperStyle } from "./useUpdateSwiperStyle";
+
+export function Swiper({
+  data,
+  itemWidth = SystemInfo.pixelWidth / SystemInfo.pixelRatio,
+}: {
+  data: string[];
+  itemWidth?: number;
+}) {
+  const { containerRef, updateSwiperStyle } = useUpdateSwiperStyle();
+  const { handleTouchStart, handleTouchMove, handleTouchEnd } = useOffset({
+    onOffsetUpdate: updateSwiperStyle,
+  });
+
+  return (
+    <view className="swiper-wrapper">
+      <view
+        className="swiper-container"
+        ref={containerRef}
+        bindtouchstart={handleTouchStart}
+        bindtouchmove={handleTouchMove}
+        bindtouchend={handleTouchEnd}
+      >
+        {data.map((pic) => <SwiperItem pic={pic} itemWidth={itemWidth} />)}
+      </view>
+    </view>
+  );
+}
+
+```
+
+
+
+## Use Main Thread Script to Reduce Latency
+
+You may have noticed that sometimes the scrolling doesn't feel smooth. This is because touch events occur in the **main thread**, while event listener code runs in the **background thread**, causing delayed touch event responses. This phenomenon is particularly noticeable on low-end devices.
+
+We can use [Main Thread Script](/react/main-thread-script.md) to optimize this issue. After converting to main thread script, the scrolling becomes much smoother!
+
+**This is an example below:  swiper**
+
+**Entry:** `src/SwiperMTS, src/utils/pics.ts`
+**Bundle:** `dist/SwiperMTS.lynx.bundle`
+
+```tsx
+import "./styles.scss";
+import { SwiperItem } from "./SwiperItem";
+import { useOffset } from "./useOffset";
+import { useUpdateSwiperStyle } from "./useUpdateSwiperStyle";
+
+export function Swiper({
+  data,
+  itemWidth = SystemInfo.pixelWidth / SystemInfo.pixelRatio,
+}: {
+  data: string[];
+  itemWidth?: number;
+}) {
+  const { containerRef, updateSwiperStyle } = useUpdateSwiperStyle();
+  const { handleTouchStart, handleTouchMove, handleTouchEnd } = useOffset({
+    onOffsetUpdate: updateSwiperStyle,
+  });
+
+  return (
+    <view className="swiper-wrapper">
+      <view
+        className="swiper-container"
+        main-thread:ref={containerRef}
+        main-thread:bindtouchstart={handleTouchStart}
+        main-thread:bindtouchmove={handleTouchMove}
+        main-thread:bindtouchend={handleTouchEnd}
+      >
+        {data.map((pic) => <SwiperItem pic={pic} itemWidth={itemWidth} />)}
+      </view>
+    </view>
+  );
+}
+
+```
+
+
+
+To achieve that, we need to migrate frequently triggered code to main thread script, including:
+
+1. Event listener code
+2. Node position update code
+
+Let's modify both `useOffset` and `useUpdateSwiperStyle`.
+
+### `useOffset`
+
+Add the `main thread` identifier to `handleTouchStart` and `handleTouchMove` to convert them into **main thread functions**.
+
+```tsx title="useOffset.ts"
+function useOffset() {
+  const touchStartXRef = useMainThreadRef<number>(0);
+
+  function handleTouchStart(e: TouchEvent) {
+    'main thread'
+    ...
+  }
+
+  function handleTouchMove(e: TouchEvent) {
+    'main thread'
+    ...
+  }
+}
+```
+
+Convert `bindtouchstart` and `bindtouchmove` to `main-thread:bindtouchstart` and `main-thread:bindtouchmove` to listen to events in main thread script.
+
+```tsx title="index.tsx"
+<view
+  main-thread:bindtouchstart={handleTouchStart}
+  main-thread:bindtouchmove={handleTouchMove}
+>
+  {/* ... */}
+</view>
+```
+
+### `useUpdateSwiperStyle`
+
+Convert `useRef` to `useMainThreadRef`.
+
+```tsx title="useUpdateSwiperStyle.ts" "{2}"
+function useUpdateSwiperStyle() {
+  const swiperContainerRef = useMainThreadRef<MainThread.Element>(null);
+
+  function updateSwiperStyle(offset: number) {
+   'main thread'
+    ...
+  }
+
+  return {
+    swiperContainerRef,
+  }
+}
+```
+
+Pass `swiperContainerRef` to `<view>` through the `main-thread:ref` attribute to access the node in the main thread.
+
+```tsx title="index.tsx"
+<view main-thread:ref={swiperContainerRef}>{/* ... */}</view>
+```
+
+The main thread node provides many capabilities, as shown in [`MainThread.Element`](/api/lynx-api/main-thread/main-thread-element.md). Here we call the `setStyleProperties` method to modify the `transform` property, updating the `<Swiper>` component's position.
+
+```tsx title="useUpdateSwiperStyle.ts"
+function useUpdateSwiperStyle() {
+  const swiperContainerRef = useMainThreadRef<MainThread.Element>(null);
+
+  function updateSwiperStyle(offset: number) {
+    'main thread';
+    swiperContainerRef.current?.setStyleProperties({
+      transform: `translateX(${offset}px)`,
+    });
+  }
+}
+```
+
+With this, we've completed the main thread script conversion. Now high-frequency functions run in the main thread, making the interaction smoother.
+
+**This is an example below:  swiper**
+
+**Entry:** `src/SwiperMTS, src/utils/pics.ts`
+**Bundle:** `dist/SwiperMTS.lynx.bundle`
+
+```tsx
+import "./styles.scss";
+import { SwiperItem } from "./SwiperItem";
+import { useOffset } from "./useOffset";
+import { useUpdateSwiperStyle } from "./useUpdateSwiperStyle";
+
+export function Swiper({
+  data,
+  itemWidth = SystemInfo.pixelWidth / SystemInfo.pixelRatio,
+}: {
+  data: string[];
+  itemWidth?: number;
+}) {
+  const { containerRef, updateSwiperStyle } = useUpdateSwiperStyle();
+  const { handleTouchStart, handleTouchMove, handleTouchEnd } = useOffset({
+    onOffsetUpdate: updateSwiperStyle,
+  });
+
+  return (
+    <view className="swiper-wrapper">
+      <view
+        className="swiper-container"
+        main-thread:ref={containerRef}
+        main-thread:bindtouchstart={handleTouchStart}
+        main-thread:bindtouchmove={handleTouchMove}
+        main-thread:bindtouchend={handleTouchEnd}
+      >
+        {data.map((pic) => <SwiperItem pic={pic} itemWidth={itemWidth} />)}
+      </view>
+    </view>
+  );
+}
+
+```
+
+
+
+::: details Use Main Thread Script Sparingly
+Only use main thread script when encountering response delay issues with frequently triggered events!
+
+- Introducing main thread script increases code complexity because main thread script and background thread script run in isolated environments and need "special bridges" to communicate.
+
+- Main thread script run high-frequency code in the main thread, increasing its burden. Overuse may cause main thread lag.
+
+:::
+
+## Communication Between Main Thread and Background Thread
+
+Here's a progress indicator example that shows which page you're on when scrolling.
+
+Currently, it only has styling but lacks progress update logic. We'll use this example to demonstrate how to enable communication between main thread and background thread:
+
+**This is an example below:  swiper**
+
+**Entry:** `src/MTSIndicatorEmpty, src/utils/pics.ts`
+**Bundle:** `dist/MTSIndicatorEmpty.lynx.bundle`
+
+```tsx {33}
+import "./styles.scss";
+import { useState } from "@lynx-js/react";
+import { Indicator } from "../Components/Indicator/index.jsx";
+import { SwiperItem } from "./SwiperItem";
+import { useOffset } from "./useOffset";
+import { useUpdateSwiperStyle } from "./useUpdateSwiperStyle";
+
+export function Swiper({
+  data,
+  itemWidth = SystemInfo.pixelWidth / SystemInfo.pixelRatio,
+}: {
+  data: string[];
+  itemWidth?: number;
+}) {
+  const [current, setCurrent] = useState(0);
+
+  const { containerRef, updateSwiperStyle } = useUpdateSwiperStyle();
+  const { handleTouchStart, handleTouchMove, handleTouchEnd } = useOffset({
+    onOffsetUpdate: updateSwiperStyle,
+  });
+
+  return (
+    <view className="swiper-wrapper">
+      <view
+        className="swiper-container"
+        main-thread:ref={containerRef}
+        main-thread:bindtouchstart={handleTouchStart}
+        main-thread:bindtouchmove={handleTouchMove}
+        main-thread:bindtouchend={handleTouchEnd}
+      >
+        {data.map((pic) => <SwiperItem pic={pic} itemWidth={itemWidth} />)}
+      </view>
+      <Indicator total={data.length} current={current} />
+    </view>
+  );
+}
+
+```
+
+
+
+### Main Thread Calling Background Thread
+
+The core of the progress indicator is the `<Indicator>` component, which accepts a `current` prop indicating the current page.
+
+```tsx title="Swiper.tsx" "{7}"
+function Swiper() {
+  const [current, setCurrent] = useState(0);
+
+  return (
+    <view>
+      {/* ... */}
+      <Indicator current={current} />
+    </view>
+  );
+}
+```
+
+Now we just need to update `current` when scrolling.
+
+We add an `onIndexChange` callback to `useOffset` to update `current` during scrolling.
+
+```tsx title="useOffset.ts" "{12}"
+function useOffset({
+  itemWidth,
+  onIndexUpdate,
+}) {
+  const currentIndexRef = useMainThreadRef<number>(0);
+
+  function updateOffset(offset: number) {
+    ...
+    const index = Math.round(offset / itemWidth);
+    if (currentIndexRef.current !== index) {
+      currentIndexRef.current = index;
+      onIndexUpdate(index);
+    }
+  }
+}
+```
+
+And pass `setCurrent` as the `onIndexUpdate` callback to `useOffset`.
+
+```tsx title="Swiper.tsx" "{4}"
+const [current, setCurrent] = useState(0);
+
+const { handleTouchMove } = useOffset({
+  onIndexUpdate: setCurrent,
+});
+```
+
+This way, when scrolling past a page, `useOffset` will call `onIndexUpdate` to update `current`, thereby updating the progress indicator.
+
+But wait, why is there an error?!
+
+![Error](https://lf-lynx.tiktok-cdns.com/obj/lynx-artifacts-oss-sg/lynx-website/assets/doc/tutorial/Swiper/MTSIndicatorWrong.png)
+
+:::info Main Thread and Background Thread Functions Need Special APIs to Call Each Other
+Main thread script and background thread script run in separate runtimes. Functions in one runtime cannot directly call functions in another runtime. They need "special bridges" to communicate:
+
+- From background to main thread: Use [`runOnMainThread`](/api/react/Function.runOnMainThread.md)
+- From main thread to background: Use [`runOnBackground`](/api/react/Function.runOnBackground.md)
+
+:::
+
+`onIndexUpdate` is a background thread function. When called in a main thread function, we need to use `runOnBackground`
+
+```tsx title="useOffset.ts" "{12}"
+function useOffset({
+  itemWidth,
+  onIndexUpdate,
+}) {
+  const currentIndexRef = useMainThreadRef<number>(0);
+
+  function updateOffset(offset: number) {
+    ...
+    const index = Math.round(offset / itemWidth);
+    if (currentIndexRef.current !== index) {
+      currentIndexRef.current = index;
+      runOnBackground(onIndexUpdate)(index);
+    }
+  }
+}
+```
+
+**This is an example below:  swiper**
+
+**Entry:** `src/MTSIndicatorCurrent, src/utils/pics.ts`
+**Bundle:** `dist/MTSIndicatorCurrent.lynx.bundle`
+
+```tsx
+import "./styles.scss";
+import { useState } from "@lynx-js/react";
+import { Indicator } from "../Components/Indicator/index.jsx";
+import { SwiperItem } from "./SwiperItem";
+import { useOffset } from "./useOffset";
+import { useUpdateSwiperStyle } from "./useUpdateSwiperStyle";
+
+export function Swiper({
+  data,
+  itemWidth = SystemInfo.pixelWidth / SystemInfo.pixelRatio,
+}: {
+  data: string[];
+  itemWidth?: number;
+}) {
+  const [current, setCurrent] = useState(0);
+
+  const { containerRef, updateSwiperStyle } = useUpdateSwiperStyle();
+  const { handleTouchStart, handleTouchMove, handleTouchEnd } = useOffset({
+    onOffsetUpdate: updateSwiperStyle,
+    onIndexUpdate: setCurrent,
+    itemWidth,
+  });
+
+  return (
+    <view className="swiper-wrapper">
+      <view
+        className="swiper-container"
+        main-thread:ref={containerRef}
+        main-thread:bindtouchstart={handleTouchStart}
+        main-thread:bindtouchmove={handleTouchMove}
+        main-thread:bindtouchend={handleTouchEnd}
+      >
+        {data.map((pic) => <SwiperItem pic={pic} itemWidth={itemWidth} />)}
+      </view>
+      <Indicator total={data.length} current={current} />
+    </view>
+  );
+}
+
+```
+
+
+
+Now the progress indicator updates automatically as you scroll!
+
+### Background Thread Calling Main Thread
+
+A useful progress indicator should also support clicking to jump to the corresponding page. Let's add click-to-jump functionality to the `<Indicator>` component.
+
+Add an `updateIndex` method in `useOffset` that uses `runOnMainThread` to call `updateOffset` to update the component position.
+
+```tsx title="useOffset.ts" "{4}"
+function useOffset({ itemWidth, onIndexUpdate }) {
+  function updateIndex(index: number) {
+    const offset = index * itemWidth;
+    runOnMainThread(updateOffset)(offset);
+  }
+
+  return {
+    updateIndex,
+  };
+}
+```
+
+Here's the complete code:
+
+**This is an example below:  swiper**
+
+**Entry:** `src/MTSIndicator, src/utils/pics.ts`
+**Bundle:** `dist/MTSIndicator.lynx.bundle`
+
+```ts
+import { runOnBackground, runOnMainThread, useMainThreadRef } from "@lynx-js/react";
+import type { MainThread } from "@lynx-js/types";
+
+export function useOffset({
+  onOffsetUpdate,
+  onIndexUpdate,
+  itemWidth,
+}: {
+  onOffsetUpdate: (offset: number) => void;
+  onIndexUpdate: (index: number) => void;
+  itemWidth: number;
+}) {
+  const touchStartXRef = useMainThreadRef<number>(0);
+  const touchStartCurrentOffsetRef = useMainThreadRef<number>(0);
+  const currentOffsetRef = useMainThreadRef<number>(0);
+  const currentIndexRef = useMainThreadRef<number>(0);
+
+  function updateIndex(index: number) {
+    const offset = -index * itemWidth;
+    runOnMainThread(updateOffset)(offset);
+  }
+
+  function updateOffset(offset: number) {
+    "main thread";
+    currentOffsetRef.current = offset;
+    onOffsetUpdate(offset);
+    const index = Math.round(-offset / itemWidth);
+    if (currentIndexRef.current !== index) {
+      currentIndexRef.current = index;
+      runOnBackground(onIndexUpdate)(index);
+    }
+  }
+
+  function handleTouchStart(e: MainThread.TouchEvent) {
+    "main thread";
+    touchStartXRef.current = e.touches[0].clientX;
+    touchStartCurrentOffsetRef.current = currentOffsetRef.current;
+  }
+
+  function handleTouchMove(e: MainThread.TouchEvent) {
+    "main thread";
+    const touchMoveX = e.touches[0].clientX;
+    const deltaX = touchMoveX - touchStartXRef.current;
+    updateOffset(touchStartCurrentOffsetRef.current + deltaX);
+  }
+
+  function handleTouchEnd(e: MainThread.TouchEvent) {
+    "main thread";
+    touchStartXRef.current = 0;
+    touchStartCurrentOffsetRef.current = 0;
+  }
+
+  return {
+    handleTouchStart,
+    handleTouchMove,
+    handleTouchEnd,
+    updateIndex,
+  };
+}
+
+```
+
+
+
+Great! Now the progress indicator supports click-to-jump functionality.
+
+## Values Across Main Thread and Background Thread Script
+
+In the following example, we've added a snap effect animation to the `<Swiper>` component. Currently, the snap effect animation isn't ideal, we can add some props to customize it.
+
+**This is an example below:  swiper**
+
+**Entry:** `src/EasingDefault, src/utils`
+**Bundle:** `dist/EasingDefault.lynx.bundle`
+
+```ts {66-73}
+import { runOnBackground, runOnMainThread, useMainThreadRef } from "@lynx-js/react";
+import type { MainThread } from "@lynx-js/types";
+import { useAnimate } from "./useAnimate";
+
+export function useOffset({
+  onOffsetUpdate,
+  onIndexUpdate,
+  itemWidth,
+  dataLength,
+}: {
+  onOffsetUpdate: (offset: number) => void;
+  onIndexUpdate: (index: number) => void;
+  itemWidth: number;
+  dataLength: number;
+}) {
+  const touchStartXRef = useMainThreadRef<number>(0);
+  const touchStartCurrentOffsetRef = useMainThreadRef<number>(0);
+  const currentOffsetRef = useMainThreadRef<number>(0);
+  const currentIndexRef = useMainThreadRef<number>(0);
+  const { animate, cancel: cancelAnimate } = useAnimate();
+  function updateIndex(index: number) {
+    const offset = -index * itemWidth;
+    runOnMainThread(updateOffset)(offset);
+  }
+
+  function calcNearestPage(offset: number) {
+    "main thread";
+    const nearestPage = Math.round(offset / itemWidth);
+    return nearestPage * itemWidth;
+  }
+
+  function updateOffset(offset: number) {
+    "main thread";
+
+    const lowerBound = 0;
+    const upperBound = -(dataLength - 1) * itemWidth;
+
+    const realOffset = Math.min(lowerBound, Math.max(upperBound, offset));
+    currentOffsetRef.current = realOffset;
+    onOffsetUpdate(realOffset);
+    const index = Math.round(-realOffset / itemWidth);
+    if (currentIndexRef.current !== index) {
+      currentIndexRef.current = index;
+      runOnBackground(onIndexUpdate)(index);
+    }
+  }
+
+  function handleTouchStart(e: MainThread.TouchEvent) {
+    "main thread";
+    touchStartXRef.current = e.touches[0].clientX;
+    touchStartCurrentOffsetRef.current = currentOffsetRef.current;
+    cancelAnimate();
+  }
+
+  function handleTouchMove(e: MainThread.TouchEvent) {
+    "main thread";
+    const touchMoveX = e.touches[0].clientX;
+    const deltaX = touchMoveX - touchStartXRef.current;
+    updateOffset(touchStartCurrentOffsetRef.current + deltaX);
+  }
+
+  function handleTouchEnd(e: MainThread.TouchEvent) {
+    "main thread";
+    touchStartXRef.current = 0;
+    touchStartCurrentOffsetRef.current = 0;
+    animate({
+      from: currentOffsetRef.current,
+      to: calcNearestPage(currentOffsetRef.current),
+      onUpdate: (offset) => {
+        "main thread";
+        updateOffset(offset);
+      },
+    });
+  }
+
+  return {
+    handleTouchStart,
+    handleTouchMove,
+    handleTouchEnd,
+    updateIndex,
+  };
+}
+
+```
+
+
+
+We'll use this example to demonstrate value passing between main thread and background thread script.
+
+### Main Thread Script Using Background Thread Script Values
+
+First, we add a `duration` prop to the `<Swiper>` component to control the snap animation duration.
+
+```tsx title="index.tsx"
+<Swiper duration={300} />
+```
+
+Let's see how it works internally. When touch ends, `useOffset` calls the `animate` function to update the component position with animation effects. `animate` is a main thread function that accepts initial and target values and updates the component position according to the animation curve over the `duration` time.
+
+```tsx title="useOffset.ts" {15-19}
+function useOffset({
+  duration,
+}) {
+  const currentOffsetRef = useMainThreadRef<number>(0);
+
+  function updateOffset(offset: number) {
+    'main thread'
+    // Update Component Offset
+  }
+
+  ...
+  function handleTouchEnd() {
+    'main thread'
+    ...
+    animate({
+      from: currentOffsetRef.current,
+      to: calcNearestPage(currentOffsetRef.current),
+      onUpdate: updateOffset,
+      duration,
+    })
+  }
+}
+```
+
+Here, both `animate` and `handleTouchEnd` are main thread functions, and they can access the background thread value `duration`.
+
+:::info Main Thread Functions Can Use Background Thread Values
+Main thread script and background thread script run in separate runtimes and are isolated from each other.
+
+However, to simplify main thread script development, Lynx automatically passes background thread values that main thread functions **depend on** to those functions, though this process has some limitations:
+
+- The dependent background thread values must be serializable, so functions, `Promise`s, and other non-serializable values cannot be passed.
+- Value passing only occurs during component `render`. If background thread values change after `render`, main thread functions won't be aware of these updates.
+
+:::
+
+### Background Thread Passing Main Thread Values
+
+Next, we add a `main-thread:easing` prop to the `<Swiper>` component to allow users to customize the animation curve.
+
+```tsx title="index.tsx" {6}
+function easeInOut(x: number) {
+  'main thread';
+  return x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
+}
+
+<Swiper main-thread:easing={easeInOut} />;
+```
+
+Inside the component, the main thread function `easeInOut` is passed to the background thread hook `useOffset`
+
+```tsx title="Swiper.tsx" {2,6}
+function Swiper({
+  'main-thread:easing': MTEasing,
+}) {
+  ...
+  const { handleTouchStart, ... } = useOffset({
+    MTEasing,
+  });
+}
+```
+
+And in `useOffset`, it's passed to the main thread function `animate`.
+
+```tsx title="useOffset.ts" {3,11}
+function useOffset({
+  duration,
+  MTEasing,
+}) {
+  ...
+  function handleTouchEnd(e: MainThread.TouchEvent) {
+    "main thread";
+    // ...
+    animate({
+      duration,
+      easing: MTEasing,
+    });
+  }
+}
+```
+
+:::info Main Thread Values Can Be Passed by Background Thread But Not Used
+Main thread values, such as `MainThreadRef` and main thread functions, cannot be directly used by the background thread.
+
+However, they can be passed by the background thread, such as being passed as `props` to components or as function parameters to other hooks or functions, and ultimately used in the main thread.
+:::
+
+:::details Add main-thread: Prefix for Props That Need Main Thread Functions
+You may have noticed that when passing main thread functions or `MainThreadRef` as attributes, they need the `main-thread:` prefix, like `main-thread:ref` and `main-thread:bindtouchstart`.
+
+By convention, when a prop expects a main thread function, it should have the `main-thread:` prefix, like `main-thread:easing`. We recommend following this convention for custom components too. This helps component users understand that the property requires a main thread function.
+
+However, because variable names containing colons `:` are illegal in JavaScript, you need to rename these props when using them inside components.
+
+```tsx title="Swiper.tsx"
+function Swiper({ 'main-thread:easing': MTEasing }) {}
+```
+
+:::
+
+Finally, we have a swiper with customizable animation curves.
+
+**This is an example below:  swiper**
+
+**Entry:** `src/Swiper, src/utils`
+**Bundle:** `dist/Swiper.lynx.bundle`
+
+```tsx {15}
+import { root } from "@lynx-js/react";
+import "./styles.scss";
+import { Page } from "../Components/Page";
+import { picsArr } from "../utils/pics";
+import { Swiper } from "./Swiper";
+
+const easing = (x: number) => {
+  "main thread";
+  return x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
+};
+
+export default function App() {
+  return (
+    <Page>
+      <Swiper data={picsArr} main-thread:easing={easing} duration={300} />
+    </Page>
+  );
+}
+
+root.render(<App />);
+
+```
+
+
+
+## Summary
+
+In this tutorial, we started with a simple `<Swiper>` component, gradually optimized its performance, and finally implemented a swiper with customizable animation curves.
+
+We learned about:
+
+- Using direct node manipulation to optimize performance
+- Leveraging main thread script to enhance interaction experience
+- Implementing communication between main thread and background thread
+- Understanding value passing between main thread and background thread script
+
+
+
+---
+url: /ai/start/quick-start.md
+---
+
+# Quick Start
+
+Welcome to the Lynx documentation! We will create a Lynx project and start developing.
+
+## System Requirements
+
+- [Node.js 18](https://nodejs.org/en) or later.
+  - Requires Node.js 18.19 when using TypeScript as configuration.
+
+## Installation
+
+<Steps>
+  ### Create a new Lynx project
+
+  We use Rspeedy (a Rspack-based Lynx build tool) to build Lynx projects.
+
+  It is recommended to start a new project using [`create-rspeedy`](https://npmjs.org/package/create-rspeedy),
+  which sets up everything automatically for you. To create a project, run:
+
+  <PackageManagerTabs command="create rspeedy@latest" />
+
+  After completing the prompts, `create-rspeedy` will create a folder with your project name.
+
+  ### Prepare Lynx Explorer
+
+  Lynx Explorer is a sandbox for trying out Lynx quickly.
+
+  <PlatformTabs queryKey="explorer-platform">
+    <PlatformTabs.Tab platform="ios-simulator">
+      We currently only provide pre-built binaries for the iOS simulator. If you need to run Lynx Explorer on a real iOS device, you'll need to build it from source. Please refer to the [Build Lynx Explorer for iOS](https://github.com/lynx-family/lynx/tree/develop/explorer/darwin/ios) guide.
+
+      :::info
+      A version of Lynx Explorer is also available on the [App Store](https://apps.apple.com/us/app/lynx-go-dev-explorer/id6743227790), published by community contributors.
+      While this version is not reviewed and maintained by the Lynx team, we're thankful to the community for making it more convenient for developers to try out Lynx on iOS.
+      :::
+
+      1. **Install Xcode**
+
+      Open up the Mac App Store, search for [Xcode](https://apps.apple.com/us/app/xcode/id497799835), and click Install (or Update if you have it already).
+
+      2. **<div id="download-lynx-explorer,ios-simulator-platform=macos-arm64,explorer-platform=ios-simulator">Download LynxExplorer</div>**
+
+      <PlatformTabs queryKey="ios-simulator-platform">
+        <PlatformTabs.Tab platform="macos-arm64">
+          Download [`LynxExplorer-arm64.app.tar.gz`](https://github.com/lynx-family/lynx/releases/latest/download/LynxExplorer-arm64.app.tar.gz).
+
+          Then extract the downloaded archive:
+
+          ```bash
+          mkdir -p LynxExplorer-arm64.app/
+          tar -zxf LynxExplorer-arm64.app.tar.gz -C LynxExplorer-arm64.app/
+          ```
+
+          3. **Install LynxExplorer on Simulator**
+
+          Open Xcode, choose **Open Developer Tool** from the Xcode menu. Click the **Simulator** to launch a simulator. Drag "LynxExplorer-arm64.app" into it.
+        </PlatformTabs.Tab>
+
+        <PlatformTabs.Tab platform="macos-intel">
+          Download [`LynxExplorer-x86_64.app.tar.gz`](https://github.com/lynx-family/lynx/releases/latest/download/LynxExplorer-x86_64.app.tar.gz).
+
+          Then, extract the downloaded archive:
+
+          ```bash
+          mkdir -p LynxExplorer-x86_64.app/
+          tar -zxf LynxExplorer-x86_64.app.tar.gz -C LynxExplorer-x86_64.app/
+          ```
+
+          3. **Install LynxExplorer on Simulator**
+
+          Open Xcode, choose **Open Developer Tool** from the Xcode menu. Click the **Simulator** to launch a simulator. Drag "LynxExplorer-x86\_64.app" into it.
+        </PlatformTabs.Tab>
+      </PlatformTabs>
+    </PlatformTabs.Tab>
+
+    <PlatformTabs.Tab platform="android">
+      Scan the QR code to download the pre-built app from the [GitHub Release](https://github.com/lynx-family/lynx/releases/latest).
+
+      <QRCodeSVG style={{ border: '2px solid #fff' }} size={220} value="https://github.com/lynx-family/lynx/releases/latest/download/LynxExplorer-noasan-release.apk" />
+
+      Or, you may build from source by following the [Build Lynx Explorer for Android](https://github.com/lynx-family/lynx/tree/develop/explorer/android) guide.
+
+      :::info
+      A version of Lynx Explorer is also available on the [Play Store](https://play.google.com/store/apps/details?id=com.funcs.io.lynx.go), published by community contributors.
+      While this version is not reviewed and maintained by the Lynx team, we're thankful to the community for making it more convenient for developers to try out Lynx on Android.
+      :::
+    </PlatformTabs.Tab>
+
+    <PlatformTabs.Tab platform="harmony">
+      We currently only provide pre-built binaries for the harmony simulator. If you need to run Lynx Explorer on a real harmony device, you'll need to build it from source. Please refer to the [Build Lynx Explorer for Harmony](https://github.com/lynx-family/lynx/tree/develop/explorer/harmony) guide.
+
+      1. **Install DevEco Studio**
+
+      Download the latest DevEco Studio from the [official website](https://developer.huawei.com/consumer/en/deveco-studio/).
+
+      2. **<div id="download-lynx-explorer">Download Lynx Explorer</div>**
+
+      Download the pre-built app [`lynx_explorer-default-unsigned.hap`](https://github.com/lynx-family/lynx/releases/latest/download/lynx_explorer-default-unsigned.hap).
+
+      Or, you may build from source by following the [Build Lynx Explorer for Harmony](https://github.com/lynx-family/lynx/tree/develop/explorer/harmony) guide.
+
+      3. **Install Lynx Explorer on Simulator**
+
+      ```bash
+      hdc install lynx_explorer-default-unsigned.hap
+      ```
+    </PlatformTabs.Tab>
+  </PlatformTabs>
+
+  ### Start developing
+
+  1. Navigate to the created project:
+
+  ```bash
+  cd <project-name>
+  ```
+
+  2. Install the NPM dependencies with package manager:
+
+  <PackageManagerTabs command="install" />
+
+  3. To start the development server, run:
+
+  <PackageManagerTabs command="run dev" />
+
+  You will see a QR code showing up in the terminal, scan with your Lynx Explorer App or if you are using the simulator, just copy the bundle URL and paste it on the "Enter Card URL" input in the Lynx Explorer App and hit "Go".
+
+  4. Make your first change
+
+  Open the `src/App.tsx` file in your code editor and make a change.
+
+  You should see the UI on your Lynx Explorer being updated automatically.
+
+  <Go example="hello-world" defaultFile="src/App.tsx" img="https://lf-lynx.tiktok-cdns.com/obj/lynx-artifacts-oss-sg/lynx-website/assets/doc/hello-world-showcase-ios.png" defaultEntryFile="dist/main.lynx.bundle" />
+
+  <br />
+
+  ### Debugging
+
+  Visit [Lynx DevTool](https://github.com/lynx-family/lynx-devtool/releases) to download and open the Lynx DevTool desktop application. Use a USB cable to connect the debugging device, and start debugging.
+
+  Visit [Debugging](/guide/devtool/panels.md), learn how to debug your Lynx app.
+</Steps>
+
+## Next steps
+
+Here are a few things that we recommend exploring next. You can read them in any order.
+
+### ReactLynx
+
+ReactLynx is the official React framework designed specifically for Lynx, offering a familiar and idiomatic React development experience.
+
+<NextSteps.Root>
+  <NextSteps.Step href="/guide/start/tutorial-gallery" title="Tutorial" description="Step-by-step walkthrough of building a Gallery page with Lynx" />
+
+  <NextSteps.Step href="/react/thinking-in-reactlynx" title="Thinking in ReactLynx" description="Learn how to think in the ReactLynx framework" />
+</NextSteps.Root>
+
+### Describing UI
+
+Lynx makes it easy to create rich UI using familiar Web technology.
+Learn how to describe UI in the Lynx engine.
+
+<NextSteps.Root>
+  <NextSteps.Step href="/guide/ui/elements-components" title="Elements" description="Check out the built-in elements that Lynx provides" />
+
+  <NextSteps.Step href="/guide/ui/styling" title="Styling" description="Learn how to apply different styles in Lynx" />
+</NextSteps.Root>
+
+<br />
+
+<NextSteps.Root>
+  <NextSteps.Step href="/guide/ui/layout" title="Layout" description="Layout your elements and Components" />
+
+  <NextSteps.Step href="/guide/ui/scrolling" title="Scrolling" description="Learn how to use scrollable elements in Lynx" />
+</NextSteps.Root>
+
+### Integration
+
+Learn how to integrate Lynx with existing iOS/Android/Web Apps.
+
+<NextSteps.Root>
+  <NextSteps.Step href="/guide/start/integrate-with-existing-apps" title="Integration" description="Integrate Lynx with existing Apps" />
+</NextSteps.Root>
+
+
+
+---
+url: /ai/start/integrate-with-existing-apps.md
+---
+
+# Integrate with Existing Apps
+
+Currently, Lynx is not suitable for building a new application from scratch. You need to integrate Lynx (engine) with your native mobile app or web app, and load Lynx apps through Lynx views. With a few steps, you can start developing with Lynx in your application.
+
+Choose your target platform to view the specific integration steps:
+
+<PlatformTabs queryKey="platform">
+  <PlatformTabs.Tab platform="ios">
+    <IntegratingLynxIOS />
+  </PlatformTabs.Tab>
+
+  <PlatformTabs.Tab platform="android">
+    <IntegratingLynxAndroid />
+  </PlatformTabs.Tab>
+
+  <PlatformTabs.Tab platform="harmony">
+    <IntegratingLynxHarmony />
+  </PlatformTabs.Tab>
+
+  <PlatformTabs.Tab platform="web">
+    <IntegratingLynxWeb />
+  </PlatformTabs.Tab>
+</PlatformTabs>
+
+## Next Steps
+
+<NextSteps.Root>
+  <NextSteps.Step href="/guide/start/integrate-lynx-devtool" title="Integrate Lynx DevTool" description="Integrate Lynx DevTool to debug Lynx pages" />
+</NextSteps.Root>
+
+
+
+---
+url: /ai/start/tutorial-gallery.md
+---
+
+# Tutorial: Product Gallery
+
+
+We will build a product gallery page together during this tutorial. This tutorial does not assume any existing Lynx knowledge. The techniques you'll learn in the tutorial are fundamental to building any Lynx pages and applications.
+
+:::note
+
+This tutorial is designed for people who prefer to learn by doing and want to quickly try making something tangible. If you prefer learning each concept step by step, start with [Describing the UI](/guide/ui/elements-components.md).
+
+:::
+
+## What are we building?
+
+Let's first have a look at the result! To see the page live, download and install [LynxExplorer](/guide/start/quick-start.md#ios-simulator-platform=macos-arm64,explorer-platform=ios-simulator) on your device, then scan the generated QR code below.
+
+**This is an example below:  gallery**
+
+**Entry:** `src/GalleryComplete.tsx`
+**Bundle:** `dist/GalleryComplete.lynx.bundle` | Web: `dist/GalleryComplete.web.bundle`
+
+```tsx {6}
+import { root } from "@lynx-js/react";
+import { furnituresPictures } from "../Pictures/furnitures/furnituresPictures.jsx";
+import Gallery from "./Gallery.jsx";
+
+function GalleryComplete() {
+  return <Gallery pictureData={furnituresPictures} />;
+}
+
+root.render(<GalleryComplete />);
+
+```
+
+
+
+## Setup for the tutorial
+
+Check out our detailed [quick start](/guide/start/quick-start.md) doc that will guide you through creating a new Lynx project.
+
+You may notice that the project is using TypeScript. Although Lynx and ReactLynx support both TypeScript and plain JavaScript, we recommend TypeScript for a better development experience, provided by static type checking and better editor IntelliSense.
+
+You'll see lots of beautiful images throughout this guide. We've put together a package of sample images you can download [here](https://lf-lynx.tiktok-cdns.com/obj/lynx-artifacts-oss-sg/lynx-website/download/Pictures.tar.gz) to use in your projects.
+
+## Adding Styles
+
+Since the focus of this tutorial is not on how to style your UI, you may just save some time and directly copy the below `index.css` file:
+
+<CodeFold toggle>
+  ```css title="index.css"
+  .gallery-wrapper {
+    height: 100vh;
+    background-color: black;
+  }
+
+  .single-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .scrollbar {
+    position: absolute;
+    right: 7px;
+    z-index: 1000;
+    width: 4px;
+    background: linear-gradient(to bottom, #ff6448, #ccddff, #3deae7);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow:
+      0px 0px 4px 1px rgba(12, 205, 223, 0.4),
+      0px 0px 16px 5px rgba(12, 205, 223, 0.5);
+  }
+
+  .scrollbar-effect {
+    width: 100%;
+    height: 80%;
+  }
+
+  .glow {
+    background-color: #333;
+    border-radius: 4px;
+    background: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(255, 255, 255, 0.8) 50%,
+      rgba(255, 255, 255, 0) 80%
+    );
+    animation: flow 3s linear infinite;
+  }
+
+  @keyframes flow {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+
+  .list {
+    width: 100vw;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: calc(100% - 48px);
+    list-main-axis-gap: 10px;
+    list-cross-axis-gap: 10px;
+  }
+
+  .picture-wrapper {
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .like-icon {
+    position: absolute;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    top: 0px;
+    right: 0px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .heart-love {
+    width: 16px;
+    height: 16px;
+  }
+
+  .circle {
+    position: absolute;
+    top: calc(50% - 8px);
+    left: calc(50% - 8px);
+    height: 16px;
+    width: 16px;
+    border: 2px solid red;
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 1;
+    animation: ripple 1s 1 ease-out;
+  }
+
+  .circleAfter {
+    animation-delay: 0.5s;
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+  ```
+</CodeFold>
+
+and import it as a global styles:
+
+```js
+import '../index.scss';
+```
+
+This make sure your UI look great when you are following this tutorial.
+
+:::info Styling variations in Lynx
+Lynx supports a wide variaties of styling features, including global styles, CSS Modules, inline styles, Sass, CSS variables, and more! Please refer to [Rspeedy - Styling](/rspeedy/styling.md) page for how to pick your best styling configurations.
+:::
+
+## Your First Component: An Image Card
+
+Now, let's start by creating the first image card, which will be the main part of this page.
+
+**This is an example below:  gallery**
+
+**Entry:** `src/FirstImageCard`
+**Bundle:** `dist/FirstImageCard.lynx.bundle` | Web: `dist/FirstImageCard.web.bundle`
+
+```tsx {11}
+import { furnituresPictures } from "../Pictures/furnitures/furnituresPictures.jsx";
+import ImageCard from "./ImageCard.jsx";
+import "../index.scss";
+
+import { root } from "@lynx-js/react";
+
+function FirstImageCard() {
+  const MyFirstPicture = furnituresPictures[0];
+  return (
+    <view className="gallery-wrapper single-card">
+      <ImageCard picture={MyFirstPicture} />
+    </view>
+  );
+}
+
+root.render(<FirstImageCard />);
+
+```
+
+
+
+Great, you can now see the image card displayed. Here, we use the [`<image>`](/api/elements/built-in/image.md) element to display your image. You only need to give it a width and height (or specify the aspectRatio property as shown here), and it will automatically resize to fit the specified dimensions.
+This component can receive a picture property, allowing you to change the image it displays. In fact, all components can receive external inputs like this, giving you control over them.
+
+:::details The src Attribute of Images
+The Lynx `<image>` element can accept a local relative path as the `src` attribute to render an image, which is the most important attribute of the `<image>` element. All images in this page are sourced locally, and these paths need to be imported before use.
+
+However, if your images are stored online, you can easily replace them with web image addresses by changing the value of the src attribute to the corresponding web image link.
+:::
+
+## Adding interactivity: Like an Image Card
+
+We can add a small white heart in the upper right corner and make it the like button for the image card. Here, we implement a small component called `LikeIcon`:
+
+**This is an example below:  gallery**
+
+**Entry:** `src/Components`
+**Bundle:** `dist/LikeImageCard.lynx.bundle` | Web: `dist/LikeImageCard.web.bundle`
+
+```tsx {7-10,13-15}
+import { useState } from "@lynx-js/react";
+import redHeart from "../Pictures/redHeart.png";
+import whiteHeart from "../Pictures/whiteHeart.png";
+import "../index.scss";
+
+export default function LikeIcon() {
+  const [isLiked, setIsLiked] = useState(false);
+  const onTap = () => {
+    setIsLiked(true);
+  };
+  return (
+    <view className="like-icon" bindtap={onTap}>
+      {isLiked && <view className="circle" />}
+      {isLiked && <view className="circle circleAfter" />}
+      <image src={isLiked ? redHeart : whiteHeart} className="heart-love" />
+    </view>
+  );
+}
+
+```
+
+
+
+We want each card to know whether it has been liked, so we added isLiked, which is its internal data. It can use this internal data to save your changes.
+
+```tsx title="LikeIcon.tsx" {2}
+...
+  const [isLiked, setIsLiked] = useState(false);
+...
+```
+
+Then we add the bindtap event to `<image>`, so that when the user clicks the heart, it triggers this event and changes the state of `isLiked`:
+
+```tsx title="LikeIcon.tsx" {3,7}
+...
+  const onTap = () => {
+    setIsLiked(true);
+  }
+  return (
+      ...
+      <image bindtap={onTap}/>
+  )
+...
+```
+
+:::details What is "bindtap"?
+If you come from a web development background, you might be more familiar with naming conventions like onclick (HTML attribute) or onClick (in the React community). Lynx follows a different convention: due to the static nature of its architecture, it uses `bind*` and `catch*`. Learn more on the [Event Handling](/guide/interaction/event-handling.md) page.
+:::
+
+Finally, we use `isLiked` to control the like effect. Because isLiked is a state, `LikeIcon` will respond to its changes, turning into a red like icon, and the `<view>` used to render the animation effect will be conditionally rendered:
+
+```tsx title="LikeIcon.tsx"
+...
+  return
+    ...
+      {isLiked && <view className="circle" />}
+      {isLiked && <view className="circle circleAfter" />}
+      <image src={isLiked ? redHeart : whiteHeart} />
+...
+```
+
+To give this like a better visual interaction effect, we added animations, which are all in index.css. You can also learn more about animations in the [Animation](/guide/styling/animation.md) section. Then replace it with your preferred style!
+
+## Displaying More Images with `<list>`
+
+To show all your beautiful images, you may need help from `<list>`. This way, you will get a scrollable page that displays a large number of similar images:
+
+**This is an example below:  gallery**
+
+**Entry:** `src/CreateGallery`
+**Bundle:** `dist/CreateGallery.lynx.bundle` | Web: `dist/CreateGallery.web.bundle`
+
+```tsx {11,19,24}
+import type { Picture } from "../Pictures/furnitures/furnituresPictures.jsx";
+import "../index.scss";
+import LikeImageCard from "../Components/LikeImageCard.jsx";
+import { calculateEstimatedSize } from "../utils.jsx";
+
+export const Gallery = (props: { pictureData: Picture[] }) => {
+  const { pictureData } = props;
+
+  return (
+    <view className="gallery-wrapper">
+      <list
+        className="list"
+        list-type="waterfall"
+        column-count={2}
+        scroll-orientation="vertical"
+        custom-list-name="list-container"
+      >
+        {pictureData.map((picture: Picture, index: number) => (
+          <list-item
+            estimated-main-axis-size-px={calculateEstimatedSize(picture.width, picture.height)}
+            item-key={"" + index}
+            key={"" + index}
+          >
+            <LikeImageCard picture={picture} />
+          </list-item>
+        ))}
+      </list>
+    </view>
+  );
+};
+
+export default Gallery;
+
+```
+
+
+
+:::details Special child elements of list
+Each child component of `<list>` needs to be `<list-item>`, and you must specify a unique and non-repeating key and item-key attribute, otherwise it may not render correctly.
+:::
+
+Of course, we also provide other scrolling elements, such as `<scroll-view>`, to achieve similar effects. Here, we use a waterfall layout as the child node layout option. `<list>` also accepts other layout types, which you can refer to in [list](/api/elements/built-in/list.md).
+
+:::info
+You can refer to this [Scrolling](/guide/ui/scrolling.md) documentation to learn more about scrolling and scrolling elements.
+:::
+
+## Auto-Scrolling via Element Methods
+
+If you want to create a desktop photo wall, you need to add an auto-scroll feature to this page. Your images will be slowly and automatically scrolled, allowing you to easily see more images:
+
+**This is an example below:  gallery**
+
+**Entry:** `src/AddAutoScroll`
+**Bundle:** `dist/AddAutoScroll.lynx.bundle` | Web: `dist/AddAutoScroll.web.bundle`
+
+```tsx {10,12-22,27}
+import "../index.scss";
+import { useEffect, useRef } from "@lynx-js/react";
+import type { NodesRef } from "@lynx-js/types";
+import LikeImageCard from "../Components/LikeImageCard.jsx";
+import type { Picture } from "../Pictures/furnitures/furnituresPictures.jsx";
+import { calculateEstimatedSize } from "../utils.jsx";
+
+export const Gallery = (props: { pictureData: Picture[] }) => {
+  const { pictureData } = props;
+  const galleryRef = useRef<NodesRef>(null);
+
+  useEffect(() => {
+    galleryRef.current
+      ?.invoke({
+        method: "autoScroll",
+        params: {
+          rate: "60",
+          start: true,
+        },
+      })
+      .exec();
+  }, []);
+
+  return (
+    <view className="gallery-wrapper">
+      <list
+        ref={galleryRef}
+        className="list"
+        list-type="waterfall"
+        column-count={2}
+        scroll-orientation="vertical"
+        custom-list-name="list-container"
+      >
+        {pictureData.map((picture: Picture, index: number) => (
+          <list-item
+            estimated-main-axis-size-px={calculateEstimatedSize(picture.width, picture.height)}
+            item-key={"" + index}
+            key={"" + index}
+          >
+            <LikeImageCard picture={picture} />
+          </list-item>
+        ))}
+      </list>
+    </view>
+  );
+};
+
+export default Gallery;
+
+```
+
+
+
+We use the `useEffect` hook to call the [`autoScroll`](/api/elements/built-in/list.md#autoscroll) method.
+
+```tsx title="Gallery.tsx"
+useEffect(() => {
+  listRef.current
+    ?.invoke({
+      method: 'autoScroll',
+      params: {
+        rate: '60',
+        start: true,
+      },
+    })
+    .exec();
+}, []);
+```
+
+:::details What is "invoke"?
+In Lynx, all native elements have a set of "methods" that can be called via their ref. Unlike on the web, this call is asynchronous, similar to message passing. You need to use invoke with the method name method and parameters param to call them.
+:::
+
+## How about a Custom Scrollbar?
+
+Like most apps, we can add a scrollbar to this page to indicate how many images are left to be displayed. But we can do more! For example, we can replace the default progress bar of `<list>` with our preferred style:
+
+**This is an example below:  gallery**
+
+**Entry:** `src/AddNiceScrollbar`
+**Bundle:** `dist/AddNiceScrollbar.lynx.bundle` | Web: `dist/AddNiceScrollbar.web.bundle`
+
+```tsx {14-19,37,45-46,50}
+import "../index.scss";
+import { useEffect, useRef } from "@lynx-js/react";
+import type { ScrollEvent } from "@lynx-js/types";
+import type { NodesRef } from "@lynx-js/types";
+import LikeImageCard from "../Components/LikeImageCard.jsx";
+import type { Picture } from "../Pictures/furnitures/furnituresPictures.jsx";
+import { calculateEstimatedSize } from "../utils.jsx";
+import { NiceScrollbar, type NiceScrollbarRef } from "./NiceScrollbar.jsx";
+
+export const Gallery = (props: { pictureData: Picture[] }) => {
+  const { pictureData } = props;
+  const scrollbarRef = useRef<NiceScrollbarRef>(null);
+
+  const onScroll = (event: ScrollEvent) => {
+    scrollbarRef.current?.adjustScrollbar(
+      event.detail.scrollTop,
+      event.detail.scrollHeight,
+    );
+  };
+
+  const galleryRef = useRef<NodesRef>(null);
+
+  useEffect(() => {
+    galleryRef.current
+      ?.invoke({
+        method: "autoScroll",
+        params: {
+          rate: "60",
+          start: true,
+        },
+      })
+      .exec();
+  }, []);
+
+  return (
+    <view className="gallery-wrapper">
+      <NiceScrollbar ref={scrollbarRef} />
+      <list
+        ref={galleryRef}
+        className="list"
+        list-type="waterfall"
+        column-count={2}
+        scroll-orientation="vertical"
+        custom-list-name="list-container"
+        bindscroll={onScroll}
+        scroll-event-throttle={0}
+      >
+        {pictureData.map((picture: Picture, index: number) => (
+          <list-item
+            estimated-main-axis-size-px={calculateEstimatedSize(
+              picture.width,
+              picture.height,
+            )}
+            item-key={"" + index}
+            key={"" + index}
+          >
+            <LikeImageCard picture={picture} />
+          </list-item>
+        ))}
+      </list>
+    </view>
+  );
+};
+
+export default Gallery;
+
+```
+
+
+
+Similar to the `bindtap` event used to add the like functionality, we add the [`scroll`](/api/elements/built-in/list.md#scroll) event to `<list>`, which will be triggered when the `<list>` element scrolls. To make the scrollbar respond faster to scroll events, we need to set [`scroll-event-throttle`](/api/elements/built-in/list.md#scroll-event-throttle) to 0.
+
+```tsx title="Gallery.tsx" {16}
+...
+const onScroll = (event: ScrollEvent) => {
+  scrollbarRef.current?.adjustScrollbar(
+    event.detail.scrollTop,
+    event.detail.scrollHeight
+  );
+};
+...
+<list
+  ref={galleryRef}
+  className="list"
+  list-type="waterfall"
+  column-count={2}
+  scroll-orientation="vertical"
+  custom-list-name="list-container"
+  bindscroll={onScroll}
+  scroll-event-throttle={0}
+>
+...
+```
+
+The NiceScrollbar component provides an internal method adjustScrollbar, which we call to adjust the scrollbar's position whenever the bindscroll event is triggered.
+
+:::info
+We use many React techniques in this component, such as `forwardRef` and `useImperativeHandle` for calling the `adjustScrollbar` method. If you are not familiar with them, you can refer to the React official documentation to better understand them.
+:::
+
+```tsx title="NiceScrollbar.tsx" {14-19}
+...
+const adjustScrollbar = (scrollTop: number, scrollHeight: number) => {
+  const listHeight = lynx.__globalProps.screenHeight - 48;
+  const scrollbarHeight = listHeight * (listHeight / scrollHeight);
+  const scrollbarTop = listHeight * (scrollTop / scrollHeight);
+  setScrollbarHeight(scrollbarHeight);
+  setScrollbarTop(scrollbarTop);
+};
+...
+```
+
+:::details \_\_globalProps
+We use [globalProps](/api/lynx-api/lynx/lynx-global-props.md) in this method, where you can use `screenHeight` and `screenWidth` to get the screen height and width.
+:::
+
+:::details list-item's estimated-main-axis-size-px
+You may have noticed this attribute [estimated-main-axis-size-px](/api/elements/built-in/list.md#estimated-main-axis-size-px). This attribute can estimate the size of elements on the main axis when they are not yet rendered in `<list>`. This is very useful when we add a scrollbar, as we need to know how long the scrollbar needs to be to cover all elements.
+
+Of course, `<list>` also supports automatic layout. You can remove this attribute and see the effect—your scrollbar will automatically adjust its length as the elements change from preset height to actual height.
+
+```tsx title="src/AddNiceScrollbar/Gallery.tsx" {5}
+...
+  <list>
+    {pictureData.map((picture: Picture, index: number) => (
+      <list-item
+        estimated-main-axis-size-px={calculateEstimatedSize(
+          picture.width,
+          picture.height
+        )}
+        item-key={"" + index}
+        key={"" + index}
+      >
+        <LikeImageCard picture={picture} />
+      </list-item>
+    ))}
+  </list>
+...
+```
+
+We provide a utility method to estimate the size of the image on the main axis based on the current `<list>` layout information and the image dimensions:
+
+```tsx title="src/utils.tsx"
+export const calculateEstimatedSize = (
+  pictureWidth: number,
+  pictureHeight: number,
+) => {
+  // Fixed styles of the gallery
+  const galleryPadding = 20;
+  const galleryMainAxisGap = 10;
+  const gallerySpanCount = 2;
+  const galleryWidth = lynx.__globalProps.screenWidth;
+  // Calculate the width of each ImageCard and return the relative height of the it.
+  const itemWidth =
+    (galleryWidth - galleryPadding * 2 - galleryMainAxisGap) / gallerySpanCount;
+  return (itemWidth / pictureWidth) * pictureHeight;
+};
+```
+
+:::
+
+At this point, we have a complete page! But you may have noticed that the scrollbar we added still lags a bit during scrolling, not as responsive as it could be. This is because our adjustments are still happening on the background thread, not the main thread that responds to touch scrolling.
+
+:::details What are the background thread and main thread?
+The biggest feature of Lynx is its dual-thread architecture. You can find a more detailed introduction in [JavaScript Runtime](/guide/scripting-runtime/index.md#javascript).
+:::
+
+## A More Responsive Scrollbar
+
+To optimize the performance of the scrollbar, we need to introduce [Main Thread Script (MTS)](/react/main-thread-script.md) to [handle events on the main thread](/guide/interaction/event-handling.md#main-thread-event-processing), migrating the adjustments we made in the previous step for the scrollbar's height and position from the background thread to the main thread.
+
+To let you see the comparison more clearly, we keep both scrollbars:
+
+**This is an example below:  gallery**
+
+**Entry:** `src/ScrollbarCompare`
+**Bundle:** `dist/ScrollbarCompare.lynx.bundle` | Web: `dist/ScrollbarCompare.web.bundle`
+
+```tsx {2,3,9,14,17-23,47,48}
+import "../index.scss";
+import { useEffect, useMainThreadRef, useRef } from "@lynx-js/react";
+import { MainThread, type ScrollEvent } from "@lynx-js/types";
+import type { NodesRef } from "@lynx-js/types";
+import LikeImageCard from "../Components/LikeImageCard.jsx";
+import type { Picture } from "../Pictures/furnitures/furnituresPictures.jsx";
+import { calculateEstimatedSize } from "../utils.jsx";
+import { NiceScrollbar, type NiceScrollbarRef } from "./NiceScrollbar.jsx";
+import { adjustScrollbarMTS, NiceScrollbarMTS } from "./NiceScrollbarMTS.jsx";
+
+export const Gallery = (props: { pictureData: Picture[] }) => {
+  const { pictureData } = props;
+  const scrollbarRef = useRef<NiceScrollbarRef>(null);
+  const scrollbarMTSRef = useMainThreadRef<MainThread.Element>(null);
+  const galleryRef = useRef<NodesRef>(null);
+
+  const onScrollMTS = (event: ScrollEvent) => {
+    "main thread";
+    adjustScrollbarMTS(
+      event.detail.scrollTop,
+      event.detail.scrollHeight,
+      scrollbarMTSRef,
+    );
+  };
+
+  const onScroll = (event: ScrollEvent) => {
+    scrollbarRef.current?.adjustScrollbar(
+      event.detail.scrollTop,
+      event.detail.scrollHeight,
+    );
+  };
+
+  useEffect(() => {
+    galleryRef.current
+      ?.invoke({
+        method: "autoScroll",
+        params: {
+          rate: "60",
+          start: true,
+        },
+      })
+      .exec();
+  }, []);
+
+  return (
+    <view className="gallery-wrapper">
+      <NiceScrollbar ref={scrollbarRef} />
+      <NiceScrollbarMTS main-thread:ref={scrollbarMTSRef} />
+      <list
+        ref={galleryRef}
+        className="list"
+        list-type="waterfall"
+        column-count={2}
+        scroll-orientation="vertical"
+        custom-list-name="list-container"
+        bindscroll={onScroll}
+        main-thread:bindscroll={onScrollMTS}
+        scroll-event-throttle={0}
+      >
+        {pictureData.map((picture: Picture, index: number) => (
+          <list-item
+            estimated-main-axis-size-px={calculateEstimatedSize(picture.width, picture.height)}
+            item-key={"" + index}
+            key={"" + index}
+          >
+            <LikeImageCard picture={picture} />
+          </list-item>
+        ))}
+      </list>
+    </view>
+  );
+};
+
+export default Gallery;
+
+```
+
+
+
+Now you should be able to see that the scrollbar on the left, controlled with main thread scripting, is smoother and more responsive compared to the scrollbar on the right that we implemented earlier. If you encounter issues in other UIs where updates need to happen immediately, try this method.
+
+We also provide another tutorial, guiding you through a deep dive into implementing a highly responsive swiper in [Tutorial:Product Detail](/guide/start/tutorial-product-detail.md).
+
+## Wrapping Up
+
+We remove the redundant scrollbar used for comparison, and our Gallery is now complete! Let's take a look at the final result:
+
+**This is an example below:  gallery**
+
+**Bundle:** `dist/GalleryComplete.lynx.bundle` | Web: `dist/GalleryComplete.web.bundle`
+
+```tsx
+import { root } from "@lynx-js/react";
+import { furnituresPictures } from "../Pictures/furnitures/furnituresPictures.jsx";
+import Gallery from "./Gallery.jsx";
+
+function GalleryComplete() {
+  return <Gallery pictureData={furnituresPictures} />;
+}
+
+root.render(<GalleryComplete />);
+
+```
+
+
+
+Configurations! You have successfully created a product gallery page! 🎉 Throughout this tutorial, you’ve covered the basics of writing interactive UIs on the Lynx platform and some of the differences between using it on the Web.
+
+
+
+---
+url: /ai/start/tutorial-product-detail.md
 ---
 
 # Tutorial: Product Detail

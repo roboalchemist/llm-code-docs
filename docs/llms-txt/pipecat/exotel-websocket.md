@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/telephony/exotel-websocket.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Exotel Websocket Transport
 
 > Using Exotel's WebSocket Transport for your Pipecat Cloud agents
@@ -127,8 +131,3 @@ To test your integration, simply dial your Exotel phone number from any phone. T
 ## Next Steps
 
 For complete implementation details including dial-out, caller personalization, and advanced call control features, see the [Exotel WebSocket Integration guide](/guides/telephony/exotel-websockets).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

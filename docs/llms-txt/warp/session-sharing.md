@@ -6,7 +6,7 @@
 This action sends command information to Warp’s servers and is explicitly opt-in. Read more about privacy for cloud features in the [privacy overview](https://www.warp.dev/privacy/overview).
 {% endhint %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-49346a9f4cbf5ef87cdada308b4f7708d41fc938%2Fsession_sharing_preview.png?alt=media" alt=""><figcaption><p>Session Sharing allows multiple teammates to edit the input at the same time</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-49346a9f4cbf5ef87cdada308b4f7708d41fc938%2Fsession_sharing_preview.png?alt=media" alt=""><figcaption><p>Session Sharing allows multiple teammates to edit the input at the same time</p></figcaption></figure>
 
 ### Share a session
 
@@ -22,7 +22,7 @@ If you select to share a current session, you will be given the option to share 
 
 If you initiate a shared session using Block actions, you will be given the option to start sharing from the selected block onwards. This option gives you the precision to select a specific block of output in your session history as the starting point, excluding all previous scrollback before that block.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-9eff70e46ce75eaed56052c14b2b54226d0e1b61%2FScreenshot%202024-04-24%20at%203.09.05%E2%80%AFPM.png?alt=media&#x26;token=01fb0d6e-4e6f-4aae-8f55-0c927099df62" alt=""><figcaption><p>Start sharing from a selected block onward or an entire session with or without scrollback</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-9eff70e46ce75eaed56052c14b2b54226d0e1b61%2Fstart-session-sharing.png?alt=media" alt=""><figcaption><p>Start sharing from a selected block onward or an entire session with or without scrollback</p></figcaption></figure>
 
 #### How to allow access to collaborators in your session
 
@@ -40,7 +40,7 @@ You can adjust who has view or edit access to your session and specifically:
 * Revoke edit access from collaborators
 * Remove collaborators from the session
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-cbc2de4884896428461d94ea4930edf5e4e45345%2Fsession-who-has-access.png?alt=media&#x26;token=0d9b3c31-679a-48cc-a932-ab3d43ec8153" alt=""><figcaption><p>Update permissions through the share icon</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-cbc2de4884896428461d94ea4930edf5e4e45345%2Fsession-who-has-access.png?alt=media" alt=""><figcaption><p>Update permissions through the share icon</p></figcaption></figure>
 
 When somebody accesses your shared session, they will be able to:
 
@@ -55,7 +55,7 @@ You can also:
 * Reference avatars and usernames for every collaborator who has access to your session
 * Jump to a collaborator’s selection by clicking on their avatar
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-8bd8c322de21dbc965dc969d693a9b2469c681c9%2Fsession-sharing-native-web-demo.gif?alt=media&#x26;token=527a1780-2914-4636-8a3a-d06658827f42" alt=""><figcaption><p>Session Sharing Native to Web Demo</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-8bd8c322de21dbc965dc969d693a9b2469c681c9%2Fsession-sharing-native-web-demo.gif?alt=media" alt=""><figcaption><p>Session Sharing Native to Web Demo</p></figcaption></figure>
 
 #### How to end a shared session
 
@@ -65,11 +65,11 @@ When you’re ready to end a shared session, click `Share > Stop` sharing to wra
 
 You may share multiple sessions simultaneously. If you have multiple shared sessions, you will find *Other shared sessions* listed in the Share dropdown menu. You may also end multiple shared sessions at the same time with `Share > Stop` sharing all.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-72dc9022fb52487a8704ea93fd558b45ce9c1c57%2Fswitch-stop-session-sharing.png?alt=media&#x26;token=b7f3192b-b29e-40e9-ae60-1007eef1089f" alt=""><figcaption><p>Switch between shared sessions or stop all shared sessions at once</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-72dc9022fb52487a8704ea93fd558b45ce9c1c57%2Fswitch-stop-session-sharing%20(1).png?alt=media" alt=""><figcaption><p>Switch between shared sessions or stop all shared sessions at once</p></figcaption></figure>
 
 ### Known limitations
 
-* Even if enabled, [Secret Redaction](https://docs.warp.dev/privacy/secret-redaction) is not applied during session sharing.
+* Even if enabled, [Secret Redaction](https://docs.warp.dev/support-and-community/privacy-and-security/secret-redaction) is not applied during session sharing.
 * There is a session size limit of 100MB per session, 1GB per user per day, and a maximum of 10 participants per session (excluding the sharer). These limits are subject to change.
 * Some of Warp's plans are limited to 5 shared sessions and the session limits do not reset. Upgrade to a [paid plan](https://www.warp.dev/pricing) to get unlimited sessions.
 

@@ -4,7 +4,6 @@
 title: Tag Pipelines
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloud Cost Management > Cost Allocation > Tag Pipelines
-source_url: https://docs.datadoghq.com/allocation/tag_pipelines/index.html
 ---
 
 # Tag Pipelines

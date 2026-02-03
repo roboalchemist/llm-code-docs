@@ -1,12 +1,6 @@
 # Source: https://gitbook.com/docs/policies/privacy-and-security/statement/cookies.md
 
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/adaptive-content/enabling-adaptive-content/cookies.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/adaptive-content/enabling-adaptive-content/cookies.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/adaptive-content/enabling-adaptive-content/cookies.md
-
-# Source: https://gitbook.com/docs/policies/privacy-and-security/statement/cookies.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/adaptive-content/enabling-adaptive-content/cookies.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/adaptive-content/enabling-adaptive-content/cookies.md
 

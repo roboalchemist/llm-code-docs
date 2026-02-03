@@ -6,7 +6,6 @@ description: >-
   Browse and discover actions for Workflow Automation and App Builder across
   cloud providers, SaaS tools, and Datadog services.
 breadcrumbs: Docs > Action Catalog
-source_url: https://docs.datadoghq.com/actions_catalog/index.html
 ---
 
 # Action Catalog
@@ -795,6 +794,22 @@ Anthropic
  List embeddable graphs
 {% icon name="icon-graph-bar" /%}
  Revoke embeddable graph
+{% icon name="icon-bug" /%}
+ Datadog Error Tracking 
+{% icon name="icon-click" /%}
+ 
+{% icon name="icon-check-bold" /%}
+\>
+{% icon name="icon-bug" /%}
+ Delete issue assignee
+{% icon name="icon-bug" /%}
+ Get issue
+{% icon name="icon-bug" /%}
+ Search issues
+{% icon name="icon-bug" /%}
+ Update issue assignee
+{% icon name="icon-bug" /%}
+ Update issue state
 {% icon name="icon-events" /%}
  Datadog Events 
 {% icon name="icon-click" /%}
@@ -883,6 +898,8 @@ Anthropic
  Create or attach ServiceNow incident
 {% icon name="icon-incidents" /%}
  Delete incident impact
+{% icon name="icon-incidents" /%}
+ Generate postmortem
 {% icon name="icon-incidents" /%}
  Get incident automation data
 {% icon name="icon-incidents" /%}
@@ -1384,7 +1401,15 @@ Anthropic
 {% icon name="icon-security-monitoring" /%}
  Add security monitoring signal to incident
 {% icon name="icon-security-monitoring" /%}
+ Attach security findings to a case
+{% icon name="icon-security-monitoring" /%}
+ Attach security findings to a Jira issue
+{% icon name="icon-security-monitoring" /%}
  Convert existing security monitoring rule
+{% icon name="icon-security-monitoring" /%}
+ Create case for security findings
+{% icon name="icon-security-monitoring" /%}
+ Create Jira issue for security findings
 {% icon name="icon-security-monitoring" /%}
  Create signal notification rule
 {% icon name="icon-security-monitoring" /%}
@@ -1399,6 +1424,8 @@ Anthropic
  Delete signal notification rule
 {% icon name="icon-security-monitoring" /%}
  Delete vulnerability notification rule
+{% icon name="icon-security-monitoring" /%}
+ Detach security findings from their case
 {% icon name="icon-security-monitoring" /%}
  Edit security monitoring signal assignee
 {% icon name="icon-security-monitoring" /%}
@@ -1872,7 +1899,7 @@ Anthropic
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
-\> Add comment Create issue Get issue Transition issueKubernetes Api Extensions 
+\> Add comment Create issue Get accounts Get issue types Get projects Get issue Transition issueKubernetes Api Extensions 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
@@ -1900,11 +1927,7 @@ Anthropic
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
-\> Agent activities Agent activity Agent session Agent session create on comment Agent session create on issue Agent sessions Create agent activity Update agent sessionLinear Airbyte 
-{% icon name="icon-click" /%}
- 
-{% icon name="icon-check-bold" /%}
-\> Airbyte integration connectLinear Applications 
+\> Agent activities Agent activity Agent session Agent session create on comment Agent session create on issue Agent sessions Create agent activity Update agent sessionLinear Applications 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
@@ -1912,15 +1935,11 @@ Anthropic
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
-\> Attachment Attachment issue Attachment link discord Attachment link front Attachment link git hub issue Attachment link intercom Attachment link jira issue Attachment link salesforce Attachment link slack Attachment link URL Attachment link zendesk Attachment sync to slack Attachments Attachments for URL Create attachment Customer need create from attachment Delete attachment Update attachmentLinear Attachments 
+\> Attachment Attachment issue Attachments Attachments for URL Create attachment Customer need create from attachment Delete attachment Update attachmentLinear Audits 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
-\> Audit entries Audit entry typesLinear Authentication 
-{% icon name="icon-click" /%}
- 
-{% icon name="icon-check-bold" /%}
-\> Authentication sessionsLinear Comments 
+\> Audit entries Audit entry typesLinear Comments 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
@@ -1932,7 +1951,7 @@ Anthropic
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
-\> Archive customer need Create customer Create customer need Create customer status Create customer tier Customer Customer merge Customer need Customer needs Customer status Customer statuses Customer tier Customer tiers Customer unsync Customer upsert Customers Delete customer Delete customer need Delete customer status Delete customer tier Integration slack customer channel link Issue title suggestion from customer request Unarchive customer need Update customer Update customer status Update customer tierLinear Cycles 
+\> Archive customer need Create customer Create customer need Create customer status Create customer tier Customer Customer merge Customer need Customer needs Customer status Customer statuses Customer tier Customer tiers Customer unsync Customer upsert Customers Delete customer Delete customer need Delete customer status Delete customer tier Issue title suggestion from customer request Unarchive customer need Update customer Update customer status Update customer tierLinear Cycles 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
@@ -1944,11 +1963,11 @@ Anthropic
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
-\> Create email intake address Delete email intake address Email intake address Email intake address rotate Email token user account auth Email unsubscribe Email user account auth challenge Resend organization invite by email Update email intake addressLinear Emojis 
+\> Create email intake address Delete email intake address Email intake address Email intake address rotate Resend organization invite by email Update email intake addressLinear Emojis 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
-\> Create emoji Delete emoji Emoji Emojis Integration slack import emojisLinear Entities 
+\> Emoji EmojisLinear Entities 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
@@ -1960,7 +1979,7 @@ Anthropic
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
-\> File upload Import file upload Issue figma file key searchLinear General 
+\> Issue figma file key searchLinear General 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
@@ -1968,11 +1987,7 @@ Anthropic
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
-\> Create git automation state Create git automation target branch Create integration github commit Delete git automation state Delete git automation target branch Integration git hub enterprise server connect Integration git hub personal Integration github connect Integration github import connect Integration github import refresh Integration gitlab connect Issue import create github Update git automation state Update git automation target branch Verify git hub enterprise server installationLinear Google 
-{% icon name="icon-click" /%}
- 
-{% icon name="icon-check-bold" /%}
-\> Google user account auth Integration google sheets Refresh google sheets dataLinear Initiatives 
+\> Create git automation state Create git automation target branch Delete git automation state Delete git automation target branch Issue import create github Update git automation state Update git automation target branchLinear Initiatives 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
@@ -1980,23 +1995,19 @@ Anthropic
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
-\> Archive integration Create integration template Create integrations settings Delete integration Delete integration intercom Delete integration template Integration Integration asks connect channel Integration discord Integration figma Integration front Integration gong Integration has scopes Integration intercom Integration jira personal Integration loom Integration request Integration salesforce Integration sentry connect Integration slack Integration slack asks Integration slack custom view notifications Integration slack or asks update slack team name Integration slack org project updates post Integration slack personal Integration slack post Integration slack project post Integration template Integration templates Integration zendesk Integrations Integrations settings Templates for integration Time schedule refresh integration schedule Update integration intercom settings Update integrations settingsLinear Issues 
+\> Create integration template Create integrations settings Delete integration template Integration Integration has scopes Integration template Integration templates Integrations Integrations settings Templates for integration Update integrations settingsLinear Issues 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
-\> Archive issue Create issue Create issue batch Create issue label Create issue relation Delete issue Delete issue import Delete issue label Delete issue relation Issue Issue add label Issue external sync disable Issue filter suggestion Issue import check sync Issue import create asana Issue import create clubhouse Issue import create jira Issue import jql check Issue label Issue label restore Issue label retire Issue labels Issue priority values Issue relation Issue relations Issue reminder Issue remove label Issue search Issue subscribe Issue unsubscribe Issues Search issues Unarchive issue Update issue Update issue import Update issue label Update issue relationLinear Logout 
+\> Archive issue Create issue Create issue batch Create issue label Create issue relation Delete issue Delete issue import Delete issue label Delete issue relation Issue Issue add label Issue external sync disable Issue filter suggestion Issue label Issue label restore Issue label retire Issue labels Issue priority values Issue relation Issue relations Issue reminder Issue remove label Issue search Issue subscribe Issue unsubscribe Issues Search issues Unarchive issue Update issue Update issue label Update issue relationLinear Notifications 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
-\> Logout Logout all sessions Logout other sessions Logout sessionLinear Notifications 
+\> Archive notification Create notification subscription Delete notification subscription Notification archive all Notification snooze all Notification unsnooze all Unarchive notification Update notification Update notification subscriptionLinear Organizations 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
-\> Archive notification Create notification subscription Delete notification subscription Notification archive all Notification mark read all Notification mark unread all Notification snooze all Notification unsnooze all Unarchive notification Update notification Update notification subscriptionLinear Organizations 
-{% icon name="icon-click" /%}
- 
-{% icon name="icon-check-bold" /%}
-\> Create organization from onboarding Create organization invite Delete organization Delete organization cancel Delete organization domain Delete organization invite Join organization from onboarding Leave organization Organization Organization delete challenge Organization exists Organization invite Organization invites Organization start trial Organization start trial for plan Resend organization invite Update organization Update organization inviteLinear Projects 
+\> Create organization from onboarding Create organization invite Delete organization invite Organization Organization exists Organization invite Organization invites Resend organization invite Update organization inviteLinear Projects 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
@@ -2032,7 +2043,7 @@ Anthropic
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
-\> Available users External user External users Saml token user account auth Suspend user Unsuspend user Update user Update user settings User User demote admin User demote member User discord connect User external user disconnect User promote admin User promote member User settings User settings flags reset UsersLinear Views 
+\> Available users External user External users Suspend user Unsuspend user Update user Update user settings User User settings UsersLinear Views 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
@@ -2092,7 +2103,7 @@ Anthropic
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
-\> Create incident Delete incident Get incident List incidents Resolve incidentSignal Sciences 
+\> Create incident Create record in table Delete incident Get incident List incidents Resolve incidentSignal Sciences 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
@@ -2100,7 +2111,7 @@ Anthropic
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}
-\> Add bookmark to public channel Add Datadog App to channel Archive channel Create channel Get public channel topic Get user by email Get user by ID Invite users to channel List public channel members List channels List users List workspaces Prompt user with modal Send block kit message Make a decision Send message Set channel description Set channel topicSlack Chat 
+\> Add bookmark to public channel Add Datadog App to channel Archive channel Create channel Get public channel topic Get user by email Get user by ID Invite users to channel List public channel members List channels List user group members List users List workspaces Prompt user with modal Send block kit message Make a decision Send message Set channel description Set channel topicSlack Chat 
 {% icon name="icon-click" /%}
  
 {% icon name="icon-check-bold" /%}

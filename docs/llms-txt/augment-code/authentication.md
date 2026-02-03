@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/cli/setup-auggie/authentication.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Login and authentication
 
 > You will need an active account and valid session token to use Auggie CLI which you can get by following the instructions below.

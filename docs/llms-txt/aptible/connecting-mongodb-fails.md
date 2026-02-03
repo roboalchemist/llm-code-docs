@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/troubleshooting/common-errors-issues/connecting-mongodb-fails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connecting to MongoDB fails
 
 If you are connecting to a [MongoDB](/core-concepts/managed-databases/supported-databases/mongodb) [Database](/core-concepts/managed-databases/managing-databases/overview) on Aptible, either through your app or a [Database Tunnel](/core-concepts/managed-databases/connecting-databases/database-tunnels), you might hit an error such as this one:

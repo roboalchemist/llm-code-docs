@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/telephony/start/phone-numbers.md
 
-# Source: https://docs.livekit.io/sip/cloud/phone-numbers.md
-
-LiveKit docs › Getting started › Cloud › Phone numbers
+LiveKit docs › Get Started › Phone numbers
 
 ---
 
@@ -14,12 +12,16 @@ LiveKit docs › Getting started › Cloud › Phone numbers
 
 LiveKit Phone Numbers lets you purchase and manage US phone numbers for voice applications. It provides the telephony infrastructure and phone number inventory, without requiring separate SIP trunk configuration. Buy local or toll-free numbers directly through LiveKit and assign them to voice agents using dispatch rules.
 
+> ℹ️ **Inbound calling only**
+> 
+> LiveKit Phone Numbers currently only supports inbound calling. Support for outbound calls is coming soon.
+
 - **Buy numbers directly**: Select local or toll-free US numbers for inbound calling with your preferred area code.
 - **Streamlined setup**: Purchase phone numbers and configure voice agents without SIP trunk complexity.
 - **High-definition (HD) voice**: Ensure clear, professional audio quality on all calls, from agent dialogue to hold music.
 - **Unified management**: Use LiveKit Cloud to procure and manage numbers, configure dispatch rules, and review call metrics and logs.
 
-You can manage your phone numbers using the [LiveKit Cloud dashboard](https://cloud.livekit.io/projects/p_/telephony/phone-numbers), [LiveKit CLI](#cli-reference), or the [Phone Numbers APIs](https://docs.livekit.io/sip/phone-numbers-api.md).
+You can manage your phone numbers using the [LiveKit Cloud dashboard](https://cloud.livekit.io/projects/p_/telephony/phone-numbers), [LiveKit CLI](#cli-reference), or the [Phone Numbers APIs](https://docs.livekit.io/reference/telephony/phone-numbers-api.md).
 
 ## Setting up a LiveKit phone number
 
@@ -73,7 +75,7 @@ lk number purchase --numbers +14155550100
 
 ### Step 3: Assign the number to a dispatch rule
 
-Assign the number to a dispatch rule. LiveKit recommends using [explicit dispatch](https://docs.livekit.io/agents/worker/agent-dispatch.md#explicit-dispatch) for agents that receive inbound calls. Define the agent you want to respond to calls to a number in the dispatch rule. To learn more, see [Dispatch from inbound SIP calls](https://docs.livekit.io/agents/worker/agent-dispatch.md#dispatch-from-inbound-sip-calls).
+Assign the number to a dispatch rule. LiveKit recommends using [explicit dispatch](https://docs.livekit.io/agents/server/agent-dispatch.md#explicit) for agents that receive inbound calls. Define the agent you want to respond to calls to a number in the dispatch rule. To learn more, see [Dispatch from inbound SIP calls](https://docs.livekit.io/agents/server/agent-dispatch.md#dispatch-from-inbound-sip-calls).
 
 **LiveKit Cloud**:
 
@@ -110,13 +112,13 @@ The following limitations and considerations apply to LiveKit Phone Numbers:
 - Available only in the US. Support for additional countries is coming in a future release.
 - Only inbound calling is supported. Support for outbound calling is coming in a future release.
 - Forwarding calls using the `TransferSipParticipant` API is not yet supported.
-- If you release a phone number before the end of the month, you are still billed for the entirety of the month. For details on pricing, see the [LiveKit Phone Numbers pricing page](https://livekit.io/pricing/phone-numbers).
+- If you release a phone number before the end of the month, you are still billed for the entirety of the month. For details on pricing, see [LiveKit Telephony pricing](https://livekit.io/pricing#telephony).
 
 ## CLI reference
 
 The LiveKit CLI provides phone number management commands for searching, purchasing, and managing phone numbers for your SIP applications. Prefix all phone number commands with `lk number`.
 
-For instructions on installing the CLI, see the LiveKit CLI [Getting started](https://docs.livekit.io/home/cli.md) guide.
+For instructions on installing the CLI, see the LiveKit CLI [Getting started](https://docs.livekit.io/intro/basics/cli/start.md) guide.
 
 ```shell
 lk number [command] [command options]
@@ -125,7 +127,7 @@ lk number [command] [command options]
 
 > 🔥 **CLI version requirement**
 > 
-> Update the CLI regularly to ensure you have the latest version. You must have an up-to-date CLI to manage phone numbers. See [Update the CLI](https://docs.livekit.io/home/cli.md#updates) for instructions.
+> Update the CLI regularly to ensure you have the latest version. You must have an up-to-date CLI to manage phone numbers. See [Update the CLI](https://docs.livekit.io/intro/basics/cli/start.md#updates) for instructions.
 
 ### Search
 
@@ -317,13 +319,13 @@ lk number release --numbers +16505550010
 
 The following topics provide more information on managing LiveKit Phone Numbers and LiveKit SIP.
 
-- **[Dispatch rules](https://docs.livekit.io/sip/dispatch-rules.md)**: Create dispatch rules to determine how callers to your LiveKit Phone Number are dispatched to rooms.
+- **[Dispatch rules](https://docs.livekit.io/telephony/accepting-calls/dispatch-rule.md)**: Create dispatch rules to determine how callers to your LiveKit Phone Number are dispatched to rooms.
 
-- **[Phone Number APIs](https://docs.livekit.io/sip/phone-numbers-api.md)**: Reference for the phone number management commands in the LiveKit CLI.
+- **[Phone Number APIs](https://docs.livekit.io/reference/telephony/phone-numbers-api.md)**: Reference for the phone number management commands in the LiveKit CLI.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:18.976Z.
-For the latest version of this document, see [https://docs.livekit.io/sip/cloud/phone-numbers.md](https://docs.livekit.io/sip/cloud/phone-numbers.md).
+This document was rendered at 2026-02-03T03:25:09.792Z.
+For the latest version of this document, see [https://docs.livekit.io/telephony/start/phone-numbers.md](https://docs.livekit.io/telephony/start/phone-numbers.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

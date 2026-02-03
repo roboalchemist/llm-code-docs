@@ -2,17 +2,9 @@
 
 # Source: https://docs.turso.tech/cli/db/tokens/invalidate.md
 
-# Source: https://docs.turso.tech/cli/group/tokens/invalidate.md
-
-# Source: https://docs.turso.tech/cli/db/tokens/invalidate.md
-
-# Source: https://docs.turso.tech/cli/group/tokens/invalidate.md
-
-# Source: https://docs.turso.tech/cli/db/tokens/invalidate.md
-
-# Source: https://docs.turso.tech/cli/group/tokens/invalidate.md
-
-# Source: https://docs.turso.tech/cli/db/tokens/invalidate.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # db tokens invalidate
 

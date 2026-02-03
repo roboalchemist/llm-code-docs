@@ -6,10 +6,8 @@ description: >-
   Safely disable and remove the Datadog Admission Controller from your
   Kubernetes cluster using the Cluster Agent
 breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Disable the Datadog
-  Admission Controller with the Cluster Agent
-source_url: >-
-  https://docs.datadoghq.com/guide/cluster_agent_disable_admission_controller/index.html
+  Docs > Containers > Containers Guides > Disable the Datadog Admission
+  Controller with the Cluster Agent
 ---
 
 # Disable the Datadog Admission Controller with the Cluster Agent

@@ -4,7 +4,6 @@
 title: ECR Image
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > ECR Image
-source_url: https://docs.datadoghq.com/data_directory/aws/aws.ecr_image.dataset/index.html
 ---
 
 # ECR Image
@@ -34,4 +33,4 @@ aws.ecr_image
 | last_recorded_pull_time     | core | timestamp     | The date and time, expressed in standard JavaScript date format, when Amazon ECR recorded the last image pull. <note> Amazon ECR refreshes the last image pull timestamp at least once every 24 hours. For example, if you pull an image once a day then the <code>lastRecordedPullTime</code> timestamp will indicate the exact time that the image was last pulled. However, if you pull an image once an hour, because Amazon ECR refreshes the <code>lastRecordedPullTime</code> timestamp at least once every 24 hours, the result may not be the exact time that the image was last pulled. </note> |
 | registry_id                 | core | string        | The Amazon Web Services account ID associated with the registry to which this image belongs.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | repository_name             | core | string        | The name of the repository to which this image belongs.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| tags                        | core | hstore        |
+| tags                        | core | hstore_csv    |

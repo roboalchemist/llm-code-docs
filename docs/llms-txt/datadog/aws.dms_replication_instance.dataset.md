@@ -4,8 +4,6 @@
 title: DMS Replication Instance
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > DMS Replication Instance
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.dms_replication_instance.dataset/index.html
 ---
 
 # DMS Replication Instance
@@ -46,5 +44,5 @@ aws.dms_replication_instance
 | replication_instance_status               | core | string        | The status of the replication instance. The possible return values include: "available" "creating" "deleted" "deleting" "failed" "modifying" "upgrading" "rebooting" "resetting-master-credentials" "storage-full" "incompatible-credentials" "incompatible-network" "maintenance"                                                                                                     |
 | replication_subnet_group                  | core | json          | The subnet group for the replication instance.                                                                                                                                                                                                                                                                                                                                         |
 | secondary_availability_zone               | core | string        | The Availability Zone of the standby replication instance in a Multi-AZ deployment.                                                                                                                                                                                                                                                                                                    |
-| tags                                      | core | hstore        |
+| tags                                      | core | hstore_csv    |
 | vpc_security_groups                       | core | json          | The VPC security group for the instance.                                                                                                                                                                                                                                                                                                                                               |

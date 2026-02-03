@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/security-compliance/security-compliance-dashboard/control-performance.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Control Performance
 
 Security controls in-place check for the implementation of a specific safeguard. If you have not implemented a particular control , appropriate notifications are provided in the Aprible Dashboard to indicate the same, with relevant recommendations to remediate.

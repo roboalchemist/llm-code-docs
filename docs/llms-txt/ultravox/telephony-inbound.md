@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/gettingstarted/quickstart/telephony-inbound.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Inbound Call Quickstart
 
 > Connect inbound phone calls to an Ultravox agent in under 6 minutes.
@@ -198,8 +202,3 @@ startServer();
 
 1. Check out the full [Inbound Phone Call](/gettingstarted/examples/inbound-phone-call) example for a fuller explanation of how to have incoming calls answered by an AI agent.
 2. Ultravox Realtime provides telephony integrations for Telnyx, Twilio, Plivo, and Exotel. Learn more [here](/telephony/overview).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/get-started/faq.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ❓ FAQs
 
 > Collections of all the frequently asked questions
@@ -13,7 +17,7 @@
     Use the model provided on huggingface: `mistralai/Mistral-7B-v0.1`
 
     <CodeGroup>
-      ```python main.py
+      ```python main.py theme={null}
       import os
       from embedchain import App
 
@@ -22,7 +26,7 @@
       app = App.from_config("huggingface.yaml")
       ```
 
-      ```yaml huggingface.yaml
+      ```yaml huggingface.yaml theme={null}
       llm:
         provider: huggingface
         config:
@@ -44,7 +48,7 @@
     Use the model `gpt-4-turbo` provided my openai.
 
     <CodeGroup>
-      ```python main.py
+      ```python main.py theme={null}
       import os
       from embedchain import App
 
@@ -54,7 +58,7 @@
       app = App.from_config(config_path="gpt4_turbo.yaml")
       ```
 
-      ```yaml gpt4_turbo.yaml
+      ```yaml gpt4_turbo.yaml theme={null}
       llm:
         provider: openai
         config:
@@ -69,7 +73,7 @@
 
   <Accordion title="How to use GPT-4 as the LLM model?">
     <CodeGroup>
-      ```python main.py
+      ```python main.py theme={null}
       import os
       from embedchain import App
 
@@ -79,7 +83,7 @@
       app = App.from_config(config_path="gpt4.yaml")
       ```
 
-      ```yaml gpt4.yaml
+      ```yaml gpt4.yaml theme={null}
       llm:
         provider: openai
         config:
@@ -94,14 +98,14 @@
 
   <Accordion title="I don't have OpenAI credits. How can I use some open source model?">
     <CodeGroup>
-      ```python main.py
+      ```python main.py theme={null}
       from embedchain import App
 
       # load llm configuration from opensource.yaml file
       app = App.from_config(config_path="opensource.yaml")
       ```
 
-      ```yaml opensource.yaml
+      ```yaml opensource.yaml theme={null}
       llm:
         provider: gpt4all
         config:
@@ -123,7 +127,7 @@
     You can achieve this by setting `stream` to `true` in the config file.
 
     <CodeGroup>
-      ```yaml openai.yaml
+      ```yaml openai.yaml theme={null}
       llm:
         provider: openai
         config:
@@ -134,7 +138,7 @@
           stream: true
       ```
 
-      ```python main.py
+      ```python main.py theme={null}
       import os
       from embedchain import App
 
@@ -153,7 +157,7 @@
   <Accordion title="How to persist data across multiple app sessions?">
     Set up the app by adding an `id` in the config file. This keeps the data for future use. You can include this `id` in the yaml config or input it directly in `config` dict.
 
-    ```python app1.py
+    ```python app1.py theme={null}
     import os
     from embedchain import App
 
@@ -172,7 +176,7 @@
     response = app1.query("What is the net worth of Elon Musk?")
     ```
 
-    ```python app2.py
+    ```python app2.py theme={null}
     import os
     from embedchain import App
 

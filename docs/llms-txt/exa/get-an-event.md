@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/websets/api/events/get-an-event.md
+# Source: https://exa.ai/docs/websets/api/events/get-an-event.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Get an Event
 
@@ -6,879 +10,802 @@
 
 You can subscribe to Events by creating a Webhook.
 
+
+
 ## OpenAPI
 
 ````yaml get /v0/events/{id}
+openapi: 3.1.0
+info:
+  title: Websets
+  description: ''
+  version: '0'
+  contact: {}
+servers:
+  - url: https://api.exa.ai/websets/
+    description: Production
+security: []
+tags: []
 paths:
-  path: /v0/events/{id}
-  method: get
-  servers:
-    - url: https://api.exa.ai/websets/
-      description: Production
-  request:
-    security:
-      - title: api key
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-              description: Your Exa API key
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /v0/events/{id}:
+    get:
+      tags:
+        - Events
+      summary: Get an Event
+      description: |-
+        Get a single Event by id.
+
+        You can subscribe to Events by creating a Webhook.
+      operationId: events-get
+      parameters:
+        - name: id
+          required: true
+          in: path
+          description: The id of the event
           schema:
-            - type: string
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+          headers:
+            X-Request-Id:
+              schema:
+                type: string
+              description: Unique identifier for the request.
+              example: req_N6SsgoiaOQOPqsYKKiw5
               required: true
-              description: The id of the event
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: JavaScript
-        lang: javascript
-        source: |-
-          // npm install exa-js
-          import Exa from 'exa-js';
-          const exa = new Exa('YOUR_EXA_API_KEY');
-
-          const event = await exa.websets.events.get('event_id');
-
-          console.log(`Event: ${event.id} - ${event.type}`);
-      - label: Python
-        lang: python
-        source: |-
-          # pip install exa-py
-          from exa_py import Exa
-          exa = Exa('YOUR_EXA_API_KEY')
-
-          event = exa.websets.events.get('event_id')
-
-          print(f'Event: {event.id} - {event.type}')
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: The unique identifier for the event
-                    type:
-                      - string
-              object:
-                allOf:
-                  - type: string
-                    const: event
-                    default: event
-              type:
-                allOf:
-                  - type: string
-                    const: webset.created
-                    default: webset.created
-              data:
-                allOf:
-                  - type:
-                      - object
-                    $ref: '#/components/schemas/Webset'
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the event was created
-            title: WebsetCreatedEvent
-            refIdentifier: '#/components/schemas/Event'
-            requiredProperties:
-              - id
-              - object
-              - type
-              - data
-              - createdAt
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: The unique identifier for the event
-                    type:
-                      - string
-              object:
-                allOf:
-                  - type: string
-                    const: event
-                    default: event
-              type:
-                allOf:
-                  - type: string
-                    const: webset.deleted
-                    default: webset.deleted
-              data:
-                allOf:
-                  - type:
-                      - object
-                    $ref: '#/components/schemas/Webset'
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the event was created
-            title: WebsetDeletedEvent
-            refIdentifier: '#/components/schemas/Event'
-            requiredProperties:
-              - id
-              - object
-              - type
-              - data
-              - createdAt
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: The unique identifier for the event
-                    type:
-                      - string
-              object:
-                allOf:
-                  - type: string
-                    const: event
-                    default: event
-              type:
-                allOf:
-                  - type: string
-                    const: webset.idle
-                    default: webset.idle
-              data:
-                allOf:
-                  - type:
-                      - object
-                    $ref: '#/components/schemas/Webset'
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the event was created
-            title: WebsetIdleEvent
-            refIdentifier: '#/components/schemas/Event'
-            requiredProperties:
-              - id
-              - object
-              - type
-              - data
-              - createdAt
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: The unique identifier for the event
-                    type:
-                      - string
-              object:
-                allOf:
-                  - type: string
-                    const: event
-                    default: event
-              type:
-                allOf:
-                  - type: string
-                    const: webset.paused
-                    default: webset.paused
-              data:
-                allOf:
-                  - type:
-                      - object
-                    $ref: '#/components/schemas/Webset'
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the event was created
-            title: WebsetPausedEvent
-            refIdentifier: '#/components/schemas/Event'
-            requiredProperties:
-              - id
-              - object
-              - type
-              - data
-              - createdAt
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: The unique identifier for the event
-                    type:
-                      - string
-              object:
-                allOf:
-                  - type: string
-                    const: event
-                    default: event
-              type:
-                allOf:
-                  - type: string
-                    const: webset.item.created
-                    default: webset.item.created
-              data:
-                allOf:
-                  - type:
-                      - object
-                    $ref: '#/components/schemas/WebsetItem'
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the event was created
-            title: WebsetItemCreatedEvent
-            refIdentifier: '#/components/schemas/Event'
-            requiredProperties:
-              - id
-              - object
-              - type
-              - data
-              - createdAt
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: The unique identifier for the event
-                    type:
-                      - string
-              object:
-                allOf:
-                  - type: string
-                    const: event
-                    default: event
-              type:
-                allOf:
-                  - type: string
-                    const: webset.item.enriched
-                    default: webset.item.enriched
-              data:
-                allOf:
-                  - type:
-                      - object
-                    $ref: '#/components/schemas/WebsetItem'
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the event was created
-            title: WebsetItemEnrichedEvent
-            refIdentifier: '#/components/schemas/Event'
-            requiredProperties:
-              - id
-              - object
-              - type
-              - data
-              - createdAt
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: The unique identifier for the event
-                    type:
-                      - string
-              object:
-                allOf:
-                  - type: string
-                    const: event
-                    default: event
-              type:
-                allOf:
-                  - type: string
-                    const: webset.search.created
-                    default: webset.search.created
-              data:
-                allOf:
-                  - type:
-                      - object
-                    $ref: '#/components/schemas/WebsetSearch'
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the event was created
-            title: WebsetSearchCreatedEvent
-            refIdentifier: '#/components/schemas/Event'
-            requiredProperties:
-              - id
-              - object
-              - type
-              - data
-              - createdAt
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: The unique identifier for the event
-                    type:
-                      - string
-              object:
-                allOf:
-                  - type: string
-                    const: event
-                    default: event
-              type:
-                allOf:
-                  - type: string
-                    const: webset.search.updated
-                    default: webset.search.updated
-              data:
-                allOf:
-                  - type:
-                      - object
-                    $ref: '#/components/schemas/WebsetSearch'
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the event was created
-            title: WebsetSearchUpdatedEvent
-            refIdentifier: '#/components/schemas/Event'
-            requiredProperties:
-              - id
-              - object
-              - type
-              - data
-              - createdAt
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: The unique identifier for the event
-                    type:
-                      - string
-              object:
-                allOf:
-                  - type: string
-                    const: event
-                    default: event
-              type:
-                allOf:
-                  - type: string
-                    const: webset.search.canceled
-                    default: webset.search.canceled
-              data:
-                allOf:
-                  - type:
-                      - object
-                    $ref: '#/components/schemas/WebsetSearch'
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the event was created
-            title: WebsetSearchCanceledEvent
-            refIdentifier: '#/components/schemas/Event'
-            requiredProperties:
-              - id
-              - object
-              - type
-              - data
-              - createdAt
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: The unique identifier for the event
-                    type:
-                      - string
-              object:
-                allOf:
-                  - type: string
-                    const: event
-                    default: event
-              type:
-                allOf:
-                  - type: string
-                    const: webset.search.completed
-                    default: webset.search.completed
-              data:
-                allOf:
-                  - type:
-                      - object
-                    $ref: '#/components/schemas/WebsetSearch'
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the event was created
-            title: WebsetSearchCompletedEvent
-            refIdentifier: '#/components/schemas/Event'
-            requiredProperties:
-              - id
-              - object
-              - type
-              - data
-              - createdAt
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: The unique identifier for the event
-                    type:
-                      - string
-              object:
-                allOf:
-                  - type: string
-                    const: event
-                    default: event
-              type:
-                allOf:
-                  - type: string
-                    const: import.created
-                    default: import.created
-              data:
-                allOf:
-                  - type:
-                      - object
-                    $ref: '#/components/schemas/Import'
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the event was created
-            title: ImportCreatedEvent
-            refIdentifier: '#/components/schemas/Event'
-            requiredProperties:
-              - id
-              - object
-              - type
-              - data
-              - createdAt
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: The unique identifier for the event
-                    type:
-                      - string
-              object:
-                allOf:
-                  - type: string
-                    const: event
-                    default: event
-              type:
-                allOf:
-                  - type: string
-                    const: import.completed
-                    default: import.completed
-              data:
-                allOf:
-                  - type:
-                      - object
-                    $ref: '#/components/schemas/Import'
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the event was created
-            title: ImportCompletedEvent
-            refIdentifier: '#/components/schemas/Event'
-            requiredProperties:
-              - id
-              - object
-              - type
-              - data
-              - createdAt
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: The unique identifier for the event
-                    type:
-                      - string
-              object:
-                allOf:
-                  - type: string
-                    const: event
-                    default: event
-              type:
-                allOf:
-                  - type: string
-                    const: monitor.created
-                    default: monitor.created
-              data:
-                allOf:
-                  - type:
-                      - object
-                    $ref: '#/components/schemas/Monitor'
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the event was created
-            title: MonitorCreatedEvent
-            refIdentifier: '#/components/schemas/Event'
-            requiredProperties:
-              - id
-              - object
-              - type
-              - data
-              - createdAt
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: The unique identifier for the event
-                    type:
-                      - string
-              object:
-                allOf:
-                  - type: string
-                    const: event
-                    default: event
-              type:
-                allOf:
-                  - type: string
-                    const: monitor.updated
-                    default: monitor.updated
-              data:
-                allOf:
-                  - type:
-                      - object
-                    $ref: '#/components/schemas/Monitor'
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the event was created
-            title: MonitorUpdatedEvent
-            refIdentifier: '#/components/schemas/Event'
-            requiredProperties:
-              - id
-              - object
-              - type
-              - data
-              - createdAt
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: The unique identifier for the event
-                    type:
-                      - string
-              object:
-                allOf:
-                  - type: string
-                    const: event
-                    default: event
-              type:
-                allOf:
-                  - type: string
-                    const: monitor.deleted
-                    default: monitor.deleted
-              data:
-                allOf:
-                  - type:
-                      - object
-                    $ref: '#/components/schemas/Monitor'
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the event was created
-            title: MonitorDeletedEvent
-            refIdentifier: '#/components/schemas/Event'
-            requiredProperties:
-              - id
-              - object
-              - type
-              - data
-              - createdAt
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: The unique identifier for the event
-                    type:
-                      - string
-              object:
-                allOf:
-                  - type: string
-                    const: event
-                    default: event
-              type:
-                allOf:
-                  - type: string
-                    const: monitor.run.created
-                    default: monitor.run.created
-              data:
-                allOf:
-                  - type:
-                      - object
-                    $ref: '#/components/schemas/MonitorRun'
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the event was created
-            title: MonitorRunCreatedEvent
-            refIdentifier: '#/components/schemas/Event'
-            requiredProperties:
-              - id
-              - object
-              - type
-              - data
-              - createdAt
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: The unique identifier for the event
-                    type:
-                      - string
-              object:
-                allOf:
-                  - type: string
-                    const: event
-                    default: event
-              type:
-                allOf:
-                  - type: string
-                    const: monitor.run.completed
-                    default: monitor.run.completed
-              data:
-                allOf:
-                  - type:
-                      - object
-                    $ref: '#/components/schemas/MonitorRun'
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the event was created
-            title: MonitorRunCompletedEvent
-            refIdentifier: '#/components/schemas/Event'
-            requiredProperties:
-              - id
-              - object
-              - type
-              - data
-              - createdAt
-        examples:
-          example:
-            value:
-              id: <string>
-              object: event
-              type: webset.created
-              data:
-                id: <string>
-                object: <string>
-                status: idle
-                externalId: <string>
-                title: <string>
-                searches:
-                  - id: <string>
-                    object: <string>
-                    status: created
-                    websetId: <string>
-                    query: <string>
-                    entity:
-                      type: <string>
-                    criteria:
-                      - description: <any>
-                        successRate: <any>
-                    count: 2
-                    behavior: override
-                    exclude:
-                      - source: <any>
-                        id: <any>
-                    scope:
-                      - source: <any>
-                        id: <any>
-                        relationship: <any>
-                    progress:
-                      found: 123
-                      analyzed: 123
-                      completion: 50
-                      timeLeft: 123
-                    recall:
-                      expected:
-                        total: <any>
-                        confidence: <any>
-                        bounds: <any>
-                      reasoning: <string>
-                    metadata: {}
-                    canceledAt: '2023-11-07T05:31:56Z'
-                    canceledReason: webset_deleted
-                    createdAt: '2023-11-07T05:31:56Z'
-                    updatedAt: '2023-11-07T05:31:56Z'
-                imports:
-                  - id: <string>
-                    object: import
-                    status: pending
-                    format: csv
-                    entity:
-                      type: <string>
-                    title: <string>
-                    count: 123
-                    metadata: {}
-                    failedReason: invalid_format
-                    failedAt: '2023-11-07T05:31:56Z'
-                    failedMessage: <string>
-                    createdAt: '2023-11-07T05:31:56Z'
-                    updatedAt: '2023-11-07T05:31:56Z'
-                enrichments:
-                  - id: <string>
-                    object: <string>
-                    status: pending
-                    websetId: <string>
-                    title: <string>
-                    description: <string>
-                    format: text
-                    options:
-                      - label: <any>
-                    instructions: <string>
-                    metadata: {}
-                    createdAt: '2023-11-07T05:31:56Z'
-                    updatedAt: '2023-11-07T05:31:56Z'
-                monitors:
-                  - id: <string>
-                    object: monitor
-                    status: enabled
-                    websetId: <string>
-                    cadence:
-                      cron: <string>
-                      timezone: <string>
-                    behavior:
-                      type: <string>
-                      config:
-                        query: <any>
-                        criteria: <any>
-                        entity: <any>
-                        count: <any>
-                        behavior: <any>
-                    lastRun:
-                      id: <string>
-                      object: monitor_run
-                      status: created
-                      monitorId: <string>
-                      type: search
-                      completedAt: '2023-11-07T05:31:56Z'
-                      failedAt: '2023-11-07T05:31:56Z'
-                      failedReason: <string>
-                      canceledAt: '2023-11-07T05:31:56Z'
-                      createdAt: '2023-11-07T05:31:56Z'
-                      updatedAt: '2023-11-07T05:31:56Z'
-                    nextRunAt: '2023-11-07T05:31:56Z'
-                    metadata: {}
-                    createdAt: '2023-11-07T05:31:56Z'
-                    updatedAt: '2023-11-07T05:31:56Z'
-                excludes:
-                  - source: import
-                    id: <string>
-                metadata: {}
-                createdAt: '2023-11-07T05:31:56Z'
-                updatedAt: '2023-11-07T05:31:56Z'
-              createdAt: '2023-11-07T05:31:56Z'
-        description: ''
-    '404':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Event not found
-        examples: {}
-        description: Event not found
-  deprecated: false
-  type: path
+        '404':
+          description: Event not found
+          headers:
+            X-Request-Id:
+              schema:
+                type: string
+              description: Unique identifier for the request.
+              example: req_N6SsgoiaOQOPqsYKKiw5
+              required: true
+      security:
+        - api_key: []
 components:
   schemas:
-    CompanyEntity:
-      type:
-        - object
-      properties:
-        type:
-          type: string
-          const: company
-          default: company
-      required:
-        - type
-      title: Company
-    PersonEntity:
-      type:
-        - object
-      properties:
-        type:
-          type: string
-          const: person
-          default: person
-      required:
-        - type
-      title: Person
-    ArticleEntity:
-      type:
-        - object
-      properties:
-        type:
-          type: string
-          const: article
-          default: article
-      required:
-        - type
-      title: Article
-    ResearchPaperEntity:
-      type:
-        - object
-      properties:
-        type:
-          type: string
-          const: research_paper
-          default: research_paper
-      required:
-        - type
-      title: Research Paper
-    CustomEntity:
-      type:
-        - object
-      properties:
-        type:
-          type: string
-          const: custom
-          default: custom
-        description:
-          type:
-            - string
-          minLength: 2
-          maxLength: 200
-      required:
-        - type
-        - description
-      title: Custom
-    Entity:
+    Event:
+      discriminator:
+        propertyName: type
       oneOf:
         - type:
             - object
-          $ref: '#/components/schemas/CompanyEntity'
+          properties:
+            id:
+              type:
+                - string
+              description: The unique identifier for the event
+            object:
+              type: string
+              const: event
+              default: event
+            type:
+              type: string
+              const: webset.created
+              default: webset.created
+            data:
+              $ref: '#/components/schemas/Webset'
+              type:
+                - object
+            createdAt:
+              type:
+                - string
+              format: date-time
+              description: The date and time the event was created
+          required:
+            - id
+            - object
+            - type
+            - data
+            - createdAt
+          title: WebsetCreatedEvent
         - type:
             - object
-          $ref: '#/components/schemas/PersonEntity'
+          properties:
+            id:
+              type:
+                - string
+              description: The unique identifier for the event
+            object:
+              type: string
+              const: event
+              default: event
+            type:
+              type: string
+              const: webset.deleted
+              default: webset.deleted
+            data:
+              $ref: '#/components/schemas/Webset'
+              type:
+                - object
+            createdAt:
+              type:
+                - string
+              format: date-time
+              description: The date and time the event was created
+          required:
+            - id
+            - object
+            - type
+            - data
+            - createdAt
+          title: WebsetDeletedEvent
         - type:
             - object
-          $ref: '#/components/schemas/ArticleEntity'
+          properties:
+            id:
+              type:
+                - string
+              description: The unique identifier for the event
+            object:
+              type: string
+              const: event
+              default: event
+            type:
+              type: string
+              const: webset.idle
+              default: webset.idle
+            data:
+              $ref: '#/components/schemas/Webset'
+              type:
+                - object
+            createdAt:
+              type:
+                - string
+              format: date-time
+              description: The date and time the event was created
+          required:
+            - id
+            - object
+            - type
+            - data
+            - createdAt
+          title: WebsetIdleEvent
         - type:
             - object
-          $ref: '#/components/schemas/ResearchPaperEntity'
+          properties:
+            id:
+              type:
+                - string
+              description: The unique identifier for the event
+            object:
+              type: string
+              const: event
+              default: event
+            type:
+              type: string
+              const: webset.paused
+              default: webset.paused
+            data:
+              $ref: '#/components/schemas/Webset'
+              type:
+                - object
+            createdAt:
+              type:
+                - string
+              format: date-time
+              description: The date and time the event was created
+          required:
+            - id
+            - object
+            - type
+            - data
+            - createdAt
+          title: WebsetPausedEvent
         - type:
             - object
-          $ref: '#/components/schemas/CustomEntity'
+          properties:
+            id:
+              type:
+                - string
+              description: The unique identifier for the event
+            object:
+              type: string
+              const: event
+              default: event
+            type:
+              type: string
+              const: webset.item.created
+              default: webset.item.created
+            data:
+              $ref: '#/components/schemas/WebsetItem'
+              type:
+                - object
+            createdAt:
+              type:
+                - string
+              format: date-time
+              description: The date and time the event was created
+          required:
+            - id
+            - object
+            - type
+            - data
+            - createdAt
+          title: WebsetItemCreatedEvent
+        - type:
+            - object
+          properties:
+            id:
+              type:
+                - string
+              description: The unique identifier for the event
+            object:
+              type: string
+              const: event
+              default: event
+            type:
+              type: string
+              const: webset.item.enriched
+              default: webset.item.enriched
+            data:
+              $ref: '#/components/schemas/WebsetItem'
+              type:
+                - object
+            createdAt:
+              type:
+                - string
+              format: date-time
+              description: The date and time the event was created
+          required:
+            - id
+            - object
+            - type
+            - data
+            - createdAt
+          title: WebsetItemEnrichedEvent
+        - type:
+            - object
+          properties:
+            id:
+              type:
+                - string
+              description: The unique identifier for the event
+            object:
+              type: string
+              const: event
+              default: event
+            type:
+              type: string
+              const: webset.search.created
+              default: webset.search.created
+            data:
+              $ref: '#/components/schemas/WebsetSearch'
+              type:
+                - object
+            createdAt:
+              type:
+                - string
+              format: date-time
+              description: The date and time the event was created
+          required:
+            - id
+            - object
+            - type
+            - data
+            - createdAt
+          title: WebsetSearchCreatedEvent
+        - type:
+            - object
+          properties:
+            id:
+              type:
+                - string
+              description: The unique identifier for the event
+            object:
+              type: string
+              const: event
+              default: event
+            type:
+              type: string
+              const: webset.search.updated
+              default: webset.search.updated
+            data:
+              $ref: '#/components/schemas/WebsetSearch'
+              type:
+                - object
+            createdAt:
+              type:
+                - string
+              format: date-time
+              description: The date and time the event was created
+          required:
+            - id
+            - object
+            - type
+            - data
+            - createdAt
+          title: WebsetSearchUpdatedEvent
+        - type:
+            - object
+          properties:
+            id:
+              type:
+                - string
+              description: The unique identifier for the event
+            object:
+              type: string
+              const: event
+              default: event
+            type:
+              type: string
+              const: webset.search.canceled
+              default: webset.search.canceled
+            data:
+              $ref: '#/components/schemas/WebsetSearch'
+              type:
+                - object
+            createdAt:
+              type:
+                - string
+              format: date-time
+              description: The date and time the event was created
+          required:
+            - id
+            - object
+            - type
+            - data
+            - createdAt
+          title: WebsetSearchCanceledEvent
+        - type:
+            - object
+          properties:
+            id:
+              type:
+                - string
+              description: The unique identifier for the event
+            object:
+              type: string
+              const: event
+              default: event
+            type:
+              type: string
+              const: webset.search.completed
+              default: webset.search.completed
+            data:
+              $ref: '#/components/schemas/WebsetSearch'
+              type:
+                - object
+            createdAt:
+              type:
+                - string
+              format: date-time
+              description: The date and time the event was created
+          required:
+            - id
+            - object
+            - type
+            - data
+            - createdAt
+          title: WebsetSearchCompletedEvent
+        - type:
+            - object
+          properties:
+            id:
+              type:
+                - string
+              description: The unique identifier for the event
+            object:
+              type: string
+              const: event
+              default: event
+            type:
+              type: string
+              const: import.created
+              default: import.created
+            data:
+              $ref: '#/components/schemas/Import'
+              type:
+                - object
+            createdAt:
+              type:
+                - string
+              format: date-time
+              description: The date and time the event was created
+          required:
+            - id
+            - object
+            - type
+            - data
+            - createdAt
+          title: ImportCreatedEvent
+        - type:
+            - object
+          properties:
+            id:
+              type:
+                - string
+              description: The unique identifier for the event
+            object:
+              type: string
+              const: event
+              default: event
+            type:
+              type: string
+              const: import.completed
+              default: import.completed
+            data:
+              $ref: '#/components/schemas/Import'
+              type:
+                - object
+            createdAt:
+              type:
+                - string
+              format: date-time
+              description: The date and time the event was created
+          required:
+            - id
+            - object
+            - type
+            - data
+            - createdAt
+          title: ImportCompletedEvent
+        - type:
+            - object
+          properties:
+            id:
+              type:
+                - string
+              description: The unique identifier for the event
+            object:
+              type: string
+              const: event
+              default: event
+            type:
+              type: string
+              const: monitor.created
+              default: monitor.created
+            data:
+              $ref: '#/components/schemas/Monitor'
+              type:
+                - object
+            createdAt:
+              type:
+                - string
+              format: date-time
+              description: The date and time the event was created
+          required:
+            - id
+            - object
+            - type
+            - data
+            - createdAt
+          title: MonitorCreatedEvent
+        - type:
+            - object
+          properties:
+            id:
+              type:
+                - string
+              description: The unique identifier for the event
+            object:
+              type: string
+              const: event
+              default: event
+            type:
+              type: string
+              const: monitor.updated
+              default: monitor.updated
+            data:
+              $ref: '#/components/schemas/Monitor'
+              type:
+                - object
+            createdAt:
+              type:
+                - string
+              format: date-time
+              description: The date and time the event was created
+          required:
+            - id
+            - object
+            - type
+            - data
+            - createdAt
+          title: MonitorUpdatedEvent
+        - type:
+            - object
+          properties:
+            id:
+              type:
+                - string
+              description: The unique identifier for the event
+            object:
+              type: string
+              const: event
+              default: event
+            type:
+              type: string
+              const: monitor.deleted
+              default: monitor.deleted
+            data:
+              $ref: '#/components/schemas/Monitor'
+              type:
+                - object
+            createdAt:
+              type:
+                - string
+              format: date-time
+              description: The date and time the event was created
+          required:
+            - id
+            - object
+            - type
+            - data
+            - createdAt
+          title: MonitorDeletedEvent
+        - type:
+            - object
+          properties:
+            id:
+              type:
+                - string
+              description: The unique identifier for the event
+            object:
+              type: string
+              const: event
+              default: event
+            type:
+              type: string
+              const: monitor.run.created
+              default: monitor.run.created
+            data:
+              $ref: '#/components/schemas/MonitorRun'
+              type:
+                - object
+            createdAt:
+              type:
+                - string
+              format: date-time
+              description: The date and time the event was created
+          required:
+            - id
+            - object
+            - type
+            - data
+            - createdAt
+          title: MonitorRunCreatedEvent
+        - type:
+            - object
+          properties:
+            id:
+              type:
+                - string
+              description: The unique identifier for the event
+            object:
+              type: string
+              const: event
+              default: event
+            type:
+              type: string
+              const: monitor.run.completed
+              default: monitor.run.completed
+            data:
+              $ref: '#/components/schemas/MonitorRun'
+              type:
+                - object
+            createdAt:
+              type:
+                - string
+              format: date-time
+              description: The date and time the event was created
+          required:
+            - id
+            - object
+            - type
+            - data
+            - createdAt
+          title: MonitorRunCompletedEvent
+      title: Event
+    Webset:
+      type:
+        - object
+      properties:
+        id:
+          type:
+            - string
+          description: The unique identifier for the webset
+        object:
+          type: string
+          const: webset
+          default: webset
+        status:
+          type:
+            - string
+          enum:
+            - idle
+            - pending
+            - running
+            - paused
+          description: The status of the webset
+          title: WebsetStatus
+        externalId:
+          type: string
+          description: The external identifier for the webset
+          nullable: true
+        title:
+          type: string
+          description: The title of the webset
+          nullable: true
+        searches:
+          type:
+            - array
+          items:
+            $ref: '#/components/schemas/WebsetSearch'
+            type:
+              - object
+          description: The searches that have been performed on the webset.
+        imports:
+          type:
+            - array
+          items:
+            $ref: '#/components/schemas/Import'
+            type:
+              - object
+          description: Imports that have been performed on the webset.
+        enrichments:
+          type:
+            - array
+          items:
+            $ref: '#/components/schemas/WebsetEnrichment'
+            type:
+              - object
+          description: The Enrichments to apply to the Webset Items.
+        monitors:
+          type:
+            - array
+          items:
+            $ref: '#/components/schemas/Monitor'
+            type:
+              - object
+          description: The Monitors for the Webset.
+        excludes:
+          type:
+            - array
+          items:
+            type:
+              - object
+            properties:
+              source:
+                type:
+                  - string
+                enum:
+                  - import
+                  - webset
+              id:
+                type:
+                  - string
+            required:
+              - source
+              - id
+          description: >-
+            The Excludes sources (existing imports or websets) that apply to all
+            operations within this Webset. Any results found within these
+            sources will be omitted across all search and import operations.
+        metadata:
+          default: {}
+          description: Set of key-value pairs you want to associate with this object.
+          type:
+            - object
+          additionalProperties:
+            type:
+              - string
+            maxLength: 1000
+        createdAt:
+          type:
+            - string
+          format: date-time
+          description: The date and time the webset was created
+        updatedAt:
+          type:
+            - string
+          format: date-time
+          description: The date and time the webset was updated
+      required:
+        - id
+        - object
+        - status
+        - externalId
+        - title
+        - searches
+        - imports
+        - enrichments
+        - monitors
+        - createdAt
+        - updatedAt
+    WebsetItem:
+      type:
+        - object
+      properties:
+        id:
+          type:
+            - string
+          description: The unique identifier for the Webset Item
+        object:
+          type: string
+          const: webset_item
+          default: webset_item
+        source:
+          type:
+            - string
+          enum:
+            - search
+            - import
+          description: The source of the Item
+        sourceId:
+          type:
+            - string
+          description: The unique identifier for the source
+        websetId:
+          type:
+            - string
+          description: The unique identifier for the Webset this Item belongs to.
+        properties:
+          oneOf:
+            - $ref: '#/components/schemas/WebsetItemPersonProperties'
+              type:
+                - object
+              title: Person
+            - $ref: '#/components/schemas/WebsetItemCompanyProperties'
+              type:
+                - object
+              title: Company
+            - $ref: '#/components/schemas/WebsetItemArticleProperties'
+              type:
+                - object
+              title: Article
+            - $ref: '#/components/schemas/WebsetItemResearchPaperProperties'
+              type:
+                - object
+              title: Research Paper
+            - $ref: '#/components/schemas/WebsetItemCustomProperties'
+              type:
+                - object
+              title: Custom
+          description: The properties of the Item
+        evaluations:
+          type:
+            - array
+          items:
+            $ref: '#/components/schemas/WebsetItemEvaluation'
+            type:
+              - object
+          description: The criteria evaluations of the item
+        enrichments:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrichmentResult'
+            type:
+              - object
+          description: The enrichments results of the Webset item
+          nullable: true
+        createdAt:
+          type:
+            - string
+          format: date-time
+          description: The date and time the item was created
+        updatedAt:
+          type:
+            - string
+          format: date-time
+          description: The date and time the item was last updated
+      required:
+        - id
+        - object
+        - source
+        - sourceId
+        - websetId
+        - properties
+        - evaluations
+        - enrichments
+        - createdAt
+        - updatedAt
     WebsetSearch:
       type:
         - object
@@ -929,11 +856,11 @@ components:
               - object
             properties:
               description:
-                description: The description of the criterion
                 type:
                   - string
                 minLength: 1
                 maxLength: 1000
+                description: The description of the criterion
               successRate:
                 type:
                   - number
@@ -957,10 +884,10 @@ components:
             number of results may be less than this number depending on the
             search complexity.
         behavior:
+          $ref: '#/components/schemas/WebsetSearchBehavior'
           default: override
           type:
             - string
-          $ref: '#/components/schemas/WebsetSearchBehavior'
           description: >-
             The behavior of the search when it is added to a Webset.
 
@@ -1130,8 +1057,8 @@ components:
           description: The date and time the search was canceled
           nullable: true
         canceledReason:
-          type: string
           $ref: '#/components/schemas/WebsetSearchCanceledReason'
+          type: string
           description: The reason the search was canceled
           nullable: true
         createdAt:
@@ -1252,184 +1179,6 @@ components:
         - failedMessage
         - createdAt
         - updatedAt
-    WebsetEnrichment:
-      type:
-        - object
-      properties:
-        id:
-          type:
-            - string
-          description: The unique identifier for the enrichment
-        object:
-          type: string
-          const: webset_enrichment
-          default: webset_enrichment
-        status:
-          type:
-            - string
-          enum:
-            - pending
-            - canceled
-            - completed
-          description: The status of the enrichment
-          title: WebsetEnrichmentStatus
-        websetId:
-          type:
-            - string
-          description: The unique identifier for the Webset this enrichment belongs to.
-        title:
-          type: string
-          description: >-
-            The title of the enrichment.
-
-
-            This will be automatically generated based on the description and
-            format.
-          nullable: true
-        description:
-          type:
-            - string
-          description: >-
-            The description of the enrichment task provided during the creation
-            of the enrichment.
-        format:
-          type: string
-          $ref: '#/components/schemas/WebsetEnrichmentFormat'
-          description: The format of the enrichment response.
-          nullable: true
-        options:
-          type: array
-          items:
-            type:
-              - object
-            properties:
-              label:
-                type:
-                  - string
-                description: The label of the option
-            required:
-              - label
-          description: >-
-            When the format is options, the different options for the enrichment
-            agent to choose from.
-          title: WebsetEnrichmentOptions
-          nullable: true
-        instructions:
-          type: string
-          description: >-
-            The instructions for the enrichment Agent.
-
-
-            This will be automatically generated based on the description and
-            format.
-          nullable: true
-        metadata:
-          default: {}
-          description: The metadata of the enrichment
-          type:
-            - object
-          additionalProperties:
-            type:
-              - string
-            maxLength: 1000
-        createdAt:
-          type:
-            - string
-          format: date-time
-          description: The date and time the enrichment was created
-        updatedAt:
-          type:
-            - string
-          format: date-time
-          description: The date and time the enrichment was updated
-      required:
-        - id
-        - object
-        - status
-        - websetId
-        - title
-        - description
-        - format
-        - options
-        - instructions
-        - createdAt
-        - updatedAt
-    MonitorRun:
-      type:
-        - object
-      properties:
-        id:
-          type:
-            - string
-          description: The unique identifier for the Monitor Run
-        object:
-          type:
-            - string
-          enum:
-            - monitor_run
-          description: The type of object
-        status:
-          type:
-            - string
-          enum:
-            - created
-            - running
-            - completed
-            - canceled
-            - failed
-          description: The status of the Monitor Run
-        monitorId:
-          type:
-            - string
-          description: The monitor that the run is associated with
-        type:
-          type:
-            - string
-          enum:
-            - search
-            - refresh
-          description: The type of the Monitor Run
-        completedAt:
-          type: string
-          format: date-time
-          description: When the run completed
-          nullable: true
-        failedAt:
-          type: string
-          format: date-time
-          description: When the run failed
-          nullable: true
-        failedReason:
-          type: string
-          description: The reason the run failed
-          nullable: true
-        canceledAt:
-          type: string
-          format: date-time
-          description: When the run was canceled
-          nullable: true
-        createdAt:
-          type:
-            - string
-          format: date-time
-          description: When the run was created
-        updatedAt:
-          type:
-            - string
-          format: date-time
-          description: When the run was last updated
-      required:
-        - id
-        - object
-        - monitorId
-        - status
-        - type
-        - completedAt
-        - failedAt
-        - failedReason
-        - canceledAt
-        - createdAt
-        - updatedAt
     Monitor:
       type:
         - object
@@ -1543,8 +1292,8 @@ components:
             - config
           description: Behavior to perform when monitor runs
         lastRun:
-          type: object
           $ref: '#/components/schemas/MonitorRun'
+          type: object
           title: MonitorRun
           description: The last run of the monitor
           nullable: true
@@ -1583,94 +1332,156 @@ components:
         - metadata
         - createdAt
         - updatedAt
-    Webset:
+    MonitorRun:
       type:
         - object
       properties:
         id:
           type:
             - string
-          description: The unique identifier for the webset
+          description: The unique identifier for the Monitor Run
         object:
-          type: string
-          const: webset
-          default: webset
+          type:
+            - string
+          enum:
+            - monitor_run
+          description: The type of object
         status:
           type:
             - string
           enum:
-            - idle
-            - pending
+            - created
             - running
-            - paused
-          description: The status of the webset
-          title: WebsetStatus
-        externalId:
+            - completed
+            - canceled
+            - failed
+          description: The status of the Monitor Run
+        monitorId:
+          type:
+            - string
+          description: The monitor that the run is associated with
+        type:
+          type:
+            - string
+          enum:
+            - search
+            - refresh
+          description: The type of the Monitor Run
+        completedAt:
           type: string
-          description: The external identifier for the webset
+          format: date-time
+          description: When the run completed
           nullable: true
+        failedAt:
+          type: string
+          format: date-time
+          description: When the run failed
+          nullable: true
+        failedReason:
+          type: string
+          description: The reason the run failed
+          nullable: true
+        canceledAt:
+          type: string
+          format: date-time
+          description: When the run was canceled
+          nullable: true
+        createdAt:
+          type:
+            - string
+          format: date-time
+          description: When the run was created
+        updatedAt:
+          type:
+            - string
+          format: date-time
+          description: When the run was last updated
+      required:
+        - id
+        - object
+        - monitorId
+        - status
+        - type
+        - completedAt
+        - failedAt
+        - failedReason
+        - canceledAt
+        - createdAt
+        - updatedAt
+    WebsetEnrichment:
+      type:
+        - object
+      properties:
+        id:
+          type:
+            - string
+          description: The unique identifier for the enrichment
+        object:
+          type: string
+          const: webset_enrichment
+          default: webset_enrichment
+        status:
+          type:
+            - string
+          enum:
+            - pending
+            - canceled
+            - completed
+          description: The status of the enrichment
+          title: WebsetEnrichmentStatus
+        websetId:
+          type:
+            - string
+          description: The unique identifier for the Webset this enrichment belongs to.
         title:
           type: string
-          description: The title of the webset
+          description: >-
+            The title of the enrichment.
+
+
+            This will be automatically generated based on the description and
+            format.
           nullable: true
-        searches:
+        description:
           type:
-            - array
-          items:
-            type:
-              - object
-            $ref: '#/components/schemas/WebsetSearch'
-          description: The searches that have been performed on the webset.
-        imports:
-          type:
-            - array
-          items:
-            type:
-              - object
-            $ref: '#/components/schemas/Import'
-          description: Imports that have been performed on the webset.
-        enrichments:
-          type:
-            - array
-          items:
-            type:
-              - object
-            $ref: '#/components/schemas/WebsetEnrichment'
-          description: The Enrichments to apply to the Webset Items.
-        monitors:
-          type:
-            - array
-          items:
-            type:
-              - object
-            $ref: '#/components/schemas/Monitor'
-          description: The Monitors for the Webset.
-        excludes:
-          type:
-            - array
+            - string
+          description: >-
+            The description of the enrichment task provided during the creation
+            of the enrichment.
+        format:
+          $ref: '#/components/schemas/WebsetEnrichmentFormat'
+          type: string
+          description: The format of the enrichment response.
+          nullable: true
+        options:
+          type: array
           items:
             type:
               - object
             properties:
-              source:
+              label:
                 type:
                   - string
-                enum:
-                  - import
-                  - webset
-              id:
-                type:
-                  - string
+                description: The label of the option
             required:
-              - source
-              - id
+              - label
           description: >-
-            The Excludes sources (existing imports or websets) that apply to all
-            operations within this Webset. Any results found within these
-            sources will be omitted across all search and import operations.
+            When the format is options, the different options for the enrichment
+            agent to choose from.
+          title: WebsetEnrichmentOptions
+          nullable: true
+        instructions:
+          type: string
+          description: >-
+            The instructions for the enrichment Agent.
+
+
+            This will be automatically generated based on the description and
+            format.
+          nullable: true
         metadata:
           default: {}
-          description: Set of key-value pairs you want to associate with this object.
+          description: The metadata of the enrichment
           type:
             - object
           additionalProperties:
@@ -1681,22 +1492,22 @@ components:
           type:
             - string
           format: date-time
-          description: The date and time the webset was created
+          description: The date and time the enrichment was created
         updatedAt:
           type:
             - string
           format: date-time
-          description: The date and time the webset was updated
+          description: The date and time the enrichment was updated
       required:
         - id
         - object
         - status
-        - externalId
+        - websetId
         - title
-        - searches
-        - imports
-        - enrichments
-        - monitors
+        - description
+        - format
+        - options
+        - instructions
         - createdAt
         - updatedAt
     WebsetItemPersonProperties:
@@ -2040,9 +1851,9 @@ components:
             - canceled
           description: The status of the enrichment result.
         format:
+          $ref: '#/components/schemas/WebsetEnrichmentFormat'
           type:
             - string
-          $ref: '#/components/schemas/WebsetEnrichmentFormat'
         result:
           type: array
           items:
@@ -2091,103 +1902,23 @@ components:
         - reasoning
         - references
         - enrichmentId
-    WebsetItem:
-      type:
-        - object
-      properties:
-        id:
+    Entity:
+      oneOf:
+        - $ref: '#/components/schemas/CompanyEntity'
           type:
-            - string
-          description: The unique identifier for the Webset Item
-        object:
-          type: string
-          const: webset_item
-          default: webset_item
-        source:
+            - object
+        - $ref: '#/components/schemas/PersonEntity'
           type:
-            - string
-          enum:
-            - search
-            - import
-          description: The source of the Item
-        sourceId:
+            - object
+        - $ref: '#/components/schemas/ArticleEntity'
           type:
-            - string
-          description: The unique identifier for the source
-        websetId:
+            - object
+        - $ref: '#/components/schemas/ResearchPaperEntity'
           type:
-            - string
-          description: The unique identifier for the Webset this Item belongs to.
-        properties:
-          oneOf:
-            - type:
-                - object
-              $ref: '#/components/schemas/WebsetItemPersonProperties'
-              title: Person
-            - type:
-                - object
-              $ref: '#/components/schemas/WebsetItemCompanyProperties'
-              title: Company
-            - type:
-                - object
-              $ref: '#/components/schemas/WebsetItemArticleProperties'
-              title: Article
-            - type:
-                - object
-              $ref: '#/components/schemas/WebsetItemResearchPaperProperties'
-              title: Research Paper
-            - type:
-                - object
-              $ref: '#/components/schemas/WebsetItemCustomProperties'
-              title: Custom
-          description: The properties of the Item
-        evaluations:
+            - object
+        - $ref: '#/components/schemas/CustomEntity'
           type:
-            - array
-          items:
-            type:
-              - object
-            $ref: '#/components/schemas/WebsetItemEvaluation'
-          description: The criteria evaluations of the item
-        enrichments:
-          type: array
-          items:
-            type:
-              - object
-            $ref: '#/components/schemas/EnrichmentResult'
-          description: The enrichments results of the Webset item
-          nullable: true
-        createdAt:
-          type:
-            - string
-          format: date-time
-          description: The date and time the item was created
-        updatedAt:
-          type:
-            - string
-          format: date-time
-          description: The date and time the item was last updated
-      required:
-        - id
-        - object
-        - source
-        - sourceId
-        - websetId
-        - properties
-        - evaluations
-        - enrichments
-        - createdAt
-        - updatedAt
-    WebsetEnrichmentFormat:
-      type: string
-      enum:
-        - text
-        - date
-        - number
-        - options
-        - email
-        - phone
-        - url
+            - object
     WebsetSearchBehavior:
       type: string
       enum:
@@ -2198,9 +1929,82 @@ components:
       enum:
         - webset_deleted
         - webset_canceled
+    WebsetEnrichmentFormat:
+      type: string
+      enum:
+        - text
+        - date
+        - number
+        - options
+        - email
+        - phone
+        - url
+    CompanyEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: company
+          default: company
+      required:
+        - type
+      title: Company
+    PersonEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: person
+          default: person
+      required:
+        - type
+      title: Person
+    ArticleEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: article
+          default: article
+      required:
+        - type
+      title: Article
+    ResearchPaperEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: research_paper
+          default: research_paper
+      required:
+        - type
+      title: Research Paper
+    CustomEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: custom
+          default: custom
+        description:
+          type:
+            - string
+          minLength: 2
+          maxLength: 200
+      required:
+        - type
+        - description
+      title: Custom
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Your Exa API key
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

@@ -1,10 +1,14 @@
 # Source: https://bun.com/docs/guides/websocket/context.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Set per-socket contextual data on a WebSocket
 
 When building a WebSocket server, it's typically necessary to store some identifying information or context associated with each connected client.
 
-With \[Bun.serve()]\([https://bun.com/docs/api/websockets](https://bun.com/docs/api/websockets) contextual-data), this "contextual data" is set when the connection is initially upgraded by passing a `data` parameter in the `server.upgrade()` call.
+With [Bun.serve()](/runtime/http/websockets#contextual-data), this "contextual data" is set when the connection is initially upgraded by passing a `data` parameter in the `server.upgrade()` call.
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/block-scoped-var.md
 ---
-# eslint/block-scoped-var&#x20;
 
 ### What it does
 

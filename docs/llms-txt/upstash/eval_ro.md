@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/eval_ro.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/eval_ro.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/eval_ro.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/eval_ro.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/eval_ro.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/eval_ro.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/eval_ro.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/eval_ro.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/eval_ro.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/eval_ro.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # EVAL_RO
 
@@ -26,11 +12,11 @@
 
 ## Arguments
 
-<ParamField body="script" type="string" required>
+<ParamField body="script" type="str" required>
   The read-only lua script to run.
 </ParamField>
 
-<ParamField body="keys" type="string[]" required>
+<ParamField body="keys" type="List[str]" required>
   All of the keys accessed in the script
 </ParamField>
 
@@ -40,17 +26,23 @@
 
 ## Response
 
-<ResponseField type="any" required>
+<ResponseField type="Any" required>
   The result of the script.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const script = `
-      return ARGV[1]
-  `
-  const result = await redis.evalRo(script, [], ["hello"]);
-  console.log(result) // "hello"
+  ```py Example theme={"system"}
+  script = """
+  local value = redis.call("GET", KEYS[1])
+  return value
+  """
 
+  redis.set("mykey", "Hello")
+
+  assert redis.eval_ro(script, keys=["mykey"]) == "Hello"
+  ```
+
+  ```py Accepting arguments theme={"system"}
+  assert redis.eval_ro("return ARGV[1]", args=["Hello"]) == "Hello"
   ```
 </RequestExample>

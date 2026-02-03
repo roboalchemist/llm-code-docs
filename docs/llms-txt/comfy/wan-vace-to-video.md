@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/conditioning/video-models/wan-vace-to-video.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Wan Vace To Video - ComfyUI Built-in Node Documentation
 
 > Create videos using Alibaba Tongyi Wanxiang's high-resolution video generation API

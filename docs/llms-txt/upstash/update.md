@@ -2,74 +2,105 @@
 
 # Source: https://upstash.com/docs/vector/api/endpoints/update.md
 
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/update.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/vector/api/endpoints/update.md
+# Update Vector
 
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/update.md
+> Updates a vector, data or metadata.
 
-# Source: https://upstash.com/docs/vector/api/endpoints/update.md
+<Tip>
+  The vector will be updated int the default namespace by default.
+  You can use a different namespace by specifying it in the request path.
+</Tip>
 
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/update.md
+## Request
 
-# Source: https://upstash.com/docs/vector/api/endpoints/update.md
+You can update a vector value, data, or metadata; or any combination
+of those.
 
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/update.md
+<ParamField body="id" type="string" required>
+  The id of the vector.
+</ParamField>
 
-# Source: https://upstash.com/docs/vector/api/endpoints/update.md
+<ParamField body="vector" type="number[]">
+  The dense vector value to update to for dense and hybrid indexes.
+  <Note>The vector should have the same dimensions as your index.</Note>
+</ParamField>
 
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/update.md
+<ParamField body="sparseVector" type="Object[]">
+  The sparse vector value to update to for sparse and hybrid indexes.
 
-# Update
+  <Expandable defaultOpen="true">
+    <ResponseField name="indices" type="number[]">
+      Indices of the non-zero valued dimensions.
+    </ResponseField>
 
-## Methods
+    <ResponseField name="values" type="number[]">
+      Values of the non-zero valued dimensions.
+    </ResponseField>
+  </Expandable>
+</ParamField>
 
-The `update` method enables you to update the `vector`, `metadata`, or `data`
-of a vector.
+<ParamField body="data" type="string">
+  The raw text data to update to.
+  <Note>If the index is created with an [embedding model](/vector/features/embeddingmodels)
+  this will embed the data into a vector and will also update the vector, along with data.</Note>
+</ParamField>
 
-## Update Example
+<ParamField body="metadata" type="Object">
+  The metadata to update to.
+</ParamField>
 
-```python  theme={"system"}
-from upstash_vector import Index
+<ParamField body="metadataUpdateMode" type="string">
+  Whether to overwrite the whole metadata while updating
+  it, or patch the metadata (insert new fields or update or delete existing fields)
+  according to the `RFC 7396 JSON Merge Patch` algorithm.
 
-index = Index.from_env()
+  `OVERWRITE` for overwrite, `PATCH` for patch.
+</ParamField>
 
-updated = index.update(
-    id="id1",
-    metadata={"new": "metadata"},
-    data="new-data",
-)
+<Note>
+  For hybrid indexes either none or both of `vector` and `sparseVector` fields
+  must be present. It is not allowed to update only `vector` or `sparseVector`.
+</Note>
 
-print(updated)
-```
+## Path
 
-## Patch Metadata Example
+<ParamField path="namespace" type="string" default="">
+  The namespace to use.
+  When no namespace is specified, the default namespace will be used.
+</ParamField>
 
-It is also possible to patch metadata (update or delete existing fields or
-set new fields) according the [JSON Merge Patch](https://datatracker.ietf.org/doc/html/rfc7386) algorithm.
+## Response
 
-```python  theme={"system"}
-from upstash_vector import Index
-from upstash_vector.types import MetadataUpdateMode
+<ResponseField name="updated" type="number">
+  `1` if any vector is updated, `0` otherwise.
+</ResponseField>
 
-index = Index.from_env()
+<RequestExample>
+  ```sh curl theme={"system"}
+  curl $UPSTASH_VECTOR_REST_URL/update \
+    -X POST \
+    -H "Authorization: Bearer $UPSTASH_VECTOR_REST_TOKEN" \
+    -d '{ "id": "id-1", "metadata": { "link": "upstash.com" } }'
+  ```
 
-updated = index.update(
-    id="id2",
-    metadata={
-        "existing-field": "new-value",
-        "existing-field-to-delete": None,
-        "new-field": "new-value",
-    },
-    metadata_update_mode=MetadataUpdateMode.PATCH,
-)
+  ```sh curl (Namespace) theme={"system"}
+  curl $UPSTASH_VECTOR_REST_URL/update/ns \
+    -X POST \
+    -H "Authorization: Bearer $UPSTASH_VECTOR_REST_TOKEN" \
+    -d '{ "id": "id-2", "vector": [0.1, 0.2] }'
+  ```
+</RequestExample>
 
-print(updated)
-```
-
-Also, you can specify a namespace to operate on. When no namespace
-is provided, the default namespace will be used.
-
-```python  theme={"system"}
-index.update(..., namespace="ns")
-```
+<ResponseExample>
+  ```json 200 OK theme={"system"}
+  {
+      "result": {
+          "updated": 1
+      }
+  }
+  ```
+</ResponseExample>

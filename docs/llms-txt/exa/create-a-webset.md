@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/websets/api/websets/create-a-webset.md
+# Source: https://exa.ai/docs/websets/api/websets/create-a-webset.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Create a Webset
 
@@ -6,770 +10,465 @@
 
 You can specify an `externalId` to reference the Webset with your own identifiers for easier integration.
 
+
+
 ## OpenAPI
 
 ````yaml post /v0/websets
+openapi: 3.1.0
+info:
+  title: Websets
+  description: ''
+  version: '0'
+  contact: {}
+servers:
+  - url: https://api.exa.ai/websets/
+    description: Production
+security: []
+tags: []
 paths:
-  path: /v0/websets
-  method: post
-  servers:
-    - url: https://api.exa.ai/websets/
-      description: Production
-  request:
-    security:
-      - title: api key
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-              description: Your Exa API key
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              search:
-                allOf:
-                  - type:
+  /v0/websets:
+    post:
+      tags:
+        - Websets
+      summary: Create a Webset
+      description: >-
+        Creates a new Webset with optional search, import, and enrichment
+        configurations. The Webset will automatically begin processing once
+        created.
+
+
+        You can specify an `externalId` to reference the Webset with your own
+        identifiers for easier integration.
+      operationId: websets-create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWebsetParameters'
+      responses:
+        '201':
+          description: Webset created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webset'
+          headers:
+            X-Request-Id:
+              schema:
+                type: string
+              description: Unique identifier for the request.
+              example: req_N6SsgoiaOQOPqsYKKiw5
+              required: true
+        '409':
+          description: Webset with this externalId already exists
+          headers:
+            X-Request-Id:
+              schema:
+                type: string
+              description: Unique identifier for the request.
+              example: req_N6SsgoiaOQOPqsYKKiw5
+              required: true
+      security:
+        - api_key: []
+components:
+  schemas:
+    CreateWebsetParameters:
+      type:
+        - object
+      properties:
+        search:
+          type:
+            - object
+          properties:
+            query:
+              type:
+                - string
+              minLength: 1
+              maxLength: 5000
+              description: >-
+                Natural language search query describing what you are looking
+                for.
+
+
+                Be specific and descriptive about your requirements,
+                characteristics, and any constraints that help narrow down the
+                results.
+
+
+                Any URLs provided will be crawled and used as additional context
+                for the search.
+              examples:
+                - >-
+                  Marketing agencies based in the US, that focus on consumer
+                  products.
+                - AI startups in Europe that raised Series A funding in 2024
+                - SaaS companies with 50-200 employees in the fintech space
+            count:
+              default: 10
+              type:
+                - number
+              minimum: 1
+              description: >-
+                Number of Items the Webset will attempt to find.
+
+
+                The actual number of Items found may be less than this number
+                depending on the search complexity.
+            entity:
+              $ref: '#/components/schemas/Entity'
+              description: >-
+                Entity the Webset will return results for.
+
+
+                It is not required to provide it, we automatically detect the
+                entity from all the information provided in the query. Only use
+                this when you need more fine control.
+            criteria:
+              type:
+                - array
+              items:
+                $ref: '#/components/schemas/CreateCriterionParameters'
+                type:
+                  - object
+                title: CreateCriterionParameters
+              minItems: 1
+              maxItems: 5
+              description: >-
+                Criteria every item is evaluated against.
+
+
+                It's not required to provide your own criteria, we automatically
+                detect the criteria from all the information provided in the
+                query. Only use this when you need more fine control.
+            recall:
+              type:
+                - boolean
+              description: >-
+                Whether to provide an estimate of how many total relevant
+                results could exist for this search.
+
+                Result of the analysis will be available in the `recall` field
+                within the search request.
+            exclude:
+              type:
+                - array
+              items:
+                type:
+                  - object
+                properties:
+                  source:
+                    type:
+                      - string
+                    enum:
+                      - import
+                      - webset
+                  id:
+                    type:
+                      - string
+                    minLength: 1
+                    description: The ID of the source to exclude.
+                required:
+                  - source
+                  - id
+              description: >-
+                Sources (existing imports or websets) to exclude from search
+                results. Any results found within these sources will be omitted
+                to prevent finding them during search.
+            scope:
+              type:
+                - array
+              items:
+                type:
+                  - object
+                properties:
+                  source:
+                    type:
+                      - string
+                    enum:
+                      - import
+                      - webset
+                  id:
+                    type:
+                      - string
+                    minLength: 1
+                    description: The ID of the source to search.
+                  relationship:
+                    type:
                       - object
                     properties:
-                      query:
+                      definition:
                         type:
                           - string
-                        minLength: 1
-                        maxLength: 5000
                         description: >-
-                          Natural language search query describing what you are
-                          looking for.
-
-
-                          Be specific and descriptive about your requirements,
-                          characteristics, and any constraints that help narrow
-                          down the results.
-
-
-                          Any URLs provided will be crawled and used as
-                          additional context for the search.
-                        examples:
-                          - >-
-                            Marketing agencies based in the US, that focus on
-                            consumer products.
-                          - >-
-                            AI startups in Europe that raised Series A funding
-                            in 2024
-                          - >-
-                            SaaS companies with 50-200 employees in the fintech
-                            space
-                      count:
-                        default: 10
+                          What the relationship of the entities you hope to find
+                          is relative to the entities contained in the provided
+                          source. Only needed for hop searches (graph traversal)
+                          from the source entities to related targets. Examples:
+                          "investors of", "current employer", "employees at".
+                          Omit for simple filtering within the source.
+                      limit:
                         type:
                           - number
                         minimum: 1
+                        maximum: 10
                         description: >-
-                          Number of Items the Webset will attempt to find.
-
-
-                          The actual number of Items found may be less than this
-                          number depending on the search complexity.
-                      entity:
-                        $ref: '#/components/schemas/Entity'
-                        description: >-
-                          Entity the Webset will return results for.
-
-
-                          It is not required to provide it, we automatically
-                          detect the entity from all the information provided in
-                          the query. Only use this when you need more fine
-                          control.
-                      criteria:
-                        type:
-                          - array
-                        items:
-                          type:
-                            - object
-                          $ref: '#/components/schemas/CreateCriterionParameters'
-                          title: CreateCriterionParameters
-                        minItems: 1
-                        maxItems: 5
-                        description: >-
-                          Criteria every item is evaluated against.
-
-
-                          It's not required to provide your own criteria, we
-                          automatically detect the criteria from all the
-                          information provided in the query. Only use this when
-                          you need more fine control.
-                      recall:
-                        type:
-                          - boolean
-                        description: >-
-                          Whether to provide an estimate of how many total
-                          relevant results could exist for this search.
-
-                          Result of the analysis will be available in the
-                          `recall` field within the search request.
-                      exclude:
-                        type:
-                          - array
-                        items:
-                          type:
-                            - object
-                          properties:
-                            source:
-                              type:
-                                - string
-                              enum:
-                                - import
-                                - webset
-                            id:
-                              type:
-                                - string
-                              minLength: 1
-                              description: The ID of the source to exclude.
-                          required:
-                            - source
-                            - id
-                        description: >-
-                          Sources (existing imports or websets) to exclude from
-                          search results. Any results found within these sources
-                          will be omitted to prevent finding them during search.
-                      scope:
-                        type:
-                          - array
-                        items:
-                          type:
-                            - object
-                          properties:
-                            source:
-                              type:
-                                - string
-                              enum:
-                                - import
-                                - webset
-                            id:
-                              type:
-                                - string
-                              minLength: 1
-                              description: The ID of the source to search.
-                            relationship:
-                              type:
-                                - object
-                              properties:
-                                definition:
-                                  type:
-                                    - string
-                                  description: >-
-                                    What the relationship of the entities you
-                                    hope to find is relative to the entities
-                                    contained in the provided source. Only
-                                    needed for hop searches (graph traversal)
-                                    from the source entities to related targets.
-                                    Examples: "investors of", "current
-                                    employer", "employees at". Omit for simple
-                                    filtering within the source.
-                                limit:
-                                  type:
-                                    - number
-                                  minimum: 1
-                                  maximum: 10
-                                  description: >-
-                                    Number of related entities to find per
-                                    source entity (fanout). Only used for hop
-                                    searches. Range: 1-10.
-                              required:
-                                - definition
-                                - limit
-                          required:
-                            - source
-                            - id
-                        description: >-
-                          Limit this search to only consider candidates from the
-                          listed sources (existing Imports or Websets). Scope
-                          applies per-search; if you run another search and want
-                          to stay within the same dataset, pass scope again.
-                          When scope is present, the search behavior is OVERRIDE
-                          (replaces results rather than appending). Note: Using
-                          the same Import in both top-level import and
-                          search.scope will return a 400 error.
+                          Number of related entities to find per source entity
+                          (fanout). Only used for hop searches. Range: 1-10.
                     required:
-                      - query
-                    description: Create initial search for the Webset.
-              import:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      type:
-                        - object
-                      properties:
-                        source:
-                          type:
-                            - string
-                          enum:
-                            - import
-                            - webset
-                        id:
-                          type:
-                            - string
-                          minLength: 1
-                          description: The ID of the source to search.
-                      required:
-                        - source
-                        - id
-                    description: >-
-                      Attach/load data from existing Imports or Websets into
-                      this Webset. For CSV Imports, this schedules ingestion and
-                      creates a staging pool of items (ImportItems do not
-                      automatically appear as Webset Items; searches create
-                      Webset Items). This does not filter searches. To filter a
-                      search to only look within an Import or Webset, use
-                      search.scope instead.
-              enrichments:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      type:
-                        - object
-                      $ref: '#/components/schemas/CreateEnrichmentParameters'
-                      title: CreateEnrichmentParameters
-                    description: >-
-                      Add enrichments to extract additional data from found
-                      items.
-
-
-                      Enrichments automatically search for and extract specific
-                      information (like contact details, funding data, employee
-                      counts, etc.) from each item added to your Webset.
-              exclude:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      type:
-                        - object
-                      properties:
-                        source:
-                          type:
-                            - string
-                          enum:
-                            - import
-                            - webset
-                        id:
-                          type:
-                            - string
-                          minLength: 1
-                          description: The ID of the source to exclude.
-                      required:
-                        - source
-                        - id
-                    description: >-
-                      Global exclusion sources (existing imports or websets)
-                      that apply to all operations within this Webset. Any
-                      results found within these sources will be omitted across
-                      all search and import operations.
-              externalId:
-                allOf:
-                  - type:
-                      - string
-                    maxLength: 300
-                    description: >-
-                      The external identifier for the webset.
-
-
-                      You can use this to reference the Webset by your own
-                      internal identifiers.
-              metadata:
-                allOf:
-                  - description: >-
-                      Set of key-value pairs you want to associate with this
-                      object.
-                    type:
-                      - object
-                    additionalProperties:
-                      type:
-                        - string
-                      maxLength: 1000
-            required: true
-            refIdentifier: '#/components/schemas/CreateWebsetParameters'
-            examples:
-              - search: &ref_0
-                  query: >-
-                    Marketing agencies based in the US, that focus on consumer
-                    products.
-                  count: 10
-            example:
-              search: *ref_0
-        examples:
-          example:
-            value:
-              search:
-                query: >-
-                  Marketing agencies based in the US, that focus on consumer
-                  products.
-                count: 10
-    codeSamples:
-      - label: JavaScript
-        lang: javascript
-        source: |-
-          // npm install exa-js
-          import Exa from 'exa-js';
-          const exa = new Exa('YOUR_EXA_API_KEY');
-
-          const webset = await exa.websets.create({
-            search: {
-              query: "Tech companies in San Francisco",
-              count: 10
-            }
-          });
-
-          console.log(`Created webset: ${webset.id}`);
-      - label: Python
-        lang: python
-        source: |-
-          # pip install exa-py
-          from exa_py import Exa
-          exa = Exa('YOUR_EXA_API_KEY')
-
-          webset = exa.websets.create(params={
-              'search': {
-                  'query': 'Tech companies in San Francisco',
-                  'count': 10
-              }
-          })
-
-          print(f'Created webset: {webset.id}')
-      - label: Filter within CSV Import
-        lang: javascript
-        source: |-
-          // Filter a CSV import by criteria (no top-level import needed)
-          import Exa from 'exa-js';
-          const exa = new Exa('YOUR_EXA_API_KEY');
-
-          const webset = await exa.websets.create({
-            search: {
-              query: "people who changed jobs",
-              criteria: ["changed jobs in the last 6 months"],
-              count: 10,
-              scope: [{
-                source: "import",
-                id: "import_abc123"  // Your existing import ID
-              }]
-            }
-          });
-
-          console.log(`Filtered webset: ${webset.id}`);
-      - label: Filter within CSV Import
-        lang: python
-        source: |-
-          from exa_py import Exa
-          exa = Exa('YOUR_EXA_API_KEY')
-
-          webset = exa.websets.create(params={
-              'search': {
-                  'query': 'people who changed jobs',
-                  'criteria': ['changed jobs in the last 6 months'],
-                  'count': 10,
-                  'scope': [{
-                      'source': 'import',
-                      'id': 'import_abc123'  # Your existing import ID
-                  }]
-              }
-          })
-
-          print(f'Filtered webset: {webset.id}')
-      - label: Hop Search (Graph Traversal)
-        lang: javascript
-        source: |-
-          // Find related entities (e.g., companies -> investors)
-          import Exa from 'exa-js';
-          const exa = new Exa('YOUR_EXA_API_KEY');
-
-          const webset = await exa.websets.create({
-            search: {
-              query: "investors",
-              scope: [{
-                source: "webset",
-                id: "webset_companies",
-                relationship: {
-                  definition: "investors of",
-                  limit: 3  // Find up to 3 investors per company
-                }
-              }]
-            }
-          });
-
-          console.log(`Hop search webset: ${webset.id}`);
-      - label: Hop Search (Graph Traversal)
-        lang: python
-        source: |-
-          from exa_py import Exa
-          exa = Exa('YOUR_EXA_API_KEY')
-
-          webset = exa.websets.create(params={
-              'search': {
-                  'query': 'investors',
-                  'scope': [{
-                      'source': 'webset',
-                      'id': 'webset_companies',
-                      'relationship': {
-                          'definition': 'investors of',
-                          'limit': 3  # Find up to 3 investors per company
-                      }
-                  }]
-              }
-          })
-
-          print(f'Hop search webset: {webset.id}')
-  response:
-    '201':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type:
-                      - string
-                    description: The unique identifier for the webset
-              object:
-                allOf:
-                  - type: string
-                    const: webset
-                    default: webset
-              status:
-                allOf:
-                  - type:
-                      - string
-                    enum:
-                      - idle
-                      - pending
-                      - running
-                      - paused
-                    description: The status of the webset
-                    title: WebsetStatus
-              externalId:
-                allOf:
-                  - type: string
-                    description: The external identifier for the webset
-                    nullable: true
-              title:
-                allOf:
-                  - type: string
-                    description: The title of the webset
-                    nullable: true
-              searches:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      type:
-                        - object
-                      $ref: '#/components/schemas/WebsetSearch'
-                    description: The searches that have been performed on the webset.
-              imports:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      type:
-                        - object
-                      $ref: '#/components/schemas/Import'
-                    description: Imports that have been performed on the webset.
-              enrichments:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      type:
-                        - object
-                      $ref: '#/components/schemas/WebsetEnrichment'
-                    description: The Enrichments to apply to the Webset Items.
-              monitors:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      type:
-                        - object
-                      $ref: '#/components/schemas/Monitor'
-                    description: The Monitors for the Webset.
-              excludes:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      type:
-                        - object
-                      properties:
-                        source:
-                          type:
-                            - string
-                          enum:
-                            - import
-                            - webset
-                        id:
-                          type:
-                            - string
-                      required:
-                        - source
-                        - id
-                    description: >-
-                      The Excludes sources (existing imports or websets) that
-                      apply to all operations within this Webset. Any results
-                      found within these sources will be omitted across all
-                      search and import operations.
-              metadata:
-                allOf:
-                  - default: {}
-                    description: >-
-                      Set of key-value pairs you want to associate with this
-                      object.
-                    type:
-                      - object
-                    additionalProperties:
-                      type:
-                        - string
-                      maxLength: 1000
-              createdAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the webset was created
-              updatedAt:
-                allOf:
-                  - type:
-                      - string
-                    format: date-time
-                    description: The date and time the webset was updated
-            refIdentifier: '#/components/schemas/Webset'
-            requiredProperties:
-              - id
+                      - definition
+                      - limit
+                required:
+                  - source
+                  - id
+              description: >-
+                Limit this search to only consider candidates from the listed
+                sources (existing Imports or Websets). Scope applies per-search;
+                if you run another search and want to stay within the same
+                dataset, pass scope again. When scope is present, the search
+                behavior is OVERRIDE (replaces results rather than appending).
+                Note: Using the same Import in both top-level import and
+                search.scope will return a 400 error.
+          required:
+            - query
+          description: Create initial search for the Webset.
+        import:
+          type:
+            - array
+          items:
+            type:
               - object
-              - status
-              - externalId
-              - title
-              - searches
-              - imports
-              - enrichments
-              - monitors
-              - createdAt
-              - updatedAt
-        examples:
-          example:
-            value:
-              id: <string>
-              object: webset
-              status: idle
-              externalId: <string>
-              title: <string>
-              searches:
-                - id: <string>
-                  object: webset_search
-                  status: created
-                  websetId: <string>
-                  query: <string>
-                  entity:
-                    type: company
-                  criteria:
-                    - description: <string>
-                      successRate: 50
-                  count: 2
-                  behavior: override
-                  exclude:
-                    - source: import
-                      id: <string>
-                  scope:
-                    - source: import
-                      id: <string>
-                      relationship:
-                        definition: <string>
-                        limit: 5.5
-                  progress:
-                    found: 123
-                    analyzed: 123
-                    completion: 50
-                    timeLeft: 123
-                  recall:
-                    expected:
-                      total: 123
-                      confidence: high
-                      bounds:
-                        min: 123
-                        max: 123
-                    reasoning: <string>
-                  metadata: {}
-                  canceledAt: '2023-11-07T05:31:56Z'
-                  canceledReason: webset_deleted
-                  createdAt: '2023-11-07T05:31:56Z'
-                  updatedAt: '2023-11-07T05:31:56Z'
-              imports:
-                - id: <string>
-                  object: import
-                  status: pending
-                  format: csv
-                  entity:
-                    type: <string>
-                  title: <string>
-                  count: 123
-                  metadata: {}
-                  failedReason: invalid_format
-                  failedAt: '2023-11-07T05:31:56Z'
-                  failedMessage: <string>
-                  createdAt: '2023-11-07T05:31:56Z'
-                  updatedAt: '2023-11-07T05:31:56Z'
-              enrichments:
-                - id: <string>
-                  object: webset_enrichment
-                  status: pending
-                  websetId: <string>
-                  title: <string>
-                  description: <string>
-                  format: text
-                  options:
-                    - label: <string>
-                  instructions: <string>
-                  metadata: {}
-                  createdAt: '2023-11-07T05:31:56Z'
-                  updatedAt: '2023-11-07T05:31:56Z'
-              monitors:
-                - id: <string>
-                  object: monitor
-                  status: enabled
-                  websetId: <string>
-                  cadence:
-                    cron: <string>
-                    timezone: Etc/UTC
-                  behavior:
-                    type: search
-                    config:
-                      query: <string>
-                      criteria:
-                        - description: <string>
-                      entity:
-                        type: <string>
-                      count: 123
-                      behavior: append
-                  lastRun:
-                    id: <string>
-                    object: monitor_run
-                    status: created
-                    monitorId: <string>
-                    type: search
-                    completedAt: '2023-11-07T05:31:56Z'
-                    failedAt: '2023-11-07T05:31:56Z'
-                    failedReason: <string>
-                    canceledAt: '2023-11-07T05:31:56Z'
-                    createdAt: '2023-11-07T05:31:56Z'
-                    updatedAt: '2023-11-07T05:31:56Z'
-                  nextRunAt: '2023-11-07T05:31:56Z'
-                  metadata: {}
-                  createdAt: '2023-11-07T05:31:56Z'
-                  updatedAt: '2023-11-07T05:31:56Z'
-              excludes:
-                - source: import
-                  id: <string>
-              metadata: {}
-              createdAt: '2023-11-07T05:31:56Z'
-              updatedAt: '2023-11-07T05:31:56Z'
-        description: Webset created
-    '409':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Webset with this externalId already exists
-        examples: {}
-        description: Webset with this externalId already exists
-  deprecated: false
-  type: path
-components:
-  schemas:
-    CompanyEntity:
-      type:
-        - object
-      properties:
-        type:
-          type: string
-          const: company
-          default: company
-      required:
-        - type
-      title: Company
-    PersonEntity:
-      type:
-        - object
-      properties:
-        type:
-          type: string
-          const: person
-          default: person
-      required:
-        - type
-      title: Person
-    ArticleEntity:
-      type:
-        - object
-      properties:
-        type:
-          type: string
-          const: article
-          default: article
-      required:
-        - type
-      title: Article
-    ResearchPaperEntity:
-      type:
-        - object
-      properties:
-        type:
-          type: string
-          const: research_paper
-          default: research_paper
-      required:
-        - type
-      title: Research Paper
-    CustomEntity:
-      type:
-        - object
-      properties:
-        type:
-          type: string
-          const: custom
-          default: custom
-        description:
+            properties:
+              source:
+                type:
+                  - string
+                enum:
+                  - import
+                  - webset
+              id:
+                type:
+                  - string
+                minLength: 1
+                description: The ID of the source to search.
+            required:
+              - source
+              - id
+          description: >-
+            Attach/load data from existing Imports or Websets into this Webset.
+            For CSV Imports, this schedules ingestion and creates a staging pool
+            of items (ImportItems do not automatically appear as Webset Items;
+            searches create Webset Items). This does not filter searches. To
+            filter a search to only look within an Import or Webset, use
+            search.scope instead.
+        enrichments:
+          type:
+            - array
+          items:
+            $ref: '#/components/schemas/CreateEnrichmentParameters'
+            type:
+              - object
+            title: CreateEnrichmentParameters
+          description: >-
+            Add enrichments to extract additional data from found items.
+
+
+            Enrichments automatically search for and extract specific
+            information (like contact details, funding data, employee counts,
+            etc.) from each item added to your Webset.
+        exclude:
+          type:
+            - array
+          items:
+            type:
+              - object
+            properties:
+              source:
+                type:
+                  - string
+                enum:
+                  - import
+                  - webset
+              id:
+                type:
+                  - string
+                minLength: 1
+                description: The ID of the source to exclude.
+            required:
+              - source
+              - id
+          description: >-
+            Global exclusion sources (existing imports or websets) that apply to
+            all operations within this Webset. Any results found within these
+            sources will be omitted across all search and import operations.
+        externalId:
           type:
             - string
-          minLength: 2
-          maxLength: 200
+          maxLength: 300
+          description: >-
+            The external identifier for the webset.
+
+
+            You can use this to reference the Webset by your own internal
+            identifiers.
+        metadata:
+          description: Set of key-value pairs you want to associate with this object.
+          type:
+            - object
+          additionalProperties:
+            type:
+              - string
+            maxLength: 1000
+        title:
+          type: string
+          minLength: 1
+          nullable: true
+          description: >-
+            Optional name that appears anywhere the Webset is displayed. Leave
+            empty to have Exa generate one automatically based on the search
+            query or import content.
+          examples:
+            - Leading climate tech startups
+      examples:
+        - search:
+            query: >-
+              Marketing agencies based in the US, that focus on consumer
+              products.
+            count: 10
+    Webset:
+      type:
+        - object
+      properties:
+        id:
+          type:
+            - string
+          description: The unique identifier for the webset
+        object:
+          type: string
+          const: webset
+          default: webset
+        status:
+          type:
+            - string
+          enum:
+            - idle
+            - pending
+            - running
+            - paused
+          description: The status of the webset
+          title: WebsetStatus
+        externalId:
+          type: string
+          description: The external identifier for the webset
+          nullable: true
+        title:
+          type: string
+          description: The title of the webset
+          nullable: true
+        searches:
+          type:
+            - array
+          items:
+            $ref: '#/components/schemas/WebsetSearch'
+            type:
+              - object
+          description: The searches that have been performed on the webset.
+        imports:
+          type:
+            - array
+          items:
+            $ref: '#/components/schemas/Import'
+            type:
+              - object
+          description: Imports that have been performed on the webset.
+        enrichments:
+          type:
+            - array
+          items:
+            $ref: '#/components/schemas/WebsetEnrichment'
+            type:
+              - object
+          description: The Enrichments to apply to the Webset Items.
+        monitors:
+          type:
+            - array
+          items:
+            $ref: '#/components/schemas/Monitor'
+            type:
+              - object
+          description: The Monitors for the Webset.
+        excludes:
+          type:
+            - array
+          items:
+            type:
+              - object
+            properties:
+              source:
+                type:
+                  - string
+                enum:
+                  - import
+                  - webset
+              id:
+                type:
+                  - string
+            required:
+              - source
+              - id
+          description: >-
+            The Excludes sources (existing imports or websets) that apply to all
+            operations within this Webset. Any results found within these
+            sources will be omitted across all search and import operations.
+        metadata:
+          default: {}
+          description: Set of key-value pairs you want to associate with this object.
+          type:
+            - object
+          additionalProperties:
+            type:
+              - string
+            maxLength: 1000
+        createdAt:
+          type:
+            - string
+          format: date-time
+          description: The date and time the webset was created
+        updatedAt:
+          type:
+            - string
+          format: date-time
+          description: The date and time the webset was updated
       required:
-        - type
-        - description
-      title: Custom
+        - id
+        - object
+        - status
+        - externalId
+        - title
+        - searches
+        - imports
+        - enrichments
+        - monitors
+        - createdAt
+        - updatedAt
     Entity:
       oneOf:
-        - type:
+        - $ref: '#/components/schemas/CompanyEntity'
+          type:
             - object
-          $ref: '#/components/schemas/CompanyEntity'
-        - type:
+        - $ref: '#/components/schemas/PersonEntity'
+          type:
             - object
-          $ref: '#/components/schemas/PersonEntity'
-        - type:
+        - $ref: '#/components/schemas/ArticleEntity'
+          type:
             - object
-          $ref: '#/components/schemas/ArticleEntity'
-        - type:
+        - $ref: '#/components/schemas/ResearchPaperEntity'
+          type:
             - object
-          $ref: '#/components/schemas/ResearchPaperEntity'
-        - type:
+        - $ref: '#/components/schemas/CustomEntity'
+          type:
             - object
-          $ref: '#/components/schemas/CustomEntity'
     CreateCriterionParameters:
       type:
         - object
@@ -889,11 +588,11 @@ components:
               - object
             properties:
               description:
-                description: The description of the criterion
                 type:
                   - string
                 minLength: 1
                 maxLength: 1000
+                description: The description of the criterion
               successRate:
                 type:
                   - number
@@ -917,10 +616,10 @@ components:
             number of results may be less than this number depending on the
             search complexity.
         behavior:
+          $ref: '#/components/schemas/WebsetSearchBehavior'
           default: override
           type:
             - string
-          $ref: '#/components/schemas/WebsetSearchBehavior'
           description: >-
             The behavior of the search when it is added to a Webset.
 
@@ -1090,8 +789,8 @@ components:
           description: The date and time the search was canceled
           nullable: true
         canceledReason:
-          type: string
           $ref: '#/components/schemas/WebsetSearchCanceledReason'
+          type: string
           description: The reason the search was canceled
           nullable: true
         createdAt:
@@ -1253,8 +952,8 @@ components:
             The description of the enrichment task provided during the creation
             of the enrichment.
         format:
-          type: string
           $ref: '#/components/schemas/WebsetEnrichmentFormat'
+          type: string
           description: The format of the enrichment response.
           nullable: true
         options:
@@ -1312,82 +1011,6 @@ components:
         - format
         - options
         - instructions
-        - createdAt
-        - updatedAt
-    MonitorRun:
-      type:
-        - object
-      properties:
-        id:
-          type:
-            - string
-          description: The unique identifier for the Monitor Run
-        object:
-          type:
-            - string
-          enum:
-            - monitor_run
-          description: The type of object
-        status:
-          type:
-            - string
-          enum:
-            - created
-            - running
-            - completed
-            - canceled
-            - failed
-          description: The status of the Monitor Run
-        monitorId:
-          type:
-            - string
-          description: The monitor that the run is associated with
-        type:
-          type:
-            - string
-          enum:
-            - search
-            - refresh
-          description: The type of the Monitor Run
-        completedAt:
-          type: string
-          format: date-time
-          description: When the run completed
-          nullable: true
-        failedAt:
-          type: string
-          format: date-time
-          description: When the run failed
-          nullable: true
-        failedReason:
-          type: string
-          description: The reason the run failed
-          nullable: true
-        canceledAt:
-          type: string
-          format: date-time
-          description: When the run was canceled
-          nullable: true
-        createdAt:
-          type:
-            - string
-          format: date-time
-          description: When the run was created
-        updatedAt:
-          type:
-            - string
-          format: date-time
-          description: When the run was last updated
-      required:
-        - id
-        - object
-        - monitorId
-        - status
-        - type
-        - completedAt
-        - failedAt
-        - failedReason
-        - canceledAt
         - createdAt
         - updatedAt
     Monitor:
@@ -1503,8 +1126,8 @@ components:
             - config
           description: Behavior to perform when monitor runs
         lastRun:
-          type: object
           $ref: '#/components/schemas/MonitorRun'
+          type: object
           title: MonitorRun
           description: The last run of the monitor
           nullable: true
@@ -1543,16 +1166,67 @@ components:
         - metadata
         - createdAt
         - updatedAt
-    WebsetEnrichmentFormat:
-      type: string
-      enum:
-        - text
-        - date
-        - number
-        - options
-        - email
-        - phone
-        - url
+    CompanyEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: company
+          default: company
+      required:
+        - type
+      title: Company
+    PersonEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: person
+          default: person
+      required:
+        - type
+      title: Person
+    ArticleEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: article
+          default: article
+      required:
+        - type
+      title: Article
+    ResearchPaperEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: research_paper
+          default: research_paper
+      required:
+        - type
+      title: Research Paper
+    CustomEntity:
+      type:
+        - object
+      properties:
+        type:
+          type: string
+          const: custom
+          default: custom
+        description:
+          type:
+            - string
+          minLength: 2
+          maxLength: 200
+      required:
+        - type
+        - description
+      title: Custom
     WebsetSearchBehavior:
       type: string
       enum:
@@ -1563,9 +1237,97 @@ components:
       enum:
         - webset_deleted
         - webset_canceled
+    WebsetEnrichmentFormat:
+      type: string
+      enum:
+        - text
+        - date
+        - number
+        - options
+        - email
+        - phone
+        - url
+    MonitorRun:
+      type:
+        - object
+      properties:
+        id:
+          type:
+            - string
+          description: The unique identifier for the Monitor Run
+        object:
+          type:
+            - string
+          enum:
+            - monitor_run
+          description: The type of object
+        status:
+          type:
+            - string
+          enum:
+            - created
+            - running
+            - completed
+            - canceled
+            - failed
+          description: The status of the Monitor Run
+        monitorId:
+          type:
+            - string
+          description: The monitor that the run is associated with
+        type:
+          type:
+            - string
+          enum:
+            - search
+            - refresh
+          description: The type of the Monitor Run
+        completedAt:
+          type: string
+          format: date-time
+          description: When the run completed
+          nullable: true
+        failedAt:
+          type: string
+          format: date-time
+          description: When the run failed
+          nullable: true
+        failedReason:
+          type: string
+          description: The reason the run failed
+          nullable: true
+        canceledAt:
+          type: string
+          format: date-time
+          description: When the run was canceled
+          nullable: true
+        createdAt:
+          type:
+            - string
+          format: date-time
+          description: When the run was created
+        updatedAt:
+          type:
+            - string
+          format: date-time
+          description: When the run was last updated
+      required:
+        - id
+        - object
+        - monitorId
+        - status
+        - type
+        - completedAt
+        - failedAt
+        - failedReason
+        - canceledAt
+        - createdAt
+        - updatedAt
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Your Exa API key
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

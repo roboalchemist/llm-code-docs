@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/troubleshooting/remove-metadata-field.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Remove a metadata field from a record
 
 You must perform an [`upsert`](/reference/api/2024-10/data-plane/upsert) operation to remove existing metadata fields from a record.

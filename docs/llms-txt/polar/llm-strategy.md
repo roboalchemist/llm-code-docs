@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/features/usage-based-billing/ingestion-strategies/llm-strategy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Strategy
 
 > Ingestion strategy for LLM Usage
@@ -23,6 +27,7 @@ import { openai } from "@ai-sdk/openai";
 // Setup the LLM Ingestion Strategy
 const llmIngestion = Ingestion({ accessToken: process.env.POLAR_ACCESS_TOKEN })
   .strategy(new LLMStrategy(openai("gpt-4o")))
+  .cost((ctx) => ({ amount: 123, currency: "usd" })) // Optional: Set the cost of the LLM usage
   .ingest("openai-usage");
 
 export async function POST(req: Request) {
@@ -31,7 +36,7 @@ export async function POST(req: Request) {
   // Get the wrapped LLM model with ingestion capabilities
   // Pass Customer Id to properly annotate the ingestion events with a specific customer
   const model = llmIngestion.client({
-    customerId: request.headers.get("X-Polar-Customer-Id") ?? "",
+    customerId: "xxx",
   });
 
   const { text } = await generateText({
@@ -51,8 +56,20 @@ export async function POST(req: Request) {
   "customerId": "123",
   "name": "openai-usage",
   "metadata": {
-    "promptTokens": 100,
-    "completionTokens": 200
+    "inputTokens": 100,
+    "outputTokens": 200,
+    "cachedInputTokens": 10,
+    "totalTokens": 300,
+    "model": "gpt-4o",
+    "provider": "openai.responses",
+    "strategy": "LLM",
+    "_cost": {
+      "amount": 123, // Amount is expected to be in cents. $1.23 should be represented as 123
+      "currency": "usd"
+    },
+    "_llm": {
+      ... //
+    }
   }
 }
 ```

@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/examples/cookbooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cookbooks
 
 > Interactive Jupyter notebooks demonstrating advanced use cases and best practices with Fireworks AI
@@ -41,6 +45,12 @@ Explore our collection of notebooks that showcase real-world applications, best 
     Real-time audio transcription with streaming support and low latency.
 
     **Features:** Streaming support, low-latency transcription, production-ready
+  </Card>
+
+  <Card title="Chat with Video using Qwen3 Omni" href="https://colab.research.google.com/github/fw-ai/cookbook/blob/main/learn/video/Qwen3-Omni-Chat-With-Video-Cookbook.ipynb" icon="video">
+    Analyze video and audio content with Qwen3 Omni, a multimodal model supporting video, audio, and text inputs.
+
+    **Features:** Video captioning, scene analysis, content understanding, multimodal Q\&A
   </Card>
 </CardGroup>
 

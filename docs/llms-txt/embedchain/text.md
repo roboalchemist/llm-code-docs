@@ -1,12 +1,16 @@
 # Source: https://docs.embedchain.ai/components/data-sources/text.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 📝 Text
 
 ### Text
 
 Text is a local data type. To supply your own text, use the data\_type as `text` and enter a string. The text is not processed, this can be very versatile. Eg:
 
-```python
+```python  theme={null}
 from embedchain import App
 
 app = App()

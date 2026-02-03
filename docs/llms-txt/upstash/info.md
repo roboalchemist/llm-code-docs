@@ -10,119 +10,44 @@
 
 # Source: https://upstash.com/docs/search/sdks/py/commands/info.md
 
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/info.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/info.md
-
-# Source: https://upstash.com/docs/vector/sdks/php/commands/info.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/info.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/info.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/info.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/info.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/info.md
-
-# Source: https://upstash.com/docs/vector/sdks/php/commands/info.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/info.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/info.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/info.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/info.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/info.md
-
-# Source: https://upstash.com/docs/vector/sdks/php/commands/info.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/info.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/info.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/info.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/info.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/info.md
-
-# Source: https://upstash.com/docs/vector/sdks/php/commands/info.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/info.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/info.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/info.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/info.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Info
 
+## Info Command for Python SDK
+
 Used to retrieve the stats of an index.
 
-## Response
+### Response
 
-<ResponseField name="vectorCount" type="number" required>
-  The total number of vectors in the index, that are ready to use.
+<ResponseField name="document_count" type="int" required>
+  The total number of documents in the database, that are ready to use.
 </ResponseField>
 
-<ResponseField name="pendingVectorCount" type="number" required>
-  The number of vectors in the index, that is still processing and not ready to
-  use.
+<ResponseField name="pending_document_count" type="int" required>
+  The number of documents in the database, that are still processing and not ready to use.
 </ResponseField>
 
-<ResponseField name="indexSize" type="number" required>
-  The size of the index, in `b`.
+<ResponseField name="disk_size" type="int" required>
+  Size of the database in bytes.
 </ResponseField>
 
-<ResponseField name="dimension" type="number" required>
-  Dimension of the vectors.
-</ResponseField>
-
-<ResponseField name="similarityFunction" type="string" required>
-  Name of the similarity function used in indexing and queries.
-</ResponseField>
-
-<ResponseField name="namespaces" type="Record<string, Object>" required>
-  A map of namespaces to their information in the following format
-
-  <Expandable defaultOpen="true">
-    <ResponseField name="vectorCount" type="number" required>
-      The total number of vectors in the namespace, that are ready to use.
-    </ResponseField>
-
-    <ResponseField name="pendingVectorCount" type="number" required>
-      The number of vectors in the namespace, that is still processing and not ready to
-      use.
-    </ResponseField>
-  </Expandable>
+<ResponseField name="indexes" required>
+  Doctionary of index names and their information (`document_count` and `pending_document_count`)
 </ResponseField>
 
 <RequestExample>
-  ```typescript Basic theme={"system"}
-  const infoResponse = await index.info();
-  /*
-  { 
-    vectorCount: 17,
-    pendingVectorCount: 0,
-    indexSize: 551158,
-    dimension: 1536,
-    similarityFunction: "COSINE",
-    namespaces: {
-      "": { // default namespace
-        vectorCount: 10,
-        pendingVectorCount: 0,
-      },
-      "my-namespace": {
-        vectorCount: 7,
-        pendingVectorCount: 0,
-      }
-    }
-  }
-  */
+  ```python  theme={"system"}
+  from upstash_search import Search
+
+  client = Search(
+      url="<UPSTASH_SEARCH_REST_URL>",
+      token="<UPSTASH_SEARCH_REST_TOKEN>",
+  )
+
+  info = client.info()
+  print(info)
   ```
 </RequestExample>

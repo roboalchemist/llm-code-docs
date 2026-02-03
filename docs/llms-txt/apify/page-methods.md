@@ -6,7 +6,7 @@
 
 ***
 
-Other than having methods for interacting with a page and waiting for events and elements, the **Page** object also supports various methods for doing other things, such as https://pptr.dev/api/puppeteer.page.reload, https://playwright.dev/docs/api/class-page#page-screenshot, https://playwright.dev/docs/api/class-page#page-set-extra-http-headers, and extracting the https://pptr.dev/api/puppeteer.page.content.
+Other than having methods for interacting with a page and waiting for events and elements, the **Page** object also supports various methods for doing other things, such as [reloading](https://pptr.dev/api/puppeteer.page.reload), [screenshotting](https://playwright.dev/docs/api/class-page#page-screenshot), [changing headers](https://playwright.dev/docs/api/class-page#page-set-extra-http-headers), and extracting the [page's content](https://pptr.dev/api/puppeteer.page.content).
 
 Last lesson, we left off at a point where we were waiting for the page to navigate so that we can extract the page's title and take a screenshot of it. In this lesson, we'll be learning about the two methods we can use to achieve both of those things.
 
@@ -128,4 +128,4 @@ Additionally, you should see a new image named **screenshot.png** in your projec
 
 ## Next up
 
-In the https://docs.apify.com/academy/puppeteer-playwright/executing-scripts.md, we'll gain a solid understanding of the two different contexts we can run our code in when using Puppeteer and Playwright, as well as how to run code in the context of the browser.
+In the [next exciting lesson](https://docs.apify.com/academy/puppeteer-playwright/executing-scripts.md), we'll gain a solid understanding of the two different contexts we can run our code in when using Puppeteer and Playwright, as well as how to run code in the context of the browser.

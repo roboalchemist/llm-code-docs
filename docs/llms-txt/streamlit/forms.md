@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/architecture/forms
+
 # Using forms
 
 When you don't want to rerun your script with each input made by a user, [st.form](https://docs.streamlit.io/develop/api-reference/execution-flow/st.form) is here to help! Forms make it easy to batch user input into a single rerun. This guide to using forms provides examples and explains how users interact with forms.

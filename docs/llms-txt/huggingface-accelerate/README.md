@@ -1,3 +1,11 @@
+# Source: https://github.com/open-mmlab/Amphion/blob/main/egs/vocoder/README.md
+
+# Source: https://github.com/open-mmlab/Amphion/blob/main/egs/svc/README.md
+
+# Source: https://github.com/open-mmlab/Amphion/blob/main/egs/tts/README.md
+
+# Source: https://github.com/huggingface/notebooks/blob/main/sagemaker/22_accelerate_sagemaker_examples/README.md
+
 # accelerate-aws-sagemaker
 
 Examples showcasing AWS SageMaker integration of 🤗 Accelerate. Just give the `accelerate config` and do `accelerate launch` 🚀. It's as simple as that!

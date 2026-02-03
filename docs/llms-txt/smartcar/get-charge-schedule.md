@@ -2,17 +2,9 @@
 
 # Source: https://smartcar.com/docs/api-reference/nissan/get-charge-schedule.md
 
-# Source: https://smartcar.com/docs/api-reference/tesla/get-charge-schedule.md
-
-# Source: https://smartcar.com/docs/api-reference/nissan/get-charge-schedule.md
-
-# Source: https://smartcar.com/docs/api-reference/tesla/get-charge-schedule.md
-
-# Source: https://smartcar.com/docs/api-reference/nissan/get-charge-schedule.md
-
-# Source: https://smartcar.com/docs/api-reference/tesla/get-charge-schedule.md
-
-# Source: https://smartcar.com/docs/api-reference/nissan/get-charge-schedule.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Charge Schedule
 

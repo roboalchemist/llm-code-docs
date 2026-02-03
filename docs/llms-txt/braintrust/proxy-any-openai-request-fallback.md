@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/proxy/proxy-any-openai-request-fallback.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Proxy any OpenAI request (fallback)
 
 > Any requests which do not match the above paths will be proxied directly to the OpenAI API.
@@ -77,7 +81,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

@@ -1,10 +1,14 @@
 # Source: https://docs.pinata.cloud/files/x402/x402-services.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # x402 Services
 
 ## Overview
 
-The x402 endpoints were Pinata's initial implementation of the x402 protocol for testing crypto-based content monetization. These endpoints use a simplified payment model and require the x402-axios or x402-fetch libraries.
+The x402 Services provide streamlined endpoints for crypto-based content monetization using the @x402/axios or @x402/fetch libraries.
 
 ## Endpoints
 
@@ -20,18 +24,10 @@ For detailed API specifications, see the API Reference:
   </Card>
 </CardGroup>
 
-## Why Use Payment Instructions Instead
+## See Also
 
-The Payment Instructions API offers:
+For more granular control over payment configurations, see the [Payment Instructions API](/files/x402/x402-payment-instructions), which offers:
 
-* **Flexible pricing** - Set your own payment requirements
-* **Better control** - Manage payment requirements separately from files
-* **Standard protocol** - Works with the standard x402 implementation
+* **Flexible pricing** - Define custom payment requirements
+* **Separate management** - Configure payments independently from files
 * **One-to-many** - Attach one payment instruction to multiple files
-
-For new projects, we recommend using the [Payment Instructions API](/files/x402/x402-payment-instructions).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pinata.cloud/llms.txt

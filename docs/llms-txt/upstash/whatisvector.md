@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/vector/overall/whatisvector.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What is Upstash Vector?
 
 Upstash Vector is a **serverless vector database designed for high-performance vector search at scale**. It powers advanced systems in areas such as:

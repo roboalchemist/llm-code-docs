@@ -1,10 +1,14 @@
 # Source: https://bun.com/docs/guides/html-rewriter/extract-links.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Extract links from a webpage using HTMLRewriter
 
 ## Extract links from a webpage
 
-Bun's [HTMLRewriter](https://bun.com/docs/api/html-rewriter) API can be used to efficiently extract links from HTML content. It works by chaining together CSS selectors to match the elements, text, and attributes you want to process. This is a simple example of how to extract links from a webpage. You can pass `.transform` a `Response`, `Blob`, or `string`.
+Bun's [HTMLRewriter](/runtime/html-rewriter) API can be used to efficiently extract links from HTML content. It works by chaining together CSS selectors to match the elements, text, and attributes you want to process. This is a simple example of how to extract links from a webpage. You can pass `.transform` a `Response`, `Blob`, or `string`.
 
 ```ts extract-links.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 async function extractLinks(url: string) {
@@ -65,4 +69,4 @@ const websiteLinks = await extractLinksFromURL("https://example.com");
 
 ***
 
-See [Docs > API > HTMLRewriter](https://bun.com/docs/api/html-rewriter) for complete documentation on HTML transformation with Bun.
+See [Docs > API > HTMLRewriter](/runtime/html-rewriter) for complete documentation on HTML transformation with Bun.

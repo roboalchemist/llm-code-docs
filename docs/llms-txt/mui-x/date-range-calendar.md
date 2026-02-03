@@ -2,10 +2,6 @@
 
 # Source: https://mui.com/x/react-date-pickers/date-range-calendar.md
 
-# Source: https://mui.com/x/api/date-pickers/date-range-calendar.md
-
-# Source: https://mui.com/x/react-date-pickers/date-range-calendar.md
-
 ---
 productId: x-date-pickers
 title: React Date Range Calendar component

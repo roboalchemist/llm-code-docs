@@ -5,9 +5,249 @@
 ## Pages in this section
 
 
-### GitLab 18.5.2 Patch Release Now Available
+### Integrating GitLab SAML SSO with Google Workspace: A Step-by-Step Guide
+Date: 2026-01-27
+Description: Discover how to configure GitLab SAML Single Sign-On (SSO) using Google Workspace as your identity provider. Enhance access management and streamline user authentication for your DevSecOps workflows.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/27/how-to-set-up-gitlab-saml-sso-with-google-workspace.md
+
+
+### GitLab 18.8.2 Patch Release – Critical Updates Now Available
+Date: 2026-01-21
+Description: GitLab 18.8.2 delivers crucial fixes and stability improvements. Upgrade now to ensure your GitLab environment is secure and error-free. Delivered in collaboration with IDEA GitLab Solutions.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/21/patch-release-gitlab-18-8-2-released.md
+
+
+### GitLab Bug Bounty Policy Updated to Encourage Secure Contributions
+Date: 2026-01-20
+Description: GitLab revises its Bug Bounty Program Policy, introducing improved clarity, increased rewards, and a reaffirmed commitment to open source security.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/20/gitlab-bug-bounty-program-policy-updates.md
+
+
+### GitLab 18.8.1 Security Patch Released – Immediate Upgrade Recommended
+Date: 2026-01-19
+Description: GitLab 18.8.1 CE/EE is now available with critical security fixes. All GitLab users are advised to upgrade immediately to maintain system integrity.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/19/gitlab-18-8-1-released.md
+
+
+### GitLab 18.8: Compliance, Security and CI/CD Enhancements Released
+Date: 2026-01-15
+Description: GitLab 18.8 introduces new tools for compliance, security, and CI/CD efficiency. Learn how your team can benefit and how our experts at IDEA GitLab Solutions can support you.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/15/gitlab-18-8-released.md
+
+
+### GitLab Credits Now Available: Streamline Billing and Resource Usage
+Date: 2026-01-15
+Description: GitLab introduces GitLab Credits — a unified billing method for simplifying CI/CD, storage, and user seat management. Find out how credits work and how IDEA GitLab Solutions can help you get started.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/15/introducing-gitlab-credits.md
+
+
+### GitLab Duo Agent Platform Achieves General Availability
+Date: 2026-01-15
+Description: GitLab Duo Agent Platform is now generally available, enabling smart, secure AI integration into your DevSecOps workflows. Learn how to benefit with IDEA GitLab Solutions.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/15/gitlab-duo-agent-platform-now-generally-available.md
+
+
+### Customising GitLab Duo Chat with Rules, Prompts, and Workflows
+Date: 2026-01-14
+Description: Discover how to tailor GitLab Duo Chat to your team's workflow using custom rules, prompts, and structured configuration—all supported by IDEA GitLab Solutions consultants.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/14/customising-gitlab-duo-chat-rules-prompts-workflows.md
+
+
+### Discover and Share AI Agents with GitLab’s AI Catalog
+Date: 2026-01-14
+Description: Explore GitLab’s new AI Catalog - a streamlined way to discover, reuse, and share AI agents to accelerate DevSecOps workflows.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/14/ai-catalog-discover-and-share-agents.md
+
+
+### Getting Started with GitLab Duo: Introducing Agentic Chat
+Date: 2026-01-14
+Description: Discover how GitLab Duo's new Agentic Chat feature brings conversational AI deeper into your workflows. Leverage AI tools to automate and accelerate your DevSecOps processes with GitLab.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/14/getting-started-with-gitlab-duo-agentic-chat.md
+
+
+### Getting Started with the GitLab Duo Agent Platform
+Date: 2026-01-14
+Description: A complete guide to setting up and leveraging GitLab Duo Agent for smarter, AI-driven development workflows directly inside your IDE.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/14/gitlab-duo-agent-platform-complete-getting-started-guide.md
+
+
+### GitLab Agents Explained: Foundational vs Custom vs External
+Date: 2026-01-14
+Description: Understand the differences between Foundational, Custom, and External GitLab Agents. Learn how each supports GitOps and DevOps practices effectively.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/14/understanding-agents-foundational-custom-external.md
+
+
+### GitLab Duo Agent Platform: A New Era for Custom AI in DevSecOps
+Date: 2026-01-14
+Description: Explore the GitLab Duo Agent Platform, enabling teams to integrate custom AI agents into their DevSecOps workflows. Discover how GitLab is transforming software development with secure, intelligent automation.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/14/introduction-to-gitlab-duo-agent-platform.md
+
+
+### Harnessing GitLab Duo: Multi-Agent Workflows Redefined
+Date: 2026-01-14
+Description: Discover how GitLab's Multi-Agent Workflows empower autonomous AI agents to streamline software development. Learn about real-world applications and how to integrate them with expert guidance.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/14/understanding-flows-multi-agent-workflows.md
+
+
+### Streamlining AI Development: Monitor, Manage, and Automate AI Workflows with GitLab
+Date: 2026-01-14
+Description: Discover how GitLab helps you effectively monitor, manage and automate AI development workflows with improved observability, integrated MLOps, and security at scale.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/14/monitor-manage-automate-ai-workflows.md
+
+
+### Mandatory Multi-Factor Authentication is Coming to GitLab.com
+Date: 2026-01-09
+Description: GitLab is enhancing account security by enforcing mandatory multi-factor authentication (MFA) on GitLab.com. Learn what this means for your account and how to prepare.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/09/strengthening-gitlab-com-security-mandatory-multi-factor-authentication.md
+
+
+### Empowering IIT Bombay Students to Build the Future with GitLab
+Date: 2026-01-08
+Description: Discover how students at IIT Bombay use GitLab to develop real-world software, innovate collaboratively, and gain industry readiness. Learn how you can benefit too with GitLab experts from IDEA GitLab Solutions.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/08/how-iit-bombay-students-code-future-with-gitlab.md
+
+
+### How AI is Transforming DevSecOps — Join GitLab Transcend to See What’s Next
+Date: 2026-01-08
+Description: AI is reshaping DevSecOps by automating workflows, improving security, and speeding up software delivery. Discover how at GitLab Transcend, a free virtual event.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/08/ai-is-reshaping-devsecops-attend-gitlab-transcend-to-see-whats-next.md
+
+
+### GitLab 18.7.1 Patch Release Highlights Critical Fixes
+Date: 2026-01-07
+Description: GitLab 18.7.1 introduces critical fixes for GitLab Self-Managed and GitLab.com, resolving high-severity bugs to ensure greater stability.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/07/gitlab-18-7-1-patch-release-highlights-critical-fixes.md
+
+
+### GitLab 18.7.1 Patch Release Resolves Regression Issues
+Date: 2026-01-07
+Description: GitLab has released version 18.7.1 to fix critical regressions affecting CI/CD variables and Geo replication. IDEA GitLab Solutions provides upgrade support and licensing in multiple regions.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/07/patch-release-gitlab-18-7-1-released.md
+
+
+### Understanding the 2025 OWASP Top 10: Key Changes and Their Impact
+Date: 2026-01-07
+Description: Explore the major changes in the upcoming 2025 OWASP Top 10 and learn how they affect secure software development practices.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/07/2025-owasp-top-10-whats-changed-and-why-it-matters.md
+
+
+### Simplified Vulnerability Triage with GitLab’s Security Analyst Agent
+Date: 2026-01-06
+Description: Discover how GitLab’s new Security Analyst Agent improves vulnerability triage by streamlining analysis, automation, and collaboration.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/06/vulnerability-triage-made-simple-with-gitlab-security-analyst-agent.md
+
+
+### Fostering User Trust in Agentic AI Tools: Insights from GitLab
+Date: 2026-01-05
+Description: Discover how GitLab is building user trust in AI tools through transparency, consent, and user empowerment. Gain insights and practical strategies to design more reliable and ethical agentic software.
+URL: https://gitlab.consulting/en-gb/blog/2026/01/05/fostering-user-trust-in-agentic-ai-tools-insights-from-gitlab.md
+
+
+### GitLab 18.7 Release: AI Code Suggestions, Compliance Reporting and More
+Date: 2025-12-18
+Description: Discover the top features in GitLab 18.7, including general availability of AI Code Suggestions, compliance reports for PCI DSS and FedRAMP, and improvements to Duo Chat and access control.
+URL: https://gitlab.consulting/en-gb/blog/2025/12/18/gitlab-18-7-released.md
+
+
+### GitLab 18.7: Advancing AI and Automation with GitLab Duo, CI/CD Innovations, and Enhanced Security
+Date: 2025-12-18
+Description: Explore what's new in GitLab 18.7, including the GA release of GitLab Duo Chat, self-managed code suggestions, next-gen CI/CD pipelines, and enhanced developer security and compliance controls.
+URL: https://gitlab.consulting/en-gb/blog/2025/12/18/gitlab-18-7-advancing-ai-automation.md
+
+
+### Boosting Higher Education IT Efficiency by Reducing Tool Sprawl
+Date: 2025-12-15
+Description: Explore how universities can simplify software development, reduce costs, and boost productivity by consolidating tools with GitLab's DevSecOps platform.
+URL: https://gitlab.consulting/en-gb/blog/2025/12/15/taming-tool-sprawl-how-to-boost-university-it-productivity.md
+
+
+### How GitLab Built and Automated its New Japanese Documentation Site
+Date: 2025-12-11
+Description: Discover how GitLab engineered and automated its Japanese documentation site to deliver high-quality DevOps content in local language, powered by CI/CD pipelines and community collaboration.
+URL: https://gitlab.consulting/en-gb/blog/2025/12/11/how-we-built-and-automated-our-new-japanese-gitlab-docs-site.md
+
+
+### Artois University Elevates Curriculum with GitLab Ultimate for Education
+Date: 2025-12-10
+Description: Discover how Artois University modernised its software engineering curriculum by adopting GitLab Ultimate for Education, empowering students with industry-grade DevSecOps capabilities.
+URL: https://gitlab.consulting/en-gb/blog/2025/12/10/artois-university-elevates-curriculum-with-gitlab-ultimate-for-education.md
+
+
+### Beware of Fake GitLab Job Scams Imitating Official Recruiters
+Date: 2025-12-10
+Description: A growing number of fake job scams are impersonating GitLab recruiters. Learn how to identify fraud and stay protected while exploring remote career opportunities.
+URL: https://gitlab.consulting/en-gb/blog/2025/12/10/new-wave-of-fake-job-scams-impersonating-recruiters.md
+
+
+### GitLab 18.6.2 Patch Release Enhances Security and Functionality
+Date: 2025-12-10
+Description: Discover the benefits of GitLab 18.6.2, a critical patch release resolving regressions and boosting platform stability. Now available with support from IDEA GitLab Solutions.
+URL: https://gitlab.consulting/en-gb/blog/2025/12/10/patch-release-gitlab-18-6-2-released.md
+
+
+### Migrating from Azure DevOps to GitLab: A Simplified Future
+Date: 2025-12-03
+Description: Discover how moving to GitLab from Azure DevOps can streamline your development workflows, reduce complexity, and improve software delivery performance.
+URL: https://gitlab.consulting/en-gb/blog/2025/12/03/migration-from-azure-devops-to-gitlab.md
+
+
+### Accelerate Embedded Systems Compliance with GitLab & CodeSonar
+Date: 2025-12-02
+Description: Discover how GitLab and CodeSonar empower embedded software teams to automate regulatory compliance and maintain quality with ease.
+URL: https://gitlab.consulting/en-gb/blog/2025/12/02/automate-embedded-systems-compliance-with-gitlab-and-codesonar.md
+
+
+### Continuously Deploying the Largest GitLab Instance | IDEA GitLab Solutions
+Date: 2025-12-01
+Description: Learn how GitLab achieved continuous deployment on the largest GitLab instance, setting a best-in-class example for DevOps and CD pipelines.
+URL: https://gitlab.consulting/en-gb/blog/2025/12/01/continuously-deploying-the-largest-gitlab-instance.md
+
+
+### GitLab 18.6.1 Patch Release Improves Stability and Fixes Key Bugs
+Date: 2025-11-26
+Description: The GitLab 18.6.1 patch release addresses critical issues in pipelines, authentication, import/export, and Geo. Discover improvements and access GitLab consulting from IDEA GitLab Solutions.
+URL: https://gitlab.consulting/en-gb/blog/2025/11/26/patch-release-gitlab-18-6-1-released.md
+
+
+### Celebrating the 2025 EMEA GitLab Partner Award Winners
+Date: 2025-11-24
+Description: Explore the success of GitLab's top performers in the EMEA region for 2025, highlighting innovation, collaboration, and customer value recognition.
+URL: https://gitlab.consulting/en-gb/blog/2025/11/24/meet-the-2025-emea-gitlab-partner-award-winners.md
+
+
+### GitLab Discovers Widespread npm Supply Chain Attack
+Date: 2025-11-24
+Description: GitLab Threat Insights reveals extensive and automated npm supply chain attack aimed at exfiltrating developer credentials through malicious JavaScript packages.
+URL: https://gitlab.consulting/en-gb/blog/2025/11/24/gitlab-discovers-widespread-npm-supply-chain-attack.md
+
+
+### GitLab 18.6 Release Highlights – From Configuration to Full Control
+Date: 2025-11-20
+Description: Explore what's new in GitLab 18.6, from simplified group inheritance and smarter CI pipelines to advanced observability and compliance features. Take control with GitLab and IDEA GitLab Solutions.
+URL: https://gitlab.consulting/en-gb/blog/2025/11/20/gitlab-18-6-from-configuration-to-control.md
+
+
+### GitLab 18.6: Enhanced Merge Request Reviews, Dependency Management & AI Capabilities
+Date: 2025-11-20
+Description: Explore what's new in GitLab 18.6 – including streamlined merge request reviews, improved dependency management, and advanced generative AI features to accelerate DevSecOps workflows.
+URL: https://gitlab.consulting/en-gb/blog/2025/11/20/gitlab-18-6-released.md
+
+
+### How AI Transformed a GitLab Engineer’s Onboarding Experience
+Date: 2025-11-17
+Description: Discover how a new engineer at GitLab significantly improved their onboarding experience using AI tools built into the GitLab platform.
+URL: https://gitlab.consulting/en-gb/blog/2025/11/17/gitlab-engineer-how-i-improved-my-onboarding-experience-with-ai.md
+
+
+### What’s New in Git 2.52
+Date: 2025-11-17
+Description: Discover the latest features, performance improvements, and quality-of-life updates in Git 2.52. Learn how these enhancements can improve your developer workflows.
+URL: https://gitlab.consulting/en-gb/blog/2025/11/17/whats-new-in-git-2-52-0.md
+
+
+### GitLab 18.5.2 Patch Release Fixes Login and Import Issues
 Date: 2025-11-12
-Description: Explore the latest security and performance updates in GitLab 18.5.2. Learn more about what’s fixed and how to stay secure with this patch release.
+Description: Discover what's fixed in GitLab 18.5.2, including LDAP login troubles and import issues. Upgrade now with help from IDEA GitLab Solutions.
 URL: https://gitlab.consulting/en-gb/blog/2025/11/12/patch-release-gitlab-18-5-2-released.md
 
 

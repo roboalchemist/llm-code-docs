@@ -34,10 +34,10 @@ We'll start with developing a search application, so we'll focus on the news con
 Let's start by downloading the data. The `news` sample app directory will be our starting point. We've included a script to download the data for us:
 
 ```
-$ ./bin/download-mind.sh demo
+$ ./bin/download-mind.sh small
 ```
 
-The argument defines which dataset to download. Here, we download the `demo`dataset, but `small` and `large` are valid options. Both the training and validation parts are downloaded to a directory called `mind`. The `demo`dataset is around 27 Mb. Both `train` and `dev` datasets will be downloaded.
+The argument defines which dataset to download. Here, we download the `small`dataset, but `small` and `large` are valid options. Both the training and validation parts are downloaded to a directory called `mind`. Both `train` and `dev` datasets will be downloaded.
 
 Taking a look at the data, in `mind/train/news.tsv`, we see tab-separated lines like the following:
 
@@ -198,7 +198,7 @@ The argument is where to find the downloaded data above, which was in the`mind` 
 $ vespa feed mind/vespa.json --target http://localhost:8080
 ```
 
-`vespa feed` reads a JSON array of document operations, or JSONL with one Vespa document JSON formatted operation per line. Once the feed job finishes, all our 28 603 documents are searchable, let us do a quick query to verify:
+`vespa feed` reads a JSON array of document operations, or JSONL with one Vespa document JSON formatted operation per line. Once the feed job finishes, all our 65 238 documents are searchable, let us do a quick query to verify:
 
 ```
 $ vespa query -v 'yql=select * from news where true' 'hits=0'
@@ -312,7 +312,7 @@ Search for "music" in the default fieldset, boost documents with festival in the
 
 We now have a Vespa application running with searchable data. In the [next part of the tutorial](news-3-searching.html), we'll explore searching with sorting, grouping, and ranking results.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

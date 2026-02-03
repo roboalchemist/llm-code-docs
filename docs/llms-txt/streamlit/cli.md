@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/cli
+
 # Command-line options
 
 When you install Streamlit, a command-line (CLI) tool gets installed as well. The purpose of this tool is to run Streamlit apps, change Streamlit configuration options, and help you diagnose and fix issues.

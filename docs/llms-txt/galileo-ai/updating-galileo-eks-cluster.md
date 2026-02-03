@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/deployments/deploying-galileo-eks/updating-galileo-eks-cluster.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Updating Cluster
 
 > Galileo EKS cluster update from 1.21 -> 1.23

@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/features/failure-callback.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Overview
 
 When you define a workflow endpoint, you can attach a failure function to the workflow that allows you to execute custom logic when a workflow run fails after exhausting all retry attempts.
@@ -95,20 +99,3 @@ The `failureFunction` receives an object with the following parameters:
 <ParamField body="failHeaders" type="number">
   The response headers returned by the failed workflow step.
 </ParamField>
-
-## Configuration
-
-You can enable failure function for a workflow run when starting it:
-
-```typescript Configure Retry Attempt Count theme={"system"}
-import { Client } from "@upstash/workflow";
-
-const client = new Client({ token: "<QSTASH_TOKEN>" })
-
-const { workflowRunId } = await client.trigger({
-  url: "https://<YOUR_WORKFLOW_ENDPOINT>/<YOUR-WORKFLOW-ROUTE>",
-  // 👇 Activates the failure function execution if it is defined
-  useFailureFunction: true,
-  keepTriggerConfig: true,
-})
-```

@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/llamb/regression-testing/faqs.md
 
-# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/add-user-intent/faqs.md
-
-# Source: https://docs.avaamo.com/user-guide/llamb/regression-testing/faqs.md
-
 # FAQ's
 
 **1. What happens if an incorrect input file is uploaded for testing?**

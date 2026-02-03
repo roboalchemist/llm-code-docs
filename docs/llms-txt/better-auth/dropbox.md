@@ -4,11 +4,7 @@
 
 Dropbox provider setup and usage.
 
-***
 
-title: Dropbox
-description: Dropbox provider setup and usage.
-----------------------------------------------
 
 <Steps>
   <Step>

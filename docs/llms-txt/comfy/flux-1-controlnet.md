@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/flux/flux-1-controlnet.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Flux.1 ControlNet Examples
 
 > This guide will demonstrate workflow examples using Flux.1 ControlNet.
@@ -42,6 +46,10 @@ We will use the full version of **FLUX.1-Canny-dev** and **FLUX.1-Depth-dev-lora
 </Tip>
 
 ## FLUX.1-Canny-dev Complete Version Workflow
+
+<a className="prose" target="_blank" href="https://cloud.comfy.org/?template=flux_canny_model_example&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28a745', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
 
 ### 1. Workflow and Asset
 
@@ -107,6 +115,10 @@ Or use the following custom nodes to complete image preprocessing:
 * [ComfyUI ControlNet aux](https://github.com/Fannovel16/comfyui_controlnet_aux)
 
 ## FLUX.1-Depth-dev-lora Workflow
+
+<a className="prose" target="_blank" href="https://cloud.comfy.org/?template=flux_depth_lora_example&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28a745', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
 
 The LoRA version workflow builds on the complete version by adding the LoRA model. Compared to the [complete version of the Flux workflow](/tutorials/flux/flux-1-text-to-image), it adds nodes for loading and using the corresponding LoRA model.
 

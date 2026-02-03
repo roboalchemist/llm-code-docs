@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/getting-started/integration-method/perplexity.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Perplexity AI Integration
 
 > Connect Helicone with Perplexity AI, a platform that provides powerful language models including Sonar and Sonar Pro for various AI applications.

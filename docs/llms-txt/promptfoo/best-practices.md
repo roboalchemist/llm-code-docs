@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/troubleshooting/best-practices/
+
 # Best Practices for Configuring AI Red Teaming
 
 To successfully use AI red teaming automation, you **must** provide rich application context and a diverse set of attack strategies.

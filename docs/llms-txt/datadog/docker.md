@@ -1,3 +1,21 @@
+# Source: https://docs.datadoghq.com/security/workload_protection/setup/agent/docker.md
+
+# Source: https://docs.datadoghq.com/security/cloud_security_management/setup/agent/docker.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/python/docker.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/php/docker.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/nodejs/docker.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/java/docker.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/ruby/docker.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/dotnet/docker.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/docker.md
+
 # Source: https://docs.datadoghq.com/containers/docker.md
 
 # Source: https://docs.datadoghq.com/cloudprem/install/docker.md
@@ -10,7 +28,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Single Step APM Instrumentation >
   Single Step APM Instrumentation on Docker
-source_url: https://docs.datadoghq.com/trace_collection/single-step-apm/docker/index.html
 ---
 
 # Single Step APM Instrumentation on Docker

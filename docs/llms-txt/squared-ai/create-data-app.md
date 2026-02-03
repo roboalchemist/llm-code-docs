@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/activation/data-apps/visualizations/create-data-app.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create a Data App
 
 > Step-by-step guide to building and configuring a Data App in AI Squared.

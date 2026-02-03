@@ -4,16 +4,17 @@
 
 Better Auth Plugin for Autumn Billing
 
-***
 
-title: Autumn Billing
-description: Better Auth Plugin for Autumn Billing
---------------------------------------------------
 
 import { HomeIcon } from "lucide-react";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
 [Autumn](https://useautumn.com) is open source infrastructure to run SaaS pricing plans. It sits between your app and Stripe, and acts as the database for your customers' subscription status, usage metering and feature permissions.
+
+<Callout>
+  This plugin is maintained by the Autumn team. For bugs, issues or feature requests,
+  please visit the [Autumn GitHub repo](https://github.com/useautumn/autumn).
+</Callout>
 
 <Card href="https://discord.gg/STqxY92zuS" title="Get help on Autumn's Discord">
   We're online to help you with any questions you have.
@@ -37,7 +38,7 @@ import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
   <Step>
     ### Install Autumn SDK
 
-    <CodeBlockTabs defaultValue="npm">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
       <CodeBlockTabsList>
         <CodeBlockTabsTrigger value="npm">
           npm

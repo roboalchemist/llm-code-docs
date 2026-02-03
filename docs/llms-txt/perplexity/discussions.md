@@ -1,4 +1,8 @@
-# Source: https://docs.perplexity.ai/discussions/discussions.md
+# Source: https://docs.perplexity.ai/docs/resources/discussions.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Get in Touch
 
@@ -74,6 +78,6 @@
   </Step>
 
   <Step title="Get Featured">
-    Exceptional projects may be featured in our newsletter, blog, social media channels, and our [Cookbook Community Showcase](/cookbook/showcase/briefo). Let us amplify your work to thousands of developers and AI enthusiasts!
+    Exceptional projects may be featured in our newsletter, blog, social media channels, and our [Cookbook Community Showcase](/docs/cookbook/showcase/briefo). Let us amplify your work to thousands of developers and AI enthusiasts!
   </Step>
 </Steps>

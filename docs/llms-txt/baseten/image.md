@@ -1,24 +1,26 @@
 # Source: https://docs.baseten.co/reference/cli/truss/image.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # truss image
 
-> Subcommands for truss image.
+> Build and manage Truss Docker images.
 
-```
+```sh  theme={"system"}
 truss image [OPTIONS] COMMAND [ARGS]...
 ```
 
-### Options
+Build and manage Docker images for your Truss.
 
-<ParamField body="--help">
-  Show help message and exit.
-</ParamField>
+***
 
-## truss image build
+## `build`
 
-Builds the docker image for a Truss.
+Build the Docker image for a Truss.
 
-```
+```sh  theme={"system"}
 truss image build [OPTIONS] [TARGET_DIRECTORY] [BUILD_DIR]
 ```
 
@@ -28,76 +30,108 @@ truss image build [OPTIONS] [TARGET_DIRECTORY] [BUILD_DIR]
   Docker image tag.
 </ParamField>
 
-<ParamField body="--help">
-  Show help message and exit.
-</ParamField>
-
 ### Arguments
 
-<ParamField body="TARGET_DIRECTORY" type="Optional">
-  A Truss directory. If none, use current directory.
+<ParamField body="TARGET_DIRECTORY" type="TEXT">
+  A Truss directory. Defaults to current directory.
 </ParamField>
 
-<ParamField body="BUILD_DIR" type="Optional">
-  Image context. If none, a temp directory is created.
+<ParamField body="BUILD_DIR" type="TEXT">
+  Image context directory. If not provided, a temp directory is created.
 </ParamField>
 
-## truss image build-context
+**Example:**
 
-Create a docker build context for a Truss.
+To build a Docker image for your Truss, use the following:
 
+```sh  theme={"system"}
+truss image build
 ```
+
+To build with a custom tag, use the following:
+
+```sh  theme={"system"}
+truss image build --tag my-model:v1
+```
+
+***
+
+## `build-context`
+
+Create a Docker build context for a Truss without building the image.
+
+```sh  theme={"system"}
 truss image build-context [OPTIONS] BUILD_DIR [TARGET_DIRECTORY]
 ```
 
-### Options
-
-<ParamField body="--help">
-  Show help message and exit.
-</ParamField>
-
 ### Arguments
 
-<ParamField body="BUILD_DIR" type="Optional">
-  Folder where image context is built for Truss.
+<ParamField body="BUILD_DIR" type="TEXT" required>
+  Directory where image context is created.
 </ParamField>
 
-<ParamField body="TARGET_DIRECTORY" type="Optional">
-  A Truss directory. If none, use current directory.
+<ParamField body="TARGET_DIRECTORY" type="TEXT">
+  A Truss directory. Defaults to current directory.
 </ParamField>
 
-## truss image run
+**Example:**
 
-Runs the docker image for a Truss.
+To create a build context in a specific directory, use the following:
 
+```sh  theme={"system"}
+truss image build-context ./build-context
 ```
+
+***
+
+## `run`
+
+Run the Docker image for a Truss locally.
+
+```sh  theme={"system"}
 truss image run [OPTIONS] [TARGET_DIRECTORY] [BUILD_DIR]
 ```
 
 ### Options
 
 <ParamField body="--tag" type="TEXT">
-  Docker build image tag.
+  Docker image tag to run.
 </ParamField>
 
 <ParamField body="--port" type="INTEGER">
-  Local port used to run image.
+  Local port to expose the model on.
 </ParamField>
 
 <ParamField body="--attach">
-  Flag for attaching the process.
-</ParamField>
-
-<ParamField body="--help">
-  Show help message and exit.
+  Attach to the container process.
 </ParamField>
 
 ### Arguments
 
-<ParamField body="TARGET_DIRECTORY" type="Optional">
-  A Truss directory. If none, use current directory.
+<ParamField body="TARGET_DIRECTORY" type="TEXT">
+  A Truss directory. Defaults to current directory.
 </ParamField>
 
-<ParamField body="BUILD_DIR" type="Optional">
-  Image context. If none, a temp directory is created.
+<ParamField body="BUILD_DIR" type="TEXT">
+  Image context directory. If not provided, a temp directory is created.
 </ParamField>
+
+**Example:**
+
+To build and run a Truss locally, use the following:
+
+```sh  theme={"system"}
+truss image run
+```
+
+To run on a specific port, use the following:
+
+```sh  theme={"system"}
+truss image run --port 8080
+```
+
+To run in attached mode, use the following:
+
+```sh  theme={"system"}
+truss image run --attach
+```

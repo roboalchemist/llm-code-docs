@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/features/integrations/fernand.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Polar Integration in Fernand
 
 > Learn how to sync customer and payment data from Polar to Fernand.

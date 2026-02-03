@@ -99,11 +99,10 @@ const financialAccount = await stripe.treasury.financialAccounts.retrieve(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.TreasuryFinancialAccountRetrieveParams{
-  FinancialAccount: stripe.String("{{TREASURYFINANCIALACCOUNT_ID}}"),
-}
+params := &stripe.TreasuryFinancialAccountRetrieveParams{}
 params.SetStripeAccount("{{CONNECTEDACCOUNT_ID}}")
-result, err := sc.V1TreasuryFinancialAccounts.Retrieve(context.TODO(), params)
+result, err := sc.V1TreasuryFinancialAccounts.Retrieve(
+  context.TODO(), "{{TREASURYFINANCIALACCOUNT_ID}}", params)
 ```
 
 ```dotnet
@@ -140,11 +139,11 @@ If successful, the response is a [FinancialAccount](https://docs.stripe.com/api/
 
 ### Negative balances and overdrafts 
 
-If your connected account has a negative balance (for example, if your financial account receives an ACH credit that gets reversed), you’re responsible for restoring it to 0 USD. After 180 days of staying negative, Stripe debits your platform. We also contact you if individual or aggregate balances exceed our risk limits.
+If your connected account has a negative balance (for example, if your financial account receives an ACH credit that gets reversed), you’re responsible for restoring it to 0 USD. When a connected account’s financial account balance goes negative, Stripe immediately holds an equivalent reserve on your platform’s [connected reserve balance](https://docs.stripe.com/connect/account-balances.md#understanding-connected-reserve-balances) (funded from your platform’s [payments balance](https://docs.stripe.com/payments/balances.md#payments-balance)). This reserve automatically releases as the negative balance is reduced. Stripe contacts you if individual or aggregate balances exceed our risk limits.
 
 We recommend that you monitor your connected accounts to retrieve funds for their negative balances. You can top up funds into your financial account using [Inbound Transfers](https://docs.stripe.com/financial-accounts/connect/moving-money/into/inbound-transfers.md) or [Stripe Payouts](https://docs.stripe.com/financial-accounts/connect/moving-money/payouts.md). Make sure that you regularly monitor your connected account balances and reach out promptly.
 
-After a financial account has been negative for 180 days, Stripe debits funds from your platform’s financial account and emails you ahead of time. If the transfer fails due to insufficient funds, Stripe contacts you with next steps.
+After a financial account has been negative for 180 days, Stripe remediates the negative balance by moving funds from the platform reserve to cover the negative balance and bring the financial account back to zero.
 
 ## Transactions
 
@@ -245,9 +244,9 @@ const transaction = await stripe.treasury.transactions.retrieve(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.TreasuryTransactionRetrieveParams{ID: stripe.String("txn_123")}
+params := &stripe.TreasuryTransactionRetrieveParams{}
 params.SetStripeAccount("{{CONNECTEDACCOUNT_ID}}")
-result, err := sc.V1TreasuryTransactions.Retrieve(context.TODO(), params)
+result, err := sc.V1TreasuryTransactions.Retrieve(context.TODO(), "txn_123", params)
 ```
 
 ```dotnet
@@ -763,11 +762,10 @@ const transactionEntry = await stripe.treasury.transactionEntries.retrieve(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.TreasuryTransactionEntryRetrieveParams{
-  ID: stripe.String("{{TRANSACTION_ENTRY_ID}}"),
-}
+params := &stripe.TreasuryTransactionEntryRetrieveParams{}
 params.SetStripeAccount("{{CONNECTEDACCOUNT_ID}}")
-result, err := sc.V1TreasuryTransactionEntries.Retrieve(context.TODO(), params)
+result, err := sc.V1TreasuryTransactionEntries.Retrieve(
+  context.TODO(), "{{TRANSACTION_ENTRY_ID}}", params)
 ```
 
 ```dotnet

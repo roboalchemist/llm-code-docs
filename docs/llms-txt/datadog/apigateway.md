@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Tracing a Proxy > Instrumenting
   Amazon API Gateway
-source_url: https://docs.datadoghq.com/trace_collection/proxy_setup/apigateway/index.html
 ---
 
 # Instrumenting Amazon API Gateway

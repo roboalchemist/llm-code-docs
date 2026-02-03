@@ -4,17 +4,9 @@
 
 # Source: https://docs.unstructured.io/api-reference/workflow/sources/salesforce.md
 
-# Source: https://docs.unstructured.io/ui/sources/salesforce.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/source-connectors/salesforce.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/sources/salesforce.md
-
-# Source: https://docs.unstructured.io/ui/sources/salesforce.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/source-connectors/salesforce.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/sources/salesforce.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Salesforce
 
@@ -46,8 +38,7 @@
   After you create the source connector, add it along with a
   [destination connector](/api-reference/workflow/destinations/overview) to a [workflow](/api-reference/workflow/overview#workflows).
   Then run the worklow as a [job](/api-reference/workflow/overview#jobs). To learn how, try out the
-  [hands-on Workflow Endpoint quickstart](/api-reference/workflow/overview#quickstart),
-  go directly to the [quickstart notebook](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Unstructured_Platform_Workflow_Endpoint_Quickstart.ipynb),
+  the notebook [Dropbox-To-Pinecone Connector API Quickstart for Unstructured](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Dropbox_To_Pinecone_Connector_Quickstart.ipynb),
   or watch the two 4-minute video tutorials for the [Unstructured Python SDK](/api-reference/workflow/overview#unstructured-python-sdk).
 
   You can also create source connectors with the Unstructured user interface (UI).

@@ -6,7 +6,7 @@ title: What is NEAR?
 description: "A scalable and secure chain with an amazing developer experience"
 ---
 
-NEAR is a **user-friendly** and [**carbon-neutral**](https://near.org/blog/near-climate-neutral-product/) blockchain, built to be [fast, secure, and infinitely scalable](https://www.leewayhertz.com/comparison-of-blockchain-protocols#Parallel-comparison-of-various-blockchain-networks).It offers a simple user experience with named accounts, low fees, and a robust developer ecosystem.
+NEAR is a **user-friendly** and [**carbon-neutral**](https://near.org/blog/near-climate-neutral-product/) blockchain, built to be [fast, secure, and infinitely scalable](https://www.leewayhertz.com/comparison-of-blockchain-protocols#Parallel-comparison-of-various-blockchain-networks). It offers a simple user experience with named accounts, low fees, and a robust developer ecosystem.
 
 ![img](/assets/docs/welcome-pages/1.near-protocol.png)
 
@@ -37,7 +37,7 @@ NEAR is a technical marvel, offering built-in features such as named accounts an
 ### ⭐ Simple to Use
 
 1. Use [**named accounts**](./account-model.md) like `alice.near`
-2. Simple sign-up: make an account using [email](https://dev.near.org/signup) or [telegram](https://web.telegram.org/k/#@herewalletbot)
+2. Simple sign-up: create an [account for free](../tutorials/protocol/create-account.md), login [with socials](../web3-apps/tutorials/wallet-login.md) or [telegram](https://web.telegram.org/k/#@herewalletbot)
 3. Transactions are **fast** _(~1.3s finality)_ and **cheap** _(< 1¢ in fees)_
 4. You don't need to buy crypto thanks to **built-in account abstraction**
 5. [Access Keys](./access-keys.md) make it safe and easy to use
@@ -47,7 +47,7 @@ NEAR is a technical marvel, offering built-in features such as named accounts an
 
 1. 5 years of **100% uptime** and [**4 Billion** transactions](https://pikespeak.ai/near-world/overview) processed
 2. NEAR has sustained peaks of [>13M transactions](https://pikespeak.ai/near-world/overview) in a single day
-3. NEAR is home to decentralized apps with [millions of users](https://dappradar.com/rankings?range=30d):
+3. NEAR is home to decentralized apps with [millions of users](https://dappradar.com/rankings/protocol/near?sort=uawCount&order=desc&range=30d):
     - [Kai-ching](https://cosmose.ai/)
     - [Sweat](https://sweateconomy.com/)
     - [Hot Wallet](https://t.me/herewalletbot/)

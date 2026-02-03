@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/deployment-testing/configuration/datafold-ci/on-demand.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Running Data Diff for Specific PRs/MRs
 
 > By default, Datafold CI runs on every new pull/merge request and commits to existing ones.

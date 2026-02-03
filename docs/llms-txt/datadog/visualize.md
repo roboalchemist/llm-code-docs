@@ -4,7 +4,6 @@
 title: Span Visualizations
 description: View spans in a list, or aggregate spans into timeseries, top lists and more.
 breadcrumbs: Docs > APM > Trace Explorer > Span Visualizations
-source_url: https://docs.datadoghq.com/trace_explorer/visualize/index.html
 ---
 
 # Span Visualizations

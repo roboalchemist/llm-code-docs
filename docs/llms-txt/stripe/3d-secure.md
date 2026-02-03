@@ -4,9 +4,7 @@
 
 Learn about 3D Secure, an additional layer of authentication used by businesses to combat fraud.
 
-## How 3D Secure works
-
-*3D Secure (3DS)* (3D Secure (3DS) provides an additional layer of authentication for credit card transactions that protects businesses from liability for fraudulent card payments) uses multi-factor authentication to reduce fraud for online transactions where a card isn’t physically present. 3DS is triggered by businesses in online checkout flows, and requires multi-factor authentication (usually through SMS or email-based one-time passcode that Stripe sends) to complete.
+3D Secure (3DS) uses multi-factor authentication to reduce fraud for online transactions where a card isn’t physically present. 3DS is triggered by businesses in online checkout flows, and requires multi-factor authentication (usually through SMS or email-based one-time passcode that Stripe sends) to complete.
 
 ## Example of a 3D Secure flow
 ![A Stripe checkout page with the payment information filled out, including the Pay button](https://b.stripecdn.com/docs-statics-srv/assets/3ds-flow-1-checkout-page.039294e0dee3a6dede8ea8a32185aae5.png)
@@ -26,16 +24,27 @@ In most cases, businesses are responsible for online fraud losses in card-not-pr
 
 When a business triggers 3DS verification, liability for fraud shifts from the business to the issuer in most cases. This applies whether or not your Issuing cards are enrolled in 3DS, meaning issuers can take on increased liability without any additional verification.
 
-## 3DS Enrollment
+## 3DS enrollment
 
-- **US**: 3DS enrollment in the US is optional, and your cards won’t be enrolled in 3DS unless you contact support to request enrollment. As part of our [best practices](https://docs.stripe.com/issuing/manage-fraud.md) for managing transaction fraud, we recommend enrolling your cards in 3DS early in your Issuing program’s life cycle. While enrollment does increase friction for a subset of your cardholder transactions, it helps to significantly reduce the risk of potential losses because of transaction fraud with online, card-not-present transactions. After you request enrollment, we enroll all active cards associated with your account and automatically enroll all cards created going forward.
-  - Cardholders without a phone number or email on file won’t be enrolled in 3DS. After requesting enrollment, you can add contact information to [Cardholder objects](https://docs.stripe.com/api/issuing/cardholders/object.md) to enroll those cards. Conversely, removing the contact info for a cardholder results in the card being unenrolled from 3DS.
-- **UK and EU**: Upon creation, cards are enrolled in 3DS by default because of local regulations.
-  - To allow the implementation of SCA over 3DS and comply with local regulations, all cards issued within the EU and UK require a valid phone number on file for the relevant [cardholder](https://docs.stripe.com/api.md#create_issuing_cardholder).
+Depending on your location, 3DS enrollment is either optional and opt-in or required and enabled by default.
 
-> When you update a cardholder’s phone number or email address, we automatically re-enroll the card with the updated contact information. You don’t need to manually re-enroll the card.
+### US
 
-## 3DS Authentication
+3DS enrollment in the US is optional, and your cards aren’t enrolled in 3DS unless you contact support to request enrollment. While enrollment does increase friction for a subset of your cardholder transactions, it helps to significantly reduce the risk of potential losses because of transaction fraud with online, card-not-present transactions. As part of our [best practices](https://docs.stripe.com/issuing/manage-fraud.md) for managing transaction fraud, we recommend enrolling your cards in 3DS early in your Issuing program’s life cycle.
+
+After you request enrollment, we enroll all active cards associated with your account and automatically enroll all cards created going forward.
+
+Cardholders without a phone number or email on file aren’t enrolled in 3DS. After requesting enrollment, add contact information to [Cardholder objects](https://docs.stripe.com/api/issuing/cardholders/object.md) to enroll those cards. Conversely, removing the contact info for a cardholder results in the card being unenrolled from 3DS.
+
+When you update a cardholder’s phone number or email address, we automatically re-enroll the card with the updated contact information. You don’t need to manually re-enroll the card.
+
+### UK and EU
+
+After creation, cards are enrolled in 3DS by default because of local regulations. To allow the implementation of SCA over 3DS and comply with local regulations, all cards issued within the EU and UK require a valid phone number on file for the relevant [cardholder](https://docs.stripe.com/api.md#create_issuing_cardholder).
+
+When you update a cardholder’s phone number or email address, we automatically re-enroll the card with the updated contact information. You don’t need to manually re-enroll the card.
+
+## 3DS authentication
 
 When a 3DS authentication request comes through for your [cardholder](https://docs.stripe.com/api.md#create_issuing_cardholder), Stripe sends them either a text message or an email containing a one-time verification code.
 
@@ -265,7 +274,7 @@ Certain types of low-risk payments might be exempt from SCA. Exemptions limit fr
 | transaction_risk_analysis (US only) | An issuer (such as Stripe) can do a real-time risk analysis to determine whether or not to claim a low-risk exemption to a transaction.                                                                                                                                                                                                                                   |
 | low_value_transaction               | Transactions below 30 GBP/EUR (or equivalent converted amount) are considered “low value” and might be exempt from SCA. If the exemption has been used five times since the cardholder’s last successful authentication or if the sum of previously exempted payments exceeds 100 GBP or EUR, then the exemption doesn’t apply, and the cardholder must be authenticated. |
 
-> Acquirers can also request exemptions, and Stripe might honor them. In these scenarios, loss liability stays with the acquirer and doesn’t shift to the issuer.
+Acquirers can also request exemptions, and Stripe might honor them. In these scenarios, loss liability stays with the acquirer and doesn’t shift to the issuer.
 
 When an issuer-claimed exemption is applied, the [Authorization object](https://docs.stripe.com/api/issuing/authorizations.md) looks like this:
 
@@ -303,11 +312,13 @@ Conversely, when an acquirer-claimed exemption is applied, the [Authorization ob
 
 If you’re based in the UK or EU and your use case only requires virtual cards, you can contact Stripe Support to discuss whether a Secure Corporate Payment (SCP) exemption is applicable to your program.
 
-## Managing fraud through 3DS 
+## Manage fraud through 3DS 
 
 Stripe includes details about a 3DS attempt through the API in the authorization endpoint. Use the `three_d_secure` hash in the [verification_data](https://docs.stripe.com/api/issuing/authorizations/object.md#issuing_authorization_object-verification_data) hash to determine if an authorization was successfully authenticated. If you maintain your own authorization logic, we suggest using these values as key inputs that determine whether to approve or reject an authorization.
 
 Additionally, if the business didn’t attempt 3DS, the `three_d_secure` field is null. If 3DS was exempted, then the `authentication_exemption` is present and the `three_d_secure` field is null. An authorization can’t contain both `three_d_secure` and `authentication_exemption`.
+
+If the authentication fails, Stripe automatically denies the authorization to protect against fraudulent transactions. No action is required.
 
 You can find guidelines on what the values represent and how you can use them to combat fraud in the table below.
 
@@ -317,15 +328,13 @@ You can find guidelines on what the values represent and how you can use them to
 | authenticated        | The shopper was successfully verified as the cardholder as they entered the correct verification code sent to their phone. The online purchase was legitimate and not fraudulent.                                | Approve the transaction.                                                               |
 | required             | The authorization was declined because regulatory requirements mandated an authentication for this transaction but it wasn’t submitted correctly by the merchant, and they didn’t claim an applicable exemption. | Decline the transaction.                                                               |
 
-> If the authentication fails, Stripe automatically denies the authorization to protect against fraudulent transactions. No action is required.
-
-## How to test 3DS 
+## Test 3DS 
 
 To test 3D Secure functionality, use the Checkout Sessions API.
 
 The response includes a URL to a Stripe-hosted payment page where you can enter your issued card details to attempt a payment.
 
-> At the moment, 3DS testing is only available in livemode. For the following example, replace the API key with your livemode API key.
+3DS testing is only available in livemode. For the following example, replace the API key with your livemode API key.
 
 ### Create a Checkout Session
 
@@ -571,4 +580,4 @@ This creates a Checkout Session and returns a response containing a URL to a Str
 }
 ```
 
-> A 3DS challenge still isn’t guaranteed even though you set `request_three_d_secure` to `challenge`. If a challenge doesn’t occur, attempt another purchase with a greater `unit_amount`.
+A 3DS challenge still isn’t guaranteed even when you set `request_three_d_secure` to `challenge`. If a challenge doesn’t occur, attempt another purchase with a greater `unit_amount`.

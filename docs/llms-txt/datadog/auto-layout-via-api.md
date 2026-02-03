@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Advanced > Automate Snapshots of Cloud
   Accounts via the Cloudcraft API
-source_url: https://docs.datadoghq.com/advanced/auto-layout-via-api/index.html
 ---
 
 # Automate Snapshots of Cloud Accounts via the Cloudcraft API

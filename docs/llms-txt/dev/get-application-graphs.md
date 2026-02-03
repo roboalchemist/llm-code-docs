@@ -1,105 +1,74 @@
 # Source: https://dev.writer.com/api-reference/application-api/get-application-graphs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve graphs
 
 > Retrieve Knowledge Graphs associated with a no-code agent that has chat capabilities.
 
+<Info>No-code applications are now called [no-code agents](/no-code/introduction). The [Applications API](api-reference/application-api/applications), which you can use to programmatically interact with no-code agents, still uses the term `application` to minimize breaking changes.</Info>
+
+
 ## OpenAPI
 
 ````yaml get /v1/applications/{application_id}/graphs
+openapi: 3.0.3
+info:
+  title: API
+  version: '1.0'
+servers:
+  - url: https://api.writer.com
+security:
+  - bearerAuth: []
 paths:
-  path: /v1/applications/{application_id}/graphs
-  method: get
-  servers:
-    - url: https://api.writer.com
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                Bearer authentication header of the form `Bearer <token>`, where
-                `<token>` is your [Writer API
-                key](https://dev.writer.com/api-reference/api-keys).
-          cookie: {}
-    parameters:
-      path:
-        application_id:
+  /v1/applications/{application_id}/graphs:
+    get:
+      tags:
+        - template
+      summary: Retrieve graphs
+      description: >-
+        Retrieve Knowledge Graphs associated with a no-code agent that has chat
+        capabilities.
+      parameters:
+        - name: application_id
+          in: path
+          description: The ID of the no-code agent for which to retrieve Knowledge Graphs.
+          required: true
           schema:
-            - type: string
-              required: true
-              description: >-
-                The ID of the no-code agent for which to retrieve Knowledge
-                Graphs.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - lang: cURL
-        source: >-
-          curl --location --request GET
-          https://api.writer.com/v1/applications/{application_id}/graphs \
-           --header "Authorization: Bearer <token>"
-      - lang: JavaScript
-        source: |-
-          import Writer from 'writer-sdk';
-
-          const client = new Writer({
-            apiKey: process.env['WRITER_API_KEY'], // This is the default and can be omitted
-          });
-
-          async function main() {
-            const applicationGraphsResponse = await client.applications.graphs.list('application_id');
-
-            console.log(applicationGraphsResponse.graph_ids);
-          }
-
-          main();
-      - lang: Python
-        source: |-
-          import os
-          from writerai import Writer
-
-          client = Writer(
-              api_key=os.environ.get("WRITER_API_KEY"),  # This is the default and can be omitted
-          )
-          application_graphs_response = client.applications.graphs.list(
-              "application_id",
-          )
-          print(application_graphs_response.graph_ids)
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              graph_ids:
-                allOf:
-                  - type: array
-                    description: >-
-                      A list of Knowledge Graphs associated with the
-                      application.
-                    items:
-                      type: string
-                      format: uuid
-            title: application_graphs_response
-            refIdentifier: '#/components/schemas/application_graphs_response'
-            requiredProperties:
-              - graph_ids
-        examples:
-          example:
-            value:
-              graph_ids:
-                - 3c90c3cc-0d44-4b50-8888-8dd25736052a
-        description: Successful
-  deprecated: false
-  type: path
+            type: string
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/application_graphs_response'
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  schemas:
+    application_graphs_response:
+      title: application_graphs_response
+      required:
+        - graph_ids
+      type: object
+      properties:
+        graph_ids:
+          type: array
+          description: A list of Knowledge Graphs associated with the application.
+          items:
+            type: string
+            format: uuid
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >-
+        Bearer authentication header of the form `Bearer <token>`, where
+        `<token>` is your [Writer API
+        key](https://dev.writer.com/api-reference/api-keys).
 
 ````

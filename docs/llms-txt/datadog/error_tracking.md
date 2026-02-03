@@ -6,7 +6,6 @@
 title: Error Tracking
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Error Tracking
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Error Tracking

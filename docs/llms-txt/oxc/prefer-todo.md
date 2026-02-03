@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/prefer-todo.md
 ---
-# jest/prefer-todo&#x20;
 
 ### What it does
 

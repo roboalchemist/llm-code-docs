@@ -4,12 +4,6 @@
 
 # Source: https://mui.com/x/react-tree-view/simple-tree-view/customization.md
 
-# Source: https://mui.com/x/react-data-grid/filtering/customization.md
-
-# Source: https://mui.com/x/react-tree-view/rich-tree-view/customization.md
-
-# Source: https://mui.com/x/react-tree-view/simple-tree-view/customization.md
-
 ---
 productId: x-tree-view
 title: Simple Tree View - Customization

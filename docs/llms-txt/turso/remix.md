@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/sdk/ts/guides/remix.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Remix + Turso
 
 > Set up Turso in your Remix project in minutes

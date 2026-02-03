@@ -1,22 +1,6 @@
 # Source: https://docs.avaamo.com/user-guide/quick-start-tutorials/pre-requisites.md
 
-# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/files/pre-requisites.md
-
-# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/website/pre-requisites.md
-
-# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/servicenow/pre-requisites.md
-
-# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/sharepoint/pre-requisites.md
-
-# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/files/pre-requisites.md
-
-# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/website/pre-requisites.md
-
-# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/servicenow/pre-requisites.md
-
-# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/sharepoint/pre-requisites.md
-
-# Source: https://docs.avaamo.com/user-guide/quick-start-tutorials/pre-requisites.md
+# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/confluence/pre-requisites.md
 
 # Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/files/pre-requisites.md
 
@@ -25,6 +9,8 @@
 # Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/servicenow/pre-requisites.md
 
 # Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/sharepoint/pre-requisites.md
+
+# Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/confluence/pre-requisites.md
 
 # Source: https://docs.avaamo.com/user-guide/skills/knowledge-skill/add-content-to-knowledge-skill/files/pre-requisites.md
 

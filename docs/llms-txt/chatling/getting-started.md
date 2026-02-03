@@ -2,152 +2,103 @@
 
 # Source: https://docs.chatling.ai/ai-agent/getting-started.md
 
-# Source: https://docs.chatling.ai/chatbot/getting-started.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.chatling.ai/ai-agent/getting-started.md
+# Getting started with AI Agents
 
-# Source: https://docs.chatling.ai/chatbot/getting-started.md
-
-# Source: https://docs.chatling.ai/ai-agent/getting-started.md
-
-# Source: https://docs.chatling.ai/chatbot/getting-started.md
-
-# Source: https://docs.chatling.ai/ai-agent/getting-started.md
-
-# Source: https://docs.chatling.ai/chatbot/getting-started.md
-
-# Source: https://docs.chatling.ai/ai-agent/getting-started.md
-
-# Source: https://docs.chatling.ai/chatbot/getting-started.md
-
-# Getting started with AI Chatbots
-
-> Learn how to create your first AI chatbot in Chatling
+> Learn how to create your first AI agent in Chatling
 
 What we'll be covering:
 
-1. [Create a chatbot](#1-create-a-chatbot)
-2. [Building your chatbot](#2-building-your-chatbot)
-3. [Populating the knowledge base](#3-populate-the-ai-knowledge-base)
-4. [Customize and deploy your chatbot](#4-customize-and-deploy-your-chatbot)
+1. [Create an AI Agent](#1-create-an-ai-agent)
+2. [Configure the AI settings](#2-configure-the-ai-settings)
+3. [Populate the knowledge base](#3-populate-the-knowledge-base)
+4. [Create AI actions](#4-create-ai-actions)
+5. [Test your Agent](#5-test-your-agent)
+6. [Deploy](#6-deploy-your-agent)
 
-## 1. Create a chatbot
+## 1. Create an AI Agent
 
-After you sign up and verify your email, the first step is to create your chatbot.
+1. Go to your account and open the "My agents" page. Click the `+ Create` or `New` button.
 
-1. From the dashboard, click on the `Create chatbot` button.
+<img src="https://chatling-assets.b-cdn.net/create-ai-agent-1.jpg" />
 
-<img src="https://chatling-assets.b-cdn.net/create-chatbot.png" />
+2. Select `AI Agent` as the type.
 
-2. You can choose to create a chatbot from scratch or use a template. Templates help you get started quickly with pre-built flows.
+<img src="https://chatling-assets.b-cdn.net/create-ai-agent-2.jpg" />
 
-<img src="https://chatling-assets.b-cdn.net/create-chatbot-1.png" />
+3. Enter a name for your Agent and click `Create agent`.
 
-3. Give your chatbot a name and click `Create chatbot`.
+<img src="https://chatling-assets.b-cdn.net/enter-ai-agent-name.jpg" />
 
-<img src="https://chatling-assets.b-cdn.net/name%20your%20chatbot.png" />
+## 2. Configure the AI settings
 
-Congrats! You've created your first chatbot. Now you can start building it based on your requirements.
+Once your Agent is created, it's time to configure it's AI settings.
 
-## 2. Building your chatbot
+1. From your agent's dashboard, click `Settings` in the sidebar.
 
-For your chatbot to be functional, you need to build its conversational flow. This can be done using the Builder.
+<img src="https://chatling-assets.b-cdn.net/open-ai-agent-settings.jpg" />
 
-From your chatbot's dashboard, click on the `Builder` menu to open it.
+2. Select the `AI` menu.
 
-![Open the builder](https://chatling-assets.b-cdn.net/builder-menu.jpg)
+<img src="https://chatling-assets.b-cdn.net/open-ai-settings-for-agent.jpg" />
 
-The [Builder](/chatbot/builder/introduction) is where you can create and manage your chatbot's flow. It's a visual interface that allows you to add and connect blocks to create a conversational flow.
+3. Here you can configure the AI settings, such as:
 
-All chatbots contain a default `Start` block, which is the entry point of the conversation.
+* **AI Model**: The AI model that the Agent will use to generate responses.
+* **Temperature**: Controls randomness of the agent's responses. A lower temperature will make the outputs more focused and deterministic, whereas a higher temperature will make the responses diverse and creative.
+* **Instructions**: Define the agent's role, goals, guardrails, and style (often called the "system prompt"). There are templates available to help you get started. Click the `Browse templates` button to see the available templates.
 
-![Builder canvas](https://chatling-assets.b-cdn.net/canvas.png)
+<img src="https://chatling-assets.b-cdn.net/configure-ai-settings-for-agent.jpg" />
 
-### Sidebar
+## 3. Populate the knowledge base
 
-On the left sidebar, you'll find the following menus:
+The Knowledge Base is where you upload information the Agent uses to generate responses to user queries. You can upload information about your business, products, services, policies, and more.
 
-* **[Blocks](/chatbot/builder/blocks/overview)**: Contains all the blocks you can add to your flow. Blocks build up the conversational flow of your chatbot.
-  You can drag and drop blocks from this menu to the canvas to add them to your flow.
-  ![Adding blocks](https://chatling-assets.b-cdn.net/Drag%20blocks.gif)
-* **Variables**: These are like containers that store information during the conversation. You can use variables to personalize the conversation and make it more dynamic.
+You can add several types of data to the knowledge base, such as websites, documents, texts, and FAQs. You can also connect your Zendesk or Zoho account to import articles from your help center.
 
-<img src="https://chatling-assets.b-cdn.net/variables-sidebar-menu.png" />
+When a user asks a question, the Agent queries the knowledge base for relevant information and generates a response based on the data it finds.
 
-* **AI Configuration**: Configure the default AI settings for your chatbot. These settings are used when the chatbot generates AI responses using the Knowledge Base.
-* **Settings**: Configure the general settings for your chatbot.
+<img src="https://chatling-assets.b-cdn.net/knowledge-base.jpg" />
 
-### Connecting blocks
+To add data to the knowledge base, click the `+ Add data source` button, then select the type of data you want to add.
 
-Once you add blocks to the [canvas](/chatbot/builder/canvas), you must connect them to create a flow that guides users through the conversation. Failure to do so will result in the chat ending prematurely.
+<img src="https://chatling-assets.b-cdn.net/knowledge-base-data-source-types.jpg" />
 
-![Connect blocks](https://chatling-assets.b-cdn.net/connect-blocks-1.gif)
+## 4. Create AI actions
 
-### Configuring blocks
+Actions unlock the true power of AI Agents. Instead of only generating replies, the Agent can actively carry out tasks during a conversation.
 
-Each block has its own configuration settings that you can customize. To configure a block, click it and its settings will appear on the right side of the screen.
+This might involve saving details of potential leads, displaying booking widgets, interacting with external systems to fetch or store data, creating support tickets, and more.
 
-![Configure block](https://chatling-assets.b-cdn.net/block-configuration.jpg)
+1. Click the `Actions` menu from the sidebar.
+2. Click `Create action`.
+3. Select the type of action you want to create.
+4. Configure the action according to your needs.
+5. Click the `Create` button to save the action.
 
-### Testing your chatbot
+To learn more about actions, check out the [Actions](/ai-agent/actions/introduction) documentation.
 
-While you're building the chatbot, you can test it to see how it works. This allows you to identify any issues and make improvements before publishing it.
+## 5. Test your Agent
 
-Click the `Preview bot` button in the top right corner of the screen to launch the chatbot for testing.
+You can test your AI Agent in the Playground. It is your sandbox to experiment with your Agent in real time.
 
-![Testing your chatbot](https://chatling-assets.b-cdn.net/testing-your-chatbot.jpg)
+To open the Playground, click `Playground` from the sidebar menu.
 
-Your work is saved automatically as you build your chatbot. You can also save it manually by clicking the `Save` button in the top right side of the screen.
+You can tweak core settings—like AI model, enabled actions, temperature, and instructions—then chat with the Agent to see exactly how those changes affect behavior.
 
-### Saving your work
+<img src="https://chatling-assets.b-cdn.net/open-playground-sidebar.jpg" width="400" alt="Open Playground" />
 
-Your work is saved automatically as you build your chatbot. You can also save it manually by clicking the `Save` button in the top right side of the screen.
+You can also run side-by-side comparisons of up to 5 instances of your Agent, each with different settings, to quickly identify the configuration that performs best.
 
-Any changes you make to the chatbot are saved as drafts until you publish them. This allows you to work on the chatbot and test it without affecting the live version.
+<img src="https://chatling-assets.b-cdn.net/agent-playground.jpg" width="600" alt="AI Agent Playground" />
 
-### Publish your chatbot
+## 6. Deploy your Agent
 
-Once you've built and tested your chatbot, you can publish it to make it live. Click the `Publish` button in the top right corner of the screen to publish your chatbot.
+Once you've built your AI Agent, it's time to deploy it to your website, WhatsApp, or other channels.
 
-<img src="https://chatling-assets.b-cdn.net/publish-chatbot.jpeg" width="400" alt="Publish your chatbot" />
+Click `Deploy` from the sidebar menu. Select the channel you want to deploy your Agent to and follow the on-screen instructions.
 
-## 3. Populate the AI knowledge base
-
-The Knowledge Base is where you upload information that the AI uses to generate responses to user queries.  It uses this information to provide accurate and relevant responses to users.
-
-<img src="https://chatling-assets.b-cdn.net/knowledge-base.jpg" width="600" alt="Knowledge base" />
-
-You can add websites, documents, texts, FAQs, and many more data sources to the knowledge base. When a user asks a question, the AI searches the knowledge base for relevant information and generates a response based on the data it finds.
-
-Therefore, if your chatbot contains an AI Response block and it's "Response Source" is set to "Knowledge Base", you need to populate the Knowledge Base with information that the AI can use to generate responses.
-
-## 4. Customize and deploy your chatbot
-
-Once you've built your chatbot, it's time to customize the widget and deploy it to your website. Here's how you can do it:
-
-1. First, make sure that you've published your chatbot. You can publish it from the Builder page.
-
-<img src="https://chatling-assets.b-cdn.net/publish-chatbot.jpeg" width="400" alt="Publish your chatbot" />
-
-2. Go back to the dashboard and click the `Deploy` button in the sidebar menu.
-
-<img src="https://chatling-assets.b-cdn.net/deploy-ai-agent.jpg" width="500" alt="Open Deploy page" />
-
-3. Click the `Manage` button under the `Website Widget` option.
-
-<img src="https://chatling-assets.b-cdn.net/manage-website-widget-chatbot.jpg" width="600" alt="Manage website widget" />
-
-4. Design the appearance of the widget by clicking the `Open widget designer` button.
-
-<img src="https://chatling-assets.b-cdn.net/open-website-widget-designer.jpg" width="500" alt="Open website widget designer" />
-
-5. Select the display mode for your chatbot, such as "Floating Chat", "Inline", or "Fullscreen".
-
-<img src="https://chatling-assets.b-cdn.net/configure-website-widget-display-type.jpg" width="500" alt="Configure website widget display type" />
-
-6. Copy the chatbot widget code.
-7. Paste the code into the `head` or `body` section of your website's HTML.
-
-* If you selected the `Inline` mode, you must paste the code where you want the chatbot to appear on your website.
-
-That's it! Your chatbot is now live on your website, ready to engage with your visitors.
+<img src="https://chatling-assets.b-cdn.net/deploy-ai-agent.jpg" width="500" alt="Deploy AI Agent" />

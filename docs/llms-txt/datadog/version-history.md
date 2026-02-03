@@ -4,7 +4,6 @@
 title: Version History
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > Getting started > Version History
-source_url: https://docs.datadoghq.com/getting-started/version-history/index.html
 ---
 
 # Version History

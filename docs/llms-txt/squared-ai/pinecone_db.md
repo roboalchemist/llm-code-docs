@@ -2,29 +2,19 @@
 
 # Source: https://docs.squared.ai/activation/vector-search/pinecone_db.md
 
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/pinecone_db.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.squared.ai/activation/vector-search/pinecone_db.md
+# Pinecone
 
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/pinecone_db.md
+## Connect AI Squared to Pinecone
 
-# Source: https://docs.squared.ai/activation/vector-search/pinecone_db.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/pinecone_db.md
-
-# Source: https://docs.squared.ai/activation/vector-search/pinecone_db.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/pinecone_db.md
-
-# Pinecone DB
-
-## Connect AI Squared to Pinecone DB
-
-This guide will help you configure the Pinecone DB Connector in AI Squared to access and transfer data to your Pinecone database.
+This guide will help you configure the PineconeDB Connector in AI Squared to access and transfer data from your Pinecone database.
 
 ### Prerequisites
 
-Before proceeding, ensure you have the required API key, region, index name, model name, and namespace from your Pinecone database.
+Before proceeding, ensure you have the required API key, region, index name, and namespace from your Pinecone database.
 
 ## Step-by-Step Guide to Connect to your Pinecone Database
 
@@ -45,36 +35,31 @@ Once you're in the Pinecone console, you'll find the necessary configuration det
        <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1746239791/Multiwoven/connectors/Pinecone/Pinecone_API_Key_qmdap5.png" />
      </Frame>
 
-2. **Region and Index Name:**
+2. **Region, Index Name, and Namespace:**
    * Click on the Database tab then Indexes to see your list of Indexes.
    * Click on your selected Index.
-   * The following details, region and index name will be shown on this page.
+   * The following details, region, index name, namespace will be shown on this page.
      <Frame>
        <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1746239791/Multiwoven/connectors/Pinecone/Pinecone_Index_t2lhyx.png" />
      </Frame>
 
-## Step 3: Configure Pinecone DB Connector in Your Application
+## Step 3: Configure PineconeDB Connector in Your Application
 
 Now that you have gathered all the necessary details, enter the following information in your application:
 
 * **API Key:** The authentication key used to access your Pinecone project securely.
 * **Region:** The region where your Pinecone index is hosted.
-* **Index Name:** The name of the Pinecone index where your vectors will be stored or queried.
+* **Index Name:** The name of the Pinecone index where your namespaces are stored.
+* **Namespace:** The name of the Pinecone namespace where your vectors will be stored or queried.
 
-## Step 4: Test the Pinecone DB Connection
+## Step 4: Test the PineconeDB Connection
 
 After configuring the connector in your application:
 
 1. Save the configuration settings.
-2. Test the connection to Pinecone from your application to ensure everything is set up correctly.
+2. Test the connection to Pinecone database from your application to ensure everything is set up correctly.
+3. Run a test query or check the connection status to verify successful connectivity.
 
-By following these steps, you’ve successfully set up an Pinecone destination connector in AI Squared. You can now efficiently transfer data to your Pinecone endpoint for storage or further distribution within AI Squared.
+Your PineconeDB connector is now configured and ready to query data from your Pinecone database.
 
-### Supported sync modes
-
-| Mode             | Supported (Yes/No/Coming soon) |
-| ---------------- | ------------------------------ |
-| Incremental sync | YES                            |
-| Full refresh     | Coming soon                    |
-
-This guide will help you seamlessly connect your AI Squared application to Pinecone, enabling you to leverage your database's full potential.
+This guide will help you seamlessly connect your AI Squared application to Pinecone Database, enabling you to leverage your database's full potential.

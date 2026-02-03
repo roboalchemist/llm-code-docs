@@ -1,10 +1,14 @@
 # Source: https://docs.pinecone.io/troubleshooting/error-cannot-import-name-pinecone.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Error: Cannot import name 'Pinecone' from 'pinecone'
 
 ## Problem
 
-When using an older version of the [Python SDK](https://github.com/pinecone-io/pinecone-python-client/blob/main/README.md) (earlier than 3.0.0), trying to import the `Pinecone` class raises the following error:
+When using an older version of the [Python SDK](https://github.com/pinecone-io/pinecone-python-client) (earlier than 3.0.0), trying to import the `Pinecone` class raises the following error:
 
 ```console console theme={null}
 ImportError: cannot import name 'Pinecone' from 'pinecone'

@@ -1,60 +1,54 @@
 # Source: https://docs.ollama.com/api/delete.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete a model
+
+
 
 ## OpenAPI
 
 ````yaml openapi.yaml delete /api/delete
+openapi: 3.1.0
+info:
+  title: Ollama API
+  version: 0.1.0
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  description: |
+    OpenAPI specification for the Ollama HTTP API
+servers:
+  - url: http://localhost:11434
+    description: Ollama
+security: []
 paths:
-  path: /api/delete
-  method: delete
-  servers:
-    - url: http://localhost:11434
-      description: Ollama
-  request:
-    security: []
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              model:
-                allOf:
-                  - type: string
-                    description: Model name to delete
-            required: true
-            refIdentifier: '#/components/schemas/DeleteRequest'
-            requiredProperties:
-              - model
-        examples:
-          example:
-            value:
+  /api/delete:
+    delete:
+      summary: Delete a model
+      operationId: delete
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteRequest'
+            example:
               model: gemma3
-    codeSamples:
-      - label: Delete model
-        lang: bash
-        source: |
-          curl -X DELETE http://localhost:11434/api/delete -d '{
-            "model": "gemma3"
-          }'
-  response:
-    '200':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Model successfully deleted
-        examples: {}
-        description: Model successfully deleted
-  deprecated: false
-  type: path
-  xMint:
-    href: /api/delete
+      responses:
+        '200':
+          description: Model successfully deleted
 components:
-  schemas: {}
+  schemas:
+    DeleteRequest:
+      type: object
+      required:
+        - model
+      properties:
+        model:
+          type: string
+          description: Model name to delete
 
 ````

@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/deduplication.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How deduplication works in Zapier
 
 > Zapier automatically deduplicates incoming trigger data for your integration, so that Zaps do not run multiple times on the same data. Consider the following requirements for your “New Item” and “Updated Item” triggers to work as users expect.

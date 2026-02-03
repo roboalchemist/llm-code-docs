@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/actions/hubspot-v2-lookup-object.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Look up HubSpot Object
 
 Get detailed information about a specific HubSpot record when you know its ID, email, or domain.

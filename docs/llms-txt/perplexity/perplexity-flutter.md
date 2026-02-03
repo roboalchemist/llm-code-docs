@@ -1,4 +1,8 @@
-# Source: https://docs.perplexity.ai/cookbook/showcase/perplexity-flutter.md
+# Source: https://docs.perplexity.ai/docs/cookbook/showcase/perplexity-flutter.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Perplexity Dart & Flutter SDKs
 
@@ -15,7 +19,7 @@
 * Support for all Perplexity models (Sonar, Sonar Pro, Deep Research, Reasoning variants)
 * Multi-image processing with base64, data URI, and HTTPS URL support
 * Ready-to-use Flutter widgets with BLoC state management integration
-* Advanced configuration options (temperature, top-p, search filters, domain restrictions)
+* Advanced configuration options (search filters, domain restrictions)
 * Cross-platform support for iOS, Android, Web, and Desktop
 * Future-proof design with custom model string support for new Perplexity releases
 

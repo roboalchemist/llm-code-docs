@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/account/changing-your-email.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Change your login email
 
 > How to update the email address you use to log in to Loops.

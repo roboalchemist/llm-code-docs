@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/integrations/segment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Segment Integration Guide
 
 > This guide outlines how to connect your Segment workspace to Unify.

@@ -2,13 +2,9 @@
 
 # Source: https://docs.pipecat.ai/server/services/image-generation/fal.md
 
-# Source: https://docs.pipecat.ai/server/services/stt/fal.md
-
-# Source: https://docs.pipecat.ai/server/services/image-generation/fal.md
-
-# Source: https://docs.pipecat.ai/server/services/stt/fal.md
-
-# Source: https://docs.pipecat.ai/server/services/image-generation/fal.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # fal
 
@@ -58,8 +54,3 @@ Before using fal image generation services, you need:
 ### Required Environment Variables
 
 * `FAL_KEY`: Your fal API key for authentication
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

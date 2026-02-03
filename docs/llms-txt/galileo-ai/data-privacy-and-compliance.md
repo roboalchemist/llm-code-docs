@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/deployments/data-privacy-and-compliance.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Data Privacy And Compliance
 
 > This page covers concerns regarding residency of data and compliances provided by Galileo.

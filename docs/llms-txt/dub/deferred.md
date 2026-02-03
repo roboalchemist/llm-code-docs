@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/conversions/leads/deferred.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deferred lead tracking
 
 > Learn how to track a deferred lead conversion event with Dub

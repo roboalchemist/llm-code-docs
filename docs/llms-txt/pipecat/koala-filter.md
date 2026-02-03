@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/audio/koala-filter.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # KoalaFilter
 
 > Audio noise reduction filter using Koala AI technology from Picovoice
@@ -55,18 +59,8 @@ transport = DailyTransport(
         audio_in_filter=KoalaFilter(access_key=os.getenv("KOALA_ACCESS_KEY")), # Enable Koala noise reduction
         audio_in_enabled=True,
         audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
     ),
 )
-```
-
-## Audio Flow
-
-```mermaid  theme={null}
-graph TD
-    A[AudioRawFrame] --> B[KoalaFilter]
-    B[KoalaFilter] --> C[VAD]
-    C[VAD] --> D[STT]
 ```
 
 ## Notes
@@ -79,8 +73,3 @@ graph TD
 * Efficient processing for low latency
 * Automatically handles audio frame buffering
 * Sample rate must match Koala's required sample rate
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

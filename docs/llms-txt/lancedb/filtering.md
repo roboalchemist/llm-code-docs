@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/search/filtering.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Metadata Filtering in LanceDB
 
 > Filter search results in LanceDB based on metadata fields.
@@ -227,8 +231,3 @@ For a column of type LIST(T), you can use `LABEL_LIST` to create a scalar index.
 Both **pre-filtering** and **post-filtering** can yield false positives. For pre-filtering, if the filter is too selective, it might eliminate relevant items that the vector search would have otherwise identified as a good match. In this case, increasing `nprobes` parameter will help reduce such false positives. It is recommended to call `bypass_vector_index()` if you know that the filter is highly selective.
 
 Similarly, a highly selective post-filter can lead to false positives. Increasing both `nprobes` and `refine_factor` can mitigate this issue. When deciding between pre-filtering and post-filtering, pre-filtering is generally the safer choice if you're uncertain.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/go/
+
 # Custom Go Provider
 
 The Go (`golang`) provider allows you to use Go code as an API provider for evaluating prompts. This is useful when you have custom logic, API clients, or models implemented in Go that you want to integrate with your test suite.

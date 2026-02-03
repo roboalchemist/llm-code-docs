@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/concepts/deep-links/deferred-deep-linking.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deferred deep linking
 
 > Learn how to use deferred deep linking to track conversions and traffic.

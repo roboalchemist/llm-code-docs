@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/ClassifyingNewsArticles.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Classifying news articles
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/ClassifyingNewsArticles/ClassifyingNewsArticles.ipynb) by [David Song](https://twitter.com/davidtsong) on 2023-09-01</div>
@@ -257,10 +261,5 @@ Select the new experiment, and check it out. You should notice a few things:
 ## Next steps
 
 * [I ran an eval. Now what?](https://braintrust.dev/blog/after-evals)
-* Add more [custom scorers](/core/functions/scorers#custom-scorers).
+* Add more [custom scorers](/evaluate/write-scorers#custom-scorers).
 * Try other models like xAI's [Grok 2](https://x.ai/blog/grok-2) or OpenAI's [o1](https://openai.com/o1/). To learn more about comparing evals across multiple AI models, check out this [cookbook](/cookbook/recipes/ModelComparison).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

@@ -2,6 +2,10 @@
 
 # Task<!-- -->
 
+Represents an Actor task.
+
+Tasks are saved Actor configurations with input and settings that can be executed repeatedly without having to specify the full input each time.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -22,11 +26,11 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#actId)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L207)actId
+### [**](#actId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L285)actId
 
 **actId: string
 
-### [**](#actorStandby)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L217)optionalactorStandby
+### [**](#actorStandby)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L295)optionalactorStandby
 
 **actorStandby?
 
@@ -34,11 +38,11 @@
 
 : Partial<[ActorStandby](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorStandby.md)>
 
-### [**](#createdAt)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L212)createdAt
+### [**](#createdAt)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L290)createdAt
 
 **createdAt: Date
 
-### [**](#description)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L210)optionaldescription
+### [**](#description)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L288)optionaldescription
 
 **description?
 
@@ -46,11 +50,11 @@
 
 : string
 
-### [**](#id)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L205)id
+### [**](#id)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L283)id
 
 **id: string
 
-### [**](#input)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L216)optionalinput
+### [**](#input)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L294)optionalinput
 
 **input?
 
@@ -58,15 +62,15 @@
 
 : [Dictionary](https://docs.apify.com/api/client/js/api/client/js/reference.md#Dictionary) | [Dictionary](https://docs.apify.com/api/client/js/api/client/js/reference.md#Dictionary)\[]
 
-### [**](#modifiedAt)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L213)modifiedAt
+### [**](#modifiedAt)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L291)modifiedAt
 
 **modifiedAt: Date
 
-### [**](#name)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L208)name
+### [**](#name)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L286)name
 
 **name: string
 
-### [**](#options)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L215)optionaloptions
+### [**](#options)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L293)optionaloptions
 
 **options?
 
@@ -74,11 +78,11 @@
 
 : [TaskOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/TaskOptions.md)
 
-### [**](#stats)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L214)stats
+### [**](#stats)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L292)stats
 
 **stats: [TaskStats](https://docs.apify.com/api/client/js/api/client/js/reference/interface/TaskStats.md)
 
-### [**](#title)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L209)optionaltitle
+### [**](#title)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L287)optionaltitle
 
 **title?
 
@@ -86,11 +90,11 @@
 
 : string
 
-### [**](#userId)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L206)userId
+### [**](#userId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L284)userId
 
 **userId: string
 
-### [**](#username)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L211)optionalusername
+### [**](#username)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L289)optionalusername
 
 **username?
 

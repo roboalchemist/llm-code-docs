@@ -4,8 +4,6 @@
 title: IoT FleetWise Campaign
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > IoT FleetWise Campaign
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.iotfleetwise_campaign.dataset/index.html
 ---
 
 # IoT FleetWise Campaign
@@ -42,5 +40,5 @@ aws.iotfleetwise_campaign
 | spooling_mode                    | core | string        | Whether to store collected data after a vehicle lost a connection with the cloud. After a connection is re-established, the data is automatically forwarded to Amazon Web Services IoT FleetWise.                                                                                                                                                                                                                                                                                                                                                                                                          |
 | start_time                       | core | timestamp     | The time, in milliseconds, to deliver a campaign after it was approved.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | status                           | core | string        | The state of the campaign. The status can be one of: CREATING, WAITING_FOR_APPROVAL, RUNNING, and SUSPENDED.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| tags                             | core | hstore        |
+| tags                             | core | hstore_csv    |
 | target_arn                       | core | string        | The ARN of the vehicle or the fleet targeted by the campaign.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |

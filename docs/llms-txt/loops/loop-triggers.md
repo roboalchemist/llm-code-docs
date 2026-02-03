@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/loop-builder/loop-triggers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Triggering Loops
 
 > Learn how to trigger a Loop to start sending emails.

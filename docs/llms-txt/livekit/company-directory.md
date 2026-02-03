@@ -1,5 +1,9 @@
 # Source: https://docs.livekit.io/recipes/company-directory.md
 
+LiveKit docs › Telephony › Company Directory
+
+---
+
 # Company directory phone assistant
 
 > Build a phone assistant that can transfer calls to different departments using SIP REFER.
@@ -11,7 +15,7 @@ In this recipe, build a phone assistant that transfers callers to different depa
 To complete this guide, you need the following prerequisites:
 
 - Create an agent using the [Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md).
-- Set up LiveKit SIP to [accept inbound calls](https://docs.livekit.io/sip/accepting-calls.md#setup-for-accepting-calls)
+- Set up LiveKit SIP to [accept inbound calls](https://docs.livekit.io/telephony/accepting-calls/workflow-setup.md#setup-for-accepting-calls)
 
 ## Setting up the environment
 
@@ -308,7 +312,7 @@ For the complete code, see the [phone assistant repository](https://github.com/l
 
 ---
 
-This document was rendered at 2025-11-18T23:55:23.061Z.
+This document was rendered at 2026-02-03T03:25:28.478Z.
 For the latest version of this document, see [https://docs.livekit.io/recipes/company-directory.md](https://docs.livekit.io/recipes/company-directory.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

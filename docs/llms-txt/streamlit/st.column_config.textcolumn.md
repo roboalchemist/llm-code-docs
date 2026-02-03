@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/data/st.column_config/st.column_config.textcolumn
+
 # st.column_config.TextColumn
 
 Configure a text column in `st.dataframe` or `st.data_editor`.

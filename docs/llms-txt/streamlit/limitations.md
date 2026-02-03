@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/custom-components/limitations
+
 # Limitations of custom components
 
 ## How do Streamlit Components differ from functionality provided in the base Streamlit package?

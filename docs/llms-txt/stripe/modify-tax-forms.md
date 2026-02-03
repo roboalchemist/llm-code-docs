@@ -32,11 +32,9 @@ When you open a record from the **Tax reporting** page, it includes the followin
 
 You can modify values in the **Payee details**, **Totals**, and **Forms details** sections.
 
-> When you update the values of a 1099 tax form it updates only the data on the form, not the data in the connected account.
+When you update the values of a 1099 tax form it updates only the data on the form, not the data in the connected account. Editing the **Payee details** or **Totals** data on a form during the form’s tax year will disable automatic updates to those fields by Stripe. You can always undo your edits to resume automatic updates later.
 
-> Editing the **Payee details** or **Totals** data on a form during the form’s tax year will disable automatic updates to those fields by Stripe. You can always undo your edits to resume automatic updates later.
-
-**To update a 1099 tax form before filing**
+### Update a 1099 tax form before filing
 
 1. On the **Tax reporting** page, click the tax form to update.
 1. Click **Edit**.
@@ -52,11 +50,11 @@ When you save the form, Stripe validates the format of the values you entered. F
 
 In some cases, you need to correct the values in a 1099 tax form after you file it. If you try to update a tax form that you already filed, you see a **Correct** button instead of an **Edit** button in the form.
 
-> You can’t create a corrected 1099 form for a connected account if you already filed it and the status for the filed form is `Processing` or `Rejected`. If you need to update a form that is `Processing` or `Rejected`, contact [Stripe support](https://support.stripe.com/contact) for assistance.
+You can’t create a corrected 1099 form for a connected account if you already filed it and the status for the filed form is `Processing` or `Rejected`. If you need to update a form that is `Processing` or `Rejected`, contact [Stripe support](https://support.stripe.com/contact) for assistance.
 
-**To correct a 1099 tax form after filing**
+### Correct both payee details and totals
 
-> The IRS allows you to submit a correction to either the **Payee details** or **Totals** data, but not both at the same time. Correct only one set of data for a correction.
+The IRS allows you to submit a correction to either the **Payee details** or **Totals** data, but not both at the same time. If you need to correct both, submit them as separate corrections.
 
 1. On the **Tax reporting** page, click the tax form to correct.
 1. Click **Correct**.
@@ -114,9 +112,7 @@ After you initiate an export you can monitor it on the **Exports & imports** tab
 
 ## Import tax forms
 
-Stripe provides values for payee data and form totals whenever possible. However, you can supply your own totals, for example if you provided reimbursements or otherwise altered the totals. You can also import data to correct a filed tax form.
-
-> The maximum allowed file size is 75 MB.
+Stripe provides values for payee data and form totals whenever possible. However, you can supply your own totals, for example if you provided reimbursements or otherwise altered the totals. You can also import data to correct a filed tax form. The maximum allowed file size is 75 MB.
 
 When it comes to altering form totals specifically, you have 2 options:
 
@@ -135,9 +131,9 @@ To import tax forms:
 
 You’re not required to supply a payee’s TIN on import. If you provide a 9-digit number for the TIN, it overrides the Stripe-supplied value. Stripe ignores any other value and retains the Stripe-supplied value.
 
-> #### Leading Zeros
+> #### Working with CSV files in external tools
 > 
-> Tools like Google Spreadsheet and Excel usually delete any leading zeros in a CSV. For example, ‘000001234’ becomes ‘1234’ when exported as a CSV and opened in excel. If you export a form as a CSV that has leading zeros in the TIN, importing that same CSV form will fail if the zeros have been deleted. If this happens, add the leading zeros back in the TINs that had them originally and try again.
+> Applications like Google Sheets and Excel usually automatically delete leading zeros in a CSV file. For example, when you open an exported CSV file in Excel, ‘000001234’ becomes ‘1234’. If you export a form containing TINs that have leading zeros, then open it in an application that removes leading zeros, you can’t import it. If that happens, restore the leading zeros and try again.
 
 After you initiate an import you can monitor it on the **Exports & imports** tab.
 ![Import tax forms page with Update selected.](https://b.stripecdn.com/docs-statics-srv/assets/tax-forms-import-update.6dbe2b7abeed23b49343cd83a9b2b629.png)
@@ -153,7 +149,7 @@ To import a form using **Delta**, click **Import**, then choose the type of tax 
 
 This section provides answer to common questions about using Deltas for 1099 tax forms in Connect.
 
-### Can there be negative values as deltas (e.g. reimbursements made which needs to reduce the total on 1099)?
+### Can there be negative values as deltas (for example, reimbursements made to reduce the total on 1099)?
 
 Yes.
 

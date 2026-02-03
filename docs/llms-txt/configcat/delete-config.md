@@ -2,10 +2,7 @@
 
 # Delete Config
 
-```
-DELETE 
-/v1/configs/:configId
-```
+Copy page
 
 This endpoint removes a Config identified by the `configId` parameter.
 

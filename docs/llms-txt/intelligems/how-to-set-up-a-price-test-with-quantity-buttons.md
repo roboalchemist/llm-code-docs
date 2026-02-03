@@ -1,4 +1,4 @@
-# Source: https://docs.intelligems.io/offer-experiences/how-to-set-up-a-price-test-with-quantity-buttons.md
+# Source: https://docs.intelligems.io/offer-personalizations/how-to-set-up-a-price-test-with-quantity-buttons.md
 
 # How to Set Up a Price Test with Quantity Buttons
 
@@ -6,17 +6,17 @@
 
 Quantity Buttons component replace your standard quantity selector (or another app powering quantity buttons) directly in your theme and are automatically installed via the Intelligems script.
 
-### 2. Attach Quantity Buttons to a Product via an Offer Experience
+### 2. Attach Quantity Buttons to a Product via an Offer Personalization
 
-To display Quantity Buttons on a product page, you’ll need to set up an **Offer Experience**. If you are setting up a Price Test with multiple products using Quantity Buttons, make sure to preview each products to validate the settings are correct and applicable to each product in the test.
+To display Quantity Buttons on a product page, you’ll need to set up an **Offer Personalization**. If you are setting up a Price Test with multiple products using Quantity Buttons, make sure to preview each products to validate the settings are correct and applicable to each product in the test.
 
 {% hint style="info" %}
-Note: Quantity Buttons only show when the Offer Experience is in **Preview** or **Live** mode. Two pending Tests or Experiences cannot be previewed at the same time.
+Note: Quantity Buttons only show when the Offer Personalization is in **Preview** or **Live** mode. Two pending Tests or Personalizations cannot be previewed at the same time.
 {% endhint %}
 
 #### **Steps**
 
-1. On the left sidebar, go to Experiences > **Offers**
+1. On the left sidebar, go to Personalizations > **Offers**
 2. Click the **Volume Discount** scratch card
 3. Start building your quantity price break volume discount
 4. Select your **Discount trigger**
@@ -54,7 +54,7 @@ If you are using Kaching, FBP, or another app to power quantity discounts on you
 ### Launch the Price Test
 
 1. Create your **Price Test**
-2. Turn the **Offer Experience** with Quantity Buttons live by clicking **Activate**
+2. Turn the **Offer Personalizatio**n with Quantity Buttons live by clicking **Activate**
 3. **Preview** your **Price Test** to confirm:
    1. Each test group displays the correct Quantity Buttons
    2. Each variant shows the correct price
@@ -63,7 +63,7 @@ If you are using Kaching, FBP, or another app to power quantity discounts on you
 
 ### Pre-Launch Checklist
 
-* [ ] Offer Experience is Live
+* [ ] Offer Personalization is Live
 * [ ] Quantity Buttons preview correctly on Desktop and Mobile
 * [ ] Conflicting third-party apps are disabled
 * [ ] Price Test groups show the correct setup

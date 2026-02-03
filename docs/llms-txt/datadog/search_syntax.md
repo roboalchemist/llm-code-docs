@@ -8,7 +8,6 @@ description: Search all of your deployment executions.
 breadcrumbs: >-
   Docs > Continuous Delivery Visibility > Explore CD Visibility Deployments > CD
   Visibility Explorer Search Syntax
-source_url: https://docs.datadoghq.com/explorer/search_syntax/index.html
 ---
 
 # CD Visibility Explorer Search Syntax

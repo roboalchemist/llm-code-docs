@@ -1,6 +1,10 @@
 # Source: https://docs.promptlayer.com/reference/list-prompt-templates.md
 
-# Get All Prompt Templates
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# List Prompt Templates
 
 Get a paginated list of all prompt templates in your workspace.
 
@@ -166,7 +170,10 @@ components:
           description: >-
             When you optionally specify `provider` in the body, `llm_kwargs`
             will be returned for that specific provider and you can pass these
-            kwargs to the provider's API directly.
+            kwargs to the provider's API directly. **Important:** This object's
+            structure is provider-specific and may change without notice as LLM
+            providers update their APIs. For stable, provider-agnostic prompt
+            data, use `prompt_template` instead.
         version:
           type: integer
           title: Version
@@ -852,7 +859,3 @@ components:
       title: ToolCall
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

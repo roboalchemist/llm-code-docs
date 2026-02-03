@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/overreliance/
+
 # Overreliance Plugin
 
 The Overreliance red teaming plugin helps identify vulnerabilities where an AI model might accept and act upon incorrect or unrealistic user assumptions without proper verification or correction. It is part of the overall red teaming toolkit for Large Language Models (LLMs) and generative AI systems.

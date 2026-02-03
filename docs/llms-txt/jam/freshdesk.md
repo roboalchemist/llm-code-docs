@@ -2,10 +2,6 @@
 
 # Source: https://jam.dev/docs/jam-for-customer-support/freshdesk.md
 
-# Source: https://jam.dev/docs/integrations/freshdesk.md
-
-# Source: https://jam.dev/docs/jam-for-customer-support/freshdesk.md
-
 # Freshdesk
 
 1. Create a new Recording Link from the Jam browser extension

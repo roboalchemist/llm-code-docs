@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/custom-api/
+
 # Javascript Provider
 
 Custom Javascript providers let you create providers in JavaScript or TypeScript to integrate with any API or service not already built into promptfoo.

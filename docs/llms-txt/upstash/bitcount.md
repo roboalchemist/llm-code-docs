@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/bitcount.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitcount.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/bitcount.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitcount.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/bitcount.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitcount.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/bitcount.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitcount.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/bitcount.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitcount.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # BITCOUNT
 
@@ -28,17 +14,17 @@ The `BITCOUNT` command in Redis is used to count the number of set bits (bits wi
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to get.
 </ParamField>
 
-<ParamField body="start" type="integer">
+<ParamField body="start" type="int">
   Specify the range of bytes within the binary string to count the set bits. If not provided, it counts set bits in the entire string.
 
   Either specify both `start` and `end` or neither.
 </ParamField>
 
-<ParamField body="end" type="integer">
+<ParamField body="end" type="int">
   Specify the range of bytes within the binary string to count the set bits. If not provided, it counts set bits in the entire string.
 
   Either specify both `start` and `end` or neither.
@@ -46,16 +32,20 @@ The `BITCOUNT` command in Redis is used to count the number of set bits (bits wi
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The number of set bits in the specified range.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const bits = await redis.bitcount(key);
-  ```
+  ```py Example theme={"system"}
+  redis.setbit("mykey", 7, 1)
+  redis.setbit("mykey", 8, 1)
+  redis.setbit("mykey", 9, 1)
 
-  ```ts With Range theme={"system"}
-  const bits = await redis.bitcount(key, 5, 10);
+  # With range
+  assert redis.bitcount("mykey", 0, 10) == 3
+
+  # Without range
+  assert redis.bitcount("mykey") == 3
   ```
 </RequestExample>

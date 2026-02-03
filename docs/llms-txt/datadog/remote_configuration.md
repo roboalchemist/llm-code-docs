@@ -7,7 +7,6 @@ description: >-
   tracing libraries, and Observability Pipelines Workers deployed in your
   infrastructure.
 breadcrumbs: Docs > Remote Configuration
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Remote Configuration

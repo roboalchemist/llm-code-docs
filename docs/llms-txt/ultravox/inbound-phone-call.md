@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/gettingstarted/examples/inbound-phone-call.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Inbound Phone Calls
 
 > Connect inbound phone calls to an AI agent in 6 minutes.
@@ -98,8 +102,3 @@ Now, when someone calls your Twilio number, they'll be connected to your AI assi
 * [Twilio Documentation](https://www.twilio.com/docs)
 * [Express.js Documentation](https://expressjs.com/)
 * [ngrok Documentation](https://expressjs.com/)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

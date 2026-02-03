@@ -25,10 +25,9 @@ import { BarPlot } from '@mui/x-charts-premium';
 
 | Name | Type | Default | Required | Description |
 |------|------|---------|----------|-------------|
-| barLabel | `'value' \| func` | - | No |  |
-| barLabelPlacement | `'outside' \| 'inside'` | - | No |  |
 | borderRadius | `number` | - | No |  |
 | onItemClick | `function(event: React.MouseEvent<SVGElement, MouseEvent>, barItemIdentifier: BarItemIdentifier) => void` | - | No |  |
+| renderer | `'svg-batch' \| 'svg-single'` | `'svg-single'` | No |  |
 | skipAnimation | `bool` | `undefined` | No |  |
 | slotProps | `object` | `{}` | No |  |
 | slots | `object` | `{}` | No |  |

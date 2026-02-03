@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/devtools-inspecting.md
 
-# Source: https://docs.apify.com/academy/scraping-basics-python/devtools-inspecting.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/devtools-inspecting.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/devtools-inspecting.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/devtools-inspecting.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/devtools-inspecting.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript2/devtools-inspecting.md
-
 # Inspecting web pages with browser DevTools
 
 **In this lesson we'll use the browser tools for developers to inspect and manipulate the structure of a website.**
@@ -32,9 +20,9 @@ Now let's spend some time figuring out what the detective work in step 1 is abou
 
 ## Opening DevTools
 
-Google Chrome is currently the most popular browser, and many others use the same core. That's why we'll focus on https://developer.chrome.com/docs/devtools here. However, the steps are similar in other browsers, as Safari has its https://developer.apple.com/documentation/safari-developer-tools/web-inspector and Firefox also has https://firefox-source-docs.mozilla.org/devtools-user/.
+Google Chrome is currently the most popular browser, and many others use the same core. That's why we'll focus on [Chrome DevTools](https://developer.chrome.com/docs/devtools) here. However, the steps are similar in other browsers, as Safari has its [Web Inspector](https://developer.apple.com/documentation/safari-developer-tools/web-inspector) and Firefox also has [DevTools](https://firefox-source-docs.mozilla.org/devtools-user/).
 
-Now let's peek behind the scenes of a real-world website—say, Wikipedia. We'll open Google Chrome and visit https://www.wikipedia.org/. Then, let's press **F12**, or right-click anywhere on the page and select **Inspect**.
+Now let's peek behind the scenes of a real-world website—say, Wikipedia. We'll open Google Chrome and visit [wikipedia.org](https://www.wikipedia.org/). Then, let's press **F12**, or right-click anywhere on the page and select **Inspect**.
 
 ![Wikipedia with Chrome DevTools open](/assets/images/devtools-wikipedia-912f0473b3c31f441ab1659205bd1e08.png)
 
@@ -46,7 +34,7 @@ Screen adaptations
 
 DevTools may appear differently depending on your screen size. For instance, on smaller screens, the CSS panel might move below the HTML elements panel instead of appearing in the right pane.
 
-Think of https://developer.mozilla.org/en-US/docs/Learn/HTML elements as the frame that defines a page's structure. A basic HTML element includes an opening tag, a closing tag, and attributes. Here's an `article` element with an `id` attribute. It wraps `h1` and `p` elements, both containing text. Some text is emphasized using `em`.
+Think of [HTML](https://developer.mozilla.org/en-US/docs/Learn/HTML) elements as the frame that defines a page's structure. A basic HTML element includes an opening tag, a closing tag, and attributes. Here's an `article` element with an `id` attribute. It wraps `h1` and `p` elements, both containing text. Some text is emphasized using `em`.
 
 
 ```
@@ -57,7 +45,7 @@ Think of https://developer.mozilla.org/en-US/docs/Learn/HTML elements as the fra
 ```
 
 
-HTML, a markup language, describes how everything on a page is organized, how elements relate to each other, and what they mean. It doesn't define how elements should look—that's where https://developer.mozilla.org/en-US/docs/Learn/CSS comes in. CSS is like the velvet covering the frame. Using styles, we can select elements and assign rules that tell the browser how they should appear. For instance, we can style all elements with `heading` in their `class` attribute to make the text blue and uppercase.
+HTML, a markup language, describes how everything on a page is organized, how elements relate to each other, and what they mean. It doesn't define how elements should look—that's where [CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS) comes in. CSS is like the velvet covering the frame. Using styles, we can select elements and assign rules that tell the browser how they should appear. For instance, we can style all elements with `heading` in their `class` attribute to make the text blue and uppercase.
 
 
 ```
@@ -166,19 +154,19 @@ These challenges are here to help you test what you’ve learned in this lesson.
 
 Real world
 
-You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or https://github.com/apify/apify-docs/issues.
+You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or [file a GitHub Issue](https://github.com/apify/apify-docs/issues).
 
 ### Find FIFA logo
 
-Open the https://www.fifa.com/ and use the DevTools to figure out the URL of FIFA's logo image file.
+Open the [FIFA website](https://www.fifa.com/) and use the DevTools to figure out the URL of FIFA's logo image file.
 
 Need a nudge?
 
-You're looking for an https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img element with a `src` attribute.
+You're looking for an [img](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) element with a `src` attribute.
 
 Solution
 
-1. Go to https://www.fifa.com/.
+1. Go to [fifa.com](https://www.fifa.com/).
 2. Activate the element selection tool.
 3. Click on the logo.
 4. Send the highlighted element to the **Console** using the **Store as global variable** option from the context menu.
@@ -188,11 +176,11 @@ Solution
 
 ### Make your own news
 
-Open a news website, such as https://cnn.com. Use the Console to change the headings of some articles.
+Open a news website, such as [CNN](https://cnn.com). Use the Console to change the headings of some articles.
 
 Solution
 
-1. Go to https://cnn.com.
+1. Go to [cnn.com](https://cnn.com).
 2. Activate the element selection tool.
 3. Click on a heading.
 4. Send the highlighted element to the **Console** using the **Store as global variable** option from the context menu.

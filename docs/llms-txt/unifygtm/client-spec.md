@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/developers/intent-client/client-spec.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Intent Client Usage
 
 > Learn how to send events using the Unify Intent Client.
@@ -112,7 +116,12 @@ unify.startAutoIdentify();
 
 You can also manually trigger an identify event with the identify method on the client. This is
 useful when users log-in with OAuth or SSO, for example, because they do not enter their email
-into an input on the page.
+into an input on the page. The `identify` call accepts an optional second argument where you can
+pass any standard Person or Company fields (the same ones used in imports and CRM integrations).
+Those fields are forwarded to Unify and merged into the user/company profile. See the
+[standard Person fields](/reference/integrations/salesforce/field-mappings#people) and
+[standard Company fields](/reference/integrations/salesforce/field-mappings#companies) reference
+for the full list.
 
 ```ts  theme={null}
 const unify = new UnifyIntentClient('YOUR_PUBLIC_WRITE_KEY');
@@ -122,7 +131,18 @@ unify.mount();
 const currentUser = getCurrentUser();
 
 // Identify the current user
-unify.identify(currentUser.emailAddress);
+unify.identify(currentUser.emailAddress, {
+  firstName: currentUser.firstName,
+  lastName: currentUser.lastName,
+  title: currentUser.title,
+  phone: currentUser.phone,
+  company: {
+    name: currentUser.companyName,
+    domain: currentUser.companyDomain,
+    industry: currentUser.industry,
+    employeeCount: currentUser.employeeCount,
+  },
+});
 ```
 
 ## Configuration

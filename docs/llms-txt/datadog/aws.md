@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/getting_started/integrations/aws.md
+
 # Source: https://docs.datadoghq.com/cloud_cost_management/setup/aws.md
 
 # Source: https://docs.datadoghq.com/account_management/billing/aws.md
@@ -6,7 +8,6 @@
 title: AWS Integration Billing
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Account Management > Billing > AWS Integration Billing
-source_url: https://docs.datadoghq.com/billing/aws/index.html
 ---
 
 # AWS Integration Billing

@@ -1,12 +1,13 @@
 # Source: https://turbo.build/guides/tools/prisma.md
 
 # Prisma
-Description: Learn how to use Prisma in a Turborepo.
 
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
-import { Callout } from '#components/callout';
-import { Steps, Step } from '#components/steps';
-import { CreateTurboCallout } from './create-turbo-callout.tsx';
+<CopyPrompt
+  title="Set up Prisma in a Turborepo"
+  prompt={
+  "Set up Prisma in this Turborepo.\n1) Create a database package\n2) Configure the Prisma client\n3) Set up scripts for migrations and generation\n\nWalk me through each step."
+}
+/>
 
 [Prisma](https://www.prisma.io/) unlocks a new level of developer experience when working with databases thanks to its intuitive data model, automated migrations, type-safety & auto-completion.
 
@@ -25,3 +26,7 @@ To get started with our community-supported Prisma example, run:
 ```bash title="Terminal"
 npx create-turbo@latest -e with-prisma
 ```
+
+---
+
+[View full sitemap](/sitemap.md)

@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-flask.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with Flask
 
 > Learn how to send your first email using Flask and the Resend Python SDK.
@@ -16,7 +20,7 @@ To get the most out of this guide, you'll need to:
 Get the Resend Python SDK.
 
 <CodeGroup>
-  ```bash Pip theme={null}
+  ```bash Pip theme={"theme":{"light":"github-light","dark":"vesper"}}
   pip install resend
   ```
 </CodeGroup>
@@ -25,7 +29,7 @@ Get the Resend Python SDK.
 
 The easiest way to send an email is by using the `html` parameter.
 
-```py index.py theme={null}
+```py index.py theme={"theme":{"light":"github-light","dark":"vesper"}}
 import resend
 import os
 from flask import Flask, jsonify

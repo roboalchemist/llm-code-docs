@@ -1,25 +1,31 @@
-# Source: https://developers.notion.com/docs/common-mcp-clients.md
+# Source: https://developers.notion.com/guides/mcp/common-mcp-clients.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://developers.notion.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Common MCP clients
 
-Below are some popular MCP clients for running local or remote MCP servers:
+These AI tools support MCP and can connect to Notion.
 
-- [Claude](https://docs.anthropic.com/en/docs/mcp)
-- [Cursor](https://docs.cursor.com/context/model-context-protocol)
-- [VS Code](https://code.visualstudio.com/docs/copilot/chat/mcp-servers)
-- [Windsurf](https://docs.windsurf.com/windsurf/mcp)
+<CardGroup>
+  <Card title="Claude Code" href="https://docs.anthropic.com/en/docs/claude-code/mcp" icon="angles-right" horizontal color="#0076d7" />
 
-Some MCP clients offer directories or marketplaces of well-known MCP servers. Look for the **Notion** connection when using these programs, some of which are listed in the table below. These directories can help you get started quickly with the remote [Notion MCP](/docs/mcp) from your tool of choice and showcase the wide variety of other MCP servers you might also be interested in.
+  <Card title="Cursor" href="https://docs.cursor.com/context/mcp" icon="angles-right" horizontal color="#0076d7" />
 
-| AI tool              | MCP server directory                                                                                     | Additional MCP docs                                                                                                                                                                                                 |
-|----------------------|----------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Cursor**          | [https://docs.cursor.com/tools/mcp](https://docs.cursor.com/tools/mcp)                                    | [https://docs.cursor.com/context/mcp](https://docs.cursor.com/context/mcp)                                                                                                                                                       |
-| **Anthropic (Claude)** | [https://www.anthropic.com/partners/mcp](https://www.anthropic.com/partners/mcp)                        | Claude Code: [https://docs.anthropic.com/en/docs/claude-code/mcp](https://docs.anthropic.com/en/docs/claude-code/mcp)<br>Claude Desktop: [https://www.anthropic.com/engineering/desktop-extensions](https://www.anthropic.com/engineering/desktop-extensions)<br>[https://modelcontextprotocol.io/quickstart/user](https://modelcontextprotocol.io/quickstart/user) |
-| **OpenAI (ChatGPT, Deep Research)** | [https://chatgpt.com/#settings/Connectors](https://chatgpt.com/#settings/Connectors) (requires login) | [https://help.openai.com/en/articles/11487775-connectors-in-chatgpt](https://help.openai.com/en/articles/11487775-connectors-in-chatgpt)                                                                 |
+  <Card title="VS Code" href="https://code.visualstudio.com/docs/copilot/customization/mcp-servers" icon="angles-right" horizontal color="#0076d7" />
 
-See [Connecting to Notion MCP](/docs/get-started-with-mcp) for more details and installation options.
+  <Card title="Claude Desktop" href="https://support.claude.com/en/articles/11503834-building-custom-connectors-via-remote-mcp-servers" icon="angles-right" horizontal color="#0076d7" />
 
----
+  <Card title="Windsurf" href="https://docs.windsurf.com/windsurf/cascade/mcp" icon="angles-right" horizontal color="#0076d7" />
 
-Updated 4 months ago
-```
+  <Card title="ChatGPT" href="https://help.openai.com/en/articles/11487775-connectors-in-chatgpt" icon="angles-right" horizontal color="#0076d7" />
+</CardGroup>
+
+To connect to the [remote Notion MCP](/guides/mcp/mcp), many of these tools offer built-in directories or marketplaces where you can add **Notion**. For more setup instructions, see [Connecting to Notion MCP](/guides/mcp/get-started-with-mcp).
+
+For the [local MCP server](/guides/mcp/hosting-open-source-mcp), see the [README for connection instructions](https://github.com/makenotion/notion-mcp-server?tab=readme-ov-file#3-adding-mcp-config-to-your-client).
+
+<Note>
+  Building your own MCP client? See the [MCP client integration guide](https://github.com/makenotion/notion-cookbook/blob/main/docs/mcp-client-integration.md) for step-by-step instructions on implementing OAuth and connecting to Notion MCP.
+</Note>

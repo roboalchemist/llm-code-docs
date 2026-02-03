@@ -2,10 +2,7 @@
 
 # List Settings by Tag
 
-```
-GET 
-/v1/tags/:tagId/settings
-```
+Copy page
 
 This endpoint returns the list of the Settings that has the specified Tag, identified by the `tagId` parameter.
 

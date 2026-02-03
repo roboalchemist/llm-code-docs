@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/features/tags.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tagging
 
 Tags allow you to label queries and completions.
@@ -96,8 +100,3 @@ Later on, this can also be useful for creating fine-tune datasets.
     </Tabs>
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

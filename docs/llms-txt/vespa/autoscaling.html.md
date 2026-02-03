@@ -22,13 +22,13 @@ Autoscaling is useful in a number of scenarios. Some typical ones are:
 
 - You have a new application which you can't benchmark with realistic data and usage, making you unsure what resources to allocate: Set wide ranges for all resource parameters and let the system choose a configuration. Once you gain experience you can consider tightening the configuration space.
 - You have load that varies quickly during the day, or that may suddenly increase quickly due to some event, and want container cluster resources to quickly adjust to the load: Set a range for the number of nodes and/or vcpu on containers.
-- Your expect your data volume to grow over time, but you don't want to allocate resources prematurely, nor constantly worry about whether it is time to increase: Configure ranges for content nodes and/or node resources such that the size of the system grows with the data.
+- You expect your data volume to grow over time, but you don't want to allocate resources prematurely, nor constantly worry about whether it is time to increase: Configure ranges for content nodes and/or node resources such that the size of the system grows with the data.
 
 ## Resource tradeoffs
 
 Some other considerations when deciding resources:
 
-- Making changes to resources/nodes is easy and safe, and one of Vespa Cloud's strength. We advise you make controlled changes and observe effect on latencies, data migration and cost. Everything is automated, just deploy a new application package. This is useful learning when later needed during load peaks and capacity requirement changes.
+- Making changes to resources/nodes is easy and safe, and one of Vespa Cloud's strengths. We advise you make controlled changes and observe effect on latencies, data migration and cost. Everything is automated, just deploy a new application package. This is useful learning when later needed during load peaks and capacity requirement changes.
 - Node resources cannot be chosen freely in all zones, CPU/Memory often comes in increments of x 2. Try to make sure that the resource configuration is a good fit.
 - CPU is the most expensive component, optimize for this for most applications.
 - Having few nodes means more overcapacity as Vespa requires that the system will handle one node being down (or one group, in content clusters having multiple groups). 4-5 nodes minimum is a good rule of thumb. Whether 4-5 or 9-10 nodes of half the size is better depends on quicker upgrade cycles vs. smoother resource auto-scale curves. Latencies can be better or worse, depending on static vs dynamic query cost.
@@ -42,7 +42,7 @@ It is often safe to follow the _suggested resources_ advice when shown in the co
 
 A Vespa application must handle a combination of reads and writes, from multiple sources. User load often resembles a sine-like curve. Machine-generated load, like a batch job, can be spiky and abrupt.
 
-In the default Vespa configuration, all kinds of load uses \_one\_ default container cluster. Example: An application where daily batch jobs update the corpus at high rate:
+In the default Vespa configuration, all kinds of load uses _one_ default container cluster. Example: An application where daily batch jobs update the corpus at high rate:
 
  ![nodes and resources](/assets/img/load.png)
 
@@ -50,10 +50,54 @@ Autoscaling scales _up_ much quicker than _down_, as the probability of a new sp
 
 The best solution for this case is to slow down the batch job, as it is of short duration. It is not always doable to slow down jobs - in these cases, setting up multiple[container clusters](../applications/containers.html)can be a smart thing - optimize each cluster for its load characteristics. This could be a combination of clusters using autoscale and clusters with a fixed size. Autoscaling often works best for the user-generated load, whereas the machine-generated load could either be tuned or routed to a different cluster in the same Vespa application.
 
+## Examples
+
+Below is an example of node resources with autoscaling that would work well for a container cluster:
+
+```
+```
+<nodes count="[2, 8]">
+    <resources vcpu="[2, 3]" memory="[8Gb, 16Gb]" disk="[50Gb, 100Gb]"/>
+  </nodes>
+```
+```
+
+The above would in general **not be recommended for a content cluster.** Changing cpu, memory or disk usually leads to allocating new nodes to fulfil the new node resources spec. When that happens there will be redistribution of documents between the old and new nodes and this might impact service quality to some degree. For a content cluster it would usually be better to try to stick to the same node resources and add or remove nodes, e.g something like:
+
+```
+```
+<nodes count="[2, 8]">
+    <resources vcpu="4" memory="16Gb" disk="500Gb"/>
+  </nodes>
+```
+```
+
+If a content cluster is configured to autoscale based on node resources (not just number of nodes or groups) this will work fine, but note that using paged attributes or HNSW indexes will make it more expensive and time-consuming to redistribute documents when scaling up or down. When doing the initial feeding of a cluster it will be best to avoid auto-scaling, as changing the topology will require redistribution of documents, possibly several times.
+
+When using groups in a content cluster it's possible to scale the number of groups instead of the number of nodes, e.g. with a fixed group size and a range for the number of groups:
+
+```
+```
+<nodes groups="[2, 4]" group-size="8">
+    <resources vcpu="4" memory="16Gb" disk="500Gb"/>
+  </nodes>
+```
+```
+
+Note that at the moment it is not possible to autoscale GPU resources.
+
 ## Related reading
 
 - [Feed sizing](../performance/sizing-feeding.html)
 - [Query sizing](../performance/sizing-search.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
+
+### On this page:
+
+- [When to use autoscaling](#When-to-use-autoscaling)
+- [Resource tradeoffs](#resource-tradeoffs)
+- [Mixed load](#mixed-load)
+- [Examples](#examples)
+- [Related reading](#)
 

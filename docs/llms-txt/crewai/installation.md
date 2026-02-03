@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/installation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Installation
 
 > Get started with CrewAI - Install, configure, and build your first AI crew
@@ -193,7 +197,8 @@ We recommend using the `YAML` template scaffolding for a structured approach to 
 
 <CardGroup cols={2}>
   <Card title="Build Your First Agent" icon="code" href="/en/quickstart">
-    Follow our quickstart guide to create your first CrewAI agent and get hands-on experience.
+    Follow our quickstart guide to create your first CrewAI agent and get
+    hands-on experience.
   </Card>
 
   <Card title="Join the Community" icon="comments" href="https://community.crewai.com">

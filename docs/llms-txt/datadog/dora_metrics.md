@@ -6,7 +6,6 @@ description: >-
   Learn how to use DORA metrics to measure and improve your organization's
   software delivery processes.
 breadcrumbs: Docs > DORA Metrics
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # DORA Metrics
@@ -47,15 +46,15 @@ Change failure rate
 {% /dt %}
 
 {% dd %}
-The percentage of deployments causing a failure in production.
+The ratio of deployments that fail and require immediate intervention.
 {% /dd %}
 
 {% dt %}
-Time to restore service
+Failed deployment recovery time
 {% /dt %}
 
 {% dd %}
-How long it takes an organization to recover from a failure in production.
+The time it takes to recover from a deployment that fails and requires immediate intervention.
 {% /dd %}
 
 {% /dl %}
@@ -64,7 +63,7 @@ Defining and tracking DORA metrics can help you identify areas of improvement fo
 
 ## Set up DORA Metrics{% #set-up-dora-metrics %}
 
-To start configuring data sources to send deployment and failure events to Datadog, see the [Setup documentation](https://docs.datadoghq.com/dora_metrics/setup/).
+To start configuring data sources to send deployment events to Datadog, see the [Setup documentation](https://docs.datadoghq.com/dora_metrics/setup/).
 
 ## Analyze DORA Metrics{% #analyze-dora-metrics %}
 
@@ -74,16 +73,16 @@ After you've set up the data sources for your deployment and failure events, nav
    source="https://datadog-docs.imgix.net/images/dora_metrics/dora_ui_3.1c02efe2d644b5baafe7caa0de0678cf.png?auto=format"
    alt="An overview of DORA Metrics calculations filtered by the Language custom tag" /%}
 
-Click **View Deployments** to open a new tab with the Deployment Frequency and Change Lead Time metrics in addition to a list of deployment events.
+Click **View Deployments** to open a new tab with the list of deployment events.
 
 {% image
-   source="https://datadog-docs.imgix.net/images/dora_metrics/deployments_list.b16c516ab1dde4fc23f93fcf20b5b785.png?auto=format"
+   source="https://datadog-docs.imgix.net/images/dora_metrics/deployments_list.25e630d3cb95255ec049a5db3418cf2a.png?auto=format"
    alt="The Deployments Breakdown displaying a breakdown of metrics and a list of related events" /%}
 
-Click **View Failures** to open a side panel with the Change Failure Rate and Time To Restore metrics in addition to a list of failure events.
+Click **View Change Failures** to open a side panel with the list of deployment events marked as change failures.
 
 {% image
-   source="https://datadog-docs.imgix.net/images/dora_metrics/failures_list.8419ac8eaf80dbb64ddda579def23e18.png?auto=format"
+   source="https://datadog-docs.imgix.net/images/dora_metrics/change_failures_list.2c4e0bb64ebe91b8a6ee11b94f687ec9.png?auto=format"
    alt="The Failures Breakdown displaying a breakdown of metrics and a list of related events" /%}
 
 ## Use DORA Metrics data{% #use-dora-metrics-data %}
@@ -114,6 +113,7 @@ Within dashboards and graphs, custom tags are treated as [attributes](https://do
 
 ## Further Reading{% #further-reading %}
 
+- [Learn how Datadog calculates DORA metrics](https://docs.datadoghq.com/dora_metrics/calculation/)
 - [Check out the latest Software Delivery releases! (App login required)](https://app.datadoghq.com/release-notes?category=Software%20Delivery)
 - [Best practices for using DORA metrics to improve software delivery](https://www.datadoghq.com/blog/dora-metrics-software-delivery/)
 - [3 ways to drive software delivery success with Datadog DORA Metrics](https://www.datadoghq.com/blog/datadog-dora-metrics/)

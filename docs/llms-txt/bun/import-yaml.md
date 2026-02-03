@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/runtime/import-yaml.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Import a YAML file
 
 Bun natively supports `.yaml` and `.yml` imports.
@@ -99,4 +103,4 @@ export = contents;
 
 ***
 
-See [Docs > API > YAML](https://bun.com/docs/api/yaml) for complete documentation on YAML support in Bun.
+See [Docs > API > YAML](/runtime/yaml) for complete documentation on YAML support in Bun.

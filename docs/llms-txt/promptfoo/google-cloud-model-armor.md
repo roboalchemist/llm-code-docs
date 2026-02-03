@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/google-cloud-model-armor/
+
 # Testing Google Cloud Model Armor
 
 [Model Armor](https://cloud.google.com/security-command-center/docs/model-armor-overview) is a Google Cloud service that screens LLM prompts and responses for security and safety risks. It integrates with Vertex AI, Gemini, and other services. This guide shows how to use Promptfoo to evaluate and tune your Model Armor templates before deploying them to production.

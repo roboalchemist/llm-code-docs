@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-app/delete-your-app
+
 # Delete your app
 
 If you need to delete your app, it's simple and easy. There are several cases where you may need to delete your app:

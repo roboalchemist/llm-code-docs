@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/reference/forms-app.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zapier integration structure for a forms app
 
 > Form and survey app integrations built on Zapier allow users to connect mobile data collection forms to send the responses into other apps as new contacts, document templates, messages, and more.

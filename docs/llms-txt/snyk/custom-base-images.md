@@ -1,3 +1,5 @@
+# Source: https://docs.snyk.io/snyk-api/reference/custom-base-images.md
+
 # Source: https://docs.snyk.io/implementation-and-setup/enterprise-implementation-guide/phase-6-rolling-out-the-prevention-stage/custom-base-images.md
 
 # Custom base images

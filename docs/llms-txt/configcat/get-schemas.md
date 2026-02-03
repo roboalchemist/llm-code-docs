@@ -2,10 +2,7 @@
 
 # Get Schemas
 
-```
-GET 
-/v2/:organizationId/Schemas
-```
+Copy page
 
 This endpoint returns the supported schema list.
 

@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/features/prompts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prompt Templates
 
 Prompt templates are a way to store, version and collaborate on prompts.
@@ -223,8 +227,3 @@ You can also use templates manually with any LLM API by accessing the relevant f
 The Prompt Playground provides a powerful interactive environment for testing and refining your prompts. You can experiment with different models, parameters, and even test against custom API endpoints.
 
 [Learn more about the Prompt Playground →](/docs/features/prompt-playground)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

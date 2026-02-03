@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/plans/charges/spending-minimum.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Spending minimums
 
 <Info>**Premium feature ✨**: only users with a premium license can define a charge spending minimum.

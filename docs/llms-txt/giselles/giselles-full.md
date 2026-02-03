@@ -4,12 +4,558 @@ Source: https://docs.giselles.ai/llms-full.txt
 
 ---
 
+# Blog Post & Social Media Generator
+Source: https://docs.giselles.ai/en/cookbooks/blog-social-media-generator
+
+Learn both sequential and parallel processing in one workflow. Generate blog articles from topics and create optimized social media posts for multiple platforms.
+
+This recipe shows you how to build an app where you enter a topic (and optionally an image), and AI creates an outline, writes a full blog article, then generates optimized posts for X, Instagram, and LinkedIn in parallel based on the article content.
+
+## Overview
+
+**Purpose**: Generate blog articles from topics and create social media posts in parallel based on the article content.
+
+| Node                    | Role                                                    | Model                 |
+| ----------------------- | ------------------------------------------------------- | --------------------- |
+| App Request             | Topic input + image (optional)                          | -                     |
+| Text Node               | Article structure prompt                                | -                     |
+| Generator 1 (Outline)   | Generate article structure                              | gpt-5-nano            |
+| Generator 2 (Article)   | Generate body from outline                              | claude-haiku-4.5      |
+| Generator 3 (X)         | Generate short text for X from article                  | gpt-5-nano            |
+| Generator 4 (Instagram) | Generate Instagram caption from article (image support) | gemini-2.5-flash-lite |
+| Generator 5 (LinkedIn)  | Generate professional LinkedIn post from article        | claude-haiku-4.5      |
+
+**What you'll learn**: Node chaining (sequential processing), parallel processing, prompt design, multimodal input (optional)
+
+## Workflow Diagram
+
+```mermaid theme={null}
+flowchart LR
+    A[Topic Input] --> B[Outline Generator]
+    B --> C[Article Writer]
+    D[Blog Writing Guidelines] --> C
+    C --> E[X Post Generator]
+    C --> F[Instagram Caption Generator]
+    C --> G[LinkedIn Post Generator]
+    A --> F
+```
+
+## Node Configuration Details
+
+### 1. App Request
+
+| Item            | Value                                  |
+| --------------- | -------------------------------------- |
+| Node Name       | `Topic Input`                          |
+| Node Input Name | `topic`                                |
+| File Input      | Optional (Image: PNG, JPEG, GIF, WebP) |
+| Prompt          | - (User input only)                    |
+
+### 2. Text Node
+
+| Item         | Value                     |
+| ------------ | ------------------------- |
+| Node Name    | `Blog Writing Guidelines` |
+| Text Content | (see below)               |
+
+```
+You are a professional blog writer. Follow these guidelines when creating content:
+- Write in a clear, engaging, and informative tone
+- Use headings and subheadings for better readability
+- Include an introduction, main body, and conclusion
+- Target length: 800-1200 words
+- Make the content SEO-friendly with natural keyword usage
+```
+
+### 3. Generator Node (Outline)
+
+| Item       | Value               |
+| ---------- | ------------------- |
+| Node Name  | `Outline Generator` |
+| Model      | gpt-5-nano          |
+| Thinking   | OFF                 |
+| Web Search | -                   |
+
+**Prompt:**
+
+```
+Create a detailed blog post outline for the following topic:
+
+@Topic Input
+
+Include:
+1. A compelling title
+2. Introduction hook
+3. 3-5 main sections with subpoints
+4. Conclusion summary
+5. Call-to-action suggestion
+
+Output the outline in a structured format.
+```
+
+### 4. Generator Node (Article)
+
+| Item       | Value            |
+| ---------- | ---------------- |
+| Node Name  | `Article Writer` |
+| Model      | claude-haiku-4.5 |
+| Thinking   | ON               |
+| Web Search | OFF              |
+
+**Prompt:**
+
+```
+Write a complete blog article based on the following outline:
+
+@Outline Generator
+
+Follow these writing guidelines:
+@Blog Writing Guidelines
+
+Make sure to:
+- Expand each section with detailed, valuable content
+- Use smooth transitions between sections
+- Include relevant examples where appropriate
+- Maintain a consistent voice throughout
+```
+
+### 5. Generator Node (X)
+
+| Item       | Value              |
+| ---------- | ------------------ |
+| Node Name  | `X Post Generator` |
+| Model      | gpt-5-nano         |
+| Thinking   | OFF                |
+| Web Search | -                  |
+
+**Prompt:**
+
+```
+Create a post for X (Twitter) to promote the following blog article:
+
+@Article Writer
+
+Requirements:
+- Maximum 280 characters
+- Highlight the key insight or hook from the article
+- Engaging and concise
+- Include 1-3 relevant hashtags
+- Use a conversational tone
+- Include a call-to-action to read the full article
+```
+
+### 6. Generator Node (Instagram)
+
+| Item       | Value                         |
+| ---------- | ----------------------------- |
+| Node Name  | `Instagram Caption Generator` |
+| Model      | gemini-2.5-flash-lite         |
+| Thinking   | -                             |
+| Web Search | OFF                           |
+
+**Prompt:**
+
+```
+Create an Instagram caption to promote the following blog article:
+
+@Article Writer
+
+Additional context (if image provided):
+@Topic Input
+
+Requirements:
+- If an image is provided, analyze it and incorporate visual elements into the caption
+- Summarize the article's key points in an engaging way
+- Engaging opening line to hook readers
+- Use line breaks for readability
+- Include 5-10 relevant hashtags at the end
+- Add 2-3 relevant emojis
+- Include a call-to-action (e.g., "Link in bio to read the full article")
+- Optimal length: 150-300 characters for the main text
+```
+
+### 7. Generator Node (LinkedIn)
+
+| Item       | Value                     |
+| ---------- | ------------------------- |
+| Node Name  | `LinkedIn Post Generator` |
+| Model      | claude-haiku-4.5          |
+| Thinking   | OFF                       |
+| Web Search | OFF                       |
+
+**Prompt:**
+
+```
+Create a LinkedIn post to promote the following blog article:
+
+@Article Writer
+
+Requirements:
+- Professional and insightful tone
+- Start with a hook or thought-provoking question from the article
+- Summarize key takeaways from the article
+- Use short paragraphs and line breaks for readability
+- Include a clear lesson or insight
+- End with a question to encourage engagement
+- Optimal length: 1,300-2,000 characters
+- No hashtags or limit to 3 professional ones
+- Include a call-to-action to read the full article
+```
+
+
+# Knowledge Base Q&A
+Source: https://docs.giselles.ai/en/cookbooks/knowledge-base-qa
+
+Learn how to build a RAG (Retrieval-Augmented Generation) workflow using both Document Vector Store and GitHub Vector Store together, with query optimization.
+
+This recipe shows you how to build an app that combines multiple Vector Stores for a powerful RAG (Retrieval-Augmented Generation) workflow. Learn to integrate Document Vector Store and GitHub Vector Store with query optimization for comprehensive knowledge base Q\&A.
+
+## Overview
+
+**Purpose**: Learn how RAG works by combining multiple Vector Stores.
+
+| Node                  | Role                                | Model                  |
+| --------------------- | ----------------------------------- | ---------------------- |
+| Document Vector Store | Vectorize PDF/text documents        | text-embedding-3-small |
+| GitHub Vector Store   | Vectorize code repository           | text-embedding-3-small |
+| App Entry             | Question input                      | -                      |
+| Generator x2          | Optimize search queries             | gpt-5-nano             |
+| Query Node x2         | Search for relevant information     | -                      |
+| Generator             | Generate answer from search results | claude-haiku-4.5       |
+
+**What you'll learn**: RAG (Retrieval-Augmented Generation), Document Vector Store, GitHub Vector Store, query optimization, integrating multiple Query nodes
+
+## Workflow Diagram
+
+```mermaid theme={null}
+flowchart LR
+    A[Question Input] --> B1[Doc Query Generator]
+    A --> B2[Code Query Generator]
+    B1 --> C1[Document Search]
+    B2 --> C2[Code Search]
+    D[Document Knowledge Base] --> C1
+    E[GitHub Knowledge Base] --> C2
+    C1 --> F[Answer Generator]
+    C2 --> F
+    A --> F
+```
+
+## Node Configuration Details
+
+### 1. Document Vector Store
+
+| Item            | Value                         |
+| --------------- | ----------------------------- |
+| Node Name       | `Document Knowledge Base`     |
+| Embedding Model | OpenAI text-embedding-3-small |
+
+**Pre-loaded Files:**
+
+| File                             | Source URL                               | Content              |
+| -------------------------------- | ---------------------------------------- | -------------------- |
+| `docs.giselles.ai-llms-full.txt` | `https://docs.giselles.ai/llms-full.txt` | Documentation (Text) |
+| `giselles-terms.pdf`             | `https://giselles.ai/legal/terms`        | Terms of Service     |
+| `giselles-privacy.pdf`           | `https://giselles.ai/legal/privacy`      | Privacy Policy       |
+
+### 2. GitHub Vector Store
+
+| Item                  | Value                         |
+| --------------------- | ----------------------------- |
+| Node Name             | `GitHub Knowledge Base`       |
+| Repository            | `giselles-ai/giselle`         |
+| Include Code          | ON                            |
+| Include Issues        | ON                            |
+| Include Pull Requests | ON                            |
+| Embedding Model       | OpenAI text-embedding-3-small |
+
+### 3. App Entry
+
+| Item            | Value               |
+| --------------- | ------------------- |
+| Node Name       | `Question Input`    |
+| Node Input Name | `question`          |
+| Prompt          | - (User input only) |
+
+### 4. Generator Node (Doc Query)
+
+| Item       | Value                 |
+| ---------- | --------------------- |
+| Node Name  | `Doc Query Generator` |
+| Model      | gpt-5-nano            |
+| Thinking   | OFF                   |
+| Web Search | -                     |
+
+**Prompt:**
+
+```
+Convert the following question into an optimized search query for documentation:
+
+Question: @Question Input
+
+Generate a query with relevant keywords and concepts for searching documentation.
+Output only the query, nothing else.
+```
+
+### 5. Generator Node (Code Query)
+
+| Item       | Value                  |
+| ---------- | ---------------------- |
+| Node Name  | `Code Query Generator` |
+| Model      | gpt-5-nano             |
+| Thinking   | OFF                    |
+| Web Search | -                      |
+
+**Prompt:**
+
+```
+Convert the following question into an optimized search query for code:
+
+Question: @Question Input
+
+Generate a query with function names, file patterns, and technical terms for searching code.
+Output only the query, nothing else.
+```
+
+### 6. Query Node (Document)
+
+| Item                 | Value                      |
+| -------------------- | -------------------------- |
+| Node Name            | `Document Search`          |
+| Source               | `@Document Knowledge Base` |
+| Query                | `@Doc Query Generator`     |
+| Max Results          | 10                         |
+| Similarity Threshold | 0.3                        |
+
+### 7. Query Node (GitHub)
+
+| Item                 | Value                    |
+| -------------------- | ------------------------ |
+| Node Name            | `Code Search`            |
+| Source               | `@GitHub Knowledge Base` |
+| Query                | `@Code Query Generator`  |
+| Max Results          | 10                       |
+| Similarity Threshold | 0.3                      |
+
+### 8. Generator Node (Answer)
+
+| Item       | Value              |
+| ---------- | ------------------ |
+| Node Name  | `Answer Generator` |
+| Model      | claude-haiku-4.5   |
+| Thinking   | ON                 |
+| Web Search | OFF                |
+
+**Prompt:**
+
+```
+Answer the following question based on the provided content:
+
+Question: @Question Input
+
+Documentation:
+@Document Search
+
+Code & Repository:
+@Code Search
+
+Requirements:
+- Answer based on both documentation and code repository content
+- Reference specific files or passages when applicable
+- If the answer is not found, clearly state that
+- Be concise but thorough
+```
+
+
+# What are Cookbooks
+Source: https://docs.giselles.ai/en/cookbooks/overview
+
+Step-by-step recipes for building practical AI apps with Giselle, from content generation to RAG-powered Q&A systems.
+
+Cookbooks are practical, step-by-step guides that show you how to build real-world AI apps with Giselle. Each recipe includes complete node configurations, prompts, and workflow diagrams you can follow to create your own apps.
+
+## Available Recipes
+
+| Recipe                                                                          | What You'll Build                                                                         | Key Features                                                   |
+| ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| [Blog Post & Social Media Generator](/en/cookbooks/blog-social-media-generator) | Content creation pipeline that generates blog posts and social media content from a topic | Sequential processing, multiple generators, content adaptation |
+| [Web Research Assistant](/en/cookbooks/web-research-assistant)                  | Research tool that combines fixed reference pages with real-time web search               | Webpage node, LLM Web Search, information synthesis            |
+| [Knowledge Base Q\&A](/en/cookbooks/knowledge-base-qa)                          | RAG system using Document and GitHub Vector Stores                                        | RAG, Vector Stores, query optimization, multi-source search    |
+
+## What You'll Learn
+
+Through these recipes, you'll learn how to:
+
+* **Connect nodes** to build multi-step AI workflows
+* **Use Vector Stores** for RAG (Retrieval-Augmented Generation)
+* **Combine information sources** like web pages, documents, and code repositories
+* **Optimize queries** to improve search results
+* **Chain generators** for sequential content processing
+
+
+# Web Research Assistant
+Source: https://docs.giselles.ai/en/cookbooks/web-research-assistant
+
+Learn how to combine the Webpage node with LLM Web Search. Ask a question, and the AI will research using both the reference documentation and real-time web search.
+
+This recipe shows you how to build an app that combines fixed reference pages with LLM web search capabilities. Ask a question, and the AI will research using both the reference documentation and real-time web search to provide comprehensive answers.
+
+## Overview
+
+**Purpose**: Combine fixed reference pages with LLM web search for comprehensive research.
+
+| Node                   | Role                                       | Model                 |
+| ---------------------- | ------------------------------------------ | --------------------- |
+| App Entry              | Question input                             | -                     |
+| Webpage Node           | Fetch reference information from fixed URL | -                     |
+| Generator 1 (Research) | Collect information via web search         | claude-haiku-4.5      |
+| Generator 2 (Summary)  | Summarize research results                 | gemini-2.5-flash-lite |
+
+**What you'll learn**: Webpage node, LLM Web Search feature, combining information sources
+
+## Workflow Diagram
+
+```mermaid theme={null}
+flowchart LR
+    A[Research Question] --> C[Web Researcher]
+    B[Reference Webpage] --> C
+    C --> D[Summary Generator]
+```
+
+## Node Configuration Details
+
+### 1. App Entry
+
+| Item            | Value               |
+| --------------- | ------------------- |
+| Node Name       | `Research Question` |
+| Node Input Name | `question`          |
+| Prompt          | - (User input only) |
+
+### 2. Webpage Node
+
+| Item      | Value                                    |
+| --------- | ---------------------------------------- |
+| Node Name | `Reference Webpage`                      |
+| URL       | `https://docs.giselles.ai/llms-full.txt` |
+
+### 3. Generator Node (Web Researcher)
+
+| Item       | Value            |
+| ---------- | ---------------- |
+| Node Name  | `Web Researcher` |
+| Model      | claude-haiku-4.5 |
+| Thinking   | ON               |
+| Web Search | ON               |
+
+**Prompt:**
+
+```
+Research the following question using web search and the reference page:
+
+Question: @Research Question
+
+Reference Information: @Reference Webpage
+
+Requirements:
+- Search the web for the latest and most relevant information
+- Combine web search results with the reference page content
+- Provide accurate and up-to-date answers
+- Cite sources when possible
+```
+
+### 4. Generator Node (Summary)
+
+| Item       | Value                 |
+| ---------- | --------------------- |
+| Node Name  | `Summary Generator`   |
+| Model      | gemini-2.5-flash-lite |
+| Thinking   | -                     |
+| Web Search | OFF                   |
+
+**Prompt:**
+
+```
+Summarize the research findings into a clear report:
+
+@Web Researcher
+
+Requirements:
+- Executive summary (2-3 sentences)
+- Key findings as bullet points
+- Conclusion and recommendations
+```
+
+
 # Account FAQ
 Source: https://docs.giselles.ai/en/faq/account-billing/accounts
 
 Frequently asked questions about Giselle accounts
 
-TBD
+## How do I create a Giselle account?
+
+You can create a Giselle account using one of the following methods:
+
+* **Email and Password**: Sign up at [studio.giselles.ai/signup](https://studio.giselles.ai/signup) with your email address and create a password
+* **Google**: Sign up directly using your Google account
+* **GitHub**: Sign up directly using your GitHub account
+
+After signing up with email, you'll receive a verification email to confirm your account.
+
+## How do I log in to my account?
+
+Visit [studio.giselles.ai/login](https://studio.giselles.ai/login) and log in using:
+
+* Email and password
+* Google account
+* GitHub account
+
+## Can I connect multiple login methods to my account?
+
+Yes. You can connect Google and GitHub accounts to your Giselle account from [Account Settings > Authentication](https://studio.giselles.ai/settings/account/authentication). This allows you to log in using any of your connected methods.
+
+## How do I disconnect a login method?
+
+Go to [Account Settings > Authentication](https://studio.giselles.ai/settings/account/authentication) and click "Disconnect" next to the provider you want to remove. Note that you must maintain at least one login method.
+
+## How do I update my profile information?
+
+Go to [Account Settings > General](https://studio.giselles.ai/settings/account/general) where you can:
+
+* Update your display name
+* Upload or change your profile picture (JPG, PNG, GIF, or WebP)
+
+## How do I delete my account?
+
+To delete your account, please contact our support team at [support@giselles.ai](mailto:support@giselles.ai).
+
+## What is a team?
+
+A team is a shared workspace where you and your colleagues can collaborate on AI apps. Each user can create and belong to multiple teams.
+
+## How do I create a new team?
+
+Go to [Account Settings](https://studio.giselles.ai/settings/account) and click "Create New Team". Enter a name for your team to get started.
+
+## What are the team member roles?
+
+* **Admin**: Can manage team settings, billing, and team members
+* **Member**: Can use team resources but cannot manage settings, billing, or members
+
+## How do I invite team members?
+
+Team admins can invite new members from [Team Settings > Members](https://studio.giselles.ai/settings/team/members). Enter the email address of the person you want to invite, and they'll receive an invitation email. Note that adding team members requires a Pro plan.
+
+## How do I remove a team member?
+
+Team admins can remove members from [Team Settings > Members](https://studio.giselles.ai/settings/team/members). Click the menu next to the member you want to remove and select "Remove".
+
+## Can I leave a team?
+
+Yes, you can leave a team as long as you belong to at least one other team. If it's your only team, you'll need to create or join another team first.
+
+## How do I delete a team?
+
+Only teams on the Free plan can be deleted. Go to [Team Settings > General](https://studio.giselles.ai/settings/team/general) and look for the delete option. Note that you must have at least one other team before deleting.
 
 
 # Billing FAQ
@@ -17,7 +563,77 @@ Source: https://docs.giselles.ai/en/faq/account-billing/billing
 
 Frequently asked questions about billing and payments for Giselle
 
-TBD
+## What payment methods are accepted?
+
+Giselle uses Stripe for payment processing, which supports major credit cards and other payment methods available in your region.
+
+## How do I access my billing information?
+
+Pro plan team admins can access billing information from [Team Settings](https://studio.giselles.ai/settings/team). Click the "Manage Subscription" button to open the Stripe billing portal where you can:
+
+* View and update payment methods
+* View billing history and invoices
+* Manage Subscription billing information
+
+## How does billing work?
+
+Giselle Pro plan uses a combination of:
+
+* **Base subscription fee**: A fixed monthly or annual fee for the Pro plan
+* **Usage-based billing**: Charged based on AI model usage
+
+## When am I charged?
+
+You are charged at the beginning of each billing period. Usage-based charges from the previous period are included in your invoice.
+
+## How do I view my invoices?
+
+Access the Stripe billing portal from [Team Settings](https://studio.giselles.ai/settings/team) by clicking "Manage Subscription". Your complete invoice history is available there.
+
+## How do I update my payment method?
+
+1. Go to [Team Settings](https://studio.giselles.ai/settings/team)
+2. Click "Manage Subscription" to open the Stripe billing portal
+3. Manage Subscription your payment method in the portal
+
+## What happens if my payment fails?
+
+If a payment fails, Stripe will automatically retry the payment. You can also update your payment method in the billing portal to resolve payment issues.
+
+## How do I cancel my subscription?
+
+To cancel your Pro subscription:
+
+1. Go to [Team Settings](https://studio.giselles.ai/settings/team)
+2. Click "Manage Subscription" to open the Stripe billing portal
+3. Cancel your subscription in the portal
+
+Your subscription will remain active until the end of the current billing period.
+
+## What happens when I cancel my subscription?
+
+When you cancel:
+
+* Your subscription remains active until the end of the current billing period
+* A final invoice is generated for any usage during the last billing cycle
+* After cancellation, your team reverts to the Free plan
+* Team membership is adjusted (only the earliest admin remains)
+
+## Can I get a refund?
+
+For refund requests, please contact our support team at [support@giselles.ai](mailto:support@giselles.ai).
+
+## How is usage-based billing calculated?
+
+AI model usage (text generation, image generation) is metered and reported to Stripe throughout your billing period. Your invoice will reflect the actual usage during the billing period.
+
+## Where can I see my current usage?
+
+You can view your usage from [Team Settings > Usage](https://studio.giselles.ai/settings/team/usage).
+
+## Where can I see pay-as-you-go charges for AI models?
+
+You can view the detailed breakdown of pay-as-you-go charges for additional AI model usage in the Stripe billing portal. Access it by clicking "Manage Subscription" in [Team Settings](https://studio.giselles.ai/settings/team). The portal shows your usage-based billing details alongside your subscription charges.
 
 
 # Plan FAQ
@@ -25,7 +641,81 @@ Source: https://docs.giselles.ai/en/faq/account-billing/plan
 
 Frequently asked questions about Giselle plans and features
 
-TBD
+## What plans are available?
+
+Giselle offers two plans:
+
+* **Free**: Get started at no cost with basic features
+* **Pro**: Full access to all features with usage-based pricing
+
+For detailed pricing information, visit [giselles.ai/pricing](https://giselles.ai/pricing).
+
+## What's included in the Free plan?
+
+The Free plan includes:
+
+* Access to the Workspace editor
+* Basic AI model usage
+* Single team member
+
+## What's included in the Pro plan?
+
+The Pro plan includes:
+
+* All Free plan features
+* Unlimited team members
+* Full AI model usage (usage-based billing)
+* Team collaboration features
+* Priority support
+
+## How do I upgrade to Pro?
+
+1. Go to [Team Settings](https://studio.giselles.ai/settings/team)
+2. Click "Upgrade to Pro"
+3. Complete the checkout process with Stripe
+4. Your team is upgraded immediately
+
+## Can I try Pro before committing?
+
+For trial options, please contact our support team at [support@giselles.ai](mailto:support@giselles.ai).
+
+## How do I downgrade from Pro to Free?
+
+To downgrade, cancel your Pro subscription through the Stripe billing portal:
+
+1. Go to [Team Settings](https://studio.giselles.ai/settings/team)
+2. Click "Manage Subscription" to open the billing portal
+3. Cancel your subscription
+
+Your Pro features remain active until the end of the current billing period, after which your team reverts to the Free plan.
+
+## What happens to my team when I downgrade?
+
+When your Pro subscription ends:
+
+* Your team reverts to the Free plan
+* Team membership is adjusted to fit Free plan limits
+* Your apps and data are preserved
+
+## Can I switch teams between plans?
+
+Each team has its own plan. You can have multiple teams on different plans. To upgrade a specific team, make sure you've selected that team before upgrading.
+
+## Is there an annual plan?
+
+For annual billing options, please contact our support team at [support@giselles.ai](mailto:support@giselles.ai) or check [giselles.ai/pricing](https://giselles.ai/pricing).
+
+## How does usage-based billing work?
+
+AI model usage (text generation, image generation) is metered and billed based on actual usage. You can monitor your usage from [Team Settings > Usage](https://studio.giselles.ai/settings/team/usage).
+
+## Are there usage limits?
+
+The Pro plan uses pay-as-you-go billing for AI model usage, so there are no hard limits. You're billed for what you use.
+
+## How do I check my current plan?
+
+Go to [Team Settings](https://studio.giselles.ai/settings/team) to see your current plan status and subscription details.
 
 
 # AI Models FAQ
@@ -33,23 +723,308 @@ Source: https://docs.giselles.ai/en/faq/application/ai-models
 
 Frequently asked questions about AI models and their usage in Giselle
 
-TBD
+## What AI providers are available in Giselle?
+
+Giselle integrates with multiple AI providers:
+
+* **Anthropic**: Claude models for nuanced understanding and safe outputs
+* **Google AI**: Gemini models with multimodal capabilities and large context windows
+* **OpenAI**: GPT models for code generation, creative content, and structured outputs
+* **Fal AI**: Image generation models (Open Source version only)
+
+## What models are available on the Free plan?
+
+The following models are available on the Free plan:
+
+* **Anthropic**: Claude Haiku 4.5
+* **Google**: Gemini 2.5 Flash Lite
+* **OpenAI**: GPT-5-nano
+
+## What additional models are available on the Pro plan?
+
+Pro plan users have access to all Free plan models plus:
+
+* **Anthropic**: Claude Opus 4.5, Claude Sonnet 4.5
+* **Google**: Gemini 3 Pro Preview, Gemini 2.5 Pro, Gemini 2.5 Flash, Gemini 2.5 Flash Image
+* **OpenAI**: GPT-5.2, GPT-5.1-thinking, GPT-5.1-codex, GPT-5, GPT-5-mini
+
+## How do I select an AI model?
+
+In the Workspace, add a [Generator Node](/en/glossary/generator-node) and click on it to open the Properties Panel. You can select your preferred AI model from the model dropdown menu.
+
+## Which model should I choose?
+
+Here are general recommendations:
+
+* **For coding and complex reasoning**: Claude Opus 4.5, GPT-5.2, or Gemini 2.5 Pro
+* **For balanced performance and cost**: Claude Sonnet 4.5 or Gemini 2.5 Flash
+* **For speed and cost-efficiency**: Claude Haiku 4.5, GPT-5-nano, or Gemini 2.5 Flash Lite
+* **For image generation**: Gemini 2.5 Flash Image
+
+## What is the context window?
+
+The context window is the maximum amount of text (measured in tokens) that a model can process in a single request. Larger context windows allow you to include more information in your prompts.
+
+* **Anthropic models**: 200k tokens
+* **Google Gemini models**: 1M tokens
+* **OpenAI models**: 400k tokens
+
+## Do the models support image input?
+
+Yes, most models support image input:
+
+* **Anthropic Claude**: All Claude models support image and PDF input
+* **Google Gemini**: All Gemini models support image, PDF, audio, and video input
+* **OpenAI GPT**: GPT-5 series models support image input
+
+## What is the Reasoning capability?
+
+Reasoning (also called Extended Thinking) allows models to spend more time thinking through complex problems before responding. This improves accuracy for multi-step reasoning tasks. Models with reasoning capability include:
+
+* Claude Opus 4.5, Claude Sonnet 4.5, Claude Haiku 4.5
+* Gemini 2.5 Pro, Gemini 2.5 Flash, Gemini 2.5 Flash Lite
+* GPT-5.2, GPT-5.1-thinking
+
+## What is Web Search?
+
+Web Search allows models to access real-time information from the internet. You can enable this feature from the Generator Node's Tools tab. Models supporting web search include most Claude, Gemini, and GPT models.
+
+## How is AI model usage billed?
+
+AI model usage is billed based on the number of tokens processed (input and output). Different models have different pricing. You can view your usage from [Team Settings > Usage](https://studio.giselles.ai/settings/team/usage).
+
+## Can I use multiple models in one workflow?
+
+Yes! One of Giselle's strengths is combining different AI providers in a single workflow. You can use different models at different stages to optimize for cost, speed, or capability.
+
+## Where can I learn more about each model?
+
+For detailed model specifications, visit the [Models documentation](/en/models/providers/overview) or the official provider documentation:
+
+* [Anthropic Documentation](https://docs.anthropic.com/)
+* [Google AI for Developers](https://ai.google.dev/)
+* [OpenAI Documentation](https://platform.openai.com/docs)
 
 
-# Workspace FAQ
-Source: https://docs.giselles.ai/en/faq/application/workspaces
+# Build Apps FAQ
+Source: https://docs.giselles.ai/en/faq/application/build-apps
 
-Frequently asked questions about Giselle workspaces
+Frequently asked questions about building apps in Giselle
 
-TBD
+## What is a Workspace?
+
+A Workspace is a visual canvas-based editor where you design AI workflows by connecting nodes together. Each node performs a specific function, and data flows between nodes through connections.
+
+## How do I create a new app?
+
+Click "+ Create App" in the left menu. Enter a name and description for your app, and you'll be taken to the Workspace editor where you can build your workflow.
+
+## What are nodes?
+
+Nodes are the building blocks of your workflow. Each node performs a specific function:
+
+* **Start/End Nodes**: Define the entry point and output of your app
+* **Generator Node**: Performs AI text or image generation
+* **Text/File/Web Page Nodes**: Provide content to your workflow
+* **Vector Store/Query Nodes**: Enable semantic search with RAG
+* **Trigger/Action Nodes**: Connect to external services like GitHub
+
+For more details, see the [Workspaces guide](/en/guides/workspaces).
+
+## How do I connect nodes?
+
+1. Hover over a node to see its output port (right side)
+2. Click and drag from the output port
+3. Drop the connection on another node's input port (left side)
+
+## How do I run my workflow?
+
+Click the **Run** button in the upper right corner of the Workspace. You'll be redirected to the task execution result page where you can see the output.
+
+## What's the difference between running in Workspace vs Playground?
+
+* **Workspace**: Run your workflow directly to test during building. Useful for iterating and debugging.
+* **Playground**: Run completed apps with a simple interface. Best for regular use by you and your team.
+
+## How do I turn my workflow into an app?
+
+Connect a [Start Node](/en/glossary/start-end-nodes#start-node) and [End Node](/en/glossary/start-end-nodes#end-node) to your workflow. Once these are connected, your app will appear in the [Playground](https://studio.giselles.ai/playground).
+
+## Can I duplicate a workflow?
+
+Yes. You can copy an existing app to create a new one based on it. This is useful for creating variations of your workflows.
+
+## How do I delete an app?
+
+Navigate to the app settings and look for the delete option. Note that deleted apps cannot be recovered.
+
+## Can team members edit the same workspace?
+
+Team members with access to the team can view and edit apps within that team. Changes are saved automatically.
+
+## What file types can I upload to a File Node?
+
+File Nodes support PDF, text files, and images (JPG, PNG, GIF, WebP).
+
+## How do I use external data in my workflow?
+
+You can bring external data into your workflow using:
+
+* **File Node**: Upload documents directly
+* **Web Page Node**: Fetch content from URLs
+* **GitHub Vector Store Node**: Index GitHub repositories
+* **Trigger Node**: Receive data from external events
+
+## What happens if my workflow fails?
+
+If a workflow fails, you can see the error details on the task execution result page. Common issues include:
+
+* Missing required inputs
+* Invalid node configuration
+* API errors from AI providers
+
+Check the error message and update your workflow accordingly.
+
+## Where can I learn more about building workflows?
+
+See the [Workspaces guide](/en/guides/workspaces) for detailed instructions on building workflows, and the [Glossary](/en/glossary/node) for information about each node type.
+
+
+# Run Apps FAQ
+Source: https://docs.giselles.ai/en/faq/application/run-apps
+
+Frequently asked questions about running apps in Giselle
+
+## How do I run an app?
+
+There are two ways to run an app:
+
+* **[Playground](https://studio.giselles.ai/playground)**: Select an app, enter your input, and press Enter
+* **Workspace**: Click the **Run** button in the upper right corner
+
+## What is the Playground?
+
+The [Playground](https://studio.giselles.ai/playground) is where you run completed apps with a simple interface. It displays all apps available to you, including your own apps and team apps.
+
+## What is the Workspace?
+
+The Workspace is a visual canvas-based editor where you design AI workflows by connecting nodes together. You can also run and test your workflows directly from the Workspace. For more details, see the [Workspaces guide](/en/guides/workspaces).
+
+## What is the Tasks page?
+
+The [Tasks](https://studio.giselles.ai/tasks) page shows your execution history. You can see all past runs, their status, and results.
+
+## How do I view my execution history?
+
+Go to [Tasks](https://studio.giselles.ai/tasks) to see a list of all your past executions. Click on any task to view its details.
+
+## What information is shown on the task result page?
+
+The task execution result page shows:
+
+* **Status**: Whether the task completed, failed, or is still running
+* **Steps**: Each node's execution progress
+* **Output**: The generated results from each node
+* **Duration**: How long the execution took
+* **Token Usage**: AI model token consumption
+
+## Can I re-run a previous task?
+
+You can run the same app again from the Playground with new inputs. The original task results are preserved in your history.
+
+## How do I share an app with my team?
+
+Apps created within a team are automatically available to all team members in the Playground. Team members can run the app without accessing the Workspace editor.
+
+## What happens if an app fails?
+
+If an app fails during execution:
+
+1. Check the task result page for error details
+2. Look at which step failed
+3. Open the app in Workspace to fix the issue
+4. Run the app again
+
+## Can I cancel a running task?
+
+Currently, once a task starts, it will run until completion or failure.
+
+## How is app usage billed?
+
+App executions consume AI model tokens, which are billed based on usage. You can check your billing amount from [Team Settings](https://studio.giselles.ai/settings/team) by clicking "Manage Subscription" to access the Stripe portal.
+
+## Where can I learn more?
+
+* [Playground guide](/en/guides/playground) - How to use the Playground
+* [Tasks guide](/en/guides/tasks) - Understanding task history and results
 
 
 # Privacy & Security FAQ
 Source: https://docs.giselles.ai/en/faq/security-support/privacy-security
 
-Frequently asked questions about Giselle7s privacy and security measures
+Frequently asked questions about Giselle privacy and security measures
 
-TBD
+## Is my data used for AI model training?
+
+**No.** When you use Giselle, your data is sent to AI providers (Anthropic, OpenAI, Google) via their APIs. All of these providers explicitly state that API data is **not used for model training** by default.
+
+### Anthropic
+
+Anthropic's Commercial Terms of Service clearly states:
+
+> "Anthropic may not train models on Customer Content from Services."
+
+This means your inputs and outputs when using Claude models through Giselle are not used to train Anthropic's models.
+
+Additionally, Anthropic's Privacy Center states:
+
+> "Anthropic does not use Customer Content to train our models."
+
+**Sources:**
+
+* [Commercial Terms of Service](https://www.anthropic.com/legal/commercial-terms) (Section B. Customer Content)
+* [Is my data used for model training?](https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training)
+
+### OpenAI
+
+OpenAI's official documentation states:
+
+> "By default, we do not train on any inputs or outputs from our products for business users, including ChatGPT Business, ChatGPT Enterprise, and the API. We offer API customers a way to opt-in to share data with us, such as by providing feedback in the Playground, which we then use to improve our models. Unless they explicitly opt-in, organizations are opted out of data-sharing by default."
+
+**Sources:**
+
+* [How your data is used to improve model performance](https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance)
+* [Data controls in the OpenAI platform](https://platform.openai.com/docs/guides/your-data)
+
+### Google
+
+Giselle uses Gemini models through Google Cloud's Vertex AI. The Vertex AI documentation states:
+
+> "Google does not use your data, including your prompts, inputs, and outputs, to train foundation models without your permission."
+>
+> "By default, Google Cloud does not use your data for training."
+
+This applies to all managed models on Vertex AI, including Gemini models used through Giselle.
+
+**Note:** For those using the Gemini API directly via Google AI Studio (not through Giselle), the terms differ. With paid services:
+
+> "Google doesn't use your prompts (including associated system instructions, cached content, and files such as images, videos, or documents) or responses to improve our products"
+
+**Sources:**
+
+* [Data governance for Generative AI on Vertex AI](https://cloud.google.com/vertex-ai/generative-ai/docs/data-governance)
+* [Vertex AI Zero Data Retention](https://cloud.google.com/vertex-ai/generative-ai/docs/vertex-ai-zero-data-retention)
+* [Google API Service Terms (Generative AI)](https://ai.google.dev/gemini-api/terms)
+
+## Summary
+
+| Provider  | Data Used for Training | Source                                                                                                              |
+| --------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Anthropic | No                     | [Commercial Terms](https://www.anthropic.com/legal/commercial-terms)                                                |
+| OpenAI    | No                     | [Data Usage Policy](https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance) |
+| Google    | No                     | [Data Governance](https://cloud.google.com/vertex-ai/generative-ai/docs/data-governance)                            |
+
+Giselle uses these providers' APIs, so your data benefits from the same protections. Your prompts, inputs, and outputs are processed to generate responses but are not used to train or improve the AI models.
 
 
 # Support FAQ
@@ -57,7 +1032,34 @@ Source: https://docs.giselles.ai/en/faq/security-support/support
 
 Frequently asked questions about Giselle support services
 
-TBD
+## How do I report a security vulnerability?
+
+If you discover a security vulnerability in Giselle, please report it through our [GitHub Security page](https://github.com/giselles-ai/giselle/security). We take security reports seriously and will respond promptly to investigate and address the issue.
+
+## What should I do if I suspect unauthorized access to my account?
+
+If you suspect unauthorized access to your Giselle account:
+
+1. Change your password immediately
+2. Review your recent activity in Task History
+3. Contact our support team at [support@giselles.ai](mailto:support@giselles.ai)
+
+## How can I contact support for security-related questions?
+
+For security-related inquiries, please contact us at [support@giselles.ai](mailto:support@giselles.ai). We handle security matters with priority and confidentiality.
+
+## Does Giselle have a security disclosure policy?
+
+Yes. Our Security Policy is available on [GitHub](https://github.com/giselles-ai/giselle/security). We encourage responsible disclosure of security vulnerabilities. When you report a security issue:
+
+* We will acknowledge receipt of your report
+* We will investigate and work to resolve the issue
+* We will keep you informed of our progress
+* We appreciate your help in keeping Giselle secure
+
+## Where can I find more information about Giselle's security practices?
+
+For information about how Giselle handles your data and our security measures, please see our [Privacy & Security FAQ](/en/faq/security-support/privacy-security).
 
 
 # Action Node
@@ -98,7 +1100,7 @@ The GitHub Action capability within the Action Node allows your workflows to per
    * The configuration panel will display the selected repository and the chosen action (e.g., "Create Issue Comment"). Below this, the necessary parameters will be listed.
    * For each parameter, you'll need to provide a value. This can often be done by:
      * Entering a static value directly.
-     * **Selecting a Source**: This allows you to map data dynamically from the outputs of previous nodes in your flow or from the Giselle's app flow's initial trigger inputs. The "Select Source" option next to each parameter field facilitates this.
+     * **Selecting a Source**: This allows you to map data dynamically from the output of previous nodes in your flow or from the Giselle's app flow's initial trigger input. The "Select Source" option next to each parameter field facilitates this.
    * Ensure all parameters marked as "Required" are filled in.
    * Once all parameters are configured, the changes are typically saved by an "Action" button or similar confirmation in the UI. The node on the canvas will update to reflect the configured action (e.g., showing "Create Issue Comment" with inputs for `issueNumber` and `body`).
 
@@ -179,6 +1181,30 @@ Please note that definitions and availability of generation parameters may vary 
   * Adjust based on desired response length and API/model token limits.
   * Essential for cost management and resource optimization.
 
+## Reasoning Parameters
+
+### Reasoning Effort
+
+* **Definition:** Controls how many reasoning tokens the model generates before producing a response. Higher levels result in more thorough reasoning at the cost of increased latency.
+* **Range:** Model-dependent. GPT-5.2 supports `none`, `low`, `medium`, `high`, `xhigh`. Traditional models support `minimal`, `low`, `medium`, `high`.
+* **Default:** `none` for GPT-5.2/5.1 models, `medium` for traditional models.
+* **Recommended use:**
+  * `none`: Low-latency interactions where quick responses are prioritized.
+  * `low` to `medium`: Balanced reasoning for general tasks.
+  * `high` to `xhigh`: Complex problem-solving, deep analysis, and tasks requiring thorough reasoning.
+
+### Text Verbosity
+
+* **Definition:** Determines how many output tokens are generated. Controls the length and detail of the model's response.
+* **Range:** `low`, `medium`, `high`.
+* **Default:** `medium`.
+* **Recommended use:**
+  * `low`: Concise answers, simple code generation (e.g., SQL queries), situations where brevity is preferred.
+  * `medium`: Balanced output length for most tasks.
+  * `high`: Thorough explanations, extensive code refactoring, detailed documentation.
+
+> **Note:** Text verbosity sets a general token range at the system prompt level, but actual output can still be influenced by prompting within that range.
+
 ## Text-Specific Parameters
 
 ### Frequency Penalty
@@ -225,6 +1251,7 @@ Please note that definitions and availability of generation parameters may vary 
 * **Definition:** Maximum tokens/models can "remember" or process at once.
 * **Typical values:**
   * Gemini: up to 1M tokens.
+  * GPT-5.2: 400k tokens.
   * GPT-4o: 128k tokens.
   * Claude: up to 200k tokens.
 * **Recommended use:**
@@ -326,31 +1353,31 @@ The Document Vector Store supports multiple file types, each with specific size 
 
 ### Usage in Workflows
 
-The Document Vector Store Node is designed to be used in combination with a **Query Node**. It acts as the knowledge base that the Query Node searches through.
+The Document Vector Store Node is designed to be used in combination with a **Vector Query Node**. It acts as the knowledge base that the Vector Query Node searches through.
 
-* **Connect the Output**: The "Output" of the Document Vector Store Node should be connected to the input of a Query Node.
-* **Perform a Search**: The Query Node takes a user's question or dynamic input, searches the vectorized document content for the most relevant information, and passes that information to subsequent nodes (like a Generator Node) for processing, analysis, or summarization.
+* **Connect the Output**: The "Output" of the Document Vector Store Node should be connected to the input of a Vector Query Node.
+* **Perform a Search**: The Vector Query Node takes a user's question or dynamic input, searches the vectorized document content for the most relevant information, and passes that information to subsequent nodes (like a Generator Node) for processing, analysis, or summarization.
 
 #### Example Workflow:
 
 ```
 [Text Node: "What are the safety guidelines?"]
          ↓
-[Query Node] ←── [Document Vector Store Node]
+[Vector Query Node] ←── [Document Vector Store Node]
          ↓
 [Generator Node: Summarizes safety guidelines based on search results]
 ```
 
 ### Query Parameters
 
-When using a Query Node with the Document Vector Store, you can configure:
+When using a Vector Query Node with the Document Vector Store, you can configure:
 
 * **Max Results**: The maximum number of document chunks to return (default: 20, maximum: 100).
 * **Similarity Threshold**: The minimum cosine similarity score for results (default: 0.3, range: 0-1). Higher values return only more relevant results.
 
 ### Output of the Node
 
-The Document Vector Store Node's **output** is a reference to the vectorized data of your uploaded documents. This output provides the necessary connection for other nodes, like the Query Node, to access and search the document content.
+The Document Vector Store Node's **output** is a reference to the vectorized data of your uploaded documents. This output provides the necessary connection for other nodes, like the Vector Query Node, to access and search the document content.
 
 ### Managing Your Document Vector Stores
 
@@ -442,6 +1469,8 @@ The Generator Node is configured through three main tabs in its settings panel: 
 ### Prompt Tab
 
 This is where you provide the instructions for the AI model. Write a clear and detailed prompt describing the task you want the AI to perform. The output generated by the model will appear at the bottom of this panel, allowing you to quickly see the results.
+
+**Referencing other node output**: If you want to insert the output of another node as a variable within your prompt, you can click the `@` key to display a suggestion list. From this list, you can select the output of another node that is connected to the current node's input and insert it into your prompt.
 
 You can also test the node individually by clicking the **Generate** button, which runs only this node without executing the entire flow.
 
@@ -896,7 +1925,7 @@ Once configured, you can instruct the AI model to use the enabled tools directly
 
 Imagine you have enabled the `getFileContents`, `createPullRequest`, `createBranch` and `createOrUpdateFile` tools for a node.
 
-```markdown  theme={null}
+```markdown theme={null}
 Please complete the last step without checking with me.
 
 Creating the pull request, please follow these steps:
@@ -992,14 +2021,14 @@ For large repositories or frequent updates, you may experience rate limiting dur
 
 ### Usage in Workflows
 
-The GitHub Vector Store Node is designed to be used in combination with a **Query Node**. It acts as the knowledge base that the Query Node searches through.
+The GitHub Vector Store Node is designed to be used in combination with a **Vector Query Node**. It acts as the knowledge base that the Vector Query Node searches through.
 
-* **Connect the Output**: The "Output" of the GitHub Vector Store Node should be connected to the input of a Query Node.
-* **Perform a Search**: The Query Node can then take a user's question or a dynamic input, search the vectorized repository content for the most relevant information, and pass that information to subsequent nodes (like a Generator Node) for processing, analysis, or summarization.
+* **Connect the Output**: The "Output" of the GitHub Vector Store Node should be connected to the input of a Vector Query Node.
+* **Perform a Search**: The Vector Query Node can then take a user's question or a dynamic input, search the vectorized repository content for the most relevant information, and pass that information to subsequent nodes (like a Generator Node) for processing, analysis, or summarization.
 
 ### Output of the Node
 
-The GitHub Vector Store Node's **output** is a reference to the vectorized data of the selected repository. This output provides the necessary connection for other nodes, like the Query Node, to access and search the repository's content.
+The GitHub Vector Store Node's **output** is a reference to the vectorized data of the selected repository. This output provides the necessary connection for other nodes, like the Vector Query Node, to access and search the repository's content.
 
 
 # Nodes in Giselle
@@ -1011,56 +2040,112 @@ Learn about nodes, the building blocks of AI apps on Giselle. Connect nodes with
 
 Giselle is a platform that allows you to build powerful AI agents through an intuitive node-based interface. By connecting "nodes" with various functions, like assembling building blocks, you can visually design complex AI workflows. This makes it easy for anyone, even without specialized knowledge, to achieve automation with AI agents.
 
-## Introducing Giselle's Key Nodes
+## Node Categories
 
-Here are some of the fundamental nodes available in Giselle. By combining these nodes, you can build various AI workflows.
+Giselle organizes nodes into four main categories, accessible from the toolbar at the bottom of the canvas:
+
+| Category        | Hotkey | Description                                       |
+| --------------- | ------ | ------------------------------------------------- |
+| **App**         | A      | Define the entry and exit points of your workflow |
+| **Model**       | M      | Select AI models for content generation           |
+| **Context**     | C      | Add source data and retrieval capabilities        |
+| **Integration** | I      | Connect with external services                    |
+
+## App
+
+The **App** category contains nodes that define the boundaries of your workflow.
+
+### Start Node & End Node
+
+Start Node and End Node are the essential boundary nodes that define the entry and exit points of any workflow. They work as a pair to establish the complete flow of your app, from receiving user input to delivering the final output.
+
+For more details, see the [Start Node & End Node documentation](start-end-nodes).
+
+## Model
+
+The **Model** category provides access to AI models for generating content.
 
 ### Generator Node
 
-The Generator node can create both text and images using advanced AI models. By configuring prompts and conditions, you can generate content tailored to your needs. For text, this includes applications such as document creation, blog writing, and research report generation, leveraging Giselle's LLM API for high-quality, natural-sounding text. For images, you can generate visuals from text prompts, enabling creative content creation and workflows that utilize visual data. The Generator node empowers you to flexibly produce a wide range of AI-generated outputs within your workflows.
+The Generator Node can create both text and images using advanced AI models. By configuring prompts and conditions, you can generate content tailored to your needs. For text, this includes applications such as document creation, blog writing, and research report generation, leveraging Giselle's LLM API for high-quality, natural-sounding text. For images, you can generate visuals from text prompts, enabling creative content creation and workflows that utilize visual data.
 
-**Web Search Capability**: When using models that support web search functionality, the Generator node can access real-time information from the internet. This enables the creation of content based on the latest data and current events, making your AI workflows more dynamic and up-to-date.
+**Web Search Capability**: When using models that support web search functionality, the Generator Node can access real-time information from the internet. This enables the creation of content based on the latest data and current events, making your AI workflows more dynamic and up-to-date.
 
-### Text Node
+For more details, see the [Generator Node documentation](generator-node).
 
-Text node is used to hold text data. It can be used to record prompts, instructions, annotations, and more. It helps manage and organize text data within the workflow, streamlining input to text generation nodes and data usage in other nodes.
+## Context
 
-### File Node
+The **Context** category contains nodes for providing data sources and retrieval capabilities to your workflows. It is divided into two groups: **Source** and **Retrieval**.
 
-File node is used to handle file data. You can read files, use them as input for AI models, and save output results to files. It is useful for various tasks that involve utilizing file data, such as data-based analysis and report generation.
+### Source
 
-### Web Page Node
+Source nodes provide input data for your AI workflows.
 
-The Web Page node is used to fetch and hold content from web pages. You can input one or more URLs, and Giselle will attempt to retrieve the content from these pages. Currently, the fetched content is processed and made available primarily in Markdown format. This allows you to use web content as a dynamic input source for AI models or other processing nodes within your workflow, enabling tasks like summarization, analysis, or content generation based on information from the web.
+#### Text Node
 
-### Trigger Node
+Text Node is used to hold text data. It can be used to record prompts, instructions, annotations, and more. It helps manage and organize text data within the workflow, streamlining input to generation nodes and data usage in other nodes.
 
-Trigger Node is the starting point for running the workflow built in the Giselle App. It initiates the execution of the connected nodes in a sequence. Currently, two types of Trigger Nodes are supported:
+For more details, see the [Text Node documentation](text-node).
 
-* **Manual Trigger Node**: This node allows you to manually initiate the workflow directly within the Giselle App Workspace. It's useful for testing, on-demand executions, or when you want direct control over when a workflow runs.
-* **GitHub Trigger Node**: This node enables workflows to be automatically triggered by GitHub webhooks. When the Giselle GitHub App is installed in a repository, this node can listen for specific events (like issue comments or pull requests) and start the Giselle App's workflow in response.
+#### File Node
 
-### Action Node
+File Node is used to handle file data. You can upload PDF files, images, and text files to use as input for AI models. It is useful for various tasks that involve utilizing file data, such as data-based analysis and report generation.
 
-Action Node is a node that can call external services. Currently, it primarily supports integrations with GitHub, allowing workflows to perform actions within your repositories. We plan to expand its capabilities to enable interactions with a variety of other external services in the future.
+For more details, see the [File Node documentation](file-node).
 
-### GitHub Vector Store Node & Query Node
+#### Web Page Node
 
-Giselle supports advanced data retrieval and search capabilities through the **GitHub Vector Store Node** and the **Query Node**.
+The Web Page Node is used to fetch and hold content from web pages. You can input one or more URLs, and Giselle will attempt to retrieve the content from these pages. The fetched content is processed and made available primarily in Markdown format, enabling tasks like summarization, analysis, or content generation based on information from the web.
 
-* **GitHub Vector Store Node**: This specialized Source node allows you to vectorize the contents of a GitHub repository, creating a searchable knowledge base. You can select from multiple advanced embedding models, including OpenAI's text-embedding models and Google's gemini-embedding-001, to convert your repository's code and documents into vector representations, enabling semantic search within your workflows. This is especially useful for building Retrieval-Augmented Generation (RAG) applications. For setup and details, see the [GitHub Vector Store Node documentation](github-vector-store-node).
+For more details, see the [Web Page Node documentation](webpage-node).
 
-* **Query Node**: The Query Node is designed to execute search queries against connected data sources, such as the GitHub Vector Store Node. It retrieves the most relevant information (text chunks) from your vectorized repositories, which can then be used as dynamic context for AI generation or further processing. For more information, see the [Query Node documentation](query-node).
+#### Document Vector Store Node
 
-**Typical Usage:**
+The Document Vector Store Node creates a searchable knowledge base from your uploaded documents (PDFs, text files, and markdown). It uses advanced embedding models to convert your document content into vector embeddings, enabling semantic search within your workflows.
 
-1. Add a GitHub Vector Store Node and configure it with your repository.
-2. Connect its output to a Query Node.
-3. Use the Query Node to search your repository's content and pass the results to other nodes, such as a Generator Node, for context-aware AI workflows.
+For more details, see the [Document Vector Store Node documentation](document-vector-store-node).
 
-These nodes enable powerful, up-to-date, and context-rich AI applications by leveraging your own data sources within Giselle.
+#### GitHub Vector Store Node
 
-## Tips for using Node
+The GitHub Vector Store Node creates a searchable knowledge base from the contents of a GitHub repository. It vectorizes code, issues, and pull requests, enabling semantic search within your workflows. This is especially useful for building Retrieval-Augmented Generation (RAG) applications.
+
+For more details, see the [GitHub Vector Store Node documentation](github-vector-store-node).
+
+### Retrieval
+
+Retrieval nodes enable searching through vector stores to find relevant information.
+
+#### Vector Query Node
+
+The Vector Query Node is designed to execute search queries against connected vector store data sources (GitHub Vector Store Node or Document Vector Store Node). It retrieves the most relevant information (text chunks) from your vectorized content, which can then be used as dynamic context for AI generation.
+
+For more details, see the [Vector Query Node documentation](vector-query-node).
+
+## Integration
+
+The **Integration** category contains nodes for connecting with external services. It is divided into two groups: **Trigger** and **Action**.
+
+### Trigger
+
+Trigger nodes start workflows based on external events.
+
+#### Trigger Node
+
+Trigger Node is the starting point for running workflows automatically. Currently, the GitHub Trigger Node enables workflows to be automatically triggered by GitHub webhooks. When the Giselle GitHub App is installed in a repository, this node can listen for specific events (like issue comments or pull requests) and start the workflow in response.
+
+For more details, see the [Trigger Node documentation](trigger-node).
+
+### Action
+
+Action nodes perform operations on external services.
+
+#### Action Node
+
+Action Node is a node that can call external services. Currently, it primarily supports integrations with GitHub, allowing workflows to perform actions within your repositories such as creating issues or posting comments.
+
+For more details, see the [Action Node documentation](action-node).
+
+## Tips for Using Nodes
 
 Here are some helpful tips to enhance your experience with nodes in Giselle.
 
@@ -1083,24 +2168,15 @@ To enhance workflow efficiency, Giselle supports node duplication. This feature 
 
 This feature streamlines the process of building complex workflows by allowing for easy replication of configured or template nodes.
 
-## Future Node Expansion Plans
-
-We plan to expand node functionality to further empower our users to build AI workflows. Here's a look at what our team is currently considering:
-
-### Expansion of the File Node
-
-We plan to expand the file formats supported by the File node, adding support for:
-
-* **Tabular Files** (CSV, Excel, etc.)
-* **Audio Files**
-
-Stay tuned for Giselle's product updates!
-
 
 # PostgreSQL Tools
 Source: https://docs.giselles.ai/en/glossary/postgresql-tools
 
 Learn how to use PostgreSQL Tools in a Generator Node to connect your AI models to a PostgreSQL database, enabling them to query and retrieve data.
+
+<Warning>
+  This feature is currently in **Private Preview**. Access is limited to selected users. Features and availability may change.
+</Warning>
 
 **PostgreSQL Tools** empower AI models within a Generator Node to connect directly to your PostgreSQL databases. This feature, a form of "tool use" or "function calling," allows you to build AI agents that can query tables, retrieve data, and understand your database schema, all based on natural language instructions in your prompt.
 
@@ -1165,7 +2241,7 @@ Once configured, you can instruct the AI model to use the enabled tools directly
 
 Imagine you have enabled the `getTableStructure` and `query` tools for a node.
 
-```markdown  theme={null}
+```markdown theme={null}
 Please find out the total number of users from the database.
 ```
 
@@ -1178,63 +2254,116 @@ When this prompt is run, the Giselle agent will:
 5. Return a final answer based on the query result, such as: "The total number of users is 1,234."
 
 
-# Query Node
-Source: https://docs.giselles.ai/en/glossary/query-node
+# Start Node & End Node
+Source: https://docs.giselles.ai/en/glossary/start-end-nodes
 
-Learn how the Query Node in Giselle executes queries against data sources like the GitHub Vector Store to enable Retrieval-Augmented Generation (RAG).
+Learn how Start and End Nodes in Giselle define the boundaries of your workflow, establishing where user input enters and where the final output is collected.
 
-## Query Node in Giselle
+## Start Node & End Node in Giselle
 
-The **Query Node** is a powerful component in Giselle designed to search and retrieve information from connected data sources. Its primary function is to execute a query (such as a question or a search term) against a dataset and return the most relevant results.
+**Start Node** and **End Node** are the essential boundary nodes that define the entry and exit points of any workflow in Giselle. They work as a pair to establish the complete flow of your app, from receiving user input to delivering the final output.
 
-Currently, the Query Node is optimized to work with the **GitHub Vector Store Node**, making it a crucial building block for creating Retrieval-Augmented Generation (RAG) applications directly within your Giselle workflows.
+## Start Node
 
-### How to Use the Query Node
+The **Start Node** is the entry point of your workflow. It defines the input parameters that users will provide when running your app in the Playground.
 
-Setting up a Query Node involves adding it to your canvas, connecting a data source, and running a query.
+### Key Features
 
-#### 1. Add a Query Node
+* **Entry Point**: The Start Node marks where workflow execution begins. All data flows from this node to downstream nodes.
+* **Parameter Definition**: Define the input parameters that users will fill in when running your app, such as text input fields or file uploads.
+* **Single Instance**: Each workflow can have only one Start Node. It cannot be duplicated.
+* **Paired with End Node**: Start and End Nodes are always created together as a pair.
 
-From the node toolbar at the bottom of the canvas, select the **Query Node**, which is identifiable by its magnifying glass icon, and place it in your workspace.
+### Default Parameters
 
-#### 2. Connect a Data Source
+When you create a new app, the Start Node comes with two default input parameters:
 
-The Query Node requires an input from a data source to function. You must connect the `Output` of a data source node (like the GitHub Vector Store Node) to the `Input` of the Query Node. Until a data source is connected, the node will indicate that it is waiting for a connection.
+1. **Input(Text)**: A multiline text field for users to enter text content. This is marked as required.
+2. **Input(File)**: A file upload field that allows users to attach multiple files. This is optional by default.
 
-#### 3. Write and Run a Query
+The Start Node has a single output port that provides the user's input to downstream nodes in your workflow.
 
-Once a data source is connected, you can configure the Query Node:
+### Configuring the Start Node
 
-* **Enter a Query**: In the configuration panel, type your question or search term into the "Query" input field.
-* **Run the Query**: Click the **Run Query** button to execute the search against the connected data source.
+1. **Select the Node**: Click on the Start Node to open its configuration panel.
+2. **Edit App Description**: Customize the app description.
 
-#### 4. Review the Results
+### Output of the Start Node
 
-After the query runs, the results will be displayed directly in the node's panel. The results typically include:
+The Start Node has a single **output** that contains the values provided by the user when running the app. This output can be connected to any compatible node's input.
 
-* A summary of the number of results found.
-* A list of relevant "chunks" of text retrieved from the source documents.
-* A similarity score (e.g., 58%) for each chunk, indicating its relevance to your query.
+## End Node
 
-You can expand each chunk to view its content and metadata.
+The **End Node** is the endpoint of your workflow and the place where you define the app's final output. It collects processed data from upstream nodes and presents them as the app's results.
 
-### Core Use Case: Retrieval-Augmented Generation (RAG)
+### Key Features
 
-The primary purpose of the Query Node is to enable **Retrieval-Augmented Generation (RAG)** workflows. RAG enhances the capabilities of Large Language Models (LLMs) by providing them with relevant, up-to-date information from your own data sources before they generate a response.
+* **Workflow Endpoint**: The End Node is where workflow execution completes. Data connected here becomes the app's final result.
+* **Output Definition**: Specify which node's output to include in the app's final result. You can connect multiple upstream nodes.
+* **Single Instance**: Each workflow can have only one End Node. It cannot be duplicated.
+* **Dynamic Input**: The End Node's input is created dynamically when you connect upstream nodes.
 
-A typical RAG workflow in Giselle looks like this:
+### Configuring the End Node
 
-1. **Data Source (GitHub Vector Store Node)**: Ingests and vectorizes your documentation from a GitHub repository, making it searchable.
-2. **Query Node**: Takes a user's question (the query) and retrieves the most relevant text chunks from the vector store.
-3. **Generator Node**: Receives the original question *and* the retrieved information from the Query Node's output. It uses this combined context to generate a more accurate, detailed, and factually grounded answer.
+1. **Select the Node**: Click on the End Node to open its configuration panel.
+2. **Add Output**: Click the "Add Output" button to select which upstream node's output should be included in the final result.
+3. **Manage Connections**: View and disconnect connected nodes as needed.
 
-### Output of the Query Node
+### Connection Rules
 
-The `Result` output of the Query Node contains the collection of retrieved data chunks. This structured data can be passed to subsequent nodes—most commonly a **Generator Node**—to serve as dynamic context for text generation.
+When connecting nodes to the End Node:
 
-<Note>
-  For more information on how to set up a data source for querying, see our documentation on the [GitHub Vector Store Node](github-vector-store-node).
-</Note>
+* The End Node itself cannot be selected as a source
+* Nodes already connected cannot be selected again
+* Nodes without an output cannot be connected
+
+### Input of the End Node
+
+The End Node has a single **input** that receives data from connected upstream nodes. The connected data is then presented as the final output of your app.
+
+## Visual Appearance
+
+Both Start and End Nodes share a distinctive **capsule-shaped design** that sets them apart from other nodes:
+
+* **Start Node**: Has an output handle on the right side for connecting to downstream nodes
+* **End Node**: Has an input handle on the left side for receiving data from upstream nodes
+* Both display their respective icons and names ("Start" and "End" by default)
+
+### Connection Status Indicator
+
+When the Start Node is properly connected to the End Node through the workflow:
+
+* Both nodes display with full opacity
+* The "Try App in Playground" button becomes enabled
+
+When there's no valid path from Start to End:
+
+* Both nodes appear slightly faded with dashed borders
+* The "Try App in Playground" button is disabled
+
+## How They Work Together
+
+1. **User Input**: When someone runs your app, they fill in the parameters defined in the Start Node.
+2. **Data Flow**: Input values flow from the Start Node through connected nodes.
+3. **Processing**: Data is processed by various nodes (text, file, query, action nodes, etc.).
+4. **Collection**: Processed results are collected by the End Node.
+5. **Output**: The End Node presents the final output to the user.
+
+### Connection Requirement
+
+For your app to be runnable, there must be a valid path from the Start Node to the End Node. The system verifies this connection using a breadth-first search algorithm. Without a valid path, your app cannot be executed in the Playground.
+
+## Start & End Nodes vs. Other Nodes
+
+| Feature                | Start & End Nodes   | Other Nodes      |
+| ---------------------- | ------------------- | ---------------- |
+| Instances per workflow | Exactly one each    | Multiple allowed |
+| Can be duplicated      | No                  | Yes              |
+| Visual style           | Capsule-shaped      | Card-shaped      |
+| Purpose                | Workflow boundaries | Data processing  |
+| Created automatically  | Yes, as a pair      | No               |
+
+Start and End Nodes are essential for creating functional apps that accept user input and deliver processed results.
 
 
 # Text Node
@@ -1285,87 +2414,93 @@ The **output** of a Text Node is the raw text content you have entered into its 
 # Trigger Node
 Source: https://docs.giselles.ai/en/glossary/trigger-node
 
-Learn about Trigger Nodes, the starting points for workflows in Giselle. Configure Manual Triggers with parameters or use GitHub Triggers to initiate your AI workflow sequences.
+Learn about Trigger Nodes, the starting points for workflows in Giselle. Use GitHub Triggers to initiate your AI workflow sequences.
 
 ## Trigger Node in Giselle
 
 The **Trigger Node** is the starting point for running the workflow built in the Giselle App. It initiates the execution of the connected nodes in a sequence.
 
-Currently, two types of Trigger Nodes are supported.
-
-### Manual Trigger Node
-
-The **Manual Trigger Node** allows you to start your workflow with the click of a button. You can also configure it to request specific parameters each time it's run. This is useful for providing dynamic inputs to your workflow at the moment of execution.
-
-**Configuring Manual Trigger Parameters:**
-
-When you add a Manual Trigger Node to your workflow, you can define parameters that will be requested when the flow is manually triggered. If no parameters are configured, the flow will simply start when triggered.
-
-To add and configure parameters:
-
-1. In the "Add New Parameter" section:
-   * **Parameter Name**: Enter a descriptive name for the parameter (e.g., "Title", "Message", "Priority"). This name will be used to identify the input field when the trigger is run.
-   * **Type**: Select the type of data this parameter will accept. The available options are:
-     * **Text**: For single-line text input.
-     * **Text(multi-line)**: For longer text input that may span multiple lines.
-     * **Number**: For numerical input.
-   * **Required**: Check this box if the parameter must be filled in before the workflow can be triggered. An error will occur if a required parameter is left empty.
-2. Click the **plus icon (+)** to add the configured parameter to the list.
-3. You can add multiple parameters by repeating the steps above.
-4. Once all desired parameters are added and configured, click **Save Configuration**.
-
-When you manually run this workflow, a form will appear prompting you to enter values for the parameters you've defined. These values can then be used by subsequent nodes in your workflow.
-
 ### GitHub Trigger Node
 
 The **GitHub Trigger Node** enables you to automatically start your Giselle workflows based on specific events occurring in your GitHub repositories. This allows for seamless integration between your code management and AI-powered tasks.
 
-**Setting up a GitHub Trigger:**
+#### Setting up a GitHub Trigger
 
-1. **Select GitHub Account/Organization**:
-   * When you add a GitHub Trigger node, you'll first need to choose the GitHub account or organization where your target repository resides (e.g., `giselles-ai`, `liam-hq`).
-   * If you're missing a GitHub account connection or need to adjust permissions, click on "Adjust GitHub App Permissions".
+#### 1. Select GitHub Account/Organization
 
-2. **Choose a Repository**:
-   * A list of repositories available under the selected account/organization will be displayed (e.g., `docs`, `giselle`).
-   * Click the **Set up** button next to the desired repository (e.g., `giselle`).
-   * If your repository isn't listed, you might need to "Adjust GitHub App Permissions" to grant Giselle access to it.
+When you add a GitHub Trigger node, you'll first need to choose the GitHub account or organization where your target repository resides (e.g., `giselles-ai`, `liam-hq`).
 
-3. **Configure the Trigger Event**:
-   * Once a repository is selected (e.g., `giselles-ai/giselle`), you need to specify which GitHub event will trigger the workflow.
-   * Click on the dropdown menu labeled "Choose when you want to trigger the flow."
-   * Select an event from the list, such as:
-     * **Issue Created**: Triggers the flow when a new issue is created in the repository.
-     * **Issue Closed**: Triggers when an issue is closed.
-     * **Issue Labeled**: Triggers when a specific label is added to an issue.
-     * **Issue Comment Created**: Triggers when a new comment is made on an issue.
-     * **Pull Request Comment Created**: Triggers on a new pull request comment.
-     * **Pull Request Opened**: Triggers when a new pull request is opened.
-     * **Pull Request Ready for Review**: Triggers when a pull request is marked as ready for review.
-     * **Pull Request Closed**: Triggers when a pull request is closed.
-     * **Pull Request Labeled**: Triggers when a specific label is added to a pull request.
+If you're missing a GitHub account connection or need to adjust permissions, click on "Adjust GitHub App Permissions".
 
-4. **Configure Callsign (for specific events)**:
-   * For some events, like "Issue Comment Created" or "Pull Request Comment Created," you can specify a **Callsign**.
-   * A Callsign is a specific string or command (e.g., `/code-review`, `/deep-research`) that must be present in the comment for the trigger to activate. This prevents the flow from running on every single comment.
-   * Enter your desired Callsign in the provided field. The example shows `/code-review`.
-   * Click **Set up** after configuring the Callsign.
+#### 2. Choose a Repository
 
-4a. **Configure Labels (for specific events)**:
+A list of repositories available under the selected account/organization will be displayed (e.g., `docs`, `giselle`).
 
-* For some events, like "Issue Labeled" or "Pull Request Labeled," you can specify one or more **Labels**.
-* When multiple labels are added, the workflow will trigger if *any* of the specified labels are added to the issue or pull request (OR condition). This allows for flexible triggering based on labeling conventions.
-* Enter your desired labels in the provided input fields. You can add multiple labels using the "Add label" button.
-* Click **Set up** after configuring the Labels.
+Click the **Set up** button next to the desired repository (e.g., `giselle`).
 
-5. **Enable the Trigger**:
-   * After configuring the event and any associated options (like Callsign or Labels), the trigger will initially be in a "Disabled" state. The node on the canvas will show "Requires Setup" or display the repository and event type with a "Disabled" status.
-   * On the configuration panel for the trigger (e.g., "On Issue Created" or "On Issue Comment Created"), you will see the current **State** as "Disable".
-   * Click on **Enable** to activate the trigger.
-   * Once enabled, the **State** will change to "Enable", and you will see an option to **Disable Trigger**. The node on the canvas will also reflect its "Enabled" status.
+If your repository isn't listed, you might need to "Adjust GitHub App Permissions" to grant Giselle access to it.
 
-6. **Run in the workspace**:
-   * For GitHub Trigger Nodes, clicking the "Run" button allows you to test your workflow without waiting for an actual GitHub webhook. You can enter values in a form that simulates the GitHub event, enabling you to verify that your workflow functions correctly before enabling it for real GitHub events.
+#### 3. Configure the Trigger Event
+
+Once a repository is selected (e.g., `giselles-ai/giselle`), you need to specify which GitHub event will trigger the workflow.
+
+Click on the dropdown menu labeled "Choose when you want to trigger the flow."
+
+Select an event from the list, such as:
+
+* **Issue Created**: Triggers the flow when a new issue is created in the repository.
+* **Issue Closed**: Triggers when an issue is closed.
+* **Issue Labeled**: Triggers when a specific label is added to an issue.
+* **Issue Comment Created**: Triggers when a new comment is made on an issue.
+* **Pull Request Comment Created**: Triggers on a new pull request comment.
+* **Pull Request Opened**: Triggers when a new pull request is opened.
+* **Pull Request Ready for Review**: Triggers when a pull request is marked as ready for review.
+* **Pull Request Closed**: Triggers when a pull request is closed.
+* **Pull Request Labeled**: Triggers when a specific label is added to a pull request.
+
+#### 4. Configure Callsign (for Comment Events)
+
+For some events, like "Issue Comment Created" or "Pull Request Comment Created," you can specify a **Callsign**.
+
+A Callsign is a specific string or command (e.g., `/code-review`, `/deep-research`) that must be present in the comment for the trigger to activate. This prevents the flow from running on every single comment.
+
+Enter your desired Callsign in the provided field. The example shows `/code-review`.
+
+Click **Set up** after configuring the Callsign.
+
+#### 5. Configure Labels (for Label Events)
+
+For some events, like "Issue Labeled" or "Pull Request Labeled," you can specify one or more **Labels**.
+
+When multiple labels are added, the workflow will trigger if *any* of the specified labels are added to the issue or pull request (OR condition). This allows for flexible triggering based on labeling conventions.
+
+Enter your desired labels in the provided input fields. You can add multiple labels using the "Add label" button.
+
+Click **Set up** after configuring the Labels.
+
+#### 6. Enable the Trigger
+
+After configuring the event and any associated options (like Callsign or Labels), the trigger will initially be in a "Disabled" state. The node on the canvas will show "Requires Setup" or display the repository and event type with a "Disabled" status.
+
+On the configuration panel for the trigger (e.g., "On Issue Created" or "On Issue Comment Created"), you will see the current **State** as "Disable".
+
+Click on **Enable** to activate the trigger.
+
+Once enabled, the **State** will change to "Enable", and you will see an option to **Disable Trigger**. The node on the canvas will also reflect its "Enabled" status.
+
+#### 7. Configure In-Progress Comment (Optional)
+
+Once your trigger is set up, you can configure whether Giselle posts an "in-progress" comment to GitHub when the workflow starts executing.
+
+By default, this option is **enabled**, meaning Giselle will automatically post a comment to the issue or pull request indicating that the workflow is running.
+
+To disable in-progress comments, toggle off the **Post In-Progress Comment** option in the trigger's properties panel.
+
+This setting is useful when you want to reduce noise in GitHub discussions or prefer silent workflow execution.
+
+#### 8. Run in the Workspace
+
+For GitHub Trigger Nodes, clicking the "Run" button allows you to test your workflow without waiting for an actual GitHub webhook. You can enter values in a form that simulates the GitHub event, enabling you to verify that your workflow functions correctly before enabling it for real GitHub events.
 
 **Example Workflow after Setup:**
 
@@ -1394,6 +2529,68 @@ On Pull Request Labeled:
 * **Action**: When either the `feature` or `enhancement` label is added to a pull request in `giselles-ai/giselle`, this workflow will start. The subsequent nodes can access information like the pull request number, title, body, and the name of the label that triggered the event.
 
 Stay tuned for more updates and functionalities for Giselle's nodes!
+
+
+# Vector Query Node
+Source: https://docs.giselles.ai/en/glossary/vector-query-node
+
+Learn how the Vector Query Node in Giselle executes queries against vector store data sources to enable Retrieval-Augmented Generation (RAG).
+
+## Vector Query Node in Giselle
+
+The **Vector Query Node** is a powerful component in Giselle designed to search and retrieve information from connected vector store data sources. Its primary function is to execute a query (such as a question or a search term) against a vectorized dataset and return the most relevant results.
+
+The Vector Query Node works with the following vector store nodes, making it a crucial building block for creating Retrieval-Augmented Generation (RAG) applications directly within your Giselle workflows:
+
+* **[GitHub Vector Store Node](github-vector-store-node)**: Search through vectorized GitHub repository content including code, issues, and pull requests.
+* **[Document Vector Store Node](document-vector-store-node)**: Search through your uploaded documents such as PDFs, text files, and markdown files.
+
+### How to Use the Vector Query Node
+
+Setting up a Vector Query Node involves adding it to your canvas, connecting a data source, and running a query.
+
+#### 1. Add a Vector Query Node
+
+From the node toolbar at the bottom of the canvas, select the **Vector Query Node**, which is identifiable by its magnifying glass icon, and place it in your workspace.
+
+#### 2. Connect a Data Source
+
+The Vector Query Node requires an input from a vector store data source to function. You must connect the `Output` of a vector store node (GitHub Vector Store Node or Document Vector Store Node) to the `Input` of the Vector Query Node. Until a data source is connected, the node will indicate that it is waiting for a connection.
+
+#### 3. Write and Run a Query
+
+Once a data source is connected, you can configure the Vector Query Node:
+
+* **Enter a Query**: In the configuration panel, type your question or search term into the "Query" input field.
+* **Run the Query**: Click the **Run Query** button to execute the search against the connected data source.
+
+#### 4. Review the Results
+
+After the query runs, the results will be displayed directly in the node's panel. The results typically include:
+
+* A summary of the number of results found.
+* A list of relevant "chunks" of text retrieved from the source documents.
+* A similarity score (e.g., 58%) for each chunk, indicating its relevance to your query.
+
+You can expand each chunk to view its content and metadata.
+
+### Core Use Case: Retrieval-Augmented Generation (RAG)
+
+The primary purpose of the Vector Query Node is to enable **Retrieval-Augmented Generation (RAG)** workflows. RAG enhances the capabilities of Large Language Models (LLMs) by providing them with relevant, up-to-date information from your own data sources before they generate a response.
+
+A typical RAG workflow in Giselle looks like this:
+
+1. **Data Source (Vector Store Node)**: Ingests and vectorizes your content from a GitHub repository or uploaded documents, making it searchable.
+2. **Vector Query Node**: Takes a user's question (the query) and retrieves the most relevant text chunks from the vector store.
+3. **Generator Node**: Receives the original question *and* the retrieved information from the Vector Query Node's output. It uses this combined context to generate a more accurate, detailed, and factually grounded answer.
+
+### Output of the Vector Query Node
+
+The `Result` output of the Vector Query Node contains the collection of retrieved data chunks. This structured data can be passed to subsequent nodes—most commonly a **Generator Node**—to serve as dynamic context for text generation.
+
+<Note>
+  For more information on how to set up a data source for querying, see our documentation on the [GitHub Vector Store Node](github-vector-store-node) and [Document Vector Store Node](document-vector-store-node).
+</Note>
 
 
 # Web Page Node
@@ -1455,170 +2652,568 @@ The Web Page node on the canvas will have an "Output" port, which you can drag t
 The Web Page Node's user interface and functionality, including supported output formats, may be updated incrementally in future Giselle releases.
 
 
-# My Apps
-Source: https://docs.giselles.ai/en/guides/apps/myapp
+# API Keys
+Source: https://docs.giselles.ai/en/guides/api/api-keys
 
-Create and manage your personal AI applications
+Learn how to create and manage API keys to access the Giselle API programmatically.
 
-My Apps are personal AI applications that you can create and manage on the Giselle App Builder platform. You can build powerful AI applications by combining multiple AI models and data sources, and run them as many times as needed.
+<Warning>
+  This feature is currently in **Private Preview**. Access is limited to selected users. Features and APIs may change without notice.
+</Warning>
 
-## Key Features
+<Info>
+  You can manage API keys by navigating to [Settings > Team > API Keys](https://studio.giselles.ai/settings/team/api-keys).
+</Info>
 
-### Application Building
+## Overview
 
-* **AI Model Integration**: Combine various AI models to create custom applications
-* **Data Source Connectivity**: Leverage information from multiple data sources to enhance AI capabilities
-* **Repeated Execution**: Run your built applications as many times as necessary
+API keys allow you to access the Giselle API programmatically to run your apps from external applications, scripts, or services. API keys are scoped to your team, meaning all team members share access to the same set of API keys.
 
-### Team Utilization through GitHub Integration
+## Creating an API Key
 
-While My App is primarily intended for personal use, you can utilize it with teams through GitHub integration:
+<Steps>
+  <Step title="Navigate to API Keys Settings">
+    Go to [Settings > Team > API Keys](https://studio.giselles.ai/settings/team/api-keys) in the Giselle.
+  </Step>
 
-* **Repository Integration**: Connect with repositories such as GitHub
-* **Automatic Execution Triggers**: Set up automatic application execution triggered by issue creation or pull request submission
-* **Output Sharing**: Functions as a GitHub App, allowing all team members with access to the connected repository to share output results
+  <Step title="Create a New Key">
+    Click the **Create new secret key** button to open the creation dialog.
+  </Step>
 
-This enables you to incorporate functions from your personally created My App into your entire team's workflow.
+  <Step title="Add a Label (Optional)">
+    Enter a descriptive label for your API key (e.g., "Production Server", "CI/CD Pipeline"). This helps you identify the key's purpose later.
 
-## Differences Between My App and Team App
+    <Note>
+      Labels can be up to 128 characters long.
+    </Note>
+  </Step>
 
-My App has the following limitations:
+  <Step title="Copy Your API Key">
+    After creation, your API key will be displayed **once**. Copy it immediately and store it securely.
 
-* **Editing Permissions**: Only the creator of the app can edit the application itself
-* **Viewing Restrictions**: Viewing the application settings and configuration is also limited to the creator
+    <Warning>
+      The full API key is only shown once at creation time. If you lose it, you'll need to create a new key.
+    </Warning>
+  </Step>
+</Steps>
 
-To remove these restrictions and enable collaborative editing and viewing of applications with multiple members, you need to become a Pro user and create a team. After creating a team, collaborative management becomes possible as a Team App.
+## API Key Format
 
-## Use Cases for My App
+API keys follow the format:
 
-* **Personal Productivity Enhancement**: Create AI applications that assist with daily work and research
-* **Project Automation**: Automate development processes through GitHub integration
-* **Code Review Support**: Automatically run code analysis when pull requests are created
+```
+gsk_<id>.<secret>
+```
 
-## Getting Started
+For example: `gsk_abc123xyz.secret_value_here`
 
-1. Create a [Giselle account](https://studio.giselles.ai/signup)
-2. Create a new My App from "New App+"
-3. Select and configure the necessary AI models and data sources
-4. [Build](workspaces/build) your application
-5. Run your application as needed
+When viewing your API keys in the settings, you'll see a redacted version showing only the first few and last few characters (e.g., `gsk_abc...xyz`).
+
+## Managing API Keys
+
+### Viewing API Keys
+
+The API Keys page displays all keys for your team with the following information:
+
+* **Label**: The descriptive name you assigned
+* **Redacted Value**: A shortened version of the key for identification
+* **Created At**: When the key was created
+* **Last Used At**: When the key was last used for an API request
+
+### Revoking API Keys
+
+To revoke an API key:
+
+1. Navigate to [Settings > Team > API Keys](https://studio.giselles.ai/settings/team/api-keys)
+2. Find the key you want to revoke
+3. Click the **Revoke** button
+4. Confirm the revocation
+
+<Warning>
+  Revoking an API key is immediate and permanent. Any applications or services using that key will immediately lose access to the API.
+</Warning>
+
+## Using API Keys
+
+When making requests to the Giselle API, include your API key in the `Authorization` header:
+
+```bash theme={null}
+curl -X POST https://studio.giselles.ai/api/apps/{appId}/run \
+  -H "Authorization: Bearer gsk_your_api_key_here" \
+  -H "Content-Type: application/json" \
+  -d '{"text": "Your input text"}'
+```
+
+For a better developer experience, consider using the [Giselle SDK](/en/guides/api/sdk) which handles authentication automatically.
+
+## Security Best Practices
+
+<AccordionGroup>
+  <Accordion title="Keep Keys Secret">
+    Never expose API keys in client-side code, public repositories, or logs. Use environment variables or secure secret management systems.
+  </Accordion>
+
+  <Accordion title="Use Descriptive Labels">
+    Label your keys by their use case (e.g., "Production", "Development", "CI/CD") to easily track and manage them.
+  </Accordion>
+
+  <Accordion title="Rotate Keys Regularly">
+    Periodically create new keys and revoke old ones, especially if you suspect a key may have been compromised.
+  </Accordion>
+
+  <Accordion title="Limit Key Distribution">
+    Only share API keys with team members and systems that genuinely need API access.
+  </Accordion>
+</AccordionGroup>
+
+## Rate Limits
+
+API requests are rate-limited based on your team's plan:
+
+| Plan       | Requests per Minute |
+| ---------- | ------------------- |
+| Free       | 60                  |
+| Pro        | 300                 |
+| Team       | 600                 |
+| Enterprise | 3,000               |
+
+When you exceed the rate limit, the API returns a `429 Too Many Requests` response. Rate limit information is included in response headers:
+
+* `RateLimit-Limit`: Maximum requests allowed per minute
+* `RateLimit-Remaining`: Remaining requests in the current window
+* `RateLimit-Reset`: Unix timestamp when the rate limit resets
+* `Retry-After`: Seconds to wait before retrying (when rate limited)
+
+## Troubleshooting
+
+### Unauthorized (401) Error
+
+If you receive a 401 error, check that:
+
+* Your API key is correct and complete
+* The key hasn't been revoked
+* The `Authorization` header is formatted correctly: `Bearer <your_api_key>`
+
+### Rate Limited (429) Error
+
+If you're being rate limited:
+
+* Check the `Retry-After` header for when you can retry
+* Consider upgrading your plan for higher limits
+* Implement exponential backoff in your application
+
+## Next Steps
+
+* Learn how to use the [Giselle SDK](/en/guides/api/sdk) for easier API integration
+* Explore the [Playground](/en/guides/playground) to test your apps before integrating via API
 
 
-# Team Apps
-Source: https://docs.giselles.ai/en/guides/apps/teamapp
+# Giselle SDK
+Source: https://docs.giselles.ai/en/guides/api/sdk
 
-Collaborate and manage AI applications with your team
+Learn how to use the Giselle SDK to integrate your apps with external applications and services.
 
-Team Apps are collaborative AI applications that enable multiple team members to create, edit, and manage applications together on the Giselle App Builder platform. With Team Apps, you can leverage the collective expertise of your team to build more sophisticated AI solutions by combining multiple AI models and data sources.
+<Warning>
+  This feature is currently in **Private Preview**. Access is limited to selected users. Features and APIs may change without notice.
+</Warning>
 
-## Key Features
+## Overview
 
-### Collaborative Application Building
+The Giselle SDK (`@giselles-ai/sdk`) provides a simple, type-safe way to interact with the Giselle API from your Node.js applications. It handles authentication, request formatting, and polling for task completion automatically.
 
-* **Shared Editing Access**: Multiple team members can edit and refine the same application
-* **Collaborative Configuration**: Team members can jointly configure AI models and data sources
-* **Version History**: Track changes and contributions from different team members
+<Warning>
+  The SDK is designed for server-side use only. Never use it in client-side code (browsers) as this would expose your API key.
+</Warning>
 
-### Team Management
+## Installation
 
-* **Permission Controls**: Assign different roles and access levels to team members
-* **Shared Visibility**: All team members can view application settings and configurations
-* **Collective Ownership**: Applications belong to the team rather than a single creator
+The Giselle SDK is published on npm at [@giselles-ai/sdk](https://www.npmjs.com/package/@giselles-ai/sdk).
 
-### Enhanced Integration Capabilities
+Install the SDK using your preferred package manager:
 
-Team Apps include all the GitHub integration features available in My Apps:
+```bash theme={null}
+npm install @giselles-ai/sdk
+```
 
-* **Repository Integration**: Connect with repositories such as GitHub
-* **Automatic Execution Triggers**: Set up automatic application execution triggered by issue creation or pull request submission
-* **Output Sharing**: Functions as a GitHub App, allowing all team members with access to the connected repository to share output results
+```bash theme={null}
+yarn add @giselles-ai/sdk
+```
 
-## Differences Between My Apps and Team Apps
+```bash theme={null}
+pnpm add @giselles-ai/sdk
+```
 
-Team Apps offer several advantages over My Apps:
+## Quick Start
 
-* **Collaborative Editing**: Multiple team members can edit the application, unlike My Apps where only the creator has edit access
-* **Shared Viewing**: All team members can view application settings and configurations
-* **Seamless Handoffs**: Team members can continue work started by colleagues
+```typescript theme={null}
+import Giselle from "@giselles-ai/sdk";
 
-## Requirements for Team Apps
+// Initialize the client
+const client = new Giselle({
+  apiKey: process.env.GISELLE_API_KEY,
+});
 
-* **Pro Subscription**: Team Apps are only available to Pro users
-* **Team Creation**: You must create a team before you can start using Team Apps
-* **Team Members**: Invite colleagues to join your team through the team management interface
+// Run an app and wait for results
+const { task } = await client.apps.runAndWait({
+  appId: "app_xxxxx",
+  input: { text: "Hello, Giselle!" },
+});
 
-## Getting Started
+console.log(task.status); // "completed"
+console.log(task.outputs); // Array of output results
+```
 
-1. Upgrade to a [Pro subscription](https://studio.giselles.ai/pricing)
-2. Create a team from the "Teams" section in your account
-3. Invite team members to join
-4. Create a new Team App from "New App+" within your team workspace
-5. Collaborate with your team to build, preview, and integrate your application
+## Configuration
+
+### Constructor Options
+
+```typescript theme={null}
+const client = new Giselle({
+  apiKey: string;       // Required: Your API key
+  baseUrl?: string;     // Optional: API base URL (default: "https://studio.giselles.ai")
+  fetch?: typeof fetch; // Optional: Custom fetch implementation
+});
+```
+
+| Option    | Required | Default                      | Description                                                                      |
+| --------- | -------- | ---------------------------- | -------------------------------------------------------------------------------- |
+| `apiKey`  | Yes      | -                            | Your Giselle API key. Get one from [API Keys settings](/en/guides/api/api-keys). |
+| `baseUrl` | No       | `https://studio.giselles.ai` | The base URL for API requests.                                                   |
+| `fetch`   | No       | Global `fetch`               | Custom fetch implementation for specific runtime environments.                   |
+
+### Environment Variables
+
+We recommend storing your API key in an environment variable:
+
+```bash theme={null}
+# .env
+GISELLE_API_KEY=gsk_your_api_key_here
+```
+
+```typescript theme={null}
+const client = new Giselle({
+  apiKey: process.env.GISELLE_API_KEY,
+});
+```
+
+<Warning>
+  Never commit API keys to version control. Use environment variables or a secrets manager.
+</Warning>
+
+## API Reference
+
+### `client.apps.run()`
+
+Starts an app execution and returns immediately with a task ID. Use this when you want to handle polling yourself or don't need to wait for results.
+
+```typescript theme={null}
+const { taskId } = await client.apps.run({
+  appId: "app_xxxxx",
+  input: { text: "Your input text" },
+});
+
+console.log(taskId); // "tsk_xxxxx"
+```
+
+**Parameters:**
+
+| Parameter    | Type     | Required | Description                                    |
+| ------------ | -------- | -------- | ---------------------------------------------- |
+| `appId`      | `string` | Yes      | The ID of the app to run (format: `app_xxxxx`) |
+| `input.text` | `string` | Yes      | The text input for the app                     |
+
+**Returns:**
+
+```typescript theme={null}
+{
+  taskId: string; // The ID of the created task
+}
+```
+
+### `client.apps.runAndWait()`
+
+Starts an app execution and polls until the task completes. This is the recommended method for most use cases.
+
+```typescript theme={null}
+const { task } = await client.apps.runAndWait({
+  appId: "app_xxxxx",
+  input: { text: "Your input text" },
+  pollIntervalMs: 1000,  // Optional: polling interval (default: 1000ms)
+  timeoutMs: 60000,      // Optional: timeout (default: 1200000ms / 20 minutes)
+});
+```
+
+**Parameters:**
+
+| Parameter        | Type     | Required | Default   | Description                            |
+| ---------------- | -------- | -------- | --------- | -------------------------------------- |
+| `appId`          | `string` | Yes      | -         | The ID of the app to run               |
+| `input.text`     | `string` | Yes      | -         | The text input for the app             |
+| `pollIntervalMs` | `number` | No       | `1000`    | How often to check for completion (ms) |
+| `timeoutMs`      | `number` | No       | `1200000` | Maximum time to wait (ms)              |
+
+**Returns:**
+
+```typescript theme={null}
+{
+  task: {
+    id: string;
+    workspaceId: string;
+    name: string;
+    status: "completed" | "failed" | "cancelled";
+    steps: Array<{
+      title: string;
+      status: string;
+      items: Array<{
+        id: string;
+        title: string;
+        status: string;
+        generationId?: string;
+        outputs?: any[];
+        error?: string;
+      }>;
+    }>;
+    outputs: Array<{
+      title: string;
+      generationId?: string;
+      outputs: any[];
+    }>;
+  };
+}
+```
+
+## Finding Your App ID and Code Snippet
+
+The easiest way to get your App ID and a ready-to-use code snippet is from the Workspace:
+
+1. Open your app in the Workspace
+2. Click the **Run** button in the top-right corner
+3. In the dialog that appears, select the **Code** tab
+4. You'll see a complete code snippet with your `appId` already filled in:
+
+```typescript theme={null}
+import Giselle from "@giselles-ai/sdk";
+
+const client = new Giselle({
+  apiKey: process.env.GISELLE_API_KEY,
+});
+
+const { taskId } = await client.apps.run({
+  appId: "app_xxxxx", // Your actual App ID is shown here
+  input: { text: "your input here" },
+});
+
+console.log(taskId);
+```
+
+Simply copy this code and use it in your application.
+
+<Note>
+  The App ID format is `app_` followed by a unique identifier (e.g., `app_abc123xyz`).
+</Note>
+
+## Error Handling
+
+The SDK throws specific error types for different failure scenarios:
+
+```typescript theme={null}
+import Giselle, {
+  ConfigurationError,
+  ApiError,
+  TimeoutError,
+  UnsupportedFeatureError,
+} from "@giselles-ai/sdk";
+
+try {
+  const { task } = await client.apps.runAndWait({
+    appId: "app_xxxxx",
+    input: { text: "Hello" },
+  });
+} catch (error) {
+  if (error instanceof ConfigurationError) {
+    // Missing or invalid configuration (e.g., no API key)
+    console.error("Configuration error:", error.message);
+  } else if (error instanceof ApiError) {
+    // API request failed
+    console.error("API error:", error.status, error.responseText);
+  } else if (error instanceof TimeoutError) {
+    // Task didn't complete within the timeout
+    console.error("Task timed out:", error.message);
+  } else if (error instanceof UnsupportedFeatureError) {
+    // Attempted to use an unsupported feature
+    console.error("Unsupported feature:", error.message);
+  }
+}
+```
+
+### Error Types
+
+| Error Type                | Description                                                                      |
+| ------------------------- | -------------------------------------------------------------------------------- |
+| `ConfigurationError`      | Missing or invalid configuration (e.g., API key not provided)                    |
+| `ApiError`                | HTTP request to the API failed. Includes `status` and `responseText` properties. |
+| `TimeoutError`            | Task didn't complete within the specified timeout                                |
+| `UnsupportedFeatureError` | Attempted to use a feature not yet supported (e.g., file inputs)                 |
+
+## Examples
+
+### Basic Usage
+
+```typescript theme={null}
+import Giselle from "@giselles-ai/sdk";
+
+const client = new Giselle({
+  apiKey: process.env.GISELLE_API_KEY,
+});
+
+async function runMyApp(userInput: string) {
+  const { task } = await client.apps.runAndWait({
+    appId: "app_xxxxx",
+    input: { text: userInput },
+  });
+
+  if (task.status === "completed") {
+    return task.outputs;
+  } else {
+    throw new Error(`Task failed: ${task.status}`);
+  }
+}
+```
+
+### With Custom Timeout
+
+```typescript theme={null}
+const { task } = await client.apps.runAndWait({
+  appId: "app_xxxxx",
+  input: { text: "Complex query that may take time" },
+  timeoutMs: 300000, // 5 minutes
+  pollIntervalMs: 2000, // Check every 2 seconds
+});
+```
+
+### Fire and Forget
+
+```typescript theme={null}
+// Start the task but don't wait for completion
+const { taskId } = await client.apps.run({
+  appId: "app_xxxxx",
+  input: { text: "Background processing" },
+});
+
+console.log(`Task started: ${taskId}`);
+// You can check the task status later via the API or in the Giselle
+```
+
+### Express.js Integration
+
+```typescript theme={null}
+import express from "express";
+import Giselle from "@giselles-ai/sdk";
+
+const app = express();
+const client = new Giselle({
+  apiKey: process.env.GISELLE_API_KEY,
+});
+
+app.use(express.json());
+
+app.post("/api/process", async (req, res) => {
+  try {
+    const { task } = await client.apps.runAndWait({
+      appId: "app_xxxxx",
+      input: { text: req.body.text },
+      timeoutMs: 60000,
+    });
+
+    res.json({
+      success: true,
+      outputs: task.outputs,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
+app.listen(3000);
+```
+
+## Current Limitations
+
+* **Text input only**: Currently, only text input is supported. File inputs will be supported in a future release.
+* **Server-side only**: The SDK should only be used in server-side environments to protect your API key.
+
+## Next Steps
+
+* [Create an API key](/en/guides/api/api-keys) to get started
+* Test your apps in the [Playground](/en/guides/playground) before integrating
+* Check out [Cookbooks](/en/cookbooks/overview) for example apps and workflows
 
 
 # Quickstart
 Source: https://docs.giselles.ai/en/guides/get-started/quickstart
 
-Build your first AI workflow with Giselle in minutes! This quick start guide covers signup to running a workflow.
+Get started with Giselle in minutes! This quick start guide covers signup to running your first AI app.
 
-## Build Your First AI Workflow with Giselle
+## Get Started with Giselle
 
-Get up and running with Giselle in minutes! This quick start guide walks you through creating your first Workspace, step by step, from signup to running a complete workflow. Learn to build and test workflows with our user-friendly interface.
+Get up and running with Giselle in minutes! This quick start guide walks you through trying sample apps, exploring how they work, and creating your own custom app.
 
 <Steps>
-  <Step title="Sign Up">
-    Unlock the power of Giselle! If you're joining us for the first time, create your account on the [sign up](https://studio.giselles.ai/signup) page. If
-    you're already part of the Giselle community, [log in](https://studio.giselles.ai/login) to jump right in.
-  </Step>
-
-  <Step title="Build a Workspace">
+  <Step title="Sign Up and Try Sample Apps">
     <AccordionGroup>
-      <Accordion title="Create a Workspace" defaultOpen={true}>
-        Go to the [Workspaces](https://studio.giselles.ai/workspaces) page and click the "New Workspace" button in the top right to start creating your first Workspace.
+      <Accordion title="Create Your Account">
+        If you're joining us for the first time, create your account on the [sign up](https://studio.giselles.ai/signup) page. If you're already part of the Giselle community, [log in](https://studio.giselles.ai/login) to jump right in.
       </Accordion>
 
-      <Accordion title="Place a Node" defaultOpen={true}>
-        From the toolbar at the bottom, drag and drop a "Generator" node onto the canvas to place it. This will be the first node in your workflow.
+      <Accordion title="Go to Playground">
+        After signing up, navigate to [Playground](https://studio.giselles.ai/playground). This is where you can run AI apps and see them in action.
       </Accordion>
 
-      <Accordion title="Set the Prompt" defaultOpen={true}>
-        In the right panel, open the "Prompt" tab and enter your prompt in the text area. This text will guide how the node works.
-
-        ```markdown  theme={null}
-        Suggest one interesting topic related to animals.
-        ```
+      <Accordion title="Run a Sample App">
+        In the Playground, you'll find sample apps provided by Giselle. Select one, enter your task description in the input area, and press Enter to run it.
       </Accordion>
 
-      <Accordion title="Select a Model" defaultOpen={true}>
-        In the "Model" tab, select the AI model provider (OpenAI, Anthropic, Google, etc.) and the specific model you want to use.
-      </Accordion>
-
-      <Accordion title="Test the Node" defaultOpen={true}>
-        Click the "Generate" button (or press Cmd+Enter) at the top of the right panel. This will execute only this node, allowing you to test your prompt and see the output.
+      <Accordion title="View Results in Tasks">
+        After running the app, you'll be redirected to the task execution result page. Here you can see the generated output, execution steps, and progress. You can also access all your past runs from [Tasks](https://studio.giselles.ai/tasks).
       </Accordion>
     </AccordionGroup>
   </Step>
 
-  <Step title="Run as a Workflow">
+  <Step title="Explore the App in Workspace">
     <AccordionGroup>
-      <Accordion title="Add Another Node" defaultOpen={true}>
-        To build a workflow, let's add another node. Drag the "Generator" node from the bottom toolbar and place it on the canvas.
+      <Accordion title="Open the App in Studio">
+        From the task execution result page, click the "Edit in Studio" button to open the app in the Workspace editor. This lets you see how the app is built.
       </Accordion>
 
-      <Accordion title="Connect the Nodes" defaultOpen={true}>
-        To connect the two nodes, drag from the Output port of the first node to the Input port of the second node.
+      <Accordion title="Understand the Workflow">
+        In the Workspace, you'll see the app's workflow visualized as connected nodes. Each node performs a specific function, and data flows from one node to another through connections.
       </Accordion>
 
-      <Accordion title="Set the Second Node's Prompt" defaultOpen={true}>
-        Enter the following into the "Prompt" tab of the second node. By feeding the output of the first node into the second node, a continuous workflow is built.
+      <Accordion title="Explore Node Settings">
+        Click on any node to see its settings in the right panel. You can view the prompt, selected AI model, and other configurations that define how the node works.
+      </Accordion>
+    </AccordionGroup>
+  </Step>
 
-        ```markdown  theme={null}
-        Please research on the following topics:
-        ```
+  <Step title="Create Your Custom App">
+    <AccordionGroup>
+      <Accordion title="Create a New App">
+        Click "+ Create App" in the left menu to start creating your own app. Give it a name and description.
       </Accordion>
 
-      <Accordion title="Run the Workflow" defaultOpen={true}>
-        Finally, click the "Run" button in the upper right corner to execute the workflow. This will run both nodes in sequence and generate the final output. Congratulations, you've run your first workflow in Giselle!
+      <Accordion title="Build Your Workflow">
+        In the Workspace, drag nodes from the toolbar at the bottom onto the canvas. Connect them by dragging from the Output port of one node to the Input port of another.
+      </Accordion>
+
+      <Accordion title="Configure Your Nodes">
+        Select each node and configure its settings in the right panel. Set prompts, choose AI models, and adjust parameters to customize the behavior.
+      </Accordion>
+
+      <Accordion title="Run Your App">
+        Click the "Run" button in the upper right corner to execute your workflow. Congratulations, you've created and run your first custom app in Giselle!
       </Accordion>
     </AccordionGroup>
   </Step>
@@ -1630,37 +3225,37 @@ Source: https://docs.giselles.ai/en/guides/introduction
 
 Welcome to the home of Giselle documentation!
 
-Giselle is your intuitive, no-code AI application builder designed to unlock the full potential of generative AI. Whether you're automating research, streamlining team workflows, or building custom AI agents, Giselle helps you go from idea to production—fast.
+Giselle is a platform that enables anyone to intuitively build AI applications. With drag-and-drop operations, you can build and run AI apps without any programming knowledge.
 
-Built with a powerful visual editor and seamless integrations, Giselle empowers individuals and teams to collaborate with AI like never before.
+Giselle is designed as an execution platform to reliably complete complex, long-running AI tasks as business operations. Engineers, designers, product managers, marketers, sales, and back-office professionals—everyone can create AI apps tailored to their work and start using them immediately.
 
 <Frame>
-  <img src="https://mintcdn.com/giselle/vlnHNRyXbutP6jGh/en/images/introduction/screen.png?fit=max&auto=format&n=vlnHNRyXbutP6jGh&q=85&s=2e7039d81de62279697bfaa1f3da5284" data-og-width="2348" width="2348" data-og-height="1318" height="1318" data-path="en/images/introduction/screen.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/giselle/vlnHNRyXbutP6jGh/en/images/introduction/screen.png?w=280&fit=max&auto=format&n=vlnHNRyXbutP6jGh&q=85&s=853b67d9d8e13481ab4bc95d4de717c4 280w, https://mintcdn.com/giselle/vlnHNRyXbutP6jGh/en/images/introduction/screen.png?w=560&fit=max&auto=format&n=vlnHNRyXbutP6jGh&q=85&s=a24ee30b30603f366d68b715f3c50184 560w, https://mintcdn.com/giselle/vlnHNRyXbutP6jGh/en/images/introduction/screen.png?w=840&fit=max&auto=format&n=vlnHNRyXbutP6jGh&q=85&s=26a312fbbb7d0ee18c3d8df35e178aa6 840w, https://mintcdn.com/giselle/vlnHNRyXbutP6jGh/en/images/introduction/screen.png?w=1100&fit=max&auto=format&n=vlnHNRyXbutP6jGh&q=85&s=7d0a5017091cb80864c054e96cf7c6f4 1100w, https://mintcdn.com/giselle/vlnHNRyXbutP6jGh/en/images/introduction/screen.png?w=1650&fit=max&auto=format&n=vlnHNRyXbutP6jGh&q=85&s=1a16b640fcb0d2a6dec92f5376abdc05 1650w, https://mintcdn.com/giselle/vlnHNRyXbutP6jGh/en/images/introduction/screen.png?w=2500&fit=max&auto=format&n=vlnHNRyXbutP6jGh&q=85&s=bea5f4939f5d42ef153ca32c39fbb32b 2500w" />
+  <img />
 </Frame>
 
 ***
 
 ## Core Features
 
-Giselle helps you create, deploy, and manage AI apps in minutes with no code. Here's how it fits into your workflow:
-
 ### Visual Node Editor
 
-Design your AI applications using our drag-and-drop system. Automate complex tasks with clear, modular logic.
+Design AI workflows by placing and connecting nodes with drag-and-drop, just like drawing a flowchart. Build complex AI processes visually without any programming experience.
+
+### Long-Running Task Execution
+
+Run your AI apps in a dedicated execution environment separate from the build environment. Monitor real-time progress of long-running AI apps, with clear display of multiple outputs and lengthy results.
 
 ### Multi-Model AI Collaboration
 
-Use OpenAI, Anthropic, Google Gemini, and more—together in a single app. Create powerful workflows by combining the best of each model.
+Freely combine world-leading AI models like OpenAI (GPT-5.2), Anthropic (Claude Opus 4.5), and Google (Gemini 3 Flash) within a single workflow. Assign roles that leverage each model's strengths for consistent results even on complex tasks.
 
 ### GitHub Integration
 
-Trigger your AI apps with GitHub events—automate code reviews, documentation, or issue triaging.
+Automatically trigger AI apps based on GitHub events like Issues, Pull Requests, and comments. Enable processing that understands the context and intent of PRs and Issues—context-aware code reviews, documentation generation, issue classification, and more.
 
-### Team Knowledge Sharing
+### Custom Knowledge
 
-Build and refine AI agents collaboratively. Share your apps and agents with your team to scale your expertise.
-
-***
+Incorporate your own data—PDFs, documents, GitHub repository code, Issues, and PRs—as knowledge for your AI apps. Achieve answers based on organization-specific information that general AI cannot provide. Leverage advanced technologies like RAG and Vector Store without specialized knowledge.
 
 
 # Billing
@@ -1678,15 +3273,17 @@ This guide explains how Giselle's pricing system works, including subscription m
 
 After logging in, you can access　[Settings > Team > Billing](https://studio.giselles.ai/settings/team/billing) by selecting "Billing" from the sidebar menu.
 
-From this page, you can access the dedicated billing portal provided by Stripe.
+From this page, you can:
+
+* View your current subscription details, including AI model usage rates
+* Cancel your subscription
+* Access the Stripe billing portal for payment management
+
 In the Stripe billing portal, you can:
 
-View your current subscription details
-Update your payment method
-View invoice history
-Cancel your subscription
-
-Subscription cancellation is possible through the Stripe management screen. You cannot cancel directly from the Giselle management interface.
+* Update your payment method
+* View invoice history
+* Check pay-as-you-go charges for additional AI model usage
 
 ***
 
@@ -1711,8 +3308,7 @@ For any specific pricing questions not covered on these pages, please contact ou
 ## How AI Model Usage is Billed
 
 * The Free Plan includes 30 minutes of AI usage per month (limited-time offer)
-* The Pro Plan includes unlimited AI model usage during the promotional period
-* Users will be notified one month before the promotion ends
+* The Pro Plan includes \$20 of AI credits per month. Additional usage is billed at cost plus 10% markup
 
 ***
 
@@ -1753,7 +3349,9 @@ To cancel your subscription:
 3. Review the cancellation information
 4. Click the "Cancel subscription" button to confirm
 
-Your subscription will remain active until the end of your current billing period. If you change your mind before the end date, you can renew your subscription.
+Once confirmed, your cancellation will be scheduled for the end of your current billing period. You will see a "Cancels \[date]" message on the billing page showing when your subscription will end.
+
+Your subscription will remain fully active until the scheduled cancellation date. If you change your mind before the end date, you can resubscribe to continue your service.
 
 ***
 
@@ -1801,7 +3399,7 @@ For the latest information about our plans and pricing options,please visit [Our
 
 Ideal for solo developers exploring AI agents.
 
-* **30 minutes** of AI model usage per month (\$3 monthly credit)
+* **30 minutes** of AI model usage per month (limited-time offer)
 * Access to basic AI models
 * Create and deploy agents with no-code builder
 * Single-user account
@@ -1812,9 +3410,11 @@ Ideal for solo developers exploring AI agents.
 Built for individual power users.
 
 * **\$20/month**
-* **Unlimited** AI model usage (limited-time promotional offer)
+* **\$20 of AI credits** included each month
+* Additional usage billed at cost plus 10% markup
 * Access to all premium AI models
 * All Free plan features included
+* Document & GitHub Vector Stores
 * Single-user account
 * Managed cloud deployment
 * Email support
@@ -1832,19 +3432,54 @@ Designed for teams collaborating on AI agents. (Coming soon)
 
 ## Monthly AI Model Usage Details
 
-Each Giselle subscription includes monthly AI model usage credits:
+Each Giselle subscription includes monthly AI credits:
 
-* **Free Plan:** Monthly limit of 30 minutes of AI usage. Once the monthly limit is reached, AI usage pauses until the next billing cycle.
-* **Pro Plan:** Includes \$20 worth of monthly AI usage credits. During the current limited-time promotion, all usage beyond the standard monthly credits is unlimited at no additional cost.
+* **Free Plan:** Limited-time offer of 30 minutes of AI usage per month. Once the monthly limit is reached, AI usage pauses until the next billing cycle.
+* **Pro Plan:** Includes \$20 of AI credits each month. Additional usage beyond the included credits is billed at cost plus 10% markup.
 
 AI model usage credits are refreshed monthly and unused credits do not roll over.
+
+## Vector Store Quotas
+
+Each plan has limits on the number of Vector Stores you can create and GitHub Repositories you can register.
+
+### Quotas by Plan
+
+| Plan | Document Vector Stores | GitHub Repositories |
+| ---- | ---------------------- | ------------------- |
+| Free | Unavailable            | Unavailable         |
+| Pro  | Up to 5                | Up to 3             |
+| Team | Up to 20               | Up to 10            |
+
+* **Document Vector Stores**: Upload PDF, TXT, and Markdown files to build knowledge bases that can be utilized in your AI workflows
+* **GitHub Repositories**: Ingest code, Issues, and Pull Requests from GitHub repositories to make them searchable
+
+<Note>
+  For more details about Vector Stores, see [Vector Stores Settings](/en/guides/settings/team/vector-stores).
+</Note>
+
+### Managing Plan Limits
+
+#### Free Plan
+
+* To use Vector Stores, you need to upgrade to the Pro or Team plan
+
+#### Pro Plan
+
+* **Document Vector Stores**: When you reach the 5-store limit, you can delete existing Vector Stores or consider upgrading to the Team plan
+* **GitHub Repositories**: When you reach the 3-repository limit, you can delete existing repositories or consider upgrading to the Team plan
+
+#### Team Plan
+
+* **Document Vector Stores**: When you reach the 20-store limit, you need to delete existing Vector Stores
+* **GitHub Repositories**: When you reach the 10-repository limit, you need to delete existing repositories
 
 ## Plan Changes & Billing Information
 
 ### Upgrading from Free to Pro
 
-* When upgrading, Free plan unused credits are discarded.
-* Pro plan benefits, including unlimited promotional usage, become immediately available upon upgrade.
+* When upgrading, Free plan unused usage is discarded.
+* Pro plan benefits become immediately available upon upgrade.
 
 ### Downgrading from Pro to Free
 
@@ -1859,11 +3494,7 @@ AI model usage credits are refreshed monthly and unused credits do not roll over
 
 ### Additional Usage Costs (Pro Plan)
 
-* During standard (non-promotional) periods, Pro plan users exceeding the \$20 monthly usage credit incur reasonable additional charges (10% fee), billed automatically at the next subscription payment cycle.
-
-### Promotional Period
-
-* Current unlimited usage offer for the Pro plan is temporary. Users will be notified one month before this promotion ends.
+* Pro plan users exceeding the \$20 monthly AI credits incur additional charges at cost plus 10% markup, billed automatically at the next subscription payment cycle.
 
 ***
 
@@ -1955,8 +3586,8 @@ Each subscription plan has defined usage limits to maintain consistent service l
 
 Subscription plans include:
 
-* **Free plan**: Limited-time offer of 30 minutes of AI model usage (normally \$3 worth of credits per month)
-* **Pro plan**: \$20 per month with limited-time unlimited AI model usage during the promotional period
+* **Free plan**: Limited-time offer of 30 minutes of AI model usage
+* **Pro plan**: $20/month with $20 of AI credits included each month. Additional usage is billed at cost plus 10% markup
 * **Team plan**: Contact sales for pricing. All Pro plan features plus team collaboration capabilities
 * **Team member seats**: 1 user for Free and Pro plans; multiple users available with Team plans (contact sales for pricing)
 
@@ -1971,6 +3602,85 @@ Giselle regularly reviews usage data to ensure accuracy. The usage information d
 If Giselle detects significant inconsistencies or unusual patterns in your usage data, the support team may contact you directly. Likewise, if you notice any discrepancies or have questions about your reported usage, please don't hesitate to reach out to the support team at [support@giselles.ai](mailto:support@giselles.ai).
 
 Giselle is continuously improving its monitoring systems to provide you with the most accurate and up-to-date information possible.
+
+
+# Playground
+Source: https://docs.giselles.ai/en/guides/playground
+
+Run your AI applications in the Playground
+
+The Playground is where you run AI applications built in Giselle. It provides an intuitive interface for executing apps, entering inputs, and viewing results.
+
+## Accessing the Playground
+
+Navigate to [Playground](https://studio.giselles.ai/playground) from the sidebar under "Stage - Run Apps".
+
+## Interface Overview
+
+### App Selection
+
+The Playground displays available apps organized by source:
+
+* **Sample app**: Pre-built example applications provided by Giselle
+* **Your team app**: Apps created by members of your team
+
+Each app card shows:
+
+* App name and description
+* LLM providers used (OpenAI, Anthropic, Google, etc.)
+* Creator information
+* Source badge
+
+Use the search bar to filter apps by name when you have many apps to choose from.
+
+### Input Area
+
+Once you select an app, you can provide inputs:
+
+**Text Input**
+Enter your task description or prompt in the text area. This is the main input that tells the app what you want it to do.
+
+**File Attachments**
+Click the paperclip icon to attach files. Supported file types:
+
+* PDF documents
+* Images (PNG, JPG, JPEG, GIF, BMP, WEBP, SVG, TIFF, HEIC, HEIF)
+
+You can also drag and drop files directly onto the input area.
+
+### Running an App
+
+To run an app:
+
+1. Select an app from the available options
+2. Enter your task description in the text input
+3. Optionally attach relevant files
+4. Press **Enter** or click the send button to start
+
+The Playground will show an overlay indicating the app is running, then redirect you to the task results page.
+
+## Viewing Results
+
+After running an app, you'll be redirected to the task page where you can view:
+
+* The generated output
+* Execution details
+* Any intermediate steps or processing information
+
+## Task History
+
+Access your previous runs from [Task History](https://studio.giselles.ai/tasks) in the sidebar. This allows you to:
+
+* Review past task results
+* Compare different runs
+* Track your app usage over time
+
+## Tips for Using the Playground
+
+* **Start with sample apps** to understand how different workflows operate
+* **Use descriptive prompts** to get better results from your apps
+* **Attach relevant files** when your task requires document analysis or image processing
+* **Check the app description** to understand what inputs each app expects
 
 
 # Authentication
@@ -2266,24 +3976,29 @@ For teams on the Pro Plan, the following is displayed:
 
 #### Actions
 
+**Cancel Subscription Button**:
+
+* Schedules cancellation for the end of your current billing period
+* After clicking, a confirmation dialog will appear
+* Once confirmed, the button will be hidden and the cancellation date will be displayed
+
 **Manage Subscription Button**:
 
-* Opens subscription management interface
-* Redirects to Stripe customer portal
+* Opens Stripe customer portal
 * Available operations:
   * Change payment method
-  * Cancel subscription
   * View invoices and receipts
 
 <Info>
-  Subscription management is handled through the Stripe customer portal. You can update payment information, cancel your plan, and view billing history.
+  You can cancel your subscription directly from this page. Payment method changes and invoice viewing are handled through the Stripe customer portal.
 </Info>
 
 ### Cancellation Schedule
 
 If you cancel your Pro Plan subscription, the following is displayed:
 
-* Cancellation notice: "Subscription will end on \[end date]"
+* Cancellation notice: "Cancels \[date]" showing when your subscription will end
+* The cancel subscription button will be hidden once cancellation is scheduled
 * You can continue using Pro Plan features until the end date
 * Automatically switches to Free Plan after the end date
 
@@ -2738,10 +4453,10 @@ Giselle tracks your team's AI app runtime in minutes for informational purposes 
 
 ## Usage Limits
 
-Your subscription plan includes AI model usage credits each month:
+Your subscription plan includes AI credits each month:
 
-* **Free Plan**: 30 minutes per month (limited-time promotion)
-* **Pro Plan**: Unlimited usage during the promotional period
+* **Free Plan**: 30 minutes per month (limited-time offer)
+* **Pro Plan**: \$20 of AI credits per month. Additional usage billed at cost plus 10% markup
 
 Note: App runtime displayed in minutes is separate from your actual billed credits.
 
@@ -2783,6 +4498,62 @@ Currently, two types of Vector Stores are supported:
 </Note>
 
 Document Vector Stores allows you to upload PDF, TXT, and Markdown files to ingest into Vector Stores.
+
+### Plan-Based Quotas
+
+The number of Document Vector Stores you can create is limited based on your team's subscription plan.
+
+#### Quotas by Plan
+
+| Plan | Document Vector Stores Limit |
+| ---- | ---------------------------- |
+| Free | 0 (unavailable)              |
+| Pro  | 5                            |
+| Team | 20                           |
+
+#### Checking Usage
+
+The Document Vector Stores page displays your current usage:
+
+* **Used / Maximum**: Example: "3 / 5 stores"
+* **Remaining**: Example: "2 Document Vector Stores remaining in your Pro plan."
+* **Plan name**: Your current plan (Free, Pro, Team)
+
+#### Managing Plan Limits
+
+When you reach the maximum capacity:
+
+1. **An alert is displayed**:
+   * Title: "Maximum capacity reached"
+   * Message: "Delete an existing store or upgrade your plan in Team Settings to add more Document Vector Stores."
+
+2. **New Vector Store button is disabled**:
+   * Hover over the button to see a tooltip explaining why
+   * "You've reached the number of Document Vector Stores included in your plan."
+
+3. **How to proceed**:
+   * Delete an existing Document Vector Store
+   * Upgrade your plan in [Team Settings](/en/guides/settings/team/general)
+
+#### For Free Plan Users
+
+Document Vector Stores are not available on the Free plan:
+
+1. **Locked state is displayed**:
+   * Title: "Document Vector Stores are locked"
+   * Message: "Upgrade to Pro or Team to ingest knowledge bases and connect Document Vector Stores to your agents."
+
+2. **Warning alert**:
+   * "Document Vector Stores are not included in the Free plan"
+   * "Upgrade to Pro or Team to ingest documents with Vector Stores."
+
+3. **How to upgrade**:
+   * Click the **View plans** button to go to [Team Settings](/en/guides/settings/team/general)
+   * Upgrade to the Pro or Team plan
+
+<Note>
+  For more details about plans, see [Plans Information](/en/guides/learn-about/plans).
+</Note>
 
 ### Creating a Document Vector Store
 
@@ -2879,6 +4650,64 @@ To delete a Document Vector Store:
 </Warning>
 
 ## GitHub Repositories
+
+### Plan-Based Quotas
+
+The number of GitHub repositories you can register is limited based on your team's subscription plan.
+
+#### Quotas by Plan
+
+| Plan | GitHub Repositories Limit |
+| ---- | ------------------------- |
+| Free | 0 (unavailable)           |
+| Pro  | 3                         |
+| Team | 10                        |
+
+#### Checking Usage
+
+The GitHub Repositories page displays your current usage:
+
+* **Used / Maximum**: Example: "2 / 3 repositories"
+* **Remaining**: Example: "1 GitHub Repository remaining in your Pro plan."
+* **Plan name**: Your current plan (Free, Pro, Team)
+
+#### Managing Plan Limits
+
+When you reach the maximum capacity:
+
+1. **An alert is displayed**:
+   * Title: "Maximum capacity reached"
+   * Message: "Delete an existing repository or upgrade your plan in Team Settings to add more GitHub Vector Stores."
+
+2. **Register Repository button is disabled**:
+   * Hover over the button to see a tooltip explaining why
+   * "You've reached the number of GitHub Vector Stores included in your plan."
+
+3. **How to proceed**:
+   * Delete an existing repository
+   * Upgrade your plan in [Team Settings](/en/guides/settings/team/general)
+
+#### For Free Plan Users
+
+GitHub Vector Stores are not available on the Free plan:
+
+1. **Locked state is displayed**:
+   * Title: "GitHub Vector Stores are locked"
+   * Message: "Upgrade to Pro or Team to index GitHub repositories and connect them to your agents."
+
+2. **Warning alert**:
+   * "GitHub Vector Stores are not included in the Free plan"
+   * "Upgrade to Pro or Team to index GitHub repositories."
+
+3. **How to upgrade**:
+   * Click the **View plans** button to go to [Team Settings](/en/guides/settings/team/general)
+   * Upgrade to the Pro or Team plan
+
+<Note>
+  For more details about plans, see [Plans Information](/en/guides/learn-about/plans).
+</Note>
+
+### Prerequisites
 
 To use GitHub Vector Stores:
 
@@ -3088,12 +4917,197 @@ If you encounter issues with Vector Stores configuration or have questions, plea
 For more details, please refer to the [Vector Stores documentation](https://docs.giselles.ai/en/guides/settings/team/vector-stores).
 
 
-# Build
-Source: https://docs.giselles.ai/en/guides/workspaces/build
+# Tasks
+Source: https://docs.giselles.ai/en/guides/tasks
 
-Learn how to build and configure workspaces in Giselle
+View and manage your AI application execution history
 
-TBD
+Tasks is where you view all your executed AI applications and their results. It provides a comprehensive overview of past runs and detailed execution information for each task.
+
+## Accessing Tasks
+
+Navigate to [Tasks](https://studio.giselles.ai/tasks) from the sidebar under "Stage - Run Apps".
+
+## Task History
+
+The Task History page displays a list of all executed tasks with the following information:
+
+* **Task ID**: Unique identifier for each task (click to view details)
+* **Status**: Current state of the task
+  * Running (blue): Task is currently executing
+  * Completed (green): Task finished successfully
+  * Failed (red): Task encountered an error
+  * Cancelled (gray): Task was cancelled
+* **Origin**: Where the task was triggered from (App name)
+* **Timestamp**: When the task was started
+
+Tasks are displayed in chronological order with the most recent tasks first. Use the Previous/Next buttons to navigate through your task history.
+
+## Task Execution Result Page
+
+When you run an app from the Playground or click on a task in the Task History, you are taken to the task execution result page. This page shows the complete execution details of a single task.
+
+### Header Section
+
+The task header displays:
+
+* Task status badge
+* Task title (workspace name and task ID)
+* App description
+* "Edit in Studio" button to open the app in the workspace editor
+
+### Steps Section
+
+The steps section shows the execution flow of your task:
+
+* **Progress indicator**: Shows completion status (e.g., "Step 2 of 5")
+* **Progress bar**: Visual representation of execution progress
+* **Step list**: Each step shows its status and can be expanded to view details
+
+Step statuses:
+
+* Queued: Waiting to execute
+* Running: Currently executing
+* Completed: Finished successfully
+* Failed: Encountered an error
+
+### Output Section
+
+Once a task completes, the output section displays the generated results:
+
+* **Single output**: Displayed directly with action buttons
+* **Multiple outputs**: Organized in tabs for easy navigation
+
+Output actions:
+
+* **Copy**: Copy the output to clipboard
+* **Download**: Save the output as a text file
+
+### Real-time Updates
+
+While a task is running, the page automatically updates to show the current status. You can watch the execution progress in real-time as each step completes.
+
+### Running New Tasks
+
+From the task execution result page, you can run new tasks using the input area at the bottom. This allows you to quickly iterate on your workflows without returning to the Playground.
+
+## Tips for Using Tasks
+
+* **Monitor long-running tasks**: Keep the task execution result page open to watch execution progress
+* **Review failed tasks**: Check the error message and use "Edit in Studio" to debug your app
+* **Compare results**: Use task history to compare outputs from different runs
+* **Download important outputs**: Save generated content for later use
+
+
+# Workspaces
+Source: https://docs.giselles.ai/en/guides/workspaces
+
+Learn how to build AI workflows visually in the Workspace editor
+
+## Overview
+
+A **Workspace** is a visual canvas-based editor where you design AI workflows by connecting nodes together. Each node performs a specific function, and data flows between nodes through connections.
+
+## The Workspace Editor
+
+The Workspace editor consists of several key components:
+
+* **Canvas**: The main area where you build your workflow by placing and connecting nodes
+* **Toolbar**: Located at the bottom, provides access to all available node types
+* **Properties Panel**: Appears on the right when a node is selected, allowing you to configure its settings
+
+## Adding Nodes
+
+To add a node to your workflow:
+
+1. Click a category in the toolbar at the bottom of the screen
+2. Select the desired node type from the menu
+3. The node appears on the canvas
+4. Drag the node to position it where you want
+
+### Available Node Types
+
+Nodes are organized into categories:
+
+**App**
+
+* **[Start Node](/en/glossary/start-end-nodes#start-node)**: Defines the workflow entry point and input parameters
+* **[End Node](/en/glossary/start-end-nodes#end-node)**: Marks the workflow completion and output
+
+**Model**
+
+* **[Generator Node](/en/glossary/generator-node)**: Performs AI text or image generation using various LLM providers
+
+**Context**
+
+* **[Text Node](/en/glossary/text-node)**: Stores static text content
+* **[File Node](/en/glossary/file-node)**: Attaches files (PDF, text, images) to your workflow
+* **[Web Page Node](/en/glossary/webpage-node)**: Fetches and provides web page content
+* **[Document Vector Store Node](/en/glossary/document-vector-store-node)**: Creates searchable indexes from documents
+* **[GitHub Vector Store Node](/en/glossary/github-vector-store-node)**: Creates searchable indexes from GitHub repositories
+* **[Vector Query Node](/en/glossary/vector-query-node)**: Searches vector stores for relevant content
+
+**Integration**
+
+* **[Trigger Node](/en/glossary/trigger-node)**: Starts workflows from external events (e.g., GitHub webhooks)
+* **[Action Node](/en/glossary/action-node)**: Executes external actions (e.g., GitHub operations)
+
+## Connecting Nodes
+
+To connect nodes and create data flow:
+
+1. Hover over a node to see its output port (right side)
+2. Click and drag from the output port
+3. Drop the connection on another node's input port (left side)
+4. A connection line appears showing the data flow direction
+
+Connections define how data passes between nodes. The output of one node becomes available as input to the connected node.
+
+## Configuring Nodes
+
+To configure a node:
+
+1. Click on a node to select it
+2. The Properties Panel opens on the right side
+3. Edit the node name in the header if needed
+4. Configure node-specific settings:
+   * **Generator Node**: Select an AI model, write prompts, enable tools
+   * **Text Node**: Enter your text content
+   * **File Node**: Upload files
+   * **Trigger/Action Nodes**: Configure integration settings
+
+## Running Your Workflow
+
+You can run your workflow directly in the Workspace to test it:
+
+1. Click the **Run** button in the upper right corner
+2. Enter any required input values
+3. The workflow executes and you're redirected to the task execution result page
+
+On the result page, you can see:
+
+* Execution progress and status for each step
+* Generated outputs from each node
+* Token usage and execution duration
+
+This allows you to quickly test and iterate on your workflow during development.
+
+## Creating an App
+
+By connecting a [Start Node](/en/glossary/start-end-nodes#start-node) and [End Node](/en/glossary/start-end-nodes#end-node), your workflow becomes an **App** that can be run from the [Playground](https://studio.giselles.ai/playground).
+
+1. Add a Start Node
+2. Build your workflow with the nodes you need
+3. Add an End Node to define the output
+4. Connect all nodes in your workflow
+
+Once configured, your app appears in the Playground where you and your team can run it without accessing the Workspace editor.
+
+## Next Steps
+
+* Learn about [Generator Node](/en/glossary/generator-node) configuration
+* Explore [AI Parameters](/en/glossary/ai-parameters) for fine-tuning generation
+* Set up [Integrations](/en/guides/settings/team/integrations) for external services
 
 
 # Anthropic
@@ -3105,23 +5119,23 @@ Available Anthropic AI Models Overview.
 
 The following Claude models are available in the Anthropic workspace. Each model offers specific capabilities and features tailored to match your use case requirements. The "Reasoning" (Extended Thinking) capability is supported in Giselle for applicable models.
 
-| Models                         | Generate Text | Web Search | Reasoning | Input PDF | Input Image | Context Window | Max Output | Plan\@Giselle |
-| :----------------------------- | :------------ | :--------- | :-------- | :-------- | :---------- | :------------- | :--------- | :------------ |
-| **claude-opus-4-1-20250805**   | ✅             | ✅          | ✅         | ✅         | ✅           | 200k tokens    | 32k tokens | Pro           |
-| **claude-sonnet-4-5-20250929** | ✅             | ✅          | ✅         | ✅         | ✅           | 200k tokens    | 64k tokens | Pro           |
-| **claude-haiku-4-5-20251001**  | ✅             | ✅          | ✅         | ✅         | ✅           | 200k tokens    | 64k tokens | Free          |
+| Models                | Generate Text | Web Search | Reasoning | Input PDF | Input Image | Context Window | Max Output | Plan\@Giselle |
+| :-------------------- | :------------ | :--------- | :-------- | :-------- | :---------- | :------------- | :--------- | :------------ |
+| **claude-opus-4.5**   | ✅             | ✅          | ✅         | ✅         | ✅           | 200k tokens    | 32k tokens | Pro           |
+| **claude-sonnet-4.5** | ✅             | ✅          | ✅         | ✅         | ✅           | 200k tokens    | 64k tokens | Pro           |
+| **claude-haiku-4.5**  | ✅             | ✅          | ✅         | ✅         | ✅           | 200k tokens    | 64k tokens | Free          |
 
 Please note that some features may not be available within Giselle even if they are offered in the official API. Extended thinking mode and other Anthropic API features will be gradually implemented within Giselle.
 
-### claude-opus-4-1-20250805
+### claude-opus-4.5
 
-Claude Opus 4.1 is Anthropic's most powerful model, designed as the ultimate coding powerhouse. It excels at complex multi-step coding, sustained long-running tasks, and advanced reasoning. With a 200k token context window and the ability to output up to 32k tokens, Opus 4.1 delivers sustained performance for several hours and is ideal for projects requiring deep understanding and persistence, such as complex refactoring or multi-repository analysis. It supports text and image inputs.
+Claude Opus 4.5 is Anthropic's newest and most capable model, described as "intelligent, efficient, and the best model in the world for coding, agents, and computer use." It achieves state-of-the-art performance on SWE-bench Verified and leads on 7 of 8 programming languages in SWE-bench Multilingual, with a 10.6% improvement over Sonnet 4.5 on Aider Polyglot benchmarks. The model excels at multi-step reasoning tasks that combine information retrieval, tool use, and deep analysis. With improved vision, mathematics skills, and agentic capabilities, Opus 4.5 handles ambiguity and reasons about tradeoffs effectively. It features a 200k token context window and supports text, PDF, and image inputs.
 
-### claude-sonnet-4-5-20250929
+### claude-sonnet-4.5
 
 Claude Sonnet 4.5 is one of Anthropic's latest and most powerful models, offering balanced high performance. It excels at complex coding tasks, advanced reasoning, and content generation, delivering frontier-level performance with an optimal cost-performance balance. It features a 200k token context window, can output up to 64k tokens, and supports text, PDF, and image inputs. The reasoning capability makes it particularly powerful for tasks requiring multi-step thought processes.
 
-### claude-haiku-4-5-20251001
+### claude-haiku-4.5
 
 Claude Haiku 4.5 is optimized for speed and cost-efficiency while also supporting reasoning capabilities. It handles rapid text generation, PDF and image inputs, making it ideal for scenarios requiring real-time responsiveness. With a 200k token context window and the ability to output up to 64k tokens, it balances fast interactions with detailed responses. The extended thinking capability enables it to handle complex tasks as well.
 
@@ -3129,15 +5143,15 @@ Claude Haiku 4.5 is optimized for speed and cost-efficiency while also supportin
 
 Guidelines for selecting the optimal Claude model:
 
-* **For the ultimate coding powerhouse and most complex reasoning**: `claude-opus-4-1-20250805`
-* **For balanced high-performance, everyday coding, and cost-effective workflows**: `claude-sonnet-4-5-20250929`
-* **For speed, cost-efficiency, with reasoning capabilities**: `claude-haiku-4-5-20251001`
+* **For the best coding, agents, and complex reasoning**: `claude-opus-4.5`
+* **For balanced high-performance, everyday coding, and cost-effective workflows**: `claude-sonnet-4.5`
+* **For speed, cost-efficiency, with reasoning capabilities**: `claude-haiku-4.5`
 
 ## Practices for Giselle
 
-We recommend `claude-opus-4-1-20250805` or `claude-sonnet-4-5-20250929` as your primary models in Giselle, especially for tasks involving advanced coding, complex problem-solving, and in-depth analysis. These models feature hybrid reasoning modes, automatically switching between instant responses and extended thinking based on task complexity.
+We recommend `claude-opus-4.5` or `claude-sonnet-4.5` as your primary models in Giselle, especially for tasks involving advanced coding, complex problem-solving, and in-depth analysis. These models feature hybrid reasoning modes, automatically switching between instant responses and extended thinking based on task complexity.
 
-`claude-haiku-4-5-20251001` excels at speed and cost-efficiency while also supporting reasoning capabilities, making it capable of handling complex thought processes even when fast responses are needed. These models excel not only at code generation, architectural design, and technical reviews but also produce remarkably natural text. Their "Reasoning" (Extended Thinking) capability, supported in Giselle, makes them particularly powerful for tasks requiring multi-step thought processes. These versatile models can be effectively utilized across a broad spectrum of tasks, from creating engaging blog articles to writing complex code implementations and performing detailed analytical work.
+`claude-haiku-4.5` excels at speed and cost-efficiency while also supporting reasoning capabilities, making it capable of handling complex thought processes even when fast responses are needed. These models excel not only at code generation, architectural design, and technical reviews but also produce remarkably natural text. Their "Reasoning" (Extended Thinking) capability, supported in Giselle, makes them particularly powerful for tasks requiring multi-step thought processes. These versatile models can be effectively utilized across a broad spectrum of tasks, from creating engaging blog articles to writing complex code implementations and performing detailed analytical work.
 
 ### Anthropic Web Search Tool
 
@@ -3211,13 +5225,23 @@ Available Google AI Models Overview.
 
 The following Gemini models are available in the Giselle workspace. Each model offers specific capabilities and features to match your use case requirements.
 
-| Models                | Generate Text | Web Search | Reasoning | Input PDF | Input Image | Input Audio | Input Video | Context Window      | Plan\@Giselle |
-| --------------------- | ------------- | ---------- | --------- | --------- | ----------- | ----------- | ----------- | ------------------- | ------------- |
-| gemini-2.5-pro        | ✅             | ✅          | ✅         | ✅         | ✅           | ✅           | ✅           | 1M tokens (2M soon) | Pro           |
-| gemini-2.5-flash      | ✅             | ✅          | ✅         | ✅         | ✅           | ✅           | ✅           | 1M tokens           | Pro           |
-| gemini-2.5-flash-lite | ✅             | ✅          | ✅         | ✅         | ✅           | ✅           | ✅           | 1M tokens           | Free          |
+| Models                 | Generate Text | Web Search | Reasoning | Input PDF | Input Image | Input Audio | Input Video | Context Window      | Plan\@Giselle |
+| ---------------------- | ------------- | ---------- | --------- | --------- | ----------- | ----------- | ----------- | ------------------- | ------------- |
+| gemini-3-flash-preview | ✅             | ✅          | ✅         | ✅         | ✅           | ✅           | ✅           | 1M tokens           | Pro           |
+| gemini-3-pro-preview   | ✅             | ✅          | ✅         | ✅         | ✅           | ✅           | ✅           | 1M tokens           | Pro           |
+| gemini-2.5-pro         | ✅             | ✅          | ✅         | ✅         | ✅           | ✅           | ✅           | 1M tokens (2M soon) | Pro           |
+| gemini-2.5-flash       | ✅             | ✅          | ✅         | ✅         | ✅           | ✅           | ✅           | 1M tokens           | Pro           |
+| gemini-2.5-flash-lite  | ✅             | ✅          | ✅         | ✅         | ✅           | ✅           | ✅           | 1M tokens           | Free          |
 
 *Note: Some features may not be available within Giselle even if they are offered in the Google official API. Features marked 'Free' or 'Pro' refer to the Giselle subscription plan required to access them.*
+
+### gemini-3-flash-preview
+
+The latest Gemini 3 Flash model, combining Pro-level intelligence with the speed and pricing of Flash. It uses dynamic thinking by default to reason through prompts, with configurable thinking levels (`minimal`, `low`, `medium`, `high`) to control latency and reasoning depth. Supports text generation, web search, advanced reasoning, and multimodal inputs (PDF, images, audio, video). With a 1 million token context window and 64K max output tokens, it's ideal for complex tasks requiring both speed and analytical depth. Requires a Pro plan.
+
+### gemini-3-pro-preview
+
+The latest Gemini 3 series preview model, offering enhanced reasoning capabilities and improved performance. It supports text generation, web search, advanced reasoning, and multimodal inputs (PDF, images, audio, video). With a 1 million token context window, it's designed for complex tasks requiring deep analytical thinking. Requires a Pro plan.
 
 ### gemini-2.5-pro
 
@@ -3231,6 +5255,24 @@ The next-generation Flash model, optimized for speed *and* reasoning. It offers 
 
 The next-generation Flash Lite model, `gemini-2.5-flash-lite` is designed for maximum efficiency and the quickest possible responses. It supports text generation, web search, and multimodal inputs (PDF, image, audio, video). With a 1M token context window, it's ideal for high-throughput tasks and applications where immediate feedback is paramount. Available on the Free plan.
 
+## Image Generation Models
+
+These models are specialized in generating images from text and image inputs.
+
+### gemini-2.5-flash-image
+
+Gemini 2.5 Flash Image is Google's image generation model optimized for image understanding and generation, offering a balance of price and performance. It accepts both text and image inputs and produces image outputs.
+
+* **Inputs:** Text, Image
+* **Outputs:** Image
+* **Maximum images per prompt:** 3
+* **Maximum output images:** 10
+* **Context Window:** 32,768 tokens
+* **Max Output Tokens:** 32,768 tokens
+* **Supported image formats:** PNG, JPEG, WebP, HEIC, HEIF
+* **Supported aspect ratios:** 1:1, 3:2, 2:3, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9
+* **Availability:** Pro Plan
+
 ## Model Selection Guide
 
 Guidelines for selecting the optimal model based on your needs and plan:
@@ -3241,8 +5283,11 @@ Guidelines for selecting the optimal model based on your needs and plan:
 
 **Pro Plan Models:**
 
-* **For best overall performance and complex tasks**: `gemini-2.5-pro` (Most powerful, all features)
+* **For Pro-level intelligence at Flash speed**: `gemini-3-flash-preview` (Latest 3-series Flash, dynamic thinking)
+* **For cutting-edge reasoning and complex tasks**: `gemini-3-pro-preview` (Latest model, enhanced reasoning)
+* **For proven stability and comprehensive features**: `gemini-2.5-pro` (Stable, full-featured)
 * **For fast responses with reasoning**: `gemini-2.5-flash` (Speed + Reasoning balance)
+* **For image generation and editing**: `gemini-2.5-flash-image` (Text-to-image, image editing)
 
 ## Practices for Giselle
 
@@ -3251,6 +5296,8 @@ We recommend `gemini-2.5-pro` (Pro plan) as your primary model in Giselle due to
 For users prioritizing speed on the Free plan, `gemini-2.5-flash-lite` is an excellent option. Pro users seeking a balance of speed and reasoning might consider the `gemini-2.5-flash`.
 
 By enabling the **Search grounding** feature with these models (where applicable), you can access web search functionality, allowing you to supplement your workflows with the most current information available.
+
+For image generation needs, **gemini-2.5-flash-image** provides versatile capabilities including text-to-image generation and image editing. It supports multiple aspect ratios and can process up to 3 images per prompt while generating up to 10 output images.
 
 For detailed specifications, performance benchmarks, or additional assistance, please check [Google AI for Developers](https://ai.google.dev/gemini-api/docs/models).
 
@@ -3266,18 +5313,76 @@ Explore the OpenAI models available in the Giselle workspace. These models are c
 
 The following table summarizes the key features of the OpenAI models available in Giselle.
 
-| Models      | Generate Text | Input Image | Web Search | Reasoning   | Context Window | Max Output Tokens | Pricing (Input/Output per 1M tokens) | Availability |
-| ----------- | ------------- | ----------- | ---------- | ----------- | -------------- | ----------------- | ------------------------------------ | ------------ |
-| gpt-5       | ✅             | ✅           | ✅          | ✅ (Highest) | 400k tokens    | 128k tokens       | $1.25 / $10.00                       | Pro          |
-| gpt-5-mini  | ✅             | ✅           | ✅          | ✅ (High)    | 400k tokens    | 128k tokens       | $0.25 / $2.00                        | Pro          |
-| gpt-5-nano  | ✅             | ✅           | ❌          | ✅ (Medium)  | 400k tokens    | 128k tokens       | $0.05 / $0.40                        | Free         |
-| gpt-image-1 | ❌             | ✅           | ❌          | ❌           | Unknown        | N/A               | $5.00 / $40.00                       | Open Source  |
+| Models           | Generate Text | Input Image | Web Search | Reasoning   | Context Window | Max Output Tokens | Pricing (Input/Output per 1M tokens) | Availability |
+| ---------------- | ------------- | ----------- | ---------- | ----------- | -------------- | ----------------- | ------------------------------------ | ------------ |
+| gpt-5.2          | ✅             | ✅           | ✅          | ✅ (Highest) | 400k tokens    | 128k tokens       | $1.75 / $14.00                       | Pro          |
+| gpt-5.2-codex    | ✅             | ✅           | ✅          | ✅ (Highest) | 400k tokens    | 128k tokens       | $1.75 / $14.00                       | Pro          |
+| gpt-5.1-thinking | ✅             | ✅           | ✅          | ✅ (Highest) | 400k tokens    | 128k tokens       | $1.25 / $10.00                       | Pro          |
+| gpt-5.1-codex    | ✅             | ✅           | ✅          | ✅ (Highest) | 400k tokens    | 128k tokens       | $1.25 / $10.00                       | Pro          |
+| gpt-5            | ✅             | ✅           | ✅          | ✅ (Highest) | 400k tokens    | 128k tokens       | $1.25 / $10.00                       | Pro          |
+| gpt-5-mini       | ✅             | ✅           | ✅          | ✅ (High)    | 400k tokens    | 128k tokens       | $0.25 / $2.00                        | Pro          |
+| gpt-5-nano       | ✅             | ✅           | ❌          | ✅ (Medium)  | 400k tokens    | 128k tokens       | $0.05 / $0.40                        | Free         |
+| gpt-image-1      | ❌             | ✅           | ❌          | ❌           | Unknown        | N/A               | $5.00 / $40.00                       | Open Source  |
 
 *Please note that some features listed (like specific API functionalities e.g., fine-tuning, batch processing, specific tool use like audio or transcription) may not be directly exposed or available within the Giselle interface even if supported by the underlying OpenAI model.*
 
+## GPT-5.2 Series Models
+
+GPT-5.2 is OpenAI's best general-purpose model, part of the GPT-5 flagship model family. It is the most intelligent model yet for both general and agentic tasks, showing significant improvements over the previous GPT-5.1 in general intelligence, instruction following, accuracy and token efficiency, multimodality (especially vision), code generation (especially front-end UI creation), tool calling and context management, and spreadsheet understanding and creation.
+
+### gpt-5.2
+
+GPT-5.2 is OpenAI's flagship model for coding and agentic tasks across industries. It replaces the previous GPT-5.1 model and delivers state-of-the-art performance in complex reasoning, broad world knowledge, and code-heavy or multi-step agentic tasks. The model supports configurable reasoning effort levels (`none`, `low`, `medium`, `high`, `xhigh`) with `none` as the default for lower-latency interactions, and text verbosity control (`low`, `medium`, `high`) with `medium` as the default.
+
+* **Key Features:** Enhanced general intelligence, superior instruction following, improved vision capabilities, advanced code generation, configurable reasoning effort (including `xhigh` for deepest reasoning)
+* **Context Window:** 400,000 tokens
+* **Max Output Tokens:** 128,000 tokens
+* **Knowledge Cutoff:** August 31, 2025
+* **Inputs:** Text, Image
+* **Reasoning Effort:** `none` (default), `low`, `medium`, `high`, `xhigh`
+* **Text Verbosity:** `low`, `medium` (default), `high`
+* **Availability:** Pro Plan
+
+### gpt-5.2-codex
+
+GPT-5.2-Codex is an upgraded version of GPT-5.2 optimized for long-horizon, agentic coding tasks. It is OpenAI's most intelligent coding model, designed for use in Codex or similar coding environments. GPT-5.2-Codex supports reasoning effort levels (`low`, `medium`, `high`, `xhigh`) for controlling the depth of reasoning, with text verbosity restricted to `medium` only to ensure optimal code output quality.
+
+* **Key Features:** Optimized for agentic coding, long-horizon tasks, enhanced code generation, reasoning token support
+* **Context Window:** 400,000 tokens
+* **Max Output Tokens:** 128,000 tokens
+* **Knowledge Cutoff:** August 31, 2025
+* **Inputs:** Text, Image
+* **Reasoning Effort:** `low`, `medium`, `high`, `xhigh`
+* **Text Verbosity:** `medium` (fixed)
+* **Availability:** Pro Plan
+
+## GPT-5.1 Series Models
+
+The GPT-5.1 series represents the latest evolution of OpenAI's GPT-5 models, delivering meaningful improvements in both intelligence and communication style. These models are smarter and more natural in tone, with enhanced instruction following capabilities.
+
+### gpt-5.1-thinking
+
+GPT-5.1 Thinking is OpenAI's advanced reasoning model, designed for complex problem-solving tasks. It features **adaptive thinking time**—spending more time on complex problems while responding more quickly to simpler ones. This results in more thorough answers for difficult requests and less waiting for simpler ones. The model's responses are clearer, with less jargon and fewer undefined terms, making it more approachable for complex tasks at work and explaining technical concepts.
+
+* **Key Features:** Adaptive reasoning, clearer explanations, improved math and coding performance
+* **Context Window:** 400,000 tokens
+* **Max Output Tokens:** 128,000 tokens
+* **Inputs:** Text, Image
+* **Availability:** Pro Plan
+
+### gpt-5.1-codex
+
+GPT-5.1 Codex is specialized for coding and software development tasks. Building on GPT-5.1's improvements in intelligence and instruction following, it provides enhanced code generation, debugging, refactoring, and technical documentation capabilities. This model is the optimal choice for developers and engineering workflows requiring precise, reliable code output.
+
+* **Key Features:** Enhanced code generation, improved debugging, better instruction following
+* **Context Window:** 400,000 tokens
+* **Max Output Tokens:** 128,000 tokens
+* **Inputs:** Text, Image
+* **Availability:** Pro Plan
+
 ## GPT-5 Series Models
 
-Introducing the GPT-5 series, OpenAI's latest and most advanced family of models. These models set new benchmarks for performance across a wide range of tasks, featuring enhanced reasoning capabilities, faster speeds, and improved efficiency.
+The GPT-5 series offers a range of models balancing performance, speed, and cost-efficiency for various use cases.
 
 ### gpt-5
 
@@ -3331,14 +5436,25 @@ OpenAI's state-of-the-art image generation model. It is a natively multimodal la
 
 Guidelines for selecting the optimal OpenAI model within Giselle:
 
-* **For the best overall performance, coding, agentic tasks, and highest reasoning**: `gpt-5` (Pro)
+* **For best overall performance, coding, agentic tasks, and highest reasoning**: `gpt-5.2` (Pro) - OpenAI's most capable model
+* **For long-horizon agentic coding tasks**: `gpt-5.2-codex` (Pro) - OpenAI's most intelligent coding model
+* **For deep reasoning and complex problem-solving**: `gpt-5.1-thinking` (Pro)
+* **For coding and software development**: `gpt-5.1-codex` (Pro)
+* **For reliable general-purpose tasks**: `gpt-5` (Pro)
 * **For a faster, cost-efficient version of GPT-5 for well-defined tasks**: `gpt-5-mini` (Pro)
 * **For the fastest, most cost-effective version of GPT-5 for summarization and classification**: `gpt-5-nano` (Free)
 * **For high-quality image generation from text or image inputs**: `gpt-image-1` (Pro)
 
 ## Practices for Giselle
 
-We recommend **gpt-5** as the versatile primary model in Giselle for Pro users. It offers an unparalleled balance of capability, intelligence, and features (including web search via tool) across various tasks like complex coding, business document creation, in-depth analysis, and advanced research. GPT-5 is designed to be highly reliable and accurate, significantly reducing hallucinations and improving instruction following.
+We recommend **gpt-5.2** as the versatile primary model in Giselle for Pro users. It is OpenAI's most capable model, offering state-of-the-art performance in general intelligence, instruction following, accuracy, multimodality (especially vision), code generation, tool calling, and spreadsheet understanding. GPT-5.2 is designed to be highly reliable and accurate, with 30% fewer errors compared to GPT-5.1 Thinking.
+
+**Configuring GPT-5.2:**
+
+* **Reasoning Effort:** GPT-5.2 supports five reasoning effort levels: `none` (default), `low`, `medium`, `high`, and `xhigh`. Use `none` for low-latency interactions, and increase to `medium` or higher for tasks requiring deeper reasoning. The new `xhigh` level provides the deepest reasoning for complex problems.
+* **Text Verbosity:** Control output length with `low`, `medium` (default), or `high`. Use `low` for concise answers and simple code generation (like SQL queries), and `high` for thorough explanations and extensive code refactoring.
+
+For users who need proven stability, **gpt-5** remains an excellent choice with strong overall performance, coding, and agentic capabilities.
 
 For Pro users requiring a balance of speed and cost-efficiency for well-defined tasks, **gpt-5-mini** is an excellent choice, maintaining strong reasoning and multimodal capabilities.
 
@@ -3353,7 +5469,9 @@ Giselle now automatically maps previously available OpenAI models to the new GPT
 
 For image generation needs, **gpt-image-1** provides high-quality results and supports both text and image inputs. The model offers different quality tiers to balance cost and detail based on specific requirements.
 
-By combining these models in workflows, you can leverage their specific strengths. For example, use `gpt-5` for its advanced reasoning and coding, `gpt-5-mini` for cost-efficient tasks, or `gpt-5-nano` for rapid, high-volume operations.
+For developers and teams working on complex, long-horizon coding projects, **gpt-5.2-codex** is the optimal choice. It is specifically optimized for agentic coding tasks in Codex-like environments, offering the same pricing as GPT-5.2 with specialized capabilities for sustained coding workflows. Note that text verbosity is fixed to `medium` for this model.
+
+By combining these models in workflows, you can leverage their specific strengths. For example, use `gpt-5.2` for its state-of-the-art reasoning and general capabilities, `gpt-5.2-codex` for agentic coding tasks, `gpt-5-mini` for cost-efficient tasks, or `gpt-5-nano` for rapid, high-volume operations.
 
 For detailed specifications and the full range of models offered directly by OpenAI, please check the [Official OpenAI Documentation](https://platform.openai.com/docs/models).
 
@@ -3452,13 +5570,13 @@ Source: https://docs.giselles.ai/en/prompts/examples
 
 Effective Prompt Examples in Giselle’s Generator Nodes.
 
-This document provides effective and concrete prompt examples tailored specifically for Giselle's Generator Nodes, leveraging various multimodal AI models including Anthropic's Claude, Google's Gemini, OpenAI's GPT-4o, and Fal AI for image generation.
+This document provides effective and concrete prompt examples tailored specifically for Giselle's Generator Nodes, leveraging various multimodal AI models including Anthropic's Claude, Google's Gemini, and OpenAI's GPT series.
 
 ## Basic Examples
 
-### 1. Technical Query using GPT-4o
+### 1. Technical Query using GPT-5.2
 
-```plaintext  theme={null}
+```plaintext theme={null}
 Role: Experienced programmer
 
 Task:
@@ -3475,16 +5593,16 @@ Output Format:
 * Explicit instruction and clear output expectations.
 * Specifies programming language explicitly.
 
-### 2. Image Generation with Fal AI
+### 2. Image Generation with Gemini
 
-```plaintext  theme={null}
+```plaintext theme={null}
 Role: Graphic designer
 
 Task:
 Generate a high-quality, minimalist logo for a technology startup named "QuantumLeap."
 
 Constraints:
-- Model: flux-pro/v1.1
+- Model: Gemini 2.5 Flash Image
 - Color scheme: Blue and white
 - Style: Modern, minimalistic
 
@@ -3495,14 +5613,14 @@ Output Format:
 **Why this prompt is effective:**
 
 * Clearly defines role and creative constraints.
-* Utilizes specific Fal AI model for high-quality outputs.
+* Utilizes Gemini's image generation capabilities for high-quality outputs.
 * Precise output format suitable for immediate use.
 
 ## Advanced Examples
 
 ### 1. Multimodal Analysis with Gemini
 
-```plaintext  theme={null}
+```plaintext theme={null}
 Role: Industry analyst
 
 Task:
@@ -3530,7 +5648,7 @@ Output Format:
 
 ### 2. Ethical Analysis and Content Structuring with Claude
 
-```plaintext  theme={null}
+```plaintext theme={null}
 Role: Ethics consultant
 
 Task:
@@ -3541,7 +5659,7 @@ Steps:
 2. Suggest practical ethical guidelines for deployment.
 
 Constraints:
-- Model: Claude 3.7 Sonnet
+- Model: Claude Sonnet 4.5
 
 Output Format:
 - Ethical implications listed clearly
@@ -3557,18 +5675,18 @@ Output Format:
 
 ### 1. Comprehensive Market Research Workflow
 
-```plaintext  theme={null}
-Step 1 (Claude 3.7 Sonnet):
+```plaintext theme={null}
+Step 1 (Claude Sonnet 4.5):
 Role: Market researcher and sustainability analyst
 Task: Research sustainable food packaging trends and analyze their ethical and sustainability implications.
 Output Format: Analysis summary and recommendations.
 
-Step 2 (GPT-4o):
+Step 2 (GPT-5.2):
 Role: Technical writer
 Task: Format the insights and recommendations into a structured industry report.
 Output Format: Professional document in markdown format.
 
-Step 3 (Fal AI flux-pro/v1.1):
+Step 3 (Gemini 2.5 Flash Image):
 Role: Graphic designer
 Task: Generate a compelling visual cover image for the final report.
 Constraints: Sustainability theme, professional style
@@ -3660,7 +5778,7 @@ This document provides concrete, actionable tips tailored specifically for creat
 * Clearly define the AI model’s role.
 * Provide explicit, focused instructions without ambiguity.
 
-```plaintext  theme={null}
+```plaintext theme={null}
 ❌ Poor example:
 "Describe a useful invention."
 
@@ -3690,7 +5808,7 @@ Output Format:
 
 Defining roles guides the AI to produce contextually accurate outputs:
 
-```plaintext  theme={null}
+```plaintext theme={null}
 ✅ Example:
 "Role: UX Designer
 
@@ -3714,8 +5832,8 @@ Although Giselle nodes are single-shot, you can achieve iterative refinement by 
 Combine diverse AI models across nodes to maximize output quality:
 
 * **Claude** for nuanced analysis and ethical considerations.
-* **GPT-4o** for structured and creative content creation.
-* **Fal AI** for high-quality image and visual content generation.
+* **GPT-5.2** for structured and creative content creation.
+* **Gemini** for high-quality image and visual content generation.
 
 ## Common Pitfalls to Avoid
 
@@ -3723,7 +5841,7 @@ Combine diverse AI models across nodes to maximize output quality:
 
 Avoid excessively rigid constraints:
 
-```plaintext  theme={null}
+```plaintext theme={null}
 ❌ Avoid:
 "Create a detailed report exactly 200 words, including exactly four examples."
 ```
@@ -3732,7 +5850,7 @@ Avoid excessively rigid constraints:
 
 Ensure instructions remain logically consistent:
 
-```plaintext  theme={null}
+```plaintext theme={null}
 ❌ Avoid:
 "Provide a highly detailed yet simple explanation using advanced terminology."
 ```
@@ -3741,7 +5859,7 @@ Ensure instructions remain logically consistent:
 
 Avoid vague instructions that lead to unclear outputs:
 
-```plaintext  theme={null}
+```plaintext theme={null}
 ❌ Avoid:
 "Explain something useful."
 ```
@@ -3757,7 +5875,7 @@ Avoid vague instructions that lead to unclear outputs:
 
 Leverage prompt templates for consistent, effective outputs:
 
-```plaintext  theme={null}
+```plaintext theme={null}
 ✅ Giselle Template:
 
 Role: [Defined AI role]
@@ -3782,9 +5900,8 @@ Output Format:
 Choose AI models carefully according to task requirements and capabilities:
 
 * **Claude**: nuanced, ethical analyses.
-* **Gemini**: complex multimodal inputs.
-* **GPT-4o**: structured outputs and creative content.
-* **Fal AI**: image generation tasks.
+* **Gemini**: complex multimodal inputs and image generation.
+* **GPT-5.2**: structured outputs and creative content.
 
 ### 2. Visualize and Collaborate
 
@@ -3821,7 +5938,185 @@ Source: https://docs.giselles.ai/en/releases/release-notes
 
 This page provides chronological information about the latest releases and updates of our product.
 
-TBD
+Stay up to date with the latest features, improvements, and fixes in Giselle.
+
+***
+
+## [December 24, 2025](/en/releases/release-notes/2025-12-24)
+
+**Playground & Tasks Now Generally Available**
+
+Playground and Tasks are now available to all users. Playground provides a dedicated page for running your apps without entering the workspace editor, while Tasks offers a comprehensive execution history page with clear status indicators and detailed results. The default landing page has changed from `/workspaces` to `/playground`.
+
+***
+
+## [December 23, 2025](/en/releases/release-notes/2025-12-23)
+
+**GPT-5.2 & Gemini 3 Flash, New Tasks Page & Start/End Node Improvements**
+
+Major update with new AI models and enhanced workflow experience. Added GPT-5.2 with configurable reasoning effort and Gemini 3 Flash for advanced capabilities. Introduced a dedicated Tasks page for managing execution history. Renamed "App Entry" to "Start" with auto-pairing for End nodes. Important security fixes including CVE-2025-55184 and OAuth token encryption.
+
+***
+
+## [December 5, 2025](/en/releases/release-notes/2025-12-05)
+
+**Official Vector Stores Now Available to All Users**
+
+We're making powerful knowledge bases accessible to everyone. This release introduces official vector stores—both document and GitHub-based—that you can use in your workflows without any setup. We've also improved team navigation with avatar icons and direct workspace links, plus enhanced GitHub integration with better error handling and a new reconnection UI for expired credentials.
+
+***
+
+## [November 27, 2025](/en/releases/release-notes/2025-11-27)
+
+**Claude Opus 4.5 & Enhanced Content Generation**
+
+We've added support for Claude Opus 4.5, Anthropic's most capable model for complex reasoning and creative tasks. This release also brings major improvements to content generation with streaming UI, copy-to-clipboard functionality, and tool integrations. Plus, subscription management is now easier with a new cancellation UI.
+
+***
+
+## [November 14, 2025](/en/releases/release-notes/2025-11-14)
+
+**Enterprise Plan, GitHub Issues Vector Store & Mobile Navigation**
+
+Introducing the Enterprise plan for organizations with advanced needs—higher quotas, team-based access control, and enhanced billing management. This release also brings GitHub Issues Vector Store for indexing your repository issues, and a mobile drawer menu for better navigation on smaller screens.
+
+***
+
+## [November 4, 2025](/en/releases/release-notes/2025-11-04)
+
+**Workspaces, Claude 4.5 Models & Document Vector Store**
+
+A major update that renames Apps to Workspaces for clearer project organization. We've added Claude Sonnet 4.5 and Claude Haiku 4.5 models, made Document Vector Store available to all users, and completely redesigned the global navigation with a new Navigation Rail for easier team switching and workspace access.
+
+***
+
+## [October 17, 2025](/en/releases/release-notes/2025-10-17)
+
+**GitHub Discussion Triggers & Node Design Improvements**
+
+Trigger workflows from GitHub Discussions and build AI-powered community support. This release also brings redesigned Image Generation and File Upload nodes, customizable GitHub Trigger labels, and an improved Query Node interface with scrollable layout.
+
+***
+
+## [September 26, 2025](/en/releases/release-notes/2025-09-26)
+
+**Document Vector Store, GPT-5-codex & @ Mentions**
+
+Upload your own documents to create searchable knowledge bases with Document Vector Store. This release also adds the GPT-5-codex model for code-focused workflows, @ mention functionality to reference nodes in prompts, and PDF text extraction support.
+
+***
+
+## [September 16, 2025](/en/releases/release-notes/2025-09-16)
+
+**Gemini Image Generation, Image Editing & Cancelable Generation**
+
+Create images with Gemini 2.5 Flash (Nano Banana) and edit existing images in your workflows. Plus, you can now cancel long-running text generations and run complex tasks beyond the 800-second limit.
+
+***
+
+## [September 1, 2025](/en/releases/release-notes/2025-09-01)
+
+**GitHub Trigger Improvements & Multi-Embedding**
+
+GitHub Trigger Node now supports label-based triggering and repository changes after configuration. Multi-embedding is enabled by default for better search accuracy. This release also includes unified error tracing, redesigned sidebar with navigation rail, and improved toast notifications.
+
+***
+
+## [August 8, 2025](/en/releases/release-notes/2025-08-08)
+
+**GPT-5 Series, Claude Opus 4.1 & Anthropic Web Search**
+
+Added GPT-5 model series and Claude Opus 4.1 for advanced reasoning capabilities. New Anthropic Web Search tool lets AI agents search the web in real-time. This release also includes enhanced keyboard shortcuts for the workflow designer, embedding profile selection in VectorStoreNode, team avatar registration, and download functionality for workflow results.
+
+***
+
+## [July 16, 2025](/en/releases/release-notes/2025-07-16)
+
+**V2 Workflow Designer & GitHub PR Loader**
+
+A major update introducing the V2 Workflow Designer with a completely redesigned interface, improved node organization, and simplified properties panels. This release also adds GitHub Pull Request loader for RAG/vector search, PostgreSQL connection string validation, and team-based flow selection.
+
+***
+
+## [July 2, 2025](/en/releases/release-notes/2025-07-02)
+
+**Vector Store Settings & GitHub Trigger UI**
+
+New Vector Store settings UI for managing knowledge bases. Added GitHub Trigger UI components with event selection workflow. Web Search is now enabled for OpenAI o3 and o4-mini models.
+
+***
+
+## [June 13, 2025](/en/releases/release-notes/2025-06-13)
+
+**PostgreSQL Tools & GitHub Vector Store**
+
+Added PostgreSQL tool support to text generation nodes for database queries. GitHub Vector Store is now enabled by default. You can paste images directly from clipboard into Image File Nodes. New workflow run button for one-click execution.
+
+***
+
+## [May 23, 2025](/en/releases/release-notes/2025-05-23)
+
+**Query Node, Web Page Node & Claude 4**
+
+New Query Node with RAG capabilities for context-aware AI generation. Web Page Node fetches and processes web content. Added Claude 4 model support. GitHub integration expanded with PR comment triggers and actions. Workflow cancellation now available with toast feedback.
+
+***
+
+## [April 30, 2025](/en/releases/release-notes/2025-04-30)
+
+**GitHub Trigger & Action Nodes**
+
+New GitHub Trigger Node for workflow automation based on PR and Issue events. GitHub Action Node enables creating issues and posting comments from workflows. Animated completion status provides visual feedback for workflow execution.
+
+***
+
+## [April 16, 2025](/en/releases/release-notes/2025-04-16)
+
+**OpenAI Web Search & Team Invitations**
+
+OpenAI Web Search Tool integration for real-time web searches during text generation. Complete team invitation system for collaboration. Enhanced GitHub integration with PR and Issue event triggers. Added OpenAI o3 and o4-mini models with advanced reasoning.
+
+***
+
+## [March 14, 2025](/en/releases/release-notes/2025-03-14)
+
+**Image Generation, GitHub Webhooks & New Playground UI**
+
+New Image Generation Node for creating AI images in workflows. GitHub webhook integration enables automated workflow execution from repository events. Gemini Search Grounding provides real-time information with source citations. Completely redesigned Playground UI with Builder/Preview toggle and improved settings pages.
+
+***
+
+## [February 17, 2025](/en/releases/release-notes/2025-02-17)
+
+**Pro Plan & Free Plan Launch**
+
+Major milestone with Pro and Free plan launches, making Giselle accessible to everyone. Pro plan offers time-based pricing for AI agent usage, while Free plan lets you start building at no cost.
+
+***
+
+## [December 18, 2024](/en/releases/release-notes/2024-12-18)
+
+**Redesigned Workflow Editor, Google Gemini & Team Management**
+
+Completely redesigned workflow editor with graph-based editing and real-time execution tracking. Added Google Gemini model support including Gemini 2.0 Flash Exp. New Google OAuth login and comprehensive team management features.
+
+***
+
+## [November 5, 2024](/en/releases/release-notes/2024-11-05)
+
+**Workflow Execution & GitHub Login**
+
+First workflow execution capability—workflows built with the editor can now be executed. Added GitHub Login for quick authentication and laid groundwork for GitHub App integration.
+
+***
+
+## [October 17, 2024](/en/releases/release-notes/2024-10-17)
+
+**Giselle Goes Open Source**
+
+Giselle is now open source! This marks the beginning of our journey to build AI workflow automation tools together with the community. Full source code, documentation, and community infrastructure are now available on [GitHub](https://github.com/giselles-ai/giselle).
+
+***
 
 ## Community-Driven
 

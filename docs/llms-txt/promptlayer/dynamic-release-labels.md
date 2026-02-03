@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/prompt-registry/dynamic-release-labels.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Dynamic Release Labels
 
 Dynamic Release Labels allow you to overload release labels and dynamically route traffic to different prompt versions based on percentages or user segments. 🏷️
@@ -40,8 +44,3 @@ To stop dynamically routing traffic, simply delete the A/B Release. The release 
 ***
 
 Dynamic Release Labels give you fine-grained control over prompt version routing. Use them to safely test updates, roll out new versions, and segment users. 🎯
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

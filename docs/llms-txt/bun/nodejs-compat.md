@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/nodejs-compat.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Node.js Compatibility
 
 > Bun's compatibility status with Node.js APIs, modules, and globals
@@ -150,7 +154,7 @@ This page is updated regularly to reflect compatibility status of the latest ver
 
 ### [`node:v8`](https://nodejs.org/api/v8.html)
 
-🟡 `writeHeapSnapshot` and `getHeapSnapshot` are implemented. `serialize` and `deserialize` use JavaScriptCore's wire format instead of V8's. Other methods are not implemented. For profiling, use [`bun:jsc`](/project/benchmarking#bunjsc) instead.
+🟡 `writeHeapSnapshot` and `getHeapSnapshot` are implemented. `serialize` and `deserialize` use JavaScriptCore's wire format instead of V8's. Other methods are not implemented. For profiling, use [`bun:jsc`](/project/benchmarking#javascript-heap-stats) instead.
 
 ### [`node:vm`](https://nodejs.org/api/vm.html)
 
@@ -166,7 +170,7 @@ This page is updated regularly to reflect compatibility status of the latest ver
 
 ### [`node:inspector`](https://nodejs.org/api/inspector.html)
 
-🔴 Not implemented.
+🟡 Partially implemented. `Profiler` API is supported (`Profiler.enable`, `Profiler.disable`, `Profiler.start`, `Profiler.stop`, `Profiler.setSamplingInterval`). Other inspector APIs are not yet implemented.
 
 ### [`node:repl`](https://nodejs.org/api/repl.html)
 
@@ -246,7 +250,7 @@ The table below lists all globals implemented by Node.js and Bun's current compa
 
 ### [`CompressionStream`](https://developer.mozilla.org/en-US/docs/Web/API/CompressionStream)
 
-🔴 Not implemented.
+🟢 Fully implemented.
 
 ### [`console`](https://developer.mozilla.org/en-US/docs/Web/API/console)
 
@@ -274,7 +278,7 @@ The table below lists all globals implemented by Node.js and Bun's current compa
 
 ### [`DecompressionStream`](https://developer.mozilla.org/en-US/docs/Web/API/DecompressionStream)
 
-🔴 Not implemented.
+🟢 Fully implemented.
 
 ### [`Event`](https://developer.mozilla.org/en-US/docs/Web/API/Event)
 

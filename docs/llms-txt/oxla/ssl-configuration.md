@@ -1,5 +1,9 @@
 # Source: https://docs.oxla.com/security/ssl-configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.oxla.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SSL Configuration
 
 Oxla provides support for using SSL connections to encrypt client/server communications for increased security, that safeguards your data. The following documentation will guide you through the process of configuring SSL for your Oxla database.

@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/sdks/javascript/nextjs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Set up Loops in Next.js
 
 > How to send email from your Next.js project with Loops.

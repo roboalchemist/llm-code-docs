@@ -9,13 +9,17 @@ https://api.apify.com/v2/datasets/:datasetId
 ```
 
 
-Clientshttps://docs.apify.com/api/client/js/reference/class/DatasetClient#deleteDeletes a specific dataset.
+Deletes a specific dataset.
 
 ## Request
 
 ## Responses
 
 * 204
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

@@ -1,3 +1,9 @@
+# Linear Documentation
+
+Source: https://linear.app/llms-full.txt
+
+---
+
 # Linear
 
 ## Loading…

@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zpopmax.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zpopmax.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zpopmax.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zpopmax.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zpopmax.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zpopmax.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zpopmax.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zpopmax.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zpopmax.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zpopmax.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # ZPOPMAX
 
@@ -26,18 +12,24 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the sorted set
+</ParamField>
+
+<ParamField body="count" type="int">
+  The number of members to pop
 </ParamField>
 
 ## Response
 
-<ResponseField body="count" type="integer">
-  The number of elements removed. Defaults to 1.
+<ResponseField type="List[Tuple[str, float]]">
+  A list of tuples containing the popped members and their scores
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const popped = await redis.zpopmax("key", 4);
+  ```py Example theme={"system"}
+  redis.zadd("myset", {"a": 1, "b": 2, "c": 3})
+
+  assert redis.zpopmax("myset") == [("c", 3)]
   ```
 </RequestExample>

@@ -2,15 +2,7 @@
 
 # Source: https://gitbook.com/docs/developers/integrations/guides.md
 
-# Source: https://gitbook.com/docs/documentation/zh/api-references/guides.md
-
-# Source: https://gitbook.com/docs/documentation/fr/api-references/guides.md
-
-# Source: https://gitbook.com/docs/api-references/guides.md
-
-# Source: https://gitbook.com/docs/developers/gitbook-api/guides.md
-
-# Source: https://gitbook.com/docs/developers/integrations/guides.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/api-references/guides.md
 
 # Source: https://gitbook.com/docs/documentation/zh/api-references/guides.md
 

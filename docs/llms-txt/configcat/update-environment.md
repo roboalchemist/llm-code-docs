@@ -2,10 +2,7 @@
 
 # Update Environment
 
-```
-PUT 
-/v1/environments/:environmentId
-```
+Copy page
 
 This endpoint updates an Environment identified by the `environmentId` parameter.
 

@@ -6,7 +6,6 @@ description: >-
   Configure Datadog Agent settings using environment variables as an alternative
   to datadog.yaml, including naming conventions and systemd usage.
 breadcrumbs: Docs > Agent > Agent Guides > Agent Environment Variables
-source_url: https://docs.datadoghq.com/guide/environment-variables/index.html
 ---
 
 # Agent Environment Variables

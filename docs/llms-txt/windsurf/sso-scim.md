@@ -2,21 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/accounts/sso-scim.md
 
-# Source: https://docs.windsurf.com/windsurf/accounts/sso-scim.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/sso-scim.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/sso-scim.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/sso-scim.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/sso-scim.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/sso-scim.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/sso-scim.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Setting up SSO & SCIM
+
+> Configure Single Sign-On (SSO) and SCIM provisioning for your organization using Google Workspace, Microsoft Azure AD, Okta, or other SAML identity providers.
 
 This feature is only available to Teams and Enterprise users.
 
@@ -72,7 +64,7 @@ This feature is only available to Teams and Enterprise users.
     On Codeium’s settings page, click **Enable Login with SAML**, and then click **Save**. Make sure to click on **Test Login** to make sure login works as expected. All users now will have SSO login enforced.
   </Tab>
 
-  <Tab title="Azure AD SSO">
+  <Tab title="Microsoft Entra ID">
     Windsurf Enterprise now supports sign in with Single Sign-On (SSO) via SAML. If your organization uses Microsoft Entra ID (formerly Azure AD), you will be able to use SSO with Windsurf.
 
     <Note>Windsurf only supports SP-initiated SSO; IDP-initiated SSO is NOT currently supported.</Note>
@@ -242,32 +234,7 @@ This feature is only available to Teams and Enterprise users.
     * Admin access to Windsurf
     * An existing Windsurf Application on Entra ID (normally from your existing SSO application)
 
-    <Note>
-      **Service Key Permissions Required**
-
-      The service key used for SCIM provisioning must have the following permissions:
-
-      * **Team User Read** - Required to read user and group information
-      * **Team User Update** - Required to create and update users and groups
-      * **Team User Delete** - Required to deactivate/delete users and groups
-
-      You can create a custom role with these permissions or use an existing admin role that includes them.
-    </Note>
-
-    ## Step 1: Create a Role with SCIM Permissions
-
-    Before setting up SCIM provisioning, you need to create a role with the required permissions.
-
-    1. Go to [Windsurf Team Settings](https://windsurf.com/team/settings)
-    2. Under "Other Settings", click **Configure** next to **Role Management**
-    3. Click **Add Role** and name it "SCIM Provisioning"
-    4. Add the following permissions:
-       * Team User Read
-       * Team User Update
-       * Team User Delete
-    5. Click **Save**
-
-    ## Step 2: Navigate to the existing Windsurf Application
+    ## Step 1: Navigate to the existing Windsurf Application
 
     Go to Microsoft Entra ID on Azure, click on Enterprise applications on the left sidebar, and then click on the existing Windsurf application in the list.
 
@@ -275,7 +242,7 @@ This feature is only available to Teams and Enterprise users.
       <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c2425d24cadc8997c694a4b8a950169a" data-og-width="1258" width="1258" data-og-height="664" height="664" data-path="assets/auth/scim-azure.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=d2a0a5702a29ce1264d133bb5d3545c1 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f91fd83f53b34bab00d17c64358ac511 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4fc4661fa56013064005d8d923a13547 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=196d0489a6a5fdf4200ab92e7f5835d5 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=fb03af9c8d156c0f5c2331ab5289d588 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=58bcf8651ea7dc34d4f7e561b7c6ab34 2500w" />
     </Frame>
 
-    ## Step 3: Setup SCIM provisioning
+    ## Step 2: Setup SCIM provisioning
 
     Click on Get started under Provision User Accounts in the middle (step 3), and then click on Get started again.
 
@@ -289,11 +256,7 @@ This feature is only available to Teams and Enterprise users.
 
     Admin Credentials > Tenant URL: [https://server.codeium.com/scim/v2](https://server.codeium.com/scim/v2)
 
-    <Frame>
-      <img src="https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure-admin-credentials.png?fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=ee0b34f8f0f131441eb9ca9e89ccbcda" data-og-width="560" width="560" data-og-height="416" height="416" data-path="assets/auth/scim-azure-admin-credentials.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure-admin-credentials.png?w=280&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=c8581d4e4ad89b8a5edf7c138c364854 280w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure-admin-credentials.png?w=560&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=b689bb2e0efdf652f56a2a9b94b51f27 560w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure-admin-credentials.png?w=840&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=9a5e159c52dd929afbc02ce2292f05e5 840w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure-admin-credentials.png?w=1100&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=babac19088e58725307bdadaa495f9d6 1100w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure-admin-credentials.png?w=1650&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=6b2a1255d4ee047ee6f9aa4556dbaa21 1650w, https://mintcdn.com/codeium/s3SYO8XdSvmrABvq/assets/auth/scim-azure-admin-credentials.png?w=2500&fit=max&auto=format&n=s3SYO8XdSvmrABvq&q=85&s=ebf7a44a0053609e44623549c6aae9b5 2500w" />
-    </Frame>
-
-    Leave the Azure provisioning page open, now go to the Windsurf web portal, and click on the profile icon  in the NavBar on the top of the page.Under Team Settings, select Service Key and click on Add Service Key. Enter any key name (such as 'Azure SCIM Provisioning'), **select the "SCIM Provisioning" role you created earlier**, and click Create Service Key. Copy the output key, go back to the Azure page, paste it to Secret Token.
+    Leave the Azure provisioning page open, now go to the Windsurf web portal, and click on the profile icon  in the NavBar on the top of the page. Under Team Settings, select Service Key and click on Add Service Key. Enter any key name (such as 'Azure Provisioning Key') and click Create Service Key. Copy the output key, go back to the Azure page, paste it to Secret Token.
 
     <Frame>
       <img src="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=80477c2c0d31631e38e217b22e9f42a3" data-og-width="1612" width="1612" data-og-height="1013" height="1013" data-path="assets/auth/scim-azure3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?w=280&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=c547369cd10d19d77dbdb3586045c027 280w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?w=560&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=e375425a3fe55cc5425f53e78b34f32f 560w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?w=840&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=f15b3e3d387acd4ac3371b882595252a 840w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?w=1100&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=49e6c3e224944aef0dfa88b13b401a74 1100w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?w=1650&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=7dd27466493288c1d49a4327070f9f6f 1650w, https://mintcdn.com/codeium/DnGnXhZxl1qb2EWt/assets/auth/scim-azure3.png?w=2500&fit=max&auto=format&n=DnGnXhZxl1qb2EWt&q=85&s=4f40f4c6d50b15c421ba344a2013a8cc 2500w" />
@@ -305,7 +268,7 @@ This feature is only available to Teams and Enterprise users.
 
     Now above the Provisioning form click on Save.
 
-    ## Step 4: Configure SCIM Provisioning
+    ## Step 3: Configure SCIM Provisioning
 
     After clicking on Save, a new option Mappings should have appeared in the Provisioning page. Expand Mappings, and click on Provision Microsoft Entra ID Users
 
@@ -379,8 +342,8 @@ This feature is only available to Teams and Enterprise users.
 
     For HTTP Header - Authorization, you can generate the token from
 
-    * [https://windsurf.com/team/settings](https://windsurf.com/team/settings) and go to the Service Key Configuration
-    * Click on Configure, then Add Service Key, and give your API key a name
+    * [https://windsurf.com/team/settings](https://windsurf.com/team/settings) and go to the Other Settings and find Service Key Configuration
+    * Click on Add Service Key, and give your key a name
     * Copy the API key, go back to Okta and paste it to HTTP Header - Authorization
 
     Click on Save after filling out Provisioning Integration.
@@ -517,7 +480,7 @@ This feature is only available to Teams and Enterprise users.
 
     ## Creating Api Secret Key
 
-    Go to [https://windsurf.com/team/settings](https://windsurf.com/team/settings). Under Service Key Configuration, click on Add Service Key. Enter any key name (such as 'Azure Provisioning Key') and click Create Service Key. Copy the output key and save it, you can now use the key to authorize the above APIs.
+    Go to [https://windsurf.com/team/settings](https://windsurf.com/team/settings). Under Service Key Configuration, click on Configure, then Add Service Key. Enter any key name (such as 'Azure Provisioning Key') and click Create Service Key. Copy the output key and save it, you can now use the key to authorize the above APIs.
   </Tab>
 
   <Tab title="Duo">

@@ -1,3 +1,7 @@
+# Source: https://www.promptfoo.dev/docs/red-team/
+
+# Source: https://www.promptfoo.dev/docs/tags/red-team/
+
 # One doc tagged with "red-team"
 
 [View all tags](/docs/tags/)

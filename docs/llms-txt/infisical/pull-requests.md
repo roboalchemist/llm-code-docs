@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/contributing/getting-started/pull-requests.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pull requests
 
 > This guide walks through the code submission process for Infisical.

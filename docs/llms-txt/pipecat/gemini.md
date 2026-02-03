@@ -2,13 +2,9 @@
 
 # Source: https://docs.pipecat.ai/client/js/transports/gemini.md
 
-# Source: https://docs.pipecat.ai/server/services/llm/gemini.md
-
-# Source: https://docs.pipecat.ai/client/js/transports/gemini.md
-
-# Source: https://docs.pipecat.ai/server/services/llm/gemini.md
-
-# Source: https://docs.pipecat.ai/client/js/transports/gemini.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # GeminiLiveWebSocketTransport
 
@@ -120,8 +116,3 @@ The GeminiLiveWebSocketTransport implements the various [PipecatClient event han
 <Card horizontal title="Package" icon="browser" href="https://www.npmjs.com/package/@pipecat-ai/gemini-live-websocket-transport">
   `@pipecat-ai/realtime-websocket-transport`
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/text/st.text
+
 # st.text
 
 Write text without Markdown or HTML parsing.

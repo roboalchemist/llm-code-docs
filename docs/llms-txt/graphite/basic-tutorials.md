@@ -1,5 +1,9 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/basic-tutorials.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Basic Tutorials
 
 > Understand the core CLI commands.
@@ -18,10 +22,10 @@
   </Card>
 </CardGroup>
 
-## Watch a video tutorial
+## Walkthrough
 
-Follow along with our video tutorials! In two-minute pieces, we break down each command that you'll need to know to get started with the Graphite CLI.
+In this video, we cover creating and traversing a stack using `gt log short`, `gt checkout`, `gt create`, and `gt submit`.
 
 <Frame>
-  <iframe width="750" height="360" src="https://www.youtube.com/embed/WgTe0B19slY?si=JhftN6K_coXzHwwy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+  <iframe width="750" height="360" src="https://www.youtube.com/embed/-F6Fzb_Z3ro?si=Szx1Sce1Q4f_4cxS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
 </Frame>

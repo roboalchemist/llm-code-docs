@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/how-to/logging-data-via-python.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Logging Data Via Python
 
 > Learn how to manually log your data via our Python Logger
@@ -12,7 +16,7 @@ Here's an example of how to integrate the logger into your llm app:
 
 First you can create your ObserveWorkflows object with your existing project.
 
-```py
+```py  theme={null}
 from galileo_observe import ObserveWorkflows
 
 observe_logger = ObserveWorkflows(project_name="my_first_project")
@@ -20,7 +24,7 @@ observe_logger = ObserveWorkflows(project_name="my_first_project")
 
 Then you can use the workflows object to log your workflows.
 
-```py
+```py  theme={null}
 def my_llm_app(input, observe_logger):
     template = "You're a helpful AI assistant, answer the following question. Question: {question}"
     wf = observe_logger.add_workflow(input=input)
@@ -38,7 +42,7 @@ def my_llm_app(input, observe_logger):
 
 You can also do this with your RAG workflows:
 
-```py
+```py  theme={null}
 def my_llm_app(input, observe_logger):
     template = "Given the following context answer the question. \n Context: {context} \n Question: {question}"
     wf = observe_logger.add_workflow(input=input)
@@ -62,7 +66,7 @@ def my_llm_app(input, observe_logger):
 
 We also support logging Agent workflows. Here's an example of how you can log an Agent workflow:
 
-```py
+```py  theme={null}
 agent_wf = evaluate_run.add_agent_workflow(input=<input>)
 # Log a Tool-Calling LLM step
 agent_wf.add_llm(input=<prompt>, output=<output>, tools=<tools_json>, model=<model_name>)
@@ -76,7 +80,7 @@ agent_wf.conclude(output=<output>)
 If you want to log more complex inputs and outputs to your nodes, we provide support for that as well.
 For retriever outputs we support the [Document](https://promptquality.docs.rungalileo.io/#promptquality.Document) object.
 
-```py
+```py  theme={null}
 from galileo_observe import Document
 
 wf = observe_logger.add_workflow(input="Who's a good bot?", output="I am!", duration_ns=2000)
@@ -89,7 +93,7 @@ wf.add_retriever(
 
 For LLM inputs and outputs we support the [Message](https://promptquality.docs.rungalileo.io/#promptquality.Message) object.
 
-```py
+```py  theme={null}
 from galileo_observe import Message, MessageRole
 wf = observe_logger.add_workflow(input="Who's a good bot?", output="I am!", duration_ns=2000)
 wf.add_llm(
@@ -105,7 +109,7 @@ wf.add_llm(
 
 Often times an llm interaction consists of multiple messages. You can log these as well.
 
-```py
+```py  theme={null}
 wf = observe_logger.add_workflow(input="Who's a good bot?", output="I am!", duration_ns=2000)
 wf.add_llm(
     input=[
@@ -122,7 +126,7 @@ wf.add_llm(
 If you have more complex workflows that involve nesting workflows within workflows, we support that too.
 Here's an example of how you can log nested workflow using conclude to step out of the nested workflow, back into the base workflow:
 
-```py
+```py  theme={null}
 wf = observe_logger.add_workflow("input", "output", duration_ns=100)
 # Add a workflow inside the base workflow.
 nested_wf = wf.add_sub_workflow(input="inner input")

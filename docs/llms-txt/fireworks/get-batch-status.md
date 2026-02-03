@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/api-reference/get-batch-status.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Check Batch Status
 
 This endpoint allows you to check the current status of a previously submitted batch request, and retrieve the final result if available.

@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/integrations/support/front.md
+# Source: https://www.mintlify.com/docs/integrations/support/front.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Front
 

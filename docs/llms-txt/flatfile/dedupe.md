@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/dedupe.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deduplicate Sheet Records
 
 > A Flatfile plugin that provides functionality to find and remove duplicate records from a sheet based on specified field values or custom logic.
@@ -12,7 +16,7 @@ The primary use case is data cleaning. For example, when importing a list of con
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-dedupe
 ```
 
@@ -43,7 +47,7 @@ By default, without any configuration in the `opts` object, the plugin will not 
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from "./listener-instance"; // Your listener instance
   import { dedupePlugin } from "@flatfile/plugin-dedupe";
 
@@ -71,7 +75,7 @@ By default, without any configuration in the `opts` object, the plugin will not 
   */
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from "./listener-instance"; // Your listener instance
   import { dedupePlugin } from "@flatfile/plugin-dedupe";
   import { Flatfile } from "@flatfile/api";
@@ -106,7 +110,7 @@ This example configures the plugin to trigger when a sheet action with the opera
 ### Custom Deduplication Logic
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from "./listener-instance"; // Your listener instance
   import { dedupePlugin } from "@flatfile/plugin-dedupe";
 
@@ -133,7 +137,7 @@ This example configures the plugin to trigger when a sheet action with the opera
   );
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from "./listener-instance"; // Your listener instance
   import { dedupePlugin } from "@flatfile/plugin-dedupe";
   import { Flatfile } from "@flatfile/api";
@@ -167,7 +171,7 @@ This example shows how to use a custom function for more complex deduplication l
 ### Keep First Record
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { dedupePlugin } from "@flatfile/plugin-dedupe";
 
   listener.use(
@@ -178,7 +182,7 @@ This example shows how to use a custom function for more complex deduplication l
   );
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { dedupePlugin } from "@flatfile/plugin-dedupe";
 
   listener.use(

@@ -1,10 +1,19 @@
+# Source: https://docs.datadoghq.com/security/workload_protection/guide.md
+
+# Source: https://docs.datadoghq.com/security/sensitive_data_scanner/guide.md
+
+# Source: https://docs.datadoghq.com/security/code_security/static_analysis/custom_rules/guide.md
+
+# Source: https://docs.datadoghq.com/security/cloud_security_management/guide.md
+
+# Source: https://docs.datadoghq.com/mobile/guide.md
+
 # Source: https://docs.datadoghq.com/profiler/guide.md
 
 ---
 title: Continuous Profiler Guides
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Continuous Profiler > Continuous Profiler Guides
-source_url: https://docs.datadoghq.com/guide/index.html
 ---
 
 # Continuous Profiler Guides

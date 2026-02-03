@@ -2,12 +2,9 @@
 
 # Create Proxy Profile
 
-```
-POST 
-/v1/organizations/:organizationId/proxy-profiles
-```
+Copy page
 
-This endpoint creates a new Proxy Profile in the given Organization identified by the `organizationId` parameter, which can be obtained from the [List Organizations](https://configcat.com/docs/docs/api/reference/get-organizations/.md) endpoint.
+This endpoint creates a new Proxy Profile in the given Organization identified by the `organizationId` parameter, which can be obtained from the [List Organizations](https://configcat.com/docs/api/reference/get-organizations.md) endpoint.
 
 ## Request[​](#request "Direct link to Request")
 

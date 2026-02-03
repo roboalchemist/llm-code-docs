@@ -1,3 +1,7 @@
+# Source: https://docs.datadoghq.com/feature_flags/client/android.md
+
+# Source: https://docs.datadoghq.com/error_tracking/frontend/mobile/android.md
+
 # Source: https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/opentracing/android.md
 
 # Source: https://docs.datadoghq.com/tracing/trace_collection/dd_libraries/android.md
@@ -8,7 +12,6 @@ description: Collect traces from your Android applications.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Add the Datadog Tracing Library >
   Tracing Android Applications
-source_url: https://docs.datadoghq.com/trace_collection/dd_libraries/android/index.html
 ---
 
 # Tracing Android Applications
@@ -50,9 +53,9 @@ Important note for users on the following Datadog sites: app.datadoghq.com:
      override fun onCreate() {
        super.onCreate()
        val configuration = Configuration.Builder(
-           clientToken = "<CLIENT_TOKEN>",
-           env = "<ENV_NAME>",
-           variant = "<APP_VARIANT_NAME>"
+            clientToken = "<CLIENT_TOKEN>",
+            env = "<ENV_NAME>",
+            variant = "<APP_VARIANT_NAME>"
        ).build()
    
        Datadog.initialize(this, configuration, trackingConsent)
@@ -92,10 +95,11 @@ Important note for users on the following Datadog sites: app.datadoghq.eu:
      override fun onCreate() {
        super.onCreate()
        val configuration = Configuration.Builder(
-           clientToken = "<CLIENT_TOKEN>",
-           env = "<ENV_NAME>",
-           variant = "<APP_VARIANT_NAME>"
-       ).useSite(DatadogSite.EU1)
+            clientToken = "<CLIENT_TOKEN>",
+            env = "<ENV_NAME>",
+            variant = "<APP_VARIANT_NAME>"
+       )
+         .useSite(DatadogSite.EU1)
          .build()
    
        Datadog.initialize(this, configuration, trackingConsent)
@@ -134,10 +138,11 @@ Important note for users on the following Datadog sites: us3.datadoghq.com:
      override fun onCreate() {
        super.onCreate()
        val configuration = Configuration.Builder(
-           clientToken = "<CLIENT_TOKEN>",
-           env = "<ENV_NAME>",
-           variant = "<APP_VARIANT_NAME>"
-       ).useSite(DatadogSite.US3)
+            clientToken = "<CLIENT_TOKEN>",
+            env = "<ENV_NAME>",
+            variant = "<APP_VARIANT_NAME>"
+       )
+         .useSite(DatadogSite.US3)
          .build()
    
        Datadog.initialize(this, configuration, trackingConsent)
@@ -176,10 +181,11 @@ Important note for users on the following Datadog sites: us5.datadoghq.com:
      override fun onCreate() {
        super.onCreate()
        val configuration = Configuration.Builder(
-           clientToken = "<CLIENT_TOKEN>",
-           env = "<ENV_NAME>",
-           variant = "<APP_VARIANT_NAME>"
-       ).useSite(DatadogSite.US5)
+            clientToken = "<CLIENT_TOKEN>",
+            env = "<ENV_NAME>",
+            variant = "<APP_VARIANT_NAME>"
+       )
+         .useSite(DatadogSite.US5)
          .build()
    
        Datadog.initialize(this, configuration, trackingConsent)
@@ -218,10 +224,11 @@ Important note for users on the following Datadog sites: app.ddog-gov.com:
      override fun onCreate() {
        super.onCreate()
        val configuration = Configuration.Builder(
-           clientToken = "<CLIENT_TOKEN>",
-           env = "<ENV_NAME>",
-           variant = "<APP_VARIANT_NAME>"
-       ).useSite(DatadogSite.US1_FED)
+            clientToken = "<CLIENT_TOKEN>",
+            env = "<ENV_NAME>",
+            variant = "<APP_VARIANT_NAME>"
+       )
+         .useSite(DatadogSite.US1_FED)
          .build()
    
        Datadog.initialize(this, configuration, trackingConsent)
@@ -260,10 +267,11 @@ Important note for users on the following Datadog sites: ap1.datadoghq.com:
      override fun onCreate() {
        super.onCreate()
        val configuration = Configuration.Builder(
-           clientToken = "<CLIENT_TOKEN>",
-           env = "<ENV_NAME>",
-           variant = "<APP_VARIANT_NAME>"
-       ).useSite(DatadogSite.AP1)
+            clientToken = "<CLIENT_TOKEN>",
+            env = "<ENV_NAME>",
+            variant = "<APP_VARIANT_NAME>"
+       )
+         .useSite(DatadogSite.AP1)
          .build()
    
        Datadog.initialize(this, configuration, trackingConsent)
@@ -302,10 +310,11 @@ Important note for users on the following Datadog sites: ap2.datadoghq.com:
      override fun onCreate() {
        super.onCreate()
        val configuration = Configuration.Builder(
-         clientToken = "<CLIENT_TOKEN>",
-         env = "<ENV_NAME>",
-         variant = "<APP_VARIANT_NAME>"
-       ).useSite(DatadogSite.AP2)
+            clientToken = "<CLIENT_TOKEN>",
+            env = "<ENV_NAME>",
+            variant = "<APP_VARIANT_NAME>"
+       )
+         .useSite(DatadogSite.AP2)
          .build()
    
        Datadog.initialize(this, configuration, trackingConsent)
@@ -493,7 +502,7 @@ When writing your application, you can enable development logs by calling the `s
                childSpan.finish()
            }
        }
-   } catch (e: Error) {
+   } catch (e: Throwable) {
    }
    ```
 
@@ -525,7 +534,7 @@ When writing your application, you can enable development logs by calling the `s
        } finally {
            scope.close();
        }
-   } catch (Error e) {
+   } catch (Throwable e) {
    }
    ```
 
@@ -550,7 +559,7 @@ When writing your application, you can enable development logs by calling the `s
                }
            }.start()
        }
-   } catch(e: Throwable) {
+   } catch (e: Throwable) {
        span.logThrowable(e)
    } finally {
        span.finish()
@@ -865,7 +874,7 @@ val request = Request.Builder()
 
 ```java
 Request.Builder requestBuilder = new Request.Builder()
-  .url(requestUrl)
+  .url(requestUrl);
 
 Request request = OkHttpRequestExtKt
   .parentSpan(requestBuilder, parentSpan)

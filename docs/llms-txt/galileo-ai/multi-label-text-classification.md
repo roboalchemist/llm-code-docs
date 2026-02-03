@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/multi-label-text-classification.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Multi Label Text Classification
 
 > Implement multi-label text classification in Galileo NLP Studio to accurately label datasets, streamline workflows, and enhance model training.

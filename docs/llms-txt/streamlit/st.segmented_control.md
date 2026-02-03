@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/widgets/st.segmented_control
+
 # st.segmented_control
 
 Display a segmented control widget.

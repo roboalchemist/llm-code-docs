@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/api-reference/update-contact.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update contact
 
 > Update or create a contact.

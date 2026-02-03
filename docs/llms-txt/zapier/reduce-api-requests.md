@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/reduce-api-requests.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Reduce requests to your API
 
 ## Trigger/action runs in a Zap

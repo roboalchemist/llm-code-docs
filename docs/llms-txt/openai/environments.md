@@ -2,25 +2,25 @@
 
 # Cloud environments
 
-While Codex cloud tasks work out of the box, you can customize the agent's environment to e.g. install dependencies and tools. Having access to a fuller set of dependencies, linters, formatters, etc. often results in better agent performance.
+Use environments to control what Codex installs and runs during cloud tasks. For example, you can add dependencies, install tools like linters and formatters, and set environment variables.
 
-Configure your environments in [Codex settings](https://chatgpt.com/codex/settings/environments).
+Configure environments in [Codex settings](https://chatgpt.com/codex/settings/environments).
 
-## How Codex cloud tasks work
+## How Codex cloud tasks run
 
-Under the hood, here's what happens when you submit a task:
+Here's what happens when you submit a task:
 
-1. We prepare a containerized environment with, your repo's code at the desired branch or sha, and your setup & maintenance scripts.
-1. We [configure internet access](/codex/cloud/agent-internet) for the agent. Internet access is off by default, but you can configure the environment to have limited or full internet access.
-1. The agent then runs terminal commands in a loop. It writes code, runs tests, and attempts to check its work. The agent attempts to honor any specified lint or test commands [you've defined in an `AGENTS.md` file](/AGENTS.md). The agent does not have access to any special tools outside of the terminal or CLI tools you provide.
-1. When the agent is done, it presents its answer and a diff of any code it modified.
-1. You can choose to open a PR or ask for followups.
+1. Codex creates a container and checks out your repo at the selected branch or commit SHA.
+2. Codex runs your setup script, plus an optional maintenance script when a cached container is resumed.
+3. Codex applies your internet access settings. Setup scripts run with internet access. Agent internet access is off by default, but you can enable limited or unrestricted access if needed. See [agent internet access](https://developers.openai.com/codex/cloud/internet-access).
+4. The agent runs terminal commands in a loop. It edits code, runs checks, and tries to validate its work. If your repo includes `AGENTS.md`, the agent uses it to find project-specific lint and test commands.
+5. When the agent finishes, it shows its answer and a diff of any files it changed. You can open a PR or ask follow-up questions.
 
 ## Default universal image
 
 The Codex agent runs in a default container image called `universal`, which comes pre-installed with common languages, packages, and tools.
 
-_Set package versions_ in environment settings can be used to configure the version of Python, Node.js, etc.
+In environment settings, select **Set package versions** to pin versions of Python, Node.js, and other runtimes.
 
 <DocsTip>
   For details on what's installed, see
@@ -32,12 +32,12 @@ While `codex-universal` comes with languages pre-installed for speed and conveni
 
 ## Environment variables and secrets
 
-**Environment variables** can be specified and are set for the full duration of the task.
+**Environment variables** are set for the full duration of the task (including setup scripts and the agent phase).
 
-**Secrets** can also be specified and are similar to environment variables, except:
+**Secrets** are similar to environment variables, except:
 
 - They are stored with an additional layer of encryption and are only decrypted for task execution.
-- They are only available to setup scripts. For security reasons, secrets are removed from the environment when the agent is running.
+- They are only available to setup scripts. For security reasons, secrets are removed before the agent phase starts.
 
 ## Automatic setup
 
@@ -50,22 +50,33 @@ If your development setup is more complex, you can also provide a custom setup s
 ```bash
 # Install type checker
 pip install pyright
+
 # Install dependencies
 poetry install --with test
 pnpm install
 ```
 
 <DocsTip>
-  Setup scripts are run in a separate bash session than the agent, so commands
-  like `export` do not persist. You can persist environment variables by adding
-  them to `~/.bashrc`.
+  Setup scripts run in a separate Bash session from the agent, so commands like
+  `export` do not persist into the agent phase. To persist environment
+  variables, add them to `~/.bashrc` or configure them in environment settings.
 </DocsTip>
 
-## Container Caching
+## Container caching
 
-Codex caches container state to make running new tasks and followups faster. Environments that are cached will have the repository cloned with the default branch checked out. Then the setup script is run, and the resulting container state is cached for up to 12 hours. When a container is resumed from the cache, we check out the branch specified for the task, and then run the maintenance script. The maintenance script is optional, and helpful to update dependencies for cached containers where the setup script was run on an older commit.
+Codex caches container state for up to 12 hours to speed up new tasks and follow-ups.
 
-We will automatically invalidate the cache and remove any cached containers if there are changes to the setup script, maintenance script, environment variables, or secrets. If there are changes in the repository that would cause backwards incompatibility issues, you can manually invalidate the cache with the "Reset cache" button on the environment page.
+When an environment is cached:
+
+- Codex clones the repository and checks out the default branch.
+- Codex runs the setup script and caches the resulting container state.
+
+When a cached container is resumed:
+
+- Codex checks out the branch specified for the task.
+- Codex runs the maintenance script (optional). This is useful when the setup script ran on an older commit and dependencies need to be updated.
+
+Codex automatically invalidates the cache if you change the setup script, maintenance script, environment variables, or secrets. If your repo changes in a way that makes the cached state incompatible, select **Reset cache** on the environment page.
 
 <DocsTip>
   For Business and Enterprise users, caches are shared across all users who have
@@ -75,10 +86,6 @@ We will automatically invalidate the cache and remove any cached containers if t
 
 ## Internet access and network proxy
 
-Internet access is available to install dependencies during the setup script phase. During the agent phase, the network access is disabled by default, but you can configure the environment to have limited or full access to the internet. [Learn more about configuring your agent's internet access](/codex/cloud/agent-internet).
+Internet access is available during the setup script phase to install dependencies. During the agent phase, internet access is off by default, but you can configure limited or unrestricted access. See [agent internet access](https://developers.openai.com/codex/cloud/internet-access).
 
 Environments run behind an HTTP/HTTPS network proxy for security and abuse prevention purposes. All outbound internet traffic passes through this proxy.
-
-## Using the Codex CLI to run Codex in the cloud
-
-If you're running into challenges making your development setup work in Codex's cloud environment, you can consider running the Codex CLI locally or in a background envionments such as devboxes or CI.

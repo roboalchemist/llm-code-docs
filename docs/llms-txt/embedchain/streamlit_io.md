@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/deployment/streamlit_io.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Streamlit.io
 
 > Deploy your RAG application to streamlit.io platform
@@ -12,18 +16,18 @@ Follow the instructions given below to deploy your first application quickly:
 
 We provide a command line utility called `ec` in embedchain that inherits the template for `streamlit.io` platform and help you deploy the app. Follow the instructions to create a streamlit.io app using the template provided:
 
-```bash Install embedchain
+```bash Install embedchain theme={null}
 pip install embedchain
 ```
 
-```bash Create application
+```bash Create application theme={null}
 mkdir my-rag-app
 ec create --template=streamlit.io
 ```
 
 This will generate a directory structure like this:
 
-```bash
+```bash  theme={null}
 ├── .streamlit
 │   └── secrets.toml
 ├── app.py
@@ -44,7 +48,7 @@ Add your `OPENAI_API_KEY` in `.streamlit/secrets.toml` file to run and deploy th
 
 You can run the app locally by simply doing:
 
-```bash Run locally
+```bash Run locally theme={null}
 pip install -r requirements.txt
 ec dev
 ```

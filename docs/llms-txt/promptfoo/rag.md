@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/rag/
+
 # How to red team RAG applications
 
 Retrieval-Augmented Generation (RAG) is an increasingly popular LLM-based architecture for knowledge-based AI products. This guide focuses on application-layer attacks that developers deploying RAGs should consider.

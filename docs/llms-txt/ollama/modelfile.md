@@ -1,5 +1,9 @@
 # Source: https://docs.ollama.com/modelfile.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Modelfile Reference
 
 A Modelfile is the blueprint to create and share customized models using Ollama.
@@ -41,6 +45,7 @@ INSTRUCTION arguments
 | [`ADAPTER`](#adapter)               | Defines the (Q)LoRA adapters to apply to the model.            |
 | [`LICENSE`](#license)               | Specifies the legal license.                                   |
 | [`MESSAGE`](#message)               | Specify message history.                                       |
+| [`REQUIRES`](#requires)             | Specify the minimum version of Ollama required by the model.   |
 
 ## Examples
 
@@ -149,9 +154,6 @@ PARAMETER <parameter> <parametervalue>
 
 | Parameter       | Description                                                                                                                                                                                                                                                                                                                                                                     | Value Type | Example Usage        |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | -------------------- |
-| mirostat        | Enable Mirostat sampling for controlling perplexity. (default: 0, 0 = disabled, 1 = Mirostat, 2 = Mirostat 2.0)                                                                                                                                                                                                                                                                 | int        | mirostat 0           |
-| mirostat\_eta   | Influences how quickly the algorithm responds to feedback from the generated text. A lower learning rate will result in slower adjustments, while a higher learning rate will make the algorithm more responsive. (Default: 0.1)                                                                                                                                                | float      | mirostat\_eta 0.1    |
-| mirostat\_tau   | Controls the balance between coherence and diversity of the output. A lower value will result in more focused and coherent text. (Default: 5.0)                                                                                                                                                                                                                                 | float      | mirostat\_tau 5.0    |
 | num\_ctx        | Sets the size of the context window used to generate the next token. (Default: 2048)                                                                                                                                                                                                                                                                                            | int        | num\_ctx 4096        |
 | repeat\_last\_n | Sets how far back for the model to look back to prevent repetition. (Default: 64, 0 = disabled, -1 = num\_ctx)                                                                                                                                                                                                                                                                  | int        | repeat\_last\_n 64   |
 | repeat\_penalty | Sets how strongly to penalize repetitions. A higher value (e.g., 1.5) will penalize repetitions more strongly, while a lower value (e.g., 0.9) will be more lenient. (Default: 1.1)                                                                                                                                                                                             | float      | repeat\_penalty 1.1  |
@@ -250,6 +252,16 @@ MESSAGE assistant no
 MESSAGE user Is Ontario in Canada?
 MESSAGE assistant yes
 ```
+
+### REQUIRES
+
+The `REQUIRES` instruction allows you to specify the minimum version of Ollama required by the model.
+
+```
+REQUIRES <version>
+```
+
+The version should be a valid Ollama version (e.g. 0.14.0).
 
 ## Notes
 

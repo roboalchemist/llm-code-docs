@@ -1,3 +1,9 @@
+# Sourcegraph Documentation
+
+Source: https://sourcegraph.com/docs/llms-full.txt
+
+---
+
 # Sourcegraph docs
 
 ## Documentation for Sourcegraph, the code intelligence platform.

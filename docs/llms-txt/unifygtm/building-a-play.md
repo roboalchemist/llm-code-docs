@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/plays/building-a-play.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Building a Play
 
 > Learn the fundamentals of creating Plays in Unify.

@@ -1,5 +1,9 @@
 # Source: https://docs.oxla.com/troubleshooting-optimization/error-handling.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.oxla.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Error Handling
 
 ## Overview

@@ -1,3 +1,5 @@
+# Source: https://www.apibara.com/docs/dna/add-new-chain
+
 # Adding a new chain
 
 This page explains how to add support for a new chain to the DNA protocol. It's recommended that you're familiar with the high-level [DNA architecture](/docs/dna/architecture) and the [DNA streaming protocol](/docs/dna/protocol) before reading this page.

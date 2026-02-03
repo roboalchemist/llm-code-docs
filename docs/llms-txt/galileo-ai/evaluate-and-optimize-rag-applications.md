@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to/evaluate-and-optimize-rag-applications.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluate and Optimize RAG Applications
 
 > How to use Galileo Evaluate with RAG applications
@@ -24,11 +28,11 @@ Prompt Tags will help you remember what you tried with each experiment. Read mor
 
 Once you log your evaluation runs, you can go to the Galileo Console to analyze your workflow executions. For each execution, you'll be able to see what the input into the workflow was and what the final response was, as well as any intermediate results.
 
-![Tracing your Retrieval System](https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/rag.png)
+<img src="https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag.png?fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=88bbe253f114e6216784e78cd184b98b" alt="Tracing your Retrieval System" data-og-width="1215" width="1215" data-og-height="989" height="989" data-path="images/rag.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag.png?w=280&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=bf3467839e911e5c6e0dc09a10719fa1 280w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag.png?w=560&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=e391864dc30cb0811fae73c27007a49e 560w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag.png?w=840&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=4feeb1d048b2bce2960a89073bc58d44 840w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag.png?w=1100&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=5f2bcfc46378ad6a8e6bc2d5ec307920 1100w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag.png?w=1650&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=486a6624fefaa6ed710f397b31b27b88 1650w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag.png?w=2500&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=6c48243bf9bc03226b1e4ff80a1c2373 2500w" />
 
 Clicking on any row will open the Expanded View for that node. The Retriever Node will show you all the chunks that your retriever returned. Once you start debugging your executions, this will allow you to trace poor-quality responses back to the step that went wrong.
 
-![](https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/ev-op-2.png)
+<img src="https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/ev-op-2.png?fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=0d02d297206c20cf67a72081dee501f4" alt="" data-og-width="3022" width="3022" data-og-height="1196" height="1196" data-path="images/ev-op-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/ev-op-2.png?w=280&fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=57e7bb002ff5f1a6d6b3d9f9de02a519 280w, https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/ev-op-2.png?w=560&fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=e56db4e755baeaf2b448ecc29e06ab62 560w, https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/ev-op-2.png?w=840&fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=ec7d807ccbba9e4b7cb10c6111dcd58d 840w, https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/ev-op-2.png?w=1100&fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=b33f7c0ad69500ae6162e56df8cf4fe1 1100w, https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/ev-op-2.png?w=1650&fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=52a109b6541c1c0f6598b66b71eddfe8 1650w, https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/ev-op-2.png?w=2500&fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=6402a4554c7961ddf227b6cc7c38765e 2500w" />
 
 ## Evaluating and Optimizing the performance of your RAG application
 

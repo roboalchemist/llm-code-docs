@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/signals/champions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Champion Tracking
 
 > Automatically track your champions and take action on them.

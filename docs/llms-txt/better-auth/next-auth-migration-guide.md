@@ -4,11 +4,7 @@
 
 A step-by-step guide to transitioning from Auth.js to Better Auth.
 
-***
 
-title: Migrating from Auth.js to Better Auth
-description: A step-by-step guide to transitioning from Auth.js to Better Auth.
--------------------------------------------------------------------------------
 
 ## Introduction
 

@@ -1,3 +1,7 @@
+# Source: https://www.apibara.com/docs/getting-started/indexers#with-runtime-config
+
+# Source: https://www.apibara.com/docs/getting-started/indexers
+
 # Building indexers
 
 Indexers are created using the `defineIndexer` higher-order function. This function takes a _stream definition_ and returns a function to define the indexer.

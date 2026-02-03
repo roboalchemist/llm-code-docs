@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/blueprints/askgraphquestion.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Ask graph question
 
 Asks a natural language question using one or more knowledge graphs and puts the result into a state variable.
@@ -200,7 +204,7 @@ Below are the possible end states of the block call.
       <td>Error</td>
       <td>-</td>
       <td>error</td>
-      <td>If the function raises an Exception.</td>
+      <td>There was an error answering the question.</td>
     </tr>
   </tbody>
 </table>

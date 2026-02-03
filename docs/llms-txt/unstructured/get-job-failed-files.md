@@ -1,97 +1,86 @@
 # Source: https://docs.unstructured.io/api-reference/jobs/get-job-failed-files.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Job Failed Files
 
 > Retrieve failed files for a specific job by its ID.
 
+
+
 ## OpenAPI
 
 ````yaml https://platform.unstructuredapp.io/openapi.json get /api/v1/jobs/{job_id}/failed-files
+openapi: 3.1.0
+info:
+  title: Platform API
+  version: 3.1.0
+servers:
+  - url: https://platform.unstructuredapp.io/
+    description: Unstructured Platform API
+    x-speakeasy-server-id: platform-api
+security: []
 paths:
-  path: /api/v1/jobs/{job_id}/failed-files
-  method: get
-  servers:
-    - url: https://platform.unstructuredapp.io/
-      description: Unstructured Platform API
-  request:
-    security:
-      - title: HTTPBearer
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        job_id:
+  /api/v1/jobs/{job_id}/failed-files:
+    get:
+      tags:
+        - jobs
+      summary: Get Job Failed Files
+      description: Retrieve failed files for a specific job by its ID.
+      operationId: get_job_failed_files
+      parameters:
+        - name: job_id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              title: Job Id
-              format: uuid
-      query: {}
-      header:
-        unstructured-api-key:
+            type: string
+            format: uuid
+            title: Job Id
+        - name: unstructured-api-key
+          in: header
+          required: false
           schema:
-            - type: string
-              required: false
-              title: Unstructured-Api-Key
-            - type: 'null'
-              required: false
-              title: Unstructured-Api-Key
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              failed_files:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/FailedFile'
-                    type: array
-                    title: Failed Files
-            title: JobFailedFiles
-            refIdentifier: '#/components/schemas/JobFailedFiles'
-            requiredProperties:
-              - failed_files
-        examples:
-          example:
-            value:
-              failed_files:
-                - document: <string>
-                  error: <string>
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            anyOf:
+              - type: string
+              - type: 'null'
+            title: Unstructured-Api-Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobFailedFiles'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    JobFailedFiles:
+      properties:
+        failed_files:
+          items:
+            $ref: '#/components/schemas/FailedFile'
+          type: array
+          title: Failed Files
+      type: object
+      required:
+        - failed_files
+      title: JobFailedFiles
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     FailedFile:
       properties:
         document:

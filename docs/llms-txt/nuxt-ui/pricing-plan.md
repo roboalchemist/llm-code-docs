@@ -8,19 +8,15 @@
 
 The PricingPlan component provides a flexible way to display a pricing plan with customizable content including title, description, price, features, etc.
 
-<code-preview>
-<u-pricing-plan :button="{"label":"Buy now"}" :features="["One developer","Unlimited projects","Access to GitHub repository","Unlimited patch & minor updates","Lifetime access"]" badge="Most popular" billing-cycle="/month" className="w-96" description="For bootstrappers and indie hackers." discount="$199" price="$249" title="Solo">
+```vue
+<template>
+  <u-pricing-plan :button={"label":"Buy now"} :features=["One developer","Unlimited projects","Access to GitHub repository","Unlimited patch & minor updates","Lifetime access"] badge=Most popular billing-cycle=/month description=For bootstrappers and indie hackers. discount=$199 price=$249 title=Solo />
+</template>
+```
 
-
-
-</u-pricing-plan>
-</code-preview>
-
-<tip to="/docs/components/pricing-plans">
-
-Use the [`PricingPlans`](/docs/components/pricing-plans) component to display multiple pricing plans in a responsive grid layout.
-
-</tip>
+> [!TIP]
+> See: /docs/components/pricing-plans
+> Use the `PricingPlans` component to display multiple pricing plans in a responsive grid layout.
 
 ### Title
 
@@ -100,23 +96,15 @@ Use the `features` prop as an array of string to display a list of features on t
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.success` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.success` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.success` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.success` key.
 
 You can also pass an array of objects with the following properties:
 
@@ -124,6 +112,10 @@ You can also pass an array of objects with the following properties:
 - `icon?: string`
 
 ```vue
+<script setup lang="ts">
+import type { PricingPlanFeature } from '@nuxt/ui'
+</script>
+
 <template>
   <UPricingPlan title="Solo" description="For bootstrappers and indie hackers." price="$249" />
 </template>
@@ -139,11 +131,8 @@ Use the `button` prop with any property from the [Button](/docs/components/butto
 </template>
 ```
 
-<tip>
-
-Use the `onClick` field to add a click handler to trigger the plan purchase.
-
-</tip>
+> [!TIP]
+> Use the `onClick` field to add a click handler to trigger the plan purchase.
 
 ### Variant
 
@@ -199,11 +188,9 @@ Use the `highlight` prop to display a highlighted border around the PricingPlan.
 
 Use the `scale` prop to make a PricingPlan bigger than the others.
 
-<note to="/docs/components/pricing-plans#scale">
-
-Check out the PricingPlans's `scale` example to see how it works as it's hard to demonstrate by itself.
-
-</note>
+> [!NOTE]
+> See: /docs/components/pricing-plans#scale
+> Check out the PricingPlans's `scale` example to see how it works as it's hard to demonstrate by itself.
 
 ## API
 
@@ -406,8 +393,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

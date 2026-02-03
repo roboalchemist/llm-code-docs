@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/core-concepts/plugins.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Plugins
 
 > Reusable functionality modules that extend Flatfile's capabilities

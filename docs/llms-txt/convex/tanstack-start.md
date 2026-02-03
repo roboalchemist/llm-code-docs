@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/quickstart/tanstack-start.md
 
-# Source: https://docs.convex.dev/client/tanstack/tanstack-start.md
-
-# Source: https://docs.convex.dev/quickstart/tanstack-start.md
-
 # TanStack Start Quickstart
 
 TanStack Start is in Release Candidate

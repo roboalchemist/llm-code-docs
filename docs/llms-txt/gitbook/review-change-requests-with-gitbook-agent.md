@@ -1,3 +1,9 @@
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/gitbook-agent/review-change-requests-with-gitbook-agent.md
+
+# Source: https://gitbook.com/docs/documentation/zh/gitbook-dai-li-agent/review-change-requests-with-gitbook-agent.md
+
+# Source: https://gitbook.com/docs/documentation/fr/agent-gitbook/review-change-requests-with-gitbook-agent.md
+
 # Source: https://gitbook.com/docs/gitbook-agent/review-change-requests-with-gitbook-agent.md
 
 # Review change requests with GitBook Agent

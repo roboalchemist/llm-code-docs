@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/tts/asyncai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Async
 
 > Text-to-speech services using Async's WebSocket and HTTP APIs
@@ -13,7 +17,7 @@ Async provides high-quality text-to-speech synthesis with two service implementa
     Pipecat's API methods for AsyncAI TTS integration
   </Card>
 
-  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07ac-interruptible-asyncai.py">
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07zc-interruptible-asyncai.py">
     Complete example with WebSocket streaming
   </Card>
 
@@ -47,8 +51,3 @@ Before using Async TTS services, you need:
 ### Required Environment Variables
 
 * `ASYNCAI_API_KEY`: Your Async API key for authentication
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

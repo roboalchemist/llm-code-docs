@@ -1,5 +1,9 @@
 # Source: https://docs.frigade.com/sdk/provider.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Provider
 
 The `<Frigade.Provider />` component is the root component of the Frigade SDK. It initializes the SDK and keeps track of the user's session and state in all Frigade Flows.a
@@ -133,7 +137,7 @@ Global variables to apply to all Flows, including Collections.
 If the individual Collection or Flow has its own variables, the two objects will be merged, with the Flow/Collection having high priority.
 Example:
 
-```tsx
+```tsx  theme={"system"}
 variables={{
   name: "Bobby Nerves",
   occupation: "Vocalist",

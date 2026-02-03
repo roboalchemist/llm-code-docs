@@ -4,17 +4,9 @@
 
 # Source: https://docs.unstructured.io/api-reference/workflow/destinations/milvus.md
 
-# Source: https://docs.unstructured.io/ui/destinations/milvus.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/milvus.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/milvus.md
-
-# Source: https://docs.unstructured.io/ui/destinations/milvus.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/milvus.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/milvus.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Milvus
 
@@ -46,8 +38,7 @@
   After you create the destination connector, add it along with a
   [source connector](/api-reference/workflow/sources/overview) to a [workflow](/api-reference/workflow/overview#workflows).
   Then run the worklow as a [job](/api-reference/workflow/overview#jobs). To learn how, try out the
-  [hands-on Workflow Endpoint quickstart](/api-reference/workflow/overview#quickstart),
-  go directly to the [quickstart notebook](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Unstructured_Platform_Workflow_Endpoint_Quickstart.ipynb),
+  the notebook [Dropbox-To-Pinecone Connector API Quickstart for Unstructured](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Dropbox_To_Pinecone_Connector_Quickstart.ipynb),
   or watch the two 4-minute video tutorials for the [Unstructured Python SDK](/api-reference/workflow/overview#unstructured-python-sdk).
 
   You can also create destination connectors with the Unstructured user interface (UI).
@@ -75,7 +66,7 @@ The requirements are as follows.
   * An IBM watsonx.data [Lite plan](https://cloud.ibm.com/docs/watsonxdata?topic=watsonxdata-tutorial_prov_lite_1)
     or [Enterprise plan](https://cloud.ibm.com/docs/watsonxdata?topic=watsonxdata-getting-started_1) within your IBM Cloud account.
 
-    * If you are provisoning a Lite plan, be sure to choose the **Generative AI** use case when prompted, as this is the only use case offered that includes Milvus.
+    * If you are provisioning a Lite plan, be sure to choose the **Generative AI** use case when prompted, as this is the only use case offered that includes Milvus.
 
   * A [Milvus service instance in IBM watsonx.data](https://cloud.ibm.com/docs/watsonxdata?topic=watsonxdata-adding-milvus-service).
 
@@ -85,8 +76,8 @@ The requirements are as follows.
       **Custom** are recommended only for 384 dimensions, which means you should use an embedding model that uses 384 dimensions only.
       The **Custom** Milvus instance size is recommended for any number of dimensions.
 
-  * The URI of the instance, which takes the format of `https://`, followed by instance's **GRPC host**, followed by a colon and the **GRPC port**.
-    This takes the format of `https://<host>:<port>`. To get this informatation, do the following:
+  * The URI of the instance, which takes the format of `https://`, followed by the instance's **GRPC host**, followed by a colon and the **GRPC port**.
+    This takes the format of `https://<host>:<port>`. To get this information, do the following:
 
     a. Sign in to your IBM Cloud account.<br />
     b. On the sidebar, click the **Resource list** icon. If the sidebar is not visible, click the **Navigation Menu** icon to the far left of the title bar.<br />
@@ -103,7 +94,19 @@ The requirements are as follows.
 
   * The username and password to access the instance.
 
-    * The username for Milvus on IBM watsonx.data is always `ibmlhapikey`.
+    * The username for Milvus on IBM watsonx.data is typically `ibmlhapikey`.
+
+      <Note>
+        More recent versions of Milvus on IBM watsonx.data require `ibmlhapikey_<your-IBMid>` instead, where `<your-IBMid>` is
+        your IBMid, for example `me@example.com`. To get your IBMid, do the following:
+
+        1. Sign in to your IBM Cloud account.
+        2. In the title bar, click **Manage** and then, under **Security and access**, click **Access (IAM)**.
+        3. In the sidebar, expand **Manage identities**, and then click **Users**.
+        4. In the list of users, click your user name.
+        5. On the **User details** tab, in the **Details** tile, note the value of **IBMid**.
+      </Note>
+
     * The password for Milvus on IBM watsonx.data is in the form of an IBM Cloud user API key. To create an IBM Cloud user API key:
 
       a. Sign in to your IBM Cloud account.<br />
@@ -147,7 +150,9 @@ The requirements are as follows.
   * The name of the [collection](https://docs.zilliz.com/docs/manage-collections-console#create-collection) in the database.
 
     The collection must have a defined schema before Unstructured can write to the collection. The minimum viable
-    schema for Unstructured contains only the fields `element_id`, `embeddings`, `record_id`, and `text`, as follows:
+    schema for Unstructured contains only the fields `element_id`, `embeddings`, `record_id`, and `text`, as follows.
+    `type` is an optional field, but highly recommended. For settings for additional Unstructured-produced fields,
+    such as the ones within `metadata`, see the usage notes toward the end of this section and adapt them to your specific needs.
 
     | Field Name                       | Field Type        | Max Length | Dimension |
     | -------------------------------- | ----------------- | ---------- | --------- |
@@ -155,6 +160,7 @@ The requirements are as follows.
     | `embeddings` (vector field)      | **FLOAT\_VECTOR** | --         | `384`     |
     | `record_id`                      | **VARCHAR**       | `200`      | --        |
     | `text`                           | **VARCHAR**       | `65536`    | --        |
+    | `type`                           | **VARCHAR**       | `200`      | --        |
 
     In the **Create Index** area for the collection, next to **Vector Fields**, click **Edit Index**. Make sure that for the
     `embeddings` field, the **Field Type** is set to **FLOAT\_VECTOR** and the **Metric Type** is set to **Cosine**.
@@ -162,6 +168,12 @@ The requirements are as follows.
     <Warning>
       The number of dimensions for the `embeddings` field must match the number of dimensions for the embedding model that you plan to use.
     </Warning>
+
+    <Note>
+      Fields with a **VARCHAR** data type are limited to a maximum length of 65,535 characters. Attempting to exceed this character count
+      will cause Unstructured to throw errors when attempting to write to a Milvus collection, and the associated Unstructured job could fail.
+      For example, `metadata` fields that typically exceed these character counts include `image_base64` and `orig_elements`.
+    </Note>
 
 * For Milvus local, you will need:
 
@@ -174,6 +186,7 @@ The requirements are as follows.
 
 All Milvus instances require the target collection to have a defined schema before Unstructured can write to the collection. The minimum viable
 schema for Unstructured contains only the fields `element_id`, `embeddings`, `record_id`, and `text`, as follows.
+`type` is an optional field, but highly recommended.
 
 This example code demonstrates the use of the
 [Python SDK for Milvus](https://pypi.org/project/pymilvus/) to create a collection with this schema,
@@ -204,45 +217,21 @@ client = MilvusClient(
     db_name=DATABASE_NAME
 )
 
-primary_key_field = FieldSchema(
-    name="element_id",
-    dtype=DataType.VARCHAR,
-    is_primary=True,
-    max_length=200
-)
-
-# IMPORTANT: The number of dimensions for the "embeddings" field
-# must match the number of dimensions for the embedding model 
+# IMPORTANT: The number of dimensions for the "embeddings" field that
+# follows must match the number of dimensions for the embedding model 
 # that you plan to use.
-embeddings_field = FieldSchema(
-    name="embeddings",
-    dtype=DataType.FLOAT_VECTOR,
-    dim=384
-)
+fields = [
+    FieldSchema(name="element_id", dtype=DataType.VARCHAR, is_primary=True, max_length=200),
+    FieldSchema(name="embeddings", dtype=DataType.FLOAT_VECTOR, dim=384),
+    FieldSchema(name="record_id", dtype=DataType.VARCHAR, max_length=200),
+    FieldSchema(name="text", dtype=DataType.VARCHAR, max_length=65535),
+    FieldSchema(name="type", dtype=DataType.VARCHAR,max_length=200, nullable=True) # Optional, but highly recommended.
+]
 
-record_id_field = FieldSchema(
-    name="record_id",
-    dtype=DataType.VARCHAR,
-    max_length=200
-)
-
-text_field = FieldSchema(
-    name="text",
-    dtype=DataType.VARCHAR,
-    max_length=65535
-)
-
-schema = CollectionSchema(
-    fields=[
-        primary_key_field, 
-        embeddings_field,
-        record_id_field, 
-        text_field
-    ]
-)
+schema = CollectionSchema(fields=fields)
 
 client.create_collection(
-    collection_name=COLLECTION_NAME",
+    collection_name=COLLECTION_NAME,
     schema=schema,
     using=DATABASE_NAME
 )
@@ -261,18 +250,113 @@ client.create_index(
     index_params=index_params
 )
 
-client.load_collection(
-    collection_name=COLLECTION_NAME
-)
+client.load_collection(collection_name=COLLECTION_NAME)
 ```
 
-Other approaches, such as [creating collections instantly](https://milvus.io/docs/create-collection-instantly.md) or
-[setting nullable and default fields](https://milvus.io/docs/nullable-and-default.md), have not
-been fully evaluated by Unstructured and might produce unexpected results.
+For objects in the `metadata` field that Unstructured produces and that you want to store in Milvus, you must create fields in your Milvus collection schema that
+follows Unstructured's `metadata` field naming convention. For example, if Unstructured produces a `metadata` field with the following
+child objects:
 
-Unstructured cannot provide a schema that is guaranteed to work in all
-circumstances. This is because these schemas will vary based on your source files' types; how you
-want Unstructured to partition, chunk, and generate embeddings; any custom post-processing code that you run; and other factors.
+```json  theme={null}
+"metadata": {
+  "is_extracted": "true",
+  "coordinates": {
+    "points": [
+      [
+        134.20055555555555,
+        241.36027777777795
+      ],
+      [
+        134.20055555555555,
+        420.0269444444447
+      ],
+      [
+        529.7005555555555,
+        420.0269444444447
+      ],
+      [
+        529.7005555555555,
+        241.36027777777795
+      ]
+    ],
+    "system": "PixelSpace",
+    "layout_width": 1654,
+    "layout_height": 2339
+  },
+  "filetype": "application/pdf",
+  "languages": [
+    "eng"
+  ],
+  "page_number": 1,
+  "image_mime_type": "image/jpeg",
+  "filename": "realestate.pdf",
+  "data_source": {
+    "url": "file:///home/etl/node/downloads/00000000-0000-0000-0000-000000000001/7458635f-realestate.pdf",
+    "record_locator": {
+      "protocol": "file",
+      "remote_file_path": "file:///home/etl/node/downloads/00000000-0000-0000-0000-000000000001/7458635f-realestate.pdf"
+    }
+  },
+  "entities": {
+    "items": [
+      {
+        "entity": "HOME FOR FUTURE",
+        "type": "ORGANIZATION"
+      },
+      {
+        "entity": "221 Queen Street, Melbourne VIC 3000",
+        "type": "LOCATION"
+      }
+    ],
+    "relationships": [
+      {
+        "from": "HOME FOR FUTURE",
+        "relationship": "based_in",
+        "to": "221 Queen Street, Melbourne VIC 3000"
+      }
+    ]
+  }
+}
+```
+
+You could create corresponding fields in your Milvus collection schema by using the following field names, data types, and related settings for the
+Python SDK for Milvus:
+
+```python  theme={null}
+# ...
+fields = [
+    # Define minimum viable required fields: "element_id", "embeddings", "record_id", and "text".
+    # "type" is an optional field, but highly recommended.
+    FieldSchema(name="element_id", dtype=DataType.VARCHAR, is_primary=True, max_length=200),
+    FieldSchema(name="embeddings", dtype=DataType.FLOAT_VECTOR, dim=1536),
+    FieldSchema(name="record_id", dtype=DataType.VARCHAR, max_length=200),
+    FieldSchema(name="text", dtype=DataType.VARCHAR, max_length=65535),
+    FieldSchema(name="type",dtype=DataType.VARCHAR,max_length=200, nullable=True),
+    # Define optional fields, such as these ones related to the "metadata" field.
+    FieldSchema(name="is_extracted", dtype=DataType.VARCHAR, max_length=5, nullable=True),
+    FieldSchema(name="coordinates_points", dtype=DataType.JSON, nullable=True),
+    FieldSchema(name="coordinates_system", dtype=DataType.VARCHAR, max_length=64, nullable=True),
+    FieldSchema(name="coordinates_layout_width", dtype=DataType.INT32, nullable=True),
+    FieldSchema(name="coordinates_layout_height", dtype=DataType.INT32, nullable=True),
+    FieldSchema(name="filetype", dtype=DataType.VARCHAR, max_length=64, nullable=True),
+    FieldSchema(name="languages", dtype=DataType.ARRAY, element_type=DataType.VARCHAR, max_length=64, max_capacity=10, nullable=True),
+    FieldSchema(name="page_number", dtype=DataType.INT32, nullable=True),
+    FieldSchema(name="image_mime_type", dtype=DataType.VARCHAR, max_length=64, nullable=True),
+    FieldSchema(name="filename", dtype=DataType.VARCHAR, max_length=256, nullable=True),
+    FieldSchema(name="data_source_url", dtype=DataType.VARCHAR, max_length=1024, nullable=True),
+    FieldSchema(name="data_source_record_locator_protocol", dtype=DataType.VARCHAR, max_length=64, nullable=True),
+    FieldSchema(name="data_source_record_locator_remote_file_path", dtype=DataType.VARCHAR, max_length=1024, nullable=True),
+    FieldSchema(name="entities_items", dtype=DataType.JSON, nullable=True),
+    FieldSchema(name="entities_relationships", dtype=DataType.JSON, nullable=True)
+]
+# ...
+```
+
+<Note>
+  Fields with a `DataType.VARCHAR` data type are limited to a maximum length of 65,535 characters. Attempting to exceed this character count
+  will cause Unstructured to throw errors when attempting to write to a Milvus collection, and the associated Unstructured job could fail.
+  For example, `metadata` fields that typically exceed these character counts include `image_base64` and `orig_elements`.
+</Note>
 
 To create a Milvus destination connector, see the following examples.
 

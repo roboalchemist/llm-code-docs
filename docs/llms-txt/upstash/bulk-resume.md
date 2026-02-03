@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/rest/dlq/bulk-resume.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Bulk Resume Workflow Runs
 
 > Resume multiple workflow runs at once

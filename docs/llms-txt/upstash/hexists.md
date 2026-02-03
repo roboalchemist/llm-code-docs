@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hexists.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hexists.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hexists.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hexists.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hexists.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hexists.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hexists.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hexists.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hexists.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hexists.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # HEXISTS
 
@@ -26,25 +12,24 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to get.
 </ParamField>
 
-<ParamField body="field" type="string" required>
+<ParamField body="field" type="str" required>
   The field to check.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
-  `1` if the hash contains `field`. `0` if the hash does not contain `field`, or `key` does not exist.
+<ResponseField type="bool" required>
+  `True` if the hash contains `field`. `False` if the hash does not contain `field`, or `key` does not exist.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.hset("key", "field", "value");
-  const exists = await redis.hexists("key", "field");
+  ```py Example theme={"system"}
+  redis.hset("key", "field", "value")
 
-  console.log(exists); // 1
+  assert redis.hexists("key", "field") == True
   ```
 </RequestExample>

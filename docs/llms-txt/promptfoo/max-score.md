@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/expected-outputs/model-graded/max-score/
+
 # Max Score
 
 The `max-score` assertion selects the output with the highest aggregate score from other assertions. Unlike `select-best` which uses LLM judgment, `max-score` provides objective, deterministic selection based on quantitative scores from other assertions.

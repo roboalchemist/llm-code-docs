@@ -9,7 +9,7 @@ title: Modular Startup
 For more information on the earlier Modular Startup in ServiceStack **v5.x** see our [Legacy Modular Startup](/modular-startup-legacy) docs
 :::
 
-Taking advantage of C# 9 top level statements and .NET 8 [WebApplication Hosting Model](https://gist.github.com/davidfowl/0e0372c3c1d895c3ce195ba983b1e03d), ServiceStack templates by utilize both these features to simplify configuring your AppHost in a modular way.
+Taking advantage of C# 9 top level statements and .NET 10 [WebApplication Hosting Model](https://gist.github.com/davidfowl/0e0372c3c1d895c3ce195ba983b1e03d), ServiceStack templates by utilize both these features to simplify configuring your AppHost in a modular way.
 
 `Program.cs` becomes a script-like file since C# 9 top level statements are generating application entry point implicitly.
 
@@ -75,12 +75,12 @@ you can view all available mix gists that can be added to projects with:
 x mix
 :::
 
-.NET 8's idiom is incorporated into the [mix gist config files](https://gist.github.com/gistlyn/9b32b03f207a191099137429051ebde8) to adopt its `HostingStartup` which is better able to load modular Startup configuration without assembly scanning.
+.NET 10's idiom is incorporated into the [mix gist config files](https://gist.github.com/gistlyn/9b32b03f207a191099137429051ebde8) to adopt its `HostingStartup` which is better able to load modular Startup configuration without assembly scanning.
 
 This is a standard ASP .NET Core feature that we can use to configure Mongo DB in any ASP .NET Core App with:
 
 :::sh
-x mix mongodb
+npx add-in mongodb
 :::
 
 Which adds the `mongodb` gist file contents to your ASP .NET Core Host project:
@@ -109,7 +109,7 @@ As it's not a ServiceStack feature it can be used to configure ASP .NET Core App
 e.g. we could also easily configure [Marten](https://martendb.io) in an ASP .NET Core App with:
 
 :::sh
-x mix marten
+npx add-in marten
 :::
 
 The benefit of this approach is entire modules of features can be configured in a single command, e.g. An empty
@@ -117,13 +117,13 @@ ServiceStack App can be configured with MongoDB, ServiceStack Auth and a MongoDB
 
 
 :::sh
-x mix auth auth-mongodb mongodb
+npx add-in auth auth-mongodb mongodb
 :::
 
 Likewise, you can replace MongoDB with a completely different PostgreSQL RDBMS implementation by running:
 
 :::sh
-x mix auth auth-db postgres
+npx add-in auth auth-db postgres
 :::
 
 ### Services and App Customizations
@@ -132,7 +132,7 @@ Modular Startup configurations are flexible enough to encapsulate customizing AS
 by registering a `IStartupFilter` which is required by the Open API v3 Modular Configuration:
 
 :::sh
-x mix openapi3
+npx add-in openapi3
 :::
 
 ```csharp
@@ -232,7 +232,7 @@ Or easier to permanently replace or remove features by either directly deleting 
 using `mix -delete`, e.g:
 
 :::sh
-x mix -delete auth auth-db postgres
+npx add-in -delete auth auth-db postgres
 :::
 
 Which works similar to package managers where it removes all files contained within each mix gist.

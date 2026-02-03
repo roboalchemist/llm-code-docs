@@ -1,3 +1,5 @@
+# Source: https://docs.snyk.io/manage-risk/prioritize-issues-for-fixing/ignore-issues/consistent-ignores-for-snyk-code/snyk-cli.md
+
 # Source: https://docs.snyk.io/developer-tools/snyk-cli.md
 
 # Snyk CLI

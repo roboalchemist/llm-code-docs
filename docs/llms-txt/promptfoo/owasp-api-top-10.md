@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/owasp-api-top-10/
+
 # OWASP API Security Top 10
 
 The OWASP API Security Top 10 is a security awareness document that identifies the most critical security risks to APIs. While traditionally focused on REST and GraphQL APIs, these vulnerabilities are increasingly relevant for LLM applications as they often function as intelligent API layers that interact with databases, external services, and internal systems.

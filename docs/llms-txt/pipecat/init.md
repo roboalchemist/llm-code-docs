@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/cli/init.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # init
 
 > Scaffold a new Pipecat project with an interactive setup wizard
@@ -62,8 +66,3 @@ mybot/
 ├── .gitignore
 └── README.md               # Project setup instructions
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

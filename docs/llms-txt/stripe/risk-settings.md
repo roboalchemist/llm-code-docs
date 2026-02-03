@@ -27,7 +27,7 @@ You must enable [the default block rule](https://docs.stripe.com/radar/rules.md#
 
 ### Manual reviews
 
-The default *manual review threshold* is 65, meaning Radar sends charges with a score of 65 or higher to manual review.  Changing the blocking threshold automatically changes the manual review threshold accordingly.
+The default *manual review threshold* is 65, meaning Radar sends charges with a score of 65 or higher to manual review. Changing the blocking threshold automatically changes the manual review threshold accordingly.
 
 You must enable [the default block rule](https://docs.stripe.com/radar/rules.md#built-in-rules) or an equivalent custom rule for Radar to send transactions to manual reviews based on this threshold.
 
@@ -77,22 +77,19 @@ This chart shows how many payments you would allow if you set your threshold at 
 If you’re increasing the risk score for blocking charges, we can’t accurately predict the impact of this change on your fraud rate (as some charges that were previously blocked will now be allowed). Be careful when adjusting the risk score in this direction.
 
 
-# Risk modes
+# Risk settings
 
-> This is a Risk modes for when radar_risk_controls is risk-modes. View the full page at https://docs.stripe.com/radar/risk-settings?radar_risk_controls=risk-modes.
+> This is a Risk settings for when radar_risk_controls is risk-modes. View the full page at https://docs.stripe.com/radar/risk-settings?radar_risk_controls=risk-modes.
 
-## Risk modes
+## Risk settings
 
-Stripe offers the following risk modes that automatically adjust your fraud protection thresholds based on your business needs and tolerance.
+When setting up Radar in the Dashboard, the **Edit Risk setting** page of the modal allows you to choose following risk settings that automatically adjust your fraud protection thresholds based on your business needs and tolerance.
 
-- Prevention Focused: Prioritize security with strict fraud screening across your payments.
-- Balanced: Balance legitimate transactions while maintaining security.
-- Revenue Focused: Maximize conversion with minimal losses due to fraud.
-![Screenshot of the dialog you see when selecting your Radar risk modes](https://b.stripecdn.com/docs-statics-srv/assets/risk-preferences.c1cdfc8d5e046970a04cd2fdf588a495.png)
+- **Maximize protection**: Prioritize security with strict fraud screening across your payments.
+- **Balance risk and revenue**: Balance legitimate transactions while maintaining security.
+- **Maximize revenue**: Maximize conversion with minimal losses due to fraud.
 
-The risk modes dialog shows your estimated fraud and authorization metrics at each risk mode.
-
-When you change your Risk mode, you see the following statistics:
+When you change your Risk setting, the modal displays the impact to fraudulent and legitimate transactions with the following statistics:
 
 | Metric                      | Description                                                                                                                                                                                                     |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -122,13 +119,13 @@ This chart shows how many payments you would allow if you set your threshold at 
 
 ## Fraud Controls (Private preview)
 
+You can find the following controls in the **Risk controls** section of the Radar Dashboard.
+
 ### Adaptive 3DS
 
 Radar’s adaptive 3DS control adds an extra layer of authentication during checkout to help you prevent fraud. Stripe’s machine learning runs in the background to authenticate medium-risk payments.
 
 In most cases, *3DS* (3D Secure (3DS) provides an additional layer of authentication for credit card transactions that protects businesses from liability for fraudulent card payments) authentication happens with no action required by the customer. If anything looks unusual, the cardholder’s bank might ask the customer to confirm their identity through a security challenge. If 3DS authenticates a payment, the [liability](https://docs.stripe.com/payments/3d-secure/authentication-flow.md#disputed-payments) for any fraud-related disputes for that payment typically shift from the seller to the issuer. This means that in most cases, the seller isn’t responsible for fraud costs on 3DS-authenticated payments.
-
-You can find this control in the **Risk controls** section of the Radar Dashboard.
 
 Stripe triggers 3DS automatically if required by a regulatory mandate such as [Strong Customer Authentication](https://stripe.com/guides/strong-customer-authentication) (SCA). Disabling adaptive 3DS doesn’t prevent 3DS from being triggered in cases where it’s required for compliance. Authentication fraud prevention control also isn’t available in testing environments.
 
@@ -144,7 +141,7 @@ The control operates transparently in the background. You don’t need to create
 - Create emergency rules
 - Remember to adjust settings back after an attack ends
 
-Dynamic risk threshold is available to [Radar for Fraud Teams](https://stripe.com/radar/fraud-teams) users. You can enable or disable it in the **Radar Risk controls** section of the Dashboard. You can also view backtesting results showing how it would have performed during past fraud incidents.
+Dynamic risk threshold is available to you if you use [Radar for Fraud Teams](https://stripe.com/radar/fraud-teams). You can enable or disable it in the **Radar Risk controls** section of the Dashboard. You can also view backtesting results showing how it would have performed during past fraud incidents.
 
 ## Request access
 

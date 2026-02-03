@@ -4,11 +4,7 @@
 
 A step-by-step guide to transitioning from Clerk to Better Auth.
 
-***
 
-title: Migrating from Clerk to Better Auth
-description: A step-by-step guide to transitioning from Clerk to Better Auth.
------------------------------------------------------------------------------
 
 In this guide, we'll walk through the steps to migrate a project from Clerk to Better Auth â including email/password with proper hashing, social/external accounts, phone number, two-factor data, and more.
 
@@ -26,7 +22,7 @@ Before starting the migration process, set up Better Auth in your project. Follo
 
     You'll need to connect to your database to migrate the users and accounts. You can use any database you want, but for this example, we'll use PostgreSQL.
 
-    <CodeBlockTabs defaultValue="npm">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
       <CodeBlockTabsList>
         <CodeBlockTabsTrigger value="npm">
           npm
@@ -88,21 +84,81 @@ Before starting the migration process, set up Better Auth in your project. Follo
 
     Enable the email and password in your auth config and implement your own logic for sending verification emails, reset password emails, etc.
 
+    <Callout type="info">
+      **Important for Clerk Migrations**: Clerk uses bcrypt to hash passwords, while Better Auth uses `scrypt` by default. To ensure migrated users can sign in with their existing passwords, you'll need to configure Better Auth to use bcrypt for password verification.
+    </Callout>
+
+    First, install bcrypt:
+
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
+      <CodeBlockTabsList>
+        <CodeBlockTabsTrigger value="npm">
+          npm
+        </CodeBlockTabsTrigger>
+
+        <CodeBlockTabsTrigger value="pnpm">
+          pnpm
+        </CodeBlockTabsTrigger>
+
+        <CodeBlockTabsTrigger value="yarn">
+          yarn
+        </CodeBlockTabsTrigger>
+
+        <CodeBlockTabsTrigger value="bun">
+          bun
+        </CodeBlockTabsTrigger>
+      </CodeBlockTabsList>
+
+      <CodeBlockTab value="npm">
+        ```bash
+        npm install pnpm add bcrypt
+        pnpm add -D @types/bcrypt
+        ```
+      </CodeBlockTab>
+
+      <CodeBlockTab value="pnpm">
+        ```bash
+        pnpm add pnpm add bcrypt
+        pnpm add -D @types/bcrypt
+        # couldn't auto-convert command
+        ```
+      </CodeBlockTab>
+
+      <CodeBlockTab value="yarn">
+        ```bash
+        yarn add pnpm add bcrypt
+        pnpm add -D @types/bcrypt
+        # couldn't auto-convert command
+        ```
+      </CodeBlockTab>
+
+      <CodeBlockTab value="bun">
+        ```bash
+        bun add pnpm add bcrypt
+        pnpm add -D @types/bcrypt
+        # couldn't auto-convert command
+        ```
+      </CodeBlockTab>
+    </CodeBlockTabs>
+
+    Then configure Better Auth to use bcrypt:
+
     ```ts title="auth.ts"
     import { betterAuth } from "better-auth";
+    import bcrypt from "bcrypt";
 
     export const auth = betterAuth({
-        database: new Pool({ 
-            connectionString: process.env.DATABASE_URL 
-        }),
-        emailAndPassword: { // [!code highlight]
-            enabled: true, // [!code highlight]
+        emailAndPassword: { 
+            enabled: true,
+            password: { // [!code highlight]
+                hash: async (password) => { // [!code highlight]
+                    return await bcrypt.hash(password, 10); // [!code highlight]
+                }, // [!code highlight]
+                verify: async ({ hash, password }) => { // [!code highlight]
+                    return await bcrypt.compare(password, hash); // [!code highlight]
+                }, // [!code highlight]
+            }, // [!code highlight]
         }, // [!code highlight]
-        emailVerification: {
-          sendVerificationEmail: async({ user, url })=>{
-            // implement your logic here to send email verification
-          }
-    	},
     })
     ```
 
@@ -151,6 +207,7 @@ Before starting the migration process, set up Better Auth in your project. Follo
     import { Pool } from "pg";
     import { betterAuth } from "better-auth";
     import { admin, twoFactor, phoneNumber, username } from "better-auth/plugins";
+    import bcrypt from "bcrypt";
 
     export const auth = betterAuth({
         database: new Pool({ 
@@ -158,6 +215,14 @@ Before starting the migration process, set up Better Auth in your project. Follo
         }),
         emailAndPassword: { 
             enabled: true,
+            password: {
+                hash: async (password) => {
+                    return await bcrypt.hash(password, 10);
+                },
+                verify: async ({ hash, password }) => {
+                    return await bcrypt.compare(password, hash);
+                },
+            },
         },
         socialProviders: {
             github: {

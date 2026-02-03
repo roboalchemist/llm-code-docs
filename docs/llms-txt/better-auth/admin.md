@@ -4,11 +4,7 @@
 
 Admin plugin for Better Auth
 
-***
 
-title: Admin
-description: Admin plugin for Better Auth
------------------------------------------
 
 The Admin plugin provides a set of administrative functions for user management in your application. It allows administrators to perform various operations such as creating users, managing user roles, banning/unbanning users, impersonating users, and more.
 
@@ -40,7 +36,7 @@ The Admin plugin provides a set of administrative functions for user management 
 
     <Tabs items={["migrate", "generate"]}>
       <Tab value="migrate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -86,7 +82,7 @@ The Admin plugin provides a set of administrative functions for user management 
       </Tab>
 
       <Tab value="generate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -161,6 +157,7 @@ Before performing any admin operations, the user must be authenticated with an a
 
 Allows an admin to create a new user.
 
+
 ### Client Side
 
 ```ts
@@ -191,32 +188,34 @@ const newUser = await auth.api.createUser({
 
 ```ts
 type createUser = {
-    /**
-     * The email of the user. 
-     */
-    email: string = "user@example.com"
-    /**
-     * The password of the user. 
-     */
-    password: string = "some-secure-password"
-    /**
-     * The name of the user. 
-     */
-    name: string = "James Smith"
-    /**
-     * A string or array of strings representing the roles to apply to the new user. 
-     */
-    role?: string | string[] = "user"
-    /**
-     * Extra fields for the user. Including custom additional fields. 
-     */
-    data?: Record<string, any> = { customField: "customValue" 
+      /**
+       * The email of the user. 
+       */
+      email: string = "user@example.com"
+      /**
+       * The password of the user. 
+       */
+      password: string = "some-secure-password"
+      /**
+       * The name of the user. 
+       */
+      name: string = "James Smith"
+      /**
+       * A string or array of strings representing the roles to apply to the new user. 
+       */
+      role?: string | string[] = "user"
+      /**
+       * Extra fields for the user. Including custom additional fields. 
+       */
+      data?: Record<string, any> = { customField: "customValue" 
 }
 ```
+
 
 ### List Users
 
 Allows an admin to list all users in the database.
+
 
 ### Client Side
 
@@ -260,49 +259,50 @@ const data = await auth.api.listUsers({
 
 ```ts
 type listUsers = {
-  /**
-   * The value to search for. 
-   */
-  searchValue?: string = "some name"
-  /**
-   * The field to search in, defaults to email. Can be `email` or `name`. 
-   */
-  searchField?: "email" | "name" = "name"
-  /**
-   * The operator to use for the search. Can be `contains`, `starts_with` or `ends_with`. 
-   */
-  searchOperator?: "contains" | "starts_with" | "ends_with" = "contains"
-  /**
-   * The number of users to return. Defaults to 100.
-   */
-  limit?: string | number = 100
-  /**
-   * The offset to start from. 
-   */
-  offset?: string | number = 100
-  /**
-   * The field to sort by. 
-   */
-  sortBy?: string = "name"
-  /**
-   * The direction to sort by. 
-   */
-  sortDirection?: "asc" | "desc" = "desc"
-  /**
-   * The field to filter by. 
-   */
-  filterField?: string = "email"
-  /**
-   * The value to filter by. 
-   */
-  filterValue?: string | number | boolean = "hello@example.com"
-  /**
-   * The operator to use for the filter. 
-   */
-  filterOperator?: "eq" | "ne" | "lt" | "lte" | "gt" | "gte" = "eq"
-
+    /**
+     * The value to search for. 
+     */
+    searchValue?: string = "some name"
+    /**
+     * The field to search in, defaults to email. Can be `email` or `name`. 
+     */
+    searchField?: "email" | "name" = "name"
+    /**
+     * The operator to use for the search. Can be `contains`, `starts_with` or `ends_with`. 
+     */
+    searchOperator?: "contains" | "starts_with" | "ends_with" = "contains"
+    /**
+     * The number of users to return. Defaults to 100.
+     */
+    limit?: string | number = 100
+    /**
+     * The offset to start from. 
+     */
+    offset?: string | number = 100
+    /**
+     * The field to sort by. 
+     */
+    sortBy?: string = "name"
+    /**
+     * The direction to sort by. 
+     */
+    sortDirection?: "asc" | "desc" = "desc"
+    /**
+     * The field to filter by. 
+     */
+    filterField?: string = "email"
+    /**
+     * The value to filter by. 
+     */
+    filterValue?: string | number | boolean = "hello@example.com"
+    /**
+     * The operator to use for the filter. 
+     */
+    filterOperator?: "eq" | "ne" | "lt" | "lte" | "gt" | "gte" = "eq"
+  
 }
 ```
+
 
 #### Query Filtering
 
@@ -353,6 +353,7 @@ const totalPages = Math.ceil(totalUsers / pageSize)
 
 Changes the role of a user.
 
+
 ### Client Side
 
 ```ts
@@ -379,21 +380,23 @@ const data = await auth.api.setRole({
 
 ```ts
 type setRole = {
-    /**
-     * The user id which you want to set the role for.
-     */
-    userId?: string = "user-id"
-    /**
-     * The role to set, this can be a string or an array of strings. 
-     */
-    role: string | string[] = "admin"
-
+      /**
+       * The user id which you want to set the role for.
+       */
+      userId?: string = "user-id"
+      /**
+       * The role to set, this can be a string or an array of strings. 
+       */
+      role: string | string[] = "admin"
+  
 }
 ```
+
 
 ### Set User Password
 
 Changes the password of a user.
+
 
 ### Client Side
 
@@ -421,21 +424,23 @@ const data = await auth.api.setUserPassword({
 
 ```ts
 type setUserPassword = {
-    /**
-     * The new password. 
-     */
-    newPassword: string = 'new-password'
-    /**
-     * The user id which you want to set the password for.
-     */
-    userId: string = 'user-id'
-
+      /**
+       * The new password. 
+       */
+      newPassword: string = 'new-password'
+      /**
+       * The user id which you want to set the password for.
+       */
+      userId: string = 'user-id'
+  
 }
 ```
+
 
 ### Update user
 
 Update a user's details.
+
 
 ### Client Side
 
@@ -463,20 +468,22 @@ const data = await auth.api.adminUpdateUser({
 
 ```ts
 type adminUpdateUser = {
-    /**
-     * The user id which you want to update.
-     */
-    userId: string = "user-id"
-    /**
-     * The data to update.
-     */
-    data: Record<string, any> = { name: "John Doe" 
+      /**
+       * The user id which you want to update.
+       */
+      userId: string = "user-id"
+      /**
+       * The data to update.
+       */
+      data: Record<string, any> = { name: "John Doe" 
 }
 ```
+
 
 ### Ban User
 
 Bans a user, preventing them from signing in and revokes all of their existing sessions.
+
 
 ### Client Side
 
@@ -506,25 +513,27 @@ await auth.api.banUser({
 
 ```ts
 type banUser = {
-    /**
-     * The user id which you want to ban.
-     */
-    userId: string = "user-id"
-    /**
-     * The reason for the ban. 
-     */
-    banReason?: string = "Spamming"
-    /**
-     * The number of seconds until the ban expires. If not provided, the ban will never expire. 
-     */
-    banExpiresIn?: number = 60 * 60 * 24 * 7
-
+      /**
+       * The user id which you want to ban.
+       */
+      userId: string = "user-id"
+      /**
+       * The reason for the ban. 
+       */
+      banReason?: string = "Spamming"
+      /**
+       * The number of seconds until the ban expires. If not provided, the ban will never expire. 
+       */
+      banExpiresIn?: number = 60 * 60 * 24 * 7
+  
 }
 ```
+
 
 ### Unban User
 
 Removes the ban from a user, allowing them to sign in again.
+
 
 ### Client Side
 
@@ -550,17 +559,19 @@ await auth.api.unbanUser({
 
 ```ts
 type unbanUser = {
-    /**
-     * The user id which you want to unban.
-     */
-    userId: string = "user-id"
-
+      /**
+       * The user id which you want to unban.
+       */
+      userId: string = "user-id"
+  
 }
 ```
+
 
 ### List User Sessions
 
 Lists all sessions for a user.
+
 
 ### Client Side
 
@@ -586,17 +597,19 @@ const data = await auth.api.listUserSessions({
 
 ```ts
 type listUserSessions = {
-    /**
-     * The user id. 
-     */
-    userId: string = "user-id"
-
+      /**
+       * The user id. 
+       */
+      userId: string = "user-id"
+  
 }
 ```
+
 
 ### Revoke User Session
 
 Revokes a specific session for a user.
+
 
 ### Client Side
 
@@ -622,17 +635,19 @@ const data = await auth.api.revokeUserSession({
 
 ```ts
 type revokeUserSession = {
-    /**
-     * The session token which you want to revoke. 
-     */
-    sessionToken: string = "session_token_here"
-
+      /**
+       * The session token which you want to revoke. 
+       */
+      sessionToken: string = "session_token_here"
+  
 }
 ```
+
 
 ### Revoke All Sessions for a User
 
 Revokes all sessions for a user.
+
 
 ### Client Side
 
@@ -658,17 +673,19 @@ const data = await auth.api.revokeUserSessions({
 
 ```ts
 type revokeUserSessions = {
-    /**
-     * The user id which you want to revoke all sessions for. 
-     */
-    userId: string = "user-id"
-
+      /**
+       * The user id which you want to revoke all sessions for. 
+       */
+      userId: string = "user-id"
+  
 }
 ```
+
 
 ### Impersonate User
 
 This feature allows an admin to create a session that mimics the specified user. The session will remain active until either the browser session ends or it reaches 1 hour. You can change this duration by setting the `impersonationSessionDuration` option.
+
 
 ### Client Side
 
@@ -694,17 +711,19 @@ const data = await auth.api.impersonateUser({
 
 ```ts
 type impersonateUser = {
-    /**
-     * The user id which you want to impersonate. 
-     */
-    userId: string = "user-id"
-
+      /**
+       * The user id which you want to impersonate. 
+       */
+      userId: string = "user-id"
+  
 }
 ```
+
 
 ### Stop Impersonating User
 
 To stop impersonating a user and continue with the admin account, you can use `stopImpersonating`
+
 
 ### Client Side
 
@@ -726,13 +745,15 @@ await auth.api.stopImpersonating({
 
 ```ts
 type stopImpersonating = {
-
+  
 }
 ```
+
 
 ### Remove User
 
 Hard deletes a user from the database.
+
 
 ### Client Side
 
@@ -758,13 +779,14 @@ const deletedUser = await auth.api.removeUser({
 
 ```ts
 type removeUser = {
-    /**
-     * The user id which you want to remove. 
-     */
-    userId: string = "user-id"
-
+      /**
+       * The user id which you want to remove. 
+       */
+      userId: string = "user-id"
+  
 }
 ```
+
 
 ## Access Control
 
@@ -919,6 +941,7 @@ The plugin provides an easy way to define your own set of permissions for each r
 
 To check a user's permissions, you can use the `hasPermission` function provided by the client.
 
+
 ### Client Side
 
 ```ts
@@ -945,21 +968,22 @@ const data = await auth.api.userHasPermission({
 
 ```ts
 type userHasPermission = {
-    /**
-     * The user id which you want to check the permissions for. 
-     */
-    userId?: string = "user-id"
-    /**
-     * Check role permissions.
-     * @serverOnly
-     */
-    role?: string = "admin"
-    /**
-     * Optionally check if a single permission is granted. Must use this, or permissions. 
-     */
-    permission?: Record<string, string[]> = { "project": ["create", "update"] 
+      /**
+       * The user id which you want to check the permissions for. 
+       */
+      userId?: string = "user-id"
+      /**
+       * Check role permissions.
+       * @serverOnly
+       */
+      role?: string = "admin"
+      /**
+       * Optionally check if a single permission is granted. Must use this, or permissions. 
+       */
+      permission?: Record<string, string[]> = { "project": ["create", "update"] 
 }
 ```
+
 
 Example usage:
 

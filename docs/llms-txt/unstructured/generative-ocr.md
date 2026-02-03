@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/ui/enriching/generative-ocr.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Generative OCR optimization
 
 After partitioning, you can have a vision language model (VLM) optimize the fidelity of text blocks that Unstructured

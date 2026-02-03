@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/cli/commands/gateway.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # infisical gateway
 
 > Run the Infisical gateway or manage its systemd service
@@ -41,12 +45,12 @@ The gateway system uses SSH reverse tunnels over TCP, eliminating firewall compl
     ```
 
     <Info>
-      By default, the gateway automatically connects to the relay with the lowest latency. To target a specific relay, use the `--relay=<relay-name>` flag.
+      By default, the gateway automatically connects to the relay with the lowest latency. To target a specific relay, use the `--target-relay-name=<relay-name>` flag.
     </Info>
 
     Once started, the gateway component will:
 
-    * Automatically connect to a healthy relay with the lowest latency (unless the `--relay` flag is specified)
+    * Automatically connect to a healthy relay with the lowest latency (unless the `--target-relay-name` flag is specified)
     * Establish outbound SSH reverse tunnel to relay server (no inbound firewall rules needed)
     * Authenticate using SSH certificates issued by Infisical
     * Automatically reconnect if the connection is lost
@@ -257,14 +261,14 @@ The gateway system uses SSH reverse tunnels over TCP, eliminating firewall compl
     ### Other Flags
 
     <AccordionGroup>
-      <Accordion title="--relay">
+      <Accordion title="--target-relay-name">
         The name of the relay that this gateway should connect to. The relay must be running and registered before starting the gateway.
 
         If this flag is omitted, the gateway will automatically connect to a healthy relay with the lowest latency.
 
         ```bash  theme={"dark"}
         # Example
-        sudo infisical gateway start --relay=my-relay --name=my-gateway --token=<token>
+        sudo infisical gateway start --target-relay-name=my-relay --name=my-gateway --token=<token>
         ```
 
         **Note:** For Infisical Cloud users using instance relays, the relay infrastructure is already running and managed by Infisical. If using organization relays or self-hosted instance relays, you must first start a relay server. For more information on deploying relays, refer to the [Relay Deployment Guide](/documentation/platform/gateways/relay-deployment).
@@ -335,14 +339,14 @@ The gateway system uses SSH reverse tunnels over TCP, eliminating firewall compl
         ```
       </Accordion>
 
-      <Accordion title="--relay">
+      <Accordion title="--target-relay-name">
         The name of the relay that this gateway should connect to. The relay must be running and registered before starting the gateway.
 
         If this flag is omitted, the gateway will automatically connect to a healthy relay with the lowest latency.
 
         ```bash  theme={"dark"}
         # Example
-        sudo infisical gateway systemd install --relay=my-relay --token=<token> --name=<name>
+        sudo infisical gateway systemd install --target-relay-name=my-relay --token=<token> --name=<name>
         ```
 
         **Note:** For Infisical Cloud users using instance relays, the relay infrastructure is already running and managed by Infisical. If using organization relays or self-hosted instance relays, you must first start a relay server. For more information on deploying relays, refer to the [Relay Deployment Guide](/documentation/platform/gateways/relay-deployment).
@@ -682,7 +686,7 @@ The gateway system uses SSH reverse tunnels over TCP, eliminating firewall compl
 
 <AccordionGroup>
   <Accordion title="How are relays auto-selected?">
-    If the `--relay` flag is omitted, the gateway automatically selects the optimal relay. It first checks for healthy organization relays and connects to the one with the lowest latency. If no organization relays are available, it then performs the same latency-based selection among the available managed relays.
+    If the `--target-relay-name` flag is omitted, the gateway automatically selects the optimal relay. It first checks for healthy organization relays and connects to the one with the lowest latency. If no organization relays are available, it then performs the same latency-based selection among the available managed relays.
   </Accordion>
 
   <Accordion title="When restarting the gateway without a relay flag, does it select a new relay every time?">

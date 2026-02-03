@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/core-concepts/records.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Records
 
 > Individual data rows that represent your imported data in Flatfile
@@ -22,7 +26,7 @@ Records are the fundamental data units that flow through your import pipelines, 
 
 This is an example JSON response from the Flatfile API. For working with Records in your language, see our [API Reference](/api-reference) documentation
 
-```json
+```json  theme={null}
 {
   "data": {
     "records": [

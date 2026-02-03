@@ -10,7 +10,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Tutorial - Enabling Tracing for a Python
   Application and Datadog Agent in Containers
-source_url: https://docs.datadoghq.com/guide/tutorial-enable-python-containers/index.html
 ---
 
 # Tutorial - Enabling Tracing for a Python Application and Datadog Agent in Containers
@@ -106,7 +105,7 @@ You can also verify that it's running by viewing the running containers with the
 {% /dt %}
 
 {% dd %}
-`{â1â, "hello"}`
+`{"1", "hello"}`
 {% /dd %}
 
 {% dt %}

@@ -69,7 +69,7 @@ In Stock
 [5V 10A switching power supply](https://www.adafruit.com/product/658)
 This is a beefy switching supply, for when you need a lot of power! It can supply 5V DC up to 10 Amps, running from 110V or 220V power (the plug it comes with is for US/Canada/Japan but you can use any plug adapter for your country, or just replace the cable with a standard computer/appliance...
 
-In Stock
+Out of Stock
 [Buy Now](https://www.adafruit.com/product/658)
 [Related Guides to the Product](https://learn.adafruit.com/products/658/guides)
 ### 5V 4A (4000mA) switching power supply - UL Listed
@@ -85,7 +85,7 @@ In Stock
 [5V 2A (2000mA) switching power supply - UL Listed](https://www.adafruit.com/product/276)
 This is an FCC/CE certified and UL listed power supply. Need a lot of 5V power? This switching supply gives a clean regulated 5V output at up to 2000mA. 110 or 240 input, so it works in any country. The plugs are "US 2-prong" style so you may need a plug adapter, but you can pick one...
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/276)
 [Related Guides to the Product](https://learn.adafruit.com/products/276/guides)
 ### 4-pin JST SM Plug + Receptacle Cable Set
@@ -99,18 +99,18 @@ In Stock
 
 ## Related Guides
 
-- [DIY Darksaber Build - 3D Print with PropMaker FeatherWing and BLE](https://learn.adafruit.com/ble-darksaber-propmaker.md)
-- [No-Code Rain Sensing Smart Desktop Umbrella Stand](https://learn.adafruit.com/no-code-rain-sensing-smart-desktop-umbrella-stand.md)
-- [Sparkle Motion Dance Shoes](https://learn.adafruit.com/sparkle-motion-dance-shoes.md)
-- [NeoPixel LED Heart Necklace](https://learn.adafruit.com/neopixel-led-heart-necklace.md)
-- [Bike Wheel POV Display](https://learn.adafruit.com/bike-wheel-pov-display.md)
-- [Wakanda Forever Game](https://learn.adafruit.com/wakanda-forever-game.md)
-- [Edge-Lit Tavern Sign with WLED - Control with WiFi or IR Remote](https://learn.adafruit.com/edge-lit-tavern-sign-with-wled-control-with-wifi-or-ir-remote.md)
-- [HalloWing M4 Tombstone](https://learn.adafruit.com/hallowing-tombstone.md)
-- [HalloWing Light Paintstick](https://learn.adafruit.com/hallowing-light-paintstick.md)
-- [Bandolier of Light](https://learn.adafruit.com/bandolier-of-light.md)
-- [Roll-up Video Light](https://learn.adafruit.com/roll-up-video-light.md)
-- [Glowing WhoVille Hat](https://learn.adafruit.com/glowing-whoville-hat.md)
-- [Bubble Table with LED Animations and IR Remote Control](https://learn.adafruit.com/bubble-table-with-led-animations-and-ir-remote-control.md)
-- [RGB LED Strips](https://learn.adafruit.com/rgb-led-strips.md)
-- [Water Drip Dress with Oozemaster 3000](https://learn.adafruit.com/water-drip-dress-with-oozemaster-3000.md)
+- [NeoPixel Painter](https://learn.adafruit.com/neopixel-painter.md)
+- [The Pixif](https://learn.adafruit.com/the-pixif.md)
+- [Genesis Poi: DotStar LED Persistence-of-Vision](https://learn.adafruit.com/genesis-poi-dotstar-led-persistence-of-vision-poi.md)
+- [Monster Matrix with WLED](https://learn.adafruit.com/monster-matrix-with-wled.md)
+- [Playa Festival Bike](https://learn.adafruit.com/playa-festival-bike.md)
+- [Halo Energy Sword](https://learn.adafruit.com/halo-energy-sword.md)
+- [Magic Band Reader](https://learn.adafruit.com/magic-band-reader.md)
+- [CLUE Vertical Garden Weather Visualizer](https://learn.adafruit.com/clue-vertical-garden-weather-visualizer.md)
+- [Gemma Firewalker Lite Sneakers](https://learn.adafruit.com/gemma-led-sneakers.md)
+- [NeoPixel Mini VU Meter](https://learn.adafruit.com/neopixel-mini-vu-meter.md)
+- [CircuitPython Animated Holiday Wreath Lights](https://learn.adafruit.com/circuitpython-animated-holiday-wreath-lights.md)
+- [Remote Controlled LED Tea Light Sconce](https://learn.adafruit.com/remote-controlled-led-candelabra.md)
+- [Toddler Timer](https://learn.adafruit.com/toddler-timer.md)
+- [Stick Person Costume with Neon LED Strips](https://learn.adafruit.com/led-neon-stick-person-costume.md)
+- [The PICsellator](https://learn.adafruit.com/the-picsellator.md)

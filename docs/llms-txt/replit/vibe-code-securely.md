@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/tutorials/vibe-code-securely.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Replit's built-in security features
 
 > Learn about the security features built into Replit.

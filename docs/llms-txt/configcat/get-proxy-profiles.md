@@ -2,10 +2,7 @@
 
 # List Proxy Profiles
 
-```
-GET 
-/v1/organizations/:organizationId/proxy-profiles
-```
+Copy page
 
 This endpoint returns the list of Proxy profiles for the given Organization identified by the `organizationId` parameter.
 

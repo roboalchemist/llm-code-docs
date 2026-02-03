@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/knowledge-base/using-streamlit
+
 # FAQ
 
 Here are some frequently asked questions about using Streamlit. If you feel something important is missing that everyone needs to know, please [open an issue](https://github.com/streamlit/docs/issues) or [submit a pull request](https://github.com/streamlit/docs/pulls) and we'll be happy to review it!

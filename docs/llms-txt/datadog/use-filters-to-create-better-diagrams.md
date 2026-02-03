@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Getting started > Using Filters to Create
   Better Diagrams
-source_url: >-
-  https://docs.datadoghq.com/getting-started/use-filters-to-create-better-diagrams/index.html
 ---
 
 # Using Filters to Create Better Diagrams

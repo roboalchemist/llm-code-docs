@@ -4,7 +4,6 @@
 title: ECR Repository Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > ECR Repository Component
-source_url: https://docs.datadoghq.com/components-aws/ecr-repository/index.html
 ---
 
 # ECR Repository Component

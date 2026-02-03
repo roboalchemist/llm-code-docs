@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/threads/assignment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Assignment
 
 Threads can be assigned to users or machine users. The latter is useful if you want a bot to handle or are building a complex automation of some kind.

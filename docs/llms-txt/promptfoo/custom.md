@@ -1,3 +1,9 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/custom/
+
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/custom/
+
+# Source: https://www.promptfoo.dev/docs/tags/custom/
+
 # One doc tagged with "custom"
 
 [View all tags](/docs/tags/)

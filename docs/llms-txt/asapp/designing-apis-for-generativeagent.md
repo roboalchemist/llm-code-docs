@@ -1,28 +1,32 @@
 # Source: https://docs.asapp.com/generativeagent/configuring/connect-apis/designing-apis-for-generativeagent.md
 
-# API Design Best Practices for Generative Agent
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Learn how to design APIs that integrate smoothly with Generative Agent.
+# API Design Best Practices for GenerativeAgent
+
+> Learn how to design APIs that integrate smoothly with GenerativeAgent.
 
 As AI agents become the primary interface for many business operations, traditional API design patterns are failing. **Poorly designed APIs can reduce AI agent accuracy** and create frustrating user experiences. The solution? APIs designed specifically for AI consumption.
 
 Most AI agents use middleware to expose functions to the LLM and call underlying HTTP APIs, such as [MCP](https://modelcontextprotocol.io/docs/getting-started/intro) or custom solutions.
 
-To streamline this process with Generative Agent, we built [API Connections](/generativeagent/configuring/connect-apis) to enable your Generative Agent to work with any API, regardless of how it's designed.
+To streamline this process with GenerativeAgent, we built [API Connections](/generativeagent/configuring/connect-apis) to enable your GenerativeAgent to work with any API, regardless of how it's designed.
 
-Many customers still desire to revamp or redesign their APIs to make them more LLM and Generative Agent friendly. We've found several best practices that help you design APIs that are easily interpreted by Generative Agent and other AI agents.
+Many customers still desire to revamp or redesign their APIs to make them more LLM and GenerativeAgent friendly. We've found several best practices that help you design APIs that are easily interpreted by GenerativeAgent and other AI agents.
 
 ## API for Humans vs AI Agents
 
 Most APIs are designed for human consumption, which relies on implicit dependencies like documentation, trial and error, training, and technical support.
 
-Real-time AI agents (like Generative Agent) must perform API calls in one shot. They rely exclusively on specifications to determine how to call the API. We recommend using OpenAPI specifications for this purpose.
+Real-time AI agents (like GenerativeAgent) must perform API calls in one shot. They rely exclusively on specifications to determine how to call the API. We recommend using OpenAPI specifications for this purpose.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/gm2SPtSnWzh1sFEM/images/generativeagent/connect-apis/Human-vs-ai-agent.png?fit=max&auto=format&n=gm2SPtSnWzh1sFEM&q=85&s=164c34f673d61b94b27909ca50d5f8c5" alt="Humans vs AI agents" data-og-width="1516" width="1516" data-og-height="1199" height="1199" data-path="images/generativeagent/connect-apis/Human-vs-ai-agent.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/gm2SPtSnWzh1sFEM/images/generativeagent/connect-apis/Human-vs-ai-agent.png?w=280&fit=max&auto=format&n=gm2SPtSnWzh1sFEM&q=85&s=e0dc8c9942653132ddaf03e1f31c37e9 280w, https://mintcdn.com/asapp/gm2SPtSnWzh1sFEM/images/generativeagent/connect-apis/Human-vs-ai-agent.png?w=560&fit=max&auto=format&n=gm2SPtSnWzh1sFEM&q=85&s=09fe4cff4baebe7c1ddef8e0af9c011f 560w, https://mintcdn.com/asapp/gm2SPtSnWzh1sFEM/images/generativeagent/connect-apis/Human-vs-ai-agent.png?w=840&fit=max&auto=format&n=gm2SPtSnWzh1sFEM&q=85&s=c13d051c5124704daf3079fca1d8ed17 840w, https://mintcdn.com/asapp/gm2SPtSnWzh1sFEM/images/generativeagent/connect-apis/Human-vs-ai-agent.png?w=1100&fit=max&auto=format&n=gm2SPtSnWzh1sFEM&q=85&s=de0d155bb0eafae6a1502f616d840d8f 1100w, https://mintcdn.com/asapp/gm2SPtSnWzh1sFEM/images/generativeagent/connect-apis/Human-vs-ai-agent.png?w=1650&fit=max&auto=format&n=gm2SPtSnWzh1sFEM&q=85&s=62d6745408280b4089729c17dca02720 1650w, https://mintcdn.com/asapp/gm2SPtSnWzh1sFEM/images/generativeagent/connect-apis/Human-vs-ai-agent.png?w=2500&fit=max&auto=format&n=gm2SPtSnWzh1sFEM&q=85&s=75af994e4c6df698c0f62a05f42fa379 2500w" />
 </Frame>
 
-To design APIs that are easily interpreted by Generative Agent or any other AI agent, you must prioritize **machine-readability** and **explicit semantic context** over human-centric documentation. AI agents can't infer intent from documentation prose. They need structured, self-describing contracts that eliminate ambiguity.
+To design APIs that are easily interpreted by GenerativeAgent or any other AI agent, you must prioritize **machine-readability** and **explicit semantic context** over human-centric documentation. AI agents can't infer intent from documentation prose. They need structured, self-describing contracts that eliminate ambiguity.
 
 <Tip>
   Treat the API's specification not as documentation about the API, but as an integral, machine-readable part of the API itself.
@@ -60,7 +64,7 @@ Here are the design principles that will help your APIs be AI-ready:
 
 ### Simplify Field Names
 
-Use clear, descriptive, and simple field names. Avoid abbreviations that aren't immediately clear.
+Use clear, descriptive, and simple field names. Avoid abbreviations that are not immediately clear.
 
 <Expandable title="Good vs. Bad Field Naming Examples">
   ```json Good - Clear and descriptive theme={null}
@@ -96,11 +100,11 @@ Use clear, descriptive, and simple field names. Avoid abbreviations that aren't 
 
 Design APIs that work for both humans and AI agents by balancing technical primitives with human-friendly concepts. Esoteric terms like "record", "details", or "session" are difficult for humans to understand without context—AI agents will struggle even more.
 
-Instead, design around resources that can express their current state and requirements clearly. This makes it easier for AI agents to understand what data is needed and how to provide it. This will make your APIs easier to expand and map to [RPC-like tool calls](#tool-call-design-best-practices) that work well with Generative Agent.
+Instead, design around resources that can express their current state and requirements clearly. This makes it easier for AI agents to understand what data is needed and how to provide it. This will make your APIs easier to expand and map to [RPC-like tool calls](#tool-call-design-best-practices) that work well with GenerativeAgent.
 
 ### Be Verbose in Descriptions
 
-Use the summary and description fields in OpenAPI for each endpoint and parameter. Describe the purpose in clear, simple language. Generative Agent can use this text to map a user's natural language request (e.g., "find a customer by their email") to the correct API call.
+Use the summary and description fields in OpenAPI for each endpoint and parameter. Describe the purpose in clear, simple language. GenerativeAgent can use this text to map a user's natural language request (e.g., "find a customer by their email") to the correct API call.
 
 <Expandable title="Example of Descriptive Schema">
   ```json  theme={null}
@@ -149,7 +153,7 @@ Don't just return an ID. If you have a userId, also include a userName or userEm
 
 ### Ensure Idempotency
 
-For operations like `PUT` and `DELETE`, ensure they can be called multiple times with the same input and produce the same result. Generative Agent may need to retry operations, and idempotency makes this safe.
+For operations like `PUT` and `DELETE`, ensure they can be called multiple times with the same input and produce the same result. GenerativeAgent may need to retry operations, and idempotency makes this safe.
 
 ### Design Structured Errors
 
@@ -192,7 +196,7 @@ We recommend using OpenAPI specifications for your APIs. Here are some essential
 
 ### Granular Tool Names for Specific Use Cases
 
-Generative Agent and other LLMs work best with targeted, RPC-like tool calls. If you want to have Generative Agent update a user's address, instead of directly calling a generic `update_user` tool, you can create a tool called `update_user_address`.
+GenerativeAgent and other LLMs work best with targeted, RPC-like tool calls. If you want to have GenerativeAgent update a user's address, instead of directly calling a generic `update_user` tool, you can create a tool called `update_user_address`.
 
 <Note>
   **Start Simple, Expand as Needed**
@@ -256,13 +260,13 @@ Flatten nested objects into a single level. Avoid deep nesting of objects.
 
 * Remove optional or additional fields that are not directly needed for the specific task
 * Only expose the specific fields from the API that are needed for the specific task
-* The more fields, the more likely Generative Agent may make a mistake in providing unnecessary information or getting confused by a large API response
+* The more fields, the more likely GenerativeAgent may make a mistake in providing unnecessary information or getting confused by a large API response
 
 ### Schema Consistency Across Tools
 
-When exposing multiple tools to Generative Agent, ensure you expose consistent naming to Generative Agent regardless of the underlying system.
+When exposing multiple tools to GenerativeAgent, ensure you expose consistent naming to GenerativeAgent regardless of the underlying system.
 
-If you have a person called a `user` in one API and an `account` in another, it may confuse Generative Agent. You should use a consistent naming convention across all the APIs and ensure you use that same naming in the task instructions.
+If you have a person called a `user` in one API and an `account` in another, it may confuse GenerativeAgent. You should use a consistent naming convention across all the APIs and ensure you use that same naming in the task instructions.
 
 ### Cross Field Relationships
 

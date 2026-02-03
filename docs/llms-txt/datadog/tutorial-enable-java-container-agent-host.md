@@ -10,8 +10,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Tutorial - Enabling Tracing for a Java
   Application in a Container and an Agent on a Host
-source_url: >-
-  https://docs.datadoghq.com/guide/tutorial-enable-java-container-agent-host/index.html
 ---
 
 # Tutorial - Enabling Tracing for a Java Application in a Container and an Agent on a Host

@@ -68,5 +68,5 @@ httpport 19110
 
  **Important:** Omitting `-i` will return the default configuration, meaning not generated for the active service instance.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

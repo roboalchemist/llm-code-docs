@@ -4,6 +4,8 @@
 
 Learn how to use Issuing to add cards to digital wallets.
 
+> Digital wallets tokens are only available in live mode. To fully test these features, you need to be approved for live use cases and use real cards.
+
 Issuing allows users to add cards to digital wallets like Apple Pay and Google Pay. Stripe supports the addition of cards through two methods:
 
 1. **Manual Provisioning:** cardholders enter their card details into a phone’s wallet application to add it to their digital wallets.
@@ -17,25 +19,25 @@ Cardholders can add Stripe Issuing [virtual cards](https://docs.stripe.com/issui
 
 To do so, cardholders open the wallet app on their phone and enter their card details. Stripe then sends a 6-digit verification code to the `phone_number` or `email` of the cardholder associated with the card.
 
-A *card not supported* error displays if neither field is set on the cardholder when the card was provisioned.
+A `card not supported` error displays if neither field is set on the cardholder when the card was provisioned.
 
 No code is required to implement manual provisioning, but the process to set it up can vary depending on the digital wallet provider and the country you’re based in:
 
 ### US
 
-Apple Pay wallets require approval from Apple. Check your [digital wallets settings](https://dashboard.stripe.com/settings/issuing/digital-wallets) to view the status of Apple Pay in your account. You might need to submit an application before using Apple Pay.
+Apple Pay wallets require approval from Apple. Check your [digital wallets settings](https://dashboard.stripe.com/settings/issuing/digital-wallets) to view the status of Apple Pay in your account. You might need to submit an application before using Apple Pay. After the application is submitted, approval can take 1-2 weeks.
 
 Google Pay and Samsung Pay have no additional required steps.
 
-### EU/UK
+### EU and UK
 
 Digital wallet integrations require additional approval from the Stripe partnership team. Get in touch with your account representative or [contact Stripe](https://stripe.com/contact/sales) for more information.
 
 Apple Pay wallets require additional approval. Check your [digital wallets settings](https://dashboard.stripe.com/settings/issuing/digital-wallets) to view the status of Apple Pay in your account. You might need to submit an application before using Apple Pay.
 
-## Push Provisioning
+## Push provisioning
 
-With push provisioning, cardholders can add their Stripe Issuing cards to their digital wallets using your app, by pressing an “add to wallet” button like the ones shown below.
+Push provisioning allows cardholders to add a Stripe Issuing cards to their digital wallets directly from your app by pressing an “add to wallet” button like the ones shown below.
 
 Users must first complete manual provisioning steps to enable push provisioning in the US. In addition to manual provisioning approval, push provisioning requires you to integrate with the Stripe SDK.
 
@@ -48,16 +50,18 @@ Samsung Pay push provisioning isn’t supported with our SDKs.
 > This is a iOS for when platform is ios. View the full page at https://docs.stripe.com/issuing/cards/digital-wallets?platform=ios.
 ![A black UI button that says Add to Apple Wallet. There is an Apple Wallet logo image to the left of the text. It is a grey wallet with blue, yellow, green, and red cards stacked slightly offset.](https://b.stripecdn.com/docs-statics-srv/assets/add_to_apple_wallet.fe8cd234760a7478e34f5e91d22677bb.png)
 
-## Request Access
+## Request access
+
+> You must get accesss to [manual provisioning](https://docs.stripe.com/issuing/cards/digital-wallets.md?platform=android#manual-provisioning) before you can request push provisioning.
 
 Push provisioning requires a special entitlement from Apple called `com.apple.developer.payment-pass-provisioning`. You can request it by emailing [support-issuing@stripe.com](mailto:support-issuing@stripe.com). In your email, include your:
 
-- **Card network**—Visa or MasterCard.
-- **Card name**—This is the name of the card displayed in the wallet.
-- **App name**—Your app’s name.
-- **Developer team ID**—Found in your Apple Developer account settings under [membership](https://developer.apple.com/account/#/membership) (for example, `2A23JCNA5E`).
-- **ADAM ID**—Your app’s unique numeric ID. Found in [App Store Connect](https://appstoreconnect.apple.com), or in the App Store link to your app (for example, `https://apps.apple.com/app/id123456789`).
-- **Bundle ID**—Your app’s bundle identifier, also found in App Store Connect (for example, `com.example.yourapp`).
+- **Card network**: Visa or MasterCard.
+- **Card name**: The name of the card displayed in the wallet.
+- **App name**: Your app’s name.
+- **Developer team ID**: Found in your Apple Developer account settings under [membership](https://developer.apple.com/account/#/membership) (for example, `2A23JCNA5E`).
+- **ADAM ID**: Your app’s unique numeric ID. Found in [App Store Connect](https://appstoreconnect.apple.com), or in the App Store link to your app (for example, `https://apps.apple.com/app/id123456789`).
+- **Bundle ID**: Your app’s bundle identifier, also found in App Store Connect (for example, `com.example.yourapp`).
 
 If you have multiple apps (such as for testing), that have any different fields for the above attributes, you’ll need to request access for each of these.
 
@@ -65,7 +69,7 @@ After we approve and apply your request, your app appears on the details page of
 
 ## Check eligibility [Client-side]
 
-Make sure you’ve integrated the latest version of the [Stripe iOS SDK](https://docs.stripe.com/payments/accept-a-payment.md?platform=ios) with your app.
+Make sure you’ve integrated the latest version of the [Stripe iOS SDK](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=mobile&platform=ios) with your app.
 
 Determine if the device is eligible to use push provisioning.
 
@@ -127,7 +131,7 @@ For more context, see the code snippets and references to the sample app at each
 
 When the user taps the `PKAddPassButton`, create and present a `PKAddPaymentPassViewController`, which contains Apple’s UI for the push provisioning flow.
 
-> `PKAddPaymentPassViewController` can use the `primaryAccountIdentifier` from the previous step to determine if a card has already been provisioned on a specific device. For example, if the card has already been added to an iPhone, Apple’s UI offers to add it to a paired Apple Watch.
+`PKAddPaymentPassViewController` can use the `primaryAccountIdentifier` from the previous step to determine if a card has already been provisioned on a specific device. For example, if the card has already been added to an iPhone, Apple’s UI offers to add it to a paired Apple Watch.
 
 #### Swift
 
@@ -449,19 +453,23 @@ To build the sample app, follow the steps in the [readme](https://github.com/str
 > This is a Android for when platform is android. View the full page at https://docs.stripe.com/issuing/cards/digital-wallets?platform=android.
 ![A black UI button that says Add to Google Wallet. There is a Google Wallet logo image to the left of the text.](https://b.stripecdn.com/docs-statics-srv/assets/add_to_google_pay_black.2df6c169bbc605123ec73d37dc73a86e.png)
 
-## Request Access
+## Request access
+
+> You must get accesss to [manual provisioning](https://docs.stripe.com/issuing/cards/digital-wallets.md?platform=android#manual-provisioning) before you can request push provisioning.
 
 Stripe provides an SDK wrapper around a private Google library for push provisioning. To distribute your app on the Google Pay Store with push provisioning you need to:
 
-- [Request access to Google Pay](https://developers.google.com/pay/issuers/requesting-access?api=true). After you complete the form, expect approval within a few hours to a day.
-- After receiving approval, download Google’s [TapAndPay private SDK](https://developers.google.com/pay/issuers/apis/push-provisioning/android/releases). The most recently tested version of the TapAndPay SDK is version 18.
-- [Request access to the push provisioning API](https://support.google.com/faqs/contact/pp_api_allowlist) for your app. You must provide your [application ID](https://developer.android.com/studio/build/application-id) to be added to Google’s allowlist. Details on this process are available in Google’s [documentation](https://developers.google.com/pay/issuers/apis/push-provisioning/android/allowlist). After the process is complete, Google grants push provisioning entitlements.
-- After Google has granted push provisioning entitlements, [contact Stripe](mailto:support-issuing@stripe.com) with your application name, application ID, card network, and card name to complete this step.
+1. [Request access to Google Pay](https://developers.google.com/pay/issuers/requesting-access?api=true). After you complete the form, expect approval within a few hours to a day.
+1. After receiving approval, download Google’s [TapAndPay private SDK](https://developers.google.com/pay/issuers/apis/push-provisioning/android/releases). The most recently tested version of the TapAndPay SDK is version 18.
+1. [Request access to the push provisioning API](https://support.google.com/faqs/contact/pp_api_allowlist) for your app. You must provide your [application ID](https://developer.android.com/studio/build/application-id) to be added to Google’s allowlist. Details on this process are available in Google’s [documentation](https://developers.google.com/pay/issuers/apis/push-provisioning/android/allowlist). After the process is complete, Google grants push provisioning entitlements.
+1. After Google has granted push provisioning entitlements, [contact Stripe](mailto:support-issuing@stripe.com) with your application name, application ID, card network, and card name to complete this step.
 
 ## Update your app [Client-side]
 
-- Import Google’s [private SDK](https://developers.google.com/pay/issuers/apis/push-provisioning/android/setup).
-- Import Stripe’s SDK.
+To update your app:
+
+1. Import Google’s [private SDK](https://developers.google.com/pay/issuers/apis/push-provisioning/android/setup).
+1. Import Stripe’s SDK.
 
 ```java
 dependencies {
@@ -478,7 +486,7 @@ For more context, see the code snippets and references to the sample app at each
 
 > As [recommended](https://developers.google.com/pay/issuers/apis/push-provisioning/android/faq#implementation_questions) by Google, don’t require your users to install the Google Pay app, or check its existence programmatically. The app is only a frontend and you don’t need it for Google Pay to work. Users can manage their cards from within their Google settings in the “Settings” app.
 
-> Google requires that the **Add to Google Pay** button only displays when a card doesn’t already exist on the user’s device, and that users with cards pending verification complete the final guided activation process. Use Google’s [list of checkpoints](https://developers.google.com/pay/issuers/apis/push-provisioning/android/test-cases) to help you verify that your implementation is correct.
+Google requires that the **Add to Google Pay** button only displays when a card doesn’t already exist on the user’s device, and that users with cards pending verification complete the final guided activation process. Use Google’s [list of checkpoints](https://developers.google.com/pay/issuers/apis/push-provisioning/android/test-cases) to help you verify that your implementation is correct.
 
 To check the status of your users’ cards, use [listTokens()](https://developers.google.com/pay/issuers/apis/push-provisioning/android/reading-wallet#listtokens) to retrieve a list of all of your cards already present on the device. Compare the value of `getFpanLastFour()` on each returned object to Stripe’s [last4](https://docs.stripe.com/api/issuing/cards/object.md#issuing_card_object-last4)) property of the [Issued Card object](https://docs.stripe.com/api/issuing/cards/object.md) for the card you want to add. Discard all non-matching objects from the response list.
 
@@ -489,7 +497,7 @@ To check the status of your users’ cards, use [listTokens()](https://developer
 
 Make sure to provide your application ID to Stripe before starting internal testing. Setup can take more than a week, and the consequences of an incomplete setup include receiving inconsistent responses to these two methods. The result of `listTokens()` **only contains cards added after** Stripe completes the setup.
 
-- When a user taps the button, launch Stripe’s `PushProvisioningActivity` using the `PushProvisioningActivityStarter`.
+When a user taps the button, launch Stripe’s `PushProvisioningActivity` using the `PushProvisioningActivityStarter`.
 
 ```java
 new PushProvisioningActivityStarter(
@@ -671,18 +679,20 @@ To build the sample app, follow the steps in the [readme](https://github.com/str
 ![A black UI button that says Add to Apple Wallet. There is an Apple Wallet logo image to the left of the text. It is a grey wallet with blue, yellow, green, and red cards stacked slightly offset.](https://b.stripecdn.com/docs-statics-srv/assets/add_to_apple_wallet.fe8cd234760a7478e34f5e91d22677bb.png)
 ![A black UI button that says Add to Google Wallet. There is a Google Wallet logo image to the left of the text.](https://b.stripecdn.com/docs-statics-srv/assets/add_to_google_pay_black.2df6c169bbc605123ec73d37dc73a86e.png)
 
-## Request Access
+## Request access
+
+> You must get accesss to [manual provisioning](https://docs.stripe.com/issuing/cards/digital-wallets.md?platform=android#manual-provisioning) before you can request push provisioning.
 
 ### Requesting access for iOS
 
 Push provisioning requires a special entitlement from Apple called `com.apple.developer.payment-pass-provisioning`. You can request it by emailing [support-issuing@stripe.com](mailto:support-issuing@stripe.com). In your email, include your:
 
-- **Card network**—Visa or MasterCard.
-- **Card name**—This is the name of the card displayed in the wallet.
-- **App name**—Your app’s name.
-- **Developer team ID**—Found in your Apple Developer account settings under [membership](https://developer.apple.com/account/#/membership).
-- **ADAM ID**—Your app’s unique numeric ID. Found in [App Store Connect](https://appstoreconnect.apple.com), or in the App Store link to your app (for example, `https://apps.apple.com/app/id123456789`).
-- **Bundle ID**—Your app’s bundle identifier, also found in App Store Connect (for example, `com.example.yourapp`).
+- **Card network**: Visa or MasterCard.
+- **Card name**: The name of the card displayed in the wallet.
+- **App name**: Your app’s name.
+- **Developer team ID**: Found in your Apple Developer account settings under [membership](https://developer.apple.com/account/#/membership).
+- **ADAM ID**: Your app’s unique numeric ID. Found in [App Store Connect](https://appstoreconnect.apple.com), or in the App Store link to your app (for example, `https://apps.apple.com/app/id123456789`).
+- **Bundle ID**: Your app’s bundle identifier, also found in App Store Connect (for example, `com.example.yourapp`).
 
 ### Requesting access for Android
 
@@ -965,8 +975,8 @@ const card = await stripe.issuing.cards.retrieve('ISSUING_CARD_ID');
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.IssuingCardRetrieveParams{Card: stripe.String("ISSUING_CARD_ID")}
-result, err := sc.V1IssuingCards.Retrieve(context.TODO(), params)
+params := &stripe.IssuingCardRetrieveParams{}
+result, err := sc.V1IssuingCards.Retrieve(context.TODO(), "ISSUING_CARD_ID", params)
 ```
 
 ```dotnet

@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/PDFPlayground.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using PDF attachments in playgrounds
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/PDFPlayground/PDFPlayground.mdx) by [Carlos Esteban](https://www.linkedin.com/in/cmesteban/), [Ornella Altunyan](https://twitter.com/ornelladotcom) on 2025-05-22</div>
@@ -383,10 +387,5 @@ Both methods result in the PDF being attached to your prompt, allowing the LLM t
 
 Now that you understand the process of converting spans with PDF attachments into a dataset and executing the PDFs in the playground, you can:
 
-* Learn more about [multimodal prompts in playgrounds](/core/playground#multimodal-prompts)
+* Learn more about [multimodal prompts in playgrounds](/evaluate/playgrounds#multimodal-prompts)
 * Read more about [logging with attachments](https://braintrust.dev/blog/attachments)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

@@ -7,7 +7,6 @@ description: >-
   domains that can receive Datadog notifications for monitor and scheduled
   reports.
 breadcrumbs: Docs > Account Management > Domain Allowlist API
-source_url: https://docs.datadoghq.com/org_settings/domain_allowlist_api/index.html
 ---
 
 # Domain Allowlist API

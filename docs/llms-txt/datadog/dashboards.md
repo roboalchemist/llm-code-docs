@@ -1,10 +1,13 @@
+# Source: https://docs.datadoghq.com/getting_started/dashboards.md
+
+# Source: https://docs.datadoghq.com/api/latest/dashboards.md
+
 # Source: https://docs.datadoghq.com/dashboards.md
 
 ---
 title: Dashboards
 description: Visualize your data to gain insight
 breadcrumbs: Docs > Dashboards
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Dashboards
@@ -16,7 +19,7 @@ Dashboards provide real-time insights into the performance and health of systems
 - [Configure: Overview of the configuration options for dashboards](https://docs.datadoghq.com/dashboards/configure)
 - [Dashboard List: Search, view, or create dashboards and lists](https://docs.datadoghq.com/dashboards/list)
 - [Template Variable: Dynamically filter widgets in a dashboard](https://docs.datadoghq.com/dashboards/template_variables)
-- [Datadog Clipboard](https://docs.datadoghq.com/incident_response/incident_management/datadog_clipboard/)
+- [Datadog Clipboard](https://docs.datadoghq.com/dashboards/guide/datadog_clipboard/)
 - [API: Manage dashboards programmatically](https://docs.datadoghq.com/api/latest/dashboards)
 
 - [Widgets: Learn the configuration for different visualizations](https://docs.datadoghq.com/dashboards/widgets)
@@ -117,5 +120,6 @@ Explore table, list, SLO, and architecture widgets. Learn how to track the metri
 - [Share your Graphs outside of Datadog](https://docs.datadoghq.com/dashboards/sharing/)
 - [Add Dashboard widgets to your clipboard](https://www.datadoghq.com/blog/datadog-clipboard/)
 - [The new Datadog dashboards experience](https://www.datadoghq.com/blog/datadog-dashboards/)
+- [Design effective executive dashboards with Datadog](https://www.datadoghq.com/blog/datadog-executive-dashboards)
 - [Create great integration dashboards](https://datadoghq.dev/integrations-core/guidelines/dashboards/#best-practices)
 - [Join an interactive session on better visualizations with Dashboards](https://dtdg.co/fe)

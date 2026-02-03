@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/integrations/app-connections/gcp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # GCP Connection
 
 > Learn how to configure a GCP Connection for Infisical.
@@ -12,7 +16,21 @@ Infisical supports [service account impersonation](https://cloud.google.com/iam/
 
   <Steps>
     <Step title="Enable the IAM Service Account Credentials API">
+      Enable the IAM Service Account Credentials API for the project containing the service account that will be impersonated. You can do this from the Google Cloud Console or via the command line.
+
             <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/gcp/service-account-credentials-api.png" alt="Service Account API" />
+
+      To enable via command line, run the following command, replacing `projectId` with your GCP project ID:
+
+      ```bash  theme={"dark"}
+      gcloud services enable iamcredentials.googleapis.com --project=projectId
+      ```
+
+      Verify the API is enabled by running:
+
+      ```bash  theme={"dark"}
+      gcloud services list --enabled --project=projectId | grep iamcredentials
+      ```
     </Step>
 
     <Step title="Navigate to IAM & Admin > Service Accounts in Google Cloud Console">
@@ -91,7 +109,7 @@ Infisical supports [service account impersonation](https://cloud.google.com/iam/
 
 <Steps>
   <Step title="Navigate to App Connections">
-    Navigate to the **App Connections** page in the desired project. <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/general/add-connection.png" alt="App Connections
+    Navigate to the **Integrations** tab in the desired project, then select **App Connections**. <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/general/add-connection.png" alt="App Connections
     Tab" />
   </Step>
 

@@ -4,7 +4,6 @@
 title: Agent Transport for Logs
 description: Use the Datadog Agent to collect your logs and send them to Datadog
 breadcrumbs: Docs > Agent > Host Agent Log collection > Agent Transport for Logs
-source_url: https://docs.datadoghq.com/logs/log_transport/index.html
 ---
 
 # Agent Transport for Logs

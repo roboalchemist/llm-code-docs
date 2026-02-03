@@ -1,3 +1,5 @@
+# Source: https://github.com/apache/camel-k-examples/blob/main/generic-examples/README.md
+
 # camel-k-examples/generic-examples/README.md at main · apache/camel-k-examples · GitHub
 
 The provided HTML content is primarily a navigation menu and a GitHub logo, along with a skip-to-content link. The main content of the HTML is not present in the provided HTML snippet. Therefore, there is no main content to extract and convert into Markdown.

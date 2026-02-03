@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/widgets/st.color_picker
+
 # st.color_picker
 
 Display a color picker widget.

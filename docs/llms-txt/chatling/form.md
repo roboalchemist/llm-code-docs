@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/chatbot/builder/blocks/inputs/form.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Form Block
 
 > Learn about the Form input block and how to set it up in the Builder.

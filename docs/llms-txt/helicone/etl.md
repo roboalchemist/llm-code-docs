@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/cookbooks/etl.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ETL / Data Extraction
 
 > Extract, transform, and load data from Helicone into your data warehouse using our CLI tool or REST API.

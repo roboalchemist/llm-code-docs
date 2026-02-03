@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/mcpservers/get-mcp_server.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get mcp_server
 
 > Get a mcp_server object by its id
@@ -168,7 +172,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

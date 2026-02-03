@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/context/insights.md
 
-# Source: https://docs.avaamo.com/user-guide/how-to/build-agents/debug-agents/insights.md
-
-# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/context/insights.md
-
 # insights
 
 Context insights indicate how the user’s intent was analyzed and matched in the agent flow. You can use this information to debug agents. The following is a sample JSON of insights details in context object:

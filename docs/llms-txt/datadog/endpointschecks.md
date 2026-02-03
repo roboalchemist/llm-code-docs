@@ -4,9 +4,8 @@
 title: Endpoint Checks with Autodiscovery
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
-  Docs > Container Monitoring > Cluster Agent for Kubernetes > Endpoint Checks
-  with Autodiscovery
-source_url: https://docs.datadoghq.com/cluster_agent/endpointschecks/index.html
+  Docs > Containers > Cluster Agent for Kubernetes > Endpoint Checks with
+  Autodiscovery
 ---
 
 # Endpoint Checks with Autodiscovery

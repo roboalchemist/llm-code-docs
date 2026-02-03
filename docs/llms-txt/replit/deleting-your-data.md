@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/legal-and-security-info/deleting-your-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deleting your data
 
 > Learn how to permanently delete your account and personal information from Replit using either the web browser or mobile app.
@@ -7,7 +11,7 @@
 To delete your personal information from Replit, please follow these instructions.  If you are using a desktop web browser:
 
 1. Log in to Replit and visit [https://replit.com/account](https://replit.com/account), or click your account name (next to your profile picture) then click Account.
-2. Scroll down to the "Billing" section, click "Additional billing settings".
+2. Scroll down to the "Billing" section, click "Manage subscription".
 3. In the "Delete Account" section, click on "Request account deletion" then "Yes, Delete my Account" to confirm.
 
 You can also perform the same process using our mobile app:

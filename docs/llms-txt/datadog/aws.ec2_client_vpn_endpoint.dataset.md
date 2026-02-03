@@ -4,8 +4,6 @@
 title: Client VPN Endpoint
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Client VPN Endpoint
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ec2_client_vpn_endpoint.dataset/index.html
 ---
 
 # Client VPN Endpoint
@@ -41,7 +39,7 @@ aws.ec2_client_vpn_endpoint
 | session_timeout_hours       | core | int64         | The maximum VPN session duration time in hours. Valid values: 8 | 10 | 12 | 24 Default value: 24                                                                                                    |
 | split_tunnel                | core | bool          | Indicates whether split-tunnel is enabled in the Client VPN endpoint. For information about split-tunnel VPN endpoints, see Split-Tunnel Client VPN endpoint in the Client VPN Administrator Guide. |
 | status                      | core | json          | The current state of the Client VPN endpoint.                                                                                                                                                       |
-| tags                        | core | hstore        |
+| tags                        | core | hstore_csv    |
 | transport_protocol          | core | string        | The transport protocol used by the Client VPN endpoint.                                                                                                                                             |
 | vpc_id                      | core | string        | The ID of the VPC.                                                                                                                                                                                  |
 | vpn_port                    | core | int64         | The port number for the Client VPN endpoint.                                                                                                                                                        |

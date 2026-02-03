@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/aws-bedrock/
+
 # AWS Bedrock | Promptfoo
 
 ## Setup

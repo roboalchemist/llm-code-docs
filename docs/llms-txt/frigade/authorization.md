@@ -1,5 +1,9 @@
 # Source: https://docs.frigade.com/api-reference/authorization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # API Authorization
 
 The Frigade API is secured using authorization tokens.
@@ -21,7 +25,7 @@ This key should be kept secret and is used to access the private API endpoints. 
 The key should be passed in the `Authorization: Bearer <key>` header.
 For example, to access the list of available flows in your account, you would make the following request:
 
-```bash
+```bash  theme={"system"}
 curl -i -X GET \
    -H "Authorization:Bearer api_public_J3FNG3dJASDKLW98SN4KLOJHNTYUFGNVSK" \
  'https://api.frigade.com/v1/public/flows'

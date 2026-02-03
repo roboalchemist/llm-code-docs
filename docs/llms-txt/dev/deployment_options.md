@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/deployment_options.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Compare deployment options
 
 > Choose between Standard Cloud and Private Cloud deployment for Writer. Compare security, compliance, scalability, and enterprise features.

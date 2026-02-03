@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/deployment-and-security/setup/aks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Azure AKS (Kubernetes)
 
 ## Deploying Multiwoven on Azure Kubernetes Service (AKS)

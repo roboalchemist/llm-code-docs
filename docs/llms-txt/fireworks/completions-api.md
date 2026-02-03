@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/guides/completions-api.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Completions API
 
 > Use the completions API for raw text generation with custom prompt templates
@@ -20,7 +24,22 @@ The completions API provides raw text generation without automatic message forma
 ## Basic usage
 
 <Tabs>
-  <Tab title="Python">
+  <Tab title="Python (Fireworks SDK)">
+    ```python  theme={null}
+    from fireworks import Fireworks
+
+    client = Fireworks()
+
+    response = client.completions.create(
+      model="accounts/fireworks/models/deepseek-v3p1",
+      prompt="Once upon a time"
+    )
+
+    print(response.choices[0].text)
+    ```
+  </Tab>
+
+  <Tab title="Python (OpenAI SDK)">
     ```python  theme={null}
     import os
     from openai import OpenAI
@@ -119,7 +138,7 @@ Use completions with [on-demand deployments](/guides/ondemand-deployments) by sp
 
 ```python  theme={null}
 response = client.completions.create(
-    model="accounts/fireworks/models/deepseek-v3p1#accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>",
+    model="accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>",
     prompt="Your prompt here"
 )
 ```

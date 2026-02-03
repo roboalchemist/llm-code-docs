@@ -134,8 +134,9 @@ import CommandTabs from '@components/CommandTabs.astro';
     bun install
     bun tauri dev
   "
-  cargo="cd tauri-app
-    cargo tauri dev"
+  cargo='cd tauri-app
+    cargo install tauri-cli --version "^2.0.0" --locked
+    cargo tauri dev'
 />
 
 You'll now see a new window open with your app running.
@@ -529,7 +530,7 @@ winget install --id Rustlang.Rustup
 
 :::caution[MSVC toolchain as default]
 
-For full support for Tauri and tools like [`trunk`](https://trunkrs.dev/) make sure the MSVC Rust toolchain is the selected `default host triple` in the installer dialog. Depending on your system it should be either `x86_64-pc-windows-msvc`, `i686-pc-windows-msvc`, or `aarch64-pc-windows-msvc`.
+For full support for Tauri and tools like [`trunk`](https://trunk-rs.github.io/trunk/) make sure the MSVC Rust toolchain is the selected `default host triple` in the installer dialog. Depending on your system it should be either `x86_64-pc-windows-msvc`, `i686-pc-windows-msvc`, or `aarch64-pc-windows-msvc`.
 
 If you already have Rust installed, you can make sure the correct toolchain is installed by running this command:
 
@@ -755,6 +756,154 @@ If you want to work with Rust code only, simply remove everything else and use t
 - [Tauri Command Line Interface (CLI) Reference](/reference/cli/)
 - [Learn how to develop your Tauri app](/develop/)
 - [Discover additional features to extend Tauri](/plugin/)
+
+# Upgrade from Tauri 2.0 Beta
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import CommandTabs from '@components/CommandTabs.astro';
+
+This guide walks you through upgrading your Tauri 2.0 beta application to Tauri 2.0 release candidate.
+
+## Automated Migration
+
+The Tauri v2 CLI includes a `migrate` command that automates most of the process and helps you finish the migration:
+
+<CommandTabs
+  npm="npm install @tauri-apps/cli@latest
+    npm run tauri migrate"
+  yarn="yarn upgrade @tauri-apps/cli@latest
+    yarn tauri migrate"
+  pnpm="pnpm update @tauri-apps/cli@latest
+    pnpm tauri migrate"
+  cargo='cargo install tauri-cli --version "^2.0.0" --locked
+    cargo tauri migrate'
+/>
+
+Learn more about the `migrate` command in the [Command Line Interface reference](/reference/cli/#migrate)
+
+## Breaking Changes
+
+We have had several breaking changes going from beta to release candidate. These can be either auto-migrated (see above) or manually performed.
+
+### Tauri Core Plugins
+
+We changed how Tauri built-in plugins are addressed in the capabilities [PR #10390](https://github.com/tauri-apps/tauri/pull/10390).
+
+To migrate from the latest beta version you need to prepend all core permission identifiers in your capabilities with `core:` or switch to the `core:default` permission and remove old core plugin identifiers.
+
+```json
+...
+"permissions": [
+    "path:default",
+    "event:default",
+    "window:default",
+    "app:default",
+    "image:default",
+    "resources:default",
+    "menu:default",
+    "tray:default",
+]
+...
+```
+
+```json
+...
+"permissions": [
+    "core:path:default",
+    "core:event:default",
+    "core:window:default",
+    "core:app:default",
+    "core:image:default",
+    "core:resources:default",
+    "core:menu:default",
+    "core:tray:default",
+]
+...
+```
+
+We also added a new special `core:default` permission set which will contain all default permissions of all core plugins, so you can simplify the permissions boilerplate in your capabilities config.
+
+```json
+...
+"permissions": [
+    "core:default"
+]
+...
+```
+
+### Built-In Development Server
+
+We introduced changes to the network exposure of the built-in development server [PR #10437](https://github.com/tauri-apps/tauri/pull/10437) and [PR #10456](https://github.com/tauri-apps/tauri/pull/10456).
+
+The built-in mobile development server no longer exposes network wide and tunnels traffic from the local machine directly to the device.
+
+Currently this improvement does not automatically apply when running on iOS devices (either directly or from Xcode).
+In this case we default to using the public network address for the development server,
+but there's a way around it which involves opening Xcode to automatically start a connection between your macOS machine and your connected iOS device,
+then running `tauri ios dev --force-ip-prompt` to select the iOS device's TUN address (ends with **::2**).
+
+Your development server configuration needs to adapt to this change if running on a physical iOS device is intended.
+Previously we recommended checking if the `TAURI_ENV_PLATFORM` environment variable matches either `android` or `ios`,
+but since we can now connect to localhost unless using an iOS device, you should instead check the `TAURI_DEV_HOST` environment variable.
+Here's an example of a Vite configuration migration:
+
+- 2.0.0-beta:
+
+```js
+import { defineConfig } from 'vite';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
+import { internalIpV4Sync } from 'internal-ip';
+
+const mobile = !!/android|ios/.exec(process.env.TAURI_ENV_PLATFORM);
+
+export default defineConfig({
+  plugins: [svelte()],
+  clearScreen: false,
+  server: {
+    host: mobile ? '0.0.0.0' : false,
+    port: 1420,
+    strictPort: true,
+    hmr: mobile
+      ? {
+          protocol: 'ws',
+          host: internalIpV4Sync(),
+          port: 1421,
+        }
+      : undefined,
+  },
+});
+```
+
+- 2.0.0:
+
+```js
+import { defineConfig } from 'vite';
+import Unocss from 'unocss/vite';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
+
+const host = process.env.TAURI_DEV_HOST;
+
+export default defineConfig({
+  plugins: [svelte()],
+  clearScreen: false,
+  server: {
+    host: host || false,
+    port: 1420,
+    strictPort: true,
+    hmr: host
+      ? {
+          protocol: 'ws',
+          host: host,
+          port: 1430,
+        }
+      : undefined,
+  },
+});
+```
+
+:::note
+The `internal-ip` NPM package is no longer required, you can directly use the TAURI_DEV_HOST value instead.
+:::
 
 # Upgrade from Tauri 1.0
 
@@ -1968,154 +2117,6 @@ The `migrate` CLI command automatically parses your v1 allowlist and generates t
 
 To learn more about permissions and capabilities, see [the security documentation](/security/).
 
-# Upgrade from Tauri 2.0 Beta
-
-import { Tabs, TabItem } from '@astrojs/starlight/components';
-import CommandTabs from '@components/CommandTabs.astro';
-
-This guide walks you through upgrading your Tauri 2.0 beta application to Tauri 2.0 release candidate.
-
-## Automated Migration
-
-The Tauri v2 CLI includes a `migrate` command that automates most of the process and helps you finish the migration:
-
-<CommandTabs
-  npm="npm install @tauri-apps/cli@latest
-    npm run tauri migrate"
-  yarn="yarn upgrade @tauri-apps/cli@latest
-    yarn tauri migrate"
-  pnpm="pnpm update @tauri-apps/cli@latest
-    pnpm tauri migrate"
-  cargo='cargo install tauri-cli --version "^2.0.0" --locked
-    cargo tauri migrate'
-/>
-
-Learn more about the `migrate` command in the [Command Line Interface reference](/reference/cli/#migrate)
-
-## Breaking Changes
-
-We have had several breaking changes going from beta to release candidate. These can be either auto-migrated (see above) or manually performed.
-
-### Tauri Core Plugins
-
-We changed how Tauri built-in plugins are addressed in the capabilities [PR #10390](https://github.com/tauri-apps/tauri/pull/10390).
-
-To migrate from the latest beta version you need to prepend all core permission identifiers in your capabilities with `core:` or switch to the `core:default` permission and remove old core plugin identifiers.
-
-```json
-...
-"permissions": [
-    "path:default",
-    "event:default",
-    "window:default",
-    "app:default",
-    "image:default",
-    "resources:default",
-    "menu:default",
-    "tray:default",
-]
-...
-```
-
-```json
-...
-"permissions": [
-    "core:path:default",
-    "core:event:default",
-    "core:window:default",
-    "core:app:default",
-    "core:image:default",
-    "core:resources:default",
-    "core:menu:default",
-    "core:tray:default",
-]
-...
-```
-
-We also added a new special `core:default` permission set which will contain all default permissions of all core plugins, so you can simplify the permissions boilerplate in your capabilities config.
-
-```json
-...
-"permissions": [
-    "core:default"
-]
-...
-```
-
-### Built-In Development Server
-
-We introduced changes to the network exposure of the built-in development server [PR #10437](https://github.com/tauri-apps/tauri/pull/10437) and [PR #10456](https://github.com/tauri-apps/tauri/pull/10456).
-
-The built-in mobile development server no longer exposes network wide and tunnels traffic from the local machine directly to the device.
-
-Currently this improvement does not automatically apply when running on iOS devices (either directly or from Xcode).
-In this case we default to using the public network address for the development server,
-but there's a way around it which involves opening Xcode to automatically start a connection between your macOS machine and your connected iOS device,
-then running `tauri ios dev --force-ip-prompt` to select the iOS device's TUN address (ends with **::2**).
-
-Your development server configuration needs to adapt to this change if running on a physical iOS device is intended.
-Previously we recommended checking if the `TAURI_ENV_PLATFORM` environment variable matches either `android` or `ios`,
-but since we can now connect to localhost unless using an iOS device, you should instead check the `TAURI_DEV_HOST` environment variable.
-Here's an example of a Vite configuration migration:
-
-- 2.0.0-beta:
-
-```js
-import { defineConfig } from 'vite';
-import { svelte } from '@sveltejs/vite-plugin-svelte';
-import { internalIpV4Sync } from 'internal-ip';
-
-const mobile = !!/android|ios/.exec(process.env.TAURI_ENV_PLATFORM);
-
-export default defineConfig({
-  plugins: [svelte()],
-  clearScreen: false,
-  server: {
-    host: mobile ? '0.0.0.0' : false,
-    port: 1420,
-    strictPort: true,
-    hmr: mobile
-      ? {
-          protocol: 'ws',
-          host: internalIpV4Sync(),
-          port: 1421,
-        }
-      : undefined,
-  },
-});
-```
-
-- 2.0.0:
-
-```js
-import { defineConfig } from 'vite';
-import Unocss from 'unocss/vite';
-import { svelte } from '@sveltejs/vite-plugin-svelte';
-
-const host = process.env.TAURI_DEV_HOST;
-
-export default defineConfig({
-  plugins: [svelte()],
-  clearScreen: false,
-  server: {
-    host: host || false,
-    port: 1420,
-    strictPort: true,
-    hmr: host
-      ? {
-          protocol: 'ws',
-          host: host,
-          port: 1430,
-        }
-      : undefined,
-  },
-});
-```
-
-:::note
-The `internal-ip` NPM package is no longer required, you can directly use the TAURI_DEV_HOST value instead.
-:::
-
 # Upgrade & Migrate
 
 Learn about common scenarios and steps to upgrade from Tauri 1.0 or migrate from another framework.
@@ -2134,6 +2135,56 @@ import { LinkCard, CardGrid } from '@astrojs/starlight/components';
     description="Read more about the updates required for the 2.0 beta project to upgrade to 2.0."
   />
 </CardGrid>
+
+# Frontend Configuration
+
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+Tauri is frontend agnostic and supports most frontend frameworks out of the box. However, sometimes a framework need a bit of extra configuration to integrate with Tauri. Below is a list of frameworks with recommended configurations.
+
+If a framework is not listed then it may work with Tauri with no additional configuration needed or it could have not been documented yet. Any contributions to add a framework that may require additional configuration are welcome to help others in the Tauri community.
+
+## Configuration Checklist
+
+Conceptually Tauri acts as a static web host. You need to provide Tauri with a folder containing some mix of HTML, CSS, Javascript and possibly WASM that can be served to the webview Tauri provides.
+
+Below is a checklist of common scenarios needed to integrate a frontend with Tauri:
+
+{/* TODO: Link to core concept of SSG/SSR, etc. */}
+{/* TODO: Link to mobile development server guide */}
+{/* TODO: Concept of how to do a client-server relationship? */}
+
+- Use static site generation (SSG), single-page applications (SPA), or classic multi-page apps (MPA). Tauri does not natively support server based alternatives (such as SSR).
+- For mobile development, a development server of some kind is necessary that can host the frontend on your internal IP.
+- Use a proper client-server relationship between your app and your API's (no hybrid solutions with SSR).
+
+## JavaScript
+
+{/* TODO: Help me with the wording here lol */}
+For most projects we recommend [Vite](https://vitejs.dev/) for SPA frameworks such as React, Vue, Svelte, and Solid, but also for plain JavaScript or TypeScript projects. Most other guides listed here show how to use Meta-Frameworks as they are typically designed for SSR and therefore require special configuration.
+
+<CardGrid>
+  <LinkCard title="Next.js" href="/start/frontend/nextjs/" />
+  <LinkCard title="Nuxt" href="/start/frontend/nuxt/" />
+  <LinkCard title="Qwik" href="/start/frontend/qwik/" />
+  <LinkCard title="SvelteKit" href="/start/frontend/sveltekit/" />
+  <LinkCard title="Vite (recommended)" href="/start/frontend/vite/" />
+</CardGrid>
+
+## Rust
+
+<CardGrid>
+  <LinkCard title="Leptos" href="/start/frontend/leptos/" />
+  <LinkCard title="Trunk" href="/start/frontend/trunk/" />
+</CardGrid>
+
+<br />
+
+:::tip[Framework Not Listed?]
+
+Don't see a framework listed? It may work with Tauri without any additional configuration required. Read the [configuration checklist](/start/frontend/#configuration-checklist) for any common configurations to check for.
+
+:::
 
 # Leptos
 
@@ -2188,55 +2239,121 @@ Leptos is a Rust based web framework. You can read more about Leptos on their [o
 
 </Steps>
 
-# Frontend Configuration
+# Nuxt
 
-import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
 
-Tauri is frontend agnostic and supports most frontend frameworks out of the box. However, sometimes a framework need a bit of extra configuration to integrate with Tauri. Below is a list of frameworks with recommended configurations.
+Nuxt is a meta framework for Vue. Learn more about Nuxt at https://nuxt.com. This guide is accurate as of Nuxt 4.2.
 
-If a framework is not listed then it may work with Tauri with no additional configuration needed or it could have not been documented yet. Any contributions to add a framework that may require additional configuration are welcome to help others in the Tauri community.
+## Checklist
 
-## Configuration Checklist
+- Use SSG by setting `ssr: false`. Tauri doesn't support server based solutions.
+- Use default `../dist` as `frontendDist` in `tauri.conf.json`.
+- Compile using `nuxi build`.
+- (Optional): Disable telemetry by setting `telemetry: false` in `nuxt.config.ts`.
 
-Conceptually Tauri acts as a static web host. You need to provide Tauri with a folder containing some mix of HTML, CSS, Javascript and possibly WASM that can be served to the webview Tauri provides.
+## Example Configuration
 
-Below is a checklist of common scenarios needed to integrate a frontend with Tauri:
+<Steps>
 
-{/* TODO: Link to core concept of SSG/SSR, etc. */}
-{/* TODO: Link to mobile development server guide */}
-{/* TODO: Concept of how to do a client-server relationship? */}
+1.  ##### Update Tauri configuration
 
-- Use static site generation (SSG), single-page applications (SPA), or classic multi-page apps (MPA). Tauri does not natively support server based alternatives (such as SSR).
-- For mobile development, a development server of some kind is necessary that can host the frontend on your internal IP.
-- Use a proper client-server relationship between your app and your API's (no hybrid solutions with SSR).
+          <Tabs>
 
-## JavaScript
+    <TabItem label="npm">
 
-{/* TODO: Help me with the wording here lol */}
-For most projects we recommend [Vite](https://vitejs.dev/) for SPA frameworks such as React, Vue, Svelte, and Solid, but also for plain JavaScript or TypeScript projects. Most other guides listed here show how to use Meta-Frameworks as they are typically designed for SSR and therefore require special configuration.
+        ```json
+        // tauri.conf.json
+        {
+          "build": {
+            "beforeDevCommand": "npm run dev",
+            "beforeBuildCommand": "npm run generate",
+            "devUrl": "http://localhost:3000",
+            "frontendDist": "../dist"
+          }
+        }
+        ```
 
-<CardGrid>
-  <LinkCard title="Next.js" href="/start/frontend/nextjs/" />
-  <LinkCard title="Nuxt" href="/start/frontend/nuxt/" />
-  <LinkCard title="Qwik" href="/start/frontend/qwik/" />
-  <LinkCard title="SvelteKit" href="/start/frontend/sveltekit/" />
-  <LinkCard title="Vite (recommended)" href="/start/frontend/vite/" />
-</CardGrid>
+              </TabItem>
+              <TabItem label="yarn">
 
-## Rust
+        ```json
+        // tauri.conf.json
+        {
+          "build": {
+            "beforeDevCommand": "yarn dev",
+            "beforeBuildCommand": "yarn generate",
+            "devUrl": "http://localhost:3000",
+            "frontendDist": "../dist"
+          }
+        }
+        ```
 
-<CardGrid>
-  <LinkCard title="Leptos" href="/start/frontend/leptos/" />
-  <LinkCard title="Trunk" href="/start/frontend/trunk/" />
-</CardGrid>
+              </TabItem>
+              <TabItem label="pnpm">
 
-<br />
+        ```json
+        // tauri.conf.json
+        {
+          "build": {
+            "beforeDevCommand": "pnpm dev",
+            "beforeBuildCommand": "pnpm generate",
+            "devUrl": "http://localhost:3000",
+            "frontendDist": "../dist"
+          }
+        }
+        ```
 
-:::tip[Framework Not Listed?]
+              </TabItem>
+              <TabItem label="deno">
 
-Don't see a framework listed? It may work with Tauri without any additional configuration required. Read the [configuration checklist](/start/frontend/#configuration-checklist) for any common configurations to check for.
+        ```json
+        // tauri.conf.json
+        {
+          "build": {
+            "beforeDevCommand": "deno task dev",
+            "beforeBuildCommand": "deno task generate",
+            "devUrl": "http://localhost:3000",
+            "frontendDist": "../dist"
+          }
+        }
+        ```
 
-:::
+              </TabItem>
+
+          </Tabs>
+
+1.  ##### Update Nuxt configuration
+
+    ```ts
+    export default defineNuxtConfig({
+      compatibilityDate: '2025-05-15',
+      // (optional) Enable the Nuxt devtools
+      devtools: { enabled: true },
+      // Enable SSG
+      ssr: false,
+      // Enables the development server to be discoverable by other devices when running on iOS physical devices
+      devServer: {
+        host: '0',
+      },
+      vite: {
+        // Better support for Tauri CLI output
+        clearScreen: false,
+        // Enable environment variables
+        // Additional environment variables can be found at
+        // https://v2.tauri.app/reference/environment-variables/
+        envPrefix: ['VITE_', 'TAURI_'],
+        server: {
+          // Tauri requires a consistent port
+          strictPort: true,
+        },
+      },
+      // Avoids error [unhandledRejection] EMFILE: too many open files, watch
+      ignore: ['**/src-tauri/**'],
+    });
+    ```
+
+</Steps>
 
 # Next.js
 
@@ -2360,122 +2477,6 @@ Next.js is a meta framework for React. Learn more about Next.js at https://nextj
           "tauri": "tauri"
         }
         ```
-
-</Steps>
-
-# Nuxt
-
-import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
-
-Nuxt is a meta framework for Vue. Learn more about Nuxt at https://nuxt.com. This guide is accurate as of Nuxt 3.17.
-
-## Checklist
-
-- Use SSG by setting `ssr: false`. Tauri doesn't support server based solutions.
-- Use default `../dist` as `frontendDist` in `tauri.conf.json`.
-- Compile using `nuxi build`.
-- (Optional): Disable telemetry by setting `telemetry: false` in `nuxt.config.ts`.
-
-## Example Configuration
-
-<Steps>
-
-1.  ##### Update Tauri configuration
-
-          <Tabs>
-
-    <TabItem label="npm">
-
-        ```json
-        // tauri.conf.json
-        {
-          "build": {
-            "beforeDevCommand": "npm run dev",
-            "beforeBuildCommand": "npm run build",
-            "devUrl": "http://localhost:3000",
-            "frontendDist": "../dist"
-          }
-        }
-        ```
-
-              </TabItem>
-              <TabItem label="yarn">
-
-        ```json
-        // tauri.conf.json
-        {
-          "build": {
-            "beforeDevCommand": "yarn dev",
-            "beforeBuildCommand": "yarn build",
-            "devUrl": "http://localhost:3000",
-            "frontendDist": "../dist"
-          }
-        }
-        ```
-
-              </TabItem>
-              <TabItem label="pnpm">
-
-        ```json
-        // tauri.conf.json
-        {
-          "build": {
-            "beforeDevCommand": "pnpm dev",
-            "beforeBuildCommand": "pnpm build",
-            "devUrl": "http://localhost:3000",
-            "frontendDist": "../dist"
-          }
-        }
-        ```
-
-              </TabItem>
-              <TabItem label="deno">
-
-        ```json
-        // tauri.conf.json
-        {
-          "build": {
-            "beforeDevCommand": "deno task dev",
-            "beforeBuildCommand": "deno task generate",
-            "devUrl": "http://localhost:3000",
-            "frontendDist": "../dist"
-          }
-        }
-        ```
-
-              </TabItem>
-
-          </Tabs>
-
-1.  ##### Update Nuxt configuration
-
-    ```ts
-    export default defineNuxtConfig({
-      compatibilityDate: '2025-05-15',
-      // (optional) Enable the Nuxt devtools
-      devtools: { enabled: true },
-      // Enable SSG
-      ssr: false,
-      // Enables the development server to be discoverable by other devices when running on iOS physical devices
-      devServer: {
-        host: '0',
-      },
-      vite: {
-        // Better support for Tauri CLI output
-        clearScreen: false,
-        // Enable environment variables
-        // Additional environment variables can be found at
-        // https://v2.tauri.app/reference/environment-variables/
-        envPrefix: ['VITE_', 'TAURI_'],
-        server: {
-          // Tauri requires a consistent port
-          strictPort: true,
-        },
-      },
-      // Avoids error [unhandledRejection] EMFILE: too many open files, watch
-      ignore: ['**/src-tauri/**'],
-    });
-    ```
 
 </Steps>
 
@@ -2753,7 +2754,7 @@ SvelteKit is a meta framework for Svelte. Learn more about SvelteKit at https://
 
 import { Tabs, TabItem, Steps } from '@astrojs/starlight/components';
 
-Trunk is a WASM web application bundler for Rust. Learn more about Trunk at https://trunkrs.dev. This guide is accurate as of Trunk 0.17.5.
+Trunk is a WASM web application bundler for Rust. Learn more about Trunk at https://trunk-rs.github.io/trunk/. This guide is accurate as of Trunk 0.17.5.
 
 ## Checklist
 
@@ -3352,6 +3353,39 @@ Unlike other similar solutions, the WebView libraries are **not** included in yo
 [svelte]: https://svelte.dev/
 [vite]: https://vitejs.dev/
 
+# Brownfield Pattern
+
+_**This is the default pattern.**_
+
+This is the simplest and most straightforward pattern to use Tauri with, because it tries to be as compatible as possible with existing frontend projects. In short, it tries to require nothing
+additional to what an existing web frontend might use inside a browser.
+Not _**everything**_ that works in existing browser applications will work out-of-the-box.
+
+If you are unfamiliar with Brownfield software development in general, the [Brownfield Wikipedia article]
+provides a nice summary. For Tauri, the existing software is current browser support and behavior, instead of
+legacy systems.
+
+## Configuration
+
+Because the Brownfield pattern is the default pattern, it doesn't require a configuration option to be set. To explicitly set
+it, you can use the `app > security > pattern` object in the `tauri.conf.json` configuration file.
+
+```json
+{
+  "app": {
+    "security": {
+      "pattern": {
+        "use": "brownfield"
+      }
+    }
+  }
+}
+```
+
+_**There are no additional configuration options for the brownfield pattern.**_
+
+[brownfield wikipedia article]: https://en.wikipedia.org/wiki/Brownfield_(software_development)
+
 # Inter-Process Communication
 
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
@@ -3439,39 +3473,6 @@ Core -> Frontend: "Response"{style.animated: true}
 [asynchronous message passing]: https://en.wikipedia.org/wiki/Message_passing#Asynchronous_message_passing
 [json-rpc]: https://www.jsonrpc.org
 [foreign function interface]: https://en.wikipedia.org/wiki/Foreign_function_interface
-
-# Brownfield Pattern
-
-_**This is the default pattern.**_
-
-This is the simplest and most straightforward pattern to use Tauri with, because it tries to be as compatible as possible with existing frontend projects. In short, it tries to require nothing
-additional to what an existing web frontend might use inside a browser.
-Not _**everything**_ that works in existing browser applications will work out-of-the-box.
-
-If you are unfamiliar with Brownfield software development in general, the [Brownfield Wikipedia article]
-provides a nice summary. For Tauri, the existing software is current browser support and behavior, instead of
-legacy systems.
-
-## Configuration
-
-Because the Brownfield pattern is the default pattern, it doesn't require a configuration option to be set. To explicitly set
-it, you can use the `app > security > pattern` object in the `tauri.conf.json` configuration file.
-
-```json
-{
-  "app": {
-    "security": {
-      "pattern": {
-        "use": "brownfield"
-      }
-    }
-  }
-}
-```
-
-_**There are no additional configuration options for the brownfield pattern.**_
-
-[brownfield wikipedia article]: https://en.wikipedia.org/wiki/Brownfield_(software_development)
 
 # Isolation Pattern
 
@@ -4101,6 +4102,12 @@ timing-allow-origin: https://developer.mozilla.org, https://example.com
 ### Frameworks
 
 Some development environments require extra settings, to emulate the production environment.
+
+:::note
+In order to get headers to work for these frameworks, you may need to define them in both the framework's configuration (for development mode) and the Tauri config (for build mode). This is because: 
+- The frameworks won't include headers defined in their config files at build time.
+- Tauri can't inject headers into the framework's dev server – it can only inject headers to the final build output.
+:::
 
 #### JavaScript/TypeScript
 
@@ -5283,6 +5290,8 @@ You can use `snake_case` for the arguments with the `rename_all` attribute:
 fn my_custom_command(invoke_message: String) {}
 ```
 
+The corresponding JavaScript:
+
 ```javascript
 invoke('my_custom_command', { invoke_message: 'Hello!' });
 ```
@@ -5290,12 +5299,6 @@ invoke('my_custom_command', { invoke_message: 'Hello!' });
 :::
 
 Arguments can be of any type, as long as they implement [`serde::Deserialize`].
-
-The corresponding JavaScript:
-
-```javascript
-invoke('my_custom_command', { invoke_message: 'Hello!' });
-```
 
 ### Returning Data
 
@@ -6909,23 +6912,26 @@ So `binaries/my-sidecar` would represent `<PROJECT ROOT>/src-tauri/binaries/my-s
 To make the external binary work on each supported architecture, a binary with the same name and a `-$TARGET_TRIPLE` suffix must exist on the specified path.
 For instance, `"externalBin": ["binaries/my-sidecar"]` requires a `src-tauri/binaries/my-sidecar-x86_64-unknown-linux-gnu` executable on Linux or `src-tauri/binaries/my-sidecar-aarch64-apple-darwin` on Mac OS with Apple Silicon.
 
-You can find your **current** platform's `-$TARGET_TRIPLE` suffix by looking at the `host:` property reported by the following command:
+You can find your **current** platform's `-$TARGET_TRIPLE` suffix by running the following command:
 
 ```sh
-rustc -Vv
+rustc --print host-tuple
 ```
 
-If the `grep` and `cut` commands are available, as they should on most Unix systems, you can extract the target triple directly with the following command:
+This directly outputs your host's target triple (e.g., `x86_64-unknown-linux-gnu` or `aarch64-apple-darwin`).
 
-```shell
+:::note
+The `--print host-tuple` flag was added in Rust 1.84.0. If you're using an older version, you'll need to parse the output of `rustc -Vv` instead:
+
+```sh
+# Unix (Linux/macOS)
 rustc -Vv | grep host | cut -f2 -d' '
-```
 
-On Windows you can use PowerShell instead:
-
-```powershell
+# Windows PowerShell
 rustc -Vv | Select-String "host:" | ForEach-Object {$_.Line.split(" ")[1]}
 ```
+
+:::
 
 Here's a Node.js script to append the target triple to a binary:
 
@@ -6935,8 +6941,7 @@ import fs from 'fs';
 
 const extension = process.platform === 'win32' ? '.exe' : '';
 
-const rustInfo = execSync('rustc -vV');
-const targetTriple = /host: (\S+)/g.exec(rustInfo)[1];
+const targetTriple = execSync('rustc --print host-tuple').toString().trim();
 if (!targetTriple) {
   console.error('Failed to determine platform target triple');
 }
@@ -6961,9 +6966,10 @@ On the Rust side, import the `tauri_plugin_shell::ShellExt` trait and call the `
 ```rust
 use tauri_plugin_shell::ShellExt;
 use tauri_plugin_shell::process::CommandEvent;
+use tauri::Emitter;
 
 let sidecar_command = app.shell().sidecar("my-sidecar").unwrap();
-let (mut rx, mut _child) = sidecar_command
+let (mut rx, mut child) = sidecar_command
   .spawn()
   .expect("Failed to spawn sidecar");
 
@@ -6972,7 +6978,7 @@ tauri::async_runtime::spawn(async move {
   while let Some(event) = rx.recv().await {
     if let CommandEvent::Stdout(line_bytes) = event {
       let line = String::from_utf8_lossy(&line_bytes);
-      window
+      app
         .emit("message", Some(format!("'{}'", line)))
         .expect("failed to emit event");
       // write to stdin
@@ -7361,560 +7367,6 @@ And for the plugins, we might introduce this type of changes in patch releases, 
 [tauri]: https://crates.io/crates/tauri/versions
 [tauri-build]: https://crates.io/crates/tauri-build/versions
 [cargo-edit]: https://github.com/killercup/cargo-edit
-
-# CrabNebula DevTools
-
-import { Image } from 'astro:assets';
-import devToolsPrint from '@assets/develop/Debug/crabnebula-devtools.png';
-
-[CrabNebula](https://crabnebula.dev/) provides a free [DevTools](https://crabnebula.dev/devtools/) application for Tauri as part of its partnership with the Tauri project. This application allows you to instrument your Tauri app by capturing its embedded assets, Tauri configuration file, logs and spans and providing a web frontend to seamlessly visualize data in real time.
-
-With the CrabNebula DevTools you can inspect your app's log events (including logs from dependencies), track down the performance of your command calls and overall Tauri API usage, with a special interface for Tauri events and commands, including payload, responses and inner logs and execution spans.
-
-To enable the CrabNebula DevTools, install the devtools crate:
-
-```sh frame=none
-cargo add tauri-plugin-devtools@2.0.0
-```
-
-And initialize the plugin as soon as possible in your main function:
-
-```rust
-fn main() {
-    // This should be called as early in the execution of the app as possible
-    #[cfg(debug_assertions)] // only enable instrumentation in development builds
-    let devtools = tauri_plugin_devtools::init();
-
-    let mut builder = tauri::Builder::default();
-
-    #[cfg(debug_assertions)]
-    {
-        builder = builder.plugin(devtools);
-    }
-
-    builder
-        .run(tauri::generate_context!())
-        .expect("error while running tauri application");
-}
-```
-
-And then run your app as usual, if everything is set up correctly devtools will print the following message:
-
-<Image src={devToolsPrint} alt="DevTools message on terminal" />
-
-:::note
-In this case we only initialize the devtools plugin for debug applications, which is recommended.
-:::
-
-For more information, see the [CrabNebula DevTools](https://docs.crabnebula.dev/devtools/get-started/) documentation.
-
-# Debug
-
-import CommandTabs from '@components/CommandTabs.astro';
-
-With all the moving pieces in Tauri, you may run into a problem that requires debugging. There are many locations where error details are printed, and Tauri includes some tools to make the debugging process more straightforward.
-
-## Development Only Code
-
-One of the most useful tools in your toolkit for debugging is the ability to add debugging statements in your code. However, you generally don't want these to end up in production, which is where the ability to check whether you're running in development mode or not comes in handy.
-
-### In Rust
-
-```rs frame=none
-fn main() {
-  // Whether the current instance was started with `tauri dev` or not.
-  #[cfg(dev)]
-  {
-    // `tauri dev` only code
-  }
-  if cfg!(dev) {
-    // `tauri dev` only code
-  } else {
-    // `tauri build` only code
-  }
-  let is_dev: bool = tauri::is_dev();
-
-  // Whether debug assertions are enabled or not. This is true for `tauri dev` and `tauri build --debug`.
-  #[cfg(debug_assertions)]
-  {
-    // Debug only code
-  }
-  if cfg!(debug_assertions) {
-    // Debug only code
-  } else {
-    // Production only code
-  }
-}
-```
-
-{/* TODO: js version */}
-
-## Rust Console
-
-The first place to look for errors is in the Rust Console. This is in the terminal where you ran, e.g., `tauri dev`. You can use the following code to print something to that console from within a Rust file:
-
-```rust frame=none
-println!("Message from Rust: {}", msg);
-```
-
-Sometimes you may have an error in your Rust code, and the Rust compiler can give you lots of information. If, for example, `tauri dev` crashes, you can rerun it like this on Linux and macOS:
-
-```shell frame=none
-RUST_BACKTRACE=1 tauri dev
-```
-
-or like this on Windows (PowerShell):
-
-```powershell frame=none
-$env:RUST_BACKTRACE=1
-tauri dev
-```
-
-This command gives you a granular stack trace. Generally speaking, the Rust compiler helps you by
-giving you detailed information about the issue, such as:
-
-```bash frame=none
-error[E0425]: cannot find value `sun` in this scope
-  --> src/main.rs:11:5
-   |
-11 |     sun += i.to_string().parse::<u64>().unwrap();
-   |     ^^^ help: a local variable with a similar name exists: `sum`
-
-error: aborting due to previous error
-
-For more information about this error, try `rustc --explain E0425`.
-```
-
-## WebView Console
-
-Right-click in the WebView, and choose `Inspect Element`. This opens up a web-inspector similar to the Chrome or Firefox dev tools you are used to.
-You can also use the `Ctrl + Shift + i` shortcut on Linux and Windows, and `Command + Option + i` on macOS to open the inspector.
-
-The inspector is platform-specific, rendering the webkit2gtk WebInspector on Linux, Safari's inspector on macOS and the Microsoft Edge DevTools on Windows.
-
-### Opening Devtools Programmatically
-
-You can control the inspector window visibility by using the [`WebviewWindow::open_devtools`] and [`WebviewWindow::close_devtools`] functions:
-
-```rust
-tauri::Builder::default()
-  .setup(|app| {
-    #[cfg(debug_assertions)] // only include this code on debug builds
-    {
-      let window = app.get_webview_window("main").unwrap();
-      window.open_devtools();
-      window.close_devtools();
-    }
-    Ok(())
-  });
-```
-
-### Using the Inspector in Production
-
-By default, the inspector is only enabled in development and debug builds unless you enable it with a Cargo feature.
-
-#### Create a Debug Build
-
-To create a debug build, run the `tauri build --debug` command.
-
-<CommandTabs
-  npm="npm run tauri build -- --debug"
-  yarn="yarn tauri build --debug"
-  pnpm="pnpm tauri build --debug"
-  deno="deno task tauri build --debug"
-  bun="bun tauri build --debug"
-  cargo="cargo tauri build --debug"
-/>
-
-Like the normal build and dev processes, building takes some time the first time you run this command but is significantly faster on subsequent runs.
-The final bundled app has the development console enabled and is placed in `src-tauri/target/debug/bundle`.
-
-You can also run a built app from the terminal, giving you the Rust compiler notes (in case of errors) or your `println` messages. Browse to the file `src-tauri/target/(release|debug)/[app name]` and run it in directly in your console or double-click the executable itself in the filesystem (note: the console closes on errors with this method).
-
-##### Enable Devtools Feature
-
-:::danger
-
-The devtools API is private on macOS. Using private APIs on macOS prevents your application from being accepted to the App Store.
-
-:::
-
-To enable the devtools in **production builds**, you must enable the `devtools` Cargo feature in the `src-tauri/Cargo.toml` file:
-
-```toml
-[dependencies]
-tauri = { version = "...", features = ["...", "devtools"] }
-```
-
-## Debugging the Core Process
-
-The Core process is powered by Rust so you can use GDB or LLDB to debug it. You can follow the [Debugging in VS Code] guide to learn how to use the LLDB VS Code Extension to debug the Core Process of Tauri applications.
-
-[debugging in vs code]: /develop/debug/vscode/
-[`WebviewWindow::open_devtools`]: https://docs.rs/tauri/2.0.0/tauri/webview/struct.WebviewWindow.html#method.open_devtools
-[`WebviewWindow::close_devtools`]: https://docs.rs/tauri/2.0.0/tauri/webview/struct.WebviewWindow.html#method.close_devtools
-
-# Debug in Neovim
-
-There are many different plugins that can be used to debug Rust code in Neovim. This guide will show you how to set up `nvim-dap` and some additional plugins to debug Tauri application.
-
-### Prerequisites
-
-`nvim-dap` extension requires `codelldb` binary. Download the version for your system from https://github.com/vadimcn/codelldb/releases and unzip it. We will point to it later in the `nvim-dap` configuration.
-
-### Configuring nvim-dap
-
-Install [`nvim-dap`](https://github.com/mfussenegger/nvim-dap) and [`nvim-dap-ui`](https://github.com/rcarriga/nvim-dap-ui) plugins. Follow the instructions provided on their github pages or simply use your favourite plugin manager.
-Note that `nvim-dap-ui` requires `nvim-nio` plugin.
-
-Next, setup the plugin in your Neovim configuration:
-
-```lua title="init.lua"
-local dap = require("dap")
-
-dap.adapters.codelldb = {
-  type = 'server',
-  port = "${port}",
-  executable = {
-    -- Change this to your path!
-    command = '/opt/codelldb/adapter/codelldb',
-    args = {"--port", "${port}"},
-  }
-}
-
-dap.configurations.rust= {
-  {
-    name = "Launch file",
-    type = "codelldb",
-    request = "launch",
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
-    end,
-    cwd = '${workspaceFolder}',
-    stopOnEntry = false
-  },
-}
-```
-
-This setup will ask you to point to the Tauri App binary you want to debug each time you lanuch the debugger.
-
-Optionally, you can setup `nvim-dap-ui` plugin to toggle debugger view automatically each time debugging session starts and stops:
-
-```lua title="init.lua"
-local dapui = require("dapui")
-dapui.setup()
-
-dap.listeners.before.attach.dapui_config = function()
-  dapui.open()
-end
-dap.listeners.before.launch.dapui_config = function()
-  dapui.open()
-end
-dap.listeners.before.event_terminated.dapui_config = function()
-  dapui.close()
-end
-dap.listeners.before.event_exited.dapui_config = function()
-  dapui.close()
-end
-
-```
-
-Lastly, you can change the default way the breakpoints are displayed in the editor:
-
-```lua title="init.lua"
-vim.fn.sign_define('DapBreakpoint',{ text ='🟥', texthl ='', linehl ='', numhl =''})
-vim.fn.sign_define('DapStopped',{ text ='▶️', texthl ='', linehl ='', numhl =''})
-```
-
-### Starting the dev server
-
-Since we're not using Tauri CLI to launch the app the development server will not start automatically. To control the state of development server from Neovim you can use the [overseer](https://github.com/stevearc/overseer.nvim/tree/master) plugin.
-
-Best way to control tasks running in background is to use [VS Code style task](https://github.com/stevearc/overseer.nvim/blob/master/doc/guides.md#vs-code-tasks) configuration. To do this create a `.vscode/tasks.json` file in the projects directory.
-
-You can find example task configuration for project using `trunk` below.
-
-```json title=".vscode/tasks.json"
-{
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "type": "process",
-      "label": "dev server",
-      "command": "trunk",
-      "args": ["serve"],
-      "isBackground": true,
-      "presentation": {
-        "revealProblems": "onProblem"
-      },
-      "problemMatcher": {
-        "pattern": {
-          "regexp": "^error:.*",
-          "file": 1,
-          "line": 2
-        },
-        "background": {
-          "activeOnStart": false,
-          "beginsPattern": ".*Rebuilding.*",
-          "endsPattern": ".*server listening at:.*"
-        }
-      }
-    }
-  ]
-}
-```
-
-### Example key bindings
-
-Below you can find example key bindings to start and control debugging sessions.
-
-```lua title="init.lua"
-vim.keymap.set('n', '<F5>', function() dap.continue() end)
-vim.keymap.set('n', '<F6>', function() dap.disconnect({ terminateDebuggee = true }) end)
-vim.keymap.set('n', '<F10>', function() dap.step_over() end)
-vim.keymap.set('n', '<F11>', function() dap.step_into() end)
-vim.keymap.set('n', '<F12>', function() dap.step_out() end)
-vim.keymap.set('n', '<Leader>b', function() dap.toggle_breakpoint() end)
-vim.keymap.set('n', '<Leader>o', function() overseer.toggle() end)
-vim.keymap.set('n', '<Leader>R', function() overseer.run_template() end)
-```
-
-# Debug in JetBrains IDEs
-
-{/* TODO: Add support to light/dark mode images */}
-
-In this guide, we'll be setting up JetBrains RustRover for debugging the [Core Process of your Tauri app](/concept/process-model/#the-core-process). It also mostly applies to IntelliJ and CLion.
-
-## Setting up a Cargo project
-
-Depending on which frontend stack is used in a project, the project directory may or may not be a Cargo project. By default, Tauri places the Rust project in a subdirectory called `src-tauri`. It creates a Cargo project in the root directory only if Rust is used for frontend development as well.
-
-If there's no `Cargo.toml` file at the top level, you need to attach the project manually. Open the Cargo tool window (in the main menu, go to **View | Tool Windows | Cargo**), click **+** (**Attach Cargo Project**) on the toolbar, and select the `src-tauri/Cargo.toml` file.
-
-Alternatively, you could create a top-level Cargo workspace manually by adding the following file to the project's root directory:
-
-```toml title=Cargo.toml
-[workspace]
-members = ["src-tauri"]
-```
-
-Before you proceed, make sure that your project is fully loaded. If the Cargo tool window shows all the modules and targets of the workspace, you're good to go.
-
-## Setting up Run Configurations
-
-You will need to set up two separate Run/Debug configurations:
-
-- one for launching the Tauri app in debugging mode,
-- another one for running your frontend development server of choice.
-
-### Tauri App
-
-1. In the main menu, go to **Run | Edit Configurations**.
-2. In the **Run/Debug Configurations** dialog:
-
-- To create a new configuration, click **+** on the toolbar and select **Cargo**.
-
-![Add Run/Debug Configuration](@assets/develop/Debug/rustrover/add-cargo-config-light.png)
-{/* ![Add Run/Debug Configuration](@assets/develop/Debug/rustrover/add-cargo-config-dark.png#gh-dark-mode-only) */}
-
-With that created, we need to configure RustRover, so it instructs Cargo to build our app without any default features. This will tell Tauri to use your development server instead of reading assets from the disk. Normally this flag is passed by the Tauri CLI, but since we're completely sidestepping that here, we need to pass the flag manually.
-
-![Add `--no-default-features` flag](@assets/develop/Debug/rustrover/set-no-default-features-light.png)
-{/* ![Add `--no-default-features` flag](@assets/develop/Debug/rustrover/set-no-default-features-dark.png#gh-dark-mode-only) */}
-
-Now we can optionally rename the Run/Debug Configuration to something more memorable, in this example we called it "Run Tauri App", but you can name it whatever you want.
-
-![Rename Configuration](@assets/develop/Debug/rustrover/rename-configuration-light.png)
-{/* ![Rename Configuration](@assets/develop/Debug/rustrover/rename-configuration-dark.png#gh-dark-mode-only) */}
-
-### Development Server
-
-The above configuration will use Cargo directly to build the Rust application and attach the debugger to it. This means we completely sidestep the Tauri CLI, so features like the `beforeDevCommand` and `beforeBuildCommand` will **not** be executed. We need to take care of that by running the development server manually.
-
-To create the corresponding Run configuration, you need to check the actual development server in use. Look for the `src-tauri/tauri.conf.json` file and find the following line:
-
-```json
-    "beforeDevCommand": "pnpm dev"
-```
-
-For `npm`, `pnpm`, or `yarn`, you could use the **npm** Run Configuration, for example:
-
-![NPM Configuration](@assets/develop/Debug/rustrover/npm-configuration-light.png)
-{/* ![NPM Configuration](@assets/develop/Debug/rustrover/npm-configuration-dark.png#gh-dark-mode-only) */}
-
-Make sure you have the correct values in the **Command**, **Scripts**, and **Package Manager** fields.
-
-If your development server is `trunk` for Rust-based WebAssembly frontend frameworks, you could use the generic **Shell Script** Run Configuration:
-
-![Trunk Serve Configuration](@assets/develop/Debug/rustrover/trunk-configuration-light.png)
-{/* ![Trunk Serve Configuration](@assets/develop/Debug/rustrover/trunk-configuration-dark.png#gh-dark-mode-only) */}
-
-## Launching a Debugging Session
-
-To launch a debugging session, you first need to run your development server, and then start debugging the Tauri App by clicking the **Debug** button next to the Run Configurations Switcher. RustRover will automatically recognize breakpoints placed in any Rust file in your project and stop on the first one hit.
-
-![Debug Session](@assets/develop/Debug/rustrover/debug-session-light.png)
-{/* ![Debug Session](@assets/develop/Debug/rustrover/debug-session-dark.png#gh-dark-mode-only) */}
-
-From this point, you can explore the values of your variables, step further into the code, and check what's going at runtime in detail.
-
-[core process of your tauri app]: ../../../../concept/process-model#the-core-process
-
-# Debug in VS Code
-
-This guide will walk you through setting up VS Code for debugging the [Core Process of your Tauri app](/concept/process-model/#the-core-process).
-
-## All platforms with vscode-lldb extension
-
-### Prerequisites
-
-Install the [`vscode-lldb`] extension.
-
-[`vscode-lldb`]: https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb
-
-### Configure launch.json
-
-Create a `.vscode/launch.json` file and paste the below JSON contents into it:
-
-```json title=".vscode/launch.json"
-{
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "lldb",
-      "request": "launch",
-      "name": "Tauri Development Debug",
-      "cargo": {
-        "args": [
-          "build",
-          "--manifest-path=./src-tauri/Cargo.toml",
-          "--no-default-features"
-        ]
-      },
-      // task for the `beforeDevCommand` if used, must be configured in `.vscode/tasks.json`
-      "preLaunchTask": "ui:dev"
-    },
-    {
-      "type": "lldb",
-      "request": "launch",
-      "name": "Tauri Production Debug",
-      "cargo": {
-        "args": ["build", "--release", "--manifest-path=./src-tauri/Cargo.toml"]
-      },
-      // task for the `beforeBuildCommand` if used, must be configured in `.vscode/tasks.json`
-      "preLaunchTask": "ui:build"
-    }
-  ]
-}
-```
-
-This uses `cargo` directly to build the Rust application and load it in both development and production modes.
-
-Note that it does not use the Tauri CLI, so exclusive CLI features are not executed. The `beforeDevCommand` and `beforeBuildCommand` scripts must be executed beforehand or configured as a task in the `preLaunchTask` field. Below is an example `.vscode/tasks.json` file that has two tasks, one for a `beforeDevCommand` that spawns a development server and one for `beforeBuildCommand`:
-
-```json title=".vscode/tasks.json"
-{
-  // See https://go.microsoft.com/fwlink/?LinkId=733558
-  // for the documentation about the tasks.json format
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "ui:dev",
-      "type": "shell",
-      // `dev` keeps running in the background
-      // ideally you should also configure a `problemMatcher`
-      // see https://code.visualstudio.com/docs/editor/tasks#_can-a-background-task-be-used-as-a-prelaunchtask-in-launchjson
-      "isBackground": true,
-      // change this to your `beforeDevCommand`:
-      "command": "yarn",
-      "args": ["dev"]
-    },
-    {
-      "label": "ui:build",
-      "type": "shell",
-      // change this to your `beforeBuildCommand`:
-      "command": "yarn",
-      "args": ["build"]
-    }
-  ]
-}
-```
-
-Now you can set breakpoints in `src-tauri/src/main.rs` or any other Rust file and start debugging by pressing `F5`.
-
-## With Visual Studio Windows Debugger on Windows
-
-Visual Studio Windows Debugger is a Windows-only debugger that is generally faster than [`vscode-lldb`] with better support for some Rust features such as enums.
-
-### Prerequisites
-
-Install the [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) extension and follow https://code.visualstudio.com/docs/cpp/config-msvc#_prerequisites to install Visual Studio Windows Debugger.
-
-### Configure launch.json and tasks.json
-
-```json title=".vscode/launch.json"
-{
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Launch App Debug",
-      "type": "cppvsdbg",
-      "request": "launch",
-      // change the exe name to your actual exe name
-      // (to debug release builds, change `target/debug` to `release/debug`)
-      "program": "${workspaceRoot}/src-tauri/target/debug/your-app-name-here.exe",
-      "cwd": "${workspaceRoot}",
-      "preLaunchTask": "ui:dev"
-    }
-  ]
-}
-```
-
-Note that it does not use the Tauri CLI, so exclusive CLI features are not executed. The `tasks.json` is the same as with `lldb`, except you need to add a config group and target your `preLaunchTask` from `launch.json` to it if you want it to always compile before launching.
-
-Here is an example of running a dev server (equivalent of `beforeDevCommand`) and the compilation (`cargo build`) as a group, to use it, change the `preLaunchTask` config in `launch.json` to `dev` (or anything you named your group).
-
-```json title=".vscode/tasks.json"
-{
-  // See https://go.microsoft.com/fwlink/?LinkId=733558
-  // for the documentation about the tasks.json format
-  "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "build:debug",
-      "type": "cargo",
-      "command": "build",
-      "options": {
-        "cwd": "${workspaceRoot}/src-tauri"
-      }
-    },
-    {
-      "label": "ui:dev",
-      "type": "shell",
-      // `dev` keeps running in the background
-      // ideally you should also configure a `problemMatcher`
-      // see https://code.visualstudio.com/docs/editor/tasks#_can-a-background-task-be-used-as-a-prelaunchtask-in-launchjson
-      "isBackground": true,
-      // change this to your `beforeDevCommand`:
-      "command": "yarn",
-      "args": ["dev"]
-    },
-    {
-      "label": "dev",
-      "dependsOn": ["build:debug", "ui:dev"],
-      "group": {
-        "kind": "build"
-      }
-    }
-  ]
-}
-```
 
 # Mobile Plugin Development
 
@@ -9230,6 +8682,560 @@ test('invoke', async () => {
 [vitest]: https://vitest.dev
 [Event System]: /develop/calling-frontend/#event-system
 
+# CrabNebula DevTools
+
+import { Image } from 'astro:assets';
+import devToolsPrint from '@assets/develop/Debug/crabnebula-devtools.png';
+
+[CrabNebula](https://crabnebula.dev/) provides a free [DevTools](https://crabnebula.dev/devtools/) application for Tauri as part of its partnership with the Tauri project. This application allows you to instrument your Tauri app by capturing its embedded assets, Tauri configuration file, logs and spans and providing a web frontend to seamlessly visualize data in real time.
+
+With the CrabNebula DevTools you can inspect your app's log events (including logs from dependencies), track down the performance of your command calls and overall Tauri API usage, with a special interface for Tauri events and commands, including payload, responses and inner logs and execution spans.
+
+To enable the CrabNebula DevTools, install the devtools crate:
+
+```sh frame=none
+cargo add tauri-plugin-devtools@2.0.0
+```
+
+And initialize the plugin as soon as possible in your main function:
+
+```rust
+fn main() {
+    // This should be called as early in the execution of the app as possible
+    #[cfg(debug_assertions)] // only enable instrumentation in development builds
+    let devtools = tauri_plugin_devtools::init();
+
+    let mut builder = tauri::Builder::default();
+
+    #[cfg(debug_assertions)]
+    {
+        builder = builder.plugin(devtools);
+    }
+
+    builder
+        .run(tauri::generate_context!())
+        .expect("error while running tauri application");
+}
+```
+
+And then run your app as usual, if everything is set up correctly devtools will print the following message:
+
+<Image src={devToolsPrint} alt="DevTools message on terminal" />
+
+:::note
+In this case we only initialize the devtools plugin for debug applications, which is recommended.
+:::
+
+For more information, see the [CrabNebula DevTools](https://docs.crabnebula.dev/devtools/get-started/) documentation.
+
+# Debug
+
+import CommandTabs from '@components/CommandTabs.astro';
+
+With all the moving pieces in Tauri, you may run into a problem that requires debugging. There are many locations where error details are printed, and Tauri includes some tools to make the debugging process more straightforward.
+
+## Development Only Code
+
+One of the most useful tools in your toolkit for debugging is the ability to add debugging statements in your code. However, you generally don't want these to end up in production, which is where the ability to check whether you're running in development mode or not comes in handy.
+
+### In Rust
+
+```rs frame=none
+fn main() {
+  // Whether the current instance was started with `tauri dev` or not.
+  #[cfg(dev)]
+  {
+    // `tauri dev` only code
+  }
+  if cfg!(dev) {
+    // `tauri dev` only code
+  } else {
+    // `tauri build` only code
+  }
+  let is_dev: bool = tauri::is_dev();
+
+  // Whether debug assertions are enabled or not. This is true for `tauri dev` and `tauri build --debug`.
+  #[cfg(debug_assertions)]
+  {
+    // Debug only code
+  }
+  if cfg!(debug_assertions) {
+    // Debug only code
+  } else {
+    // Production only code
+  }
+}
+```
+
+{/* TODO: js version */}
+
+## Rust Console
+
+The first place to look for errors is in the Rust Console. This is in the terminal where you ran, e.g., `tauri dev`. You can use the following code to print something to that console from within a Rust file:
+
+```rust frame=none
+println!("Message from Rust: {}", msg);
+```
+
+Sometimes you may have an error in your Rust code, and the Rust compiler can give you lots of information. If, for example, `tauri dev` crashes, you can rerun it like this on Linux and macOS:
+
+```shell frame=none
+RUST_BACKTRACE=1 tauri dev
+```
+
+or like this on Windows (PowerShell):
+
+```powershell frame=none
+$env:RUST_BACKTRACE=1
+tauri dev
+```
+
+This command gives you a granular stack trace. Generally speaking, the Rust compiler helps you by
+giving you detailed information about the issue, such as:
+
+```bash frame=none
+error[E0425]: cannot find value `sun` in this scope
+  --> src/main.rs:11:5
+   |
+11 |     sun += i.to_string().parse::<u64>().unwrap();
+   |     ^^^ help: a local variable with a similar name exists: `sum`
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0425`.
+```
+
+## WebView Console
+
+Right-click in the WebView, and choose `Inspect Element`. This opens up a web-inspector similar to the Chrome or Firefox dev tools you are used to.
+You can also use the `Ctrl + Shift + i` shortcut on Linux and Windows, and `Command + Option + i` on macOS to open the inspector.
+
+The inspector is platform-specific, rendering the webkit2gtk WebInspector on Linux, Safari's inspector on macOS and the Microsoft Edge DevTools on Windows.
+
+### Opening Devtools Programmatically
+
+You can control the inspector window visibility by using the [`WebviewWindow::open_devtools`] and [`WebviewWindow::close_devtools`] functions:
+
+```rust
+tauri::Builder::default()
+  .setup(|app| {
+    #[cfg(debug_assertions)] // only include this code on debug builds
+    {
+      let window = app.get_webview_window("main").unwrap();
+      window.open_devtools();
+      window.close_devtools();
+    }
+    Ok(())
+  });
+```
+
+### Using the Inspector in Production
+
+By default, the inspector is only enabled in development and debug builds unless you enable it with a Cargo feature.
+
+#### Create a Debug Build
+
+To create a debug build, run the `tauri build --debug` command.
+
+<CommandTabs
+  npm="npm run tauri build -- --debug"
+  yarn="yarn tauri build --debug"
+  pnpm="pnpm tauri build --debug"
+  deno="deno task tauri build --debug"
+  bun="bun tauri build --debug"
+  cargo="cargo tauri build --debug"
+/>
+
+Like the normal build and dev processes, building takes some time the first time you run this command but is significantly faster on subsequent runs.
+The final bundled app has the development console enabled and is placed in `src-tauri/target/debug/bundle`.
+
+You can also run a built app from the terminal, giving you the Rust compiler notes (in case of errors) or your `println` messages. Browse to the file `src-tauri/target/(release|debug)/[app name]` and run it in directly in your console or double-click the executable itself in the filesystem (note: the console closes on errors with this method).
+
+##### Enable Devtools Feature
+
+:::danger
+
+The devtools API is private on macOS. Using private APIs on macOS prevents your application from being accepted to the App Store.
+
+:::
+
+To enable the devtools in **production builds**, you must enable the `devtools` Cargo feature in the `src-tauri/Cargo.toml` file:
+
+```toml
+[dependencies]
+tauri = { version = "...", features = ["...", "devtools"] }
+```
+
+## Debugging the Core Process
+
+The Core process is powered by Rust so you can use GDB or LLDB to debug it. You can follow the [Debugging in VS Code] guide to learn how to use the LLDB VS Code Extension to debug the Core Process of Tauri applications.
+
+[debugging in vs code]: /develop/debug/vscode/
+[`WebviewWindow::open_devtools`]: https://docs.rs/tauri/2.0.0/tauri/webview/struct.WebviewWindow.html#method.open_devtools
+[`WebviewWindow::close_devtools`]: https://docs.rs/tauri/2.0.0/tauri/webview/struct.WebviewWindow.html#method.close_devtools
+
+# Debug in Neovim
+
+There are many different plugins that can be used to debug Rust code in Neovim. This guide will show you how to set up `nvim-dap` and some additional plugins to debug Tauri application.
+
+### Prerequisites
+
+`nvim-dap` extension requires `codelldb` binary. Download the version for your system from https://github.com/vadimcn/codelldb/releases and unzip it. We will point to it later in the `nvim-dap` configuration.
+
+### Configuring nvim-dap
+
+Install [`nvim-dap`](https://github.com/mfussenegger/nvim-dap) and [`nvim-dap-ui`](https://github.com/rcarriga/nvim-dap-ui) plugins. Follow the instructions provided on their github pages or simply use your favourite plugin manager.
+Note that `nvim-dap-ui` requires `nvim-nio` plugin.
+
+Next, setup the plugin in your Neovim configuration:
+
+```lua title="init.lua"
+local dap = require("dap")
+
+dap.adapters.codelldb = {
+  type = 'server',
+  port = "${port}",
+  executable = {
+    -- Change this to your path!
+    command = '/opt/codelldb/adapter/codelldb',
+    args = {"--port", "${port}"},
+  }
+}
+
+dap.configurations.rust= {
+  {
+    name = "Launch file",
+    type = "codelldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false
+  },
+}
+```
+
+This setup will ask you to point to the Tauri App binary you want to debug each time you lanuch the debugger.
+
+Optionally, you can setup `nvim-dap-ui` plugin to toggle debugger view automatically each time debugging session starts and stops:
+
+```lua title="init.lua"
+local dapui = require("dapui")
+dapui.setup()
+
+dap.listeners.before.attach.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+  dapui.close()
+end
+
+```
+
+Lastly, you can change the default way the breakpoints are displayed in the editor:
+
+```lua title="init.lua"
+vim.fn.sign_define('DapBreakpoint',{ text ='🟥', texthl ='', linehl ='', numhl =''})
+vim.fn.sign_define('DapStopped',{ text ='▶️', texthl ='', linehl ='', numhl =''})
+```
+
+### Starting the dev server
+
+Since we're not using Tauri CLI to launch the app the development server will not start automatically. To control the state of development server from Neovim you can use the [overseer](https://github.com/stevearc/overseer.nvim/tree/master) plugin.
+
+Best way to control tasks running in background is to use [VS Code style task](https://github.com/stevearc/overseer.nvim/blob/master/doc/guides.md#vs-code-tasks) configuration. To do this create a `.vscode/tasks.json` file in the projects directory.
+
+You can find example task configuration for project using `trunk` below.
+
+```json title=".vscode/tasks.json"
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "process",
+      "label": "dev server",
+      "command": "trunk",
+      "args": ["serve"],
+      "isBackground": true,
+      "presentation": {
+        "revealProblems": "onProblem"
+      },
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^error:.*",
+          "file": 1,
+          "line": 2
+        },
+        "background": {
+          "activeOnStart": false,
+          "beginsPattern": ".*Rebuilding.*",
+          "endsPattern": ".*server listening at:.*"
+        }
+      }
+    }
+  ]
+}
+```
+
+### Example key bindings
+
+Below you can find example key bindings to start and control debugging sessions.
+
+```lua title="init.lua"
+vim.keymap.set('n', '<F5>', function() dap.continue() end)
+vim.keymap.set('n', '<F6>', function() dap.disconnect({ terminateDebuggee = true }) end)
+vim.keymap.set('n', '<F10>', function() dap.step_over() end)
+vim.keymap.set('n', '<F11>', function() dap.step_into() end)
+vim.keymap.set('n', '<F12>', function() dap.step_out() end)
+vim.keymap.set('n', '<Leader>b', function() dap.toggle_breakpoint() end)
+vim.keymap.set('n', '<Leader>o', function() overseer.toggle() end)
+vim.keymap.set('n', '<Leader>R', function() overseer.run_template() end)
+```
+
+# Debug in JetBrains IDEs
+
+{/* TODO: Add support to light/dark mode images */}
+
+In this guide, we'll be setting up JetBrains RustRover for debugging the [Core Process of your Tauri app](/concept/process-model/#the-core-process). It also mostly applies to IntelliJ and CLion.
+
+## Setting up a Cargo project
+
+Depending on which frontend stack is used in a project, the project directory may or may not be a Cargo project. By default, Tauri places the Rust project in a subdirectory called `src-tauri`. It creates a Cargo project in the root directory only if Rust is used for frontend development as well.
+
+If there's no `Cargo.toml` file at the top level, you need to attach the project manually. Open the Cargo tool window (in the main menu, go to **View | Tool Windows | Cargo**), click **+** (**Attach Cargo Project**) on the toolbar, and select the `src-tauri/Cargo.toml` file.
+
+Alternatively, you could create a top-level Cargo workspace manually by adding the following file to the project's root directory:
+
+```toml title=Cargo.toml
+[workspace]
+members = ["src-tauri"]
+```
+
+Before you proceed, make sure that your project is fully loaded. If the Cargo tool window shows all the modules and targets of the workspace, you're good to go.
+
+## Setting up Run Configurations
+
+You will need to set up two separate Run/Debug configurations:
+
+- one for launching the Tauri app in debugging mode,
+- another one for running your frontend development server of choice.
+
+### Tauri App
+
+1. In the main menu, go to **Run | Edit Configurations**.
+2. In the **Run/Debug Configurations** dialog:
+
+- To create a new configuration, click **+** on the toolbar and select **Cargo**.
+
+![Add Run/Debug Configuration](@assets/develop/Debug/rustrover/add-cargo-config-light.png)
+{/* ![Add Run/Debug Configuration](@assets/develop/Debug/rustrover/add-cargo-config-dark.png#gh-dark-mode-only) */}
+
+With that created, we need to configure RustRover, so it instructs Cargo to build our app without any default features. This will tell Tauri to use your development server instead of reading assets from the disk. Normally this flag is passed by the Tauri CLI, but since we're completely sidestepping that here, we need to pass the flag manually.
+
+![Add `--no-default-features` flag](@assets/develop/Debug/rustrover/set-no-default-features-light.png)
+{/* ![Add `--no-default-features` flag](@assets/develop/Debug/rustrover/set-no-default-features-dark.png#gh-dark-mode-only) */}
+
+Now we can optionally rename the Run/Debug Configuration to something more memorable, in this example we called it "Run Tauri App", but you can name it whatever you want.
+
+![Rename Configuration](@assets/develop/Debug/rustrover/rename-configuration-light.png)
+{/* ![Rename Configuration](@assets/develop/Debug/rustrover/rename-configuration-dark.png#gh-dark-mode-only) */}
+
+### Development Server
+
+The above configuration will use Cargo directly to build the Rust application and attach the debugger to it. This means we completely sidestep the Tauri CLI, so features like the `beforeDevCommand` and `beforeBuildCommand` will **not** be executed. We need to take care of that by running the development server manually.
+
+To create the corresponding Run configuration, you need to check the actual development server in use. Look for the `src-tauri/tauri.conf.json` file and find the following line:
+
+```json
+    "beforeDevCommand": "pnpm dev"
+```
+
+For `npm`, `pnpm`, or `yarn`, you could use the **npm** Run Configuration, for example:
+
+![NPM Configuration](@assets/develop/Debug/rustrover/npm-configuration-light.png)
+{/* ![NPM Configuration](@assets/develop/Debug/rustrover/npm-configuration-dark.png#gh-dark-mode-only) */}
+
+Make sure you have the correct values in the **Command**, **Scripts**, and **Package Manager** fields.
+
+If your development server is `trunk` for Rust-based WebAssembly frontend frameworks, you could use the generic **Shell Script** Run Configuration:
+
+![Trunk Serve Configuration](@assets/develop/Debug/rustrover/trunk-configuration-light.png)
+{/* ![Trunk Serve Configuration](@assets/develop/Debug/rustrover/trunk-configuration-dark.png#gh-dark-mode-only) */}
+
+## Launching a Debugging Session
+
+To launch a debugging session, you first need to run your development server, and then start debugging the Tauri App by clicking the **Debug** button next to the Run Configurations Switcher. RustRover will automatically recognize breakpoints placed in any Rust file in your project and stop on the first one hit.
+
+![Debug Session](@assets/develop/Debug/rustrover/debug-session-light.png)
+{/* ![Debug Session](@assets/develop/Debug/rustrover/debug-session-dark.png#gh-dark-mode-only) */}
+
+From this point, you can explore the values of your variables, step further into the code, and check what's going at runtime in detail.
+
+[core process of your tauri app]: ../../../../concept/process-model#the-core-process
+
+# Debug in VS Code
+
+This guide will walk you through setting up VS Code for debugging the [Core Process of your Tauri app](/concept/process-model/#the-core-process).
+
+## All platforms with vscode-lldb extension
+
+### Prerequisites
+
+Install the [`vscode-lldb`] extension.
+
+[`vscode-lldb`]: https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb
+
+### Configure launch.json
+
+Create a `.vscode/launch.json` file and paste the below JSON contents into it:
+
+```json title=".vscode/launch.json"
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Tauri Development Debug",
+      "cargo": {
+        "args": [
+          "build",
+          "--manifest-path=./src-tauri/Cargo.toml",
+          "--no-default-features"
+        ]
+      },
+      // task for the `beforeDevCommand` if used, must be configured in `.vscode/tasks.json`
+      "preLaunchTask": "ui:dev"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Tauri Production Debug",
+      "cargo": {
+        "args": ["build", "--release", "--manifest-path=./src-tauri/Cargo.toml"]
+      },
+      // task for the `beforeBuildCommand` if used, must be configured in `.vscode/tasks.json`
+      "preLaunchTask": "ui:build"
+    }
+  ]
+}
+```
+
+This uses `cargo` directly to build the Rust application and load it in both development and production modes.
+
+Note that it does not use the Tauri CLI, so exclusive CLI features are not executed. The `beforeDevCommand` and `beforeBuildCommand` scripts must be executed beforehand or configured as a task in the `preLaunchTask` field. Below is an example `.vscode/tasks.json` file that has two tasks, one for a `beforeDevCommand` that spawns a development server and one for `beforeBuildCommand`:
+
+```json title=".vscode/tasks.json"
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "ui:dev",
+      "type": "shell",
+      // `dev` keeps running in the background
+      // ideally you should also configure a `problemMatcher`
+      // see https://code.visualstudio.com/docs/editor/tasks#_can-a-background-task-be-used-as-a-prelaunchtask-in-launchjson
+      "isBackground": true,
+      // change this to your `beforeDevCommand`:
+      "command": "yarn",
+      "args": ["dev"]
+    },
+    {
+      "label": "ui:build",
+      "type": "shell",
+      // change this to your `beforeBuildCommand`:
+      "command": "yarn",
+      "args": ["build"]
+    }
+  ]
+}
+```
+
+Now you can set breakpoints in `src-tauri/src/main.rs` or any other Rust file and start debugging by pressing `F5`.
+
+## With Visual Studio Windows Debugger on Windows
+
+Visual Studio Windows Debugger is a Windows-only debugger that is generally faster than [`vscode-lldb`] with better support for some Rust features such as enums.
+
+### Prerequisites
+
+Install the [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) extension and follow https://code.visualstudio.com/docs/cpp/config-msvc#_prerequisites to install Visual Studio Windows Debugger.
+
+### Configure launch.json and tasks.json
+
+```json title=".vscode/launch.json"
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch App Debug",
+      "type": "cppvsdbg",
+      "request": "launch",
+      // change the exe name to your actual exe name
+      // (to debug release builds, change `target/debug` to `release/debug`)
+      "program": "${workspaceRoot}/src-tauri/target/debug/your-app-name-here.exe",
+      "cwd": "${workspaceRoot}",
+      "preLaunchTask": "ui:dev"
+    }
+  ]
+}
+```
+
+Note that it does not use the Tauri CLI, so exclusive CLI features are not executed. The `tasks.json` is the same as with `lldb`, except you need to add a config group and target your `preLaunchTask` from `launch.json` to it if you want it to always compile before launching.
+
+Here is an example of running a dev server (equivalent of `beforeDevCommand`) and the compilation (`cargo build`) as a group, to use it, change the `preLaunchTask` config in `launch.json` to `dev` (or anything you named your group).
+
+```json title=".vscode/tasks.json"
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build:debug",
+      "type": "cargo",
+      "command": "build",
+      "options": {
+        "cwd": "${workspaceRoot}/src-tauri"
+      }
+    },
+    {
+      "label": "ui:dev",
+      "type": "shell",
+      // `dev` keeps running in the background
+      // ideally you should also configure a `problemMatcher`
+      // see https://code.visualstudio.com/docs/editor/tasks#_can-a-background-task-be-used-as-a-prelaunchtask-in-launchjson
+      "isBackground": true,
+      // change this to your `beforeDevCommand`:
+      "command": "yarn",
+      "args": ["dev"]
+    },
+    {
+      "label": "dev",
+      "dependsOn": ["build:debug", "ui:dev"],
+      "group": {
+        "kind": "build"
+      }
+    }
+  ]
+}
+```
+
 # Calling the Frontend from Rust
 
 The `@tauri-apps/api` NPM package offers APIs to listen to both global and webview-specific events.
@@ -10111,12 +10117,12 @@ Additionally, you must setup code signing for [macOS][macOS code signing] and [i
 After running `tauri ios init` to setup the Xcode project, you can use the `tauri icon` command to update the app icons.
 
 <CommandTabs
-  npm="npm run tauri icon /path/to/app-icon.png -- --ios-color #fff"
-  yarn="yarn tauri icon /path/to/app-icon.png --ios-color #fff"
-  pnpm="pnpm tauri icon /path/to/app-icon.png --ios-color #fff"
-  deno="deno task tauri icon /path/to/app-icon.png --ios-color #fff"
-  bun="bun tauri icon /path/to/app-icon.png --ios-color #fff"
-  cargo="cargo tauri icon /path/to/app-icon.png --ios-color #fff"
+  npm="npm run tauri icon /path/to/app-icon.png -- --ios-color '#fff'"
+  yarn="yarn tauri icon /path/to/app-icon.png --ios-color '#fff'"
+  pnpm="pnpm tauri icon /path/to/app-icon.png --ios-color '#fff'"
+  deno="deno task tauri icon /path/to/app-icon.png --ios-color '#fff'"
+  bun="bun tauri icon /path/to/app-icon.png --ios-color '#fff'"
+  cargo="cargo tauri icon /path/to/app-icon.png --ios-color '#fff'"
 />
 
 The `--ios-color` argument defines the background color for the iOS icons.
@@ -10429,73 +10435,6 @@ The private key file path must be saved as `AuthKey\_<APPLE_API_KEY_ID>.p8` in o
 [App Store Connect's Users and Access page]: https://appstoreconnect.apple.com/access/users
 [authentication section]: #authentication
 
-# AppImage
-
-`AppImage` is a distribution format that does not rely on the system installed packages and instead bundles all dependencies and files needed by the application. For this reason, the output file is larger but easier to distribute since it is supported on many Linux distributions and can be executed without installation. The user just needs to make the file executable (`chmod a+x MyProject.AppImage`) and can then run it (`./MyProject.AppImage`).
-
-AppImages are convenient, simplifying the distribution process if you cannot make a package targeting the distribution's package manager. Still, you should carefully use it as the file size grows from the 2-6 MB range to 70+ MB.
-
-:::note
-
-GUI apps on macOS and Linux do not inherit the `$PATH` from your shell dotfiles (`.bashrc`, `.bash_profile`, `.zshrc`, etc). Check out Tauri's [fix-path-env-rs](https://github.com/tauri-apps/fix-path-env-rs) crate to fix this issue.
-
-:::
-
-## Limitations
-
-Core libraries such as glibc frequently break compatibility with older systems. For this reason, you must build your Tauri application using the oldest base system you intend to support. A relatively old system such as Ubuntu 18.04 is more suited than Ubuntu 22.04, as the binary compiled on Ubuntu 22.04 will have a higher requirement of the glibc version, so when running on an older system, you will face a runtime error like `/usr/lib/libc.so.6: version 'GLIBC_2.33' not found`. We recommend using a Docker container or GitHub Actions to build your Tauri application for Linux.
-
-See the issues [tauri-apps/tauri#1355](https://github.com/tauri-apps/tauri/issues/1355) and [rust-lang/rust#57497](https://github.com/rust-lang/rust/issues/57497), in addition to the [AppImage guide](https://docs.appimage.org/reference/best-practices.html#binaries-compiled-on-old-enough-base-system) for more information.
-
-## Multimedia support via GStreamer
-
-If your app plays audio/video you need to enable `tauri.conf.json > bundle > linux > appimage > bundleMediaFramework`. This will increase the size of the AppImage bundle to include additional gstreamer files needed for media playback. This flag is currently only fully supported on Ubuntu build systems. Make sure that your build system has all the plugins your app may need at runtime.
-
-:::caution
-
-GStreamer plugins in the `ugly` package are licensed in a way that may make it hard to distribute them as part of your app.
-
-:::
-
-{/* TODO: Add some reference links for gst setup/plugins */}
-
-## Custom Files
-
-To include custom files in the AppImage that you do not want to include via Tauri's [`resources` feature](/develop/resources/), you can provide a list of files or folders in `tauri.conf.json > bundle > linux > appimage > files`. The configuration object maps the path in the AppImage to the path to the file on your filesystem, relative to the `tauri.conf.json` file. Here's an example configuration:
-
-```json title="tauri.conf.json"
-{
-  "bundle": {
-    "linux": {
-      "appimage": {
-        "files": {
-          "/usr/share/README.md": "../README.md", // copies the ../README.md file to <appimage>/usr/share/README.md
-          "/usr/assets": "../assets/" // copies the entire ../assets directory to <appimage>/usr/assets
-        }
-      }
-    }
-  }
-}
-```
-
-:::note
-
-Note that the destination paths must currently begin with `/usr/`.
-
-:::
-
-## AppImages for ARM-based devices
-
-:::note[August 2025 Update]
-Github has [released](https://github.blog/changelog/2025-08-07-arm64-hosted-runners-for-public-repositories-are-now-generally-available/#get-started) publicly available `ubuntu-22.04-arm` and `ubuntu-24.04-arm` runners. You can use these to build your app with no changes, a typical build should take ~10 minutes.
-:::
-
-`linuxdeploy`, the AppImage tooling Tauri uses, currently [does not support cross-compiling] ARM AppImages. This means ARM AppImages can only be built on ARM devices or emulators.
-
-Check out our [GitHub Action guide](/distribute/pipelines/github/#arm-runner-compilation) for an example workflow that leverages QEMU to build the app. Note that this is extremely slow and only recommended in public repositories where Build Minutes are free. In private repositories GitHub's ARM runners should be more cost-efficient and much easier to set up.
-
-[does not support cross-compiling]: https://github.com/linuxdeploy/linuxdeploy/issues/258
-
 # AUR
 
 # Publishing To The Arch User Repository
@@ -10653,6 +10592,73 @@ package() {
 [`serde::deserialize`]: https://docs.serde.rs/serde/trait.Deserialize.html
 [`thiserror`]: https://github.com/dtolnay/thiserror
 [`result`]: https://doc.rust-lang.org/std/result/index.html
+
+# AppImage
+
+`AppImage` is a distribution format that does not rely on the system installed packages and instead bundles all dependencies and files needed by the application. For this reason, the output file is larger but easier to distribute since it is supported on many Linux distributions and can be executed without installation. The user just needs to make the file executable (`chmod a+x MyProject.AppImage`) and can then run it (`./MyProject.AppImage`).
+
+AppImages are convenient, simplifying the distribution process if you cannot make a package targeting the distribution's package manager. Still, you should carefully use it as the file size grows from the 2-6 MB range to 70+ MB.
+
+:::note
+
+GUI apps on macOS and Linux do not inherit the `$PATH` from your shell dotfiles (`.bashrc`, `.bash_profile`, `.zshrc`, etc). Check out Tauri's [fix-path-env-rs](https://github.com/tauri-apps/fix-path-env-rs) crate to fix this issue.
+
+:::
+
+## Limitations
+
+Core libraries such as glibc frequently break compatibility with older systems. For this reason, you must build your Tauri application using the oldest base system you intend to support. A relatively old system such as Ubuntu 18.04 is more suited than Ubuntu 22.04, as the binary compiled on Ubuntu 22.04 will have a higher requirement of the glibc version, so when running on an older system, you will face a runtime error like `/usr/lib/libc.so.6: version 'GLIBC_2.33' not found`. We recommend using a Docker container or GitHub Actions to build your Tauri application for Linux.
+
+See the issues [tauri-apps/tauri#1355](https://github.com/tauri-apps/tauri/issues/1355) and [rust-lang/rust#57497](https://github.com/rust-lang/rust/issues/57497), in addition to the [AppImage guide](https://docs.appimage.org/reference/best-practices.html#binaries-compiled-on-old-enough-base-system) for more information.
+
+## Multimedia support via GStreamer
+
+If your app plays audio/video you need to enable `tauri.conf.json > bundle > linux > appimage > bundleMediaFramework`. This will increase the size of the AppImage bundle to include additional gstreamer files needed for media playback. This flag is currently only fully supported on Ubuntu build systems. Make sure that your build system has all the plugins your app may need at runtime.
+
+:::caution
+
+GStreamer plugins in the `ugly` package are licensed in a way that may make it hard to distribute them as part of your app.
+
+:::
+
+{/* TODO: Add some reference links for gst setup/plugins */}
+
+## Custom Files
+
+To include custom files in the AppImage that you do not want to include via Tauri's [`resources` feature](/develop/resources/), you can provide a list of files or folders in `tauri.conf.json > bundle > linux > appimage > files`. The configuration object maps the path in the AppImage to the path to the file on your filesystem, relative to the `tauri.conf.json` file. Here's an example configuration:
+
+```json title="tauri.conf.json"
+{
+  "bundle": {
+    "linux": {
+      "appimage": {
+        "files": {
+          "/usr/share/README.md": "../README.md", // copies the ../README.md file to <appimage>/usr/share/README.md
+          "/usr/assets": "../assets/" // copies the entire ../assets directory to <appimage>/usr/assets
+        }
+      }
+    }
+  }
+}
+```
+
+:::note
+
+Note that the destination paths must currently begin with `/usr/`.
+
+:::
+
+## AppImages for ARM-based devices
+
+:::note[August 2025 Update]
+Github has [released](https://github.blog/changelog/2025-08-07-arm64-hosted-runners-for-public-repositories-are-now-generally-available/#get-started) publicly available `ubuntu-22.04-arm` and `ubuntu-24.04-arm` runners. You can use these to build your app with no changes, a typical build should take ~10 minutes.
+:::
+
+`linuxdeploy`, the AppImage tooling Tauri uses, currently [does not support cross-compiling] ARM AppImages. This means ARM AppImages can only be built on ARM devices or emulators.
+
+Check out our [GitHub Action guide](/distribute/pipelines/github/#arm-runner-compilation) for an example workflow that leverages QEMU to build the app. Note that this is extremely slow and only recommended in public repositories where Build Minutes are free. In private repositories GitHub's ARM runners should be more cost-efficient and much easier to set up.
+
+[does not support cross-compiling]: https://github.com/linuxdeploy/linuxdeploy/issues/258
 
 # Distributing with CrabNebula Cloud
 
@@ -11329,224 +11335,6 @@ but it is a work in progress.
 [`tauri.conf.json > version`]: /reference/config/#version
 [Google Play Developer API]: https://developers.google.com/android-publisher/api-ref/rest
 
-# macOS Application Bundle
-
-import CommandTabs from '@components/CommandTabs.astro';
-
-An application bundle is the package format that is executed on macOS. It is a simple directory that includes everything your application requires for successful operation,
-including your app executable, resources, the Info.plist file and other files such as macOS frameworks.
-
-To package your app as a macOS application bundle you can use the Tauri CLI and run the `tauri build` command in a Mac computer:
-
-<CommandTabs
-  npm="npm run tauri build -- --bundles app"
-  yarn="yarn tauri build --bundles app"
-  pnpm="pnpm tauri build --bundles app"
-  deno="deno task tauri build --bundles app"
-  bun="bun tauri build --bundles app"
-  cargo="cargo tauri build --bundles app"
-/>
-
-:::note
-
-GUI apps on macOS and Linux do not inherit the `$PATH` from your shell dotfiles (`.bashrc`, `.bash_profile`, `.zshrc`, etc). Check out Tauri's [fix-path-env-rs](https://github.com/tauri-apps/fix-path-env-rs) crate to fix this issue.
-
-:::
-
-## File structure
-
-The macOS app bundle is a directory with the following structure:
-
-```
-├── <productName>.app
-│   ├── Contents
-│   │   ├── Info.plist
-│   │   ├── ...additional files from [`tauri.conf.json > bundle > macOS > files`]
-│   ├── MacOS
-│   │   ├── <app-name> (app executable)
-│   ├── Resources
-│   │   ├── icon.icns (app icon)
-│   │   ├── ...resources from [`tauri.conf.json > bundle > resources`]
-│   ├── _CodeSignature (codesign information generated by Apple)
-│   ├── Frameworks
-│   ├── PlugIns
-│   ├── SharedSupport
-```
-
-See the [official documentation](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFBundles/BundleTypes/BundleTypes.html) for more information.
-
-## Native configuration
-
-The app bundle is configured by the `Info.plist` file, which includes key-value pairs with your app identity and configuration values read by macOS.
-
-Tauri automatically configures the most important properties such as your app binary name, version. bundle identifier, minimum system version and more.
-
-To extend the configuration file, create an `Info.plist` file in the `src-tauri` folder and include the key-pairs you desire:
-
-```xml title="src-tauri/Info.plist"
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>NSCameraUsageDescription</key>
-	<string>Request camera access for WebRTC</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Request microphone access for WebRTC</string>
-</dict>
-</plist>
-```
-
-This `Info.plist` file is merged with the values generated by the Tauri CLI. Be careful when overwriting default values such as application version as they might conflict with other configuration values
-and introduce unexpected behavior.
-
-See the [official Info.plist documentation] for more information.
-
-### Info.plist localization
-
-The `Info.plist` file by itself only supports a single language, typically English. If you want to support multiple languages, you can create `InfoPlist.strings` files for each additional language. Each file belongs in its own language specific `lproj` directory in the `Resources` directory in the application bundle.
-
-To bundle these files automatically you can leverage Tauri's [resources] feature. To do that, create a file structure in your project following this pattern:
-
-```
-├── src-tauri
-│   ├── tauri.conf.json
-│   ├── infoplist
-│   │   ├── de.lproj
-│   │   │   ├── InfoPlist.strings
-│   │   ├── fr.lproj
-│   │   │   ├── InfoPlist.strings
-```
-
-While the `infoplist` directory name can be chosen freely, as long as you update it in the resources config below, the `lproj` directories must follow the `<lang-code>.lproj` naming and the string catalogue files must be named `InfoPlist.strings` (capital i and p). For most cases the language code should be a two letter code following [BCP 47].
-
-For the `Info.plist` example shown above, the `de.lproj > InfoPlist.strings` file could look like this:
-
-```ini title="de.lproj/InfoPlist.strings"
-NSCameraUsageDescription = "Kamera Zugriff wird benötigt für WebRTC Funktionalität";
-NSMicrophoneUsageDescription = "Mikrofon Zugriff wird benötigt für WebRTC Funktionalität";
-```
-
-Lastly, make Tauri pick up these files by using the resources feature mentioned above:
-
-```json title="src-tauri/tauri.conf.json"
-{
-  "bundle": {
-    "resources": {
-      "infoplist/**": "./"
-    }
-  }
-}
-```
-
-## Entitlements
-
-An entitlement is a special Apple configuration key-value pair that acts as a right or privilege that grants your app particular capabilities,
-such as act as the user's default email client and using the App Sandbox feature.
-
-Entitlements are applied when your application is signed. See the [code signing documentation] for more information.
-
-To define the entitlements required by your application, you must create the entitlements file and configure Tauri to use it.
-
-1. Create a `Entitlements.plist` file in the `src-tauri` folder and configure the key-value pairs you app requires:
-
-```xml title="src-tauri/Entitlements.plist"
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>com.apple.security.app-sandbox</key>
-    <true/>
-</dict>
-</plist>
-```
-
-2. Configure Tauri to use the Entitlements.plist file:
-
-```json title="tauri.conf.json" ins={4}
-{
-  "bundle": {
-    "macOS": {
-      "entitlements": "./Entitlements.plist"
-    }
-  }
-}
-```
-
-See the [official documentation](https://developer.apple.com/documentation/bundleresources/entitlements) for more information.
-
-## Minimum system version
-
-By default your Tauri application supports macOS 10.13 and above. If you are using an API that requires a newer macOS system and want to enforce that requirement in your app bundle,
-you can configure the [`tauri.conf.json > bundle > macOS > minimumSystemVersion`] value:
-
-```json title="tauri.conf.json" ins={4}
-{
-  "bundle": {
-    "macOS": {
-      "minimumSystemVersion": "12.0"
-    }
-  }
-}
-```
-
-## Including macOS frameworks
-
-If your application requires additional macOS frameworks to run, you can list them in the [`tauri.conf.json > bundle > macOS > frameworks`] configuration.
-The frameworks list can include either system or custom frameworks and dylib files.
-
-```json title="tauri.conf.json" ins={4-8}
-{
-  "bundle": {
-    "macOS": {
-      "frameworks": [
-        "CoreAudio",
-        "./libs/libmsodbcsql.18.dylib",
-        "./frameworks/MyApp.framework"
-      ]
-    }
-  }
-}
-```
-
-:::note
-
-- To reference a system framework you can just use its name (without the .framework extension) instead of absolute path
-- System frameworks must exist in either the `$HOME/Library/Frameworks`, `/Library/Frameworks/`, or `/Network/Library/Frameworks/`
-- To reference local frameworks and dylib files you must use the complete path to the framework, relative to the `src-tauri` directory
-
-:::
-
-## Adding custom files
-
-You can use the [`tauri.conf.json > bundle > macOS > files`] configuration to add custom files to your application bundle,
-which maps the destination path to its source relative to the `tauri.conf.json` file.
-The files are added to the `<product-name>.app/Contents` folder.
-
-```json title="tauri.conf.json" ins={4-7}
-{
-  "bundle": {
-    "macOS": {
-      "files": {
-        "embedded.provisionprofile": "./profile-name.provisionprofile",
-        "SharedSupport/docs.md": "./docs/index.md"
-      }
-    }
-  }
-}
-```
-
-In the above example, the `profile-name.provisionprofile` file is copied to `<product-name>.app/Contents/embedded.provisionprofile`
-and the `docs/index.md` file is copied to `<product-name>.app/Contents/SharedSupport/docs.md`.
-
-[`tauri.conf.json > bundle > macOS > frameworks`]: /reference/config/#frameworks-1
-[`tauri.conf.json > bundle > macOS > files`]: /reference/config/#files-2
-[`tauri.conf.json > bundle > resources`]: /reference/config/#resources
-[official Info.plist documentation]: https://developer.apple.com/documentation/bundleresources/information_property_list
-[code signing documentation]: /distribute/sign/macos/
-[`tauri.conf.json > bundle > macOS > minimumSystemVersion`]: /reference/config/#minimumsystemversion
-[resources]: /develop/resources/
-[BCP 47]: https://www.rfc-editor.org/rfc/bcp/bcp47.txt
-
 # Distribute
 
 import { CardGrid, LinkCard, LinkButton } from '@astrojs/starlight/components';
@@ -11790,6 +11578,224 @@ Distribute your application to Cloud services that globally distribute your appl
 </CardGrid>
 
 [`tauri.conf.json > version`]: /reference/config/#version
+
+# macOS Application Bundle
+
+import CommandTabs from '@components/CommandTabs.astro';
+
+An application bundle is the package format that is executed on macOS. It is a simple directory that includes everything your application requires for successful operation,
+including your app executable, resources, the Info.plist file and other files such as macOS frameworks.
+
+To package your app as a macOS application bundle you can use the Tauri CLI and run the `tauri build` command in a Mac computer:
+
+<CommandTabs
+  npm="npm run tauri build -- --bundles app"
+  yarn="yarn tauri build --bundles app"
+  pnpm="pnpm tauri build --bundles app"
+  deno="deno task tauri build --bundles app"
+  bun="bun tauri build --bundles app"
+  cargo="cargo tauri build --bundles app"
+/>
+
+:::note
+
+GUI apps on macOS and Linux do not inherit the `$PATH` from your shell dotfiles (`.bashrc`, `.bash_profile`, `.zshrc`, etc). Check out Tauri's [fix-path-env-rs](https://github.com/tauri-apps/fix-path-env-rs) crate to fix this issue.
+
+:::
+
+## File structure
+
+The macOS app bundle is a directory with the following structure:
+
+```
+├── <productName>.app
+│   ├── Contents
+│   │   ├── Info.plist
+│   │   ├── ...additional files from [`tauri.conf.json > bundle > macOS > files`]
+│   ├── MacOS
+│   │   ├── <app-name> (app executable)
+│   ├── Resources
+│   │   ├── icon.icns (app icon)
+│   │   ├── ...resources from [`tauri.conf.json > bundle > resources`]
+│   ├── _CodeSignature (codesign information generated by Apple)
+│   ├── Frameworks
+│   ├── PlugIns
+│   ├── SharedSupport
+```
+
+See the [official documentation](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFBundles/BundleTypes/BundleTypes.html) for more information.
+
+## Native configuration
+
+The app bundle is configured by the `Info.plist` file, which includes key-value pairs with your app identity and configuration values read by macOS.
+
+Tauri automatically configures the most important properties such as your app binary name, version. bundle identifier, minimum system version and more.
+
+To extend the configuration file, create an `Info.plist` file in the `src-tauri` folder and include the key-pairs you desire:
+
+```xml title="src-tauri/Info.plist"
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Request camera access for WebRTC</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Request microphone access for WebRTC</string>
+</dict>
+</plist>
+```
+
+This `Info.plist` file is merged with the values generated by the Tauri CLI. Be careful when overwriting default values such as application version as they might conflict with other configuration values
+and introduce unexpected behavior.
+
+See the [official Info.plist documentation] for more information.
+
+### Info.plist localization
+
+The `Info.plist` file by itself only supports a single language, typically English. If you want to support multiple languages, you can create `InfoPlist.strings` files for each additional language. Each file belongs in its own language specific `lproj` directory in the `Resources` directory in the application bundle.
+
+To bundle these files automatically you can leverage Tauri's [resources] feature. To do that, create a file structure in your project following this pattern:
+
+```
+├── src-tauri
+│   ├── tauri.conf.json
+│   ├── infoplist
+│   │   ├── de.lproj
+│   │   │   ├── InfoPlist.strings
+│   │   ├── fr.lproj
+│   │   │   ├── InfoPlist.strings
+```
+
+While the `infoplist` directory name can be chosen freely, as long as you update it in the resources config below, the `lproj` directories must follow the `<lang-code>.lproj` naming and the string catalogue files must be named `InfoPlist.strings` (capital i and p). For most cases the language code should be a two letter code following [BCP 47].
+
+For the `Info.plist` example shown above, the `de.lproj > InfoPlist.strings` file could look like this:
+
+```ini title="de.lproj/InfoPlist.strings"
+NSCameraUsageDescription = "Kamera Zugriff wird benötigt für WebRTC Funktionalität";
+NSMicrophoneUsageDescription = "Mikrofon Zugriff wird benötigt für WebRTC Funktionalität";
+```
+
+Lastly, make Tauri pick up these files by using the resources feature mentioned above:
+
+```json title="src-tauri/tauri.conf.json"
+{
+  "bundle": {
+    "resources": {
+      "infoplist/**": "./"
+    }
+  }
+}
+```
+
+## Entitlements
+
+An entitlement is a special Apple configuration key-value pair that acts as a right or privilege that grants your app particular capabilities,
+such as act as the user's default email client and using the App Sandbox feature.
+
+Entitlements are applied when your application is signed. See the [code signing documentation] for more information.
+
+To define the entitlements required by your application, you must create the entitlements file and configure Tauri to use it.
+
+1. Create a `Entitlements.plist` file in the `src-tauri` folder and configure the key-value pairs you app requires:
+
+```xml title="src-tauri/Entitlements.plist"
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>com.apple.security.app-sandbox</key>
+    <true/>
+</dict>
+</plist>
+```
+
+2. Configure Tauri to use the Entitlements.plist file:
+
+```json title="tauri.conf.json" ins={4}
+{
+  "bundle": {
+    "macOS": {
+      "entitlements": "./Entitlements.plist"
+    }
+  }
+}
+```
+
+See the [official documentation](https://developer.apple.com/documentation/bundleresources/entitlements) for more information.
+
+## Minimum system version
+
+By default your Tauri application supports macOS 10.13 and above. If you are using an API that requires a newer macOS system and want to enforce that requirement in your app bundle,
+you can configure the [`tauri.conf.json > bundle > macOS > minimumSystemVersion`] value:
+
+```json title="tauri.conf.json" ins={4}
+{
+  "bundle": {
+    "macOS": {
+      "minimumSystemVersion": "12.0"
+    }
+  }
+}
+```
+
+## Including macOS frameworks
+
+If your application requires additional macOS frameworks to run, you can list them in the [`tauri.conf.json > bundle > macOS > frameworks`] configuration.
+The frameworks list can include either system or custom frameworks and dylib files.
+
+```json title="tauri.conf.json" ins={4-8}
+{
+  "bundle": {
+    "macOS": {
+      "frameworks": [
+        "CoreAudio",
+        "./libs/libmsodbcsql.18.dylib",
+        "./frameworks/MyApp.framework"
+      ]
+    }
+  }
+}
+```
+
+:::note
+
+- To reference a system framework you can just use its name (without the .framework extension) instead of absolute path
+- System frameworks must exist in either the `$HOME/Library/Frameworks`, `/Library/Frameworks/`, or `/Network/Library/Frameworks/`
+- To reference local frameworks and dylib files you must use the complete path to the framework, relative to the `src-tauri` directory
+
+:::
+
+## Adding custom files
+
+You can use the [`tauri.conf.json > bundle > macOS > files`] configuration to add custom files to your application bundle,
+which maps the destination path to its source relative to the `tauri.conf.json` file.
+The files are added to the `<product-name>.app/Contents` folder.
+
+```json title="tauri.conf.json" ins={4-7}
+{
+  "bundle": {
+    "macOS": {
+      "files": {
+        "embedded.provisionprofile": "./profile-name.provisionprofile",
+        "SharedSupport/docs.md": "./docs/index.md"
+      }
+    }
+  }
+}
+```
+
+In the above example, the `profile-name.provisionprofile` file is copied to `<product-name>.app/Contents/embedded.provisionprofile`
+and the `docs/index.md` file is copied to `<product-name>.app/Contents/SharedSupport/docs.md`.
+
+[`tauri.conf.json > bundle > macOS > frameworks`]: /reference/config/#frameworks-1
+[`tauri.conf.json > bundle > macOS > files`]: /reference/config/#files-2
+[`tauri.conf.json > bundle > resources`]: /reference/config/#resources
+[official Info.plist documentation]: https://developer.apple.com/documentation/bundleresources/information_property_list
+[code signing documentation]: /distribute/sign/macos/
+[`tauri.conf.json > bundle > macOS > minimumSystemVersion`]: /reference/config/#minimumsystemversion
+[resources]: /develop/resources/
+[BCP 47]: https://www.rfc-editor.org/rfc/bcp/bcp47.txt
 
 # Microsoft Store
 
@@ -12664,7 +12670,7 @@ we will also need the `llvm-rc` binary which is part of the LLVM project.
 
 <Tabs syncKey="OS">
 <TabItem label="Linux">
-  
+
 ```sh title="Ubuntu"
 sudo apt install lld llvm
 ```
@@ -12739,7 +12745,7 @@ so you need to install the 32-bit Windows toolchain first: `rustup target add i6
 
 If you need to build for **ARM64** you first need to install additional build tools.
 To do this, open `Visual Studio Installer`, click on "Modify", and in the "Individual Components" tab install the "C++ ARM64 build tools".
-At the time of writing, the exact name in VS2022 is `MSVC v143 - VS 2022 C++ ARM64 build tools (Latest)`.  
+At the time of writing, the exact name in VS2022 is `MSVC v143 - VS 2022 C++ ARM64 build tools (Latest)`.
 Now you can add the rust target with `rustup target add aarch64-pc-windows-msvc` and then use the above-mentioned method to compile your app:
 
 <CommandTabs
@@ -12751,7 +12757,7 @@ Now you can add the rust target with `rustup target add aarch64-pc-windows-msvc`
   cargo="cargo tauri build --target aarch64-pc-windows-msvc"
 />
 
-:::info
+:::note
 
 Note that the NSIS installer itself will still be x86 running on the ARM machine via emulation. The app itself will be a native ARM64 binary.
 
@@ -12794,7 +12800,7 @@ See the following table for a comparison between these methods:
 | [`fixedVersion`](#fixed-version)                   | No                            | ~180MB                    | Embeds a fixed WebView2 version.                                                                                        |
 | [`skip`](#skipping-installation)                   | No                            | 0MB                       | ⚠️ Not recommended <br /> Does not install the WebView2 as part of the Windows Installer.                               |
 
-:::info
+:::note
 
 On Windows 10 (April 2018 release or later) and Windows 11, the WebView2 runtime is distributed as part of the operating system.
 
@@ -13985,7 +13991,7 @@ and configure the `APPLE_CERTIFICATE` and `APPLE_CERTIFICATE_PASSWORD` environme
 4. Convert the `.p12` file to base64 running the following script on the terminal:
 
 ```sh
-openssl base64 -in /path/to/certificate.p12 -out certificate-base64.txt
+openssl base64 -A -in /path/to/certificate.p12 -out certificate-base64.txt
 ```
 
 5. Set the contents of the `certificate-base64.txt` file to the `APPLE_CERTIFICATE` environment variable.
@@ -14635,8 +14641,7 @@ Without the plugin being initialized and configured the example won't work.
 
     const ext = process.platform === 'win32' ? '.exe' : '';
 
-    const rustInfo = execSync('rustc -vV');
-    const targetTriple = /host: (\S+)/g.exec(rustInfo)[1];
+    const targetTriple = execSync('rustc --print host-tuple').toString().trim();
     if (!targetTriple) {
       console.error('Failed to determine platform target triple');
     }
@@ -14646,6 +14651,16 @@ Without the plugin being initialized and configured the example won't work.
       `../src-tauri/binaries/my-sidecar-${targetTriple}${ext}`
     );
     ```
+
+    :::note
+    The `--print host-tuple` flag was added in Rust 1.84.0. If you're using an older version, you'll need to parse the output of `rustc -Vv` instead:
+
+    ```js
+    const rustInfo = execSync('rustc -vV');
+    const targetTriple = /host: (\S+)/g.exec(rustInfo)[1];
+    ```
+
+    :::
 
     And run `node rename.js` from the `sidecar-app` directory.
 
@@ -14771,8 +14786,273 @@ Without the plugin being initialized and configured the example won't work.
 [sidecar guide]: /develop/sidecar/
 [process.argv]: https://nodejs.org/docs/latest/api/process.html#processargv
 [console.log]: https://nodejs.org/api/console.html#consolelogdata-args
-[pkg]: https://github.com/vercel/pkg
+[pkg]: https://github.com/yao-pkg/pkg
 [`bundle > externalBin`]: /reference/config/#externalbin
+
+# Splashscreen
+
+import { Image } from 'astro:assets';
+import step_1 from '@assets/learn/splashscreen/step_1.png';
+import step_3 from '@assets/learn/splashscreen/step_3.png';
+import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+import ShowSolution from '@components/ShowSolution.astro';
+import CTA from '@fragments/cta.mdx';
+
+In this lab we'll be implementing a basic splashscreen functionality in a Tauri app. Doing so
+is quite straight forward, a splashscreen is effectively just a matter of creating a new window
+that displays some contents during the period your app is doing some heavy setup related tasks
+and then closing it when setting up is done.
+
+## Prerequisites
+
+:::tip[Create a lab app]
+
+If you are not an advanced user it's **highly recommended** that you use the options and frameworks provided here. It's just a lab, you can delete the project when you're done.
+
+<CTA/>
+
+- Project name: `splashscreen-lab`
+- Choose which language to use for your frontend: `Typescript / Javascript`
+- Choose your package manager: `pnpm`
+- Choose your UI template: `Vanilla`
+- Choose your UI flavor: `Typescript`
+
+:::
+
+## Steps
+
+<Steps>
+
+1. ##### Install dependencies and run the project
+
+   Before you start developing any project it's important to build and run the initial template, just to validate your setup is working as intended.
+
+    <ShowSolution>
+    ```sh frame=none
+    # Make sure you're in the right directory
+    cd splashscreen-lab
+    # Install dependencies
+    pnpm install
+    # Build and run the app
+    pnpm tauri dev
+    ```
+    <Image src={step_1} alt="Successful run of the created template app."/>
+    </ShowSolution>
+
+1. ##### Register new windows in `tauri.conf.json`
+
+   The easiest way of adding new windows is by adding them directly to `tauri.conf.json`. You can also create them dynamically at startup,
+   but for the sake of simplicity lets just register them instead. Make sure you have a window with the label `main` that's being created as a hidden window and a window with the label `splashscreen` that's created as being shown directly. You can leave all other options as their defaults, or tweak them based on preference.
+
+    <ShowSolution>
+    ```json
+    // src-tauri/tauri.conf.json
+    {
+        "windows": [
+            {
+                "label": "main",
+                "visible": false
+            },
+            {
+                "label": "splashscreen",
+                "url": "/splashscreen"
+            }
+        ]
+    }
+    ```
+    </ShowSolution>
+
+1. ##### Create a new page to host your splashscreen
+
+   Before you begin you'll need to have some content to show. How you develop new pages depend on your chosen framework,
+   most have the concept of a "router" that handles page navigation which should work just like normal in Tauri, in which case
+   you just create a new splashscreen page. Or as we're going to be doing here, create a new `splashscreen.html` file to host the contents.
+
+   What's important here is that you can navigate to a `/splashscreen` URL and be shown the contents you want for your splashscreen. Try running the app again after this step!
+
+    <ShowSolution>
+    ```html
+    // /splashscreen.html
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/src/styles.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tauri App</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Tauri used Splash!</h1>
+            <div class="row">
+                <h5>It was super effective!</h5>
+            </div>
+        </div>
+    </body>
+    </html>
+    ```
+    <Image src={step_3} alt="The splashscreen we just created."/>
+    </ShowSolution>
+
+1. ##### Start some setup tasks
+
+    Since splashscreens are generally intended to be used for the sake of hiding heavy setup related tasks, lets fake giving the app something heavy to do, some in the frontend and some in the backend.
+
+    To fake heavy setup in the frontend we're going to be using a simple `setTimeout` function.
+    
+    The easiest way to fake heavy operations in the backend is by using the Tokio crate, which is the Rust crate that Tauri uses in the backend to provide an asynchronous runtime. While Tauri provides the runtime there are various utilities that Tauri doesn't re-export from it, so we'll need to add the crate to our project in order to access them. This is a perfectly normal practice within the Rust ecosystem.
+
+    Don't use `std::thread::sleep` in async functions, they run cooperatively in a concurrent environment not in parallel, meaning that if you sleep the thread instead of the Tokio task you'll be locking all tasks scheduled to run on that thread from being executed, causing your app to freeze.
+
+    <ShowSolution>
+    ```sh frame=none
+    # Run this command where the `Cargo.toml` file is
+    cd src-tauri
+    # Add the Tokio crate
+    cargo add tokio
+    # Optionally go back to the top folder to keep developing
+    # `tauri dev` can figure out where to run automatically
+    cd ..
+    ```
+
+    ```javascript
+    // src/main.ts
+    // These contents can be copy-pasted below the existing code, don't replace the entire file!!
+
+    // Utility function to implement a sleep function in TypeScript
+    function sleep(seconds: number): Promise<void> {
+        return new Promise(resolve => setTimeout(resolve, seconds * 1000));
+    }
+
+    // Setup function
+    async function setup() {
+        // Fake perform some really heavy setup task
+        console.log('Performing really heavy frontend setup task...')
+        await sleep(3);
+        console.log('Frontend setup task complete!')
+        // Set the frontend task as being completed
+        invoke('set_complete', {task: 'frontend'})
+    }
+
+    // Effectively a JavaScript main function
+    window.addEventListener("DOMContentLoaded", () => {
+        setup()
+    });
+    ```
+
+    ```rust
+    // /src-tauri/src/lib.rs
+    // Import functionalities we'll be using
+    use std::sync::Mutex;
+    use tauri::async_runtime::spawn;
+    use tauri::{AppHandle, Manager, State};
+    use tokio::time::{sleep, Duration};
+
+    // Create a struct we'll use to track the completion of
+    // setup related tasks
+    struct SetupState {
+        frontend_task: bool,
+        backend_task: bool,
+    }
+
+    // Our main entrypoint in a version 2 mobile compatible app
+    #[cfg_attr(mobile, tauri::mobile_entry_point)]
+    pub fn run() {
+        // Don't write code before Tauri starts, write it in the
+        // setup hook instead!
+        tauri::Builder::default()
+            // Register a `State` to be managed by Tauri
+            // We need write access to it so we wrap it in a `Mutex`
+            .manage(Mutex::new(SetupState {
+                frontend_task: false,
+                backend_task: false,
+            }))
+            // Add a command we can use to check
+            .invoke_handler(tauri::generate_handler![greet, set_complete])
+            // Use the setup hook to execute setup related tasks
+            // Runs before the main loop, so no windows are yet created
+            .setup(|app| {
+                // Spawn setup as a non-blocking task so the windows can be
+                // created and ran while it executes
+                spawn(setup(app.handle().clone()));
+                // The hook expects an Ok result
+                Ok(())
+            })
+            // Run the app
+            .run(tauri::generate_context!())
+            .expect("error while running tauri application");
+    }
+
+    #[tauri::command]
+    fn greet(name: String) -> String {
+        format!("Hello {name} from Rust!")
+    }
+
+    // A custom task for setting the state of a setup task
+    #[tauri::command]
+    async fn set_complete(
+        app: AppHandle,
+        state: State<'_, Mutex<SetupState>>,
+        task: String,
+    ) -> Result<(), ()> {
+        // Lock the state without write access
+        let mut state_lock = state.lock().unwrap();
+        match task.as_str() {
+            "frontend" => state_lock.frontend_task = true,
+            "backend" => state_lock.backend_task = true,
+            _ => panic!("invalid task completed!"),
+        }
+        // Check if both tasks are completed
+        if state_lock.backend_task && state_lock.frontend_task {
+            // Setup is complete, we can close the splashscreen
+            // and unhide the main window!
+            let splash_window = app.get_webview_window("splashscreen").unwrap();
+            let main_window = app.get_webview_window("main").unwrap();
+            splash_window.close().unwrap();
+            main_window.show().unwrap();
+        }
+        Ok(())
+    }
+
+    // An async function that does some heavy setup task
+    async fn setup(app: AppHandle) -> Result<(), ()> {
+        // Fake performing some heavy action for 3 seconds
+        println!("Performing really heavy backend setup task...");
+        sleep(Duration::from_secs(3)).await;
+        println!("Backend setup task completed!");
+        // Set the backend task as being completed
+        // Commands can be ran as regular functions as long as you take
+        // care of the input arguments yourself
+        set_complete(
+            app.clone(),
+            app.state::<Mutex<SetupState>>(),
+            "backend".to_string(),
+        )
+        .await?;
+        Ok(())
+    }
+    ```
+    </ShowSolution>
+
+1. ##### Run the application
+
+   You should now see a splashscreen window pop up, both the frontend and backend will perform their respective heavy 3 second setup tasks, after which the splashscreen disappears and the main window is shown!
+
+</Steps>
+
+## Discuss
+
+##### Should you have a splashscreen?
+
+In general having a splashscreen is an admittance of defeat that you couldn't make your
+app load fast enough to not need one. In fact it tends to be better to just go straight
+to a main window that then shows some little spinner somewhere in a corner informing the
+user there's still setup tasks happening in the background.
+
+However, with that said, it can be a stylistic choice that you want to have a splashscreen,
+or you might have some very particular requirement that makes it impossible to start the
+app until some tasks are performed. It's definitely not *wrong* to have a splashscreen, it
+just tends to not be necessary and can make users feel like the app isn't very well optimized.
 
 # System Tray
 
@@ -15394,271 +15674,6 @@ Create the main window and change its background color:
     		.expect("error while running tauri application");
     }
     ```
-
-# Splashscreen
-
-import { Image } from 'astro:assets';
-import step_1 from '@assets/learn/splashscreen/step_1.png';
-import step_3 from '@assets/learn/splashscreen/step_3.png';
-import { Steps, Tabs, TabItem } from '@astrojs/starlight/components';
-import ShowSolution from '@components/ShowSolution.astro';
-import CTA from '@fragments/cta.mdx';
-
-In this lab we'll be implementing a basic splashscreen functionality in a Tauri app. Doing so
-is quite straight forward, a splashscreen is effectively just a matter of creating a new window
-that displays some contents during the period your app is doing some heavy setup related tasks
-and then closing it when setting up is done.
-
-## Prerequisites
-
-:::tip[Create a lab app]
-
-If you are not an advanced user it's **highly recommended** that you use the options and frameworks provided here. It's just a lab, you can delete the project when you're done.
-
-<CTA/>
-
-- Project name: `splashscreen-lab`
-- Choose which language to use for your frontend: `Typescript / Javascript`
-- Choose your package manager: `pnpm`
-- Choose your UI template: `Vanilla`
-- Choose your UI flavor: `Typescript`
-
-:::
-
-## Steps
-
-<Steps>
-
-1. ##### Install dependencies and run the project
-
-   Before you start developing any project it's important to build and run the initial template, just to validate your setup is working as intended.
-
-    <ShowSolution>
-    ```sh frame=none
-    # Make sure you're in the right directory
-    cd splashscreen-lab
-    # Install dependencies
-    pnpm install
-    # Build and run the app
-    pnpm tauri dev
-    ```
-    <Image src={step_1} alt="Successful run of the created template app."/>
-    </ShowSolution>
-
-1. ##### Register new windows in `tauri.conf.json`
-
-   The easiest way of adding new windows is by adding them directly to `tauri.conf.json`. You can also create them dynamically at startup,
-   but for the sake of simplicity lets just register them instead. Make sure you have a window with the label `main` that's being created as a hidden window and a window with the label `splashscreen` that's created as being shown directly. You can leave all other options as their defaults, or tweak them based on preference.
-
-    <ShowSolution>
-    ```json
-    // src-tauri/tauri.conf.json
-    {
-        "windows": [
-            {
-                "label": "main",
-                "visible": false
-            },
-            {
-                "label": "splashscreen",
-                "url": "/splashscreen"
-            }
-        ]
-    }
-    ```
-    </ShowSolution>
-
-1. ##### Create a new page to host your splashscreen
-
-   Before you begin you'll need to have some content to show. How you develop new pages depend on your chosen framework,
-   most have the concept of a "router" that handles page navigation which should work just like normal in Tauri, in which case
-   you just create a new splashscreen page. Or as we're going to be doing here, create a new `splashscreen.html` file to host the contents.
-
-   What's important here is that you can navigate to a `/splashscreen` URL and be shown the contents you want for your splashscreen. Try running the app again after this step!
-
-    <ShowSolution>
-    ```html
-    // /splashscreen.html
-    <!doctype html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" href="/src/styles.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Tauri App</title>
-    </head>
-    <body>
-        <div class="container">
-            <h1>Tauri used Splash!</h1>
-            <div class="row">
-                <h5>It was super effective!</h5>
-            </div>
-        </div>
-    </body>
-    </html>
-    ```
-    <Image src={step_3} alt="The splashscreen we just created."/>
-    </ShowSolution>
-
-1. ##### Start some setup tasks
-
-    Since splashscreens are generally intended to be used for the sake of hiding heavy setup related tasks, lets fake giving the app something heavy to do, some in the frontend and some in the backend.
-
-    To fake heavy setup in the frontend we're going to be using a simple `setTimeout` function.
-    
-    The easiest way to fake heavy operations in the backend is by using the Tokio crate, which is the Rust crate that Tauri uses in the backend to provide an asynchronous runtime. While Tauri provides the runtime there are various utilities that Tauri doesn't re-export from it, so we'll need to add the crate to our project in order to access them. This is a perfectly normal practice within the Rust ecosystem.
-
-    Don't use `std::thread::sleep` in async functions, they run cooperatively in a concurrent environment not in parallel, meaning that if you sleep the thread instead of the Tokio task you'll be locking all tasks scheduled to run on that thread from being executed, causing your app to freeze.
-
-    <ShowSolution>
-    ```sh frame=none
-    # Run this command where the `Cargo.toml` file is
-    cd src-tauri
-    # Add the Tokio crate
-    cargo add tokio
-    # Optionally go back to the top folder to keep developing
-    # `tauri dev` can figure out where to run automatically
-    cd ..
-    ```
-
-    ```javascript
-    // src/main.ts
-    // These contents can be copy-pasted below the existing code, don't replace the entire file!!
-
-    // Utility function to implement a sleep function in TypeScript
-    function sleep(seconds: number): Promise<void> {
-        return new Promise(resolve => setTimeout(resolve, seconds * 1000));
-    }
-
-    // Setup function
-    async function setup() {
-        // Fake perform some really heavy setup task
-        console.log('Performing really heavy frontend setup task...')
-        await sleep(3);
-        console.log('Frontend setup task complete!')
-        // Set the frontend task as being completed
-        invoke('set_complete', {task: 'frontend'})
-    }
-
-    // Effectively a JavaScript main function
-    window.addEventListener("DOMContentLoaded", () => {
-        setup()
-    });
-    ```
-
-    ```rust
-    // /src-tauri/src/lib.rs
-    // Import functionalities we'll be using
-    use std::sync::Mutex;
-    use tauri::async_runtime::spawn;
-    use tauri::{AppHandle, Manager, State};
-    use tokio::time::{sleep, Duration};
-
-    // Create a struct we'll use to track the completion of
-    // setup related tasks
-    struct SetupState {
-        frontend_task: bool,
-        backend_task: bool,
-    }
-
-    // Our main entrypoint in a version 2 mobile compatible app
-    #[cfg_attr(mobile, tauri::mobile_entry_point)]
-    pub fn run() {
-        // Don't write code before Tauri starts, write it in the
-        // setup hook instead!
-        tauri::Builder::default()
-            // Register a `State` to be managed by Tauri
-            // We need write access to it so we wrap it in a `Mutex`
-            .manage(Mutex::new(SetupState {
-                frontend_task: false,
-                backend_task: false,
-            }))
-            // Add a command we can use to check
-            .invoke_handler(tauri::generate_handler![greet, set_complete])
-            // Use the setup hook to execute setup related tasks
-            // Runs before the main loop, so no windows are yet created
-            .setup(|app| {
-                // Spawn setup as a non-blocking task so the windows can be
-                // created and ran while it executes
-                spawn(setup(app.handle().clone()));
-                // The hook expects an Ok result
-                Ok(())
-            })
-            // Run the app
-            .run(tauri::generate_context!())
-            .expect("error while running tauri application");
-    }
-
-    #[tauri::command]
-    fn greet(name: String) -> String {
-        format!("Hello {name} from Rust!")
-    }
-
-    // A custom task for setting the state of a setup task
-    #[tauri::command]
-    async fn set_complete(
-        app: AppHandle,
-        state: State<'_, Mutex<SetupState>>,
-        task: String,
-    ) -> Result<(), ()> {
-        // Lock the state without write access
-        let mut state_lock = state.lock().unwrap();
-        match task.as_str() {
-            "frontend" => state_lock.frontend_task = true,
-            "backend" => state_lock.backend_task = true,
-            _ => panic!("invalid task completed!"),
-        }
-        // Check if both tasks are completed
-        if state_lock.backend_task && state_lock.frontend_task {
-            // Setup is complete, we can close the splashscreen
-            // and unhide the main window!
-            let splash_window = app.get_webview_window("splashscreen").unwrap();
-            let main_window = app.get_webview_window("main").unwrap();
-            splash_window.close().unwrap();
-            main_window.show().unwrap();
-        }
-        Ok(())
-    }
-
-    // An async function that does some heavy setup task
-    async fn setup(app: AppHandle) -> Result<(), ()> {
-        // Fake performing some heavy action for 3 seconds
-        println!("Performing really heavy backend setup task...");
-        sleep(Duration::from_secs(3)).await;
-        println!("Backend setup task completed!");
-        // Set the backend task as being completed
-        // Commands can be ran as regular functions as long as you take
-        // care of the input arguments yourself
-        set_complete(
-            app.clone(),
-            app.state::<Mutex<SetupState>>(),
-            "backend".to_string(),
-        )
-        .await?;
-        Ok(())
-    }
-    ```
-    </ShowSolution>
-
-1. ##### Run the application
-
-   You should now see a splashscreen window pop up, both the frontend and backend will perform their respective heavy 3 second setup tasks, after which the splashscreen disappears and the main window is shown!
-
-</Steps>
-
-## Discuss
-
-##### Should you have a splashscreen?
-
-In general having a splashscreen is an admittance of defeat that you couldn't make your
-app load fast enough to not need one. In fact it tends to be better to just go straight
-to a main window that then shows some little spinner somewhere in a corner informing the
-user there's still setup tasks happening in the background.
-
-However, with that said, it can be a stylistic choice that you want to have a splashscreen,
-or you might have some very particular requirement that makes it impossible to start the
-app until some tasks are performed. It's definitely not *wrong* to have a splashscreen, it
-just tends to not be necessary and can make users feel like the app isn't very well optimized.
 
 # Window Menu
 

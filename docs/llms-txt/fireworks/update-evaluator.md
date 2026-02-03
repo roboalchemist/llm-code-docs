@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/api-reference/update-evaluator.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update Evaluator
 
 > Updates evaluator metadata (display_name, description, default_dataset).
@@ -14,7 +18,7 @@ source code, set `prepare_code_upload: true` then follow the upload flow.
 openapi: 3.1.0
 info:
   title: Gateway REST API
-  version: 4.15.25
+  version: 4.21.6
 servers:
   - url: https://api.fireworks.ai
 security:
@@ -83,6 +87,16 @@ paths:
                 state:
                   $ref: '#/components/schemas/gatewayEvaluatorState'
                   readOnly: true
+                criteria:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/gatewayCriterion'
+                    type: object
+                  title: >-
+                    Criteria for the evaluator, it should produce a score for
+                    the metric (name of criteria)
+
+                    Used for eval3 with UI upload path
                 requirements:
                   type: string
                   title: Content for the requirements.txt for package installation
@@ -109,6 +123,8 @@ paths:
                   type: string
                   title: Default dataset that is associated with the evaluator
               title: The evaluator to update. The name must be set.
+              required:
+                - evaluator
         description: The evaluator to update. The name must be set.
         required: true
       responses:
@@ -132,6 +148,18 @@ components:
         - ACTIVE: The evaluator is ready to use for evaluation
          - BUILDING: The evaluator is being built, i.e. building the e2b template
          - BUILD_FAILED: The evaluator build failed, and it cannot be used for evaluation
+    gatewayCriterion:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/gatewayCriterionType'
+        name:
+          type: string
+        description:
+          type: string
+        codeSnippets:
+          $ref: '#/components/schemas/gatewayCodeSnippets'
+          title: Criteria for code snippet
     gatewayStatus:
       type: object
       properties:
@@ -179,6 +207,16 @@ components:
         state:
           $ref: '#/components/schemas/gatewayEvaluatorState'
           readOnly: true
+        criteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/gatewayCriterion'
+            type: object
+          title: >-
+            Criteria for the evaluator, it should produce a score for the metric
+            (name of criteria)
+
+            Used for eval3 with UI upload path
         requirements:
           type: string
           title: Content for the requirements.txt for package installation
@@ -201,6 +239,27 @@ components:
           type: string
           title: Default dataset that is associated with the evaluator
       title: 'Next ID: 17'
+    gatewayCriterionType:
+      type: string
+      enum:
+        - TYPE_UNSPECIFIED
+        - CODE_SNIPPETS
+      default: TYPE_UNSPECIFIED
+      title: '- CODE_SNIPPETS: Code snippets for Sandbox based evaluation'
+    gatewayCodeSnippets:
+      type: object
+      properties:
+        language:
+          type: string
+        fileContents:
+          type: object
+          additionalProperties:
+            type: string
+          title: File name to code snippet, default is main.py
+        entryFile:
+          type: string
+        entryFunc:
+          type: string
     gatewayCode:
       type: string
       enum:
@@ -368,7 +427,3 @@ components:
       bearerFormat: API_KEY
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireworks.ai/llms.txt

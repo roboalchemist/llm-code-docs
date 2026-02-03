@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Getting started > Embedding Cloudcraft
   Diagrams with the Confluence App
-source_url: >-
-  https://docs.datadoghq.com/getting-started/embedding-cloudcraft-diagrams-confluence/index.html
 ---
 
 # Embedding Cloudcraft Diagrams with the Confluence App

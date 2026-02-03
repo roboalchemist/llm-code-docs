@@ -4,7 +4,6 @@
 title: Account Management
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > Account Management
-source_url: https://docs.datadoghq.com/account-management/index.html
 ---
 
 # Account Management

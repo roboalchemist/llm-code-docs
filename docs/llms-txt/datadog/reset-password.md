@@ -4,7 +4,6 @@
 title: How do I reset my password?
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > FAQ > How do I reset my password?
-source_url: https://docs.datadoghq.com/faq/reset-password/index.html
 ---
 
 # How do I reset my password?

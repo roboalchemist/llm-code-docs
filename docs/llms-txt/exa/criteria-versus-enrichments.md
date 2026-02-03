@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/websets/dashboard/criteria-versus-enrichments.md
+# Source: https://exa.ai/docs/websets/dashboard/criteria-versus-enrichments.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Criteria vs Enrichments
 
@@ -64,8 +68,3 @@ Let's say you're looking for senior software engineers with specific experience.
 * Current company name
 
 This structure ensures you only get candidates who meet your requirements, and then extracts the additional contact information you need from those qualified results.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

@@ -1,10 +1,14 @@
 # Source: https://docs.embedchain.ai/components/data-sources/mysql.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🐬 MySQL
 
 1. Setup the MySQL loader by configuring the SQL db.
 
-```Python
+```Python  theme={null}
 from embedchain.loaders.mysql import MySQLLoader
 
 config = {
@@ -22,7 +26,7 @@ For more details on how to setup with valid config, check MySQL [documentation](
 
 2. Once you setup the loader, you can create an app and load data using the above MySQL loader
 
-```Python
+```Python  theme={null}
 from embedchain.pipeline import Pipeline as App
 
 app = App()
@@ -38,7 +42,7 @@ NOTE: The `add` function of the app will accept any executable query to load dat
 
 3. We automatically create a chunker to chunk your SQL data, however if you wish to provide your own chunker class. Here is how you can do that:
 
-```Python
+```Python  theme={null}
 
 from embedchain.chunkers.mysql import MySQLChunker
 from embedchain.config.add_config import ChunkerConfig

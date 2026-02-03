@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/actions/hubspot-v2-search-objects.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Search HubSpot
 
 Find contacts, deals, companies, and other HubSpot records based on criteria you specify.

@@ -1,12 +1,6 @@
 # Source: https://gitbook.com/docs/developers/gitbook-api/api-reference/change-requests.md
 
-# Source: https://gitbook.com/docs/documentation/zh/collaboration/change-requests.md
-
-# Source: https://gitbook.com/docs/documentation/fr/collaboration/change-requests.md
-
-# Source: https://gitbook.com/docs/collaboration/change-requests.md
-
-# Source: https://gitbook.com/docs/developers/gitbook-api/api-reference/change-requests.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/collaboration/change-requests.md
 
 # Source: https://gitbook.com/docs/documentation/zh/collaboration/change-requests.md
 
@@ -27,7 +21,7 @@ To learn more about managing open change requests, head to [reviewing change req
 {% stepper %}
 {% step %}
 
-### Open a change request
+#### Open a change request
 
 To start editing content, you’ll need to start by creating a change request. Change requests can be opened:
 
@@ -38,14 +32,14 @@ To start editing content, you’ll need to start by creating a change request. C
 
 {% step %}
 
-### Make your changes
+#### Make your changes
 
 After a change request is opened, you’re free to make any edits or changes. Changes can be made by working [directly in the editor](https://gitbook.com/docs/creating-content), or by [working with Docs Agent](https://gitbook.com/docs/gitbook-agent/write-and-edit-with-ai).
 {% endstep %}
 
 {% step %}
 
-### Request a review
+#### Request a review
 
 Once your changes are ready to go, you can request a review from your team in the **Overview** tab. Tagging reviewers in a change request will notify them, and allow you to further collaborate in the change request by directly making more changes in the editor, or discussing changes in [comments](https://gitbook.com/docs/collaboration/comments).
 
@@ -54,7 +48,7 @@ You can request Docs Agent for any reviews, or anyone on your team with the righ
 
 {% step %}
 
-### Merge
+#### Merge
 
 After your reviews are done, you’ll be able to [merge your changes](#merge) to publish them to your live docs site immediately!
 {% endstep %}
@@ -62,4 +56,4 @@ After your reviews are done, you’ll be able to [merge your changes](#merge) to
 
 ### Working with change requests
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h4>Change request screen</h4></td><td>View and manage change requests across your entire organization</td><td><a href="change-requests/change-requests-screen">change-requests-screen</a></td></tr><tr><td><h4>Change requests in a space</h4></td><td>Create and review change requests in a single space</td><td><a href="change-requests/change-requests-in-a-space">change-requests-in-a-space</a></td></tr></tbody></table>
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Change request screen</strong></td><td>View and manage change requests across your entire organization</td><td><a href="change-requests/change-requests-screen">change-requests-screen</a></td></tr><tr><td><strong>Change requests in a space</strong></td><td>Create and review change requests in a single space</td><td><a href="change-requests/change-requests-in-a-space">change-requests-in-a-space</a></td></tr></tbody></table>

@@ -4,7 +4,6 @@
 title: High CPU or Memory Consumption
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Agent > Agent Troubleshooting > High CPU or Memory Consumption
-source_url: https://docs.datadoghq.com/troubleshooting/high_memory_usage/index.html
 ---
 
 # High CPU or Memory Consumption

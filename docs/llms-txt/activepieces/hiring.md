@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/handbook/hiring/hiring.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Our Hiring Process
 
 Engineers are the majority of the Activepieces team, and we are always looking for highly talented product engineers.

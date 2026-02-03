@@ -4,7 +4,6 @@
 title: Data Access Control
 description: Define a Restricted Dataset for access control
 breadcrumbs: Docs > Account Management > Access Control > Data Access Control
-source_url: https://docs.datadoghq.com/rbac/data_access/index.html
 ---
 
 # Data Access Control

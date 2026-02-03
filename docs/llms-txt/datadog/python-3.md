@@ -6,7 +6,6 @@ description: >-
   Migrate custom Datadog Agent checks from Python 2 to Python 3 with best
   practices and compatibility tools.
 breadcrumbs: Docs > Agent > Agent Guides > Python 3 Custom Check Migration
-source_url: https://docs.datadoghq.com/guide/python-3/index.html
 ---
 
 # Python 3 Custom Check Migration
@@ -17,7 +16,7 @@ Only Agent v7+ supports running Python 3 custom checks by default. [Upgrade to t
 
 ## Overview{% #overview %}
 
-This guide provides information and best practices on migrating checks between Python 2 and 3. Use Datadog's [Custom Check Compatibility](https://app.datadoghq.com/compatibility_check) tool to see whether your custom checks are compatible with Python 3 or need to be migrated.
+This guide provides information and best practices on migrating checks between Python 2 and 3. To find out if a custom check is compatible with your Agent, use the `custom_check` filter along with the name of the check on the [Fleet Automation](https://app.datadoghq.com/fleet) page.
 
 To provide flexibility in allowing code to run multiple on versions of the Agent, this guide focuses on retaining backwards compatibility.
 

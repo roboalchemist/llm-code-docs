@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/integrations/stripe.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Stripe
 
 > Sync contacts and send emails triggered by events in Stripe.

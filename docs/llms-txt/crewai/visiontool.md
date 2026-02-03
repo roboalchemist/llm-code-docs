@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/ai-ml/visiontool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vision Tool
 
 > The `VisionTool` is designed to extract text from images.

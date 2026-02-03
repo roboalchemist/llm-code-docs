@@ -7,7 +7,6 @@ Learn more about the Setup Intents API for saving payment methods.
 Use the *Setup Intents API* (The Setup Intents API lets you build dynamic flows for collecting payment method details for future payments. It tracks the lifecycle of a payment setup flow and can trigger additional authentication steps if required by law or by the payment method) to set up a payment method for future payments. It’s similar to a payment, but no charge is created. [Set up a payment method for future payments now](https://docs.stripe.com/payments/save-and-reuse.md).
 
 The goal is to have payment credentials saved and optimized for future payments, meaning the payment method is configured correctly for any scenario. When setting up a card, for example, it may be necessary to authenticate the customer or check the card’s validity with the customer’s bank. Stripe updates the `SetupIntent` object throughout that process.
-![UI that collects card details but doesn't charge the card](https://b.stripecdn.com/docs-statics-srv/assets/reuse-si.2499c9ffdcfc8bd5d430e9a1809890bf.svg)
 
 ## Saving and reusing payment methods
 
@@ -17,7 +16,7 @@ The Setup Intents API is useful for businesses that onboard customers but don’
 - A crowdfunding website that collects card details to be charged later, only if the campaign reaches a certain amount
 - A utility company that charges a different amount each month based on usage but collects SEPA payment details before the first month’s payment
 
-> You can set up payment methods for future use with [Checkout](https://docs.stripe.com/payments/save-and-reuse.md?platform=checkout) too.
+> You can also set up payment methods for future use when you do charge them during [Checkout](https://docs.stripe.com/payments/save-and-reuse.md?platform=checkout).
 
 #### Get started
 
@@ -25,11 +24,17 @@ The Setup Intents API is useful for businesses that onboard customers but don’
 - [Save bank details for SEPA Direct Debit payments](https://docs.stripe.com/payments/sepa-debit/set-up-payment.md)
 - [Save bank details for BECS Direct Debit payments](https://docs.stripe.com/payments/au-becs-debit/set-up-payment.md)
 
-## Getting permission to save a payment method 
+## Get permission to save a payment method 
 
-> #### Compliance
-> 
-> You’re responsible for your compliance with all applicable laws, regulations, and network rules when saving a customer’s payment details. If you set up a payment method for future *on-session* (A payment is described as on-session if it occurs while the customer is actively in your checkout flow and able to authenticate the payment method) payments, such as displaying the payment method on a future checkout page, make sure that you explicitly collect consent from the customer for this specific use. For example, include a “Save my payment method for future use” checkbox to collect consent. If you need to differentiate between payment methods saved only for offline usages and payment methods you can present to your customer for future *on-session* (A payment is described as on-session if it occurs while the customer is actively in your checkout flow and able to authenticate the payment method) purchases, you can utilize the [allow_redisplay](https://docs.stripe.com/api/payment_methods/object.md#payment_method_object-allow_redisplay) parameter on the PaymentMethod object.
+You’re responsible for your compliance with all applicable laws, regulations, and network rules when saving a customer’s payment details.
+
+### Future on-session use
+
+If you set up a payment method for future *on-session* (A payment is described as on-session if it occurs while the customer is actively in your checkout flow and able to authenticate the payment method) payments, such as displaying the payment method on a future checkout page, you must explicitly collect consent from the customer for this specific use. For example, include a “Save my payment method for future use” checkbox to collect consent.
+
+If you need to differentiate between payment methods saved only for offline usages and payment methods you can present to your customer for future *on-session* (A payment is described as on-session if it occurs while the customer is actively in your checkout flow and able to authenticate the payment method) purchases, you can utilize the [allow_redisplay](https://docs.stripe.com/api/payment_methods/object.md#payment_method_object-allow_redisplay) parameter on the PaymentMethod object.
+
+### Future off-session use
 
 If you set up a payment method for future *off-session* (A payment is described as off-session if it occurs without the direct involvement of the customer, using previously-collected payment information) payments, you need permission. Creating an agreement (sometimes called a *mandate*) up front allows you to charge the customer when they’re not actively using your website or app.
 
@@ -43,7 +48,7 @@ See recommended mandate text for [saving cards](https://docs.stripe.com/payments
 
 For users impacted by *SCA* (Strong Customer Authentication (SCA) is a regulatory requirement in effect as of September 14, 2019, that impacts many European online payments. It requires customers to use two-factor authentication like 3D Secure to verify their purchase), this agreement helps payments succeed without interruption. When you set up your integration to properly save a card, Stripe marks any subsequent off-session payment as a *merchant-initiated transaction* (A payment made off-session with a properly authenticated saved card, can qualify as merchant-initiated transaction and be exempt from SCA) (MIT) so that your customers don’t have to come back online and authenticate. Merchant-initiated transactions require an agreement between you and your customer.
 
-## Increasing success rate by specifying usage
+## Specify usage to increase success rate
 
 The [usage](https://docs.stripe.com/api/setup_intents/object.md#setup_intent_object-usage) parameter tells Stripe how you plan to use payment method details later. For some payment methods, Stripe can use your `usage` setting to pick the most frictionless flow for the customer. This optimization is designed to increase the number of successful payments.
 

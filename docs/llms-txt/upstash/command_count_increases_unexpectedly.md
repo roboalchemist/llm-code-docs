@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/troubleshooting/command_count_increases_unexpectedly.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Unexpected Increase in Command Count
 
 ### Symptom

@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/api-reference/endpoint/research-streaming.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Streaming
 
 > Stream real-time research progress and results from Tavily Research API
@@ -332,8 +336,3 @@ If you don't need real-time updates, set `stream: false` (or omit the parameter)
 ```
 
 You can then poll the status endpoint to check when the research is complete.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

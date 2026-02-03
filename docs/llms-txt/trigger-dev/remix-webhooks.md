@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/frameworks/remix-webhooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Triggering tasks with webhooks in Remix
 
 > Learn how to trigger a task from a webhook in a Remix app.
@@ -22,7 +26,7 @@ The webhook handler in this guide will be an API route. Create a new file `app/r
 
 In your new file, add the following code:
 
-```ts /api/webhook-handler.ts theme={null}
+```ts /api/webhook-handler.ts theme={"theme":"css-variables"}
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { tasks } from "@trigger.dev/sdk";
 import { helloWorldTask } from "src/trigger/example";
@@ -48,15 +52,15 @@ Now that you have a webhook handler set up, you can trigger the 'Hello World' ta
     First, run your Remix app.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npm run dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm run dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dev
       ```
     </CodeGroup>
@@ -64,15 +68,15 @@ Now that you have a webhook handler set up, you can trigger the 'Hello World' ta
     Then, open up a second terminal window and start the Trigger.dev dev server:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest dev
       ```
     </CodeGroup>
@@ -86,7 +90,7 @@ Now that you have a webhook handler set up, you can trigger the 'Hello World' ta
       below command with that URL instead.
     </Tip>
 
-    ```bash  theme={null}
+    ```bash  theme={"theme":"css-variables"}
     curl -X POST -H "Content-Type: application/json" -d '{"Name": "John Doe", "Age": "87"}' http://localhost:5173/api/webhook-handler
     ```
 

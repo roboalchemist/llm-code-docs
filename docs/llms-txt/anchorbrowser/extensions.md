@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/advanced/extensions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Browser Extensions
 
 > Upload and use custom browser extensions in your sessions

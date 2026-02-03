@@ -9,13 +9,17 @@ https://api.apify.com/v2/webhooks/:webhookId/test
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/WebhookClientAsync#testhttps://docs.apify.com/api/client/js/reference/class/WebhookClient#testTests a webhook. Creates a webhook dispatch with a dummy payload.
+Tests a webhook. Creates a webhook dispatch with a dummy payload.
 
 ## Request
 
 ## Responses
 
 * 201
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

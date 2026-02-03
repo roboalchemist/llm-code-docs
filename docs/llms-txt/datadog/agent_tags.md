@@ -4,7 +4,6 @@
 title: Log Agent tags
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Agent > Host Agent Log collection > Log Agent tags
-source_url: https://docs.datadoghq.com/logs/agent_tags/index.html
 ---
 
 # Log Agent tags

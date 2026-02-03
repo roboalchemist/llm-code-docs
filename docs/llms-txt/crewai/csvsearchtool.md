@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/file-document/csvsearchtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CSV RAG Search
 
 > The `CSVSearchTool` is a powerful RAG (Retrieval-Augmented Generation) tool designed for semantic searches within a CSV file's content.

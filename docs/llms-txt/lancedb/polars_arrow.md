@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/data/polars_arrow.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Polars
 
 export const PyPlatformsPolarsVectorSearch = "polars_results = (\n    polars_table.search([0.1, 0.2, 0.3])\n    .select([\"text\", \"_distance\"])\n    .limit(1)\n    .to_polars()\n)\nprint(polars_results)\n";
@@ -49,8 +53,3 @@ You can also describe your table via `LanceModel` and continue ingesting data fr
 <CodeBlock filename="Python" language="Python" icon="python">
   {PyPlatformsPolarsPydantic}
 </CodeBlock>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

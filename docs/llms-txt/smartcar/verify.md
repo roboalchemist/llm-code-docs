@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/webhooks/events/verify.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # VERIFY Event
 
 > One-time challenge to verify your webhook endpoint
@@ -330,8 +334,3 @@ After successfully responding to the `VERIFY` event, your webhook is activated a
     Build a complete webhook handler
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://smartcar.com/docs/llms.txt

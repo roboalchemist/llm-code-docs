@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/context-compliance-attack/
+
 # Context Compliance Attack Plugin
 
 Context Compliance Attacks (CCAs) exploit a dangerous flaw in many LLM deployments: **the failure to verify conversation history integrity**. In this attack, hackers fabricate a fake conversation where the AI supposedly agreed to provide harmful information, then simply ask the AI to follow through on its "previous offer."

@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/integrations/opentelemetry/overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Observability via OpenTelemetry
 
 > Connect your LLM apps to Lunary with the OpenTelemetry standard.
@@ -61,8 +65,3 @@ For property mapping and advanced tips, see [OTEL attribute mapping](./otel-mapp
 | Replicate                | ✅      | ⏳          |
 | together.ai              | ✅      | ⏳          |
 | HuggingFace Transformers | ✅      | ⏳          |
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

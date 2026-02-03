@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/node/no-exports-assign.md
 ---
-# node/no-exports-assign&#x20;
 
 ### What it does
 

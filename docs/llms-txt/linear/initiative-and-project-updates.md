@@ -24,7 +24,7 @@ Admins can also configure a default Slack channel where all Initiative updates a
 
 Configure project updates for your workspace under [workspace settings](https://linear.app/settings/projects). Select a Slack channel where updates will go (we recommend a dedicated one such as #project-updates) and set optional reminders to remind project leads to post an update at a regular cadence (e.g. post an update weekly on Wednesdays).
 
-Configure notifications for specific projects by clicking the bell icon from the project view (it's next to the _Updates_ button). From there, you can link the project to its own Slack channel (e.g. #p-project-name) to send updates and notifications there. 
+Configure notifications for specific projects by clicking the bell icon in the project's header. From there, you can link the project to its own Slack channel (e.g. #p-project-name) to send updates and notifications there. 
 
 > [!NOTE]
 > A project must be associated with at least 1 public team for its updates to appear in the channel chosen from the workspace-level project settings. For private-team only projects, you will need to configure separate notifications.
@@ -112,13 +112,13 @@ If the Slack integration is enabled and updates are posted in a Slack channel, c
 
 Admins can enable update reminders in Workspace Settings to ensure Initiative and Project updates are posted consistently. Once enabled, you can customize the frequency of reminders, choosing whether they are sent daily or at a set interval (e.g., weekly or biweekly). You can create custom schedules and also specify the day and time for reminders. Leads will receive reminders in the designated time window in their local timezone.
 
-Reminders are sent for _active_ Initiatives and _in progress_ Projects, and only to the Initiative owner or project lead. If an update isn’t made after the initial reminder, follow-up nudges will be sent 1 working day later, and 2 working days after this.
+Reminders are sent for _active_ Initiatives and Projects with statuses in the _started_ category, and only to the Initiative owner or project lead. If an update isn’t made after the initial reminder, follow-up nudges will be sent 1 working day later, and 2 working days after this.
 
 When selecting a reminder time, note that reminders may not be sent precisely at the chosen hour but will be delivered within the hour selected or shortly after.
 
 ### Project-level update schedule
 
-You can also change the update schedule for individual project from the bell icon on the project view menu. Toggle between the following options for your project:
+You can also change the update schedule for an individual project from the bell icon on the project view menu. Toggle between the following options for your project:
 
 * Follow the workspace default notification schedule
 * Set a custom schedule for this project
@@ -133,7 +133,7 @@ When project update reminders are enabled, in-progress projects that are overdue
 Projects are marked _Update Missing_ when both of the following are true:
 
 * The last project update was _On Track_
-* An update is 2 reminder cycles + 3 days overdue past the expected update frequency
+* An update is one reminder cycle + 3 days overdue past the expected update frequency
 
 Projects will instead show _No Update expected_ if they completed or their update schedule is set to _Never_.
 

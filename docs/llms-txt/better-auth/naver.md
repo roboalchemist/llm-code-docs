@@ -4,11 +4,7 @@
 
 Naver provider setup and usage.
 
-***
 
-title: Naver
-description: Naver provider setup and usage.
---------------------------------------------
 
 <Steps>
   <Step>

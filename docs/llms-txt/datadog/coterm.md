@@ -6,7 +6,6 @@ description: >-
   Record terminal sessions, analyze them in Datadog, and protect against
   dangerous terminal commands with CoTerm's validation layer.
 breadcrumbs: Docs > Datadog CoTerm
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Datadog CoTerm

@@ -6,62 +6,32 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/json/strlen.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/strlen.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/strlen.md
+# JSON.STRLEN
 
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/strlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/strlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/strlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/strlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/strlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/strlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/strlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/strlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/strlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/strlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/strlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/strlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/strlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/strlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/strlen.md
-
-# STRLEN
-
-> Return the length of a string stored at a key.
-
-The \`STRLEN\`\` command in Redis is used to find the length of the string value associated with a key. In Redis, keys can be associated with various data types, and one of these data types is the "string." The STRLEN command specifically operates on keys that are associated with string values.
+> Report the length of the JSON String at path in key
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
-  The name of the Redis key.
+<ParamField body="key" type="str" required>
+  The key of the json entry.
+</ParamField>
+
+<ParamField body="path" type="str" required>
+  The path of the string. `$` is the root.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
-  The length of the value.
+<ResponseField type="List[int]" required>
+  The length of the string at the path.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.set("key", "helloworld")
-  const length = await redis.strlen("key");
-  console.log(length); // 10
+  ```py Example theme={"system"}
+  redis.json.strlen("key", "$.path.to.str")
   ```
 </RequestExample>

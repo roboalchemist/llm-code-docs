@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/adaptive-content/enabling-adaptive-content.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/adaptive-content/enabling-adaptive-content.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/adaptive-content/enabling-adaptive-content.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/adaptive-content/enabling-adaptive-content.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/adaptive-content/enabling-adaptive-content.md
 
@@ -20,7 +16,7 @@ Before you’re able to pass user data to GitBook, you’ll need to configure yo
 
 Head to your [site’s settings](https://gitbook.com/docs/publishing-documentation/site-settings), and enable **Adaptive content** from your site’s audience settings. Once enabled, you’ll get a generated ‘Visitor token signing key’, which you’ll need in order to continue the adaptive content setup.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FH5SCBHouCTo5hrp9ymfW%2F18_07_25_enable_adaptive_content.svg?alt=media&#x26;token=3deb470a-f1c9-4621-87fb-7379d95682f0" alt="A GitBook screenshot showing the enable adaptive content toggle"><figcaption><p>Enable adaptive content</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F5EeWAo5Ij6CKrp69uMl5%2F26_01_06_enable_adaptive_content%402x.png?alt=media&#x26;token=4a1e8558-4b91-4f8b-8581-63d570a2c330" alt="A GitBook screenshot showing the enable adaptive content toggle"><figcaption><p>Enable adaptive content in your site’s Settings</p></figcaption></figure>
 
 ### Set your visitor schema
 

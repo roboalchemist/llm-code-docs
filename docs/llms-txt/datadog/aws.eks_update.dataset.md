@@ -4,8 +4,6 @@
 title: EKS Update
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EKS Update
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.eks_update.dataset/index.html
 ---
 
 # EKS Update
@@ -18,14 +16,14 @@ aws.eks_update
 
 ## Fields
 
-| Title      | ID   | Type      | Data Type                                                                | Description |
-| ---------- | ---- | --------- | ------------------------------------------------------------------------ | ----------- |
-| _key       | core | string    |
-| account_id | core | string    |
-| created_at | core | timestamp | The Unix epoch timestamp at object creation.                             |
-| errors     | core | json      | Any errors associated with a Failed update.                              |
-| id         | core | string    | A UUID that is used to track the update.                                 |
-| params     | core | json      | A key-value map that contains the parameters associated with the update. |
-| status     | core | string    | The current status of the update.                                        |
-| tags       | core | hstore    |
-| type       | core | string    | The type of the update.                                                  |
+| Title      | ID   | Type       | Data Type                                                                | Description |
+| ---------- | ---- | ---------- | ------------------------------------------------------------------------ | ----------- |
+| _key       | core | string     |
+| account_id | core | string     |
+| created_at | core | timestamp  | The Unix epoch timestamp at object creation.                             |
+| errors     | core | json       | Any errors associated with a Failed update.                              |
+| id         | core | string     | A UUID that is used to track the update.                                 |
+| params     | core | json       | A key-value map that contains the parameters associated with the update. |
+| status     | core | string     | The current status of the update.                                        |
+| tags       | core | hstore_csv |
+| type       | core | string     | The type of the update.                                                  |

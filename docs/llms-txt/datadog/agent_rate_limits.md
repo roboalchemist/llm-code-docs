@@ -6,7 +6,6 @@ description: >-
   Configure Agent connection, memory, and CPU limits to prevent APM rate
   limiting errors and resource exhaustion.
 breadcrumbs: Docs > APM > APM Troubleshooting > Agent Rate Limits
-source_url: https://docs.datadoghq.com/troubleshooting/agent_rate_limits/index.html
 ---
 
 # Agent Rate Limits

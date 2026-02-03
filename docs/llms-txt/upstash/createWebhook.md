@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/basics/context/createWebhook.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # context.createWebhook
 
 `context.createWebhook()` creates a unique webhook that can be called by external services to trigger workflow continuation.
@@ -38,8 +42,3 @@ export const { POST } = serve(async (context) => {
 ```
 
 For more complete examples and use cases, see [the page on webhooks](/workflow/features/webhooks).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://upstash.com/docs/llms.txt

@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/internal/audio_utils.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/internal/audio_utils.md
 
 # Utilities for `FeatureExtractors`
 
@@ -10,7 +10,7 @@ Most of those are only useful if you are studying the code of the audio processo
 
 #### transformers.audio_utils.hertz_to_mel[[transformers.audio_utils.hertz_to_mel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/audio_utils.py#L264)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/audio_utils.py#L263)
 
 Convert frequency from hertz to mels.
 
@@ -28,7 +28,7 @@ The frequencies on the mel scale.
 
 #### transformers.audio_utils.mel_to_hertz[[transformers.audio_utils.mel_to_hertz]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/audio_utils.py#L300)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/audio_utils.py#L299)
 
 Convert frequency from mels to hertz.
 
@@ -46,7 +46,7 @@ The frequencies in hertz.
 
 #### transformers.audio_utils.mel_filter_bank[[transformers.audio_utils.mel_filter_bank]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/audio_utils.py#L454)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/audio_utils.py#L453)
 
 Creates a frequency bin conversion matrix used to obtain a mel spectrogram. This is called a *mel filter bank*, and
 various implementation exist, which differ in the number of filters, the shape of the filters, the way the filters
@@ -94,7 +94,7 @@ projection matrix to go from a spectrogram to a mel spectrogram.
 
 #### transformers.audio_utils.optimal_fft_length[[transformers.audio_utils.optimal_fft_length]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/audio_utils.py#L548)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/audio_utils.py#L547)
 
 Finds the best FFT input size for a given `window_length`. This function takes a given window length and, if not
 already a power of two, rounds it up to the next power or two.
@@ -106,7 +106,7 @@ it simply gives a higher frequency resolution (i.e. the frequency bins are small
 
 #### transformers.audio_utils.window_function[[transformers.audio_utils.window_function]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/audio_utils.py#L561)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/audio_utils.py#L560)
 
 Returns an array containing the specified window. This window is intended to be used with `stft`.
 
@@ -135,7 +135,7 @@ center (`bool`, *optional*, defaults to `True`) : Whether to center the window i
 
 #### transformers.audio_utils.spectrogram[[transformers.audio_utils.spectrogram]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/audio_utils.py#L625)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/audio_utils.py#L624)
 
 Calculates a spectrogram over one waveform using the Short-Time Fourier Transform.
 
@@ -217,7 +217,7 @@ dtype (`np.dtype`, *optional*, defaults to `np.float32`) : Data type of the spec
 
 #### transformers.audio_utils.power_to_db[[transformers.audio_utils.power_to_db]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/audio_utils.py#L1047)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/audio_utils.py#L1046)
 
 Converts a power spectrogram to the decibel scale. This computes `10 * log10(spectrogram / reference)`, using basic
 logarithm properties for numerical stability.
@@ -247,7 +247,7 @@ the spectrogram in decibels
 
 #### transformers.audio_utils.amplitude_to_db[[transformers.audio_utils.amplitude_to_db]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/audio_utils.py#L1147)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/audio_utils.py#L1146)
 
 Converts an amplitude spectrogram to the decibel scale. This computes `20 * log10(spectrogram / reference)`, using
 basic logarithm properties for numerical stability.

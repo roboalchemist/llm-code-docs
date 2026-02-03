@@ -1,5 +1,9 @@
 # Source: https://herd.laravel.com/docs/macos/guides/laravel.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://herd.laravel.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Laravel
 
 # How to set up a Laravel application

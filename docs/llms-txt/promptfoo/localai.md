@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/localai/
+
 # Local AI
 
 LocalAI is an API wrapper for open-source LLMs that is compatible with OpenAI. You can run LocalAI for compatibility with Llama, Alpaca, Vicuna, GPT4All, RedPajama, and many other models compatible with the ggml format.

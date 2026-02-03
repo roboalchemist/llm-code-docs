@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/frame/producer-consumer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Producer & Consumer Processors
 
 > Route frames between different parts of a pipeline, allowing selective frame sharing across parallel branches or within complex pipelines
@@ -100,8 +104,3 @@ pipeline = Pipeline([
     transport.output(),
 ])
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

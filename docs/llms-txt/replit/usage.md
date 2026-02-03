@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/legal-and-security-info/usage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Usage Quota & Limits
 
 > Learn about Replit's resource limits, including CPU, RAM, storage, and network restrictions that apply to Replit Apps based on your plan.

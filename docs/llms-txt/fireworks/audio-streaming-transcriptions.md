@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/api-reference/audio-streaming-transcriptions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Streaming Transcription
 
 <Steps>
@@ -129,7 +133,7 @@ wss://audio-streaming-v2.api.fireworks.ai/v1/audio/transcriptions/streaming
     </ResponseField>
 
     <ResponseField name="language" type="string" required>
-      The language of the transcribed/translated text.
+      The language(s) of the transcribed/translated text. Can be a single language code or comma-separated codes as a single string when multiple languages are detected.
     </ResponseField>
 
     <ResponseField name="text" type="string" required>
@@ -180,6 +184,10 @@ wss://audio-streaming-v2.api.fireworks.ai/v1/audio/transcriptions/streaming
 
         <ResponseField name="text" type="string" required>
           The text content of the segment.
+        </ResponseField>
+
+        <ResponseField name="language" type="string" required>
+          The language(s) of the segment. Can be a single language code or comma-separated codes as a single string when multiple languages are detected.
         </ResponseField>
 
         <ResponseField name="words" type="object[] | null" optional>

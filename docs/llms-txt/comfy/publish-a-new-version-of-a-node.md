@@ -1,258 +1,91 @@
 # Source: https://docs.comfy.org/api-reference/registry/publish-a-new-version-of-a-node.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Publish a new version of a node
+
+
 
 ## OpenAPI
 
 ````yaml https://api.comfy.org/openapi post /publishers/{publisherId}/nodes/{nodeId}/versions
+openapi: 3.0.2
+info:
+  title: Comfy API
+  version: '1.0'
+servers:
+  - url: https://api.comfy.org
+security: []
 paths:
-  path: /publishers/{publisherId}/nodes/{nodeId}/versions
-  method: post
-  servers:
-    - url: https://api.comfy.org
-  request:
-    security:
-      - title: BearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        publisherId:
+  /publishers/{publisherId}/nodes/{nodeId}/versions:
+    post:
+      tags:
+        - Registry
+      summary: Publish a new version of a node
+      operationId: PublishNodeVersion
+      parameters:
+        - in: path
+          name: publisherId
+          required: true
           schema:
-            - type: string
-              required: true
-        nodeId:
+            type: string
+        - in: path
+          name: nodeId
+          required: true
           schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              node:
-                allOf:
-                  - $ref: '#/components/schemas/Node'
-              node_version:
-                allOf:
-                  - $ref: '#/components/schemas/NodeVersion'
-              personal_access_token:
-                allOf:
-                  - type: string
-            required: true
-            requiredProperties:
-              - node
-              - node_version
-              - personal_access_token
-        examples:
-          example:
-            value:
-              node:
-                author: <string>
-                banner_url: <string>
-                category: <string>
-                created_at: '2023-11-07T05:31:56Z'
-                description: <string>
-                downloads: 123
-                github_stars: 123
-                icon: <string>
-                id: <string>
-                latest_version:
-                  changelog: <string>
-                  comfy_node_extract_status: <string>
-                  createdAt: '2023-11-07T05:31:56Z'
-                  dependencies:
-                    - <string>
-                  deprecated: true
-                  downloadUrl: <string>
-                  id: <string>
-                  node_id: <string>
-                  status: NodeVersionStatusActive
-                  status_reason: <string>
-                  supported_accelerators:
-                    - <string>
-                  supported_comfyui_frontend_version: <string>
-                  supported_comfyui_version: <string>
-                  supported_os:
-                    - <string>
-                  tags:
-                    - <string>
-                  tags_admin:
-                    - <string>
-                  version: <string>
-                license: <string>
-                name: <string>
-                preempted_comfy_node_names:
-                  - <string>
-                publisher:
-                  createdAt: '2023-11-07T05:31:56Z'
-                  description: <string>
-                  id: <string>
-                  logo: <string>
-                  members:
-                    - id: <string>
-                      role: <string>
-                      user:
-                        email: <string>
-                        id: <string>
-                        name: <string>
-                  name: <string>
-                  source_code_repo: <string>
-                  status: PublisherStatusActive
-                  support: <string>
-                  website: <string>
-                rating: 123
-                repository: <string>
-                search_ranking: 123
-                status: NodeStatusActive
-                status_detail: <string>
-                supported_accelerators:
-                  - <string>
-                supported_comfyui_frontend_version: <string>
-                supported_comfyui_version: <string>
-                supported_os:
-                  - <string>
-                tags:
-                  - <string>
-                tags_admin:
-                  - <string>
-                translations: {}
-              node_version:
-                changelog: <string>
-                comfy_node_extract_status: <string>
-                createdAt: '2023-11-07T05:31:56Z'
-                dependencies:
-                  - <string>
-                deprecated: true
-                downloadUrl: <string>
-                id: <string>
-                node_id: <string>
-                status: NodeVersionStatusActive
-                status_reason: <string>
-                supported_accelerators:
-                  - <string>
-                supported_comfyui_frontend_version: <string>
-                supported_comfyui_version: <string>
-                supported_os:
-                  - <string>
-                tags:
-                  - <string>
-                tags_admin:
-                  - <string>
-                version: <string>
-              personal_access_token: <string>
-  response:
-    '201':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              node_version:
-                allOf:
-                  - $ref: '#/components/schemas/NodeVersion'
-              signedUrl:
-                allOf:
-                  - description: The signed URL to upload the node version token.
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                node:
+                  $ref: '#/components/schemas/Node'
+                node_version:
+                  $ref: '#/components/schemas/NodeVersion'
+                personal_access_token:
+                  type: string
+              required:
+                - node
+                - node_version
+                - personal_access_token
+              type: object
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                properties:
+                  node_version:
+                    $ref: '#/components/schemas/NodeVersion'
+                  signedUrl:
+                    description: The signed URL to upload the node version token.
                     type: string
-        examples:
-          example:
-            value:
-              node_version:
-                changelog: <string>
-                comfy_node_extract_status: <string>
-                createdAt: '2023-11-07T05:31:56Z'
-                dependencies:
-                  - <string>
-                deprecated: true
-                downloadUrl: <string>
-                id: <string>
-                node_id: <string>
-                status: NodeVersionStatusActive
-                status_reason: <string>
-                supported_accelerators:
-                  - <string>
-                supported_comfyui_frontend_version: <string>
-                supported_comfyui_version: <string>
-                supported_os:
-                  - <string>
-                tags:
-                  - <string>
-                tags_admin:
-                  - <string>
-                version: <string>
-              signedUrl: <string>
-        description: New version published successfully
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: string
-              message:
-                allOf:
-                  - &ref_1
-                    type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: &ref_2
-              - error
-              - message
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Bad request, invalid input data.
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Forbidden
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Internal server error
-  deprecated: false
-  type: path
+                type: object
+          description: New version published successfully
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Bad request, invalid input data.
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+      security:
+        - BearerAuth: []
 components:
   schemas:
     Node:
@@ -351,12 +184,6 @@ components:
           description: Translations of node metadata in different languages.
           type: object
       type: object
-    NodeStatus:
-      enum:
-        - NodeStatusActive
-        - NodeStatusDeleted
-        - NodeStatusBanned
-      type: string
     NodeVersion:
       properties:
         changelog:
@@ -422,14 +249,16 @@ components:
             unique for the node.
           type: string
       type: object
-    NodeVersionStatus:
-      enum:
-        - NodeVersionStatusActive
-        - NodeVersionStatusDeleted
-        - NodeVersionStatusBanned
-        - NodeVersionStatusPending
-        - NodeVersionStatusFlagged
-      type: string
+    ErrorResponse:
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+      required:
+        - error
+        - message
+      type: object
     Publisher:
       properties:
         createdAt:
@@ -462,6 +291,20 @@ components:
         website:
           type: string
       type: object
+    NodeStatus:
+      enum:
+        - NodeStatusActive
+        - NodeStatusDeleted
+        - NodeStatusBanned
+      type: string
+    NodeVersionStatus:
+      enum:
+        - NodeVersionStatusActive
+        - NodeVersionStatusDeleted
+        - NodeVersionStatusBanned
+        - NodeVersionStatusPending
+        - NodeVersionStatusFlagged
+      type: string
     PublisherMember:
       properties:
         id:
@@ -490,5 +333,10 @@ components:
           description: The name for this user.
           type: string
       type: object
+  securitySchemes:
+    BearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
 
 ````

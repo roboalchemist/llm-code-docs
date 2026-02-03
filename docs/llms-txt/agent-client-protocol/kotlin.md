@@ -1,5 +1,9 @@
 # Source: https://agentclientprotocol.com/libraries/kotlin.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Kotlin
 
 > Kotlin library for the Agent Client Protocol
@@ -26,8 +30,3 @@ dependencies {
 ```
 
 The [sample](https://github.com/agentclientprotocol/kotlin-sdk/tree/master/samples/kotlin-acp-client-sample) demonstrates how to implement both sides of the protocol.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/quickstarts/solidjs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SolidJS
 
 <Card title="GitHub Repository" icon="github" href="https://github.com/upstash/workflow-js/tree/main/examples/solidjs" horizontal>

@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-nodemailer-smtp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails using Nodemailer with SMTP
 
 > Learn how to send your first email using Nodemailer with SMTP.
@@ -16,16 +20,20 @@ To get the most out of this guide, you'll need to:
 Get the [Nodemailer](https://www.npmjs.com/package/nodemailer) package.
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":{"light":"github-light","dark":"vesper"}}
   npm install nodemailer
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":{"light":"github-light","dark":"vesper"}}
   yarn add nodemailer
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":{"light":"github-light","dark":"vesper"}}
   pnpm add nodemailer
+  ```
+
+  ```bash bun theme={"theme":{"light":"github-light","dark":"vesper"}}
+  bun add nodemailer
   ```
 </CodeGroup>
 
@@ -40,7 +48,7 @@ When configuring your SMTP integration, you'll need to use the following credent
 
 Then use these credentials to create a transport:
 
-```js index.ts theme={null}
+```js index.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
 import nodemailer from 'nodemailer';
 
 async function main() {

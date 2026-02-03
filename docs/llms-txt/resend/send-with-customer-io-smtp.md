@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-customer-io-smtp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails using Customer.io with SMTP
 
 > Learn how to integrate Customer.io with Resend SMTP.

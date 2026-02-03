@@ -18,17 +18,12 @@ const toast = useToast()
 - A maximum of 5 toasts are displayed at a time. When adding a new toast that would exceed this limit, the oldest toast is automatically removed.
 - When removing a toast, there's a 200ms delay before it's actually removed from the state, allowing for exit animations.
 
-<warning>
+> [!WARNING]
+> Make sure to wrap your app with the [`App`](/docs/components/app) component which uses our [`Toaster`](https://github.com/nuxt/ui/blob/v4/src/runtime/components/Toaster.vue) component which uses the [`ToastProvider`](https://reka-ui.com/docs/components/toast#provider) component from Reka UI.
 
-Make sure to wrap your app with the [`App`](/docs/components/app) component which uses our [`Toaster`](https://github.com/nuxt/ui/blob/v4/src/runtime/components/Toaster.vue) component which uses the [`ToastProvider`](https://reka-ui.com/docs/components/toast#provider) component from Reka UI.
-
-</warning>
-
-<tip to="/docs/components/toast">
-
-Learn how to customize the appearance and behavior of toasts in the **Toast** component documentation.
-
-</tip>
+> [!TIP]
+> See: /docs/components/toast
+> Learn how to customize the appearance and behavior of toasts in the Toast component documentation.
 
 ## API
 
@@ -44,34 +39,37 @@ Adds a new toast notification.
 
 #### Parameters
 
-<field-group>
-<field name="toast" type="Partial<Toast>" :required="true" required="true">
-
-A partial `Toast` object with the following properties:
-
-<collapsible>
-<field-group>
-<field name="id" type="string | number">
+A partial  object with the following properties:
 
 A unique identifier for the toast. If not provided, a timestamp will be used.
 
-</field>
+Whether the toast is open. Defaults to .
 
-<field name="open" type="boolean">
+The title displayed in the toast.
 
-Whether the toast is open. Defaults to `true`.
+The description displayed in the toast.
 
-</field>
+The icon displayed in the toast.
 
-<field name="..." type="Toast">
+The avatar displayed in the toast. See .
 
-Other properties from the `Toast` interface.
+The color of the toast.
 
-</field>
-</field-group>
-</collapsible>
-</field>
-</field-group>
+The orientation between the content and the actions. Defaults to .
+
+Customize or hide the close button (with  value). Defaults to .
+
+The icon displayed in the close button.
+
+The actions displayed in the toast. See .
+
+Customize or hide the progress bar (with  value). Defaults to .
+
+The duration in milliseconds before the toast auto-closes. Can also be set globally on the  component.
+
+A callback function invoked when the toast is clicked.
+
+A callback function invoked when the toast open state changes. Useful to perform an action when the toast closes (expired or dismissed).
 
 **Returns:** The complete `Toast` object that was added.
 
@@ -97,19 +95,9 @@ Updates an existing toast notification.
 
 #### Parameters
 
-<field-group>
-<field name="id" type="string | number" :required="true" required="true">
-
 The unique identifier of the toast to update.
 
-</field>
-
-<field name="toast" type="Partial<Toast>" :required="true" required="true">
-
-A partial `Toast` object with the properties to update.
-
-</field>
-</field-group>
+A partial  object with the properties to update.
 
 ```vue
 <script setup lang="ts">
@@ -132,13 +120,7 @@ Removes a toast notification.
 
 #### Parameters
 
-<field-group>
-<field name="id" type="string | number" :required="true" required="true">
-
 The unique identifier of the toast to remove.
-
-</field>
-</field-group>
 
 ```vue
 <script setup lang="ts">
@@ -166,9 +148,20 @@ function clearAllToasts() {
 </script>
 ```
 
-### `toasts`
+### toasts
 
 `toasts: Ref<Toast[]>`
 
-- Type: `Ref<Toast[]>`
-- Description: A reactive array containing all current toast notifications.
+A reactive array containing all current toast notifications.
+
+```vue
+<script setup lang="ts">
+const { toasts } = useToast()
+</script>
+
+<template>
+  <div>
+    <pre>{{ toasts }}</pre>
+  </div>
+</template>
+```

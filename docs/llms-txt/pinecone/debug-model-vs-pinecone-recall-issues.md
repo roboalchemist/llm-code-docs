@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/troubleshooting/debug-model-vs-pinecone-recall-issues.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Debug model vs. Pinecone recall issues
 
 ## **Step 1: Establish the evaluation framework**

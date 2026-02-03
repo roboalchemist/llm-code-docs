@@ -6,7 +6,6 @@ description: >-
   Monitor IoT devices and embedded applications with the optimized Datadog IoT
   Agent for resource-constrained environments.
 breadcrumbs: Docs > Agent > IoT Agent
-source_url: https://docs.datadoghq.com/iot/index.html
 ---
 
 # IoT Agent

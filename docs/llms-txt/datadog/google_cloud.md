@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/getting_started/integrations/google_cloud.md
+
 # Source: https://docs.datadoghq.com/cloud_cost_management/setup/google_cloud.md
 
 # Source: https://docs.datadoghq.com/account_management/billing/google_cloud.md
@@ -6,7 +8,6 @@
 title: Google Cloud Integration Billing
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Account Management > Billing > Google Cloud Integration Billing
-source_url: https://docs.datadoghq.com/billing/google_cloud/index.html
 ---
 
 # Google Cloud Integration Billing

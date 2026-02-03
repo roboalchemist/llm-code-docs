@@ -6,9 +6,8 @@ description: >-
   Automatic cluster name detection for Kubernetes clusters on GKE, AKS, and EKS
   to improve node identification
 breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Kubernetes Cluster Name
-  Automatic Detection
-source_url: https://docs.datadoghq.com/guide/kubernetes-cluster-name-detection/index.html
+  Docs > Containers > Containers Guides > Kubernetes Cluster Name Automatic
+  Detection
 ---
 
 # Kubernetes Cluster Name Automatic Detection

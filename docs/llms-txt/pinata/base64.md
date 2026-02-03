@@ -2,13 +2,9 @@
 
 # Source: https://docs.pinata.cloud/sdk/upload/private/base64.md
 
-# Source: https://docs.pinata.cloud/sdk/upload/public/base64.md
-
-# Source: https://docs.pinata.cloud/sdk/upload/private/base64.md
-
-# Source: https://docs.pinata.cloud/sdk/upload/public/base64.md
-
-# Source: https://docs.pinata.cloud/sdk/upload/private/base64.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # base64
 

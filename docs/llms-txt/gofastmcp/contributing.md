@@ -1,10 +1,25 @@
 # Source: https://gofastmcp.com/development/contributing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Contributing
 
 > Development workflow for FastMCP contributors
 
 Contributing to FastMCP means joining a community that values clean, maintainable code and thoughtful API design. All contributions are valued - from fixing typos in documentation to implementing major features.
+
+## Design Principles
+
+Every contribution should advance these principles:
+
+* 🚀 **Fast** — High-level interfaces mean less code and faster development
+* 🍀 **Simple** — Minimal boilerplate; the obvious way should be the right way
+* 🐍 **Pythonic** — Feels natural to Python developers; no surprising patterns
+* 🔍 **Complete** — Everything needed for production: auth, testing, deployment, observability
+
+PRs are evaluated against these principles. Code that makes FastMCP slower, harder to reason about, less Pythonic, or less complete will be rejected.
 
 ## Issues
 

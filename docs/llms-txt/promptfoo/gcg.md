@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/gcg/
+
 # Greedy Coordinate Gradient (GCG)
 
 The GCG strategy implements the attack method described in "[Universal and Transferable Adversarial Attacks on Aligned Language Models](https://arxiv.org/html/2307.15043v2)" (Zou et al., 2023).

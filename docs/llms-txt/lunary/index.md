@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/get-started/index.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Getting Started
 
 ## Welcome
@@ -49,8 +53,3 @@ We support integrating with the most popular AI libraries, with more in the work
     Learn how to integrate with LangChain.
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

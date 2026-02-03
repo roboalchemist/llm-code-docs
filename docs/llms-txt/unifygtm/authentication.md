@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/management/authentication.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Authentication Options
 
 > Learn about the login methods available for your organization in Unify.
@@ -12,13 +16,15 @@ Unify supports the following forms of authentication:
 
 2. **Google Workspace**: Users can log in using a Google account associated with your organization's Google Workspace.
 
-3. **Single Sign-On (SSO) via SAML 2.0**: For enterprise customers, Unify supports SSO through the SAML 2.0 protocol. This allows your organization to use your existing identity provider (IdP), such as Okta or Azure AD, to authenticate your users.
+3. **Single Sign-On (SSO) via SAML 2.0**: Unify supports SSO through the SAML 2.0 protocol. This allows your organization to use your existing identity provider (IdP), such as Okta or Azure AD, to authenticate your users.
 
 All methods are powered by Auth0, the leading industry standard for secure authentication.
 
 ### Single Sign-On (SSO)
 
 Our team will work directly with you to integrate Unify with your identify provider. Below are the steps and information we'll cover during this process.
+
+Unify does charge an SSO fee which is a direct passthrough cost from our provider.
 
 #### Supported Identity Providers (IdPs)
 

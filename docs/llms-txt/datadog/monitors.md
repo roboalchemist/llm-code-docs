@@ -1,6 +1,12 @@
+# Source: https://docs.datadoghq.com/getting_started/monitors.md
+
+# Source: https://docs.datadoghq.com/error_tracking/monitors.md
+
 # Source: https://docs.datadoghq.com/cloud_cost_management/cost_changes/monitors.md
 
 # Source: https://docs.datadoghq.com/tracing/error_tracking/monitors.md
+
+# Source: https://docs.datadoghq.com/api/latest/monitors.md
 
 # Source: https://docs.datadoghq.com/monitors.md
 
@@ -10,7 +16,6 @@ description: >-
   Create monitors, configure notifications and automations, and manage your
   monitors using the alerting platform
 breadcrumbs: Docs > Monitors
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Monitors

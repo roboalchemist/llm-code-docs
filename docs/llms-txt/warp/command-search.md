@@ -2,7 +2,7 @@
 
 # Command Search
 
-![Command Search Panel](https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-0416002216ee3a4edba97329e81a7361cea64e2f%2FCleanShot%202024-05-15%20at%2015.31.06.png?alt=media)
+![Command Search Panel](https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-0416002216ee3a4edba97329e81a7361cea64e2f%2Fcommand-search-panel.png?alt=media)
 
 {% hint style="info" %}
 Tailor your Command Search experience by toggling off "Show Global Workflows" in `Settings > Features`. When disabled, your search will exclusively encompass YAML and Warp Drive Workflows.

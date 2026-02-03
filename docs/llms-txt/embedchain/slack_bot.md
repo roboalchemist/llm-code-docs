@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/examples/slack_bot.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 💼 Slack Bot
 
 ### 🖼️ Setup
@@ -9,7 +13,7 @@
 3. Select `From Scratch`, then enter the Bot Name and select your workspace.
 4. On the left Sidebar, go to `OAuth and Permissions` and add the following scopes under `Bot Token Scopes`:
 
-```text
+```text  theme={null}
 app_mentions:read
 channels:history
 channels:read
@@ -21,13 +25,13 @@ chat:write
 
 <Tabs>
   <Tab title="docker">
-    ```bash
+    ```bash  theme={null}
     docker run --name slack-bot -e OPENAI_API_KEY=sk-xxx -e SLACK_BOT_TOKEN=xxx -p 8000:8000 embedchain/slack-bot
     ```
   </Tab>
 
   <Tab title="python">
-    ```bash
+    ```bash  theme={null}
     pip install --upgrade "embedchain[slack]"
     python3 -m embedchain.bots.slack --port 8000
     ```
@@ -45,13 +49,13 @@ chat:write
 * Go to the channel where you have added your bot.
 * To add data sources to the bot, use the command:
 
-```text
+```text  theme={null}
 add <data_type> <url_or_text>
 ```
 
 * To ask queries from the bot, use the command:
 
-```text
+```text  theme={null}
 query <question>
 ```
 

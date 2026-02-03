@@ -1,8 +1,12 @@
 # Source: https://docs.windsurf.com/command/plugins-overview.md
 
-# Overview
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> AI-powered in-line edits
+# Command Overview
+
+> Use Windsurf Command for AI-powered inline code edits in VS Code and JetBrains. Generate or edit code with natural language prompts using Cmd/Ctrl+I.
 
 **Windsurf Command** generates new or edits existing code via natural language inputs, directly in the editor window.
 

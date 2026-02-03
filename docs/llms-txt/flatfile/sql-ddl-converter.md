@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/sql-ddl-converter.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SQL DDL to Flatfile Blueprint Converter
 
 > Automatically create Flatfile Blueprints from SQL Data Definition Language (DDL) files to streamline database schema imports.
@@ -12,7 +16,7 @@ The plugin reads a provided SQL file (e.g., from a `CREATE TABLE` script), parse
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-convert-sql-ddl
 ```
 
@@ -58,7 +62,7 @@ The plugin has no default configuration and requires the `setupFactory` object t
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from "@flatfile/listener";
   import { configureSpaceWithSqlDDL } from "@flatfile/plugin-convert-sql-ddl";
 
@@ -84,7 +88,7 @@ The plugin has no default configuration and requires the `setupFactory` object t
   );
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from "@flatfile/listener";
   import { configureSpaceWithSqlDDL, SqlSetupFactory } from "@flatfile/plugin-convert-sql-ddl";
 
@@ -114,7 +118,7 @@ The plugin has no default configuration and requires the `setupFactory` object t
 ### Advanced Configuration with Callback
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from "@flatfile/listener";
   import { configureSpaceWithSqlDDL } from "@flatfile/plugin-convert-sql-ddl";
 
@@ -149,7 +153,7 @@ The plugin has no default configuration and requires the `setupFactory` object t
   );
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from "@flatfile/listener";
   import { configureSpaceWithSqlDDL, SqlSetupFactory } from "@flatfile/plugin-convert-sql-ddl";
   import { FlatfileEvent } from "@flatfile/listener";
@@ -191,7 +195,7 @@ The plugin has no default configuration and requires the `setupFactory` object t
 ### Custom Event Handler Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from "@flatfile/listener";
   import { configureSpaceWithSqlDDL } from "@flatfile/plugin-convert-sql-ddl";
 
@@ -224,7 +228,7 @@ The plugin has no default configuration and requires the `setupFactory` object t
   });
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from "@flatfile/listener";
   import { configureSpaceWithSqlDDL, SqlSetupFactory } from "@flatfile/plugin-convert-sql-ddl";
   import { FlatfileEvent } from "@flatfile/listener";
@@ -282,7 +286,7 @@ If the SQL file specified in the `source` property cannot be read, a hard error 
 ### Example Error Handling
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from "@flatfile/listener";
   import { configureSpaceWithSqlDDL } from "@flatfile/plugin-convert-sql-ddl";
 
@@ -309,7 +313,7 @@ If the SQL file specified in the `source` property cannot be read, a hard error 
   );
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from "@flatfile/listener";
   import { configureSpaceWithSqlDDL, SqlSetupFactory } from "@flatfile/plugin-convert-sql-ddl";
 

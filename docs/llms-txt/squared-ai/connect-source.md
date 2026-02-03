@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/activation/ai-modelling/connect-source.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connect Source
 
 > Learn how to connect and configure an AI/ML model as a source for use within the AI Squared platform.

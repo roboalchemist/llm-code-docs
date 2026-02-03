@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/development/model/build-commands.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom build commands
 
 > How to run your own docker commands during the build stage

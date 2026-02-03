@@ -1,13 +1,166 @@
 # Source: https://braintrust.dev/docs/changelog.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Product changelog
 
 > New updates and product improvements
 
+export const feature_0 = "Auto-instrumentation"
+
+<Update label="January 2026">
+  ### Auto-instrumentation for Python, Ruby, and Go
+
+  Braintrust now supports [auto-instrumentation](/observability#auto-instrument) for Python, Ruby and Go, enabling zero-code tracing. Python automatically traces OpenAI, Anthropic, LiteLLM, Pydantic AI, Agno, Claude Agent SDK, and DSPy. Ruby automatically traces OpenAI, Anthropic, and 13+ providers via RubyLLM. Go automatically traces OpenAI, Anthropic, and Gemini using Orchestrion. For other providers, use [manual wrapping](/observability).
+
+  <Warning>
+    {feature_0} is a beta feature.
+  </Warning>
+
+  ### Temporal integration
+
+  Braintrust now integrates with [Temporal](https://temporal.io/), a durable execution platform for building reliable distributed applications. The integration automatically traces Temporal workflows and activities, capturing execution spans, metadata, and distributed traces across workers. This provides full observability across workflow executions with parent-child relationships between workflows and activities. Available for TypeScript, Python, and Go. See [Temporal integration](/integrations/sdk-integrations/temporal) for setup instructions.
+
+  ### TrueFoundry integration
+
+  Braintrust now integrates with [TrueFoundry](https://www.truefoundry.com/), an AI Gateway that provides a unified interface for accessing multiple AI providers. TrueFoundry exports LLM traces to Braintrust using OpenTelemetry, automatically capturing all interactions including chat completions, agent responses, embeddings, token usage, costs, and performance metrics. Configure the integration through the TrueFoundry dashboard by setting up the Braintrust OpenTelemetry endpoint and authentication headers. See [TrueFoundry integration](/integrations/sdk-integrations/truefoundry) for setup instructions.
+
+  ### Kanban layout for reviews
+
+  The <Icon icon="activity" /> **Review** page now supports a kanban layout for managing flagged spans. Drag and drop cards to update status, and click to open the full trace. See [Kanban layout](/annotate/human-review#use-kanban-layout) for details.
+
+  ### Streamlined online scoring setup
+
+  Create online scoring rules directly from scorers or the logs browser with automatic prepopulation of scorers and filters, enabling rapid iteration from production logs to scoring rules. See [Create scoring rules](/observe/score-online#create-scoring-rules) for details.
+
+  ### Loop on trace pages
+
+  <Icon icon="blend" /> **Loop** is now available when viewing individual traces. Select a trace and open it in fullscreen or a separate page, then use Loop to summarize trace execution, identify errors, search project logs for similar patterns, and generate custom visualizations. Loop on trace pages provides a focused set of tools optimized for single-trace analysis. See [Analyze individual traces](/observe/loop#analyze-individual-traces) for details.
+
+  ### View raw trace and span data
+
+  You can now view and search the complete JSON representation of individual spans or entire traces. This gives you access to all span fields including metadata and internal properties that aren't visible in other views, making it easier to debug issues, verify exact values, and export data for reproduction. See [View raw trace data](/observe/view-logs#view-raw-trace-data) for details.
+
+  ### Implicit aliasing in SQL queries
+
+  SQL queries now support implicit aliasing for multi-part identifiers. When you reference nested fields like `metadata.category`, you can now use the short form `category` in all SQL operations when unambiguous. This makes queries more concise while maintaining clarity. For more details, see [Implicit aliasing](/reference/sql#implicit-aliasing).
+
+  ### Project-level AI providers
+
+  You can now configure AI provider API keys at the project level to override organization-level keys. This allows you to isolate API usage, manage separate billing, or use different credentials per project. Project-level keys work across playgrounds, experiments, and the AI Proxy. See [Manage projects](/admin/projects#configure-ai-providers) for setup instructions.
+
+  ### Flexible tags across spans
+
+  You can now add tags to any span in a trace (not just root spans) through the SDK and UI. Tags from all spans are automatically aggregated at the trace level for filtering. When you log additional tags, they are merged (union) rather than replaced, allowing you to add contextual tags throughout your workflow. See [Add tags](/instrument/custom-tracing#add-metadata-and-tags) for details.
+
+  ### Thread view search
+
+  You can now search within the <Icon icon="messages-square" /> **Thread** view of a trace to quickly find specific content in long conversations. This is especially helpful when debugging multi-turn LLM conversations, finding where specific tools were called, or locating particular scores in lengthy traces. See [thread view](/observe/view-logs#view-as-a-thread) for details.
+
+  ### New docs structure
+
+  Our docs now follow a systematic workflow for using Braintrust to measure, understand, and improve your AI applications. This goal-based structure makes it easier to find the right guidance at the right time:
+
+  * **Instrument** - Capture traces from your application
+  * **Observe** - Find patterns and issues in your data
+  * **Annotate** - Review and improve with human feedback
+  * **Evaluate** - Test and validate improvements
+  * **Deploy** - Ship changes and monitor impact
+
+  The new structure includes:
+
+  * [Braintrust workflow overview](/workflow)
+  * Improved [observability quickstart](/observability)
+  * New [Integrations tab](/integrations) for all AI provider and framework integrations
+  * New [Reference tab](/reference) for SDKs, API, and other reference content
+
+  ### Python SDK releases
+
+  * [v0.5.2](https://github.com/braintrustdata/braintrust-sdk/releases/tag/py-sdk-v0.5.2) - Added [`braintrust.auto_instrument()`](/observability#auto-instrument) for one-line automatic instrumentation, cache control options for evals, and automatic cache cleanup after span export. Fixed hanging evals issue.
+
+  * [v0.5.0](https://github.com/braintrustdata/braintrust-sdk/releases/tag/py-sdk-v0.5.0) - Added trace argument support in scorers, dataset initialization with ID parameter, and force tag replacement option. Improved Claude Agent SDK async iterable support and git metadata collection.
+
+  * [v0.4.3](https://github.com/braintrustdata/braintrust-sdk/releases/tag/py-sdk-v0.4.3) - The "agent" function type has been renamed to "workflow" to better reflect its purpose.
+
+  * [v0.4.2](https://github.com/braintrustdata/braintrust-sdk/releases/tag/py-sdk-v0.4.2) - OpenTelemetry enhancements, improved span tags, and `patch_litellm()` now patches `responses` and `aresponses`.
+
+  * [v0.4.1](https://github.com/braintrustdata/braintrust-sdk/releases/tag/py-sdk-v0.4.1) - Fixes Pydantic AI wrapper context loss, improves serialization, and adds Claude Agent SDK Query property forwarding.
+
+  * [v0.4.0](https://github.com/braintrustdata/braintrust-sdk/releases/tag/py-sdk-v0.4.0) - Bug fixes for global scoping issues. **Breaking change**: Requires Python 3.10+.
+
+  * [v0.3.15](https://github.com/braintrustdata/braintrust-sdk/releases/tag/py-sdk-v0.3.15) - Smaller logs with `wrap_openai`, new [`setup_pydantic_ai()`](/integrations/agent-frameworks/pydantic-ai) integration.
+
+  ### TypeScript SDK releases
+
+  * [v2.2.0](https://github.com/braintrustdata/braintrust-sdk/releases/tag/js-sdk-v2.2.0) - Added cache control options for evals and automatic cache cleanup after span export.
+
+  * [v2.1.0](https://github.com/braintrustdata/braintrust-sdk/releases/tag/js-sdk-v2.1.0) - Added [Temporal](/integrations/sdk-integrations/temporal) integration, `wrapAgentClass` for agent tracing, trace argument support in scorers, and bug fixes.
+
+  * [v2.0.1](https://github.com/braintrustdata/braintrust-sdk/releases/tag/js-sdk-v2.0.1) - Bug fixes and improvements.
+
+  * [v2.0.0](https://github.com/braintrustdata/braintrust-sdk/releases/tag/js-sdk-v2.0.0) - Span purpose tracking for scorers, bug fixes. **Breaking change**: Zod is now a peer dependency (`npm install zod`).
+
+  * [v1.1.1](https://github.com/braintrustdata/braintrust-sdk/releases/tag/js-sdk-v1.1.1) - Fixes async generator handling.
+
+  * [v1.1.0](https://github.com/braintrustdata/braintrust-sdk/releases/tag/js-sdk-v1.1.0) - Smaller logs with `wrapOpenAI`, Vercel AI SDK v6 support, Nunjucks template format for prompts.
+
+  * [v1.0.3](https://github.com/braintrustdata/braintrust-sdk/releases/tag/js-sdk-v1.0.3) - Browser support for Eval and SDK integrations, plain text eval output, type safety improvements.
+
+  ### Go SDK releases
+
+  * [v0.2.0](https://github.com/braintrustdata/braintrust-sdk-go/releases/tag/v0.2.0) - Adds automatic instrumentation using [Orchestrion](https://github.com/DataDog/orchestrion) for zero-code compile-time tracing. **Breaking change**: Requires Go 1.24+.
+
+  * [v0.1.2](https://github.com/braintrustdata/braintrust-sdk-go/releases/tag/v0.1.2) - Adds time to first token support for OpenAI responses, aligns Gemini span naming with other SDKs.
+
+  ### Java SDK releases
+
+  * [v0.2.3](https://github.com/braintrustdata/braintrust-sdk-java/releases/tag/v0.2.3) - Added support for remote scorers in evals and devserver.
+
+  * [v0.2.2](https://github.com/braintrustdata/braintrust-sdk-java/releases/tag/v0.2.2) - Extended [Langchain4j](https://github.com/langchain4j/langchain4j) instrumentation to AI Services.
+
+  * [v0.2.1](https://github.com/braintrustdata/braintrust-sdk-java/releases/tag/v0.2.1) - Adds remote evals devserver support and [Langchain4j](https://github.com/langchain4j/langchain4j) integration for OpenAI chat models.
+
+  ### Ruby SDK releases
+
+  * [v0.1.1](https://github.com/braintrustdata/braintrust-sdk-ruby/releases/tag/v0.1.1) - Added OpenAI moderations API support, Anthropic Messages beta API support, and automatic trace flushing at process end for ephemeral environments.
+
+  * [v0.1.0](https://github.com/braintrustdata/braintrust-sdk-ruby/releases/tag/v0.1.0) - Introduces automatic instrumentation via `require: "braintrust/setup"` in Gemfile for Rails and Ruby applications. Adds new integration API for custom instrumentation. **Breaking change**: Deprecates `.wrap(client)` method in favor of new integration API.
+
+  ### C# SDK releases
+
+  * [v0.0.2](https://github.com/braintrustdata/braintrust-sdk-dotnet/releases/tag/v0.0.2) - Added support for enriching spans with [custom metadata and tags](/instrument/custom-tracing#add-metadata-and-tags), enhanced OpenAI instrumentation with additional span attributes. **Breaking change**: APIs are now async-first. Update `eval.Run()` to `await eval.RunAsync()` and change `static void Main` to `static async Task Main`. Cursor types replaced with `IAsyncEnumerable`. Some interfaces renamed.
+
+  ### Improvements
+
+  * In-product Python and Typescript editors now lint and autocomplete while you type.
+  * Added default data view preferences in personal settings. You can now set your preferred format (Pretty, JSON, YAML, or Tree) for viewing span fields across all traces, and reset all manually configured view overrides with one click. See [Personal settings](/admin/personal-settings#default-data-display-format) for details.
+  * Self-hosted deployments now automatically provision service tokens when configuring data plane URLs, eliminating a manual setup step and immediately enabling features like data retention. See [Configure API URLs](/admin/organizations#configure-api-urls-self-hosted) for details.
+  * You can now create log alerts directly from filtered views on the <Icon icon="activity" /> **Logs** or <Icon icon="chart-no-axes-column" /> **Monitor** pages. See [Set up alerts](/admin/automations/alerts) for details.
+  * Added inline dataset creation from experiment and playground workflows. You can now create datasets directly when running experiments or adding datasets to playgrounds without navigating to the datasets page.
+  * Documented testing scorers with manual input, datasets, and production logs. Each method is optimized for different stages of scorer development, from prototyping to validation against real-world data. See [Test scorers](/evaluate/write-scorers#test-scorers) for details.
+  * Slack channel selection now uses a searchable typeahead interface instead of manual channel ID entry. The channel list automatically refreshes every 7 days and includes a manual refresh option for newly created channels.
+  * Added client-side SQL filtering for experiment runs at the dataset level. You can now filter the list of experiments associated with a dataset using SQL queries based on scores, timestamps, experiment names, and other fields. Filter states persist in URLs for easy bookmarking and sharing. See [Filter experiment runs](/annotate/datasets#filter-experiment-runs).
+  * Improved MCP server authentication with refresh token support for longer-lasting sessions without re-authentication.
+  * Added chart-based time filtering for dataset experiment runs. See [Filter experiment runs](/annotate/datasets#filter-experiment-runs).
+  * The "agent" function type has been renamed to "workflow" to better reflect its purpose.
+  * The data plane's realtime service now contains only metadata, with no visibility into underlying data.
+  * Dataset imports now display a live table preview that updates as you categorize columns. CSV columns now default to the `input` field for faster setup, and tag fields are automatically created in your project configuration. See [Upload CSV](/annotate/datasets#upload-csv) for details.
+  * Native GCS authentication is now available for self-hosted deployments on Google Cloud Platform. You can use Workload Identity instead of HMAC keys for more secure authentication. See [GCS authentication options](/admin/self-hosting/gcp#gcs-authentication-options) for configuration details.
+  * The version dialog on prompt and scorer activity views now allows diffing any version against each other.
+  * Moved toolbar controls (columns, row height, layout toggles) into a consolidated <Icon icon="settings-2" /> **Display** menu.
+  * Added explicit `function_type` parameter for global function invocation, replacing naming-based type inference.
+  * Restricted file parts in playgrounds and prompts to formats supported by the selected provider.
+  * The user feedback modal now supports adding up to 5 image attachments.
+  * Added [limits documentation page](/reference/limits) covering usage quotas, rate limits, and system constraints.
+  * Improved [evaluation quickstart](/evaluation) with inline datasets, iteration examples showing prompt improvements, and troubleshooting.
+</Update>
+
 <Update label="December 2025">
   ### Claude Code integration
 
-  You can now use Braintrust with [Claude Code](https://code.claude.com/docs/en/overview), Anthropic's agentic coding tool. The integration automatically traces Claude Code sessions to give you insight into LLM calls, tool usage, and performance, while enabling Claude to query logs, fetch experiment results, and log data using natural language, especially useful when writing and iterating on evals. For setup instructions and usage examples, see the [Claude Code integration guide](/integrations/sdk-integrations/claude-code).
+  You can now use Braintrust with [Claude Code](https://code.claude.com/docs/en/overview), Anthropic's agentic coding tool. The integration automatically traces Claude Code sessions to give you insight into LLM calls, tool usage, and performance, while enabling Claude to query logs, fetch experiment results, and log data using natural language, especially useful when writing and iterating on evals. For setup instructions and usage examples, see the [Claude Code integration guide](/integrations/developer-tools/claude-code).
 
   ### New SDKs: Java, Go, Ruby, and C\#
 
@@ -17,37 +170,37 @@
 
   ### Nunjucks templating syntax for prompts
 
-  You can now use [Nunjucks](https://mozilla.github.io/nunjucks/templating.html) as an advanced templating syntax for prompts in the UI. Nunjucks provides features like loops, conditionals, and filters for sophisticated prompt engineering workflows. For more details, see [Use templating](/core/functions/prompts#use-templating).
+  You can now use [Nunjucks](https://mozilla.github.io/nunjucks/templating.html) as an advanced templating syntax for prompts in the UI. Nunjucks provides features like loops, conditionals, and filters for sophisticated prompt engineering workflows. For more details, see [Use templating](/evaluate/write-prompts#use-templating).
 
   ### Track dataset performance across experiments
 
-  You can now see which experiments used your dataset and how each row performed. This helps you identify problematic test cases and understand your evaluation data quality. For more details, see [Track dataset performance](/core/datasets#track-dataset-performance).
+  You can now see which experiments used your dataset and how each row performed. This helps you identify problematic test cases and understand your evaluation data quality. For more details, see [Track dataset performance](/annotate/datasets#track-dataset-performance).
 
   ### Slack integration for alerts
 
-  You can now post alerts to Slack channels when conditions are met. For more details, see [Alerts](/guides/automations/alerts).
+  You can now post alerts to Slack channels when conditions are met. For more details, see [Alerts](/admin/automations/alerts).
 
   <Badge size="md" className="text-xs px-2">Data plane v1.1.29+</Badge>
 
   ### SQL syntax support
 
-  BTQL now supports standard SQL syntax as an alternative to the native clause-based syntax. The parser automatically detects whether your query is SQL or BTQL. For more details, see [BTQL](/reference/btql#sql-syntax).
+  BTQL now supports standard SQL syntax as an alternative to the native clause-based syntax. The parser automatically detects whether your query is SQL or BTQL. For more details, see [SQL](/reference/sql).
 
   <Badge size="md" className="text-xs px-2">Data plane v1.1.29+</Badge>
 
   ### MCP servers in prompts
 
-  You can now use public MCP (Model Context Protocol) servers to give your prompts access to external tools and data. This is useful for evaluating complex tool calling workflows, experimenting with external APIs and services, and tuning public MCP servers. For more details, see [Add MCP servers](/core/functions/prompts#add-mcp-servers)
+  You can now use public MCP (Model Context Protocol) servers to give your prompts access to external tools and data. This is useful for evaluating complex tool calling workflows, experimenting with external APIs and services, and tuning public MCP servers. For more details, see [Add MCP servers](/evaluate/write-prompts#add-mcp-servers)
 
   <Badge size="md" className="text-xs px-2">Data plane v1.1.28+</Badge>
 
-  ### Custom views for traces
+  ### Custom trace views
 
-  Using Loop, you can now use natural language to create custom views of traces. This helps you highlight specific parts of a trace or visualize the trace in a way that is specific to your use case. For more details, see [Custom view](/guides/traces/view#custom-trace).
+  Using Loop, you can now use natural language to create custom views of traces. This helps you highlight specific parts of a trace or visualize the trace in a way that is specific to your use case. For more details, see [Create custom trace views](/observe/view-logs#create-custom-trace-views).
 
   ### Pass/fail thresholds for scorers
 
-  You can now define a minimum score (between 0 and 1) that a scorer must achieve for a result to be considered passing. This helps you quickly identify which evaluations meet your quality standards. For more details, see [Pass/fail thresholds](/core/functions/scorers#pass/fail-thresholds).
+  You can now define a minimum score (between 0 and 1) that a scorer must achieve for a result to be considered passing. This helps you quickly identify which evaluations meet your quality standards. For more details, see [Pass/fail thresholds](/evaluate/write-scorers#pass/fail-thresholds).
 
   <Badge size="md" className="text-xs px-2">Data plane v1.1.28+</Badge>
 
@@ -70,9 +223,9 @@
   * Added support for extracting last turn prompts and scorer-format dataset inputs in iterate in playground modals.
   * Updated BTQL filters to automatically extract filter statements from broader input.
   * Added docs on [attaching custom metadata to traces](/integrations/sdk-integrations/vercel#add-metadata) when using the Vercel AI SDK.
-  * Expanded [deep search](/core/logs/use-deep-search) docs with setup instructions, query examples, and filtering workflows.
+  * Expanded [deep search](/observe/deep-search) docs with setup instructions, query examples, and filtering workflows.
   * Improved Loop chart type and unit selection for data visualizations
-  * Added ability to [filter logs and experiments by comments](/core/logs/view#filter-menu).
+  * Added ability to [filter logs and experiments by comments](/observe/filter#filter-menu).
   * Added project description field to projects. This can be used to provide additional context to teammates and when using AI features.
   * Consolidate project configuration and organization settings pages into a single page.
 </Update>
@@ -88,7 +241,7 @@
   * Added support for Loop to make btql queries with arbitrary time range
   * Added logs and dataset browsers to scorer detail page
   * Added support for Loop to generate monitoring chart in monitor page's edit chart dialog
-  * BTQL now supports using `dimensions` and `measures` with the `summary` shape to group and aggregate traces. This enables analyzing patterns, monitoring performance trends, and comparing metrics across models or time periods. See [Aggregated trace analytics](/reference/btql#aggregated-trace-analytics).
+  * BTQL now supports using `dimensions` and `measures` with the `summary` shape to group and aggregate traces. This enables analyzing patterns, monitoring performance trends, and comparing metrics across models or time periods. See [Aggregated trace analytics](/reference/sql#aggregated-trace-analytics).
   * BTQL queries issued through the API are now rate limited at 20 requests per object per minute.
   * Added automatic context mechanism to Loop to automatically add currently viewed trace as context in logs and experiments page
   * Added Grok 4.1 support
@@ -159,7 +312,7 @@
   * Fixed Loop prompt optimization of remote evals
   * Fix issue with thinking events coming from Mistral
   * Added Toplist and Big number monitor chart types
-  * Support for [JSON attachments](/guides/attachments#json-attachments)
+  * Support for [JSON attachments](/instrument/attachments)
   * Improve "Raw span data" and new buttons to download a span or entire trace as JSON from the trace viewer
 
   ### SDK Integrations: LangChain (Python) v0.1.2
@@ -287,7 +440,7 @@
 
   ### Python SDK version 0.2.5
 
-  * Support data masking (see [docs](/guides/traces/customize#masking-sensitive-data))
+  * Support data masking (see [docs](/instrument/advanced-tracing#masking-sensitive-data))
   * Remote evals in Python SDK
   * Support tags in Eval hooks
   * Validate attachment file readability at creation time
@@ -307,7 +460,7 @@
 
   ### TypeScript SDK version 0.2.5
 
-  * Support data masking (see [docs](/guides/traces/customize#masking-sensitive-data))
+  * Support data masking (see [docs](/instrument/advanced-tracing#masking-sensitive-data))
   * Support tags in Eval hooks
   * Validate attachment file readability at creation time
 
@@ -317,7 +470,7 @@
 
   ### SDK Integrations: Google ADK (Python) (version 0.1.1)
 
-  * Added integration with [Google Agent Development Kit (ADK)](/integrations/sdk-integrations/google)
+  * Added integration with [Google Agent Development Kit (ADK)](/integrations/agent-frameworks/google)
 
   ### SDK Integrations: OpenAI Agents (TS) (version 0.0.2)
 
@@ -427,7 +580,7 @@
   * Tags can now be sorted in the project configuration page which will change their display order in other parts of the UI
   * System-only messages are now supported in Anthropic and Bedrock models
   * Logs page UI can now filter nested data fields in `metadata`, `input`, `output`, and `expected`
-  * Support reasoning params and reasoning tokens in streaming and non-streaming responses in the [AI proxy](/guides/proxy) and across the product
+  * Support reasoning params and reasoning tokens in streaming and non-streaming responses in the [AI proxy](/deploy/ai-proxy) and across the product
   * New [braintrust-proxy](https://pypi.org/project/braintrust-proxy/) Python library to help developers integrate with their IDEs to support new reasoning input and output types
   * New `@braintrust/proxy/types` module to augment OpenAI libraries with reasoning input and output types
   * New streaming protocol between Brainstore and the API server speeds up queries
@@ -561,7 +714,7 @@
   * Add Gemini 2.5 Flash Preview model to the AI proxy and playground
   * Add support for audio and video inputs for Gemini models in the AI proxy and playground
   * Add support for PDF files for OpenAI models
-  * Native tracing support in the proxy has finally arrived! Read more in [the docs](/guides/proxy#tracing)
+  * Native tracing support in the proxy has finally arrived! Read more in [the docs](/deploy/ai-proxy#tracing)
   * Upload attachments directly in the UI in datasets, playgrounds, and prompts
   * Playground option to append messages from a dataset to the end of a prompt
   * A new toggle that lets you skip tracing scoring info for online scoring
@@ -669,7 +822,7 @@
 
   ### SDK (version 0.0.189)
 
-  * Added integration with [OpenAI Agents SDK](/integrations/sdk-integrations/openai-agents-sdk)
+  * Added integration with [OpenAI Agents SDK](/integrations/agent-frameworks/openai-agents-sdk)
 
   ### SDK (version 0.0.188)
 
@@ -767,7 +920,7 @@
     * Start/end columns shown as dates/times
     * Non-existent trace records display an error message instead of loading indefinitely
   * Creating an experiment from a playground now correctly renders prompts with `input`, `metadata`, `expected`, and `output` mapped fields
-  * The [AI proxy](/guides/proxy) now includes `x-bt-used-endpoint` as a response header
+  * The [AI proxy](/deploy/ai-proxy) now includes `x-bt-used-endpoint` as a response header
   * Add support for deeplinking to comments within spans
   * In Human Review mode, display all scores in a form
   * Experiment table rows can now be sorted based on score changes and regressions for each group
@@ -832,7 +985,7 @@
   * Clicking on monitor charts now opens a link to traces filtered to the selected time range
   * Add `Endpoint supports streaming` flag to custom provider configuration
   * Experiments chart can be resized vertically by dragging the bottom of the chart
-  * BTQL sandbox to explore project data using [Braintrust Query Language](/reference/btql)
+  * BTQL sandbox to explore project data using [Braintrust Query Language](/reference/sql)
   * Add support for updating span data from custom span iframes
   * Significantly speed up loading performance for experiments and logs, especially with lots of spans
     * Searches inside experiments will only work over content in the tabular view, rather than over the full trace
@@ -841,7 +994,7 @@
   * "Order by regression" option in experiment column menu can now be toggled on and off without losing previous order
   * Add expanded timeline view for traces
   * Added a 'Request count' chart to the monitor page
-  * Add headers to custom provider configuration which the [AI proxy](/guides/proxy) will include in the request to the custom endpoint
+  * Add headers to custom provider configuration which the [AI proxy](/deploy/ai-proxy) will include in the request to the custom endpoint
   * The logs viewer now supports exporting the currently loaded rows as a CSV or JSON file
   * Experiment columns can now be reordered from the column menu
   * You can now customize legends in monitor charts
@@ -897,8 +1050,8 @@
   * The monitor page now supports querying experiment metrics
   * Removed the `filters` param from the REST API fetch endpoint
   * New experiment summary layout option, a url-friendly view for experiment summaries that respects all filters
-  * Add a default limit of 10 to all fetch and `/btql` requests for project\_logs
-  * You can now export your prompts from the playground as code snippets and run them through the [AI proxy](/guides/proxy)
+  * Add a default limit of 10 to all fetch and `/sql` requests for project\_logs
+  * You can now export your prompts from the playground as code snippets and run them through the [AI proxy](/deploy/ai-proxy)
   * Support for creating and pushing custom Python tools and prompts from your codebase with `braintrust push`
   * You can now view grouped summary data for all experiments by selecting **Include comparisons in group** from the **Group by** dropdown inside an experiment
   * The experiments page now supports downloading as CSV/JSON
@@ -906,12 +1059,12 @@
   * You can now view a score data as a bar chart for your experiments data by selecting **Score comparison** from the X axis selector
   * Trials information is now shown as a separate column in diff mode in the experiment table
   * Cmd/Ctrl + S hotkey to save from prompts in the playground and function dialogs
-  * The Braintrust [AI Proxy](/guides/proxy) now supports the [OpenAI Realtime API](https://platform.openai.com/docs/guides/realtime)
+  * The Braintrust [AI Proxy](/deploy/ai-proxy) now supports the [OpenAI Realtime API](https://platform.openai.com/docs/guides/realtime)
   * Add "Group by" functionality to the monitor page
-  * The experiment table can now be visualized in a [grid layout](/core/experiments/interpret#grid-layout)
+  * The experiment table can now be visualized in a [grid layout](/evaluate/interpret-results#grid-layout)
   * 'Select all' button in permission dialogs
   * Create custom columns on dataset, experiment and logs tables from `JSON` values in `input`, `output`, `expected`, or `metadata` fields
-  * The Braintrust [AI Proxy](/guides/proxy) can now [issue temporary credentials](/guides/proxy#api-key-management) to access the proxy for a limited time
+  * The Braintrust [AI Proxy](/deploy/ai-proxy) can now [issue temporary credentials](/deploy/ai-proxy#api-key-management) to access the proxy for a limited time
   * Move experiment score summaries to the table column headers
   * You now receive a clear error message if you run out of free tier capacity while running an experiment from the playground
   * Filters on JSON fields now support array indexing, e.g. `metadata.foo[0] = 'bar'`
@@ -938,7 +1091,7 @@
 
   ### SDK (version 0.0.167)
 
-  * Support uploading [file attachments in the TypeScript SDK](/guides/attachments)
+  * Support uploading [file attachments in the TypeScript SDK](/instrument/attachments)
   * Log, feedback, and dataset inputs to the TypeScript SDK are now synchronously deep-copied for more consistent logging
   * Address an issue where the TypeScript SDK could not make connections when running in a Cloudflare Worker
 </Update>
@@ -952,15 +1105,15 @@
   * After using "Copy to Dataset" to create a new dataset row, the audit log of the new row now links back to the original experiment, log, or other dataset
   * Tools now stream their `stdout` and `stderr` to the UI
   * Fix prompt, scorer, and tool dropdowns to only show the correct function types
-  * The [Github action](/core/experiments/run#github-action) now supports Python runtimes
+  * The [Github action](/evaluate/run-evaluations#github-action) now supports Python runtimes
   * Add support for [Cerebras](https://cerebras.ai/) models in the proxy, playground, and saved prompts
-  * You can now create [span iframe viewers](/guides/traces/customize#custom-span-iframes) to visualize span data in a custom iframe
+  * You can now create [span iframe viewers](/instrument/advanced-tracing#custom-span-iframes) to visualize span data in a custom iframe
   * `NOT LIKE`, `NOT ILIKE`, `NOT INCLUDES`, and `NOT CONTAINS` supported in BTQL
   * Add "Upload Rows" button to insert rows into an existing dataset from CSV or JSON
   * Add "Maximum" aggregate score type
   * The experiment table now supports grouping by input (for trials) or by a metadata field
   * Gemini models now support multimodal inputs
-  * Preview [file attachments](/guides/attachments) in the trace view
+  * Preview [file attachments](/instrument/attachments) in the trace view
   * View and filter by comments in the experiment table
   * Add table row numbers to experiments, logs, and datasets
 
@@ -1087,7 +1240,7 @@
 
   * `project_name` is now `projectName`, etc. in the `invoke(...)` function in TypeScript
   * `Eval()` return values are printed in a nicer format
-  * [`updateSpan()`/`update_span()`](/guides/traces/customize#updating-spans) allows you to update a span's fields after it has been created
+  * [`updateSpan()`/`update_span()`](/instrument/advanced-tracing#updating-spans) allows you to update a span's fields after it has been created
 
   ### SDK (version 0.0.146)
 
@@ -1113,7 +1266,7 @@
   * Use btql to power the datasets list, making it significantly faster if you have multiple large datasets
   * Experiments list chart supports click interactions
   * Jump into comparison view between 2 experiments by selecting them in the table an clicking "Compare"
-  * Add support for labeling [expected fields using human review](/core/human-review#writing-categorical-scores-to-expected-field)
+  * Add support for labeling [expected fields using human review](/annotate/human-review#writing-categorical-scores-to-expected-field)
   * Create and edit descriptions for datasets
   * Create and edit metadata for prompts
   * Click scores and attributes (tree view only) in the trace view to filter by them
@@ -1121,7 +1274,7 @@
   * Add support for new models including Claude 3.5 Sonnet
   * Improved empty state and instructions for custom evaluators in the playground
   * Show query examples when filtering/sorting
-  * [Custom comparison keys](/core/experiments/interpret#customizing-the-comparison-key) for experiments
+  * [Custom comparison keys](/evaluate/interpret-results#customizing-the-comparison-key) for experiments
   * New model dropdown in the playground/prompt editor that is organized by provider and model type
 
   ### Autoevals (version 0.0.80)
@@ -1184,7 +1337,7 @@
   * Show images in LLM view
   * Send an invite email when you invite a new user to your organization
   * Support selecting/deselecting scores in the experiment view
-  * Roll out [Braintrust Query Language](/reference/btql) (BTQL) for querying logs and traces
+  * Roll out [Braintrust Query Language](/reference/sql) (BTQL) for querying logs and traces
   * Smart relative time labels for dates (`1h ago`, `3d ago`, etc.)
   * Added double quoted string literals support
   * Jump to top button in trace details for easier navigation
@@ -1209,7 +1362,7 @@
   * Faster optimistic updates for large writes in the UI
   * "Open in playground" now opens a lighter weight modal instead of the full playground
   * Can create a new prompt playground from the prompt viewer
-  * Shipped support for [prompt management](/core/functions/prompts)
+  * Shipped support for [prompt management](/deploy/prompts)
   * Moved playground sessions to be within projects
   * Allowed customizing proxy and real-time URLs through the web application
   * Improved documentation for Docker deployments
@@ -1232,7 +1385,7 @@
 </Update>
 
 <Update label="April 2024">
-  * Add support for [tags](/core/logs/write#tags-and-queues)
+  * Add support for tags
   * Score fields are now sorted alphabetically
   * Add support for Groq ModuleResolutionKind
   * Improve tree viewer and XML parser
@@ -1256,7 +1409,7 @@
 <Update label="February 2024">
   * New [REST API](/api-reference)
   * [Cookbook](/cookbook) of common use cases and examples
-  * Support for [custom models](/core/playground#custom-models) in the playground
+  * Support for [custom models](/evaluate/playgrounds#custom-models) in the playground
   * Search now works across spans, not just top-level traces
   * Show creator avatars in the prompt playground
   * Improved UI breadcrumbs and sticky table headers
@@ -1279,7 +1432,7 @@
   * Added ability to manually score results in the experiment UI
   * Added comments and audit log in the experiment UI
   * Added ability to upload dataset CSV files in prompt playgrounds
-  * Published new [guide for tracing and logging your code](/guides/traces)
+  * Published new [guide for tracing and logging your code](/instrument/custom-tracing)
   * Added support to download experiment results as CSVs
 </Update>
 
@@ -1309,12 +1462,12 @@
 <Update label="November 2023">
   * Added experiment search on project view to filter by experiment name
   * Upgraded AI Proxy to support tracking Prometheus metrics
-  * Modified Autoevals library to use the [AI proxy](/guides/proxy)
+  * Modified Autoevals library to use the [AI proxy](/deploy/ai-proxy)
   * Upgraded Python braintrust library to parallelize evals
   * Optimized experiment diff view for performance improvements
   * Added support for new Perplexity models to playground
-  * Released [AI proxy](/guides/proxy): access many LLMs using one API w/ caching
-  * Added [load balancing endpoints](/guides/proxy#load-balancing) to AI proxy
+  * Released [AI proxy](/deploy/ai-proxy): access many LLMs using one API w/ caching
+  * Added [load balancing endpoints](/deploy/ai-proxy#load-balancing) to AI proxy
   * Updated org-level view to show projects and prompt playground sessions
   * Added ability to batch delete experiments
   * Added support for Claude 2.1 in playground
@@ -1333,7 +1486,7 @@
   * Multiple performance optimizations and bug fixes
   * Improved prompt playground variable handling and visualization
   * Added time duration statistics per row to experiment summaries
-  * [Launched new tracing feature: log and visualize complex LLM chains and executions](/guides/traces)
+  * [Launched new tracing feature: log and visualize complex LLM chains and executions](/instrument/custom-tracing)
   * Added a new "text-block" prompt type in the playground
   * Increased default # of rows per page from 10 to 100 for experiments
   * UI fixes and improvements for the side panel and tooltips
@@ -1382,7 +1535,7 @@
   * Improve performance for experiment loading (especially complex experiments)
   * Support for renaming and deleting experiments
   * When you expand a cell in detail view, the row is now highlighted
-  * A new [framework](/core/experiments) for expressing evaluations in a much simpler way
+  * A new [framework](/evaluate/run-evaluations) for expressing evaluations in a much simpler way
   * `inputs` is now `input` in the SDK (>= 0.0.23) and UI
   * Improved diffing behavior for nested arrays
   * SDK updates that allow you to update an existing experiment `init(..., update=True)` and specify an id in `log(..., id='my-custom-id')`
@@ -1409,8 +1562,3 @@
   * New filter and sort operators on the experiments table
   * SQL query explorer to run arbitrary queries against one or more experiments
 </Update>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

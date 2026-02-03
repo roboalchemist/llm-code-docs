@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/why-promptlayer/ab-releases.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # A/B Testing
 
 A/B Releases is a powerful feature that allows you to test different versions of your prompts in production, safely roll out updates, and segment users. 🚀
@@ -41,8 +45,3 @@ For example, you could create a segment for internal user IDs and configure thei
 ***
 
 A/B Releases give you the power to experiment, safely roll out updates, and deliver targeted experiences. Try it out and take control of your prompt releases! 🎉
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

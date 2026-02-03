@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/prompts/create-or-replace-prompt.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create or replace prompt
 
 > Create or replace prompt. If there is an existing prompt in the project with the same slug as the one specified in the request, will replace the existing prompt with the provided fields
@@ -220,7 +224,46 @@ components:
           type: array
           nullable: true
           items:
-            $ref: '#/components/schemas/SavedFunctionId'
+            allOf:
+              - $ref: '#/components/schemas/SavedFunctionId'
+              - anyOf:
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                          - function
+                      id:
+                        type: string
+                      version:
+                        type: string
+                        description: The version of the function
+                    required:
+                      - type
+                      - id
+                    title: function
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                          - global
+                      name:
+                        type: string
+                      function_type:
+                        $ref: '#/components/schemas/FunctionTypeEnum'
+                    required:
+                      - type
+                      - name
+                    title: global
+        template_format:
+          type: string
+          nullable: true
+          enum:
+            - mustache
+            - nunjucks
+            - none
+            - null
         mcp:
           type: object
           nullable: true
@@ -291,6 +334,10 @@ components:
         - task
         - tool
         - custom_view
+        - preprocessor
+        - facet
+        - classifier
+        - tag
         - null
     PromptBlockDataNullish:
       anyOf:
@@ -349,10 +396,22 @@ components:
             type: number
             minimum: 0
             maximum: 1
+          description: Map of choices to scores (0-1). Used by scorers.
+        choice:
+          type: array
+          items:
+            type: string
+          description: >-
+            List of valid choices without score mapping. Used by classifiers
+            that deposit output to tags.
+        allow_no_match:
+          type: boolean
+          description: >-
+            If true, adds a 'No match' option. When selected, no tag is
+            deposited.
       required:
         - type
         - use_cot
-        - choice_scores
     SavedFunctionId:
       anyOf:
         - type: object
@@ -363,6 +422,9 @@ components:
                 - function
             id:
               type: string
+            version:
+              type: string
+              description: The version of the function
           required:
             - type
             - id
@@ -375,10 +437,29 @@ components:
                 - global
             name:
               type: string
+            function_type:
+              $ref: '#/components/schemas/FunctionTypeEnum'
           required:
             - type
             - name
           title: global
+        - type: 'null'
+      description: Optional function identifier that produced the classification
+    FunctionTypeEnum:
+      type: string
+      enum:
+        - llm
+        - scorer
+        - task
+        - tool
+        - custom_view
+        - preprocessor
+        - facet
+        - classifier
+        - tag
+        - null
+      default: scorer
+      description: The type of global function. Defaults to 'scorer'.
     ChatCompletionMessageParam:
       anyOf:
         - type: object
@@ -916,7 +997,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/expected-outputs/model-graded/context-relevance/
+
 # Context relevance
 
 Measures what fraction of retrieved context is minimally needed to answer the query.

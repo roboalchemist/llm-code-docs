@@ -6,7 +6,6 @@ description: >-
   Diagnose and resolve NTP offset problems that can cause incorrect alert
   triggers, metric delays, and gaps in graphs.
 breadcrumbs: Docs > Agent > Agent Troubleshooting > Network Time Protocol (NTP) issues
-source_url: https://docs.datadoghq.com/troubleshooting/ntp/index.html
 ---
 
 # Network Time Protocol (NTP) issues

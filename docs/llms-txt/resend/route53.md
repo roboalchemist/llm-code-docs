@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/route53.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AWS Route 53
 
 > Verify your domain on Route 53 with Resend.
@@ -13,9 +17,9 @@ First, log in to your [Resend Account](https://resend.com/login) and [add a doma
 <Tip>
   It is [best practice to use a
   subdomain](/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain)
-  (updates.example.com) instead of the root domain (example.com). This allows
-  for proper reputation segmentation based on topics or purpose (e.g.
-  transactional and marketing).
+  (updates.example.com) instead of the root domain (example.com). Using a
+  subdomain allows for proper reputation segmentation based on topics or purpose
+  (e.g. marketing) and is especially important if receiving emails with Resend.
 </Tip>
 
 ## Log in to Route 53
@@ -48,7 +52,7 @@ Below is a mapping of the record fields from Resend to Route 53:
 | Record Type    | Type             | `MX Record`                                |
 | Record name    | Name             | `send`                                     |
 | Value          | Value & Priority | `10 feedback-smtp.us-east-1.amazonses.com` |
-| TTL            | -                | `Use Route 53 Default (300)`               |
+| TTL            | TTL              | `Use Route 53 Default (300)`               |
 | Routing policy | -                | `Simple routing`                           |
 
 <Info>
@@ -78,7 +82,7 @@ Below is a mapping of the record fields from Resend to Route 53:
 | Record type    | Type   | `TXT Record`                          |
 | Record name    | Name   | `send`                                |
 | Value          | Value  | `"v=spf1 include:amazonses.com ~all"` |
-| TTL            | -      | `Use Route 53 Default (300)`          |
+| TTL            | TTL    | `Use Route 53 Default (300)`          |
 | Routing policy | -      | `Simple routing`                      |
 
 <Info>
@@ -91,7 +95,7 @@ Below is a mapping of the record fields from Resend to Route 53:
 
 In the same section, choose `Add another record`:
 
-1. Type in `resend._domainkey` for the the `Record name`.
+1. Type in `resend._domainkey` for the `Record name`.
 2. Change the `Record Type` to `TXT`.
 3. Copy the TXT Value value from your domain in Resend to the `Value` text box.
 4. Click on `Create Records`.
@@ -107,7 +111,7 @@ Below is a mapping of the record fields from Resend to Route 53:
 | Record type    | Type   | `TXT Record`                 |
 | Record name    | Name   | `resend._domainkey`          |
 | Value          | Value  | `p=example_demain_key_value` |
-| TTL            | -      | `Use Route 53 Default (300)` |
+| TTL            | TTL    | `Use Route 53 Default (300)` |
 | Routing policy | -      | `Simple routing`             |
 
 <Info>
@@ -115,6 +119,40 @@ Below is a mapping of the record fields from Resend to Route 53:
   `resend._domainkey.example.com`, paste only `resend._domainkey` (or
   `resend._domainkey.subdomain` if you're using a subdomain).
 </Info>
+
+## Receiving Emails
+
+If you want to receive emails at your domain, toggle the "Receiving" switch on the domain details page.
+
+<img alt="Enable Receiving Emails for a verified domain" src="https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?fit=max&auto=format&n=B7wTVm7aKL5pNT-6&q=85&s=46f6b4c142fb90e04b57861e338ed2d0" data-og-width="1980" width="1980" data-og-height="1244" height="1244" data-path="images/inbound-domain-toggle.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?w=280&fit=max&auto=format&n=B7wTVm7aKL5pNT-6&q=85&s=9ffcfe01f091c84e949e307e8524c98e 280w, https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?w=560&fit=max&auto=format&n=B7wTVm7aKL5pNT-6&q=85&s=040a52053e2b2e66924ee2d82a7f60b6 560w, https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?w=840&fit=max&auto=format&n=B7wTVm7aKL5pNT-6&q=85&s=0477716dc557a951ada6d6ccfe452feb 840w, https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?w=1100&fit=max&auto=format&n=B7wTVm7aKL5pNT-6&q=85&s=8a4c306e667be6092577793c18da1483 1100w, https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?w=1650&fit=max&auto=format&n=B7wTVm7aKL5pNT-6&q=85&s=33481622e755b8f0b54c3066b8e1a724 1650w, https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?w=2500&fit=max&auto=format&n=B7wTVm7aKL5pNT-6&q=85&s=590982f9cd50e9e277f1b82928d25fdb 2500w" />
+
+<Warning>
+  When you enable Inbound on a domain, Resend receives *all emails* sent to that
+  specific domain depending on the priority of the MX record. For this reason,
+  we strongly recommend verifying a subdomain (`subdomain.example.com`) instead
+  of the root domain (`example.com`). Learn more about [avoiding conflicts with
+  your existing MX
+  records](/knowledge-base/how-do-i-avoid-conflicting-with-my-mx-records).
+</Warning>
+
+In the Route 53 console, click `Create Record`:
+
+1. Type in `inbound` (or whatever your subdomain is) for the `Record name`.
+2. Select the `Record type` dropdown, and choose `MX`.
+3. Copy the MX Value from your domain in Resend into the `Value` field.
+4. Be sure to include the `10` in the `Value` field (e.g., `10 inbound-smtp.us-east-1.amazonaws.com`).
+
+Below is a mapping of the record fields from Resend to Route 53:
+
+| Route 53       | Resend             | Example Value                             |
+| -------------- | ------------------ | ----------------------------------------- |
+| Record Type    | Type               | `MX Record`                               |
+| Record name    | Name               | `inbound`                                 |
+| Value          | Content & Priority | `10 inbound-smtp.us-east-1.amazonaws.com` |
+| TTL            | TTL                | `Use Route 53 Default (300)`              |
+| Routing policy | -                  | `Simple routing`                          |
+
+After verifying your domain, create a webhook to process incoming emails. For help setting up a webhook, how to access email data and attachments, forward emails, and more, see [our guide on receiving emails with Resend](/dashboard/receiving/introduction).
 
 ## Complete Verification
 

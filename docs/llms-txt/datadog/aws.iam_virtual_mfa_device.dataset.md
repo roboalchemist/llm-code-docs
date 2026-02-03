@@ -4,8 +4,6 @@
 title: IAM Virtual MFA device
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > IAM Virtual MFA device
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.iam_virtual_mfa_device.dataset/index.html
 ---
 
 # IAM Virtual MFA device
@@ -18,11 +16,11 @@ aws.iam_virtual_mfa_device
 
 ## Fields
 
-| Title         | ID   | Type      | Data Type                                                      | Description |
-| ------------- | ---- | --------- | -------------------------------------------------------------- | ----------- |
-| _key          | core | string    |
-| account_id    | core | string    |
-| enable_date   | core | timestamp | The date and time on which the virtual MFA device was enabled. |
-| serial_number | core | string    | The serial number associated with VirtualMFADevice.            |
-| tags          | core | hstore    |
-| user          | core | json      | The IAM user associated with this virtual MFA device.          |
+| Title         | ID   | Type       | Data Type                                                      | Description |
+| ------------- | ---- | ---------- | -------------------------------------------------------------- | ----------- |
+| _key          | core | string     |
+| account_id    | core | string     |
+| enable_date   | core | timestamp  | The date and time on which the virtual MFA device was enabled. |
+| serial_number | core | string     | The serial number associated with VirtualMFADevice.            |
+| tags          | core | hstore_csv |
+| user          | core | json       | The IAM user associated with this virtual MFA device.          |

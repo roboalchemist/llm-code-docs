@@ -4,8 +4,6 @@
 title: Span Tag Semantics
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > APM > Application Instrumentation > Span Tag Semantics
-source_url: >-
-  https://docs.datadoghq.com/trace_collection/tracing_naming_convention/index.html
 ---
 
 # Span Tag Semantics

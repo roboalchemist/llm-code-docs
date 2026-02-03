@@ -1,3 +1,9 @@
+# Powertools Aws Documentation
+
+Source: https://docs.powertools.aws.dev/llms-full.txt
+
+---
+
 # Powertools for AWS Lambda - Developer Documentation
 
 ```markdown

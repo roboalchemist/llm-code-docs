@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Continuous Testing > Testing Local and Staging Environments > Testing
   Multiple Environments
-source_url: https://docs.datadoghq.com/environments/multiple_env/index.html
 ---
 
 # Testing Multiple Environments

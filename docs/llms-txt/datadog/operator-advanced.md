@@ -5,10 +5,7 @@ title: Advanced setup for Datadog Operator
 description: >-
   Advanced configuration and deployment options for the Datadog Operator on
   Kubernetes and OpenShift
-breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Advanced setup for Datadog
-  Operator
-source_url: https://docs.datadoghq.com/guide/operator-advanced/index.html
+breadcrumbs: Docs > Containers > Containers Guides > Advanced setup for Datadog Operator
 ---
 
 # Advanced setup for Datadog Operator

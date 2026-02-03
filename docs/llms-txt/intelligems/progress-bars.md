@@ -1,13 +1,13 @@
-# Source: https://docs.intelligems.io/offer-experiences/progress-bars.md
+# Source: https://docs.intelligems.io/offer-personalizations/progress-bars.md
 
 # Progress Bars
 
 ### Overview
 
-Progress bars visually show customers their progress toward rewards like discounts or free shipping in an Offer Experience or Offer Test. They motivate customers by showing "how close am I to unlocking this discount?" and help drive larger cart values.
+Progress bars visually show customers their progress toward rewards like discounts or free shipping in an Offer Personalization or Offer Test. They motivate customers by showing "how close am I to unlocking this discount?" and help drive larger cart values.
 
 {% hint style="warning" %}
-**Important:** To add these components to your site, please follow [these installation instructions](https://docs.intelligems.io/offer-experiences/offers-integrating-widgets)
+**Important:** To add these components to your site, please follow [these installation instructions](https://docs.intelligems.io/offer-personalizations/offers-integrating-widgets)
 {% endhint %}
 
 <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-9f4901ee56d4567b553acb11efb6ef40a75a6247%2FQuantity%20button%20config.png?alt=media" alt=""><figcaption></figcaption></figure>

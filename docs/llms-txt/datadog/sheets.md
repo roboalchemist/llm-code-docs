@@ -6,7 +6,6 @@ description: >-
   Analyze Datadog data in a familiar spreadsheet interface with pivot tables,
   lookups, calculated columns, and complex analysis tools.
 breadcrumbs: Docs > Sheets
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Sheets
@@ -96,22 +95,23 @@ If you want to query data sources not yet available, use this form to submit you
 
 Create tables and analyze the data pulled from the following data sources:
 
-| Data Source          | Product page                                                       |
-| -------------------- | ------------------------------------------------------------------ |
-| APM Spans            | [APM Explorer](https://app.datadoghq.com/apm/traces)               |
-| Audit Trail          | [Audit Trail](https://app.datadoghq.com/audit-trail)               |
-| CI Pipelines         | [CI Visibility](https://app.datadoghq.com/ci/pipelines)            |
-| Cloud Cost           | [Cloud Cost Analytics](https://app.datadoghq.com/cost)             |
-| Database Queries     | [Database Monitoring](https://app.datadoghq.com/databases/queries) |
-| Events               | [Event Management](https://app.datadoghq.com/event/explorer)       |
-| Infrastructure       | [DDSQL Editor](https://app.datadoghq.com/ddsql/editor)             |
-| LLM Observability    | [LLM Observability](https://app.datadoghq.com/llm/applications)    |
-| Logs                 | [Logs Explorer](https://app.datadoghq.com/logs)                    |
-| Metrics              | [Metrics Explorer](https://app.datadoghq.com/metric/explorer)      |
-| Real User Monitoring | [RUM Explorer](https://app.datadoghq.com/rum/sessions)             |
-| Reference Tables     | [Reference Tables](https://app.datadoghq.com/reference-tables)     |
-| Security Findings    | [Cloud Security](https://app.datadoghq.com/security/compliance)    |
-| Security Signals     | [Security](https://app.datadoghq.com/security)                     |
+| Data Source          | Product page                                                                   |
+| -------------------- | ------------------------------------------------------------------------------ |
+| APM Spans            | [APM Explorer](https://app.datadoghq.com/apm/traces)                           |
+| Audit Trail          | [Audit Trail](https://app.datadoghq.com/audit-trail)                           |
+| CI Pipelines         | [CI Visibility](https://app.datadoghq.com/ci/pipelines)                        |
+| Cloud Cost           | [Cloud Cost Analytics](https://app.datadoghq.com/cost)                         |
+| Database Queries     | [Database Monitoring](https://app.datadoghq.com/databases/queries)             |
+| Events               | [Event Management](https://app.datadoghq.com/event/explorer)                   |
+| Infrastructure       | [Host List](https://app.datadoghq.com/infrastructure/)                         |
+| LLM Observability    | [LLM Observability](https://app.datadoghq.com/llm/applications)                |
+| Logs                 | [Logs Explorer](https://app.datadoghq.com/logs)                                |
+| Metrics              | [Metrics Explorer](https://app.datadoghq.com/metric/explorer)                  |
+| Product Analytics    | [Product Analytics Events](https://app.datadoghq.com/product-analytics/events) |
+| Real User Monitoring | [RUM Explorer](https://app.datadoghq.com/rum/sessions)                         |
+| Reference Tables     | [Reference Tables](https://app.datadoghq.com/reference-tables)                 |
+| Security Findings    | [Cloud Security](https://app.datadoghq.com/security/compliance)                |
+| Security Signals     | [Security](https://app.datadoghq.com/security)                                 |
 
 ## Configuring a spreadsheet{% #configuring-a-spreadsheet %}
 

@@ -2,10 +2,7 @@
 
 # Delete Permission Group
 
-```
-DELETE 
-/v1/permissions/:permissionGroupId
-```
+Copy page
 
 This endpoint removes a Permission Group identified by the `permissionGroupId` parameter.
 

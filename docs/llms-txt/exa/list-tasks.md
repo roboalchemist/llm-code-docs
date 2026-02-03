@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/reference/research/list-tasks.md
+# Source: https://exa.ai/docs/reference/research/list-tasks.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # List tasks
 
@@ -7,95 +11,96 @@
 The response follows a cursor-based pagination pattern. Pass the `limit` parameter to control page size (max 50) and use the `cursor` token returned in the response to fetch subsequent pages.
 
 
+<Card title="Get your Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys" />
+
+
 ## OpenAPI
 
 ````yaml get /research/v1
+openapi: 3.1.0
+info:
+  title: Exa Research API
+  description: >-
+    Create asynchronous research tasks that explore the web, gather sources,
+    synthesize findings, and return structured results with citations. Perfect
+    for complex, multi-step research that requires reasoning over web data.
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://api.exa.ai
+    description: Production
+security:
+  - api_key: []
+tags: []
 paths:
-  path: /research/v1
-  method: get
-  servers:
-    - url: https://api.exa.ai/research/v1/
-      description: Production
-  request:
-    security: []
-    parameters:
-      path: {}
-      query:
-        cursor:
+  /research/v1:
+    get:
+      tags:
+        - Research
+      summary: List research requests
+      description: Get a paginated list of research requests
+      operationId: ResearchController_listResearch
+      parameters:
+        - name: cursor
+          required: false
+          in: query
+          description: The cursor to paginate through the results
           schema:
-            - type: string
-              required: false
-              description: The cursor to paginate through the results
-              minLength: 1
-        limit:
+            minLength: 1
+            type: string
+        - name: limit
+          required: false
+          in: query
+          description: Number of results per page (1-50)
           schema:
-            - type: number
-              required: false
-              description: Number of results per page (1-50)
-              maximum: 50
-              minimum: 1
-              default: 10
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      discriminator:
-                        propertyName: status
-                      examples:
-                        - researchId: 01jszdfs0052sg4jc552sg4jc5
-                          model: exa-research
-                          instructions: What species of ant are similar to honeypot ants?
-                          status: running
-                        - researchId: 01jszdfs0052sg4jc552sg4jc5
-                          model: exa-research
-                          instructions: What species of ant are similar to honeypot ants?
-                          status: completed
-                          output: Melophorus bagoti
-                      $ref: '#/components/schemas/ResearchDtoClass'
-                    description: Research requests ordered by creation time (newest first)
-              hasMore:
-                allOf:
-                  - type:
-                      - boolean
-                    description: If true, use nextCursor to fetch more results
-              nextCursor:
-                allOf:
-                  - type:
-                      - string
-                      - 'null'
-                    description: >-
-                      Pass this value as the cursor parameter to fetch the next
-                      page
-            refIdentifier: '#/components/schemas/ListResearchResponseDto'
-            requiredProperties:
-              - data
-              - hasMore
-              - nextCursor
-        examples:
-          example:
-            value:
-              data:
-                - researchId: 01jszdfs0052sg4jc552sg4jc5
-                  model: exa-research
-                  instructions: What species of ant are similar to honeypot ants?
-                  status: running
-              hasMore: true
-              nextCursor: <string>
-        description: List of research requests
-  deprecated: false
-  type: path
+            minimum: 1
+            maximum: 50
+            default: 10
+            type: number
+      responses:
+        '200':
+          description: List of research requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListResearchResponseDto'
 components:
   schemas:
+    ListResearchResponseDto:
+      type:
+        - object
+      properties:
+        data:
+          type:
+            - array
+          items:
+            $ref: '#/components/schemas/ResearchDtoClass'
+            discriminator:
+              propertyName: status
+            examples:
+              - researchId: 01jszdfs0052sg4jc552sg4jc5
+                model: exa-research
+                instructions: What species of ant are similar to honeypot ants?
+                status: running
+              - researchId: 01jszdfs0052sg4jc552sg4jc5
+                model: exa-research
+                instructions: What species of ant are similar to honeypot ants?
+                status: completed
+                output: Melophorus bagoti
+          description: Research requests ordered by creation time (newest first)
+        hasMore:
+          type:
+            - boolean
+          description: If true, use nextCursor to fetch more results
+        nextCursor:
+          type:
+            - string
+            - 'null'
+          description: Pass this value as the cursor parameter to fetch the next page
+      required:
+        - data
+        - hasMore
+        - nextCursor
     ResearchDtoClass:
       discriminator:
         propertyName: status
@@ -1039,9 +1044,11 @@ components:
                 - createdAt
                 - researchId
               title: Task Output
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Your Exa API key
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

@@ -1,17 +1,25 @@
 # Source: https://braintrust.dev/docs/integrations/ai-providers/openai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OpenAI
 
 > OpenAI model provider configuration and integration guide
 
 OpenAI provides access to GPT models including GPT-5 and other cutting-edge language models. Braintrust integrates seamlessly with OpenAI through direct API access, `wrapOpenAI` wrapper functions for automatic tracing, and proxy support.
 
+<Note>
+  For the GPT-5 family of models, the `temperature` parameter is not configurable. It is handled automatically by the model and is disabled in the Braintrust UI.
+</Note>
+
 ## Setup
 
 To use OpenAI with Braintrust, you'll need an OpenAI API key.
 
 1. Visit [OpenAI's API platform](https://platform.openai.com/api-keys) and create a new API key
-2. Add the OpenAI API key to your organization's [AI providers](https://www.braintrust.dev/app/settings/secrets)
+2. Add the OpenAI API key to your [organization's AI providers](/admin/organizations#configure-ai-providers) or to a [project's AI providers](/admin/projects#configure-ai-providers)
 3. Set the OpenAI API key and your Braintrust API key as environment variables
 
 ```bash title=".env" theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
@@ -23,7 +31,7 @@ BRAINTRUST_API_KEY=<your-braintrust-api-key>
 ```
 
 <Note>
-  API keys are encrypted using 256-bit AES-GCM encryption and are not stored or logged by Braintrust.
+  API keys are encrypted at rest using [transparent data encryption](https://en.wikipedia.org/wiki/Transparent_data_encryption) with a [unique 256-bit key and nonce](https://libsodium.gitbook.io/doc/secret-key_cryptography/aead).
 </Note>
 
 Install the `braintrust` and `openai` packages.
@@ -64,9 +72,9 @@ Install the `braintrust` and `openai` packages.
 
 ## Trace with OpenAI
 
-[Trace](/guides/traces) your OpenAI LLM calls for observability and monitoring.
+[Trace](/instrument/custom-tracing) your OpenAI LLM calls for observability and monitoring.
 
-Using the OpenAI Agents SDK? See the [OpenAI Agents SDK](/integrations/sdk-integrations/openai-agents-sdk) framework docs.
+Using the OpenAI Agents SDK? See the [OpenAI Agents SDK](/integrations/agent-frameworks/openai-agents-sdk) framework docs.
 
 ### Trace automatically
 
@@ -79,7 +87,7 @@ Braintrust provides automatic tracing for OpenAI API calls, handling streaming, 
 * **C#**: Use `BraintrustOpenAI.WrapOpenAI` to wrap the OpenAI client
 
 <Tip>
-  For more control over tracing, learn how to [customize traces](/guides/traces/customize).
+  For more control over tracing, learn how to [customize traces](/instrument/advanced-tracing).
 </Tip>
 
 <CodeGroup dropdown>
@@ -307,7 +315,7 @@ Braintrust provides automatic tracing for OpenAI API calls, handling streaming, 
 
 ## Evaluate with OpenAI
 
-Evaluations help you distill the non-deterministic outputs of OpenAI models into an effective feedback loop that enables you to ship more reliable, higher quality products. Braintrust `Eval` is a simple function composed of a dataset of user inputs, a task, and a set of scorers. To learn more about evaluations, see the [Experiments](/core/experiments) guide.
+Evaluations help you distill the non-deterministic outputs of OpenAI models into an effective feedback loop that enables you to ship more reliable, higher quality products. Braintrust `Eval` is a simple function composed of a dataset of user inputs, a task, and a set of scorers. To learn more about evaluations, see the [Experiments](/evaluate/run-evaluations) guide.
 
 ### Basic OpenAI eval setup
 
@@ -525,7 +533,7 @@ Evaluate the outputs of OpenAI models with Braintrust.
                   DatasetCase.of("What is the capital of France?", "Paris"))
               .taskFunction(taskFunction)
               .scorers(
-                  Scorer.of("contains_answer", output ->
+                  Scorer.of("contains_answer", (evalCase, output) ->
                       output.contains("4") || output.contains("Paris") ? 1.0 : 0.0))
               .build();
 
@@ -537,6 +545,7 @@ Evaluate the outputs of OpenAI models with Braintrust.
 
   ```csharp  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
   using System;
+  using System.Threading.Tasks;
   using Braintrust.Sdk;
   using Braintrust.Sdk.Eval;
   using Braintrust.Sdk.Instrumentation.OpenAI;
@@ -545,7 +554,7 @@ Evaluate the outputs of OpenAI models with Braintrust.
 
   class OpenAIEvaluation
   {
-      static void Main(string[] args)
+      static async Task Main(string[] args)
       {
           var braintrust = Braintrust.Sdk.Braintrust.Get();
           var activitySource = braintrust.GetActivitySource();
@@ -579,21 +588,21 @@ Evaluate the outputs of OpenAI models with Braintrust.
           }
 
           // Create and run the evaluation
-          var eval = braintrust
+          var eval = await braintrust
               .EvalBuilder<string, string>()
               .Name("OpenAI Evaluation")
               .Cases(
-                  DatasetCase<string, string>.Of("What is 2+2?", "4"),
-                  DatasetCase<string, string>.Of("What is the capital of France?", "Paris")
+                  new DatasetCase<string, string>("What is 2+2?", "4"),
+                  new DatasetCase<string, string>("What is the capital of France?", "Paris")
               )
               .TaskFunction(TaskFunction)
               .Scorers(
-                  Scorer<string, string>.Of("accuracy", (expected, actual) =>
+                  new FunctionScorer<string, string>("accuracy", (expected, actual) =>
                       actual.Contains(expected) ? 1.0 : 0.0)
               )
-              .Build();
+              .BuildAsync();
 
-          var result = eval.Run();
+          var result = await eval.RunAsync();
           Console.WriteLine(result.CreateReportString());
       }
   }
@@ -601,7 +610,7 @@ Evaluate the outputs of OpenAI models with Braintrust.
 </CodeGroup>
 
 <Tip>
-  Learn more about eval [data](/core/experiments/write#data) and [scorers](/core/experiments/write#scorers).
+  Learn more about eval [data](/evaluate/run-evaluations#datasets) and [scorers](/evaluate/write-scorers).
 </Tip>
 
 ### Use OpenAI as an LLM judge
@@ -759,11 +768,11 @@ Braintrust supports OpenAI function calling for building AI agents with tools.
 
 ### Multimodal content, attachments, errors, and masking sensitive data
 
-To learn more about these topics, check out the [customize traces](/guides/traces/customize) guide.
+To learn more about these topics, check out the [customize traces](/instrument/advanced-tracing) guide.
 
 ## Use OpenAI with Braintrust AI proxy
 
-You can also access OpenAI models through the [Braintrust AI Proxy](/guides/proxy), which provides a unified interface for multiple providers.
+You can also access OpenAI models through the [Braintrust AI Proxy](/deploy/ai-proxy), which provides a unified interface for multiple providers.
 
 <CodeGroup dropdown>
   ```typescript  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
@@ -910,8 +919,3 @@ You can also access OpenAI models through the [Braintrust AI Proxy](/guides/prox
 * [Evaluating audio with the OpenAI Realtime API](/cookbook/recipes/Realtime)
 * [Using Python functions to extract text from images](/cookbook/recipes/ToolOCR)
 * [Using functions to build a RAG agent](/cookbook/recipes/ToolRAG)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

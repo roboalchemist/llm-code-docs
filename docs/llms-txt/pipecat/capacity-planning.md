@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/capacity-planning.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Capacity Planning
 
 > Optimize your agent deployments to minimize cold starts
@@ -169,8 +173,3 @@ Proper capacity planning ensures your agents are always ready to respond immedia
     Apply your capacity planning knowledge to your agent deployment.
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

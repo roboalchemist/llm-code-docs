@@ -4,6 +4,8 @@
 
 See how Stripe API objects fit together and learn best practices for combining them.
 
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
+
 The Stripe APIs are powerful and flexible if you know how to use them. This tour of the API covers key information to help you understand the APIs more deeply:
 
 - The core concepts we use across the APIs
@@ -35,7 +37,7 @@ To accept a payment, a system needs to create several core objects and manage th
 
 Your Stripe integration is a system that handles this creation and management by communicating with Stripe.
 
-Some integrations do a lot more than that: track customers, manage subscriptions, etc. But their core payment functionality still comes from the same objects and steps, with more objects added around that core.
+Some integrations do a lot more than that: track customers, manage subscriptions, and so on. But their core payment functionality still comes from the same objects and steps, with more objects added around that core.
 
 ## Payment objects 
 

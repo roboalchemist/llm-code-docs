@@ -138,7 +138,7 @@ As these are exposed as rank features, they can be used in ranking expressions e
 
 #### Next: [Operations](operations.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

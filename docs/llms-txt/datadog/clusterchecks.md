@@ -5,8 +5,7 @@ title: Cluster Checks
 description: >-
   Configure and manage cluster checks for monitoring noncontainerized workloads
   and cluster services
-breadcrumbs: Docs > Container Monitoring > Cluster Agent for Kubernetes > Cluster Checks
-source_url: https://docs.datadoghq.com/cluster_agent/clusterchecks/index.html
+breadcrumbs: Docs > Containers > Cluster Agent for Kubernetes > Cluster Checks
 ---
 
 # Cluster Checks

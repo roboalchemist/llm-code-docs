@@ -4,6 +4,8 @@
 
 Add discounts to subscriptions and subscription items using coupons and promotion codes.
 
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
+
 Redeem coupons to apply discounts to the subscriptions you offer. You can also use coupons to create promotion codes to share with your customers. Customers can redeem these promotion codes to apply discounts to their subscriptions.
 
 - [Coupons](https://docs.stripe.com/billing/subscriptions/coupons.md#coupons): You create and manage coupons to define discounts, such as a percentage or amount off from the subscription price.
@@ -594,8 +596,8 @@ const deleted = await stripe.coupons.del('free-period');
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.CouponDeleteParams{Coupon: stripe.String("free-period")}
-result, err := sc.V1Coupons.Delete(context.TODO(), params)
+params := &stripe.CouponDeleteParams{}
+result, err := sc.V1Coupons.Delete(context.TODO(), "free-period", params)
 ```
 
 ```dotnet

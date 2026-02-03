@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/sam2_video.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/sam2_video.md
 
 # SAM2 Video
 
@@ -269,15 +269,15 @@ A list of official Hugging Face and community (indicated by 🌎) resources to h
 
 #### transformers.Sam2VideoConfig[[transformers.Sam2VideoConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/configuration_sam2_video.py#L150)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/configuration_sam2_video.py#L149)
 
-[Sam2Config](/docs/transformers/v5.0.0rc1/en/model_doc/sam2#transformers.Sam2Config) is the configuration class to store the configuration of a [Sam2Model](/docs/transformers/v5.0.0rc1/en/model_doc/sam2#transformers.Sam2Model). It is used to instantiate a
+[Sam2Config](/docs/transformers/v5.0.0/en/model_doc/sam2#transformers.Sam2Config) is the configuration class to store the configuration of a [Sam2Model](/docs/transformers/v5.0.0/en/model_doc/sam2#transformers.Sam2Model). It is used to instantiate a
 SAM2 model according to the specified arguments, defining the memory attention, memory encoder, and image encoder
 configs. Instantiating a configuration defaults will yield a similar configuration to that of the SAM 2.1 Hiera-tiny
 [facebook/sam2.1-hiera-tiny](https://huggingface.co/facebook/sam2.1-hiera-tiny) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -310,11 +310,11 @@ Example:
 
 **Parameters:**
 
-vision_config (Union[`dict`, `Sam2VisionConfig`], *optional*) : Dictionary of configuration options used to initialize [Sam2VisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sam2#transformers.Sam2VisionConfig).
+vision_config (Union[`dict`, `Sam2VisionConfig`], *optional*) : Dictionary of configuration options used to initialize [Sam2VisionConfig](/docs/transformers/v5.0.0/en/model_doc/sam2#transformers.Sam2VisionConfig).
 
-prompt_encoder_config (Union[`dict`, `Sam2PromptEncoderConfig`], *optional*) : Dictionary of configuration options used to initialize [Sam2PromptEncoderConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sam2#transformers.Sam2PromptEncoderConfig).
+prompt_encoder_config (Union[`dict`, `Sam2PromptEncoderConfig`], *optional*) : Dictionary of configuration options used to initialize [Sam2PromptEncoderConfig](/docs/transformers/v5.0.0/en/model_doc/sam2#transformers.Sam2PromptEncoderConfig).
 
-mask_decoder_config (Union[`dict`, `Sam2MaskDecoderConfig`], *optional*) : Dictionary of configuration options used to initialize [Sam2MaskDecoderConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sam2#transformers.Sam2MaskDecoderConfig).
+mask_decoder_config (Union[`dict`, `Sam2MaskDecoderConfig`], *optional*) : Dictionary of configuration options used to initialize [Sam2MaskDecoderConfig](/docs/transformers/v5.0.0/en/model_doc/sam2#transformers.Sam2MaskDecoderConfig).
 
 initializer_range (`float`, *optional*, defaults to 0.02) : Standard deviation for parameter initialization.
 
@@ -398,13 +398,13 @@ kwargs (*optional*) : Dictionary of keyword arguments.
 
 #### transformers.Sam2VideoMaskDecoderConfig[[transformers.Sam2VideoMaskDecoderConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/configuration_sam2_video.py#L77)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/configuration_sam2_video.py#L76)
 
 This is the configuration class to store the configuration of a `Sam2VideoMaskDecoder`. It is used to instantiate a SAM2_VIDEO
 memory encoder according to the specified arguments, defining the model architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 **Parameters:**
 
@@ -436,13 +436,13 @@ dynamic_multimask_stability_thresh (`float`, *optional*, defaults to 0.98) : The
 
 #### transformers.Sam2VideoPromptEncoderConfig[[transformers.Sam2VideoPromptEncoderConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/configuration_sam2_video.py#L25)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/configuration_sam2_video.py#L24)
 
 This is the configuration class to store the configuration of a `Sam2VideoPromptEncoder`. The `Sam2VideoPromptEncoder`
 module is used to encode the input 2D points and bounding boxes.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 **Parameters:**
 
@@ -466,16 +466,16 @@ scale (`float`, *optional*, defaults to 1) : The scale factor for the prompt enc
 
 #### transformers.Sam2VideoProcessor[[transformers.Sam2VideoProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/processing_sam2_video.py#L37)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/processing_sam2_video.py#L37)
 
-Constructs a SAM2 processor which wraps a SAM2 image processor and an 2D points & Bounding boxes processor into a
-single processor.
+Constructs a Sam2VideoProcessor which wraps a image processor and a video processor into a single processor.
 
-[Sam2VideoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/sam2_video#transformers.Sam2VideoProcessor) offers all the functionalities of [Sam2ImageProcessorFast](/docs/transformers/v5.0.0rc1/en/model_doc/sam2#transformers.Sam2ImageProcessorFast) and [Sam2VideoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/sam2_video#transformers.Sam2VideoProcessor). See the docstring of
-[__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) and [__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/sam2_video#transformers.Sam2VideoProcessor.__call__) for more information.
+[Sam2VideoProcessor](/docs/transformers/v5.0.0/en/model_doc/sam2_video#transformers.Sam2VideoProcessor) offers all the functionalities of [Sam2ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/sam2#transformers.Sam2ImageProcessorFast) and [Sam2VideoVideoProcessor](/docs/transformers/v5.0.0/en/model_doc/sam2_video#transformers.Sam2VideoVideoProcessor). See the
+[~Sam2ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/sam2#transformers.Sam2ImageProcessorFast) and [~Sam2VideoVideoProcessor](/docs/transformers/v5.0.0/en/model_doc/sam2_video#transformers.Sam2VideoVideoProcessor) for more information.
 
-__call__transformers.Sam2VideoProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/processing_sam2_video.py#L63[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "segmentation_maps", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "input_points", "val": ": typing.Union[list[list[list[list[float]]]], torch.Tensor, NoneType] = None"}, {"name": "input_labels", "val": ": typing.Union[list[list[list[int]]], torch.Tensor, NoneType] = None"}, {"name": "input_boxes", "val": ": typing.Union[list[list[list[float]]], torch.Tensor, NoneType] = None"}, {"name": "original_sizes", "val": ": typing.Union[list[list[float]], torch.Tensor, NoneType] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "**kwargs", "val": ""}]- **images** (`ImageInput`, *optional*) --
-  The image(s) to process.
+__call__transformers.Sam2VideoProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/processing_sam2_video.py#L55[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "segmentation_maps", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "input_points", "val": ": list[list[list[list[float]]]] | torch.Tensor | None = None"}, {"name": "input_labels", "val": ": list[list[list[int]]] | torch.Tensor | None = None"}, {"name": "input_boxes", "val": ": list[list[list[float]]] | torch.Tensor | None = None"}, {"name": "original_sizes", "val": ": list[list[float]] | torch.Tensor | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "**kwargs", "val": ""}]- **images** (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list]`, *optional*) --
+  Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
+  passing in images with pixel values between 0 and 1, set `do_rescale=False`.
 - **segmentation_maps** (`ImageInput`, *optional*) --
   The segmentation maps to process.
 - **input_points** (`list[list[list[list[float]]]]`, `torch.Tensor`, *optional*) --
@@ -486,32 +486,30 @@ __call__transformers.Sam2VideoProcessor.__call__https://github.com/huggingface/t
   The bounding boxes to add to the frame.
 - **original_sizes** (`list[list[float]]`, `torch.Tensor`, *optional*) --
   The original sizes of the images.
-- **return_tensors** (`str` or `TensorType`, *optional*) --
-  The type of tensors to return.
-- ****kwargs** --
-  Additional keyword arguments to pass to the image processor.0A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields- `pixel_values` (`torch.Tensor`): The processed image(s).
+- **return_tensors** (`Union[str, ~utils.generic.TensorType]`, *optional*) --
+  If set, will return tensors of a particular framework. Acceptable values are:
+
+  - `'pt'`: Return PyTorch `torch.Tensor` objects.
+  - `'np'`: Return NumPy `np.ndarray` objects.0A [BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields- `pixel_values` (`torch.Tensor`): The processed image(s).
 - `original_sizes` (`list[list[float]]`): The original sizes of the images.
 - `labels` (`torch.Tensor`): The processed segmentation maps (if provided).
 - `input_points` (`torch.Tensor`): The processed points.
 - `input_labels` (`torch.Tensor`): The processed labels.
 - `input_boxes` (`torch.Tensor`): The processed bounding boxes.
 
-This method uses `Sam2VideoImageProcessorFast.__call__` method to prepare image(s) for the model. It also prepares 2D
-points and bounding boxes for the model if they are provided.
-
 **Parameters:**
 
-image_processor (`Sam2ImageProcessorFast`) : An instance of [Sam2ImageProcessorFast](/docs/transformers/v5.0.0rc1/en/model_doc/sam2#transformers.Sam2ImageProcessorFast).
+image_processor (`Sam2ImageProcessorFast`) : The image processor is a required input.
 
-video_processor (`Sam2VideoVideoProcessor`) : An instance of [Sam2VideoVideoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/sam2_video#transformers.Sam2VideoVideoProcessor).
+video_processor (`Sam2VideoVideoProcessor`) : The video processor is a required input.
 
-target_size (`int`, *optional*) : The target size (target_size, target_size) to which the image will be resized.
+target_size (`int`, *optional*) : The target size (in pixels) for normalizing input points and bounding boxes. If not provided, defaults to the image processor's size configuration. All input coordinates (points and boxes) are normalized to this size before being passed to the model. This ensures consistent coordinate representation regardless of the original image dimensions.
 
-point_pad_value (`int`, *optional*, defaults to -10) : The value used for padding input points.
+point_pad_value (`int`, *optional*, defaults to -10) : The value used for padding input points when batching sequences of different lengths. This value is used to mark padded positions and is preserved during coordinate normalization.
 
 **Returns:**
 
-`A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields`
+`A [BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields`
 
 - `pixel_values` (`torch.Tensor`): The processed image(s).
 - `original_sizes` (`list[list[float]]`): The original sizes of the images.
@@ -521,7 +519,7 @@ point_pad_value (`int`, *optional*, defaults to -10) : The value used for paddin
 - `input_boxes` (`torch.Tensor`): The processed bounding boxes.
 #### post_process_masks[[transformers.Sam2VideoProcessor.post_process_masks]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/processing_sam2_video.py#L478)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/processing_sam2_video.py#L461)
 
 Remove padding and upscale masks to the original image size.
 
@@ -549,7 +547,7 @@ Batched masks in batch_size, num_channels, height, width) format, where (height,
 is given by original_size.
 #### init_video_session[[transformers.Sam2VideoProcessor.init_video_session]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/processing_sam2_video.py#L529)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/processing_sam2_video.py#L512)
 
 Initializes a video session for inference.
 If a video is provided (async inference), the video will be processed and stored on the `video_storage_device`.
@@ -571,7 +569,7 @@ max_vision_features_cache_size (`int`, *optional*, defaults to 1) : The maximum 
 dtype (`torch.dtype`, *optional*, defaults to `torch.float32`) : The torch dtype to use for the whole session.
 #### add_inputs_to_inference_session[[transformers.Sam2VideoProcessor.add_inputs_to_inference_session]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/processing_sam2_video.py#L582)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/processing_sam2_video.py#L565)
 
 Process new points, boxes, or masks for a video frame and add them to the inference session.
 
@@ -599,9 +597,9 @@ clear_old_inputs (`bool`, *optional*, defaults to `True`) : Whether to clear old
 
 #### transformers.Sam2VideoVideoProcessor[[transformers.Sam2VideoVideoProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/video_processing_sam2_video.py#L29)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/video_processing_sam2_video.py#L26)
 
-post_process_maskstransformers.Sam2VideoVideoProcessor.post_process_maskshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/video_processing_sam2_video.py#L60[{"name": "masks", "val": ""}, {"name": "original_sizes", "val": ""}, {"name": "reshaped_input_sizes", "val": ""}, {"name": "mask_threshold", "val": " = 0.0"}, {"name": "binarize", "val": " = True"}, {"name": "pad_size", "val": " = None"}]- **masks** (`Union[List[torch.Tensor], List[np.ndarray]]`) --
+post_process_maskstransformers.Sam2VideoVideoProcessor.post_process_maskshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/video_processing_sam2_video.py#L57[{"name": "masks", "val": ""}, {"name": "original_sizes", "val": ""}, {"name": "reshaped_input_sizes", "val": ""}, {"name": "mask_threshold", "val": " = 0.0"}, {"name": "binarize", "val": " = True"}, {"name": "pad_size", "val": " = None"}]- **masks** (`Union[List[torch.Tensor], List[np.ndarray]]`) --
   Batched masks from the mask_decoder in (batch_size, num_channels, height, width) format.
 - **original_sizes** (`Union[torch.Tensor, List[Tuple[int,int]]]`) --
   The original sizes of each image before it was resized to the model's expected input shape, in (height,
@@ -644,11 +642,11 @@ is given by original_size.
 
 #### transformers.Sam2VideoInferenceSession[[transformers.Sam2VideoInferenceSession]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/modeling_sam2_video.py#L101)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/modeling_sam2_video.py#L103)
 
 Manages video inference session parameters, state and cache.
 
-add_mask_inputstransformers.Sam2VideoInferenceSession.add_mask_inputshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/modeling_sam2_video.py#L221[{"name": "obj_idx", "val": ": int"}, {"name": "frame_idx", "val": ": int"}, {"name": "inputs", "val": ": Tensor"}]
+add_mask_inputstransformers.Sam2VideoInferenceSession.add_mask_inputshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/modeling_sam2_video.py#L223[{"name": "obj_idx", "val": ": int"}, {"name": "frame_idx", "val": ": int"}, {"name": "inputs", "val": ": Tensor"}]
 Add mask inputs with automatic device placement.
 
 **Parameters:**
@@ -670,27 +668,27 @@ dtype (`torch.dtype`, *optional*, defaults to `"float32"`) : The dtype to use fo
 max_vision_features_cache_size (`int`, *optional*, defaults to 1) : The maximum number of vision features to cache.
 #### add_new_frame[[transformers.Sam2VideoInferenceSession.add_new_frame]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/modeling_sam2_video.py#L296)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/modeling_sam2_video.py#L298)
 
 Add new frame with automatic device placement.
 #### add_point_inputs[[transformers.Sam2VideoInferenceSession.add_point_inputs]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/modeling_sam2_video.py#L207)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/modeling_sam2_video.py#L209)
 
 Add point inputs with automatic device placement.
 #### get_frame[[transformers.Sam2VideoInferenceSession.get_frame]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/modeling_sam2_video.py#L312)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/modeling_sam2_video.py#L314)
 
 Get frame from video.
 #### get_obj_num[[transformers.Sam2VideoInferenceSession.get_obj_num]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/modeling_sam2_video.py#L202)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/modeling_sam2_video.py#L204)
 
 Get the total number of unique object ids received so far in this session.
 #### get_output[[transformers.Sam2VideoInferenceSession.get_output]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/modeling_sam2_video.py#L269)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/modeling_sam2_video.py#L271)
 
 Get output with smart device management.
 
@@ -705,37 +703,37 @@ output_key (str) : The key of the output.
 is_conditioning_frame (bool) : Whether the output is for a conditioning frame.
 #### obj_id_to_idx[[transformers.Sam2VideoInferenceSession.obj_id_to_idx]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/modeling_sam2_video.py#L176)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/modeling_sam2_video.py#L178)
 
 Map object ID to index, creating new entry if needed.
 #### obj_idx_to_id[[transformers.Sam2VideoInferenceSession.obj_idx_to_id]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/modeling_sam2_video.py#L198)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/modeling_sam2_video.py#L200)
 
 Map model-side object index to client-side object id.
 #### remove_mask_inputs[[transformers.Sam2VideoInferenceSession.remove_mask_inputs]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/modeling_sam2_video.py#L227)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/modeling_sam2_video.py#L229)
 
 Remove mask inputs.
 #### remove_point_inputs[[transformers.Sam2VideoInferenceSession.remove_point_inputs]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/modeling_sam2_video.py#L217)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/modeling_sam2_video.py#L219)
 
 Remove point inputs.
 #### reset_inference_session[[transformers.Sam2VideoInferenceSession.reset_inference_session]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/modeling_sam2_video.py#L328)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/modeling_sam2_video.py#L330)
 
 Reset tracking data and cache.
 #### reset_tracking_data[[transformers.Sam2VideoInferenceSession.reset_tracking_data]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/modeling_sam2_video.py#L316)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/modeling_sam2_video.py#L318)
 
 Reset tracking data but keep cache.
 #### store_output[[transformers.Sam2VideoInferenceSession.store_output]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/modeling_sam2_video.py#L232)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/modeling_sam2_video.py#L234)
 
 Store output with smart device management.
 If output_key is None, the output is stored as a dictionary.
@@ -756,11 +754,11 @@ is_conditioning_frame (bool) : Whether the output is for a conditioning frame.
 
 #### transformers.Sam2VideoModel[[transformers.Sam2VideoModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/modeling_sam2_video.py#L1558)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/modeling_sam2_video.py#L1579)
 
 The bare Sam2 Video Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -768,7 +766,7 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Sam2VideoModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/modeling_sam2_video.py#L1694[{"name": "inference_session", "val": ": Sam2VideoInferenceSession"}, {"name": "frame_idx", "val": ": typing.Optional[int] = None"}, {"name": "frame", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "reverse", "val": ": bool = False"}, {"name": "run_mem_encoder", "val": ": bool = True"}, {"name": "**kwargs", "val": ""}]- **inference_session** (`~models.sam2_video.modeling_sam2_video.Sam2VideoInferenceSession`) --
+forwardtransformers.Sam2VideoModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/modeling_sam2_video.py#L1712[{"name": "inference_session", "val": ": Sam2VideoInferenceSession"}, {"name": "frame_idx", "val": ": int | None = None"}, {"name": "frame", "val": ": torch.Tensor | None = None"}, {"name": "reverse", "val": ": bool = False"}, {"name": "run_mem_encoder", "val": ": bool = True"}, {"name": "**kwargs", "val": ""}]- **inference_session** (`~models.sam2_video.modeling_sam2_video.Sam2VideoInferenceSession`) --
   The video inference session object.
 - **frame_idx** (`int`, *optional*) --
   The index of the frame on which to run inference. No need to provide when inferring
@@ -780,17 +778,17 @@ forwardtransformers.Sam2VideoModel.forwardhttps://github.com/huggingface/transfo
 - **run_mem_encoder** (`bool`, *optional*, defaults to `True`) --
   Whether to run the memory encoder on predicted masks. The memory encoder is batched across all objects for efficiency.0`transformers.models.sam2_video.modeling_sam2_video.Sam2VideoSegmentationOutput` or `tuple(torch.FloatTensor)`A `transformers.models.sam2_video.modeling_sam2_video.Sam2VideoSegmentationOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Sam2VideoConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sam2_video#transformers.Sam2VideoConfig)) and inputs.
+elements depending on the configuration ([Sam2VideoConfig](/docs/transformers/v5.0.0/en/model_doc/sam2_video#transformers.Sam2VideoConfig)) and inputs.
 
 - **object_ids** (`list[int]`, *optional*) -- List of object IDs being tracked in the current frame.
 - **pred_masks** (`torch.FloatTensor` of shape `(batch_size, num_masks, height, width)`) -- The predicted masks stored at the model's resolution.
 - **object_score_logits** (`torch.FloatTensor` of shape `(batch_size,)`, *optional*) -- Logits for the object scores, indicating if objects are present.
-- **frame_idx** (`int`, *optional*, defaults to `None`) -- The frame index of the video.
+- **frame_idx** (`int | None.frame_idx`, defaults to `None`) -- The frame index of the video.
 Propagate the objects through a streamed video frame.
 
 **Parameters:**
 
-config ([Sam2VideoConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sam2_video#transformers.Sam2VideoConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Sam2VideoConfig](/docs/transformers/v5.0.0/en/model_doc/sam2_video#transformers.Sam2VideoConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -798,15 +796,15 @@ config ([Sam2VideoConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sam2_video#t
 
 A `transformers.models.sam2_video.modeling_sam2_video.Sam2VideoSegmentationOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Sam2VideoConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sam2_video#transformers.Sam2VideoConfig)) and inputs.
+elements depending on the configuration ([Sam2VideoConfig](/docs/transformers/v5.0.0/en/model_doc/sam2_video#transformers.Sam2VideoConfig)) and inputs.
 
 - **object_ids** (`list[int]`, *optional*) -- List of object IDs being tracked in the current frame.
 - **pred_masks** (`torch.FloatTensor` of shape `(batch_size, num_masks, height, width)`) -- The predicted masks stored at the model's resolution.
 - **object_score_logits** (`torch.FloatTensor` of shape `(batch_size,)`, *optional*) -- Logits for the object scores, indicating if objects are present.
-- **frame_idx** (`int`, *optional*, defaults to `None`) -- The frame index of the video.
+- **frame_idx** (`int | None.frame_idx`, defaults to `None`) -- The frame index of the video.
 #### propagate_in_video_iterator[[transformers.Sam2VideoModel.propagate_in_video_iterator]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam2_video/modeling_sam2_video.py#L2726)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/modeling_sam2_video.py#L2732)
 
 Propagate the objects through the video frames. Used when initializing an inference session with a whole video.
 Yields Sam2VideoSegmentationOutput for each frame.
@@ -829,10 +827,41 @@ show_progress_bar (`bool`, *optional*, defaults to `False`) : Whether to show a 
 
 A `transformers.models.sam2_video.modeling_sam2_video.Sam2VideoSegmentationOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Sam2VideoConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sam2_video#transformers.Sam2VideoConfig)) and inputs.
+elements depending on the configuration ([Sam2VideoConfig](/docs/transformers/v5.0.0/en/model_doc/sam2_video#transformers.Sam2VideoConfig)) and inputs.
 
 - **object_ids** (`list[int]`, *optional*) -- List of object IDs being tracked in the current frame.
 - **pred_masks** (`torch.FloatTensor` of shape `(batch_size, num_masks, height, width)`) -- The predicted masks stored at the model's resolution.
 - **object_score_logits** (`torch.FloatTensor` of shape `(batch_size,)`, *optional*) -- Logits for the object scores, indicating if objects are present.
-- **frame_idx** (`int`, *optional*, defaults to `None`) -- The frame index of the video.
+- **frame_idx** (`int | None.frame_idx`, defaults to `None`) -- The frame index of the video.
+#### get_image_features[[transformers.Sam2VideoModel.get_image_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam2_video/modeling_sam2_video.py#L1837)
+
+**Parameters:**
+
+pixel_values (`torch.FloatTensor`) : Input pixel values of shape `(batch_size, num_channels, height, width)`.
+
+**Returns:**
+
+``transformers.models.sam2_video.modeling_sam2_video.Sam2VideoVisionEncoderOutput` or `tuple(torch.FloatTensor)``
+
+A `transformers.models.sam2_video.modeling_sam2_video.Sam2VideoVisionEncoderOutput` or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([Sam2VideoConfig](/docs/transformers/v5.0.0/en/model_doc/sam2_video#transformers.Sam2VideoConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`, *optional*) -- Last layer hidden-state after a pooling operation on the spatial dimensions.
+- **hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+- **fpn_hidden_states** (`tuple(torch.FloatTensor)`) -- Tuple of `torch.FloatTensor` (one for each feature level, from high to low resolution) of shape
+  `(batch_size, hidden_size, height, width)`. Feature maps from the Feature Pyramid Network neck.
+- **fpn_position_encoding** (`tuple(torch.FloatTensor)`) -- Tuple of `torch.FloatTensor` (one for each feature level, from high to low resolution) of shape
+  `(batch_size, hidden_size, height, width)`. Positional encodings corresponding to the `fpn_hidden_states`.
 

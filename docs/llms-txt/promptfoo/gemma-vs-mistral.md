@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/gemma-vs-mistral/
+
 # Gemma vs Mistral: benchmark on your own data
 
 When comparing the performance of LLMs, it's best not to rely on generic benchmarks. This guide shows you how to set up a comprehensive benchmark that compares Gemma vs Mistral vs Mixtral.

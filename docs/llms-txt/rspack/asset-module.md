@@ -14,13 +14,13 @@ Other module types, such as JavaScript modules, are usually bundled into one or 
 
 ## Supported asset module types
 
-* **`'asset/inline'`**: Converts an asset to a DataURI, using Base64 encoding, no encoding configuration is supported at this time.
-* **`'asset/resource'`**: Converts an asset to a separate file and exports the URL address.
-* **`'asset'`**:
-  * Automatically selects `'asset/inline'` or `'asset/resource'` depending on the size of the asset, depending on the configuration
-  * By default, the `'asset/inline'` mechanism is applied if the asset size is less than or equal to 8096 bytes, otherwise the `'asset/resource'` mechanism is used.
-* **`'asset/source'`**: Converts and exports the asset file as a raw string.
-* **`'asset/bytes'`**: Converts and exports the asset file as a binary data `Uint8Array`.
+- **`'asset/inline'`**: Converts an asset to a DataURI, using Base64 encoding, no encoding configuration is supported at this time.
+- **`'asset/resource'`**: Converts an asset to a separate file and exports the URL address.
+- **`'asset'`**:
+  - Automatically selects `'asset/inline'` or `'asset/resource'` depending on the size of the asset, depending on the configuration
+  - By default, the `'asset/inline'` mechanism is applied if the asset size is less than or equal to 8096 bytes, otherwise the `'asset/resource'` mechanism is used.
+- **`'asset/source'`**: Converts and exports the asset file as a raw string.
+- **`'asset/bytes'`**: Converts and exports the asset file as a binary data `Uint8Array`.
 
 ## Example
 

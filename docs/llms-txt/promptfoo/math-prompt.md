@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/math-prompt/
+
 # Math Prompt Strategy
 
 The Math Prompt strategy tests an AI system's ability to handle harmful inputs using mathematical concepts like set theory, group theory, and abstract algebra. This technique can bypass content filters designed for natural language threats. Research by Bethany et al. (["Jailbreaking Large Language Models with Symbolic Mathematics"](https://arxiv.org/abs/2409.11445)) revealed that encoding harmful prompts into mathematical problems can bypass safety mechanisms in large language models (LLMs) with a 73.6% success rate across 13 state-of-the-art LLMs.

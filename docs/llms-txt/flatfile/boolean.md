@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/boolean.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Boolean Validator
 
 > Comprehensive boolean validation plugin for Flatfile that handles various representations of boolean values with multi-language support and flexible configuration options.
@@ -10,7 +14,7 @@ The Boolean Validator plugin for Flatfile provides comprehensive boolean validat
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-validate-boolean
 ```
 
@@ -79,7 +83,7 @@ The plugin is configured with a single object, `BooleanValidatorConfig`, contain
 ## Usage Examples
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateBoolean } from '@flatfile/plugin-validate-boolean';
 
@@ -94,7 +98,7 @@ The plugin is configured with a single object, `BooleanValidatorConfig`, contain
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateBoolean } from '@flatfile/plugin-validate-boolean';
 
@@ -113,7 +117,7 @@ The plugin is configured with a single object, `BooleanValidatorConfig`, contain
 ### Advanced Configuration
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateBoolean } from '@flatfile/plugin-validate-boolean';
 
@@ -134,7 +138,7 @@ The plugin is configured with a single object, `BooleanValidatorConfig`, contain
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateBoolean } from '@flatfile/plugin-validate-boolean';
 
@@ -159,7 +163,7 @@ The plugin is configured with a single object, `BooleanValidatorConfig`, contain
 ### Using Helper Functions
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { validateBooleanField } from '@flatfile/plugin-validate-boolean';
 
   const myValue = 'Y';
@@ -176,7 +180,7 @@ The plugin is configured with a single object, `BooleanValidatorConfig`, contain
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { validateBooleanField } from '@flatfile/plugin-validate-boolean';
 
   const myValue = 'Y';
@@ -202,7 +206,7 @@ The main entry point for the plugin that configures and returns a Flatfile liste
 
 **Signature:**
 
-```typescript
+```typescript  theme={null}
 validateBoolean(config: BooleanValidatorConfig): (listener: FlatfileListener) => void
 ```
 
@@ -219,7 +223,7 @@ A utility function that runs the complete validation logic for a single value.
 
 **Signature:**
 
-```typescript
+```typescript  theme={null}
 validateBooleanField(value: any, config: BooleanValidatorConfig): { value: boolean | null; error: string | null }
 ```
 
@@ -237,7 +241,7 @@ Validates that a value is strictly a boolean `true` or `false`.
 
 **Signature:**
 
-```typescript
+```typescript  theme={null}
 validateStrictBoolean(value: any, config: BooleanValidatorConfig): { value: boolean | null; error: string | null }
 ```
 
@@ -247,7 +251,7 @@ Validates that a value corresponds to a "truthy" or "falsy" representation.
 
 **Signature:**
 
-```typescript
+```typescript  theme={null}
 validateTruthyBoolean(value: any, config: BooleanValidatorConfig): { value: boolean | null; error: string | null }
 ```
 
@@ -257,7 +261,7 @@ Processes a `null` or `undefined` value according to the `handleNull` configurat
 
 **Signature:**
 
-```typescript
+```typescript  theme={null}
 handleNullValue(value: any, config: BooleanValidatorConfig): { value: boolean | null; error: string | null }
 ```
 
@@ -267,7 +271,7 @@ Processes a value that has been identified as invalid.
 
 **Signature:**
 
-```typescript
+```typescript  theme={null}
 handleInvalidValue(value: any, config: BooleanValidatorConfig): { value: boolean | null; error: string | null }
 ```
 

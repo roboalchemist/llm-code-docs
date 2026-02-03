@@ -60,7 +60,19 @@ Recording links are reusable by default. Reusable recording links are perfect fo
 
 You can choose the title of the Jam that is created from your link by adding `jam-title` to the query string.&#x20;
 
-For example, if you want the title of the Jam to be "Shopping cart bug": `https://recorder.jam.dev/QrBnf3s?jam-title=Shopping+cart+bug`
+For example, if you want the title of the Jam to be "Shopping cart bug": `https://recorder.jam.dev/QrBnf3s?jam-title=Shopping+cart+bug`&#x20;
+
+Or if it was for a same-domain Recording URL:\
+`https://www.your.com/?jam-id=QrBnf3s&jam-title=Shopping+cart+bug`&#x20;
+
+#### Setting other Jam parameters:
+
+You can also use your Recording Link's URL querystring to adjust or override other Recording Links settings:
+
+* `jam-folder=<FOLDER_ID>` — the folder to route the recorded Jam into. Use the 4-character *ID*, not the *name*—on a folder page, the URL looks like: `https://jam.dev/s/<TEAM-ID>/<FOLDER-ID>`
+* `jam-reference=<URL_OR_EMAIL>` — a user identifier, or URL (e.g. to an issue tracker, helpdesk conversation, etc)
+
+This is a great use case for when you want to customize link behavior with macros, text expanders, or custom link generators you build for your team.
 
 ## Send Recording Links from your own domain and collect console logs
 

@@ -6,7 +6,6 @@ description: >-
   Combine custom metadata with Datadog data by uploading CSV files or connecting
   cloud storage to enrich logs, security data, and analytics.
 breadcrumbs: Docs > Reference Tables
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Reference Tables
@@ -289,12 +288,13 @@ Restrict access to individual tables by specifying a list of teams, roles, or us
 
 ## Further Reading{% #further-reading %}
 
+- [Simplify log collection and aggregation for MSSPs with Datadog Observability Pipelines](https://www.datadoghq.com/blog/observability-pipelines-mssp)
 - [Use the lookup processor to enrich logs from a Reference Table](https://docs.datadoghq.com/logs/log_configuration/processors)
 - [Filter logs based on Reference Tables](https://docs.datadoghq.com/logs/explorer/advanced_search#filter-logs-based-on-reference-tables)
 - [Sheets lookup](https://docs.datadoghq.com/sheets/#lookup)
 - [Lookup processor for Events](https://docs.datadoghq.com/events/pipelines_and_processors/lookup_processor/)
 - [Use Reference Tables to add multiple tags to cost data](https://docs.datadoghq.com/cloud_cost_management/tag_pipelines/#map-multiple-tags)
-- [Learn about composite metrics queries](https://docs.datadoghq.com/metrics/composite_metrics_queries/)
+- [Learn about Reference Table joins with metrics](https://docs.datadoghq.com/metrics/reference_table_joins_with_metrics/)
 - [Add more context to your logs with Reference Tables](https://www.datadoghq.com/blog/add-context-with-reference-tables/)
 - [Enrich your existing Datadog telemetry with custom metadata using Reference Tables](https://www.datadoghq.com/blog/reference-tables/)
 - [Add more context to Cloud SIEM detections and investigations with Datadog Reference Tables](https://www.datadoghq.com/blog/add-context-with-reference-tables-in-cloud-siem/)

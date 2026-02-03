@@ -139,7 +139,7 @@ interface SliderProps {
    * The orientation of the slider.
    * @default "\"horizontal\""
    */
-  orientation?: DataOrientation | undefined;
+  orientation?: "horizontal" | "vertical" | undefined;
   /**
    * Display a tooltip around the slider thumbs with the current value.
    * `{ disableClosingTrigger: true }`{lang="ts-type"}
@@ -181,7 +181,7 @@ interface SliderProps {
    * The minimum permitted steps between multiple thumbs.
    */
   minStepsBetweenThumbs?: number | undefined;
-  modelValue?: number | number[] | undefined;
+  modelValue?: T | undefined;
 }
 ```
 
@@ -193,7 +193,7 @@ interface SliderProps {
  */
 interface SliderEmits {
   change: (payload: [event: Event]) => void;
-  update:modelValue: (payload: [value: number | number[] | undefined]) => void;
+  update:modelValue: (payload: [value: T | undefined]) => void;
 }
 ```
 
@@ -356,8 +356,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

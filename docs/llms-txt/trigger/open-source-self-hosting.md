@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/open-source-self-hosting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Docker (legacy)
 
 > Self-host Trigger.dev on your own infrastructure using Docker.
@@ -62,7 +66,7 @@ Some very basic steps to get started:
 3. [Install Ngrok](https://ngrok.com/download)
 
 <Accordion title="On a Debian server, you can run these commands">
-  ```bash  theme={null}
+  ```bash  theme={"theme":"css-variables"}
   # add ngrok repo
   curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | \
       sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && \
@@ -90,14 +94,14 @@ Some very basic steps to get started:
 
 1. Clone the [Trigger.dev docker repository](https://github.com/triggerdotdev/docker)
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 git clone https://github.com/triggerdotdev/docker
 cd docker
 ```
 
 2. Run the start script and follow the prompts
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 ./start.sh # hint: you can append -d to run in detached mode
 ```
 
@@ -107,13 +111,13 @@ Alternatively, you can follow these manual steps after cloning the docker repo:
 
 1. Create the `.env` file
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 cp .env.example .env
 ```
 
 2. Generate the required secrets
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 echo MAGIC_LINK_SECRET=$(openssl rand -hex 16)
 echo SESSION_SECRET=$(openssl rand -hex 16)
 echo ENCRYPTION_KEY=$(openssl rand -hex 16)
@@ -125,7 +129,7 @@ echo COORDINATOR_SECRET=$(openssl rand -hex 32)
 
 4. Run docker compose to start the services
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 . lib.sh # source the helper function
 docker_compose -p=trigger up
 ```
@@ -136,7 +140,7 @@ You will need to expose the webapp to the internet. You can use Ngrok for this. 
 
 1. Start Ngrok. You may get prompted to sign up - it's free.
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 ./tunnel.sh
 ```
 
@@ -144,14 +148,14 @@ You will need to expose the webapp to the internet. You can use Ngrok for this. 
 
 3. Uncomment the `TRIGGER_PROTOCOL` and `TRIGGER_DOMAIN` lines in the `.env` file. Set it to the domain you copied.
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 TRIGGER_PROTOCOL=https
 TRIGGER_DOMAIN=1234-42-42-42-42.ngrok-free.app
 ```
 
 4. Quit the start script and launch it again, or run this:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 ./stop.sh && ./start.sh
 ```
 
@@ -163,20 +167,20 @@ If you want to deploy v3 projects, you will need access to a Docker registry. Th
 
 2. Edit the `.env` file and add the registry details
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 DEPLOY_REGISTRY_HOST=docker.io
 DEPLOY_REGISTRY_NAMESPACE=<your_dockerhub_username>
 ```
 
 3. Log in to Docker Hub both locally and your server. For the split setup, this will be the worker machine. You may want to create an [access token](https://hub.docker.com/settings/security) for this.
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 docker login -u <your_dockerhub_username> docker.io
 ```
 
 4. Required on some systems: Run the login command inside the `docker-provider` container so it can pull deployment images to run your tasks.
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 docker exec -ti \
   trigger-docker-provider-1 \
   docker login -u <your_dockerhub_username> docker.io
@@ -184,7 +188,7 @@ docker exec -ti \
 
 5. Restart the services
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 ./stop.sh && ./start.sh
 ```
 
@@ -204,7 +208,7 @@ All steps are the same as for a single server, except for the following:
 
 1. **Startup.** Run the start script with the `webapp` argument
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 ./start.sh webapp
 ```
 
@@ -214,14 +218,14 @@ All steps are the same as for a single server, except for the following:
 
 1. **Environment variables.** Copy your `.env` file from the webapp to the worker machine:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # an example using scp
 scp -3 root@<webapp_machine>:docker/.env root@<worker_machine>:docker/.env
 ```
 
 2. **Startup.** Run the start script with the `worker` argument
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 ./start.sh worker
 ```
 
@@ -229,7 +233,7 @@ scp -3 root@<webapp_machine>:docker/.env root@<worker_machine>:docker/.env
 
 4. **Registry setup.** Follow the [registry setup](/open-source-self-hosting#registry-setup) section but run the last command on the worker machine - note the container name is different:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 docker exec -ti \
   trigger-worker-docker-provider-1 \
   docker login -u <your_dockerhub_username> docker.io
@@ -243,7 +247,7 @@ By default, payloads over 512KB will be offloaded to S3-compatible storage. If y
 
 For example, using Cloudflare R2:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 OBJECT_STORE_BASE_URL="https://<bucket>.<account>.r2.cloudflarestorage.com"
 OBJECT_STORE_ACCESS_KEY_ID="<r2 access key with read/write access to bucket>"
 OBJECT_STORE_SECRET_ACCESS_KEY="<r2 secret key>"
@@ -251,7 +255,7 @@ OBJECT_STORE_SECRET_ACCESS_KEY="<r2 secret key>"
 
 Alternatively, you can increase the threshold:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # size in bytes, example with 5MB threshold
 TASK_PAYLOAD_OFFLOAD_THRESHOLD=5242880
 ```
@@ -265,7 +269,7 @@ There are several reasons to lock the version of your Docker images:
 
 By default, the images will point at the latest versioned release via the `v3` tag. You can override this by specifying a different tag in your `.env` file. For example:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 TRIGGER_IMAGE_TAG=v3.0.4
 ```
 
@@ -277,7 +281,7 @@ Depending on your choice of mail provider/transport, you will want to configure 
 
 ##### Resend:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 EMAIL_TRANSPORT=resend
 FROM_EMAIL=
 REPLY_TO_EMAIL=
@@ -290,7 +294,7 @@ Note that setting `SMTP_SECURE=false` does *not* mean the email is sent insecure
 This simply means that the connection is secured using the modern STARTTLS protocol command instead of implicit TLS.
 You should only set this to true when the SMTP server host directs you to do so (generally when using port 465)
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 EMAIL_TRANSPORT=smtp
 FROM_EMAIL=
 REPLY_TO_EMAIL=
@@ -306,7 +310,7 @@ SMTP_PASSWORD=<your_smtp_password>
 Credentials are to be supplied as with any other program using the AWS SDK.
 In this scenario, you would likely either supply the additional environment variables `AWS_REGION`, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` or, when running on AWS, use credentials supplied by the EC2 IMDS.
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 EMAIL_TRANSPORT=aws-ses
 FROM_EMAIL=
 REPLY_TO_EMAIL=
@@ -314,9 +318,9 @@ REPLY_TO_EMAIL=
 
 All email addresses can sign up and log in this way. If you would like to restrict this, you can use the `WHITELISTED_EMAILS` env var. For example:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # every email that does not match this regex will be rejected
-WHITELISTED_EMAILS="authorized@yahoo\.com|authorized@gmail\.com"
+WHITELISTED_EMAILS="^(authorized@yahoo\.com|authorized@gmail\.com)$"
 ```
 
 It's currently impossible to restrict GitHub OAuth logins by account name or email like above, so this method is *not recommended* for self-hosted instances. It's also very easy to lock yourself out of your own instance.
@@ -325,7 +329,7 @@ It's currently impossible to restrict GitHub OAuth logins by account name or ema
 
 Your GitHub OAuth app needs a callback URL `https://<your_domain>/auth/github/callback` and you will have to set the following env vars:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 AUTH_GITHUB_CLIENT_ID=<your_client_id>
 AUTH_GITHUB_CLIENT_SECRET=<your_client_secret>
 ```
@@ -353,14 +357,14 @@ Underneath the hood this uses Checkpoint and Restore in Userspace, or [CRIU](htt
 
 1. Install CRIU
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 sudo apt-get update
 sudo apt-get install criu
 ```
 
 2. Tweak the config so we can successfully checkpoint our workloads
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 mkdir -p /etc/criu
 
 cat << EOF >/etc/criu/runc.conf
@@ -370,13 +374,13 @@ EOF
 
 3. Make sure everything works
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 sudo criu check
 ```
 
 3. Enable Docker experimental features, by adding the following to `/etc/docker/daemon.json`
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "experimental": true
 }
@@ -384,19 +388,19 @@ sudo criu check
 
 4. Restart the Docker daemon
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 sudo systemctl restart docker
 ```
 
 5. Uncomment `FORCE_CHECKPOINT_SIMULATION=0` in your `.env` file. Alternatively, run this:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 echo "FORCE_CHECKPOINT_SIMULATION=0" >> .env
 ```
 
 6. Restart the services
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # if you're running everything on the same machine
 ./stop.sh && ./start.sh
 
@@ -408,14 +412,14 @@ echo "FORCE_CHECKPOINT_SIMULATION=0" >> .env
 
 Once you have everything set up, you will periodically want to update your Docker images. You can easily do this by running the update script and restarting your services:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 ./update.sh
 ./stop.sh && ./start.sh
 ```
 
 Sometimes, we will make more extensive changes that require pulling updated compose files, scripts, etc from our docker repo:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 git pull
 ./stop.sh && ./start.sh
 ```
@@ -435,7 +439,7 @@ If you're coming from the beta CLI package images, you will need to:
 
 In summary, run this wherever you cloned the docker repo:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # if you made changes
 git stash
 
@@ -455,7 +459,7 @@ git stash pop
 
 * **Deployment fails at the push step.** The machine running `deploy` needs registry access:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 docker login -u <username> <registry>
 # this should now succeed
 npx trigger.dev@latest deploy --self-hosted --push
@@ -463,7 +467,7 @@ npx trigger.dev@latest deploy --self-hosted --push
 
 * **Prod runs fail to start.** The `docker-provider` needs registry access:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # single server? run this:
 docker exec -ti \
   trigger-docker-provider-1 \
@@ -483,7 +487,7 @@ This section highlights some of the CLI commands and options that are useful whe
 
 To avoid being redirected to the [Trigger.dev Cloud](https://cloud.trigger.dev) login page when using the CLI, you can specify the URL of your self-hosted instance with the `--api-url` or `-a` flag. For example:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 npx trigger.dev@latest login -a http://trigger.example.com
 ```
 
@@ -513,7 +517,7 @@ npx trigger.dev@latest list-profiles
 
 It can be useful to check you have successfully logged in to the correct instance. You can do this with the `whoami` command, which will also show the API URL:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 npx trigger.dev@latest whoami
 
 # with a custom profile
@@ -539,6 +543,6 @@ For more detailed instructions, see the [GitHub Actions guide](/github-actions).
 
 By default, the Trigger.dev webapp sends telemetry data to our servers. This data is used to improve the product and is not shared with third parties. If you would like to opt-out of this, you can set the `TRIGGER_TELEMETRY_DISABLED` environment variable in your `.env` file. The value doesn't matter, it just can't be empty. For example:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 TRIGGER_TELEMETRY_DISABLED=1
 ```

@@ -4,202 +4,11 @@ Source: https://www.activepieces.com/docs/llms-full.txt
 
 ---
 
-# Breaking Changes
-Source: https://www.activepieces.com/docs/about/breaking-changes
-
-This list shows all versions that include breaking changes and how to upgrade.
-
-## 0.71.0
-
-### What has changed?
-
-* In separate workers setup, now they have access to Redis.
-* `AP_EXECUTION_MODE` mode `SANDBOXED` is now deprecated and replaced with `SANDBOX_PROCESS`
-* Code Copilot has been deprecated. It will be reintroduced in a different, more powerful form in the future.
-
-### When is action necessary?
-
-* If you have separate workers setup, you should make sure that workers have access to Redis.
-* If you are using `AP_EXECUTION_MODE` mode `SANDBOXED`, you should replace it with `SANDBOX_PROCESS`
-
-## 0.70.0
-
-### What has changed?
-
-* `AP_QUEUE_MODE` is now deprecated and replaced with `AP_REDIS_TYPE`
-* If you are using Sentinel Redis, you should add `AP_REDIS_TYPE` to `SENTINEL`
-
-### When is action necessary?
-
-* If you are using `AP_QUEUE_MODE`, you should replace it with `AP_REDIS_TYPE`
-* If you are using Sentinel Redis, you should add `AP_REDIS_TYPE` to `SENTINEL`
-
-## 0.69.0
-
-### What has changed?
-
-* `AP_FLOW_WORKER_CONCURRENCY` and `AP_SCHEDULED_WORKER_CONCURRENCY` are now deprecated all jobs have single queue and replaced with `AP_WORKER_CONCURRENCY`
-
-### When is action necessary?
-
-* If you are using `AP_FLOW_WORKER_CONCURRENCY` or `AP_SCHEDULED_WORKER_CONCURRENCY`, you should replace them with `AP_WORKER_CONCURRENCY`
-
-## 0.66.0
-
-### What has changed?
-
-* If you use embedding the embedding SDK, please upgrade to version 0.6.0, `embedding.dashboard.hideSidebar` used to hide the navbar above the flows table in the dashboard now it relies on `embedding.dashboard.hideFlowsPageNavbar`
-
-## 0.64.0
-
-### What has changed?
-
-* MCP management is removed from the embedding SDK.
-
-## 0.63.0
-
-### What has changed?
-
-* Replicate provider's text models have been removed.
-
-### When is action necessary?
-
-* If you are using one of Replicate's text models, you should replace it with another model from another provider.
-
-## 0.46.0
-
-### What has changed?
-
-* The UI for "Array of Properties" inputs in the pieces has been updated, particularly affecting the "Dynamic Value" toggle functionality.
-
-### When is action necessary?
-
-* No action is required for this change.
-* Your published flows will continue to work without interruption.
-* When editing existing flows that use the "Dynamic Value" toggle on "Array of Properties" inputs (such as the "files" parameter in the "Extract Structured Data" action of the "Utility AI" piece), the end user will need to remap the values again.
-* For details on the new UI implementation, refer to this [announcement](https://community.activepieces.com/t/inline-items/8964).
-
-## 0.38.6
-
-### What has changed?
-
-* Workers no longer rely on the `AP_FLOW_WORKER_CONCURRENCY` and `AP_SCHEDULED_WORKER_CONCURRENCY` environment variables. These values are now retrieved from the app server.
-
-### When is action necessary?
-
-* If `AP_CONTAINER_TYPE` is set to `WORKER` on the worker machine, and `AP_SCHEDULED_WORKER_CONCURRENCY` or `AP_FLOW_WORKER_CONCURRENCY` are set to zero on the app server, workers will stop processing the queues. To fix this, check the [Separate Worker from App](https://www.activepieces.com/docs/install/configuration/separate-workers) documentation and set the `AP_CONTAINER_TYPE` to fetch the necessary values from the app server. If no container type is set on the worker machine, this is not a breaking change.
-
-## 0.35.1
-
-### What has changed?
-
-* The 'name' attribute has been renamed to 'externalId' in the `AppConnection` entity.
-* The 'displayName' attribute has been added to the `AppConnection` entity.
-
-### When is action necessary?
-
-* If you are using the connections API, you should update the `name` attribute to `externalId` and add the `displayName` attribute.
-
-## 0.35.0
-
-### What has changed?
-
-* All branches are now converted to routers, and downgrade is not supported.
-
-## 0.33.0
-
-### What has changed?
-
-* Files from actions or triggers are now stored in the database / S3 to support retries from certain steps, and the size of files from actions is now subject to the limit of `AP_MAX_FILE_SIZE_MB`.
-* Files in triggers were previously passed as base64 encoded strings; now they are passed as file paths in the database / S3. Paused flows that have triggers from version 0.29.0 or earlier will no longer work.
-
-### When is action necessary?
-
-* If you are dealing with large files in the actions, consider increasing the `AP_MAX_FILE_SIZE_MB` to a higher value, and make sure the storage system (database/S3) has enough capacity for the files.
-
-## 0.30.0
-
-### What has changed?
-
-* `AP_SANDBOX_RUN_TIME_SECONDS` is now deprecated and replaced with `AP_FLOW_TIMEOUT_SECONDS`
-* `AP_CODE_SANDBOX_TYPE` is now deprecated and replaced with new mode in `AP_EXECUTION_MODE`
-
-### When is action necessary?
-
-* If you are using `AP_CODE_SANDBOX_TYPE` to `V8_ISOLATE`, you should switch to `AP_EXECUTION_MODE` to `SANDBOX_CODE_ONLY`
-* If you are using `AP_SANDBOX_RUN_TIME_SECONDS` to set the sandbox run time limit, you should switch to `AP_FLOW_TIMEOUT_SECONDS`
-
-## 0.28.0
-
-### What has changed?
-
-* **Project Members:**
-  * The `EXTERNAL_CUSTOMER` role has been deprecated and replaced with the `OPERATOR` role. Please check the permissions page for more details.
-  * All pending invitations will be removed.
-  * The User Invitation entity has been introduced to send invitations. You can still use the Project Member API to add roles for the user, but it requires the user to exist. If you want to send an email, use the User Invitation, and later a record in the project member will be created after the user accepts and registers an account.
-* **Authentication:**
-  * The `SIGN_UP_ENABLED` environment variable, which allowed multiple users to sign up for different platforms/projects, has been removed. It has been replaced with inviting users to the same platform/project. All old users should continue to work normally.
-
-### When is action necessary?
-
-* **Project Members:**
-
-If you use the embedding SDK or the create project member API with the `EXTERNAL_CUSTOMER` role, you should start using the `OPERATOR` role instead.
-
-* **Authentication:**
-
-Multiple platforms/projects are no longer supported in the community edition. Technically, everything is still there, but you have to hack using the API as the authentication system has now changed. If you have already created the users/platforms, they should continue to work, and no action is required.
-
-
 # Changelog
 Source: https://www.activepieces.com/docs/about/changelog
 
 A log of all notable changes to Activepieces
 
-
-
-# Editions
-Source: https://www.activepieces.com/docs/about/editions
-
-
-
-Activepieces operates on an open-core model, providing a core software platform as open source licensed under the permissive **MIT** license while offering additional features as proprietary add-ons in the cloud.
-
-### Community / Open Source Edition
-
-The Community edition is free and open source. It has all the pieces and features to build and run flows without any limitations.
-
-### Commercial Editions
-
-Learn more at: [https://www.activepieces.com/pricing](https://www.activepieces.com/pricing)
-
-## Feature Comparison
-
-| Feature                  | Community | Enterprise | Embed    |
-| ------------------------ | --------- | ---------- | -------- |
-| Flow History             | ✅         | ✅          | ✅        |
-| All Pieces               | ✅         | ✅          | ✅        |
-| Flow Runs                | ✅         | ✅          | ✅        |
-| Unlimited Flows          | ✅         | ✅          | ✅        |
-| Unlimited Connections    | ✅         | ✅          | ✅        |
-| Unlimited Flow steps     | ✅         | ✅          | ✅        |
-| Custom Pieces            | ✅         | ✅          | ✅        |
-| On Premise               | ✅         | ✅          | ✅        |
-| Cloud                    | ❌         | ✅          | ✅        |
-| Project Team Members     | ❌         | ✅          | ✅        |
-| Manage Multiple Projects | ❌         | ✅          | ✅        |
-| Limits Per Project       | ❌         | ✅          | ✅        |
-| Pieces Management        | ❌         | ✅          | ✅        |
-| Templates Management     | ❌         | ✅          | ✅        |
-| Custom Domain            | ❌         | ✅          | ✅        |
-| All Languages            | ✅         | ✅          | ✅        |
-| JWT Single Sign On       | ❌         | ❌          | ✅        |
-| Embed SDK                | ❌         | ❌          | ✅        |
-| Audit Logs               | ❌         | ✅          | ❌        |
-| Git Sync                 | ❌         | ✅          | ❌        |
-| Private Pieces           | ❌         | <b>5</b>   | <b>2</b> |
-| Custom Email Branding    | ❌         | ✅          | ✅        |
-| Custom Branding          | ❌         | ✅          | ✅        |
 
 
 # i18n Translations
@@ -216,13 +25,13 @@ Activepieces uses Crowdin because it helps translators who don't know how to cod
 1. Create Crowdin account
 2. Join the project [https://crowdin.com/project/activepieces](https://crowdin.com/project/activepieces)
 
-<img src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/crowdin.png?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=f35baceeb1f6be0f60093a5e04572c7c" alt="Join Project" data-og-width="2560" width="2560" data-og-height="1440" height="1440" data-path="resources/crowdin.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/crowdin.png?w=280&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=385b4c7a8cf38fadc3ff0ec14d9db71f 280w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/crowdin.png?w=560&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=04d599483cc42ec7130ac4abf9530b7a 560w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/crowdin.png?w=840&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=f06487a1755576698428f76132431d06 840w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/crowdin.png?w=1100&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=098f0dd3c0e1b1fcaecdb4ca0ee48e24 1100w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/crowdin.png?w=1650&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=c940c4229f3a3e107f4302e15f04870e 1650w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/crowdin.png?w=2500&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=516f8920d49365f926389a989743fd5c 2500w" />
+<img alt="Join Project" />
 
 3. Click on the language you want to translate
 
 4. Click on "Translate All"
 
-<img src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/crowdin-translate-all.png?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=37cd80d9ab9d97df1da60fa495dba477" alt="Translate All" data-og-width="2560" width="2560" data-og-height="1440" height="1440" data-path="resources/crowdin-translate-all.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/crowdin-translate-all.png?w=280&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=6801cd01effecf67dd1afd35fc5ad7a4 280w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/crowdin-translate-all.png?w=560&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=b8329e504a59a2f36a3f2641aebf694a 560w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/crowdin-translate-all.png?w=840&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=6a23e65823b5a68967f144b20338c625 840w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/crowdin-translate-all.png?w=1100&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=9274f2cce14a585cc95e0b5b5623fc41 1100w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/crowdin-translate-all.png?w=1650&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=1bd232597ff601a688d9214c855bcf62 1650w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/crowdin-translate-all.png?w=2500&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=0acfc2f4d28f4a9ac17a3225ab5118a9 2500w" />
+<img alt="Translate All" />
 
 5. Select Strings you want to translate and click on "Save" button
 
@@ -254,255 +63,1013 @@ Using the enterprise features (under the packages/ee and packages/server/api/src
 </Tip>
 
 
-# Telemetry
-Source: https://www.activepieces.com/docs/about/telemetry
+# Event Streaming
+Source: https://www.activepieces.com/docs/admin-guide/guides/event-streaming
+
+Configure webhook destinations to receive real-time platform events
+
+<Snippet />
+
+## Overview
+
+Event Streaming allows you to configure webhook destinations that receive real-time notifications when specific events occur in your Activepieces platform. This enables you to integrate Activepieces with external systems, monitoring tools, analytics platforms, or custom applications.
+
+## Use Cases
+
+* **Monitoring & Analytics**: Track flow executions, user activity, and system changes in real-time
+* **Integration**: Sync events with external systems like SIEM tools, data warehouses, or custom dashboards
+* **Compliance**: Maintain audit trails in external systems for compliance requirements
+* **Automation**: Trigger downstream processes based on platform events
+
+## Available Events
+
+You can configure destinations to receive the following event types:
+
+### Flow Events
+
+* **Flow Created**: When a new flow is created
+* **Flow Updated**: When a flow is modified
+* **Flow Deleted**: When a flow is removed
+* **Flow Run Started**: When a flow execution begins
+* **Flow Run Finished**: When a flow execution completes
+* **Flow Run Resumed**: When a paused flow execution resumes
+
+### Folder Events
+
+* **Folder Created**: When a new folder is created
+* **Folder Updated**: When a folder is modified
+* **Folder Deleted**: When a folder is removed
+
+### Connection Events
+
+* **Connection Upserted**: When a connection is created or updated
+* **Connection Deleted**: When a connection is removed
+
+### User Events
+
+* **User Signed Up**: When a new user registers
+* **User Signed In**: When a user logs in
+* **User Password Reset**: When a password reset is requested
+* **User Email Verified**: When a user verifies their email
+
+### Security Events
+
+* **Signing Key Created**: When a new signing key is generated
+* **Project Role Created**: When a project role is created
+* **Project Role Updated**: When a project role is modified
+* **Project Role Deleted**: When a project role is removed
+* **Project Release Created**: When a project release is created
+
+## How to Configure
+
+1. Go to **Platform Admin → Infrastructure → Event Destinations**
+2. Click **Create Destination**
+3. Enter your **Webhook URL** (must be a valid HTTPS endpoint)
+4. Select the **Events** you want to receive
+5. Click **Test Destination** to verify the connection (optional)
+6. Click **Create Destination** to save
+
+## Requirements
+
+* **Enterprise Edition**: Event Streaming requires an enterprise plan with Audit Logs enabled
+* **HTTPS Endpoint**: Webhook URLs must use HTTPS
+* **Publicly Accessible**: Your endpoint must be accessible from the internet
+
+## Troubleshooting
+
+* **Events Not Received**: Verify your endpoint is publicly accessible and returns 2xx status codes
+* **Test Fails**: Check that your URL is valid and uses HTTPS
+* **Missing Events**: Ensure the event type is selected in your destination configuration
 
 
+# Override OAuth2 Apps
+Source: https://www.activepieces.com/docs/admin-guide/guides/manage-oauth2
 
-# Why Does Activepieces need data?
+Use your own OAuth2 credentials instead of the default Activepieces apps
 
-As a self-hosted product, gathering usage metrics and insights can be difficult for us. However, these analytics are essential in helping us understand key behaviors and delivering a higher quality experience that meets your needs.
+<Snippet />
 
-To ensure we can continue to improve our product, we have decided to track certain basic behaviors and metrics that are vital for understanding the usage of Activepieces.
+## Default Behavior
 
-We have implemented a minimal tracking plan and provide a detailed list of the metrics collected in a separate section.
+When users connect to services like Google Sheets or Slack, they see "Activepieces" as the app requesting access. This works out of the box with no setup required.
 
-# What Does Activepieces Collect?
+## Why Replace OAuth2 Apps?
 
-We value transparency in data collection and assure you that we do not collect any personal information. The following events are currently being collected:
+* **Branding**: Show your company name instead of "Activepieces" in authorization screens
+* **Higher Limits**: Some services have stricter rate limits for shared OAuth apps
+* **Compliance**: Your organization may require using company-owned credentials
 
-[Exact Code](https://github.com/activepieces/activepieces/blob/main/packages/shared/src/lib/common/telemetry.ts)
+## How to Configure
 
-1. `flow.published`: Event fired when a flow is published
-2. `signed.up`: Event fired when a user signs up
-3. `flow.test`: Event fired when a flow is tested
-4. `flow.created`: Event fired when a flow is created
-5. `start.building`: Event fired when a user starts building
-6. `demo.imported`: Event fired when a demo is imported
-7. `flow.imported`: Event fired when a flow template is imported
+1. Go to **Platform Admin → Setup → Pieces**
+2. Find the piece you want to configure (e.g., Google Sheets)
+3. Click the lock icon to open the OAuth2 settings
+4. Enter your own Client ID and Client Secret
 
-# Opting out?
-
-To opt out, set the environment variable `AP_TELEMETRY_ENABLED=false`
-
-
-# Appearance
-Source: https://www.activepieces.com/docs/admin-console/appearance
+<img alt="Manage Oauth2 apps" />
 
 
+# How to Manage Pieces
+Source: https://www.activepieces.com/docs/admin-guide/guides/manage-pieces
 
-<Snippet file="enterprise-feature.mdx" />
+Control which integrations are available to your users
 
-Customize the brand by going to the **Platform Admin -> Setup -> Branding**. Here, you can customize:
+<Snippet />
 
-* Logo / FavIcon
-* Primary color
-* Platform Name
+## Overview
 
-<img src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/branding.png?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=a1684adc19f715524214dca6a5cead7e" alt="Branding Platform" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/branding.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/branding.png?w=280&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=17a7d79d9f60fcc4d820afa278fa74f1 280w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/branding.png?w=560&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=a82e97a06c101be45f08d1d186a3a77a 560w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/branding.png?w=840&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=be9cfed5d8051097c2eaf7b244e27cae 840w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/branding.png?w=1100&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=bde33f4aec689d05de68aa6884319be6 1100w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/branding.png?w=1650&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=f01b364791965b2399b1fdbf2b289123 1650w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/branding.png?w=2500&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=1af3521ec69ccc6a09578d931a4d9a58 2500w" />
+**Pieces** are the building blocks of Activepieces — they are integrations and connectors (like Google Sheets, Slack, OpenAI, etc.) that users can use in their automation flows.
 
-<video controls autoplay muted loop playsinline className="w-full aspect-video" src="https://cdn.activepieces.com/videos/showcase/appearance.mp4" />
+As a platform administrator, you have full control over which pieces are available to your users. This allows you to:
 
+* **Enforce security policies** by restricting access to certain integrations
+* **Simplify the user experience** by showing only relevant pieces for your use case
+* **Deploy custom/private pieces** that are specific to your organization
 
-# Custom Domains
-Source: https://www.activepieces.com/docs/admin-console/custom-domain
+There are **two levels** of piece management:
 
+| Level              | Who Can Manage | Scope                                         |
+| ------------------ | -------------- | --------------------------------------------- |
+| **Platform Level** | Platform Admin | Install and remove across the entire platform |
+| **Project Level**  | Project Admin  | Show/hide specific pieces for specfic project |
 
+***
 
-<Snippet file="enterprise-feature.mdx" />
+## Platform-Level Management
 
-You can set up a unique domain for your platform, like app.example.com.<br />
-This is also used to determine the theme and branding on the authentication pages when a user is not logged in.
+Platform administrators can manage pieces for the entire Activepieces instance from **Platform Admin → Setup → Pieces**.
 
-**Platform Admin -> Setup -> Branding**
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/custom-domain.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=71327690a63cdc2cd5a58fecb871f22b" alt="Manage Projects" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/custom-domain.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/custom-domain.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=b07ed3ec2fb1ac724c75a3b2b1fa82a7 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/custom-domain.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=c2d4c63b97fb7b4174197818574ad519 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/custom-domain.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=dbe98c0050b22e67bd1184dd39e094bd 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/custom-domain.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=f91fa5b56a71c5ab091eeec21c24c224 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/custom-domain.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=ab8aa9a8d2b9951c6ed42f5a65a99488 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/custom-domain.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=f97c5490949082efa795f62264d395c9 2500w" />
+## Project-Level Management
 
+Project administrators can further restrict which pieces are available within their specific project. This is useful when different teams or projects need access to different integrations.
 
-# Customize Emails
-Source: https://www.activepieces.com/docs/admin-console/customize-emails
+### Show/Hide Pieces in a Project
 
+<Steps>
+  <Step title="Open Project Settings">
+    Navigate to your project and go to **Settings → Pieces**.
+  </Step>
 
+  <Step title="Configure Visibility">
+    You'll see a list of all pieces installed on the platform. Toggle the visibility for each piece:
 
-<Snippet file="enterprise-feature.mdx" />
+    * **Enabled**: Users in this project can use the piece
+    * **Disabled**: The piece is hidden from users in this project
+  </Step>
 
-You can add your own mail server to Activepieces, or override it if it's in the cloud. From the platform, all email templates are automatically whitelabeled according to the [appearance settings](./appearance).
+  <Step title="Save Changes">
+    Changes take effect immediately — users will only see the enabled pieces when building their flows.
+  </Step>
+</Steps>
 
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-smtp.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=e9ec8c1dc37d7ff3d4041c6010c52c31" alt="Manage SMTP" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/manage-smtp.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-smtp.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=a554f7f418b3a6f7fff01ee9278d4b6a 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-smtp.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=df990ed546ba180b7978af821e7f4f98 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-smtp.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=7f8e886ba84f5b275feb138e157c5a3d 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-smtp.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=861955bda2f073e76749266cead1e76e 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-smtp.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=3734672d2b5f695016335fdf3a0e47b9 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-smtp.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=7046ba889c796bf13cd9f766fb8615b2 2500w" />
+<img alt="Manage Pieces" />
 
-
-# Manage AI Providers
-Source: https://www.activepieces.com/docs/admin-console/manage-ai-providers
-
-
-
-Set your AI providers so your users enjoy a seamless building experience with our universal AI pieces like [Text AI](https://www.activepieces.com/pieces/text-ai).
-
-## Manage AI Providers
-
-You can manage the AI providers that you want to use in your flows. To do this, go to the **AI** page in the **Admin Console**.
-
-You can define the provider's base URL and the API key.
-
-These settings will be used for all the projects for every request to the AI provider.
-
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/configure-ai-provider.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=80d92caf90c116589c7ecbc7f80a9514" alt="Manage AI Providers" data-og-width="1420" width="1420" data-og-height="800" height="800" data-path="resources/screenshots/configure-ai-provider.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/configure-ai-provider.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=1d94288df818cc7c1d241d5681dcbcab 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/configure-ai-provider.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=14038529f8d565a38edd58ac89c802d9 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/configure-ai-provider.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=894ea0d5839737c4bfd66bdaffda5e80 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/configure-ai-provider.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=0176a920881ca1d8de1c71e1e9ba758f 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/configure-ai-provider.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=20df3793ad011b2c71ab6c1b0f01a39b 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/configure-ai-provider.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=18d3a1c09352aad3355efe6cee91745c 2500w" />
-
-## Configure AI Credits Limits Per Project
-
-You can configure the token limits per project. To do this, go to the project general settings and change the **AI Credits** field to the desired value.
+<img alt="Manage Pieces" />
 
 <Note>
-  This limit is per project and is an accumulation of all the reported usage by the AI piece in the project.
-  Since only the AI piece goes through the Activepieces API,
-  using any other piece like the standalone OpenAI, Anthropic or Perplexity pieces will not count towards or respect this limit.
+  Project-level settings can only **hide** pieces that are installed at the platform level. You cannot add pieces at the project level that aren't already installed on the platform.
 </Note>
 
-<img src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/ai-credits-limit.png?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=3a37db4f477f8fcf4c6a7749afedbdd0" alt="Manage AI Providers" data-og-width="1420" width="1420" data-og-height="800" height="800" data-path="resources/screenshots/ai-credits-limit.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/ai-credits-limit.png?w=280&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=1e4619f6a62a954d9e3edc1d83a3f351 280w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/ai-credits-limit.png?w=560&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=9339b91b24aee4f662222ed815982bd4 560w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/ai-credits-limit.png?w=840&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=91726634f998e19818cdcea4c83b8882 840w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/ai-credits-limit.png?w=1100&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=f8299e5908cde2cf4f10c04d750b64ea 1100w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/ai-credits-limit.png?w=1650&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=8f255a7d9bd82ebe13e3b200932a3810 1650w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/ai-credits-limit.png?w=2500&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=c5b35d163e6e0487bf289a850a42df1b 2500w" />
+### Install Private Pieces
 
-### AI Credits Explained
+<Tip>
+  For detailed instructions on building custom pieces, check the [Building Pieces](/build-pieces/building-pieces/overview) documentation.
+</Tip>
 
-AI credits are the number tasks that can be run by any of our universal AI pieces.
+If you've built a custom piece for your organization, you can upload it directly as a tarball (`.tgz`) file.
 
-So if you have a flow run that contains 5 universal AI pieces steps, the AI credits consumed will be 5.
+<Steps>
+  <Step title="Build Your Piece">
+    Build your piece using the Activepieces CLI:
 
+    ```bash theme={null}
+    npm run pieces -- build --name=your-piece-name
+    ```
 
-# Replace OAuth2 Apps
-Source: https://www.activepieces.com/docs/admin-console/manage-oauth2
+    This generates a tarball in `dist/packages/pieces/your-piece-name`.
+  </Step>
 
+  <Step title="Navigate to Pieces Settings">
+    Go to **Platform Admin → Setup → Pieces** and click **Install Piece**.
+  </Step>
 
+  <Step title="Select File Upload">
+    Choose **Upload File** as the installation source.
+  </Step>
 
-<Snippet file="enterprise-feature.mdx" />
+  <Step title="Upload the Tarball">
+    Select the `.tgz` file from your build output and upload it.
+  </Step>
+</Steps>
 
-Your project automatically uses Activepieces OAuth2 Apps as the default setting. <br />
-If you prefer to use your own OAuth2 Apps, Go to **Platform Admin -> Setup -> Pieces** then choose a piece that uses OAuth2 like Google Sheets and click the open lock icon to configure your own OAuth2 app.
-
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-oauth2.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=8ebbd16358d5bf3e58d970927516b517" alt="Manage Oauth2 apps" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/manage-oauth2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-oauth2.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=d6b09e80d3bb74f7ceea91183bc790f2 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-oauth2.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=e12e8e0c50387de42ed67ce151f5a910 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-oauth2.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=167e940662e51d66366f20b3d46e6979 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-oauth2.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=b6f8ea7ad199309435c92491a6cc6d8b 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-oauth2.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=546eb6cb1ca0ca065d5c63949c9d9b51 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-oauth2.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=5b1b48bbeee1ecd701923383fc5985c7 2500w" />
-
-
-# Manage Pieces
-Source: https://www.activepieces.com/docs/admin-console/manage-pieces
-
-
-
-<Snippet file="enterprise-feature.mdx" />
-
-## Show Specific Pieces in Project
-
-If you go to **Pieces Settings** in your project, you can manage which pieces you would like to be available to your users.
-
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-pieces.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=d8dbe5cdd7a9fead03b9ef30d4d2de6d" alt="Manage Pieces" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/manage-pieces.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-pieces.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=b433e17a00980ba9b07a673a8b86ec79 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-pieces.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=b544c35312cd3554475ab777742ce576 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-pieces.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=672831ff44e56bfba9b39d5fb6340ab5 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-pieces.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=1e1430e6b4745c24d0777b5e224bb313 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-pieces.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=dc7d1ed57cad8ec386db6bb713dc4a48 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-pieces.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=0b3b9c923c6b8eb4b179607c03b91b70 2500w" />
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-pieces-2.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=564a5736574d05ae8e080e36545e9b54" alt="Manage Pieces" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/manage-pieces-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-pieces-2.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=32ddda09dc1c166322544331d381f685 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-pieces-2.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=6a9e0f2df1cd1eec59a8c1a3b68dab29 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-pieces-2.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=86696de9743539b90a075ba5d45b416f 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-pieces-2.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=46c74aa21964a3244dd1328e6390e234 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-pieces-2.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=4528915c4c57a0a523fd80828f5cda31 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/manage-pieces-2.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=3f9630171874a96df816369827cdbebc 2500w" />
-
-## Install Piece
-
-* Go to **Platform Admin -> Setup -> Pieces** and hit Install pieces.
-* You can choose to install a piece from NPM or upload a tar file directly for private pieces.
-* You can check the [Sharing Pieces Doc](/developers/sharing-pieces/overview) for more info.
-
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=1106164b9b77b33e96ccdcd4df789948" alt="Manage Projects" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/install-piece.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=c9009ba8db60863675f21036a561f4ce 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=c7ad50fd4c721848169fe6c9c2c6af0b 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=6cfedfb7edde2f9311a1af6b783520cf 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=615c3b9f24457a4384ede39ed276d50a 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=44499b6321130356ec94bc0826eb19fd 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=b7cfc85def669ee351fef9150f4c3bce 2500w" />
+<img alt="Install Piece" />
 
 
-# Managed Projects
-Source: https://www.activepieces.com/docs/admin-console/manage-projects
+# Manage User Roles
+Source: https://www.activepieces.com/docs/admin-guide/guides/permissions
+
+Documentation on project permissions in Activepieces
+
+<Snippet />
+
+Activepieces utilizes Role-Based Access Control (RBAC) for managing permissions within projects. Each project consists of multiple flows and users, with each user assigned specific roles that define their actions within the project.
+
+## Default Roles
+
+Activepieces comes with four standard roles out of the box. The table below shows the permissions for each role:
+
+| Permission                 | Admin | Editor | Operator | Viewer |
+| -------------------------- | :---: | :----: | :------: | :----: |
+| **Flows**                  |       |        |          |        |
+| View Flows                 |   ✓   |    ✓   |     ✓    |    ✓   |
+| Edit Flows                 |   ✓   |    ✓   |          |        |
+| Publish / Toggle Flows     |   ✓   |    ✓   |     ✓    |        |
+| **Runs**                   |       |        |          |        |
+| View Runs                  |   ✓   |    ✓   |     ✓    |    ✓   |
+| Retry Runs                 |   ✓   |    ✓   |     ✓    |        |
+| **Connections**            |       |        |          |        |
+| View Connections           |   ✓   |    ✓   |     ✓    |    ✓   |
+| Edit Connections           |   ✓   |    ✓   |     ✓    |        |
+| **Team**                   |       |        |          |        |
+| View Project Members       |   ✓   |    ✓   |     ✓    |    ✓   |
+| Add/Remove Project Members |   ✓   |        |          |        |
+| **Git Sync**               |       |        |          |        |
+| Configure Git Repo         |   ✓   |        |          |        |
+| Pull Flows from Git        |   ✓   |        |          |        |
+| Push Flows to Git          |   ✓   |        |          |        |
+
+## Custom Roles
+
+If the default roles don't fit your needs, you can create custom roles with specific permissions.
+
+<Steps>
+  <Step title="Navigate to Project Roles">
+    Go to **Platform Admin** → **Security** → **Project Roles**
+  </Step>
+
+  <Step title="Create a New Role">
+    Click **Create Role** and give it a name
+  </Step>
+
+  <Step title="Configure Permissions">
+    Select the specific permissions you want to grant to this role
+  </Step>
+</Steps>
+
+<Tip>
+  Custom roles are useful when you need fine-grained control, such as allowing users to view and retry runs without being able to edit flows.
+</Tip>
 
 
+# Project Releases
+Source: https://www.activepieces.com/docs/admin-guide/guides/project-releases
 
-<Snippet file="enterprise-feature.mdx" />
+Learn how to manage and deploy releases across projects
 
-This feature helps you unlock these use cases:
+Project Releases allow you to sync flows, connections, and tables between different projects—essential for teams that want to develop in one environment and deploy to another with confidence.
 
-1. Set up projects for different teams inside the company.
-2. Set up projects automatically using the embedding feature for your SaaS customers.
+<Tip>
+  **Example:** Build and test your automations in a **Staging** project, then seamlessly promote them to **Production** when ready. Simply navigate to your Production project → **Releases** → create a release from Staging, and all your changes will be applied instantly.
+</Tip>
 
-You can **create** new projects and sets **limits** on the number of tasks for each project.
+## Overview
 
+There are three ways to create a release:
 
-# Manage Templates
-Source: https://www.activepieces.com/docs/admin-console/manage-templates
+| Source       | Description                                      |
+| ------------ | ------------------------------------------------ |
+| **Git**      | Pull changes from a connected Git repository     |
+| **Project**  | Copy flows from another project in your instance |
+| **Rollback** | Restore a previous release state                 |
 
+## Prerequisites
 
+### Enabling Environments
 
-<Snippet file="enterprise-feature.mdx" />
+In your project dashboard, go to settings then to Environments and hit the enable button.
 
-You can create custom templates for your users within the Platform dashboard's.
+<img alt="Enable Environments" />
 
-<video controls autoplay muted loop playsinline className="w-full aspect-video" src="https://cdn.activepieces.com/videos/showcase/templates.mp4" />
+<img alt="Enable Environments" />
 
+## Getting Started
 
-# Overview
-Source: https://www.activepieces.com/docs/admin-console/overview
+Navigate to the **Releases** page from your project sidebar to view all releases and create new ones.
 
+<img alt="Project Releases Page" />
 
+## Connecting Git (Optional)
 
-<Snippet file="enterprise-feature.mdx" />
+If you want to use Git to track your changes, you'll need to connect a Git repository first. This requires the Environments feature to be enabled.
 
-The platform is the admin panel for managing your instance. It's suitable for SaaS, Embed, or agencies that want to white-label Activepieces and offer it to their customers. With this platform, you can:
+## Creating a Release
 
-1. **Custom Branding:** Tailor the appearance of the software to align with your brand's identity by selecting your own branding colors and fonts.
+### From Project
 
-2. **Projects Management:** Manage your projects, including creating, editing, and deleting projects.
+Apply changes from flows, connections and tables in one project to another.
 
-3. **Piece Management:** Take full control over Activepieces pieces. You can show or hide existing pieces and create your own unique pieces to customize the platform according to your specific needs.
+<Steps>
+  <Step title="Open Create Release Menu">
+    Click the **Create Release** dropdown button.
+  </Step>
 
-4. **User Authentication Management:** adding and removing users, and assigning roles to users.
+  <Step title="Select From Project">
+    Choose **From Project** from the dropdown menu.
+  </Step>
 
-5. **Template Management:** Control prebuilt templates and add your own unique templates to meet the requirements of your users.
+  <Step title="Select Source Project">
+    Choose the project you want to copy flows, connections and tables from.
+  </Step>
 
-6. **AI Provider Management:** Manage the AI providers that you want to use in your flows.
+  <Step title="Review and Apply">
+    Review the changes, and click **Apply Changes**.
+  </Step>
+</Steps>
 
+<img alt="Create Release from Project" />
 
-# MCP
-Source: https://www.activepieces.com/docs/ai/mcp
+<img alt="Create Release from Project" />
 
-Give AI access to your tools through Activepieces
+<Warning>
+  New connections created during a release are placeholders and need to be reconnected with valid credentials after the release is applied.
+</Warning>
 
-## What is an MCP?
+### From Git
 
-LLMs produce text by default, but they're evolving to be able to use tools too. Say you want to ask Claude what meetings you have tomorrow, it can happen if you give it access to your calendar.
+<Steps>
+  <Step title="Open Create Release Menu">
+    Click the **Create Release** dropdown button.
+  </Step>
 
-**These tools live in an MCP Server that has a URL**. You provide your LLM (or MCP Client) with this URL so it can access your tools.
+  <Step title="Select From Git">
+    Choose **From Git** from the dropdown menu.
+  </Step>
 
-There are many [MCP clients](https://github.com/punkpeye/awesome-mcp-clients) you can use for this purpose, and the most popular ones today are Claude Desktop, Cursor and Windsurf.
+  <Step title="Review Changes">
+    A dialog will appear showing all the changes that will be applied:
 
-**Official docs:** [https://modelcontextprotocol.io/introduction](https://modelcontextprotocol.io/introduction)
+    * **Flows Changes**: New, updated, or deleted flows
+    * **Connections Changes**: New or renamed connections
+    * **Tables Changes**: New, updated, or deleted tables
+  </Step>
 
-## MCPs on Activepieces
+  <Step title="Select Changes">
+    Check or uncheck the flows you want to include in this release.
+  </Step>
 
-To use MCPs on Activepieces, we'll let you connect any of our [open source MCP tools](https://www.activepieces.com/mcp), and give you an MCP Server URL. Then, you'll configure your LLM to work with it.
+  <Step title="Add Release Details">
+    Enter a **Name** and optional **Description** for your release.
+  </Step>
 
-## Use Activepieces MCP Server
+  <Step title="Apply Changes">
+    Click **Apply Changes** to create the release.
+  </Step>
+</Steps>
 
-1. **You need to run Activepieces.** It can run on our cloud or you can self-host it in your machine or infrastructure.
+<img alt="Create Release from Git" />
 
-   ***Both options are for free, and all our MCP tools are open source.***
+## Push Everything to Git
 
-<CardGroup cols={2}>
-  <Card title="Activepieces Cloud (Easy)" icon="cloud" color="#00FFFF" href="https://cloud.activepieces.com/sign-up">
-    Use our cloud to run your MCP tools, or to just give it a test drive
+If your project is connected to a Git repository, you can push all your flows, connections, and tables to Git.
+
+<Steps>
+  <Step title="Click Push Everything">
+    Click the **Push Everything** button on the releases page.
+  </Step>
+
+  <Step title="Enter Commit Message">
+    Write a descriptive commit message explaining your changes.
+  </Step>
+
+  <Step title="Push">
+    Click **Push** to send all published flows to the Git repository.
+  </Step>
+</Steps>
+
+<img alt="Push Everything to Git Dialog" />
+
+## Pushing Individual Flows or Tables
+
+You can also push specific flows or tables to Git without pushing everything.
+
+<Warning>
+  You can only push published flows to git
+</Warning>
+
+<Steps>
+  <Step title="Select Items">
+    Navigate to your flows or tables and select the items you want to push.
+  </Step>
+
+  <Step title="Open Push Dialog">
+    Click the **Push to Git** option.
+  </Step>
+
+  <Step title="Enter Commit Message">
+    Provide a commit message describing what you're pushing.
+  </Step>
+
+  <Step title="Push">
+    Click **Push** to send the selected items to Git.
+  </Step>
+</Steps>
+
+<img alt="Push to Git Dialog" />
+
+<img alt="Push to Git Dialog" />
+
+## Rolling Back a Release
+
+If something goes wrong after applying a release, you can easily rollback to a previous state.
+
+<Steps>
+  <Step title="Find the Release">
+    Locate the release you want to rollback to in the releases list.
+  </Step>
+
+  <Step title="Click Rollback">
+    Click the rollback icon (↩) next to the release.
+  </Step>
+
+  <Step title="Review Changes">
+    Review the changes that will be applied to restore that release state.
+  </Step>
+
+  <Step title="Apply Rollback">
+    Select the changes to include and click **Apply Changes**.
+  </Step>
+</Steps>
+
+<img alt="Rollback Release" />
+
+## Release Details
+
+Each release in the list shows:
+
+| Column          | Description                                             |
+| --------------- | ------------------------------------------------------- |
+| **Name**        | The name you gave the release                           |
+| **Source**      | Where the release came from (Git, Project, or Rollback) |
+| **Imported At** | When the release was created                            |
+| **Imported By** | The user who created the release                        |
+
+Click on any release to view its full details.
+
+<img alt="Release Details" />
+
+## Understanding the Changes Preview
+
+When creating a release, you'll see a preview of all changes:
+
+### Flow Changes
+
+* New flows that will be created
+* Existing flows that will be updated
+* Flows that will be deleted
+
+### Connection Changes
+
+* New connections are placeholders and must be reconnected after the release
+* Renamed connections
+
+### Table Changes
+
+* New, updated, and deleted tables are shown with their respective indicators
+
+## Best Practices
+
+<CardGroup>
+  <Card title="Use Descriptive Names" icon="tag">
+    Give your releases meaningful names like "v1.2.0 - Added email notifications" to easily identify them later.
   </Card>
 
-  <Card title="Self-hosting" icon="download" color="#248fe0" href="/install/overview">
-    Deploy Activepieces using Docker or one of the other methods
+  <Card title="Review Before Applying" icon="eye">
+    Always review the changes preview carefully before applying a release to avoid unexpected modifications.
+  </Card>
+
+  <Card title="Test in Development" icon="flask">
+    If using Git sync, test changes in a development project before deploying to production.
+  </Card>
+
+  <Card title="Document Changes" icon="file-lines">
+    Use the description field to document what changed and why for future reference.
   </Card>
 </CardGroup>
 
-2. **Connect your tools.** Go to AI → MCP in your Activepieces Dashboard, and start connecting the tools that you want to give AI access to.
+## Permissions
 
-3. **Follow the instructions.** Click on your choice of MCP client (Claude Desktop, Cursor or Windsurf) and follow the instructions.
+To create and manage releases, you need the **Write Project Release** permission. Contact your instance administrator if you don't have access to the releases feature.
 
-4. **Chat with your LLM with superpowers 🚀**
+## Troubleshooting
 
-## Things to try out with the MCP
+<AccordionGroup>
+  <Accordion title="Environment settings are locked">
+    The Environments feature must be enabled on your instance plan to use Git sync. Contact your instance administrator to upgrade your plan or enable this feature.
+  </Accordion>
 
-* Cancel all my meetings for tomorrow
-* What tasks do I have to do today?
-* Tweet this idea for me
+  <Accordion title="Git connection fails">
+    * Verify your SSH private key is correctly formatted (ends with an endline), and make sure it has an empty phrase.
+    * Ensure the remote URL is in SSH format (not HTTPS)
+    * Check that the branch exists in the repository
+  </Accordion>
 
-And many more!
+  <Accordion title="No changes detected">
+    If no changes appear when creating a release, it means your current project is already in sync with the source.
+  </Accordion>
+
+  <Accordion title="Connection placeholders">
+    After applying a release with new connections, navigate to the Connections page and reconnect them with valid credentials.
+  </Accordion>
+
+  <Accordion title="Push Everything button not visible">
+    Make sure you configured your git settings and if you are selecting flows, make sure they are published.
+  </Accordion>
+
+  <Accordion title="Cannot find Environment settings">
+    Navigate to **Project Settings** from the sidebar, then click on **Environment**. If you don't see this option, the Environments feature may not be enabled for your instance.
+  </Accordion>
+</AccordionGroup>
+
+
+# Setup AI Providers
+Source: https://www.activepieces.com/docs/admin-guide/guides/setup-ai-providers
+
+
+
+AI providers are configured by the platform admin to centrally manage credentials and access, making [AI pieces](https://www.activepieces.com/pieces/ai) and their features available to everyone in all projects.
+
+## Supported Providers
+
+* **OpenAI**
+* **Anthropic**
+* **Gemini**
+* **Vercel AI Gateway**
+* **Cloudflare AI Gateway**
+
+## How to Setup
+
+Go to **Admin Console** → **AI** page. Add your provider's base URL and API key. These settings apply to all projects.
+
+<img alt="Manage AI Providers" />
+
+## Cost Control & Logging
+
+Use an AI gateway like **Vercel AI Gateway** or **Cloudflare AI Gateway** to:
+
+* Set rate limits and budgets
+* Log and monitor all AI requests
+* Track usage across projects
+
+Just set the gateway URL as your provider's base URL in the Admin Console.
+
+
+# How to Setup SSO
+Source: https://www.activepieces.com/docs/admin-guide/guides/sso
+
+Configure Single Sign-On (SSO) to enable secure, centralized authentication for your Activepieces platform
+
+<Snippet />
+
+## Overview
+
+Single Sign-On (SSO) allows your team to authenticate using your organization's existing identity provider, eliminating the need for separate Activepieces credentials. This improves security, simplifies user management, and provides a seamless login experience.
+
+## Prerequisites
+
+Before configuring SSO, ensure you have:
+
+* **Admin access** to your Activepieces platform
+* **Admin access** to your identity provider (Google, GitHub, Okta, or JumpCloud)
+* The **redirect URL** from your Activepieces SSO configuration screen
+
+## Accessing SSO Configuration
+
+Navigate to **Platform Settings** → **SSO** in your Activepieces admin dashboard to access the SSO configuration screen.
+
+<img alt="SSO Configuration" />
+
+## Enforcing SSO
+
+You can enforce SSO by specifying your organization's email domain. When SSO enforcement is enabled:
+
+* Users with matching email domains must authenticate through the SSO provider
+* Email/password login can be disabled for enhanced security
+* All authentication is routed through your designated identity provider
+
+<Tip>
+  We recommend testing SSO with a small group of users before enforcing it organization-wide.
+</Tip>
+
+## Supported SSO Providers
+
+Activepieces supports multiple SSO providers to integrate with your existing identity management system.
+
+### Google
+
+<Steps>
+  <Step title="Access Google Cloud Console">
+    Go to the [Google Cloud Console](https://console.cloud.google.com/) and select your project (or create a new one).
+  </Step>
+
+  <Step title="Create OAuth2 Credentials">
+    Navigate to **APIs & Services** → **Credentials** → **Create Credentials** → **OAuth client ID**.
+
+    Select **Web application** as the application type.
+  </Step>
+
+  <Step title="Configure Redirect URI">
+    Copy the **Redirect URL** from the Activepieces SSO configuration screen and add it to the **Authorized redirect URIs** in Google Cloud Console.
+  </Step>
+
+  <Step title="Copy Credentials to Activepieces">
+    Copy the **Client ID** and **Client Secret** from Google and paste them into the corresponding fields in Activepieces.
+  </Step>
+
+  <Step title="Save Configuration">
+    Click **Finish** to complete the setup.
+  </Step>
+</Steps>
+
+### GitHub
+
+<Steps>
+  <Step title="Access GitHub Developer Settings">
+    Go to [GitHub Developer Settings](https://github.com/settings/developers) → **OAuth Apps** → **New OAuth App**.
+  </Step>
+
+  <Step title="Register New Application">
+    Fill in the application details:
+
+    * **Application name**: Choose a recognizable name (e.g., "Activepieces SSO")
+    * **Homepage URL**: Enter your Activepieces instance URL
+  </Step>
+
+  <Step title="Configure Authorization Callback">
+    Copy the **Redirect URL** from the Activepieces SSO configuration screen and paste it into the **Authorization callback URL** field.
+  </Step>
+
+  <Step title="Complete Registration">
+    Click **Register application** to create the OAuth App.
+  </Step>
+
+  <Step title="Generate Client Secret">
+    After registration, click **Generate a new client secret** and copy it immediately (it won't be shown again).
+  </Step>
+
+  <Step title="Copy Credentials to Activepieces">
+    Copy the **Client ID** and **Client Secret** and paste them into the corresponding fields in Activepieces.
+  </Step>
+
+  <Step title="Save Configuration">
+    Click **Finish** to complete the setup.
+  </Step>
+</Steps>
+
+### SAML with Okta
+
+<Steps>
+  <Step title="Create New Application in Okta">
+    Go to the [Okta Admin Portal](https://login.okta.com/) → **Applications** → **Create App Integration**.
+  </Step>
+
+  <Step title="Select SAML 2.0">
+    Choose **SAML 2.0** as the sign-on method and click **Next**.
+  </Step>
+
+  <Step title="Configure General Settings">
+    Enter an **App name** (e.g., "Activepieces") and optionally upload a logo. Click **Next**.
+  </Step>
+
+  <Step title="Configure SAML Settings">
+    * **Single sign-on URL**: Copy the SSO URL from the Activepieces configuration screen
+    * **Audience URI (SP Entity ID)**: Enter `Activepieces`
+    * **Name ID format**: Select `EmailAddress`
+  </Step>
+
+  <Step title="Add Attribute Statements">
+    Add the following attribute mappings:
+
+    | Name        | Value            |
+    | ----------- | ---------------- |
+    | `firstName` | `user.firstName` |
+    | `lastName`  | `user.lastName`  |
+    | `email`     | `user.email`     |
+  </Step>
+
+  <Step title="Complete Setup in Okta">
+    Click **Next**, select the appropriate feedback option, and click **Finish**.
+  </Step>
+
+  <Step title="Export IdP Metadata">
+    Go to the **Sign On** tab → **View SAML setup instructions** or **View IdP metadata**. Copy the Identity Provider metadata XML.
+  </Step>
+
+  <Step title="Configure Activepieces">
+    * Paste the **IdP Metadata** XML into the corresponding field
+    * Copy the **X.509 Certificate** from Okta and paste it into the **Signing Key** field
+  </Step>
+
+  <Step title="Save Configuration">
+    Click **Save** to complete the setup.
+  </Step>
+</Steps>
+
+### SAML with JumpCloud
+
+<Steps>
+  <Step title="Create New Application in JumpCloud">
+    Go to the [JumpCloud Admin Portal](https://console.jumpcloud.com/) → **SSO Applications** → **Add New Application** → **Custom SAML App**.
+  </Step>
+
+  <Step title="Configure ACS URL">
+    Copy the **ACS URL** from the Activepieces configuration screen and paste it into the **ACS URLs** field in JumpCloud.
+
+    <img alt="JumpCloud ACS URL" />
+  </Step>
+
+  <Step title="Configure SP Entity ID">
+    Set the **SP Entity ID** (Audience URI) to `Activepieces`.
+  </Step>
+
+  <Step title="Add User Attributes">
+    Configure the following attribute mappings:
+
+    | Service Provider Attribute | JumpCloud Attribute |
+    | -------------------------- | ------------------- |
+    | `firstName`                | `firstname`         |
+    | `lastName`                 | `lastname`          |
+    | `email`                    | `email`             |
+
+    <img alt="JumpCloud User Attributes" />
+  </Step>
+
+  <Step title="Enable HTTP-Redirect Binding">
+    JumpCloud does not include the `HTTP-Redirect` binding by default. You **must** enable this option.
+
+    <img alt="JumpCloud Redirect Binding" />
+
+    <Warning>
+      Without HTTP-Redirect binding, the SSO integration will not work correctly.
+    </Warning>
+  </Step>
+
+  <Step title="Export Metadata">
+    Click **Save**, then refresh the page and click **Export Metadata**.
+
+    <img alt="JumpCloud Export Metadata" />
+
+    <Tip>
+      Verify that the exported XML contains `Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"` to ensure the binding was properly enabled.
+    </Tip>
+  </Step>
+
+  <Step title="Configure IdP Metadata in Activepieces">
+    Paste the exported metadata XML into the **IdP Metadata** field in Activepieces.
+  </Step>
+
+  <Step title="Configure Signing Certificate">
+    Locate the `<ds:X509Certificate>` element in the IdP metadata and extract its value. Format it as a PEM certificate:
+
+    ```
+    -----BEGIN CERTIFICATE-----
+    [PASTE THE CERTIFICATE VALUE HERE]
+    -----END CERTIFICATE-----
+    ```
+
+    Paste this into the **Signing Key** field.
+  </Step>
+
+  <Step title="Assign Users to Application">
+    In JumpCloud, assign the application to the appropriate users or user groups.
+
+    <img alt="JumpCloud Assign App" />
+  </Step>
+
+  <Step title="Save Configuration">
+    Click **Finish** to complete the setup.
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Users cannot log in after SSO configuration">
+    * Verify the redirect URL is correctly configured in your identity provider
+    * Ensure users are assigned to the application in your identity provider
+    * Check that email domains match the SSO enforcement settings
+  </Accordion>
+
+  <Accordion title="SAML authentication fails">
+    * Confirm the IdP metadata is complete and correctly formatted
+    * Verify the signing certificate is properly formatted with BEGIN/END markers
+    * Ensure all required attributes (firstName, lastName, email) are mapped
+  </Accordion>
+
+  <Accordion title="HTTP-Redirect binding error (JumpCloud)">
+    * Enable the HTTP-Redirect binding option in JumpCloud
+    * Re-export the metadata after enabling the binding
+    * Verify the binding appears in the exported XML
+  </Accordion>
+</AccordionGroup>
+
+## Need Help?
+
+If you encounter issues during SSO setup, please contact our enterprise support or [sales team](https://www.activepieces.com/sales).
+
+
+# How to Structure Projects
+Source: https://www.activepieces.com/docs/admin-guide/guides/structure-projects
+
+
+
+<Snippet />
+
+Projects in Activepieces are the main units for organizing your automations and resources within your organization. Every project contains its own flows, connections, and tables. Access to these resources is shared among everyone who has access to that project.
+
+There are two types of projects:
+
+* **Personal Projects**: Each user invited to your organization automatically receives a personal project. This is a private space where only that user can create and manage flows, connections, and tables.
+* **Team Projects**: Team projects are shared spaces that can be created and managed from this page. Multiple users can be invited to a team project, allowing them to collaborate, share access to flows, connections, and tables, and work together.
+
+When organizing your work, create team projects for group collaboration and utilize personal projects for individual or private tasks.
+
+
+# Connection Deleted
+Source: https://www.activepieces.com/docs/admin-guide/security/audit-logs/connection-deleted
+
+
+
+
+
+# Connection Upserted
+Source: https://www.activepieces.com/docs/admin-guide/security/audit-logs/connection-upserted
+
+
+
+
+
+# Flow Created
+Source: https://www.activepieces.com/docs/admin-guide/security/audit-logs/flow-created
+
+
+
+
+
+# Flow Deleted
+Source: https://www.activepieces.com/docs/admin-guide/security/audit-logs/flow-deleted
+
+
+
+
+
+# Flow Run Finished
+Source: https://www.activepieces.com/docs/admin-guide/security/audit-logs/flow-run-finished
+
+
+
+
+
+# Flow Run Started
+Source: https://www.activepieces.com/docs/admin-guide/security/audit-logs/flow-run-started
+
+
+
+
+
+# Flow Updated
+Source: https://www.activepieces.com/docs/admin-guide/security/audit-logs/flow-updated
+
+
+
+
+
+# Folder Created
+Source: https://www.activepieces.com/docs/admin-guide/security/audit-logs/folder-created
+
+
+
+
+
+# Folder Deleted
+Source: https://www.activepieces.com/docs/admin-guide/security/audit-logs/folder-deleted
+
+
+
+
+
+# Folder Updated
+Source: https://www.activepieces.com/docs/admin-guide/security/audit-logs/folder-updated
+
+
+
+
+
+# Overview
+Source: https://www.activepieces.com/docs/admin-guide/security/audit-logs/overview
+
+
+
+<Snippet />
+
+This table in admin console contains all application events. We are constantly adding new events, so there is no better place to see the events defined in the code than [here](https://github.com/activepieces/activepieces/blob/main/packages/ee/shared/src/lib/audit-events/index.ts).
+
+<img alt="Audit Logs" />
+
+
+# Signing Key Created
+Source: https://www.activepieces.com/docs/admin-guide/security/audit-logs/signing-key-created
+
+
+
+
+
+# User Email Verified
+Source: https://www.activepieces.com/docs/admin-guide/security/audit-logs/user-email-verified
+
+
+
+
+
+# User Password Reset
+Source: https://www.activepieces.com/docs/admin-guide/security/audit-logs/user-password-reset
+
+
+
+
+
+# User Signed In
+Source: https://www.activepieces.com/docs/admin-guide/security/audit-logs/user-signed-in
+
+
+
+
+
+# User Signed Up
+Source: https://www.activepieces.com/docs/admin-guide/security/audit-logs/user-signed-up
+
+
+
+
+
+# Security & Data Practices
+Source: https://www.activepieces.com/docs/admin-guide/security/practices
+
+We prioritize security and follow these practices to keep information safe.
+
+## External Systems Credentials
+
+**Storing Credentials**
+
+All credentials are stored with 256-bit encryption keys, and there is no API to retrieve them for the user. They are sent only during processing, after which access is revoked from the engine.
+
+**Data Masking**
+
+We implement a robust data masking mechanism where third-party credentials or any sensitive information are systematically censored within the logs, guaranteeing that sensitive information is never stored or documented.
+
+**OAuth2**
+
+Integrations with third parties are always done using OAuth2, with a limited number of scopes when third-party support allows.
+
+## Vulnerability Disclosure
+
+Activepieces is an open-source project that welcomes contributors to test and report security issues.
+
+For detailed information about our security policy, please refer to our GitHub Security Policy at: [https://github.com/activepieces/activepieces/security/policy](https://github.com/activepieces/activepieces/security/policy)
+
+## Access and Authentication
+
+**Role-Based Access Control (RBAC)**
+
+To manage user access, we utilize Role-Based Access Control (RBAC). Team admins assign roles to users, granting them specific permissions to access and interact with projects, folders, and resources. RBAC allows for fine-grained control, enabling administrators to define and enforce access policies based on user roles.
+
+**Single Sign-On (SSO)**
+
+Implementing Single Sign-On (SSO) serves as a pivotal component of our security strategy. SSO streamlines user authentication by allowing them to access Activepieces with a single set of credentials. This not only enhances user convenience but also strengthens security by reducing the potential attack surface associated with managing multiple login credentials.
+
+**Audit Logs**
+
+We maintain comprehensive audit logs to track and monitor all access activities within Activepieces. This includes user interactions, system changes, and other relevant events. Our meticulous logging helps identify security threats and ensures transparency and accountability in our security measures.
+
+**Password Policy Enforcement**
+
+Users log in to Activepieces using a password known only to them. Activepieces enforces password length and complexity standards. Passwords are not stored; instead, only a secure hash of the password is stored in the database. For more information.
+
+## Privacy & Data
+
+**Supported Cloud Regions**
+
+Presently, our cloud services are available in Germany as the supported data region.
+
+We have plans to expand to additional regions in the near future.
+If you opt for **self-hosting**, the available regions will depend on where you choose to host.
+
+**Policy**
+
+To better understand how we handle your data and prioritize your privacy, please take a moment to review our [Privacy Policy](https://www.activepieces.com/privacy). This document outlines in detail the measures we take to safeguard your information and the principles guiding our approach to privacy and data protection.
 
 
 # Create Action
-Source: https://www.activepieces.com/docs/developers/building-pieces/create-action
+Source: https://www.activepieces.com/docs/build-pieces/building-pieces/create-action
 
 
 
@@ -510,7 +1077,7 @@ Source: https://www.activepieces.com/docs/developers/building-pieces/create-acti
 
 Now let's create first action which fetch random ice-cream flavor.
 
-```bash  theme={null}
+```bash theme={null}
 npm run cli actions create
 ```
 
@@ -523,7 +1090,7 @@ You will be asked three questions to define your new piece:
 
 **Example:**
 
-```bash  theme={null}
+```bash theme={null}
 npm run cli actions create
 
 ? Enter the piece folder name : gelato
@@ -535,7 +1102,7 @@ This will create a new TypeScript file named `get-icecream-flavor.ts` in the `pa
 
 Inside this file, paste the following code:
 
-```typescript  theme={null}
+```typescript theme={null}
 import {
   createAction,
   Property,
@@ -577,7 +1144,7 @@ The `run` function utilizes the httpClient.sendRequest function to make a GET re
 
 To make the action readable by Activepieces, add it to the array of actions in the piece definition.
 
-```typescript  theme={null}
+```typescript theme={null}
 import { createPiece } from '@activepieces/pieces-framework';
 // Don't forget to add the following import.
 import { getIcecreamFlavor } from './lib/actions/get-icecream-flavor';
@@ -597,7 +1164,7 @@ export const gelato = createPiece({
 
 By default, the development setup only builds specific components. Open the file `packages/server/api/.env` and include "gelato" in the `AP_DEV_PIECES`.
 
-For more details, check out the [Piece Development](../development-setup/getting-started) section.
+For more details, check out the [Piece Development](./development-setup) section.
 
 Once you edit the environment variable, restart the backend. The piece will be rebuilt. After this process, you'll need to **refresh** the frontend to see the changes.
 
@@ -608,11 +1175,11 @@ Once you edit the environment variable, restart the backend. The piece will be r
 
 To test the action, use the flow builder in Activepieces. It should function as shown in the screenshot.
 
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-action.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=9d8d8ac84393a2940f18940bb98e2d51" alt="Gelato Action" data-og-width="2560" width="2560" data-og-height="1440" height="1440" data-path="resources/screenshots/gelato-action.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-action.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=9a7e10b771fad182dc9f6035cb8282de 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-action.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=67cf9aa6312c95f8c18222ce488f70d2 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-action.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=7064d346404be788450611e815206de6 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-action.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=559f3e935a86f7cf1dafbb02dbb743db 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-action.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=de79af41125ec16aee55d175e99c64de 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-action.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=5fb31597729b477e3084acf9dca47080 2500w" />
+<img alt="Gelato Action" />
 
 
 # Create Trigger
-Source: https://www.activepieces.com/docs/developers/building-pieces/create-trigger
+Source: https://www.activepieces.com/docs/build-pieces/building-pieces/create-trigger
 
 
 
@@ -622,7 +1189,7 @@ This tutorial will guide you through the process of creating trigger for a Gelat
 
 To create trigger run the following command,
 
-```bash  theme={null}
+```bash theme={null}
 npm run cli triggers create
 ```
 
@@ -633,7 +1200,7 @@ npm run cli triggers create
 
 **Example:**
 
-```bash  theme={null}
+```bash theme={null}
 npm run cli triggers create
 
 ? Enter the piece folder name : gelato
@@ -646,7 +1213,7 @@ This will create a new TypeScript file at `packages/pieces/community/gelato/src/
 
 Inside this file, paste the following code:
 
-```ts  theme={null}
+```ts theme={null}
 import { gelatoAuth } from '../../';
 import {
   DedupeStrategy,
@@ -719,7 +1286,7 @@ The way polling triggers usually work is as follows:
 
 To make the trigger readable by Activepieces, add it to the array of triggers in the piece definition.
 
-```typescript  theme={null}
+```typescript theme={null}
 import { createPiece } from '@activepieces/pieces-framework';
 import { getIcecreamFlavor } from './lib/actions/get-icecream-flavor';
 // Don't forget to add the following import.
@@ -740,17 +1307,67 @@ export const gelato = createPiece({
 
 By default, the development setup only builds specific components. Open the file `packages/server/api/.env` and include "gelato" in the `AP_DEV_PIECES`.
 
-For more details, check out the [Piece Development](../development-setup/getting-started) section.
+For more details, check out the [Piece Development](./development-setup) section.
 
 Once you edit the environment variable, restart the backend. The piece will be rebuilt. After this process, you'll need to **refresh** the frontend to see the changes.
 
 To test the trigger, use the load sample data from flow builder in Activepieces. It should function as shown in the screenshot.
 
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-trigger.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=0ac29f0025296b3ecc2111709a2b9a33" alt="Gelato Action" data-og-width="2560" width="2560" data-og-height="1440" height="1440" data-path="resources/screenshots/gelato-trigger.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-trigger.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=eca339aa40eb13c77c0523a69a53e98a 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-trigger.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=904295025aa163dec6da607b7c8a2b50 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-trigger.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=797d6f9dd13b1c2c4bf48f9e7b074c89 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-trigger.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=9faad30e7502ed152a76af3085047433 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-trigger.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=21ae16d188441fee36496bf699763488 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/gelato-trigger.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=462aa47d42e057d2f34b3872a83cc35b 2500w" />
+<img alt="Gelato Action" />
+
+
+# Development setup
+Source: https://www.activepieces.com/docs/build-pieces/building-pieces/development-setup
+
+
+
+## Prerequisites
+
+* Node.js v18+
+* npm v9+
+
+## Instructions
+
+1. Setup the environment
+
+```bash theme={null}
+node tools/setup-dev.js
+```
+
+2. Start the environment
+
+This command will start activepieces with sqlite3 and in memory queue.
+
+```bash theme={null}
+npm start
+```
+
+<Note>
+  By default, the development setup only builds specific pieces.Open the file
+  `packages/server/api/.env` and add comma-separated list of pieces to make
+  available.
+
+  For more details, check out the [Piece Development](/build-pieces/building-pieces/development-setup#pieces-development) section.
+</Note>
+
+3. Go to ***localhost:4200*** on your web browser and sign in with these details:
+
+Email: `dev@ap.com`
+Password: `12345678`
+
+## Pieces Development
+
+When [`AP_SYNC_MODE`](https://github.com/activepieces/activepieces/blob/main/packages/server/api/.env#L17) is set to `OFFICIAL_AUTO`, all pieces are automatically loaded from the cloud API and synced to the database on first launch. This process may take a few seconds to several minutes depending on your internet connection.
+
+For local development, pieces are loaded from your local `dist` folder instead of the database. To enable this, set the [`AP_DEV_PIECES`](https://github.com/activepieces/activepieces/blob/main/packages/server/api/.env#L4) environment variable with a comma-separated list of pieces. For example, to develop with `google-sheets` and `cal-com`:
+
+```sh theme={null}
+AP_DEV_PIECES=google-sheets,cal-com npm start
+```
 
 
 # Overview
-Source: https://www.activepieces.com/docs/developers/building-pieces/overview
+Source: https://www.activepieces.com/docs/build-pieces/building-pieces/overview
 
 This section helps developers build and contribute pieces.
 
@@ -765,7 +1382,7 @@ Building pieces is fun and important; it allows you to customize Activepieces fo
   For the fastest support, we recommend joining our Discord community. We are dedicated to addressing every question and concern raised there.
 </Tip>
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Code with TypeScript" icon="code">
     Build pieces using TypeScript for a more powerful and flexible development process.
   </Card>
@@ -781,15 +1398,11 @@ Building pieces is fun and important; it allows you to customize Activepieces fo
   <Card title="Community Support" icon="people">
     Join our large community, where you can ask questions, share ideas, and develop alongside others.
   </Card>
-
-  <Card title="Universal AI SDK" icon="brain">
-    Use the Universal SDK to quickly build AI-powered pieces that support multiple AI providers.
-  </Card>
 </CardGroup>
 
 
 # Add Piece Authentication
-Source: https://www.activepieces.com/docs/developers/building-pieces/piece-authentication
+Source: https://www.activepieces.com/docs/build-pieces/building-pieces/piece-authentication
 
 
 
@@ -801,7 +1414,7 @@ Now, let's establish authentication for this piece, which necessitates the inclu
 
 Modify `src/index.ts` file to add authentication,
 
-```ts  theme={null}
+```ts theme={null}
 import { PieceAuth, createPiece } from '@activepieces/pieces-framework';
 
 export const gelatoAuth = PieceAuth.SecretText({
@@ -827,20 +1440,20 @@ export const gelato = createPiece({
 
 
 # Create Piece Definition
-Source: https://www.activepieces.com/docs/developers/building-pieces/piece-definition
+Source: https://www.activepieces.com/docs/build-pieces/building-pieces/piece-definition
 
 
 
 This tutorial will guide you through the process of creating a Gelato piece with an action that fetches random icecream flavor and trigger that fetches new icecream flavor created. It assumes that you are familiar with the following:
 
-* [Activepieces Local development](../development-setup/local) Or [GitHub Codespaces](../development-setup/codespaces).
+* [Activepieces Local development](./development-setup) Or [GitHub Codespaces](../misc/codespaces).
 * TypeScript syntax.
 
 ## Piece Definition
 
 To get started, let's generate a new piece for Gelato
 
-```bash  theme={null}
+```bash theme={null}
 npm run cli pieces create
 ```
 
@@ -852,7 +1465,7 @@ You will be asked three questions to define your new piece:
 
 **Example:**
 
-```bash  theme={null}
+```bash theme={null}
 npm run cli pieces create
 
 ? Enter the piece name: gelato
@@ -863,7 +1476,7 @@ npm run cli pieces create
 The piece will be generated at `packages/pieces/community/gelato/`,
 the `src/index.ts` file should contain the following code
 
-```ts  theme={null}
+```ts theme={null}
 import { PieceAuth, createPiece } from '@activepieces/pieces-framework';
 
 export const gelato = createPiece({
@@ -878,7 +1491,7 @@ export const gelato = createPiece({
 
 
 # Fork Repository
-Source: https://www.activepieces.com/docs/developers/building-pieces/setup-fork
+Source: https://www.activepieces.com/docs/build-pieces/building-pieces/setup-fork
 
 
 
@@ -889,7 +1502,7 @@ Follow these steps to fork the repository:
 1. Go to the repository page at [https://github.com/activepieces/activepieces](https://github.com/activepieces/activepieces).
 2. Click the `Fork` button located in the top right corner of the page.
 
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/fork-repository.jpg?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=013243ea91cbc40b0235037959836604" alt="Fork Repository" data-og-width="1320" width="1320" data-og-height="248" height="248" data-path="resources/screenshots/fork-repository.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/fork-repository.jpg?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=a95b6ef9d11a7e303c2ca3f27e4f1b06 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/fork-repository.jpg?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=a58a580aef73487f2025ddf8f6641df1 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/fork-repository.jpg?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=540701c8d9775e6d317b1e7784302222 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/fork-repository.jpg?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=9bb72b7cc3607d740c3f62b657f9dd7a 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/fork-repository.jpg?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=235de7ff957d3633ed25254df6ce5d2d 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/fork-repository.jpg?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=2fc0ee213e1a8a02e7de4a5379a54009 2500w" />
+<img alt="Fork Repository" />
 
 <Tip>
   If you are an enterprise customer and want to use the private pieces feature, you can refer to the tutorial on how to set up a [private fork](../misc/private-fork).
@@ -897,7 +1510,7 @@ Follow these steps to fork the repository:
 
 
 # Start Building
-Source: https://www.activepieces.com/docs/developers/building-pieces/start-building
+Source: https://www.activepieces.com/docs/build-pieces/building-pieces/start-building
 
 
 
@@ -939,13 +1552,54 @@ This section guides you in creating a Gelato piece, from setting up your develop
   </Step>
 </Steps>
 
-<Card title="Contribution" icon="gift" iconType="duotone" color="#6e41e2">
+<Card title="Contribution" icon="gift">
   Contribute a piece to our repo and receive +1,400 tasks/month on [Activepieces Cloud](https://cloud.activepieces.com).
 </Card>
 
 
+# Build Custom Pieces
+Source: https://www.activepieces.com/docs/build-pieces/misc/build-piece
+
+
+
+You can use the CLI to build custom pieces for the platform. This process compiles the pieces and exports them as a `.tgz` packed archive.
+
+### How It Works
+
+The CLI scans the `packages/pieces/` directory for the specified piece. It checks the **name** in the `package.json` file. If the piece is found, it builds and packages it into a `.tgz` archive.
+
+### Usage
+
+To build a piece, follow these steps:
+
+1. Ensure you have the CLI installed by cloning the repository.
+2. Run the following command:
+
+```bash theme={null}
+npm run build-piece
+```
+
+You will be prompted to enter the name of the piece you want to build. For example:
+
+```bash theme={null}
+? Enter the piece folder name : google-drive
+```
+
+The CLI will build the piece and you will be given the path to the archive. For example:
+
+```bash theme={null}
+Piece 'google-drive' built and packed successfully at dist/packages/pieces/community/google-drive
+```
+
+You may also build the piece non-interactively by passing the piece name as an argument.  For example:
+
+```bash theme={null}
+npm run build-piece google-drive
+```
+
+
 # GitHub Codespaces
-Source: https://www.activepieces.com/docs/developers/development-setup/codespaces
+Source: https://www.activepieces.com/docs/build-pieces/misc/codespaces
 
 
 
@@ -957,14 +1611,14 @@ GitHub Codespaces is a cloud development platform that enables developers to wri
 
 2. Click Code `<>`, then under codespaces click create codespace on main.
 
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/development-setup_codespaces.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=2228948ff3bf64691d9ff82072da37b2" alt="Create Codespace" data-og-width="1383" width="1383" data-og-height="713" height="713" data-path="resources/screenshots/development-setup_codespaces.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/development-setup_codespaces.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=a4ad0df90c9bae41b9dc1037c74098b8 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/development-setup_codespaces.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=e538e737312e98184bdd9d0c1ee76a41 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/development-setup_codespaces.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=189866428f49bd5cf73b93e6355e1d1c 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/development-setup_codespaces.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=0e1257933c43de7b1837306618a7f275 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/development-setup_codespaces.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=863628159653952542cf694a26f9cd25 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/development-setup_codespaces.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=8e09af5ec8413cc2e059eaa425bedebd 2500w" />
+<img alt="Create Codespace" />
 
 <Note>
   By default, the development setup only builds specific pieces.Open the file
   `packages/server/api/.env` and add comma-separated list of pieces to make
   available.
 
-  For more details, check out the [Piece Development](/developers/development-setup/getting-started) section.
+  For more details, check out the [Piece Development](/build-pieces/building-pieces/development-setup#pieces-development) section.
 </Note>
 
 3. Open the terminal and run `npm start`
@@ -976,7 +1630,7 @@ Password: `12345678`
 
 
 # Dev Containers
-Source: https://www.activepieces.com/docs/developers/development-setup/dev-container
+Source: https://www.activepieces.com/docs/build-pieces/misc/dev-container
 
 
 
@@ -1007,7 +1661,7 @@ To use the dev container for the Activepieces project, follow these steps:
   `packages/server/api/.env` and add comma-separated list of pieces to make
   available.
 
-  For more details, check out the [Piece Development](/developers/development-setup/getting-started) section.
+  For more details, check out the [Piece Development](/build-pieces/building-pieces/development-setup#pieces-development) section.
 </Note>
 
 The login credentials are:\
@@ -1027,224 +1681,14 @@ One of the best trouble shoot after an error occur is to reset the dev container
 
 1. Exit the dev container
 2. Run the following
-   ```sh  theme={null}
+   ```sh theme={null}
    sh tools/reset-dev.sh
    ```
 3. Rebuild the dev container from above steps
 
 
-# Getting Started
-Source: https://www.activepieces.com/docs/developers/development-setup/getting-started
-
-
-
-## Development Setup
-
-To set up the development environment, you can choose one of the following methods:
-
-* **Codespaces**: This is the quickest way to set up the development environment. Follow the [Codespaces](./codespaces) guide.
-* **Local Environment**: It is recommended for local development. Follow the [Local Environment](./local) guide.
-* **Dev Container**: This method is suitable for remote development on another machine. Follow the [Dev Container](./dev-container) guide.
-
-## Pieces Development
-
-To avoid making the dev environment slow, not all pieces are functional during development at first. By default, only these pieces are functional at first, as specified in `AP_DEV_PIECES`.
-
-[https://github.com/activepieces/activepieces/blob/main/packages/server/api/.env#L4](https://github.com/activepieces/activepieces/blob/main/packages/server/api/.env#L4)
-
-To override the default list available at first, define an `AP_DEV_PIECES` environment variable with a comma-separated list of pieces to make available. For example, to make `google-sheets` and `cal-com` available, you can use:
-
-```sh  theme={null}
-AP_DEV_PIECES=google-sheets,cal-com npm start
-```
-
-
-# Local Dev Environment
-Source: https://www.activepieces.com/docs/developers/development-setup/local
-
-
-
-## Prerequisites
-
-* Node.js v18+
-* npm v9+
-
-## Instructions
-
-1. Setup the environment
-
-```bash  theme={null}
-node tools/setup-dev.js
-```
-
-2. Start the environment
-
-This command will start activepieces with sqlite3 and in memory queue.
-
-```bash  theme={null}
-npm start
-```
-
-<Note>
-  By default, the development setup only builds specific pieces.Open the file
-  `packages/server/api/.env` and add comma-separated list of pieces to make
-  available.
-
-  For more details, check out the [Piece Development](/developers/development-setup/getting-started) section.
-</Note>
-
-3. Go to ***localhost:4200*** on your web browser and sign in with these details:
-
-Email: `dev@ap.com`
-Password: `12345678`
-
-
-# Build Custom Pieces
-Source: https://www.activepieces.com/docs/developers/misc/build-piece
-
-
-
-You can use the CLI to build custom pieces for the platform. This process compiles the pieces and exports them as a `.tgz` packed archive.
-
-### How It Works
-
-The CLI scans the `packages/pieces/` directory for the specified piece. It checks the **name** in the `package.json` file. If the piece is found, it builds and packages it into a `.tgz` archive.
-
-### Usage
-
-To build a piece, follow these steps:
-
-1. Ensure you have the CLI installed by cloning the repository.
-2. Run the following command:
-
-```bash  theme={null}
-npm run build-piece
-```
-
-You will be prompted to enter the name of the piece you want to build. For example:
-
-```bash  theme={null}
-? Enter the piece folder name : google-drive
-```
-
-The CLI will build the piece and you will be given the path to the archive. For example:
-
-```bash  theme={null}
-Piece 'google-drive' built and packed successfully at dist/packages/pieces/community/google-drive
-```
-
-You may also build the piece non-interactively by passing the piece name as an argument.  For example:
-
-```bash  theme={null}
-npm run build-piece google-drive
-```
-
-
-# Create New AI Provider
-Source: https://www.activepieces.com/docs/developers/misc/create-new-ai-provider
-
-
-
-ActivePieces currently supports the following AI providers:
-
-* OpenAI
-* Anthropic
-
-To create a new AI provider, you need to follow these steps:
-
-## Implement the AI Interface
-
-Create a new factory that returns an instance of the `AI` interface in the `packages/pieces/community/common/src/lib/ai/providers/your-ai-provider.ts` file.
-
-```typescript  theme={null}
-export const yourAiProvider = ({
-  serverUrl,
-  engineToken,
-}: { serverUrl: string, engineToken: string }): AI<YourAiProviderSDK> => {
-  const impl = new YourAiProviderSDK(serverUrl, engineToken);
-  return {
-    provider: "YOUR_AI_PROVIDER" as const,
-    chat: {
-      text: async (params) => {
-        try {
-          const response = await impl.chat.text(params);
-          return response;
-        } catch (e: any) {
-          if (e?.error?.error) {
-            throw e.error.error;
-          }
-          throw e;
-        }
-      }
-    },
-  };
-};
-```
-
-## Register the AI Provider
-
-Add the new AI provider to the `AiProviders` enum in `packages/pieces/community/common/src/lib/ai/providers/index.ts` file.
-
-```diff  theme={null}
-export const AiProviders = [
-+  {
-+    logoUrl: 'https://cdn.activepieces.com/pieces/openai.png',
-+    defaultBaseUrl: 'https://api.your-ai-provider.com',
-+    label: 'Your AI Provider' as const,
-+    value: 'your-ai-provider' as const,
-+    models: [
-+      { label: 'model-1', value: 'model-1' },
-+      { label: 'model-2', value: 'model-2' },
-+      { label: 'model-3', value: 'model-3' },
-+    ],
-+    factory: yourAiProvider,
-+  },
-...
-]
-```
-
-## Define Authentication Header
-
-Now we need to tell ActivePieces how to authenticate to your AI provider. You can do this by adding an `auth` property to the `AiProvider` object.
-
-The `auth` property is an object that defines the authentication mechanism for your AI provider. It consists of two properties: `name` and `mapper`. The `name` property specifies the name of the header that will be used to authenticate with your AI provider, and the `mapper` property defines a function that maps the value of the header to the format that your AI provider expects.
-
-Here's an example of how to define the authentication header for a bearer token:
-
-```diff  theme={null}
-export const AiProviders = [
-  {
-    logoUrl: 'https://cdn.activepieces.com/pieces/openai.png',
-    defaultBaseUrl: 'https://api.your-ai-provider.com',
-    label: 'Your AI Provider' as const,
-    value: 'your-ai-provider' as const,
-    models: [
-      { label: 'model-1', value: 'model-1' },
-      { label: 'model-2', value: 'model-2' },
-      { label: 'model-3', value: 'model-3' },
-    ],
-+    auth: authHeader({ bearer: true }), // or authHeader({ name: 'x-api-key', bearer: false })
-    factory: yourAiProvider,
-  },
-...
-]
-```
-
-## Test the AI Provider
-
-To test the AI provider, you can use a **universal AI** piece in a flow. Follow these steps:
-
-* Add the required headers from the admin console for the newly created AI provider. These headers will be used to authenticate the requests to the AI provider.
-
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/configure-ai-provider.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=80d92caf90c116589c7ecbc7f80a9514" alt="Configure AI Provider" data-og-width="1420" width="1420" data-og-height="800" height="800" data-path="resources/screenshots/configure-ai-provider.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/configure-ai-provider.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=1d94288df818cc7c1d241d5681dcbcab 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/configure-ai-provider.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=14038529f8d565a38edd58ac89c802d9 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/configure-ai-provider.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=894ea0d5839737c4bfd66bdaffda5e80 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/configure-ai-provider.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=0176a920881ca1d8de1c71e1e9ba758f 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/configure-ai-provider.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=20df3793ad011b2c71ab6c1b0f01a39b 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/configure-ai-provider.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=18d3a1c09352aad3355efe6cee91745c 2500w" />
-
-* Create a flow that uses our **universal AI** pieces. And select **"Your AI Provider"** as the AI provider in the **Ask AI** action settings.
-
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/use-ai-provider.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=a8a84f27f69dd930bee70e90dd3cf04c" alt="Configure AI Provider" data-og-width="396" width="396" data-og-height="346" height="346" data-path="resources/screenshots/use-ai-provider.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/use-ai-provider.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=0d5aa117ae018abf79c21b20c272e1ba 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/use-ai-provider.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=ba68de87edb99ea946286144dc0156c5 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/use-ai-provider.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=45b38c46cfb36795aa94617cdef23f82 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/use-ai-provider.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=e261625b74c3ffff781bfa91f61257e5 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/use-ai-provider.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=754f91e9bfc7839e70ced50c821d960c 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/use-ai-provider.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=70c00d59a33ae118191072cdfbdd902d 2500w" />
-
-
 # Custom Pieces CI/CD
-Source: https://www.activepieces.com/docs/developers/misc/pieces-ci-cd
+Source: https://www.activepieces.com/docs/build-pieces/misc/pieces-ci-cd
 
 
 
@@ -1264,20 +1708,20 @@ To use the CLI, follow these steps:
 2. Install the CLI by cloning the repository.
 3. Run the following command, replacing `API_KEY` with your generated API Key and `INSTANCE_URL` with your instance URL:
 
-```bash  theme={null}
-AP_API_KEY=your_api_key_here npm run sync-pieces -- --apiUrl https://INSTANCE_URL/api
+```bash theme={null}
+AP_API_KEY=your_api_key_here bun run sync-pieces -- --apiUrl https://INSTANCE_URL/api
 ```
 
 ### Developer Workflow
 
 1. Developers create and modify the pieces offline.
-2. Increment the piece version in their corresponding `package.json`. For more information, refer to the [piece versioning](../../developers/piece-reference/piece-versioning) documentation.
+2. Increment the piece version in their corresponding `package.json`. For more information, refer to the [piece versioning](../piece-reference/piece-versioning) documentation.
 3. Open a pull request towards the main branch.
 4. Once the pull request is merged to the main branch, manually run the CLI or use a GitHub/GitLab Action to trigger the synchronization process.
 
 ### GitHub Action
 
-```yaml  theme={null}
+```yaml theme={null}
 name: Sync Custom Pieces
 
 on:
@@ -1297,37 +1741,36 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Step 2: Cache Node.js dependencies
-      - name: Cache Node.js dependencies
+      # Step 2: Set up Bun
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      # Step 3: Cache Bun dependencies
+      - name: Cache Bun dependencies
         uses: actions/cache@v3
         with:
-          path: ~/.npm
-          key: npm-${{ hashFiles('package-lock.json') }}
+          path: ~/.bun/install/cache
+          key: bun-${{ hashFiles('bun.lockb') }}
           restore-keys: |
-            npm-
+            bun-
 
-      # Step 3: Set up Node.js
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20' # Use Node.js version 20
-          cache: 'npm'
-
-      # Step 4: Install dependencies using npm ci
+      # Step 4: Install dependencies using Bun
       - name: Install dependencies
-        run: npm ci --ignore-scripts
+        run: bun install --no-save
 
-      # Step 6: Sync Custom Pieces
+      # Step 5: Sync Custom Pieces
       - name: Sync Custom Pieces
         env:
           AP_API_KEY: ${{ secrets.AP_API_KEY }}
-        run: npm run sync-pieces -- --apiUrl ${{ secrets.INSTANCE_URL }}/api
+        run: bun run sync-pieces -- --apiUrl ${{ secrets.INSTANCE_URL }}/api
 
 ```
 
 
 # Setup Private Fork
-Source: https://www.activepieces.com/docs/developers/misc/private-fork
+Source: https://www.activepieces.com/docs/build-pieces/misc/private-fork
 
 
 
@@ -1347,7 +1790,7 @@ By following these steps, you can create a private fork on GitHub, GitLab or ano
 
 Begin by creating a bare clone of the repository. Remember that this is a temporary step and will be deleted later.
 
-```bash  theme={null}
+```bash theme={null}
 git clone --bare git@github.com:activepieces/activepieces.git
 ```
 
@@ -1359,14 +1802,14 @@ Generate a new private repository on GitHub or your chosen platform. When initia
 
 Mirror-push the bare clone you created earlier to your newly created "activepieces" repository. Make sure to replace `<your_username>` in the URL below with your actual GitHub username.
 
-```bash  theme={null}
+```bash theme={null}
 cd activepieces.git
 git push --mirror git@github.com:<your_username>/activepieces.git
 ```
 
 4. **Remove the Temporary Local Repository:**
 
-```bash  theme={null}
+```bash theme={null}
 cd ..
 rm -rf activepieces.git
 ```
@@ -1375,7 +1818,7 @@ rm -rf activepieces.git
 
 Now, you can clone your "activepieces" repository onto your local machine into your desired directory.
 
-```bash  theme={null}
+```bash theme={null}
 cd ~/path/to/directory
 git clone git@github.com:<your_username>/activepieces.git
 ```
@@ -1384,7 +1827,7 @@ git clone git@github.com:<your_username>/activepieces.git
 
 If desired, you can add the original repository as a remote to fetch potential future changes. However, remember to disable push operations for this remote, as you are not permitted to push changes to it.
 
-```bash  theme={null}
+```bash theme={null}
 git remote add upstream git@github.com:activepieces/activepieces.git
 git remote set-url --push upstream DISABLE
 ```
@@ -1404,7 +1847,7 @@ upstream	DISABLE (push)
 
 To retrieve changes from the "upstream" repository, fetch the remote and rebase your work on top of it.
 
-```bash  theme={null}
+```bash theme={null}
 git fetch upstream
 git merge upstream/main
 ```
@@ -1413,7 +1856,7 @@ Conflict resolution should not be necessary since you've only added pieces to yo
 
 
 # Publish Custom Pieces
-Source: https://www.activepieces.com/docs/developers/misc/publish-piece
+Source: https://www.activepieces.com/docs/build-pieces/misc/publish-piece
 
 
 
@@ -1431,7 +1874,7 @@ To publish a piece, follow these steps:
 2. Install the CLI by cloning the repository.
 3. Run the following command:
 
-```bash  theme={null}
+```bash theme={null}
 npm run publish-piece-to-api
 ```
 
@@ -1449,7 +1892,7 @@ In case you choose `Manually`, you will be asked to enter the API key.
 
 Examples:
 
-```bash  theme={null}
+```bash theme={null}
 npm run publish-piece-to-api
 
 ? Enter the piece folder name : google-drive
@@ -1458,7 +1901,7 @@ npm run publish-piece-to-api
 
 ```
 
-```bash  theme={null}
+```bash theme={null}
 npm run publish-piece-to-api
 
 ? Enter the piece folder name : google-drive
@@ -1469,317 +1912,19 @@ npm run publish-piece-to-api
 ```
 
 
-# AI SDK & Providers
-Source: https://www.activepieces.com/docs/developers/piece-reference/ai-providers
-
-The AI Toolkit to build AI pieces tailored for specific use cases that work with many AI providers using the AI SDK
-
-**What it provides:**
-
-* 🔐 **Centralized Credentials Management**: Admin manages credentials, end users use without hassle.
-* 🌐 **Support for Multiple AI Providers**: OpenAI, Anthropic, and many open-source models.
-* 💬 **Support for Various AI Capabilities**: Chat, Image, Agents, and more.
-
-## Using the AI SDK
-
-Activepieces integrates with the [AI SDK](https://ai-sdk.dev/) to provide a unified interface for calling LLMs across multiple AI providers. Here's an example on how to use the AI SDK's `generateText` function to call an LLM in your actions.
-
-```typescript  theme={null}
-import { SUPPORTED_AI_PROVIDERS, createAIModel, aiProps } from '@activepieces/common-ai';
-import { createAction, Property } from '@activepieces/pieces-framework';
-import { LanguageModel, generateText } from 'ai';
-
-export const askAI = createAction({
-  name: 'askAi',
-  displayName: 'Ask AI',
-  description: 'Generate text using AI providers',
-  props: {
-    // AI provider selection (OpenAI, Anthropic, etc.)
-    provider: aiProps({ modelType: 'language' }).provider,
-    // Model selection within the chosen provider
-    model: aiProps({ modelType: 'language' }).model,
-    prompt: Property.LongText({
-      displayName: 'Prompt',
-      required: true,
-    }),
-    creativity: Property.Number({
-      displayName: 'Creativity',
-      required: false,
-      defaultValue: 100,
-      description: 'Controls the creativity of the AI response (0-100)',
-    }),
-    maxTokens: Property.Number({
-      displayName: 'Max Tokens',
-      required: false,
-      defaultValue: 2000,
-    }),
-  },
-  async run(context) {
-    const providerName = context.propsValue.provider as string;
-    const modelInstance = context.propsValue.model as LanguageModel;
-
-    // The `createAIModel` function creates a standardized AI model instance compatible with the AI SDK:
-    const baseURL = `${context.server.apiUrl}v1/ai-providers/proxy/${providerName}`;
-    const engineToken = context.server.token;
-    const provider = createAIModel({
-      providerName,           // Provider name (e.g., 'openai', 'anthropic')
-      modelInstance,          // Model instance with configuration
-      engineToken,            // Authentication token
-      baseURL,               // Proxy URL for API requests
-    });
-
-    // Generate text using the AI SDK
-    const response = await generateText({
-      model: provider,                                        // AI provider instance
-      messages: [
-        {
-          role: 'user',
-          content: context.propsValue.prompt,
-        },
-      ],
-      maxTokens: context.propsValue.maxTokens,               // Limit response length
-      temperature: (context.propsValue.creativity ?? 100) / 100, // Control randomness (0-1)
-      headers: {
-        'Authorization': `Bearer ${engineToken}`,            // Required for proxy authentication
-      },
-    });
-
-    return response.text ?? '';
-  },
-});
-```
-
-## AI Properties Helper
-
-Use `aiProps` to create consistent AI-related properties:
-
-```typescript  theme={null}
-import { aiProps } from '@activepieces/ai-common';
-
-// For language models (text generation)
-props: {
-  provider: aiProps({ modelType: 'language' }).provider,
-  model: aiProps({ modelType: 'language' }).model,
-}
-
-// For image models (image generation)
-props: {
-  provider: aiProps({ modelType: 'image' }).provider,
-  model: aiProps({ modelType: 'image' }).model,
-  advancedOptions: aiProps({ modelType: 'image' }).advancedOptions,
-}
-
-// For function calling support
-props: {
-  provider: aiProps({ modelType: 'language', functionCalling: true }).provider,
-  model: aiProps({ modelType: 'language', functionCalling: true }).model,
-}
-```
-
-### Advanced Options
-
-The `aiProps` helper includes an `advancedOptions` property that provides provider-specific configuration options. These options are dynamically generated based on the selected provider and model.
-
-To add advanced options for your new provider, update the `advancedOptions` property in `packages/pieces/community/common/src/lib/ai/index.ts`:
-
-```typescript  theme={null}
-// In packages/pieces/community/common/src/lib/ai/index.ts
-advancedOptions: Property.DynamicProperties({
-    displayName: 'Advanced Options',
-    required: false,
-    refreshers: ['provider', 'model'],
-    props: async (propsValue): Promise<InputPropertyMap> => {
-        const provider = propsValue['provider'] as unknown as string;
-
-        const providerMetadata = SUPPORTED_AI_PROVIDERS.find(p => p.provider === provider);
-        if (isNil(providerMetadata)) {
-            return {};
-        }
-
-        if (modelType === 'image') {
-            // Existing OpenAI options
-            if (provider === 'openai') {
-                return {
-                    quality: Property.StaticDropdown({
-                        options: {
-                            options: [
-                                { label: 'Standard', value: 'standard' },
-                                { label: 'HD', value: 'hd' },
-                            ],
-                            disabled: false,
-                            placeholder: 'Select Image Quality',
-                        },
-                        defaultValue: 'standard',
-                        description: 'Standard images are less detailed and faster to generate.',
-                        displayName: 'Image Quality',
-                        required: true,
-                    }),
-                };
-            }
-
-        return {};
-    },
-})
-```
-
-The advanced options automatically update when users change their provider or model selection, ensuring only relevant options are shown.
-
-## Adding a New AI Provider
-
-To add support for a new AI provider, you need to update several files in the Activepieces codebase. Here's a complete guide:
-
-Before starting, check the [Vercel AI SDK Providers](https://ai-sdk.dev/providers/ai-sdk-providers) documentation to see all available providers and their capabilities.
-
-### 1. Install Required Dependencies
-
-First, add the AI SDK for your provider to the project dependencies:
-
-```bash  theme={null}
-npm install @ai-sdk/openai
-```
-
-### 2. Update SUPPORTED\_AI\_PROVIDERS Array
-
-First, add your new provider to the `SUPPORTED_AI_PROVIDERS` array in `packages/ai-providers-shared/src/lib/supported-ai-providers.ts`:
-
-```typescript  theme={null}
-import { openai } from '@ai-sdk/openai' // Import the OpenAI SDK
-
-export const SUPPORTED_AI_PROVIDERS: SupportedAIProvider[] = [
-  // ... existing providers
-  {
-    provider: 'openai',                                    // Unique provider identifier
-    baseUrl: 'https://api.openai.com',                    // OpenAI's API base URL
-    displayName: 'OpenAI',                                // Display name in UI
-    markdown: `Follow these instructions to get your OpenAI API Key:
-
-1. Visit: https://platform.openai.com/account/api-keys
-2. Create a new API key for Activepieces integration.
-3. Add your credit card and upgrade to paid plan to avoid rate limits.
-`,                                                        // Instructions for users
-    logoUrl: 'https://cdn.activepieces.com/pieces/openai.png', // OpenAI logo
-    auth: {
-      headerName: 'Authorization',                        // HTTP header name for auth
-      bearer: true,                                       // Whether to use "Bearer" prefix
-    },
-    languageModels: [                                     // Available language models
-      {
-        displayName: 'GPT-4o',
-        instance: openai('gpt-4o'),                       // Model instance from AI SDK
-        functionCalling: true,                            // Whether model supports function calling
-      },
-      {
-        displayName: 'GPT-4o Mini',
-        instance: openai('gpt-4o-mini'),
-        functionCalling: true,
-      },
-    ],
-    imageModels: [                                        // Available image models
-      {
-        displayName: 'DALL-E 3',
-        instance: openai.image('dall-e-3'),              // Image model instance
-      },
-      {
-        displayName: 'DALL-E 2',
-        instance: openai.image('dall-e-2'),
-      },
-    ],
-  },
-];
-```
-
-### 3. Update createAIModel Function
-
-Add a case for your provider in the `createAIModel` function in `packages/shared/src/lib/ai/ai-sdk.ts`:
-
-```typescript  theme={null}
-import { createOpenAI } from '@ai-sdk/openai' // Import the OpenAI SDK
-
-export function createAIModel<T extends LanguageModel | ImageModel>({
-    providerName,
-    modelInstance,
-    engineToken,
-    baseURL,
-}: CreateAIModelParams<T>): T {
-    const isImageModel = SUPPORTED_AI_PROVIDERS
-        .flatMap(provider => provider.imageModels)
-        .some(model => model.instance.modelId === modelInstance.modelId)
-
-    switch (providerName) {
-        // ... existing cases
-        case 'openai': {
-            const openaiVersion = 'v1'                     // OpenAI API version
-            const provider = createOpenAI({
-                apiKey,                                     // OpenAI API key
-                baseURL: `${baseURL}/${openaiVersion}`,    // Full API URL
-            })
-            
-            if (isImageModel) {
-                return provider.imageModel(modelInstance.modelId) as T
-            }
-            return provider(modelInstance.modelId) as T
-        }
-        default:
-            throw new Error(`Provider ${providerName} is not supported`)
-    }
-}
-```
-
-### 4. Handle Provider-Specific Requirements
-
-OpenAI supports both language and image models, but some providers may have specific requirements or limitations:
-
-```typescript  theme={null}
-// Example: Anthropic only supports language models
-case 'anthropic': {
-    const provider = createAnthropic({
-        apiKey,
-        baseURL: `${baseURL}/v1`,
-    })
-    
-    if (isImageModel) {
-        throw new Error(`Provider ${providerName} does not support image models`)
-    }
-    return provider(modelInstance.modelId) as T
-}
-
-// Example: Replicate primarily supports image models
-case 'replicate': {
-    const provider = createReplicate({
-        apiToken: apiKey,  // Note: Replicate uses 'apiToken' instead of 'apiKey'
-        baseURL: `${baseURL}/v1`,
-    })
-    
-    if (!isImageModel) {
-        throw new Error(`Provider ${providerName} does not support language models`)
-    }
-    return provider.imageModel(modelInstance.modelId) as unknown as T
-}
-```
-
-### 5. Test Your Integration
-
-After adding the provider, test it by:
-
-1. **Configure credentials** in the Admin panel for your new provider
-2. **Create a test action** using `aiProps` to select your provider and models
-3. **Verify functionality** by running a flow with your new provider
-
-Once these changes are made, your new AI provider will be available in the `aiProps` dropdowns and can be used with `generateText` and other [AI SDK functions](https://ai-sdk.dev/docs/introduction) throughout Activepieces.
-
-
 # Piece Auth
-Source: https://www.activepieces.com/docs/developers/piece-reference/authentication
+Source: https://www.activepieces.com/docs/build-pieces/piece-reference/authentication
 
 Learn about piece authentication
 
-Piece authentication is used to gather user credentials and securely store them for future use in different flows. The authentication must be defined as the `auth` parameter in the `createPiece`, `createTrigger`, and `createAction` functions.
+Piece authentication is used to gather user credentials and securely store them for future use in different flows.
+The authentication must be defined as the `auth` parameter in the `createPiece`, `createTrigger`, and `createAction` functions.
 
 This requirement ensures that the type of authentication can be inferred correctly in triggers and actions.
 
-<Tip>
-  Friendly Tip: Only at most one authentication is allowed per piece.
-</Tip>
+<Warning>
+  The auth parameter for `createPiece`, `createTrigger`, and `createAction` functions can take an array, but you cannot have more than one auth property of the same type, i.e two OAUTH2 properties.
+</Warning>
 
 ### Secret Text
 
@@ -1787,7 +1932,7 @@ This authentication collects sensitive information, such as passwords or API key
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 PieceAuth.SecretText({
     displayName: 'API Key',
     description: 'Enter your API key',
@@ -1813,7 +1958,7 @@ This authentication collects a username and password as separate fields.
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 PieceAuth.BasicAuth({
     displayName: 'Credentials',
     description: 'Enter your username and password',
@@ -1847,7 +1992,7 @@ This authentication allows for custom authentication by collecting specific prop
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 PieceAuth.CustomAuth({
     displayName: 'Custom Authentication',
     description: 'Enter custom authentication details',
@@ -1885,7 +2030,7 @@ This authentication collects OAuth2 authentication details, including the authen
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 PieceAuth.OAuth2({
     displayName: 'OAuth2 Authentication',
     grantType: OAuth2GrantType.AUTHORIZATION_CODE,
@@ -1902,7 +2047,7 @@ PieceAuth.OAuth2({
 
 
 # Enable Custom API Calls
-Source: https://www.activepieces.com/docs/developers/piece-reference/custom-api-calls
+Source: https://www.activepieces.com/docs/build-pieces/piece-reference/custom-api-calls
 
 Learn how to enable custom API calls for your pieces
 
@@ -1914,7 +2059,7 @@ This will show in the actions list of the piece as `Custom API Call`, to enable 
 
 The example below implements the action for the OpenAI piece. The OpenAI piece uses a `Bearer token` authorization header to identify the user sending the request.
 
-```typescript  theme={null}
+```typescript theme={null}
 actions: [
   ...yourActions,
   createCustomApiCallAction({
@@ -1938,7 +2083,7 @@ actions: [
 
 The example below implements the action for the Jira Cloud piece. The Jira Cloud piece uses a dynamic base URL for it's actions, where the base URL changes based on the values the user authenticated with. We will also implement a Basic authentication header.
 
-```typescript  theme={null}
+```typescript theme={null}
 actions: [
   ...yourActions,
   createCustomApiCallAction({
@@ -1958,7 +2103,7 @@ actions: [
 
 
 # Piece Examples
-Source: https://www.activepieces.com/docs/developers/piece-reference/examples
+Source: https://www.activepieces.com/docs/build-pieces/piece-reference/examples
 
 Explore a collection of example triggers and actions
 
@@ -1996,22 +2141,17 @@ To get the full benefit, it is recommended to read the tutorial first.
 
 
 # External Libraries
-Source: https://www.activepieces.com/docs/developers/piece-reference/external-libraries
+Source: https://www.activepieces.com/docs/build-pieces/piece-reference/external-libraries
 
 Learn how to install and use external libraries.
 
 The Activepieces repository is structured as a monorepo, employing Nx as its build tool.
 
-To use an external library in your project, you can simply add it to the main `package.json` file and then use it in any part of your project.
+To keep our main `package.json` as light as possible, we keep libraries that are only used for a piece in the piece `package.json` . This means when adding a new library you should navigate to the piece folder and install the library with our package manager `bun`
 
-Nx will automatically detect where you're using the library and include it in the build.
-
-Here's how to install and use an external library:
-
-* Install the library using:
-
-```bash  theme={null}
-npm install --save <library-name>
+```bash theme={null}
+cd packages/pieces/<piece-path> 
+bun install --save <library-name>
 ```
 
 * Import the library into your piece.
@@ -2023,7 +2163,7 @@ Guidelines:
 
 
 # Files
-Source: https://www.activepieces.com/docs/developers/piece-reference/files
+Source: https://www.activepieces.com/docs/build-pieces/piece-reference/files
 
 Learn how to use files object to create file references.
 
@@ -2035,7 +2175,7 @@ You can use the `write` method to write a file to the storage, It returns a stri
 
 **Example:**
 
-```ts  theme={null}
+```ts theme={null}
 const fileReference = await files.write({
     fileName: 'file.txt',
     data: Buffer.from('text')
@@ -2050,7 +2190,7 @@ For Reading the file If you are using the file property in a trigger or action, 
 
 
 # Flow Control
-Source: https://www.activepieces.com/docs/developers/piece-reference/flow-control
+Source: https://www.activepieces.com/docs/build-pieces/piece-reference/flow-control
 
 Learn How to Control Flow from Inside the Piece
 
@@ -2062,7 +2202,7 @@ You can stop the flow and provide a response to the webhook trigger. This can be
 
 **Example with Response:**
 
-```typescript  theme={null}
+```typescript theme={null}
 context.run.stop({
   response: {
     status: context.propsValue.status ?? StatusCodes.OK,
@@ -2074,7 +2214,7 @@ context.run.stop({
 
 **Example without Response:**
 
-```typescript  theme={null}
+```typescript theme={null}
 context.run.stop();
 ```
 
@@ -2084,7 +2224,7 @@ You can pause flow and return HTTP response, also provide a callback to URL that
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 ctx.run.pause({
   pauseMetadata: {
     type: PauseType.WEBHOOK,
@@ -2103,7 +2243,7 @@ You can pause or delay the flow until a specific timestamp. Currently, the only 
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 ctx.run.pause({
     pauseMetadata: {
         type: PauseType.DELAY,
@@ -2116,7 +2256,7 @@ These flow hooks give you control over the execution of the piece by allowing yo
 
 
 # Piece i18n
-Source: https://www.activepieces.com/docs/developers/piece-reference/i18n
+Source: https://www.activepieces.com/docs/build-pieces/piece-reference/i18n
 
 Learn about translating pieces to multiple locales
 
@@ -2124,7 +2264,7 @@ Learn about translating pieces to multiple locales
   <Step title="Generate">
     Run the following command to create a translation file with all the strings that need translation in your piece
 
-    ```bash  theme={null}
+    ```bash theme={null}
     npm run cli pieces generate-translation-file PIECE_FOLDER_NAME
     ```
   </Step>
@@ -2138,24 +2278,25 @@ Learn about translating pieces to multiple locales
   </Step>
 
   <Step title="Test Locally">
-    After following the steps to [setup your development environment](/developers/development-setup/getting-started), click the small cog icon next to the logo in your dashboard and change the locale.
+    After following the steps to [setup your development environment](/build-pieces/building-pieces/development-setup), click the small cog icon next to the logo in your dashboard and change the locale.
 
-        <img src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/i18n-pieces.png?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=faaaa3e7cb92bed169bd75dedfcc6d40" alt="Locales" data-og-width="317" width="317" data-og-height="615" height="615" data-path="resources/i18n-pieces.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/i18n-pieces.png?w=280&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=683a91e3fe4e651b228a5d746828043c 280w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/i18n-pieces.png?w=560&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=f761d69988b4ded29d6c728f26183f95 560w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/i18n-pieces.png?w=840&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=0eda6eeeb2e3c9a57af696cd11c84291 840w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/i18n-pieces.png?w=1100&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=624186c9f925e29e20e119c2eeca1b45 1100w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/i18n-pieces.png?w=1650&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=ef8cba83277d18fcdd0f400a8fdda992 1650w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/i18n-pieces.png?w=2500&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=a4a528a62f88bc936abbbea7f76be2ec 2500w" />
+    <img alt="Locales" />
 
     <br />
 
     In the builder your piece will now appear in the translated language:
-    <img src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/french-webhooks.png?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=b60c90a2735aaccda2293086a8a28e79" alt="French Webhooks" data-og-width="567" width="567" data-og-height="845" height="845" data-path="resources/french-webhooks.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/french-webhooks.png?w=280&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=b3c018350e47f3057aa7f92e4466e7b7 280w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/french-webhooks.png?w=560&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=5916ebfe369ba93274c7df0e353ff88e 560w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/french-webhooks.png?w=840&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=506b9c3ca72e507361a866142955f7e5 840w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/french-webhooks.png?w=1100&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=370083b6ec56e0fc1edd420ba250cfc1 1100w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/french-webhooks.png?w=1650&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=0231788f8e1638960dfcfa6a0c57b040 1650w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/french-webhooks.png?w=2500&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=a9b2e04abac5944e653e0dd7110c7a68 2500w" />
+
+    <img alt="French Webhooks" />
   </Step>
 
   <Step title="Publish">
-    Follow the docs here to [publish your piece](/developers/sharing-pieces/overview)
+    Follow the docs here to [publish your piece](/build-pieces/sharing-pieces/overview)
   </Step>
 </Steps>
 
 
 # Persistent Storage
-Source: https://www.activepieces.com/docs/developers/piece-reference/persistent-storage
+Source: https://www.activepieces.com/docs/build-pieces/piece-reference/persistent-storage
 
 Learn how to store and retrieve data from a key-value store
 
@@ -2173,7 +2314,7 @@ You can store a value with a specified key in the storage.
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 ctx.store.put('KEY', 'VALUE', StoreScope.PROJECT);
 ```
 
@@ -2183,7 +2324,7 @@ You can retrieve the value associated with a specific key from the storage.
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 const value = ctx.store.get<string>('KEY', StoreScope.PROJECT);
 ```
 
@@ -2193,7 +2334,7 @@ You can delete a key-value pair from the storage.
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 ctx.store.delete('KEY', StoreScope.PROJECT);
 ```
 
@@ -2201,7 +2342,7 @@ These storage operations allow you to store, retrieve, and delete key-value pair
 
 
 # Piece Versioning
-Source: https://www.activepieces.com/docs/developers/piece-reference/piece-versioning
+Source: https://www.activepieces.com/docs/build-pieces/piece-reference/piece-versioning
 
 Learn how to version your pieces
 
@@ -2249,7 +2390,7 @@ i.e., any removal is breaking, any required addition is breaking, everything els
 
 
 # Props
-Source: https://www.activepieces.com/docs/developers/piece-reference/properties
+Source: https://www.activepieces.com/docs/build-pieces/piece-reference/properties
 
 Learn about different types of properties used in triggers / actions
 
@@ -2265,7 +2406,7 @@ This property collects a short text input from the user.
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 Property.ShortText({
   displayName: 'Name',
   description: 'Enter your name',
@@ -2280,7 +2421,7 @@ This property collects a long text input from the user.
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 Property.LongText({
   displayName: 'Description',
   description: 'Enter a description',
@@ -2294,7 +2435,7 @@ This property presents a checkbox for the user to select or deselect.
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 Property.Checkbox({
   displayName: 'Agree to Terms',
   description: 'Check this box to agree to the terms',
@@ -2316,7 +2457,7 @@ The default value for `variant` is **INFO**.
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 Property.MarkDown({
     value: '## This is a markdown snippet',
     variant: MarkdownVariant.WARNING,
@@ -2334,7 +2475,7 @@ This property collects a date and time from the user.
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 Property.DateTime({
   displayName: 'Date and Time',
   description: 'Select a date and time',
@@ -2349,7 +2490,7 @@ This property collects a numeric input from the user.
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 Property.Number({
   displayName: 'Quantity',
   description: 'Enter a number',
@@ -2363,7 +2504,7 @@ This property presents a dropdown menu with predefined options.
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 Property.StaticDropdown({
   displayName: 'Country',
   description: 'Select your country',
@@ -2390,7 +2531,7 @@ This property presents a dropdown menu with multiple selection options.
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 Property.StaticMultiSelectDropdown({
   displayName: 'Colors',
   description: 'Select one or more colors',
@@ -2420,7 +2561,7 @@ This property collects JSON data from the user.
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 Property.Json({
   displayName: 'Data',
   description: 'Enter JSON data',
@@ -2435,7 +2576,7 @@ This property collects key-value pairs from the user.
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 Property.Object({
   displayName: 'Options',
   description: 'Enter key-value pairs',
@@ -2453,7 +2594,7 @@ This property collects a file from the user, either by providing a URL or upload
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 Property.File({
   displayName: 'File',
   description: 'Upload a file',
@@ -2467,7 +2608,7 @@ This property collects an array of strings from the user.
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 Property.Array({
   displayName: 'Tags',
   description: 'Enter tags',
@@ -2482,7 +2623,7 @@ This property collects an array of objects from the user.
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 Property.Array({
   displayName: 'Fields',
   description: 'Enter fields',
@@ -2517,11 +2658,12 @@ This property allows for dynamically loaded options based on the user's input.
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 Property.Dropdown({
   displayName: 'Options',
   description: 'Select an option',
   required: true,
+  auth: yourPieceAuth,
   refreshers: ['auth'],
   refreshOnSearch: false,
   options: async ({ auth }, { searchValue }) => {
@@ -2558,12 +2700,13 @@ This property allows for multiple selections from dynamically loaded options.
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 Property.MultiSelectDropdown({
   displayName: 'Options',
   description: 'Select one or more options',
   required: true,
   refreshers: ['auth'],
+  auth: yourPieceAuth,
   options: async ({ auth }) => {
     if (!auth) {
       return {
@@ -2597,7 +2740,7 @@ This property is used to construct forms dynamically based on API responses or u
 
 **Example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 
 import {
 	httpClient,
@@ -2609,13 +2752,14 @@ Property.DynamicProperties({
   description: 'Dynamic Form',
   displayName: 'Dynamic Form',
   required: true,
-  refreshers: ['authentication'],
-  props: async (propsValue) => {
-    const authentication = propsValue['authentication'];
+  refreshers: ['auth'],
+  auth: yourPieceAuth,
+  props: async ({auth}) => {
     const apiEndpoint = 'https://someapi.com';
     const response = await httpClient.sendRequest<{ values: [string[]][] }>({
         method: HttpMethod.GET,
-        url: apiEndpoint 
+        url: apiEndpoint ,
+        //you can add the auth value to the headers
 	  });
 
     const properties = {
@@ -2661,7 +2805,7 @@ It has a `code` property which is a function that takes in an object parameter w
 
 Here is how to define such a property:
 
-```typescript  theme={null}
+```typescript theme={null}
  Property.Custom({
       code:(({value,onChange,containerId})=>{
         const container = document.getElementById(containerId);
@@ -2695,7 +2839,7 @@ Here is how to define such a property:
 
 
 # Props Validation
-Source: https://www.activepieces.com/docs/developers/piece-reference/properties-validation
+Source: https://www.activepieces.com/docs/build-pieces/piece-reference/properties-validation
 
 Learn about different types of properties validation 
 
@@ -2707,7 +2851,7 @@ To use Zod validation in your piece, first import the validation helper and Zod:
   Please make sure the `minimumSupportedRelease` is set to at least `0.36.1` for the validation to work.
 </Warning>
 
-```typescript  theme={null}
+```typescript theme={null}
 import { createAction, Property } from '@activepieces/pieces-framework';
 import { propsValidation } from '@activepieces/pieces-common';
 import { z } from 'zod';
@@ -2774,7 +2918,7 @@ export const getIcecreamFlavor = createAction({
 
 
 # Overview
-Source: https://www.activepieces.com/docs/developers/piece-reference/triggers/overview
+Source: https://www.activepieces.com/docs/build-pieces/piece-reference/triggers/overview
 
 
 
@@ -2786,7 +2930,7 @@ This tutorial explains three techniques for creating triggers:
 
 to create new trigger run following command,
 
-```bash  theme={null}
+```bash theme={null}
 npm run cli triggers create
 ```
 
@@ -2797,7 +2941,7 @@ npm run cli triggers create
 
 # Trigger Structure
 
-```typescript  theme={null}
+```typescript theme={null}
 export const createNewIssue = createTrigger({
     auth: PieceAuth | undefined
     name: string, // Unique name across the piece.
@@ -2830,7 +2974,7 @@ export const createNewIssue = createTrigger({
 
 The Context object contains multiple helpful pieces of information and tools that can be useful while developing.
 
-```typescript  theme={null}
+```typescript theme={null}
 // Store: A simple, lightweight key-value store that is helpful when you are developing triggers that persist between runs, used to store information like the last polling date.
 await context.store.put('_lastFetchedDate', new Date());
 const lastFetchedData = await context.store.get('_lastFetchedDate', new Date());
@@ -2852,7 +2996,7 @@ This means that all authorized users for the app will be sent to the same endpoi
 
 
 # Polling Trigger
-Source: https://www.activepieces.com/docs/developers/piece-reference/triggers/polling-trigger
+Source: https://www.activepieces.com/docs/build-pieces/piece-reference/triggers/polling-trigger
 
 Periodically call endpoints to check for changes
 
@@ -2885,8 +3029,8 @@ The library will detect new items based on the timestamp.
 
 The polling object's generic type consists of the props value and the object type.
 
-```typescript  theme={null}
-const polling: Polling<{ authentication: OAuth2PropertyValue, object: string }> = {
+```typescript theme={null}
+const polling: Polling<Polling<AppConnectionValueForAuthProperty<typeof auth>> = {
   strategy: DedupeStrategy.TIMEBASED,
   items: async ({ propsValue, lastFetchEpochMS }) => {
     // Todo implement the logic to fetch the items
@@ -2906,8 +3050,8 @@ The library will detect new items after the last item ID.
 
 The polling object's generic type consists of the props value and the object type
 
-```typescript  theme={null}
-const polling: Polling<{ authentication: AuthProps}> = {
+```typescript theme={null}
+const polling: Polling<AppConnectionValueForAuthProperty<typeof auth>, Record<string,any>> = {
     strategy: DedupeStrategy.LAST_ITEM,
     items: async ({ propsValue }) => {
         // Implement the logic to fetch the items
@@ -2924,7 +3068,7 @@ const polling: Polling<{ authentication: AuthProps}> = {
 
 After implementing the polling object, you can use the polling helper to implement the trigger.
 
-```typescript  theme={null}
+```typescript theme={null}
 export const newTicketInView = createTrigger({
     name: 'new_ticket_in_view',
     displayName: 'New ticket in view',
@@ -2964,7 +3108,7 @@ export const newTicketInView = createTrigger({
 
 
 # Webhook Trigger
-Source: https://www.activepieces.com/docs/developers/piece-reference/triggers/webhook-trigger
+Source: https://www.activepieces.com/docs/build-pieces/piece-reference/triggers/webhook-trigger
 
 Listen to user events through a single URL
 
@@ -2996,13 +3140,14 @@ To test the trigger, publish the flow, perform the event. Then check the flow ru
   1. Install ngrok.
   2. Run the command `ngrok http 4200`.
   3. Replace the `AP_FRONTEND_URL` environment variable in `packages/server/api/.env` with the ngrok URL.
+  4. Go to /packages/react-ui/vite.config.ts, uncomment allowedHosts and set the value to what ngrok gives you.
 
   Once you have completed these configurations, you are good to go!
 </Warning>
 
 
 # Community (Public NPM)
-Source: https://www.activepieces.com/docs/developers/sharing-pieces/community
+Source: https://www.activepieces.com/docs/build-pieces/sharing-pieces/community
 
 Learn how to publish your piece to the community.
 
@@ -3012,7 +3157,7 @@ You can publish your pieces to the npm registry and share them with the communit
   <Step title="Login to npm">
     Make sure you are logged in to npm. If not, please run:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     npm login
     ```
   </Step>
@@ -3032,7 +3177,7 @@ You can publish your pieces to the npm registry and share them with the communit
 
     Run the following command:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     npm run publish-piece PIECE_FOLDER_NAME
     ```
   </Step>
@@ -3042,7 +3187,7 @@ You can publish your pieces to the npm registry and share them with the communit
 
 
 # Contribute
-Source: https://www.activepieces.com/docs/developers/sharing-pieces/contribute
+Source: https://www.activepieces.com/docs/build-pieces/sharing-pieces/contribute
 
 Learn how to contribute a piece to the main repository.
 
@@ -3062,23 +3207,23 @@ Learn how to contribute a piece to the main repository.
 
 
 # Overview
-Source: https://www.activepieces.com/docs/developers/sharing-pieces/overview
+Source: https://www.activepieces.com/docs/build-pieces/sharing-pieces/overview
 
 Learn the different ways to publish your own piece on activepieces.
 
 ## Methods
 
-* [Contribute Back](/developers/sharing-pieces/contribute): Publish your piece by contributing back your piece to main repository.
-* [Community](/developers/sharing-pieces/community): Publish your piece on npm directly and share it with the community.
-* [Private](/developers/sharing-pieces/private): Publish your piece on activepieces privately.
+* [Contribute Back](/build-pieces/sharing-pieces/contribute): Publish your piece by contributing back your piece to main repository.
+* [Community](/build-pieces/sharing-pieces/community): Publish your piece on npm directly and share it with the community.
+* [Private](/build-pieces/sharing-pieces/private): Publish your piece on activepieces privately.
 
 
 # Private
-Source: https://www.activepieces.com/docs/developers/sharing-pieces/private
+Source: https://www.activepieces.com/docs/build-pieces/sharing-pieces/private
 
 Learn how to share your pieces privately.
 
-<Snippet file="enterprise-feature.mdx" />
+<Snippet />
 
 This guide assumes you have already created a piece and created a private fork of our repository, and you would like to package it as a file and upload it.
 
@@ -3090,7 +3235,7 @@ This guide assumes you have already created a piece and created a private fork o
   <Step title="Build Piece">
     Build the piece using the following command. Make sure to replace `${name}` with your piece name.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     npm run pieces -- build --name=${name}
     ```
 
@@ -3102,7 +3247,7 @@ This guide assumes you have already created a piece and created a private fork o
   <Step title="Upload Tarball">
     Upload the generated tarball inside `dist/packages/pieces/${name}`from Activepieces Platform Admin -> Pieces
 
-        <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=1106164b9b77b33e96ccdcd4df789948" alt="Manage Pieces" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/install-piece.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=c9009ba8db60863675f21036a561f4ce 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=c7ad50fd4c721848169fe6c9c2c6af0b 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=6cfedfb7edde2f9311a1af6b783520cf 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=615c3b9f24457a4384ede39ed276d50a 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=44499b6321130356ec94bc0826eb19fd 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=b7cfc85def669ee351fef9150f4c3bce 2500w" />
+    <img alt="Manage Pieces" />
   </Step>
 </Steps>
 
@@ -3112,9 +3257,9 @@ Source: https://www.activepieces.com/docs/embedding/customize-pieces
 
 
 
-<Snippet file="enterprise-feature.mdx" />
+<Snippet />
 
-<Snippet file="replace-oauth2-apps.mdx" />
+<Snippet />
 
 If you would like to only show specific pieces to your embedding users, we recommend you do the following:
 
@@ -3122,7 +3267,7 @@ If you would like to only show specific pieces to your embedding users, we recom
   <Step title="Tag Pieces">
     Tag the pieces you would like to show to your user by going to **Platform Admin -> Setup -> Pieces**, selecting the pieces you would like to tag and hit **Apply Tags**
 
-        <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/tag-pieces.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=2cb4bd65c2a93d5680fb877d8add35d6" alt="Bulk Tag" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/tag-pieces.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/tag-pieces.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=1fdf24f613938a6149c3d18f12476d3f 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/tag-pieces.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=3bafd772b35a2a39f87bbb9f41f2a04d 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/tag-pieces.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=2c7712ea0a1ba76fe15933f3852b13fb 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/tag-pieces.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=20baa4b9210a32bd3274e80465afd440 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/tag-pieces.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=b9f2c83196e8b5ce48da8110828e5ab5 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/tag-pieces.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=fe1eb1911ea54eeed58ba48705faefa5 2500w" />
+    <img alt="Bulk Tag" />
   </Step>
 
   <Step title="Add Tags to Provision Token">
@@ -3130,7 +3275,7 @@ If you would like to only show specific pieces to your embedding users, we recom
 
     You should specify the `pieces` claim like this:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
         /// Other claims
         "piecesFilterType": "ALLOWED",
@@ -3149,7 +3294,7 @@ Source: https://www.activepieces.com/docs/embedding/embed-builder
 
 
 
-<Snippet file="enterprise-feature.mdx" />
+<Snippet />
 
 This documentation explains how to embed the Activepieces iframe inside your application and customize it.
 
@@ -3165,7 +3310,7 @@ Adding the embedding SDK script will initialize an object in your window called 
   These steps assume you have already generated a JWT token from the backend. If not, please check the [provision-users](./provision-users) page.
 </Tip>
 
-```html  theme={null}
+```html theme={null}
 <script src="https://cdn.activepieces.com/sdk/embed/0.8.1.js">
 </script>
 <script>
@@ -3249,7 +3394,7 @@ Source: https://www.activepieces.com/docs/embedding/embed-connections
   * SDK version 0.3.2 or higher
 </Info>
 
-<Snippet file="replace-oauth2-apps.mdx" />
+<Snippet />
 
 <Info>
   "connectionName" is the externalId of the connection (you can get it by hovering the connection name in the connections table).  <br />
@@ -3270,7 +3415,7 @@ Source: https://www.activepieces.com/docs/embedding/embed-connections
   <Step title="Call Connect Method">
     After initializing the SDK, you will have access to a property called `activepieces` inside your `window` object. Call its `connect` method to open a new connection dialog as follows.
 
-    ```html  theme={null}
+    ```html theme={null}
     <script> 
     activepieces.connect({pieceName:'@activepieces/piece-google-sheets'});
     </script>
@@ -3288,7 +3433,7 @@ Source: https://www.activepieces.com/docs/embedding/embed-connections
 
     The `connect` method returns a `promise` that resolves to the following:
 
-    ```ts  theme={null}
+    ```ts theme={null}
     {
         connection?: {
             id: string,
@@ -3304,8 +3449,10 @@ Source: https://www.activepieces.com/docs/embedding/embed-connections
 
     <Tip>
       You can use the `connections` piece in the builder to retrieve the created connection using its name.
-      <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/connections-piece.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=c8d14d795364249e9d64fd48c8e2d484" alt="Connections in Builder" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/connections-piece.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/connections-piece.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=4a5f42ec16c8293fd15825e2c94ad8ca 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/connections-piece.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=51f4632b11ce07e408de35aff0a59f6b 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/connections-piece.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=8b69d0a232717898fa91b8e3e6f5d185 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/connections-piece.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=75bf08645aa881589852c475ec2d2511 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/connections-piece.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=256226de97f2f5f0e956aa51a2e93fcf 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/connections-piece.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=110fab4a94a0ce9ae11db921b90b2cbc 2500w" />
-      <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/connections-piece-usage.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=402d7a7e10ef1f72517a6618d99ea3c8" alt="Connections in Builder" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/connections-piece-usage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/connections-piece-usage.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=d7cb20b21c1830e162bb40b14807dd79 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/connections-piece-usage.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=e1c8b2b823c90d3f84757b667b109b41 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/connections-piece-usage.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=e28b5f05c90d7d4b95b853ea4977f95e 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/connections-piece-usage.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=f3439d8a86f3c8dcb021fa76e4710920 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/connections-piece-usage.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=920cb29c9b9b24c577431f5842cae52a 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/connections-piece-usage.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=3a5c9dbbe461c92f0ae6efd07a409d7d 2500w" />
+
+      <img alt="Connections in Builder" />
+
+      <img alt="Connections in Builder" />
     </Tip>
   </Step>
 </Steps>
@@ -3326,7 +3473,7 @@ You can use the following snippet when configuring the SDK, which will implement
   The following snippet listens when the user clicks backward, so it syncs the route back to the iframe using `activepieces.navigate` and in the handler, it updates the URL of the browser.
 </Tip>
 
-```js  theme={null}
+```js theme={null}
 const instanceUrl = 'YOUR_INSTANCE_URL';
 const jwtToken = 'YOUR_GENERATED_JWT_TOKEN';
 const containerId = 'YOUR_CONTAINER_ID';
@@ -3382,7 +3529,7 @@ Here is the list for routes the sdk can navigate to:
 
 You can call the `navigate` method after initializing the sdk using the `configure` sdk:
 
-```js  theme={null}
+```js theme={null}
 const flowId = '1234';
 const instanceUrl = 'YOUR_INSTANCE_URL';
 const jwtToken = 'YOUR_GENERATED_JWT_TOKEN';
@@ -3402,7 +3549,7 @@ Source: https://www.activepieces.com/docs/embedding/overview
 
 Understanding how embedding works
 
-<Snippet file="enterprise-feature.mdx" />
+<Snippet />
 
 This section provides an overview of how to embed the Activepieces builder in your application and automatically provision the user.
 
@@ -3419,14 +3566,15 @@ The embedding process involves the following steps:
 </Steps>
 
 Here is an example of how it looks like in one of the SaaS that embed Activepieces:
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/embedding-example.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=09dd50eecbdf2a7578ac5c978f898407" alt="Embedding Example" data-og-width="2630" width="2630" data-og-height="2284" height="2284" data-path="resources/screenshots/embedding-example.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/embedding-example.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=aa425d97900f54fdcff4ab1f8a8559da 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/embedding-example.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=3b80ddc00e4a2117465da44cd9153c6e 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/embedding-example.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=7b3d9d829a7b6e0ad8c19d7627d51492 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/embedding-example.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=c452252de8ced0ec22d390192c1a3729 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/embedding-example.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=2f29a375b063b9b2228ebc637e462a84 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/embedding-example.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=2c7ba3547b50f1594fcc5ca64f50a581 2500w" />
+
+<img alt="Embedding Example" />
 
 <Tip>
   In case, you need to gather connections from your users in your SaaS. You can do this with the SDK. Find more info [here](./embed-connections).
 </Tip>
 
 <Tip>
-  If you are looking for a way to communicate between Activpieces and the SaaS embedding it through a piece, we recommend you check the [custom property doc](/developers/piece-reference/properties#custom-property-beta)
+  If you are looking for a way to communicate between Activpieces and the SaaS embedding it through a piece, we recommend you check the [custom property doc](/build-pieces/piece-reference/properties#custom-property-beta)
 </Tip>
 
 
@@ -3445,14 +3593,15 @@ The high-level steps are:
 ### Prerequisites
 
 * [Run the Enterprise Edition](/handbook/engineering/playbooks/run-ee)
-* [Create your piece](/developers/building-pieces/overview). Later we will customize the piece logic to use predefined connections.
+* [Create your piece](/build-pieces/building-pieces/overview). Later we will customize the piece logic to use predefined connections.
 
 ### Create a Predefined Connection
 
 <Steps>
   <Step title="Create an API Key">
     Go to **Platform Admin → Security → API Keys** and create an API key. Save it for use in the next step.
-    <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-api-key.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=cb42e0171f14b314bfbcf58f2c7ef415" alt="Create API Key" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/create-api-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-api-key.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=11cd9dfa90858803063a6adb33aba934 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-api-key.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=fce77edd69bb3f90fc32ea951b813a0a 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-api-key.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=710d6cf4d50818b00b5c54bce30dbb10 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-api-key.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=e43e20030ecbf0977ad755136e363611 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-api-key.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=3f0dc4414fece6dd7a2479afe212f868 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-api-key.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=3a8479614b105ff9a3395b3a0215b553 2500w" />
+
+    <img alt="Create API Key" />
   </Step>
 
   <Step title="Create a Global Connection via API">
@@ -3463,7 +3612,7 @@ The high-level steps are:
     * Create Project If it doesn't exist.
     * Create a global connection for the project with certain naming convention.
 
-    ```js  theme={null}
+    ```js theme={null}
     const apiKey = 'YOUR_API_KEY';
     const instanceUrl = 'https://cloud.activepieces.com';
 
@@ -3495,7 +3644,7 @@ The high-level steps are:
 
     Implementation:
 
-    ```js  theme={null}
+    ```js theme={null}
     async function getOrCreateProject({
         projectExternalId,
         apiKey,
@@ -3608,7 +3757,7 @@ The high-level steps are:
   <Step title="Fetch the connection">
     Here is example how you can fetch the connection value based on naming convention, make sure this naming convention is followed when creating a global connection.
 
-    ```js  theme={null}
+    ```js theme={null}
     import {
        ConnectionsManager,
        Property,
@@ -3698,7 +3847,7 @@ Source: https://www.activepieces.com/docs/embedding/provision-users
 
 Automatically authenticate your SaaS users to your Activepieces instance
 
-<Snippet file="enterprise-feature.mdx" />
+<Snippet />
 
 ## Overview
 
@@ -3712,7 +3861,7 @@ To achieve this, the backend will generate a signed token that contains all the 
 
     This will generate a public and private key pair. The public key will be used by Activepieces to verify the signature of the JWT tokens you send. The private key will be used by you to sign the JWT tokens.
 
-        <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-signing-key.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=2146a966a36cf2e3cc2c9b38ac74be8e" alt="Create Signing Key" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/create-signing-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-signing-key.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=3d2b33b383c4e0f5447e4a91ba0fda75 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-signing-key.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=12a14d0b34bebe2fa2d1b892780c10c5 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-signing-key.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=8ba571040baf3f3f09b45dfa4bf0a0f1 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-signing-key.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=80dc36826ac3d116096a6f41f265b19a 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-signing-key.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=cb24d71a6f4c47d87b84eb06ec7a674a 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/create-signing-key.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=e951422b1b7e4193ad6aa5556d023437 2500w" />
+    <img alt="Create Signing Key" />
 
     <Warning>
       Please store your private key in a safe place, as it will not be stored in Activepieces.
@@ -3726,10 +3875,11 @@ To achieve this, the backend will generate a signed token that contains all the 
 
     <Tip>
       To obtain the `SIGNING_KEY_ID`, refer to the signing key table and locate the value in the first column.
-      <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/signing-key-id.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=bd1f93195c14e25fd91710fb386f5b46" alt="Signing Key ID" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/signing-key-id.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/signing-key-id.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=b3d91cc4aa415c00bcd81d2505371538 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/signing-key-id.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=bddae17b3079768a2b7ef2792763666e 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/signing-key-id.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=7374263ba089a74dd10dafe313e9b6cf 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/signing-key-id.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=e2bf0b0c07680b91a6bf3a6f7ffb1150 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/signing-key-id.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=b5223cfbb2841bbb97c189cb69281a3e 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/signing-key-id.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=152f7c8deff439e2d797537b9f8dc9fc 2500w" />
+
+      <img alt="Signing Key ID" />
     </Tip>
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "alg": "RS256",
       "typ": "JWT",
@@ -3739,7 +3889,7 @@ To achieve this, the backend will generate a signed token that contains all the 
 
     The signed tokens must include these claims in the payload:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "version": "v3",
       "externalUserId": "user_id",
@@ -3941,7 +4091,7 @@ You can use the embedded SDK to send requests to your instance and retrieve data
   </Step>
 
   <Step title="Call (request) Method">
-    ```html  theme={null}
+    ```html theme={null}
     <script> 
     activepieces.request({path:'/flows',method:'GET'}).then(console.log);
     </script>
@@ -4008,45 +4158,6 @@ List Flow Runs
 
 # Flow Run Schema
 Source: https://www.activepieces.com/docs/endpoints/flow-runs/schema
-
-
-
-
-
-# Create Flow Template
-Source: https://www.activepieces.com/docs/endpoints/flow-templates/create
-
-POST /v1/flow-templates
-Create a flow template
-
-
-
-# Delete Flow Template
-Source: https://www.activepieces.com/docs/endpoints/flow-templates/delete
-
-DELETE /v1/flow-templates/{id}
-Delete a flow template
-
-
-
-# Get Flow Template
-Source: https://www.activepieces.com/docs/endpoints/flow-templates/get
-
-GET /v1/flow-templates/{id}
-Get a flow template
-
-
-
-# List Flow Templates
-Source: https://www.activepieces.com/docs/endpoints/flow-templates/list
-
-GET /v1/flow-templates
-List flow templates
-
-
-
-# Flow Template Schema
-Source: https://www.activepieces.com/docs/endpoints/flow-templates/schema
 
 
 
@@ -4196,37 +4307,6 @@ POST /v1/global-connections
 
 
 
-# List MCP servers
-Source: https://www.activepieces.com/docs/endpoints/mcp-servers/list
-
-GET /v1/mcp-servers
-List MCP servers
-
-
-
-# Rotate MCP server token
-Source: https://www.activepieces.com/docs/endpoints/mcp-servers/rotate
-
-POST /v1/mcp-servers/{id}/rotate
-Rotate the MCP token
-
-
-
-# MCP Server Schema
-Source: https://www.activepieces.com/docs/endpoints/mcp-servers/schema
-
-
-
-
-
-# Update MCP Server
-Source: https://www.activepieces.com/docs/endpoints/mcp-servers/update
-
-POST /v1/mcp-servers/{id}
-Update the project MCP server configuration
-
-
-
 # Overview
 Source: https://www.activepieces.com/docs/endpoints/overview
 
@@ -4250,7 +4330,7 @@ All endpoints use seek pagination, to paginate through the results, you can prov
 
 The API response will have the following structure:
 
-```json  theme={null}
+```json theme={null}
 {
     "data": [],
     "next": "string",
@@ -4354,7 +4434,6 @@ POST /v1/projects/{id}
 Source: https://www.activepieces.com/docs/endpoints/queue-metrics/metrics
 
 GET /v1/queue-metrics
-Get metrics
 
 
 
@@ -4362,6 +4441,45 @@ Get metrics
 Source: https://www.activepieces.com/docs/endpoints/sample-data/get
 
 GET /v1/sample-data
+
+
+
+# Create Template
+Source: https://www.activepieces.com/docs/endpoints/templates/create
+
+POST /v1/templates
+Create a template.
+
+
+
+# Delete Template
+Source: https://www.activepieces.com/docs/endpoints/templates/delete
+
+DELETE /v1/templates/{id}
+Delete a template.
+
+
+
+# Get Template
+Source: https://www.activepieces.com/docs/endpoints/templates/get
+
+GET /v1/templates/{id}
+Get a template.
+
+
+
+# List Templates
+Source: https://www.activepieces.com/docs/endpoints/templates/list
+
+GET /v1/templates
+List templates.
+
+
+
+# Template Schema
+Source: https://www.activepieces.com/docs/endpoints/templates/schema
+
+
 
 
 
@@ -4413,6 +4531,7 @@ Source: https://www.activepieces.com/docs/endpoints/users/schema
 Source: https://www.activepieces.com/docs/endpoints/users/update
 
 POST /v1/users/{id}
+Update user
 
 
 
@@ -4431,7 +4550,7 @@ Actions come after the flow and control what occurs when the flow is activated, 
 
 In real-life scenario:
 
-<img src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/flow-parts.png?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=91002b43854c0692dfa97093210f7758" alt="Flow Parts" data-og-width="1190" width="1190" data-og-height="1026" height="1026" data-path="resources/flow-parts.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/flow-parts.png?w=280&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=fb7004ca4b33fadc51a5917f941499cb 280w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/flow-parts.png?w=560&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=ccc3ef72de0af2923cf7c9e4aa0f76b4 560w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/flow-parts.png?w=840&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=2f0fa784bd525a2bb45210744ac291bd 840w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/flow-parts.png?w=1100&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=fa7ef73fce399243155d8ba4738c75e0 1100w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/flow-parts.png?w=1650&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=d93aca188ef10e5a807e737cf70e2141 1650w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/flow-parts.png?w=2500&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=947bdbac576d57f46c991363d082b1df 2500w" />
+<img alt="Flow Parts" />
 
 
 # Debugging Runs
@@ -4447,7 +4566,8 @@ You can monitor each run that results from an enabled flow:
 4. Click on any of these steps, you will see the **input** and **output** in the **Run Details** panel.
 
 The debugging experience looks like this:
-<img src="https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/screenshots/using-activepieces-debugging.png?fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=1ca6ba93a4c1eed347626116b6a102c2" alt="Debugging Business Automations" data-og-width="2880" width="2880" data-og-height="1642" height="1642" data-path="resources/screenshots/using-activepieces-debugging.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/screenshots/using-activepieces-debugging.png?w=280&fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=227dd11b4ecf414d7c68467eb0167b70 280w, https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/screenshots/using-activepieces-debugging.png?w=560&fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=abc74e55dc2f3687ea49be734712eff6 560w, https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/screenshots/using-activepieces-debugging.png?w=840&fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=14ac5ece3d44da0e591f4db183455936 840w, https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/screenshots/using-activepieces-debugging.png?w=1100&fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=26863c804032aebd4cbd1f872a1e2147 1100w, https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/screenshots/using-activepieces-debugging.png?w=1650&fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=0972b746f60677ffea409cda9177dac2 1650w, https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/screenshots/using-activepieces-debugging.png?w=2500&fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=75013f1b03c2a47dedff56bda1b9631b 2500w" />
+
+<img alt="Debugging Business Automations" />
 
 
 # Technical Limits
@@ -4490,7 +4610,11 @@ Technical limits for Activepieces execution
 </Info>
 
 * **Maximum File Size**: **10 MB**\
-  (Configurable via `AP_MAX_FILE_SIZE_MB`, default: **4 MB**)
+  (Configurable via `AP_MAX_FILE_SIZE_MB`, default: **25 MB**)
+
+* **Maximum Flow Run Log Size**: **25 MB**\
+  (Configurable via `AP_MAX_FLOW_RUN_LOG_SIZE_MB`, default: **25 MB**)
+  > This is the total combined size of all inputs and outputs for each step in a single flow run.
 
 ***
 
@@ -4515,7 +4639,7 @@ Steps are connected vertically. Data flows from parent steps to the children. Ch
 
 ## Example Steps
 
-<video width="450" autoPlay muted loop playsinline src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-3steps.mp4?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=525e82220343a9d0e119dd469dc998c1" data-path="resources/passing-data-3steps.mp4" />
+<video />
 
 This flow has 3 steps, they can access data as follows:
 
@@ -4529,7 +4653,7 @@ This flow has 3 steps, they can access data as follows:
 
 In order to use data from a previous step in your current step, place your cursor in any input, the **Data to Insert** panel will pop up.
 
-<video autoPlay muted loop playsinline src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-data-to-insert-panel.mp4?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=3d46b25cb67d411f95ee083d71fc447c" data-path="resources/passing-data-data-to-insert-panel.mp4" />
+<video />
 
 This panel shows the accessible steps and their data. You can expand the data items to view their content, and you can click the items to insert them in your current settings input.
 
@@ -4537,7 +4661,7 @@ If an item in this panel has a caret (⌄) to the right, it means you can click 
 
 When you insert data from this panel, it gets inserted at the cursor's position in the input. This means you can combine static text and dynamic data in any field.
 
-<video autoPlay muted loop playsinline src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-main-insert-data-example.mp4?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=2ae302d3f0edd883c207ffbf1dabee7a" data-path="resources/passing-data-main-insert-data-example.mp4" />
+<video />
 
 We generally recommend that you expand the items before inserting them to understand the type of data they contain and whether they're the right fit to the input you're filling.
 
@@ -4547,7 +4671,7 @@ We require you to test steps before accessing their data. This approach protects
 
 If a step is not tested and you try to access its data, you will see the following message:
 
-<img width="350" src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-test-step-first.png?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=3bc8bb574124a5a119ba97ae4995acc8" alt="Test your automation step first" data-og-width="798" data-og-height="988" data-path="resources/passing-data-test-step-first.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-test-step-first.png?w=280&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=cabf8db7e71bab1723dc2799e1de0e29 280w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-test-step-first.png?w=560&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=395766bb57845ebb1d0e6c6aa176ed7f 560w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-test-step-first.png?w=840&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=34a3bce214b6665784158841a0c0598e 840w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-test-step-first.png?w=1100&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=330141a5e22a170def0fedaf1c268def 1100w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-test-step-first.png?w=1650&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=4f2dee5f9d48e411fe12805e063a4ed3 1650w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-test-step-first.png?w=2500&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=04841ffe0b6ca0ba9835947574e951b7 2500w" />
+<img alt="Test your automation step first" />
 
 To fix this, go to the step and use the Generate Sample Data panel to test it. Steps use different approaches for testing. These are the common ones:
 
@@ -4560,7 +4684,7 @@ Follow the instructions in the Generate Sample Data panel to know how your step 
 
 This is an example for generating sample data for a trigger using the **Load Data** button:
 
-<video autoPlay muted loop playsinline src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-load-data.mp4?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=318c97848c527caceb7186d926d50af7" data-path="resources/passing-data-load-data.mp4" />
+<video />
 
 ## Advanced Tips
 
@@ -4568,7 +4692,7 @@ This is an example for generating sample data for a trigger using the **Load Dat
 
 Dropdowns and some other input types don't let you select data from previous steps. If you'd like to bypass this and use data from previous steps instead, switch the input into a dynamic one using this button:
 
-<video autoPlay muted loop playsinline src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/passing-data-dynamic-value.mp4?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=e25b49eb497509a2267dc9bd39cb3240" data-path="resources/passing-data-dynamic-value.mp4" />
+<video />
 
 ### Accessing data by path
 
@@ -4588,7 +4712,7 @@ Make your flow work by publishing your updates
 
 The changes you make won't work right away to avoid disrupting the flow that's already published. To enable your changes, simply click on the publish button once you're done with your changes.
 
-<img src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/publish-flow.png?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=5919308ee42dd2a8b034e3f10c74f2a0" alt="Flow Parts" data-og-width="802" width="802" data-og-height="402" height="402" data-path="resources/publish-flow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/publish-flow.png?w=280&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=45bda33a231ec2bdc1f843ea1b0540d6 280w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/publish-flow.png?w=560&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=3dcfbd55219e9836c046d2e6a769fde0 560w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/publish-flow.png?w=840&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=c0400e12be4aa89c866aba03a10594eb 840w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/publish-flow.png?w=1100&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=4f1754569e994ce6a89576fe50447587 1100w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/publish-flow.png?w=1650&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=2ce7fce9fc5f91f9aa057bac2ccbe7bd 1650w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/publish-flow.png?w=2500&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=c6b7f714c07a8c6786ef56dd6886047a 2500w" />
+<img alt="Flow Parts" />
 
 
 # Version History
@@ -4600,82 +4724,14 @@ Activepieces keeps track of all published flows and their versions. Here’s how
 
 1. You can edit a flow as many times as you want in **draft** mode.
 2. Once you're done with your changes, you can publish it.
-3. The published flow will be **immutable** and cannot be edited.
+3. The published version will be locked and uneditable.
 4. If you try to edit a published flow, Activepieces will create a new **draft** if there is none and copy the **published** version to the new version.
 
 This means you can always go back to a previous version and edit the flow in draft mode without affecting the published version.
 
-<img src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/flow-history.png?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=4c9e91670db9365e93bb8b75f1f1e697" alt="Flow History" data-og-width="2560" width="2560" data-og-height="1440" height="1440" data-path="resources/flow-history.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/flow-history.png?w=280&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=ca50bf21ed60647e215faedd0fdd641e 280w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/flow-history.png?w=560&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=95e7b7a4ba206f9a4e4fbb6880a83492 560w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/flow-history.png?w=840&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=0c149d538508942f7a8481c36110b48b 840w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/flow-history.png?w=1100&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=707ec6249c84e7b89dea8d55ef43e4a1 1100w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/flow-history.png?w=1650&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=ecef496a6299b12a50ae897814e31cfc 1650w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/flow-history.png?w=2500&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=167071f8391e6f6697198c7b63b68702 2500w" />
+<img alt="Flow History" />
 
 As you can see in the following screenshot, the yellow dot refers to DRAFT and the green dot refers to PUBLISHED.
-
-
-# 🥳 Welcome to Activepieces
-Source: https://www.activepieces.com/docs/getting-started/introduction
-
-Your friendliest open source all-in-one automation tool, designed to be extensible.
-
-<CardGroup cols={2}>
-  <Card href="/flows/building-flows" title="Learn Concepts" icon="shapes" color="#8143E3">
-    Learn how to work with Activepieces
-  </Card>
-
-  <Card href="https://www.activepieces.com/pieces" title="Pieces" icon="puzzle-piece" color="#8143E3">
-    Browse available pieces
-  </Card>
-
-  <Card href="/install/overview" title="Install" icon="server" color="#8143E3">
-    Learn how to install Activepieces
-  </Card>
-
-  <Card href="/developers/building-pieces/overview" title="Developers" icon="code" color="#8143E3">
-    How to Build Pieces and Contribute
-  </Card>
-</CardGroup>
-
-# 🔥 Why Activepieces is Different:
-
-* **💖 Loved by Everyone**: Intuitive interface and great experience for both technical and non-technical users with a quick learning curve.
-
-<img src="https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/templates.gif?s=fd757d47135bd89176c05f19d551e449" alt="" data-og-width="1000" width="1000" data-og-height="484" height="484" data-path="resources/templates.gif" data-optimize="true" data-opv="3" />
-
-* **🌐 Open Ecosystem:** All pieces are open source and available on npmjs.com, **60% of the pieces are contributed by the community**.
-
-* **🛠️  Pieces are written in Typescript**: Pieces are npm packages in TypeScript, offering full customization with the best developer experience, including **hot reloading** for **local** piece development on your machine. 😎
-
-<img src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/create-action.png?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=86de2df0a46f609b603556e80d13d1d2" alt="" data-og-width="1450" width="1450" data-og-height="752" height="752" data-path="resources/create-action.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/create-action.png?w=280&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=54e99162279ac0c892daca018df3396e 280w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/create-action.png?w=560&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=035684dda0c008b4563f0de8325da847 560w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/create-action.png?w=840&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=d166e4c429238d4247f6cc2f307f5828 840w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/create-action.png?w=1100&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=e324c1dfb217a5151b38cfabb8d76f89 1100w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/create-action.png?w=1650&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=48ca5658ef5fc2f9e4f0dda191c6259e 1650w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/create-action.png?w=2500&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=b9306752938ea71f9c990f7d23459e4f 2500w" />
-
-* **🤖 AI-Ready**: Native AI pieces let you experiment with various providers, or create your own agents using our AI SDK to help you build flows inside the builder.
-
-* **🏢 Enterprise-Ready**: Developers set up the tools, and anyone in the organization can use the no-code builder. Full customization from branding to control.
-
-* **🔒 Secure by Design**: Self-hosted and network-gapped for maximum security and control over your data.
-
-* **🧠 Human in Loop**: Delay execution for a period of time or require approval. These are just pieces built on top of the piece framework, and you can build many pieces like that. 🎨
-
-* **💻 Human Input Interfaces**: Built-in support for human input triggers like "Chat Interface" 💬 and "Form Interface" 📝
-
-
-# Product Principles
-Source: https://www.activepieces.com/docs/getting-started/principles
-
-
-
-## 🌟 Keep It Simple
-
-* Design the product to be accessible for everyone, regardless of their background and technical expertise.
-
-* The code is in a monorepository under one service, making it easy to develop, maintain, and scale.
-
-* Keep the technology stack simple to achieve massive adoption.
-
-* Keep the software unopinionated and unlock niche use cases by making it extensible through pieces.
-
-## 🧩 Keep It Extensible
-
-* Automation pieces framework has minimal abstraction and allow you to extend for any usecase.
-
-* All contributions are welcome. The core is open source, and commercial code is available.
 
 
 # How to handle Requests
@@ -4767,7 +4823,7 @@ Our on-call engineer handles customer support as part of their rotation. For mor
 * Enterprise Support
   * Enterprise customers receive dedicated support through Slack
   * We use [Pylon](https://usepylon.com) to manage support tickets and customer channels efficiently
-  * For detailed information on using Pylon, see our [Pylon Guide](/docs/handbook/customer-support/pylon)
+  * For detailed information on using Pylon, see our [Pylon Guide](/handbook/customer-support/pylon)
 
 ### Support Hours & SLA:
 
@@ -4785,7 +4841,7 @@ At Activepieces, we use Pylon to manage Slack-based customer support requests th
 
 Learn more about Pylon's features: [https://docs.usepylon.com/pylon-docs](https://docs.usepylon.com/pylon-docs)
 
-<img src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/pylon-board.png?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=5e653ec9a78ead22b3edc7f3cbac1a31" alt="Pylon board showing different columns for ticket management" data-og-width="1693" width="1693" data-og-height="1022" height="1022" data-path="resources/pylon-board.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/pylon-board.png?w=280&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=5afae234a251cddb52fbc2e98fd6f9df 280w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/pylon-board.png?w=560&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=edc15a6de060b8d731356098bf781b8b 560w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/pylon-board.png?w=840&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=ab9422f6444c07fe2739dd07f2b2059d 840w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/pylon-board.png?w=1100&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=990ffc64f2da10c0c8bdb6659826ddbb 1100w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/pylon-board.png?w=1650&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=096a95126fe07af16cb9735913d688ab 1650w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/pylon-board.png?w=2500&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=8e737a78dc7abb9402b62abd98e1265f 2500w" />
+<img alt="Pylon board showing different columns for ticket management" />
 
 ### New Column
 
@@ -4870,16 +4926,6 @@ Always clarify the next step, such as whether the ticket will receive an immedia
 <Tip>
   Customers are real people who want to talk to real people. Be yourself, be helpful, and focus on solving their problems!
 </Tip>
-
-
-# Trial Key Management
-Source: https://www.activepieces.com/docs/handbook/customer-support/trial
-
-Description of your new file.
-
-Please read more how to create development / production keys for the customer in the following document.
-
-* [Trial Key Management Guide](https://docs.google.com/document/d/1k4-_ZCgyejS9UKA7AwkSB-l2TEZcnK2454o2joIgm4k/edit?tab=t.0#heading=h.ziaohggn8z8d): Includes detailed instructions on generating and extending 14-day trial keys.
 
 
 # Handling Downtime
@@ -5140,100 +5186,65 @@ This guide provides a checklist for the new hire onboarding process.
 Welcome again to the team. We can't wait to see the impact you'll make at Activepieces! 😉
 
 
+# Stack & Tools
+Source: https://www.activepieces.com/docs/handbook/engineering/onboarding/stack
+
+
+
+## Language
+
+Activepieces uses **Typescript** as its one and only language.
+The reason behind unifying the language is the ability for it to break data models and features into packages, which can be shared across its components (worker / frontend / backend).
+
+This enables it to focus on learning fewer tooling options and perfect them across all its packages.
+
+## Frontend
+
+* Web framework/library: [React](https://reactjs.org/)
+* Layout/components: [shadcn](https://shadcn.com/) / Tailwind
+
+## Backend
+
+* Framework: [Fastify](https://www.fastify.io/)
+* Database: [PostgreSQL](https://www.postgresql.org/)
+* Task Queuing: [Redis](https://redis.io/)
+* Task Worker: [BullMQ](https://github.com/taskforcesh/bullmq)
+
+## Testing
+
+* Unit & Integration Tests: [Jest](https://jestjs.io/)
+* E2E Test: [Playwright](https://playwright.dev/)
+
+## Additional Tools
+
+* Application monitoring: [Sentry](https://sentry.io/welcome/)
+* CI/CD: [GitHub Actions](https://github.com/features/actions) / [Depot](https://depot.dev/) / [Kamal](https://kamal-deploy.org/)
+* Containerization: [Docker](https://www.docker.com/)
+* Linter: [ESLint](https://eslint.org/)
+* Logging: [OpenTelemetry](https://opentelemetry.io/)
+* Building: [NX Monorepo](https://nx.dev/)
+
+## Adding New Tool
+
+Adding a new tool isn't a simple choice. A simple choice is one that's easy to do or undo, or one that only affects your work and not others'.
+
+We avoid adding new stuff to increase the ease of setup, which increases adoption. Having more dependencies means more moving parts and support.
+
+If you're thinking about a new tool, ask yourself these:
+
+* Is this tool open source? How can we give it to customers who use their own servers?
+* What does it fix, and why do we need it now?
+* Can we use what we already have instead?
+
+These questions only apply to required services for everyone. If this tool speeds up your own work, we don't need to think so hard.
+
+
 # Overview
 Source: https://www.activepieces.com/docs/handbook/engineering/overview
 
 
 
 Welcome to the engineering team! This section contains essential information to help you get started, including our development processes, guidelines, and practices. We're excited to have you on board.
-
-
-# Queues Dashboard
-Source: https://www.activepieces.com/docs/handbook/engineering/playbooks/bullboard
-
-
-
-The Bull Board is a tool that allows you to check issues with scheduling and internal flow runs issues.
-
-![BullBoard Overview](https://raw.githubusercontent.com/felixmosh/bull-board/master/screenshots/overview.png)
-
-## Setup BullBoard
-
-To enable the Bull Board UI in your self-hosted installation:
-
-1. Define these environment variables:
-   * `AP_QUEUE_UI_ENABLED`: Set to `true`
-   * `AP_QUEUE_UI_USERNAME`: Set your desired username
-   * `AP_QUEUE_UI_PASSWORD`: Set your desired password
-
-2. Access the UI at `/api/ui`
-
-<Tip>
-  For cloud installations, please ask your team for access to the internal documentation that explains how to access BullBoard.
-</Tip>
-
-## Queue Overview
-
-We have one main queue called `workerJobs` that handles all job types. Each job has a `jobType` field that tells us what it does:
-
-### Low Priority Jobs
-
-#### RENEW\_WEBHOOK
-
-Renews webhooks for pieces that have webhooks channel with expiration like Google Sheets.
-
-#### EXECUTE\_POLLING
-
-Checks external services for new data at regular intervals.
-
-### Medium Priority Jobs
-
-#### EXECUTE\_FLOW
-
-Runs flows when they're triggered.
-
-#### EXECUTE\_WEBHOOK
-
-Processes incoming webhook requests that start flow runs.
-
-#### EXECUTE\_AGENT
-
-Runs AI agent tasks within flows.
-
-#### DELAYED\_FLOW
-
-Runs flows that were scheduled for later, like paused flows or delayed executions.
-
-### High Priority Jobs
-
-#### EXECUTE\_TOOL
-
-Runs tool operations in flows, usually for AI-powered features.
-
-#### EXECUTE\_PROPERTY
-
-Loads dynamic properties for pieces that need them at runtime.
-
-#### EXECUTE\_EXTRACT\_PIECE\_INFORMATION
-
-Gets information about pieces when they're being installed or set up.
-
-#### EXECUTE\_VALIDATION
-
-Checks that flow settings, inputs, or data are correct before running.
-
-#### EXECUTE\_TRIGGER\_HOOK
-
-Runs special logic before or after triggers fire.
-
-<Info>
-  Failed jobs are not normal and need to be checked right away to find and fix what's causing them.
-  They require immediate investigation as they represent executions that failed for unknown reasons that could indicate system issues.
-</Info>
-
-<Tip>
-  Delayed jobs represent either paused flows scheduled for future execution, upcoming polling job iterations, or jobs being retried due to temporary failures. They indicate an internal system error occurred and the job will be retried automatically according to the backoff policy.
-</Tip>
 
 
 # Database Migrations
@@ -5253,82 +5264,84 @@ The database migration files contain both what to do to migrate (up method) and 
 ## Database Support
 
 * PostgreSQL
-* SQLite
+* PGlite
 
 <Tip>
-  **Why Do we have SQLite?**
-  We support SQLite to simplify development and self-hosting. It's particularly helpful for:
+  **Why Do we have PGlite?**
+  We support PGlite to simplify development and self-hosting. It's particularly helpful for:
 
   * Developers creating pieces who want a quick setup
   * Self-hosters using platforms to manage docker images but doesn't support docker compose.
+
+  PGlite is a lightweight PostgreSQL implementation that runs embedded, so migrations are compatible with PostgreSQL.
 </Tip>
 
 ## Editions
 
 * **Enterprise & Cloud Edition** (Must use PostgreSQL)
-* **Community Edition** (Can use PostgreSQL or SQLite)
-
-<Tip>
-  If you are generating a migration for an entity that will only be used in Cloud & Enterprise editions, you only need to create the PostgreSQL migration file. You can skip generating the SQLite migration.
-</Tip>
+* **Community Edition** (Can use PostgreSQL or PGlite)
 
 ### How To Generate
 
 <Steps>
-  <Step title="Uncomment Database Connection Export">
-    Uncomment the following line in `packages/server/api/src/app/database/database-connection.ts`:
-
-    ```typescript  theme={null}
-    export const exportedConnection = databaseConnection()
-    ```
-  </Step>
-
-  <Step title="Configure Database Type">
-    Edit your `.env` file to set the database type:
-
-    ```env  theme={null}
-    # For SQLite migrations (default)
-    AP_DATABASE_TYPE=SQLITE
-    ```
-
-    For PostgreSQL migrations:
-
-    ```env  theme={null}
-    AP_DB_TYPE=POSTGRES
-    AP_POSTGRES_DATABASE=activepieces
-    AP_POSTGRES_HOST=db
-    AP_POSTGRES_PORT=5432
-    AP_POSTGRES_USERNAME=postgres
-    AP_POSTGRES_PASSWORD=password
-    ```
+  <Step title="Setup AP_DB_TYPE">
+    Set the `AP_DB_TYPE` environment variable to `POSTGRES` after making sure have latest state by running Activepieces first.
   </Step>
 
   <Step title="Generate Migration">
     Run the migration generation command:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     nx db-migration server-api --name=<MIGRATION_NAME>
     ```
 
     Replace `<MIGRATION_NAME>` with a descriptive name for your migration.
   </Step>
 
-  <Step title="Move Migration File">
-    The command will generate a new migration file in `packages/server/api/src/app/database/migrations`.
-    Review the generated file and:
+  <Step title="Review Migration File">
+    The command will generate a new migration file in `packages/server/api/src/app/database/migration/postgres/`.
 
-    * For PostgreSQL migrations: Move it to `postgres-connection.ts`
-    * For SQLite migrations: Move it to `sqlite-connection.ts`
-  </Step>
-
-  <Step title="Re-comment Export">
-    After moving the file, remember to re-comment the line from step 1:
-
-    ```typescript  theme={null}
-    // export const exportedConnection = databaseConnection()
-    ```
+    Review the generated file and register it in `postgres-connection.ts`.
   </Step>
 </Steps>
+
+## PGlite Compatibility
+
+While PGlite is mostly PostgreSQL-compatible, some features are not supported. When using features like `CONCURRENTLY` for index operations, you need to conditionally handle PGlite:
+
+```typescript theme={null}
+import { AppSystemProp } from '@activepieces/server-shared'
+import { MigrationInterface, QueryRunner } from 'typeorm'
+import { DatabaseType, system } from '../../../helper/system/system'
+
+const databaseType = system.get(AppSystemProp.DB_TYPE)
+const isPGlite = databaseType === DatabaseType.PGLITE
+
+export class AddMyIndex1234567890 implements MigrationInterface {
+    name = 'AddMyIndex1234567890'
+    transaction = false // Required when using CONCURRENTLY
+
+    public async up(queryRunner: QueryRunner): Promise<void> {
+        if (isPGlite) {
+            await queryRunner.query(`CREATE INDEX "idx_name" ON "table" ("column")`)
+        } else {
+            await queryRunner.query(`CREATE INDEX CONCURRENTLY "idx_name" ON "table" ("column")`)
+        }
+    }
+
+    public async down(queryRunner: QueryRunner): Promise<void> {
+        if (isPGlite) {
+            await queryRunner.query(`DROP INDEX "idx_name"`)
+        } else {
+            await queryRunner.query(`DROP INDEX CONCURRENTLY "idx_name"`)
+        }
+    }
+}
+```
+
+<Warning>
+  `CREATE INDEX CONCURRENTLY` and `DROP INDEX CONCURRENTLY` are not supported in PGlite because PGLite is a single user/connection database. Always add a check for PGlite when using these operations.
+</Warning>
 
 <Tip>
   Always test your migrations by running them both up and down to ensure they work as expected.
@@ -5370,7 +5383,7 @@ This playbook provides a comprehensive guide for writing e2e tests following the
 
 All page objects extend the `BasePage` class and follow a consistent structure:
 
-```typescript  theme={null}
+```typescript theme={null}
 export class YourPage extends BasePage {
   url = `${configUtils.getConfig().instanceUrl}/your-path`;
 
@@ -5392,7 +5405,7 @@ export class YourPage extends BasePage {
 
 #### ❌ Don't do
 
-```typescript  theme={null}
+```typescript theme={null}
 // Direct element selection in test files
 test('should create flow', async ({ page }) => {
   await page.getByRole('button', { name: 'Create Flow' }).click();
@@ -5403,7 +5416,7 @@ test('should create flow', async ({ page }) => {
 
 #### ✅ Do
 
-```typescript  theme={null}
+```typescript theme={null}
 // flows.page.ts
 export class FlowsPage extends BasePage {
   getters = {
@@ -5432,7 +5445,7 @@ test('should create flow', async ({ page }) => {
 
 Test files should be organized by feature or workflow:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { test, expect } from '@playwright/test';
 import { 
   AuthenticationPage, 
@@ -5465,7 +5478,7 @@ test.describe('Feature Name', () => {
 * Follow the pattern: `should [action] [expected result]`
 * Include context when relevant
 
-```typescript  theme={null}
+```typescript theme={null}
 // Good test names
 test('should send Slack message via flow', async ({ page }) => {});
 test('should handle webhook with dynamic parameters', async ({ page }) => {});
@@ -5482,7 +5495,7 @@ test('test flow', async ({ page }) => {});
 
 Use the centralized config utility to handle different environments:
 
-```typescript  theme={null}
+```typescript theme={null}
 // helper/config.ts
 export const configUtils = {
   getConfig: (): Config => {
@@ -5510,7 +5523,7 @@ Required environment variables for CI/CD:
 
 Follow this pattern for comprehensive tests:
 
-```typescript  theme={null}
+```typescript theme={null}
 test('should complete user workflow', async ({ page }) => {
   // 1. Set up test data and timeouts
   test.setTimeout(120000);
@@ -5548,7 +5561,7 @@ test('should complete user workflow', async ({ page }) => {
 
 Use appropriate wait strategies instead of fixed timeouts:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Good - Wait for specific conditions
 await page.waitForURL('**/flows/**');
 await page.waitForSelector('.react-flow__nodes', { state: 'visible' });
@@ -5565,7 +5578,7 @@ await page.waitForTimeout(5000);
 
 Implement proper error handling and cleanup:
 
-```typescript  theme={null}
+```typescript theme={null}
 test('should handle errors gracefully', async ({ page }) => {
   try {
     await flowsPage.actions.navigate(page);
@@ -5589,7 +5602,7 @@ test('should handle errors gracefully', async ({ page }) => {
 
 Prefer semantic selectors over CSS selectors:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Good - Semantic selectors
 getters = {
   createButton: (page: Page) => page.getByRole('button', { name: 'Create Flow' }),
@@ -5608,7 +5621,7 @@ getters = {
 
 Use dynamic test data to avoid conflicts:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Good - Dynamic test data
 const runVersion = Math.floor(Math.random() * 100000);
 const uniqueFlowName = `Test Flow ${Date.now()}`;
@@ -5621,7 +5634,7 @@ const flowName = 'Test Flow';
 
 Use meaningful assertions that verify business logic:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Good - Business logic assertions
 await builderPage.actions.testFlowAndWaitForSuccess(page);
 const response = await apiRequest.get(urlWithParams);
@@ -5638,7 +5651,7 @@ expect(await page.locator('.success-message').isVisible()).toBe(true);
 
 We use [Checkly](https://checklyhq.com/) to run and debug E2E tests. Checkly provides video recordings for each test run, making it easy to debug failures.
 
-```bash  theme={null}
+```bash theme={null}
 # Run tests with Checkly (includes video reporting)
 npx nx run tests-e2e:test-checkly
 ```
@@ -5650,7 +5663,7 @@ npx nx run tests-e2e:test-checkly
 
 Manual deployment is rarely needed, but you can trigger it with:
 
-```bash  theme={null}
+```bash theme={null}
 npx nx run tests-e2e:deploy-checkly
 ```
 
@@ -5693,7 +5706,7 @@ For the best local debugging experience, install the **Playwright Test for VSCod
 5. **Console Logs**: Add `console.log()` statements to track execution flow.
 6. **Manual Screenshots**: Take screenshots at critical points for visual debugging.
 
-```typescript  theme={null}
+```typescript theme={null}
 test('should debug workflow', async ({ page }) => {
   await page.goto('/flows');
   
@@ -5712,7 +5725,7 @@ test('should debug workflow', async ({ page }) => {
 
 ### Authentication Flow
 
-```typescript  theme={null}
+```typescript theme={null}
 test('should authenticate user', async ({ page }) => {
   const config = configUtils.getConfig();
   
@@ -5727,7 +5740,7 @@ test('should authenticate user', async ({ page }) => {
 
 ### Flow Creation and Testing
 
-```typescript  theme={null}
+```typescript theme={null}
 test('should create and test flow', async ({ page }) => {
   await flowsPage.actions.navigate(page);
   await flowsPage.actions.cleanupExistingFlows(page);
@@ -5745,7 +5758,7 @@ test('should create and test flow', async ({ page }) => {
 
 ### API Integration Testing
 
-```typescript  theme={null}
+```typescript theme={null}
 test('should handle webhook integration', async ({ page }) => {
   const apiRequest = await page.context().request;
   const response = await apiRequest.get(urlWithParams);
@@ -5806,7 +5819,7 @@ All `useMutation` and `useQuery` hooks should be grouped by domain/feature in a 
 
 #### ❌ Don't do
 
-```tsx  theme={null}
+```tsx theme={null}
 // UserProfile.tsx
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { updateUser, getUser } from '../api/users';
@@ -5834,7 +5847,7 @@ function UserProfile({ userId }) {
 
 #### ✅ Do
 
-```tsx  theme={null}
+```tsx theme={null}
 // features/users/lib/user-hooks.ts
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { updateUser, getUser } from '../api/users';
@@ -5879,7 +5892,7 @@ Query keys should be unique identifiers for specific queries. Avoid using boolea
 
 **Best Practice:** Group all query keys in one centralized location (inside the hooks file) for easy management and refactoring.
 
-```tsx  theme={null}
+```tsx theme={null}
 // features/users/lib/user-hooks.ts
 export const userKeys = {
   all: ['users'] as const,
@@ -5909,7 +5922,7 @@ Prefer using `invalidateQueries` over passing `refetch` functions between compon
 
 #### ❌ Don't do
 
-```tsx  theme={null}
+```tsx theme={null}
 function UserList() {
   const { data: users, refetch } = useUsers();
   
@@ -5925,7 +5938,7 @@ function UserList() {
 
 #### ✅ Do
 
-```tsx  theme={null}
+```tsx theme={null}
 // In your mutation hooks
 export function useCreateUser() {
   const queryClient = useQueryClient();
@@ -5957,7 +5970,7 @@ Use a centralized store or context to manage all dialog states in one place. Thi
 
 ### Implementation Example
 
-```tsx  theme={null}
+```tsx theme={null}
 // stores/dialog-store.ts
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
@@ -6051,25 +6064,25 @@ Source: https://www.activepieces.com/docs/handbook/engineering/playbooks/infrast
 
 
 <Warning>
-  The playbooks are private, Please ask your team for an access.
+  The playbooks are private, Please ask your team for access.
 </Warning>
 
-Our infrastructure stack consists of several key components that help us monitor, deploy, and manage our services effectively.
+Our infrastructure stack includes several key components to monitor, deploy, and manage our services effectively.
 
 ## Hosting Providers
 
 We use two main hosting providers:
 
-* **DigitalOcean**: Hosts our databases including Redis and PostgreSQL
-* **Hetzner**: Provides the machines that run our services
+* **DigitalOcean**: Hosts our databases including Redis and PostgreSQL.
+* **Hetzner**: Provides the machines that run our services.
 
-## Grafana (Loki) for Logs
+## Observability: Logs & Telemetry
 
-We use Grafana Loki to collect and search through logs from all our services in one centralized place.
+We collect logs and telemetry from all services using **HyperDX**.
 
 ## Kamal for Deployment
 
-Kamal is a deployment tool that helps us deploy our Docker containers to production with zero downtime.
+We use **Kamal** as a deployment tool to deploy our Docker containers to production with zero downtime.
 
 
 # Feature Announcement
@@ -6155,13 +6168,13 @@ The enterprise edition requires a postgres and redis instance to run, and a lice
 
 <Steps>
   <Step title="Run the dev container">
-    Follow the instructions [here](/developers/development-setup/dev-container) to run the dev container.
+    Follow the instructions [here](/build-pieces/misc/dev-container) to run the dev container.
   </Step>
 
   <Step title="Add the following env variables in `server/api/.env`">
     Pase the following env variables in `server/api/.env`
 
-    ```bash  theme={null}
+    ```bash theme={null}
     ## these variables are set to align with the .devcontainer/docker-compose.yml file
     AP_DB_TYPE=POSTGRES
     AP_DEV_PIECES="your_piece_name"
@@ -6190,7 +6203,8 @@ The enterprise edition requires a postgres and redis instance to run, and a lice
 
   <Step title="Activate Your License Key">
     After signing in, activate the license key by going to **Platform Admin -> Setup -> License Keys**
-    <img src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/activation-license-key-settings.png?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=abc2db5befaabf039899a23fd75d9470" alt="Activation License Key" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/activation-license-key-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/activation-license-key-settings.png?w=280&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=4a9e7f5cce1de95854a23131197452df 280w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/activation-license-key-settings.png?w=560&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=f3aee8442dde13d03ae2ae978b1dd2f4 560w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/activation-license-key-settings.png?w=840&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=f6638ba4fa57d7256ec79d9e82ff55aa 840w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/activation-license-key-settings.png?w=1100&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=2bce94354609c5ee9d77656dd0490648 1100w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/activation-license-key-settings.png?w=1650&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=e956a826e5d82a0e77a885ec6dfee2b0 1650w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/activation-license-key-settings.png?w=2500&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=a9c2344b6be067b18b8367440d4cbf3c 2500w" />
+
+    <img alt="Activation License Key" />
   </Step>
 </Steps>
 
@@ -6369,7 +6383,7 @@ This page is a collection of resources for interface design. It's a work in prog
 
 ## Color Palette
 
-<img src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/color-palette.png?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=9fc41c6dc7fe3184e561c8e13fe28281" alt="Color Palette" data-og-width="1600" width="1600" data-og-height="1200" height="1200" data-path="resources/color-palette.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/color-palette.png?w=280&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=a33ccfc74d4ce5e79e39cf033032c6ef 280w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/color-palette.png?w=560&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=e9fe79a3a9b323b0f98570101b6c9ce6 560w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/color-palette.png?w=840&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=91d414188c2af50c8e74ad7cff438c72 840w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/color-palette.png?w=1100&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=22bb2e62f03300c000ff796b7f5e819e 1100w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/color-palette.png?w=1650&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=4fa23d662b35a9289adbb97ad3b3565d 1650w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/color-palette.png?w=2500&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=27f2870bf469d258909a800e9e043536 2500w" />
+<img alt="Color Palette" />
 
 The palette includes:
 
@@ -6390,180 +6404,50 @@ Our frontend is built with:
 * [Interface Design (Chapters 46-53)](https://basecamp.com/gettingreal/09.1-interface-first) from Getting Real by Basecamp
 
 
-# Marketing & Content
-Source: https://www.activepieces.com/docs/handbook/teams/content
+# Teams
+Source: https://www.activepieces.com/docs/handbook/team
 
 
 
-### Mission Statement
+Meet the teams that make Activepieces magical ✨
 
-We aim to share and teach Activepieces' vision of democratized automation, helping users discover and learn how to unlock the full potential of our platform while building a vibrant community of automation enthusiasts.
-
-### People
-
-<CardGroup col={3}>
-  <Snippet file="profile/ash.mdx" />
-
-  <Snippet file="profile/kareem.mdx" />
-
-  <Snippet file="profile/ginika.mdx" />
-</CardGroup>
-
-
-# Overview
-Source: https://www.activepieces.com/docs/handbook/teams/overview
-
-
-
-<CardGroup cols={2}>
-  <Card title="Product" icon="rocket" href="/handbook/teams/product" color="#8E44AD">
-    Build workflows quickly and easily, turning ideas into working automations
+<CardGroup>
+  <Card title="Product" icon="sparkles">
+    Designing delightful user experiences to turn your ideas into powerful automations—fast.
   </Card>
 
-  <Card title="Platform" icon="layer-group" href="/handbook/teams/platform" color="#34495E">
-    Build and maintain infrastructure and management systems that power Activepieces
+  <Card title="Platform" icon="server">
+    Building the engine room that keeps Activepieces running smoothly, securely, and at scale.
   </Card>
 
-  <Card title="Pieces" icon="puzzle-piece" href="/handbook/teams/pieces" color="#F1C40F">
-    Build and manage integration pieces to connect with external services
+  <Card title="Pieces" icon="puzzle-piece">
+    Connecting everything: we create and maintain integrations with popular apps and platforms.
   </Card>
 
-  <Card title="Marketing Website & Content" icon="pencil" href="/handbook/teams/content" color="#FF6B6B">
-    Create and manage educational content, documentation, and marketing copy
-  </Card>
-
-  <Card title="Sales" icon="handshake" href="/handbook/teams/sales" color="#27AE60">
-    Grow revenue by selling Activepieces to businesses
+  <Card title="GTM" icon="megaphone">
+    Growing our community: we drive awareness, adoption, and help our users thrive.
   </Card>
 </CardGroup>
 
-### People
+## People
 
-<CardGroup col={3}>
-  <Snippet file="profile/ash.mdx" />
-
-  <Snippet file="profile/mo.mdx" />
-
-  <Snippet file="profile/abdulyki.mdx" />
-
-  <Snippet file="profile/kishan.mdx" />
-
-  <Snippet file="profile/hazem.mdx" />
-
-  <Snippet file="profile/amr.mdx" />
-
-  <Snippet file="profile/ginika.mdx" />
-
-  <Snippet file="profile/kareem.mdx" />
-
-  <Snippet file="profile/louai.mdx" />
-
-  <Snippet file="profile/david.mdx" />
-
-  <Snippet file="profile/sanket.mdx" />
-
-  <Snippet file="profile/chaker.mdx" />
-</CardGroup>
-
-
-# Pieces
-Source: https://www.activepieces.com/docs/handbook/teams/pieces
-
-
-
-### Mission Statement
-
-We build and maintain integration pieces that enable users to connect and automate across different services and platforms.
-
-### People
-
-<CardGroup col={3}>
-  <Snippet file="profile/kishan.mdx" />
-
-  <Snippet file="profile/david.mdx" />
-
-  <Snippet file="profile/sanket.mdx" />
-</CardGroup>
-
-### Roadmap
-
-#### Third Party Pieces
-
-[https://linear.app/activepieces/project/third-party-pieces-38b9d73a164c/issues](https://linear.app/activepieces/project/third-party-pieces-38b9d73a164c/issues)
-
-#### Core Pieces
-
-[https://linear.app/activepieces/project/core-pieces-3419406029ca/issues](https://linear.app/activepieces/project/core-pieces-3419406029ca/issues)
-
-#### Universal AI Pieces
-
-[https://linear.app/activepieces/project/universal-ai-pieces-92ed6f9cd12b/issues](https://linear.app/activepieces/project/universal-ai-pieces-92ed6f9cd12b/issues)
-
-
-# Platform
-Source: https://www.activepieces.com/docs/handbook/teams/platform
-
-
-
-### Mission Statement
-
-We build and maintain the infrastructure and management systems that power Activepieces, ensuring reliability, scalability, and ease of deployment for self-hosted environments.
-
-### People
-
-<CardGroup col={3}>
-  <Snippet file="profile/mo.mdx" />
-
-  <Snippet file="profile/amr.mdx" />
-
-  <Snippet file="profile/chaker.mdx" />
-</CardGroup>
-
-### Roadmap
-
-[https://linear.app/activepieces/project/self-hosting-devxp-infrastructure-cc6611474f1f/overview](https://linear.app/activepieces/project/self-hosting-devxp-infrastructure-cc6611474f1f/overview)
-
-
-# Product
-Source: https://www.activepieces.com/docs/handbook/teams/product
-
-
-
-### Mission Statement
-
-We help you build workflows quickly and easily, turning your ideas into working automations in minutes.
-
-### People
-
-<CardGroup col={3}>
-  <Snippet file="profile/ash.mdx" />
-
-  <Snippet file="profile/abdulyki.mdx" />
-
-  <Snippet file="profile/hazem.mdx" />
-
-  <Snippet file="profile/louai.mdx" />
-</CardGroup>
-
-### Roadmap
-
-[https://linear.app/activepieces/view/product-team-e839e4389a1c](https://linear.app/activepieces/view/product-team-e839e4389a1c)
-
-
-# Sales
-Source: https://www.activepieces.com/docs/handbook/teams/sales
-
-
-
-### Mission Statement
-
-We grow revenue by selling Activepieces to businesses.
-
-### People
-
-<CardGroup col={3}>
-  <Snippet file="profile/ash.mdx" />
-</CardGroup>
+| Name                       | Role & Team                   | Social Media                                                                  |
+| -------------------------- | ----------------------------- | ----------------------------------------------------------------------------- |
+| Ashraf Samhouri            | Founder                       | [LinkedIn](https://www.linkedin.com/in/ashrafsam/)                            |
+| Mohammad AbuAboud          | Founder                       | [LinkedIn](https://www.linkedin.com/in/mohammad-abuaboud/)                    |
+| Amr Elmohamady             | Platform                      | [LinkedIn](https://www.linkedin.com/in/amr-elmohamady/)                       |
+| Chaker Atallah             | Platform                      | [LinkedIn](https://www.linkedin.com/in/chaker-atallah/)                       |
+| Yasser Belatreche          | Platform                      | [LinkedIn](https://www.linkedin.com/in/yasser-belatreche-6b450620a/)          |
+| Kishan Parmar              | Pieces                        | [LinkedIn](https://www.linkedin.com/in/kishanprmr/)                           |
+| Sanket Nannaware           | Pieces                        | [LinkedIn](https://www.linkedin.com/in/sanket-nannaware-a8505a22a/)           |
+| David Anyatonwu            | Pieces                        | [LinkedIn](https://www.linkedin.com/in/david-anyatonwu-79165988/)             |
+| Hazem Adel                 | Product                       | [LinkedIn](https://www.linkedin.com/in/hazemadelkhalel/)                      |
+| Louai Boumediene           | Product                       | [LinkedIn](https://www.linkedin.com/in/louai-boumediene-018919262/)           |
+| Abdul Rahman Al Hussien    | Product                       | [LinkedIn](https://www.linkedin.com/in/abdul-rahman-al-hussien-21a074198/)    |
+| Yazeed Kamal               | Designer                      | [LinkedIn](https://www.linkedin.com/in/yazeed-kamal/)                         |
+| Ginikachukwu Soluchi Nwibe | Content                       | [LinkedIn](https://www.linkedin.com/in/ginikachukwu-soluchi-nwibe-8010a5216/) |
+| Ibrahim Abuznaid           | Growth, Automation Specialist | [LinkedIn](https://www.linkedin.com/in/ibrahim-abuznaid-2b4079264/)           |
+| Kareem Nofal               | Product & Customer Success    | [LinkedIn](https://www.linkedin.com/in/kareem-nofal-3016091a1/)               |
 
 
 # Engine
@@ -6596,7 +6480,7 @@ This page focuses on describing the main components of Activepieces and focus ma
 
 ## Components
 
-<img src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/architecture.png?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=57d042ab0821b030bd6bc166bb1cfeac" alt="Architecture" data-og-width="964" width="964" data-og-height="422" height="422" data-path="resources/architecture.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/architecture.png?w=280&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=6d7cef204f1db77b7062345ea00fb07b 280w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/architecture.png?w=560&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=3c48a4048db2360f8a66f6a82200ff63 560w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/architecture.png?w=840&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=e0da38ce0dabc6b6c5dfdf0567447e73 840w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/architecture.png?w=1100&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=9c0c5e25920cc6f2170e836755c79df8 1100w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/architecture.png?w=1650&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=112e16fe315c1ac794af3e396cacaae9 1650w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/architecture.png?w=2500&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=e9b38add32bc671e44d34496a79189db 2500w" />
+<img alt="Architecture" />
 
 **Activepieces:**
 
@@ -6655,7 +6539,7 @@ The repository is structured as a monorepo using the NX build system, with TypeS
 * `ee`: This package contains features that are only available in the paid edition.
 
 
-# Performance & Benchmarking
+# Benchmarking
 Source: https://www.activepieces.com/docs/install/architecture/performance
 
 
@@ -6729,24 +6613,24 @@ Here is how to reproduce the benchmark:
 
 1. Run Activepieces with PostgreSQL and Redis with the following environment variables:
 
-```env  theme={null}
+```env theme={null}
 AP_EXECUTION_MODE=SANDBOX_CODE_ONLY
 AP_FLOW_WORKER_CONCURRENCY=25
 ```
 
 2. Create a flow with a Catch Webhook trigger and a webhook Return Response action.
 
-   <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/simple-webhook-flow.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=3932ff8bbe1bc53cb4968458b5d617b0" alt="Simple Webhook Flow" data-og-width="719" width="719" data-og-height="847" height="847" data-path="resources/screenshots/simple-webhook-flow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/simple-webhook-flow.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=f7f3771d8d0ddf3ea65aceaf8989177f 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/simple-webhook-flow.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=5f63616909a658a7c36ccf60e376af4f 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/simple-webhook-flow.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=76c7ada115f8b4a9cc2e5ee37d5ec064 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/simple-webhook-flow.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=38ead94383a663547736a50dcd43e372 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/simple-webhook-flow.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=6609bba1e3550712e3bf97019d8b33eb 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/simple-webhook-flow.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=0b43adade90df31e0c038cec274282a9 2500w" />
+   <img alt="Simple Webhook Flow" />
 3. Get the webhook URL from the webhook trigger and append `/sync` to it.
 4. Install a benchmark tool like [ab](https://httpd.apache.org/docs/2.4/programs/ab.html):
 
-```bash  theme={null}
+```bash theme={null}
 sudo apt-get install apache2-utils
 ```
 
 5. Run the benchmark:
 
-```bash  theme={null}
+```bash theme={null}
 ab -c 25 -n 5000 http://localhost:4200/api/v1/webhooks/GMtpNwDsy4mbJe3369yzy/sync
 ```
 
@@ -6761,59 +6645,6 @@ Instance specs used to get the above results:
 <Tip>
   These benchmarks are based on running Activepieces in `SANDBOX_CODE_ONLY` mode. This does **not** represent the performance of Activepieces Cloud, which uses a different sandboxing mechanism to support multi-tenancy. For more information, see [Sandboxing](/install/architecture/workers#sandboxing).
 </Tip>
-
-
-# Stack & Tools
-Source: https://www.activepieces.com/docs/install/architecture/stack
-
-
-
-## Language
-
-Activepieces uses **Typescript** as its one and only language.
-The reason behind unifying the language is the ability for it to break data models and features into packages, which can be shared across its components (worker / frontend / backend).
-
-This enables it to focus on learning fewer tooling options and perfect them across all its packages.
-
-## Frontend
-
-* Web framework/library: [React](https://reactjs.org/)
-* Layout/components: [shadcn](https://shadcn.com/) / Tailwind
-
-## Backend
-
-* Framework: [Fastify](https://www.fastify.io/)
-* Database: [PostgreSQL](https://www.postgresql.org/)
-* Task Queuing: [Redis](https://redis.io/)
-* Task Worker: [BullMQ](https://github.com/taskforcesh/bullmq)
-
-## Testing
-
-* Unit & Integration Tests: [Jest](https://jestjs.io/)
-* E2E Test: [Playwright](https://playwright.dev/)
-
-## Additional Tools
-
-* Application monitoring: [Sentry](https://sentry.io/welcome/)
-* CI/CD: [GitHub Actions](https://github.com/features/actions) / [Depot](https://depot.dev/) / [Kamal](https://kamal-deploy.org/)
-* Containerization: [Docker](https://www.docker.com/)
-* Linter: [ESLint](https://eslint.org/)
-* Logging: [Loki](https://grafana.com/)
-* Building: [NX Monorepo](https://nx.dev/)
-
-## Adding New Tool
-
-Adding a new tool isn't a simple choice. A simple choice is one that's easy to do or undo, or one that only affects your work and not others'.
-
-We avoid adding new stuff to increase the ease of setup, which increases adoption. Having more dependencies means more moving parts and support.
-
-If you're thinking about a new tool, ask yourself these:
-
-* Is this tool open source? How can we give it to customers who use their own servers?
-* What does it fix, and why do we need it now?
-* Can we use what we already have instead?
-
-These questions only apply to required services for everyone. If this tool speeds up your own work, we don't need to think so hard.
 
 
 # Workers & Sandboxing
@@ -6839,7 +6670,7 @@ There are three types of jobs:
 
 Sandbox in Activepieces means in which environment the engine will execute the flow. There are four types of sandboxes, each with different trade-offs:
 
-<Snippet file="execution-mode.mdx" />
+<Snippet />
 
 ### No Sandboxing & V8 Sandboxing
 
@@ -6899,7 +6730,7 @@ In this mode, we use kernel namespaces to isolate everything (file system, memor
 
 Then we use the command line and to spin up the isolation with new node process, something like that.
 
-```bash  theme={null}
+```bash theme={null}
 ./isolate node path/to/flow.js --- rest of args
 ```
 
@@ -6916,6 +6747,219 @@ This mode is **Slow** and **CPU Intensive**. The reason behind this is the **col
 TBD
 
 
+# Breaking Changes
+Source: https://www.activepieces.com/docs/install/configuration/breaking-changes
+
+This list shows all versions that include breaking changes and how to upgrade.
+
+## 0.78.1
+
+### What has changed?
+
+* The Platform `Operator` role can now edit all projects.
+
+### Do you need to take action?
+
+* Only if you want to restrict Operators from having editor access to every project. Review your Operator permissions as needed.
+
+## 0.78.0
+
+### What has changed?
+
+* Templates no longer include a `usageCount` field in API responses or the database.
+
+## 0.77.0
+
+### What has changed?
+
+* For Embed Plan users: the "Use a Template" dialog no longer appears when clicking the "New Flow" button.
+* The `/flow-templates` API endpoints have been removed and replaced by `/templates`.
+* Log size configuration has changed: `AP_MAX_FILE_SIZE_MB` no longer controls flow run logs. Use `AP_MAX_FLOW_RUN_LOG_SIZE_MB` instead.
+
+### Do you need to take action?
+
+* If you are on the embed plan, update your implementation to redirect users to the `/templates` page.
+* Review the new endpoints documentation: [Templates API Schema](https://www.activepieces.com/docs/endpoints/templates/schema).
+* If you use a custom value for `AP_MAX_FILE_SIZE_MB`, be sure to also set `AP_MAX_FLOW_RUN_LOG_SIZE_MB` accordingly.
+
+## 0.75.0
+
+### What has changed?
+
+* In **development mode**, loading piece translations are now off by default. Set `AP_LOAD_TRANSLATIONS_FOR_DEV_PIECES=true` to enable.
+
+### Do you need to take action?
+
+* If you want to load translations for pieces in development mode, set `AP_LOAD_TRANSLATIONS_FOR_DEV_PIECES=true` in your environment variables.
+
+## 0.74.0
+
+### What has changed?
+
+* The default embedded database for development and lightweight deployments has changed from **SQLite3** to [**PGLite**](https://pglite.dev/) (embedded PostgreSQL).
+* The environment variable `AP_DB_TYPE=SQLITE3` is now deprecated and replaced with `AP_DB_TYPE=PGLITE`.
+* Existing SQLite databases will be automatically migrated to PGLite on first startup.
+* Templates are broken in this version. A migration issue changed template IDs, breaking API endpoints. This will be fixed in the next patch release.
+* The `aiCredits` feature per project has been removed. In the next version, it will be replaced by integration with the AI Gateway.
+
+### Do you need to take action?
+
+* **If you are using `AP_DB_TYPE=SQLITE3`:** Update your configuration to use `AP_DB_TYPE=PGLITE` instead.
+* **If you are using templates:** Wait for the next patch release to fix the template IDs.
+
+## 0.73.0
+
+### What has changed?
+
+* Major change to MCP: [Read the announcement.](https://community.activepieces.com/t/mcp-update-easier-faster-and-more-secure/11177)
+* If you have SMTP configured in the platform admin, it's no longer supported—you need to use AP\_SMTP\_ [environment variables.](https://www.activepieces.com/docs/install/configuration/environment-variables#environment-variables)
+
+### Do you need to take action?
+
+* If you are currently using MCP, review the linked announcement for important migration details and upgrade guidance.
+
+## 0.71.0
+
+### What has changed?
+
+* In separate workers setup, now they have access to Redis.
+* `AP_EXECUTION_MODE` mode `SANDBOXED` is now deprecated and replaced with `SANDBOX_PROCESS`
+* Code Copilot has been deprecated. It will be reintroduced in a different, more powerful form in the future.
+
+### When is action necessary?
+
+* If you have separate workers setup, you should make sure that workers have access to Redis.
+* If you are using `AP_EXECUTION_MODE` mode `SANDBOXED`, you should replace it with `SANDBOX_PROCESS`
+
+## 0.70.0
+
+### What has changed?
+
+* `AP_QUEUE_MODE` is now deprecated and replaced with `AP_REDIS_TYPE`
+* If you are using Sentinel Redis, you should add `AP_REDIS_TYPE` to `SENTINEL`
+
+### When is action necessary?
+
+* If you are using `AP_QUEUE_MODE`, you should replace it with `AP_REDIS_TYPE`
+* If you are using Sentinel Redis, you should add `AP_REDIS_TYPE` to `SENTINEL`
+
+## 0.69.0
+
+### What has changed?
+
+* `AP_FLOW_WORKER_CONCURRENCY` and `AP_SCHEDULED_WORKER_CONCURRENCY` are now deprecated all jobs have single queue and replaced with `AP_WORKER_CONCURRENCY`
+
+### When is action necessary?
+
+* If you are using `AP_FLOW_WORKER_CONCURRENCY` or `AP_SCHEDULED_WORKER_CONCURRENCY`, you should replace them with `AP_WORKER_CONCURRENCY`
+
+## 0.66.0
+
+### What has changed?
+
+* If you use embedding the embedding SDK, please upgrade to version 0.6.0, `embedding.dashboard.hideSidebar` used to hide the navbar above the flows table in the dashboard now it relies on `embedding.dashboard.hideFlowsPageNavbar`
+
+## 0.64.0
+
+### What has changed?
+
+* MCP management is removed from the embedding SDK.
+
+## 0.63.0
+
+### What has changed?
+
+* Replicate provider's text models have been removed.
+
+### When is action necessary?
+
+* If you are using one of Replicate's text models, you should replace it with another model from another provider.
+
+## 0.46.0
+
+### What has changed?
+
+* The UI for "Array of Properties" inputs in the pieces has been updated, particularly affecting the "Dynamic Value" toggle functionality.
+
+### When is action necessary?
+
+* No action is required for this change.
+* Your published flows will continue to work without interruption.
+* When editing existing flows that use the "Dynamic Value" toggle on "Array of Properties" inputs (such as the "files" parameter in the "Extract Structured Data" action of the "Utility AI" piece), the end user will need to remap the values again.
+* For details on the new UI implementation, refer to this [announcement](https://community.activepieces.com/t/inline-items/8964).
+
+## 0.38.6
+
+### What has changed?
+
+* Workers no longer rely on the `AP_FLOW_WORKER_CONCURRENCY` and `AP_SCHEDULED_WORKER_CONCURRENCY` environment variables. These values are now retrieved from the app server.
+
+### When is action necessary?
+
+* If `AP_CONTAINER_TYPE` is set to `WORKER` on the worker machine, and `AP_SCHEDULED_WORKER_CONCURRENCY` or `AP_FLOW_WORKER_CONCURRENCY` are set to zero on the app server, workers will stop processing the queues. To fix this, check the [Separate Worker from App](https://www.activepieces.com/docs/install/configuration/separate-workers) documentation and set the `AP_CONTAINER_TYPE` to fetch the necessary values from the app server. If no container type is set on the worker machine, this is not a breaking change.
+
+## 0.35.1
+
+### What has changed?
+
+* The 'name' attribute has been renamed to 'externalId' in the `AppConnection` entity.
+* The 'displayName' attribute has been added to the `AppConnection` entity.
+
+### When is action necessary?
+
+* If you are using the connections API, you should update the `name` attribute to `externalId` and add the `displayName` attribute.
+
+## 0.35.0
+
+### What has changed?
+
+* All branches are now converted to routers, and downgrade is not supported.
+
+## 0.33.0
+
+### What has changed?
+
+* Files from actions or triggers are now stored in the database / S3 to support retries from certain steps, and the size of files from actions is now subject to the limit of `AP_MAX_FILE_SIZE_MB`.
+* Files in triggers were previously passed as base64 encoded strings; now they are passed as file paths in the database / S3. Paused flows that have triggers from version 0.29.0 or earlier will no longer work.
+
+### When is action necessary?
+
+* If you are dealing with large files in the actions, consider increasing the `AP_MAX_FILE_SIZE_MB` to a higher value, and make sure the storage system (database/S3) has enough capacity for the files.
+
+## 0.30.0
+
+### What has changed?
+
+* `AP_SANDBOX_RUN_TIME_SECONDS` is now deprecated and replaced with `AP_FLOW_TIMEOUT_SECONDS`
+* `AP_CODE_SANDBOX_TYPE` is now deprecated and replaced with new mode in `AP_EXECUTION_MODE`
+
+### When is action necessary?
+
+* If you are using `AP_CODE_SANDBOX_TYPE` to `V8_ISOLATE`, you should switch to `AP_EXECUTION_MODE` to `SANDBOX_CODE_ONLY`
+* If you are using `AP_SANDBOX_RUN_TIME_SECONDS` to set the sandbox run time limit, you should switch to `AP_FLOW_TIMEOUT_SECONDS`
+
+## 0.28.0
+
+### What has changed?
+
+* **Project Members:**
+  * The `EXTERNAL_CUSTOMER` role has been deprecated and replaced with the `OPERATOR` role. Please check the permissions page for more details.
+  * All pending invitations will be removed.
+  * The User Invitation entity has been introduced to send invitations. You can still use the Project Member API to add roles for the user, but it requires the user to exist. If you want to send an email, use the User Invitation, and later a record in the project member will be created after the user accepts and registers an account.
+* **Authentication:**
+  * The `SIGN_UP_ENABLED` environment variable, which allowed multiple users to sign up for different platforms/projects, has been removed. It has been replaced with inviting users to the same platform/project. All old users should continue to work normally.
+
+### When is action necessary?
+
+* **Project Members:**
+
+If you use the embedding SDK or the create project member API with the `EXTERNAL_CUSTOMER` role, you should start using the `OPERATOR` role instead.
+
+* **Authentication:**
+
+Multiple platforms/projects are no longer supported in the community edition. Technically, everything is still there, but you have to hack using the API as the authentication system has now changed. If you have already created the users/platforms, they should continue to work, and no action is required.
+
+
 # Environment Variables
 Source: https://www.activepieces.com/docs/install/configuration/environment-variables
 
@@ -6928,99 +6972,85 @@ it will produce these values. </Tip>
 
 ## Environment Variables
 
-| Variable                                  | Description                                                                                                                                                                                                                                                                                                                   | Default Value                                          | Example                                                                |
-| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | ---------------------------------------------------------------------- |
-| `AP_CONFIG_PATH`                          | Optional parameter for specifying the path to store SQLite3 and local settings.                                                                                                                                                                                                                                               | `~/.activepieces`                                      |                                                                        |
-| `AP_CLOUD_AUTH_ENABLED`                   | Turn off the utilization of Activepieces oauth2 applications                                                                                                                                                                                                                                                                  | `false`                                                |                                                                        |
-| `AP_DB_TYPE`                              | The type of database to use. (POSTGRES / SQLITE3)                                                                                                                                                                                                                                                                             | `SQLITE3`                                              |                                                                        |
-| `AP_EXECUTION_MODE`                       | You can choose between 'SANDBOX\_PROCESS', 'UNSANDBOXED', 'SANDBOX\_CODE\_ONLY', 'SANDBOX\_CODE\_AND\_PROCESS' as possible values. If you decide to change this, make sure to carefully read [https://www.activepieces.com/docs/install/architecture/workers](https://www.activepieces.com/docs/install/architecture/workers) | `UNSANDBOXED`                                          |                                                                        |
-| `AP_WORKER_CONCURRENCY`                   | The number of different scheduled worker jobs can be processed in same time                                                                                                                                                                                                                                                   | `10`                                                   |                                                                        |
-| `AP_AGENTS_WORKER_CONCURRENCY`            | The number of different agents can be processed in same time                                                                                                                                                                                                                                                                  | `10`                                                   |                                                                        |
-| `AP_ENCRYPTION_KEY`                       | ❗️ Encryption key used for connections is a 32-character (16 bytes) hexadecimal key. You can generate one using the following command: `openssl rand -hex 16`.                                                                                                                                                                | None                                                   |                                                                        |
-| `AP_EXECUTION_DATA_RETENTION_DAYS`        | The number of days to retain execution data, logs and events.                                                                                                                                                                                                                                                                 | `30`                                                   |                                                                        |
-| `AP_FRONTEND_URL`                         | ❗️ Url that will be used to specify redirect url and webhook url.                                                                                                                                                                                                                                                             |                                                        |                                                                        |
-| `AP_INTERNAL_URL`                         | (BETA) Used to specify the SSO authentication URL.                                                                                                                                                                                                                                                                            | None                                                   | [https://demo.activepieces.com/api](https://demo.activepieces.com/api) |
-| `AP_JWT_SECRET`                           | ❗️ Encryption key used for generating JWT tokens is a 32-character hexadecimal key. You can generate one using the following command: `openssl rand -hex 32`.                                                                                                                                                                 | None                                                   | [https://demo.activepieces.com](https://demo.activepieces.com)         |
-| `AP_REDIS_TYPE`                           | Where to spin redis instance, either in memory (MEMORY) or in a dedicated instance (STANDALONE), or in a sentinel instance (SENTINEL)                                                                                                                                                                                         | `STANDALONE`                                           |                                                                        |
-| `AP_QUEUE_UI_ENABLED`                     | Enable the queue UI (only works with redis)                                                                                                                                                                                                                                                                                   | `true`                                                 |                                                                        |
-| `AP_QUEUE_UI_USERNAME`                    | The username for the queue UI. This is required if `AP_QUEUE_UI_ENABLED` is set to `true`.                                                                                                                                                                                                                                    | None                                                   |                                                                        |
-| `AP_QUEUE_UI_PASSWORD`                    | The password for the queue UI. This is required if `AP_QUEUE_UI_ENABLED` is set to `true`.                                                                                                                                                                                                                                    | None                                                   |                                                                        |
-| `AP_REDIS_FAILED_JOB_RETENTION_DAYS`      | The number of days to retain failed jobs in Redis.                                                                                                                                                                                                                                                                            | `30`                                                   |                                                                        |
-| `AP_REDIS_FAILED_JOB_RETENTION_MAX_COUNT` | The maximum number of failed jobs to retain in Redis.                                                                                                                                                                                                                                                                         | `2000`                                                 |                                                                        |
-| `AP_TRIGGER_DEFAULT_POLL_INTERVAL`        | The default polling interval determines how frequently the system checks for new data updates for pieces with scheduled triggers, such as new Google Contacts.                                                                                                                                                                | `5`                                                    |                                                                        |
-| `AP_PIECES_SOURCE`                        | `AP_PIECES_SOURCE`: `FILE` for local development, `DB` for database. You can find more information about it in [Setting Piece Source](#setting-piece-source) section.                                                                                                                                                         | `CLOUD_AND_DB`                                         |                                                                        |
-| `AP_PIECES_SYNC_MODE`                     | `AP_PIECES_SYNC_MODE`: None for no metadata syncing / 'OFFICIAL\_AUTO' for automatic syncing for pieces metadata from cloud                                                                                                                                                                                                   | `OFFICIAL_AUTO`                                        |                                                                        |
-| `AP_POSTGRES_DATABASE`                    | ❗️ The name of the PostgreSQL database                                                                                                                                                                                                                                                                                        | None                                                   |                                                                        |
-| `AP_POSTGRES_HOST`                        | ❗️ The hostname or IP address of the PostgreSQL server                                                                                                                                                                                                                                                                        | None                                                   |                                                                        |
-| `AP_POSTGRES_PASSWORD`                    | ❗️ The password for the PostgreSQL,  you can generate a 32-character hexadecimal key using the following command: `openssl rand -hex 32`.                                                                                                                                                                                     | None                                                   |                                                                        |
-| `AP_POSTGRES_PORT`                        | ❗️ The port number for the PostgreSQL server                                                                                                                                                                                                                                                                                  | None                                                   |                                                                        |
-| `AP_POSTGRES_USERNAME`                    | ❗️ The username for the PostgreSQL user                                                                                                                                                                                                                                                                                       | None                                                   |                                                                        |
-| `AP_POSTGRES_USE_SSL`                     | Use SSL to connect the postgres database                                                                                                                                                                                                                                                                                      | `false`                                                |                                                                        |
-| `AP_POSTGRES_SSL_CA`                      | Use SSL Certificate to connect to the postgres database                                                                                                                                                                                                                                                                       |                                                        |                                                                        |
-| `AP_POSTGRES_URL`                         | Alternatively, you can specify only the connection string (e.g postgres\://user:password\@host:5432/database) instead of providing the database, host, port, username, and password.                                                                                                                                          | None                                                   |                                                                        |
-| `AP_POSTGRES_POOL_SIZE`                   | Maximum number of clients the pool should contain for the PostgreSQL database                                                                                                                                                                                                                                                 | None                                                   |                                                                        |
-| `AP_POSTGRES_IDLE_TIMEOUT_MS`             | Sets the idle timout  pool for your PostgreSQL                                                                                                                                                                                                                                                                                | `30000`                                                |                                                                        |
-| `AP_REDIS_TYPE`                           | Type of Redis, Possible values are `DEFAULT` or `SENTINEL`.                                                                                                                                                                                                                                                                   | `30000`                                                |                                                                        |
-| `AP_REDIS_URL`                            | If a Redis connection URL is specified, all other Redis properties will be ignored.                                                                                                                                                                                                                                           | None                                                   |                                                                        |
-| `AP_REDIS_USER`                           | ❗️ Username to use when connect to redis                                                                                                                                                                                                                                                                                      | None                                                   |                                                                        |
-| `AP_REDIS_PASSWORD`                       | ❗️ Password to use when connect to redis                                                                                                                                                                                                                                                                                      | None                                                   |                                                                        |
-| `AP_REDIS_HOST`                           | ❗️ The hostname or IP address of the Redis server                                                                                                                                                                                                                                                                             | None                                                   |                                                                        |
-| `AP_REDIS_PORT`                           | ❗️ The port number for the Redis server                                                                                                                                                                                                                                                                                       | None                                                   |                                                                        |
-| `AP_REDIS_DB`                             | The Redis database index to use                                                                                                                                                                                                                                                                                               | `0`                                                    |                                                                        |
-| `AP_REDIS_USE_SSL`                        | Connect to Redis with SSL                                                                                                                                                                                                                                                                                                     | `false`                                                |                                                                        |
-| `AP_REDIS_SSL_CA_FILE`                    | The path to the CA file for the Redis server.                                                                                                                                                                                                                                                                                 | None                                                   |                                                                        |
-| `AP_REDIS_SENTINEL_HOSTS`                 | If specified, this should be a comma-separated list of `host:port` pairs for Redis Sentinels. Make sure to set `AP_REDIS_CONNECTION_MODE` to `SENTINEL`                                                                                                                                                                       | None                                                   | `sentinel-host-1:26379,sentinel-host-2:26379,sentinel-host-3:26379`    |
-| `AP_REDIS_SENTINEL_NAME`                  | The name of the master node monitored by the sentinels.                                                                                                                                                                                                                                                                       | None                                                   | `sentinel-host-1`                                                      |
-| `AP_REDIS_SENTINEL_ROLE`                  | The role to connect to, either `master` or `slave`.                                                                                                                                                                                                                                                                           | None                                                   | `master`                                                               |
-| `AP_TRIGGER_TIMEOUT_SECONDS`              | Maximum allowed runtime for a trigger to perform polling in seconds                                                                                                                                                                                                                                                           | `60`                                                   |                                                                        |
-| `AP_FLOW_TIMEOUT_SECONDS`                 | Maximum allowed runtime for a flow to run in seconds                                                                                                                                                                                                                                                                          | `600`                                                  |                                                                        |
-| `AP_AGENT_TIMEOUT_SECONDS`                | Maximum allowed runtime for an agent to run in seconds                                                                                                                                                                                                                                                                        | `600`                                                  |                                                                        |
-| `AP_SANDBOX_MEMORY_LIMIT`                 | The maximum amount of memory (in kilobytes) that a single sandboxed worker process can use. This helps prevent runaway memory usage in custom code or pieces. If not set, the default is 524288 KB (512 MB).                                                                                                                  | `524288`                                               | `1048576`                                                              |
-| `AP_SANDBOX_PROPAGATED_ENV_VARS`          | Environment variables that will be propagated to the sandboxed code. If you are using it for pieces, we strongly suggests keeping everything in the authentication object to make sure it works across AP instances.                                                                                                          | None                                                   |                                                                        |
-| `AP_TELEMETRY_ENABLED`                    | Collect telemetry information.                                                                                                                                                                                                                                                                                                | `true`                                                 |                                                                        |
-| `AP_TEMPLATES_SOURCE_URL`                 | This is the endpoint we query for templates, remove it and templates will be removed from UI                                                                                                                                                                                                                                  | `https://cloud.activepieces.com/api/v1/flow-templates` |                                                                        |
-| `AP_WEBHOOK_TIMEOUT_SECONDS`              | The default timeout for webhooks. The maximum allowed is 15 minutes. Please note that Cloudflare limits it to 30 seconds. If you are using a reverse proxy for SSL, make sure it's configured correctly.                                                                                                                      | `30`                                                   |                                                                        |
-| `AP_TRIGGER_FAILURE_THRESHOLD`            | The maximum number of consecutive trigger failures is 576 by default, which is equivalent to approximately 2 days.                                                                                                                                                                                                            | `30`                                                   |                                                                        |
-| `AP_PROJECT_RATE_LIMITER_ENABLED`         | Enforce rate limits and prevent excessive usage by a single project.                                                                                                                                                                                                                                                          | `true`                                                 |                                                                        |
-| `AP_MAX_CONCURRENT_JOBS_PER_PROJECT`      | The maximum number of active runs a project can have. This is used to enforce rate limits and prevent excessive usage by a single project.                                                                                                                                                                                    | `100`                                                  |                                                                        |
-| `AP_S3_ACCESS_KEY_ID`                     | The access key ID for your S3-compatible storage service. Not required if `AP_S3_USE_IRSA` is `true`.                                                                                                                                                                                                                         | None                                                   |                                                                        |
-| `AP_S3_SECRET_ACCESS_KEY`                 | The secret access key for your S3-compatible storage service. Not required if `AP_S3_USE_IRSA` is `true`.                                                                                                                                                                                                                     | None                                                   |                                                                        |
-| `AP_S3_BUCKET`                            | The name of the S3 bucket to use for file storage.                                                                                                                                                                                                                                                                            | None                                                   |                                                                        |
-| `AP_S3_ENDPOINT`                          | The endpoint URL for your S3-compatible storage service. Not required if `AWS_ENDPOINT_URL` is set.                                                                                                                                                                                                                           | None                                                   | `https://s3.amazonaws.com`                                             |
-| `AP_S3_REGION`                            | The region where your S3 bucket is located. Not required if `AWS_REGION` is set.                                                                                                                                                                                                                                              | None                                                   | `us-east-1`                                                            |
-| `AP_S3_USE_SIGNED_URLS`                   | It is used to route traffic to S3 directly. It should be enabled if the S3 bucket is public.                                                                                                                                                                                                                                  | None                                                   |                                                                        |
-| `AP_S3_USE_IRSA`                          | Use IAM Role for Service Accounts (IRSA) to connect to S3. When `true`, `AP_S3_ACCESS_KEY_ID` and `AP_S3_ACCESS_KEY_ID` are not required.                                                                                                                                                                                     | None                                                   | `true`                                                                 |
-| `AP_SMTP_HOST`                            | The host name for the SMTP server that activepieces uses to send emails                                                                                                                                                                                                                                                       | `None`                                                 | `mail.example.com`                                                     |
-| `AP_SMTP_PORT`                            | The port number for the SMTP server that activepieces uses to send emails                                                                                                                                                                                                                                                     | `None`                                                 | 587                                                                    |
-| `AP_SMTP_USERNAME`                        | The user name for the SMTP server that activepieces uses to send emails                                                                                                                                                                                                                                                       | `None`                                                 | [test@mail.example.com](mailto:test@mail.example.com)                  |
-| `AP_SMTP_PASSWORD`                        | The password for the SMTP server that activepieces uses to send emails                                                                                                                                                                                                                                                        | `None`                                                 | secret1234                                                             |
-| `SMTP_SENDER_EMAIL`                       | The email address from which activepieces sends emails.                                                                                                                                                                                                                                                                       | `None`                                                 | [test@mail.example.com](mailto:test@mail.example.com)                  |
-| `SMTP_SENDER_NAME`                        | The sender name activepieces uses to send emails.                                                                                                                                                                                                                                                                             |                                                        |                                                                        |
-| `AP_MAX_FILE_SIZE_MB`                     | The maximum allowed file size in megabytes for uploads including logs of flow runs. If logs exceed this size, they will be truncated which may cause flow execution issues.                                                                                                                                                   | `10`                                                   | `10`                                                                   |
-| `AP_FILE_STORAGE_LOCATION`                | The location to store files. Possible values are `DB` for storing files in the database or `S3` for storing files in an S3-compatible storage service.                                                                                                                                                                        | `DB`                                                   |                                                                        |
-| `AP_PAUSED_FLOW_TIMEOUT_DAYS`             | The maximum allowed pause duration in days for a paused flow, please note it can not exceed `AP_EXECUTION_DATA_RETENTION_DAYS`                                                                                                                                                                                                | `30`                                                   |                                                                        |
-| `AP_MAX_RECORDS_PER_TABLE`                | The maximum allowed number of records per table                                                                                                                                                                                                                                                                               | `1500`                                                 | `1500`                                                                 |
-| `AP_MAX_FIELDS_PER_TABLE`                 | The maximum allowed number of fields per table                                                                                                                                                                                                                                                                                | `15`                                                   | `15`                                                                   |
-| `AP_MAX_TABLES_PER_PROJECT`               | The maximum allowed number of tables per project                                                                                                                                                                                                                                                                              | `20`                                                   | `20`                                                                   |
-| `AP_MAX_MCPS_PER_PROJECT`                 | The maximum allowed number of mcp per project                                                                                                                                                                                                                                                                                 | `20`                                                   | `20`                                                                   |
-| `AP_ENABLE_FLOW_ON_PUBLISH`               | Whether publishing a new flow version should automatically enable the flow                                                                                                                                                                                                                                                    | `true`                                                 | `false`                                                                |
-| `AP_ISSUE_ARCHIVE_DAYS`                   | Controls the automatic archival of issues in the system. Issues that have not been updated for this many days will be automatically moved to an archived state.                                                                                                                                                               | `14`                                                   | `1`                                                                    |
-| `AP_APP_TITLE`                            | Initial title shown in the browser tab while loading the app                                                                                                                                                                                                                                                                  | `Activepieces`                                         | `Activepieces`                                                         |
-| `AP_FAVICON_URL`                          | Initial favicon shown in the browser tab while loading the app                                                                                                                                                                                                                                                                | `https://cdn.activepieces.com/brand/favicon.ico`       | `https://cdn.activepieces.com/brand/favicon.ico`                       |
-
-### OpenTelemetry Configuration
-
-Activepieces supports both standard OpenTelemetry environment variables and vendor-specific configuration for observability and tracing.
-
-#### OpenTelemetry Environment Variables
-
-| Variable                      | Description                                                 | Default Value | Example                                 |
-| ----------------------------- | ----------------------------------------------------------- | ------------- | --------------------------------------- |
-| `AP_OTEL_ENABLED`             | Enable OpenTelemetry tracing                                | `false`       | `true`                                  |
-| `OTEL_EXPORTER_OTLP_ENDPOINT` | OTLP exporter endpoint URL                                  | None          | `https://your-collector:4317/v1/traces` |
-| `OTEL_EXPORTER_OTLP_HEADERS`  | Headers for OTLP exporter (comma-separated key=value pairs) | None          | `Authorization=Bearer token`            |
-
-**Note**: Both `AP_OTEL_ENABLED` and `OTEL_EXPORTER_OTLP_ENDPOINT` must be set for OpenTelemetry to be enabled.
+| Variable                                  | Description                                                                                                                                                                                                                                                                                                                   | Default Value                                     | Example                                                                |
+| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | ---------------------------------------------------------------------- |
+| `AP_CONFIG_PATH`                          | Optional parameter for specifying the path to store PGLite database and local settings.                                                                                                                                                                                                                                       | `~/.activepieces`                                 |                                                                        |
+| `AP_CLOUD_AUTH_ENABLED`                   | Turn off the utilization of Activepieces oauth2 applications                                                                                                                                                                                                                                                                  | `false`                                           |                                                                        |
+| `AP_DB_TYPE`                              | The type of database to use. `POSTGRES` for external PostgreSQL, `PGLITE` for embedded database. **Note:** `SQLITE3` is deprecated and will be automatically migrated to `PGLITE`.                                                                                                                                            | `POSTGRES`                                        |                                                                        |
+| `AP_EXECUTION_MODE`                       | You can choose between 'SANDBOX\_PROCESS', 'UNSANDBOXED', 'SANDBOX\_CODE\_ONLY', 'SANDBOX\_CODE\_AND\_PROCESS' as possible values. If you decide to change this, make sure to carefully read [https://www.activepieces.com/docs/install/architecture/workers](https://www.activepieces.com/docs/install/architecture/workers) | `UNSANDBOXED`                                     |                                                                        |
+| `AP_WORKER_CONCURRENCY`                   | The number of different scheduled worker jobs can be processed in same time                                                                                                                                                                                                                                                   | `5`                                               |                                                                        |
+| `AP_AGENTS_WORKER_CONCURRENCY`            | The number of different agents can be processed in same time                                                                                                                                                                                                                                                                  | `10`                                              |                                                                        |
+| `AP_ENCRYPTION_KEY`                       | ❗️ Encryption key used for connections is a 32-character (16 bytes) hexadecimal key. You can generate one using the following command: `openssl rand -hex 16`.                                                                                                                                                                | None                                              |                                                                        |
+| `AP_EXECUTION_DATA_RETENTION_DAYS`        | The number of days to retain execution data, logs and events.                                                                                                                                                                                                                                                                 | `30`                                              |                                                                        |
+| `AP_FRONTEND_URL`                         | ❗️ Url that will be used to specify redirect url and webhook url.                                                                                                                                                                                                                                                             |                                                   |                                                                        |
+| `AP_INTERNAL_URL`                         | (BETA) Used to specify the SSO authentication URL.                                                                                                                                                                                                                                                                            | None                                              | [https://demo.activepieces.com/api](https://demo.activepieces.com/api) |
+| `AP_JWT_SECRET`                           | ❗️ Encryption key used for generating JWT tokens is a 32-character hexadecimal key. You can generate one using the following command: `openssl rand -hex 32`.                                                                                                                                                                 | None                                              | [https://demo.activepieces.com](https://demo.activepieces.com)         |
+| `AP_QUEUE_UI_ENABLED`                     | Enable the queue UI (only works with redis)                                                                                                                                                                                                                                                                                   | `true`                                            |                                                                        |
+| `AP_QUEUE_UI_USERNAME`                    | The username for the queue UI. This is required if `AP_QUEUE_UI_ENABLED` is set to `true`.                                                                                                                                                                                                                                    | None                                              |                                                                        |
+| `AP_QUEUE_UI_PASSWORD`                    | The password for the queue UI. This is required if `AP_QUEUE_UI_ENABLED` is set to `true`.                                                                                                                                                                                                                                    | None                                              |                                                                        |
+| `AP_REDIS_FAILED_JOB_RETENTION_DAYS`      | The number of days to retain failed jobs in Redis.                                                                                                                                                                                                                                                                            | `30`                                              |                                                                        |
+| `AP_REDIS_FAILED_JOB_RETENTION_MAX_COUNT` | The maximum number of failed jobs to retain in Redis.                                                                                                                                                                                                                                                                         | `2000`                                            |                                                                        |
+| `AP_TRIGGER_DEFAULT_POLL_INTERVAL`        | How many minutes before the system checks for new data updates for pieces with scheduled triggers, such as new Google Contacts.                                                                                                                                                                                               | `5`                                               |                                                                        |
+| `AP_PIECES_SOURCE`                        | `AP_PIECES_SOURCE`: `FILE` for local development, `DB` for database. You can find more information about it in [Setting Piece Source](#setting-piece-source) section.                                                                                                                                                         | `CLOUD_AND_DB`                                    |                                                                        |
+| `AP_PIECES_SYNC_MODE`                     | `AP_PIECES_SYNC_MODE`: None for no metadata syncing / 'OFFICIAL\_AUTO' for automatic syncing for pieces metadata from cloud                                                                                                                                                                                                   | `OFFICIAL_AUTO`                                   |                                                                        |
+| `AP_POSTGRES_DATABASE`                    | ❗️ The name of the PostgreSQL database                                                                                                                                                                                                                                                                                        | None                                              |                                                                        |
+| `AP_POSTGRES_HOST`                        | ❗️ The hostname or IP address of the PostgreSQL server                                                                                                                                                                                                                                                                        | None                                              |                                                                        |
+| `AP_POSTGRES_PASSWORD`                    | ❗️ The password for the PostgreSQL,  you can generate a 32-character hexadecimal key using the following command: `openssl rand -hex 32`.                                                                                                                                                                                     | None                                              |                                                                        |
+| `AP_POSTGRES_PORT`                        | ❗️ The port number for the PostgreSQL server                                                                                                                                                                                                                                                                                  | None                                              |                                                                        |
+| `AP_POSTGRES_USERNAME`                    | ❗️ The username for the PostgreSQL user                                                                                                                                                                                                                                                                                       | None                                              |                                                                        |
+| `AP_POSTGRES_USE_SSL`                     | Use SSL to connect the postgres database                                                                                                                                                                                                                                                                                      | `false`                                           |                                                                        |
+| `AP_POSTGRES_SSL_CA`                      | Use SSL Certificate to connect to the postgres database                                                                                                                                                                                                                                                                       |                                                   |                                                                        |
+| `AP_POSTGRES_URL`                         | Alternatively, you can specify only the connection string (e.g postgres\://user:password\@host:5432/database) instead of providing the database, host, port, username, and password.                                                                                                                                          | None                                              |                                                                        |
+| `AP_POSTGRES_POOL_SIZE`                   | Maximum number of clients the pool should contain for the PostgreSQL database                                                                                                                                                                                                                                                 | None                                              |                                                                        |
+| `AP_POSTGRES_IDLE_TIMEOUT_MS`             | Sets the idle timout  pool for your PostgreSQL                                                                                                                                                                                                                                                                                | `30000`                                           |                                                                        |
+| `AP_REDIS_TYPE`                           | Where to spin redis instance, either in memory (MEMORY) or in a dedicated instance (STANDALONE), or in a sentinel instance (SENTINEL)                                                                                                                                                                                         | `STANDALONE`                                      |                                                                        |
+| `AP_REDIS_URL`                            | If a Redis connection URL is specified, all other Redis properties will be ignored.                                                                                                                                                                                                                                           | None                                              |                                                                        |
+| `AP_REDIS_USER`                           | ❗️ Username to use when connect to redis                                                                                                                                                                                                                                                                                      | None                                              |                                                                        |
+| `AP_REDIS_PASSWORD`                       | ❗️ Password to use when connect to redis                                                                                                                                                                                                                                                                                      | None                                              |                                                                        |
+| `AP_REDIS_HOST`                           | ❗️ The hostname or IP address of the Redis server                                                                                                                                                                                                                                                                             | None                                              |                                                                        |
+| `AP_REDIS_PORT`                           | ❗️ The port number for the Redis server                                                                                                                                                                                                                                                                                       | None                                              |                                                                        |
+| `AP_REDIS_DB`                             | The Redis database index to use                                                                                                                                                                                                                                                                                               | `0`                                               |                                                                        |
+| `AP_REDIS_USE_SSL`                        | Connect to Redis with SSL                                                                                                                                                                                                                                                                                                     | `false`                                           |                                                                        |
+| `AP_REDIS_SSL_CA_FILE`                    | The path to the CA file for the Redis server.                                                                                                                                                                                                                                                                                 | None                                              |                                                                        |
+| `AP_REDIS_SENTINEL_HOSTS`                 | If specified, this should be a comma-separated list of `host:port` pairs for Redis Sentinels. Make sure to set `AP_REDIS_CONNECTION_MODE` to `SENTINEL`                                                                                                                                                                       | None                                              | `sentinel-host-1:26379,sentinel-host-2:26379,sentinel-host-3:26379`    |
+| `AP_REDIS_SENTINEL_NAME`                  | The name of the master node monitored by the sentinels.                                                                                                                                                                                                                                                                       | None                                              | `sentinel-host-1`                                                      |
+| `AP_REDIS_SENTINEL_ROLE`                  | The role to connect to, either `master` or `slave`.                                                                                                                                                                                                                                                                           | None                                              | `master`                                                               |
+| `AP_TRIGGER_TIMEOUT_SECONDS`              | Maximum allowed runtime for a trigger to perform polling in seconds                                                                                                                                                                                                                                                           | `60`                                              |                                                                        |
+| `AP_FLOW_TIMEOUT_SECONDS`                 | Maximum allowed runtime for a flow to run in seconds                                                                                                                                                                                                                                                                          | `600`                                             |                                                                        |
+| `AP_SANDBOX_MEMORY_LIMIT`                 | The maximum amount of memory (in kilobytes) that a single sandboxed engine process can use. Each engine process executes at most one execution at a time. This helps prevent runaway memory usage in custom code or pieces. If not set, the default is 1,048,576 KB (1,024 MB).                                               | `1048576`                                         | `1048576`                                                              |
+| `AP_SANDBOX_PROPAGATED_ENV_VARS`          | Environment variables that will be propagated to the sandboxed code. If you are using it for pieces, we strongly suggests keeping everything in the authentication object to make sure it works across AP instances.                                                                                                          | None                                              |                                                                        |
+| `AP_TELEMETRY_ENABLED`                    | Collect telemetry information.                                                                                                                                                                                                                                                                                                | `true`                                            |                                                                        |
+| `AP_TEMPLATES_SOURCE_URL`                 | This is the endpoint we query for templates, remove it and templates will be removed from UI                                                                                                                                                                                                                                  | `https://cloud.activepieces.com/api/v1/templates` |                                                                        |
+| `AP_WEBHOOK_TIMEOUT_SECONDS`              | The default timeout for webhooks. The maximum allowed is 15 minutes. Please note that Cloudflare limits it to 30 seconds. If you are using a reverse proxy for SSL, make sure it's configured correctly.                                                                                                                      | `30`                                              |                                                                        |
+| `AP_TRIGGER_FAILURE_THRESHOLD`            | The maximum number of consecutive trigger failures is 576 by default, which is equivalent to approximately 2 days.                                                                                                                                                                                                            | `30`                                              |                                                                        |
+| `AP_PROJECT_RATE_LIMITER_ENABLED`         | Enforce rate limits and prevent excessive usage by a single project.                                                                                                                                                                                                                                                          | `true`                                            |                                                                        |
+| `AP_MAX_CONCURRENT_JOBS_PER_PROJECT`      | The maximum number of active runs a project can have. This is used to enforce rate limits and prevent excessive usage by a single project.                                                                                                                                                                                    | `100`                                             |                                                                        |
+| `AP_S3_ACCESS_KEY_ID`                     | The access key ID for your S3-compatible storage service. Not required if `AP_S3_USE_IRSA` is `true`.                                                                                                                                                                                                                         | None                                              |                                                                        |
+| `AP_S3_SECRET_ACCESS_KEY`                 | The secret access key for your S3-compatible storage service. Not required if `AP_S3_USE_IRSA` is `true`.                                                                                                                                                                                                                     | None                                              |                                                                        |
+| `AP_S3_BUCKET`                            | The name of the S3 bucket to use for file storage.                                                                                                                                                                                                                                                                            | None                                              |                                                                        |
+| `AP_S3_ENDPOINT`                          | The endpoint URL for your S3-compatible storage service. Not required if `AWS_ENDPOINT_URL` is set.                                                                                                                                                                                                                           | None                                              | `https://s3.amazonaws.com`                                             |
+| `AP_S3_REGION`                            | The region where your S3 bucket is located. Not required if `AWS_REGION` is set.                                                                                                                                                                                                                                              | None                                              | `us-east-1`                                                            |
+| `AP_S3_USE_SIGNED_URLS`                   | It is used to route traffic to S3 directly. It should be enabled if the S3 bucket is public.                                                                                                                                                                                                                                  | None                                              |                                                                        |
+| `AP_S3_USE_IRSA`                          | Use IAM Role for Service Accounts (IRSA) to connect to S3. When `true`, `AP_S3_ACCESS_KEY_ID` and `AP_S3_ACCESS_KEY_ID` are not required.                                                                                                                                                                                     | None                                              | `true`                                                                 |
+| `AP_SMTP_HOST`                            | The host name for the SMTP server that activepieces uses to send emails                                                                                                                                                                                                                                                       | `None`                                            | `mail.example.com`                                                     |
+| `AP_SMTP_PORT`                            | The port number for the SMTP server that activepieces uses to send emails                                                                                                                                                                                                                                                     | `None`                                            | 587                                                                    |
+| `AP_SMTP_USERNAME`                        | The user name for the SMTP server that activepieces uses to send emails                                                                                                                                                                                                                                                       | `None`                                            | [test@mail.example.com](mailto:test@mail.example.com)                  |
+| `AP_SMTP_PASSWORD`                        | The password for the SMTP server that activepieces uses to send emails                                                                                                                                                                                                                                                        | `None`                                            | secret1234                                                             |
+| `AP_SMTP_SENDER_EMAIL`                    | The email address from which activepieces sends emails.                                                                                                                                                                                                                                                                       | `None`                                            | [test@mail.example.com](mailto:test@mail.example.com)                  |
+| `AP_SMTP_SENDER_NAME`                     | The sender name activepieces uses to send emails.                                                                                                                                                                                                                                                                             |                                                   |                                                                        |
+| `AP_MAX_FILE_SIZE_MB`                     | The maximum allowed file size (in megabytes) for **uploaded files** in steps or triggers. Files larger than this value will be rejected. This does **not** control flow run log size—see `AP_MAX_FLOW_RUN_LOG_SIZE_MB`.                                                                                                       | `25`                                              | `10`                                                                   |
+| `AP_MAX_FLOW_RUN_LOG_SIZE_MB`             | The maximum allowed size (in megabytes) of the **flow run logs**—this is the total combined size of all inputs and outputs for each step in a single flow run. If logs exceed this size, they will be truncated, which may cause flow execution issues.                                                                       | `25`                                              | `25`                                                                   |
+| `AP_FILE_STORAGE_LOCATION`                | The location to store files. Possible values are `DB` for storing files in the database or `S3` for storing files in an S3-compatible storage service.                                                                                                                                                                        | `DB`                                              |                                                                        |
+| `AP_PAUSED_FLOW_TIMEOUT_DAYS`             | The maximum allowed pause duration in days for a paused flow, please note it can not exceed `AP_EXECUTION_DATA_RETENTION_DAYS`                                                                                                                                                                                                | `30`                                              |                                                                        |
+| `AP_MAX_RECORDS_PER_TABLE`                | The maximum allowed number of records per table                                                                                                                                                                                                                                                                               | `10000`                                           | `10000`                                                                |
+| `AP_MAX_FIELDS_PER_TABLE`                 | The maximum allowed number of fields per table                                                                                                                                                                                                                                                                                | `100`                                             | `100`                                                                  |
+| `AP_MAX_TABLES_PER_PROJECT`               | The maximum allowed number of tables per project                                                                                                                                                                                                                                                                              | `20`                                              | `20`                                                                   |
+| `AP_MAX_MCPS_PER_PROJECT`                 | The maximum allowed number of mcp per project                                                                                                                                                                                                                                                                                 | `20`                                              | `20`                                                                   |
+| `AP_ENABLE_FLOW_ON_PUBLISH`               | Whether publishing a new flow version should automatically enable the flow                                                                                                                                                                                                                                                    | `true`                                            | `false`                                                                |
+| `AP_ISSUE_ARCHIVE_DAYS`                   | Controls the automatic archival of issues in the system. Issues that have not been updated for this many days will be automatically moved to an archived state.                                                                                                                                                               | `14`                                              | `1`                                                                    |
+| `AP_LOAD_TRANSLATIONS_FOR_DEV_PIECES`     | Load translations for dev pieces (configured via `AP_DEV_PIECES`). When disabled, dev pieces are loaded without translations. This only affects development mode.                                                                                                                                                             | `false`                                           | `true`                                                                 |
+| `AP_APP_TITLE`                            | Initial title shown in the browser tab while loading the app                                                                                                                                                                                                                                                                  | `Activepieces`                                    | `Activepieces`                                                         |
+| `AP_FAVICON_URL`                          | Initial favicon shown in the browser tab while loading the app                                                                                                                                                                                                                                                                | `https://cdn.activepieces.com/brand/favicon.ico`  | `https://cdn.activepieces.com/brand/favicon.ico`                       |
 
 <Warning>
   The frontend URL is essential for webhooks and app triggers to work. It must
@@ -7032,16 +7062,6 @@ Activepieces supports both standard OpenTelemetry environment variables and vend
 The default URL is set to the machine's IP address. To ensure proper operation, ensure that this address is accessible or specify an `AP_FRONTEND_URL` environment variable.
 
 One possible solution for this is using a service like ngrok ([https://ngrok.com/](https://ngrok.com/)), which can be used to expose the frontend port (4200) to the internet.
-
-### Setting Piece Source
-
-These are the different options for the `AP_PIECES_SOURCE` environment variable:
-
-1. `FILE`: **Only for Local Development**, this option loads pieces directly from local files. For Production, please consider using other options, as this one only supports a single version per piece.
-
-2. `DB`: This option will only load pieces that are manually installed in the database from "My Pieces" or the Admin Console in the EE Edition. Pieces are loaded from npm, which provides multiple versions per piece, making it suitable for production.
-
-You can also set AP\_PIECES\_SYNC\_MODE to `OFFICIAL_AUTO`, where it will update the metadata of pieces periodically.
 
 ### Redis Configuration
 
@@ -7090,11 +7110,11 @@ More information about architecture please visit our [architecture](../architect
 
 Activepieces is designed to be memory-intensive rather than CPU-intensive. A modest instance will suffice for most scenarios, but requirements can vary based on specific use cases.
 
-| Component    | Memory (RAM) | CPU Cores | Notes |
-| ------------ | ------------ | --------- | ----- |
-| PostgreSQL   | 1 GB         | 1         |       |
-| Redis        | 1 GB         | 1         |       |
-| Activepieces | 4 GB         | 1         |       |
+| Component    | Memory (RAM) | CPU Cores | Disk Space | Notes |
+| ------------ | ------------ | --------- | ---------- | ----- |
+| PostgreSQL   | 1 GB         | 1         | -          |       |
+| Redis        | 1 GB         | 1         | -          |       |
+| Activepieces | 4 GB         | 1         | 30 GB      |       |
 
 <Tip>
   The above recommendations are designed to meet the needs of the majority of use cases.
@@ -7158,7 +7178,7 @@ In this section, we will go through the checklist after using one of the install
       **Friendly Tip #2**: For single-tenant setups, use No Sandboxing. It is faster and does not require privileged Docker access.
     </Tip>
 
-    <Snippet file="execution-mode.mdx" />
+    <Snippet />
 
     More Information at [Sandboxing & Workers](../architecture/workers#sandboxing)
   </Accordion>
@@ -7168,10 +7188,10 @@ In this section, we will go through the checklist after using one of the install
       For licensing inquiries regarding the self-hosted enterprise edition, please reach out to `sales@activepieces.com`, as the code and Docker image are not covered by the MIT license.
     </Tip>
 
-    <Note>You can request a trial key from within the app or in the cloud by filling out the form. Alternatively, you can contact sales at [https://www.activepieces.com/sales](https://www.activepieces.com/sales).<br />Please know that when your trial runs out, all enterprise [features](/about/editions#feature-comparison) will be shut down meaning any user other than the platform admin will be deactivated, and your private pieces will be deleted, which could result in flows using them to fail.</Note>
+    <Note>You can request a trial key from within the app or in the cloud by filling out the form. Alternatively, you can contact sales at [https://www.activepieces.com/sales](https://www.activepieces.com/sales).<br />Please know that when your trial runs out, all enterprise [features](https://www.activepieces.com/pricing) will be shut down meaning any user other than the platform admin will be deactivated, and your private pieces will be deleted, which could result in flows using them to fail.</Note>
 
     <Warning>
-      Enterprise Edition only works on Fresh Installation as the database migration scripts are different from the community edition.
+      Before version 0.73.0, you cannot switch from CE to EE directly We suggest upgrading to 0.73.0 with the same edition first, then switch `AP_EDITION`.
     </Warning>
 
     <Warning>
@@ -7184,44 +7204,47 @@ In this section, we will go through the checklist after using one of the install
     2. Set the `AP_EXECUTION_MODE` to anything other than `UNSANDBOXED`, check the above section.
     3. Once your instance is up, activate the license key by going to **Platform Admin -> Setup -> License Keys**.
 
-        <img src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/activation-license-key-settings.png?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=abc2db5befaabf039899a23fd75d9470" alt="Activation License Key" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/activation-license-key-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/activation-license-key-settings.png?w=280&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=4a9e7f5cce1de95854a23131197452df 280w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/activation-license-key-settings.png?w=560&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=f3aee8442dde13d03ae2ae978b1dd2f4 560w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/activation-license-key-settings.png?w=840&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=f6638ba4fa57d7256ec79d9e82ff55aa 840w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/activation-license-key-settings.png?w=1100&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=2bce94354609c5ee9d77656dd0490648 1100w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/activation-license-key-settings.png?w=1650&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=e956a826e5d82a0e77a885ec6dfee2b0 1650w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/activation-license-key-settings.png?w=2500&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=a9c2344b6be067b18b8367440d4cbf3c 2500w" />
+       <img alt="Activation License Key" />
   </Accordion>
 
   <Accordion title="Setup HTTPS" icon="lock">
     Setting up HTTPS is highly recommended because many services require webhook URLs to be secure (HTTPS). This helps prevent potential errors.
 
-    To set up SSL, you can use any reverse proxy. For a step-by-step guide, check out our example using [Nginx](./setup-ssl).
-  </Accordion>
-
-  <Accordion title="Configure S3 (Optional)" icon="cloud">
-    Run logs and files are stored in the database by default, but you can switch to S3 later without any migration; for most cases, the database is enough.
-
-    It's recommended to start with the database and switch to S3 if needed. After switching, expired files in the database will be deleted, and everything will be stored in S3. No manual migration is needed.
-
-    Configure the following environment variables:
-
-    * `AP_S3_ACCESS_KEY_ID`
-    * `AP_S3_SECRET_ACCESS_KEY`
-    * `AP_S3_ENDPOINT`
-    * `AP_S3_BUCKET`
-    * `AP_S3_REGION`
-    * `AP_MAX_FILE_SIZE_MB`
-    * `AP_FILE_STORAGE_LOCATION` (set to `S3`)
-    * `AP_S3_USE_SIGNED_URLS`
-
-    <Tip>
-      **Friendly Tip #1**: If the S3 bucket supports signed URLs but needs to be accessible over a public network, you can set `AP_S3_USE_SIGNED_URLS` to `true` to route traffic directly to S3 and reduce heavy traffic on your API server.
-    </Tip>
+    To set up SSL, you can use any reverse proxy. For a step-by-step guide, check out our example using [Nginx](../guides/setup-ssl).
   </Accordion>
 
   <Accordion title="Troubleshooting (Optional)" icon="wrench">
-    If you encounter any issues, check out our [Troubleshooting](./troubleshooting) guide.
+    If you encounter any issues, check out our [Troubleshooting](../troubleshooting/websocket-issues) guide.
   </Accordion>
 </AccordionGroup>
 
 
-# Separate Workers from App
-Source: https://www.activepieces.com/docs/install/configuration/separate-workers
+# Telemetry
+Source: https://www.activepieces.com/docs/install/configuration/telemetry
+
+
+
+# Why Does Activepieces need data?
+
+As a self-hosted product, gathering usage metrics and insights can be difficult for us. However, these analytics are essential in helping us understand key behaviors and delivering a higher quality experience that meets your needs.
+
+To ensure we can continue to improve our product, we have decided to track certain basic behaviors and metrics that are vital for understanding the usage of Activepieces.
+
+We have implemented a minimal tracking plan and provide a detailed list of the metrics collected in a separate section.
+
+# What Does Activepieces Collect?
+
+We value transparency in data collection and assure you that we do not collect any personal information. The following events are currently being collected:
+
+[Exact Code](https://github.com/activepieces/activepieces/blob/main/packages/shared/src/lib/common/telemetry.ts)
+
+# Opting out?
+
+To opt out, set the environment variable `AP_TELEMETRY_ENABLED=false`
+
+
+# How to Separate Workers
+Source: https://www.activepieces.com/docs/install/guides/separate-workers
 
 
 
@@ -7238,7 +7261,7 @@ Benefits of separating workers from the main application (APP):
     2. Run the command: `npm run workers token`.
     3. When prompted, enter the JWT secret (this should be the same as the `AP_JWT_SECRET` used for the app server).
     4. The generated token will be displayed in your terminal, copy it and use it in the next step.
-       <img src="https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/worker-token.png?fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=385159c04bb0a8add654f66efcf801ca" alt="Workers Token" data-og-width="1596" width="1596" data-og-height="186" height="186" data-path="resources/worker-token.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/worker-token.png?w=280&fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=e9afc1093ed882c2688803ec9963534c 280w, https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/worker-token.png?w=560&fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=579f183a1795dcc0c8f6f8c598b02781 560w, https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/worker-token.png?w=840&fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=7431803b6afe1b8929ad90010f60dc8d 840w, https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/worker-token.png?w=1100&fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=0598c948aa2735fabff5df63d6d2aea1 1100w, https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/worker-token.png?w=1650&fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=1cc59fff58465f5edac646a3f3ced201 1650w, https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/worker-token.png?w=2500&fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=8c72dc84eb5a54a7b53a756ea9e45727 2500w" />
+       <img alt="Workers Token" />
   </Step>
 
   <Step title="Configure Environment Variables">
@@ -7254,7 +7277,7 @@ Benefits of separating workers from the main application (APP):
 
     Add the following volume mapping to your docker configuration:
 
-    ```yaml  theme={null}
+    ```yaml theme={null}
     volumes:
       - <your path>:/usr/src/app/cache
     ```
@@ -7268,7 +7291,8 @@ Benefits of separating workers from the main application (APP):
 
   <Step title="Verify Worker Operation">
     Verify that the workers are visible in the Platform Admin Console under Infra -> Workers.
-    <img src="https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/workers.png?fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=0156f35f93278e16e9a0f461cf3a2282" alt="Workers Infrastructure" data-og-width="1846" width="1846" data-og-height="1002" height="1002" data-path="resources/workers.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/workers.png?w=280&fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=df0e889fac81ad27560d0eb42dd99c1b 280w, https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/workers.png?w=560&fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=686369eaa1c9d299c185dd90e66fe250 560w, https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/workers.png?w=840&fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=91dba13ef1a08af7feb9873afe874aab 840w, https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/workers.png?w=1100&fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=e826bd5fc83a83484a8bf18791eff058 1100w, https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/workers.png?w=1650&fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=60e0e99f7f110057e2b353a3dcc59bec 1650w, https://mintcdn.com/activepieces/GuwRiJeBZ7P6V9LF/resources/workers.png?w=2500&fit=max&auto=format&n=GuwRiJeBZ7P6V9LF&q=85&s=04fb7d7d3172c787634fcce9e1fae150 2500w" />
+
+    <img alt="Workers Infrastructure" />
   </Step>
 
   <Step title="Configure App Container Type">
@@ -7277,8 +7301,8 @@ Benefits of separating workers from the main application (APP):
 </Steps>
 
 
-# Setup App Webhooks
-Source: https://www.activepieces.com/docs/install/configuration/setup-app-webhooks
+# How to Setup App Webhooks
+Source: https://www.activepieces.com/docs/install/guides/setup-app-webhooks
 
 
 
@@ -7310,8 +7334,56 @@ Certain apps like Slack and Square only support one webhook per OAuth2 app. This
    * `app_mention`
 
 
+# How to Setup OpenTelemetry
+Source: https://www.activepieces.com/docs/install/guides/setup-opentelemetry
+
+Configure OpenTelemetry for observability and tracing
+
+Activepieces supports both standard OpenTelemetry environment variables and vendor-specific configuration for observability and tracing.
+
+## Environment Variables
+
+| Variable                      | Description                                                 | Default Value | Example                                 |
+| ----------------------------- | ----------------------------------------------------------- | ------------- | --------------------------------------- |
+| `AP_OTEL_ENABLED`             | Enable OpenTelemetry tracing                                | `false`       | `true`                                  |
+| `OTEL_EXPORTER_OTLP_ENDPOINT` | OTLP exporter endpoint URL                                  | None          | `https://your-collector:4317/v1/traces` |
+| `OTEL_EXPORTER_OTLP_HEADERS`  | Headers for OTLP exporter (comma-separated key=value pairs) | None          | `Authorization=Bearer token`            |
+
+<Note>
+  Both `AP_OTEL_ENABLED` and `OTEL_EXPORTER_OTLP_ENDPOINT` must be set for OpenTelemetry to be enabled.
+</Note>
+
+
+# How to Setup S3
+Source: https://www.activepieces.com/docs/install/guides/setup-s3
+
+Configure S3-compatible storage for files and run logs
+
+Run logs and files are stored in the database by default, but you can switch to S3 later without any migration; for most cases, the database is enough.
+
+It's recommended to start with the database and switch to S3 if needed. After switching, expired files in the database will be deleted, and everything will be stored in S3. No manual migration is needed.
+
+## Environment Variables
+
+| Variable                   | Description                                                                                                                                   | Default Value | Example                    |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | -------------------------- |
+| `AP_FILE_STORAGE_LOCATION` | The location to store files. Set to `S3` for S3 storage.                                                                                      | `DB`          | `S3`                       |
+| `AP_S3_ACCESS_KEY_ID`      | The access key ID for your S3-compatible storage service. Not required if `AP_S3_USE_IRSA` is `true`.                                         | None          |                            |
+| `AP_S3_SECRET_ACCESS_KEY`  | The secret access key for your S3-compatible storage service. Not required if `AP_S3_USE_IRSA` is `true`.                                     | None          |                            |
+| `AP_S3_BUCKET`             | The name of the S3 bucket to use for file storage.                                                                                            | None          |                            |
+| `AP_S3_ENDPOINT`           | The endpoint URL for your S3-compatible storage service. Not required if `AWS_ENDPOINT_URL` is set.                                           | None          | `https://s3.amazonaws.com` |
+| `AP_S3_REGION`             | The region where your S3 bucket is located. Not required if `AWS_REGION` is set.                                                              | None          | `us-east-1`                |
+| `AP_S3_USE_SIGNED_URLS`    | It is used to route traffic to S3 directly. It should be enabled if the S3 bucket is public.                                                  | None          | `true`                     |
+| `AP_S3_USE_IRSA`           | Use IAM Role for Service Accounts (IRSA) to connect to S3. When `true`, `AP_S3_ACCESS_KEY_ID` and `AP_S3_SECRET_ACCESS_KEY` are not required. | None          | `true`                     |
+| `AP_MAX_FILE_SIZE_MB`      | The maximum allowed file size in megabytes for uploads including logs of flow runs.                                                           | `10`          | `10`                       |
+
+<Tip>
+  **Friendly Tip #1**: If the S3 bucket supports signed URLs but needs to be accessible over a public network, you can set `AP_S3_USE_SIGNED_URLS` to `true` to route traffic directly to S3 and reduce heavy traffic on your API server.
+</Tip>
+
+
 # Setup HTTPS
-Source: https://www.activepieces.com/docs/install/configuration/setup-ssl
+Source: https://www.activepieces.com/docs/install/guides/setup-ssl
 
 
 
@@ -7319,7 +7391,7 @@ To enable SSL, you can use a reverse proxy. In this case, we will use Nginx as t
 
 ## Install Nginx
 
-```bash  theme={null}
+```bash theme={null}
 sudo apt-get install nginx
 ```
 
@@ -7335,11 +7407,11 @@ Add the certificate to the following paths: `/etc/key.pem` and `/etc/cert.pem`
 
 ## Setup Nginx
 
-```bash  theme={null}
+```bash theme={null}
 sudo nano /etc/nginx/sites-available/default
 ```
 
-```bash  theme={null}
+```bash theme={null}
 server {
     listen 80;
     listen [::]:80;
@@ -7371,102 +7443,13 @@ server {
 
 ## Restart Nginx
 
-```bash  theme={null}
+```bash theme={null}
 sudo systemctl restart nginx
 ```
 
 ## Test
 
 Visit your domain and you should see your application running with SSL.
-
-
-# Troubleshooting
-Source: https://www.activepieces.com/docs/install/configuration/troubleshooting
-
-
-
-### Websocket Connection Issues
-
-If you're experiencing issues with websocket connections, it's likely due to incorrect proxy configuration. Common symptoms include:
-
-* Test Flow button not working
-* Test step in flows not working
-* Real-time updates not showing
-
-To resolve these issues:
-
-1. Ensure your reverse proxy is properly configured for websocket connections
-2. Check our [Setup HTTPS](./setup-ssl) guide for correct configuration examples
-3. Some browser block http websocket connections, please setup ssl to resolve this issue.
-
-### Runs with Internal Errors or Scheduling Issues
-
-If you're experiencing issues with flow runs showing internal errors or scheduling problems:
-
-[BullBoard dashboard](/handbook/engineering/playbooks/bullboard)
-
-### Truncated logs
-
-If you see `(truncated)` in the flow run logs in your flow runs, it means that the logs have exceeded the maximum allowed file size. You can increase the `AP_MAX_FILE_SIZE_MB` environment variable to a higher value to resolve this issue.
-
-### Reset Password
-
-If you forgot your password on self hosted instance, you can reset it using the following steps:
-
-**Postgres**
-
-1. **Locate PostgreSQL Docker Container**:
-   * Use a command like `docker ps` to find the PostgreSQL container.
-
-2. **Access the Container**:
-   * Use SSH to access the PostgreSQL Docker container.
-   ```bash  theme={null}
-   docker exec -it POSTGRES_CONTAINER_ID /bin/bash
-   ```
-
-3. **Open the PostgreSQL Console**:
-   * Inside the container, open the PostgreSQL console with the `psql` command.
-   ```bash  theme={null}
-   psql -U postgres
-   ```
-
-4. **Connect to the ActivePieces Database**:
-   * Connect to the ActivePieces database.
-   ```sql  theme={null}
-   \c activepieces
-   ```
-
-5. **Create a Secure Password**:
-   * Use a tool like [bcrypt-generator.com](https://bcrypt-generator.com/) to generate a new secure password, number of rounds is 10.
-
-6. **Update Your Password**:
-   * Run the following SQL query within the PostgreSQL console, replacing `HASH_PASSWORD` with your new password and `YOUR_EMAIL_ADDRESS` with your email.
-   ```sql  theme={null}
-   UPDATE public.user_identity SET password='HASH_PASSWORD' WHERE email='YOUR_EMAIL_ADDRESS';
-   ```
-
-**SQLite3**
-
-1. **Open the SQLite3 Shell**:
-   * Access the SQLite3 database by opening the SQLite3 shell. Replace "database.db" with the actual name of your SQLite3 database file if it's different.
-   ```bash  theme={null}
-   sqlite3 ~/.activepieces/database.sqlite
-   ```
-
-2. **Create a Secure Password**:
-   * Use a tool like [bcrypt-generator.com](https://bcrypt-generator.com/) to generate a new secure password, number of rounds is 10.
-
-3. **Reset Your Password**:
-   * Once inside the SQLite3 shell, you can update your password with an SQL query. Replace `HASH_PASSWORD` with your new password and `YOUR_EMAIL_ADDRESS` with your email.
-   ```sql  theme={null}
-   UPDATE user_identity SET password = 'HASH_PASSWORD' WHERE email = 'YOUR_EMAIL_ADDRESS';
-   ```
-
-4. **Exit the SQLite3 Shell**:
-   * After making the changes, exit the SQLite3 shell by typing:
-   ```bash  theme={null}
-   .exit
-   ```
 
 
 # AWS (Pulumi)
@@ -7489,7 +7472,7 @@ The template will deploy the latest Activepieces image that's available on [Dock
 
 Or, if you're currently using an S3 bucket to maintain your Pulumi state, you can scaffold and deploy Activepieces direct from Docker Hub using the template below in just few commands:
 
-```bash  theme={null}
+```bash theme={null}
 $ mkdir deploy-activepieces && cd deploy-activepieces 
 $ pulumi new https://github.com/activepieces/activepieces/tree/main/deploy/pulumi
 $ pulumi up
@@ -7518,7 +7501,7 @@ If you're new to Pulumi then read on to get your local dev environment setup to 
 3. [Install and configure Pulumi](https://www.pulumi.com/docs/clouds/aws/get-started/begin/).
 4. Create an S3 bucket which we'll use to maintain the state of all the various service we'll provision for our Activepieces deployment:
 
-```bash  theme={null}
+```bash theme={null}
 aws s3api create-bucket --bucket pulumi-state --region us-east-1
 ```
 
@@ -7529,13 +7512,13 @@ aws s3api create-bucket --bucket pulumi-state --region us-east-1
 
 5. Login to the Pulumi backend:
 
-```bash  theme={null}
+```bash theme={null}
 pulumi login s3://pulumi-state?region=us-east-1
 ```
 
 6. Next we're going to use the Activepieces Pulumi deploy template to create a new project, a stack in that project and then kick off the deploy:
 
-```bash  theme={null}
+```bash theme={null}
 $ mkdir deploy-activepieces && cd deploy-activepieces 
 $ pulumi new https://github.com/activepieces/activepieces/tree/main/deploy/pulumi
 ```
@@ -7550,13 +7533,13 @@ This step will prompt you to create you stack and to populate a series of config
 
 7. Nothing left to do now but kick off the deploy:
 
-```bash  theme={null}
+```bash theme={null}
 pulumi up
 ```
 
 8. Now choose `yes` when prompted. Once the deployment has finished, you should see a bunch of Pulumi output variables that look like the following:
 
-```json  theme={null}
+```json theme={null}
     _: {
         activePiecesUrl: "http://<alb name & id>.us-east-1.elb.amazonaws.com"
         activepiecesEnv: [
@@ -7577,13 +7560,13 @@ To deploy a locally built image instead of using the official Docker Hub image, 
 
 1. Clone the Activepieces repo locally:
 
-```bash  theme={null}
+```bash theme={null}
 git clone https://github.com/activepieces/activepieces
 ```
 
 2. Move into the `deploy/pulumi` folder & install the necessary npm packages:
 
-```bash  theme={null}
+```bash theme={null}
 cd deploy/pulumi && npm i
 ```
 
@@ -7591,7 +7574,7 @@ cd deploy/pulumi && npm i
    These files already contain all the configurations we need to create our environments. Feel free to have a look & edit the values as you see fit.
    Lets continue by creating a development stack that uses the existing `Pulumi.activepieces-dev.yaml` file & kick off the deploy.
 
-```bash  theme={null}
+```bash theme={null}
 pulumi stack init activepieces-dev && pulumi up
 ```
 
@@ -7635,7 +7618,7 @@ You need to have [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing
 
 Pull the Activepieces Docker image and run the container with the following command:
 
-```bash  theme={null}
+```bash theme={null}
 docker run -d -p 8080:80 -v ~/.activepieces:/root/.activepieces -e AP_REDIS_TYPE=MEMORY -e AP_DB_TYPE=SQLITE3 -e AP_FRONTEND_URL="http://localhost:8080" activepieces/activepieces:latest
 ```
 
@@ -7648,13 +7631,13 @@ docker run -d -p 8080:80 -v ~/.activepieces:/root/.activepieces -e AP_REDIS_TYPE
 1. Install ngrok
 2. Run the following command:
 
-```bash  theme={null}
+```bash theme={null}
 ngrok http 8080
 ```
 
 3. Replace `AP_FRONTEND_URL` environment variable in the command line above.
 
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=85cc8d40c4ad2ede8e8ad83fcb6e6b42" alt="Ngrok" data-og-width="961" width="961" data-og-height="509" height="509" data-path="resources/screenshots/docker-ngrok.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=3c787f690f4700e8d2ac0115b86554e5 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=ce675bfcc849cfe97d79fe6defdb69bc 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=d5f1a1530820f43048b1d6110bb88d50 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=0d917892d782b38aaabcd94d2d3b0c09 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=ff5dfdbbed7b1b24ec65fe48e826ad20 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=09c2e4f0aacdcc60602ed8f3137e908d 2500w" />
+<img alt="Ngrok" />
 
 ## Upgrade
 
@@ -7665,26 +7648,26 @@ Please follow the steps below:
 Before proceeding with the upgrade, it is always a good practice to back up your Activepieces data to avoid any potential data loss during the update process.
 
 1. **Stop the Current Activepieces Container:** If your Activepieces container is running, stop it using the following command:
-   ```bash  theme={null}
+   ```bash theme={null}
    docker stop activepieces_container_name
    ```
 
 2. **Backup Activepieces Data Directory:** By default, Activepieces data is stored in the `~/.activepieces` directory on your host machine. Create a backup of this directory to a safe location using the following command:
-   ```bash  theme={null}
+   ```bash theme={null}
    cp -r ~/.activepieces ~/.activepieces_backup
    ```
 
 ### Step 2: Update the Docker Image
 
 1. **Pull the Latest Activepieces Docker Image:** Run the following command to pull the latest Activepieces Docker image from Docker Hub:
-   ```bash  theme={null}
+   ```bash theme={null}
    docker pull activepieces/activepieces:latest
    ```
 
 ### Step 3: Remove the Existing Activepieces Container
 
 1. **Stop and Remove the Current Activepieces Container:** If your Activepieces container is running, stop and remove it using the following commands:
-   ```bash  theme={null}
+   ```bash theme={null}
    docker stop activepieces_container_name
    docker rm activepieces_container_name
    ```
@@ -7693,7 +7676,7 @@ Before proceeding with the upgrade, it is always a good practice to back up your
 
 Now, run the updated Activepieces container with the latest image using the same command you used during the initial setup. Be sure to replace `activepieces_container_name` with the desired name for your new container.
 
-```bash  theme={null}
+```bash theme={null}
 docker run -d -p 8080:80 -v ~/.activepieces:/root/.activepieces -e AP_REDIS_TYPE=MEMORY -e AP_DB_TYPE=SQLITE3 -e AP_FRONTEND_URL="http://localhost:8080" --name activepieces_container_name activepieces/activepieces:latest
 ```
 
@@ -7717,13 +7700,13 @@ You need to have [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing
 
 Use the command line to clone Activepieces repository:
 
-```bash  theme={null}
+```bash theme={null}
 git clone https://github.com/activepieces/activepieces.git
 ```
 
 **2. Go to the repository folder.**
 
-```bash  theme={null}
+```bash theme={null}
 cd activepieces
 ```
 
@@ -7731,7 +7714,7 @@ cd activepieces
 
 Run the following command from the command prompt / terminal
 
-```bash  theme={null}
+```bash theme={null}
 sh tools/deploy.sh
 ```
 
@@ -7745,7 +7728,7 @@ sh tools/deploy.sh
   Please note that "docker-compose" (with a dash) is an outdated version of Docker Compose and it will not work properly. We strongly recommend downloading and installing version 2 from the [here](https://docs.docker.com/compose/install/) to use Docker Compose.
 </Warning>
 
-```bash  theme={null}
+```bash theme={null}
 docker compose -p activepieces up
 ```
 
@@ -7758,13 +7741,13 @@ docker compose -p activepieces up
 1. Install ngrok
 2. Run the following command:
 
-```bash  theme={null}
+```bash theme={null}
 ngrok http 8080
 ```
 
 3. Replace `AP_FRONTEND_URL` environment variable in `.env` with the ngrok url.
 
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=85cc8d40c4ad2ede8e8ad83fcb6e6b42" alt="Ngrok" data-og-width="961" width="961" data-og-height="509" height="509" data-path="resources/screenshots/docker-ngrok.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=3c787f690f4700e8d2ac0115b86554e5 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=ce675bfcc849cfe97d79fe6defdb69bc 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=d5f1a1530820f43048b1d6110bb88d50 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=0d917892d782b38aaabcd94d2d3b0c09 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=ff5dfdbbed7b1b24ec65fe48e826ad20 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/docker-ngrok.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=09c2e4f0aacdcc60602ed8f3137e908d 2500w" />
+<img alt="Ngrok" />
 
 <Warning>
   When deploying for production, ensure that you update the database credentials and properly set the environment variables.
@@ -7780,7 +7763,7 @@ To upgrade to new versions, which are installed using docker compose, perform th
 
 **1. Run the update script**
 
-```bash  theme={null}
+```bash theme={null}
 sh tools/update.sh
 ```
 
@@ -7788,20 +7771,20 @@ sh tools/update.sh
 
 **1. Pull the new docker compose file**
 
-```bash  theme={null}
+```bash theme={null}
 git pull
 ```
 
 **2. Pull the new images**
 
-```bash  theme={null}
+```bash theme={null}
 docker compose pull
 ```
 
 **3. Review changelog for breaking changes**
 
 <Warning>
-  Please review breaking changes in the [changelog](../../about/breaking-changes).
+  Please review breaking changes in the [changelog](../configuration/breaking-changes).
 </Warning>
 
 **4. Run the updated docker images**
@@ -7832,7 +7815,7 @@ Run Activepieces with Easypanel 1-Click Install
 
 Easypanel is a modern server control panel. If you [run Easypanel](https://easypanel.io/docs) on your server, you can deploy Activepieces with 1 click on it.
 
-<a target="_blank" rel="noopener" href="https://easypanel.io/docs/templates/activepieces">![Deploy to Easypanel](https://easypanel.io/img/deploy-on-easypanel-40.svg)</a>
+<a href="https://easypanel.io/docs/templates/activepieces">![Deploy to Easypanel](https://easypanel.io/img/deploy-on-easypanel-40.svg)</a>
 
 ## Instructions
 
@@ -7904,7 +7887,7 @@ The Helm chart supports using external PostgreSQL and Redis services instead of 
 
 To use an external PostgreSQL instance:
 
-```yaml  theme={null}
+```yaml theme={null}
 postgresql:
   enabled: false  # Disable Bitnami PostgreSQL subchart
   host: "your-postgres-host.example.com"
@@ -7922,7 +7905,7 @@ postgresql:
 
 Alternatively, you can use a connection URL:
 
-```yaml  theme={null}
+```yaml theme={null}
 postgresql:
   enabled: false
   url: "postgresql://user:password@host:5432/database?sslmode=require"
@@ -7932,7 +7915,7 @@ postgresql:
 
 To use an external Redis instance:
 
-```yaml  theme={null}
+```yaml theme={null}
 redis:
   enabled: false  # Disable Bitnami Redis subchart
   host: "your-redis-host.example.com"
@@ -7949,7 +7932,7 @@ redis:
 
 Alternatively, you can use a connection URL:
 
-```yaml  theme={null}
+```yaml theme={null}
 redis:
   enabled: false
   url: "redis://:password@host:6379/0"
@@ -7959,7 +7942,7 @@ redis:
 
 For better security, you can reference passwords from existing Kubernetes secrets (useful with External Secrets Operator or Sealed Secrets):
 
-```yaml  theme={null}
+```yaml theme={null}
 postgresql:
   enabled: false
   host: "your-postgres-host.example.com"
@@ -7982,14 +7965,14 @@ redis:
 
 ### 1. Clone the Repository
 
-```bash  theme={null}
+```bash theme={null}
 git clone https://github.com/activepieces/activepieces.git
 cd activepieces
 ```
 
 ### 2. Install Dependencies
 
-```bash  theme={null}
+```bash theme={null}
 helm dependency update
 ```
 
@@ -8000,13 +7983,13 @@ The Helm chart has sensible defaults for required values while leaving the optio
 
 ### 4. Install Activepieces
 
-```bash  theme={null}
+```bash theme={null}
 helm install activepieces deploy/activepieces-helm -f my-values.yaml
 ```
 
 ### 5. Verify Installation
 
-```bash  theme={null}
+```bash theme={null}
 # Check deployment status
 kubectl get pods
 kubectl get services
@@ -8020,13 +8003,13 @@ kubectl get services
 * [ ] Configure proper ingress with TLS
 * [ ] Set appropriate resource limits
 * [ ] Configure persistent storage
-* [ ] Choose appropriate [execution mode](/docs/install/architecture/workers) for your security requirements
-* [ ] Review [environment variables](/docs/install/configuration/environment-variables) for advanced configuration
-* [ ] Consider using a [separate workers](/docs/install/configuration/separate-workers) setup for better availability and security
+* [ ] Choose appropriate [execution mode](/install/architecture/workers) for your security requirements
+* [ ] Review [environment variables](/install/configuration/environment-variables) for advanced configuration
+* [ ] Consider using a [separate workers](/install/guides/separate-workers) setup for better availability and security
 
 ## Upgrading
 
-```bash  theme={null}
+```bash theme={null}
 # Update dependencies
 helm dependency update
 
@@ -8048,7 +8031,7 @@ kubectl rollout status deployment/activepieces
 
 ### Useful Commands
 
-```bash  theme={null}
+```bash theme={null}
 # View logs
 kubectl logs deployment/activepieces -f
 
@@ -8069,7 +8052,7 @@ Activepieces supports three editions:
 
 Set the edition in your values file:
 
-```yaml  theme={null}
+```yaml theme={null}
 activepieces:
   edition: "ce"  # or "ee" for Enterprise Edition
 ```
@@ -8078,15 +8061,15 @@ For Enterprise Edition features and licensing, visit [activepieces.com](https://
 
 ## Environment Variables
 
-For a complete list of configuration options, see the [Environment Variables](/docs/install/configuration/environment-variables) documentation. Most environment variables can be configured through the Helm values file under the `activepieces` section.
+For a complete list of configuration options, see the [Environment Variables](/install/configuration/environment-variables) documentation. Most environment variables can be configured through the Helm values file under the `activepieces` section.
 
 ## Execution Modes
 
-Understanding execution modes is crucial for security and performance. See the [Workers & Sandboxing](/docs/install/architecture/workers) guide to choose the right mode for your deployment.
+Understanding execution modes is crucial for security and performance. See the [Workers & Sandboxing](/install/architecture/workers) guide to choose the right mode for your deployment.
 
 ## Uninstalling
 
-```bash  theme={null}
+```bash theme={null}
 helm uninstall activepieces
 
 # Clean up persistent volumes (optional)
@@ -8101,8 +8084,8 @@ Deploy Activepieces to the cloud in minutes using Railway's one-click template
 
 Railway simplifies your infrastructure stack from servers to observability with a single, scalable, easy-to-use platform. With Railway's one-click deployment, you can get Activepieces up and running in minutes without managing servers, databases, or infrastructure.
 
-<a href="https://railway.com/deploy/kGEO1J" target="_blank">
-  <img alt="Deploy on Railway" src="https://railway.app/button.svg" />
+<a href="https://railway.com/deploy/kGEO1J">
+  <img alt="Deploy on Railway" />
 </a>
 
 ## What Gets Deployed
@@ -8139,13 +8122,13 @@ Railway allows you to configure Activepieces through environment variables. You 
 #### Execution Mode
 
 Configure the execution mode for security and performance:
-See the [Workers & Sandboxing](/docs/install/architecture/workers) documentation for details on each mode.
+See the [Workers & Sandboxing](/install/architecture/workers) documentation for details on each mode.
 
 #### Other Important Variables
 
 * `AP_TELEMETRY_ENABLED`: Enable/disable telemetry (default: `false`)
 
-For a complete list of all available environment variables, see the [Environment Variables](/docs/install/configuration/environment-variables) documentation.
+For a complete list of all available environment variables, see the [Environment Variables](/install/configuration/environment-variables) documentation.
 
 ## Custom Domain Setup
 
@@ -8157,13 +8140,13 @@ Railway supports custom domains with automatic SSL:
 4. Update `AP_FRONTEND_URL` environment variable to match your custom domain
 5. Railway will automatically provision SSL certificates
 
-For more details on SSL configuration, see the [Setup SSL](/docs/install/configuration/setup-ssl) guide.
+For more details on SSL configuration, see the [Setup SSL](/install/guides/setup-ssl) guide.
 
 ## Production Considerations
 
 Before deploying to production, review these important points:
 
-* [ ] Review [Security Practices](/docs/security/practices) documentation
+* [ ] Review [Security Practices](/admin-guide/security/practices) documentation
 * [ ] Configure `AP_WORKER_CONCURRENCY` based on your workload and hardware resources
 * [ ] Ensure PostgreSQL backups are configured in Railway
 * [ ] Consider database scaling options in Railway
@@ -8182,7 +8165,7 @@ To upgrade to a new version of Activepieces on Railway:
 4. Railway will pull the latest Activepieces image and redeploy
 
 <Warning>
-  Before upgrading, review the [Breaking Changes](/docs/about/breaking-changes) documentation to ensure compatibility with your flows and configuration.
+  Before upgrading, review the [Breaking Changes](/install/configuration/breaking-changes) documentation to ensure compatibility with your flows and configuration.
 </Warning>
 
 ## Next Steps
@@ -8190,16 +8173,16 @@ To upgrade to a new version of Activepieces on Railway:
 After deploying Activepieces on Railway:
 
 1. **Access your instance** using the Railway-provided URL
-2. **Create your first flow** - see [Building Flows](/docs/flows/building-flows)
-3. **Configure webhooks** - see [Setup App Webhooks](/docs/install/configuration/setup-app-webhooks)
+2. **Create your first flow** - see [Building Flows](/flows/building-flows)
+3. **Configure webhooks** - see [Setup App Webhooks](/install/guides/setup-app-webhooks)
 4. **Explore pieces** - browse available integrations in the piece library
 
 ## Additional Resources
 
-* [Troubleshooting](/docs/install/configuration/troubleshooting): Troubleshooting guide
-* [Configuration Guide](/docs/install/configuration/overview): Comprehensive configuration documentation
-* [Environment Variables](/docs/install/configuration/environment-variables): Complete list of configuration options
-* [Architecture Overview](/docs/install/architecture/overview): Understand Activepieces architecture
+* [Troubleshooting](/install/troubleshooting/websocket-issues): Troubleshooting guide
+* [Configuration Guide](/install/configuration/overview): Comprehensive configuration documentation
+* [Environment Variables](/install/configuration/environment-variables): Complete list of configuration options
+* [Architecture Overview](/install/architecture/overview): Understand Activepieces architecture
 * [Railway Documentation](https://docs.railway.app/): Official Railway platform documentation
 
 
@@ -8213,32 +8196,32 @@ Activepieces Community Edition can be deployed using **Docker**, **Docker Compos
 <Tip>
   Community Edition is **free** and **open source**.
 
-  You can read the difference between the editions [here](../about/editions).
+  You can read the difference between the editions [here](https://www.activepieces.com/pricing).
 </Tip>
 
 ## Recommended Options
 
-<CardGroup cols={2}>
-  <Card title="Docker (Fastest)" icon="docker" color="#248fe0" href="./options/docker">
+<CardGroup>
+  <Card title="Docker (Fastest)" icon="docker" href="./options/docker">
     Deploy Activepieces as a single Docker container using the SQLite database.
   </Card>
 
-  <Card title="Docker Compose" icon="layer-group" color="#00FFFF" href="./options/docker-compose">
+  <Card title="Docker Compose" icon="layer-group" href="./options/docker-compose">
     Deploy Activepieces with **Redis** and **PostgreSQL** setup.
   </Card>
 </CardGroup>
 
 ## Other Options
 
-<CardGroup cols={2}>
-  <Card title="Helm" icon="ship" color="#ff9900" href="./options/helm">
+<CardGroup>
+  <Card title="Helm" icon="ship" href="./options/helm">
     Install on Kubernetes with Helm.
   </Card>
 
   <Card
     title="Railway"
     icon={
-  <img src="https://railway.com/brand/logo-light.png" alt="Railway" width="24" height="24" />
+<img src="https://railway.com/brand/logo-light.png" alt="Railway" width="24" height="24" />
 }
     href="./options/railway"
   >
@@ -8248,44 +8231,44 @@ Activepieces Community Edition can be deployed using **Docker**, **Docker Compos
   <Card
     title="Easypanel"
     icon={
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245 245">
-        <g clip-path="url(#a)">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M242.291 110.378a15.002 15.002 0 0 0 0-15l-48.077-83.272a15.002 15.002 0 0 0-12.991-7.5H85.07a15 15 0 0 0-12.99 7.5L41.071 65.812a.015.015 0 0 0-.013.008L2.462 132.673a15 15 0 0 0 0 15l48.077 83.272a15 15 0 0 0 12.99 7.5h96.154a15.002 15.002 0 0 0 12.991-7.5l31.007-53.706c.005 0 .01-.003.013-.007l38.598-66.854Zm-38.611 66.861 3.265-5.655a15.002 15.002 0 0 0 0-15l-48.077-83.272a14.999 14.999 0 0 0-12.99-7.5H41.072l-3.265 5.656a15 15 0 0 0 0 15l48.077 83.271a15 15 0 0 0 12.99 7.5H203.68Z" fill="url(#b)" />
-        </g>
-        <defs>
-          <linearGradient id="b" x1="188.72" y1="6.614" x2="56.032" y2="236.437" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#12CD87" />
-            <stop offset="1" stop-color="#12ABCD" />
-          </linearGradient>
-          <clipPath id="a">
-            <path fill="#fff" d="M0 0h245v245H0z" />
-          </clipPath>
-        </defs>
-      </svg>
-      }
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245 245">
+      <g clip-path="url(#a)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M242.291 110.378a15.002 15.002 0 0 0 0-15l-48.077-83.272a15.002 15.002 0 0 0-12.991-7.5H85.07a15 15 0 0 0-12.99 7.5L41.071 65.812a.015.015 0 0 0-.013.008L2.462 132.673a15 15 0 0 0 0 15l48.077 83.272a15 15 0 0 0 12.99 7.5h96.154a15.002 15.002 0 0 0 12.991-7.5l31.007-53.706c.005 0 .01-.003.013-.007l38.598-66.854Zm-38.611 66.861 3.265-5.655a15.002 15.002 0 0 0 0-15l-48.077-83.272a14.999 14.999 0 0 0-12.99-7.5H41.072l-3.265 5.656a15 15 0 0 0 0 15l48.077 83.271a15 15 0 0 0 12.99 7.5H203.68Z" fill="url(#b)" />
+      </g>
+      <defs>
+        <linearGradient id="b" x1="188.72" y1="6.614" x2="56.032" y2="236.437" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#12CD87" />
+          <stop offset="1" stop-color="#12ABCD" />
+        </linearGradient>
+        <clipPath id="a">
+          <path fill="#fff" d="M0 0h245v245H0z" />
+        </clipPath>
+      </defs>
+    </svg>
+    }
     href="./options/easypanel"
   >
     1-Click Install with Easypanel template, maintained by the community.
   </Card>
 
-  <Card title="Elestio" icon="cloud" color="#ff9900" href="./options/elestio">
+  <Card title="Elestio" icon="cloud" href="./options/elestio">
     1-Click Install on Elestio.
   </Card>
 
-  <Card title="AWS (Pulumi)" icon="aws" color="#ff9900" href="./options/aws">
+  <Card title="AWS (Pulumi)" icon="aws" href="./options/aws">
     Install on AWS with Pulumi.
   </Card>
 
-  <Card title="GCP" icon="cloud" color="#4385f5" href="./options/gcp">
+  <Card title="GCP" icon="cloud" href="./options/gcp">
     Install on GCP as a VM template.
   </Card>
 
   <Card
     title="PikaPods"
     icon={
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 402.2 402.2">
-  <path d="M393 277c-3 7-8 9-15 9H66c-27 0-49-18-55-45a56 56 0 0 1 54-68c7 0 12-5 12-11s-5-11-12-11H22c-7 0-12-5-12-11 0-7 4-12 12-12h44c18 1 33 15 33 33 1 19-14 34-33 35-18 0-31 12-34 30-2 16 9 35 31 37h37c5-46 26-83 65-110 22-15 47-23 74-24l-4 16c-4 30 19 58 49 61l8 1c6-1 11-6 10-12 0-6-5-10-11-10-14-1-24-7-30-20-7-12-4-27 5-37s24-14 36-10c13 5 22 17 23 31l2 4c33 23 55 54 63 93l3 17v14m-57-59c0-6-5-11-11-11s-12 5-12 11 6 12 12 12c6-1 11-6 11-12" 
-        fill="#4daf4e"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 402.2 402.2">
+<path d="M393 277c-3 7-8 9-15 9H66c-27 0-49-18-55-45a56 56 0 0 1 54-68c7 0 12-5 12-11s-5-11-12-11H22c-7 0-12-5-12-11 0-7 4-12 12-12h44c18 1 33 15 33 33 1 19-14 34-33 35-18 0-31 12-34 30-2 16 9 35 31 37h37c5-46 26-83 65-110 22-15 47-23 74-24l-4 16c-4 30 19 58 49 61l8 1c6-1 11-6 10-12 0-6-5-10-11-10-14-1-24-7-30-20-7-12-4-27 5-37s24-14 36-10c13 5 22 17 23 31l2 4c33 23 55 54 63 93l3 17v14m-57-59c0-6-5-11-11-11s-12 5-12 11 6 12 12 12c6-1 11-6 11-12" 
+      fill="#4daf4e"/>
 </svg>
 }
     href="https://www.pikapods.com/pods?run=activepieces"
@@ -8300,11 +8283,11 @@ Activepieces Community Edition can be deployed using **Docker**, **Docker Compos
   <Card
     title="Zeabur"
     icon={
-  <svg viewBox="0 0 294 229" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M113.865 144.888H293.087V229H0V144.888H82.388L195.822 84.112H0V0H293.087V84.112L113.865 144.888Z" fill="black"/>
-    <path d="M194.847 0H0V84.112H194.847V0Z" fill="#6300FF"/>
-    <path d="M293.065 144.888H114.772V229H293.065V144.888Z" fill="#FF4400"/>
-  </svg>
+<svg viewBox="0 0 294 229" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M113.865 144.888H293.087V229H0V144.888H82.388L195.822 84.112H0V0H293.087V84.112L113.865 144.888Z" fill="black"/>
+  <path d="M194.847 0H0V84.112H194.847V0Z" fill="#6300FF"/>
+  <path d="M293.065 144.888H114.772V229H293.065V144.888Z" fill="#FF4400"/>
+</svg>
 }
     href="https://zeabur.com/templates/LNTQDF"
   >
@@ -8314,476 +8297,226 @@ Activepieces Community Edition can be deployed using **Docker**, **Docker Compos
 
 ## Cloud Edition
 
-<CardGroup cols={2}>
-  <Card title="Activepieces Cloud" icon="cloud" color="##5155D7" href="https://cloud.activepieces.com/">
+<CardGroup>
+  <Card title="Activepieces Cloud" icon="cloud" href="https://cloud.activepieces.com/">
     This is the fastest option.
   </Card>
 </CardGroup>
 
 
-# Connection Deleted
-Source: https://www.activepieces.com/docs/operations/audit-logs/connection-deleted
+# Queues Dashboard
+Source: https://www.activepieces.com/docs/install/troubleshooting/bullboard
 
 
 
+The Bull Board is a tool that allows you to check issues with scheduling and internal flow runs issues.
 
+![BullBoard Overview](https://raw.githubusercontent.com/felixmosh/bull-board/master/screenshots/overview.png)
 
-# Connection Upserted
-Source: https://www.activepieces.com/docs/operations/audit-logs/connection-upserted
+## Setup BullBoard
 
+To enable the Bull Board UI in your self-hosted installation:
 
+1. Define these environment variables:
+   * `AP_QUEUE_UI_ENABLED`: Set to `true`
+   * `AP_QUEUE_UI_USERNAME`: Set your desired username
+   * `AP_QUEUE_UI_PASSWORD`: Set your desired password
 
-
-
-# Flow Created
-Source: https://www.activepieces.com/docs/operations/audit-logs/flow-created
-
-
-
-
-
-# Flow Deleted
-Source: https://www.activepieces.com/docs/operations/audit-logs/flow-deleted
-
-
-
-
-
-# Flow Run Finished
-Source: https://www.activepieces.com/docs/operations/audit-logs/flow-run-finished
-
-
-
-
-
-# Flow Run Started
-Source: https://www.activepieces.com/docs/operations/audit-logs/flow-run-started
-
-
-
-
-
-# Flow Updated
-Source: https://www.activepieces.com/docs/operations/audit-logs/flow-updated
-
-
-
-
-
-# Folder Created
-Source: https://www.activepieces.com/docs/operations/audit-logs/folder-created
-
-
-
-
-
-# Folder Deleted
-Source: https://www.activepieces.com/docs/operations/audit-logs/folder-deleted
-
-
-
-
-
-# Folder Updated
-Source: https://www.activepieces.com/docs/operations/audit-logs/folder-updated
-
-
-
-
-
-# Overview
-Source: https://www.activepieces.com/docs/operations/audit-logs/overview
-
-
-
-<Snippet file="enterprise-feature.mdx" />
-
-This table in admin console contains all application events. We are constantly adding new events, so there is no better place to see the events defined in the code than [here](https://github.com/activepieces/activepieces/blob/main/packages/ee/shared/src/lib/audit-events/index.ts).
-
-<img src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/audit-logs.png?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=9742354a878008a7027bf6a93cd3544f" alt="Audit Logs" data-og-width="2640" width="2640" data-og-height="1440" height="1440" data-path="resources/screenshots/audit-logs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/audit-logs.png?w=280&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=69e1dec6e069dbca6b095afe10e533d0 280w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/audit-logs.png?w=560&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=5d03c631c71645dfcfbf4fc0a0e50866 560w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/audit-logs.png?w=840&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=2e4ee413867694fd57edc0105be670c9 840w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/audit-logs.png?w=1100&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=554b247d1d8087bbc44bc38d6abc5601 1100w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/audit-logs.png?w=1650&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=d7916cfcf18f713dc6eebaa64837bac9 1650w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/screenshots/audit-logs.png?w=2500&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=ed699e8ec97c29317069229c1de7db03 2500w" />
-
-
-# Signing Key Created
-Source: https://www.activepieces.com/docs/operations/audit-logs/signing-key-created
-
-
-
-
-
-# User Email Verified
-Source: https://www.activepieces.com/docs/operations/audit-logs/user-email-verified
-
-
-
-
-
-# User Password Reset
-Source: https://www.activepieces.com/docs/operations/audit-logs/user-password-reset
-
-
-
-
-
-# User Signed In
-Source: https://www.activepieces.com/docs/operations/audit-logs/user-signed-in
-
-
-
-
-
-# User Signed Up
-Source: https://www.activepieces.com/docs/operations/audit-logs/user-signed-up
-
-
-
-
-
-# Environments & Releases
-Source: https://www.activepieces.com/docs/operations/git-sync
-
-
-
-<Snippet file="enterprise-feature.mdx" />
-
-The Project Releases feature allows for the creation of an **external backup**, **environments**, and maintaining a **version history** from the Git Repository or an existing project.
-
-### How It Works
-
-This example explains how to set up development and production environments using either Git repositories or existing projects as sources. The setup can be extended to include multiple environments, Git branches, or projects based on your needs.
-
-### Requirements
-
-You have to enable the project releases feature in the Settings -> Environments.
-
-## Git-Sync
-
-**Requirements**
-
-* Empty Git Repository
-* Two Projects in Activepieces: one for Development and one for Production
-
-### 1. Push Flow to Repository
-
-After making changes in the flow:
-
-1. Click the 3-dot menu near the flow name
-2. Select "Push to Git"
-3. Add commit message and push
-
-### 2. Deleting Flows
-
-When you delete a flow from a project configured with Git sync (Release from Git), it will automatically delete the flow from the repository.
-
-## Project-Sync
-
-### 1. **Initialize Projects**
-
-* Create a source project (e.g., Development)
-* Create a target project (e.g., Production)
-
-### 2. **Develop**
-
-* Build and test your flows in the source project
-* When ready, sync changes to the target project using releases
-
-## Creating a Release
-
-<Note>
-  Credentials are not synced automatically. Create identical credentials with the same names in both environments manually.
-</Note>
-
-You can create a release in two ways:
-
-1. **From Git Repository**:
-   * Click "Create Release" and select "From Git"
-
-2. **From Existing Project**:
-   * Click "Create Release" and select "From Project"
-   * Choose the source project to sync from
-
-For both methods:
-
-* Review the changes between environments
-* Choose the operations you want to perform:
-  * **Update Existing Flows**: Synchronize flows that exist in both environments
-  * **Delete Missing Flows**: Remove flows that are no longer present in the source
-  * **Create New Flows**: Add new flows found in the source
-* Confirm to create the release
-
-### Important Notes
-
-* Enabled flows will be updated and republished (failed republishes become drafts)
-* New flows start in a disabled state
-
-### Approval Workflow (Optional)
-
-To manage your approval workflow, you can use Git by creating two branches: development and production. Then, you can use standard pull requests as the approval step.
-
-### GitHub action
-
-This GitHub action can be used to automatically pull changes upon merging.
+2. Access the UI at `/api/ui`
 
 <Tip>
-  Don't forget to replace `INSTANCE_URL` and `PROJECT_ID`, and add `ACTIVEPIECES_API_KEY` to the secrets.
+  For cloud installations, please ask your team for access to the internal documentation that explains how to access BullBoard.
 </Tip>
 
-```yml  theme={null}
-name: Auto Deploy
-on:
-  workflow_dispatch:
-  push:
-    branches: [ "main" ]
-jobs:
-  run-pull:
-    runs-on: ubuntu-latest
-    steps:
-      - name: deploy
-        # Use GitHub secrets
-        run: |
-          curl --request POST \
-            --url {INSTANCE_URL}/api/v1/git-repos/pull \
-            --header 'Authorization: Bearer ${{ secrets.ACTIVEPIECES_API_KEY }}' \
-            --header 'Content-Type: application/json' \
-            --data '{
-              "projectId": "{PROJECT_ID}"
-            }'
+## Queue Overview
+
+We have one main queue called `workerJobs` that handles all job types. Each job has a `jobType` field that tells us what it does:
+
+### Low Priority Jobs
+
+#### RENEW\_WEBHOOK
+
+Renews webhooks for pieces that have webhooks channel with expiration like Google Sheets.
+
+#### EXECUTE\_POLLING
+
+Checks external services for new data at regular intervals.
+
+### Medium Priority Jobs
+
+#### EXECUTE\_FLOW
+
+Runs flows when they're triggered.
+
+#### EXECUTE\_WEBHOOK
+
+Processes incoming webhook requests that start flow runs.
+
+#### DELAYED\_FLOW
+
+Runs flows that were scheduled for later, like paused flows or delayed executions.
+
+### High Priority Jobs
+
+#### EXECUTE\_PROPERTY
+
+Loads dynamic properties for pieces that need them at runtime.
+
+#### EXECUTE\_EXTRACT\_PIECE\_INFORMATION
+
+Gets information about pieces when they're being installed or set up.
+
+#### EXECUTE\_VALIDATION
+
+Checks that flow settings, inputs, or data are correct before running.
+
+#### EXECUTE\_TRIGGER\_HOOK
+
+Runs special logic before or after triggers fire.
+
+<Info>
+  Failed jobs are not normal and need to be checked right away to find and fix what's causing them.
+  They require immediate investigation as they represent executions that failed for unknown reasons that could indicate system issues.
+</Info>
+
+<Tip>
+  Delayed jobs represent either paused flows scheduled for future execution, upcoming polling job iterations, or jobs being retried due to temporary failures. They indicate an internal system error occurred and the job will be retried automatically according to the backoff policy.
+</Tip>
+
+
+# Reset Password
+Source: https://www.activepieces.com/docs/install/troubleshooting/reset-password
+
+How to reset your password on a self-hosted instance
+
+If you forgot your password on a self-hosted instance, you can reset it using the following steps:
+
+1. **Locate PostgreSQL Docker Container**:
+   * Use a command like `docker ps` to find the PostgreSQL container.
+
+2. **Access the Container**:
+   * Use SSH to access the PostgreSQL Docker container.
+   ```bash theme={null}
+   docker exec -it POSTGRES_CONTAINER_ID /bin/bash
+   ```
+
+3. **Open the PostgreSQL Console**:
+   * Inside the container, open the PostgreSQL console with the `psql` command.
+   ```bash theme={null}
+   psql -U postgres
+   ```
+
+4. **Connect to the ActivePieces Database**:
+   * Connect to the ActivePieces database.
+   ```sql theme={null}
+   \c activepieces
+   ```
+
+5. **Create a Secure Password**:
+   * Use a tool like [bcrypt-generator.com](https://bcrypt-generator.com/) to generate a new secure password, number of rounds is 10.
+
+6. **Update Your Password**:
+   * Run the following SQL query within the PostgreSQL console, replacing `HASH_PASSWORD` with your new password and `YOUR_EMAIL_ADDRESS` with your email.
+   ```sql theme={null}
+   UPDATE public.user_identity SET password='HASH_PASSWORD' WHERE email='YOUR_EMAIL_ADDRESS';
+   ```
+
+
+# Truncated Logs
+Source: https://www.activepieces.com/docs/install/troubleshooting/truncated-logs
+
+Understanding and resolving truncated flow run logs
+
+## Overview
+
+If you see `(truncated)` in the flow run logs, it means the logs have exceeded the maximum allowed file size.
+
+## How It Works
+
+There is a current limitation where the log file of a run cannot grow past a certain size. When this limit is reached, the engine automatically removes the largest keys in the JSON output until it fits within the allowed size.
+
+<Note>
+  **This does not affect flow execution.** Your flow will continue to run normally even when logs are truncated.
+</Note>
+
+## Known Limitation
+
+There is one known issue with truncated logs:
+
+If you **pause** a flow, then **resume** it, and the resumed step references data from a truncated step, the flow will fail because the referenced data is no longer available in the logs.
+
+## Solution
+
+You can increase the `AP_MAX_FILE_SIZE_MB` environment variable to a higher value to allow larger log files:
+
+```bash theme={null}
+AP_MAX_FILE_SIZE_MB=50
 ```
 
+<Info>
+  **Future Improvement:** There is a planned enhancement to change this limit from per-log-file to per-step, which will provide more granular control over log sizes. This feature is currently in the planning phase.
+</Info>
 
-# Project Permissions
-Source: https://www.activepieces.com/docs/security/permissions
 
-Documentation on project permissions in Activepieces
+# Websocket Issues
+Source: https://www.activepieces.com/docs/install/troubleshooting/websocket-issues
 
-Activepieces utilizes Role-Based Access Control (RBAC) for managing permissions within projects. Each project consists of multiple flows and users, with each user assigned specific roles that define their actions within the project.
+Troubleshoot websocket connection problems
 
-The supported roles in Activepieces are:
+If you're experiencing issues with websocket connections, it's likely due to incorrect proxy configuration. Common symptoms include:
 
-* **Admin:**
-  * View Flows
-  * Edit Flows
-  * Publish/Turn On and Off Flows
-  * View Runs
-  * Retry Runs
-  * View Issues
-  * Resolve Issues
-  * View Connections
-  * Edit Connections
-  * View Project Members
-  * Add/Remove Project Members
-  * Configure Git Repo to Sync Flows With
-  * Push/Pull Flows to/from Git Repo
+* Test Flow button not working
+* Test step in flows not working
+* Real-time updates not showing
 
-* **Editor:**
-  * View Flows
-  * Edit Flows
-  * Publish/Turn On and Off Flows
-  * View Runs
-  * Retry Runs
-  * View Connections
-  * Edit Connections
-  * View Issues
-  * Resolve Issues
-  * View Project Members
+To resolve these issues:
 
-* **Operator:**
-  * Publish/Turn On and Off Flows
-  * View Runs
-  * Retry Runs
-  * View Issues
-  * View Connections
-  * Edit Connections
-  * View Project Members
+1. Ensure your reverse proxy is properly configured for websocket connections
+2. Check our [Setup HTTPS](/install/guides/setup-ssl) guide for correct configuration examples
+3. Some browsers block http websocket connections, please setup SSL to resolve this issue.
 
-* **Viewer:**
-  * View Flows
-  * View Runs
-  * View Connections
-  * View Project Members
-  * View Issues
 
+# Welcome
+Source: https://www.activepieces.com/docs/overview/welcome
 
-# Security & Data Practices
-Source: https://www.activepieces.com/docs/security/practices
+Your friendliest open source all-in-one automation tool, designed to be extensible.
 
-We prioritize security and follow these practices to keep information safe.
+<CardGroup>
+  <Card href="/flows/building-flows" title="Learn Concepts" icon="shapes">
+    Learn how to work with Activepieces
+  </Card>
 
-## External Systems Credentials
+  <Card href="https://www.activepieces.com/pieces" title="Pieces" icon="puzzle-piece">
+    Browse available pieces
+  </Card>
 
-**Storing Credentials**
+  <Card href="/install/overview" title="Install" icon="server">
+    Learn how to install Activepieces
+  </Card>
 
-All credentials are stored with 256-bit encryption keys, and there is no API to retrieve them for the user. They are sent only during processing, after which access is revoked from the engine.
+  <Card href="/build-pieces/building-pieces/development-setup" title="Build pieces" icon="code">
+    How to Build Pieces and Contribute
+  </Card>
+</CardGroup>
 
-**Data Masking**
+# 🔥 Why Activepieces is Different:
 
-We implement a robust data masking mechanism where third-party credentials or any sensitive information are systematically censored within the logs, guaranteeing that sensitive information is never stored or documented.
+* **💖 Loved by Everyone**: Intuitive interface and great experience for both technical and non-technical users with a quick learning curve.
 
-**OAuth2**
+<img alt="" />
 
-Integrations with third parties are always done using OAuth2, with a limited number of scopes when third-party support allows.
+* **🌐 Open Ecosystem:** All pieces are open source and available on npmjs.com, **60% of the pieces are contributed by the community**.
 
-## Vulnerability Disclosure
+* **🛠️  Pieces are written in Typescript**: Pieces are npm packages in TypeScript, offering full customization with the best developer experience, including **hot reloading** for **local** piece development on your machine. 😎
 
-Activepieces is an open-source project that welcomes contributors to test and report security issues.
+<img alt="" />
 
-For detailed information about our security policy, please refer to our GitHub Security Policy at: [https://github.com/activepieces/activepieces/security/policy](https://github.com/activepieces/activepieces/security/policy)
+* **🤖 AI-Ready**: Native AI pieces and agents are built into Activepieces. Integrating AI into your flows is seamless and simple—experiment with popular providers, or quickly create custom agents using our easy-to-use AI SDK.
 
-## Access and Authentication
+* **🏢 Enterprise-Ready**: Developers set up the tools, and anyone in the organization can use the no-code builder. Full customization from branding to control.
 
-**Role-Based Access Control (RBAC)**
+* **🔒 Secure by Design**: Self-hosted and network-gapped for maximum security and control over your data.
 
-To manage user access, we utilize Role-Based Access Control (RBAC). Team admins assign roles to users, granting them specific permissions to access and interact with projects, folders, and resources. RBAC allows for fine-grained control, enabling administrators to define and enforce access policies based on user roles.
-
-**Single Sign-On (SSO)**
-
-Implementing Single Sign-On (SSO) serves as a pivotal component of our security strategy. SSO streamlines user authentication by allowing them to access Activepieces with a single set of credentials. This not only enhances user convenience but also strengthens security by reducing the potential attack surface associated with managing multiple login credentials.
-
-**Audit Logs**
-
-We maintain comprehensive audit logs to track and monitor all access activities within Activepieces. This includes user interactions, system changes, and other relevant events. Our meticulous logging helps identify security threats and ensures transparency and accountability in our security measures.
-
-**Password Policy Enforcement**
-
-Users log in to Activepieces using a password known only to them. Activepieces enforces password length and complexity standards. Passwords are not stored; instead, only a secure hash of the password is stored in the database. For more information.
-
-## Privacy & Data
-
-**Supported Cloud Regions**
-
-Presently, our cloud services are available in Germany as the supported data region.
-
-We have plans to expand to additional regions in the near future.
-If you opt for **self-hosting**, the available regions will depend on where you choose to host.
-
-**Policy**
-
-To better understand how we handle your data and prioritize your privacy, please take a moment to review our [Privacy Policy](https://www.activepieces.com/privacy). This document outlines in detail the measures we take to safeguard your information and the principles guiding our approach to privacy and data protection.
-
-
-# Single Sign-On
-Source: https://www.activepieces.com/docs/security/sso
-
-
-
-<Snippet file="enterprise-feature.mdx" />
-
-## Enforcing SSO
-
-You can enforce SSO by specifying the domain. As part of the SSO configuration, you have the option to disable email and user login. This ensures that all authentication is routed through the designated SSO provider.
-
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/sso.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=36f19b78f46392cf25a2dd8656d3d90f" alt="SSO" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/sso.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/sso.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=f4bd7b419d0fadb83d39982bb589e86c 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/sso.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=65958659542c0230d5ca1891617dd2f6 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/sso.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=03431f73ceb60577d149ecb8f7de8c83 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/sso.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=a79b56ec6c0f486748f9c87b74ebf501 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/sso.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=96f01414d4221451bcd4b5576f600cff 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/sso.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=55b6a93c69bfee31129c6bdea8235112 2500w" />
-
-## Supported SSO Providers
-
-You can enable various SSO providers, including Google and GitHub, to integrate with your system by configuring SSO.
-
-### Google:
-
-<Steps>
-  <Step title="Go to the Developer Console" />
-
-  <Step title="Create an OAuth2 App" />
-
-  <Step title="Copy the Redirect URL from the Configure Screen into the Google App" />
-
-  <Step title="Fill in the Client ID & Client Secret in Activepieces" />
-
-  <Step title="Click Finish" />
-</Steps>
-
-### GitHub:
-
-<Steps>
-  <Step title="Go to the GitHub Developer Settings" />
-
-  <Step title="Create a new OAuth App" />
-
-  <Step title="Fill in the App details and click Register a new application" />
-
-  <Step title="Use the following Redirect URL from the Configure Screen" />
-
-  <Step title="Fill in the Homepage URL with the URL of your application" />
-
-  <Step title="Click Register application" />
-
-  <Step title="Copy the Client ID and Client Secret and fill them in Activepieces" />
-
-  <Step title="Click Finish" />
-</Steps>
-
-### SAML with OKTA:
-
-<Steps>
-  <Step title="Go to the Okta Admin Portal and create a new app" />
-
-  <Step title="Select SAML 2.0 as the Sign-on method" />
-
-  <Step title="Fill in the App details and click Next" />
-
-  <Step title="Use the following Single Sign-On URL from the Configure Screen" />
-
-  <Step title="Fill in Audience URI (SP Entity ID) with 'Activepieces'" />
-
-  <Step title="Add the following attributes (firstName, lastName, email)" />
-
-  <Step title="Click Next and Finish" />
-
-  <Step title="Go to the Sign On tab and click on View Setup Instructions" />
-
-  <Step title="Copy the Identity Provider metadata and paste it in the Idp Metadata field" />
-
-  <Step title="Copy the Signing Certificate and paste it in the Signing Key field" />
-
-  <Step title="Click Save" />
-</Steps>
-
-### SAML with JumpCloud:
-
-<Steps>
-  <Step title="Go to the JumpCloud Admin Portal and create a new app" />
-
-  <Step title="Create SAML App" />
-
-  <Step title="Copy the ACS URL from Activepieces and paste it in the ACS urls">
-        <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/acl-url.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=d7f62e7318652bbe11537dda4ddca5f3" alt="JumpCloud ACS URL" data-og-width="608" width="608" data-og-height="263" height="263" data-path="resources/screenshots/jumpcloud/acl-url.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/acl-url.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=9a1191ab5bde4eb2eba360ba7af814db 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/acl-url.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=9344cf812f7a202a51981fbeac50544d 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/acl-url.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=96f3c402c5d280d86b74a91082743c9a 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/acl-url.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=7015a842ce73840f1b7c07f482e8a438 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/acl-url.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=7aa35de4f66ff7864b7998affa7013eb 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/acl-url.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=c7e3856dd592069ad300d0188b6d7624 2500w" />
-  </Step>
-
-  <Step title="Fill in Audience URI (SP Entity ID) with 'Activepieces'" />
-
-  <Step title="Add the following attributes (firstName, lastName, email)">
-        <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-attribute.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=0243c183611ae3ab374208725f7814ed" alt="JumpCloud User Attributes" data-og-width="599" width="599" data-og-height="368" height="368" data-path="resources/screenshots/jumpcloud/user-attribute.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-attribute.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=9fb7f5b67fc82613aeff7d7c3f0ceede 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-attribute.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=674e1f8521feb2bcf4553e8f8feac308 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-attribute.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=32104d11cd660681c84af754dc9036fc 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-attribute.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=b8894c36701e917f179bb9cb27a70173 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-attribute.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=1555a1c74092ef42d822823a2d58411e 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-attribute.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=7aed8876641785c56c8949a28cd275df 2500w" />
-  </Step>
-
-  <Step title="Include the HTTP-Redirect binding and export the metadata">
-    JumpCloud does not provide the `HTTP-Redirect` binding by default. You need to tick this box.
-    <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/declare-login.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=891bb41c7e66420ab976016959bc2f22" alt="JumpCloud Redirect Binding" data-og-width="597" width="597" data-og-height="243" height="243" data-path="resources/screenshots/jumpcloud/declare-login.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/declare-login.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=d1148fa680d295d13064d86852d7d3cc 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/declare-login.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=7b97005f2b0ab717d8cf0d2193c2d3e3 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/declare-login.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=5614ad2fc17cf5b83dd35923b3043402 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/declare-login.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=9a23ecb850326cac6b7a1c716c460461 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/declare-login.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=0bfa94531658cac50b0f2a4c0e75bd7f 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/declare-login.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=bdbadbe645d0a25aaaa3aa03ec1cb4e1 2500w" />
-
-    Make sure you press `Save` and then Refresh the Page and Click on `Export Metadata`
-
-        <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/export-metadata.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=3ba991481241c93ca5be2fe2d32174c1" alt="JumpCloud Export Metadata" data-og-width="618" width="618" data-og-height="250" height="250" data-path="resources/screenshots/jumpcloud/export-metadata.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/export-metadata.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=048119e60b4f613cb90f6c76e2d2d2f5 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/export-metadata.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=b2ca2a0fc41bf696785958707a740076 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/export-metadata.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=1e8182bab4cf800d1aedf46f43b63c2a 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/export-metadata.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=9bdec90ed3a27901439c9f280eaeddeb 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/export-metadata.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=c22cc7cd4197a6775995482a761a4aeb 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/export-metadata.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=00915125e7b80014525eda44ead8cc56 2500w" />
-
-    <Tip>
-      Please Verify ` Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"` inside the xml.
-    </Tip>
-
-    After you export the metadata, paste it in the `Idp Metadata` field.
-  </Step>
-
-  <Step title="Copy the Certificate and paste it in the Signing Key field">
-    Find the `<ds:X509Certificate>` element in the IDP metadata and copy its value. Paste it between these lines:
-
-    ```
-    -----BEGIN CERTIFICATE-----
-    [PASTE THE VALUE FROM IDP METADATA]
-    -----END CERTIFICATE-----
-    ```
-  </Step>
-
-  <Step title="Make sure you Assigned the App to the User">
-        <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-groups.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=ec58a49538b08a0d97a72ab7a3dbdd66" alt="JumpCloud Assign App" data-og-width="939" width="939" data-og-height="526" height="526" data-path="resources/screenshots/jumpcloud/user-groups.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-groups.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=22b8ecba77376c52a043559ec8c5cbd3 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-groups.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=d9539e73d13f585eb444d72b14e638ae 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-groups.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=dff266c6731286720c420d6cb047267c 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-groups.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=ed455d0c87abd7e4f41c53b28367c62b 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-groups.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=3d9b6c62fa7ce2778a80504e6dad350e 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/jumpcloud/user-groups.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=b22832eaec8cf2fbe46567a08c9c1f7f 2500w" />
-  </Step>
-
-  <Step title="Click Next and Finish" />
-</Steps>
+* **🧠 Human in Loop**: Delay execution for a period of time or require approval. These are just pieces built on top of the piece framework, and you can build many pieces like that. 🎨
 
 

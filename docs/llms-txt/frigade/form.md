@@ -1,11 +1,15 @@
 # Source: https://docs.frigade.com/component/form.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Form
 
 > Collect user information via forms in modals or embedded in your UI
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/forms-modal.png" style={{ width: "350px" }} />
+  <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/forms-modal.png?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=c8f7d424a24f984f0aa6e582909a2f5d" style={{ width: "350px" }} data-og-width="888" width="888" data-og-height="1644" height="1644" data-path="images/forms-modal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/forms-modal.png?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=61d54441deeb533c44b1f2ed7fb4e2cc 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/forms-modal.png?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=709ba0bf8d422dc45a469e99adf3276f 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/forms-modal.png?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=0cb6bd6470bc35ec8ae7d3c5e67c44a4 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/forms-modal.png?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=8b1221dace25f39042c234fa99c3079d 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/forms-modal.png?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=fe36dd52abac76dc4eeb4f930be6161a 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/forms-modal.png?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=c89ee13767cd132c0da128f5cb915ee5 2500w" />
 </Frame>
 
 ## About this component
@@ -52,13 +56,13 @@ The following section includes ready-made examples and code for various form use
 <Tabs>
   <Tab title="Component">
     <Frame>
-      <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/forms/simple-modal.png" style={{ width: "350px" }} />
+      <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/simple-modal.png?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=4993d78d77987a0a956294a703c3cf82" style={{ width: "350px" }} data-og-width="920" width="920" data-og-height="1161" height="1161" data-path="images/components/forms/simple-modal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/simple-modal.png?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=32589ba7fd89c6a36f9e3dc633f331ae 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/simple-modal.png?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=bd888c96dae62fe618f0bb8158978f3b 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/simple-modal.png?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=04a522e73807dd65c8c56a6a5afeb9e5 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/simple-modal.png?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=1d8d9db32f56ca8c49200a4084a06b86 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/simple-modal.png?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=941a3da5589c851c725660bb166ac349 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/simple-modal.png?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=8e3d10fb04d793bff83ed15f837f9fab 2500w" />
     </Frame>
   </Tab>
 
   <Tab title="Configuration and Code">
     <CodeGroup>
-      ```Typescript App.tsx
+      ```Typescript App.tsx theme={"system"}
       import * as Frigade from '@frigade/react';
 
       const App = () => {
@@ -74,7 +78,7 @@ The following section includes ready-made examples and code for various form use
 
       ```
 
-      ```yaml Configuration
+      ```yaml Configuration theme={"system"}
       steps:
         - id: waitlist-page
           title: Join the waitlist
@@ -114,13 +118,13 @@ The following section includes ready-made examples and code for various form use
 <Tabs>
   <Tab title="Component">
     <Frame>
-      <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/forms/churn-survey.png" style={{ width: "350px" }} />
+      <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/churn-survey.png?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=2c3d2956ea15ea89dd052851a349a9ec" style={{ width: "350px" }} data-og-width="1321" width="1321" data-og-height="1781" height="1781" data-path="images/components/forms/churn-survey.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/churn-survey.png?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=87042547988472169d02b72bdaf74dc5 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/churn-survey.png?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=d96a9770574d7f60350b1b3bdb0564df 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/churn-survey.png?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=6f16948e473ed6e8cdad72f6ff2ac57d 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/churn-survey.png?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=0bcb9a578d722cd4b4aaeb1fb24471ac 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/churn-survey.png?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=318065b0ae87fb461292852facbe0c8a 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/churn-survey.png?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=ac10d4ed7c4762120dcf3347aa95afd7 2500w" />
     </Frame>
   </Tab>
 
   <Tab title="Configuration and Code">
     <CodeGroup>
-      ```Typescript App.tsx
+      ```Typescript App.tsx theme={"system"}
       import * as Frigade from '@frigade/react';
 
       const App = () => {
@@ -130,7 +134,7 @@ The following section includes ready-made examples and code for various form use
 
       ```
 
-      ```yaml Configuration
+      ```yaml Configuration theme={"system"}
       steps:
         - id: collect-intend
           title: We are sorry to see you go
@@ -167,7 +171,7 @@ The following section includes ready-made examples and code for various form use
 <Tabs>
   <Tab title="Component">
     <Frame>
-      <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/forms/dynamic-fields.png" style={{ width: "350px" }} />
+      <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/dynamic-fields.png?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=c1b0625e7cf356a709bccbac2f139bb5" style={{ width: "350px" }} data-og-width="919" width="919" data-og-height="782" height="782" data-path="images/components/forms/dynamic-fields.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/dynamic-fields.png?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=4106290d7004f7aea09a03a09f493760 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/dynamic-fields.png?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=dfde548b1a0019d2f82012614b129aa7 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/dynamic-fields.png?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=53bc6bb77dd6d59e7af1180f48eb12a2 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/dynamic-fields.png?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=612134eeacae6da1efb44d19d67c41b1 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/dynamic-fields.png?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=92eb1a281891c640dfe3a4551ec73c4f 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/dynamic-fields.png?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=8789b16bab688d0b12ddd760f4b5b502 2500w" />
     </Frame>
 
     Sometimes you may want to conditionally render a dynamic field based on the value of another field. The example above dynamically changes the second dropdown based on the value of the first dropdown.
@@ -179,7 +183,7 @@ The following section includes ready-made examples and code for various form use
     The options of the `follow-up` dropdown depends on the value of `food`. If the user selects `pizza`, the `follow-up` dropdown will show options for pizza toppings. If the user selects `pasta`, the `follow-up` dropdown will show options for pasta sauces.
 
     <CodeGroup>
-      ```Typescript App.tsx
+      ```Typescript App.tsx theme={"system"}
       import { Form, type FormFieldProps, SelectField } from "@frigade/react";
 
       const App = () => {
@@ -214,7 +218,7 @@ The following section includes ready-made examples and code for various form use
 
       ```
 
-      ```yaml Configuration
+      ```yaml Configuration theme={"system"}
       steps:
         - id: collect-intend
           title: Tell us about your favorites
@@ -260,7 +264,7 @@ The following section includes ready-made examples and code for various form use
 <Tabs>
   <Tab title="Component">
     <Frame>
-      <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/forms/branching.png" style={{ width: "350px" }} />
+      <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/branching.png?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=d54d1420b56feb62de58e88697fccfe4" style={{ width: "350px" }} data-og-width="1319" width="1319" data-og-height="910" height="910" data-path="images/components/forms/branching.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/branching.png?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=0ef2b92f69f9b07c341a9c7b3146ab96 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/branching.png?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=d404e5bf75bfce969bd5a34f64ceae19 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/branching.png?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=166f40e8444babb6847fa81b7b2de55b 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/branching.png?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=cd1e9f35dfa0c1d8d578d11d84033708 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/branching.png?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=2eff11b0bc3bfca2748fc80b8d57432a 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/forms/branching.png?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=47500fba0fe6b050f587ae9296939c06 2500w" />
     </Frame>
 
     This example shows how to implement branching in a form based on the user's choice in the first step.
@@ -271,7 +275,7 @@ The following section includes ready-made examples and code for various form use
     For instance, the example below will jump directly to page 3 if the user picks a specific option on the first page/step:
 
     <CodeGroup>
-      ```Typescript App.tsx
+      ```Typescript App.tsx theme={"system"}
       import * as Frigade from '@frigade/react';
 
       const App = () => {
@@ -282,7 +286,7 @@ The following section includes ready-made examples and code for various form use
 
       ```
 
-      ```yaml Configuration
+      ```yaml Configuration theme={"system"}
       steps:
         - id: page-1
           title: This is page 1
@@ -345,7 +349,7 @@ The component supports the following builtin field types that correspond to thei
 You can override or add any attribute for a field by using the `props` property in the field configuration.
 For instance, this is useful if you want to use the `text` field type, but override the `type` to `email` or `tel`. It can also be used to add any attribute such as a css class, data, or styling.
 
-```yaml
+```yaml  theme={"system"}
 steps:
   - id: step-1
     title: This is page 1
@@ -365,7 +369,7 @@ steps:
 The Form SDK is built on top of [react-hook-form](https://react-hook-form.com/), which means you can use the majority of its features in your forms. You can define your own custom field types using the `fieldTypes` [prop](#fieldtypes).
 For instance, you can implement a simple calendar datepicker field type as such:
 
-```tsx
+```tsx  theme={"system"}
 import { FormFieldProps } from "@frigade/react";
 import * as Frigade from "@frigade/react";
 
@@ -385,7 +389,7 @@ function CalendarField({ field, submit }: FormFieldProps) {
 It is also possible to conditionally render a field based on the value of another field by using the [formContext](https://react-hook-form.com/docs/useformcontext) provided by react-hook-form.
 For instance, if you want a custom field called `company-size` to show up when a user selects `company` in the `customer-type` field:
 
-```tsx
+```tsx  theme={"system"}
 import { type FormFieldProps, SelectField } from "@frigade/react";
 import * as Frigade from "@frigade/react";
 
@@ -409,7 +413,7 @@ import * as Frigade from "@frigade/react";
 
 The component supports client-side and server-side validation out of the box. You can define validation rules for each field in the form configuration using the `pattern` property with a regular expression. The example below shows how to validate an email field:
 
-```yaml
+```yaml  theme={"system"}
 steps:
   - id: collect-intend
     fields:
@@ -425,7 +429,7 @@ steps:
 
 You can perform server-side validation by returning a Promise from the `onPrimary` event handler. If the promise resolves to `false`, the current step in the form will not be marked as completed. The `onPrimary` event handler also contains all form data collected in the session, which allows you to send the data to your server for validation or storage.
 
-```tsx
+```tsx  theme={"system"}
 import { StepHandlerProp } from "@frigade/react";
 import * as Frigade from "@frigade/react";
 
@@ -457,7 +461,7 @@ You can implement browser navigation (back/forward) with your Frigade forms usin
 
 Here's an example of how to implement this:
 
-```jsx
+```jsx  theme={"system"}
 import { useFlow } from '@frigade/react';
 import { useEffect, useRef } from 'react';
 
@@ -520,7 +524,7 @@ When users click the browser's back button, they'll be taken to the previous ste
 Forms can be prefilled by using [Dynamic Variables](/platform/dynamic-variables) by linking the `value` of a `field` to the `variables` prop of the Form component. The example below shows how to prefill a form with the user's name:
 
 <CodeGroup>
-  ```Typescript App.tsx
+  ```Typescript App.tsx theme={"system"}
   import * as Frigade from '@frigade/react';
 
   const App = () => {
@@ -536,7 +540,7 @@ Forms can be prefilled by using [Dynamic Variables](/platform/dynamic-variables)
 
   ```
 
-  ```yaml Configuration
+  ```yaml Configuration theme={"system"}
   steps:
     - id: collect-intend
       fields:
@@ -586,7 +590,7 @@ To learn about how to customize Frigade components, see the [customization docum
 
       For example, if you want to use a custom field type called `calendar`:
 
-      ```tsx
+      ```tsx  theme={"system"}
       import { Form, FormFieldProps } from '@frigade/react'
 
       function CalendarField({ field, submit }: FormFieldProps) {

@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/workflow-integrations/slack-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Slack Integration
 
 > Learn how to setup the Slack integration

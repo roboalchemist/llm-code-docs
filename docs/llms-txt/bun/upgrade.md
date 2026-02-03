@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/util/upgrade.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Upgrade Bun to the latest version
 
 Bun can upgrade itself using the built-in `bun upgrade` command. This is the fastest way to get the latest features and bug fixes.
@@ -89,8 +93,3 @@ If you installed Bun via a package manager, use that package manager to upgrade 
 
 * [Installation](/installation) — Install Bun for the first time
 * [Update packages](/pm/cli/update) — Update dependencies to latest versions
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://bun.com/docs/llms.txt

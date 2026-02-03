@@ -1,5 +1,9 @@
 # Source: https://docs.frigade.com/platform/flows.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Flows
 
 ## What are Flows?
@@ -13,7 +17,7 @@ Flows comes with built-in content management, version control, and analytics to 
 Users have their own state for each Flow (e.g. started, dismissed, completed), and it is automatically tracked by Frigade. Flows can also track Steps across groups of users, such as companies or teams.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/flow-detail-editor.png" />
+  <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-editor.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=55e8bc703b8ab4b7eb2ab88744f0a7f6" data-og-width="3696" width="3696" data-og-height="2244" height="2244" data-path="images/platform/flow-detail-editor.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-editor.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=2cabf0b9b2df7e673f82283d3f8a5438 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-editor.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=a6be6a39ea113270cefe299fc4939ff3 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-editor.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=7635b4aba7fd32d96fb07a50cee8b829 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-editor.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=0e027ab9110a817c968646ec1eda944a 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-editor.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=f7beeb294fba262b914a894c934e3047 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/flow-detail-editor.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=937924267315fd24fa96258d85494640 2500w" />
 </Frame>
 
 ## User Lifecycle
@@ -65,7 +69,7 @@ Once a Flow is completed or dismissed, it will remain in this state for the user
     If you'd like, you can use targeting to only show it to teammates while building, and you can reset users in the **Users** tab to go through the Flow multiple times.
 
     <Frame caption="Preview your Flow in real-time in Frigade">
-      <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/platform/editor.png" />
+      <img src="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=fc40523ed27e6c6ced0882293f0e7ecc" data-og-width="4598" width="4598" data-og-height="2410" height="2410" data-path="images/platform/editor.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?w=280&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=e10b2892db864e36792081193d199be0 280w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?w=560&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=7985c658200915d98ff903edbd812c34 560w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?w=840&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=7bcbeebc8e05529ab0d9ebbf7e6ab55b 840w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?w=1100&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=8a02113fd5d1826db7f4f39444871c2b 1100w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?w=1650&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=b8567865f7d8035a3d1b63fc83ffeffe 1650w, https://mintcdn.com/frigade-docs/vb0YqHQGpTytLgI7/images/platform/editor.png?w=2500&fit=max&auto=format&n=vb0YqHQGpTytLgI7&q=85&s=0884c324dc8a5a18b4d586b8fd93ebfc 2500w" />
     </Frame>
 
     <Note>The preview it will not reflect any custom styling you define in your own codebase.</Note>

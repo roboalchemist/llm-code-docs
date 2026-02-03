@@ -1,10 +1,14 @@
-# Source: https://mintlify.com/docs/guides/migrating-from-mdx.md
+# Source: https://www.mintlify.com/docs/guides/migrating-from-mdx.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Migrating MDX API pages to OpenAPI navigation
 
 > Migrate to automated OpenAPI generation with flexible navigation.
 
-If you are currently using individual `MDX` pages for your API endpoints, you can migrate to autogenerating pages from your OpenAPI specification while retaining the customizability of individual pages. This can help you reduce the number of files you need to maintain and improve the consistency of your API documentation.
+If you are currently using individual MDX pages for your API endpoints, you can migrate to autogenerating pages from your OpenAPI specification while retaining the customizability of individual pages. This can help you reduce the number of files you need to maintain and improve the consistency of your API documentation.
 
 You can define metadata and content for each endpoint in your OpenAPI specification and organize endpoints where you want them in your navigation.
 
@@ -66,7 +70,7 @@ This command:
   </Step>
 
   <Step title="Update your navigation structure.">
-    Replace `MDX` page references with OpenAPI endpoints in your `docs.json`.
+    Replace MDX page references with OpenAPI endpoints in your `docs.json`.
 
     ```json  theme={null}
     "navigation": {
@@ -91,7 +95,7 @@ This command:
   </Step>
 
   <Step title="Remove old MDX files.">
-    After verifying your new navigation works correctly, remove the `MDX` endpoint files that you no longer need.
+    After verifying your new navigation works correctly, remove the MDX endpoint files that you no longer need.
   </Step>
 </Steps>
 
@@ -139,9 +143,9 @@ Organize different API versions using tabs or groups:
 }
 ```
 
-## When to use individual `MDX` pages
+## When to use individual MDX pages
 
-Consider keeping individual `MDX` pages when you need:
+Consider keeping individual MDX pages when you need:
 
 * Extensive custom content per endpoint like React components or lengthy examples.
 * Unique page layouts.

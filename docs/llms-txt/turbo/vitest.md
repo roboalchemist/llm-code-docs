@@ -1,18 +1,19 @@
 # Source: https://turbo.build/guides/tools/vitest.md
 
 # Vitest
-Description: Learn how to use Vitest in a monorepo.
 
-import { Callout } from '#components/callout';
-import { File, Folder, Files } from '#components/files';
-import { CreateTurboCallout } from './create-turbo-callout.tsx';
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+<CopyPrompt
+  title="Set up Vitest in a Turborepo"
+  prompt={
+  "Set up Vitest in this Turborepo.\n1) Install Vitest where needed\n2) Create test scripts\n3) Set up testing in turbo.json\n\nWalk me through each step."
+}
+/>
 
 [Vitest](https://vitest.dev/) is a test runner from the Vite ecosystem. Integrating it with Turborepo will lead to enormous speed-ups.
 
 [The Vitest documentation](https://vitest.dev/guide/workspace) shows how to create a "Vitest Projects" configuration that runs all tests in the monorepo from one root command, enabling behavior like merged coverage reports out-of-the-box. This feature doesn't follow modern best practices for monorepos, since its designed for compatibility with Jest (whose Workspace feature was built before [package manager Workspaces](/docs/crafting-your-repository/structuring-a-repository)).
 
-<Callout type="warning">
+<Callout type="warn">
   Vitest has deprecated workspaces in favor of projects. When using projects,
   individual project vitest configs can't extend the root config anymore since
   they would inherit the projects configuration. Instead, a separate shared file
@@ -28,7 +29,7 @@ Because of this you have two options, each with their own tradeoffs:
 
 To improve on cache hit rates and only run tests with changes, you can choose to configure tasks per-package, splitting up the Vitest command into separate, cacheable scripts in each package. This speed comes with the tradeoff that you'll need to create merged coverage reports yourself.
 
-<Callout>
+<Callout type="info">
   For a complete example, run `npx create-turbo@latest --example with-vitest` or
   [visit the example's source
   code](https://github.com/vercel/turborepo/tree/main/examples/with-vitest).
@@ -88,7 +89,7 @@ When you run your test suite in CI, it logs results and eventually exits upon co
 
 Because of this difference, we recommend specifying **two separate Turborepo tasks**: one for running your tests, and one for running them in watch mode.
 
-<Callout>
+<Callout type="info">
   This strategy below creates two tasks, one for local development and one for
   CI. You could choose to make the `test` task for local development and create
   some `test:ci` task instead.
@@ -258,8 +259,8 @@ First, create a shared configuration package since individual projects can't ext
 export const sharedConfig = {
   test: {
     globals: true,
-    environment: 'jsdom',
-    setupFiles: ['./src/test/setup.ts'],
+    environment: "jsdom",
+    setupFiles: ["./src/test/setup.ts"],
     // Other shared configuration
   },
 };
@@ -268,15 +269,13 @@ export const sharedConfig = {
 Then, create your root Vitest configuration using projects:
 
 ```ts title="./vitest.config.ts"
-import { defineConfig } from 'vitest/config';
-import { sharedConfig } from '@repo/vitest-config';
 
 export default defineConfig({
   ...sharedConfig,
   projects: [
     {
-      name: 'packages',
-      root: './packages/*',
+      name: "packages",
+      root: "./packages/*",
       test: {
         ...sharedConfig.test,
         // Project-specific configuration
@@ -304,8 +303,6 @@ In this setup, your packages maintain their individual Vitest configurations tha
 Then create the Vitest configuration:
 
 ```ts title="./packages/ui/vitest.config.ts"
-import { defineConfig } from 'vitest/config';
-import { sharedConfig } from '@repo/vitest-config';
 
 export default defineConfig({
   ...sharedConfig,
@@ -348,3 +345,7 @@ While your root `package.json` includes scripts for running tests globally:
 ```
 
 This configuration allows developers to run `pnpm test:projects` or `pnpm test:projects:watch` at the root for a seamless local development experience using Vitest projects, while CI continues to use `turbo run test` to leverage package-level caching. **You'll still need to handle merged coverage reports manually as described in the previous section**.
+
+---
+
+[View full sitemap](/sitemap.md)

@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/faq/faq-oss.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LanceDB: Frequently Asked Questions
 
 > Commonly asked questions about LanceDB OSS.
@@ -71,8 +75,3 @@ LanceDB can handle concurrent reads very well, and can scale horizontally. The m
   [Refer to this discussion](https://discuss.python.org/t/concerns-regarding-deprecation-of-fork-with-alive-threads/33555)
   for more information.
 </Warning>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

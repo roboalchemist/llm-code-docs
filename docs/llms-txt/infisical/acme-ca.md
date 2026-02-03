@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/pki/ca/acme-ca.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ACME-compatible CA
 
 > Learn how to connect Infisical to an ACME-compatible CA to issue certificates.
@@ -18,7 +22,7 @@ their **ACME Directory URL** such as:
 * ZeroSSL: `https://acme.zerossl.com/v2/DV90`.
 * SSL.com: `https://acme.ssl.com/sslcom-dv-rsa`.
 
-When Infisical requests a certificate from an ACME-compatible CA, it creates a TXT record at `_acme-challenge.{your-domain}` in your configured DNS provider (e.g. Route53, Cloudflare, etc.); this TXT record contains the challenge token issued by the ACME-compatible CA to validate domain control for the requested certificate.
+When Infisical requests a certificate from an ACME-compatible CA, it creates a TXT record at `_acme-challenge.{your-domain}` in your configured DNS provider (e.g. Route53, Cloudflare, DNS Made Easy, etc.); this TXT record contains the challenge token issued by the ACME-compatible CA to validate domain control for the requested certificate.
 The ACME provider checks for the existence of this TXT record to verify domain control before issuing the certificate back to Infisical.
 
 After validation completes successfully, Infisical automatically removes the TXT record from your DNS provider.
@@ -120,6 +124,12 @@ In the following steps, we explore how to connect Infisical to an ACME-compatibl
 
         For detailed instructions on setting up a Cloudflare connection, see the [Cloudflare Connection](/integrations/app-connections/cloudflare) documentation.
       </Tab>
+
+      <Tab title="DNS Made Easy">
+        Navigate to your Certificate Management Project > App Connections and create a new DNS Made Easy connection.
+
+        For detailed instructions on setting up a DNS Made Easy connection, see the [DNS Made Easy Connection](/integrations/app-connections/dns-made-easy) documentation.
+      </Tab>
     </Tabs>
   </Step>
 
@@ -155,7 +165,7 @@ In the following steps, we explore how to connect Infisical to an ACME-compatibl
         ### Sample request
 
         ```bash Request theme={"dark"}
-        curl 'https://app.infisical.com/api/v1/pki/ca/acme' \
+        curl 'https://app.infisical.com/api/v1/cert-manager/ca/acme' \
           -H 'Authorization: Bearer <your-access-token>' \
           -H 'Content-Type: application/json' \
           --data-raw '{

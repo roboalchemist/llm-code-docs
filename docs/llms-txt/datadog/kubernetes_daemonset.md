@@ -6,9 +6,8 @@ description: >-
   Manual installation and configuration of the Datadog Agent on Kubernetes using
   DaemonSet deployment
 breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Manually install and
-  configure the Datadog Agent on Kubernetes with DaemonSet
-source_url: https://docs.datadoghq.com/guide/kubernetes_daemonset/index.html
+  Docs > Containers > Containers Guides > Manually install and configure the
+  Datadog Agent on Kubernetes with DaemonSet
 ---
 
 # Manually install and configure the Datadog Agent on Kubernetes with DaemonSet

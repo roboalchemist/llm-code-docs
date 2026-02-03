@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-symfony.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with Symfony
 
 > Learn how to send your first email using the Symfony Resend Mailer Bridge.
@@ -15,13 +19,13 @@ To get the most out of this guide, you will need to:
 
 Get the Resend Mailer Bridge package.
 
-```bash Composer theme={null}
+```bash Composer theme={"theme":{"light":"github-light","dark":"vesper"}}
 composer require symfony/resend-mailer
 ```
 
 If your application relies on Resend webhook events, you should also install the Symfony Webhook Component.
 
-```bash Composer theme={null}
+```bash Composer theme={"theme":{"light":"github-light","dark":"vesper"}}
 composer require symfony/webhook
 ```
 
@@ -29,7 +33,7 @@ composer require symfony/webhook
 
 In your `.env.local` file, which you can create if needed, add the following:
 
-```sh  theme={null}
+```sh  theme={"theme":{"light":"github-light","dark":"vesper"}}
 MAILER_DSN=resend+api://API_KEY@default
 MAILER_RESEND_SECRET=SIGNING_SECRET
 ```
@@ -40,7 +44,7 @@ Replace `API_KEY` with your Resend API key, and `SIGNING_SECRET` with your webho
 
 In a controller, inject the `Mailer`:
 
-```php  theme={null}
+```php  theme={"theme":{"light":"github-light","dark":"vesper"}}
 public function __construct(
     private readonly MailerInterface $mailer,
 ) {
@@ -49,7 +53,7 @@ public function __construct(
 
 In a controller action, use the `$this->mailer` to send your email:
 
-```php  theme={null}
+```php  theme={"theme":{"light":"github-light","dark":"vesper"}}
 $this->mailer->send(
     (new Email())
         ->from('Acme <onboarding@resend.dev>')
@@ -65,7 +69,7 @@ Learn more about sending emails with Mailer Component in [Symfony's documentatio
 
 Thanks to the Webhook Component, you can create a webhook listener.
 
-```php src/Webhook/ResendWebhookListener.php theme={null}
+```php src/Webhook/ResendWebhookListener.php theme={"theme":{"light":"github-light","dark":"vesper"}}
 #[AsRemoteEventConsumer('mailer_resend')]
 readonly class ResendWebhookListener implements ConsumerInterface
 {
@@ -100,7 +104,7 @@ readonly class ResendWebhookListener implements ConsumerInterface
 
 Bind your listener to the Webhook routing config:
 
-```yaml config/packages/webhook.yaml theme={null}
+```yaml config/packages/webhook.yaml theme={"theme":{"light":"github-light","dark":"vesper"}}
 framework:
   webhook:
     routing:

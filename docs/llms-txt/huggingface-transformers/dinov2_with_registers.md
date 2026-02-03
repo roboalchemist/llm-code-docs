@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/dinov2_with_registers.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/dinov2_with_registers.md
 
 # DINOv2 with Registers
 
@@ -33,15 +33,15 @@ The original code can be found [here](https://github.com/facebookresearch/dinov2
 
 #### transformers.Dinov2WithRegistersConfig[[transformers.Dinov2WithRegistersConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/dinov2_with_registers/configuration_dinov2_with_registers.py#L27)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/dinov2_with_registers/configuration_dinov2_with_registers.py#L27)
 
-This is the configuration class to store the configuration of a [Dinov2WithRegistersModel](/docs/transformers/v5.0.0rc1/en/model_doc/dinov2_with_registers#transformers.Dinov2WithRegistersModel). It is used to instantiate an
+This is the configuration class to store the configuration of a [Dinov2WithRegistersModel](/docs/transformers/v5.0.0/en/model_doc/dinov2_with_registers#transformers.Dinov2WithRegistersModel). It is used to instantiate an
 Dinov2WithRegisters model according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of the DINOv2 with Registers
 [facebook/dinov2-with-registers-base](https://huggingface.co/facebook/dinov2-with-registers-base) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -106,11 +106,11 @@ reshape_hidden_states (`bool`, *optional*, defaults to `True`) : Whether to resh
 
 #### transformers.Dinov2WithRegistersModel[[transformers.Dinov2WithRegistersModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/dinov2_with_registers/modeling_dinov2_with_registers.py#L455)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/dinov2_with_registers/modeling_dinov2_with_registers.py#L454)
 
 The bare Dinov2 With Registers Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -118,7 +118,7 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Dinov2WithRegistersModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/dinov2_with_registers/modeling_dinov2_with_registers.py#L471[{"name": "pixel_values", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "bool_masked_pos", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
+forwardtransformers.Dinov2WithRegistersModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/dinov2_with_registers/modeling_dinov2_with_registers.py#L470[{"name": "pixel_values", "val": ": torch.Tensor | None = None"}, {"name": "bool_masked_pos", "val": ": torch.Tensor | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
   `image_processor_class`. See `image_processor_class.__call__` for details (`processor_class` uses
   `image_processor_class` for processing images).
@@ -127,9 +127,9 @@ forwardtransformers.Dinov2WithRegistersModel.forwardhttps://github.com/huggingfa
   pre-training.
 - **output_hidden_states** (`bool`, *optional*) --
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
-  more detail.0[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+  more detail.0[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Dinov2WithRegistersConfig](/docs/transformers/v5.0.0rc1/en/model_doc/dinov2_with_registers#transformers.Dinov2WithRegistersConfig)) and inputs.
+elements depending on the configuration ([Dinov2WithRegistersConfig](/docs/transformers/v5.0.0/en/model_doc/dinov2_with_registers#transformers.Dinov2WithRegistersConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
@@ -145,7 +145,7 @@ elements depending on the configuration ([Dinov2WithRegistersConfig](/docs/trans
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Dinov2WithRegistersModel](/docs/transformers/v5.0.0rc1/en/model_doc/dinov2_with_registers#transformers.Dinov2WithRegistersModel) forward method, overrides the `__call__` special method.
+The [Dinov2WithRegistersModel](/docs/transformers/v5.0.0/en/model_doc/dinov2_with_registers#transformers.Dinov2WithRegistersModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -158,15 +158,15 @@ Example:
 
 **Parameters:**
 
-config ([Dinov2WithRegistersConfig](/docs/transformers/v5.0.0rc1/en/model_doc/dinov2_with_registers#transformers.Dinov2WithRegistersConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Dinov2WithRegistersConfig](/docs/transformers/v5.0.0/en/model_doc/dinov2_with_registers#transformers.Dinov2WithRegistersConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Dinov2WithRegistersConfig](/docs/transformers/v5.0.0rc1/en/model_doc/dinov2_with_registers#transformers.Dinov2WithRegistersConfig)) and inputs.
+elements depending on the configuration ([Dinov2WithRegistersConfig](/docs/transformers/v5.0.0/en/model_doc/dinov2_with_registers#transformers.Dinov2WithRegistersConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
@@ -187,12 +187,12 @@ elements depending on the configuration ([Dinov2WithRegistersConfig](/docs/trans
 
 #### transformers.Dinov2WithRegistersForImageClassification[[transformers.Dinov2WithRegistersForImageClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/dinov2_with_registers/modeling_dinov2_with_registers.py#L511)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/dinov2_with_registers/modeling_dinov2_with_registers.py#L510)
 
 Dinov2WithRegisters Model transformer with an image classification head on top (a linear layer on top of the final hidden state
 of the [CLS] token) e.g. for ImageNet.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -200,16 +200,16 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Dinov2WithRegistersForImageClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/dinov2_with_registers/modeling_dinov2_with_registers.py#L526[{"name": "pixel_values", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
+forwardtransformers.Dinov2WithRegistersForImageClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/dinov2_with_registers/modeling_dinov2_with_registers.py#L525[{"name": "pixel_values", "val": ": torch.Tensor | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
   `image_processor_class`. See `image_processor_class.__call__` for details (`processor_class` uses
   `image_processor_class` for processing images).
 - **labels** (`torch.LongTensor` of shape `(batch_size,)`, *optional*) --
   Labels for computing the image classification/regression loss. Indices should be in `[0, ...,
   config.num_labels - 1]`. If `config.num_labels == 1` a regression loss is computed (Mean-Square loss), If
-  `config.num_labels > 1` a classification loss is computed (Cross-Entropy).0[transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or a tuple of
+  `config.num_labels > 1` a classification loss is computed (Cross-Entropy).0[transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Dinov2WithRegistersConfig](/docs/transformers/v5.0.0rc1/en/model_doc/dinov2_with_registers#transformers.Dinov2WithRegistersConfig)) and inputs.
+elements depending on the configuration ([Dinov2WithRegistersConfig](/docs/transformers/v5.0.0/en/model_doc/dinov2_with_registers#transformers.Dinov2WithRegistersConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -221,7 +221,7 @@ elements depending on the configuration ([Dinov2WithRegistersConfig](/docs/trans
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Dinov2WithRegistersForImageClassification](/docs/transformers/v5.0.0rc1/en/model_doc/dinov2_with_registers#transformers.Dinov2WithRegistersForImageClassification) forward method, overrides the `__call__` special method.
+The [Dinov2WithRegistersForImageClassification](/docs/transformers/v5.0.0/en/model_doc/dinov2_with_registers#transformers.Dinov2WithRegistersForImageClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -253,15 +253,15 @@ Example:
 
 **Parameters:**
 
-config ([Dinov2WithRegistersConfig](/docs/transformers/v5.0.0rc1/en/model_doc/dinov2_with_registers#transformers.Dinov2WithRegistersConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Dinov2WithRegistersConfig](/docs/transformers/v5.0.0/en/model_doc/dinov2_with_registers#transformers.Dinov2WithRegistersConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or a tuple of
+A [transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Dinov2WithRegistersConfig](/docs/transformers/v5.0.0rc1/en/model_doc/dinov2_with_registers#transformers.Dinov2WithRegistersConfig)) and inputs.
+elements depending on the configuration ([Dinov2WithRegistersConfig](/docs/transformers/v5.0.0/en/model_doc/dinov2_with_registers#transformers.Dinov2WithRegistersConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).

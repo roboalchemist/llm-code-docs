@@ -1,3 +1,23 @@
+# Source: https://docs.datadoghq.com/feature_flags/server/dotnet.md
+
+# Source: https://docs.datadoghq.com/security/code_security/software_composition_analysis/setup_runtime/compatibility/dotnet.md
+
+# Source: https://docs.datadoghq.com/security/code_security/iast/setup/compatibility/dotnet.md
+
+# Source: https://docs.datadoghq.com/security/code_security/iast/setup/dotnet.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/gcp/cloud-run/dotnet.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/aws/lambda/dotnet.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/dotnet/dotnet.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/compatibility/dotnet.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/dotnet.md
+
+# Source: https://docs.datadoghq.com/data_streams/setup/language/dotnet.md
+
 # Source: https://docs.datadoghq.com/profiler/profiler_troubleshooting/dotnet.md
 
 # Source: https://docs.datadoghq.com/profiler/enabling/dotnet.md
@@ -16,8 +36,6 @@ description: OpenTracing instrumentation for .NET
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Code-Based Custom Instrumentation >
   OpenTracing Instrumentation Setup > .NET OpenTracing Instrumentation
-source_url: >-
-  https://docs.datadoghq.com/trace_collection/custom_instrumentation/opentracing/dotnet/index.html
 ---
 
 # .NET OpenTracing Instrumentation

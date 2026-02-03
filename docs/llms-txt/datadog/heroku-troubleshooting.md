@@ -6,7 +6,6 @@ description: >-
   Debug Heroku deployments using Datadog buildpack with the agent-wrapper
   command, custom metrics testing, and log collection.
 breadcrumbs: Docs > Agent > Agent Guides > Datadog-Heroku Buildpack troubleshooting
-source_url: https://docs.datadoghq.com/guide/heroku-troubleshooting/index.html
 ---
 
 # Datadog-Heroku Buildpack troubleshooting

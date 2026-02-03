@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/search/features/advanced-settings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Advanced Settings
 
 This page covers the advanced configuration options available in the Upstash Search. These parameters allow you to fine-tune search behavior for your specific use case and requirements.

@@ -6,21 +6,9 @@
 
 # Source: https://dub.co/docs/concepts/deep-links/quickstart.md
 
-# Source: https://dub.co/docs/partners/quickstart.md
-
-# Source: https://dub.co/docs/integrations/quickstart.md
-
-# Source: https://dub.co/docs/conversions/quickstart.md
-
-# Source: https://dub.co/docs/concepts/deep-links/quickstart.md
-
-# Source: https://dub.co/docs/partners/quickstart.md
-
-# Source: https://dub.co/docs/integrations/quickstart.md
-
-# Source: https://dub.co/docs/conversions/quickstart.md
-
-# Source: https://dub.co/docs/concepts/deep-links/quickstart.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Quickstart
 
@@ -84,6 +72,10 @@ Before you can create deep links, you need to configure your deep link domains i
       }
     }
     ```
+
+    <Note>
+      After updating the AASA file, you may need to reinstall your app since iOS can cache the old version of the file, which can lead to inconsistent behavior.
+    </Note>
 
     **Android (assetlinks.json)**
 

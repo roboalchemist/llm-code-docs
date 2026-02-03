@@ -36,6 +36,20 @@ Where a merchant fails to pay an invoice by its due date, Klarna may, where perm
 - **Statutory interest** on the overdue amount; and
 - **Reimbursement of any additional reasonable recovery costs** incurred due to the delay in payment.
 
+**Applicable Fixed Recovery Compensation Amounts (by currency)**
+
+Where permitted by local law, Klarna applies the following fixed recovery compensation amounts based on the currency of the invoice, regardless of the merchant’s country of incorporation:
+
+- CZK: 1,200 CZK
+- DKK: 310 DKK
+- EUR: 40 EUR
+- GBP: 40 GBP
+- HUF: 13,500 HUF
+- NOK: 460 NOK
+- PLN: 150 PLN
+- RON: 180 RON
+- <span>SEK: 450 SEK</span>
+
 ## Credit Assessments
 
 Klarna will perform credit assessments of each respective customer and the merchant. 

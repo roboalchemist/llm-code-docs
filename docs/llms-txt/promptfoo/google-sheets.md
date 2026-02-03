@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/integrations/google-sheets/
+
 # Google Sheets Integration
 
 promptfoo allows you to import eval test cases directly from Google Sheets. This can be done either unauthenticated (if the sheet is public) or authenticated using Google's Default Application Credentials, typically with a service account for programmatic access.

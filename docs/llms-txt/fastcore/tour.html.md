@@ -22,7 +22,7 @@ colab_link('000_tour')
 ```
 
 [Open `000_tour` in
-Colab](https://colab.research.google.com/github/AnswerDotAI/fastcore/blob/master/nbs/000_tour.ipynb)
+Colab](https://colab.research.google.com/github/AnswerDotAI/fastcore/blob/main/nbs/000_tour.ipynb)
 
 The full docs are available at
 [fastcore.fast.ai](https://fastcore.fast.ai). The code in the examples
@@ -38,7 +38,7 @@ just type it:
 coll_repr
 ```
 
-    <function fastcore.foundation.coll_repr(c, max_n=20)>
+    <function fastcore.foundation.coll_repr(c, max_n=250)>
 
 For more details, including a link to the full documentation and source
 code, use `doc`, which pops up a window with this information:
@@ -71,7 +71,7 @@ should pass. If one fails, no more tests in a notebook are run.
 Tests look like this:
 
 ``` python
-test_eq(coll_repr(range(1000), 5), '(#1000) [0,1,2,3,4...]')
+test_eq(coll_repr(range(1000), 5), '(#1000) [0, 1, 2, 3, 4...]')
 ```
 
 That’s an example from the docs for
@@ -83,7 +83,7 @@ would look like:
 coll_repr(range(1000), 5)
 ```
 
-    '(#1000) [0,1,2,3,4...]'
+    '(#1000) [0, 1, 2, 3, 4...]'
 
 So, the test is actually showing you what the output looks like, because
 if the function call didn’t return `'(#1000) [0,1,2,3,4...]'`, then the
@@ -156,7 +156,7 @@ p = Path('images')
 p.ls()
 ```
 
-    (#6) [Path('images/mnist3.png'),Path('images/att_00000.png'),Path('images/puppy.jpg'),Path('images/att_00005.png'),Path('images/att_00007.png'),Path('images/att_00006.png')]
+    [Path('images/mnist3.png'), Path('images/att_00000.png'), Path('images/att_00005.png'), Path('images/att_00007.png'), Path('images/att_00006.png'), Path('images/puppy.jpg')]
 
 You can easily add you own mixins with the
 [`patch`](https://fastcore.fast.ai/basics.html#patch)
@@ -293,7 +293,7 @@ an [`L`](https://fastcore.fast.ai/foundation.html#l):
 L(1,2,3)
 ```
 
-    (#3) [1,2,3]
+    [1, 2, 3]
 
 The first thing to notice is that an
 [`L`](https://fastcore.fast.ai/foundation.html#l) object includes in its
@@ -306,7 +306,7 @@ p = L.range(20).shuffle()
 p
 ```
 
-    (#20) [4,14,1,7,3,18,5,6,11,15,13,17,16,2,8,10,0,9,12,19]
+    [14, 19, 13, 11, 8, 9, 0, 6, 4, 15, 1, 17, 16, 5, 3, 10, 2, 7, 12, 18]
 
 [`L`](https://fastcore.fast.ai/foundation.html#l) contains many of the
 same indexing ideas that NumPy’s `array` does, including indexing with a
@@ -316,7 +316,7 @@ list of indexes, or a boolean mask list:
 p[2,4,6]
 ```
 
-    (#3) [1,3,5]
+    [13, 8, 0]
 
 It also contains other methods used in `array`, such as
 [`L.argwhere`](https://fastcore.fast.ai/foundation.html#l.argwhere):
@@ -325,7 +325,7 @@ It also contains other methods used in `array`, such as
 p.argwhere(ge(15))
 ```
 
-    (#5) [5,9,11,12,19]
+    [1, 9, 11, 12, 19]
 
 As you can see from this example, `fastcore` also includes a number of
 features that make a functional style of programming easier, such as a
@@ -345,4 +345,4 @@ in `list` in the first place, such as making this do what you’d expect
 1 + L(2,3,4)
 ```
 
-    (#4) [1,2,3,4]
+    [1, 2, 3, 4]

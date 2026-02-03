@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/llm/inference/kimi.md
 
-LiveKit docs › Models › Large language models (LLM) › LiveKit Inference › Kimi
+LiveKit docs › Models › LLM › Inference › Kimi
 
 ---
 
@@ -106,7 +106,7 @@ The following links provide more information about Kimi in LiveKit Inference.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:10.220Z.
+This document was rendered at 2026-02-03T03:24:59.168Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/llm/inference/kimi.md](https://docs.livekit.io/agents/models/llm/inference/kimi.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

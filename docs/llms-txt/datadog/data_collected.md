@@ -1,3 +1,7 @@
+# Source: https://docs.datadoghq.com/database_monitoring/data_collected.md
+
+# Source: https://docs.datadoghq.com/dora_metrics/data_collected.md
+
 # Source: https://docs.datadoghq.com/containers/kubernetes/data_collected.md
 
 # Source: https://docs.datadoghq.com/containers/docker/data_collected.md
@@ -14,7 +18,6 @@ description: >-
   Learn about the data collected by Code Coverage including source code provider
   webhooks, coverage reports, and git metadata.
 breadcrumbs: Docs > Code Coverage > Code Coverage Data Collected
-source_url: https://docs.datadoghq.com/data_collected/index.html
 ---
 
 # Code Coverage Data Collected

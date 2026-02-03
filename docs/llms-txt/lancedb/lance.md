@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/lance.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Lance format
 
 > Open-source lakehouse format for multimodal AI.
@@ -90,8 +94,3 @@ exists based on your backup policy.
 <Card title="Learn more about Lance" icon="https://mintcdn.com/lancedb-bcbb4faf/0sS6vrpmM3KSVyss/static/assets/logo/lance-logo-gray.svg?fit=max&auto=format&n=0sS6vrpmM3KSVyss&q=85&s=1c7311e59aacc6a085345618f357d380" href="https://lance.org/quickstart" data-og-width="1820" width="1820" data-og-height="1790" height="1790" data-path="static/assets/logo/lance-logo-gray.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lancedb-bcbb4faf/0sS6vrpmM3KSVyss/static/assets/logo/lance-logo-gray.svg?w=280&fit=max&auto=format&n=0sS6vrpmM3KSVyss&q=85&s=ed448d64255aa056dc20667ba41b1ae5 280w, https://mintcdn.com/lancedb-bcbb4faf/0sS6vrpmM3KSVyss/static/assets/logo/lance-logo-gray.svg?w=560&fit=max&auto=format&n=0sS6vrpmM3KSVyss&q=85&s=39a717a458214da2e1b8aceed6105354 560w, https://mintcdn.com/lancedb-bcbb4faf/0sS6vrpmM3KSVyss/static/assets/logo/lance-logo-gray.svg?w=840&fit=max&auto=format&n=0sS6vrpmM3KSVyss&q=85&s=ae715fa3264b36868def4c0017d7bb64 840w, https://mintcdn.com/lancedb-bcbb4faf/0sS6vrpmM3KSVyss/static/assets/logo/lance-logo-gray.svg?w=1100&fit=max&auto=format&n=0sS6vrpmM3KSVyss&q=85&s=c9c74bcca7784c7fbb57be2012e23701 1100w, https://mintcdn.com/lancedb-bcbb4faf/0sS6vrpmM3KSVyss/static/assets/logo/lance-logo-gray.svg?w=1650&fit=max&auto=format&n=0sS6vrpmM3KSVyss&q=85&s=8ada40df0308bbbc934cf36a2894e0cd 1650w, https://mintcdn.com/lancedb-bcbb4faf/0sS6vrpmM3KSVyss/static/assets/logo/lance-logo-gray.svg?w=2500&fit=max&auto=format&n=0sS6vrpmM3KSVyss&q=85&s=8611e35177202da4f179550c743d2270 2500w">
   Lance is a separate open source project. Check out its documentation to learn more.
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

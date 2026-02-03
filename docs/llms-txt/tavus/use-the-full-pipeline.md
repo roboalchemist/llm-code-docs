@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/conversational-video-interface/quickstart/use-the-full-pipeline.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use the Full Pipeline
 
 > Create your first persona using the full pipeline and start a conversation in seconds.

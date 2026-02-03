@@ -33,7 +33,7 @@ Connect charge types offer different ways to orchestrate payments to your connec
 
 The countries where you can have connected accounts depends on the business location of your platform’s country:
 
-- [Cross-border payouts](https://docs.stripe.com/connect/cross-border-payouts.md): If your platform qualifies, you can pay out connected accounts in their local currencies.  Stripe determines if your platform meets the criteria to support cross-border payouts.
+- [Cross-border payouts](https://docs.stripe.com/connect/cross-border-payouts.md): If your platform qualifies, you can pay out connected accounts in their local currencies. Stripe determines if your platform meets the criteria to support cross-border payouts.
 
 - Extra features: If using Connect with additional payment methods or with [Stripe Terminal](https://docs.stripe.com/terminal.md), country availability is also dependent on those features.
 
@@ -179,5 +179,5 @@ Connect supports many types of business models:
 To determine how to build a Connect integration for your use case:
 
 1. Complete the [Connect platform onboarding](https://dashboard.stripe.com/connect) process or view [example integrations](https://docs.stripe.com/connect.md#build-saas-platform-marketplace).
-1. After onboarding, review your [integration guide](https://docs.stripe.com/connect/design-an-integration.md). The guide is customized with selections you’ve made in platform onboarding.
+1. After onboarding, review your [integration guide](https://docs.stripe.com/connect/interactive-platform-guide.md). The guide is customized with selections you’ve made in platform onboarding.
 1. Follow the [onboarding quickstart](https://docs.stripe.com/connect/onboarding/quickstart.md) to set up and start using your integration.

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/ssrf/
+
 # Server-Side Request Forgery (SSRF) Plugin
 
 The SSRF (Server-Side Request Forgery) red teaming plugin is designed to test an AI system's vulnerability to attacks that attempt to make the server-side application fetch resources from unexpected or unauthorized destinations.

@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/integrations/mcp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Upstash MCP
 
 We provide an open source Upstash MCP to use natural language to interact with your Upstash account, e.g.:
@@ -31,28 +35,48 @@ We provide an open source Upstash MCP to use natural language to interact with y
 
 ***
 
-### Step 3: Configure the MCP File
+### Step 3: Configure the MCP Server
 
-There are two transport modes for MCP servers: `stdio` and `sse`.
+#### Claude Code CLI (Recommended with Claude)
 
-* **Stdio**: Best for local development. The server runs locally, and the client connects directly to it.
-* **SSE**: Designed for server deployments. However, since clients don't yet support SSE connections with all the features we need, you need a proxy server. The proxy acts as a `stdio` server for the client and communicates with the SSE server in the background.
+If you're using Claude Code, the easiest way to add the Upstash MCP server is via the CLI:
 
-#### Option 1: Stdio Server
+```bash  theme={"system"}
+claude mcp add upstash -- npx -y @upstash/mcp-server@latest \
+  --email <UPSTASH_EMAIL> \
+  --api-key <UPSTASH_API_KEY>
+```
+
+Verify the installation:
+
+```bash  theme={"system"}
+claude mcp list
+```
+
+To share with your team (adds to `.mcp.json` in your project):
+
+```bash  theme={"system"}
+claude mcp add upstash --scope project -- npx -y @upstash/mcp-server@latest \
+  --email <UPSTASH_EMAIL> \
+  --api-key <UPSTASH_API_KEY>
+```
+
+#### JSON Configuration (Cursor, Claude Desktop, Copilot)
 
 Add the following configuration to your MCP file:
 
 <CodeGroup>
-  ```json Claude & Cursor theme={"system"}
+  ```json Cursor & Claude Desktop theme={"system"}
   {
     "mcpServers": {
       "upstash": {
         "command": "npx",
         "args": [
           "-y",
-          "@upstash/mcp-server",
-          "run",
+          "@upstash/mcp-server@latest",
+          "--email",
           "<UPSTASH_EMAIL>",
+          "--api-key",
           "<UPSTASH_API_KEY>"
         ]
       }
@@ -68,57 +92,11 @@ Add the following configuration to your MCP file:
         "command": "npx",
         "args": [
           "-y",
-          "@upstash/mcp-server",
-          "run",
+          "@upstash/mcp-server@latest",
+          "--email",
           "<UPSTASH_EMAIL>",
+          "--api-key",
           "<UPSTASH_API_KEY>"
-        ]
-      }
-    }
-  }
-  ```
-</CodeGroup>
-
-#### Option 2: SSE Server with Proxy
-
-SSE (Server-Sent Events) is the next stage in MCP transport modes after `stdio`. It is designed for server deployments and will eventually be followed by an HTTP-based transport mode. However, since clients currently do not support direct connections to SSE servers, we use a proxy to bridge the gap.
-
-The proxy, powered by `supergateway`, acts as a `stdio` server locally while communicating with the SSE server in the background. This allows you to use the SSE server seamlessly with your client.
-
-Add the following configuration to your `mcp.json` file:
-
-<CodeGroup>
-  ```json Claude & Cursor theme={"system"}
-  {
-    "mcpServers": {
-      "upstash": {
-        "command": "npx",
-        "args": [
-          "-y",
-          "supergateway",
-          "--sse",
-          "https://mcp.upstash.io/sse",
-          "--oauth2Bearer",
-          "<UPSTASH_EMAIL>:<UPSTASH_API_KEY>"
-        ]
-      }
-    }
-  }
-  ```
-
-  ```json Copilot theme={"system"}
-  {
-    "servers": {
-      "upstash": {
-        "type": "stdio",
-        "command": "npx",
-        "args": [
-          "-y",
-          "supergateway",
-          "--sse",
-          "https://mcp.upstash.io/sse",
-          "--oauth2Bearer",
-          "<UPSTASH_EMAIL>:<UPSTASH_API_KEY>"
         ]
       }
     }

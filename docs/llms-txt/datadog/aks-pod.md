@@ -4,7 +4,6 @@
 title: AKS Pod Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: 'Docs > Cloudcraft (Standalone) > Components: Azure > AKS Pod Component'
-source_url: https://docs.datadoghq.com/components-azure/aks-pod/index.html
 ---
 
 # AKS Pod Component

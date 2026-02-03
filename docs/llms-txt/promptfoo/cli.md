@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/code-scanning/cli/
+
 # CLI Command
 
 The `promptfoo code-scans` command scans code changes for LLM-related security vulnerabilities, helping you identify prompt injection risks, jailbreaks, PII exposure, and other security issues before they reach production.

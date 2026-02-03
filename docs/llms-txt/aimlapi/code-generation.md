@@ -13,7 +13,6 @@ Beyond code generation, AI models help with debugging, refactoring, and optimiza
 Let's go over this again: any [text chat model](https://docs.aimlapi.com/api-references/model-database#text-models-llm) can generate some code based on your request. However, here is a list of models specifically trained for this by the developer:
 
 * [google/gemini-3-flash-preview](https://docs.aimlapi.com/api-references/text-models-llm/google/gemini-3-flash-preview)
-* [Qwen/Qwen2.5-Coder-32B-Instruct](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen2.5-coder-32b-instruct)
 * [alibaba/qwen3-coder-480b-a35b-instruct](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen3-coder-480b-a35b-instruct)
 * [alibaba/qwen3-next-80b-a3b-instruct](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen3-next-80b-a3b-instruct)
 * [alibaba/qwen3-max-preview](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen3-max-preview)
@@ -39,6 +38,7 @@ Let's go over this again: any [text chat model](https://docs.aimlapi.com/api-ref
 * [​openai/gpt-5-1-codex-mini](https://docs.aimlapi.com/api-references/text-models-llm/openai/gpt-5-1-codex-mini)
 * [openai/gpt-5-2](https://docs.aimlapi.com/api-references/text-models-llm/openai/gpt-5.2)
 * [openai/gpt-5-2-chat-latest](https://docs.aimlapi.com/api-references/text-models-llm/openai/gpt-5.2-chat-latest)
+* [openai/gpt-5-2-codex](https://docs.aimlapi.com/api-references/text-models-llm/openai/gpt-5.2-codex)
 * [x-ai/grok-code-fast-1](https://docs.aimlapi.com/api-references/text-models-llm/xai/grok-code-fast-1)
 * [zhipu/glm-4.5-air](https://docs.aimlapi.com/api-references/text-models-llm/zhipu/glm-4.5-air)
 * [zhipu/glm-4.5](https://docs.aimlapi.com/api-references/text-models-llm/zhipu/glm-4.5)

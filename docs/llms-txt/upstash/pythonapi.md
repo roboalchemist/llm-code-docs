@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/tutorials/pythonapi.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Serverless Python API with Redis
 
 <Card title="GitHub Repository" icon="github" href="https://github.com/upstash/redis-js/tree/main/examples/aws-cdk-python" horizontal>

@@ -12,34 +12,6 @@
 
 # Source: https://platform.claude.com/docs/en/api/completions.md
 
-# Source: https://platform.claude.com/docs/en/api/typescript/completions.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/completions.md
-
-# Source: https://platform.claude.com/docs/en/api/python/completions.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/completions.md
-
-# Source: https://platform.claude.com/docs/en/api/java/completions.md
-
-# Source: https://platform.claude.com/docs/en/api/go/completions.md
-
-# Source: https://platform.claude.com/docs/en/api/completions.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/completions.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/completions.md
-
-# Source: https://platform.claude.com/docs/en/api/python/completions.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/completions.md
-
-# Source: https://platform.claude.com/docs/en/api/java/completions.md
-
-# Source: https://platform.claude.com/docs/en/api/go/completions.md
-
-# Source: https://platform.claude.com/docs/en/api/completions.md
-
 # Completions
 
 ## Create
@@ -400,7 +372,9 @@ Future models and features will not be compatible with Text Completions. See our
 ```http
 curl https://api.anthropic.com/v1/complete \
     -H 'Content-Type: application/json' \
+    -H 'anthropic-version: 2023-06-01' \
     -H "X-Api-Key: $ANTHROPIC_API_KEY" \
+    --max-time 600 \
     -d '{
           "max_tokens_to_sample": 256,
           "model": "claude-opus-4-5-20251101",

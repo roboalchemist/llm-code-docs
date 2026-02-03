@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/runner/transport-utils.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Transport Utilities
 
 > Configuration and helper utilities for Daily, LiveKit, telephony, and WebRTC transports
@@ -288,8 +292,3 @@ async def create_custom_bot_session(transport_type: str):
 ```
 
 These utilities provide the building blocks for any transport configuration scenario while maintaining the same reliability and functionality as the development runner.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

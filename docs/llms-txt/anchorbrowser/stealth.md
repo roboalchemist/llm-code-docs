@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/essentials/stealth.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Extra Stealth Mode
 
 > Advanced anti-detection and browser fingerprinting protection for automated browsing
@@ -199,7 +203,167 @@ Use stealth mode with saved browser profiles for persistent authenticated sessio
   ```
 </CodeGroup>
 
+## Enabling Console Logs
 
----
+<Warning>
+  When extra stealth mode is enabled, `page.on('console')` events are **disabled by default** to prevent detection. If you need to capture console output, you must explicitly enable it.
+</Warning>
 
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.anchorbrowser.io/llms.txt
+To receive console log events while using extra stealth, enable `console_logs` in your session configuration:
+
+<CodeGroup>
+  ```javascript node.js theme={null}
+  import Anchorbrowser from "anchorbrowser";
+
+  const anchorClient = new Anchorbrowser();
+
+  const session = await anchorClient.sessions.create({
+    browser: {
+      extra_stealth: { active: true },
+      console_logs: { active: true }
+    },
+    session: {
+      proxy: { active: true }
+    }
+  });
+
+  // Connect to the browser
+  const browser = await anchorClient.browser.connect(session.data.id);
+  const context = browser.contexts()[0];
+  const page = context.pages()[0];
+
+  // Now page.on('console') will work
+  page.on('console', (msg) => {
+    console.log(`[${msg.type()}] ${msg.text()}`);
+  });
+
+  await page.goto("https://example.com");
+  ```
+
+  ```python python theme={null}
+  from anchorbrowser import Anchorbrowser
+  import os
+
+  anchor_client = Anchorbrowser(api_key=os.getenv("ANCHOR_API_KEY"))
+
+  session = anchor_client.sessions.create(
+      browser={
+          "extra_stealth": {"active": True},
+          "console_logs": {"active": True}
+      },
+      session={
+          "proxy": {"active": True}
+      }
+  )
+
+  # Connect to the browser
+  with anchor_client.browser.connect(session.data.id) as browser:
+      context = browser.contexts[0]
+      page = context.pages[0]
+
+      # Now page.on('console') will work
+      def handle_console(msg):
+          print(f"[{msg.type}] {msg.text}")
+
+      page.on("console", handle_console)
+
+      page.goto("https://example.com")
+  ```
+</CodeGroup>
+
+## Catching Captcha Events
+
+When using stealth mode with captcha solving enabled, you can listen to captcha lifecycle events via CDP (Chrome DevTools Protocol). This allows you to track when captchas are detected, solved, or failed.
+
+<CodeGroup>
+  ```javascript node.js theme={null}
+  import Anchorbrowser from "anchorbrowser";
+
+  const anchorClient = new Anchorbrowser();
+
+  // Create a session with extra stealth and captcha solving enabled
+  const session = await anchorClient.sessions.create({
+    browser: {
+      extra_stealth: { active: true },
+      captcha_solver: { active: true }
+    },
+    session: {
+      proxy: { active: true }
+    }
+  });
+
+  // Connect to the browser
+  const browser = await anchorClient.browser.connect(session.data.id);
+  const context = browser.contexts()[0];
+  const page = context.pages()[0];
+
+  // Create CDP session and listen to captcha events
+  const client = await context.newCDPSession(page);
+
+  client.on('Captcha.lifecycle', (event) => {
+    if (event.name === 'detected') {
+      console.log(`${event.captchaType} captcha detected on ${event.url}`);
+    }
+    
+    if (event.name === 'solved') {
+      console.log(`Captcha solved in ${event.timeToSolve}ms`);
+    }
+
+    if (event.name === 'failed') {
+      console.log(`Captcha failed: ${event.error}`);
+    }
+  });
+
+  // Navigate to a page with captcha
+  await page.goto("https://example.com");
+  ```
+
+  ```python python theme={null}
+  from anchorbrowser import Anchorbrowser
+  import os
+
+  anchor_client = Anchorbrowser(api_key=os.getenv("ANCHOR_API_KEY"))
+
+  # Create a session with extra stealth and captcha solving enabled
+  session = anchor_client.sessions.create(
+      browser={
+          "extra_stealth": {"active": True},
+          "captcha_solver": {"active": True}
+      },
+      session={
+          "proxy": {"active": True}
+      }
+  )
+
+  # Connect to the browser
+  with anchor_client.browser.connect(session.data.id) as browser:
+      context = browser.contexts[0]
+      page = context.pages[0]
+
+      # Create CDP session and listen to captcha events
+      client = context.new_cdp_session(page)
+
+      def handle_captcha_event(event):
+          if event["name"] == "detected":
+              print(f"{event['captchaType']} captcha detected on {event['url']}")
+          
+          if event["name"] == "solved":
+              print(f"Captcha solved in {event['timeToSolve']}ms")
+          
+          if event["name"] == "failed":
+              print(f"Captcha failed: {event['error']}")
+
+      client.on("Captcha.lifecycle", handle_captcha_event)
+
+      # Navigate to a page with captcha
+      page.goto("https://example.com")
+  ```
+</CodeGroup>
+
+### Event Types
+
+| Event Name | Description                                   | Properties                      |
+| ---------- | --------------------------------------------- | ------------------------------- |
+| `detected` | Fired when a captcha is detected on the page  | `captchaType`, `url`            |
+| `solved`   | Fired when the captcha is successfully solved | `timeToSolve` (in milliseconds) |
+| `failed`   | Fired when captcha solving fails              | `error`                         |

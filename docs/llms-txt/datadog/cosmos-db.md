@@ -4,7 +4,6 @@
 title: Cosmos DB Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: 'Docs > Cloudcraft (Standalone) > Components: Azure > Cosmos DB Component'
-source_url: https://docs.datadoghq.com/components-azure/cosmos-db/index.html
 ---
 
 # Cosmos DB Component

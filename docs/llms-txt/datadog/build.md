@@ -6,7 +6,6 @@
 title: Build your Datadog installation
 description: Build your Datadog installation and prioritize features.
 breadcrumbs: Docs > Administrator's Guide > Build your Datadog installation
-source_url: https://docs.datadoghq.com/build/index.html
 ---
 
 # Build your Datadog installation

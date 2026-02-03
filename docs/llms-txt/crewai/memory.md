@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/concepts/memory.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Memory
 
 > Leveraging memory systems in the CrewAI framework to enhance agent capabilities.
@@ -356,7 +360,7 @@ crew = Crew(
     embedder={
         "provider": "openai",
         "config": {
-            "model": "text-embedding-3-small"  # or "text-embedding-3-large"
+            "model_name": "text-embedding-3-small"  # or "text-embedding-3-large"
         }
     }
 )
@@ -368,7 +372,7 @@ crew = Crew(
         "provider": "openai",
         "config": {
             "api_key": "your-openai-api-key",  # Optional: override env var
-            "model": "text-embedding-3-large",
+            "model_name": "text-embedding-3-large",
             "dimensions": 1536,  # Optional: reduce dimensions for smaller storage
             "organization_id": "your-org-id"  # Optional: for organization accounts
         }
@@ -390,7 +394,7 @@ crew = Crew(
             "api_base": "https://your-resource.openai.azure.com/",
             "api_type": "azure",
             "api_version": "2023-05-15",
-            "model": "text-embedding-3-small",
+            "model_name": "text-embedding-3-small",
             "deployment_id": "your-deployment-name"  # Azure deployment name
         }
     }
@@ -405,10 +409,10 @@ Use Google's text embedding models for integration with Google Cloud services.
 crew = Crew(
     memory=True,
     embedder={
-        "provider": "google",
+        "provider": "google-generativeai",
         "config": {
             "api_key": "your-google-api-key",
-            "model": "text-embedding-004"  # or "text-embedding-preview-0409"
+            "model_name": "gemini-embedding-001"  # or "text-embedding-005", "text-multilingual-embedding-002"
         }
     }
 )
@@ -416,22 +420,58 @@ crew = Crew(
 
 ### Vertex AI Embeddings
 
-For Google Cloud users with Vertex AI access.
+For Google Cloud users with Vertex AI access. Supports both legacy and new embedding models with automatic SDK selection.
+
+<Note>
+  **Deprecation Notice:** Legacy models (`textembedding-gecko*`) use the deprecated `vertexai.language_models` SDK which will be removed after June 24, 2026. Consider migrating to newer models like `gemini-embedding-001`. See the [Google migration guide](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/deprecations/genai-vertexai-sdk) for details.
+</Note>
 
 ```python  theme={null}
+# Recommended: Using new models with google-genai SDK
 crew = Crew(
     memory=True,
     embedder={
-        "provider": "vertexai",
+        "provider": "google-vertex",
         "config": {
             "project_id": "your-gcp-project-id",
-            "region": "us-central1",  # or your preferred region
-            "api_key": "your-service-account-key",
-            "model_name": "textembedding-gecko"
+            "location": "us-central1",
+            "model_name": "gemini-embedding-001",  # or "text-embedding-005", "text-multilingual-embedding-002"
+            "task_type": "RETRIEVAL_DOCUMENT",  # Optional
+            "output_dimensionality": 768  # Optional
+        }
+    }
+)
+
+# Using API key authentication (Exp)
+crew = Crew(
+    memory=True,
+    embedder={
+        "provider": "google-vertex",
+        "config": {
+            "api_key": "your-google-api-key",
+            "model_name": "gemini-embedding-001"
+        }
+    }
+)
+
+# Legacy models (backwards compatible, emits deprecation warning)
+crew = Crew(
+    memory=True,
+    embedder={
+        "provider": "google-vertex",
+        "config": {
+            "project_id": "your-gcp-project-id",
+            "region": "us-central1",  # or "location" (region is deprecated)
+            "model_name": "textembedding-gecko"  # Legacy model
         }
     }
 )
 ```
+
+**Available models:**
+
+* **New SDK models** (recommended): `gemini-embedding-001`, `text-embedding-005`, `text-multilingual-embedding-002`
+* **Legacy models** (deprecated): `textembedding-gecko`, `textembedding-gecko@001`, `textembedding-gecko-multilingual`
 
 ### Ollama Embeddings (Local)
 
@@ -476,7 +516,7 @@ crew = Crew(
         "provider": "cohere",
         "config": {
             "api_key": "your-cohere-api-key",
-            "model": "embed-english-v3.0"  # or "embed-multilingual-v3.0"
+            "model_name": "embed-english-v3.0"  # or "embed-multilingual-v3.0"
         }
     }
 )
@@ -493,7 +533,7 @@ crew = Crew(
         "provider": "voyageai",
         "config": {
             "api_key": "your-voyage-api-key",
-            "model": "voyage-large-2",  # or "voyage-code-2" for code
+            "model": "voyage-3",  # or "voyage-3-lite", "voyage-code-3"
             "input_type": "document"  # or "query"
         }
     }
@@ -530,8 +570,7 @@ crew = Crew(
         "provider": "huggingface",
         "config": {
             "api_key": "your-hf-token",  # Optional for public models
-            "model": "sentence-transformers/all-MiniLM-L6-v2",
-            "api_url": "https://api-inference.huggingface.co"  # or your custom endpoint
+            "model": "sentence-transformers/all-MiniLM-L6-v2"
         }
     }
 )
@@ -585,7 +624,7 @@ mem0_client_embedder_config = {
             "project_id": "my_project_id", # Optional
             "api_key": "custom-api-key"    # Optional - overrides env var
             "run_id": "my_run_id",        # Optional - for short-term memory
-            "includes": "include1",       # Optional 
+            "includes": "include1",       # Optional
             "excludes": "exclude1",       # Optional
             "infer": True                 # Optional defaults to True
             "custom_categories": new_categories  # Optional - custom categories for user memory
@@ -607,7 +646,7 @@ crew = Crew(
 
 ### Choosing the Right Embedding Provider
 
-When selecting an embedding provider, consider factors like performance, privacy, cost, and integration needs.\
+When selecting an embedding provider, consider factors like performance, privacy, cost, and integration needs.
 Below is a comparison to help you decide:
 
 | Provider         | Best For                        | Pros                                | Cons                              |
@@ -840,7 +879,7 @@ external_memory = ExternalMemory(
             "project_id": "my_project_id", # Optional
             "api_key": "custom-api-key"    # Optional - overrides env var
             "run_id": "my_run_id",        # Optional - for short-term memory
-            "includes": "include1",       # Optional 
+            "includes": "include1",       # Optional
             "excludes": "exclude1",       # Optional
             "infer": True                 # Optional defaults to True
             "custom_categories": new_categories  # Optional - custom categories for user memory
@@ -935,10 +974,10 @@ crew = Crew(
 crew = Crew(
     memory=True,
     embedder={
-        "provider": "google",
+        "provider": "google-generativeai",
         "config": {
             "api_key": "your-api-key",
-            "model": "text-embedding-004"
+            "model_name": "gemini-embedding-001"
         }
     }
 )

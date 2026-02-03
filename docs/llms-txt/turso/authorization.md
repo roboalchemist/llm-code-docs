@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/connect/authorization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Authorization Quickstart
 
 This guide shows you how to configure authorization for your Turso databases using JSON Web Key Sets (JWKS) and an authentication provider.

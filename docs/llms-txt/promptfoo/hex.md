@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/hex/
+
 # Hex Encoding Strategy
 
 The Hex Encoding strategy tests an AI system's ability to resist ASCII hex-encoded inputs that might bypass security controls. Hex encoding (using characters 0-9, A-F) exploits a potential gap in safety mechanisms by representing text as a sequence of hexadecimal bytes.

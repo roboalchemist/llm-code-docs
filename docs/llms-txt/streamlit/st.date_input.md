@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/widgets/st.date_input
+
 # st.date_input
 
 Display a date input widget.

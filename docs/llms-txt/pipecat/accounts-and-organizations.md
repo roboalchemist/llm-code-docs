@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/accounts-and-organizations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Accounts and Organizations
 
 > Managing your account and collaborating on agents as part of a team
@@ -43,9 +47,9 @@ Working as part of a team requires creating an organization. Organizations are m
 * Organizations have dedicated access tokens for initializing agent instances.
 
 <Info>
-  During the beta phase, deployments cannot be shared or moved between
-  organizations or user accounts. If you plan to collaborate with others, we
-  recommend creating a new organization.
+  Deployments cannot be shared or moved between organizations or user
+  accounts. If you plan to collaborate with others, we recommend creating
+  a new organization.
 </Info>
 
 ### Creating organizations
@@ -54,10 +58,7 @@ Organization creation must be done via the [Pipecat Cloud dashboard<Icon icon="a
 
 ### Inviting accounts to your organization
 
-While in beta you must know the account name of a given Pipecat Cloud user in order to invite them.
-We will add support for inviting users via email in the future.
-
-You can obtain your account name by running `pipecat cloud auth whoami`.
+You can invite a user to your organization by their email address using the [Pipecat Cloud dashboard<Icon icon="arrow-up-right-from-square" iconType="solid" />](https://pipecat.daily.co/).
 
 ### Working with organizations
 
@@ -136,8 +137,3 @@ pipecat cloud organizations keys use
 Selecting a key will modify your local configuration file and use it for all subsequent commands.
 
 Please be aware that if the key is cycled or revoked, you will need to run the `keys use` command again to update your local configuration file with a new key.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

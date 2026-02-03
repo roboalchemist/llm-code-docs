@@ -1,10 +1,11 @@
+# Source: https://docs.datadoghq.com/datadog_cloudcraft/overlays/infrastructure.md
+
 # Source: https://docs.datadoghq.com/infrastructure.md
 
 ---
 title: Infrastructure
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Infrastructure
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Infrastructure

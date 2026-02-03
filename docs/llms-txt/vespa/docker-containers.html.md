@@ -237,7 +237,7 @@ docker.io/vespaengine/vespa latest 8cfb0da22c01 35 hours ago 1.2 GB
 
 If the application package depends on downloaded models, look for `RuntimeException: Not able to create config builder for payload` - [details](../../applications/components.html#component-load).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

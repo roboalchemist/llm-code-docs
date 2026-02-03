@@ -1,16 +1,20 @@
 # Source: https://docs.asapp.com/generativeagent/configuring/tasks-and-functions/keep-fields.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Keep Fields
 
 > Learn how to keep fields from API responses so GenerativeAgent can use them for more calls
 
 The history of responses in conversations is part of the data that GenerativeAgent continually uses as context to reply, analyze, and respond to your customers.
 
-As Generative Agent makes constant calls to APIs via Functions, response history can be extended. This can result in a lot of data in the conversation history and can make it more difficult for GenerativeAgent to identify the most relevant fields or data to use in subsequent calls.
+As GenerativeAgent makes constant calls to APIs via Functions, response history can grow. This can result in a lot of data in the conversation history and make it more difficult for GenerativeAgent to identify the most relevant fields or data to use in subsequent calls.
 
-While you can control this by specifying the data to return within the underlying API Connection, you can also use a slightly different set of fields for multiple Tasks using the same Function.
+While you can control this by specifying the data to return within the underlying API Connection, you can also use a different set of fields for multiple Tasks using the same Function.
 
-With the Keep Fields functionality you can configure Keep Fields to change the data kept in the context for that Task.
+With the Keep Fields functionality, you can configure which fields to keep in the context for that Task.
 
 <Warning>
   Most users will not need to configure Keep Fields and instead rely on specifying the fields to keep in the underlying [API Connection](/generativeagent/configuring/connect-apis).
@@ -47,7 +51,7 @@ This is necessary because JSON structures can include arrays, and you need to in
 
 ## Example Keep Field Configuration
 
-See this example of a configuration to keep all fields except for `scheduledDepartureTime` under `origin` within `segments` of `originalSlice`::
+See this example of a configuration to keep all fields except for `scheduledDepartureTime` under `origin` within `segments` of `originalSlice`:
 
 ```json  theme={null}
 [

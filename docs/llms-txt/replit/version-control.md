@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replit-workspace/workspace-features/version-control.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Version control
 
 > Track changes, collaborate with others, and manage your code's evolution using Replit's integrated version control tools.

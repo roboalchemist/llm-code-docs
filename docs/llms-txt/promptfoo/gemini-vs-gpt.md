@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/gemini-vs-gpt/
+
 # Gemini vs GPT: benchmark on your own data
 
 When comparing Gemini with GPT, you'll find plenty of eval and opinions online. Model capabilities set a _ceiling_ on what you're able to accomplish, but in my experience most LLM apps are highly dependent on their prompting and use case.

@@ -7,7 +7,6 @@ description: >-
   costs and discover savings opportunities directly on your architecture
   diagrams.
 breadcrumbs: Docs > Cloudcraft in Datadog > Overlays > Cloud Cost Management
-source_url: https://docs.datadoghq.com/overlays/ccm/index.html
 ---
 
 # Cloud Cost Management

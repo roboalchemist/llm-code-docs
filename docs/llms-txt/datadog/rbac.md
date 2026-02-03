@@ -6,7 +6,6 @@ description: >-
   Manage user access with role-based permissions, custom roles, and granular
   access control for dashboards, monitors, and other Datadog resources.
 breadcrumbs: Docs > Account Management > Access Control
-source_url: https://docs.datadoghq.com/rbac/index.html
 ---
 
 # Access Control

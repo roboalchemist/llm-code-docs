@@ -13,11 +13,11 @@ If you haven't checked out Electric recently, it's a great time to [take another
 
 ## What is Electric?
 
-[Electric](/product/electric) is a Postgres sync engine. We do real-time [partial replication](/docs/guides/shapes) of Postgres data into local apps and services.
+[Electric](/products/postgres-sync) is a Postgres sync engine. We do real-time [partial replication](/docs/guides/shapes) of Postgres data into local apps and services.
 
-Use Electric to swap out data *fetching* for [data *sync*](/use-cases/data-sync). Build apps on instant, real-time, local data. Without having to roll your own sync engine or change your stack.
+Use Electric to swap out data *fetching* for [data *sync*](/sync). Build apps on instant, real-time, local data. Without having to roll your own sync engine or change your stack.
 
-We also develop [PGlite](/product/pglite), a lightweight WASM Postgres you can run in the browser.
+We also develop [PGlite](/products/pglite), a lightweight WASM Postgres you can run in the browser.
 
 ## The path to BETA
 
@@ -43,7 +43,7 @@ Electric has been [engineered from the ground up](/docs/api/http) to handle high
 
 The chart below is from our [cloud benchmarks](/docs/reference/benchmarks#cloud), testing Electric's memory usage and latency with a single Electric service scaling real-time sync from 100k to 1 million concurrent clients under a sustained load of 960 writes/minute. Both memory usage and latency are essentially flat:
 
-You can also see how large-scale apps built with Electric feel to use with our updated [ Linearlite](/demos/linearlite) demo. This is a [Linear](https://linear.app) clone that loads 100,000k issues and their comments through Electric into PGlite (~150mb of data). Once loaded, it's fully interactive and feels instant to use:
+You can also see how large-scale apps built with Electric feel to use with our updated [ Linearlite](/demos/linearlite) demo. This is a [Linear](https://linear.app) clone that loads 100k issues and their comments through Electric into PGlite (~150mb of data). Once loaded, it's fully interactive and feels instant to use:
 
 ## Easy to adopt
 
@@ -117,6 +117,6 @@ With this BETA release, Electric is stable and ready for prime time use. If you 
 
 ### Signup for early access to Electric Cloud
 
-We're also building [Electric Cloud](/product/cloud), which provides managed Electric hosting (for those that don't want to [host Electric themselves](/docs/guides/deployment)).
+We're also building [Electric Cloud](/cloud), which provides managed Electric hosting (for those that don't want to [host Electric themselves](/docs/guides/deployment)).
 
 If you're interested in using Electric Cloud, you can sign up for early access here:

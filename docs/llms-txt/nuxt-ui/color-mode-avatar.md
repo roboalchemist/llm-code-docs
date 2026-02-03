@@ -16,14 +16,8 @@ Use the `light` and `dark` props to define the source for light and dark mode.
 </template>
 ```
 
-<note>
-
-Switch between light and dark mode to see the different images: <u-color-mode-select size="sm">
-
-
-
-</u-color-mode-select>
-</note>
+> [!NOTE]
+> Switch between light and dark mode to see the different images:
 
 ## API
 
@@ -51,23 +45,17 @@ interface ColorModeAvatarProps {
   srcset?: string | undefined;
   usemap?: string | undefined;
   width?: Numberish | undefined;
-  icon?: string | object | undefined;
+  icon?: any;
   text?: string | undefined;
   size?: "md" | "3xs" | "2xs" | "xs" | "sm" | "lg" | "xl" | "2xl" | "3xl" | undefined;
   chip?: boolean | ChipProps | undefined;
 }
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" target="_blank" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attributes">
-
-This component also supports all native `<img>` HTML attributes.
-
-</callout>
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attributes
+> This component also supports all native `<img>` HTML attributes.
 
 ## Changelog
 
-<component-changelog prefix="color-mode">
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

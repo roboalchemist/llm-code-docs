@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/sdks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SDKs
 
 > Install and use Writer SDKs for Python and Node.js. Get started with code examples and learn how to integrate Writer AI into your applications.

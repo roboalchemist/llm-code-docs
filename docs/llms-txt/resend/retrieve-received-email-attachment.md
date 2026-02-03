@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/emails/retrieve-received-email-attachment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve Attachment
 
 > Retrieve a single attachment from a received email.
@@ -15,7 +19,7 @@
 </ParamField>
 
 <RequestExample>
-  ```js Node.js theme={null}
+  ```js Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -26,7 +30,7 @@
   });
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->emails->receiving->attachments->get(
@@ -35,7 +39,7 @@
   );
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = 're_xxxxxxxxx'
@@ -46,7 +50,7 @@
   )
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require 'resend'
 
   Resend.api_key = 're_xxxxxxxxx'
@@ -57,7 +61,7 @@
   )
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   import (
   	"context"
 
@@ -67,7 +71,7 @@
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
 
-  	attachment, err := client.Emails.Receiving.GetAttachmentWithContext(
+  	client.Emails.Receiving.GetAttachmentWithContext(
   		context.TODO(),
   		"4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
   		"2a0c9ce0-3112-4728-976e-47ddcd16a318",
@@ -75,7 +79,7 @@
   }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{Resend, Result};
 
   #[tokio::main]
@@ -94,7 +98,7 @@
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -109,7 +113,7 @@
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -121,14 +125,14 @@
   Console.WriteLine( "URL={0}", resp.Content.DownloadUrl );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X GET 'https://api.resend.com/emails/receiving/4ef9a417-02e9-4d39-ad75-9611e0fcc33c/attachments/2a0c9ce0-3112-4728-976e-47ddcd16a318' \
        -H 'Authorization: Bearer re_xxxxxxxxx'
   ```
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "attachment",
     "id": "2a0c9ce0-3112-4728-976e-47ddcd16a318",

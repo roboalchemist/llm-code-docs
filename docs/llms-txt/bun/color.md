@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/color.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Color
 
 > Format colors as CSS, ANSI, numbers, hex strings, and more

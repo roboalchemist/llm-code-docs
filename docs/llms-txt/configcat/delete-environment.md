@@ -2,10 +2,7 @@
 
 # Delete Environment
 
-```
-DELETE 
-/v1/environments/:environmentId
-```
+Copy page
 
 This endpoint removes an Environment identified by the `environmentId` parameter. If the `cleanupAuditLogs` flag is set to true, it also deletes the audit log records related to the environment (except for the `Created a new environment` and `Deleted an environment` records).
 

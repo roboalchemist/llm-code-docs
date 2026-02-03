@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/enterprise/guides/azure-openai-setup.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Azure OpenAI Setup
 
 > Configure Azure OpenAI with Crew Studio for enterprise LLM connections

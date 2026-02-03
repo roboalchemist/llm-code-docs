@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/learn/coding-agents.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Coding Agents
 
 > Learn how to enable your CrewAI Agents to write and execute code, and explore advanced features for enhanced functionality.

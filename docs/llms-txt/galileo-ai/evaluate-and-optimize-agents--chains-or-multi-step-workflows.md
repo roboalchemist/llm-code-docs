@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to/evaluate-and-optimize-agents--chains-or-multi-step-workflows.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluate and Optimize Agents
 
 > How to use Galileo Evaluate with Agents
@@ -16,11 +20,11 @@ Follow our instructions on how to [Integrate Evaluate into your existing applica
 
 Once you log your evaluation runs, you can go to the Galileo Console to analyze your Agent executions. For each execution, you'll be able to see what the input into the workflow was and what the final response was, as well as any steps of decisions taken to get to the final result.
 
-![](https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/e-op.png)
+<img src="https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/e-op.png?fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=c141d71ab86c31a35c1c721c4f3f96c6" alt="" data-og-width="3022" width="3022" data-og-height="1040" height="1040" data-path="images/e-op.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/e-op.png?w=280&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=ec63ead06aa46e8ee779552623c043d9 280w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/e-op.png?w=560&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=ee52d7336acffc6996caaaa10852fdba 560w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/e-op.png?w=840&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=f06ceeba565e45f60d50a70ce880699a 840w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/e-op.png?w=1100&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=011188465798002f3fb70a37556aded9 1100w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/e-op.png?w=1650&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=9b0684d6cdd8f9d2ead2e44ad918e2ee 1650w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/e-op.png?w=2500&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=1ca5dea6fff46789b179e8cec0dda05a 2500w" />
 
 Clicking on any row on the table will open the Expanded View for that workflow or step. You can dig through the steps that your Agent took to understand how it got to the final response, and trace any mistakes back to an incorrect step.
 
-![](https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/ev-op-2.png)
+<img src="https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/ev-op-2.png?fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=0d02d297206c20cf67a72081dee501f4" alt="" data-og-width="3022" width="3022" data-og-height="1196" height="1196" data-path="images/ev-op-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/ev-op-2.png?w=280&fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=57e7bb002ff5f1a6d6b3d9f9de02a519 280w, https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/ev-op-2.png?w=560&fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=e56db4e755baeaf2b448ecc29e06ab62 560w, https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/ev-op-2.png?w=840&fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=ec7d807ccbba9e4b7cb10c6111dcd58d 840w, https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/ev-op-2.png?w=1100&fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=b33f7c0ad69500ae6162e56df8cf4fe1 1100w, https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/ev-op-2.png?w=1650&fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=52a109b6541c1c0f6598b66b71eddfe8 1650w, https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/ev-op-2.png?w=2500&fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=6402a4554c7961ddf227b6cc7c38765e 2500w" />
 
 ## Metrics
 

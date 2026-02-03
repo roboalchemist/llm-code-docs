@@ -38,51 +38,10 @@
           title: "Codex CLI & SDK",
           value: true,
         },
-        { title: "Codex IDE Extension", value: true },
+        { title: "Codex IDE extension", value: true },
         {
           title: "Codex Cloud",
           value: true,
-        },
-        { title: "ChatGPT Credits", value: true },
-        { title: "API Access", value: false },
-      ],
-    }}
-  />
-  <ModelDetails
-    client:load
-    name="gpt-5.1-codex-max"
-    slug="gpt-5.1-codex-max"
-    description="Optimized for long-horizon, agentic coding tasks in Codex."
-    data={{
-      features: [
-        {
-          title: "Capability",
-          value: "",
-          icons: [
-            "openai.SparklesFilled",
-            "openai.SparklesFilled",
-            "openai.SparklesFilled",
-            "openai.SparklesFilled",
-          ],
-        },
-        {
-          title: "Speed",
-          value: "",
-          icons: [
-            "openai.Flash",
-            "openai.Flash",
-            "openai.Flash",
-            "openai.Flash",
-          ],
-        },
-        {
-          title: "Codex CLI & SDK",
-          value: true,
-        },
-        { title: "Codex IDE Extension", value: true },
-        {
-          title: "Codex Cloud",
-          value: false,
         },
         { title: "ChatGPT Credits", value: true },
         { title: "API Access", value: true },
@@ -120,7 +79,7 @@
           title: "Codex CLI & SDK",
           value: true,
         },
-        { title: "Codex IDE Extension", value: true },
+        { title: "Codex IDE extension", value: true },
         {
           title: "Codex Cloud",
           value: false,
@@ -132,39 +91,49 @@
   />
 </div>
 
-## Configuring models
-
-### Configure your default local model
-
-Both the Codex CLI and Codex IDE Extension use the same [`config.toml` configuration file](/codex/local-config) to set the default model.
-
-To choose your default model, add a `model` entry into your `config.toml`. If no entry is set, your version of the Codex CLI or IDE Extension will pick the model.
-
-```toml
-model="gpt-5.2"
-```
-
-If you regularly switch between different models in the Codex CLI, and want to control more than just the setting, you can also create [different Codex profiles](/codex/local-config#profiles).
-
-### Choosing temporarily a different local model
-
-In the Codex CLI you can use the `/model` command during an active session to change the model. In the IDE Extension you can use the model selector next to the input box to choose your model.
-
-To start a brand new Codex CLI session with a specific model or to specify the model for `codex exec` you can use the `--model`/`-m` flag:
-
-```bash
-codex -m gpt-5.1-codex-mini
-```
-
-### Choosing your model for cloud tasks
-
-There is currently no way to control the model for Codex Cloud tasks. It's currently using `gpt-5.1-codex`.
-
 ## Alternative models
 
 <div class="not-prose grid gap-4 md:grid-cols-2 xl:grid-cols-3">
 
 {" "}
+
+<ModelDetails
+  client:load
+  name="gpt-5.1-codex-max"
+  slug="gpt-5.1-codex-max"
+  description="Optimized for long-horizon, agentic coding tasks in Codex."
+  collapsible
+  data={{
+    features: [
+      {
+        title: "Capability",
+        value: "",
+        icons: [
+          "openai.SparklesFilled",
+          "openai.SparklesFilled",
+          "openai.SparklesFilled",
+          "openai.SparklesFilled",
+        ],
+      },
+      {
+        title: "Speed",
+        value: "",
+        icons: ["openai.Flash", "openai.Flash", "openai.Flash", "openai.Flash"],
+      },
+      {
+        title: "Codex CLI & SDK",
+        value: true,
+      },
+      { title: "Codex IDE extension", value: true },
+      {
+        title: "Codex Cloud",
+        value: false,
+      },
+      { title: "ChatGPT Credits", value: true },
+      { title: "API Access", value: true },
+    ],
+  }}
+/>
 
 <ModelDetails
   client:load
@@ -194,7 +163,7 @@ There is currently no way to control the model for Codex Cloud tasks. It's curre
         title: "Codex CLI & SDK",
         value: true,
       },
-      { title: "Codex IDE Extension", value: true },
+      { title: "Codex IDE extension", value: true },
       {
         title: "Codex Cloud",
         value: false,
@@ -206,8 +175,9 @@ There is currently no way to control the model for Codex Cloud tasks. It's curre
 />
 
 <ModelDetails
+  client:load
   name="gpt-5.1"
-  description="Great for for coding and agentic tasks across domains. Succeeded by GPT-5.2."
+  description="Great for coding and agentic tasks across domains. Succeeded by GPT-5.2."
   slug="gpt-5.1"
   collapsible
   data={{
@@ -231,7 +201,7 @@ There is currently no way to control the model for Codex Cloud tasks. It's curre
         title: "Codex CLI & SDK",
         value: true,
       },
-      { title: "Codex IDE Extension", value: true },
+      { title: "Codex IDE extension", value: true },
       {
         title: "Codex Cloud",
         value: false,
@@ -268,7 +238,7 @@ There is currently no way to control the model for Codex Cloud tasks. It's curre
         title: "Codex CLI & SDK",
         value: true,
       },
-      { title: "Codex IDE Extension", value: true },
+      { title: "Codex IDE extension", value: true },
       {
         title: "Codex Cloud",
         value: true,
@@ -304,7 +274,7 @@ There is currently no way to control the model for Codex Cloud tasks. It's curre
         title: "Codex CLI & SDK",
         value: true,
       },
-      { title: "Codex IDE Extension", value: true },
+      { title: "Codex IDE extension", value: true },
       {
         title: "Codex Cloud",
         value: false,
@@ -336,7 +306,7 @@ There is currently no way to control the model for Codex Cloud tasks. It's curre
             title: "Codex CLI & SDK",
             value: true,
           },
-          { title: "Codex IDE Extension", value: true },
+          { title: "Codex IDE extension", value: true },
           {
             title: "Codex Cloud",
             value: false,
@@ -369,7 +339,7 @@ There is currently no way to control the model for Codex Cloud tasks. It's curre
             title: "Codex CLI & SDK",
             value: true,
           },
-          { title: "Codex IDE Extension", value: true },
+          { title: "Codex IDE extension", value: true },
           {
             title: "Codex Cloud",
             value: false,
@@ -386,4 +356,33 @@ There is currently no way to control the model for Codex Cloud tasks. It's curre
 
 Codex works best with the models listed above.
 
-If you're authenticating Codex with an API key, you can also point Codex at any model and provider that supports either the [Chat Completions](https://platform.openai.com/docs/api-reference/chat) or [Responses APIs](https://platform.openai.com/docs/api-reference/responses) to fit your specific use case.
+You can also point Codex at any model and provider that supports either the [Chat Completions](https://platform.openai.com/docs/api-reference/chat) or [Responses APIs](https://platform.openai.com/docs/api-reference/responses) to fit your specific use case.
+
+<DocsTip>
+  Support for the Chat Completions API is deprecated and will be removed in
+  future releases of Codex.
+</DocsTip>
+
+## Configuring models
+
+### Configure your default local model
+
+The Codex CLI and IDE extension use the same `config.toml` [configuration file](https://developers.openai.com/codex/config-basic). To specify a model, add a `model` entry to your configuration file. If you don't specify a model, the Codex app, CLI, or IDE Extension defaults to a recommended model.
+
+```toml
+model = "gpt-5.2"
+```
+
+### Choosing a different local model temporarily
+
+In the Codex CLI, you can use the `/model` command during an active thread to change the model. In the IDE extension, you can use the model selector below the input box to choose your model.
+
+To start a new Codex CLI thread with a specific model or to specify the model for `codex exec` you can use the `--model`/`-m` flag:
+
+```bash
+codex -m gpt-5.1-codex-mini
+```
+
+### Choosing your model for cloud tasks
+
+Currently, you can't change the default model for Codex cloud tasks.

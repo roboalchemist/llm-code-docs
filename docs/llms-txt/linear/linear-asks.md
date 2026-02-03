@@ -115,7 +115,9 @@ Select a default template by hovering over the template you wish to use, and cli
 
 ##### On 🎫 emoji
 
-By default, users can turn a message in Slack into an Ask by reacting to it with the 🎫  (:ticket:) emoji. This can be turned off for individual channels. Starting a Slack message with 🎫 will also trigger this behavior. 
+By default, users can turn a message in Slack into an Ask by reacting to it with the 🎫  (:ticket:) emoji. This can be turned off in Asks settings as shown below. Starting a Slack message with 🎫 will also trigger this behavior. 
+
+![channel specific settings for auto-creation](https://webassets.linear.app/images/ornj730p/production/97a93b1802e88163e116b2cc7aa7c1fc071a5a91-1400x510.png?q=95&auto=format&dpr=2)
 
 Bot-posted messages can create an ask on 🎫 if the bot's message's first character is 🎫. 
 
@@ -152,6 +154,14 @@ Bot-posted messages can create an Ask automatically if the bot's message begins 
 Linear admins can determine whether Asks channels, teams and templates can be managed by all users, or admins only.
 
 ![Allow members to manage Asks](https://webassets.linear.app/images/ornj730p/production/a39ecbd9a59ce94927a590c95f9950fb64430bdb-721x154.png?q=95&auto=format&dpr=2)
+
+### Customer field visibility
+
+For organizations using Customer requests, Asks has the capacity to surface a customer field. This can be helpful when someone wants to associate a particular Slack message with a particular customer. With customer requests on, this happens automatically when the Slack message was sent by your actual customer, but not if it's being raised internally. 
+
+This field is sensitive, as it contains the list of your customers. 
+
+Choose to make the field available to Linear users only in Slack, all members in your Slack workspace, or Slack members and Guests.
 
 ### Customize templates
 
@@ -230,20 +240,6 @@ You will need administrator permissions to set up email forwarding in your Googl
 
 > [!NOTE]
 > We do not recommend using Google Groups to set up forwarding as it modifies email headers which can result in several downstream issues.
-
-This approach is recommended because it does not require a separate Google account for the custom address and does not modify any email headers.
-
-1. Sign in to [Google Admin console](https://admin.google.com/)
-2. Open the side menu and click on **Apps > Gmail**
-3. Scroll to the bottom and select **Routing**
-4. Scroll to the bottom under **Email forwarding using recipient address map**.
-5. Click **Add another rule**
-6. Click **Add**
-7. Add your custom email address (e.g., `helpdesk@acme.com`) in the “Address” field
-8. Copy and paste your unique Linear intake email address in the “Map to address” field
-9. Under “Messages to affect”, ensure **All incoming messages** is selected
-10. Under “Routing”, check the box for **Also route to original destination**.
-11. Click **Save**
 
 Refer to Google’s help documents in [Forward email to a third-party CRM](https://support.google.com/a/answer/10486484?product_name=UnuFlow&hl=en&visit_id=638690871651590812-3129432273&rd=1&src=supportwidget0&hl=en) for more details.
 </details>
@@ -341,6 +337,14 @@ Yes, though some setup is required.
 <summary>When do URLs associated with an Ask show unfurl previews in Slack?</summary>
 * If an Ask is associated with a private team, it will never unfurl in Slack
 * Please ensure that "Enable unfurls and actions in Slack" is toggled on in Settings > Integrations > Asks if you wish to see Asks unfurls in Slack.
+</details>
+
+<details>
+<summary>Why am I not seeing some linked private channels in Asks settings?</summary>
+We only show private channels in Asks settings if we can verify that you belong to those channels in Slack. If you do belong to the channel:
+
+* Please ensure you've linked your Slack account to Linear in Settings > Connected Accounts
+* Double check the Linear Asks bot is a member of the private channel. It can be added using `/invite @Linear Asks` if it's not already a member. After doing so, refresh your Linear client with Cmd/Ctrl + R and check settings again.
 </details>
 
 <details>

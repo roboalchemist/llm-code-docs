@@ -8,6 +8,10 @@ When you originate an ACH transaction with Stripe (for example, using `InboundTr
 
 ACH network rules require Stripe to update saved account information when we receive an NOC. We automatically process the NOC by updating the relevant `PaymentMethod` or `BankAccount` object and notify you through a webhook. You might want to monitor these webhooks to inform your users that account information has changed or to update account information that you’ve persisted outside of Stripe.
 
+> #### Accounts API v2
+> 
+> The Events v2 API doesn’t include thin events that correspond to the snapshot events referenced here. Listen to the v1 events for information about your v2 `Accounts`.
+
 | NOC type                                       | Fields updated                           |
 | ---------------------------------------------- | ---------------------------------------- |
 | Account number                                 | `account_number`, `last4`, `fingerprint` |

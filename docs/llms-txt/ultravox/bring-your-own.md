@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/voices/bring-your-own.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Bring Your Own (Key)
 
 > How to use Ultravox with your own text-to-speech provider
@@ -161,8 +165,8 @@ Inworld's TTS API returns json, so it requires an extra `jsonAudioFieldPath` fie
     "Authorization": "Basic YOUR_INWORLD_BASIC_API_KEY"
   },
   "body": {
-    "voiceId": "Hades",
-    "modelId": "inworld-tts-1",
+    "voiceId": "Dennis",
+    "modelId": "inworld-tts-1.5-max",
     "text": "{text}",
     "audioConfig": {
         "audioEncoding": "LINEAR16",
@@ -315,8 +319,3 @@ Events are also visible when viewing the call in the Ultravox console.  Here are
 | `HTTP error: 500 Response:{"error": "Internal server error"} Request:{"text": "How can I help you?"}`                      | Generic                  | This is the sort of error you'll get for generic external voices. You should be able to use the complete request and response to reproduce and debug the error with your provider.                                                                                              |
 
 If you can't figure out your issue from the call events or the common issues below, you can also try our [Discord](https://discord.gg/62X253zeWB).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

@@ -149,7 +149,7 @@ Get documents on US Foreign politics, including only those matching at least one
 "us foreign politics" (clinton trump)
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

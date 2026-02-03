@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/user/st.logout
+
 # st.logout
 
 Logout the current user.

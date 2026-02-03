@@ -478,7 +478,7 @@ export default function SeriesDemo() {
   return (
     <Box sx={{ position: 'relative', width: '100%' }}>
       <ChartDataProvider
-        xAxis={[{ id: 'x', data: [1, 2, 3, 5, 8, 10] }]}
+        xAxis={[{ id: 'x', data: [1, 2, 3, 5, 8, 10], height: 28 }]}
         series={[
           { id: 'a', type: 'line', data: [4, 6, 4, 9, 3, 5] },
           { id: 'b', type: 'line', data: [3, 7, 8, 2, 4, 9] },
@@ -561,7 +561,7 @@ export default function HtmlLegend() {
           { label: 'First Series', type: 'bar', data: [100, 200] },
           { label: veryLongText, type: 'bar', data: [45, 333] },
         ]}
-        xAxis={[{ data: ['A', 'B'], scaleType: 'band', id: 'x-axis' }]}
+        xAxis={[{ data: ['A', 'B'], scaleType: 'band', id: 'x-axis', height: 28 }]}
       >
         <ChartsSurface>
           <BarPlot />
@@ -624,7 +624,7 @@ If you did not find the information on this page, consider having a look at the 
 For examples and details on the usage of this React component, visit the component demo pages:
 
 - [Charts - Custom components](/x/react-charts/components/)
-- [Chart composition](/x/react-charts/composition/)
+- [Charts - Composition](/x/react-charts/composition/)
 
 ## Import
 

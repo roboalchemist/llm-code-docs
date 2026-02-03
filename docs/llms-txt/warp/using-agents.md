@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/agents/using-agents.md
+# Source: https://docs.warp.dev/agent-platform/agent/using-agents.md
 
 # Using Agents
 
@@ -11,11 +11,11 @@ Agents are designed to work alongside you. They never act without visibility, an
 **Key concepts related to Agents include:**
 
 * Agent Mode — run terminal or coding workflows with natural language.
-* [Conversations](https://docs.warp.dev/agents/using-agents/agent-conversations) — group queries and blocks for a specific task.
-* [Context](https://docs.warp.dev/agents/using-agents/agent-context) — attach and manage information to improve responses.
-* [Task Lists](https://docs.warp.dev/agents/using-agents/agent-tasklists) — break complex requests into clear, trackable steps.
-* [Agent Management](https://docs.warp.dev/agents/using-agents/managing-agents) — monitor, configure, and control active agents.
-* [Profiles and Permissions](https://docs.warp.dev/agents/using-agents/agent-profiles-permissions) — customize autonomy, tools, and behavior.
+* [Conversations](https://docs.warp.dev/agent-platform/agent/using-agents/agent-conversations) — group queries and blocks for a specific task.
+* [Context](https://docs.warp.dev/agent-platform/agent/using-agents/agent-context) — attach and manage information to improve responses.
+* [Task Lists](https://docs.warp.dev/agent-platform/agent/using-agents/agent-tasklists) — break complex requests into clear, trackable steps.
+* [Agent Management](https://docs.warp.dev/agent-platform/agent/using-agents/managing-agents) — monitor, configure, and control active agents.
+* [Profiles and Permissions](https://docs.warp.dev/agent-platform/agent/using-agents/agent-profiles-permissions) — customize autonomy, tools, and behavior.
 
 {% hint style="info" %}
 To make sure you can fully use Agents, confirm that the global AI toggle is enabled under `Settings > AI`.
@@ -23,7 +23,7 @@ To make sure you can fully use Agents, confirm that the global AI toggle is enab
 
 ## What is Agent Mode?
 
-Agent Mode is the primary way to interact with Warp’s Agent. It lets you run terminal or coding workflows by typing plain English instead of shell commands or IDE operations. When you enter a request, Warp uses leading LLMs to interpret it, suggest or run the right commands , surface code diffs when applicable, and stream results directly into your session, all tailored to your environment and setup.\
+Agent Mode is the primary way to interact with Warp's Agent. It lets you run terminal or coding workflows by typing plain English instead of shell commands or IDE operations. When you enter a request, Warp uses leading LLMs to interpret it, suggest or run the right commands, surface code diffs when applicable, and stream results directly into your session, all tailored to your environment and setup.\
 \
 **Agent Mode can:**
 
@@ -60,13 +60,13 @@ Agent Mode is how you interact directly with Warp’s AI to ask questions, run t
   {% endtab %}
   {% endtabs %}
 
-When you’re in Agent Mode, the **Agent icon** will be highlighted in the [universal-input](https://docs.warp.dev/terminal/universal-input "mention").
+When you're in Agent Mode, the **Agent icon** will be highlighted in the [Universal Input](https://docs.warp.dev/terminal/universal-input/).
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-459e3d0871237902108a86d93231039a60126d95%2Fusing-agents-universal-input.png?alt=media" alt=""><figcaption><p>The Agent icon in the Universal input indicates that Agent Mode is active.</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-459e3d0871237902108a86d93231039a60126d95%2Fusing-agents-universal-input.png?alt=media" alt=""><figcaption><p>The Agent icon in the Universal input indicates that Agent Mode is active.</p></figcaption></figure>
 
 In Classic Input, you’ll also see a ✨ sparkles indicator inline.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-f886e83dea97c4d46e3af7e2ee5274d8da4c79a1%2Fundo_my_git_commit.png?alt=media" alt="The sparkles on the command line indicate Agent Mode is active."><figcaption><p>The sparkles in the Classic input indicates that Agent Mode is active.</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-f886e83dea97c4d46e3af7e2ee5274d8da4c79a1%2Fundo_my_git_commit.png?alt=media" alt="The sparkles on the command line indicate Agent Mode is active."><figcaption><p>The sparkles in the Classic input indicates that Agent Mode is active.</p></figcaption></figure>
 
 By default, entering Agent Mode starts you in *Pair Mode*, where you can continue an ongoing conversation by asking follow-up questions or assigning tasks. From here, you can ask the agent to build, debug, fix, or even deploy code as needed.
 
@@ -76,7 +76,7 @@ Agent Mode is backed by a curated selection of leading large language models (LL
 
 However, you can switch to other supported models at any time based on your needs—for example, choosing a faster model for quick iterations or a more advanced model for complex reasoning.
 
-For the full list of available models and guidance on when to use each, see [model-choice](https://docs.warp.dev/agents/using-agents/model-choice "mention").
+For the full list of available models and guidance on when to use each, see [Model Choice](https://docs.warp.dev/agent-platform/agent/using-agents/model-choice).
 
 ### Demo: Starting a Coding Task with Warp
 

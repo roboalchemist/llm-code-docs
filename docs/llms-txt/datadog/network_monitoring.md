@@ -4,7 +4,6 @@
 title: Network Monitoring
 description: Explore Datadog Network Monitoring Products
 breadcrumbs: Docs > Network Monitoring
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Network Monitoring

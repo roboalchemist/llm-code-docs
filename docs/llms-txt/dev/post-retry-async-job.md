@@ -1,112 +1,73 @@
 # Source: https://dev.writer.com/api-reference/application-api/post-retry-async-job.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retry job execution
 
 > Re-triggers the async execution of a single job previously created via the Async api and terminated in error.
 
+<Info>No-code applications are now called [no-code agents](/no-code/introduction). The [Applications API](api-reference/application-api/applications), which you can use to programmatically interact with no-code agents, still uses the term `application` to minimize breaking changes.</Info>
+
+
 ## OpenAPI
 
 ````yaml post /v1/applications/jobs/{job_id}/retry
+openapi: 3.0.3
+info:
+  title: API
+  version: '1.0'
+servers:
+  - url: https://api.writer.com
+security:
+  - bearerAuth: []
 paths:
-  path: /v1/applications/jobs/{job_id}/retry
-  method: post
-  servers:
-    - url: https://api.writer.com
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                Bearer authentication header of the form `Bearer <token>`, where
-                `<token>` is your [Writer API
-                key](https://dev.writer.com/api-reference/api-keys).
-          cookie: {}
-    parameters:
-      path:
-        job_id:
+  /v1/applications/jobs/{job_id}/retry:
+    post:
+      tags:
+        - template
+      summary: Retry job execution
+      description: >-
+        Re-triggers the async execution of a single job previously created via
+        the Async api and terminated in error.
+      parameters:
+        - name: job_id
+          description: The ID of the job to retry.
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The ID of the job to retry.
-              format: uuid
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - lang: cURL
-        source: >-
-          curl --location --request POST
-          https://api.writer.com/v1/applications/jobs/{job_id}/retry \
-           --header "Authorization: Bearer <token>"
-      - lang: JavaScript
-        source: |-
-          import Writer from 'writer-sdk';
-
-          const client = new Writer({
-            apiKey: process.env['WRITER_API_KEY'], // This is the default and can be omitted
-          });
-
-          async function main() {
-            const response = await client.applications.jobs.retry('182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e');
-
-            console.log(response.id);
-          }
-
-          main();
-      - lang: Python
-        source: |-
-          import os
-          from writerai import Writer
-
-          client = Writer(
-              api_key=os.environ.get("WRITER_API_KEY"),  # This is the default and can be omitted
-          )
-          response = client.applications.jobs.retry(
-              "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-          )
-          print(response.id)
-  response:
-    '202':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-                    format: uuid
-                    description: The unique identifier for the async job created.
-              status:
-                allOf:
-                  - $ref: '#/components/schemas/api_job_status'
-              created_at:
-                allOf:
-                  - type: string
-                    format: date-time
-                    description: The timestamp when the job was created.
-            title: generate_application_async_response
-            refIdentifier: '#/components/schemas/generate_application_async_response'
-            requiredProperties:
-              - id
-              - status
-              - created_at
-        examples:
-          example:
-            value:
-              id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              status: in_progress
-              created_at: '2023-11-07T05:31:56Z'
-        description: Accepted
-  deprecated: false
-  type: path
+            type: string
+            format: uuid
+      responses:
+        '202':
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/generate_application_async_response'
+      security:
+        - bearerAuth: []
 components:
   schemas:
+    generate_application_async_response:
+      title: generate_application_async_response
+      required:
+        - id
+        - status
+        - created_at
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier for the async job created.
+        status:
+          $ref: '#/components/schemas/api_job_status'
+        created_at:
+          type: string
+          format: date-time
+          description: The timestamp when the job was created.
     api_job_status:
       title: api_job_status
       description: The status of the job.
@@ -115,5 +76,14 @@ components:
         - in_progress
         - failed
         - completed
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >-
+        Bearer authentication header of the form `Bearer <token>`, where
+        `<token>` is your [Writer API
+        key](https://dev.writer.com/api-reference/api-keys).
 
 ````

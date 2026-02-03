@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/security-compliance/authentication/password-authentication.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Password Authentication
 
 Users can use password authentication as one of the authentication methods to access Aptible resources via the Dashboard and CLI.

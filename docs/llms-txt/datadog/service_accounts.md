@@ -6,7 +6,6 @@ description: >-
   Create and manage non-interactive service accounts for automated scripts and
   shared application keys across teams with secure access controls.
 breadcrumbs: Docs > Account Management > Service Accounts
-source_url: https://docs.datadoghq.com/org_settings/service_accounts/index.html
 ---
 
 # Service Accounts

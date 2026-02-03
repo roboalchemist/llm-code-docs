@@ -4,8 +4,6 @@
 title: Devicefarm Testgrid Session
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Devicefarm Testgrid Session
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.devicefarm_testgrid_session.dataset/index.html
 ---
 
 # Devicefarm Testgrid Session
@@ -18,14 +16,14 @@ aws.devicefarm_testgrid_session
 
 ## Fields
 
-| Title               | ID   | Type      | Data Type                                                                 | Description |
-| ------------------- | ---- | --------- | ------------------------------------------------------------------------- | ----------- |
-| _key                | core | string    |
-| account_id          | core | string    |
-| arn                 | core | string    | The ARN of the session.                                                   |
-| billing_minutes     | core | float64   | The number of billed minutes that were used for this session.             |
-| created             | core | timestamp | The time that the session was started.                                    |
-| ended               | core | timestamp | The time the session ended.                                               |
-| selenium_properties | core | string    | A JSON object of options and parameters passed to the Selenium WebDriver. |
-| status              | core | string    | The state of the session.                                                 |
-| tags                | core | hstore    |
+| Title               | ID   | Type       | Data Type                                                                 | Description |
+| ------------------- | ---- | ---------- | ------------------------------------------------------------------------- | ----------- |
+| _key                | core | string     |
+| account_id          | core | string     |
+| arn                 | core | string     | The ARN of the session.                                                   |
+| billing_minutes     | core | float64    | The number of billed minutes that were used for this session.             |
+| created             | core | timestamp  | The time that the session was started.                                    |
+| ended               | core | timestamp  | The time the session ended.                                               |
+| selenium_properties | core | string     | A JSON object of options and parameters passed to the Selenium WebDriver. |
+| status              | core | string     | The state of the session.                                                 |
+| tags                | core | hstore_csv |

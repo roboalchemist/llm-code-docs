@@ -6,14 +6,6 @@
 
 # Source: https://mui.com/x/react-date-pickers/quickstart.md
 
-# Source: https://mui.com/x/react-data-grid/quickstart.md
-
-# Source: https://mui.com/x/react-tree-view/quickstart.md
-
-# Source: https://mui.com/x/react-charts/quickstart.md
-
-# Source: https://mui.com/x/react-date-pickers/quickstart.md
-
 ---
 productId: x-date-pickers
 title: Date and Time Pickers - Quickstart

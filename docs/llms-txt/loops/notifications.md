@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/account/notifications.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Notifications
 
 > Learn how to receive notifications about new Loops contacts in external tools.

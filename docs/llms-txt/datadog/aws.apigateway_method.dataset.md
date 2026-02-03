@@ -4,8 +4,6 @@
 title: API Gateway Method
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > API Gateway Method
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.apigateway_method.dataset/index.html
 ---
 
 # API Gateway Method
@@ -33,4 +31,4 @@ aws.apigateway_method
 | request_models       | core | hstore        | A key-value map specifying data schemas, represented by Model resources, (as the mapped value) of the request payloads of given content types (as the mapping key).                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | request_parameters   | core | string        | A key-value map defining required or optional method request parameters that can be accepted by API Gateway. A key is a method request parameter name matching the pattern of method.request.{location}.{name}, where location is querystring, path, or header and name is a valid and unique parameter name. The value associated with the key is a Boolean flag indicating whether the parameter is required (true) or optional (false). The method request parameter names defined here are available in Integration to be mapped to integration request parameters or templates. |
 | request_validator_id | core | string        | The identifier of a RequestValidator for request validation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| tags                 | core | hstore        |
+| tags                 | core | hstore_csv    |

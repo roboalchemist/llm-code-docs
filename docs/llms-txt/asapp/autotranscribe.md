@@ -1,15 +1,15 @@
 # Source: https://docs.asapp.com/changelog/autotranscribe.md
 
-# Source: https://docs.asapp.com/autotranscribe.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.asapp.com/changelog/autotranscribe.md
+# AI Transcribe Updates
 
-# AutoTranscribe Updates
-
-> New updates and improvements across AutoTranscribe
+> New updates and improvements across AI Transcribe
 
 <Update label="2024-08-20 - Custom Vocab Features">
-  AutoTranscribe now includes a self-serve Custom Vocabulary feature that allows partners to manage business-specific keywords that improve transcription accuracy. Partners can independently add, update, and delete custom vocabulary terms through a new API.
+  AI Transcribe now includes a self-serve Custom Vocabulary feature that allows partners to manage business-specific keywords that improve transcription accuracy. Partners can independently add, update, and delete custom vocabulary terms through a new API.
 
   This feature enables:
 
@@ -118,7 +118,7 @@
 </Update>
 
 <Update label="2024-08-20 - Custom Redaction Entities">
-  AutoTranscribe now includes a self-serve feature that allows users to manage redaction entities through a configuration API. This enables users to independently enable or disable redaction of PCI and PII data in their transcriptions.
+  AI Transcribe now includes a self-serve feature that allows users to manage redaction entities through a configuration API. This enables users to independently enable or disable redaction of PCI and PII data in their transcriptions.
 
   Key benefits:
 
@@ -324,35 +324,35 @@
 </Update>
 
 <Update label="2023-10-31 - Amazon Connect Media Gateway">
-  ASAPP is adding an AutoTranscribe implementation pattern for Amazon Connect. ASAPP's Amazon Connect Media Gateway will allow Kinesis Video Streams audio to be easily sent to AutoTranscribe.
+  ASAPP is adding an AI Transcribe implementation pattern for Amazon Connect. ASAPP's Amazon Connect Media Gateway will allow Kinesis Video Streams audio to be easily sent to AI Transcribe.
 
   <Frame>
     <img src="https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-63e69ede-ddad-5788-50c8-2405418939f8.png?fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=228b00621d90e3937f995053ca3265d1" data-og-width="1741" width="1741" data-og-height="1009" height="1009" data-path="image/uuid-63e69ede-ddad-5788-50c8-2405418939f8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-63e69ede-ddad-5788-50c8-2405418939f8.png?w=280&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=703fedd3a68eb23c52d755be9a9ad25a 280w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-63e69ede-ddad-5788-50c8-2405418939f8.png?w=560&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=37e4c77d8a368ddf2f15ad7035528cce 560w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-63e69ede-ddad-5788-50c8-2405418939f8.png?w=840&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=4a9abc3536d89741d3354af39a662275 840w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-63e69ede-ddad-5788-50c8-2405418939f8.png?w=1100&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=a4dc1c685e107d61b3237de532e63357 1100w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-63e69ede-ddad-5788-50c8-2405418939f8.png?w=1650&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=b1aa0dc82fd4eee9a308491cc57ca12b 1650w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-63e69ede-ddad-5788-50c8-2405418939f8.png?w=2500&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=4f921fdb40d3332911b7b467dd5d9c11 2500w" />
   </Frame>
 
-  <Card title="Amazon Connect Media Gateway for AutoTranscribe" href="/autotranscribe/amazon-connect">
-    Learn more about the Amazon Connect Media Gateway for AutoTranscribe
+  <Card title="Amazon Connect Media Gateway for AI Transcribe" href="/ai-productivity/ai-transcribe/amazon-connect">
+    Learn more about the Amazon Connect Media Gateway for AI Transcribe
   </Card>
 </Update>
 
-<Update label="2023-10-16 - Sandbox for AutoTranscribe">
-  [AutoTranscribe Sandbox](/autosummary/sandbox) enables administrators to see speech-to-text capabilities designed for real-time agent assistance. Accessible through AI-Console, it's a playground designed to preview ASAPP's transcription without waiting for an integration to complete.
+<Update label="2023-10-16 - Sandbox for AI Transcribe">
+  [AI Transcribe Sandbox](/ai-productivity/ai-summary/sandbox) enables administrators to see speech-to-text capabilities designed for real-time agent assistance. Accessible through AI-Console, it's a playground designed to preview ASAPP's transcription without waiting for an integration to complete.
 
   <Frame>
     <img src="https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-dffed9bc-5bf1-5d6c-3a21-29d8e7ecd326.png?fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=7966d97a4803233a565505dfc51583f2" data-og-width="1600" width="1600" data-og-height="1000" height="1000" data-path="image/uuid-dffed9bc-5bf1-5d6c-3a21-29d8e7ecd326.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-dffed9bc-5bf1-5d6c-3a21-29d8e7ecd326.png?w=280&fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=36f1d223399d18b4573918d50df6264e 280w, https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-dffed9bc-5bf1-5d6c-3a21-29d8e7ecd326.png?w=560&fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=4f0c33624eac1751ac0b48f5e45c8bc5 560w, https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-dffed9bc-5bf1-5d6c-3a21-29d8e7ecd326.png?w=840&fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=e0bac809824e50a8c0f65787f387d786 840w, https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-dffed9bc-5bf1-5d6c-3a21-29d8e7ecd326.png?w=1100&fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=28928cbf9eca790077d3bdc4a7e1fdc3 1100w, https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-dffed9bc-5bf1-5d6c-3a21-29d8e7ecd326.png?w=1650&fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=ca2904d28bd466cff3da5104bce3d281 1650w, https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-dffed9bc-5bf1-5d6c-3a21-29d8e7ecd326.png?w=2500&fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=9ec57d29cb9744ec7b4ecb71b11cf765 2500w" />
   </Frame>
 
-  *AutoTranscribe showing conversation transcriptions in a sandbox environment.*
+  *AI Transcribe showing conversation transcriptions in a sandbox environment.*
 
   <Accordion title="How It Works video">
-    Watch the following video walkthrough to learn how to use the AutoTranscribe Sandbox:
+    Watch the following video walkthrough to learn how to use the AI Transcribe Sandbox:
 
     <iframe width="560" height="315" allow="fullscreen *" src="https://fast.wistia.net/embed/iframe/njm726drfz" />
   </Accordion>
 </Update>
 
 <Update label="2023-05-22 - Twilio Media Gateway">
-  ASAPP is adding an AutoTranscribe implementation pattern for Twilio. ASAPP's Twilio Media Gateway will allow Twilio Media Streams audio to be easily sent to AutoTranscribe.
+  ASAPP is adding an AI Transcribe implementation pattern for Twilio. ASAPP's Twilio Media Gateway will allow Twilio Media Streams audio to be easily sent to AI Transcribe.
 
   <Frame>
     <img src="https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-17b8f7ed-0d4d-92aa-f3cf-1956d27806cf.png?fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=3f0a59dd39fbdd06cfa971b0f774fa5a" data-og-width="1958" width="1958" data-og-height="1092" height="1092" data-path="image/uuid-17b8f7ed-0d4d-92aa-f3cf-1956d27806cf.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-17b8f7ed-0d4d-92aa-f3cf-1956d27806cf.png?w=280&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=99a529ff0f8375f4ce5ddb6955a2d11d 280w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-17b8f7ed-0d4d-92aa-f3cf-1956d27806cf.png?w=560&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=8c6e893bdbb00a0449edd2855f8cea22 560w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-17b8f7ed-0d4d-92aa-f3cf-1956d27806cf.png?w=840&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=94359daa3e8eef2309f9fc082b3eda74 840w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-17b8f7ed-0d4d-92aa-f3cf-1956d27806cf.png?w=1100&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=379b3a3750cf330ff1f1fcb92c2ef46e 1100w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-17b8f7ed-0d4d-92aa-f3cf-1956d27806cf.png?w=1650&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=0d5562236d808b4832974d52c9c7b05a 1650w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-17b8f7ed-0d4d-92aa-f3cf-1956d27806cf.png?w=2500&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=543e7012aef73679163af7b9b4e02005 2500w" />
@@ -360,17 +360,17 @@
 
   The new Media Gateway will allow for a simplified and easy integration for customers leveraging Twilio as their CCaaS provider, reducing time and effort of sending call media to ASAPP.
 
-  <Card title="Twilio Media Gateway for AutoTranscribe" href="/autotranscribe/twilio">
-    Learn more about integrating Twilio Media Gateway with AutoTranscribe
+  <Card title="Twilio Media Gateway for AI Transcribe" href="/ai-productivity/ai-transcribe/twilio">
+    Learn more about integrating Twilio Media Gateway with AI Transcribe
   </Card>
 </Update>
 
 <Update label="2023-01-03 - Get Transcript API">
-  ASAPP is adding a new endpoint that retrieves the full set of messages for a specified conversation. This expands the delivery use cases for AutoTranscribe, providing a means to get a complete transcript at the end of a conversation on-demand, instead of in real-time during the conversation or in daily batches of conversations.
+  ASAPP is adding a new endpoint that retrieves the full set of messages for a specified conversation. This expands the delivery use cases for AI Transcribe, providing a means to get a complete transcript at the end of a conversation on-demand, instead of in real-time during the conversation or in daily batches of conversations.
 
   It also serves as a fallback option to retrieve conversation messages in rare cases where real-time transcript delivery fails.
 
-  <Card title="Get Transcript API Documentation" href="/autotranscribe/direct-websocket#step-5-receive-transcriptions-from-autotranscribe">
+  <Card title="Get Transcript API Documentation" href="/ai-productivity/ai-transcribe/direct-websocket#step-5-receive-transcriptions-from-autotranscribe">
     Learn more about using the Get Transcript API
   </Card>
 </Update>

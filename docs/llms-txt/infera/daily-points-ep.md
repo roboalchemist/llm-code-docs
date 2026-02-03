@@ -1,5 +1,9 @@
 # Source: https://docs.infera.org/api-reference/endpoint/daily-points-ep.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.infera.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Daily Points Ep
 
 > Endpoint to fetch daily points for a specific node by making a request to the storage service.
@@ -7,94 +11,72 @@
 :param request: Request payload containing node_name and last_days.
 :return: List of daily points for the specified node fetched from the storage service.
 
+
+
 ## OpenAPI
 
 ````yaml post /daily_points
+openapi: 3.1.0
+info:
+  title: FastAPI
+  version: 0.1.0
+servers:
+  - url: https://api.infera.org/
+    description: Infera production servers
+security: []
 paths:
-  path: /daily_points
-  method: post
-  servers:
-    - url: https://api.infera.org/
-      description: Infera production servers
-  request:
-    security:
-      - title: APIKeyHeader
-        parameters:
-          query: {}
-          header:
-            api_key:
-              type: apiKey
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              node_name:
-                allOf:
-                  - type: string
-                    title: Node Name
-              last_days:
-                allOf:
-                  - type: integer
-                    title: Last Days
-            required: true
-            title: DailyPointsRequest
-            refIdentifier: '#/components/schemas/DailyPointsRequest'
-            requiredProperties:
-              - node_name
-              - last_days
-        examples:
-          example:
-            value:
-              node_name: <string>
-              last_days: 123
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: array
-            items:
-              allOf:
-                - $ref: '#/components/schemas/DailyPoints'
-            title: Response Daily Points Ep Daily Points Post
-        examples:
-          example:
-            value:
-              - date: <any>
-                points: 123
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+  /daily_points:
+    post:
+      summary: Daily Points Ep
+      description: >-
+        Endpoint to fetch daily points for a specific node by making a request
+        to the storage service.
+
+
+        :param request: Request payload containing node_name and last_days.
+
+        :return: List of daily points for the specified node fetched from the
+        storage service.
+      operationId: daily_points_ep_daily_points_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DailyPointsRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DailyPoints'
+                type: array
+                title: Response Daily Points Ep Daily Points Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - APIKeyHeader: []
 components:
   schemas:
+    DailyPointsRequest:
+      properties:
+        node_name:
+          type: string
+          title: Node Name
+        last_days:
+          type: integer
+          title: Last Days
+      type: object
+      required:
+        - node_name
+        - last_days
+      title: DailyPointsRequest
     DailyPoints:
       properties:
         date:
@@ -107,6 +89,15 @@ components:
         - date
         - points
       title: DailyPoints
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -128,5 +119,10 @@ components:
         - msg
         - type
       title: ValidationError
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: api_key
 
 ````

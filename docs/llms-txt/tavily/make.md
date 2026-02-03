@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/integrations/make.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Make
 
 > Tavily is now available for no-code integration through Make.
@@ -98,8 +102,3 @@ To optimize your Tavily integration in Make:
 * Use the Iterator module to process multiple search results efficiently
 * Use filters to process only relevant results
 * Use the Aggregator module to combine multiple search results
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

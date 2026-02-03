@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/setbit.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/setbit.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/setbit.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/setbit.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/setbit.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/setbit.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/setbit.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/setbit.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/setbit.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/setbit.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SETBIT
 
@@ -26,11 +12,11 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the bitset
 </ParamField>
 
-<ParamField body="offset" type="integer" required>
+<ParamField body="offset" type="int" required>
   Specify the offset at which to set the bit.
 </ParamField>
 
@@ -45,7 +31,7 @@
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const originalBit = await redis.setbit(key, 4, 1);
+  ```py Example theme={"system"}
+  original_bit = redis.setbit(key, 4, 1)
   ```
 </RequestExample>

@@ -94,6 +94,7 @@ Paying with Klarna redirects customers to Klarna’s site, which displays paymen
 - Payment Links
 - Elements
 - Invoicing
+- Subscriptions
 
 ## Payment flow
 
@@ -115,11 +116,11 @@ To get started with Klarna:
 
 ## Payment options 
 
-Depending on the customer’s currency and the transaction amount, Klarna can present customers with various payment options. Cart ranges and geographic availability for payment options are determined by Klarna and might change at their discretion. Regardless of the underlying payment option selected, Stripe makes the full amount of the funds (minus fees) available to you upfront and Klarna collects the purchase amount from your customer, who repays Klarna directly. The following table describes the payment options and the buyer countries that support each option for one-time and recurring payments.
+Depending on the customer’s currency and the transaction amount, Klarna can present customers with various payment options. Cart ranges and geographic availability for payment options are determined by Klarna and might change at their discretion. Regardless of the underlying payment option selected, Stripe makes the full amount of the funds (minus fees) available to you upfront and Klarna collects the purchase amount from your customer, who repays Klarna directly. The following table describes the payment options and the buyer countries that support each option for one-time and recurring payments1.
 
-| Payment option                                                                                                                                                                                                                                                                                                                                                                                                      | Customer country1                                                                                                                                       | Minimum/maximum                                                                                                                                                                                                                                                                                                                                                                                              |
+| Payment option                                                                                                                                                                                                                                                                                                                                                                                                      | Customer country2                                                                                                                                       | Minimum/maximum                                                                                                                                                                                                                                                                                                                                                                                              |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Pay in full**2: Customers pay for the purchase immediately using a linked card, bank debit, or bank transfer. Use cases:
+| **Pay in full**3: Customers pay for the purchase immediately using a linked card, bank debit, or bank transfer. Use cases:
   - One-time payments
   - Short-term subscriptions (weekly or monthly)
   - Long-term subscriptions (longer than monthly)
@@ -135,6 +136,7 @@ Depending on the customer’s currency and the transaction amount, Klarna can pr
   - ES
   - FI
   - FR
+  - GB
   - GR
   - IE
   - IT
@@ -144,7 +146,6 @@ Depending on the customer’s currency and the transaction amount, Klarna can pr
   - PT
   - RO
   - SE
-  - UK
   - US | - AUD: 0-4,000
   - CAD: 0-2,000
   - CHF: 1-1,585
@@ -159,7 +160,7 @@ Depending on the customer’s currency and the transaction amount, Klarna can pr
   - RON: 0-20,000
   - SEK: 1-100,000
   - USD: 0-4,000                                                                                                      |
-| **Pay later**3: Customers pay for the purchase in a single payment in 30 days. Use cases:
+| **Pay later**4: Customers pay for the purchase in a single payment in 30 days. Use cases:
   - One-time payments
   - Short-term subscriptions (weekly or monthly)
   - Long-term subscriptions (longer than 2 months)
@@ -172,6 +173,7 @@ Depending on the customer’s currency and the transaction amount, Klarna can pr
   - ES
   - FI
   - FR
+  - GB
   - GR
   - IT
   - NL
@@ -180,7 +182,6 @@ Depending on the customer’s currency and the transaction amount, Klarna can pr
   - PT
   - RO
   - SE
-  - UK
   - US                      | - CHF: 1-1,000
   - CZK: 0-12,250
   - DKK: 1-50,000
@@ -197,7 +198,7 @@ Depending on the customer’s currency and the transaction amount, Klarna can pr
   - RON: 0-2,500
   - SEK: 1-100,000
   - USD: 5-1,000                                                         |
-| **Pay in 3 or 4**4: Customers pay for the purchase in three or four interest-free payments. The total transaction amount is typically spread equally across the installments, but Klarna might occasionally charge your customer more in the first installment based on the customer’s purchase power and other credit factors. Use cases:
+| **Pay in 3 or 4**5: Customers pay for the purchase in three or four interest-free payments. The total transaction amount is typically spread equally across the installments, but Klarna might occasionally charge your customer more in the first installment based on the customer’s purchase power and other credit factors. Use cases:
   - One-time payments
   - Long-term subscriptions (longer than 2 months) | - AT
   - AU
@@ -208,6 +209,7 @@ Depending on the customer’s currency and the transaction amount, Klarna can pr
   - DK
   - ES
   - FR
+  - GB
   - GR
   - IE
   - IT
@@ -217,9 +219,7 @@ Depending on the customer’s currency and the transaction amount, Klarna can pr
   - PL
   - PT
   - RO
-  - SE
-  - UK
-  - US        | - Pay in 3
+  - US               | - Pay in 3
     - CHF: 1-5,000
     - CZK: 25-25,000
     - DKK: 10-50,000
@@ -237,16 +237,15 @@ Depending on the customer’s currency and the transaction amount, Klarna can pr
     - CAD: 1-1,500
     - NZD: 10-2,000
     - USD: 1-2,000 |
-| **Financing**5: Customers pay for the purchase over a longer term of up to 36 months, which might include interest. Not all customers are approved for the maximum amount, and approval is subject to credit worthiness. Use cases:
+| **Financing**6: Customers pay for the purchase over a longer term of up to 36 months, which might include interest. Not all customers are approved for the maximum amount, and approval is subject to credit worthiness. Use cases:
   - One-time payments                                                                                                                                                           | - AT
   - CA
   - DE
   - FI
-  - GR
+  - GB\*
   - NO
   - SE
-  - UK
-  - US                                                                                            | - CAD: 250-17,500
+  - US                                                                                                 | - CAD: 250-17,500
   - EUR:
     - Austria: 25-5,000
     - Finland: 25-3,000
@@ -256,15 +255,17 @@ Depending on the customer’s currency and the transaction amount, Klarna can pr
   - SEK: 250-100,000
   - USD: 45-10,000                                                                                                                                                                                                                           |
 
-1 Among US territories, Klarna only supports Puerto Rico for all payment options. Pay later is supported in all states except Montana (MT), New Mexico (NM), and Hawaii (HI). Pay in 4 is supported in all states except New Mexico (NM) and Hawaii (HI). Financing is supported in all states except Iowa (IA), West Virginia (WV), and Massachusetts (MA).
+1 When you set the [setup_future_usage](https://docs.stripe.com/api/payment_intents/object.md#payment_intent_object-setup_future_usage) parameter, a Klarna payment isn’t considered a one-time payment. This prevents the [Payment Method Messaging Element](https://docs.stripe.com/elements/payment-method-messaging.md) and [Payment Element](https://docs.stripe.com/payments/payment-element.md) from displaying payment plans that a customer is eligible for.
 
-2 Australia, Norway, and Poland only support Pay in Full for one-time payments.
+2 Among US territories, Klarna only supports Puerto Rico for all payment options. Pay later is supported in all states except Montana (MT), New Mexico (NM), and Hawaii (HI). Pay in 4 is supported in all states except New Mexico (NM) and Hawaii (HI). Financing is supported in all states except Iowa (IA), West Virginia (WV), and Massachusetts (MA).
 
-3 Germany, Sweden, and the United States are the only countries that support Pay Later for subscription and on-demand payments.
+3 Australia, Norway, and Poland only support Pay in Full for one-time payments.
 
-4 Australia, Finland, New Zealand, and Poland only support Pay in 3 or 4 for one-time payments.
+4 Germany, Sweden, and the United States are the only countries that support Pay Later for subscription and on-demand payments.
 
-5 See the [Klarna FAQ](https://support.stripe.com/questions/klarna-faq#klarna-financing-us-uk-payers) for more information about Klarna Financing availability in the United Kingdom.
+5 Australia, Finland, New Zealand, and Poland only support Pay in 3 or 4 for one-time payments.
+
+6 See the [Klarna FAQ](https://support.stripe.com/questions/klarna-faq#klarna-financing-us-uk-payers) for more information about Klarna Financing availability in the United Kingdom.
 
 ## Cross-border payments 
 

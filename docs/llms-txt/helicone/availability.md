@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/references/availability.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Availability and Reliability
 
 > Helicone ensures high availability for your LLM applications using Cloudflare's global network. Learn about our deployment practices and how we maintain reliability.

@@ -1,5 +1,9 @@
 # Source: https://docs.coollabs.io/coolify/v3/iam.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.coollabs.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Identity & Access Management
 
 ## Users
@@ -42,11 +46,11 @@ You can only access other team's resources if someone with an `admin` privilege 
 
 Team members could have two kinds of privileges:
 
-*   `admin` has the same privileges as the `owner` of the team.
+* `admin` has the same privileges as the `owner` of the team.
 
 Admin can check, modify, delete any resources that are owned by the team.
 
-*   `read` can only read things.
+* `read` can only read things.
 
 ### Root Team
 

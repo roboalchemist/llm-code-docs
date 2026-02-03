@@ -1,3 +1,5 @@
+# Source: https://embednotionpages.com/blog/password-protect-notion-page
+
 # How to Add a Password to a Notion Page
 
 Notion doesn't let you add passwords to pages yet.

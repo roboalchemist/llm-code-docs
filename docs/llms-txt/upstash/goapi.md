@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/tutorials/goapi.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Serverless Golang API with Redis
 
 This tutorial shows how to build a serverless API with Golang and Redis. The API

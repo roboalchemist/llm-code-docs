@@ -17,7 +17,7 @@ url: /docs/guide/usage/formatter/cli.md
 * **`    --init`** —
   Initialize `.oxfmtrc.json` with default values
 * **`    --migrate`**=*`SOURCE`* —
-  Migrate configuration to `.oxfmtrc.json` from specified source Available sources: prettier
+  Migrate configuration to `.oxfmtrc.json` from specified source Available sources: prettier, biome
 * **`    --lsp`** —
   Start language server protocol (LSP) server
 * **`    --stdin-filepath`**=*`PATH`* —

@@ -5,8 +5,7 @@ title: DatadogMonitor CRD
 description: >-
   Deploy and manage Datadog monitors using the DatadogMonitor custom resource
   definition with the Datadog Operator
-breadcrumbs: Docs > Container Monitoring > Datadog Operator > DatadogMonitor CRD
-source_url: https://docs.datadoghq.com/datadog_operator/crd_monitor/index.html
+breadcrumbs: Docs > Containers > Datadog Operator > DatadogMonitor CRD
 ---
 
 # DatadogMonitor CRD

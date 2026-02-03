@@ -4,8 +4,6 @@
 title: IVS Playback Restriction Policy
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > IVS Playback Restriction Policy
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ivs_playback_restriction_policy.dataset/index.html
 ---
 
 # IVS Playback Restriction Policy
@@ -27,4 +25,4 @@ aws.ivs_playback_restriction_policy
 | arn                              | core | string        | Playback-restriction-policy ARN                                                                                                                                                                                                            |
 | enable_strict_origin_enforcement | core | bool          | Whether channel playback is constrained by origin site. Default: false.                                                                                                                                                                    |
 | name                             | core | string        | Playback-restriction-policy name. The value does not need to be unique.                                                                                                                                                                    |
-| tags                             | core | hstore        |
+| tags                             | core | hstore_csv    |

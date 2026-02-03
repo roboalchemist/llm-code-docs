@@ -2,17 +2,9 @@
 
 # Source: https://docs.helicone.ai/gateway/integrations/llamaindex.md
 
-# Source: https://docs.helicone.ai/integrations/openai/llamaindex.md
-
-# Source: https://docs.helicone.ai/gateway/integrations/llamaindex.md
-
-# Source: https://docs.helicone.ai/integrations/openai/llamaindex.md
-
-# Source: https://docs.helicone.ai/gateway/integrations/llamaindex.md
-
-# Source: https://docs.helicone.ai/integrations/openai/llamaindex.md
-
-# Source: https://docs.helicone.ai/gateway/integrations/llamaindex.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # LlamaIndex Integration
 
@@ -96,3 +88,7 @@ llm = Helicone(
 * Learn more about routing and model coverage:
   * <a href="/gateway/provider-routing">Provider routing</a>
   * <a href="https://www.helicone.ai/models" target="_blank">Model registry</a>
+
+<Note title="Request a Helicone Integration" type="info">
+  Looking for a framework or tool not listed here? [Request it here!](https://forms.gle/E9GYKWevh6NGDdDj7)
+</Note>

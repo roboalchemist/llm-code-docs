@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/faqs/data-and-ai-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Data & AI Integration
 
 This section addresses frequently asked questions when connecting data sources, setting up AI/ML model endpoints, or troubleshooting integration issues within AI Squared.

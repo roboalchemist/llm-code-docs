@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/access-controls/temporary-access.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Temporary Access
 
 > Learn how to set up timed access to sensitive resources for user and machine identities.

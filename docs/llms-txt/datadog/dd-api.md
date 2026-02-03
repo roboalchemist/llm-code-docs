@@ -22,8 +22,6 @@ description: Manually instrument your .NET application to send custom traces to 
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Code-Based Custom Instrumentation >
   .NET > .NET Custom Instrumentation using the Datadog API
-source_url: >-
-  https://docs.datadoghq.com/trace_collection/custom_instrumentation/dotnet/dd-api/index.html
 ---
 
 # .NET Custom Instrumentation using the Datadog API

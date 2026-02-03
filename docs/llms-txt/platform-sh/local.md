@@ -1,17 +1,5 @@
 # Source: https://docs.upsun.com/development/local.md
 
-# Source: https://docs.upsun.com/guides/symfony/local.md
-
-# Source: https://docs.upsun.com/guides/django/local.md
-
-# Source: https://docs.upsun.com/development/local.md
-
-# Source: https://docs.upsun.com/guides/symfony/local.md
-
-# Source: https://docs.upsun.com/guides/django/local.md
-
-# Source: https://docs.upsun.com/development/local.md
-
 # Set up your local development environment
 
 To make changes to your app's code and test them without affecting your production environment,

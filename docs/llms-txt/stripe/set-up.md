@@ -14,11 +14,11 @@ If you’re a platform that wants to set up Stripe Tax for your connected accoun
 
 This short video shows you how to enable automatic tax collection through the Dashboard.
 [Watch on YouTube](https://www.youtube.com/watch?v=_A2tC63ooSs)
-## Set your origin address
+## Set your head office address
 
-Origin address is where your business is located or, if you sell physical goods, the address where you’re shipping goods from.
+Your head office is where your business is located or, if you sell physical goods, the address where you’re shipping goods from.
 
-By default, we set your origin address to your Stripe business address so you only need to review and confirm that your details are correct on the [tax settings page](https://dashboard.stripe.com/settings/tax). Alternatively, you can [retrieve](https://docs.stripe.com/api/tax/settings/retrieve.md) and [update](https://docs.stripe.com/api/tax/settings/update.md) your origin address using the API.
+By default, we set your head office address to your Stripe business address so you only need to review and confirm that your details are correct on the [tax settings page](https://dashboard.stripe.com/settings/tax). Alternatively, you can [retrieve](https://docs.stripe.com/api/tax/settings/retrieve.md) and [update](https://docs.stripe.com/api/tax/settings/update.md) your head office address using the API.
 
 ## Select your preset tax code
 
@@ -59,9 +59,6 @@ The final step in setting up Stripe Tax is to enable automatic tax on your Strip
 #### No-code
 
 After you click **Get started**, Stripe Tax is automatically enabled for new transactions that you create in the Dashboard. To disable it, go to the [tax settings](https://dashboard.stripe.com/settings/tax/integrations) page.
-![Stripe Dashboard with the automatic tax toggle set to true](https://b.stripecdn.com/docs-statics-srv/assets/dashboard_automatic_tax.2338adf39e3a07ad9acd79c036e7c637.png)
-
-Stripe Dashboard with the automatic tax toggle set to true
 
 | Integration                                                          | Definition                                                                                                                                                           |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

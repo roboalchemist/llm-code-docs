@@ -1,4 +1,4 @@
-# Source: https://docs.intelligems.io/offer-experiences/offers-library/how-to-set-up-a-free-gift-with-purchase-threshold-offer.md
+# Source: https://docs.intelligems.io/offer-personalizations/offers-library/how-to-set-up-a-free-gift-with-purchase-threshold-offer.md
 
 # How to Set Up a Free Gift With Purchase Threshold Offer
 
@@ -7,7 +7,7 @@
 You can use **Offers** to reward shoppers with a free gift once they cross a certain spend threshold. This is a powerful way to increase average order value (AOV), move inventory, and delight customers—without relying on deep discounting.
 
 {% hint style="info" %}
-Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.
+Offer Personalizations are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.
 {% endhint %}
 
 **Example:** Free gift on orders over $150, Free gift for an influencer audience, Free gift to VIPs\
@@ -41,7 +41,7 @@ Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offe
 
 {% embed url="<https://www.loom.com/share/589cea24a25d464ca2a76c6affa667ea>" %}
 
-1. Go to Experiences > **Offers**
+1. Go to Personalizations > **Offers**
 2. Select **Free Gift** as the offer type
 3. Add an **Offer name** (internal) example: *Free Gift on Orders over $150*
 4. Add a **Discount name** shoppers will see in cart and checkout, example: *Free Gift!*
@@ -67,5 +67,5 @@ Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offe
 15. Add **Targeting** to choose which shoppers you want to see this gift with purchase
 16. **Save** your Offer
 17. **Preview** your Offer on desktop and mobile
-18. When everything looks good, **Schedule Your Offer Experience** or **Activate** to go live
+18. When everything looks good, **Schedule Your Offer Personalization** or **Activate** to go live
 19. Promote through **email, SMS, and paid campaigns** to maximize visibility

@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/features/globaldatabase.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Global Database
 
 In the global database, the replicas are distributed across multiple regions
@@ -32,21 +36,38 @@ database. You can add or remove regions on a running Redis database.
 
 Here the list of regions currently supported:
 
-* AWS US-East-1 North Virginia
-* AWS US-East-2 Ohio
-* AWS US-West-1 North California
-* AWS US-West-2 Oregon
-* AWS EU-West-1 Ireland
-* AWS EU-West-2 London
-* AWS EU-Central-1 Frankfurt
-* AWS AP-South-1 Mumbai
-* AWS AP-SouthEast-1 Singapore
-* AWS AP-SouthEast-2 Sydney
-* AWS AP-NorthEast-1 Japan
-* AWS SA-East-1 São Paulo
+<Tabs>
+  <Tab title="Amazon Web Services">
+    | Region                  | Code           |
+    | ----------------------- | -------------- |
+    | N. Virginia, USA        | us-east-1      |
+    | Ohio, USA               | us-east-2      |
+    | N. California, USA      | us-west-1      |
+    | Oregon, USA             | us-west-2      |
+    | Central Canada          | ca-central-1   |
+    | Sao Paulo, Brazil       | sa-east-1      |
+    | Ireland                 | eu-west-1      |
+    | London, UK              | eu-west-2      |
+    | Frankfurt, Germany      | eu-central-1   |
+    | Mumbai, India           | ap-south-1     |
+    | Singapore               | ap-southeast-1 |
+    | Tokyo, Japan            | ap-northeast-1 |
+    | Sydney, Australia       | ap-southeast-2 |
+    | Cape Town, South Africa | af-south-1     |
+  </Tab>
+
+  <Tab title="Google Cloud Platform">
+    | Region        | Code            |
+    | ------------- | --------------- |
+    | Iowa, USA     | us-central1     |
+    | Virginia, USA | us-east4        |
+    | Belgium       | europe-west1    |
+    | Tokyo, Japan  | asia-northeast1 |
+  </Tab>
+</Tabs>
 
 <Frame>
-  <img src="https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/globaldb/regionselect.png?fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=c177261b7443aad5aab557f7ab312d8d" width="520" data-og-width="974" data-og-height="1603" data-path="img/globaldb/regionselect.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/globaldb/regionselect.png?w=280&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=8dc3ffc3f04cb5aac64fb1d284467a92 280w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/globaldb/regionselect.png?w=560&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=b413c448ee87a3578e0a70ef409dfe1d 560w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/globaldb/regionselect.png?w=840&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=1b42b024e74fafd89a13e50c98e34fb3 840w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/globaldb/regionselect.png?w=1100&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=55a74b38c825de58ed043a063d226ebc 1100w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/globaldb/regionselect.png?w=1650&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=cba8e82fee977b3c70e605be921a13ed 1650w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/globaldb/regionselect.png?w=2500&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=6b6406fdcea9e681b23b2a81a0e19919 2500w" />
+  <img src="https://mintcdn.com/upstash/gdRdyWQoqxKV6AH0/img/globaldb/regionselect.png?fit=max&auto=format&n=gdRdyWQoqxKV6AH0&q=85&s=67a7e9ff8cd616c3c4cc442e83c5e0d6" width="520" data-og-width="1086" data-og-height="1436" data-path="img/globaldb/regionselect.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/gdRdyWQoqxKV6AH0/img/globaldb/regionselect.png?w=280&fit=max&auto=format&n=gdRdyWQoqxKV6AH0&q=85&s=d5d51451dab7f1f7dfe041786c1eb8c9 280w, https://mintcdn.com/upstash/gdRdyWQoqxKV6AH0/img/globaldb/regionselect.png?w=560&fit=max&auto=format&n=gdRdyWQoqxKV6AH0&q=85&s=f27dddda2c1a69d56e86db664a7f7be0 560w, https://mintcdn.com/upstash/gdRdyWQoqxKV6AH0/img/globaldb/regionselect.png?w=840&fit=max&auto=format&n=gdRdyWQoqxKV6AH0&q=85&s=30f46be40941991ae5f680d45a3ddf3d 840w, https://mintcdn.com/upstash/gdRdyWQoqxKV6AH0/img/globaldb/regionselect.png?w=1100&fit=max&auto=format&n=gdRdyWQoqxKV6AH0&q=85&s=3fbb0d3e30e17ef1ba87ab47e9dd01dc 1100w, https://mintcdn.com/upstash/gdRdyWQoqxKV6AH0/img/globaldb/regionselect.png?w=1650&fit=max&auto=format&n=gdRdyWQoqxKV6AH0&q=85&s=385d4934039373d8d9a932308add8ba4 1650w, https://mintcdn.com/upstash/gdRdyWQoqxKV6AH0/img/globaldb/regionselect.png?w=2500&fit=max&auto=format&n=gdRdyWQoqxKV6AH0&q=85&s=414219db3b3f9c17d47f44f4b5e5ce04 2500w" />
 </Frame>
 
 In our internal tests, we see the following latencies (99th percentile):

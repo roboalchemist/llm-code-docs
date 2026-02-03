@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/custom-strategy/
+
 # Custom Strategy
 
 Write natural language instructions to create powerful multi-turn red team strategies. No coding required.

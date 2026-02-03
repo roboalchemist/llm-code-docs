@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/cerebras/
+
 # Cerebras
 
 This provider enables you to use Cerebras models through their [Inference API](https://docs.cerebras.ai/).

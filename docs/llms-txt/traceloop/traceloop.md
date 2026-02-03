@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/integrations/traceloop.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Observability with Traceloop
 
 <Frame>
@@ -67,8 +71,3 @@ service:
 ```
 
 You can route OpenLLMetry to your collector by following the [OpenTelemetry Collector](/openllmetry/integrations/otel-collector) integration instructions.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

@@ -5,8 +5,7 @@ title: Kubernetes distributions
 description: >-
   Platform-specific installation and configuration instructions for Datadog
   Agent on various Kubernetes distributions
-breadcrumbs: Docs > Container Monitoring > Kubernetes > Kubernetes distributions
-source_url: https://docs.datadoghq.com/kubernetes/distributions/index.html
+breadcrumbs: Docs > Containers > Kubernetes > Kubernetes distributions
 ---
 
 # Kubernetes distributions

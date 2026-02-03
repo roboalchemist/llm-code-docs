@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/bundle.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Reference user-entered details with data bundles
 
 > Zapier stores data from users' authentication and input forms for API calls in the `bundle` object. You can reference that data in your integration using either `{{bundle.bundleName.field}}` or `${bundle.bundleName.field}`, depending on the context. Replace `bundleName` with the bundle name and `field` with the input field key or API response field key you need.

@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/custom-nodes/backend/lifecycle.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Lifecycle
 
 ## How Comfy loads custom nodes

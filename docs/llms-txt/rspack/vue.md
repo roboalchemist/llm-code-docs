@@ -1,23 +1,21 @@
 # Source: https://rspack.dev/guide/tech/vue.md
 
-import { PackageManagerTabs } from '@theme';
-
 # Vue
 
 ## How to use
 
 Rspack provides two solutions to support Vue:
 
-* **Use Rsbuild**: Rsbuild provides out-of-the-box support for Vue 3 and Vue 2, allowing you to quickly create a Vue project. See ["Rsbuild - Vue 3"](https://rsbuild.rs/guide/framework/vue#vue-3) or ["Rsbuild - Vue 2"](https://rsbuild.rs/guide/framework/vue#vue-2) for details.
-* **Manually configure Rspack**: You can refer to the current document to manually add configurations for Vue.
+- **Use Rsbuild**: Rsbuild provides out-of-the-box support for Vue 3 and Vue 2, allowing you to quickly create a Vue project. See ["Rsbuild - Vue 3"](https://rsbuild.rs/guide/framework/vue#vue-3) or ["Rsbuild - Vue 2"](https://rsbuild.rs/guide/framework/vue#vue-2) for details.
+- **Manually configure Rspack**: You can refer to the current document to manually add configurations for Vue.
 
 ## Vue 3
 
-Currently, Vue 3 is supported by Rspack. Please make sure your [vue-loader](https://github.com/vuejs/vue-loader) version is >= 17.2.2 and configure as follows:
+Currently, Vue 3 is supported by Rspack. Please make sure your [rspack-vue-loader](https://github.com/rstackjs/rspack-vue-loader) version is >= 17.2.2 and configure as follows:
 
 ```js title="rspack.config.mjs"
 import { defineConfig } from '@rspack/cli';
-import { VueLoaderPlugin } from 'vue-loader';
+import { VueLoaderPlugin } from 'rspack-vue-loader';
 
 export default defineConfig({
   plugins: [new VueLoaderPlugin()],
@@ -25,7 +23,7 @@ export default defineConfig({
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
+        loader: 'rspack-vue-loader',
         options: {
           // Note, for the majority of features to be available, make sure this option is `true`
           experimentalInlineMatchResource: true,
@@ -67,9 +65,6 @@ export default {
       },
     ],
   },
-  experiments: {
-    css: false, // At this point, you need to turn off `experiments.css` to adapt to the internal processing logic of `vue-loader`
-  },
 };
 ```
 
@@ -87,9 +82,9 @@ You can refer to the related example [example-vue3](https://github.com/rstackjs/
 
 ## Vue 2
 
-Rspack has completed compatibility with Vue 2 (using vue-loader@15).
+Rspack has completed compatibility with Vue 2 (using vue-loader\@15).
 
-Please make sure to turn off `experiments.css` when configuring Vue 2 projects or use `rules[].type = "javascript/auto"` in CSS-related rules:
+Please make sure to use `rules[].type = "javascript/auto"` in CSS-related rules:
 
 ```js title="rspack.config.mjs"
 export default {
@@ -132,7 +127,26 @@ Since Rspack supports using `babel-loader`, you can directly use the [@vue/babel
 
 First, you need to install [babel-loader](https://www.npmjs.com/package/babel-loader), [@babel/core](https://www.npmjs.com/package/@babel/core) and [@vue/babel-plugin-jsx](https://www.npmjs.com/package/@vue/babel-plugin-jsx):
 
-<PackageManagerTabs command="add babel-loader @babel/core @vue/babel-plugin-jsx -D" />
+
+```sh [npm]
+npm add babel-loader @babel/core @vue/babel-plugin-jsx -D
+```
+
+```sh [yarn]
+yarn add babel-loader @babel/core @vue/babel-plugin-jsx -D
+```
+
+```sh [pnpm]
+pnpm add babel-loader @babel/core @vue/babel-plugin-jsx -D
+```
+
+```sh [bun]
+bun add babel-loader @babel/core @vue/babel-plugin-jsx -D
+```
+
+```sh [deno]
+deno add npm:babel-loader npm:@babel/core npm:@vue/babel-plugin-jsx -D
+```
 
 ### Configure
 

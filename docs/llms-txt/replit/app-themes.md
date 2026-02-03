@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replitai/app-themes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # App Themes
 
 > Customize your app's visual appearance with color schemes and themes. Create, manage, and apply themes to new and existing apps.

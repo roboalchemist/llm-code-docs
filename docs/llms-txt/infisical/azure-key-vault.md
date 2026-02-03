@@ -4,27 +4,9 @@
 
 # Source: https://infisical.com/docs/documentation/platform/pki/certificate-syncs/azure-key-vault.md
 
-# Source: https://infisical.com/docs/integrations/secret-syncs/azure-key-vault.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/azure-key-vault.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/certificate-syncs/azure-key-vault.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/azure-key-vault.md
-
-# Source: https://infisical.com/docs/integrations/cloud/azure-key-vault.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/azure-key-vault.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/certificate-syncs/azure-key-vault.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/azure-key-vault.md
-
-# Source: https://infisical.com/docs/integrations/cloud/azure-key-vault.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/azure-key-vault.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/certificate-syncs/azure-key-vault.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Azure Key Vault
 
@@ -66,6 +48,7 @@
 
        * **Enable Removal of Expired/Revoked Certificates**: If enabled, Infisical will remove certificates from the destination if they are no longer active in Infisical.
        * **Enable Versioning on Renewal**: If enabled, Infisical will sync renewed certificates to the destination under a new version of the original synced certificate instead of creating a new certificate.
+       * **Include Root CA**: If enabled, the Root CA certificate will be included in the certificate chain when syncing to Azure Key Vault. If disabled, only intermediate certificates will be included.
        * **Certificate Name Schema** (Optional): Customize how certificate names are generated in Azure Key Vault. Use `{{certificateId}}` as a placeholder for the certificate ID. If not specified, defaults to `Infisical-{{certificateId}}`.
        * **Auto-Sync Enabled**: If enabled, certificates will automatically be synced when changes occur. Disable to enforce manual syncing only.
 
@@ -104,7 +87,7 @@
 
     ```bash Request theme={"dark"}
     curl --request POST \
-    --url https://app.infisical.com/api/v1/pki/syncs/azure-key-vault \
+    --url https://app.infisical.com/api/v1/cert-manager/syncs/azure-key-vault \
     --header 'Authorization: Bearer <access-token>' \
     --header 'Content-Type: application/json' \
     --data '{
@@ -121,6 +104,7 @@
         "syncOptions": {
             "canRemoveCertificates": true,
             "enableVersioningOnRenewal": true,
+            "includeRootCa": false,
             "certificateNameSchema": "myapp-{{certificateId}}"
         },
         "destinationConfig": {
@@ -145,6 +129,7 @@
             "syncOptions": {
                 "canRemoveCertificates": true,
                 "enableVersioningOnRenewal": true,
+                "includeRootCa": false,
                 "certificateNameSchema": "myapp-{{certificateId}}"
             },
             "projectId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",

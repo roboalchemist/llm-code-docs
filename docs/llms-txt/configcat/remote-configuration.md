@@ -2,6 +2,8 @@
 
 # Remote Configuration - Agile Adjustments at Your Fingertips
 
+Copy page
+
 ## Introduction[​](#introduction "Direct link to Introduction")
 
 In the dynamic world of software development, the ability to make quick adjustments to live applications is a game-changer. Remote configuration is the magic wand that enables developers and product teams to update features or settings of an app in real-time, without rolling out a new version. Dive into the flexibility and control offered by remote configuration and how it can be a critical tool for your app’s success.

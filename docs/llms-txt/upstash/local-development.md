@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/qstash/howto/local-development.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Local Development
 
 QStash requires a publicly available API to send messages to.
@@ -26,7 +30,7 @@ npx @upstash/qstash-cli dev -port=8081
 
 Once you start the local server, you can go to the QStash tab on Upstash Console and enable local mode, which will allow you to publish requests and monitor messages with the local server.
 
-<img src="https://mintcdn.com/upstash/6b7_cWf_Wv8tb6kI/img/qstash/local-mode-qstash.png?fit=max&auto=format&n=6b7_cWf_Wv8tb6kI&q=85&s=20d1ab6f53a1b4b9c8f24a64af6a32d6" data-og-width="1210" width="1210" data-og-height="685" height="685" data-path="img/qstash/local-mode-qstash.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/6b7_cWf_Wv8tb6kI/img/qstash/local-mode-qstash.png?w=280&fit=max&auto=format&n=6b7_cWf_Wv8tb6kI&q=85&s=1a0ef1c06088f89ee1fe510841972291 280w, https://mintcdn.com/upstash/6b7_cWf_Wv8tb6kI/img/qstash/local-mode-qstash.png?w=560&fit=max&auto=format&n=6b7_cWf_Wv8tb6kI&q=85&s=f89f092b33563c1fa6dc042e2345885f 560w, https://mintcdn.com/upstash/6b7_cWf_Wv8tb6kI/img/qstash/local-mode-qstash.png?w=840&fit=max&auto=format&n=6b7_cWf_Wv8tb6kI&q=85&s=8684c719b514bea30defa1691cfe7470 840w, https://mintcdn.com/upstash/6b7_cWf_Wv8tb6kI/img/qstash/local-mode-qstash.png?w=1100&fit=max&auto=format&n=6b7_cWf_Wv8tb6kI&q=85&s=a91cf6673fb6d2f605d3c8b8d846a970 1100w, https://mintcdn.com/upstash/6b7_cWf_Wv8tb6kI/img/qstash/local-mode-qstash.png?w=1650&fit=max&auto=format&n=6b7_cWf_Wv8tb6kI&q=85&s=6939a3d2fe01dc2dd65c64af8bd52d97 1650w, https://mintcdn.com/upstash/6b7_cWf_Wv8tb6kI/img/qstash/local-mode-qstash.png?w=2500&fit=max&auto=format&n=6b7_cWf_Wv8tb6kI&q=85&s=14ca23e0fd7512f4129006282380460b 2500w" />
+<img src="https://mintcdn.com/upstash/HUgsoYK-cQi-Kk4T/img/qstash/local-mode-qstash.png?fit=max&auto=format&n=HUgsoYK-cQi-Kk4T&q=85&s=58fbc8985876843b0cd09c538db3c5a7" data-og-width="2042" width="2042" data-og-height="1668" height="1668" data-path="img/qstash/local-mode-qstash.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/HUgsoYK-cQi-Kk4T/img/qstash/local-mode-qstash.png?w=280&fit=max&auto=format&n=HUgsoYK-cQi-Kk4T&q=85&s=fb1253979246bb92a20f80df959a3bb2 280w, https://mintcdn.com/upstash/HUgsoYK-cQi-Kk4T/img/qstash/local-mode-qstash.png?w=560&fit=max&auto=format&n=HUgsoYK-cQi-Kk4T&q=85&s=84bd6595b419e2a24bcb961eb08fc89b 560w, https://mintcdn.com/upstash/HUgsoYK-cQi-Kk4T/img/qstash/local-mode-qstash.png?w=840&fit=max&auto=format&n=HUgsoYK-cQi-Kk4T&q=85&s=af4475a102e034d7d1871d16472c0be4 840w, https://mintcdn.com/upstash/HUgsoYK-cQi-Kk4T/img/qstash/local-mode-qstash.png?w=1100&fit=max&auto=format&n=HUgsoYK-cQi-Kk4T&q=85&s=fb29733b83d961e5b3cdefbd8baa9a80 1100w, https://mintcdn.com/upstash/HUgsoYK-cQi-Kk4T/img/qstash/local-mode-qstash.png?w=1650&fit=max&auto=format&n=HUgsoYK-cQi-Kk4T&q=85&s=e903480c4783cce05f0f9d37017d277e 1650w, https://mintcdn.com/upstash/HUgsoYK-cQi-Kk4T/img/qstash/local-mode-qstash.png?w=2500&fit=max&auto=format&n=HUgsoYK-cQi-Kk4T&q=85&s=f928845a2f61badf0802f55df38ca04f 2500w" />
 
 ## Docker
 

@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/help/oem-integrations/tesla/virtual-key-tesla.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Virtual Keys
 
 > This page has information regarding the use of Virtual Keys for Tesla vehicles.
@@ -81,11 +85,21 @@ Virtual Key status can be checked at any time from the Tesla infotainment screen
 
 ## Do all vehicles need a virtual key?
 
-2020 and earlier Model S and X **will not** require a virtual key at this time. Data for these vehicles is refreshed every
-5 minutes while the vehicle is awake.
+2020 and earlier Model S and X **do not** require a virtual key installation. However, to enable streaming data access (faster, more frequent updates), owners can enable streaming by toggling a setting within the vehicle.
+
+### Enabling Streaming for 2020 and Earlier Model S/X
+
+For 2020 or earlier Model S or X that supports streaming (requires a software update), users can enable streaming without installing a Virtual Key:
+
+1. During the Smartcar Connect flow, drivers will be prompted about enabling streaming for their vehicle
+2. Drivers can choose to receive email instructions on how to enable the streaming toggle in their vehicle
+3. Access the streaming settings from the Tesla infotainment screen
+4. Toggle the streaming setting on to enable faster data updates
+
+Once streaming is enabled via the vehicle toggle, data will be refreshed more frequently without requiring Virtual Key installation for these modals. If streaming toggle is not enabled, data for these older models is refreshed every 5 minutes while the vehicle is awake.
 
 ## What if a streaming capable vehicle does not have a virtual key installed?
 
-If a vehicle is streaming capable and does not yet have a virtual key installed,
+If a vehicle is streaming capable via virtual key and does not yet have a virtual key installed,
 requests to the vehicle will be limited to 1 request every 8 hours for data. These requests **will
 not** wake the vehicle.

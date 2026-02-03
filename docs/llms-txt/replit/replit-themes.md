@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replit-workspace/replit-themes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Replit Themes
 
 > Personalize your workspace with custom color schemes, syntax highlighting, and UI preferences, or explore and use themes created by the community.

@@ -4,8 +4,6 @@
 title: Fraud Detector Event Type
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Fraud Detector Event Type
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.frauddetector_event_type.dataset/index.html
 ---
 
 # Fraud Detector Event Type
@@ -33,4 +31,4 @@ aws.frauddetector_event_type
 | labels                    | core | array<string> | The event type labels.                                                                                                                                                                                                                                                     |
 | last_updated_time         | core | string        | Timestamp of when the event type was last updated.                                                                                                                                                                                                                         |
 | name                      | core | string        | The event type name.                                                                                                                                                                                                                                                       |
-| tags                      | core | hstore        |
+| tags                      | core | hstore_csv    |

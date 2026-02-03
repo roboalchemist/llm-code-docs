@@ -6,7 +6,6 @@ description: >-
   Diagnose and resolve connection errors between tracing libraries and the
   Datadog Agent in various deployment environments.
 breadcrumbs: Docs > APM > APM Troubleshooting > APM Connection Errors
-source_url: https://docs.datadoghq.com/troubleshooting/connection_errors/index.html
 ---
 
 # APM Connection Errors

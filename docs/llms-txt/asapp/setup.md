@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/getting-started/setup.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Setup ASAPP
 
 > Learn how to get started with your ASAPP account
@@ -15,7 +19,7 @@ To get started with ASAPP, you need to:
 The first step with ASAPP is getting your own account. If you haven't already, [request a demo](https://ai-console.asapp.com/). During the initial conversations, an ASAPP member would have asked you for the following:
 
 * Display name of company
-* Admin user email: This user will be granted initial admin access and can invite subsequent users.
+* Admin user email: ASAPP grants this user initial admin access and the user can invite subsequent users.
 * Developer email: This is the user who is responsible for the technical integration. They will receive access to the developer portal.
 
 An account will be created for you, this account is sometimes referred to as an **organization name** or **company marker**.
@@ -36,9 +40,9 @@ Work with your ASAPP account team to determine the best account structure for yo
 
 ## Invite users and developers
 
-Once you have access to your account and the [ASAPP dashboard](https://ai-console.asapp.com/). You need to invite your teammates to access relevant products. Most products are fully managed within the AI Console.
+Once you have access to your account and the [ASAPP dashboard](https://ai-console.asapp.com/). You need to invite your teammates to access relevant products. You can fully manage most products within the AI Console.
 
-<Note>[ASAPP Messaging](/messaging-platform) has a separate dashboard to configure the platform compared to the [Agent Desk](/messaging-platform/digital-agent-desk) where your agents login and interact with your customers.</Note>
+<Note>[ASAPP Messaging](/agent-desk) has a separate dashboard to configure the platform compared to the [Agent Desk](/agent-desk/digital-agent-desk) where your agents login and interact with your customers.</Note>
 
 For developers, we would have already requested for your developer's email to get them access to the developer portal where they can manage API Keys. Point your developers to the [developer quickstart](/getting-started/developers).
 

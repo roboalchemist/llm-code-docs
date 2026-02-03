@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/guides/windsurf.md
+# Source: https://www.mintlify.com/docs/guides/windsurf.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Windsurf
 
@@ -6,7 +10,7 @@
 
 Transform Windsurf into a documentation expert that understands your style guide, components, and project context through workspace rules and memories.
 
-## Using Windsurf with Mintlify
+## Use Windsurf with Mintlify
 
 Windsurf's Cascade AI assistant can be tuned to write documentation according to your standards using Mintlify components. Workspace rules and memories provide persistent context about your project, ensuring more consistent suggestions from Cascade.
 
@@ -141,3 +145,9 @@ Generate a complete code example showing error handling for this API endpoint. U
 ```text wrap theme={null}
 Check if this new page follows our documentation standards and suggest any needed changes.
 ```
+
+## Enhance with MCP server
+
+Connect the Mintlify MCP server to Windsurf to give Cascade access to search the Mintlify documentation while helping you write. When you connect the MCP server, Cascade searches the up to date Mintlify documentation for context so you don't have to leave your IDE to reference documentation.
+
+See [Model Context Protocol](/ai/model-context-protocol#example%3A-connect-to-the-mintlify-mcp-server) for complete setup instructions.

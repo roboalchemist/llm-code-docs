@@ -14,19 +14,19 @@ new rspack.EntryPlugin(context, entry, options);
 
 The module is resolved from `entry` in `context` (absolute path).
 
-* **Type:** `string`
+- **Type:** `string`
 
 ### entry
 
 The module path for the entry module.
 
-* **Type:** `string`
+- **Type:** `string`
 
 ### options
 
 To adjust settings related to the entry module.
 
-* **Type:**
+- **Type:**
 
 ```ts
 type EntryOptions =

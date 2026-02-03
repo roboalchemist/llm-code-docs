@@ -102,261 +102,7 @@
 
 # Source: https://ai.pydantic.dev/api/pydantic_evals/dataset/index.md
 
-# Source: https://ai.pydantic.dev/api/models/wrapper/index.md
-
-# Source: https://ai.pydantic.dev/api/models/test/index.md
-
-# Source: https://ai.pydantic.dev/api/models/outlines/index.md
-
-# Source: https://ai.pydantic.dev/api/models/openrouter/index.md
-
-# Source: https://ai.pydantic.dev/api/models/openai/index.md
-
-# Source: https://ai.pydantic.dev/api/models/mistral/index.md
-
-# Source: https://ai.pydantic.dev/api/models/mcp-sampling/index.md
-
-# Source: https://ai.pydantic.dev/api/models/instrumented/index.md
-
-# Source: https://ai.pydantic.dev/api/models/huggingface/index.md
-
-# Source: https://ai.pydantic.dev/api/models/groq/index.md
-
-# Source: https://ai.pydantic.dev/api/models/google/index.md
-
-# Source: https://ai.pydantic.dev/api/models/function/index.md
-
-# Source: https://ai.pydantic.dev/api/models/fallback/index.md
-
-# Source: https://ai.pydantic.dev/api/models/cohere/index.md
-
-# Source: https://ai.pydantic.dev/api/models/cerebras/index.md
-
-# Source: https://ai.pydantic.dev/api/models/bedrock/index.md
-
-# Source: https://ai.pydantic.dev/api/models/base/index.md
-
-# Source: https://ai.pydantic.dev/api/models/anthropic/index.md
-
-# Source: https://ai.pydantic.dev/api/usage/index.md
-
-# Source: https://ai.pydantic.dev/api/toolsets/index.md
-
-# Source: https://ai.pydantic.dev/api/tools/index.md
-
-# Source: https://ai.pydantic.dev/api/settings/index.md
-
-# Source: https://ai.pydantic.dev/api/run/index.md
-
-# Source: https://ai.pydantic.dev/api/retries/index.md
-
-# Source: https://ai.pydantic.dev/api/result/index.md
-
-# Source: https://ai.pydantic.dev/api/providers/index.md
-
-# Source: https://ai.pydantic.dev/api/profiles/index.md
-
-# Source: https://ai.pydantic.dev/api/output/index.md
-
-# Source: https://ai.pydantic.dev/api/messages/index.md
-
-# Source: https://ai.pydantic.dev/api/mcp/index.md
-
-# Source: https://ai.pydantic.dev/api/format_prompt/index.md
-
-# Source: https://ai.pydantic.dev/api/fasta2a/index.md
-
-# Source: https://ai.pydantic.dev/api/ext/index.md
-
-# Source: https://ai.pydantic.dev/api/exceptions/index.md
-
-# Source: https://ai.pydantic.dev/api/embeddings/index.md
-
-# Source: https://ai.pydantic.dev/api/durable_exec/index.md
-
-# Source: https://ai.pydantic.dev/api/direct/index.md
-
-# Source: https://ai.pydantic.dev/api/common_tools/index.md
-
-# Source: https://ai.pydantic.dev/api/builtin_tools/index.md
-
-# Source: https://ai.pydantic.dev/api/agent/index.md
-
-# Source: https://ai.pydantic.dev/api/ag_ui/index.md
-
-# Source: https://ai.pydantic.dev/graph/index.md
-
-# Source: https://ai.pydantic.dev/models/overview/index.md
-
-# Source: https://ai.pydantic.dev/models/outlines/index.md
-
-# Source: https://ai.pydantic.dev/models/openrouter/index.md
-
-# Source: https://ai.pydantic.dev/models/openai/index.md
-
-# Source: https://ai.pydantic.dev/models/mistral/index.md
-
-# Source: https://ai.pydantic.dev/models/huggingface/index.md
-
-# Source: https://ai.pydantic.dev/models/groq/index.md
-
-# Source: https://ai.pydantic.dev/models/google/index.md
-
-# Source: https://ai.pydantic.dev/models/cohere/index.md
-
-# Source: https://ai.pydantic.dev/models/cerebras/index.md
-
-# Source: https://ai.pydantic.dev/models/bedrock/index.md
-
-# Source: https://ai.pydantic.dev/models/anthropic/index.md
-
-# Source: https://ai.pydantic.dev/toolsets/index.md
-
-# Source: https://ai.pydantic.dev/tools-advanced/index.md
-
-# Source: https://ai.pydantic.dev/third-party-tools/index.md
-
-# Source: https://ai.pydantic.dev/thinking/index.md
-
-# Source: https://ai.pydantic.dev/multi-agent-applications/index.md
-
-# Source: https://ai.pydantic.dev/message-history/index.md
-
-# Source: https://ai.pydantic.dev/retries/index.md
-
-# Source: https://ai.pydantic.dev/output/index.md
-
-# Source: https://ai.pydantic.dev/common-tools/index.md
-
-# Source: https://ai.pydantic.dev/tools/index.md
-
-# Source: https://ai.pydantic.dev/input/index.md
-
-# Source: https://ai.pydantic.dev/embeddings/index.md
-
-# Source: https://ai.pydantic.dev/direct/index.md
-
-# Source: https://ai.pydantic.dev/deferred-tools/index.md
-
-# Source: https://ai.pydantic.dev/dependencies/index.md
-
-# Source: https://ai.pydantic.dev/builtin-tools/index.md
-
-# Source: https://ai.pydantic.dev/agents/index.md
-
-# Source: https://ai.pydantic.dev/a2a/index.md
-
-# Source: https://ai.pydantic.dev/troubleshooting/index.md
-
-# Source: https://ai.pydantic.dev/help/index.md
-
-# Source: https://ai.pydantic.dev/install/index.md
-
-# Source: https://ai.pydantic.dev/index.md
-
-# Source: https://ai.pydantic.dev/examples/weather-agent/index.md
-
-# Source: https://ai.pydantic.dev/examples/stream-whales/index.md
-
-# Source: https://ai.pydantic.dev/examples/stream-markdown/index.md
-
-# Source: https://ai.pydantic.dev/examples/sql-gen/index.md
-
-# Source: https://ai.pydantic.dev/examples/slack-lead-qualifier/index.md
-
-# Source: https://ai.pydantic.dev/examples/setup/index.md
-
-# Source: https://ai.pydantic.dev/examples/rag/index.md
-
-# Source: https://ai.pydantic.dev/examples/question-graph/index.md
-
-# Source: https://ai.pydantic.dev/examples/pydantic-model/index.md
-
-# Source: https://ai.pydantic.dev/examples/flight-booking/index.md
-
-# Source: https://ai.pydantic.dev/examples/data-analyst/index.md
-
-# Source: https://ai.pydantic.dev/examples/chat-app/index.md
-
-# Source: https://ai.pydantic.dev/examples/bank-support/index.md
-
-# Source: https://ai.pydantic.dev/examples/ag-ui/index.md
-
-# Source: https://ai.pydantic.dev/version-policy/index.md
-
-# Source: https://ai.pydantic.dev/changelog/index.md
-
-# Source: https://ai.pydantic.dev/contributing/index.md
-
-# Source: https://ai.pydantic.dev/logfire/index.md
-
-# Source: https://ai.pydantic.dev/cli/index.md
-
-# Source: https://ai.pydantic.dev/testing/index.md
-
-# Source: https://ai.pydantic.dev/ui/vercel-ai/index.md
-
-# Source: https://ai.pydantic.dev/ui/overview/index.md
-
-# Source: https://ai.pydantic.dev/ui/ag-ui/index.md
-
-# Source: https://ai.pydantic.dev/mcp/server/index.md
-
-# Source: https://ai.pydantic.dev/mcp/overview/index.md
-
-# Source: https://ai.pydantic.dev/mcp/fastmcp-client/index.md
-
-# Source: https://ai.pydantic.dev/mcp/client/index.md
-
-# Source: https://ai.pydantic.dev/durable_execution/temporal/index.md
-
-# Source: https://ai.pydantic.dev/durable_execution/prefect/index.md
-
-# Source: https://ai.pydantic.dev/durable_execution/overview/index.md
-
-# Source: https://ai.pydantic.dev/durable_execution/dbos/index.md
-
-# Source: https://ai.pydantic.dev/evals/index.md
-
-# Source: https://ai.pydantic.dev/api/ui/vercel_ai/index.md
-
-# Source: https://ai.pydantic.dev/api/ui/base/index.md
-
-# Source: https://ai.pydantic.dev/api/ui/ag_ui/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/persistence/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/nodes/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/mermaid/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/graph/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/exceptions/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_step/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_node/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_join/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_graph_builder/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_graph/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_decision/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_evals/reporting/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_evals/otel/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_evals/generation/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_evals/evaluators/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_evals/dataset/index.md
+# Source: https://ai.pydantic.dev/api/models/xai/index.md
 
 # Source: https://ai.pydantic.dev/api/models/wrapper/index.md
 
@@ -442,6 +188,8 @@
 
 # Source: https://ai.pydantic.dev/graph/index.md
 
+# Source: https://ai.pydantic.dev/models/xai/index.md
+
 # Source: https://ai.pydantic.dev/models/overview/index.md
 
 # Source: https://ai.pydantic.dev/models/outlines/index.md
@@ -507,562 +255,6 @@
 # Source: https://ai.pydantic.dev/help/index.md
 
 # Source: https://ai.pydantic.dev/install/index.md
-
-# Source: https://ai.pydantic.dev/index.md
-
-# Source: https://ai.pydantic.dev/examples/weather-agent/index.md
-
-# Source: https://ai.pydantic.dev/examples/stream-whales/index.md
-
-# Source: https://ai.pydantic.dev/examples/stream-markdown/index.md
-
-# Source: https://ai.pydantic.dev/examples/sql-gen/index.md
-
-# Source: https://ai.pydantic.dev/examples/slack-lead-qualifier/index.md
-
-# Source: https://ai.pydantic.dev/examples/setup/index.md
-
-# Source: https://ai.pydantic.dev/examples/rag/index.md
-
-# Source: https://ai.pydantic.dev/examples/question-graph/index.md
-
-# Source: https://ai.pydantic.dev/examples/pydantic-model/index.md
-
-# Source: https://ai.pydantic.dev/examples/flight-booking/index.md
-
-# Source: https://ai.pydantic.dev/examples/data-analyst/index.md
-
-# Source: https://ai.pydantic.dev/examples/chat-app/index.md
-
-# Source: https://ai.pydantic.dev/examples/bank-support/index.md
-
-# Source: https://ai.pydantic.dev/examples/ag-ui/index.md
-
-# Source: https://ai.pydantic.dev/version-policy/index.md
-
-# Source: https://ai.pydantic.dev/testing/index.md
-
-# Source: https://ai.pydantic.dev/logfire/index.md
-
-# Source: https://ai.pydantic.dev/contributing/index.md
-
-# Source: https://ai.pydantic.dev/cli/index.md
-
-# Source: https://ai.pydantic.dev/changelog/index.md
-
-# Source: https://ai.pydantic.dev/ui/vercel-ai/index.md
-
-# Source: https://ai.pydantic.dev/ui/overview/index.md
-
-# Source: https://ai.pydantic.dev/ui/ag-ui/index.md
-
-# Source: https://ai.pydantic.dev/mcp/server/index.md
-
-# Source: https://ai.pydantic.dev/mcp/overview/index.md
-
-# Source: https://ai.pydantic.dev/mcp/fastmcp-client/index.md
-
-# Source: https://ai.pydantic.dev/mcp/client/index.md
-
-# Source: https://ai.pydantic.dev/durable_execution/temporal/index.md
-
-# Source: https://ai.pydantic.dev/durable_execution/prefect/index.md
-
-# Source: https://ai.pydantic.dev/durable_execution/overview/index.md
-
-# Source: https://ai.pydantic.dev/durable_execution/dbos/index.md
-
-# Source: https://ai.pydantic.dev/evals/index.md
-
-# Source: https://ai.pydantic.dev/api/ui/vercel_ai/index.md
-
-# Source: https://ai.pydantic.dev/api/ui/base/index.md
-
-# Source: https://ai.pydantic.dev/api/ui/ag_ui/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/persistence/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/nodes/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/mermaid/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/graph/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/exceptions/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_step/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_node/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_join/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_graph_builder/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_graph/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_decision/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_evals/reporting/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_evals/otel/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_evals/generation/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_evals/evaluators/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_evals/dataset/index.md
-
-# Source: https://ai.pydantic.dev/api/models/wrapper/index.md
-
-# Source: https://ai.pydantic.dev/api/models/test/index.md
-
-# Source: https://ai.pydantic.dev/api/models/outlines/index.md
-
-# Source: https://ai.pydantic.dev/api/models/openai/index.md
-
-# Source: https://ai.pydantic.dev/api/models/mistral/index.md
-
-# Source: https://ai.pydantic.dev/api/models/mcp-sampling/index.md
-
-# Source: https://ai.pydantic.dev/api/models/instrumented/index.md
-
-# Source: https://ai.pydantic.dev/api/models/huggingface/index.md
-
-# Source: https://ai.pydantic.dev/api/models/groq/index.md
-
-# Source: https://ai.pydantic.dev/api/models/google/index.md
-
-# Source: https://ai.pydantic.dev/api/models/function/index.md
-
-# Source: https://ai.pydantic.dev/api/models/fallback/index.md
-
-# Source: https://ai.pydantic.dev/api/models/cohere/index.md
-
-# Source: https://ai.pydantic.dev/api/models/bedrock/index.md
-
-# Source: https://ai.pydantic.dev/api/models/base/index.md
-
-# Source: https://ai.pydantic.dev/api/models/anthropic/index.md
-
-# Source: https://ai.pydantic.dev/api/usage/index.md
-
-# Source: https://ai.pydantic.dev/api/toolsets/index.md
-
-# Source: https://ai.pydantic.dev/api/tools/index.md
-
-# Source: https://ai.pydantic.dev/api/settings/index.md
-
-# Source: https://ai.pydantic.dev/api/run/index.md
-
-# Source: https://ai.pydantic.dev/api/retries/index.md
-
-# Source: https://ai.pydantic.dev/api/result/index.md
-
-# Source: https://ai.pydantic.dev/api/providers/index.md
-
-# Source: https://ai.pydantic.dev/api/profiles/index.md
-
-# Source: https://ai.pydantic.dev/api/output/index.md
-
-# Source: https://ai.pydantic.dev/api/messages/index.md
-
-# Source: https://ai.pydantic.dev/api/mcp/index.md
-
-# Source: https://ai.pydantic.dev/api/format_prompt/index.md
-
-# Source: https://ai.pydantic.dev/api/fasta2a/index.md
-
-# Source: https://ai.pydantic.dev/api/ext/index.md
-
-# Source: https://ai.pydantic.dev/api/exceptions/index.md
-
-# Source: https://ai.pydantic.dev/api/durable_exec/index.md
-
-# Source: https://ai.pydantic.dev/api/direct/index.md
-
-# Source: https://ai.pydantic.dev/api/common_tools/index.md
-
-# Source: https://ai.pydantic.dev/api/builtin_tools/index.md
-
-# Source: https://ai.pydantic.dev/api/agent/index.md
-
-# Source: https://ai.pydantic.dev/api/ag_ui/index.md
-
-# Source: https://ai.pydantic.dev/graph/index.md
-
-# Source: https://ai.pydantic.dev/models/overview/index.md
-
-# Source: https://ai.pydantic.dev/models/outlines/index.md
-
-# Source: https://ai.pydantic.dev/models/openrouter/index.md
-
-# Source: https://ai.pydantic.dev/models/openai/index.md
-
-# Source: https://ai.pydantic.dev/models/mistral/index.md
-
-# Source: https://ai.pydantic.dev/models/huggingface/index.md
-
-# Source: https://ai.pydantic.dev/models/groq/index.md
-
-# Source: https://ai.pydantic.dev/models/google/index.md
-
-# Source: https://ai.pydantic.dev/models/cohere/index.md
-
-# Source: https://ai.pydantic.dev/models/bedrock/index.md
-
-# Source: https://ai.pydantic.dev/models/anthropic/index.md
-
-# Source: https://ai.pydantic.dev/toolsets/index.md
-
-# Source: https://ai.pydantic.dev/tools/index.md
-
-# Source: https://ai.pydantic.dev/tools-advanced/index.md
-
-# Source: https://ai.pydantic.dev/third-party-tools/index.md
-
-# Source: https://ai.pydantic.dev/thinking/index.md
-
-# Source: https://ai.pydantic.dev/retries/index.md
-
-# Source: https://ai.pydantic.dev/output/index.md
-
-# Source: https://ai.pydantic.dev/multi-agent-applications/index.md
-
-# Source: https://ai.pydantic.dev/message-history/index.md
-
-# Source: https://ai.pydantic.dev/input/index.md
-
-# Source: https://ai.pydantic.dev/direct/index.md
-
-# Source: https://ai.pydantic.dev/dependencies/index.md
-
-# Source: https://ai.pydantic.dev/deferred-tools/index.md
-
-# Source: https://ai.pydantic.dev/common-tools/index.md
-
-# Source: https://ai.pydantic.dev/builtin-tools/index.md
-
-# Source: https://ai.pydantic.dev/agents/index.md
-
-# Source: https://ai.pydantic.dev/a2a/index.md
-
-# Source: https://ai.pydantic.dev/troubleshooting/index.md
-
-# Source: https://ai.pydantic.dev/install/index.md
-
-# Source: https://ai.pydantic.dev/help/index.md
-
-# Source: https://ai.pydantic.dev/index.md
-
-# Source: https://ai.pydantic.dev/graph/index.md
-
-# Source: https://ai.pydantic.dev/models/overview/index.md
-
-# Source: https://ai.pydantic.dev/models/outlines/index.md
-
-# Source: https://ai.pydantic.dev/models/openrouter/index.md
-
-# Source: https://ai.pydantic.dev/models/openai/index.md
-
-# Source: https://ai.pydantic.dev/models/mistral/index.md
-
-# Source: https://ai.pydantic.dev/models/huggingface/index.md
-
-# Source: https://ai.pydantic.dev/models/groq/index.md
-
-# Source: https://ai.pydantic.dev/models/google/index.md
-
-# Source: https://ai.pydantic.dev/models/cohere/index.md
-
-# Source: https://ai.pydantic.dev/models/bedrock/index.md
-
-# Source: https://ai.pydantic.dev/models/anthropic/index.md
-
-# Source: https://ai.pydantic.dev/toolsets/index.md
-
-# Source: https://ai.pydantic.dev/tools/index.md
-
-# Source: https://ai.pydantic.dev/tools-advanced/index.md
-
-# Source: https://ai.pydantic.dev/third-party-tools/index.md
-
-# Source: https://ai.pydantic.dev/thinking/index.md
-
-# Source: https://ai.pydantic.dev/retries/index.md
-
-# Source: https://ai.pydantic.dev/output/index.md
-
-# Source: https://ai.pydantic.dev/multi-agent-applications/index.md
-
-# Source: https://ai.pydantic.dev/message-history/index.md
-
-# Source: https://ai.pydantic.dev/input/index.md
-
-# Source: https://ai.pydantic.dev/direct/index.md
-
-# Source: https://ai.pydantic.dev/dependencies/index.md
-
-# Source: https://ai.pydantic.dev/deferred-tools/index.md
-
-# Source: https://ai.pydantic.dev/common-tools/index.md
-
-# Source: https://ai.pydantic.dev/builtin-tools/index.md
-
-# Source: https://ai.pydantic.dev/agents/index.md
-
-# Source: https://ai.pydantic.dev/a2a/index.md
-
-# Source: https://ai.pydantic.dev/troubleshooting/index.md
-
-# Source: https://ai.pydantic.dev/install/index.md
-
-# Source: https://ai.pydantic.dev/help/index.md
-
-# Source: https://ai.pydantic.dev/index.md
-
-# Source: https://ai.pydantic.dev/examples/weather-agent/index.md
-
-# Source: https://ai.pydantic.dev/examples/stream-whales/index.md
-
-# Source: https://ai.pydantic.dev/examples/stream-markdown/index.md
-
-# Source: https://ai.pydantic.dev/examples/sql-gen/index.md
-
-# Source: https://ai.pydantic.dev/examples/slack-lead-qualifier/index.md
-
-# Source: https://ai.pydantic.dev/examples/setup/index.md
-
-# Source: https://ai.pydantic.dev/examples/rag/index.md
-
-# Source: https://ai.pydantic.dev/examples/question-graph/index.md
-
-# Source: https://ai.pydantic.dev/examples/pydantic-model/index.md
-
-# Source: https://ai.pydantic.dev/examples/flight-booking/index.md
-
-# Source: https://ai.pydantic.dev/examples/data-analyst/index.md
-
-# Source: https://ai.pydantic.dev/examples/chat-app/index.md
-
-# Source: https://ai.pydantic.dev/examples/bank-support/index.md
-
-# Source: https://ai.pydantic.dev/examples/ag-ui/index.md
-
-# Source: https://ai.pydantic.dev/version-policy/index.md
-
-# Source: https://ai.pydantic.dev/testing/index.md
-
-# Source: https://ai.pydantic.dev/logfire/index.md
-
-# Source: https://ai.pydantic.dev/contributing/index.md
-
-# Source: https://ai.pydantic.dev/cli/index.md
-
-# Source: https://ai.pydantic.dev/changelog/index.md
-
-# Source: https://ai.pydantic.dev/ui/vercel-ai/index.md
-
-# Source: https://ai.pydantic.dev/ui/overview/index.md
-
-# Source: https://ai.pydantic.dev/ui/ag-ui/index.md
-
-# Source: https://ai.pydantic.dev/mcp/server/index.md
-
-# Source: https://ai.pydantic.dev/mcp/overview/index.md
-
-# Source: https://ai.pydantic.dev/mcp/fastmcp-client/index.md
-
-# Source: https://ai.pydantic.dev/mcp/client/index.md
-
-# Source: https://ai.pydantic.dev/durable_execution/temporal/index.md
-
-# Source: https://ai.pydantic.dev/durable_execution/prefect/index.md
-
-# Source: https://ai.pydantic.dev/durable_execution/overview/index.md
-
-# Source: https://ai.pydantic.dev/durable_execution/dbos/index.md
-
-# Source: https://ai.pydantic.dev/evals/index.md
-
-# Source: https://ai.pydantic.dev/api/ui/vercel_ai/index.md
-
-# Source: https://ai.pydantic.dev/api/ui/base/index.md
-
-# Source: https://ai.pydantic.dev/api/ui/ag_ui/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/persistence/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/nodes/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/mermaid/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/graph/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/exceptions/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_step/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_node/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_join/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_graph_builder/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_graph/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_decision/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_graph/beta/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_evals/reporting/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_evals/otel/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_evals/generation/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_evals/evaluators/index.md
-
-# Source: https://ai.pydantic.dev/api/pydantic_evals/dataset/index.md
-
-# Source: https://ai.pydantic.dev/api/models/wrapper/index.md
-
-# Source: https://ai.pydantic.dev/api/models/test/index.md
-
-# Source: https://ai.pydantic.dev/api/models/outlines/index.md
-
-# Source: https://ai.pydantic.dev/api/models/openai/index.md
-
-# Source: https://ai.pydantic.dev/api/models/mistral/index.md
-
-# Source: https://ai.pydantic.dev/api/models/mcp-sampling/index.md
-
-# Source: https://ai.pydantic.dev/api/models/instrumented/index.md
-
-# Source: https://ai.pydantic.dev/api/models/huggingface/index.md
-
-# Source: https://ai.pydantic.dev/api/models/groq/index.md
-
-# Source: https://ai.pydantic.dev/api/models/google/index.md
-
-# Source: https://ai.pydantic.dev/api/models/function/index.md
-
-# Source: https://ai.pydantic.dev/api/models/fallback/index.md
-
-# Source: https://ai.pydantic.dev/api/models/cohere/index.md
-
-# Source: https://ai.pydantic.dev/api/models/bedrock/index.md
-
-# Source: https://ai.pydantic.dev/api/models/base/index.md
-
-# Source: https://ai.pydantic.dev/api/models/anthropic/index.md
-
-# Source: https://ai.pydantic.dev/api/usage/index.md
-
-# Source: https://ai.pydantic.dev/api/toolsets/index.md
-
-# Source: https://ai.pydantic.dev/api/tools/index.md
-
-# Source: https://ai.pydantic.dev/api/settings/index.md
-
-# Source: https://ai.pydantic.dev/api/run/index.md
-
-# Source: https://ai.pydantic.dev/api/retries/index.md
-
-# Source: https://ai.pydantic.dev/api/result/index.md
-
-# Source: https://ai.pydantic.dev/api/providers/index.md
-
-# Source: https://ai.pydantic.dev/api/profiles/index.md
-
-# Source: https://ai.pydantic.dev/api/output/index.md
-
-# Source: https://ai.pydantic.dev/api/messages/index.md
-
-# Source: https://ai.pydantic.dev/api/mcp/index.md
-
-# Source: https://ai.pydantic.dev/api/format_prompt/index.md
-
-# Source: https://ai.pydantic.dev/api/fasta2a/index.md
-
-# Source: https://ai.pydantic.dev/api/ext/index.md
-
-# Source: https://ai.pydantic.dev/api/exceptions/index.md
-
-# Source: https://ai.pydantic.dev/api/durable_exec/index.md
-
-# Source: https://ai.pydantic.dev/api/direct/index.md
-
-# Source: https://ai.pydantic.dev/api/common_tools/index.md
-
-# Source: https://ai.pydantic.dev/api/builtin_tools/index.md
-
-# Source: https://ai.pydantic.dev/api/agent/index.md
-
-# Source: https://ai.pydantic.dev/api/ag_ui/index.md
-
-# Source: https://ai.pydantic.dev/graph/index.md
-
-# Source: https://ai.pydantic.dev/models/overview/index.md
-
-# Source: https://ai.pydantic.dev/models/outlines/index.md
-
-# Source: https://ai.pydantic.dev/models/openai/index.md
-
-# Source: https://ai.pydantic.dev/models/mistral/index.md
-
-# Source: https://ai.pydantic.dev/models/huggingface/index.md
-
-# Source: https://ai.pydantic.dev/models/groq/index.md
-
-# Source: https://ai.pydantic.dev/models/google/index.md
-
-# Source: https://ai.pydantic.dev/models/cohere/index.md
-
-# Source: https://ai.pydantic.dev/models/bedrock/index.md
-
-# Source: https://ai.pydantic.dev/models/anthropic/index.md
-
-# Source: https://ai.pydantic.dev/toolsets/index.md
-
-# Source: https://ai.pydantic.dev/tools/index.md
-
-# Source: https://ai.pydantic.dev/tools-advanced/index.md
-
-# Source: https://ai.pydantic.dev/third-party-tools/index.md
-
-# Source: https://ai.pydantic.dev/thinking/index.md
-
-# Source: https://ai.pydantic.dev/retries/index.md
-
-# Source: https://ai.pydantic.dev/output/index.md
-
-# Source: https://ai.pydantic.dev/multi-agent-applications/index.md
-
-# Source: https://ai.pydantic.dev/message-history/index.md
-
-# Source: https://ai.pydantic.dev/input/index.md
-
-# Source: https://ai.pydantic.dev/direct/index.md
-
-# Source: https://ai.pydantic.dev/dependencies/index.md
-
-# Source: https://ai.pydantic.dev/deferred-tools/index.md
-
-# Source: https://ai.pydantic.dev/common-tools/index.md
-
-# Source: https://ai.pydantic.dev/builtin-tools/index.md
-
-# Source: https://ai.pydantic.dev/agents/index.md
-
-# Source: https://ai.pydantic.dev/a2a/index.md
-
-# Source: https://ai.pydantic.dev/troubleshooting/index.md
-
-# Source: https://ai.pydantic.dev/install/index.md
-
-# Source: https://ai.pydantic.dev/help/index.md
 
 # Source: https://ai.pydantic.dev/index.md
 
@@ -1081,15 +273,15 @@ We built Pydantic AI with one simple aim: to bring that FastAPI feeling to GenAI
 ## Why use Pydantic AI
 
 1. **Built by the Pydantic Team**: [Pydantic Validation](https://docs.pydantic.dev/latest/) is the validation layer of the OpenAI SDK, the Google ADK, the Anthropic SDK, LangChain, LlamaIndex, AutoGPT, Transformers, CrewAI, Instructor and many more. *Why use the derivative when you can go straight to the source?*
-1. **Model-agnostic**: Supports virtually every [model](models/overview/) and provider: OpenAI, Anthropic, Gemini, DeepSeek, Grok, Cohere, Mistral, and Perplexity; Azure AI Foundry, Amazon Bedrock, Google Vertex AI, Ollama, LiteLLM, Groq, OpenRouter, Together AI, Fireworks AI, Cerebras, Hugging Face, GitHub, Heroku, Vercel, Nebius, OVHcloud, and Outlines. If your favorite model or provider is not listed, you can easily implement a [custom model](models/overview/#custom-models).
-1. **Seamless Observability**: Tightly [integrates](logfire/) with [Pydantic Logfire](https://pydantic.dev/logfire), our general-purpose OpenTelemetry observability platform, for real-time debugging, evals-based performance monitoring, and behavior, tracing, and cost tracking. If you already have an observability platform that supports OTel, you can [use that too](logfire/#alternative-observability-backends).
-1. **Fully Type-safe**: Designed to give your IDE or AI coding agent as much context as possible for auto-completion and [type checking](agents/#static-type-checking), moving entire classes of errors from runtime to write-time for a bit of that Rust "if it compiles, it works" feel.
-1. **Powerful Evals**: Enables you to systematically test and [evaluate](evals/) the performance and accuracy of the agentic systems you build, and monitor the performance over time in Pydantic Logfire.
-1. **MCP, A2A, and UI**: Integrates the [Model Context Protocol](mcp/overview/), [Agent2Agent](a2a/), and various [UI event stream](ui/overview/) standards to give your agent access to external tools and data, let it interoperate with other agents, and build interactive applications with streaming event-based communication.
-1. **Human-in-the-Loop Tool Approval**: Easily lets you flag that certain tool calls [require approval](deferred-tools/#human-in-the-loop-tool-approval) before they can proceed, possibly depending on tool call arguments, conversation history, or user preferences.
-1. **Durable Execution**: Enables you to build [durable agents](durable_execution/overview/) that can preserve their progress across transient API failures and application errors or restarts, and handle long-running, asynchronous, and human-in-the-loop workflows with production-grade reliability.
-1. **Streamed Outputs**: Provides the ability to [stream](output/#streamed-results) structured output continuously, with immediate validation, ensuring real time access to generated data.
-1. **Graph Support**: Provides a powerful way to define [graphs](graph/) using type hints, for use in complex applications where standard control flow can degrade to spaghetti code.
+1. **Model-agnostic**: Supports virtually every [model](https://ai.pydantic.dev/models/overview/index.md) and provider: OpenAI, Anthropic, Gemini, DeepSeek, Grok, Cohere, Mistral, and Perplexity; Azure AI Foundry, Amazon Bedrock, Google Vertex AI, Ollama, LiteLLM, Groq, OpenRouter, Together AI, Fireworks AI, Cerebras, Hugging Face, GitHub, Heroku, Vercel, Nebius, OVHcloud, Alibaba Cloud, SambaNova, and Outlines. If your favorite model or provider is not listed, you can easily implement a [custom model](https://ai.pydantic.dev/models/overview/#custom-models).
+1. **Seamless Observability**: Tightly [integrates](https://ai.pydantic.dev/logfire/index.md) with [Pydantic Logfire](https://pydantic.dev/logfire), our general-purpose OpenTelemetry observability platform, for real-time debugging, evals-based performance monitoring, and behavior, tracing, and cost tracking. If you already have an observability platform that supports OTel, you can [use that too](https://ai.pydantic.dev/logfire/#alternative-observability-backends).
+1. **Fully Type-safe**: Designed to give your IDE or AI coding agent as much context as possible for auto-completion and [type checking](https://ai.pydantic.dev/agents/#static-type-checking), moving entire classes of errors from runtime to write-time for a bit of that Rust "if it compiles, it works" feel.
+1. **Powerful Evals**: Enables you to systematically test and [evaluate](https://ai.pydantic.dev/evals/index.md) the performance and accuracy of the agentic systems you build, and monitor the performance over time in Pydantic Logfire.
+1. **MCP, A2A, and UI**: Integrates the [Model Context Protocol](https://ai.pydantic.dev/mcp/overview/index.md), [Agent2Agent](https://ai.pydantic.dev/a2a/index.md), and various [UI event stream](https://ai.pydantic.dev/ui/overview/index.md) standards to give your agent access to external tools and data, let it interoperate with other agents, and build interactive applications with streaming event-based communication.
+1. **Human-in-the-Loop Tool Approval**: Easily lets you flag that certain tool calls [require approval](https://ai.pydantic.dev/deferred-tools/#human-in-the-loop-tool-approval) before they can proceed, possibly depending on tool call arguments, conversation history, or user preferences.
+1. **Durable Execution**: Enables you to build [durable agents](https://ai.pydantic.dev/durable_execution/overview/index.md) that can preserve their progress across transient API failures and application errors or restarts, and handle long-running, asynchronous, and human-in-the-loop workflows with production-grade reliability.
+1. **Streamed Outputs**: Provides the ability to [stream](https://ai.pydantic.dev/output/#streamed-results) structured output continuously, with immediate validation, ensuring real time access to generated data.
+1. **Graph Support**: Provides a powerful way to define [graphs](https://ai.pydantic.dev/graph/index.md) using type hints, for use in complex applications where standard control flow can degrade to spaghetti code.
 
 Realistically though, no list is going to be as convincing as [giving it a try](#next-steps) and seeing how it makes you feel!
 
@@ -1101,7 +293,7 @@ Subscribe
 
 Here's a minimal example of Pydantic AI:
 
-[Learn about Gateway](../gateway) hello_world.py
+[Learn about Gateway](https://ai.pydantic.dev/gateway) hello_world.py
 
 ```python
 from pydantic_ai import Agent
@@ -1116,12 +308,11 @@ print(result.output)
 """
 The first known use of "hello, world" was in a 1974 textbook about the C programming language.
 """
-
 ```
 
-1. We configure the agent to use [Anthropic's Claude Sonnet 4.0](api/models/anthropic/) model, but you can also set the model when running the agent.
-1. Register static [instructions](agents/#instructions) using a keyword argument to the agent.
-1. [Run the agent](agents/#running-agents) synchronously, starting a conversation with the LLM.
+1. We configure the agent to use [Anthropic's Claude Sonnet 4.0](https://ai.pydantic.dev/api/models/anthropic/index.md) model, but you can also set the model when running the agent.
+1. Register static [instructions](https://ai.pydantic.dev/agents/#instructions) using a keyword argument to the agent.
+1. [Run the agent](https://ai.pydantic.dev/agents/#running-agents) synchronously, starting a conversation with the LLM.
 
 hello_world.py
 
@@ -1138,24 +329,23 @@ print(result.output)
 """
 The first known use of "hello, world" was in a 1974 textbook about the C programming language.
 """
-
 ```
 
-1. We configure the agent to use [Anthropic's Claude Sonnet 4.0](api/models/anthropic/) model, but you can also set the model when running the agent.
-1. Register static [instructions](agents/#instructions) using a keyword argument to the agent.
-1. [Run the agent](agents/#running-agents) synchronously, starting a conversation with the LLM.
+1. We configure the agent to use [Anthropic's Claude Sonnet 4.0](https://ai.pydantic.dev/api/models/anthropic/index.md) model, but you can also set the model when running the agent.
+1. Register static [instructions](https://ai.pydantic.dev/agents/#instructions) using a keyword argument to the agent.
+1. [Run the agent](https://ai.pydantic.dev/agents/#running-agents) synchronously, starting a conversation with the LLM.
 
-*(This example is complete, it can be run "as is", assuming you've [installed the `pydantic_ai` package](install/))*
+*(This example is complete, it can be run "as is", assuming you've [installed the `pydantic_ai` package](https://ai.pydantic.dev/install/index.md))*
 
 The exchange will be very short: Pydantic AI will send the instructions and the user prompt to the LLM, and the model will return a text response.
 
-Not very interesting yet, but we can easily add [tools](tools/), [dynamic instructions](agents/#instructions), and [structured outputs](output/) to build more powerful agents.
+Not very interesting yet, but we can easily add [tools](https://ai.pydantic.dev/tools/index.md), [dynamic instructions](https://ai.pydantic.dev/agents/#instructions), and [structured outputs](https://ai.pydantic.dev/output/index.md) to build more powerful agents.
 
 ## Tools & Dependency Injection Example
 
 Here is a concise example using Pydantic AI to build a support agent for a bank:
 
-[Learn about Gateway](../gateway) bank_support.py
+[Learn about Gateway](https://ai.pydantic.dev/gateway) bank_support.py
 
 ```python
 from dataclasses import dataclass
@@ -1222,18 +412,17 @@ async def main():
     """
     support_advice="I'm sorry to hear that, John. We are temporarily blocking your card to prevent unauthorized transactions." block_card=True risk=8
     """
-
 ```
 
-1. This [agent](agents/) will act as first-tier support in a bank. Agents are generic in the type of dependencies they accept and the type of output they return. In this case, the support agent has type `Agent[SupportDependencies, SupportOutput]`.
-1. Here we configure the agent to use [OpenAI's GPT-5 model](api/models/openai/), you can also set the model when running the agent.
-1. The `SupportDependencies` dataclass is used to pass data, connections, and logic into the model that will be needed when running [instructions](agents/#instructions) and [tool](tools/) functions. Pydantic AI's system of dependency injection provides a [type-safe](agents/#static-type-checking) way to customise the behavior of your agents, and can be especially useful when running [unit tests](testing/) and evals.
-1. Static [instructions](agents/#instructions) can be registered with the instructions keyword argument to the agent.
-1. Dynamic [instructions](agents/#instructions) can be registered with the @agent.instructions decorator, and can make use of dependency injection. Dependencies are carried via the RunContext argument, which is parameterized with the `deps_type` from above. If the type annotation here is wrong, static type checkers will catch it.
-1. The [`@agent.tool`](tools/) decorator let you register functions which the LLM may call while responding to a user. Again, dependencies are carried via RunContext, any other arguments become the tool schema passed to the LLM. Pydantic is used to validate these arguments, and errors are passed back to the LLM so it can retry.
-1. The docstring of a tool is also passed to the LLM as the description of the tool. Parameter descriptions are [extracted](tools/#function-tools-and-schema) from the docstring and added to the parameter schema sent to the LLM.
-1. [Run the agent](agents/#running-agents) asynchronously, conducting a conversation with the LLM until a final response is reached. Even in this fairly simple case, the agent will exchange multiple messages with the LLM as tools are called to retrieve an output.
-1. The response from the agent will be guaranteed to be a `SupportOutput`. If validation fails [reflection](agents/#reflection-and-self-correction), the agent is prompted to try again.
+1. This [agent](https://ai.pydantic.dev/agents/index.md) will act as first-tier support in a bank. Agents are generic in the type of dependencies they accept and the type of output they return. In this case, the support agent has type `Agent[SupportDependencies, SupportOutput]`.
+1. Here we configure the agent to use [OpenAI's GPT-5 model](https://ai.pydantic.dev/api/models/openai/index.md), you can also set the model when running the agent.
+1. The `SupportDependencies` dataclass is used to pass data, connections, and logic into the model that will be needed when running [instructions](https://ai.pydantic.dev/agents/#instructions) and [tool](https://ai.pydantic.dev/tools/index.md) functions. Pydantic AI's system of dependency injection provides a [type-safe](https://ai.pydantic.dev/agents/#static-type-checking) way to customise the behavior of your agents, and can be especially useful when running [unit tests](https://ai.pydantic.dev/testing/index.md) and evals.
+1. Static [instructions](https://ai.pydantic.dev/agents/#instructions) can be registered with the instructions keyword argument to the agent.
+1. Dynamic [instructions](https://ai.pydantic.dev/agents/#instructions) can be registered with the @agent.instructions decorator, and can make use of dependency injection. Dependencies are carried via the RunContext argument, which is parameterized with the `deps_type` from above. If the type annotation here is wrong, static type checkers will catch it.
+1. The [`@agent.tool`](https://ai.pydantic.dev/tools/index.md) decorator let you register functions which the LLM may call while responding to a user. Again, dependencies are carried via RunContext, any other arguments become the tool schema passed to the LLM. Pydantic is used to validate these arguments, and errors are passed back to the LLM so it can retry.
+1. The docstring of a tool is also passed to the LLM as the description of the tool. Parameter descriptions are [extracted](https://ai.pydantic.dev/tools/#function-tools-and-schema) from the docstring and added to the parameter schema sent to the LLM.
+1. [Run the agent](https://ai.pydantic.dev/agents/#running-agents) asynchronously, conducting a conversation with the LLM until a final response is reached. Even in this fairly simple case, the agent will exchange multiple messages with the LLM as tools are called to retrieve an output.
+1. The response from the agent will be guaranteed to be a `SupportOutput`. If validation fails [reflection](https://ai.pydantic.dev/agents/#reflection-and-self-correction), the agent is prompted to try again.
 1. The output will be validated with Pydantic to guarantee it is a `SupportOutput`, since the agent is generic, it'll also be typed as a `SupportOutput` to aid with static type checking.
 1. In a real use case, you'd add more tools and longer instructions to the agent to extend the context it's equipped with and support it can provide.
 1. This is a simple sketch of a database connection, used to keep the example short and readable. In reality, you'd be connecting to an external database (e.g. PostgreSQL) to get information about customers.
@@ -1306,18 +495,17 @@ async def main():
     """
     support_advice="I'm sorry to hear that, John. We are temporarily blocking your card to prevent unauthorized transactions." block_card=True risk=8
     """
-
 ```
 
-1. This [agent](agents/) will act as first-tier support in a bank. Agents are generic in the type of dependencies they accept and the type of output they return. In this case, the support agent has type `Agent[SupportDependencies, SupportOutput]`.
-1. Here we configure the agent to use [OpenAI's GPT-5 model](api/models/openai/), you can also set the model when running the agent.
-1. The `SupportDependencies` dataclass is used to pass data, connections, and logic into the model that will be needed when running [instructions](agents/#instructions) and [tool](tools/) functions. Pydantic AI's system of dependency injection provides a [type-safe](agents/#static-type-checking) way to customise the behavior of your agents, and can be especially useful when running [unit tests](testing/) and evals.
-1. Static [instructions](agents/#instructions) can be registered with the instructions keyword argument to the agent.
-1. Dynamic [instructions](agents/#instructions) can be registered with the @agent.instructions decorator, and can make use of dependency injection. Dependencies are carried via the RunContext argument, which is parameterized with the `deps_type` from above. If the type annotation here is wrong, static type checkers will catch it.
-1. The [`@agent.tool`](tools/) decorator let you register functions which the LLM may call while responding to a user. Again, dependencies are carried via RunContext, any other arguments become the tool schema passed to the LLM. Pydantic is used to validate these arguments, and errors are passed back to the LLM so it can retry.
-1. The docstring of a tool is also passed to the LLM as the description of the tool. Parameter descriptions are [extracted](tools/#function-tools-and-schema) from the docstring and added to the parameter schema sent to the LLM.
-1. [Run the agent](agents/#running-agents) asynchronously, conducting a conversation with the LLM until a final response is reached. Even in this fairly simple case, the agent will exchange multiple messages with the LLM as tools are called to retrieve an output.
-1. The response from the agent will be guaranteed to be a `SupportOutput`. If validation fails [reflection](agents/#reflection-and-self-correction), the agent is prompted to try again.
+1. This [agent](https://ai.pydantic.dev/agents/index.md) will act as first-tier support in a bank. Agents are generic in the type of dependencies they accept and the type of output they return. In this case, the support agent has type `Agent[SupportDependencies, SupportOutput]`.
+1. Here we configure the agent to use [OpenAI's GPT-5 model](https://ai.pydantic.dev/api/models/openai/index.md), you can also set the model when running the agent.
+1. The `SupportDependencies` dataclass is used to pass data, connections, and logic into the model that will be needed when running [instructions](https://ai.pydantic.dev/agents/#instructions) and [tool](https://ai.pydantic.dev/tools/index.md) functions. Pydantic AI's system of dependency injection provides a [type-safe](https://ai.pydantic.dev/agents/#static-type-checking) way to customise the behavior of your agents, and can be especially useful when running [unit tests](https://ai.pydantic.dev/testing/index.md) and evals.
+1. Static [instructions](https://ai.pydantic.dev/agents/#instructions) can be registered with the instructions keyword argument to the agent.
+1. Dynamic [instructions](https://ai.pydantic.dev/agents/#instructions) can be registered with the @agent.instructions decorator, and can make use of dependency injection. Dependencies are carried via the RunContext argument, which is parameterized with the `deps_type` from above. If the type annotation here is wrong, static type checkers will catch it.
+1. The [`@agent.tool`](https://ai.pydantic.dev/tools/index.md) decorator let you register functions which the LLM may call while responding to a user. Again, dependencies are carried via RunContext, any other arguments become the tool schema passed to the LLM. Pydantic is used to validate these arguments, and errors are passed back to the LLM so it can retry.
+1. The docstring of a tool is also passed to the LLM as the description of the tool. Parameter descriptions are [extracted](https://ai.pydantic.dev/tools/#function-tools-and-schema) from the docstring and added to the parameter schema sent to the LLM.
+1. [Run the agent](https://ai.pydantic.dev/agents/#running-agents) asynchronously, conducting a conversation with the LLM until a final response is reached. Even in this fairly simple case, the agent will exchange multiple messages with the LLM as tools are called to retrieve an output.
+1. The response from the agent will be guaranteed to be a `SupportOutput`. If validation fails [reflection](https://ai.pydantic.dev/agents/#reflection-and-self-correction), the agent is prompted to try again.
 1. The output will be validated with Pydantic to guarantee it is a `SupportOutput`, since the agent is generic, it'll also be typed as a `SupportOutput` to aid with static type checking.
 1. In a real use case, you'd add more tools and longer instructions to the agent to extend the context it's equipped with and support it can provide.
 1. This is a simple sketch of a database connection, used to keep the example short and readable. In reality, you'd be connecting to an external database (e.g. PostgreSQL) to get information about customers.
@@ -1325,15 +513,15 @@ async def main():
 
 Complete `bank_support.py` example
 
-The code included here is incomplete for the sake of brevity (the definition of `DatabaseConn` is missing); you can find the complete `bank_support.py` example [here](examples/bank-support/).
+The code included here is incomplete for the sake of brevity (the definition of `DatabaseConn` is missing); you can find the complete `bank_support.py` example [here](https://ai.pydantic.dev/examples/bank-support/index.md).
 
 ## Instrumentation with Pydantic Logfire
 
 Even a simple agent with just a handful of tools can result in a lot of back-and-forth with the LLM, making it nearly impossible to be confident of what's going on just from reading the code. To understand the flow of the above runs, we can watch the agent in action using Pydantic Logfire.
 
-To do this, we need to [set up Logfire](logfire/#using-logfire), and add the following to our code:
+To do this, we need to [set up Logfire](https://ai.pydantic.dev/logfire/#using-logfire), and add the following to our code:
 
-[Learn about Gateway](../gateway) bank_support_with_logfire.py
+[Learn about Gateway](https://ai.pydantic.dev/gateway) bank_support_with_logfire.py
 
 ```python
 ...
@@ -1342,9 +530,10 @@ from pydantic_ai import Agent, RunContext
 from bank_database import DatabaseConn
 
 import logfire
+
 logfire.configure()  # (1)!
 logfire.instrument_pydantic_ai()  # (2)!
-logfire.instrument_asyncpg()  # (3)!
+logfire.instrument_sqlite3()  # (3)!
 
 ...
 
@@ -1352,17 +541,16 @@ support_agent = Agent(
     'gateway/openai:gpt-5',
     deps_type=SupportDependencies,
     output_type=SupportOutput,
-    system_prompt=(
+    instructions=(
         'You are a support agent in our bank, give the '
         'customer support and judge the risk level of their query.'
     ),
 )
-
 ```
 
 1. Configure the Logfire SDK, this will fail if project is not set up.
 1. This will instrument all Pydantic AI agents used from here on out. If you want to instrument only a specific agent, you can pass the instrument=True keyword argument to the agent.
-1. In our demo, `DatabaseConn` uses `asyncpg` to connect to a PostgreSQL database, so [`logfire.instrument_asyncpg()`](https://magicstack.github.io/asyncpg/current/) is used to log the database queries.
+1. In our demo, `DatabaseConn` uses sqlite3 to connect to a PostgreSQL database, so [`logfire.instrument_sqlite3()`](https://logfire.pydantic.dev/docs/integrations/databases/sqlite3/) is used to log the database queries.
 
 bank_support_with_logfire.py
 
@@ -1373,9 +561,10 @@ from pydantic_ai import Agent, RunContext
 from bank_database import DatabaseConn
 
 import logfire
+
 logfire.configure()  # (1)!
 logfire.instrument_pydantic_ai()  # (2)!
-logfire.instrument_asyncpg()  # (3)!
+logfire.instrument_sqlite3()  # (3)!
 
 ...
 
@@ -1383,21 +572,22 @@ support_agent = Agent(
     'openai:gpt-5',
     deps_type=SupportDependencies,
     output_type=SupportOutput,
-    system_prompt=(
+    instructions=(
         'You are a support agent in our bank, give the '
         'customer support and judge the risk level of their query.'
     ),
 )
-
 ```
 
 1. Configure the Logfire SDK, this will fail if project is not set up.
 1. This will instrument all Pydantic AI agents used from here on out. If you want to instrument only a specific agent, you can pass the instrument=True keyword argument to the agent.
-1. In our demo, `DatabaseConn` uses `asyncpg` to connect to a PostgreSQL database, so [`logfire.instrument_asyncpg()`](https://magicstack.github.io/asyncpg/current/) is used to log the database queries.
+1. In our demo, `DatabaseConn` uses sqlite3 to connect to a PostgreSQL database, so [`logfire.instrument_sqlite3()`](https://logfire.pydantic.dev/docs/integrations/databases/sqlite3/) is used to log the database queries.
 
 That's enough to get the following view of your agent in action:
 
-See [Monitoring and Performance](logfire/) to learn more.
+Logfire instrumentation for the bank agent â [View in Logfire](https://logfire-eu.pydantic.dev/public-trace/a2957caa-b7b7-4883-a529-777742649004?spanId=31aade41ab896144)
+
+See [Monitoring and Performance](https://ai.pydantic.dev/logfire/index.md) to learn more.
 
 ## `llms.txt`
 
@@ -1412,10 +602,10 @@ As of today, these files are not automatically leveraged by IDEs or coding agent
 
 ## Next Steps
 
-To try Pydantic AI for yourself, [install it](install/) and follow the instructions [in the examples](examples/setup/).
+To try Pydantic AI for yourself, [install it](https://ai.pydantic.dev/install/index.md) and follow the instructions [in the examples](https://ai.pydantic.dev/examples/setup/index.md).
 
-Read the [docs](agents/) to learn more about building applications with Pydantic AI.
+Read the [docs](https://ai.pydantic.dev/agents/index.md) to learn more about building applications with Pydantic AI.
 
-Read the [API Reference](api/agent/) to understand Pydantic AI's interface.
+Read the [API Reference](https://ai.pydantic.dev/api/agent/index.md) to understand Pydantic AI's interface.
 
-Join [Slack](https://logfire.pydantic.dev/docs/join-slack/) or file an issue on [GitHub](https://github.com/pydantic/pydantic-ai/issues) if you have any questions.
+Join [:simple-slack: Slack](https://logfire.pydantic.dev/docs/join-slack/) or file an issue on [GitHub](https://github.com/pydantic/pydantic-ai/issues) if you have any questions.

@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/github-actions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CI / GitHub Actions
 
 > You can easily deploy your tasks with GitHub actions and other CI environments.
@@ -20,7 +24,7 @@ This simple GitHub action workflow will deploy your Trigger.dev tasks when new c
 </Warning>
 
 <CodeGroup>
-  ```yaml .github/workflows/release-trigger-prod.yml theme={null}
+  ```yaml .github/workflows/release-trigger-prod.yml theme={"theme":"css-variables"}
   name: Deploy to Trigger.dev (prod)
 
   on:
@@ -50,7 +54,7 @@ This simple GitHub action workflow will deploy your Trigger.dev tasks when new c
             npx trigger.dev@latest deploy
   ```
 
-  ```yaml .github/workflows/release-trigger-staging.yml theme={null}
+  ```yaml .github/workflows/release-trigger-staging.yml theme={"theme":"css-variables"}
   name: Deploy to Trigger.dev (staging)
 
   # Requires manually calling the workflow from a branch / commit to deploy to staging
@@ -105,7 +109,7 @@ If you already have a GitHub action file, you can just add the final step "🚀 
 The CLI and `@trigger.dev/*` package versions need to be in sync with the `trigger.dev` CLI, otherwise there will be errors and unpredictable behavior. Hence, the `deploy` command will automatically fail during CI on any version mismatches.
 Tip: add the `trigger.dev` CLI to your `devDependencies` and the deploy command to your `package.json` file to keep versions managed in the same place. For example:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "scripts": {
     "deploy:trigger-prod": "trigger deploy",
@@ -119,7 +123,7 @@ Tip: add the `trigger.dev` CLI to your `devDependencies` and the deploy command 
 
 Your workflow file will follow the version specified in the `package.json` script, like so:
 
-```yaml .github/workflows/release-trigger.yml theme={null}
+```yaml .github/workflows/release-trigger.yml theme={"theme":"css-variables"}
 - name: 🚀 Deploy Trigger.dev
   env:
     TRIGGER_ACCESS_TOKEN: ${{ secrets.TRIGGER_ACCESS_TOKEN }}
@@ -131,19 +135,14 @@ You should use the version you run locally during dev and manual deploy. The cur
 
 ## Self-hosting
 
-When self-hosting, you will have to take a few additional steps:
+When self-hosting, you need to:
 
-* Specify the `TRIGGER_API_URL` environment variable. You can add it to the GitHub secrets the same way as the access token. This should point at your webapp domain, for example: `https://trigger.example.com`
-* Setup docker as you will need to build and push the image to your registry. On [Trigger.dev Cloud](https://cloud.trigger.dev) this is all done remotely.
+* Set up Docker Buildx in your CI environment for building images locally.
 * Add your registry credentials to the GitHub secrets.
-* Use the `--self-hosted` and `--push` flags when deploying.
-
-<Tip>If you're self-hosting v4, the `--self-hosted` and `--push` flags are **NOT** needed.</Tip>
-
-Other than that, your GitHub action file will look very similar to the one above:
+* Specify the `TRIGGER_API_URL` environment variable pointing to your webapp domain, for example: `https://trigger.example.com`
 
 <CodeGroup>
-  ```yaml .github/workflows/release-trigger-self-hosted.yml theme={null}
+  ```yaml .github/workflows/release-trigger-self-hosted.yml theme={"theme":"css-variables"}
   name: Deploy to Trigger.dev (self-hosted)
 
   on:
@@ -166,13 +165,11 @@ Other than that, your GitHub action file will look very similar to the one above
         - name: Install dependencies
           run: npm install
 
-        # docker setup - part 1
         - name: Set up Docker Buildx
           uses: docker/setup-buildx-action@v3
           with:
             version: latest
 
-        # docker setup - part 2
         - name: Login to DockerHub
           uses: docker/login-action@v3
           with:
@@ -182,10 +179,8 @@ Other than that, your GitHub action file will look very similar to the one above
         - name: 🚀 Deploy Trigger.dev
           env:
             TRIGGER_ACCESS_TOKEN: ${{ secrets.TRIGGER_ACCESS_TOKEN }}
-            # required when self-hosting
             TRIGGER_API_URL: ${{ secrets.TRIGGER_API_URL }}
-          # deploy with additional flags
           run: |
-            npx trigger.dev@latest deploy --self-hosted --push
+            npx trigger.dev@latest deploy
   ```
 </CodeGroup>

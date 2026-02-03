@@ -4,8 +4,6 @@
 title: Deadline Cloud License Endpoint
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Deadline Cloud License Endpoint
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.deadline_license_endpoint.dataset/index.html
 ---
 
 # Deadline Cloud License Endpoint
@@ -28,5 +26,5 @@ aws.deadline_license_endpoint
 | status              | core | string        | The status of the license endpoint.                                     |
 | status_message      | core | string        | The status message of the license endpoint.                             |
 | subnet_ids          | core | array<string> | The subnet IDs.                                                         |
-| tags                | core | hstore        |
+| tags                | core | hstore_csv    |
 | vpc_id              | core | string        | The VCP(virtual private cloud) ID associated with the license endpoint. |

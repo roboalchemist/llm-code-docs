@@ -4,17 +4,9 @@
 
 # Source: https://docs.pipecat.ai/server/services/llm/groq.md
 
-# Source: https://docs.pipecat.ai/server/services/tts/groq.md
-
-# Source: https://docs.pipecat.ai/server/services/stt/groq.md
-
-# Source: https://docs.pipecat.ai/server/services/llm/groq.md
-
-# Source: https://docs.pipecat.ai/server/services/tts/groq.md
-
-# Source: https://docs.pipecat.ai/server/services/stt/groq.md
-
-# Source: https://docs.pipecat.ai/server/services/llm/groq.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Groq
 
@@ -63,8 +55,3 @@ Before using Groq LLM services, you need:
 ### Required Environment Variables
 
 * `GROQ_API_KEY`: Your Groq API key for authentication
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

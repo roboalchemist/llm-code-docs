@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/monitoring/using-monitors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using Monitors
 
 > Learn how to view, analyze, and act on monitor results in your LLM applications
@@ -85,8 +89,3 @@ For further information on tracing refer to [OpenLLMetry](/openllmetry/introduct
 <Tip>
   Ready to set up an evaluator for your monitor? Learn more about creating and configuring evaluators in the [Evaluators](/evaluators/intro) section.
 </Tip>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

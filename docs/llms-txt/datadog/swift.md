@@ -6,8 +6,6 @@ description: Manually instrument your Swift applications to send custom traces t
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Code-Based Custom Instrumentation >
   Custom Instrumentation for Swift
-source_url: >-
-  https://docs.datadoghq.com/trace_collection/custom_instrumentation/swift/index.html
 ---
 
 # Custom Instrumentation for Swift

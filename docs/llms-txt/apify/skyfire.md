@@ -12,20 +12,20 @@ Keep in mind that agentic payments are an experimental feature and may undergo s
 
 ## What is Skyfire?
 
-https://skyfire.xyz/ is a payment network built specifically for AI agents, enabling autonomous transactions with digital wallets and spending controls. It provides the infrastructure necessary for agents to make payments on behalf of users, allowing autonomous AI-driven workflows.
+[Skyfire](https://skyfire.xyz/) is a payment network built specifically for AI agents, enabling autonomous transactions with digital wallets and spending controls. It provides the infrastructure necessary for agents to make payments on behalf of users, allowing autonomous AI-driven workflows.
 
 With Skyfire integration, agents can discover available Apify Actors, execute scraping and automation tasks, and pay for services using pre-funded Skyfire tokens, all without human intervention.
 
 ## Using Skyfire with Apify MCP Server
 
-The https://docs.apify.com/platform/integrations/mcp provides the simplest way for agents to access Apify's Actor library using Skyfire payments.
+The [Apify MCP server](https://docs.apify.com/platform/integrations/mcp) provides the simplest way for agents to access Apify's Actor library using Skyfire payments.
 
 ### Prerequisites
 
 Before using agentic payments through MCP, you need:
 
-1. *A Skyfire account* with a funded wallet - https://app.skyfire.xyz/
-2. *An MCP client* that supports multiple server connections, such as https://opencode.ai/, https://claude.com/download with MCP support, or other compatible clients
+1. *A Skyfire account* with a funded wallet - [sign up at Skyfire](https://app.skyfire.xyz/)
+2. *An MCP client* that supports multiple server connections, such as [OpenCode](https://opencode.ai/), [Claude Desktop](https://claude.com/download) with MCP support, or other compatible clients
 3. *Both MCP servers configured*: Skyfire's MCP server and Apify's MCP server
 
 ### Configuration
@@ -41,7 +41,7 @@ https://mcp.apify.com?payment=skyfire
 * OpenCode
 * Claude Desktop
 
-If you're using https://opencode.ai/, add this configuration to your `opencode.json` file (refer to https://opencode.ai/docs/config/ for file location on your system):
+If you're using [OpenCode](https://opencode.ai/), add this configuration to your `opencode.json` file (refer to [OpenCode configuration docs](https://opencode.ai/docs/config/) for file location on your system):
 
 
 ```
@@ -66,7 +66,7 @@ If you're using https://opencode.ai/, add this configuration to your `opencode.j
 ```
 
 
-If you're using https://claude.com/download, add this configuration to your `claude_desktop_config.json` file (refer to https://modelcontextprotocol.io/docs/develop/connect-local-servers for file location on your system) and restart the application:
+If you're using [Claude Desktop](https://claude.com/download), add this configuration to your `claude_desktop_config.json` file (refer to [Claude Desktop configuration docs](https://modelcontextprotocol.io/docs/develop/connect-local-servers) for file location on your system) and restart the application:
 
 
 ```
@@ -94,7 +94,7 @@ If you're using https://claude.com/download, add this configuration to your `cla
 ```
 
 
-Replace `YOUR_SKYFIRE_API_KEY` with Skyfire buyer API key, which you can obtain from your https://app.skyfire.xyz/.
+Replace `YOUR_SKYFIRE_API_KEY` with Skyfire buyer API key, which you can obtain from your [Skyfire dashboard](https://app.skyfire.xyz/).
 
 ### How it works
 
@@ -148,7 +148,7 @@ skyfire-pay-id: YOUR_SKYFIRE_PAY_TOKEN
 
 ### Running an Actor
 
-Make a standard Actor run request to the https://docs.apify.com/api/v2#/reference/actors/run-collection/run-actor, but include the Skyfire PAY token in the header.
+Make a standard Actor run request to the [run Actor endpoint](https://docs.apify.com/api/v2#/reference/actors/run-collection/run-actor), but include the Skyfire PAY token in the header.
 
 Example of using the synchronous run endpoint
 
@@ -166,17 +166,17 @@ curl -X POST \
 ```
 
 
-You can also use the asynchronous https://docs.apify.com/api/v2#/reference/actors/run-collection/run-actor if you don't need to wait for results immediately.
+You can also use the asynchronous [run Actor endpoint](https://docs.apify.com/api/v2#/reference/actors/run-collection/run-actor) if you don't need to wait for results immediately.
 
 ### Retrieving results
 
-After your Actor run completes, you can retrieve results using the https://docs.apify.com/api/v2#/reference/datasets or https://docs.apify.com/api/v2#/reference/key-value-stores. Include the same `skyfire-pay-id` header to authenticate these requests.
+After your Actor run completes, you can retrieve results using the [dataset endpoints](https://docs.apify.com/api/v2#/reference/datasets) or [key-value store endpoints](https://docs.apify.com/api/v2#/reference/key-value-stores). Include the same `skyfire-pay-id` header to authenticate these requests.
 
 ### Supported Actors
 
 Not all Actors in the Apify Store can be run using agentic payments.
 
-Apify maintains a curated list of Actors approved for agentic payments. To check if an Actor supports agentic payments, use the `allowsAgenticUsers=true` query parameter when https://docs.apify.com/api/v2#/reference/store/store-actors-collection/get-list-of-actors-in-store.
+Apify maintains a curated list of Actors approved for agentic payments. To check if an Actor supports agentic payments, use the `allowsAgenticUsers=true` query parameter when [searching the store via API](https://docs.apify.com/api/v2#/reference/store/store-actors-collection/get-list-of-actors-in-store).
 
 
 ```
@@ -199,7 +199,7 @@ The following operations are not supported with agentic payments:
 
 ## Resources
 
-* **https://docs.apify.com/platform/integrations/mcp** - Complete guide to using the Apify MCP server
-* **https://skyfire.xyz/** - Official Skyfire guides and API reference
-* **https://docs.apify.com/api/v2** - Complete API documentation for direct integration
-* **https://docs.apify.com/platform/actors/development/permissions** - Understanding Actor permission levels
+* **[Model Context Protocol documentation](https://docs.apify.com/platform/integrations/mcp)** - Complete guide to using the Apify MCP server
+* **[Skyfire documentation](https://skyfire.xyz/)** - Official Skyfire guides and API reference
+* **[Apify API reference](https://docs.apify.com/api/v2)** - Complete API documentation for direct integration
+* **[Actor permissions](https://docs.apify.com/platform/actors/development/permissions)** - Understanding Actor permission levels

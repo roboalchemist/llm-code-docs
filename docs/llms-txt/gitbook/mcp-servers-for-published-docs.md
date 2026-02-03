@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/mcp-servers-for-published-docs.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/mcp-servers-for-published-docs.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/mcp-servers-for-published-docs.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/mcp-servers-for-published-docs.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/mcp-servers-for-published-docs.md
 

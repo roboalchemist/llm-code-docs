@@ -2,13 +2,9 @@
 
 # Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/singlestore.md
 
-# Source: https://docs.unstructured.io/open-source/ingestion/source-connectors/singlestore.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/singlestore.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/source-connectors/singlestore.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/singlestore.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SingleStore
 
@@ -122,7 +118,7 @@ See also:
 
 * [CREATE TABLE](https://docs.singlestore.com/cloud/reference/sql-reference/data-definition-language-ddl/create-table/)
   in the SingleStore documentation
-* [Unstructured document elements and metadata](/api-reference/partition/document-elements)
+* [Unstructured document elements and metadata](/api-reference/legacy-api/partition/document-elements)
 
 Now call the Unstructured Ingest CLI or the Unstructured Ingest Python library. The source connector can be any of the ones supported. This example uses the local source connector.
 
@@ -220,7 +216,7 @@ For the Unstructured Ingest CLI and the Unstructured Ingest Python library, you 
   * `--partition-endpoint $UNSTRUCTURED_API_URL` (CLI) or `partition_endpoint=os.getenv("UNSTRUCTURED_API_URL")` (Python)
   * The environment variables `UNSTRUCTURED_API_KEY` and `UNSTRUCTURED_API_URL`
 
-* To send files to the [Unstructured Partition Endpoint](/api-reference/partition/overview) for processing, specify `--partition-by-api` (CLI) or `partition_by_api=True` (Python).
+* To send files to the legacy [Unstructured Partition Endpoint](/api-reference/legacy-api/partition/overview) for processing, specify `--partition-by-api` (CLI) or `partition_by_api=True` (Python).
 
   Unstructured also requires an Unstructured API key and API URL, by adding the following:
 
@@ -231,9 +227,9 @@ For the Unstructured Ingest CLI and the Unstructured Ingest Python library, you 
   <Note>
     You must specify the API URL only if you are not using the default API URL for Unstructured Ingest, which applies to **Let's Go**, **Pay-As-You-Go**, and **Business SaaS** accounts.
 
-    The default API URL for Unstructured Ingest is `https://api.unstructuredapp.io/general/v0/general`, which is the API URL for the [Unstructured Partition Endpoint](/api-reference/partition/overview). However, you should always use the URL that was provided to you when your Unstructured account was created. If you do not have this URL, email Unstructured Support at [support@unstructured.io](mailto:support@unstructured.io).
+    The default API URL for Unstructured Ingest is `https://api.unstructuredapp.io/general/v0/general`, which is the API URL for the legacy[Unstructured Partition Endpoint](/api-reference/legacy-api/partition/overview). However, you should always use the URL that was provided to you when your Unstructured account was created. If you do not have this URL, email Unstructured Support at [support@unstructured.io](mailto:support@unstructured.io).
 
-    If you do not have an API key, [get one now](/api-reference/partition/overview).
+    If you do not have an API key, [get one now](/api-reference/legacy-api/partition/overview).
 
     If you are using a **Business** account, the process
     for generating Unstructured API keys, and the Unstructured API URL that you use, are different.

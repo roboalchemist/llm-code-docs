@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/windsurf/previews.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Windsurf Previews
+
+> Preview your web app locally in Windsurf IDE or browser with element selection, error capture, and direct integration with Cascade for rapid iteration.
 
 Windsurf Previews allow you to view the local deployment of your app either in the IDE or in the browser (optimized for Google Chrome, Arc, and Chromium based browsers) with listeners, allowing you to iterate rapidly by easily sending elements and errors back to Cascade as context.
 

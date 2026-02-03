@@ -12,31 +12,7 @@
 
 # Source: https://docs.baseten.co/overview.md
 
-# Source: https://docs.baseten.co/observability/export-metrics/overview.md
-
-# Source: https://docs.baseten.co/examples/overview.md
-
-# Source: https://docs.baseten.co/examples/models/overview.md
-
-# Source: https://docs.baseten.co/development/model/overview.md
-
-# Source: https://docs.baseten.co/development/model-apis/overview.md
-
-# Source: https://docs.baseten.co/development/chain/overview.md
-
-# Source: https://docs.baseten.co/training/overview.md
-
-# Source: https://docs.baseten.co/reference/training-api/overview.md
-
-# Source: https://docs.baseten.co/reference/overview.md
-
-# Source: https://docs.baseten.co/reference/management-api/overview.md
-
-# Source: https://docs.baseten.co/reference/inference-api/overview.md
-
-# Source: https://docs.baseten.co/reference/cli/truss/overview.md
-
-# Source: https://docs.baseten.co/overview.md
+# Source: https://docs.baseten.co/organization/overview.md
 
 # Source: https://docs.baseten.co/observability/export-metrics/overview.md
 
@@ -44,31 +20,11 @@
 
 # Source: https://docs.baseten.co/examples/models/overview.md
 
-# Source: https://docs.baseten.co/development/model/overview.md
+# Source: https://docs.baseten.co/engines/engine-builder-llm/overview.md
 
-# Source: https://docs.baseten.co/development/model-apis/overview.md
+# Source: https://docs.baseten.co/engines/bis-llm/overview.md
 
-# Source: https://docs.baseten.co/development/chain/overview.md
-
-# Source: https://docs.baseten.co/training/overview.md
-
-# Source: https://docs.baseten.co/reference/training-api/overview.md
-
-# Source: https://docs.baseten.co/reference/overview.md
-
-# Source: https://docs.baseten.co/reference/management-api/overview.md
-
-# Source: https://docs.baseten.co/reference/inference-api/overview.md
-
-# Source: https://docs.baseten.co/reference/cli/truss/overview.md
-
-# Source: https://docs.baseten.co/overview.md
-
-# Source: https://docs.baseten.co/observability/export-metrics/overview.md
-
-# Source: https://docs.baseten.co/examples/overview.md
-
-# Source: https://docs.baseten.co/examples/models/overview.md
+# Source: https://docs.baseten.co/engines/bei/overview.md
 
 # Source: https://docs.baseten.co/development/model/overview.md
 
@@ -76,23 +32,9 @@
 
 # Source: https://docs.baseten.co/development/chain/overview.md
 
-# Source: https://docs.baseten.co/overview.md
-
-# Source: https://docs.baseten.co/observability/export-metrics/overview.md
-
-# Source: https://docs.baseten.co/examples/overview.md
-
-# Source: https://docs.baseten.co/examples/models/overview.md
-
-# Source: https://docs.baseten.co/development/model/overview.md
-
-# Source: https://docs.baseten.co/development/model-apis/overview.md
-
-# Source: https://docs.baseten.co/development/chain/overview.md
-
-# Source: https://docs.baseten.co/development/model-apis/overview.md
-
-# Source: https://docs.baseten.co/development/chain/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Overview
 
@@ -261,7 +203,7 @@ action for each person on the list.
 
 <AccordionGroup>
   <Accordion title="RAG: retrieval-augmented generation" icon="book">
-    Connect to a vector databases and augment LLM results with additional
+    Connect to vector databases and augment LLM results with additional
     context information without introducing overhead to the model inference
     step.
 
@@ -277,7 +219,7 @@ action for each person on the list.
   </Accordion>
 
   <Accordion title="Efficient multi-model pipelines" icon="hand-holding-dollar">
-    Build powerful experiences wit optimal scaling in each step like:
+    Build powerful experiences with optimal scaling in each step like:
 
     * AI phone calling (transcription + LLM + speech synthesis)
     * Multi-step image generation (SDXL + LoRAs + ControlNets)

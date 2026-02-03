@@ -6,7 +6,7 @@
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 [Xdebug](https://xdebug.org/) is a real-time debugger extension for PHP.
 While usually used for local development, it can also be helpful for debugging aberrant behavior on the server.
@@ -25,6 +25,8 @@ The following table shows the PHP versions where Xdebug is available:
 
 | 5.4 | 5.5 | 5.6 | 7.0 | 7.1 | 7.2 | 7.3 | 7.4 | 8.0 | 8.1 | 8.2 | 8.3 | 8.4 | 8.5 |
 | 
+
+              Avail
 
               Avail
 

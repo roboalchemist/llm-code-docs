@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/add-users/loops-api.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # API
 
 > Loops provides a REST API to manage your contacts.

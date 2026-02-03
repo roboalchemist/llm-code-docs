@@ -2,10 +2,7 @@
 
 # Get Schema
 
-```
-GET 
-/v2/:organizationId/Schemas/:schemaId
-```
+Copy page
 
 This endpoint returns a schema.
 

@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/guides/function-calling.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tool Calling
 
 > Connect models to external tools and APIs
@@ -17,15 +21,29 @@ Tool calling (also known as function calling) enables models to intelligently se
 
 Define tools and send a request - the model will return structured tool calls when needed:
 
+Initialize the client:
+
+<CodeGroup>
+  ```python Python (Fireworks SDK) theme={null}
+  from fireworks import Fireworks
+
+  client = Fireworks()
+  ```
+
+  ```python Python (OpenAI SDK) theme={null}
+  import os
+  from openai import OpenAI
+
+  client = OpenAI(
+      api_key=os.environ.get("FIREWORKS_API_KEY"),
+      base_url="https://api.fireworks.ai/inference/v1"
+  )
+  ```
+</CodeGroup>
+
+Define the tools and make the request:
+
 ```python  theme={null}
-import os
-from openai import OpenAI
-
-client = OpenAI(
-    api_key=os.environ.get("FIREWORKS_API_KEY"),
-    base_url="https://api.fireworks.ai/inference/v1"
-)
-
 tools = [{
     "type": "function",
     "function": {
@@ -59,14 +77,7 @@ print(response.choices[0].message.tool_calls)
 <AccordionGroup>
   <Accordion title="Complete workflow: Execute tools and get final response">
     ```python  theme={null}
-    import os
-    from openai import OpenAI
     import json
-
-    client = OpenAI(
-        api_key=os.environ.get("FIREWORKS_API_KEY"),
-        base_url="https://api.fireworks.ai/inference/v1"
-    )
 
     # Step 1: Define your tools
     tools = [{
@@ -98,16 +109,16 @@ print(response.choices[0].message.tool_calls)
     if response.choices[0].message.tool_calls:
         # Step 4: Execute the tool
         tool_call = response.choices[0].message.tool_calls[0]
-        
+
         # Your actual tool implementation
         def get_weather(location, unit="celsius"):
             # In production, call your weather API here
             return {"temperature": 72, "condition": "sunny", "unit": unit}
-        
+
         # Parse arguments and call your function
         function_args = json.loads(tool_call.function.arguments)
         function_response = get_weather(**function_args)
-        
+
         # Step 5: Send tool response back to model
         messages.append(response.choices[0].message)  # Add assistant's tool call
         messages.append({
@@ -115,7 +126,7 @@ print(response.choices[0].message.tool_calls)
             "tool_call_id": tool_call.id,
             "content": json.dumps(function_response)
         })
-        
+
         # Step 6: Get final response
         final_response = client.chat.completions.create(
             model="accounts/fireworks/models/kimi-k2-instruct-0905",
@@ -123,7 +134,7 @@ print(response.choices[0].message.tool_calls)
             tools=tools,
             temperature=0.1
         )
-        
+
         print(final_response.choices[0].message.content)
         # Output: "It's currently 72°F and sunny in San Francisco."
     ```
@@ -237,13 +248,6 @@ response = client.chat.completions.create(
 
   ```python  theme={null}
   import json
-  import os
-  from openai import OpenAI
-
-  client = OpenAI(
-      api_key=os.environ.get("FIREWORKS_API_KEY"),
-      base_url="https://api.fireworks.ai/inference/v1"
-  )
 
   tools = [{
       "type": "function",

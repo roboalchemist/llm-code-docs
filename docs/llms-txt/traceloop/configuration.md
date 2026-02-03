@@ -2,6 +2,10 @@
 
 # Source: https://www.traceloop.com/docs/hub/configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hub Configuration
 
 > How to configure Traceloop Hub and connect it to different LLM providers
@@ -67,8 +71,3 @@ Here are the plugins that are available:
 * `logging`: Logs the request and response.
 * `tracing`: Enables OpenTelemetry tracing for requests going through the pipeline.
 * `model-router`: Routes the request to a model, according to the list specified in the `models` section.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

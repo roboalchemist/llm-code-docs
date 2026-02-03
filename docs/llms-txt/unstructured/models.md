@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/open-source/concepts/models.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Models
 
 > Depending on your need, `Unstructured` provides OCR-based and Transformer-based models to detect elements in the documents. The models are useful to detect the complex layout in the documents and predict the element types.

@@ -17,25 +17,25 @@ Only internal structure.
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#hydrated)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_models.py#L103)hydrated
+### [**](#hydrated)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_models.py#L103)hydrated
 
 **hydrated: Request | None
 
 The hydrated request object (the original one).
 
-### [**](#id)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_models.py#L97)id
+### [**](#id)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_models.py#L97)id
 
 **id: str
 
 Id of the request.
 
-### [**](#lock_expires_at)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_models.py#L106)lock\_expires\_at
+### [**](#lock_expires_at)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_models.py#L106)lock\_expires\_at
 
 **lock\_expires\_at: datetime | None
 
 The expiration time of the lock on the request.
 
-### [**](#was_already_handled)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_models.py#L100)was\_already\_handled
+### [**](#was_already_handled)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_models.py#L100)was\_already\_handled
 
 **was\_already\_handled: bool
 

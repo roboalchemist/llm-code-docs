@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/integrate/sdk/adapters/supabase.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Supabase
 
 > Payments and Checkouts made dead simple with Supabase
@@ -28,6 +32,12 @@ Install the required Polar packages using the following command:
   <Tab title="pnpm">
     ```bash Terminal theme={null}
     pnpm add zod @polar-sh/supabase
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/supabase
     ```
   </Tab>
 </Tabs>
@@ -117,8 +127,3 @@ The Webhook handler also supports granular handlers for easy integration.
 * `onCustomerUpdated` - Triggered when a customer is updated
 * `onCustomerDeleted` - Triggered when a customer is deleted
 * `onCustomerStateChanged` - Triggered when a customer state changes
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://polar.sh/docs/llms.txt

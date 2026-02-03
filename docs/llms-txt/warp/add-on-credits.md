@@ -1,12 +1,12 @@
-# Source: https://docs.warp.dev/support-and-billing/plans-and-pricing/add-on-credits.md
+# Source: https://docs.warp.dev/support-and-community/plans-and-billing/add-on-credits.md
 
 # Add-on Credits
 
-Add-on credits replace Warp’s old [pay-as-you-go Overages](https://docs.warp.dev/support-and-billing/plans-and-pricing/usage-overages). They let you continue using premium AI models even after you’ve reached your monthly credit limit — at lower rates and with more control over spending.
+Add-on credits replace Warp's old [pay-as-you-go Overages](https://docs.warp.dev/support-and-community/plans-and-billing/overages-legacy). They let you continue using premium AI models even after you've reached your monthly credit limit — at lower rates and with more control over spending.
 
 You can manage and purchase Add-on credits directly in `Settings > Billing and usage`.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-7235dd195794f2e2ea3642aa35014f74a37a4492%2Freload-credits.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2974137108-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FD4dBaHbuMVNs0iB2iqZ1%2Fuploads%2Fgit-blob-7235dd195794f2e2ea3642aa35014f74a37a4492%2Freload-credits.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### How do Add-on credits work?
 
@@ -41,7 +41,7 @@ You can opt in and choose your reload amount when subscribing to a paid plan at 
 {% endhint %}
 
 {% hint style="warning" %}
-Add-on credit auto reload will be enabled by default for some legacy plan users when they transition to the Build plan. Please see more in our [Pricing FAQs](https://docs.warp.dev/support-and-billing/pricing-faqs#what-happens-to-my-current-plan-pro-turbo-lightspeed).
+Add-on credit auto reload will be enabled by default for some legacy plan users when they transition to the Build plan. Please see more in our [Pricing FAQs](https://docs.warp.dev/support-and-community/pricing-faqs#what-happens-to-my-current-plan-pro-turbo-lightspeed).
 {% endhint %}
 
 #### **Configuring a Monthly Spend Limit**

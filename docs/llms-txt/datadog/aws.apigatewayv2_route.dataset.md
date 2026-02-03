@@ -4,8 +4,6 @@
 title: API Gateway Route
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > API Gateway Route
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.apigatewayv2_route.dataset/index.html
 ---
 
 # API Gateway Route
@@ -35,5 +33,5 @@ aws.apigatewayv2_route
 | route_arn                           | core | string        |
 | route_id                            | core | string        | The route ID.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | route_response_selection_expression | core | string        | The route response selection expression for the route. Supported only for WebSocket APIs.                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| tags                                | core | hstore        |
+| tags                                | core | hstore_csv    |
 | target                              | core | string        | The target for the route.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |

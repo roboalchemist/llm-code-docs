@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/403-error-domain-mismatch.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 403 Error Using Verified Domain
 
 > Learn how to resolve a 403 error caused by using a domain in your API request that doesn't match your verified domain.
@@ -28,7 +32,7 @@ You have two options to resolve this:
 
 Update your API call to use the verified domain. For example, if you verified `sending.domain.com`, make sure your `from` field uses that exact domain:
 
-```javascript  theme={null}
+```javascript  theme={"theme":{"light":"github-light","dark":"vesper"}}
 resend.emails.send({
   from: 'onboarding@sending.domain.com', // Use your verified domain
   to: 'user@example.com',
@@ -55,8 +59,3 @@ If you've verified that your domain matches and you're still getting a 403 error
 2. Double-check that the domain in your API request's `from` field exactly matches your verified domain
 3. Ensure your API key has the necessary permissions.
 4. [Contact Resend support](https://resend.com/help) with details about your error
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://resend.com/docs/llms.txt

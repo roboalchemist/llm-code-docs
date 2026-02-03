@@ -18,7 +18,7 @@ We require all pull request checks to pass.
 
 ## Versioning
 
-Vespa uses semantic versioning - see [vespa versions](https://vespa.ai/releases#versions). Notice in particular that any Java API in a package having a @PublicAPI annotation in the package-info file cannot be changed in an incompatible way between major versions: Existing types and method signatures must be preserved (but can be marked deprecated).
+Vespa uses semantic versioning - see [vespa versions](releases.html). Notice in particular that any Java API in a package having a @PublicAPI annotation in the package-info file cannot be changed in an incompatible way between major versions: Existing types and method signatures must be preserved (but can be marked deprecated).
 
 ## Issues
 
@@ -28,9 +28,9 @@ There is also a [ToDo list](https://github.com/vespa-engine/vespa/blob/master/TO
 
 ## Community
 
-If you have questions, want to share your experience or help others, please join our community on the [Vespa Slack](http://slack.vespa.ai), or see Vespa on [Stack Overflow](http://stackoverflow.com/questions/tagged/vespa).
+If you have questions, want to share your experience or help others, please join our community on the [Vespa Slack](https://slack.vespa.ai), or see Vespa on [Stack Overflow](http://stackoverflow.com/questions/tagged/vespa).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

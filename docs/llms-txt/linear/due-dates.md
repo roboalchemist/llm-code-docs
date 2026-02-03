@@ -24,7 +24,7 @@ Use the shortcut `Shift` `D` when viewing or selecting an issue to set the due d
 
 ## Due date notifications
 
-Configure due date notifications in [account settings](https://linear.app/settings/account/notifications). You will receive a notification when an issue's due date is near and/or if the issue is past due.
+If enabled in your [notification settings](https://linear.app/settings/account/notifications), you will receive a notification when an issue's due date is near and/or if the issue is past due.
 
 ## Filter by due date
 
@@ -40,3 +40,12 @@ Type `F` then search _due_ or click the add filter button to apply the following
 ## Sort by due date
 
 On list views, open view options and select _Ordering: Due date_ to sort issues by due date. Issues with a due date will show up at the top of each group.
+
+
+
+### FAQ
+
+<details>
+<summary>What's the relationship between due dates and SLAs?</summary>
+An issue may use either due dates or an SLA, but not both. If an issue has a due date and then has an SLA applied, the due date will be replaced by the SLA.
+</details>

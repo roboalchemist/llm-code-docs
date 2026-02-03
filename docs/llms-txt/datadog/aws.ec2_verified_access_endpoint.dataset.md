@@ -4,8 +4,6 @@
 title: EC2 Verified Access Endpoint
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EC2 Verified Access Endpoint
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ec2_verified_access_endpoint.dataset/index.html
 ---
 
 # EC2 Verified Access Endpoint
@@ -41,7 +39,7 @@ aws.ec2_verified_access_endpoint
 | security_group_ids                         | core | array<string> | The IDs of the security groups for the endpoint.                                                                                                                                                      |
 | sse_specification                          | core | json          | The options in use for server side encryption.                                                                                                                                                        |
 | status                                     | core | json          | The endpoint status.                                                                                                                                                                                  |
-| tags                                       | core | hstore        |
+| tags                                       | core | hstore_csv    |
 | verified_access_endpoint_id                | core | string        | The ID of the Amazon Web Services Verified Access endpoint.                                                                                                                                           |
 | verified_access_endpoint_target_dns        | core | string        | The DNS name of the target.                                                                                                                                                                           |
 | verified_access_endpoint_target_ip_address | core | string        | The IP address of the target.                                                                                                                                                                         |

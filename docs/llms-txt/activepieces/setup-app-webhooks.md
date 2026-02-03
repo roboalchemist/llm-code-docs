@@ -1,8 +1,10 @@
 # Source: https://www.activepieces.com/docs/install/guides/setup-app-webhooks.md
 
-# Source: https://www.activepieces.com/docs/install/configuration/setup-app-webhooks.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Setup App Webhooks
+# How to Setup App Webhooks
 
 Certain apps like Slack and Square only support one webhook per OAuth2 app. This means that manual configuration is required in their developer portal, and it cannot be automated.
 

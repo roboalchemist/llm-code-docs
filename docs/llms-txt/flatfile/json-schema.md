@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/json-schema.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # JSON Schema Converter
 
 > Automatically transform JSON Schema into Flatfile Blueprint for streamlined data model setup
@@ -12,7 +16,7 @@ The plugin is designed to be used in a server-side Flatfile listener, typically 
 
 ## Installation
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-convert-json-schema
 ```
 
@@ -53,7 +57,7 @@ By default, the plugin will create Workbooks and Sheets as defined in the `workb
 ### Basic Usage with URL Schema
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { configureSpaceWithJsonSchema } from "@flatfile/plugin-convert-json-schema";
   import { FlatfileListener } from "@flatfile/listener";
 
@@ -76,7 +80,7 @@ By default, the plugin will create Workbooks and Sheets as defined in the `workb
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { configureSpaceWithJsonSchema } from "@flatfile/plugin-convert-json-schema";
   import { FlatfileListener } from "@flatfile/listener";
 
@@ -103,7 +107,7 @@ By default, the plugin will create Workbooks and Sheets as defined in the `workb
 ### Local Schema with Callback
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { configureSpaceWithJsonSchema } from "@flatfile/plugin-convert-json-schema";
   import { FlatfileListener } from "@flatfile/listener";
   import api from "@flatfile/api";
@@ -144,7 +148,7 @@ By default, the plugin will create Workbooks and Sheets as defined in the `workb
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { configureSpaceWithJsonSchema } from "@flatfile/plugin-convert-json-schema";
   import { FlatfileListener, FlatfileEvent } from "@flatfile/listener";
   import { TickFunction } from "@flatfile/plugin-job-handler";
@@ -190,7 +194,7 @@ By default, the plugin will create Workbooks and Sheets as defined in the `workb
 ### Dynamic Schema from Function
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { configureSpaceWithJsonSchema, fetchExternalReference } from "@flatfile/plugin-convert-json-schema";
   import { FlatfileListener } from "@flatfile/listener";
 
@@ -217,7 +221,7 @@ By default, the plugin will create Workbooks and Sheets as defined in the `workb
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { configureSpaceWithJsonSchema, fetchExternalReference } from "@flatfile/plugin-convert-json-schema";
   import { FlatfileListener } from "@flatfile/listener";
 
@@ -248,7 +252,7 @@ By default, the plugin will create Workbooks and Sheets as defined in the `workb
 ### Using fetchExternalReference with Error Handling
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { fetchExternalReference } from "@flatfile/plugin-convert-json-schema";
 
   try {
@@ -260,7 +264,7 @@ By default, the plugin will create Workbooks and Sheets as defined in the `workb
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { fetchExternalReference } from "@flatfile/plugin-convert-json-schema";
 
   try {

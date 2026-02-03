@@ -4,8 +4,6 @@
 title: Devicefarm Deviceinstance
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Devicefarm Deviceinstance
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.devicefarm_deviceinstance.dataset/index.html
 ---
 
 # Devicefarm Deviceinstance
@@ -27,5 +25,5 @@ aws.devicefarm_deviceinstance
 | instance_profile | core | json          | A object that contains information about the instance profile.   |
 | labels           | core | array<string> | An array of strings that describe the device instance.           |
 | status           | core | string        | The status of the device instance. Valid values are listed here. |
-| tags             | core | hstore        |
+| tags             | core | hstore_csv    |
 | udid             | core | string        | Unique device identifier for the device instance.                |

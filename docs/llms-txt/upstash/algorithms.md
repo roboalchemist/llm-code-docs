@@ -2,27 +2,11 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ratelimit-py/algorithms.md
 
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/algorithms.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-py/algorithms.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/algorithms.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-py/algorithms.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/algorithms.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-py/algorithms.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/algorithms.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-py/algorithms.md
-
-# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/algorithms.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Ratelimiting Algorithms
-
-We provide different algorithms to use out of the box. Each has pros and cons.
 
 ## Fixed Window
 
@@ -48,34 +32,15 @@ than the set limit, the request is rejected.
 
 ### Usage
 
-Create a new ratelimiter, that allows 10 requests per 10 seconds.
+```python  theme={"system"}
+from upstash_ratelimit import Ratelimit, FixedWindow
+from upstash_redis import Redis
 
-<Tabs>
-  <Tab title="Regional">
-    ```ts  theme={"system"}
-    const ratelimit = new Ratelimit({
-      redis: Redis.fromEnv(),
-      limiter: Ratelimit.fixedWindow(10, "10 s"),
-    });
-    ```
-  </Tab>
-
-  <Tab title="Multi Regional">
-    ```ts  theme={"system"}
-    const ratelimit = new MultiRegionRatelimit({
-      redis: [
-        new Redis({
-          /* auth */
-        }),
-        new Redis({
-          /* auth */
-        })
-      ],
-      limiter: MultiRegionRatelimit.fixedWindow(10, "10 s"),
-    });
-    ```
-  </Tab>
-</Tabs>
+ratelimit = Ratelimit(
+    redis=Redis.from_env(),
+    limiter=FixedWindow(max_requests=10, window=10),
+)
+```
 
 ## Sliding Window
 
@@ -87,13 +52,13 @@ currently 00:01:15 and we have received 4 requests in the first window and 5
 requests so far in the current window. The approximation to determine if the
 request should pass works like this:
 
-```ts  theme={"system"}
+```python  theme={"system"}
 limit = 10
 
-// 4 request from the old window, weighted + requests in current window
+# 4 request from the old window, weighted + requests in current window
 rate = 4 * ((60 - 15) / 60) + 5 = 8
 
-return rate < limit // True means we should allow the request
+return rate < limit # True means we should allow the request
 ```
 
 ### Pros
@@ -103,62 +68,39 @@ return rate < limit // True means we should allow the request
 ### Cons
 
 * More expensive in terms of storage and computation
-* Is only an approximation, because it assumes a uniform request flow in the
-  previous window, but this is fine in most cases
+* It's only an approximation because it assumes a uniform request flow in the
+  previous window
 
 ### Usage
 
-Create a new ratelimiter, that allows 10 requests per 10 seconds.
+```python  theme={"system"}
+from upstash_ratelimit import Ratelimit, SlidingWindow
+from upstash_redis import Redis
 
-<Tabs>
-  <Tab title="Regional">
-    ```ts  theme={"system"}
-    const ratelimit = new Ratelimit({
-      redis: Redis.fromEnv(),
-      limiter: Ratelimit.slidingWindow(10, "10 s"),
-    });
-    ```
-  </Tab>
-
-  <Tab title="Multi Regional">
-    **Warning:** Using sliding window algorithm with the multiregion setup results in large number of
-    commands in Redis and long request processing times. If you want to keep the number of commands
-    low, we recommend using the [fixed window algorithm in multi region setup](/redis/sdks/ratelimit-ts/algorithms#fixed-window).
-
-    ```ts  theme={"system"}
-    const ratelimit = new MultiRegionRatelimit({
-      redis: [
-        new Redis({
-          /* auth */
-        }),
-        new Redis({
-          /* auth */
-        })
-      ],
-      limiter: MultiRegionRatelimit.slidingWindow(10, "10 s"),
-    });
-    ```
-  </Tab>
-</Tabs>
+ratelimit = Ratelimit(
+    redis=Redis.from_env(),
+    limiter=SlidingWindow(max_requests=10, window=10),
+)
+```
 
 <Tip>
-  `reset` field in the [`limit`](/redis/sdks/ratelimit-ts/methods#limit) and [`getRemaining`](/redis/sdks/ratelimit-ts/methods#getremaining) methods of sliding window do not
+  `reset` field in the [`limit`](/redis/sdks/ratelimit-py/gettingstarted) method of sliding window does not
   provide an exact reset time. Instead, the reset time is the start time of
   the next window.
 </Tip>
 
 ## Token Bucket
 
-Consider a bucket filled with `{maxTokens}` tokens that refills constantly at
-`{refillRate}` per `{interval}`. Every request will remove one token from the
-bucket and if there is no token to take, the request is rejected.
+Consider a bucket filled with maximum number of tokens that refills constantly
+at a rate per interval. Every request will remove one token from the bucket and
+if there is no token to take, the request is rejected.
 
 ### Pros
 
 * Bursts of requests are smoothed out and you can process them at a constant
   rate.
-* Allows to set a higher initial burst limit by setting `maxTokens` higher than
-  `refillRate`
+* Allows setting a higher initial burst limit by setting maximum number of
+  tokens higher than the refill rate
 
 ### Cons
 
@@ -166,21 +108,12 @@ bucket and if there is no token to take, the request is rejected.
 
 ### Usage
 
-Create a new bucket, that refills 5 tokens every 10 seconds and has a maximum
-size of 10.
+```python  theme={"system"}
+from upstash_ratelimit import Ratelimit, TokenBucket
+from upstash_redis import Redis
 
-<Tabs>
-  <Tab title="Regional">
-    ```ts  theme={"system"}
-    const ratelimit = new Ratelimit({
-      redis: Redis.fromEnv(),
-      limiter: Ratelimit.tokenBucket(5, "10 s", 10),
-      analytics: true,
-    });
-    ```
-  </Tab>
-
-  <Tab title="Multi Regional">
-    *Not yet supported for `MultiRegionRatelimit`*
-  </Tab>
-</Tabs>
+ratelimit = Ratelimit(
+    redis=Redis.from_env(),
+    limiter=TokenBucket(max_tokens=10, refill_rate=5, interval=10),
+)
+```

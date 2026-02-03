@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/import/no-self-import.md
 ---
-# import/no-self-import&#x20;
 
 ### What it does
 

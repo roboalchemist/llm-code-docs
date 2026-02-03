@@ -4,7 +4,6 @@
 title: Plan your Datadog installation
 description: Plan out your Datadog installation for success.
 breadcrumbs: Docs > Administrator's Guide > Plan your Datadog installation
-source_url: https://docs.datadoghq.com/plan/index.html
 ---
 
 # Plan your Datadog installation

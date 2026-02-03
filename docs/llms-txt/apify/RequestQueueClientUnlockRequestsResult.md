@@ -10,6 +10,6 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#unlockedCount)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L696)unlockedCount
+### [**](#unlockedCount)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L988)unlockedCount
 
 **unlockedCount: number

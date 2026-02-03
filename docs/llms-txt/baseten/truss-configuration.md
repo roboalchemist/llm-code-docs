@@ -1,56 +1,68 @@
 # Source: https://docs.baseten.co/reference/truss-configuration.md
 
-# Configure Truss
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Truss configuration
 
 > Set your model resources, dependencies, and more
 
-Truss is configurable to its core. Every Truss must include a file config.yaml in its root directory, which is automatically generated when the Truss is created. However, configuration is optional. Every configurable value has a sensible default, and a completely empty config file is valid.
+The `config.yaml` file defines how your model runs on Baseten: its dependencies,
+compute resources, secrets, and runtime behavior. You specify what your model
+needs; Baseten handles the infrastructure.
 
-<Accordion title="YAML syntax help">
-  YAML syntax can be a bit non-obvious when dealing with empty lists and dictionaries. You may notice the following in the default Truss config file:
+Every Truss includes a `config.yaml` in its root directory. Configuration is
+optional, every value has a sensible default.
+
+Common configuration tasks include:
+
+* [Allocate GPU and memory](#resources): compute resources for your instance.
+* [Declare environment variables](#environment-variables): environment variables for your model.
+* [Configure concurrency](#runtime): parallel request handling.
+* [Use a custom Docker image](#base-image): deploy pre-built inference servers.
+
+<Accordion title="YAML syntax">
+  If you're new to YAML, here's a quick primer.
+  The default config uses `[]` for empty lists and `{}` for empty dictionaries.
+  When adding values, the syntax changes to indented lines:
 
   ```yaml  theme={"system"}
+  # Empty
   requirements: []
   secrets: {}
-  ```
 
-  When you fill them in with values, lists and dictionaries should look like this:
-
-  ```yaml  theme={"system"}
+  # With values
   requirements:
-    - dep1
-    - dep2
+    - torch
+    - transformers
   secrets:
-    key1: default_value1
-    key2: default_value2
+    hf_access_token: null
   ```
 </Accordion>
 
 ## Example
 
-Here's an example config file for a Truss that uses the [WizardLM](https://huggingface.co/WizardLM/WizardLM-7B-V1.0) model:
+The following example shows a config file for a GPU-accelerated text generation model:
 
-```yaml WizardLM config theme={"system"}
-description: An instruction-following LLM Using Evol-Instruct.
-environment_variables: {}
-model_name: WizardLM
+```yaml config.yaml theme={"system"}
+model_name: my-llm
+description: A text generation model.
 requirements:
-  - accelerate==0.20.3
-  - bitsandbytes==0.39.1
-  - peft==0.3.0
-  - protobuf==4.23.3
-  - sentencepiece==0.1.99
-  - torch==2.0.1
-  - transformers==4.30.2
+  - torch
+  - transformers
+  - accelerate
 resources:
   cpu: "4"
   memory: 16Gi
-  use_gpu: true
   accelerator: L4
-secrets: {}
-system_packages: []
+secrets:
+  hf_access_token: null
 ```
 
-## Full config reference
+For more examples, see the
+[truss-examples](https://github.com/basetenlabs/truss-examples) repository.
+
+## Reference
 
 <Snippet file="config-params.mdx" />

@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/galileo-product-features/xray-insights.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Alerts
 
 > Explore Galileo NLP Studio's Alerts feature, designed to detect and summarize dataset issues like mislabeling and class imbalance, enhancing data inspection.
@@ -11,7 +15,7 @@ After you complete a run, Galileo surfaces a summary of issues it has found in y
 Alerts will also educate you on why this subset of your data might be causing issues and tell you how you can fix this. You can think of Alerts as a partner Data Scientist working with you to find and fix your data.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/alert.gif" />
+  <img src="https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/alert.gif?s=e39a13c1e8e8e07121e03c2e784eba09" data-og-width="600" width="600" data-og-height="324" height="324" data-path="images/alert.gif" data-optimize="true" data-opv="3" />
 </Frame>
 
 ## Alerts that we support today
@@ -48,5 +52,5 @@ We support a growing list of alerts, and are open to feature requests! Some of t
 Have a great idea for a new alert? We'd love to hear about it! File any requests under your *Profile Avatar Menu >* "Bug Report or Feature Request", and we'll immediately get your request telescope
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/alert-2.avif" />
+  <img src="https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/alert-2.avif?fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=e337d27582bc1c05dcffb619a1757c1b" data-og-width="300" width="300" data-og-height="232" height="232" data-path="images/alert-2.avif" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/alert-2.avif?w=280&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=18fbab9d7e87ca7d9d3ac00b660dbd38 280w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/alert-2.avif?w=560&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=64c2fc8aa31f37c163edd3bf0f0a723c 560w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/alert-2.avif?w=840&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=2240a7c49d0c08ab3c1dc69333acea4a 840w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/alert-2.avif?w=1100&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=bc10b5b18b354b42a5a57f1534648b6b 1100w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/alert-2.avif?w=1650&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=a9f8bfdd7b0b9b582f49637316c1a4c7 1650w, https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/alert-2.avif?w=2500&fit=max&auto=format&n=foTqVxFiTFn9-DRK&q=85&s=67a83d5b5881d2814010da94b21bec87 2500w" />
 </Frame>

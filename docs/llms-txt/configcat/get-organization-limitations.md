@@ -2,10 +2,7 @@
 
 # Get Organization limitations
 
-```
-GET 
-/v1/organizations/:organizationId/organization-limitations
-```
+Copy page
 
 This endpoint returns the limitations of an Organization identified by the `organizationId`.
 

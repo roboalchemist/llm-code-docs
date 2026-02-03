@@ -1,173 +1,142 @@
 # Source: https://docs.unstructured.io/api-reference/workflows/run-workflow.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Run Workflow
 
 > Run a workflow by triggering a new job if none is currently active.
 
+
+
 ## OpenAPI
 
 ````yaml https://platform.unstructuredapp.io/openapi.json post /api/v1/workflows/{workflow_id}/run
+openapi: 3.1.0
+info:
+  title: Platform API
+  version: 3.1.0
+servers:
+  - url: https://platform.unstructuredapp.io/
+    description: Unstructured Platform API
+    x-speakeasy-server-id: platform-api
+security: []
 paths:
-  path: /api/v1/workflows/{workflow_id}/run
-  method: post
-  servers:
-    - url: https://platform.unstructuredapp.io/
-      description: Unstructured Platform API
-  request:
-    security:
-      - title: HTTPBearer
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        workflow_id:
+  /api/v1/workflows/{workflow_id}/run:
+    post:
+      tags:
+        - workflows
+      summary: Run Workflow
+      description: Run a workflow by triggering a new job if none is currently active.
+      operationId: run_workflow
+      parameters:
+        - name: workflow_id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              title: Workflow Id
-              format: uuid
-      query: {}
-      header:
-        unstructured-api-key:
+            type: string
+            format: uuid
+            title: Workflow Id
+        - name: unstructured-api-key
+          in: header
+          required: false
           schema:
-            - type: string
-              required: false
-              title: Unstructured-Api-Key
-            - type: 'null'
-              required: false
-              title: Unstructured-Api-Key
-      cookie: {}
-    body:
-      multipart/form-data:
-        schemaArray:
-          - type: object
-            properties:
-              input_files:
-                allOf:
-                  - anyOf:
-                      - items:
-                          type: string
-                          format: binary
-                        type: array
-                      - type: 'null'
-                    title: Input Files
-            title: Body_run_workflow
-            refIdentifier: '#/components/schemas/Body_run_workflow'
-        examples:
-          example:
-            value:
-              input_files:
-                - null
-  response:
-    '202':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-                    format: uuid
-                    title: Id
-              workflow_id:
-                allOf:
-                  - type: string
-                    format: uuid
-                    title: Workflow Id
-              workflow_name:
-                allOf:
-                  - type: string
-                    title: Workflow Name
-              status:
-                allOf:
-                  - $ref: '#/components/schemas/JobStatus'
-              created_at:
-                allOf:
-                  - type: string
-                    format: date-time
-                    title: Created At
-              runtime:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: duration
-                      - type: 'null'
-                    title: Runtime
-              input_file_ids:
-                allOf:
-                  - anyOf:
-                      - items:
-                          type: string
-                        type: array
-                      - type: 'null'
-                    title: Input File Ids
-              output_node_files:
-                allOf:
-                  - anyOf:
-                      - items:
-                          $ref: '#/components/schemas/NodeFileMetadata'
-                        type: array
-                      - type: 'null'
-                    title: Output Node Files
-              job_type:
-                allOf:
-                  - $ref: '#/components/schemas/WorkflowJobType'
-                    default: ephemeral
-            title: JobInformation
-            refIdentifier: '#/components/schemas/JobInformation'
-            requiredProperties:
-              - id
-              - workflow_id
-              - workflow_name
-              - status
-              - created_at
-        examples:
-          example:
-            value:
-              id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              workflow_id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              workflow_name: <string>
-              status: SCHEDULED
-              created_at: '2023-11-07T05:31:56Z'
-              runtime: <string>
-              input_file_ids:
-                - <string>
-              output_node_files:
-                - node_id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                  file_id: <string>
-              job_type: ephemeral
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            anyOf:
+              - type: string
+              - type: 'null'
+            title: Unstructured-Api-Key
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_run_workflow'
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobInformation'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    Body_run_workflow:
+      properties:
+        input_files:
+          anyOf:
+            - items:
+                type: string
+                format: binary
+              type: array
+            - type: 'null'
+          title: Input Files
+      type: object
+      title: Body_run_workflow
+    JobInformation:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        workflow_id:
+          type: string
+          format: uuid
+          title: Workflow Id
+        workflow_name:
+          type: string
+          title: Workflow Name
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        runtime:
+          anyOf:
+            - type: string
+              format: duration
+            - type: 'null'
+          title: Runtime
+        input_file_ids:
+          anyOf:
+            - items:
+                type: string
+              type: array
+            - type: 'null'
+          title: Input File Ids
+        output_node_files:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/NodeFileMetadata'
+              type: array
+            - type: 'null'
+          title: Output Node Files
+        job_type:
+          $ref: '#/components/schemas/WorkflowJobType'
+          default: ephemeral
+      type: object
+      required:
+        - id
+        - workflow_id
+        - workflow_name
+        - status
+        - created_at
+      title: JobInformation
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     JobStatus:
       type: string
       enum:
@@ -186,11 +155,27 @@ components:
         file_id:
           type: string
           title: File Id
+        node_type:
+          type: string
+          title: Node Type
+        node_subtype:
+          type: string
+          title: Node Subtype
       type: object
       required:
         - node_id
         - file_id
+        - node_type
+        - node_subtype
       title: NodeFileMetadata
+    WorkflowJobType:
+      type: string
+      enum:
+        - ephemeral
+        - persistent
+        - scheduled
+        - template
+      title: WorkflowJobType
     ValidationError:
       properties:
         loc:
@@ -212,13 +197,5 @@ components:
         - msg
         - type
       title: ValidationError
-    WorkflowJobType:
-      type: string
-      enum:
-        - ephemeral
-        - persistent
-        - scheduled
-        - template
-      title: WorkflowJobType
 
 ````

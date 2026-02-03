@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/cli/interactive/prompt-enhancer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prompt Enhancer
 
 > Use Ctrl+P to enhance your prompts with relevant context, structure, and conventions from your codebase.

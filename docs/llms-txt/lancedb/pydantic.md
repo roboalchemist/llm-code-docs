@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/data/pydantic.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pydantic
 
 export const PyFrameworksPydanticVectorField = "import pyarrow as pa\nimport pydantic\nfrom lancedb.pydantic import Vector, pydantic_to_schema\n\nclass MyModel(pydantic.BaseModel):\n    id: int\n    url: str\n    embeddings: Vector(768)\n\nschema = pydantic_to_schema(MyModel)\nassert schema == pa.schema(\n    [\n        pa.field(\"id\", pa.int64(), False),\n        pa.field(\"url\", pa.utf8(), False),\n        pa.field(\"embeddings\", pa.list_(pa.float32(), 768)),\n    ]\n)\n";
@@ -90,8 +94,3 @@ This example shows a more complex Pydantic model with various field types and de
 * Vector fields: `Vector(1536)` creates a fixed-size list of 1536 float32 values
 * List fields: `List[int]` becomes a variable-length list of int64 values
 * Schema generation: The `pydantic_to_schema()` function automatically converts all these types to their Arrow equivalents
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

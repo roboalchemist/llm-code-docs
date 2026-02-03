@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/sandboxed-code-evals/
+
 # Sandboxed Evaluations of LLM-Generated Code
 
 You're using LLMs to generate code snippets, functions, or even entire programs. Blindly trusting and executing this generated code in our production environments - or even in development environments - can be a severe security risk.

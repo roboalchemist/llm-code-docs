@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/gpt-3.5-vs-gpt-4/
+
 # GPT 3.5 vs GPT 4: benchmark on your own data
 
 This guide will walk you through how to compare OpenAI's GPT-3.5 and GPT-4 using promptfoo. This testing framework will give you the chance to test the models' reasoning capabilities, cost, and latency.

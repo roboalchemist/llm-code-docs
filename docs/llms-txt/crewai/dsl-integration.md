@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/mcp/dsl-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MCP DSL Integration
 
 > Learn how to use CrewAI's simple DSL syntax to integrate MCP servers directly with your agents using the mcps field.
@@ -9,7 +13,9 @@
 CrewAI's MCP DSL (Domain Specific Language) integration provides the **simplest way** to connect your agents to MCP (Model Context Protocol) servers. Just add an `mcps` field to your agent and CrewAI handles all the complexity automatically.
 
 <Info>
-  This is the **recommended approach** for most MCP use cases. For advanced scenarios requiring manual connection management, see [MCPServerAdapter](/en/mcp/overview#advanced-mcpserveradapter).
+  This is the **recommended approach** for most MCP use cases. For advanced
+  scenarios requiring manual connection management, see
+  [MCPServerAdapter](/en/mcp/overview#advanced-mcpserveradapter).
 </Info>
 
 ## Basic Usage

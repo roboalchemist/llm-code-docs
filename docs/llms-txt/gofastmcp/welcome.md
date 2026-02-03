@@ -1,12 +1,16 @@
 # Source: https://gofastmcp.com/getting-started/welcome.md
 
-# Welcome to FastMCP 2.0!
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Welcome to FastMCP 3.0!
 
 > The fast, Pythonic way to build MCP servers and clients.
 
-<img src="https://mintcdn.com/fastmcp/xdeorzy2A8w9kCCa/assets/brand/f-watercolor-waves.png?fit=max&auto=format&n=xdeorzy2A8w9kCCa&q=85&s=77138c04347ed9726fc34a7ef5e4f21d" alt="'F' logo on a watercolor background" noZoom className="rounded-2xl block dark:hidden" data-og-width="1792" width="1792" data-og-height="576" height="576" data-path="assets/brand/f-watercolor-waves.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fastmcp/xdeorzy2A8w9kCCa/assets/brand/f-watercolor-waves.png?w=280&fit=max&auto=format&n=xdeorzy2A8w9kCCa&q=85&s=172a20a5755b28251da4dba37aecbcbc 280w, https://mintcdn.com/fastmcp/xdeorzy2A8w9kCCa/assets/brand/f-watercolor-waves.png?w=560&fit=max&auto=format&n=xdeorzy2A8w9kCCa&q=85&s=df81c8edcb392abbad93f00fb5776e62 560w, https://mintcdn.com/fastmcp/xdeorzy2A8w9kCCa/assets/brand/f-watercolor-waves.png?w=840&fit=max&auto=format&n=xdeorzy2A8w9kCCa&q=85&s=20be8927051fbb4962aec176cb4f667f 840w, https://mintcdn.com/fastmcp/xdeorzy2A8w9kCCa/assets/brand/f-watercolor-waves.png?w=1100&fit=max&auto=format&n=xdeorzy2A8w9kCCa&q=85&s=2a6a436fea4cdf35c063a1910ecf7945 1100w, https://mintcdn.com/fastmcp/xdeorzy2A8w9kCCa/assets/brand/f-watercolor-waves.png?w=1650&fit=max&auto=format&n=xdeorzy2A8w9kCCa&q=85&s=5a37cc7de40193eed40c013508fc4041 1650w, https://mintcdn.com/fastmcp/xdeorzy2A8w9kCCa/assets/brand/f-watercolor-waves.png?w=2500&fit=max&auto=format&n=xdeorzy2A8w9kCCa&q=85&s=6f84b20c8d1f1ab62bc4e88b47d70e6f 2500w" />
+<img src="https://mintcdn.com/fastmcp/vP28Y_HI4lA7ZSYM/assets/brand/f-watercolor-waves-2.png?fit=max&auto=format&n=vP28Y_HI4lA7ZSYM&q=85&s=ed5a792b94ca3d10ae2545461c4cc84d" alt="'F' logo on a watercolor background" noZoom className="rounded-2xl block dark:hidden" data-og-width="1368" width="1368" data-og-height="566" height="566" data-path="assets/brand/f-watercolor-waves-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fastmcp/vP28Y_HI4lA7ZSYM/assets/brand/f-watercolor-waves-2.png?w=280&fit=max&auto=format&n=vP28Y_HI4lA7ZSYM&q=85&s=671e47d6dc6c7432d86373ecd4be213c 280w, https://mintcdn.com/fastmcp/vP28Y_HI4lA7ZSYM/assets/brand/f-watercolor-waves-2.png?w=560&fit=max&auto=format&n=vP28Y_HI4lA7ZSYM&q=85&s=f9adab52c71d209409de050e3d8cf1d6 560w, https://mintcdn.com/fastmcp/vP28Y_HI4lA7ZSYM/assets/brand/f-watercolor-waves-2.png?w=840&fit=max&auto=format&n=vP28Y_HI4lA7ZSYM&q=85&s=23e7505146369d330a49d3e8e1399ddf 840w, https://mintcdn.com/fastmcp/vP28Y_HI4lA7ZSYM/assets/brand/f-watercolor-waves-2.png?w=1100&fit=max&auto=format&n=vP28Y_HI4lA7ZSYM&q=85&s=22bfe92301388bc0fbb975c70f07a313 1100w, https://mintcdn.com/fastmcp/vP28Y_HI4lA7ZSYM/assets/brand/f-watercolor-waves-2.png?w=1650&fit=max&auto=format&n=vP28Y_HI4lA7ZSYM&q=85&s=2aba2f0af93e283d5bb78a1075879deb 1650w, https://mintcdn.com/fastmcp/vP28Y_HI4lA7ZSYM/assets/brand/f-watercolor-waves-2.png?w=2500&fit=max&auto=format&n=vP28Y_HI4lA7ZSYM&q=85&s=b113f6b9b89f0bc511f29c16cdc043ab 2500w" />
 
-<img src="https://mintcdn.com/fastmcp/xdeorzy2A8w9kCCa/assets/brand/f-watercolor-waves-dark.png?fit=max&auto=format&n=xdeorzy2A8w9kCCa&q=85&s=7bc98874cb9bd5ef7eefea5555e8280d" alt="'F' logo on a watercolor background" noZoom className="rounded-2xl hidden dark:block" data-og-width="1792" width="1792" data-og-height="576" height="576" data-path="assets/brand/f-watercolor-waves-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fastmcp/xdeorzy2A8w9kCCa/assets/brand/f-watercolor-waves-dark.png?w=280&fit=max&auto=format&n=xdeorzy2A8w9kCCa&q=85&s=46e600feedf6d103fd6cc67fc640aabb 280w, https://mintcdn.com/fastmcp/xdeorzy2A8w9kCCa/assets/brand/f-watercolor-waves-dark.png?w=560&fit=max&auto=format&n=xdeorzy2A8w9kCCa&q=85&s=37ccf093e878c72406cd66b536ecde8a 560w, https://mintcdn.com/fastmcp/xdeorzy2A8w9kCCa/assets/brand/f-watercolor-waves-dark.png?w=840&fit=max&auto=format&n=xdeorzy2A8w9kCCa&q=85&s=59bd6bb5c7182967b80e8ca50f9151a3 840w, https://mintcdn.com/fastmcp/xdeorzy2A8w9kCCa/assets/brand/f-watercolor-waves-dark.png?w=1100&fit=max&auto=format&n=xdeorzy2A8w9kCCa&q=85&s=d13cd7716e75c1c96a559618856327ac 1100w, https://mintcdn.com/fastmcp/xdeorzy2A8w9kCCa/assets/brand/f-watercolor-waves-dark.png?w=1650&fit=max&auto=format&n=xdeorzy2A8w9kCCa&q=85&s=d8a73f6707964f62eb9a88df270f7a89 1650w, https://mintcdn.com/fastmcp/xdeorzy2A8w9kCCa/assets/brand/f-watercolor-waves-dark.png?w=2500&fit=max&auto=format&n=xdeorzy2A8w9kCCa&q=85&s=495974191566b1091e25280ec90ab6a0 2500w" />
+<img src="https://mintcdn.com/fastmcp/vP28Y_HI4lA7ZSYM/assets/brand/f-watercolor-waves-dark-2.jpeg?fit=max&auto=format&n=vP28Y_HI4lA7ZSYM&q=85&s=722c3437ce47b4eff4e19e0beb7be363" alt="'F' logo on a watercolor background" noZoom className="rounded-2xl hidden dark:block" data-og-width="1616" width="1616" data-og-height="656" height="656" data-path="assets/brand/f-watercolor-waves-dark-2.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fastmcp/vP28Y_HI4lA7ZSYM/assets/brand/f-watercolor-waves-dark-2.jpeg?w=280&fit=max&auto=format&n=vP28Y_HI4lA7ZSYM&q=85&s=5bc6ef4e62c6178640411ed93891548c 280w, https://mintcdn.com/fastmcp/vP28Y_HI4lA7ZSYM/assets/brand/f-watercolor-waves-dark-2.jpeg?w=560&fit=max&auto=format&n=vP28Y_HI4lA7ZSYM&q=85&s=ecc5741c8f653169271c4a5b75138cc8 560w, https://mintcdn.com/fastmcp/vP28Y_HI4lA7ZSYM/assets/brand/f-watercolor-waves-dark-2.jpeg?w=840&fit=max&auto=format&n=vP28Y_HI4lA7ZSYM&q=85&s=2a9ec0400f1c6adb06746aa9d541ab30 840w, https://mintcdn.com/fastmcp/vP28Y_HI4lA7ZSYM/assets/brand/f-watercolor-waves-dark-2.jpeg?w=1100&fit=max&auto=format&n=vP28Y_HI4lA7ZSYM&q=85&s=4935c8925c35dfab1f9c3ce43b11666a 1100w, https://mintcdn.com/fastmcp/vP28Y_HI4lA7ZSYM/assets/brand/f-watercolor-waves-dark-2.jpeg?w=1650&fit=max&auto=format&n=vP28Y_HI4lA7ZSYM&q=85&s=78649fe63464814c70f194142a995850 1650w, https://mintcdn.com/fastmcp/vP28Y_HI4lA7ZSYM/assets/brand/f-watercolor-waves-dark-2.jpeg?w=2500&fit=max&auto=format&n=vP28Y_HI4lA7ZSYM&q=85&s=2ee5444cbcbca78b9b34ef5527ef8351 2500w" />
 
 **FastMCP is the standard framework for building MCP applications.** The [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) provides a standardized way to connect LLMs to tools and data, and FastMCP makes it production-ready with clean, Pythonic code:
 
@@ -24,43 +28,34 @@ if __name__ == "__main__":
     mcp.run()
 ```
 
-## Beyond Basic MCP
-
-FastMCP pioneered Python MCP development, and FastMCP 1.0 was incorporated into the [official MCP SDK](https://github.com/modelcontextprotocol/python-sdk) in 2024.
-
-**This is FastMCP 2.0,** the actively maintained version that extends far beyond basic protocol implementation. While the SDK provides core functionality, FastMCP 2.0 delivers everything needed for production: advanced MCP patterns (server composition, proxying, OpenAPI/FastAPI generation, tool transformation), enterprise auth (Google, GitHub, Azure, Auth0, WorkOS, and more), deployment tools, testing frameworks, and comprehensive client libraries.
-
-Ready to build? Start with our [installation guide](/getting-started/installation) or jump straight to the [quickstart](/getting-started/quickstart).
+<Tip>
+  **This documentation is for FastMCP 3.0**, which is currently in beta. For the 2.x release, see the [FastMCP 2.0 documentation](/v2/getting-started/welcome).
+</Tip>
 
 FastMCP is made with 💙 by [Prefect](https://www.prefect.io/).
 
-## What is MCP?
+## Move Fast and Make Things
 
-The Model Context Protocol lets you build servers that expose data and functionality to LLM applications in a secure, standardized way. It is often described as "the USB-C port for AI", providing a uniform way to connect LLMs to resources they can use. It may be easier to think of it as an API, but specifically designed for LLM interactions. MCP servers can:
+The [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) lets you give agents access to your tools and data. But building an effective MCP server is harder than it looks.
 
-* Expose data through `Resources` (think of these sort of like GET endpoints; they are used to load information into the LLM's context)
-* Provide functionality through `Tools` (sort of like POST endpoints; they are used to execute code or otherwise produce a side effect)
-* Define interaction patterns through `Prompts` (reusable templates for LLM interactions)
-* And more!
+Give your agent too much—hundreds of tools, verbose responses—and it gets overwhelmed. Give it too little and it can't do its job. The protocol itself is complex, with layers of serialization, validation, and error handling that have nothing to do with your business logic. And the spec keeps evolving; what worked last month might already need updating.
 
-FastMCP provides a high-level, Pythonic interface for building, managing, and interacting with these servers.
+The real challenge isn't implementing the protocol. It's delivering **the right information at the right time**.
 
-## Why FastMCP?
+That's the problem FastMCP solves—and why it's become the standard. FastMCP 1.0 was incorporated into the official MCP SDK in 2024. Today, the actively maintained standalone project is downloaded a million times a day, and some version of FastMCP powers 70% of MCP servers across all languages.
 
-FastMCP handles all the complex protocol details so you can focus on building. In most cases, decorating a Python function is all you need — FastMCP handles the rest.
+The framework is built on three abstractions that map to the decisions you actually need to make:
 
-🚀 **Fast**: High-level interface means less code and faster development
+* **[Components](/servers/tools)** are what you expose: tools, resources, and prompts. Wrap a Python function, and FastMCP handles the schema, validation, and docs.
+* **[Providers](/servers/providers/overview)** are where components come from: decorated functions, files on disk, OpenAPI specs, remote servers—your logic can live anywhere.
+* **[Transforms](/servers/transforms/transforms)** shape what clients see: namespacing, filtering, authorization, versioning. The same server can present differently to different users.
 
-🍀 **Simple**: Build MCP servers with minimal boilerplate
+These compose cleanly, so complex patterns don't require complex code. And because FastMCP is opinionated about the details, like serialization, error handling, and protocol compliance, **best practices are the path of least resistance**. You focus on your logic; the MCP part just works.
 
-🐍 **Pythonic**: Feels natural to Python developers
-
-🔍 **Complete**: Everything for production — enterprise auth (Google, GitHub, Azure, Auth0, WorkOS), deployment tools, testing frameworks, client libraries, and more
-
-FastMCP provides the shortest path from idea to production. Deploy locally, to the cloud with [FastMCP Cloud](https://fastmcp.cloud) (free for personal servers), or to your own infrastructure.
+Ready to build? Start with the [installation guide](/getting-started/installation) or jump straight to the [quickstart](/getting-started/quickstart). When you're ready to deploy, [Prefect Horizon](https://www.prefect.io/horizon) offers free hosting for FastMCP users.
 
 <Tip>
-  **This documentation reflects FastMCP's `main` branch**, meaning it always reflects the latest development version. Features are generally marked with version badges (e.g. `New in version: 2.13.1`) to indicate when they were introduced. Note that this may include features that are not yet released.
+  **This documentation reflects FastMCP's `main` branch**, meaning it always reflects the latest development version. Features are generally marked with version badges (e.g. `New in version: 3.0.0`) to indicate when they were introduced. Note that this may include features that are not yet released.
 </Tip>
 
 ## LLM-Friendly Docs

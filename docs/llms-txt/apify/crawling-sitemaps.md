@@ -35,7 +35,7 @@ Some websites also provide an HTML version, to help indexing bots find new conte
 
 /sitemap /category-sitemap /sitemap.html /sitemap\_index
 
-Apify provides the https://apify.com/vaclavrut/sitemap-sniffer, an open source actor that scans the URL variations automatically for you so that you don't have to check them manually.
+Apify provides the [Sitemap Sniffer](https://apify.com/vaclavrut/sitemap-sniffer), an open source actor that scans the URL variations automatically for you so that you don't have to check them manually.
 
 ## How to set up HTTP requests to download sitemaps
 
@@ -43,11 +43,11 @@ For most sitemaps, you can make a single HTTP request and parse the downloaded X
 
 ## How to parse URLs from sitemaps
 
-Use your favorite XML parser to extract the URLs from inside the `<loc>` tags. Just be careful that the sitemap might contain other URLs that you don't want to crawl (e.g. `/about`, `/contact`, or various special category sections). For specific code examples, see https://docs.apify.com/academy/node-js/scraping-from-sitemaps.md.
+Use your favorite XML parser to extract the URLs from inside the `<loc>` tags. Just be careful that the sitemap might contain other URLs that you don't want to crawl (e.g. `/about`, `/contact`, or various special category sections). For specific code examples, see [our Node.js guide](https://docs.apify.com/academy/node-js/scraping-from-sitemaps.md).
 
 ## Using Crawlee
 
-Fortunately, you don't have to worry about any of the above steps if you use https://crawlee.dev, a scraping framework, which has rich traversing and parsing support for sitemap. It can traverse nested sitemaps, download, and parse compressed sitemaps, and extract URLs from them. You can get all the URLs in a few lines of code:
+Fortunately, you don't have to worry about any of the above steps if you use [Crawlee](https://crawlee.dev), a scraping framework, which has rich traversing and parsing support for sitemap. It can traverse nested sitemaps, download, and parse compressed sitemaps, and extract URLs from them. You can get all the URLs in a few lines of code:
 
 
 ```

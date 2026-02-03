@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/oxc/missing-throw.md
 ---
-# oxc/missing-throw&#x20;
 
 ### What it does
 

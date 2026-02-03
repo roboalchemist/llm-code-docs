@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/reranking/linear_combination.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Linear Combination Reranker
 
 > Learn about LanceDB's deprecated Linear Combination Reranker for combining semantic and full-text search scores.
@@ -25,7 +29,7 @@ The Linear Combination Reranker combines the results of semantic and full-text s
 | Argument       | Type    | Default       | Description                                                                                                                                                                                                               |
 | -------------- | ------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `weight`       | `float` | `0.7`         | The weight to use for the semantic search score. The weight for the full-text search score is `1 - weights`.                                                                                                              |
-| `return_score` | str     | `"relevance"` | Options are "relevance" or "all". The type of score to return. If "relevance", will return only the \`\_relevance\_score. If "all", will return all scores from the vector and FTS search along with the relevance score. |
+| `return_score` | `str`   | `"relevance"` | Options are "relevance" or "all". The type of score to return. If "relevance", will return only the \`\_relevance\_score. If "all", will return all scores from the vector and FTS search along with the relevance score. |
 
 ## Supported Scores for each query type
 
@@ -37,8 +41,3 @@ You can specify the type of scores you want the reranker to return. The followin
 | -------------- | ----------- | --------------------------------------------------------------------------------------------- |
 | `relevance`    | ✅ Supported | Results only have the `_relevance_score` column                                               |
 | `all`          | ✅ Supported | Results have vector(`_distance`) and FTS(`score`) along with Hybrid Search score(`_distance`) |
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

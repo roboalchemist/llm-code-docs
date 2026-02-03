@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/ui/connectors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Supported connectors
 
 Unstructured supports connecting to the following source and destination types.
@@ -11,7 +15,7 @@ Unstructured supports connecting to the following source and destination types.
 
 ## Sources
 
-* [Azure](/ui/sources/azure-blob-storage)
+* [Azure Blob Storage](/ui/sources/azure-blob-storage)
 * [Box](/ui/sources/box)
 * [Confluence](/ui/sources/confluence)
 * [Couchbase](/ui/sources/couchbase)
@@ -24,6 +28,7 @@ Unstructured supports connecting to the following source and destination types.
 * [Kafka](/ui/sources/kafka)
 * [MongoDB](/ui/sources/mongodb)
 * [OneDrive](/ui/sources/onedrive)
+* [OpenSearch](/ui/sources/opensearch)
 * [Outlook](/ui/sources/outlook)
 * [PostgreSQL](/ui/sources/postgresql)
 * [S3](/ui/sources/s3)
@@ -31,6 +36,7 @@ Unstructured supports connecting to the following source and destination types.
 * [SharePoint](/ui/sources/sharepoint)
 * [Slack](/ui/sources/slack)
 * [Snowflake](/ui/sources/snowflake)
+* [Teradata](/ui/sources/teradata-sql)
 * [Zendesk](/ui/sources/zendesk)
 
 If your source is not listed here, you might still be able to connect Unstructured to it through scripts or code by using the
@@ -42,6 +48,7 @@ If your source is not listed here, you might still be able to connect Unstructur
 
 * [Astra DB](/ui/destinations/astradb)
 * [Azure AI Search](/ui/destinations/azure-ai-search)
+* [Azure Blob Storage](/ui/destinations/azure-blob-storage)
 * [Couchbase](/ui/destinations/couchbase)
 * [Databricks Volumes](/ui/destinations/databricks-volumes)
 * [Delta Tables in Amazon S3](/ui/destinations/delta-table)
@@ -55,12 +62,14 @@ If your source is not listed here, you might still be able to connect Unstructur
 * [MongoDB](/ui/destinations/mongodb)
 * [Neo4j](/ui/destinations/neo4j)
 * [OneDrive](/ui/destinations/onedrive)
+* [OpenSearch](/ui/destinations/opensearch)
 * [Pinecone](/ui/destinations/pinecone)
 * [PostgreSQL](/ui/destinations/postgresql)
 * [Qdrant](/ui/destinations/qdrant)
 * [Redis](/ui/destinations/redis)
 * [S3](/ui/destinations/s3)
 * [Snowflake](/ui/destinations/snowflake)
+* [Teradata](/ui/destinations/teradata-sql)
 * [Weaviate](/ui/destinations/weaviate)
 
 If your destination is not listed here, you might still be able to connect Unstructured to it through scripts or code by using the

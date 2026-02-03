@@ -8,11 +8,9 @@
 
 The PageAside component is a sticky `<aside>` element that is only displayed starting from the [`lg` breakpoint](https://tailwindcss.com/docs/breakpoints).
 
-<tip to="/docs/getting-started/theme/css-variables#header">
-
-The PageAside component uses the `--ui-header-height` CSS variable to position itself correctly below the [Header](/docs/components/header).
-
-</tip>
+> [!TIP]
+> See: /docs/getting-started/theme/css-variables#header
+> The PageAside component uses the `--ui-header-height` CSS variable to position itself correctly below the `Header`.
 
 Use it inside the `left` or `right` slot of the [Page](/docs/components/page) component:
 
@@ -28,11 +26,8 @@ Use it inside the `left` or `right` slot of the [Page](/docs/components/page) co
 
 ## Examples
 
-<note>
-
-While these examples use [Nuxt Content](https://content.nuxt.com), the components can be integrated with any content management system.
-
-</note>
+> [!NOTE]
+> While these examples use [Nuxt Content](https://content.nuxt.com), the components can be integrated with any content management system.
 
 ### Within a layout
 
@@ -58,11 +53,8 @@ const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 </template>
 ```
 
-<note>
-
-In this example, we use the `ContentNavigation` component to display the navigation injected in `app.vue`.
-
-</note>
+> [!NOTE]
+> In this example, we use the `ContentNavigation` component to display the navigation injected in `app.vue`.
 
 ## API
 
@@ -116,8 +108,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/guardrails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Configure guardrails
 
 > Configure guardrails to monitor and filter AI agent inputs and outputs for safety and compliance
@@ -191,8 +195,3 @@ Rate limits depend on your guardrail provider. For AWS Bedrock Guardrails, see [
 * [Track usage and spend](/home/observability): Monitor AI usage and guardrail activity
 * [Prevent prompt injections](/home/prompt_injections): Learn about prompt injection attacks and mitigation
 * [Setting up guardrails](https://support.writer.com/article/312-guardrails): Step-by-step UI configuration in the Help Center
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://dev.writer.com/llms.txt

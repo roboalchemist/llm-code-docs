@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/learn/hierarchical-process.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hierarchical Process
 
 > A comprehensive guide to understanding and applying the hierarchical process within your CrewAI projects, updated to reflect the latest coding practices and functionalities.

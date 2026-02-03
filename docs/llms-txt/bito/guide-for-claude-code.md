@@ -6,6 +6,22 @@ Use Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) with *
 
 Once connected via MCP (Model Context Protocol), Claude Code can leverage AI Architect’s deep contextual understanding of your project, enabling more accurate code suggestions, explanations, and code insights.
 
+## Quick setup (recommended)
+
+**Want to get started faster?** We offer an automated installer that can configure AI Architect for all your AI coding tools in just a few seconds.
+
+The automated setup will:
+
+* Detect all compatible AI tools installed on your system
+* Configure them automatically with your credentials
+* Save you time by eliminating manual configuration steps
+
+👉 [**Try our Quick MCP Integration Guide**](https://docs.bito.ai/ai-architect/quick-mcp-integration-with-ai-coding-agents) for automated setup.
+
+## Manual setup
+
+If you prefer manual configuration, follow the step-by-step instructions below.
+
 ## Prerequisites
 
 1. Follow the [**AI Architect installation instructions**](https://docs.bito.ai/ai-architect/install-ai-architect-self-hosted). Upon successful setup, you will receive a **Bito MCP URL** and **Bito MCP Access Token** that you need to enter in your coding agent.
@@ -49,14 +65,19 @@ claude mcp add \
   --scope user \
   BitoAIArchitect \
   <Your-Bito-MCP-URL> \
-  --header "Authorization: Bearer <Your-Bito-MCP-Access-Token>"
+  --header "Authorization: Bearer <Your-Bito-MCP-Access-Token>" \
+  --header "x-email-id: <Your-Email>"
 ```
 
 {% hint style="info" %}
 **Note:**
 
 * Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
 * Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+* Replace `<Your-Email>` with your actual email address.
   {% endhint %}
 
 {% hint style="info" %}
@@ -96,7 +117,7 @@ claude mcp get BitoAIArchitect
 
 ### Add guidelines (optional but highly recommended)
 
-The **BitoAIArchitectGuidelines.md** file contains best practices, usage instructions, and prompting guidelines for the Bito AI Architect MCP server.
+The [**BitoAIArchitectGuidelines.md** file](#prerequisites) contains best practices, usage instructions, and prompting guidelines for the Bito AI Architect MCP server.
 
 The setup will work without this file, but including it helps AI tools interact more effectively with the Bito AI Architect MCP server.
 
@@ -200,7 +221,8 @@ claude mcp add --transport stdio my-server -- cmd /c npx -y @some/package
 # Add HTTP server with Bearer token (correct parameter order)
 claude mcp add --transport http --scope user \
   <name> <url> \
-  --header "Authorization: Bearer <token>"
+  --header "Authorization: Bearer <token>" \
+  --header "x-email-id: <your-email>"
 
 # Add server with environment variables
 claude mcp add <name> -e API_KEY="value" -- npx @server/package
@@ -240,14 +262,19 @@ claude --verbose
 claude mcp remove BitoAIArchitect
 claude mcp add --transport http --scope user \
   BitoAIArchitect <Your-Bito-MCP-URL> \
-  --header "Authorization: Bearer <Your-Bito-MCP-Access-Token>"
+  --header "Authorization: Bearer <Your-Bito-MCP-Access-Token>" \
+  --header "x-email-id: <Your-Email>"
 ```
 
 {% hint style="info" %}
 **Note:**
 
 * Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
 * Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+* Replace `<Your-Email>` with your actual email address.
   {% endhint %}
 
 #### Connection issues:
@@ -269,6 +296,9 @@ curl -s -X POST \
 **Note:**
 
 * Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
 * Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
   {% endhint %}
 

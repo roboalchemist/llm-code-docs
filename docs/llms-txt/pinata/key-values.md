@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/files/key-values.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Key-Values
 
 A unique and powerful feature included with the IPFS API and Private IPFS API is the key-value store. Anytime you upload or update a file you can store up to 10 key-value pairs.

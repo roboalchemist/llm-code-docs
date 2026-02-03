@@ -4,8 +4,6 @@
 title: EMR Security Configuration
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EMR Security Configuration
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.emr_security_configuration.dataset/index.html
 ---
 
 # EMR Security Configuration
@@ -18,11 +16,11 @@ aws.emr_security_configuration
 
 ## Fields
 
-| Title                  | ID   | Type      | Data Type                                                | Description |
-| ---------------------- | ---- | --------- | -------------------------------------------------------- | ----------- |
-| _key                   | core | string    |
-| account_id             | core | string    |
-| creation_date_time     | core | timestamp | The date and time the security configuration was created |
-| name                   | core | string    | The name of the security configuration.                  |
-| security_configuration | core | string    | The security configuration details in JSON format.       |
-| tags                   | core | hstore    |
+| Title                  | ID   | Type       | Data Type                                                | Description |
+| ---------------------- | ---- | ---------- | -------------------------------------------------------- | ----------- |
+| _key                   | core | string     |
+| account_id             | core | string     |
+| creation_date_time     | core | timestamp  | The date and time the security configuration was created |
+| name                   | core | string     | The name of the security configuration.                  |
+| security_configuration | core | string     | The security configuration details in JSON format.       |
+| tags                   | core | hstore_csv |

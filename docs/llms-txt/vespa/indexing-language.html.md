@@ -294,7 +294,7 @@ Adds ngram annotations to all strings in the execution value.
  |
 | `normalize` | 
 
-[normalize](../../linguistics/linguistics.html#normalization) the input data. The corresponding query command for this function is `normalize`.
+[normalize](../../linguistics/linguistics-opennlp.html#normalization) the input data. The corresponding query command for this function is `normalize`.
 
  |
 | `now` | 
@@ -325,7 +325,7 @@ Performs the statement that corresponds to the **first** named field that is not
  |
 | `set_language` | 
 
-Sets the language of this document to the string representation of the execution value. Parses the input value as an RFC 3066 language tag, and sets that language for the current document. This affects the behavior of the [tokenizer](../../linguistics/linguistics.html#tokenization). The recommended use is to have one field in the document containing the language code, and that field should be the **first** field in the document, as it will only affect the fields defined **after** it in the schema. Read [linguistics](../../linguistics/linguistics.html) for more information on how language settings are applied.
+Sets the language of this document to the string representation of the execution value. Parses the input value as an RFC 3066 language tag, and sets that language for the current document. This affects the behavior of the [tokenizer](../../linguistics/linguistics-opennlp.html#tokenization). The recommended use is to have one field in the document containing the language code, and that field should be the **first** field in the document, as it will only affect the fields defined **after** it in the schema. Read [linguistics](../../linguistics/linguistics.html#language-handling) for more information on how language settings are applied.
 
  |
 | `set_var <varName>` | 
@@ -374,7 +374,7 @@ Converts all strings in the execution value to a URI struct. If a string could n
 
  |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

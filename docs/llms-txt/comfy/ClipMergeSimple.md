@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/ClipMergeSimple.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ClipMergeSimple - ComfyUI Built-in Node Documentation
 
 > The ClipMergeSimple node is used to combine two CLIP text encoder models based on a specified ratio.

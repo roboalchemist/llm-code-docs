@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/guides/learn/context-management.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Context Management
 
 > A guide to working with Pipecat's Context and Context Aggregators
@@ -65,8 +69,15 @@ messages = [
 context = LLMContext(messages)
 
 # Create context aggregator instance
-context_aggregator = LLMContextAggregatorPair(context)
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(context)
 ```
+
+<Note>
+  The context aggregator also supports configuring [user turn
+  strategies](/server/utilities/turn-management/user-turn-strategies) and [user
+  mute strategies](/server/utilities/turn-management/user-mute-strategies) via
+  `LLMUserAggregatorParams`.
+</Note>
 
 **About LLMContext:**
 
@@ -109,7 +120,7 @@ tools = ToolsSchema(standard_tools=[weather_function])
 
 # Create context with both messages and tools
 context = LLMContext(messages, tools)
-context_aggregator = LLMContextAggregatorPair(context)
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(context)
 ```
 
 Function call results are also automatically stored in the context, maintaining a complete conversation history including tool interactions.
@@ -221,8 +232,3 @@ Now that you understand context management, let's explore how to configure the L
 <Card title="LLM Inference" icon="arrow-right" href="/guides/learn/llm">
   Learn how to configure language models in your voice AI pipeline
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

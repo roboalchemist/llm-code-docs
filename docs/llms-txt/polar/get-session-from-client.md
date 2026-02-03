@@ -1,818 +1,550 @@
 # Source: https://polar.sh/docs/api-reference/checkouts/get-session-from-client.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Checkout Session from Client
 
 > Get a checkout session by client secret.
 
+
+
 ## OpenAPI
 
 ````yaml get /v1/checkouts/client/{client_secret}
+openapi: 3.1.0
+info:
+  title: Polar API
+  summary: Polar HTTP and Webhooks API
+  description: Read the docs at https://polar.sh/docs/api-reference
+  version: 0.1.0
+servers:
+  - url: https://api.polar.sh
+    description: Production environment
+    x-speakeasy-server-id: production
+  - url: https://sandbox-api.polar.sh
+    description: Sandbox environment
+    x-speakeasy-server-id: sandbox
+security:
+  - access_token: []
+tags:
+  - name: public
+    description: >-
+      Endpoints shown and documented in the Polar API documentation and
+      available in our SDKs.
+  - name: private
+    description: >-
+      Endpoints that should appear in the schema only in development to generate
+      our internal JS SDK.
+  - name: mcp
+    description: Endpoints enabled in the MCP server.
 paths:
-  path: /v1/checkouts/client/{client_secret}
-  method: get
-  servers:
-    - url: https://api.polar.sh
-      description: Production environment
-    - url: https://sandbox-api.polar.sh
-      description: Sandbox environment
-  request:
-    security:
-      - title: ''
-        parameters:
-          query: {}
-          header: {}
-          cookie: {}
-    parameters:
-      path:
-        client_secret:
+  /v1/checkouts/client/{client_secret}:
+    get:
+      tags:
+        - checkouts
+        - public
+      summary: Get Checkout Session from Client
+      description: Get a checkout session by client secret.
+      operationId: checkouts:client_get
+      parameters:
+        - name: client_secret
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              title: Client Secret
-              description: The checkout session client secret.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: Go (SDK)
-        lang: go
-        source: "package main\n\nimport(\n\t\"context\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New()\n\n    res, err := s.Checkouts.ClientGet(ctx, \"<value>\")\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.CheckoutPublic != nil {\n        // handle response\n    }\n}"
-      - label: Python (SDK)
-        lang: python
-        source: |-
-          from polar_sdk import Polar
-
-
-          with Polar() as polar:
-
-              res = polar.checkouts.client_get(client_secret="<value>")
-
-              # Handle response
-              print(res)
-      - label: Typescript (SDK)
-        lang: typescript
-        source: |-
-          import { Polar } from "@polar-sh/sdk";
-
-          const polar = new Polar();
-
-          async function run() {
-            const result = await polar.checkouts.clientGet({
-              clientSecret: "<value>",
-            });
-
-            console.log(result);
-          }
-
-          run();
-      - label: PHP (SDK)
-        lang: php
-        source: |-
-          declare(strict_types=1);
-
-          require 'vendor/autoload.php';
-
-          use Polar;
-
-          $sdk = Polar\Polar::builder()->build();
-
-
-
-          $response = $sdk->checkouts->clientGet(
-              clientSecret: '<value>'
-          );
-
-          if ($response->checkoutPublic !== null) {
-              // handle response
-          }
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Id
-                    description: The ID of the object.
-              created_at:
-                allOf:
-                  - type: string
-                    format: date-time
-                    title: Created At
-                    description: Creation timestamp of the object.
-              modified_at:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: date-time
-                      - type: 'null'
-                    title: Modified At
-                    description: Last modification timestamp of the object.
-              custom_field_data:
-                allOf:
-                  - additionalProperties:
-                      anyOf:
-                        - type: string
-                        - type: integer
-                        - type: boolean
-                        - type: string
-                          format: date-time
-                        - type: 'null'
-                    type: object
-                    title: Custom Field Data
-                    description: Key-value object storing custom field values.
-              payment_processor:
-                allOf:
-                  - $ref: '#/components/schemas/PaymentProcessor'
-                    description: Payment processor used.
-              status:
-                allOf:
-                  - $ref: '#/components/schemas/CheckoutStatus'
-                    description: |2-
-
-                              Status of the checkout session.
-
-                              - Open: the checkout session was opened.
-                              - Expired: the checkout session was expired and is no more accessible.
-                              - Confirmed: the user on the checkout session clicked Pay. This is not indicative of the payment's success status.
-                              - Failed: the checkout definitely failed for technical reasons and cannot be retried. In most cases, this state is never reached.
-                              - Succeeded: the payment on the checkout was performed successfully.
-                              
-              client_secret:
-                allOf:
-                  - type: string
-                    title: Client Secret
-                    description: >-
-                      Client secret used to update and complete the checkout
-                      session from the client.
-              url:
-                allOf:
-                  - type: string
-                    title: Url
-                    description: URL where the customer can access the checkout session.
-              expires_at:
-                allOf:
-                  - type: string
-                    format: date-time
-                    title: Expires At
-                    description: Expiration date and time of the checkout session.
-              success_url:
-                allOf:
-                  - type: string
-                    title: Success Url
-                    description: >-
-                      URL where the customer will be redirected after a
-                      successful payment.
-              return_url:
-                allOf:
-                  - anyOf:
-                      - type: string
-                      - type: 'null'
-                    title: Return Url
-                    description: >-
-                      When set, a back button will be shown in the checkout to
-                      return to this URL.
-              embed_origin:
-                allOf:
-                  - anyOf:
-                      - type: string
-                      - type: 'null'
-                    title: Embed Origin
-                    description: >-
-                      When checkout is embedded, represents the Origin of the
-                      page embedding the checkout. Used as a security measure to
-                      send messages only to the embedding page.
-              amount:
-                allOf:
-                  - type: integer
-                    title: Amount
-                    description: Amount in cents, before discounts and taxes.
-              seats:
-                allOf:
-                  - anyOf:
-                      - type: integer
-                      - type: 'null'
-                    title: Seats
-                    description: Number of seats for seat-based pricing.
-              price_per_seat:
-                allOf:
-                  - anyOf:
-                      - type: integer
-                      - type: 'null'
-                    title: Price Per Seat
-                    description: >-
-                      Price per seat in cents for the current seat count, based
-                      on the applicable tier. Only relevant for seat-based
-                      pricing.
-              discount_amount:
-                allOf:
-                  - type: integer
-                    title: Discount Amount
-                    description: Discount amount in cents.
-              net_amount:
-                allOf:
-                  - type: integer
-                    title: Net Amount
-                    description: Amount in cents, after discounts but before taxes.
-              tax_amount:
-                allOf:
-                  - anyOf:
-                      - type: integer
-                      - type: 'null'
-                    title: Tax Amount
-                    description: >-
-                      Sales tax amount in cents. If `null`, it means there is no
-                      enough information yet to calculate it.
-              total_amount:
-                allOf:
-                  - type: integer
-                    title: Total Amount
-                    description: Amount in cents, after discounts and taxes.
-              currency:
-                allOf:
-                  - type: string
-                    title: Currency
-                    description: Currency code of the checkout session.
-              active_trial_interval:
-                allOf:
-                  - anyOf:
-                      - $ref: '#/components/schemas/TrialInterval'
-                      - type: 'null'
-                    description: >-
-                      Interval unit of the trial period, if any. This value is
-                      either set from the checkout, if `trial_interval` is set,
-                      or from the selected product.
-              active_trial_interval_count:
-                allOf:
-                  - anyOf:
-                      - type: integer
-                      - type: 'null'
-                    title: Active Trial Interval Count
-                    description: >-
-                      Number of interval units of the trial period, if any. This
-                      value is either set from the checkout, if
-                      `trial_interval_count` is set, or from the selected
-                      product.
-              trial_end:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: date-time
-                      - type: 'null'
-                    title: Trial End
-                    description: End date and time of the trial period, if any.
-              product_id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Product Id
-                    description: ID of the product to checkout.
-              product_price_id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Product Price Id
-                    description: ID of the product price to checkout.
-              discount_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: uuid4
-                      - type: 'null'
-                    title: Discount Id
-                    description: ID of the discount applied to the checkout.
-              allow_discount_codes:
-                allOf:
-                  - type: boolean
-                    title: Allow Discount Codes
-                    description: >-
-                      Whether to allow the customer to apply discount codes. If
-                      you apply a discount through `discount_id`, it'll still be
-                      applied, but the customer won't be able to change it.
-              require_billing_address:
-                allOf:
-                  - type: boolean
-                    title: Require Billing Address
-                    description: >-
-                      Whether to require the customer to fill their full billing
-                      address, instead of just the country. Customers in the US
-                      will always be required to fill their full address,
-                      regardless of this setting. If you preset the billing
-                      address, this setting will be automatically set to `true`.
-              is_discount_applicable:
-                allOf:
-                  - type: boolean
-                    title: Is Discount Applicable
-                    description: >-
-                      Whether the discount is applicable to the checkout.
-                      Typically, free and custom prices are not discountable.
-              is_free_product_price:
-                allOf:
-                  - type: boolean
-                    title: Is Free Product Price
-                    description: >-
-                      Whether the product price is free, regardless of
-                      discounts.
-              is_payment_required:
-                allOf:
-                  - type: boolean
-                    title: Is Payment Required
-                    description: >-
-                      Whether the checkout requires payment, e.g. in case of
-                      free products or discounts that cover the total amount.
-              is_payment_setup_required:
-                allOf:
-                  - type: boolean
-                    title: Is Payment Setup Required
-                    description: >-
-                      Whether the checkout requires setting up a payment method,
-                      regardless of the amount, e.g. subscriptions that have
-                      first free cycles.
-              is_payment_form_required:
-                allOf:
-                  - type: boolean
-                    title: Is Payment Form Required
-                    description: >-
-                      Whether the checkout requires a payment form, whether
-                      because of a payment or payment method setup.
-              customer_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: uuid4
-                      - type: 'null'
-                    title: Customer Id
-              is_business_customer:
-                allOf:
-                  - type: boolean
-                    title: Is Business Customer
-                    description: >-
-                      Whether the customer is a business or an individual. If
-                      `true`, the customer will be required to fill their full
-                      billing address and billing name.
-              customer_name:
-                allOf:
-                  - anyOf:
-                      - type: string
-                      - type: 'null'
-                    title: Customer Name
-                    description: Name of the customer.
-              customer_email:
-                allOf:
-                  - anyOf:
-                      - type: string
-                      - type: 'null'
-                    title: Customer Email
-                    description: Email address of the customer.
-              customer_ip_address:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: ipvanyaddress
-                      - type: 'null'
-                    title: Customer Ip Address
-              customer_billing_name:
-                allOf:
-                  - anyOf:
-                      - type: string
-                      - type: 'null'
-                    title: Customer Billing Name
-              customer_billing_address:
-                allOf:
-                  - anyOf:
-                      - $ref: '#/components/schemas/Address'
-                        description: Billing address of the customer.
-                      - type: 'null'
-              customer_tax_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                      - type: 'null'
-                    title: Customer Tax Id
-              payment_processor_metadata:
-                allOf:
-                  - additionalProperties:
-                      type: string
-                    type: object
-                    title: Payment Processor Metadata
-              billing_address_fields:
-                allOf:
-                  - $ref: '#/components/schemas/CheckoutBillingAddressFields'
-                    description: >-
-                      Determine which billing address fields should be disabled,
-                      optional or required in the checkout form.
-              products:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/CheckoutProduct'
-                    type: array
-                    title: Products
-                    description: List of products available to select.
-              product:
-                allOf:
-                  - $ref: '#/components/schemas/CheckoutProduct'
-                    description: Product selected to checkout.
-              product_price:
-                allOf:
-                  - oneOf:
-                      - $ref: '#/components/schemas/LegacyRecurringProductPrice'
-                      - $ref: '#/components/schemas/ProductPrice'
-                    title: Product Price
-                    description: Price of the selected product.
-              discount:
-                allOf:
-                  - anyOf:
-                      - oneOf:
-                          - $ref: >-
-                              #/components/schemas/CheckoutDiscountFixedOnceForeverDuration
-                          - $ref: >-
-                              #/components/schemas/CheckoutDiscountFixedRepeatDuration
-                          - $ref: >-
-                              #/components/schemas/CheckoutDiscountPercentageOnceForeverDuration
-                          - $ref: >-
-                              #/components/schemas/CheckoutDiscountPercentageRepeatDuration
-                      - type: 'null'
-                    title: Discount
-              organization:
-                allOf:
-                  - $ref: '#/components/schemas/Organization'
-              attached_custom_fields:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/AttachedCustomField'
-                    type: array
-                    title: Attached Custom Fields
-            title: CheckoutPublic
-            description: Checkout session data retrieved using the client secret.
-            refIdentifier: '#/components/schemas/CheckoutPublic'
-            requiredProperties:
-              - id
-              - created_at
-              - modified_at
-              - payment_processor
-              - status
-              - client_secret
-              - url
-              - expires_at
-              - success_url
-              - return_url
-              - embed_origin
-              - amount
-              - discount_amount
-              - net_amount
-              - tax_amount
-              - total_amount
-              - currency
-              - active_trial_interval
-              - active_trial_interval_count
-              - trial_end
-              - product_id
-              - product_price_id
-              - discount_id
-              - allow_discount_codes
-              - require_billing_address
-              - is_discount_applicable
-              - is_free_product_price
-              - is_payment_required
-              - is_payment_setup_required
-              - is_payment_form_required
-              - customer_id
-              - is_business_customer
-              - customer_name
-              - customer_email
-              - customer_ip_address
-              - customer_billing_name
-              - customer_billing_address
-              - customer_tax_id
-              - payment_processor_metadata
-              - billing_address_fields
-              - products
-              - product
-              - product_price
-              - discount
-              - organization
-              - attached_custom_fields
-        examples:
-          example:
-            value:
-              id: <string>
-              created_at: '2023-11-07T05:31:56Z'
-              modified_at: '2023-11-07T05:31:56Z'
-              custom_field_data: {}
-              payment_processor: stripe
-              status: open
-              client_secret: <string>
-              url: <string>
-              expires_at: '2023-11-07T05:31:56Z'
-              success_url: <string>
-              return_url: <string>
-              embed_origin: <string>
-              amount: 123
-              seats: 123
-              price_per_seat: 123
-              discount_amount: 123
-              net_amount: 123
-              tax_amount: 123
-              total_amount: 123
-              currency: <string>
-              active_trial_interval: day
-              active_trial_interval_count: 123
-              trial_end: '2023-11-07T05:31:56Z'
-              product_id: <string>
-              product_price_id: <string>
-              discount_id: <string>
-              allow_discount_codes: true
-              require_billing_address: true
-              is_discount_applicable: true
-              is_free_product_price: true
-              is_payment_required: true
-              is_payment_setup_required: true
-              is_payment_form_required: true
-              customer_id: <string>
-              is_business_customer: true
-              customer_name: <string>
-              customer_email: <string>
-              customer_ip_address: <string>
-              customer_billing_name: <string>
-              customer_billing_address:
-                line1: <string>
-                line2: <string>
-                postal_code: <string>
-                city: <string>
-                state: <string>
-                country: US
-              customer_tax_id: <string>
-              payment_processor_metadata: {}
-              billing_address_fields:
-                country: required
-                state: required
-                city: required
-                postal_code: required
-                line1: required
-                line2: required
-              products:
-                - id: <string>
-                  created_at: '2023-11-07T05:31:56Z'
-                  modified_at: '2023-11-07T05:31:56Z'
-                  trial_interval: day
-                  trial_interval_count: 123
-                  name: <string>
-                  description: <string>
-                  recurring_interval: day
-                  recurring_interval_count: 123
-                  is_recurring: true
-                  is_archived: true
-                  organization_id: <string>
-                  prices:
-                    - created_at: '2023-11-07T05:31:56Z'
-                      modified_at: '2023-11-07T05:31:56Z'
-                      id: <string>
-                      amount_type: <string>
-                      is_archived: true
-                      product_id: <string>
-                      type: <string>
-                      recurring_interval: day
-                      price_currency: <string>
-                      price_amount: 123
-                      legacy: true
-                  benefits:
-                    - id: <string>
-                      created_at: '2023-11-07T05:31:56Z'
-                      modified_at: '2023-11-07T05:31:56Z'
-                      type: custom
-                      description: <string>
-                      selectable: true
-                      deletable: true
-                      organization_id: <string>
-                  medias:
-                    - id: <string>
-                      organization_id: <string>
-                      name: <string>
-                      path: <string>
-                      mime_type: <string>
-                      size: 123
-                      storage_version: <string>
-                      checksum_etag: <string>
-                      checksum_sha256_base64: <string>
-                      checksum_sha256_hex: <string>
-                      last_modified_at: '2023-11-07T05:31:56Z'
-                      version: <string>
-                      service: <string>
-                      is_uploaded: true
-                      created_at: '2023-11-07T05:31:56Z'
-                      size_readable: <string>
-                      public_url: <string>
-              product:
-                id: <string>
-                created_at: '2023-11-07T05:31:56Z'
-                modified_at: '2023-11-07T05:31:56Z'
-                trial_interval: day
-                trial_interval_count: 123
-                name: <string>
-                description: <string>
-                recurring_interval: day
-                recurring_interval_count: 123
-                is_recurring: true
-                is_archived: true
-                organization_id: <string>
-                prices:
-                  - created_at: '2023-11-07T05:31:56Z'
-                    modified_at: '2023-11-07T05:31:56Z'
-                    id: <string>
-                    amount_type: <string>
-                    is_archived: true
-                    product_id: <string>
-                    type: <string>
-                    recurring_interval: day
-                    price_currency: <string>
-                    price_amount: 123
-                    legacy: true
-                benefits:
-                  - id: <string>
-                    created_at: '2023-11-07T05:31:56Z'
-                    modified_at: '2023-11-07T05:31:56Z'
-                    type: custom
-                    description: <string>
-                    selectable: true
-                    deletable: true
-                    organization_id: <string>
-                medias:
-                  - id: <string>
-                    organization_id: <string>
-                    name: <string>
-                    path: <string>
-                    mime_type: <string>
-                    size: 123
-                    storage_version: <string>
-                    checksum_etag: <string>
-                    checksum_sha256_base64: <string>
-                    checksum_sha256_hex: <string>
-                    last_modified_at: '2023-11-07T05:31:56Z'
-                    version: <string>
-                    service: <string>
-                    is_uploaded: true
-                    created_at: '2023-11-07T05:31:56Z'
-                    size_readable: <string>
-                    public_url: <string>
-              product_price:
-                created_at: '2023-11-07T05:31:56Z'
-                modified_at: '2023-11-07T05:31:56Z'
-                id: <string>
-                amount_type: <string>
-                is_archived: true
-                product_id: <string>
-                type: <string>
-                recurring_interval: day
-                price_currency: <string>
-                price_amount: 123
-                legacy: true
-              discount:
-                duration: once
-                type: fixed
-                amount: 1000
-                currency: usd
-                id: <string>
-                name: <string>
-                code: <string>
-              organization:
-                created_at: '2023-11-07T05:31:56Z'
-                modified_at: '2023-11-07T05:31:56Z'
-                id: 1dbfc517-0bbf-4301-9ba8-555ca42b9737
-                name: <string>
-                slug: <string>
-                avatar_url: <string>
-                email: <string>
-                website: <string>
-                socials:
-                  - platform: x
-                    url: <string>
-                status: created
-                details_submitted_at: '2023-11-07T05:31:56Z'
-                feature_settings:
-                  issue_funding_enabled: false
-                  seat_based_pricing_enabled: false
-                  revops_enabled: false
-                subscription_settings:
-                  allow_multiple_subscriptions: true
-                  allow_customer_updates: true
-                  proration_behavior: invoice
-                notification_settings:
-                  new_order: true
-                  new_subscription: true
-                customer_email_settings:
-                  order_confirmation: true
-                  subscription_cancellation: true
-                  subscription_confirmation: true
-                  subscription_cycled: true
-                  subscription_past_due: true
-                  subscription_revoked: true
-                  subscription_uncanceled: true
-                  subscription_updated: true
-              attached_custom_fields:
-                - custom_field_id: <string>
-                  custom_field:
-                    created_at: '2023-11-07T05:31:56Z'
-                    modified_at: '2023-11-07T05:31:56Z'
-                    id: <string>
-                    metadata: {}
-                    type: <string>
-                    slug: <string>
-                    name: <string>
-                    organization_id: 1dbfc517-0bbf-4301-9ba8-555ca42b9737
-                    properties:
-                      form_label: <string>
-                      form_help_text: <string>
-                      form_placeholder: <string>
-                      textarea: true
-                      min_length: 1
-                      max_length: 1
-                  order: 123
-                  required: true
-        description: Successful Response
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
-                    const: ResourceNotFound
-                    title: Error
-                    examples:
-                      - ResourceNotFound
-              detail:
-                allOf:
-                  - type: string
-                    title: Detail
-            title: ResourceNotFound
-            refIdentifier: '#/components/schemas/ResourceNotFound'
-            requiredProperties:
-              - error
-              - detail
-        examples:
-          example:
-            value:
-              error: ResourceNotFound
-              detail: <string>
-        description: Checkout session not found.
-    '410':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
-                    const: ExpiredCheckoutError
-                    title: Error
-                    examples:
-                      - ExpiredCheckoutError
-              detail:
-                allOf:
-                  - type: string
-                    title: Detail
-            title: ExpiredCheckoutError
-            refIdentifier: '#/components/schemas/ExpiredCheckoutError'
-            requiredProperties:
-              - error
-              - detail
-        examples:
-          example:
-            value:
-              error: ExpiredCheckoutError
-              detail: <string>
-        description: The checkout session is expired.
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            type: string
+            description: The checkout session client secret.
+            title: Client Secret
+          description: The checkout session client secret.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckoutPublic'
+        '404':
+          description: Checkout session not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+        '410':
+          description: The checkout session is expired.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExpiredCheckoutError'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - {}
 components:
   schemas:
+    CheckoutPublic:
+      properties:
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the object.
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        custom_field_data:
+          additionalProperties:
+            anyOf:
+              - type: string
+              - type: integer
+              - type: boolean
+              - type: string
+                format: date-time
+              - type: 'null'
+          type: object
+          title: Custom Field Data
+          description: Key-value object storing custom field values.
+        payment_processor:
+          $ref: '#/components/schemas/PaymentProcessor'
+          description: Payment processor used.
+        status:
+          $ref: '#/components/schemas/CheckoutStatus'
+          description: |2-
+
+                    Status of the checkout session.
+
+                    - Open: the checkout session was opened.
+                    - Expired: the checkout session was expired and is no more accessible.
+                    - Confirmed: the user on the checkout session clicked Pay. This is not indicative of the payment's success status.
+                    - Failed: the checkout definitely failed for technical reasons and cannot be retried. In most cases, this state is never reached.
+                    - Succeeded: the payment on the checkout was performed successfully.
+                    
+        client_secret:
+          type: string
+          title: Client Secret
+          description: >-
+            Client secret used to update and complete the checkout session from
+            the client.
+        url:
+          type: string
+          title: Url
+          description: URL where the customer can access the checkout session.
+        expires_at:
+          type: string
+          format: date-time
+          title: Expires At
+          description: Expiration date and time of the checkout session.
+        success_url:
+          type: string
+          title: Success Url
+          description: >-
+            URL where the customer will be redirected after a successful
+            payment.
+        return_url:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Return Url
+          description: >-
+            When set, a back button will be shown in the checkout to return to
+            this URL.
+        embed_origin:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Embed Origin
+          description: >-
+            When checkout is embedded, represents the Origin of the page
+            embedding the checkout. Used as a security measure to send messages
+            only to the embedding page.
+        amount:
+          type: integer
+          title: Amount
+          description: Amount in cents, before discounts and taxes.
+        seats:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Seats
+          description: Number of seats for seat-based pricing.
+        price_per_seat:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Price Per Seat
+          description: >-
+            Price per seat in cents for the current seat count, based on the
+            applicable tier. Only relevant for seat-based pricing.
+        discount_amount:
+          type: integer
+          title: Discount Amount
+          description: Discount amount in cents.
+        net_amount:
+          type: integer
+          title: Net Amount
+          description: Amount in cents, after discounts but before taxes.
+        tax_amount:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Tax Amount
+          description: >-
+            Sales tax amount in cents. If `null`, it means there is no enough
+            information yet to calculate it.
+        total_amount:
+          type: integer
+          title: Total Amount
+          description: Amount in cents, after discounts and taxes.
+        currency:
+          type: string
+          title: Currency
+          description: Currency code of the checkout session.
+        allow_trial:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          title: Allow Trial
+          description: >-
+            Whether to enable the trial period for the checkout session. If
+            `false`, the trial period will be disabled, even if the selected
+            product has a trial configured.
+        active_trial_interval:
+          anyOf:
+            - $ref: '#/components/schemas/TrialInterval'
+            - type: 'null'
+          description: >-
+            Interval unit of the trial period, if any. This value is either set
+            from the checkout, if `trial_interval` is set, or from the selected
+            product.
+        active_trial_interval_count:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Active Trial Interval Count
+          description: >-
+            Number of interval units of the trial period, if any. This value is
+            either set from the checkout, if `trial_interval_count` is set, or
+            from the selected product.
+        trial_end:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Trial End
+          description: End date and time of the trial period, if any.
+        organization_id:
+          type: string
+          format: uuid4
+          title: Organization Id
+          description: ID of the organization owning the checkout session.
+        product_id:
+          anyOf:
+            - type: string
+              format: uuid4
+            - type: 'null'
+          title: Product Id
+          description: ID of the product to checkout.
+        product_price_id:
+          anyOf:
+            - type: string
+              format: uuid4
+            - type: 'null'
+          title: Product Price Id
+          description: ID of the product price to checkout.
+          deprecated: true
+        discount_id:
+          anyOf:
+            - type: string
+              format: uuid4
+            - type: 'null'
+          title: Discount Id
+          description: ID of the discount applied to the checkout.
+        allow_discount_codes:
+          type: boolean
+          title: Allow Discount Codes
+          description: >-
+            Whether to allow the customer to apply discount codes. If you apply
+            a discount through `discount_id`, it'll still be applied, but the
+            customer won't be able to change it.
+        require_billing_address:
+          type: boolean
+          title: Require Billing Address
+          description: >-
+            Whether to require the customer to fill their full billing address,
+            instead of just the country. Customers in the US will always be
+            required to fill their full address, regardless of this setting. If
+            you preset the billing address, this setting will be automatically
+            set to `true`.
+        is_discount_applicable:
+          type: boolean
+          title: Is Discount Applicable
+          description: >-
+            Whether the discount is applicable to the checkout. Typically, free
+            and custom prices are not discountable.
+        is_free_product_price:
+          type: boolean
+          title: Is Free Product Price
+          description: Whether the product price is free, regardless of discounts.
+        is_payment_required:
+          type: boolean
+          title: Is Payment Required
+          description: >-
+            Whether the checkout requires payment, e.g. in case of free products
+            or discounts that cover the total amount.
+        is_payment_setup_required:
+          type: boolean
+          title: Is Payment Setup Required
+          description: >-
+            Whether the checkout requires setting up a payment method,
+            regardless of the amount, e.g. subscriptions that have first free
+            cycles.
+        is_payment_form_required:
+          type: boolean
+          title: Is Payment Form Required
+          description: >-
+            Whether the checkout requires a payment form, whether because of a
+            payment or payment method setup.
+        customer_id:
+          anyOf:
+            - type: string
+              format: uuid4
+            - type: 'null'
+          title: Customer Id
+        is_business_customer:
+          type: boolean
+          title: Is Business Customer
+          description: >-
+            Whether the customer is a business or an individual. If `true`, the
+            customer will be required to fill their full billing address and
+            billing name.
+        customer_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Customer Name
+          description: Name of the customer.
+        customer_email:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Customer Email
+          description: Email address of the customer.
+        customer_ip_address:
+          anyOf:
+            - type: string
+              format: ipvanyaddress
+            - type: 'null'
+          title: Customer Ip Address
+        customer_billing_name:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Customer Billing Name
+        customer_billing_address:
+          anyOf:
+            - $ref: '#/components/schemas/Address'
+              description: Billing address of the customer.
+            - type: 'null'
+        customer_tax_id:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Customer Tax Id
+        payment_processor_metadata:
+          additionalProperties:
+            type: string
+          type: object
+          title: Payment Processor Metadata
+        billing_address_fields:
+          $ref: '#/components/schemas/CheckoutBillingAddressFields'
+          description: >-
+            Determine which billing address fields should be disabled, optional
+            or required in the checkout form.
+        products:
+          items:
+            $ref: '#/components/schemas/CheckoutProduct'
+          type: array
+          title: Products
+          description: List of products available to select.
+        product:
+          anyOf:
+            - $ref: '#/components/schemas/CheckoutProduct'
+            - type: 'null'
+          description: Product selected to checkout.
+        product_price:
+          anyOf:
+            - oneOf:
+                - $ref: '#/components/schemas/LegacyRecurringProductPrice'
+                - $ref: '#/components/schemas/ProductPrice'
+            - type: 'null'
+          title: Product Price
+          description: Price of the selected product.
+          deprecated: true
+        prices:
+          anyOf:
+            - additionalProperties:
+                items:
+                  oneOf:
+                    - $ref: '#/components/schemas/LegacyRecurringProductPrice'
+                    - $ref: '#/components/schemas/ProductPrice'
+                type: array
+                description: List of prices for this product.
+              propertyNames:
+                format: uuid4
+              type: object
+            - type: 'null'
+          title: Prices
+          description: Mapping of product IDs to their list of prices.
+        discount:
+          anyOf:
+            - oneOf:
+                - $ref: >-
+                    #/components/schemas/CheckoutDiscountFixedOnceForeverDuration
+                - $ref: '#/components/schemas/CheckoutDiscountFixedRepeatDuration'
+                - $ref: >-
+                    #/components/schemas/CheckoutDiscountPercentageOnceForeverDuration
+                - $ref: >-
+                    #/components/schemas/CheckoutDiscountPercentageRepeatDuration
+            - type: 'null'
+          title: Discount
+        organization:
+          $ref: '#/components/schemas/CheckoutOrganization'
+        attached_custom_fields:
+          anyOf:
+            - items:
+                $ref: '#/components/schemas/AttachedCustomField'
+              type: array
+            - type: 'null'
+          title: Attached Custom Fields
+      type: object
+      required:
+        - id
+        - created_at
+        - modified_at
+        - payment_processor
+        - status
+        - client_secret
+        - url
+        - expires_at
+        - success_url
+        - return_url
+        - embed_origin
+        - amount
+        - discount_amount
+        - net_amount
+        - tax_amount
+        - total_amount
+        - currency
+        - allow_trial
+        - active_trial_interval
+        - active_trial_interval_count
+        - trial_end
+        - organization_id
+        - product_id
+        - product_price_id
+        - discount_id
+        - allow_discount_codes
+        - require_billing_address
+        - is_discount_applicable
+        - is_free_product_price
+        - is_payment_required
+        - is_payment_setup_required
+        - is_payment_form_required
+        - customer_id
+        - is_business_customer
+        - customer_name
+        - customer_email
+        - customer_ip_address
+        - customer_billing_name
+        - customer_billing_address
+        - customer_tax_id
+        - payment_processor_metadata
+        - billing_address_fields
+        - products
+        - product
+        - product_price
+        - prices
+        - discount
+        - organization
+        - attached_custom_fields
+      title: CheckoutPublic
+      description: Checkout session data retrieved using the client secret.
+    ResourceNotFound:
+      properties:
+        error:
+          type: string
+          const: ResourceNotFound
+          title: Error
+          examples:
+            - ResourceNotFound
+        detail:
+          type: string
+          title: Detail
+      type: object
+      required:
+        - error
+        - detail
+      title: ResourceNotFound
+    ExpiredCheckoutError:
+      properties:
+        error:
+          type: string
+          const: ExpiredCheckoutError
+          title: Error
+          examples:
+            - ExpiredCheckoutError
+        detail:
+          type: string
+          title: Detail
+      type: object
+      required:
+        - error
+        - detail
+      title: ExpiredCheckoutError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    PaymentProcessor:
+      type: string
+      enum:
+        - stripe
+      title: PaymentProcessor
+    CheckoutStatus:
+      type: string
+      enum:
+        - open
+        - expired
+        - confirmed
+        - succeeded
+        - failed
+      title: CheckoutStatus
+    TrialInterval:
+      type: string
+      enum:
+        - day
+        - week
+        - month
+        - year
+      title: TrialInterval
     Address:
       properties:
         line1:
@@ -1351,99 +1083,6 @@ components:
       required:
         - country
       title: Address
-    AttachedCustomField:
-      properties:
-        custom_field_id:
-          type: string
-          format: uuid4
-          title: Custom Field Id
-          description: ID of the custom field.
-        custom_field:
-          $ref: '#/components/schemas/CustomField'
-          title: CustomField
-        order:
-          type: integer
-          title: Order
-          description: Order of the custom field in the resource.
-        required:
-          type: boolean
-          title: Required
-          description: Whether the value is required for this custom field.
-      type: object
-      required:
-        - custom_field_id
-        - custom_field
-        - order
-        - required
-      title: AttachedCustomField
-      description: Schema of a custom field attached to a resource.
-    BenefitPublic:
-      properties:
-        id:
-          type: string
-          format: uuid4
-          title: Id
-          description: The ID of the benefit.
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: Creation timestamp of the object.
-        modified_at:
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-          title: Modified At
-          description: Last modification timestamp of the object.
-        type:
-          $ref: '#/components/schemas/BenefitType'
-          description: The type of the benefit.
-        description:
-          type: string
-          title: Description
-          description: The description of the benefit.
-        selectable:
-          type: boolean
-          title: Selectable
-          description: Whether the benefit is selectable when creating a product.
-        deletable:
-          type: boolean
-          title: Deletable
-          description: Whether the benefit is deletable.
-        organization_id:
-          type: string
-          format: uuid4
-          title: Organization Id
-          description: The ID of the organization owning the benefit.
-      type: object
-      required:
-        - id
-        - created_at
-        - modified_at
-        - type
-        - description
-        - selectable
-        - deletable
-        - organization_id
-      title: BenefitPublic
-    BenefitType:
-      type: string
-      enum:
-        - custom
-        - discord
-        - github_repository
-        - downloadables
-        - license_keys
-        - meter_credit
-      title: BenefitType
-    BillingAddressFieldMode:
-      type: string
-      enum:
-        - required
-        - optional
-        - disabled
-      title: BillingAddressFieldMode
     CheckoutBillingAddressFields:
       properties:
         country:
@@ -1467,6 +1106,141 @@ components:
         - line1
         - line2
       title: CheckoutBillingAddressFields
+    CheckoutProduct:
+      properties:
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the object.
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        trial_interval:
+          anyOf:
+            - $ref: '#/components/schemas/TrialInterval'
+            - type: 'null'
+          description: The interval unit for the trial period.
+        trial_interval_count:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Trial Interval Count
+          description: The number of interval units for the trial period.
+        name:
+          type: string
+          title: Name
+          description: The name of the product.
+        description:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Description
+          description: The description of the product.
+        recurring_interval:
+          anyOf:
+            - $ref: '#/components/schemas/SubscriptionRecurringInterval'
+            - type: 'null'
+          description: >-
+            The recurring interval of the product. If `None`, the product is a
+            one-time purchase.
+        recurring_interval_count:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Recurring Interval Count
+          description: >-
+            Number of interval units of the subscription. If this is set to 1
+            the charge will happen every interval (e.g. every month), if set to
+            2 it will be every other month, and so on. None for one-time
+            products.
+        is_recurring:
+          type: boolean
+          title: Is Recurring
+          description: Whether the product is a subscription.
+        is_archived:
+          type: boolean
+          title: Is Archived
+          description: Whether the product is archived and no longer available.
+        organization_id:
+          type: string
+          format: uuid4
+          title: Organization Id
+          description: The ID of the organization owning the product.
+        prices:
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/LegacyRecurringProductPrice'
+              - $ref: '#/components/schemas/ProductPrice'
+          type: array
+          title: Prices
+          description: List of prices for this product.
+        benefits:
+          items:
+            $ref: '#/components/schemas/BenefitPublic'
+          type: array
+          title: BenefitPublic
+          description: List of benefits granted by the product.
+        medias:
+          items:
+            $ref: '#/components/schemas/ProductMediaFileRead'
+          type: array
+          title: Medias
+          description: List of medias associated to the product.
+      type: object
+      required:
+        - id
+        - created_at
+        - modified_at
+        - trial_interval
+        - trial_interval_count
+        - name
+        - description
+        - recurring_interval
+        - recurring_interval_count
+        - is_recurring
+        - is_archived
+        - organization_id
+        - prices
+        - benefits
+        - medias
+      title: CheckoutProduct
+      description: Product data for a checkout session.
+    LegacyRecurringProductPrice:
+      oneOf:
+        - $ref: '#/components/schemas/LegacyRecurringProductPriceFixed'
+        - $ref: '#/components/schemas/LegacyRecurringProductPriceCustom'
+        - $ref: '#/components/schemas/LegacyRecurringProductPriceFree'
+      discriminator:
+        propertyName: amount_type
+        mapping:
+          custom: '#/components/schemas/LegacyRecurringProductPriceCustom'
+          fixed: '#/components/schemas/LegacyRecurringProductPriceFixed'
+          free: '#/components/schemas/LegacyRecurringProductPriceFree'
+    ProductPrice:
+      oneOf:
+        - $ref: '#/components/schemas/ProductPriceFixed'
+        - $ref: '#/components/schemas/ProductPriceCustom'
+        - $ref: '#/components/schemas/ProductPriceFree'
+        - $ref: '#/components/schemas/ProductPriceSeatBased'
+        - $ref: '#/components/schemas/ProductPriceMeteredUnit'
+      discriminator:
+        propertyName: amount_type
+        mapping:
+          custom: '#/components/schemas/ProductPriceCustom'
+          fixed: '#/components/schemas/ProductPriceFixed'
+          free: '#/components/schemas/ProductPriceFree'
+          metered_unit: '#/components/schemas/ProductPriceMeteredUnit'
+          seat_based: '#/components/schemas/ProductPriceSeatBased'
     CheckoutDiscountFixedOnceForeverDuration:
       properties:
         duration:
@@ -1633,140 +1407,7 @@ components:
       description: |-
         Schema for a percentage discount that is applied on every invoice
         for a certain number of months.
-    CheckoutProduct:
-      properties:
-        id:
-          type: string
-          format: uuid4
-          title: Id
-          description: The ID of the object.
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: Creation timestamp of the object.
-        modified_at:
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-          title: Modified At
-          description: Last modification timestamp of the object.
-        trial_interval:
-          anyOf:
-            - $ref: '#/components/schemas/TrialInterval'
-            - type: 'null'
-          description: The interval unit for the trial period.
-        trial_interval_count:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Trial Interval Count
-          description: The number of interval units for the trial period.
-        name:
-          type: string
-          title: Name
-          description: The name of the product.
-        description:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Description
-          description: The description of the product.
-        recurring_interval:
-          anyOf:
-            - $ref: '#/components/schemas/SubscriptionRecurringInterval'
-            - type: 'null'
-          description: >-
-            The recurring interval of the product. If `None`, the product is a
-            one-time purchase.
-        recurring_interval_count:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Recurring Interval Count
-          description: >-
-            Number of interval units of the subscription. If this is set to 1
-            the charge will happen every interval (e.g. every month), if set to
-            2 it will be every other month, and so on. None for one-time
-            products.
-        is_recurring:
-          type: boolean
-          title: Is Recurring
-          description: Whether the product is a subscription.
-        is_archived:
-          type: boolean
-          title: Is Archived
-          description: Whether the product is archived and no longer available.
-        organization_id:
-          type: string
-          format: uuid4
-          title: Organization Id
-          description: The ID of the organization owning the product.
-        prices:
-          items:
-            oneOf:
-              - $ref: '#/components/schemas/LegacyRecurringProductPrice'
-              - $ref: '#/components/schemas/ProductPrice'
-          type: array
-          title: Prices
-          description: List of prices for this product.
-        benefits:
-          items:
-            $ref: '#/components/schemas/BenefitPublic'
-          type: array
-          title: BenefitPublic
-          description: List of benefits granted by the product.
-        medias:
-          items:
-            $ref: '#/components/schemas/ProductMediaFileRead'
-          type: array
-          title: Medias
-          description: List of medias associated to the product.
-      type: object
-      required:
-        - id
-        - created_at
-        - modified_at
-        - trial_interval
-        - trial_interval_count
-        - name
-        - description
-        - recurring_interval
-        - recurring_interval_count
-        - is_recurring
-        - is_archived
-        - organization_id
-        - prices
-        - benefits
-        - medias
-      title: CheckoutProduct
-      description: Product data for a checkout session.
-    CheckoutStatus:
-      type: string
-      enum:
-        - open
-        - expired
-        - confirmed
-        - succeeded
-        - failed
-      title: CheckoutStatus
-    CustomField:
-      oneOf:
-        - $ref: '#/components/schemas/CustomFieldText'
-        - $ref: '#/components/schemas/CustomFieldNumber'
-        - $ref: '#/components/schemas/CustomFieldDate'
-        - $ref: '#/components/schemas/CustomFieldCheckbox'
-        - $ref: '#/components/schemas/CustomFieldSelect'
-      discriminator:
-        propertyName: type
-        mapping:
-          checkbox: '#/components/schemas/CustomFieldCheckbox'
-          date: '#/components/schemas/CustomFieldDate'
-          number: '#/components/schemas/CustomFieldNumber'
-          select: '#/components/schemas/CustomFieldSelect'
-          text: '#/components/schemas/CustomFieldText'
-    CustomFieldCheckbox:
+    CheckoutOrganization:
       properties:
         created_at:
           type: string
@@ -1785,724 +1426,6 @@ components:
           format: uuid4
           title: Id
           description: The ID of the object.
-        metadata:
-          additionalProperties:
-            anyOf:
-              - type: string
-              - type: integer
-              - type: number
-              - type: boolean
-          type: object
-          title: Metadata
-        type:
-          type: string
-          const: checkbox
-          title: Type
-        slug:
-          type: string
-          title: Slug
-          description: >-
-            Identifier of the custom field. It'll be used as key when storing
-            the value.
-        name:
-          type: string
-          title: Name
-          description: Name of the custom field.
-        organization_id:
-          type: string
-          format: uuid4
-          title: Organization Id
-          description: The ID of the organization owning the custom field.
-          examples:
-            - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
-          x-polar-selector-widget:
-            displayProperty: name
-            resourceName: Organization
-            resourceRoot: /v1/organizations
-        properties:
-          $ref: '#/components/schemas/CustomFieldCheckboxProperties'
-      type: object
-      required:
-        - created_at
-        - modified_at
-        - id
-        - metadata
-        - type
-        - slug
-        - name
-        - organization_id
-        - properties
-      title: CustomFieldCheckbox
-      description: Schema for a custom field of type checkbox.
-    CustomFieldCheckboxProperties:
-      properties:
-        form_label:
-          type: string
-          minLength: 1
-          title: Form Label
-        form_help_text:
-          type: string
-          minLength: 1
-          title: Form Help Text
-        form_placeholder:
-          type: string
-          minLength: 1
-          title: Form Placeholder
-      type: object
-      title: CustomFieldCheckboxProperties
-    CustomFieldDate:
-      properties:
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: Creation timestamp of the object.
-        modified_at:
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-          title: Modified At
-          description: Last modification timestamp of the object.
-        id:
-          type: string
-          format: uuid4
-          title: Id
-          description: The ID of the object.
-        metadata:
-          additionalProperties:
-            anyOf:
-              - type: string
-              - type: integer
-              - type: number
-              - type: boolean
-          type: object
-          title: Metadata
-        type:
-          type: string
-          const: date
-          title: Type
-        slug:
-          type: string
-          title: Slug
-          description: >-
-            Identifier of the custom field. It'll be used as key when storing
-            the value.
-        name:
-          type: string
-          title: Name
-          description: Name of the custom field.
-        organization_id:
-          type: string
-          format: uuid4
-          title: Organization Id
-          description: The ID of the organization owning the custom field.
-          examples:
-            - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
-          x-polar-selector-widget:
-            displayProperty: name
-            resourceName: Organization
-            resourceRoot: /v1/organizations
-        properties:
-          $ref: '#/components/schemas/CustomFieldDateProperties'
-      type: object
-      required:
-        - created_at
-        - modified_at
-        - id
-        - metadata
-        - type
-        - slug
-        - name
-        - organization_id
-        - properties
-      title: CustomFieldDate
-      description: Schema for a custom field of type date.
-    CustomFieldDateProperties:
-      properties:
-        form_label:
-          type: string
-          minLength: 1
-          title: Form Label
-        form_help_text:
-          type: string
-          minLength: 1
-          title: Form Help Text
-        form_placeholder:
-          type: string
-          minLength: 1
-          title: Form Placeholder
-        ge:
-          type: integer
-          title: Ge
-        le:
-          type: integer
-          title: Le
-      type: object
-      title: CustomFieldDateProperties
-    CustomFieldNumber:
-      properties:
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: Creation timestamp of the object.
-        modified_at:
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-          title: Modified At
-          description: Last modification timestamp of the object.
-        id:
-          type: string
-          format: uuid4
-          title: Id
-          description: The ID of the object.
-        metadata:
-          additionalProperties:
-            anyOf:
-              - type: string
-              - type: integer
-              - type: number
-              - type: boolean
-          type: object
-          title: Metadata
-        type:
-          type: string
-          const: number
-          title: Type
-        slug:
-          type: string
-          title: Slug
-          description: >-
-            Identifier of the custom field. It'll be used as key when storing
-            the value.
-        name:
-          type: string
-          title: Name
-          description: Name of the custom field.
-        organization_id:
-          type: string
-          format: uuid4
-          title: Organization Id
-          description: The ID of the organization owning the custom field.
-          examples:
-            - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
-          x-polar-selector-widget:
-            displayProperty: name
-            resourceName: Organization
-            resourceRoot: /v1/organizations
-        properties:
-          $ref: '#/components/schemas/CustomFieldNumberProperties'
-      type: object
-      required:
-        - created_at
-        - modified_at
-        - id
-        - metadata
-        - type
-        - slug
-        - name
-        - organization_id
-        - properties
-      title: CustomFieldNumber
-      description: Schema for a custom field of type number.
-    CustomFieldNumberProperties:
-      properties:
-        form_label:
-          type: string
-          minLength: 1
-          title: Form Label
-        form_help_text:
-          type: string
-          minLength: 1
-          title: Form Help Text
-        form_placeholder:
-          type: string
-          minLength: 1
-          title: Form Placeholder
-        ge:
-          type: integer
-          title: Ge
-        le:
-          type: integer
-          title: Le
-      type: object
-      title: CustomFieldNumberProperties
-    CustomFieldSelect:
-      properties:
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: Creation timestamp of the object.
-        modified_at:
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-          title: Modified At
-          description: Last modification timestamp of the object.
-        id:
-          type: string
-          format: uuid4
-          title: Id
-          description: The ID of the object.
-        metadata:
-          additionalProperties:
-            anyOf:
-              - type: string
-              - type: integer
-              - type: number
-              - type: boolean
-          type: object
-          title: Metadata
-        type:
-          type: string
-          const: select
-          title: Type
-        slug:
-          type: string
-          title: Slug
-          description: >-
-            Identifier of the custom field. It'll be used as key when storing
-            the value.
-        name:
-          type: string
-          title: Name
-          description: Name of the custom field.
-        organization_id:
-          type: string
-          format: uuid4
-          title: Organization Id
-          description: The ID of the organization owning the custom field.
-          examples:
-            - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
-          x-polar-selector-widget:
-            displayProperty: name
-            resourceName: Organization
-            resourceRoot: /v1/organizations
-        properties:
-          $ref: '#/components/schemas/CustomFieldSelectProperties'
-      type: object
-      required:
-        - created_at
-        - modified_at
-        - id
-        - metadata
-        - type
-        - slug
-        - name
-        - organization_id
-        - properties
-      title: CustomFieldSelect
-      description: Schema for a custom field of type select.
-    CustomFieldSelectOption:
-      properties:
-        value:
-          type: string
-          minLength: 1
-          title: Value
-        label:
-          type: string
-          minLength: 1
-          title: Label
-      type: object
-      required:
-        - value
-        - label
-      title: CustomFieldSelectOption
-    CustomFieldSelectProperties:
-      properties:
-        form_label:
-          type: string
-          minLength: 1
-          title: Form Label
-        form_help_text:
-          type: string
-          minLength: 1
-          title: Form Help Text
-        form_placeholder:
-          type: string
-          minLength: 1
-          title: Form Placeholder
-        options:
-          items:
-            $ref: '#/components/schemas/CustomFieldSelectOption'
-          type: array
-          minItems: 1
-          title: Options
-      type: object
-      required:
-        - options
-      title: CustomFieldSelectProperties
-    CustomFieldText:
-      properties:
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: Creation timestamp of the object.
-        modified_at:
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-          title: Modified At
-          description: Last modification timestamp of the object.
-        id:
-          type: string
-          format: uuid4
-          title: Id
-          description: The ID of the object.
-        metadata:
-          additionalProperties:
-            anyOf:
-              - type: string
-              - type: integer
-              - type: number
-              - type: boolean
-          type: object
-          title: Metadata
-        type:
-          type: string
-          const: text
-          title: Type
-        slug:
-          type: string
-          title: Slug
-          description: >-
-            Identifier of the custom field. It'll be used as key when storing
-            the value.
-        name:
-          type: string
-          title: Name
-          description: Name of the custom field.
-        organization_id:
-          type: string
-          format: uuid4
-          title: Organization Id
-          description: The ID of the organization owning the custom field.
-          examples:
-            - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
-          x-polar-selector-widget:
-            displayProperty: name
-            resourceName: Organization
-            resourceRoot: /v1/organizations
-        properties:
-          $ref: '#/components/schemas/CustomFieldTextProperties'
-      type: object
-      required:
-        - created_at
-        - modified_at
-        - id
-        - metadata
-        - type
-        - slug
-        - name
-        - organization_id
-        - properties
-      title: CustomFieldText
-      description: Schema for a custom field of type text.
-    CustomFieldTextProperties:
-      properties:
-        form_label:
-          type: string
-          minLength: 1
-          title: Form Label
-        form_help_text:
-          type: string
-          minLength: 1
-          title: Form Help Text
-        form_placeholder:
-          type: string
-          minLength: 1
-          title: Form Placeholder
-        textarea:
-          type: boolean
-          title: Textarea
-        min_length:
-          type: integer
-          minimum: 0
-          title: Min Length
-        max_length:
-          type: integer
-          minimum: 0
-          title: Max Length
-      type: object
-      title: CustomFieldTextProperties
-    DiscountDuration:
-      type: string
-      enum:
-        - once
-        - forever
-        - repeating
-      title: DiscountDuration
-    DiscountType:
-      type: string
-      enum:
-        - fixed
-        - percentage
-      title: DiscountType
-    LegacyRecurringProductPrice:
-      oneOf:
-        - $ref: '#/components/schemas/LegacyRecurringProductPriceFixed'
-        - $ref: '#/components/schemas/LegacyRecurringProductPriceCustom'
-        - $ref: '#/components/schemas/LegacyRecurringProductPriceFree'
-      discriminator:
-        propertyName: amount_type
-        mapping:
-          custom: '#/components/schemas/LegacyRecurringProductPriceCustom'
-          fixed: '#/components/schemas/LegacyRecurringProductPriceFixed'
-          free: '#/components/schemas/LegacyRecurringProductPriceFree'
-    LegacyRecurringProductPriceCustom:
-      properties:
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: Creation timestamp of the object.
-        modified_at:
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-          title: Modified At
-          description: Last modification timestamp of the object.
-        id:
-          type: string
-          format: uuid4
-          title: Id
-          description: The ID of the price.
-        amount_type:
-          type: string
-          const: custom
-          title: Amount Type
-        is_archived:
-          type: boolean
-          title: Is Archived
-          description: Whether the price is archived and no longer available.
-        product_id:
-          type: string
-          format: uuid4
-          title: Product Id
-          description: The ID of the product owning the price.
-        type:
-          type: string
-          const: recurring
-          title: Type
-          description: The type of the price.
-        recurring_interval:
-          $ref: '#/components/schemas/SubscriptionRecurringInterval'
-          description: The recurring interval of the price.
-        price_currency:
-          type: string
-          title: Price Currency
-          description: The currency.
-        minimum_amount:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Minimum Amount
-          description: The minimum amount the customer can pay.
-        maximum_amount:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Maximum Amount
-          description: The maximum amount the customer can pay.
-        preset_amount:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Preset Amount
-          description: The initial amount shown to the customer.
-        legacy:
-          type: boolean
-          const: true
-          title: Legacy
-      type: object
-      required:
-        - created_at
-        - modified_at
-        - id
-        - amount_type
-        - is_archived
-        - product_id
-        - type
-        - recurring_interval
-        - price_currency
-        - minimum_amount
-        - maximum_amount
-        - preset_amount
-        - legacy
-      title: LegacyRecurringProductPriceCustom
-      description: >-
-        A pay-what-you-want recurring price for a product, i.e. a subscription.
-
-
-        **Deprecated**: The recurring interval should be set on the product
-        itself.
-    LegacyRecurringProductPriceFixed:
-      properties:
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: Creation timestamp of the object.
-        modified_at:
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-          title: Modified At
-          description: Last modification timestamp of the object.
-        id:
-          type: string
-          format: uuid4
-          title: Id
-          description: The ID of the price.
-        amount_type:
-          type: string
-          const: fixed
-          title: Amount Type
-        is_archived:
-          type: boolean
-          title: Is Archived
-          description: Whether the price is archived and no longer available.
-        product_id:
-          type: string
-          format: uuid4
-          title: Product Id
-          description: The ID of the product owning the price.
-        type:
-          type: string
-          const: recurring
-          title: Type
-          description: The type of the price.
-        recurring_interval:
-          $ref: '#/components/schemas/SubscriptionRecurringInterval'
-          description: The recurring interval of the price.
-        price_currency:
-          type: string
-          title: Price Currency
-          description: The currency.
-        price_amount:
-          type: integer
-          title: Price Amount
-          description: The price in cents.
-        legacy:
-          type: boolean
-          const: true
-          title: Legacy
-      type: object
-      required:
-        - created_at
-        - modified_at
-        - id
-        - amount_type
-        - is_archived
-        - product_id
-        - type
-        - recurring_interval
-        - price_currency
-        - price_amount
-        - legacy
-      title: LegacyRecurringProductPriceFixed
-      description: >-
-        A recurring price for a product, i.e. a subscription.
-
-
-        **Deprecated**: The recurring interval should be set on the product
-        itself.
-    LegacyRecurringProductPriceFree:
-      properties:
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: Creation timestamp of the object.
-        modified_at:
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-          title: Modified At
-          description: Last modification timestamp of the object.
-        id:
-          type: string
-          format: uuid4
-          title: Id
-          description: The ID of the price.
-        amount_type:
-          type: string
-          const: free
-          title: Amount Type
-        is_archived:
-          type: boolean
-          title: Is Archived
-          description: Whether the price is archived and no longer available.
-        product_id:
-          type: string
-          format: uuid4
-          title: Product Id
-          description: The ID of the product owning the price.
-        type:
-          type: string
-          const: recurring
-          title: Type
-          description: The type of the price.
-        recurring_interval:
-          $ref: '#/components/schemas/SubscriptionRecurringInterval'
-          description: The recurring interval of the price.
-        legacy:
-          type: boolean
-          const: true
-          title: Legacy
-      type: object
-      required:
-        - created_at
-        - modified_at
-        - id
-        - amount_type
-        - is_archived
-        - product_id
-        - type
-        - recurring_interval
-        - legacy
-      title: LegacyRecurringProductPriceFree
-      description: >-
-        A free recurring price for a product, i.e. a subscription.
-
-
-        **Deprecated**: The recurring interval should be set on the product
-        itself.
-    Organization:
-      properties:
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: Creation timestamp of the object.
-        modified_at:
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-          title: Modified At
-          description: Last modification timestamp of the object.
-        id:
-          type: string
-          format: uuid4
-          title: Id
-          description: The organization ID.
-          examples:
-            - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
-          x-polar-selector-widget:
-            displayProperty: name
-            resourceName: Organization
-            resourceRoot: /v1/organizations
         name:
           type: string
           title: Name
@@ -2519,48 +1442,17 @@ components:
             - type: 'null'
           title: Avatar Url
           description: Avatar URL shown in checkout, customer portal, emails etc.
-        email:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Email
-          description: Public support email.
-        website:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Website
-          description: Official website of the organization.
-        socials:
-          items:
-            $ref: '#/components/schemas/OrganizationSocialLink'
-          type: array
-          title: Socials
-          description: Links to social profiles.
-        status:
-          $ref: '#/components/schemas/Status'
-          description: Current organization status
-        details_submitted_at:
-          anyOf:
-            - type: string
-              format: date-time
-            - type: 'null'
-          title: Details Submitted At
-          description: When the business details were submitted.
-        feature_settings:
-          anyOf:
-            - $ref: '#/components/schemas/OrganizationFeatureSettings'
-            - type: 'null'
-          description: Organization feature settings
-        subscription_settings:
-          $ref: '#/components/schemas/OrganizationSubscriptionSettings'
-          description: Settings related to subscriptions management
-        notification_settings:
-          $ref: '#/components/schemas/OrganizationNotificationSettings'
-          description: Settings related to notifications
-        customer_email_settings:
-          $ref: '#/components/schemas/OrganizationCustomerEmailSettings'
-          description: Settings related to customer emails
+        proration_behavior:
+          $ref: '#/components/schemas/SubscriptionProrationBehavior'
+          description: >-
+            Proration behavior applied when customer updates their subscription
+            from the portal.
+        allow_customer_updates:
+          type: boolean
+          title: Allow Customer Updates
+          description: >-
+            Whether customers can update their subscriptions from the customer
+            portal.
       type: object
       required:
         - created_at
@@ -2569,135 +1461,121 @@ components:
         - name
         - slug
         - avatar_url
-        - email
-        - website
-        - socials
-        - status
-        - details_submitted_at
-        - feature_settings
-        - subscription_settings
-        - notification_settings
-        - customer_email_settings
-      title: Organization
-    OrganizationCustomerEmailSettings:
-      properties:
-        order_confirmation:
-          type: boolean
-          title: Order Confirmation
-        subscription_cancellation:
-          type: boolean
-          title: Subscription Cancellation
-        subscription_confirmation:
-          type: boolean
-          title: Subscription Confirmation
-        subscription_cycled:
-          type: boolean
-          title: Subscription Cycled
-        subscription_past_due:
-          type: boolean
-          title: Subscription Past Due
-        subscription_revoked:
-          type: boolean
-          title: Subscription Revoked
-        subscription_uncanceled:
-          type: boolean
-          title: Subscription Uncanceled
-        subscription_updated:
-          type: boolean
-          title: Subscription Updated
-      type: object
-      required:
-        - order_confirmation
-        - subscription_cancellation
-        - subscription_confirmation
-        - subscription_cycled
-        - subscription_past_due
-        - subscription_revoked
-        - subscription_uncanceled
-        - subscription_updated
-      title: OrganizationCustomerEmailSettings
-    OrganizationFeatureSettings:
-      properties:
-        issue_funding_enabled:
-          type: boolean
-          title: Issue Funding Enabled
-          description: If this organization has issue funding enabled
-          default: false
-        seat_based_pricing_enabled:
-          type: boolean
-          title: Seat Based Pricing Enabled
-          description: If this organization has seat-based pricing enabled
-          default: false
-        revops_enabled:
-          type: boolean
-          title: Revops Enabled
-          description: If this organization has RevOps enabled
-          default: false
-      type: object
-      title: OrganizationFeatureSettings
-    OrganizationNotificationSettings:
-      properties:
-        new_order:
-          type: boolean
-          title: New Order
-        new_subscription:
-          type: boolean
-          title: New Subscription
-      type: object
-      required:
-        - new_order
-        - new_subscription
-      title: OrganizationNotificationSettings
-    OrganizationSocialLink:
-      properties:
-        platform:
-          $ref: '#/components/schemas/OrganizationSocialPlatforms'
-          description: The social platform of the URL
-        url:
-          type: string
-          maxLength: 2083
-          minLength: 1
-          format: uri
-          title: Url
-          description: The URL to the organization profile
-      type: object
-      required:
-        - platform
-        - url
-      title: OrganizationSocialLink
-    OrganizationSocialPlatforms:
-      type: string
-      enum:
-        - x
-        - github
-        - facebook
-        - instagram
-        - youtube
-        - tiktok
-        - linkedin
-        - other
-      title: OrganizationSocialPlatforms
-    OrganizationSubscriptionSettings:
-      properties:
-        allow_multiple_subscriptions:
-          type: boolean
-          title: Allow Multiple Subscriptions
-        allow_customer_updates:
-          type: boolean
-          title: Allow Customer Updates
-        proration_behavior:
-          $ref: '#/components/schemas/SubscriptionProrationBehavior'
-      type: object
-      required:
-        - allow_multiple_subscriptions
-        - allow_customer_updates
         - proration_behavior
-      title: OrganizationSubscriptionSettings
-    PaymentProcessor:
+        - allow_customer_updates
+      title: CheckoutOrganization
+    AttachedCustomField:
+      properties:
+        custom_field_id:
+          type: string
+          format: uuid4
+          title: Custom Field Id
+          description: ID of the custom field.
+        custom_field:
+          $ref: '#/components/schemas/CustomField'
+          title: CustomField
+        order:
+          type: integer
+          title: Order
+          description: Order of the custom field in the resource.
+        required:
+          type: boolean
+          title: Required
+          description: Whether the value is required for this custom field.
+      type: object
+      required:
+        - custom_field_id
+        - custom_field
+        - order
+        - required
+      title: AttachedCustomField
+      description: Schema of a custom field attached to a resource.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError
+    BillingAddressFieldMode:
       type: string
       enum:
-        - stripe
-      title: PaymentProcessor
+        - required
+        - optional
+        - disabled
+      title: BillingAddressFieldMode
+    SubscriptionRecurringInterval:
+      type: string
+      enum:
+        - day
+        - week
+        - month
+        - year
+      title: SubscriptionRecurringInterval
+    BenefitPublic:
+      properties:
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the benefit.
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        type:
+          $ref: '#/components/schemas/BenefitType'
+          description: The type of the benefit.
+        description:
+          type: string
+          title: Description
+          description: The description of the benefit.
+        selectable:
+          type: boolean
+          title: Selectable
+          description: Whether the benefit is selectable when creating a product.
+        deletable:
+          type: boolean
+          title: Deletable
+          description: Whether the benefit is deletable.
+        organization_id:
+          type: string
+          format: uuid4
+          title: Organization Id
+          description: The ID of the organization owning the benefit.
+      type: object
+      required:
+        - id
+        - created_at
+        - modified_at
+        - type
+        - description
+        - selectable
+        - deletable
+        - organization_id
+      title: BenefitPublic
     ProductMediaFileRead:
       properties:
         id:
@@ -2790,22 +1668,7 @@ components:
         - public_url
       title: ProductMediaFileRead
       description: File to be used as a product media file.
-    ProductPrice:
-      oneOf:
-        - $ref: '#/components/schemas/ProductPriceFixed'
-        - $ref: '#/components/schemas/ProductPriceCustom'
-        - $ref: '#/components/schemas/ProductPriceFree'
-        - $ref: '#/components/schemas/ProductPriceSeatBased'
-        - $ref: '#/components/schemas/ProductPriceMeteredUnit'
-      discriminator:
-        propertyName: amount_type
-        mapping:
-          custom: '#/components/schemas/ProductPriceCustom'
-          fixed: '#/components/schemas/ProductPriceFixed'
-          free: '#/components/schemas/ProductPriceFree'
-          metered_unit: '#/components/schemas/ProductPriceMeteredUnit'
-          seat_based: '#/components/schemas/ProductPriceSeatBased'
-    ProductPriceCustom:
+    LegacyRecurringProductPriceFixed:
       properties:
         created_at:
           type: string
@@ -2824,6 +1687,89 @@ components:
           format: uuid4
           title: Id
           description: The ID of the price.
+        source:
+          $ref: '#/components/schemas/ProductPriceSource'
+          description: >-
+            The source of the price . `catalog` is a predefined price, while
+            `ad_hoc` is a price created dynamically on a Checkout session.
+        amount_type:
+          type: string
+          const: fixed
+          title: Amount Type
+        is_archived:
+          type: boolean
+          title: Is Archived
+          description: Whether the price is archived and no longer available.
+        product_id:
+          type: string
+          format: uuid4
+          title: Product Id
+          description: The ID of the product owning the price.
+        type:
+          type: string
+          const: recurring
+          title: Type
+          description: The type of the price.
+        recurring_interval:
+          $ref: '#/components/schemas/SubscriptionRecurringInterval'
+          description: The recurring interval of the price.
+        price_currency:
+          type: string
+          title: Price Currency
+          description: The currency.
+        price_amount:
+          type: integer
+          title: Price Amount
+          description: The price in cents.
+        legacy:
+          type: boolean
+          const: true
+          title: Legacy
+      type: object
+      required:
+        - created_at
+        - modified_at
+        - id
+        - source
+        - amount_type
+        - is_archived
+        - product_id
+        - type
+        - recurring_interval
+        - price_currency
+        - price_amount
+        - legacy
+      title: LegacyRecurringProductPriceFixed
+      description: >-
+        A recurring price for a product, i.e. a subscription.
+
+
+        **Deprecated**: The recurring interval should be set on the product
+        itself.
+    LegacyRecurringProductPriceCustom:
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the price.
+        source:
+          $ref: '#/components/schemas/ProductPriceSource'
+          description: >-
+            The source of the price . `catalog` is a predefined price, while
+            `ad_hoc` is a price created dynamically on a Checkout session.
         amount_type:
           type: string
           const: custom
@@ -2838,23 +1784,23 @@ components:
           title: Product Id
           description: The ID of the product owning the price.
         type:
-          $ref: '#/components/schemas/ProductPriceType'
-          deprecated: true
+          type: string
+          const: recurring
+          title: Type
+          description: The type of the price.
         recurring_interval:
-          anyOf:
-            - $ref: '#/components/schemas/SubscriptionRecurringInterval'
-            - type: 'null'
-          deprecated: true
+          $ref: '#/components/schemas/SubscriptionRecurringInterval'
+          description: The recurring interval of the price.
         price_currency:
           type: string
           title: Price Currency
           description: The currency.
         minimum_amount:
-          anyOf:
-            - type: integer
-            - type: 'null'
+          type: integer
           title: Minimum Amount
-          description: The minimum amount the customer can pay.
+          description: >-
+            The minimum amount the customer can pay. If 0, the price is 'free or
+            pay what you want'. Defaults to 50 cents.
         maximum_amount:
           anyOf:
             - type: integer
@@ -2867,11 +1813,16 @@ components:
             - type: 'null'
           title: Preset Amount
           description: The initial amount shown to the customer.
+        legacy:
+          type: boolean
+          const: true
+          title: Legacy
       type: object
       required:
         - created_at
         - modified_at
         - id
+        - source
         - amount_type
         - is_archived
         - product_id
@@ -2881,8 +1832,82 @@ components:
         - minimum_amount
         - maximum_amount
         - preset_amount
-      title: ProductPriceCustom
-      description: A pay-what-you-want price for a product.
+        - legacy
+      title: LegacyRecurringProductPriceCustom
+      description: >-
+        A pay-what-you-want recurring price for a product, i.e. a subscription.
+
+
+        **Deprecated**: The recurring interval should be set on the product
+        itself.
+    LegacyRecurringProductPriceFree:
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the price.
+        source:
+          $ref: '#/components/schemas/ProductPriceSource'
+          description: >-
+            The source of the price . `catalog` is a predefined price, while
+            `ad_hoc` is a price created dynamically on a Checkout session.
+        amount_type:
+          type: string
+          const: free
+          title: Amount Type
+        is_archived:
+          type: boolean
+          title: Is Archived
+          description: Whether the price is archived and no longer available.
+        product_id:
+          type: string
+          format: uuid4
+          title: Product Id
+          description: The ID of the product owning the price.
+        type:
+          type: string
+          const: recurring
+          title: Type
+          description: The type of the price.
+        recurring_interval:
+          $ref: '#/components/schemas/SubscriptionRecurringInterval'
+          description: The recurring interval of the price.
+        legacy:
+          type: boolean
+          const: true
+          title: Legacy
+      type: object
+      required:
+        - created_at
+        - modified_at
+        - id
+        - source
+        - amount_type
+        - is_archived
+        - product_id
+        - type
+        - recurring_interval
+        - legacy
+      title: LegacyRecurringProductPriceFree
+      description: >-
+        A free recurring price for a product, i.e. a subscription.
+
+
+        **Deprecated**: The recurring interval should be set on the product
+        itself.
     ProductPriceFixed:
       properties:
         created_at:
@@ -2902,6 +1927,11 @@ components:
           format: uuid4
           title: Id
           description: The ID of the price.
+        source:
+          $ref: '#/components/schemas/ProductPriceSource'
+          description: >-
+            The source of the price . `catalog` is a predefined price, while
+            `ad_hoc` is a price created dynamically on a Checkout session.
         amount_type:
           type: string
           const: fixed
@@ -2936,6 +1966,7 @@ components:
         - created_at
         - modified_at
         - id
+        - source
         - amount_type
         - is_archived
         - product_id
@@ -2945,6 +1976,90 @@ components:
         - price_amount
       title: ProductPriceFixed
       description: A fixed price for a product.
+    ProductPriceCustom:
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the price.
+        source:
+          $ref: '#/components/schemas/ProductPriceSource'
+          description: >-
+            The source of the price . `catalog` is a predefined price, while
+            `ad_hoc` is a price created dynamically on a Checkout session.
+        amount_type:
+          type: string
+          const: custom
+          title: Amount Type
+        is_archived:
+          type: boolean
+          title: Is Archived
+          description: Whether the price is archived and no longer available.
+        product_id:
+          type: string
+          format: uuid4
+          title: Product Id
+          description: The ID of the product owning the price.
+        type:
+          $ref: '#/components/schemas/ProductPriceType'
+          deprecated: true
+        recurring_interval:
+          anyOf:
+            - $ref: '#/components/schemas/SubscriptionRecurringInterval'
+            - type: 'null'
+          deprecated: true
+        price_currency:
+          type: string
+          title: Price Currency
+          description: The currency.
+        minimum_amount:
+          type: integer
+          title: Minimum Amount
+          description: >-
+            The minimum amount the customer can pay. If 0, the price is 'free or
+            pay what you want'. Defaults to 50 cents.
+        maximum_amount:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Maximum Amount
+          description: The maximum amount the customer can pay.
+        preset_amount:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Preset Amount
+          description: The initial amount shown to the customer.
+      type: object
+      required:
+        - created_at
+        - modified_at
+        - id
+        - source
+        - amount_type
+        - is_archived
+        - product_id
+        - type
+        - recurring_interval
+        - price_currency
+        - minimum_amount
+        - maximum_amount
+        - preset_amount
+      title: ProductPriceCustom
+      description: A pay-what-you-want price for a product.
     ProductPriceFree:
       properties:
         created_at:
@@ -2964,6 +2079,11 @@ components:
           format: uuid4
           title: Id
           description: The ID of the price.
+        source:
+          $ref: '#/components/schemas/ProductPriceSource'
+          description: >-
+            The source of the price . `catalog` is a predefined price, while
+            `ad_hoc` is a price created dynamically on a Checkout session.
         amount_type:
           type: string
           const: free
@@ -2990,6 +2110,7 @@ components:
         - created_at
         - modified_at
         - id
+        - source
         - amount_type
         - is_archived
         - product_id
@@ -2997,23 +2118,73 @@ components:
         - recurring_interval
       title: ProductPriceFree
       description: A free price for a product.
-    ProductPriceMeter:
+    ProductPriceSeatBased:
       properties:
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
         id:
           type: string
           format: uuid4
           title: Id
-          description: The ID of the object.
-        name:
+          description: The ID of the price.
+        source:
+          $ref: '#/components/schemas/ProductPriceSource'
+          description: >-
+            The source of the price . `catalog` is a predefined price, while
+            `ad_hoc` is a price created dynamically on a Checkout session.
+        amount_type:
           type: string
-          title: Name
-          description: The name of the meter.
+          const: seat_based
+          title: Amount Type
+        is_archived:
+          type: boolean
+          title: Is Archived
+          description: Whether the price is archived and no longer available.
+        product_id:
+          type: string
+          format: uuid4
+          title: Product Id
+          description: The ID of the product owning the price.
+        type:
+          $ref: '#/components/schemas/ProductPriceType'
+          deprecated: true
+        recurring_interval:
+          anyOf:
+            - $ref: '#/components/schemas/SubscriptionRecurringInterval'
+            - type: 'null'
+          deprecated: true
+        price_currency:
+          type: string
+          title: Price Currency
+          description: The currency.
+        seat_tiers:
+          $ref: '#/components/schemas/ProductPriceSeatTiers-Output'
+          description: Tiered pricing based on seat quantity
       type: object
       required:
+        - created_at
+        - modified_at
         - id
-        - name
-      title: ProductPriceMeter
-      description: A meter associated to a metered price.
+        - source
+        - amount_type
+        - is_archived
+        - product_id
+        - type
+        - recurring_interval
+        - price_currency
+        - seat_tiers
+      title: ProductPriceSeatBased
+      description: A seat-based price for a product.
     ProductPriceMeteredUnit:
       properties:
         created_at:
@@ -3033,6 +2204,11 @@ components:
           format: uuid4
           title: Id
           description: The ID of the price.
+        source:
+          $ref: '#/components/schemas/ProductPriceSource'
+          description: >-
+            The source of the price . `catalog` is a predefined price, while
+            `ad_hoc` is a price created dynamically on a Checkout session.
         amount_type:
           type: string
           const: metered_unit
@@ -3084,6 +2260,7 @@ components:
         - created_at
         - modified_at
         - id
+        - source
         - amount_type
         - is_archived
         - product_id
@@ -3096,7 +2273,115 @@ components:
         - meter
       title: ProductPriceMeteredUnit
       description: A metered, usage-based, price for a product, with a fixed unit price.
-    ProductPriceSeatBased:
+    DiscountDuration:
+      type: string
+      enum:
+        - once
+        - forever
+        - repeating
+      title: DiscountDuration
+    DiscountType:
+      type: string
+      enum:
+        - fixed
+        - percentage
+      title: DiscountType
+    SubscriptionProrationBehavior:
+      type: string
+      enum:
+        - invoice
+        - prorate
+      title: SubscriptionProrationBehavior
+    CustomField:
+      oneOf:
+        - $ref: '#/components/schemas/CustomFieldText'
+        - $ref: '#/components/schemas/CustomFieldNumber'
+        - $ref: '#/components/schemas/CustomFieldDate'
+        - $ref: '#/components/schemas/CustomFieldCheckbox'
+        - $ref: '#/components/schemas/CustomFieldSelect'
+      discriminator:
+        propertyName: type
+        mapping:
+          checkbox: '#/components/schemas/CustomFieldCheckbox'
+          date: '#/components/schemas/CustomFieldDate'
+          number: '#/components/schemas/CustomFieldNumber'
+          select: '#/components/schemas/CustomFieldSelect'
+          text: '#/components/schemas/CustomFieldText'
+    BenefitType:
+      type: string
+      enum:
+        - custom
+        - discord
+        - github_repository
+        - downloadables
+        - license_keys
+        - meter_credit
+      title: BenefitType
+    ProductPriceSource:
+      type: string
+      enum:
+        - catalog
+        - ad_hoc
+      title: ProductPriceSource
+    ProductPriceType:
+      type: string
+      enum:
+        - one_time
+        - recurring
+      title: ProductPriceType
+    ProductPriceSeatTiers-Output:
+      properties:
+        tiers:
+          items:
+            $ref: '#/components/schemas/ProductPriceSeatTier'
+          type: array
+          minItems: 1
+          title: Tiers
+          description: List of pricing tiers
+        minimum_seats:
+          type: integer
+          title: Minimum Seats
+          description: >-
+            Minimum number of seats required for purchase, derived from first
+            tier.
+        maximum_seats:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Maximum Seats
+          description: >-
+            Maximum number of seats allowed for purchase, derived from last
+            tier. None for unlimited.
+      type: object
+      required:
+        - tiers
+        - minimum_seats
+        - maximum_seats
+      title: ProductPriceSeatTiers
+      description: |-
+        List of pricing tiers for seat-based pricing.
+
+        The minimum and maximum seat limits are derived from the tiers:
+        - minimum_seats = first tier's min_seats
+        - maximum_seats = last tier's max_seats (None for unlimited)
+    ProductPriceMeter:
+      properties:
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the object.
+        name:
+          type: string
+          title: Name
+          description: The name of the meter.
+      type: object
+      required:
+        - id
+        - name
+      title: ProductPriceMeter
+      description: A meter associated to a metered price.
+    CustomFieldText:
       properties:
         created_at:
           type: string
@@ -3114,49 +2399,293 @@ components:
           type: string
           format: uuid4
           title: Id
-          description: The ID of the price.
-        amount_type:
+          description: The ID of the object.
+        metadata:
+          $ref: '#/components/schemas/MetadataOutputType'
+        type:
           type: string
-          const: seat_based
-          title: Amount Type
-        is_archived:
-          type: boolean
-          title: Is Archived
-          description: Whether the price is archived and no longer available.
-        product_id:
+          const: text
+          title: Type
+        slug:
+          type: string
+          title: Slug
+          description: >-
+            Identifier of the custom field. It'll be used as key when storing
+            the value.
+        name:
+          type: string
+          title: Name
+          description: Name of the custom field.
+        organization_id:
           type: string
           format: uuid4
-          title: Product Id
-          description: The ID of the product owning the price.
-        type:
-          $ref: '#/components/schemas/ProductPriceType'
-          deprecated: true
-        recurring_interval:
-          anyOf:
-            - $ref: '#/components/schemas/SubscriptionRecurringInterval'
-            - type: 'null'
-          deprecated: true
-        price_currency:
-          type: string
-          title: Price Currency
-          description: The currency.
-        seat_tiers:
-          $ref: '#/components/schemas/ProductPriceSeatTiers'
-          description: Tiered pricing based on seat quantity
+          title: Organization Id
+          description: The ID of the organization owning the custom field.
+          examples:
+            - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
+          x-polar-selector-widget:
+            displayProperty: name
+            resourceName: Organization
+            resourceRoot: /v1/organizations
+        properties:
+          $ref: '#/components/schemas/CustomFieldTextProperties'
       type: object
       required:
         - created_at
         - modified_at
         - id
-        - amount_type
-        - is_archived
-        - product_id
+        - metadata
         - type
-        - recurring_interval
-        - price_currency
-        - seat_tiers
-      title: ProductPriceSeatBased
-      description: A seat-based price for a product.
+        - slug
+        - name
+        - organization_id
+        - properties
+      title: CustomFieldText
+      description: Schema for a custom field of type text.
+    CustomFieldNumber:
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the object.
+        metadata:
+          $ref: '#/components/schemas/MetadataOutputType'
+        type:
+          type: string
+          const: number
+          title: Type
+        slug:
+          type: string
+          title: Slug
+          description: >-
+            Identifier of the custom field. It'll be used as key when storing
+            the value.
+        name:
+          type: string
+          title: Name
+          description: Name of the custom field.
+        organization_id:
+          type: string
+          format: uuid4
+          title: Organization Id
+          description: The ID of the organization owning the custom field.
+          examples:
+            - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
+          x-polar-selector-widget:
+            displayProperty: name
+            resourceName: Organization
+            resourceRoot: /v1/organizations
+        properties:
+          $ref: '#/components/schemas/CustomFieldNumberProperties'
+      type: object
+      required:
+        - created_at
+        - modified_at
+        - id
+        - metadata
+        - type
+        - slug
+        - name
+        - organization_id
+        - properties
+      title: CustomFieldNumber
+      description: Schema for a custom field of type number.
+    CustomFieldDate:
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the object.
+        metadata:
+          $ref: '#/components/schemas/MetadataOutputType'
+        type:
+          type: string
+          const: date
+          title: Type
+        slug:
+          type: string
+          title: Slug
+          description: >-
+            Identifier of the custom field. It'll be used as key when storing
+            the value.
+        name:
+          type: string
+          title: Name
+          description: Name of the custom field.
+        organization_id:
+          type: string
+          format: uuid4
+          title: Organization Id
+          description: The ID of the organization owning the custom field.
+          examples:
+            - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
+          x-polar-selector-widget:
+            displayProperty: name
+            resourceName: Organization
+            resourceRoot: /v1/organizations
+        properties:
+          $ref: '#/components/schemas/CustomFieldDateProperties'
+      type: object
+      required:
+        - created_at
+        - modified_at
+        - id
+        - metadata
+        - type
+        - slug
+        - name
+        - organization_id
+        - properties
+      title: CustomFieldDate
+      description: Schema for a custom field of type date.
+    CustomFieldCheckbox:
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the object.
+        metadata:
+          $ref: '#/components/schemas/MetadataOutputType'
+        type:
+          type: string
+          const: checkbox
+          title: Type
+        slug:
+          type: string
+          title: Slug
+          description: >-
+            Identifier of the custom field. It'll be used as key when storing
+            the value.
+        name:
+          type: string
+          title: Name
+          description: Name of the custom field.
+        organization_id:
+          type: string
+          format: uuid4
+          title: Organization Id
+          description: The ID of the organization owning the custom field.
+          examples:
+            - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
+          x-polar-selector-widget:
+            displayProperty: name
+            resourceName: Organization
+            resourceRoot: /v1/organizations
+        properties:
+          $ref: '#/components/schemas/CustomFieldCheckboxProperties'
+      type: object
+      required:
+        - created_at
+        - modified_at
+        - id
+        - metadata
+        - type
+        - slug
+        - name
+        - organization_id
+        - properties
+      title: CustomFieldCheckbox
+      description: Schema for a custom field of type checkbox.
+    CustomFieldSelect:
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the object.
+        metadata:
+          $ref: '#/components/schemas/MetadataOutputType'
+        type:
+          type: string
+          const: select
+          title: Type
+        slug:
+          type: string
+          title: Slug
+          description: >-
+            Identifier of the custom field. It'll be used as key when storing
+            the value.
+        name:
+          type: string
+          title: Name
+          description: Name of the custom field.
+        organization_id:
+          type: string
+          format: uuid4
+          title: Organization Id
+          description: The ID of the organization owning the custom field.
+          examples:
+            - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
+          x-polar-selector-widget:
+            displayProperty: name
+            resourceName: Organization
+            resourceRoot: /v1/organizations
+        properties:
+          $ref: '#/components/schemas/CustomFieldSelectProperties'
+      type: object
+      required:
+        - created_at
+        - modified_at
+        - id
+        - metadata
+        - type
+        - slug
+        - name
+        - organization_id
+        - properties
+      title: CustomFieldSelect
+      description: Schema for a custom field of type select.
     ProductPriceSeatTier:
       properties:
         min_seats:
@@ -3174,7 +2703,7 @@ components:
         price_per_seat:
           type: integer
           maximum: 99999999
-          minimum: 50
+          minimum: 0
           title: Price Per Seat
           description: Price per seat in cents for this tier
       type: object
@@ -3183,77 +2712,156 @@ components:
         - price_per_seat
       title: ProductPriceSeatTier
       description: A pricing tier for seat-based pricing.
-    ProductPriceSeatTiers:
+    MetadataOutputType:
+      additionalProperties:
+        anyOf:
+          - type: string
+          - type: integer
+          - type: number
+          - type: boolean
+      type: object
+    CustomFieldTextProperties:
       properties:
-        tiers:
+        form_label:
+          type: string
+          minLength: 1
+          title: Form Label
+        form_help_text:
+          type: string
+          minLength: 1
+          title: Form Help Text
+        form_placeholder:
+          type: string
+          minLength: 1
+          title: Form Placeholder
+        textarea:
+          type: boolean
+          title: Textarea
+        min_length:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          title: Min Length
+        max_length:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+          title: Max Length
+      type: object
+      title: CustomFieldTextProperties
+    CustomFieldNumberProperties:
+      properties:
+        form_label:
+          type: string
+          minLength: 1
+          title: Form Label
+        form_help_text:
+          type: string
+          minLength: 1
+          title: Form Help Text
+        form_placeholder:
+          type: string
+          minLength: 1
+          title: Form Placeholder
+        ge:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          title: Ge
+        le:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          title: Le
+      type: object
+      title: CustomFieldNumberProperties
+    CustomFieldDateProperties:
+      properties:
+        form_label:
+          type: string
+          minLength: 1
+          title: Form Label
+        form_help_text:
+          type: string
+          minLength: 1
+          title: Form Help Text
+        form_placeholder:
+          type: string
+          minLength: 1
+          title: Form Placeholder
+        ge:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          title: Ge
+        le:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          title: Le
+      type: object
+      title: CustomFieldDateProperties
+    CustomFieldCheckboxProperties:
+      properties:
+        form_label:
+          type: string
+          minLength: 1
+          title: Form Label
+        form_help_text:
+          type: string
+          minLength: 1
+          title: Form Help Text
+        form_placeholder:
+          type: string
+          minLength: 1
+          title: Form Placeholder
+      type: object
+      title: CustomFieldCheckboxProperties
+    CustomFieldSelectProperties:
+      properties:
+        form_label:
+          type: string
+          minLength: 1
+          title: Form Label
+        form_help_text:
+          type: string
+          minLength: 1
+          title: Form Help Text
+        form_placeholder:
+          type: string
+          minLength: 1
+          title: Form Placeholder
+        options:
           items:
-            $ref: '#/components/schemas/ProductPriceSeatTier'
+            $ref: '#/components/schemas/CustomFieldSelectOption'
           type: array
           minItems: 1
-          title: Tiers
-          description: List of pricing tiers
+          title: Options
       type: object
       required:
-        - tiers
-      title: ProductPriceSeatTiers
-      description: List of pricing tiers for seat-based pricing.
-    ProductPriceType:
-      type: string
-      enum:
-        - one_time
-        - recurring
-      title: ProductPriceType
-    Status:
-      type: string
-      enum:
-        - created
-        - onboarding_started
-        - under_review
-        - denied
-        - active
-      title: Status
-    SubscriptionProrationBehavior:
-      type: string
-      enum:
-        - invoice
-        - prorate
-      title: SubscriptionProrationBehavior
-    SubscriptionRecurringInterval:
-      type: string
-      enum:
-        - day
-        - week
-        - month
-        - year
-      title: SubscriptionRecurringInterval
-    TrialInterval:
-      type: string
-      enum:
-        - day
-        - week
-        - month
-        - year
-      title: TrialInterval
-    ValidationError:
+        - options
+      title: CustomFieldSelectProperties
+    CustomFieldSelectOption:
       properties:
-        loc:
-          items:
-            anyOf:
-              - type: string
-              - type: integer
-          type: array
-          title: Location
-        msg:
+        value:
           type: string
-          title: Message
-        type:
+          minLength: 1
+          title: Value
+        label:
           type: string
-          title: Error Type
+          minLength: 1
+          title: Label
       type: object
       required:
-        - loc
-        - msg
-        - type
-      title: ValidationError
+        - value
+        - label
+      title: CustomFieldSelectOption
+  securitySchemes:
+    access_token:
+      type: http
+      scheme: bearer
+      description: >-
+        You can generate an **Organization Access Token** from your
+        organization's settings.
 
 ````

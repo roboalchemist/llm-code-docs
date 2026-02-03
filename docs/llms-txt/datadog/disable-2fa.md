@@ -4,7 +4,6 @@
 title: Can you disable 2FA on my account?
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > FAQ > Can you disable 2FA on my account?
-source_url: https://docs.datadoghq.com/faq/disable-2fa/index.html
 ---
 
 # Can you disable 2FA on my account?

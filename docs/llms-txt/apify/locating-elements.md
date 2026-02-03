@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/locating-elements.md
 
-# Source: https://docs.apify.com/academy/scraping-basics-python/locating-elements.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/locating-elements.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/locating-elements.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/locating-elements.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/locating-elements.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript2/locating-elements.md
-
 # Locating HTML elements with Node.js
 
 **In this lesson we'll locate product data in the downloaded HTML. We'll use Cheerio to find those HTML elements which contain details about each product, such as title or price.**
@@ -41,7 +29,7 @@ if (response.ok) {
 ```
 
 
-Calling https://cheerio.js.org/docs/api/classes/Cheerio#toarray converts the Cheerio selection to a standard JavaScript array. We can then loop over that array and process each selected element.
+Calling [toArray()](https://cheerio.js.org/docs/api/classes/Cheerio#toarray) converts the Cheerio selection to a standard JavaScript array. We can then loop over that array and process each selected element.
 
 Cheerio requires us to wrap each element with `$()` again before we can work with it further, and then we call `.text()`. If we run the code, it… well, it definitely prints *something*…
 
@@ -144,7 +132,7 @@ When translated to a tree of JavaScript objects, the element with class `price` 
 * a `span` HTML element,
 * a textual node representing the actual amount and possibly also white space.
 
-We can use Cheerio's https://cheerio.js.org/docs/api/classes/Cheerio#contents method to access individual nodes. It returns a list of nodes like this:
+We can use Cheerio's [.contents()](https://cheerio.js.org/docs/api/classes/Cheerio#contents) method to access individual nodes. It returns a list of nodes like this:
 
 
 ```
@@ -208,7 +196,7 @@ if (response.ok) {
 ```
 
 
-We're enjoying the fact that Cheerio selections provide utility methods for accessing items, such as https://cheerio.js.org/docs/api/classes/Cheerio#first or https://cheerio.js.org/docs/api/classes/Cheerio#last. If we run the scraper now, it should print prices as only amounts:
+We're enjoying the fact that Cheerio selections provide utility methods for accessing items, such as [.first()](https://cheerio.js.org/docs/api/classes/Cheerio#first) or [.last()](https://cheerio.js.org/docs/api/classes/Cheerio#last). If we run the scraper now, it should print prices as only amounts:
 
 
 ```
@@ -229,7 +217,7 @@ These challenges are here to help you test what you’ve learned in this lesson.
 
 Real world
 
-You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or https://github.com/apify/apify-docs/issues.
+You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or [file a GitHub Issue](https://github.com/apify/apify-docs/issues).
 
 ### Scrape Wikipedia
 
@@ -269,35 +257,37 @@ Solution
 ```
 import * as cheerio from 'cheerio';
 
-const url = "https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_Africa";
+const url = 'https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_Africa';
 const response = await fetch(url);
 
-if (response.ok) {
-  const html = await response.text();
-  const $ = cheerio.load(html);
+if (!response.ok) {
+  throw new Error(`HTTP ${response.status}`);
+}
 
-  for (const tableElement of $(".wikitable").toArray()) {
-    const $table = $(tableElement);
-    const $rows = $table.find("tr");
+const html = await response.text();
+const $ = cheerio.load(html);
 
-    for (const rowElement of $rows.toArray()) {
-      const $row = $(rowElement);
-      const $cells = $row.find("td");
+for (const tableElement of $('.wikitable').toArray()) {
+  const $table = $(tableElement);
+  const rows = $table.find('tr');
 
-      if ($cells.length > 0) {
-        const $thirdColumn = $($cells[2]);
-        const $link = $thirdColumn.find("a").first();
+  for (const rowElement of rows.toArray()) {
+    const $row = $(rowElement);
+    const cells = $row.find('td');
+
+    if (cells.length > 0) {
+      const $thirdColumn = $(cells[2]);
+      const $link = $thirdColumn.find('a').first();
+      if ($link.length) {
         console.log($link.text());
       }
     }
   }
-} else {
-  throw new Error(`HTTP ${response.status}`);
 }
 ```
 
 
-Because some rows contain https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th, we skip processing a row if `table_row.select("td")` doesn't find any https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td cells.
+Because some rows contain [table headers](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th), we skip processing a row if `table_row.select("td")` doesn't find any [table data](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td) cells.
 
 ### Use CSS selectors to their max
 
@@ -307,8 +297,8 @@ Need a nudge?
 
 You may want to check out the following pages:
 
-* https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_combinator
-* https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child
+* [Descendant combinator](https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_combinator)
+* [:nth-child() pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child)
 
 Solution
 
@@ -316,20 +306,22 @@ Solution
 ```
 import * as cheerio from 'cheerio';
 
-const url = "https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_Africa";
+const url = 'https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_Africa';
 const response = await fetch(url);
 
-if (response.ok) {
-  const html = await response.text();
-  const $ = cheerio.load(html);
+if (!response.ok) {
+  throw new Error(`HTTP ${response.status}`);
+}
 
-  for (const element of $(".wikitable tr td:nth-child(3)").toArray()) {
-    const $nameCell = $(element);
-    const $link = $nameCell.find("a").first();
+const html = await response.text();
+const $ = cheerio.load(html);
+
+for (const element of $('.wikitable tr td:nth-child(3)').toArray()) {
+  const $nameCell = $(element);
+  const $link = $nameCell.find('a').first();
+  if ($link.length) {
     console.log($link.text());
   }
-} else {
-  throw new Error(`HTTP ${response.status}`);
 }
 ```
 
@@ -361,17 +353,20 @@ Solution
 ```
 import * as cheerio from 'cheerio';
 
-const url = "https://www.theguardian.com/sport/formulaone";
+const url = 'https://www.theguardian.com/sport/formulaone';
 const response = await fetch(url);
 
-if (response.ok) {
-  const html = await response.text();
-  const $ = cheerio.load(html);
-
-  for (const element of $("#maincontent ul li h3").toArray()) {
-    console.log($(element).text());
-  }
-} else {
+if (!response.ok) {
   throw new Error(`HTTP ${response.status}`);
+}
+
+const html = await response.text();
+const $ = cheerio.load(html);
+
+for (const element of $('#maincontent ul li h3').toArray()) {
+  const title = $(element).text().trim();
+  if (title) {
+    console.log(title);
+  }
 }
 ```

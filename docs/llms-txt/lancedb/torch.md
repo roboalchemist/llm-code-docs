@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/training/torch.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PyTorch Integration
 
 > Learn how to use LanceDB with PyTorch for training and inference.
@@ -52,8 +56,3 @@ a subset of columns, you can significantly reduce your I/O requirements by selec
       print(batch.schema)
   ```
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

@@ -4,6 +4,12 @@
 
 # Source: https://docs.runpod.io/api-reference/endpoints/DELETE/endpoints/endpointId.md
 
+# Source: https://docs.runpod.io/api-reference/endpoints/PATCH/endpoints/endpointId.md
+
+# Source: https://docs.runpod.io/api-reference/endpoints/GET/endpoints/endpointId.md
+
+# Source: https://docs.runpod.io/api-reference/endpoints/DELETE/endpoints/endpointId.md
+
 <!-- Documentation Index: See llms.txt -->
 <!-- See llms.txt for complete documentation index -->
 <!-- Use this for finding documentation -->

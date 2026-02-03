@@ -8,11 +8,11 @@
 
 A HookMap, called when generating the specified stats item.
 
-* **Type:** `HookMap<SyncBailHook<[Object, any, StatsFactoryContext], undefined>>`
-* **Arguments:**
-  * `Object`: result stats item object which properties should be added.
-  * `Class`: the original data of the stats item
-  * `StatsFactoryContext`: generating context
+- **Type:** `HookMap<SyncBailHook<[Object, any, StatsFactoryContext], undefined>>`
+- **Arguments:**
+  - `Object`: result stats item object which properties should be added.
+  - `Class`: the original data of the stats item
+  - `StatsFactoryContext`: generating context
 
 ```ts
 type StatsFactoryContext = {
@@ -40,10 +40,10 @@ compilation.hooks.statsFactory.tap('MyPlugin', (statsFactory, options) => {
 
 A HookMap, called after generating the specified stats item.
 
-* **Type:** `HookMap<SyncWaterfallHook<[any[], StatsFactoryContext], undefined>>`
-* **Arguments:**
-  * `any[]`: generated stats item result
-  * `StatsFactoryContext`: generating context
+- **Type:** `HookMap<SyncWaterfallHook<[any[], StatsFactoryContext], undefined>>`
+- **Arguments:**
+  - `any[]`: generated stats item result
+  - `StatsFactoryContext`: generating context
 
 ## StatsPrinter
 
@@ -53,10 +53,10 @@ A HookMap, called
 
 为一个 HookMap, called when generating the printed string of the specified stats item.
 
-* **Type:** `HookMap<SyncBailHook<[{}, StatsPrinterContext], string>>`
-* **Arguments:**
-  * `Object`: stats item object
-  * `StatsPrinterContext`: printing context
+- **Type:** `HookMap<SyncBailHook<[{}, StatsPrinterContext], string>>`
+- **Arguments:**
+  - `Object`: stats item object
+  - `StatsPrinterContext`: printing context
 
 ```ts
 type StatsPrinterContext = {
@@ -90,7 +90,7 @@ type StatsPrinterContext = {
 
 A HookMap, called after generating the printed string of the specified stats item.
 
-* **Type:** `HookMap<SyncBailHook<[{}, StatsPrinterContext], string>>`
-* **Arguments:**
-  * `String`: printed string of the stats item
-  * `StatsPrinterContext`: printing context
+- **Type:** `HookMap<SyncBailHook<[{}, StatsPrinterContext], string>>`
+- **Arguments:**
+  - `String`: printed string of the stats item
+  - `StatsPrinterContext`: printing context

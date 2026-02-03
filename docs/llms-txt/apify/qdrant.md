@@ -6,7 +6,7 @@
 
 ***
 
-https://qdrant.tech is a high performance managed vector database that allows users to store and query dense vectors for next generation AI applications such as recommendation systems, semantic search, and retrieval augmented generation (RAG).
+[Qdrant](https://qdrant.tech) is a high performance managed vector database that allows users to store and query dense vectors for next generation AI applications such as recommendation systems, semantic search, and retrieval augmented generation (RAG).
 
 The Apify integration for Qdrant enables you to export results from Apify Actors and Dataset items into a specific Qdrant collection.
 
@@ -14,10 +14,10 @@ The Apify integration for Qdrant enables you to export results from Apify Actors
 
 Before you begin, ensure that you have the following:
 
-* A https://qdrant.tech set up.
+* A [Qdrant cluster](https://qdrant.tech) set up.
 * A Qdrant URL to the database and Qdrant API token.
-* An https://openai.com/index/openai-api/ to compute text embeddings.
-* An https://docs.apify.com/platform/integrations/api#api-token to access https://apify.com/store.
+* An [OpenAI API key](https://openai.com/index/openai-api/) to compute text embeddings.
+* An [Apify API token](https://docs.apify.com/platform/integrations/api#api-token) to access [Apify Actors](https://apify.com/store).
 
 ### How to setup Qdrant database and create a cluster
 
@@ -39,23 +39,23 @@ The examples utilize the Website Content Crawler Actor, which deeply crawls webs
 
 #### Apify Console
 
-1. Set up the https://apify.com/apify/website-content-crawler Actor in the https://console.apify.com. Refer to this guide on how to set up https://blog.apify.com/talk-to-your-website-with-large-language-models/.
+1. Set up the [Website Content Crawler](https://apify.com/apify/website-content-crawler) Actor in the [Apify Console](https://console.apify.com). Refer to this guide on how to set up [website content crawl for your project](https://blog.apify.com/talk-to-your-website-with-large-language-models/).
 
 2. Once you have the crawler ready, navigate to the integration section and add Apify's Qdrant integration.
 
    ![Website Content Crawler with Qdrant integration](/assets/images/qdrant-wcc-integration-1fde951a0aa495bdffcafba80a6a0e29.png)
 
-3. Select when to trigger this integration (typically when a run succeeds) and fill in all the required fields for the Qdrant integration. If you haven't created a collection, it can be created automatically with the specified model. You can learn more about the input parameters at the https://apify.com/apify/qdrant-integration.
+3. Select when to trigger this integration (typically when a run succeeds) and fill in all the required fields for the Qdrant integration. If you haven't created a collection, it can be created automatically with the specified model. You can learn more about the input parameters at the [Qdrant integration input schema](https://apify.com/apify/qdrant-integration).
 
    ![Qdrant integration configuration](/assets/images/qdrant-integration-setup-15d4bade6cb47bc451d6968e66668a88.png)
 
-* For a detailed explanation of the input parameters, including dataset settings, incremental updates, and examples, see the https://apify.com/apify/qdrant-integration.
+* For a detailed explanation of the input parameters, including dataset settings, incremental updates, and examples, see the [Qdrant integration description](https://apify.com/apify/qdrant-integration).
 
-* For an explanation on how to combine Actors to accomplish more complex tasks, refer to the guide on https://blog.apify.com/connecting-scrapers-apify-integration/ integrations.
+* For an explanation on how to combine Actors to accomplish more complex tasks, refer to the guide on [Actor-to-Actor](https://blog.apify.com/connecting-scrapers-apify-integration/) integrations.
 
 #### Python
 
-Another way to interact with Qdrant is through the https://docs.apify.com/sdk/python/.
+Another way to interact with Qdrant is through the [Apify Python SDK](https://docs.apify.com/sdk/python/).
 
 1. Install the Apify Python SDK by running the following command:
 
@@ -82,7 +82,7 @@ Another way to interact with Qdrant is through the https://docs.apify.com/sdk/py
    ```
 
 
-3. Call the https://apify.com/apify/website-content-crawler Actor to crawl the Qdrant documentation and extract text content from the web pages:
+3. Call the [Website Content Crawler](https://apify.com/apify/website-content-crawler) Actor to crawl the Qdrant documentation and extract text content from the web pages:
 
 
    ```
@@ -121,5 +121,5 @@ You have successfully integrated Apify with Qdrant and the data is now stored in
 
 ## Additional Resources
 
-* https://apify.com/apify/qdrant-integration
-* https://qdrant.tech/documentation/
+* [Apify Qdrant integration](https://apify.com/apify/qdrant-integration)
+* [Qdrant documentation](https://qdrant.tech/documentation/)

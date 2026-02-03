@@ -8,8 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Code-Based Custom Instrumentation >
   Custom Instrumentation with the OpenTelemetry API
-source_url: >-
-  https://docs.datadoghq.com/trace_collection/custom_instrumentation/otel_instrumentation/index.html
 ---
 
 # Custom Instrumentation with the OpenTelemetry API
@@ -29,6 +27,13 @@ The Datadog tracing library, when configured as described here, accepts the span
 
 If you're looking for a way to instrument your code with OpenTelemetry and then send span data to Datadog *without going through the Datadog tracing library*, see [OpenTelemetry in Datadog](https://docs.datadoghq.com/opentelemetry/).
 
+- [Java](java)
+- [Python](python)
+- [Ruby](ruby)
+- [go](go)
+- [Node.js](nodejs)
+- [PHP](php)
+- [.Net](dotnet)
 
 ## Further Reading{% #further-reading %}
 

@@ -1,39 +1,58 @@
 # Source: https://docs.zapier.com/platform/manage/auth-scheme.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Change authentication type
 
-> If your API's authentication method changes, you would need to change the method Zapier uses to authenticate user accounts.
+> If your API's authentication method changes, you’ll also need to update how Zapier authenticates user accounts in your integration.
 
 ## Impact to users
 
-Changing the authentication type (e.g., Basic Auth, API Key, or OAuth) of an integration is regarded as a breaking change. Notably, migration is impracticable since all pre-existing connected accounts would stop working if migrated. Users would need to make a new connection to your integration and manually modify each of their Zaps.
+Changing your integration's authentication type (e.g., Basic Auth, API Key, or OAuth) is considered a **breaking change**. Zapier does not currently support automatic migration between different auth types. This means that users would need to make a new connection to your integration and manually modify each of their Zaps.
 
-However, if your integration meets the following conditions, you can use the [contact form](https://developer.zapier.com/contact) to request support for migrating connected accounts between authentication types:
-
-1. Your integration is public.
-2. You have an API endpoint or can otherwise programmatically exchange data of the old type (e.g. an API key) for the new type (e.g. an OAuth2 access and refresh token).
-3. The API endpoints that the integration actions use, can work with both the old and new auth type, at least for a few months until the old type may be sunset.
-4. Exchanging e.g. an API key for an OAuth2 access token doesn't immediately invalidate the API key, and thus break other connected accounts that may still use it.
+Because of this implication, any authentication change should be planned carefully to minimize disruption.
 
 ## Best practices
 
-**Creating a New Version**
+**If you must change your authentication method**, we recommend the following:
 
-* [Clone](/platform/manage/clone) your app, generating a new version.
-* [Remove](/platform/build/auth#how-to-remove-or-change-zapier-integration-authentication-scheme) the existing authentication method and incorporate the new one.
-* Once configured, [promote](/platform/manage/promote) this version, making it available for new users to select during the connection of your integration to Zapier.
+### Designing a Smooth Transition
 
-**Managing Existing Users**
+1. Ensure your API can support both the old and new auth methods during the transition period.
+2. Avoid immediately invalidating the old authentication credentials (e.g., API keys) after issuing new ones, so users aren’t abruptly disconnected.
 
-* If users with existing authentications can retain their connection using the old method, enabling them to stick to the old version is recommended.
-* However, they will be prompted to form a new connection for any new Zaps since only the promoted version is available during a name-based app search.
+### Creating a New Version
 
-**Deprecating legacy authentication scheme**
+* [Clone](/platform/manage/clone) your integration to create a new version.
+* [Remove](/platform/build/auth#how-to-remove-or-change-zapier-integration-authentication-scheme) the current authentication method and implement the new one.
+* Once tested and ready, [promote](/platform/manage/promote) this new version so new users connect using the updated auth type.
 
-* If existing authentications are set to be non-functional in the future, then [Deprecation](/platform/manage/deprecate) is required.
-* Be mindful that this can be notably disruptive for our mutual users and thus should be considered carefully.
+### Managing Existing Users
 
-> NOTE: this method is not possible with apps built in the legacy web builder. To update the authentication, you would need to update all triggers/actions/searches as well; as deleting the authentication method and re-adding it in the new builder would not be compatible with existing triggers/actions/searches built in the legacy web builder.
+* If the old auth method can continue working for a while, keep the older version available. This allows users to maintain their existing connections temporarily.
+* New Zaps will always default to the promoted version, so users will be asked to reconnect using the new auth type when setting up new workflows.
+
+## What to do before changing auth types
+
+Changing your integration’s authentication type has broad impact. Please [contact us](https://developer.zapier.com/contact) as early as possible to let us know your plans.
+
+While we can’t currently guarantee support for migrating user accounts across auth types, starting the conversation early allows us to:
+
+* Better understand your use case
+* Provide tailored guidance
+* Coordinate timing to reduce disruption for your users
+
+## Deprecating legacy authentication scheme
+
+If you plan to discontinue support for the old authentication method:
+
+* You’ll need to [deprecate](/platform/manage/deprecate) the integration version that uses it.
+* Be aware this may be disruptive for users and should be carefully planned.
+* Make sure users are informed and given ample time to transition.
+
+> NOTE: This process is not supported for apps built in the legacy web builder. To update the authentication method, you must rebuild all triggers, actions, and searches in the new builder. Simply deleting and re-adding the authentication method will not work with components built in the legacy builder.
 
 ***
 

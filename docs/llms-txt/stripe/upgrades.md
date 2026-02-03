@@ -65,7 +65,7 @@ After you’ve rolled back, webhooks that were sent with the new object structur
 
 ## Stay informed
 
-We send information on new additions and changes to Stripe’s API and language libraries in the Stripe Developer Digest. Be sure to [subscribe](https://go.stripe.global/dev-digest) to stay informed.
+We send information on new additions and changes to the Stripe API and language libraries in the Stripe Developer Digest. Make sure you [subscribe](https://go.stripe.global/dev-digest) to stay informed about additions and changes.
 
 ## API versions
 

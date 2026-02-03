@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/integrations/mistral.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Mistral integration
 
 Our Python SDK includes automatic integration with Mistral via OpenAI's package.
@@ -34,8 +38,3 @@ Our Python SDK includes automatic integration with Mistral via OpenAI's package.
     ```
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

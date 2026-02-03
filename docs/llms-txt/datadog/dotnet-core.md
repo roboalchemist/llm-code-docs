@@ -10,8 +10,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Add the Datadog Tracing Library >
   Tracing .NET Core Applications
-source_url: >-
-  https://docs.datadoghq.com/trace_collection/dd_libraries/dotnet-core/index.html
 ---
 
 # Tracing .NET Core Applications

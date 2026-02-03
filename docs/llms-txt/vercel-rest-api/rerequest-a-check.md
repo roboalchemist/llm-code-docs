@@ -1,132 +1,105 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/checks/rerequest-a-check.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rerequest a check
 
 > Rerequest a selected check that has failed.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/deployments/{deploymentId}/checks/{checkId}/rerequest
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/deployments/{deploymentId}/checks/{checkId}/rerequest
-  method: post
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        deploymentId:
+  /v1/deployments/{deploymentId}/checks/{checkId}/rerequest:
+    post:
+      tags:
+        - checks
+      summary: Rerequest a check
+      description: Rerequest a selected check that has failed.
+      operationId: rerequestCheck
+      parameters:
+        - name: deploymentId
+          description: The deployment to rerun the check for.
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The deployment to rerun the check for.
-              example: dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6
-        checkId:
+            description: The deployment to rerun the check for.
+            example: dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6
+            type: string
+        - name: checkId
+          description: The check to rerun
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The check to rerun
-              example: check_2qn7PZrx89yxY34vEZPD31Y9XVj6
-      query:
-        autoUpdate:
+            description: The check to rerun
+            example: check_2qn7PZrx89yxY34vEZPD31Y9XVj6
+            type: string
+        - name: autoUpdate
+          description: Mark the check as running
+          in: query
+          required: false
           schema:
-            - type: boolean
-              required: false
-              description: Mark the check as running
-        teamId:
+            description: Mark the check as running
+            type: boolean
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: rerequestCheck
-        lang: go
-        source: "package main\n\nimport(\n\t\"os\"\n\t\"github.com/vercel/vercel\"\n\t\"context\"\n\t\"log\"\n)\n\nfunc main() {\n    s := vercel.New(\n        vercel.WithSecurity(os.Getenv(\"VERCEL_BEARER_TOKEN\")),\n    )\n\n    ctx := context.Background()\n    res, err := s.Checks.RerequestCheck(ctx, \"dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6\", \"check_2qn7PZrx89yxY34vEZPD31Y9XVj6\", nil, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Object != nil {\n        // handle response\n    }\n}"
-      - label: rerequestCheck
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.checks.rerequestCheck({
-              deploymentId: "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6",
-              checkId: "check_2qn7PZrx89yxY34vEZPD31Y9XVj6",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties: {}
-        examples:
-          example:
-            value: {}
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: |-
-              The deployment was not found
-              Check was not found
-        examples: {}
-        description: |-
-          The deployment was not found
-          Check was not found
-  deprecated: false
-  type: path
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: |-
+            The deployment was not found
+            Check was not found
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

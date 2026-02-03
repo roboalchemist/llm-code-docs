@@ -1,4 +1,8 @@
-# Source: https://docs.perplexity.ai/guides/mcp-server.md
+# Source: https://docs.perplexity.ai/docs/getting-started/integrations/mcp-server.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Perplexity MCP Server
 
@@ -28,11 +32,11 @@ Get started instantly with these one-click installers:
   >
     <path
       d="M457.43 125.94 244.42 2.96a22.127 22.127 0 0 0-22.12 0L9.3 125.94C3.55 129.26 0 135.4 0 142.05v247.99c0 6.65 3.55 12.79 9.3 16.11l213.01 122.98a22.127 22.127 0 0 0 22.12 0l213.01-122.98c5.75-3.32 9.3-9.46 9.3-16.11V142.05c0-6.65-3.55-12.79-9.3-16.11h-.01Zm-13.38 26.05L238.42 508.15c-1.39 2.4-5.06 1.42-5.06-1.36V273.58c0-4.66-2.49-8.97-6.53-11.31L24.87 145.67c-2.4-1.39-1.42-5.06 1.36-5.06h411.26c5.84 0 9.49 6.33 6.57 11.39h-.01Z"
-      style={{ fill: "#77774d" }}
+      style={{ fill: "#22808C" }}
     />
   </svg>
 }
-    href="https://cursor.com/en/install-mcp?name=perplexity&config=eyJ0eXBlIjoic3RkaW8iLCJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIkBwZXJwbGV4aXR5LWFpL21jcC1zZXJ2ZXIiXX0="
+    href="https://cursor.com/en/install-mcp?name=perplexity&config=eyJ0eXBlIjoic3RkaW8iLCJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIkBwZXJwbGV4aXR5LWFpL21jcC1zZXJ2ZXIiXSwiZW52Ijp7IlBFUlBMRVhJVFlfQVBJX0tFWSI6IiJ9fQ=="
   >
     Automatically configure the Perplexity MCP server in Cursor with one click.
   </Card>
@@ -47,11 +51,11 @@ Get started instantly with these one-click installers:
     <path
       d="M70.912 99.572a6.193 6.193 0 0 0 4.96-.191l20.588-9.958a6.285 6.285 0 0 0 3.54-5.661V16.239a6.286 6.286 0 0 0-3.54-5.662L75.873.62a6.2 6.2 0 0 0-7.104 1.216L29.355 37.98l-17.168-13.1a4.146 4.146 0 0 0-5.318.238l-5.506 5.035a4.205 4.205 0 0 0-.004 6.194L16.247 50 1.36 63.654a4.205 4.205 0 0 0 .004 6.194l5.506 5.034a4.145 4.145 0 0 0 5.318.238l17.168-13.1L68.77 98.166a6.205 6.205 0 0 0 2.143 1.407Zm4.103-72.39L45.11 50 75.015 72.82V27.18Z"
       fillRule="evenodd"
-      style={{ fill: "#77774d" }}
+      style={{ fill: "#22808C" }}
     />
   </svg>
 }
-    href="https://vscode.dev/redirect/mcp/install?name=perplexity&config=%7B%22type%22%3A%22stdio%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40perplexity-ai%2Fmcp-server%22%5D%7D"
+    href="https://vscode.dev/redirect/mcp/install?name=perplexity&config=%7B%22type%22%3A%22stdio%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40perplexity-ai%2Fmcp-server%22%5D%2C%22env%22%3A%7B%22PERPLEXITY_API_KEY%22%3A%22%22%7D%7D"
   >
     Automatically configure the Perplexity MCP server in VS Code with one click.
   </Card>
@@ -71,22 +75,26 @@ Get started instantly with these one-click installers:
 
     <Tabs>
       <Tab title="Claude Code">
-        **Option 1: Plugin Install (Recommended)**
+        **Option 1: CLI Command (Recommended)**
 
         The easiest way to get started:
 
         ```bash  theme={null}
-        # Add the Perplexity marketplace
-        /plugin marketplace add perplexityai/modelcontextprotocol
-
-        # Install the plugin
-        /plugin install perplexity
-
-        # Set your API key
-        export PERPLEXITY_API_KEY="your_key_here"
+        claude mcp add perplexity --env PERPLEXITY_API_KEY="your_key_here" -- npx -y @perplexity-ai/mcp-server
         ```
 
-        **Option 2: Manual Configuration**
+        **Option 2: Plugin Install**
+
+        Install via plugin:
+
+        ```bash  theme={null}
+        export PERPLEXITY_API_KEY="your_key_here"
+        claude
+        # Then run: /plugin marketplace add perplexityai/modelcontextprotocol
+        # Then run: /plugin install perplexity
+        ```
+
+        **Option 3: Manual Configuration**
 
         Add to your `claude.json`:
 
@@ -107,7 +115,9 @@ Get started instantly with these one-click installers:
       </Tab>
 
       <Tab title="Cursor">
-        Add to your `mcp.json`:
+        We recommend using the one-click install above for setting up the MCP server in Cursor.
+
+        If you prefer to configure it manually, add the following to your `mcp.json`:
 
         ```json  theme={null}
         {
@@ -124,32 +134,57 @@ Get started instantly with these one-click installers:
         ```
       </Tab>
 
-      <Tab title="Claude Desktop">
-        Add to your `claude_desktop_config.json`:
-
-        ```json  theme={null}
-        {
-          "mcpServers": {
-            "perplexity": {
-              "command": "npx",
-              "args": ["-y", "@perplexity-ai/mcp-server"],
-              "env": {
-                "PERPLEXITY_API_KEY": "your_key_here"
-              }
-            }
-          }
-        }
+      <Tab title="Codex">
+        ```bash  theme={null}
+        codex mcp add perplexity --env PERPLEXITY_API_KEY="your_key_here" -- npx -y @perplexity-ai/mcp-server
         ```
       </Tab>
 
       <Tab title="Other Clients">
-        For any MCP-compatible client:
+        Most MCP-compatible clients (including Claude Desktop, VS Code, and Windsurf) use the `mcpServers` format. Configuration file locations:
 
-        ```bash  theme={null}
-        npx @perplexity-ai/mcp-server
+        | Client             | Config File                             |
+        | ------------------ | --------------------------------------- |
+        | Cursor             | `~/.cursor/mcp.json`                    |
+        | VS Code            | `.vscode/mcp.json`                      |
+        | Claude Desktop     | `claude_desktop_config.json`            |
+        | Windsurf           | `~/.codeium/windsurf/mcp_config.json`   |
+        | Google Antigravity | `~/.gemini/antigravity/mcp_config.json` |
+
+        **Standard `mcpServers` format:**
+
+        ```json  theme={null}
+        {
+          "mcpServers": {
+            "perplexity": {
+              "command": "npx",
+              "args": ["-y", "@perplexity-ai/mcp-server"],
+              "env": {
+                "PERPLEXITY_API_KEY": "your_key_here"
+              }
+            }
+          }
+        }
         ```
 
-        Set environment variable: `PERPLEXITY_API_KEY=your_key_here`
+        **VS Code uses a slightly different format:**
+
+        ```json  theme={null}
+        {
+          "servers": {
+            "perplexity": {
+              "type": "stdio",
+              "command": "npx",
+              "args": ["-y", "@perplexity-ai/mcp-server"],
+              "env": {
+                "PERPLEXITY_API_KEY": "your_key_here"
+              }
+            }
+          }
+        }
+        ```
+
+        If your client doesn't work with these formats, check its documentation for the correct wrapper format.
       </Tab>
     </Tabs>
   </Step>

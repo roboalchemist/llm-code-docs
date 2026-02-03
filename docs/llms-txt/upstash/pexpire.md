@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/generic/pexpire.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pexpire.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/pexpire.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pexpire.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/pexpire.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pexpire.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/pexpire.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pexpire.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/pexpire.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pexpire.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # PEXPIRE
 
@@ -26,22 +12,44 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to expire.
 </ParamField>
 
-<ParamField body="milliseconds" type="integer">
-  The number of milliseconds until the key expires.
+<ParamField body="milliseconds | datetime.timedelta" type="int" required>
+  The timeout in milliseconds as int or datetime.timedelta
+</ParamField>
+
+<ParamField body="nx" type="bool">
+  Set expiry only when the key has no expiry
+</ParamField>
+
+<ParamField body="xx" type="bool">
+  Set expiry only when the key has an existing expiry
+</ParamField>
+
+<ParamField body="gt" type="bool">
+  Set expiry only when the new expiry is greater than current one
+</ParamField>
+
+<ParamField body="lt" type="bool">
+  Set expiry only when the new expiry is less than current one
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
-  `1` if the timeout was applied, `0` if `key` does not exist.
+<ResponseField type="bool">
+  `True` if the timeout was set
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-   await redis.pexpire(key, 60_000); // 1 minute
+  ```py Example theme={"system"}
+  # With milliseconds
+  redis.set("mykey", "Hello")
+  redis.expire("mykey", 500)
+
+  # With a timedelta
+  redis.set("mykey", "Hello")
+  redis.expire("mykey", datetime.timedelta(milliseconds=500))
   ```
 </RequestExample>

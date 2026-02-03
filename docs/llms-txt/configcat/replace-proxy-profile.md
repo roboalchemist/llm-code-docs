@@ -2,10 +2,7 @@
 
 # Replace Proxy Profile
 
-```
-PUT 
-/v1/proxy-profiles/:proxyProfileId
-```
+Copy page
 
 This endpoint replaces a Proxy Profile identified by the `proxyProfileId` parameter.
 

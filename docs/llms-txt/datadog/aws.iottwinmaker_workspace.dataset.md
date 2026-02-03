@@ -4,8 +4,6 @@
 title: IoT TwinMaker Workspace
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > IoT TwinMaker Workspace
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.iottwinmaker_workspace.dataset/index.html
 ---
 
 # IoT TwinMaker Workspace
@@ -28,6 +26,6 @@ aws.iottwinmaker_workspace
 | linked_services    | core | array<string> | A list of services that are linked to the workspace.                               |
 | role               | core | string        | The ARN of the execution role associated with the workspace.                       |
 | s3_location        | core | string        | The ARN of the S3 bucket where resources associated with the workspace are stored. |
-| tags               | core | hstore        |
+| tags               | core | hstore_csv    |
 | update_date_time   | core | timestamp     | The date and time when the workspace was last updated.                             |
 | workspace_id       | core | string        | The ID of the workspace.                                                           |

@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/how-do-i-maximize-deliverability-for-supabase-auth-emails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How do I maximize deliverability for Supabase Auth emails?
 
 > Everything you should do before you start sending authentication emails with Resend and Supabase.

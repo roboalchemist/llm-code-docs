@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/observability/export-metrics/grafana.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Export to Grafana Cloud
 
 > Export metrics from Baseten to Grafana Cloud

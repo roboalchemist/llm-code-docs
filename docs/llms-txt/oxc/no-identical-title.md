@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/no-identical-title.md
 ---
-# jest/no-identical-title&#x20;
 
 ### What it does
 

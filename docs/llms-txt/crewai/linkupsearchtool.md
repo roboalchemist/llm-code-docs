@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/search-research/linkupsearchtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Linkup Search Tool
 
 > The `LinkupSearchTool` enables querying the Linkup API for contextual information.

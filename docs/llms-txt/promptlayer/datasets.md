@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/evaluations/datasets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Datasets
 
 Datasets are often used for evaluations, but they can also be exported. Each dataset can be assigned a name for easy search later on.
@@ -55,8 +59,3 @@ Michael Johnson,40,Chicago
 ```
 
 In this example, the prompt template may contain input variables like `{name}`, `{age}`, and `{location}`. Each row in the CSV file provides the corresponding values for these variables.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

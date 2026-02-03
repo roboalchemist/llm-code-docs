@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/guides/telephony/twilio-daily-sip.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Daily + Twilio SIP
 
 > Complete guide to using Daily's WebRTC transport with Twilio's SIP services for dial-in and dial-out
@@ -101,7 +105,6 @@ async def run_bot(room_url: str, token: str, call_sid: str, sip_endpoint: str):
             audio_in_enabled=True,
             audio_out_enabled=True,
             video_out_enabled=False,
-            vad_analyzer=SileroVADAnalyzer(),
             transcription_enabled=True,
         )
     )
@@ -214,7 +217,6 @@ async def run_bot(room_url: str, token: str, target_number: str, sip_uri: str):
             audio_in_enabled=True,
             audio_out_enabled=True,
             video_out_enabled=False,
-            vad_analyzer=SileroVADAnalyzer(),
             transcription_enabled=True,
         )
     )
@@ -328,8 +330,3 @@ For self-hosted production deployment, ensure your servers are:
 * Explore the [complete examples](https://github.com/pipecat-ai/pipecat-examples/tree/main/phone-chatbot) for full implementations
 * Learn about [Daily PSTN integration](./daily-pstn) for direct phone number provisioning
 * Check out [Twilio WebSocket integration](./twilio-websockets) for simpler telephony workflows
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

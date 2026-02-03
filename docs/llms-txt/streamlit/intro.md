@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/custom-components/intro
+
 # Intro to custom components
 
 The first step in developing a Streamlit Component is deciding whether to create a static component (i.e. rendered once, controlled by Python) or to create a bi-directional component that can communicate from Python to JavaScript and back.

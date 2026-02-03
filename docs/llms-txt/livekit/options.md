@@ -1,10 +1,10 @@
 # Source: https://docs.livekit.io/agents/server/options.md
 
-LiveKit docs › Agent server › Server options
+LiveKit docs › Agent Server › Server options
 
 ---
 
-# Agent server options
+# Server options
 
 > Learn about the options available for creating an agent server.
 
@@ -14,7 +14,7 @@ The constructor for `AgentServer` includes some parameters for configuring the a
 
 > ℹ️ **Python and Node.js differences**
 > 
-> In Python, the `@sever.rtc_session()` decorator is used to define some options for the agent server. In Node.js, these options are set up using the `ServerOptions` class.
+> In Python, the `@server.rtc_session()` decorator is used to define some options for the agent server. In Node.js, these options are set up using the `ServerOptions` class.
 
 > 💡 **Use the quickstart first**
 > 
@@ -40,6 +40,17 @@ server = AgentServer(
 cli.run_app(server)
 
 ```
+
+While `AgentServer` supports the `setup_fnc` and `load_fnc` properties, LiveKit recommends assigning them directly on the `AgentServer` instance:
+
+```python
+server.setup_fnc = my_prewarm_function
+
+```
+
+Using setters avoids having to define initialization logic as part of the constructor and makes the server configuration easier to read and compose.
+
+See the [Prewarm function](#prewarm) section for a complete example.
 
 ---
 
@@ -74,10 +85,10 @@ The entrypoint function is the main function called for each new job, and is the
 
 **Python**:
 
-In Python, the entrypoint function is defined using the `@sever.rtc_session()` decorator on the agent function:
+In Python, the entrypoint function is defined using the `@server.rtc_session()` decorator on the agent function:
 
 ```python
-@sever.rtc_session()
+@server.rtc_session()
 async def my_agent(ctx: JobContext):
     # connect to the room
 
@@ -159,7 +170,7 @@ const server = new AgentServer({
 
 > ℹ️ **Agent display name**
 > 
-> The `name` parameter is the display name of the agent, used to identify the agent in the room. It defaults to the agent's identity. This parameter is _not_ the same as the `agent_name` parameter for the `@sever.realtime_session()` decorator, which is used to [explicitly dispatch](https://docs.livekit.io/agents/server/agent-dispatch.md) the agent to a room.
+> The `name` parameter is the display name of the agent, used to identify the agent in the room. It defaults to the agent's identity. This parameter is _not_ the same as the `agent_name` parameter for the `@server.rtc_session()` decorator, which is used to [explicitly dispatch](https://docs.livekit.io/agents/server/agent-dispatch.md) the agent to a room.
 
 ### Prewarm function
 
@@ -209,7 +220,7 @@ export default defineAgent({
 
 ### Agent server load
 
-In [custom deployments](https://docs.livekit.io/agents/ops/deployment/custom.md), you can configure the conditions under which the agent server stops accepting new jobs through the `load_fnc` and `load_threshold` parameters.
+In [custom deployments](https://docs.livekit.io/deploy/custom/deployments.md), you can configure the conditions under which the agent server stops accepting new jobs through the `load_fnc` and `load_threshold` parameters.
 
 - `load_fnc`: A function that returns the current load of the agent server as a float between 0 and 1.0.
 - `load_threshold`: The maximum load value at which the agent server still accepts new jobs.
@@ -264,14 +275,14 @@ The `drain_timeout` parameter sets the maximum time to wait for active jobs to f
 
 ### Permissions
 
-By default, agents can both publish to and subscribe from the other participants in the same room. However, you can customize these permissions by setting the `permissions` parameter. To see the full list of parameters, see the [AgentServerPermissions reference](https://docs.livekit.io/reference/python/v1/livekit/agents/index.html.md#livekit.agents.AgentServerPermissions).
+By default, agents can both publish to and subscribe from the other participants in the same room. However, you can customize these permissions by setting the `permissions` parameter. To see the full list of parameters, see the [WorkerPermissions reference](https://docs.livekit.io/reference/python/v1/livekit/agents/index.html.md#livekit.agents.WorkerPermissions).
 
 **Python**:
 
 ```python
 server = AgentServer(
     ...
-    permissions=AgentServerPermissions(
+    permissions=WorkerPermissions(
         can_publish=True,
         can_subscribe=True,
         can_publish_data=True,
@@ -289,7 +300,7 @@ server = AgentServer(
 
 ```ts
 const server = new AgentServer({
-  permissions: new AgentServerPermissions({
+  permissions: new WorkerPermissions({
     canPublish: true,
     canSubscribe: true,
     // when set to true, the agent won't be visible to others in the room.
@@ -306,7 +317,7 @@ You can choose to start a new instance of the agent for each room or for each pu
 
 **Python**:
 
-In Python, the agent server type can be set using the `type` parameter for the `@sever.rtc_session()` decorator:
+In Python, the agent server type can be set using the `type` parameter for the `@server.rtc_session()` decorator:
 
 ```python
 @server.rtc_session(type=ServerType.ROOM)
@@ -394,7 +405,7 @@ The following log levels are available:
 
 ---
 
-This document was rendered at 2025-11-18T23:55:17.553Z.
+This document was rendered at 2026-02-03T03:24:58.366Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/server/options.md](https://docs.livekit.io/agents/server/options.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

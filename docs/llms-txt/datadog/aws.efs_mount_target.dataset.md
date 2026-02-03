@@ -4,8 +4,6 @@
 title: EFS Mount Target
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EFS Mount Target
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.efs_mount_target.dataset/index.html
 ---
 
 # EFS Mount Target
@@ -33,5 +31,5 @@ aws.efs_mount_target
 | owner_id               | core | string        | Amazon Web Services account ID that owns the resource.                                                                                                                                                                                                                                                                                      |
 | security_groups        | core | array<string> | An array of security groups.                                                                                                                                                                                                                                                                                                                |
 | subnet_id              | core | string        | The ID of the mount target's subnet.                                                                                                                                                                                                                                                                                                        |
-| tags                   | core | hstore        |
+| tags                   | core | hstore_csv    |
 | vpc_id                 | core | string        | The virtual private cloud (VPC) ID that the mount target is configured in.                                                                                                                                                                                                                                                                  |

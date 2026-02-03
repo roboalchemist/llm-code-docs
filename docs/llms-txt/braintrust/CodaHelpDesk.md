@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/CodaHelpDesk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Coda's Help Desk with and without RAG
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/CodaHelpDesk/CodaHelpDesk.ipynb) by [Austin Moehle](https://www.linkedin.com/in/austinmxx/), [Kenny Wong](https://twitter.com/siuheihk) on 2023-12-21</div>
@@ -116,7 +120,7 @@ Section 3:
 
 ## Use the Braintrust AI Proxy
 
-Let's initialize the OpenAI client using the [Braintrust proxy](/guides/proxy). The Braintrust AI Proxy provides a single API to access OpenAI and other models. Because the proxy automatically caches and reuses results (when `temperature=0` or the `seed` parameter is set), we can re-evaluate prompts many times without incurring additional API costs.
+Let's initialize the OpenAI client using the [Braintrust proxy](/deploy/ai-proxy). The Braintrust AI Proxy provides a single API to access OpenAI and other models. Because the proxy automatically caches and reuses results (when `temperature=0` or the `seed` parameter is set), we can re-evaluate prompts many times without incurring additional API costs.
 
 ```python  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
 client = braintrust.wrap_openai(
@@ -455,8 +459,3 @@ Try adjusting the constants set at the beginning of this tutorial, such as `NUM_
 * Learn about [using functions to build a RAG agent](/cookbook/recipes/ToolRAG).
 * Compare your [evals across different models](/cookbook/recipes/ModelComparison).
 * If RAG is just one part of your agent, learn how to [evaluate a prompt chaining agent](/cookbook/recipes/PromptChaining).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

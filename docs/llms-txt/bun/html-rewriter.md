@@ -86,7 +86,7 @@ rewriter.transform("<div>content</div>");
 rewriter.transform(new TextEncoder().encode("<div>content</div>").buffer);
 
 // From Blob
-rewriter.transform(new Blob(["<div>content</div>"]));
+rewriter.transform(new Blob(["<div>content</div>"]);
 
 // From File
 rewriter.transform(Bun.file("index.html"));
@@ -206,7 +206,7 @@ rewriter.on("div", {
     // Properties
     console.log(el.tagName); // Lowercase tag name
     console.log(el.namespaceURI); // Element's namespace URI
-    console.log(el.selfClosing); // Whether element is self-closing (e.g. <div />)
+    console.log(el.selfClosing); // Whether element is self-closing (e.g. <div/)
     console.log(el.canHaveContent); // Whether element can contain content (false for void elements like <br>)
     console.log(el.removed); // Whether element was removed
 

@@ -1,31 +1,43 @@
 # Source: https://developers.openai.com/codex/config-basic.md
 
-# Basic Configuration
+# Config basics
 
-Codex reads local settings from `~/.codex/config.toml`. Use this file to change defaults (like the model), set approval and sandbox behavior, and configure MCP servers.
+Codex reads configuration details from more than one location. Your personal defaults live in `~/.codex/config.toml`, and you can add project overrides with `.codex/config.toml` files. For security, Codex loads project config files only when you trust the project.
 
 ## Codex configuration file
 
-Codex stores its configuration at `~/.codex/config.toml`.
+Codex stores user-level configuration at `~/.codex/config.toml`. To scope settings to a specific project or subfolder, add a `.codex/config.toml` file in your repo.
 
 To open the configuration file from the Codex IDE extension, select the gear icon in the top-right corner, then select **Codex Settings > Open config.toml**.
 
-The CLI and IDE extension share the same `config.toml` file. You can use it to:
+The CLI and IDE extension share the same configuration layers. You can use them to:
 
 - Set the default model and provider.
-- Configure [approval policies and sandbox settings](/codex/security).
-- Configure [MCP servers](/codex/mcp).
+- Configure [approval policies and sandbox settings](https://developers.openai.com/codex/security).
+- Configure [MCP servers](https://developers.openai.com/codex/mcp).
 
 ## Configuration precedence
 
-Codex resolves values in this order:
+Codex resolves values in this order (highest precedence first):
 
-1. CLI flags (for example, `--model`)
-2. [Profile](/codex/config-advanced#profiles) values (from `--profile <name>`)
-3. Root-level values in `config.toml`
-4. Built-in defaults
+1. CLI flags and `--config` overrides
+2. [Profile](https://developers.openai.com/codex/config-advanced#profiles) values (from `--profile <name>`)
+3. Project config files: `.codex/config.toml`, ordered from the project root down to your current working directory (closest wins; trusted projects only)
+4. User config: `~/.codex/config.toml`
+5. System config (if present): `/etc/codex/config.toml` on Unix
+6. Built-in defaults
 
 Use that precedence to set shared defaults at the top level and keep profiles focused on the values that differ.
+
+If you mark a project as untrusted, Codex skips project-scoped `.codex/` layers (including `.codex/config.toml`) and falls back to user, system, and built-in defaults.
+
+For one-off overrides via `-c`/`--config` (including TOML quoting rules), see [Advanced Config](https://developers.openai.com/codex/config-advanced#one-off-overrides-from-the-cli).
+
+<DocsTip>
+  On managed machines, your organization may also enforce constraints via
+  `requirements.toml` (for example, disallowing `approval_policy = "never"` or
+  `sandbox_mode = "danger-full-access"`). See [Security](https://developers.openai.com/codex/security).
+</DocsTip>
 
 ## Common configuration options
 
@@ -55,6 +67,20 @@ Adjust how much filesystem and network access Codex has while executing commands
 sandbox_mode = "workspace-write"
 ```
 
+#### Web search mode
+
+Codex enables web search by default for local tasks and serves results from a web search cache. The cache is an OpenAI-maintained index of web results, so cached mode returns pre-indexed results instead of fetching live pages. This reduces exposure to prompt injection from arbitrary live content, but you should still treat web results as untrusted. If you are using `--yolo` or another [full access sandbox setting](https://developers.openai.com/codex/security), web search defaults to live results. Choose a mode with `web_search`:
+
+- `"cached"` (default) serves results from the web search cache.
+- `"live"` fetches the most recent data from the web (same as `--search`).
+- `"disabled"` turns off the web search tool.
+
+```toml
+web_search = "cached"  # default; serves results from the web search cache
+# web_search = "live"  # fetch the most recent data from the web (same as --search)
+# web_search = "disabled"
+```
+
 #### Reasoning effort
 
 Tune how much reasoning effort the model applies when supported.
@@ -65,7 +91,7 @@ model_reasoning_effort = "high"
 
 #### Command environment
 
-Restrict or expand which environment variables are forwarded to spawned commands.
+Control which environment variables Codex forwards to spawned commands.
 
 ```toml
 [shell_environment_policy]
@@ -74,45 +100,43 @@ include_only = ["PATH", "HOME"]
 
 ## Feature flags
 
-Optional and experimental capabilities are toggled via the `[features]` table in `config.toml`.
+Use the `[features]` table in `config.toml` to toggle optional and experimental capabilities.
 
 ```toml
 [features]
 shell_snapshot = true           # Speed up repeated commands
-web_search_request = true       # Allow the model to request web searches
 ```
 
 ### Supported features
 
-| Key                            | Default | Maturity     | Description                                                     |
-| ------------------------------ | :-----: | ------------ | --------------------------------------------------------------- |
-| `apply_patch_freeform`         |  false  | Experimental | Include the freeform `apply_patch` tool                         |
-| `elevated_windows_sandbox`     |  false  | Experimental | Use the elevated Windows sandbox pipeline                       |
-| `exec_policy`                  |  true   | Experimental | Enforce exec policy checks for `shell`/`unified_exec`           |
-| `experimental_windows_sandbox` |  false  | Experimental | Use the Windows restricted-token sandbox                        |
-| `parallel`                     |  true   | Stable       | Allow models that support it to call multiple tools in parallel |
-| `remote_compaction`            |  true   | Experimental | Enable remote compaction (ChatGPT auth only)                    |
-| `remote_models`                |  false  | Experimental | Refresh remote model list before showing readiness              |
-| `shell_snapshot`               |  false  | Beta         | Snapshot your shell environment to speed up repeated commands   |
-| `shell_tool`                   |  true   | Stable       | Enable the default `shell` tool                                 |
-| `skills`                       |  true   | Experimental | Enable discovery and injection of skills                        |
-| `unified_exec`                 |  false  | Beta         | Use the unified PTY-backed exec tool                            |
-| `undo`                         |  true   | Stable       | Enable undo via per-turn git ghost snapshots                    |
-| `view_image_tool`              |  true   | Stable       | Include the `view_image` tool                                   |
-| `warnings`                     |  true   | Stable       | Send tool-usage warnings to the model                           |
-| `web_search_request`           |  false  | Stable       | Allow the model to issue web searches                           |
+| Key                            | Default | Maturity     | Description                                                   |
+| ------------------------------ | :-----: | ------------ | ------------------------------------------------------------- |
+| `apply_patch_freeform`         |  false  | Experimental | Include the freeform `apply_patch` tool                       |
+| `elevated_windows_sandbox`     |  false  | Experimental | Use the elevated Windows sandbox pipeline                     |
+| `exec_policy`                  |  true   | Experimental | Enforce rules checks for `shell`/`unified_exec`               |
+| `experimental_windows_sandbox` |  false  | Experimental | Use the Windows restricted-token sandbox                      |
+| `remote_compaction`            |  true   | Experimental | Enable remote compaction (ChatGPT auth only)                  |
+| `remote_models`                |  false  | Experimental | Refresh remote model list before showing readiness            |
+| `request_rule`                 |  true   | Stable       | Enable Smart approvals (`prefix_rule` suggestions)            |
+| `shell_snapshot`               |  false  | Beta         | Snapshot your shell environment to speed up repeated commands |
+| `shell_tool`                   |  true   | Stable       | Enable the default `shell` tool                               |
+| `unified_exec`                 |  false  | Beta         | Use the unified PTY-backed exec tool                          |
+| `undo`                         |  true   | Stable       | Enable undo via per-turn git ghost snapshots                  |
+| `web_search`                   |  true   | Deprecated   | Legacy toggle; prefer the top-level `web_search` setting      |
+| `web_search_cached`            |  true   | Deprecated   | Legacy toggle that maps to `web_search = "cached"` when unset |
+| `web_search_request`           |  true   | Deprecated   | Legacy toggle that maps to `web_search = "live"` when unset   |
 
 <DocsTip>
   The Maturity column uses feature maturity labels such as Experimental, Beta,
-  and Stable. See [Feature Maturity](/codex/feature-maturity) for how to
+  and Stable. See [Feature Maturity](https://developers.openai.com/codex/feature-maturity) for how to
   interpret these labels.
 </DocsTip>
 
 <DocsTip>Omit feature keys to keep their defaults.</DocsTip>
 
-### Enabling features quickly
+### Enabling features
 
 - In `config.toml`, add `feature_name = true` under `[features]`.
 - From the CLI, run `codex --enable feature_name`.
-- To enable multiple features, run `codex --enable feature_a --enable feature_b`.
+- To enable more than one feature, run `codex --enable feature_a --enable feature_b`.
 - To disable a feature, set the key to `false` in `config.toml`.

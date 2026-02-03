@@ -4,8 +4,6 @@
 title: Fraud Detector Label
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Fraud Detector Label
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.frauddetector_label.dataset/index.html
 ---
 
 # Fraud Detector Label
@@ -18,13 +16,13 @@ aws.frauddetector_label
 
 ## Fields
 
-| Title             | ID   | Type   | Data Type                                     | Description |
-| ----------------- | ---- | ------ | --------------------------------------------- | ----------- |
-| _key              | core | string |
-| account_id        | core | string |
-| arn               | core | string | The label ARN.                                |
-| created_time      | core | string | Timestamp of when the event type was created. |
-| description       | core | string | The label description.                        |
-| last_updated_time | core | string | Timestamp of when the label was last updated. |
-| name              | core | string | The label name.                               |
-| tags              | core | hstore |
+| Title             | ID   | Type       | Data Type                                     | Description |
+| ----------------- | ---- | ---------- | --------------------------------------------- | ----------- |
+| _key              | core | string     |
+| account_id        | core | string     |
+| arn               | core | string     | The label ARN.                                |
+| created_time      | core | string     | Timestamp of when the event type was created. |
+| description       | core | string     | The label description.                        |
+| last_updated_time | core | string     | Timestamp of when the label was last updated. |
+| name              | core | string     | The label name.                               |
+| tags              | core | hstore_csv |

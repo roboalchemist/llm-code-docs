@@ -4,6 +4,8 @@
 
 Before investing time into building an Actor, validate that people actually need it. This guide shows you how to assess market demand using free tools and research techniques.
 
+[YouTube video player](https://www.youtube.com/embed/00PA7a548W0)
+
 ## Assess your motivation
 
 Ask yourself: *Do you want to build this?*
@@ -20,9 +22,9 @@ Search for terms related to your Actor's function. If you're building a Reddit s
 
 Use free tools:
 
-* https://business.google.com/en-all/ad-tools/keyword-planner/
-* https://chromewebstore.google.com/detail/whatsmyserp/chbmoagfhnkggnhbjpoonnmhnpjdjdod Chrome extension
-* https://keywordseverywhere.com/ (paid)
+* [Google Keyword Planner](https://business.google.com/en-all/ad-tools/keyword-planner/)
+* [Whatsmyserp](https://chromewebstore.google.com/detail/whatsmyserp/chbmoagfhnkggnhbjpoonnmhnpjdjdod) Chrome extension
+* [Keywords Everywhere](https://keywordseverywhere.com/) (paid)
 
 High search volume or multiple related terms indicate solid demand. Low or zero searches mean a very niche market, which isn't bad, but you'll rely more on direct marketing.
 
@@ -66,7 +68,7 @@ site:reddit.com extracting data from LinkedIn
 ```
 
 
-You can also use tools like https://f5bot.com/ or https://gummysearch.com/.
+You can also use tools like [F5Bot](https://f5bot.com/) or [GummySearch](https://gummysearch.com/).
 
 ### Q\&A forums and Stack Overflow
 
@@ -96,7 +98,7 @@ site:x.com extracting data from LinkedIn
 
 ### Hacker News and niche forums
 
-Platforms like https://news.ycombinator.com/ often have discussions on tech pain points and new tool launches. Search for keywords like *scrape Airbnb data* to see if people have shown interest or if someone launched a similar tool and what the reaction was.
+Platforms like [Hacker News](https://news.ycombinator.com/) often have discussions on tech pain points and new tool launches. Search for keywords like *scrape Airbnb data* to see if people have shown interest or if someone launched a similar tool and what the reaction was.
 
 Use the `site:` parameter:
 
@@ -114,7 +116,7 @@ You can also engage in communities. Answer related questions, share knowledge, b
 
 ## Analyze GitHub repositories
 
-Star counts signal market demand. https://github.com/scrapy/scrapy has 58,000+, https://github.com/apify/crawlee has 20,000+, web scraping is validated. Use the https://www.star-history.com/ to check if stars are rising (growing momentum) or flat.
+Star counts signal market demand. [Scrapy](https://github.com/scrapy/scrapy) has 58,000+, [Crawlee](https://github.com/apify/crawlee) has 20,000+, web scraping is validated. Use the [Star History tool](https://www.star-history.com/) to check if stars are rising (growing momentum) or flat.
 
 Issue analysis reveals pain points your Actor could solve. High issue counts with active responses indicate healthy, used projects. Open issues with themes like *JavaScript rendering problems* or *CAPTCHA bypass needed* show gaps you can fill. Issues with 10+ upvotes mean multiple users face the same problem.
 

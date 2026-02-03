@@ -2,6 +2,8 @@
 
 # KeyValueClientUpdateOptions<!-- -->
 
+Options for updating a Key-Value Store.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -12,7 +14,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#generalAccess)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L353)optionalgeneralAccess
+### [**](#generalAccess)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L549)optionalgeneralAccess
 
 **generalAccess?
 
@@ -20,7 +22,7 @@
 
 : null | STORAGE\_GENERAL\_ACCESS
 
-### [**](#name)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L351)optionalname
+### [**](#name)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L547)optionalname
 
 **name?
 
@@ -28,7 +30,7 @@
 
 : null | string
 
-### [**](#title)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L352)optionaltitle
+### [**](#title)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L548)optionaltitle
 
 **title?
 

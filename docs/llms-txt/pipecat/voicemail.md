@@ -2,13 +2,9 @@
 
 # Source: https://docs.pipecat.ai/guides/fundamentals/voicemail.md
 
-# Source: https://docs.pipecat.ai/server/utilities/extensions/voicemail.md
-
-# Source: https://docs.pipecat.ai/guides/fundamentals/voicemail.md
-
-# Source: https://docs.pipecat.ai/server/utilities/extensions/voicemail.md
-
-# Source: https://docs.pipecat.ai/guides/fundamentals/voicemail.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Voicemail Detection
 
@@ -141,8 +137,3 @@ This delay ensures:
 * Voicemail greetings have finished playing
 * The response occurs during the recording period
 * Proper timing for different voicemail system behaviors
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

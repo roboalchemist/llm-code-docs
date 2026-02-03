@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/powered-by-zapier/embedding-zapier/pre-filled-zaps.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pre-filled Zaps
 
 > Prefills allow you to define the input fields on behalf of the user, simplying the experience of setting up their Zap.

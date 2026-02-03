@@ -40,16 +40,16 @@ To share your blocks, follow these steps:
    {% endtabs %}
 
 {% hint style="info" %}
-If you experience any issues with block sharing, please see our known issues for [troubleshooting steps](https://docs.warp.dev/support-and-billing/known-issues#online-features-dont-work).
+If you experience any issues with block sharing, please see our known issues for [troubleshooting steps](https://docs.warp.dev/support-and-community/troubleshooting-and-support/known-issues#online-features-dont-work).
 {% endhint %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-a4fd4b700beedbbec7864cd4c309b53ff75461cb%2Fblock-sharing-embed.gif?alt=media&#x26;token=02f237e8-061c-42ee-93ae-cb6b1da9fdc6" alt=""><figcaption><p>Block Sharing &#x26; Embed Demo</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-a4fd4b700beedbbec7864cd4c309b53ff75461cb%2Fblock-sharing-embed.gif?alt=media" alt=""><figcaption><p>Block Sharing &#x26; Embed Demo</p></figcaption></figure>
 
 ## Permalink
 
 Create and share a permalink to your blocks to collaborate with teammates. Here is the [web permalink](https://app.warp.dev/block/vzFATak939iqGWfNh7wsAP) of the block depicted below.
 
-![Shared Block](https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-221d43e8629ad806343376b4647d9d7188c8ca86%2Fshared_block.png?alt=media\&token=8f429a14-bdaf-4e2e-8e19-92525657252b)
+![Shared Block](https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-221d43e8629ad806343376b4647d9d7188c8ca86%2Fshared_block.png?alt=media)
 
 ## Embedded Blocks
 
@@ -63,7 +63,7 @@ overflow:hidden;" allow="clipboard-read; clipboard-write"></iframe>
 
 #### Embedded Block Example on Web Page
 
-![Embedded Block Example](https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-d9229fcb56841824629e982884ea5bb8aee0781f%2Fembed.png?alt=media\&token=15202210-1745-45a1-9b41-3a7244b0dfc4)
+![Embedded Block Example](https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-d9229fcb56841824629e982884ea5bb8aee0781f%2Fembed.png?alt=media)
 
 ## Managing Shared Blocks
 

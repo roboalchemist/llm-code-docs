@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/devops/terraform/resources/upstash_redis_database.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # upstash_redis_database
 
 > Create and manage Upstash Redis databases.

@@ -1,12 +1,14 @@
 # Source: https://modelcontextprotocol.io/specification/2025-11-25/server/tools.md
 
-# Source: https://modelcontextprotocol.io/specification/2025-06-18/server/tools.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://modelcontextprotocol.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Tools
 
 <div id="enable-section-numbers" />
 
-<Info>**Protocol Revision**: 2025-06-18</Info>
+<Info>**Protocol Revision**: 2025-11-25</Info>
 
 The Model Context Protocol (MCP) allows servers to expose tools that can be invoked by
 language models. Tools enable models to interact with external systems, such as querying
@@ -57,7 +59,7 @@ available tools changes.
 ### Listing Tools
 
 To discover available tools, clients send a `tools/list` request. This operation supports
-[pagination](/specification/2025-06-18/server/utilities/pagination).
+[pagination](/specification/2025-11-25/server/utilities/pagination).
 
 **Request:**
 
@@ -93,7 +95,14 @@ To discover available tools, clients send a `tools/list` request. This operation
             }
           },
           "required": ["location"]
-        }
+        },
+        "icons": [
+          {
+            "src": "https://example.com/weather-icon.png",
+            "mimeType": "image/png",
+            "sizes": ["48x48"]
+          }
+        ]
       }
     ],
     "nextCursor": "next-page-cursor"
@@ -186,14 +195,36 @@ A tool definition includes:
 * `name`: Unique identifier for the tool
 * `title`: Optional human-readable name of the tool for display purposes.
 * `description`: Human-readable description of functionality
+* `icons`: Optional array of icons for display in user interfaces
 * `inputSchema`: JSON Schema defining expected parameters
+  * Follows the [JSON Schema usage guidelines](/specification/2025-11-25/basic#json-schema-usage)
+  * Defaults to 2020-12 if no `$schema` field is present
+  * **MUST** be a valid JSON Schema object (not `null`)
+  * For tools with no parameters, use one of these valid approaches:
+    * `{ "type": "object", "additionalProperties": false }` - **Recommended**: explicitly accepts only empty objects
+    * `{ "type": "object" }` - accepts any object (including with properties)
 * `outputSchema`: Optional JSON Schema defining expected output structure
-* `annotations`: optional properties describing tool behavior
+  * Follows the [JSON Schema usage guidelines](/specification/2025-11-25/basic#json-schema-usage)
+  * Defaults to 2020-12 if no `$schema` field is present
+* `annotations`: Optional properties describing tool behavior
 
 <Warning>
-  For trust & safety and security, clients **MUST** consider
-  tool annotations to be untrusted unless they come from trusted servers.
+  For trust & safety and security, clients **MUST** consider tool annotations to
+  be untrusted unless they come from trusted servers.
 </Warning>
+
+#### Tool Names
+
+* Tool names **SHOULD** be between 1 and 128 characters in length (inclusive).
+* Tool names **SHOULD** be considered case-sensitive.
+* The following **SHOULD** be the only allowed characters: uppercase and lowercase ASCII letters (A-Z, a-z), digits
+  (0-9), underscore (\_), hyphen (-), and dot (.)
+* Tool names **SHOULD NOT** contain spaces, commas, or other special characters.
+* Tool names **SHOULD** be unique within a server.
+* Example valid tool names:
+  * getUser
+  * DATA\_EXPORT\_v2
+  * admin.tools.list
 
 ### Tool Result
 
@@ -204,7 +235,7 @@ Tool results may contain [**structured**](#structured-content) or **unstructured
 <Note>
   All content types (text, image, audio, resource links, and embedded resources)
   support optional
-  [annotations](/specification/2025-06-18/server/resources#annotations) that
+  [annotations](/specification/2025-11-25/server/resources#annotations) that
   provide metadata about audience, priority, and modification times. This is the
   same annotation format used by resources and prompts.
 </Note>
@@ -224,16 +255,13 @@ Tool results may contain [**structured**](#structured-content) or **unstructured
 {
   "type": "image",
   "data": "base64-encoded-data",
-  "mimeType": "image/png"
+  "mimeType": "image/png",
   "annotations": {
     "audience": ["user"],
     "priority": 0.9
   }
-
 }
 ```
-
-This example demonstrates the use of an optional Annotation.
 
 #### Audio Content
 
@@ -247,7 +275,7 @@ This example demonstrates the use of an optional Annotation.
 
 #### Resource Links
 
-A tool **MAY** return links to [Resources](/specification/2025-06-18/server/resources), to provide additional context
+A tool **MAY** return links to [Resources](/specification/2025-11-25/server/resources), to provide additional context
 or data. In this case, the tool will return a URI that can be subscribed to or fetched by the client:
 
 ```json  theme={null}
@@ -256,15 +284,11 @@ or data. In this case, the tool will return a URI that can be subscribed to or f
   "uri": "file:///project/src/main.rs",
   "name": "main.rs",
   "description": "Primary application entry point",
-  "mimeType": "text/x-rust",
-  "annotations": {
-    "audience": ["assistant"],
-    "priority": 0.9
-  }
+  "mimeType": "text/x-rust"
 }
 ```
 
-Resource links support the same [Resource annotations](/specification/2025-06-18/server/resources#annotations) as regular resources to help clients understand how to use them.
+Resource links support the same [Resource annotations](/specification/2025-11-25/server/resources#annotations) as regular resources to help clients understand how to use them.
 
 <Info>
   Resource links returned by tools are not guaranteed to appear in the results
@@ -273,7 +297,7 @@ Resource links support the same [Resource annotations](/specification/2025-06-18
 
 #### Embedded Resources
 
-[Resources](/specification/2025-06-18/server/resources) **MAY** be embedded to provide additional context
+[Resources](/specification/2025-11-25/server/resources) **MAY** be embedded to provide additional context
 or data using a suitable [URI scheme](./resources#common-uri-schemes). Servers that use embedded resources **SHOULD** implement the `resources` capability:
 
 ```json  theme={null}
@@ -292,7 +316,7 @@ or data using a suitable [URI scheme](./resources#common-uri-schemes). Servers t
 }
 ```
 
-Embedded resources support the same [Resource annotations](/specification/2025-06-18/server/resources#annotations) as regular resources to help clients understand how to use them.
+Embedded resources support the same [Resource annotations](/specification/2025-11-25/server/resources#annotations) as regular resources to help clients understand how to use them.
 
 #### Structured Content
 
@@ -375,19 +399,74 @@ Providing an output schema helps clients and LLMs understand and properly handle
 * Guiding clients and LLMs to properly parse and utilize the returned data
 * Supporting better documentation and developer experience
 
+### Schema Examples
+
+#### Tool with default 2020-12 schema:
+
+```json  theme={null}
+{
+  "name": "calculate_sum",
+  "description": "Add two numbers",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "a": { "type": "number" },
+      "b": { "type": "number" }
+    },
+    "required": ["a", "b"]
+  }
+}
+```
+
+#### Tool with explicit draft-07 schema:
+
+```json  theme={null}
+{
+  "name": "calculate_sum",
+  "description": "Add two numbers",
+  "inputSchema": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "a": { "type": "number" },
+      "b": { "type": "number" }
+    },
+    "required": ["a", "b"]
+  }
+}
+```
+
+#### Tool with no parameters:
+
+```json  theme={null}
+{
+  "name": "get_current_time",
+  "description": "Returns the current server time",
+  "inputSchema": {
+    "type": "object",
+    "additionalProperties": false
+  }
+}
+```
+
 ## Error Handling
 
 Tools use two error reporting mechanisms:
 
 1. **Protocol Errors**: Standard JSON-RPC errors for issues like:
    * Unknown tools
-   * Invalid arguments
+   * Malformed requests (requests that fail to satisfy [CallToolRequest schema](/specification/2025-11-25/schema#calltoolrequest))
    * Server errors
 
 2. **Tool Execution Errors**: Reported in tool results with `isError: true`:
    * API failures
-   * Invalid input data
+   * Input validation errors (e.g., date in wrong format, value out of range)
    * Business logic errors
+
+**Tool Execution Errors** contain actionable feedback that language models can use to self-correct and retry with adjusted parameters.
+**Protocol Errors** indicate issues with the request structure itself that models are less likely to be able to fix.
+Clients **SHOULD** provide tool execution errors to language models to enable self-correction.
+Clients **MAY** provide protocol errors to language models, though these are less likely to result in successful recovery.
 
 Example protocol error:
 
@@ -402,7 +481,7 @@ Example protocol error:
 }
 ```
 
-Example tool execution error:
+Example tool execution error (input validation):
 
 ```json  theme={null}
 {
@@ -412,7 +491,7 @@ Example tool execution error:
     "content": [
       {
         "type": "text",
-        "text": "Failed to fetch weather data: API rate limit exceeded"
+        "text": "Invalid departure date: must be in the future. Current date is 08/08/2025."
       }
     ],
     "isError": true

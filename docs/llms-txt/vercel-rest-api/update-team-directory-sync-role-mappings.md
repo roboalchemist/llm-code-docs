@@ -1,5 +1,9 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/teams/update-team-directory-sync-role-mappings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update Team Directory Sync Role Mappings
 
 > Update the Directory Sync role mappings for a Team. This endpoint allows updating the mapping between directory groups and team roles or access groups.
@@ -11,7 +15,7 @@
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/teams/{teamId}/dsync-roles
 openapi: 3.0.3
 info:
-  title: Vercel SDK
+  title: Vercel REST API & SDK
   description: >-
     The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
     type-safe Typescript SDK that allows you to access the resources and methods
@@ -94,6 +98,9 @@ paths:
                 properties:
                   ok:
                     type: boolean
+                    enum:
+                      - false
+                      - true
                 required:
                   - ok
                 type: object
@@ -113,7 +120,3 @@ components:
       scheme: bearer
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt

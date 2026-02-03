@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/openrouter-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OpenRouter
 
 [OpenRouter](https://openrouter.ai) provides access to a wide variety of cutting-edge models through a unified API, including models like DeepSeek, Claude, GPT-4, and many others that may not be available through standard providers.
@@ -103,8 +107,3 @@ print(f"Request ID: {response['request_id']}")
 * [Custom Providers](/features/custom-providers)
 * [Supported Providers](/features/supported-providers)
 * [OpenRouter Official Documentation](https://openrouter.ai/docs)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

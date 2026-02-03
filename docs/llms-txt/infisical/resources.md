@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/pam/getting-started/resources.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PAM Resource
 
 > Learn how to add and configure resources like databases and servers, and set up automated credential rotation.
@@ -44,8 +48,3 @@ Clicking **Create Resource** will trigger a connection test from the selected Ga
 Some resources, such as PostgreSQL, support automated credential rotation to enhance your security posture. This feature requires configuring a privileged "Rotation Account" on the resource.
 
 To learn more about how to configure this, please refer to the [Credential Rotation guide](/documentation/platform/pam/product-reference/credential-rotation).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://infisical.com/docs/llms.txt

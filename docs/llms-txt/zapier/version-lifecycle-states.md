@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/version-lifecycle-states.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Version lifecycle states
 
 > Learn about the different lifecycle states an integration version can go through, including private, promoted, available, legacy, deprecating, and deprecated versions.

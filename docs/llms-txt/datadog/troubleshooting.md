@@ -1,12 +1,48 @@
+# Source: https://docs.datadoghq.com/incident_response/case_management/troubleshooting.md
+
+# Source: https://docs.datadoghq.com/error_tracking/troubleshooting.md
+
+# Source: https://docs.datadoghq.com/security/code_security/troubleshooting.md
+
+# Source: https://docs.datadoghq.com/security/cloud_security_management/troubleshooting.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/python/troubleshooting.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/php/troubleshooting.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/nodejs/troubleshooting.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/java/troubleshooting.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/go/troubleshooting.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/ruby/troubleshooting.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/dotnet/troubleshooting.md
+
+# Source: https://docs.datadoghq.com/security/application_security/troubleshooting.md
+
+# Source: https://docs.datadoghq.com/database_monitoring/setup_sql_server/troubleshooting.md
+
+# Source: https://docs.datadoghq.com/database_monitoring/setup_postgres/troubleshooting.md
+
+# Source: https://docs.datadoghq.com/database_monitoring/setup_oracle/troubleshooting.md
+
+# Source: https://docs.datadoghq.com/database_monitoring/setup_mysql/troubleshooting.md
+
+# Source: https://docs.datadoghq.com/database_monitoring/setup_mongodb/troubleshooting.md
+
+# Source: https://docs.datadoghq.com/database_monitoring/troubleshooting.md
+
 # Source: https://docs.datadoghq.com/continuous_testing/troubleshooting.md
 
 # Source: https://docs.datadoghq.com/continuous_integration/troubleshooting.md
 
 # Source: https://docs.datadoghq.com/containers/troubleshooting.md
 
-# Source: https://docs.datadoghq.com/cloudprem/troubleshooting.md
+# Source: https://docs.datadoghq.com/coscreen/troubleshooting.md
 
-# Source: https://docs.datadoghq.com/incident_response/case_management/troubleshooting.md
+# Source: https://docs.datadoghq.com/cloudprem/operate/troubleshooting.md
 
 # Source: https://docs.datadoghq.com/agent/troubleshooting.md
 
@@ -22,7 +58,6 @@ description: >-
   Comprehensive troubleshooting guide for APM issues including trace retention,
   service configuration, and connection errors.
 breadcrumbs: Docs > APM > APM Troubleshooting
-source_url: https://docs.datadoghq.com/troubleshooting/index.html
 ---
 
 # APM Troubleshooting

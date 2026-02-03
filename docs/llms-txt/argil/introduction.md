@@ -4,33 +4,9 @@
 
 # Source: https://docs.argil.ai/pages/get-started/introduction.md
 
-# Source: https://docs.argil.ai/resources/introduction.md
-
-# Source: https://docs.argil.ai/pages/webhook-events/introduction.md
-
-# Source: https://docs.argil.ai/pages/get-started/introduction.md
-
-# Source: https://docs.argil.ai/resources/introduction.md
-
-# Source: https://docs.argil.ai/pages/webhook-events/introduction.md
-
-# Source: https://docs.argil.ai/pages/get-started/introduction.md
-
-# Source: https://docs.argil.ai/resources/introduction.md
-
-# Source: https://docs.argil.ai/pages/webhook-events/introduction.md
-
-# Source: https://docs.argil.ai/pages/get-started/introduction.md
-
-# Source: https://docs.argil.ai/resources/introduction.md
-
-# Source: https://docs.argil.ai/pages/webhook-events/introduction.md
-
-# Source: https://docs.argil.ai/pages/get-started/introduction.md
-
-# Source: https://docs.argil.ai/pages/webhook-events/introduction.md
-
-# Source: https://docs.argil.ai/pages/get-started/introduction.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Introduction
 

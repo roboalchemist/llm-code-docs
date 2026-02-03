@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/serializers/plivo.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PlivoFrameSerializer
 
 > Serializer for Plivo Audio Streaming WebSocket protocol
@@ -61,8 +65,3 @@ Before using PlivoFrameSerializer, you need:
 * **DTMF Handling**: Process touch-tone events from callers
 * **Auto Hang-up**: Terminate calls via Plivo's REST API
 * **μ-law Encoding**: Handle Plivo's standard audio encoding format
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

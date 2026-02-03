@@ -16,7 +16,7 @@ This command removes the currently deployed application and permanently deletes 
 
 When run interactively, the command will prompt for confirmation before removing the application. When run non-interactively, the command will refuse to remove the application unless the –force option is given.
 
-This command can only be used to remove non-production deployments, in Vespa Cloud. See [https://docs.vespa.ai/en/cloud/deleting-applications.html](https://docs.vespa.ai/en/cloud/deleting-applications.html) for how to remove production deployments.
+This command can only be used to remove non-production deployments, in Vespa Cloud. See [https://docs.vespa.ai/en/operations/deleting-applications.html](https://docs.vespa.ai/en/operations/deleting-applications.html) for how to remove production deployments.
 
 For other systems, destroy the application by removing the containers in use by the application. For example: https://github.com/vespa-engine/sample-apps/tree/master/examples/operations/multinode-HA#clean-up-after-testing
 
@@ -55,7 +55,7 @@ $ vespa destroy --force
 
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

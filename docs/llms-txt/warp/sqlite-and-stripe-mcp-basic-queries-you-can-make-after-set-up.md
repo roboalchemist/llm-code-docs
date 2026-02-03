@@ -8,8 +8,7 @@ This tutorial teaches you how to use **MCP servers** to connect Warp to **Stripe
 
 {% stepper %}
 {% step %}
-
-### Enabling MCP in Warp
+**Enabling MCP in Warp**
 
 Warp now supports configuring any MCP server directly from the terminal.
 
@@ -26,8 +25,7 @@ In this demo, two MCP servers were enabled:
   {% endstep %}
 
 {% step %}
-
-### Querying Stripe
+**Querying Stripe**
 
 Once configured, you can issue conversational prompts to the terminal — no manual API calls required.
 
@@ -53,8 +51,7 @@ Note: MCP’s confirmation prompts can be disabled once you trust a given server
 {% endstep %}
 
 {% step %}
-
-### Querying SQLite
+**Querying SQLite**
 
 The same workflow applies to databases.
 
@@ -84,8 +81,7 @@ Warp runs the updated SQL query and displays results inline.
 {% endstep %}
 
 {% step %}
-
-### Why This Matters
+**Why This Matters**
 
 This demo highlights how Warp’s AI and MCP support combine to make your terminal:
 

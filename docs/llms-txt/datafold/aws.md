@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/datafold-deployment/dedicated-cloud/aws.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Datafold VPC Deployment on AWS
 
 > Learn how to deploy Datafold in a Virtual Private Cloud (VPC) on AWS.

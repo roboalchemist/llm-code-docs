@@ -14,32 +14,32 @@ We publish reusable examples in [openai-apps-sdk-examples](https://github.com/op
 
 Renders dynamic collections with empty-state handling. [View the code](https://github.com/openai/openai-apps-sdk-examples/tree/main/src/pizzaz-list).
 
-![Screenshot of the Pizzaz list component](/images/apps-sdk/pizzaz-list.png)
+![Screenshot of the Pizzaz list component](https://developers.openai.com/images/apps-sdk/pizzaz-list.png)
 
 ### Map
 
 Plots geo data with marker clustering and detail panes. [View the code](https://github.com/openai/openai-apps-sdk-examples/tree/main/src/pizzaz).
 
-![Screenshot of the Pizzaz map component](/images/apps-sdk/pizzaz-map.png)
+![Screenshot of the Pizzaz map component](https://developers.openai.com/images/apps-sdk/pizzaz-map.png)
 
 ### Album
 
 Showcases media grids with fullscreen transitions. [View the code](https://github.com/openai/openai-apps-sdk-examples/tree/main/src/pizzaz-albums).
 
-![Screenshot of the Pizzaz album component](/images/apps-sdk/pizzaz-album.png)
+![Screenshot of the Pizzaz album component](https://developers.openai.com/images/apps-sdk/pizzaz-album.png)
 
 ### Carousel
 
 Highlights featured content with swipe gestures. [View the code](https://github.com/openai/openai-apps-sdk-examples/tree/main/src/pizzaz-carousel).
 
-![Screenshot of the Pizzaz carousel component](/images/apps-sdk/pizzaz-carousel.png)
+![Screenshot of the Pizzaz carousel component](https://developers.openai.com/images/apps-sdk/pizzaz-carousel.png)
 
 ### Shop
 
 Demonstrates product browsing with checkout affordances. [View the code](https://github.com/openai/openai-apps-sdk-examples/tree/main/src/pizzaz-shop).
 
-![Screenshot of the Pizzaz shop component in grid view](/images/apps-sdk/pizzaz-shop-view.png)
-![Screenshot of the Pizzaz shop component in modal view](/images/apps-sdk/pizzaz-shop-modal.png)
+![Screenshot of the Pizzaz shop component in grid view](https://developers.openai.com/images/apps-sdk/pizzaz-shop-view.png)
+![Screenshot of the Pizzaz shop component in modal view](https://developers.openai.com/images/apps-sdk/pizzaz-shop-modal.png)
 
 ## Clarify the user interaction
 
@@ -89,4 +89,4 @@ Inline experiences are hardest to debug without instrumentation. Decide in advan
 - Log tool-call IDs alongside component telemetry so you can trace issues end to end.
 - Provide fallbacks when the component fails to load (e.g., show the structured JSON and prompt the user to retry).
 
-Once these plans are in place you are ready to move on to the implementation details in [Build a ChatGPT UI](/apps-sdk/build/chatgpt-ui).
+Once these plans are in place you are ready to move on to the implementation details in [Build a ChatGPT UI](https://developers.openai.com/apps-sdk/build/chatgpt-ui).

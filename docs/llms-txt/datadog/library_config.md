@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Configure the Datadog Tracing
   Library
-source_url: https://docs.datadoghq.com/trace_collection/library_config/index.html
 ---
 
 # Configure the Datadog Tracing Library
@@ -17,6 +16,16 @@ This page describes configuration options that behave consistently across all la
 
 For configuration options specific to your programming language, choose your language from the options below:
 
+- [Java](java)
+- [Python](python)
+- [Ruby](ruby)
+- [Go](go)
+- [Node.js](nodejs)
+- [PHP](php)
+- [C++](cpp)
+- [.Net](dotnet-core)
+- [.Net](dotnet-framework)
+- [Rust](rust)
 
 To instrument an application written in a language that does not yet have official library support, see the list of [community tracing libraries](https://docs.datadoghq.com/developers/community/libraries/#apm-tracing-client-libraries).
 

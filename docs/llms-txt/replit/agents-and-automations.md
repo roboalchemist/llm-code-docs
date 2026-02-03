@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replitai/agents-and-automations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Agents & Automations
 
 > Build intelligent agents, chatbots, and automated workflows using Replit Agent. Create Slackbots, Telegram bots, scheduled automations, and more.

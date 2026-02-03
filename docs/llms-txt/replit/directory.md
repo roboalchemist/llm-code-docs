@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replitai/mcp/directory.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MCP directory
 
 > Browse featured Model Context Protocol servers that connect Replit Agent to your tools.
@@ -80,6 +84,17 @@ This is not an exhaustive list, you can [add any remote MCP server](/replitai/mc
     </tr>
 
     <tr>
+      <td><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://posthog.com&size=32" alt="" style={{display: 'inline', verticalAlign: 'middle', marginRight: '8px', width: '20px', height: '20px', background: '#fff', borderRadius: '4px', padding: '2px'}} />PostHog</td>
+      <td>Product analytics, session replay, and feature flags.</td>
+
+      <td>
+        <a href="https://replit.com/integrations?mcp=eyJkaXNwbGF5TmFtZSI6IlBvc3RIb2ciLCJiYXNlVXJsIjoiaHR0cHM6Ly9tY3AucG9zdGhvZy5jb20vbWNwIn0=" target="_blank">
+          <img src="https://replit.com/badge?caption=Add%20to%20Replit&variant=small" alt="Add to Replit" noZoom />
+        </a>
+      </td>
+    </tr>
+
+    <tr>
       <td><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://sentry.io&size=32" alt="" style={{display: 'inline', verticalAlign: 'middle', marginRight: '8px', width: '20px', height: '20px', background: '#fff', borderRadius: '4px', padding: '2px'}} />Sentry</td>
       <td>Error tracking and performance monitoring.</td>
 
@@ -102,8 +117,3 @@ This is not an exhaustive list, you can [add any remote MCP server](/replitai/mc
     </tr>
   </tbody>
 </table>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.replit.com/llms.txt

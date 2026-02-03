@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/smtp/django.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Django
 
 > Send transactional emails from your Django project using Loops' SMTP service.

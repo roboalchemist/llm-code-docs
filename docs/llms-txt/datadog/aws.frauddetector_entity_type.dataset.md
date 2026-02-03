@@ -4,8 +4,6 @@
 title: Fraud Detector Entity Type
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Fraud Detector Entity Type
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.frauddetector_entity_type.dataset/index.html
 ---
 
 # Fraud Detector Entity Type
@@ -18,13 +16,13 @@ aws.frauddetector_entity_type
 
 ## Fields
 
-| Title             | ID   | Type   | Data Type                                           | Description |
-| ----------------- | ---- | ------ | --------------------------------------------------- | ----------- |
-| _key              | core | string |
-| account_id        | core | string |
-| arn               | core | string | The entity type ARN.                                |
-| created_time      | core | string | Timestamp of when the entity type was created.      |
-| description       | core | string | The entity type description.                        |
-| last_updated_time | core | string | Timestamp of when the entity type was last updated. |
-| name              | core | string | The entity type name.                               |
-| tags              | core | hstore |
+| Title             | ID   | Type       | Data Type                                           | Description |
+| ----------------- | ---- | ---------- | --------------------------------------------------- | ----------- |
+| _key              | core | string     |
+| account_id        | core | string     |
+| arn               | core | string     | The entity type ARN.                                |
+| created_time      | core | string     | Timestamp of when the entity type was created.      |
+| description       | core | string     | The entity type description.                        |
+| last_updated_time | core | string     | Timestamp of when the entity type was last updated. |
+| name              | core | string     | The entity type name.                               |
+| tags              | core | hstore_csv |

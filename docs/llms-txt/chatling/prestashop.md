@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/web-widget/installation/prestashop.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PrestaShop
 
 > Learn how to add Chatling to your PrestaShop website

@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/features/invoke/serveMany.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using Serve Many
 
 Normally, workflows are created with `serve()`, which exposes each workflow as its own HTTP endpoint.
@@ -98,8 +102,7 @@ This way, you can invoke a workflow simply by passing the object to `context.inv
 
     const { workflowRunId } = await client.trigger({
       // 👇 URL of workflow one
-      url: "https://your-app/serve-many/workflow-one-route",
-      keepTriggerConfig: true,
+      url: "https://your-app/serve-many/workflow-one-route"
     })
     ```
 

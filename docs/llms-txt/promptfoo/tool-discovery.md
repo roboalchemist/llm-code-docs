@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/tool-discovery/
+
 # Tool Discovery
 
 The Tool Discovery plugin tests if an AI system reveals the list of tools, functions, or API calls that it has access to.

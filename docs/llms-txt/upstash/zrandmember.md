@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrandmember.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ZRANDMEMBER
 
 > Returns one or more random members from a sorted set, optionally with their scores.

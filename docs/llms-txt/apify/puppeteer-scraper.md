@@ -2,21 +2,21 @@
 
 #
 
-This scraping tutorial will go into the nitty gritty details of extracting data from **https://apify.com/store** using **Puppeteer Scraper** (https://apify.com/apify/puppeteer-scraper). If you arrived here from the https://docs.apify.com/academy/apify-scrapers/getting-started.md, tutorial, great! You are ready to continue where we left off. If you haven't seen the Getting started yet, check it out, it will help you learn about Apify and scraping in general and set you up for this tutorial, because this one builds on topics and code examples discussed there.
+This scraping tutorial will go into the nitty gritty details of extracting data from **[https://apify.com/store](https://apify.com/store)** using **Puppeteer Scraper** ([apify/puppeteer-scraper](https://apify.com/apify/puppeteer-scraper)). If you arrived here from the [Getting started with Apify scrapers](https://docs.apify.com/academy/apify-scrapers/getting-started.md), tutorial, great! You are ready to continue where we left off. If you haven't seen the Getting started yet, check it out, it will help you learn about Apify and scraping in general and set you up for this tutorial, because this one builds on topics and code examples discussed there.
 
 ## Getting to know our tools
 
-In the https://docs.apify.com/academy/apify-scrapers/getting-started tutorial, we've confirmed that the scraper works as expected, so now it's time to add more data to the results.
+In the [Getting started with Apify scrapers](https://docs.apify.com/academy/apify-scrapers/getting-started) tutorial, we've confirmed that the scraper works as expected, so now it's time to add more data to the results.
 
-To do that, we'll be using the https://github.com/puppeteer/puppeteer. Puppeteer is a browser automation library that allows you to control a browser using JavaScript. That is, simulate a real human sitting in front of a computer, using a mouse and a keyboard. It gives you almost unlimited possibilities, but you need to learn quite a lot before you'll be able to use all of its features. We'll walk you through some of the basics of Puppeteer, so that you can start using it for some of the most typical scraping tasks, but if you really want to master it, you'll need to visit its https://pptr.dev/ and really dive deep into its intricacies.
+To do that, we'll be using the [Puppeteer library](https://github.com/puppeteer/puppeteer). Puppeteer is a browser automation library that allows you to control a browser using JavaScript. That is, simulate a real human sitting in front of a computer, using a mouse and a keyboard. It gives you almost unlimited possibilities, but you need to learn quite a lot before you'll be able to use all of its features. We'll walk you through some of the basics of Puppeteer, so that you can start using it for some of the most typical scraping tasks, but if you really want to master it, you'll need to visit its [documentation](https://pptr.dev/) and really dive deep into its intricacies.
 
 > The purpose of Puppeteer Scraper is to remove some of the difficulty faced when using Puppeteer by wrapping it in a nice, manageable UI. It provides almost all of its features in a format that is much easier to grasp when first trying to scrape using Puppeteer.
 
 ### Web Scraper differences
 
-At first glance, it may seem like **Web Scraper** (https://apify.com/apify/web-scraper) and Puppeteer Scraper are almost the same. Well, they are. In fact, Web Scraper uses Puppeteer underneath. The difference is the amount of control they give you. Where Web Scraper only gives you access to in-browser JavaScript and the `pageFunction` is executed in the browser context, Puppeteer Scraper's `pageFunction` is executed in Node.js context, giving you much more freedom to bend the browser to your will. You're the puppeteer and the browser is your puppet. It's also much easier to work with external APIs, databases or the https://sdk.apify.com in the Node.js context. The tradeoff is simplicity vs power. Web Scraper is simple, Puppeteer Scraper is powerful (and the https://sdk.apify.com is super-powerful).
+At first glance, it may seem like **Web Scraper** ([apify/web-scraper](https://apify.com/apify/web-scraper)) and Puppeteer Scraper are almost the same. Well, they are. In fact, Web Scraper uses Puppeteer underneath. The difference is the amount of control they give you. Where Web Scraper only gives you access to in-browser JavaScript and the `pageFunction` is executed in the browser context, Puppeteer Scraper's `pageFunction` is executed in Node.js context, giving you much more freedom to bend the browser to your will. You're the puppeteer and the browser is your puppet. It's also much easier to work with external APIs, databases or the [Apify SDK](https://sdk.apify.com) in the Node.js context. The tradeoff is simplicity vs power. Web Scraper is simple, Puppeteer Scraper is powerful (and the [Apify SDK](https://sdk.apify.com) is super-powerful).
 
-> In other words, Web Scraper's `pageFunction` is like a single https://pptr.dev/#?product=Puppeteer&show=api-pageevaluatepagefunction-args call.
+> In other words, Web Scraper's `pageFunction` is like a single [page.evaluate()](https://pptr.dev/#?product=Puppeteer&show=api-pageevaluatepagefunction-args) call.
 
 Now that's out of the way, let's open one of the Actor detail pages in the Store, for example the Web Scraper page and use our DevTools-Fu to scrape some data.
 
@@ -35,7 +35,7 @@ Before we start, let's do a quick recap of the data we chose to scrape:
 
 ![$1](https://raw.githubusercontent.com/apify/actor-scraper/master/docs/img/scraping-practice.webp)
 
-We've already scraped numbers 1 and 2 in the https://docs.apify.com/academy/apify-scrapers/getting-started.md tutorial, so let's get to the next one on the list: title.
+We've already scraped numbers 1 and 2 in the [Getting started with Apify scrapers](https://docs.apify.com/academy/apify-scrapers/getting-started.md) tutorial, so let's get to the next one on the list: title.
 
 ### Title
 
@@ -64,7 +64,7 @@ async function pageFunction(context) {
 ```
 
 
-The https://pptr.dev/#?product=Puppeteer&show=api-elementhandleevalselector-pagefunction-args-1 function allows you to run a function in the browser, with the selected element as the first argument. Here we use it to extract the text content of a `h1` element that's in the page. The return value of the function is automatically passed back to the Node.js context, so we receive an actual `string` with the element's text.
+The [page.$eval](https://pptr.dev/#?product=Puppeteer&show=api-elementhandleevalselector-pagefunction-args-1) function allows you to run a function in the browser, with the selected element as the first argument. Here we use it to extract the text content of a `h1` element that's in the page. The return value of the function is automatically passed back to the Node.js context, so we receive an actual `string` with the element's text.
 
 ### Description
 
@@ -127,7 +127,7 @@ async function pageFunction(context) {
 ```
 
 
-Similarly to `page.$eval`, the https://pptr.dev/#?product=Puppeteer&show=api-elementhandleevalselector-pagefunction-args function runs a function in the browser, only this time, it does not provide you with a single `Element` as the function's argument, but rather with an `Array` of `Elements`. Once again, the return value of the function will be passed back to the Node.js context.
+Similarly to `page.$eval`, the [page.$$eval](https://pptr.dev/#?product=Puppeteer&show=api-elementhandleevalselector-pagefunction-args) function runs a function in the browser, only this time, it does not provide you with a single `Element` as the function's argument, but rather with an `Array` of `Elements`. Once again, the return value of the function will be passed back to the Node.js context.
 
 It might look a little too complex at first glance, but let us walk you through it. We find all the `<time>` elements. Then, we read its `datetime` attribute, because that's where a unix timestamp is stored as a `string`.
 
@@ -321,7 +321,7 @@ At first, you may think that the scraper is broken, but it just cannot wait for 
 
 `waitFor()` is a function that's available on the Puppeteer `page` object that's in turn available on the `context` argument of the `pageFunction` (as you already know from previous chapters). It helps you with, well, waiting for stuff. It accepts either a number of milliseconds to wait, a selector to await in the page, or a function to execute. It will stop waiting once the time elapses, the selector appears or the provided function returns `true`.
 
-> See https://pptr.dev/#?product=Puppeteer&show=api-pagewaitforselectororfunctionortimeout-options-args in the Puppeteer documentation.
+> See [page.waitFor()](https://pptr.dev/#?product=Puppeteer&show=api-pagewaitforselectororfunctionortimeout-options-args) in the Puppeteer documentation.
 
 
 ```
@@ -639,11 +639,11 @@ async function pageFunction(context) {
 
 ## Bonus 2: Using jQuery with Puppeteer Scraper
 
-If you're familiar with the https://jquery.com/, you may have looked at the scraping code and thought that it's unnecessarily complicated. That's probably up to everyone to decide on their own, but the good news is, you can use jQuery with Puppeteer Scraper too.
+If you're familiar with the [jQuery library](https://jquery.com/), you may have looked at the scraping code and thought that it's unnecessarily complicated. That's probably up to everyone to decide on their own, but the good news is, you can use jQuery with Puppeteer Scraper too.
 
 ### Injecting jQuery
 
-To be able to use jQuery, we first need to introduce it to the browser. The https://sdk.apify.com/docs/api/puppeteer#puppeteerinjectjquerypage function will help us with the task.
+To be able to use jQuery, we first need to introduce it to the browser. The [Apify.utils.puppeteer.injectJQuery](https://sdk.apify.com/docs/api/puppeteer#puppeteerinjectjquerypage) function will help us with the task.
 
 > Friendly warning: Injecting jQuery into a page may break the page itself, if it expects a specific version of jQuery to be available and you override it with an incompatible one. Be careful.
 
@@ -752,17 +752,17 @@ async function pageFunction(context) {
 ```
 
 
-> There's an important takeaway from the example code. You can only use jQuery in the browser scope, even though you're injecting it outside of the browser. We're using the https://pptr.dev/#?product=Puppeteer&show=api-pageevaluatepagefunction-args function to run the script in the context of the browser and the return value is passed back to Node.js. Keep this in mind.
+> There's an important takeaway from the example code. You can only use jQuery in the browser scope, even though you're injecting it outside of the browser. We're using the [page.evaluate()](https://pptr.dev/#?product=Puppeteer&show=api-pageevaluatepagefunction-args) function to run the script in the context of the browser and the return value is passed back to Node.js. Keep this in mind.
 
 ## Final word
 
-Thank you for reading this whole tutorial! Really! It's important to us that our users have the best information available to them so that they can use Apify effectively. We're glad that you made it all the way here and congratulations on creating your first scraping task. We hope that you liked the tutorial and if there's anything you'd like to ask, https://discord.gg/jyEM2PRvMU!
+Thank you for reading this whole tutorial! Really! It's important to us that our users have the best information available to them so that they can use Apify effectively. We're glad that you made it all the way here and congratulations on creating your first scraping task. We hope that you liked the tutorial and if there's anything you'd like to ask, [join us on Discord](https://discord.gg/jyEM2PRvMU)!
 
 ## What's next
 
-* Check out the https://docs.apify.com/sdk and its https://docs.apify.com/sdk/js/docs/guides/apify-platform tutorial if you'd like to try building your own Actors. It's a bit more complex and involved than writing a `pageFunction`, but it allows you to fine-tune all the details of your scraper to your liking.
-* https://docs.apify.com/platform/actors.md, from how they work to https://docs.apify.com/platform/actors/publishing.md them in Apify Store, and even https://blog.apify.com/make-regular-passive-income-developing-web-automation-actors-b0392278d085/ on Actors.
-* Found out you're not into the coding part but would still to use Apify Actors? Check out our https://apify.com/store or https://apify.com/contact-sales from an Apify-certified developer.
+* Check out the [Apify SDK](https://docs.apify.com/sdk) and its [Getting started](https://docs.apify.com/sdk/js/docs/guides/apify-platform) tutorial if you'd like to try building your own Actors. It's a bit more complex and involved than writing a `pageFunction`, but it allows you to fine-tune all the details of your scraper to your liking.
+* [Take a deep dive into Actors](https://docs.apify.com/platform/actors.md), from how they work to [publishing](https://docs.apify.com/platform/actors/publishing.md) them in Apify Store, and even [making money](https://blog.apify.com/make-regular-passive-income-developing-web-automation-actors-b0392278d085/) on Actors.
+* Found out you're not into the coding part but would still to use Apify Actors? Check out our [ready-made solutions](https://apify.com/store) or [order a custom Actor](https://apify.com/contact-sales) from an Apify-certified developer.
 
 **Learn how to scrape a website using Apify's Puppeteer Scraper. Build an Actor's page function, extract information from a web page and download your data.**
 

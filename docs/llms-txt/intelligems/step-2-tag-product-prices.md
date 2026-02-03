@@ -4,12 +4,6 @@
 
 # Source: https://docs.intelligems.io/price-testing/price-testing-integration-guides/integration-guide-using-shopify-functions/step-2-tag-product-prices.md
 
-# Source: https://docs.intelligems.io/price-testing/price-testing-integration-guides/integration-guide-using-duplicate-products/step-2-tag-product-prices.md
-
-# Source: https://docs.intelligems.io/price-testing/price-testing-integration-guides/integration-guide-using-checkout-scripts/step-2-tag-product-prices.md
-
-# Source: https://docs.intelligems.io/price-testing/price-testing-integration-guides/integration-guide-using-shopify-functions/step-2-tag-product-prices.md
-
 # Step 2: Tag product prices
 
 ## Introduction

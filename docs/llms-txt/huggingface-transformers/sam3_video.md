@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/sam3_video.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/sam3_video.md
 
 # SAM3 Video
 
@@ -169,13 +169,26 @@ For real-time applications, SAM3 Video supports processing video frames as they 
 >>> print(f"Masks are at original video resolution: {frame_0_outputs['masks'].shape}")
 ```
 
+#### Custom Resolution Inference
+
+⚠️ **Performance Note**: Custom resolutions may degrade accuracy. The model is meant to be used at 1008px resolution.
+
+For faster inference or lower memory usage:
+
+```python
+>>> config = Sam3VideoConfig.from_pretrained("facebook/sam3")
+>>> config.image_size = 560
+>>> model = Sam3VideoModel.from_pretrained("facebook/sam3", config=config).to(device, dtype=torch.bfloat16)
+>>> processor = Sam3VideoProcessor.from_pretrained("facebook/sam3", size={"height": 560, "width": 560})
+```
+
 ## Sam3VideoConfig[[transformers.Sam3VideoConfig]]
 
 #### transformers.Sam3VideoConfig[[transformers.Sam3VideoConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/configuration_sam3_video.py#L25)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/configuration_sam3_video.py#L24)
 
-Configuration class for [Sam3VideoModel](/docs/transformers/v5.0.0rc1/en/model_doc/sam3_video#transformers.Sam3VideoModel). This combines configurations for the detector (Sam3) and tracker
+Configuration class for [Sam3VideoModel](/docs/transformers/v5.0.0/en/model_doc/sam3_video#transformers.Sam3VideoModel). This combines configurations for the detector (Sam3) and tracker
 (Sam2Video) components, along with detection-tracking fusion hyperparameters.
 
 Instantiating a configuration defaults will yield a similar configuration to that of SAM 3
@@ -190,6 +203,9 @@ Example:
 
 >>> # Initializing a SAM3 Video configuration with default detector and tracker
 >>> configuration = Sam3VideoConfig()
+
+>>> # Changing image size for custom resolution inference (automatically propagates to all nested configs)
+>>> configuration.image_size = 560
 
 >>> # Initializing a model from the configuration
 >>> model = Sam3VideoModel(configuration)
@@ -254,49 +270,47 @@ high_iou_thresh (`float`, *optional*, defaults to 0.8) : High IoU threshold for 
 
 #### transformers.Sam3VideoProcessor[[transformers.Sam3VideoProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/processing_sam3_video.py#L30)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/processing_sam3_video.py#L30)
 
-Constructs a SAM3 processor which wraps a SAM3 image processor and an 2D points & Bounding boxes processor into a
-single processor.
+Constructs a Sam3VideoProcessor which wraps a image processor, a video processor, and a tokenizer into a single processor.
 
-[Sam3Processor](/docs/transformers/v5.0.0rc1/en/model_doc/sam3#transformers.Sam3Processor) offers all the functionalities of `Sam3ImageProcessor` and [Sam3VideoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/sam3_video#transformers.Sam3VideoProcessor). See the docstring of
-`~Sam3ImageProcessor.__call__` and [__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/sam3_video#transformers.Sam3VideoProcessor.__call__) for more information.
+[Sam3VideoProcessor](/docs/transformers/v5.0.0/en/model_doc/sam3_video#transformers.Sam3VideoProcessor) offers all the functionalities of [Sam3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3ImageProcessorFast), `Sam3VideoVideoProcessor`, and [CLIPTokenizer](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPTokenizer). See the
+[~Sam3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3ImageProcessorFast), `~Sam3VideoVideoProcessor`, and [~CLIPTokenizer](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPTokenizer) for more information.
 
-__call__transformers.Sam3VideoProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/processing_sam3_video.py#L60[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "segmentation_maps", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "original_sizes", "val": ": typing.Union[list[list[float]], torch.Tensor, NoneType] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "**kwargs", "val": ""}]- **images** (`ImageInput`, *optional*) --
+__call__transformers.Sam3VideoProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/processing_sam3_video.py#L46[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "segmentation_maps", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "original_sizes", "val": ": list[list[float]] | torch.Tensor | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "**kwargs", "val": ""}]- **images** (`ImageInput`, *optional*) --
   The image(s) to process.
 - **segmentation_maps** (`ImageInput`, *optional*) --
   The segmentation maps to process (optional, for image processor).
 - **original_sizes** (`list[list[float]]`, `torch.Tensor`, *optional*) --
   The original sizes of the images. Only used when images is not provided.
-- **return_tensors** (`str` or `TensorType`, *optional*) --
-  The type of tensors to return.
-- ****kwargs** --
-  Additional keyword arguments to pass to the image processor.0A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields- `pixel_values` (`torch.Tensor`): The processed image(s).
+- **return_tensors** (`Union[str, ~utils.generic.TensorType]`, *optional*) --
+  If set, will return tensors of a particular framework. Acceptable values are:
+
+  - `'pt'`: Return PyTorch `torch.Tensor` objects.
+  - `'np'`: Return NumPy `np.ndarray` objects.0A [BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields- `pixel_values` (`torch.Tensor`): The processed image(s).
 - `original_sizes` (`list[list[float]]`): The original sizes of the images.
 - `labels` (`torch.Tensor`, *optional*): The processed segmentation maps (if provided).
 
-This method uses `Sam3VideoImageProcessorFast.__call__` method to prepare image(s) for the model.
-
 **Parameters:**
 
-image_processor (`Sam3ImageProcessorFast`) : An instance of [Sam3ImageProcessorFast](/docs/transformers/v5.0.0rc1/en/model_doc/sam3#transformers.Sam3ImageProcessorFast).
+image_processor (`Sam3ImageProcessorFast`) : The image processor is a required input.
 
-video_processor (`Sam2VideoVideoProcessor`) : An instance of [Sam2VideoVideoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/sam2_video#transformers.Sam2VideoVideoProcessor).
+video_processor (`Sam3VideoVideoProcessor`) : The video processor is a required input.
 
-tokenizer ([`CLIPTokenizer`, `CLIPTokenizerFast`]) : An instance of [`PreTrainedTokenizer`, `PreTrainedTokenizerFast`]. The tokenizer is a required input.
+tokenizer (`CLIPTokenizer`) : The tokenizer is a required input.
 
 target_size (`int`, *optional*) : The target size (target_size, target_size) to which the image will be resized.
 
 **Returns:**
 
-`A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields`
+`A [BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields`
 
 - `pixel_values` (`torch.Tensor`): The processed image(s).
 - `original_sizes` (`list[list[float]]`): The original sizes of the images.
 - `labels` (`torch.Tensor`, *optional*): The processed segmentation maps (if provided).
 #### postprocess_outputs[[transformers.Sam3VideoProcessor.postprocess_outputs]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/processing_sam3_video.py#L258)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/processing_sam3_video.py#L238)
 
 Post-process model outputs to get final masks, boxes, and scores.
 
@@ -323,7 +337,7 @@ A dictionary containing the following keys:
   object IDs detected by that prompt.
 #### init_video_session[[transformers.Sam3VideoProcessor.init_video_session]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/processing_sam3_video.py#L144)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/processing_sam3_video.py#L124)
 
 Initializes a video session for inference.
 If a video is provided (async inference), the video will be processed and stored on the `video_storage_device`.
@@ -345,7 +359,7 @@ max_vision_features_cache_size (`int`, *optional*, defaults to 1) : The maximum 
 dtype (`torch.dtype`, *optional*, defaults to `torch.float32`) : The torch dtype to use for the whole session.
 #### add_text_prompt[[transformers.Sam3VideoProcessor.add_text_prompt]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/processing_sam3_video.py#L112)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/processing_sam3_video.py#L92)
 
 Add text prompt(s) to the inference session.
 
@@ -365,11 +379,11 @@ The inference session with the added text prompt(s).
 
 #### transformers.Sam3VideoInferenceSession[[transformers.Sam3VideoInferenceSession]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/modeling_sam3_video.py#L119)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/modeling_sam3_video.py#L118)
 
 Manages video inference session parameters, state and cache.
 
-add_mask_inputstransformers.Sam3VideoInferenceSession.add_mask_inputshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/modeling_sam3_video.py#L255[{"name": "obj_idx", "val": ": int"}, {"name": "frame_idx", "val": ": int"}, {"name": "inputs", "val": ": Tensor"}]
+add_mask_inputstransformers.Sam3VideoInferenceSession.add_mask_inputshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/modeling_sam3_video.py#L254[{"name": "obj_idx", "val": ": int"}, {"name": "frame_idx", "val": ": int"}, {"name": "inputs", "val": ": Tensor"}]
 Add mask inputs with automatic device placement.
 
 **Parameters:**
@@ -391,28 +405,28 @@ dtype (`torch.dtype`, *optional*, defaults to `"float32"`) : The dtype to use fo
 max_vision_features_cache_size (`int`, *optional*, defaults to 1) : The maximum number of vision features to cache.
 #### add_new_frame[[transformers.Sam3VideoInferenceSession.add_new_frame]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/modeling_sam3_video.py#L384)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/modeling_sam3_video.py#L383)
 
 Add new frame with automatic device placement.
 #### add_prompt[[transformers.Sam3VideoInferenceSession.add_prompt]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/modeling_sam3_video.py#L215)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/modeling_sam3_video.py#L214)
 
 Add a text prompt to the session and return its unique ID.
 If the prompt already exists, returns the existing ID.
 #### get_frame[[transformers.Sam3VideoInferenceSession.get_frame]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/modeling_sam3_video.py#L400)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/modeling_sam3_video.py#L399)
 
 Get frame from video.
 #### get_obj_num[[transformers.Sam3VideoInferenceSession.get_obj_num]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/modeling_sam3_video.py#L251)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/modeling_sam3_video.py#L250)
 
 Get the total number of unique object ids received so far in this session.
 #### get_output[[transformers.Sam3VideoInferenceSession.get_output]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/modeling_sam3_video.py#L357)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/modeling_sam3_video.py#L356)
 
 Get output with smart device management.
 
@@ -427,22 +441,22 @@ output_key (str) : The key of the output.
 is_conditioning_frame (bool) : Whether the output is for a conditioning frame.
 #### obj_id_to_idx[[transformers.Sam3VideoInferenceSession.obj_id_to_idx]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/modeling_sam3_video.py#L229)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/modeling_sam3_video.py#L228)
 
 Map object ID to index, creating new entry if needed.
 #### obj_idx_to_id[[transformers.Sam3VideoInferenceSession.obj_idx_to_id]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/modeling_sam3_video.py#L247)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/modeling_sam3_video.py#L246)
 
 Map model-side object index to client-side object id.
 #### remove_mask_inputs[[transformers.Sam3VideoInferenceSession.remove_mask_inputs]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/modeling_sam3_video.py#L261)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/modeling_sam3_video.py#L260)
 
 Remove mask inputs.
 #### remove_object[[transformers.Sam3VideoInferenceSession.remove_object]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/modeling_sam3_video.py#L265)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/modeling_sam3_video.py#L264)
 
 Remove an object from the inference session. This would remove the object from
 all frames in the video.
@@ -454,22 +468,22 @@ obj_id (`int`) : The object ID to remove.
 strict (`bool`, *optional*, defaults to `False`) : Whether to raise an error if the object doesn't exist.
 #### reset_inference_session[[transformers.Sam3VideoInferenceSession.reset_inference_session]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/modeling_sam3_video.py#L416)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/modeling_sam3_video.py#L415)
 
 Reset tracking data and cache.
 #### reset_state[[transformers.Sam3VideoInferenceSession.reset_state]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/modeling_sam3_video.py#L428)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/modeling_sam3_video.py#L427)
 
 Reset the inference session state.
 #### reset_tracking_data[[transformers.Sam3VideoInferenceSession.reset_tracking_data]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/modeling_sam3_video.py#L404)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/modeling_sam3_video.py#L403)
 
 Reset tracking data but keep cache.
 #### store_output[[transformers.Sam3VideoInferenceSession.store_output]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/modeling_sam3_video.py#L320)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/modeling_sam3_video.py#L319)
 
 Store output with smart device management.
 If output_key is None, the output is stored as a dictionary.
@@ -490,7 +504,7 @@ is_conditioning_frame (bool) : Whether the output is for a conditioning frame.
 
 #### transformers.Sam3VideoSegmentationOutput[[transformers.Sam3VideoSegmentationOutput]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/modeling_sam3_video.py#L462)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/modeling_sam3_video.py#L461)
 
 Base class for the Sam3Video model's output.
 
@@ -514,11 +528,11 @@ frame_idx (`int`, *optional*) : The frame index of the video.
 
 #### transformers.Sam3VideoModel[[transformers.Sam3VideoModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/modeling_sam3_video.py#L507)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/modeling_sam3_video.py#L506)
 
 The bare Sam3 Video Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -526,7 +540,7 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Sam3VideoModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/modeling_sam3_video.py#L1692[{"name": "inference_session", "val": ": Sam3VideoInferenceSession"}, {"name": "frame_idx", "val": ": typing.Optional[int] = None"}, {"name": "frame", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "reverse", "val": ": bool = False"}, {"name": "**kwargs", "val": ""}]- **inference_session** (`~models.sam3_video.modeling_sam3_video.Sam3VideoInferenceSession`) --
+forwardtransformers.Sam3VideoModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/modeling_sam3_video.py#L1691[{"name": "inference_session", "val": ": Sam3VideoInferenceSession"}, {"name": "frame_idx", "val": ": int | None = None"}, {"name": "frame", "val": ": torch.Tensor | None = None"}, {"name": "reverse", "val": ": bool = False"}, {"name": "**kwargs", "val": ""}]- **inference_session** (`~models.sam3_video.modeling_sam3_video.Sam3VideoInferenceSession`) --
   The video inference session object.
 - **frame_idx** (`int`, *optional*) --
   The index of the frame on which to run inference. No need to provide when inferring
@@ -539,10 +553,10 @@ Propagate the objects through a streamed video frame.
 
 **Parameters:**
 
-config ([Sam3VideoConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sam3_video#transformers.Sam3VideoConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Sam3VideoConfig](/docs/transformers/v5.0.0/en/model_doc/sam3_video#transformers.Sam3VideoConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 #### propagate_in_video_iterator[[transformers.Sam3VideoModel.propagate_in_video_iterator]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3_video/modeling_sam3_video.py#L1783)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3_video/modeling_sam3_video.py#L1782)
 
 Propagate the prompts to get grounding results for the entire video. This method
 is a generator and yields inference outputs for all frames in the range specified

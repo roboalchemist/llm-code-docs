@@ -124,14 +124,8 @@ result, err := sc.V1PaymentMethods.Create(context.TODO(), params)
 ```dotnet
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-var options = new PaymentMethodCreateOptions
-{
-    Type = "custom",
-    Custom = new PaymentMethodCustomOptions
-    {
-        Type = "{{CUSTOM_PAYMENT_METHOD_TYPE_ID}}",
-    },
-};
+var options = new PaymentMethodCreateOptions { Type = "custom" };
+options.AddExtraParam("custom[type]", "{{CUSTOM_PAYMENT_METHOD_TYPE_ID}}");
 var client = new StripeClient("<<YOUR_SECRET_KEY>>");
 var service = client.V1.PaymentMethods;
 PaymentMethod paymentMethod = service.Create(options);
@@ -163,7 +157,7 @@ PaymentMethod paymentMethod = service.Create(options);
 
 | Payment method         | Connect     | Checkout      | Payment Links | Payment Element | Express Checkout Element | Mobile Payment Element | Subscriptions | Invoicing   | Customer Portal |
 | ---------------------- | ----------- | ------------- | ------------- | --------------- | ------------------------ | ---------------------- | ------------- | ----------- | --------------- |
-| Custom payment methods | ✓ Supported | - Unsupported | - Unsupported | ✓ Supported 1   | - Unsupported            | ✓ Supported 1          | ✓ Supported   | ✓ Supported | - Unsupported   |
+| Custom payment methods | ✓ Supported | - Unsupported | - Unsupported | ✓ Supported 1   | - Unsupported            | ✓ Supported 1          | ✓ Supported   | ✓ Supported | ✓ Supported     |
 
 1 Not compatible with the [Checkout Sessions API](https://docs.stripe.com/api/checkout/sessions.md)
 
@@ -291,14 +285,8 @@ result, err := sc.V1PaymentMethods.Create(context.TODO(), params)
 ```dotnet
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-var options = new PaymentMethodCreateOptions
-{
-    Type = "custom",
-    Custom = new PaymentMethodCustomOptions
-    {
-        Type = "{{CUSTOM_PAYMENT_METHOD_TYPE_ID}}",
-    },
-};
+var options = new PaymentMethodCreateOptions { Type = "custom" };
+options.AddExtraParam("custom[type]", "{{CUSTOM_PAYMENT_METHOD_TYPE_ID}}");
 var requestOptions = new RequestOptions
 {
     StripeAccount = "{{CONNECTEDACCOUNT_ID}}",

@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/api-reference/examples/transactional-emails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Transactional email API examples
 
 > Code examples for sending and querying transactional emails with the Loops API and SDKs.

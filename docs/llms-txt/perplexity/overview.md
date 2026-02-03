@@ -1,11 +1,20 @@
-# Source: https://docs.perplexity.ai/getting-started/overview.md
+# Source: https://docs.perplexity.ai/docs/sdk/overview.md
+
+# Source: https://docs.perplexity.ai/docs/grounded-llm/responses/tools/overview.md
+
+# Source: https://docs.perplexity.ai/docs/getting-started/overview.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # null
 
 export const PerplexityLogo = () => {
-  return <svg width="120" height="80" viewBox="0 0 1234 262" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill="#FBFAF4" d="M399.033 56.9632H411.597V82.8626H395.333C382.615 82.8626 373.058 85.9459 366.814 92.0353C360.571 98.2018 357.411 108.222 357.411 122.251V207.118H331.744V57.5028H357.411V81.3981C357.411 82.7084 358.105 83.4022 359.415 83.4022C360.186 83.4022 360.725 83.248 361.111 82.8626C361.496 82.4772 361.881 81.7064 362.267 80.5502C367.2 64.8255 379.455 56.9632 399.11 56.9632H399.033ZM566.755 89.0291C573.461 100.977 576.852 115.468 576.852 132.349C576.852 149.23 573.461 163.644 566.755 175.669C559.972 187.616 551.262 196.635 540.471 202.57C529.757 208.505 518.196 211.512 505.786 211.512C481.429 211.512 464.318 201.722 454.452 182.144C453.681 180.602 452.756 179.831 451.6 179.831C450.444 179.831 449.904 180.371 449.904 181.527V261.769H424.237V57.5028H449.904V83.0938C449.904 84.2501 450.444 84.7896 451.6 84.7896C452.756 84.7896 453.681 84.0188 454.452 82.4772C464.318 62.8985 481.429 53.1091 505.786 53.1091C518.119 53.1091 529.68 56.0382 540.471 62.0506C551.185 67.9859 559.972 76.9273 566.755 88.952V89.0291ZM551.262 132.349C551.262 114.697 546.56 100.977 537.157 91.1103C527.753 81.2439 515.344 76.3107 499.928 76.3107C484.512 76.3107 472.103 81.2439 462.699 91.1103C453.296 100.977 449.827 114.774 449.827 132.349C449.827 149.923 453.296 163.721 462.699 173.588C472.103 183.454 484.512 188.387 499.928 188.387C515.344 188.387 527.753 183.454 537.157 173.588C546.56 163.721 551.262 149.923 551.262 132.349ZM142.517 89.2604C149.223 101.208 152.614 115.699 152.614 132.58C152.614 149.461 149.223 163.875 142.517 175.9C135.811 187.925 127.025 196.866 116.234 202.801C105.52 208.737 93.9581 211.743 81.5486 211.743C57.1919 211.743 40.0806 201.954 30.2146 182.375C29.4438 180.833 28.5189 180.062 27.3627 180.062C26.2065 180.062 25.667 180.602 25.667 181.758V262H0V57.734H25.667V83.3251C25.667 84.4813 26.2065 85.0209 27.3627 85.0209C28.5189 85.0209 29.4438 84.2501 30.2146 82.7084C40.0806 63.1297 57.1919 53.3404 81.5486 53.3404C93.881 53.3404 105.443 56.2695 116.234 62.2818C126.948 68.2171 135.734 77.1586 142.517 89.1833V89.2604ZM126.948 132.503C126.948 114.851 122.246 101.131 112.842 91.2645C103.439 81.3981 91.0292 76.4648 75.6135 76.4648C60.1979 76.4648 47.7884 81.3981 38.3849 91.2645C28.9813 101.131 25.5128 114.929 25.5128 132.503C25.5128 150.078 28.9813 163.875 38.3849 173.742C47.7884 183.608 60.1979 188.541 75.6135 188.541C91.0292 188.541 103.439 183.608 112.842 173.742C122.246 163.875 126.948 150.078 126.948 132.503ZM284.418 159.636H311.549C307.927 173.665 300.527 185.766 289.428 196.018C278.329 206.27 262.374 211.435 241.64 211.435C226.07 211.435 212.273 208.197 200.403 201.799C188.533 195.402 179.361 186.229 172.886 174.358C166.411 162.488 163.174 148.459 163.174 132.349C163.174 116.239 166.334 102.21 172.578 90.3395C178.821 78.469 187.685 69.2963 198.938 62.8985C210.269 56.5007 223.526 53.2633 238.711 53.2633C253.895 53.2633 266.536 56.4237 277.096 62.7443C287.655 69.065 295.517 77.4669 300.758 87.8729C306 98.356 308.62 109.764 308.62 122.251V139.517H190.229C191.154 154.471 196.164 166.342 205.182 175.206C214.2 183.994 226.378 188.464 241.563 188.464C253.895 188.464 263.376 185.921 269.927 180.833C276.479 175.746 281.258 168.731 284.341 159.713L284.418 159.636ZM190.614 117.935H280.179C280.179 104.908 276.864 94.6561 270.158 87.2562C263.53 79.8564 253.047 76.1565 238.788 76.1565C225.453 76.1565 214.585 79.7793 206.107 86.9479C197.628 94.1165 192.464 104.445 190.537 117.858L190.614 117.935ZM597.201 207.118H622.868V0H597.201V207.118ZM953.532 41.2386H983.516V8.86437H953.532V41.2386ZM1059.28 184.841C1054.66 185.304 1051.81 185.535 1050.88 185.535C1049.57 185.535 1048.49 185.15 1047.72 184.379C1046.95 183.608 1046.57 182.529 1046.57 181.219C1046.57 180.294 1046.8 177.442 1047.26 172.74C1047.72 168.038 1047.95 160.792 1047.95 151.003V79.471H1084.56L1077.32 57.5799H1047.95V17.2663H1022.29V57.5028H994.384V79.3939H1022.29V158.171C1022.29 174.667 1026.29 186.923 1034.31 195.016C1042.33 203.033 1054.5 207.118 1070.84 207.118H1090.81V184.148H1080.79C1071.08 184.148 1063.91 184.379 1059.21 184.841H1059.28ZM1209.59 57.5028L1167.04 182.991C1166.5 184.533 1165.57 186.537 1162.64 186.537C1159.72 186.537 1158.79 184.533 1158.25 182.991L1115.7 57.5028H1089.5L1138.75 207.041H1156.17C1157.33 207.041 1158.17 207.118 1158.71 207.349C1159.25 207.503 1159.72 208.043 1160.18 208.814C1160.95 209.97 1160.8 211.666 1159.87 213.978L1151.85 235.792C1150.7 238.644 1148.54 240.109 1145.3 240.109C1144.15 240.109 1141.53 239.878 1137.29 239.415C1133.12 238.953 1127.65 238.721 1121.02 238.721H1100.21V261.692H1127.57C1143.53 261.692 1153.16 258.917 1161.41 253.521C1169.66 248.048 1176.13 238.413 1180.68 224.615L1233.87 63.2839V57.5028H1209.43H1209.59ZM869.671 113.31L829.437 57.5028H801.149V63.2839L849.323 128.032L790.589 201.414V207.195H819.416L866.203 147.071L909.829 207.195H937.5V201.414L886.397 132.349L941.739 63.5922V57.5799H912.912L869.517 113.387L869.671 113.31ZM956.23 207.118H981.897V57.5028H956.23V207.041V207.118ZM791.746 159.636C788.123 173.665 780.723 185.766 769.624 196.018C758.525 206.27 742.57 211.435 721.836 211.435C706.266 211.435 692.469 208.197 680.599 201.799C668.729 195.402 659.557 186.229 653.082 174.358C646.608 162.488 643.37 148.459 643.37 132.349C643.37 116.239 646.531 102.21 652.774 90.3395C659.017 78.469 667.881 69.2963 679.135 62.8985C690.465 56.5007 703.722 53.2633 718.907 53.2633C734.091 53.2633 746.732 56.4237 757.292 62.7443C767.851 69.065 775.713 77.4669 780.955 87.8729C786.196 98.356 788.817 109.764 788.817 122.251V139.517H670.425C671.35 154.471 676.36 166.342 685.378 175.206C694.396 183.994 706.574 188.464 721.759 188.464C734.091 188.464 743.572 185.921 750.123 180.833C756.675 175.746 761.454 168.731 764.537 159.713H791.668L791.746 159.636ZM670.81 117.935H760.375C760.375 104.908 757.06 94.6561 750.355 87.2562C743.726 79.8564 733.243 76.1565 718.984 76.1565C705.649 76.1565 694.781 79.7793 686.303 86.9479C677.824 94.1165 672.66 104.445 670.733 117.858L670.81 117.935Z" />
-</svg>;
+  return <div className="relative w-[120px] h-[80px]">
+      <img src="/logo/PerplexityWordmark.svg" alt="Perplexity" className="block dark:hidden w-[120px] h-[80px] object-contain" />
+      <img src="/logo/PerplexityWordmark_Light.svg" alt="Perplexity" className="hidden dark:block w-[120px] h-[80px] object-contain" />
+    </div>;
 };
 
 export const SonarLogo = () => {
@@ -18,22 +27,19 @@ export const SonarLogo = () => {
 </svg>;
 };
 
-export const QuickstartBanner = () => <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between bg-card border border-border rounded-xl p-4 md:p-6 w-full mt-4 mb-8 dark:bg-[#2C3A2C] gap-4">
+export const QuickstartBanner = () => <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between bg-[#114F56] border border-border rounded-xl p-4 md:p-6 w-full mt-4 mb-8 gap-4">
     <div className="flex items-center gap-3 sm:gap-4 flex-1">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 40 35" fill="none" className="flex-shrink-0">
-        <path d="M7.3187 33C4.77908 30.4604 3.04959 27.2246 2.34892 23.7021C1.64825 20.1795 2.00788 16.5283 3.38233 13.2101C4.75678 9.89188 7.08432 7.05577 10.0706 5.0604C13.0569 3.06503 16.5678 2 20.1594 2C23.751 2 27.2619 3.06503 30.2482 5.0604C33.2345 7.05577 35.5621 9.89188 36.9365 13.2101C38.311 16.5283 38.6706 20.1795 37.9699 23.7021C37.2693 27.2246 35.5398 30.4604 33.0002 33M28.2303 12.0886L20.1594 20.1594" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-muted-foreground" />
+        <path d="M7.3187 33C4.77908 30.4604 3.04959 27.2246 2.34892 23.7021C1.64825 20.1795 2.00788 16.5283 3.38233 13.2101C4.75678 9.89188 7.08432 7.05577 10.0706 5.0604C13.0569 3.06503 16.5678 2 20.1594 2C23.751 2 27.2619 3.06503 30.2482 5.0604C33.2345 7.05577 35.5621 9.89188 36.9365 13.2101C38.311 16.5283 38.6706 20.1795 37.9699 23.7021C37.2693 27.2246 35.5398 30.4604 33.0002 33M28.2303 12.0886L20.1594 20.1594" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-[#F7F7F8]" />
       </svg>
       <div className="flex flex-col min-w-0">
-        <span className="font-semibold text-base md:text-lg text-foreground">Quickstart Guide</span>
-        <span className="text-sm md:text-base text-muted-foreground mt-0.5">Getting started is simple and fast—make your first API call within minutes.</span>
+        <span className="font-semibold text-base md:text-lg text-[#F7F7F8]">Quickstart Guide</span>
+        <span className="text-sm md:text-base text-[#F7F7F8] opacity-80 mt-0.5">Getting started is simple and fast—make your first API call within minutes.</span>
       </div>
     </div>
     <div className="flex flex-col sm:flex-row gap-2 sm:ml-4">
-      <a href="/guides/search-quickstart" className="px-3 py-2 bg-primary text-white rounded font-mono text-sm font-semibold shadow hover:bg-primary/90 transition whitespace-nowrap text-center">
-        Search 
-      </a>
-      <a href="/getting-started/quickstart" className="px-3 py-2 bg-primary text-white rounded font-mono text-sm font-semibold shadow hover:bg-primary/90 transition whitespace-nowrap text-center">
-        Grounded LLM
+      <a href="/docs/getting-started/quickstart" className="px-6 py-3 bg-[#20808D] hover:bg-[#114F56] dark:bg-[#35BDC8] dark:hover:bg-[#92DCE2] text-[#F7F7F8] dark:text-[#121516] rounded-full font-medium text-base shadow transition-all duration-200 whitespace-nowrap text-center">
+        Get Started
       </a>
     </div>
   </div>;
@@ -99,20 +105,15 @@ search.results.forEach(result => {
 });`
     }]
   }, {
-    label: 'Chat with Grounded Search',
+    label: 'Agentic Research',
     codeExamples: [{
       language: 'bash',
-      code: `curl https://api.perplexity.ai/chat/completions \\
+      code: `curl https://api.perplexity.ai/v1/responses \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "model": "sonar-pro",
-    "messages": [
-      {
-        "role": "user", 
-        "content": "What are the major AI developments and announcements from today across the tech industry?"
-      }
-    ]
+    "preset": "pro-search",
+    "input": "What are the major AI developments and announcements from today across the tech industry?"
   }' | jq`
     }, {
       language: 'python',
@@ -120,34 +121,24 @@ search.results.forEach(result => {
 
 client = Perplexity()
 
-completion = client.chat.completions.create(
-    messages=[
-        {
-            "role": "user",
-            "content": "What are the major AI developments and announcements from today across the tech industry?"
-        }
-    ],
-    model="sonar-pro"
+response = client.responses.create(
+    preset="pro-search",
+    input="What are the major AI developments and announcements from today across the tech industry?"
 )
 
-print(completion.choices[0].message.content)`
+print(response.output_text)`
     }, {
       language: 'javascript',
       code: `import Perplexity from '@perplexity-ai/perplexity_ai';
 
 const client = new Perplexity();
 
-const completion = await client.chat.completions.create({
-  messages: [
-    {
-      role: 'user',
-      content: "What are the major AI developments and announcements from today across the tech industry?"
-    }
-  ],
-  model: 'sonar-pro'
+const response = await client.responses.create({
+  preset: 'pro-search',
+  input: 'What are the major AI developments and announcements from today across the tech industry?'
 });
 
-console.log(completion.choices[0].message.content);`
+console.log(response.output_text);`
     }]
   }, {
     label: 'Filter your sources',
@@ -216,17 +207,12 @@ console.log(completion.choices[0].message.content);`
     label: 'Structured Outputs',
     codeExamples: [{
       language: 'bash',
-      code: `curl https://api.perplexity.ai/chat/completions \\
+      code: `curl https://api.perplexity.ai/v1/responses \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "model": "sonar-pro",
-    "messages": [
-      {
-        "role": "user",
-        "content": "Find the top 3 trending AI startups with recent funding. Include company name, funding amount, and focus area."
-      }
-    ],
+    "preset": "pro-search",
+    "input": "Find the top 3 trending AI startups with recent funding. Include company name, funding amount, and focus area.",
     "response_format": {
       "type": "json_schema",
       "json_schema": {
@@ -257,14 +243,9 @@ console.log(completion.choices[0].message.content);`
 
 client = Perplexity()
 
-completion = client.chat.completions.create(
-    messages=[
-        {
-            "role": "user",
-            "content": "Find the top 3 trending AI startups with recent funding. Include company name, funding amount, and focus area."
-        }
-    ],
-    model="sonar-pro",
+response = client.responses.create(
+    preset="pro-search",
+    input="Find the top 3 trending AI startups with recent funding. Include company name, funding amount, and focus area.",
     response_format={
         "type": "json_schema",
         "json_schema": {
@@ -290,21 +271,20 @@ completion = client.chat.completions.create(
     }
 )
 
-print(completion.choices[0].message.content)`
+
+for item in response.output:
+    if hasattr(item, 'content'):
+        print(item.content[0].text)
+        break`
     }, {
       language: 'javascript',
       code: `import Perplexity from '@perplexity-ai/perplexity_ai';
 
 const client = new Perplexity();
 
-const completion = await client.chat.completions.create({
-  messages: [
-    {
-      role: 'user',
-      content: 'Find the top 3 trending AI startups with recent funding. Include company name, funding amount, and focus area.'
-    }
-  ],
-  model: 'sonar-pro',
+const response = await client.responses.create({
+  preset: 'pro-search',
+  input: 'Find the top 3 trending AI startups with recent funding. Include company name, funding amount, and focus area.',
   response_format: {
     type: 'json_schema',
     json_schema: {
@@ -330,27 +310,26 @@ const completion = await client.chat.completions.create({
   }
 });
 
-console.log(completion.choices[0].message.content);`
+console.log(response.output_text);`
     }]
   }];
   const selectedUseCase = useCases[selected];
-  return <section className="mx-auto w-full p-4 sm:p-6 lg:p-8 rounded-2xl border border-[rgba(228,227,212,0.30)] bg-[#E4E3D4] flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-8 not-prose" aria-label="Sonar use case examples" style={{
+  return <section className="mx-auto w-full p-4 sm:p-6 lg:p-8 rounded-2xl border border-[rgba(222,247,249,0.30)] bg-[#081F22] dark:bg-[#B2D4D7] flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-8 not-prose" aria-label="Sonar use case examples" style={{
     boxSizing: 'border-box',
     backgroundColor: 'var(--color-ecru)'
   }}>
       <nav className="flex flex-col lg:w-1/4 lg:min-w-[240px]" aria-label="Use case tabs">
-        <h2 className="text-xl mt-2 font-semibold mb-4 text-[#091717]">Try Our APIs</h2>
+        <h2 className="text-xl mt-2 font-semibold mb-4 text-[#121516]">Try Our APIs</h2>
         <div className="flex flex-row lg:flex-col gap-1 flex-1 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0">
-          {useCases.map((uc, idx) => <button key={uc.label} type="button" aria-current={selected === idx} aria-controls={`usecase-panel-${idx}`} className={`py-2 px-3 lg:px-2 flex items-center justify-center lg:justify-start text-[#091717] rounded-lg hover:bg-[#0917171A] whitespace-nowrap lg:whitespace-normal text-sm lg:text-base ${selected === idx ? 'bg-[#0917171A]' : ''}`} onClick={() => setSelected(idx)}>
+          {useCases.map((uc, idx) => <button key={uc.label} type="button" aria-current={selected === idx} aria-controls={`usecase-panel-${idx}`} className={`py-2 px-3 lg:px-2 flex items-center justify-center lg:justify-start text-[#121516] rounded-lg hover:bg-[#92DCE2] whitespace-nowrap lg:whitespace-normal text-sm lg:text-base ${selected === idx ? 'bg-[#92DCE2]' : ''}`} onClick={() => setSelected(idx)}>
               {uc.label}
             </button>)}
         </div>
-        <a href="https://www.perplexity.ai/account/api/group" className="mt-4 lg:mt-auto text-sm underline px-2 text-[#444] text-center lg:text-left">Create an API key</a>
+        <a href="https://www.perplexity.ai/account/api/group" className="mt-4 lg:mt-auto text-sm underline px-2 text-[#121516] opacity-80 text-center lg:text-left">Get Started</a>
       </nav>
 
-      <div className="flex-1 rounded-xl relative overflow-hidden min-h-[400px]" id={`usecase-panel-${selected}`} role="tabpanel" aria-live="polite">
-        <div className="h-full overflow-y-auto">
-          <CodeGroup>
+      <div className="flex-1 relative dark:bg-[#0D0E10] self-start rounded-2xl overflow-hidden" id={`usecase-panel-${selected}`} role="tabpanel" aria-live="polite">
+        <CodeGroup>
             <pre className="language-python" filename="Python">
               <code>{selectedUseCase.codeExamples[1].code}</code>
             </pre>
@@ -361,7 +340,6 @@ console.log(completion.choices[0].message.content);`
               <code>{selectedUseCase.codeExamples[0].code}</code>
             </pre>
           </CodeGroup>
-        </div>
       </div>
     </section>;
 };
@@ -391,8 +369,8 @@ console.log(completion.choices[0].message.content);`
         <h3 className="text-xl font-semibold text-foreground mb-2">Search</h3>
         <p className="text-sm text-muted-foreground text-center mb-4">Get ranked web search results with advanced filtering and real-time data.</p>
 
-        <a href="/guides/search-quickstart" className="block rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transform transition-all duration-300 cursor-pointer w-full">
-          <div className="h-48 flex items-center justify-center relative bg-primary bg-no-repeat bg-cover bg-center" style={{ backgroundImage: 'var(--search-api-banner)' }} />
+        <a href="/docs/search/quickstart" className="block rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transform transition-all duration-300 cursor-pointer w-full">
+          <img src="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/overview/Search.png?fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=f6d833e8b6f9c372e99bfc54c0edf7af" alt="Search API" className="w-full h-48 object-cover" data-og-width="1216" width="1216" data-og-height="720" height="720" data-path="docs/assets/images/overview/Search.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/overview/Search.png?w=280&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=10ded69a2a4f0c74f2903efb1e12b3ef 280w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/overview/Search.png?w=560&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=e3bed31866f2c2fd9f96fb8b16bb3285 560w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/overview/Search.png?w=840&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=f418876152a867fda6df2f1c0525b781 840w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/overview/Search.png?w=1100&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=2e6e8278206cfa89a90d92d08c2b3651 1100w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/overview/Search.png?w=1650&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=bdb2d0de5c74447fed7a79f7c5205f8b 1650w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/overview/Search.png?w=2500&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=e5274e310929668a838552e4d0d18fac 2500w" />
         </a>
       </div>
 
@@ -400,12 +378,8 @@ console.log(completion.choices[0].message.content);`
         <h3 className="text-xl font-semibold text-foreground mb-2">Grounded LLM</h3>
         <p className="text-sm text-muted-foreground text-center mb-4">Build AI applications with web-grounded chat completions and reasoning models.</p>
 
-        <a href="/getting-started/quickstart" className="block rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transform transition-all duration-300 cursor-pointer w-full">
-          <div className="h-48 flex items-center justify-center relative bg-primary bg-no-repeat bg-cover bg-center" style={{ backgroundImage: 'var(--sonar-bg)' }}>
-            <span className="z-10 relative text-foreground text-3xl font-normal tracking-tight">
-              sonar
-            </span>
-          </div>
+        <a href="/docs/getting-started/quickstart" className="block rounded-xl overflow-hidden shadow-md hover:shadow-lg hover:scale-105 transform transition-all duration-300 cursor-pointer w-full">
+          <img src="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/overview/Grounded.png?fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=3b6f32ee4a8af2570b3a73f39ab365c3" alt="Grounded LLM" className="w-full h-48 object-cover" data-og-width="1216" width="1216" data-og-height="720" height="720" data-path="docs/assets/images/overview/Grounded.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/overview/Grounded.png?w=280&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=1a8301d7ac84d31ca3e6284b03a40450 280w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/overview/Grounded.png?w=560&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=31422ebf57504a9cc46fe07584052a5b 560w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/overview/Grounded.png?w=840&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=b097a383931d8dd29850d1a0bd6ca654 840w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/overview/Grounded.png?w=1100&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=1e235da6e820aa1b108d4b2d2b9a1da0 1100w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/overview/Grounded.png?w=1650&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=21bd31b0ea9cd9d9a83c5596bf971a08 1650w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/overview/Grounded.png?w=2500&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=b1efe78d69f111ef29042c98c5150e45 2500w" />
         </a>
       </div>
     </div>

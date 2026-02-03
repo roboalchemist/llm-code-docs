@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/hashing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hashing
 
 > Bun provides a set of utility functions for hashing and verifying passwords with various cryptographically secure algorithms

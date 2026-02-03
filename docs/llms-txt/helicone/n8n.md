@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/gateway/integrations/n8n.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # n8n Integration
 
 > Use the Helicone Chat Model node in n8n workflows to route LLM requests through the AI Gateway with full observability.
@@ -91,6 +95,10 @@ The Helicone Chat Model is a community node for [n8n](https://n8n.io/) that prov
     * Custom properties for filtering and analysis
 
         <img src="https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/helicone-verify.webp?fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=51fa1b6b7be6534edd7c3669624f23fd" alt="Helicone dashboard verification" data-og-width="3094" width="3094" data-og-height="2464" height="2464" data-path="images/integrations/n8n/helicone-verify.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/helicone-verify.webp?w=280&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=b50e6747f4b36b8bc439adbb3fdc804b 280w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/helicone-verify.webp?w=560&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=6d0ddc1cb8c78177f74b4303ce186d3c 560w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/helicone-verify.webp?w=840&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=0b3d0bf03e31fa20e5bfce14a73ccedd 840w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/helicone-verify.webp?w=1100&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=297f6456174e626ed744723dab36d566 1100w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/helicone-verify.webp?w=1650&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=703f7c275c4b6d36971c66685a0419e3 1650w, https://mintcdn.com/helicone/cpApBw7nXGn2NYx2/images/integrations/n8n/helicone-verify.webp?w=2500&fit=max&auto=format&n=cpApBw7nXGn2NYx2&q=85&s=8c45fffa4d7cf4f6486ad2313100d26e 2500w" />
+
+    <Tip>
+      While you're here, why not <a href="https://github.com/helicone/helicone" target="_blank" rel="noreferrer">give us a star on GitHub</a>? It helps us a lot!
+    </Tip>
   </Step>
 </Steps>
 
@@ -183,6 +191,10 @@ All requests from this node will include these properties in Helicone.
 * [Helicone Documentation](https://docs.helicone.ai)
 * [Helicone Discord](https://discord.gg/7aSCGCGUeu)
 * [GitHub Repository](https://github.com/Helicone/n8n-nodes-helicone)
+
+<Note title="Request a Helicone Integration" type="info">
+  Looking for a framework or tool not listed here? [Request it here!](https://forms.gle/E9GYKWevh6NGDdDj7)
+</Note>
 
 ## Related Documentation
 

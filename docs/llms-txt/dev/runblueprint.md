@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/blueprints/runblueprint.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Run blueprint
 
 export const payload_0 = undefined
@@ -102,7 +106,7 @@ In the `invoice_processor` blueprint, you can access the passed data using `@{pa
         </code>
       </td>
 
-      <td>The value specified will be available using the template syntax i.e. @{payload_0}</td>
+      <td>The value specified will be available using the template syntax, e.g. @{payload_0}.</td>
 
       <td>
         <span>-</span>
@@ -139,7 +143,7 @@ Below are the possible end states of the block call.
       <td>Error</td>
       <td>-</td>
       <td>error</td>
-      <td>The blueprint was executed successfully.</td>
+      <td>The blueprint execution failed.</td>
     </tr>
   </tbody>
 </table>

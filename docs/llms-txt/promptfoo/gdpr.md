@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/gdpr/
+
 # GDPR
 
 The EU General Data Protection Regulation (GDPR) is the world's most comprehensive data privacy and security law. While it was drafted and passed by the European Union, it imposes obligations on organizations anywhere, so long as they target or collect data related to people in the EU.

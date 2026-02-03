@@ -4,23 +4,9 @@
 
 # Source: https://trigger.dev/docs/realtime/backend/streams.md
 
-# Source: https://trigger.dev/docs/tasks/streams.md
-
-# Source: https://trigger.dev/docs/realtime/react-hooks/streams.md
-
-# Source: https://trigger.dev/docs/realtime/backend/streams.md
-
-# Source: https://trigger.dev/docs/tasks/streams.md
-
-# Source: https://trigger.dev/docs/realtime/react-hooks/streams.md
-
-# Source: https://trigger.dev/docs/realtime/backend/streams.md
-
-# Source: https://trigger.dev/docs/tasks/streams.md
-
-# Source: https://trigger.dev/docs/realtime/react-hooks/streams.md
-
-# Source: https://trigger.dev/docs/realtime/backend/streams.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Streams
 
@@ -38,7 +24,7 @@ The Streams API allows you to read streaming data from your Trigger.dev tasks in
 
 The recommended approach is to use [defined streams](/tasks/streams#defining-typed-streams-recommended) for full type safety:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream } from "./trigger/streams";
 
@@ -61,7 +47,7 @@ async function consumeStream(runId: string) {
 
 If you prefer not to use defined streams, you can read directly by specifying the stream key:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 
 async function consumeStream(runId: string) {
@@ -78,7 +64,7 @@ async function consumeStream(runId: string) {
 
 Every run has a default stream, so you can omit the stream key:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 
 async function consumeDefaultStream(runId: string) {
@@ -99,7 +85,7 @@ The `read()` method accepts several options for controlling stream behavior:
 
 Set a timeout to stop reading if no data is received within a specified time:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream } from "./trigger/streams";
 
@@ -124,7 +110,7 @@ async function consumeWithTimeout(runId: string) {
 
 Resume reading from a specific chunk index (useful for reconnection scenarios):
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream } from "./trigger/streams";
 
@@ -144,7 +130,7 @@ async function resumeStream(runId: string, lastChunkIndex: number) {
 
 Use an `AbortSignal` to cancel stream reading:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream } from "./trigger/streams";
 
@@ -179,7 +165,7 @@ async function consumeWithCancellation(runId: string) {
 
 You can combine multiple options:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream } from "./trigger/streams";
 
@@ -214,7 +200,7 @@ async function advancedStreamConsumption(runId: string) {
 
 Here's a complete example of consuming an AI stream from your backend:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream } from "./trigger/streams";
 
@@ -249,7 +235,7 @@ async function consumeAIStream(runId: string) {
 
 If a task emits multiple streams, you can read them concurrently or sequentially:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream, progressStream } from "./trigger/streams";
 
@@ -282,7 +268,7 @@ async function consumeStream<T>(
 
 You can pipe streams directly to HTTP responses for server-sent events (SSE):
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream } from "./trigger/streams";
 import type { NextRequest } from "next/server";
@@ -329,7 +315,7 @@ export async function GET(request: NextRequest) {
 
 Handle transient errors with retry logic:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream } from "./trigger/streams";
 
@@ -377,7 +363,7 @@ async function consumeStreamWithRetry(
 
 Process streams in batches for efficiency:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { streams } from "@trigger.dev/sdk";
 import { aiStream } from "./trigger/streams";
 
@@ -413,7 +399,7 @@ async function processBatch(chunks: string[]) {
 
 For more advanced use cases where you need both the run status and streams, you can use the `runs.subscribeToRun()` method with `.withStreams()`:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 import type { myTask } from "./trigger/myTask";
 

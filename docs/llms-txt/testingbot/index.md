@@ -1481,28 +1481,27 @@
 # Source: https://testingbot.com/index.md
 
 ---
-:title: 'TestingBot: Cross Browser Testing and Mobile App Testing'
-:description: Instant access to over 5200 browsers with physical iOS and Android devices.
+title: 'TestingBot: Cross Browser Testing and Mobile App Testing'
+description: Instant access to over 5200 browsers with physical iOS and Android devices.
   Parallel Testing. Automated Testing. Boost your UI test suite in minutes with TestingBot.
-:source_url:
-  :html: https://testingbot.com
-  :md: https://testingbot.com/index.md
+source_url:
+  html: https://testingbot.com
+  md: https://testingbot.com/index.md
 ---
-# Take your web & mobile testing to the next level. 
+# Cross Browser & Mobile App Testing Platform
 
 With over 9 years of experience, our App and Browser Testing service is powerful, easy to use and provides you with a big number of features tailored to help you improve your product.
 
 [Get started free](https://testingbot.com/users/sign_up)[Request a demo](https://testingbot.com/demo)
 
-- 
 1+bn
 
 Tests Executed
-- 
+
 180k
 
 Active Users
-- 
+
 5,500+
 
 Browsers & Devices
@@ -1511,152 +1510,202 @@ Trusted by some of the world's most innovative companies
 
 ## Test your websites and mobile apps
 
-[
+### Web Testing
 
-### Automated Web Testing
+Test on 5200+ real browsers across Windows, macOS and Linux.
 
-Test on 5200+ browsers and devices
+[ 
 
-](https://testingbot.com/features)[
+ 
+#### Live / Manual
+ 
 
-### Manual Web Testing
+Interactive browser testing
 
-Remote testing with mouse and keyboard
+ ](https://testingbot.com/features/manual-browser-testing)[ 
 
-](https://testingbot.com/features/manual-browser-testing)[
+ 
+#### Automated
+ 
 
-### Visual Testing
+Selenium, Playwright, Puppeteer & Cypress
 
-Discover UI regressions during early pipeline testing
+ ](https://testingbot.com/features)[ 
 
-](https://testingbot.com/features/screenshot-testing)[
+ 
+#### AI Testing
+ 
 
-### Automated App Testing
+No-code test creation
 
-Test on physical iOS and Android devices
+ ](https://testingbot.com/features/ai-testing)[ 
 
-](https://testingbot.com/mobile/realdevicetesting)[
+ 
+#### Visual Testing
+ 
 
-### Manual App Testing
+Screenshot comparison of websites
 
-Remote app testing on any device
+ ](https://testingbot.com/features/screenshot-testing)
 
-](https://testingbot.com/features/manual-mobile-testing)[
+### Mobile App Testing
 
-### AI Test Automation
+Test on real physical iOS and Android devices.
 
-Create tests without writing any code
+[ 
 
-](https://testingbot.com/features/ai-testing)
+ 
+#### Live / Manual
+ 
 
- ![Test on real mobile & desktop devices](https://testingbot.com/assets/features/manual-flow-b2c093218b8db3363e5903a6197ce47efa4361cd8c114738489bbc673b5d168a.jpg)
+Interactive device testing
 
-Browser Testing
+ ](https://testingbot.com/features/manual-mobile-testing)[ 
 
-## Manual and Automated Cross Browser testing
+ 
+#### Automated
+ 
 
-Get one-click access to real browsers running on macOS, Windows and Linux platforms. Cross-browser testing made simple: switch platforms, locations and screen resolutions instantly.
+Appium, Espresso, XCUITest & Maestro
+
+ ](https://testingbot.com/mobile/realdevicetesting)[ 
+
+ 
+#### AI Testing
+ 
+
+Natural language tests for Apps
+
+ ](https://testingbot.com/features/ai-testing)[ 
+
+ 
+#### Visual Testing
+ 
+
+App screenshot comparison
+
+ ](https://testingbot.com/features/screenshot-testing)
+
+ ![App screenshot comparison](https://testingbot.com/assets/features/manual-flow-b2c093218b8db3363e5903a6197ce47efa4361cd8c114738489bbc673b5d168a.jpg)
+
+## Cross-Browser Testing Made Simple
+
+Get one-click access to real browsers running on macOS, Windows and Linux platforms. Switch platforms, locations and screen resolutions instantly.
 
 Test across all versions of Internet Explorer (IE8 to IE11), Edge, Chrome, Safari, Firefox and Opera.
 
-[Get started free](https://testingbot.com/users/sign_up)
+ ![Chrome](https://testingbot.com/assets/home/chrome-97eb1fabe899086fad592ef3ed29d82d0a206a2002d5c3be62079a3163391e1d.svg)Chrome
 
- ![Test on real mobile & desktop devices](https://testingbot.com/assets/hero/app-testing-eb9e2816aa7dce01b215db1df0a54c361c2ff9b8c30850a5dd00f088c9255cb3.webp)
+ ![Safari](https://testingbot.com/assets/environments/svg/safari-e4837bb5f9a9729fef843af4180372e975c62587808b8ab479f615f3e240e858.svg)Safari
 
-App Testing
+ ![Firefox](https://testingbot.com/assets/home/firefox-a8ee4666d002663e9868f9b15eb50f681cc03839ae1ead6432353c617496b95d.svg)Firefox
 
-## Real Device Cloud for Native App Automation
+ ![Edge](https://testingbot.com/assets/home/edge-8204f73ccd649193b2a4d066840b4431b982015625e0c42a95bf91b5eec127b2.svg)Edge
 
-Debug faster and ship with confidence by running tests on real iOS and Android devices in the TestingBot cloud.
+[Start Testing](https://testingbot.com/features/manual-browser-testing)
 
-The TestingBot device farm offers realtime access to iPhones, iPads, Android devices and Smart TVs.
+## Why teams choose TestingBot
 
-[Get started free](https://testingbot.com/users/sign_up)
+### Improve test coverage
 
- ![Test on real mobile & desktop devices](https://testingbot.com/assets/home/ai-chat-24cc1ab8234690bad4a866888a2bd8e11f1301b7e21ad86be5d4d61be838707a.webp)
+Cross-browser, real device and visual testing on 5500+ browser and device combinations.
 
-AI Testing
+### Boost productivity with AI
 
+AI-powered test creation and execution. Write tests in natural language, let AI do the rest.
+
+### Accelerate testing cycles
+
+Run tests in parallel across multiple browsers and devices. Ship faster with confidence.
+
+## Works with your favorite testing frameworks
+
+Native support for all major web and mobile testing frameworks. Get started in minutes.
+
+### Web Testing
+
+[![Selenium](https://testingbot.com/assets/integrations/selenium-1403d7bf83f64f56f05cea3fe50ae45bc3025d5a2433b7b05d2b199fec753cf6.svg) Selenium ](https://testingbot.com/features/automation/selenium)[![Playwright](https://testingbot.com/assets/support/playwright-2dcb4e75b55ac0d1135cfa47be6137b13f46a2047ce78b96a34f51b0e2cc0d96.svg) Playwright ](https://testingbot.com/features/automation/playwright)[![Cypress](https://testingbot.com/assets/support/cypress-409c9fd3f79115ed7676aa1df4f6a217dc4402b3366a61984924aec7b4fefa97.svg) Cypress ](https://testingbot.com/features/automation/cypress)[![Puppeteer](https://testingbot.com/assets/support/puppeteer-63fa36b36d91bc87cb056dbf2f9843947371e41400d473b4c0cc3729283af5dc.svg) Puppeteer ](https://testingbot.com/features/automation/puppeteer)[WebdriverIO](https://testingbot.com/support/web-automate/selenium/nodejs/webdriverio)[![Robot Framework logo](https://testingbot.com/assets/wizard/robotframework-08821f4942343bcb1f828470b5cbff3163369c14884b7ca285be190017ee7a94.png) RobotFramework ](https://testingbot.com/support/web-automate/selenium/robotframework)
+
+### Mobile Testing
+
+[![Appium](https://testingbot.com/assets/support/appium-4b35a8bb56bae236bd84c539cee9b8bbb489a55ddf48e32d059c86685d230354.svg) Appium ](https://testingbot.com/features/automation/appium)[![Espresso](https://testingbot.com/assets/integrations/espresso-a8ff30da0c385f89f4e694bb29fc4779ad132e8e3f4a777a38e608e0492ff610.svg) Espresso ](https://testingbot.com/features/automation/espresso)[![XCUITest](https://testingbot.com/assets/integrations/xcuitest-a9262c0277bf518323bfa442c87c9309681b673b52646bd772f9289c668f72fe.svg) XCUITest ](https://testingbot.com/features/automation/xcuitest)[![Maestro](https://testingbot.com/assets/integrations/maestro-9d782f30f13fb4efaf9928b704c7a787eb14cb9e5b20c650137bb65892334b8b.svg) Maestro ](https://testingbot.com/features/automation/maestro)[Flutter](https://testingbot.com/support/app-automate/appium/flutter)[React Native](https://testingbot.com/features/automation/appium)
+
+### Languages & SDKs
+
+[Java](https://testingbot.com/support/web-automate/selenium/java)[Python](https://testingbot.com/support/web-automate/selenium/python)[NodeJS](https://testingbot.com/support/web-automate/selenium/nodejs)[C# / .NET](https://testingbot.com/support/web-automate/selenium/csharp)[Ruby](https://testingbot.com/support/web-automate/selenium/ruby)[php PHP](https://testingbot.com/support/web-automate/selenium/php)
+
+[View all documentation](https://testingbot.com/support)
+
+  Real Device Cloud 
+## Test on real iOS & Android devices
+
+Access hundreds of real physical devices for manual and automated testing. iPhones, iPads, Samsung Galaxy, Pixel, Smart TVs and more.
+
+ ![Appium](https://testingbot.com/assets/support/appium-4b35a8bb56bae236bd84c539cee9b8bbb489a55ddf48e32d059c86685d230354.svg)
+Appium
+
+ ![Espresso](https://testingbot.com/assets/integrations/espresso-a8ff30da0c385f89f4e694bb29fc4779ad132e8e3f4a777a38e608e0492ff610.svg)
+Espresso
+
+ ![XCUITest](https://testingbot.com/assets/integrations/xcuitest-a9262c0277bf518323bfa442c87c9309681b673b52646bd772f9289c668f72fe.svg)
+XCUITest
+
+ ![Maestro](https://testingbot.com/assets/integrations/maestro-9d782f30f13fb4efaf9928b704c7a787eb14cb9e5b20c650137bb65892334b8b.svg)
+Maestro
+
+[Explore device cloud](https://testingbot.com/mobile/realdevicetesting)
+
+ ![Real device testing](https://testingbot.com/assets/hero/app-testing-eb9e2816aa7dce01b215db1df0a54c361c2ff9b8c30850a5dd00f088c9255cb3.webp)
+
+  AI-Powered Testing 
 ## AI Test Agent
 
-Use TestingBotAI End-to-End Testing Assistant to create and run tests for you.
+Create and run tests without writing code. Simply describe what you want to test in plain language.
 
-Simply write in natural language what the test should verify, and TestingBotAI will create all the test steps and run the test for you.
+TestingBot AI understands your application and generates reliable test steps automatically.
 
-[Start AI Testing](https://testingbot.com/features/ai-testing)
+[Try AI Testing](https://testingbot.com/features/ai-testing)
 
-## Seamlessly integrate TestingBot into your setup
+ ![AI Testing Interface](https://testingbot.com/assets/home/ai-chat-24cc1ab8234690bad4a866888a2bd8e11f1301b7e21ad86be5d4d61be838707a.webp)
 
-Run automated tests on every commit using your CI/CD pipeline. Trigger tests from Visual Studio, test beta apps from App Center and receive real-time results in Jenkins and Slack. Log issues directly to Jira and easily reproduce bugs with a single click.
+ ![Accessibility Testing Dashboard](https://testingbot.com/assets/features/accessibility/accessibility_ui-b64827a2253e7d403626e287a9da43bbf597d15b8e61fce56a53d8f3ffb9db1a.jpg)
 
- ![Selenium](https://testingbot.com/assets/integrations/selenium-1403d7bf83f64f56f05cea3fe50ae45bc3025d5a2433b7b05d2b199fec753cf6.svg)Selenium
+  Accessibility Testing 
+## WCAG Compliance Testing
 
- ![Appium Desktop](https://testingbot.com/assets/support/appium-4b35a8bb56bae236bd84c539cee9b8bbb489a55ddf48e32d059c86685d230354.svg)Appium
+Identify and fix accessibility issues across your websites. Ensure WCAG compliance and deliver an inclusive experience for all users.
 
- ![Playwright](https://testingbot.com/assets/support/playwright-2dcb4e75b55ac0d1135cfa47be6137b13f46a2047ce78b96a34f51b0e2cc0d96.svg)Playwright
+Meet legal requirements like the European Accessibility Act (EAA), reach a broader audience and improve SEO with accessibility best practices.
 
- ![Slack](https://testingbot.com/assets/home/integrations/slack-bb80ee3eab2780485942bb08f04c207f99b471ef243aa5d98342b63d725cc258.svg)Slack
+WCAG 2.1 Compliance
 
- ![Jenkins](https://testingbot.com/assets/home/integrations/jenkins-99fe0a162ffc131f4b0dfc0929f8919e6c671555d418ba1ea8d4166e0b5d314a.webp)Jenkins
+Scheduled Testing
 
- ![Travis CI](https://testingbot.com/assets/integrations/travis-f3a8872deab0dd6f4c13686fd8255cb07c426309090e335a9198312b49c43232.webp)Travis CI
+Detailed Reports
 
- ![Jira](https://testingbot.com/assets/home/integrations/jira-883ba56e56e7c50d4c67c5500062c4161a6f21d052f7781b73fb2f32f936da17.webp)Jira
+Severity Classification
 
- ![Cypress](https://testingbot.com/assets/support/cypress-409c9fd3f79115ed7676aa1df4f6a217dc4402b3366a61984924aec7b4fefa97.svg)Cypress
+[Explore Accessibility Testing](https://testingbot.com/features/accessibility-testing)
 
- ![Gitlab](https://testingbot.com/assets/integrations/gitlab-e4c0b6db07d07bc0a400f5606e258f4dc8a51b778e97bbfa51d1d531f3cb049a.webp)Gitlab
+## Trusted by teams worldwide
 
- ![Microsoft App Center](https://testingbot.com/assets/integrations/app-center-icon-2c5c0d6c296fd04d1d3d0109db02dde20bb93a5ee7a9616e7805f27d6ec6503a.svg)App Center
+Join thousands of companies shipping better software with TestingBot
 
-[View all integrations](https://testingbot.com/integrations)
+0+ 
 
-### 24/7 support
+Tests Executed
 
-Got questions? Ask in the 24/7 in-app customer [chat support](https://testingbot.com/#) or [send us an email](https://testingbot.com/contact/new). We are here to help you!
+0+ 
 
-TestingBot Support
+Active Users
 
-Hey 👋 How can we help?
+0+ 
 
-I need support
+Browsers & Devices
 
-### Trusted by over 14,000 teams
-
-6M+
-
-Tests
-
-120k+
-
-Users
-
-400+
-
-Enterprises
-
-106
+0
 
 Countries
-
-[Request a demo](https://testingbot.com/demo)
-
-### Developer Documentation
-
-Everything you need to integrate TestingBot into your workflow. Browse guides, API references and SDKs for web and mobile testing.
-
-- [Quickstart tutorials for Selenium](https://testingbot.com/support/web-automate/selenium)
-- [Appium Examples](https://testingbot.com/support/app-automate/appium)
-- [CI/CD integration setup guides](https://testingbot.com/support/integrations)
-- [List of browsers & devices](https://testingbot.com/support/web-automate/browsers)
-
-[Explore Documentation](https://testingbot.com/support)
-
-### Enterprise-grade Security
-
-Star level 1
-
-Certified
 
 GDPR
 
@@ -1666,37 +1715,32 @@ SAML SSO
 
 Single Sign-On
 
+Star Level 1
+
+Certified
+
 99.99%
 
 Uptime SLA
 
-[Visit TestingBot Trust Center](https://trust.testingbot.com/)
+## Seamlessly integrate into your workflow
 
-Resources you may like
+Connect TestingBot with your CI/CD pipeline, issue trackers and communication tools.
 
-[![Top Web Development Tools in 2025](https://testingbot.com/assets/resources/articles/55-68e8970c2d4f68ef0fe0f4f519991c5f4413c2c08802b5baba57baab219a239a.webp)](https://testingbot.com/resources/articles/web-development-tools)
-#### [Top Web Development Tools in 2025](https://testingbot.com/resources/articles/web-development-tools)
+[![Jenkins](https://testingbot.com/assets/home/integrations/jenkins-99fe0a162ffc131f4b0dfc0929f8919e6c671555d418ba1ea8d4166e0b5d314a.webp) Jenkins ](https://testingbot.com/support/integrations/ci-cd/jenkins)[![GitHub Actions](https://testingbot.com/assets/integrations/github-actions-8436242ad9e15381f84f1a98a10dddce15611087f121d6305782e211942b7842.webp) GitHub ](https://testingbot.com/support/integrations/ci-cd/github-actions)[![GitLab](https://testingbot.com/assets/integrations/gitlab-e4c0b6db07d07bc0a400f5606e258f4dc8a51b778e97bbfa51d1d531f3cb049a.webp) GitLab ](https://testingbot.com/support/integrations/ci-cd/gitlab)[![CircleCI](https://testingbot.com/assets/integrations/circleci-ede029654ff39b60342e4a5bba8fc9a3a49305cc38bda215b7cf8d07e85e0543.webp) CircleCI ](https://testingbot.com/support/integrations/ci-cd/circleci)[![Travis CI](https://testingbot.com/assets/integrations/travis-f3a8872deab0dd6f4c13686fd8255cb07c426309090e335a9198312b49c43232.webp) Travis CI ](https://testingbot.com/support/integrations/ci-cd/travis-ci)[![Slack](https://testingbot.com/assets/home/integrations/slack-bb80ee3eab2780485942bb08f04c207f99b471ef243aa5d98342b63d725cc258.svg) Slack ](https://testingbot.com/support/integrations/slack)[![Jira](https://testingbot.com/assets/home/integrations/jira-883ba56e56e7c50d4c67c5500062c4161a6f21d052f7781b73fb2f32f936da17.webp) Jira ](https://testingbot.com/support/integrations/jira)[Azure](https://testingbot.com/support/integrations/ci-cd/azure)[![Bitbucket](https://testingbot.com/assets/integrations/bitbucket-02aabcd549221726e052f2ee19c8959fbb218160ad7f7c31f6e6b96e7824a42c.webp) Bitbucket ](https://testingbot.com/support/integrations/ci-cd/bitbucket)[![TeamCity](https://testingbot.com/assets/integrations/teamcity-7e75cdb835903a4983ad276c41d95e569ceac5be486e96ec1f955029ce5bb319.svg) TeamCity ](https://testingbot.com/support/integrations/ci-cd/teamcity)[![Bamboo](https://testingbot.com/assets/integrations/bamboo-c8fe09a3cb0b74d6055e3aa6607d77720bfe29ff487b8e3cf825138adf634346.svg) Bamboo ](hhttps://testingbot.com/support/integrations/ci-cd/bamboo)[![App Center](https://testingbot.com/assets/integrations/app-center-icon-2c5c0d6c296fd04d1d3d0109db02dde20bb93a5ee7a9616e7805f27d6ec6503a.svg) App Center ](https://testingbot.com/support/integrations/appcenter)
 
-A top 10 list of the most popular and useful web development tools.
+[View all integrations](https://testingbot.com/integrations)
 
-[Read more](https://testingbot.com/resources/articles/web-development-tools)
+   No credit card required
 
-[![Most popular Screen Resolutions](https://testingbot.com/assets/resources/articles/54-5f84cd0ac4f2b96527545559c41f9e198b9bcb433dc32d6f58e33a4088ba4be1.webp)](https://testingbot.com/resources/articles/common-screen-resolutions)
-#### [Most popular Screen Resolutions](https://testingbot.com/resources/articles/common-screen-resolutions)
+## Ready to get started?
 
-An overview of the most popular screen resolutions in 2025 for desktop and mobile.
+Join thousands of teams shipping better software with TestingBot
 
-[Read more](https://testingbot.com/resources/articles/common-screen-resolutions)
+[Start Free Trial](https://testingbot.com/users/sign_up)[View pricing](https://testingbot.com/pricing)
 
-[![Selenium Python Tutorial](https://testingbot.com/assets/resources/articles/51-39337d128e18d16ddec5fe39124c2302f334e0f21e06f361cfd19e0b719e8861.webp)](https://testingbot.com/resources/articles/python-selenium-web-automation-test)
-#### [Selenium Python Tutorial](https://testingbot.com/resources/articles/python-selenium-web-automation-test)
+Free 14-day trial
 
-A quick introduction in using Python with Selenium WebDriver
+5-minute setup
 
-[Read more](https://testingbot.com/resources/articles/python-selenium-web-automation-test)
-
-## Ready to get started? 
-
-Start testing your website and mobile app today.
-
-[Start a free trial](https://testingbot.com/users/sign_up)
+24/7 support

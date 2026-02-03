@@ -1,5 +1,9 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/ai-review-customization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Customization
 
 > Tailor AI reviews to your team's specific needs and coding standards
@@ -8,8 +12,8 @@
 
 While Graphite Agent will catch bugs out of the box, you can customize its behavior to better match your team's specific needs and coding standards. AI reviews offer two primary customization options: **Exclusions** and **Custom rules**.
 
-<Frame caption="AI reviews customization interface">
-  <img src="https://mintcdn.com/graphite-58cc94ce/AlNXHu6AEKyFvgRD/images/ai-reviewer-customizations.png?fit=max&auto=format&n=AlNXHu6AEKyFvgRD&q=85&s=4ecc00cdba3cb276a28cf7f02348d6ba" data-og-width="2336" width="2336" data-og-height="1584" height="1584" data-path="images/ai-reviewer-customizations.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/graphite-58cc94ce/AlNXHu6AEKyFvgRD/images/ai-reviewer-customizations.png?w=280&fit=max&auto=format&n=AlNXHu6AEKyFvgRD&q=85&s=801b12656fd7f31e18412c9dc5b41525 280w, https://mintcdn.com/graphite-58cc94ce/AlNXHu6AEKyFvgRD/images/ai-reviewer-customizations.png?w=560&fit=max&auto=format&n=AlNXHu6AEKyFvgRD&q=85&s=cbd77ac882797e04572734fff53a077e 560w, https://mintcdn.com/graphite-58cc94ce/AlNXHu6AEKyFvgRD/images/ai-reviewer-customizations.png?w=840&fit=max&auto=format&n=AlNXHu6AEKyFvgRD&q=85&s=f42ac19ca3a0b722c40cc72dc20162e8 840w, https://mintcdn.com/graphite-58cc94ce/AlNXHu6AEKyFvgRD/images/ai-reviewer-customizations.png?w=1100&fit=max&auto=format&n=AlNXHu6AEKyFvgRD&q=85&s=2ea41cddd6dabc78c98826e82e2cf481 1100w, https://mintcdn.com/graphite-58cc94ce/AlNXHu6AEKyFvgRD/images/ai-reviewer-customizations.png?w=1650&fit=max&auto=format&n=AlNXHu6AEKyFvgRD&q=85&s=24c4692118a0bee9f6824f717560a0ac 1650w, https://mintcdn.com/graphite-58cc94ce/AlNXHu6AEKyFvgRD/images/ai-reviewer-customizations.png?w=2500&fit=max&auto=format&n=AlNXHu6AEKyFvgRD&q=85&s=8c238155ecd08f82f0d274e228c43d40 2500w" />
+<Frame caption="The Rules & exclusions tab shows custom rules and exclusions with their metrics">
+  <img src="https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviewer-customizations.png?fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=fd9f41ece21fd4c42b650a9629a9237c" data-og-width="3396" width="3396" data-og-height="1816" height="1816" data-path="images/ai-reviewer-customizations.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviewer-customizations.png?w=280&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=9fa425fb6e10a6c74e53fd2c886fc0ed 280w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviewer-customizations.png?w=560&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=5c5d62126ed01bc8342ee459609e1a5d 560w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviewer-customizations.png?w=840&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=70517d7b1007aa9ec0c5ccab4cffcd67 840w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviewer-customizations.png?w=1100&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=2417973bc08489e80ce6e53d02fab742 1100w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviewer-customizations.png?w=1650&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=57f2d3deb7f659da611c8604dfae074c 1650w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviewer-customizations.png?w=2500&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=948dfb39926686ebe85c3de7fbfbe089 2500w" />
 </Frame>
 
 ## Exclusions: Specifying what to ignore
@@ -53,9 +57,9 @@ Do not comment on missing "return" keywords in Kotlin single-expression function
 
 To set up exclusions:
 
-1. Go to the [AI reviews settings page](https://app.graphite.com/ai-reviews)
-2. Click on Workspace Settings
-3. Create and save your exclusions
+1. Go to the [AI reviews dashboard](https://app.graphite.com/ai-reviews)
+2. Navigate to the **Rules & exclusions** tab
+3. Click "Add" next to Comment exclusions and save your exclusion
 
 ## Custom rules: Teaching Graphite Agent your standards
 
@@ -104,6 +108,10 @@ Custom prompts are rules written directly in the Graphite UI. They're the recomm
 
 File-based rules reference existing documentation in your repository using glob patterns. Use these sparingly when you have living documentation that changes frequently.
 
+<Frame caption="File-based rule configuration">
+  <img src="https://mintcdn.com/graphite-58cc94ce/Rph4dyyBh6GUzGT6/images/custom-rule-file-path.png?fit=max&auto=format&n=Rph4dyyBh6GUzGT6&q=85&s=60989441ff4f55c446c54504a823d46b" data-og-width="602" width="602" data-og-height="486" height="486" data-path="images/custom-rule-file-path.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/graphite-58cc94ce/Rph4dyyBh6GUzGT6/images/custom-rule-file-path.png?w=280&fit=max&auto=format&n=Rph4dyyBh6GUzGT6&q=85&s=599f8f4d700ad6f91a0d716ec5751514 280w, https://mintcdn.com/graphite-58cc94ce/Rph4dyyBh6GUzGT6/images/custom-rule-file-path.png?w=560&fit=max&auto=format&n=Rph4dyyBh6GUzGT6&q=85&s=a6b994cf7978a78a9b429b02364a553b 560w, https://mintcdn.com/graphite-58cc94ce/Rph4dyyBh6GUzGT6/images/custom-rule-file-path.png?w=840&fit=max&auto=format&n=Rph4dyyBh6GUzGT6&q=85&s=e1ca710f016802fd3a37edde2c40375f 840w, https://mintcdn.com/graphite-58cc94ce/Rph4dyyBh6GUzGT6/images/custom-rule-file-path.png?w=1100&fit=max&auto=format&n=Rph4dyyBh6GUzGT6&q=85&s=ba99b464c48c6fe154d588f1993c1b74 1100w, https://mintcdn.com/graphite-58cc94ce/Rph4dyyBh6GUzGT6/images/custom-rule-file-path.png?w=1650&fit=max&auto=format&n=Rph4dyyBh6GUzGT6&q=85&s=5a78841b7c8fc06630877fdbc093c5a5 1650w, https://mintcdn.com/graphite-58cc94ce/Rph4dyyBh6GUzGT6/images/custom-rule-file-path.png?w=2500&fit=max&auto=format&n=Rph4dyyBh6GUzGT6&q=85&s=42bed0a94d595acdd4846d278b1ff36a 2500w" />
+</Frame>
+
 **When to use file-based rules:**
 
 * Documentation maintained by other teams that changes regularly
@@ -116,12 +124,15 @@ File-based rules reference existing documentation in your repository using glob 
 2. Graphite Agent reads the file content from your repository
 3. Uses that content as context during code review
 
-**Example patterns:**
+**Recommended file paths:**
+
+Store your rules alongside your other code generation markdown files, or use one dedicated folder per repository. Common patterns include:
 
 ```
 docs/coding-standards.md    # Specific documentation file
 CONTRIBUTING.md             # Contributing guidelines
 docs/architecture/*.md      # Architecture documentation
+.github/rules/*.md          # Rules folder in your repo
 ```
 
 **Limitations:**
@@ -147,9 +158,11 @@ docs/architecture/*.md      # Architecture documentation
 
 **What to avoid:**
 
+* Unnecessary context ("you are a staff-level engineer")
 * Overly broad rules ("write good code")
-* Subjective preferences without clear reasoning
-* Complex architectural patterns that only sometimes apply
+* Praise
+* Non-prescriptive verbs ("comment on" or "flag")
+* Comments that should actually be exclusions ("don't comment on")
 
 Bad examples:
 
@@ -161,8 +174,8 @@ Rule: Don't make breaking changes to database fields. When dropping or adding fi
 
 Why is this bad?
 
-* Too vague. The rule needs to specify what types of field drops or additions would be considered breaking.
-* Not actionable. The rule should be specific, like: "Never drop a required field directly. Always make it nullable first and stop writing to it so that it is no longer used by the entity."
+* Too vague. What counts as a breaking change to database fields?
+* "Flag" is a non-prescriptive verb. Leaving a comment inherently means flagging an issue. What should Graphite Agent tell engineers to do instead? A better alternative would be: "Never drop a required field directly. Always make it nullable first and stop writing to it so that it is no longer used by the entity."
 * No examples provided.
 
 ```
@@ -173,8 +186,9 @@ Always comment on color values like #FF0000 being used in stylesheets. Don't com
 
 Why is this bad?
 
-* More context is needed. The rule should specify which files or frameworks this applies to (CSS files, styled-components, etc.).
+* "Comment" is a non-prescriptive verb. Instead, the rule should specify what Graphite Agent's comment should contain.
 * This isn't phrased as a rule. The rule should be stated clearly as "Never use hex color values directly, always use design system tokens instead."
+* More context is needed. The rule should specify which files or frameworks this applies to (CSS files, styled-components, etc.).
 * This prompt mixes custom rules and exclusions. The latter sentence is not necessary.
 
 Good examples:
@@ -237,10 +251,11 @@ For additional recommendations, see [Anthropic's suggestions for prompt engineer
 
 To set up custom rules:
 
-1. Go to the [AI reviews settings page](https://app.graphite.com/ai-reviews?view=settings)
-2. Scroll to the "Custom rules" section and click on "Create custom rule"
-3. Choose a template or add a custom prompt for your new rule
-4. Save your configuration
+1. Go to the [AI reviews dashboard](https://app.graphite.com/ai-reviews)
+2. Navigate to the **Rules & exclusions** tab
+3. Click "Add" next to Custom rules
+4. Choose a template or add a custom prompt for your new rule
+5. Save your configuration
 
 ## Excluding files from AI review
 
@@ -267,7 +282,7 @@ generated/** linguist-generated=true
 
 Files marked as `linguist-generated` will be:
 
-* Automatically collapsed in GitHub pull request views
+* Automatically collapsed in both Graphite and GitHub pull request views
 * Excluded from AI review when determining if a PR is too large
 * Skipped during the AI review process
 
@@ -291,4 +306,36 @@ PR-level filtering provides flexibility to:
 * **Focus analysis on critical PRs**: Ensure reviews target high-impact changes while skipping routine updates
 * **Implement organization-specific review policies**: Align AI review behavior with your team's development workflows and governance requirements
 
-Once saved, AI reviews will only run on new and updated pull requests that match the configured settings in enabled repositories. You can configure these settings through the AI reviews settings page, and organization admin permissions are required to modify them.
+Once saved, AI reviews will only run on new and updated pull requests that match the configured settings in enabled repositories. You can configure these settings through the **Settings** tab on the AI reviews dashboard, and organization admin permissions are required to modify them.
+
+## Measuring rule and exclusion effectiveness
+
+The **Rules & exclusions** tab on the [AI reviews dashboard](https://app.graphite.com/ai-reviews) provides detailed analytics for each custom rule and exclusion you've created.
+
+### Custom rules metrics
+
+For each custom rule, you can track:
+
+* **Issues found**: Total issues flagged by this rule
+* **PRs reviewed**: Number of pull requests where this rule was applied
+* **Accepted issues**: Issues that led to code changes
+* **Acceptance rate**: Percentage of issues that were accepted
+* **Upvote/Downvote rates**: Direct feedback from your team
+
+### Comment exclusions metrics
+
+For each exclusion, you can track:
+
+* **Issues checked**: Total issues evaluated against this exclusion
+* **PRs reviewed**: Number of pull requests where this exclusion was applied
+* **Issues caught**: Issues that were filtered out by this exclusion
+* **Percentage caught**: Proportion of checked issues that were excluded
+
+### Using metrics to optimize
+
+Use these metrics to:
+
+* Identify high-performing rules to use as templates for new rules
+* Refine or remove rules with low acceptance rates
+* Understand which rules resonate with your team
+* Fine-tune exclusions that are filtering too many or too few issues

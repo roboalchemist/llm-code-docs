@@ -1,39 +1,51 @@
 # Source: https://docs.baseten.co/reference/cli/truss/init.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # truss init
 
-> Create a new Truss.
+> Create a new Truss project.
 
-```
+```sh  theme={"system"}
 truss init [OPTIONS] TARGET_DIRECTORY
 ```
 
-## Options
+Creates a new Truss project in the specified directory with the standard file structure.
 
-<ParamField body="-b, --backend" type="TrussServer|TGI|VLLM">
-  What type of server to create. Default: `TrussServer`.
+### Options
+
+<ParamField body="-b, --backend" type="TrussServer | TRT_LLM">
+  Server type to create. Default: `TrussServer`.
 </ParamField>
 
-<ParamField body="-n, --name" type="STRING">
+<ParamField body="-n, --name" type="TEXT">
   The value assigned to `model_name` in `config.yaml`.
 </ParamField>
 
-<ParamField body="--help">
-  Show help message and exit.
+### Arguments
+
+<ParamField body="TARGET_DIRECTORY" type="TEXT" required>
+  Directory where the Truss project is created.
 </ParamField>
 
-## Arguments
+**Example:**
 
-<ParamField body="TARGET_DIRECTORY" type="str">
-  A Truss is created in this directory.
-</ParamField>
+To create a new Truss project, use the following:
 
-## Example
-
-```
-truss init my_truss_directory
+```sh  theme={"system"}
+truss init my-model
 ```
 
+To create a Truss with a custom name, use the following:
+
+```sh  theme={"system"}
+truss init --name "My Model" my-model
 ```
-truss init --name "My Truss" my_truss_directory
+
+To create a Truss with TRT\_LLM backend, use the following:
+
+```sh  theme={"system"}
+truss init --backend TRT_LLM my-trt-model
 ```

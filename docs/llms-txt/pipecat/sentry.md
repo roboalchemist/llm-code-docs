@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/analytics/sentry.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sentry Metrics
 
 > Performance monitoring integration with Sentry for Pipecat frame processors
@@ -57,8 +61,3 @@ Before using Sentry metrics services, you need:
 * **Error Tracking**: Automatic error capture and reporting
 * **Frame Processor Metrics**: Monitor individual processor performance
 * **Real-time Analytics**: Live performance data and alerting
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/legacy-alias-preset.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Legacy CLI Command Alias Preset
 
 > Copy legacy aliases to retain old command names & avoid deprecation warnings in Graphite CLI.

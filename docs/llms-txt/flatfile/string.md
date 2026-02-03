@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/string.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # String Validator Plugin
 
 > A comprehensive plugin for validating and transforming string data during the Flatfile import process with configurable validation rules, pattern matching, and automatic data corrections.
@@ -14,7 +18,7 @@ Use cases include cleaning user-submitted data, ensuring identifiers match a spe
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-validate-string
 ```
 
@@ -71,7 +75,7 @@ The plugin is configured with a single `StringValidationConfig` object with the 
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateString } from '@flatfile/plugin-validate-string';
 
@@ -85,7 +89,7 @@ The plugin is configured with a single `StringValidationConfig` object with the 
   }));
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateString } from '@flatfile/plugin-validate-string';
 
@@ -103,7 +107,7 @@ The plugin is configured with a single `StringValidationConfig` object with the 
 ### Email Validation
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateString } from '@flatfile/plugin-validate-string';
 
@@ -120,7 +124,7 @@ The plugin is configured with a single `StringValidationConfig` object with the 
   }));
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateString } from '@flatfile/plugin-validate-string';
 
@@ -141,7 +145,7 @@ The plugin is configured with a single `StringValidationConfig` object with the 
 ### Advanced Custom Pattern Validation
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateString } from '@flatfile/plugin-validate-string';
 
@@ -159,7 +163,7 @@ The plugin is configured with a single `StringValidationConfig` object with the 
   }));
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateString } from '@flatfile/plugin-validate-string';
 
@@ -181,7 +185,7 @@ The plugin is configured with a single `StringValidationConfig` object with the 
 ### Using the Utility Function
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { validateAndTransformString } from '@flatfile/plugin-validate-string';
 
   const config = {
@@ -196,7 +200,7 @@ The plugin is configured with a single `StringValidationConfig` object with the 
   // result2 -> { value: 'not-an-email', error: 'Invalid format' }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { validateAndTransformString } from '@flatfile/plugin-validate-string';
 
   const config = {
@@ -215,7 +219,7 @@ The plugin is configured with a single `StringValidationConfig` object with the 
 ### Error Handling Example
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { validateAndTransformString } from '@flatfile/plugin-validate-string';
 
   const config = {
@@ -230,7 +234,7 @@ The plugin is configured with a single `StringValidationConfig` object with the 
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { validateAndTransformString } from '@flatfile/plugin-validate-string';
 
   const config = {

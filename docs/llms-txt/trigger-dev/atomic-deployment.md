@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/deployment/atomic-deployment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Atomic deploys
 
 > Use atomic deploys to coordinate changes to your tasks and your application.
@@ -18,7 +22,7 @@ Atomic deploys achieve synchronization by deploying your tasks to Trigger.dev wi
 
 If you deploy to Vercel via their CLI, you can use this sample workflow that demonstrates performing atomic deploys with GitHub Actions, Trigger.dev, and Vercel:
 
-```yml  theme={null}
+```yml  theme={"theme":"css-variables"}
 name: Deploy to Trigger.dev (prod)
 on:
   push:
@@ -97,7 +101,7 @@ Now whenever you push to your main branch, Vercel will deploy your application t
 
 Now we want to deploy that same commit to Trigger.dev, and then promote the Vercel deployment when that completes. Here's a sample GitHub Actions workflow that does this:
 
-```yml  theme={null}
+```yml  theme={"theme":"css-variables"}
 name: Deploy to Trigger.dev (prod)
 
 on:

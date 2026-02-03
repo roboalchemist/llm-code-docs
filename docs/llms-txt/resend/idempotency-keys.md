@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/emails/idempotency-keys.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Idempotency Keys
 
 > Use idempotency keys to ensure that emails are sent only once.
@@ -32,7 +36,7 @@ We keep idempotency keys in our system for **24 hours**. This should give you an
 ### `POST /emails` endpoint example
 
 <CodeGroup>
-  ```ts Node.js {9} theme={null}
+  ```ts Node.js {9} theme={"theme":{"light":"github-light","dark":"vesper"}}
   await resend.emails.send(
     {
       from: 'Acme <onboarding@resend.dev>',
@@ -46,7 +50,7 @@ We keep idempotency keys in our system for **24 hours**. This should give you an
   );
   ```
 
-  ```php PHP {9} theme={null}
+  ```php PHP {9} theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->emails->send([
@@ -59,7 +63,7 @@ We keep idempotency keys in our system for **24 hours**. This should give you an
   ]);
   ```
 
-  ```python Python {9} theme={null}
+  ```python Python {9} theme={"theme":{"light":"github-light","dark":"vesper"}}
   params: resend.Emails.SendParams = {
     "from": "Acme <onboarding@resend.dev>",
     "to": ["delivered@resend.dev"],
@@ -74,7 +78,7 @@ We keep idempotency keys in our system for **24 hours**. This should give you an
   resend.Emails.send(params, options)
   ```
 
-  ```rb Ruby {9} theme={null}
+  ```rb Ruby {9} theme={"theme":{"light":"github-light","dark":"vesper"}}
   params = {
     "from": "Acme <onboarding@resend.dev>",
     "to": ["delivered@resend.dev"],
@@ -87,24 +91,36 @@ We keep idempotency keys in our system for **24 hours**. This should give you an
   )
   ```
 
-  ```go Go {9} theme={null}
-  ctx := context.TODO()
-  params := &resend.SendEmailRequest{
-    From:    "onboarding@resend.dev",
-    To:      []string{"delivered@resend.dev"},
-    Subject: "hello world",
-    Html:    "<p>it works!</p>",
-  }
-  options := &resend.SendEmailOptions{
-    IdempotencyKey: "welcome-user/123456789",
-  }
-  _, err := client.Emails.SendWithOptions(ctx, params, options)
-  if err != nil {
-    panic(err)
+  ```go Go {13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
+  import (
+  	"context"
+
+  	"github.com/resend/resend-go/v3"
+  )
+
+  func main() {
+  	ctx := context.TODO()
+  	client := resend.NewClient("re_xxxxxxxxx")
+
+  	params := &resend.SendEmailRequest{
+  		From:    "onboarding@resend.dev",
+  		To:      []string{"delivered@resend.dev"},
+  		Subject: "hello world",
+  		Html:    "<p>it works!</p>",
+  	}
+  	options := &resend.SendEmailOptions{
+  		IdempotencyKey: "welcome-user/123456789",
+  	}
+  	_, err := client.Emails.SendWithOptions(ctx, params, options)
+  	if err != nil {
+  		panic(err)
+  	}
   }
   ```
 
-  ```rust Rust {14} theme={null}
+  ```rust Rust {14} theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::types::CreateEmailBaseOptions;
   use resend_rs::{Resend, Result};
 
@@ -126,7 +142,7 @@ We keep idempotency keys in our system for **24 hours**. This should give you an
   }
   ```
 
-  ```java Java {9} theme={null}
+  ```java Java {9} theme={"theme":{"light":"github-light","dark":"vesper"}}
   CreateEmailOptions params = CreateEmailOptions.builder()
     .from("Acme <onboarding@resend.dev>")
     .to("delivered@resend.dev")
@@ -140,7 +156,7 @@ We keep idempotency keys in our system for **24 hours**. This should give you an
   CreateEmailResponse data = resend.emails().send(params, options);
   ```
 
-  ```csharp C# {11} theme={null}
+  ```csharp C# {11} theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -156,7 +172,7 @@ We keep idempotency keys in our system for **24 hours**. This should give you an
   Console.WriteLine( "Email Id={0}", resp.Content );
   ```
 
-  ```bash cURL {4} theme={null}
+  ```bash cURL {4} theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/emails' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -169,7 +185,7 @@ We keep idempotency keys in our system for **24 hours**. This should give you an
   }'
   ```
 
-  ```yaml SMTP {4} theme={null}
+  ```yaml SMTP {4} theme={"theme":{"light":"github-light","dark":"vesper"}}
   From: Acme <onboarding@resend.dev>
   To: delivered@resend.dev
   Subject: hello world
@@ -187,7 +203,7 @@ We keep idempotency keys in our system for **24 hours**. This should give you an
 </Tip>
 
 <CodeGroup>
-  ```ts Node.js {21} theme={null}
+  ```ts Node.js {21} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -213,7 +229,7 @@ We keep idempotency keys in our system for **24 hours**. This should give you an
   );
   ```
 
-  ```php PHP {19} theme={null}
+  ```php PHP {19} theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->batch->send(
@@ -237,7 +253,7 @@ We keep idempotency keys in our system for **24 hours**. This should give you an
   );
   ```
 
-  ```py Python {22} theme={null}
+  ```py Python {22} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
   from typing import List
 
@@ -265,7 +281,7 @@ We keep idempotency keys in our system for **24 hours**. This should give you an
   resend.Batch.send(params, options)
   ```
 
-  ```rb Ruby {22} theme={null}
+  ```rb Ruby {22} theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = 're_xxxxxxxxx'
@@ -291,8 +307,8 @@ We keep idempotency keys in our system for **24 hours**. This should give you an
   )
   ```
 
-  ```go Go {32} theme={null}
-  package examples
+  ```go Go {32} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
 
   import (
   	"fmt"
@@ -335,7 +351,7 @@ We keep idempotency keys in our system for **24 hours**. This should give you an
   }
   ```
 
-  ```rust Rust {23} theme={null}
+  ```rust Rust {23} theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::types::CreateEmailBaseOptions;
   use resend_rs::{Resend, Result};
 
@@ -364,7 +380,7 @@ We keep idempotency keys in our system for **24 hours**. This should give you an
   }
   ```
 
-  ```java Java {23} theme={null}
+  ```java Java {23} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -393,7 +409,7 @@ We keep idempotency keys in our system for **24 hours**. This should give you an
   }
   ```
 
-  ```csharp .NET {5} theme={null}
+  ```csharp .NET {5} theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -420,7 +436,7 @@ We keep idempotency keys in our system for **24 hours**. This should give you an
   Console.WriteLine( "Nr Emails={0}", resp.Content.Count );
   ```
 
-  ```bash cURL {4} theme={null}
+  ```bash cURL {4} theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/emails/batch' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \

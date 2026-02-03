@@ -37,7 +37,7 @@ Async sub-client for manipulating a single key-value store.
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/key_value_store.py#L357)\_\_init\_\_
+### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/key_value_store.py#L357)\_\_init\_\_
 
 * ****\_\_init\_\_**(\*, base\_url, root\_client, http\_client, resource\_id, resource\_path, params): None
 
@@ -75,7 +75,7 @@ Async sub-client for manipulating a single key-value store.
 
   #### Returns None
 
-### [**](#create_keys_public_url)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/key_value_store.py#L629)create\_keys\_public\_url
+### [**](#create_keys_public_url)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/key_value_store.py#L629)create\_keys\_public\_url
 
 * **async **create\_keys\_public\_url**(\*, limit, exclusive\_start\_key, collection, prefix, expires\_in\_secs): str
 
@@ -99,7 +99,7 @@ Async sub-client for manipulating a single key-value store.
 
   #### Returns str
 
-### [**](#delete)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/key_value_store.py#L390)delete
+### [**](#delete)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/key_value_store.py#L390)delete
 
 * **async **delete**(): None
 
@@ -111,7 +111,7 @@ Async sub-client for manipulating a single key-value store.
 
   #### Returns None
 
-### [**](#delete_record)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/key_value_store.py#L584)delete\_record
+### [**](#delete_record)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/key_value_store.py#L584)delete\_record
 
 * **async **delete\_record**(key): None
 
@@ -129,7 +129,7 @@ Async sub-client for manipulating a single key-value store.
 
   #### Returns None
 
-### [**](#get)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/key_value_store.py#L361)get
+### [**](#get)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/key_value_store.py#L361)get
 
 * **async **get**(): dict | None
 
@@ -141,7 +141,7 @@ Async sub-client for manipulating a single key-value store.
 
   #### Returns dict | None
 
-### [**](#get_record)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/key_value_store.py#L437)get\_record
+### [**](#get_record)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/key_value_store.py#L437)get\_record
 
 * **async **get\_record**(key, signature): dict | None
 
@@ -163,7 +163,7 @@ Async sub-client for manipulating a single key-value store.
 
   #### Returns dict | None
 
-### [**](#get_record_as_bytes)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/key_value_store.py#L492)get\_record\_as\_bytes
+### [**](#get_record_as_bytes)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/key_value_store.py#L492)get\_record\_as\_bytes
 
 * **async **get\_record\_as\_bytes**(key, signature): dict | None
 
@@ -185,7 +185,7 @@ Async sub-client for manipulating a single key-value store.
 
   #### Returns dict | None
 
-### [**](#get_record_public_url)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/key_value_store.py#L599)get\_record\_public\_url
+### [**](#get_record_public_url)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/key_value_store.py#L599)get\_record\_public\_url
 
 * **async **get\_record\_public\_url**(key): str
 
@@ -203,7 +203,7 @@ Async sub-client for manipulating a single key-value store.
 
   #### Returns str
 
-### [**](#list_keys)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/key_value_store.py#L397)list\_keys
+### [**](#list_keys)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/key_value_store.py#L397)list\_keys
 
 * **async **list\_keys**(\*, limit, exclusive\_start\_key, collection, prefix, signature): dict
 
@@ -237,7 +237,7 @@ Async sub-client for manipulating a single key-value store.
 
   #### Returns dict
 
-### [**](#record_exists)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/key_value_store.py#L467)record\_exists
+### [**](#record_exists)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/key_value_store.py#L467)record\_exists
 
 * **async **record\_exists**(key): bool
 
@@ -255,7 +255,7 @@ Async sub-client for manipulating a single key-value store.
 
   #### Returns bool
 
-### [**](#set_record)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/key_value_store.py#L557)set\_record
+### [**](#set_record)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/key_value_store.py#L557)set\_record
 
 * **async **set\_record**(key, value, content\_type): None
 
@@ -281,7 +281,7 @@ Async sub-client for manipulating a single key-value store.
 
   #### Returns None
 
-### [**](#stream_record)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/key_value_store.py#L523)stream\_record
+### [**](#stream_record)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/key_value_store.py#L523)stream\_record
 
 * **async **stream\_record**(key, signature): AsyncIterator\[dict | None]
 
@@ -303,7 +303,7 @@ Async sub-client for manipulating a single key-value store.
 
   #### Returns AsyncIterator\[dict | None]
 
-### [**](#update)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/key_value_store.py#L371)update
+### [**](#update)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/key_value_store.py#L371)update
 
 * **async **update**(\*, name, general\_access): dict
 
@@ -327,7 +327,7 @@ Async sub-client for manipulating a single key-value store.
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#http_client)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L94)http\_client
+### [**](#http_client)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L94)http\_client
 
 **http\_client: [HTTPClient](https://docs.apify.com/api/client/python/api/client/python/reference/class/HTTPClient.md) | [HTTPClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/HTTPClientAsync.md)
 
@@ -335,19 +335,19 @@ Inherited from [BaseClientAsync.http\_client](https://docs.apify.com/api/client/
 
 Overrides [\_BaseBaseClient.http\_client](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#http_client)
 
-### [**](#params)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L17)params
+### [**](#params)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L17)params
 
 **params: dict
 
 Inherited from [\_BaseBaseClient.params](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#params)
 
-### [**](#resource_id)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L15)resource\_id
+### [**](#resource_id)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L15)resource\_id
 
 **resource\_id: str | None
 
 Inherited from [\_BaseBaseClient.resource\_id](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#resource_id)
 
-### [**](#root_client)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L95)root\_client
+### [**](#root_client)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L95)root\_client
 
 **root\_client: [ApifyClient](https://docs.apify.com/api/client/python/api/client/python/reference/class/ApifyClient.md) | [ApifyClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/ApifyClientAsync.md)
 
@@ -355,7 +355,7 @@ Inherited from [BaseClientAsync.root\_client](https://docs.apify.com/api/client/
 
 Overrides [\_BaseBaseClient.root\_client](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#root_client)
 
-### [**](#url)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L16)url
+### [**](#url)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L16)url
 
 **url: str
 

@@ -8,67 +8,124 @@
 
 # Source: https://www.activepieces.com/docs/endpoints/flows/create.md
 
-# Source: https://www.activepieces.com/docs/endpoints/templates/create.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://www.activepieces.com/docs/endpoints/projects/create.md
+# Create Flow
 
-# Source: https://www.activepieces.com/docs/endpoints/project-releases/create.md
+> Create a flow
 
-# Source: https://www.activepieces.com/docs/endpoints/folders/create.md
 
-# Source: https://www.activepieces.com/docs/endpoints/flows/create.md
-
-# Source: https://www.activepieces.com/docs/endpoints/projects/create.md
-
-# Source: https://www.activepieces.com/docs/endpoints/project-releases/create.md
-
-# Source: https://www.activepieces.com/docs/endpoints/folders/create.md
-
-# Source: https://www.activepieces.com/docs/endpoints/flows/create.md
-
-# Source: https://www.activepieces.com/docs/endpoints/flow-templates/create.md
-
-# Create Flow Template
-
-> Create a flow template
 
 ## OpenAPI
 
-````yaml POST /v1/flow-templates
+````yaml POST /v1/flows
+openapi: 3.0.3
+info:
+  title: Activepieces Documentation
+  version: 0.0.0
+servers:
+  - url: https://cloud.activepieces.com/api
+    description: Production Server
+security: []
+externalDocs:
+  url: https://www.activepieces.com/docs
+  description: Find more info here
 paths:
-  path: /v1/flow-templates
-  method: post
-  servers:
-    - url: https://cloud.activepieces.com/api
-      description: Production Server
-  request:
-    security:
-      - title: apiKey
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Use your api key generated from the admin console
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              description:
-                allOf:
-                  - type: string
-              template:
-                allOf:
-                  - type: object
+  /v1/flows:
+    post:
+      tags:
+        - flows
+      description: Create a flow
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                displayName:
+                  type: string
+                folderId:
+                  type: string
+                folderName:
+                  type: string
+                projectId:
+                  type: string
+                metadata:
+                  type: object
+                  additionalProperties: {}
+              required:
+                - displayName
+                - projectId
+        required: true
+      responses:
+        '201':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  created:
+                    type: string
+                  updated:
+                    type: string
+                  projectId:
+                    type: string
+                  externalId:
+                    type: string
+                  ownerId:
+                    type: string
+                    nullable: true
+                  folderId:
+                    type: string
+                    nullable: true
+                  status:
+                    anyOf:
+                      - type: string
+                        enum:
+                          - ENABLED
+                      - type: string
+                        enum:
+                          - DISABLED
+                  publishedVersionId:
+                    type: string
+                    nullable: true
+                  metadata:
+                    type: object
+                    nullable: true
+                    additionalProperties: {}
+                  operationStatus:
+                    anyOf:
+                      - type: string
+                        enum:
+                          - NONE
+                      - type: string
+                        enum:
+                          - DELETING
+                      - type: string
+                        enum:
+                          - ENABLING
+                      - type: string
+                        enum:
+                          - DISABLING
+                  timeSavedPerRun:
+                    type: number
+                    nullable: true
+                  version:
+                    type: object
                     properties:
+                      id:
+                        type: string
+                      created:
+                        type: string
+                      updated:
+                        type: string
+                      flowId:
+                        type: string
                       displayName:
                         type: string
                       trigger:
@@ -158,6 +215,9 @@ paths:
                               - displayName
                               - type
                               - settings
+                      updatedBy:
+                        type: string
+                        nullable: true
                       valid:
                         type: boolean
                       schemaVersion:
@@ -167,6 +227,14 @@ paths:
                         type: array
                         items:
                           type: string
+                      state:
+                        anyOf:
+                          - type: string
+                            enum:
+                              - LOCKED
+                          - type: string
+                            enum:
+                              - DRAFT
                       connectionIds:
                         type: array
                         items:
@@ -176,88 +244,117 @@ paths:
                         nullable: true
                         additionalProperties:
                           type: string
+                      notes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            content:
+                              type: string
+                            ownerId:
+                              type: string
+                              nullable: true
+                            color:
+                              anyOf:
+                                - type: string
+                                  enum:
+                                    - orange
+                                - type: string
+                                  enum:
+                                    - red
+                                - type: string
+                                  enum:
+                                    - green
+                                - type: string
+                                  enum:
+                                    - blue
+                                - type: string
+                                  enum:
+                                    - purple
+                                - type: string
+                                  enum:
+                                    - yellow
+                            position:
+                              type: object
+                              properties:
+                                x:
+                                  type: number
+                                'y':
+                                  type: number
+                              required:
+                                - x
+                                - 'y'
+                            size:
+                              type: object
+                              properties:
+                                width:
+                                  type: number
+                                height:
+                                  type: number
+                              required:
+                                - width
+                                - height
+                            createdAt:
+                              type: string
+                            updatedAt:
+                              type: string
+                          required:
+                            - id
+                            - content
+                            - color
+                            - position
+                            - size
+                            - createdAt
+                            - updatedAt
                     required:
+                      - id
+                      - created
+                      - updated
+                      - flowId
                       - displayName
                       - trigger
                       - valid
                       - agentIds
+                      - state
                       - connectionIds
-              blogUrl:
-                allOf:
-                  - type: string
-              type:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        enum:
-                          - PLATFORM
-                      - type: string
-                        enum:
-                          - PROJECT
-              tags:
-                allOf:
-                  - type: array
-                    items:
-                      type: string
-              id:
-                allOf:
-                  - type: string
-              metadata:
-                allOf:
-                  - type: object
-                    nullable: true
-                    additionalProperties: {}
-            required: true
-            requiredProperties:
-              - template
-              - type
-        examples:
-          example:
-            value:
-              description: <string>
-              template:
-                displayName: <string>
-                trigger:
-                  name: <string>
-                  valid: true
-                  displayName: <string>
-                  nextAction: <any>
-                  type: PIECE_TRIGGER
-                  settings:
-                    sampleData:
-                      sampleDataFileId: <string>
-                      sampleDataInputFileId: <string>
-                      lastTestDate: <string>
-                    propertySettings: {}
-                    customLogoUrl: <string>
-                    pieceName: <string>
-                    pieceVersion: <string>
-                    triggerName: <string>
-                    input: {}
-                valid: true
-                schemaVersion: <string>
-                agentIds:
-                  - <string>
-                connectionIds:
-                  - <string>
-                backupFiles: {}
-              blogUrl: <string>
-              type: PLATFORM
-              tags:
-                - <string>
-              id: <string>
-              metadata: {}
-  response:
-    '200':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Default Response
-        examples: {}
-        description: Default Response
-  deprecated: false
-  type: path
+                      - notes
+                  triggerSource:
+                    type: object
+                    properties:
+                      schedule:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            enum:
+                              - CRON_EXPRESSION
+                          cronExpression:
+                            type: string
+                          timezone:
+                            type: string
+                        required:
+                          - type
+                          - cronExpression
+                          - timezone
+                        nullable: true
+                required:
+                  - id
+                  - created
+                  - updated
+                  - projectId
+                  - externalId
+                  - status
+                  - operationStatus
+                  - version
+      security:
+        - apiKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apiKey:
+      type: http
+      description: Use your api key generated from the admin console
+      scheme: bearer
 
 ````

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/multipage-apps/page-and-navigation
+
 # Define multipage apps with `st.Page` and `st.navigation`
 
 `st.Page` and `st.navigation` are the preferred commands for defining multipage apps. With these commands, you have flexibility to organize your project files and customize your navigation menu. Simply initialize `StreamlitPage` objects with `st.Page`, then pass those `StreamlitPage` objects to `st.navigation` in your entrypoint file (i.e., the file you pass to `streamlit run`).

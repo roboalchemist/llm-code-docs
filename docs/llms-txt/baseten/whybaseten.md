@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/concepts/whybaseten.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Why Baseten
 
 > Baseten delivers fast, scalable AI/ML inference with enterprise-grade security and reliability—whether in our cloud or yours.
@@ -34,5 +38,4 @@ Get hands-on support with deep inference-specific expertise and 24/7 on-call ava
 
 #### Model training and finetuning, all in one platform
 
-Baseten Training provides a fast, scalable, and flexible platform for training and finetuning models. Deploy checkpoints immediately with the click of a button
-to run end to end evals and seemlessly launch to prod.
+Baseten Training provides a fast, scalable, and flexible platform for training and finetuning models. Deploy checkpoints immediately with the click of a button to run end-to-end evals and seamlessly launch to production.

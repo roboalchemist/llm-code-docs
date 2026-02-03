@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/integrations/splunk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Observability with Splunk and OpenLLMetry
 
 <Frame>
@@ -50,8 +54,3 @@ Finally, define the `TRACELOOP_BASE_URL` environment variable to point to the Sp
 ```bash  theme={null}
 TRACELOOP_BASE_URL=http://<splunk-otel-collector>:4318
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

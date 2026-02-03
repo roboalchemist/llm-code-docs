@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/interface/nodes-2.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Nodes 2.0
 
 > Learn about Nodes 2.0, the new Vue-based node rendering system in ComfyUI that enables faster development and richer interactions.
@@ -64,8 +68,3 @@ If you encounter issues:
 <img src="https://mintcdn.com/dripart/qbw4z6UfFGJ-L3Cc/images/interface/nodes_2.0.jpg?fit=max&auto=format&n=qbw4z6UfFGJ-L3Cc&q=85&s=859a3a5b4faefd96adb24044ced72f72" alt="Nodes 2.0 toggle location in ComfyUI menu" data-og-width="1253" width="1253" data-og-height="1022" height="1022" data-path="images/interface/nodes_2.0.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dripart/qbw4z6UfFGJ-L3Cc/images/interface/nodes_2.0.jpg?w=280&fit=max&auto=format&n=qbw4z6UfFGJ-L3Cc&q=85&s=7afa98b9958e16314895166695c0b397 280w, https://mintcdn.com/dripart/qbw4z6UfFGJ-L3Cc/images/interface/nodes_2.0.jpg?w=560&fit=max&auto=format&n=qbw4z6UfFGJ-L3Cc&q=85&s=93f3db20fdd53974d7573aa0ff705d94 560w, https://mintcdn.com/dripart/qbw4z6UfFGJ-L3Cc/images/interface/nodes_2.0.jpg?w=840&fit=max&auto=format&n=qbw4z6UfFGJ-L3Cc&q=85&s=2f5cee3e0ca6fb0814b0975638d574a9 840w, https://mintcdn.com/dripart/qbw4z6UfFGJ-L3Cc/images/interface/nodes_2.0.jpg?w=1100&fit=max&auto=format&n=qbw4z6UfFGJ-L3Cc&q=85&s=d6dfca1c3260c63fe7dccefa8bea2ad2 1100w, https://mintcdn.com/dripart/qbw4z6UfFGJ-L3Cc/images/interface/nodes_2.0.jpg?w=1650&fit=max&auto=format&n=qbw4z6UfFGJ-L3Cc&q=85&s=25cfc22b762c0530a5d89e9671f5184a 1650w, https://mintcdn.com/dripart/qbw4z6UfFGJ-L3Cc/images/interface/nodes_2.0.jpg?w=2500&fit=max&auto=format&n=qbw4z6UfFGJ-L3Cc&q=85&s=72e9868ecc2210ffc4f0ad77508be16f 2500w" />
 
 Your feedback helps us prioritize improvements. Enable Nodes 2.0 in settings and start exploring the new node design!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.comfy.org/llms.txt

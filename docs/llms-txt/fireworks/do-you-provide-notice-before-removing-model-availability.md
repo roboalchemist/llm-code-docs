@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/faq-new/deployment-infrastructure/do-you-provide-notice-before-removing-model-availability.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Do you provide notice before removing model availability?
 
 Yes, we provide advance notice before removing models from the serverless infrastructure:

@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/interface/appearance.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Customizing ComfyUI Appearance
 
 > Learn how to customize the appearance of ComfyUI using color palettes and advanced CSS options
@@ -146,6 +150,14 @@ The color palette allows you to modify many specific properties. Here are some o
 ### Sidebar Location
 
 * **Function**: Control whether the sidebar is displayed on the left or right side of the interface, allowing users to adjust the sidebar position according to their usage habits.
+
+### Sidebar Style
+
+* **Function**: Control the visual style of the sidebar. Options include:
+  * **Connected**: The sidebar appears connected to the edge of the interface.
+  * **Floating**: The sidebar appears as a floating panel with visual separation from the interface edge.
+
+<img src="https://mintcdn.com/dripart/0LfkiFdUyOZfrZN7/images/interface/setting/appearance/sidbar_style.jpg?fit=max&auto=format&n=0LfkiFdUyOZfrZN7&q=85&s=c2bba9162ac584f219d9be2e912076b3" alt="Sidebar Style" data-og-width="615" width="615" data-og-height="707" height="707" data-path="images/interface/setting/appearance/sidbar_style.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dripart/0LfkiFdUyOZfrZN7/images/interface/setting/appearance/sidbar_style.jpg?w=280&fit=max&auto=format&n=0LfkiFdUyOZfrZN7&q=85&s=37cd6956187b453c751d229c037e20b4 280w, https://mintcdn.com/dripart/0LfkiFdUyOZfrZN7/images/interface/setting/appearance/sidbar_style.jpg?w=560&fit=max&auto=format&n=0LfkiFdUyOZfrZN7&q=85&s=f7cbb94120daca9e14c4efde3be83761 560w, https://mintcdn.com/dripart/0LfkiFdUyOZfrZN7/images/interface/setting/appearance/sidbar_style.jpg?w=840&fit=max&auto=format&n=0LfkiFdUyOZfrZN7&q=85&s=f10cab8d13b945d978a47fc0680bff09 840w, https://mintcdn.com/dripart/0LfkiFdUyOZfrZN7/images/interface/setting/appearance/sidbar_style.jpg?w=1100&fit=max&auto=format&n=0LfkiFdUyOZfrZN7&q=85&s=7bde7bdebbeef44bb92bf3c139e4eebe 1100w, https://mintcdn.com/dripart/0LfkiFdUyOZfrZN7/images/interface/setting/appearance/sidbar_style.jpg?w=1650&fit=max&auto=format&n=0LfkiFdUyOZfrZN7&q=85&s=10a5d01d6361b39a1e46ae8f034c7312 1650w, https://mintcdn.com/dripart/0LfkiFdUyOZfrZN7/images/interface/setting/appearance/sidbar_style.jpg?w=2500&fit=max&auto=format&n=0LfkiFdUyOZfrZN7&q=85&s=d785a83a7efd094c3a4a66130fea102f 2500w" />
 
 ## Tree Explorer
 

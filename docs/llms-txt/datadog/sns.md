@@ -1,10 +1,11 @@
+# Source: https://docs.datadoghq.com/data_streams/setup/technologies/sns.md
+
 # Source: https://docs.datadoghq.com/cloudcraft/components-aws/sns.md
 
 ---
 title: SNS Component (Deprecated)
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > SNS Component (Deprecated)
-source_url: https://docs.datadoghq.com/components-aws/sns/index.html
 ---
 
 # SNS Component (Deprecated)

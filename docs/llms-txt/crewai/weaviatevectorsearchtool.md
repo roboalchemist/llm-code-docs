@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/database-data/weaviatevectorsearchtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Weaviate Vector Search
 
 > The `WeaviateVectorSearchTool` is designed to search a Weaviate vector database for semantically similar documents using hybrid search.

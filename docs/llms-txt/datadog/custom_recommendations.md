@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Cloud Cost Management > Cloud Cost Recommendations > Custom
   Recommendations
-source_url: https://docs.datadoghq.com/recommendations/custom_recommendations/index.html
 ---
 
 # Custom Recommendations

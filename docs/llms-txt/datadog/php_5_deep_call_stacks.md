@@ -6,7 +6,6 @@ description: >-
   Configure stack size limits and handle deep call stack warnings for PHP 5
   applications with APM tracing.
 breadcrumbs: Docs > APM > APM Troubleshooting > Deep call stacks on PHP 5
-source_url: https://docs.datadoghq.com/troubleshooting/php_5_deep_call_stacks/index.html
 ---
 
 # Deep call stacks on PHP 5

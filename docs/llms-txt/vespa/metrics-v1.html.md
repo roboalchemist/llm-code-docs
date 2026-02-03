@@ -104,5 +104,5 @@ dimensions
 
  | metrics | Object | Set of metric dimension-name/value pairs. |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
