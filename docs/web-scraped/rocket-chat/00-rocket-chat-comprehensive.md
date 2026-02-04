@@ -24,7 +24,7 @@ All API requests should be made to: `https://your-server.com/api/v1/`
 
 Most endpoints require authentication headers:
 
-```
+```bash
 X-Auth-Token: <authentication_token>
 X-User-Id: <user_id>
 ```
@@ -357,7 +357,7 @@ ws://your-server.com/socket.io/?EIO=4&transport=websocket
   "params": ["room_id", false]
 }
 
-### Send Message
+### Send Message via WebSocket
 
 {
   "msg": "method",
@@ -536,7 +536,7 @@ Content-Type: application/json
 
 ## Python Integration Example
 
-```
+```python
 import requests
 
 class RocketChatBot:
@@ -576,7 +576,7 @@ bot.send_message("room_id", "Hello!")
 
 ## Node.js Integration Example
 
-```
+```javascript
 const axios = require('axios');
 
 class RocketChatClient {
@@ -628,7 +628,7 @@ class RocketChatClient {
 
 ### Docker Compose
 
-```
+```yaml
 version: '3'
 services:
   rocketchat:
