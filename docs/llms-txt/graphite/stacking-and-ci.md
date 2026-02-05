@@ -1,10 +1,10 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/stacking-and-ci.md
 
-> ## Documentation Index
+> **Documentation Index**
 > Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# CI Optimizations
+## CI Optimizations
 
 > Learn CI optimizations & best practices for stacked pull requests.
 
@@ -62,9 +62,9 @@ There are two ways to configure Graphite to optimize your Buildkite pipelines:
   In this Buildkite configuration, you create a new **Graphite CI optimizer** pipeline that runs before your repo's other pipeline(s). It has the advantage of explicitly showing PR authors that some of their CI did not run when the optimizer skips CI.
 </Info>
 
-In Buildkite, create a new “Stack CI Optimizer” pipeline that runs before all other CI pipelines. This new pipeline determines if CI should run for this PR, and triggers the other pipeline(s) if so.
+In Buildkite, create a new "Stack CI Optimizer" pipeline that runs before all other CI pipelines. This new pipeline determines if CI should run for this PR, and triggers the other pipeline(s) if so.
 
-**Getting started**
+## Getting started
 
 1. [Create a new CI optimization in Graphite settings](https://app.graphite.com/settings/ci-optimizations) and copy the pipeline YAML
 
@@ -86,13 +86,13 @@ Note: you can test Buildkite pipeline changes in branches/PRs before merging the
   In this Buildkite configuration, you add a job to the start of your pipeline that your others wait for. It has the disadvantage of showing the overall pipeline status as green on GitHub, even when the CI optimizer decides to skip tests. The Buildkite and Graphite UIs show the accurate skip statuses.
 </Info>
 
-**Getting started**
+## Getting started for Option 2
 
 1. [Create a new CI optimization in Graphite settings](https://app.graphite.com/settings/ci-optimizations) and copy the pipeline YAML
 
 2. Add the following YAML to the beginning of your repo's pipeline(s), **including the `wait` step** (pipelines are typically stored in `.buildkite/`). Replace `graphite_token` with the token from the first step.
 
-```yaml YAML theme={null}
+```yaml
 steps:
   - name: ":graphite: Graphite CI optimizer"
     soft_fail: true
@@ -116,7 +116,7 @@ steps:
 
 2. Add the following to your GitHub Actions workflows (typically stored in `.github/workflows/)`. Replace `graphite_token` with the token from the first step.
 
-```yaml YAML theme={null}
+```yaml
 jobs:
   optimize_ci:
     runs-on: ubuntu-latest # or whichever runner you use for your CI
@@ -138,7 +138,7 @@ jobs:
 
 Then **for each job** in the workflow you want to optimize, add the following YAML:
 
-```yaml YAML theme={null}
+```yaml
 job_name:
   needs: optimize_ci
   if: needs.optimize_ci.outputs.skip == 'false'

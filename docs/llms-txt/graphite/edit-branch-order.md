@@ -1,10 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/edit-branch-order.md
 
-> ## Documentation Index
+## Documentation Index
+
 > Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Edit The Branch Order In A Stack
+## Edit The Branch Order In A Stack
 
 > Learn how to edit the branch order in a stack using Graphite CLI commands.
 

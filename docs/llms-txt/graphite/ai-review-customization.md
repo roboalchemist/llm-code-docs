@@ -1,6 +1,7 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/ai-review-customization.md
 
 > ## Documentation Index
+
 > Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -33,7 +34,7 @@ Make the language as targeted as possible by specifying the exact scope where th
 
 Bad example:
 
-```
+```text
 ### Bad example: Overly broad exclusion
 
 Don't suggest performance improvements.
@@ -43,7 +44,7 @@ Why is this bad?
 
 * This is too broad and would miss legitimate performance issues. The rule could be rewritten instead as:
 
-```
+```text
 Do not suggest performance optimizations for code in the /scripts directory - these are one-time utility scripts.
 ```
 

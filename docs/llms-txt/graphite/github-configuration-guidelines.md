@@ -1,6 +1,7 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/github-configuration-guidelines.md
 
-> ## Documentation Index
+## Documentation Index
+
 > Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -134,7 +135,7 @@ allow the Graphite GitHub app to automatically enable the IP addresses necessary
 
 The IP addresses that are required to be allowlisted are as follows:
 
-```
+```bash
 35.80.247.239
 34.210.111.72
 52.11.184.182

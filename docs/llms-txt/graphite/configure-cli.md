@@ -1,10 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/configure-cli.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Configure The CLI
+## Configure The CLI
 
 > Learn how to configure the Graphite CLI to customize and speed up your workflow.
 
@@ -34,13 +35,13 @@ There are several options to configure:
 
 #### Submit settings
 
-**Set PR metadata in CLI**
+##### Set PR metadata in CLI
 
 Graphite lets you prepare your PR for review in the web UI by default. This allows you to preview markdown, pull options like reviewers and labels from downstack PR's, and update all PR's in a stack at once.
 
 Enable this setting to instead default to writing PR description in the CLI.
 
-**PR description**
+##### PR description
 
 Graphite includes your GitHub PR template in the commit message by default.
 
@@ -84,7 +85,7 @@ As of [version 1.7.4](/cli-changelog#1-7-4), `gt` is able to automatically updat
 
 The configuration for automatic updates and update prompts gets set in the `~/.config/graphite/user_config` file:
 
-```json  theme={null}
+```json
 "updateAutomatically": true,
 "promptForUpdates": true,
 ```

@@ -1,20 +1,20 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/setup-recommended-ci-settings.md
 
-> ## Documentation Index
+> **Documentation Index**
 > Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Configure recommended CI settings
+## Configure recommended CI settings
 
 > Set up your GitHub repository's CI to work well with Graphite
 
-### Ignore Graphite's temporary branches in your CI
+## Ignore Graphite's temporary branches in your CI
 
 You should configure your CI to ignore PRs whose base branch is named `graphite-base/*`. Not doing so may result in failed CI jobs, specifically when they reference Graphite's temporary branches which have been deleted.
 
-Here’s how to disable running CI for these branches in GitHub Actions:
+Here's how to disable running CI for these branches in GitHub Actions:
 
-```
+```yaml
 on:
   pull_request:
     types: [opened, reopened, synchronize]
@@ -24,7 +24,7 @@ on:
 
 For more information about when and why these temporary branches get created, refer to [Automatic rebasing](/merge-pull-requests#automatic-rebasing).
 
-### Ensure that CI is running on upstack branches
+## Ensure that CI is running on upstack branches
 
 Graphite calculates and enforces mergeability for pull requests that are dependent on other pull requests in a stack, based on the checks that are required to merge into the trunk (target) branch of the stack, e.g. `main`.
 

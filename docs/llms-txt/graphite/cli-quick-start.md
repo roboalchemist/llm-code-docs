@@ -1,10 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/cli-quick-start.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Quick Start
+## Quick Start
 
 > Learn to create stacked pull requests with the Graphite CLI.
 
@@ -28,7 +29,7 @@ To use the Graphite CLI in a Git repository, we need to know your trunk branch (
 
 To initialize your repository, run `gt init`:
 
-```bash Terminal theme={null}
+```bash
 cd ~/my-project
 gt init
 ```
@@ -65,7 +66,7 @@ The Graphite workflow can be broken down to the following steps:
 
 Creating a pull request with `gt` should feel similar to workflows you already do with GitHub:
 
-```bash Terminal theme={null}
+```bash
 # Checkout the main branch using gt checkout
 gt checkout main
 
@@ -80,7 +81,7 @@ echo "new code changes" >> file.js
 #   - the commit will have the given `--message`
 #   - the branch will be checked out for you
 gt create --all \
-	--message "feat(api): Add new API method for fetching users"
+  --message "feat(api): Add new API method for fetching users"
 
 
 # Push changes to your remote and create a new pull request
@@ -107,7 +108,7 @@ A stack is **a sequence of pull requests**, each building off of its parent. Sta
 
 To stack more changes on top of an existing pull request:
 
-```bash Terminal theme={null}
+```bash
 # Open an interactive branch picker:
 #
 #   - select the pull request you want to stack on top of
@@ -134,13 +135,13 @@ gt submit --stack
 
 Visualize your new stack locally:
 
-```bash Terminal theme={null}
+```bash
 gt log short  # or run `gt ls`
 ```
 
 Now that it's pushed, open the PR in Graphite:
 
-```bash Terminal theme={null}
+```bash
 gt pr
 ```
 
@@ -148,7 +149,7 @@ and assign reviewers using the UI.
 
 If you prefer assigning a reviewer at the same time as submitting, run:
 
-```bash Terminal theme={null}
+```bash
 gt submit --stack --reviewers alice
 ```
 
@@ -168,20 +169,20 @@ Example: You have a stack of 2 PRs, and your coworker asks you to make changes o
 
 First, checkout the bottom PR and address the changes in your editor:
 
-```bash Terminal theme={null}
+```bash
 gt checkout first_pr_in_the_stack
 echo "making some edits" > a_file_my_coworker_wants_changed.js
 ```
 
 Next, run `gt modify` to **amend** the last commit in this branch and **restack** all the branches above it:
 
-```bash Terminal theme={null}
+```bash
 gt modify -a
 ```
 
 An equivalent (but more manual) way to do this would be:
 
-```bash Terminal theme={null}
+```bash
 git add a_file_my_coworker_wants_changed.js
 git commit --amend --no-edit
 gt restack  # restack all the branches above
@@ -191,10 +192,10 @@ Now the first branch has the **new changes** from your PR feedback, and the seco
 
 If you prefer to make a 2nd explicit commit for your PR feedback changes, you can do that with `gt modify` as well. Replace the `gt modify -a` command with:
 
-```bash Terminal theme={null}
+```bash
 gt modify --commit \
-	--all \
-	--message "Responded to reviewer feedback"
+  --all \
+  --message "Responded to reviewer feedback"
 
 
 # OR shorthand
@@ -209,7 +210,7 @@ As you're developing new features, the `main` trunk branch will eventually get a
 
 To update all of your open stacks with the latest changes from `main`, run:
 
-```bash Terminal theme={null}
+```bash
 gt sync
 ```
 
@@ -227,7 +228,7 @@ If any of your stacks happen to have merge conflicts as a result of restacking o
 
 Once your stack has been reviewed and is passing CI, open the top of the stack in the Graphite UI:
 
-```bash Terminal theme={null}
+```bash
 # Checkout the top PR in the stack
 gt top
 

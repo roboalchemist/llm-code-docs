@@ -1,10 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/gt-mcp.md
 
-> ## Documentation Index
+## Documentation Index
+
 > Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# GT MCP
+## GT MCP
 
 > Use the Graphite CLI with AI agents through Model Context Protocol
 
@@ -23,15 +24,15 @@ GT MCP allows AI agents to automatically create stacked PRs, breaking down large
 
 GT MCP is built into the Graphite CLI. Update your CLI version to 1.6.7 to get access:
 
-**Homebrew**
+### Homebrew
 
-```bash  theme={null}
+```bash
 brew update && brew upgrade withgraphite/tap/graphite
 ```
 
-**npm**
+### npm
 
-```bash  theme={null}
+```bash
 npm install -g @withgraphite/graphite-cli@stable
 ```
 

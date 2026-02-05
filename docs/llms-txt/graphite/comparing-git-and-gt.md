@@ -1,10 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/comparing-git-and-gt.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Comparing Git And Gt
+## Comparing Git And Gt
 
 > Learn the key differences between working with the Graphite CLI vs. vanilla git.
 
@@ -28,7 +29,7 @@ Let’s say this project has four parts:
 
 Here’s how this would look in `git`**:**
 
-```sh terminal theme={null}
+```sh
 // Create new branch & check it out
 $ git branch task_search && git checkout task_search
 // Make index changes (~10 lines of code)
@@ -51,7 +52,7 @@ Now you have a **branch** that implements search end to end. Next you want to ge
 
 Here’s how this would look in `gt`:
 
-```sh terminal theme={null}
+```sh
 // Make index changes (~10 lines of code)
 $ gt create --all --message 'add index for searching tasks'
 // Make helper function (~50 lines of code)
@@ -76,7 +77,7 @@ Continuing with the example above, let’s say you receive some comments about p
 
 How this looks with `git`:
 
-```sh TERMINAL theme={null}
+```sh
 // Make changes to limit the helper function's search scope to ~1 year
 $ git add --all // stage changes
 $ git commit --fixup=<commit hash of add helper function to search tasks> // Make the fixup commit
@@ -85,7 +86,7 @@ $ git rebase --interactive --autosquash=<commit hash of add helper function to s
 
 How this looks with `gt`:
 
-```sh TERMINAL theme={null}
+```sh
 $ gt checkout 'add helper function to search tasks'
 // Make changes to limit the helper function's search scope to ~1 year
 $ gt modify --all // Stage & amend these changes into "add helper function to search tasks"
@@ -119,7 +120,7 @@ In `git`, you now have three options:
 
 In `gt`, you can simply run:
 
-```sh terminal theme={null}
+```sh
 $ gt checkout 'add UI to display searched tasks'
 // Make changes to implement profile search
 $ gt create --all --message 'implement profile search'
@@ -150,7 +151,7 @@ If you want to do something similar in `gt`, just use `gt create` every time you
 
 While you're working on a piece of code, there is a chance that someone else touches the same code on `main`, or someone makes changes that you want to use. In `git`, to handle this you could do:
 
-```sh terminal theme={null}
+```sh
 $ git checkout main
 $ git pull
 $ git checkout <my new branch>
@@ -159,7 +160,7 @@ $ git merge main
 
 In `gt`, you would do the following instead:
 
-```sh terminal theme={null}
+```sh
 $ gt sync
 $ gt checkout <my new branch>
 $ gt restack // This will rebase your stack onto main

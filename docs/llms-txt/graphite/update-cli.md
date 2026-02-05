@@ -1,28 +1,28 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/update-cli.md
 
-> ## Documentation Index
+> **Documentation Index**
 > Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Update The CLI
+## Update The CLI
 
 > Learn how to update the Graphite CLI.
 
 ## Versions 1.7.4 and greater
 
-```bash Terminal theme={null}
+```bash
 gt upgrade
 ```
 
 ## homebrew
 
-```bash Terminal theme={null}
+```bash
 brew update && brew upgrade withgraphite/tap/graphite
 ```
 
 ## npm
 
-```bash Terminal theme={null}
+```bash
 npm install -g @withgraphite/graphite-cli@stable
 ```
 

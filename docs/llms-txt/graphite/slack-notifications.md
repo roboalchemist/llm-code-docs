@@ -1,10 +1,10 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/slack-notifications.md
 
-> ## Documentation Index
+> **Documentation Index**
 > Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Slack Notifications
+## Slack Notifications
 
 > Learn how to integrate Graphite with Slack to receive real-time, actionable notifications about your PRs.
 
@@ -14,7 +14,7 @@
 
 You have the ability to configure Slack notifications for PR activities like review requests, comments, mentions, and status changes. For some PRs, you can also approve, comment, request changes, or merge directly from Slack.
 
-### Prerequisites
+## Prerequisites
 
 * A Slack workspace (free or paid)
 

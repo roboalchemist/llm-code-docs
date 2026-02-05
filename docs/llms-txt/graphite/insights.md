@@ -1,10 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/insights.md
 
-> ## Documentation Index
+## Documentation Index
+
 > Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Insights
+## Insights
 
 > Learn how to track your team's engineering velocity with Graphite Insights.
 

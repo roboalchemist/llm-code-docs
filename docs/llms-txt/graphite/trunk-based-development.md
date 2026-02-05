@@ -1,10 +1,10 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/trunk-based-development.md
 
-> ## Documentation Index
+> **Documentation Index**
 > Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Introduction To Trunk Based Development
+## Introduction To Trunk Based Development
 
 > Learn more about trunk-based development's benefits, best practices, and comparison with Gitflow.
 

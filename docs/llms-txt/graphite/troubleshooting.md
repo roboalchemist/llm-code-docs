@@ -1,10 +1,10 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/troubleshooting.md
 
-> ## Documentation Index
+> **Documentation Index**
 > Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# CLI Troubleshooting FAQs
+## CLI Troubleshooting FAQs
 
 > Tips for resolving common Graphite CLI issues.
 
@@ -44,7 +44,7 @@ We recommend using GitHub's [concurrency](https://docs.github.com/en/actions/usi
 
 For example, the following configuration will cancel previous CI runs on the same pull request:
 
-```yaml YAML theme={null}
+```yaml
 concurrency:
   group: ${{ github.repository }}-${{ github.workflow }}-${{ github.ref }}-${{ github.ref == 'refs/heads/main' && github.sha || ''}}
   cancel-in-progress: true
@@ -65,9 +65,7 @@ The Graphite CLI use branches instead of commits to represent atomic changes in 
 
 Just don't use `gt modify --commit`, and if you end up with multiple commits on a branch by accident, you can always use `gt squash` to get your branch back to a single commit. This way, you can essentially only use `gt`, and your workflow will look something like (making use of lots of shortcuts and short-form flags):
 
-Terminal
-
-```python  theme={null}
+```bash
 # make changes to the codebase
 
 gt c -am "my first commit"

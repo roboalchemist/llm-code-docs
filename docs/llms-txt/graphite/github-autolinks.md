@@ -1,6 +1,7 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/github-autolinks.md
 
-> ## Documentation Index
+## Documentation Index
+
 > Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -56,19 +57,19 @@ For detailed instructions, see [GitHub's official documentation on configuring a
 
 Link to your project management and issue tracking tools:
 
-**Jira**
+#### Jira
 
 * Prefix: `JIRA-`
 * URL: `https://your-company.atlassian.net/browse/JIRA-<num>`
 * Example: `JIRA-123` → Links to Jira ticket JIRA-123
 
-**Linear**
+#### Linear
 
 * Prefix: `LIN-`
 * URL: `https://linear.app/your-team/issue/LIN-<num>`
 * Example: `LIN-456` → Links to Linear issue LIN-456
 
-**Zendesk**
+#### Zendesk
 
 * Prefix: `TICKET-`
 * URL: `https://your-company.zendesk.com/agent/tickets/<num>`
@@ -78,13 +79,13 @@ Link to your project management and issue tracking tools:
 
 Connect to internal documentation:
 
-**Confluence**
+#### Confluence
 
 * Prefix: `CONF-`
 * URL: `https://your-company.atlassian.net/wiki/pages/viewpage.action?pageId=<num>`
 * Example: `CONF-100` → Links to Confluence page
 
-**Notion**
+#### Notion
 
 * Prefix: `NOTION-`
 * URL: `https://notion.so/your-workspace/<num>`
@@ -94,7 +95,7 @@ Connect to internal documentation:
 
 Link to design mockups and specifications:
 
-**Figma**
+#### Figma
 
 * Prefix: `FIG-`
 * URL: `https://www.figma.com/file/your-file-id/?node-id=<num>`

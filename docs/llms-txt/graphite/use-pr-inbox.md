@@ -1,10 +1,10 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/use-pr-inbox.md
 
-> ## Documentation Index
+> **Documentation Index**
 > Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Pull Request Inbox
+## Pull Request Inbox
 
 > Think of the pull request inbox as an "email client" for your PRs—it helps you stay organized and view which PRs need your attention.
 

@@ -1,10 +1,10 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/sync-with-a-remote-repo.md
 
-> ## Documentation Index
+> **Documentation Index**
 > Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Sync Changes From A Remote Repository
+## Sync Changes From A Remote Repository
 
 > Learn how to sync changes from a remote repository with Graphite's CLI, managing branch updates and conflicts.
 
@@ -34,7 +34,7 @@ If your remote `trunk` branch (also known as `origin/main`) gets ahead of your l
 
 Let's say that you've squash-and-merged in the first branch in your stack, `pp--06-14-part_1`, of a three-branch stack. Since you know that your `main` branch has been updated with the changes of `pp--06-14-part_1,` you can sync that change from remote using the `gt sync` command:
 
-```bash Terminal theme={null}
+```bash
 > gt sync
 
 
@@ -49,7 +49,7 @@ Restacked pp--06-14-part_3 on pp--06-14-part_2.
 
 If you run `gt log`, you see that `part_2` is now based on `main`:
 
-```bash Terminal theme={null}
+```bash
 ◉ pp--06-14-part_3 (current)
 │ 39 minutes ago
 │
@@ -79,7 +79,7 @@ You can think of restacking branches as distributing the new changes from your `
 
 If these changes conflict with changes you've made, `gt sync` might output something like:
 
-```bash Terminal theme={null}
+```bash
 All branches restacked cleanly, except for:
 ▸ 09-14-part_4
 You can fix these conflicts with gt restack.

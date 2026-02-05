@@ -1,10 +1,11 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/merge-pull-requests.md
 
-> ## Documentation Index
+## Documentation Index
+
 > Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Merge Pull Requests
+## Merge Pull Requests
 
 > Learn how to seamlessly merge a single PR or stack of PRs with Graphite and handle merge conflicts efficiently.
 
@@ -164,7 +165,7 @@ on:
 
 If your CI hasn't been configured to ignore Graphite's temporary branches yet, your CI job may fail due to an error looking like:
 
-```
+```bash
 Fetching base branch: refs/heads/graphite-base/*
 fatal: couldn't find remote ref refs/heads/graphite-base/*
 ```

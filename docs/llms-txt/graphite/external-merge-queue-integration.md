@@ -1,6 +1,7 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/external-merge-queue-integration.md
 
-> ## Documentation Index
+## Documentation Index
+
 > Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -63,7 +64,7 @@ Note: if you merge PRs with your merge queue another way, such as running CLI co
 1. Ensure that a PR can be enqueued via label
 2. (Recommended) Prevent the merge queue from merging into branches named `graphite-base/*`. See [Automatic rebasing](https://graphite.com/docs/merge-pull-requests#automatic-rebasing) for more information.
 
-### Enable the external merge queue integration
+### Enable the external merge queue integration for other merge queues
 
 Go to *Merge queue* in the Graphite app settings page ([https://app.graphite.com/settings/merge-queue)](https://app.graphite.com/settings/merge-queue), and:
 

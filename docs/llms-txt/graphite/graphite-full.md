@@ -5,6 +5,7 @@ Source: https://graphite.com/docs/llms-full.txt
 ---
 
 # Advanced Tutorials
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/advanced-tutorials
 
 Take it to the next level with advanced CLI commands.
@@ -25,6 +26,7 @@ Take it to the next level with advanced CLI commands.
 
 
 # LLM-Friendly Documentation
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/ai-ingestion
 
 Optimized formats of Graphite Documentation for ingestion as context for LLMs and AI tools.
@@ -45,6 +47,7 @@ Download Graphite Documentation's `/llms-full.txt` file at: [https://graphite.co
 
 
 # AI Privacy and Security
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/ai-privacy-and-security
 
 Graphite offers a handful of AI features to automate parts of the developer workflow. These features are opt-in and do not store or train on your data.
@@ -53,47 +56,47 @@ Graphite offers a handful of generative AI features to automate parts of the dev
 
 Examples of our AI features include:
 
-* Generating pull request titles and descriptions
+- Generating pull request titles and descriptions
 
-* Generating review comments
+- Generating review comments
 
-* Generating suggested edits in response to review comments
+- Generating suggested edits in response to review comments
 
-* And others coming soon
+- And others coming soon
 
 We know that AI can be a sensitive topic for many organizations, which is why:
 
-* By default, Graphite does not include your data in any requests we make to either of our AI subprocessors (currently Anthropic and OpenAI;see below for more details)
+- By default, Graphite does not include your data in any requests we make to either of our AI subprocessors (currently Anthropic and OpenAI;see below for more details)
 
-* Graphite will always ask for user approval before triggering or enabling features that include your data in requests to either of these subprocessors
+- Graphite will always ask for user approval before triggering or enabling features that include your data in requests to either of these subprocessors
 
-* Neither Graphite nor any of its subprocessors use your data to train their models
+- Neither Graphite nor any of its subprocessors use your data to train their models
 
-* Graphite holds a high bar when protecting your data, as outlined in our [Terms of Service](https://graphite.com/terms-of-service) and [Privacy Policy](https://graphite.com/privacy)
+- Graphite holds a high bar when protecting your data, as outlined in our [Terms of Service](https://graphite.com/terms-of-service) and [Privacy Policy](https://graphite.com/privacy)
 
 Many of our AI features are powered through partnerships with Anthropic and OpenAI, who currently act as our AI subprocessors. We have strict agreements in place with both companies that explicitly prohibit the use of your data to train models, and your data remains protected and confidential at all times. Our agreements are available here:
 
-* Anthropic:
+- Anthropic:
 
-  * Agreement: [https://www.anthropic.com/legal/commercial-terms](https://www.anthropic.com/legal/commercial-terms)
+- Agreement: [https://www.anthropic.com/legal/commercial-terms](https://www.anthropic.com/legal/commercial-terms)
 
-  * Your data is not used for training: [https://support.anthropic.com/en/articles/7996885-how-do-you-use-personal-data-in-model-training#h\_1a7d240480](https://support.anthropic.com/en/articles/7996885-how-do-you-use-personal-data-in-model-training#h_1a7d240480)
+- Your data is not used for training: [https://support.anthropic.com/en/articles/7996885-how-do-you-use-personal-data-in-model-training#h\_1a7d240480](https://support.anthropic.com/en/articles/7996885-how-do-you-use-personal-data-in-model-training#h_1a7d240480)
 
-* OpenAI:
+- OpenAI:
 
-  * Agreement: [https://openai.com/policies/business-terms/](https://openai.com/policies/business-terms/)
+- Agreement: [https://openai.com/policies/business-terms/](https://openai.com/policies/business-terms/)
 
-  * Your data is not used for training: [https://openai.com/enterprise-privacy/](https://openai.com/enterprise-privacy/)
+- Your data is not used for training: [https://openai.com/enterprise-privacy/](https://openai.com/enterprise-privacy/)
 
 These subprocessors receive the minimum data necessary to generate the best possible response; examples of data we may send them include:
 
-* Any metadata around the pull request (author, timestamp, etc.)
+- Any metadata around the pull request (author, timestamp, etc.)
 
-* The code the pull request changes
+- The code the pull request changes
 
-* Related or similar pull requests
+- Related or similar pull requests
 
-* Related or similar parts of your codebase
+- Related or similar parts of your codebase
 
 We are committed to protecting your data and privacy at all times, and we understand that some organizations would rather not use these features at all. To disable AI features across your entire organization, please email [support@graphite.com](mailto:support@graphite.com) and request a complete block of all AI features for your organization. You can always email us again if you change your mind, and we will unblock these features for your organization upon request.
 
@@ -101,6 +104,7 @@ Lastly, depending on your plan, enabling some of these features may have additio
 
 
 # Review comments
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/ai-review-comments
 
 Understanding Graphite Agent's feedback and how to get the most value from it
@@ -127,46 +131,46 @@ Graphite Agent catches a wide range of issues that often slip through manual cod
 
 Graphite Agent identifies when your implementation doesn't match the intended behavior, detecting issues like:
 
-* Functions that don't accomplish what they're named to do
-* Inconsistencies between code behavior and documentation
-* Mismatches between API usage and implementation
-* Off-by-one errors and incorrect loop boundaries
+- Functions that don't accomplish what they're named to do
+- Inconsistencies between code behavior and documentation
+- Mismatches between API usage and implementation
+- Off-by-one errors and incorrect loop boundaries
 
 ### Edge cases
 
 Graphite Agent finds potential failure modes that aren't handled in your code:
 
-* Missing null checks or error handling
-* Race conditions in asynchronous code
-* Memory leaks and resource management issues
-* Unexpected side effects
+- Missing null checks or error handling
+- Race conditions in asynchronous code
+- Memory leaks and resource management issues
+- Unexpected side effects
 
 ### Security vulnerabilities
 
 Graphite Agent spots security issues before they reach production:
 
-* SQL injection vulnerabilities
-* Cross-site scripting (XSS) opportunities
-* Authorization bypass possibilities
-* Insecure cryptographic practices
+- SQL injection vulnerabilities
+- Cross-site scripting (XSS) opportunities
+- Authorization bypass possibilities
+- Insecure cryptographic practices
 
 ### Performance issues
 
 Graphite Agent detects code that might cause performance problems:
 
-* Inefficient algorithms or data structures
-* Unnecessary API calls or database queries
-* Memory-intensive operations that could be optimized
-* N+1 query patterns
+- Inefficient algorithms or data structures
+- Unnecessary API calls or database queries
+- Memory-intensive operations that could be optimized
+- N+1 query patterns
 
 ### Accidentally committed code
 
 Graphite Agent catches code that was likely not meant to be committed:
 
-* Debug statements and console logs
-* Test data and development configurations
-* Commented-out code blocks
-* Temporary workarounds
+- Debug statements and console logs
+- Test data and development configurations
+- Commented-out code blocks
+- Temporary workarounds
 
 ## Tracking AI review impact
 
@@ -180,16 +184,16 @@ The **Overview** tab provides time-series metrics to help you understand your AI
   <img />
 </Frame>
 
-* **Issues found**: Total issues identified, with a breakdown by category
-* **Issues accepted**: Number of issues that led to code changes
-* **Acceptance rate**: Percentage of suggestions that were accepted over time
-* **PRs reviewed**: Volume of pull requests analyzed
-* **Downvote rate**: Feedback tracking to identify areas for improvement
+- **Issues found**: Total issues identified, with a breakdown by category
+- **Issues accepted**: Number of issues that led to code changes
+- **Acceptance rate**: Percentage of suggestions that were accepted over time
+- **PRs reviewed**: Volume of pull requests analyzed
+- **Downvote rate**: Feedback tracking to identify areas for improvement
 
 You can filter these metrics by:
 
-* **Time period**: Last 4 weeks, 8 weeks, 12 weeks, or all time
-* **Repository**: View metrics for specific repositories or across all repos
+- **Time period**: Last 4 weeks, 8 weeks, 12 weeks, or all time
+- **Repository**: View metrics for specific repositories or across all repos
 
 The category breakdown shows counts and acceptance rates for each issue type (logic bugs, security issues, edge cases, etc.), helping you understand where your reviewer adds the most value.
 
@@ -197,10 +201,10 @@ The category breakdown shows counts and acceptance rates for each issue type (lo
 
 The **Comment feed** tab lets you:
 
-* View all comments Graphite Agent has left across your repositories
-* Filter by category to focus on specific types of issues
-* See prevented bugs and their potential impact
-* Review code snippets with inline explanations
+- View all comments Graphite Agent has left across your repositories
+- Filter by category to focus on specific types of issues
+- See prevented bugs and their potential impact
+- Review code snippets with inline explanations
 
 <Frame>
   <img />
@@ -220,12 +224,13 @@ For any pull request, you can see the AI review status in the right-hand panel o
 
 The status will show as:
 
-* **Running**: Graphite Agent is currently analyzing the PR
-* **Completed**: Graphite Agent has finished reviewing and left any relevant comments
-* **Not running**: The PR won't be analyzed (e.g., if the PR exceeds 200,000 characters)
+- **Running**: Graphite Agent is currently analyzing the PR
+- **Completed**: Graphite Agent has finished reviewing and left any relevant comments
+- **Not running**: The PR won't be analyzed (e.g., if the PR exceeds 200,000 characters)
 
 
 # Customization
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/ai-review-customization
 
 Tailor AI reviews to your team's specific needs and coding standards
@@ -244,10 +249,10 @@ Comment exclusions allow you to specify situations where Graphite Agent should *
 
 Common exclusion use cases:
 
-* **Ignore generated code**: Prevent extraneous comments on generated code from build artifacts, schemas, and other generated files.
-* **Skip specific types of comments**: Turn off categories of feedback that aren't relevant to your team
-* **Ignore certain repositories or directories**: Focus AI reviews where they matter most
-* **Exclude specific patterns**: Define patterns that shouldn't be flagged (e.g., team-specific style conventions)
+- **Ignore generated code**: Prevent extraneous comments on generated code from build artifacts, schemas, and other generated files.
+- **Skip specific types of comments**: Turn off categories of feedback that aren't relevant to your team
+- **Ignore certain repositories or directories**: Focus AI reviews where they matter most
+- **Exclude specific patterns**: Define patterns that shouldn't be flagged (e.g., team-specific style conventions)
 
 ### Best practices for writing exclusions
 
@@ -255,27 +260,29 @@ Make the language as targeted as possible by specifying the exact scope where th
 
 Bad example:
 
-```
+```bash
+
 ### Bad example: Overly broad exclusion
 
 Don't suggest performance improvements.
-```
+```text
 
 Why is this bad?
 
-* This is too broad and would miss legitimate performance issues. The rule could be rewritten instead as:
+- This is too broad and would miss legitimate performance issues. The rule could be rewritten instead as:
 
-```
+```text
 Do not suggest performance optimizations for code in the /scripts directory - these are one-time utility scripts.
-```
+```text
 
 Good example:
 
-```
+```bash
+
 ### Good example: Language-specific syntax exclusion
 
 Do not comment on missing "return" keywords in Kotlin single-expression functions. This is valid Kotlin syntax.
-```
+```text
 
 To set up exclusions:
 
@@ -289,10 +296,10 @@ Custom rules allow you to define explicit guidelines for Graphite Agent to follo
 
 With custom rules, you can:
 
-* Define coding standards specific to your codebase
-* Implement architectural guidelines for your team
-* Enforce security or performance best practices
-* Ensure consistent patterns across your repositories
+- Define coding standards specific to your codebase
+- Implement architectural guidelines for your team
+- Enforce security or performance best practices
+- Ensure consistent patterns across your repositories
 
 <Frame>
   <img />
@@ -306,10 +313,10 @@ Custom prompts are rules written directly in the Graphite UI. They're the recomm
 
 **Why custom prompts work best:**
 
-* **Focused**: Each rule addresses one specific concern
-* **Fast to iterate**: Test and refine rules based on their effectiveness
-* **Better performance**: No file processing overhead
-* **Easy to manage**: All rules across all repos visible in a single interface
+- **Focused**: Each rule addresses one specific concern
+- **Fast to iterate**: Test and refine rules based on their effectiveness
+- **Better performance**: No file processing overhead
+- **Easy to manage**: All rules across all repos visible in a single interface
 
 **Getting started:**
 
@@ -336,9 +343,9 @@ File-based rules reference existing documentation in your repository using glob 
 
 **When to use file-based rules:**
 
-* Documentation maintained by other teams that changes regularly
-* Shared architectural decision records across repositories
-* Style guides that are actively updated
+- Documentation maintained by other teams that changes regularly
+- Shared architectural decision records across repositories
+- Style guides that are actively updated
 
 **How they work:**
 
@@ -350,72 +357,75 @@ File-based rules reference existing documentation in your repository using glob 
 
 Store your rules alongside your other code generation markdown files, or use one dedicated folder per repository. Common patterns include:
 
-```
+```text
 docs/coding-standards.md    # Specific documentation file
 CONTRIBUTING.md             # Contributing guidelines
 docs/architecture/*.md      # Architecture documentation
 .github/rules/*.md          # Rules folder in your repo
-```
+```text
 
 **Limitations:**
 
-* Large files are truncated for performance
-* Too many files can reduce review quality
-* Glob patterns are case-sensitive
+- Large files are truncated for performance
+- Too many files can reduce review quality
+- Glob patterns are case-sensitive
 
 ### Best practices for writing custom rules
 
 **Structure your rules clearly:**
 
-* **Format**: Rule → Bad example → Good example → Reasoning
-* **Focus**: One specific concern per rule
-* **Examples**: Provide 2-3 clear, contrasting examples
-* **Test**: Try your rule on recent PRs to verify it adds value
+- **Format**: Rule → Bad example → Good example → Reasoning
+- **Focus**: One specific concern per rule
+- **Examples**: Provide 2-3 clear, contrasting examples
+- **Test**: Try your rule on recent PRs to verify it adds value
 
 **What works best:**
 
-* Language-specific conventions (naming, imports, error handling)
-* Security guidelines (authentication, data validation)
-* Framework-specific patterns (React hooks, API design)
+- Language-specific conventions (naming, imports, error handling)
+- Security guidelines (authentication, data validation)
+- Framework-specific patterns (React hooks, API design)
 
 **What to avoid:**
 
-* Unnecessary context ("you are a staff-level engineer")
-* Overly broad rules ("write good code")
-* Praise
-* Non-prescriptive verbs ("comment on" or "flag")
-* Comments that should actually be exclusions ("don't comment on")
+- Unnecessary context ("you are a staff-level engineer")
+- Overly broad rules ("write good code")
+- Praise
+- Non-prescriptive verbs ("comment on" or "flag")
+- Comments that should actually be exclusions ("don't comment on")
 
 Bad examples:
 
-```
+```bash
+
 ### Bad example 1: Vague database rule
 
 Rule: Don't make breaking changes to database fields. When dropping or adding fields could cause issues, flag them in review.
-```
+```text
 
 Why is this bad?
 
-* Too vague. What counts as a breaking change to database fields?
-* "Flag" is a non-prescriptive verb. Leaving a comment inherently means flagging an issue. What should Graphite Agent tell engineers to do instead? A better alternative would be: "Never drop a required field directly. Always make it nullable first and stop writing to it so that it is no longer used by the entity."
-* No examples provided.
+- Too vague. What counts as a breaking change to database fields?
+- "Flag" is a non-prescriptive verb. Leaving a comment inherently means flagging an issue. What should Graphite Agent tell engineers to do instead? A better alternative would be: "Never drop a required field directly. Always make it nullable first and stop writing to it so that it is no longer used by the entity."
+- No examples provided.
 
-```
+```bash
+
 ### Bad example 2: Unclear CSS class naming rule
 
 Always comment on color values like #FF0000 being used in stylesheets. Don't comment on utility classes like bg-red-500 or text-primary.
-```
+```text
 
 Why is this bad?
 
-* "Comment" is a non-prescriptive verb. Instead, the rule should specify what Graphite Agent's comment should contain.
-* This isn't phrased as a rule. The rule should be stated clearly as "Never use hex color values directly, always use design system tokens instead."
-* More context is needed. The rule should specify which files or frameworks this applies to (CSS files, styled-components, etc.).
-* This prompt mixes custom rules and exclusions. The latter sentence is not necessary.
+- "Comment" is a non-prescriptive verb. Instead, the rule should specify what Graphite Agent's comment should contain.
+- This isn't phrased as a rule. The rule should be stated clearly as "Never use hex color values directly, always use design system tokens instead."
+- More context is needed. The rule should specify which files or frameworks this applies to (CSS files, styled-components, etc.).
+- This prompt mixes custom rules and exclusions. The latter sentence is not necessary.
 
 Good examples:
 
 ````
+
 ### Good example 1: Security rule with clear structure
 
 ## Security Rules
@@ -426,6 +436,7 @@ Good examples:
 Never expose detailed error messages that reveal stack traces or internal system details. In production environments, always return generic error messages to protect the system while logging full details internally for debugging.
 
 **Bad example:**
+
 ```js
 app.use((err, req, res, next) => {
   res.status(500).json({ error: err.stack });
@@ -433,6 +444,7 @@ app.use((err, req, res, next) => {
 ```
 
 **Good example:**
+
 ```js
 app.use((err, req, res, next) => {
   res.status(500).json({ error: "Internal Server Error" });
@@ -441,9 +453,7 @@ app.use((err, req, res, next) => {
 
 **Reasoning:**
 Revealing stack traces or internal error details can leak sensitive implementation information, making it easier for attackers to exploit vulnerabilities.
-````
 
-````
 ### Good example 2: Database rule with specific context
 
 ## Database Rules
@@ -454,12 +464,14 @@ Revealing stack traces or internal error details can leak sensitive implementati
 When adding new string columns to TypeORM entities, always use `text` type instead of `varchar(n)` unless there's a specific business requirement for length constraints.
 
 **Good example:**
+
 ```ts
 @Column({ type: 'text' })
 description: string;
 ```
 
 **Bad example:**
+
 ```ts
 @Column({ type: 'varchar', length: 255 })
 description: string;
@@ -467,7 +479,6 @@ description: string;
 
 **Reasoning:**
 PostgreSQL handles `text` and `varchar` identically in terms of performance, but `text` avoids arbitrary length limits that can cause issues as data grows.
-````
 
 For additional recommendations, see [Anthropic's suggestions for prompt engineering best practices](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/claude-4-best-practices#be-explicit-with-your-instructions).
 
@@ -483,30 +494,34 @@ To set up custom rules:
 
 For large repositories, you may want to exclude certain files from AI review analysis. This is useful for:
 
-* Data files that don't need to be reviewed
-* Generated code that is automatically created by tools
-* Any files that would make a PR too big for Graphite Agent to analyze
+- Data files that don't need to be reviewed
+- Generated code that is automatically created by tools
+- Any files that would make a PR too big for Graphite Agent to analyze
 
 You can exclude files by marking them as generated files in your repository's `.gitattributes` file:
 
-```
+```bash
+
 # Exclude specific files
+
 docs/data.txt linguist-generated=true
 
 # Exclude file types
+
 *.csv linguist-generated=true
 *.pb.go linguist-generated=true
 
 # Exclude entire directories
+
 data/** linguist-generated=true
 generated/** linguist-generated=true
-```
+```text
 
 Files marked as `linguist-generated` will be:
 
-* Automatically collapsed in both Graphite and GitHub pull request views
-* Excluded from AI review when determining if a PR is too large
-* Skipped during the AI review process
+- Automatically collapsed in both Graphite and GitHub pull request views
+- Excluded from AI review when determining if a PR is too large
+- Skipped during the AI review process
 
 For more information, see GitHub's documentation on [customizing how changed files appear on GitHub](https://docs.github.com/en/repositories/working-with-files/managing-files/customizing-how-changed-files-appear-on-github).
 
@@ -516,17 +531,17 @@ Advanced PR-level filtering provides granular control over where AI reviews run.
 
 With PR-level filtering, you can control AI reviews based on:
 
-* **PR author**: Run reviews only for specific team members or external contributors
-* **File paths**: Analyze PRs only when certain files or directories are modified
-* **PR labels**: Trigger reviews based on GitHub labels applied to pull requests
-* **PR title and description**: Filter based on text content in PR titles or descriptions
-* **Parent branch**: Run analysis based on target branch naming conventions
+- **PR author**: Run reviews only for specific team members or external contributors
+- **File paths**: Analyze PRs only when certain files or directories are modified
+- **PR labels**: Trigger reviews based on GitHub labels applied to pull requests
+- **PR title and description**: Filter based on text content in PR titles or descriptions
+- **Parent branch**: Run analysis based on target branch naming conventions
 
 PR-level filtering provides flexibility to:
 
-* **Control usage and costs**: Optimize AI review usage by focusing on the most important PRs
-* **Focus analysis on critical PRs**: Ensure reviews target high-impact changes while skipping routine updates
-* **Implement organization-specific review policies**: Align AI review behavior with your team's development workflows and governance requirements
+- **Control usage and costs**: Optimize AI review usage by focusing on the most important PRs
+- **Focus analysis on critical PRs**: Ensure reviews target high-impact changes while skipping routine updates
+- **Implement organization-specific review policies**: Align AI review behavior with your team's development workflows and governance requirements
 
 Once saved, AI reviews will only run on new and updated pull requests that match the configured settings in enabled repositories. You can configure these settings through the **Settings** tab on the AI reviews dashboard, and organization admin permissions are required to modify them.
 
@@ -538,32 +553,33 @@ The **Rules & exclusions** tab on the [AI reviews dashboard](https://app.graphit
 
 For each custom rule, you can track:
 
-* **Issues found**: Total issues flagged by this rule
-* **PRs reviewed**: Number of pull requests where this rule was applied
-* **Accepted issues**: Issues that led to code changes
-* **Acceptance rate**: Percentage of issues that were accepted
-* **Upvote/Downvote rates**: Direct feedback from your team
+- **Issues found**: Total issues flagged by this rule
+- **PRs reviewed**: Number of pull requests where this rule was applied
+- **Accepted issues**: Issues that led to code changes
+- **Acceptance rate**: Percentage of issues that were accepted
+- **Upvote/Downvote rates**: Direct feedback from your team
 
 ### Comment exclusions metrics
 
 For each exclusion, you can track:
 
-* **Issues checked**: Total issues evaluated against this exclusion
-* **PRs reviewed**: Number of pull requests where this exclusion was applied
-* **Issues caught**: Issues that were filtered out by this exclusion
-* **Percentage caught**: Proportion of checked issues that were excluded
+- **Issues checked**: Total issues evaluated against this exclusion
+- **PRs reviewed**: Number of pull requests where this exclusion was applied
+- **Issues caught**: Issues that were filtered out by this exclusion
+- **Percentage caught**: Proportion of checked issues that were excluded
 
 ### Using metrics to optimize
 
 Use these metrics to:
 
-* Identify high-performing rules to use as templates for new rules
-* Refine or remove rules with low acceptance rates
-* Understand which rules resonate with your team
-* Fine-tune exclusions that are filtering too many or too few issues
+- Identify high-performing rules to use as templates for new rules
+- Refine or remove rules with low acceptance rates
+- Understand which rules resonate with your team
+- Fine-tune exclusions that are filtering too many or too few issues
 
 
 # Experimental comments
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/ai-review-experimental-comments
 
 Learn about experimental AI review comments and how to provide feedback
@@ -579,9 +595,9 @@ By testing these experimental pipelines, we can learn what works well and what d
 
 Your input is incredibly valuable and helps us make Graphite Agent better for everyone. We want to know:
 
-* What did you find helpful about this comment?
-* What could be improved?
-* Would you want to see more comments like this in the future?
+- What did you find helpful about this comment?
+- What could be improved?
+- Would you want to see more comments like this in the future?
 
 Our team reviews each comment that receives feedback to improve Graphite Agent and deliver a better experience.
 
@@ -599,6 +615,7 @@ Our team may reach out to you to ask for more information.
 
 
 # AI Reviews
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/ai-reviews
 
 Catch bugs before they ship to production with AI code review
@@ -609,10 +626,10 @@ AI reviews powered by Graphite Agent help your team build better software by aut
 
 AI reviews analyze every pull request in your repositories, identifying potential issues and suggesting fixes instantly - no manual configuration required. AI reviews help your team:
 
-* **Ship faster**: Reduce review cycles and speed up the merge process
-* **Fix bugs early**: Catch logic issues, edge cases, and performance problems before they reach production
-* **Improve code quality**: Get actionable feedback that makes your codebase more robust
-* **Reduce incidents**: Prevent bugs that cause outages or customer-facing issues
+- **Ship faster**: Reduce review cycles and speed up the merge process
+- **Fix bugs early**: Catch logic issues, edge cases, and performance problems before they reach production
+- **Improve code quality**: Get actionable feedback that makes your codebase more robust
+- **Reduce incidents**: Prevent bugs that cause outages or customer-facing issues
 
 <Frame>
   <img />
@@ -622,10 +639,10 @@ AI reviews analyze every pull request in your repositories, identifying potentia
 
 Unlike other code review tools, AI reviews:
 
-* **Focuses on real bugs** - not just style issues or best practices
-* **Understands context** - analyzes your entire codebase to provide relevant feedback
-* **Provides actionable suggestions** - shows exactly how to fix issues, not just what's wrong
-* **Learns from feedback** - improves based on how your team interacts with comments
+- **Focuses on real bugs** - not just style issues or best practices
+- **Understands context** - analyzes your entire codebase to provide relevant feedback
+- **Provides actionable suggestions** - shows exactly how to fix issues, not just what's wrong
+- **Learns from feedback** - improves based on how your team interacts with comments
 
 Ready to see AI reviews in action? Get started in minutes:
 
@@ -651,6 +668,7 @@ Ready to see AI reviews in action? Get started in minutes:
 
 
 # Setup & configuration
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/ai-reviews-setup
 
 Get started with AI reviews in under 5 minutes
@@ -677,9 +695,9 @@ AI reviews can be enabled in just a few clicks, with no configuration required t
 
 Once enabled, Graphite Agent:
 
-* Automatically analyzes new pull requests in the selected repositories
-* Comments directly on pull requests when it finds potential issues
-* Suggests fixes for the problems it identifies
+- Automatically analyzes new pull requests in the selected repositories
+- Comments directly on pull requests when it finds potential issues
+- Suggests fixes for the problems it identifies
 
 Graphite Agent works behind the scenes, with no changes required to your existing PR workflow. Your team can continue using GitHub just as they do today, with Graphite Agent providing additional feedback alongside human reviewers.
 
@@ -717,14 +735,15 @@ After completing these steps, you can enable AI reviews on your personal account
 
 While AI reviews work great out of the box, you can customize them to better fit your team's workflow and standards. Navigate to the **Rules & exclusions** tab on the [AI code review dashboard](https://app.graphite.com/ai-reviews) to configure these options, or see our [Customization](/ai-review-customization) page for details on:
 
-* Setting up exclusions to prevent Graphite Agent from commenting on certain types of issues
-* Creating custom rules that match your team's coding guidelines
-* Excluding files from AI review analysis
+- Setting up exclusions to prevent Graphite Agent from commenting on certain types of issues
+- Creating custom rules that match your team's coding guidelines
+- Excluding files from AI review analysis
 
 The **Rules & exclusions** tab also shows metrics like acceptance rate and issues caught for each rule and exclusion, helping you track their effectiveness over time.
 
 
 # Authenticate With GitHub
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/authenticate-with-github-app
 
 Graphite is built on top of GitHub's APIs, so you need to provide Graphite access to your GitHub resources to create, review, and merge PRs.
@@ -733,9 +752,9 @@ Graphite is built on top of GitHub's APIs, so you need to provide Graphite acces
 
 Currently, GitHub is the only git provider that Graphite integrates with. When setting up an account with Graphite, you'll have two options to authenticate with GitHub:
 
-* Option 1: Install [the Graphite App](https://github.com/apps/graphite-app) (a GitHub App) on your organization ***(recommended)***
+- Option 1: Install [the Graphite App](https://github.com/apps/graphite-app) (a GitHub App) on your organization ***(recommended)***
 
-* Option 2: Provide Graphite with a [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+- Option 2: Provide Graphite with a [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
 
 <Note>
   We no longer support OAuth as an authentication method. Users who previously authenticated with OAuth remain supported, but new signups must use GitHub App or PAT.
@@ -747,13 +766,13 @@ When creating an account on Graphite, it's strongly recommended that you install
 
 GitHub Apps are the officially [recommended way](https://docs.github.com/en/apps/publishing-apps-to-github-marketplace/github-marketplace-overview/about-github-marketplace-for-apps) to integrate with GitHub. Some benefits for installing [Graphite’s GitHub App](https://github.com/marketplace/graphite-dev) on your organization:
 
-* Access to GitHub webhooks, which provides Graphite with push-based updates for information like CI status, mergeability, and real-time push events within seconds.
+- Access to GitHub webhooks, which provides Graphite with push-based updates for information like CI status, mergeability, and real-time push events within seconds.
 
-* Access to the Graphite Merge Queue. The Merge Queue is only available if our GitHub App is installed on the organization.
+- Access to the Graphite Merge Queue. The Merge Queue is only available if our GitHub App is installed on the organization.
 
-* Avoid hitting secondary rate limits with the GitHub API. This means fewer API requests to keep your data up-to-date, leading to fewer API errors and lower latency.
+- Avoid hitting secondary rate limits with the GitHub API. This means fewer API requests to keep your data up-to-date, leading to fewer API errors and lower latency.
 
-* Provides the most security for your organization, giving users more control over which repositories the app can access through fine-grained permissions and short-lived tokens.
+- Provides the most security for your organization, giving users more control over which repositories the app can access through fine-grained permissions and short-lived tokens.
 
 ### Install the Graphite App on an organization
 
@@ -807,6 +826,7 @@ To make adjustments to your GitHub authentication and the resources which Graphi
 
 
 # Automations
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/automations
 
 Learn how to automate tedious code review tasks like assigning reviewers, adding labels, and more with automations.
@@ -831,25 +851,25 @@ Automation rules have two aspects: a filter trigger and an action.
 
 To specify the filtering trigger for PRs:
 
-* You can use any of the filters powering Graphite's PR inbox today
+- You can use any of the filters powering Graphite's PR inbox today
 
-* Additionally, you can specify a glob pattern for filenames. With this, you can create rules for PRs containing common suffixes (e.g. `**/*.ts` files), or that are contained in specified sub-directories (e.g. `**/myteam/**`), among other patterns.
+- Additionally, you can specify a glob pattern for filenames. With this, you can create rules for PRs containing common suffixes (e.g. `**/*.ts` files), or that are contained in specified sub-directories (e.g. `**/myteam/**`), among other patterns.
 
 ### Actions
 
 When a PR matches your condition, you can configure one or more of the following actions:
 
-* Add reviewers to the PR. This supports both individuals and GitHub teams.
+- Add reviewers to the PR. This supports both individuals and GitHub teams.
 
-* Add assignees to the PR. This supports making the PR author the assignee.
+- Add assignees to the PR. This supports making the PR author the assignee.
 
-* Add labels to the PR.
+- Add labels to the PR.
 
-* Leave a comment on the PR. For example, you can leave a reminder for PRs opened containing changes to a particularly sensitive area of the code.
+- Leave a comment on the PR. For example, you can leave a reminder for PRs opened containing changes to a particularly sensitive area of the code.
 
-* Notify someone through Slack. For example, set a notification for all frontend changes for instances when you want to know about a change, but don’t necessarily want to be added as the reviewer.
+- Notify someone through Slack. For example, set a notification for all frontend changes for instances when you want to know about a change, but don’t necessarily want to be added as the reviewer.
 
-* Post a GIF on the PR. For example, post a random "approved!" GIF from GIPHY each time a PR is fully approved.
+- Post a GIF on the PR. For example, post a random "approved!" GIF from GIPHY each time a PR is fully approved.
 
 ## Manage rules
 
@@ -857,11 +877,11 @@ Navigate to *Automations* from the sidebar in the Graphite web app.
 
 ### **Create rules**
 
-* Click **Create rule**.
+- Click **Create rule**.
 
-* Specify the repository for the rule. Note that this must be one of your synced repositories (see [configuring default repositories](/use-pr-inbox#default-repositories)).
+- Specify the repository for the rule. Note that this must be one of your synced repositories (see [configuring default repositories](/use-pr-inbox#default-repositories)).
 
-* Configure the conditions you want to match PRs on, and the actions to automatically take on those matched PRs.
+- Configure the conditions you want to match PRs on, and the actions to automatically take on those matched PRs.
 
 To confirm your conditions are configured correctly, you can preview past PRs that match your rules before activating the rule.
 
@@ -891,6 +911,7 @@ When a rule triggers on a PR, Graphite automatically applies the triggers. Graph
 
 
 # Background Agents
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/background-agents
 
 Describe what you want built or fixed in plain language, and Graphite spins up a remote sandbox to write the code, run tests, and open a pull request for your review.
@@ -901,10 +922,10 @@ It's the fastest way to go from idea to reviewable PR - no local environment, no
 
 ## What you can do
 
-* **Quick fixes on the go** - Push a small change from your phone or browser without cloning a repo
-* **Generate boilerplate** - Scaffold new features, add API endpoints, or write SQL queries
-* **Add tests** - Expand coverage without context-switching out of code review
-* **Ship faster** - Delegate repetitive tasks and review the output in Graphite's PR interface
+- **Quick fixes on the go** - Push a small change from your phone or browser without cloning a repo
+- **Generate boilerplate** - Scaffold new features, add API endpoints, or write SQL queries
+- **Add tests** - Expand coverage without context-switching out of code review
+- **Ship faster** - Delegate repetitive tasks and review the output in Graphite's PR interface
 
 ## Getting started
 
@@ -935,10 +956,11 @@ Background Agents run in isolated, ephemeral sandboxes. Each task spins up a fre
 
 ## Related
 
-* [AI Privacy and Security](/ai-privacy-and-security) - Overview of Graphite's AI privacy practices
+- [AI Privacy and Security](/ai-privacy-and-security) - Overview of Graphite's AI privacy practices
 
 
 # Basic Tutorials
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/basic-tutorials
 
 Understand the core CLI commands.
@@ -967,6 +989,7 @@ In this video, we cover creating and traversing a stack using `gt log short`, `g
 
 
 # Best Practices For Reviewing Stacked PRs
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/best-practices-for-reviewing-stacks
 
 Learn best practices to keep in mind when reviewing PRs in a stack.
@@ -1017,6 +1040,7 @@ By following these simple best practices for reviewers, authors, and your organi
 
 
 # Use Beta CLI Releases
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/beta-cli
 
 Join the Graphite CLI beta test group for early access to the newest features.
@@ -1029,13 +1053,13 @@ Get early access to the newest CLI features!
 
 ```bash Terminal theme={null}
 brew install withgraphite/tap/graphite-beta
-```
+```bash
 
 ## npm
 
 ```bash Terminal theme={null}
 npm install -g @withgraphite/graphite-cli@beta
-```
+```bash
 
 ## Slack Channel
 
@@ -1053,6 +1077,7 @@ New versions will be announced in the #cli-beta channel in our [community Slack.
 
 
 # Billing & plans
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/billing-plans
 
 Learn about the Graphite plans for teams.
@@ -1382,6 +1407,7 @@ Changes to the number of seats on a team are reflected on the following month's 
 
 
 # Command Cheatsheet
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/cheatsheet
 
 
@@ -1508,6 +1534,7 @@ Common tasks and their commands. Click any command to see full documentation in 
 
 
 # Use CLI Binaries
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/cli-binaries
 
 
@@ -1519,12 +1546,13 @@ version="$(curl https://registry.npmjs.org/@withgraphite/graphite-cli/stable | j
 url="https://github.com/withgraphite/homebrew-tap/releases/download/v$version/gt-linux"
 curl -L "$url" -o /path/to/gt
 chmod +x /path/to/gt
-```
+```text
 
 You can replace `/path/to/gt` with your preferred install location (e.g., `/usr/local/bin/gt`).
 
 
 # CLI Changelog
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/cli-changelog
 
 See the history of changes for the Graphite CLI.
@@ -1532,459 +1560,459 @@ See the history of changes for the Graphite CLI.
 <Info> The CLI initially releases to a Beta stage and then graduates to Stable. For current and historical version information, please visit our [NPM repository](https://www.npmjs.com/package/@withgraphite/graphite-cli?activeTab=versions). </Info>
 
 <Update label="1.7.18" description="2026-02-02">
-  * AI-generated branch names now honor the lowercase CLI configuration setting.
+- AI-generated branch names now honor the lowercase CLI configuration setting.
 
-  * Improved `gt sync --force` warning behavior - non-interactive mode now consistently respects the flag, and interactive mode shows more informative warnings.
+- Improved `gt sync --force` warning behavior - non-interactive mode now consistently respects the flag, and interactive mode shows more informative warnings.
 
-  * Fixed a bug where range diff could incorrectly evaluate empty output as equivalent, causing sync to take the remote version despite local changes.
+- Fixed a bug where range diff could incorrectly evaluate empty output as equivalent, causing sync to take the remote version despite local changes.
 
-  * Fixed a bug related to empty commit messages during rebase.
+- Fixed a bug related to empty commit messages during rebase.
 
-  * Fixed a bug where `gt get` and `gt checkout` would exit with code 0 even on error.
+- Fixed a bug where `gt get` and `gt checkout` would exit with code 0 even on error.
 
-  * Fixed an issue where users would see `fatal: ambiguous argument 'refs/gt-fetch-head/...': unknown revision or path not in the working tree.` when running `gt sync`.
+- Fixed an issue where users would see `fatal: ambiguous argument 'refs/gt-fetch-head/...': unknown revision or path not in the working tree.` when running `gt sync`.
 
-  * Fixed a bug where `gt get` and `gt checkout` did not properly look for numerical branch names.
+- Fixed a bug where `gt get` and `gt checkout` did not properly look for numerical branch names.
 </Update>
 
 <Update label="1.7.17" description="2026-01-28">
-  * Updated `gt get` command description to include new flags
-  * Fixed a bug where stale remote tracking references could cause incorrect failed pushes when reusing branch names.
-  * Fixed `gt undo` to properly work with `gt freeze` and `gt unfreeze` commands.
-  * Fixed CLI help text for `gt split --by-file`.
+- Updated `gt get` command description to include new flags
+- Fixed a bug where stale remote tracking references could cause incorrect failed pushes when reusing branch names.
+- Fixed `gt undo` to properly work with `gt freeze` and `gt unfreeze` commands.
+- Fixed CLI help text for `gt split --by-file`.
 </Update>
 
 <Update label="1.7.16" description="2026-01-20">
-  * Added new `--remote-upstack` (`-u`) flag to `gt get` to fetch upstack branches submitted by other users.
-  * Fixed a bug where frozen branches could be updated by `gt submit` after a `gt sync`.
-  * Fixed `gt reorder` incorrectly splitting stacks when reordering branches above frozen branches.
-  * Fixed commit message formatting when using multiple -m flags - messages now include newlines between each flag, which matches native git behavior.
-  * Fixed a bug where `gt submit` would use the wrong branch's metadata to generate a title and description under some circumstances.
+- Added new `--remote-upstack` (`-u`) flag to `gt get` to fetch upstack branches submitted by other users.
+- Fixed a bug where frozen branches could be updated by `gt submit` after a `gt sync`.
+- Fixed `gt reorder` incorrectly splitting stacks when reordering branches above frozen branches.
+- Fixed commit message formatting when using multiple -m flags - messages now include newlines between each flag, which matches native git behavior.
+- Fixed a bug where `gt submit` would use the wrong branch's metadata to generate a title and description under some circumstances.
 </Update>
 
 <Update label="1.7.15" description="2026-01-07">
-  * Added new `--close` flag (alias `-c`) to `gt delete` to also close a branch's associated PR on GitHub.
-  * Improved branch name suggestion logic when running `gt split` to match behavior of `gt create`.
+- Added new `--close` flag (alias `-c`) to `gt delete` to also close a branch's associated PR on GitHub.
+- Improved branch name suggestion logic when running `gt split` to match behavior of `gt create`.
 </Update>
 
 <Update label="1.7.14" description="2025-12-23">
-  * Added new `--into` flag to `gt modify` for committing changes into a downstack branch instead of the current branch.
+- Added new `--into` flag to `gt modify` for committing changes into a downstack branch instead of the current branch.
 </Update>
 
 <Update label="1.7.13" description="2025-12-18">
-  * Fixed some internal issues with builds.
+- Fixed some internal issues with builds.
 </Update>
 
 <Update label="1.7.12" description="2025-12-15">
-  * Fixed issue with branch selection when running `gt create --insert`.
-  * Add current branch indicator in `gt log`.
-  * Always prompt a user before opening an editor for a PR description.
-  * Fixed `gt submit --cli --ai` prompt to reflect AI auto-fills PR descriptions when skipped.
+- Fixed issue with branch selection when running `gt create --insert`.
+- Add current branch indicator in `gt log`.
+- Always prompt a user before opening an editor for a PR description.
+- Fixed `gt submit --cli --ai` prompt to reflect AI auto-fills PR descriptions when skipped.
 </Update>
 
 <Update label="1.7.11" description="2025-12-10">
-  * Updated `gt up` and `gt down` to return a non-zero exit code when they cannot move because the current branch is already at the top or bottom of the stack.
-  * Running `gt undo` right after `gt abort` will now undo the command that ran before the aborted command instead of failing.
-  * Updated all CLI help text and generated documentation links to use graphite.com instead of graphite.dev.
+- Updated `gt up` and `gt down` to return a non-zero exit code when they cannot move because the current branch is already at the top or bottom of the stack.
+- Running `gt undo` right after `gt abort` will now undo the command that ran before the aborted command instead of failing.
+- Updated all CLI help text and generated documentation links to use graphite.com instead of graphite.dev.
 </Update>
 
 <Update label="1.7.10" description="2025-11-20">
-  * Added a new feature to `gt submit` that lets users choose whether reviewers should be applied to all PRs or only to newly created PRs when submitting a stack that contains a mix of new and existing PRs.
-  * Fixed a circular dependency bug in split by file that occurred when branch names conflicted after a split was performed.
-  * Fixed an alias parsing issue causing unintentional command execution upon user typos
+- Added a new feature to `gt submit` that lets users choose whether reviewers should be applied to all PRs or only to newly created PRs when submitting a stack that contains a mix of new and existing PRs.
+- Fixed a circular dependency bug in split by file that occurred when branch names conflicted after a split was performed.
+- Fixed an alias parsing issue causing unintentional command execution upon user typos
 </Update>
 
 <Update label="1.7.9" description="2025-11-14">
-  * Added ability to set and manage a default profile through the interactive config menu.
-  * Show unstaged changes during `gt create`.
-  * Added a tip explaining the difference between `gt checkout` (unfrozen) and `gt get` (frozen) when fetching new branches.
-  * Fixed error with missing refs on remote.
-  * Made `--edit-title` and `--edit-description` imply `--cli` automatically.
-  * Ensured `--cli` is auto-enabled only when PR title/description editing is actually enabled.
-  * Added clarification to `gt delete` explaining that deleting branches for open PRs is a local-only operation; PRs must be manually closed in GitHub.
+- Added ability to set and manage a default profile through the interactive config menu.
+- Show unstaged changes during `gt create`.
+- Added a tip explaining the difference between `gt checkout` (unfrozen) and `gt get` (frozen) when fetching new branches.
+- Fixed error with missing refs on remote.
+- Made `--edit-title` and `--edit-description` imply `--cli` automatically.
+- Ensured `--cli` is auto-enabled only when PR title/description editing is actually enabled.
+- Added clarification to `gt delete` explaining that deleting branches for open PRs is a local-only operation; PRs must be manually closed in GitHub.
 </Update>
 
 <Update label="1.7.8" description="2025-11-12">
-  * Added a feature to automatically check out branches authored by the current user as unfrozen when using `gt get`.
-  * Optimized performance when gathering rebase metadata.
+- Added a feature to automatically check out branches authored by the current user as unfrozen when using `gt get`.
+- Optimized performance when gathering rebase metadata.
 </Update>
 
 <Update label="1.7.7" description="2025-10-25">
-  * Added `--to <target_branch>` flag to `gt up` for targeted branch navigation within large stacks.
-  * Updated CLI, menu bar app, and VS Code extensions to request `app.graphite.com` instead of `app.graphite.dev`.
-  * Trim whitespace from branch names in `gt rename` to prevent command failures.
-  * Changed debug log file extension from `.log` to `.log.jsonl` for to match updated format.
+- Added `--to <target_branch>` flag to `gt up` for targeted branch navigation within large stacks.
+- Updated CLI, menu bar app, and VS Code extensions to request `app.graphite.com` instead of `app.graphite.dev`.
+- Trim whitespace from branch names in `gt rename` to prevent command failures.
+- Changed debug log file extension from `.log` to `.log.jsonl` for to match updated format.
 </Update>
 
 <Update label="1.7.6" description="2025-10-31">
-  * Added a feature to display warnings from PR submissions directly in the CLI to provide additional guidance to users.
-  * Added retries on intermittent server errors.
-  * Updated `--edit` to imply `--cli` in `gt submit` to ensure users can edit PR titles and descriptions directly in the CLI.
-  * Fixed an issue where checking out the current branch after a rebase would create incorrect previous-branch entries in the reflog.
-  * Fixed inconsistencies in upgrade behavior due to different packaging systems.
-  * Fixed messaging to show "Updating PRs..." instead of "Creating/updating PRs..." when the update-only flag is used.
-  * Fixed an issue where editing a PR description wouldn't show the existing content by fetching the PR body from the server.
-  * Fixed an issue where `gt-fetch-head` refs could cause conflicts when creating new refs by deleting them when deleting a branch.
-  * Fixed terminal alignment issues by replacing the pencil emoji (✏️) with a memo emoji (📝).
-  * Improved error messages when a branch is updated outside of Graphite and `gt submit` fails.
-  * Improved error reporting for Graphite API failures.
+- Added a feature to display warnings from PR submissions directly in the CLI to provide additional guidance to users.
+- Added retries on intermittent server errors.
+- Updated `--edit` to imply `--cli` in `gt submit` to ensure users can edit PR titles and descriptions directly in the CLI.
+- Fixed an issue where checking out the current branch after a rebase would create incorrect previous-branch entries in the reflog.
+- Fixed inconsistencies in upgrade behavior due to different packaging systems.
+- Fixed messaging to show "Updating PRs..." instead of "Creating/updating PRs..." when the update-only flag is used.
+- Fixed an issue where editing a PR description wouldn't show the existing content by fetching the PR body from the server.
+- Fixed an issue where `gt-fetch-head` refs could cause conflicts when creating new refs by deleting them when deleting a branch.
+- Fixed terminal alignment issues by replacing the pencil emoji (✏️) with a memo emoji (📝).
+- Improved error messages when a branch is updated outside of Graphite and `gt submit` fails.
+- Improved error reporting for Graphite API failures.
 </Update>
 
 <Update label="1.7.5" description="2025-10-25">
-  * Fixed an issue where `gt submit` would incorrectly warn about out-of-date trunk when trunk was up-to-date.
-  * Fixed a bug where `gt submit` would fail with a force-with-lease error with custom fetch refspecs (or shallow clones).
-  * Added automatic re-tries in some cases to improve `gt submit` reliability.
+- Fixed an issue where `gt submit` would incorrectly warn about out-of-date trunk when trunk was up-to-date.
+- Fixed a bug where `gt submit` would fail with a force-with-lease error with custom fetch refspecs (or shallow clones).
+- Added automatic re-tries in some cases to improve `gt submit` reliability.
 </Update>
 
 <Update label="1.7.4" description="2025-10-06">
-  * Added gt upgrade command to update the CLI.
-  * Introduced automatic background updates (configurable via user settings).
-  * Added a feature to automatically fast-forward the trunk to the upstream merge base when it's out of sync, improving UX during sync operations.
-  * Added a feature that prevents submitting changes after a branch has been merged or added to a merge queue.
-  * Merged branches are now shown as merged in status and are uneditable to prevent accidental edits.
-  * Performance improvements to gt log --short and gt checkout
-  * Improved messaging to help users resolve "BlockedWhileMerging" errors by suggesting next steps in the CLI.
-  * Fixed messaging in gt demo stack output to use "upstack" instead of "downstack" for descendant branches.
-  * Fixed a critical logging regression that caused loss of debug logs.
-  * Fixed an issue where the CLI wouldn't update the trunk when fetching if a branch hadn't yet been submitted.
+- Added gt upgrade command to update the CLI.
+- Introduced automatic background updates (configurable via user settings).
+- Added a feature to automatically fast-forward the trunk to the upstream merge base when it's out of sync, improving UX during sync operations.
+- Added a feature that prevents submitting changes after a branch has been merged or added to a merge queue.
+- Merged branches are now shown as merged in status and are uneditable to prevent accidental edits.
+- Performance improvements to gt log --short and gt checkout
+- Improved messaging to help users resolve "BlockedWhileMerging" errors by suggesting next steps in the CLI.
+- Fixed messaging in gt demo stack output to use "upstack" instead of "downstack" for descendant branches.
+- Fixed a critical logging regression that caused loss of debug logs.
+- Fixed an issue where the CLI wouldn't update the trunk when fetching if a branch hadn't yet been submitted.
 </Update>
 
 <Update label="1.7.2" description="2025-10-06">
-  * Added a feature to block submits and modifications to merging branches.
-  * Added various performance optimizations on sync/get commands.
-  * Fixed issue where syncing or fetching a frozen branch would unfreeze it.
+- Added a feature to block submits and modifications to merging branches.
+- Added various performance optimizations on sync/get commands.
+- Fixed issue where syncing or fetching a frozen branch would unfreeze it.
 </Update>
 
 <Update label="1.7.1" description="2025-09-26">
-  * Added controls to show/hide inline tips.
-  * Added `--reset-author` flag to `gt modify` for resetting commit authorship.
-  * Added the ability to `gt get` PRs opened outside of Graphite.
-  * Added `--upstack` and `--downstack` options to `gt delete`
-  * Fixed bug where progress indicators would sometimes interfere with prompts for ssh key passphrases.
-  * Fixed autocomplete output formatting for better terminal compatibility.
+- Added controls to show/hide inline tips.
+- Added `--reset-author` flag to `gt modify` for resetting commit authorship.
+- Added the ability to `gt get` PRs opened outside of Graphite.
+- Added `--upstack` and `--downstack` options to `gt delete`
+- Fixed bug where progress indicators would sometimes interfere with prompts for ssh key passphrases.
+- Fixed autocomplete output formatting for better terminal compatibility.
 </Update>
 
 <Update label="1.7.0" description="2025-09-01">
-  * Added new `gt freeze` and `gt unfreeze` commands. Freezing a branch prevents modifications to that branch.
-  * New branches from `gt get` will be frozen by default.
-  * Added warnings for newly empty branches after restack operations.
-  * Added a cap to debug log size.
-  * Improved `gt feedback` experience and reliability.
-  * Fixed issue where `gt undo` could remove unstaged or untracked changes.
-  * Fixed bug where `gt undo` sometimes failed after `gt continue`.
-  * Fixed issue where org prefixes were duplicated for team reviewers in PRs.
-  * Fixed branch sync to correctly detect trunk status when upstream is missing.
-  * Fixed issue where `gt sync` would hang when branches were too far behind trunk.
-  * Automatically set `--no-interactive` mode when stdin/stdout are not TTYs.
+- Added new `gt freeze` and `gt unfreeze` commands. Freezing a branch prevents modifications to that branch.
+- New branches from `gt get` will be frozen by default.
+- Added warnings for newly empty branches after restack operations.
+- Added a cap to debug log size.
+- Improved `gt feedback` experience and reliability.
+- Fixed issue where `gt undo` could remove unstaged or untracked changes.
+- Fixed bug where `gt undo` sometimes failed after `gt continue`.
+- Fixed issue where org prefixes were duplicated for team reviewers in PRs.
+- Fixed branch sync to correctly detect trunk status when upstream is missing.
+- Fixed issue where `gt sync` would hang when branches were too far behind trunk.
+- Automatically set `--no-interactive` mode when stdin/stdout are not TTYs.
 </Update>
 
 <Update label="1.6.8" description="2025-08-05">
-  * Added warnings when trunk is out of date during `gt submit`.
-  * Fixed an issue where `gt sync` and `gt get` could result in slow operations.
-  * Fixed an issue where `gt feedback` incorrectly reported a failure.
-  * Fixed an issue where `gt submit` incorrectly required the `--force` flag.
-  * Fixed an issue where `gt log` with `-n 0` would report the incorrect branch.
-  * Fixed an issue where `gt revert` would fail to perform any action.
-  * Fixed an issue where git hooks configured absolute paths would not be found.
+- Added warnings when trunk is out of date during `gt submit`.
+- Fixed an issue where `gt sync` and `gt get` could result in slow operations.
+- Fixed an issue where `gt feedback` incorrectly reported a failure.
+- Fixed an issue where `gt submit` incorrectly required the `--force` flag.
+- Fixed an issue where `gt log` with `-n 0` would report the incorrect branch.
+- Fixed an issue where `gt revert` would fail to perform any action.
+- Fixed an issue where git hooks configured absolute paths would not be found.
 </Update>
 
 <Update label="1.6.7" description="2025-07-09">
-  * Fixed an issue where `gt submit` would incorrectly report a branch as having a "New parent".
-  * `gt submit --branch` now validates that a branch name is provided when the flag is used.
-  * Fixed an issue where `gt absorb` would fail with an error message "Shas does not match current stack".
-  * Fixed an issue where rebasing empty branch could cause incorrect metadata.
-  * Fixed an issue where `gt track` would not recover a diverged branch if the branch was already tracked.
-  * [GT MCP](/gt-mcp) beta released.
+- Fixed an issue where `gt submit` would incorrectly report a branch as having a "New parent".
+- `gt submit --branch` now validates that a branch name is provided when the flag is used.
+- Fixed an issue where `gt absorb` would fail with an error message "Shas does not match current stack".
+- Fixed an issue where rebasing empty branch could cause incorrect metadata.
+- Fixed an issue where `gt track` would not recover a diverged branch if the branch was already tracked.
+- [GT MCP](/gt-mcp) beta released.
 </Update>
 
 <Update label="1.6.6" description="2025-06-11">
-  * Add an option to cancel the operation when `gt get` or `gt sync` encounter merge conflicts.
-  * Fixed an issue where `gt submit` would incorrectly warn about missing remote changes.
+- Add an option to cancel the operation when `gt get` or `gt sync` encounter merge conflicts.
+- Fixed an issue where `gt submit` would incorrectly warn about missing remote changes.
 </Update>
 
 <Update label="1.6.5" description="2025-06-04">
-  * Added logging of processes holding index.lock when Git commands fail due to lock contention.
-  * Extended debug log expiry from 1 to 7 days for better access to historical logs.
-  * Added validation for unexpected arguments in the `gt checkout` command to avoid accidental invocations.
-  * Fixed an issue where some vscode extension activity could cause excessive log file usage.
+- Added logging of processes holding index.lock when Git commands fail due to lock contention.
+- Extended debug log expiry from 1 to 7 days for better access to historical logs.
+- Added validation for unexpected arguments in the `gt checkout` command to avoid accidental invocations.
+- Fixed an issue where some vscode extension activity could cause excessive log file usage.
 </Update>
 
 <Update label="1.6.4" description="2025-05-19">
-  * Fixed a bug where `gt submit` and `gt sync` could incorrectly report a new remote version.
-  * Fixed a bug where `gt submit` may try to push the same branch twice.
-  * Fixed a bug where help text would be displayed in a single column when piped to another command.
-  * Fixed an issue where polling in the vscode extension could cause large amounts of log file usage.
+- Fixed a bug where `gt submit` and `gt sync` could incorrectly report a new remote version.
+- Fixed a bug where `gt submit` may try to push the same branch twice.
+- Fixed a bug where help text would be displayed in a single column when piped to another command.
+- Fixed an issue where polling in the vscode extension could cause large amounts of log file usage.
 </Update>
 
 <Update label="1.6.3" description="2025-05-09">
-  * Fixed a bug in `gt submit` and `gt sync` that caused performance degradation and crashes when pull requests were modified outside of Graphite.
+- Fixed a bug in `gt submit` and `gt sync` that caused performance degradation and crashes when pull requests were modified outside of Graphite.
 </Update>
 
 <Update label="1.6.2" description="2025-05-02">
-  * `gt track` shows the exact number of commits that will go into the new branch, making it easier to spot oversized stacks.
-  * Updated git fetch commands to no longer fetch tags, reducing network usage and speeding up operations.
-  * Fixed a bug in `gt pr` where branch names were interpreted as a PR number if they started with a digit.
-  * Fixed a bug in `gt submit` where PR descriptions were being generated larger than the GitHub PR description limit.
-  * Fixed a bug in `gt submit` where PR titles were being generated larger than the GitHub PR title limit.
-  * Fixed a bug in `gt submit` where pushing all the branches in a stack could partially fail leading to inconsistent diffs in some PRs.
-  * Fixed a bug in `gt submit` where temporary branches were not being cleaned up correctly.
-  * Fixed a bug in `gt create` where the branch name was incorrectly added to the commit message.
-  * Fixed a bug where in certain cases, trunk commits could be included in a tracked branch, resulting in many Graphite operations hanging or failing.
-  * Fixed a bug where certain cases of syncing a branch submitted outside of Graphite would crash the CLI.
-  * Added better protections against running too many `git` subprocesses.
+- `gt track` shows the exact number of commits that will go into the new branch, making it easier to spot oversized stacks.
+- Updated git fetch commands to no longer fetch tags, reducing network usage and speeding up operations.
+- Fixed a bug in `gt pr` where branch names were interpreted as a PR number if they started with a digit.
+- Fixed a bug in `gt submit` where PR descriptions were being generated larger than the GitHub PR description limit.
+- Fixed a bug in `gt submit` where PR titles were being generated larger than the GitHub PR title limit.
+- Fixed a bug in `gt submit` where pushing all the branches in a stack could partially fail leading to inconsistent diffs in some PRs.
+- Fixed a bug in `gt submit` where temporary branches were not being cleaned up correctly.
+- Fixed a bug in `gt create` where the branch name was incorrectly added to the commit message.
+- Fixed a bug where in certain cases, trunk commits could be included in a tracked branch, resulting in many Graphite operations hanging or failing.
+- Fixed a bug where certain cases of syncing a branch submitted outside of Graphite would crash the CLI.
+- Added better protections against running too many `git` subprocesses.
 </Update>
 
 <Update label="1.6.1" description="2025-03-21">
-  * Fixed a bug where in certain cases, trunk commits could be included in a tracked branch, resulting in many Graphite operations hanging or failing.
-  * Fixed a bug where certain cases of syncing a branch submitted outside of Graphite would crash the CLI.
-  * Added better protections against running too many `git` subprocesses.
+- Fixed a bug where in certain cases, trunk commits could be included in a tracked branch, resulting in many Graphite operations hanging or failing.
+- Fixed a bug where certain cases of syncing a branch submitted outside of Graphite would crash the CLI.
+- Added better protections against running too many `git` subprocesses.
 </Update>
 
 <Update label="1.6.0" description="2025-03-07">
-  * Added support for multiple `-m` flags in `gt create`, `gt modify`, and `gt squash`.
-  * Provided additional context when commands fail due to Graphite maintenance and incidents.
-  * Use commit message for branch name if there are no staged changes.
-  * Updated output colors to avoid difficult to read output.
-  * Fixed a bug where `gt feedback` could fail due to large log files.
-  * Fixed a bug where the remote repository could be marked as ''.
-  * Fixed a bug where a large number of commits can cause "Invalid string length" exceptions.
-  * Fixed a bug where whitespace in the repository path is not handled correctly when worktrees are used.
-  * Dropped official support for Node 18 in anticipation of its end-of-life date on 2024-04-30.
-  * Removed `gt interactive`
+- Added support for multiple `-m` flags in `gt create`, `gt modify`, and `gt squash`.
+- Provided additional context when commands fail due to Graphite maintenance and incidents.
+- Use commit message for branch name if there are no staged changes.
+- Updated output colors to avoid difficult to read output.
+- Fixed a bug where `gt feedback` could fail due to large log files.
+- Fixed a bug where the remote repository could be marked as ''.
+- Fixed a bug where a large number of commits can cause "Invalid string length" exceptions.
+- Fixed a bug where whitespace in the repository path is not handled correctly when worktrees are used.
+- Dropped official support for Node 18 in anticipation of its end-of-life date on 2024-04-30.
+- Removed `gt interactive`
 </Update>
 
 <Update label="1.5.3" description="2025-01-21">
-  * Introduced a progress bar for `git fetch` and `git push` operations.
-  * Fixed an issue where feature flags could be inadvertently disabled.
-  * Adjusted some command output formatting for consistency.
+- Introduced a progress bar for `git fetch` and `git push` operations.
+- Fixed an issue where feature flags could be inadvertently disabled.
+- Adjusted some command output formatting for consistency.
 </Update>
 
 <Update label="1.5.2" description="2024-12-23">
-  * Cleanup `graphite-base` branches if a submit fails to push to remote
-  * Fixed a bug where `graphite-base` branches were incorrectly introduced in trailing trunk multi-trunk configurations
-  * Fixed a bug where `gt submit` could lead to incorrect diffs upstack if submit was not run on the full stack
-  * Fixed a bug where `gt rename` did not use configured branch prefixes
-  * Fixed a bug where `gt` commands could fail with `EAGAIN` errors
-  * Fixed a bug where `gt delete` could fail when run on untracked branches
+- Cleanup `graphite-base` branches if a submit fails to push to remote
+- Fixed a bug where `graphite-base` branches were incorrectly introduced in trailing trunk multi-trunk configurations
+- Fixed a bug where `gt submit` could lead to incorrect diffs upstack if submit was not run on the full stack
+- Fixed a bug where `gt rename` did not use configured branch prefixes
+- Fixed a bug where `gt` commands could fail with `EAGAIN` errors
+- Fixed a bug where `gt delete` could fail when run on untracked branches
 </Update>
 
 <Update label="1.5.1" description="2024-12-12">
-  * Fixed a bug where `gt submit` on a stack would lead to temporary incorrect diffs on the upstack remote PRs
-  * Fixed a bug where `gt sync` failed with `"RangeError: Invalid string length"`
-  * Updated `gt rename` to fail if the user aborts the command
-  * Updated `gt squash` to fail if the squash command does nothing
-  * Updated all output to properly respect the `--no-interactive` flag (e.g. `gt log`, `gt info`…)
+- Fixed a bug where `gt submit` on a stack would lead to temporary incorrect diffs on the upstack remote PRs
+- Fixed a bug where `gt sync` failed with `"RangeError: Invalid string length"`
+- Updated `gt rename` to fail if the user aborts the command
+- Updated `gt squash` to fail if the squash command does nothing
+- Updated all output to properly respect the `--no-interactive` flag (e.g. `gt log`, `gt info`…)
 </Update>
 
 <Update label="1.5.0" description="2024-12-04">
-  * Introduced `gt abort`, which aborts the current rebase operation and restores the repository state to before the original command that introduced the conflict
-  * Introduced `gt undo`, which undoes the most recent Graphite mutation, restoring the repository to its state before the mutation was applied
-  * Fixed a bug where submitting a moved branch could temporarily result in incorrect diffs on remote
-  * Updated `gt create` to prompt for a branch name for empty branches if one was not provided
+- Introduced `gt abort`, which aborts the current rebase operation and restores the repository state to before the original command that introduced the conflict
+- Introduced `gt undo`, which undoes the most recent Graphite mutation, restoring the repository to its state before the mutation was applied
+- Fixed a bug where submitting a moved branch could temporarily result in incorrect diffs on remote
+- Updated `gt create` to prompt for a branch name for empty branches if one was not provided
 </Update>
 
 <Update label="1.4.11" description="2024-11-22">
-  * Internal improvements to config files
-  * Add linux arm64 build to releases
+- Internal improvements to config files
+- Add linux arm64 build to releases
 </Update>
 
 <Update label="1.4.8" description="2024-09-26">
-  * Added additional debugging information for pr info updates
+- Added additional debugging information for pr info updates
 </Update>
 
 <Update label="1.4.7" description="2024-09-26">
-  * Fixed a bug in `gt demo` that would corrupt the repo's name and owner
-  * Updated sending non-info cli output to stderr instead of sending everything to stdout
+- Fixed a bug in `gt demo` that would corrupt the repo's name and owner
+- Updated sending non-info cli output to stderr instead of sending everything to stdout
 </Update>
 
 <Update label="1.4.6" description="2024-09-26">
-  * Fixed a bug where `gt sync` would not update trunk if there were no previously submitted branches
-  * Updated `gt submit --branch` to work while checked out untracked branches
-  * Updated support for git pre-push hooks on Windows machines
+- Fixed a bug where `gt sync` would not update trunk if there were no previously submitted branches
+- Updated `gt submit --branch` to work while checked out untracked branches
+- Updated support for git pre-push hooks on Windows machines
 </Update>
 
 <Update label="1.4.5" description="2024-09-13">
-  * Added support for working with and updating branches checked out across worktrees
-  * Added support for working with branches automatically rebased by graphite
-  * Fixed a bug where adding an undefined trunk would corrupt cli metadata
-  * Fixed a bug where `gt sync --all` would only clean up branches on the current trunk
-  * Improved `gt submit` performance by skipping unnecessary fetches
-  * Improved performance of deleting branches by only deleting required metadata
-  * Updated `gt checkout` to work while on a detached head
-  * Updated `gt submit` to submit branches that have never been submitted with Graphite
-  * Updated `gt sync` to better handle cases where the branch was updated outside of Graphite
-  * Updated `gt init --trunk` to warn against setting a trunk that does not exist locally
-  * Updated `gt sync` and `gt get` to work on untracked branches
+- Added support for working with and updating branches checked out across worktrees
+- Added support for working with branches automatically rebased by graphite
+- Fixed a bug where adding an undefined trunk would corrupt cli metadata
+- Fixed a bug where `gt sync --all` would only clean up branches on the current trunk
+- Improved `gt submit` performance by skipping unnecessary fetches
+- Improved performance of deleting branches by only deleting required metadata
+- Updated `gt checkout` to work while on a detached head
+- Updated `gt submit` to submit branches that have never been submitted with Graphite
+- Updated `gt sync` to better handle cases where the branch was updated outside of Graphite
+- Updated `gt init --trunk` to warn against setting a trunk that does not exist locally
+- Updated `gt sync` and `gt get` to work on untracked branches
 </Update>
 
 <Update label="1.4.4" description="2024-08-09">
-  * Added new `gt unlink` command to unlink a branch from the currently associated PR
-  * Added better support for re-using branch names
-  * Added support for passing a branch name to `gt info`
-  * Added installation information to CLI releases
-  * Fixed a bug where rebases would not handle commits without a parent commit (e.g. original or orphaned commits)
-  * Fixed a bug where rebases with merge commits would cause conflicts with already merged commits
-  * Fixed a bug where request error logs could cause circular structure errors
-  * Updated `gt rename` to use the correct name when asking for a rename confirmation
-  * Updated `gt create --insert` to leave descendants in an un-restacked state when there are conflicts
-  * Updated `gt delete` to also prune branches
-  * Updated pre-push git hooks to better handle running in repo root
+- Added new `gt unlink` command to unlink a branch from the currently associated PR
+- Added better support for re-using branch names
+- Added support for passing a branch name to `gt info`
+- Added installation information to CLI releases
+- Fixed a bug where rebases would not handle commits without a parent commit (e.g. original or orphaned commits)
+- Fixed a bug where rebases with merge commits would cause conflicts with already merged commits
+- Fixed a bug where request error logs could cause circular structure errors
+- Updated `gt rename` to use the correct name when asking for a rename confirmation
+- Updated `gt create --insert` to leave descendants in an un-restacked state when there are conflicts
+- Updated `gt delete` to also prune branches
+- Updated pre-push git hooks to better handle running in repo root
 </Update>
 
 <Update label="1.4.3" description="2024-08-09">
-  * Added a `--stack` flag to `gt checkout` to only show current stack
-  * Fixed a bug where `gt log` and `gt checkout` don't work on untracked branches
-  * Fixed a bug where unsetting a trunk would not fully unset it
-  * Fixed a bug where `gt` throws a cannot read undefined error while reading "validationResult"
-  * Fixed a bug where `gt track` might get into an infinite loop while recovering diverged branches
-  * Improved merge conflict status to handle unstaged changes during rebasing
-  * Updated instructions for committing untracked files to be more clear
-  * Updated networking error diagnostics
-  * Updated `gt pr`, `gt docs`, and `gt dash` to print out the URL being opened
+- Added a `--stack` flag to `gt checkout` to only show current stack
+- Fixed a bug where `gt log` and `gt checkout` don't work on untracked branches
+- Fixed a bug where unsetting a trunk would not fully unset it
+- Fixed a bug where `gt` throws a cannot read undefined error while reading "validationResult"
+- Fixed a bug where `gt track` might get into an infinite loop while recovering diverged branches
+- Improved merge conflict status to handle unstaged changes during rebasing
+- Updated instructions for committing untracked files to be more clear
+- Updated networking error diagnostics
+- Updated `gt pr`, `gt docs`, and `gt dash` to print out the URL being opened
 </Update>
 
 <Update label="1.4.2" description="2024-07-30">
-  * Added support for `--verbose/-v` in `gt create` and `gt modify` to include the diff in the commit message template
-  * Added a `--add` flag to `gt trunk` to configure an additional trunk branch
-  * Updated list of unmerged conflict files to print paths relative to the current working directory
-  * Updated `gt create` to suppress the detached HEAD message on every create
-  * Update pre-push hook error messages to include more details
-  * Updated `gt demo` to work in repos the user cannot submit to yet
-  * Fixed a bug where the branch name date prefix was incorrect in `gt config`
-  * Fixed a bug where `gt submit` would not fetch the branch before submitting to determine if it needs submitting
-  * Fixed a bug where `gt continue` would swallow the post-rewrite git hook output
-  * Fixed a bug where `gt track` would incorrectly tell you to track the branch
-  * Fixed a bug where the `--force` flag was not respected in `gt submit` when the remote was updated
-  * Fixed a bug in the interactive selector with `--all` where trunks could not be correctly selected
+- Added support for `--verbose/-v` in `gt create` and `gt modify` to include the diff in the commit message template
+- Added a `--add` flag to `gt trunk` to configure an additional trunk branch
+- Updated list of unmerged conflict files to print paths relative to the current working directory
+- Updated `gt create` to suppress the detached HEAD message on every create
+- Update pre-push hook error messages to include more details
+- Updated `gt demo` to work in repos the user cannot submit to yet
+- Fixed a bug where the branch name date prefix was incorrect in `gt config`
+- Fixed a bug where `gt submit` would not fetch the branch before submitting to determine if it needs submitting
+- Fixed a bug where `gt continue` would swallow the post-rewrite git hook output
+- Fixed a bug where `gt track` would incorrectly tell you to track the branch
+- Fixed a bug where the `--force` flag was not respected in `gt submit` when the remote was updated
+- Fixed a bug in the interactive selector with `--all` where trunks could not be correctly selected
 </Update>
 
 <Update label="1.4.1" description="2024-07-10">
-  * Added a `--trunk/-t` to `gt checkout` to switch to the current trunk
-  * Fixed bug where `gt sync` would try to update a trunk you don't have configured
-  * Fixed bug in `gt demo` that incorrectly created a "-p" directory to run the demo in
-  * Updated `gt init --reset` to also reset PR metadata
-  * Reduced the maximum number of parallel git calls in order to reduce spawn errors
+- Added a `--trunk/-t` to `gt checkout` to switch to the current trunk
+- Fixed bug where `gt sync` would try to update a trunk you don't have configured
+- Fixed bug in `gt demo` that incorrectly created a "-p" directory to run the demo in
+- Updated `gt init --reset` to also reset PR metadata
+- Reduced the maximum number of parallel git calls in order to reduce spawn errors
 </Update>
 
 <Update label="1.4.0" description="2024-07-03">
-  * This version of the Graphite CLI adds support for working on multiple trunks that will be rolled out over the coming weeks via a server-side feature flag.
+- This version of the Graphite CLI adds support for working on multiple trunks that will be rolled out over the coming weeks via a server-side feature flag.
 </Update>
 
 <Update label="1.3.10" description="2024-06-26">
-  * Updated `gt squash` to no-op when there are no commits to squash or only a single commit
-  * Updated all prompt suggestions to support fuzzy searching branches
+- Updated `gt squash` to no-op when there are no commits to squash or only a single commit
+- Updated all prompt suggestions to support fuzzy searching branches
 </Update>
 
 <Update label="1.3.9" description="2024-06-18">
-  * Updated `gt demo` to initialize Graphite automatically if the current repo has not yet been initialized
+- Updated `gt demo` to initialize Graphite automatically if the current repo has not yet been initialized
 </Update>
 
 <Update label="1.3.8" description="2024-06-12">
-  * Updated `gt absorb` to print the number of hunks that were not absorbed
-  * Updated `gt log` to not show `updated remotely` since it does not respect the new sync changes
-  * Fixed bug where `gt sync` would always ask to reconcile when there were local changes
+- Updated `gt absorb` to print the number of hunks that were not absorbed
+- Updated `gt log` to not show `updated remotely` since it does not respect the new sync changes
+- Fixed bug where `gt sync` would always ask to reconcile when there were local changes
 </Update>
 
 <Update label="1.3.7" description="2024-06-05">
-  * Updated `gt modify` to print out conflicts when it cannot restack cleanly
-  * Added better error handling in `gt sync/get` for server-side errors
-  * Fixed more cases of the bug where local version was being overwritten by remote even when user selected `no` from prompt
-  * Fixed bug where remote tracking errors would cause commands to fail completely
-  * Fixed bug where staged changes were incorrectly detected because of a stale index cache
+- Updated `gt modify` to print out conflicts when it cannot restack cleanly
+- Added better error handling in `gt sync/get` for server-side errors
+- Fixed more cases of the bug where local version was being overwritten by remote even when user selected `no` from prompt
+- Fixed bug where remote tracking errors would cause commands to fail completely
+- Fixed bug where staged changes were incorrectly detected because of a stale index cache
 </Update>
 
 <Update label="1.3.6" description="2024-05-29">
-  * Updated `gt feedback` to not require to be run in a repo
-  * Fixed bug where a command could trigger thousands of parallel git commands at once causing spawn issues
-  * Fixed bug where `gt get` would try to checkout a branch that was just deleted
+- Updated `gt feedback` to not require to be run in a repo
+- Fixed bug where a command could trigger thousands of parallel git commands at once causing spawn issues
+- Fixed bug where `gt get` would try to checkout a branch that was just deleted
 </Update>
 
 <Update label="1.3.5" description="2024-05-22">
-  * Updated `gt modify` to leave descendants in an unrestacked state when there are conflicts.
+- Updated `gt modify` to leave descendants in an unrestacked state when there are conflicts.
 
-  * Updated `gt split` behavior to skip git hooks.
+- Updated `gt split` behavior to skip git hooks.
 
-  * Fixed bug where local version was being overwritten by remote even when user selected `no` from prompt.
+- Fixed bug where local version was being overwritten by remote even when user selected `no` from prompt.
 
-  * Fixed bug where remote rebase-only changes were not reconciled during `gt sync`.
+- Fixed bug where remote rebase-only changes were not reconciled during `gt sync`.
 
-  * Fixed bug where staged changes were incorrectly detected as unstaged.
+- Fixed bug where staged changes were incorrectly detected as unstaged.
 
-  * Fixed bug where files changed in parent directories were not detected.
+- Fixed bug where files changed in parent directories were not detected.
 
-  * Fixed bug where children of split branches were not being tracked.
+- Fixed bug where children of split branches were not being tracked.
 
-  * Fixed bug where pre-push hooks were not being run from the repo root.
+- Fixed bug where pre-push hooks were not being run from the repo root.
 
-  * Removed references to deprecated command names.
+- Removed references to deprecated command names.
 </Update>
 
 <Update label="1.3.4" description="2024-04-29">
-  * Fixed multiple issues with the new versions of `gt get`, `gt sync`, and `gt submit`. The new versions will be rolled back out with this release.
+- Fixed multiple issues with the new versions of `gt get`, `gt sync`, and `gt submit`. The new versions will be rolled back out with this release.
 
-  * Fixed an issue where `post-checkout` hooks were swallowed, resulting in issues when interactive scripts are used.
+- Fixed an issue where `post-checkout` hooks were swallowed, resulting in issues when interactive scripts are used.
 
-  * Fixed some typos in command output.
+- Fixed some typos in command output.
 
-  * `gt demo` now skips all Git hooks (with an implicit global `--no-verify`).
+- `gt demo` now skips all Git hooks (with an implicit global `--no-verify`).
 
-  * `gt sync` no longer prints out `Restacking branches` if there are no branches to restack.
+- `gt sync` no longer prints out `Restacking branches` if there are no branches to restack.
 
-  * Added details about troubleshooting to `gt --help`.
+- Added details about troubleshooting to `gt --help`.
 </Update>
 
 <Update label="1.3.3" description="2024-04-05">
-  * Fixed an issue where `gt submit` could fail in certain cases due to the format of a Git remote URL.
+- Fixed an issue where `gt submit` could fail in certain cases due to the format of a Git remote URL.
 
-  * Fixed an issue where the wrong branch name was referenced by `gt move`'s prompt.
+- Fixed an issue where the wrong branch name was referenced by `gt move`'s prompt.
 
-  * Fixed an issue where `gt absorb` could fail in certain environments.
+- Fixed an issue where `gt absorb` could fail in certain environments.
 
-  * Fixed an issue where `gt log short` could incorrectly show a branch as "updated remotely" when it was not.
+- Fixed an issue where `gt log short` could incorrectly show a branch as "updated remotely" when it was not.
 
-  * Added interactivity to `gt feedback`.
+- Added interactivity to `gt feedback`.
 </Update>
 
 <Update label="1.3.2" description="2024-03-26">
-  * Fixed a bug where `gt submit` would hang in certain cases.
+- Fixed a bug where `gt submit` would hang in certain cases.
 </Update>
 
 <Update label="1.3.1" description="2024-03-23">
-  * Updated `gt submit` to match the new behavior of `gt sync` and `gt get`.
+- Updated `gt submit` to match the new behavior of `gt sync` and `gt get`.
 
-  * `gt submit` now skips branches with no commits between head and base and their descendants, instead of failing outright (GitHub does not allow PRs with no commits).
+- `gt submit` now skips branches with no commits between head and base and their descendants, instead of failing outright (GitHub does not allow PRs with no commits).
 
-  * `gt submit` now prompts to restack if the `--restack` flag is not passed and it would fail without restacking.
+- `gt submit` now prompts to restack if the `--restack` flag is not passed and it would fail without restacking.
 
-  * Fixed a bug where `gt submit` would restack in certain cases when the `--restack` flag was not passed.
+- Fixed a bug where `gt submit` would restack in certain cases when the `--restack` flag was not passed.
 
-  * Fixed a bug where `gt submit` was not prompting to choose between pasting template/commit messages and editing them.
+- Fixed a bug where `gt submit` was not prompting to choose between pasting template/commit messages and editing them.
 
-  * Fixed a bug where legacy scoped submit commands were not enforcing that branches be restacked before submitting.
+- Fixed a bug where legacy scoped submit commands were not enforcing that branches be restacked before submitting.
 
-  - Deleting branches in `gt sync`, `gt get`, `gt submit`, or with `gt delete` now prints the SHA the branch was at before deletion like Git, as there is no reflog for deleted branches.
+- Deleting branches in `gt sync`, `gt get`, `gt submit`, or with `gt delete` now prints the SHA the branch was at before deletion like Git, as there is no reflog for deleted branches.
 
-  * Added better error messaging for the new version of `gt sync` when unauthed.
+- Added better error messaging for the new version of `gt sync` when unauthed.
 
-  * Fixed a bug where commands that open a URL would fail if `xdg-open` was not installed, instead of printing the URL to the terminal.
+- Fixed a bug where commands that open a URL would fail if `xdg-open` was not installed, instead of printing the URL to the terminal.
 
-  * Fixed a bug where `gt get` would not set up the remote-tracking branch properly.
+- Fixed a bug where `gt get` would not set up the remote-tracking branch properly.
 
-  * Fixed a bug in the new version of `gt get` and `gt sync` where branches would not get newly associated with PRs.
+- Fixed a bug in the new version of `gt get` and `gt sync` where branches would not get newly associated with PRs.
 
-  * Fixed a typo in `gt absorb`.
+- Fixed a typo in `gt absorb`.
 </Update>
 
 <Update label="1.3.0" description="2024-03-20">
-  * This version of the Graphite CLI includes a significant update to `gt sync` and `gt get` that will be rolled out over the coming weeks via a server-side feature flag.
+- This version of the Graphite CLI includes a significant update to `gt sync` and `gt get` that will be rolled out over the coming weeks via a server-side feature flag.
 
-  - The primary goal of these changes is to improve the experience of syncing remote changes to your local branches, ensuring that flows like collaborating on a stack or applying suggested edits to a PR are seamless and reliable.
+- The primary goal of these changes is to improve the experience of syncing remote changes to your local branches, ensuring that flows like collaborating on a stack or applying suggested edits to a PR are seamless and reliable.
 
-  - Notably, `gt sync` now syncs all branches, where previously it just synced trunk. This brings it closer to the behavior of `gt get`.
+- Notably, `gt sync` now syncs all branches, where previously it just synced trunk. This brings it closer to the behavior of `gt get`.
 
-  - Conversely, `gt get` with no argument passed is essentially "`gt sync` for the currently checked out stack."
+- Conversely, `gt get` with no argument passed is essentially "`gt sync` for the currently checked out stack."
 
-  - The full behavior is:
+- The full behavior is:
 
   1. Update the trunk branch to match remote
 
@@ -1994,87 +2022,87 @@ See the history of changes for the Graphite CLI.
 
   4. Restack branches as needed
 
-  * If you'd like to be included in the initial rollout of these changes, please let us know in the #cli-beta channel on our Community Slack. Since we are using a server-side feature flag, updating to 1.3.0 alone will not enable the new behavior.
+- If you'd like to be included in the initial rollout of these changes, please let us know in the #cli-beta channel on our Community Slack. Since we are using a server-side feature flag, updating to 1.3.0 alone will not enable the new behavior.
 
-  * The changes are largely based on your feedback, and we're excited to see how they improve your experience with Graphite. THANK YOU!
+- The changes are largely based on your feedback, and we're excited to see how they improve your experience with Graphite. THANK YOU!
 
-  - `gt create` now applies the branch prefix to branch names passed in directly (e.g. `gt create branch-name` with a prefix of `prefix/` will yield a branch called `prefix/branch-name`). This behavior can be disabled in `gt config`. If the branch name already begins with the prefix, it will not be added again.
+- `gt create` now applies the branch prefix to branch names passed in directly (e.g. `gt create branch-name` with a prefix of `prefix/` will yield a branch called `prefix/branch-name`). This behavior can be disabled in `gt config`. If the branch name already begins with the prefix, it will not be added again.
 
-  - Graphite now sets the environment variable `GT` to `1`, which can be checked by subprocesses like an editor or Git hook to determine if they are being run from Graphite.
+- Graphite now sets the environment variable `GT` to `1`, which can be checked by subprocesses like an editor or Git hook to determine if they are being run from Graphite.
 
-  * Fixed a bug where `gt absorb` would fail if the git config to detect copies in diffs was enabled.
+- Fixed a bug where `gt absorb` would fail if the git config to detect copies in diffs was enabled.
 
-  * Fixed a bug where `gt split --by-hunk` would leave the user in a detached state if interrupted.
+- Fixed a bug where `gt split --by-hunk` would leave the user in a detached state if interrupted.
 
-  * If no changes are staged in a step of `gt split --by-hunk`, it will now prompt to stage changes again instead of exiting with an error.
+- If no changes are staged in a step of `gt split --by-hunk`, it will now prompt to stage changes again instead of exiting with an error.
 
-  - Slightly updated help text and error messages for `gt fold`.
+- Slightly updated help text and error messages for `gt fold`.
 </Update>
 
 <Update label="1.2.8" description="2024-03-12">
-  * Fixed a segfault issue caused by a dependency.
+- Fixed a segfault issue caused by a dependency.
 </Update>
 
 <Update label="1.2.7" description="2024-03-07">
-  * Added support for \`gt demo\` to use a temporary repository if run from outside of a repository.
+- Added support for \`gt demo\` to use a temporary repository if run from outside of a repository.
 
-  * Added support for \`gt demo\` to be run without authenticating the CLI.
+- Added support for \`gt demo\` to be run without authenticating the CLI.
 
-  * Fixed an issue where tab autocompletion did not work inside of \`gt demo\`.
+- Fixed an issue where tab autocompletion did not work inside of \`gt demo\`.
 
-  - Added support for \`gt create\` to use AI to populate commit message and branch name. This will be rolled out via a server-side feature flag over the coming weeks.
+- Added support for \`gt create\` to use AI to populate commit message and branch name. This will be rolled out via a server-side feature flag over the coming weeks.
 </Update>
 
 <Update label="1.2.6" description="2024-03-05">
-  * By default, `gt create` will now replace slashes in commit messages when inferring branch names, and will convert uppercase letters to lowercase. Both of these new behaviors can be disabled in \`gt config\`.
+- By default, `gt create` will now replace slashes in commit messages when inferring branch names, and will convert uppercase letters to lowercase. Both of these new behaviors can be disabled in \`gt config\`.
 
-  * Added individual `--edit-title` and `--edit-description` flags to `gt submit` to allow for editing the PR title and body, respectively. `--no-edit-title` and `--no-edit-description` can be used to skip the prompts for each. Note that `--edit `and `--no-edit` will still work as before.
+- Added individual `--edit-title` and `--edit-description` flags to `gt submit` to allow for editing the PR title and body, respectively. `--no-edit-title` and `--no-edit-description` can be used to skip the prompts for each. Note that `--edit `and `--no-edit` will still work as before.
 
-  * Added support for `gt submit` to use AI to populate PR titles and description. This will be rolled out via a server-side feature flag over the coming weeks.
+- Added support for `gt submit` to use AI to populate PR titles and description. This will be rolled out via a server-side feature flag over the coming weeks.
 
-  * When creating new PRs, `gt submit` will continue to a web browser to edit PR metadata. `--cli` can be passed to use the CLI flow.
+- When creating new PRs, `gt submit` will continue to a web browser to edit PR metadata. `--cli` can be passed to use the CLI flow.
 
-  * Added a setting to `gt config` to toggle the above behavior: i.e., use the CLI instead of web by default. In that case, \`--web\` can be passed to use the web flow.
+- Added a setting to `gt config` to toggle the above behavior: i.e., use the CLI instead of web by default. In that case, \`--web\` can be passed to use the web flow.
 
-  - Fixed an issue resulting in certain commands failing when using a YubiKey-protected SSH key.
+- Fixed an issue resulting in certain commands failing when using a YubiKey-protected SSH key.
 
-  - Fixed an issue where `gt demo` would not work on Windows.
+- Fixed an issue where `gt demo` would not work on Windows.
 
-  * Debug logs are now always written, even when the `--debug` flag is not passed.
+- Debug logs are now always written, even when the `--debug` flag is not passed.
 
-  * The `--debug` flag now logs to the terminal as well as to a file.
+- The `--debug` flag now logs to the terminal as well as to a file.
 
-  * `gt feedback <message> --with-debug-context` now sends our engineers all debug logs from the past 24 hours.
+- `gt feedback <message> --with-debug-context` now sends our engineers all debug logs from the past 24 hours.
 </Update>
 
 <Update label="1.2.5" description="2024-02-27">
-  * Adjusted the set of branches that might be included in the new prompt to update upstack branches.
+- Adjusted the set of branches that might be included in the new prompt to update upstack branches.
 
-  * Fixed an issue where staged changes could be discarded inadvertently during a `gt sync`.
+- Fixed an issue where staged changes could be discarded inadvertently during a `gt sync`.
 
-  * Fixed an issue where `gt demo` would fail on Windows.
+- Fixed an issue where `gt demo` would fail on Windows.
 
-  * Added an NPM `postinstall` script to ensure NodeJS version compatibility.
+- Added an NPM `postinstall` script to ensure NodeJS version compatibility.
 </Update>
 
 <Update label="1.2.4" description="2024-02-22">
-  * `gt submit` now prompts to update upstack branches with open PRs when run from a mid-stack branch.
+- `gt submit` now prompts to update upstack branches with open PRs when run from a mid-stack branch.
 
-  * `gt submit` is now able to detect when GitHub/Graphite sync is not enabled for a repository. We'll be rolling out the check for this over the coming weeks.
+- `gt submit` is now able to detect when GitHub/Graphite sync is not enabled for a repository. We'll be rolling out the check for this over the coming weeks.
 
-  * A warning is now displayed when branches diverge from Graphite's tracking, and a new flow has been added to `gt track` to remediate diverged branches.
+- A warning is now displayed when branches diverge from Graphite's tracking, and a new flow has been added to `gt track` to remediate diverged branches.
 
-  * `gt log` is now sorted stably.
+- `gt log` is now sorted stably.
 
-  - Fixed the `gt sq` alias for `gt squash`.
+- Fixed the `gt sq` alias for `gt squash`.
 
-  - Fixed an issue where `gt submit` would fail (before submitting upstack branches) if run from a merged branch.
+- Fixed an issue where `gt submit` would fail (before submitting upstack branches) if run from a merged branch.
 
-  - Fixed an issue where `gt submit` would fail if a pre-push hook had spaces in its path.
+- Fixed an issue where `gt submit` would fail if a pre-push hook had spaces in its path.
 
-  - Ensured better error messaging for various commands when a rebase is in progress.
+- Ensured better error messaging for various commands when a rebase is in progress.
 
-  - Removed the `--show-delete-progress` flag of `gt submit`.
+- Removed the `--show-delete-progress` flag of `gt submit`.
 </Update>
 
 <Update label="1.2.3" description="2024-02-14">
@@ -2082,82 +2110,82 @@ See the history of changes for the Graphite CLI.
 </Update>
 
 <Update label="1.2.2" description="2024-02-13">
-  * Adjusted some copy in `gt absorb`
-  * Fixed an issue where `gt absorb` only worked when run from the root of a repository
-  * Fixed an issue where aborting a `gt create` could leave you in a detached state
-  * Added protections against creating server-side PR dependency cycles
+- Adjusted some copy in `gt absorb`
+- Fixed an issue where `gt absorb` only worked when run from the root of a repository
+- Fixed an issue where aborting a `gt create` could leave you in a detached state
+- Added protections against creating server-side PR dependency cycles
 </Update>
 
 <Update label="1.2.1" description="2024-02-11">
-  * Fixed an issue where the `gt ab` alias for absorb wasn't recognized
-  * Fixed an issue where `gt absorb --patch` hung instead of opening the patch selector
-  * Fixed an issue where invalid Graphite metadata would prevent any command from being run
+- Fixed an issue where the `gt ab` alias for absorb wasn't recognized
+- Fixed an issue where `gt absorb --patch` hung instead of opening the patch selector
+- Fixed an issue where invalid Graphite metadata would prevent any command from being run
 </Update>
 
 <Update label="1.2.0" description="2024-02-09">
-  * Introduced `gt absorb`, which automatically amends staged changes to commits in your stack
-  * You can now select which PR template will be used by default in `gt config`
-  * `gt checkout -` now selects the last branch that was checked out, just like Git
-  * `gt sync` now denotes the currently checked out branch when it was unable to restack it cleanly
-  * Added clearer messaging for the action needed to avoid detected merge conflicts on `submit`
-  * Fixed an issue where pressing Escape in an interactive prompt selected the current option
-  * Fixed an issue where GitHub pull request templates with extensions other than .txt and .md were not detected
-  * Fixed an issue where invalid/expired auth on `gt get` resulted in an unclear error message
-  * Fixed an issue where `gt get` would not work for stacked branches if using a YubiKey-protected SSH key
-  * Fixed an issue where `gt track` would display remote-tracking branches as potential parents
+- Introduced `gt absorb`, which automatically amends staged changes to commits in your stack
+- You can now select which PR template will be used by default in `gt config`
+- `gt checkout -` now selects the last branch that was checked out, just like Git
+- `gt sync` now denotes the currently checked out branch when it was unable to restack it cleanly
+- Added clearer messaging for the action needed to avoid detected merge conflicts on `submit`
+- Fixed an issue where pressing Escape in an interactive prompt selected the current option
+- Fixed an issue where GitHub pull request templates with extensions other than .txt and .md were not detected
+- Fixed an issue where invalid/expired auth on `gt get` resulted in an unclear error message
+- Fixed an issue where `gt get` would not work for stacked branches if using a YubiKey-protected SSH key
+- Fixed an issue where `gt track` would display remote-tracking branches as potential parents
 </Update>
 
 <Update label="1.1.5" description="2024-02-02">
-  * Fixed bug in `create` and `modify` where we showed `--update` as an option when there were only unstaged changes (now we only show `--all` and `--patch`)
-  * We now show `--patch` as an option for `create` and `modify` even when there are only untracked changes
-  * Added interface to let users pick untracked files to track in `--patch` mode (in `create` and `modify`)
-  * Improved error messaging for `gt get` for when we can't find a PR for the requested branch
-  * Updated `gt get <trunk>` functionality to checkout the trunk branch
-  * Improved error messaging for when a user tries to fold a branch into main
-  * Added an example to `gt fold --help`
-  * Fixed bug where `gt rename` could cause branches to become untracked
-  * Added support for `pre-push` git hook
+- Fixed bug in `create` and `modify` where we showed `--update` as an option when there were only unstaged changes (now we only show `--all` and `--patch`)
+- We now show `--patch` as an option for `create` and `modify` even when there are only untracked changes
+- Added interface to let users pick untracked files to track in `--patch` mode (in `create` and `modify`)
+- Improved error messaging for `gt get` for when we can't find a PR for the requested branch
+- Updated `gt get <trunk>` functionality to checkout the trunk branch
+- Improved error messaging for when a user tries to fold a branch into main
+- Added an example to `gt fold --help`
+- Fixed bug where `gt rename` could cause branches to become untracked
+- Added support for `pre-push` git hook
 </Update>
 
 <Update label="1.1.4" description="2024-01-31">
-  * Added an alias `gt --help --all`, which is equivalent to `gt --help --all-commands`
+- Added an alias `gt --help --all`, which is equivalent to `gt --help --all-commands`
 </Update>
 
 <Update label="1.1.3" description="2024-01-22">
-  * Added an option to change the trunk branch name in `gt config`
-  * Removed prompt to submit on web when the `--no-edit` flag is passed to `gt submit`
-  * Updated `gt --help --all-commands`
-  * Added `gt completion` to `gt --help --all`
+- Added an option to change the trunk branch name in `gt config`
+- Removed prompt to submit on web when the `--no-edit` flag is passed to `gt submit`
+- Updated `gt --help --all-commands`
+- Added `gt completion` to `gt --help --all`
 </Update>
 
 <Update label="1.1.2" description="2024-01-16">
-  * Fixed a bug where `gt demo` would error out once the user attempts to run `gt create`
+- Fixed a bug where `gt demo` would error out once the user attempts to run `gt create`
 </Update>
 
 <Update label="1.1.1" description="2024-01-12">
-  * Fixed a bug where `gt submit` would unnecessarily prompt that the branch would conflict with remote.
+- Fixed a bug where `gt submit` would unnecessarily prompt that the branch would conflict with remote.
 
-  * Fixed a bug where `gt sync` failed with `"RangeError: Invalid string length"`
+- Fixed a bug where `gt sync` failed with `"RangeError: Invalid string length"`
 
-  * Updated `gt rename` to fail if the user aborts the command
+- Updated `gt rename` to fail if the user aborts the command
 
-  * Updated `gt squash` to fail if the squash command does nothing
+- Updated `gt squash` to fail if the squash command does nothing
 
-  * Updated all output to properly respect the `--no-interactive` flag (e.g. `gt log`, `gt info`…)
+- Updated all output to properly respect the `--no-interactive` flag (e.g. `gt log`, `gt info`…)
 
-  * Updated `gt init --reset` to also reset PR metadata
+- Updated `gt init --reset` to also reset PR metadata
 
-  * Reduced the maximum number of parallel git calls in order to reduce spawn errors
+- Reduced the maximum number of parallel git calls in order to reduce spawn errors
 </Update>
 
 <Update label="1.1.0" description="2024-01-09">
-  * Added new `gt demo` feature which interactively teaches you how to use `gt` to create pull requests and stacks.
+- Added new `gt demo` feature which interactively teaches you how to use `gt` to create pull requests and stacks.
 
     * Run `gt demo pull-request` from any repo to create a sample PR.
 
     * Run `gt demo stack` from any repo to create a sample stack of PRs.
 
-  * Made improvements to `gt help --all-commands`
+- Made improvements to `gt help --all-commands`
 
     * Organized the commands into sections, for better scanning & readability
 
@@ -2169,293 +2197,293 @@ See the history of changes for the Graphite CLI.
 
     * Colorized anything in `backticks` in the help output
 
-  - Fixed error messaging in `gt pr` to show the branch name when we couldn't find an open PR for the current branch
+- Fixed error messaging in `gt pr` to show the branch name when we couldn't find an open PR for the current branch
 
-  - Fixed the copy in `gt guide workflow` based on community feedback.
+- Fixed the copy in `gt guide workflow` based on community feedback.
 
-  - Fixed `gt merge` to correctly handle the case when a branch is locked.
+- Fixed `gt merge` to correctly handle the case when a branch is locked.
 
-  - Fixed a bug with `gt get` where it was not correctly checking out the branch after syncing it
+- Fixed a bug with `gt get` where it was not correctly checking out the branch after syncing it
 </Update>
 
 <Update label="1.0.14" description="2023-12-20">
-  * Improved error messaging when config file is invalid.
+- Improved error messaging when config file is invalid.
 
-  * Updated `gt submit` behavior when upstack branches have merged.
+- Updated `gt submit` behavior when upstack branches have merged.
 
-  * Added `gt interactive` command to open the Graphite Interactive extension.
+- Added `gt interactive` command to open the Graphite Interactive extension.
 
-  * Updated `gt auth` to print more information about the user's auth status.
+- Updated `gt auth` to print more information about the user's auth status.
 
-  - Fixed an issue where `gt track` would hang if no parent was explicitly passed to the command.
+- Fixed an issue where `gt track` would hang if no parent was explicitly passed to the command.
 </Update>
 
 <Update label="1.0.13" description="2023-12-13">
-  * Fixed bug where "needs restack" was not printing out in `gt log short`.
+- Fixed bug where "needs restack" was not printing out in `gt log short`.
 </Update>
 
 <Update label="1.0.12" description="2023-12-11">
-  * Updated `gt --help` to be an overview of `gt` and the Graphite workflow.
+- Updated `gt --help` to be an overview of `gt` and the Graphite workflow.
 
-  * Moved the previous command help reference to `gt --help --all-commands`.
+- Moved the previous command help reference to `gt --help --all-commands`.
 
-  * Added an inline CLI guide to the Graphite workflow, available underneath \`gt guide workflow\`.
+- Added an inline CLI guide to the Graphite workflow, available underneath \`gt guide workflow\`.
 </Update>
 
 <Update label="1.0.11" description="2023-11-27">
-  * Fixed bug where aliases were not respected.
+- Fixed bug where aliases were not respected.
 
-  * Added retry when fetching branch from remote fails.
+- Added retry when fetching branch from remote fails.
 </Update>
 
 <Update label="1.0.10" description="2023-11-13">
-  * Updated the `gt submit --draft` flag to only no longer convert already published PRs back to drafts.
+- Updated the `gt submit --draft` flag to only no longer convert already published PRs back to drafts.
 
-  * Added support for team reviewers. Team reviewers can either be specified using `gt submit --team-reviewers slug` or through `gt submit --reviewers org/slug`.
+- Added support for team reviewers. Team reviewers can either be specified using `gt submit --team-reviewers slug` or through `gt submit --reviewers org/slug`.
 
-  - Added output to `log short` when a branch needs to be fetched from remote (using `gt get`).
+- Added output to `log short` when a branch needs to be fetched from remote (using `gt get`).
 
-  - Added output after `gt checkout` specifying whether a branch needs to be submitted, fetched, or restacked.
+- Added output after `gt checkout` specifying whether a branch needs to be submitted, fetched, or restacked.
 
-  * Removed a reference to legacy command names.
+- Removed a reference to legacy command names.
 </Update>
 
 <Update label="1.0.9" description="2023-10-23">
-  * Improved how PR descriptions are persisted across aborted `submit` runs.
+- Improved how PR descriptions are persisted across aborted `submit` runs.
 
-  * Modified version prompting so users are only asked to upgrade their CLIs once per day.
+- Modified version prompting so users are only asked to upgrade their CLIs once per day.
 
-  - Fixed a bug in remote changes detection.
+- Fixed a bug in remote changes detection.
 </Update>
 
 <Update label="1.0.8" description="2023-10-16">
-  * Added an `--update` option for `create` and `modify` that stages changes to all already-tracked files.
+- Added an `--update` option for `create` and `modify` that stages changes to all already-tracked files.
 
-  * Added support for `gt get <pr-number>.`
+- Added support for `gt get <pr-number>.`
 
-  * Added a `--comment` flag to `submit` which will add a comment with the provided text to the submitted PR.
+- Added a `--comment` flag to `submit` which will add a comment with the provided text to the submitted PR.
 
-  * Added additional debugging information to the output file of the `--debug` flag.
+- Added additional debugging information to the output file of the `--debug` flag.
 
-  - Fixed a bug where the incorrect version number was displayed after running `gt get` for a remote branch
+- Fixed a bug where the incorrect version number was displayed after running `gt get` for a remote branch
 </Update>
 
 <Update label="1.0.7" description="2023-10-04">
-  * Added `gt aliases --legacy` command to automatically add all of the old shortcuts to your aliases configuration.
+- Added `gt aliases --legacy` command to automatically add all of the old shortcuts to your aliases configuration.
 
-  * Added ability to navigate through prompts using ctrl+n and ctrl+p.
+- Added ability to navigate through prompts using ctrl+n and ctrl+p.
 
-  * Updated `submit` description behavior to include commit messages if no default template exists.
+- Updated `submit` description behavior to include commit messages if no default template exists.
 
-  * Updated how we detect if there are remote changes to a PR that need to be resolved.
+- Updated how we detect if there are remote changes to a PR that need to be resolved.
 
-  - Fixed a bug where local state could become corrupt after switching trunk branch.
+- Fixed a bug where local state could become corrupt after switching trunk branch.
 
-  - Fixed a bug where we were syncing information for untracked branches.
+- Fixed a bug where we were syncing information for untracked branches.
 
-  - Fixed incorrect `restack` deprecation warning.
+- Fixed incorrect `restack` deprecation warning.
 </Update>
 
 <Update label="1.0.6" description="2023-09-29">
-  * Updated the default behavior on `gt submit` to not restack branches.
+- Updated the default behavior on `gt submit` to not restack branches.
 
-  * Added an optional `--restack` flag to `gt submit`.
+- Added an optional `--restack` flag to `gt submit`.
 
-  * Always prompt on `gt submit` if the branch will have conflicts with main.
+- Always prompt on `gt submit` if the branch will have conflicts with main.
 </Update>
 
 <Update label="1.0.5" description="2023-09-18">
-  * Fixed a stray line of output in `gt create`.
+- Fixed a stray line of output in `gt create`.
 
-  * Fixed an issue where syncing PR data from remote could set the wrong parent.
+- Fixed an issue where syncing PR data from remote could set the wrong parent.
 </Update>
 
 <Update label="1.0.4" description="2023-09-18">
-  * Updated `--help` output to be more consistent and more helpful.
+- Updated `--help` output to be more consistent and more helpful.
 
-  * Added a new command `gt aliases` to open up the alias file in your editor.
+- Added a new command `gt aliases` to open up the alias file in your editor.
 
-  * Now removes `~/.graphite_user_config` once your configuration has been moved to the new location to reduce confusion.
+- Now removes `~/.graphite_user_config` once your configuration has been moved to the new location to reduce confusion.
 
-  - `gt submit` now opens the PR in your browser if you pass the `--view` flag.
+- `gt submit` now opens the PR in your browser if you pass the `--view` flag.
 
-  - `gt rename` now prompts instead of immediately failing if you don't pass `--force` when required.
+- `gt rename` now prompts instead of immediately failing if you don't pass `--force` when required.
 
-  - `gt up `interactive selection now prompts you a single time instead of at each level (similar to the `top` change from v1.0.2).
+- `gt up `interactive selection now prompts you a single time instead of at each level (similar to the `top` change from v1.0.2).
 
-  * Fixed the `gt pr` command.
+- Fixed the `gt pr` command.
 
-  * Fixed a bug where no error message was printed when you try to create a branch with an invalid or existing name.
+- Fixed a bug where no error message was printed when you try to create a branch with an invalid or existing name.
 
-  * Updated branch naming validation to more closely match the Git specification. Please let us know if you see any inconsistencies.
+- Updated branch naming validation to more closely match the Git specification. Please let us know if you see any inconsistencies.
 </Update>
 
 <Update label="1.0.3" description="2023-09-15">
-  * Fixed an issue where restacking did not respect the `commit.gpgSign` configuration value.
+- Fixed an issue where restacking did not respect the `commit.gpgSign` configuration value.
 
-  * Fixed an issue where `create` with just a branch name incorrectly failed to execute.
+- Fixed an issue where `create` with just a branch name incorrectly failed to execute.
 
-  * Fixed an issue where the `git --version` check failed on Windows (and likely certain other git distributions).
+- Fixed an issue where the `git --version` check failed on Windows (and likely certain other git distributions).
 </Update>
 
 <Update label="1.0.2" description="2023-09-15">
-  * `gt top` interactive selection now offers which tip to travel to instead of prompting at each intermediate step. We'll be porting the same behavior to `gt up` soon.- The `--debug` flag now logs to a file instead of stdout.- Clearer error messaging for outdated Git version.
+- `gt top` interactive selection now offers which tip to travel to instead of prompting at each intermediate step. We'll be porting the same behavior to `gt up` soon.- The `--debug` flag now logs to a file instead of stdout.- Clearer error messaging for outdated Git version.
 
-  * Fixed a bug where `gt sync` could reset the index and working tree, and improved error handling in similar cases with uncommitted changes.- Fixed the error messge when running a deprecated command to print the correct alias file location.
+- Fixed a bug where `gt sync` could reset the index and working tree, and improved error handling in similar cases with uncommitted changes.- Fixed the error messge when running a deprecated command to print the correct alias file location.
 </Update>
 
 <Update label="1.0.1" description="2023-09-14">
-  * Fixed a bug where `gt submit --stack` did not work from the trunk branch.
+- Fixed a bug where `gt submit --stack` did not work from the trunk branch.
 </Update>
 
 <Update label="1.0.0" description="2023-09-13">
   ### Renaming and configuration
 
-  * All commands that fell under `branch`, `stack`, `upstack`, `downstack`, `repo`, and `user` have been renamed to drop the noun. Old command names still work, but will be removed in an upcoming version.
+- All commands that fell under `branch`, `stack`, `upstack`, `downstack`, `repo`, and `user` have been renamed to drop the noun. Old command names still work, but will be removed in an upcoming version.
 
-  * The full list of commands is available in `gt --help` or at [https://graphite.com/graphite-cli-v1-command-names](https://graphite.com/graphite-cli-v1-command-names).
+- The full list of commands is available in `gt --help` or at [https://graphite.com/graphite-cli-v1-command-names](https://graphite.com/graphite-cli-v1-command-names).
 
-  * Graphite now supports custom aliasing for any command via `~/.config/graphite/aliases` (or `$XDG_CONFIG_HOME/graphite/aliases`).
+- Graphite now supports custom aliasing for any command via `~/.config/graphite/aliases` (or `$XDG_CONFIG_HOME/graphite/aliases`).
 
-  * A preset to copy into this file to keep the old short command names is found at [https://graphite.com/docs/legacy-alias-preset](https://graphite.com/docs/legacy-alias-preset).
+- A preset to copy into this file to keep the old short command names is found at [https://graphite.com/docs/legacy-alias-preset](https://graphite.com/docs/legacy-alias-preset).
 
-  * All Graphite configuration now lives in the interactive `gt config` command.
+- All Graphite configuration now lives in the interactive `gt config` command.
 
-  * Graphite's user-level configuration files are now XDG Base Directory Specification compliant, or stored in `~/.config/graphite` by default.
+- Graphite's user-level configuration files are now XDG Base Directory Specification compliant, or stored in `~/.config/graphite` by default.
 
   `gt create`
 
-  * `gt create` is the new command to create a Graphite branch (formerly `branch create`)
+- `gt create` is the new command to create a Graphite branch (formerly `branch create`)
 
-  * `gt create` now supports inferring a branch name from the commit editor, which means it is now possible to run it with no arguments.
+- `gt create` now supports inferring a branch name from the commit editor, which means it is now possible to run it with no arguments.
 
-  * If you have unstaged changes and no staged changes when running `gt create`, you are now asked whether you'd like to stage and commit them as part of the new branch.
+- If you have unstaged changes and no staged changes when running `gt create`, you are now asked whether you'd like to stage and commit them as part of the new branch.
 
   `gt modify`
 
-  * `gt modify` is the new command to modify a Graphite branch (formerly `gt commit amend`/`gt commit create`).
+- `gt modify` is the new command to modify a Graphite branch (formerly `gt commit amend`/`gt commit create`).
 
-  * The default behavior is to amend the current commit on the branch, unless the branch has no commits or `--commit` is passed.
+- The default behavior is to amend the current commit on the branch, unless the branch has no commits or `--commit` is passed.
 
-  * When amending a commit, the editor is not opened by default unless `-e`/`--edit` is passed.
+- When amending a commit, the editor is not opened by default unless `-e`/`--edit` is passed.
 
-  * If you have unstaged changes and no staged changes when running `gt amend`, you are now asked whether you'd like to stage them before running the amend or commit operation.
+- If you have unstaged changes and no staged changes when running `gt amend`, you are now asked whether you'd like to stage them before running the amend or commit operation.
 
-  * `gt branch edit` has been moved to `gt modify --interactive-rebase`
+- `gt branch edit` has been moved to `gt modify --interactive-rebase`
 
   **`gt sync`**
 
-  * `gt sync` is the new command to update your trunk branch, clean up merged branches, and restack most branches in your repo.
+- `gt sync` is the new command to update your trunk branch, clean up merged branches, and restack most branches in your repo.
 
-  * `gt sync` now restacks all branches by default (no longer need `-r`).
+- `gt sync` now restacks all branches by default (no longer need `-r`).
 
-  * If any branch has conflicts with its parent branch, instead of launching you into a conflict resolution, `sync` will print out the list of conflicting branches so that you can run `gt restack` on them.
+- If any branch has conflicts with its parent branch, instead of launching you into a conflict resolution, `sync` will print out the list of conflicting branches so that you can run `gt restack` on them.
 
   `gt submit`
 
-  * `gt submit` is the new command to push branches to GitHub and create stacked PRs for them.
+- `gt submit` is the new command to push branches to GitHub and create stacked PRs for them.
 
-  * `gt submit` submits the currently checked out branch and its ancestors (dependent branches) by default.
+- `gt submit` submits the currently checked out branch and its ancestors (dependent branches) by default.
 
-  * `gt ss` is included in the alias file by default as an alias for `gt submit --stack`, which replicates the behavior of the old `gt stack submit`
+- `gt ss` is included in the alias file by default as an alias for `gt submit --stack`, which replicates the behavior of the old `gt stack submit`
 
-  * `gt submit` now handles cases where branches in your stack have merged or been updated remotely, as long as there are no rebase conflicts to resolve. This includes both incorporating remote changes and removing merged branches from the stack.
+- `gt submit` now handles cases where branches in your stack have merged or been updated remotely, as long as there are no rebase conflicts to resolve. This includes both incorporating remote changes and removing merged branches from the stack.
 
-  * `gt submit` now ensures that your branches are restacked instead of failing when they aren't.
+- `gt submit` now ensures that your branches are restacked instead of failing when they aren't.
 
   ### Entirely new commands
 
-  * `gt pop` to delete the current branch and check out its parent without modifying the working tree. Can't be run if the current branch has children.
+- `gt pop` to delete the current branch and check out its parent without modifying the working tree. Can't be run if the current branch has children.
 
-  * `gt trunk` to navigate directly to your trunk branch.
+- `gt trunk` to navigate directly to your trunk branch.
 
-  * `gt parent` to print out the raw parent of the branch (for scripting).
+- `gt parent` to print out the raw parent of the branch (for scripting).
 
-  * `gt children` to print out the raw children of the branch, line by line (for scripting).
+- `gt children` to print out the raw children of the branch, line by line (for scripting).
 
-  * `gt revert` (experimental) to create a branch that reverts a commit in your trunk branch.
+- `gt revert` (experimental) to create a branch that reverts a commit in your trunk branch.
 
   ### Other changes
 
-  * Added a new `--stat` flag to `gt info` that prints out a diffstat instead of a full diff. Compatible with either `--diff` or `--patch`.
+- Added a new `--stat` flag to `gt info` that prints out a diffstat instead of a full diff. Compatible with either `--diff` or `--patch`.
 
-  * `gt create --insert` now asks which siblings should be moved onto the new branch if there are more than one of them.
+- `gt create --insert` now asks which siblings should be moved onto the new branch if there are more than one of them.
 
-  * Performance improvements.
+- Performance improvements.
 
   ### Bug fixes
 
-  * Fixed a bug where stray output was printed while completing command names.
+- Fixed a bug where stray output was printed while completing command names.
 
-  * Fixed an issue where a single optional PR template was interpreted as required PR template.
+- Fixed an issue where a single optional PR template was interpreted as required PR template.
 
-  * Fixed a bug where branch prefixes could not end with a slash.
+- Fixed a bug where branch prefixes could not end with a slash.
 
-  * Fixed a bug where `split --hunk` would not work for branches that added new files.
+- Fixed a bug where `split --hunk` would not work for branches that added new files.
 
-  * Fixed a bug where the branches created by `split` were all based on the parent of the split branch instead of being stacked correctly.
+- Fixed a bug where the branches created by `split` were all based on the parent of the split branch instead of being stacked correctly.
 
-  * Fixed a bug where the `--patch` flag to `create` and `modify` did not include new files.
+- Fixed a bug where the `--patch` flag to `create` and `modify` did not include new files.
 
   ### Notes
 
-  * The `test` command has been temporarily removed due to persistent bugginess, but will be added back when we have time to dedicate to making it work well. For now, one option is to script using the new `gt children` and `gt parent` commands, which should handle most use cases.
+- The `test` command has been temporarily removed due to persistent bugginess, but will be added back when we have time to dedicate to making it work well. For now, one option is to script using the new `gt children` and `gt parent` commands, which should handle most use cases.
 
-  * We are still working on further improvements to `sync` and would love your feedback in this area!
+- We are still working on further improvements to `sync` and would love your feedback in this area!
 
-  * We'd also love to hear about how we can make `revert` work best for you!
+- We'd also love to hear about how we can make `revert` work best for you!
 
-  * As of the release of this version, certain parts of the web app and docs may still reference the old command names. We're updating those places as you read this!
+- As of the release of this version, certain parts of the web app and docs may still reference the old command names. We're updating those places as you read this!
 </Update>
 
 <Update label="0.22.16" description="2023-09-08">
-  * Added autocomplete support for the renamed commands.
-  * Fixed a bug in `get` when the PR does not exist locally.
-  * Fixed a bug where an `git range-diff` failure could block submit.
+- Added autocomplete support for the renamed commands.
+- Fixed a bug in `get` when the PR does not exist locally.
+- Fixed a bug where an `git range-diff` failure could block submit.
 </Update>
 
 <Update label="0.22.15" description="2023-09-07">
-  * Introduced an environment variable to preview the command rename and custom aliasing system that will be released next week as Graphite CLI v1. For more details, see [https://graphite.com/graphite-cli-v1-command-names](https://graphite.com/graphite-cli-v1-command-names).
-  * Introduced a new interactive command `gt config` which covers all user- and repo-level configurations. The `gt user` and `gt repo` top-level commands will be deprecated in an upcoming release.
-  * `checkout` now prompts to `sync` when the branch's PR has been merged.
-  * `get` no longer fetches branches for merged PRs.
-  * Fixed a bug where having the VSCode extension open while restacking could corrupt cached stack data.
-  * Fixed a bug where restacks would get stuck in a confusing/corrupt state due to concurrent git processes (i.e. VSCode extesnion).
-  * Fixed a bug where an `git range-diff` failure could block submit.
+- Introduced an environment variable to preview the command rename and custom aliasing system that will be released next week as Graphite CLI v1. For more details, see [https://graphite.com/graphite-cli-v1-command-names](https://graphite.com/graphite-cli-v1-command-names).
+- Introduced a new interactive command `gt config` which covers all user- and repo-level configurations. The `gt user` and `gt repo` top-level commands will be deprecated in an upcoming release.
+- `checkout` now prompts to `sync` when the branch's PR has been merged.
+- `get` no longer fetches branches for merged PRs.
+- Fixed a bug where having the VSCode extension open while restacking could corrupt cached stack data.
+- Fixed a bug where restacks would get stuck in a confusing/corrupt state due to concurrent git processes (i.e. VSCode extesnion).
+- Fixed a bug where an `git range-diff` failure could block submit.
 </Update>
 
 <Update label="0.22.14" description="2023-09-06">
-  * Fixed a bug where users with a Yubikey-protected SSH key were unable to `sync`.
-  * Fixed a bug where an uncaught IPC exception would appear after running a command.
-  * The cool part is that turning this configuration on allows you to set custom aliases via the `~/.graphite_aliases` file, which we know some of you have been asking us about for quite a while!
+- Fixed a bug where users with a Yubikey-protected SSH key were unable to `sync`.
+- Fixed a bug where an uncaught IPC exception would appear after running a command.
+- The cool part is that turning this configuration on allows you to set custom aliases via the `~/.graphite_aliases` file, which we know some of you have been asking us about for quite a while!
 </Update>
 
 <Update label="0.22.9" description="2023-08-31">
-  * Fixed a bug where the wrong version could be shown in `gt log`.
-  * Fixed a bug where `get` didn't work to fetch new branches.
-  * Cleaned up a suggestion to run `submit --force`
-  * Removed the interactive portion at the end of `init` for branch tracking (hint about `track` is still shown).
-  * `GT_RENAME` flag now displays the correct command names in suggestions.
+- Fixed a bug where the wrong version could be shown in `gt log`.
+- Fixed a bug where `get` didn't work to fetch new branches.
+- Cleaned up a suggestion to run `submit --force`
+- Removed the interactive portion at the end of `init` for branch tracking (hint about `track` is still shown).
+- `GT_RENAME` flag now displays the correct command names in suggestions.
 </Update>
 
 <Update label="0.22.8" description="2023-08-31">
-  * You guessed it -- more performance improvements!
+- You guessed it -- more performance improvements!
 
-  * `submit` commands now automatically pull in changes from remote and rebase on top of them when your local changes don't conflict with them.
+- `submit` commands now automatically pull in changes from remote and rebase on top of them when your local changes don't conflict with them.
 
-  * `downstack get` now shows which version of the PR has been fetched.
+- `downstack get` now shows which version of the PR has been fetched.
 
-  * `gt log` now shows the last submitted version of each PR, as well as whether you need to \`submit\` or \`get\`.
+- `gt log` now shows the last submitted version of each PR, as well as whether you need to \`submit\` or \`get\`.
 
-  * `branch checkout` now informs you if you need to `get`.
+- `branch checkout` now informs you if you need to `get`.
 
-  * Fixed an issue where `branch checkout --patch` failed with an incorrect error message.
+- Fixed an issue where `branch checkout --patch` failed with an incorrect error message.
 
-  * Fixed an issue where `downstack get` failed with an incorrect error message.
+- Fixed an issue where `downstack get` failed with an incorrect error message.
 
-  * Fixed some issues with inconsistent failures in `get`
+- Fixed some issues with inconsistent failures in `get`
 
-  * Added an experimental `graphite_aliases` file (see below)
+- Added an experimental `graphite_aliases` file (see below)
 
   We are currently in the process of renaming all Graphite commands. This version is the first one with the full set of renamed commands implemented. If you'd like to try out this new command surface, you can add "export GT\_RENAME=1" to your shell configuration file (e.g. \~/.zshrc) to be warned when you run a renamed command and what the new name is. It may be unstable and is primarily meant for employee testing purposes until further notice. There is no overlap between the old set of commands and the new set.
   For more information, see this [Notion doc](https://www.notion.so/withgraphite/Proposal-for-Graphite-CLI-changes-400d068c7c8546fcbc90b5573e6f27e9?pvs=4).
@@ -2463,247 +2491,247 @@ See the history of changes for the Graphite CLI.
 </Update>
 
 <Update label="0.22.6" description="2023-08-25">
-  * More performance improvements!
+- More performance improvements!
 
-  * Fixed an issue where mangled output was displayed in `gt user editor`.
+- Fixed an issue where mangled output was displayed in `gt user editor`.
 
-  * Fixed an issue where `downstack merge` didn't exit if the PR was already merging/merged.
+- Fixed an issue where `downstack merge` didn't exit if the PR was already merging/merged.
 
-  * Fixed an issue where `downstack get` did not work.
+- Fixed an issue where `downstack get` did not work.
 </Update>
 
 <Update label="0.22.4" description="2023-08-21">
-  * More performance improvements!
+- More performance improvements!
 
-  * Added a clearer warning about Node.js version compatibility for `npm` installs.
+- Added a clearer warning about Node.js version compatibility for `npm` installs.
 
-  * Fixed an issue where `--force` in `submit` was not respected.
+- Fixed an issue where `--force` in `submit` was not respected.
 
-  * Building on a change from 0.22.1, `downstack get` now automatically pulls in changes from GitHub if the local state of the branch matches a submitted version of the branch's open pull request, \*\*even if rebased\*\*.
+- Building on a change from 0.22.1, `downstack get` now automatically pulls in changes from GitHub if the local state of the branch matches a submitted version of the branch's open pull request, \*\*even if rebased\*\*.
 
-  * `submit` now prompts for a `downstack get` in cases where there are remote changes that need to be synced.
+- `submit` now prompts for a `downstack get` in cases where there are remote changes that need to be synced.
 </Update>
 
 <Update label="0.22.3" description="2023-08-16">
-  * Many small performance improvements!
+- Many small performance improvements!
 
-  * Added a `--rerequest-review` flag to `submit` commands that rerequests review from anyone who has reviewed the PR.
+- Added a `--rerequest-review` flag to `submit` commands that rerequests review from anyone who has reviewed the PR.
 
-  * `submit` is now blocked by an ongoing rebase.
+- `submit` is now blocked by an ongoing rebase.
 
-  * `--quiet` is now respected by underlying `git commit` calls.
+- `--quiet` is now respected by underlying `git commit` calls.
 </Update>
 
 <Update label="0.22.1" description="2023-08-10">
-  * Fixed a bug where `prNumber` was incorrectly displayed in the `gt log` output instead of the actual PR number.
+- Fixed a bug where `prNumber` was incorrectly displayed in the `gt log` output instead of the actual PR number.
 
-  * `downstack get` now automatically pulls in changes from GitHub if the local state of the branch matches a submitted version of the branch's open pull request.
+- `downstack get` now automatically pulls in changes from GitHub if the local state of the branch matches a submitted version of the branch's open pull request.
 
-  * `submit` commands now suggest running `downstack get` when the above situation is detected.
+- `submit` commands now suggest running `downstack get` when the above situation is detected.
 
-  * YubiKey prompting for SSH is now moved behind a config, in order to address some bugs that passing through the YubiKey prompt introduced. If you are using a YubiKey to authenticate with GitHub, you can enable this config with `gt user yubikey --enable`.
+- YubiKey prompting for SSH is now moved behind a config, in order to address some bugs that passing through the YubiKey prompt introduced. If you are using a YubiKey to authenticate with GitHub, you can enable this config with `gt user yubikey --enable`.
 
-  * Added a global `--cwd` flag to run any Graphite command in a directory other than the one it is initiated from.
+- Added a global `--cwd` flag to run any Graphite command in a directory other than the one it is initiated from.
 </Update>
 
 <Update label="0.22.0" description="2023-08-04">
-  * Added a new `gt downstack merge` command to merge stacks and PRs directly from the CLI.
+- Added a new `gt downstack merge` command to merge stacks and PRs directly from the CLI.
 
-  * `submit` commands now display code updates and metadata updates as two different statuses in the list of updates.
+- `submit` commands now display code updates and metadata updates as two different statuses in the list of updates.
 </Update>
 
 <Update label="0.21.5" description="2023-07-27">
-  * We had a few versions' worth of iterating on internal issues and the new release process from our monorepo, thanks for bearing with us!
+- We had a few versions' worth of iterating on internal issues and the new release process from our monorepo, thanks for bearing with us!
 </Update>
 
 <Update label="0.21.0" description="2023-07-21">
-  * We pushed a few patch versions to npm and brew between 0.20.24 and now, but there were no major changes in any of them, so they are not listed in the changelog.
+- We pushed a few patch versions to npm and brew between 0.20.24 and now, but there were no major changes in any of them, so they are not listed in the changelog.
 
-  * `gt log` now shows the PR's overall status (consistent with Graphite app; takes stacks into account).
+- `gt log` now shows the PR's overall status (consistent with Graphite app; takes stacks into account).
 
-  * Added a new `-m` flag to `submit` commands that enables "merge when ready" on the Graphite app, merging the PR if it is already ready to be merged.
+- Added a new `-m` flag to `submit` commands that enables "merge when ready" on the Graphite app, merging the PR if it is already ready to be merged.
 
-  * Added a new option `--exclude-templates` to `gt user submit-body` which specifies that the PR template should not be included in the default PR description when `--include-commit-messages` is enabled.
+- Added a new option `--exclude-templates` to `gt user submit-body` which specifies that the PR template should not be included in the default PR description when `--include-commit-messages` is enabled.
 
-  * Fixed a few long-standing performance issues that affected all commands, most noticeably shorter-running ones.
+- Fixed a few long-standing performance issues that affected all commands, most noticeably shorter-running ones.
 
-  * Fixed an issue where the Yubikey prompt shown by git commands was not being diplayed.
+- Fixed an issue where the Yubikey prompt shown by git commands was not being diplayed.
 
-  * Fixed an issue where the \`branch track\` command was missing.
+- Fixed an issue where the \`branch track\` command was missing.
 </Update>
 
 <Update label="0.20.22" description="2023-06-22">
-  * Added the request ID to HTTP error message output for better user issue debugging
+- Added the request ID to HTTP error message output for better user issue debugging
 </Update>
 
 <Update label="0.20.21" description="2023-06-22">
-  * No changes, had to bump a new version to get around accidentally pushing v0.20.19 to `npm` as v0.20.20
+- No changes, had to bump a new version to get around accidentally pushing v0.20.19 to `npm` as v0.20.20
 </Update>
 
 <Update label="0.20.20" description="2023-06-21">
-  * `gt dash` commands now use the app URL from the user's profile when passing links to `open`.
+- `gt dash` commands now use the app URL from the user's profile when passing links to `open`.
 </Update>
 
 <Update label="0.20.19" description="2023-05-11">
-  * When editing a PR description, the temporary file is now named `GRAPHITE_PR_DESCRIPTION.md`. This allows for Markdown syntax highlighting, and also adding additional editor config by specifically targeting this file name.
+- When editing a PR description, the temporary file is now named `GRAPHITE_PR_DESCRIPTION.md`. This allows for Markdown syntax highlighting, and also adding additional editor config by specifically targeting this file name.
 </Update>
 
 <Update label="0.20.18" description="2023-4-28">
-  * Fixed a bug where `gt changelog` was broken for the binary version of the CLI (e.g. installed via `brew`).
+- Fixed a bug where `gt changelog` was broken for the binary version of the CLI (e.g. installed via `brew`).
 
-  * Fixed a bug where `gt branch edit` was accidentally removed from the CLI. Thank you @vampire!
+- Fixed a bug where `gt branch edit` was accidentally removed from the CLI. Thank you @vampire!
 
-  * Added `fish` completion support via `gt fish >> ~/.config/fish/completions/gt.fish`! Thank you @szamanr!
+- Added `fish` completion support via `gt fish >> ~/.config/fish/completions/gt.fish`! Thank you @szamanr!
 </Update>
 
 <Update label="0.20.17" description="2023-4-24">
-  * This should fix the npm install issues!
+- This should fix the npm install issues!
 </Update>
 
 <Update label="0.20.16" description="2023-4-21">
-  * Fixed a bug where `repo sync` attempts to delete branches that were never associated with a PR.
+- Fixed a bug where `repo sync` attempts to delete branches that were never associated with a PR.
 </Update>
 
 <Update label="0.20.15" description="2023-3-22">
-  * Add setting trunk to remote version if it cannot be fast-forwarded.
+- Add setting trunk to remote version if it cannot be fast-forwarded.
 </Update>
 
 <Update label="0.20.14" description="2023-2-10">
-  * Add `--always` flag to submit to always push updates, even if the branch has not changed.
+- Add `--always` flag to submit to always push updates, even if the branch has not changed.
 </Update>
 
 <Update label="0.20.13" description="2022-1-20">
-  * Tweaked git passthrough copy to make it clear that a command was run.
+- Tweaked git passthrough copy to make it clear that a command was run.
 
-  * Fixed a bug where `test` commands didn't support multiple separators in a branch name.
+- Fixed a bug where `test` commands didn't support multiple separators in a branch name.
 
-  * Replaced individual `gt ls-remote` calls on `submit` with a single one, which should speed up submission significantly!
+- Replaced individual `gt ls-remote` calls on `submit` with a single one, which should speed up submission significantly!
 
-  * Fixed a bug where PR data was not being synced in the background.
+- Fixed a bug where PR data was not being synced in the background.
 </Update>
 
 <Update label="0.20.12" description="2022-11-25">
-  * `gt stack submit` now prompts for submission info inline after each individual branch, instead of after all branches.
+- `gt stack submit` now prompts for submission info inline after each individual branch, instead of after all branches.
 
-  * The `--edit/-e` flag on `submit` commands now allows updating the PR title and body.
+- The `--edit/-e` flag on `submit` commands now allows updating the PR title and body.
 
-  * The `--reviewers/-r` flag on `submit` commands can now update existing PRs.
+- The `--reviewers/-r` flag on `submit` commands can now update existing PRs.
 
-  * The `--reviewers/-r` flag on `submit` commands now accepts a string of comma separated reviewers (e.g. `user1, user2`).
+- The `--reviewers/-r` flag on `submit` commands now accepts a string of comma separated reviewers (e.g. `user1, user2`).
 
-  * `gt commit amend` no longer requires staged changes.
+- `gt commit amend` no longer requires staged changes.
 
-  * `gt commit amend` no longer allowed on empty branches.
+- `gt commit amend` no longer allowed on empty branches.
 
-  * `gt commit create/amend` no longer allowed during a rebase.
+- `gt commit create/amend` no longer allowed during a rebase.
 
-  * Improved suggested messages when encountering errors during a rebase.
+- Improved suggested messages when encountering errors during a rebase.
 
-  * Improved error messaging by showing error code and number when available.
+- Improved error messaging by showing error code and number when available.
 
-  * Improved error reporting when running `test` commands.
+- Improved error reporting when running `test` commands.
 </Update>
 
 <Update label="0.20.11" description="2022-09-26">
-  * Changed many error messages to be more actionable, and changed some tips to always-visible messages.
+- Changed many error messages to be more actionable, and changed some tips to always-visible messages.
 
-  * Improved accuracy of checking whether a branch is up to date on `submit`.
+- Improved accuracy of checking whether a branch is up to date on `submit`.
 
-  * The `--edit/-e` flag on `submit` now opens an editor for each PR without prompting first. Passing no flag still prompts the user whether they'd like to open an editor, and `--no-edit` still skips the prompt,
+- The `--edit/-e` flag on `submit` now opens an editor for each PR without prompting first. Passing no flag still prompts the user whether they'd like to open an editor, and `--no-edit` still skips the prompt,
 
-  * The `--select/-s` flag of `submit` now prompts about which branches to include in the submit as the first step so that it can validate that the correct dependencies are included in the submit scope.
+- The `--select/-s` flag of `submit` now prompts about which branches to include in the submit as the first step so that it can validate that the correct dependencies are included in the submit scope.
 
-  * Fixed a bug preventing creation of a debug context within a large repository.
+- Fixed a bug preventing creation of a debug context within a large repository.
 
-  * Fixed a bug logging output for `gt branch test` on branches with a slash in the name.
+- Fixed a bug logging output for `gt branch test` on branches with a slash in the name.
 
-  * Running git commands no longer opens another terminal on Windows.
+- Running git commands no longer opens another terminal on Windows.
 </Update>
 
 <Update label="0.20.10" description="2022-08-02">
-  * Addressed one remaining gap in pager parity with git: set the environment variables `LESS=FRX` and `LV=-c` if unset.
+- Addressed one remaining gap in pager parity with git: set the environment variables `LESS=FRX` and `LV=-c` if unset.
 </Update>
 
 <Update label="0.20.9" description="2022-08-02">
-  * Fixed remaining issues with pager by switching from a temp file to a pipe.
+- Fixed remaining issues with pager by switching from a temp file to a pipe.
 
-  * Fixed a bug where `gt log short` wouldn't show the filled-in circle for branches needing a restack.
+- Fixed a bug where `gt log short` wouldn't show the filled-in circle for branches needing a restack.
 
-  * Fixed a bug where `gt branch split` untracked children of the branch being split if the last branch in the split kept its name.
+- Fixed a bug where `gt branch split` untracked children of the branch being split if the last branch in the split kept its name.
 </Update>
 
 <Update label="0.20.8" description="2022-07-29">
-  * Improved error mesaging around failed pager execution.
+- Improved error mesaging around failed pager execution.
 </Update>
 
 <Update label="0.20.7" description="2022-07-29">
-  * `gt log`, `gt changelog`, and `gt branch info` now display in a pager. The pager defaults to your git pager, but can be overridden with (for example) `gt user pager --set 'less -FRX'`.
+- `gt log`, `gt changelog`, and `gt branch info` now display in a pager. The pager defaults to your git pager, but can be overridden with (for example) `gt user pager --set 'less -FRX'`.
 
-  * Fixed a bug where `--no-edit` on `submit` would automatically open new PRs in draft mode (it now prompts unless `--draft`, `--publish`, or `--no-interactive` is set).
+- Fixed a bug where `--no-edit` on `submit` would automatically open new PRs in draft mode (it now prompts unless `--draft`, `--publish`, or `--no-interactive` is set).
 
-  * Fixed a bug where killing the CLI during submit could result in being unable to submit again (due to a temporary filename clash).
+- Fixed a bug where killing the CLI during submit could result in being unable to submit again (due to a temporary filename clash).
 
-  * Fixed colors for `gt branch info --patch`.
+- Fixed colors for `gt branch info --patch`.
 
-  * Fixed a bug related to buffer size for certain git commands.
+- Fixed a bug related to buffer size for certain git commands.
 
-  * Fixed the error displayed when attempting to install Graphite on old Node.js versions.
+- Fixed the error displayed when attempting to install Graphite on old Node.js versions.
 </Update>
 
 <Update label="0.20.6" description="2022-07-25">
-  * `submit` after an aborted submit now asks the user whether they'd like to use their cached PR body instead of always using it.
+- `submit` after an aborted submit now asks the user whether they'd like to use their cached PR body instead of always using it.
 
-  * `gt branch split` now tracks untracked branches automatically before splitting.
+- `gt branch split` now tracks untracked branches automatically before splitting.
 
-  * `gt branch untrack` now untracks the current branch if no branch name is provided.
+- `gt branch untrack` now untracks the current branch if no branch name is provided.
 
-  * Fixed an issue where `gt branch create` would fail instead of creating a branch with no commit in certain cases.
+- Fixed an issue where `gt branch create` would fail instead of creating a branch with no commit in certain cases.
 
-  * Fixed `gt branch edit`.
+- Fixed `gt branch edit`.
 </Update>
 
 <Update label="0.20.5" description="2022-07-22">
-  * Fixed `gt changelog`.
+- Fixed `gt changelog`.
 
-  * Fixed `submit`, `downstack edit` for editor commands containing spaces.
+- Fixed `submit`, `downstack edit` for editor commands containing spaces.
 
-  * Fixed `git push` errors being swallowed on submit.
+- Fixed `git push` errors being swallowed on submit.
 </Update>
 
 <Update label="0.20.4" description="2022-07-21">
-  * Added `gt changelog` and `gt docs`. You probably want to pipe the changelog to a pager or file :).
+- Added `gt changelog` and `gt docs`. You probably want to pipe the changelog to a pager or file :).
 
-  * Fixed a bug where a `git rebase --abort` after a restack conflict would result in Graphite being wrong about the current branch.
+- Fixed a bug where a `git rebase --abort` after a restack conflict would result in Graphite being wrong about the current branch.
 
-  * Improved `test` command output.
+- Improved `test` command output.
 
-  * Internal improvements.
+- Internal improvements.
 </Update>
 
 <Update label="0.20.3" description="2022-07-21">
-  * Minor internal fix.
+- Minor internal fix.
 </Update>
 
 <Update label="0.20.2" description="2022-07-19">
-  * Fixed an issue preventing installation.
+- Fixed an issue preventing installation.
 </Update>
 
 <Update label="0.20.1" description="2022-07-19">
-  * Fixed an issue preventing installation.
+- Fixed an issue preventing installation.
 </Update>
 
 <Update label="0.20.0" description="2022-07-19">
-  * Added a new command `gt branch split` that allows the user to interactive split a branch into multiple dependent branches. There are two styles of operation:
+- Added a new command `gt branch split` that allows the user to interactive split a branch into multiple dependent branches. There are two styles of operation:
 
     * `--by-commit` mode (aliases `--commit`, `-c`) prompts the user to select the commits within the branch that they'd like to have branches at.
 
     * `--by-hunk` mode (aliases `--hunk`, `-h`) prompts the user to create a series of single-commit branches from the changes of the branch using the `git add --patch` interface.
 
-  * Greatly improved `gt log short` readability. Give it a try!
+- Greatly improved `gt log short` readability. Give it a try!
 
-  * `gt branch create`, `gt commit create`, and `gt commit amend` now support the `-p/--patch` option (like `git commit --patch`). Please note that this won't be the most useful option until autostashing is implemented, planned soon.
+- `gt branch create`, `gt commit create`, and `gt commit amend` now support the `-p/--patch` option (like `git commit --patch`). Please note that this won't be the most useful option until autostashing is implemented, planned soon.
 
-  * Branch navigation commands now notify the user if the branch being checked out is either
+- Branch navigation commands now notify the user if the branch being checked out is either
 
     * behind its parent (needs restacking)
 
@@ -2711,109 +2739,109 @@ See the history of changes for the Graphite CLI.
 
     * untracked
 
-  * `gt log` and `gt log short` now show untracked branches when `--show-untracked/-u` is passed in.
+- `gt log` and `gt log short` now show untracked branches when `--show-untracked/-u` is passed in.
 
-  * `gt branch checkout` now includes untracked branches in the selector when `--show-untracked/-u` is passed in.
+- `gt branch checkout` now includes untracked branches in the selector when `--show-untracked/-u` is passed in.
 
-  * Added `-n` as an alias for `--no-edit` for `submit`. Try out `gt ss -np` to quickly publish your changes!
+- Added `-n` as an alias for `--no-edit` for `submit`. Try out `gt ss -np` to quickly publish your changes!
 
-  * Added `--select`/`-s` option for `submit` to select which branches to push.
+- Added `--select`/`-s` option for `submit` to select which branches to push.
 
-  * Added `--force`/`-f` option `submit` to do a force-push, i.e. `git push -f`, instead of the default `git push --force-with-lease`.
+- Added `--force`/`-f` option `submit` to do a force-push, i.e. `git push -f`, instead of the default `git push --force-with-lease`.
 
-  * Added a non-blocking note if the user submits a branch that is not restacked on trunk.
+- Added a non-blocking note if the user submits a branch that is not restacked on trunk.
 
-  * On trying to submit branches with PRs already closed/merged, instead of failing immediately users will be prompted to choose either to abort or create new PRs.
+- On trying to submit branches with PRs already closed/merged, instead of failing immediately users will be prompted to choose either to abort or create new PRs.
 
-  * `submit` now correctly sets the upstream of the pushed branch.
+- `submit` now correctly sets the upstream of the pushed branch.
 
-  * You can now configure whether you'd like commit messages in PR bodies by default behind the configuration `gt user submit-body --include-commit-messages`. Disabled by default. Use `gt user submit-body --no-include-commit-messages` to disable.
+- You can now configure whether you'd like commit messages in PR bodies by default behind the configuration `gt user submit-body --include-commit-messages`. Disabled by default. Use `gt user submit-body --no-include-commit-messages` to disable.
 
-  * Added `--force`/`-f` for `gt downstack get` to always overwrite local branches.
+- Added `--force`/`-f` for `gt downstack get` to always overwrite local branches.
 
-  * `gt downstack track` can now take a positional branch name argument (like `gt branch track`).
+- `gt downstack track` can now take a positional branch name argument (like `gt branch track`).
 
-  * Added `--diff`/`-d` for `gt branch info` to show the diff of the whole branch (unlike `--patch`/`-p` which shows the diff of each commit).
+- Added `--diff`/`-d` for `gt branch info` to show the diff of the whole branch (unlike `--patch`/`-p` which shows the diff of each commit).
 
-  * Interactive prompts autocomplete is now case-insensitive.
+- Interactive prompts autocomplete is now case-insensitive.
 
-  * `gt --help` now includes a link to the CLI documention.
+- `gt --help` now includes a link to the CLI documention.
 
-  * Improved `gt repo init` copy.
+- Improved `gt repo init` copy.
 
-  * Improved error messaging for when an internal `git` command fails.
+- Improved error messaging for when an internal `git` command fails.
 
-  * Improved error messaging for when a `submit` command fails due to a GitHub API error.
+- Improved error messaging for when a `submit` command fails due to a GitHub API error.
 
-  * Improved `test` command output.
+- Improved `test` command output.
 
-  * Improved clarity of positional arguments for all commands with them in `--help`
+- Improved clarity of positional arguments for all commands with them in `--help`
 
-  * Improved performance of internal cache.
+- Improved performance of internal cache.
 
-  * Improved telemetry.
+- Improved telemetry.
 
-  * Fixed a bug where `test` commands were completely broken.
+- Fixed a bug where `test` commands were completely broken.
 
-  * Fixed a bug where `upstack onto` autocomplete did not work if `uso` shortcut was used.
+- Fixed a bug where `upstack onto` autocomplete did not work if `uso` shortcut was used.
 
-  * Fixed a bug where `--no-interactive` and `--no-edit` were not handled properly for `submit`
+- Fixed a bug where `--no-interactive` and `--no-edit` were not handled properly for `submit`
 
-  * Fixed a bug where `gt log` would break on the initial commit of a repository.
+- Fixed a bug where `gt log` would break on the initial commit of a repository.
 
-  * Fixed a bug where trunk would be in the list of branches to track in `gt repo init`
+- Fixed a bug where trunk would be in the list of branches to track in `gt repo init`
 
-  * Fixed a bug where the error message for old versions of Node.js wouldn't show up.
+- Fixed a bug where the error message for old versions of Node.js wouldn't show up.
 
-  * Added cycle detection for parent pointers.
+- Added cycle detection for parent pointers.
 </Update>
 
 <Update label="0.19.6" description="2022-07-07">
-  * Fixed a bug where continue state could be corrupted by running a `gt` command before running `gt continue`.
+- Fixed a bug where continue state could be corrupted by running a `gt` command before running `gt continue`.
 
-  * Fixed a bug where `upstack onto` could target untracked branches, resulting in corrupted state.
+- Fixed a bug where `upstack onto` could target untracked branches, resulting in corrupted state.
 
-  * Fixed a bug where renaming a branch to its current name resulted in corrupted state.
+- Fixed a bug where renaming a branch to its current name resulted in corrupted state.
 
-  * Added `dstr` as an alias for `downstack track`.
+- Added `dstr` as an alias for `downstack track`.
 
-  * Slightly improved rebase conflict printout.
+- Slightly improved rebase conflict printout.
 </Update>
 
 <Update label="0.19.5" description="2022-07-06">
-  * Added a new command `gt downstack track` that, from an untracked branch, allows you to track recursively by choosing the parent until you reach a tracked branch. Use `--force/-f` to automatically select the nearest ancestor of each branch, which should give behavior similar to `gt stack fix --regen` of old.
+- Added a new command `gt downstack track` that, from an untracked branch, allows you to track recursively by choosing the parent until you reach a tracked branch. Use `--force/-f` to automatically select the nearest ancestor of each branch, which should give behavior similar to `gt stack fix --regen` of old.
 
-  * Added a new command `gt branch fold` that folds the changes of the current branch into the parent branch. Uses the parent branch's name for the new branch with default; pass in `--keep/-k` to use the current branch's name instead.
+- Added a new command `gt branch fold` that folds the changes of the current branch into the parent branch. Uses the parent branch's name for the new branch with default; pass in `--keep/-k` to use the current branch's name instead.
 
-  * Added a new command `gt branch squash` that turns a branch of multiple commits into a single-commit branch. Takes `--message/-m` and `--no-edit/-n` arguments just like `gt commit amend`, and defaults to using the message of the first commit on the branch.
+- Added a new command `gt branch squash` that turns a branch of multiple commits into a single-commit branch. Takes `--message/-m` and `--no-edit/-n` arguments just like `gt commit amend`, and defaults to using the message of the first commit on the branch.
 
-  * Fixed a bug where if neither `--draft` nor `--submit` was passed, updated PRs would always be published if previously drafts, and new PRs would be published instead of being created as draft.
+- Fixed a bug where if neither `--draft` nor `--submit` was passed, updated PRs would always be published if previously drafts, and new PRs would be published instead of being created as draft.
 
-  * Fixed a bug where `gt branch track --force` wouldn't always select the nearest ancestor.
+- Fixed a bug where `gt branch track --force` wouldn't always select the nearest ancestor.
 
-  * Fixed a bug where `gt` with no command would throw an uncaught exception instead of displaying the help message.
+- Fixed a bug where `gt` with no command would throw an uncaught exception instead of displaying the help message.
 
-  * Fixed a bug where cancelling certain interactive prompts would result in undefined behavior.
+- Fixed a bug where cancelling certain interactive prompts would result in undefined behavior.
 </Update>
 
 <Update label="0.19.4" description="2022-07-05">
-  * Based on a user survey, we've slightly changed the defaults for PR title and description on `submit` commands.
+- Based on a user survey, we've slightly changed the defaults for PR title and description on `submit` commands.
 
     * PR Title defaults to the title of the first (or only) commit on the branch.
 
     * PR Description defaults to a list of commit messages followed by a PR template, if one exists.
 
-  * `branch info` and `log` now show the commit hash of trunk.
+- `branch info` and `log` now show the commit hash of trunk.
 
-  * Added a `repo init --reset` which clears all Graphite metadata.
+- Added a `repo init --reset` which clears all Graphite metadata.
 
-  * Added a new user-scoped configuration enabled by `gt user restack-date --use-author-date` which when enabled passes `--committer-date-is-author-date` to the internal `git rebase` of restack operations. To return to the default, use `gt user restack-date --no-use-author-date`.
+- Added a new user-scoped configuration enabled by `gt user restack-date --use-author-date` which when enabled passes `--committer-date-is-author-date` to the internal `git rebase` of restack operations. To return to the default, use `gt user restack-date --no-use-author-date`.
 
-  * Added autocompletion for the `branch up` disambiguation prompt.
+- Added autocompletion for the `branch up` disambiguation prompt.
 
-  * Added `gt dpr` as a shortcut for `gt dash pr`
+- Added `gt dpr` as a shortcut for `gt dash pr`
 
-  * Renamed the `--no-draft` option for \`submit\` commands to `--publish/-p`. There are three modes of operation for the command:
+- Renamed the `--no-draft` option for \`submit\` commands to `--publish/-p`. There are three modes of operation for the command:
 
     * By default, leave existing PRs in the same state and create new PRs in draft mode.
 
@@ -2821,59 +2849,59 @@ See the history of changes for the Graphite CLI.
 
     * When `--publish/-p` is passed, all PRs in the submit scope will be marked ready for review.
 
-  * Added an interactive prompt for `gt branch rename` when no new name is passed in.
+- Added an interactive prompt for `gt branch rename` when no new name is passed in.
 
-  * Added a `--force/-f` option for `gt branch track `that skips the interactive prompt by picking the nearest tracked ancestor.
+- Added a `--force/-f` option for `gt branch track `that skips the interactive prompt by picking the nearest tracked ancestor.
 
-  * Fixed a bug where `branch submit` and `downstack submit` base validation would fail incorrectly on certain operating systems.
+- Fixed a bug where `branch submit` and `downstack submit` base validation would fail incorrectly on certain operating systems.
 
-  * Fixed a bug where leftover cached metadata across CLI versions could result in inconsistent state.
+- Fixed a bug where leftover cached metadata across CLI versions could result in inconsistent state.
 </Update>
 
 <Update label="0.19.3" description="2022-06-28">
-  * Changed the flow of `gt branch track`. Now, it tracks the current branch by default, unless another branch is specified. By default, prompts the user to select a branch to be its parent if there are multiple possibilities, or you can pass in a `--parent`.
+- Changed the flow of `gt branch track`. Now, it tracks the current branch by default, unless another branch is specified. By default, prompts the user to select a branch to be its parent if there are multiple possibilities, or you can pass in a `--parent`.
 
-  * Updated the new `log short` view to be more comprehensible (uses diagram symbols from `log`).
+- Updated the new `log short` view to be more comprehensible (uses diagram symbols from `log`).
 
-  * Fixed a bug where `--restack` wouldn't restack all branches as expected if `gt repo sync` was run from trunk.
+- Fixed a bug where `--restack` wouldn't restack all branches as expected if `gt repo sync` was run from trunk.
 
-  * Fixed a bug where `gt ss` would fail if run from trunk.
+- Fixed a bug where `gt ss` would fail if run from trunk.
 
-  * Fixed a bug where `gt downstack get` would fail to get branches that existed locally but were untracked by `gt`.
+- Fixed a bug where `gt downstack get` would fail to get branches that existed locally but were untracked by `gt`.
 
-  * Fixed a bug where after a `git rebase`, Graphite metadata could end up in a broken state.
+- Fixed a bug where after a `git rebase`, Graphite metadata could end up in a broken state.
 
-  * Fixed a bug that prevented `gt feedback --with-debug-context` from working as expected.
+- Fixed a bug that prevented `gt feedback --with-debug-context` from working as expected.
 
-  * Fixed a bug where `gt upstack onto` interactive selection could appear wonky.
+- Fixed a bug where `gt upstack onto` interactive selection could appear wonky.
 
-  * Fixed some copy in v0.19 newly added features.
+- Fixed some copy in v0.19 newly added features.
 </Update>
 
 <Update label="0.19.2" description="2022-06-15">
-  * Fixed an issue where `downstack get `was completely broken.
+- Fixed an issue where `downstack get `was completely broken.
 
-  * Replaced the emoji for `Pushing to remote and creating/updating PRs...` step of `submit`
+- Replaced the emoji for `Pushing to remote and creating/updating PRs...` step of `submit`
 
-  * Fixed an issue where `gt branch edit` would only work if the branch was not in need of restacking.
+- Fixed an issue where `gt branch edit` would only work if the branch was not in need of restacking.
 
-  * Added support to rebase local changes on top of remote for `downstack get`
+- Added support to rebase local changes on top of remote for `downstack get`
 
-  * Fixed a bug where choosing to cancel `submit` because of an empty branch did not abort correctly.
+- Fixed a bug where choosing to cancel `submit` because of an empty branch did not abort correctly.
 </Update>
 
 <Update label="0.19.1" description="2022-06-14">
-  * Removed some development tooling as a workaround to unblock Homebrew release. Sorry for the delay!
+- Removed some development tooling as a workaround to unblock Homebrew release. Sorry for the delay!
 
-  * Fixed a shebang issue that resulted from trying to clean up Node.js v18 warnings. Added a different fix to prevent Node.js warnings from showing up in CLI output.
+- Fixed a shebang issue that resulted from trying to clean up Node.js v18 warnings. Added a different fix to prevent Node.js warnings from showing up in CLI output.
 
-  * Fixed a bug with Node.js v14 support.
+- Fixed a bug with Node.js v14 support.
 
-  * Changed the Homebrew Node.js dependency to v16, which is the same as we use for development.
+- Changed the Homebrew Node.js dependency to v16, which is the same as we use for development.
 </Update>
 
 <Update label="0.19.0" description="2022-06-13">
-  * Ensured every commonly used command has an alias and changed a few names. A current list of commands will be included in the Community Slack with this release.
+- Ensured every commonly used command has an alias and changed a few names. A current list of commands will be included in the Community Slack with this release.
 
     * `gt branch show` is now `gt branch info`. As this command is relatively new, we are not leaving `show` as an alias.
 
@@ -2883,75 +2911,75 @@ See the history of changes for the Graphite CLI.
 
     * The old names `gt branch prev` and `gt branch next` for `down` and `up` are now fully deprecated.
 
-  * Updated a significant portion of the info and error messages spanning almost every command.
+- Updated a significant portion of the info and error messages spanning almost every command.
 
-  * Ensured every command has up-to-date and helpful `--help`.
+- Ensured every command has up-to-date and helpful `--help`.
 
-  * Added a number of tips to various commands.
+- Added a number of tips to various commands.
 
-  * Greatly improved autcompletion —now every command has autocomplete for nouns, verbs, flags, and branch names when applicable.
+- Greatly improved autcompletion —now every command has autocomplete for nouns, verbs, flags, and branch names when applicable.
 
-  * `gt branch checkout`, `gt upstack onto`, and `gt branch track` now all have substring autocompletion for interactive branch selection. Enjoy! :D
+- `gt branch checkout`, `gt upstack onto`, and `gt branch track` now all have substring autocompletion for interactive branch selection. Enjoy! :D
 
-  * `gt auth` and `gt user` commands can now be run outside of a Git repository.
+- `gt auth` and `gt user` commands can now be run outside of a Git repository.
 
-  * Removed the concept of "ignored branches" from `gt repo init`, and the user config.Removed the `gt repo ignored-branches` command.
+- Removed the concept of "ignored branches" from `gt repo init`, and the user config.Removed the `gt repo ignored-branches` command.
 
-  * Removed `gt <scope> fix`. `fix` is now an alias for `restack`.
+- Removed `gt <scope> fix`. `fix` is now an alias for `restack`.
 
-  * Removed `gt <scope> validate`
+- Removed `gt <scope> validate`
 
-  * Removed `gt branch parent`, `gt branch children`, and `gt branch pr-info`. All of this information is now found in `gt branch info`. `gt branch rename` is now the only way to reset PR info for a branch, as PR info is now synced by branch name for the open PR with that name.
+- Removed `gt branch parent`, `gt branch children`, and `gt branch pr-info`. All of this information is now found in `gt branch info`. `gt branch rename` is now the only way to reset PR info for a branch, as PR info is now synced by branch name for the open PR with that name.
 
-  * Removed `gt repo fix`.
+- Removed `gt repo fix`.
 
-  * Removed `gt repo trunk`. You can change the trunk branch by running `gt repo init --trunk <trunkName>` .
+- Removed `gt repo trunk`. You can change the trunk branch by running `gt repo init --trunk <trunkName>` .
 
-  * Removed `exec` functionality of `gt downstack edit`—we recommend using `gt stack test` for running a command on each branch in your stack.
+- Removed `exec` functionality of `gt downstack edit`—we recommend using `gt stack test` for running a command on each branch in your stack.
 
-  * Added a new command `gt branch track`. In order to track an existing git branch `<branchName>`, ensure that it is based on a Graphite branch `<parentBranchName>`, and then with `<parentBranchName>` checked out, run `gt branch track <branchName>` to start tracking it as a Graphite branch.
+- Added a new command `gt branch track`. In order to track an existing git branch `<branchName>`, ensure that it is based on a Graphite branch `<parentBranchName>`, and then with `<parentBranchName>` checked out, run `gt branch track <branchName>` to start tracking it as a Graphite branch.
 
     * You can also specify a `--parent` in `gt branch track` instead of checking out the desired parent before running the command.
 
     * If run without a branch to track `gt branch track` suggests branches that have the current branch/specified parent in their history.
 
-  * Added `gt branch untrack` to remove Graphite metadata for a branch.
+- Added `gt branch untrack` to remove Graphite metadata for a branch.
 
-  * Added a new flow to `gt repo init` for letting users new to Graphite convert an existing "stack" of branches into a Graphite stack. Essentially calls `gt branch track` in a loop.
+- Added a new flow to `gt repo init` for letting users new to Graphite convert an existing "stack" of branches into a Graphite stack. Essentially calls `gt branch track` in a loop.
 
-  * Added a new verb `gt <scope> restack` for the `branch`, `upstack`, `downstack`, and `stack` nouns. For each branch in the scope, this command checks if the branch is based on its parent, and rebases it if necessary. `gt upstack fix` and `gt stack fix` will alias to `restack` for a couple versions.
+- Added a new verb `gt <scope> restack` for the `branch`, `upstack`, `downstack`, and `stack` nouns. For each branch in the scope, this command checks if the branch is based on its parent, and rebases it if necessary. `gt upstack fix` and `gt stack fix` will alias to `restack` for a couple versions.
 
-  * Improved `gt log short` - the view now essentially a single-line-per-branch version of `gt log`. The old style can still be accessed with `gt log short --classic`.
+- Improved `gt log short` - the view now essentially a single-line-per-branch version of `gt log`. The old style can still be accessed with `gt log short --classic`.
 
   Added a `--reverse` option to `gt log` and `gt log short/.` Helpful for big stacks!
 
-  * Added `--stack` option for `gt log` and `gt log short`. Only displays the current stack (i.e. what \`gt stack submit\` would submit).
+- Added `--stack` option for `gt log` and `gt log short`. Only displays the current stack (i.e. what \`gt stack submit\` would submit).
 
-  * Added `--steps <n>` option for `gt log` and `gt log short`. Implies `--stack` and only shows \`n\` levels above and below the current branch.
+- Added `--steps <n>` option for `gt log` and `gt log short`. Implies `--stack` and only shows \`n\` levels above and below the current branch.
 
-  * Rebase conflict message now shows a `gt log short --steps 3` centered at the branch being resolved.
+- Rebase conflict message now shows a `gt log short --steps 3` centered at the branch being resolved.
 
-  * Interactive selection for `gt branch checkout`and `gt upstack onto` now uses the new `gt log short` view. Much easier to see what you're doing with long branch names!
+- Interactive selection for `gt branch checkout`and `gt upstack onto` now uses the new `gt log short` view. Much easier to see what you're doing with long branch names!
 
-  * `gt dash` can now open the PR page for the current branch or a specified one: `gt dash pr [numberOrBranchName]`
+- `gt dash` can now open the PR page for the current branch or a specified one: `gt dash pr [numberOrBranchName]`
 
-  * `gt branch info` can now show the current PR description with `--description`.
+- `gt branch info` can now show the current PR description with `--description`.
 
-  * Added `upstack` and `downstack` counterparts of `gt branch test`.
+- Added `upstack` and `downstack` counterparts of `gt branch test`.
 
-  * `gt branch delete` now restacks the deleted branch's children onto its parent.
+- `gt branch delete` now restacks the deleted branch's children onto its parent.
 
-  * Removed the `--resubmit` flow from `repo sync` —we may add it back in the future.
+- Removed the `--resubmit` flow from `repo sync` —we may add it back in the future.
 
-  * Added a `--restack` option to `repo sync`, which restacks the current branch and any branches in stacks with cleaned up branches. We imagine a common flow if you know that you don't have conflicts with trunk will be `gt rs -rf`. Or even `gt rs -rf && gt ss`.
+- Added a `--restack` option to `repo sync`, which restacks the current branch and any branches in stacks with cleaned up branches. We imagine a common flow if you know that you don't have conflicts with trunk will be `gt rs -rf`. Or even `gt rs -rf && gt ss`.
 
-  * Fixed a bug where `--draft` and `--no-draft` on `submit` commands would unnecessarily submit unchanged PRs.
+- Fixed a bug where `--draft` and `--no-draft` on `submit` commands would unnecessarily submit unchanged PRs.
 
-  * Fixed bugs related to rebases not being performed properly that often resulted in confusing state and messaging.
+- Fixed bugs related to rebases not being performed properly that often resulted in confusing state and messaging.
 
-  * Now fails gracefully if running on an unsupported Node.js version (requires Node.js version 14 or higher)
+- Now fails gracefully if running on an unsupported Node.js version (requires Node.js version 14 or higher)
 
-  * The Graphite CLI experience survey is no longer shown when commands are run in non-interactive mode.
+- The Graphite CLI experience survey is no longer shown when commands are run in non-interactive mode.
 
   **Note from the maintainers:**
 
@@ -2963,661 +2991,662 @@ See the history of changes for the Graphite CLI.
 </Update>
 
 <Update label="0.18.7" description="2022-05-31">
-  * Fixed a pervasive bug that prevented using `gt` on Windows at all — there are likely still remaining issues to work out before we have full support, and we still recommend using WSL for the most stable Graphite experience. Thanks to our community for helping out here!
+- Fixed a pervasive bug that prevented using `gt` on Windows at all — there are likely still remaining issues to work out before we have full support, and we still recommend using WSL for the most stable Graphite experience. Thanks to our community for helping out here!
 
-  * Fixed a bug where `git push` error messages would not be displayed on `submit`, resulting in confusion around whether pushes were failing because of e.g. `pre-push` hooks or`--force-with-lease` errors.
+- Fixed a bug where `git push` error messages would not be displayed on `submit`, resulting in confusion around whether pushes were failing because of e.g. `pre-push` hooks or`--force-with-lease` errors.
 
-  * Added better support for multiple checkouts (i.e. `git worktre`\`). We consider our support experimental, see the new section of the docs for details.
+- Added better support for multiple checkouts (i.e. `git worktre`\`). We consider our support experimental, see the new section of the docs for details.
 </Update>
 
 <Update label="0.18.6" description="2022-05-20">
-  * Fixed a bug where running `gt branch rename` on submitted branches would result in `gt` becoming largely unusable.
+- Fixed a bug where running `gt branch rename` on submitted branches would result in `gt` becoming largely unusable.
 
-  * Added a new `--force/-f` option to `gt branch rename` that is required for already-submitted branches.
+- Added a new `--force/-f` option to `gt branch rename` that is required for already-submitted branches.
 
-  * `gt branch rename` now respects character replacement settings.
+- `gt branch rename` now respects character replacement settings.
 </Update>
 
 <Update label="0.18.5" description="2022-05-19">
-  * `.` and `/` are no longer replaced in branch names.
+- `.` and `/` are no longer replaced in branch names.
 
-  * Fixed a regression where the current branch wouldn't be selected by default in `gt branch checkout` interactive mode.
+- Fixed a regression where the current branch wouldn't be selected by default in `gt branch checkout` interactive mode.
 
-  * Upgraded `node` and `yarn` dependencies, please let us know if you see any weirdness!
+- Upgraded `node` and `yarn` dependencies, please let us know if you see any weirdness!
 </Update>
 
 <Update label="0.18.4" description="2022-05-16">
-  * `gt downstack sync` no longer requires turning on a configuration option to use (for real this time)
+- `gt downstack sync` no longer requires turning on a configuration option to use (for real this time)
 </Update>
 
 <Update label="0.18.3" description="2022-05-13">
-  * Rewritten `gt downstack sync` using a different mechanism for fetching remote stack dependencies.
+- Rewritten `gt downstack sync` using a different mechanism for fetching remote stack dependencies.
 
-  * `gt downstack sync` no longer requires turning on a configuration option to use.
+- `gt downstack sync` no longer requires turning on a configuration option to use.
 
-  * Fixed an issue in `submit` where in-progress PR title wouldn't be saved if the user cancelled while writing the body.
+- Fixed an issue in `submit` where in-progress PR title wouldn't be saved if the user cancelled while writing the body.
 </Update>
 
 <Update label="0.18.2" description="2022-05-12">
-  * Fixed certain cases of an issue where restacking after `stack edit` and `commit create` would use an incorrect upstream. A broader fix is coming in v0.19.0.
+- Fixed certain cases of an issue where restacking after `stack edit` and `commit create` would use an incorrect upstream. A broader fix is coming in v0.19.0.
 
-  * Fixed an issue where after certain `downstack edit` or `upstack onto` flows, branches would be pushed to GitHub in an order that caused them to be closed prematurely.
+- Fixed an issue where after certain `downstack edit` or `upstack onto` flows, branches would be pushed to GitHub in an order that caused them to be closed prematurely.
 
-  * Added `gt branch-prefix --reset` to turn off the user prefix for automatically generated branch names.
+- Added `gt branch-prefix --reset` to turn off the user prefix for automatically generated branch names.
 
-  * Cleaned up copy in `submit` commands.
+- Cleaned up copy in `submit` commands.
 </Update>
 
 <Update label="0.18.1" description="2022-05-10">
-  * `gt repo sync` and `gt repo fix` now prompt to delete closed branches in addition to merged ones.
+- `gt repo sync` and `gt repo fix` now prompt to delete closed branches in addition to merged ones.
 
-  * Added more customization for auto-generated branch name prefixes. Check out `gt user branch-date` and `gt user branch-replacement`.
+- Added more customization for auto-generated branch name prefixes. Check out `gt user branch-date` and `gt user branch-replacement`.
 
-  * Config files are now written with 600 permissions instead of 644.
+- Config files are now written with 600 permissions instead of 644.
 
-  * Fixed an issue where `downstack sync` would overwrite the local copy of a branch even if the user chose not to.
+- Fixed an issue where `downstack sync` would overwrite the local copy of a branch even if the user chose not to.
 
-  * Fixed an issue where a misconfigured trunk wouldn't be brought to the user's attention.
+- Fixed an issue where a misconfigured trunk wouldn't be brought to the user's attention.
 
-  * Fixed an issue where Graphite would fail to parse repository owner/name.
+- Fixed an issue where Graphite would fail to parse repository owner/name.
 
-  * Removed deprecation warning for `gt stacks` - it's been long enough.
+- Removed deprecation warning for `gt stacks` - it's been long enough.
 
-  * Cleaned up interactive mode copy for `submit`.
+- Cleaned up interactive mode copy for `submit`.
 </Update>
 
 <Update label="0.18.0" description="2022-05-04">
   ### New functionality
 
-  * Added an experimental command `gt downstack sync` to pull down the remote copy of a branch and its downstack dependencies from remote. This feature is gated behind a configuration by default, and we are still working on the documentation. If you would like to try it out and help us iterate on the feature, please join the #experimental channel in the Graphite community Slack server!
+- Added an experimental command `gt downstack sync` to pull down the remote copy of a branch and its downstack dependencies from remote. This feature is gated behind a configuration by default, and we are still working on the documentation. If you would like to try it out and help us iterate on the feature, please join the #experimental channel in the Graphite community Slack server!
 
-  * Added additional functionality to `submit` to support the experimental collaboration features. Gated by default.
+- Added additional functionality to `submit` to support the experimental collaboration features. Gated by default.
 
-  * Added additional functionality to `gt repo sync` to support the experimental collaboration features. Gated by default.
+- Added additional functionality to `gt repo sync` to support the experimental collaboration features. Gated by default.
 
   ### New commands
 
-  * Added a new command `gt branch edit` that runs a native `git rebase --interactive` over the commits on the current branch. This command is intended for advanced Git users who want to make use of the commit structure within a branch while working with Graphite.
+- Added a new command `gt branch edit` that runs a native `git rebase --interactive` over the commits on the current branch. This command is intended for advanced Git users who want to make use of the commit structure within a branch while working with Graphite.
 
-  * Added a new command `gt branch show` that runs a native `git log` over the commits on the current branch. Includes a `--patch/-p` option to view the diffs.
+- Added a new command `gt branch show` that runs a native `git log` over the commits on the current branch. Includes a `--patch/-p` option to view the diffs.
 
   ### New ways to use existing commands
 
-  * Added an `--insert` option to `gt branch create` which restacks all children of the parent of the new branch onto the new branch itself.
+- Added an `--insert` option to `gt branch create` which restacks all children of the parent of the new branch onto the new branch itself.
 
-  * Added interactive branch selection for `gt upstack onto` (similar to `gt branch checkout`). No longer requires a positional argument.
+- Added interactive branch selection for `gt upstack onto` (similar to `gt branch checkout`). No longer requires a positional argument.
 
-  * `gt repo sync` now handles `--no-interactive` correctly.
+- `gt repo sync` now handles `--no-interactive` correctly.
 
-  * `gt commit amend --no-edit` now fails and warns the user when there are no staged changes, just like `gt commmit create`.
+- `gt commit amend --no-edit` now fails and warns the user when there are no staged changes, just like `gt commmit create`.
 
-  * `--no-edit` is now aliased to `-n` for `gt continue` and `gt commit amend`.
+- `--no-edit` is now aliased to `-n` for `gt continue` and `gt commit amend`.
 
-  * `gt continue` now supports `--all/-a` to stage all changes.
+- `gt continue` now supports `--all/-a` to stage all changes.
 
-  * `submit --no-interactive` no longer un-publishes submitted PRs (unless `--draft` is specified).
+- `submit --no-interactive` no longer un-publishes submitted PRs (unless `--draft` is specified).
 
-  * `gt downstack edit` now supports an `exec/x` option to execute arbitrary shell commands in between branch restacks (based on `git rebase --interactive`).
+- `gt downstack edit` now supports an `exec/x` option to execute arbitrary shell commands in between branch restacks (based on `git rebase --interactive`).
 
-  * `gt branch delete` now supports deleting the current branch. It checks out the parent (or trunk if Graphite cannot find a parent).
+- `gt branch delete` now supports deleting the current branch. It checks out the parent (or trunk if Graphite cannot find a parent).
 
   ### Fixes
 
-  * Fixed a bug where `submit --no-interactive` could prompt the user for reviewers.
+- Fixed a bug where `submit --no-interactive` could prompt the user for reviewers.
 
-  * Fixed a bug where `gt repo owner` would set the remote as well, breaking `sync` and resulting in having to manually edit the configuration file to get Graphite working again.
+- Fixed a bug where `gt repo owner` would set the remote as well, breaking `sync` and resulting in having to manually edit the configuration file to get Graphite working again.
 
-  * Fixed a bug where `submit` would fail for certain classes of branch name.
+- Fixed a bug where `submit` would fail for certain classes of branch name.
 
-  * Fixed a bug where comments in the `gt downstack edit` file were not respected.
+- Fixed a bug where comments in the `gt downstack edit` file were not respected.
 
-  * Fixed a bug where `p` as an alias for `pick` in `gt downstack edit` did not work properly.
+- Fixed a bug where `p` as an alias for `pick` in `gt downstack edit` did not work properly.
 
-  * Fixed a bug where `fix` could swallow a rebase exception and leave the repository in a bad state.
+- Fixed a bug where `fix` could swallow a rebase exception and leave the repository in a bad state.
 
-  * Fixed a bug where `gt branch checkout` interactive selection would fail if executed from an untracked branch.
+- Fixed a bug where `gt branch checkout` interactive selection would fail if executed from an untracked branch.
 
-  * Fixed a bug where `gt branch delete` could fail to delete the branch but leave it in a corrupt state.
+- Fixed a bug where `gt branch delete` could fail to delete the branch but leave it in a corrupt state.
 
   ### Improvements
 
-  * Improved the speed of `gt downstack edit` and `gt upstack onto` by being smarter about when a rebase is actually necessary.
+- Improved the speed of `gt downstack edit` and `gt upstack onto` by being smarter about when a rebase is actually necessary.
 
-  * Improved the speed of stack validation for some commands.
+- Improved the speed of stack validation for some commands.
 
   ### Under the hood
 
-  * Added infra to backfill the SHA of branch parent in metadata globally wherever it is safe to do so to prepare for an upcoming update to the stack validation algorithm that we expect to improve performance and reduce hangs.
+- Added infra to backfill the SHA of branch parent in metadata globally wherever it is safe to do so to prepare for an upcoming update to the stack validation algorithm that we expect to improve performance and reduce hangs.
 
-  * Added plenty of tests and refactored code core to many commands for stability and future extensibility.
+- Added plenty of tests and refactored code core to many commands for stability and future extensibility.
 </Update>
 
 <Update label="0.17.11" description="2022-04-23">
-  * Fix an issue introduced in the previous version where the async calls to fill in PR info on `submit` would not be awaited serially, resulting in a poor user experience.
+- Fix an issue introduced in the previous version where the async calls to fill in PR info on `submit` would not be awaited serially, resulting in a poor user experience.
 </Update>
 
 <Update label="0.17.10" description="2022-04-22">
-  * `sync` commands no longer allow pushing to branches associated with closed/merged PRs.
+- `sync` commands no longer allow pushing to branches associated with closed/merged PRs.
 
-  * Rename `gt branch sync` to `gt branch pr-info` as its behavior is not aligned with the other \`sync\` commands.
+- Rename `gt branch sync` to `gt branch pr-info` as its behavior is not aligned with the other \`sync\` commands.
 
-  * Fix some output formatting for `sync` and `submit` commands.
+- Fix some output formatting for `sync` and `submit` commands.
 
-  * Fix an issue where pr data could be overwritten on `submit`.
+- Fix an issue where pr data could be overwritten on `submit`.
 
-  * Decreased max branch name length slightly to support an upcoming feature.
+- Decreased max branch name length slightly to support an upcoming feature.
 
-  * Start tracking SHA of branch parent in metadata, a requirement for some upcoming features.
+- Start tracking SHA of branch parent in metadata, a requirement for some upcoming features.
 
-  * This version includes some initial changes to sync branch metadata with remote, gated by a hidden flag.
+- This version includes some initial changes to sync branch metadata with remote, gated by a hidden flag.
 </Update>
 
 <Update label="0.17.9" description="2022-04-14">
-  * Flipped `gt log short` view to match other log commands and `up`/`down` naming convention. `↳` `→` `↱`!
+- Flipped `gt log short` view to match other log commands and `up`/`down` naming convention. `↳` `→` `↱`!
 
-  * Graphite now asks for confirmation if the user tries to submit an empty branch.
+- Graphite now asks for confirmation if the user tries to submit an empty branch.
 
-  * Graphite now displays an info message when it creates an empty commit on a new branch.
+- Graphite now displays an info message when it creates an empty commit on a new branch.
 
-  * The empty commit copy in the commit editor now only appears when Graphite has created an empty commit.
+- The empty commit copy in the commit editor now only appears when Graphite has created an empty commit.
 
-  * Added support for remotes not named `origin` - use the new `gt repo remote` command to set the name of your remote.
+- Added support for remotes not named `origin` - use the new `gt repo remote` command to set the name of your remote.
 
-  * Added support for branch names up to GitHub's max supported length (256 bytes including `/refs/heads` gives us room for 245 bytes).
+- Added support for branch names up to GitHub's max supported length (256 bytes including `/refs/heads` gives us room for 245 bytes).
 
-  * Allowlisted many git commands for passthrough.
+- Allowlisted many git commands for passthrough.
 
-  * Added autocomplete support for `gt branch delete`.
+- Added autocomplete support for `gt branch delete`.
 
-  * Changed force option on `gt branch delete` from `-D` to `-f`.
+- Changed force option on `gt branch delete` from `-D` to `-f`.
 
-  * Cleaned up output on `gt branch delete` failure.
+- Cleaned up output on `gt branch delete` failure.
 
-  * Fixed an issue where a branch could not be submitted if its name matched a file in the repository.
+- Fixed an issue where a branch could not be submitted if its name matched a file in the repository.
 
-  * Fixed an issue where `gt repo max-branch-length` wouldn't print the configured value.
+- Fixed an issue where `gt repo max-branch-length` wouldn't print the configured value.
 
-  * Added more debug information for the `--debug` option.
+- Added more debug information for the `--debug` option.
 </Update>
 
 <Update label="0.17.8" description="2022-04-08">
-  * Happy Friday! This should fix many hangs that users are experiencing.
+- Happy Friday! This should fix many hangs that users are experiencing.
 </Update>
 
 <Update label="0.17.7" description="2022-04-08">
-  * Graphite no longer cleans up local branches that share a name with merged branches on remote unless they have been associated with the merged PR (via a `submit` command).
+- Graphite no longer cleans up local branches that share a name with merged branches on remote unless they have been associated with the merged PR (via a `submit` command).
 
-  * Fix bug where PR info wasn't being synced periodically.
+- Fix bug where PR info wasn't being synced periodically.
 
-  * Added a new command `upstack fix`, similar to `stack fix` that only runs upstack of the current branch.
+- Added a new command `upstack fix`, similar to `stack fix` that only runs upstack of the current branch.
 
-  * `commit create` and `commit amend` now internally run an `upstack fix` instead of a `` stack fix` ``
+- `commit create` and `commit amend` now internally run an `upstack fix` instead of a `` stack fix` ``
 
-  * Fix a hang related to `git config diff.external` being set.
+- Fix a hang related to `git config diff.external` being set.
 
-  * Fix autocompletions for `gt branch checkout`.
+- Fix autocompletions for `gt branch checkout`.
 </Update>
 
 <Update label="0.17.6" description="2022-03-29">
-  * Support handling corrupted `.graphite_merge_conflict` files.
+- Support handling corrupted `.graphite_merge_conflict` files.
 </Update>
 
 <Update label="0.17.5" description="2022-03-23">
-  * Add deprecation warnings for `gt branch next` and `gt branch prev` in favor of `gt branch up` and `gt branch down`, respectively.
+- Add deprecation warnings for `gt branch next` and `gt branch prev` in favor of `gt branch up` and `gt branch down`, respectively.
 
-  * Add `gt bu` and `gt bd` shortcuts for `gt branch up` and `gt branch down`, respectively.
+- Add `gt bu` and `gt bd` shortcuts for `gt branch up` and `gt branch down`, respectively.
 
-  * Change `gt branch delete` shortcut to `gt bdl`.
+- Change `gt branch delete` shortcut to `gt bdl`.
 
-  * Support passing through `gt stash` as `git stash`.
+- Support passing through `gt stash` as `git stash`.
 
-  * Fix bug where `fish` users couldn't add backticks to commit message using the `-m` option.
+- Fix bug where `fish` users couldn't add backticks to commit message using the `-m` option.
 
-  * Silence retype errors.
+- Silence retype errors.
 
-  * Minor copy updates.
+- Minor copy updates.
 </Update>
 
 <Update label="0.17.4" description="2022-02-25">
-  * Refactored config loading to reduce race conditions.
+- Refactored config loading to reduce race conditions.
 
-  * Add quotes around commit message in ammend command.
+- Add quotes around commit message in ammend command.
 
-  * Minor copy updates.
+- Minor copy updates.
 </Update>
 
 <Update label="0.17.3" description="2022-02-25">
-  * Fix bug regarding repository config file reading from repository subdirs.
+- Fix bug regarding repository config file reading from repository subdirs.
 </Update>
 
 <Update label="0.17.2" description="2022-02-16">
-  * Support numbers when generating a branch name from a commit message through `gt bc -m <message>`
+- Support numbers when generating a branch name from a commit message through `gt bc -m <message>`
 
-  * Prompt for a commit message when autogenerating an empty commit when running `branch create` with no staged changes.
+- Prompt for a commit message when autogenerating an empty commit when running `branch create` with no staged changes.
 </Update>
 
 <Update label="0.17.1" description="2022-02-15">
-  * Support creating new branches with no staged changes, by automatically creating an empty commit.
+- Support creating new branches with no staged changes, by automatically creating an empty commit.
 </Update>
 
 <Update label="0.17.0" description="2022-02-15">
-  * Enable changing existing PRs' draft status using the `--draft` flag on submit.
+- Enable changing existing PRs' draft status using the `--draft` flag on submit.
 
-  * Add a new command, `gt downstack edit` which enables interactive reordering of stack branches.
+- Add a new command, `gt downstack edit` which enables interactive reordering of stack branches.
 
-  * Update implementation of `gt stack submit` to avoid GitHub rate limitted when submitting large stacks.
+- Update implementation of `gt stack submit` to avoid GitHub rate limitted when submitting large stacks.
 </Update>
 
 <Update label="0.16.8" description="2022-02-02">
-  * Enable manually setting reviewers on submit with the `-r` flag.
+- Enable manually setting reviewers on submit with the `-r` flag.
 </Update>
 
 <Update label="0.16.7" description="2022-02-01">
-  * Allow Graphite to run when there are untracked files.
+- Allow Graphite to run when there are untracked files.
 </Update>
 
 <Update label="0.16.6" description="2022-01-27">
-  * Fix issue with detecting downstack/upstack branches on submit
+- Fix issue with detecting downstack/upstack branches on submit
 </Update>
 
 <Update label="0.16.5" description="2022-01-07">
-  * Fix issue with detecting some PR templates
+- Fix issue with detecting some PR templates
 </Update>
 
 <Update label="0.16.4" description="2021-12-13">
-  * Wildcard matching for ignored branches (`gt repo ignored-branches --set`) now accepts glob-patterns
+- Wildcard matching for ignored branches (`gt repo ignored-branches --set`) now accepts glob-patterns
 
-  * Option to remove a branch from ignored list (`gt repo ignored-branches --unset`)
+- Option to remove a branch from ignored list (`gt repo ignored-branches --unset`)
 
-  * Submit now supports --update-only option which will only update-existing PRs and not create new ones.
+- Submit now supports --update-only option which will only update-existing PRs and not create new ones.
 
-  * Bugfix: Submit to honor the --no-verify flag
+- Bugfix: Submit to honor the --no-verify flag
 
-  * Better logging and documentation to clarify behavior
+- Better logging and documentation to clarify behavior
 </Update>
 
 <Update label="0.16.3" description="2021-12-3">
-  * Support up and down aliases for `gt branch` next/prev respectively.
+- Support up and down aliases for `gt branch` next/prev respectively.
 
-  * Fix issue where `gt tips` could not be disabled.
+- Fix issue where `gt tips` could not be disabled.
 
-  * Inherit shell editor preference for user from env (\$GIT\_EDITOR/\$EDITOR) and prompt user to set shell editor preference on submit if env not set.
+- Inherit shell editor preference for user from env (\$GIT\_EDITOR/\$EDITOR) and prompt user to set shell editor preference on submit if env not set.
 
-  * Allow user to change editor preference using `gt user editor`
+- Allow user to change editor preference using `gt user editor`
 </Update>
 
 <Update label="0.16.2" description="2021-10-25">
-  * Support for `gt continue` to continue the previous Graphite command when interrupted by a rebase.
+- Support for `gt continue` to continue the previous Graphite command when interrupted by a rebase.
 </Update>
 
 <Update label="0.16.1" description="2021-10-14">
-  * Fix issue with `gt repo sync` deleting metadata for existing branches.
+- Fix issue with `gt repo sync` deleting metadata for existing branches.
 
-  * Reduce merge conflicts caused by `gt commit amend`.
+- Reduce merge conflicts caused by `gt commit amend`.
 </Update>
 
 <Update label="0.16.0" description="2021-10-12">
-  * Support for branch autocomplete functionality on gt branch-related commands. Enable this functionality by running \`gt completion\` and adding the ouputted bash script to your relevant bash profile (e.g. \~/.bashrc, \~/.zshrc).
+- Support for branch autocomplete functionality on gt branch-related commands. Enable this functionality by running \`gt completion\` and adding the ouputted bash script to your relevant bash profile (e.g. \~/.bashrc, \~/.zshrc).
 
-  * Added functionality to query users for feedback on the Graphite CLI.
+- Added functionality to query users for feedback on the Graphite CLI.
 
-  * Refactor the suite of gt submit commands to make them more easily cancellable; re-ordered submit to edit all PRs locally before doing any writes and cancelling mid-submit will save any previously entered data (e.g. title and body).
+- Refactor the suite of gt submit commands to make them more easily cancellable; re-ordered submit to edit all PRs locally before doing any writes and cancelling mid-submit will save any previously entered data (e.g. title and body).
 
-  * Submit also now includes a `--dry-run` flag to show the user what will be submitted in the invocation.
+- Submit also now includes a `--dry-run` flag to show the user what will be submitted in the invocation.
 
-  * Submit queries GitHub for PRs before submitting, resolving an issue where submit would sometimes try to create a new PR though one already existed for that head branch/base branch combo on GitHub (Graphite just didn't know about it).
+- Submit queries GitHub for PRs before submitting, resolving an issue where submit would sometimes try to create a new PR though one already existed for that head branch/base branch combo on GitHub (Graphite just didn't know about it).
 </Update>
 
 <Update label="0.15.1" description="2021-10-4">
-  * Fix `gt commit create -m` multi-word commit messages.
+- Fix `gt commit create -m` multi-word commit messages.
 </Update>
 
 <Update label="0.15.0" description="2021-10-4">
-  * Support for `gt stack top` and `gt stack bottom`.
+- Support for `gt stack top` and `gt stack bottom`.
 
-  * Adjusted logic for cleaning metadata in `gt repo sync`.
+- Adjusted logic for cleaning metadata in `gt repo sync`.
 </Update>
 
 <Update label="0.14.4" description="2021-10-1">
-  * Improve performance of stack logic on repos with a high number of local branches.
+- Improve performance of stack logic on repos with a high number of local branches.
 
-  * Allow `gt commit create` to be used without `-m`, launching the system editor.
+- Allow `gt commit create` to be used without `-m`, launching the system editor.
 
-  * Infer the body of a PR from the commit message body (if it exists).
+- Infer the body of a PR from the commit message body (if it exists).
 
-  * Add `gt repo trunk --set`.
+- Add `gt repo trunk --set`.
 </Update>
 
 <Update label="0.14.3" description="2021-09-30">
-  * Improved `gt repo sync` performance when repos have a high number of stale branches. `gt repo sync` now deletes branches more eagerly and has an optional flag to show progress (`--show-delete-progress`).
+- Improved `gt repo sync` performance when repos have a high number of stale branches. `gt repo sync` now deletes branches more eagerly and has an optional flag to show progress (`--show-delete-progress`).
 
-  * New command `gt repo fix` searches for common problems that cause degraded Graphite performance and suggests common remediations.
+- New command `gt repo fix` searches for common problems that cause degraded Graphite performance and suggests common remediations.
 </Update>
 
 <Update label="0.14.2" description="2021-09-29">
-  * Tacit support for merge-based workflows; merges no longer cause exponential branching in `gt log` and hang `gt upstack onto`.
+- Tacit support for merge-based workflows; merges no longer cause exponential branching in `gt log` and hang `gt upstack onto`.
 
-  * Fixes to recreation of debug state in `gt feedback debug-context --recreate`.
+- Fixes to recreation of debug state in `gt feedback debug-context --recreate`.
 </Update>
 
 <Update label="0.14.1" description="2021-09-27">
-  * Assorted improvements to the `gt repo sync` merged branch deletion logic and options to fix dangling branches.
+- Assorted improvements to the `gt repo sync` merged branch deletion logic and options to fix dangling branches.
 
-  * `gt branch parent --reset` resets Graphite's recorded parent for a branch (to undefined).
+- `gt branch parent --reset` resets Graphite's recorded parent for a branch (to undefined).
 
-  * `gt branch sync --reset` resets Graphite's recorded PR info a branch (to undefined).
+- `gt branch sync --reset` resets Graphite's recorded PR info a branch (to undefined).
 </Update>
 
 <Update label="0.14.0" description="2021-09-16">
-  * `gt debug-context` captures debug metadata from your repository and can send that to Screenplay to help troubleshoot issues.
+- `gt debug-context` captures debug metadata from your repository and can send that to Screenplay to help troubleshoot issues.
 
-  * `gt repo sync` now pulls in PR information for all local branches from GitHub to link any PRs Graphite doesn't know about/better remove already-merged branches.
+- `gt repo sync` now pulls in PR information for all local branches from GitHub to link any PRs Graphite doesn't know about/better remove already-merged branches.
 
-  * Re-enable metadata deletion from `repo sync`.
+- Re-enable metadata deletion from `repo sync`.
 
-  * Re-enable pull request base pushing from `repo sync`.
+- Re-enable pull request base pushing from `repo sync`.
 
-  * `gt branch create -m` now has `-a` flag to include staged changes in the commit.
+- `gt branch create -m` now has `-a` flag to include staged changes in the commit.
 </Update>
 
 <Update label="0.13.1" description="2021-09-01">
-  * Disable metadata deletion from `repo sync`
+- Disable metadata deletion from `repo sync`
 
-  * Disable pull request base pushing from `repo sync`
+- Disable pull request base pushing from `repo sync`
 </Update>
 
 <Update label="0.13.0" description="2021-08-31">
-  * `stack submit` now checks if update is needed for each branch.
+- `stack submit` now checks if update is needed for each branch.
 
-  * Support `upstack submit` and `branch submit`
+- Support `upstack submit` and `branch submit`
 
-  * Fixed bug which was preventing `upstack` from having the alias `us`
+- Fixed bug which was preventing `upstack` from having the alias `us`
 
-  * Added a command `branch rename` to rename branches and correctly update metadata.
+- Added a command `branch rename` to rename branches and correctly update metadata.
 
-  * Better support cancelling out of prompts.
+- Better support cancelling out of prompts.
 
-  * Rename `stack clean` to `repo sync` and update to be able to be run from any branch.
+- Rename `stack clean` to `repo sync` and update to be able to be run from any branch.
 
-  * Update `repo sync` to delete old branch metadata refs.
+- Update `repo sync` to delete old branch metadata refs.
 
-  * Update `repo sync` to update PR merge bases if necessary.
+- Update `repo sync` to update PR merge bases if necessary.
 
-  * Support passing through commands to git which aren't supported by Graphite.
+- Support passing through commands to git which aren't supported by Graphite.
 
-  * Add experimental command `stack test`.
+- Add experimental command `stack test`.
 
-  * Fix bug causing branches to show up twice in log commands.
+- Fix bug causing branches to show up twice in log commands.
 
-  * Show PR and commit info in `log` command
+- Show PR and commit info in `log` command
 
-  * Add tip advising against creating branches without commits.
+- Add tip advising against creating branches without commits.
 </Update>
 
 <Update label="0.12.3" description="2021-08-23">
-  * Fix outdated copy reference to gp.
+- Fix outdated copy reference to gp.
 
-  * Print error stack trace when --debug flag is used.
+- Print error stack trace when --debug flag is used.
 
-  * Flag midstack untracked branches in `gt ls` output.
+- Flag midstack untracked branches in `gt ls` output.
 
-  * Improve submit to correctly support `gt stack submit` and `gt downstack submit`
+- Improve submit to correctly support `gt stack submit` and `gt downstack submit`
 
-  * Reduce unnecessary git ref calls to improve performance in large repos.
+- Reduce unnecessary git ref calls to improve performance in large repos.
 
-  * Support graceful handling of sigint.
+- Support graceful handling of sigint.
 </Update>
 
 <Update label="0.12.2" description="2021-08-23">
-  * Fix bug in `gt ls` stack traversal.
+- Fix bug in `gt ls` stack traversal.
 </Update>
 
 <Update label="0.12.1" description="2021-08-23">
-  * Fix bug resulting in always showing tips for `gt ls`.
+- Fix bug resulting in always showing tips for `gt ls`.
 </Update>
 
 <Update label="0.12.0" description="2021-08-23">
-  * Disallow branching off an ignored branch.
+- Disallow branching off an ignored branch.
 
-  * Disallow sibling branches on top of trunk branch.
+- Disallow sibling branches on top of trunk branch.
 
-  * Establish pattern of toggleable CLI tips.
+- Establish pattern of toggleable CLI tips.
 
-  * Rewrite `gt ls` to improve speed and output formatting.
+- Rewrite `gt ls` to improve speed and output formatting.
 
-  * Optimize git ref traversal and memoization.
+- Optimize git ref traversal and memoization.
 </Update>
 
 <Update label="0.11.0" description="2021-08-18">
-  * Support PR templates in `stack submit` command.
+- Support PR templates in `stack submit` command.
 
-  * Update `stack submit` to support interactive title and description setting.
+- Update `stack submit` to support interactive title and description setting.
 
-  * Update `stack submit` to support creating draft PRs.
+- Update `stack submit` to support creating draft PRs.
 
-  * Allow max branch length to be configured (from the default of 50).
+- Allow max branch length to be configured (from the default of 50).
 
-  * Fix a crash in logging that happened in a edge case involving trailing trunk branches.
+- Fix a crash in logging that happened in a edge case involving trailing trunk branches.
 
-  * Hide remote branches in `log long` output.
+- Hide remote branches in `log long` output.
 </Update>
 
 <Update label="0.10.0" description="2021-08-17">
-  * Fix case where commands fail if a branch's stack parent had been deleted.
+- Fix case where commands fail if a branch's stack parent had been deleted.
 
-  * Fix copy across CLI to use `gt` rather than the old `gp`.
+- Fix copy across CLI to use `gt` rather than the old `gp`.
 
-  * Add more shortcut aliases for commands such as `s` for `submit`
+- Add more shortcut aliases for commands such as `s` for `submit`
 
-  * Fix copy around `repo-config` to `repo`
+- Fix copy around `repo-config` to `repo`
 
-  * Add command `branch checkout`
+- Add command `branch checkout`
 
-  * Refactor \`stacks\` command into \`log short\`
+- Refactor \`stacks\` command into \`log short\`
 
-  * Update `log` command to support `log`, `log short` and `log long`
+- Update `log` command to support `log`, `log short` and `log long`
 
-  * Support dropping the space on double-alias shortcuts. Eg \`branch next\` = \`b n\` = \`bn\`, \`stack submit\` = \`ss\` etc
+- Support dropping the space on double-alias shortcuts. Eg \`branch next\` = \`b n\` = \`bn\`, \`stack submit\` = \`ss\` etc
 
-  * Throw actionable errors if two branches point at the same commit.
+- Throw actionable errors if two branches point at the same commit.
 
-  * Add top level `graphite` alias such that the CLI can be called using both \`gt\` and \`graphite\`.
+- Add top level `graphite` alias such that the CLI can be called using both \`gt\` and \`graphite\`.
 </Update>
 
 <Update label="0.9.1" description="2021-08-15">
-  * Fix `gp` alias deprecation warning for homebrew installations.
+- Fix `gp` alias deprecation warning for homebrew installations.
 </Update>
 
 <Update label="0.9.0" description="2021-08-15">
-  * Rename graphite CLI alias to `gt` from `gp` per feedback.
+- Rename graphite CLI alias to `gt` from `gp` per feedback.
 </Update>
 
 <Update label="0.8.2" description="2021-08-13">
-  * Improved performance of `gp stacks` command, particularly in repositories with a large number of stale branches.
+- Improved performance of `gp stacks` command, particularly in repositories with a large number of stale branches.
 
-  * Changed search-space limiting settings to live at the top level and apply to both stacks and log. (`gp repo max-stacks-behind-trunk`, `gp repo max-days-behind-trunk`).
+- Changed search-space limiting settings to live at the top level and apply to both stacks and log. (`gp repo max-stacks-behind-trunk`, `gp repo max-days-behind-trunk`).
 </Update>
 
 <Update label="0.8.1" description="2021-08-10">
-  * Improved performance of `gp log` command, particularly in repositories with a large number of stale branches.
+- Improved performance of `gp log` command, particularly in repositories with a large number of stale branches.
 
-  * Users can now set the maximum number of stacks to show behind trunk in `gp log` (`gp repo log max-stacks-behind-trunk`) as well as the maximum age of stacks to show (`gp repo log max-days-behind-trunk`).
+- Users can now set the maximum number of stacks to show behind trunk in `gp log` (`gp repo log max-stacks-behind-trunk`) as well as the maximum age of stacks to show (`gp repo log max-days-behind-trunk`).
 
-  * `gp log` also now has `--on-trunk` and `--behind-trunk` options.
+- `gp log` also now has `--on-trunk` and `--behind-trunk` options.
 
-  * Improved CLI documentation and copy.
+- Improved CLI documentation and copy.
 </Update>
 
 <Update label="0.8.0" description="2021-08-07">
-  * Autogenerated branch name date format change.
+- Autogenerated branch name date format change.
 
-  * stack fix command now has `stack f` alias.
+- stack fix command now has `stack f` alias.
 
-  * branch create command now has `branch c` alias.
+- branch create command now has `branch c` alias.
 
-  * branch create command now has `branch c` alias.
+- branch create command now has `branch c` alias.
 
-  * `stack regen` is deprecated, and is now a flag for `stack fix --regen`.
+- `stack regen` is deprecated, and is now a flag for `stack fix --regen`.
 
-  * `stack fix` now shows an interactive prompt by default.
+- `stack fix` now shows an interactive prompt by default.
 </Update>
 
 <Update label="0.7.1" description="2021-08-06">
-  * Dont zero count months when generating branch names.
+- Dont zero count months when generating branch names.
 
-  * Improve help text for amend.
+- Improve help text for amend.
 
-  * Improve help auth print out.
+- Improve help auth print out.
 </Update>
 
 <Update label="0.7.0" description="2021-08-05">
-  * Refactor `gp log` command, while supporting old behavior with `gp log --commits/-c`
+- Refactor `gp log` command, while supporting old behavior with `gp log --commits/-c`
 
-  * Check for updates in orphaned child process, making all commands faster.
+- Check for updates in orphaned child process, making all commands faster.
 
-  * More helpful validation error messaging.
+- More helpful validation error messaging.
 
-  * `gp branch next/prev` now support interactive choices and stepping multiple branches.
+- `gp branch next/prev` now support interactive choices and stepping multiple branches.
 
-  * `gp branch create [-m]` now doesn't commit by default. It can also autogenerate branch names from commit messages.
+- `gp branch create [-m]` now doesn't commit by default. It can also autogenerate branch names from commit messages.
 
-  * Added `gp commit create -m` for creating commits and fixing upstack.
+- Added `gp commit create -m` for creating commits and fixing upstack.
 
-  * Added `gp commit amend -m` for amending commits and fixing upstack.
+- Added `gp commit amend -m` for amending commits and fixing upstack.
 
-  * Added `gp user branch-prefix [--set]` reading and setting your branch prefix.
+- Added `gp user branch-prefix [--set]` reading and setting your branch prefix.
 
-  * Added `gp branch parent [--set]` plumbing command for reading and setting a branch parent.
+- Added `gp branch parent [--set]` plumbing command for reading and setting a branch parent.
 
-  * Added `gp branch children` plumbing command for reading the children of a branch.
+- Added `gp branch children` plumbing command for reading the children of a branch.
 </Update>
 
 <Update label="0.6.3" description="2021-08-02">
-  * Better telemetry for measuring cli performance.
+- Better telemetry for measuring cli performance.
 
-  * `gp l` alias for log command.
+- `gp l` alias for log command.
 </Update>
 
 <Update label="0.6.2" description="2021-08-02">
-  * `stack fix` now works for a individual stack. (Upstack inclusive for now)
+- `stack fix` now works for a individual stack. (Upstack inclusive for now)
 </Update>
 
 <Update label="0.6.1" description="2021-08-02">
-  * Fix homebrew release to not include a dev dependency on `chai`.
+- Fix homebrew release to not include a dev dependency on `chai`.
 </Update>
 
 <Update label="0.6.0" description="2021-08-02">
-  * Support `--no-verify` flag when running `branch create` to skip precommit hooks.
+- Support `--no-verify` flag when running `branch create` to skip precommit hooks.
 
-  * Validation passes when a branch points to the same commit as trunk HEAD.
+- Validation passes when a branch points to the same commit as trunk HEAD.
 
-  * Add `repo init` command.
+- Add `repo init` command.
 
-  * Self heal `.graphite_repo_config` file.
+- Self heal `.graphite_repo_config` file.
 
-  * Always track trunk branch and ignored branches.
+- Always track trunk branch and ignored branches.
 
-  * Update `stack regen` to always set stack foundations to trunk.
+- Update `stack regen` to always set stack foundations to trunk.
 
-  * Update `stack regen` such that, when from from trunk, regenerates all stacks.
+- Update `stack regen` such that, when from from trunk, regenerates all stacks.
 
-  * `branch next/prev` now traverses based on Graphite's stack metadata.
+- `branch next/prev` now traverses based on Graphite's stack metadata.
 
-  * Refactor `gp stacks` print output.
+- Refactor `gp stacks` print output.
 </Update>
 
 <Update label="0.5.4" description="2021-07-30">
-  * Update `stack regen` to operate across entire stack rather than just upstack.
+- Update `stack regen` to operate across entire stack rather than just upstack.
 
-  * `stack submit` infers PR title from single-commit branches.
+- `stack submit` infers PR title from single-commit branches.
 
-  * Using trunk branch inference, ignore trunk parents such as trailing `prod` branches.
+- Using trunk branch inference, ignore trunk parents such as trailing `prod` branches.
 </Update>
 
 <Update label="0.5.3" description="2021-07-29">
-  * Begin infering trunk branch from `.git` config.
+- Begin infering trunk branch from `.git` config.
 
-  * Ignore trunk parent branches during validation and other operations.
+- Ignore trunk parent branches during validation and other operations.
 </Update>
 
 <Update label="0.5.2" description="2021-07-28">
-  * \`upstack onto\` can now move branches with no parent branches.
+- \`upstack onto\` can now move branches with no parent branches.
 
-  * `validate` now passes cases where branches point to the same commit.
+- `validate` now passes cases where branches point to the same commit.
 
-  * `stack fix` now prints better messaging during rebase conflicts.
+- `stack fix` now prints better messaging during rebase conflicts.
 
-  * Removed unused args from `stack submit` and `stack fix`.
+- Removed unused args from `stack submit` and `stack fix`.
 
-  * Updated copy
+- Updated copy
 </Update>
 
 <Update label="0.5.1" description="2021-07-28">
-  * Dont automatically create repository config file.
+- Dont automatically create repository config file.
 </Update>
 
 <Update label="0.5.0" description="2021-07-27">
-  * Improved `stack submit` command and promoted command out of expermental status.
+- Improved `stack submit` command and promoted command out of expermental status.
 </Update>
 
 <Update label="0.4.3" description="2021-07-27">
-  * Update all copy to match new termonology from the 4.0.0 refactor.
+- Update all copy to match new termonology from the 4.0.0 refactor.
 </Update>
 
 <Update label="0.4.2" description="2021-07-27">
-  * Update `branch create` command to accept optional positional argument for branch name.
+- Update `branch create` command to accept optional positional argument for branch name.
 </Update>
 
 <Update label="0.4.1" description="2021-07-27">
-  * Fix demo command and downstack string.
+- Fix demo command and downstack string.
 </Update>
 
 <Update label="0.4.0" description="2021-07-27">
-  * Refactor all command names into a noun-verb subcommand pattern.
+- Refactor all command names into a noun-verb subcommand pattern.
 
-  * Introduce concept of `upstack` and `downstack`.
+- Introduce concept of `upstack` and `downstack`.
 
-  * Simplify documentation.
+- Simplify documentation.
 
-  * Minor bugfixes.
+- Minor bugfixes.
 </Update>
 
 <Update label="0.3.4" description="2021-07-25">
-  * Fix bug in checking for uncommitted changes.
+- Fix bug in checking for uncommitted changes.
 </Update>
 
 <Update label="0.3.3" description="2021-07-25">
-  * Self heal if branch metadata parent somehow becomes self.
+- Self heal if branch metadata parent somehow becomes self.
 
-  * Diff rolls back changes if commit hook fails.
+- Diff rolls back changes if commit hook fails.
 
-  * Fix bug in metadata stack traversal used by `fix` command.
+- Fix bug in metadata stack traversal used by `fix` command.
 
-  * Restack fails fast if there are uncommitted changes.
+- Restack fails fast if there are uncommitted changes.
 </Update>
 
 <Update label="0.3.2" description="2021-07-24">
-  * Slim down size of homebrew artifact.
+- Slim down size of homebrew artifact.
 </Update>
 
 <Update label="0.3.1" description="2021-07-24">
-  * Diff now only commits staged changes.
+- Diff now only commits staged changes.
 </Update>
 
 <Update label="0.3.0" description="2021-07-24">
-  * Support resolving merge conflicts during a recursive restack.
+- Support resolving merge conflicts during a recursive restack.
 
-  * Update `sync` command to be visable in `--help`.
+- Update `sync` command to be visable in `--help`.
 </Update>
 
 <Update label="0.2.0" description="2021-07-22">
-  * Update unlisted `gp sync` command to support trunk argument.
+- Update unlisted `gp sync` command to support trunk argument.
 
-  * Update unlisted `gp sync` command to prompt before deleting branches.
+- Update unlisted `gp sync` command to prompt before deleting branches.
 </Update>
 
 
 # CLI Overview
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/cli-overview
 
 Create, stack, and submit pull requests directly from the command line.
@@ -3670,6 +3699,7 @@ The Graphite CLI is a tool to help you break up large engineering tasks into a s
 
 
 # Quick Start
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/cli-quick-start
 
 Learn to create stacked pull requests with the Graphite CLI.
@@ -3697,7 +3727,7 @@ To initialize your repository, run `gt init`:
 ```bash Terminal theme={null}
 cd ~/my-project
 gt init
-```
+```text
 
 The CLI will prompt you to select a trunk branch for your development flow. Follow the prompt to choose a trunk branch, and press **Enter** to confirm.
 
@@ -3732,36 +3762,48 @@ The Graphite workflow can be broken down to the following steps:
 Creating a pull request with `gt` should feel similar to workflows you already do with GitHub:
 
 ```bash Terminal theme={null}
+
 # Checkout the main branch using gt checkout
+
 gt checkout main
 
 
 # Make changes with your editor
+
 echo "new code changes" >> file.js
 
 
 # Create a branch with a single commit
+
 #   - the --all flag will stage any modified files
+
 #   - a branch will be created from the given `--message`
+
 #   - the commit will have the given `--message`
+
 #   - the branch will be checked out for you
+
 gt create --all \
-	--message "feat(api): Add new API method for fetching users"
+  --message "feat(api): Add new API method for fetching users"
 
 
 # Push changes to your remote and create a new pull request
+
 gt submit
 
 
 # If you need to make any follow up changes to the PR, you can
+
 # amend the existing commit with gt modify
+
 echo "some more changes" >> file.js
 gt modify --all
 
 
 # Submit new changes
+
 gt submit
-```
+```bash
 
 ### Stacking a second pull request
 
@@ -3774,41 +3816,52 @@ A stack is **a sequence of pull requests**, each building off of its parent. Sta
 To stack more changes on top of an existing pull request:
 
 ```bash Terminal theme={null}
+
 # Open an interactive branch picker:
+
 #
+
 #   - select the pull request you want to stack on top of
+
 #   - press Enter
+
 #
+
 # to check the branch out.
+
 gt checkout
 
 
 # Make changes with your editor
+
 echo "update frontend to use the API from PR 1" > \
   frontend/admin/UsersPage.tsx
 
 
 # Create a second PR on top of the first one
+
 gt create --all \
   --message "feat(frontend): Load and show a list of users"
 
 
 # Push the stack, which will also create a 2nd pull request
+
 # on top of the first one
+
 gt submit --stack
-```
+```text
 
 Visualize your new stack locally:
 
 ```bash Terminal theme={null}
 gt log short  # or run `gt ls`
-```
+```text
 
 Now that it's pushed, open the PR in Graphite:
 
 ```bash Terminal theme={null}
 gt pr
-```
+```text
 
 and assign reviewers using the UI.
 
@@ -3816,7 +3869,7 @@ If you prefer assigning a reviewer at the same time as submitting, run:
 
 ```bash Terminal theme={null}
 gt submit --stack --reviewers alice
-```
+```text
 
 to assign **@alice** as the reviewer on each PR in the stack.
 
@@ -3837,13 +3890,13 @@ First, checkout the bottom PR and address the changes in your editor:
 ```bash Terminal theme={null}
 gt checkout first_pr_in_the_stack
 echo "making some edits" > a_file_my_coworker_wants_changed.js
-```
+```text
 
 Next, run `gt modify` to **amend** the last commit in this branch and **restack** all the branches above it:
 
 ```bash Terminal theme={null}
 gt modify -a
-```
+```text
 
 An equivalent (but more manual) way to do this would be:
 
@@ -3851,7 +3904,7 @@ An equivalent (but more manual) way to do this would be:
 git add a_file_my_coworker_wants_changed.js
 git commit --amend --no-edit
 gt restack  # restack all the branches above
-```
+```text
 
 Now the first branch has the **new changes** from your PR feedback, and the second branch stacked on top is fully **up to date** with those changes as well.
 
@@ -3859,13 +3912,14 @@ If you prefer to make a 2nd explicit commit for your PR feedback changes, you ca
 
 ```bash Terminal theme={null}
 gt modify --commit \
-	--all \
-	--message "Responded to reviewer feedback"
+  --all \
+  --message "Responded to reviewer feedback"
 
 
 # OR shorthand
+
 gt modify -cam "Responded to reviewer feedback"
-```
+```text
 
 and a new commit will be created for you. All branches above the current branch will be restacked on top of this new commit.
 
@@ -3877,15 +3931,15 @@ To update all of your open stacks with the latest changes from `main`, run:
 
 ```bash Terminal theme={null}
 gt sync
-```
+```text
 
 This command will:
 
-* Pull the latest changes into main
+- Pull the latest changes into main
 
-* Restack (rebase) all your open PRs on top of the new changes in main
+- Restack (rebase) all your open PRs on top of the new changes in main
 
-* Prompt you to delete any local merged/closed branches
+- Prompt you to delete any local merged/closed branches
 
 If any of your stacks happen to have merge conflicts as a result of restacking on the new main, gt sync will prompt you to checkout those branches, and manually run `gt restack` to fix any conflicts.
 
@@ -3894,13 +3948,16 @@ If any of your stacks happen to have merge conflicts as a result of restacking o
 Once your stack has been reviewed and is passing CI, open the top of the stack in the Graphite UI:
 
 ```bash Terminal theme={null}
+
 # Checkout the top PR in the stack
+
 gt top
 
 
 # Open the PR in Graphite
+
 gt pr
-```
+```text
 
 On the PR page, merge the stack by clicking the **Merge** button.
 
@@ -3910,9 +3967,9 @@ To only merge the first part of a stack and leave the rest unmerged, navigate do
 
 Once you've merged your stack into `main` (or whatever your trunk branch is), run `gt sync` to get the latest changes in `main`. In addition to fetching updates, `gt sync` will:
 
-* Automatically detect any merged/closed branches and prompt you to delete them locally.
+- Automatically detect any merged/closed branches and prompt you to delete them locally.
 
-* Rebases any branches/stacks you have locally onto the newest changes.
+- Rebases any branches/stacks you have locally onto the newest changes.
 
 <Tip>
   **Tip**
@@ -3922,6 +3979,7 @@ Once you've merged your stack into `main` (or whatever your trunk branch is), ru
 
 
 # Graphite CLI V1 Command Names
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/cli-v1-command-names
 
 Discover Graphite CLI v1's revamped command names.
@@ -3974,6 +4032,7 @@ The Graphite CLI v1 release included a shift in the naming scheme for Graphite C
 
 
 # Code Indexing
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/code-indexing
 
 Graphite can index your code for short periods of time to improve performance of various features.
@@ -3986,10 +4045,10 @@ This approach comes with tradeoffs: our customers often see inconsistent perform
 
 When enabled, the code index is used to improve the following:
 
-* [Graphite Chat](/graphite-chat): Tool call results are returned faster, more consistently, and without rate limits.
-* [AI Reviews](/ai-reviews): Reviews can reference related files in the codebase to improve review quality. *(coming soon)*
-* [Merge Queue](/graphite-merge-queue): Substantial improvement in the speed of merge operations. *(coming soon)*
-* [PR Review Page](/pr-page-overview): File diff views load faster and are resilient to third-party networking issues.
+- [Graphite Chat](/graphite-chat): Tool call results are returned faster, more consistently, and without rate limits.
+- [AI Reviews](/ai-reviews): Reviews can reference related files in the codebase to improve review quality. *(coming soon)*
+- [Merge Queue](/graphite-merge-queue): Substantial improvement in the speed of merge operations. *(coming soon)*
+- [PR Review Page](/pr-page-overview): File diff views load faster and are resilient to third-party networking issues.
 
 We intend to leverage the index to improve more parts of the Graphite platform as well!
 
@@ -3999,13 +4058,13 @@ We intend to leverage the index to improve more parts of the Graphite platform a
 
 When you **enable** the Graphite code index:
 
-* Graphite begins to index your repositories and PRs as they are updated.
+- Graphite begins to index your repositories and PRs as they are updated.
 
 When you **disable** the Graphite code index:
 
-* Graphite stops indexing your repositories and PRs.
-* All Graphite features stop using the index.
-* All code stored in the index is deleted within 30 days.
+- Graphite stops indexing your repositories and PRs.
+- All Graphite features stop using the index.
+- All code stored in the index is deleted within 30 days.
 
 ## Privacy Considerations
 
@@ -4013,6 +4072,7 @@ To understand more about the security and privacy implications of using the Grap
 
 
 # Code Indexing Security
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/code-indexing-security
 
 Graphite offers a secure code-indexing service which improves the performance of platform features. This feature is opt-in and no AI is trained on your data.
@@ -4021,15 +4081,16 @@ Code Indexing connects to your code repositories to dramatically improve the spe
 
 We know that your source code is one of your most valuable assets, which is why we handle it with the highest level of care:
 
-* By default, this feature is **disabled**. It must be explicitly enabled by an organization administrator.
-* Neither we nor our subprocessors use your code to train any AI models.
-* Your data is kept in a dedicated environment, logically isolated from all other customers.
-* All data is encrypted in transit and at rest, as outlined in our commitment to data protection.
+- By default, this feature is **disabled**. It must be explicitly enabled by an organization administrator.
+- Neither we nor our subprocessors use your code to train any AI models.
+- Your data is kept in a dedicated environment, logically isolated from all other customers.
+- All data is encrypted in transit and at rest, as outlined in our commitment to data protection.
 
 We are committed to protecting your data and privacy. Upon an administrator disabling Code Indexing through the [settings page](https://app.graphite.com/settings/code-indexing) or deleting your organization, all indexed data will be deleted within 30 days.
 
 
 # Collaborate On A Stack
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/collaborate-on-a-stack
 
 Learn how to work on shared collaborative stacks with other Graphite users.
@@ -4045,13 +4106,13 @@ For example, coworker A creates and submits their branch:
 ```bash Terminal theme={null}
 gt create my_branch -m "My changes"
 gt submit
-```
+```text
 
 Then, coworker B pulls the branch to their machine:
 
 ```bash Terminal theme={null}
 gt get my_branch
-```
+```text
 
 This syncs all branches that `my_branch` depends on (starting from the bottom of the stack). If any of the branches already exist locally and differ from the remote version, Graphite will ask to either overwrite your local changes or rebase them on top of the remote version.
 
@@ -4067,7 +4128,7 @@ To build on top of your coworker's changes run `gt get` on the branch you want t
 gt get "my-coworkers-frontend-changes"
 touch analytics.js
 gt create -m "add-analytics"
-```
+```text
 
 Lastly, when you're ready to, just run `gt submit` to submit your new branches to Graphite.
 
@@ -4075,9 +4136,9 @@ Lastly, when you're ready to, just run `gt submit` to submit your new branches t
 
 As you and your teammates push to your shared stack, you should both periodically run:
 
-* `gt sync` to pull down any new changes the other has made to existing branches
-* `gt get` for each net new branch the other has made
-* `gt submit` to push up changes
+- `gt sync` to pull down any new changes the other has made to existing branches
+- `gt get` for each net new branch the other has made
+- `gt submit` to push up changes
 
 If you encounter any conflicts during restacking, Graphite will drop you into the same conflict resolution flow that you are already familiar with from both Graphite and git.
 
@@ -4093,9 +4154,9 @@ By default, `gt get` will sync the full stack. If you'd like to pull down just p
 
 In `gt` version 1.7.0, the concept of "frozen" branches was introduced. A "frozen" branch will still be kept up to date with remote changes when it is synced, but will block local changes being made to it. This allows you to pull down a coworker's branch and stack on top of it without worrying about accidentally making edits to their changes.
 
-* If `gt get` is pulling down a new branch, it will mark that branch as "frozen" by default (you can use the `--unfrozen` flag if you want to get the branch in an editable state).
-* You can also use `gt freeze` and `gt unfreeze` to update the "frozen" status of a branch.
-* You can see if a branch is frozen or not with the `gt info` or `gt log` command.
+- If `gt get` is pulling down a new branch, it will mark that branch as "frozen" by default (you can use the `--unfrozen` flag if you want to get the branch in an editable state).
+- You can also use `gt freeze` and `gt unfreeze` to update the "frozen" status of a branch.
+- You can see if a branch is frozen or not with the `gt info` or `gt log` command.
 
 ## Advanced: collaborating on non-Graphite branches
 
@@ -4107,6 +4168,7 @@ If you want to stack on top of your non-Graphite-using coworkers’ branches, th
 
 
 # Command Reference
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/command-reference
 
 This reference documents every command and flag available in Graphite’s command-line interface.
@@ -4396,8 +4458,8 @@ Commands that log your stacks.
 
 Has three forms, `gt log`, `gt log short`, and `gt log long`.
 
-* `gt log long` ignores all options and displays a graph of the commit ancestry of all branches.
-* `gt log` and `gt log short` display all tracked branches and their dependency relationships.
+- `gt log long` ignores all options and displays a graph of the commit ancestry of all branches.
+- `gt log` and `gt log short` display all tracked branches and their dependency relationships.
 
 The difference between the latter two is that `gt log` displays more information about each branch.
 
@@ -4561,9 +4623,9 @@ Split the current branch into multiple branches.
 
 Has three forms: `gt split --by-commit`, `gt split --by-hunk`, and `gt split --by-file <pathspec>`.
 
-* `gt split --by-commit` slices up the commit history, allowing you to select split points between existing commits.
-* `gt split --by-hunk` interactively stages changes to create new single-commit branches.
-* `gt split --by-file <pathspec>` extracts files matching the pathspec and splits them into a new parent branch. Repeat the flag for multiple patterns (e.g., `gt split -f "*.json" -f "*.yaml"`).
+- `gt split --by-commit` slices up the commit history, allowing you to select split points between existing commits.
+- `gt split --by-hunk` interactively stages changes to create new single-commit branches.
+- `gt split --by-file <pathspec>` extracts files matching the pathspec and splits them into a new parent branch. Repeat the flag for multiple patterns (e.g., `gt split -f "*.json" -f "*.yaml"`).
 
 All forms must be run interactively except for `--by-file` which can run non-interactively.
 `gt split` without options will prompt for a splitting strategy.
@@ -4744,6 +4806,7 @@ Update your CLI to the latest stable version.
 
 
 # Comparing Git And Gt
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/comparing-git-and-gt
 
 Learn the key differences between working with the Graphite CLI vs. vanilla git.
@@ -4781,13 +4844,13 @@ $ git add --all && git commit --message 'add endpoint to search tasks'
 $ git add --all && git commit --message 'addtUI to display searched tasks'
 // Push changes to remote
 $ git push origin task_search
-```
+```text
 
 Now you have a **branch** that implements search end to end. Next you want to get this reviewed by your teammates before it gets merged. There are a couple important issues here:
 
-* This is a large PR! It has many lines of code changes for someone to review.
+- This is a large PR! It has many lines of code changes for someone to review.
 
-* The folks who own the UI are different from the folks who own the task table. You need multiple people on different teams to review your PR.
+- The folks who own the UI are different from the folks who own the task table. You need multiple people on different teams to review your PR.
 
 Here’s how this would look in `gt`:
 
@@ -4802,7 +4865,7 @@ $ gt create --all --message 'add endpoint to search tasks'
 $ gt create -a -m 'add UI to display searched tasks'
 // Submit changes to remote
 $ gt submit --stack
-```
+```text
 
 Now you have a **stack** that implements search end to end. A stack is made up of multiple branches stacked on top of each other.
 
@@ -4821,7 +4884,7 @@ How this looks with `git`:
 $ git add --all // stage changes
 $ git commit --fixup=<commit hash of add helper function to search tasks> // Make the fixup commit
 $ git rebase --interactive --autosquash=<commit hash of add helper function to search tasks>~1 // Merge fixup commit into previous commit
-```
+```text
 
 How this looks with `gt`:
 
@@ -4831,7 +4894,7 @@ $ gt checkout 'add helper function to search tasks'
 $ gt modify --all // Stage & amend these changes into "add helper function to search tasks"
 // Push stack to remote
 $ gt submit --stack
-```
+```text
 
 <Note>
   If you make changes lower down the stack, it is important to run `gt submit --stack` versus just `gt submit` because changes up the stack will not receive the new updates otherwise. This will result in the PR diff on the UI to not match what you see locally through `git show` or `gt info --diff` for any upstack PRs.
@@ -4845,17 +4908,17 @@ Let’s say you’re waiting on your above PR(s) to be reviewed, when a colleagu
 
 In `git`, you now have three options:
 
-* Wait until `task_search` is merged into `main`, pull `main`, then create a new branch `profile_search` and repeat the earlier steps
+- Wait until `task_search` is merged into `main`, pull `main`, then create a new branch `profile_search` and repeat the earlier steps
 
-  * This isn’t great because you now need to wait for reviews and merging before you can work on `profile_search`
+- This isn’t great because you now need to wait for reviews and merging before you can work on `profile_search`
 
-* Update `task_search` with all changes required to implement `profile_search`
+- Update `task_search` with all changes required to implement `profile_search`
 
-  * This isn’t great because now you have to further pollute the `task_search` PR which was already large, and wait for reviews from new reviewers, and so on.
+- This isn’t great because now you have to further pollute the `task_search` PR which was already large, and wait for reviews from new reviewers, and so on.
 
-* Create a new branch `profile_search` on top of `task_search`, and make changes to that.
+- Create a new branch `profile_search` on top of `task_search`, and make changes to that.
 
-  * This works well, until you need to change `task_search`, and run a rebase. The `gt` workflow handles this for you automatically.
+- This works well, until you need to change `task_search`, and run a rebase. The `gt` workflow handles this for you automatically.
 
 In `gt`, you can simply run:
 
@@ -4864,7 +4927,7 @@ $ gt checkout 'add UI to display searched tasks'
 // Make changes to implement profile search
 $ gt create --all --message 'implement profile search'
 $ gt submit --stack
-```
+```text
 
 Now, implementing profile search is built on top of “add UI to display searched tasks”, but it creates a new PR that is independent of all the changes below it. You can keep building on top of this stack, while all PRs lower down the stack (”downstack”) are independent of these changes up the stack (”upstack”).
 
@@ -4895,7 +4958,7 @@ $ git checkout main
 $ git pull
 $ git checkout <my new branch>
 $ git merge main
-```
+```text
 
 In `gt`, you would do the following instead:
 
@@ -4903,7 +4966,7 @@ In `gt`, you would do the following instead:
 $ gt sync
 $ gt checkout <my new branch>
 $ gt restack // This will rebase your stack onto main
-```
+```text
 
 Let’s assume you have a stack of PR#1 → PR#2 → PR#3.
 
@@ -4911,6 +4974,7 @@ Let’s assume you have a stack of PR#1 → PR#2 → PR#3.
 
 
 # Configure The CLI
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/configure-cli
 
 Learn how to configure the Graphite CLI to customize and speed up your workflow.
@@ -4994,7 +5058,7 @@ The configuration for automatic updates and update prompts gets set in the `~/.c
 ```json theme={null}
 "updateAutomatically": true,
 "promptForUpdates": true,
-```
+```bash
 
 #### Custom configuration paths
 
@@ -5039,7 +5103,7 @@ In your `~/.config/graphite/user_config` file you can set alternative named prof
     }
   ]
 }
-```
+```bash
 
 ### From `gt` versions `1.7.2` - `1.7.8`:
 
@@ -5047,7 +5111,7 @@ You can set the `GRAPHITE_PROFILE` environment variable with the name of the pro
 
 ```shell theme={null}
 GRAPHITE_PROFILE=work_github_account gt sync
-```
+```bash
 
 ### From `gt` version `1.7.9` onwards:
 
@@ -5078,7 +5142,7 @@ You can also name one of the profiles as "default" for it to always be used when
     }
   ]
 }
-```
+```bash
 
 ## Set up shell completion
 
@@ -5088,25 +5152,25 @@ Graphite supports `zsh`, `bash`, and `fish` tab completion. You can run one of t
 
 ```bash Terminal theme={null}
 gt completion >> ~/.zshrc
-```
+```bash
 
 ### For bash
 
 ```bash Terminal theme={null}
 gt completion >> ~/.bashrc
-```
+```text
 
 or
 
 ```bash Terminal theme={null}
 gt completion >> ~/.bash_profile
-```
+```bash
 
 ### For fish
 
 ```bash Terminal theme={null}
 gt fish >> ~/.config/fish/completions/gt.fish
-```
+```bash
 
 ## Set up aliases for Graphite CLI commands
 
@@ -5121,14 +5185,17 @@ Aliases for `ss`, `ls`, and `ll` are defined by default. If you delete this file
 The first word of each line in the file is the alias, the second is the command and the following words are the flags. Lines starting with # are ignored:
 
 ```text aliases theme={null}
+
 # this line is ignored
+
 ls log short
 ll log long
 ss submit --stack
-```
+```bash
 
 
 # Enable Signed Commits
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/configure-signed-commits
 
 Learn how to enable commit signing in Graphite.
@@ -5141,12 +5208,13 @@ If your repo is configured in GitHub to require [commit signing](https://docs.gi
 
 To set up a key for signing commits, visit [https://app.graphite.com/settings/preferences](https://app.graphite.com/settings/preferences). The “Commit signing” section walks you through:
 
-* Generating a personal private/public key pair in Graphite for signing
+- Generating a personal private/public key pair in Graphite for signing
 
-* Adding the public key to GitHub
+- Adding the public key to GitHub
 
 
 # Create A Pull Request
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/create-a-pull-request
 
 Learn to use the Graphite CLI to create a single pull request.
@@ -5165,7 +5233,7 @@ Pick a Git repository that already exists on your computer, and change to that d
 
 ```bash Terminal theme={null}
 cd ~/path/to/your/repo
-```
+```text
 
 If you don’t have a repository or prefer a blank one for demo purposes, you can [create a new repository](https://github.com/new) on GitHub, git clone it locally, and cd to the folder.
 
@@ -5173,7 +5241,7 @@ If this is the first time working with `gt` in this repo, run `gt init` and sele
 
 ```bash Terminal theme={null}
 gt init
-```
+```text
 
 Your repo is now configured to work with `gt` and you’re ready to start making your first pull request.
 
@@ -5189,7 +5257,7 @@ GET /activity-feed
   { id: 1, title: "Photo uploaded", body: "Alice uploaded a photo" },
   { id: 2, title: "Comment on post", body: "Charlie commented on Bob's post" },
 ]
-```
+```text
 
 Your goal is to get something up with dummy data quickly, so the frontend engineers on your team can start building UI components that consume this API.
 
@@ -5231,7 +5299,7 @@ app.listen(port, () => {
   console.log(\`Server running on port \${port}\`);
 });
 EOF
-```
+```text
 
 Run `git status` and confirm that `activity_feed.js` shows up as an untracked file. At this point, you’re ready to commit your work to a new branch.
 
@@ -5240,31 +5308,36 @@ Run `git status` and confirm that `activity_feed.js` shows up as an untracked fi
 If you’re coming from Git/GitHub, you’re probably used to this workflow:
 
 ```bash Terminal theme={null}
+
 # Create a new branch
+
 git checkout -b your-feature-branch-name
 
 
 # Do some coding
+
 echo "some changes" >> a_file.js
 
 
 # Stage your changes
+
 git add a_file.js
 
 
 # Commit your changes
+
 git commit -m "feat: Add a new feature to a_file.js"
-```
+```text
 
 Because this is such a common workflow, we’ve wrapped it up in a single `gt create` command, which:
 
-* Takes a commit message
+- Takes a commit message
 
-* Creates a branch with a name based on that commit message
+- Creates a branch with a name based on that commit message
 
-* Commits your changes under that same message
+- Commits your changes under that same message
 
-* Checks out the new branch
+- Checks out the new branch
 
 From the previous section, your repo should have an uncommitted file called `activity_feed.js`.
 
@@ -5273,14 +5346,14 @@ To commit this new file & create a new branch for it:
 ```bash Terminal theme={null}
 gt add activity_feed.js
 gt create --message "feat: Add basic activity feed API"
-```
+```text
 
 If you run `gt log short`, you should see your new branch, with an indicator that you’ve also checked the branch out:
 
 ```plain Terminal theme={null}
 ◉  12-26-feat_Add_basic_activity_feed_API
 ◯  main
-```
+```text
 
 Now that your branch is created, you’re ready to submit it for review.
 
@@ -5298,17 +5371,17 @@ Since `gt create` already checked out your new feature branch for you, run the f
 
 ```bash Terminal theme={null}
 gt submit
-```
+```text
 
 It will prompt you with a few questions:
 
-* Whether you want to edit the PR description now
+- Whether you want to edit the PR description now
 
-  * If you select **yes**, it will open the PR description in your `$EDITOR` for editing.
+- If you select **yes**, it will open the PR description in your `$EDITOR` for editing.
 
-* Whether you want a draft PR, or to publish it immediately
+- Whether you want a draft PR, or to publish it immediately
 
-  * Since this is a tutorial, it’s probably best to create a **draft** PR
+- Since this is a tutorial, it’s probably best to create a **draft** PR
 
 When `gt submit` completes, it will print out the URL of the newly created pull request. You can either directly click the URL, or run `gt pr` to quickly open the new PR in your default browser.
 
@@ -5325,19 +5398,23 @@ Once your coworker reviews your new pull request, it’s possible they might hav
 A typical Git workflow might look like this:
 
 ```bash Terminal theme={null}
+
 # Check out the branch and address the feedback
+
 git checkout your-feature-branch
 echo "respond to feedback" > file.js
 
 
 # Stage + commit the changes
+
 git add file.js
 git commit -m "responded to feedback"
 
 
 # Push the new changes to GitHub & update your PR
+
 git push origin your-feature-branch
-```
+```text
 
 With `gt`, you can make this a little easier.
 
@@ -5345,7 +5422,7 @@ If you need to check out your branch, you can do it with autocomplete and/or arr
 
 ```bash Terminal theme={null}
 gt checkout
-```
+```text
 
 You’ll be prompted for which branch to pick, saving you the effort of copying the branch name from your pull request on GitHub.
 
@@ -5353,7 +5430,7 @@ Once you’ve made your changes and are ready to `git add && git commit`, you ca
 
 ```bash Terminal theme={null}
 gt modify
-```
+```text
 
 and your changes will be amended to the existing commit.
 
@@ -5364,37 +5441,44 @@ gt modify --commit --message "Responded to Alice's feedback"
 
 
 # or, with short arguments:
+
 gt modify -cm "Responded to Alice's feedback"
 
 
 # or, with short command AND short arguments :)
+
 gt m -cm "Responded to Alice's feedback"
-```
+```text
 
 Now that you’ve committed your changes, you can push them up using the same command as before:
 
 ```bash Terminal theme={null}
 gt submit
-```
+```text
 
 The full workflow for updating an existing branch is:
 
 ```bash Terminal theme={null}
+
 # Check out your branch interactively
+
 gt checkout  # or gt co
 
 
 # Make changes and amend the branch
+
 echo "some changes" > file.js
 gt modify    # or gt m
 
 
 # Push the changes up
+
 gt submit    # or gt s
-```
+```bash
 
 
 # Create A Stack
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/create-stack
 
 Learn how to create stacked branches with the Graphite CLI.
@@ -5407,11 +5491,11 @@ Learn how to create stacked branches with the Graphite CLI.
 
 To create a stack of branches with the Graphite CLI, make sure you've:
 
-* [Installed and configured the CLI](/install-the-cli)
+- [Installed and configured the CLI](/install-the-cli)
 
-* [Authenticated with GitHub](/install-the-cli#install-the-cli)
+- [Authenticated with GitHub](/install-the-cli#install-the-cli)
 
-* [Initialized `gt`](/cli-quick-start#initializing-graphite) in a repo of your choice
+- [Initialized `gt`](/cli-quick-start#initializing-graphite) in a repo of your choice
 
 ## Create your first branch with the CLI
 
@@ -5432,7 +5516,9 @@ Graphite generally treats branches as if they were commits. This means that some
 Here are a few ways to create a branch containing a single commit using `gt create`:
 
 ```bash Terminal theme={null}
+
 # navigate to the trunk branch of your repository
+
 gt trunk
 
 
@@ -5443,27 +5529,39 @@ gt trunk
 
 
 # add all unstaged changes (same syntax as git add)
+
 gt add -A
+
 # create a commit on a new branch with its name inferred from your commit message
+
 gt create
+
 # OR specify your commit message via an option, just like git
+
 gt create -m "part 1"
+
 # OR you can also specify a branch name yourself
+
 gt create making_part_1
+
 # This works too!
+
 gt create -m "part 1" making_part_1
 
 
 
 
 # If you don't run `add`, you'll be prompted to add your changes interactively.
+
 # You can also run `add` as part of the create command with the `-a` flag
+
 gt create -am "part 1"
 
 
 # You can make the previous command even shorter by using an alias (most common gt commands have an alias, and you can even configure your own!)
+
 gt c -am "part 1"
-```
+```bash
 
 ### Configure a branch prefix
 
@@ -5476,10 +5574,12 @@ You can configure a prefix for `gt create` to add to all of your auto-generated 
 Once you've created a branch with your first set of changes, you can continue to build your stack by issuing more `gt create` commands as you work.
 
 ```bash Terminal theme={null}
+
 # * build part 2 of your feature *
 
 
 # create a new branch on your stack
+
 gt create -am "part 2"
 
 
@@ -5487,8 +5587,9 @@ gt create -am "part 2"
 
 
 # create another new branch on your stack
+
 gt create -am "part 3"
-```
+```bash
 
 ## Create a stack from an existing branch
 
@@ -5496,6 +5597,7 @@ If you have a large branch that you want to split up into a stack of smaller bra
 
 
 # Edit The Branch Order In A Stack
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/edit-branch-order
 
 Learn how to edit the branch order in a stack using Graphite CLI commands.
@@ -5504,15 +5606,15 @@ Learn how to edit the branch order in a stack using Graphite CLI commands.
 
 You should be familiar with how to:
 
-* [Create branches in a stack](/create-stack)
+- [Create branches in a stack](/create-stack)
 
-* [Visualize a stack](/visualize-stack)
+- [Visualize a stack](/visualize-stack)
 
-* [Create and submit pull requests](/create-submit-prs)
+- [Create and submit pull requests](/create-submit-prs)
 
-* [Update mid-stack branches](/update-mid-stack-branches)
+- [Update mid-stack branches](/update-mid-stack-branches)
 
-* [Sync changes from a remote repository](/sync-with-a-remote-repo)
+- [Sync changes from a remote repository](/sync-with-a-remote-repo)
 
 ## Edit the order of branches in your stack
 
@@ -5523,11 +5625,15 @@ The Graphite CLI allows you to modify the dependencies of any of your branches o
 `gt move` rebases the current branch and all of its recursive children (anything upstack of the current branch) onto a branch of your choice.
 
 ```bash Terminal theme={null}
+
 # check out the branch you wish to uproot (no pun intended)
+
 gt checkout second_branch
+
 # run gt move with no arguments to open an interactive picker
+
 gt move
-```
+```text
 
 Output of the previous commands:
 
@@ -5536,25 +5642,29 @@ Output of the previous commands:
     ◯    another_first_branch
 ❯   │ ◯  first_branch
     ◯─┘  main
-```
+```text
 
 You can also run `gt move --onto <BRANCH_NAME>` if you already know the branch name of your current branch's new parent. After successfully running `gt move --onto` with `main`, you should see the following output (given that there are no merge conflicts)
 
 ```bash Terminal theme={null}
 Restacked some_branch_mid_stack on main.
 Restacked next_branch on some_branch_mid_stack.
-```
+```bash
 
 ### gt reorder to modify branch ordering
 
 If you've created a stack of several branches and want to open an editor to do an interactive re-ordering of branches, you can use `gt reorder`. `gt reorder` opens an editor that allows you to manually copy and paste branch names into different orders. The editor will only show the branch you currently have checked out, as well as anything downstack (ancestors) of it.
 
 ```bash Terminal theme={null}
+
 # check out the branch
+
 gt branch checkout some_branch_mid_stack
+
 # reorder downstack branches
+
 gt reorder
-```
+```text
 
 Output of the previous commands (in a vim editor):
 
@@ -5562,28 +5672,34 @@ Output of the previous commands (in a vim editor):
 third_branch
 second_branch
 first_branch
+
 # main (trunk, shown for orientation)
+
 #
+
 # Stack will be rearranged on trunk to match the above order.
+
 ~
 ~
 ~
 ~
-```
+```text
 
 You can shuffle, add, and delete branches as necessary to produce a stack that has the dependencies you desire. For example, deleting `second_branch` in the above example yields the following output:
 
 ```bash Terminal theme={null}
 first_branch does not need to be restacked on main.
 Restacked third_branch on first_branch.
-```
+```bash
 
 ### --insert flag on create to modify branch ordering
 
 To create an entirely new branch in the middle of a stack and automatically rebase any dependent branches, use the optional `--insert` branch when invoking the `gt create` command. See the following example:
 
 ```bash Terminal theme={null}
+
 # check out the branch on top of which you want to create some changes
+
 gt checkout first_branch
 
 
@@ -5591,13 +5707,15 @@ gt checkout first_branch
 
 
 # stage, commit, and insert your changes with gt branch create
+
 gt create --all --insert --message "inserted_branch"
 
 
 # aliases for the previous two commands
+
 gt co first_branch_in_the_stack
 gt c -aim "creating_a_branch_in_between"
-```
+```text
 
 Output of the previous commands:
 
@@ -5606,7 +5724,7 @@ Output of the previous commands:
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 inserted_branch
 Restacked second_branch on inserted_branch.
-```
+```bash
 
 ### Resolve merge conflicts when editing branch ordering
 
@@ -5614,6 +5732,7 @@ Under the hood, `gt move` , `gt reorder`, and `gt create --insert` perform resta
 
 
 # Evaluating Graphite
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/evaluating-graphite
 
 Learn more about how to evaluate if Graphite is right for your team.
@@ -5640,6 +5759,7 @@ Teams that use stacked pull requests deliver high quality software faster. Graph
 
 
 # Evaluating Tools For Stacking
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/evaluating-tools
 
 Learn about the differences between Graphite and other tools for stacking pull requests.
@@ -5730,6 +5850,7 @@ Want to know how Graphite compares to a software you're considering or currently
 
 
 # External Merge Queue Integration (Beta)
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/external-merge-queue-integration
 
 Learn how to use Graphite with your existing external merge queue.
@@ -5738,9 +5859,9 @@ If you already use a separate, external merge queue offering, Graphite can integ
 
 Graphite's integration will:
 
-* Merge PRs one-by-one by enqueueing them in your merge queue
+- Merge PRs one-by-one by enqueueing them in your merge queue
 
-* Automatically rebase PRs before adding them to the merge queue, as necessary
+- Automatically rebase PRs before adding them to the merge queue, as necessary
 
 This offers a quick and seamless way to onboard your team to Graphite when you're already using an external merge queue.
 
@@ -5750,11 +5871,11 @@ Unlike Graphite's merge queue, external merge queues don't use stack context to 
 
 In particular, with external merge queues Graphite can only merge PRs one at a time: for a stack of PRs `A` ← `B` ← `C`, where `A` is the base PR
 
-* `A` will be added to the queue
+- `A` will be added to the queue
 
-* Only when `A` is successfully merged will Graphite rebase `B` and then add `B` to the queue
+- Only when `A` is successfully merged will Graphite rebase `B` and then add `B` to the queue
 
-* Repeat for `C`
+- Repeat for `C`
 
 ## GitHub merge queue
 
@@ -5807,15 +5928,15 @@ Go to *Merge queue* in the Graphite app settings page ([https://app.graphite.com
 
 Once you've completed the configuration steps above, PRs created in that repo can now be merged via your merge queue.
 
-* **For single PRs, and base PRs in a stack:** the merge button is replaced with an "Apply merge label" button that immediately applies the merge label
+- **For single PRs, and base PRs in a stack:** the merge button is replaced with an "Apply merge label" button that immediately applies the merge label
 
-* **For upstack PRs:** the merge button is replaced with an "Apply merge label when ready" button that acts as follows: for a stack of PRs `A` ← `B` ← `C`, where `A` is the base PR:
+- **For upstack PRs:** the merge button is replaced with an "Apply merge label when ready" button that acts as follows: for a stack of PRs `A` ← `B` ← `C`, where `A` is the base PR:
 
-  * `A` immediately receives your repo's merge label, handing off merging to your merge queue
+- `A` immediately receives your repo's merge label, handing off merging to your merge queue
 
-  * When `A` is successfully merged, Graphite rebases `B`, and upon succeeding applies your repo's merge label. If the rebase fails, Graphite informs the author as usual.
+- When `A` is successfully merged, Graphite rebases `B`, and upon succeeding applies your repo's merge label. If the rebase fails, Graphite informs the author as usual.
 
-  * It repeats the process for `B`, and so forth for larger stacks.
+- It repeats the process for `B`, and so forth for larger stacks.
 
 During the merge process, the PR status for each PR will communicate if the PR is actively waiting on downstack merges, or if the merge has been handed off to your merge queue.
 
@@ -5839,12 +5960,13 @@ Many merge queues represent merge failures by adding a label denoting that the P
 
 ### Troubleshooting
 
-* **PRs getting evicted while enqueued:** once you mark a stack as ready to merge, re-stacking those PRs when they're already in your merge queue may result in your merge queue evicting them due to making changes. You may want to avoid re-stacking a PR while your merge queue is processing it.
+- **PRs getting evicted while enqueued:** once you mark a stack as ready to merge, re-stacking those PRs when they're already in your merge queue may result in your merge queue evicting them due to making changes. You may want to avoid re-stacking a PR while your merge queue is processing it.
 
-* **Handling failed merges:** your merge queue may take actions like adding a "blocked" label on PRs that failed to merge. To re-enqueue after fixing the issues, manually remove the custom label.
+- **Handling failed merges:** your merge queue may take actions like adding a "blocked" label on PRs that failed to merge. To re-enqueue after fixing the issues, manually remove the custom label.
 
 
 # FAQs
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/faqs
 
 Questions? We've got answers.
@@ -5865,24 +5987,26 @@ Unblock yourself with our troubleshooting references. If you're ever stuck, you 
 
 
 # Feature Requests & Bugs
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/feature-requests-bugs
 
 Learn how to easily share feature requests and bug reports with the Graphite team.
 
 As a Graphite user, your feature requests and bug reports play a huge part in helping us improve the product experience. Here's how to give us your feedback:
 
-* From the CLI, run `gt feedback {your message}`
+- From the CLI, run `gt feedback {your message}`
 
-* Share feedback from the Graphite dashboard command bar by typing `⌘` + `K` and then "feedback", or by typing `G` then `F`.
+- Share feedback from the Graphite dashboard command bar by typing `⌘` + `K` and then "feedback", or by typing `G` then `F`.
 
-* Post in the `#ideas` or `#bug-reports` channels in the Graphite [Slack community](https://community.graphite.com)
+- Post in the `#ideas` or `#bug-reports` channels in the Graphite [Slack community](https://community.graphite.com)
 
-* [Contact us via our feedback form](https://graphite.com/contact-us)
+- [Contact us via our feedback form](https://graphite.com/contact-us)
 
-* Reach out to [support@graphite.com](mailto:support@graphite.com)
+- Reach out to [support@graphite.com](mailto:support@graphite.com)
 
 
 # Overview
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/get-started
 
 Learn how to create, review, and merge stacked pull requests with Graphite.
@@ -5945,6 +6069,7 @@ See a demo of creating, reviewing, and merging a stack of pull requests using th
 
 
 # Use The Graphite Merge Queue
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/get-started-merge-queue
 
 Learn how to use the Graphite merge queue in your repo.
@@ -5963,26 +6088,26 @@ You can add a pull request to the Graphite merge queue from the Graphite app or 
 
 Once the Graphite merge queue is enabled on a repository, you'll still see the option to merge a pull request, but the confirmation modal will show an option to queue the PR rather than to merge it immediately. There are a few minor differences between the merge modal and the queue modal:
 
-* You **cannot** override the merge strategy from the queue modal as you can from the merge modal. Merge strategy for the queue is set at the repository-level through your [repository settings](https://app.graphite.com/settings/repo)
+- You **cannot** override the merge strategy from the queue modal as you can from the merge modal. Merge strategy for the queue is set at the repository-level through your [repository settings](https://app.graphite.com/settings/repo)
 
-* We don't support commit message/title edits from the queue modal as we do in the merge modal. For PRs merged using the squash and merge strategy, the PR title and PR description will be used for the commit message/title.
+- We don't support commit message/title edits from the queue modal as we do in the merge modal. For PRs merged using the squash and merge strategy, the PR title and PR description will be used for the commit message/title.
 
-* When queuing individual PRs (not a stack), you have the option to queue the PR as a **hot-fix**. When you queue a PR as a hot-fix, your PR will automatically jump to the front of the queue. Note that it will still wait to rebase and rerun CI, but will merge next in line. Hot-fixes will be marked in the merge activity page with a small flame icon.
+- When queuing individual PRs (not a stack), you have the option to queue the PR as a **hot-fix**. When you queue a PR as a hot-fix, your PR will automatically jump to the front of the queue. Note that it will still wait to rebase and rerun CI, but will merge next in line. Hot-fixes will be marked in the merge activity page with a small flame icon.
 
 ### Enqueue via label
 
 Make sure you've [configured your repository](/set-up-merge-queue#enable-adding-to-the-queue-via-a-label) to enqueue PRs with a GitHub label.\
 After you've created/configured a label which you want to use to indicate that a PR should be added to the queue, simply adding the label to any PR will enqueue the PR. There are a few things to note:
 
-* If the label is added to a PR that isn't mergeable, it will toggle the PR's **merge when ready** property on and will be enqueued once mergeable
+- If the label is added to a PR that isn't mergeable, it will toggle the PR's **merge when ready** property on and will be enqueued once mergeable
 
-* If the label is removed from a PR, it will be removed from the queue (or merge when ready will be toggled off)
+- If the label is removed from a PR, it will be removed from the queue (or merge when ready will be toggled off)
 
-* If a PR is removed from the queue for any reason (failing checks, merge conflicts), the label will be removed
+- If a PR is removed from the queue for any reason (failing checks, merge conflicts), the label will be removed
 
-* If the label is added to a PR that is part of a stack, the label will be automatically added to all downstack PRs as well.
+- If the label is added to a PR that is part of a stack, the label will be automatically added to all downstack PRs as well.
 
-* If the label is removed from a PR that is part of a stack, the label will be automatically removed from all upstack PRs as well.
+- If the label is removed from a PR that is part of a stack, the label will be automatically removed from all upstack PRs as well.
 
 <Info>
   A Graphite account is required for using merge labels. If we detect a user without a Graphite account applies a merge label, it will be removed and a note will be added to the PR about this requirement.
@@ -6012,6 +6137,7 @@ In case you need to do so, you can pause the queue by clicking the `...` on the 
 
 
 # GitHub Autolinks
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/github-autolinks
 
 Learn how to configure GitHub autolinks to automatically reference external resources like issue trackers in your pull requests on Graphite.
@@ -6026,10 +6152,10 @@ When properly configured, typing a reference like `JIRA-123` or `TICKET-456` in 
 
 Graphite fully supports GitHub's autolinks feature. Any autolinks you configure in your GitHub repository settings will automatically work in:
 
-* Pull request titles and descriptions
-* Pull request comments and reviews
-* Commit messages
-* Stack descriptions
+- Pull request titles and descriptions
+- Pull request comments and reviews
+- Commit messages
+- Stack descriptions
 
 Since Graphite maintains 2-way sync with GitHub, autolinks configured through GitHub will be rendered correctly in the Graphite interface, making it easy to navigate to related tickets, issues, or documentation while reviewing code.
 
@@ -6039,8 +6165,8 @@ Autolinks must be configured through your GitHub repository settings. Once confi
 
 ### Prerequisites
 
-* Repository admin permissions
-* GitHub Pro, GitHub Team, GitHub Enterprise Cloud, or GitHub Enterprise Server
+- Repository admin permissions
+- GitHub Pro, GitHub Team, GitHub Enterprise Cloud, or GitHub Enterprise Server
 
 ### Configuring Autolinks on GitHub
 
@@ -6066,21 +6192,21 @@ Link to your project management and issue tracking tools:
 
 **Jira**
 
-* Prefix: `JIRA-`
-* URL: `https://your-company.atlassian.net/browse/JIRA-<num>`
-* Example: `JIRA-123` → Links to Jira ticket JIRA-123
+- Prefix: `JIRA-`
+- URL: `https://your-company.atlassian.net/browse/JIRA-<num>`
+- Example: `JIRA-123` → Links to Jira ticket JIRA-123
 
 **Linear**
 
-* Prefix: `LIN-`
-* URL: `https://linear.app/your-team/issue/LIN-<num>`
-* Example: `LIN-456` → Links to Linear issue LIN-456
+- Prefix: `LIN-`
+- URL: `https://linear.app/your-team/issue/LIN-<num>`
+- Example: `LIN-456` → Links to Linear issue LIN-456
 
 **Zendesk**
 
-* Prefix: `TICKET-`
-* URL: `https://your-company.zendesk.com/agent/tickets/<num>`
-* Example: `TICKET-789` → Links to Zendesk ticket #789
+- Prefix: `TICKET-`
+- URL: `https://your-company.zendesk.com/agent/tickets/<num>`
+- Example: `TICKET-789` → Links to Zendesk ticket #789
 
 ### Documentation Systems
 
@@ -6088,15 +6214,15 @@ Connect to internal documentation:
 
 **Confluence**
 
-* Prefix: `CONF-`
-* URL: `https://your-company.atlassian.net/wiki/pages/viewpage.action?pageId=<num>`
-* Example: `CONF-100` → Links to Confluence page
+- Prefix: `CONF-`
+- URL: `https://your-company.atlassian.net/wiki/pages/viewpage.action?pageId=<num>`
+- Example: `CONF-100` → Links to Confluence page
 
 **Notion**
 
-* Prefix: `NOTION-`
-* URL: `https://notion.so/your-workspace/<num>`
-* Example: `NOTION-abc123` → Links to Notion page
+- Prefix: `NOTION-`
+- URL: `https://notion.so/your-workspace/<num>`
+- Example: `NOTION-abc123` → Links to Notion page
 
 ### Design Systems
 
@@ -6104,9 +6230,9 @@ Link to design mockups and specifications:
 
 **Figma**
 
-* Prefix: `FIG-`
-* URL: `https://www.figma.com/file/your-file-id/?node-id=<num>`
-* Example: `FIG-250` → Links to Figma design
+- Prefix: `FIG-`
+- URL: `https://www.figma.com/file/your-file-id/?node-id=<num>`
+- Example: `FIG-250` → Links to Figma design
 
 ## Best Practices
 
@@ -6114,9 +6240,9 @@ Link to design mockups and specifications:
 
 Use prefixes that clearly indicate the external system:
 
-* Make them short but descriptive (2-5 characters + hyphen)
-* Use uppercase for consistency
-* Include a hyphen at the end (e.g., `JIRA-` not `JIRA`)
+- Make them short but descriptive (2-5 characters + hyphen)
+- Use uppercase for consistency
+- Include a hyphen at the end (e.g., `JIRA-` not `JIRA`)
 
 ### Avoid Prefix Conflicts
 
@@ -6126,9 +6252,9 @@ GitHub doesn't allow overlapping prefixes. For example, you cannot configure bot
 
 Consider documenting your team's autolink conventions in:
 
-* Your repository's README
-* Pull request templates
-* Team onboarding documentation
+- Your repository's README
+- Pull request templates
+- Team onboarding documentation
 
 This helps team members know which references are available and how to use them effectively.
 
@@ -6137,24 +6263,27 @@ This helps team members know which references are available and how to use them 
 Include relevant autolink references in your PR descriptions to provide context:
 
 ```markdown theme={null}
+
 ## Summary
+
 This PR implements the new authentication flow requested in JIRA-1234.
 
 ## Related Issues
+
 - JIRA-1234: Add OAuth2 support
 - DOC-567: Authentication architecture guide
 - FIG-890: Login flow mockups
-```
+```text
 
 When viewing this PR in Graphite, all these references will be clickable links to the external resources.
 
 ## Limitations
 
-* **Admin permissions required**: Only repository administrators can configure autolinks
-* **No overlapping prefixes**: Reference prefixes cannot overlap with each other
-* **Case sensitivity**: Autolinks are case-sensitive by default
-* **Configuration location**: Autolinks must be configured through GitHub settings (not configurable directly in Graphite)
-* **Alphanumeric support**: While GitHub supports both numeric and alphanumeric identifiers, some older systems may only support numeric references
+- **Admin permissions required**: Only repository administrators can configure autolinks
+- **No overlapping prefixes**: Reference prefixes cannot overlap with each other
+- **Case sensitivity**: Autolinks are case-sensitive by default
+- **Configuration location**: Autolinks must be configured through GitHub settings (not configurable directly in Graphite)
+- **Alphanumeric support**: While GitHub supports both numeric and alphanumeric identifiers, some older systems may only support numeric references
 
 ## Troubleshooting
 
@@ -6178,6 +6307,7 @@ If autolinks are rendering but pointing to the wrong location:
 
 
 # Configure GitHub Repository Settings
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/github-configuration-guidelines
 
 Learn how to configure your repository settings on GitHub for the best experience stacking with Graphite.
@@ -6186,17 +6316,17 @@ Learn how to configure your repository settings on GitHub for the best experienc
 
 **Limit how many branches and tags can be updated in a single push**: `Disabled` **(Required)**
 
-* This is a new GitHub setting that limits the number of branches that can be pushed atomically
+- This is a new GitHub setting that limits the number of branches that can be pushed atomically
 
-* The Graphite CLI pushes all branches in your stack (and potentially a temporary base branch for each) atomically to ensure accurate behavior for PR history and code owner protections. A limit on the number of branches that can be pushed will prevent `gt submit` for stacks above a certain size.
+- The Graphite CLI pushes all branches in your stack (and potentially a temporary base branch for each) atomically to ensure accurate behavior for PR history and code owner protections. A limit on the number of branches that can be pushed will prevent `gt submit` for stacks above a certain size.
 
-* Alternatively, you can set the number to a very high value, but stack sizes will be limited for Graphite users in your repository (i.e. setting the limit to 30 will limit stack sizes to 15).
+- Alternatively, you can set the number to a very high value, but stack sizes will be limited for Graphite users in your repository (i.e. setting the limit to 30 will limit stack sizes to 15).
 
 **Automatically delete head branches**: `Enabled` **(Highly recommended)**
 
-* This helps prevent mistakes when merging PRs in a stack.
+- This helps prevent mistakes when merging PRs in a stack.
 
-* For example, if you have a stack of PRs (A ← B, where A is the base PR), when you merge A with this setting on, GitHub automatically changes the target branch of B from A to `main`. However, when this setting is off, then merging A does not change the target branch of B: you must first manually restack—otherwise merging B won't work as intended.
+- For example, if you have a stack of PRs (A ← B, where A is the base PR), when you merge A with this setting on, GitHub automatically changes the target branch of B from A to `main`. However, when this setting is off, then merging A does not change the target branch of B: you must first manually restack—otherwise merging B won't work as intended.
 
 ## Branch protection rules
 
@@ -6214,25 +6344,25 @@ The following branch protection rule settings are required for Graphite. Without
 
 **Dismiss stale pull request approvals when new commits are pushed:** `Disabled`
 
-* As part of the merge process, Graphite may rebase a PR causing new commits to be pushed. If those changes cause approvals to be dismissed, it can lead to merge failures.
+- As part of the merge process, Graphite may rebase a PR causing new commits to be pushed. If those changes cause approvals to be dismissed, it can lead to merge failures.
 
-* If you need non-rebase changes to be dismissed, we created an open-source GitHub Action that is a drop-in replacement for this rule. You can find it on the GitHub Actions marketplace here: [https://github.com/marketplace/actions/dismiss-stale-approvals](https://github.com/marketplace/actions/dismiss-stale-approvals)
+- If you need non-rebase changes to be dismissed, we created an open-source GitHub Action that is a drop-in replacement for this rule. You can find it on the GitHub Actions marketplace here: [https://github.com/marketplace/actions/dismiss-stale-approvals](https://github.com/marketplace/actions/dismiss-stale-approvals)
 
 **Require approval of the most recent reviewable push**: `Disabled`
 
-* As part of the merge process for a stack of PRs, Graphite changes the target branch of PRs before merging. Since this counts as a reviewable push, it can lead to merge failures or dismissed approvals- these can appear as though the Graphite app dismissed them with the message "The base branch was changed".
+- As part of the merge process for a stack of PRs, Graphite changes the target branch of PRs before merging. Since this counts as a reviewable push, it can lead to merge failures or dismissed approvals- these can appear as though the Graphite app dismissed them with the message "The base branch was changed".
 
 **Require signed commits**: action needed if `Enabled`
 
-* If you have this enabled, each engineer should set up their [signing key in Graphite](/configure-signed-commits).
+- If you have this enabled, each engineer should set up their [signing key in Graphite](/configure-signed-commits).
 
 **Require merge queue**: `Disabled`
 
-* The GitHub merge queue does not understand stacks and can end up merging PRs out of order. We recommend using the [Graphite Merge Queue](/graphite-merge-queue), which is optimized for merging stacks.
+- The GitHub merge queue does not understand stacks and can end up merging PRs out of order. We recommend using the [Graphite Merge Queue](/graphite-merge-queue), which is optimized for merging stacks.
 
 **Require deployments to succeed before merging**: `Disabled`
 
-* Graphite does not currently support deployment checks.
+- Graphite does not currently support deployment checks.
 
 ### Recommended settings
 
@@ -6240,35 +6370,35 @@ The following are branch protection rules that we've found to work best for team
 
 **Restrict who can dismiss pull request reviews**: `Disabled`
 
-* There are many cases where a pull request author can become blocked by a previous review. For example, if a reviewer requests changes to a pull request and then goes on vacation, the author is now blocked on merging that pull request even after making the appropriate changes because the “Changes requested” review is blocking the merge. An author might also want to dismiss a previous approval if they’ve made significant changes to the code since the original review.
+- There are many cases where a pull request author can become blocked by a previous review. For example, if a reviewer requests changes to a pull request and then goes on vacation, the author is now blocked on merging that pull request even after making the appropriate changes because the “Changes requested” review is blocking the merge. An author might also want to dismiss a previous approval if they’ve made significant changes to the code since the original review.
 
 **Require a pull request before merging**: `Enabled`
 
-* It's standard practice to require changes to have pull requests for any changes you plan to merge. This ensures some visibility for changes that are being made.
+- It's standard practice to require changes to have pull requests for any changes you plan to merge. This ensures some visibility for changes that are being made.
 
 **Require approvals**: `Enabled`
 
-* Requiring approvals ensures that there is always someone else to sign off on the changes before they are merged.
+- Requiring approvals ensures that there is always someone else to sign off on the changes before they are merged.
 
 **Recommended number of approvals needed**: `1`
 
-* It's easier to stay unblocked by only requiring one approval. This helps make it clear to any reviewer that their approval will completely unblock the pull request for merge. It also removes the undue burden for engineers to review. If the author decides they want additional reviews they can always tag specific reviewers.
+- It's easier to stay unblocked by only requiring one approval. This helps make it clear to any reviewer that their approval will completely unblock the pull request for merge. It also removes the undue burden for engineers to review. If the author decides they want additional reviews they can always tag specific reviewers.
 
 **Require status checks to pass before merging**: `Enabled`
 
-* We recommend that you turn this on and set important CI tests as “required” to ensure that they are passing before a pull request is merged. If you have this branch protection rule turned on you can still have a mix of required and not required status checks—only failed required status checks will block a pull request merge. If you have a flaky test that is incorrectly returning a failed status, you can also leave it as not-required and it won’t block merges. For required status checks, you can select an app as the expected source of status state changes.
+- We recommend that you turn this on and set important CI tests as “required” to ensure that they are passing before a pull request is merged. If you have this branch protection rule turned on you can still have a mix of required and not required status checks—only failed required status checks will block a pull request merge. If you have a flaky test that is incorrectly returning a failed status, you can also leave it as not-required and it won’t block merges. For required status checks, you can select an app as the expected source of status state changes.
 
 **Require conversation resolution before merging**: `Enabled`
 
-* This branch protection rule is meant to ensure that all conversation threads have been read and acknowledged by the author. Sometimes, the pull request gets updated in a way in which GitHub can no longer tie an older conversation thread with the latest changes. In these cases GitHub will not display the conversation thread in-line in the code. This makes it difficult for authors to find and resolve old conversation threads that may no longer apply to the latest version of the pull request.
+- This branch protection rule is meant to ensure that all conversation threads have been read and acknowledged by the author. Sometimes, the pull request gets updated in a way in which GitHub can no longer tie an older conversation thread with the latest changes. In these cases GitHub will not display the conversation thread in-line in the code. This makes it difficult for authors to find and resolve old conversation threads that may no longer apply to the latest version of the pull request.
 
 **Require linear history**: `Enabled`
 
-* This setting prevents people from pushing merge commits to the protected branch. This will require them to merge pull requests using the “squash and merge” or “rebase and merge” options. Therefore, in order to enable this branch protection rule you must first enable at least one of these merge strategy options. Ensuring linear history will make it easier to diagnose issues introduced by changes and also make it easier to reverse those changes.
+- This setting prevents people from pushing merge commits to the protected branch. This will require them to merge pull requests using the “squash and merge” or “rebase and merge” options. Therefore, in order to enable this branch protection rule you must first enable at least one of these merge strategy options. Ensuring linear history will make it easier to diagnose issues introduced by changes and also make it easier to reverse those changes.
 
 **Include administrators**: `Disabled`
 
-* There might be unforeseen circumstances where an admin needs to bypass one or more branch protection rules above. In order to merge pull requests that are missing requirements, admins need to check a box acknowledging that they are bypassing requirements. Our recommendation is that anyone that you designate as an administrator should be trusted to use this only when appropriate.
+- There might be unforeseen circumstances where an admin needs to bypass one or more branch protection rules above. In order to merge pull requests that are missing requirements, admins need to check a box acknowledging that they are bypassing requirements. Our recommendation is that anyone that you designate as an administrator should be trusted to use this only when appropriate.
 
 ## Rulesets
 
@@ -6286,7 +6416,7 @@ on:
     types: [opened, synchronize, reopened]
   push:
     branches: [main]
-```
+```text
 
 We do not recommend triggering CI on the pull\_request type `edited`. This action is triggered when metadata about the PR is changed, not the PR itself (that would be `synchronize`). The `edited` event triggers a CI run when the PR below a given PR is merged—as the change of the base branch from the downstack PR to trunk is considered an “edit”.
 
@@ -6299,8 +6429,8 @@ allowlisted, Graphite will be unable to communicate with your GitHub organizatio
 
 GitHub Enterprise offers IP allowlisting at two levels:
 
-* [Enterprise level IP allowlisting](https://docs.github.com/en/enterprise-cloud@latest/admin/configuring-settings/hardening-security-for-your-enterprise/restricting-network-traffic-to-your-enterprise-with-an-ip-allow-list)
-* [Organization level IP allowlisting](https://docs.github.com/en/enterprise-cloud@latest/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/managing-allowed-ip-addresses-for-your-organization)
+- [Enterprise level IP allowlisting](https://docs.github.com/en/enterprise-cloud@latest/admin/configuring-settings/hardening-security-for-your-enterprise/restricting-network-traffic-to-your-enterprise-with-an-ip-allow-list)
+- [Organization level IP allowlisting](https://docs.github.com/en/enterprise-cloud@latest/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/managing-allowed-ip-addresses-for-your-organization)
 
 The Graphite GitHub app's IP addresses must be allowlisted both at the enterprise level *and* at the organization level for any organizations you plan to use with Graphite. The simplest way of making sure
 all the necessary IPs are allowlisted is to enable the "Allowing access by GitHub Apps" option in the allowlist settings for **both the organization *and* enterprise allowlist settings**. This will
@@ -6308,7 +6438,7 @@ allow the Graphite GitHub app to automatically enable the IP addresses necessary
 
 The IP addresses that are required to be allowlisted are as follows:
 
-```
+```text
 35.80.247.239
 34.210.111.72
 52.11.184.182
@@ -6324,7 +6454,7 @@ The IP addresses that are required to be allowlisted are as follows:
 35.83.76.28
 54.71.134.117
 44.238.76.52  
-```
+```text
 
 If you are using IP allowlisting for your GitHub organization or enterprise and are unable to access your repositories and PRs in Graphite,
 we strongly recommend verifying that the above IP addresses are allowlisted at both the enterprise and organization levels. If issues persist
@@ -6332,6 +6462,7 @@ after checking the IP allowlists against the above list, reach out to us at [sup
 
 
 # GitHub Enterprise Server
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/github-enterprise-server
 
 Learn how Graphite Enterprise customers can use Graphite with a GitHub Enterpise Server instance.
@@ -6356,6 +6487,7 @@ No. There is no self-hosted deployment of Graphite's service available for a use
 
 
 # User permissions
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/graphite-admin
 
 Learn how to manage users and billing information for your organization as a Graphite admin.
@@ -6364,13 +6496,13 @@ Team admins can manage billing, add or remove seats, and view or download invoic
 
 ## Becoming a Graphite admin
 
-* If you have admin or owner privileges in GitHub, you are automatically an admin for that organization in Graphite.
+- If you have admin or owner privileges in GitHub, you are automatically an admin for that organization in Graphite.
 
-* If you create a team in Graphite, you become a Graphite admin for that team.
+- If you create a team in Graphite, you become a Graphite admin for that team.
 
-* If you enter payment details in Graphite, you become a Graphite admin for that team.
+- If you enter payment details in Graphite, you become a Graphite admin for that team.
 
-* If another Graphite admin promotes you to admin, you become an admin for the team.
+- If another Graphite admin promotes you to admin, you become an admin for the team.
 
 <Note>
   Being a Graphite admin does not grant you additional privileges in GitHub.
@@ -6380,17 +6512,17 @@ Team admins can manage billing, add or remove seats, and view or download invoic
 
 Graphite admins can manage Graphite users in their plan from *Settings* > [*Billing*](https://app.graphite.com/settings/billing) in the Graphite app.
 
-* To add a member to your team, click `Invite your teammates`; once they accept the invitation, they will appear in your team membership list.
+- To add a member to your team, click `Invite your teammates`; once they accept the invitation, they will appear in your team membership list.
 
-* Edit a team member's role by selecting either "Admin" or "Member" next to their name.
+- Edit a team member's role by selecting either "Admin" or "Member" next to their name.
 
-  * Graphite admins can make anyone in their organization a Graphite admin (even if they're not an owner in GitHub).
+- Graphite admins can make anyone in their organization a Graphite admin (even if they're not an owner in GitHub).
 
-  * Graphite admins can change Graphite admins (who aren't GitHub owners) to "Member" status. This means GitHub owners are always Graphite admins (and this is immutable).
+- Graphite admins can change Graphite admins (who aren't GitHub owners) to "Member" status. This means GitHub owners are always Graphite admins (and this is immutable).
 
-* To remove a member from your team, click the `...` icon next to their name and select `Remove from team`.
+- To remove a member from your team, click the `...` icon next to their name and select `Remove from team`.
 
-* To restrict a team member's access to read-only mode, click the `...` icon next to their name and select `Restrict access`. Admins can be in read-only mode and retain their admin privileges (e.g., manage billing info).
+- To restrict a team member's access to read-only mode, click the `...` icon next to their name and select `Restrict access`. Admins can be in read-only mode and retain their admin privileges (e.g., manage billing info).
 
 ## Request to join
 
@@ -6402,6 +6534,7 @@ Graphite subscriptions are managed through the Stripe billing portal, found at *
 
 
 # Graphite Chat
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/graphite-chat
 
 Chat with an AI-powered conversational assistant for pull request review and collaboration
@@ -6419,44 +6552,44 @@ Chat lets you interact with Graphite Agent directly on the pull request review p
 
 Ask Graphite Agent to explain what changed in a pull request, highlight potential issues, or provide context about specific code sections. Highlight specific lines in your PR diff to ask targeted questions about that code.
 
-* *"Summarize the changes in this PR"*
-* *"What are the main issues I should focus on?"*
-* *"Explain what this function does"*
-* *"What should I pay attention to while reviewing this?"*
+- *"Summarize the changes in this PR"*
+- *"What are the main issues I should focus on?"*
+- *"Explain what this function does"*
+- *"What should I pay attention to while reviewing this?"*
 
 ### Make direct code edits
 
 Graphite Agent proposes specific fixes that you can apply with one click without leaving the review page.
 
-* *"Fix the type error on line 42"*
-* *"Add error handling to this function"*
-* *"Optimize this database query"*
-* *"Does this code have tests? If not, write them"*
+- *"Fix the type error on line 42"*
+- *"Add error handling to this function"*
+- *"Optimize this database query"*
+- *"Does this code have tests? If not, write them"*
 
 ### Search across your codebase
 
 Find related files, understand dependencies, and get context from other PRs without switching tabs. Graphite has full awareness of your entire codebase and PR history.
 
-* *"Where else is this API endpoint used?"*
-* *"Show me similar implementations in the codebase"*
-* *"How does this relate to PR #123?"*
-* *"Does this follow our existing patterns?"*
+- *"Where else is this API endpoint used?"*
+- *"Show me similar implementations in the codebase"*
+- *"How does this relate to PR #123?"*
+- *"Does this follow our existing patterns?"*
 
 ### Address reviewer feedback
 
 Get help understanding and implementing feedback from your teammates and reviewers.
 
-* *"How should I address this comment?"*
-* *"What are the tradeoffs of the approach my teammate suggested?"*
-* *"Help me implement the changes requested in this review"*
+- *"How should I address this comment?"*
+- *"What are the tradeoffs of the approach my teammate suggested?"*
+- *"Help me implement the changes requested in this review"*
 
 ### Debug CI failures
 
 Diagnose and resolve failing checks directly from your PR page with full context from your CI results.
 
-* *"Fix failing checks"*
-* *"Why are the tests failing?"*
-* *"How can I run this locally?"*
+- *"Fix failing checks"*
+- *"Why are the tests failing?"*
+- *"How can I run this locally?"*
 
 ## How it works
 
@@ -6464,10 +6597,10 @@ Graphite Agent uses AI to analyze your code changes and provide contextual assis
 
 **What makes it different:**
 
-* **Fully embedded**: Ask questions, get suggestions, apply edits, and commit without leaving your PR
-* **Codebase-aware**: Understands your full codebase history, entire PR stack, and team conventions
-* **Interactive editing**: Preview and apply changes directly to your PR with the built-in editor
-* **Works for everyone**: Designed for both reviewers seeking context and authors making updates
+- **Fully embedded**: Ask questions, get suggestions, apply edits, and commit without leaving your PR
+- **Codebase-aware**: Understands your full codebase history, entire PR stack, and team conventions
+- **Interactive editing**: Preview and apply changes directly to your PR with the built-in editor
+- **Works for everyone**: Designed for both reviewers seeking context and authors making updates
 
 <Tip>
   All edits made with Graphite Chat are tracked in version control and can be
@@ -6488,24 +6621,25 @@ When Graphite suggests code changes, you can preview them in context before appl
 
 Graphite Chat processes only the necessary code and metadata from your pull requests to provide contextual assistance. Your data is:
 
-* **Not used for training**: Strict agreements prevent AI providers from training on your code
-* **Minimally exposed**: Only relevant PR content is sent for analysis
-* **Securely handled**: Protected by Graphite's enterprise security standards
+- **Not used for training**: Strict agreements prevent AI providers from training on your code
+- **Minimally exposed**: Only relevant PR content is sent for analysis
+- **Securely handled**: Protected by Graphite's enterprise security standards
 
 *Graphite Chat is designed with the security of your data in mind. You can find more details in our [AI security and privacy](/ai-privacy-and-security) page.*
 
 
 # Graphite for Startups
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/graphite-for-startups
 
 For companies looking to grow with Graphite.
 
 The Startup program is for early stage startups. If it sounds like you may be eligible, you can apply by reaching out to [billing@graphite.com](mailto:billing@graphite.com) with the following information:
 
-* Company name
-* Domain name
-* Total GitHub collaborators (inclusive of all roles)
-* Fundraising rounds (pre-seed, seed, series A, Series B, etc.)
+- Company name
+- Domain name
+- Total GitHub collaborators (inclusive of all roles)
+- Fundraising rounds (pre-seed, seed, series A, Series B, etc.)
 
 ### What is offered in the startup program?
 
@@ -6521,12 +6655,13 @@ Yes. The Startup program is a one-time credit of \$1,500 that’s valid for 12 m
 
 If you are working on a free open source community-led project, you may qualify for a free Team plan. Reach out to [billing@graphite.com](mailto:billing@graphite.com) to find out if you’re eligible. Please include:
 
-* A link to the GitHub org
-* A link to the website
-* A brief description of the project
+- A link to the GitHub org
+- A link to the website
+- A brief description of the project
 
 
 # Merge Queue
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/graphite-merge-queue
 
 Learn how Graphite's merge queue can help your team merge stacks faster and reduce merge conflicts.
@@ -6547,11 +6682,11 @@ The Graphite Merge Queue is the only merge queue that is stack-aware.
 
 You would likely benefit from a merge queue if:
 
-* Your `trunk` branch is frequently broken
+- Your `trunk` branch is frequently broken
 
-* You're consistently slowed down from rebasing changes
+- You're consistently slowed down from rebasing changes
 
-* You have the combined issue of long-running checks with a high PR merge rate
+- You have the combined issue of long-running checks with a high PR merge rate
 
 Traditional merge queues provide many benefits, but they can also slow teams down by enforcing the ordering of commits and validating those commits in sequence—likely reducing the speed at which merges land.
 
@@ -6593,6 +6728,7 @@ If you already use a separate external merge queue offering, Graphite's external
 
 
 # GT MCP
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/gt-mcp
 
 Use the Graphite CLI with AI agents through Model Context Protocol
@@ -6605,8 +6741,8 @@ Use the Graphite CLI with AI agents through Model Context Protocol
 
 GT MCP allows AI agents to automatically create stacked PRs, breaking down large AI-generated changes into smaller, reviewable stacked pull requests.
 
-* With large AI-generated diffs, stacking is more essential than ever. Just like reviewing large human PRs, reviewing massive AI-generated diffs can be overwhelming, and makes it hard to understand what changes your agent has made.
-* Stacking breaks AI output into clear, sequential chunks, so you can understand what's changing and why—earlier, faster, and in order. It helps your agent reason through changes chronologically, validating each step as it goes.
+- With large AI-generated diffs, stacking is more essential than ever. Just like reviewing large human PRs, reviewing massive AI-generated diffs can be overwhelming, and makes it hard to understand what changes your agent has made.
+- Stacking breaks AI output into clear, sequential chunks, so you can understand what's changing and why—earlier, faster, and in order. It helps your agent reason through changes chronologically, validating each step as it goes.
 
 ## Installation
 
@@ -6616,13 +6752,13 @@ GT MCP is built into the Graphite CLI. Update your CLI version to 1.6.7 to get a
 
 ```bash theme={null}
 brew update && brew upgrade withgraphite/tap/graphite
-```
+```text
 
 **npm**
 
 ```bash theme={null}
 npm install -g @withgraphite/graphite-cli@stable
-```
+```bash
 
 ## Setup
 
@@ -6630,7 +6766,7 @@ npm install -g @withgraphite/graphite-cli@stable
 
 ```bash Terminal theme={null}
 claude mcp add graphite gt mcp
-```
+```bash
 
 ### Cursor IDE
 
@@ -6645,10 +6781,11 @@ Open Cursor Settings > Tools & Integrations > Add Custom MCP
     }
   }
 }
-```
+```bash
 
 
 # How To Structure A Stack
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/how-to-structure-your-stacks
 
 Five helpful frameworks for breaking up large changes into stacked PRs.
@@ -6747,6 +6884,7 @@ By incorporating these five frameworks into your development practice, you can m
 
 
 # Insights
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/insights
 
 Learn how to track your team's engineering velocity with Graphite Insights.
@@ -6771,27 +6909,27 @@ Insights allows you to create, save, and share custom views with your queries. Y
 
 For selected users (aggregated):
 
-* Total PRs merged
+- Total PRs merged
 
-* Average number of PRs merged per person
+- Average number of PRs merged per person
 
-* Average number of PRs reviewed per person
+- Average number of PRs reviewed per person
 
-* Median publish to merge time
+- Median publish to merge time
 
-* Median review response time
+- Median review response time
 
-* Median wait time to first review
+- Median wait time to first review
 
-* Average number of review cycles until merge
+- Average number of review cycles until merge
 
-* (Graph) Number of PRs reviewed per person over a time period
+- (Graph) Number of PRs reviewed per person over a time period
 
-* (Graph) Number of PRs reviewed by Graphite users vs. non-Graphite users over a time period
+- (Graph) Number of PRs reviewed by Graphite users vs. non-Graphite users over a time period
 
-* (Graph) Number of PRs merged per person over a time period
+- (Graph) Number of PRs merged per person over a time period
 
-* (Graph) Number of PRs merged by Graphite users vs. non-Graphite users over a time period
+- (Graph) Number of PRs merged by Graphite users vs. non-Graphite users over a time period
 
 For each individual user:
 
@@ -6811,23 +6949,25 @@ You also have the ability to filter and view insights for specific people or gro
 
 
 # Insights Data in Graphite
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/insights-data-missing
 
 Learn how to ensure Graphite can compute insights for your repositories
 
 Insights data in Graphite is computed based on a few factors. If you’re not seeing data for your repositories, it may be due to one of the following:
 
-* **Repositories not yet selected in Graphite**
+- **Repositories not yet selected in Graphite**
   Graphite computes insights only for repositories explicitly selected by you or your organization in the [Graphite app](https://app.graphite.com/). Be sure to select the repositories you'd like insights to be computed for.
 
-* **Insights are pending computation in Graphite**
+- **Insights are pending computation in Graphite**
   Once you've selected repositories, Graphite will need some time to compute insights. In most cases, this happens within a day or two.
 
-* **Your selected date range exceeds your current plan’s sync window.**
+- **Your selected date range exceeds your current plan’s sync window.**
   Each Graphite plan includes a defined sync period for historical GitHub data. The Starter plan includes insights going back up to 2 months. The Standard and Enterprise plans include up to 2 years.
 
 
 # Insights Stats Definitions
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/insights-stats-definitions
 
 Learn how the stats on Graphite insights are computed.
@@ -6850,23 +6990,23 @@ Graphite computes stats for each user as an author and as a reviewer. **Stats ar
 
 ## Author stats
 
-* **PRs merged:** Total number of PRs where the user was an author
+- **PRs merged:** Total number of PRs where the user was an author
 
-* **Time waiting on reviews:** Median time of PRs authored by the user (that have open requests for reviews) were sitting without any reviews
+- **Time waiting on reviews:** Median time of PRs authored by the user (that have open requests for reviews) were sitting without any reviews
 
-* **Wait time to first review:** Median time of a PR being marked as *ready for review* for the first time, and someone reviewing it
+- **Wait time to first review:** Median time of a PR being marked as *ready for review* for the first time, and someone reviewing it
 
-* **Publish to merge time:** Median time between a PR being marked as *ready for review* for the first time, and it being merged
+- **Publish to merge time:** Median time between a PR being marked as *ready for review* for the first time, and it being merged
 
-* **Review cycles until merge:**
+- **Review cycles until merge:**
 
-  * Computes the max number of review cycles any reviewer had until the PR was merged
+- Computes the max number of review cycles any reviewer had until the PR was merged
 
-  * Then across all PRs, computes the median of this number
+- Then across all PRs, computes the median of this number
 
 ## Reviewer side stats
 
-* **PRs reviewed:** Total number of PRs that the user left a review on
+- **PRs reviewed:** Total number of PRs that the user left a review on
 
 **Response time to review requests:** Median of the difference in time between the user being requested (or re-requested) for a review, (referred to as review request/review *pairs*) for the given user
 
@@ -6898,50 +7038,51 @@ Here's an example of a sequence of events and how that activity will impact Insi
 
 These events will affect each stats in the following ways:
 
-* PRs merged will go up by 1 for User X
+- PRs merged will go up by 1 for User X
 
-* PRs reviewed will go up by 1 for User A and User B (User C did not review, so no change there)
+- PRs reviewed will go up by 1 for User A and User B (User C did not review, so no change there)
 
-* Response time to review requests will be computed for each reviewer on each review request/review pair as (\*review time \*- *review request time*). This will then feed into the reviewer’s aggregated median statistic.
+- Response time to review requests will be computed for each reviewer on each review request/review pair as (\*review time \*- *review request time*). This will then feed into the reviewer’s aggregated median statistic.
 
-  * User A response time for first review request = *time at event #4* - *time at event #3*
+- User A response time for first review request = *time at event #4* - *time at event #3*
 
-  * User B response time for first review request = *time at event #5* - *time at event #3*
+- User B response time for first review request = *time at event #5* - *time at event #3*
 
-  * User A response time for second review request = *time at event #7* - *time at event #6*
+- User A response time for second review request = *time at event #7* - *time at event #6*
 
-  * User B response time for second review request = *time at event #8* - *time at event #6*
+- User B response time for second review request = *time at event #8* - *time at event #6*
 
-  * User A response time for third review request = *time at event #10* - *time at event #9*
+- User A response time for third review request = *time at event #10* - *time at event #9*
 
-* Time waiting on reviews will be computed based on how long the author was waiting on reviews for that PR. This then feeds into the author’s aggregated median statistic.
+- Time waiting on reviews will be computed based on how long the author was waiting on reviews for that PR. This then feeds into the author’s aggregated median statistic.
 
-  * Time waiting on reviews on the PR above for User X as author = (*time at event #4* - *time at event #3*) + (*time at event #7* - *time at event #6*)
+- Time waiting on reviews on the PR above for User X as author = (*time at event #4* - *time at event #3*) + (*time at event #7* - *time at event #6*)
 
-  * Note that we didn’t count the time between event #10 and event #9 here because there was a review from User B on the PR—so the author wasn’t waiting on reviews during this time period. In case User X re-requested review from both User A and User B in event #9, we would also add (*time at event #10* - *time at event #9*) into the computation above.
+- Note that we didn’t count the time between event #10 and event #9 here because there was a review from User B on the PR—so the author wasn’t waiting on reviews during this time period. In case User X re-requested review from both User A and User B in event #9, we would also add (*time at event #10* - *time at event #9*) into the computation above.
 
-* Wait time to first review will be computed based on how long the author waited until anyone reviewed their PR after it was published/ready for review. This will then feed into the author’s aggregated median statistic.
+- Wait time to first review will be computed based on how long the author waited until anyone reviewed their PR after it was published/ready for review. This will then feed into the author’s aggregated median statistic.
 
-  * Wait time until first review on above PR for User X as author = *time at event #4* - *time at event #2*
+- Wait time until first review on above PR for User X as author = *time at event #4* - *time at event #2*
 
-* Publish to merge time will be computed based on how long it took for the PR to be merged after it was published/ready for review. This will then feed into the author’s aggregated median statistic.
+- Publish to merge time will be computed based on how long it took for the PR to be merged after it was published/ready for review. This will then feed into the author’s aggregated median statistic.
 
-  * Publish to merge time on above PR for User X as author = *time at event #11* - *time at event #2*
+- Publish to merge time on above PR for User X as author = *time at event #11* - *time at event #2*
 
-* Review cycles until merge for a PR will be computed as the max number of review request/review pairs that a reviewer had until the PR was merged. This will then feed into the author’s aggregated median statistic.
+- Review cycles until merge for a PR will be computed as the max number of review request/review pairs that a reviewer had until the PR was merged. This will then feed into the author’s aggregated median statistic.
 
-  * Review cycles for User A as reviewer = \[(event #10, event #9), (event #7, event #6), (event #4, event #3)] (count = 3)
+- Review cycles for User A as reviewer = \[(event #10, event #9), (event #7, event #6), (event #4, event #3)] (count = 3)
 
-  * Review cycles for User B as reviewer = \[(event #8, event #6), (event #5, event #3)] (count = 2)
+- Review cycles for User B as reviewer = \[(event #8, event #6), (event #5, event #3)] (count = 2)
 
-  * Max review cycles on above PR for User X as author = max(3, 2) ⇒ 3
+- Max review cycles on above PR for User X as author = max(3, 2) ⇒ 3
 
-* Lines of code added will go up by 10 for User X
+- Lines of code added will go up by 10 for User X
 
-* Lines of code deleted will go up by 5 for User X
+- Lines of code deleted will go up by 5 for User X
 
 
 # Install & Authenticate The CLI
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/install-the-cli
 
 Learn how to install & authenticate Graphite's CLI to start creating stacked pull requests.
@@ -6961,14 +7102,14 @@ We recommend installing via Homebrew for smoothest sailing, [even on Linux!](htt
 ```bash Terminal theme={null}
 brew install withgraphite/tap/graphite
 gt --version
-```
+```bash
 
 ### npm installation
 
 ```bash Terminal theme={null}
 npm install -g @withgraphite/graphite-cli@stable
 gt --version
-```
+```bash
 
 ### node.js versioning (for npm installation only)
 
@@ -6986,7 +7127,7 @@ Ubuntu LTS currently provides a relatively old version of Git by default. You ca
 sudo add-apt-repository ppa:git-core/ppa
 sudo apt update
 sudo apt install git
-```
+```text
 
 [Read more on the Git website](https://git-scm.com/download/linux)
 
@@ -7023,12 +7164,13 @@ We are always working towards better native Windows support, although occasional
 ```bash Terminal theme={null}
 > gt auth --token <YOUR_AUTH_TOKEN>
 🔐 Saved auth token to "/Users/pranathiperi/.graphite_user_config"
-```
+```text
 
 Once you've authenticated the CLI, you can [initialize `gt` to be used in your repositories](/cli-quick-start#initializing-graphite).
 
 
 # Integrations
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/integrations
 
 Personalize your workflow by connecting Graphite to your favorite apps.
@@ -7061,6 +7203,7 @@ You can choose to customize your Graphite workflow by integrating with a number 
 
 
 # Jira
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/jira
 
 Learn how to integrate Graphite with Jira to view, link, and create issues associated with pull requests.
@@ -7071,7 +7214,7 @@ With Graphite's Jira integration you can view, link, and create issues associate
 
 ### Prerequisites
 
-* A Jira account
+- A Jira account
 
 ## Connect Jira
 
@@ -7107,9 +7250,9 @@ To link a Jira issue to a pull request, click the **+** symbol located in the is
 
 From here you can:
 
-* Search for a Jira Issue by name
+- Search for a Jira Issue by name
 
-* \[OR] Paste a Jira Issue URL
+- \[OR] Paste a Jira Issue URL
 
 ### Creating a new Jira Issue from PR page
 
@@ -7123,6 +7266,7 @@ From here you can assign a *Project, Issue Type, Summary, Description, Status, a
 
 
 # Learn to Stack
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/learn-to-stack
 
 A practical starter guide for trunk-based development and stacking.
@@ -7147,6 +7291,7 @@ A practical starter guide for trunk-based development and stacking.
 
 
 # Legacy CLI Command Alias Preset
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/legacy-alias-preset
 
 Copy legacy aliases to retain old command names & avoid deprecation warnings in Graphite CLI.
@@ -7154,13 +7299,18 @@ Copy legacy aliases to retain old command names & avoid deprecation warnings in 
 Copy the following into your `gt aliases` configuration to replicate the legacy command names. This will remove deprecation warnings when the old names are used.
 
 ```md .md theme={null}
+
 # Edit this file to configure aliases for Graphite commands.
+
 # If you delete this file, it will be recreated with the default aliases.
+
 # The first word of each line is the alias, and the rest is the command.
+
 # Lines starting with # are ignored.
 
 
 # The aliases for ss, ls, and ll are defined by default and must be overridden to be disabled.
+
 # They are shown below to demonstrate the formatting.
 
 
@@ -7170,6 +7320,7 @@ ss submit --stack
 
 
 # GRAPHITE LEGACY PRESET
+
 # SOURCE: https://graphite.com/docs/legacy-alias-preset
 
 
@@ -7203,10 +7354,11 @@ be modify --interactive-rebase
 btr track
 but untrack
 dsm merge
-```
+```bash
 
 
 # Linear
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/linear
 
 Learn how to integrate Graphite with Linear to view, link, and create issues associated with pull requests.
@@ -7217,7 +7369,7 @@ With Graphite's Linear integration you can view, link, and create issues associa
 
 ### Prerequisites
 
-* A Linear account
+- A Linear account
 
 ## Connect Linear
 
@@ -7253,9 +7405,9 @@ To link a Linear issue to a pull request, click the **+** symbol located in the 
 
 From here you can:
 
-* Search for a Linear Issue by name
+- Search for a Linear Issue by name
 
-* \[OR] Paste a Linear Issue URL
+- \[OR] Paste a Linear Issue URL
 
 ### Creating a new Linear Issue from PR page
 
@@ -7269,6 +7421,7 @@ From here you can assign a *Team, Title, Description, Status, and Priority*. Onc
 
 
 # Memes And Macros
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/memes-and-macros
 
 Add some fun to your code reviews.
@@ -7295,6 +7448,7 @@ To add a meme to your comment or review, you can click the "meme" icon in the fo
 
 
 # Menu Bar App (Mac)
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/menu-bar-app
 
 Keep track of all of your PRs from your Mac menu bar.
@@ -7311,6 +7465,7 @@ Keep track of all of your PRs from your Mac menu bar.
 
 
 # Merge Pull Requests
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/merge-pull-requests
 
 Learn how to seamlessly merge a single PR or stack of PRs with Graphite and handle merge conflicts efficiently.
@@ -7325,11 +7480,11 @@ Once your PR is approved and passes CI (and any other checks or merge protection
 
 Depending on which PR you are viewing in the stack, this button will behave differently:
 
-* If you're on the first PR in the stack or are merging a stack of one, the `Merge` button will just merge that single PR.
+- If you're on the first PR in the stack or are merging a stack of one, the `Merge` button will just merge that single PR.
 
-* If you're in the middle of a stack, `Merge N` where `N` is your position in the stack and will merge all PRs up until the `N`th.
+- If you're in the middle of a stack, `Merge N` where `N` is your position in the stack and will merge all PRs up until the `N`th.
 
-* If you're at the top of the stack, all PRs in the stack will be merged.
+- If you're at the top of the stack, all PRs in the stack will be merged.
 
 `Merge (N) PRs` lets you fire-and-forget merging your stack. When you click the button, Graphite automatically merges each of your PRs one-by-one.
 
@@ -7345,11 +7500,11 @@ This feature rebases PRs on an as-needed basis (to avoid merge conflicts generat
 
 Clicking `merge` will first present you with a modal to configure your merge options before starting the merge job. In this merge modal, you have the option to:
 
-* Select your preferred merge strategy. Graphite pre-fills with your default merge strategy from GitHub.
+- Select your preferred merge strategy. Graphite pre-fills with your default merge strategy from GitHub.
 
-* Edit a custom commit title and message for your PR. Graphite will use your PR title and message as the commit title and message by default.
+- Edit a custom commit title and message for your PR. Graphite will use your PR title and message as the commit title and message by default.
 
-* Use your GitHub admin merge privileges to merge past blockers, if applicable. (Please note that admin merge is available only in repositories that do not use rulesets.)
+- Use your GitHub admin merge privileges to merge past blockers, if applicable. (Please note that admin merge is available only in repositories that do not use rulesets.)
 
 A confirmation appears in the bottom left corner of the screen once your PR is merged.
 
@@ -7383,19 +7538,19 @@ When PRs are merged on GitHub using a squash and merge or a rebase and merge, Gi
 
 This means that if you have a stack with `PR A` at the base, followed by `PR B` and `PR C`, when `PR A` is merged into trunk:
 
-* GitHub creates a commit or set of commits on trunk for the changes in `PR A`.
+- GitHub creates a commit or set of commits on trunk for the changes in `PR A`.
 
-* Critically, because this is a new commit, the common ancestor of `PR B` and trunk does not change.
+- Critically, because this is a new commit, the common ancestor of `PR B` and trunk does not change.
 
-* As a result, GitHub thinks `PR B` now includes the commits of both `PR B` and the already-merged commits of `PR A`.
+- As a result, GitHub thinks `PR B` now includes the commits of both `PR B` and the already-merged commits of `PR A`.
 
 This behavior becomes problematic when you have a `PR A` and `PR B` that modify the same lines and you merge both PRs using one of the aforementioned merge strategies. For any `PR C` that is stacked atop `PR A` and `B`, the following transpires:
 
-* The latest version of the change lines on trunk are those in `PR B`.
+- The latest version of the change lines on trunk are those in `PR B`.
 
-* GitHub believes that `PR C` contains the commits in `PR A` and `PR B`.
+- GitHub believes that `PR C` contains the commits in `PR A` and `PR B`.
 
-* When GitHub tests mergeability of `PR C`, it first tries to apply `PR A`—and now gets a merge conflict—even though in reality you're simply replaying history and there's no new change.
+- When GitHub tests mergeability of `PR C`, it first tries to apply `PR A`—and now gets a merge conflict—even though in reality you're simply replaying history and there's no new change.
 
 If you use the Graphite CLI, you'll notice that the CLI handles this scenario for you intelligently. When GitHub reports these sorts of merge conflicts, a `gt sync` will pull down the latest changes and rebase PR C for you, cutting out the problematic commits—and a subsequent re-submit will then eliminate the detected merge conflict for PR C.
 
@@ -7409,11 +7564,11 @@ If you use the Graphite CLI, you'll notice that the CLI handles this scenario fo
 
 Each time the cron job processes a merge job it runs through the following decision tree:
 
-* If the base PR in the stack has pending GitHub checks, do nothing.
+- If the base PR in the stack has pending GitHub checks, do nothing.
 
-* If the base PR in the stack is passing all GitHub checks and can be merged, merge. The next PR in the stack is now the new base PR.
+- If the base PR in the stack is passing all GitHub checks and can be merged, merge. The next PR in the stack is now the new base PR.
 
-* If the base PR in the stack has merge conflicts, rebase the PR and re-submit it (re-entering the waiting-for-CI phase).
+- If the base PR in the stack has merge conflicts, rebase the PR and re-submit it (re-entering the waiting-for-CI phase).
 
 During the merge process, Graphite prioritizes:
 
@@ -7423,9 +7578,9 @@ During the merge process, Graphite prioritizes:
 
 To achieve these principles, it's important to note that:
 
-* Graphite merges rather than rebasing each individual PR before merging.
+- Graphite merges rather than rebasing each individual PR before merging.
 
-* Graphite only rebases PRs lazily. When Graphite detects a merge conflict on a PR, Graphite only rebases that PR, and not the additional PRs further up the stack. This means that if a stack has `m` merge conflicts, there will only be `m` total rebases (and additional CI runs) kicked off by the merge process.
+- Graphite only rebases PRs lazily. When Graphite detects a merge conflict on a PR, Graphite only rebases that PR, and not the additional PRs further up the stack. This means that if a stack has `m` merge conflicts, there will only be `m` total rebases (and additional CI runs) kicked off by the merge process.
 
 ### Merge job duration
 
@@ -7465,26 +7620,27 @@ on:
     types: [opened, reopened, synchronize]
     branches-ignore:
       - "**/graphite-base/**"
-```
+```bash
 
 ### Troubleshooting
 
 If your CI hasn't been configured to ignore Graphite's temporary branches yet, your CI job may fail due to an error looking like:
 
-```
+```text
 Fetching base branch: refs/heads/graphite-base/*
 fatal: couldn't find remote ref refs/heads/graphite-base/*
-```
+```text
 
 The workaround is to trigger a fresh CI run on the PR. You can do this by:
 
-* Running `gt sync && gt submit` (this will only work if `gt sync` fetches new commits from trunk and restacks the PR -- otherwise `gt submit` will be a no-op since there were no changes)
-* Submitting a dummy change to the PR
+- Running `gt sync && gt submit` (this will only work if `gt sync` fetches new commits from trunk and restacks the PR -- otherwise `gt submit` will be a no-op since there were no changes)
+- Submitting a dummy change to the PR
 
 The long-term fix to prevent this issue from appearing is [ignoring Graphite's temporary branches in your CI](https://graphite.com/docs/merge-pull-requests#ignoring-graphite%E2%80%99s-temporary-branches-in-your-ci).
 
 
 # Merge Queue Optimizations
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/merge-queue-optimizations
 
 Learn how to speed up your Graphite merge queue
@@ -7533,9 +7689,9 @@ Graphite’s merge queue operates on stacks as the primary unit rather than a PR
 
 When setting up parallel CI mode, you can choose whether to:
 
-* **Run CI on each PR in the stack individually**. This is the highest level of correctness guarantees: it ensures no PR in your stack would independently break trunk.
+- **Run CI on each PR in the stack individually**. This is the highest level of correctness guarantees: it ensures no PR in your stack would independently break trunk.
 
-* **Run CI on the topmost PR in the stack.** This relaxes CI guarantees, while further reducing CI runs. If you require each merged stack to keep trunk green, but don’t have that same strictness for each PR within a stack, then we recommend this mode for a combination of higher speed and lower CI costs.
+- **Run CI on the topmost PR in the stack.** This relaxes CI guarantees, while further reducing CI runs. If you require each merged stack to keep trunk green, but don’t have that same strictness for each PR within a stack, then we recommend this mode for a combination of higher speed and lower CI costs.
 
 ### Example of running CI in parallel
 
@@ -7543,27 +7699,27 @@ Suppose you’ve configured Graphite to run up to 3 parallel CI runs, and you ha
 
 1\. CI starts for `A`. In parallel, Graphite creates these temporary groupings and starts CI at the same time:
 
-* `A` ← `B` (i.e. `B` rebased on `A`), thereby testing this group of 2 PR’s at once
+- `A` ← `B` (i.e. `B` rebased on `A`), thereby testing this group of 2 PR’s at once
 
-* `A` ← `B` ← `C`, thereby testing this group of 3 PR’s at once
+- `A` ← `B` ← `C`, thereby testing this group of 3 PR’s at once
 
 2\. Once `A` succeeds, it’s merged.
 
-* Graphite then starts CI for the grouping: `B` ← `C` ← `D`, thereby testing this group of 3 PR’s at once.
+- Graphite then starts CI for the grouping: `B` ← `C` ← `D`, thereby testing this group of 3 PR’s at once.
 
 3\. Once `B` succeeds, the same process repeats: a group for `C` ← `D` ← `E` is created and CI runs.
 
 4\. If at this point `C` fails, then:
 
-* `C` is evicted from the queue.
+- `C` is evicted from the queue.
 
-* The runs for groups `C` ← `D` and `C` ← `D` ← `E` are both canceled.
+- The runs for groups `C` ← `D` and `C` ← `D` ← `E` are both canceled.
 
 5\. `D` then becomes the first PR in the queue:
 
-* CI starts for `D`.
+- CI starts for `D`.
 
-* Graphite starts CI for the grouping: `D` ← `E`.
+- Graphite starts CI for the grouping: `D` ← `E`.
 
 If your CI tests aren’t flaky, the cost is low and the benefits are high: parallel execution only runs more CI when CI fails in the merge queue.
 
@@ -7573,9 +7729,9 @@ However, because parallel CI assumes that your CI tests in the merge queue will 
 
 **Prerequisites**:
 
-* You must allow the `graphite-app` bot in GitHub to bypass merge restrictions, via your existing branch protection rules or rulesets. See how to set up this up [here](/set-up-merge-queue#bypass-pr-permissions)
+- You must allow the `graphite-app` bot in GitHub to bypass merge restrictions, via your existing branch protection rules or rulesets. See how to set up this up [here](/set-up-merge-queue#bypass-pr-permissions)
 
-* Your repo must support [draft PR's](https://github.blog/2019-02-14-introducing-draft-pull-requests/)
+- Your repo must support [draft PR's](https://github.blog/2019-02-14-introducing-draft-pull-requests/)
 
 **To enable:** go to *Merge queue* in [your Graphite app settings page](https://app.graphite.com/settings/merge-queue), and:
 
@@ -7609,9 +7765,9 @@ When an enqueued PR merges, it’ll be marked as *closed* in GitHub instead of *
 
 ### Further reading about parallel CI
 
-* Read more about [speculative execution](https://www.uber.com/blog/bypassing-large-diffs-in-submitqueue/) in Uber's paper
+- Read more about [speculative execution](https://www.uber.com/blog/bypassing-large-diffs-in-submitqueue/) in Uber's paper
 
-* If you use tools that monitor whether the PR is merged, your integration may stop working. Many tools have options to monitor merged commits rather than PR status: for example, see [Linear's guide on linking commits](https://linear.app/docs/github#link-using-commits).
+- If you use tools that monitor whether the PR is merged, your integration may stop working. Many tools have options to monitor merged commits rather than PR status: for example, see [Linear's guide on linking commits](https://linear.app/docs/github#link-using-commits).
 
 ## Running CI on multiple *groups* of stacks in parallel (batching)
 
@@ -7648,6 +7804,7 @@ Two strategies are supported:
 
 
 # Merge A Stack Of PRs Manually
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/merge-stack-prs-github
 
 Learn how to merge a stack of PRs outside of Graphite.
@@ -7686,6 +7843,7 @@ Merging with stack merge in the Graphite app saves a substantial amount of time.
 
 
 # Merge When Ready
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/merge-when-ready
 
 Learn how to automatically merge PRs with Graphite once all branch protection rules have been met.
@@ -7720,6 +7878,7 @@ Graphite will show the same confirmation modal when disabling merge when ready f
 
 
 # Mergeability Status Check
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/mergeability-status-check
 
 Prevent accidental mid-stack merges.
@@ -7736,25 +7895,26 @@ Since it's an optional check, you can still merge mid-stack if needed.
 
 To configure this status check for your GitHub org:
 
-* Open the Graphite web app's settings page
+- Open the Graphite web app's settings page
 
-* Select the "Mergeability checks" page
+- Select the "Mergeability checks" page
 
-* Edit the `Mergeability check on GitHub` setting
+- Edit the `Mergeability check on GitHub` setting
 
 
 # Develop On Multiple Trunk Branches
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/multiple-trunks
 
 Learn how to develop against multiple trunk branches with the Graphite CLI.
 
 Some codebases don't have a single trunk branch (e.g. all commits go to `main`), but rather multiple longer-lived trunk branches. Some reasons for this workflow may be release/deploy branches, long-lived feature branches, or staging branches. In these setups, creating branches and PRs off the correct trunk branch is critical for many reasons:
 
-* **Developing:** The output of `gt ls` will be clearer, e.g. running `gt ls` on `main` will show stacks based on `main`.
+- **Developing:** The output of `gt ls` will be clearer, e.g. running `gt ls` on `main` will show stacks based on `main`.
 
-* **Reviewing:** Requirements like CI status will be evaluated against the trunk branch's branch protection rules on Graphite's PR page. This is especially useful for upstack PR's, where Graphite evaluates requirements like CI against trunk.
+- **Reviewing:** Requirements like CI status will be evaluated against the trunk branch's branch protection rules on Graphite's PR page. This is especially useful for upstack PR's, where Graphite evaluates requirements like CI against trunk.
 
-* **Merging:** Graphite's [Merge feature for stacks](/merge-pull-requests) will merge down to the correct trunk branch.
+- **Merging:** Graphite's [Merge feature for stacks](/merge-pull-requests) will merge down to the correct trunk branch.
   <Note>[Merge When Ready](/merge-when-ready) is only supported for merges into the default branch of your repo. Make sure you are enabling Merge When Ready only for PRs that you intend to merge into the default branch.</Note>
 
 The guide below shows you how to use Graphite for such projects.
@@ -7765,9 +7925,9 @@ Your CLI version should be >= `1.4.0`. If you are on a lower version, [update yo
 
 You should be familiar with how to:
 
-* [Create branches in a stack](/create-stack)
+- [Create branches in a stack](/create-stack)
 
-* [Create and submit pull requests](https://graphite.com/create-submit-prs)
+- [Create and submit pull requests](https://graphite.com/create-submit-prs)
 
 <Info>Graphite treats each configured trunk independently and can only merge stacked PRs into their trunk. Performing trunk-to-trunk merges, such as updating a long-lived feature trunk with changes from a main trunk or vice-versa, is outside Graphite's scope and users can continue using their own `git` or CI workflow to handle this without conflicting with Graphite.</Info>
 
@@ -7780,7 +7940,7 @@ The trunk branch is the root of your stack that you open PRs against and eventua
 │ ◯  feature1-frontend
 │ ◯  feature1-backend
 ◉─┘  main
-```
+```text
 
 In order to create a PR off a different trunk branch, you need to configure the branch you want to base off of as another trunk. Then you can check out that other trunk branch and create new branches off it. When you submit PRs for the branches based off other trunks, they will be based off these other trunks. The Graphite workflow is the same across trunks and Graphite now makes working with multiple trunks easy.
 
@@ -7795,7 +7955,7 @@ For example, say you had a release branch `release-v10` that you needed to merge
 
 ◉  bug-fix-2
 ◯  release-v10
-```
+```text
 
 To switch back to working off of `main`, simply checkout `main` again with `gt checkout main`. Graphite supports easily switching between branches, even across trunks.
 
@@ -7813,7 +7973,7 @@ Welcome to Graphite!
 ❯   main
     release-v10
     green
-```
+```text
 
 After initial set up, you can then interactively configure what trunk branches you have configured via `gt config`:
 
@@ -7821,7 +7981,7 @@ Run `gt config`:
 
 ```shell theme={null}
 gt config
-```
+```text
 
 Select `Repository-level settings` then `Trunk branches`:
 
@@ -7835,7 +7995,7 @@ Select `Repository-level settings` then `Trunk branches`:
     Tips
     Yubikey reminders
     Exit
-```
+```text
 
 ```bash Terminal theme={null}
 ? Repo-level configuration › - Use arrow-keys. Return to submit.
@@ -7844,7 +8004,7 @@ Select `Repository-level settings` then `Trunk branches`:
     Remote repository
     Back
     Exit
-```
+```text
 
 See your currently configured trunk branches, and the different options for configuring trunk branches:
 
@@ -7858,7 +8018,7 @@ See your currently configured trunk branches, and the different options for conf
     Configure a target trunk to open PRs against
     Back
     Exit
-```
+```bash
 
 ### Adding an additional trunk branch
 
@@ -7874,7 +8034,7 @@ From the interactive menu, select `Add additional trunk branch`:
     Configure a target trunk to open PRs against
     Back
     Exit
-```
+```text
 
 Select the branch you want to configure as a trunk:
 
@@ -7883,13 +8043,13 @@ Select the branch you want to configure as a trunk:
      main
      develop
 ❯    release-v10
-```
+```text
 
 You can also add an additional trunk branch non-interactively by using the `--add` flag with the [gt trunk](/command-reference#gt-trunk) command:
 
 ```bash Terminal theme={null}
 gt trunk --add <trunk-name>
-```
+```bash
 
 ### Removing a configured trunk branch
 
@@ -7907,7 +8067,7 @@ From the interactive menu, select `Remove configured trunk`:
     Configure a target trunk to open PRs against
     Back
     Exit
-```
+```text
 
 Select the configured trunk you would like to remove:
 
@@ -7915,7 +8075,7 @@ Select the configured trunk you would like to remove:
 ? Which configured trunk would you like to remove? ›
 ❯   main
     deploys
-```
+```bash
 
 ### \[Optional] Configuring a target trunk to open PRs against
 
@@ -7935,7 +8095,7 @@ From the interactive menu, select `Configure a target trunk to open PRs against`
 ❯   Configure a target trunk to open PRs against
     Back
     Exit
-```
+```text
 
 Select the local trunk you would like to set a target trunk for:
 
@@ -7946,7 +8106,7 @@ WARNING: This workflow is only recommended if your local branch is a descendant 
 ? Which configured trunk would you like to set a target trunk for? ›
 ❯   green
     release-v10
-```
+```text
 
 Select the remote branch you would like to open PRs against on remote (by default, Graphite opens PRs against the same trunk you have set locally):
 
@@ -7956,7 +8116,7 @@ By default, PRs will be opened against main on remote. ›
     green (default)
 ❯   main
     release-v10
-```
+```bash
 
 ## Working with multiple trunks
 
@@ -7969,7 +8129,7 @@ By default, all Graphite commands assume you are working off a single trunk. For
 ```bash Terminal theme={null}
 > gt trunk
 main
-```
+```text
 
 `gt trunk --all` will print out all your configured trunks:
 
@@ -7977,7 +8137,7 @@ main
 > gt trunk --all
 main
 deploys
-```
+```bash
 
 ### Seeing your stacks across trunks
 
@@ -7989,7 +8149,7 @@ deploys
 │ ◯  feature1-frontend
 │ ◯  feature1-backend
 ◯─┘  main
-```
+```text
 
 `gt log [short] --all` will show you all your stacks across all your configured trunks:
 
@@ -8004,7 +8164,7 @@ deploys
 ◯    bug-fix-2
 │ ◯  bug-fix-3
 ◯─┘  release-v10
-```
+```bash
 
 ### Checking out branches across trunks
 
@@ -8019,7 +8179,7 @@ In the interactive selector, `gt checkout` will by-default only show you options
     │ ◯  feature1-frontend
     │ ◯  feature1-backend
     ◯─┘  main
-```
+```text
 
 Add the `--all` flag to see all branches across all configured trunks.
 
@@ -8035,7 +8195,7 @@ Add the `--all` flag to see all branches across all configured trunks.
     ◯    bug-fix-2
     │ ◯  bug-fix-3
     ◯─┘  release-v10 (trunk)
-```
+```bash
 
 ### Moving branches across trunks
 
@@ -8055,12 +8215,13 @@ Before `1.4.0`, Graphite only supported working off a single trunk at a time. So
 
 ```bash Terminal theme={null}
 gt init --trunk <trunk-name>
-```
+```text
 
 There was no real support for working on multiple trunks simultaneously.
 
 
 # Navigate A Stack
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/navigate-stack
 
 Learn how to navigate stacked branches with the Graphite CLI.
@@ -8073,13 +8234,13 @@ Learn how to navigate stacked branches with the Graphite CLI.
 
 To navigate a stack of branches with the Graphite CLI, make sure you've:
 
-* [Installed and configured the CLI](/install-the-cli)
+- [Installed and configured the CLI](/install-the-cli)
 
-* [Authenticated with GitHub](/install-the-cli#authenticating-the-cli)
+- [Authenticated with GitHub](/install-the-cli#authenticating-the-cli)
 
-* [Initialized `gt`](/cli-quick-start#initializing-graphite) in a repo of your choice
+- [Initialized `gt`](/cli-quick-start#initializing-graphite) in a repo of your choice
 
-* [Created](/create-stack) or tracked a branch/stack of branches
+- [Created](/create-stack) or tracked a branch/stack of branches
 
 ## `gt log`
 
@@ -8107,20 +8268,23 @@ You can use `gt log` to view the current state of your repository:
 ◯ main
 │ 5 weeks ago
 │
-```
+```bash
 
 ### Check out a branch
 
 Branches in Graphite are just `git` branches under the hood—you can check them out with native `git`, but the easiest way is to use `gt checkout`:
 
 ```bash Terminal theme={null}
+
 # checkout pp--06-14-part_1
+
 gt checkout pp--06-14-part_1
 
 
 # even easier, use the alias!
+
 gt co pp--06-14-part_1
-```
+```text
 
 If you aren't sure which branch you want to checkout, you can also use `gt checkout` (or `gt co`) in interactive mode:
 
@@ -8133,7 +8297,7 @@ If you aren't sure which branch you want to checkout, you can also use `gt check
     pp--06-14-part_2
 ❯   pp--06-14-part_1
     main
-```
+```text
 
 Now, you can see in `gt log short` you're on `part_1` as intended:
 
@@ -8145,7 +8309,7 @@ Now, you can see in `gt log short` you're on `part_1` as intended:
 ◯  pp--06-14-part_2
 ◉  pp--06-14-part_1
 ◯  main
-```
+```bash
 
 ### Move up and down a stack
 
@@ -8154,41 +8318,60 @@ Sometimes you want to move to the branch directly above or below the current bra
 Since `gt bottom` takes you to the bottom-most branch in your stack not including your trunk branch, you can use `gt checkout --trunk/-t`, which always takes you to your `trunk` branch (e.g. `main`):
 
 ```bash Terminal theme={null}
+
 # check out the branch directly upstack (in this case part_2)
+
 gt up
+
 #alias for branch up
+
 gt u
 
 
 # check out the branch directly downstack (in this case back to part_1)
+
 gt down
+
 #alias for branch down
+
 gt d
 
 
 # move multiple branches at a time (up to part_3)
+
 gt up 2
+
 # alias for branch up 2
+
 gt u 2
 
 
 # move multiple branches at a time (back to main)
+
 gt down 3
+
 # alias for branch down 3
+
 gt d 3
 
 
 # move to the tip of the stack (back to part_3)
+
 gt top
+
 # alias for branch top
+
 gt t
 
 
 # move to the base of the stack, not including trunk (to part_1)
+
 gt bottom
+
 # alias for branch bottom
+
 gt b
-```
+```text
 
 <Note>
   If you find yourself navigating a complex stack where there are multiple children of a particular branch, `gt up` and `gt top` will ask which child branch you'd like to checkout if there's ever ambiguity.
@@ -8196,6 +8379,7 @@ gt b
 
 
 # Onboarding FAQs
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/onboarding-troubleshooting
 
 Answers to common questions when getting started with Graphite.
@@ -8244,6 +8428,7 @@ If you have not been removed and the organization uses [SAML SSO authentication]
 
 
 # Setting Up A Proof Of Concept
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/onboarding-your-team
 
 Best practices for teams new to stacking with Graphite.
@@ -8262,34 +8447,35 @@ Commit to using Graphite for at least one month as a team - this gives everyone 
 
 Pick some heuristics to help identify how your team is trending. [Graphite Insights](/insights) provides plenty of data to gauge and improve developer productivity. When starting out, it’s useful to monitor:
 
-* *Median PR size*: When your team starts stacking, their PRs should get smaller.
+- *Median PR size*: When your team starts stacking, their PRs should get smaller.
 
-* *Median wait time to first review*. PRs should be reviewed quickly, which is typically indicative of right-sized PRs and good team patterns. You want this number to stay stable or decrease over time.
+- *Median wait time to first review*. PRs should be reviewed quickly, which is typically indicative of right-sized PRs and good team patterns. You want this number to stay stable or decrease over time.
 
-* *Average number of review cycles until merge*: PRs that are merged quickly are indicative of quick PR review cycles, which is representative of good collaboration practices. PRs that are self-contained are easier to review and limit the duration of iteration cycles and issues with merging. The longer it takes a PR to merge, the likelier it is to create more merge conflicts. You want this number to stay stable or decrease over time.
+- *Average number of review cycles until merge*: PRs that are merged quickly are indicative of quick PR review cycles, which is representative of good collaboration practices. PRs that are self-contained are easier to review and limit the duration of iteration cycles and issues with merging. The longer it takes a PR to merge, the likelier it is to create more merge conflicts. You want this number to stay stable or decrease over time.
 
-* *Total PRs merged*: Small PRs get merged faster. You should see this number increasing as your team gets more familiar with stacking and using Graphite.
+- *Total PRs merged*: Small PRs get merged faster. You should see this number increasing as your team gets more familiar with stacking and using Graphite.
 
 ### Emphasize high-leverage features
 
 Graphite is designed to make engineers more efficient at every turn. Here are a handful of Graphite features that tend to show the most immediate impact:
 
-* [Stacking in the CLI](/create-stack): Quickly create stacks with the CLI.
+- [Stacking in the CLI](/create-stack): Quickly create stacks with the CLI.
 
-* [Merge a stack](/merge-pull-requests): Use Graphite’s automated solution to merge a stack of PRs.
+- [Merge a stack](/merge-pull-requests): Use Graphite’s automated solution to merge a stack of PRs.
 
-* [PR review capabilities](/pr-page-overview): Comment on unchanged lines of code, unresolved threads, and suggested edits.
+- [PR review capabilities](/pr-page-overview): Comment on unchanged lines of code, unresolved threads, and suggested edits.
 
-* [PR versions](/pull-request-versions): See and compare versions of a pull request to keep track of the history of a PR.
+- [PR versions](/pull-request-versions): See and compare versions of a pull request to keep track of the history of a PR.
 
-* [VS Code extension](/vs-code-extension): This is especially useful for engineers who are less comfortable using a CLI.
+- [VS Code extension](/vs-code-extension): This is especially useful for engineers who are less comfortable using a CLI.
 
-* [PR inbox](/use-pr-inbox): Even dedicated CLI users can find value in using the PR inbox to quickly see the state of their PRs, which ones need their attention, and have the ability to customize their inbox filters and layout.
+- [PR inbox](/use-pr-inbox): Even dedicated CLI users can find value in using the PR inbox to quickly see the state of their PRs, which ones need their attention, and have the ability to customize their inbox filters and layout.
 
-* [Notifications](/slack-notifications): Get PRs reviewed quickly by integrating with Slack. Receive real-time notifications and approve, comment, or request changes on a PR directly from Slack.
+- [Notifications](/slack-notifications): Get PRs reviewed quickly by integrating with Slack. Receive real-time notifications and approve, comment, or request changes on a PR directly from Slack.
 
 
 # PR Page overview
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/pr-page-overview
 
 Learn how to review pull requests on Graphite.
@@ -8297,8 +8483,8 @@ Learn how to review pull requests on Graphite.
 This page walks you through the different sections of the Graphite PR page, and their purposes.
 You can be notified that a PR needs your review in Graphite in one of two ways:
 
-* Pull requests appear in the *Needs Review* section of your pull request inbox
-* Through the Graphite integration for Slack
+- Pull requests appear in the *Needs Review* section of your pull request inbox
+- Through the Graphite integration for Slack
 
 <Frame>
   <iframe title="YouTube video player" />
@@ -8330,13 +8516,13 @@ Discussion is below the PR description, and contains PR-level comments that aren
 
 PR info and statuses appear in the top right of the page.
 
-* **Status** of the PR appears at the top right of the page.
-* **Review status** shows whether the PR is waiting on reviewers or if it's ready to merge. It will also show if Graphite Agent found any issues.
-* **Checks** is an expandable toggle that contains your CI checks and their information. You can click on the checks to open them in GitHub.
-* **Reviewers** contains the currently assigned reviewers. You can hover over the reviewers to remove them or re-request a review.
-* **Labels** are the labels assigned to the PR, where you can add or remove them.
-* **Assignees** are the owner(s) of the PR.
-* **Related tasks** are related tasks from your project management platform (such as Linear).
+- **Status** of the PR appears at the top right of the page.
+- **Review status** shows whether the PR is waiting on reviewers or if it's ready to merge. It will also show if Graphite Agent found any issues.
+- **Checks** is an expandable toggle that contains your CI checks and their information. You can click on the checks to open them in GitHub.
+- **Reviewers** contains the currently assigned reviewers. You can hover over the reviewers to remove them or re-request a review.
+- **Labels** are the labels assigned to the PR, where you can add or remove them.
+- **Assignees** are the owner(s) of the PR.
+- **Related tasks** are related tasks from your project management platform (such as Linear).
 
 <Frame>
   <img />
@@ -8384,11 +8570,11 @@ While reviewing, you can directly leave a suggested code edit to streamline the 
 
 If you hover over any lines in the diff, you can use the overflow menu to perform actions on the associated lines of code.
 
-* **Add comment** allows you to add a comment on that line.
-* **Suggest change** allows you to add a suggested edit.
-* **Add to chat** will open the Chat sidebar and add the selected lines to the Chat context, where you can prompt Graphite Agent to fix the code, explain it, or improve it.
-* **Copy code** allows you to copy the code from that line.
-* **Copy link** creates a shareable link to the line of code you selected.
+- **Add comment** allows you to add a comment on that line.
+- **Suggest change** allows you to add a suggested edit.
+- **Add to chat** will open the Chat sidebar and add the selected lines to the Chat context, where you can prompt Graphite Agent to fix the code, explain it, or improve it.
+- **Copy code** allows you to copy the code from that line.
+- **Copy link** creates a shareable link to the line of code you selected.
 
 <img alt="Adding comments" />
 
@@ -8402,6 +8588,7 @@ If you'd like to approve a PR without a comment, use the shortcut **R** then **Y
 
 
 # Pricing FAQ
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/pricing-faq
 
 Your pricing questions, answered.
@@ -8410,20 +8597,20 @@ Your pricing questions, answered.
 
 We have plenty of resources for Graphite champions. Here are a few:
 
-* Documentation on **[why your team should use Graphite](https://graphite.com/docs/why-you-should-use-graphite)**
-* Case studies that show [**how Graphite improved developer productivity**](https://graphite.com/customers) at Asana, Ramp, and Shopify.
-* [**Schedule a Graphite demo**](https://graphite.com/contact-us) for your team!
+- Documentation on **[why your team should use Graphite](https://graphite.com/docs/why-you-should-use-graphite)**
+- Case studies that show [**how Graphite improved developer productivity**](https://graphite.com/customers) at Asana, Ramp, and Shopify.
+- [**Schedule a Graphite demo**](https://graphite.com/contact-us) for your team!
 
 ### **Do you have an individual tier?**
 
 We have a Hobby tier on personal repositories with these features:
 
-* GitHub sync with personal repos
-* Inbox/Notifications
-* CLI/VSCode/MCP
-* AI PR titles and descriptions
-* Limited AI Chat
-* Limited AI reviews
+- GitHub sync with personal repos
+- Inbox/Notifications
+- CLI/VSCode/MCP
+- AI PR titles and descriptions
+- Limited AI Chat
+- Limited AI reviews
 
 ### **When does my trial end?**
 
@@ -8469,6 +8656,7 @@ If you have sophisticated merge queue needs that aren’t met by the Team plan, 
 
 
 # Privacy & Security
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/privacy-and-security
 
 Learn how Graphite prioritizes security to safeguard your source code.
@@ -8485,25 +8673,25 @@ We recommend authenticating via the Graphite GitHub App when you first create yo
 
 The Graphite GitHub App asks for the following permissions:
 
-* `Read & write: actions, checks, contents, pull requests, workflows`
+- `Read & write: actions, checks, contents, pull requests, workflows`
 
-  * Used to create, display, update, and merge PRs with Graphite
+- Used to create, display, update, and merge PRs with Graphite
 
-* `Read: administration, commit statuses, deployments, issues, metadata`
+- `Read: administration, commit statuses, deployments, issues, metadata`
 
-  * Used to display PRs and their relevant statuses and metadata on Graphite
+- Used to display PRs and their relevant statuses and metadata on Graphite
 
-* `Read: organization properties, roles, and members`
+- `Read: organization properties, roles, and members`
 
-  * Used to display organization info on Graphite
+- Used to display organization info on Graphite
 
-* `Read: user emails`
+- `Read: user emails`
 
-  * Used to send transactional emails about Graphite
+- Used to send transactional emails about Graphite
 
-* `Webhook event subscriptions`
+- `Webhook event subscriptions`
 
-  * Used to keep Graphite's view of GitHub data up-to-date in real time, allowing for best performance of many features (only available with GitHub App authentication)
+- Used to keep Graphite's view of GitHub data up-to-date in real time, allowing for best performance of many features (only available with GitHub App authentication)
 
 <Note>
   Depending on your GitHub organization's settings, you may have to "request to add" the Graphite GitHub App—one of your GitHub organization owner will then have to approve the app for use, at which point you'll be able to sign into Graphite.
@@ -8531,11 +8719,11 @@ We've also crafted the feature to be PR-by-PR opt-in; if you don't press the but
 
 During normal usage of the CLI and the website, Graphite will generate and store logs to help us better debug in the event of an error and better understand the profile of our users. Examples of that data include:
 
-* Metadata about your repository: for example, number of branches or counts of Graphite commands being run. We use this to debug failing commands in the CLI (for example, in the past we found that a repository with a very high number of branches would cause the CLI to hang).
+- Metadata about your repository: for example, number of branches or counts of Graphite commands being run. We use this to debug failing commands in the CLI (for example, in the past we found that a repository with a very high number of branches would cause the CLI to hang).
 
-* Metadata about your usage: for example, commands being run, command run time, or any CLI errors. We use this to understand where to further our engineering investment and understand how widespread issues are.
+- Metadata about your usage: for example, commands being run, command run time, or any CLI errors. We use this to understand where to further our engineering investment and understand how widespread issues are.
 
-* Metadata about your GitHub account: for example, organizations which you're a member of on GitHub. We use this to track the usage of our product and understand what types of organizations we work best for.
+- Metadata about your GitHub account: for example, organizations which you're a member of on GitHub. We use this to track the usage of our product and understand what types of organizations we work best for.
 
 ## How Graphite keeps your source code safe
 
@@ -8555,6 +8743,7 @@ For more information about our security practices, certifications, and policies,
 
 
 # Pull Request Versions
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/pull-request-versions
 
 Learn how to view the history of changes to a PR in Graphite using versions.
@@ -8585,6 +8774,7 @@ Clicking `hide reviewed changes` automatically changes your view so you see a co
 
 
 # Restack Branches
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/restack-branches
 
 Learn to restack Git branches efficiently with Graphite's CLI.
@@ -8593,15 +8783,15 @@ Learn to restack Git branches efficiently with Graphite's CLI.
 
 You should be familiar with how to:
 
-* [Create branches in a stack](/create-stack)
+- [Create branches in a stack](/create-stack)
 
-* [Visualize a stack](/visualize-stack)
+- [Visualize a stack](/visualize-stack)
 
-* [Create and submit pull requests](/create-submit-prs)
+- [Create and submit pull requests](/create-submit-prs)
 
-* [Update mid-stack branches](/update-mid-stack-branches)
+- [Update mid-stack branches](/update-mid-stack-branches)
 
-* [Sync changes from a remote repository](/sync-with-a-remote-repo)
+- [Sync changes from a remote repository](/sync-with-a-remote-repo)
 
 A key benefit of using Graphite as opposed to vanilla `git` when working with stacks is dependency management for your branches—keeping track of the "parent" of a given branch. When a parent branch changes in some way or is deleted, vanilla `git`, because it does not have this concept of branch dependencies, leaves the parent as-is.
 
@@ -8618,7 +8808,7 @@ Here's the output of `gt log long` to get an idea of what's happening on the `gi
 | * 6fe5a7c - (14 hours ago) part 2 - Pranathi Peri (HEAD -> pp--06-14-part_2, origin/pp--06-14-part_2)
 | * 4f3f756 - (14 hours ago) part 1 - Pranathi Peri
 |/
-```
+```text
 
 `main` has advanced to the squash-and-merge commit for `part_1`, but `part_2`—even though it is supposed to be based on `main` now—is actually still sitting on the old version of `part_1`.
 
@@ -8639,7 +8829,7 @@ To fix and continue your previous Graphite command:
 (2) mark them as resolved with gt add .
 (3) run gt continue to continue executing your previous Graphite command
 It's safe to cancel the ongoing rebase with `gt abort`
-```
+```text
 
 Resolving merge conflicts during a restack is performed the same way as amending or creating a new commit on a branch in the middle of a stack:
 
@@ -8665,12 +8855,13 @@ Restacked pp--06-14-part_3 on pp--06-14-part_2.
 * 543c8b3 - (14 hours ago) part 3 - Pranathi Peri (pp--06-14-part_3)
 * 778006d - (14 hours ago) part 2 - Pranathi Peri (HEAD -> pp--06-14-part_2)
 * ff393d3 - (44 minutes ago) part 1 (#100) - Pranathi Peri (origin/main, origin/HEAD, main)
-```
+```text
 
 After running the `restack` command, you can see that `git` and `gt` are in agreement about the history. Next, you may want to resubmit the restacked versions of these branches (`gt submit`), or make some changes to a branch mid-stack to address any review comments.
 
 
 # Set Up The Graphite Merge Queue
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/set-up-merge-queue
 
 
@@ -8681,9 +8872,9 @@ The merge queue is **repository-specific**. When you enable it for a repository,
 
 ## Prerequisites
 
-* [Graphite Team or Enterprise plan](/pricing-faq)
+- [Graphite Team or Enterprise plan](/pricing-faq)
 
-* [Graphite App installed](/authenticate-with-github-app) on your org
+- [Graphite App installed](/authenticate-with-github-app) on your org
 
 ## Enable the Graphite merge queue for your repository
 
@@ -8713,9 +8904,9 @@ Some orgs may use both if transitioning from branch protection rules to rulesets
 
 Some repositories restrict which accounts can merge to the trunk branch with the **Restrict who can push to matching branches** branch protection rule.
 
-* **Required:** if this setting is already enabled for your repo's trunk branch, add `graphite-app` to the list of actors with push access. Otherwise, this rule will prevent the merge queue from merging PRs.
+- **Required:** if this setting is already enabled for your repo's trunk branch, add `graphite-app` to the list of actors with push access. Otherwise, this rule will prevent the merge queue from merging PRs.
 
-* **Strongly recommended:** enable this setting, and make `graphite-app` the *only* actor with push access. This helps your teammates remember to use the merge queue for merging.
+- **Strongly recommended:** enable this setting, and make `graphite-app` the *only* actor with push access. This helps your teammates remember to use the merge queue for merging.
 
 <Info>
   Graphite is not "required" to be the controller of history on `main`—and combining Graphite merge queue merges and non-merge queue merges will function—but the experience is much worse. If there are merges made to `main` outside the merge queue, they will be detected and the merge queue will restart the merge (rebase on top of those changes and restart CI) that is currently active. This could lead to failures if a timeout is configured for the merge queue, and results in users constantly being pushed behind non-merge queue users.
@@ -8753,9 +8944,9 @@ In order to implement speed improvements, the Graphite merge queue requires the 
 
 Under *Protect matching branches* → *Require a pull request before merging*
 
-* Ensure that you have **Allow specified actors to bypass required pull requests** selected
+- Ensure that you have **Allow specified actors to bypass required pull requests** selected
 
-* Add the Graphite App (graphite-app) to the list of who can bypass required requests
+- Add the Graphite App (graphite-app) to the list of who can bypass required requests
 
 <Frame>
   <img />
@@ -8781,9 +8972,9 @@ When you enable the Graphite merge queue for your repository, there are a few se
 
 ### Default merge strategy
 
-* **Rebase**: rebase your changes on top of your trunk with commits unchanged (equivalent to GitHub's rebase and merge)
+- **Rebase**: rebase your changes on top of your trunk with commits unchanged (equivalent to GitHub's rebase and merge)
 
-* **Squash**: rebase your changes on top of your trunk with each PR squashed to a single commit (equivalent to GitHub's squash and merge)
+- **Squash**: rebase your changes on top of your trunk with each PR squashed to a single commit (equivalent to GitHub's squash and merge)
 
 If you haven't enabled the queue, you can change the merge strategy for your PR directly from the merge modal. When the queue is enabled, you can set the merge strategy at the queue level so that all the PRs that are queued to that merge queue abide by the same rule.
 
@@ -8807,6 +8998,7 @@ For more information on using the label to enqueue PRs see [here](/get-started-m
 
 
 # Set up merge queue integration
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/setup-merge-queue-integration
 
 To allow users to merge stacks via the Graphite UI, Graphite needs to know who to hand off PRs to for merging
@@ -8819,6 +9011,7 @@ To allow users to merge stacks via the Graphite UI, Graphite needs to know who t
 
 
 # Configure recommended CI settings
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/setup-recommended-ci-settings
 
 Set up your GitHub repository's CI to work well with Graphite
@@ -8829,13 +9022,13 @@ You should configure your CI to ignore PRs whose base branch is named `graphite-
 
 Here’s how to disable running CI for these branches in GitHub Actions:
 
-```
+```text
 on:
   pull_request:
     types: [opened, reopened, synchronize]
     branches-ignore:
       - "**/graphite-base/**"
-```
+```text
 
 For more information about when and why these temporary branches get created, refer to [Automatic rebasing](/merge-pull-requests#automatic-rebasing).
 
@@ -8849,6 +9042,7 @@ We provide [CI Optimizations](/stacking-and-ci) that allow you to conditionally 
 
 
 # Slack Notifications
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/slack-notifications
 
 Learn how to integrate Graphite with Slack to receive real-time, actionable notifications about your PRs.
@@ -8861,7 +9055,7 @@ You have the ability to configure Slack notifications for PR activities like rev
 
 ### Prerequisites
 
-* A Slack workspace (free or paid)
+- A Slack workspace (free or paid)
 
 ## Install Graphite for Slack
 
@@ -8901,26 +9095,27 @@ The Slack integration gives you the option to directly review and merge PRs from
 
 For the purpose of providing personalized and configurable updates and information about code contributions, the Graphite app can:
 
-* Send messages as **@graphite** in selected channels
+- Send messages as **@graphite** in selected channels
 
-* Start direct messages with people
+- Start direct messages with people
 
-* Upload, edit, and delete files as **Graphite**
+- Upload, edit, and delete files as **Graphite**
 
-* View files shared in channels and conversations that Graphite has been added to
+- View files shared in channels and conversations that Graphite has been added to
 
-* Add, edit, and delete remote files on a user’s behalf
+- Add, edit, and delete remote files on a user’s behalf
 
-* View remote files added by the app in a workspace
+- View remote files added by the app in a workspace
 
-* Show previews of app.graphite.com URLs in messages
+- Show previews of app.graphite.com URLs in messages
 
-* View people in a workspace
+- View people in a workspace
 
-* View URLs from app.graphite.com
+- View URLs from app.graphite.com
 
 
 # Squash, Fold, And Split Changes
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/squash-fold-split
 
 Learn how to squash, fold, and split changes with the Graphite CLI.
@@ -8929,11 +9124,11 @@ Learn how to squash, fold, and split changes with the Graphite CLI.
 
 You should be familiar with how to:
 
-* [Create branches in a stack](/create-stack)
+- [Create branches in a stack](/create-stack)
 
-* [Visualize a stack](/visualize-stack)
+- [Visualize a stack](/visualize-stack)
 
-* [Update mid-stack branches](/update-mid-stack-branches)
+- [Update mid-stack branches](/update-mid-stack-branches)
 
 ## Squash commits in a branch
 
@@ -8960,6 +9155,7 @@ You should be familiar with how to:
 
 
 # we want to squash the three commits on 06-28-second_branch into one
+
 > gt squash
 
 
@@ -8981,7 +9177,7 @@ You should be familiar with how to:
 │ 10 minutes ago
 │
 │ 1e0b290 - Merging a pull request
-```
+```bash
 
 ## Fold branches together
 
@@ -9007,8 +9203,11 @@ You should be familiar with how to:
 
 
 # we want to fold 06-28-second_branch into 06-28-first_branch
+
 > gt fold
+
 # or
+
 > gt f
 Folded 06-28-second_branch into 06-28-first_branch.
 
@@ -9025,17 +9224,17 @@ Folded 06-28-second_branch into 06-28-first_branch.
 │ 10 minutes ago
 │
 │ 1e0b290 - Merging a pull request
-```
+```bash
 
 ## Split a branch into multiple branches
 
 `gt split` splits the current branch into two or more branches. You can use one of three methods to split a branch:
 
-* `--by-commit/--commit/-c`
+- `--by-commit/--commit/-c`
 
-* `--by-hunk/--hunk/-h`
+- `--by-hunk/--hunk/-h`
 
-* `--by-file/--file/-f`
+- `--by-file/--file/-f`
 
 If there is only one commit on the branch, you will enter `hunk` mode automatically. If there's more than one commit on the branch and you don't pass in an option, you'll be prompted to choose one.
 
@@ -9060,11 +9259,11 @@ This mode allows you to split your branch by selecting hunks that you'd like to 
 This mode allows you to split files matching the specified pathspec into a new parent branch of the branch you're splitting.
 Examples:
 
-* `gt split --by-file "*.json"` : all json files
+- `gt split --by-file "*.json"` : all json files
 
-* `gt split -f "folder/**"` : all files in the specified folder
+- `gt split -f "folder/**"` : all files in the specified folder
 
-* `gt split -f "*.json" -f "*.yaml"` : match multiple patterns
+- `gt split -f "*.json" -f "*.yaml"` : match multiple patterns
 
 <Note>
   The branch name on a GitHub PR is **immutable**, so if you already have a PR open for a branch you're splitting and would like one of the new branches to stay attached to the PR, **make sure to give the original branch's name to that new branch**!
@@ -9074,6 +9273,7 @@ Examples:
 
 
 # CI Optimizations
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/stacking-and-ci
 
 Learn CI optimizations & best practices for stacked pull requests.
@@ -9088,19 +9288,19 @@ To solve this, Graphite offers an API endpoint for your CI workflows to query, a
 
 CI Optimizations is set up per-repository, and requires a very small amount of configuration, namely:
 
-* How many PRs at the bottom of each stack should run CI?
+- How many PRs at the bottom of each stack should run CI?
 
-* Should CI be run at the top of the stack?
+- Should CI be run at the top of the stack?
 
 In addition to this configuration, you'll add a step to your CI that calls the Graphite Buildkite/GitHub actions step. These CI steps are open-source, so you know exactly what is running in your CI pipeline. The details on adding these steps can be found below.
 
 Each step is a wrapper script for a very simple API call that responds with a boolean: whether CI should be skipped. You don't need to worry about handling the API response manually or querying any additional data about the PR/stack from GitHub to decide whether to run CI – just add the step to the beginning of your configuration.
 
-* If the request to our API is malformed or errors for any reason, we will not skip CI
+- If the request to our API is malformed or errors for any reason, we will not skip CI
 
-* If CI Optimizations have been disabled, we will not skip CI
+- If CI Optimizations have been disabled, we will not skip CI
 
-* If the PR is in a merge queue or merging as a stack with Graphite, we will not skip CI
+- If the PR is in a merge queue or merging as a stack with Graphite, we will not skip CI
 
 ## How to set up CI Optimizations
 
@@ -9164,19 +9364,19 @@ Note: you can test Buildkite pipeline changes in branches/PRs before merging the
 
 ```yaml YAML theme={null}
 steps:
-  - name: ":graphite: Graphite CI optimizer"
+- name: ":graphite: Graphite CI optimizer"
     soft_fail: true
     plugins:
       withgraphite/graphite-ci#main:
         graphite_token: "xxxxxxxxxxxxxxxxxxxxxxx"
 
 
-  - wait
+- wait
 
   # the rest of your jobs in the pipeline
-  - label: "Your first job to run after the optimizer"
+- label: "Your first job to run after the optimizer"
     command: echo "hello"
-```
+```text
 
 *Note: You should *[*securely pass your token*](https://buildkite.com/pipelines/security/managing-secrets)* to the Graphite plugin instead of storing it in your pipeline configuration.*
 
@@ -9204,7 +9404,7 @@ jobs:
 
   your_second_job:
     ...
-```
+```text
 
 Then **for each job** in the workflow you want to optimize, add the following YAML:
 
@@ -9213,7 +9413,7 @@ job_name:
   needs: optimize_ci
   if: needs.optimize_ci.outputs.skip == 'false'
   ...
-```
+```text
 
 This ensures the optimized jobs only run when the CI optimizer gives them the signal.
 
@@ -9227,11 +9427,11 @@ Graphite's Buildkite and GitHub Actions integrations are configured to "fail ope
 
 Google recommends breaking up your tests from one CI job into many which run at different points. One recommended split is:
 
-* CI that runs on all PRs
+- CI that runs on all PRs
 
-* CI that runs on PRs, excluding upstack
+- CI that runs on PRs, excluding upstack
 
-* CI that runs after PRs merge to main
+- CI that runs after PRs merge to main
 
 In GitHub actions, and other providers, you can do this by creating multiple workflows and setting different triggers for them.
 
@@ -9257,6 +9457,7 @@ This can be very useful for organizations that merge a lot of stacks.
 
 
 # Sync Changes From A Remote Repository
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/sync-with-a-remote-repo
 
 Learn how to sync changes from a remote repository with Graphite's CLI, managing branch updates and conflicts.
@@ -9265,13 +9466,13 @@ Learn how to sync changes from a remote repository with Graphite's CLI, managing
 
 You should be familiar with how to:
 
-* [Create branches in a stack](/create-stack)
+- [Create branches in a stack](/create-stack)
 
-* [Visualize a stack](/visualize-stack)
+- [Visualize a stack](/visualize-stack)
 
-* [Create and submit pull requests](/create-submit-prs)
+- [Create and submit pull requests](/create-submit-prs)
 
-* [Update mid-stack branches](/update-mid-stack-branches)
+- [Update mid-stack branches](/update-mid-stack-branches)
 
 ## Sync changes from your remote repository
 
@@ -9279,11 +9480,11 @@ If your remote `trunk` branch (also known as `origin/main`) gets ahead of your l
 
 `gt sync` does a few things:
 
-* Pulls in the latest changes from `main`
+- Pulls in the latest changes from `main`
 
-* Prompts you to delete any stale local branches which have been merged into trunk
+- Prompts you to delete any stale local branches which have been merged into trunk
 
-* [Restacks](https://graphite.com/docs/restack-branches) your upstack branches which have not been merged and your current stack onto `main`. If you encounter any merge conflicts, you'll be prompted to resolve them.
+- [Restacks](https://graphite.com/docs/restack-branches) your upstack branches which have not been merged and your current stack onto `main`. If you encounter any merge conflicts, you'll be prompted to resolve them.
 
 Let's say that you've squash-and-merged in the first branch in your stack, `pp--06-14-part_1`, of a three-branch stack. Since you know that your `main` branch has been updated with the changes of `pp--06-14-part_1,` you can sync that change from remote using the `gt sync` command:
 
@@ -9298,7 +9499,7 @@ main fast-forwarded to 4604ea03f728126332fa23bbfa74643c18d2fca3.
 Deleted branch pp--06-14-part_1
 Restacked pp--06-14-part_2 on main.
 Restacked pp--06-14-part_3 on pp--06-14-part_2.
-```
+```text
 
 If you run `gt log`, you see that `part_2` is now based on `main`:
 
@@ -9322,7 +9523,7 @@ If you run `gt log`, you see that `part_2` is now based on `main`:
 ◯ main (current)
 │ 30 minutes ago
 │
-```
+```bash
 
 ### Dealing with conflicts
 
@@ -9336,12 +9537,13 @@ If these changes conflict with changes you've made, `gt sync` might output somet
 All branches restacked cleanly, except for:
 ▸ 09-14-part_4
 You can fix these conflicts with gt restack.
-```
+```text
 
 This means you need to check out `09-14-part_4` and run `gt restack`, which will take into standard `git` conflict resolution (just like if you had hit conflicts during `gt modify`).
 
 
 # Track Branches
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/track-branches
 
 Learn how to track git branches with the Graphite CLI.
@@ -9350,15 +9552,15 @@ Learn how to track git branches with the Graphite CLI.
 
 You should be familiar with how to:
 
-* [Create branches in a stack](/create-stack)
+- [Create branches in a stack](/create-stack)
 
-* [Visualize a stack](/visualize-stack)
+- [Visualize a stack](/visualize-stack)
 
-* [Create and submit pull requests](/create-submit-prs)
+- [Create and submit pull requests](/create-submit-prs)
 
-* [Edit the order of branches in a stack](/edit-branch-order)
+- [Edit the order of branches in a stack](/edit-branch-order)
 
-* [Sync changes from a remote repository](/sync-with-a-remote-repo)
+- [Sync changes from a remote repository](/sync-with-a-remote-repo)
 
 ## Track branches with the CLI
 
@@ -9368,15 +9570,15 @@ If you're just getting started with Graphite, it's likely you have some branches
 
 `git` passthrough enables users to switch between native `git` commands and `gt` without interrupting their workflow. There are a number of `git` commands that aren't implemented in `gt` because there's no need to recreate them. Here are several you may find useful throughout your workflow:
 
-* `git add`: Stage files to commit; `-p` is helpful for precise cases
+- `git add`: Stage files to commit; `-p` is helpful for precise cases
 
-* `git stash:` Save changes for later (retrieve with `git stash pop`). Since restacking requires the working tree to be clean, stashing changes you don't intend to commit is often necessary while using `gt`. The `-p` option is just like `git add`'s.
+- `git stash:` Save changes for later (retrieve with `git stash pop`). Since restacking requires the working tree to be clean, stashing changes you don't intend to commit is often necessary while using `gt`. The `-p` option is just like `git add`'s.
 
-* `git diff`: See what has changed between two branches.
+- `git diff`: See what has changed between two branches.
 
-* `git status`: Keep track of your worktree and staging area, just like `git`.
+- `git status`: Keep track of your worktree and staging area, just like `git`.
 
-* `git rebase`: Useful for preparing branches created outside of Graphite to be tracked (see below). Also potentially dangerous (see below).
+- `git rebase`: Useful for preparing branches created outside of Graphite to be tracked (see below). Also potentially dangerous (see below).
 
 Knowing the effects/benefits of `git` passthrough is useful when working with externally created branches, since you may need to use a combination of `git` and `gt` commands to update your working state. If you ever need to do something that isn't natively supported in `gt`, you can *always* jump back to `git` and sync your changes to `gt` if needed.
 
@@ -9387,17 +9589,23 @@ Because of the "restacking" model, it is always safe to update your branches wit
 If you use `git` instead of `gt` to create a branch, you must let `gt` know what its parent is with `gt track`. It prompts you to select a parent for the current branch from the branch's `git` history:
 
 ```bash Terminal theme={null}
+
 # Ensure the branch you want to track has the desired parent in its history
+
 # In this case, we want to stack our branch `first_branch` on `main`
+
 git checkout first_branch
 git rebase main first_branch
 
 
 # Now, we'll track our branch
+
 gt track
+
 # alias
+
 gt tr
-```
+```text
 
 If there is more than one potential parent for the `first_branch`, you'll be prompted to select one:
 
@@ -9406,13 +9614,13 @@ If there is more than one potential parent for the `first_branch`, you'll be pro
 ❯   last_branch
     some_other_branch
     main
-```
+```text
 
 If you want to track a specific branch that already exists, you can pass the branch name as an argument to `branch track`:
 
 ```bash Terminal theme={null}
 gt track <DESIRED_BRANCH>
-```
+```bash
 
 ### Track a whole stack at once
 
@@ -9430,6 +9638,7 @@ Rebases that don't remove that base of the branch from its history are safe. For
 
 
 # CLI Troubleshooting FAQs
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/troubleshooting
 
 Tips for resolving common Graphite CLI issues.
@@ -9442,13 +9651,13 @@ If you find yourself in a bad state and are unsure how to proceed, please submit
 
 If the CLI gets stuck in a broken state and you are not able to wait for a member of our team to help, there are a few options.
 
-* `gt dev cache --clear` is a safe command that sometimes fixes inadvertent issues that we haven't caught before release. It doesn't change any `git` or Graphite state.
+- `gt dev cache --clear` is a safe command that sometimes fixes inadvertent issues that we haven't caught before release. It doesn't change any `git` or Graphite state.
 
-* `gt untrack` specific branches that are behaving weirdly. You will then need to re-track branches with `gt track` – note that in certain cases you may need to `git rebase` manually in order to track a branch with the correct parent. [Read more about `gt track`](/track-branches#track-branches-created-outside-of-gt) .
+- `gt untrack` specific branches that are behaving weirdly. You will then need to re-track branches with `gt track` – note that in certain cases you may need to `git rebase` manually in order to track a branch with the correct parent. [Read more about `gt track`](/track-branches#track-branches-created-outside-of-gt) .
 
-* `gt init --reset` is the nuclear option which deletes all Graphite metadata from your repository. All branches will need to be re-tracked.
+- `gt init --reset` is the nuclear option which deletes all Graphite metadata from your repository. All branches will need to be re-tracked.
 
-* The debug logs that `gt feedback` sends us are stored at `~/.local/share/graphite/debug` (or `$XDG_DATA_HOME/graphite/debug`). Each file contains the logs for a single CLI invocation, and includes information about underlying git commands and network requests. Logs are stored for 24 hours —`gt feedback` sends the whole directory. If you encounter any issues with the `gt feedback` command, feel free to zip the directory and include it in a support ticket to [support@graphite.com](mailto:support@graphite.com). You can also go spelunking in the logs yourself if you are curious!
+- The debug logs that `gt feedback` sends us are stored at `~/.local/share/graphite/debug` (or `$XDG_DATA_HOME/graphite/debug`). Each file contains the logs for a single CLI invocation, and includes information about underlying git commands and network requests. Logs are stored for 24 hours —`gt feedback` sends the whole directory. If you encounter any issues with the `gt feedback` command, feel free to zip the directory and include it in a support ticket to [support@graphite.com](mailto:support@graphite.com). You can also go spelunking in the logs yourself if you are curious!
 
 If none of these work, and you would like specific help for your issue, reach out in our [community Slack channel](https://community.graphite.com).
 
@@ -9474,7 +9683,7 @@ For example, the following configuration will cancel previous CI runs on the sam
 concurrency:
   group: ${{ github.repository }}-${{ github.workflow }}-${{ github.ref }}-${{ github.ref == 'refs/heads/main' && github.sha || ''}}
   cancel-in-progress: true
-```
+```bash
 
 ### Why am I getting a 500 error when submitting PRs after renaming repository?
 
@@ -9482,8 +9691,8 @@ When trying to submit pull requests using `gt submit` after a GitHub repository 
 
 Even though GitHub redirects old repository URLs to new ones for Git operations, this redirection may cause issues with `gt`'s PR submission process. Ensure both your Git and Graphite configurations are updated to use the new repository name directly:
 
-* Run `gt config` to access `Repository-level settings` > `Remote repository` > `Configure repo name` and update the repository name to match the new repository name
-* Run `git remote set-url origin https://github.com/owner/new-repo-name.git` to update your Git remote origin to point to the new repository name
+- Run `gt config` to access `Repository-level settings` > `Remote repository` > `Configure repo name` and update the repository name to match the new repository name
+- Run `git remote set-url origin https://github.com/owner/new-repo-name.git` to update your Git remote origin to point to the new repository name
 
 ### Single-commit workflow
 
@@ -9494,6 +9703,7 @@ Just don't use `gt modify --commit`, and if you end up with multiple commits on 
 Terminal
 
 ```python theme={null}
+
 # make changes to the codebase
 
 gt c -am "my first commit"
@@ -9518,10 +9728,12 @@ gt absorb -a
 gt ss
 
 # ... etc
-```
+
+```bash
 
 
 # Introduction To Trunk Based Development
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/trunk-based-development
 
 Learn more about trunk-based development's benefits, best practices, and comparison with Gitflow.
@@ -9562,11 +9774,11 @@ Here's a visual distinction between trunk-based development, and a Gitflow-style
 
 There are many benefits of trunk-based development, but these are the most notable ones:
 
-* **Fast feature delivery**: In trunk-based development, changes are continuously integrated and tested (the `trunk` must always be green), so new features can be delivered faster than in a feature-branching model where features are developed in isolation and then integrated later.
+- **Fast feature delivery**: In trunk-based development, changes are continuously integrated and tested (the `trunk` must always be green), so new features can be delivered faster than in a feature-branching model where features are developed in isolation and then integrated later.
 
-* **"Green" collaboration:** Team members frequently update and sync their work with the `main` branch in trunk-based development. With this approach, peers integrate each other's changes on an hourly or minute-by-minute basis, ensuring the base they're working off of is never stale.
+- **"Green" collaboration:** Team members frequently update and sync their work with the `main` branch in trunk-based development. With this approach, peers integrate each other's changes on an hourly or minute-by-minute basis, ensuring the base they're working off of is never stale.
 
-* **Granular code reviews:** Trunk-based development encourages smaller, "stacked" changes off of `trunk`, making code reviews more manageable and easier to complete. Additionally, since changes are continuously merged and tested, review feedback cycles tend to be much shorter.
+- **Granular code reviews:** Trunk-based development encourages smaller, "stacked" changes off of `trunk`, making code reviews more manageable and easier to complete. Additionally, since changes are continuously merged and tested, review feedback cycles tend to be much shorter.
 
 ## Getting started with trunk-based development
 
@@ -9590,20 +9802,21 @@ To achieve CI, each commit to a repository must undergo testing before, during, 
 
 ## See also
 
-* [Trunk-based development overview](https://trunkbaseddevelopment.com/#)
+- [Trunk-based development overview](https://trunkbaseddevelopment.com/#)
 
-* [Short-lived feature branches](https://trunkbaseddevelopment.com/short-lived-feature-branches/)
+- [Short-lived feature branches](https://trunkbaseddevelopment.com/short-lived-feature-branches/)
 
-* [Trunk-based development: deciding factors](https://trunkbaseddevelopment.com/deciding-factors/)
+- [Trunk-based development: deciding factors](https://trunkbaseddevelopment.com/deciding-factors/)
 
-* [Google Cloud Architecture DevOps tech: Trunk-based development](https://cloud.google.com/architecture/devops/devops-tech-trunk-based-development)
+- [Google Cloud Architecture DevOps tech: Trunk-based development](https://cloud.google.com/architecture/devops/devops-tech-trunk-based-development)
 
-* [Google Cloud Architecture DevOps tech: Continuous integration](https://cloud.google.com/architecture/devops/devops-tech-continuous-integration)
+- [Google Cloud Architecture DevOps tech: Continuous integration](https://cloud.google.com/architecture/devops/devops-tech-continuous-integration)
 
-* [Atlassian: Trunk Based Development](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development)
+- [Atlassian: Trunk Based Development](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development)
 
 
 # Update The CLI
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/update-cli
 
 Learn how to update the Graphite CLI.
@@ -9612,19 +9825,19 @@ Learn how to update the Graphite CLI.
 
 ```bash Terminal theme={null}
 gt upgrade
-```
+```bash
 
 ## homebrew
 
 ```bash Terminal theme={null}
 brew update && brew upgrade withgraphite/tap/graphite
-```
+```bash
 
 ## npm
 
 ```bash Terminal theme={null}
 npm install -g @withgraphite/graphite-cli@stable
-```
+```text
 
 <Tip>
   If you are having trouble updating through homebrew, fully resetting your tap may fix the issue:
@@ -9633,47 +9846,50 @@ npm install -g @withgraphite/graphite-cli@stable
 
 
 # Update Mid Stack Branches
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/update-mid-stack-branches
 
 Learn how to make changes to mid-stack branches and auto-restack seamlessly with Graphite CLI.
 
 You can iterate on your stack before it's merged by using the following three concepts:
 
-* Using `gt checkout` to hop between branches in your stack
+- Using `gt checkout` to hop between branches in your stack
 
-* Adding changes to a branch using `gt modify`
+- Adding changes to a branch using `gt modify`
 
-* Pushing the new changes to remote using `gt submit`
+- Pushing the new changes to remote using `gt submit`
 
 ## Prerequisites
 
 You should be familiar with how to:
 
-* [Create branches in a stack](/create-stack)
+- [Create branches in a stack](/create-stack)
 
-* [Visualize a stack](/visualize-stack)
+- [Visualize a stack](/visualize-stack)
 
-* [Navigate a stack](/navigate-stack)
+- [Navigate a stack](/navigate-stack)
 
-* [Create and submit pull requests](/create-submit-prs)
+- [Create and submit pull requests](/create-submit-prs)
 
 ## Working with commits
 
 Any branch you create with Graphite (using the [recommended workflow](/create-stack#create-your-first-branch-with-the-cli)) will already contain a commit with your initial changes. There are two main ways to update your branch with new changes:
 
-* Maintain the 1:1 relationship between commits and branches, meaning you'll use `gt modify` to continuously amend the commit on the branch (recommended)
+- Maintain the 1:1 relationship between commits and branches, meaning you'll use `gt modify` to continuously amend the commit on the branch (recommended)
 
-* Create multiple commits on each branch using `gt modify --commit` each time you make changes
+- Create multiple commits on each branch using `gt modify --commit` each time you make changes
 
 ### Amend commits
 
 By default, the `gt modify` command amends the commit on the branch. Here's how you would address feedback on a branch in the middle of your stack by amending a commit:
 
 ```bash Terminal theme={null}
+
 # address review comments by amending a commit
 
 
 # navigte to the appropriate branch in the stack
+
 gt checkout some_branch_mid_stack
 
 
@@ -9681,22 +9897,28 @@ gt checkout some_branch_mid_stack
 
 
 # amend the latest commit on that branch (this automatically restacks any branches upstack)
+
 gt modify -a
+
 # OR don't pass the -a flag to be prompted to stage changes interactively
+
 gt modify
 
 
 # you can also use aliases for both of these commands
+
 gt co some_branch_mid_stack
 gt m -a
-```
+```bash
 
 ### Create commits
 
 If you prefer to create an entirely new commit for each of the changes you make to a branch, you can use `gt modify` with the `--commit` flag:
 
 ```bash Terminal theme={null}
+
 # navigte to the appropriate branch in the stack
+
 gt checkout some_branch_mid_stack
 
 
@@ -9704,15 +9926,19 @@ gt checkout some_branch_mid_stack
 
 
 # create a new commit (this automatically restacks any branches upstack)
+
 gt modify --commit -am "my fourth commit"
+
 # OR don't pass -a or -m to be prompted to enter a commit message and stage changes interactively
+
 gt modify --commit
 
 
 # you can also use aliases for both of these commands
+
 gt co some_branch_mid_stack
 gt m -c
-```
+```bash
 
 ### Automatically restack branches
 
@@ -9723,7 +9949,7 @@ Given that there are no merge conflicts (see next section), `gt modify` will aut
 create mode 100644 my amended commit
 Restacked next_branch on some_branch_mid_stack.
 Restacked last_branch on next_branch.
-```
+```bash
 
 ### Resolve upstack conflicts when modifying branches
 
@@ -9746,7 +9972,7 @@ To fix and continue your previous Graphite command:
 (2) mark them as resolved with gt add .
 (3) run gt continue to continue executing your previous Graphite command
 It's safe to cancel the ongoing rebase with `gt abort`
-```
+```text
 
 You can always exit out of the rebase using `gt abort`.
 
@@ -9761,6 +9987,7 @@ Each change will be amended into the correct commit in a branch downstack from t
 Before applying the changes, `gt absorb` will show which lines will be absorbed into each commit, and prompt for confirmation (unless the `--force` flag is passed).
 
 ```bash Terminal theme={null}
+
 # Receive review comments on your stack
 
 
@@ -9768,10 +9995,13 @@ Before applying the changes, `gt absorb` will show which lines will be absorbed 
 
 
 # absorb all changes into the branches downstack of the current branch, inclusive (this automatically restacks any branches upstack)
+
 gt absorb -a
+
 # OR don't pass the -a flag to be prompted to stage changes interactively
+
 gt absorb
-```
+```bash
 
 ### How does `gt absorb` work?
 
@@ -9779,6 +10009,7 @@ For each "hunk" of changed lines, `gt absorb` attempts to "commute" the change w
 
 
 # Pull Request Inbox
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/use-pr-inbox
 
 Think of the pull request inbox as an "email client" for your PRs—it helps you stay organized and view which PRs need your attention.
@@ -9799,17 +10030,17 @@ Your default repositories are the repositories which your pull request inbox wil
 
 Graphite creates six default sections for you:
 
-* Needs your review
+- Needs your review
 
-* Approved
+- Approved
 
-* Returned to you
+- Returned to you
 
-* Merging and recently merged
+- Merging and recently merged
 
-* Drafts
+- Drafts
 
-* Waiting for review
+- Waiting for review
 
 ### Add a new section
 
@@ -9839,6 +10070,7 @@ Access the search bar in the sidebar menu, or with the `cmd + k` shortcut.
 
 
 # VS Code Extension
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/vs-code-extension
 
 Not a CLI person? Graphite's VS Code extension lets you create and manage stacked pull requests visually, right from your IDE.
@@ -9855,11 +10087,11 @@ After that, you can install the extension from the [Visual Studio marketplace](h
 
 You have a few options to start the VS Code extension:
 
-* Click the Graphite icon in your VS Code sidebar (try dragging it to your sidebar!)
+- Click the Graphite icon in your VS Code sidebar (try dragging it to your sidebar!)
 
-* Run the **Graphite: Open Graphite interactive** command from the [command palette](https://code.visualstudio.com/getstarted/userinterface#_command-palette)
+- Run the **Graphite: Open Graphite interactive** command from the [command palette](https://code.visualstudio.com/getstarted/userinterface#_command-palette)
 
-* [Define your own keyboard shortcut](https://code.visualstudio.com/getstarted/keybindings) to run the `graphite.open-gti` command
+- [Define your own keyboard shortcut](https://code.visualstudio.com/getstarted/keybindings) to run the `graphite.open-gti` command
 
 <Tip>
   You can modify the "Show in Sidebar" option in your VS Code settings to display the extension in an editor tab instead of a sidebar tab.
@@ -9867,17 +10099,17 @@ You have a few options to start the VS Code extension:
 
 ## Current features
 
-* Visualize and manage your stacks within your IDE
+- Visualize and manage your stacks within your IDE
 
-* Create new branches
+- Create new branches
 
-* Modify existing branches
+- Modify existing branches
 
-* Submit pull requests
+- Submit pull requests
 
-* Sync your trunk branch
+- Sync your trunk branch
 
-* First-class support for [stacking](https://www.stacking.dev/)
+- First-class support for [stacking](https://www.stacking.dev/)
 
 ### Upcoming features
 
@@ -9889,6 +10121,7 @@ We're bringing the GUI to other IDEs soon!
 
 
 # Configuration
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/vs-code-extension-configuration
 
 Customize the Graphite VS Code extension.
@@ -9919,22 +10152,23 @@ Upon submitting from the extension, open Graphite's "stack edit" feature to add 
 
 When focusing the contents of a branch of viewing uncommitted changes, you can click the "..." in the branch pane to adjust the filetree view to:
 
-* Short file names
+- Short file names
 
-* Full file paths
+- Full file paths
 
-* Tree
+- Tree
 
-* One-letter directories
+- One-letter directories
 
 In the same menu, you can opt to show changes by:
 
-* Commit
+- Commit
 
-* [Version](/pull-request-versions)
+- [Version](/pull-request-versions)
 
 
 # Create A Pull Request
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/vs-code-extension-first-pr
 
 Learn to use the Graphite VS Code extension to create a single pull request.
@@ -9993,6 +10227,7 @@ That's it - you just created your first pull request using the Graphite VS Code 
 
 
 # Create PRs For A Stack
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/vs-code-extension-first-stack
 
 Learn to use the Graphite VS Code extension to create pull requests for a stack.
@@ -10001,9 +10236,9 @@ Learn to use the Graphite VS Code extension to create pull requests for a stack.
 
 Complete the [Create a pull request](/vs-code-extension-first-pr) guide, and make sure you've:
 
-* Checked out your first PR
+- Checked out your first PR
 
-* Don't have any uncommitted changes
+- Don't have any uncommitted changes
 
   <img />
 
@@ -10045,6 +10280,7 @@ That's it - you just created your first stack using the Graphite VS Code extensi
 
 
 # Quick Start
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/vs-code-extension-quick-start
 
 Get started using the Graphite VS Code extension to stack pull requests.
@@ -10131,6 +10367,7 @@ You can track branches onto a parent by clicking the "cloud" icon in the upper r
 
 
 # Why You Should Use Graphite
+
 Source: https://graphite-58cc94ce.mintlify.dev/docs/why-you-should-use-graphite
 
 One end-to-end tool to simplify and accelerate your team’s developer workflow.
@@ -10141,13 +10378,13 @@ Graphite puts developer experience first, giving you all of the features you’v
 
 “Stacking” with Graphite empowers you to:
 
-* **Stay unblocked**. With [stacking](https://stacking.dev), you can keep moving forward and never wait for a code review again.
+- **Stay unblocked**. With [stacking](https://stacking.dev), you can keep moving forward and never wait for a code review again.
 
-* **Upgrade from vanilla Git**. Create pull requests much faster and [automate away tedious Git complexity](/comparing-git-and-gt) such as squashing, rebasing, and cleaning up stale branches.
+- **Upgrade from vanilla Git**. Create pull requests much faster and [automate away tedious Git complexity](/comparing-git-and-gt) such as squashing, rebasing, and cleaning up stale branches.
 
-* **Get even more out of the tools you love**. Easily manage stacks of PRs with a [CLI](/cli-overview), web app, and [VS Code extension](/vs-code-extension) that are built for speed and simplicity.
+- **Get even more out of the tools you love**. Easily manage stacks of PRs with a [CLI](/cli-overview), web app, and [VS Code extension](/vs-code-extension) that are built for speed and simplicity.
 
-* **Stay on top of feedback & review requests**. Filter out the noise with targeted, actionable [notifications in Slack](/slack-notifications) when you need to act on a PR.
+- **Stay on top of feedback & review requests**. Filter out the noise with targeted, actionable [notifications in Slack](/slack-notifications) when you need to act on a PR.
 
 With Graphite, engineers spend more time shipping code and less time wrestling with their workflow.
 
@@ -10165,15 +10402,15 @@ Fast-growing companies like Ramp, say [it’s significantly easier to review PRs
 
 ### Write better code with Graphite
 
-* **High-quality code review**: stacking encourages smaller pull requests, meaning less context is needed for reviewers to provide meaningful feedback.
+- **High-quality code review**: stacking encourages smaller pull requests, meaning less context is needed for reviewers to provide meaningful feedback.
 
-* **Faster code review**: you can see the PRs awaiting your review either through the [PR inbox](/use-pr-inbox) or customizable and actionable Slack notifications.
+- **Faster code review**: you can see the PRs awaiting your review either through the [PR inbox](/use-pr-inbox) or customizable and actionable Slack notifications.
 
-* **A “greener” trunk branch**: Graphite's stack-aware [Merge Queue](/graphite-merge-queue) helps teams ship faster while keeping their trunk branch green.
+- **A “greener” trunk branch**: Graphite's stack-aware [Merge Queue](/graphite-merge-queue) helps teams ship faster while keeping their trunk branch green.
 
-* **Useful metrics:** with everyone using Graphite, your team can see how your [Insights](/insights) (like number of review cycles until merge, or time until review) improve over time.
+- **Useful metrics:** with everyone using Graphite, your team can see how your [Insights](/insights) (like number of review cycles until merge, or time until review) improve over time.
 
-* **Memes!** add color to code review with your own [memes and GIFs](/memes-and-macros#upload-new-memes).
+- **Memes!** add color to code review with your own [memes and GIFs](/memes-and-macros#upload-new-memes).
 
 ### How to help your team get started
 
