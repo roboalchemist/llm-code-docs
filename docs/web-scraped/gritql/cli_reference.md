@@ -1,9 +1,10 @@
 # Source: https://docs.grit.io
 
-# Grit CLI Reference
+## Grit CLI Reference
 
 This document contains the help content for the `grit` command-line program.
 **Command Overview:**
+
 - [`grit`↴](#grit)
 - [`grit check`↴](#grit-check)
 - [`grit list`↴](#grit-list)
@@ -30,10 +31,16 @@ This document contains the help content for the `grit` command-line program.
 - [`grit patterns describe`↴](#grit-patterns-describe)
 - [`grit version`↴](#grit-version)
 - [`grit format`↴](#grit-format)
-`grit`Software maintenance on autopilot, from grit.io
+
+## `grit`
+
+Software maintenance on autopilot, from grit.io
 **Usage:** `grit [OPTIONS] <COMMAND>`
 For help with a specific command, run `grit help <command>`.
-**Subcommands:**- `check` — Check the current directory for pattern violations
+
+**Subcommands:**
+
+- `check` — Check the current directory for pattern violations
 - `list` — List everything that can be applied to the current directory
 - `apply` — Apply a pattern or migration to a set of files
 - `doctor` — Print diagnostic information about the current environment
@@ -55,7 +62,9 @@ Possible values: `true`, `false`
 
 - `--grit-dir <GRIT_DIR>` — Override the default .grit directory location
 
-`grit check`Check the current directory for pattern violations
+## `grit check`
+
+Check the current directory for pattern violations
 **Usage:** `grit check [OPTIONS] [PATHS]...`
 **Arguments:**- `<PATHS>` — The target paths to apply the checks to
 Default value: `.`
@@ -79,7 +88,9 @@ Possible values: `true`, `false`
 
 - `--only-in-json <ONLY_IN_JSON>` — Only analyze ranges inside a provided eslint-style JSON string. The JSON should be an array of objects formatted as `[{"filePath": "path/to/file", "messages": [{"line": 1, "column": 1, "endLine": 1, "endColumn": 1}]}]`.
 
-`grit list`List everything that can be applied to the current directory
+## `grit list`
+
+List everything that can be applied to the current directory
 **Usage:** `grit list [OPTIONS]`
 **Options:**- `--level <LEVEL>` — List only at or above an enforcement level
 
@@ -93,9 +104,14 @@ Possible values:
 - `--language <LANGUAGE>` — List only items targeting a specific language
 Possible values: `js`, `html`, `css`, `json`, `java`, `kotlin`, `csharp`, `python`, `markdown`, `go`, `rust`, `ruby`, `elixir`, `solidity`, `hcl`, `yaml`, `sql`, `vue`, `toml`, `php`, `php`
 
-`grit apply`Apply a pattern or migration to a set of files
+## `grit apply`
+
+Apply a pattern or migration to a set of files
 **Usage:** `grit apply [OPTIONS] <PATTERN_OR_WORKFLOW> [PATHS]...`
-**Arguments:**- `<PATTERN_OR_WORKFLOW>` — The pattern to apply, in a few forms:
+
+**Arguments:**
+
+- `<PATTERN_OR_WORKFLOW>` — The pattern to apply, in a few forms:
 - A pattern name (ex. `raw_no_console_log`)
 - A pattern by itself (ex. `&#x27;`console.log` => `console.error`&#x27;`)
 - A pattern call, with arguments (ex. `&#x27;openai_main(client=`openai`)&#x27;`)
@@ -143,6 +159,7 @@ Possible values: `true`, `false`
 If you use this option, you *must* specify a file path, to allow Grit to determine the language of the code.
 Example: `echo &#x27;console.log(hello)&#x27; | grit apply &#x27;`hello`=>`goodbye`&#x27; file.js --stdin This will print `console.log(goodbye)` to stdout
 Possible values: `true`, `false`
+
 - `--cache` — Use cache
 Possible values: `true`, `false`
 
@@ -157,18 +174,35 @@ Possible values: `js`, `html`, `css`, `json`, `java`, `kotlin`, `csharp`, `pytho
 
 - `--only-in-json <ONLY_IN_JSON>` — Only analyze ranges inside a provided eslint-style JSON string. The JSON should be an array of objects formatted as `[{"filePath": "path/to/file", "messages": [{"line": 1, "column": 1, "endLine": 1, "endColumn": 1}]}]`.
 
-`grit doctor`Print diagnostic information about the current environment
+## `grit doctor`
+
+Print diagnostic information about the current environment
 **Usage:** `grit doctor`
-`grit blueprints`Manage blueprints for the Grit Agent
+
+## `grit blueprints`
+
+Manage blueprints for the Grit Agent
 **Usage:** `grit blueprints <COMMAND>`
-**Subcommands:**- `list` — List available blueprints
+
+**Subcommands:**
+
+- `list` — List available blueprints
 - `pull` — Pull a blueprint by workflow ID
 - `push` — Push a blueprint by workflow ID
-`grit blueprints list`List available blueprints
+
+## `grit blueprints list`
+
+List available blueprints
 **Usage:** `grit blueprints list`
-`grit blueprints pull`Pull a blueprint by workflow ID
+
+## `grit blueprints pull`
+
+Pull a blueprint by workflow ID
 **Usage:** `grit blueprints pull [OPTIONS] --workflow-id <WORKFLOW_ID>`
-**Options:**- `--workflow-id <WORKFLOW_ID>` — The workflow ID of the blueprint to pull
+
+**Options:**
+
+- `--workflow-id <WORKFLOW_ID>` — The workflow ID of the blueprint to pull
 
 - `-f`, `--force` — Force pull even if the blueprint already exists
 Possible values: `true`, `false`
@@ -176,60 +210,119 @@ Possible values: `true`, `false`
 - `--file <FILE>` — File to save the blueprint to (defaults to blueprint.md)
 Default value: `blueprint.md`
 
-`grit blueprints push`Push a blueprint by workflow ID
+## `grit blueprints push`
+
+Push a blueprint by workflow ID
 **Usage:** `grit blueprints push [OPTIONS] --workflow-id <WORKFLOW_ID>`
-**Options:**- `--workflow-id <WORKFLOW_ID>` — The workflow ID of the blueprint to push
+
+**Options:**
+
+- `--workflow-id <WORKFLOW_ID>` — The workflow ID of the blueprint to push
 
 - `--file <FILE>` — File containing the blueprint (defaults to blueprint.md)
 Default value: `blueprint.md`
 
-`grit auth`Authentication commands, run `grit auth --help` for more information
+## `grit auth`
+
+Authentication commands, run `grit auth --help` for more information
 **Usage:** `grit auth <COMMAND>`
-**Subcommands:**- `login` — Log in with grit.io
+
+**Subcommands:**
+
+- `login` — Log in with grit.io
 - `logout` — Remove your grit.io credentials
 - `get-token` — Get your grit.io token
 - `refresh` — Refresh your grit.io auth (this will also happen automatically when your token expires)
-`grit auth login`Log in with grit.io
+
+## `grit auth login`
+
+Log in with grit.io
 **Usage:** `grit auth login`
-`grit auth logout`Remove your grit.io credentials
+
+## `grit auth logout`
+
+Remove your grit.io credentials
 **Usage:** `grit auth logout`
-`grit auth get-token`Get your grit.io token
+
+## `grit auth get-token`
+
+Get your grit.io token
 **Usage:** `grit auth get-token`
-`grit auth refresh`Refresh your grit.io auth (this will also happen automatically when your token expires)
+
+## `grit auth refresh`
+
+Refresh your grit.io auth (this will also happen automatically when your token expires)
 **Usage:** `grit auth refresh`
-`grit install`Install supporting binaries
+
+## `grit install`
+
+Install supporting binaries
 **Usage:** `grit install [OPTIONS]`
-**Options:**- `--update` — Look for updates and install them
+
+**Options:**
+
+- `--update` — Look for updates and install them
 Possible values: `true`, `false`
 
 - `--app <APP>` — Specify a specific app to install
 Possible values: `grit`, `gouda`, `workflow-runner`
 
-`grit init`Install grit modules
+## `grit init`
+
+Install grit modules
 **Usage:** `grit init [OPTIONS]`
-**Options:**- `--global` — Update global grit modules
+
+**Options:**
+
+- `--global` — Update global grit modules
 Default value: `false`
 Possible values: `true`, `false`
 
-`grit workflows`Workflow commands, run `grit workflows --help` for more information
+## `grit workflows`
+
+Workflow commands, run `grit workflows --help` for more information
 **Usage:** `grit workflows <COMMAND>`
-**Subcommands:**- `list` — List all available workflows
+
+**Subcommands:**
+
+- `list` — List all available workflows
 - `upload` — Upload a workflow
-`grit workflows list`List all available workflows
+
+## `grit workflows list`
+
+List all available workflows
 **Usage:** `grit workflows list`
-`grit workflows upload`Upload a workflow
+
+## `grit workflows upload`
+
+Upload a workflow
 **Usage:** `grit workflows upload <WORKFLOW_PATH> <WORKFLOW_ID>`
-**Arguments:**- `<WORKFLOW_PATH>`
+
+**Arguments:**
+
+- `<WORKFLOW_PATH>`
 - `<WORKFLOW_ID>`
-`grit patterns`Patterns commands, run `grit patterns --help` for more information
+
+## `grit patterns`
+
+Patterns commands, run `grit patterns --help` for more information
 **Usage:** `grit patterns <COMMAND>`
-**Subcommands:**- `list` — List all available named patterns
+
+**Subcommands:**
+
+- `list` — List all available named patterns
 - `test` — Test patterns against expected output
 - `edit` — Open a pattern in the studio
 - `describe` — Describe a pattern
-`grit patterns list`List all available named patterns
+
+## `grit patterns list`
+
+List all available named patterns
 **Usage:** `grit patterns list [OPTIONS]`
-**Options:**- `--level <LEVEL>` — List only at or above an enforcement level
+
+**Options:**
+
+- `--level <LEVEL>` — List only at or above an enforcement level
 
 - `--source <SOURCE>` — List items from a specific source
 Default value: `all`
@@ -241,9 +334,14 @@ Possible values:
 - `--language <LANGUAGE>` — List only items targeting a specific language
 Possible values: `js`, `html`, `css`, `json`, `java`, `kotlin`, `csharp`, `python`, `markdown`, `go`, `rust`, `ruby`, `elixir`, `solidity`, `hcl`, `yaml`, `sql`, `vue`, `toml`, `php`, `php`
 
-`grit patterns test`Test patterns against expected output
+## `grit patterns test`
+
+Test patterns against expected output
 **Usage:** `grit patterns test [OPTIONS]`
-**Options:**- `--filter <FILTER>` — Regex of a specific pattern to test
+
+**Options:**
+
+- `--filter <FILTER>` — Regex of a specific pattern to test
 
 - `--exclude <EXCLUDE>` — Tags and pattern names to exclude. Only direct matches will be excluded.
 
@@ -256,17 +354,37 @@ Possible values: `true`, `false`
 - `--watch` — Enable watch mode on .grit dir
 Possible values: `true`, `false`
 
-`grit patterns edit`Open a pattern in the studio
+## `grit patterns edit`
+
+Open a pattern in the studio
 **Usage:** `grit patterns edit <PATH>`
-**Arguments:**- `<PATH>` — The pattern path to edit
-`grit patterns describe`Describe a pattern
+
+**Arguments:**
+
+- `<PATH>` — The pattern path to edit
+
+## `grit patterns describe`
+
+Describe a pattern
 **Usage:** `grit patterns describe <NAME>`
-**Arguments:**- `<NAME>` — The pattern name to describe
-`grit version`Display version information about the CLI and agents
+
+**Arguments:**
+
+- `<NAME>` — The pattern name to describe
+
+## `grit version`
+
+Display version information about the CLI and agents
 **Usage:** `grit version`
-`grit format`Format grit files under current directory
+
+## `grit format`
+
+Format grit files under current directory
 **Usage:** `grit format [OPTIONS]`
-**Options:**- `--write` — Write formats to file instead of just showing them
+
+**Options:**
+
+- `--write` — Write formats to file instead of just showing them
 Possible values: `true`, `false`
 
 - `--output <OUTPUT>`

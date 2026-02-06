@@ -1,21 +1,26 @@
-# Source: https://docs.grit.io
+**Source:** https://docs.grit.io
 
 # Continuous Integration
 
 Grit patterns can be configured to run as part of your CI pipeline on GitHub.
-[
+
 ## Setup
-](https://docs.grit.io/guides/ci#setup)To get started, create a [configuration file](/guides/config) at `.grit/grit.yaml`. Add patterns that you want checked to your `grit.yaml`.
-[
+
+To get started, create a [configuration file](/guides/config) at `.grit/grit.yaml`. Add patterns that you want checked to your `grit.yaml`.
+
 ## Enabling hosted checks
-](https://docs.grit.io/guides/ci#enabling-hosted-checks)Ensure that you have installed Grit&#x27;s [GitHub App](https://github.com/apps/grit-app). Once installed, navigate to your [project](https://app.grit.io/projects) from the web app and enable the Checks toggle.
+
+Ensure that you have installed Grit's [GitHub App](https://github.com/apps/grit-app). Once installed, navigate to your [project](https://app.grit.io/projects) from the web app and enable the Checks toggle.
 
 Bear in mind that patterns must be enforced (i.e. have a level of `error` or `warn`) in order to be run as part of CI, as per the details below.
-[
+
 ### How it works
-](https://docs.grit.io/guides/ci#how-it-works)By default, CI checks run on all files in a commit which are not excluded by `.gritignore`. Grit then reports on patterns which have a level of `warn` or higher, and fails the CI check if any files trigger an `error` level pattern which did not previously trigger that pattern on the last commit to the repo&#x27;s default branch.
-This means that Grit&#x27;s CI mechanism is sensitive to the *trend* of the codebase: you can add currently failing patterns to your configuration without breaking the build, and fix them incrementally in the knowledge that Grit will catch regressions.
-[
+
+By default, CI checks run on all files in a commit which are not excluded by `.gritignore`. Grit then reports on patterns which have a level of `warn` or higher, and fails the CI check if any files trigger an `error` level pattern which did not previously trigger that pattern on the last commit to the repo's default branch.
+This means that Grit's CI mechanism is sensitive to the *trend* of the codebase: you can add currently failing patterns to your configuration without breaking the build, and fix them incrementally in the knowledge that Grit will catch regressions.
+
 ## GitHub Action
-](https://docs.grit.io/guides/ci#git-hub-action)As an alternative to the Grit GitHub App, you can use GitHub Actions to run Grit checks. The Grit GitHub Action is [available here](https://github.com/getgrit/github-action-check).
- - - **Note**: The GitHub action does not include a cache of previous results, so it will annotate all patterns with a level of `warn` or higher—even if they were previously reported on the main branch.
+
+As an alternative to the Grit GitHub App, you can use GitHub Actions to run Grit checks. The Grit GitHub Action is [available here](https://github.com/getgrit/github-action-check).
+
+- **Note**: The GitHub action does not include a cache of previous results, so it will annotate all patterns with a level of `warn` or higher—even if they were previously reported on the main branch.

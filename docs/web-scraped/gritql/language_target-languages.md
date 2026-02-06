@@ -1,8 +1,7 @@
 # Source: https://docs.grit.io
 
-# Target Languages
-
 The target language is the programming language of the code you want to migrate. Currently, Grit supports the following target languages:
+
 - JavaScript/TypeScript
 - Python
 - JSON
@@ -17,19 +16,26 @@ The target language is the programming language of the code you want to migrate.
 - PHP (Beta)
 - Go (Alpha)
 - SQL (Alpha)
+
 If you would like to see support for a language that is not listed here, please [let us know](/language/request).
 [
+
 ## Language declaration
+
 ](https://docs.grit.io/language/target-languages#language-declaration)Grit supports multiple target languages. To select a language, start a pattern file with a language declaration.
 grit language js
 
 `myPattern`If no language is specified, Grit defaults to JavaScript. This behavior may change in the future, so it is recommended to always specify a language.
 [
+
 ## Language variants
+
 ](https://docs.grit.io/language/target-languages#language-variants)In some rare cases, you may need to specify an alternative parser for a language. Alternative parsers can be specified in parentheses with the language declaration.
 grit language js(jsx)The above example specifies the `jsx` version of JavaScript, which enables JSX syntax.
 The following are a few examples of available language versions:
+
 - `language js(typescript,jsx)` -- TypeScript with JSX enabled
 - `language js(typescript)` -- TypeScript without JSX
+
 For JavaScript without a language version, Grit will default to TypeScript with JSX enabled (specifically `language js(typescript,jsx)`).
 When parsing JavaScript code files, Grit decides which language version to use based the language of the GritQL pattern being executed.

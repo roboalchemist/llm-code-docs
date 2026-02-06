@@ -1,36 +1,46 @@
 # Source: https://docs.grit.io
 
-# Patterns
-
 The primary construct in Grit is a pattern, which searches in a codebase for matching clauses and optionally executes a specified transformation. Patterns are also commonly referenced in side conditions, which Grit uses to execute [rewrites](/language/patterns#rewrite-operator). Patterns come in several forms.
 [
+
 ## Code snippets
+
 ](https://docs.grit.io/language/patterns#code-snippets)The most basic form of a pattern is just a snippet in the target language surrounded by backticks (```). For example:
 grit `console.log(&#x27;Hello, world!&#x27;)`typescript console.log(&#x27;Hello, world!&#x27;)To match on variations of a snippet, code snippets can include [metavariables](/language/patterns#metavariables):
 grit `console.log($message)` - - **Tip:** Dollar signs and backticks can be escaped with a backslash (`\`) if they are needed in the snippet. Ex. ``console.log(\`$template\`)``.
 [
+
 ### Alternative syntax
+
 ](https://docs.grit.io/language/patterns#alternative-syntax)Code snippets can alternatively be enclosed by double quotes prefixed with a language annotation. Language annotations correspond to one of Grit&#x27;s supported target languages and limit the snippet to matching only code in that language.
 The language annotation for JavaScript/TypeScript is `js`. These two examples are equivalent:
 grit `console.log(&#x27;Hello, world!&#x27;)`grit js"console.log(&#x27;Hello, world!&#x27;)"`raw` outputThe `raw` prefix can be added to snippets to output them directly, bypassing any of Grit&#x27;s built-in attempts at ensuring that the output code is valid. Use `raw` for snippets that you *always* want to output as-is even if it generates invalid code.
 For example:
 pattern `console.log($message)` => raw`if(&#x27; // I like broken code"`Before console.log("Hello, world!");After if(&#x27; // I like broken code[
+
 ## Metavariables
+
 ](https://docs.grit.io/language/patterns#metavariables)Metavariables are used to create a binding to a specific part of the syntax tree. They are prefixed with a dollar sign and must be alphanumeric. Metavariables start with a letter and should use `$lowercase_snake_case`. All metavariables must conform to the regex `$[a-zA-Z_][a-zA-Z0-9_]*`.
 Metavariables&#x27; default scope is the entire file, but this scope is usually restricted automatically by pattern auto-wrapping.
 The [`bubble`](/language/bubble) clause can be used to limit the scope of a metavariable.
 grit `console.log($foo)`typescript console.log(&#x27;Hello, world!&#x27;)`$filename`, `$new_files` and `$program` are reserved metavariables used internally by Grit and should not be used as metavariable names. Likewise, metavariables starting with `$grit_` are reserved for internal use.
 [
+
 ### Anonymous metavariables
+
 ](https://docs.grit.io/language/patterns#anonymous-metavariables)When we do not care about the value of a metavariable, we can use the wildcard metavariable `$_`. This allow is to match without being bound to a specific value.
 grit `console.log($_)`typescript console.log($_)[
+
 ### Spread metavariables
+
 ](https://docs.grit.io/language/patterns#spread-metavariables)By default, metavariables match a single node in the syntax tree. However, sometimes it is useful to match a variable number of nodes.
 This can be done with the spread metavariable `$...`. It matches 0 or more nodes, and can be used anywhere a metavariable can be used. Spread metavariables are anonymous, so they cannot be bound to a name.
 pattern `console.log($message, $...)` => `// Removed console.log: $message`Before console.log("Hello, world!");
 console.log("Message 2", "stuff");After // Removed console.log: &#x27;Hello, world!&#x27;
 // Removed console.log: &#x27;Message 2&#x27;[
+
 ### Explicit assignment
+
 ](https://docs.grit.io/language/patterns#explicit-assignment)As illustrated in the `console.log($message)` example, metavariables can be used without being declared, simply by replacing some of a code snippet with a metavariable meant to represent the substitution&#x27;s part of the syntax tree.
 It is also possible to explicitly declare and assign metavariables:
 grit `const $logger = logger.$action($message)` where {
@@ -38,11 +48,15 @@ grit `const $logger = logger.$action($message)` where {
   $logger => $special_logger
 } - - **Tip:** When using a metavariable in an output snippet, you can wrap its name in braces `[]` to distinguish the metavariable name from the snippet literal. (ex. `$[name]Class`)
 [
+
 ### Predefined metavariables
+
 ](https://docs.grit.io/language/patterns#predefined-metavariables)Grit also includes a few predefined metavariables which are always available.
+
 - `$program` is a metavariable which contains the entire (current) program. You can use this to match against the entire program, even deep inside a pattern.
 - `$filename` is a metavariable which contains the current (relative) file path.
 - `$new_files` is a metavariable which contains a list of new files. Appending to this metavariable is useful for [creating new files](/language/idioms#creating-new-files).
+
 Rewrite operator `=>`Once you have matched the relevant code, rewrites can be used to *transform* the matched pattern. They are written using the `=>` operator, with a patterns on the left and right hand sides. The whole rewrite itself is a pattern and can be used anywhere a pattern is used.
 pattern `println` => `console.log`Before println("Hello, world!");After console.log("Hello, world!");Rewrites can contain metavariables.
 So we can restrict the rewrite to only match `println` calls, and no other references to `println`.
@@ -61,7 +75,9 @@ language js
 });After test(() => {
   expect(true).toEqual(true);
 });[
+
 ## Syntax tree (AST) nodes
+
 ](https://docs.grit.io/language/patterns#syntax-tree-ast-nodes)Syntax tree nodes are one of the most important types in Grit, as they allow you to match directly against the underlying abstract syntax tree (AST) of the code.
 Nodes represent unique instances in the syntax tree of the input code.
 For example, every distinct appearance of the string `"foo"` in a single file is represented by an individual `string()` node. Nodes can represent larger groupings of code as well (ex. every arrow function in JavaScript is represented by an `arrow_function()` node).
@@ -72,33 +88,45 @@ grit augmented_assignment_expression(operator = $op)
 // same as
 augmented_assignment_expression(operator = $op, left = $_, right = $_) - - **Tip:** If you click the "debug" button in the [Grit studio](https://app.grit.io/studio) you can see the syntax tree of the input code. This is the best way to understand the structure of the code you are working with.
 [
+
 ### Node structure
+
 ](https://docs.grit.io/language/patterns#node-structure)Each node has a type, which determines the node&#x27;s available fields and their own types. Each child field of a node can be another syntax-tree node, a list of syntax-tree nodes, or a primitive value.
 For example, `"foo"` is a `string` and has the following structure:
 grit string(fragment = "foo")We distinguish syntax-tree nodes, which represent nodes in the input code, from patterns, which are Grit constructs used to match syntax-tree nodes.
 [
+
 ## Primitives
+
 ](https://docs.grit.io/language/patterns#primitives)Grit has several primitive types which are language-agnostic.
 [
+
 ### Strings
+
 ](https://docs.grit.io/language/patterns#strings)Grit allows specifying strings outside of a code snippet in a language-agnostic way. Grit strings are surrounded by double quotes (`"`). They can contain any character except for a double quote (`"`) or a backslash (`\`). To include one of these characters in a string, you can escape it with a backslash (`\`).
 In most cases, code snippets can be used interchangeably with Grit strings. Occasionally, however, Grit strings are useful for matching against exact strings instead of being AST-aware.
 In general, any code which would be matched by a Grit string would also be matched by a code snippet, but not vice versa. This means that Grit strings can be used to apply transformations such as formatting changes that would not be possible with code snippets.
 grit "Hello, world!" // string[
+
 ### Numbers
+
 ](https://docs.grit.io/language/patterns#numbers)Grit has two number types, `int` and `double`. Functionally they can be used interchangeably, and you do not need to specify which type you want. The compiler will infer the type based on the context.
 Numbers are useful for transforming code based on arithmetic operations:
 grit js"multiply($x)" where {
   $y = $x * 2,
   $x => $y
 }[
+
 ### Lists
+
 ](https://docs.grit.io/language/patterns#lists)Grit has a single list type, analogous to lists or arrays in other languages. List are constructed with square brackets (`[]`). List elements can be accessed via the `$list[index]` syntax, with negative and positive indices supported. Out of bounds indices will return `undefined`.
 grit $list = [`1`, `2`, `3`]
 $list[0] // `1`
 $list[-1] // `3`Lists have two primary uses:
+
 - Accumulating items, which can be done with the `+=` operator.
 - Matching against a specific ordered list of AST nodes.
+
 For example, the following pattern accumulates numbers with the `+=` operator, then uses the built-in [join](/language/functions#join) function to format them for rewriting:
 pattern engine marzano(0.1)
 language js
@@ -132,7 +160,9 @@ var times = (x, y) => {
 var times = (x, y) => {
   return x * y;
 };[
+
 ### Maps
+
 ](https://docs.grit.io/language/patterns#maps)Grit has an immutable map type. Maps are constructed with curly braces (`{}`). Keys can contain letters and underscores, and values can be any valid Grit pattern.
 Maps can be accessed using `$key.value` syntax, where `$key` is a metavariable bound to a map and `value` is a key in the map. Accessors can be matched against like variables and used within a rewrite. If the key does not exist, the accessor will return `undefined`.
 pattern `const capital = $val` where {
@@ -153,7 +183,9 @@ sequential {
 console.warn("Hello, world!");After console.info("Hello, world!");
 console.info("Hello, world!");`sequential` is equivalent to writing several separate patterns and running each one in order, waiting for the previous to complete before starting the next.
 [
-## Multifile patterns 
+
+## Multifile patterns
+
 ](https://docs.grit.io/language/patterns#multifile)In most cases, patterns can be evaluated in the context of a single file. However, in some cases, it is useful to evaluate a pattern in the context of other files or to apply a refactoring from one file to another.
 This can be done by using the `multifile` pattern.
 The `multifile` patternThe `multifile` pattern is a special pattern which allows matching against multiple files while keeping a single *global* state.
@@ -218,13 +250,20 @@ const foo: NewProps = {
 import { Props } from &#x27;./file2.js&#x27;;
 const foo: Props = {
   age: &#x27;foo&#x27;,
-};The top level of a `multifile` step *must* be a `file()` pattern, optionally preceded by `bubble`.
- - - **Tip:** If you merely want to create new files, use the `$new_files` metavariable—it is much faster on large codebases.
+};
+
+The top level of a `multifile` step *must* be a `file()` pattern, optionally preceded by `bubble`.
+
+- **Tip:** If you merely want to create new files, use the `$new_files` metavariable—it is much faster on large codebases.
 [
+
 ## Empty pattern
+
 ](https://docs.grit.io/language/patterns#empty-pattern)The dot (`.`) can be used exclusively on the right-hand side of a rewrite to delete code. Semantically, it represents an empty syntax-tree node, so rewriting to a dot (`=> .`) will remove the matched code.
 [
+
 ## Regular expressions
+
 ](https://docs.grit.io/language/patterns#regular-expressions)Strings prefixed with the letter `r` are interpreted as regular expressions. Capture groups can be named by postfixing the regular expression with a list of metavariable names surrounded by parentheses (`(` and `)`).
 For example, the following pattern will match the string `"Hello, world!"` and bind the metavariable `$name` to the string `"world"`.
 grit "Hello, world!" <: r"Hello, (.*)"($name) // $name is now bound to "world"The patterns are interpreted using the [Rust regular expression syntax](https://docs.rs/regex/latest/regex).
@@ -248,12 +287,16 @@ language js
 `console.log($log)` => `logger.log($log)` where {
     $program <: contains `logger`
 }[
+
 ## Range patterns
+
 ](https://docs.grit.io/language/patterns#range-patterns)The `range` pattern is used to target code by its location within the file. Range takes three parameters:
+
 - `start_line`: The start line of the range, starting at 1 (inclusive).
 - `end_line`: The end line of the range, starting at 1 (inclusive, optional). If not provided, the range will go until the end of the file.
 - `start_column`: The start column of the range, starting at 1 (inclusive), within the start line (inclusive).
 - `end_column`: The end column of the range, starting at 1, within the end line (inclusive).
+
 For example, this pattern will remove the first 3 lines of all files:
 grit range(start_line=1, end_line=3) => .Range patterns are particularly useful when combined with [`contains`](/language/modifiers#contains-operator) to narrow down the code you are targeting. Any AST node will be considered to "contain" a range if the range intersects with the node.
 For example, this pattern will remove the `console.log` statements on lines 2 and 5:

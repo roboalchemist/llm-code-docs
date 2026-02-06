@@ -1,7 +1,5 @@
 # Source: https://docs.grit.io
 
-# GritQL Reference
-
 Grit is a query language for searching and modifying codebases.
 SyntaxExplanation`console.log($_)`The **root** of a Grit query is a pattern.`console.log`A **pattern** can be a code snippet surrounded in backticks.`console.log($message)`Code snippets can contain **metavariables** prefixed with `$`.$_The **anonymous metavariable** can be bound to without a name.$...`$...` is a **spread metavariable** that matches 0 or more nodes.call_expression()**[AST nodes](/language/patterns#syntax-tree-nodes)** can also be used as patterns.call_expression(callee=$callee)AST nodes can specify **fields**, where each field value is bound to a pattern or metavariable.`console.log($message)` =>
 `console.warn($message)`A **[rewrite](/language/patterns#rewrite-operator)** is a pattern followed by a `=>` followed by a pattern. Rewrites are usable as patterns.$x => .The `.` is an **empty/null pattern**, it replaces the matched node with nothing.

@@ -15,6 +15,7 @@ GritQL is a powerful, intuitive query language designed for developers who want 
 ## Documentation Structure
 
 ### Core Language Documentation
+
 - **language_overview.md** - Introduction to GritQL and its basic concepts
 - **language_syntax.md** - Complete syntax reference for GritQL patterns
 - **language_patterns.md** - Pattern matching fundamentals including code snippets, metavariables, and the rewrite operator
@@ -25,10 +26,12 @@ GritQL is a powerful, intuitive query language designed for developers who want 
 - **language_target-languages.md** - Supported programming languages
 
 ### CLI & Tools
+
 - **cli_quickstart.md** - Get started with the Grit CLI tool
 - **cli_reference.md** - Complete CLI command reference
 
 ### Guides & Best Practices
+
 - **guides_patterns.md** - How to write and structure effective patterns
 - **guides_config.md** - Configuration guide for Grit projects
 - **guides_authoring.md** - Best practices for authoring GritQL patterns
@@ -38,10 +41,12 @@ GritQL is a powerful, intuitive query language designed for developers who want 
 - **guides_sharing.md** - Sharing patterns with teams
 
 ### Tutorials & Examples
+
 - **tutorials_gritql.md** - Interactive tutorial for learning GritQL
 - **patterns.md** - Available pattern library
 
 ### Other
+
 - **index.md** - Main documentation homepage
 - **blog.md** - Blog articles about GritQL
 
@@ -58,6 +63,7 @@ To get started with GritQL:
 ## Key Concepts
 
 ### Patterns
+
 The core construct in GritQL. A pattern searches in a codebase for matching clauses and optionally executes a specified transformation.
 
 ```gritql
@@ -65,6 +71,7 @@ pattern `console.log($message)` => `console.warn($message)`
 ```
 
 ### Metavariables
+
 Used to create bindings to specific parts of the syntax tree, prefixed with `$`:
 
 ```gritql
@@ -72,6 +79,7 @@ Used to create bindings to specific parts of the syntax tree, prefixed with `$`:
 ```
 
 ### Rewrite Operator
+
 The `=>` operator transforms matched patterns:
 
 ```gritql
@@ -79,6 +87,7 @@ The `=>` operator transforms matched patterns:
 ```
 
 ### Conditions
+
 Add `where` clauses to restrict matches:
 
 ```gritql

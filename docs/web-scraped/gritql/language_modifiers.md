@@ -1,7 +1,5 @@
 # Source: https://docs.grit.io
 
-# Pattern Modifiers
-
 Various modifiers can be applied to patterns to transform how they are matched. All pattern modifiers yield a new pattern with the modified behavior. Importantly, none of these modifiers represent base patterns by themselves, but instead modify or combine other patterns.
 `and` clause`and` clauses are used to combine one or more comma-separated patterns.
 The `and` clause matches only if all of the patterns match.
@@ -143,7 +141,9 @@ var nobody = ["sam", "susan"];After var coolPeople = ["alex", "andrew", "susan"]
 var peopleTwo = ["alex", "max", "right"];
 var nobody = ["sam", "susan"]; - - **Tip**: `every` is short-circuited, so the first element that does not match will cause the `every` clause to fail.
 [
+
 ## List patterns
+
 ](https://docs.grit.io/language/modifiers#list-patterns)List patterns are used to match against a list of terms. They are written using the `[]` syntax.
 The list pattern matches if all of the terms in the list match in order.
 pattern `var $x = [$numbers]` => `var firstPrimes = [$numbers]` where {
