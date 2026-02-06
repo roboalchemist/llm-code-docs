@@ -2,13 +2,19 @@
 
 ## Overview
 
-The Zenoh MQTT Plugin is a bridge that enables seamless integration between MQTT and the Zenoh pub/sub system. It acts as an MQTT broker, accepting connections from MQTT clients (V3 and V5) and translating MQTT pub/sub operations into Zenoh pub/sub operations. This allows MQTT systems to leverage Zenoh's distributed routing infrastructure and capabilities.
+The Zenoh MQTT Plugin is a bridge that enables seamless integration between
+MQTT and the Zenoh pub/sub system. It acts as an MQTT broker, accepting
+connections from MQTT clients (V3 and V5) and translating MQTT pub/sub
+operations into Zenoh pub/sub operations. This allows MQTT systems to
+leverage Zenoh's distributed routing infrastructure and capabilities.
 
 **Key Repository**: [eclipse-zenoh/zenoh-plugin-mqtt](https://github.com/eclipse-zenoh/zenoh-plugin-mqtt)
 
 ## What is Zenoh?
 
-Zenoh (pronounced "zeno") is an open-source pub/sub, store/query, and compute framework that unifies data in motion, data at rest, and computations. It provides:
+Zenoh (pronounced "zeno") is an open-source pub/sub, store/query, and
+compute framework that unifies data in motion, data at rest, and
+computations. It provides:
 
 - Zero-overhead pub/sub messaging
 - Geo-distributed storage and queries
@@ -23,8 +29,10 @@ The Zenoh MQTT Plugin acts as a bridge between MQTT and Zenoh:
 
 ### Topic Mapping
 
-- MQTT publications on topic `device/123/temperature` are routed as Zenoh publications on key expression `device/123/temperature`
-- MQTT subscriptions on topic `device/#` are mapped to Zenoh subscriptions on key expression `device/**`
+- MQTT publications on topic `device/123/temperature` are routed as Zenoh
+  publications on key expression `device/123/temperature`
+- MQTT subscriptions on topic `device/#` are mapped to Zenoh subscriptions
+  on key expression `device/**`
 - MQTT wildcards (`+` and `#`) are mapped to Zenoh wildcards (`*` and `**`)
 
 ### Deployment Options
@@ -36,12 +44,16 @@ The plugin is available in two forms:
 
 ## Use Cases
 
-- **IoT to Cloud**: Route MQTT data from devices to edge nodes and cloud infrastructure
-- **Multi-System Bridging**: Connect two distinct MQTT systems across the internet with NAT traversal
+- **IoT to Cloud**: Route MQTT data from devices to edge nodes and cloud
+  infrastructure
+- **Multi-System Bridging**: Connect two distinct MQTT systems across the
+  internet with NAT traversal
 - **REST Integration**: Pub/sub to MQTT via Zenoh's REST API
 - **Robotics**: Enable MQTT-ROS2 communication
-- **Data Storage**: Store MQTT publications in Zenoh storage backends (RocksDB, InfluxDB, filesystem)
-- **Record/Replay**: Implement MQTT record/replay using InfluxDB as a storage backend
+- **Data Storage**: Store MQTT publications in Zenoh storage backends
+  (RocksDB, InfluxDB, filesystem)
+- **Record/Replay**: Implement MQTT record/replay using InfluxDB as a
+  storage backend
 
 ## Installation
 
@@ -50,14 +62,17 @@ The plugin is available in two forms:
 Download from the [Eclipse Zenoh download page](https://download.eclipse.org/zenoh/zenoh-plugin-mqtt/latest/):
 
 1. Choose your platform (see [Rust platform support](https://doc.rust-lang.org/stable/rustc/platform-support.html))
-2. For the plugin: Download `zenoh-plugin-mqtt-<version>-<platform>.zip` and extract in the same directory as `zenohd` or in `/usr/lib`
-3. For the standalone bridge: Download `zenoh-bridge-mqtt-<version>-<platform>.zip` and extract anywhere
+2. For the plugin: Download `zenoh-plugin-mqtt-<version>-<platform>.zip`
+   and extract in the same directory as `zenohd` or in `/usr/lib`
+3. For the standalone bridge: Download `zenoh-bridge-mqtt-<version>-<platform>.zip`
+   and extract anywhere
 
 ### Linux Debian
 
 ```bash
 # Add Eclipse Zenoh repository
-echo "deb [trusted=yes] https://download.eclipse.org/zenoh/debian-repo/ /" | sudo tee -a /etc/apt/sources.list > /dev/null
+echo "deb [trusted=yes] https://download.eclipse.org/zenoh/debian-repo/ /" \
+  | sudo tee -a /etc/apt/sources.list > /dev/null
 sudo apt update
 
 # Install plugin
@@ -89,7 +104,9 @@ docker run --init -p 1883:1883 eclipse/zenoh-bridge-mqtt \
 
 ### Configuration File Format
 
-Configure via JSON5 file (passed with `-c` argument) or command-line arguments. The `"mqtt"` section in the configuration can be used:
+Configure via JSON5 file (passed with `-c` argument) or command-line
+arguments. The `"mqtt"` section in the configuration can be used:
+
 - In the Zenoh router config (within `"plugins"`)
 - In the standalone bridge config
 
@@ -109,18 +126,22 @@ Configure via JSON5 file (passed with `-c` argument) or command-line arguments. 
 - **`allow`** (optional)
   - Regular expression matching MQTT topics to route via Zenoh
   - Default: All topics allowed
-  - When both `allow` and `deny` are set, topics matching only `allow` are permitted
+  - When both `allow` and `deny` are set, topics matching only `allow`
+    are permitted
 
 - **`deny`** (optional)
   - Regular expression matching MQTT topics to exclude from Zenoh routing
   - Default: No topics denied
-  - When both `allow` and `deny` are set, topics matching only `allow` are permitted
+  - When both `allow` and `deny` are set, topics matching only `allow`
+    are permitted
 
 #### Performance & Resource Settings
 
 - **`tx_channel_size`** (default: `65536`)
-  - Size of the transmit channel buffering messages from Zenoh to MQTT clients
-  - If capacity is reached, new messages are dropped until space becomes available
+  - Size of the transmit channel buffering messages from Zenoh to MQTT
+    clients
+  - If capacity is reached, new messages are dropped until space becomes
+    available
 
 - **`work_thread_num`** (default: `2`, plugin only)
   - Number of worker threads in the async runtime
@@ -144,7 +165,8 @@ Configure via JSON5 file (passed with `-c` argument) or command-line arguments. 
 
 #### TLS/MQTTS Configuration
 
-Only required for MQTTS support. Supports both server-side and mutual TLS (mTLS):
+Only required for MQTTS support. Supports both server-side and mutual TLS
+(mTLS):
 
 - **`server_private_key`** or **`server_private_key_base64`**
   - TLS private key (file path or base64-encoded string)
@@ -234,19 +256,23 @@ Only required for MQTTS support. Supports both server-side and mutual TLS (mTLS)
   - Example: `tcp/192.168.1.100:7447`
 - **`--no-multicast-scouting`** - Disable automatic Zenoh peer discovery
 - **`-i, --id <hex_string>`** - Unique identifier as hex string
-  - **WARNING**: Must be unique in the system; defaults to random UUIDv4
+  - **WARNING**: Must be unique in system; defaults to random UUIDv4
 - **`--rest-http-port [PORT | IP:PORT]`** - HTTP interface for REST API
-  - Disabled by default; setting this option enables it
+  - Disabled by default; enabling requires setting this option
 
 ### MQTT-related Arguments
 
-- **`-p, --port [PORT | IP:PORT]`** - MQTT server bind address (default: `0.0.0.0:1883`)
+- **`-p, --port [PORT | IP:PORT]`** - MQTT server bind address
+  (default: `0.0.0.0:1883`)
 - **`-s, --scope <String>`** - Prefix for MQTT topics mapped to Zenoh
 - **`-a, --allow <String>`** - Regex matching allowed MQTT topics
 - **`--deny <String>`** - Regex matching denied MQTT topics
-- **`-w, --generalise-pub <String>`** - Generalize Zenoh publications (repeatable)
-- **`-r, --generalise-sub <String>`** - Generalize Zenoh subscriptions (repeatable)
-- **`--tx-channel-size <Unsigned Integer>`** - MQTT transmit channel size (default: 65536)
+- **`-w, --generalise-pub <String>`** - Generalize Zenoh publications
+  (repeatable)
+- **`-r, --generalise-sub <String>`** - Generalize Zenoh subscriptions
+  (repeatable)
+- **`--tx-channel-size <Unsigned Integer>`** - MQTT transmit channel size
+  (default: 65536)
 - **`--dictionary-file <FILE>`** - Path to MQTT credentials file
 - **`--server-private-key <FILE>`** - TLS private key file
 - **`--server-certificate <FILE>`** - TLS certificate file
@@ -277,7 +303,8 @@ zenoh-bridge-mqtt -m client -e tcp/router-ip:7447
 ### Peer Mode with Custom Port and Scope
 
 ```bash
-zenoh-bridge-mqtt -p 1883 -s mqtt-building-1 --listen tcp/0.0.0.0:7447
+zenoh-bridge-mqtt -p 1883 -s mqtt-building-1 \
+  --listen tcp/0.0.0.0:7447
 ```
 
 ### Enable REST API
@@ -334,11 +361,13 @@ docker run --init -p 1883:1883 \
 
 ## Administration Interface
 
-The bridge exposes an administration space accessible via any Zenoh API, including REST.
+The bridge exposes an administration space accessible via any Zenoh API,
+including REST.
 
 ### Admin Space Paths
 
-Paths are prefixed with `@/service/<uuid>/mqtt` (where `<uuid>` is the bridge instance ID):
+Paths are prefixed with `@/service/<uuid>/mqtt` (where `<uuid>` is the
+bridge instance ID):
 
 - **`@/service/<uuid>/mqtt/version`** - Bridge version
 - **`@/service/<uuid>/mqtt/config`** - Bridge configuration
@@ -406,13 +435,16 @@ Located in `target/release/`:
 
 ### Build Compatibility Warning
 
-The plugin must be built with the **same Rust version and Zenoh version** as `zenohd`. Mismatches can cause `SIGSEGV` crashes due to ABI incompatibilities.
+The plugin must be built with the **same Rust version and Zenoh version**
+as `zenohd`. Mismatches can cause `SIGSEGV` crashes due to ABI
+incompatibilities.
 
 ## Environment Variables
 
 ### ZENOH_RUNTIME (Standalone Bridge)
 
-Configure the async runtime. Options: `tokio`, `async-std`, etc. (see [zenoh-runtime docs](https://docs.rs/zenoh-runtime/latest/zenoh_runtime/enum.ZRuntime.html))
+Configure the async runtime. Options: `tokio`, `async-std`, etc. (see
+[zenoh-runtime docs](https://docs.rs/zenoh-runtime/latest/zenoh_runtime/enum.ZRuntime.html))
 
 ```bash
 ZENOH_RUNTIME=tokio zenoh-bridge-mqtt
