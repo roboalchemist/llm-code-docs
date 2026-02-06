@@ -1,0 +1,75 @@
+# Source: https://docs.grit.io
+
+# Testing GritQL
+
+If you are crafting a complex query, we recommend iterating on test cases to ensure that your query behaves as expected.
+Run the `grit patterns test` command to test all defined patterns in your repo. You can also use `--filter` to run a subset of patterns.
+shell grit patterns test --filter=pattern_to_test[
+## Markdown format
+](https://docs.grit.io/guides/testing#markdown-format)Reusable queries and test cases can be bundled together in a Markdown file to create a pattern. This allows you to combine documentation, GritQL, and source code examples in a single file.
+The markdown file should be placed in a `.grit/patterns` folder at the root of your repo. It can be formatted however you like, so long as you follow these conventions:
+- The `name` of the file is used as the name of the pattern (without the `.md` extension).
+- The `title` of the pattern is retrieved from the first heading in the file. This can be overridden by adding a `title` field in the front matter.
+- The `description` of the pattern is retrieved from the first non-heading paragraph in the file.
+- The GritQL `body` is retrieved from the first fenced code block in the file.
+- Additional pattern metadata can be configured as YAML in the frontmatter of the markdown file, delineated between `---` lines at the start of the document.- `level`: (Optional, one of `none`, `info`, `warn`, `error`) The enforcement level of the pattern for running diagnostics via `grit check`. Defaults to `info`.
+- `tags`: (Optional, `string[]`) A list of tags which can be used to filter patterns.
+
+- Subheadings are used for each test case, following these conventions:- If a subheading has a single code block, it represents a test case that should be matched by the pattern. You don&#x27;t need to provide a transformed example.
+- If a subheading has two code blocks, the first represents the input and the second represents the expected output.
+- A negative test case should have two identical code blocks.
+- Within the sample patterns, you can use `// @filename: example.js` to represent multiple input/output files that should be tested as a group - like [this example](https://github.com/getgrit/stdlib/blob/main/.grit/patterns/js/split_trpc_router.md?plain=1#L129).
+
+[
+### Markdown example
+](https://docs.grit.io/guides/testing#markdown-example)markdown .grit/patterns/remove_console_log.md---
+tags: [optional, tags, here]
+---
+# Remove console.log
+
+Remove console.log in production code.
+
+```grit
+`console.log($_)` => .
+```
+
+## Test case one
+
+This is the first test case. You can include an explanation of the case here.
+
+```typescript
+console.error("keep this");
+console.log(&#x27;remove this!&#x27;);
+```
+
+It is fine to include additional descriptive text around the test cases.
+This is often used to explain the context of the test case, or to explain a convention.
+
+```typescript
+console.error("keep this");
+
+```You can find many more examples in the [Grit standard library](https://github.com/getgrit/stdlib/tree/main/.grit/patterns).
+[
+## YAML format
+](https://docs.grit.io/guides/testing#yaml-format)If you define patterns directly in the `.grit/grit.yaml` [file](http://localhost:3200/guides/config#configuration-reference), you can also include before and after test cases underneath the `samples` key. Each sample *must* include a `input` and `output` key.
+[
+### YAML example
+](https://docs.grit.io/guides/testing#yaml-example)yaml patterns:
+  - name: avoid_only
+    body: |
+      `$testlike.only` => `$testlike` where {
+        `$testlike` <: or {
+          `describe`
+          `it`
+          `test`
+        }
+      }
+    samples:
+      - input: |
+          describe.only(&#x27;this is a test&#x27;, () => {
+            // ...
+          });
+        output: |
+          describe(&#x27;this is a test&#x27;, () => {
+            // ...
+          });
