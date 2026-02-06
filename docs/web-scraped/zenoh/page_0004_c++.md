@@ -5,6 +5,7 @@ Source: https://zenoh.io/docs/migration_1.0/c++
 # Source: https://zenoh.io/docs/migration_1.0/c++
 
 # C++
+
 Zenoh 1.0.0 brings a number of changes to the API, with a concentrated effort to bring the C++ API to more closely resemble the Rust API in usage.
 The improvements we bring in this update include:
 - A simpler organization of the Zenoh classes, abstracting away the notion of View and Closure.
@@ -16,8 +17,10 @@ The improvements we bring in this update include:
 Now that theamuse boucheis served, let’s get into the main course!
 
 ## Error Handling
+
 In version 0.11.0 all Zenoh call failures were handled by either returning aboolvalue indicating success or failure (and probably returning an error code) or returning anstd::variant<ReturnType, ErrorMessage>. For instance:
-```
+
+```cpp
 std::variant<z::Config, ErrorMessage> config_client(const z::StrArrayView& peers);
 
 bool put(const z::BytesView& payload, const z::PublisherPutOptions& options, ErrNo& error);
@@ -27,12 +30,14 @@ In 1.0.0, all functions that can fail on the Zenoh side now offer 2 options for 
 A. Exceptions
 B. Error Codes
 Any function that can fail now accepts an optional parameterZError* errpointer to the error code. If it is not provided (or set tonullptr), an instance ofZExceptionwill be thrown, otherwise the error code will be written into theerrpointer.
-```
+
+```cpp
 static Config client(const std::vector<std::string>& peers, ZError* err = nullptr);
 ```
 
 This also applies to constructors: if a failure occurs, either an exception is thrown or the error code is written to the provided pointer. In the latter case, the returned object will be in an “empty” state (i.e. converting it to a boolean returnsfalse).
-```
+
+```cpp
 Config config = Config::create_default();
 // Receiving an error code
 Zerror err = Z_OK;
@@ -53,34 +58,37 @@ try {
 All returned andstd::move’d-in objects are guaranteed to be left in an “empty” state in case of function call failure.
 
 ## Payload
+
 In version 0.11.0 it was only possible to sendstd::string/const char*orstd::vector<uint8_t>/uint8_t*using theBytesViewclass:
-```
+
+```text
 publisher.put("my_payload");
 ```
 
 In 1.0.0, theBytesViewclass is gone and we introduced theBytesobject which represents a (serialized) payload.
 Similarly to 0.11.0 it can be used to store raw bytes or strings:
-```
+
+```c
 void publish_string(const Publisher& publisher, const std::string& data) {
-	publisher.put(Bytes(data));
+    publisher.put(Bytes(data));
 }
 
 void publish_string_without_copy(const Publisher& publisher, std::string&& data) {
-	publisher.put(Bytes(data));
+    publisher.put(Bytes(data));
 }
 
 void receive_string(const Sample &sample) {
   std::cout <<"Received: " 
-					  << sample.get_payload().as_string() 
+                      << sample.get_payload().as_string() 
             << "\n";
 };
 
 void publish_bytes(const Publisher& publisher, const std::vector<uint8_t>& data) {
-	publisher.put(Bytes(data));
+    publisher.put(Bytes(data));
 }
 
 void publish_bytes_without_copy(const Publisher& publisher, std::vector<uint8_t>&& data) {
-	publisher.put(Bytes(data));
+    publisher.put(Bytes(data));
 }
 
 void receive_bytes(const Sample &sample) {
@@ -89,7 +97,8 @@ void receive_bytes(const Sample &sample) {
 ```
 
 Additionallyzenoh::extnamespace provides support for serialization/deserialziation of typed data to/intoBytes:
-```
+
+```json
 // arithmetic types
 double pi = 3.1415926;
 Bytes b = ext::serialize(pi);
@@ -111,7 +120,8 @@ assert(ext::deserialize<std::unordered_map<std::string, std::deque<double>>>(b) 
 ```
 
 Users can easily define serialization/deserialization for their own custom types by usingext::Serializerandext::Deserializerclasses:
-```
+
+```rust
 struct CustomStruct {
   std::vector<double> vd;
   int32_t i;
@@ -147,8 +157,10 @@ void serialize_custom() {
 For lower-level access to theBytescontentBytes::Reader,Bytes::WriterandBytes::SliceIteratorclasses can be used.
 
 ## Stream Handlers and Callbacks
+
 In version 0.11.0 stream handlers were only supported forget:
-```
+
+```cpp
 // callback
 session.get(keyexpr, "", {on_reply, on_done}, opts);
 
@@ -180,7 +192,8 @@ for (bool call_success = recv(reply); !call_success || reply.check(); call_succe
 In 1.0.0,Subscriber,Queryableandgetcan now use either a callable object or a stream handler. Currently, Zenoh provides 2 types of handlers:
 - FifoHandler- serving messages in Fifo order,blockingonce full.
 - RingHandler- serving messages in Fifo order,dropping older messagesonce full to make room for new ones.
-```
+
+```cpp
 // callback
 session.get(
   keyexpr, "", on_reply, on_done,
@@ -203,15 +216,15 @@ while (true) {
   auto res = replies.try_recv();
   if (std::has_alternative<Reply>(res)) {
     const auto& sample = std::get<Reply>(res).get_ok();
-	  std::cout << "Received ('" << sample.get_keyexpr().as_string_view() << "' : '"
+      std::cout << "Received ('" << sample.get_keyexpr().as_string_view() << "' : '"
             << sample.get_payload().as_string() << "')\n";
   } else if (std::get<channels::RecvError>(res) == channels::RecvError::Z_NODATA) {
-	  // try_recv is non-blocking call, so may fail to return a reply if the Fifo buffer is empty
-	  std::cout << ".";
+      // try_recv is non-blocking call, so may fail to return a reply if the Fifo buffer is empty
+      std::cout << ".";
     std::this_thread::sleep_for(1s);
     continue;
   } else { // std::get<channels::RecvError>(res) == channels::RecvError::Z_DISCONNECTED
-	  break; // no more replies will arrive
+      break; // no more replies will arrive
   }
 }
 std::cout << std::endl;
@@ -219,7 +232,8 @@ std::cout << std::endl;
 ```
 
 The same works forSubscriberandQueryable:
-```
+
+```cpp
 // callback
 auto data_callback = [](const Sample &sample) {
   std::cout << ">> [Subscriber] Received ('"
@@ -252,22 +266,24 @@ while (true) {
   auto res = messages.try_recv();
   if (std::has_alternative<Sample>(res)) {
     const auto& sample = std::get<Sample>(res);
-	  std::cout << "Received ('" << sample.get_keyexpr().as_string_view() << "' : '"
+      std::cout << "Received ('" << sample.get_keyexpr().as_string_view() << "' : '"
             << sample.get_payload().as_string() << "')\n";
   } else if (std::get<channels::RecvError>(res) == channels::RecvError::Z_NODATA) {
-	  // try_recv is non-blocking call, so may fail to return a sample if the Fifo buffer is empty
-	  std::cout << ".";
+      // try_recv is non-blocking call, so may fail to return a sample if the Fifo buffer is empty
+      std::cout << ".";
     std::this_thread::sleep_for(1s);
   } else { // std::get<channels::RecvError>(res) == channels::RecvError::Z_DISCONNECTED
-	  break; // no more samples will arrive
+      break; // no more samples will arrive
   }
 }
 std::cout << std::endl;
 ```
 
 ## Attachment
+
 In version 0.11.0 an attachment could only represent a set of key-value pairs and had a somewhat complicated interface:
-```
+
+```json
 // publish message with attachment
 options.set_encoding(Z_ENCODING_PREFIX_TEXT_PLAIN);
 std::unordered_map<std::string, std::string> attachment_map = {
@@ -283,7 +299,7 @@ void data_handler(const Sample &sample) {
             << sample.get_keyexpr().as_string_view() 
             << "' : '" 
             << sample.get_payload().as_string_view()
-		        << "')\n";
+                << "')\n";
   if (sample.get_attachment().check()) {
     // reads full attachment
     sample.get_attachment().iterate([](const BytesView &key, const BytesView &value) -> bool {
@@ -301,7 +317,8 @@ void data_handler(const Sample &sample) {
 ```
 
 In 1.0.0, attachment handling was greatly simplified. It is now represented asBytes(i.e. the same class we use to represent serialized data) and can thus contain data in any format.
-```
+
+```cpp
 // publish a message with attachment
 auto session = Session::open(std::move(config));
 auto pub = session.declare_publisher(KeyExpr(keyexpr));
@@ -334,9 +351,11 @@ void data_handler(const Sample &sample) {
 ```
 
 # Optional Parameters
+
 Handling for optional parameters for Zenoh functions was simplified. There are no more getters/setters and all fields of option structures are public. Also option arguments are automatically set to their default values, and if your compiler has support for designated initializers, it is sufficient to only set the fields that are needed to be different from default ones.
 In version 0.11.0:
-```
+
+```text
 GetOptions opts;
 opts.set_target(Z_QUERY_TARGET_ALL);
 opts.set_value(value);
@@ -347,6 +366,7 @@ session.get(keyexpr, "", {on_reply, on_done}, opts);
 ```
 
 In 1.0.0:
-```
+
+```json
 session.get(keyexpr, "", on_reply, on_done, {.target = Z_QUERY_TARGET_ALL, .payload = ext::serialize(value)});
 ```

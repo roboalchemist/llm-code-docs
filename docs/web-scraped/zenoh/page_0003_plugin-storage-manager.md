@@ -5,10 +5,12 @@ Source: https://zenoh.io/docs/manual/plugin-storage-manager
 # Source: https://zenoh.io/docs/manual/plugin-storage-manager
 
 # Storage manager plugin
+
 Thestorage_managerplugin provideszenohdwith the ability to store values associated with a set of keys, allowing other nodes to query the most recent values associated with these keys.
 Library name:zplugin_storage_manager
 
 ## Backends and Volumes
+
 Since there exist many ways for a Zenoh node to store values it may need to serve later, the storage manager plugin relies on dynamically loaded “backends” to provide this functionality. Typically, a backend will leverage some third-party technology, such as databases, to handle storage. A possibly convenient side effect of using databases as backends is that they may also be used as an interface between your Zenoh infrastructure and an external infrastructure that may interact independently with the database.
 You may want to load the same backend multiple times with different configurations: we refer to these instances as “volumes”. These volumes can in turn be relied on by any number of storages, just like you can store many files on a filesystem volume.
 When defining volumes, there are multiple ways to inform it of which backend it should use:
@@ -21,11 +23,14 @@ This name-based lookup consists in searching the configuredbackend_search_dirsfo
 - on Windows:zbackend_<name>.dll
 
 ### Integrated volumes
+
 By design, the storage manager may make some volumes available regardless of configuration. Currently, the only such volume is thememoryvolume. This volume stores key-value pairs in RAM. While convenient, keep in mind that this storage is not persistent through restarts ofzenohd.
 
 ## Configuration
+
 Storages use structuredconfigurationsto require the creation and deletion of backends and storages.The main schema is as follows:
-```
+
+```json
 {
   // Search directories when backends are requested by name
   backend_search_dirs?: string | string[], 
@@ -60,19 +65,24 @@ Storages use structuredconfigurationsto require the creation and deletion of bac
 The example configuration providedherehas concrete examples of backend and storage configuration.
 
 ## Backends list
+
 Here is a list of the available backends:
 
 ## Volumes and Storage management during runtime
+
 The Volumes and Storages of a Zenoh router can be managed at runtime via its admin space, if it’s configured to be writeable:
 - either via the configuration file in theadminspace.permissionssection
 - either via thezenohdcommand line option:--adminspace-permissions <[r|w|rw|none]>
 The most convenient way to edit configuration at runtime is through theadmin space, via theREST API. This is the method we will teach here throughcurlcommands. If you’re unfamiliar withcurl, it’s a command line tool to make HTTP requests, here’s a quick catch-up, with the equivalent in JS’s standard library’sfetch:
-```
+
+```json
 curl -X PUT        'http://hostname:8000/key/expression' -H 'content-type:application/json'      -d '{"some": ["json", "data"]}'
+
 #    ^HTTP METHOD  ^Target URL for the request           ^Header saying the data is in JSON      ^The body of the request
-```
 
 ```
+
+```json
 fetch('http://hostname:8000/key/expression', {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
@@ -81,41 +91,52 @@ fetch('http://hostname:8000/key/expression', {
 ```
 
 ### Adding a volume
+
 To create a volume, add an entry describing it to the configuration. Let’s say you’d like to create “my-volume” on a node that had the influxdb daemon listen on port 8086:
-```
+
+```json
 curl -X PUT 'http://hostname:8000/@/local/router/config/plugins/storage_manager/volumes/my-volume' -H 'content-type:application/json' -d '{"backend": "influxdb", "url": "http://localhost:8086"}'
 ```
 
 Note that if you only planned on having a single volume relying on influxdb, you might as well name that volume “influxdb”, saving you the need to specify that the “influxdb” backend is the one you want to use:
-```
+
+```json
 curl -X PUT 'http://hostname:8000/@/local/router/config/plugins/storage_manager/volumes/influxdb' -H 'content-type:application/json' -d '{"url": "http://localhost:8086"}'
 ```
 
 ### Removing a volume
+
 To remove a volume, simply delete its entry from the configuration with:
-```
+
+```text
 curl -X DELETE 'http://hostname:8000/@/local/router/config/plugins/storage_manager/volumes/my-volume'
 ```
 
 The storage manager will delete the associated storages as well.
 
 ### Adding a storage
+
 You can add storages at any time by adding them to the configuration through the admin space.
 The simplest volume to use is the integrated “memory” volume, since it requires no extra configuration. Let’s have “my-storage” work ondemo/my-storage/**:
-```
+
+```json
 curl -X PUT 'http://hostname:8000/@/local/router/config/plugins/storage_manager/storages/my-storage' -H 'content-type:application/json' -d '{"key_expr": "demo/my-storage/**", "volume": "memory"}'
 ```
 
 Some volumes, like that “my-volume” one we createdearlier, need a bit more configuration. Any volume supported by theinfluxdbbackend, for example, needs to know on what database to store the data associated with each storage through adbargument:
-```
+
+```json
 curl -X PUT 'http://hostname:8000/@/local/router/config/plugins/storage_manager/storages/my-other-storage' -H 'content-type:application/json' -d '{"key_expr": "demo/my-other-storage/**", "volume": {"id": "my-volume", "db": "MyOtherStorage"}}'
 ```
 
 ### Removing a storage
+
 Just like volumes, removing a storage is as simple as deleting its entry in the configuration. Note that removing a volume’s last storage will not remove that volume: volumes with 0 storages depending on them are perfectly legal.
-```
+
+```text
 curl -X DELETE 'http://hostname:8000/@/local/router/config/plugins/storage_manager/storages/my-storage'
 ```
 
 ### Checking a volume’s or a storage’s status
+
 TODO: this part hasn’t been redocumented yet. Feel free to contact us onDiscordto get more information.

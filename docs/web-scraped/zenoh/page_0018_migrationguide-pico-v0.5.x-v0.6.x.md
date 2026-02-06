@@ -1,32 +1,35 @@
-# Migrating from Zenoh-Pico v0.5.x to Zenoh-Pico v0.6.x · Zenoh - pub/sub, geo distributed storage, query
+# Migrating from Zenoh-Pico v0.5.x to Zenoh-Pico v0.6.x
 
 Source: https://zenoh.io/docs/migration_0.5_to_0.6/migrationguide-pico-v0.5.x-v0.6.x
-
-# Source: https://zenoh.io/docs/migration_0.5_to_0.6/migrationguide-pico-v0.5.x-v0.6.x
-
-# Migrating from Zenoh-Pico v0.5.x to Zenoh-Pico v0.6.x
 
 ## General considerations about the new Zenoh-Pico v0.6.x API
 
 ### Ownership model
+
 The new Zenoh-Pico API, similarly to the Zenoh-C API, introduced a more explicit ownership model to the user. Such model targets a better memory management where e.g. memory leaks can be easily identified and double free can be avoided. The user will have a clear understanding on what is owned by his side of the code, and what has been loaned or moved to the API.
+
 In a nutshell,
-- For each Zenoh type in the API, there are in fact two types: anowned(e.g.,z_owned_*_t) and aloaned(e.g.,z_*_t) type. For example,z_session_thas an equivalent defined asz_owned_session_t. While the former is a borrowed/loaned object (meaning, the user does not need to release it), the latter is owned by the user and thus the user is responsible to release it.
-- A set of ownership helpers,z_move,z_loan,z_checkandz_dropare provided to ease the management of owned objects and defines how an object is passed to the API.
-- Withz_move, the user give the ownership of an owned object to the API, meaning that the user no longer owns the object and therefore the user is no more responsible for releasing it.
-- Withz_loan, the user retain the ownership of the owned object upon return of the API call.Note that, releasing an object while loan references still exist causes undefined behavior.
-- Withz_check, the user can check if a owned object is valid, which also means that it retains memory to be released before going out of scope.
-- Withz_drop, the user can release the memory associated to a given owned object. Althoughz_dropis double-free safe, loaned references to the object that might still live might cause undefined behavior.
+
+- For each Zenoh type in the API, there are in fact two types: an owned (e.g., `z_owned_*_t`) and a loaned (e.g., `z_*_t`) type. For example, `z_session_t` has an equivalent defined as `z_owned_session_t`. While the former is a borrowed/loaned object (meaning, the user does not need to release it), the latter is owned by the user and thus the user is responsible to release it.
+- A set of ownership helpers, `z_move`, `z_loan`, `z_check` and `z_drop` are provided to ease the management of owned objects and defines how an object is passed to the API.
+- With `z_move`, the user give the ownership of an owned object to the API, meaning that the user no longer owns the object and therefore the user is no more responsible for releasing it.
+- With `z_loan`, the user retain the ownership of the owned object upon return of the API call. Note that, releasing an object while loan references still exist causes undefined behavior.
+- With `z_check`, the user can check if a owned object is valid, which also means that it retains memory to be released before going out of scope.
+- With `z_drop`, the user can release the memory associated to a given owned object. Although `z_drop` is double-free safe, loaned references to the object that might still live might cause undefined behavior.
 
 ### Private functions, types and constants
-In the new Zenoh-Pico API, any private function, type or constant is prefixed with a_z_*or_Z_*. The usermust not use them, since we will not guarantee their stability or even existence. Users might solely use any function, type or constant that starts with az_*orZ_*Also, any struct members denotated with a_are also private andmust not be used. All the remaning members can be used, and we plan to keep them stable.
+
+In the new Zenoh-Pico API, any private function, type or constant is prefixed with `_z_*` or `_Z_*`. The user must not use them, since we will not guarantee their stability or even existence. Users might solely use any function, type or constant that starts with `z_*` or `Z_*`. Also, any struct members denotated with a `_` are also private and must not be used. All the remaining members can be used, and we plan to keep them stable.
 
 ## Migrating from Zenoh-Pico v0.5.x zenoh-net API to Zenoh-Pico v0.6.x zenoh API
 
 ### Opening a session
-All types and operations from thezn_*primitives have been updated and migrated to thez_*primitives.
+
+All types and operations from the `zn_*` primitives have been updated and migrated to the `z_*` primitives.
+
 zenoh v0.5.x
-```
+
+```c
 zn_properties_t *config = zn_config_default();
 zn_session_t *s = zn_open(config);
 if (s == NULL) {
@@ -36,7 +39,8 @@ if (s == NULL) {
 ```
 
 zenoh v0.6.x (C11)
-```
+
+```c
 z_owned_config_t config = z_config_default();
 z_owned_session_t s = z_open(z_move(config));
 if (!z_check(s)) {
@@ -46,7 +50,8 @@ if (!z_check(s)) {
 ```
 
 zenoh v0.6.x (C99)
-```
+
+```c
 z_owned_config_t config = z_config_default();
 z_owned_session_t s = z_open(z_config_move(&config));
 if (!z_session_check(&s)) {
@@ -56,12 +61,16 @@ if (!z_session_check(&s)) {
 ```
 
 ### Subscribing
-For this release, Zenoh-Pico only supports subscribers with callbacks. It is possible to access samples through a callback by calling thecallbackfunction passed as argument ondeclare_subscriberfunction.
-When declaring a subscriber, keyexpr optimizations
-(i.e., keyexpr declaration) will be automatically performed if required.
+
+For this release, Zenoh-Pico only supports subscribers with callbacks. It is possible to access samples through a callback by calling the callback function passed as argument on `declare_subscriber` function.
+
+When declaring a subscriber, keyexpr optimizations (i.e., keyexpr declaration) will be automatically performed if required.
+
 Finer configuration is performed with the help of an options struct.
+
 zenoh-net v0.5.x
-```
+
+```c
 void data_handler(const zn_sample_t *sample, const void *arg)
 {
     printf(">> [Subscription listener] Received (%.*s, %.*s)\n",
@@ -75,7 +84,8 @@ zn_subscriber_t *sub = zn_declare_subscriber(s, zn_rname("/key/expression"), zn_
 ```
 
 zenoh v0.6.x (C11)
-```
+
+```c
 void data_handler(const z_sample_t *sample, void *arg)
 {
     char *keystr = z_keyexpr_to_string(sample->keyexpr);
@@ -95,7 +105,8 @@ if (!z_check(sub)) {
 ```
 
 zenoh v0.6.x (C99)
-```
+
+```c
 void data_handler(const z_sample_t *sample, void *arg)
 {
     char *keystr = z_keyexpr_to_string(sample->keyexpr);
@@ -115,36 +126,46 @@ if (!z_subscriber_check(&sub)) {
 ```
 
 ### Publishing
-Thewriteoperation has been replaced by aputoperation.
+
+The write operation has been replaced by a put operation.
+
 When declaring a publisher, keyexpr optimizations (i.e., keyexpr declaration) will be automatically performed if required.
+
 Finer configuration is performed with the help of an options struct.
+
 zenoh-net v0.5.x
-```
+
+```c
 zn_write(s, reskey, "value", strlen("value"));
 ```
 
 zenoh v0.6.x (C11)
-```
+
+```c
 if (z_put(z_loan(s), z_keyexpr("key/expression"), (const uint8_t *)"value", strlen("value"), NULL) < 0) {
     printf("Put has failed!\n");
 }
 ```
 
 zenoh v0.6.x (C99)
-```
+
+```c
 if (z_put(z_session_loan(&s), z_keyexpr("key/expression"), (const uint8_t *)"value", strlen("value"), NULL) < 0) {
     printf("Put has failed!\n");
 }
 ```
 
-Thewrite_extoperation has been removed. Configuration is now performed with the help of a option struct.
+The write_ext operation has been removed. Configuration is now performed with the help of a option struct.
+
 zenoh-net v0.5.x
-```
+
+```c
 zn_write_ext(s, reskey, "value", strlen("value"), Z_ENCODING_TEXT_PLAIN, Z_DATA_KIND_DEFAULT, zn_congestion_control_t_BLOCK);
 ```
 
 zenoh v0.6.x (C11)
-```
+
+```c
 z_put_options_t options = z_put_options_default();
 options.congestion_control = Z_CONGESTION_CONTROL_DROP;
 options.encoding = z_encoding(Z_ENCODING_PREFIX_TEXT_PLAIN, NULL);
@@ -155,7 +176,8 @@ if (z_put(z_loan(s), z_keyexpr("key/expression"), (const uint8_t *)"value", strl
 ```
 
 zenoh v0.6.x (C99)
-```
+
+```c
 z_put_options_t options = z_put_options_default();
 options.congestion_control = Z_CONGESTION_CONTROL_DROP;
 options.encoding = z_encoding(Z_ENCODING_PREFIX_TEXT_PLAIN, NULL);
@@ -165,9 +187,11 @@ if (z_put(z_session_loan(&s), z_keyexpr("key/expression"), (const uint8_t *)"val
 }
 ```
 
-Thedeclare_publishernow returns a publisher object upon whichputanddeleteoperations can be performed.
+The declare_publisher now returns a publisher object upon which put and delete operations can be performed.
+
 zenoh-net v0.5.x
-```
+
+```c
 zn_publisher_t *pub = zn_declare_publisher(s, reskey);
 if (pub == NULL) {
     printf("Unable to declare publisher.\n");
@@ -176,7 +200,8 @@ if (pub == NULL) {
 ```
 
 zenoh v0.6.x (C11)
-```
+
+```c
 z_owned_publisher_t pub = z_declare_publisher(z_loan(s), z_keyexpr("key/expression"), NULL);
 if (!z_check(pub)) {
     printf("Unable to declare publisher!\n");
@@ -186,7 +211,8 @@ z_publisher_put(z_loan(pub), (const uint8_t *)"value", strlen("value"), NULL);
 ```
 
 zenoh v0.6.x (C99)
-```
+
+```c
 z_owned_publisher_t pub = z_declare_publisher(z_session_loan(&s), z_keyexpr("key/expression"), NULL);
 if (!z_publisher_check(&pub)) {
     printf("Unable to declare publisher!\n");
@@ -196,11 +222,16 @@ z_publisher_put(z_publisher_loan(&pub), (const uint8_t *)"value", strlen("value"
 ```
 
 ### Querying
-Thequery_collectoperation has been replaced by agetoperation. Thegetoperation is no longer blocking and returning a list of replies, but instead it makes replies accessible through a callback by calling thecallbackfunction passed as argument ongetfunction.
+
+The query_collect operation has been replaced by a get operation. The get operation is no longer blocking and returning a list of replies, but instead it makes replies accessible through a callback by calling the callback function passed as argument on get function.
+
 When declaring a publisher, keyexpr optimizations (i.e., keyexpr declaration) will be automatically performed if required.
+
 Finer configuration is performed with the help of an options struct.
+
 zenoh-net v0.5.x
-```
+
+```c
 zn_reply_data_array_t replies = zn_query_collect(s, zn_rname("/key/expression"), "", zn_query_target_default(), zn_query_consolidation_default());
 
 for (unsigned int i = 0; i < replies.len; ++i) {
@@ -212,7 +243,8 @@ zn_reply_data_array_free(replies);
 ```
 
 zenoh v0.6.x (C11)
-```
+
+```c
 void reply_dropper(void *ctx)
 {
     printf(">> Received query final notification\n");
@@ -242,7 +274,8 @@ if (z_get(z_loan(s), z_keyexpr("key/expression"), NULL, z_move(callback), &opts)
 ```
 
 zenoh v0.6.x (C99)
-```
+
+```c
 void reply_dropper(void *ctx)
 {
     printf(">> Received query final notification\n");
@@ -272,12 +305,18 @@ if (z_get(z_session_loan(&s), z_keyexpr("key/expression"), "", z_closure_reply_m
 ```
 
 ### Queryable
-It is possible to access queries through a callback by calling thecallbackfunction passed as argument ondeclare_queryablefunction.
+
+It is possible to access queries through a callback by calling the callback function passed as argument on `declare_queryable` function.
+
 When declaring a queryable, keyexpr optimizations (i.e., keyexpr declaration) will be automatically performed if required.
+
 Finer configuration is performed with the help of an options struct.
-Thesend_replyoperation has been also extended with an options struct for finer configuration.
+
+The send_reply operation has been also extended with an options struct for finer configuration.
+
 zenoh-net v0.5.x
-```
+
+```c
 void query_handler(zn_query_t *query, const void *ctx)
 {
     z_string_t res = zn_query_res_name(query);
@@ -296,7 +335,8 @@ if (qable == NULL) {
 ```
 
 zenoh v0.6.x (C11)
-```
+
+```c
 void query_handler(const z_query_t *query, void *ctx)
 {
     char *keystr = z_keyexpr_to_string(z_query_keyexpr(query));
@@ -317,7 +357,8 @@ if (!z_check(qable)) {
 ```
 
 zenoh v0.6.x (C99)
-```
+
+```c
 void query_handler(const z_query_t *query, void *ctx)
 {
     char *keystr = z_keyexpr_to_string(z_query_keyexpr(query));
@@ -338,61 +379,79 @@ if (!z_queryable_check(&qable)) {
 ```
 
 ### Read and Lease tasks
+
 As Zenoh-Pico is targeting microcontrollers and embedded systems, it is a requirement to support both single-thread and multi-thread implementations. To do so, the user has explicit control over the read and lease tasks.
-If ### multi-thread behavior is intended, the user must spawn both tasks manually by including the following lines after Zenoh Session is successfully open.zenoh-net v0.5.x
-```
+
+If multi-thread behavior is intended, the user must spawn both tasks manually by including the following lines after Zenoh Session is successfully open.
+
+zenoh-net v0.5.x
+
+```c
 zp_start_read_task(s);
 zp_start_lease_task(s);
 ```
 
 zenoh v0.6.x (C11)
-```
+
+```c
 zp_start_read_task(z_loan(s), NULL);
 zp_start_lease_task(z_loan(s), NULL);
 ```
 
 zenoh v0.6.x (C99)
-```
+
+```c
 zp_start_read_task(z_session_loan(&s), NULL);
 zp_start_lease_task(z_session_loan(&s), NULL);
 ```
 
-Likewise, the user must also destroy both tasks manually by including the following lines just before closing the session:zenoh-net v0.5.x
-```
+Likewise, the user must also destroy both tasks manually by including the following lines just before closing the session:
+
+zenoh-net v0.5.x
+
+```c
 zp_stop_read_task(s);
 zp_stop_lease_task(s);
 ```
 
 zenoh v0.6.x (C11)
-```
+
+```c
 zp_stop_read_task(z_loan(s));
 zp_stop_lease_task(z_loan(s));
 ```
 
 zenoh v0.6.x (C99)
-```
+
+```c
 zp_stop_read_task(z_session_loan(&s));
 zp_stop_lease_task(z_session_loan(&s));
 ```
 
-Note that,z_close(z_move(s));will stop and destroy the tasks if the user forgets to do it. However, for the sake of symmetric operations, the user is advised to stop them manually.
-Ifsingle-thread behavioris intended, the user must not spawn the any of the tasks. Instead, the user can a single execution of the read task and lease tasks at its own pace:
+Note that, `z_close(z_move(s));` will stop and destroy the tasks if the user forgets to do it. However, for the sake of symmetric operations, the user is advised to stop them manually.
+
+If single-thread behavior is intended, the user must not spawn the any of the tasks. Instead, the user can a single execution of the read task and lease tasks at its own pace:
+
 zenoh v0.6.x (C11)
-```
+
+```c
 zp_read(z_loan(s), NULL);
 zp_send_keep_alive(z_loan(s), NULL);
 zp_send_join(z_loan(s), NULL);
 ```
 
 zenoh v0.6.x (C99)
-```
+
+```c
 zp_read(z_session_loan(&s), NULL);
 zp_send_keep_alive(z_session_loan(&s), NULL);
 zp_send_join(z_session_loan(&s), NULL);
 ```
 
 ### Examples
+
 More examples are available here:
-zenoh v0.6.0 (C11)
-zenoh v0.6.0 (C99)
-zenoh-net v0.5.0-beta9
+
+- zenoh v0.6.0 (C11)
+- zenoh v0.6.0 (C99)
+- zenoh-net v0.5.0-beta9

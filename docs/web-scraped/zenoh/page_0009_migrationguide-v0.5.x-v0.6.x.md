@@ -7,21 +7,27 @@ Source: https://zenoh.io/docs/migration_0.5_to_0.6/migrationguide-v0.5.x-v0.6.x
 # Migrating from Zenoh v0.5.x to Zenoh v0.6.x
 
 ## Key expressions
+
 Some key expressions are now considered invalid:
+
 - Heading slashes are forbidden. Example:"/key/expression".
 - Trailing slashes are forbidden. Example:"key/expression/".
 - Empty chunks are forbidden. Example:"key//expression".
+
 An error will be returned when trying to use such invalid key expressions.
 
 ## APIs
+
 In zenoh version 0.6.0, zenoh and zenoh-net APIs have been merged into a single API.
 
 ## Configuration
+
 In v0.5.x the Zenoh configuration was a list of key/value pairs.
 In v0.6.x the has a structured format which can be expressed in JSON, JSON5 or YAML.
 zenoh configuration has moved from a list of key value pairs to a more structured configuration that can be expressed as JSON5.
 Here was the configuration used by default by the zenoh router v0.5.x:
-```
+
+```bash
 mode=peer
 peer=
 listener=
@@ -62,7 +68,8 @@ multicast_ipv6_address=[ff24::224]:7447
 ```
 
 Here is the new configuration (JSON5 format) used by default by the zenoh router v0.6.x:
-```
+
+```json5
 {
   id: null,
   mode: "router",
@@ -187,9 +194,12 @@ Here is the new configuration (JSON5 format) used by default by the zenoh router
 
 For more details on the configuration file, seehttps://github.com/eclipse-zenoh/zenoh/blob/0.6.0-beta.1/DEFAULT_CONFIG.json5
 
-### Admin space
+## Admin space
+
 In zenoh version 0.5.0 the admin space was returning router information on@/router/<router_id>, but was mainly used for management of Backends and Storages with put/delete/get on@/router/<router_id>/plugin/storages/backend/<backend_id>for Backends and@/router/<router_id>/plugin/storages/backend/<backend_id>/storage/<storage_id>for Storages.
+
 In zenoh version 0.6.0 the admin space is splitted in 3 parts:
+
 - @/router/<router_id>:read-onlykey returning the status of the router itself
 - @/router/<router_id>/config/**:write-onlysubset of keys to change the configuration. The keys under this prefix exactly map the configuration file structure. Not all configuration keys can be changed, but the storages plugin configuration can in order to add/remove Backends and Storages (see below).
 - @/router/<router_id>/status/plugins/**:read-onlysubset of keys to retrieve the status of plugins (and Backends and Storages)
@@ -198,19 +208,26 @@ Read/Write permission on its admin space can be now configured for a Zenoh route
 - via the configuration file in theadminspace.permissionssection
 - via thezenohdcommand line option:--adminspace-permissions <[r|w|rw|none]>
 
-### Plugins configurations
-In zenoh version 0.5.0 the plugins were automatically loaded byzenohdat startup when it detected their libraries on disk (libzplugin_*.sofiles).In zenoh version 0.6.0 a plugin is loaded at startup only if there is a configuration defined for it (in thepluginsJSON5 struct).Note that in the default configuration the REST plugin is configured withport: 8000, meaning that this plugin is automatically loaded at startup. To not load is, set a configuration file without therestconfiguration.
-A plugin can also be dynamically configured and loaded at runtime, publishing its configurartion in the zenoh router’s admin space. For instance, to make a router to load the webserver plugin, you can publish to the REST API:curl -X PUT -H 'content-type:application/json' -d '{http_port: "8080"}' http://localhost:8000/@/router/local/config/plugins/webserver
+## Plugins configurations
 
-### Backends/Storages configurations
+In zenoh version 0.5.0 the plugins were automatically loaded byzenohdat startup when it detected their libraries on disk (libzplugin_*.sofiles).In zenoh version 0.6.0 a plugin is loaded at startup only if there is a configuration defined for it (in thepluginsJSON5 struct).Note that in the default configuration the REST plugin is configured withport: 8000, meaning that this plugin is automatically loaded at startup. To not load is, set a configuration file without therestconfiguration.
+
+A plugin can also be dynamically configured and loaded at runtime, publishing its configurartion in the zenoh router's admin space. For instance, to make a router to load the webserver plugin, you can publish to the REST API:curl -X PUT -H 'content-type:application/json' -d '{http_port: "8080"}' http://localhost:8000/@/router/local/config/plugins/webserver
+
+## Backends/Storages configurations
+
 Zenoh 0.5.0 was not making the distinction between the Backend library, and an instanciation of this library. Thus, it was not possible for instance to configure for the same router twice the InfluxDB backend but with different URL to disctinct InfluxDB servers.
+
 Zenoh 0.6.0 introduces the concept of Volume as an instance of a Backend library.
+
 To summarize:
+
 - aBackendis a dynamic library (.so file) implementing Zenoh storages with the help of a specific technology (e.g. InfluxDB, RocksDB or the local file system)
 - aVolumeis an instance of a Backend with a specific configuration (e.g. an instance of the InfluxDB backend with configured URL and credentials to for an InfluxDB server)
 - aStorageis attached to a Volume and configured with the specification of a sub-space in this Volume (e.g. a database name, a directory on filesystem…). It’s also configured with the Zenoh key expression it must subscribes to (and replies to queries).
 Starting from zenoh 0.6.0, the Backends and Storages are configurable for startup via the router configuration file, configuring thestorage_managerplugin. Here is an examples of configuration file with several Backends/Storages:
-```
+
+```json5
 {
   plugins: {
     // configuration of "storage_manager" plugin:
@@ -289,17 +306,21 @@ Starting from zenoh 0.6.0, the Backends and Storages are configurable for startu
 Providing that the Zenoh router is configured with write permission on its admin space, the Volumes and Storages can be dynamically added/removed
 at runtime via PUT/GET on the admin space, updating the storage_manager plugin config under@/router/<router_id>/config/plugins/storage_manager.
 Examples:
-- to add a memory Storage:curl -X PUT -H'content-type:application/json'-d'{key_expr:"demo/example/**",volume:{id:"memory"}}'http://localhost:8000/@/router/local/config/plugins/storage_manager/storages/demo
-```
+
+- to add a memory Storage:
+
+```bash
 curl -X PUT -H 'content-type:application/json' -d '{key_expr:"demo/example/**",volume:{id:"memory"}}' http://localhost:8000/@/router/local/config/plugins/storage_manager/storages/demo
 ```
 
-- to add an InfluxDB Volume:curl -X PUT -H'content-type:application/json'-d'{url:"http://localhost:8086"}'http://localhost:8000/@/router/local/config/plugins/storage_manager/volumes/influxdb
-```
+- to add an InfluxDB Volume:
+
+```bash
 curl -X PUT -H 'content-type:application/json' -d '{url:"http://localhost:8086"}' http://localhost:8000/@/router/local/config/plugins/storage_manager/volumes/influxdb
 ```
 
-- to add an InfluxDB Storage:curl -X PUT -H'content-type:application/json'-d'{key_expr:"demo/example/**",db:"zenoh_example",create_db:true,volume:{id:"influxdb"}}'http://localhost:8000/@/router/local/config/plugins/storage_manager/storages/demo2
-```
+- to add an InfluxDB Storage:
+
+```bash
 curl -X PUT -H 'content-type:application/json' -d '{key_expr:"demo/example/**",db:"zenoh_example",create_db:true,volume:{id:"influxdb"}}' http://localhost:8000/@/router/local/config/plugins/storage_manager/storages/demo2
 ```

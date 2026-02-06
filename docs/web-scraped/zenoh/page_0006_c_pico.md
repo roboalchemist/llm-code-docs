@@ -7,14 +7,17 @@ Source: https://zenoh.io/docs/migration_1.0/c_pico
 # C / Pico
 
 ## General API changes
+
 We have reworked the type naming to clarify how types should be interacted with.
 
 ### Owned types
+
 Owned types are allocated by the user and it is their responsibility to drop them usingz_drop(orz_closefor sessions).
 Previously, we were returning Zenoh structures by value. In Zenoh 1.0.0, a reference to memory must be provided. This allows initializing user allocated structures and frees return value for error codes.
 Here is a quick example of this change:
 - Zenoh 0.11.x
-```
+
+```text
 z_owned_session_t session = z_open(z_move(config));
 if (!z_check(session)) {
     return -1;
@@ -23,7 +26,8 @@ z_close(z_move(session));
 ```
 
 - Zenoh 1.0.0
-```
+
+```text
 z_owned_session_t session;
 if (z_open(&session, z_move(config), &opts) < 0) {
   return -1;
@@ -38,15 +42,18 @@ The owned objects have a “null” state.
 Owned types support move semantics, which will consume the owned object and turn it into a moved object, see next section.
 
 ### Moved types
+
 Moved types are obtained when usingz_moveon an owned type object. They are consumed on use when passed to relevant functions. Any non-constructor function accepting a moved object (i.e. an object passed by moved pointer) becomes responsible for calling drop on it. The object is guaranteed to be in the null state upon such function return, even if it fails.
 
 ### Loaned types
+
 Each owned type now has a correspondingz_loaned_xxx_ttype, which is obtained by calling
 z_loanorz_loan_muton it, or eventually received from Zenoh functions / callbacks.
 It is no longer possible to directly access the fields of an owned object that has been loaned, the accessor functions on the loaned objects should instead be used.
 Here is a quick example:
 - Zenoh 0.11.x
-```
+
+```c
 void reply_handler(z_owned_reply_t *reply, void *ctx) {
     if (z_reply_is_ok(reply)) {
         z_sample_t sample = z_reply_ok(reply);
@@ -56,7 +63,8 @@ void reply_handler(z_owned_reply_t *reply, void *ctx) {
 ```
 
 - Zenoh 1.0.0
-```
+
+```c
 void reply_handler(const z_loaned_reply_t *reply, void *ctx) {
     if (z_reply_is_ok(reply)) {
         const z_loaned_sample_t *sample = z_reply_ok(reply);
@@ -70,7 +78,8 @@ void reply_handler(const z_loaned_reply_t *reply, void *ctx) {
 Certain loaned types can be copied into owned, using thez_clonefunction.
 All objects that can be cloned will have a function with the signaturez_xxx_clone.
 Please consult the docs of each type to determine if it can be copied into owned
-```
+
+```c
 void reply_handler(const z_loaned_reply_t *reply, void *ctx) {
     some_struct_t *some_ctx = (some_struct_t *)(ctx);
     z_clone(some_ctx->query, query);
@@ -81,9 +90,11 @@ void reply_handler(const z_loaned_reply_t *reply, void *ctx) {
 In the case of our callback, this allows the data from the loaned type to be used in another thread context. Note that this other thread should not forget to callz_dropto avoid a memory leak!
 
 ### View types
+
 View types are only wrappers to user allocated data, likez_view_keyexpr_t.These types can be loaned in the same way as owned types but they don’t need to be dropped explicitly (user is fully responsible for deallocation of wrapped data).
 - Zenoh 0.11.x
-```
+
+```cpp
 const char *keyexpr = "example/demo/*";
 z_owned_subscriber_t sub = z_declare_subscriber(z_loan(session), z_keyexpr(keyexpr), z_move(callback), NULL);
 if (!z_check(sub)) {
@@ -93,7 +104,8 @@ if (!z_check(sub)) {
 ```
 
 - Zenoh 1.0.0
-```
+
+```cpp
 const char *keyexpr = "example/demo/*";
 z_owned_subscriber_t sub;
 z_view_keyexpr_t ke;
@@ -104,10 +116,12 @@ if (z_declare_subscriber(z_loan(session), &sub, z_loan(ke), z_move(callback), NU
 ```
 
 ## Payload and Serialization
+
 Zenoh 1.0.0 handles payload differently. Before one would pass the pointer to the buffer and its length, now everything must be converted/serialized intoz_owned_bytes_t.
 Raw data in the form of null-terminated strings or buffers (i.e.uint8_t*+ length) can be converted directly intoz_owned_bytes_tas follows:
 - Zenoh 0.11.x
-```
+
+```cpp
 int8_t send_string() {
   char *value = "Some data to publish on Zenoh";
 
@@ -128,7 +142,8 @@ int8_t send_buf() {
 ```
 
 - Zenoh 1.0.0
-```
+
+```c
 int8_t send_string() {
   char *value = "Some data to publish on Zenoh";
   z_owned_bytes_t payload;
@@ -190,7 +205,8 @@ support for serializing arithmetic types, strings, sequences and tuples.
 More comprehensive serialization/deserialization examples are provided inhttps://github.com/eclipse-zenoh/zenoh-c/blob/main/examples/z_bytes.candhttps://github.com/eclipse-zenoh/zenoh-pico/blob/main/examples/unix/c11/z_bytes.c.
 To simplify serialization/deserialization we provide support for some primitive types likeuint8_t*+ length, null-terminated strings and arithmetic types.
 Primitive types can be serialized directly intoz_owned_bytes_t:
-```
+
+```text
 // Serialization
 uint32_t input_u32 = 1234;
 ze_serialize_uint32(&payload, input_u32);
@@ -203,7 +219,8 @@ z_drop(z_move(payload));
 ```
 
 while tuples and/or arrays require usage ofze_owned_serializer_tandze_deserializer_t:
-```
+
+```python
 typedef struct my_struct_t {
   float f;
   int32_t n;
@@ -239,7 +256,8 @@ z_drop(z_move(payload));
 To implement custom (de-)serialization, Zenoh 1.0.0 providesze_owned_bytes_serializer,ze_bytes_deserializer_tor lower-levelz_owned_bytes_wrtiter_tandz_bytes_reader_ttypes and corresponding functions.
 Note that it is no longer possible to access the underlying payload data pointer directly, since Zenoh cannot guarantee that the data is delivered as a single fragment.
 So in order to get access to raw payload data one must use eitherz_bytes_reader_tor alternativelyz_bytes_slice_iterator_tand their related functions:
-```
+
+```text
 z_bytes_reader_t reader = z_bytes_get_reader(z_loan(payload));
 uint8_t data1[10] = {0};
 uint8_t data2[20] = {0};
@@ -257,8 +275,10 @@ while (z_bytes_slice_iterator_next(&slice_iter, &curr_slice)) {
 ```
 
 ## Channel Handlers and Callbacks
+
 In version 0.11.0 Channel handlers were only supported forz_getandz_owned_queryable_t:
-```
+
+```cpp
 // callback
 z_owned_closure_reply_t callback = z_closure(reply_handler);
 z_get(z_loan(session), z_keyexpr(keyexpr), "", z_move(callback), &opts);
@@ -302,7 +322,8 @@ z_drop(z_move(channel));
 In 1.0.0,z_owned_subscriber_t,z_owned_queryable_tandz_getcan use either a callable object or a stream handler. In addition, the same handler type now provides both a blocking and non-blocking interface. For the time being Zenoh provides 2 types of handlers:
 - FifoHandler- serving messages in Fifo order,dropping new messagesonce full. It is worth noting that it will drop new messages only if the queue is full and the default multi-thread feature is disabled.
 - RingHandler- serving messages in Fifo order,dropping older messagesonce full to make room for new ones.
-```
+
+```cpp
 // callback
 z_owned_closure_reply_t callback = z_closure(reply_handler);
 z_get(z_loan(session), z_keyexpr(keyexpr), "", z_move(callback), &opts);
@@ -347,7 +368,8 @@ while (true) {
 ```
 
 The same now also works forSubscriberandQueryable:
-```
+
+```c
 // callback
 void data_handler(const z_loaned_sample_t *sample, void *context) {
   // do something with sample
@@ -399,8 +421,10 @@ while (true) {
 Thez_owned_pull_subscriber_twas removed, given thatRingHandlercan provide similar functionality with ordinaryz_owned_subscriber_t.Since the callback in 1.0.0. carries a loaned sample whenever it is triggered, we can save an explicit drop on the sample now.
 
 ## Attachment
+
 In 0.11.0, attachments were a separate type and could only be a set of key-value pairs:
-```
+
+```cpp
 // publish message with attachment
 char *value = "Some data to publish on Zenoh";
 
@@ -439,7 +463,8 @@ void data_handler(const z_sample_t* sample, void* arg) {
 ```
 
 In 1.0.0, attachments were greatly simplified. They are now represented asz_..._bytes_t(i.e. the same type we use to represent payload data) and can thus contain data in any format.
-```
+
+```python
 // publish attachment
 typedef struct {
   char* key;
@@ -507,11 +532,13 @@ void data_handler(const z_loaned_sample_t *sample, void *arg) {
 ```
 
 ## Encoding
+
 Encoding handling has been reworked: before one would use an enum id and a string suffix value, now only the encoding metadata needs to be registered usingz_encoding_from_str.
 There is a set of predefined constant encodings subject to some wire-level optimization. To benefit from this, the provided encoding should follow the format:"<predefined constant>;<optional additional data>"
 All predefined constants provided can be found in hereEncoding Variants
 - Zenoh 0.11.x
-```
+
+```cpp
 char *value = "Some data to publish on Zenoh";
 z_put_options_t options = z_put_options_default();
 options.encoding = z_encoding(Z_ENCODING_PREFIX_TEXT_PLAIN, "utf8");
@@ -522,7 +549,8 @@ if (z_put(z_loan(session), z_keyexpr(ke), (const uint8_t *)value, strlen(value),
 ```
 
 - Zenoh 1.0.0
-```
+
+```text
 char *value = "Some data to publish on Zenoh";
 z_owned_bytes_t payload;
 z_bytes_serialize_from_str(&payload, value);
@@ -538,14 +566,17 @@ if (z_put(z_loan(session), z_loan(ke), z_move(payload), &options) < 0) {
 ```
 
 ## Timestamps
+
 The generation of timestamps is now tied to a Zenoh session, with the timestamp inheriting theZenohIDof the session.
 - Zenoh 0.11.x
-```
+
+```text
 // Didn't exist
 ```
 
 - Zenoh 1.0.0
-```
+
+```text
 z_timestamp_t ts;
 z_timestamp_new(&ts, z_loan(s));
 options.timestamp = &ts;
@@ -553,9 +584,11 @@ z_publisher_put(z_loan(pub), z_move(payload), &options);
 ```
 
 ## Error Handling
+
 In 1.0.0, we unified the return type of Zenoh functions asz_result_t. For example,
 - Zenoh 0.11.x
-```
+
+```rust
 int8_t z_put(struct z_session_t session,
              struct z_keyexpr_t keyexpr,
              const uint8_t *payload,
@@ -564,7 +597,8 @@ int8_t z_put(struct z_session_t session,
 ```
 
 - Zenoh 1.0.0
-```
+
+```rust
 z_result_t z_put(const struct z_loaned_session_t *session,
                  const struct z_loaned_keyexpr_t *key_expr,
                  struct z_owned_bytes_t *payload,
@@ -572,9 +606,11 @@ z_result_t z_put(const struct z_loaned_session_t *session,
 ```
 
 ## KeyExpr / String Conversion
+
 In 1.0.0, we have reworked the conversion between key expressions and strings, illustrated below.
 - Zenoh 0.11.x
-```
+
+```cpp
 // keyexpr => string
 z_owned_str_t keystr = z_keyexpr_to_string(z_loan(z_owned_keyexpr_t));
 
@@ -586,7 +622,8 @@ z_owned_keyexpr_t keyexpr = z_keyexpr_new(const char*)
 ```
 
 - Zenoh 1.0.0
-```
+
+```cpp
 // keyexpr => string
 z_view_string_t keystr;
 z_keyexpr_as_view_string(z_loan(z_owned_keyexpr_t), &keystr);
@@ -600,14 +637,16 @@ z_error_t res = z_keyexpr_from_string(&keyexpr, const char *);
 ```
 
 NOTE: Based on efficiency considerations, the char pointer ofz_string_datamight not be null-terminated in zenoh-c. To read the string data, we need to pair it with the lengthz_string_len.
-```
+
+```text
 z_view_str_t keystr;
 z_keyexpr_as_view_string(z_loan(keyexpr), &keystr);
 printf("%.*s", (int)z_string_len(z_loan(keystr)), z_string_data(z_loan(keystr)));
 ```
 
 And to compare the string withstrncmpinstead ofstrcmp.
-```
+
+```cpp
 z_view_str_t keystr;
 z_keyexpr_as_view_string(z_loan(keyexpr), &keystr);
 const char* target = "string";
@@ -615,10 +654,12 @@ strncmp(target, z_string_data(z_loan(keystr)), z_string_len(z_loan(keystr)));
 ```
 
 ## Accessor Pattern
+
 In 1.0.0, we have made our API more convenient and consistent to use across languages. We use opaque types to wrap the raw Zenoh data from the Rust library in zenoh-c. With this change, we introduce the accessor pattern to read the field of a struct.
 For instance, to get the attachment of a sample in zenoh-c:
 - 0.11.0
-```
+
+```python
 typedef struct z_sample_t {
   struct z_keyexpr_t keyexpr;
   struct z_bytes_t payload;
@@ -633,40 +674,51 @@ typedef struct z_sample_t {
 
 - 1.0.0
 Opaque type ofz_sample
-```
+
+```rust
 /// An owned Zenoh sample.
 ///
 /// This is a read only type that can only be constructed by cloning a `z_loaned_sample_t`.
 /// Like all owned types, it should be freed using z_drop or z_sample_drop.
+
 #[derive(Copy, Clone)]
+
 #[repr(C, align(8))]
+
 pub struct z_owned_sample_t {
     _0: [u8; 224],
 }
 /// A loaned Zenoh sample.
+
 #[derive(Copy, Clone)]
+
 #[repr(C, align(8))]
+
 pub struct z_loaned_sample_t {
     _0: [u8; 224],
 }
 ```
 
 Get attachment
-```
+
+```rust
 const struct z_loaned_bytes_t *z_sample_attachment(const struct z_loaned_sample_t *this_);
 ```
 
 In zenoh-pico, we recommend users follow the accessor pattern even though the structz_sample_tis explicitly defined in the library.
 
 ## Usage ofz_bytes_clone
+
 In short,z_owned_bytes_tis made of reference-counted data slices. In 1.0.0, we aligned the implementation ofz_bytes_cloneand made it perform a shallow copy for improved efficiency.
 - Zenoh 0.11.x
-```
+
+```rust
 ZENOHC_API struct zc_owned_payload_t zc_sample_payload_rcinc(const struct z_sample_t *sample);
 ```
 
 - Zenoh 1.0.0
-```
+
+```c
 ZENOHC_API void z_bytes_clone(struct z_owned_bytes_t *dst, const struct z_loaned_bytes_t *this_);
 ```
 
@@ -675,6 +727,7 @@ NOTE: We don’t offer a deep copy API. However, users can create a deep copy by
 ## Zenoh-C Specific
 
 ### Shared Memory
+
 Shared Memory subsystem has been heavily reworked and improved. The key functionality changes are:
 - Buffer reference counting is now robust across abnormal process termination
 - Support plugging of user-defined SHM implementations
@@ -686,8 +739,10 @@ Shared Memory subsystem has been heavily reworked and improved. The key function
 ⚠️ Please note that SHM API is still unstable and will be improved in the future.
 
 ### SharedMemoryManager → ShmProvider + ShmProviderBackend
+
 - Zenoh 0.11.x
-```
+
+```cpp
 // size to dedicate to SHM manager
 const size_t size = 1024 * 1024;
 // construct session id string
@@ -702,7 +757,8 @@ zc_owned_shm_manager_t manager = zc_shm_manager_new(z_loan(s), idstr, size);
 ```
 
 - Zenoh 1.0.0
-```
+
+```cpp
 // size to dedicate to SHM provider
 const size_t total_size = 1024 * 1024;
 
@@ -717,8 +773,10 @@ z_posix_shm_provider_new(&provider, z_loan(layout));
 ```
 
 ### Buffer allocation
+
 - Zenoh 0.11.x
-```
+
+```cpp
 // buffer size
 const size_t alloc_size = 1024;
 
@@ -735,7 +793,8 @@ if (!z_check(shmbuf)) {
 ```
 
 - Zenoh 1.0.0
-```
+
+```cpp
 // buffer size and alignment
 const size_t alloc_size = 1024;
 // Diffrence: allocation now respects alignment
