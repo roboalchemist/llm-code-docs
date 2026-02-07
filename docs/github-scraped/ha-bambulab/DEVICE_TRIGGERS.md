@@ -17,6 +17,7 @@ Triggered when a print job begins.
 **Type:** `bambu_lab.print_started`
 
 **Trigger Data:**
+
 - `device_id`: Printer device ID
 - `name`: Printer name
 
@@ -43,6 +44,7 @@ Triggered when a print job completes successfully.
 **Type:** `bambu_lab.print_finished`
 
 **Trigger Data:**
+
 - `device_id`: Printer device ID
 - `name`: Printer name
 
@@ -72,6 +74,7 @@ Triggered when a print is canceled.
 **Type:** `bambu_lab.print_canceled`
 
 **Trigger Data:**
+
 - `device_id`: Printer device ID
 - `name`: Printer name
 
@@ -100,6 +103,7 @@ Triggered when a print fails on X1 printer.
 **Type:** `bambu_lab.print_failed`
 
 **Trigger Data:**
+
 - `device_id`: Printer device ID
 - `name`: Printer name
 
@@ -128,6 +132,7 @@ Triggered when a hardware maintenance system (HMS) error is detected.
 **Type:** `bambu_lab.hms_error`
 
 **Trigger Data:**
+
 - `device_id`: Printer device ID
 - `name`: Printer name
 - `code`: Error code (e.g., `0101`)
@@ -159,6 +164,7 @@ Triggered when a print error occurs (distinct from HMS errors).
 **Type:** `bambu_lab.print_error`
 
 **Trigger Data:**
+
 - `device_id`: Printer device ID
 - `name`: Printer name
 - `code`: Error code

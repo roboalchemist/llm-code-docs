@@ -34,6 +34,7 @@ data:
 ```
 
 **Parameters:**
+
 - `command` (string, required): GCODE command (e.g., `M104 S200`)
 
 **Warning:** Does not verify printer state; ensure printer is idle before sending.
@@ -62,6 +63,7 @@ data:
 ```
 
 **Parameters:**
+
 - `filepath` (string, required): Path to 3MF file on SD card (relative to root, e.g., `cache/filename.3mf`)
 - `plate` (number, optional): Plate number to print
 - `timelapse` (boolean, optional): Record timelapse of print
@@ -73,6 +75,7 @@ data:
 - `ams_mapping` (string, optional): AMS tray mapping (e.g., `2,-1,0`)
 
 **Notes:**
+
 - 3MF file must be on SD card root or cache folder
 - File must contain sliced GCODE (export as "Export sliced file" from slicer)
 - AMS mapping is comma-separated values; -1 means tray not used
@@ -94,6 +97,7 @@ data:
 ```
 
 **Parameters:**
+
 - `type` (string, required): `Extrude` or `Retract`
 - `force` (boolean, optional): Force operation even if nozzle temperature < 170°C
 
@@ -113,9 +117,11 @@ data:
 ```
 
 **Parameters:**
+
 - `temperature` (number, optional): Target nozzle temperature after load; uses filament midpoint if not specified
 
 **Notes:**
+
 - `entity_id` must be an AMS or external spool tray entity
 - Works with filament settings from RFID tags
 
@@ -155,6 +161,7 @@ data:
 ```
 
 **Parameters:**
+
 - `tray_info_idx` (string, required): Bambu filament ID (e.g., `GFL96` for Generic PLA Silk)
 - `tray_color` (string, required): RGBA color value (e.g., `FF0000FF` for opaque red)
 - `tray_type` (string, required): Filament type (e.g., `PLA`, `PETG`, `TPU`)
@@ -162,6 +169,7 @@ data:
 - `nozzle_temp_max` (number, required): Maximum recommended nozzle temperature
 
 **Notes:**
+
 - `entity_id` must be an AMS or external spool tray entity
 - Filament IDs are from Bambu's filament database
 
@@ -200,14 +208,17 @@ data:
 ```
 
 **Parameters:**
+
 - `axis` (string, required): Axis to move (`X`, `Y`, or `Z`)
 - `distance` (number, required): Distance in mm (negative reverses direction)
 
 **Axis Meanings by Printer:**
+
 - **X1/P1:** X/Y move printhead, Z moves bed
 - **A1:** Z moves gantry, Y moves bed, X moves printhead
 
 **Notes:**
+
 - Negative distance values move axis in reverse direction
 - Z negative moves upward (away from bed)
 
@@ -227,9 +238,11 @@ data:
 ```
 
 **Parameters:**
+
 - `objects` (string, required): Comma-separated object IDs to skip
 
 **Notes:**
+
 - Available object IDs are in the printable objects entity attributes
 - Only works during active print
 
@@ -250,6 +263,7 @@ data:
 **Parameters:** None
 
 **Notes:**
+
 - `entity_id` must be an AMS tray entity
 - Useful for updating spool information
 
@@ -271,6 +285,7 @@ data:
 ```
 
 **Parameters:**
+
 - `temp` (number, required): Drying temperature in Celsius
   - AMS 2 Pro max: 65°C
   - AMS HT max: 85°C

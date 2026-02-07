@@ -33,6 +33,7 @@ Note: Feature availability varies by printer model (e.g., AMS is not available o
 
 ## Installation
 
+
 ### Via HACS (Recommended)
 
 The easiest way to install is through HACS:
@@ -75,6 +76,7 @@ For the most features, use your Bambu Cloud credentials:
 - **Disadvantages:** Does not support 2FA, does not support passwordless OAuth accounts
 
 **Configuration:**
+
 - Bambu Cloud username
 - Bambu Cloud password
 - (Optional) Local printer IP for more efficient connection
@@ -84,11 +86,13 @@ For the most features, use your Bambu Cloud credentials:
 For printers set to LAN Only Mode or if you want local-only connectivity:
 
 **Required Information:**
+
 - Printer Serial Number (format: `a1b2c3d4e5f6a1b2`, not the `3DP-000-000` name)
 - Local printer IP address (from printer network settings)
 - Access Code (from printer settings)
 
 **Optional Advanced Settings:**
+
 - Disable SSL verification (for MQTT, FTP, chamber camera connections - unsafe, not recommended)
 - Enable "LAN Only Liveview" for chamber camera access
 
@@ -107,15 +111,18 @@ If you created your Bambu account with OAuth (social login):
 **Important:** Bambu Lab has implemented authorization controls in newer firmware versions:
 
 **Affected Firmware:**
+
 - X1C: 01.08.05.00 and later
 - P1: 01.08.02.00 and later
 - A1: 01.05.00.00 and later
 
 **Impact:**
+
 - **Read functionality:** Always works
 - **Write functionality (control commands):** Limited or disabled in cloud-connected mode
 
 **Options:**
+
 1. Don't update firmware if you rely on Home Assistant write controls
 2. Enable Developer LAN Mode on printer (disables Bambu Cloud connectivity)
 3. Use LAN Only Mode (loses remote Bambu access)
@@ -274,6 +281,7 @@ data:
 ```
 
 **Parameters:**
+
 - `filepath`: Filename on SD card (relative to root)
 - `plate`: Plate number to print
 - `timelapse`: Record timelapse (boolean)
@@ -472,38 +480,48 @@ When reporting issues:
 
 ### Common Issues
 
-**Issue: Integration won't connect with Bambu Cloud credentials**
+#### Issue: Integration won't connect with Bambu Cloud credentials
+
 - Verify username and password are correct
 - Bambu credentials don't support 2FA; disable 2FA if enabled
 - If using OAuth (social login), set a password first (see Setup section)
 - Check internet connectivity to Bambu servers
 
-**Issue: Local connection fails**
+#### Issue: Local connection fails
+
+
 - Verify correct printer serial number format (a1b2c3d4e5f6a1b2, not 3DP-000-000)
 - Verify correct local IP address
 - Verify correct access code from printer settings
 - Ensure printer and Home Assistant are on same network
 - Check firewall rules allowing MQTT (port 8883) and FTP (port 990)
 
-**Issue: Write functionality not working**
+#### Issue: Write functionality not working
+
+
 - Check firmware version (newer versions have restrictions)
 - If cloud-connected, consider enabling Developer LAN Mode
 - Verify user account has write permissions in printer settings
 - Note: On latest X1C firmware, only chamber light control works in cloud mode
 
-**Issue: Camera stream not appearing**
+#### Issue: Camera stream not appearing
+
+
 - Enable "LAN Only Liveview" in printer settings (for X1)
 - Provide local printer IP in configuration (for P1/A1)
 - Check network connectivity to printer RTSP stream
 - Verify RTSP port (554) is accessible
 
-**Issue: Sensors not updating**
+#### Issue: Sensors not updating
+
+
 - Click "Force Refresh" diagnostic button
 - Check MQTT connection mode (Bambu Cloud vs Local)
 - Verify printer is powered on and online
 - Restart integration: Settings > Devices & Services > Bambu Lab > Restart
 
-**Issue: AMS not appearing**
+#### Issue: AMS not appearing
+
 - AMS not supported on A1/A1 Mini
 - Verify AMS is powered on and connected
 - Check MQTT connection to printer
