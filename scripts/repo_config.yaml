@@ -614,6 +614,13 @@ repositories:
     target_folder: "docs/github-scraped/numpy"
     branch: "main"
 
+  - name: "OpenBambuAPI"
+    description: "OpenBambuAPI - Community-maintained reverse-engineered documentation for Bambu Lab 3D printer protocols (MQTT, HTTP, FTP, G-code, video streaming, TLS)"
+    repo_url: "https://github.com/Doridian/OpenBambuAPI.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/openbambuapi"
+    branch: "main"
+
   - name: "OpenMPI"
     description: "Open MPI - High-performance Message Passing Interface (MPI) library for parallel computing"
     repo_url: "https://github.com/open-mpi/ompi.git"
