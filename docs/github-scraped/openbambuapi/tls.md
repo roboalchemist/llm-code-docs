@@ -29,13 +29,13 @@ This is another important check to ensure you are not only communicating with _a
 
 Certificates contain a common name (CN) field that specifies the host name of the server.
 
-### Cloud
+### Cloud (Certificate Hostname)
 
 Typically automatically validated by libraries.
 
 - Example: certificate contains `CN=*.mqtt.bambulab.com`, you connect to `us.mqtt.bambulab.com`
 
-### Printer
+### Printer (Certificate Hostname)
 
 Requires [Server Name Indication (SNI)](https://en.wikipedia.org/wiki/Server_Name_Indication).
 

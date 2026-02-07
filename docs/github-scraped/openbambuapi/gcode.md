@@ -2,7 +2,7 @@
 
 This file describes both GCode macros Bambu uses as well as custom GCode found.
 
-# Headers
+## Headers
 
 At least some of comment lines at the beginning of the file are necessary for functioning of the print. There are three major blocks with start and end guards:
 
@@ -12,15 +12,15 @@ At least some of comment lines at the beginning of the file are necessary for fu
 
 Excerpt:
 
-```
+```gcode
 ; CONFIG_BLOCK_START
 ; accel_to_decel_enable = 1
 ; accel_to_decel_factor = 50%
 ```
 
-Without some or most of these, the printer will hang with "Unzip" shown on the screen. 
+Without some or most of these, the printer will hang with "Unzip" shown on the screen.
 
-# Macros
+## Macros
 
 ## AMS unload
 
@@ -118,12 +118,12 @@ G0 E# F#
 
 ## Model scan for first layer
 
-```
+```gcode
 M976 S1 P1
 M400 P100
 ```
 
-# Custom commands
+## Custom commands
 
 ## G28
 
@@ -145,7 +145,7 @@ Fires a canned command to detect build plate. Usually flag-guarded and followed 
 
 Some have claimed it's a variant of `G38`, which is called "Probe Target". One use is in the section where the nozzle rubs itself on build plate overhang during cleaning, with code like:
 
-```
+```gcode
 G0 X90 Y-4 F30000
 G380 S3 Z-5 F1200
 G1 Z2 F1200
@@ -157,7 +157,7 @@ G1 Z2 F1200
 
 `Z` is the axis being zeroed and its movement direction, `F` is feedrate. `S` is custom to Bambu and unknown. There are two known values, `S2` and `S3`. `S2` is only used in this one section:
 
-```
+```gcode
 ;=====avoid end stop =================
 G91
 G380 S2 Z30 F1200
@@ -223,7 +223,7 @@ M400 is "Finish Moves". Marlin doesn't document any arguments. Bambu uses these:
 ## M620.10
 
 - `M620.10 A0 F[old_filament_e_feedrate]` - It's used just prior to a `T` opcode during filament changes, but not during initial load or unload. Introduced with long retraction.
-- M620.10 A1 F[new_filament_e_feedrate] L[flush_length] H[nozzle_diameter] T[nozzle_temperature_range_high] - Used shortly after `T` during filament change. 
+- M620.10 A1 F[new_filament_e_feedrate] L[flush_length] H[nozzle_diameter] T[nozzle_temperature_range_high] - Used shortly after `T` during filament change.
 
 ## M620.11
 
@@ -263,7 +263,7 @@ Flags are judged by `M1002`.
 ## M960
 
 - `M960 S5 P0/1`- turn off (0) or on (1) the logo light on toolhead
-- `M960 S4 P0/1`- turn off (0) or on (1) the nozzle light 
+- `M960 S4 P0/1`- turn off (0) or on (1) the nozzle light
 
 ## M971
 
@@ -299,7 +299,6 @@ Take photo (for timelapse).
 
 - `M991 S0 P{layer_num}` - commented "notify layer change"
 - `M991 S0 P-1` - commented "end timelapse at safe pos" but that doesn't seem right.
-
 
 ## M1002
 
@@ -346,7 +345,7 @@ Tool change.
 - `T255` (also `T65535` in H2D I think) - Only used during tool change when AMS is unloaded when the print is over. At least causes it to cut and have AMS retract filament.
 - `T1000` - Used twice in the following sequence during startup only AFAICT:
 
-  ```
+  ```gcode
   M975 S1 ; turn on vibration compensation
   G90     ; Absolute positioning
   M83     ; override G90 and put the E axis into relative mode independent of the other axes

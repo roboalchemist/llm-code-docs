@@ -48,7 +48,7 @@ For commands to the device from the slicer
 
 ## Overview
 
-**Request structure**
+### Request structure
 
 ```json
 {
@@ -60,7 +60,7 @@ For commands to the device from the slicer
 }
 ```
 
-**Report structure**
+### Report structure
 
 ```json
 {
@@ -80,7 +80,7 @@ For commands to the device from the slicer
 
 Get current version of printer
 
-**Request**
+### Request
 
 ```json
 {
@@ -91,7 +91,7 @@ Get current version of printer
 }
 ```
 
-**Report**
+### Report
 
 ```json
 {
@@ -136,14 +136,14 @@ Get current version of printer
 
 ## pushing.pushall
 
-Reports the complete status of the printer. 
+Reports the complete status of the printer.
 
 This is unnecessary for the X1 series since it already transmits the full object each time. However, the P1 series only sends the values that have been updated compared to the previous report.
 
 > [!CAUTION]
 > As a rule of thumb, refrain from executing this command at intervals less than 5 minutes on the P1P, as it may cause lag due to its hardware limitations.
 
-**Request**
+### Request
 
 ```json
 {
@@ -156,7 +156,7 @@ This is unnecessary for the X1 series since it already transmits the full object
 }
 ```
 
-**Report**
+### Report
 
 ```json
 {
@@ -397,7 +397,7 @@ This is unnecessary for the X1 series since it already transmits the full object
 
 Part of firmware upgrade process
 
-**Request**
+### Request
 
 ```json
 {
@@ -409,16 +409,15 @@ Part of firmware upgrade process
 }
 ```
 
-**Report**
+### Report
 
 TODO
-
 
 ## upgrade.consistency_confirm
 
 Part of firmware upgrade process
 
-**Request**
+### Request
 
 ```json
 {
@@ -430,7 +429,7 @@ Part of firmware upgrade process
 }
 ```
 
-**Report**
+### Report
 
 TODO
 
@@ -438,7 +437,7 @@ TODO
 
 Part of firmware upgrade process
 
-**Request**
+### Request
 
 ```json
 {
@@ -453,7 +452,7 @@ Part of firmware upgrade process
 }
 ```
 
-**Report**
+### Report
 
 TODO
 
@@ -461,7 +460,7 @@ TODO
 
 Return the firmware history of the printer
 
-**Request**
+### Request
 
 ```json
 {
@@ -472,7 +471,7 @@ Return the firmware history of the printer
 }
 ```
 
-**Report**
+### Report
 
 ```json
 {
@@ -512,13 +511,14 @@ Return the firmware history of the printer
 ```
 
 ## Trigger downgrade
+
 TODO
 
 ## print.stop
 
 Stops a print. Sent with QoS of **1** for higher priority.
 
-**Request**
+### Request
 
 ```json
 {
@@ -530,7 +530,7 @@ Stops a print. Sent with QoS of **1** for higher priority.
 }
 ```
 
-**Report**
+### Report
 
 See basic structure
 
@@ -538,7 +538,7 @@ See basic structure
 
 Pauses a print. Sent with QoS of **1** for higher priority.
 
-**Request**
+### Request
 
 ```json
 {
@@ -550,7 +550,7 @@ Pauses a print. Sent with QoS of **1** for higher priority.
 }
 ```
 
-**Report**
+### Report
 
 See basic structure
 
@@ -558,7 +558,7 @@ See basic structure
 
 Resumes a print. Sent with QoS of **1** for higher priority.
 
-**Request**
+### Request
 
 ```json
 {
@@ -570,7 +570,7 @@ Resumes a print. Sent with QoS of **1** for higher priority.
 }
 ```
 
-**Report**
+### Report
 
 See basic structure
 
@@ -578,7 +578,7 @@ See basic structure
 
 Tells printer to perform a filament change using AMS.
 
-**Request**
+### Request
 
 ```json
 {
@@ -592,7 +592,7 @@ Tells printer to perform a filament change using AMS.
 }
 ```
 
-**Report**
+### Report
 
 TODO
 
@@ -600,7 +600,7 @@ TODO
 
 Changes the AMS settings of the given unit.
 
-**Request**
+### Request
 
 ```json
 {
@@ -614,7 +614,7 @@ Changes the AMS settings of the given unit.
 }
 ```
 
-**Report**
+### Report
 
 TODO
 
@@ -622,7 +622,7 @@ TODO
 
 Changes the setting of the given filament in the given AMS.
 
-**Request**
+### Request
 
 ```json
 {
@@ -640,7 +640,7 @@ Changes the setting of the given filament in the given AMS.
 }
 ```
 
-**Report**
+### Report
 
 TODO
 
@@ -648,7 +648,7 @@ TODO
 
 Gives basic control commands for the AMS.
 
-**Request**
+### Request
 
 ```json
 {
@@ -660,7 +660,7 @@ Gives basic control commands for the AMS.
 }
 ```
 
-**Report**
+### Report
 
 TODO
 
@@ -668,7 +668,7 @@ TODO
 
 Set print speed to one of the 4 presets.
 
-**Request**
+### Request
 
 ```json
 {
@@ -684,7 +684,7 @@ Set print speed to one of the 4 presets.
 }
 ```
 
-**Report**
+### Report
 
 See basic structure
 
@@ -692,7 +692,7 @@ See basic structure
 
 Print a gcode file. This takes absolute paths.
 
-**Request**
+### Request
 
 ```json
 {
@@ -704,7 +704,7 @@ Print a gcode file. This takes absolute paths.
 }
 ```
 
-**Report**
+### Report
 
 See basic structure
 
@@ -712,7 +712,7 @@ See basic structure
 
 Send raw GCode to the printer.
 
-**Request**
+### Request
 
 ```json
 {
@@ -725,7 +725,7 @@ Send raw GCode to the printer.
 }
 ```
 
-**Report**
+### Report
 
 See basic structure
 
@@ -736,14 +736,15 @@ Starts calibration process.
 **Note:** Some printers might need `gcode_file` with `/usr/etc/print/auto_cali_for_user.gcode` instead!
 
 **Note:** The options parameter should be a bitmask like this:
-```
- if (lidarCalibration) bitmask |= 1;
- if (bedLevelling) bitmask |= 1 << 1;
- if (vibrationCompensation) bitmask |= 1 << 2;
- if (motorCancellation) bitmask |= 1 << 3;
+
+```cpp
+if (lidarCalibration) bitmask |= 1;
+if (bedLevelling) bitmask |= 1 << 1;
+if (vibrationCompensation) bitmask |= 1 << 2;
+if (motorCancellation) bitmask |= 1 << 3;
 ```
 
-**Request**
+### Request
 
 ```json
 {
@@ -755,7 +756,7 @@ Starts calibration process.
 }
 ```
 
-**Report**
+### Report
 
 TODO
 
@@ -765,7 +766,7 @@ Unloads the filament.
 
 **Note:** Some printers might need `gcode_file` with `/usr/etc/print/filament_unload.gcode` instead!
 
-**Request**
+### Request
 
 ```json
 {
@@ -776,7 +777,7 @@ Unloads the filament.
 }
 ```
 
-**Report**
+### Report
 
 ```json
 {
@@ -788,7 +789,8 @@ Unloads the filament.
 
 Prints a "project"
 
-**Request**
+### Request
+
 ```json
 {
     "print": {
@@ -817,12 +819,9 @@ Prints a "project"
 }
 ```
 
-
-
-**Report**
+### Report
 
 See basic structure
-
 
 ## AMS Mapping Configuration (`ams_mapping`)
 
@@ -855,10 +854,10 @@ The `ams_mapping` array uses a **reverse indexing system** where:
 - **-1** indicates unused color slots
 
 #### Key Rules:
+
 1. **Fixed array length**: Always use 5 elements (supports up to 4 colors + padding)
 2. **Right-to-left assignment**: Color assignments fill from the end of the array
 3. **Pad with -1**: Fill unused positions at the beginning with -1
-
 
 | Colors Used | Array Pattern | Description |
 |----------|---------------|-------------|
@@ -881,23 +880,25 @@ The `ams_mapping` array uses a **reverse indexing system** where:
 
 Skips object ids defined in slice_info.config
 
-**Request**
+### Request
+
 ```json
 {
   "print": {
     "sequence_id": "0",
     "command": "skip_objects",
-    "timestamp": {unix_timestamp} // Current Unix timestamp, seems to be optional. 
-    "obj_list": [ 
-      206 // List of canceled object IDs. 
+    "timestamp": {unix_timestamp} // Current Unix timestamp, seems to be optional.
+    "obj_list": [
+      206 // List of canceled object IDs.
     ]
   }
 }
 ```
 
-**Report**
+### Report
 
-Updates [`pushing.pushall`](#pushingpushall) with 
+Updates [`pushing.pushall`](#pushingpushall) with
+
 ```json
 "s_obj": [
       {obj ids}
@@ -908,7 +909,8 @@ Updates [`pushing.pushall`](#pushingpushall) with
 
 Modifies the printer's settings.
 
-**Request**
+### Request
+
 ```json
 {
   "print": {
@@ -917,10 +919,9 @@ Modifies the printer's settings.
     "auto_recovery": true // can be "auto_recovery", "air_print_detect", "filament_tangle_detect", "nozzle_blob_detect", or "sound_enable"
   }
 }
-
 ```
 
-**Report**
+### Report
 
 See basic structure
 
@@ -928,7 +929,7 @@ See basic structure
 
 Controls the LEDs of the printer.
 
-**Request**
+### Request
 
 ```json
 {
@@ -948,7 +949,7 @@ Controls the LEDs of the printer.
 }
 ```
 
-**Report**
+### Report
 
 See basic structure
 
@@ -956,7 +957,8 @@ See basic structure
 
 Gets the LAN access code of the printer
 
-**Request**
+### Request
+
 ```json
 {
     "system": {
@@ -966,7 +968,7 @@ Gets the LAN access code of the printer
 }
 ```
 
-**Report**
+### Report
 
 ```json
 {
@@ -999,7 +1001,7 @@ Update the nozzle type and diameter.
 
 Turns on or off creating a recording of prints.
 
-**Request**
+### Request
 
 ```json
 {
@@ -1011,7 +1013,7 @@ Turns on or off creating a recording of prints.
 }
 ```
 
-**Report**
+### Report
 
 See basic structure
 
@@ -1019,7 +1021,7 @@ See basic structure
 
 Turns on or off creating a timelapse of prints.
 
-**Request**
+### Request
 
 ```json
 {
@@ -1031,16 +1033,15 @@ Turns on or off creating a timelapse of prints.
 }
 ```
 
-**Report**
+### Report
 
 See basic structure
-
 
 ## xcam.xcam_control_set
 
 Configures the XCam (camera AI features, including Micro LIDAR features).
 
-**Request**
+### Request
 
 ```json
 {
@@ -1054,7 +1055,7 @@ Configures the XCam (camera AI features, including Micro LIDAR features).
 }
 ```
 
-**Report**
+### Report
 
 See basic structure
 
@@ -1065,9 +1066,11 @@ See basic structure
 Reports printer status
 
 ### X1 Series
+
 The X1 series always responds with the full object. See [`pushing.pushall`](#pushingpushall) for said object.
 
 ### P1 Series
+
 Due to performance limitations the P1P uses the same object, but only actually responds with values that have been changed since the previous report. The full data can be requested using the [`pushing.pushall`](#pushingpushall) request.
 
 ## mc_print.push_info
