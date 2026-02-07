@@ -761,6 +761,13 @@ repositories:
     target_folder: "docs/github-scraped/arduino"
     branch: "main"
 
+  - name: "Bambu Lab Cloud API"
+    description: "Bambu Lab printer API documentation - MQTT, local server API, cloud API, authentication, device control, file management, and status monitoring"
+    repo_url: "https://github.com/coelacant1/Bambu-Lab-Cloud-API.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/bambu-lab-api"
+    branch: "main"
+
   - name: "ariakit"
     description: "Ariakit - React toolkit for building accessible web applications with unstyled WAI-ARIA components, includes guide, components, and examples documentation"
     repo_url: "https://github.com/ariakit/ariakit.git"
