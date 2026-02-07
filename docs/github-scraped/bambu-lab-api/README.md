@@ -7,9 +7,11 @@
 [![License](https://img.shields.io/badge/license-AGPL--v3-green)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9+-blue.svg)]()
 
+## Documentation and tools for the Bambu Lab Cloud API based on network traffic analysis
+
 Documentation and tooling for communicating with Bambu Lab 3D printers via their Cloud API, MQTT protocol, and local connections.
 
-My goal with this project was to create a proxy for handling read only data from my printer farm, but decided to expand it into a more complete library. I won't be targetting all of the functionality for testing, as I will primarily focus on read operations. 
+My goal with this project was to create a proxy for handling read only data from my printer farm, but decided to expand it into a more complete library. I won't be targetting all of the functionality for testing, as I will primarily focus on read operations.
 
 ## Features
 
@@ -40,6 +42,7 @@ python cli_tools/login.py --username user@email.com --password yourpass
 ```
 
 The tool will:
+
 1. Submit your credentials to Bambu Lab
 2. Request email verification code
 3. Prompt you to enter the code from your email
@@ -57,6 +60,7 @@ python3 test_comprehensive.py
 ```
 
 **Test Coverage:**
+
 - Cloud API (20 endpoints tested)
 - MQTT real-time monitoring
 - Video streaming credentials
@@ -65,12 +69,11 @@ python3 test_comprehensive.py
 - Device management
 
 **Recent Test Results:** 20/20 tests passing
+
 - All Cloud API endpoints working
 - MQTT live data streaming confirmed
 - File upload to S3 verified
 - TUTK video credentials obtained
-
-
 
 ## Documentation
 
@@ -88,7 +91,6 @@ Complete API documentation split into focused modules:
 - **[API_CAMERA.md](API_CAMERA.md)** - Camera and video streaming
 - **[API_REFERENCE.md](API_REFERENCE.md)** - Error codes and conventions
 
-
 ## Python Library
 
 The `bambulab/` package provides a unified Python interface for Bambu Lab Cloud API access.
@@ -104,6 +106,7 @@ pip install git+https://github.com/coelacant1/Bambu-Lab-Cloud-API.git
 ```
 
 **v1.0.4+** includes everything by default:
+
 - Cloud API client
 - MQTT support
 - Camera streaming
@@ -203,6 +206,7 @@ python3 compatibility.py
 ```
 
 Features:
+
 - Mimics legacy local API endpoints
 - Works without developer mode
 - Real-time MQTT bridge
@@ -216,16 +220,19 @@ Features:
 API gateway with two modes for different security requirements:
 
 **Strict Mode (port 5001)** - Read-only, maximum safety:
+
 ```bash
 python3 proxy.py strict
 ```
 
 **Full Mode (port 5003)** - Complete 1:1 proxy:
+
 ```bash
 python3 proxy.py full
 ```
 
 Features:
+
 - Custom token authentication
 - Request filtering by mode
 - Health monitoring endpoints
@@ -241,6 +248,7 @@ Command-line utilities for quick printer access:
 | `bambu-camera` | View live camera feed |
 
 After installation, use directly:
+
 ```bash
 bambu-query YOUR_TOKEN --devices
 bambu-monitor YOUR_UID YOUR_TOKEN YOUR_DEVICE_ID
@@ -254,6 +262,7 @@ See [cli_tools/README.md](cli_tools/README.md) for detailed usage.
 Based on comprehensive testing (see test output):
 
 ### Cloud API (Fully Working)
+
 - **Device Management** - List devices, get info, firmware versions
 - **User Profile** - Account information, owned printer models
 - **AMS/Filament** - Filament data from AMS units
@@ -262,6 +271,7 @@ Based on comprehensive testing (see test output):
 - **File Management** - List and manage cloud files
 
 ### MQTT Real-Time (Fully Working)
+
 - **Connection** - Stable MQTT connection to printers
 - **Live Status** - Real-time temperature, progress, state updates
 - **Full Data** - Complete printer state including:
@@ -273,15 +283,18 @@ Based on comprehensive testing (see test output):
   - Network info (WiFi signal)
 
 ### Video Streaming (Working)
+
 - **TUTK Protocol** - P2P video credentials for local streaming
 - **TTCode Generation** - Authentication for camera access
 - **Multi-Model Support** - P1/A1 (JPEG), X1 (RTSP)
 
 ### Partially Tested
+
 - **Local FTP Upload** - Implemented, requires local network testing
 - **Compatibility Layer** - Lightly tested, works with legacy tools
 
 ### Not Yet Implemented
+
 - Print job submission via API
 - Device control commands (pause, resume, stop)
 - Some write operations (device settings)
@@ -298,6 +311,7 @@ python3 compatibility.py
 ```
 
 Home Assistant configuration:
+
 ```yaml
 rest:
   - resource: http://localhost:8080/api/v1/status?device_id=YOUR_DEVICE_ID
@@ -318,6 +332,8 @@ for device in api.get_devices():
 ### Real-Time Monitoring
 
 ```python
+
+```python
 def on_status(device_id, data):
     if data['print']['mc_percent'] == 100:
         send_notification("Print complete!")
@@ -328,7 +344,7 @@ mqtt.connect(blocking=True)
 
 ## Screenshots
 
-### Video Streaming
+### Video Streaming Example
 
 ![P1S Video Stream](screenshots/P1SStream.png)
 *Live JPEG frame streaming from P1S printer camera*
@@ -364,23 +380,25 @@ This project is **not affiliated with or endorsed by Bambu Lab**. It is an effor
 The API may change without notice. This documentation represents the API as of **October 2025** based on testing with firmware versions **01.08.02.00** and **01.09.00.00**.
 
 **Tested Configurations:**
+
 - Printer Models: P1P, P1S
 - Firmware: 01.08.02.00, 01.09.00.00
 - Python: 3.9-3.13
 - Test Suite: 20/20 passing (Full testing with 3.13)
-
 
 ## Ethical & Legal Compliance
 
 **Documents API endpoints to ensure backwards compatibility and interoperability; the necessary information was determined through network traffic analysis of the official client communicating with publicly accessible servers, which complies with fair use principles.**
 
 This analysis:
+
 - Documents publicly accessible API endpoints
 - Enables community integrations and home automation
 - Complies with fair use for interoperability
 - Uses only your own credentials for testing
 
 Does NOT:
+
 - Bypass security measures
 - Violate terms of service
 - Redistribute proprietary code

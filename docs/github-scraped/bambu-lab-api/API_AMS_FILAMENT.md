@@ -138,6 +138,7 @@ for unit in ams_info['ams_units']:
 #### Field Descriptions
 
 **AMS Unit Fields:**
+
 - `unit_id`: AMS unit number (0-3)
 - `software_version`: AMS firmware version
 - `hardware_version`: AMS hardware model (e.g., "AMS08")
@@ -149,6 +150,7 @@ for unit in ams_info['ams_units']:
 - `info`: Status bits (binary flags)
 
 **Tray Fields:**
+
 - `tray_id`: Tray slot (0-3 per unit, or 254 for external spool)
 - `state`: Tray state (0=empty, 1=loading, 2=loaded, 3=ready)
 - `filament_type`: Material type (PLA, PETG, ABS, TPU, PA, PC, etc.)
@@ -172,6 +174,7 @@ for unit in ams_info['ams_units']:
 - `cols`: Array of color values
 
 **External Spool (Virtual Tray):**
+
 - `tray_id`: Always 254
 - Same fields as regular trays
 - Represents filament loaded directly on printer (not in AMS)
@@ -179,6 +182,7 @@ for unit in ams_info['ams_units']:
 #### Filament Types
 
 Common filament types returned:
+
 - **PLA** - Standard PLA
 - **PLA-CF** - Carbon Fiber PLA
 - **PETG** - PETG
@@ -195,6 +199,7 @@ Common filament types returned:
 #### Color Codes
 
 Colors are returned as RGBA hex strings (8 characters):
+
 - `FF0000FF` = Red
 - `00FF00FF` = Green
 - `0000FFFF` = Blue
@@ -213,7 +218,7 @@ print(f"Color: #{rgb} (Alpha: {alpha})")
 
 #### Python Examples
 
-**Example 1: Check Filament Levels**
+##### Example 1: Check Filament Levels
 
 ```python
 def check_filament_levels(device_id):
@@ -253,7 +258,7 @@ def check_filament_levels(device_id):
 check_filament_levels("01234567890ABCD")
 ```
 
-**Example 2: List All Filaments**
+##### Example 2: List All Filaments
 
 ```python
 def list_all_filaments(device_id):
@@ -299,7 +304,7 @@ def list_all_filaments(device_id):
 list_all_filaments("01234567890ABCD")
 ```
 
-**Example 3: Monitor AMS Temperature/Humidity**
+##### Example 3: Monitor AMS Temperature/Humidity
 
 ```python
 def monitor_ams_environment(device_id):
@@ -400,9 +405,6 @@ If printer doesn't have AMS, the response will be:
 - **May be empty** - Some printers may not report detailed tray data
 - **Field names vary** - Different firmware versions may use different field names
 - **Remaining inaccurate** - `remain` field may be -1 or 0 if not tracked
-
----
-
 
 ---
 

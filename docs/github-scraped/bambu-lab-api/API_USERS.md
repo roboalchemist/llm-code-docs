@@ -21,7 +21,8 @@ Handles user account and profile management.
 
 #### User Profile
 
-**Get User Preferences**
+##### Get User Preferences
+
 ```http
 GET /v1/design-user-service/my/preference
 
@@ -37,7 +38,8 @@ Response:
 }
 ```
 
-**Get My Profile**
+##### Get My Profile
+
 ```http
 GET /v1/user-service/my/profile
 
@@ -58,7 +60,8 @@ Response:
 }
 ```
 
-**Update Profile**
+##### Update Profile
+
 ```http
 PUT /v1/user-service/my/profile
 Content-Type: application/json
@@ -78,7 +81,8 @@ Response:
 
 #### User Messages
 
-**Get My Messages**
+##### Get My Messages
+
 ```http
 GET /v1/user-service/my/messages
 GET /v1/user-service/my/messages?type<type>&after<id>&limit20
@@ -109,7 +113,8 @@ Response:
 
 #### User Tasks
 
-**Get My Tasks**
+##### Get My Tasks
+
 ```http
 GET /v1/user-service/my/tasks
 GET /v1/user-service/my/tasks?deviceId<device_id>&after<id>&limit20
@@ -140,7 +145,8 @@ Response:
 }
 ```
 
-**Create Task**
+##### Create Task
+
 ```http
 POST /v1/user-service/my/task
 Content-Type: application/json
@@ -154,7 +160,8 @@ Request Body:
 }
 ```
 
-**Get Task by ID**
+##### Get Task by ID
+
 ```http
 GET /v1/iot-service/api/user/task/{task_id}
 ```

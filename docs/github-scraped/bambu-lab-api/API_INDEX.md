@@ -66,21 +66,25 @@ This is the master index for all Bambu Lab Cloud API documentation. The document
 ### Base URLs
 
 **Global (International):**
+
 - REST API: `https://api.bambulab.com`
 - MQTT: `us.mqtt.bambulab.com:8883`
 
 **China Region:**
+
 - REST API: `https://api.bambulab.cn`
 - MQTT: `cn.mqtt.bambulab.com:8883`
 
 ### Endpoint Structure
 
 All REST API endpoints follow the pattern:
-```
+
+```text
 https://api.bambulab.com/v1/{service}/{resource}
 ```
 
 **Services:**
+
 - `/v1/iot-service/api/` - Device and IoT operations
 - `/v1/user-service/` - User account management
 - `/v1/design-user-service/` - Design and preferences
@@ -124,6 +128,7 @@ Content-Type: application/json
 ```
 
 Optional security headers:
+
 ```http
 x-bbl-app-certification-id: YOUR_CERT_ID
 x-bbl-device-security-sign: SIGNED_TIMESTAMP
@@ -136,7 +141,8 @@ Full details: [API_AUTHENTICATION.md](API_AUTHENTICATION.md)
 ## MQTT Quick Reference
 
 **Connection:**
-```
+
+```text
 Host: us.mqtt.bambulab.com
 Port: 8883 (TLS)
 Username: u_{your_user_id}
@@ -144,7 +150,8 @@ Password: {device_access_code}
 ```
 
 **Topic Structure:**
-```
+
+```text
 device/{device_serial}/report    (subscribe - receive updates)
 device/{device_serial}/request   (publish - send commands)
 ```
@@ -259,6 +266,7 @@ python tests/unit/test_upload.py
 ```
 
 Tests cover:
+
 - Authentication and token validation
 - Device binding and management
 - File upload to S3
@@ -348,6 +356,7 @@ Standard error response:
 ```
 
 Common error codes:
+
 - `400` - Bad Request (invalid parameters)
 - `401` - Unauthorized (invalid/expired token)
 - `403` - Forbidden (insufficient permissions)
@@ -374,6 +383,7 @@ See [API_REFERENCE.md](API_REFERENCE.md) for detailed rate limiting.
 ---
 
 **Quick Links:**
+
 - [Authentication](API_AUTHENTICATION.md)
 - [Devices](API_DEVICES.md)
 - [Users](API_USERS.md)

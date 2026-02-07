@@ -21,7 +21,8 @@ Handles device management, printing, and IoT operations.
 
 #### User Device Management
 
-**Get Bound Devices**
+##### Get Bound Devices
+
 ```http
 GET /v1/iot-service/api/user/bind
 
@@ -44,7 +45,8 @@ Response:
 }
 ```
 
-**Bind Device to User**
+##### Bind Device to User
+
 ```http
 POST /v1/iot-service/api/user/bind
 Content-Type: application/json
@@ -68,7 +70,8 @@ Response:
 }
 ```
 
-**Get Device Information**
+##### Get Device Information
+
 ```http
 GET /v1/iot-service/api/user/device/info
 GET /v1/iot-service/api/user/device/info?device_id<device_id>
@@ -89,7 +92,8 @@ Response:
 }
 ```
 
-**Get Device Version**
+##### Get Device Version
+
 ```http
 GET /v1/iot-service/api/user/device/version
 GET /v1/iot-service/api/user/device/version?device_id<device_id>
@@ -106,7 +110,8 @@ Response:
 }
 ```
 
-**Unbind Device from User**
+##### Unbind Device from User
+
 ```http
 DELETE /v1/iot-service/api/user/bind?dev_id=<device_id>
 Authorization: Bearer <token>
@@ -120,7 +125,8 @@ Response:
 
 #### Printing Operations
 
-**Get Print Jobs**
+##### Get Print Jobs
+
 ```http
 GET /v1/iot-service/api/user/print
 GET /v1/iot-service/api/user/print?device_id<device_id>
@@ -144,7 +150,8 @@ Response:
 }
 ```
 
-**Start Print Job**
+##### Start Print Job
+
 ```http
 POST /v1/iot-service/api/user/print
 Content-Type: application/json
@@ -174,7 +181,8 @@ Response:
 
 #### Project Management
 
-**Get Projects**
+##### Get Projects
+
 ```http
 GET /v1/iot-service/api/user/project
 GET /v1/iot-service/api/user/project?page1&limit20
@@ -197,7 +205,8 @@ Response:
 }
 ```
 
-**Get Project Details**
+##### Get Project Details
+
 ```http
 GET /v1/iot-service/api/user/project/{project_id}
 
@@ -219,7 +228,8 @@ Response:
 
 Tasks represent print jobs and file operations associated with devices.
 
-**Get User Tasks**
+##### Get User Tasks
+
 ```http
 GET /v1/user-service/my/tasks
 GET /v1/user-service/my/tasks?deviceId=<device_id>&after=<task_id>&limit=20
@@ -259,7 +269,8 @@ Response:
 }
 ```
 
-**Get Single Task**
+##### Get Single Task
+
 ```http
 GET /v1/iot-service/api/user/task/{task_id}
 
@@ -278,7 +289,8 @@ Response:
 }
 ```
 
-**Create Task**
+##### Create Task
+
 ```http
 POST /v1/user-service/my/task
 Content-Type: application/json
@@ -300,7 +312,8 @@ Response:
 
 #### File Upload
 
-**Get Upload URL**
+##### Get Upload URL
+
 ```http
 GET /v1/iot-service/api/user/upload
 GET /v1/iot-service/api/user/upload?filename=model.3mf&size=012345
@@ -330,7 +343,8 @@ Response:
 }
 ```
 
-**Upload to S3 (Step 1: Filename)**
+##### Upload to S3 (Step 1: Filename)
+
 ```http
 PUT <filename_url_from_above>
 Content-Type: application/octet-stream
@@ -341,7 +355,8 @@ Content-Length: 012345
 Response: 200 OK
 ```
 
-**Upload to S3 (Step 2: Size)**
+##### Upload to S3 (Step 2: Size)
+
 ```http
 PUT <size_url_from_above>
 Content-Type: text/plain
@@ -353,6 +368,7 @@ Response: 200 OK
 ```
 
 **Important Notes:**
+
 - Must upload to BOTH URLs (filename AND size) for successful upload
 - Use exact Content-Type headers as specified
 - URLs are pre-signed by AWS and expire after the time indicated
@@ -361,7 +377,8 @@ Response: 200 OK
 
 #### Notifications
 
-**Get Notifications**
+##### Get Notifications
+
 ```http
 GET /v1/iot-service/api/user/notification
 GET /v1/iot-service/api/user/notification?unreadtrue
@@ -383,7 +400,8 @@ Response:
 }
 ```
 
-**Mark Notification as Read**
+##### Mark Notification as Read
+
 ```http
 PUT /v1/iot-service/api/user/notification
 Content-Type: application/json
@@ -394,9 +412,6 @@ Request Body:
   "read": true
 }
 ```
-
----
-
 
 ---
 

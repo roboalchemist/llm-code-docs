@@ -20,6 +20,7 @@ This document covers camera credentials, TUTK P2P protocol, video streaming, and
 #### Overview
 
 Bambu Lab printers support camera streaming using two methods:
+
 1. **TUTK P2P Protocol** - Remote access via proprietary P2P (used by Bambu Studio/Handy)
 2. **Local JPEG Stream** - Direct TCP connection on same network (higher quality, lower latency)
 
@@ -74,6 +75,7 @@ Response:
 #### What is TUTK?
 
 **TUTK (Throughtek UDP Tunnel Kit)** is a peer-to-peer video streaming protocol:
+
 - Proprietary P2P protocol (not HTTP/RTSP)
 - Works through firewalls/NAT without port forwarding
 - Used by Bambu Studio and Bambu Handy for remote camera access
@@ -82,6 +84,7 @@ Response:
 - Reduced server costs for Bambu Lab
 
 TUTK is a P2P protocol, not HTTP/RTSP, so:
+
 - Can't use VLC/ffmpeg with a simple URL
 - No direct HTTPS streaming endpoint
 - Not compatible with standard video players
@@ -109,6 +112,7 @@ ttcode_data = client.get_ttcode("01234567890ABCD")
 ```
 
 **Viewing via TUTK:**
+
 1. Open Bambu Studio or Bambu Handy
 2. Select your printer
 3. View live camera feed
@@ -143,6 +147,7 @@ stream.disconnect()
 ```
 
 **Local Stream Details:**
+
 - Protocol: TLS over TCP
 - Port: 6000 (P1/A1 models)
 - Format: JPEG frames
@@ -164,6 +169,7 @@ Displays live camera feed in a window.
 **Current Status:** Not Available
 
 The API response includes empty fields for cloud streaming:
+
 - `streams` = null
 - `stream_key` = ""
 - `channel_name` = ""
@@ -184,7 +190,7 @@ These fields are reserved for future cloud streaming features (likely WebRTC-bas
 
 #### Python Examples
 
-**Example 1: Get TTCode Credentials**
+##### Example 1: Get TTCode Credentials
 
 ```python
 from bambulab import BambuClient
@@ -205,7 +211,7 @@ print(f"Region: {ttcode['region']}")
 # - Custom apps using TUTK SDK
 ```
 
-**Example 2: Local Camera Streaming**
+##### Example 2: Local Camera Streaming
 
 ```python
 from bambulab import JPEGFrameStream
@@ -236,7 +242,7 @@ finally:
     cv2.destroyAllWindows()
 ```
 
-**Example 3: Save Snapshots**
+##### Example 3: Save Snapshots
 
 ```python
 from bambulab import JPEGFrameStream
@@ -255,7 +261,7 @@ if frame:
 stream.disconnect()
 ```
 
-**Example 4: Monitor Print via Camera**
+##### Example 4: Monitor Print via Camera
 
 ```python
 from bambulab import JPEGFrameStream, MQTTClient
@@ -300,11 +306,13 @@ finally:
 #### Camera Access Requirements
 
 **For Local JPEG Stream:**
+
 - Printer IP address (same network)
 - 8-digit access code (from printer screen settings)
 - Printer model (P1S, X1C, A1, etc.)
 
 **For TUTK P2P Stream:**
+
 - Bambu Lab Cloud account token
 - Device serial number
 - Bambu Studio or Bambu Handy app (easiest)
@@ -313,23 +321,25 @@ finally:
 #### Troubleshooting
 
 **Local Stream Issues:**
+
 - **Connection refused:** Check IP address and network
 - **Authentication failed:** Verify 8-digit access code
 - **Timeout:** Ensure firewall allows port 6000
 - **No frames:** Camera might be disabled in printer settings
 
 **TUTK Issues:**
+
 - **TTCode not working:** Token may be expired, get new one
 - **Cannot connect from remote:** Firewall blocking UDP P2P
 - **No video in app:** Camera may be disabled on printer
 
 **General:**
+
 - **Black screen:** Check printer camera settings
 - **Low FPS:** Network congestion or weak signal
 - **Choppy video:** Use local stream instead of TUTK for better quality
 
 ---
-
 
 ---
 

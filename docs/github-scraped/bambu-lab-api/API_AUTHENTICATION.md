@@ -113,6 +113,7 @@ auth = BambuAuthenticator(token_file="/path/to/token.json")
 **Endpoint:** `POST /v1/user-service/user/login`
 
 **Request:**
+
 ```json
 {
   "account": "user@email.com",
@@ -122,6 +123,7 @@ auth = BambuAuthenticator(token_file="/path/to/token.json")
 ```
 
 **Response (Success):**
+
 ```json
 {
   "success": true,
@@ -130,6 +132,7 @@ auth = BambuAuthenticator(token_file="/path/to/token.json")
 ```
 
 **Response (2FA Required):**
+
 ```json
 {
   "success": false,
@@ -138,6 +141,7 @@ auth = BambuAuthenticator(token_file="/path/to/token.json")
 ```
 
 **Response (MFA Required):**
+
 ```json
 {
   "success": false,
@@ -151,6 +155,7 @@ auth = BambuAuthenticator(token_file="/path/to/token.json")
 **Endpoint:** `POST /v1/user-service/user/sendemail/code`
 
 **Request:**
+
 ```json
 {
   "email": "user@email.com",
@@ -159,6 +164,7 @@ auth = BambuAuthenticator(token_file="/path/to/token.json")
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -171,6 +177,7 @@ auth = BambuAuthenticator(token_file="/path/to/token.json")
 **Endpoint:** `POST /v1/user-service/user/login`
 
 **Request:**
+
 ```json
 {
   "account": "user@email.com",
@@ -179,6 +186,7 @@ auth = BambuAuthenticator(token_file="/path/to/token.json")
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -191,6 +199,7 @@ auth = BambuAuthenticator(token_file="/path/to/token.json")
 **Endpoint:** `POST /api/sign-in/tfa`
 
 **Request:**
+
 ```json
 {
   "tfaKey": "...",
@@ -382,22 +391,24 @@ token = login_with_retry("user@email.com", "password")
 ### Production APIs
 
 **Global (International):**
-```
+
+```text
 Main API:    https://api.bambulab.com
 Portal:      https://e.bambulab.com
 ```
 
 **China Region:**
-```
+
+```text
 Main API:    https://api.bambulab.cn
 Portal:      https://e.bambulab.cn
 ```
 
 ### Development/Testing APIs (Internal)
 
-```
+```text
 Dev API:      https://api-dev.bambulab.net
-QA API:       https://api-qa.bambulab.net  
+QA API:       https://api-qa.bambulab.net
 Pre-prod:     https://api-pre.bambulab.net
 ```
 
@@ -539,7 +550,7 @@ response = requests.get(
 
 ## Security Best Practices
 
-### Token Storage
+### Secure Token Storage
 
 - Store tokens securely (encrypted storage, keychain, etc.)
 - Never commit tokens to version control

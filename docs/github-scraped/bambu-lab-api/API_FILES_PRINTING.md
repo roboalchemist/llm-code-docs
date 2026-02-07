@@ -237,7 +237,8 @@ This is NOT about certificates or X.509. The issue is with **S3 signed URLs**.
 **What S3 Signed URLs Do:**
 
 When you get an upload URL from Bambu's API:
-```
+
+```text
 https://s3.us-west-2.amazonaws.com/...?AWSAccessKeyId=...&Signature=...&Expires=...
 ```
 
@@ -351,7 +352,6 @@ ftp.disconnect()
 
 ---
 
-
 ## EXAMPLES
 
 ### Complete Request Example
@@ -388,9 +388,6 @@ response = requests.get(
 
 print(response.json())
 ```
-
-
-
 
 ---
 

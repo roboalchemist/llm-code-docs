@@ -21,7 +21,7 @@ This document covers MQTT connection, topics, message formats, device commands, 
 
 ### Connection
 
-```
+```text
 Broker:   us.mqtt.bambulab.com
 Port:     8883 (TLS)
 Protocol: MQTT 3.1.1 / 5.0
@@ -35,14 +35,16 @@ Authentication:
 ### Topic Structure
 
 **Subscribe to device updates:**
-```
+
+```text
 device/<device_id>/report
 device/<device_id>/status
 printer/<device_id>/state
 ```
 
 **Publish commands:**
-```
+
+```text
 device/<device_id>/request
 printer/<device_id>/command
 ```
@@ -50,6 +52,7 @@ printer/<device_id>/command
 ### Message Format
 
 **Print Commands:**
+
 ```json
 {
   "print": {
@@ -64,6 +67,7 @@ printer/<device_id>/command
 ```
 
 **Request Full Status (pushall):**
+
 ```json
 {
   "pushing": {
@@ -91,14 +95,14 @@ The response is a nested JSON with a `print` object containing 60+ fields:
     "bed_temper": 20.71875,
     "bed_target_temper": 0,
     "chamber_temper": 5,
-    
+
     // Print Progress
     "gcode_state": "IDLE|RUNNING|PAUSE|FAILED|FINISH",
     "mc_percent": 45,
     "mc_remaining_time": 3600,
     "layer_num": 125,
     "total_layer_num": 250,
-    
+
     // Print Job Info
     "subtask_name": "model.3mf",
     "project_id": "012345678",
@@ -106,31 +110,31 @@ The response is a nested JSON with a `print` object containing 60+ fields:
     "task_id": "012345678",
     "subtask_id": "012345678",
     "gcode_file": "cache/012345678.gcode",
-    
+
     // Fan Speeds (0-15 scale)
     "heatbreak_fan_speed": "0",
     "cooling_fan_speed": "0",
     "big_fan1_speed": "0",
     "big_fan2_speed": "0",
     "fan_gear": 0,
-    
+
     // Speed Settings
     "spd_mag": 100,
     "spd_lvl": 2,
-    
+
     // Print Stage
     "mc_print_stage": "0-20",
     "mc_print_sub_stage": 0,
     "print_type": "idle|cloud_file|local",
     "stg": [],
     "stg_cur": 255,
-    
+
     // Hardware Info
     "nozzle_diameter": "0.4",
     "nozzle_type": "stainless_steel|hardened_steel",
     "lifecycle": "product",
     "wifi_signal": "-45dBm",
-    
+
     // Errors & Status
     "print_error": 0,
     "hms": [
@@ -141,7 +145,7 @@ The response is a nested JSON with a `print` object containing 60+ fields:
         "timestamp": 1761352945
       }
     ],
-    
+
     // AMS (Automatic Material System)
     "ams": {
       "ams": [
@@ -167,7 +171,7 @@ The response is a nested JSON with a `print` object containing 60+ fields:
       "tray_now": "255",
       "version": 2
     },
-    
+
     // External Spool (Virtual Tray)
     "vt_tray": {
       "id": "254",
@@ -175,7 +179,7 @@ The response is a nested JSON with a `print` object containing 60+ fields:
       "tray_color": "FFFF00FF",
       "remain": 0
     },
-    
+
     // Camera & Lighting
     "ipcam": {
       "ipcam_dev": "1",
@@ -190,7 +194,7 @@ The response is a nested JSON with a `print` object containing 60+ fields:
         "mode": "on|off"
       }
     ],
-    
+
     // Network
     "net": {
       "conf": 0,
@@ -201,7 +205,7 @@ The response is a nested JSON with a `print` object containing 60+ fields:
         }
       ]
     },
-    
+
     // Firmware Updates
     "upgrade_state": {
       "status": "IDLE|UPGRADING",
@@ -214,7 +218,7 @@ The response is a nested JSON with a `print` object containing 60+ fields:
         }
       ]
     },
-    
+
     // Command Info
     "command": "push_status",
     "msg": 0,
@@ -237,12 +241,10 @@ The response is a nested JSON with a `print` object containing 60+ fields:
 | **Camera** | `ipcam`, `lights_report` | Camera and lighting status |
 
 **Update Frequency:**
+
 - Status messages typically sent every 0.5-2 seconds
 - Full status on connection or when `pushall` requested
 - Frequency increases during active printing
-
----
-
 
 ---
 

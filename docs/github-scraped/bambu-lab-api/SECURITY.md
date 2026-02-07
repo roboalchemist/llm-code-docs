@@ -11,6 +11,7 @@
 **Please do not report security vulnerabilities through public GitHub issues.**
 
 Instead, report them via:
+
 - **Email:** Create a security advisory through GitHub's private vulnerability reporting
 - **GitHub:** Use the "Security" tab -> "Report a vulnerability"
 
@@ -32,17 +33,20 @@ Instead, report them via:
 ### Token Management
 
 **DO:**
+
 - Store tokens in config files (gitignored)
 - Use environment variables for production
 - Rotate tokens regularly
 
 **DON'T:**
+
 - Commit tokens to repositories
 - Share tokens in public channels
 - Hardcode tokens in source code
 - Log tokens in application logs
 
 ### Proxy Server Usage
+
 - **Strict mode (port 5001):** Read-only operations - recommended for untrusted environments
 - **Full mode (port 5003):** Complete access - use only in secure, controlled environments
 - Always use custom token mapping to avoid exposing real Bambu Lab tokens
@@ -68,12 +72,14 @@ Instead, report them via:
 ## Scope
 
 This project documents public API endpoints. Security issues should focus on:
+
 - Authentication handling in the library
 - Token exposure risks
 - Server proxy vulnerabilities
 - Dependency vulnerabilities
 
 Out of scope:
+
 - Vulnerabilities in Bambu Lab's services (report to Bambu Lab directly)
 - Physical printer security
 

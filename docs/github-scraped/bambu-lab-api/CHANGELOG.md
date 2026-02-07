@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 ## [1.0.5] - 2025-10-29
 
 ### Added - 2025-10-29
+
 - **On-Demand MQTT Monitoring**
   - New endpoint: `POST /v1/iot-service/api/user/device/realtime/start` - Start 2-minute MQTT monitoring session
   - New endpoint: `GET /v1/iot-service/api/user/device/realtime?device_id={id}` - Get cached real-time MQTT data
@@ -14,6 +15,7 @@ All notable changes to this project will be documented in this file.
   - Only POST endpoint allowed in strict mode (doesn't modify printer state)
 
 ### Changed
+
 - **Proxy Server (servers/proxy.py)**:
   - Changed from automatic monitoring of all devices to on-demand session model
   - Added `mqtt_sessions` dict to track active monitoring sessions
@@ -30,38 +32,42 @@ All notable changes to this project will be documented in this file.
 
 ## [1.0.4] - 2025-10-28
 
-### Changed
+### Changed v1.0.4
+
 - **Simplified Installation** - All features now included in base install
   - No longer need `[server]` or `[all]` extras
   - `pip install bambu-lab-cloud-api` now includes everything
   - Server dependencies (Flask, Flask-CORS, Flask-Limiter) included by default
   - Only `[dev]` extra remains for development tools (pytest, pytest-cov)
 
-### Added
+### Added v1.0.4
+
 - **Proxy Server Rate Limiting**
   - Per-token rate limiting (not per-IP)
   - Conservative limits at 1/4 of Bambu Cloud API limits
   - Device queries: 30/min, User endpoints: 15/min, Admin: 10/min
   - Automatic endpoint classification
   - Clear HTTP 429 responses with retry guidance
-  
+
 - **Proxy Server Token Management**
   - Support for UUID, random, and named tokens
-  
+
 - **Proxy Testing Changes**
   - Full test suite: `tests/manual/test_proxy_server.py`
   - Tests all GET endpoints
   - Validates response structure
   - Security testing (POST rejection)
 
-### Documentation
+### Documentation v1.0.4
+
 - Updated `INSTALL.md` - Simplified installation instructions
 - Updated `README.md` - Reflects new installation method
 - Removed symbols that may not show on all systems
 
 ## [1.0.3] - 2025-10-28
 
-### Added
+### Added v1.0.3
+
 - **Two-Factor Authentication Support**
   - `BambuAuthenticator` class for complete login flow with 2FA
   - Automatic email verification code handling
@@ -82,17 +88,20 @@ All notable changes to this project will be documented in this file.
   - Mock-based login flow testing
   - 12/12 tests passing
 
-### Changed
+### Changed v1.0.3
+
 - Enhanced `bambulab/__init__.py` to export `BambuAuthenticator` and `BambuAuthError`
 - Updated README.md with authentication quick start guide
 - Improved auth.py with comprehensive 2FA flow implementation
 
 ## [1.0.0] - 2025-10-25
 
-### Major Release
+### Major Release v1.0.0
+
 This release provides a comprehensive, library and documentation for interacting with Bambu Lab printers via cloud and local protocols without requiring developer mode.
 
-### Added
+### Added v1.0.0
+
 - **Complete Python Library** (`bambulab/`)
   - `BambuClient` - Full Cloud API implementation with authentication, token management, and auto-refresh
   - `MQTTClient` - Real-time MQTT monitoring with comprehensive message parsing
@@ -118,14 +127,16 @@ This release provides a comprehensive, library and documentation for interacting
   - Proxy servers with read-only and full access modes
   - Custom authentication support
 
-### Documentation
+### Documentation v1.0.0
+
 - All API endpoints fully documented with request/response examples
 - MQTT message structure and topic documentation
 - Camera streaming protocols (TUTK/RTSP/JPEG)
 - FTP upload procedures for local and cloud
 - Authentication flows with token lifecycle management
 
-### Verified Functionality
+### Verified Functionality v1.0.0
+
 - Cloud API: 40+ endpoints across devices, users, projects, tasks, messages, preferences, filaments
 - MQTT: Real-time status, temperatures, fan speeds, print progress, AMS status, HMS error codes
 - File Operations: Cloud upload, local FTP, project management
@@ -136,13 +147,15 @@ This release provides a comprehensive, library and documentation for interacting
 
 ## [0.3.0] - 2025-10-18
 
-### Added
+### Added v0.3.0
+
 - CLI tools for device queries
 - Proxy server implementation
 - Local FTP client integration
 - Enhanced MQTT message parsing
 
-### Fixed
+### Fixed v0.3.0
+
 - Token refresh timing issues
 - MQTT reconnection handling
 - File upload content-type headers
@@ -151,12 +164,14 @@ This release provides a comprehensive, library and documentation for interacting
 
 ## [0.2.2] - 2025-10-15
 
-### Added
+### Added v0.2.2
+
 - Video streaming documentation
 - Camera TTCode endpoint integration
 - JPEG frame extraction utilities
 
-### Changed
+### Changed v0.2.2
+
 - Improved error handling for API requests
 - Enhanced logging throughout library
 
@@ -164,25 +179,29 @@ This release provides a comprehensive, library and documentation for interacting
 
 ## [0.2.1] - 2025-10-13
 
-### Fixed
+### Fixed v0.2.1
+
 - MQTT connection stability
 - Authentication token expiration edge cases
 - Multi-device selection logic
 
-### Added
+### Added v0.2.1
+
 - Comprehensive test suite foundation
 
 ---
 
 ## [0.2.0] - 2025-10-11
 
-### Added
+### Added v0.2.0
+
 - MQTT client implementation
 - Real-time printer monitoring
 - AMS filament status tracking
 - G-code command reference
 
-### Changed
+### Changed v0.2.0
+
 - Refactored authentication module
 - Consolidated API base URLs
 
@@ -190,43 +209,50 @@ This release provides a comprehensive, library and documentation for interacting
 
 ## [0.1.3] - 2025-10-09
 
-### Added
+### Added v0.1.3
+
 - Project listing and management endpoints
 - Task history retrieval
 - Message and notification APIs
 
-### Fixed
+### Fixed v0.1.3
+
 - Response parsing for nested structures
 
 ---
 
 ## [0.1.2] - 2025-10-07
 
-### Added
+### Added v0.1.2
+
 - User profile endpoints
 - Device firmware information
 - Print status monitoring
 
-### Changed
+### Changed v0.1.2
+
 - Improved response field documentation
 
 ---
 
 ## [0.1.1] - 2025-10-06
 
-### Fixed
+### Fixed v0.1.1
+
 - Authentication header formatting
 - Device listing pagination
 - Error response handling
 
-### Added
+### Added v0.1.1
+
 - Basic examples for common operations
 
 ---
 
 ## [0.1.0] - 2025-10-04
 
-### Initial Development Release
+### Initial Development Release v0.1.0
+
 - Core authentication implementation
 - Basic device listing
 - HTTP client foundation
@@ -237,4 +263,3 @@ This release provides a comprehensive, library and documentation for interacting
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-

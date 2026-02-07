@@ -69,7 +69,7 @@ This document covers response codes, error handling, rate limiting, pagination, 
 
 ### Error Codes Found in Code
 
-```
+```text
 ERR_NETWORK
 ERR_INVALID_URL
 ERR_BAD_REQUEST
@@ -95,6 +95,7 @@ Expected limits (based on standard practices):
 ## PAGINATION
 
 Standard pagination parameters:
+
 ```http
 GET /endpoint?page1&limit20&offset0
 
@@ -117,12 +118,14 @@ Response includes:
 ### Upload Flow
 
 1. **Request upload URL:**
+
 ```http
 POST /v1/iot-service/api/user/upload
 Response: { "upload_url": "https://..." }
 ```
 
 2. **Upload file to S3/CDN:**
+
 ```http
 PUT <upload_url>
 Content-Type: application/octet-stream
@@ -130,6 +133,7 @@ Body: <file_data>
 ```
 
 3. **Confirm upload:**
+
 ```http
 POST /v1/iot-service/api/user/upload/confirm
 Body: { "file_id": "..." }
@@ -147,7 +151,8 @@ Body: { "file_id": "..." }
 ## WEBHOOKS
 
 The API likely supports webhooks for events:
-```
+
+```text
 print.started
 print.completed
 print.failed
@@ -163,17 +168,20 @@ notification.created
 ### Test Environments
 
 **Dev:**
-```
+
+```text
 API: https://api-dev.bambulab.net
 ```
 
 **QA:**
-```
+
+```text
 API: https://api-qa.bambulab.net
 ```
 
 **Pre-production:**
-```
+
+```text
 API: https://api-pre.bambulab.net
 API US: https://api-pre-us.bambulab.net
 ```
@@ -191,6 +199,7 @@ The following MQTT commands can be sent to control printer devices via the MQTT 
 #### Pause Print
 
 **Command:**
+
 ```json
 {
   "print": {
@@ -206,6 +215,7 @@ The following MQTT commands can be sent to control printer devices via the MQTT 
 #### Resume Print
 
 **Command:**
+
 ```json
 {
   "print": {
@@ -221,6 +231,7 @@ The following MQTT commands can be sent to control printer devices via the MQTT 
 #### Stop Print
 
 **Command:**
+
 ```json
 {
   "print": {
@@ -238,6 +249,7 @@ The following MQTT commands can be sent to control printer devices via the MQTT 
 #### Set Nozzle Temperature
 
 **Command:**
+
 ```json
 {
   "print": {
@@ -248,6 +260,7 @@ The following MQTT commands can be sent to control printer devices via the MQTT 
 ```
 
 **Parameters:**
+
 - `param` (integer): Target nozzle temperature in Celsius (e.g., 220)
 
 **Description:** Sets the target nozzle/hotend temperature.
@@ -257,6 +270,7 @@ The following MQTT commands can be sent to control printer devices via the MQTT 
 #### Set Bed Temperature
 
 **Command:**
+
 ```json
 {
   "print": {
@@ -267,6 +281,7 @@ The following MQTT commands can be sent to control printer devices via the MQTT 
 ```
 
 **Parameters:**
+
 - `param` (integer): Target bed temperature in Celsius (e.g., 60)
 
 **Description:** Sets the target heated bed temperature.
@@ -276,6 +291,7 @@ The following MQTT commands can be sent to control printer devices via the MQTT 
 #### Set Chamber Temperature
 
 **Command:**
+
 ```json
 {
   "print": {
@@ -286,6 +302,7 @@ The following MQTT commands can be sent to control printer devices via the MQTT 
 ```
 
 **Parameters:**
+
 - `param` (integer): Target chamber temperature in Celsius (e.g., 35)
 
 **Description:** Sets the target chamber temperature (for printers with heated chambers).
@@ -297,6 +314,7 @@ The following MQTT commands can be sent to control printer devices via the MQTT 
 #### Set Fan Speed
 
 **Command:**
+
 ```json
 {
   "print": {
@@ -307,6 +325,7 @@ The following MQTT commands can be sent to control printer devices via the MQTT 
 ```
 
 **Parameters:**
+
 - `param` (integer): Fan speed percentage 0-100
 
 **Description:** Sets the part cooling fan speed.
@@ -316,6 +335,7 @@ The following MQTT commands can be sent to control printer devices via the MQTT 
 #### Set Air Duct Fan
 
 **Command:**
+
 ```json
 {
   "print": {
@@ -326,6 +346,7 @@ The following MQTT commands can be sent to control printer devices via the MQTT 
 ```
 
 **Parameters:**
+
 - `param` (integer): Air duct fan speed percentage 0-100
 
 **Description:** Controls the air duct/auxiliary fan speed.
@@ -335,6 +356,7 @@ The following MQTT commands can be sent to control printer devices via the MQTT 
 #### Set Chamber Fan (CTT)
 
 **Command:**
+
 ```json
 {
   "print": {
@@ -345,6 +367,7 @@ The following MQTT commands can be sent to control printer devices via the MQTT 
 ```
 
 **Parameters:**
+
 - `param` (integer): Chamber fan speed percentage 0-100
 
 **Description:** Sets the chamber temperature control fan speed.

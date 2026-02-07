@@ -111,6 +111,7 @@ Install with: `pip install bambu-lab-cloud-api[dev]`
 ### Import Errors
 
 If you get import errors, ensure the package is installed:
+
 ```bash
 pip install -e .
 ```
@@ -118,6 +119,7 @@ pip install -e .
 ### Missing Dependencies
 
 Install all dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -125,6 +127,7 @@ pip install -r requirements.txt
 ### Permission Errors
 
 On Linux/Mac, you may need to use `pip3` instead of `pip`:
+
 ```bash
 pip3 install -e .
 ```
