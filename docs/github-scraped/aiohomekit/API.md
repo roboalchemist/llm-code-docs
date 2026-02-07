@@ -3,6 +3,7 @@
 ## Overview
 
 aiohomekit is an asyncio HomeKit client library for Python. It provides APIs for:
+
 - Pairing with HomeKit accessories
 - Discovering HomeKit devices over mDNS/Bonjour
 - Controlling HomeKit accessories over IP, BLE, and CoAP protocols
@@ -81,6 +82,7 @@ aiohomekit supports multiple transport protocols through the `TransportType` enu
 ### Protocol Implementation
 
 The library implements the HomeKit Accessory Protocol (HAP) with:
+
 - TLV8 (Type-Length-Value) encoding for HomeKit protocol messages
 - ChaCha20-Poly1305 authenticated encryption
 - SRP (Secure Remote Password) for secure pairing
@@ -89,6 +91,7 @@ The library implements the HomeKit Accessory Protocol (HAP) with:
 ### BLE Support
 
 BLE (Bluetooth Low Energy) support includes:
+
 - Device discovery via Bluetooth advertisements
 - BLE-specific client implementation
 - Manufacturer data parsing
@@ -97,6 +100,7 @@ BLE (Bluetooth Low Energy) support includes:
 ## DeviceCompatibility
 
 The library is primarily tested with:
+
 - Phillips Hue Bridge
 - Eve Extend Bridge
 - Various other HomeKit accessories
@@ -115,6 +119,7 @@ The library handles known quirks with HomeKit devices:
 ## Configuration
 
 The library uses configuration files to store:
+
 - Pairing information
 - Controller identity
 - Accessory metadata
@@ -125,6 +130,7 @@ Configuration can be loaded and saved through the Controller API.
 ## Home Assistant Integration
 
 aiohomekit is the primary HomeKit integration library for Home Assistant:
+
 - Repository: [homekit_controller](https://github.com/home-assistant/core/tree/dev/homeassistant/components/homekit_controller)
 - Used for discovering and controlling HomeKit devices
 - Handles characteristic updates and notifications
@@ -138,12 +144,14 @@ Contributions are welcome but should be tested with real HomeKit devices when po
 ### Does aiohomekit support creating HomeKit accessories?
 
 No, aiohomekit is client-only. For server/accessory implementations, see:
+
 - [homekit_python](https://github.com/jlusiardi/homekit_python/)
 - [HAP-python](https://github.com/ikalchev/HAP-python)
 
 ### Why not use a standard HTTP library like aiohttp?
 
 The library uses hand-rolled HTTP for several reasons:
+
 - Need for custom session security without monkey patching
 - HAP requires handling responses without corresponding requests (events)
 - Real-world devices require strict formatting compliance
@@ -153,6 +161,7 @@ The library uses hand-rolled HTTP for several reasons:
 ### Why does aiohomekit use hand-rolled cryptography implementations?
 
 For compatibility with Home Assistant's build process:
+
 - All dependencies must be pip-installable
 - Cross-platform wheels must be available (including Raspberry Pi)
 - Should not introduce hard system library dependencies

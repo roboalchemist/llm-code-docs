@@ -1,4 +1,4 @@
-# Source: https://github.com/Jc2k/aiohomekit/blob/master/README.md
+<!-- Source: https://github.com/Jc2k/aiohomekit/blob/master/README.md -->
 
 # aiohomekit
 
