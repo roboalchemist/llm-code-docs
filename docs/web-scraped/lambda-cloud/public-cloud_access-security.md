@@ -4,35 +4,36 @@ Source: https://docs.lambda.ai/public-cloud/access-security/
 
 ---
 
-[identity and access management ](../../tags/#tag:identity-and-access-management)[security and compliance ](../../tags/#tag:security-and-compliance)
-# Access and security [# ](#access-and-security)
+[identity and access management](../../tags/#tag:identity-and-access-management)[security and compliance](../../tags/#tag:security-and-compliance)
 
-This page describes Lambda Cloud's access management and security features. 
+# Access and security
 
-## Access management [# ](#access-management)
+This page describes Lambda Cloud's access management and security features.
 
-Lambda provides lightweight access management mechanisms to ensure secure access while minimizing friction. 
+## Access management
 
-### API keys [# ](#api-keys)
+Lambda provides lightweight access management mechanisms to ensure secure access while minimizing friction.
 
-The Lambda Cloud API uses API keys to authenticate incoming requests. You can generate a new API key pair or view your existing API keys by visiting the [API keys page ](http://cloud.lambda.ai/api-keys)in the Lambda Cloud console. API keys have full access to all Lambda API operations. 
+### API keys
 
-### SSH keys [# ](#ssh-keys)
+The Lambda Cloud API uses API keys to authenticate incoming requests. You can generate a new API key pair or view your existing API keys by visiting the [API keys page](http://cloud.lambda.ai/api-keys)in the Lambda Cloud console. API keys have full access to all Lambda API operations.
 
-Before you launch an instance, you must add an SSH key to your Lambda Cloud account. When you go through the process of launching an instance, you'll be prompted to supply this SSH key so you can securely connect to the instance after launching. You can import an existing key if you have one, or you can generate a new one in the Lambda Cloud console. 
+### SSH keys
 
-For guidance on setting up an SSH key, see [Connecting to an instance > Setting up SSH access ](../on-demand/connecting-instance/#setting-up-ssh-access). 
+Before you launch an instance, you must add an SSH key to your Lambda Cloud account. When you go through the process of launching an instance, you'll be prompted to supply this SSH key so you can securely connect to the instance after launching. You can import an existing key if you have one, or you can generate a new one in the Lambda Cloud console.
 
-### Teams [# ](#teams)
+For guidance on setting up an SSH key, see [Connecting to an instance > Setting up SSH access](../on-demand/connecting-instance/#setting-up-ssh-access).
 
-You can add new members to your Lambda account by inviting them to join your *Team *. Each Team member can be either an *Admin *or a *Member *: 
+### Teams
 
-- Both roles have full access to your Lambda resources. Each can create API keys, launch and terminate instances, and retrieve audit logs, for example. 
-- Admins can also invite or remove Team members, modify the project's payment information, and rename the team. 
-The invitee's email address must not already be associated with an existing Lambda account. If your team member already has a Lambda account, ask them to provide a different address or, if feasible, to close their existing account. 
+You can add new members to your Lambda account by inviting them to join your *Team *. Each Team member can be either an *Admin *or a *Member *:
 
-For details on creating and updating Teams, see [Teams ](../teams/). 
+- Both roles have full access to your Lambda resources. Each can create API keys, launch and terminate instances, and retrieve audit logs, for example.
+- Admins can also invite or remove Team members, modify the project's payment information, and rename the team.
+The invitee's email address must not already be associated with an existing Lambda account. If your team member already has a Lambda account, ask them to provide a different address or, if feasible, to close their existing account.
 
-Important 
+For details on creating and updating Teams, see [Teams](../teams/).
+
+Important
 
 **Each role has full access to your Lambda resources. **Make sure to invite only trusted persons to your Team.

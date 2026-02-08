@@ -4,7 +4,8 @@ Source: https://docs.lambda.ai/hardware/
 
 ---
 
-# Introduction [# ](#introduction)
+# Introduction
 
-Getting started and troubleshooting instructions for Lambda Servers and Vector workstations. 
+Getting started and troubleshooting instructions for Lambda Servers and Vector workstations.
+
 [](servers/getting-started)Servers

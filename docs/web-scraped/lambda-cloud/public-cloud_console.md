@@ -4,39 +4,34 @@ Source: https://docs.lambda.ai/public-cloud/console/
 
 ---
 
-[1-click clusters ](../../tags/#tag:1-click-clusters)[on-demand cloud ](../../tags/#tag:on-demand-cloud)
-# Lambda Cloud console [# ](#lambda-cloud-console)
+[1-click clusters](../../tags/#tag:1-click-clusters) [on-demand cloud](../../tags/#tag:on-demand-cloud)
 
-You can use the [Lambda Cloud console ](https://cloud.lambda.ai/instances)to manage your Lambda Cloud resources, Lambda account, and Lambda Teams. This doc provides an overview of the available features. 
+# Lambda Cloud console
 
-## Launch, restart, reboot, or terminate instances [# ](#launch-restart-reboot-or-terminate-instances)
+You can use the [Lambda Cloud console](https://cloud.lambda.ai/instances) to manage your Lambda Cloud resources, Lambda account, and Lambda Teams. This doc provides an overview of the available features.
 
-### Launch instances [# ](#launch-instances)
+## Launch, restart, reboot, or terminate instances
 
-To launch an instance: 
+### Launch instances
 
-- 
-Click [**Instances **](https://cloud.lambda.ai/instances)in the left sidebar of the console. 
+To launch an instance:
 
-Then, click **Launch instance **at the top-right of the console. 
+- Click [**Instances**](https://cloud.lambda.ai/instances) in the left sidebar of the console.
 
-- 
-Click the instance type that you want to launch. 
+Then, click **Launch instance** at the top-right of the console.
 
-- 
-Click the region in which you want to launch the instance. 
+- Click the instance type that you want to launch.
 
-- 
-Select your preferred base image and then click **Next **. For a list of available images, see [Alternative images ](../on-demand/#alternative-images). 
+- Click the region in which you want to launch the instance.
 
-- 
-Click the [Lambda filesystem ](../filesystems/)that you want to attach to your instance. 
+- Select your preferred base image and then click **Next**. For a list of available images, see [Alternative images](../on-demand/#alternative-images).
 
-If you don't want to or can't attach a persistent storage file system to your instance, click **Don’t attach a filesystem **. 
+- Click the [Lambda filesystem](../filesystems/) that you want to attach to your instance.
 
-- 
-Select the [SSH key ](#add-generate-and-delete-ssh-keys)that you want to use for your instance. Then, click **Launch instance **. 
+If you don't want to or can't attach a persistent storage file system to your instance, click **Don't attach a filesystem**.
 
-Tip 
+- Select the [SSH key](#add-generate-and-delete-ssh-keys) that you want to use for your instance. Then, click **Launch instance**.
 
-You can [add additional SSH keys ](../on-demand/getting-started/#is-it-possible-to-use-more-than-one-ssh-key)to your instance once your instance has launched.
+Tip
+
+You can [add additional SSH keys](../on-demand/getting-started/#is-it-possible-to-use-more-than-one-ssh-key) to your instance once your instance has launched.

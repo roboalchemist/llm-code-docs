@@ -4,18 +4,20 @@ Source: https://docs.lambda.ai/education/linux-usage/troubleshooting-and-debuggi
 
 ---
 
-[troubleshooting ](../../../tags/#tag:troubleshooting)
-# Troubleshooting and debugging [# ](#troubleshooting-and-debugging)
+[troubleshooting](../../../tags/#tag:troubleshooting)
 
-## Linux [# ](#linux)
+# Troubleshooting and debugging [#](#troubleshooting-and-debugging)
 
-### Generate a Lambda bug report [# ](#generate-a-lambda-bug-report)
+## Linux [#](#linux)
 
-Lambda bug reports are useful for troubleshooting systems with NVIDIA GPUs, including Cloud instances. 
+### Generate a Lambda bug report [#](#generate-a-lambda-bug-report)
 
-To generate a Lambda bug report, run: 
+Lambda bug reports are useful for troubleshooting systems with NVIDIA GPUs, including Cloud instances.
 
-```
+To generate a Lambda bug report, run:
+
+```bash
 `[](#__codelineno-0-1)wget -nv -O - https://raw.githubusercontent.com/lambdal-support/lambda-public-tools/main/lambda-bug-report.sh | bash -
 `
+
 ```
