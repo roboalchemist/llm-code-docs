@@ -47,6 +47,13 @@ repositories:
     target_folder: "docs/github-scraped/tensorrt-llm"
     branch: "main" # Default branch to use
 
+  - name: "Text Embeddings Inference"
+    description: "HuggingFace Text Embeddings Inference (TEI) - High-performance inference server for text embeddings, re-ranking, and sequence classification with optimized batching and quantization"
+    repo_url: "https://github.com/huggingface/text-embeddings-inference.git"
+    source_folder: "docs/source/en"
+    target_folder: "docs/github-scraped/text-embeddings-inference"
+    branch: "main"
+
   - name: "Three.js"
     description: "Three.js - JavaScript 3D library for WebGL with comprehensive API documentation"
     repo_url: "https://github.com/mrdoob/three.js.git"
